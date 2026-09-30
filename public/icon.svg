@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00264d" />
+      <stop offset="60%" stop-color="#001124" />
+      <stop offset="100%" stop-color="#000000" />
+    </radialGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#00ff87" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" fill="#000000" rx="128" />
+  
+  <!-- Glowing Globe Core -->
+  <circle cx="256" cy="256" r="180" fill="url(#bg)" stroke="url(#glow)" stroke-width="8" filter="drop-shadow(0 0 24px rgba(0,242,254,0.6))" />
+  
+  <!-- Meridians / Graticule -->
+  <ellipse cx="256" cy="256" rx="90" ry="180" fill="none" stroke="#00ff87" stroke-width="3" stroke-opacity="0.5" />
+  <line x1="76" y1="256" x2="436" y2="256" stroke="#00ff87" stroke-width="3" stroke-opacity="0.5" />
+  <ellipse cx="256" cy="256" rx="180" ry="90" fill="none" stroke="#00ff87" stroke-width="3" stroke-opacity="0.3" />
+  
+  <!-- Central Emblem Mark -->
+  <circle cx="256" cy="256" r="32" fill="#00ff87" filter="drop-shadow(0 0 16px #00ff87)" />
+  <polygon points="256,220 286,275 226,275" fill="#000000" />
+</svg>

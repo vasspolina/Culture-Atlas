@@ -1,0 +1,2097 @@
+import type { Institution } from "../types";
+
+export const DATA: Institution[] = [
+  {
+    "n": "Chisenhale Gallery",
+    "c": "London, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£1.0M. Arts Council, trusts, patrons' circles.",
+    "w": "No corporate sponsors published.",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-1026175",
+      "https://chisenhale.org.uk/support/"
+    ],
+    "la": 51.529,
+    "lo": -0.033
+  },
+  {
+    "n": "Camden Art Centre",
+    "c": "London, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£3.3M. Arts Council, Camden Council, trusts.",
+    "w": "",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-1065829",
+      "https://camdenartcentre.org/support"
+    ],
+    "la": 51.548,
+    "lo": -0.187
+  },
+  {
+    "n": "Spike Island",
+    "c": "Bristol, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£1.5M. Arts Council, city, local media, a brewery.",
+    "w": "",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-1003505",
+      "https://www.spikeisland.org.uk/our-supporters/"
+    ],
+    "la": 51.447,
+    "lo": -2.613
+  },
+  {
+    "n": "Modern Art Oxford",
+    "c": "Oxford, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£3.1M. Arts Council; Lavazza, two law firms, galleries.",
+    "w": "",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-313035",
+      "https://www.modernartoxford.org.uk/get-involved/support-us/corporate-partners"
+    ],
+    "la": 51.751,
+    "lo": -1.258
+  },
+  {
+    "n": "Kettle's Yard",
+    "c": "Cambridge, UK",
+    "t": "A",
+    "s": "S",
+    "f": "103k visits. University, Arts Council, colleges.",
+    "w": "",
+    "u": [
+      "https://www.kettlesyard.cam.ac.uk/corporate-support/",
+      "https://www.alva.org.uk/details.cfm?p=423"
+    ],
+    "la": 52.211,
+    "lo": 0.116
+  },
+  {
+    "n": "Pallant House Gallery",
+    "c": "Chichester, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£3.0M. Arts Council, district council; Dreweatts auctioneers.",
+    "w": "",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-1102435",
+      "https://pallant.org.uk/support-us/corporate-support/"
+    ],
+    "la": 50.836,
+    "lo": -0.777
+  },
+  {
+    "n": "Towner Eastbourne",
+    "c": "Eastbourne, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£3.6M. Arts Council and borough.",
+    "w": "No sponsors published.",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-1156762"
+    ],
+    "la": 50.762,
+    "lo": 0.281
+  },
+  {
+    "n": "Dundee Contemporary Arts",
+    "c": "Dundee, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£2.8M. Creative Scotland and city.",
+    "w": "The Baillie Gifford rows hit Edinburgh venues, not DCA.",
+    "u": [
+      "https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC026631"
+    ],
+    "la": 56.457,
+    "lo": -2.974
+  },
+  {
+    "n": "Sir John Soane's Museum",
+    "c": "London, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£4.2M, 158k visitors. Government grant, trusts, brand licensing.",
+    "w": "",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-313609",
+      "https://www.soane.org/about/inspired-soane-brand-partnerships"
+    ],
+    "la": 51.517,
+    "lo": -0.117
+  },
+  {
+    "n": "Mostyn",
+    "c": "Llandudno, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£0.7M. Arts Council Wales, a paint firm, a local estate.",
+    "w": "",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-507842",
+      "https://www.mostyn.org/support-us/"
+    ],
+    "la": 53.323,
+    "lo": -3.826
+  },
+  {
+    "n": "Chapter",
+    "c": "Cardiff, UK",
+    "t": "A",
+    "s": "S",
+    "f": "£3.6M. Arts Council Wales, lottery.",
+    "w": "",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-500813"
+    ],
+    "la": 51.487,
+    "lo": -3.203
+  },
+  {
+    "n": "The MAC",
+    "c": "Belfast, UK",
+    "t": "A",
+    "s": "S",
+    "f": "239k visitors. Arts Council NI, a taxi firm, a law firm.",
+    "w": "",
+    "u": [
+      "https://themaclive.com/support-us/supporters"
+    ],
+    "la": 54.601,
+    "lo": -5.928
+  },
+  {
+    "n": "Temple Bar Gallery + Studios",
+    "c": "Dublin, Ireland",
+    "t": "A",
+    "s": "S",
+    "f": "Arts Council, a law firm, Dublin Port.",
+    "w": "",
+    "u": [
+      "https://www.templebargallery.com/about-us/our-partners"
+    ],
+    "la": 53.345,
+    "lo": -6.264
+  },
+  {
+    "n": "Crawford Art Gallery",
+    "c": "Cork, Ireland",
+    "t": "A",
+    "s": "S",
+    "f": "State-funded, no sponsors.",
+    "w": "",
+    "u": [
+      "https://crawfordartgallery.ie/"
+    ],
+    "la": 51.899,
+    "lo": -8.472
+  },
+  {
+    "n": "The Model",
+    "c": "Sligo, Ireland",
+    "t": "A",
+    "s": "S",
+    "f": "Arts Council and county council, no sponsors.",
+    "w": "",
+    "u": [
+      "https://www.themodel.ie/"
+    ],
+    "la": 54.272,
+    "lo": -8.472
+  },
+  {
+    "n": "VISUAL",
+    "c": "Carlow, Ireland",
+    "t": "A",
+    "s": "S",
+    "f": "Arts Council and county council, no sponsors.",
+    "w": "",
+    "u": [
+      "https://www.visualcarlow.ie/"
+    ],
+    "la": 52.835,
+    "lo": -6.933
+  },
+  {
+    "n": "Lismore Castle Arts",
+    "c": "Lismore, Ireland",
+    "t": "A",
+    "s": "S",
+    "f": "Private Cavendish initiative with Arts Council support.",
+    "w": "",
+    "u": [
+      "https://www.lismorecastlearts.ie/"
+    ],
+    "la": 52.137,
+    "lo": -7.933
+  },
+  {
+    "n": "Van Abbemuseum",
+    "c": "Eindhoven, Netherlands",
+    "t": "A",
+    "s": "S",
+    "f": "City, lottery, Mondriaan and Ammodo funds.",
+    "w": "",
+    "u": [
+      "https://vanabbemuseum.nl/en/about-the-museum/support-and-partners",
+      "https://jaarverslag.vanabbe.nl/jaarverslag-in-cijfers/"
+    ],
+    "la": 51.434,
+    "lo": 5.481
+  },
+  {
+    "n": "Kunstmuseum Den Haag",
+    "c": "The Hague, Netherlands",
+    "t": "A",
+    "s": "S",
+    "f": "362k visitors. City, lottery, a regional bank for education.",
+    "w": "",
+    "u": [
+      "https://www.kunstmuseum.nl/nl/museum/subsidienten"
+    ],
+    "la": 52.089,
+    "lo": 4.281
+  },
+  {
+    "n": "Kröller-Müller Museum",
+    "c": "Otterlo, Netherlands",
+    "t": "A",
+    "s": "S",
+    "f": "280k visitors. State museum.",
+    "w": "",
+    "u": [
+      "https://krollermuller.nl/kroller-muller-museum-ontvangt-280-000-bezoekers-in-2024"
+    ],
+    "la": 52.096,
+    "lo": 5.817
+  },
+  {
+    "n": "De Pont",
+    "c": "Tilburg, Netherlands",
+    "t": "A",
+    "s": "S",
+    "f": "75k visitors. Founder's estate, tickets.",
+    "w": "",
+    "u": [
+      "https://www.omroeptilburg.nl/regio/tilburg/tilburgse-musea-halen-bezoekersrecords-maar-financieel-gaat-het-minder-goed/"
+    ],
+    "la": 51.563,
+    "lo": 5.084
+  },
+  {
+    "n": "Bonnefanten",
+    "c": "Maastricht, Netherlands",
+    "t": "A",
+    "s": "S",
+    "f": "177k visitors. Province, Mondriaan Fund, lottery.",
+    "w": "",
+    "u": [
+      "https://www.bonnefanten.nl/nl/organisatie/nieuws-en-pers/persbericht-visitatierapport"
+    ],
+    "la": 50.843,
+    "lo": 5.7
+  },
+  {
+    "n": "Museum Ludwig",
+    "c": "Cologne, Germany",
+    "t": "A",
+    "s": "S",
+    "f": "City and the Ludwig chocolate foundation.",
+    "w": "",
+    "u": [
+      "https://www.museum-ludwig.de/en/home/museum/the-museum/partners-and-supporters"
+    ],
+    "la": 50.941,
+    "lo": 6.96
+  },
+  {
+    "n": "Lenbachhaus",
+    "c": "Munich, Germany",
+    "t": "A",
+    "s": "S",
+    "f": "371k visitors. City-owned.",
+    "w": "",
+    "u": [
+      "https://www.lenbachhaus.de/en/"
+    ],
+    "la": 48.147,
+    "lo": 11.564
+  },
+  {
+    "n": "Kunsthalle Mannheim",
+    "c": "Mannheim, Germany",
+    "t": "A",
+    "s": "S",
+    "f": "City and the Hector foundation, an SAP co-founder.",
+    "w": "",
+    "u": [
+      "https://www.mannheim.de/de/nachrichten/50-millionen-euro-fuer-die-kunsthalle",
+      "https://www.kuma.art/de/kunsthalle-mannheim/stifterkreis"
+    ],
+    "la": 49.483,
+    "lo": 8.475
+  },
+  {
+    "n": "KW Institute for Contemporary Art",
+    "c": "Berlin, Germany",
+    "t": "A",
+    "s": "S",
+    "f": "Berlin Senate, Schering Stiftung, Stoschek collection.",
+    "w": "",
+    "u": [
+      "https://www.kw-berlin.de/en/support/donations"
+    ],
+    "la": 52.527,
+    "lo": 13.397
+  },
+  {
+    "n": "Migros Museum",
+    "c": "Zürich, Switzerland",
+    "t": "A",
+    "s": "S",
+    "f": "Funded entirely by the Migros one-percent culture levy. Free entry, no public money.",
+    "w": "",
+    "u": [
+      "https://migrosmuseum.ch/storage/product-pdfs/Facts_and_Figures/mm_factsandfigures_D.pdf"
+    ],
+    "la": 47.389,
+    "lo": 8.518
+  },
+  {
+    "n": "Kunsthaus Bregenz",
+    "c": "Bregenz, Austria",
+    "t": "A",
+    "s": "S",
+    "f": "€3.3M, 60k visitors. State of Vorarlberg, state hydro utility, Zumtobel, Hugo Boss.",
+    "w": "",
+    "u": [
+      "https://www.kunsthaus-bregenz.at/en/sponsors-partners/partners"
+    ],
+    "la": 47.504,
+    "lo": 9.746
+  },
+  {
+    "n": "Kunsthalle Wien",
+    "c": "Vienna, Austria",
+    "t": "A",
+    "s": "S",
+    "f": "City; Dorotheum, a brewery, a mineral-water firm.",
+    "w": "",
+    "u": [
+      "https://kunsthallewien.at/en/about/supporters"
+    ],
+    "la": 48.203,
+    "lo": 16.361
+  },
+  {
+    "n": "Secession",
+    "c": "Vienna, Austria",
+    "t": "A",
+    "s": "S",
+    "f": "Federal and city money, Erste Bank, Dorotheum.",
+    "w": "",
+    "u": [
+      "https://secession.at/partner_en"
+    ],
+    "la": 48.2,
+    "lo": 16.366
+  },
+  {
+    "n": "mumok",
+    "c": "Vienna, Austria",
+    "t": "A",
+    "s": "S",
+    "f": "Federal subsidy; Dorotheum, Lavazza, an insurer.",
+    "w": "",
+    "u": [
+      "https://www.mumok.at/en/sponsors-partners"
+    ],
+    "la": 48.204,
+    "lo": 16.358
+  },
+  {
+    "n": "WIELS",
+    "c": "Brussels, Belgium",
+    "t": "A",
+    "s": "S",
+    "f": "Three governments, Duvel brewery, Phillips.",
+    "w": "",
+    "u": [
+      "https://wiels.org/en/become-partner/wiels-partners"
+    ],
+    "la": 50.826,
+    "lo": 4.335
+  },
+  {
+    "n": "S.M.A.K.",
+    "c": "Ghent, Belgium",
+    "t": "A",
+    "s": "S",
+    "f": "City and Flemish community; a dredging firm, a parking operator.",
+    "w": "",
+    "u": [
+      "https://smak.be/en/support-smak/met-je-bedrijf"
+    ],
+    "la": 51.037,
+    "lo": 3.724
+  },
+  {
+    "n": "Le Consortium",
+    "c": "Dijon, France",
+    "t": "A",
+    "s": "S",
+    "f": "€1.65M. City, region, state.",
+    "w": "",
+    "u": [
+      "https://www.leconsortium.fr/en"
+    ],
+    "la": 47.315,
+    "lo": 5.045
+  },
+  {
+    "n": "Musée de la Chasse et de la Nature",
+    "c": "Paris, France",
+    "t": "A",
+    "s": "S",
+    "f": "155k visitors. The Sommer flooring foundation.",
+    "w": "",
+    "u": [
+      "https://fondationfrancoissommer.org/le-musee/"
+    ],
+    "la": 48.861,
+    "lo": 2.361
+  },
+  {
+    "n": "Castello di Rivoli",
+    "c": "Turin, Italy",
+    "t": "A",
+    "s": "S",
+    "f": "€4.8M. Region and two bank foundations.",
+    "w": "",
+    "u": [
+      "https://www.castellodirivoli.org/wp-content/uploads/2024/05/BILANCIO-CONSUNTIVO-E-RELAZIONE-ATTIVITA-2023.pdf"
+    ],
+    "la": 45.071,
+    "lo": 7.516
+  },
+  {
+    "n": "Amos Rex",
+    "c": "Helsinki, Finland",
+    "t": "A",
+    "s": "S",
+    "f": "Amos Anderson media foundation; a newspaper, a speaker maker.",
+    "w": "",
+    "u": [
+      "https://amosrex.fi/en/amos-rex/partners/"
+    ],
+    "la": 60.17,
+    "lo": 24.937
+  },
+  {
+    "n": "Magasin III",
+    "c": "Stockholm, Sweden",
+    "t": "A",
+    "s": "S",
+    "f": "Weil family foundation.",
+    "w": "",
+    "u": [
+      "https://www.magasin3.com/en/about/"
+    ],
+    "la": 59.31,
+    "lo": 18.1
+  },
+  {
+    "n": "Pulitzer Arts Foundation",
+    "c": "St. Louis, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$6.2M, free. Publishing fortune, no sponsors.",
+    "w": "",
+    "u": [
+      "https://projects.propublica.org/nonprofits/organizations/431752949"
+    ],
+    "la": 38.64,
+    "lo": -90.232
+  },
+  {
+    "n": "Renaissance Society",
+    "c": "Chicago, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$1.6M. Members and foundations.",
+    "w": "",
+    "u": [
+      "https://projects.propublica.org/nonprofits/organizations/366109822"
+    ],
+    "la": 41.789,
+    "lo": -87.598
+  },
+  {
+    "n": "Bemis Center",
+    "c": "Omaha, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$2.4M. Artist-founded, Mellon lead support.",
+    "w": "",
+    "u": [
+      "https://www.bemiscenter.org/about",
+      "https://projects.propublica.org/nonprofits/organizations/470653927"
+    ],
+    "la": 41.252,
+    "lo": -95.928
+  },
+  {
+    "n": "Chinati Foundation",
+    "c": "Marfa, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$3.7M. Contributions, no sponsors named.",
+    "w": "",
+    "u": [
+      "https://projects.propublica.org/nonprofits/organizations/742340423"
+    ],
+    "la": 30.302,
+    "lo": -104.028
+  },
+  {
+    "n": "Judd Foundation",
+    "c": "Marfa, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$7.3M. Estate and art sales.",
+    "w": "",
+    "u": [
+      "https://projects.propublica.org/nonprofits/organizations/742798673"
+    ],
+    "la": 30.312,
+    "lo": -104.019
+  },
+  {
+    "n": "Ballroom Marfa",
+    "c": "Marfa, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$1.1M. Individuals and foundations.",
+    "w": "",
+    "u": [
+      "https://projects.propublica.org/nonprofits/organizations/200126402"
+    ],
+    "la": 30.309,
+    "lo": -104.03
+  },
+  {
+    "n": "Nasher Sculpture Center",
+    "c": "Dallas, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$14M. Nasher real-estate foundation.",
+    "w": "",
+    "u": [
+      "https://projects.propublica.org/nonprofits/organizations/20601628"
+    ],
+    "la": 32.788,
+    "lo": -96.801
+  },
+  {
+    "n": "Contemporary Arts Museum Houston",
+    "c": "Houston, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$6.1M, free. Brown Foundation, H-E-B grocery.",
+    "w": "",
+    "u": [
+      "https://camh.org/about/",
+      "https://projects.propublica.org/nonprofits/organizations/741093771"
+    ],
+    "la": 29.727,
+    "lo": -95.39
+  },
+  {
+    "n": "ICA Miami",
+    "c": "Miami, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$12.4M, free. Braman family, Knight Foundation, City National, Cartier.",
+    "w": "",
+    "u": [
+      "https://icamiami.org/about/",
+      "https://projects.propublica.org/nonprofits/organizations/471251523"
+    ],
+    "la": 25.813,
+    "lo": -80.193
+  },
+  {
+    "n": "SITE Santa Fe",
+    "c": "Santa Fe, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$4.5M, 60k visitors.",
+    "w": "",
+    "u": [
+      "https://projects.propublica.org/nonprofits/organizations/850413922"
+    ],
+    "la": 35.678,
+    "lo": -105.955
+  },
+  {
+    "n": "Henry Art Gallery",
+    "c": "Seattle, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$4.8M. City, county, state; Phillips, a brewery.",
+    "w": "",
+    "u": [
+      "https://henryart.org/support/funders-sponsors",
+      "https://projects.propublica.org/nonprofits/organizations/237052537"
+    ],
+    "la": 47.656,
+    "lo": -122.312
+  },
+  {
+    "n": "Wattis Institute",
+    "c": "San Francisco, USA",
+    "t": "A",
+    "s": "S",
+    "f": "Wattis foundation, city arts grants.",
+    "w": "",
+    "u": [
+      "https://www.wattis.org/donate"
+    ],
+    "la": 37.767,
+    "lo": -122.418
+  },
+  {
+    "n": "Cranbrook Art Museum",
+    "c": "Bloomfield Hills, USA",
+    "t": "A",
+    "s": "S",
+    "f": "Booth newspaper endowment.",
+    "w": "",
+    "u": [
+      "https://projects.propublica.org/nonprofits/organizations/382015048"
+    ],
+    "la": 42.573,
+    "lo": -83.246
+  },
+  {
+    "n": "Magazzino Italian Art",
+    "c": "Cold Spring, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$4.5M. Founder-funded.",
+    "w": "",
+    "u": [
+      "https://www.magazzino.art/about"
+    ],
+    "la": 41.419,
+    "lo": -73.943
+  },
+  {
+    "n": "Artists Space",
+    "c": "New York, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$2.3M. State arts council and commercial galleries.",
+    "w": "",
+    "u": [
+      "https://artistsspace.org/support",
+      "https://projects.propublica.org/nonprofits/organizations/132749632"
+    ],
+    "la": 40.717,
+    "lo": -74.004
+  },
+  {
+    "n": "The Kitchen",
+    "c": "New York, USA",
+    "t": "A",
+    "s": "S",
+    "f": "$2.9M. Foundations.",
+    "w": "",
+    "u": [
+      "https://thekitchen.org/support/",
+      "https://projects.propublica.org/nonprofits/organizations/132887872"
+    ],
+    "la": 40.746,
+    "lo": -74.006
+  },
+  {
+    "n": "PHI Foundation",
+    "c": "Montréal, Canada",
+    "t": "A",
+    "s": "S",
+    "f": "Free. Greenberg family, Minto real estate.",
+    "w": "",
+    "u": [
+      "https://en.wikipedia.org/wiki/Phoebe_Greenberg"
+    ],
+    "la": 45.501,
+    "lo": -73.554
+  },
+  {
+    "n": "Audain Art Museum",
+    "c": "Whistler, Canada",
+    "t": "A",
+    "s": "S",
+    "f": "Audain foundation, Polygon Homes.",
+    "w": "",
+    "u": [
+      "https://audainartmuseum.com/support/",
+      "https://www.cbc.ca/news/canada/british-columbia/whistlers-audain-art-museum-opens-to-the-public-1.3475154"
+    ],
+    "la": 50.116,
+    "lo": -122.957
+  },
+  {
+    "n": "Art Gallery of Alberta",
+    "c": "Edmonton, Canada",
+    "t": "A",
+    "s": "S",
+    "f": "C$6M, 46% government.",
+    "w": "",
+    "u": [
+      "https://www.charityintelligence.ca/charity-details/511-art-gallery-of-alberta"
+    ],
+    "la": 53.544,
+    "lo": -113.489
+  },
+  {
+    "n": "Contemporary Calgary",
+    "c": "Calgary, Canada",
+    "t": "A",
+    "s": "S",
+    "f": "City and federal capital; individual donors only.",
+    "w": "",
+    "u": [
+      "https://www.contemporarycalgary.com/leadership-circle"
+    ],
+    "la": 51.05,
+    "lo": -114.088
+  },
+  {
+    "n": "Plug In ICA",
+    "c": "Winnipeg, Canada",
+    "t": "A",
+    "s": "S",
+    "f": "Three arts councils, a benefits firm.",
+    "w": "",
+    "u": [
+      "https://plugin.org/sponsors/"
+    ],
+    "la": 49.889,
+    "lo": -97.146
+  },
+  {
+    "n": "Heide Museum of Modern Art",
+    "c": "Melbourne, Australia",
+    "t": "A",
+    "s": "S",
+    "f": "State, federal and council money; a paint brand, a law firm.",
+    "w": "",
+    "u": [
+      "https://www.heide.com.au/support/partners"
+    ],
+    "la": -37.76,
+    "lo": 145.084
+  },
+  {
+    "n": "ACCA",
+    "c": "Melbourne, Australia",
+    "t": "A",
+    "s": "S",
+    "f": "About half public; Dulux, architects, a brewery.",
+    "w": "",
+    "u": [
+      "https://acca.melbourne/support/current-partners/"
+    ],
+    "la": -37.826,
+    "lo": 144.965
+  },
+  {
+    "n": "TarraWarra Museum of Art",
+    "c": "Yarra Valley, Australia",
+    "t": "A",
+    "s": "S",
+    "f": "Besen retail foundation, a gin distillery.",
+    "w": "",
+    "u": [
+      "https://www.twma.com.au/support/"
+    ],
+    "la": -37.68,
+    "lo": 145.43
+  },
+  {
+    "n": "Institute of Modern Art",
+    "c": "Brisbane, Australia",
+    "t": "A",
+    "s": "S",
+    "f": "Arts Queensland, a hotel.",
+    "w": "",
+    "u": [
+      "https://www.ima.org.au/get-involved/"
+    ],
+    "la": -27.457,
+    "lo": 153.035
+  },
+  {
+    "n": "Christchurch Art Gallery",
+    "c": "Christchurch, New Zealand",
+    "t": "A",
+    "s": "S",
+    "f": "City council; a wealth manager, a law firm.",
+    "w": "",
+    "u": [
+      "https://christchurchartgallery.org.nz/support/"
+    ],
+    "la": -43.531,
+    "lo": 172.632
+  },
+  {
+    "n": "Benesse Art Site Naoshima",
+    "c": "Naoshima, Japan",
+    "t": "A",
+    "s": "S",
+    "f": "Fukutake education-publishing foundation.",
+    "w": "",
+    "u": [
+      "https://www.mecenat.or.jp/en/activities/benesse-corporation-naoshima-fukutake-art-museum-foundation"
+    ],
+    "la": 34.457,
+    "lo": 133.986
+  },
+  {
+    "n": "Art Sonje Center",
+    "c": "Seoul, South Korea",
+    "t": "A",
+    "s": "S",
+    "f": "Daewoo Foundation, no sponsors.",
+    "w": "",
+    "u": [
+      "https://artsonje.org/en/asjasjc-enc/foundation/"
+    ],
+    "la": 37.579,
+    "lo": 126.98
+  },
+  {
+    "n": "Jameel Arts Centre",
+    "c": "Dubai, UAE",
+    "t": "A",
+    "s": "S",
+    "f": "Jameel family, Toyota distribution. Private, not Gulf-state money.",
+    "w": "",
+    "u": [
+      "https://alj.com/en/news/dubais-contemporary-art-institution-jameel-arts-centre-re-opens-to-the-public/"
+    ],
+    "la": 25.229,
+    "lo": 55.343
+  },
+  {
+    "n": "ILHAM Gallery",
+    "c": "Kuala Lumpur, Malaysia",
+    "t": "A",
+    "s": "S",
+    "f": "Architect family foundation, free.",
+    "w": "",
+    "u": [
+      "https://www.ilhamgallery.com/"
+    ],
+    "la": 3.153,
+    "lo": 101.717
+  },
+  {
+    "n": "MAIIAM",
+    "c": "Chiang Mai, Thailand",
+    "t": "A",
+    "s": "S",
+    "f": "Family collection.",
+    "w": "",
+    "u": [
+      "https://www.maiiam.com/"
+    ],
+    "la": 18.76,
+    "lo": 99.087
+  },
+  {
+    "n": "Rockbund Art Museum",
+    "c": "Shanghai, China",
+    "t": "A",
+    "s": "S",
+    "f": "Hong Kong property company.",
+    "w": "",
+    "u": [
+      "https://www.rockbundartmuseum.org/en/"
+    ],
+    "la": 31.244,
+    "lo": 121.487
+  },
+  {
+    "n": "Norval Foundation",
+    "c": "Cape Town, South Africa",
+    "t": "A",
+    "s": "S",
+    "f": "Property investor; two hotels as exhibition partners.",
+    "w": "",
+    "u": [
+      "https://www.theartnewspaper.com/2018/04/26/norval-foundation-near-cape-town-opens-months-after-launch-of-citys-zeitz-museum"
+    ],
+    "la": -34.037,
+    "lo": 18.418
+  },
+  {
+    "n": "MACAAL",
+    "c": "Marrakech, Morocco",
+    "t": "A",
+    "s": "S",
+    "f": "Lazraq property foundation.",
+    "w": "",
+    "u": [
+      "https://www.euronews.com/culture/2025/02/14/macaals-othman-lazraq-on-creating-a-permanent-home-for-african-contemporary-art-in-marrake"
+    ],
+    "la": 31.687,
+    "lo": -7.965
+  },
+  {
+    "n": "Glenstone",
+    "c": "Potomac, USA",
+    "t": "A",
+    "s": "L",
+    "f": "$65M. Rales family, $1.9B gift. Free, no sponsors.",
+    "w": "Danaher industrial fortune.",
+    "u": [
+      "https://www.theartnewspaper.com/2023/03/02/mitchell-rales-19bn-donation-glenstone-museum",
+      "https://projects.propublica.org/nonprofits/organizations/205938416"
+    ],
+    "la": 39.049,
+    "lo": -77.226
+  },
+  {
+    "n": "The Broad",
+    "c": "Los Angeles, USA",
+    "t": "A",
+    "s": "L",
+    "f": "$30M. $200M founder endowment. Free, no sponsors.",
+    "w": "Homebuilding and insurance fortune.",
+    "u": [
+      "https://www.thebroad.org/about",
+      "https://projects.propublica.org/nonprofits/organizations/273032164"
+    ],
+    "la": 34.054,
+    "lo": -118.25
+  },
+  {
+    "n": "Wellcome Collection",
+    "c": "London, UK",
+    "t": "A",
+    "s": "L",
+    "f": "Wellcome Trust endowment. Free, no sponsors.",
+    "w": "Pharma origin; Trust portfolio not checked.",
+    "u": [
+      "https://wellcome.org/about-us/history-wellcome",
+      "https://en.wikipedia.org/wiki/Wellcome_Collection"
+    ],
+    "la": 51.526,
+    "lo": -0.134
+  },
+  {
+    "n": "Kunsthalle Basel",
+    "c": "Basel, Switzerland",
+    "t": "A",
+    "s": "L",
+    "f": "Members and canton, CHF 950k a year.",
+    "w": "Basler Kunstverein has run it since 1872.",
+    "u": [
+      "https://www.bs.ch/pd/kultur/kulturfoerderung/foerderung-von-kulturinstitutionen",
+      "https://www.kunstverein.ch/sektion-des-monats/kunsthalle-basel"
+    ],
+    "la": 47.553,
+    "lo": 7.59
+  },
+  {
+    "n": "Kistefos",
+    "c": "Jevnaker, Norway",
+    "t": "A",
+    "s": "L",
+    "f": "Sveaas family foundation, local banks.",
+    "w": "",
+    "u": [
+      "https://www.kistefosmuseum.com/om-oss/christen-sveaas-kunststiftelse"
+    ],
+    "la": 60.207,
+    "lo": 10.399
+  },
+  {
+    "n": "Ny Carlsberg Glyptotek",
+    "c": "Copenhagen, Denmark",
+    "t": "A",
+    "s": "L",
+    "f": "Carlsberg foundations, DKK 1.5B.",
+    "w": "Beer.",
+    "u": [
+      "https://www.carlsbergfondet.dk/en/news/the-carlsberg-foundation-donates-a-historic-grant-to-future-proof-the-ny-carlsberg-glyptotek/"
+    ],
+    "la": 55.673,
+    "lo": 12.572
+  },
+  {
+    "n": "Louisiana Museum of Modern Art",
+    "c": "Humlebæk, Denmark",
+    "t": "A",
+    "s": "L",
+    "f": "716k visitors. Danish family foundations plus a 26% state grant.",
+    "w": "Shipping and beer foundations.",
+    "u": [
+      "https://louisiana.dk/en/organization/",
+      "https://louisiana.dk/wp-content/uploads/2025/05/Louisiana-Museum-Aarsrapport-2024.pdf"
+    ],
+    "la": 55.969,
+    "lo": 12.543
+  },
+  {
+    "n": "ARoS",
+    "c": "Aarhus, Denmark",
+    "t": "A",
+    "s": "L",
+    "f": "Salling and Ny Carlsberg foundations, the city.",
+    "w": "",
+    "u": [
+      "https://www.aros.dk/da/om/pressemeddelelser-2023/salling-fondene-har-nu-samlet-bidraget-med-100-millioner-kroner-til-aros-udvidelse/"
+    ],
+    "la": 56.153,
+    "lo": 10.2
+  },
+  {
+    "n": "Fondazione Prada",
+    "c": "Milan, Italy",
+    "t": "A",
+    "s": "L",
+    "f": "Prada only. Runs near break-even.",
+    "w": "",
+    "u": [
+      "https://www.fondazioneprada.org/wp-content/uploads/FP-E-IR%202017-2019.pdf"
+    ],
+    "la": 45.444,
+    "lo": 9.204
+  },
+  {
+    "n": "Pirelli HangarBicocca",
+    "c": "Milan, Italy",
+    "t": "A",
+    "s": "L",
+    "f": "Pirelli only.",
+    "w": "",
+    "u": [
+      "https://pirellihangarbicocca.org/en/pirelli-hangarbicocca/"
+    ],
+    "la": 45.523,
+    "lo": 9.22
+  },
+  {
+    "n": "Fondation Cartier",
+    "c": "Paris, France",
+    "t": "A",
+    "s": "L",
+    "f": "Cartier only. New Palais-Royal building 2025.",
+    "w": "",
+    "u": [
+      "https://parisjetaime.com/eng/article/fondation-cartier-contemporary-art-paris-a1911",
+      "https://www.businessimmo.com/actualites/article/1776853843/sfl-va-tourner-la-page-du-louvre-des-antiquaires-avec-cartier"
+    ],
+    "la": 48.864,
+    "lo": 2.337
+  },
+  {
+    "n": "Whitechapel Gallery",
+    "c": "London, UK",
+    "t": "A",
+    "s": "L",
+    "f": "Phillips and art foundations.",
+    "w": "",
+    "u": [
+      "https://www.whitechapelgallery.org/about/press/2025-art-icon-gala/"
+    ],
+    "la": 51.516,
+    "lo": -0.07
+  },
+  {
+    "n": "Palais de Tokyo",
+    "c": "Paris, France",
+    "t": "A",
+    "s": "L",
+    "f": "Swiss Life Foundation and a responsible-sponsorship circle.",
+    "w": "Only explicit responsible-sponsorship programme found in France.",
+    "u": [
+      "https://www.culture.gouv.fr/actualites/le-palais-de-tokyo-mise-sur-le-mecenat-responsable"
+    ],
+    "la": 48.864,
+    "lo": 2.297
+  },
+  {
+    "n": "Staatliche Museen zu Berlin",
+    "c": "Berlin, Germany",
+    "t": "A",
+    "s": "L",
+    "f": "€275M. Federal 71%, Länder; Sparkassen savings banks.",
+    "w": "",
+    "u": [
+      "https://www.smb.museum/en/whats-new/detail/the-staatliche-museen-zu-berlin-and-the-sparkassen-finanzgruppe-extend-their-partnership-for-two-more-years/",
+      "https://www.preussischer-kulturbesitz.de/en/about-us/current-figures/the-2021-budget.html"
+    ],
+    "la": 52.52,
+    "lo": 13.398
+  },
+  {
+    "n": "Leopold Museum",
+    "c": "Vienna, Austria",
+    "t": "A",
+    "s": "L",
+    "f": "Insurer, postal service, builder, auction house.",
+    "w": "",
+    "u": [
+      "https://www.leopoldmuseum.org/de/engagement/Foerderer-Partner-Sponsoren"
+    ],
+    "la": 48.203,
+    "lo": 16.359
+  },
+  {
+    "n": "Albertina",
+    "c": "Vienna, Austria",
+    "t": "A",
+    "s": "L",
+    "f": "Bank Austria, Verbund hydro, BMW, Do&Co. Caps partners at three.",
+    "w": "",
+    "u": [
+      "https://www.albertina.at/en/engagement/sponsoring-and-partnership/"
+    ],
+    "la": 48.204,
+    "lo": 16.368
+  },
+  {
+    "n": "Uffizi",
+    "c": "Florence, Italy",
+    "t": "A",
+    "s": "L",
+    "f": "5.3M visitors. Keeps its own box office; Ferragamo, a bank foundation.",
+    "w": "",
+    "u": [
+      "https://www.uffizi.it/news/al-via-i-nuovi-uffizi-diffusi-le-gallerie-e-fondazione-cr-firenze-insieme",
+      "https://www.artribune.com/tribnews/2014/05/salvatore-ferragamo-mecenate-di-firenze-la-casa-di-moda-dona-600mila-euro-agli-uffizi-serviranno-a-riallestire-in-un-anno-otto-nuove-sale-sul-quattrocento-fiorentino/"
+    ],
+    "la": 43.768,
+    "lo": 11.255
+  },
+  {
+    "n": "Astrup Fearnley Museet",
+    "c": "Oslo, Norway",
+    "t": "A",
+    "s": "L",
+    "f": "Shipping foundations, a savings-bank foundation.",
+    "w": "",
+    "u": [
+      "https://www.afmuseet.no/vare-sponsorer"
+    ],
+    "la": 59.907,
+    "lo": 10.721
+  },
+  {
+    "n": "Museo Reina Sofía",
+    "c": "Madrid, Spain",
+    "t": "A",
+    "s": "L",
+    "f": "About 85% public; Inditex, la Caixa, Mapfre, Estrella Damm.",
+    "w": "",
+    "u": [
+      "https://www.museoreinasofia.es/colabora/patrocinio-mecenazgo/"
+    ],
+    "la": 40.408,
+    "lo": -3.694
+  },
+  {
+    "n": "National Gallery of Australia",
+    "c": "Canberra, Australia",
+    "t": "A",
+    "s": "L",
+    "f": "A$100M, 62% government; Qantas, Wesfarmers, Mazda.",
+    "w": "",
+    "u": [
+      "https://nga.gov.au/join-support/partnerships/qantas/",
+      "https://nga.gov.au/media/dd/documents/NGA_Annual_Report_23_24.pdf"
+    ],
+    "la": -35.3,
+    "lo": 149.136
+  },
+  {
+    "n": "Zeitz MOCAA",
+    "c": "Cape Town, South Africa",
+    "t": "A",
+    "s": "L",
+    "f": "Founder underwrites; Gucci, Mellon Foundation, BMW.",
+    "w": "",
+    "u": [
+      "https://www.press.bmwgroup.com/south-africa/article/detail/T0445019EN/",
+      "https://www.theartnewspaper.com/2024/04/22/how-koyo-kouoh-is-getting-zeitz-mocaa-museum-back-on-track"
+    ],
+    "la": -33.908,
+    "lo": 18.421
+  },
+  {
+    "n": "Museo Jumex",
+    "c": "Mexico City, Mexico",
+    "t": "A",
+    "s": "L",
+    "f": "Grupo Jumex juice fortune, no public money.",
+    "w": "",
+    "u": [
+      "https://www.fundacionjumex.org/en/visita",
+      "https://sic.cultura.gob.mx/ficha.php?table=museo&table_id=1484"
+    ],
+    "la": 19.44,
+    "lo": -99.203
+  },
+  {
+    "n": "Studio Voltaire",
+    "c": "London, UK",
+    "t": "B",
+    "s": "S",
+    "f": "£2.3M. Arts Council; Christie's, Zwirner, Hauser & Wirth, LOEWE.",
+    "w": "Roster includes Bloomberg Philanthropies.",
+    "u": [
+      "https://studiovoltaire.org/support/supporters-and-funders/",
+      "https://findthatcharity.uk/orgid/GB-CHC-1082221"
+    ],
+    "la": 51.463,
+    "lo": -0.138
+  },
+  {
+    "n": "Nottingham Contemporary",
+    "c": "Nottingham, UK",
+    "t": "B",
+    "s": "S",
+    "f": "£2.1M. Arts Council, universities, trusts.",
+    "w": "Bloomberg Philanthropies as headline sponsor.",
+    "u": [
+      "https://www.nottinghamcontemporary.org/support/",
+      "https://findthatcharity.uk/orgid/GB-CHC-1116670"
+    ],
+    "la": 52.951,
+    "lo": -1.145
+  },
+  {
+    "n": "The Hepworth Wakefield",
+    "c": "Wakefield, UK",
+    "t": "B",
+    "s": "S",
+    "f": "£4.2M. Arts Council, council, trusts; a rail firm, a paper maker.",
+    "w": "Bloomberg Philanthropies and Blavatnik foundation.",
+    "u": [
+      "https://hepworthwakefield.org/our-story/about-us/35729-2/",
+      "https://findthatcharity.uk/orgid/GB-CHC-1138117"
+    ],
+    "la": 53.678,
+    "lo": -1.496
+  },
+  {
+    "n": "Newlyn Art Gallery",
+    "c": "Penzance, UK",
+    "t": "B",
+    "s": "S",
+    "f": "£0.7M, about half public.",
+    "w": "Bloomberg Philanthropies.",
+    "u": [
+      "https://newlynartgallery.co.uk/support-us/",
+      "https://findthatcharity.uk/orgid/GB-CHC-273785"
+    ],
+    "la": 50.104,
+    "lo": -5.548
+  },
+  {
+    "n": "Museum of Jurassic Technology",
+    "c": "Los Angeles, USA",
+    "t": "B",
+    "s": "S",
+    "f": "$0.7M, 25k visitors. NEA, state and city arts, foundations.",
+    "w": "Bloomberg Philanthropies among funders.",
+    "u": [
+      "http://www.mjt.org/donors.html",
+      "https://projects.propublica.org/nonprofits/organizations/954309388"
+    ],
+    "la": 34.026,
+    "lo": -118.396
+  },
+  {
+    "n": "Instituto Tomie Ohtake",
+    "c": "São Paulo, Brazil",
+    "t": "B",
+    "s": "S",
+    "f": "About R$25M, free, 665k visitors. Rouanet tax credit, Nubank.",
+    "w": "Bloomberg and Votorantim (cement, mining) on roster.",
+    "u": [
+      "https://www.institutotomieohtake.org.br/parceiros-e-patrocinadores/",
+      "https://www.cartacapital.com.br/cultura/apos-a-crise-a-celebracao/"
+    ],
+    "la": -23.575,
+    "lo": -46.699
+  },
+  {
+    "n": "Yorkshire Sculpture Park",
+    "c": "Wakefield, UK",
+    "t": "B",
+    "s": "S",
+    "f": "£7.6M. Arts Council, council, Bramall Foundation; MINI dealer.",
+    "w": "HSBC, a fossil-finance target.",
+    "u": [
+      "https://ysp.org.uk/support-us/our-supporters",
+      "https://findthatcharity.uk/orgid/GB-CHC-1067908"
+    ],
+    "la": 53.613,
+    "lo": -1.573
+  },
+  {
+    "n": "Ikon Gallery",
+    "c": "Birmingham, UK",
+    "t": "B",
+    "s": "S",
+    "f": "£1.9M. Arts Council, city; Kier, transport authority.",
+    "w": "Deutsche Bank on roster.",
+    "u": [
+      "https://www.ikon-gallery.org/support/sponsorship",
+      "https://findthatcharity.uk/orgid/GB-CHC-528892"
+    ],
+    "la": 52.476,
+    "lo": -1.91
+  },
+  {
+    "n": "The Whitworth",
+    "c": "Manchester, UK",
+    "t": "B",
+    "s": "S",
+    "f": "279k visits. University, Arts Council; Hyundai, Little Greene.",
+    "w": "Deutsche Bank via Frieze; 2022 censorship row, director ousted.",
+    "u": [
+      "https://www.whitworth.manchester.ac.uk/about/supportus/ourcurrentsponsorsandfunders/"
+    ],
+    "la": 53.46,
+    "lo": -2.229
+  },
+  {
+    "n": "Kunstmuseum Basel",
+    "c": "Basel, Switzerland",
+    "t": "B",
+    "s": "S",
+    "f": "250k visitors. Canton, Hoffmann and Merian foundations.",
+    "w": "UBS direct partner, Novartis.",
+    "u": [
+      "https://kunstmuseumbasel.ch/en/museum/lendersdonorssponsors"
+    ],
+    "la": 47.554,
+    "lo": 7.594
+  },
+  {
+    "n": "Kunstmuseum Bern",
+    "c": "Bern, Switzerland",
+    "t": "B",
+    "s": "S",
+    "f": "114k visitors. Canton, Burgergemeinde.",
+    "w": "UBS main sponsor. Gurlitt provenance debate is separate.",
+    "u": [
+      "https://www.kunstmuseumbern.ch/de/mitwirken/partner"
+    ],
+    "la": 46.951,
+    "lo": 7.443
+  },
+  {
+    "n": "The Power Plant",
+    "c": "Toronto, Canada",
+    "t": "B",
+    "s": "S",
+    "f": "Harbourfront affiliate; three arts councils.",
+    "w": "BMO and RBC banks.",
+    "u": [
+      "https://www.thepowerplant.org/join-and-support"
+    ],
+    "la": 43.638,
+    "lo": -79.381
+  },
+  {
+    "n": "Mercer Union",
+    "c": "Toronto, Canada",
+    "t": "B",
+    "s": "S",
+    "f": "Three arts councils.",
+    "w": "TD Bank.",
+    "u": [
+      "https://www.mercerunion.org/about"
+    ],
+    "la": 43.663,
+    "lo": -79.436
+  },
+  {
+    "n": "MacKenzie Art Gallery",
+    "c": "Regina, Canada",
+    "t": "B",
+    "s": "S",
+    "f": "Province, city, arts councils.",
+    "w": "RBC, TD, Scotiabank.",
+    "u": [
+      "https://mackenzie.art/site-content/uploads/2025/06/03_MAG-Annual-Report_2024-25_FINAL-1.pdf"
+    ],
+    "la": 50.434,
+    "lo": -104.612
+  },
+  {
+    "n": "Art Gallery of Nova Scotia",
+    "c": "Halifax, Canada",
+    "t": "B",
+    "s": "S",
+    "f": "C$5.4M. Provincial crown agency.",
+    "w": "BMO, Scotiabank, TD. New building paused 2022.",
+    "u": [
+      "https://agns.ca/wp-content/uploads/2025/06/AGNS-2024-25-Annual-Report.pdf",
+      "https://www.cbc.ca/news/canada/nova-scotia/new-art-gallery-not-priority-for-premier-tim-houston-1.7233118"
+    ],
+    "la": 44.648,
+    "lo": -63.573
+  },
+  {
+    "n": "Kunsthalle Bremen",
+    "c": "Bremen, Germany",
+    "t": "B",
+    "s": "S",
+    "f": "Run by a 10k-member Kunstverein; state, savings bank, EY.",
+    "w": "Reemtsma tobacco-origin foundation.",
+    "u": [
+      "https://www.kunsthalle-bremen.de/de/der-kunstverein-in-bremen/sponsoren-und-foerderer"
+    ],
+    "la": 53.073,
+    "lo": 8.815
+  },
+  {
+    "n": "Kunsthal Charlottenborg",
+    "c": "Copenhagen, Denmark",
+    "t": "B",
+    "s": "S",
+    "f": "Ministry, Statens Kunstfond, Ny Carlsberg, A.P. Møller.",
+    "w": "Augustinus Fonden holds a Scandinavian Tobacco stake.",
+    "u": [
+      "https://kunsthalcharlottenborg.dk/en/information-2/support/"
+    ],
+    "la": 55.68,
+    "lo": 12.585
+  },
+  {
+    "n": "Schaulager",
+    "c": "Basel, Switzerland",
+    "t": "B",
+    "s": "S",
+    "f": "Laurenz-Stiftung, Maja Oeri.",
+    "w": "Roche pharma money.",
+    "u": [
+      "https://schaulager.org/en/schaulager/laurenz-foundation"
+    ],
+    "la": 47.535,
+    "lo": 7.59
+  },
+  {
+    "n": "Museum Tinguely",
+    "c": "Basel, Switzerland",
+    "t": "B",
+    "s": "S",
+    "f": "Roche, 100% since 1996.",
+    "w": "Wholly pharma-funded.",
+    "u": [
+      "https://www.tinguely.ch/en/information/about-us/roche.html"
+    ],
+    "la": 47.559,
+    "lo": 7.612
+  },
+  {
+    "n": "Luma Arles",
+    "c": "Arles, France",
+    "t": "B",
+    "s": "S",
+    "f": "Maja Hoffmann, over €150M invested.",
+    "w": "Roche heir; gentrification critique, no sponsor protest.",
+    "u": [
+      "https://en.wikipedia.org/wiki/LUMA_Arles"
+    ],
+    "la": 43.674,
+    "lo": 4.634
+  },
+  {
+    "n": "Fondation Vincent van Gogh Arles",
+    "c": "Arles, France",
+    "t": "B",
+    "s": "S",
+    "f": "Maja Hoffmann.",
+    "w": "Roche heir.",
+    "u": [
+      "https://www.fondation-vincentvangogh-arles.org/en/"
+    ],
+    "la": 43.677,
+    "lo": 4.628
+  },
+  {
+    "n": "Remai Modern",
+    "c": "Saskatoon, Canada",
+    "t": "B",
+    "s": "S",
+    "f": "C$13M, 204k visitors. City 51%, Remai foundation.",
+    "w": "SaskEnergy, Cameco uranium, Sask Lotteries. 2019 board upheaval.",
+    "u": [
+      "https://remaimodern.org/wp-content/uploads/2026/06/2025_Annual_Report_Web_Version.pdf",
+      "https://www.ckom.com/2019/02/25/7-members-of-remai-modern-board-ousted-or-leaving/"
+    ],
+    "la": 52.129,
+    "lo": -106.669
+  },
+  {
+    "n": "MAC Montréal",
+    "c": "Montréal, Canada",
+    "t": "B",
+    "s": "S",
+    "f": "Quebec crown corporation; Banque Nationale lead.",
+    "w": "Loto-Québec, Power Corp, AtkinsRéalis.",
+    "u": [
+      "https://macm.org/app/uploads/2025/10/Rapport_Annuel_2024-2025.pdf",
+      "https://macm.org/le-musee/partenaires"
+    ],
+    "la": 45.507,
+    "lo": -73.567
+  },
+  {
+    "n": "Kamloops Art Gallery",
+    "c": "Kamloops, Canada",
+    "t": "B",
+    "s": "S",
+    "f": "City, BC Arts Council, Canada Council.",
+    "w": "BC Lottery Corporation.",
+    "u": [
+      "https://kag.bc.ca/our-supporters"
+    ],
+    "la": 50.675,
+    "lo": -120.336
+  },
+  {
+    "n": "Oakville Galleries",
+    "c": "Oakville, Canada",
+    "t": "B",
+    "s": "S",
+    "f": "Town, Ontario and Canada arts councils.",
+    "w": "TD, Hatch, Woodbine racetrack and casino.",
+    "u": [
+      "https://www.oakvillegalleries.com/funding_partners"
+    ],
+    "la": 43.445,
+    "lo": -79.666
+  },
+  {
+    "n": "Eastside Projects",
+    "c": "Birmingham, UK",
+    "t": "B",
+    "s": "S",
+    "f": "Arts Council, Birmingham City University, trusts.",
+    "w": "Genting Casino credited historically.",
+    "u": [
+      "https://eastsideprojects.org/about/"
+    ],
+    "la": 52.476,
+    "lo": -1.883
+  },
+  {
+    "n": "Amon Carter Museum",
+    "c": "Fort Worth, USA",
+    "t": "B",
+    "s": "S",
+    "f": "$20.8M. Carter foundation, city, state.",
+    "w": "Eagle Energy Systems and BNSF on roster.",
+    "u": [
+      "https://www.cartermuseum.org/support",
+      "https://projects.propublica.org/nonprofits/organizations/751077979"
+    ],
+    "la": 32.749,
+    "lo": -97.368
+  },
+  {
+    "n": "PICA Portland",
+    "c": "Portland, USA",
+    "t": "B",
+    "s": "S",
+    "f": "$2.5M. Oregon and city arts bodies; Nike, Netflix, Google.",
+    "w": "Pacific Power, a fossil-heavy utility.",
+    "u": [
+      "https://www.pica.org/support",
+      "https://projects.propublica.org/nonprofits/organizations/931177971"
+    ],
+    "la": 45.527,
+    "lo": -122.667
+  },
+  {
+    "n": "Ogden Museum",
+    "c": "New Orleans, USA",
+    "t": "B",
+    "s": "S",
+    "f": "$3.5M. Founder gift, Louisiana appropriation.",
+    "w": "Helis Foundation, oil-derived money, funds free Thursdays.",
+    "u": [
+      "https://ogdenmuseum.org/support/",
+      "https://projects.propublica.org/nonprofits/organizations/721479496"
+    ],
+    "la": 29.943,
+    "lo": -90.071
+  },
+  {
+    "n": "MAXXI",
+    "c": "Rome, Italy",
+    "t": "B",
+    "s": "S",
+    "f": "About 500k visitors. Ministry of Culture, Regione Lazio.",
+    "w": "Enel, a utility with gas generation.",
+    "u": [
+      "https://www.maxxi.art/en/sostienici/"
+    ],
+    "la": 41.928,
+    "lo": 12.466
+  },
+  {
+    "n": "Arnolfini",
+    "c": "Bristol, UK",
+    "t": "B",
+    "s": "S",
+    "f": "£1.6M. Arts Council, UWE Bristol.",
+    "w": "No sponsor row; 2023 Palestine film cancellations drew a 1,000-artist boycott.",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-311504",
+      "https://arnolfini.org.uk/"
+    ],
+    "la": 51.449,
+    "lo": -2.598
+  },
+  {
+    "n": "Queens Museum",
+    "c": "New York, USA",
+    "t": "B",
+    "s": "S",
+    "f": "$7.8M. City-owned building, about 70% public historically.",
+    "w": "2017 Israel-event row; 2023 staff complaints. Not sponsor-related.",
+    "u": [
+      "https://en.wikipedia.org/wiki/Queens_Museum"
+    ],
+    "la": 40.746,
+    "lo": -73.847
+  },
+  {
+    "n": "Noguchi Museum",
+    "c": "New York, USA",
+    "t": "B",
+    "s": "S",
+    "f": "$10M. Noguchi estate, city capital.",
+    "w": "2024 keffiyeh-ban firings. Not sponsor-related.",
+    "u": [
+      "https://en.wikipedia.org/wiki/Noguchi_Museum"
+    ],
+    "la": 40.767,
+    "lo": -73.938
+  },
+  {
+    "n": "Frye Art Museum",
+    "c": "Seattle, USA",
+    "t": "B",
+    "s": "S",
+    "f": "$12.2M, free. Frye testamentary trust, meatpacking.",
+    "w": "2020 layoffs dispute. Not sponsor-related.",
+    "u": [
+      "https://fryemuseum.org/support",
+      "https://hyperallergic.com/554727/frye-art-museum-covid-19/"
+    ],
+    "la": 47.607,
+    "lo": -122.325
+  },
+  {
+    "n": "Des Moines Art Center",
+    "c": "Des Moines, USA",
+    "t": "B",
+    "s": "S",
+    "f": "$12.4M. Edmundson trust, Pappajohn.",
+    "w": "2024 Mary Miss lawsuit, settled. Artist rights, not sponsors.",
+    "u": [
+      "https://news.artnet.com/art-world/mary-miss-greenwood-installation-des-moines-settlement-2597948",
+      "https://www.iowapublicradio.org/arts-life/2025-01-14/des-moines-art-center-mary-miss-iowa-lawsuit"
+    ],
+    "la": 41.585,
+    "lo": -93.671
+  },
+  {
+    "n": "Baltic",
+    "c": "Gateshead, UK",
+    "t": "B",
+    "s": "S",
+    "f": "£6.8M. Arts Council, Gateshead; Nissan, Tommee Tippee.",
+    "w": "Refused BAE money for a 2018 exhibition after protest; never its own sponsor.",
+    "u": [
+      "https://baltic.art/how-you-can-support-us/corporate-supporters/",
+      "https://findthatcharity.uk/orgid/GB-CHC-1076251"
+    ],
+    "la": 54.969,
+    "lo": -1.599
+  },
+  {
+    "n": "Venice Biennale",
+    "c": "Venice, Italy",
+    "t": "B",
+    "s": "L",
+    "f": "illycaffè, Swatch, Bulgari, Zegna.",
+    "w": "Bloomberg Philanthropies on roster.",
+    "u": [
+      "https://www.prnewswire.com/news-releases/illycaffe-is-main-sponsor-of-the-60th-international-art-exhibition--la-biennale-di-venezia-302068400.html",
+      "https://www.milanoluxurylife.it/venice-biennale-2026-brands-luxury-patronage/"
+    ],
+    "la": 45.429,
+    "lo": 12.358
+  },
+  {
+    "n": "Te Papa",
+    "c": "Wellington, New Zealand",
+    "t": "B",
+    "s": "L",
+    "f": "NZ$94M, Crown 51%; Westpac, Samsung, Panasonic.",
+    "w": "Bloomberg, Samsung on roster.",
+    "u": [
+      "https://www.tepapa.govt.nz/support-join/corporate-partnerships/current-partners",
+      "https://www.tepapa.govt.nz/assets/76067/1764552046-te-papa-annual-report-2024-25.pdf"
+    ],
+    "la": -41.29,
+    "lo": 174.782
+  },
+  {
+    "n": "Moderna Museet",
+    "c": "Stockholm, Sweden",
+    "t": "B",
+    "s": "L",
+    "f": "SEK 257M, state 70%; PwC, a wine and spirits firm.",
+    "w": "Bank of America, Bloomberg on roster.",
+    "u": [
+      "https://www.modernamuseet.se/en/stockholm/about/support/"
+    ],
+    "la": 59.326,
+    "lo": 18.084
+  },
+  {
+    "n": "Walker Art Center",
+    "c": "Minneapolis, USA",
+    "t": "B",
+    "s": "L",
+    "f": "Principal, US Bank, Best Buy, Cargill Foundation, 3M.",
+    "w": "Bloomberg Philanthropies on roster.",
+    "u": [
+      "https://walkerart.org/support/corporate-support/"
+    ],
+    "la": 44.968,
+    "lo": -93.289
+  },
+  {
+    "n": "Kunsthalle Zürich",
+    "c": "Zürich, Switzerland",
+    "t": "B",
+    "s": "L",
+    "f": "Members, city, canton, Luma Foundation, Swiss Re.",
+    "w": "Bloomberg on roster.",
+    "u": [
+      "https://www.kunsthallezurich.ch/en/institution/"
+    ],
+    "la": 47.389,
+    "lo": 8.517
+  },
+  {
+    "n": "Fondation Beyeler",
+    "c": "Riehen, Switzerland",
+    "t": "B",
+    "s": "L",
+    "f": "About CHF 30M; canton 12.5%; founder's foundation covers deficits.",
+    "w": "UBS since 2004, protested at Art Basel.",
+    "u": [
+      "https://grosserrat.bs.ch/dokumente/100405/000000405724.pdf",
+      "https://www.fondationbeyeler.ch/en/press/seiten-en/press/current-news/in-cooperation-with-ubs-the-fondation-beyeler-is-starting-the-internationally-oriented-program-of-artist-talks"
+    ],
+    "la": 47.589,
+    "lo": 7.651
+  },
+  {
+    "n": "Château de Versailles",
+    "c": "Versailles, France",
+    "t": "B",
+    "s": "L",
+    "f": "AXA, Saint-Gobain, Rolex.",
+    "w": "Dior, whose parent LVMH is under fire over tax rebates.",
+    "u": [
+      "https://fr.wikipedia.org/wiki/M%C3%A9c%C3%A9nat_au_domaine_de_Versailles"
+    ],
+    "la": 48.805,
+    "lo": 2.12
+  },
+  {
+    "n": "Museo del Prado",
+    "c": "Madrid, Spain",
+    "t": "B",
+    "s": "L",
+    "f": "€62M, 3.5M visitors; BBVA, Telefónica, AXA, la Caixa.",
+    "w": "Iberdrola, a utility with gas assets, never campaigned against.",
+    "u": [
+      "https://www.museodelprado.es/en/colabora/patrocinio",
+      "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-579"
+    ],
+    "la": 40.414,
+    "lo": -3.692
+  },
+  {
+    "n": "Stedelijk Museum",
+    "c": "Amsterdam, Netherlands",
+    "t": "B",
+    "s": "L",
+    "f": "€37.5M, city 62%; Teijin, Turing and Ammodo foundations.",
+    "w": "ABN AMRO; sits on a Museumplein that went fossil-free after a campaign aimed at its neighbours.",
+    "u": [
+      "https://www.abnamro.com/en/news/abn-amro-and-stedelijk-museum-amsterdam-extend-partnership-by-two-years",
+      "https://s3-eu-west-1.amazonaws.com/production-static-stedelijk/images/_museum/Jaarverslagen/2024/Summary%202024_DEF.pdf"
+    ],
+    "la": 52.358,
+    "lo": 4.88
+  },
+  {
+    "n": "Crystal Bridges",
+    "c": "Bentonville, USA",
+    "t": "B",
+    "s": "L",
+    "f": "$96M, free. Walton endowments, Walmart.",
+    "w": "Walmart money is a standing point of debate; never protested.",
+    "u": [
+      "https://crystalbridges.org/news-room/crystal-bridges-receives-7-million-walmart-foundation-grant-to-cover-admission-fees-for-all-visitors-and-to-support-the-momentary/",
+      "https://projects.propublica.org/nonprofits/organizations/201359710"
+    ],
+    "la": 36.382,
+    "lo": -94.204
+  },
+  {
+    "n": "Gasworks",
+    "c": "London, UK",
+    "t": "U",
+    "s": "S",
+    "f": "£0.9M. Arts Council, trusts.",
+    "w": "Site unreachable; roster unverified.",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-326411"
+    ],
+    "la": 51.484,
+    "lo": -0.113
+  },
+  {
+    "n": "De La Warr Pavilion",
+    "c": "Bexhill, UK",
+    "t": "U",
+    "s": "S",
+    "f": "£3.9M. Arts Council, district council.",
+    "w": "Funders page is an image.",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-1065586"
+    ],
+    "la": 50.838,
+    "lo": 0.472
+  },
+  {
+    "n": "The Bowes Museum",
+    "c": "Barnard Castle, UK",
+    "t": "U",
+    "s": "S",
+    "f": "£3.9M, raises over half itself.",
+    "w": "Logos only, unnamed.",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-1079639"
+    ],
+    "la": 54.542,
+    "lo": -1.916
+  },
+  {
+    "n": "Charleston",
+    "c": "Lewes, UK",
+    "t": "U",
+    "s": "S",
+    "f": "£2.7M. Arts Council, Sigrid Rausing Trust.",
+    "w": "Corporate roster not published.",
+    "u": [
+      "https://findthatcharity.uk/orgid/GB-CHC-1107313"
+    ],
+    "la": 50.878,
+    "lo": 0.043
+  },
+  {
+    "n": "MIMA",
+    "c": "Middlesbrough, UK",
+    "t": "U",
+    "s": "S",
+    "f": "Teesside University, Arts Council.",
+    "w": "Roster unverified.",
+    "u": [
+      "https://mima.art/"
+    ],
+    "la": 54.575,
+    "lo": -1.234
+  },
+  {
+    "n": "Storm King Art Center",
+    "c": "New Windsor, USA",
+    "t": "U",
+    "s": "S",
+    "f": "$9.8M. Ogden family fasteners fortune.",
+    "w": "Donors page not fetched.",
+    "u": [
+      "https://en.wikipedia.org/wiki/Storm_King_Art_Center"
+    ],
+    "la": 41.425,
+    "lo": -74.06
+  },
+  {
+    "n": "Swiss Institute",
+    "c": "New York, USA",
+    "t": "U",
+    "s": "S",
+    "f": "$5.5M. Pro Helvetia, foundations.",
+    "w": "Corporate names not published.",
+    "u": [
+      "https://www.swissinstitute.net/support/"
+    ],
+    "la": 40.722,
+    "lo": -73.992
+  },
+  {
+    "n": "SculptureCenter",
+    "c": "New York, USA",
+    "t": "U",
+    "s": "S",
+    "f": "$2.0M.",
+    "w": "Support page unavailable.",
+    "u": [
+      "https://en.wikipedia.org/wiki/SculptureCenter"
+    ],
+    "la": 40.747,
+    "lo": -73.943
+  },
+  {
+    "n": "PICA Perth",
+    "c": "Perth, Australia",
+    "t": "U",
+    "s": "S",
+    "f": "WA government, Creative Australia.",
+    "w": "Partner logos unnamed. Woodside and Chevron hit festivals, not PICA.",
+    "u": [
+      "https://pica.org.au/support/partners/"
+    ],
+    "la": -31.951,
+    "lo": 115.858
+  },
+  {
+    "n": "Bundanon",
+    "c": "Shoalhaven, Australia",
+    "t": "U",
+    "s": "S",
+    "f": "Federal statutory trust.",
+    "w": "No sponsors named.",
+    "u": [
+      "https://www.bundanon.com.au/"
+    ],
+    "la": -34.87,
+    "lo": 150.594
+  },
+  {
+    "n": "Auckland Art Gallery",
+    "c": "Auckland, New Zealand",
+    "t": "U",
+    "s": "S",
+    "f": "480k visitors. Council, foundation, Chartwell Trust.",
+    "w": "Corporate roster unverified.",
+    "u": [
+      "https://www.aucklandartgallery.com/connect/support/foundation"
+    ],
+    "la": -36.851,
+    "lo": 174.766
+  },
+  {
+    "n": "Sursock Museum",
+    "c": "Beirut, Lebanon",
+    "t": "U",
+    "s": "S",
+    "f": "Municipal endowment, donors.",
+    "w": "Roster unverified.",
+    "u": [
+      "https://sursock.museum/"
+    ],
+    "la": 33.892,
+    "lo": 35.516
+  },
+  {
+    "n": "Para Site",
+    "c": "Hong Kong",
+    "t": "U",
+    "s": "S",
+    "f": "Arts Development Council, annual auction, patrons.",
+    "w": "Roster unverified.",
+    "u": [
+      "https://www.para-site.art/"
+    ],
+    "la": 22.284,
+    "lo": 114.223
+  },
+  {
+    "n": "Asia Art Archive",
+    "c": "Hong Kong",
+    "t": "U",
+    "s": "S",
+    "f": "Individuals, foundations, auction.",
+    "w": "Page blocked.",
+    "u": [
+      "https://aaa.org.hk/"
+    ],
+    "la": 22.283,
+    "lo": 114.154
+  },
+  {
+    "n": "Museo Tamayo",
+    "c": "Mexico City, Mexico",
+    "t": "U",
+    "s": "S",
+    "f": "Federal INBAL plus Tamayo foundation.",
+    "w": "Current sponsors unverified.",
+    "u": [
+      "https://www.museotamayo.org/"
+    ],
+    "la": 19.426,
+    "lo": -99.183
+  },
+  {
+    "n": "Museo de Arte de Lima",
+    "c": "Lima, Peru",
+    "t": "U",
+    "s": "S",
+    "f": "About $2M. Private association, Telefónica foundation.",
+    "w": "No mining sponsor found; roster partly unverified.",
+    "u": [
+      "https://www.arteporexcelencias.com/es/patrocinios-para-museo-de-arte-de-lima"
+    ],
+    "la": -12.05,
+    "lo": -77.037
+  },
+  {
+    "n": "Pinacoteca de São Paulo",
+    "c": "São Paulo, Brazil",
+    "t": "U",
+    "s": "S",
+    "f": "State museum; Rouanet; InfinitePay.",
+    "w": "2025 sponsor panel unreadable.",
+    "u": [
+      "https://marcasmais.com.br/minforma/noticias/comunicacao/infinitepay-e-a-nova-patrocinadora-da-pinacoteca-de-sao-paulo/"
+    ],
+    "la": -23.534,
+    "lo": -46.634
+  }
+];

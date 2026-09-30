@@ -1,0 +1,933 @@
+[
+  {
+    "name": "London",
+    "country": "UK",
+    "count": 9,
+    "lo": -0.108,
+    "la": 51.507
+  },
+  {
+    "name": "New York",
+    "country": "USA",
+    "count": 6,
+    "lo": -73.955,
+    "la": 40.741
+  },
+  {
+    "name": "Vienna",
+    "country": "Austria",
+    "count": 5,
+    "lo": 16.362,
+    "la": 48.203
+  },
+  {
+    "name": "Basel",
+    "country": "Switzerland",
+    "count": 4,
+    "lo": 7.597,
+    "la": 47.55
+  },
+  {
+    "name": "Berlin",
+    "country": "Germany",
+    "count": 4,
+    "lo": 13.386,
+    "la": 52.518
+  },
+  {
+    "name": "Chicago",
+    "country": "USA",
+    "count": 3,
+    "lo": -87.606,
+    "la": 41.825
+  },
+  {
+    "name": "Edinburgh",
+    "country": "UK",
+    "count": 3,
+    "lo": -3.198,
+    "la": 55.956
+  },
+  {
+    "name": "Los Angeles",
+    "country": "USA",
+    "count": 3,
+    "lo": -118.363,
+    "la": 34.046
+  },
+  {
+    "name": "Marfa",
+    "country": "USA",
+    "count": 3,
+    "lo": -104.026,
+    "la": 30.308
+  },
+  {
+    "name": "Paris",
+    "country": "France",
+    "count": 3,
+    "lo": 2.332,
+    "la": 48.863
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "count": 3,
+    "lo": 18.079,
+    "la": 59.324
+  },
+  {
+    "name": "Toronto",
+    "country": "Canada",
+    "count": 3,
+    "lo": -79.4,
+    "la": 43.647
+  },
+  {
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "count": 2,
+    "lo": 4.88,
+    "la": 52.358
+  },
+  {
+    "name": "Arles",
+    "country": "France",
+    "count": 2,
+    "lo": 4.631,
+    "la": 43.675
+  },
+  {
+    "name": "Auckland",
+    "country": "New Zealand",
+    "count": 2,
+    "lo": 174.766,
+    "la": -36.851
+  },
+  {
+    "name": "Beirut",
+    "country": "Lebanon",
+    "count": 2,
+    "lo": 35.523,
+    "la": 33.892
+  },
+  {
+    "name": "Birmingham",
+    "country": "UK",
+    "count": 2,
+    "lo": -1.897,
+    "la": 52.476
+  },
+  {
+    "name": "Bristol",
+    "country": "UK",
+    "count": 2,
+    "lo": -2.606,
+    "la": 51.448
+  },
+  {
+    "name": "Brussels",
+    "country": "Belgium",
+    "count": 2,
+    "lo": 4.329,
+    "la": 50.826
+  },
+  {
+    "name": "Cape Town",
+    "country": "South Africa",
+    "count": 2,
+    "lo": 18.419,
+    "la": -33.972
+  },
+  {
+    "name": "Copenhagen",
+    "country": "Denmark",
+    "count": 2,
+    "lo": 12.579,
+    "la": 55.677
+  },
+  {
+    "name": "Gateshead",
+    "country": "UK",
+    "count": 2,
+    "lo": -1.599,
+    "la": 54.969
+  },
+  {
+    "name": "Helsinki",
+    "country": "Finland",
+    "count": 2,
+    "lo": 24.937,
+    "la": 60.171
+  },
+  {
+    "name": "Hong Kong",
+    "country": "",
+    "count": 2,
+    "lo": 114.189,
+    "la": 22.284
+  },
+  {
+    "name": "Madrid",
+    "country": "Spain",
+    "count": 2,
+    "lo": -3.693,
+    "la": 40.411
+  },
+  {
+    "name": "Melbourne",
+    "country": "Australia",
+    "count": 2,
+    "lo": 145.024,
+    "la": -37.793
+  },
+  {
+    "name": "Mexico City",
+    "country": "Mexico",
+    "count": 2,
+    "lo": -99.193,
+    "la": 19.433
+  },
+  {
+    "name": "Milan",
+    "country": "Italy",
+    "count": 2,
+    "lo": 9.212,
+    "la": 45.484
+  },
+  {
+    "name": "Montréal",
+    "country": "Canada",
+    "count": 2,
+    "lo": -73.56,
+    "la": 45.504
+  },
+  {
+    "name": "Munich",
+    "country": "Germany",
+    "count": 2,
+    "lo": 11.572,
+    "la": 48.145
+  },
+  {
+    "name": "São Paulo",
+    "country": "Brazil",
+    "count": 2,
+    "lo": -46.666,
+    "la": -23.554
+  },
+  {
+    "name": "Seattle",
+    "country": "USA",
+    "count": 2,
+    "lo": -122.319,
+    "la": 47.632
+  },
+  {
+    "name": "Seoul",
+    "country": "South Korea",
+    "count": 2,
+    "lo": 126.98,
+    "la": 37.579
+  },
+  {
+    "name": "Turin",
+    "country": "Italy",
+    "count": 2,
+    "lo": 7.582,
+    "la": 45.063
+  },
+  {
+    "name": "Wakefield",
+    "country": "UK",
+    "count": 2,
+    "lo": -1.534,
+    "la": 53.645
+  },
+  {
+    "name": "Zürich",
+    "country": "Switzerland",
+    "count": 2,
+    "lo": 8.518,
+    "la": 47.389
+  },
+  {
+    "name": "Aarhus",
+    "country": "Denmark",
+    "count": 1,
+    "lo": 10.2,
+    "la": 56.153
+  },
+  {
+    "name": "Barcelona",
+    "country": "Spain",
+    "count": 1,
+    "lo": 2.167,
+    "la": 41.383
+  },
+  {
+    "name": "Barnard Castle",
+    "country": "UK",
+    "count": 1,
+    "lo": -1.916,
+    "la": 54.542
+  },
+  {
+    "name": "Beacon",
+    "country": "USA",
+    "count": 1,
+    "lo": -73.982,
+    "la": 41.501
+  },
+  {
+    "name": "Belfast",
+    "country": "UK",
+    "count": 1,
+    "lo": -5.928,
+    "la": 54.601
+  },
+  {
+    "name": "Bentonville",
+    "country": "USA",
+    "count": 1,
+    "lo": -94.204,
+    "la": 36.382
+  },
+  {
+    "name": "Bern",
+    "country": "Switzerland",
+    "count": 1,
+    "lo": 7.443,
+    "la": 46.951
+  },
+  {
+    "name": "Bexhill",
+    "country": "UK",
+    "count": 1,
+    "lo": 0.472,
+    "la": 50.838
+  },
+  {
+    "name": "Bloomfield Hills",
+    "country": "USA",
+    "count": 1,
+    "lo": -83.246,
+    "la": 42.573
+  },
+  {
+    "name": "Bordeaux",
+    "country": "France",
+    "count": 1,
+    "lo": -0.572,
+    "la": 44.848
+  },
+  {
+    "name": "Bregenz",
+    "country": "Austria",
+    "count": 1,
+    "lo": 9.746,
+    "la": 47.504
+  },
+  {
+    "name": "Bremen",
+    "country": "Germany",
+    "count": 1,
+    "lo": 8.815,
+    "la": 53.073
+  },
+  {
+    "name": "Brisbane",
+    "country": "Australia",
+    "count": 1,
+    "lo": 153.035,
+    "la": -27.457
+  },
+  {
+    "name": "Buenos Aires",
+    "country": "Argentina",
+    "count": 1,
+    "lo": -58.403,
+    "la": -34.577
+  },
+  {
+    "name": "Calgary",
+    "country": "Canada",
+    "count": 1,
+    "lo": -114.088,
+    "la": 51.05
+  },
+  {
+    "name": "Cambridge",
+    "country": "UK",
+    "count": 1,
+    "lo": 0.116,
+    "la": 52.211
+  },
+  {
+    "name": "Canberra",
+    "country": "Australia",
+    "count": 1,
+    "lo": 149.136,
+    "la": -35.3
+  },
+  {
+    "name": "Cardiff",
+    "country": "UK",
+    "count": 1,
+    "lo": -3.203,
+    "la": 51.487
+  },
+  {
+    "name": "Carlow",
+    "country": "Ireland",
+    "count": 1,
+    "lo": -6.933,
+    "la": 52.835
+  },
+  {
+    "name": "Chiang Mai",
+    "country": "Thailand",
+    "count": 1,
+    "lo": 99.087,
+    "la": 18.76
+  },
+  {
+    "name": "Chichester",
+    "country": "UK",
+    "count": 1,
+    "lo": -0.777,
+    "la": 50.836
+  },
+  {
+    "name": "Christchurch",
+    "country": "New Zealand",
+    "count": 1,
+    "lo": 172.632,
+    "la": -43.531
+  },
+  {
+    "name": "Cold Spring",
+    "country": "USA",
+    "count": 1,
+    "lo": -73.943,
+    "la": 41.419
+  },
+  {
+    "name": "Cologne",
+    "country": "Germany",
+    "count": 1,
+    "lo": 6.96,
+    "la": 50.941
+  },
+  {
+    "name": "Cork",
+    "country": "Ireland",
+    "count": 1,
+    "lo": -8.472,
+    "la": 51.899
+  },
+  {
+    "name": "Dakar",
+    "country": "Senegal",
+    "count": 1,
+    "lo": -17.472,
+    "la": 14.733
+  },
+  {
+    "name": "Dallas",
+    "country": "USA",
+    "count": 1,
+    "lo": -96.801,
+    "la": 32.788
+  },
+  {
+    "name": "Des Moines",
+    "country": "USA",
+    "count": 1,
+    "lo": -93.671,
+    "la": 41.585
+  },
+  {
+    "name": "Dijon",
+    "country": "France",
+    "count": 1,
+    "lo": 5.045,
+    "la": 47.315
+  },
+  {
+    "name": "Dubai",
+    "country": "UAE",
+    "count": 1,
+    "lo": 55.343,
+    "la": 25.229
+  },
+  {
+    "name": "Dublin",
+    "country": "Ireland",
+    "count": 1,
+    "lo": -6.264,
+    "la": 53.345
+  },
+  {
+    "name": "Dundee",
+    "country": "UK",
+    "count": 1,
+    "lo": -2.974,
+    "la": 56.457
+  },
+  {
+    "name": "Eastbourne",
+    "country": "UK",
+    "count": 1,
+    "lo": 0.281,
+    "la": 50.762
+  },
+  {
+    "name": "Edmonton",
+    "country": "Canada",
+    "count": 1,
+    "lo": -113.489,
+    "la": 53.544
+  },
+  {
+    "name": "Eindhoven",
+    "country": "Netherlands",
+    "count": 1,
+    "lo": 5.481,
+    "la": 51.434
+  },
+  {
+    "name": "Florence",
+    "country": "Italy",
+    "count": 1,
+    "lo": 11.255,
+    "la": 43.768
+  },
+  {
+    "name": "Fort Worth",
+    "country": "USA",
+    "count": 1,
+    "lo": -97.368,
+    "la": 32.749
+  },
+  {
+    "name": "Ghent",
+    "country": "Belgium",
+    "count": 1,
+    "lo": 3.724,
+    "la": 51.037
+  },
+  {
+    "name": "Halifax",
+    "country": "Canada",
+    "count": 1,
+    "lo": -63.573,
+    "la": 44.648
+  },
+  {
+    "name": "Houston",
+    "country": "USA",
+    "count": 1,
+    "lo": -95.39,
+    "la": 29.727
+  },
+  {
+    "name": "Høvikodden",
+    "country": "Norway",
+    "count": 1,
+    "lo": 10.553,
+    "la": 59.889
+  },
+  {
+    "name": "Humlebæk",
+    "country": "Denmark",
+    "count": 1,
+    "lo": 12.543,
+    "la": 55.969
+  },
+  {
+    "name": "Jevnaker",
+    "country": "Norway",
+    "count": 1,
+    "lo": 10.399,
+    "la": 60.207
+  },
+  {
+    "name": "Kamloops",
+    "country": "Canada",
+    "count": 1,
+    "lo": -120.336,
+    "la": 50.675
+  },
+  {
+    "name": "Kanazawa",
+    "country": "Japan",
+    "count": 1,
+    "lo": 136.657,
+    "la": 36.561
+  },
+  {
+    "name": "Kuala Lumpur",
+    "country": "Malaysia",
+    "count": 1,
+    "lo": 101.717,
+    "la": 3.153
+  },
+  {
+    "name": "Lewes",
+    "country": "UK",
+    "count": 1,
+    "lo": 0.043,
+    "la": 50.878
+  },
+  {
+    "name": "Lima",
+    "country": "Peru",
+    "count": 1,
+    "lo": -77.037,
+    "la": -12.05
+  },
+  {
+    "name": "Lismore",
+    "country": "Ireland",
+    "count": 1,
+    "lo": -7.933,
+    "la": 52.137
+  },
+  {
+    "name": "Llandudno",
+    "country": "UK",
+    "count": 1,
+    "lo": -3.826,
+    "la": 53.323
+  },
+  {
+    "name": "Maastricht",
+    "country": "Netherlands",
+    "count": 1,
+    "lo": 5.7,
+    "la": 50.843
+  },
+  {
+    "name": "Manchester",
+    "country": "UK",
+    "count": 1,
+    "lo": -2.229,
+    "la": 53.46
+  },
+  {
+    "name": "Mannheim",
+    "country": "Germany",
+    "count": 1,
+    "lo": 8.475,
+    "la": 49.483
+  },
+  {
+    "name": "Marrakech",
+    "country": "Morocco",
+    "count": 1,
+    "lo": -7.965,
+    "la": 31.687
+  },
+  {
+    "name": "Miami",
+    "country": "USA",
+    "count": 1,
+    "lo": -80.193,
+    "la": 25.813
+  },
+  {
+    "name": "Middlesbrough",
+    "country": "UK",
+    "count": 1,
+    "lo": -1.234,
+    "la": 54.575
+  },
+  {
+    "name": "Minneapolis",
+    "country": "USA",
+    "count": 1,
+    "lo": -93.289,
+    "la": 44.968
+  },
+  {
+    "name": "Móstoles",
+    "country": "Spain",
+    "count": 1,
+    "lo": -3.864,
+    "la": 40.323
+  },
+  {
+    "name": "Naoshima",
+    "country": "Japan",
+    "count": 1,
+    "lo": 133.986,
+    "la": 34.457
+  },
+  {
+    "name": "New Orleans",
+    "country": "USA",
+    "count": 1,
+    "lo": -90.071,
+    "la": 29.943
+  },
+  {
+    "name": "New Windsor",
+    "country": "USA",
+    "count": 1,
+    "lo": -74.06,
+    "la": 41.425
+  },
+  {
+    "name": "North Adams",
+    "country": "USA",
+    "count": 1,
+    "lo": -73.115,
+    "la": 42.7
+  },
+  {
+    "name": "Nottingham",
+    "country": "UK",
+    "count": 1,
+    "lo": -1.145,
+    "la": 52.951
+  },
+  {
+    "name": "Oakville",
+    "country": "Canada",
+    "count": 1,
+    "lo": -79.666,
+    "la": 43.445
+  },
+  {
+    "name": "Omaha",
+    "country": "USA",
+    "count": 1,
+    "lo": -95.928,
+    "la": 41.252
+  },
+  {
+    "name": "Oslo",
+    "country": "Norway",
+    "count": 1,
+    "lo": 10.721,
+    "la": 59.907
+  },
+  {
+    "name": "Otterlo",
+    "country": "Netherlands",
+    "count": 1,
+    "lo": 5.817,
+    "la": 52.096
+  },
+  {
+    "name": "Oxford",
+    "country": "UK",
+    "count": 1,
+    "lo": -1.258,
+    "la": 51.751
+  },
+  {
+    "name": "Penzance",
+    "country": "UK",
+    "count": 1,
+    "lo": -5.548,
+    "la": 50.104
+  },
+  {
+    "name": "Perth",
+    "country": "Australia",
+    "count": 1,
+    "lo": 115.858,
+    "la": -31.951
+  },
+  {
+    "name": "Portland",
+    "country": "USA",
+    "count": 1,
+    "lo": -122.667,
+    "la": 45.527
+  },
+  {
+    "name": "Porto",
+    "country": "Portugal",
+    "count": 1,
+    "lo": -8.659,
+    "la": 41.159
+  },
+  {
+    "name": "Potomac",
+    "country": "USA",
+    "count": 1,
+    "lo": -77.226,
+    "la": 39.049
+  },
+  {
+    "name": "Regina",
+    "country": "Canada",
+    "count": 1,
+    "lo": -104.612,
+    "la": 50.434
+  },
+  {
+    "name": "Riehen",
+    "country": "Switzerland",
+    "count": 1,
+    "lo": 7.651,
+    "la": 47.589
+  },
+  {
+    "name": "Rivoli",
+    "country": "Italy",
+    "count": 1,
+    "lo": 7.511,
+    "la": 45.07
+  },
+  {
+    "name": "Rome",
+    "country": "Italy",
+    "count": 1,
+    "lo": 12.466,
+    "la": 41.928
+  },
+  {
+    "name": "San Francisco",
+    "country": "USA",
+    "count": 1,
+    "lo": -122.418,
+    "la": 37.767
+  },
+  {
+    "name": "Santa Fe",
+    "country": "USA",
+    "count": 1,
+    "lo": -105.955,
+    "la": 35.678
+  },
+  {
+    "name": "Saskatoon",
+    "country": "Canada",
+    "count": 1,
+    "lo": -106.669,
+    "la": 52.129
+  },
+  {
+    "name": "Shanghai",
+    "country": "China",
+    "count": 1,
+    "lo": 121.487,
+    "la": 31.244
+  },
+  {
+    "name": "Shoalhaven",
+    "country": "Australia",
+    "count": 1,
+    "lo": 150.594,
+    "la": -34.87
+  },
+  {
+    "name": "Singapore",
+    "country": "Singapore",
+    "count": 1,
+    "lo": 103.824,
+    "la": 1.267
+  },
+  {
+    "name": "Sligo",
+    "country": "Ireland",
+    "count": 1,
+    "lo": -8.472,
+    "la": 54.272
+  },
+  {
+    "name": "St. Louis",
+    "country": "USA",
+    "count": 1,
+    "lo": -90.232,
+    "la": 38.64
+  },
+  {
+    "name": "Sydney",
+    "country": "Australia",
+    "count": 1,
+    "lo": 151.209,
+    "la": -33.86
+  },
+  {
+    "name": "The Hague",
+    "country": "Netherlands",
+    "count": 1,
+    "lo": 4.281,
+    "la": 52.089
+  },
+  {
+    "name": "Tilburg",
+    "country": "Netherlands",
+    "count": 1,
+    "lo": 5.084,
+    "la": 51.563
+  },
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "count": 1,
+    "lo": 139.73,
+    "la": 35.66
+  },
+  {
+    "name": "Tourcoing",
+    "country": "France",
+    "count": 1,
+    "lo": 3.161,
+    "la": 50.724
+  },
+  {
+    "name": "Vancouver",
+    "country": "Canada",
+    "count": 1,
+    "lo": -123.12,
+    "la": 49.277
+  },
+  {
+    "name": "Venice",
+    "country": "Italy",
+    "count": 1,
+    "lo": 12.358,
+    "la": 45.429
+  },
+  {
+    "name": "Versailles",
+    "country": "France",
+    "count": 1,
+    "lo": 2.12,
+    "la": 48.805
+  },
+  {
+    "name": "Wellington",
+    "country": "New Zealand",
+    "count": 1,
+    "lo": 174.782,
+    "la": -41.29
+  },
+  {
+    "name": "Whistler",
+    "country": "Canada",
+    "count": 1,
+    "lo": -122.957,
+    "la": 50.116
+  },
+  {
+    "name": "Winnipeg",
+    "country": "Canada",
+    "count": 1,
+    "lo": -97.146,
+    "la": 49.889
+  },
+  {
+    "name": "Yarra Valley",
+    "country": "Australia",
+    "count": 1,
+    "lo": 145.43,
+    "la": -37.68
+  }
+]
