@@ -290,20 +290,25 @@ def update_widget():
     <div id="wGlobePanel" class="relative w-full h-[200px] flex items-center justify-center bg-[#000000] rounded-xl border border-[#1c212a] overflow-hidden shrink-0">
       <canvas id="widgetCanvas" class="w-full h-full block cursor-grab"></canvas>
 
-      <!-- Floating White Card -->
-      <div id="wCard" class="absolute z-30 pointer-events-auto bg-white text-slate-900 rounded-lg px-2.5 py-1.5 shadow-xl transition transform -translate-x-1/2 -translate-y-full mb-2 cursor-pointer border border-slate-100 max-w-[210px]">
-        <div class="font-bold text-[14px] text-slate-950 leading-tight truncate" class="text-[18px] font-bold text-slate-950 leading-tight truncate" id="wCardTitle">Plug In ICA</div>
-        <div class="text-[14px] text-slate-500 mt-0.5 truncate" id="wCardMeta">Winnipeg, Canada · Verified</div>
-        <div class="mt-1 pt-1 border-t border-slate-100 flex items-center justify-between text-[14px]">
-          <a id="wCardLink" href="https://plugin.org" target="_blank" rel="noopener noreferrer" 
-             class="text-[#1d4ed8] hover:underline flex items-center gap-1 font-medium" onclick="event.stopPropagation()">
-            <span>🌐</span> <span id="wCardDom">plugin.org</span> <span>↗</span>
+      <!-- Floating Dark Pin Card -->
+      <div id="wCard" class="hidden absolute z-30 pointer-events-auto bg-[#0a0e18]/95 backdrop-blur-md text-slate-100 rounded-lg px-2.5 py-1.5 shadow-xl transition transform -translate-x-1/2 -translate-y-full mb-2 cursor-pointer border border-[#1e283e] max-w-[240px]">
+        <div class="flex items-start justify-between gap-1">
+          <div class="truncate pr-1">
+            <div class="text-[14px] font-semibold text-white leading-tight truncate" id="wCardTitle"></div>
+            <div class="text-[14px] text-slate-400 mt-0.5 truncate font-mono" id="wCardMeta"></div>
+          </div>
+          <button id="wCardCloseBtn" class="text-slate-400 hover:text-white p-0.5 rounded text-[14px] leading-none shrink-0 cursor-pointer" title="Close">✕</button>
+        </div>
+        <div class="mt-1 pt-1 border-t border-[#1c2336] flex items-center justify-between text-[14px]">
+          <a id="wCardLink" href="#" target="_blank" rel="noopener noreferrer" 
+             class="text-[#60a5fa] hover:text-white flex items-center gap-1 font-mono transition cursor-pointer" onclick="event.stopPropagation()">
+            <span>🌐</span> <span id="wCardDom">website</span> <span>↗</span>
           </a>
-          <button id="wCardCuratorBtn" class="text-[#0f62fe] font-semibold hover:underline" onclick="event.stopPropagation()">
-            💬 Ask Curator
+          <button id="wCardCuratorBtn" class="text-[#3b82f6] hover:text-[#60a5fa] font-semibold transition cursor-pointer" onclick="event.stopPropagation()">
+            💬 Ask
           </button>
         </div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[5px] border-x-transparent border-t-[5px] border-t-white"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[5px] border-x-transparent border-t-[5px] border-t-[#0a0e18]"></div>
       </div>
 
       <div class="absolute bottom-1.5 left-2 text-[14px] text-[#64748b] font-mono pointer-events-none">
@@ -410,7 +415,7 @@ def update_widget():
 
     let filterCountry = 'all';
     let filterCity = 'all';
-    let selectedInst = DATA.find(i => i.name === 'Plug In ICA') || DATA[0];
+    let selectedInst = null;
 
     const canvas = document.getElementById('widgetCanvas');
     const ctx = canvas.getContext('2d', {{ alpha: false }});
@@ -635,7 +640,17 @@ def update_widget():
       isFlying = true;
     }}
 
+    function deselect() {{
+      selectedInst = null;
+      const card = document.getElementById('wCard');
+      if (card) card.classList.add('hidden');
+    }}
+
     function select(inst, fly = true) {{
+      if (!inst) {{
+        deselect();
+        return;
+      }}
       selectedInst = inst;
       document.getElementById('wCardTitle').textContent = inst.name;
       const shortH = inst.opening_hours ? inst.opening_hours.split(',')[0] : '';
@@ -995,7 +1010,16 @@ def update_widget():
             return;
           }}
         }}
+
+        if (selectedInst) {{
+          deselect();
+        }}
       }}
+    }});
+
+    document.getElementById('wCardCloseBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      deselect();
     }});
 
     initWConversation();

@@ -260,27 +260,39 @@
       
       <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
 
-      <!-- FLOATING WHITE CARD (Pinned to selected institution with Website Link & Hours) -->
-      <div id="floatingCard" class="absolute z-20 pointer-events-auto bg-white text-slate-900 rounded-lg px-3 py-2 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 cursor-pointer border border-slate-100 max-w-[300px] sm:max-w-[340px]">
-        <div class="flex items-center justify-between gap-1.5">
-          <div id="floatingCardTitle" class="font-bold text-[18px] text-slate-950 leading-tight truncate">Plug In ICA</div>
-          <span id="floatingCardTier" class="text-[14px] sm:text-[14px] font-semibold uppercase px-1.5 py-0.5 bg-emerald-100 text-emerald-800 rounded shrink-0">Verified</span>
+      <!-- FLOATING INSTITUTION CARD (Pinned to selected institution with Website Link & Hours) -->
+      <div id="floatingCard" class="hidden absolute z-20 pointer-events-auto bg-[#0a0e18]/95 backdrop-blur-md text-slate-100 rounded-xl px-3.5 py-2.5 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 border border-[#1e283e] max-w-[310px] sm:max-w-[350px]">
+        <div class="flex items-start justify-between gap-2">
+          <div class="truncate pr-1">
+            <div id="floatingCardTitle" class="font-semibold text-[18px] text-white leading-tight truncate"></div>
+            <div id="floatingCardMeta" class="text-[14px] text-slate-400 mt-0.5 flex items-center gap-1 font-mono">
+              <span></span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 shrink-0">
+            <span id="floatingCardTier" class="text-[14px] font-mono px-1.5 py-0.5 rounded border border-emerald-900 bg-[#0a2016] text-emerald-400">Verified</span>
+            <button id="closeFloatingCardBtn" class="text-slate-400 hover:text-white p-1 rounded-md hover:bg-[#151c2d] transition text-[14px] leading-none ml-0.5 cursor-pointer" title="Close">✕</button>
+          </div>
         </div>
-        <div id="floatingCardMeta" class="text-[14px] sm:text-[14px] text-slate-500 mt-0.5 flex items-center gap-1">
-          <span>Winnipeg, Canada</span>
-        </div>
-        <div id="floatingCardHours" class="text-[14px] font-mono text-emerald-700 mt-0.5 truncate">Tue–Fri 12:00–18:00 · Free Entry</div>
-        <div class="mt-1.5 pt-1.5 border-t border-slate-100 flex items-center justify-between text-[14px] sm:text-[14px] gap-2">
-          <a id="floatingCardWebLink" href="https://plugin.org" target="_blank" rel="noopener noreferrer" 
-             class="inline-flex items-center gap-1 font-medium text-[#1d4ed8] hover:text-[#1e40af] hover:underline"
+
+        <div id="floatingCardHours" class="text-[14px] font-mono text-emerald-400 mt-1 truncate"></div>
+
+        <div class="mt-2 pt-2 border-t border-[#1a2336] flex items-center justify-between text-[14px] gap-2">
+          <a id="floatingCardWebLink" href="#" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-1 text-[#60a5fa] hover:text-white font-mono transition cursor-pointer"
              onclick="event.stopPropagation()">
-            <span>🌐</span> <span id="floatingCardDomain" class="truncate max-w-[80px]">plugin.org</span> <span class="text-[14px]">↗</span>
+            <span>🌐</span> <span id="floatingCardDomain" class="truncate max-w-[90px]">website</span> <span class="text-[14px]">↗</span>
           </a>
-          <button id="floatingCardAskCurator" class="inline-flex items-center gap-1 text-[#0f62fe] font-semibold hover:underline" onclick="event.stopPropagation()">
-            <span>💬</span> <span>Ask Curator</span>
-          </button>
+          <div class="flex items-center gap-2">
+            <button id="floatingCardDossierBtn" class="text-slate-400 hover:text-white font-mono transition text-[14px] cursor-pointer" onclick="event.stopPropagation()">
+              Audit Dossier →
+            </button>
+            <button id="floatingCardAskCurator" class="inline-flex items-center gap-1 text-[#3b82f6] hover:text-[#60a5fa] font-semibold transition text-[14px] cursor-pointer" onclick="event.stopPropagation()">
+              <span>💬</span> <span>Ask</span>
+            </button>
+          </div>
         </div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[6px] border-x-transparent border-t-[6px] border-t-white"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[6px] border-x-transparent border-t-[6px] border-t-[#0a0e18]"></div>
       </div>
 
       <!-- Top-Left Branding Watermark & Tagline -->
@@ -8822,7 +8834,7 @@
     let selectedCountryFilter = 'all';
     let selectedCityFilter = 'all';
     let searchQuery = '';
-    let selectedInstitution = ALL_INSTITUTIONS.find(i => i.name === 'Plug In ICA') || ALL_INSTITUTIONS[0];
+    let selectedInstitution = null;
     let hoveredInstitution = null;
     let hoveredCity = null;
     let hoveredCountry = null;
@@ -9199,11 +9211,28 @@
       }
     }
 
+    function deselectInstitution() {
+      selectedInstitution = null;
+      const floatingCard = document.getElementById('floatingCard');
+      if (floatingCard) floatingCard.classList.add('hidden');
+      document.querySelectorAll('.inst-card').forEach(c => c.classList.remove('active'));
+    }
+
     function selectInstitution(inst, shouldSwitchToGlobe = false) {
+      if (!inst) {
+        deselectInstitution();
+        return;
+      }
       selectedInstitution = inst;
       document.getElementById('floatingCardTitle').textContent = inst.name;
       document.getElementById('floatingCardMeta').textContent = `${inst.location} · ${inst.tier === 'A' ? 'Verified' : 'One Name'}`;
-      document.getElementById('floatingCardTier').textContent = inst.tier === 'A' ? 'Verified' : inst.tier === 'B' ? 'One Name' : 'Unverified';
+      
+      const tierBadge = document.getElementById('floatingCardTier');
+      if (tierBadge) {
+        tierBadge.textContent = inst.tier === 'A' ? 'Verified' : inst.tier === 'B' ? 'One Name' : 'Unverified';
+        tierBadge.className = 'text-[14px] font-mono px-1.5 py-0.5 rounded border shrink-0 ' + 
+          (inst.tier === 'A' ? 'text-emerald-400 border-emerald-900 bg-[#0a2016]' : 'text-blue-400 border-blue-900 bg-[#0d1d33]');
+      }
       
       const hoursEl = document.getElementById('floatingCardHours');
       if (hoursEl) {
@@ -10547,11 +10576,27 @@
           }
         }
       }
+      // If clicked empty ocean or space on the globe, dismiss the floating institution card
+      if (selectedInstitution) {
+        deselectInstitution();
+      }
     }
 
-    document.getElementById('floatingCard').addEventListener('click', () => {
+    document.getElementById('closeFloatingCardBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      deselectInstitution();
+    });
+
+    document.getElementById('floatingCardDossierBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
       if (selectedInstitution) openDossier(selectedInstitution);
     });
+
+    document.getElementById('floatingCard')?.addEventListener('click', (e) => {
+      if (e.target.closest('a') || e.target.closest('button')) return;
+      if (selectedInstitution) openDossier(selectedInstitution);
+    });
+
     document.getElementById('closeDetailBtn').addEventListener('click', () => {
       document.getElementById('detailDrawer').classList.add('hidden');
     });
