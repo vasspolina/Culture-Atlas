@@ -244,6 +244,10 @@ def build():
     #globeCanvas {{
       cursor: grab;
       touch-action: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+      image-rendering: -webkit-optimize-contrast;
     }}
     #globeCanvas.dragging {{
       cursor: grabbing;
@@ -336,7 +340,7 @@ def build():
     <!-- ========================================================= -->
     <div id="globeViewport" class="relative w-full h-[48vh] sm:h-[50vh] flex items-center justify-center bg-[#020408] overflow-hidden shrink-0 border-b border-[#1c212a]">
       
-      <canvas id="globeCanvas" width="900" height="700" class="w-full h-full object-contain cursor-grab"></canvas>
+      <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
 
       <!-- FLOATING WHITE CARD (Pinned to selected institution with Website Link & Hours) -->
       <div id="floatingCard" class="absolute z-20 pointer-events-auto bg-white text-slate-900 rounded-lg px-3 py-2 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 cursor-pointer border border-slate-100 max-w-[300px] sm:max-w-[340px]">
@@ -826,17 +830,19 @@ def build():
     let hoveredCity = null;
     let hoveredCountry = null;
 
-    // Canvas & 3D Math Setup
+    // Canvas & 3D Math Setup with Native Retina / High-DPI Support
     const canvas = document.getElementById('globeCanvas');
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = canvas.parentElement.clientWidth;
-    let height = canvas.height = canvas.parentElement.clientHeight;
+    const ctx = canvas.getContext('2d', {{ alpha: false }});
+    
+    let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
+    let width = 800;
+    let height = 600;
 
     function getBaseRadius() {{
       const minDim = Math.min(width, height);
       return window.innerWidth < 768 ? Math.max(120, minDim * 0.38) : Math.max(160, minDim * 0.33);
     }}
-    let baseRadius = getBaseRadius();
+    let baseRadius = 200;
     let currentRadius = baseRadius;
     let targetRadius = baseRadius;
 
@@ -859,11 +865,24 @@ def build():
 
     function resizeCanvas() {{
       if (!canvas.parentElement) return;
-      width = canvas.width = canvas.parentElement.clientWidth;
-      height = canvas.height = canvas.parentElement.clientHeight;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
+      
+      width = Math.round(rect.width) || canvas.parentElement.clientWidth || 800;
+      height = Math.round(rect.height) || canvas.parentElement.clientHeight || 600;
+
+      // Double/triple buffer dimensions for razor-sharp Retina displays
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+
+      // Logical layout display dimensions
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+
       baseRadius = getBaseRadius();
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius));
     }}
+    resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
     function toRad(deg) {{ return deg * Math.PI / 180; }}
@@ -936,7 +955,11 @@ def build():
     let visibleDots = [];
 
     function render() {{
+      // Scale coordinates to high-DPI hardware buffer for crystal-clear Retina rendering
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, width, height);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
 
       if (isAutoSpinning && !isDragging && !isFlying) {{
         rotLon = (rotLon + 0.04) % 360;
@@ -967,8 +990,8 @@ def build():
       ctx.arc(cx, cy, r, 0, Math.PI * 2);
       ctx.fillStyle = '#010204';
       ctx.fill();
-      ctx.strokeStyle = '#182030';
-      ctx.lineWidth = 1;
+      ctx.strokeStyle = '#223048';
+      ctx.lineWidth = 1.2;
       ctx.stroke();
 
       // Graticule
@@ -1008,8 +1031,8 @@ def build():
           if (started) {{
             ctx.closePath();
             ctx.fill();
-            ctx.strokeStyle = isCActive ? '#60a5fa' : '#040b17';
-            ctx.lineWidth = isCActive ? 1.5 : 0.4;
+            ctx.strokeStyle = isCActive ? '#60a5fa' : '#050c18';
+            ctx.lineWidth = isCActive ? 2.0 : 0.75;
             ctx.stroke();
           }}
         }}

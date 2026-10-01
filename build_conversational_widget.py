@@ -288,7 +288,7 @@ def update_widget():
 
     <!-- TOP HALF: 🌍 3D GLOBE PANEL (Half Screen) -->
     <div id="wGlobePanel" class="relative w-full h-[200px] flex items-center justify-center bg-[#000000] rounded-xl border border-[#1c212a] overflow-hidden shrink-0">
-      <canvas id="widgetCanvas" width="500" height="200" class="w-full h-full object-contain"></canvas>
+      <canvas id="widgetCanvas" class="w-full h-full block cursor-grab"></canvas>
 
       <!-- Floating White Card -->
       <div id="wCard" class="absolute z-30 pointer-events-auto bg-white text-slate-900 rounded-lg px-2.5 py-1.5 shadow-xl transition transform -translate-x-1/2 -translate-y-full mb-2 cursor-pointer border border-slate-100 max-w-[210px]">
@@ -413,9 +413,29 @@ def update_widget():
     let selectedInst = DATA.find(i => i.name === 'Plug In ICA') || DATA[0];
 
     const canvas = document.getElementById('widgetCanvas');
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = canvas.parentElement.clientWidth || 460;
-    let height = canvas.height = canvas.parentElement.clientHeight || 360;
+    const ctx = canvas.getContext('2d', {{ alpha: false }});
+    
+    let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
+    let width = 460;
+    let height = 360;
+
+    function resizeCanvas() {{
+      if (!canvas.parentElement) return;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
+      width = Math.round(rect.width) || canvas.parentElement.clientWidth || 460;
+      height = Math.round(rect.height) || canvas.parentElement.clientHeight || 360;
+
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+
+      baseRadius = Math.min(width, height) * 0.35;
+      targetRadius = baseRadius;
+    }}
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     let baseRadius = Math.min(width, height) * 0.35;
     let currentRadius = baseRadius;
@@ -470,7 +490,10 @@ def update_widget():
     let visibleDots = [];
 
     function render() {{
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, width, height);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
 
       if (isAutoSpinning && !isDragging && !isFlying) {{
         rotLon = (rotLon + 0.04) % 360;
