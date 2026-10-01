@@ -90,19 +90,14 @@ def build():
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Culture Atlas — Ethically funded cultural institutions across the world</title>
   <meta name="description" content="Culture Atlas — Ethically funded cultural institutions across the world" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <script>
     tailwind.config = {{
       theme: {{
         extend: {{
           fontFamily: {{
-            sans: ['"PP Telegraph"', '"PP Telegraf"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            mono: ['"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
           }},
           fontSize: {{
             'xs': ['14px', '1.45'],
@@ -119,12 +114,19 @@ def build():
     }};
   </script>
   <style>
+        /* ========================================================= */
+    /* STRICT EXCLUSIVITY: ONLY PP TELEGRAF REGULAR FOR EVERYTHING */
+    /* STRICT 3-TYPE-SIZE SYSTEM: 14px Floor/Body, 18px Mid, 24px Headline */
     /* ========================================================= */
-    /* STRICT 3-TYPE-SIZE SYSTEM (14px Floor, 18px Mid, 24px Large) */
-    /* ========================================================= */
-    *, *::before, *::after {{
-      font-synthesis: none;
+    *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"] {{
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 400 !important;
+      font-synthesis: none !important;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }}
+
+    *, *::before, *::after {{
       font-size: 14px;
     }}
     html, body {{
@@ -139,13 +141,13 @@ def build():
     .type-14, .text-14, .text-[14px],
     [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
     [class*="text-\[11"], [class*="text-\[12"], [class*="text-\[13"],
-    [class*="text-\[14px\]"] {{
+    [class*="text-\[14px\]"], .text-xs, .text-sm {{
       font-size: 14px !important;
       line-height: 1.45 !important;
     }}
 
     /* Size 2: 18px (Card Titles, Subheaders, Museum Names) */
-    .type-18, .text-18, .text-[18px], .text-md,
+    .type-18, .text-18, .text-[18px], .text-md, .text-base, .text-lg,
     [class*="text-\[15"], [class*="text-\[16"], [class*="text-\[17"], [class*="text-\[18"], [class*="text-\[19"], [class*="text-\[20"],
     [class*="text-\[18px\]"] {{
       font-size: 18px !important;
@@ -153,8 +155,8 @@ def build():
     }}
 
     /* Size 3: 24px (Main Brand Title, Modal Headlines, Large Dossier Titles) */
-    .type-24, .text-24, .text-xl, .text-2xl, .text-3xl,
-    [class*="text-\[22"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[28"], [class*="text-\[30"],
+    .type-24, .text-24, .text-xl, .text-2xl, .text-3xl, .text-4xl,
+    [class*="text-\[21"], [class*="text-\[22"], [class*="text-\[23"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[28"], [class*="text-\[30"], [class*="text-\[32"],
     [class*="text-\[24px\]"] {{
       font-size: 24px !important;
       line-height: 1.25 !important;
@@ -226,7 +228,7 @@ def build():
     }}
 
     body {{
-      font-family: 'PP Telegraph', 'PP Telegraf', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       background-color: #000000;
       color: #f8fafc;
       margin: 0;
@@ -236,7 +238,8 @@ def build():
       height: 100dvh;
     }}
     .font-mono {{
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      letter-spacing: -0.01em;
     }}
     #globeCanvas {{
       cursor: grab;
@@ -1014,7 +1017,7 @@ def build():
 
       // Country Centroid Names
       if (r > baseRadius * 0.8) {{
-        ctx.font = '400 14px "PP Telegraph", "PP Telegraf", sans-serif';
+        ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         COUNTRY_CENTROIDS.forEach(c => {{
@@ -1029,7 +1032,7 @@ def build():
 
       // Priority City Badges
       cityBadgeHitboxes = [];
-      ctx.font = '400 14px "PP Telegraph", "PP Telegraf", sans-serif';
+      ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
       PRIORITY_CITIES.forEach(city => {{
         const pt = project(city.lon, city.lat, r, cx, cy);
         if (pt.front && pt.depth > 0.08) {{
@@ -1142,7 +1145,7 @@ def build():
           floatingCard.style.left = `${{pt.x}}px`;
           floatingCard.style.top = `${{pt.y}}px`;
 
-          ctx.font = '400 14px "PP Telegraph", "PP Telegraf", sans-serif';
+          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.fillStyle = '#ffffff';
           ctx.textAlign = 'left';
           ctx.textBaseline = 'middle';
