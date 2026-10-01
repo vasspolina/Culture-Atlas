@@ -682,18 +682,22 @@ def update_widget():
       let cards = '';
       if (picks && picks.length > 0) {{
         cards = `
-          <div class="flex flex-col gap-1.5 mt-1.5 pt-1.5 border-t border-[#1c2234]">
+          <div class="flex flex-col gap-1 mt-1.5 pt-1.5 border-t border-[#1c2234] text-[14px]">
             ${{picks.filter(Boolean).map(inst => `
-              <div class="w-inst-card bg-[#0b0e17] border border-[#1c2336] hover:border-[#3b82f6] rounded-lg p-2 text-[14px] cursor-pointer group" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
-                <div class="flex items-start justify-between gap-1">
-                  <span class="font-semibold text-white group-hover:text-[#60a5fa] transition truncate">${{inst.name}}</span>
-                  <span class="text-[14px] font-mono px-1 rounded ${{inst.tier === 'A' ? 'text-emerald-400 bg-[#0a2016]' : 'text-blue-400 bg-[#0d1d33]'}}">${{inst.tier === 'A' ? 'Verified' : 'One Name'}}</span>
-                </div>
-                <div class="text-[14px] text-[#60a5fa] font-mono mt-0.5">${{inst.location}}</div>
-                <div class="mt-1.5 pt-1 border-t border-[#161d2d] flex items-center justify-between text-[14px]">
-                  <button class="w-fly-btn text-[#3b82f6] hover:underline font-semibold" data-name="${{inst.name.replace(/"/g, '&quot;')}}">🔍 Zoom on Globe</button>
-                  ${{inst.website ? `<a href="${{inst.website}}" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-0.5" onclick="event.stopPropagation()"><span>🌐</span> <span>site ↗</span></a>` : ''}}
-                </div>
+              <div class="pl-2 border-l-2 border-[#1e2a42] hover:border-[#3b82f6] transition py-0.5 leading-snug">
+                <p>
+                  <a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}">${{inst.name}}</a>
+                  <span class="text-slate-400 font-mono text-[14px]">(${{inst.location}})</span>
+                </p>
+                <p class="text-[14px] font-mono text-slate-400 mt-0.5 flex items-center gap-2 flex-wrap">
+                  <a href="#" class="w-inst-link text-[#60a5fa] hover:underline flex items-center gap-1 cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
+                    <span>🔍</span> <span>Zoom on globe</span>
+                  </a>
+                  ${{inst.website ? `
+                    <span>·</span>
+                    <a href="${{inst.website}}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa]">site ↗</a>
+                  ` : ''}}
+                </p>
               </div>
             `).join('')}}
           </div>
@@ -711,9 +715,10 @@ def update_widget():
       `;
       wMessages.appendChild(div);
 
-      div.querySelectorAll('.w-inst-card, .w-fly-btn').forEach(btn => {{
+      div.querySelectorAll('.w-inst-link, .w-fly-btn').forEach(btn => {{
         btn.addEventListener('click', (e) => {{
-          if (e.target.closest('a')) return;
+          e.preventDefault();
+          if (e.target.closest('a') && !e.target.classList.contains('w-inst-link')) return;
           const name = btn.getAttribute('data-name');
           const inst = DATA.find(i => i.name === name);
           if (inst) {{
@@ -743,14 +748,16 @@ def update_widget():
     function initWConversation() {{
       wMessages.innerHTML = '';
       appendWCurator(`
-        <p>Welcome to <strong>Culture Atlas</strong>. We map <strong>203 cultural institutions</strong> across 35 countries evaluated by their freedom from controversial corporate sponsorship (fossil fuels, defense manufacturing, predatory finance).</p>
-        <p class="text-slate-300">We gently guide visitors toward four ethical models: <em>Civic Sanctuaries</em>, <em>Artist-Governed Kunsthalles</em>, <em>Divested Spaces</em>, and <em>Free Admission Spaces</em>.</p>
-        <p class="text-[#93c5fd]">Where are you traveling, or what kind of space do you want to explore?</p>
-      `, [
-        DATA.find(i => i.name.includes('Chisenhale')) || DATA[0],
-        DATA.find(i => i.name.includes('CAPC')) || DATA[1],
-        DATA.find(i => i.name.includes('Plug In ICA')) || DATA[2]
-      ]);
+        <p class="text-slate-200">
+          Welcome to <strong>Culture Atlas</strong>. We map 203 verified ethical cultural sanctuaries across 35 countries—institutions that operate with transparent public funding and clean underwriting without fossil-fuel or defense sponsorship.
+        </p>
+        <p class="text-slate-300">
+          For example, explore <a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in London (free admission), <a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in Bordeaux, or <a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Dia Beacon">Dia Beacon</a> in New York.
+        </p>
+        <p class="text-[#93c5fd]">
+          Which city or type of art experience would you like to discover today?
+        </p>
+      `);
     }}
 
     function handleWQuery(q) {{

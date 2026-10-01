@@ -1465,51 +1465,16 @@ def build():
         <p class="text-slate-200">
           Welcome to <strong>Culture Atlas</strong>. In an era where major art institutions routinely rely on trustees and sponsors linked to fossil fuel extraction, defense manufacturing, or predatory finance, Culture Atlas was created to map <strong>203 cultural sanctuaries across 35 countries</strong> that protect curatorial independence and public trust.
         </p>
-        <p class="text-slate-300 pt-1">
-          When deciding which spaces you should visit, we gently recommend four types of ethical institutions:
+        <p class="text-slate-300">
+          We gently highlight four ethical models: <strong>civic municipal sanctuaries</strong> supported by public arts councils, <strong>artist-run grassroots Kunsthalles</strong> with creative autonomy, institutions that actively <strong>divested from fossil fuels</strong>, and spaces offering <strong>free public admission</strong> as a fundamental civic right.
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-[14px] font-sans">
-          <div class="p-2.5 rounded-xl bg-[#0b0f19] border border-[#1d263b]">
-            <span class="font-semibold text-emerald-400 flex items-center gap-1 mb-0.5">
-              <span>🏛️</span> <span>Civic Sanctuaries</span>
-            </span>
-            <span class="text-slate-400 text-[14px] leading-relaxed block">
-              Supported by public taxpayers and municipal arts councils with zero corporate strings or toxic board seats.
-            </span>
-          </div>
-          <div class="p-2.5 rounded-xl bg-[#0b0f19] border border-[#1d263b]">
-            <span class="font-semibold text-blue-400 flex items-center gap-1 mb-0.5">
-              <span>🎨</span> <span>Grassroots Kunsthalles</span>
-            </span>
-            <span class="text-slate-400 text-[14px] leading-relaxed block">
-              Artist-governed centers offering daring, critical contemporary exhibitions free from commercial censorship.
-            </span>
-          </div>
-          <div class="p-2.5 rounded-xl bg-[#0b0f19] border border-[#1d263b]">
-            <span class="font-semibold text-amber-400 flex items-center gap-1 mb-0.5">
-              <span>🌿</span> <span>Divested Spaces</span>
-            </span>
-            <span class="text-slate-400 text-[14px] leading-relaxed block">
-              Museums that actively divested from BP, Shell, or Baillie Gifford to keep their galleries ethically uncompromised.
-            </span>
-          </div>
-          <div class="p-2.5 rounded-xl bg-[#0b0f19] border border-[#1d263b]">
-            <span class="font-semibold text-purple-400 flex items-center gap-1 mb-0.5">
-              <span>🎟️</span> <span>Free Public Access</span>
-            </span>
-            <span class="text-slate-400 text-[14px] leading-relaxed block">
-              Spaces that eliminate ticket barriers, proving that art is a fundamental civic right rather than a luxury commodity.
-            </span>
-          </div>
-        </div>
-        <p class="pt-1.5 text-[#93c5fd] font-medium">
+        <p class="text-slate-300">
+          For example, you can discover <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a> (an artist-centered commissioning space with free entry), <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Bordeaux">Bordeaux</a> (a civic contemporary Kunsthalle in an 1824 warehouse), or <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Dia Beacon">Dia Beacon</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a> (a model of non-profit foundation endowment for monumental site-specific art).
+        </p>
+        <p class="pt-1 text-[#93c5fd]">
           Where in the world are you exploring, or what type of art experience would you love to discover today?
         </p>
-      `, [
-        ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale')) || ALL_INSTITUTIONS[0],
-        ALL_INSTITUTIONS.find(i => i.name.includes('CAPC')) || ALL_INSTITUTIONS[1],
-        ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon')) || ALL_INSTITUTIONS[2]
-      ]);
+      `);
     }}
 
     function appendUserMessage(text) {{
@@ -1534,55 +1499,42 @@ def build():
       let cardsHtml = '';
       if (recommendedInsts && recommendedInsts.length > 0) {{
         cardsHtml = `
-          <div class="flex flex-col gap-2 mt-2 pt-2 border-t border-[#1c2234]">
-            <span class="text-[14px] font-mono uppercase tracking-wider text-[#60a5fa] flex items-center gap-1">
-              <span>📍</span> <span>Recommended Cultural Institutions:</span>
-            </span>
+          <div class="mt-2.5 pt-2 border-t border-[#1a2336] space-y-2 text-[14px]">
+            <p class="text-[14px] font-mono text-[#60a5fa] uppercase tracking-wider flex items-center gap-1">
+              <span>📍</span> <span>Curator's Recommendations:</span>
+            </p>
             ${{recommendedInsts.filter(Boolean).map(inst => {{
               const webUrl = inst.website || (inst.sources && inst.sources[0]) || '';
               let domain = 'website';
               try {{ domain = new URL(webUrl).hostname.replace(/^www\\./, ''); }} catch(e) {{}}
               const tierBadge = inst.tier === 'A' 
-                ? '<span class="text-[14px] font-mono px-1.5 py-0.5 rounded border border-emerald-900 bg-[#0a2016] text-emerald-400">Tier A · Verified</span>'
-                : '<span class="text-[14px] font-mono px-1.5 py-0.5 rounded border border-blue-900 bg-[#0d1d33] text-blue-400">Tier B · One Name</span>';
+                ? '<span class="text-emerald-400 font-mono text-[14px]">Tier A · Verified</span>'
+                : '<span class="text-blue-400 font-mono text-[14px]">Tier B · One Name</span>';
 
               return `
-                <div class="curator-inst-card bg-[#0b0e17] border border-[#1c2336] hover:border-[#3b82f6] hover:bg-[#0f1422] rounded-xl p-3 transition shadow-sm cursor-pointer group active:scale-[0.99]" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
-                  <div class="flex items-start justify-between gap-2">
-                    <div>
-                      <div class="flex items-center gap-1.5">
-                        <h4 class="font-semibold text-white text-[14px] group-hover:text-[#60a5fa] transition">${{inst.name}}</h4>
-                        <span class="text-[14px] text-slate-500 group-hover:text-[#93c5fd] transition">🔍 Zoom on map →</span>
-                      </div>
-                      <p class="text-[14px] text-[#60a5fa] font-mono mt-0.5">${{inst.location}}</p>
-                    </div>
+                <div class="pl-3 border-l-2 border-[#1e2a42] hover:border-[#3b82f6] transition py-0.5 leading-relaxed">
+                  <p>
+                    <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline underline-offset-2 transition cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}">${{inst.name}}</a>
+                    <span class="text-slate-400">(${{inst.location}})</span>
+                    <span class="text-slate-500">·</span>
                     ${{tierBadge}}
-                  </div>
-
-                  <div class="flex items-center gap-1.5 text-[14px] font-mono text-[#94a3b8] mt-1.5 flex-wrap">
-                    <span class="px-1.5 py-0.5 rounded bg-[#101726] border border-[#1c2840] text-[#93c5fd]">🏛️ ${{inst.governance_type}}</span>
-                    <span class="px-1.5 py-0.5 rounded bg-[#0a1f15] border border-[#143d28] text-emerald-300">🎟️ ${{inst.admission_policy}}</span>
-                  </div>
-
-                  <p class="text-[14px] text-slate-300 mt-2 leading-relaxed line-clamp-2">${{inst.curator_recommendation || inst.funding}}</p>
-                  
-                  <div class="mt-2.5 pt-2 border-t border-[#161d2d] flex items-center justify-between gap-2">
-                    <button class="curator-fly-btn px-2.5 py-1 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] rounded-lg transition flex items-center gap-1.5 active:scale-95 shadow cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
-                      <span>🔍</span> <span>Zoom on Globe</span>
-                    </button>
-                    <div class="flex items-center gap-1.5" onclick="event.stopPropagation()">
-                      ${{webUrl ? `
-                        <a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" 
-                           class="px-2 py-1 bg-[#121726] hover:bg-[#1a233c] border border-[#222e48] hover:border-[#3b82f6] text-[#60a5fa] hover:text-white text-[14px] font-mono rounded-lg transition flex items-center gap-1 cursor-pointer"
-                           onclick="event.stopPropagation()">
-                          <span>🌐</span> <span class="max-w-[90px] truncate">${{domain}}</span> <span>↗</span>
-                        </a>
-                      ` : ''}}
-                      <button class="curator-dossier-btn px-2 py-1 text-slate-400 hover:text-white text-[14px] font-mono rounded hover:bg-[#151a28] transition cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}" onclick="event.stopPropagation()">
-                        Audit Dossier →
-                      </button>
-                    </div>
-                  </div>
+                  </p>
+                  <p class="text-slate-300 text-[14px] mt-0.5">${{inst.curator_recommendation || inst.highlight || inst.funding}}</p>
+                  <p class="text-[14px] font-mono text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
+                    <a href="#" class="inst-link text-[#60a5fa] hover:text-[#93c5fd] hover:underline flex items-center gap-1 cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
+                      <span>🔍</span> <span>Zoom on globe</span>
+                    </a>
+                    <span>·</span>
+                    <a href="#" class="dossier-link text-slate-300 hover:text-white hover:underline cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
+                      Audit dossier →
+                    </a>
+                    ${{webUrl ? `
+                      <span>·</span>
+                      <a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] hover:underline flex items-center gap-0.5">
+                        <span>${{domain}}</span> <span>↗</span>
+                      </a>
+                    ` : ''}}
+                  </p>
                 </div>
               `;
             }}).join('')}}
@@ -1603,37 +1555,45 @@ def build():
       `;
       curatorMessages.appendChild(div);
 
-      // Bind click on entire card to fly and zoom on the map
-      div.querySelectorAll('.curator-inst-card').forEach(card => {{
-        card.addEventListener('click', (e) => {{
-          if (e.target.closest('a') || e.target.closest('.curator-dossier-btn')) {{
-            return;
-          }}
-          const name = card.getAttribute('data-name');
-          const inst = ALL_INSTITUTIONS.find(i => i.name === name);
-          if (inst) {{
-            selectInstitution(inst, true);
-          }}
-        }});
-      }});
-
-      // Bind fly buttons
-      div.querySelectorAll('.curator-fly-btn').forEach(btn => {{
-        btn.addEventListener('click', (e) => {{
+      // Direct event binding on inline links for immediate responsiveness
+      div.querySelectorAll('.inst-link').forEach(link => {{
+        link.addEventListener('click', (e) => {{
+          e.preventDefault();
           e.stopPropagation();
-          const name = btn.getAttribute('data-name');
+          const name = link.getAttribute('data-name');
           const inst = ALL_INSTITUTIONS.find(i => i.name === name);
-          if (inst) {{
-            selectInstitution(inst, true);
-          }}
+          if (inst) selectInstitution(inst, true);
         }});
       }});
 
-      div.querySelectorAll('.curator-dossier-btn').forEach(btn => {{
-        btn.addEventListener('click', () => {{
-          const name = btn.getAttribute('data-name');
+      div.querySelectorAll('.dossier-link').forEach(link => {{
+        link.addEventListener('click', (e) => {{
+          e.preventDefault();
+          e.stopPropagation();
+          const name = link.getAttribute('data-name');
           const inst = ALL_INSTITUTIONS.find(i => i.name === name);
           if (inst) openDossier(inst);
+        }});
+      }});
+
+      div.querySelectorAll('.city-link').forEach(link => {{
+        link.addEventListener('click', (e) => {{
+          e.preventDefault();
+          e.stopPropagation();
+          const city = link.getAttribute('data-city');
+          if (city) filterByCity(city, true, false);
+        }});
+      }});
+
+      div.querySelectorAll('.prompt-link').forEach(link => {{
+        link.addEventListener('click', (e) => {{
+          e.preventDefault();
+          e.stopPropagation();
+          const q = link.getAttribute('data-prompt') || link.textContent.trim().replace(/^["']|["']$/g, '');
+          if (q) {{
+            appendUserMessage(q);
+            handleCuratorQuery(q);
+          }}
         }});
       }});
 
@@ -1657,15 +1617,21 @@ def build():
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {{
             appendCuratorMessage(`
-              <p>🕒 <strong>Visiting Hours for ${{escapeHtml(targetInst.name)}}:</strong></p>
-              <div class="p-3 rounded-xl bg-[#0b0e17] border border-[#1e2a44] text-[14px] space-y-1.5 font-mono">
-                <div class="text-emerald-400 font-semibold text-[14px]">📅 ${{targetInst.opening_hours}}</div>
-                <div class="text-slate-300 text-[14px] font-sans"><strong>Suggested Duration:</strong> ${{targetInst.visit_duration}}</div>
-                <div class="text-slate-300 text-[14px] font-sans"><strong>Address:</strong> ${{targetInst.address}} (${{targetInst.neighborhood}})</div>
-                <div class="text-[#93c5fd] text-[14px] font-sans"><strong>Transit:</strong> ${{targetInst.transit_tips}}</div>
-                ${{targetInst.visit_url ? `<a href="${{targetInst.visit_url}}" target="_blank" class="text-[#60a5fa] hover:underline text-[14px] block pt-1 font-mono">Plan Your Visit (Official Museum Guide) ↗</a>` : ''}}
-              </div>
-            `, [targetInst]);
+              <p>🕒 <strong>Visiting Hours for <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">${{escapeHtml(targetInst.name)}}</a>:</strong></p>
+              <p class="text-emerald-400 font-mono text-[14px]">📅 ${{targetInst.opening_hours}}</p>
+              <p class="text-slate-300">
+                Located at <strong>${{targetInst.address}}</strong> (${{targetInst.neighborhood}}). Suggested visit duration: <strong>${{targetInst.visit_duration}}</strong>.
+              </p>
+              <p class="text-[#93c5fd]">
+                <strong>Transit:</strong> ${{targetInst.transit_tips}}
+              </p>
+              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
+                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">🔍 Zoom on globe</a>
+                <span>·</span>
+                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">Audit dossier →</a>
+                ${{targetInst.visit_url ? `<span>·</span> <a href="${{targetInst.visit_url}}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] font-mono">Plan Your Visit Page ↗</a>` : ''}}
+              </p>
+            `);
             selectInstitution(targetInst, false);
             return;
           }}
@@ -1696,14 +1662,20 @@ def build():
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {{
             appendCuratorMessage(`
-              <p>🚇 <strong>Public Transit Directions to ${{escapeHtml(targetInst.name)}}:</strong></p>
-              <div class="p-3 rounded-xl bg-[#0b0e17] border border-[#1e2a44] text-[14px] space-y-1.5">
-                <div class="text-slate-200"><strong>📍 Address:</strong> ${{targetInst.address}} (${{targetInst.neighborhood}})</div>
-                <div class="text-[#93c5fd] font-mono leading-relaxed"><strong>Transit:</strong> ${{targetInst.transit_tips}}</div>
-                <div class="text-slate-300"><strong>Suggested Duration:</strong> ${{targetInst.visit_duration}} · 🕒 ${{targetInst.opening_hours}}</div>
-                ${{targetInst.visit_url ? `<a href="${{targetInst.visit_url}}" target="_blank" class="text-[#60a5fa] hover:underline text-[14px] block pt-1 font-mono">Official Transit & Location Page ↗</a>` : ''}}
-              </div>
-            `, [targetInst]);
+              <p>🚇 <strong>Transit Directions to <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">${{escapeHtml(targetInst.name)}}</a>:</strong></p>
+              <p class="text-[#93c5fd] font-mono leading-relaxed">
+                <strong>Directions:</strong> ${{targetInst.transit_tips}}
+              </p>
+              <p class="text-slate-300">
+                <strong>Address:</strong> ${{targetInst.address}} (${{targetInst.neighborhood}}). Suggested duration: ${{targetInst.visit_duration}} · Open ${{targetInst.opening_hours}}.
+              </p>
+              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
+                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">🔍 Zoom on globe</a>
+                <span>·</span>
+                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">Audit dossier →</a>
+                ${{targetInst.visit_url ? `<span>·</span> <a href="${{targetInst.visit_url}}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] font-mono">Official Transit Guide ↗</a>` : ''}}
+              </p>
+            `);
             selectInstitution(targetInst, false);
             return;
           }}
@@ -1725,13 +1697,22 @@ def build():
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {{
             appendCuratorMessage(`
-              <p>♿ <strong>Accessibility at ${{escapeHtml(targetInst.name)}}:</strong></p>
-              <div class="p-3 rounded-xl bg-[#0b0e17] border border-[#1e2a44] text-[14px] space-y-1.5">
-                <div class="text-emerald-400 font-medium">${{targetInst.accessibility}}</div>
-                <div class="text-slate-300"><strong>Transit Access:</strong> ${{targetInst.transit_tips}}</div>
-                <div class="text-slate-400 text-[14px]">Personal care assistants and companions receive free entry at all audited institutions.</div>
-              </div>
-            `, [targetInst]);
+              <p>♿ <strong>Accessibility at <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">${{escapeHtml(targetInst.name)}}</a>:</strong></p>
+              <p class="text-emerald-400">
+                ${{targetInst.accessibility}}
+              </p>
+              <p class="text-slate-300">
+                <strong>Transit Access:</strong> ${{targetInst.transit_tips}}
+              </p>
+              <p class="text-slate-400 text-[14px]">
+                Personal care assistants and companions receive free entry at all audited institutions.
+              </p>
+              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
+                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">🔍 Zoom on globe</a>
+                <span>·</span>
+                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">Audit dossier →</a>
+              </p>
+            `);
             selectInstitution(targetInst, false);
             return;
           }}
@@ -1753,13 +1734,22 @@ def build():
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {{
             appendCuratorMessage(`
-              <p>☕ <strong>Amenities & On-Site Facilities at ${{escapeHtml(targetInst.name)}}:</strong></p>
-              <div class="p-3 rounded-xl bg-[#0b0e17] border border-[#1e2a44] text-[14px] space-y-1.5">
-                <div class="text-slate-200"><strong>Facilities:</strong> ${{targetInst.amenities}}</div>
-                <div class="text-amber-300/90"><strong>Signature Highlight:</strong> ${{targetInst.highlight}}</div>
-                <div class="text-slate-300 text-[14px]"><strong>Schedule:</strong> ${{targetInst.opening_hours}}</div>
-              </div>
-            `, [targetInst]);
+              <p>☕ <strong>Amenities & On-Site Facilities at <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">${{escapeHtml(targetInst.name)}}</a>:</strong></p>
+              <p class="text-slate-200">
+                <strong>Facilities:</strong> ${{targetInst.amenities}}
+              </p>
+              <p class="text-slate-300">
+                <strong>Signature Highlight:</strong> <span class="text-amber-300/90">${{targetInst.highlight}}</span>
+              </p>
+              <p class="text-slate-400 font-mono text-[14px]">
+                Visiting hours: ${{targetInst.opening_hours}}
+              </p>
+              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
+                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">🔍 Zoom on globe</a>
+                <span>·</span>
+                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">Audit dossier →</a>
+              </p>
+            `);
             selectInstitution(targetInst, false);
             return;
           }}
@@ -1786,13 +1776,19 @@ def build():
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {{
             appendCuratorMessage(`
-              <p>⭐ <strong>Signature Highlight for ${{escapeHtml(targetInst.name)}}:</strong></p>
-              <div class="p-3 rounded-xl bg-[#0b0e17] border border-[#1e2a44] text-[14px] space-y-1.5">
-                <div class="text-amber-400 font-medium text-[14px]">${{targetInst.highlight}}</div>
-                <div class="text-slate-300"><strong>Curatorial Focus:</strong> ${{targetInst.curatorial_focus}}</div>
-                <div class="text-slate-300"><strong>Recommended Duration:</strong> ${{targetInst.visit_duration}} · 🕒 ${{targetInst.opening_hours}}</div>
-              </div>
-            `, [targetInst]);
+              <p>⭐ <strong>Signature Highlight for <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">${{escapeHtml(targetInst.name)}}</a>:</strong></p>
+              <p class="text-amber-400 font-medium text-[14px]">
+                ${{targetInst.highlight}}
+              </p>
+              <p class="text-slate-300">
+                <strong>Curatorial Focus:</strong> ${{targetInst.curatorial_focus}}. Open ${{targetInst.opening_hours}}.
+              </p>
+              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
+                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">🔍 Zoom on globe</a>
+                <span>·</span>
+                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${{escapeHtml(targetInst.name)}}">Audit dossier →</a>
+              </p>
+            `);
             selectInstitution(targetInst, false);
             return;
           }}
@@ -1900,21 +1896,9 @@ def build():
           if (cityMatches.length > 0) {{
             const targetCity = cityMatches[0].city;
             appendCuratorMessage(`
-              <div class="flex items-center justify-between gap-2 p-2.5 bg-[#0d1627] border border-[#203254] rounded-xl mb-2">
-                <div class="flex items-center gap-2">
-                  <span class="text-[18px]">📍</span>
-                  <div>
-                    <h4 class="font-semibold text-white text-[18px] leading-tight">${{escapeHtml(targetCity)}}</h4>
-                    <p class="text-[14px] text-[#60a5fa]">${{cityMatches.length}} Ethically Mapped Sanctuaries</p>
-                  </div>
-                </div>
-                <button class="city-zoom-btn px-3 py-1.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] rounded-lg transition flex items-center gap-1.5 shadow active:scale-95 cursor-pointer shrink-0" data-city="${{escapeHtml(targetCity)}}">
-                  <span>🔍</span> <span>Zoom to ${{escapeHtml(targetCity)}}</span>
-                </button>
-              </div>
-              <p>📍 <strong>Ethical Cultural Guide for ${{escapeHtml(targetCity)}}:</strong></p>
-              <p>We have <strong>${{cityMatches.length}}</strong> ethically vetted cultural institutions mapped in <strong>${{escapeHtml(targetCity)}}</strong>. These spaces operate with transparent public funding and verified independence from controversial corporate donors.</p>
-              <p class="text-slate-300">Tap <em>Zoom to ${{escapeHtml(targetCity)}}</em> or click any space below to inspect on the 3D globe:</p>
+              <p>📍 <strong>Ethical Cultural Guide for <a href="#" class="city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(targetCity)}}">${{escapeHtml(targetCity)}}</a>:</strong></p>
+              <p>We map <strong>${{cityMatches.length}}</strong> verified ethical cultural institutions in ${{escapeHtml(targetCity)}}. These spaces operate with transparent public funding and verified independence from controversial corporate underwriters. <a href="#" class="city-link text-[#60a5fa] hover:text-[#93c5fd] underline font-mono text-[14px] cursor-pointer" data-city="${{escapeHtml(targetCity)}}">Zoom to ${{escapeHtml(targetCity)}} on the globe →</a></p>
+              <p class="text-slate-300">Here are standout sanctuaries to explore:</p>
             `, cityMatches.slice(0, 4));
 
             filterByCity(targetCity, true, false);
@@ -1928,9 +1912,9 @@ def build():
           const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, matchedCountry.name));
           if (countryMatches.length > 0) {{
             appendCuratorMessage(`
-              <p>🌍 <strong>Ethical Culture in ${{escapeHtml(matchedCountry.name)}}:</strong></p>
-              <p>We track <strong>${{countryMatches.length}}</strong> verified cultural spaces in ${{escapeHtml(matchedCountry.name)}}. Funding models here emphasize civic accountability and public grants.</p>
-              <p class="text-slate-300">Here are standout institutions worth your journey:</p>
+              <p>🌍 <strong>Ethical Cultural Institutions in ${{escapeHtml(matchedCountry.name)}}:</strong></p>
+              <p>Culture Atlas tracks <strong>${{countryMatches.length}}</strong> verified cultural spaces across ${{escapeHtml(matchedCountry.name)}}. Funding frameworks here prioritize civic accountability and public grants over private commercial influence.</p>
+              <p class="text-slate-300">Here are standout institutions worth exploring:</p>
             `, countryMatches.slice(0, 4));
 
             flyTo(matchedCountry.lon, matchedCountry.lat);
@@ -1942,24 +1926,28 @@ def build():
         const instMatch = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))) || (i.name.toLowerCase().includes(q) && q.length > 3));
         if (instMatch) {{
           appendCuratorMessage(`
-            <p><strong>${{escapeHtml(instMatch.name)}}</strong> <span class="text-[#60a5fa] font-mono">· ${{instMatch.location}} (Est. ${{instMatch.year_founded}})</span></p>
-            <p><strong>Governance:</strong> ${{instMatch.governance_type}} · <strong>Focus:</strong> ${{instMatch.curatorial_focus}}</p>
-            <p><strong>Admission Policy:</strong> ${{instMatch.admission_policy}} — ${{instMatch.admission_details}}</p>
-            <p><strong>Ethical Safeguard:</strong> ${{instMatch.ethical_safeguard}}</p>
-            
-            <!-- Practical Visitor Details Card -->
-            <div class="mt-2.5 p-3 rounded-xl bg-[#0b0f19] border border-[#1d273e] text-[14px] space-y-1.5 font-mono">
-              <div class="text-emerald-400 font-semibold">🕒 <strong>Hours:</strong> ${{instMatch.opening_hours}}</div>
-              <div class="text-[#93c5fd]">🎟️ <strong>Admission:</strong> ${{instMatch.admission_fee}}</div>
-              <div class="text-slate-300 font-sans">📍 <strong>Address:</strong> ${{instMatch.address}} (${{instMatch.neighborhood}})</div>
-              <div class="text-slate-300 font-sans">🚇 <strong>Transit:</strong> ${{instMatch.transit_tips}}</div>
-              <div class="text-amber-300 font-sans">⭐ <strong>Highlight:</strong> ${{instMatch.highlight}}</div>
-              <div class="text-slate-400 font-sans">⏱️ <strong>Duration:</strong> ${{instMatch.visit_duration}} · ☕ ${{instMatch.amenities}}</div>
-              ${{instMatch.visit_url ? `<a href="${{instMatch.visit_url}}" target="_blank" class="text-[#60a5fa] hover:underline text-[14px] block pt-1 font-mono">Plan Your Visit (Official Museum Guide) ↗</a>` : ''}}
-            </div>
-            
-            ${{instMatch.watch ? `<p class="text-amber-300/90 text-[14px] mt-1.5"><strong>Watch Note:</strong> ${{escapeHtml(instMatch.watch)}}</p>` : ''}}
-          `, [instMatch]);
+            <p>
+              <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{escapeHtml(instMatch.name)}}">${{escapeHtml(instMatch.name)}}</a> is an ethical cultural sanctuary in <strong>${{instMatch.location}}</strong> (established in ${{instMatch.year_founded}}). <a href="#" class="inst-link text-[#60a5fa] hover:underline font-mono text-[14px] cursor-pointer" data-name="${{escapeHtml(instMatch.name)}}">Zoom on globe →</a>
+            </p>
+            <p class="text-slate-200">
+              <strong>Curatorial Focus:</strong> ${{instMatch.curatorial_focus}}. Governed as an independent <em>${{instMatch.governance_type}}</em>.
+            </p>
+            <p class="text-slate-300">
+              <strong>Admission:</strong> ${{instMatch.admission_policy}} (${{instMatch.admission_details}}).
+            </p>
+            <p class="text-slate-300">
+              <strong>Ethical Safeguard:</strong> ${{instMatch.ethical_safeguard}}
+            </p>
+            <p class="text-slate-300">
+              <strong>Visit Details:</strong> Open ${{instMatch.opening_hours}}. Located at ${{instMatch.address}} (${{instMatch.neighborhood}}). Transit: ${{instMatch.transit_tips}}. Suggested duration: ${{instMatch.visit_duration}}.
+            </p>
+            ${{instMatch.highlight ? `<p class="text-amber-300/90 text-[14px]"><strong>Signature Highlight:</strong> ${{instMatch.highlight}}</p>` : ''}}
+            ${{instMatch.watch ? `<p class="text-amber-300/90 text-[14px]"><strong>Watch Note:</strong> ${{escapeHtml(instMatch.watch)}}</p>` : ''}}
+            <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
+              <a href="#" class="dossier-link text-[#60a5fa] hover:text-white underline cursor-pointer" data-name="${{escapeHtml(instMatch.name)}}">Open scholarly audit dossier →</a>
+              ${{instMatch.website ? `<span>·</span> <a href="${{instMatch.website}}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white font-mono">Official Website ↗</a>` : ''}}
+            </p>
+          `);
 
           selectInstitution(instMatch, true);
           return;
@@ -1989,13 +1977,13 @@ def build():
 
         appendCuratorMessage(`
           <p>I would be delighted to guide you to ethically funded cultural institutions across <strong>35 countries and 133 cities</strong>.</p>
-          <p class="text-slate-300">You can ask me questions like:</p>
+          <p class="text-slate-300">You can explore topics like:</p>
           <ul class="list-disc pl-4 space-y-1 text-slate-300">
-            <li><em>"Which spaces offer always free admission?"</em></li>
-            <li><em>"Show me independent artist-run centers"</em></li>
-            <li><em>"Where should I go in London, Paris, or Tokyo?"</em></li>
-            <li><em>"What makes a museum ethically funded?"</em></li>
-            <li><em>"Tell me about Dia Beacon or Louisiana Museum"</em></li>
+            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="Which spaces offer always free admission?">"Which spaces offer always free admission?"</a></li>
+            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="Show me independent artist-run centers">"Show me independent artist-run centers"</a></li>
+            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="Where should I go in London, Paris, or Tokyo?">"Where should I go in London, Paris, or Tokyo?"</a></li>
+            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="What makes a museum ethically funded?">"What makes a museum ethically funded?"</a></li>
+            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="Tell me about Dia Beacon">"Tell me about Dia Beacon"</a></li>
           </ul>
         `, genericPicks);
 
@@ -2039,9 +2027,60 @@ def build():
       }});
     }});
 
-    // Delegated click listener in chat messages for cards, city zoom buttons & city mentions
+    // Delegated click listener in chat messages for inline links, cards, & city mentions
     curatorMessages.addEventListener('click', (e) => {{
-      // 1. Check if user clicked anywhere on an institution card (except direct external links or dossier btn)
+      // 1. Check for institution links
+      const instLink = e.target.closest('.inst-link, [data-inst]');
+      if (instLink) {{
+        e.preventDefault();
+        e.stopPropagation();
+        const name = instLink.getAttribute('data-name') || instLink.getAttribute('data-inst') || instLink.textContent.trim();
+        const inst = ALL_INSTITUTIONS.find(i => i.name === name || (i.name.toLowerCase() === name.toLowerCase()) || (i.aliases && i.aliases.some(a => a.toLowerCase() === name.toLowerCase())));
+        if (inst) {{
+          selectInstitution(inst, true);
+        }}
+        return;
+      }}
+
+      // 2. Check for audit dossier links
+      const dossierLink = e.target.closest('.dossier-link, .curator-dossier-btn, [data-dossier]');
+      if (dossierLink) {{
+        e.preventDefault();
+        e.stopPropagation();
+        const name = dossierLink.getAttribute('data-name') || dossierLink.getAttribute('data-dossier');
+        const inst = ALL_INSTITUTIONS.find(i => i.name === name || (i.name.toLowerCase() === name.toLowerCase()));
+        if (inst) {{
+          openDossier(inst);
+        }}
+        return;
+      }}
+
+      // 3. Check for city links
+      const cityLink = e.target.closest('.city-link, .city-zoom-btn, [data-city]');
+      if (cityLink) {{
+        e.preventDefault();
+        e.stopPropagation();
+        const city = cityLink.getAttribute('data-city') || cityLink.textContent.trim();
+        if (city) {{
+          filterByCity(city, true, false);
+        }}
+        return;
+      }}
+
+      // 4. Check for prompt links
+      const promptLink = e.target.closest('.prompt-link, [data-prompt]');
+      if (promptLink) {{
+        e.preventDefault();
+        e.stopPropagation();
+        const p = promptLink.getAttribute('data-prompt') || promptLink.textContent.trim().replace(/^["']|["']$/g, '');
+        if (p) {{
+          appendUserMessage(p);
+          handleCuratorQuery(p);
+        }}
+        return;
+      }}
+
+      // 5. Backwards compatibility for cards or fly buttons
       const card = e.target.closest('.curator-inst-card');
       if (card && !e.target.closest('a') && !e.target.closest('.curator-dossier-btn')) {{
         e.preventDefault();
@@ -2054,19 +2093,12 @@ def build():
         return;
       }}
 
-      const btn = e.target.closest('.city-zoom-btn, .curator-fly-btn, [data-city]');
+      const btn = e.target.closest('.curator-fly-btn');
       if (btn) {{
-        const city = btn.getAttribute('data-city');
-        if (city) {{
-          e.preventDefault();
-          e.stopPropagation();
-          filterByCity(city, true, false);
-          return;
-        }}
+        e.preventDefault();
+        e.stopPropagation();
         const instName = btn.getAttribute('data-name');
         if (instName) {{
-          e.preventDefault();
-          e.stopPropagation();
           const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
           if (inst) {{
             selectInstitution(inst, true);
@@ -2075,7 +2107,7 @@ def build():
         }}
       }}
 
-      // Check if user clicked any text or element mentioning London
+      // 6. Check if user clicked any text or element mentioning London
       const txt = (e.target.textContent || '').trim().toLowerCase();
       if (txt === 'london' || txt.includes('london')) {{
         if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.tagName === 'STRONG' || e.target.closest('button')) {{
