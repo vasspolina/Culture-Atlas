@@ -774,13 +774,7 @@ def update_widget():
       wMessages.innerHTML = '';
       appendWCurator(`
         <p class="text-[#ececec]">
-          Welcome to <strong>Culture Atlas</strong>. We map <strong>203 museums and art spaces across 35 countries</strong> that do not take money from oil companies, weapons makers, or private prisons.
-        </p>
-        <p class="text-[#d4d4d4]">
-          For example, check out <a href="#" class="w-inst-link" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in London (free admission), <a href="#" class="w-inst-link" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in Bordeaux, or <a href="#" class="w-inst-link" data-name="Dia Beacon">Dia Beacon</a> in New York.
-        </p>
-        <p class="text-[#93c5fd]">
-          Where would you like to go, or what kind of art are you looking for?
+          How can I help you explore museums and art spaces today?
         </p>
       `);
     }}

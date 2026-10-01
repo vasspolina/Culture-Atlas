@@ -422,7 +422,7 @@ def build():
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
             <span class="text-[24px] font-bold tracking-wider text-white uppercase">CULTURE ATLAS</span>
-            <span class="text-[14px] text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded-lg border border-emerald-900/60">203 SANCTUARIES</span>
+            <span class="text-[14px] text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded-lg border border-emerald-900/60">203 SPACES</span>
           </div>
           <span class="text-[14px] text-[#a1a1aa] font-normal block leading-tight mt-0.5 truncate max-w-[210px] sm:max-w-none">
             Ethically funded cultural institutions across the world
@@ -1610,21 +1610,12 @@ def build():
       }}
     }}
 
-    // Initial Welcome Message with Proper Simple Language
+    // Initial Welcome Message (Concise, OpenAI ChatGPT style)
     function initCuratorConversation() {{
       curatorMessages.innerHTML = '';
       appendCuratorMessage(`
         <p class="text-[#ececec]">
-          Welcome to <strong>Culture Atlas</strong>. We map <strong>203 museums and art spaces across 35 countries</strong> that do not take money from oil companies, weapons makers, or private prisons.
-        </p>
-        <p class="text-[#d4d4d4]">
-          You can explore spaces with <strong>free admission</strong>, <strong>artist-run galleries</strong>, public museums, and places open on Mondays.
-        </p>
-        <p class="text-[#d4d4d4]">
-          For example, check out <a href="#" class="inst-link" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in <a href="#" class="city-link" data-city="London">London</a> (free entry), <a href="#" class="inst-link" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in <a href="#" class="city-link" data-city="Bordeaux">Bordeaux</a>, or <a href="#" class="inst-link" data-name="Dia Beacon">Dia Beacon</a> in <a href="#" class="city-link" data-city="New York">New York</a>.
-        </p>
-        <p class="text-[#93c5fd]">
-          Where would you like to go, or what kind of art are you looking for?
+          How can I help you explore museums and art spaces today?
         </p>
       `);
     }}
@@ -3131,7 +3122,7 @@ FORMATTING & INTERACTION RULES:
           activeMapBanner.classList.remove('hidden');
           const meta = FILTER_META[selectedCategoryFilter] || {{ icon: '📍', label: selectedCategoryFilter.toUpperCase() }};
           activeMapIcon.textContent = meta.icon;
-          activeMapText.textContent = `${{meta.label}} · ${{filteredList.length}} SANCTUARIES ON MAP`;
+          activeMapText.textContent = `${{meta.label}} · ${{filteredList.length}} SPACES ON MAP`;
         }} else {{
           activeMapBanner.classList.add('hidden');
         }}
