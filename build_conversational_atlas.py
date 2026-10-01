@@ -859,7 +859,7 @@ def build():
     let targetRadius = baseRadius;
 
     function getMinRadius() {{ return baseRadius * 0.7; }}
-    function getMaxRadius() {{ return baseRadius * 4.5; }}
+    function getMaxRadius() {{ return baseRadius * 7.0; }}
 
     // Slower Cinematic Motion Physics
     let rotLon = -45;
@@ -1262,7 +1262,7 @@ def build():
         }}
       }});
 
-      const zoomTarget = shouldSwitchToGlobe ? Math.max(targetRadius, baseRadius * 2.5) : null;
+      const zoomTarget = shouldSwitchToGlobe ? Math.max(targetRadius, baseRadius * 4.2) : targetRadius;
       if (shouldSwitchToGlobe) {{
         targetRadius = zoomTarget;
         if (currentSheetState === 'full') setChatSheetState('half');
@@ -1609,10 +1609,46 @@ CRITICAL FORMAT RULES:
       return null;
     }}
 
+    // Extract unique cities list for instant recognition
+    const ALL_CITIES = Array.from(new Set(ALL_INSTITUTIONS.map(i => (i.city || '').trim()))).filter(Boolean);
+    ALL_CITIES.sort((a, b) => b.length - a.length);
+
+    function findMentionedCity(text) {{
+      const t = (text || '').toLowerCase().trim();
+      for (const city of ALL_CITIES) {{
+        const cLow = city.toLowerCase();
+        const escaped = cLow.replace(/[.*+?^${{}}()|[\\]\\\\]/g, '\\\\$&');
+        const regex = new RegExp('(?:^|\\\\b|\\\\s)' + escaped + '(?:\\\\b|\\\\s|$)', 'i');
+        if (regex.test(t) || t === cLow) {{
+          return city;
+        }}
+      }}
+      return null;
+    }}
+
+    function findMentionedInst(text) {{
+      const t = (text || '').toLowerCase().trim();
+      return ALL_INSTITUTIONS.find(i => {{
+        const nameLow = i.name.toLowerCase();
+        if (t.includes(nameLow)) return true;
+        if (i.aliases && i.aliases.some(a => t.includes(a.toLowerCase()))) return true;
+        return false;
+      }});
+    }}
+
     // Intelligent Conversational Curator Knowledge Engine
     async function handleCuratorQuery(query) {{
       const q = query.toLowerCase().trim();
       curatorTyping.classList.remove('hidden');
+
+      // Proactively zoom into any mentioned location or city immediately
+      const earlyInst = findMentionedInst(query);
+      const earlyCity = findMentionedCity(query);
+      if (earlyInst) {{
+        selectInstitution(earlyInst, true);
+      }} else if (earlyCity) {{
+        filterByCity(earlyCity, true, false);
+      }}
 
       // 1. Try Live Gemini Generative Model if API Key is configured
       if (geminiApiKey) {{
@@ -1620,12 +1656,6 @@ CRITICAL FORMAT RULES:
         if (geminiHtml) {{
           curatorTyping.classList.add('hidden');
           appendCuratorMessage(geminiHtml);
-
-          const matchedCity = PRIORITY_CITIES.find(c => q.includes(c.name.toLowerCase()));
-          if (matchedCity) filterByCity(matchedCity.name, true, false);
-
-          const matchedInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
-          if (matchedInst) selectInstitution(matchedInst, false);
           return;
         }}
       }}
@@ -1646,7 +1676,7 @@ CRITICAL FORMAT RULES:
                 You will find it at <strong>${{targetInst.address}}</strong> in the ${{targetInst.neighborhood}} neighborhood, conveniently reached via ${{targetInst.transit_tips}}. I recommend setting aside roughly <strong>${{targetInst.visit_duration}}</strong> to immerse yourself in the exhibitions and its signature landmark: ${{targetInst.highlight}}.
               </p>
             `);
-            selectInstitution(targetInst, false);
+            selectInstitution(targetInst, true);
             return;
           }}
 
@@ -1692,7 +1722,7 @@ CRITICAL FORMAT RULES:
                 The venue is situated at <strong>${{targetInst.address}}</strong> in ${{targetInst.neighborhood}}. It welcomes visitors ${{targetInst.opening_hours}}, and I recommend planning about ${{targetInst.visit_duration}} for your visit.
               </p>
             `);
-            selectInstitution(targetInst, false);
+            selectInstitution(targetInst, true);
             return;
           }}
 
@@ -1722,7 +1752,7 @@ CRITICAL FORMAT RULES:
                 Transit access is straightforward via ${{targetInst.transit_tips}}. In accordance with equitable civic standards across our atlas, personal care assistants and essential companions always receive complimentary admission.
               </p>
             `);
-            selectInstitution(targetInst, false);
+            selectInstitution(targetInst, true);
             return;
           }}
 
@@ -1752,7 +1782,7 @@ CRITICAL FORMAT RULES:
                 While exploring, be sure not to miss its signature landmark, <span class="text-amber-300/90">${{targetInst.highlight}}</span>. The space is open to visitors ${{targetInst.opening_hours}}.
               </p>
             `);
-            selectInstitution(targetInst, false);
+            selectInstitution(targetInst, true);
             return;
           }}
 
@@ -1783,7 +1813,7 @@ CRITICAL FORMAT RULES:
                 Governed as an independent <em>${{targetInst.governance_type}}</em>, its curatorial programme centers on ${{targetInst.curatorial_focus}}. The museum welcomes visitors ${{targetInst.opening_hours}}.
               </p>
             `);
-            selectInstitution(targetInst, false);
+            selectInstitution(targetInst, true);
             return;
           }}
 
@@ -1893,9 +1923,9 @@ CRITICAL FORMAT RULES:
         }}
 
         // K. City Inquiries (London, Paris, New York, Berlin, Tokyo, etc.)
-        const matchedCity = PRIORITY_CITIES.find(c => q.includes(c.name.toLowerCase()));
+        const matchedCity = findMentionedCity(q) || (PRIORITY_CITIES.find(c => q.includes(c.name.toLowerCase()))?.name);
         if (matchedCity || q.includes('city') || q.includes('in ')) {{
-          const cityName = matchedCity ? matchedCity.name : '';
+          const cityName = matchedCity ? matchedCity : '';
           const cityMatches = ALL_INSTITUTIONS.filter(i => {{
             if (cityName) return matchC(i.city, cityName);
             return q.includes(i.city.toLowerCase());
@@ -2116,11 +2146,12 @@ CRITICAL FORMAT RULES:
         }}
       }}
 
-      // 6. Check if user clicked any text or element mentioning London
-      const txt = (e.target.textContent || '').trim().toLowerCase();
-      if (txt === 'london' || txt.includes('london')) {{
-        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.tagName === 'STRONG' || e.target.closest('button')) {{
-          filterByCity('London', true, false);
+      // 6. Check if user clicked any text or element mentioning any mapped city
+      const txt = (e.target.textContent || '').trim();
+      const matchedCityClick = findMentionedCity(txt);
+      if (matchedCityClick) {{
+        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.tagName === 'STRONG' || e.target.closest('button, a')) {{
+          filterByCity(matchedCityClick, true, false);
         }}
       }}
     }});
@@ -2416,7 +2447,7 @@ CRITICAL FORMAT RULES:
       applyFilters();
 
       const cty = PRIORITY_CITIES.find(c => c.name.toLowerCase() === cityName.toLowerCase());
-      const targetZoom = zoom ? baseRadius * 2.5 : null;
+      const targetZoom = zoom ? baseRadius * 4.0 : null;
 
       if (cty) {{
         flyTo(cty.lon, cty.lat, targetZoom);
@@ -2426,7 +2457,7 @@ CRITICAL FORMAT RULES:
       }}
 
       if (zoom) {{
-        targetRadius = baseRadius * 2.5;
+        targetRadius = baseRadius * 4.0;
         if (currentSheetState === 'full') {{
           setChatSheetState('half');
         }}

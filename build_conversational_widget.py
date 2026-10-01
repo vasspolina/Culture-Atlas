@@ -665,7 +665,10 @@ def update_widget():
         link.href = webUrl;
         domEl.textContent = dom;
       }}
-      if (fly) flyTo(inst.lon, inst.lat);
+      if (fly) {{
+        targetRadius = baseRadius * 4.0;
+        flyTo(inst.lon, inst.lat);
+      }}
     }}
 
     // =========================================================
@@ -710,7 +713,7 @@ def update_widget():
           const name = btn.getAttribute('data-name');
           const inst = DATA.find(i => i.name === name);
           if (inst) {{
-            targetRadius = baseRadius * 2.5;
+            targetRadius = baseRadius * 4.0;
             select(inst, true);
             if (window.innerWidth < 640) showTab('globe');
           }}
@@ -721,8 +724,11 @@ def update_widget():
         btn.addEventListener('click', (e) => {{
           e.preventDefault();
           const cityName = btn.getAttribute('data-city');
-          const c = PRIORITY_CITIES.find(pc => pc.name.toLowerCase() === cityName.toLowerCase());
-          if (c) flyTo(c.lon, c.lat);
+          const c = PRIORITY_CITIES.find(pc => pc.name.toLowerCase() === cityName.toLowerCase()) || DATA.find(i => i.city.toLowerCase() === cityName.toLowerCase());
+          if (c) {{
+            targetRadius = baseRadius * 3.8;
+            flyTo(c.lon, c.lat);
+          }}
           filterCity = cityName;
           if (window.innerWidth < 640) showTab('globe');
         }});
@@ -869,21 +875,23 @@ def update_widget():
               Instead, we celebrate uncompromised sanctuaries like ${{formatWInstLink(dia)}} and ${{formatWInstLink(sculp)}}.
             </p>
           `);
-        }} else {{
           // City or general matches
-          const matchCity = PRIORITY_CITIES.find(c => query.includes(c.name.toLowerCase()));
+          const matchCity = PRIORITY_CITIES.find(c => query.includes(c.name.toLowerCase())) || DATA.find(i => query.includes(i.city.toLowerCase()));
           if (matchCity) {{
-            const list = DATA.filter(i => i.city.toLowerCase() === matchCity.name.toLowerCase());
+            const cityName = matchCity.name || matchCity.city;
+            const cObj = PRIORITY_CITIES.find(c => c.name.toLowerCase() === cityName.toLowerCase()) || matchCity;
+            const list = DATA.filter(i => i.city.toLowerCase() === cityName.toLowerCase());
             const topSp = list.slice(0, 3).map(i => formatWInstLink(i, {{noCity: true}})).join(', ');
             appendWCurator(`
               <p class="text-slate-200">
-                Found <strong>${{list.length}}</strong> verified ethical spaces in <a href="#" class="w-city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(matchCity.name)}}">${{escapeHtml(matchCity.name)}}</a>.
+                Found <strong>${{list.length}}</strong> verified ethical spaces in <a href="#" class="w-city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(cityName)}}">${{escapeHtml(cityName)}}</a>.
               </p>
               <p class="text-slate-300">
                 Notable venues include ${{topSp}}.
               </p>
             `);
-            flyTo(matchCity.lon, matchCity.lat);
+            targetRadius = baseRadius * 3.8;
+            flyTo(cObj.lon, cObj.lat);
           }} else {{
             const rand = DATA.filter(i => i.tier === 'A');
             const p1 = rand[Math.floor(Math.random()*rand.length)];
@@ -1031,6 +1039,7 @@ def update_widget():
           const b = cityBadgeHitboxes[i];
           if (mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h) {{
             filterCity = b.name;
+            targetRadius = baseRadius * 3.8;
             flyTo(b.lon, b.lat);
             if (!wSheetOpen) setWSheet(true);
             const cityList = DATA.filter(inst => inst.city.toLowerCase() === b.name.toLowerCase());
