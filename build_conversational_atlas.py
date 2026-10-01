@@ -456,13 +456,6 @@ def build():
         <span>WGS84 Audited</span>
       </div>
 
-      <!-- Bottom-Right "Why MoMA is Excluded" Button -->
-      <div class="absolute bottom-2 right-2.5 sm:right-4 z-10 pointer-events-auto">
-        <button id="openMomaAuditBtn" class="text-[14px] font-medium text-[#fcd34d] hover:text-white bg-[#1c1917]/90 hover:bg-[#292218] border border-[#442c11] hover:border-[#f59e0b] px-2.5 py-1 rounded-xl transition flex items-center gap-1.5 shadow-sm">
-          <span>⚠️</span> <span>Why MoMA is excluded</span>
-        </button>
-      </div>
-
     </div>
 
     <!-- ========================================================= -->
@@ -593,9 +586,6 @@ def build():
           </button>
           <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="paris" data-chip-color="blue" data-city="Paris" data-query="Tell me about art spaces to visit in Paris">
             <span>📍 Paris guide</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#3b2b11] bg-[#221807] text-[#fcd34d] hover:border-[#f59e0b] hover:bg-[#2d2009] transition active:scale-95 flex items-center gap-1.5" data-filter="moma" data-chip-color="amber" data-query="Why is MoMA excluded from Culture Atlas?">
-            <span>⚠️ Why MoMA is excluded</span>
           </button>
           <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_objecthood" data-query="Explain 'Beyond Objecthood' in simple terms">
             <span>📖 Beyond Objecthood</span>

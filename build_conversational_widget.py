@@ -315,12 +315,6 @@ def update_widget():
         <span>└───┘ 2,000 km</span>
       </div>
 
-      <div class="absolute bottom-1.5 right-2 z-10 pointer-events-auto">
-        <button id="wOpenMomaBtn" class="text-[14px] font-medium text-[#fcd34d] hover:text-white bg-[#1c1917]/90 border border-[#442c11] hover:border-[#f59e0b] px-2 py-0.5 rounded-xl transition flex items-center gap-1 shadow-sm">
-          <span>⚠️</span> <span>Why MoMA is excluded</span>
-        </button>
-      </div>
-
       <div class="absolute top-1.5 right-2 text-[14px] text-[#71717a] pointer-events-none bg-[#171717]/80 px-2 py-0.5 rounded-lg border border-[#2e2e2e]">
         Tap city or pin
       </div>
@@ -348,23 +342,20 @@ def update_widget():
 
       <!-- Inquiry Prompt Chips: Sleek ChatGPT style -->
       <div id="wInquiryCarousel" class="px-3 py-1.5 border-t border-[#262626] bg-[#171717] flex items-center gap-1.5 overflow-x-auto custom-scroll text-[14px] whitespace-nowrap shrink-0">
-        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Which cultural spaces offer always free admission?">
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Which museums and galleries are free to enter?">
           Free admission
         </button>
-        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="What are typical museum opening hours and which institutions are open on Mondays?">
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Which museums are open on Mondays?">
           Hours & Mondays
         </button>
-        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="How do I get to destination museums like Dia Beacon or Louisiana by public transit?">
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="How do I get to Dia Beacon or Louisiana by train?">
           Transit tips
         </button>
-        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Recommend independent artist-run centers">
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="What are the best artist-run spaces to visit?">
           Artist-run centers
         </button>
-        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="What makes an institution ethically funded?">
-          Ethical criteria
-        </button>
-        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Why is MoMA excluded from Culture Atlas?">
-          Why MoMA excluded
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="How do you decide if a museum has clean funding?">
+          Clean funding
         </button>
       </div>
 
