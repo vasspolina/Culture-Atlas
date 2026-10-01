@@ -258,123 +258,126 @@ def update_widget():
   </style>
 </head>
 <body class="p-1 sm:p-2 antialiased">
-  <div class="bg-[#020408] text-white border border-[#1c212a] rounded-2xl p-2 sm:p-2.5 shadow-2xl overflow-hidden flex flex-col gap-1.5 h-[500px]">
+  <div class="bg-[#171717] text-white border border-[#262626] rounded-3xl p-2.5 sm:p-3 shadow-2xl overflow-hidden flex flex-col gap-2 h-[500px]">
     
     <!-- Header with Tagline -->
-    <div class="flex items-center justify-between border-b border-[#1c212a] pb-1.5 px-1 shrink-0">
+    <div class="flex items-center justify-between border-b border-[#262626] pb-2 px-1 shrink-0">
       <div>
         <div class="flex items-center gap-2">
-          <div class="w-2 rounded-full bg-[#1d4ed8] h-2"></div>
-          <span class="text-[18px] font-bold tracking-wider text-[#cbd5e1] uppercase">CULTURE ATLAS</span>
-          <span class="text-[14px] font-mono text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded border border-emerald-900/60">203 SANCTUARIES</span>
+          <div class="w-2 h-2 rounded-full bg-white"></div>
+          <span class="text-[18px] font-bold tracking-wider text-white uppercase">CULTURE ATLAS</span>
+          <span class="text-[14px] text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded-lg border border-emerald-900/60">203 SANCTUARIES</span>
         </div>
-        <p class="text-[14px] text-[#94a3b8] font-normal leading-snug mt-0.5">
+        <p class="text-[14px] text-[#a1a1aa] font-normal leading-snug mt-0.5">
           Ethically funded cultural institutions across the world
         </p>
       </div>
 
       <!-- Globe Quick Controls -->
-      <div class="flex items-center gap-1 text-[14px] font-mono">
-        <button id="wResetBtn" class="px-2 py-0.5 rounded bg-[#101420] border border-[#232a3c] text-slate-300 hover:text-white transition">🔄 Reset</button>
-        <button id="wSpinBtn" class="px-2 py-0.5 rounded bg-[#101420] border border-[#232a3c] text-[#3b82f6] hover:text-white transition">⟳ Spin</button>
+      <div class="flex items-center gap-1.5 text-[14px]">
+        <button id="wResetBtn" class="px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition">🔄 Reset</button>
+        <button id="wSpinBtn" class="px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#93c5fd] hover:text-white transition">⟳ Spin</button>
       </div>
     </div>
 
     <!-- Active Filter Banner (When city/country clicked) -->
-    <div id="wMobileFilterBanner" class="hidden flex items-center justify-between bg-[#0e1628] border border-[#1d4ed8] px-2 py-0.5 rounded text-[14px] shrink-0">
-      <span id="wMobileFilterText" class="font-semibold text-white truncate text-[14px]">📍 NEW YORK (11)</span>
-      <button id="wMobileClearFilter" class="text-[14px] text-[#94a3b8] hover:text-white">✕ Clear</button>
+    <div id="wMobileFilterBanner" class="hidden flex items-center justify-between bg-[#212121] border border-[#333] px-3 py-1 rounded-xl text-[14px] shrink-0">
+      <span id="wMobileFilterText" class="font-medium text-white truncate text-[14px]">📍 NEW YORK (11)</span>
+      <button id="wMobileClearFilter" class="text-[14px] text-[#a1a1aa] hover:text-white">✕ Clear</button>
     </div>
 
     <!-- TOP HALF: 🌍 3D GLOBE PANEL (Half Screen) -->
-    <div id="wGlobePanel" class="relative w-full h-[200px] flex items-center justify-center bg-[#000000] rounded-xl border border-[#1c212a] overflow-hidden shrink-0">
+    <div id="wGlobePanel" class="relative w-full h-[200px] flex items-center justify-center bg-[#000000] rounded-2xl border border-[#262626] overflow-hidden shrink-0">
       <canvas id="widgetCanvas" class="w-full h-full block cursor-grab"></canvas>
 
       <!-- Floating Dark Pin Card -->
-      <div id="wCard" class="hidden absolute z-30 pointer-events-auto bg-[#0a0e18]/95 backdrop-blur-md text-slate-100 rounded-lg px-2.5 py-1.5 shadow-xl transition transform -translate-x-1/2 -translate-y-full mb-2 cursor-pointer border border-[#1e283e] max-w-[240px]">
+      <div id="wCard" class="hidden absolute z-30 pointer-events-auto bg-[#18181b]/95 backdrop-blur-md text-slate-100 rounded-2xl p-2.5 shadow-xl transition transform -translate-x-1/2 -translate-y-full mb-2 cursor-pointer border border-[#2e2e2e] max-w-[240px]">
         <div class="flex items-start justify-between gap-1">
           <div class="truncate pr-1">
-            <div class="text-[14px] font-semibold text-white leading-tight truncate" id="wCardTitle"></div>
-            <div class="text-[14px] text-slate-400 mt-0.5 truncate font-mono" id="wCardMeta"></div>
+            <div class="text-[14px] font-medium text-white leading-tight truncate" id="wCardTitle"></div>
+            <div class="text-[14px] text-[#a1a1aa] mt-0.5 truncate" id="wCardMeta"></div>
           </div>
-          <button id="wCardCloseBtn" class="text-slate-400 hover:text-white p-0.5 rounded text-[14px] leading-none shrink-0 cursor-pointer" title="Close">✕</button>
+          <button id="wCardCloseBtn" class="text-[#a1a1aa] hover:text-white p-0.5 rounded text-[14px] leading-none shrink-0 cursor-pointer" title="Close">✕</button>
         </div>
-        <div class="mt-1 pt-1 border-t border-[#1c2336] flex items-center justify-between text-[14px]">
+        <div class="mt-1.5 pt-1.5 border-t border-[#2e2e2e] flex items-center justify-between text-[14px]">
           <a id="wCardLink" href="#" target="_blank" rel="noopener noreferrer" 
-             class="text-[#60a5fa] hover:text-white flex items-center gap-1 font-mono transition cursor-pointer" onclick="event.stopPropagation()">
+             class="text-[#93c5fd] hover:text-white flex items-center gap-1 transition cursor-pointer" onclick="event.stopPropagation()">
             <span>🌐</span> <span id="wCardDom">website</span> <span>↗</span>
           </a>
-          <button id="wCardCuratorBtn" class="text-[#3b82f6] hover:text-[#60a5fa] font-semibold transition cursor-pointer" onclick="event.stopPropagation()">
+          <button id="wCardCuratorBtn" class="text-white hover:text-[#93c5fd] font-medium transition cursor-pointer" onclick="event.stopPropagation()">
             💬 Ask
           </button>
         </div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[5px] border-x-transparent border-t-[5px] border-t-[#0a0e18]"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[5px] border-x-transparent border-t-[5px] border-t-[#18181b]"></div>
       </div>
 
-      <div class="absolute bottom-1.5 left-2 text-[14px] text-[#64748b] font-mono pointer-events-none">
+      <div class="absolute bottom-1.5 left-2 text-[14px] text-[#71717a] pointer-events-none">
         <span>└───┘ 2,000 km</span>
       </div>
 
       <div class="absolute bottom-1.5 right-2 z-10 pointer-events-auto">
-        <button id="wOpenMomaBtn" class="text-[14px] font-semibold text-[#f1c21b] hover:text-white bg-[#1a1406]/90 border border-[#4d3d0f] hover:border-[#f1c21b] px-1.5 py-0.5 rounded transition flex items-center gap-1 shadow">
+        <button id="wOpenMomaBtn" class="text-[14px] font-medium text-[#fcd34d] hover:text-white bg-[#1c1917]/90 border border-[#442c11] hover:border-[#f59e0b] px-2 py-0.5 rounded-xl transition flex items-center gap-1 shadow-sm">
           <span>⚠️</span> <span>Why MoMA is excluded</span>
         </button>
       </div>
 
-      <div class="absolute top-1.5 right-2 text-[14px] text-[#64748b] font-mono pointer-events-none bg-[#090d18]/80 px-1.5 py-0.5 rounded border border-[#1e2434]">
+      <div class="absolute top-1.5 right-2 text-[14px] text-[#71717a] pointer-events-none bg-[#171717]/80 px-2 py-0.5 rounded-lg border border-[#2e2e2e]">
         Tap city or pin
       </div>
     </div>
 
     <!-- BOTTOM HALF: 💬 CHAT CONVERSATIONAL PANEL (Half Sheet) -->
-    <div id="wCuratorPanel" class="flex-1 flex flex-col bg-[#07090e] border border-[#1c212a] rounded-xl overflow-hidden min-h-0">
+    <div id="wCuratorPanel" class="flex-1 flex flex-col bg-[#171717] border border-[#262626] rounded-2xl overflow-hidden min-h-0">
       
       <!-- Sheet Header: Drag Handle & Open/Close Bar -->
-      <div id="wSheetHeader" class="px-2 py-1 border-b border-[#1c212a] bg-[#0a0d14]/95 flex items-center justify-between gap-1.5 shrink-0 select-none cursor-pointer">
-        <div class="flex items-center gap-1.5 truncate">
-          <div class="w-6 h-1 bg-slate-600 rounded-full shrink-0"></div>
-          <span class="text-[14px] font-semibold text-white truncate">💬 Curator Guide</span>
-          <span id="wSheetBadge" class="text-[14px] font-mono text-emerald-400 bg-[#0a2016] px-1 py-0.2 rounded border border-emerald-900/60 hidden xs:inline">Half Sheet</span>
+      <div id="wSheetHeader" class="px-3 py-1.5 border-b border-[#262626] bg-[#171717] flex items-center justify-between gap-1.5 shrink-0 select-none cursor-pointer">
+        <div class="flex items-center gap-2 truncate">
+          <div class="w-6 h-1 bg-[#3a3a3a] rounded-full shrink-0"></div>
+          <span class="text-[14px] font-medium text-white truncate">Curator Guide</span>
+          <span id="wSheetBadge" class="text-[14px] text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded-lg border border-emerald-900/60 hidden xs:inline">Half Sheet</span>
         </div>
-        <button id="wSheetToggleBtn" class="px-2 py-0.5 bg-[#182032] hover:bg-[#202c46] border border-[#283654] text-[#60a5fa] hover:text-white text-[14px] font-semibold rounded-md transition flex items-center gap-1 shadow">
+        <button id="wSheetToggleBtn" class="px-2.5 py-0.5 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white text-[14px] rounded-xl transition flex items-center gap-1">
           <span>▼</span> <span>Close</span>
         </button>
       </div>
 
       <!-- Conversation Feed -->
-      <div id="wCuratorMessages" class="flex-1 overflow-y-auto custom-scroll p-2 space-y-2 text-[14px]">
+      <div id="wCuratorMessages" class="flex-1 overflow-y-auto custom-scroll p-3 space-y-3 text-[14px]">
         <!-- Messages injected dynamically -->
       </div>
 
-      <!-- Inquiry Prompt Chips -->
-      <div id="wInquiryCarousel" class="px-2 py-1 border-t border-[#161a26] bg-[#090c14] flex items-center gap-1.5 overflow-x-auto custom-scroll text-[14px] font-mono whitespace-nowrap shrink-0">
-        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981]" data-query="Which cultural spaces offer always free admission?">
-          🎟️ Free Admission
+      <!-- Inquiry Prompt Chips: Sleek ChatGPT style -->
+      <div id="wInquiryCarousel" class="px-3 py-1.5 border-t border-[#262626] bg-[#171717] flex items-center gap-1.5 overflow-x-auto custom-scroll text-[14px] whitespace-nowrap shrink-0">
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Which cultural spaces offer always free admission?">
+          Free admission
         </button>
-        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6]" data-query="What are typical museum opening hours and which institutions are open on Mondays?">
-          🕒 Hours & Mondays
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="What are typical museum opening hours and which institutions are open on Mondays?">
+          Hours & Mondays
         </button>
-        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6]" data-query="How do I get to destination museums like Dia Beacon or Louisiana by public transit?">
-          🚇 Transit Tips
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="How do I get to destination museums like Dia Beacon or Louisiana by public transit?">
+          Transit tips
         </button>
-        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6]" data-query="Which museums offer step-free wheelchair accessibility and inclusive facilities?">
-          ♿ Accessibility
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Recommend independent artist-run centers">
+          Artist-run centers
         </button>
-        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6]" data-query="Recommend independent artist-run centers">
-          🎨 Artist-run centers
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="What makes an institution ethically funded?">
+          Ethical criteria
         </button>
-        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6]" data-query="What makes an institution ethically funded?">
-          🏛️ Ethical Criteria
-        </button>
-        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#3b2b11] bg-[#221807] text-[#fcd34d] hover:border-[#f59e0b]" data-query="Why is MoMA excluded from Culture Atlas?">
-          ⚠️ Why MoMA excluded
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Why is MoMA excluded from Culture Atlas?">
+          Why MoMA excluded
         </button>
       </div>
 
-      <!-- Chat Input Bar -->
-      <div id="wInputBar" class="p-1.5 border-t border-[#1c212a] bg-[#0a0d14] flex items-center gap-1.5 shrink-0">
-        <input id="wCuratorInput" type="text" placeholder="Ask curator: 'London guide', 'Dia Beacon hours'..." class="w-full bg-[#121622] border border-[#202535] text-[14px] text-white px-2.5 py-1 rounded-lg focus:outline-none focus:border-[#3b82f6]" />
-        <button id="wCuratorSend" class="px-2.5 py-1 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-semibold rounded-lg transition shrink-0">Ask</button>
+      <!-- Chat Input Bar: Sleek ChatGPT floating pill -->
+      <div id="wInputBar" class="p-2 border-t border-[#262626] bg-[#171717] shrink-0">
+        <div class="relative flex items-center bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-1 pl-3.5 pr-1 shadow-sm transition">
+          <input id="wCuratorInput" type="text" placeholder="Message Curator..." class="w-full bg-transparent border-0 text-[14px] text-white placeholder-[#71717a] focus:outline-none py-1 font-sans" />
+          <button id="wCuratorSend" class="w-7 h-7 rounded-full bg-white text-black hover:bg-neutral-200 transition active:scale-95 flex items-center justify-center shrink-0 shadow-sm ml-1" title="Send">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19V5M5 12l7-7 7 7"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -687,21 +690,21 @@ def update_widget():
       const webUrl = inst.website || '';
       let domain = 'website';
       try {{ domain = new URL(webUrl).hostname.replace(/^www\\./, ''); }} catch(e) {{}}
-      const nameLink = `<a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>`;
-      const cityPart = opts.noCity ? '' : ` in <a href="#" class="w-city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
-      const webPart = webUrl ? ` (<a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] font-mono text-[14px]">${{domain}} ↗</a>)` : '';
+      const nameLink = `<a href="#" class="w-inst-link font-medium text-white hover:text-blue-300 underline underline-offset-4 decoration-neutral-500 hover:decoration-blue-400 transition cursor-pointer" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>`;
+      const cityPart = opts.noCity ? '' : ` in <a href="#" class="w-city-link text-[#93c5fd] hover:text-[#bfdbfe] underline underline-offset-4 decoration-[#93c5fd]/30 hover:decoration-[#bfdbfe] transition cursor-pointer" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
+      const webPart = webUrl ? ` (<a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" class="text-[#a1a1aa] hover:text-white transition text-[14px]">${{domain}} ↗</a>)` : '';
       return `${{nameLink}}${{cityPart}}${{webPart}}`;
     }}
 
     function appendWCurator(html) {{
       const div = document.createElement('div');
-      div.className = 'flex flex-col gap-1';
+      div.className = 'flex items-start gap-2.5 my-1.5 select-text';
 
       div.innerHTML = `
-        <div class="flex items-center gap-1 text-[14px] font-mono text-[#60a5fa]">
-          <span>🏛️</span> <span class="font-semibold text-slate-200">Curator</span>
+        <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] text-white shrink-0 mt-0.5 select-none" title="Curator">
+          🏛️
         </div>
-        <div class="bg-[#101420] border border-[#1e2538] text-[14px] text-slate-200 p-2.5 rounded-xl space-y-1.5 leading-relaxed">
+        <div class="flex-1 min-w-0 text-[14px] text-[#ececec] leading-relaxed space-y-2 pt-0.5">
           ${{html}}
         </div>
       `;
@@ -739,11 +742,10 @@ def update_widget():
 
     function appendWUser(text) {{
       const div = document.createElement('div');
-      div.className = 'flex flex-col items-end gap-0.5';
+      div.className = 'flex justify-end my-1';
       div.innerHTML = `
-        <div class="text-[14px] font-mono text-[#94a3b8]">You</div>
-        <div class="max-w-[90%] bg-[#1d4ed8] text-white text-[14px] px-2.5 py-1.5 rounded-xl rounded-tr-none">
-          ${{text}}
+        <div class="max-w-[85%] bg-[#2f2f2f] text-[#ececec] text-[14px] px-3.5 py-2 rounded-2xl shadow-sm leading-relaxed whitespace-pre-wrap select-text">
+          ${{escapeHtml(text)}}
         </div>
       `;
       wMessages.appendChild(div);
@@ -753,11 +755,11 @@ def update_widget():
     function initWConversation() {{
       wMessages.innerHTML = '';
       appendWCurator(`
-        <p class="text-slate-200">
+        <p class="text-[#ececec]">
           Welcome to <strong>Culture Atlas</strong>. We map 203 verified ethical cultural sanctuaries across 35 countries—institutions that operate with transparent public funding and clean underwriting without fossil-fuel or defense sponsorship.
         </p>
-        <p class="text-slate-300">
-          For example, explore <a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in London (free admission), <a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in Bordeaux, or <a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Dia Beacon">Dia Beacon</a> in New York.
+        <p class="text-[#d4d4d4]">
+          For example, explore <a href="#" class="w-inst-link" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in London (free admission), <a href="#" class="w-inst-link" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in Bordeaux, or <a href="#" class="w-inst-link" data-name="Dia Beacon">Dia Beacon</a> in New York.
         </p>
         <p class="text-[#93c5fd]">
           Which city or type of art experience would you like to discover today?

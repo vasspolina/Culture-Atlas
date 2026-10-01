@@ -253,21 +253,60 @@ def build():
       cursor: grabbing;
     }}
     .custom-scrollbar::-webkit-scrollbar {{
-      width: 4px;
-      height: 4px;
+      width: 5px;
+      height: 5px;
     }}
     .custom-scrollbar::-webkit-scrollbar-thumb {{
-      background: #262a34;
-      border-radius: 4px;
+      background: #333333;
+      border-radius: 9999px;
+    }}
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {{
+      background: #444444;
     }}
     .inst-card {{
       transition: all 0.15s ease-in-out;
     }}
     .inst-card.active {{
       border-color: #3b82f6 !important;
-      background-color: #111726 !important;
+      background-color: #222834 !important;
     }}
     
+    /* Clean ChatGPT style links */
+    .inst-link {{
+      font-weight: 500;
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255, 255, 255, 0.4);
+      transition: all 0.15s ease;
+    }}
+    .inst-link:hover {{
+      color: #60a5fa;
+      text-decoration-color: #60a5fa;
+    }}
+    .city-link {{
+      color: #93c5fd;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(147, 197, 253, 0.35);
+      transition: all 0.15s ease;
+    }}
+    .city-link:hover {{
+      color: #bfdbfe;
+      text-decoration-color: #bfdbfe;
+    }}
+    .dossier-link {{
+      color: #a1a1aa;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: rgba(161, 161, 170, 0.3);
+      transition: all 0.15s ease;
+    }}
+    .dossier-link:hover {{
+      color: #ffffff;
+      text-decoration-color: #ffffff;
+    }}
+
     /* Mobile & Desktop Bottom Half Sheet Smooth Transitions */
     #globeViewport {{
       transition: height 0.32s cubic-bezier(0.16, 1, 0.3, 1);
@@ -343,49 +382,49 @@ def build():
       <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
 
       <!-- FLOATING INSTITUTION CARD (Pinned to selected institution with Website Link & Hours) -->
-      <div id="floatingCard" class="hidden absolute z-20 pointer-events-auto bg-[#0a0e18]/95 backdrop-blur-md text-slate-100 rounded-xl px-3.5 py-2.5 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 border border-[#1e283e] max-w-[310px] sm:max-w-[350px]">
+      <div id="floatingCard" class="hidden absolute z-20 pointer-events-auto bg-[#18181b]/95 backdrop-blur-md text-slate-100 rounded-2xl p-3 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 border border-[#2e2e2e] max-w-[310px] sm:max-w-[350px]">
         <div class="flex items-start justify-between gap-2">
           <div class="truncate pr-1">
-            <div id="floatingCardTitle" class="font-semibold text-[18px] text-white leading-tight truncate"></div>
-            <div id="floatingCardMeta" class="text-[14px] text-slate-400 mt-0.5 flex items-center gap-1 font-mono">
+            <div id="floatingCardTitle" class="font-medium text-[18px] text-white leading-tight truncate"></div>
+            <div id="floatingCardMeta" class="text-[14px] text-[#a1a1aa] mt-0.5 flex items-center gap-1 font-mono">
               <span></span>
             </div>
           </div>
           <div class="flex items-center gap-1 shrink-0">
-            <span id="floatingCardTier" class="text-[14px] font-mono px-1.5 py-0.5 rounded border border-emerald-900 bg-[#0a2016] text-emerald-400">Verified</span>
-            <button id="closeFloatingCardBtn" class="text-slate-400 hover:text-white p-1 rounded-md hover:bg-[#151c2d] transition text-[14px] leading-none ml-0.5 cursor-pointer" title="Close">✕</button>
+            <span id="floatingCardTier" class="text-[14px] px-2 py-0.5 rounded-lg border border-emerald-900/60 bg-[#0a2016] text-emerald-400">Verified</span>
+            <button id="closeFloatingCardBtn" class="text-[#a1a1aa] hover:text-white p-1 rounded-md hover:bg-[#262626] transition text-[14px] leading-none ml-0.5 cursor-pointer" title="Close">✕</button>
           </div>
         </div>
 
-        <div id="floatingCardHours" class="text-[14px] font-mono text-emerald-400 mt-1 truncate"></div>
+        <div id="floatingCardHours" class="text-[14px] text-emerald-400 mt-1 truncate"></div>
 
-        <div class="mt-2 pt-2 border-t border-[#1a2336] flex items-center justify-between text-[14px] gap-2">
+        <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between text-[14px] gap-2">
           <a id="floatingCardWebLink" href="#" target="_blank" rel="noopener noreferrer" 
-             class="inline-flex items-center gap-1 text-[#60a5fa] hover:text-white font-mono transition cursor-pointer"
+             class="inline-flex items-center gap-1 text-[#93c5fd] hover:text-white transition cursor-pointer"
              onclick="event.stopPropagation()">
             <span>🌐</span> <span id="floatingCardDomain" class="truncate max-w-[90px]">website</span> <span class="text-[14px]">↗</span>
           </a>
           <div class="flex items-center gap-2">
-            <button id="floatingCardDossierBtn" class="text-slate-400 hover:text-white font-mono transition text-[14px] cursor-pointer" onclick="event.stopPropagation()">
+            <button id="floatingCardDossierBtn" class="text-[#a1a1aa] hover:text-white transition text-[14px] cursor-pointer" onclick="event.stopPropagation()">
               Audit Dossier →
             </button>
-            <button id="floatingCardAskCurator" class="inline-flex items-center gap-1 text-[#3b82f6] hover:text-[#60a5fa] font-semibold transition text-[14px] cursor-pointer" onclick="event.stopPropagation()">
+            <button id="floatingCardAskCurator" class="inline-flex items-center gap-1 text-white hover:text-[#93c5fd] font-medium transition text-[14px] cursor-pointer" onclick="event.stopPropagation()">
               <span>💬</span> <span>Ask</span>
             </button>
           </div>
         </div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[6px] border-x-transparent border-t-[6px] border-t-[#0a0e18]"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[6px] border-x-transparent border-t-[6px] border-t-[#18181b]"></div>
       </div>
 
       <!-- Top-Left Branding Watermark & Tagline -->
-      <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-4 z-10 pointer-events-auto flex items-center gap-2 bg-[#070a12]/85 backdrop-blur-md px-2.5 py-1.5 rounded-xl border border-[#1e2638]">
-        <div class="w-2.5 h-2.5 rounded-full bg-[#1d4ed8]"></div>
+      <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-4 z-10 pointer-events-auto flex items-center gap-2.5 bg-[#171717]/85 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-[#2e2e2e] shadow-md">
+        <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
         <div class="flex flex-col">
-          <div class="flex items-center gap-1.5">
-            <span class="text-[24px] font-bold tracking-wider text-[#cbd5e1] uppercase">CULTURE ATLAS</span>
-            <span class="text-[14px] sm:text-[14px] font-mono text-emerald-400 bg-[#0a2016] px-1.5 rounded border border-emerald-900/60">203 SANCTUARIES</span>
+          <div class="flex items-center gap-2">
+            <span class="text-[24px] font-bold tracking-wider text-white uppercase">CULTURE ATLAS</span>
+            <span class="text-[14px] text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded-lg border border-emerald-900/60">203 SANCTUARIES</span>
           </div>
-          <span class="text-[14px] sm:text-[14px] text-[#94a3b8] font-normal block leading-tight mt-0.5 truncate max-w-[210px] sm:max-w-none">
+          <span class="text-[14px] text-[#a1a1aa] font-normal block leading-tight mt-0.5 truncate max-w-[210px] sm:max-w-none">
             Ethically funded cultural institutions across the world
           </span>
         </div>
@@ -393,18 +432,18 @@ def build():
 
       <!-- Top-Right Globe Map Controls & Reset -->
       <div class="absolute top-2.5 right-2.5 sm:top-3 sm:right-4 z-10 flex items-center gap-1.5">
-        <button id="resetViewBtn" class="bg-[#0e1320]/90 hover:bg-[#1b233a] border border-[#222c42] text-slate-300 px-2 sm:px-2.5 py-1 rounded-lg text-[14px] sm:text-[14px] font-mono transition flex items-center gap-1 shadow">
+        <button id="resetViewBtn" class="bg-[#171717]/90 hover:bg-[#262626] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white px-2.5 py-1 rounded-xl text-[14px] transition flex items-center gap-1 shadow-sm">
           <span>🔄</span> <span class="hidden sm:inline">Reset</span>
         </button>
-        <button id="spinBtn" class="bg-[#0e1320]/90 hover:bg-[#1b233a] border border-[#222c42] text-[#3b82f6] hover:text-white px-2 sm:px-2.5 py-1 rounded-lg text-[14px] sm:text-[14px] font-mono transition shadow">
+        <button id="spinBtn" class="bg-[#171717]/90 hover:bg-[#262626] border border-[#2e2e2e] text-[#93c5fd] hover:text-white px-2.5 py-1 rounded-xl text-[14px] transition shadow-sm">
           <span>⟳</span> <span class="hidden sm:inline">Auto-Spin</span>
         </button>
-        <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0e1320]/90 border border-[#222c42] text-slate-300 hover:text-white flex items-center justify-center transition shadow text-[14px] sm:text-[14px] font-mono" title="Zoom In">+</button>
-        <button id="zoomOutBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0e1320]/90 border border-[#222c42] text-slate-300 hover:text-white flex items-center justify-center transition shadow text-[14px] sm:text-[14px] font-mono" title="Zoom Out">−</button>
+        <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#171717]/90 border border-[#2e2e2e] text-[#d4d4d4] hover:text-white flex items-center justify-center transition shadow-sm text-[14px]" title="Zoom In">+</button>
+        <button id="zoomOutBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#171717]/90 border border-[#2e2e2e] text-[#d4d4d4] hover:text-white flex items-center justify-center transition shadow-sm text-[14px]" title="Zoom Out">−</button>
       </div>
 
       <!-- Bottom-Left Map Scale & Attribution -->
-      <div class="absolute bottom-2 left-2.5 sm:left-4 z-10 pointer-events-none flex items-center gap-2 text-[14px] sm:text-[14px] text-[#64748b] font-mono bg-[#070a12]/75 px-2 py-0.5 rounded border border-[#161d2d]/60">
+      <div class="absolute bottom-2 left-2.5 sm:left-4 z-10 pointer-events-none flex items-center gap-2 text-[14px] text-[#71717a] bg-[#171717]/80 backdrop-blur-sm px-2.5 py-0.5 rounded-lg border border-[#2e2e2e]/60">
         <span>└───┘ 2,000 km</span>
         <span>·</span>
         <span>WGS84 Audited</span>
@@ -412,7 +451,7 @@ def build():
 
       <!-- Bottom-Right "Why MoMA is Excluded" Button -->
       <div class="absolute bottom-2 right-2.5 sm:right-4 z-10 pointer-events-auto">
-        <button id="openMomaAuditBtn" class="text-[14px] sm:text-[14px] font-semibold text-[#f1c21b] hover:text-white bg-[#1a1406]/90 border border-[#4d3d0f] hover:border-[#f1c21b] px-2 sm:px-2.5 py-0.5 rounded-lg transition flex items-center gap-1 shadow">
+        <button id="openMomaAuditBtn" class="text-[14px] font-medium text-[#fcd34d] hover:text-white bg-[#1c1917]/90 hover:bg-[#292218] border border-[#442c11] hover:border-[#f59e0b] px-2.5 py-1 rounded-xl transition flex items-center gap-1.5 shadow-sm">
           <span>⚠️</span> <span>Why MoMA is excluded</span>
         </button>
       </div>
@@ -422,69 +461,71 @@ def build():
     <!-- ========================================================= -->
     <!-- 💬 BOTTOM HALF: CHAT CURATOR & CATALOG (HALF SHEET) -->
     <!-- ========================================================= -->
-    <div id="bottomChatSection" class="relative w-full h-[50vh] flex flex-col bg-[#07090e] overflow-hidden border-t border-[#1c212a] z-20">
+    <!-- ========================================================= -->
+    <!-- 💬 BOTTOM HALF: CHAT CURATOR & CATALOG (HALF SHEET) -->
+    <!-- ========================================================= -->
+    <div id="bottomChatSection" class="relative w-full h-[50vh] flex flex-col bg-[#171717] overflow-hidden border-t border-[#262626] z-20">
       
       <!-- Sheet Drag Handle & Open/Close Bar -->
-      <div id="sheetHeaderBar" class="px-2.5 py-1.5 sm:px-4 sm:py-2 border-b border-[#1c212a] bg-[#0a0d14]/95 flex flex-col gap-1 shrink-0 select-none">
+      <div id="sheetHeaderBar" class="px-3 py-1.5 sm:px-6 sm:py-2 border-b border-[#262626] bg-[#171717] flex flex-col gap-1 shrink-0 select-none">
         
         <!-- Drag Handle Indicator Pill -->
-        <div id="sheetDragHandle" class="w-10 h-1 bg-slate-600 hover:bg-slate-400 rounded-full mx-auto my-0.5 transition cursor-grab active:cursor-grabbing" title="Drag or tap to toggle sheet"></div>
+        <div id="sheetDragHandle" class="w-8 h-1 bg-[#3a3a3a] hover:bg-[#555] rounded-full mx-auto my-0.5 transition cursor-grab active:cursor-grabbing" title="Drag or tap to toggle sheet"></div>
 
         <!-- 1. Open State Controls Row (Shown when Half or Full) -->
-        <div id="sheetOpenControls" class="flex items-center justify-between gap-2">
+        <div id="sheetOpenControls" class="flex items-center justify-between gap-3">
           
-          <!-- Mode Navigation Tabs (💬 Curator Guide / 📋 Research Catalog) -->
-          <div class="flex items-center bg-[#101420] border border-[#1e2434] rounded-lg p-0.5 text-[14px] font-medium">
-            <button id="tabCuratorBtn" class="py-1 px-2.5 sm:px-3 rounded-md transition text-center flex items-center gap-1.5 bg-[#1d4ed8] text-white font-semibold shadow">
-              <span>💬</span>
+          <!-- Mode Navigation Tabs: Sleek ChatGPT / Apple-style Segmented Control -->
+          <div class="flex items-center bg-[#212121] border border-[#2e2e2e] rounded-xl p-0.5 text-[14px]">
+            <button id="tabCuratorBtn" class="py-1 px-3 rounded-lg transition text-center flex items-center gap-1.5 bg-[#2f2f2f] text-white font-medium shadow-sm">
               <span>Curator Guide</span>
             </button>
-            <button id="tabCatalogBtn" class="py-1 px-2.5 sm:px-3 rounded-md transition text-center flex items-center gap-1.5 text-[#94a3b8] hover:text-white">
-              <span>📋</span>
+            <button id="tabCatalogBtn" class="py-1 px-3 rounded-lg transition text-center flex items-center gap-1.5 text-[#a1a1aa] hover:text-white">
               <span>Catalog (203)</span>
             </button>
           </div>
 
-          <!-- Right Controls: Status + Expand/Restore + Close Toggle -->
-          <div class="flex items-center gap-1.5">
-            <span id="listTotalBadge" class="text-[14px] sm:text-[14px] font-mono text-[#94a3b8] bg-[#161821] px-2 py-0.5 rounded border border-[#282c38]">
+          <!-- Right Controls: Status + Settings + Expand/Restore + Close Toggle -->
+          <div class="flex items-center gap-2">
+            <span id="listTotalBadge" class="hidden sm:inline text-[14px] text-[#71717a] px-2 py-0.5">
               203 mapped
             </span>
-            <span id="activeFilterBadge" class="hidden text-[14px] sm:text-[14px] font-mono text-[#60a5fa] bg-[#0d1d36] border border-[#1d4ed8] px-2 py-0.5 rounded flex items-center gap-1">
+            <span id="activeFilterBadge" class="hidden text-[14px] text-[#93c5fd] bg-[#1e293b] border border-[#334155] px-2 py-0.5 rounded-lg flex items-center gap-1">
               <span id="activeFilterText">Filtered</span>
               <button id="clearActiveFilterBtn" class="text-slate-400 hover:text-white ml-0.5">✕</button>
             </span>
 
+            <!-- Settings Button -->
+            <button id="curatorSettingsBtn" class="p-1.5 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white rounded-lg text-[14px] transition shrink-0" title="Curator Settings">
+              <span>⚙️</span>
+            </button>
+
             <!-- Expand / Half Toggle Button -->
-            <button id="sheetExpandBtn" class="bg-[#121622] hover:bg-[#1c2336] border border-[#222a3c] text-slate-300 hover:text-white px-2 py-1 rounded-lg text-[14px] font-mono transition flex items-center gap-1" title="Expand / Restore Sheet">
+            <button id="sheetExpandBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white px-2 py-1 rounded-lg text-[14px] transition flex items-center gap-1" title="Expand / Restore Sheet">
               <span id="sheetExpandIcon">⤢</span>
               <span id="sheetExpandLabel" class="hidden sm:inline text-[14px]">Full</span>
             </button>
 
             <!-- Close Sheet Button -->
-            <button id="sheetCloseBtn" class="bg-[#182032] hover:bg-[#202c46] border border-[#283654] text-[#60a5fa] hover:text-white px-2.5 py-1 rounded-lg text-[14px] font-semibold transition flex items-center gap-1 shadow" title="Close Chat Sheet">
+            <button id="sheetCloseBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white px-2.5 py-1 rounded-lg text-[14px] transition flex items-center gap-1" title="Close Chat Sheet">
               <span>▼</span>
-              <span class="text-[14px]">Close</span>
             </button>
           </div>
 
         </div>
 
         <!-- 2. Closed State Bar (Shown when Closed) -->
-        <div id="sheetClosedBar" class="hidden flex items-center justify-between gap-2 cursor-pointer py-0.5">
+        <div id="sheetClosedBar" class="hidden flex items-center justify-between gap-2 cursor-pointer py-1">
           <div class="flex items-center gap-2 truncate">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="text-[14px] font-semibold text-white truncate">💬 Conversational Curator</span>
-            <span class="text-[14px] text-[#94a3b8] font-mono hidden sm:inline truncate">· 203 Sanctuaries Mapped</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="text-[14px] font-medium text-white truncate">Culture Atlas Curator</span>
+            <span class="text-[14px] text-[#71717a] hidden sm:inline truncate">· 203 Sanctuaries Mapped</span>
           </div>
 
           <div class="flex items-center gap-2 shrink-0">
-            <span class="text-[14px] font-mono text-emerald-400 bg-[#0a2016] px-2 py-0.5 rounded border border-emerald-900/60 hidden xs:inline">
-              Tap to Ask
-            </span>
-            <button id="sheetOpenBtn" class="px-3 py-1 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-semibold rounded-lg transition shadow flex items-center gap-1">
+            <button id="sheetOpenBtn" class="px-3 py-1 bg-[#2f2f2f] hover:bg-[#383838] border border-[#3e3e3e] text-white text-[14px] font-medium rounded-xl transition shadow-sm flex items-center gap-1.5">
               <span>▲</span>
-              <span>Open Half Sheet</span>
+              <span>Open Chat</span>
             </button>
           </div>
         </div>
@@ -492,146 +533,129 @@ def build():
       </div>
 
       <!-- VIEW A: 💬 CURATOR CONVERSATIONAL EXPERIENCE (Default in Bottom Half) -->
-      <div id="curatorPanel" class="flex-1 flex flex-col min-h-0 overflow-hidden">
+      <div id="curatorPanel" class="flex-1 flex flex-col min-h-0 overflow-hidden bg-[#171717]">
         
         <!-- Scrollable Conversation Feed -->
-        <div id="curatorMessages" class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-4 space-y-3 pb-2">
+        <div id="curatorMessages" class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-5 space-y-4 max-w-3xl mx-auto w-full">
           <!-- Messages injected dynamically -->
         </div>
 
         <!-- Typing Indicator -->
-        <div id="curatorTyping" class="hidden px-3 sm:px-4 py-1 text-[14px] text-[#94a3b8] flex items-center gap-2">
-          <span class="text-[14px]">Curator is searching scholarly audit records</span>
-          <span class="inline-flex gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#3b82f6] typing-dot"></span>
-            <span class="w-1.5 h-1.5 rounded-full bg-[#3b82f6] typing-dot"></span>
-            <span class="w-1.5 h-1.5 rounded-full bg-[#3b82f6] typing-dot"></span>
+        <div id="curatorTyping" class="hidden max-w-3xl mx-auto w-full px-4 sm:px-6 py-2 text-[14px] text-[#8e8e8e] flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] shrink-0">🏛️</div>
+          <span class="inline-flex gap-1.5 items-center pl-1">
+            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
           </span>
         </div>
 
-        <!-- Gentle Educational & Visitor Planning Inquiry Chips (Horizontal Carousel) -->
-        <div class="px-2.5 py-1.5 border-t border-[#161a26] bg-[#080b12] flex items-center gap-1.5 overflow-x-auto custom-scrollbar shrink-0 text-[14px] font-mono whitespace-nowrap">
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981] hover:bg-[#112d1e] transition active:scale-95" data-query="Which cultural spaces offer always free admission?">
-            🎟️ Free Admission
+        <!-- Sleek OpenAI ChatGPT-style Prompt Suggestions -->
+        <div id="curatorInquiryRow" class="max-w-3xl mx-auto w-full px-3 sm:px-6 py-1.5 flex items-center gap-2 overflow-x-auto custom-scrollbar shrink-0 text-[14px] whitespace-nowrap">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-query="Which cultural spaces offer always free admission?">
+            <span>Free admission</span>
           </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="What are typical museum opening hours and which institutions are open on Mondays?">
-            🕒 Hours & Mondays
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-query="Recommend verified cultural spaces in London" data-city="London">
+            <span>London guide</span>
           </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="How do I get to destination museums like Dia Beacon or Louisiana by public transit?">
-            🚇 Public Transit Tips
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-query="Recommend independent artist-run centers and grassroots kunsthalles">
+            <span>Artist-run kunsthalles</span>
           </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Which museums offer step-free wheelchair accessibility and inclusive facilities?">
-            ♿ Accessibility
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-query="What are typical museum opening hours and which institutions are open on Mondays?">
+            <span>Hours & Mondays</span>
           </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Which institutions feature outstanding cafés, sculpture gardens, and art bookshops?">
-            ☕ Cafés & Bookshops
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-query="How do I get to destination museums like Dia Beacon or Louisiana by public transit?">
+            <span>Transit tips</span>
           </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="What makes an institution ethically funded?">
-            🏛️ Ethical Criteria
-          </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend independent artist-run centers and grassroots kunsthalles">
-            🎨 Artist-Run Spaces
-          </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981] hover:bg-[#112d1e] transition active:scale-95" data-query="Show institutions free from fossil fuels and defense sponsors">
-            🌿 Fossil & defense-free spaces
-          </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in London" data-city="London">
-            📍 London guide
-          </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in New York" data-city="New York">
-            📍 New York guide
-          </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in Tokyo" data-city="Tokyo">
-            📍 Tokyo guide
-          </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in Paris" data-city="Paris">
-            📍 Paris guide
-          </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#3b2b11] bg-[#221807] text-[#fcd34d] hover:border-[#f59e0b] hover:bg-[#2d2009] transition active:scale-95" data-query="Why is MoMA excluded from Culture Atlas?">
-            ⚠️ Why MoMA is excluded
-          </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Surprise me with a unique ethical cultural institution">
-            ✨ Surprise me
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-query="Why is MoMA excluded from Culture Atlas?">
+            <span>Why MoMA is excluded</span>
           </button>
         </div>
 
-        <!-- Sticky Chat Input Bar -->
-        <div class="p-2.5 sm:p-3 border-t border-[#1c212a] bg-[#0a0d14] flex items-center gap-2 shrink-0">
-          <div class="relative flex-1">
-            <input 
-              type="text" 
-              id="curatorInput" 
-              placeholder="Ask curator: 'Where should I go in London?', 'Hours for Dia Beacon', 'Artist-run spaces'..." 
-              class="w-full bg-[#121622] border border-[#232a3c] rounded-xl px-3 sm:px-3.5 py-2 text-[14px] text-white placeholder-slate-500 focus:outline-none focus:border-[#3b82f6] transition shadow-inner font-sans"
-            />
+        <!-- Sticky ChatGPT Floating Pill Input Bar -->
+        <div class="p-2 sm:p-3 bg-[#171717] shrink-0 border-t border-[#222222]">
+          <div class="max-w-3xl mx-auto w-full">
+            <div class="relative flex items-center bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-1.5 pl-4 pr-1.5 shadow-md transition">
+              <input 
+                type="text" 
+                id="curatorInput" 
+                placeholder="Message Culture Atlas Curator..." 
+                class="w-full bg-transparent border-0 text-[14px] text-white placeholder-[#71717a] focus:outline-none py-1.5 font-sans"
+              />
+              <button 
+                id="curatorSendBtn" 
+                class="w-8 h-8 rounded-full bg-white text-black hover:bg-neutral-200 transition active:scale-95 flex items-center justify-center shrink-0 shadow-sm ml-1.5 opacity-60"
+                title="Send message"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
+              </button>
+            </div>
+            <div class="text-center text-[14px] text-[#666] pt-1 select-none">
+              Culture Atlas verifies governance independence and public trust.
+            </div>
           </div>
-          <button 
-            id="curatorSendBtn" 
-            class="px-4 py-2 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-semibold rounded-xl transition shadow active:scale-95 flex items-center gap-1 shrink-0"
-          >
-            <span>Ask</span>
-            <span class="text-[14px]">↵</span>
-          </button>
-          <button id="curatorSettingsBtn" class="p-2 bg-[#121622] hover:bg-[#1c2234] border border-[#232938] text-[#94a3b8] hover:text-white rounded-xl text-[14px] transition shrink-0" title="Curator Settings">
-            <span>⚙️</span>
-          </button>
         </div>
 
       </div>
 
       <!-- VIEW B: 📋 RESEARCH CATALOG (When toggled to Catalog in Bottom Half) -->
-      <div id="catalogPanel" class="hidden flex-1 flex flex-col min-h-0 overflow-hidden">
+      <div id="catalogPanel" class="hidden flex-1 flex flex-col min-h-0 overflow-hidden bg-[#171717]">
         
-        <div class="p-2.5 sm:p-3 border-b border-[#1c212a] bg-[#0a0d14] flex flex-col gap-2 shrink-0">
+        <div class="p-3 border-b border-[#262626] bg-[#171717] flex flex-col gap-2.5 shrink-0 max-w-3xl mx-auto w-full">
           <!-- Active Filter Banner (When city/country clicked) -->
-          <div id="activeFilterBanner" class="hidden flex items-center justify-between bg-[#0e1628] border border-[#1d4ed8] px-2.5 py-1.5 rounded-lg text-[14px]">
-            <div class="flex items-center gap-1.5 truncate">
+          <div id="activeFilterBanner" class="hidden flex items-center justify-between bg-[#212121] border border-[#333] px-3 py-1.5 rounded-xl text-[14px]">
+            <div class="flex items-center gap-2 truncate">
               <span id="filterIcon" class="text-[14px]">📍</span>
-              <span id="filterLabel" class="font-semibold text-white truncate">NEW YORK</span>
-              <span id="filterCount" class="text-[#60a5fa] font-mono text-[14px]">(11)</span>
+              <span id="filterLabel" class="font-medium text-white truncate">NEW YORK</span>
+              <span id="filterCount" class="text-[#93c5fd] text-[14px]">(11)</span>
             </div>
-            <button id="clearFilterBtn" class="text-[14px] text-[#94a3b8] hover:text-white px-1.5 py-0.5 rounded hover:bg-[#1a253c] transition ml-2 flex items-center gap-1">
+            <button id="clearFilterBtn" class="text-[14px] text-[#a1a1aa] hover:text-white px-2 py-0.5 rounded-lg hover:bg-[#2e2e2e] transition ml-2 flex items-center gap-1">
               <span>Clear</span> <span>✕</span>
             </button>
           </div>
 
-          <!-- Search Input -->
+          <!-- Search Input: Clean ChatGPT-style search bar -->
           <div class="relative">
             <input 
               type="text" 
               id="searchInput" 
-              placeholder="Search museum, city, focus, or governance..." 
-              class="w-full bg-[#141722] border border-[#262a38] text-[14px] text-white placeholder-[#64748b] px-3 py-1.5 rounded-lg focus:outline-none focus:border-[#3b82f6] transition"
+              placeholder="Search museum, city, curatorial focus, or governance..." 
+              class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white placeholder-[#71717a] px-3.5 py-2 rounded-xl focus:outline-none focus:border-[#555] transition shadow-sm"
             />
-            <button id="clearSearchBtn" class="hidden absolute right-2.5 top-1.5 text-[#64748b] hover:text-white text-[14px]">✕</button>
+            <button id="clearSearchBtn" class="hidden absolute right-3 top-2 text-[#71717a] hover:text-white text-[14px]">✕</button>
           </div>
 
           <!-- Quick Filters: Country & City Dropdowns -->
-          <div class="grid grid-cols-2 gap-1.5 text-[14px] font-mono">
-            <select id="countrySelect" class="bg-[#141722] border border-[#262a38] text-[#e2e8f0] px-2 py-1 rounded focus:outline-none focus:border-[#3b82f6] truncate">
+          <div class="grid grid-cols-2 gap-2 text-[14px]">
+            <select id="countrySelect" class="bg-[#212121] border border-[#333333] text-[#e4e4e7] px-3 py-1.5 rounded-xl focus:outline-none focus:border-[#555] truncate">
               <option value="all">All Countries (35)</option>
             </select>
-            <select id="citySelect" class="bg-[#141722] border border-[#262a38] text-[#e2e8f0] px-2 py-1 rounded focus:outline-none focus:border-[#3b82f6] truncate">
+            <select id="citySelect" class="bg-[#212121] border border-[#333333] text-[#e4e4e7] px-3 py-1.5 rounded-xl focus:outline-none focus:border-[#555] truncate">
               <option value="all">All Cities (133)</option>
             </select>
           </div>
 
-          <!-- Tier Quick Chips -->
-          <div class="flex items-center gap-1.5 text-[14px] font-mono">
-            <button class="tier-chip flex-1 py-1 px-1.5 rounded border border-emerald-900 bg-[#0c2419] text-emerald-400 font-semibold text-center hover:bg-[#113324] transition" data-tier="A">
-              Tier A (135)
+          <!-- Tier Quick Chips: Clean, understated neutral pills with gentle indicators -->
+          <div class="flex items-center gap-2 text-[14px]">
+            <button class="tier-chip flex-1 py-1.5 px-2 rounded-xl border border-[#333333] bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] text-center transition flex items-center justify-center gap-1.5" data-tier="A">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>Tier A (135)</span>
             </button>
-            <button class="tier-chip flex-1 py-1 px-1.5 rounded border border-blue-900 bg-[#0e213b] text-blue-400 font-semibold text-center hover:bg-[#132d52] transition" data-tier="B">
-              Tier B (52)
+            <button class="tier-chip flex-1 py-1.5 px-2 rounded-xl border border-[#333333] bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] text-center transition flex items-center justify-center gap-1.5" data-tier="B">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+              <span>Tier B (52)</span>
             </button>
-            <button class="tier-chip flex-1 py-1 px-1.5 rounded border border-slate-700 bg-[#171a24] text-slate-400 font-semibold text-center hover:bg-[#202534] transition" data-tier="U">
-              Tier U (16)
+            <button class="tier-chip flex-1 py-1.5 px-2 rounded-xl border border-[#333333] bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] text-center transition flex items-center justify-center gap-1.5" data-tier="U">
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+              <span>Tier U (16)</span>
             </button>
           </div>
         </div>
 
         <!-- Scrollable Institutions Feed -->
-        <div id="institutionsListContainer" class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-2 pb-6">
+        <div id="institutionsListContainer" class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-4 space-y-2 max-w-3xl mx-auto w-full pb-8">
           <!-- Populated dynamically -->
         </div>
 
@@ -745,15 +769,15 @@ def build():
   <!-- ⚙️ CURATOR SETTINGS MODAL (Optional Google Gemini API Key) -->
   <!-- ========================================================= -->
   <div id="curatorSettingsModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-[#0e1320] border border-[#222a3e] rounded-2xl max-w-md w-full p-5 shadow-2xl flex flex-col gap-4">
-      <div class="flex items-center justify-between border-b border-[#1c2336] pb-3">
+    <div class="bg-[#18181b] border border-[#2e2e2e] rounded-3xl max-w-md w-full p-6 shadow-2xl flex flex-col gap-4">
+      <div class="flex items-center justify-between border-b border-[#2e2e2e] pb-3">
         <div class="flex items-center gap-2">
           <span class="text-[18px]">⚙️</span>
-          <h3 class="font-semibold text-white text-[24px]">Curator Intelligence Settings</h3>
+          <h3 class="font-medium text-white text-[24px]">Curator Intelligence Settings</h3>
         </div>
-        <button id="closeSettingsModalBtn" class="text-slate-400 hover:text-white text-[14px] p-1">✕</button>
+        <button id="closeSettingsModalBtn" class="text-[#a1a1aa] hover:text-white text-[14px] p-1">✕</button>
       </div>
-      <div class="text-[14px] text-slate-300 leading-relaxed space-y-3">
+      <div class="text-[14px] text-[#d4d4d4] leading-relaxed space-y-3">
         <p>
           Culture Atlas features a <strong>Built-in Offline Intelligence Engine</strong> with deep knowledge of all 203 institutions, funding governance, divestment history, and cultural geographies.
         </p>
@@ -761,17 +785,17 @@ def build():
           Optionally, you can enter your <strong>Google Gemini API Key</strong> to activate live multi-turn Gemini 2.5 reasoning:
         </p>
         <div>
-          <label class="block text-[14px] font-mono text-slate-400 mb-1">Gemini API Key (Optional)</label>
+          <label class="block text-[14px] text-[#a1a1aa] mb-1">Gemini API Key (Optional)</label>
           <input 
             type="password" 
             id="geminiApiKeyInput" 
             placeholder="AIzaSy..." 
-            class="w-full bg-[#141a2a] border border-[#263148] text-[14px] text-white px-3 py-2 rounded-lg focus:outline-none focus:border-[#3b82f6]"
+            class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white px-3.5 py-2 rounded-xl focus:outline-none focus:border-[#555] transition"
           />
         </div>
         <div class="flex items-center justify-between pt-2">
-          <span id="geminiStatusTag" class="text-[14px] font-mono text-emerald-400">Offline Engine Active</span>
-          <button id="saveApiKeyBtn" class="px-3.5 py-1.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-semibold rounded-lg transition">
+          <span id="geminiStatusTag" class="text-[14px] text-emerald-400 font-mono">Offline Engine Active</span>
+          <button id="saveApiKeyBtn" class="px-4 py-2 bg-white hover:bg-neutral-200 text-black text-[14px] font-medium rounded-xl transition shadow-sm">
             Save Settings
           </button>
         </div>
@@ -1462,16 +1486,16 @@ def build():
     function initCuratorConversation() {{
       curatorMessages.innerHTML = '';
       appendCuratorMessage(`
-        <p class="text-slate-200">
+        <p class="text-[#ececec]">
           Welcome to <strong>Culture Atlas</strong>. In an era where major art institutions routinely rely on trustees and sponsors linked to fossil fuel extraction, defense manufacturing, or predatory finance, Culture Atlas was created to map <strong>203 cultural sanctuaries across 35 countries</strong> that protect curatorial independence and public trust.
         </p>
-        <p class="text-slate-300">
-          We gently highlight four ethical models: <strong>civic municipal sanctuaries</strong> supported by public arts councils, <strong>artist-run grassroots Kunsthalles</strong> with creative autonomy, institutions that actively <strong>divested from fossil fuels</strong>, and spaces offering <strong>free public admission</strong> as a fundamental civic right.
+        <p class="text-[#d4d4d4]">
+          We highlight four ethical models: <strong>civic municipal sanctuaries</strong> supported by public arts councils, <strong>artist-run grassroots Kunsthalles</strong> with creative autonomy, institutions that actively <strong>divested from fossil fuels</strong>, and spaces offering <strong>free public admission</strong> as a fundamental civic right.
         </p>
-        <p class="text-slate-300">
-          For example, you can discover <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a> (an artist-centered commissioning space with free entry), <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Bordeaux">Bordeaux</a> (a civic contemporary Kunsthalle in an 1824 warehouse), or <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Dia Beacon">Dia Beacon</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a> (a model of non-profit foundation endowment for monumental site-specific art).
+        <p class="text-[#d4d4d4]">
+          For example, you can discover <a href="#" class="inst-link" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in <a href="#" class="city-link" data-city="London">London</a> (an artist-centered commissioning space with free entry), <a href="#" class="inst-link" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in <a href="#" class="city-link" data-city="Bordeaux">Bordeaux</a> (a civic contemporary Kunsthalle in an 1824 warehouse), or <a href="#" class="inst-link" data-name="Dia Beacon">Dia Beacon</a> in <a href="#" class="city-link" data-city="New York">New York</a> (a model of non-profit foundation endowment for monumental site-specific art).
         </p>
-        <p class="pt-1 text-[#93c5fd]">
+        <p class="text-[#93c5fd]">
           Where in the world are you exploring, or what type of art experience would you love to discover today?
         </p>
       `);
@@ -1479,12 +1503,9 @@ def build():
 
     function appendUserMessage(text) {{
       const div = document.createElement('div');
-      div.className = 'flex flex-col items-end gap-1';
+      div.className = 'flex justify-end my-1';
       div.innerHTML = `
-        <div class="flex items-center gap-1.5 text-[14px] font-mono text-[#94a3b8]">
-          <span>You</span>
-        </div>
-        <div class="max-w-[85%] bg-[#1d4ed8] text-white text-[14px] px-3.5 py-2 rounded-2xl rounded-tr-sm shadow-md leading-relaxed">
+        <div class="max-w-[80%] bg-[#2f2f2f] text-[#ececec] text-[14px] px-4 py-2.5 rounded-3xl shadow-sm leading-relaxed whitespace-pre-wrap select-text">
           ${{escapeHtml(text)}}
         </div>
       `;
@@ -1494,15 +1515,13 @@ def build():
 
     function appendCuratorMessage(htmlContent) {{
       const div = document.createElement('div');
-      div.className = 'flex flex-col gap-1.5';
+      div.className = 'flex items-start gap-3 my-2 select-text';
 
       div.innerHTML = `
-        <div class="flex items-center gap-1.5 text-[14px] font-mono text-[#60a5fa]">
-          <span>🏛️</span> <span class="font-semibold text-slate-200">Atlas Curator</span>
-          <span class="text-slate-600">·</span>
-          <span class="text-[14px] text-slate-400 font-sans">Guide to Ethical Culture</span>
+        <div class="w-7 h-7 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] text-white shrink-0 mt-0.5 select-none" title="Culture Atlas Curator">
+          🏛️
         </div>
-        <div class="bg-[#101420] border border-[#1e2538] text-[14px] text-slate-200 p-3 sm:p-3.5 rounded-2xl rounded-tl-sm shadow-md leading-relaxed space-y-2">
+        <div class="flex-1 min-w-0 text-[14px] text-[#ececec] leading-relaxed space-y-3 pt-0.5">
           ${{htmlContent}}
         </div>
       `;
@@ -1563,9 +1582,9 @@ def build():
       let domain = 'website';
       try {{ domain = new URL(webUrl).hostname.replace(/^www\\./, ''); }} catch(e) {{}}
       
-      const nameLink = `<a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>`;
-      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
-      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] font-mono text-[14px]">${{domain}} ↗</a>` : ''}})`;
+      const nameLink = `<a href="#" class="inst-link" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>`;
+      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
+      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[14px]" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" class="dossier-link text-[14px]">${{domain}} ↗</a>` : ''}})`;
       
       return `${{nameLink}}${{cityPart}}${{dossierPart}}`;
     }}
@@ -2045,6 +2064,15 @@ CRITICAL FORMAT RULES:
         handleSend();
       }}
     }});
+    curatorInput.addEventListener('input', () => {{
+      if (curatorInput.value.trim().length > 0) {{
+        curatorSendBtn.classList.remove('opacity-60');
+        curatorSendBtn.classList.add('opacity-100');
+      }} else {{
+        curatorSendBtn.classList.add('opacity-60');
+        curatorSendBtn.classList.remove('opacity-100');
+      }}
+    }});
 
     // Inquiry Chips
     document.querySelectorAll('.inquiry-chip').forEach(btn => {{
@@ -2164,13 +2192,13 @@ CRITICAL FORMAT RULES:
 
     function switchTab(tab) {{
       if (tab === 'curator') {{
-        tabCuratorBtn.className = 'flex-1 py-1 px-2.5 rounded-md transition text-center flex items-center justify-center gap-1.5 bg-[#1d4ed8] text-white font-semibold shadow';
-        tabCatalogBtn.className = 'flex-1 py-1 px-2.5 rounded-md transition text-center flex items-center justify-center gap-1.5 text-[#94a3b8] hover:text-white';
+        tabCuratorBtn.className = 'py-1 px-3 rounded-lg transition text-center flex items-center justify-center gap-1.5 bg-[#2f2f2f] text-white font-medium shadow-sm';
+        tabCatalogBtn.className = 'py-1 px-3 rounded-lg transition text-center flex items-center justify-center gap-1.5 text-[#a1a1aa] hover:text-white';
         curatorPanel.classList.remove('hidden');
         catalogPanel.classList.add('hidden');
       }} else {{
-        tabCatalogBtn.className = 'flex-1 py-1 px-2.5 rounded-md transition text-center flex items-center justify-center gap-1.5 bg-[#1d4ed8] text-white font-semibold shadow';
-        tabCuratorBtn.className = 'flex-1 py-1 px-2.5 rounded-md transition text-center flex items-center justify-center gap-1.5 text-[#94a3b8] hover:text-white';
+        tabCatalogBtn.className = 'py-1 px-3 rounded-lg transition text-center flex items-center justify-center gap-1.5 bg-[#2f2f2f] text-white font-medium shadow-sm';
+        tabCuratorBtn.className = 'py-1 px-3 rounded-lg transition text-center flex items-center justify-center gap-1.5 text-[#a1a1aa] hover:text-white';
         catalogPanel.classList.remove('hidden');
         curatorPanel.classList.add('hidden');
         renderLeftList();
@@ -2374,7 +2402,7 @@ CRITICAL FORMAT RULES:
 
       container.innerHTML = filteredList.map(inst => {{
         const isSel = selectedInstitution && selectedInstitution.name === inst.name;
-        const tierCol = inst.tier === 'A' ? 'text-emerald-400 border-emerald-900 bg-[#0a2016]' : inst.tier === 'B' ? 'text-blue-400 border-blue-900 bg-[#0d1d33]' : 'text-slate-400 border-slate-700 bg-[#161922]';
+        const tierCol = inst.tier === 'A' ? 'text-emerald-400 border-emerald-900/60 bg-[#0a2016]' : inst.tier === 'B' ? 'text-blue-400 border-blue-900/60 bg-[#0d1d33]' : 'text-slate-400 border-slate-700 bg-[#161922]';
         const tierName = inst.tier === 'A' ? 'Tier A · Verified' : inst.tier === 'B' ? 'Tier B · One Name' : 'Tier U';
 
         let displayDomain = 'website';
@@ -2383,48 +2411,48 @@ CRITICAL FORMAT RULES:
         }} catch(e) {{}}
 
         return `
-          <div class="inst-card bg-[#0b0e16] border border-[#1b202d] rounded-xl p-3 cursor-pointer hover:border-[#3b82f6] hover:bg-[#101420] ${{isSel ? 'active' : ''}}" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
+          <div class="inst-card bg-[#212121] border border-[#2e2e2e] rounded-2xl p-3.5 cursor-pointer hover:border-[#444] hover:bg-[#282828] transition ${{isSel ? 'border-[#3b82f6] bg-[#222834]' : ''}}" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
             <div class="flex items-start justify-between gap-2">
-              <h3 class="font-semibold text-white text-[14px] leading-snug truncate max-w-[220px] sm:max-w-[260px]">${{inst.name}}</h3>
-              <span class="text-[14px] font-mono px-1.5 py-0.5 rounded border ${{tierCol}} shrink-0">${{tierName}}</span>
+              <h3 class="font-medium text-white text-[14px] leading-snug truncate max-w-[220px] sm:max-w-[260px]">${{inst.name}}</h3>
+              <span class="text-[14px] px-2 py-0.5 rounded-lg border ${{tierCol}} shrink-0">${{tierName}}</span>
             </div>
             
-            <div class="flex items-center gap-1.5 text-[14px] text-[#60a5fa] mt-1 font-mono">
+            <div class="flex items-center gap-1.5 text-[14px] text-[#93c5fd] mt-1 font-mono">
               <span>📍</span> <span class="truncate">${{inst.location}}</span>
-              <span class="text-slate-600">·</span>
-              <span class="text-slate-400 text-[14px] shrink-0">Est. ${{inst.year_founded}}</span>
+              <span class="text-[#555]">·</span>
+              <span class="text-[#a1a1aa] text-[14px] shrink-0">Est. ${{inst.year_founded}}</span>
             </div>
 
             <!-- Researcher Tags: Governance & Admission -->
-            <div class="flex items-center gap-1.5 text-[14px] font-mono text-[#94a3b8] mt-1.5 flex-wrap">
-              <span class="px-1.5 py-0.5 rounded bg-[#101726] border border-[#1c2840] text-[#93c5fd]">🏛️ ${{inst.governance_type}}</span>
-              <span class="px-1.5 py-0.5 rounded bg-[#0a1f15] border border-[#143d28] text-emerald-300">🎟️ ${{inst.admission_policy}}</span>
+            <div class="flex items-center gap-1.5 text-[14px] font-mono text-[#a1a1aa] mt-2 flex-wrap">
+              <span class="px-2 py-0.5 rounded-lg bg-[#2a2a2a] border border-[#383838] text-[#d4d4d4]">🏛️ ${{inst.governance_type}}</span>
+              <span class="px-2 py-0.5 rounded-lg bg-[#2a2a2a] border border-[#383838] text-[#d4d4d4]">🎟️ ${{inst.admission_policy}}</span>
             </div>
 
             <!-- Quick Visitor Schedule & Pricing Pill -->
-            <div class="mt-1.5 flex items-center gap-2 text-[14px] font-mono text-slate-300">
+            <div class="mt-1.5 flex items-center gap-2 text-[14px] font-mono text-[#a1a1aa]">
               <span class="truncate">🕒 ${{inst.opening_hours ? inst.opening_hours.split(',')[0] : 'Open Weekly'}}</span>
-              <span class="text-slate-600">·</span>
+              <span class="text-[#555]">·</span>
               <span class="text-emerald-400 shrink-0 truncate max-w-[120px]">🎟️ ${{inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : 'Free / Subsidized'}}</span>
             </div>
 
-            <p class="text-[14px] text-slate-300 mt-2 leading-relaxed line-clamp-2">${{inst.curator_recommendation || inst.funding}}</p>
+            <p class="text-[14px] text-[#d4d4d4] mt-2 leading-relaxed line-clamp-2">${{inst.curator_recommendation || inst.funding}}</p>
             
             ${{inst.watch ? `
-              <div class="mt-2 pt-1.5 border-t border-[#161a26] text-[14px] text-amber-300/80 truncate flex items-center gap-1">
+              <div class="mt-2 pt-1.5 border-t border-[#2e2e2e] text-[14px] text-amber-300/80 truncate flex items-center gap-1 font-mono">
                 <span>⚠️</span> <span>${{inst.watch}}</span>
               </div>
             ` : ''}}
             
-            <div class="mt-2.5 pt-2 border-t border-[#161b26] flex items-center justify-between">
+            <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between">
               <a href="${{inst.website || inst.sources[0]}}" target="_blank" rel="noopener noreferrer" 
-                 class="website-pill inline-flex items-center gap-1 text-[14px] font-mono text-[#60a5fa] hover:text-white bg-[#101726] hover:bg-[#1a253c] border border-[#1e2a42] hover:border-[#3b82f6] px-2 py-0.5 rounded transition"
+                 class="website-pill inline-flex items-center gap-1 text-[14px] font-mono text-[#93c5fd] hover:text-white bg-[#2a2a2a] hover:bg-[#333] border border-[#383838] px-2.5 py-0.5 rounded-lg transition"
                  onclick="event.stopPropagation()">
                 <span>🌐</span>
                 <span class="truncate max-w-[120px]">${{displayDomain}}</span>
                 <span class="text-[14px]">↗</span>
               </a>
-              <span class="text-[14px] text-slate-500 hover:text-slate-300 font-mono">View on Globe →</span>
+              <span class="text-[14px] text-[#71717a] hover:text-white font-mono transition">View on Globe →</span>
             </div>
           </div>
         `;
