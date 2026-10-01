@@ -342,6 +342,15 @@ def update_widget():
 
       <!-- Inquiry Prompt Chips: Sleek ChatGPT style -->
       <div id="wInquiryCarousel" class="px-3 py-1.5 border-t border-[#262626] bg-[#171717] flex items-center gap-1.5 overflow-x-auto custom-scroll text-[14px] whitespace-nowrap shrink-0">
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="How does Culture Atlas research and audit museum funding?">
+          Research method
+        </button>
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="What landmark exhibitions changed art history?">
+          Landmark shows
+        </button>
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="How are museums handling stolen colonial artifacts?">
+          Restitution
+        </button>
         <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Which museums and galleries are free to enter?">
           Free admission
         </button>
@@ -867,6 +876,50 @@ def update_widget():
             </p>
             <p class="text-slate-300">
               Top free places include ${{formatWInstLink(f1)}} and ${{formatWInstLink(f2)}}.
+            </p>
+          `);
+          return;
+        }}
+
+        // Research: How Culture Atlas Audits Museums
+        if (query.includes('research') || query.includes('how do you audit') || query.includes('form 990')) {{
+          appendWCurator(`
+            <p class="text-slate-200">
+              We audit museums through official filings:
+            </p>
+            <p class="text-slate-300">
+              1. <strong>Tax filings:</strong> US IRS Form 990, UK Charity Commission, French DRAC.<br>
+              2. <strong>Board conflicts:</strong> Tracking trustees with ties to weapons, oil, or private prisons.<br>
+              3. <strong>Watchdog evidence:</strong> Direct activist campaigns and investigative reporting.
+            </p>
+          `);
+          return;
+        }}
+
+        // Research: Landmark Shows
+        if (query.includes('landmark') || query.includes('szeemann') || query.includes('when attitudes') || query.includes('documenta')) {{
+          appendWCurator(`
+            <p class="text-slate-200">
+              Milestone exhibitions in curatorial critique:
+            </p>
+            <p class="text-slate-300">
+              - <em>When Attitudes Become Form</em> (1969, Szeemann): The exhibition itself as concept.<br>
+              - <em>This Is Tomorrow</em> (1956, Whitechapel): Collaborative pop art environment.<br>
+              - <em>Documenta 11</em> (2002, Enwezor): Decentering Western art history.<br>
+              - <em>Mining the Museum</em> (1992, Fred Wilson): Exposing racial bias in collections.
+            </p>
+          `);
+          return;
+        }}
+
+        // Research: Restitution
+        if (query.includes('restitut') || query.includes('repatriat') || query.includes('benin') || query.includes('looted')) {{
+          appendWCurator(`
+            <p class="text-slate-200">
+              Restitution of looted colonial heritage:
+            </p>
+            <p class="text-slate-300">
+              Pioneering museums are returning stolen artifacts, like the Benin Bronzes transferred back to Nigeria by the Horniman Museum and German state museums.
             </p>
           `);
           return;

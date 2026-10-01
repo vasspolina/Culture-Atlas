@@ -505,6 +505,18 @@
           <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="paris" data-chip-color="blue" data-city="Paris" data-query="Tell me about art spaces to visit in Paris">
             <span>📍 Paris guide</span>
           </button>
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_method" data-chip-color="blue" data-query="How does Culture Atlas research and audit museum funding?">
+            <span>🔬 Research Method</span>
+          </button>
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_shows" data-chip-color="blue" data-query="What landmark exhibitions changed art history and museum critique?">
+            <span>🏛️ Landmark Shows</span>
+          </button>
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_restitution" data-chip-color="blue" data-query="How are museums handling stolen colonial artifacts and restitution?">
+            <span>🌍 Restitution & Looted Art</span>
+          </button>
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_models" data-chip-color="blue" data-query="Compare American private museum boards with European public funding">
+            <span>⚖️ US vs European Models</span>
+          </button>
           <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_objecthood" data-query="Explain 'Beyond Objecthood' in simple terms">
             <span>📖 Beyond Objecthood</span>
           </button>
@@ -9550,8 +9562,26 @@
               `).join('')}
             </div>
           </div>
+
+          <!-- Curatorial Research Action Button -->
+          <div class="pt-3 border-t border-[#1c212a] flex items-center justify-between gap-2">
+            <button class="dossier-ask-ai-research flex-1 px-3 py-2 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-medium rounded-xl transition flex items-center justify-center gap-1.5 shadow" data-name="${inst.name.replace(/"/g, '&quot;')}">
+              <span>🔬</span> <span>Ask AI for Deep Research Audit</span>
+            </button>
+          </div>
         </div>
       `;
+
+      const askAiBtn = body.querySelector('.dossier-ask-ai-research');
+      if (askAiBtn) {
+        askAiBtn.addEventListener('click', () => {
+          drawer.classList.add('hidden');
+          if (typeof setChatSheetState === 'function') setChatSheetState('half');
+          const prompt = `Can you do a deep research audit on ${inst.name}?`;
+          if (curatorInput) curatorInput.value = prompt;
+          handleCuratorQuery(prompt);
+        });
+      }
     }
 
     // =========================================================
@@ -9723,15 +9753,16 @@ CORE INSTRUCTION: SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE.
 - Speak like a knowledgeable, friendly human who explains things directly and simply.
 - Keep sentences short, clean, and conversational.
 
-CRITICAL THEORY & ART HISTORY KNOWLEDGE (Explain simply):
-You know contemporary art and institutional critique deeply, but you explain every concept in simple, accessible terms:
-- "Beyond Objecthood" by James Voorhies (MIT Press, 2017): Explain how artists from 1968 turned the exhibition itself into an artwork (embracing the "theatricality" that critic Michael Fried criticized in 1967). Explain simply how big corporate museums later turned participation into tourist entertainment, pushing honest experimental art into independent non-profit spaces.
-- "e-flux journal": Explain Hito Steyerl's ideas simply—how museums act like factories where visitors' attention produces profit ("Is a Museum a Factory?"), and how billionaires store art in tax-free airport warehouses ("Duty Free Art"). Explain Boris Groys's point that public museums started during the French Revolution to make art public property.
-- Three Waves of Institutional Critique: Explain in plain terms:
-  1. 1st Wave (1970s): Hans Haacke exposing museum board members' politics and real estate ties.
-  2. 2nd Wave (1980s-90s): Andrea Fraser and Fred Wilson showing racism and money inside museums.
-  3. 3rd Wave (Today): Activist campaigns like Nan Goldin's P.A.I.N. forcing museums to drop the Sackler opioid family, and protests against tear-gas and defense donors at MoMA and the Whitney.
-- Claire Bishop: Explain simply her critique of corporate mega-museums versus thoughtful civic museums, and why participatory art isn't always radical.
+SCHOLARLY RESEARCH & INSTITUTIONAL CRITIQUE FOUNDATIONS (Explain simply):
+You know contemporary art, museology, and institutional critique deeply. When answering research questions, explain every finding in simple, accessible, everyday English:
+- Research Methodology & Forensic Audits: Explain how Culture Atlas audits museum Form 990 filings (Schedule I, Schedule L), UK Charity Commission accounts, and DRAC audits, cross-referencing trustees against weapons manufacturing, fossil fuels, and private prisons.
+- Landmark Exhibitions: Harald Szeemann's 'When Attitudes Become Form' (Bern 1969), 'This Is Tomorrow' (Whitechapel 1956), Okwui Enwezor's 'Documenta 11' (Kassel 2002), Fred Wilson's 'Mining the Museum' (1992), and Hans Haacke's 'MoMA Poll' (1970).
+- Restitution & Decolonization: The Benin Bronzes (1897 British looting and recent repatriation to Nigeria), the 2018 Sarr-Savoy Report on African cultural heritage, and provenance research tracking stolen colonial objects.
+- Comparative Funding Models: American 501(c)(3) tax-deduction boards (vulnerable to billionaire donor conflicts) vs European public cultural councils (Arts Council England, DRAC France, legally mandated public benefit) vs Grassroots artist-run cooperatives.
+- "Beyond Objecthood" by James Voorhies (MIT Press, 2017): How the exhibition itself became a medium and critical form since 1968, and why corporate mega-museums turned participation into tourist entertainment.
+- "e-flux journal": Hito Steyerl's 'Is a Museum a Factory?' (visitors as unpaid affective workers) and 'Duty Free Art' (offshore tax-free freeports). Boris Groys on the museum as an egalitarian secular archive.
+- Three Waves of Institutional Critique: Hans Haacke (1st wave), Andrea Fraser & Fred Wilson (2nd wave), Nan Goldin's P.A.I.N., Decolonize This Place, and Strike MoMA (3rd wave activist divestment).
+- Claire Bishop: 'Radical Museology' (dialectical collection display vs corporate blockbuster spectacle) and 'Artificial Hells'.
 
 FORMATTING & INTERACTION RULES:
 1. Write in natural conversational paragraphs. Never use markdown headers (#, ##) or bulleted database dumps.
@@ -10036,6 +10067,102 @@ FORMATTING & INTERACTION RULES:
             </p>
           `);
           return;
+        }
+
+        // --- RESEARCH SPECIALIST HANDLERS ---
+
+        // Research Handler 1: How Culture Atlas Conducts Research & Audits
+        if (q.includes('research method') || q.includes('how do you audit') || q.includes('how does culture atlas research') || q.includes('audit method') || q.includes('research process') || q.includes('form 990') || (q.includes('how') && q.includes('research') && q.includes('museum'))) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Here is how Culture Atlas conducts forensic research and audits every institution in our network:
+            </p>
+            <p class="text-slate-300">
+              1. <strong>Regulatory Tax & Charity Filings:</strong> In the United States, we review IRS Form 990 filings—specifically checking Schedule I (grants received) and Schedule L (business transactions with board trustees). In the UK, we inspect annual returns filed with the Charity Commission. In France and Germany, we review official Ministry of Culture and regional DRAC audits.<br>
+              2. <strong>Board Trustee Conflict Audits:</strong> We cross-reference museum board members against corporate databases, tracking directorships in weapons manufacturing, fossil fuel extraction, private prisons, and predatory debt.<br>
+              3. <strong>Funding Transparency:</strong> We analyze the proportion of public funding, ticket sales, and private philanthropy to ensure curators are protected from corporate censorship.<br>
+              4. <strong>Watchdog & Activist Evidence:</strong> We monitor reporting from Hyperallergic, Artforum, and direct campaigns by artist coalitions like Nan Goldin's P.A.I.N., Strike MoMA, and Culture Unstained.
+            </p>
+            <p class="text-slate-300">
+              Only institutions that maintain clear curatorial independence and clean funding without weapons or fossil fuel sponsorships receive Tier A verification.
+            </p>
+          `);
+          return;
+        }
+
+        // Research Handler 2: Landmark Exhibitions & Curatorial History
+        if (q.includes('landmark exhibition') || q.includes('landmark show') || q.includes('szeemann') || q.includes('when attitudes') || q.includes('documenta') || q.includes('enwezor') || q.includes('this is tomorrow') || q.includes('exhibition history')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Here are five landmark exhibitions that fundamentally changed curatorial history and institutional critique:
+            </p>
+            <p class="text-slate-300">
+              - <strong><em>When Attitudes Become Form</em> (Kunsthalle Bern, 1969, curated by Harald Szeemann):</strong> Marked the emergence of the independent curator. Szeemann demonstrated that an artist's concept, gestures, and the physical process of making art could serve as the exhibition itself.<br>
+              - <strong><em>This Is Tomorrow</em> (Whitechapel Gallery, London, 1956):</strong> Brought architects, painters, and sculptors together into an interactive maze, introducing pop art and breaking the boundary between art and mass media.<br>
+              - <strong><em>MoMA Poll</em> (Museum of Modern Art, New York, 1970, by Hans Haacke):</strong> Haacke installed two transparent ballot boxes asking visitors whether they supported museum trustee Nelson Rockefeller's backing of the Vietnam War, turning the museum's audience into an active political counter-public.<br>
+              - <strong><em>Mining the Museum</em> (Baltimore, 1992, by Fred Wilson):</strong> Wilson rearranged historical museum archives, displaying ornate 19th-century silver repoussé vessels in the same case as iron slave shackles to expose how museums historically erased Black labor.<br>
+              - <strong><em>Documenta 11</em> (Kassel, 2002, directed by Okwui Enwezor):</strong> The first Documenta directed by an African curator, organizing global intellectual platforms across Lagos, New Delhi, Saint Lucia, and Vienna, decisively decentering Western art history.
+            </p>
+          `);
+          return;
+        }
+
+        // Research Handler 3: Restitution, Looted Art & Provenance Research
+        if (q.includes('restitut') || q.includes('repatriat') || q.includes('benin') || q.includes('looted') || q.includes('provenance') || q.includes('colonial artifact')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Restitution and provenance research are reshaping museum accountability today:
+            </p>
+            <p class="text-slate-300">
+              - <strong>The Benin Bronzes:</strong> In 1897, British soldiers looted thousands of sacred royal bronzes and ivories from the Kingdom of Benin (modern Nigeria). In 2022, pioneering institutions like the Horniman Museum in London and German federal state museums formally transferred legal ownership of hundreds of artifacts back to Nigeria.<br>
+              - <strong>Provenance Investigations:</strong> Ethical museums now dedicate research teams to investigate how every object in their collection was acquired, identifying pieces obtained through colonial looting, wartime seizure, or forced sales.<br>
+              - <strong>The Sarr-Savoy Report (2018):</strong> Commissioned by France, this report found that over 90% of sub-Saharan Africa's tangible cultural heritage resides in Western institutions, recommending legal pathways for full restitution.<br>
+              - <strong>Culture Atlas Criteria:</strong> We support institutions that treat collections as shared civic trusts in transparent dialogue with source communities, rather than imperial trophies.
+            </p>
+          `);
+          return;
+        }
+
+        // Research Handler 4: Comparative Funding Models (US vs Europe)
+        if (q.includes('us vs europe') || q.includes('funding model') || q.includes('compare funding') || q.includes('american private') || q.includes('european public') || q.includes('board governance')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              A museum's funding model fundamentally shapes what art it can display:
+            </p>
+            <p class="text-slate-300">
+              - <strong>The American 501(c)(3) Model:</strong> Museums rely heavily on wealthy private donors who receive tax deductions and board seats. This model frequently creates severe conflicts of interest, as billionaire trustees often have business ties to weapons manufacturers, private prisons, or pharmaceutical companies.<br>
+              - <strong>The European Civic Model:</strong> Institutions receive substantial direct public funding from arts councils (like Arts Council England, DRAC in France, or Danish state cultural funds). Curators are legally accountable to the public and have greater freedom from commercial market pressure.<br>
+              - <strong>The Artist-Run Cooperative Model:</strong> Managed directly by practicing artists (like Chisenhale in London, Artists Space in New York, or Plug In ICA in Canada). With modest budgets, they provide maximum curatorial freedom to commission daring work without board censorship.
+            </p>
+          `);
+          return;
+        }
+
+        // Research Handler 5: Deep Research Audit on a Specific Institution
+        if (q.includes('deep research') || q.includes('research audit') || q.includes('audit dossier on') || q.includes('research on')) {
+          const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
+          if (targetInst) {
+            appendCuratorMessage(`
+              <p class="text-slate-200">
+                <strong>Research Audit: ${formatInstLink(targetInst)}</strong> (${targetInst.city}, ${targetInst.country})
+              </p>
+              <p class="text-slate-300">
+                - <strong>Founding Context:</strong> Established in ${targetInst.year_founded} in the ${targetInst.neighborhood} quarter.<br>
+                - <strong>Governance Model:</strong> Operates as an independent <em>${targetInst.governance_type}</em>.<br>
+                - <strong>Funding Architecture:</strong> ${targetInst.funding}<br>
+                - <strong>Ethical Safeguard:</strong> ${targetInst.ethical_safeguard}<br>
+                - <strong>Curatorial Focus:</strong> ${targetInst.curatorial_focus}<br>
+                - <strong>Signature Art / Milestone:</strong> <span class="text-amber-300 font-medium">${targetInst.highlight}</span><br>
+                - <strong>Transparency Status:</strong> ${targetInst.transparency_grade}
+              </p>
+              <p class="text-slate-300">
+                ${targetInst.watch ? `<strong>Watch Notes:</strong> ${targetInst.watch}<br>` : ''}
+                Public admission is <strong>${targetInst.admission_policy}</strong> (${targetInst.admission_details}).
+              </p>
+            `);
+            selectInstitution(targetInst, true);
+            return;
+          }
         }
 
         // 5. Claire Bishop & Radical Museology
@@ -11037,14 +11164,17 @@ FORMATTING & INTERACTION RULES:
       monday: { icon: '🕒', label: 'MONDAY OPENINGS' },
       transit: { icon: '🚇', label: 'PUBLIC TRANSIT TIPS' },
       accessibility: { icon: '♿', label: 'UNIVERSAL ACCESSIBILITY' },
-      amenities: { icon: '☕', label: 'CAFÉS, BOOKSHOPS & GARDENS' },
-      ethical: { icon: '🏛️', label: 'ETHICAL CIVIC CRITERIA' },
-      artist_run: { icon: '🎨', label: 'ARTIST-RUN KUNSTHALLES' },
-      fossil_free: { icon: '🌿', label: 'FOSSIL & DEFENSE-FREE SPACES' },
-      london: { icon: '📍', label: 'LONDON GUIDE' },
-      nyc: { icon: '📍', label: 'NEW YORK GUIDE' },
-      paris: { icon: '📍', label: 'PARIS GUIDE' },
-      moma: { icon: '⚠️', label: 'MOMA AUDIT & EXCLUSION' }
+      amenities: { icon: '☕', label: 'CAFÉS & BOOKSHOPS' },
+      ethical: { icon: '🏛️', label: 'CLEAN FUNDING' },
+      artist_run: { icon: '🎨', label: 'ARTIST-RUN SPACES' },
+      fossil_free: { icon: '🌿', label: 'FOSSIL & DEFENSE-FREE' },
+      london: { icon: '📍', label: 'LONDON ART SCENE' },
+      nyc: { icon: '📍', label: 'NEW YORK ART SCENE' },
+      paris: { icon: '📍', label: 'PARIS ART SCENE' },
+      research_method: { icon: '🔬', label: 'RESEARCH METHODOLOGY' },
+      research_shows: { icon: '🏛️', label: 'LANDMARK EXHIBITIONS' },
+      research_restitution: { icon: '🌍', label: 'RESTITUTION & REPATRIATION' },
+      research_models: { icon: '⚖️', label: 'FUNDING MODELS RESEARCH' }
     };
 
     function applyFilters() {
@@ -11211,6 +11341,16 @@ FORMATTING & INTERACTION RULES:
       }).join('');
 
       container.querySelectorAll('.inst-card').forEach(card => {
+        card.querySelectorAll('.card-open-dossier').forEach(dBtn => {
+          dBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const dName = dBtn.getAttribute('data-name');
+            const target = ALL_INSTITUTIONS.find(i => i.name === dName);
+            if (target) openDossier(target);
+          });
+        });
+
         card.addEventListener('click', () => {
           const name = card.getAttribute('data-name');
           const inst = ALL_INSTITUTIONS.find(i => i.name === name);
