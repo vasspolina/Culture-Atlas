@@ -437,16 +437,16 @@
           <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981] hover:bg-[#112d1e] transition active:scale-95" data-query="Show institutions free from fossil fuels and defense sponsors">
             🌿 Fossil & defense-free spaces
           </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in London">
+          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in London" data-city="London">
             📍 London guide
           </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in New York">
+          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in New York" data-city="New York">
             📍 New York guide
           </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in Tokyo">
+          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in Tokyo" data-city="Tokyo">
             📍 Tokyo guide
           </button>
-          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in Paris">
+          <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95" data-query="Recommend verified cultural spaces in Paris" data-city="Paris">
             📍 Paris guide
           </button>
           <button class="inquiry-chip px-2.5 py-1 rounded-full border border-[#3b2b11] bg-[#221807] text-[#fcd34d] hover:border-[#f59e0b] hover:bg-[#2d2009] transition active:scale-95" data-query="Why is MoMA excluded from Culture Atlas?">
@@ -9159,7 +9159,7 @@
     requestAnimationFrame(render);
 
     // Camera Navigation
-    function flyTo(lon, lat) {
+    function flyTo(lon, lat, targetZoom = null) {
       isAutoSpinning = false;
       let dLon = (lon - rotLon) % 360;
       if (dLon > 180) dLon -= 360;
@@ -9170,6 +9170,10 @@
       targetRotLat = Math.max(-75, Math.min(75, lat));
       flightProgress = 0;
       isFlying = true;
+
+      if (targetZoom) {
+        targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetZoom));
+      }
     }
 
     function selectInstitution(inst, shouldSwitchToGlobe = false) {
@@ -9203,7 +9207,11 @@
         }
       });
 
-      flyTo(inst.lon, inst.lat);
+      if (shouldSwitchToGlobe) {
+        targetRadius = Math.max(targetRadius, baseRadius * 2.5);
+        if (currentSheetState === 'full') setChatSheetState('half');
+      }
+      flyTo(inst.lon, inst.lat, shouldSwitchToGlobe ? baseRadius * 2.5 : null);
 
       // Top half globe is always visible
     }
@@ -9818,12 +9826,24 @@
           if (cityMatches.length > 0) {
             const targetCity = cityMatches[0].city;
             appendCuratorMessage(`
+              <div class="flex items-center justify-between gap-2 p-2.5 bg-[#0d1627] border border-[#203254] rounded-xl mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-[18px]">📍</span>
+                  <div>
+                    <h4 class="font-semibold text-white text-[18px] leading-tight">${escapeHtml(targetCity)}</h4>
+                    <p class="text-[14px] text-[#60a5fa]">${cityMatches.length} Ethically Mapped Sanctuaries</p>
+                  </div>
+                </div>
+                <button class="city-zoom-btn px-3 py-1.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] rounded-lg transition flex items-center gap-1.5 shadow active:scale-95 cursor-pointer shrink-0" data-city="${escapeHtml(targetCity)}">
+                  <span>🔍</span> <span>Zoom to ${escapeHtml(targetCity)}</span>
+                </button>
+              </div>
               <p>📍 <strong>Ethical Cultural Guide for ${escapeHtml(targetCity)}:</strong></p>
-              <p>We have <strong>${cityMatches.length}</strong> ethically vetted cultural institutions mapped in ${escapeHtml(targetCity)}. These spaces operate with transparent public funding and verified independence from controversial corporate donors.</p>
-              <p class="text-slate-300">Here are our top recommendations to explore:</p>
+              <p>We have <strong>${cityMatches.length}</strong> ethically vetted cultural institutions mapped in <strong>${escapeHtml(targetCity)}</strong>. These spaces operate with transparent public funding and verified independence from controversial corporate donors.</p>
+              <p class="text-slate-300">Tap <em>Zoom to ${escapeHtml(targetCity)}</em> or click any space below to inspect on the 3D globe:</p>
             `, cityMatches.slice(0, 4));
 
-            flyTo(cityMatches[0].lon, cityMatches[0].lat);
+            filterByCity(targetCity, true, false);
             return;
           }
         }
@@ -9929,6 +9949,12 @@
     document.querySelectorAll('.inquiry-chip').forEach(btn => {
       btn.addEventListener('click', () => {
         const q = btn.getAttribute('data-query');
+        const city = btn.getAttribute('data-city');
+        if (city) {
+          filterByCity(city, true, false);
+        } else if (q && q.toLowerCase().includes('london')) {
+          filterByCity('London', true, false);
+        }
         if (q) {
           if (q.toLowerCase().includes('moma')) {
             openMomaAuditModal();
@@ -9937,6 +9963,38 @@
           handleCuratorQuery(q);
         }
       });
+    });
+
+    // Delegated click listener in chat messages for city zoom buttons & city mentions
+    curatorMessages.addEventListener('click', (e) => {
+      const btn = e.target.closest('.city-zoom-btn, .curator-fly-btn, [data-city]');
+      if (btn) {
+        const city = btn.getAttribute('data-city');
+        if (city) {
+          e.preventDefault();
+          e.stopPropagation();
+          filterByCity(city, true, false);
+          return;
+        }
+        const instName = btn.getAttribute('data-name');
+        if (instName) {
+          e.preventDefault();
+          e.stopPropagation();
+          const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+          if (inst) {
+            selectInstitution(inst, true);
+          }
+          return;
+        }
+      }
+
+      // Check if user clicked any text or element mentioning London
+      const txt = (e.target.textContent || '').trim().toLowerCase();
+      if (txt === 'london' || txt.includes('london')) {
+        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.tagName === 'STRONG' || e.target.closest('button')) {
+          filterByCity('London', true, false);
+        }
+      }
     });
 
     // Tab Switching: Curator Guide vs Catalog
@@ -10224,25 +10282,48 @@
       });
     }
 
-    function filterByCity(cityName) {
+    function filterByCity(cityName, zoom = true, notifyCurator = true) {
       selectedCityFilter = cityName;
       selectedCountryFilter = 'all';
       applyFilters();
 
       const cty = PRIORITY_CITIES.find(c => c.name.toLowerCase() === cityName.toLowerCase());
-      if (cty) flyTo(cty.lon, cty.lat);
-      else {
+      const targetZoom = zoom ? baseRadius * 2.5 : null;
+
+      if (cty) {
+        flyTo(cty.lon, cty.lat, targetZoom);
+      } else {
         const inst = ALL_INSTITUTIONS.find(i => i.city.toLowerCase() === cityName.toLowerCase());
-        if (inst) flyTo(inst.lon, inst.lat);
+        if (inst) flyTo(inst.lon, inst.lat, targetZoom);
       }
 
-      // Notify the Curator to give an educational briefing on this city
+      if (zoom) {
+        targetRadius = baseRadius * 2.5;
+        if (currentSheetState === 'full') {
+          setChatSheetState('half');
+        }
+      }
+
+      // Select top institution in this city
       const cityMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
       if (cityMatches.length > 0) {
+        selectInstitution(cityMatches[0], false);
+      }
+
+      // Notify Curator if triggered from canvas / UI
+      if (notifyCurator && cityMatches.length > 0) {
         appendCuratorMessage(`
-          <p>📍 <strong>${cityName.toUpperCase()} Cultural Landscape:</strong></p>
-          <p>You selected <strong>${cityName}</strong> with ${cityMatches.length} mapped institutions. These spaces lead in ethical funding and independent programming.</p>
-        `, cityMatches.slice(0, 3));
+          <div class="flex items-center justify-between gap-2 p-2 bg-[#0c1322] border border-[#1e2e4a] rounded-xl mb-2">
+            <div>
+              <h4 class="font-semibold text-white text-[18px] leading-tight">📍 ${cityName.toUpperCase()}</h4>
+              <p class="text-[14px] text-[#60a5fa]">${cityMatches.length} Ethically Mapped Sanctuaries</p>
+            </div>
+            <button class="city-zoom-btn px-3 py-1.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] rounded-lg transition flex items-center gap-1.5 shadow active:scale-95 cursor-pointer shrink-0" data-city="${escapeHtml(cityName)}">
+              <span>🔍</span> <span>Zoom to ${escapeHtml(cityName)}</span>
+            </button>
+          </div>
+          <p>You zoomed in on <strong>${cityName}</strong> with ${cityMatches.length} mapped institutions. These spaces lead in ethical funding and independent programming.</p>
+        `, cityMatches.slice(0, 4));
       }
     }
 
