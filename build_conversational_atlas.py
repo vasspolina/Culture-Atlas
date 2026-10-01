@@ -823,9 +823,6 @@ def build():
     let hoveredCity = null;
     let hoveredCountry = null;
 
-    // Mobile Sheet State ('peek', 'half', 'full')
-    let currentSheetState = 'peek';
-
     // Canvas & 3D Math Setup
     const canvas = document.getElementById('globeCanvas');
     const ctx = canvas.getContext('2d');
