@@ -1233,11 +1233,12 @@ def build():
         }}
       }});
 
+      const zoomTarget = shouldSwitchToGlobe ? Math.max(targetRadius, baseRadius * 2.5) : null;
       if (shouldSwitchToGlobe) {{
-        targetRadius = Math.max(targetRadius, baseRadius * 2.5);
+        targetRadius = zoomTarget;
         if (currentSheetState === 'full') setChatSheetState('half');
       }}
-      flyTo(inst.lon, inst.lat, shouldSwitchToGlobe ? baseRadius * 2.5 : null);
+      flyTo(inst.lon, inst.lat, zoomTarget);
 
       // Top half globe is always visible
     }}
@@ -1517,10 +1518,13 @@ def build():
                 : '<span class="text-[14px] font-mono px-1.5 py-0.5 rounded border border-blue-900 bg-[#0d1d33] text-blue-400">Tier B · One Name</span>';
 
               return `
-                <div class="bg-[#0b0e17] border border-[#1c2336] hover:border-[#3b82f6] rounded-xl p-3 transition shadow-sm">
+                <div class="curator-inst-card bg-[#0b0e17] border border-[#1c2336] hover:border-[#3b82f6] hover:bg-[#0f1422] rounded-xl p-3 transition shadow-sm cursor-pointer group active:scale-[0.99]" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
                   <div class="flex items-start justify-between gap-2">
                     <div>
-                      <h4 class="font-semibold text-white text-[14px]">${{inst.name}}</h4>
+                      <div class="flex items-center gap-1.5">
+                        <h4 class="font-semibold text-white text-[14px] group-hover:text-[#60a5fa] transition">${{inst.name}}</h4>
+                        <span class="text-[14px] text-slate-500 group-hover:text-[#93c5fd] transition">🔍 Zoom on map →</span>
+                      </div>
                       <p class="text-[14px] text-[#60a5fa] font-mono mt-0.5">${{inst.location}}</p>
                     </div>
                     ${{tierBadge}}
@@ -1534,18 +1538,18 @@ def build():
                   <p class="text-[14px] text-slate-300 mt-2 leading-relaxed line-clamp-2">${{inst.curator_recommendation || inst.funding}}</p>
                   
                   <div class="mt-2.5 pt-2 border-t border-[#161d2d] flex items-center justify-between gap-2">
-                    <button class="curator-fly-btn px-2.5 py-1 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-medium rounded-lg transition flex items-center gap-1 active:scale-95" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
-                      <span>🌍</span> <span>Fly on Globe</span>
+                    <button class="curator-fly-btn px-2.5 py-1 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] rounded-lg transition flex items-center gap-1.5 active:scale-95 shadow cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
+                      <span>🔍</span> <span>Zoom on Globe</span>
                     </button>
-                    <div class="flex items-center gap-1.5">
+                    <div class="flex items-center gap-1.5" onclick="event.stopPropagation()">
                       ${{webUrl ? `
                         <a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" 
-                           class="px-2 py-1 bg-[#121726] hover:bg-[#1a233c] border border-[#222e48] hover:border-[#3b82f6] text-[#60a5fa] hover:text-white text-[14px] font-mono rounded-lg transition flex items-center gap-1"
+                           class="px-2 py-1 bg-[#121726] hover:bg-[#1a233c] border border-[#222e48] hover:border-[#3b82f6] text-[#60a5fa] hover:text-white text-[14px] font-mono rounded-lg transition flex items-center gap-1 cursor-pointer"
                            onclick="event.stopPropagation()">
                           <span>🌐</span> <span class="max-w-[90px] truncate">${{domain}}</span> <span>↗</span>
                         </a>
                       ` : ''}}
-                      <button class="curator-dossier-btn px-2 py-1 text-slate-400 hover:text-white text-[14px] font-mono rounded hover:bg-[#151a28] transition" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
+                      <button class="curator-dossier-btn px-2 py-1 text-slate-400 hover:text-white text-[14px] font-mono rounded hover:bg-[#151a28] transition cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}" onclick="event.stopPropagation()">
                         Audit Dossier →
                       </button>
                     </div>
@@ -1570,9 +1574,24 @@ def build():
       `;
       curatorMessages.appendChild(div);
 
+      // Bind click on entire card to fly and zoom on the map
+      div.querySelectorAll('.curator-inst-card').forEach(card => {{
+        card.addEventListener('click', (e) => {{
+          if (e.target.closest('a') || e.target.closest('.curator-dossier-btn')) {{
+            return;
+          }}
+          const name = card.getAttribute('data-name');
+          const inst = ALL_INSTITUTIONS.find(i => i.name === name);
+          if (inst) {{
+            selectInstitution(inst, true);
+          }}
+        }});
+      }});
+
       // Bind fly buttons
       div.querySelectorAll('.curator-fly-btn').forEach(btn => {{
-        btn.addEventListener('click', () => {{
+        btn.addEventListener('click', (e) => {{
+          e.stopPropagation();
           const name = btn.getAttribute('data-name');
           const inst = ALL_INSTITUTIONS.find(i => i.name === name);
           if (inst) {{
@@ -1913,7 +1932,7 @@ def build():
             ${{instMatch.watch ? `<p class="text-amber-300/90 text-[14px] mt-1.5"><strong>Watch Note:</strong> ${{escapeHtml(instMatch.watch)}}</p>` : ''}}
           `, [instMatch]);
 
-          selectInstitution(instMatch, false);
+          selectInstitution(instMatch, true);
           return;
         }}
 
@@ -1991,8 +2010,21 @@ def build():
       }});
     }});
 
-    // Delegated click listener in chat messages for city zoom buttons & city mentions
+    // Delegated click listener in chat messages for cards, city zoom buttons & city mentions
     curatorMessages.addEventListener('click', (e) => {{
+      // 1. Check if user clicked anywhere on an institution card (except direct external links or dossier btn)
+      const card = e.target.closest('.curator-inst-card');
+      if (card && !e.target.closest('a') && !e.target.closest('.curator-dossier-btn')) {{
+        e.preventDefault();
+        e.stopPropagation();
+        const name = card.getAttribute('data-name');
+        const inst = ALL_INSTITUTIONS.find(i => i.name === name);
+        if (inst) {{
+          selectInstitution(inst, true);
+        }}
+        return;
+      }}
+
       const btn = e.target.closest('.city-zoom-btn, .curator-fly-btn, [data-city]');
       if (btn) {{
         const city = btn.getAttribute('data-city');
@@ -2302,7 +2334,7 @@ def build():
           const name = card.getAttribute('data-name');
           const inst = ALL_INSTITUTIONS.find(i => i.name === name);
           if (inst) {{
-            selectInstitution(inst);
+            selectInstitution(inst, true);
           }}
         }});
       }});

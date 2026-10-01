@@ -669,15 +669,15 @@ def update_widget():
         cards = `
           <div class="flex flex-col gap-1.5 mt-1.5 pt-1.5 border-t border-[#1c2234]">
             ${{picks.filter(Boolean).map(inst => `
-              <div class="bg-[#0b0e17] border border-[#1c2336] rounded-lg p-2 text-[14px]">
+              <div class="w-inst-card bg-[#0b0e17] border border-[#1c2336] hover:border-[#3b82f6] rounded-lg p-2 text-[14px] cursor-pointer group" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
                 <div class="flex items-start justify-between gap-1">
-                  <span class="font-semibold text-white truncate">${{inst.name}}</span>
+                  <span class="font-semibold text-white group-hover:text-[#60a5fa] transition truncate">${{inst.name}}</span>
                   <span class="text-[14px] font-mono px-1 rounded ${{inst.tier === 'A' ? 'text-emerald-400 bg-[#0a2016]' : 'text-blue-400 bg-[#0d1d33]'}}">${{inst.tier === 'A' ? 'Verified' : 'One Name'}}</span>
                 </div>
                 <div class="text-[14px] text-[#60a5fa] font-mono mt-0.5">${{inst.location}}</div>
                 <div class="mt-1.5 pt-1 border-t border-[#161d2d] flex items-center justify-between text-[14px]">
-                  <button class="w-fly-btn text-[#3b82f6] hover:underline font-semibold" data-name="${{inst.name.replace(/"/g, '&quot;')}}">🌍 Fly on Globe</button>
-                  ${{inst.website ? `<a href="${{inst.website}}" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-0.5"><span>🌐</span> <span>site ↗</span></a>` : ''}}
+                  <button class="w-fly-btn text-[#3b82f6] hover:underline font-semibold" data-name="${{inst.name.replace(/"/g, '&quot;')}}">🔍 Zoom on Globe</button>
+                  ${{inst.website ? `<a href="${{inst.website}}" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-0.5" onclick="event.stopPropagation()"><span>🌐</span> <span>site ↗</span></a>` : ''}}
                 </div>
               </div>
             `).join('')}}
@@ -696,13 +696,14 @@ def update_widget():
       `;
       wMessages.appendChild(div);
 
-      div.querySelectorAll('.w-fly-btn').forEach(btn => {{
-        btn.addEventListener('click', () => {{
+      div.querySelectorAll('.w-inst-card, .w-fly-btn').forEach(btn => {{
+        btn.addEventListener('click', (e) => {{
+          if (e.target.closest('a')) return;
           const name = btn.getAttribute('data-name');
           const inst = DATA.find(i => i.name === name);
           if (inst) {{
+            targetRadius = baseRadius * 2.5;
             select(inst, true);
-            // On small mobile, show globe
             if (window.innerWidth < 640) showTab('globe');
           }}
         }});
