@@ -599,7 +599,34 @@ def update_widget():
 
       // Dots
       visibleDots = [];
-      DATA.forEach(inst => {{
+      const filteredData = DATA.filter(inst => {{
+        if (wCategoryFilter === 'all') return true;
+        if (wCategoryFilter === 'free') return (inst.admission_policy || '').toLowerCase().includes('free');
+        if (wCategoryFilter === 'monday') {{
+          const h = (inst.opening_hours || '').toLowerCase();
+          return !h.includes('closed mon') && (h.includes('daily') || h.includes('mon'));
+        }}
+        if (wCategoryFilter === 'transit') return inst.transit_tips && inst.transit_tips.length > 5;
+        if (wCategoryFilter === 'accessibility') {{
+          const a = (inst.accessibility || '').toLowerCase();
+          return a.includes('step-free') || a.includes('wheelchair') || a.includes('elevator') || a.includes('accessible');
+        }}
+        if (wCategoryFilter === 'amenities') {{
+          const am = (inst.amenities || '').toLowerCase();
+          return am.includes('caf') || am.includes('book') || am.includes('garden') || am.includes('dining');
+        }}
+        if (wCategoryFilter === 'ethical') return inst.tier === 'A' || inst.governance_type.includes('Civic') || inst.governance_type.includes('Public');
+        if (wCategoryFilter === 'artist_run') return (inst.governance_type || '').toLowerCase().includes('artist');
+        if (wCategoryFilter === 'fossil_free') {{
+          const s = (inst.ethical_safeguard || '').toLowerCase();
+          return inst.tier === 'A' || s.includes('divest') || s.includes('fossil') || s.includes('clean');
+        }}
+        if (wCategoryFilter === 'london') return inst.city.toLowerCase() === 'london';
+        if (wCategoryFilter === 'nyc') return inst.city.toLowerCase().includes('new york') || inst.city.toLowerCase().includes('beacon');
+        return true;
+      }});
+
+      filteredData.forEach(inst => {{
         const pt = project(inst.lon, inst.lat, r, cx, cy);
         if (pt.front && pt.depth > 0.05) {{
           visibleDots.push({{ inst, x: pt.x, y: pt.y }});
@@ -929,11 +956,55 @@ def update_widget():
       handleWQuery('Why is MoMA excluded from Culture Atlas?');
     }});
 
+    let wCategoryFilter = 'all';
+
+    function updateWFilterChipsUI() {{
+      document.querySelectorAll('.w-inquiry').forEach(b => {{
+        const f = b.getAttribute('data-filter');
+        if (f && f === wCategoryFilter && wCategoryFilter !== 'all') {{
+          b.classList.add('border-[#38bdf8]', 'ring-1', 'ring-[#38bdf8]', 'bg-[#0c1a2e]', 'text-white', 'shadow-[0_0_10px_rgba(56,189,248,0.5)]');
+          b.classList.remove('border-[#1b3324]', 'border-[#232a3c]', 'border-[#3b2b11]', 'bg-[#0c1f15]', 'bg-[#101522]', 'bg-[#221807]', 'text-[#6ee7b7]', 'text-[#93c5fd]', 'text-[#cbd5e1]', 'text-[#fcd34d]');
+        }} else {{
+          b.classList.remove('border-[#38bdf8]', 'ring-1', 'ring-[#38bdf8]', 'bg-[#0c1a2e]', 'text-white', 'shadow-[0_0_10px_rgba(56,189,248,0.5)]');
+          const col = b.getAttribute('data-chip-color');
+          if (col === 'green') {{
+            b.classList.add('border-[#1b3324]', 'bg-[#0c1f15]', 'text-[#6ee7b7]');
+          }} else if (col === 'amber') {{
+            b.classList.add('border-[#3b2b11]', 'bg-[#221807]', 'text-[#fcd34d]');
+          }} else if (col === 'blue') {{
+            b.classList.add('border-[#232a3c]', 'bg-[#101522]', 'text-[#93c5fd]');
+          }} else {{
+            b.classList.add('border-[#232a3c]', 'bg-[#101522]', 'text-[#cbd5e1]');
+          }}
+        }}
+      }});
+    }}
+
     document.querySelectorAll('.w-inquiry').forEach(b => {{
       b.addEventListener('click', () => {{
+        const f = b.getAttribute('data-filter') || 'all';
         const q = b.getAttribute('data-query');
-        appendWUser(q);
-        handleWQuery(q);
+
+        if (wCategoryFilter === f) {{
+          wCategoryFilter = 'all';
+          targetRadius = baseRadius;
+        }} else {{
+          wCategoryFilter = f;
+          if (f === 'london') {{
+            flyTo(-0.1278, 51.5074);
+            targetRadius = baseRadius * 4.0;
+          }} else if (f === 'nyc') {{
+            flyTo(-73.9776, 40.7614);
+            targetRadius = baseRadius * 4.0;
+          }}
+        }}
+
+        updateWFilterChipsUI();
+
+        if (q && wCategoryFilter !== 'all') {{
+          appendWUser(q);
+          handleWQuery(q);
+        }}
       }});
     }});
 
