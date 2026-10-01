@@ -2,32 +2,40 @@
 
 > **Ethically funded cultural institutions across the world**
 
-An interactive 3D geospatial globe, ledger, and analysis tool mapping cultural institutions globally based on ethical funding transparency. Every institution is evaluated against corporate underwriting records, annual reports, partner pages, and public disclosures.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Culture%20Atlas-1d4ed8?style=for-the-badge&logo=github)](https://vasspolina.github.io/Culture-Atlas/)
+[![Sanctuaries](https://img.shields.io/badge/Sanctuaries-203%20Institutions-10b981?style=for-the-badge)](https://vasspolina.github.io/Culture-Atlas/)
+[![Countries](https://img.shields.io/badge/Coverage-35%20Countries-60a5fa?style=for-the-badge)](https://vasspolina.github.io/Culture-Atlas/)
+
+An interactive 3D geospatial globe, catalog, and conversational curator mapping cultural institutions globally based on ethical funding transparency and artistic autonomy. Every institution is evaluated against corporate underwriting records, annual reports, partner pages, and public disclosures to champion spaces that reject funding from fossil fuels, defense/weapons manufacturing, and private prisons.
+
+🌐 **Live Application**: [https://vasspolina.github.io/Culture-Atlas/](https://vasspolina.github.io/Culture-Atlas/)
 
 ---
 
-## 🌟 Features
+## 🌟 Key Features
 
-- **🤖 Built-in AI Concierge & Conversational Experience**:
-  - **Instant Offline Intelligence**: Natural language question answering and recommendation engine over all 197 institutions with zero setup or API keys required.
-  - **Interactive Map Control**: Conversational responses generate interactive action chips (`[📍 Fly to Tokyo]`, `[🏛️ Inspect Te Papa]`, `[🟢 Filter Tier A]`) that manipulate the live 3D globe and filters.
-  - **Google Gemini API Integration (Optional / BYOK)**: Connect your Google AI Studio API key in settings (⚙️) to unlock full multi-turn conversational reasoning, comparative analyses, and custom travel itineraries powered by **Gemini 2.5 Flash**.
-  - **🎙️ Voice Input**: Dictate questions hands-free via the Web Speech API mic button.
-  - **⌨️ Keyboard Shortcut**: Press `Cmd+K` (Mac) or `Ctrl+K` (Windows/Linux) anytime to toggle the concierge.
+- **💬 Conversational Atlas Curator (Inline Research Guide)**:
+  - **Fluid Conversational Dialogue**: An articulate, scholarly curator answering questions on institutional ethics, schedules, public transit connections, accessibility, museum cafes, and site-specific landmarks.
+  - **Strictly Inline Interactive Links**: Institutions and cities are woven directly into prose sentences—clicking any institution smoothly zooms the 3D globe to that venue, clicking a city flies to that city, and clicking an audit dossier opens its full governance review.
+  - **Live Gemini 2.5 Flash Integration (Optional / BYOK)**: Connect a Google AI Studio API key in settings (⚙️) to activate generative multi-turn reasoning with strictly formatted inline citations.
+  - **Instant Offline Knowledge Engine**: Robust built-in research engine covering all 203 institutions with zero latency or external dependencies.
 
 - **🌍 Interactive 3D D3 Globe**:
-  - Physics-based rotation with inertial momentum deceleration.
-  - Multi-touch pinch-to-zoom and mouse wheel exponential scaling.
-  - Atmospheric bloom shader (`feGaussianBlur` + `feMerge`), ocean radial gradients, and rim light shaders.
+  - Crisp canvas rendering with anti-aliasing and subpixel scaling.
+  - Physics-based rotation with inertial momentum deceleration and auto-spin toggle.
+  - Kinetic flight transitions (`flyTo`) and 2.5× scale zoom targeting.
+  - Dark obsidian floating cards with direct website, transit, and dossier links.
   - Country polygon boundaries rendered from TopoJSON with hover highlights.
-  - Interactive city pills and institution markers.
-  - Kinetic flight transitions (`flyTo`) when selecting any institution, city, or country.
-  - Keyboard navigation (arrow keys to rotate, `+`/`-` to zoom, `Esc` to deselect).
 
-- **🏛️ 197 Cultural Institutions Mapped**:
-  - **Tier A (🟢 Verified - 125 institutions)**: Fully verified clean funding roster, municipal/endowment backing, strict ethical gift-acceptance policies.
+- **🏛️ 203 Cultural Sanctuaries Mapped across 35 Countries**:
+  - **Tier A (🟢 Verified - 131 institutions)**: Fully verified clean funding roster, municipal/endowment backing, strict ethical gift-acceptance policies.
   - **Tier B (🔵 One name to know - 55 institutions)**: Flagged for a specific corporate sponsor to note (e.g., fossil finance, corporate surveillance).
   - **Tier U (⚪ Roster unverified - 17 institutions)**: Pending updated disclosures.
+
+- **🎨 Strict Typography & Design System**:
+  - Exclusively set in **PP Telegraf Regular** with anti-aliased font rendering.
+  - Strict 3-size hierarchical type system (14px body/details, 18px subheaders/cards, 24px title).
+  - Responsive half-sheet/full-sheet mobile controller.
 
 - **🔍 Search & Filtering**:
   - Real-time instant search across institutions, cities, and countries.
