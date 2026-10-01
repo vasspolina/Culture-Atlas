@@ -675,34 +675,24 @@ def update_widget():
     const wInput = document.getElementById('wCuratorInput');
     const wSend = document.getElementById('wCuratorSend');
 
-    function appendWCurator(html, picks = []) {{
+    function escapeHtml(str) {{
+      return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }}
+
+    function formatWInstLink(inst, opts = {{}}) {{
+      if (!inst) return '';
+      const webUrl = inst.website || '';
+      let domain = 'website';
+      try {{ domain = new URL(webUrl).hostname.replace(/^www\\./, ''); }} catch(e) {{}}
+      const nameLink = `<a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>`;
+      const cityPart = opts.noCity ? '' : ` in <a href="#" class="w-city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
+      const webPart = webUrl ? ` (<a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] font-mono text-[14px]">${{domain}} ↗</a>)` : '';
+      return `${{nameLink}}${{cityPart}}${{webPart}}`;
+    }}
+
+    function appendWCurator(html) {{
       const div = document.createElement('div');
       div.className = 'flex flex-col gap-1';
-
-      let cards = '';
-      if (picks && picks.length > 0) {{
-        cards = `
-          <div class="flex flex-col gap-1 mt-1.5 pt-1.5 border-t border-[#1c2234] text-[14px]">
-            ${{picks.filter(Boolean).map(inst => `
-              <div class="pl-2 border-l-2 border-[#1e2a42] hover:border-[#3b82f6] transition py-0.5 leading-snug">
-                <p>
-                  <a href="#" class="w-inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}">${{inst.name}}</a>
-                  <span class="text-slate-400 font-mono text-[14px]">(${{inst.location}})</span>
-                </p>
-                <p class="text-[14px] font-mono text-slate-400 mt-0.5 flex items-center gap-2 flex-wrap">
-                  <a href="#" class="w-inst-link text-[#60a5fa] hover:underline flex items-center gap-1 cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
-                    <span>🔍</span> <span>Zoom on globe</span>
-                  </a>
-                  ${{inst.website ? `
-                    <span>·</span>
-                    <a href="${{inst.website}}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa]">site ↗</a>
-                  ` : ''}}
-                </p>
-              </div>
-            `).join('')}}
-          </div>
-        `;
-      }}
 
       div.innerHTML = `
         <div class="flex items-center gap-1 text-[14px] font-mono text-[#60a5fa]">
@@ -710,7 +700,6 @@ def update_widget():
         </div>
         <div class="bg-[#101420] border border-[#1e2538] text-[14px] text-slate-200 p-2.5 rounded-xl space-y-1.5 leading-relaxed">
           ${{html}}
-          ${{cards}}
         </div>
       `;
       wMessages.appendChild(div);
@@ -718,7 +707,6 @@ def update_widget():
       div.querySelectorAll('.w-inst-link, .w-fly-btn').forEach(btn => {{
         btn.addEventListener('click', (e) => {{
           e.preventDefault();
-          if (e.target.closest('a') && !e.target.classList.contains('w-inst-link')) return;
           const name = btn.getAttribute('data-name');
           const inst = DATA.find(i => i.name === name);
           if (inst) {{
@@ -726,6 +714,17 @@ def update_widget():
             select(inst, true);
             if (window.innerWidth < 640) showTab('globe');
           }}
+        }});
+      }});
+
+      div.querySelectorAll('.w-city-link').forEach(btn => {{
+        btn.addEventListener('click', (e) => {{
+          e.preventDefault();
+          const cityName = btn.getAttribute('data-city');
+          const c = PRIORITY_CITIES.find(pc => pc.name.toLowerCase() === cityName.toLowerCase());
+          if (c) flyTo(c.lon, c.lat);
+          filterCity = cityName;
+          if (window.innerWidth < 640) showTab('globe');
         }});
       }});
 
@@ -768,21 +767,28 @@ def update_widget():
           const targetInst = DATA.find(i => query.includes(i.name.toLowerCase()));
           if (targetInst) {{
             appendWCurator(`
-              <p>🕒 <strong>Hours for ${{targetInst.name}}:</strong></p>
-              <p class="text-emerald-400 font-mono text-[14px]">📅 ${{targetInst.opening_hours}}</p>
-              <p class="text-slate-300 text-[14px]">🎟️ ${{targetInst.admission_fee}}</p>
-              <p class="text-slate-300 text-[14px]">📍 ${{targetInst.address}}</p>
-              <p class="text-[#93c5fd] text-[14px] font-mono">🚇 ${{targetInst.transit_tips}}</p>
-            `, [targetInst]);
+              <p class="text-slate-200">
+                ${{formatWInstLink(targetInst)}} welcomes visitors <strong>${{targetInst.opening_hours}}</strong>.
+              </p>
+              <p class="text-slate-300">
+                Admission is ${{targetInst.admission_fee}}. Located at ${{targetInst.address}}, easily reached via ${{targetInst.transit_tips}}.
+              </p>
+            `);
             select(targetInst, true);
             return;
           }}
 
           const mSpaces = DATA.filter(i => !i.opening_hours.toLowerCase().includes('closed mon') && (i.opening_hours.toLowerCase().includes('daily') || i.opening_hours.toLowerCase().includes('mon,') || i.opening_hours.toLowerCase().includes('mon–') || i.opening_hours.toLowerCase().includes('mon-')));
+          const m1 = mSpaces[0] || DATA[0];
+          const m2 = mSpaces[1] || DATA[1];
           appendWCurator(`
-            <p><strong>🕒 Visiting Hours & Mondays:</strong></p>
-            <p>Independent spaces generally open <strong>Wed–Sun (11:00–18:00)</strong>. Here are ethical venues open on <strong>Mondays</strong>:</p>
-          `, mSpaces.slice(0, 3));
+            <p class="text-slate-200">
+              While many traditional museums close Mondays, we map <strong>${{mSpaces.length}}</strong> spaces welcoming visitors at the start of the week.
+            </p>
+            <p class="text-slate-300">
+              For quiet Monday contemplation, consider ${{formatWInstLink(m1)}} or ${{formatWInstLink(m2)}}.
+            </p>
+          `);
           return;
         }}
 
@@ -791,80 +797,102 @@ def update_widget():
           const targetInst = DATA.find(i => query.includes(i.name.toLowerCase()));
           if (targetInst) {{
             appendWCurator(`
-              <p>🚇 <strong>Transit Directions to ${{targetInst.name}}:</strong></p>
-              <p class="text-[#93c5fd] font-mono text-[14px]">${{targetInst.transit_tips}}</p>
-              <p class="text-slate-300 text-[14px]">📍 ${{targetInst.address}} (${{targetInst.neighborhood}})</p>
-              <p class="text-slate-400 text-[14px]">⏱️ Suggested Duration: ${{targetInst.visit_duration}}</p>
-            `, [targetInst]);
+              <p class="text-slate-200">
+                To reach ${{formatWInstLink(targetInst)}}, take ${{targetInst.transit_tips}}.
+              </p>
+              <p class="text-slate-300">
+                Located at ${{targetInst.address}} (${{targetInst.neighborhood}}). Suggested duration: ${{targetInst.visit_duration}}.
+              </p>
+            `);
             select(targetInst, true);
             return;
           }}
 
+          const dia = DATA.find(i => i.name.includes('Dia Beacon'));
+          const louis = DATA.find(i => i.name.includes('Louisiana'));
           appendWCurator(`
-            <p><strong>🚇 Transit & Destination Access:</strong></p>
-            <p>Culture Atlas provides full public rail & metro directions for all 203 institutions. Easily reach Dia Beacon via Metro-North or Louisiana via the Danish Kystbanen line.</p>
-          `, [
-            DATA.find(i => i.name.includes('Dia Beacon')),
-            DATA.find(i => i.name.includes('Louisiana'))
-          ]);
+            <p class="text-slate-200">
+              Culture Atlas provides public transit directions for all 203 institutions.
+            </p>
+            <p class="text-slate-300">
+              You can easily reach ${{formatWInstLink(dia)}} via Metro-North rail from Manhattan, or take Denmark's coastal train up to ${{formatWInstLink(louis)}}.
+            </p>
+          `);
           return;
         }}
 
         // Visitor Queries: Accessibility
         if (query.includes('accessib') || query.includes('wheelchair') || query.includes('step-free')) {{
+          const serp = DATA.find(i => i.name.includes('Serpentine'));
+          const aros = DATA.find(i => i.name.includes('ARoS'));
           appendWCurator(`
-            <p><strong>♿ Barrier-Free Accessibility:</strong></p>
-            <p>All mapped civic institutions offer step-free access, elevators, loan wheelchairs, and free companion admission.</p>
-          `, [
-            DATA.find(i => i.name.includes('Serpentine')),
-            DATA.find(i => i.name.includes('ARoS'))
-          ]);
+            <p class="text-slate-200">
+              All mapped civic institutions offer step-free access, elevators, loan wheelchairs, and free entry for essential companions.
+            </p>
+            <p class="text-slate-300">
+              Exemplary accessible venues include ${{formatWInstLink(serp)}} and ${{formatWInstLink(aros)}}.
+            </p>
+          `);
           return;
         }}
 
         if (query.includes('what makes') || query.includes('ethical') || query.includes('criteria') || query.includes('method')) {{
+          const chis = DATA.find(i => i.name.includes('Chisenhale'));
+          const capc = DATA.find(i => i.name.includes('CAPC'));
           appendWCurator(`
-            <p><strong>What Makes an Institution Ethically Funded?</strong></p>
-            <p>We evaluate whether museums protect curatorial independence by looking at their underwriting:</p>
-            <ul class="list-disc pl-3 text-slate-300 space-y-1">
-              <li><strong>Tier A (Verified Civic):</strong> Backed by municipal grants or clean endowments; zero corporate oil or arms ties.</li>
-              <li><strong>Artist-Governed Kunsthalles:</strong> Radical creative autonomy directed by artists.</li>
-              <li><strong>Divested Spaces:</strong> Institutions that severed ties with BP, Shell, or Baillie Gifford.</li>
-            </ul>
-          `, [
-            DATA.find(i => i.name.includes('Chisenhale')),
-            DATA.find(i => i.name.includes('CAPC'))
-          ]);
+            <p class="text-slate-200">
+              We evaluate whether museums protect curatorial independence by looking at their funding architecture:
+            </p>
+            <p class="text-slate-300">
+              Prioritizing civic municipal sanctuaries backed by public councils like ${{formatWInstLink(capc)}}, artist-governed kunsthalles like ${{formatWInstLink(chis)}}, and spaces that divested from fossil-fuel extraction.
+            </p>
+          `);
         }} else if (query.includes('fossil') || query.includes('oil') || query.includes('bp') || query.includes('defense')) {{
+          const cam = DATA.find(i => i.name.includes('Camden'));
+          const white = DATA.find(i => i.name.includes('Whitechapel'));
           appendWCurator(`
-            <p><strong>Fossil-Fuel & Defense-Free Art:</strong></p>
-            <p>Every museum in Culture Atlas has verified clean underwriting without oil or weapons money on its roster. Here are exemplary divested spaces:</p>
-          `, [
-            DATA.find(i => i.name.includes('Camden')),
-            DATA.find(i => i.name.includes('Whitechapel'))
-          ]);
+            <p class="text-slate-200">
+              Every museum in Culture Atlas has verified clean underwriting without oil or weapons money on its roster.
+            </p>
+            <p class="text-slate-300">
+              Standout divested leaders include ${{formatWInstLink(cam)}} and ${{formatWInstLink(white)}}.
+            </p>
+          `);
         }} else if (query.includes('moma') || query.includes('whitney') || query.includes('why exclude')) {{
+          const dia = DATA.find(i => i.name.includes('Dia Beacon'));
+          const sculp = DATA.find(i => i.name.includes('SculptureCenter'));
           appendWCurator(`
-            <p><strong>Why MoMA is Excluded:</strong></p>
-            <p>MoMA trustees held major stakes in defense contractors and private prisons. Culture Atlas only maps spaces free from unresolved sponsorship conflicts.</p>
-          `, [
-            DATA.find(i => i.name.includes('Dia Beacon')),
-            DATA.find(i => i.name.includes('SculptureCenter'))
-          ]);
+            <p class="text-slate-200">
+              MoMA trustees held major stakes in defense contractors and private prisons. Culture Atlas only maps spaces free from unresolved sponsorship conflicts.
+            </p>
+            <p class="text-slate-300">
+              Instead, we celebrate uncompromised sanctuaries like ${{formatWInstLink(dia)}} and ${{formatWInstLink(sculp)}}.
+            </p>
+          `);
         }} else {{
           // City or general matches
           const matchCity = PRIORITY_CITIES.find(c => query.includes(c.name.toLowerCase()));
           if (matchCity) {{
             const list = DATA.filter(i => i.city.toLowerCase() === matchCity.name.toLowerCase());
+            const topSp = list.slice(0, 3).map(i => formatWInstLink(i, {{noCity: true}})).join(', ');
             appendWCurator(`
-              <p>📍 Found <strong>${{list.length}}</strong> verified spaces in <strong>${{matchCity.name}}</strong>:</p>
-            `, list.slice(0, 3));
+              <p class="text-slate-200">
+                Found <strong>${{list.length}}</strong> verified ethical spaces in <a href="#" class="w-city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(matchCity.name)}}">${{escapeHtml(matchCity.name)}}</a>.
+              </p>
+              <p class="text-slate-300">
+                Notable venues include ${{topSp}}.
+              </p>
+            `);
             flyTo(matchCity.lon, matchCity.lat);
           }} else {{
             const rand = DATA.filter(i => i.tier === 'A');
+            const p1 = rand[Math.floor(Math.random()*rand.length)];
+            const p2 = rand[Math.floor(Math.random()*rand.length)];
             appendWCurator(`
-              <p>Here are two recommended verified spaces to discover:</p>
-            `, [rand[Math.floor(Math.random()*rand.length)], rand[Math.floor(Math.random()*rand.length)]]);
+              <p class="text-slate-200">
+                Here are two recommended verified spaces to discover: ${{formatWInstLink(p1)}} and ${{formatWInstLink(p2)}}.
+              </p>
+            `);
           }}
         }}
       }}, 250);
@@ -1005,7 +1033,16 @@ def update_widget():
             filterCity = b.name;
             flyTo(b.lon, b.lat);
             if (!wSheetOpen) setWSheet(true);
-            appendWCurator(`<p>📍 <strong>${{b.name}} Cultural Guide:</strong></p>`, DATA.filter(inst => inst.city.toLowerCase() === b.name.toLowerCase()).slice(0, 3));
+            const cityList = DATA.filter(inst => inst.city.toLowerCase() === b.name.toLowerCase());
+            const topList = cityList.slice(0, 3).map(i => formatWInstLink(i, {{noCity: true}})).join(', ');
+            appendWCurator(`
+              <p class="text-slate-200">
+                Now exploring <a href="#" class="w-city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(b.name)}}">${{escapeHtml(b.name)}}</a>, with <strong>${{cityList.length}}</strong> verified ethical cultural sanctuaries.
+              </p>
+              <p class="text-slate-300">
+                Standout spaces include ${{topList}}.
+              </p>
+            `);
             return;
           }}
         }}

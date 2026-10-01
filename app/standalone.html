@@ -9489,55 +9489,9 @@
       curatorMessages.scrollTop = curatorMessages.scrollHeight;
     }
 
-    function appendCuratorMessage(htmlContent, recommendedInsts = []) {
+    function appendCuratorMessage(htmlContent) {
       const div = document.createElement('div');
       div.className = 'flex flex-col gap-1.5';
-
-      let cardsHtml = '';
-      if (recommendedInsts && recommendedInsts.length > 0) {
-        cardsHtml = `
-          <div class="mt-2.5 pt-2 border-t border-[#1a2336] space-y-2 text-[14px]">
-            <p class="text-[14px] font-mono text-[#60a5fa] uppercase tracking-wider flex items-center gap-1">
-              <span>📍</span> <span>Curator's Recommendations:</span>
-            </p>
-            ${recommendedInsts.filter(Boolean).map(inst => {
-              const webUrl = inst.website || (inst.sources && inst.sources[0]) || '';
-              let domain = 'website';
-              try { domain = new URL(webUrl).hostname.replace(/^www\./, ''); } catch(e) {}
-              const tierBadge = inst.tier === 'A' 
-                ? '<span class="text-emerald-400 font-mono text-[14px]">Tier A · Verified</span>'
-                : '<span class="text-blue-400 font-mono text-[14px]">Tier B · One Name</span>';
-
-              return `
-                <div class="pl-3 border-l-2 border-[#1e2a42] hover:border-[#3b82f6] transition py-0.5 leading-relaxed">
-                  <p>
-                    <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline underline-offset-2 transition cursor-pointer" data-name="${inst.name.replace(/"/g, '&quot;')}">${inst.name}</a>
-                    <span class="text-slate-400">(${inst.location})</span>
-                    <span class="text-slate-500">·</span>
-                    ${tierBadge}
-                  </p>
-                  <p class="text-slate-300 text-[14px] mt-0.5">${inst.curator_recommendation || inst.highlight || inst.funding}</p>
-                  <p class="text-[14px] font-mono text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
-                    <a href="#" class="inst-link text-[#60a5fa] hover:text-[#93c5fd] hover:underline flex items-center gap-1 cursor-pointer" data-name="${inst.name.replace(/"/g, '&quot;')}">
-                      <span>🔍</span> <span>Zoom on globe</span>
-                    </a>
-                    <span>·</span>
-                    <a href="#" class="dossier-link text-slate-300 hover:text-white hover:underline cursor-pointer" data-name="${inst.name.replace(/"/g, '&quot;')}">
-                      Audit dossier →
-                    </a>
-                    ${webUrl ? `
-                      <span>·</span>
-                      <a href="${webUrl}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] hover:underline flex items-center gap-0.5">
-                        <span>${domain}</span> <span>↗</span>
-                      </a>
-                    ` : ''}
-                  </p>
-                </div>
-              `;
-            }).join('')}
-          </div>
-        `;
-      }
 
       div.innerHTML = `
         <div class="flex items-center gap-1.5 text-[14px] font-mono text-[#60a5fa]">
@@ -9547,7 +9501,6 @@
         </div>
         <div class="bg-[#101420] border border-[#1e2538] text-[14px] text-slate-200 p-3 sm:p-3.5 rounded-2xl rounded-tl-sm shadow-md leading-relaxed space-y-2">
           ${htmlContent}
-          ${cardsHtml}
         </div>
       `;
       curatorMessages.appendChild(div);
@@ -9601,11 +9554,80 @@
       return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    // Intelligent Offline Curator Knowledge Engine
-    function handleCuratorQuery(query) {
+    function formatInstLink(inst, opts = {}) {
+      if (!inst) return '';
+      const webUrl = inst.website || (inst.sources && inst.sources[0]) || '';
+      let domain = 'website';
+      try { domain = new URL(webUrl).hostname.replace(/^www\./, ''); } catch(e) {}
+      
+      const nameLink = `<a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a>`;
+      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="${escapeHtml(inst.city)}">${escapeHtml(inst.location || inst.city)}</a>`;
+      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="${escapeHtml(inst.name)}">audit dossier</a>${webUrl ? ` · <a href="${webUrl}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] font-mono text-[14px]">${domain} ↗</a>` : ''})`;
+      
+      return `${nameLink}${cityPart}${dossierPart}`;
+    }
+
+    async function queryGemini(userPrompt) {
+      if (!geminiApiKey) return null;
+      try {
+        const sampleInsts = ALL_INSTITUTIONS.slice(0, 35).map(i => `${i.name} (${i.city}, ${i.country}): Tier ${i.tier}, ${i.governance_type}, Hours: ${i.opening_hours}, ${i.admission_policy}, Highlight: ${i.highlight}`).join('\n');
+        const systemPrompt = `You are the Culture Atlas Curator, a warm, erudite, and articulate guide to ethical contemporary art institutions worldwide.
+Culture Atlas maps 203 cultural sanctuaries across 35 countries that protect curatorial independence and reject funding from fossil fuels, defense/weapons manufacturing, and private prisons.
+CRITICAL FORMAT RULES:
+1. Write in warm, articulate, continuous conversational paragraphs. DO NOT produce bulleted lists of institutions, tables, or boxed UI recommendation containers.
+2. Weave all institutional and city references strictly IN LINE within your natural sentences.
+3. When referencing an institution in our atlas, format it exactly as:
+<a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a> (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="Exact Name">audit dossier</a>)
+4. When mentioning a city, link it as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
+5. Never output structured database field labels like "Address:", "Hours:", "Curatorial Focus:". Speak in fluid, natural prose.`;
+
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:generateContent?key=${geminiApiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [
+              { role: 'user', parts: [{ text: `${systemPrompt}\n\nInstitutions sample:\n${sampleInsts}\n\nUser question: ${userPrompt}` }] }
+            ],
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 800,
+            }
+          })
+        });
+        if (!res.ok) throw new Error('Gemini API call failed with status: ' + res.status);
+        const data = await res.json();
+        const candidate = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (candidate) {
+          return candidate.split('\n\n').map(p => `<p class="text-slate-200 leading-relaxed">${p.trim()}</p>`).join('');
+        }
+      } catch (err) {
+        console.warn('Gemini query error, falling back to offline engine:', err);
+      }
+      return null;
+    }
+
+    // Intelligent Conversational Curator Knowledge Engine
+    async function handleCuratorQuery(query) {
       const q = query.toLowerCase().trim();
       curatorTyping.classList.remove('hidden');
 
+      // 1. Try Live Gemini Generative Model if API Key is configured
+      if (geminiApiKey) {
+        const geminiHtml = await queryGemini(query);
+        if (geminiHtml) {
+          curatorTyping.classList.add('hidden');
+          appendCuratorMessage(geminiHtml);
+
+          const matchedCity = PRIORITY_CITIES.find(c => q.includes(c.name.toLowerCase()));
+          if (matchedCity) filterByCity(matchedCity.name, true, false);
+
+          const matchedInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
+          if (matchedInst) selectInstitution(matchedInst, false);
+          return;
+        }
+      }
+
+      // 2. Intelligent Offline Conversational Knowledge Engine (Always Active)
       setTimeout(() => {
         curatorTyping.classList.add('hidden');
 
@@ -9614,19 +9636,11 @@
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {
             appendCuratorMessage(`
-              <p>🕒 <strong>Visiting Hours for <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">${escapeHtml(targetInst.name)}</a>:</strong></p>
-              <p class="text-emerald-400 font-mono text-[14px]">📅 ${targetInst.opening_hours}</p>
+              <p class="text-slate-200">
+                If you are planning a visit to ${formatInstLink(targetInst)}, it welcomes the public <strong>${targetInst.opening_hours}</strong>.
+              </p>
               <p class="text-slate-300">
-                Located at <strong>${targetInst.address}</strong> (${targetInst.neighborhood}). Suggested visit duration: <strong>${targetInst.visit_duration}</strong>.
-              </p>
-              <p class="text-[#93c5fd]">
-                <strong>Transit:</strong> ${targetInst.transit_tips}
-              </p>
-              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
-                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">🔍 Zoom on globe</a>
-                <span>·</span>
-                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">Audit dossier →</a>
-                ${targetInst.visit_url ? `<span>·</span> <a href="${targetInst.visit_url}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] font-mono">Plan Your Visit Page ↗</a>` : ''}
+                You will find it at <strong>${targetInst.address}</strong> in the ${targetInst.neighborhood} neighborhood, conveniently reached via ${targetInst.transit_tips}. I recommend setting aside roughly <strong>${targetInst.visit_duration}</strong> to immerse yourself in the exhibitions and its signature landmark: ${targetInst.highlight}.
               </p>
             `);
             selectInstitution(targetInst, false);
@@ -9635,22 +9649,31 @@
 
           if (q.includes('monday')) {
             const mondaySpaces = ALL_INSTITUTIONS.filter(i => !i.opening_hours.toLowerCase().includes('closed mon') && (i.opening_hours.toLowerCase().includes('daily') || i.opening_hours.toLowerCase().includes('mon,') || i.opening_hours.toLowerCase().includes('mon–') || i.opening_hours.toLowerCase().includes('mon-')));
+            const m1 = mondaySpaces[0] || ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo'));
+            const m2 = mondaySpaces[1] || ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
+            const m3 = mondaySpaces[2] || ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
             appendCuratorMessage(`
-              <p>🗓️ <strong>Ethical Cultural Institutions Open on Mondays:</strong></p>
-              <p>While most traditional museums close on Mondays, we have <strong>${mondaySpaces.length}</strong> ethical cultural sanctuaries welcoming visitors at the start of the week. Perfect for quiet contemplation:</p>
-            `, mondaySpaces.slice(0, 4));
+              <p class="text-slate-200">
+                While most conventional museums shutter their galleries at the start of the week, Culture Atlas tracks <strong>${mondaySpaces.length}</strong> ethical cultural sanctuaries open on Mondays for quiet reflection.
+              </p>
+              <p class="text-slate-300">
+                In Paris, you can wander through ${formatInstLink(m1)}, celebrated for its midnight late openings. Along the Danish coastline, the sublime seaside sculpture park at ${formatInstLink(m2)} is open daily and easily reached via coastal rail. In London, ${formatInstLink(m3)} welcomes visitors with free public admission. Each space operates with transparent civic or independent governance free from fossil-fuel influence.
+              </p>
+            `);
             return;
           }
 
+          const pTok = ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo'));
+          const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
+          const sted = ALL_INSTITUTIONS.find(i => i.name.includes('Stedelijk'));
           appendCuratorMessage(`
-            <p>🕒 <strong>Institutional Schedules & Visiting Hours:</strong></p>
-            <p>Most independent non-profit kunsthalles and artist-run spaces operate <strong>Wednesday through Sunday (11:00–18:00 or 12:00–18:00)</strong>, reserving Mondays and Tuesdays for installation and artist studio work. Major municipal collections frequently offer late-night Thursday or Friday openings (until 20:00–22:00, or midnight at Palais de Tokyo!).</p>
-            <p class="text-slate-300">Select any institution from the catalog to view its exact timetable, or ask me about any specific venue.</p>
-          `, [
-            ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Stedelijk'))
-          ]);
+            <p class="text-slate-200">
+              Institutional schedules across our network are thoughtfully balanced between public accessibility and artist studio production. Most independent kunsthalles and artist-run spaces welcome visitors <strong>Wednesday through Sunday (11:00–18:00 or 12:00–18:00)</strong>, reserving Mondays and Tuesdays for installation and artist studio work.
+            </p>
+            <p class="text-slate-300">
+              For evening contemplation, ${formatInstLink(pTok)} remains open until midnight, while spaces like ${formatInstLink(louis)} and ${formatInstLink(sted)} offer extended evening hours. You can click on any institution across the globe to review its exact timetable.
+            </p>
+          `);
           return;
         }
 
@@ -9659,70 +9682,58 @@
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {
             appendCuratorMessage(`
-              <p>🚇 <strong>Transit Directions to <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">${escapeHtml(targetInst.name)}</a>:</strong></p>
-              <p class="text-[#93c5fd] font-mono leading-relaxed">
-                <strong>Directions:</strong> ${targetInst.transit_tips}
+              <p class="text-slate-200">
+                To travel to ${formatInstLink(targetInst)}, your best transit connection is: <strong>${targetInst.transit_tips}</strong>.
               </p>
               <p class="text-slate-300">
-                <strong>Address:</strong> ${targetInst.address} (${targetInst.neighborhood}). Suggested duration: ${targetInst.visit_duration} · Open ${targetInst.opening_hours}.
-              </p>
-              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
-                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">🔍 Zoom on globe</a>
-                <span>·</span>
-                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">Audit dossier →</a>
-                ${targetInst.visit_url ? `<span>·</span> <a href="${targetInst.visit_url}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#60a5fa] font-mono">Official Transit Guide ↗</a>` : ''}
+                The venue is situated at <strong>${targetInst.address}</strong> in ${targetInst.neighborhood}. It welcomes visitors ${targetInst.opening_hours}, and I recommend planning about ${targetInst.visit_duration} for your visit.
               </p>
             `);
             selectInstitution(targetInst, false);
             return;
           }
 
+          const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
+          const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
+          const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
           appendCuratorMessage(`
-            <p>🚇 <strong>Public Transit & Cultural Destination Travel:</strong></p>
-            <p>Culture Atlas provides verified public transit directions for all 203 institutions worldwide—whether taking the <em>Metro-North Hudson Line</em> to Dia Beacon, the <em>Kystbanen regional train</em> up the Danish coastline to Louisiana, or the <em>London Underground</em> to Whitechapel or Camden Art Centre.</p>
-            <p class="text-slate-300">Here are three world-class destination institutions easily reachable via scenic rail connections:</p>
-          `, [
-            ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'))
-          ]);
+            <p class="text-slate-200">
+              Every cultural sanctuary mapped in Culture Atlas includes verified public transit directions. Some of the most memorable art pilgrimages in the world are seamless by rail:
+            </p>
+            <p class="text-slate-300">
+              You can board the Metro-North Hudson Line from Manhattan directly to ${formatInstLink(dia)}, take the scenic coastal Kystbanen train north from Copenhagen to ${formatInstLink(louis)}, or cycle through the national park forest to reach ${formatInstLink(kroll)} in Otterlo.
+            </p>
+          `);
           return;
         }
 
-        // C. Visitor Data: Accessibility & Inclusive Access
+        // C. Visitor Data: Accessibility & Universal Access
         if (q.includes('accessib') || q.includes('wheelchair') || q.includes('step-free') || q.includes('elevator') || q.includes('disab') || q.includes('mobility') || q.includes('sensory')) {
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {
             appendCuratorMessage(`
-              <p>♿ <strong>Accessibility at <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">${escapeHtml(targetInst.name)}</a>:</strong></p>
-              <p class="text-emerald-400">
-                ${targetInst.accessibility}
+              <p class="text-slate-200">
+                Regarding physical and sensory access, ${formatInstLink(targetInst)} provides: <strong>${targetInst.accessibility}</strong>.
               </p>
               <p class="text-slate-300">
-                <strong>Transit Access:</strong> ${targetInst.transit_tips}
-              </p>
-              <p class="text-slate-400 text-[14px]">
-                Personal care assistants and companions receive free entry at all audited institutions.
-              </p>
-              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
-                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">🔍 Zoom on globe</a>
-                <span>·</span>
-                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">Audit dossier →</a>
+                Transit access is straightforward via ${targetInst.transit_tips}. In accordance with equitable civic standards across our atlas, personal care assistants and essential companions always receive complimentary admission.
               </p>
             `);
             selectInstitution(targetInst, false);
             return;
           }
 
+          const serp = ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine'));
+          const aros = ALL_INSTITUTIONS.find(i => i.name.includes('ARoS'));
+          const mplus = ALL_INSTITUTIONS.find(i => i.name.includes('M+ Museum'));
           appendCuratorMessage(`
-            <p>♿ <strong>Universal Accessibility & Barrier-Free Access:</strong></p>
-            <p>All civic institutions in Culture Atlas are committed to equitable physical and sensory access, providing step-free routes, passenger elevators, loaner wheelchairs, accessible gender-neutral washrooms, and free entry for essential companions and care assistants.</p>
-            <p class="text-slate-300">Here are exemplary fully barrier-free cultural spaces:</p>
-          `, [
-            ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('ARoS')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('M+ Museum'))
-          ]);
+            <p class="text-slate-200">
+              Universal, barrier-free access is a core requirement of civic cultural stewardship. All institutions audited in Culture Atlas provide step-free circulation, passenger elevators, loaner wheelchairs, accessible gender-neutral washrooms, and free entry for essential companions.
+            </p>
+            <p class="text-slate-300">
+              Exemplary barrier-free destinations include ${formatInstLink(serp)}, ${formatInstLink(aros)}, and ${formatInstLink(mplus)}.
+            </p>
+          `);
           return;
         }
 
@@ -9731,157 +9742,154 @@
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {
             appendCuratorMessage(`
-              <p>☕ <strong>Amenities & On-Site Facilities at <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">${escapeHtml(targetInst.name)}</a>:</strong></p>
               <p class="text-slate-200">
-                <strong>Facilities:</strong> ${targetInst.amenities}
+                When visiting ${formatInstLink(targetInst)}, you will find on-site amenities including: <strong>${targetInst.amenities}</strong>.
               </p>
               <p class="text-slate-300">
-                <strong>Signature Highlight:</strong> <span class="text-amber-300/90">${targetInst.highlight}</span>
-              </p>
-              <p class="text-slate-400 font-mono text-[14px]">
-                Visiting hours: ${targetInst.opening_hours}
-              </p>
-              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
-                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">🔍 Zoom on globe</a>
-                <span>·</span>
-                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">Audit dossier →</a>
+                While exploring, be sure not to miss its signature landmark, <span class="text-amber-300/90">${targetInst.highlight}</span>. The space is open to visitors ${targetInst.opening_hours}.
               </p>
             `);
             selectInstitution(targetInst, false);
             return;
           }
 
+          const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
+          const prada = ALL_INSTITUTIONS.find(i => i.name.includes('Fondazione Prada'));
+          const camden = ALL_INSTITUTIONS.find(i => i.name.includes('Camden Art Centre'));
+          const tpg = ALL_INSTITUTIONS.find(i => i.name.includes("Photographers' Gallery"));
           appendCuratorMessage(`
-            <p>☕ <strong>Museum Cafés, Independent Bookshops & Sculpture Gardens:</strong></p>
-            <p>Visiting an ethical cultural institution is also about the experience of slowing down. Many mapped spaces feature legendary non-commercial bookshops and secluded garden dining:</p>
-            <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[14px]">
-              <li><strong>Louisiana Museum (Denmark):</strong> Seaside sculpture park and organic café overlooking Sweden.</li>
-              <li><strong>Camden Art Centre (London):</strong> Quiet garden lawn café with artisan pastries and ceramics.</li>
-              <li><strong>Fondazione Prada (Milan):</strong> The iconic <em>Bar Luce</em>, custom designed by filmmaker Wes Anderson.</li>
-              <li><strong>The Photographers' Gallery (London):</strong> Soho's definitive international photobook specialist store.</li>
-            </ul>
-          `, [
-            ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Fondazione Prada')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Camden Art Centre'))
-          ]);
+            <p class="text-slate-200">
+              Visiting an ethical cultural space is as much about contemplative pauses as the art itself. For seaside dining and an organic café overlooking the water, explore ${formatInstLink(louis)}.
+            </p>
+            <p class="text-slate-300">
+              In Milan, ${formatInstLink(prada)} features <em>Bar Luce</em>, designed by filmmaker Wes Anderson. In London, ${formatInstLink(camden)} offers a tranquil garden lawn café, while ${formatInstLink(tpg)} in Soho hosts one of Europe's definitive photobook specialist bookshops.
+            </p>
+          `);
           return;
         }
 
-        // E. Visitor Data: Signature Highlights
+        // E. Visitor Data: Highlights & Landmarks
         if (q.includes('highlight') || q.includes('what to see') || q.includes('must-see') || q.includes('signature') || q.includes('artworks') || q.includes('monument')) {
           const targetInst = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))));
           if (targetInst) {
             appendCuratorMessage(`
-              <p>⭐ <strong>Signature Highlight for <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">${escapeHtml(targetInst.name)}</a>:</strong></p>
-              <p class="text-amber-400 font-medium text-[14px]">
-                ${targetInst.highlight}
+              <p class="text-slate-200">
+                The signature highlight at ${formatInstLink(targetInst)} is: <span class="text-amber-300/90 font-medium">${targetInst.highlight}</span>.
               </p>
               <p class="text-slate-300">
-                <strong>Curatorial Focus:</strong> ${targetInst.curatorial_focus}. Open ${targetInst.opening_hours}.
-              </p>
-              <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
-                <a href="#" class="inst-link text-[#60a5fa] hover:underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">🔍 Zoom on globe</a>
-                <span>·</span>
-                <a href="#" class="dossier-link text-slate-300 hover:text-white underline cursor-pointer" data-name="${escapeHtml(targetInst.name)}">Audit dossier →</a>
+                Governed as an independent <em>${targetInst.governance_type}</em>, its curatorial programme centers on ${targetInst.curatorial_focus}. The museum welcomes visitors ${targetInst.opening_hours}.
               </p>
             `);
             selectInstitution(targetInst, false);
             return;
           }
 
+          const aros = ALL_INSTITUTIONS.find(i => i.name.includes('ARoS'));
+          const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
+          const inhotim = ALL_INSTITUTIONS.find(i => i.name.includes('Inhotim'));
           appendCuratorMessage(`
-            <p>⭐ <strong>Must-See Architectural & Art Landmarks:</strong></p>
-            <p>Culture Atlas features some of the world's most astonishing site-specific art and architecture:</p>
-            <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[14px]">
-              <li><strong>ARoS (Aarhus):</strong> Olafur Eliasson's 360° circular glass walkway <em>Your rainbow panorama</em>.</li>
-              <li><strong>Dia Beacon (Hudson Valley):</strong> Richard Serra's monumental Torqued Ellipses and Michael Heizer excavations.</li>
-              <li><strong>Instituto Inhotim (Brazil):</strong> 23 bespoke artist pavilions embedded in a 700-hectare tropical rainforest botanical garden.</li>
-              <li><strong>Kunsthaus Bregenz (Austria):</strong> Peter Zumthor's etched glass light-box architecture.</li>
-            </ul>
-          `, [
-            ALL_INSTITUTIONS.find(i => i.name.includes('ARoS')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Inhotim'))
-          ]);
+            <p class="text-slate-200">
+              Across 35 countries, Culture Atlas maps astonishing site-specific art and architectural landmarks.
+            </p>
+            <p class="text-slate-300">
+              Standout experiences include Olafur Eliasson's circular glass walkway <em>Your rainbow panorama</em> at ${formatInstLink(aros)}, Richard Serra's monumental weathered steel ellipses at ${formatInstLink(dia)}, and the 23 bespoke artist pavilions embedded within a 700-hectare rainforest at ${formatInstLink(inhotim)}.
+            </p>
+          `);
           return;
         }
 
-        // 1. Methodology & Philosophy & "What type of institutions should I go to?"
-        if (q.includes('what type') || q.includes('should i go') || q.includes('what makes') || q.includes('method') || q.includes('criteria') || q.includes('how') && (q.includes('evaluate') || q.includes('work') || q.includes('tier') || q.includes('ethical'))) {
+        // F. Methodology, Philosophy & Criteria ("What type of institutions should I go to?")
+        if (q.includes('what type') || q.includes('should i go') || q.includes('what makes') || q.includes('method') || q.includes('criteria') || (q.includes('how') && (q.includes('evaluate') || q.includes('work') || q.includes('tier') || q.includes('ethical')))) {
+          const capc = ALL_INSTITUTIONS.find(i => i.name.includes('CAPC'));
+          const plugin = ALL_INSTITUTIONS.find(i => i.name.includes('Plug In ICA'));
+          const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
           appendCuratorMessage(`
-            <p><strong>How to Choose an Ethically Funded Institution:</strong></p>
-            <p>When selecting a cultural space to support with your visit and admission, look for how its funding protects artistic autonomy:</p>
-            <ul class="list-disc pl-4 space-y-1.5 text-slate-300">
-              <li><strong>Prioritize Civic & Municipal Spaces (Tier A):</strong> These museums are backed directly by public cultural councils (like Arts Council England, DRAC in France, Canada Council). Because their primary accountability is to the public, curators are not coerced into censoring provocative art to appease corporate sponsors.</li>
-              <li><strong>Seek Artist-Run Centers & Grassroots Kunsthalles:</strong> These nimble non-profits are governed by artists. They commission challenging contemporary projects without corporate board oversight.</li>
-              <li><strong>Check for Clean Philanthropic Charters:</strong> Endowed foundations established with strict ethical covenants rejecting fossil fuels, arms manufacturing, and private prison wealth.</li>
-              <li><strong>Be Aware of 'One Name to Know' Spaces (Tier B):</strong> Major civic collections where one corporate partner is noted on the donor wall, but whose public integrity remains strong.</li>
-            </ul>
-            <p class="pt-1 text-[#93c5fd]">Here are three quintessential spaces exemplifying these ethical models:</p>
-          `, [
-            ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('CAPC')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Plug In ICA'))
-          ]);
+            <p class="text-slate-200">
+              When choosing cultural spaces to support with your visit and admission, look at how their funding architecture protects artistic autonomy:
+            </p>
+            <p class="text-slate-300">
+              First, prioritize <strong>civic municipal sanctuaries</strong> backed by public cultural councils (such as Arts Council England, DRAC in France, or the Canada Council). Because their primary accountability is to the public, curators are not pressured into censoring provocative art to appease corporate benefactors. Outstanding examples include ${formatInstLink(capc)} and ${formatInstLink(plugin)}.
+            </p>
+            <p class="text-slate-300">
+              Second, seek out <strong>artist-run grassroots kunsthalles</strong> like ${formatInstLink(chis)}, where artist boards commission daring contemporary projects free from corporate board oversight.
+            </p>
+            <p class="text-slate-300">
+              Third, celebrate <strong>institutions that actively divested</strong> from fossil fuel conglomerates and arms manufacturing, ensuring cultural spaces remain clean, uncompromised civic commons.
+            </p>
+          `);
           return;
         }
 
-        // 2. Free Admission & Public Access
+        // G. Free Admission
         if (q.includes('free') || q.includes('admission') || q.includes('ticket') || q.includes('accessible') || q.includes('no fee')) {
           const freeSpaces = ALL_INSTITUTIONS.filter(i => i.admission_policy.includes('Free Public') || i.admission_policy.includes('Always Free'));
+          const f1 = freeSpaces[0] || ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
+          const f2 = freeSpaces[1] || ALL_INSTITUTIONS.find(i => i.name.includes('Whitechapel'));
+          const f3 = freeSpaces[2] || ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine'));
           appendCuratorMessage(`
-            <p><strong>Always Free Public Admission:</strong></p>
-            <p>We have <strong>${freeSpaces.length}</strong> cultural institutions mapped that provide completely free public admission. Eliminating ticket barriers treats contemporary art as a vital civic commons rather than a luxury commodity.</p>
-            <p class="text-slate-300">Here are top verified spaces offering completely free admission:</p>
-          `, freeSpaces.slice(0, 4));
+            <p class="text-slate-200">
+              We map <strong>${freeSpaces.length}</strong> cultural institutions providing completely free public admission, ensuring that contemporary art remains an open civic right rather than a commercial commodity.
+            </p>
+            <p class="text-slate-300">
+              Standout free sanctuaries include ${formatInstLink(f1)}, celebrated for its artist commissions, ${formatInstLink(f2)} with century-old civic heritage, and the park pavilions of ${formatInstLink(f3)}. Each operates under public charters free from fossil-fuel sponsorship.
+            </p>
+          `);
           return;
         }
 
-        // 3. Artist-run & Grassroots Centers
+        // H. Artist-run & Grassroots Centers
         if (q.includes('artist-run') || q.includes('artist run') || q.includes('grassroots') || q.includes('kunsthalle') || q.includes('independent') || q.includes('non-profit')) {
           const artistSpaces = ALL_INSTITUTIONS.filter(i => i.governance_type.includes('Artist-Run'));
+          const a1 = artistSpaces[0] || ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
+          const a2 = artistSpaces[1] || ALL_INSTITUTIONS.find(i => i.name.includes('Camden'));
+          const a3 = artistSpaces[2] || ALL_INSTITUTIONS.find(i => i.name.includes('Plug In ICA'));
           appendCuratorMessage(`
-            <p><strong>Artist-Run Centers & Grassroots Kunsthalles:</strong></p>
-            <p>We map <strong>${artistSpaces.length}</strong> artist-governed centers. Operating outside corporate pressures, these collectives champion daring, uncompromised artistic commissions.</p>
-            <p class="text-slate-300">Here are standout artist-governed spaces worldwide:</p>
-          `, artistSpaces.slice(0, 4));
+            <p class="text-slate-200">
+              Culture Atlas tracks <strong>${artistSpaces.length}</strong> artist-governed spaces worldwide. Governed directly by artists, these collectives champion daring, uncompromised artistic commissions completely free from corporate board interference.
+            </p>
+            <p class="text-slate-300">
+              Standout artist-governed spaces include ${formatInstLink(a1)}, ${formatInstLink(a2)}, and ${formatInstLink(a3)}.
+            </p>
+          `);
           return;
         }
 
-        // 4. Divestment & Fossil Fuels & Defense
+        // I. Divestment from Fossil Fuels & Defense
         if (q.includes('fossil') || q.includes('defense') || q.includes('oil') || q.includes('bp') || q.includes('shell') || q.includes('baillie') || q.includes('weapons') || q.includes('divest')) {
+          const c1 = ALL_INSTITUTIONS.find(i => i.name.includes('Camden'));
+          const c2 = ALL_INSTITUTIONS.find(i => i.name.includes('Whitechapel'));
+          const c3 = ALL_INSTITUTIONS.find(i => i.name.includes('Nottingham Contemporary'));
           appendCuratorMessage(`
-            <p><strong>Divestment & The Push for Fossil-Free Galleries:</strong></p>
-            <p>For decades, extractive corporations (BP, Shell, TotalEnergies) and arms manufacturers used cultural sponsorship to 'artwash' their public standing. Over the past five years, courageous artist coalitions and cultural workers forced major venues to divest.</p>
-            <p>Every single space mapped in Culture Atlas has clean underwriting without fossil-fuel or defense sponsorship on its active roster. By visiting these institutions, you directly support cultural independence.</p>
-          `, [
-            ALL_INSTITUTIONS.find(i => i.name.includes('Camden')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Whitechapel')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Nottingham Contemporary'))
-          ]);
+            <p class="text-slate-200">
+              For decades, multinational extractive corporations (such as BP, Shell, and TotalEnergies) and arms manufacturers used museum underwriting to 'artwash' their public images. Over the past five years, courageous artist coalitions and cultural workers forced major venues to divest.
+            </p>
+            <p class="text-slate-300">
+              Every single venue mapped in Culture Atlas has verified clean underwriting without fossil-fuel or defense sponsorship on its active roster. You can support this movement by visiting divested leaders such as ${formatInstLink(c1)}, ${formatInstLink(c2)}, and ${formatInstLink(c3)}.
+            </p>
+          `);
           return;
         }
 
-        // 5. Why MoMA / Whitney / Guggenheim are Excluded
+        // J. Excluded Institutions (MoMA, Whitney, Guggenheim)
         if (q.includes('moma') || q.includes('whitney') || q.includes('guggenheim') || q.includes('why exclude') || q.includes('excluded') || q.includes('kanders')) {
+          const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
+          const sculp = ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter'));
+          const serp = ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine'));
           appendCuratorMessage(`
-            <p><strong>Why MoMA and Certain Major Museums are Excluded:</strong></p>
-            <p>Culture Atlas maintains a strict exclusion policy for institutions that retain unresolved ties to controversial underwriters, defense manufacturing, or human rights violations:</p>
-            <ul class="list-disc pl-4 space-y-1 text-slate-300">
-              <li><strong>Museum of Modern Art (MoMA, NY):</strong> Sparked citywide protests over trustees with major equity in defense manufacturing, private prisons, and extractive debt.</li>
-              <li><strong>Whitney Museum (NY):</strong> Faced global artist boycotts and withdrawals until vice chair Warren Kanders (CEO of Safariland, tear gas manufacturer) stepped down.</li>
-            </ul>
-            <p>Culture Atlas only celebrates institutions whose funding architecture is clean and uncompromised.</p>
-          `, [
-            ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter')),
-            ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine'))
-          ]);
+            <p class="text-slate-200">
+              Culture Atlas maintains a strict exclusion policy for institutions that retain unresolved ties to controversial underwriters, defense manufacturing, or human rights violations.
+            </p>
+            <p class="text-slate-300">
+              The Museum of Modern Art (MoMA) in New York sparked citywide protests over trustees holding major stakes in defense contractors, private prisons, and extractive debt. Similarly, the Whitney Museum faced global artist boycotts until board vice chair Warren Kanders (CEO of tear gas manufacturer Safariland) stepped down under international pressure.
+            </p>
+            <p class="text-slate-300">
+              Culture Atlas chooses instead to celebrate institutions whose funding architecture is clean and uncompromised, such as ${formatInstLink(dia)}, ${formatInstLink(sculp)}, and ${formatInstLink(serp)}.
+            </p>
+          `);
           return;
         }
 
-        // 6. Specific City Inquiries
+        // K. City Inquiries (London, Paris, New York, Berlin, Tokyo, etc.)
         const matchedCity = PRIORITY_CITIES.find(c => q.includes(c.name.toLowerCase()));
         if (matchedCity || q.includes('city') || q.includes('in ')) {
           const cityName = matchedCity ? matchedCity.name : '';
@@ -9892,57 +9900,57 @@
 
           if (cityMatches.length > 0) {
             const targetCity = cityMatches[0].city;
+            const c1 = cityMatches[0];
+            const c2 = cityMatches[1];
+            const c3 = cityMatches[2];
             appendCuratorMessage(`
-              <p>📍 <strong>Ethical Cultural Guide for <a href="#" class="city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${escapeHtml(targetCity)}">${escapeHtml(targetCity)}</a>:</strong></p>
-              <p>We map <strong>${cityMatches.length}</strong> verified ethical cultural institutions in ${escapeHtml(targetCity)}. These spaces operate with transparent public funding and verified independence from controversial corporate underwriters. <a href="#" class="city-link text-[#60a5fa] hover:text-[#93c5fd] underline font-mono text-[14px] cursor-pointer" data-city="${escapeHtml(targetCity)}">Zoom to ${escapeHtml(targetCity)} on the globe →</a></p>
-              <p class="text-slate-300">Here are standout sanctuaries to explore:</p>
-            `, cityMatches.slice(0, 4));
+              <p class="text-slate-200">
+                If you are exploring <a href="#" class="city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${escapeHtml(targetCity)}">${escapeHtml(targetCity)}</a>, we have mapped <strong>${cityMatches.length}</strong> verified ethical cultural sanctuaries here.
+              </p>
+              <p class="text-slate-300">
+                Standout spaces include ${formatInstLink(c1, {noCity: true})}, celebrated for its ${c1.curatorial_focus || 'contemporary commissions'}${c2 ? `, ${formatInstLink(c2, {noCity: true})}, offering ${c2.admission_policy}` : ''}${c3 ? `, and ${formatInstLink(c3, {noCity: true})}` : ''}. All of these operate with transparent public charters free from fossil-fuel sponsorship.
+              </p>
+            `);
 
             filterByCity(targetCity, true, false);
             return;
           }
         }
 
-        // 7. Specific Country Inquiries
+        // L. Country Inquiries
         const matchedCountry = COUNTRY_CENTROIDS.find(c => q.includes(c.name.toLowerCase()) || q.includes(c.name.toLowerCase().replace('united states', 'usa')));
         if (matchedCountry) {
           const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, matchedCountry.name));
           if (countryMatches.length > 0) {
+            const co1 = countryMatches[0];
+            const co2 = countryMatches[1];
+            const co3 = countryMatches[2];
             appendCuratorMessage(`
-              <p>🌍 <strong>Ethical Cultural Institutions in ${escapeHtml(matchedCountry.name)}:</strong></p>
-              <p>Culture Atlas tracks <strong>${countryMatches.length}</strong> verified cultural spaces across ${escapeHtml(matchedCountry.name)}. Funding frameworks here prioritize civic accountability and public grants over private commercial influence.</p>
-              <p class="text-slate-300">Here are standout institutions worth exploring:</p>
-            `, countryMatches.slice(0, 4));
+              <p class="text-slate-200">
+                Across <strong>${escapeHtml(matchedCountry.name)}</strong>, Culture Atlas tracks <strong>${countryMatches.length}</strong> verified cultural spaces where public accountability and artistic autonomy take priority over private commercial influence.
+              </p>
+              <p class="text-slate-300">
+                Remarkable spaces to explore include ${formatInstLink(co1)}${co2 ? `, ${formatInstLink(co2)}` : ''}${co3 ? `, and ${formatInstLink(co3)}` : ''}.
+              </p>
+            `);
 
             flyTo(matchedCountry.lon, matchedCountry.lat);
             return;
           }
         }
 
-        // 8. Specific Institution Lookup
+        // M. Specific Institution Lookup
         const instMatch = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))) || (i.name.toLowerCase().includes(q) && q.length > 3));
         if (instMatch) {
           appendCuratorMessage(`
-            <p>
-              <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="${escapeHtml(instMatch.name)}">${escapeHtml(instMatch.name)}</a> is an ethical cultural sanctuary in <strong>${instMatch.location}</strong> (established in ${instMatch.year_founded}). <a href="#" class="inst-link text-[#60a5fa] hover:underline font-mono text-[14px] cursor-pointer" data-name="${escapeHtml(instMatch.name)}">Zoom on globe →</a>
-            </p>
             <p class="text-slate-200">
-              <strong>Curatorial Focus:</strong> ${instMatch.curatorial_focus}. Governed as an independent <em>${instMatch.governance_type}</em>.
+              ${formatInstLink(instMatch, {noCity: false})} is an ethical cultural sanctuary founded in ${instMatch.year_founded} in the ${instMatch.neighborhood} district.
             </p>
             <p class="text-slate-300">
-              <strong>Admission:</strong> ${instMatch.admission_policy} (${instMatch.admission_details}).
+              Governed as an independent <em>${instMatch.governance_type}</em>, the institution focuses on ${instMatch.curatorial_focus}. Admission is <strong>${instMatch.admission_policy}</strong> (${instMatch.admission_details}), welcoming visitors ${instMatch.opening_hours}.
             </p>
             <p class="text-slate-300">
-              <strong>Ethical Safeguard:</strong> ${instMatch.ethical_safeguard}
-            </p>
-            <p class="text-slate-300">
-              <strong>Visit Details:</strong> Open ${instMatch.opening_hours}. Located at ${instMatch.address} (${instMatch.neighborhood}). Transit: ${instMatch.transit_tips}. Suggested duration: ${instMatch.visit_duration}.
-            </p>
-            ${instMatch.highlight ? `<p class="text-amber-300/90 text-[14px]"><strong>Signature Highlight:</strong> ${instMatch.highlight}</p>` : ''}
-            ${instMatch.watch ? `<p class="text-amber-300/90 text-[14px]"><strong>Watch Note:</strong> ${escapeHtml(instMatch.watch)}</p>` : ''}
-            <p class="pt-1 text-slate-400 font-mono text-[14px] flex items-center gap-2 flex-wrap">
-              <a href="#" class="dossier-link text-[#60a5fa] hover:text-white underline cursor-pointer" data-name="${escapeHtml(instMatch.name)}">Open scholarly audit dossier →</a>
-              ${instMatch.website ? `<span>·</span> <a href="${instMatch.website}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white font-mono">Official Website ↗</a>` : ''}
+              When visiting, make sure to experience its signature highlight: <span class="text-amber-300/90 font-medium">${instMatch.highlight}</span>. Its verified ethical safeguard confirms: ${instMatch.ethical_safeguard}.
             </p>
           `);
 
@@ -9950,41 +9958,42 @@
           return;
         }
 
-        // 9. Surprise Me / Recommendations
+        // N. Surprise Me / Recommendations
         if (q.includes('surprise') || q.includes('recommend') || q.includes('random') || q.includes('hidden gem')) {
           const randomA = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
           const pick1 = randomA[Math.floor(Math.random() * randomA.length)];
           const pick2 = randomA[Math.floor(Math.random() * randomA.length)];
 
           appendCuratorMessage(`
-            <p>✨ <strong>Curator's Selected Discoveries:</strong></p>
-            <p>Here are two extraordinary institutions with inspiring ethical commitments and artistic integrity:</p>
-          `, [pick1, pick2]);
+            <p class="text-slate-200">
+              Here are two extraordinary institutions with inspiring ethical commitments and artistic integrity: ${formatInstLink(pick1)} and ${formatInstLink(pick2)}.
+            </p>
+            <p class="text-slate-300">
+              Both operate with verified independence and champion bold contemporary commissions without corporate sponsor restrictions.
+            </p>
+          `);
 
           selectInstitution(pick1, false);
           return;
         }
 
-        // 10. Fallback with helpful gentle guidance
-        const genericPicks = [
-          ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon')),
-          ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale')),
-          ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'))
-        ];
-
+        // O. Fallback with helpful conversational guidance
+        const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
+        const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
+        const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
         appendCuratorMessage(`
-          <p>I would be delighted to guide you to ethically funded cultural institutions across <strong>35 countries and 133 cities</strong>.</p>
-          <p class="text-slate-300">You can explore topics like:</p>
-          <ul class="list-disc pl-4 space-y-1 text-slate-300">
-            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="Which spaces offer always free admission?">"Which spaces offer always free admission?"</a></li>
-            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="Show me independent artist-run centers">"Show me independent artist-run centers"</a></li>
-            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="Where should I go in London, Paris, or Tokyo?">"Where should I go in London, Paris, or Tokyo?"</a></li>
-            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="What makes a museum ethically funded?">"What makes a museum ethically funded?"</a></li>
-            <li><a href="#" class="prompt-link text-[#60a5fa] hover:underline cursor-pointer" data-prompt="Tell me about Dia Beacon">"Tell me about Dia Beacon"</a></li>
-          </ul>
-        `, genericPicks);
+          <p class="text-slate-200">
+            I would be delighted to guide you to ethically funded cultural institutions across <strong>35 countries and 133 cities</strong>.
+          </p>
+          <p class="text-slate-300">
+            Whether you are planning a journey to <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Paris">Paris</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a>, or seeking spaces with free admission and artist-run governance, I can direct you to uncompromised sanctuaries like ${formatInstLink(dia)}, ${formatInstLink(chis)}, or ${formatInstLink(louis)}.
+          </p>
+          <p class="text-[#93c5fd]">
+            What city or type of art experience would you love to discover today?
+          </p>
+        `);
 
-      }, 350);
+      }, 300);
     }
 
     // Handle Input Send
@@ -10428,18 +10437,15 @@
 
       // Notify Curator if triggered from canvas / UI
       if (notifyCurator && cityMatches.length > 0) {
+        const topInsts = cityMatches.slice(0, 3).map(i => formatInstLink(i, {noCity: true})).join(', ');
         appendCuratorMessage(`
-          <div class="flex items-center justify-between gap-2 p-2 bg-[#0c1322] border border-[#1e2e4a] rounded-xl mb-2">
-            <div>
-              <h4 class="font-semibold text-white text-[18px] leading-tight">📍 ${cityName.toUpperCase()}</h4>
-              <p class="text-[14px] text-[#60a5fa]">${cityMatches.length} Ethically Mapped Sanctuaries</p>
-            </div>
-            <button class="city-zoom-btn px-3 py-1.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] rounded-lg transition flex items-center gap-1.5 shadow active:scale-95 cursor-pointer shrink-0" data-city="${escapeHtml(cityName)}">
-              <span>🔍</span> <span>Zoom to ${escapeHtml(cityName)}</span>
-            </button>
-          </div>
-          <p>You zoomed in on <strong>${cityName}</strong> with ${cityMatches.length} mapped institutions. These spaces lead in ethical funding and independent programming.</p>
-        `, cityMatches.slice(0, 4));
+          <p class="text-slate-200">
+            We are now exploring <a href="#" class="city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${escapeHtml(cityName)}">${escapeHtml(cityName)}</a>, home to <strong>${cityMatches.length}</strong> verified ethical cultural sanctuaries.
+          </p>
+          <p class="text-slate-300">
+            Standout spaces here include ${topInsts}. Each operates with transparent public governance and clean underwriting without fossil-fuel or defense sponsorship.
+          </p>
+        `);
       }
     }
 
@@ -10454,10 +10460,15 @@
       // Notify the Curator to give an educational briefing on this country
       const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, countryName));
       if (countryMatches.length > 0) {
+        const topInsts = countryMatches.slice(0, 3).map(i => formatInstLink(i)).join(', ');
         appendCuratorMessage(`
-          <p>🌍 <strong>${countryName.toUpperCase()} Ethical Cultural Institutions:</strong></p>
-          <p>Culture Atlas maps ${countryMatches.length} spaces across ${countryName}. Public grants and community trusts safeguard their curatorial independence.</p>
-        `, countryMatches.slice(0, 3));
+          <p class="text-slate-200">
+            Across <strong>${escapeHtml(countryName)}</strong>, Culture Atlas tracks <strong>${countryMatches.length}</strong> cultural institutions prioritizing public accountability and artistic autonomy.
+          </p>
+          <p class="text-slate-300">
+            Exemplary spaces to explore include ${topInsts}.
+          </p>
+        `);
       }
     }
 
