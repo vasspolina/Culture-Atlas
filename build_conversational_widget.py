@@ -1,0 +1,985 @@
+import json
+
+def update_widget():
+    topo = json.load(open('app/world-topo.json'))
+    scale = topo['transform']['scale']
+    translate = topo['transform']['translate']
+    arcs = topo['arcs']
+
+    def decode_arc(arc_idx):
+        if arc_idx >= 0:
+            raw_arc = arcs[arc_idx]
+            pts = []
+            x, y = 0, 0
+            for dx, dy in raw_arc:
+                x += dx
+                y += dy
+                pts.append([round(x * scale[0] + translate[0], 2), round(y * scale[1] + translate[1], 2)])
+            return pts
+        else:
+            raw_arc = arcs[~arc_idx]
+            pts = []
+            x, y = 0, 0
+            for dx, dy in raw_arc:
+                x += dx
+                y += dy
+                pts.append([round(x * scale[0] + translate[0], 2), round(y * scale[1] + translate[1], 2)])
+            pts.reverse()
+            return pts
+
+    def stitch_arcs(arc_indices):
+        ring = []
+        for idx in arc_indices:
+            pts = decode_arc(idx)
+            if not ring:
+                ring.extend(pts)
+            else:
+                ring.extend(pts[1:])
+        return ring
+
+    geometries = topo['objects']['world']['geometries']
+
+    GREEN_SET = {'Canada', 'Greenland', 'Algeria', 'Libya', 'Sudan', 'Mongolia', 'Sweden', 'Norway', 'Finland', 'Chad', 'Niger', 'Mali', 'Mauritania', 'Egypt', 'Morocco', 'Namibia', 'Botswana', 'Zimbabwe', 'Zambia'}
+    TEAL_SET = {'Russia', 'India', 'China', 'Brazil', 'Australia', 'Angola', 'Dem. Rep. Congo', 'Congo', 'Indonesia', 'South Africa', 'Mozambique', 'Tanzania', 'Kenya', 'Ethiopia', 'Madagascar', 'Myanmar', 'Thailand', 'Vietnam'}
+    BLUE_SET = {'United States', 'USA', 'Saudi Arabia', 'Iran', 'Kazakhstan', 'Mexico', 'Argentina', 'France', 'Spain', 'Germany', 'United Kingdom', 'Poland', 'Italy', 'Turkey', 'Ukraine', 'Uzbekistan', 'Turkmenistan', 'Pakistan', 'Afghanistan', 'Iraq', 'Syria', 'Jordan', 'Yemen', 'Oman'}
+
+    greens = ['#0d4d38', '#115840', '#15654a', '#197354', '#0f523c']
+    teals = ['#0c4852', '#0f545f', '#12606d', '#156c7a', '#0d4e58']
+    blues = ['#0c3674', '#10428a', '#144e9f', '#185bb4', '#0e3b7d']
+
+    out_countries = []
+    for idx, g in enumerate(geometries):
+        name = g.get('properties', {}).get('name', '')
+        gtype = g.get('type')
+        polys = []
+        if gtype == 'Polygon':
+            for arc_list in g.get('arcs', []):
+                polys.append(stitch_arcs(arc_list))
+        elif gtype == 'MultiPolygon':
+            for poly_arcs in g.get('arcs', []):
+                for arc_list in poly_arcs:
+                    polys.append(stitch_arcs(arc_list))
+
+        if name in GREEN_SET:
+            col = greens[idx % len(greens)]
+        elif name in TEAL_SET:
+            col = teals[idx % len(teals)]
+        elif name in BLUE_SET:
+            col = blues[idx % len(blues)]
+        else:
+            palette = [greens, teals, blues][idx % 3]
+            col = palette[(idx // 3) % len(palette)]
+
+        out_countries.append({'n': name, 'c': col, 'r': polys})
+
+    countries_json = json.dumps(out_countries, separators=(',', ':'))
+    institutions_json = open('institutions.json', 'r', encoding='utf-8').read().strip()
+
+    import base64
+    b64_reg = base64.b64encode(open('app/fonts/PPTelegraf-Regular.otf', 'rb').read()).decode('ascii')
+
+    widget_html = f"""<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script>
+    tailwind.config = {{
+      theme: {{
+        extend: {{
+          fontFamily: {{
+            sans: ['"PP Telegraph"', '"PP Telegraf"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }},
+          fontSize: {{
+            'xs': ['14px', '1.45'],
+            'sm': ['14px', '1.45'],
+            'base': ['18px', '1.35'],
+            'md': ['18px', '1.35'],
+            'lg': ['18px', '1.35'],
+            'xl': ['24px', '1.25'],
+            '2xl': ['24px', '1.25'],
+            '3xl': ['24px', '1.25'],
+          }}
+        }}
+      }}
+    }};
+  </script>
+  <style>
+    /* ========================================================= */
+    /* STRICT 3-TYPE-SIZE SYSTEM (14px Floor, 18px Mid, 24px Large) */
+    /* ========================================================= */
+    *, *::before, *::after {{
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+    }}
+    html, body {{
+      font-size: 14px !important;
+      line-height: 1.45;
+    }}
+    input, button, select, textarea, p, span, div, li, a {{
+      font-size: 14px;
+    }}
+
+    /* Size 1: 14px (Floor / Default) */
+    .type-14, .text-14, .text-[14px],
+    [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
+    [class*="text-\[11"], [class*="text-\[12"], [class*="text-\[13"],
+    [class*="text-\[14px\]"] {{
+      font-size: 14px !important;
+      line-height: 1.45 !important;
+    }}
+
+    /* Size 2: 18px (Card Titles, Subheaders, Museum Names) */
+    .type-18, .text-18, .text-[18px], .text-md,
+    [class*="text-\[15"], [class*="text-\[16"], [class*="text-\[17"], [class*="text-\[18"], [class*="text-\[19"], [class*="text-\[20"],
+    [class*="text-\[18px\]"] {{
+      font-size: 18px !important;
+      line-height: 1.35 !important;
+    }}
+
+    /* Size 3: 24px (Main Brand Title, Modal Headlines, Large Dossier Titles) */
+    .type-24, .text-24, .text-xl, .text-2xl, .text-3xl,
+    [class*="text-\[22"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[28"], [class*="text-\[30"],
+    [class*="text-\[24px\]"] {{
+      font-size: 24px !important;
+      line-height: 1.25 !important;
+    }}
+
+    @font-face {{
+      font-family: 'PP Telegraph';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular'), local('PP Telegraph');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraph';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraph';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraph';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular'), local('PP Telegraph');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }}
+
+    body {{
+      font-family: 'PP Telegraph', 'PP Telegraf', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: transparent;
+      color: #f8fafc;
+      overflow: hidden;
+    }}
+    .font-mono {{
+      font-family: 'JetBrains Mono', monospace;
+    }}
+    #widgetCanvas {{
+      cursor: grab;
+      touch-action: none;
+    }}
+    #widgetCanvas.dragging {{
+      cursor: grabbing;
+    }}
+    .custom-scroll::-webkit-scrollbar {{
+      width: 3px;
+      height: 3px;
+    }}
+    .custom-scroll::-webkit-scrollbar-thumb {{
+      background: #232838;
+      border-radius: 3px;
+    }}
+    .widget-item.active {{
+      border-color: #3b82f6 !important;
+      background-color: #101626 !important;
+    }}
+    #wGlobePanel {{
+      transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }}
+    #wCuratorPanel {{
+      transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }}
+  </style>
+</head>
+<body class="p-1 sm:p-2 antialiased">
+  <div class="bg-[#020408] text-white border border-[#1c212a] rounded-2xl p-2 sm:p-2.5 shadow-2xl overflow-hidden flex flex-col gap-1.5 h-[500px]">
+    
+    <!-- Header with Tagline -->
+    <div class="flex items-center justify-between border-b border-[#1c212a] pb-1.5 px-1 shrink-0">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="w-2 rounded-full bg-[#1d4ed8] h-2"></div>
+          <span class="text-[18px] font-bold tracking-wider text-[#cbd5e1] uppercase">CULTURE ATLAS</span>
+          <span class="text-[14px] font-mono text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded border border-emerald-900/60">203 SANCTUARIES</span>
+        </div>
+        <p class="text-[14px] text-[#94a3b8] font-normal leading-snug mt-0.5">
+          Ethically funded cultural institutions across the world
+        </p>
+      </div>
+
+      <!-- Globe Quick Controls -->
+      <div class="flex items-center gap-1 text-[14px] font-mono">
+        <button id="wResetBtn" class="px-2 py-0.5 rounded bg-[#101420] border border-[#232a3c] text-slate-300 hover:text-white transition">🔄 Reset</button>
+        <button id="wSpinBtn" class="px-2 py-0.5 rounded bg-[#101420] border border-[#232a3c] text-[#3b82f6] hover:text-white transition">⟳ Spin</button>
+      </div>
+    </div>
+
+    <!-- Active Filter Banner (When city/country clicked) -->
+    <div id="wMobileFilterBanner" class="hidden flex items-center justify-between bg-[#0e1628] border border-[#1d4ed8] px-2 py-0.5 rounded text-[14px] shrink-0">
+      <span id="wMobileFilterText" class="font-semibold text-white truncate text-[14px]">📍 NEW YORK (11)</span>
+      <button id="wMobileClearFilter" class="text-[14px] text-[#94a3b8] hover:text-white">✕ Clear</button>
+    </div>
+
+    <!-- TOP HALF: 🌍 3D GLOBE PANEL (Half Screen) -->
+    <div id="wGlobePanel" class="relative w-full h-[200px] flex items-center justify-center bg-[#000000] rounded-xl border border-[#1c212a] overflow-hidden shrink-0">
+      <canvas id="widgetCanvas" width="500" height="200" class="w-full h-full object-contain"></canvas>
+
+      <!-- Floating White Card -->
+      <div id="wCard" class="absolute z-30 pointer-events-auto bg-white text-slate-900 rounded-lg px-2.5 py-1.5 shadow-xl transition transform -translate-x-1/2 -translate-y-full mb-2 cursor-pointer border border-slate-100 max-w-[210px]">
+        <div class="font-bold text-[14px] text-slate-950 leading-tight truncate" class="text-[18px] font-bold text-slate-950 leading-tight truncate" id="wCardTitle">Plug In ICA</div>
+        <div class="text-[14px] text-slate-500 mt-0.5 truncate" id="wCardMeta">Winnipeg, Canada · Verified</div>
+        <div class="mt-1 pt-1 border-t border-slate-100 flex items-center justify-between text-[14px]">
+          <a id="wCardLink" href="https://plugin.org" target="_blank" rel="noopener noreferrer" 
+             class="text-[#1d4ed8] hover:underline flex items-center gap-1 font-medium" onclick="event.stopPropagation()">
+            <span>🌐</span> <span id="wCardDom">plugin.org</span> <span>↗</span>
+          </a>
+          <button id="wCardCuratorBtn" class="text-[#0f62fe] font-semibold hover:underline" onclick="event.stopPropagation()">
+            💬 Ask Curator
+          </button>
+        </div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[5px] border-x-transparent border-t-[5px] border-t-white"></div>
+      </div>
+
+      <div class="absolute bottom-1.5 left-2 text-[14px] text-[#64748b] font-mono pointer-events-none">
+        <span>└───┘ 2,000 km</span>
+      </div>
+
+      <div class="absolute bottom-1.5 right-2 z-10 pointer-events-auto">
+        <button id="wOpenMomaBtn" class="text-[14px] font-semibold text-[#f1c21b] hover:text-white bg-[#1a1406]/90 border border-[#4d3d0f] hover:border-[#f1c21b] px-1.5 py-0.5 rounded transition flex items-center gap-1 shadow">
+          <span>⚠️</span> <span>Why MoMA is excluded</span>
+        </button>
+      </div>
+
+      <div class="absolute top-1.5 right-2 text-[14px] text-[#64748b] font-mono pointer-events-none bg-[#090d18]/80 px-1.5 py-0.5 rounded border border-[#1e2434]">
+        Tap city or pin
+      </div>
+    </div>
+
+    <!-- BOTTOM HALF: 💬 CHAT CONVERSATIONAL PANEL (Half Sheet) -->
+    <div id="wCuratorPanel" class="flex-1 flex flex-col bg-[#07090e] border border-[#1c212a] rounded-xl overflow-hidden min-h-0">
+      
+      <!-- Sheet Header: Drag Handle & Open/Close Bar -->
+      <div id="wSheetHeader" class="px-2 py-1 border-b border-[#1c212a] bg-[#0a0d14]/95 flex items-center justify-between gap-1.5 shrink-0 select-none cursor-pointer">
+        <div class="flex items-center gap-1.5 truncate">
+          <div class="w-6 h-1 bg-slate-600 rounded-full shrink-0"></div>
+          <span class="text-[14px] font-semibold text-white truncate">💬 Curator Guide</span>
+          <span id="wSheetBadge" class="text-[14px] font-mono text-emerald-400 bg-[#0a2016] px-1 py-0.2 rounded border border-emerald-900/60 hidden xs:inline">Half Sheet</span>
+        </div>
+        <button id="wSheetToggleBtn" class="px-2 py-0.5 bg-[#182032] hover:bg-[#202c46] border border-[#283654] text-[#60a5fa] hover:text-white text-[14px] font-semibold rounded-md transition flex items-center gap-1 shadow">
+          <span>▼</span> <span>Close</span>
+        </button>
+      </div>
+
+      <!-- Conversation Feed -->
+      <div id="wCuratorMessages" class="flex-1 overflow-y-auto custom-scroll p-2 space-y-2 text-[14px]">
+        <!-- Messages injected dynamically -->
+      </div>
+
+      <!-- Inquiry Prompt Chips -->
+      <div id="wInquiryCarousel" class="px-2 py-1 border-t border-[#161a26] bg-[#090c14] flex items-center gap-1.5 overflow-x-auto custom-scroll text-[14px] font-mono whitespace-nowrap shrink-0">
+        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981]" data-query="Which cultural spaces offer always free admission?">
+          🎟️ Free Admission
+        </button>
+        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6]" data-query="What are typical museum opening hours and which institutions are open on Mondays?">
+          🕒 Hours & Mondays
+        </button>
+        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6]" data-query="How do I get to destination museums like Dia Beacon or Louisiana by public transit?">
+          🚇 Transit Tips
+        </button>
+        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6]" data-query="Which museums offer step-free wheelchair accessibility and inclusive facilities?">
+          ♿ Accessibility
+        </button>
+        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6]" data-query="Recommend independent artist-run centers">
+          🎨 Artist-run centers
+        </button>
+        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6]" data-query="What makes an institution ethically funded?">
+          🏛️ Ethical Criteria
+        </button>
+        <button class="w-inquiry px-2 py-0.5 rounded-full border border-[#3b2b11] bg-[#221807] text-[#fcd34d] hover:border-[#f59e0b]" data-query="Why is MoMA excluded from Culture Atlas?">
+          ⚠️ Why MoMA excluded
+        </button>
+      </div>
+
+      <!-- Chat Input Bar -->
+      <div id="wInputBar" class="p-1.5 border-t border-[#1c212a] bg-[#0a0d14] flex items-center gap-1.5 shrink-0">
+        <input id="wCuratorInput" type="text" placeholder="Ask curator: 'London guide', 'Dia Beacon hours'..." class="w-full bg-[#121622] border border-[#202535] text-[14px] text-white px-2.5 py-1 rounded-lg focus:outline-none focus:border-[#3b82f6]" />
+        <button id="wCuratorSend" class="px-2.5 py-1 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-semibold rounded-lg transition shrink-0">Ask</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const DATA = {institutions_json};
+    const COUNTRY_POLYS = {countries_json};
+
+    const PRIORITY_CITIES = [
+      {{ name: 'NEW YORK', lon: -74.006, lat: 40.7128 }},
+      {{ name: 'LONDON', lon: -0.1278, lat: 51.5074 }},
+      {{ name: 'TOKYO', lon: 139.6917, lat: 35.6895 }},
+      {{ name: 'PARIS', lon: 2.3522, lat: 48.8566 }},
+      {{ name: 'BERLIN', lon: 13.405, lat: 52.52 }},
+      {{ name: 'CHICAGO', lon: -87.6298, lat: 41.8781 }},
+      {{ name: 'TORONTO', lon: -79.3832, lat: 43.6532 }},
+      {{ name: 'SAN FRANCISCO', lon: -122.4194, lat: 37.7749 }},
+      {{ name: 'MELBOURNE', lon: 144.9631, lat: -37.8136 }},
+      {{ name: 'SYDNEY', lon: 151.2093, lat: -33.8688 }},
+      {{ name: 'VANCOUVER', lon: -123.1207, lat: 49.2827 }},
+      {{ name: 'MONTREAL', lon: -73.5673, lat: 45.5017 }},
+      {{ name: 'COPENHAGEN', lon: 12.5683, lat: 55.6761 }},
+      {{ name: 'AMSTERDAM', lon: 4.9041, lat: 52.3676 }},
+      {{ name: 'MADRID', lon: -3.7038, lat: 40.4168 }},
+      {{ name: 'BARCELONA', lon: 2.1734, lat: 41.3851 }},
+      {{ name: 'EDINBURGH', lon: -3.1883, lat: 55.9533 }},
+      {{ name: 'OSLO', lon: 10.7522, lat: 59.9139 }},
+      {{ name: 'STOCKHOLM', lon: 18.0686, lat: 59.3293 }},
+      {{ name: 'SEOUL', lon: 126.978, lat: 37.5665 }},
+      {{ name: 'MEXICO CITY', lon: -99.1332, lat: 19.4326 }},
+      {{ name: 'BORDEAUX', lon: -0.5792, lat: 44.8378 }},
+      {{ name: 'MARRAKECH', lon: -7.9811, lat: 31.6295 }},
+      {{ name: 'CAPE TOWN', lon: 18.4241, lat: -33.9249 }},
+      {{ name: 'WINNIPEG', lon: -97.1384, lat: 49.8951 }},
+      {{ name: 'AARHUS', lon: 10.2039, lat: 56.1629 }}
+    ];
+
+    let filterCountry = 'all';
+    let filterCity = 'all';
+    let selectedInst = DATA.find(i => i.name === 'Plug In ICA') || DATA[0];
+
+    const canvas = document.getElementById('widgetCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = canvas.parentElement.clientWidth || 460;
+    let height = canvas.height = canvas.parentElement.clientHeight || 360;
+
+    let baseRadius = Math.min(width, height) * 0.35;
+    let currentRadius = baseRadius;
+    let targetRadius = baseRadius;
+
+    let rotLon = -45;
+    let rotLat = 35;
+    let isAutoSpinning = true;
+    let isDragging = false;
+    let lastX = 0, lastY = 0;
+    let pointerStartX = 0, pointerStartY = 0;
+    let pointerDownTime = 0;
+
+    let isFlying = false;
+    let flightProgress = 0;
+    let startRotLon = 0, startRotLat = 0;
+    let targetRotLon = 0, targetRotLat = 0;
+
+    function resize() {{
+      if (!canvas.parentElement) return;
+      width = canvas.width = canvas.parentElement.clientWidth || 460;
+      height = canvas.height = canvas.parentElement.clientHeight || 360;
+      baseRadius = Math.min(width, height) * 0.35;
+      currentRadius = targetRadius = baseRadius;
+    }}
+    window.addEventListener('resize', resize);
+
+    function toRad(deg) {{ return deg * Math.PI / 180; }}
+    function toDeg(rad) {{ return rad * 180 / Math.PI; }}
+
+    function project(lon, lat, r, cx, cy) {{
+      const lambda = toRad(lon - rotLon);
+      const phi = toRad(lat);
+      const theta = toRad(rotLat);
+      const cosPhi = Math.cos(phi);
+      const x = r * cosPhi * Math.sin(lambda);
+      const y = r * (Math.cos(theta) * Math.sin(phi) - Math.sin(theta) * cosPhi * Math.cos(lambda));
+      const z = r * (Math.sin(theta) * Math.sin(phi) + Math.cos(theta) * cosPhi * Math.cos(lambda));
+      return {{
+        x: cx + x,
+        y: cy - y,
+        front: z > -r * 0.15,
+        depth: (z + r) / (2 * r)
+      }};
+    }}
+
+    function easeInOutQuad(t) {{
+      return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    }}
+
+    let cityBadgeHitboxes = [];
+    let visibleDots = [];
+
+    function render() {{
+      ctx.clearRect(0, 0, width, height);
+
+      if (isAutoSpinning && !isDragging && !isFlying) {{
+        rotLon = (rotLon + 0.04) % 360;
+      }}
+
+      if (isFlying) {{
+        flightProgress += 0.011;
+        if (flightProgress >= 1) {{
+          flightProgress = 1;
+          isFlying = false;
+          rotLon = targetRotLon % 360;
+          rotLat = targetRotLat;
+        }} else {{
+          const ease = easeInOutQuad(flightProgress);
+          rotLon = (startRotLon + (targetRotLon - startRotLon) * ease) % 360;
+          rotLat = startRotLat + (targetRotLat - startRotLat) * ease;
+        }}
+      }}
+
+      currentRadius += (targetRadius - currentRadius) * 0.08;
+
+      const cx = width / 2;
+      const cy = height / 2;
+      const r = currentRadius;
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.fillStyle = '#010204';
+      ctx.fill();
+      ctx.strokeStyle = '#182030';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      for (let i = 0; i < COUNTRY_POLYS.length; i++) {{
+        const country = COUNTRY_POLYS[i];
+        const isCActive = filterCountry !== 'all' && (country.n.toLowerCase() === filterCountry.toLowerCase());
+        ctx.fillStyle = isCActive ? '#1d4ed8' : country.c;
+
+        for (let j = 0; j < country.r.length; j++) {{
+          const ring = country.r[j];
+          if (!ring || ring.length < 3) continue;
+          ctx.beginPath();
+          let started = false;
+          for (let k = 0; k < ring.length; k++) {{
+            const p = project(ring[k][0], ring[k][1], r, cx, cy);
+            if (p.front) {{
+              if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
+              else ctx.lineTo(p.x, p.y);
+            }}
+          }}
+          if (started) {{
+            ctx.closePath();
+            ctx.fill();
+            ctx.strokeStyle = isCActive ? '#60a5fa' : '#040b17';
+            ctx.lineWidth = isCActive ? 1.5 : 0.4;
+            ctx.stroke();
+          }}
+        }}
+      }}
+
+      // Priority City Badges
+      cityBadgeHitboxes = [];
+      ctx.font = '400 14px "PP Telegraph", "PP Telegraf", sans-serif';
+      PRIORITY_CITIES.forEach(city => {{
+        const pt = project(city.lon, city.lat, r, cx, cy);
+        if (pt.front && pt.depth > 0.08) {{
+          const isSelected = filterCity.toLowerCase() === city.name.toLowerCase();
+          const txt = (isSelected ? '● ' : '■ ') + city.name;
+          const tw = ctx.measureText(txt).width;
+          const bw = tw + 12;
+          const bh = 22;
+          const bx = pt.x - bw / 2;
+          const by = pt.y - 26;
+
+          cityBadgeHitboxes.push({{
+            name: city.name,
+            x: bx, y: by, w: bw, h: bh,
+            lon: city.lon, lat: city.lat
+          }});
+
+          ctx.fillStyle = isSelected ? '#1d4ed8' : '#070b14';
+          ctx.beginPath();
+          ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 4) : ctx.rect(bx, by, bw, bh);
+          ctx.fill();
+          ctx.strokeStyle = isSelected ? '#93c5fd' : '#222d42';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.fillStyle = isSelected ? '#ffffff' : '#cbd5e1';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
+        }}
+      }});
+
+      // Dots
+      visibleDots = [];
+      DATA.forEach(inst => {{
+        const pt = project(inst.lon, inst.lat, r, cx, cy);
+        if (pt.front && pt.depth > 0.05) {{
+          visibleDots.push({{ inst, x: pt.x, y: pt.y }});
+          const isSel = selectedInst && selectedInst.name === inst.name;
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, isSel ? 4 : 2, 0, Math.PI * 2);
+          ctx.fillStyle = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
+          ctx.fill();
+        }}
+      }});
+
+      // Floating Card
+      const card = document.getElementById('wCard');
+      if (selectedInst) {{
+        const pt = project(selectedInst.lon, selectedInst.lat, r, cx, cy);
+        if (pt.front && pt.depth > 0.05) {{
+          card.classList.remove('hidden');
+          card.style.left = `${{pt.x}}px`;
+          card.style.top = `${{pt.y}}px`;
+        }} else {{
+          card.classList.add('hidden');
+        }}
+      }} else {{
+        card.classList.add('hidden');
+      }}
+
+      requestAnimationFrame(render);
+    }}
+    requestAnimationFrame(render);
+
+    function flyTo(lon, lat) {{
+      isAutoSpinning = false;
+      let dLon = (lon - rotLon) % 360;
+      if (dLon > 180) dLon -= 360;
+      if (dLon < -180) dLon += 360;
+      startRotLon = rotLon;
+      startRotLat = rotLat;
+      targetRotLon = rotLon + dLon;
+      targetRotLat = Math.max(-75, Math.min(75, lat));
+      flightProgress = 0;
+      isFlying = true;
+    }}
+
+    function select(inst, fly = true) {{
+      selectedInst = inst;
+      document.getElementById('wCardTitle').textContent = inst.name;
+      const shortH = inst.opening_hours ? inst.opening_hours.split(',')[0] : '';
+      const shortF = inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : '';
+      document.getElementById('wCardMeta').textContent = `${{inst.location}} · ${{shortH}} (${{shortF}})`;
+      const webUrl = inst.website || (inst.sources && inst.sources[0]) || '';
+      let dom = 'website';
+      try {{ dom = new URL(webUrl).hostname.replace(/^www\\./, ''); }} catch(e) {{}}
+      const link = document.getElementById('wCardLink');
+      const domEl = document.getElementById('wCardDom');
+      if (link && domEl) {{
+        link.href = webUrl;
+        domEl.textContent = dom;
+      }}
+      if (fly) flyTo(inst.lon, inst.lat);
+    }}
+
+    // =========================================================
+    // 💬 CONVERSATIONAL CURATOR LOGIC (Inline Widget)
+    // =========================================================
+    const wMessages = document.getElementById('wCuratorMessages');
+    const wInput = document.getElementById('wCuratorInput');
+    const wSend = document.getElementById('wCuratorSend');
+
+    function appendWCurator(html, picks = []) {{
+      const div = document.createElement('div');
+      div.className = 'flex flex-col gap-1';
+
+      let cards = '';
+      if (picks && picks.length > 0) {{
+        cards = `
+          <div class="flex flex-col gap-1.5 mt-1.5 pt-1.5 border-t border-[#1c2234]">
+            ${{picks.filter(Boolean).map(inst => `
+              <div class="bg-[#0b0e17] border border-[#1c2336] rounded-lg p-2 text-[14px]">
+                <div class="flex items-start justify-between gap-1">
+                  <span class="font-semibold text-white truncate">${{inst.name}}</span>
+                  <span class="text-[14px] font-mono px-1 rounded ${{inst.tier === 'A' ? 'text-emerald-400 bg-[#0a2016]' : 'text-blue-400 bg-[#0d1d33]'}}">${{inst.tier === 'A' ? 'Verified' : 'One Name'}}</span>
+                </div>
+                <div class="text-[14px] text-[#60a5fa] font-mono mt-0.5">${{inst.location}}</div>
+                <div class="mt-1.5 pt-1 border-t border-[#161d2d] flex items-center justify-between text-[14px]">
+                  <button class="w-fly-btn text-[#3b82f6] hover:underline font-semibold" data-name="${{inst.name.replace(/"/g, '&quot;')}}">🌍 Fly on Globe</button>
+                  ${{inst.website ? `<a href="${{inst.website}}" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-0.5"><span>🌐</span> <span>site ↗</span></a>` : ''}}
+                </div>
+              </div>
+            `).join('')}}
+          </div>
+        `;
+      }}
+
+      div.innerHTML = `
+        <div class="flex items-center gap-1 text-[14px] font-mono text-[#60a5fa]">
+          <span>🏛️</span> <span class="font-semibold text-slate-200">Curator</span>
+        </div>
+        <div class="bg-[#101420] border border-[#1e2538] text-[14px] text-slate-200 p-2.5 rounded-xl space-y-1.5 leading-relaxed">
+          ${{html}}
+          ${{cards}}
+        </div>
+      `;
+      wMessages.appendChild(div);
+
+      div.querySelectorAll('.w-fly-btn').forEach(btn => {{
+        btn.addEventListener('click', () => {{
+          const name = btn.getAttribute('data-name');
+          const inst = DATA.find(i => i.name === name);
+          if (inst) {{
+            select(inst, true);
+            // On small mobile, show globe
+            if (window.innerWidth < 640) showTab('globe');
+          }}
+        }});
+      }});
+
+      wMessages.scrollTop = wMessages.scrollHeight;
+    }}
+
+    function appendWUser(text) {{
+      const div = document.createElement('div');
+      div.className = 'flex flex-col items-end gap-0.5';
+      div.innerHTML = `
+        <div class="text-[14px] font-mono text-[#94a3b8]">You</div>
+        <div class="max-w-[90%] bg-[#1d4ed8] text-white text-[14px] px-2.5 py-1.5 rounded-xl rounded-tr-none">
+          ${{text}}
+        </div>
+      `;
+      wMessages.appendChild(div);
+      wMessages.scrollTop = wMessages.scrollHeight;
+    }}
+
+    function initWConversation() {{
+      wMessages.innerHTML = '';
+      appendWCurator(`
+        <p>Welcome to <strong>Culture Atlas</strong>. We map <strong>203 cultural institutions</strong> across 35 countries evaluated by their freedom from controversial corporate sponsorship (fossil fuels, defense manufacturing, predatory finance).</p>
+        <p class="text-slate-300">We gently guide visitors toward four ethical models: <em>Civic Sanctuaries</em>, <em>Artist-Governed Kunsthalles</em>, <em>Divested Spaces</em>, and <em>Free Admission Spaces</em>.</p>
+        <p class="text-[#93c5fd]">Where are you traveling, or what kind of space do you want to explore?</p>
+      `, [
+        DATA.find(i => i.name.includes('Chisenhale')) || DATA[0],
+        DATA.find(i => i.name.includes('CAPC')) || DATA[1],
+        DATA.find(i => i.name.includes('Plug In ICA')) || DATA[2]
+      ]);
+    }}
+
+    function handleWQuery(q) {{
+      const query = q.toLowerCase();
+      setTimeout(() => {{
+        // Visitor Queries: Hours & Mondays
+        if (query.includes('hour') || query.includes('schedule') || query.includes('open') || query.includes('monday') || query.includes('weekend')) {{
+          const targetInst = DATA.find(i => query.includes(i.name.toLowerCase()));
+          if (targetInst) {{
+            appendWCurator(`
+              <p>🕒 <strong>Hours for ${{targetInst.name}}:</strong></p>
+              <p class="text-emerald-400 font-mono text-[14px]">📅 ${{targetInst.opening_hours}}</p>
+              <p class="text-slate-300 text-[14px]">🎟️ ${{targetInst.admission_fee}}</p>
+              <p class="text-slate-300 text-[14px]">📍 ${{targetInst.address}}</p>
+              <p class="text-[#93c5fd] text-[14px] font-mono">🚇 ${{targetInst.transit_tips}}</p>
+            `, [targetInst]);
+            select(targetInst, true);
+            return;
+          }}
+
+          const mSpaces = DATA.filter(i => !i.opening_hours.toLowerCase().includes('closed mon') && (i.opening_hours.toLowerCase().includes('daily') || i.opening_hours.toLowerCase().includes('mon,') || i.opening_hours.toLowerCase().includes('mon–') || i.opening_hours.toLowerCase().includes('mon-')));
+          appendWCurator(`
+            <p><strong>🕒 Visiting Hours & Mondays:</strong></p>
+            <p>Independent spaces generally open <strong>Wed–Sun (11:00–18:00)</strong>. Here are ethical venues open on <strong>Mondays</strong>:</p>
+          `, mSpaces.slice(0, 3));
+          return;
+        }}
+
+        // Visitor Queries: Transit & Directions
+        if (query.includes('transit') || query.includes('how to get') || query.includes('train') || query.includes('subway') || query.includes('direction')) {{
+          const targetInst = DATA.find(i => query.includes(i.name.toLowerCase()));
+          if (targetInst) {{
+            appendWCurator(`
+              <p>🚇 <strong>Transit Directions to ${{targetInst.name}}:</strong></p>
+              <p class="text-[#93c5fd] font-mono text-[14px]">${{targetInst.transit_tips}}</p>
+              <p class="text-slate-300 text-[14px]">📍 ${{targetInst.address}} (${{targetInst.neighborhood}})</p>
+              <p class="text-slate-400 text-[14px]">⏱️ Suggested Duration: ${{targetInst.visit_duration}}</p>
+            `, [targetInst]);
+            select(targetInst, true);
+            return;
+          }}
+
+          appendWCurator(`
+            <p><strong>🚇 Transit & Destination Access:</strong></p>
+            <p>Culture Atlas provides full public rail & metro directions for all 203 institutions. Easily reach Dia Beacon via Metro-North or Louisiana via the Danish Kystbanen line.</p>
+          `, [
+            DATA.find(i => i.name.includes('Dia Beacon')),
+            DATA.find(i => i.name.includes('Louisiana'))
+          ]);
+          return;
+        }}
+
+        // Visitor Queries: Accessibility
+        if (query.includes('accessib') || query.includes('wheelchair') || query.includes('step-free')) {{
+          appendWCurator(`
+            <p><strong>♿ Barrier-Free Accessibility:</strong></p>
+            <p>All mapped civic institutions offer step-free access, elevators, loan wheelchairs, and free companion admission.</p>
+          `, [
+            DATA.find(i => i.name.includes('Serpentine')),
+            DATA.find(i => i.name.includes('ARoS'))
+          ]);
+          return;
+        }}
+
+        if (query.includes('what makes') || query.includes('ethical') || query.includes('criteria') || query.includes('method')) {{
+          appendWCurator(`
+            <p><strong>What Makes an Institution Ethically Funded?</strong></p>
+            <p>We evaluate whether museums protect curatorial independence by looking at their underwriting:</p>
+            <ul class="list-disc pl-3 text-slate-300 space-y-1">
+              <li><strong>Tier A (Verified Civic):</strong> Backed by municipal grants or clean endowments; zero corporate oil or arms ties.</li>
+              <li><strong>Artist-Governed Kunsthalles:</strong> Radical creative autonomy directed by artists.</li>
+              <li><strong>Divested Spaces:</strong> Institutions that severed ties with BP, Shell, or Baillie Gifford.</li>
+            </ul>
+          `, [
+            DATA.find(i => i.name.includes('Chisenhale')),
+            DATA.find(i => i.name.includes('CAPC'))
+          ]);
+        }} else if (query.includes('fossil') || query.includes('oil') || query.includes('bp') || query.includes('defense')) {{
+          appendWCurator(`
+            <p><strong>Fossil-Fuel & Defense-Free Art:</strong></p>
+            <p>Every museum in Culture Atlas has verified clean underwriting without oil or weapons money on its roster. Here are exemplary divested spaces:</p>
+          `, [
+            DATA.find(i => i.name.includes('Camden')),
+            DATA.find(i => i.name.includes('Whitechapel'))
+          ]);
+        }} else if (query.includes('moma') || query.includes('whitney') || query.includes('why exclude')) {{
+          appendWCurator(`
+            <p><strong>Why MoMA is Excluded:</strong></p>
+            <p>MoMA trustees held major stakes in defense contractors and private prisons. Culture Atlas only maps spaces free from unresolved sponsorship conflicts.</p>
+          `, [
+            DATA.find(i => i.name.includes('Dia Beacon')),
+            DATA.find(i => i.name.includes('SculptureCenter'))
+          ]);
+        }} else {{
+          // City or general matches
+          const matchCity = PRIORITY_CITIES.find(c => query.includes(c.name.toLowerCase()));
+          if (matchCity) {{
+            const list = DATA.filter(i => i.city.toLowerCase() === matchCity.name.toLowerCase());
+            appendWCurator(`
+              <p>📍 Found <strong>${{list.length}}</strong> verified spaces in <strong>${{matchCity.name}}</strong>:</p>
+            `, list.slice(0, 3));
+            flyTo(matchCity.lon, matchCity.lat);
+          }} else {{
+            const rand = DATA.filter(i => i.tier === 'A');
+            appendWCurator(`
+              <p>Here are two recommended verified spaces to discover:</p>
+            `, [rand[Math.floor(Math.random()*rand.length)], rand[Math.floor(Math.random()*rand.length)]]);
+          }}
+        }}
+      }}, 250);
+    }}
+
+    function onSend() {{
+      const text = wInput.value.trim();
+      if (!text) return;
+      wInput.value = '';
+      appendWUser(text);
+      handleWQuery(text);
+    }}
+
+    wSend.addEventListener('click', onSend);
+    wInput.addEventListener('keydown', e => {{
+      if (e.key === 'Enter') onSend();
+    }});
+
+        document.getElementById('wOpenMomaBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      if (!wSheetOpen) setWSheet(true);
+      flyTo(-73.9776, 40.7614);
+      appendWUser('Why is MoMA excluded from Culture Atlas?');
+      handleWQuery('Why is MoMA excluded from Culture Atlas?');
+    }});
+
+    document.querySelectorAll('.w-inquiry').forEach(b => {{
+      b.addEventListener('click', () => {{
+        const q = b.getAttribute('data-query');
+        appendWUser(q);
+        handleWQuery(q);
+      }});
+    }});
+
+    // Globe Controls & Curator interaction
+    document.getElementById('wResetBtn')?.addEventListener('click', () => {{
+      flyTo(-45, 35);
+      isAutoSpinning = true;
+      filterCountry = 'all';
+      filterCity = 'all';
+      document.getElementById('wMobileFilterBanner')?.classList.add('hidden');
+    }});
+
+    document.getElementById('wSpinBtn')?.addEventListener('click', () => {{
+      isAutoSpinning = !isAutoSpinning;
+      const b = document.getElementById('wSpinBtn');
+      if (b) b.textContent = isAutoSpinning ? '⏸ Pause' : '⟳ Spin';
+    }});
+
+    // Half Sheet Open / Close Controller
+    let wSheetOpen = true;
+    function setWSheet(open) {{
+      wSheetOpen = open;
+      const globe = document.getElementById('wGlobePanel');
+      const curator = document.getElementById('wCuratorPanel');
+      const feed = document.getElementById('wCuratorMessages');
+      const chips = document.getElementById('wInquiryCarousel');
+      const input = document.getElementById('wInputBar');
+      const toggleBtn = document.getElementById('wSheetToggleBtn');
+      const badge = document.getElementById('wSheetBadge');
+
+      if (open) {{
+        globe.style.height = '195px';
+        curator.classList.add('flex-1');
+        curator.style.height = '';
+        if (feed) feed.style.display = 'block';
+        if (chips) chips.style.display = 'flex';
+        if (input) input.style.display = 'flex';
+        if (toggleBtn) toggleBtn.innerHTML = '<span>▼</span><span>Close</span>';
+        if (badge) badge.textContent = 'Half Sheet';
+      }} else {{
+        globe.style.height = '420px';
+        curator.classList.remove('flex-1');
+        curator.style.height = '34px';
+        if (feed) feed.style.display = 'none';
+        if (chips) chips.style.display = 'none';
+        if (input) input.style.display = 'none';
+        if (toggleBtn) toggleBtn.innerHTML = '<span>▲</span><span>Open Half Sheet</span>';
+        if (badge) badge.textContent = 'Tap to Open';
+      }}
+      setTimeout(resize, 40);
+      setTimeout(resize, 180);
+      setTimeout(resize, 320);
+    }}
+
+    document.getElementById('wSheetToggleBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      setWSheet(!wSheetOpen);
+    }});
+
+    document.getElementById('wSheetHeader')?.addEventListener('click', () => {{
+      if (!wSheetOpen) setWSheet(true);
+    }});
+
+    document.getElementById('wCardCuratorBtn')?.addEventListener('click', () => {{
+      if (selectedInst) {{
+        if (!wSheetOpen) setWSheet(true);
+        appendWUser(`Tell me about ${{selectedInst.name}}`);
+        handleWQuery(selectedInst.name);
+      }}
+    }});
+
+    // Pointer on Canvas
+    canvas.addEventListener('pointerdown', e => {{
+      isDragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      pointerStartX = e.clientX;
+      pointerStartY = e.clientY;
+      pointerDownTime = Date.now();
+      isFlying = false;
+      isAutoSpinning = false;
+    }});
+
+    window.addEventListener('pointermove', e => {{
+      if (isDragging) {{
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        rotLon = (rotLon - dx * 0.18) % 360;
+        rotLat = Math.max(-75, Math.min(75, rotLat + dy * 0.18));
+      }}
+    }});
+
+    canvas.addEventListener('pointerup', e => {{
+      isDragging = false;
+      const dt = Date.now() - pointerDownTime;
+      const dist = Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY);
+      if (dt < 300 && dist < 6) {{
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        for (let i = 0; i < cityBadgeHitboxes.length; i++) {{
+          const b = cityBadgeHitboxes[i];
+          if (mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h) {{
+            filterCity = b.name;
+            flyTo(b.lon, b.lat);
+            if (!wSheetOpen) setWSheet(true);
+            appendWCurator(`<p>📍 <strong>${{b.name}} Cultural Guide:</strong></p>`, DATA.filter(inst => inst.city.toLowerCase() === b.name.toLowerCase()).slice(0, 3));
+            return;
+          }}
+        }}
+
+        for (let i = 0; i < visibleDots.length; i++) {{
+          const d = visibleDots[i];
+          if (Math.hypot(d.x - mx, d.y - my) < 9) {{
+            select(d.inst);
+            return;
+          }}
+        }}
+      }}
+    }});
+
+    initWConversation();
+    if (selectedInst) select(selectedInst, false);
+  </script>
+</body>
+</html>
+"""
+
+    widget_dest = "/Users/polinavasilyeva/.gemini/antigravity/brain/b997e616-4551-453e-83cc-4ba184f90abf/concierge_widget.html"
+    with open(widget_dest, "w", encoding="utf-8") as f:
+        f.write(widget_html)
+    print("Wrote updated conversational concierge_widget.html!")
+
+if __name__ == "__main__":
+    update_widget()
