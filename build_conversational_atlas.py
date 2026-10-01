@@ -561,52 +561,52 @@ def build():
 
         <!-- Sleek OpenAI ChatGPT-style Prompt Suggestions -->
         <div id="curatorInquiryRow" class="max-w-3xl mx-auto w-full px-3 sm:px-6 py-2 flex items-center gap-1.5 overflow-x-auto custom-scrollbar shrink-0 text-[14px] whitespace-nowrap">
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981] hover:bg-[#112d1e] transition active:scale-95 flex items-center gap-1.5" data-filter="free" data-chip-color="green" data-query="Which cultural spaces offer always free admission?">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981] hover:bg-[#112d1e] transition active:scale-95 flex items-center gap-1.5" data-filter="free" data-chip-color="green" data-query="Which museums and galleries are free to enter?">
             <span>🎟️ Free Admission</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="monday" data-chip-color="blue" data-query="What are typical museum opening hours and which institutions are open on Mondays?">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="monday" data-chip-color="blue" data-query="Which museums are open on Mondays?">
             <span>🕒 Hours & Mondays</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="transit" data-chip-color="blue" data-query="How do I get to destination museums like Dia Beacon or Louisiana by public transit?">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="transit" data-chip-color="blue" data-query="How do I get to Dia Beacon or Louisiana by train?">
             <span>🚇 Public Transit Tips</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="accessibility" data-chip-color="slate" data-query="Which museums offer step-free wheelchair accessibility and inclusive facilities?">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="accessibility" data-chip-color="slate" data-query="Which museums have wheelchair and step-free access?">
             <span>♿ Accessibility</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="amenities" data-chip-color="slate" data-query="Which institutions feature outstanding cafés, sculpture gardens, and art bookshops?">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="amenities" data-chip-color="slate" data-query="Which spaces have great cafés, gardens, or bookshops?">
             <span>☕ Cafés & Bookshops</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="ethical" data-chip-color="blue" data-query="What makes an institution ethically funded and what is Tier A?">
-            <span>🏛️ Ethical Criteria</span>
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="ethical" data-chip-color="blue" data-query="How do you decide if a museum has clean funding?">
+            <span>🏛️ Clean Funding</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="artist_run" data-chip-color="slate" data-query="Recommend independent artist-run centers and grassroots kunsthalles">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="artist_run" data-chip-color="slate" data-query="What are the best artist-run spaces to visit?">
             <span>🎨 Artist-Run Spaces</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981] hover:bg-[#112d1e] transition active:scale-95 flex items-center gap-1.5" data-filter="fossil_free" data-chip-color="green" data-query="Show institutions free from fossil fuels and defense sponsors">
-            <span>🌿 Fossil & defense-free spaces</span>
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981] hover:bg-[#112d1e] transition active:scale-95 flex items-center gap-1.5" data-filter="fossil_free" data-chip-color="green" data-query="Show spaces that do not take oil or weapons money">
+            <span>🌿 Fossil & defense-free</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="london" data-chip-color="blue" data-city="London" data-query="Tell me about London's art scene, independent spaces, and divestment history">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="london" data-chip-color="blue" data-city="London" data-query="Tell me about London's independent art spaces">
             <span>📍 London guide</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="nyc" data-chip-color="blue" data-city="New York" data-query="Tell me about New York's art scene and independent spaces">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="nyc" data-chip-color="blue" data-city="New York" data-query="Tell me about New York's art spaces and board controversies">
             <span>📍 New York guide</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="paris" data-chip-color="blue" data-city="Paris" data-query="Tell me about Paris's contemporary art scene and civic spaces">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="paris" data-chip-color="blue" data-city="Paris" data-query="Tell me about art spaces to visit in Paris">
             <span>📍 Paris guide</span>
           </button>
           <button class="inquiry-chip px-3 py-1 rounded-full border border-[#3b2b11] bg-[#221807] text-[#fcd34d] hover:border-[#f59e0b] hover:bg-[#2d2009] transition active:scale-95 flex items-center gap-1.5" data-filter="moma" data-chip-color="amber" data-query="Why is MoMA excluded from Culture Atlas?">
             <span>⚠️ Why MoMA is excluded</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_objecthood" data-query="What is Beyond Objecthood and how did the exhibition become a critical form?">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_objecthood" data-query="Explain 'Beyond Objecthood' in simple terms">
             <span>📖 Beyond Objecthood</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_eflux" data-query="What does e-flux say about the museum as a factory and duty-free art?">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_eflux" data-query="Explain e-flux and 'Is a Museum a Factory?' in simple terms">
             <span>📑 e-flux: Museum as factory</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_critique" data-query="Explain the three waves of institutional critique from Hans Haacke to Nan Goldin and Strike MoMA">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_critique" data-query="Explain the three waves of institutional critique in simple terms">
             <span>⚡ 3 Waves of Critique</span>
           </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="surprise" data-chip-color="slate" data-query="Surprise me with a unique ethical cultural institution">
+          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="surprise" data-chip-color="slate" data-query="Surprise me with a great art space">
             <span>✨ Surprise me</span>
           </button>
         </div>
@@ -784,7 +784,7 @@ def build():
         <div class="bg-[#0e1628] border border-[#1d4ed8]/50 rounded-xl p-3 space-y-1.5">
           <span class="text-[#60a5fa] font-semibold text-[14px] uppercase tracking-wider block font-mono">🌿 Verified Ethical Alternatives in New York</span>
           <p class="text-slate-300 text-[14px]">
-            Instead of supporting corporate-compromised boards, visit New York's <strong>11 verified ethical cultural sanctuaries</strong>—including <em>Dia Beacon, SculptureCenter, Artists Space, and The Studio Museum in Harlem</em>.
+            Instead of supporting corporate-compromised boards, visit New York's <strong>11 spaces with clean funding</strong>—including <em>Dia Beacon, SculptureCenter, Artists Space, and The Studio Museum in Harlem</em>.
           </p>
         </div>
 
@@ -793,7 +793,7 @@ def build():
       <!-- Modal Footer -->
       <div class="px-4 py-2.5 border-t border-[#252f48] bg-[#0c101c] flex items-center justify-between gap-2 shrink-0">
         <button id="momaAuditFlyNycBtn" class="px-3 py-1.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-semibold rounded-xl transition flex items-center gap-1.5 shadow">
-          <span>🗽</span> <span>Explore 11 Ethical NYC Spaces</span>
+          <span>🗽</span> <span>Explore 11 Clean NYC Spaces</span>
         </button>
         <button id="momaAuditChatBtn" class="px-3 py-1.5 bg-[#172032] hover:bg-[#22304c] border border-[#2b3b5c] text-slate-200 hover:text-white text-[14px] rounded-xl transition flex items-center gap-1.5">
           <span>💬</span> <span>Ask in Chat</span>
@@ -1620,21 +1620,21 @@ def build():
       }}
     }}
 
-    // Initial Welcome Message with Gentle Education
+    // Initial Welcome Message with Proper Simple Language
     function initCuratorConversation() {{
       curatorMessages.innerHTML = '';
       appendCuratorMessage(`
         <p class="text-[#ececec]">
-          Welcome to <strong>Culture Atlas</strong>. In an era where major art institutions routinely rely on trustees and sponsors linked to fossil fuel extraction, defense manufacturing, or predatory finance, Culture Atlas was created to map <strong>203 cultural sanctuaries across 35 countries</strong> that protect curatorial independence and public trust.
+          Welcome to <strong>Culture Atlas</strong>. We map <strong>203 museums and art spaces across 35 countries</strong> that do not take money from oil companies, weapons makers, or private prisons.
         </p>
         <p class="text-[#d4d4d4]">
-          We highlight four ethical models: <strong>civic municipal sanctuaries</strong> supported by public arts councils, <strong>artist-run grassroots Kunsthalles</strong> with creative autonomy, institutions that actively <strong>divested from fossil fuels</strong>, and spaces offering <strong>free public admission</strong> as a fundamental civic right.
+          You can explore spaces with <strong>free admission</strong>, <strong>artist-run galleries</strong>, public museums, and places open on Mondays.
         </p>
         <p class="text-[#d4d4d4]">
-          For example, you can discover <a href="#" class="inst-link" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in <a href="#" class="city-link" data-city="London">London</a> (an artist-centered commissioning space with free entry), <a href="#" class="inst-link" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in <a href="#" class="city-link" data-city="Bordeaux">Bordeaux</a> (a civic contemporary Kunsthalle in an 1824 warehouse), or <a href="#" class="inst-link" data-name="Dia Beacon">Dia Beacon</a> in <a href="#" class="city-link" data-city="New York">New York</a> (a model of non-profit foundation endowment for monumental site-specific art).
+          For example, check out <a href="#" class="inst-link" data-name="Chisenhale Gallery">Chisenhale Gallery</a> in <a href="#" class="city-link" data-city="London">London</a> (free entry), <a href="#" class="inst-link" data-name="CAPC musée d'art contemporain de Bordeaux">CAPC</a> in <a href="#" class="city-link" data-city="Bordeaux">Bordeaux</a>, or <a href="#" class="inst-link" data-name="Dia Beacon">Dia Beacon</a> in <a href="#" class="city-link" data-city="New York">New York</a>.
         </p>
         <p class="text-[#93c5fd]">
-          Where in the world are you exploring, or what type of art experience would you love to discover today?
+          Where would you like to go, or what kind of art are you looking for?
         </p>
       `);
     }}
@@ -1736,32 +1736,31 @@ def build():
       // Sample representative sanctuaries for model grounding
       const sampleInsts = ALL_INSTITUTIONS.slice(0, 45).map(i => `${{i.name}} (${{i.city}}, ${{i.country}}): Tier ${{i.tier}}, ${{i.governance_type}}, Hours: ${{i.opening_hours}}, ${{i.admission_policy}}, Highlights: ${{i.highlight}}`).join('\\n');
 
-      const criticalSystemPrompt = `You are the Culture Atlas Curator, an erudite, warm, and articulate contemporary art scholar and guide to ethical cultural institutions worldwide.
-Culture Atlas maps 203 cultural sanctuaries across 35 countries that protect curatorial independence and reject underwriting from fossil fuels, defense/weapons manufacturing, and private prisons.
+      const criticalSystemPrompt = `You are the Culture Atlas assistant, a friendly, clear, and direct guide to art museums and galleries worldwide.
+Culture Atlas maps 203 museums and art spaces across 35 countries that don't take money from fossil fuels, weapons manufacturers, or private prisons.
 
-DEEP THEORETICAL & INSTITUTIONAL FOUNDATIONS:
-You are deeply grounded in institutional critique, contemporary art theory, and critical exhibition history:
-- 'Beyond Objecthood: The Exhibition as a Critical Form Since 1968' by James Voorhies (MIT Press, 2017): You trace how artists from 1968 onwards (Robert Smithson, Marcel Broodthaers, Michael Asher, Group Material, Fred Wilson, Maria Eichhorn, Philippe Parreno, Tino Sehgal) subverted Michael Fried's 1967 condemnation of 'theatricality' in 'Art and Objecthood', transforming the exhibition itself into the primary artistic medium and critical form. You understand the contemporary paradox: how corporate mega-museums co-opted participatory and relational practices into tourist entertainment spectacle, and why independent kunsthalles and artist-run spaces remain essential counter-publics.
-- 'e-flux journal' Critical Theory:
-  * Hito Steyerl: 'Is a Museum a Factory?' (the museum as a post-Fordist site of unpaid spectator labor), 'Politics of Art: Contemporary Art and the Transition to Post-Democracy', and 'Duty Free Art' (freeports in Geneva and Singapore as offshore tax shelters where art circulates as financialized speculative currency).
-  * Boris Groys: 'Art Workers: Between Utopia and the Archive', 'The Museum as a Cradle of Revolution', and the museum's role as a secular egalitarian archive preserving artworks beyond capitalist market obsolescence.
-  * Anton Vidokle & Julieta Aranda: 'Art Without Artists?' (critique of the sovereign super-curator displacing the artist) and Russian Cosmism.
-  * Martha Rosler: 'Culture Class: Art, Creativity, Urbanism' (gentrification and artists as the advance guard of real estate capital).
-- Three Waves of Institutional Critique:
-  * 1st Wave (Late 1960s–70s): Hans Haacke (MoMA Poll 1970; Shapolsky real estate censorship at the Guggenheim 1971), Michael Asher, Daniel Buren, Marcel Broodthaers.
-  * 2nd Wave (1980s–90s): Andrea Fraser ('From the Critique of Institutions to an Institution of Critique', '2016 in Museums, Money, and Politics'), Fred Wilson ('Mining the Museum' 1992), Guerrilla Girls.
-  * 3rd Wave / Activist Divestment (2010s–Present): Decolonize This Place, Strike MoMA (Leon Black, Larry Fink, Steven Tananbaum, Paula Crown), Nan Goldin & P.A.I.N. (stripping the Sackler name from the Met, Louvre, Guggenheim, Tate, Serpentine), BP or not BP? & Culture Unstained (ousting BP from Tate and National Portrait Gallery), Warren Kanders Whitney Biennial tear gas boycott.
-- Claire Bishop: 'Radical Museology' (dialectical collection display vs presentist corporate spectacle; Van Abbemuseum, Reina Sofía) and 'Artificial Hells'.
-- Pamela M. Lee: 'Forgetting the Art World' (globalization and logistical capitalism).
+CORE INSTRUCTION: SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE.
+- Use plain, natural, everyday English.
+- Avoid academic art-world jargon or flowery marketing phrases. Never say "cultural sanctuaries", "for quiet reflection", "for evening contemplation", "uncompromised curatorial experimentation", "shutter their galleries", "sublime", "epistemologies", or "palliative".
+- Speak like a knowledgeable, friendly human who explains things directly and simply.
+- Keep sentences short, clean, and conversational.
 
-CRITICAL FORMATTING & CONVERSATIONAL RULES:
-1. Write in warm, articulate, continuous conversational paragraphs. DO NOT produce bulleted lists, numbered items, tables, or generic boxed UI recommendation containers.
-2. Weave all institutional and city references strictly IN LINE within your natural sentences.
-3. When referencing an institution in our atlas, format it strictly as:
+CRITICAL THEORY & ART HISTORY KNOWLEDGE (Explain simply):
+You know contemporary art and institutional critique deeply, but you explain every concept in simple, accessible terms:
+- "Beyond Objecthood" by James Voorhies (MIT Press, 2017): Explain how artists from 1968 turned the exhibition itself into an artwork (embracing the "theatricality" that critic Michael Fried criticized in 1967). Explain simply how big corporate museums later turned participation into tourist entertainment, pushing honest experimental art into independent non-profit spaces.
+- "e-flux journal": Explain Hito Steyerl's ideas simply—how museums act like factories where visitors' attention produces profit ("Is a Museum a Factory?"), and how billionaires store art in tax-free airport warehouses ("Duty Free Art"). Explain Boris Groys's point that public museums started during the French Revolution to make art public property.
+- Three Waves of Institutional Critique: Explain in plain terms:
+  1. 1st Wave (1970s): Hans Haacke exposing museum board members' politics and real estate ties.
+  2. 2nd Wave (1980s-90s): Andrea Fraser and Fred Wilson showing racism and money inside museums.
+  3. 3rd Wave (Today): Activist campaigns like Nan Goldin's P.A.I.N. forcing museums to drop the Sackler opioid family, and protests against tear-gas and defense donors at MoMA and the Whitney.
+- Claire Bishop: Explain simply her critique of corporate mega-museums versus thoughtful civic museums, and why participatory art isn't always radical.
+
+FORMATTING & INTERACTION RULES:
+1. Write in natural conversational paragraphs. Never use markdown headers (#, ##) or bulleted database dumps.
+2. Link institutions in our atlas strictly as:
 <a href="#" class="inst-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a> (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="Exact Name">audit dossier</a>)
-4. When mentioning a city, link it as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
-5. If the user asks about an art scene (e.g. London, New York, Berlin, Paris), provide an intellectual, historical, and curatorial narrative exploring its critical tensions, funding governance (e.g. Arts Council England, DRAC), and highlight specific independent sanctuaries from our atlas.
-6. Never output markdown headers (#, ##) or structured database field labels like 'Address:', 'Hours:', 'Highlight:'. Speak in fluid, natural prose as an inspiring curator and theorist.`;
+3. Link cities as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
+4. Keep answers focused, direct, and completely free of pompous fluff.`;
 
       try {{
         let rawText = '';
@@ -1940,7 +1939,7 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
             ✓ ${{pName}} API Key detected and securely saved to your browser!
           </p>
           <p class="text-slate-200">
-            Live intelligence is now active with <strong>${{aiModel}}</strong>. Ask me anything about art history, exhibition genealogies from <em>Beyond Objecthood</em>, e-flux institutional critique, or our 203 ethical sanctuaries.
+            Live intelligence is now active with <strong>${{aiModel}}</strong>. Ask me anything about art history, exhibitions, or places to visit.
           </p>
         `);
         return;
@@ -1988,16 +1987,20 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              London's contemporary art landscape is defined by a profound institutional dialectic: on one side stand the high-profile corporate mega-museums along the Thames, and on the other, a resilient, historically vital constellation of independent kunsthalles, artist-run spaces, and civic commissioning engines.
+              London has two very different art worlds: the giant corporate museums on the Thames, and a network of independent galleries and artist-run spaces with clean funding.
             </p>
             <p class="text-slate-300">
-              This ecosystem was forged through intense cultural struggle. For 26 years, British Petroleum (BP) underwrote ${{formatInstLink(tate)}}, until artist coalitions like <em>BP or not BP?</em>, <em>Liberate Tate</em>, and <em>Culture Unstained</em> led a decade of unsanctioned direct actions—from theatrical die-ins to installing a 1.5-tonne pirate wind-turbine blade inside the Turbine Hall—forcing Tate to sever BP sponsorship in 2016. In parallel, Nan Goldin's P.A.I.N. campaigns successfully pressured institutions across London to strip the Sackler family opioid name from their wings.
+              For 26 years, BP sponsored ${{formatInstLink(tate)}}, until artist groups like <em>Liberate Tate</em> and <em>BP or not BP?</em> staged creative protests (including carrying a real wind turbine blade into the Turbine Hall), pushing Tate to drop BP in 2016. In addition, protests by Nan Goldin's group P.A.I.N. forced London museums to take down the Sackler family name because of the opioid crisis.
             </p>
             <p class="text-slate-300">
-              Today, the true intellectual pulse of London thrives in spaces where curatorial autonomy is paramount. In East London's Bow, ${{formatInstLink(chis)}} occupies a former 1930s veneer factory, celebrated worldwide for commissioning pivotal early career-defining solo exhibitions by Lubaina Himid, Rachel Whiteread, and Lynette Yiadom-Boakye with 100% free public admission. In North London, ${{formatInstLink(camden)}} offers peaceful studio residency gardens dedicated to experimental sculptural and ceramic inquiry away from market speculation.
+              Here are great independent spaces to visit in London:
             </p>
             <p class="text-slate-300">
-              Further shaping the city's critical discourse are ${{formatInstLink(white)}} in Aldgate, with over a century of radical civic heritage (famously exhibiting Picasso's <em>Guernica</em> in 1939 to rally support for the Spanish Republic and hosting the seminal 1956 <em>This Is Tomorrow</em> exhibition), ${{formatInstLink(serp)}} in Kensington Gardens, ${{formatInstLink(volt)}} in Clapham supporting non-profit artist studios and queer practices, ${{formatInstLink(south)}} in Peckham, and ${{formatInstLink(gas)}} in Vauxhall. Each operates under ethical public charters free from fossil-fuel and defense underwriting.
+              - ${{formatInstLink(chis)}} in Bow: Free entry, known for commissioning brand-new work by artists like Lubaina Himid and Rachel Whiteread.<br>
+              - ${{formatInstLink(camden)}} in North London: Free entry, quiet garden café, and ceramic and sculpture studios.<br>
+              - ${{formatInstLink(white)}} in East London: Free entry, showed Picasso's <em>Guernica</em> in 1939 to support the Spanish Republic.<br>
+              - ${{formatInstLink(serp)}} in Kensington Gardens: Free entry, famous for its summer architecture pavilion.<br>
+              - ${{formatInstLink(volt)}} in Clapham, ${{formatInstLink(south)}} in Peckham, and ${{formatInstLink(gas)}} in Vauxhall. None of them accept oil or weapons sponsorships.
             </p>
           `);
           filterByCity('London', true, false);
@@ -2008,16 +2011,16 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         if (q.includes('beyond objecthood') || q.includes('voorhies') || (q.includes('objecthood') && (q.includes('fried') || q.includes('art') || q.includes('exhibition'))) || q.includes('exhibition as a critical form') || q.includes('exhibition as form')) {{
           appendCuratorMessage(`
             <p class="text-slate-200">
-              In <em>Beyond Objecthood: The Exhibition as a Critical Form Since 1968</em> (MIT Press, 2017), curator and art historian James Voorhies examines how the exhibition itself became the primary artistic medium and a crucial form of political and cultural critique.
+              In <em>Beyond Objecthood</em> (MIT Press, 2017), art historian James Voorhies explains how <strong>the exhibition itself became a work of art and a tool for critique</strong>.
             </p>
             <p class="text-slate-300">
-              The genealogy begins with Michael Fried's notorious 1967 polemic <em>"Art and Objecthood"</em>. Fried fiercely defended modernist autonomy (Clement Greenberg, Frank Stella, Anthony Caro) and attacked Minimalist sculpture (Donald Judd, Robert Morris, Tony Smith) for what he condemned as <strong>'theatricality'</strong>—the fact that Minimalist objects require the temporal, bodily presence of the viewer in a room over time, reducing art to an open-ended 'situation'. For Fried, genuine art was instantaneous and transcendent: <em>'presentness is grace.'</em>
+              It started in 1967 when art critic Michael Fried wrote an essay called <em>Art and Objecthood</em>. Fried attacked Minimalist art (like Donald Judd's simple boxes) because viewers had to walk around them in a room over time. Fried called this 'theatricality' and argued that real art should be experienced in a single instant.
             </p>
             <p class="text-slate-300">
-              Voorhies demonstrates how, starting in 1968, artists turned Fried's critique into a radical weapon. Figures from Robert Smithson (with his earthwork non-sites) and Marcel Broodthaers (fictional museum departments) to Michael Asher, Group Material, Fred Wilson, Maria Eichhorn, Philippe Parreno, and Tino Sehgal radically embraced theatricality, temporal duration, and spectator involvement. By transforming the exhibition into a critical form, they shattered the illusion of the neutral 'white cube' and exposed how museums construct ideology, race, and capital.
+              Starting around 1968, artists did the exact opposite: they embraced theatricality and audience participation. Artists like Robert Smithson, Marcel Broodthaers, Fred Wilson, and Maria Eichhorn turned the whole exhibition into their medium. They showed that museums are never neutral white rooms—they are shaped by money, politics, and power.
             </p>
             <p class="text-slate-300">
-              Crucially, Voorhies exposes a 21st-century museological paradox: the participatory, dematerialized practices conceived in the 1960s–90s to escape commodification were later co-opted by corporate mega-museums (Tate Modern Turbine Hall, MoMA, Guggenheim) into tourist spectacle, selfie architecture, and corporate entertainment branding. To resist this absorption, Voorhies argues that critical agency has migrated to independent kunsthalles, artist-run spaces, and discursive public platforms that refuse to reduce viewers to passive consumers.
+              Voorhies also points out a big irony today: mega-museums have turned this kind of participatory art into tourist spectacles and selfie backdrops. Because of that, the most honest, experimental exhibitions have moved to independent galleries and artist-run spaces.
             </p>
           `);
           return;
@@ -2027,16 +2030,16 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         if (q.includes('e-flux') || q.includes('steyerl') || q.includes('groys') || q.includes('vidokle') || q.includes('museum as factory') || q.includes('duty free art') || q.includes('duty-free art') || q.includes('freeport') || q.includes('post-democracy')) {{
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Over the past two decades, <em>e-flux journal</em> (founded by Anton Vidokle, Julieta Aranda, and Brian Kuan Wood) has served as one of the definitive publishing platforms for radical institutional critique and aesthetic theory.
+              <em>e-flux journal</em> is an influential art publishing platform that explores how money, politics, and power affect the art world.
             </p>
             <p class="text-slate-300">
-              Central to this discourse is <strong>Hito Steyerl</strong>, whose seminal essay <em>"Is a Museum a Factory?"</em> (2009) redefined how we analyze cultural space. Steyerl argues that the museum has shifted from a bourgeois temple of aesthetic contemplation or historical archive into a post-Fordist 24/7 factory. Within this space, museum visitors are not passive spectators, but unpaid affective laborers whose attention, social media circulation, and cultural capital generate economic surplus for surrounding luxury real estate and trustee investment portfolios.
+              Key ideas from its essays include:
             </p>
             <p class="text-slate-300">
-              In <em>"Duty Free Art: Art in the Age of Planetary Civil War"</em> (2015), Steyerl exposes the phenomenon of offshore freeports (such as Geneva, Singapore, and Luxembourg)—giant tax-exempt transit warehouses where blue-chip masterpieces sit inside climate-controlled crates, traded via offshore bearer shares as speculative hedges without ever being seen by the public. Art loses its public objecthood, functioning purely as hyper-liquid, unregulated dark currency.
-            </p>
-            <p class="text-slate-300">
-              Philosopher <strong>Boris Groys</strong> complements this with texts like <em>"Art Workers: Between Utopia and the Archive"</em> and <em>"The Museum as a Cradle of Revolution"</em>, tracing the public museum's origin to the French Revolution as a secular machine designed to decapitate religious and monarchical icons, converting them into historical artifacts for universal civic access. Alongside Anton Vidokle's critique in <em>"Art Without Artists?"</em> (confronting the rise of the celebrity curator), e-flux provides the essential theoretical vocabulary to demystify how contemporary art is instrumentalized by global financialization.
+              - <strong>Hito Steyerl – <em>Is a Museum a Factory?</em> (2009):</strong> She argues that modern museums act like 24/7 factories. Visitors are like unpaid workers: our attention, ticket purchases, and social media posts produce value that helps drive up nearby luxury real estate and museum prestige.<br>
+              - <strong>Hito Steyerl – <em>Duty Free Art</em> (2015):</strong> She writes about 'freeports'—huge tax-free airport warehouses in Geneva and Singapore where ultra-wealthy investors store valuable art in crates just to avoid taxes and trade it like a financial asset, without the public ever seeing it.<br>
+              - <strong>Boris Groys:</strong> He reminds us that public museums started during the French Revolution to take art away from kings and churches and open it up to everyone.<br>
+              - <strong>Anton Vidokle:</strong> He critiques celebrity curators who take the spotlight away from the artists themselves.
             </p>
           `);
           return;
@@ -2046,16 +2049,12 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         if (q.includes('institutional critique') || q.includes('haacke') || q.includes('andrea fraser') || q.includes('three waves') || q.includes('3 waves') || q.includes('waves of critique') || q.includes('fred wilson')) {{
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Institutional critique has evolved through three distinct, transformative historical waves:
+              Institutional critique is art that examines the museum itself—its money, its board, and its politics. It happened in three main waves:
             </p>
             <p class="text-slate-300">
-              <strong>First Wave (Late 1960s–1970s): The Frame and the Board.</strong> Initiated by artists like Hans Haacke, Michael Asher, Daniel Buren, and Marcel Broodthaers, the first wave sought to dismantle the myth of the museum as a neutral, transcendent temple of aesthetic autonomy. Haacke's <em>MoMA Poll</em> (1970) directly interrogated visitor attitudes toward board chairman Nelson Rockefeller's support for the Nixon administration's Indochina policy, while his 1971 work <em>Shapolsky et al. Manhattan Real Estate Holdings</em> exposed the predatory slumlord holdings of a Guggenheim trustee, leading director Thomas Messer to censor and cancel the exhibition.
-            </p>
-            <p class="text-slate-300">
-              <strong>Second Wave (1980s–1990s): Complicity and Internalization.</strong> Theorized decisively by Andrea Fraser in her 2005 landmark essay <em>"From the Critique of Institutions to an Institution of Critique"</em>, second-wave practitioners realized there is 'no outside' to the institution. Artists, critics, and viewers are themselves constituted by the cultural capital, prestige, and psychological desires of the museum system. Fraser's performances (like docent Jane Castleton in <em>Museum Highlights</em>, 1989) and her 900-page forensic study <em>2016 in Museums, Money, and Politics</em> dissected board political donations, while Fred Wilson's <em>Mining the Museum</em> (1992) and the Guerrilla Girls confronted systemic racial and gender bias.
-            </p>
-            <p class="text-slate-300">
-              <strong>Third Wave / Direct Divestment (2010s–Present): Activist Decoupling.</strong> The contemporary phase has moved from symbolic gallery interventions to collective, direct-action divestment campaigns. Nan Goldin's P.A.I.N. organized die-ins inside the Met, Guggenheim, and Louvre, forcing major museums worldwide to strip the Sackler opioid family name. Coalitions like <em>Decolonize This Place</em> and <em>Strike MoMA</em> targeted trustees tied to vulture funds, private prisons, and border militarization, while the 2019 Whitney Biennial artist boycott forced the resignation of Safariland tear gas manufacturer Warren Kanders.
+              1. <strong>First Wave (Late 1960s–1970s):</strong> Artists like Hans Haacke showed that museums are not neutral. In 1970, Haacke asked MoMA visitors whether they supported museum trustee Nelson Rockefeller's backing of the Vietnam War. In 1971, the Guggenheim cancelled Haacke's show because his artwork exposed the slum properties owned by a museum trustee.<br>
+              2. <strong>Second Wave (1980s–1990s):</strong> Andrea Fraser and Fred Wilson showed that artists and visitors are part of the system too. Fraser gave satirical museum tours as a fake docent, while Fred Wilson rearranged museum archives in Baltimore (<em>Mining the Museum</em>) to expose histories of slavery and racial bias.<br>
+              3. <strong>Third Wave (2010s–Present):</strong> Direct activist campaigns. Nan Goldin's group P.A.I.N. staged die-ins inside the Met, Guggenheim, and Louvre, forcing them to remove the Sackler family name because of the opioid crisis. In 2019, artists boycotted the Whitney Biennial until a tear gas manufacturer resigned from the board.
             </p>
           `);
           return;
@@ -2065,13 +2064,13 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         if (q.includes('claire bishop') || q.includes('radical museology') || q.includes('artificial hells') || q.includes('relational aesthetics') || q.includes('bourriaud')) {{
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Art historian and theorist Claire Bishop has provided some of the most incisive critiques of contemporary exhibition-making and curatorial practice.
+              Art historian Claire Bishop is known for critiquing how modern museums work and how audience participation is used:
             </p>
             <p class="text-slate-300">
-              In <em>Radical Museology: Or, What's Contemporary in Museums of Contemporary Art?</em> (2013), Bishop contrasts two opposing institutional models: the <strong>'presentist' corporate mega-museum</strong> (which prioritizes sensationalist architectural spectacles, transient blockbuster exhibitions, and consumer footfall to drive retail revenue) versus <strong>dialectical, historical museums</strong> (such as the Van Abbemuseum in Eindhoven under Charles Esche, Reina Sofía in Madrid under Manuel Borja-Villel, and MSUM in Ljubljana under Zdenka Badovinac). These radical institutions mobilize their permanent collections not as decorative luxury assets, but as critical historical weapons to interrogate current political crises.
+              - In <em>Radical Museology</em> (2013), she compares flashy corporate museums (which rely on blockbuster shows, gift shops, and tourist crowds) with thoughtful civic museums (like the Van Abbemuseum in the Netherlands or Reina Sofía in Madrid) that use their collections to help us understand current political and social issues.
             </p>
             <p class="text-slate-300">
-              In <em>Artificial Hells: Participatory Art and the Politics of Spectatorship</em> (Verso, 2012), Bishop took aim at the uncritical embrace of 'relational aesthetics' (theorized by Nicolas Bourriaud). She argued that reducing art to friendly, convivial social gatherings often serves as an easy palliative, simulating community while dodging difficult artistic antagonisms, aesthetic criteria, and structural political critique.
+              - In <em>Artificial Hells</em> (2012), she critiques 'participatory art'. She points out that getting visitors to chat or sit on sofas in a gallery isn't necessarily radical—it often just creates a cozy illusion of community while avoiding deeper artistic and political questions.
             </p>
           `);
           return;
@@ -2082,13 +2081,13 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Minimalism in the 1960s represented a fundamental philosophical rupture: artists like Donald Judd, Dan Flavin, Robert Morris, and Richard Serra rejected metaphorical representation and expressive illusion, insisting instead on 'specific objects' and direct phenomenological encounter.
+              Minimalism started in the 1960s with artists like Donald Judd, Dan Flavin, and Richard Serra. Instead of paintings that depict a scene, they built simple, large geometric shapes from industrial materials like steel, aluminum, and plywood. The goal was for you to experience the physical space and light directly with your own body.
             </p>
             <p class="text-slate-300">
-              No institution embodies this ethos more powerfully than ${{formatInstLink(dia)}} in the Hudson Valley. Housed in a vast 1929 former Nabisco box-printing facility on the Hudson River, Dia Beacon provides nearly 300,000 square feet illuminated entirely by northern daylight through sawtooth skylights. Here, Donald Judd's plywood boxes, Richard Serra's monumental weathered steel <em>Torqued Ellipses</em>, and Michael Heizer's sunken negative voids <em>North, East, South, West</em> exist at architectural scale, fulfilling the Minimalist demand that art be experienced physically in real space and real time.
+              The best place to see this is ${{formatInstLink(dia)}} in the Hudson Valley, New York. It sits in a huge former 1929 Nabisco box-printing factory lit entirely by natural daylight. You can walk inside Richard Serra's massive curved steel walls and see Donald Judd's wood and aluminum sculptures at full scale.
             </p>
             <p class="text-slate-300">
-              Founded by Philippa de Menil, Heiner Friedrich, and Helen Winkler in 1974, the Dia Art Foundation operates with a visionary endowment model that commits to sustaining singular, in-depth artistic installations indefinitely, completely free from the churn of commercial art fairs.
+              How to get there: take the Metro-North Hudson Line train from Grand Central Station directly to Beacon. The museum is an easy 5-minute walk from the station.
             </p>
           `);
           selectInstitution(dia, true);
@@ -2106,13 +2105,19 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              New York City presents the starkest clash in the global art world between private financial oligarchies and courageous grassroots artistic resistance.
+              New York has some of the biggest museums in the world, but many have faced protests over their donors and board members:
             </p>
             <p class="text-slate-300">
-              Major institutions like ${{formatInstLink(moma)}} and the Whitney Museum have been centers of intense community mobilization. MoMA sparked 10 weeks of protests by the <em>Strike MoMA</em> coalition over board members tied to vulture funds, private prisons, and defense contractors, leading former chairman Leon Black to step down over $158 million in payments to Jeffrey Epstein. At the Whitney, an artist boycott forced the resignation of Safariland tear gas CEO Warren Kanders.
+              MoMA saw months of protests over board members tied to defense contractors and private prisons. The Whitney Museum saw artists pull their work until a tear-gas manufacturer stepped down from the board.
             </p>
             <p class="text-slate-300">
-              Culture Atlas highlights New York's uncompromised, artist-centered alternatives. In Tribeca, ${{formatInstLink(artsp)}} has championed radical discourse since 1972 (giving early platforms to Cindy Sherman and Barbara Kruger and hosting Decolonize This Place assemblies). In Queens, ${{formatInstLink(sculp)}} champions experimental non-commercial sculpture in a historic trolley repair shop. And in the Hudson Valley, ${{formatInstLink(dia)}} remains the world's preeminent monument to Minimalist integrity.
+              Here are great places in New York with clean, independent funding:
+            </p>
+            <p class="text-slate-300">
+              - ${{formatInstLink(dia)}} in the Hudson Valley: World-famous for Minimalist art, easy train ride from Grand Central.<br>
+              - ${{formatInstLink(artsp)}} in Tribeca: Non-profit gallery championing experimental artists since 1972.<br>
+              - ${{formatInstLink(sculp)}} in Long Island City, Queens: Innovative sculpture inside a historic trolley repair shop.<br>
+              - ${{formatInstLink(kitch)}} and ${{formatInstLink(swiss)}} in the East Village.
             </p>
           `);
           filterByCity('New York', true, false);
@@ -2127,13 +2132,12 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Paris's contemporary art scene is shaped by a distinct balance between state-subsidized civic kunsthalles and the growing footprint of private luxury foundation museums.
+              In Paris, strong public funding helps many museums stay open to the public without relying on private corporate boards:
             </p>
             <p class="text-slate-300">
-              France's model of public funding through the Ministry of Culture and regional DRAC bodies guarantees public access and shields institutions from corporate board capture. A premier example is ${{formatInstLink(ptok)}}, Europe's largest contemporary art center, operating as a dynamic, anti-monumental laboratory open until midnight. In the heart of the city, ${{formatInstLink(pomp)}} stands as an iconic monument to democratic cultural decentralization, designed by Renzo Piano and Richard Rogers.
-            </p>
-            <p class="text-slate-300">
-              While private foundations like ${{formatInstLink(cart)}} present architecturally ambitious commissions, public discourse in Paris remains acutely engaged with debates on postcolonial provenance, restitution, and defending public cultural subsidies against commercialization.
+              - ${{formatInstLink(ptok)}}: Europe's largest contemporary art space, known for bold, experimental shows and open until midnight.<br>
+              - ${{formatInstLink(pomp)}}: Famous for its colorful inside-out architecture by Renzo Piano and Richard Rogers, with an incredible modern art collection.<br>
+              - ${{formatInstLink(cart)}}: Contemporary art commissions in a glass building designed by Jean Nouvel.
             </p>
           `);
           filterByCity('Paris', true, false);
@@ -2148,13 +2152,12 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Berlin's cultural ecosystem owes its worldwide reputation to its post-1989 history of artist self-organization, independent project spaces (<em>Freie Szene</em>), and robust federal arts funding that prioritizes experimental discourse over commercial market speculation.
+              Berlin is known around the world for its artist-run spaces and strong public arts funding:
             </p>
             <p class="text-slate-300">
-              In Mitte, ${{formatInstLink(kw)}} occupies a former 19th-century margarine factory, serving as a pioneer of uncompromised curatorial experimentation and home of the Berlin Biennale. In Tiergarten, ${{formatInstLink(hkw)}} serves as an internationally renowned forum for postcolonial discourse, planetary anthropocene research, and non-Western epistemologies. At the former border, ${{formatInstLink(grop)}} stages major interdisciplinary encounters with free access to its iconic ground floor.
-            </p>
-            <p class="text-slate-300">
-              Despite intensifying real estate gentrification pressures, Berlin remains one of the world's most intellectually rigorous artistic capitals, where artists actively mobilize for wage equity, studio preservation, and independent governance.
+              - ${{formatInstLink(kw)}} in Mitte: Located in a former margarine factory, famous for cutting-edge shows and the Berlin Biennale.<br>
+              - ${{formatInstLink(hkw)}} in Tiergarten: Focuses on international artists and global issues.<br>
+              - ${{formatInstLink(grop)}}: A historic exhibition hall with free access to its ground-floor exhibitions.
             </p>
           `);
           filterByCity('Berlin', true, false);
@@ -2162,7 +2165,7 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         }}
 
         // =========================================================================
-        // 🏛️ VISITOR DATA & AUDIT HANDLERS
+        // 🏛️ VISITOR DATA & AUDIT HANDLERS (Simple, Clear English)
         // =========================================================================
 
         // A. Visitor Data: Hours & Monday Openings
@@ -2171,10 +2174,12 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           if (targetInst) {{
             appendCuratorMessage(`
               <p class="text-slate-200">
-                If you are planning a visit to ${{formatInstLink(targetInst)}}, it welcomes the public <strong>${{targetInst.opening_hours}}</strong>.
+                <strong>${{formatInstLink(targetInst)}}</strong> is open <strong>${{targetInst.opening_hours}}</strong>.
               </p>
               <p class="text-slate-300">
-                You will find it at <strong>${{targetInst.address}}</strong> in the ${{targetInst.neighborhood}} neighborhood, conveniently reached via ${{targetInst.transit_tips}}. I recommend setting aside roughly <strong>${{targetInst.visit_duration}}</strong> to immerse yourself in the exhibitions and its signature landmark: ${{targetInst.highlight}}.
+                Address: <strong>${{targetInst.address}}</strong> (${{targetInst.neighborhood}}).<br>
+                How to get there: ${{targetInst.transit_tips}}.<br>
+                Recommended visit time: about <strong>${{targetInst.visit_duration}}</strong> to see ${{targetInst.highlight}}.
               </p>
             `);
             selectInstitution(targetInst, true);
@@ -2188,10 +2193,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
             const m3 = mondaySpaces[2] || ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
             appendCuratorMessage(`
               <p class="text-slate-200">
-                While most conventional museums shutter their galleries at the start of the week, Culture Atlas tracks <strong>${{mondaySpaces.length}}</strong> ethical cultural sanctuaries open on Mondays for quiet reflection.
+                Most museums are closed on Mondays, but Culture Atlas has <strong>${{mondaySpaces.length}}</strong> spaces open on Mondays:
               </p>
               <p class="text-slate-300">
-                In Paris, you can wander through ${{formatInstLink(m1)}}, celebrated for its midnight late openings. Along the Danish coastline, the sublime seaside sculpture park at ${{formatInstLink(m2)}} is open daily and easily reached via coastal rail. In London, ${{formatInstLink(m3)}} welcomes visitors with free public admission. Each space operates with transparent civic or independent governance free from fossil-fuel influence.
+                In Paris, ${{formatInstLink(m1)}} is open every Monday and stays open until midnight. Near Copenhagen, ${{formatInstLink(m2)}} is open daily by the sea and easy to reach by train. In London, ${{formatInstLink(m3)}} is open with free entry. None of them accept funding from oil or defense companies.
               </p>
             `);
             return;
@@ -2202,10 +2207,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const sted = ALL_INSTITUTIONS.find(i => i.name.includes('Stedelijk'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Institutional schedules across our network are thoughtfully balanced between public accessibility and artist studio production. Most independent kunsthalles and artist-run spaces welcome visitors <strong>Wednesday through Sunday (11:00–18:00 or 12:00–18:00)</strong>, reserving Mondays and Tuesdays for installation and artist studio work.
+              Most galleries and art spaces are open <strong>Wednesday to Sunday, 11:00–18:00 or 12:00–18:00</strong>. Many close on Mondays and Tuesdays to set up new exhibitions.
             </p>
             <p class="text-slate-300">
-              For evening contemplation, ${{formatInstLink(pTok)}} remains open until midnight, while spaces like ${{formatInstLink(louis)}} and ${{formatInstLink(sted)}} offer extended evening hours. You can click on any institution across the globe to review its exact timetable.
+              For late evenings, ${{formatInstLink(pTok)}} in Paris is open until midnight, while ${{formatInstLink(louis)}} and ${{formatInstLink(sted)}} are open late on weekdays. Click any dot on the map to see its exact opening times.
             </p>
           `);
           return;
@@ -2217,10 +2222,11 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           if (targetInst) {{
             appendCuratorMessage(`
               <p class="text-slate-200">
-                To travel to ${{formatInstLink(targetInst)}}, your best transit connection is: <strong>${{targetInst.transit_tips}}</strong>.
+                To get to <strong>${{formatInstLink(targetInst)}}</strong>, take <strong>${{targetInst.transit_tips}}</strong>.
               </p>
               <p class="text-slate-300">
-                The venue is situated at <strong>${{targetInst.address}}</strong> in ${{targetInst.neighborhood}}. It welcomes visitors ${{targetInst.opening_hours}}, and I recommend planning about ${{targetInst.visit_duration}} for your visit.
+                Address: <strong>${{targetInst.address}}</strong> in ${{targetInst.neighborhood}}.<br>
+                Hours: ${{targetInst.opening_hours}}. Plan for about ${{targetInst.visit_duration}}.
               </p>
             `);
             selectInstitution(targetInst, true);
@@ -2232,10 +2238,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Every cultural sanctuary mapped in Culture Atlas includes verified public transit directions. Some of the most memorable art pilgrimages in the world are seamless by rail:
+              Every space in Culture Atlas includes simple public transit directions. Many world-famous places are an easy train ride away:
             </p>
             <p class="text-slate-300">
-              You can board the Metro-North Hudson Line from Manhattan directly to ${{formatInstLink(dia)}}, take the scenic coastal Kystbanen train north from Copenhagen to ${{formatInstLink(louis)}}, or cycle through the national park forest to reach ${{formatInstLink(kroll)}} in Otterlo.
+              Take the Metro-North train from Grand Central right to ${{formatInstLink(dia)}}, take the coastal train from Copenhagen to ${{formatInstLink(louis)}}, or take a train and free park bicycle to ${{formatInstLink(kroll)}} in the Netherlands.
             </p>
           `);
           return;
@@ -2247,10 +2253,11 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           if (targetInst) {{
             appendCuratorMessage(`
               <p class="text-slate-200">
-                Regarding physical and sensory access, ${{formatInstLink(targetInst)}} provides: <strong>${{targetInst.accessibility}}</strong>.
+                <strong>Accessibility at ${{formatInstLink(targetInst)}}:</strong><br>
+                ${{targetInst.accessibility}}.
               </p>
               <p class="text-slate-300">
-                Transit access is straightforward via ${{targetInst.transit_tips}}. In accordance with equitable civic standards across our atlas, personal care assistants and essential companions always receive complimentary admission.
+                Companions and assistants get free entry. Getting there: ${{targetInst.transit_tips}}.
               </p>
             `);
             selectInstitution(targetInst, true);
@@ -2262,10 +2269,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const mplus = ALL_INSTITUTIONS.find(i => i.name.includes('M+ Museum'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Universal, barrier-free access is a core requirement of civic cultural stewardship. All institutions audited in Culture Atlas provide step-free circulation, passenger elevators, loaner wheelchairs, accessible gender-neutral washrooms, and free entry for essential companions.
+              All institutions in Culture Atlas have step-free access, elevators, wheelchairs to borrow, and free admission for companions.
             </p>
             <p class="text-slate-300">
-              Exemplary barrier-free destinations include ${{formatInstLink(serp)}}, ${{formatInstLink(aros)}}, and ${{formatInstLink(mplus)}}.
+              Great accessible spaces include ${{formatInstLink(serp)}} in London, ${{formatInstLink(aros)}} in Denmark, and ${{formatInstLink(mplus)}} in Hong Kong.
             </p>
           `);
           return;
@@ -2277,10 +2284,11 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           if (targetInst) {{
             appendCuratorMessage(`
               <p class="text-slate-200">
-                When visiting ${{formatInstLink(targetInst)}}, you will find on-site amenities including: <strong>${{targetInst.amenities}}</strong>.
+                <strong>Amenities at ${{formatInstLink(targetInst)}}:</strong><br>
+                ${{targetInst.amenities}}.
               </p>
               <p class="text-slate-300">
-                While exploring, be sure not to miss its signature landmark, <span class="text-amber-300/90">${{targetInst.highlight}}</span>. The space is open to visitors ${{targetInst.opening_hours}}.
+                Highlight to see: <span class="text-amber-300/90">${{targetInst.highlight}}</span>. Open: ${{targetInst.opening_hours}}.
               </p>
             `);
             selectInstitution(targetInst, true);
@@ -2293,10 +2301,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const tpg = ALL_INSTITUTIONS.find(i => i.name.includes("Photographers' Gallery"));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Visiting an ethical cultural space is as much about contemplative pauses as the art itself. For seaside dining and an organic café overlooking the water, explore ${{formatInstLink(louis)}}.
+              Many of our mapped spaces have great cafés and bookshops:
             </p>
             <p class="text-slate-300">
-              In Milan, ${{formatInstLink(prada)}} features <em>Bar Luce</em>, designed by filmmaker Wes Anderson. In London, ${{formatInstLink(camden)}} offers a tranquil garden lawn café, while ${{formatInstLink(tpg)}} in Soho hosts one of Europe's definitive photobook specialist bookshops.
+              ${{formatInstLink(louis)}} in Denmark has an organic café looking over the sea. In Milan, ${{formatInstLink(prada)}} has <em>Bar Luce</em>, designed by filmmaker Wes Anderson. In London, ${{formatInstLink(camden)}} has a garden café, and ${{formatInstLink(tpg)}} in Soho has an incredible photography bookshop.
             </p>
           `);
           return;
@@ -2308,10 +2316,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           if (targetInst) {{
             appendCuratorMessage(`
               <p class="text-slate-200">
-                The signature highlight at ${{formatInstLink(targetInst)}} is: <span class="text-amber-300/90 font-medium">${{targetInst.highlight}}</span>.
+                The main highlight at <strong>${{formatInstLink(targetInst)}}</strong> is <span class="text-amber-300/90 font-medium">${{targetInst.highlight}}</span>.
               </p>
               <p class="text-slate-300">
-                Governed as an independent <em>${{targetInst.governance_type}}</em>, its curatorial programme centers on ${{targetInst.curatorial_focus}}. The museum welcomes visitors ${{targetInst.opening_hours}}.
+                It focuses on ${{targetInst.curatorial_focus}} and is open ${{targetInst.opening_hours}}.
               </p>
             `);
             selectInstitution(targetInst, true);
@@ -2323,10 +2331,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const inhotim = ALL_INSTITUTIONS.find(i => i.name.includes('Inhotim'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Across 35 countries, Culture Atlas maps astonishing site-specific art and architectural landmarks.
+              Here are three unforgettable art landmarks you can visit:
             </p>
             <p class="text-slate-300">
-              Standout experiences include Olafur Eliasson's circular glass walkway <em>Your rainbow panorama</em> at ${{formatInstLink(aros)}}, Richard Serra's monumental weathered steel ellipses at ${{formatInstLink(dia)}}, and the 23 bespoke artist pavilions embedded within a 700-hectare rainforest at ${{formatInstLink(inhotim)}}.
+              Olafur Eliasson's colorful rainbow glass skywalk at ${{formatInstLink(aros)}}, Richard Serra's giant steel sculptures at ${{formatInstLink(dia)}}, and 23 art pavilions set inside a Brazilian rainforest at ${{formatInstLink(inhotim)}}.
             </p>
           `);
           return;
@@ -2339,16 +2347,12 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              When choosing cultural spaces to support with your visit and admission, look at how their funding architecture protects artistic autonomy:
+              Culture Atlas rates museums based on who funds them and who sits on their board:
             </p>
             <p class="text-slate-300">
-              First, prioritize <strong>civic municipal sanctuaries</strong> backed by public cultural councils (such as Arts Council England, DRAC in France, or the Canada Council). Because their primary accountability is to the public, curators are not pressured into censoring provocative art to appease corporate benefactors. Outstanding examples include ${{formatInstLink(capc)}} and ${{formatInstLink(plugin)}}.
-            </p>
-            <p class="text-slate-300">
-              Second, seek out <strong>artist-run grassroots kunsthalles</strong> like ${{formatInstLink(chis)}}, where artist boards commission daring contemporary projects free from corporate board oversight.
-            </p>
-            <p class="text-slate-300">
-              Third, celebrate <strong>institutions that actively divested</strong> from fossil fuel conglomerates and arms manufacturing, ensuring cultural spaces remain clean, uncompromised civic commons.
+              1. <strong>Public museums:</strong> Funded by public arts councils (like Arts Council England or DRAC in France) rather than private corporate sponsors, so they answer to the public. Examples: ${{formatInstLink(capc)}} and ${{formatInstLink(plugin)}}.<br>
+              2. <strong>Artist-run spaces:</strong> Managed directly by artists, like ${{formatInstLink(chis)}}, giving artists freedom to experiment without corporate control.<br>
+              3. <strong>Clean funding:</strong> Spaces that refuse or divested from oil, weapons, and private prison money.
             </p>
           `);
           return;
@@ -2362,10 +2366,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const f3 = freeSpaces[2] || ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              We map <strong>${{freeSpaces.length}}</strong> cultural institutions providing completely free public admission, ensuring that contemporary art remains an open civic right rather than a commercial commodity.
+              Culture Atlas has <strong>${{freeSpaces.length}}</strong> museums and galleries with completely free admission.
             </p>
             <p class="text-slate-300">
-              Standout free sanctuaries include ${{formatInstLink(f1)}}, celebrated for its artist commissions, ${{formatInstLink(f2)}} with century-old civic heritage, and the park pavilions of ${{formatInstLink(f3)}}. Each operates under public charters free from fossil-fuel sponsorship.
+              Top free spaces include ${{formatInstLink(f1)}} in London, ${{formatInstLink(f2)}}, and ${{formatInstLink(f3)}} in Kensington Gardens. None of them charge admission, and none take oil or arms money.
             </p>
           `);
           return;
@@ -2379,10 +2383,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const a3 = artistSpaces[2] || ALL_INSTITUTIONS.find(i => i.name.includes('Plug In ICA'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Culture Atlas tracks <strong>${{artistSpaces.length}}</strong> artist-governed spaces worldwide. Governed directly by artists, these collectives champion daring, uncompromised artistic commissions completely free from corporate board interference.
+              Culture Atlas maps <strong>${{artistSpaces.length}}</strong> artist-run spaces worldwide. Because they are run by artists, they can support new, experimental work without pressure from corporate donors.
             </p>
             <p class="text-slate-300">
-              Standout artist-governed spaces include ${{formatInstLink(a1)}}, ${{formatInstLink(a2)}}, and ${{formatInstLink(a3)}}.
+              Standout artist-run spaces include ${{formatInstLink(a1)}}, ${{formatInstLink(a2)}}, and ${{formatInstLink(a3)}}.
             </p>
           `);
           return;
@@ -2395,10 +2399,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const c3 = ALL_INSTITUTIONS.find(i => i.name.includes('Nottingham Contemporary'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              For decades, multinational extractive corporations (such as BP, Shell, and TotalEnergies) and arms manufacturers used museum underwriting to 'artwash' their public images. Over the past five years, courageous artist coalitions and cultural workers forced major venues to divest.
+              For years, oil companies like BP and Shell used museum sponsorships to polish their image ('artwashing'). Recently, artists and activists pressured museums to drop those deals.
             </p>
             <p class="text-slate-300">
-              Every single venue mapped in Culture Atlas has verified clean underwriting without fossil-fuel or defense sponsorship on its active roster. You can support this movement by visiting divested leaders such as ${{formatInstLink(c1)}}, ${{formatInstLink(c2)}}, and ${{formatInstLink(c3)}}.
+              Every space in Culture Atlas has clean funding with zero oil or weapons money. Good examples include ${{formatInstLink(c1)}}, ${{formatInstLink(c2)}}, and ${{formatInstLink(c3)}}.
             </p>
           `);
           return;
@@ -2411,13 +2415,13 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
           const serp = ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Culture Atlas maintains a strict exclusion policy for institutions that retain unresolved ties to controversial underwriters, defense manufacturing, or human rights violations.
+              We exclude museums whose board members have serious conflicts of interest:
             </p>
             <p class="text-slate-300">
-              The Museum of Modern Art (MoMA) in New York sparked citywide protests over trustees holding major stakes in defense contractors, private prisons, and extractive debt. Similarly, the Whitney Museum faced global artist boycotts until board vice chair Warren Kanders (CEO of tear gas manufacturer Safariland) stepped down under international pressure.
+              MoMA in New York saw protests over trustees invested in weapons companies and private prisons (its former chair Leon Black also resigned over payments to Jeffrey Epstein). The Whitney Museum saw artists pull their work until board member Warren Kanders, who owned a tear gas company, resigned.
             </p>
             <p class="text-slate-300">
-              Culture Atlas chooses instead to celebrate institutions whose funding architecture is clean and uncompromised, such as ${{formatInstLink(dia)}}, ${{formatInstLink(sculp)}}, and ${{formatInstLink(serp)}}.
+              Instead, we feature spaces with clean funding, like ${{formatInstLink(dia)}}, ${{formatInstLink(sculp)}}, and ${{formatInstLink(serp)}}.
             </p>
           `);
           return;
@@ -2439,10 +2443,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
             const c3 = cityMatches[2];
             appendCuratorMessage(`
               <p class="text-slate-200">
-                If you are exploring <a href="#" class="city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(targetCity)}}">${{escapeHtml(targetCity)}}</a>, we have mapped <strong>${{cityMatches.length}}</strong> verified ethical cultural sanctuaries here.
+                Here are <strong>${{cityMatches.length}}</strong> museums and galleries in <a href="#" class="city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(targetCity)}}">${{escapeHtml(targetCity)}}</a> with clean funding:
               </p>
               <p class="text-slate-300">
-                Standout spaces include ${{formatInstLink(c1, {{noCity: true}})}}, celebrated for its ${{c1.curatorial_focus || 'contemporary commissions'}}${{c2 ? `, ${{formatInstLink(c2, {{noCity: true}})}}, offering ${{c2.admission_policy}}` : ''}}${{c3 ? `, and ${{formatInstLink(c3, {{noCity: true}})}}` : ''}}. All of these operate with transparent public charters free from fossil-fuel sponsorship.
+                Highlights include ${{formatInstLink(c1, {{noCity: true}})}}${{c2 ? `, ${{formatInstLink(c2, {{noCity: true}})}}` : ''}}${{c3 ? `, and ${{formatInstLink(c3, {{noCity: true}})}}` : ''}}. None of them accept oil or weapons sponsorships.
               </p>
             `);
 
@@ -2461,10 +2465,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
             const co3 = countryMatches[2];
             appendCuratorMessage(`
               <p class="text-slate-200">
-                Across <strong>${{escapeHtml(matchedCountry.name)}}</strong>, Culture Atlas tracks <strong>${{countryMatches.length}}</strong> verified cultural spaces where public accountability and artistic autonomy take priority over private commercial influence.
+                We have <strong>${{countryMatches.length}}</strong> spaces mapped in <strong>${{escapeHtml(matchedCountry.name)}}</strong> with clean funding.
               </p>
               <p class="text-slate-300">
-                Remarkable spaces to explore include ${{formatInstLink(co1)}}${{co2 ? `, ${{formatInstLink(co2)}}` : ''}}${{co3 ? `, and ${{formatInstLink(co3)}}` : ''}}.
+                Top places to visit include ${{formatInstLink(co1)}}${{co2 ? `, ${{formatInstLink(co2)}}` : ''}}${{co3 ? `, and ${{formatInstLink(co3)}}` : ''}}.
               </p>
             `);
 
@@ -2478,13 +2482,14 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         if (instMatch) {{
           appendCuratorMessage(`
             <p class="text-slate-200">
-              ${{formatInstLink(instMatch, {{noCity: false}})}} is an ethical cultural sanctuary founded in ${{instMatch.year_founded}} in the ${{instMatch.neighborhood}} district.
+              <strong>${{formatInstLink(instMatch, {{noCity: false}})}}</strong> (${{instMatch.neighborhood}}), founded in ${{instMatch.year_founded}}.
             </p>
             <p class="text-slate-300">
-              Governed as an independent <em>${{instMatch.governance_type}}</em>, the institution focuses on ${{instMatch.curatorial_focus}}. Admission is <strong>${{instMatch.admission_policy}}</strong> (${{instMatch.admission_details}}), welcoming visitors ${{instMatch.opening_hours}}.
-            </p>
-            <p class="text-slate-300">
-              When visiting, make sure to experience its signature highlight: <span class="text-amber-300/90 font-medium">${{instMatch.highlight}}</span>. Its verified ethical safeguard confirms: ${{instMatch.ethical_safeguard}}.
+              - <strong>Admission:</strong> ${{instMatch.admission_policy}} (${{instMatch.admission_details}})<br>
+              - <strong>Hours:</strong> ${{instMatch.opening_hours}}<br>
+              - <strong>Highlight:</strong> <span class="text-amber-300/90 font-medium">${{instMatch.highlight}}</span><br>
+              - <strong>Transit:</strong> ${{instMatch.transit_tips}}<br>
+              - <strong>Governance:</strong> ${{instMatch.governance_type}} · ${{instMatch.ethical_safeguard}}
             </p>
           `);
 
@@ -2500,10 +2505,14 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Here are two extraordinary institutions with inspiring ethical commitments and artistic integrity: ${{formatInstLink(pick1)}} and ${{formatInstLink(pick2)}}.
+              Here are two great art spaces to check out:
             </p>
             <p class="text-slate-300">
-              Both operate with verified independence and champion bold contemporary commissions without corporate sponsor restrictions.
+              - ${{formatInstLink(pick1)}}<br>
+              - ${{formatInstLink(pick2)}}
+            </p>
+            <p class="text-slate-300">
+              Both have clean funding and show exciting contemporary art.
             </p>
           `);
 
@@ -2517,17 +2526,15 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
         appendCuratorMessage(`
           <p class="text-slate-200">
-            I would be delighted to guide you to ethically funded cultural institutions across <strong>35 countries and 133 cities</strong>.
+            I can help you find museums and art spaces across <strong>35 countries and 133 cities</strong> that have clean funding.
           </p>
           <p class="text-slate-300">
-            Whether you are planning a journey to <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Paris">Paris</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a>, or exploring critical theory from <em>Beyond Objecthood</em>, <em>e-flux journal</em>, and institutional critique, I can direct you to uncompromised sanctuaries like ${{formatInstLink(dia)}}, ${{formatInstLink(chis)}}, or ${{formatInstLink(louis)}}.
+            Ask me about cities like <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Paris">Paris</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a>, how to get to places like ${{formatInstLink(dia)}} or ${{formatInstLink(louis)}}, or questions about art history and exhibitions.
           </p>
           <p class="text-[#93c5fd]">
-            What city or type of art experience would you love to discover today?
+            Which city or kind of art are you interested in?
           </p>
-        `);
-
-      }}, 300);
+        `);      }}, 300);
     }}
 
     // Handle Input Send
@@ -2909,7 +2916,7 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         if (prov === 'anthropic') {{
           providerTip.innerHTML = 'Recommended: <strong>Claude 3.5 / Haiku 4.5</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.';
         }} else if (prov === 'openai') {{
-          providerTip.innerHTML = 'OpenAI <strong>GPT-4o / GPT-4o-mini</strong> provides fast conversational guidance across all 203 mapped sanctuaries.';
+          providerTip.innerHTML = 'OpenAI <strong>GPT-4o / GPT-4o-mini</strong> provides fast conversational guidance across all 203 mapped spaces.';
         }} else {{
           providerTip.innerHTML = 'Google <strong>Gemini 2.5 Flash</strong> provides responsive real-time multimodal reasoning.';
         }}
@@ -3269,10 +3276,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         const topInsts = cityMatches.slice(0, 3).map(i => formatInstLink(i, {{noCity: true}})).join(', ');
         appendCuratorMessage(`
           <p class="text-slate-200">
-            We are now exploring <a href="#" class="city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(cityName)}}">${{escapeHtml(cityName)}}</a>, home to <strong>${{cityMatches.length}}</strong> verified ethical cultural sanctuaries.
+            We are now exploring <a href="#" class="city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(cityName)}}">${{escapeHtml(cityName)}}</a>, home to <strong>${{cityMatches.length}}</strong> spaces with clean funding.
           </p>
           <p class="text-slate-300">
-            Standout spaces here include ${{topInsts}}. Each operates with transparent public governance and clean underwriting without fossil-fuel or defense sponsorship.
+            Highlights include ${{topInsts}}. None of them accept oil or defense sponsorships.
           </p>
         `);
       }}
@@ -3292,10 +3299,10 @@ CRITICAL FORMATTING & CONVERSATIONAL RULES:
         const topInsts = countryMatches.slice(0, 3).map(i => formatInstLink(i)).join(', ');
         appendCuratorMessage(`
           <p class="text-slate-200">
-            Across <strong>${{escapeHtml(countryName)}}</strong>, Culture Atlas tracks <strong>${{countryMatches.length}}</strong> cultural institutions prioritizing public accountability and artistic autonomy.
+            Across <strong>${{escapeHtml(countryName)}}</strong>, Culture Atlas has <strong>${{countryMatches.length}}</strong> spaces with clean funding.
           </p>
           <p class="text-slate-300">
-            Exemplary spaces to explore include ${{topInsts}}.
+            Top places to explore include ${{topInsts}}.
           </p>
         `);
       }}
