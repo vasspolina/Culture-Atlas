@@ -410,6 +410,16 @@
         <button id="clearMapFilterBtn" class="ml-1 text-[#93c5fd] hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[14px]" title="Clear filter">✕</button>
       </div>
 
+      <!-- City Street View Banner & Back to World View Button -->
+      <div id="cityViewControlBanner" class="hidden absolute top-2.5 sm:top-3 left-2.5 sm:left-4 z-20 pointer-events-auto flex items-center gap-2">
+        <button id="backToWorldBtn" class="px-3 py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Zoom out to world globe">
+          <span>🌍</span> <span class="font-normal">World View</span>
+        </button>
+        <div id="cityViewTitleBadge" class="px-3 py-1.5 rounded-xl bg-[#0c1626]/95 border border-[#1e2e4a] text-[#93c5fd] text-[13px] font-mono flex items-center gap-1.5 shadow-lg backdrop-blur">
+          <span>📍</span> <span id="cityViewTitleText">LONDON · STREET VIEW</span>
+        </div>
+      </div>
+
       <!-- Interactive City & Country Quick Bar -->
       <div id="globeCityBar" class="absolute bottom-2 left-2.5 sm:left-4 right-20 sm:right-24 z-10 flex items-center overflow-x-auto custom-scrollbar whitespace-nowrap gap-1.5 select-none pointer-events-auto">
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">🌐 All</button>
@@ -9205,6 +9215,2301 @@
       { name: 'AARHUS', lon: 10.2039, lat: 56.1629 }
     ];
 
+    // Curated Cultural Cartography: Real-World Streets, Avenues & Waterways for Key Cities
+    const CITY_STREET_NETWORKS = {
+  "london": {
+    "center": [
+      -0.1278,
+      51.5074
+    ],
+    "waterways": [
+      {
+        "name": "River Thames",
+        "width": 24,
+        "pts": [
+          [
+            -0.24,
+            51.485
+          ],
+          [
+            -0.21,
+            51.468
+          ],
+          [
+            -0.175,
+            51.482
+          ],
+          [
+            -0.14,
+            51.485
+          ],
+          [
+            -0.124,
+            51.501
+          ],
+          [
+            -0.116,
+            51.508
+          ],
+          [
+            -0.098,
+            51.508
+          ],
+          [
+            -0.075,
+            51.505
+          ],
+          [
+            -0.05,
+            51.502
+          ],
+          [
+            -0.02,
+            51.505
+          ],
+          [
+            -0.005,
+            51.485
+          ],
+          [
+            0.03,
+            51.502
+          ]
+        ]
+      }
+    ],
+    "bridges": [
+      {
+        "name": "Westminster Bridge",
+        "pts": [
+          [
+            -0.124,
+            51.5
+          ],
+          [
+            -0.119,
+            51.502
+          ]
+        ]
+      },
+      {
+        "name": "Waterloo Bridge",
+        "pts": [
+          [
+            -0.119,
+            51.511
+          ],
+          [
+            -0.114,
+            51.507
+          ]
+        ]
+      },
+      {
+        "name": "Blackfriars Bridge",
+        "pts": [
+          [
+            -0.105,
+            51.511
+          ],
+          [
+            -0.103,
+            51.507
+          ]
+        ]
+      },
+      {
+        "name": "Millennium Bridge",
+        "pts": [
+          [
+            -0.099,
+            51.51
+          ],
+          [
+            -0.098,
+            51.507
+          ]
+        ]
+      },
+      {
+        "name": "London Bridge",
+        "pts": [
+          [
+            -0.088,
+            51.508
+          ],
+          [
+            -0.086,
+            51.504
+          ]
+        ]
+      },
+      {
+        "name": "Tower Bridge",
+        "pts": [
+          [
+            -0.076,
+            51.506
+          ],
+          [
+            -0.074,
+            51.502
+          ]
+        ]
+      }
+    ],
+    "parks": [
+      {
+        "name": "Hyde Park & Kensington Gardens",
+        "pts": [
+          [
+            -0.188,
+            51.502
+          ],
+          [
+            -0.155,
+            51.502
+          ],
+          [
+            -0.155,
+            51.512
+          ],
+          [
+            -0.188,
+            51.512
+          ]
+        ]
+      },
+      {
+        "name": "Regent's Park",
+        "pts": [
+          [
+            -0.165,
+            51.525
+          ],
+          [
+            -0.142,
+            51.525
+          ],
+          [
+            -0.142,
+            51.538
+          ],
+          [
+            -0.165,
+            51.538
+          ]
+        ]
+      },
+      {
+        "name": "Victoria Park",
+        "pts": [
+          [
+            -0.045,
+            51.535
+          ],
+          [
+            -0.025,
+            51.538
+          ],
+          [
+            -0.028,
+            51.543
+          ],
+          [
+            -0.048,
+            51.54
+          ]
+        ]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "Oxford St & Bayswater Rd",
+        "pts": [
+          [
+            -0.19,
+            51.511
+          ],
+          [
+            -0.16,
+            51.514
+          ],
+          [
+            -0.13,
+            51.516
+          ]
+        ]
+      },
+      {
+        "name": "Piccadilly",
+        "pts": [
+          [
+            -0.15,
+            51.503
+          ],
+          [
+            -0.135,
+            51.51
+          ],
+          [
+            -0.128,
+            51.513
+          ]
+        ]
+      },
+      {
+        "name": "The Strand & Fleet St",
+        "pts": [
+          [
+            -0.126,
+            51.508
+          ],
+          [
+            -0.112,
+            51.513
+          ],
+          [
+            -0.1,
+            51.514
+          ]
+        ]
+      },
+      {
+        "name": "Euston Rd & Marylebone Rd",
+        "pts": [
+          [
+            -0.17,
+            51.522
+          ],
+          [
+            -0.13,
+            51.528
+          ],
+          [
+            -0.115,
+            51.53
+          ]
+        ]
+      },
+      {
+        "name": "Kingsway & Southampton Row",
+        "pts": [
+          [
+            -0.118,
+            51.512
+          ],
+          [
+            -0.121,
+            51.522
+          ]
+        ]
+      },
+      {
+        "name": "Whitechapel High St",
+        "pts": [
+          [
+            -0.075,
+            51.515
+          ],
+          [
+            -0.03,
+            51.525
+          ]
+        ]
+      },
+      {
+        "name": "Bankside & Southwark St",
+        "pts": [
+          [
+            -0.11,
+            51.506
+          ],
+          [
+            -0.085,
+            51.505
+          ]
+        ]
+      },
+      {
+        "name": "Camden High St",
+        "pts": [
+          [
+            -0.145,
+            51.535
+          ],
+          [
+            -0.142,
+            51.545
+          ]
+        ]
+      },
+      {
+        "name": "King's Road",
+        "pts": [
+          [
+            -0.175,
+            51.488
+          ],
+          [
+            -0.155,
+            51.492
+          ]
+        ]
+      },
+      {
+        "name": "Victoria Embankment",
+        "pts": [
+          [
+            -0.124,
+            51.502
+          ],
+          [
+            -0.108,
+            51.511
+          ]
+        ]
+      },
+      {
+        "name": "Tottenham Court Rd",
+        "pts": [
+          [
+            -0.13,
+            51.516
+          ],
+          [
+            -0.135,
+            51.524
+          ]
+        ]
+      },
+      {
+        "name": "Charing Cross Rd",
+        "pts": [
+          [
+            -0.128,
+            51.51
+          ],
+          [
+            -0.13,
+            51.516
+          ]
+        ]
+      },
+      {
+        "name": "Bishopsgate",
+        "pts": [
+          [
+            -0.082,
+            51.513
+          ],
+          [
+            -0.079,
+            51.523
+          ]
+        ]
+      }
+    ],
+    "secondary_streets": [
+      {
+        "name": "Chisenhale Rd",
+        "pts": [
+          [
+            -0.036,
+            51.528
+          ],
+          [
+            -0.031,
+            51.531
+          ]
+        ]
+      },
+      {
+        "name": "Ramillies St",
+        "pts": [
+          [
+            -0.142,
+            51.514
+          ],
+          [
+            -0.139,
+            51.516
+          ]
+        ]
+      },
+      {
+        "name": "Silk St",
+        "pts": [
+          [
+            -0.096,
+            51.519
+          ],
+          [
+            -0.091,
+            51.521
+          ]
+        ]
+      },
+      {
+        "name": "Belvedere Rd",
+        "pts": [
+          [
+            -0.119,
+            51.505
+          ],
+          [
+            -0.114,
+            51.508
+          ]
+        ]
+      },
+      {
+        "name": "Camberwell New Rd",
+        "pts": [
+          [
+            -0.105,
+            51.478
+          ],
+          [
+            -0.082,
+            51.474
+          ]
+        ]
+      },
+      {
+        "name": "Clapham High St",
+        "pts": [
+          [
+            -0.145,
+            51.465
+          ],
+          [
+            -0.134,
+            51.461
+          ]
+        ]
+      },
+      {
+        "name": "Vauxhall Bridge Rd",
+        "pts": [
+          [
+            -0.136,
+            51.492
+          ],
+          [
+            -0.124,
+            51.485
+          ]
+        ]
+      },
+      {
+        "name": "Arkwright Rd",
+        "pts": [
+          [
+            -0.19,
+            51.547
+          ],
+          [
+            -0.183,
+            51.549
+          ]
+        ]
+      }
+    ]
+  },
+  "new york": {
+    "center": [
+      -73.985,
+      40.748
+    ],
+    "waterways": [
+      {
+        "name": "Hudson River",
+        "width": 26,
+        "pts": [
+          [
+            -74.022,
+            40.7
+          ],
+          [
+            -74.018,
+            40.72
+          ],
+          [
+            -74.012,
+            40.75
+          ],
+          [
+            -73.996,
+            40.78
+          ],
+          [
+            -73.972,
+            40.81
+          ]
+        ]
+      },
+      {
+        "name": "East River",
+        "width": 20,
+        "pts": [
+          [
+            -74.005,
+            40.705
+          ],
+          [
+            -73.98,
+            40.72
+          ],
+          [
+            -73.97,
+            40.74
+          ],
+          [
+            -73.955,
+            40.76
+          ],
+          [
+            -73.94,
+            40.785
+          ]
+        ]
+      }
+    ],
+    "bridges": [
+      {
+        "name": "Brooklyn Bridge",
+        "pts": [
+          [
+            -74.0,
+            40.71
+          ],
+          [
+            -73.99,
+            40.702
+          ]
+        ]
+      },
+      {
+        "name": "Manhattan Bridge",
+        "pts": [
+          [
+            -73.995,
+            40.714
+          ],
+          [
+            -73.985,
+            40.704
+          ]
+        ]
+      },
+      {
+        "name": "Williamsburg Bridge",
+        "pts": [
+          [
+            -73.98,
+            40.718
+          ],
+          [
+            -73.965,
+            40.712
+          ]
+        ]
+      },
+      {
+        "name": "Queensboro Bridge",
+        "pts": [
+          [
+            -73.96,
+            40.76
+          ],
+          [
+            -73.945,
+            40.755
+          ]
+        ]
+      }
+    ],
+    "parks": [
+      {
+        "name": "Central Park",
+        "pts": [
+          [
+            -73.974,
+            40.766
+          ],
+          [
+            -73.963,
+            40.766
+          ],
+          [
+            -73.95,
+            40.797
+          ],
+          [
+            -73.961,
+            40.797
+          ]
+        ]
+      },
+      {
+        "name": "Washington Square Park",
+        "pts": [
+          [
+            -74.0,
+            40.729
+          ],
+          [
+            -73.996,
+            40.729
+          ],
+          [
+            -73.996,
+            40.732
+          ],
+          [
+            -74.0,
+            40.732
+          ]
+        ]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "5th Avenue",
+        "pts": [
+          [
+            -73.997,
+            40.731
+          ],
+          [
+            -73.985,
+            40.75
+          ],
+          [
+            -73.963,
+            40.78
+          ],
+          [
+            -73.945,
+            40.805
+          ]
+        ]
+      },
+      {
+        "name": "Broadway",
+        "pts": [
+          [
+            -74.012,
+            40.707
+          ],
+          [
+            -74.003,
+            40.72
+          ],
+          [
+            -73.99,
+            40.738
+          ],
+          [
+            -73.986,
+            40.754
+          ],
+          [
+            -73.982,
+            40.768
+          ],
+          [
+            -73.975,
+            40.785
+          ]
+        ]
+      },
+      {
+        "name": "1st Avenue",
+        "pts": [
+          [
+            -73.988,
+            40.725
+          ],
+          [
+            -73.958,
+            40.775
+          ]
+        ]
+      },
+      {
+        "name": "2nd Avenue",
+        "pts": [
+          [
+            -73.991,
+            40.726
+          ],
+          [
+            -73.96,
+            40.777
+          ]
+        ]
+      },
+      {
+        "name": "3rd Avenue",
+        "pts": [
+          [
+            -73.993,
+            40.728
+          ],
+          [
+            -73.963,
+            40.779
+          ]
+        ]
+      },
+      {
+        "name": "Park Avenue",
+        "pts": [
+          [
+            -73.994,
+            40.732
+          ],
+          [
+            -73.966,
+            40.782
+          ]
+        ]
+      },
+      {
+        "name": "6th Ave (Avenue of the Americas)",
+        "pts": [
+          [
+            -74.004,
+            40.72
+          ],
+          [
+            -73.977,
+            40.764
+          ]
+        ]
+      },
+      {
+        "name": "7th Avenue",
+        "pts": [
+          [
+            -74.005,
+            40.735
+          ],
+          [
+            -73.981,
+            40.765
+          ]
+        ]
+      },
+      {
+        "name": "8th Ave / CPW",
+        "pts": [
+          [
+            -74.003,
+            40.738
+          ],
+          [
+            -73.984,
+            40.766
+          ],
+          [
+            -73.961,
+            40.797
+          ]
+        ]
+      },
+      {
+        "name": "10th Ave (Chelsea)",
+        "pts": [
+          [
+            -74.008,
+            40.744
+          ],
+          [
+            -73.995,
+            40.768
+          ]
+        ]
+      },
+      {
+        "name": "11th Ave",
+        "pts": [
+          [
+            -74.01,
+            40.745
+          ],
+          [
+            -73.998,
+            40.77
+          ]
+        ]
+      }
+    ],
+    "secondary_streets": [
+      {
+        "name": "Canal St",
+        "pts": [
+          [
+            -74.01,
+            40.723
+          ],
+          [
+            -73.99,
+            40.715
+          ]
+        ]
+      },
+      {
+        "name": "Houston St",
+        "pts": [
+          [
+            -74.008,
+            40.729
+          ],
+          [
+            -73.975,
+            40.721
+          ]
+        ]
+      },
+      {
+        "name": "14th St",
+        "pts": [
+          [
+            -74.008,
+            40.74
+          ],
+          [
+            -73.974,
+            40.731
+          ]
+        ]
+      },
+      {
+        "name": "23rd St (Chelsea Art Corridor)",
+        "pts": [
+          [
+            -74.007,
+            40.748
+          ],
+          [
+            -73.976,
+            40.738
+          ]
+        ]
+      },
+      {
+        "name": "34th St",
+        "pts": [
+          [
+            -74.002,
+            40.754
+          ],
+          [
+            -73.972,
+            40.745
+          ]
+        ]
+      },
+      {
+        "name": "42nd St",
+        "pts": [
+          [
+            -73.999,
+            40.76
+          ],
+          [
+            -73.969,
+            40.749
+          ]
+        ]
+      },
+      {
+        "name": "53rd St (MoMA)",
+        "pts": [
+          [
+            -73.99,
+            40.765
+          ],
+          [
+            -73.968,
+            40.757
+          ]
+        ]
+      },
+      {
+        "name": "57th St",
+        "pts": [
+          [
+            -73.992,
+            40.769
+          ],
+          [
+            -73.96,
+            40.758
+          ]
+        ]
+      },
+      {
+        "name": "82nd St (The Met)",
+        "pts": [
+          [
+            -73.975,
+            40.781
+          ],
+          [
+            -73.955,
+            40.774
+          ]
+        ]
+      },
+      {
+        "name": "88th St (Guggenheim)",
+        "pts": [
+          [
+            -73.972,
+            40.785
+          ],
+          [
+            -73.952,
+            40.778
+          ]
+        ]
+      },
+      {
+        "name": "Jackson Ave (LIC)",
+        "pts": [
+          [
+            -73.952,
+            40.744
+          ],
+          [
+            -73.935,
+            40.751
+          ]
+        ]
+      }
+    ]
+  },
+  "utrecht": {
+    "center": [
+      5.1214,
+      52.0907
+    ],
+    "waterways": [
+      {
+        "name": "Oudegracht (Old Canal)",
+        "width": 16,
+        "pts": [
+          [
+            5.1245,
+            52.083
+          ],
+          [
+            5.1228,
+            52.0865
+          ],
+          [
+            5.1205,
+            52.0905
+          ],
+          [
+            5.1165,
+            52.094
+          ],
+          [
+            5.114,
+            52.0965
+          ]
+        ]
+      },
+      {
+        "name": "Nieuwegracht",
+        "width": 12,
+        "pts": [
+          [
+            5.1265,
+            52.0845
+          ],
+          [
+            5.1255,
+            52.0885
+          ],
+          [
+            5.123,
+            52.092
+          ]
+        ]
+      },
+      {
+        "name": "Stadsbuitengracht / Singel",
+        "width": 18,
+        "pts": [
+          [
+            5.111,
+            52.09
+          ],
+          [
+            5.113,
+            52.096
+          ],
+          [
+            5.121,
+            52.098
+          ],
+          [
+            5.129,
+            52.094
+          ],
+          [
+            5.128,
+            52.084
+          ],
+          [
+            5.118,
+            52.082
+          ],
+          [
+            5.111,
+            52.09
+          ]
+        ]
+      }
+    ],
+    "bridges": [
+      {
+        "name": "Maartensbrug",
+        "pts": [
+          [
+            5.1205,
+            52.0908
+          ],
+          [
+            5.1215,
+            52.0908
+          ]
+        ]
+      },
+      {
+        "name": "Bezembrug",
+        "pts": [
+          [
+            5.119,
+            52.092
+          ],
+          [
+            5.12,
+            52.092
+          ]
+        ]
+      },
+      {
+        "name": "Weerdsluis",
+        "pts": [
+          [
+            5.1135,
+            52.0965
+          ],
+          [
+            5.1145,
+            52.0965
+          ]
+        ]
+      }
+    ],
+    "parks": [
+      {
+        "name": "Lepelenburg & Zocherpark",
+        "pts": [
+          [
+            5.128,
+            52.087
+          ],
+          [
+            5.131,
+            52.089
+          ],
+          [
+            5.129,
+            52.091
+          ],
+          [
+            5.127,
+            52.0885
+          ]
+        ]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "Lange Nieuwstraat (Casco Commons)",
+        "pts": [
+          [
+            5.124,
+            52.0845
+          ],
+          [
+            5.1225,
+            52.089
+          ]
+        ]
+      },
+      {
+        "name": "Pauwstraat (BAK Utrecht)",
+        "pts": [
+          [
+            5.116,
+            52.093
+          ],
+          [
+            5.1175,
+            52.0938
+          ]
+        ]
+      },
+      {
+        "name": "Steenweg & Vredenburg",
+        "pts": [
+          [
+            5.1135,
+            52.092
+          ],
+          [
+            5.118,
+            52.091
+          ]
+        ]
+      },
+      {
+        "name": "Nobelstraat & Biltstraat",
+        "pts": [
+          [
+            5.122,
+            52.0925
+          ],
+          [
+            5.132,
+            52.094
+          ]
+        ]
+      },
+      {
+        "name": "Voorstraat & Potterstraat",
+        "pts": [
+          [
+            5.117,
+            52.0935
+          ],
+          [
+            5.124,
+            52.0955
+          ]
+        ]
+      },
+      {
+        "name": "Catharijnesingel",
+        "pts": [
+          [
+            5.112,
+            52.088
+          ],
+          [
+            5.111,
+            52.095
+          ]
+        ]
+      },
+      {
+        "name": "Domplein (Historic Center)",
+        "pts": [
+          [
+            5.121,
+            52.09
+          ],
+          [
+            5.122,
+            52.0912
+          ]
+        ]
+      }
+    ],
+    "secondary_streets": [
+      {
+        "name": "Neude Square",
+        "pts": [
+          [
+            5.1175,
+            52.093
+          ],
+          [
+            5.1195,
+            52.0932
+          ]
+        ]
+      },
+      {
+        "name": "Korte Nieuwstraat",
+        "pts": [
+          [
+            5.122,
+            52.089
+          ],
+          [
+            5.1215,
+            52.0905
+          ]
+        ]
+      },
+      {
+        "name": "Mariaplaats",
+        "pts": [
+          [
+            5.116,
+            52.09
+          ],
+          [
+            5.1185,
+            52.09
+          ]
+        ]
+      },
+      {
+        "name": "Zadelstraat",
+        "pts": [
+          [
+            5.118,
+            52.0905
+          ],
+          [
+            5.121,
+            52.0905
+          ]
+        ]
+      },
+      {
+        "name": "Twijnstraat",
+        "pts": [
+          [
+            5.1235,
+            52.0825
+          ],
+          [
+            5.1255,
+            52.082
+          ]
+        ]
+      }
+    ]
+  },
+  "amsterdam": {
+    "center": [
+      4.9041,
+      52.3676
+    ],
+    "waterways": [
+      {
+        "name": "Prinsengracht",
+        "width": 14,
+        "pts": [
+          [
+            4.879,
+            52.382
+          ],
+          [
+            4.877,
+            52.366
+          ],
+          [
+            4.904,
+            52.361
+          ]
+        ]
+      },
+      {
+        "name": "Keizersgracht",
+        "width": 14,
+        "pts": [
+          [
+            4.882,
+            52.381
+          ],
+          [
+            4.88,
+            52.367
+          ],
+          [
+            4.901,
+            52.362
+          ]
+        ]
+      },
+      {
+        "name": "Herengracht",
+        "width": 14,
+        "pts": [
+          [
+            4.885,
+            52.38
+          ],
+          [
+            4.883,
+            52.368
+          ],
+          [
+            4.898,
+            52.363
+          ]
+        ]
+      },
+      {
+        "name": "Singel",
+        "width": 14,
+        "pts": [
+          [
+            4.888,
+            52.378
+          ],
+          [
+            4.887,
+            52.368
+          ],
+          [
+            4.895,
+            52.365
+          ]
+        ]
+      },
+      {
+        "name": "Amstel River",
+        "width": 22,
+        "pts": [
+          [
+            4.902,
+            52.355
+          ],
+          [
+            4.9,
+            52.364
+          ],
+          [
+            4.897,
+            52.368
+          ]
+        ]
+      },
+      {
+        "name": "IJ Waterfront",
+        "width": 28,
+        "pts": [
+          [
+            4.88,
+            52.385
+          ],
+          [
+            4.91,
+            52.38
+          ],
+          [
+            4.935,
+            52.375
+          ]
+        ]
+      }
+    ],
+    "parks": [
+      {
+        "name": "Museumplein (Stedelijk Museum)",
+        "pts": [
+          [
+            4.878,
+            52.356
+          ],
+          [
+            4.885,
+            52.356
+          ],
+          [
+            4.885,
+            52.36
+          ],
+          [
+            4.878,
+            52.36
+          ]
+        ]
+      },
+      {
+        "name": "Vondelpark",
+        "pts": [
+          [
+            4.858,
+            52.357
+          ],
+          [
+            4.877,
+            52.361
+          ],
+          [
+            4.875,
+            52.364
+          ],
+          [
+            4.856,
+            52.36
+          ]
+        ]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "Damrak & Rokin",
+        "pts": [
+          [
+            4.898,
+            52.378
+          ],
+          [
+            4.893,
+            52.368
+          ]
+        ]
+      },
+      {
+        "name": "Museumplein / Van Baerlestraat",
+        "pts": [
+          [
+            4.878,
+            52.355
+          ],
+          [
+            4.883,
+            52.362
+          ]
+        ]
+      },
+      {
+        "name": "Overtoom",
+        "pts": [
+          [
+            4.865,
+            52.36
+          ],
+          [
+            4.88,
+            52.362
+          ]
+        ]
+      },
+      {
+        "name": "Rozengracht",
+        "pts": [
+          [
+            4.875,
+            52.372
+          ],
+          [
+            4.886,
+            52.373
+          ]
+        ]
+      },
+      {
+        "name": "Vijzelstraat",
+        "pts": [
+          [
+            4.892,
+            52.365
+          ],
+          [
+            4.893,
+            52.359
+          ]
+        ]
+      },
+      {
+        "name": "Oranje-Vrijstaatkade (Framer Framed)",
+        "pts": [
+          [
+            4.925,
+            52.358
+          ],
+          [
+            4.938,
+            52.357
+          ]
+        ]
+      },
+      {
+        "name": "Schipluidenlaan (De Appel)",
+        "pts": [
+          [
+            4.84,
+            52.355
+          ],
+          [
+            4.855,
+            52.358
+          ]
+        ]
+      }
+    ],
+    "secondary_streets": [
+      {
+        "name": "Leidsestraat",
+        "pts": [
+          [
+            4.882,
+            52.364
+          ],
+          [
+            4.889,
+            52.367
+          ]
+        ]
+      },
+      {
+        "name": "Utrechtsestraat",
+        "pts": [
+          [
+            4.898,
+            52.365
+          ],
+          [
+            4.901,
+            52.359
+          ]
+        ]
+      },
+      {
+        "name": "Paulus Potterstraat",
+        "pts": [
+          [
+            4.879,
+            52.358
+          ],
+          [
+            4.884,
+            52.36
+          ]
+        ]
+      }
+    ]
+  },
+  "paris": {
+    "center": [
+      2.3522,
+      48.8566
+    ],
+    "waterways": [
+      {
+        "name": "River Seine",
+        "width": 24,
+        "pts": [
+          [
+            2.27,
+            48.845
+          ],
+          [
+            2.295,
+            48.86
+          ],
+          [
+            2.325,
+            48.861
+          ],
+          [
+            2.348,
+            48.854
+          ],
+          [
+            2.365,
+            48.848
+          ],
+          [
+            2.385,
+            48.835
+          ]
+        ]
+      }
+    ],
+    "parks": [
+      {
+        "name": "Jardin des Tuileries (Jeu de Paume)",
+        "pts": [
+          [
+            2.32,
+            48.864
+          ],
+          [
+            2.333,
+            48.861
+          ],
+          [
+            2.33,
+            48.865
+          ],
+          [
+            2.322,
+            48.866
+          ]
+        ]
+      },
+      {
+        "name": "Champ de Mars",
+        "pts": [
+          [
+            2.295,
+            48.855
+          ],
+          [
+            2.302,
+            48.852
+          ],
+          [
+            2.308,
+            48.856
+          ],
+          [
+            2.301,
+            48.859
+          ]
+        ]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "Champs-Élysées",
+        "pts": [
+          [
+            2.295,
+            48.873
+          ],
+          [
+            2.315,
+            48.867
+          ],
+          [
+            2.322,
+            48.865
+          ]
+        ]
+      },
+      {
+        "name": "Rue de Rivoli",
+        "pts": [
+          [
+            2.322,
+            48.865
+          ],
+          [
+            2.35,
+            48.858
+          ],
+          [
+            2.365,
+            48.854
+          ]
+        ]
+      },
+      {
+        "name": "Boulevard Saint-Germain",
+        "pts": [
+          [
+            2.32,
+            48.858
+          ],
+          [
+            2.338,
+            48.853
+          ],
+          [
+            2.355,
+            48.85
+          ]
+        ]
+      },
+      {
+        "name": "Boulevard Saint-Michel",
+        "pts": [
+          [
+            2.344,
+            48.853
+          ],
+          [
+            2.34,
+            48.843
+          ]
+        ]
+      },
+      {
+        "name": "Boulevard de Sébastopol (Pompidou)",
+        "pts": [
+          [
+            2.35,
+            48.855
+          ],
+          [
+            2.354,
+            48.87
+          ]
+        ]
+      },
+      {
+        "name": "Avenue du Président Wilson (Palais de Tokyo)",
+        "pts": [
+          [
+            2.294,
+            48.864
+          ],
+          [
+            2.3,
+            48.865
+          ]
+        ]
+      },
+      {
+        "name": "Boulevard Raspail (Fondation Cartier)",
+        "pts": [
+          [
+            2.328,
+            48.85
+          ],
+          [
+            2.333,
+            48.836
+          ]
+        ]
+      }
+    ],
+    "secondary_streets": [
+      {
+        "name": "Rue Rambuteau",
+        "pts": [
+          [
+            2.35,
+            48.861
+          ],
+          [
+            2.356,
+            48.862
+          ]
+        ]
+      },
+      {
+        "name": "Place de la Concorde",
+        "pts": [
+          [
+            2.32,
+            48.865
+          ],
+          [
+            2.323,
+            48.866
+          ]
+        ]
+      }
+    ]
+  },
+  "berlin": {
+    "center": [
+      13.405,
+      52.52
+    ],
+    "waterways": [
+      {
+        "name": "Spree River",
+        "width": 20,
+        "pts": [
+          [
+            13.35,
+            52.518
+          ],
+          [
+            13.375,
+            52.522
+          ],
+          [
+            13.395,
+            52.52
+          ],
+          [
+            13.405,
+            52.518
+          ],
+          [
+            13.435,
+            52.505
+          ]
+        ]
+      },
+      {
+        "name": "Landwehrkanal",
+        "width": 14,
+        "pts": [
+          [
+            13.34,
+            52.508
+          ],
+          [
+            13.38,
+            52.498
+          ],
+          [
+            13.415,
+            52.495
+          ]
+        ]
+      }
+    ],
+    "parks": [
+      {
+        "name": "Großer Tiergarten (HKW)",
+        "pts": [
+          [
+            13.35,
+            52.512
+          ],
+          [
+            13.375,
+            52.512
+          ],
+          [
+            13.37,
+            52.518
+          ],
+          [
+            13.355,
+            52.518
+          ]
+        ]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "Unter den Linden",
+        "pts": [
+          [
+            13.378,
+            52.516
+          ],
+          [
+            13.4,
+            52.517
+          ]
+        ]
+      },
+      {
+        "name": "Friedrichstraße",
+        "pts": [
+          [
+            13.388,
+            52.505
+          ],
+          [
+            13.388,
+            52.528
+          ]
+        ]
+      },
+      {
+        "name": "Auguststraße (KW Institute)",
+        "pts": [
+          [
+            13.39,
+            52.527
+          ],
+          [
+            13.402,
+            52.528
+          ]
+        ]
+      },
+      {
+        "name": "Invalidenstraße (Hamburger Bahnhof)",
+        "pts": [
+          [
+            13.365,
+            52.53
+          ],
+          [
+            13.385,
+            52.532
+          ]
+        ]
+      },
+      {
+        "name": "Niederkirchnerstraße (Gropius Bau)",
+        "pts": [
+          [
+            13.38,
+            52.506
+          ],
+          [
+            13.386,
+            52.507
+          ]
+        ]
+      },
+      {
+        "name": "Karl-Marx-Allee",
+        "pts": [
+          [
+            13.415,
+            52.52
+          ],
+          [
+            13.445,
+            52.518
+          ]
+        ]
+      },
+      {
+        "name": "Potsdamer Straße",
+        "pts": [
+          [
+            13.37,
+            52.505
+          ],
+          [
+            13.36,
+            52.495
+          ]
+        ]
+      }
+    ],
+    "secondary_streets": [
+      {
+        "name": "Oranienburger Straße",
+        "pts": [
+          [
+            13.388,
+            52.525
+          ],
+          [
+            13.398,
+            52.526
+          ]
+        ]
+      },
+      {
+        "name": "Alexanderplatz",
+        "pts": [
+          [
+            13.412,
+            52.521
+          ],
+          [
+            13.415,
+            52.523
+          ]
+        ]
+      }
+    ]
+  },
+  "rotterdam": {
+    "center": [
+      4.4777,
+      51.9244
+    ],
+    "waterways": [
+      {
+        "name": "Nieuwe Maas",
+        "width": 24,
+        "pts": [
+          [
+            4.45,
+            51.905
+          ],
+          [
+            4.48,
+            51.91
+          ],
+          [
+            4.51,
+            51.908
+          ]
+        ]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "Witte de Withstraat (Melly)",
+        "pts": [
+          [
+            4.473,
+            51.916
+          ],
+          [
+            4.482,
+            51.916
+          ]
+        ]
+      },
+      {
+        "name": "Coolsingel",
+        "pts": [
+          [
+            4.48,
+            51.923
+          ],
+          [
+            4.48,
+            51.918
+          ]
+        ]
+      },
+      {
+        "name": "Westersingel",
+        "pts": [
+          [
+            4.472,
+            51.922
+          ],
+          [
+            4.472,
+            51.914
+          ]
+        ]
+      },
+      {
+        "name": "Erasmusbrug",
+        "pts": [
+          [
+            4.483,
+            51.912
+          ],
+          [
+            4.487,
+            51.906
+          ]
+        ]
+      }
+    ],
+    "secondary_streets": [
+      {
+        "name": "Meent",
+        "pts": [
+          [
+            4.48,
+            51.923
+          ],
+          [
+            4.487,
+            51.922
+          ]
+        ]
+      }
+    ]
+  },
+  "eindhoven": {
+    "center": [
+      5.4697,
+      51.4416
+    ],
+    "waterways": [
+      {
+        "name": "Dommel River",
+        "width": 14,
+        "pts": [
+          [
+            5.485,
+            51.43
+          ],
+          [
+            5.48,
+            51.438
+          ],
+          [
+            5.482,
+            51.446
+          ]
+        ]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "Bilderdijklaan (Van Abbemuseum)",
+        "pts": [
+          [
+            5.48,
+            51.434
+          ],
+          [
+            5.488,
+            51.434
+          ]
+        ]
+      },
+      {
+        "name": "Stratumseind",
+        "pts": [
+          [
+            5.482,
+            51.437
+          ],
+          [
+            5.485,
+            51.434
+          ]
+        ]
+      },
+      {
+        "name": "Emmasingel & Vestdijk",
+        "pts": [
+          [
+            5.474,
+            51.438
+          ],
+          [
+            5.481,
+            51.438
+          ]
+        ]
+      }
+    ],
+    "secondary_streets": [
+      {
+        "name": "Wal",
+        "pts": [
+          [
+            5.478,
+            51.435
+          ],
+          [
+            5.482,
+            51.435
+          ]
+        ]
+      }
+    ]
+  }
+};
+
+    // Procedural Urban Street Grid Generator for Any City Worldwide
+    function generateProceduralCityStreets(cityName, centerLon, centerLat, cityInsts) {
+      let minLon = centerLon - 0.025, maxLon = centerLon + 0.025;
+      let minLat = centerLat - 0.020, maxLat = centerLat + 0.020;
+
+      if (cityInsts && cityInsts.length > 0) {
+        cityInsts.forEach(i => {
+          if (i.lon < minLon) minLon = i.lon - 0.015;
+          if (i.lon > maxLon) maxLon = i.lon + 0.015;
+          if (i.lat < minLat) minLat = i.lat - 0.015;
+          if (i.lat > maxLat) maxLat = i.lat + 0.015;
+        });
+      }
+
+      const major = [];
+      const secondary = [];
+      const dLon = maxLon - minLon;
+      const dLat = maxLat - minLat;
+
+      // Primary Arterial Avenues
+      major.push({
+        name: cityName + ' Cultural Grand Blvd',
+        pts: [[minLon, centerLat], [maxLon, centerLat]]
+      });
+      major.push({
+        name: cityName + ' Central Avenue',
+        pts: [[centerLon, minLat], [centerLon, maxLat]]
+      });
+
+      // Perpendicular Street Grid
+      const steps = 4;
+      for (let s = 1; s <= steps; s++) {
+        const f = s / (steps + 1);
+        const y = minLat + dLat * f;
+        if (Math.abs(y - centerLat) > 0.003) {
+          secondary.push({
+            name: 'Avenue ' + s,
+            pts: [[minLon, y], [maxLon, y]]
+          });
+        }
+      }
+      for (let s = 1; s <= steps; s++) {
+        const f = s / (steps + 1);
+        const x = minLon + dLon * f;
+        if (Math.abs(x - centerLon) > 0.003) {
+          secondary.push({
+            name: 'Street ' + s,
+            pts: [[x, minLat], [x, maxLat]]
+          });
+        }
+      }
+
+      // Connecting Streets for Each Mapped Institution
+      if (cityInsts && cityInsts.length > 0) {
+        cityInsts.forEach(inst => {
+          let streetName = 'Museum Corridor';
+          if (inst.address) {
+            const part = inst.address.split(',')[0].trim();
+            if (part && !part.toLowerCase().includes('central') && part.length < 32) {
+              streetName = part;
+            }
+          }
+          secondary.push({
+            name: streetName,
+            pts: [[inst.lon - 0.008, inst.lat], [inst.lon + 0.008, inst.lat]]
+          });
+          secondary.push({
+            name: '',
+            pts: [[inst.lon, inst.lat - 0.005], [inst.lon, inst.lat + 0.005]]
+          });
+        });
+      }
+
+      return {
+        center: [centerLon, centerLat],
+        waterways: [
+          {
+            name: cityName + ' Waterway',
+            width: 16,
+            pts: [
+              [minLon, centerLat + dLat * 0.25],
+              [centerLon, centerLat + dLat * 0.12],
+              [maxLon, centerLat - dLat * 0.18]
+            ]
+          }
+        ],
+        parks: [],
+        bridges: [],
+        major_streets: major,
+        secondary_streets: secondary
+      };
+    }
+
+    function getCityStreetData(cityName) {
+      if (!cityName) return null;
+      const key = cityName.toLowerCase().trim();
+      if (CITY_STREET_NETWORKS[key]) {
+        return CITY_STREET_NETWORKS[key];
+      }
+      const pCty = PRIORITY_CITIES.find(c => matchC(c.name, cityName));
+      let centerLon = pCty ? pCty.lon : 0;
+      let centerLat = pCty ? pCty.lat : 0;
+      const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
+      if (!pCty && cityInsts.length > 0) {
+        centerLon = cityInsts[0].lon;
+        centerLat = cityInsts[0].lat;
+      }
+      if (centerLon === 0 && centerLat === 0) return null;
+      return generateProceduralCityStreets(cityName, centerLon, centerLat, cityInsts);
+    }
+
+    function getCityTargetRadius(cityName) {
+      const c = (cityName || '').toLowerCase();
+      if (c.includes('utrecht') || c.includes('rotterdam') || c.includes('eindhoven') || c.includes('basel')) {
+        return baseRadius * 1300;
+      }
+      if (c.includes('new york') || c.includes('paris') || c.includes('berlin') || c.includes('amsterdam')) {
+        return baseRadius * 900;
+      }
+      return baseRadius * 800;
+    }
+
+
     // State Variables
     let filteredList = [...ALL_INSTITUTIONS];
     let selectedTierFilter = new Set(['A', 'B', 'U']);
@@ -9233,7 +11538,7 @@
     let targetRadius = baseRadius;
 
     function getMinRadius() { return baseRadius * 0.7; }
-    function getMaxRadius() { return baseRadius * 7.0; }
+    function getMaxRadius() { return baseRadius * 2500; }
 
     // Slower Cinematic Motion Physics
     let rotLon = -45;
@@ -9339,6 +11644,7 @@
 
     let cityBadgeHitboxes = [];
     let visibleDots = [];
+    let cityMuseumHitboxes = [];
 
     function render() {
       // Scale coordinates to high-DPI hardware buffer for crystal-clear Retina rendering
@@ -9352,7 +11658,7 @@
       }
 
       if (isFlying) {
-        flightProgress += 0.011;
+        flightProgress += 0.012;
         if (flightProgress >= 1) {
           flightProgress = 1;
           isFlying = false;
@@ -9365,172 +11671,480 @@
         }
       }
 
-      currentRadius += (targetRadius - currentRadius) * 0.08;
+      currentRadius += (targetRadius - currentRadius) * 0.085;
 
       const cx = width / 2;
       const cy = height / 2;
       const r = currentRadius;
 
-      // Dark space / ocean sphere
-      ctx.beginPath();
-      ctx.arc(cx, cy, r, 0, Math.PI * 2);
-      ctx.fillStyle = '#010204';
-      ctx.fill();
-      ctx.strokeStyle = '#223048';
-      ctx.lineWidth = 1.2;
-      ctx.stroke();
+      const isCityZoom = r > baseRadius * 2.8;
 
-      // Graticule
-      ctx.strokeStyle = '#0a101d';
-      ctx.lineWidth = 0.5;
-      for (let lat = -60; lat <= 60; lat += 30) {
-        ctx.beginPath();
-        let first = true;
-        for (let lon = -180; lon <= 180; lon += 6) {
-          const p = project(lon, lat, r, cx, cy);
-          if (p.front) {
-            if (first) { ctx.moveTo(p.x, p.y); first = false; }
-            else ctx.lineTo(p.x, p.y);
-          } else first = true;
-        }
-        ctx.stroke();
-      }
-
-      // Land Polygons
-      for (let i = 0; i < COUNTRY_POLYS.length; i++) {
-        const country = COUNTRY_POLYS[i];
-        const isCActive = selectedCountryFilter !== 'all' && matchC(country.n, selectedCountryFilter);
-        ctx.fillStyle = isCActive ? '#1d4ed8' : country.c;
-
-        for (let j = 0; j < country.r.length; j++) {
-          const ring = country.r[j];
-          if (!ring || ring.length < 3) continue;
-          ctx.beginPath();
-          let started = false;
-          for (let k = 0; k < ring.length; k++) {
-            const p = project(ring[k][0], ring[k][1], r, cx, cy);
-            if (p.front) {
-              if (!started) { ctx.moveTo(p.x, p.y); started = true; }
-              else ctx.lineTo(p.x, p.y);
-            }
-          }
-          if (started) {
-            ctx.closePath();
-            ctx.fill();
-            ctx.strokeStyle = isCActive ? '#60a5fa' : '#050c18';
-            ctx.lineWidth = isCActive ? 2.0 : 0.75;
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Country Centroid Names
-      if (r > baseRadius * 0.8) {
-        ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        COUNTRY_CENTROIDS.forEach(c => {
+      // Determine active focused city
+      let activeCity = selectedCityFilter !== 'all' ? selectedCityFilter : null;
+      if (!activeCity && isCityZoom) {
+        for (let i = 0; i < PRIORITY_CITIES.length; i++) {
+          const c = PRIORITY_CITIES[i];
           const pt = project(c.lon, c.lat, r, cx, cy);
-          if (pt.front && pt.depth > 0.15) {
-            const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
-            ctx.fillStyle = isSel ? '#60a5fa' : '#475569';
-            ctx.fillText(c.name, pt.x, pt.y);
+          if (pt.front && Math.hypot(pt.x - cx, pt.y - cy) < 320) {
+            activeCity = c.name;
+            break;
           }
-        });
+        }
       }
 
-      // Priority City Badges (with collision detection to prevent overlapping stacks)
-      cityBadgeHitboxes = [];
-      const drawnCityBoxes = [];
-      ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
-      
-      const sortedCities = [...PRIORITY_CITIES].sort((a, b) => {
-        const aSel = selectedCityFilter.toLowerCase() === a.name.toLowerCase();
-        const bSel = selectedCityFilter.toLowerCase() === b.name.toLowerCase();
-        return (bSel ? 1 : 0) - (aSel ? 1 : 0);
-      });
-
-      sortedCities.forEach(city => {
-        const pt = project(city.lon, city.lat, r, cx, cy);
-        if (pt.front && pt.depth > 0.12) {
-          const isSelected = selectedCityFilter.toLowerCase() === city.name.toLowerCase();
-          const txt = (isSelected ? '● ' : '■ ') + city.name;
-          const tw = ctx.measureText(txt).width;
-          const bw = tw + 12;
-          const bh = 22;
-          const bx = pt.x - bw / 2;
-          const by = pt.y - 26;
-
-          // Check if this badge would collide with an already drawn city badge
-          const collides = drawnCityBoxes.some(box => {
-            return !(bx + bw + 4 < box.x || bx > box.x + box.w + 4 || by + bh + 4 < box.y || by > box.y + box.h + 4);
-          });
-
-          if (!collides || isSelected) {
-            drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
-            cityBadgeHitboxes.push({
-              name: city.name,
-              x: bx, y: by, w: bw, h: bh,
-              lon: city.lon, lat: city.lat
-            });
-
-            ctx.fillStyle = isSelected ? '#1d4ed8' : '#070b14';
-            ctx.beginPath();
-            ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 4) : ctx.rect(bx, by, bw, bh);
-            ctx.fill();
-
-            ctx.strokeStyle = isSelected ? '#93c5fd' : '#222d42';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            ctx.fillStyle = isSelected ? '#ffffff' : '#cbd5e1';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
-
-            ctx.beginPath();
-            ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
-            ctx.fillStyle = isSelected ? '#93c5fd' : '#3b82f6';
-            ctx.fill();
+      // Update City Control Banner (Back to World View + Title Badge)
+      const cityBanner = document.getElementById('cityViewControlBanner');
+      const cityTitleEl = document.getElementById('cityViewTitleText');
+      if (cityBanner) {
+        if (isCityZoom && activeCity) {
+          cityBanner.classList.remove('hidden');
+          const cityMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, activeCity));
+          if (cityTitleEl) {
+            cityTitleEl.textContent = `${activeCity.toUpperCase()} · ${cityMatches.length} SANCTUARIES · STREET VIEW`;
           }
+        } else {
+          cityBanner.classList.add('hidden');
         }
-      });
+      }
 
-      // Render Institution Dots (true geographic coordinates, no artificial circles or spiral clusters)
-      visibleDots = [];
-      filteredList.forEach(inst => {
-        const pt = project(inst.lon, inst.lat, r, cx, cy);
-        if (pt.front && pt.depth > 0.05) {
-          visibleDots.push({
-            inst,
-            x: pt.x,
-            y: pt.y,
-            renderX: pt.x,
-            renderY: pt.y,
-            depth: pt.depth
-          });
-        }
-      });
+      if (!isCityZoom) {
+        // =======================================================
+        // 🌍 GLOBAL 3D SPHERE VIEW
+        // =======================================================
 
-      visibleDots.forEach(d => {
-        const isSel = selectedInstitution && selectedInstitution.name === d.inst.name;
-        const isHov = hoveredInstitution && hoveredInstitution.name === d.inst.name;
+        // Dark space / ocean sphere
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = '#010204';
+        ctx.fill();
+        ctx.strokeStyle = '#223048';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
 
-        if (isSel) {
+        // Graticule
+        ctx.strokeStyle = '#0a101d';
+        ctx.lineWidth = 0.5;
+        for (let lat = -60; lat <= 60; lat += 30) {
           ctx.beginPath();
-          ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
-          ctx.strokeStyle = '#ffffff';
-          ctx.lineWidth = 1.5;
+          let first = true;
+          for (let lon = -180; lon <= 180; lon += 6) {
+            const p = project(lon, lat, r, cx, cy);
+            if (p.front) {
+              if (first) { ctx.moveTo(p.x, p.y); first = false; }
+              else ctx.lineTo(p.x, p.y);
+            } else first = true;
+          }
           ctx.stroke();
         }
 
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, isSel ? 4 : isHov ? 3.5 : 2.2, 0, Math.PI * 2);
-        ctx.fillStyle = d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
-        ctx.fill();
-      });
+        // Land Polygons
+        for (let i = 0; i < COUNTRY_POLYS.length; i++) {
+          const country = COUNTRY_POLYS[i];
+          const isCActive = selectedCountryFilter !== 'all' && matchC(country.n, selectedCountryFilter);
+          ctx.fillStyle = isCActive ? '#1d4ed8' : country.c;
 
-      // Floating White Card
+          for (let j = 0; j < country.r.length; j++) {
+            const ring = country.r[j];
+            if (!ring || ring.length < 3) continue;
+            ctx.beginPath();
+            let started = false;
+            for (let k = 0; k < ring.length; k++) {
+              const p = project(ring[k][0], ring[k][1], r, cx, cy);
+              if (p.front) {
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else ctx.lineTo(p.x, p.y);
+              }
+            }
+            if (started) {
+              ctx.closePath();
+              ctx.fill();
+              ctx.strokeStyle = isCActive ? '#60a5fa' : '#050c18';
+              ctx.lineWidth = isCActive ? 2.0 : 0.75;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Country Centroid Names
+        if (r > baseRadius * 0.8) {
+          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          COUNTRY_CENTROIDS.forEach(c => {
+            const pt = project(c.lon, c.lat, r, cx, cy);
+            if (pt.front && pt.depth > 0.15) {
+              const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
+              ctx.fillStyle = isSel ? '#60a5fa' : '#475569';
+              ctx.fillText(c.name, pt.x, pt.y);
+            }
+          });
+        }
+
+        // Priority City Badges (with collision detection to prevent overlapping stacks)
+        cityBadgeHitboxes = [];
+        const drawnCityBoxes = [];
+        ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+        
+        const sortedCities = [...PRIORITY_CITIES].sort((a, b) => {
+          const aSel = selectedCityFilter.toLowerCase() === a.name.toLowerCase();
+          const bSel = selectedCityFilter.toLowerCase() === b.name.toLowerCase();
+          return (bSel ? 1 : 0) - (aSel ? 1 : 0);
+        });
+
+        sortedCities.forEach(city => {
+          const pt = project(city.lon, city.lat, r, cx, cy);
+          if (pt.front && pt.depth > 0.12) {
+            const isSelected = selectedCityFilter.toLowerCase() === city.name.toLowerCase();
+            const txt = (isSelected ? '● ' : '■ ') + city.name;
+            const tw = ctx.measureText(txt).width;
+            const bw = tw + 12;
+            const bh = 22;
+            const bx = pt.x - bw / 2;
+            const by = pt.y - 26;
+
+            const collides = drawnCityBoxes.some(box => {
+              return !(bx + bw + 4 < box.x || bx > box.x + box.w + 4 || by + bh + 4 < box.y || by > box.y + box.h + 4);
+            });
+
+            if (!collides || isSelected) {
+              drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
+              cityBadgeHitboxes.push({
+                name: city.name,
+                x: bx, y: by, w: bw, h: bh,
+                lon: city.lon, lat: city.lat
+              });
+
+              ctx.fillStyle = isSelected ? '#1d4ed8' : '#070b14';
+              ctx.beginPath();
+              ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 4) : ctx.rect(bx, by, bw, bh);
+              ctx.fill();
+
+              ctx.strokeStyle = isSelected ? '#93c5fd' : '#222d42';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+
+              ctx.fillStyle = isSelected ? '#ffffff' : '#cbd5e1';
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
+
+              ctx.beginPath();
+              ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
+              ctx.fillStyle = isSelected ? '#93c5fd' : '#3b82f6';
+              ctx.fill();
+            }
+          }
+        });
+
+        // Render Institution Dots on Global Sphere
+        visibleDots = [];
+        filteredList.forEach(inst => {
+          const pt = project(inst.lon, inst.lat, r, cx, cy);
+          if (pt.front && pt.depth > 0.05) {
+            visibleDots.push({
+              inst,
+              x: pt.x,
+              y: pt.y,
+              renderX: pt.x,
+              renderY: pt.y,
+              depth: pt.depth
+            });
+          }
+        });
+
+        visibleDots.forEach(d => {
+          const isSel = selectedInstitution && selectedInstitution.name === d.inst.name;
+          const isHov = hoveredInstitution && hoveredInstitution.name === d.inst.name;
+
+          if (isSel) {
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+          }
+
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, isSel ? 4 : isHov ? 3.5 : 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
+          ctx.fill();
+        });
+
+      } else {
+        // =======================================================
+        // 🗺️ DEEP ZOOM CITY VIEW: STREET NETWORK, WATERWAYS & MUSEUMS
+        // =======================================================
+        const streetAlpha = Math.min(1.0, Math.max(0, (r - baseRadius * 2.6) / (baseRadius * 1.4)));
+        const cityData = getCityStreetData(activeCity);
+
+        // 1. Dark Urban Fabric Base
+        ctx.fillStyle = '#0a0f18';
+        ctx.fillRect(0, 0, width, height);
+
+        // 2. Parks & Urban Commons
+        if (cityData && cityData.parks && cityData.parks.length > 0) {
+          ctx.save();
+          ctx.globalAlpha = streetAlpha * 0.9;
+          cityData.parks.forEach(park => {
+            ctx.beginPath();
+            let started = false;
+            park.pts.forEach(pt => {
+              const p = project(pt[0], pt[1], r, cx, cy);
+              if (p.front) {
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else ctx.lineTo(p.x, p.y);
+              }
+            });
+            if (started) {
+              ctx.closePath();
+              ctx.fillStyle = '#0c2317';
+              ctx.fill();
+              ctx.strokeStyle = '#164329';
+              ctx.lineWidth = 1.2;
+              ctx.stroke();
+            }
+          });
+          ctx.restore();
+        }
+
+        // 3. Waterways & Canals
+        if (cityData && cityData.waterways && cityData.waterways.length > 0) {
+          ctx.save();
+          ctx.globalAlpha = streetAlpha;
+          cityData.waterways.forEach(w => {
+            if (w.pts.length < 2) return;
+            ctx.beginPath();
+            let started = false;
+            const projPts = [];
+            w.pts.forEach(pt => {
+              const p = project(pt[0], pt[1], r, cx, cy);
+              if (p.front) {
+                projPts.push(p);
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else ctx.lineTo(p.x, p.y);
+              }
+            });
+            if (started) {
+              ctx.lineCap = 'round';
+              ctx.lineJoin = 'round';
+              const wWidth = Math.max(10, Math.min(38, (w.width || 18) * (r / (baseRadius * 500))));
+              
+              // River bed
+              ctx.strokeStyle = '#0e2644';
+              ctx.lineWidth = wWidth;
+              ctx.stroke();
+
+              // Water surface sheen
+              ctx.strokeStyle = '#1d3f66';
+              ctx.lineWidth = Math.max(2, wWidth * 0.28);
+              ctx.stroke();
+
+              // Waterway Label
+              if (w.name && projPts.length >= 2 && r > baseRadius * 3.5) {
+                const midIdx = Math.floor(projPts.length / 2);
+                const pMid = projPts[midIdx];
+                const pNext = projPts[midIdx + 1] || projPts[midIdx - 1];
+                const ang = Math.atan2(pNext.y - pMid.y, pNext.x - pMid.x);
+                ctx.save();
+                ctx.translate(pMid.x, pMid.y);
+                ctx.rotate(ang > Math.PI / 2 || ang < -Math.PI / 2 ? ang + Math.PI : ang);
+                ctx.font = '12px "PP Telegraf", "PP Telegraph", sans-serif';
+                ctx.fillStyle = '#60a5fa';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                ctx.fillText('~ ' + w.name + ' ~', 0, -wWidth / 2 - 3);
+                ctx.restore();
+              }
+            }
+          });
+          ctx.restore();
+        }
+
+        // 4. Bridges
+        if (cityData && cityData.bridges && cityData.bridges.length > 0) {
+          ctx.save();
+          ctx.globalAlpha = streetAlpha;
+          ctx.strokeStyle = '#64748b';
+          ctx.lineWidth = 3.5;
+          ctx.lineCap = 'butt';
+          cityData.bridges.forEach(b => {
+            const p1 = project(b.pts[0][0], b.pts[0][1], r, cx, cy);
+            const p2 = project(b.pts[1][0], b.pts[1][1], r, cx, cy);
+            if (p1.front && p2.front) {
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          });
+          ctx.restore();
+        }
+
+        // 5. Secondary Street Grid
+        if (cityData && cityData.secondary_streets && cityData.secondary_streets.length > 0) {
+          ctx.save();
+          ctx.globalAlpha = streetAlpha * 0.75;
+          ctx.strokeStyle = '#182438';
+          ctx.lineWidth = Math.max(1.2, Math.min(2.5, r / (baseRadius * 400)));
+          ctx.lineCap = 'round';
+          cityData.secondary_streets.forEach(s => {
+            if (s.pts.length < 2) return;
+            ctx.beginPath();
+            let started = false;
+            s.pts.forEach(pt => {
+              const p = project(pt[0], pt[1], r, cx, cy);
+              if (p.front) {
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else ctx.lineTo(p.x, p.y);
+              }
+            });
+            if (started) ctx.stroke();
+          });
+          ctx.restore();
+        }
+
+        // 6. Primary Avenues & Boulevards
+        if (cityData && cityData.major_streets && cityData.major_streets.length > 0) {
+          ctx.save();
+          ctx.globalAlpha = streetAlpha * 0.95;
+          ctx.strokeStyle = '#273854';
+          ctx.lineWidth = Math.max(2.2, Math.min(5.0, (r / (baseRadius * 300)) * 2));
+          ctx.lineCap = 'round';
+          cityData.major_streets.forEach(s => {
+            if (s.pts.length < 2) return;
+            ctx.beginPath();
+            let started = false;
+            const projPts = [];
+            s.pts.forEach(pt => {
+              const p = project(pt[0], pt[1], r, cx, cy);
+              if (p.front) {
+                projPts.push(p);
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else ctx.lineTo(p.x, p.y);
+              }
+            });
+            if (started) {
+              ctx.stroke();
+
+              // Avenue Name Label along Path
+              if (s.name && projPts.length >= 2 && r > baseRadius * 4.0) {
+                const midIdx = Math.floor(projPts.length / 2);
+                const pMid = projPts[midIdx];
+                const pNext = projPts[midIdx + 1] || projPts[midIdx - 1];
+                const ang = Math.atan2(pNext.y - pMid.y, pNext.x - pMid.x);
+                const len = Math.hypot(pNext.x - pMid.x, pNext.y - pMid.y);
+                if (len > 35) {
+                  ctx.save();
+                  ctx.translate(pMid.x, pMid.y);
+                  ctx.rotate(ang > Math.PI / 2 || ang < -Math.PI / 2 ? ang + Math.PI : ang);
+                  ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+                  ctx.fillStyle = '#64748b';
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'bottom';
+                  ctx.fillText(s.name, 0, -3);
+                  ctx.restore();
+                }
+              }
+            }
+          });
+          ctx.restore();
+        }
+
+        // 7. Render City Cultural Institutions (Exact coordinates, spaced-out callout badges & pins)
+        cityMuseumHitboxes = [];
+        const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, activeCity));
+
+        // Sort so hovered/selected renders above other badges
+        cityInsts.sort((a, b) => {
+          const aSel = selectedInstitution && selectedInstitution.name === a.name;
+          const bSel = selectedInstitution && selectedInstitution.name === b.name;
+          return (aSel ? 1 : 0) - (bSel ? 1 : 0);
+        });
+
+        cityInsts.forEach((inst, idx) => {
+          const pt = project(inst.lon, inst.lat, r, cx, cy);
+          if (!pt.front) return;
+
+          const isSel = selectedInstitution && selectedInstitution.name === inst.name;
+          const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
+          const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
+
+          // Precise Geographic Pinpoint Dot & Glow Rings
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, isSel ? 7 : isHov ? 5.5 : 4, 0, Math.PI * 2);
+          ctx.fillStyle = tierColor;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, isSel ? 11 : isHov ? 8.5 : 6, 0, Math.PI * 2);
+          ctx.strokeStyle = isSel ? '#ffffff' : tierColor;
+          ctx.lineWidth = isSel ? 2 : 1;
+          ctx.stroke();
+
+          // Museum Callout Badge Dimensions
+          ctx.font = '12px "PP Telegraf", "PP Telegraph", sans-serif';
+          const nameTxt = inst.name;
+          const nw = ctx.measureText(nameTxt).width;
+          const subTxt = inst.neighborhood || (inst.address ? inst.address.split(',')[0].trim() : 'Verified Clean Space');
+          ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+          const sw = ctx.measureText(subTxt).width;
+          const bw = Math.max(nw, sw) + 26;
+          const bh = 34;
+
+          // Stagger badges to avoid clumping
+          const angle = (idx % 4) * (Math.PI / 2) + Math.PI / 4;
+          const bx = pt.x + (angle > Math.PI / 2 && angle < 3 * Math.PI / 2 ? -bw - 12 : 14);
+          const by = pt.y - bh / 2 + (idx % 2 === 0 ? -12 : 12);
+
+          // Connecting Leader Line
+          ctx.beginPath();
+          ctx.moveTo(pt.x, pt.y);
+          ctx.lineTo(bx > pt.x ? bx : bx + bw, by + bh / 2);
+          ctx.strokeStyle = isSel ? '#60a5fa' : '#223048';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Callout Badge Box
+          ctx.fillStyle = isSel ? '#111e33' : isHov ? '#151d2c' : '#0a101b';
+          ctx.beginPath();
+          ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 6) : ctx.rect(bx, by, bw, bh);
+          ctx.fill();
+
+          ctx.strokeStyle = isSel ? '#60a5fa' : isHov ? '#3b82f6' : '#202e48';
+          ctx.lineWidth = isSel ? 1.5 : 1;
+          ctx.stroke();
+
+          // Museum Name
+          ctx.font = '12px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.fillStyle = isSel ? '#ffffff' : '#f1f5f9';
+          ctx.textAlign = 'left';
+          ctx.textBaseline = 'top';
+          ctx.fillText(nameTxt, bx + 8, by + 4);
+
+          // Subtitle (Address / Neighborhood) & Tier Dot
+          ctx.beginPath();
+          ctx.arc(bx + 11, by + 23, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = tierColor;
+          ctx.fill();
+
+          ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.fillStyle = '#94a3b8';
+          ctx.fillText(subTxt, bx + 18, by + 18);
+
+          // Save Hitbox for Canvas Click & Hover
+          cityMuseumHitboxes.push({
+            inst: inst,
+            x: bx,
+            y: by,
+            w: bw,
+            h: bh,
+            pinX: pt.x,
+            pinY: pt.y
+          });
+        });
+      }
+
+      // Floating White Card (Position update)
       const floatingCard = document.getElementById('floatingCard');
       if (selectedInstitution) {
         const pt = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
@@ -9539,11 +12153,13 @@
           floatingCard.style.left = `${pt.x}px`;
           floatingCard.style.top = `${pt.y}px`;
 
-          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
-          ctx.fillStyle = '#ffffff';
-          ctx.textAlign = 'left';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(selectedInstitution.name, pt.x + 12, pt.y);
+          if (!isCityZoom) {
+            ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(selectedInstitution.name, pt.x + 12, pt.y);
+          }
         } else {
           floatingCard.classList.add('hidden');
         }
@@ -9553,6 +12169,7 @@
 
       requestAnimationFrame(render);
     }
+    requestAnimationFrame(render);
     requestAnimationFrame(render);
 
     // Camera Navigation
@@ -12236,7 +14853,7 @@ FORMATTING & INTERACTION RULES:
       applyFilters();
 
       const cty = PRIORITY_CITIES.find(c => c.name.toLowerCase() === cityName.toLowerCase());
-      const targetZoom = zoom ? baseRadius * 4.0 : null;
+      const targetZoom = zoom ? getCityTargetRadius(cityName) : null;
 
       if (cty) {
         flyTo(cty.lon, cty.lat, targetZoom);
@@ -12246,7 +14863,8 @@ FORMATTING & INTERACTION RULES:
       }
 
       if (zoom) {
-        targetRadius = baseRadius * 4.0;
+        targetRadius = targetZoom || getCityTargetRadius(cityName);
+        isAutoSpinning = false;
       }
 
       // Select top institution in this city
@@ -12374,7 +14992,18 @@ FORMATTING & INTERACTION RULES:
       const cy = height / 2;
       const r = currentRadius;
 
-      // 1. Check priority city hitboxes with generous 12px hit padding
+      // 0. Check city museum hitboxes (when in city street view)
+      for (let i = 0; i < cityMuseumHitboxes.length; i++) {
+        const m = cityMuseumHitboxes[i];
+        const insideBadge = mx >= m.x && mx <= m.x + m.w && my >= m.y && my <= m.y + m.h;
+        const nearPin = Math.hypot(m.pinX - mx, m.pinY - my) < 16;
+        if (insideBadge || nearPin) {
+          selectInstitution(m.inst, false);
+          return;
+        }
+      }
+
+      // 1. Check priority city hitboxes with generous 14px hit padding
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {
         const b = cityBadgeHitboxes[i];
         if (mx >= b.x - 12 && mx <= b.x + b.w + 12 && my >= b.y - 10 && my <= b.y + b.h + 10) {
@@ -12443,6 +15072,18 @@ FORMATTING & INTERACTION RULES:
       const cx = width / 2;
       const cy = height / 2;
       const r = currentRadius;
+
+      // Check city museum hitboxes (when in city street view)
+      for (let i = 0; i < cityMuseumHitboxes.length; i++) {
+        const m = cityMuseumHitboxes[i];
+        const insideBadge = mx >= m.x && mx <= m.x + m.w && my >= m.y && my <= m.y + m.h;
+        const nearPin = Math.hypot(m.pinX - mx, m.pinY - my) < 16;
+        if (insideBadge || nearPin) {
+          canvas.style.cursor = 'pointer';
+          hoveredInstitution = m.inst;
+          return;
+        }
+      }
 
       // Check city badge
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {
@@ -12520,18 +15161,29 @@ FORMATTING & INTERACTION RULES:
       document.getElementById('detailDrawer').classList.add('hidden');
     });
 
-    // Wheel Zoom
+    // Smooth Logarithmic Wheel Zoom
     canvas.addEventListener('wheel', e => {
       e.preventDefault();
-      const factor = e.deltaY < 0 ? 1.07 : 0.93;
+      const factor = e.deltaY < 0 ? 1.15 : 0.87;
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius * factor));
+      if (targetRadius > baseRadius * 2.5) {
+        isAutoSpinning = false;
+      }
     }, { passive: false });
 
     document.getElementById('zoomInBtn')?.addEventListener('click', () => {
-      targetRadius = Math.min(getMaxRadius(), targetRadius * 1.32);
+      isAutoSpinning = false;
+      targetRadius = Math.min(getMaxRadius(), targetRadius * 1.5);
     });
     document.getElementById('zoomOutBtn')?.addEventListener('click', () => {
-      targetRadius = Math.max(getMinRadius(), targetRadius * 0.76);
+      targetRadius = Math.max(getMinRadius(), targetRadius * 0.67);
+      if (targetRadius < baseRadius * 2.2 && selectedCityFilter !== 'all') {
+        clearAllFilters();
+      }
+    });
+    document.getElementById('backToWorldBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearAllFilters();
     });
     document.getElementById('topResetBtn')?.addEventListener('click', () => {
       targetRadius = baseRadius;
@@ -12629,8 +15281,9 @@ FORMATTING & INTERACTION RULES:
         const dy = e.clientY - lastY;
         lastX = e.clientX;
         lastY = e.clientY;
-        rotLon = (rotLon - dx * 0.18) % 360;
-        rotLat = Math.max(-75, Math.min(75, rotLat + dy * 0.18));
+        const dragSens = (baseRadius / Math.max(baseRadius, currentRadius)) * 0.18;
+        rotLon = (rotLon - dx * dragSens) % 360;
+        rotLat = Math.max(-85, Math.min(85, rotLat + dy * dragSens));
       }
     });
 
