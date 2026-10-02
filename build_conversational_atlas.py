@@ -2813,7 +2813,7 @@ def build():
         ]
       }},
       {{
-        "name": "Boulevard Raspail (Fondation Cartier)",
+        "name": "Boulevard Raspail",
         "pts": [
           [
             2.328,
@@ -6255,16 +6255,16 @@ FORMATTING & INTERACTION RULES:
         if (q.includes('paris')) {{
           const ptok = ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo'));
           const pomp = ALL_INSTITUTIONS.find(i => i.name.includes('Pompidou'));
-          const cart = ALL_INSTITUTIONS.find(i => i.name.includes('Fondation Cartier'));
+          const beton = ALL_INSTITUTIONS.find(i => i.name.includes('Bétonsalon'));
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              In Paris, strong public funding helps many museums stay open to the public without relying on private corporate boards:
+              In Paris, public civic funding enables museums and research centers to operate with artistic autonomy:
             </p>
             <p class="text-slate-300">
               - ${{formatInstLink(ptok)}}: Europe's largest contemporary art space, known for bold, experimental shows and open until midnight.<br>
               - ${{formatInstLink(pomp)}}: Famous for its colorful inside-out architecture by Renzo Piano and Richard Rogers, with an incredible modern art collection.<br>
-              - ${{formatInstLink(cart)}}: Contemporary art commissions in a glass building designed by Jean Nouvel.
+              - ${{formatInstLink(beton)}}: Non-profit contemporary art and research center located in the 13th Arrondissement, free to the public.
             </p>
           `);
           filterByCity('Paris', true, false);
@@ -6423,7 +6423,7 @@ FORMATTING & INTERACTION RULES:
           }}
 
           const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
-          const prada = ALL_INSTITUTIONS.find(i => i.name.includes('Fondazione Prada'));
+          const kbase = ALL_INSTITUTIONS.find(i => i.name.includes('Kunsthalle Basel'));
           const camden = ALL_INSTITUTIONS.find(i => i.name.includes('Camden Art Centre'));
           const tpg = ALL_INSTITUTIONS.find(i => i.name.includes("Photographers' Gallery"));
           appendCuratorMessage(`
@@ -6431,7 +6431,7 @@ FORMATTING & INTERACTION RULES:
               Many of our mapped spaces have great cafés and bookshops:
             </p>
             <p class="text-slate-300">
-              ${{formatInstLink(louis)}} in Denmark has an organic café looking over the sea. In Milan, ${{formatInstLink(prada)}} has <em>Bar Luce</em>, designed by filmmaker Wes Anderson. In London, ${{formatInstLink(camden)}} has a garden café, and ${{formatInstLink(tpg)}} in Soho has an incredible photography bookshop.
+              ${{formatInstLink(louis)}} in Denmark has an organic café looking over the sea. In Basel, ${{formatInstLink(kbase)}} features a historic restaurant and garden terrace. In London, ${{formatInstLink(camden)}} has a garden café, and ${{formatInstLink(tpg)}} in Soho has an incredible photography bookshop.
             </p>
           `);
           return;
