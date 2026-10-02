@@ -92,15 +92,33 @@ def update_widget():
             sans: ['"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
             mono: ['"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
           }},
+          letterSpacing: {{
+            DEFAULT: '0.6pt',
+            tight: '0.6pt',
+            tighter: '0.6pt',
+            normal: '0.6pt',
+            wide: '0.6pt',
+            wider: '0.6pt',
+            widest: '0.6pt',
+          }},
+          lineHeight: {{
+            DEFAULT: '120%',
+            none: '120%',
+            tight: '120%',
+            snug: '120%',
+            normal: '120%',
+            relaxed: '120%',
+            loose: '120%',
+          }},
           fontSize: {{
-            'xs': ['14px', '1.45'],
-            'sm': ['14px', '1.45'],
-            'base': ['18px', '1.35'],
-            'md': ['18px', '1.35'],
-            'lg': ['18px', '1.35'],
-            'xl': ['24px', '1.25'],
-            '2xl': ['24px', '1.25'],
-            '3xl': ['24px', '1.25'],
+            'xs': ['14px', '120%'],
+            'sm': ['14px', '120%'],
+            'base': ['18px', '120%'],
+            'md': ['18px', '120%'],
+            'lg': ['18px', '120%'],
+            'xl': ['24px', '120%'],
+            '2xl': ['24px', '120%'],
+            '3xl': ['24px', '120%'],
           }}
         }}
       }}
@@ -110,24 +128,42 @@ def update_widget():
         /* ========================================================= */
     /* STRICT EXCLUSIVITY: ONLY PP TELEGRAF REGULAR FOR EVERYTHING */
     /* STRICT 3-TYPE-SIZE SYSTEM: 14px Floor/Body, 18px Mid, 24px Headline */
+    /* USER SPECIFICATION: LINE-HEIGHT 120%, NO BOLD FONTS, 0.6pt LETTER-SPACING */
     /* ========================================================= */
-    *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"] {{
+    *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {{
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
       font-synthesis: none !important;
+      letter-spacing: 0.6pt !important;
+      line-height: 120% !important;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }}
 
     *, *::before, *::after {{
       font-size: 14px;
+      letter-spacing: 0.6pt !important;
+      line-height: 120% !important;
     }}
     html, body {{
       font-size: 14px !important;
-      line-height: 1.45;
+      line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
     }}
     input, button, select, textarea, p, span, div, li, a {{
       font-size: 14px;
+      line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
+    }}
+
+    strong, b, h1, h2, h3, h4, h5, h6, .font-normal, .font-normal, .font-normal, [class*="font-normal"], [class*="font-normal"], [class*="font-normal"] {{
+      font-weight: 400 !important;
+    }}
+    strong, b {{
+      color: #ffffff;
+      font-weight: 400 !important;
     }}
 
     /* Size 1: 14px (Floor / Default) */
@@ -136,7 +172,9 @@ def update_widget():
     [class*="text-\[11"], [class*="text-\[12"], [class*="text-\[13"],
     [class*="text-\[14px\]"], .text-xs, .text-sm {{
       font-size: 14px !important;
-      line-height: 1.45 !important;
+      line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
     }}
 
     /* Size 2: 18px (Card Titles, Subheaders, Museum Names) */
@@ -144,7 +182,9 @@ def update_widget():
     [class*="text-\[15"], [class*="text-\[16"], [class*="text-\[17"], [class*="text-\[18"], [class*="text-\[19"], [class*="text-\[20"],
     [class*="text-\[18px\]"] {{
       font-size: 18px !important;
-      line-height: 1.35 !important;
+      line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
     }}
 
     /* Size 3: 24px (Main Brand Title, Modal Headlines, Large Dossier Titles) */
@@ -152,7 +192,9 @@ def update_widget():
     [class*="text-\[21"], [class*="text-\[22"], [class*="text-\[23"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[28"], [class*="text-\[30"], [class*="text-\[32"],
     [class*="text-\[24px\]"] {{
       font-size: 24px !important;
-      line-height: 1.25 !important;
+      line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
     }}
 
     @font-face {{
@@ -265,10 +307,10 @@ def update_widget():
       <div>
         <div class="flex items-center gap-2">
           <div class="w-2 h-2 rounded-full bg-white"></div>
-          <span class="text-[18px] font-bold tracking-wider text-white uppercase">CULTURE ATLAS</span>
+          <span class="text-[18px] font-normal tracking-wider text-white uppercase">CULTURE ATLAS</span>
           <span class="text-[14px] text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded-lg border border-emerald-900/60">203 SANCTUARIES</span>
         </div>
-        <p class="text-[14px] text-[#a1a1aa] font-normal leading-snug mt-0.5">
+        <p class="text-[14px] text-[#a1a1aa] font-normal leading-[120%] mt-0.5">
           Ethically funded cultural institutions across the world
         </p>
       </div>
@@ -282,7 +324,7 @@ def update_widget():
 
     <!-- Active Filter Banner (When city/country clicked) -->
     <div id="wMobileFilterBanner" class="hidden flex items-center justify-between bg-[#212121] border border-[#333] px-3 py-1 rounded-xl text-[14px] shrink-0">
-      <span id="wMobileFilterText" class="font-medium text-white truncate text-[14px]">📍 NEW YORK (11)</span>
+      <span id="wMobileFilterText" class="font-normal text-white truncate text-[14px]">📍 NEW YORK (11)</span>
       <button id="wMobileClearFilter" class="text-[14px] text-[#a1a1aa] hover:text-white">✕ Clear</button>
     </div>
 
@@ -294,7 +336,7 @@ def update_widget():
       <div id="wCard" class="hidden absolute z-30 pointer-events-auto bg-[#18181b]/95 backdrop-blur-md text-slate-100 rounded-2xl p-2.5 shadow-xl transition transform -translate-x-1/2 -translate-y-full mb-2 cursor-pointer border border-[#2e2e2e] max-w-[240px]">
         <div class="flex items-start justify-between gap-1">
           <div class="truncate pr-1">
-            <div class="text-[14px] font-medium text-white leading-tight truncate" id="wCardTitle"></div>
+            <div class="text-[14px] font-normal text-white leading-[120%] truncate" id="wCardTitle"></div>
             <div class="text-[14px] text-[#a1a1aa] mt-0.5 truncate" id="wCardMeta"></div>
           </div>
           <button id="wCardCloseBtn" class="text-[#a1a1aa] hover:text-white p-0.5 rounded text-[14px] leading-none shrink-0 cursor-pointer" title="Close">✕</button>
@@ -304,7 +346,7 @@ def update_widget():
              class="text-[#93c5fd] hover:text-white flex items-center gap-1 transition cursor-pointer" onclick="event.stopPropagation()">
             <span>🌐</span> <span id="wCardDom">website</span> <span>↗</span>
           </a>
-          <button id="wCardCuratorBtn" class="text-white hover:text-[#93c5fd] font-medium transition cursor-pointer" onclick="event.stopPropagation()">
+          <button id="wCardCuratorBtn" class="text-white hover:text-[#93c5fd] font-normal transition cursor-pointer" onclick="event.stopPropagation()">
             💬 Ask
           </button>
         </div>
@@ -327,7 +369,7 @@ def update_widget():
       <div id="wSheetHeader" class="px-3 py-1.5 border-b border-[#262626] bg-[#171717] flex items-center justify-between gap-1.5 shrink-0 select-none cursor-pointer">
         <div class="flex items-center gap-2 truncate">
           <div class="w-6 h-1 bg-[#3a3a3a] rounded-full shrink-0"></div>
-          <span class="text-[14px] font-medium text-white truncate">Curator Guide</span>
+          <span class="text-[14px] font-normal text-white truncate">Curator Guide</span>
           <span id="wSheetBadge" class="text-[14px] text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded-lg border border-emerald-900/60 hidden xs:inline">Half Sheet</span>
         </div>
         <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa] bg-[#212121] border border-[#2e2e2e] px-2 py-0.5 rounded-xl">
@@ -740,7 +782,7 @@ def update_widget():
       const webUrl = inst.website || '';
       let domain = 'website';
       try {{ domain = new URL(webUrl).hostname.replace(/^www\\./, ''); }} catch(e) {{}}
-      const nameLink = `<a href="#" class="w-inst-link font-medium text-white hover:text-blue-300 underline underline-offset-4 decoration-neutral-500 hover:decoration-blue-400 transition cursor-pointer" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>`;
+      const nameLink = `<a href="#" class="w-inst-link font-normal text-white hover:text-blue-300 underline underline-offset-4 decoration-neutral-500 hover:decoration-blue-400 transition cursor-pointer" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>`;
       const cityPart = opts.noCity ? '' : ` in <a href="#" class="w-city-link text-[#93c5fd] hover:text-[#bfdbfe] underline underline-offset-4 decoration-[#93c5fd]/30 hover:decoration-[#bfdbfe] transition cursor-pointer" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
       const webPart = webUrl ? ` (<a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" class="text-[#a1a1aa] hover:text-white transition text-[14px]">${{domain}} ↗</a>)` : '';
       return `${{nameLink}}${{cityPart}}${{webPart}}`;
@@ -754,7 +796,7 @@ def update_widget():
         <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] text-white shrink-0 mt-0.5 select-none" title="Curator">
           🏛️
         </div>
-        <div class="flex-1 min-w-0 text-[14px] text-[#ececec] leading-relaxed space-y-2 pt-0.5">
+        <div class="flex-1 min-w-0 text-[14px] text-[#ececec] leading-[120%] space-y-2 pt-0.5">
           ${{html}}
         </div>
       `;
@@ -794,7 +836,7 @@ def update_widget():
       const div = document.createElement('div');
       div.className = 'flex justify-end my-1';
       div.innerHTML = `
-        <div class="max-w-[85%] bg-[#2f2f2f] text-[#ececec] text-[14px] px-3.5 py-2 rounded-2xl shadow-sm leading-relaxed whitespace-pre-wrap select-text">
+        <div class="max-w-[85%] bg-[#2f2f2f] text-[#ececec] text-[14px] px-3.5 py-2 rounded-2xl shadow-sm leading-[120%] whitespace-pre-wrap select-text">
           ${{escapeHtml(text)}}
         </div>
       `;
@@ -1042,7 +1084,7 @@ def update_widget():
           const topSp = list.slice(0, 3).map(i => formatWInstLink(i, {{noCity: true}})).join(', ');
           appendWCurator(`
             <p class="text-slate-200">
-              Found <strong>${{list.length}}</strong> spaces in <a href="#" class="w-city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(cityName)}}">${{escapeHtml(cityName)}}</a> with clean funding:
+              Found <strong>${{list.length}}</strong> spaces in <a href="#" class="w-city-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(cityName)}}">${{escapeHtml(cityName)}}</a> with clean funding:
             </p>
             <p class="text-slate-300">
               Highlights include ${{topSp}}.
@@ -1257,7 +1299,7 @@ def update_widget():
             const topList = cityList.slice(0, 3).map(i => formatWInstLink(i, {{noCity: true}})).join(', ');
             appendWCurator(`
               <p class="text-slate-200">
-                Now exploring <a href="#" class="w-city-link font-semibold text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(b.name)}}">${{escapeHtml(b.name)}}</a>, with <strong>${{cityList.length}}</strong> spaces with clean funding: ${{topList}}.
+                Now exploring <a href="#" class="w-city-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(b.name)}}">${{escapeHtml(b.name)}}</a>, with <strong>${{cityList.length}}</strong> spaces with clean funding: ${{topList}}.
               </p>
             `);
             return;
