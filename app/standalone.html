@@ -269,22 +269,24 @@
 
     /* Unified Single-Canvas Architecture (Globe + Work Chat) */
     #globeViewport {
-      height: 250px;
-      min-height: 140px;
-      max-height: 550px;
+      height: 50%;
+      min-height: 0;
+      flex: 1 1 50%;
       display: flex;
       background: #171717;
       border-bottom: 1px solid #262626;
-      transition: height 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: height 0.28s cubic-bezier(0.16, 1, 0.3, 1), flex 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
     #workViewContainer {
       display: flex;
-      flex: 1 1 0%;
+      height: 50%;
+      min-height: 0;
+      flex: 1 1 50%;
       flex-direction: column;
       align-items: center;
       background: #171717;
       overflow-y: auto;
-      padding-top: 52px;
+      padding-top: 47px;
       transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
     #curatorMessages:empty {
@@ -330,7 +332,7 @@
       <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
       <div class="flex items-center gap-2">
         <span class="text-[18px] font-normal tracking-wider text-white uppercase">CULTURE ATLAS</span>
-        <span class="text-[14px] text-emerald-400 bg-[#0a2016] px-2 py-0.5 rounded-full border border-emerald-900/60 hidden sm:inline font-mono">203 SPACES</span>
+        <span id="topSpacesBadge" class="text-[14px] text-emerald-400 bg-[#0a2016] px-2 py-0.5 rounded-full border border-emerald-900/60 hidden sm:inline font-mono">406 SPACES</span>
       </div>
     </div>
 
@@ -368,7 +370,7 @@
   <div id="mainAppContainer" class="relative w-full flex-1 flex flex-col bg-[#171717] overflow-hidden">
 
     <!-- 🌍 3D GLOBE VIEWPORT -->
-    <div id="globeViewport" class="relative w-full h-[250px] flex items-center justify-center bg-[#171717] overflow-hidden shrink-0 select-none">
+    <div id="globeViewport" class="relative w-full h-1/2 flex-1 min-h-0 flex items-center justify-center bg-[#171717] overflow-hidden select-none">
       
       <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
 
@@ -452,11 +454,16 @@
 
     </div>
 
+    <!-- RESIZABLE SPLITTER (Allows user to adjust 50/50 proportion smoothly, double-click resets to 50%) -->
+    <div id="globeSplitter" class="relative w-full h-[5px] bg-[#262626] hover:bg-[#3b82f6]/70 active:bg-[#3b82f6] cursor-row-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split height · Double-click to reset to 50%">
+      <div class="w-10 h-[2px] rounded-full bg-[#52525b] group-hover:bg-[#93c5fd] transition"></div>
+    </div>
+
     <!-- ========================================================= -->
     <!-- ========================================================= -->
     <!-- 💼 UNIFIED WORK & CHAT CANVAS (Single Combined Experience) -->
     <!-- ========================================================= -->
-    <div id="workViewContainer" class="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pb-12 w-full pt-[52px]">
+    <div id="workViewContainer" class="relative w-full h-1/2 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pb-12 w-full pt-[47px]">
       <div class="w-full max-w-3xl flex flex-col items-center">
         
 
@@ -23167,9 +23174,11 @@ FORMATTING & INTERACTION RULES:
       isGlobeExpanded = false;
 
       if (isGlobeMinimized) {
-        g.style.height = '120px';
+        g.style.height = '140px';
+        g.style.flex = '0 0 140px';
       } else {
-        g.style.height = '250px';
+        g.style.height = '50%';
+        g.style.flex = '1 1 50%';
       }
       setTimeout(resizeCanvas, 40);
     }
@@ -23181,9 +23190,11 @@ FORMATTING & INTERACTION RULES:
       isGlobeMinimized = false;
 
       if (isGlobeExpanded) {
-        g.style.height = '420px';
+        g.style.height = '75%';
+        g.style.flex = '1 1 75%';
       } else {
-        g.style.height = '250px';
+        g.style.height = '50%';
+        g.style.flex = '1 1 50%';
       }
       setTimeout(resizeCanvas, 40);
     }
@@ -23192,6 +23203,74 @@ FORMATTING & INTERACTION RULES:
     document.getElementById('topViewMinimizeBtn')?.addEventListener('click', handleViewMinimize);
     document.getElementById('viewExpandBtn')?.addEventListener('click', handleViewExpand);
     document.getElementById('topViewExpandBtn')?.addEventListener('click', handleViewExpand);
+
+    // Interactive Splitter Drag between Globe and Work Chat
+    const splitter = document.getElementById('globeSplitter');
+    const globeVp = document.getElementById('globeViewport');
+    const mainApp = document.getElementById('mainAppContainer');
+
+    if (splitter && globeVp && mainApp) {
+      let isDraggingSplitter = false;
+
+      splitter.addEventListener('mousedown', (e) => {
+        isDraggingSplitter = true;
+        document.body.style.cursor = 'row-resize';
+        document.body.style.userSelect = 'none';
+        e.preventDefault();
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDraggingSplitter) return;
+        const rect = mainApp.getBoundingClientRect();
+        const offsetY = e.clientY - rect.top;
+        const minH = 120;
+        const maxH = rect.height - 180;
+        const clamped = Math.max(minH, Math.min(maxH, offsetY));
+        globeVp.style.height = clamped + 'px';
+        globeVp.style.flex = 'none';
+        resizeCanvas();
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDraggingSplitter) {
+          isDraggingSplitter = false;
+          document.body.style.cursor = '';
+          document.body.style.userSelect = '';
+          resizeCanvas();
+        }
+      });
+
+      // Double-click resets to exact 50% proportional split
+      splitter.addEventListener('dblclick', () => {
+        globeVp.style.height = '50%';
+        globeVp.style.flex = '1 1 50%';
+        resizeCanvas();
+      });
+
+      // Touch support for mobile / tablets
+      splitter.addEventListener('touchstart', (e) => {
+        isDraggingSplitter = true;
+      }, { passive: true });
+
+      window.addEventListener('touchmove', (e) => {
+        if (!isDraggingSplitter || !e.touches || !e.touches[0]) return;
+        const rect = mainApp.getBoundingClientRect();
+        const offsetY = e.touches[0].clientY - rect.top;
+        const minH = 120;
+        const maxH = rect.height - 180;
+        const clamped = Math.max(minH, Math.min(maxH, offsetY));
+        globeVp.style.height = clamped + 'px';
+        globeVp.style.flex = 'none';
+        resizeCanvas();
+      }, { passive: true });
+
+      window.addEventListener('touchend', () => {
+        if (isDraggingSplitter) {
+          isDraggingSplitter = false;
+          resizeCanvas();
+        }
+      });
+    }
 
     function updateFilterChipsUI() {
       document.querySelectorAll('.inquiry-chip').forEach(btn => {
