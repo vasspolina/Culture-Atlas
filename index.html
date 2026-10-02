@@ -288,17 +288,75 @@
       display: none !important;
     }
 
-    .app-mode-chat #globeViewport {
-      height: 38vh !important;
-      border-bottom: 1px solid #262626 !important;
-      background: #171717 !important;
-    }
+    /* Chat Mode Sheet States: Half Sheet (default), Closed, and Full */
     .app-mode-chat #workViewContainer {
       display: none !important;
     }
-    .app-mode-chat #bottomChatSection {
+
+    .app-mode-chat.sheet-half #globeViewport {
+      height: 38vh !important;
+      min-height: 180px !important;
+      display: flex !important;
+      border-bottom: 1px solid #262626 !important;
+      background: #171717 !important;
+    }
+    .app-mode-chat.sheet-half #bottomChatSection {
       display: flex !important;
       height: calc(100% - 38vh) !important;
+      min-height: 220px !important;
+    }
+    .app-mode-chat.sheet-half #sheetOpenControls {
+      display: flex !important;
+    }
+    .app-mode-chat.sheet-half #sheetClosedBar {
+      display: none !important;
+    }
+    .app-mode-chat.sheet-half #curatorExperienceContainer,
+    .app-mode-chat.sheet-half #catalogExperienceContainer {
+      display: flex;
+    }
+
+    /* Closed state: Globe expands to full height, bottom sheet collapses to slim 44px bar */
+    .app-mode-chat.sheet-closed #globeViewport {
+      height: calc(100% - 44px) !important;
+      min-height: 260px !important;
+      display: flex !important;
+      border-bottom: 1px solid #262626 !important;
+      background: #171717 !important;
+    }
+    .app-mode-chat.sheet-closed #bottomChatSection {
+      display: flex !important;
+      height: 44px !important;
+      min-height: 44px !important;
+      overflow: hidden !important;
+    }
+    .app-mode-chat.sheet-closed #sheetOpenControls {
+      display: none !important;
+    }
+    .app-mode-chat.sheet-closed #sheetClosedBar {
+      display: flex !important;
+    }
+    .app-mode-chat.sheet-closed #curatorExperienceContainer,
+    .app-mode-chat.sheet-closed #catalogExperienceContainer {
+      display: none !important;
+    }
+
+    /* Full state: Chat expands to full view, globe minimizes to 0 */
+    .app-mode-chat.sheet-full #globeViewport {
+      height: 0px !important;
+      min-height: 0px !important;
+      display: none !important;
+    }
+    .app-mode-chat.sheet-full #bottomChatSection {
+      display: flex !important;
+      height: 100% !important;
+      flex: 1 1 0% !important;
+    }
+    .app-mode-chat.sheet-full #sheetOpenControls {
+      display: flex !important;
+    }
+    .app-mode-chat.sheet-full #sheetClosedBar {
+      display: none !important;
     }
 
     .app-mode-globe #globeViewport {
@@ -389,7 +447,7 @@
   <!-- ========================================================= -->
   <!-- MAIN APP CONTAINER (Hosts Globe, Work Home, and Chat Stream) -->
   <!-- ========================================================= -->
-  <div id="mainAppContainer" class="app-mode-work relative w-full flex-1 flex flex-col bg-[#171717] overflow-hidden">
+  <div id="mainAppContainer" class="app-mode-work sheet-half relative w-full flex-1 flex flex-col bg-[#171717] overflow-hidden">
 
     <!-- 🌍 3D GLOBE VIEWPORT -->
     <div id="globeViewport" class="relative w-full h-[250px] flex items-center justify-center bg-[#171717] overflow-hidden shrink-0 select-none">
@@ -659,9 +717,10 @@
               <span id="sheetExpandLabel" class="hidden sm:inline text-[14px]">Full</span>
             </button>
 
-            <!-- Close Sheet Button -->
-            <button id="sheetCloseBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white px-2.5 py-1 rounded-lg text-[14px] transition flex items-center gap-1" title="Close Chat Sheet">
-              <span>▼</span>
+            <!-- Close Half Sheet Button -->
+            <button id="sheetCloseBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white px-2.5 py-1 rounded-lg text-[14px] transition flex items-center gap-1.5 cursor-pointer" title="Close Half Sheet">
+              <span>✕</span>
+              <span class="text-[14px]">Close</span>
             </button>
           </div>
 
@@ -669,16 +728,20 @@
 
         <!-- 2. Closed State Bar (Shown when Closed) -->
         <div id="sheetClosedBar" class="hidden flex items-center justify-between gap-2 cursor-pointer py-1">
-          <div class="flex items-center gap-2 truncate">
+          <div class="flex items-center gap-2 truncate" id="sheetReopenTitle">
             <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
             <span class="text-[14px] font-normal text-white truncate">Culture Atlas Curator</span>
-            <span class="text-[14px] text-[#71717a] hidden sm:inline truncate">· 203 Sanctuaries Mapped</span>
+            <span class="text-[14px] text-[#71717a] hidden sm:inline truncate">· Half Sheet Closed</span>
           </div>
 
           <div class="flex items-center gap-2 shrink-0">
-            <button id="sheetOpenBtn" class="px-3 py-1 bg-[#2f2f2f] hover:bg-[#383838] border border-[#3e3e3e] text-white text-[14px] font-normal rounded-xl transition shadow-sm flex items-center gap-1.5">
+            <button id="sheetOpenBtn" class="px-3 py-1 bg-[#2f2f2f] hover:bg-[#383838] border border-[#3e3e3e] text-white text-[14px] font-normal rounded-xl transition shadow-sm flex items-center gap-1.5 cursor-pointer">
               <span>▲</span>
               <span>Open Chat</span>
+            </button>
+            <button id="sheetBackToWorkBtn" class="px-2.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white text-[14px] font-normal rounded-xl transition shadow-sm flex items-center gap-1 cursor-pointer" title="Return to Work view">
+              <span>💼</span>
+              <span class="hidden xs:inline">Work view</span>
             </button>
           </div>
         </div>
@@ -11098,6 +11161,10 @@ FORMATTING & INTERACTION RULES:
         if (topNavChatBtn) {
           topNavChatBtn.className = 'px-5 py-1 rounded-full transition text-[#8e8e8e] hover:text-white font-normal text-[14px] cursor-pointer';
         }
+        if (globeViewport) {
+          globeViewport.style.height = '250px';
+          globeViewport.style.display = 'flex';
+        }
       } else {
         mainApp.classList.remove('app-mode-work', 'app-mode-globe');
         mainApp.classList.add('app-mode-chat');
@@ -11108,6 +11175,7 @@ FORMATTING & INTERACTION RULES:
         if (topNavWorkBtn) {
           topNavWorkBtn.className = 'px-5 py-1 rounded-full transition text-[#8e8e8e] hover:text-white font-normal text-[14px] cursor-pointer';
         }
+        setChatSheetState(currentSheetState === 'closed' ? 'half' : currentSheetState);
       }
 
       setTimeout(resizeCanvas, 40);
@@ -11508,18 +11576,54 @@ FORMATTING & INTERACTION RULES:
       mainAppContainer.classList.remove('sheet-closed', 'sheet-half', 'sheet-full');
       mainAppContainer.classList.add(`sheet-${state}`);
 
-      if (state === 'full') {
+      const openControls = document.getElementById('sheetOpenControls');
+      const closedBar = document.getElementById('sheetClosedBar');
+      const chatSection = document.getElementById('bottomChatSection');
+      const globeViewport = document.getElementById('globeViewport');
+
+      if (state === 'closed') {
+        if (openControls) openControls.style.display = 'none';
+        if (closedBar) closedBar.style.display = 'flex';
+        if (chatSection) {
+          chatSection.style.height = '44px';
+          chatSection.style.minHeight = '44px';
+        }
+        if (globeViewport) {
+          globeViewport.style.height = 'calc(100% - 44px)';
+          globeViewport.style.display = 'flex';
+        }
+      } else if (state === 'full') {
+        if (openControls) openControls.style.display = 'flex';
+        if (closedBar) closedBar.style.display = 'none';
+        if (chatSection) {
+          chatSection.style.height = '100%';
+          chatSection.style.minHeight = '100%';
+        }
+        if (globeViewport) {
+          globeViewport.style.height = '0px';
+          globeViewport.style.display = 'none';
+        }
         if (sheetExpandIcon) sheetExpandIcon.textContent = '⤡';
         if (sheetExpandLabel) sheetExpandLabel.textContent = 'Half';
-      } else {
+      } else { // 'half'
+        if (openControls) openControls.style.display = 'flex';
+        if (closedBar) closedBar.style.display = 'none';
+        if (chatSection) {
+          chatSection.style.height = 'calc(100% - 38vh)';
+          chatSection.style.minHeight = '220px';
+        }
+        if (globeViewport) {
+          globeViewport.style.height = '38vh';
+          globeViewport.style.display = 'flex';
+        }
         if (sheetExpandIcon) sheetExpandIcon.textContent = '⤢';
         if (sheetExpandLabel) sheetExpandLabel.textContent = 'Full';
       }
 
       // Smoothly trigger canvas resize during and after CSS transition
-      setTimeout(resizeCanvas, 50);
-      setTimeout(resizeCanvas, 160);
-      setTimeout(resizeCanvas, 340);
+      setTimeout(resizeCanvas, 40);
+      setTimeout(resizeCanvas, 140);
+      setTimeout(resizeCanvas, 320);
     }
 
     sheetCloseBtn?.addEventListener('click', (e) => {
@@ -11532,8 +11636,14 @@ FORMATTING & INTERACTION RULES:
       setChatSheetState('half');
     });
 
-    sheetClosedBar?.addEventListener('click', () => {
+    sheetClosedBar?.addEventListener('click', (e) => {
+      if (e.target.closest('#sheetBackToWorkBtn')) return;
       setChatSheetState('half');
+    });
+
+    document.getElementById('sheetBackToWorkBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setViewMode('work');
     });
 
     sheetDragHandle?.addEventListener('click', (e) => {

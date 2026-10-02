@@ -376,6 +376,10 @@ def update_widget():
           <button id="wMinimizeBtn" class="hover:text-white transition cursor-pointer">Minimize</button>
           <span class="text-[#555]">·</span>
           <button id="wExpandBtn" class="hover:text-white transition cursor-pointer">Expand</button>
+          <span class="text-[#555]">·</span>
+          <button id="wSheetToggleBtn" class="hover:text-white transition cursor-pointer flex items-center gap-0.5 text-slate-300">
+            <span>✕</span> <span>Close</span>
+          </button>
         </div>
       </div>
 
@@ -1218,6 +1222,10 @@ def update_widget():
     document.getElementById('wExpandBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
       setWSheet(true);
+    }});
+    document.getElementById('wSheetToggleBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      setWSheet(!wSheetOpen);
     }});
 
     function setWSheet(open) {{
