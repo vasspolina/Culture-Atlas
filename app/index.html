@@ -4659,6 +4659,10 @@
         return;
       }
       selectedInstitution = inst;
+      if (typeof curatorContext !== 'undefined' && inst) {
+        curatorContext.lastInst = inst;
+        if (inst.city) curatorContext.lastCity = inst.city;
+      }
       document.getElementById('floatingCardTitle').textContent = inst.name;
       document.getElementById('floatingCardMeta').textContent = `${inst.location} · ${inst.tier === 'A' ? 'Verified' : 'One Name'}`;
       
@@ -5353,6 +5357,14 @@ FORMATTING & INTERACTION RULES:
     const curatorMessages = document.getElementById('curatorMessages');
     const curatorTyping = document.getElementById('curatorTyping');
 
+    const curatorContext = {
+      lastInst: null,
+      lastCity: null,
+      lastTopic: null,
+      activeAudio: null,
+      history: []
+    };
+
     function initCuratorConversation() {
       if (!curatorMessages) return;
       curatorMessages.innerHTML = '';
@@ -5391,7 +5403,7 @@ FORMATTING & INTERACTION RULES:
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.add('hidden');
       const div = document.createElement('div');
-      div.className = 'flex items-start gap-3 my-2 select-text';
+      div.className = 'curator-message-wrap flex items-start gap-3 my-2.5 select-text';
 
       let followUpHtml = '';
       if (followUps && followUps.length > 0) {
@@ -5411,6 +5423,12 @@ FORMATTING & INTERACTION RULES:
           🏛️
         </div>
         <div class="flex-1 text-[#ececec] text-[14px] leading-relaxed space-y-2">
+          <div class="flex items-center justify-between gap-2 mb-0.5 select-none">
+            <span class="text-[12px] font-mono text-[#71717a]">Culture Atlas Curator</span>
+            <button class="curator-speak-btn px-2 py-0.5 rounded-lg bg-[#222] hover:bg-[#333] border border-[#383838] text-[12px] text-[#a1a1aa] hover:text-white transition flex items-center gap-1 cursor-pointer" title="Listen to audio briefing">
+              <span>🔊</span> <span class="speak-label">Listen</span>
+            </button>
+          </div>
           ${htmlContent}
           ${followUpHtml}
         </div>
@@ -5611,6 +5629,13 @@ FORMATTING & INTERACTION RULES:
               <p class="text-slate-300">
                 All venues have zero fossil fuel or defense corporate underwriting, and all offer free public admission.
               </p>
+            `);
+            appendCuratorMessage(`
+              <div class="mt-2 flex items-center gap-2">
+                <button class="copy-itinerary-btn px-2.5 py-1 rounded bg-[#242424] hover:bg-[#303030] text-[12px] font-mono text-[#93c5fd] hover:text-white border border-[#383838] transition cursor-pointer">
+                  📋 Copy Itinerary
+                </button>
+              </div>
             `);
             filterByCity('London', true, false);
             return;
@@ -5856,6 +5881,226 @@ FORMATTING & INTERACTION RULES:
               3. <strong>The Critical Researcher & Assembly Facilitator:</strong> Today, curating is understood not as choosing paintings for white walls, but as creating public assemblies and research platforms (exemplified by Maria Hlavajova at BAK Utrecht, Charles Esche at Van Abbemuseum, and Okwui Enwezor at Documenta 11). Curators mobilize culture to address climate justice, colonial restitution, and political imagination.
             </p>
           `);
+          return;
+        }
+
+        // =========================================================================
+        // 🧠 CONTEXTUAL MULTI-TURN FOLLOW-UP RESOLVER (Memory-Aware)
+        // =========================================================================
+        const isFollowUpTransit = (q.includes('how to get') || q.includes('how do i get') || q.includes('transit') || q.includes('direction') || q.includes('subway') || q.includes('where is it') || q.includes('metro') || q.includes('address')) && !findMentionedInst(query);
+        const isFollowUpHours = (q.includes('hours') || q.includes('open today') || q.includes('schedule') || q.includes('when is it open') || q.includes('opening times')) && !findMentionedInst(query);
+        const isFollowUpAdmission = (q.includes('admission') || q.includes('ticket') || q.includes('cost') || q.includes('how much') || q.includes('is it free') || q.includes('price')) && !findMentionedInst(query);
+        const isFollowUpFunding = (q.includes('who funds') || q.includes('funding') || q.includes('board') || q.includes('donor') || q.includes('is it clean') || q.includes('sponsor')) && !findMentionedInst(query);
+        const isFollowUpNearby = (q.includes('nearby') || q.includes('what else') || q.includes('other spaces') || q.includes('around here') || q.includes('in the area')) && !findMentionedCity(query);
+
+        if (isFollowUpTransit && curatorContext.lastInst) {
+          const inst = curatorContext.lastInst;
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              To get to <strong>${formatInstLink(inst)}</strong>:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Public Transit:</strong> ${inst.transit_tips}<br>
+              - <strong>Address:</strong> ${inst.address || inst.location} (${inst.neighborhood || inst.city})<br>
+              - <strong>Estimated Visit Duration:</strong> About ${inst.visit_duration || '1.5 – 2 hours'}.
+            </p>
+          `, ['🕒 Opening Hours', '🎟️ Admission Policy', `📍 More in ${inst.city}`]);
+          selectInstitution(inst, true);
+          return;
+        }
+
+        if (isFollowUpHours && curatorContext.lastInst) {
+          const inst = curatorContext.lastInst;
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              <strong>${formatInstLink(inst)}</strong> schedule and hours:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Opening Hours:</strong> ${inst.opening_hours}<br>
+              - <strong>Recommended Duration:</strong> ${inst.visit_duration || '1.5 – 2 hours'}<br>
+              - <strong>Key Highlight:</strong> <span class="text-amber-300/90">${inst.highlight}</span>
+            </p>
+          `, ['🚇 Transit Directions', '🎟️ Ticket Info', `📍 More in ${inst.city}`]);
+          selectInstitution(inst, true);
+          return;
+        }
+
+        if (isFollowUpAdmission && curatorContext.lastInst) {
+          const inst = curatorContext.lastInst;
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              <strong>Admission at ${formatInstLink(inst)}:</strong>
+            </p>
+            <p class="text-slate-300">
+              - <strong>Policy:</strong> ${inst.admission_policy}<br>
+              - <strong>Details & Pricing:</strong> ${inst.admission_details || inst.admission_fee || 'Subsidized entry'}.<br>
+              - <strong>Accessibility:</strong> Free admission for assistants/companions.
+            </p>
+          `, ['🕒 Opening Hours', '🚇 Transit Directions', '🏛️ Governance & Funding']);
+          selectInstitution(inst, true);
+          return;
+        }
+
+        if (isFollowUpFunding && curatorContext.lastInst) {
+          const inst = curatorContext.lastInst;
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              <strong>Funding & Governance Audit: ${formatInstLink(inst)}</strong>
+            </p>
+            <p class="text-slate-300">
+              - <strong>Ethical Verification:</strong> ${inst.tier === 'A' ? '<span class="text-emerald-400">Tier A · Verified Clean Sanctuary</span>' : '<span class="text-rose-400">Tier B · Flagged Corporate Conflicts</span>'}<br>
+              - <strong>Governance Model:</strong> ${inst.governance_type}<br>
+              - <strong>Funding Architecture:</strong> ${inst.funding}<br>
+              - <strong>Safeguard:</strong> ${inst.ethical_safeguard}<br>
+              - <strong>Transparency Grade:</strong> ${inst.transparency_grade || 'A'}
+            </p>
+          `, ['🎟️ Admission Policy', '🚇 How to Get There', '⭐ Highlight Art']);
+          selectInstitution(inst, true);
+          return;
+        }
+
+        if (isFollowUpNearby && (curatorContext.lastInst || curatorContext.lastCity)) {
+          const cityName = curatorContext.lastCity || (curatorContext.lastInst ? curatorContext.lastInst.city : null);
+          const nearbyMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName) && (!curatorContext.lastInst || i.name !== curatorContext.lastInst.name));
+          if (nearbyMatches.length > 0) {
+            appendCuratorMessage(`
+              <p class="text-slate-200">
+                Other verified clean spaces in <strong>${escapeHtml(cityName)}</strong>:
+              </p>
+              <p class="text-slate-300">
+                ${nearbyMatches.slice(0, 4).map(m => `· ${formatInstLink(m)} (${m.neighborhood || m.curatorial_focus})`).join('<br>')}
+              </p>
+            `, nearbyMatches.slice(0, 3).map(m => m.name));
+            filterByCity(cityName, true, false);
+            return;
+          }
+        }
+
+        // =========================================================================
+        // ⚖️ DIRECT SIDE-BY-SIDE COMPARISON ENGINE ("Compare X and Y" / "X vs Y")
+        // =========================================================================
+        if (q.includes('compare') || (q.includes('difference between') && !q.includes('kunsthalle')) || q.includes(' vs ') || q.includes(' versus ')) {
+          const cleanQ = q.replace(/^(can you )?compare /i, '').replace(/difference between /i, '');
+          const parts = cleanQ.split(/\s+(?:vs\.?|versus|and)\s+/i);
+          if (parts.length >= 2) {
+            const e1 = findAnyInstitution(parts[0].trim());
+            const e2 = findAnyInstitution(parts[1].trim());
+            if (e1 && e2) {
+              const i1 = e1.inst;
+              const i2 = e2.inst;
+              appendCuratorMessage(`
+                <p class="text-slate-200 font-medium">
+                  <strong>Curatorial Comparison: ${escapeHtml(i1.name)} vs ${escapeHtml(i2.name)}</strong>
+                </p>
+                <div class="overflow-x-auto my-2 border border-[#2e2e2e] rounded-xl bg-[#141414] text-[13px]">
+                  <table class="w-full text-left border-collapse">
+                    <thead>
+                      <tr class="border-b border-[#2e2e2e] bg-[#1c1c1c] text-[#a1a1aa] font-mono">
+                        <th class="p-2.5">Dimension</th>
+                        <th class="p-2.5 text-white">${escapeHtml(i1.name)}</th>
+                        <th class="p-2.5 text-white">${escapeHtml(i2.name)}</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#242424] text-slate-300">
+                      <tr>
+                        <td class="p-2.5 font-mono text-[#a1a1aa]">Location</td>
+                        <td class="p-2.5">${escapeHtml(i1.city)}, ${escapeHtml(i1.country)}</td>
+                        <td class="p-2.5">${escapeHtml(i2.city)}, ${escapeHtml(i2.country)}</td>
+                      </tr>
+                      <tr>
+                        <td class="p-2.5 font-mono text-[#a1a1aa]">Ethical Status</td>
+                        <td class="p-2.5">${i1.tier === 'A' ? '<span class="text-emerald-400 font-medium">Tier A · Clean Sanctuary</span>' : '<span class="text-rose-400 font-medium">Tier B · Excluded Conflict</span>'}</td>
+                        <td class="p-2.5">${i2.tier === 'A' ? '<span class="text-emerald-400 font-medium">Tier A · Clean Sanctuary</span>' : '<span class="text-rose-400 font-medium">Tier B · Excluded Conflict</span>'}</td>
+                      </tr>
+                      <tr>
+                        <td class="p-2.5 font-mono text-[#a1a1aa]">Governance</td>
+                        <td class="p-2.5">${escapeHtml(i1.governance_type || 'Civic Non-Profit')}</td>
+                        <td class="p-2.5">${escapeHtml(i2.governance_type || 'Civic Non-Profit')}</td>
+                      </tr>
+                      <tr>
+                        <td class="p-2.5 font-mono text-[#a1a1aa]">Funding Source</td>
+                        <td class="p-2.5">${escapeHtml(i1.funding || 'Public civic council grants')}</td>
+                        <td class="p-2.5">${escapeHtml(i2.funding || 'Public civic council grants')}</td>
+                      </tr>
+                      <tr>
+                        <td class="p-2.5 font-mono text-[#a1a1aa]">Admission</td>
+                        <td class="p-2.5">${escapeHtml(i1.admission_policy)} (${escapeHtml(i1.admission_details || i1.admission_fee)})</td>
+                        <td class="p-2.5">${escapeHtml(i2.admission_policy)} (${escapeHtml(i2.admission_details || i2.admission_fee)})</td>
+                      </tr>
+                      <tr>
+                        <td class="p-2.5 font-mono text-[#a1a1aa]">Focus</td>
+                        <td class="p-2.5">${escapeHtml(i1.curatorial_focus)}</td>
+                        <td class="p-2.5">${escapeHtml(i2.curatorial_focus)}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="flex gap-2 mt-2">
+                  <button class="inst-link px-2.5 py-1 rounded bg-[#242424] hover:bg-[#303030] text-[13px] text-[#93c5fd] border border-[#383838]" data-name="${escapeHtml(i1.name)}">Fly to ${escapeHtml(i1.name)} 📍</button>
+                  <button class="inst-link px-2.5 py-1 rounded bg-[#242424] hover:bg-[#303030] text-[13px] text-[#93c5fd] border border-[#383838]" data-name="${escapeHtml(i2.name)}">Fly to ${escapeHtml(i2.name)} 📍</button>
+                </div>
+              `, [`Audit dossier on ${i1.name}`, `Audit dossier on ${i2.name}`, '🏛️ Kunsthalle vs Museum']);
+              return;
+            }
+          }
+        }
+
+        // =========================================================================
+        // 🌎 LATIN AMERICAN VANGUARD & INSTITUTIONAL CRITIQUE
+        // =========================================================================
+        if (q.includes('latin america') || q.includes('tropicalia') || q.includes('oiticica') || q.includes('lygia clark') || q.includes('tania bruguera') || q.includes('cildo meireles') || q.includes('muac') || q.includes('tamayo') || q.includes('masp')) {
+          const muac = ALL_INSTITUTIONS.find(i => i.id === 'muac' || i.name.includes('MUAC'));
+          const tamayo = ALL_INSTITUTIONS.find(i => i.id === 'museo-tamayo' || i.name.includes('Tamayo'));
+          const masp = ALL_INSTITUTIONS.find(i => i.id === 'masp' || i.name.includes('MASP'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Latin America pioneered some of the most radical forms of <strong>participatory art, institutional critique, and social resistance</strong>:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Hélio Oiticica & Lygia Clark (Brazil):</strong> Dismantled the idea that art is a passive painting to be hung on a museum wall. Clark created *Bichos* (aluminum sculptures viewers rearrange by hand), while Oiticica created *Parangolés* (wearable fabric capes designed to come alive during samba dancing in the favelas).<br>
+              - <strong>Cildo Meireles – *Insertions into Ideological Circuits* (1970):</strong> Responding to military dictatorship, Meireles stamped banknotes and returnable glass Coca-Cola bottles with political messages before re-circulating them into the economy, bypassing state censorship.<br>
+              - <strong>Tania Bruguera (Cuba):</strong> Pioneered *Arte Útil* (Useful Art), founding INSTAR (Instituto de Artivismo Hannah Arendt) to use art as legal literacy and civic empowerment against authoritarian repression.<br>
+              - <strong>Civic Sanctuaries Mapped:</strong> ${formatInstLink(muac)} in Mexico City (university governance free from private corporate capture), ${formatInstLink(tamayo)} in Chapultepec, and ${formatInstLink(masp)} in São Paulo, famous for architect Lina Bo Bardi's radical transparent glass easels that democratize art viewing.
+            </p>
+          `, ['⚖️ Arte Útil & The Commons', '🏛️ Kunsthalle vs Museum', '🗺️ Curated City Itineraries']);
+          return;
+        }
+
+        // =========================================================================
+        // 🇯🇵 EAST ASIAN AVANT-GARDE: GUTAI & MONO-HA
+        // =========================================================================
+        if (q.includes('gutai') || q.includes('mono-ha') || q.includes('lee ufan') || q.includes('tokyo art') || q.includes('japan art') || q.includes('bankart') || q.includes('21_21')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Post-war East Asian vanguard movements fundamentally redefined space, material, and performance:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Gutai Art Association (Osaka, 1954):</strong> Founded by Jiro Yoshihara under the motto: <em>"Do what has never been done before!"</em> Artists engaged physically with raw materials—Kazuo Shiraga painted with his feet swinging from a ceiling rope, Shozo Shimamoto hurled glass jars of paint onto vinyl, and Atsuko Tanaka created *Electric Dress* (1956), a wearable kinetic sculpture composed of 200 flashing industrial light tubes.<br>
+              - <strong>Mono-ha ("School of Things", Tokyo, 1968–1972):</strong> Led by philosopher/artist Lee Ufan and Nobuo Sekine. Rejecting Western illusionistic sculpture, Mono-ha juxtaposed raw natural materials (huge stones, soil, tree trunks) with raw industrial matter (steel plates, glass, wire), exploring the spatial and perceptual relationship between matter and the viewer.<br>
+              - <strong>Civic & Independent Spaces:</strong> BankART 1929 in Yokohama (adaptive reuse of former waterfront port warehouses) and 21_21 DESIGN SIGHT in Tokyo, maintaining clean public/civic charters.
+            </p>
+          `, ['🎞️ Video, Sound & Media Art', '🌲 Outdoor Sculpture Parks', '🏛️ Kunsthalle vs Museum']);
+          return;
+        }
+
+        // =========================================================================
+        // ❄️ NORDIC SOCIAL DEMOCRATIC CIVIC MODEL
+        // =========================================================================
+        if (q.includes('nordic model') || q.includes('scandinavia') || q.includes('danish arts') || q.includes('kulturradet') || (q.includes('denmark') && q.includes('model')) || (q.includes('norway') && q.includes('art'))) {
+          const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
+          const aros = ALL_INSTITUTIONS.find(i => i.name.includes('ARoS'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              The <strong>Nordic Civic Arts Model</strong> (Denmark, Sweden, Norway, Finland) is celebrated globally for maintaining cultural independence from billionaire donor boards:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Structural Public Trust:</strong> Supported through direct civic subsidies from bodies like the Danish Arts Foundation (*Statens Kunstfond*) and Norwegian Arts Council (*Kulturrådet*). Curators answer directly to public peers and municipal cultural charters rather than corporate sponsors.<br>
+              - <strong>Open-Access & Environmental Stewardship:</strong> Nordic museums lead the world in releasing high-resolution collection images into the public domain (zero copyright restriction) and implementing strict ecological footprint caps on exhibition logistics.<br>
+              - <strong>Verified Spaces Mapped:</strong> ${formatInstLink(louis)} in Humlebæk (harmoniously integrating modernist architecture with coastal nature) and ${formatInstLink(aros)} in Aarhus with Olafur Eliasson's rainbow glass skywalk.
+            </p>
+          `, ['🌲 Outdoor Sculpture Parks', '🏛️ Kunsthalle vs Museum', '🇳🇱 Dutch Research: BAK']);
           return;
         }
 
@@ -7528,6 +7773,64 @@ FORMATTING & INTERACTION RULES:
         }
         return;
       }
+
+      // Audio Docent Speech Synthesis
+      const speakBtn = e.target.closest('.curator-speak-btn');
+      if (speakBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!('speechSynthesis' in window)) {
+          alert('Speech synthesis is not supported in this browser.');
+          return;
+        }
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
+          document.querySelectorAll('.curator-speak-btn .speak-label').forEach(l => l.textContent = 'Listen');
+          document.querySelectorAll('.curator-speak-btn').forEach(b => b.classList.remove('bg-rose-500/20', 'text-rose-400'));
+          return;
+        }
+
+        const msgDiv = speakBtn.closest('.curator-message-wrap');
+        const textContent = msgDiv ? msgDiv.innerText.replace(/Culture Atlas Curator|Listen|Stop|Copy Itinerary|Copied!|💬.*$/g, '').trim() : '';
+        if (!textContent) return;
+
+        const utter = new SpeechSynthesisUtterance(textContent);
+        utter.rate = 1.0;
+        utter.pitch = 1.0;
+        const voices = window.speechSynthesis.getVoices();
+        const enVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Google') || v.name.includes('Daniel')));
+        if (enVoice) utter.voice = enVoice;
+
+        utter.onstart = () => {
+          speakBtn.classList.add('bg-rose-500/20', 'text-rose-400');
+          const lbl = speakBtn.querySelector('.speak-label');
+          if (lbl) lbl.textContent = 'Stop';
+        };
+
+        utter.onend = utter.onerror = () => {
+          speakBtn.classList.remove('bg-rose-500/20', 'text-rose-400');
+          const lbl = speakBtn.querySelector('.speak-label');
+          if (lbl) lbl.textContent = 'Listen';
+        };
+
+        window.speechSynthesis.speak(utter);
+        return;
+      }
+
+      // Copy Itinerary to Clipboard
+      const copyItineraryBtn = e.target.closest('.copy-itinerary-btn');
+      if (copyItineraryBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const card = copyItineraryBtn.closest('.curator-message-wrap');
+        const text = card ? card.innerText.replace(/Culture Atlas Curator|Listen|Stop|Copy Itinerary|Copied!|💬.*$/g, '').trim() : '';
+        navigator.clipboard.writeText(text).then(() => {
+          copyItineraryBtn.textContent = '✓ Copied!';
+          setTimeout(() => { copyItineraryBtn.textContent = '📋 Copy Itinerary'; }, 2500);
+        });
+        return;
+      }
+
       // 1. Check for institution links
       const instLink = e.target.closest('.inst-link, [data-inst]');
       if (instLink) {
@@ -8176,6 +8479,9 @@ FORMATTING & INTERACTION RULES:
 
     function filterByCity(cityName, zoom = true, notifyCurator = true) {
       selectedCityFilter = cityName;
+      if (typeof curatorContext !== 'undefined' && cityName && cityName !== 'all') {
+        curatorContext.lastCity = cityName;
+      }
       const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
       if (cityMeta && cityMeta.country) {
         lastSelectedCountry = cityMeta.country;
