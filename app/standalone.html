@@ -410,6 +410,26 @@
         <button id="clearMapFilterBtn" class="ml-1 text-[#93c5fd] hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[14px]" title="Clear filter">✕</button>
       </div>
 
+      <!-- Interactive City & Country Quick Bar -->
+      <div id="globeCityBar" class="absolute bottom-2 left-2.5 sm:left-4 right-20 sm:right-24 z-10 flex items-center overflow-x-auto custom-scrollbar whitespace-nowrap gap-1.5 select-none pointer-events-auto">
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">🌐 All</button>
+        <span class="text-[#555] shrink-0">·</span>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Utrecht">🇳🇱 Utrecht</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Amsterdam">🇳🇱 Amsterdam</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Rotterdam">🇳🇱 Rotterdam</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="London">🇬🇧 London</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="New York">🇺🇸 New York</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Paris">🇫🇷 Paris</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Berlin">🇩🇪 Berlin</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Tokyo">🇯🇵 Tokyo</button>
+        <span class="text-[#555] shrink-0">·</span>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Netherlands">Netherlands</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="United Kingdom">United Kingdom</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="United States">United States</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="France">France</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Germany">Germany</button>
+      </div>
+
       <!-- Subtle Globe Zoom Controls -->
       <div class="absolute bottom-2 right-2.5 sm:right-4 z-10 flex items-center gap-1.5">
         <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#212121]/90 border border-[#2e2e2e] text-[#d4d4d4] hover:text-white flex items-center justify-center transition shadow-sm text-[14px] cursor-pointer" title="Zoom In">+</button>
@@ -9866,7 +9886,10 @@
       if (wInput) wInput.value = '';
       clearAllFilters();
       const container = document.getElementById('workViewContainer');
-      if (container) container.scrollTo({ top: 0, behavior: 'smooth' });
+      if (container) {
+        if (container.scrollTo) container.scrollTo({ top: 0, behavior: 'smooth' });
+        else container.scrollTop = 0;
+      }
     }
 
     function initCuratorConversation() {
@@ -9889,7 +9912,8 @@
       const container = document.getElementById('workViewContainer');
       if (container) {
         setTimeout(() => {
-          container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+          if (container.scrollTo) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+          else container.scrollTop = container.scrollHeight;
         }, 60);
       }
     }
@@ -10685,6 +10709,50 @@ FORMATTING & INTERACTION RULES:
           }
         }
 
+
+        // All Cities Mapped Query Handler (from Choose project shelf pill)
+        if (q.includes('cities mapped') || q.includes('all cities') || q.includes('show me all cities') || q.includes('which cities') || q.includes('list of cities') || q.includes('choose project')) {
+          const sorted = [...PRIORITY_CITIES];
+          const cityPills = sorted.map(c => {
+            const count = ALL_INSTITUTIONS.filter(i => matchC(i.city, c.name)).length;
+            return `<button class="city-zoom-btn px-2.5 py-1 rounded-xl bg-[#262626] hover:bg-[#333] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] transition cursor-pointer inline-flex items-center gap-1.5" data-city="${escapeHtml(c.name)}"><span>📍</span> <span>${escapeHtml(c.name)}</span> <span class="text-[#93c5fd] font-mono text-[12px]">(${count})</span></button>`;
+          }).join(' ');
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Culture Atlas currently audits independent cultural spaces across <strong>${ALL_CITIES.length} cities</strong>:
+            </p>
+            <div class="flex flex-wrap gap-2 my-2.5">
+              ${cityPills}
+            </div>
+            <p class="text-slate-300">
+              Click any city pill above, or click city badges directly on the 3D globe to explore verified spaces.
+            </p>
+          `);
+          return;
+        }
+
+        // All Countries Mapped Query Handler
+        if (q.includes('countries mapped') || q.includes('all countries') || q.includes('show me all countries') || q.includes('which countries') || q.includes('list of countries')) {
+          const sortedCountries = [...COUNTRY_CENTROIDS];
+          const countryPills = sortedCountries.map(c => {
+            const count = ALL_INSTITUTIONS.filter(i => matchC(i.country, c.name)).length;
+            return `<button class="country-zoom-btn px-2.5 py-1 rounded-xl bg-[#262626] hover:bg-[#333] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] transition cursor-pointer inline-flex items-center gap-1.5" data-country="${escapeHtml(c.name)}"><span>🌍</span> <span>${escapeHtml(c.name)}</span> <span class="text-[#93c5fd] font-mono text-[12px]">(${count})</span></button>`;
+          }).join(' ');
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Culture Atlas audits cultural spaces across <strong>35 countries</strong>:
+            </p>
+            <div class="flex flex-wrap gap-2 my-2.5">
+              ${countryPills}
+            </div>
+            <p class="text-slate-300">
+              Click any country pill above, or click on any nation on the 3D globe to explore.
+            </p>
+          `);
+          return;
+        }
 
         // Exact Prompt 1: Find independent art spaces near me
         if (q.includes('near me') || q.includes('spaces near me') || q.includes('art spaces near')) {
@@ -11636,7 +11704,19 @@ FORMATTING & INTERACTION RULES:
         e.stopPropagation();
         const city = cityLink.getAttribute('data-city') || cityLink.textContent.trim();
         if (city) {
-          filterByCity(city, true, false);
+          filterByCity(city, true, true);
+        }
+        return;
+      }
+
+      // 4. Check for country links
+      const countryLink = e.target.closest('.country-link, .country-zoom-btn, [data-country]');
+      if (countryLink) {
+        e.preventDefault();
+        e.stopPropagation();
+        const country = countryLink.getAttribute('data-country') || countryLink.textContent.trim();
+        if (country) {
+          filterByCountry(country);
         }
         return;
       }
@@ -11888,23 +11968,53 @@ FORMATTING & INTERACTION RULES:
     const countrySelect = document.getElementById('countrySelect');
     const citySelect = document.getElementById('citySelect');
     const searchInput = document.getElementById('searchInput');
-    const clearSearchBtn = document.getElementById('clearSearchBtn');
-    const activeFilterBanner = document.getElementById('activeFilterBanner');
-    const filterLabel = document.getElementById('filterLabel');
-    const filterCount = document.getElementById('filterCount');
-    const clearFilterBtn = document.getElementById('clearFilterBtn');
-    const listTotalBadge = document.getElementById('listTotalBadge');
 
     function populateDropdowns() {
-      const countries = [...new Set(ALL_INSTITUTIONS.map(i => i.country).filter(Boolean))].sort();
-      countrySelect.innerHTML = `<option value="all">All Countries (${countries.length})</option>` + 
-        countries.map(c => `<option value="${c}">${c}</option>`).join('');
+      if (countrySelect) {
+        const countries = [...new Set(ALL_INSTITUTIONS.map(i => i.country).filter(Boolean))].sort();
+        countrySelect.innerHTML = `<option value="all">All Countries (${countries.length})</option>` + 
+          countries.map(c => `<option value="${c}">${c}</option>`).join('');
+      }
 
-      const cities = [...new Set(ALL_INSTITUTIONS.map(i => i.city).filter(Boolean))].sort();
-      citySelect.innerHTML = `<option value="all">All Cities (${cities.length})</option>` + 
-        cities.map(c => `<option value="${c}">${c}</option>`).join('');
+      if (citySelect) {
+        const cities = [...new Set(ALL_INSTITUTIONS.map(i => i.city).filter(Boolean))].sort();
+        citySelect.innerHTML = `<option value="all">All Cities (${cities.length})</option>` + 
+          cities.map(c => `<option value="${c}">${c}</option>`).join('');
+      }
     }
     populateDropdowns();
+
+    function updateGlobePillsUI() {
+      document.querySelectorAll('.globe-filter-pill').forEach(pill => {
+        const type = pill.getAttribute('data-type');
+        const val = pill.getAttribute('data-value') || '';
+        let isAct = false;
+        if (type === 'all' && selectedCityFilter === 'all' && selectedCountryFilter === 'all') isAct = true;
+        else if (type === 'city' && selectedCityFilter.toLowerCase() === val.toLowerCase()) isAct = true;
+        else if (type === 'country' && selectedCountryFilter.toLowerCase() === val.toLowerCase()) isAct = true;
+
+        if (isAct) {
+          pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0 shadow-sm';
+        } else {
+          pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0';
+        }
+      });
+    }
+
+    // Wire Globe Filter Pills (Quick click city or country)
+    document.querySelectorAll('.globe-filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        const type = pill.getAttribute('data-type');
+        const val = pill.getAttribute('data-value') || '';
+        if (type === 'all') {
+          clearAllFilters();
+        } else if (type === 'city') {
+          filterByCity(val, true, true);
+        } else if (type === 'country') {
+          filterByCountry(val);
+        }
+      });
+    });
 
     let selectedCategoryFilter = 'all';
 
@@ -11989,7 +12099,8 @@ FORMATTING & INTERACTION RULES:
         return true;
       });
 
-      listTotalBadge.textContent = `${filteredList.length} mapped`;
+      const listTotalBadge = document.getElementById('listTotalBadge');
+      if (listTotalBadge) listTotalBadge.textContent = `${filteredList.length} mapped`;
 
       // Update Floating Map Filter Banner
       const activeMapBanner = document.getElementById('activeMapFilterBanner');
@@ -12007,17 +12118,23 @@ FORMATTING & INTERACTION RULES:
         }
       }
 
-      // Update Catalog Panel Banner
-      if (selectedCityFilter !== 'all' || selectedCountryFilter !== 'all' || selectedCategoryFilter !== 'all') {
-        activeFilterBanner.classList.remove('hidden');
-        let activeName = selectedCityFilter !== 'all' ? selectedCityFilter : (selectedCountryFilter !== 'all' ? selectedCountryFilter : selectedCategoryFilter);
-        if (FILTER_META[selectedCategoryFilter]) activeName = FILTER_META[selectedCategoryFilter].label;
-        filterLabel.textContent = activeName.toUpperCase();
-        filterCount.textContent = `(${filteredList.length})`;
-      } else {
-        activeFilterBanner.classList.add('hidden');
+      // Update Catalog Panel Banner if present
+      const activeFilterBanner = document.getElementById('activeFilterBanner');
+      const filterLabel = document.getElementById('filterLabel');
+      const filterCount = document.getElementById('filterCount');
+      if (activeFilterBanner) {
+        if (selectedCityFilter !== 'all' || selectedCountryFilter !== 'all' || selectedCategoryFilter !== 'all') {
+          activeFilterBanner.classList.remove('hidden');
+          let activeName = selectedCityFilter !== 'all' ? selectedCityFilter : (selectedCountryFilter !== 'all' ? selectedCountryFilter : selectedCategoryFilter);
+          if (FILTER_META[selectedCategoryFilter]) activeName = FILTER_META[selectedCategoryFilter].label;
+          if (filterLabel) filterLabel.textContent = activeName.toUpperCase();
+          if (filterCount) filterCount.textContent = `(${filteredList.length})`;
+        } else {
+          activeFilterBanner.classList.add('hidden');
+        }
       }
 
+      updateGlobePillsUI();
       renderLeftList();
     }
 
@@ -12178,53 +12295,53 @@ FORMATTING & INTERACTION RULES:
     function clearAllFilters() {
       selectedCityFilter = 'all';
       selectedCountryFilter = 'all';
+      selectedCategoryFilter = 'all';
       searchQuery = '';
-      searchInput.value = '';
-      clearSearchBtn.classList.add('hidden');
+      if (searchInput) searchInput.value = '';
       selectedTierFilter = new Set(['A', 'B', 'U']);
       document.querySelectorAll('.tier-chip').forEach(btn => {
         btn.classList.add('bg-[#0c2419]', 'bg-[#0e213b]', 'bg-[#171a24]');
       });
-      countrySelect.value = 'all';
-      citySelect.value = 'all';
+      if (countrySelect) countrySelect.value = 'all';
+      if (citySelect) citySelect.value = 'all';
+      targetRadius = baseRadius;
+      isAutoSpinning = true;
       applyFilters();
     }
 
-    // Filter event listeners
-    countrySelect.addEventListener('change', e => {
+    // Filter event listeners safely wired
+    countrySelect?.addEventListener('change', e => {
       selectedCountryFilter = e.target.value;
       selectedCityFilter = 'all';
-      citySelect.value = 'all';
+      if (citySelect) citySelect.value = 'all';
       applyFilters();
       if (selectedCountryFilter !== 'all') {
         filterByCountry(selectedCountryFilter);
       }
     });
 
-    citySelect.addEventListener('change', e => {
+    citySelect?.addEventListener('change', e => {
       selectedCityFilter = e.target.value;
       selectedCountryFilter = 'all';
-      countrySelect.value = 'all';
+      if (countrySelect) countrySelect.value = 'all';
       applyFilters();
       if (selectedCityFilter !== 'all') {
-        filterByCity(selectedCityFilter);
+        filterByCity(selectedCityFilter, true, true);
       }
     });
 
-    searchInput.addEventListener('input', e => {
+    searchInput?.addEventListener('input', e => {
       searchQuery = e.target.value;
-      clearSearchBtn.classList.toggle('hidden', !searchQuery);
       applyFilters();
     });
 
-    clearSearchBtn.addEventListener('click', () => {
-      searchInput.value = '';
+    document.getElementById('clearSearchBtn')?.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
       searchQuery = '';
-      clearSearchBtn.classList.add('hidden');
       applyFilters();
     });
 
-    clearFilterBtn.addEventListener('click', clearAllFilters);
+    document.getElementById('clearFilterBtn')?.addEventListener('click', clearAllFilters);
 
     document.querySelectorAll('.tier-chip').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -12249,18 +12366,6 @@ FORMATTING & INTERACTION RULES:
     // =========================================================
     // 🌐 CANVAS POINTER & HIT-TESTING (Click City / Country)
     // =========================================================
-    canvas.addEventListener('pointerup', e => {
-      isDragging = false;
-      canvas.classList.remove('dragging');
-
-      const dt = Date.now() - pointerDownTime;
-      const dist = Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY);
-
-      if (dt < 300 && dist < 6) {
-        handleGlobeClick(e.clientX, e.clientY);
-      }
-    });
-
     function handleGlobeClick(clientX, clientY) {
       const rect = canvas.getBoundingClientRect();
       const mx = clientX - rect.left;
@@ -12269,33 +12374,33 @@ FORMATTING & INTERACTION RULES:
       const cy = height / 2;
       const r = currentRadius;
 
-      // Check priority city hitboxes
+      // 1. Check priority city hitboxes with generous 12px hit padding
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {
         const b = cityBadgeHitboxes[i];
-        if (mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h) {
+        if (mx >= b.x - 12 && mx <= b.x + b.w + 12 && my >= b.y - 10 && my <= b.y + b.h + 10) {
           if (selectedCityFilter.toLowerCase() === b.name.toLowerCase()) {
             clearAllFilters();
           } else {
-            filterByCity(b.name);
+            filterByCity(b.name, true, true);
           }
           return;
         }
       }
 
-      // Check institution dot
+      // 2. Check institution dots (14px radius)
       for (let i = 0; i < visibleDots.length; i++) {
         const d = visibleDots[i];
-        if (Math.hypot(d.x - mx, d.y - my) < 9) {
+        if (Math.hypot(d.x - mx, d.y - my) < 14) {
           selectInstitution(d.inst);
           return;
         }
       }
 
-      // Check country centroid
+      // 3. Check country centroid text (generous 36px radius for easy clicking)
       for (let i = 0; i < COUNTRY_CENTROIDS.length; i++) {
         const c = COUNTRY_CENTROIDS[i];
         const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 22) {
+        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 36) {
           if (selectedCountryFilter.toLowerCase() === c.name.toLowerCase()) {
             clearAllFilters();
           } else {
@@ -12305,7 +12410,7 @@ FORMATTING & INTERACTION RULES:
         }
       }
 
-      // Check country polygon
+      // 4. Check country polygon on globe surface
       const geo = unproject(mx, my, r, cx, cy);
       if (geo) {
         for (let i = 0; i < COUNTRY_POLYS.length; i++) {
@@ -12322,11 +12427,79 @@ FORMATTING & INTERACTION RULES:
           }
         }
       }
-      // If clicked empty ocean or space on the globe, dismiss the floating institution card
+
+      // If clicked empty ocean or space on the globe, dismiss floating card
       if (selectedInstitution) {
         deselectInstitution();
       }
     }
+
+    // Check hover target for dynamic pointer cursor feedback
+    function updateHoverCursor(clientX, clientY) {
+      if (isDragging) return;
+      const rect = canvas.getBoundingClientRect();
+      const mx = clientX - rect.left;
+      const my = clientY - rect.top;
+      const cx = width / 2;
+      const cy = height / 2;
+      const r = currentRadius;
+
+      // Check city badge
+      for (let i = 0; i < cityBadgeHitboxes.length; i++) {
+        const b = cityBadgeHitboxes[i];
+        if (mx >= b.x - 12 && mx <= b.x + b.w + 12 && my >= b.y - 10 && my <= b.y + b.h + 10) {
+          canvas.style.cursor = 'pointer';
+          return;
+        }
+      }
+
+      // Check institution dot
+      for (let i = 0; i < visibleDots.length; i++) {
+        const d = visibleDots[i];
+        if (Math.hypot(d.x - mx, d.y - my) < 14) {
+          canvas.style.cursor = 'pointer';
+          return;
+        }
+      }
+
+      // Check country centroid
+      for (let i = 0; i < COUNTRY_CENTROIDS.length; i++) {
+        const c = COUNTRY_CENTROIDS[i];
+        const pt = project(c.lon, c.lat, r, cx, cy);
+        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 36) {
+          canvas.style.cursor = 'pointer';
+          return;
+        }
+      }
+
+      // Check country polygon
+      const geo = unproject(mx, my, r, cx, cy);
+      if (geo) {
+        for (let i = 0; i < COUNTRY_POLYS.length; i++) {
+          const country = COUNTRY_POLYS[i];
+          for (let j = 0; j < country.r.length; j++) {
+            if (pointInPolygon(geo.lon, geo.lat, country.r[j])) {
+              canvas.style.cursor = 'pointer';
+              return;
+            }
+          }
+        }
+      }
+
+      canvas.style.cursor = 'grab';
+    }
+
+    canvas.addEventListener('pointermove', e => {
+      updateHoverCursor(e.clientX, e.clientY);
+    });
+
+    // Reliable click detector for canvas
+    canvas.addEventListener('click', e => {
+      const dist = Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY);
+      if (dist < 22) {
+        handleGlobeClick(e.clientX, e.clientY);
+      }
+    });
 
     document.getElementById('closeFloatingCardBtn')?.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -12354,21 +12527,16 @@ FORMATTING & INTERACTION RULES:
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius * factor));
     }, { passive: false });
 
-    document.getElementById('zoomInBtn').addEventListener('click', () => {
+    document.getElementById('zoomInBtn')?.addEventListener('click', () => {
       targetRadius = Math.min(getMaxRadius(), targetRadius * 1.32);
     });
-    document.getElementById('zoomOutBtn').addEventListener('click', () => {
+    document.getElementById('zoomOutBtn')?.addEventListener('click', () => {
       targetRadius = Math.max(getMinRadius(), targetRadius * 0.76);
     });
-    document.getElementById('resetViewBtn').addEventListener('click', () => {
+    document.getElementById('topResetBtn')?.addEventListener('click', () => {
       targetRadius = baseRadius;
-      flyTo(-45, 35);
+      flyTo(5.2, 52.1);
       clearAllFilters();
-    });
-    document.getElementById('spinBtn').addEventListener('click', () => {
-      isAutoSpinning = !isAutoSpinning;
-      document.getElementById('spinBtn').classList.toggle('text-[#3b82f6]', isAutoSpinning);
-      document.getElementById('spinBtn').classList.toggle('text-[#94a3b8]', !isAutoSpinning);
     });
 
     // =========================================================
@@ -12463,6 +12631,13 @@ FORMATTING & INTERACTION RULES:
         lastY = e.clientY;
         rotLon = (rotLon - dx * 0.18) % 360;
         rotLat = Math.max(-75, Math.min(75, rotLat + dy * 0.18));
+      }
+    });
+
+    window.addEventListener('pointerup', e => {
+      if (isDragging) {
+        isDragging = false;
+        canvas.classList.remove('dragging');
       }
     });
 
