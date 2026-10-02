@@ -520,7 +520,13 @@
           </div>
 
           <!-- Quick Dropdown Menu for Plus button -->
-          <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-72 text-[14px]">
+          <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-80 text-[14px]">
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">🗺️ Curated 1-Day City Itineraries</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">🏭 Repurposed Architecture & Factories</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">🌲 Outdoor Sculpture Parks & Land Art</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show me independent spaces dedicated to video art, sound art, and experimental media">🎞️ Video, Sound & Time-Based Media</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is the difference between a Kunsthalle and a traditional museum?">🏛️ Kunsthalle vs Museum: The Difference</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">💼 W.A.G.E., Fair Pay & Museum Unions</button>
             <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about Dutch research, BAK Utrecht, and Former West">🇳🇱 Dutch Research: BAK Utrecht</button>
             <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is Arte Útil and the Commons at Van Abbe and Casco?">⚖️ Commons & Arte Útil: Casco & Van Abbe</button>
             <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="How did Kunstinstituut Melly rename itself from Witte de With?">🏛️ Decolonial Renaming: Melly</button>
@@ -4907,6 +4913,66 @@
       return `${nameLink}${cityPart}${dossierPart}`;
     }
 
+    // =========================================================
+    // 🧠 UNIFIED MULTI-PROVIDER AI & CURATOR ENGINE STATE
+    // =========================================================
+    let aiApiKey = localStorage.getItem('atlas_ai_api_key') || localStorage.getItem('atlas_gemini_api_key') || '';
+    let aiProvider = localStorage.getItem('atlas_ai_provider') || 'auto';
+    let aiModel = localStorage.getItem('atlas_ai_model') || '';
+
+    function detectProvider(key) {
+      if (!key) return null;
+      const k = key.trim();
+      if (k.startsWith('sk-ant-')) return 'anthropic';
+      if (k.startsWith('AIza')) return 'gemini';
+      if (k.startsWith('sk-') || k.startsWith('sk-proj-')) return 'openai';
+      return 'anthropic';
+    }
+
+    function getEffectiveProvider() {
+      if (aiProvider && aiProvider !== 'auto') return aiProvider;
+      return detectProvider(aiApiKey) || 'anthropic';
+    }
+
+    function getEffectiveModel() {
+      if (aiModel) return aiModel;
+      const p = getEffectiveProvider();
+      if (p === 'anthropic') return 'claude-haiku-4-5-20251001';
+      if (p === 'openai') return 'gpt-4o-mini';
+      if (p === 'gemini') return 'gemini-2.5-flash';
+      return 'claude-haiku-4-5-20251001';
+    }
+
+    function updateAIStatusUI() {
+      const dot = document.getElementById('curatorStatusDot');
+      const label = document.getElementById('curatorStatusLabel');
+      const workLabel = document.getElementById('workModelLabel');
+      
+      const prov = getEffectiveProvider();
+      const pName = prov === 'anthropic' ? 'Claude' : (prov === 'openai' ? 'OpenAI' : 'Gemini');
+      const effModel = getEffectiveModel();
+      
+      if (aiApiKey) {
+        if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+        if (label) {
+          label.textContent = `${pName} Live`;
+          label.className = 'hidden sm:inline font-mono text-[14px] text-emerald-400';
+        }
+        if (workLabel) {
+          workLabel.textContent = `${pName} · ${effModel.split('-')[0].toUpperCase()}`;
+        }
+      } else {
+        if (dot) dot.className = 'w-2 h-2 rounded-full bg-amber-400';
+        if (label) {
+          label.textContent = 'Critical Engine';
+          label.className = 'hidden sm:inline font-mono text-[14px] text-[#a1a1aa]';
+        }
+        if (workLabel) {
+          workLabel.textContent = 'Culture Atlas 4.0 Critical Engine';
+        }
+      }
+    }
+
     // Unified Multi-Provider Live Generative AI Engine (Claude, OpenAI, Gemini)
     async function queryAI(userPrompt) {
       if (!aiApiKey) return null;
@@ -5166,7 +5232,22 @@ FORMATTING & INTERACTION RULES:
       'betonsalon': 'Bétonsalon',
       'macba': 'MACBA',
       'wiels': 'Wiels Contemporary Art Centre',
-      'capc': 'CAPC'
+      'capc': 'CAPC',
+      'gasworks': 'Gasworks',
+      'iniva': 'Iniva',
+      'photographers gallery': "Photographers' Gallery",
+      'the photographers gallery': "Photographers' Gallery",
+      'argos': 'Argos Centre for Audiovisual Arts',
+      'v2': 'V2_ Lab for Unstable Media',
+      'v2_': 'V2_ Lab for Unstable Media',
+      'edith russ haus': 'Edith-Russ-Haus for Media Art',
+      'edith-russ-haus': 'Edith-Russ-Haus for Media Art',
+      'reina sofia': 'Museo Reina Sofía',
+      'dulwich': 'Dulwich Picture Gallery',
+      'new museum': 'New Museum',
+      'pma': 'Philadelphia Museum of Art',
+      'philadelphia museum of art': 'Philadelphia Museum of Art',
+      'mfa boston': 'Museum of Fine Arts, Boston'
     };
 
     function findAnyInstitution(nameOrQuery) {
@@ -5247,6 +5328,9 @@ FORMATTING & INTERACTION RULES:
     }
 
     function findMentionedInst(text) {
+      if (!text) return null;
+      const resolved = findAnyInstitution(text);
+      if (resolved && resolved.isClean) return resolved.inst;
       const t = (text || '').toLowerCase().trim();
       return ALL_INSTITUTIONS.find(i => {
         const nameLow = i.name.toLowerCase();
@@ -5319,6 +5403,281 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 🏛️ CRITICAL THEORY & ART SCENE SPECIALIST HANDLERS
         // =========================================================================
+
+        // =========================================================================
+        // 🗺️ CURATED 1-DAY & WEEKEND CITY ITINERARIES (100% Clean Spaces)
+        // =========================================================================
+        if (q.includes('itinerary') || q.includes('itineraries') || q.includes('day in') || q.includes('weekend in') || q.includes('art route') || q.includes('cultural walk') || q.includes('day trip') || q.includes('curated walk') || (q.includes('tour') && (q.includes('london') || q.includes('berlin') || q.includes('paris') || q.includes('york') || q.includes('amsterdam') || q.includes('city')))) {
+          
+          // London Itinerary
+          if (q.includes('london')) {
+            const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
+            const white = ALL_INSTITUTIONS.find(i => i.name.includes('Whitechapel'));
+            const gas = ALL_INSTITUTIONS.find(i => i.name.includes('Gasworks'));
+            const camden = ALL_INSTITUTIONS.find(i => i.name.includes('Camden'));
+            appendCuratorMessage(`
+              <p class="text-slate-200">
+                <strong>Curated 1-Day London Art Itinerary (100% Clean Non-Profit Sanctuaries):</strong>
+              </p>
+              <p class="text-slate-300">
+                A carefully sequenced day through London's most vital independent, artist-run, and civic spaces—completely avoiding corporate sponsor corridors:
+              </p>
+              <p class="text-slate-300">
+                - <strong>11:00 AM · East London Start:</strong> ${formatInstLink(chis)} in Bow. Free entry. Renowned for commissioning daring solo projects by emerging artists. Take a morning stroll along Regent's Canal through Victoria Park.<br>
+                - <strong>1:30 PM · Historic Vanguard:</strong> Take the 277/D3 bus or District Line to ${formatInstLink(white)} in Aldgate East. Free admission. Explore radical archival retrospectives, browse the legendary bookshop, and stop for lunch at the Townsend café.<br>
+                - <strong>3:45 PM · South London Transit:</strong> Take the Overground or Northern Line south to ${formatInstLink(gas)} in Vauxhall. Free admission. Discover international artist residencies and intimate studio commissions.<br>
+                - <strong>Evening Alternative / Weekend Option:</strong> Head north to ${formatInstLink(camden)} in Hampstead for garden studios, ceramic showcases, and an organic garden café.
+              </p>
+              <p class="text-slate-300">
+                All venues have zero fossil fuel or defense corporate underwriting, and all offer free public admission.
+              </p>
+            `);
+            filterByCity('London', true, false);
+            return;
+          }
+
+          // Berlin Itinerary
+          if (q.includes('berlin')) {
+            const kw = ALL_INSTITUTIONS.find(i => i.name.includes('KW Institute'));
+            const grop = ALL_INSTITUTIONS.find(i => i.name.includes('Gropius Bau'));
+            const hkw = ALL_INSTITUTIONS.find(i => i.name.includes('Haus der Kulturen'));
+            appendCuratorMessage(`
+              <p class="text-slate-200">
+                <strong>Curated 1-Day Berlin Contemporary Art Circuit:</strong>
+              </p>
+              <p class="text-slate-300">
+                Experience Berlin's public civic institutions and converted industrial spaces:
+              </p>
+              <p class="text-slate-300">
+                - <strong>11:30 AM · Mitte Industrial Vanguard:</strong> ${formatInstLink(kw)} on Auguststraße. Housed in a former margarine factory, KW has anchored Berlin's experimental scene since the fall of the Wall. Grab coffee in the cobblestone courtyard at Café Bravo.<br>
+                - <strong>2:30 PM · Architectural Crossroads:</strong> Take the U8 to Potsdamer Platz / Kochstraße for ${formatInstLink(grop)}. Marvel at the grand 1881 neo-Renaissance atrium; ground floor exhibitions and project spaces are completely free to the public.<br>
+                - <strong>5:00 PM · Global Assemblies on the Spree:</strong> Take the M29/100 bus through Tiergarten to ${formatInstLink(hkw)} (the 'Pregnant Oyster'). HKW presents non-Western philosophies, decolonial music, and sound assemblies along the river.
+              </p>
+            `);
+            filterByCity('Berlin', true, false);
+            return;
+          }
+
+          // Paris Itinerary
+          if (q.includes('paris')) {
+            const ptok = ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo'));
+            const beton = ALL_INSTITUTIONS.find(i => i.name.includes('Bétonsalon'));
+            appendCuratorMessage(`
+              <p class="text-slate-200">
+                <strong>Curated 1-Day Paris Contemporary Art Itinerary:</strong>
+              </p>
+              <p class="text-slate-300">
+                Explore progressive public spaces free from luxury real estate artwashing:
+              </p>
+              <p class="text-slate-300">
+                - <strong>2:00 PM · Left Bank Research:</strong> Start at ${formatInstLink(beton)} in the 13th Arrondissement (Bibliothèque François Mitterrand). Free public admission. Housed in a converted university flour warehouse, it features cutting-edge intersectional research and artist residencies.<br>
+                - <strong>5:30 PM to Midnight · The Night Owl Palace:</strong> Take Metro Line 14 and Line 9 to ${formatInstLink(ptok)} on Avenue du Président Wilson. Europe's largest contemporary art space stays open until midnight every day except Tuesday, featuring immersive site-specific commissions, bookshops, and evening talks.
+              </p>
+            `);
+            filterByCity('Paris', true, false);
+            return;
+          }
+
+          // New York Itinerary
+          if (q.includes('new york') || q.includes('nyc') || q.includes('manhattan')) {
+            const artsp = ALL_INSTITUTIONS.find(i => i.name.includes('Artists Space'));
+            const kitch = ALL_INSTITUTIONS.find(i => i.name.includes('The Kitchen'));
+            const swiss = ALL_INSTITUTIONS.find(i => i.name.includes('Swiss Institute'));
+            const sculp = ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter'));
+            appendCuratorMessage(`
+              <p class="text-slate-200">
+                <strong>Curated 1-Day New York Independent Non-Profit Trail:</strong>
+              </p>
+              <p class="text-slate-300">
+                A clean alternative to billionaire-dominated trustee boards at MoMA and the Whitney:
+              </p>
+              <p class="text-slate-300">
+                - <strong>12:00 PM · Downtown Conceptual Roots:</strong> ${formatInstLink(artsp)} at 11 Cortlandt Alley in Tribeca. Free entry. Founded in 1972, Artists Space provided early platforms for Cindy Sherman, Nan Goldin, and Adrian Piper.<br>
+                - <strong>2:30 PM · Avant-Garde & Interdisciplinary:</strong> Walk or subway to ${formatInstLink(swiss)} in the East Village (St. Marks Pl) or ${formatInstLink(kitch)} in Chelsea/Westbeth for pioneering video, performance, and international dialog.<br>
+                - <strong>4:45 PM · Queens Industrial Sculpture:</strong> Hop on the 7 train to Court Square in Long Island City for ${formatInstLink(sculp)}. Free entry. A non-collecting kunsthalle inside a 1908 trolley repair shop redesigned by Maya Lin.
+              </p>
+            `);
+            filterByCity('New York', true, false);
+            return;
+          }
+
+          // Dutch Research Corridor (Amsterdam - Utrecht - Rotterdam)
+          if (q.includes('dutch') || q.includes('netherlands') || q.includes('utrecht') || q.includes('rotterdam') || q.includes('amsterdam')) {
+            const bak = ALL_INSTITUTIONS.find(i => i.id === 'bak-utrecht' || i.name.includes('BAK'));
+            const casco = ALL_INSTITUTIONS.find(i => i.id === 'casco-art-institute');
+            const melly = ALL_INSTITUTIONS.find(i => i.id === 'kunstinstituut-melly');
+            const deappel = ALL_INSTITUTIONS.find(i => i.id === 'de-appel');
+            appendCuratorMessage(`
+              <p class="text-slate-200">
+                <strong>Curated Dutch Artistic Research & Commons Corridor:</strong>
+              </p>
+              <p class="text-slate-300">
+                The Netherlands has the densest concentration of progressive, publicly funded research institutions in the world:
+              </p>
+              <p class="text-slate-300">
+                - <strong>Morning in Utrecht (Commons & Theory):</strong> Visit ${formatInstLink(bak)} on Pauwstraat (world center for institutional critique and *Former West*) and walk 5 minutes to ${formatInstLink(casco)} on Lange Nieuwstraat (experimental commoning and community kitchen). Both 10-15 mins from Utrecht Centraal.<br>
+                - <strong>Afternoon in Rotterdam (Decolonial Accountability):</strong> Take a 35-minute direct train to Rotterdam Centraal for ${formatInstLink(melly)} on Witte de Withstraat. Celebrated for its historic decolonial renaming and Ken Lum's public artwork.<br>
+                - <strong>Evening in Amsterdam (Performance & Curatorial Pedagogy):</strong> Train to Amsterdam Centraal for ${formatInstLink(deappel)}, home of seminal performance art archives and the Curatorial Programme.
+              </p>
+            `);
+            flyTo(5.2, 52.1);
+            return;
+          }
+
+          // General Multi-City Overview
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Culture Atlas provides curated cultural itineraries across major world capitals featuring 100% verified clean, non-profit sanctuaries:
+            </p>
+            <p class="text-slate-300">
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="London">London 1-Day Route:</a> Chisenhale Gallery → Whitechapel Gallery → Gasworks → Camden Art Centre.<br>
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Berlin">Berlin Contemporary Trail:</a> KW Institute → Gropius Bau → Haus der Kulturen der Welt (HKW).<br>
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Paris">Paris Circuit:</a> Bétonsalon research centre → Palais de Tokyo (open till midnight).<br>
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="New York">New York Non-Profit Loop:</a> Artists Space → Swiss Institute → The Kitchen → SculptureCenter.<br>
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Utrecht">Dutch Research Corridor:</a> BAK Utrecht → Casco → Kunstinstituut Melly → De Appel.
+            </p>
+            <p class="text-slate-300">
+              Ask about any specific city (e.g. <em>"London itinerary"</em> or <em>"Berlin art route"</em>) for complete transit and timing directions.
+            </p>
+          `);
+          return;
+        }
+
+        // =========================================================================
+        // 🏭 REPURPOSED INDUSTRIAL ARCHITECTURE & ADAPTIVE REUSE
+        // =========================================================================
+        if (q.includes('industrial') || q.includes('factory') || q.includes('brewery') || q.includes('repurpose') || q.includes('trolley') || q.includes('adaptive reuse') || q.includes('warehouse') || (q.includes('architecture') && (q.includes('space') || q.includes('building') || q.includes('convert')))) {
+          const kw = ALL_INSTITUTIONS.find(i => i.name.includes('KW Institute'));
+          const sculp = ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter'));
+          const wiels = ALL_INSTITUTIONS.find(i => i.name.includes('Wiels'));
+          const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
+          const capc = ALL_INSTITUTIONS.find(i => i.name.includes('CAPC'));
+          const beton = ALL_INSTITUTIONS.find(i => i.name.includes('Bétonsalon'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Instead of spending hundreds of millions on corporate starchitect trophies, many of the world's most progressive art spaces chose <strong>adaptive reuse</strong>—transforming abandoned factories, transit hubs, and breweries into spaces for contemporary critique:
+            </p>
+            <p class="text-slate-300">
+              - <strong>${formatInstLink(kw)} (Berlin):</strong> Founded in the early 1990s in a derelict 19th-century margarine factory (*Margarinestift*) in Berlin-Mitte. It retains its raw industrial brick courtyard and five floors of concrete exhibition halls.<br>
+              - <strong>${formatInstLink(sculp)} (New York):</strong> Relocated in 2001 to a former 1908 trolley repair shop in Long Island City, Queens. Renovated by Maya Lin, it features a monumental 40-foot high main hall and catacomb-like brick subterranean vaults.<br>
+              - <strong>${formatInstLink(wiels)} (Brussels):</strong> Housed in the monumental 1930s modernist Wielemans-Ceuppens brewery designed by Adrien Blomme, retaining monumental copper brewing vats and exposed concrete pillars.<br>
+              - <strong>${formatInstLink(chis)} (London):</strong> Founded by artists in 1980 in a 1930s veneer factory and wartime Spitfire propeller workshop on Chisenhale Road in East London.<br>
+              - <strong>${formatInstLink(capc)} (Bordeaux):</strong> Housed in the *Entrepôt Lainé*, an imposing 1824 vaulted stone warehouse historically used for colonial port commodities, repurposed since 1973 into a cavernous public contemporary art nave.<br>
+              - <strong>${formatInstLink(beton)} (Paris):</strong> Located in the Halle aux Farines, a historic industrial flour mill converted into Paris Diderot University.
+            </p>
+          `);
+          if (sculp) selectInstitution(sculp, true);
+          return;
+        }
+
+        // =========================================================================
+        // 🌲 OUTDOOR SCULPTURE PARKS & LAND ART SANCTUARIES
+        // =========================================================================
+        if (q.includes('sculpture park') || q.includes('outdoor') || q.includes('land art') || q.includes('landscape') || (q.includes('nature') && q.includes('art')) || q.includes('storm king') || q.includes('sculpture garden')) {
+          const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
+          const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
+          const aros = ALL_INSTITUTIONS.find(i => i.name.includes('ARoS'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Culture Atlas audits and maps extraordinary <strong>outdoor sculpture parks and landscape art sanctuaries</strong> operating with verified ethical funding:
+            </p>
+            <p class="text-slate-300">
+              - <strong>${formatInstLink(kroll)} (Otterlo, Netherlands):</strong> One of Europe's largest sculpture gardens, spanning 60 acres within De Hoge Veluwe National Park. Features over 160 monumental outdoor sculptures by Richard Serra, Jean Dubuffet (*Jardin d'émail*), Barbara Hepworth, and Marta Pan. Visitors explore the forest and dunes on complimentary white park bicycles.<br>
+              - <strong>${formatInstLink(louis)} (Humlebæk, Denmark):</strong> Masterpiece of Danish modernist architecture overlooking the Øresund sound towards Sweden. Landmark outdoor bronzes by Henry Moore, Alexander Calder, and Alberto Giacometti are situated directly on coastal bluffs and grassy slopes.<br>
+              - <strong>${formatInstLink(aros)} (Aarhus, Denmark):</strong> Crowned by Olafur Eliasson's permanent chromatic skywalk *Your Rainbow Panorama*—a 150-meter circular glass walkway that immerses visitors in a full spectrum of natural light overlooking the Danish city.
+            </p>
+            <p class="text-slate-300">
+              Unlike private sculpture foundations endowed by fossil fuel fortunes, these sanctuaries operate with clean public governance and ecological accountability.
+            </p>
+          `);
+          if (kroll) selectInstitution(kroll, true);
+          return;
+        }
+
+        // =========================================================================
+        // 🎞️ VIDEO ART, SOUND ART & TIME-BASED MEDIA
+        // =========================================================================
+        if (q.includes('video art') || q.includes('time-based') || q.includes('sound art') || q.includes('performance art') || q.includes('moving image') || q.includes('experimental film') || q.includes('media art') || q.includes('audiovisual')) {
+          const kitch = ALL_INSTITUTIONS.find(i => i.name.includes('The Kitchen'));
+          const v2 = ALL_INSTITUTIONS.find(i => i.name.includes('V2_') || i.name.includes('V2'));
+          const argos = ALL_INSTITUTIONS.find(i => i.name.includes('Argos'));
+          const tpg = ALL_INSTITUTIONS.find(i => i.name.includes("Photographers' Gallery"));
+          const edith = ALL_INSTITUTIONS.find(i => i.name.includes('Edith-Russ'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Time-based media, video art, and sound experimentation require specialized non-profit platforms dedicated to dematerialized and ephemeral art:
+            </p>
+            <p class="text-slate-300">
+              - <strong>${formatInstLink(kitch)} (New York):</strong> Founded in 1971 by Woody and Steina Vasulka inside the Mercer Arts Center, The Kitchen was the historic crucible for American video and electronic art, fostering Nam June Paik, Joan Jonas, Laurie Anderson, Cindy Sherman, and Arthur Russell.<br>
+              - <strong>${formatInstLink(v2)} (Rotterdam):</strong> An interdisciplinary center for art and media technology founded in 1981, investigating critical AI, biotechnology, augmented robotics, and digital ecology.<br>
+              - <strong>${formatInstLink(argos)} (Brussels):</strong> Founded in 1989, Europe's foremost dedicated center and historical distribution archive for artist moving image, video art, and sound works.<br>
+              - <strong>${formatInstLink(tpg)} (London):</strong> Founded in 1971 in Soho, championing still photography, computational imagery, and digital screen cultures with free public galleries.<br>
+              - <strong>${formatInstLink(edith)} (Oldenburg, Germany):</strong> Civic exhibition institute focusing specifically on digital media critique, internet art, and algorithmic society.
+            </p>
+          `);
+          if (kitch) selectInstitution(kitch, true);
+          return;
+        }
+
+        // =========================================================================
+        // 🏛️ KUNSTHALLE VS MUSEUM: CURATORIAL & ECONOMIC DISTINCTION
+        // =========================================================================
+        if (q.includes('kunsthalle vs museum') || q.includes('what is a kunsthalle') || q.includes('collecting vs non-collecting') || q.includes('difference between kunsthalle') || (q.includes('kunsthalle') && (q.includes('mean') || q.includes('definition')))) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              The fundamental difference between a <strong>Museum</strong> and a <strong>Kunsthalle</strong> lies in permanent asset collection and financial incentives:
+            </p>
+            <p class="text-slate-300">
+              1. <strong>The Museum (Collecting Institution):</strong><br>
+              Traditional museums (like MoMA, the Met, or the Louvre) build and preserve permanent collections. A vast portion of their budget and staff is tied up in insuring, storing, conserving, and cataloging valuable physical art objects. Because collectors donate art in exchange for tax write-offs and museum board seats, museums are vulnerable to billionaire trustee influence and art market speculation.
+            </p>
+            <p class="text-slate-300">
+              2. <strong>The Kunsthalle (Non-Collecting Art Hall):</strong><br>
+              Originating in Germany and Switzerland (from German *Kunst* = art, *Halle* = hall), a Kunsthalle possesses <strong>no permanent collection</strong>. Instead of stockpiling multi-million-dollar assets in vaults, 100% of its resources go toward commissioning brand-new work from living artists, publishing research, and hosting critical public debates.
+            </p>
+            <p class="text-slate-300">
+              Because Kunsthalles don't have permanent collections to safeguard or commercial values to inflate, they have historically served as the vanguard for radical curatorial experimentation (like Harald Szeemann's 1969 *When Attitudes Become Form* at Kunsthalle Bern, KW Institute in Berlin, or SculptureCenter in New York).
+            </p>
+          `);
+          return;
+        }
+
+        // =========================================================================
+        // 💼 W.A.G.E. CERTIFICATION, FAIR PAY & MUSEUM LABOR UNIONS
+        // =========================================================================
+        if (q.includes('wage') || q.includes('fair pay') || q.includes('union') || q.includes('local 2110') || q.includes('labor') || q.includes('strike moma') || q.includes('museum workers') || q.includes('minimum fee')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Ethical cultural stewardship is inseparable from <strong>fair artist remuneration and museum worker labor rights</strong>:
+            </p>
+            <p class="text-slate-300">
+              - <strong>W.A.G.E. (Working Artists and the Greater Economy):</strong> Founded in 2008 in New York, W.A.G.E. created the first voluntary certification program that sets standardized minimum fees for artists when non-profit institutions exhibit or commission their work. W.A.G.E. ended the exploitative assumption that artists should supply labor to wealthy institutions for free "exposure."<br>
+              - <strong>Museum Staff Unionization (UAW Local 2110 & AFSCME):</strong> Over the past decade, frontline staff (educators, preparators, visitor assistants, archivists) across the US unionized at MoMA, the Whitney, the New Museum, Guggenheim, Philadelphia Museum of Art, and MFA Boston. Workers protested extreme disparities between multi-million-dollar director salaries and poverty-level wages for frontline workers.<br>
+              - <strong>Culture Atlas Standpoint:</strong> Mega-museums with multi-billion-dollar endowments often treat cultural workers as expendable. Culture Atlas champions independent and civic spaces that respect fair artist contracts, transparent staff compensation, and democratic governance.
+            </p>
+          `);
+          return;
+        }
+
+        // =========================================================================
+        // ✒️ WHAT IS CURATING? ETYMOLOGY & HISTORICAL TRANSFORMATION
+        // =========================================================================
+        if (q.includes('what is curating') || q.includes('curator role') || q.includes('etymology of curat') || q.includes('curatorial practice') || q.includes('history of curat')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              The role of the <strong>curator</strong> has undergone three major historical transformations:
+            </p>
+            <p class="text-slate-300">
+              1. <strong>The Custodian (Latin *curare*):</strong> The root *curare* means "to care for" or "tend." For centuries, a curator was a museum civil servant who cared for physical relics—cataloging, restoring, and storing objects in aristocratic or royal collections.<br>
+              2. <strong>The Independent Author (*Ausstellungsmacher*):</strong> In the late 1960s, Harald Szeemann resigned from Kunsthalle Bern to become an independent exhibition-maker. He demonstrated that an exhibition itself could be an intellectual authorship and artistic medium, bringing conceptual artists into dynamic spatial dialogues.<br>
+              3. <strong>The Critical Researcher & Assembly Facilitator:</strong> Today, curating is understood not as choosing paintings for white walls, but as creating public assemblies and research platforms (exemplified by Maria Hlavajova at BAK Utrecht, Charles Esche at Van Abbemuseum, and Okwui Enwezor at Documenta 11). Curators mobilize culture to address climate justice, colonial restitution, and political imagination.
+            </p>
+          `);
+          return;
+        }
 
         // 1. London Art Scene & Independent Spaces
         if (q.includes('london') && (q.includes('art') || q.includes('scene') || q.includes('space') || q.includes('tell me') || q.includes('more') || q.includes('guide') || q.includes('recommend') || q.includes('culture') || q.includes('critic'))) {
