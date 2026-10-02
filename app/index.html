@@ -4706,6 +4706,7 @@
 
     // Scholarly Audit Dossier View
     function openDossier(inst) {
+      if (!inst) return;
       const drawer = document.getElementById('detailDrawer');
       const body = document.getElementById('detailBody');
       drawer.classList.remove('hidden');
@@ -4714,359 +4715,180 @@
       const webUrl = inst.website || (inst.sources && inst.sources[0]) || '';
       try { domain = new URL(webUrl).hostname.replace(/^www\./, ''); } catch(e) {}
 
-      const tierBadgeClass = inst.tier === 'A' 
+      const isClean = inst.tier === 'A';
+      const tierBadgeClass = isClean 
         ? 'text-emerald-400 border-emerald-800 bg-[#092216]' 
         : inst.tier === 'B' 
-        ? 'text-blue-400 border-blue-800 bg-[#0d1e36]' 
-        : 'text-slate-400 border-slate-700 bg-[#171a24]';
+        ? 'text-rose-400 border-rose-800 bg-[#280c12]' 
+        : 'text-amber-400 border-amber-800 bg-[#26180a]';
 
-      const tierLabel = inst.tier === 'A' ? 'Tier A · Verified Clean' : inst.tier === 'B' ? 'Tier B · Transparent with Commercial Co-Sponsor' : 'Tier U · Under Evaluation';
+      const tierLabel = isClean 
+        ? 'Tier A · Verified Clean Sanctuary' 
+        : (inst.tier === 'B' ? 'Tier B · Excluded (Flagged Corporate Sponsor)' : 'Tier U · Excluded (Roster Unverified)');
+
+      const cleanAlts = !isClean ? ALL_INSTITUTIONS.filter(i => matchC(i.city, inst.city)) : [];
 
       body.innerHTML = `
         <div class="space-y-3">
           <div>
             <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded border ${tierBadgeClass}">${tierLabel}</span>
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#101828] text-[#93c5fd] border border-[#202d48]">🏛️ ${inst.governance_type}</span>
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#141e17] text-[#6ee7b7] border border-[#1b3b2b]">🎨 ${inst.curatorial_focus}</span>
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#1f1910] text-amber-300 border border-[#3e2e18]">📅 Est. ${inst.year_founded}</span>
+              <span class="text-[13px] font-mono px-2 py-0.5 rounded border ${tierBadgeClass}">${tierLabel}</span>
+              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#101828] text-[#93c5fd] border border-[#202d48]">🏛️ ${escapeHtml(inst.governance_type || 'Civic')}</span>
+              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#141e17] text-[#6ee7b7] border border-[#1b3b2b]">🎨 ${escapeHtml(inst.curatorial_focus || 'Contemporary Art')}</span>
+              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#1f1910] text-amber-300 border border-[#3e2e18]">📅 Est. ${inst.year_founded || 'Historic'}</span>
             </div>
-            <h2 class="text-[18px] sm:text-[18px] font-normal text-white leading-[120%]">${inst.name}</h2>
-            <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${inst.location} · ${inst.size === 'L' ? 'Large Institution (>$20M / >500k visitors)' : 'Small / Mid-sized Kunsthalle'}</p>
+            <h2 class="text-[18px] sm:text-[20px] font-normal text-white leading-[120%]">${escapeHtml(inst.name)}</h2>
+            <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${escapeHtml(inst.location || inst.city)} · ${inst.size || 'Independent Space'}</p>
           </div>
+
+          ${!isClean ? `
+            <div class="bg-[#1f0d14] border border-rose-700/80 p-3.5 rounded-xl space-y-1.5">
+              <span class="text-rose-400 font-mono text-[13px] uppercase tracking-wider block font-bold">⚠️ Ethical Exclusion Notice</span>
+              <p class="text-rose-200 text-[14px] leading-relaxed">
+                <strong>Audit Conflict:</strong> ${escapeHtml(inst.watch || 'Corporate underwriting conflict / ethical audit flag.')}
+              </p>
+              <p class="text-slate-300 text-[13px]">
+                <strong>Policy:</strong> Culture Atlas maps strictly verified clean spaces that operate free of fossil fuels, weapons manufacturing, private prisons, and predatory corporate underwriting.
+              </p>
+            </div>
+
+            ${cleanAlts.length > 0 ? `
+              <div class="bg-[#0c1626] border border-blue-800/70 p-3.5 rounded-xl space-y-2">
+                <span class="text-blue-300 font-mono text-[13px] uppercase tracking-wider block font-bold">🌿 Verified Clean Sanctuaries in ${escapeHtml(inst.city)}</span>
+                <p class="text-slate-300 text-[13px]">Instead of supporting compromised boards, explore these verified independent spaces:</p>
+                <div class="space-y-1.5">
+                  ${cleanAlts.slice(0, 4).map(a => `
+                    <div class="flex items-center justify-between text-[13px] bg-[#101b2f] p-2 rounded-lg border border-blue-900/40">
+                      <a href="#" class="inst-link text-emerald-400 hover:underline font-medium" data-name="${escapeHtml(a.name)}">${escapeHtml(a.name)}</a>
+                      <span class="text-slate-400 font-mono text-[12px]">${escapeHtml(a.admission_policy)}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+          ` : ''}
 
           ${webUrl ? `
             <a href="${webUrl}" target="_blank" rel="noopener noreferrer" 
                class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[14px] rounded-xl transition shadow-md active:scale-95">
-              <span>🌐</span> <span>Visit Official Museum Website (${domain})</span> <span>↗</span>
+              <span>🌐</span> <span>Visit Official Website (${domain})</span> <span>↗</span>
             </a>
           ` : ''}
 
-          <!-- Scholarly Visitor Recommendation -->
           <div class="bg-[#0b101c] p-3 rounded-xl border border-[#1a253c]">
-            <span class="text-[14px] font-normal text-[#60a5fa] uppercase tracking-wider block mb-1">Curator Visitor Recommendation</span>
-            <p class="text-[14px] text-slate-200 leading-[120%]">${inst.curator_recommendation}</p>
+            <span class="text-[13px] font-normal text-[#60a5fa] uppercase tracking-wider block mb-1 font-mono">Curator Assessment</span>
+            <p class="text-[14px] text-slate-200 leading-[130%]">${escapeHtml(inst.curator_recommendation || 'Evaluated under Culture Atlas research framework.')}</p>
           </div>
 
-          <!-- Visitor Planning & Practical Guide (Authentic Institutional Data) -->
-          <div class="bg-[#0b101c] p-3 rounded-xl border border-[#1e2a44] space-y-2.5">
-            <div class="flex items-center justify-between border-b border-[#1a253c] pb-1.5">
-              <span class="text-[14px] font-normal text-white uppercase tracking-wider flex items-center gap-1.5">
-                <span>🧭</span> <span>Visitor Planning & Practical Guide</span>
-              </span>
-              ${inst.visit_url ? `
-                <a href="${inst.visit_url}" target="_blank" rel="noopener noreferrer" class="text-[14px] text-[#60a5fa] hover:underline flex items-center gap-1 font-mono">
-                  <span>Plan Your Visit ↗</span>
-                </a>
-              ` : ''}
-            </div>
+          ${isClean ? `
+            <div class="bg-[#0b101c] p-3 rounded-xl border border-[#1e2a44] space-y-2.5">
+              <div class="flex items-center justify-between border-b border-[#1a253c] pb-1.5">
+                <span class="text-[13px] font-normal text-white uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                  <span>🧭</span> <span>Visitor Planning & Practical Guide</span>
+                </span>
+                ${inst.visit_url ? `
+                  <a href="${inst.visit_url}" target="_blank" rel="noopener noreferrer" class="text-[13px] text-[#60a5fa] hover:underline flex items-center gap-1 font-mono">
+                    <span>Plan Your Visit ↗</span>
+                  </a>
+                ` : ''}
+              </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]">
-              <!-- Hours -->
-              <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                <div class="text-[14px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                  <span>🕒</span> <span>Hours & Schedule</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]">
+                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
+                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
+                    <span>🕒</span> <span>Hours & Schedule</span>
+                  </div>
+                  <div class="text-slate-200 font-normal text-[13px] leading-[120%]">${escapeHtml(inst.opening_hours || 'Check official site')}</div>
                 </div>
-                <div class="text-slate-200 font-normal text-[14px] leading-[120%]">${inst.opening_hours || 'Check official site'}</div>
-              </div>
 
-              <!-- Admission Pricing -->
-              <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                <div class="text-[14px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                  <span>🎟️</span> <span>Admission & Tickets</span>
+                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
+                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
+                    <span>🎟️</span> <span>Admission & Tickets</span>
+                  </div>
+                  <div class="text-emerald-400 font-normal text-[13px] leading-[120%]">${escapeHtml(inst.admission_fee || 'Subsidized Admission')}</div>
                 </div>
-                <div class="text-emerald-400 font-normal text-[14px] leading-[120%]">${inst.admission_fee || 'Subsidized Admission'}</div>
-              </div>
 
-              <!-- Address & Cultural District -->
-              <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                <div class="text-[14px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                  <span>📍</span> <span>Address & Quarter</span>
+                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
+                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
+                    <span>📍</span> <span>Address & Quarter</span>
+                  </div>
+                  <div class="text-slate-200 text-[13px] leading-[120%]">${escapeHtml(inst.address || inst.location)}</div>
+                  ${inst.neighborhood ? `<div class="text-[12px] text-[#93c5fd] font-mono mt-0.5">${escapeHtml(inst.neighborhood)}</div>` : ''}
                 </div>
-                <div class="text-slate-200 text-[14px] leading-[120%]">${inst.address || inst.location}</div>
-                ${inst.neighborhood ? `<div class="text-[14px] text-[#93c5fd] font-mono mt-0.5">${inst.neighborhood}</div>` : ''}
-              </div>
 
-              <!-- Recommended Duration -->
-              <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                <div class="text-[14px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                  <span>⏱️</span> <span>Suggested Duration</span>
+                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
+                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
+                    <span>⏱️</span> <span>Suggested Duration</span>
+                  </div>
+                  <div class="text-slate-200 text-[13px] leading-[120%]">${escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}</div>
                 </div>
-                <div class="text-slate-200 text-[14px] leading-[120%]">${inst.visit_duration || '1.5 – 2.5 hours'}</div>
               </div>
-            </div>
 
-            <!-- Transit & Directions -->
-            <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-              <div class="text-[14px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                <span>🚇</span> <span>Public Transit & Directions</span>
-              </div>
-              <div class="text-[14px] text-slate-300 leading-[120%]">${inst.transit_tips || 'Accessible via central public transit network.'}</div>
-            </div>
-
-            <!-- Collection / Architecture Highlight -->
-            <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-              <div class="text-[14px] text-amber-400/90 font-mono flex items-center gap-1 mb-1">
-                <span>⭐</span> <span>Visitor Highlight & Signature Art</span>
-              </div>
-              <div class="text-[14px] text-slate-200 leading-[120%] font-normal">${inst.highlight || 'Celebrated collection and contemporary commissions.'}</div>
-            </div>
-
-            <!-- Accessibility & Amenities -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]">
               <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                <div class="text-[14px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                  <span>♿</span> <span>Accessibility</span>
+                <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
+                  <span>🚇</span> <span>Public Transit & Directions</span>
                 </div>
-                <div class="text-[14px] text-slate-300 leading-[120%]">${inst.accessibility || 'Step-free access, elevators, accessible restrooms.'}</div>
+                <div class="text-[13px] text-slate-300 leading-[120%]">${escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}</div>
               </div>
+
               <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                <div class="text-[14px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                  <span>☕</span> <span>Amenities & Facilities</span>
+                <div class="text-[13px] text-amber-400/90 font-mono flex items-center gap-1 mb-1">
+                  <span>⭐</span> <span>Visitor Highlight & Signature Art</span>
                 </div>
-                <div class="text-[14px] text-slate-300 leading-[120%]">${inst.amenities || 'Art bookshop, café, cloakroom, and lockers.'}</div>
+                <div class="text-[13px] text-slate-200 leading-[120%] font-normal">${escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}</div>
               </div>
-            </div>
-          </div>
 
-          <!-- Admission & Public Access Policy -->
-          <div class="bg-[#101420] p-3 rounded-xl border border-[#1e273a]">
-            <div class="flex items-center justify-between mb-1">
-              <span class="text-[14px] font-normal text-emerald-400 uppercase tracking-wider">Admission & Access Policy</span>
-              <span class="text-[14px] font-mono text-[#6ee7b7] bg-[#0c1f14] px-1.5 py-0.5 rounded border border-[#154028]">${inst.admission_policy}</span>
-            </div>
-            <p class="text-[14px] text-slate-300 leading-[120%]">${inst.admission_details}</p>
-          </div>
-
-          <!-- Funding Architecture -->
-          <div class="bg-[#101420] p-3 rounded-xl border border-[#1e273a]">
-            <span class="text-[14px] font-normal text-blue-400 uppercase tracking-wider block mb-1">Funding Architecture & Operating Budget</span>
-            <p class="text-[14px] text-slate-300 leading-[120%]">${inst.funding}</p>
-          </div>
-
-          <!-- Ethical Safeguard Policy -->
-          <div class="bg-[#101420] p-3 rounded-xl border border-[#1e273a]">
-            <span class="text-[14px] font-normal text-purple-400 uppercase tracking-wider block mb-1">Ethical Safeguards & Autonomy Charter</span>
-            <p class="text-[14px] text-slate-300 leading-[120%]">${inst.ethical_safeguard}</p>
-          </div>
-
-          <!-- Governance Scrutiny -->
-          ${inst.watch ? `
-            <div class="bg-[#1a150b] p-3 rounded-xl border border-[#382b13]">
-              <span class="text-[14px] font-normal text-amber-400 uppercase tracking-wider block mb-1">Governance Scrutiny & Watch Notes</span>
-              <p class="text-[14px] text-slate-300 leading-[120%]">${inst.watch}</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]">
+                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
+                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
+                    <span>♿</span> <span>Accessibility</span>
+                  </div>
+                  <div class="text-[13px] text-slate-300 leading-[120%]">${escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}</div>
+                </div>
+                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
+                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
+                    <span>☕</span> <span>Amenities & Facilities</span>
+                  </div>
+                  <div class="text-[13px] text-slate-300 leading-[120%]">${escapeHtml(inst.amenities || 'Art bookshop, café, cloakroom, and lockers.')}</div>
+                </div>
+              </div>
             </div>
           ` : ''}
 
-          <!-- Financial Transparency Rating -->
-          <div class="bg-[#0c121e] p-2.5 rounded-xl border border-[#1a2538] flex items-center justify-between">
-            <span class="text-[14px] text-slate-400 font-mono">Transparency Grade:</span>
-            <span class="text-[14px] font-normal text-[#60a5fa] font-mono">${inst.transparency_grade}</span>
+          <div class="bg-[#101420] p-3 rounded-xl border border-[#1e273a]">
+            <span class="text-[13px] font-normal text-blue-400 uppercase tracking-wider block mb-1 font-mono">Funding Architecture & Operating Budget</span>
+            <p class="text-[14px] text-slate-300 leading-[130%]">${escapeHtml(inst.funding || 'Civic cultural budget')}</p>
           </div>
 
-          <!-- Sources & Filings -->
+          <div class="bg-[#101420] p-3 rounded-xl border border-[#1e273a]">
+            <span class="text-[13px] font-normal text-purple-400 uppercase tracking-wider block mb-1 font-mono">Ethical Safeguards & Autonomy Charter</span>
+            <p class="text-[14px] text-slate-300 leading-[130%]">${escapeHtml(inst.ethical_safeguard || 'Verified under Culture Atlas criteria')}</p>
+          </div>
+
+          ${isClean && inst.watch ? `
+            <div class="bg-[#1a150b] p-3 rounded-xl border border-[#382b13]">
+              <span class="text-[13px] font-normal text-amber-400 uppercase tracking-wider block mb-1 font-mono">Curator Audit Notes</span>
+              <p class="text-[14px] text-slate-300 leading-[130%]">${escapeHtml(inst.watch)}</p>
+            </div>
+          ` : ''}
+
+          <div class="bg-[#0c121e] p-2.5 rounded-xl border border-[#1a2538] flex items-center justify-between">
+            <span class="text-[13px] text-slate-400 font-mono">Transparency Grade:</span>
+            <span class="text-[13px] font-normal text-[#60a5fa] font-mono">${escapeHtml(inst.transparency_grade || 'A')}</span>
+          </div>
+
           <div class="pt-2 border-t border-[#1c212a]">
-            <span class="text-[14px] font-normal text-slate-400 uppercase tracking-wider block mb-2">Audited Sources, Reports & Filings</span>
+            <span class="text-[13px] font-normal text-slate-400 uppercase tracking-wider block mb-2 font-mono">Audited Sources, Reports & Filings</span>
             <div class="flex flex-col gap-1.5 font-mono">
               ${(inst.sources || []).map(u => `
-                <a href="${u}" target="_blank" class="text-[#60a5fa] hover:underline text-[14px] flex items-center gap-1">
-                  <span>↗</span> <span class="truncate">${u}</span>
+                <a href="${u}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:underline text-[13px] flex items-center gap-1">
+                  <span>↗</span> <span class="truncate">${escapeHtml(u)}</span>
                 </a>
               `).join('')}
             </div>
           </div>
-
-          <!-- Curatorial Research Action Button -->
-          <div class="pt-3 border-t border-[#1c212a] flex items-center justify-between gap-2">
-            <button class="dossier-ask-ai-research flex-1 px-3 py-2 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-normal rounded-xl transition flex items-center justify-center gap-1.5 shadow" data-name="${inst.name.replace(/"/g, '&quot;')}">
-              <span>🔬</span> <span>Ask AI for Deep Research Audit</span>
-            </button>
-          </div>
         </div>
       `;
-
-      const askAiBtn = body.querySelector('.dossier-ask-ai-research');
-      if (askAiBtn) {
-        askAiBtn.addEventListener('click', () => {
-          drawer.classList.add('hidden');
-          const prompt = `Can you do a deep research audit on ${inst.name}?`;
-          appendUserMessage(prompt);
-          handleCuratorQuery(prompt);
-        });
-      }
-    }
-
-    // =========================================================
-    // 💬 CONVERSATIONAL CURATOR LOGIC & RESEARCH-GRADE ENGINE
-    // =========================================================
-    const curatorMessages = document.getElementById('curatorMessages');
-    const curatorInput = document.getElementById('curatorInput');
-    const curatorSendBtn = document.getElementById('curatorSendBtn');
-    const curatorTyping = document.getElementById('curatorTyping');
-
-    // Unified Multi-Provider AI State & Local Storage
-    let aiApiKey = localStorage.getItem('atlas_ai_api_key') || localStorage.getItem('atlas_gemini_api_key') || '';
-    let aiProvider = localStorage.getItem('atlas_ai_provider') || 'auto';
-    let aiModel = localStorage.getItem('atlas_ai_model') || '';
-
-    function detectProvider(key) {
-      if (!key) return null;
-      const k = key.trim();
-      if (k.startsWith('sk-ant-')) return 'anthropic';
-      if (k.startsWith('AIza')) return 'gemini';
-      if (k.startsWith('sk-') || k.startsWith('sk-proj-')) return 'openai';
-      return 'anthropic';
-    }
-
-    function getEffectiveProvider() {
-      if (aiProvider && aiProvider !== 'auto') return aiProvider;
-      return detectProvider(aiApiKey) || 'anthropic';
-    }
-
-    function getEffectiveModel() {
-      if (aiModel) return aiModel;
-      const p = getEffectiveProvider();
-      if (p === 'anthropic') return 'claude-haiku-4-5-20251001';
-      if (p === 'openai') return 'gpt-4o-mini';
-      if (p === 'gemini') return 'gemini-2.5-flash';
-      return 'claude-haiku-4-5-20251001';
-    }
-
-    function updateAIStatusUI() {
-      const dot = document.getElementById('curatorStatusDot');
-      const label = document.getElementById('curatorStatusLabel');
-      if (!dot || !label) return;
-      if (aiApiKey) {
-        const prov = getEffectiveProvider();
-        const pName = prov === 'anthropic' ? 'Claude' : (prov === 'openai' ? 'OpenAI' : 'Gemini');
-        dot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
-        label.textContent = `${pName} Live`;
-        label.className = 'hidden sm:inline font-mono text-[14px] text-emerald-400';
-      } else {
-        dot.className = 'w-2 h-2 rounded-full bg-amber-400';
-        label.textContent = 'Critical Engine';
-        label.className = 'hidden sm:inline font-mono text-[14px] text-[#a1a1aa]';
-      }
-    }
-
-    // Reset to Unified Landing View (+ New Chat)
-    function resetToNewChat() {
-      if (curatorMessages) curatorMessages.innerHTML = '';
-      const hero = document.getElementById('workHeroSection');
-      const suggestions = document.getElementById('workSuggestionsSection');
-      if (hero) hero.style.display = 'block';
-      if (suggestions) suggestions.style.display = 'block';
-      const wInput = document.getElementById('workInput');
-      if (wInput) wInput.value = '';
-      clearAllFilters();
-      const container = document.getElementById('workViewContainer');
-      if (container) {
-        if (container.scrollTo) container.scrollTo({ top: 0, behavior: 'smooth' });
-        else container.scrollTop = 0;
-      }
-    }
-
-    function initCuratorConversation() {
-      // In unified work chat, startup presents the clean landing canvas
-      if (curatorMessages) curatorMessages.innerHTML = '';
-      const hero = document.getElementById('workHeroSection');
-      const suggestions = document.getElementById('workSuggestionsSection');
-      if (hero) hero.style.display = 'block';
-      if (suggestions) suggestions.style.display = 'block';
-    }
-
-    function onChatStarted() {
-      const hero = document.getElementById('workHeroSection');
-      const suggestions = document.getElementById('workSuggestionsSection');
-      if (hero) hero.style.display = 'none';
-      if (suggestions) suggestions.style.display = 'none';
-    }
-
-    function scrollToBottom() {
-      const container = document.getElementById('workViewContainer');
-      if (container) {
-        setTimeout(() => {
-          if (container.scrollTo) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
-          else container.scrollTop = container.scrollHeight;
-        }, 60);
-      }
-    }
-
-    function appendUserMessage(text) {
-      onChatStarted();
-      const div = document.createElement('div');
-      div.className = 'flex justify-end my-2.5 select-text w-full';
-      div.innerHTML = `
-        <div class="max-w-[85%] sm:max-w-[75%] bg-[#2a2a2a] text-[#ececec] text-[14px] px-4 py-2.5 rounded-3xl shadow-sm leading-[120%] whitespace-pre-wrap select-text border border-[#333]">
-          ${escapeHtml(text)}
-        </div>
-      `;
-      curatorMessages?.appendChild(div);
-      scrollToBottom();
-    }
-
-    function appendCuratorMessage(htmlContent) {
-      onChatStarted();
-      const div = document.createElement('div');
-      div.className = 'flex items-start gap-3 my-2.5 select-text w-full bg-[#212121] border border-[#2e2e2e] rounded-2xl p-4 shadow-sm';
-
-      div.innerHTML = `
-        <div class="w-8 h-8 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] text-white shrink-0 mt-0.5 select-none" title="Culture Atlas Curator">
-          🏛️
-        </div>
-        <div class="flex-1 min-w-0 text-[14px] text-[#ececec] leading-[120%] space-y-3 pt-0.5">
-          ${htmlContent}
-        </div>
-      `;
-      curatorMessages?.appendChild(div);
-
-      // Direct event binding on inline links for immediate responsiveness
-      div.querySelectorAll('.inst-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const name = link.getAttribute('data-name');
-          const inst = ALL_INSTITUTIONS.find(i => i.name === name);
-          if (inst) selectInstitution(inst, true);
-        });
-      });
-
-      div.querySelectorAll('.dossier-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const name = link.getAttribute('data-name');
-          const inst = ALL_INSTITUTIONS.find(i => i.name === name);
-          if (inst) openDossier(inst);
-        });
-      });
-
-      div.querySelectorAll('.city-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const city = link.getAttribute('data-city');
-          if (city) filterByCity(city, true, false);
-        });
-      });
-
-      div.querySelectorAll('.prompt-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const q = link.getAttribute('data-prompt') || link.textContent.trim().replace(/^["']|["']$/g, '');
-          if (q) {
-            appendUserMessage(q);
-            handleCuratorQuery(q);
-          }
-        });
-      });
-
-      scrollToBottom();
-    }
-
-    function escapeHtml(str) {
-      return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
     function formatInstLink(inst, opts = {}) {
@@ -5075,14 +4897,17 @@
       let domain = 'website';
       try { domain = new URL(webUrl).hostname.replace(/^www\./, ''); } catch(e) {}
       
-      const nameLink = `<a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a>`;
-      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link" data-city="${escapeHtml(inst.city)}">${escapeHtml(inst.location || inst.city)}</a>`;
-      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[14px]" data-name="${escapeHtml(inst.name)}">audit dossier</a>${webUrl ? ` · <a href="${webUrl}" target="_blank" rel="noopener noreferrer" class="dossier-link text-[14px]">${domain} ↗</a>` : ''})`;
+      const isEx = inst.tier !== 'A';
+      const nameClass = isEx ? 'inst-link text-rose-300 hover:underline font-normal' : 'inst-link font-normal';
+      const badge = isEx ? ' <span class="text-[11px] font-mono px-1 py-0.2 rounded bg-[#2a0e14] text-rose-400 border border-rose-800 shrink-0">Excluded</span>' : '';
+      const nameLink = `<a href="#" class="${nameClass}" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a>${badge}`;
+      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${escapeHtml(inst.city)}">${escapeHtml(inst.location || inst.city)}</a>`;
+      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[13px] text-[#60a5fa] hover:underline" data-name="${escapeHtml(inst.name)}">audit dossier</a>${webUrl ? ` · <a href="${webUrl}" target="_blank" rel="noopener noreferrer" class="dossier-link text-[13px] text-slate-400 hover:underline">${domain} ↗</a>` : ''})`;
       
       return `${nameLink}${cityPart}${dossierPart}`;
     }
 
-        // Unified Multi-Provider Live Generative AI Engine (Claude, OpenAI, Gemini)
+    // Unified Multi-Provider Live Generative AI Engine (Claude, OpenAI, Gemini)
     async function queryAI(userPrompt) {
       if (!aiApiKey) return null;
       const prov = getEffectiveProvider();
@@ -5092,7 +4917,7 @@
       const sampleInsts = ALL_INSTITUTIONS.slice(0, 45).map(i => `${i.name} (${i.city}, ${i.country}): Tier ${i.tier}, ${i.governance_type}, Hours: ${i.opening_hours}, ${i.admission_policy}, Highlights: ${i.highlight}`).join('\n');
 
       const criticalSystemPrompt = `You are the Culture Atlas assistant, a friendly, clear, and direct guide to art museums and galleries worldwide.
-Culture Atlas maps 203 museums and art spaces across 35 countries that don't take money from fossil fuels, weapons manufacturers, or private prisons.
+Culture Atlas maps 399 verified clean museums and art spaces across 40+ countries that don't take money from fossil fuels, weapons manufacturers, or private prisons.
 
 CORE INSTRUCTION: SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE.
 - Use plain, natural, everyday English.
@@ -5263,6 +5088,150 @@ FORMATTING & INTERACTION RULES:
     // Extract unique cities list for instant recognition
     const ALL_CITIES = Array.from(new Set(ALL_INSTITUTIONS.map(i => (i.city || '').trim()))).filter(Boolean);
     ALL_CITIES.sort((a, b) => b.length - a.length);
+
+    function normStr(s) {
+      return (s || '').normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+    }
+
+    const BRAND_MAP = {
+      'moma': 'MoMA (The Museum of Modern Art)',
+      'the moma': 'MoMA (The Museum of Modern Art)',
+      'moma ps1': 'MoMA PS1',
+      'met': 'The Metropolitan Museum of Art (The Met)',
+      'the met': 'The Metropolitan Museum of Art (The Met)',
+      'whitney': 'Whitney Museum of American Art',
+      'guggenheim': 'Solomon R. Guggenheim Museum',
+      'guggenheim bilbao': 'Guggenheim Bilbao',
+      'pompidou': 'Centre Pompidou',
+      'centre pompidou': 'Centre Pompidou',
+      'dia': 'Dia Beacon',
+      'dia beacon': 'Dia Beacon',
+      'dia chelsea': 'Dia Chelsea',
+      'dia art foundation': 'Dia Beacon',
+      'tate': 'Tate Modern',
+      'tate modern': 'Tate Modern',
+      'tate britain': 'Tate Modern',
+      'serpentine': 'Serpentine Galleries',
+      'inhotim': 'Instituto Inhotim',
+      'mass moca': 'MASS MoCA',
+      'hammer': 'Hammer Museum',
+      'hammer museum': 'Hammer Museum',
+      'wexner': 'Wexner Center for the Arts',
+      'aspen': 'Aspen Art Museum',
+      'aspen art museum': 'Aspen Art Museum',
+      'louvre': 'Louvre',
+      'louvre abu dhabi': 'Louvre Abu Dhabi',
+      'british museum': 'British Museum',
+      'v&a': 'V&A',
+      'v and a': 'V&A',
+      'victoria and albert': 'V&A',
+      'm+': 'M+',
+      'm plus': 'M+',
+      'masp': 'MASP',
+      'walker': 'Walker Art Center',
+      'storm king': 'Storm King Art Center',
+      'tamayo': 'Museo Tamayo',
+      'muac': 'MUAC',
+      'rijksmuseum': 'Rijksmuseum',
+      'van gogh': 'Van Gogh Museum',
+      'munch': 'MUNCH',
+      'stedelijk': 'Stedelijk Museum Amsterdam',
+      'garage': 'Garage Museum',
+      'fruitmarket': 'Fruitmarket Gallery',
+      'national galleries of scotland': 'National Galleries of Scotland',
+      'chisenhale': 'Chisenhale Gallery',
+      'camden': 'Camden Art Centre',
+      'whitechapel': 'Whitechapel Gallery',
+      'artists space': 'Artists Space',
+      'sculpturecenter': 'SculptureCenter',
+      'swiss institute': 'Swiss Institute',
+      'the kitchen': 'The Kitchen',
+      'louisiana': 'Louisiana Museum of Modern Art',
+      'aros': 'ARoS',
+      'kroller': 'Kröller-Müller Museum',
+      'kroller muller': 'Kröller-Müller Museum',
+      'kroeller': 'Kröller-Müller Museum',
+      'bak': 'BAK, basis voor actuele kunst',
+      'casco': 'Casco Art Institute',
+      'melly': 'Kunstinstituut Melly',
+      'de appel': 'De Appel',
+      'framer': 'Framer Framed',
+      'framer framed': 'Framer Framed',
+      'van abbe': 'Van Abbemuseum',
+      'vanabbemuseum': 'Van Abbemuseum',
+      'hkw': 'Haus der Kulturen der Welt (HKW)',
+      'kw': 'KW Institute for Contemporary Art',
+      'gropius': 'Gropius Bau',
+      'palais de tokyo': 'Palais de Tokyo',
+      'betonsalon': 'Bétonsalon',
+      'macba': 'MACBA',
+      'wiels': 'Wiels Contemporary Art Centre',
+      'capc': 'CAPC'
+    };
+
+    function findAnyInstitution(nameOrQuery) {
+      if (!nameOrQuery) return null;
+      const n = normStr(nameOrQuery);
+
+      // 1. Direct exact name match
+      let match = ALL_INSTITUTIONS.find(i => normStr(i.name) === n);
+      if (match) return { inst: match, isClean: true };
+      if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {
+        match = EXCLUDED_INSTITUTIONS.find(i => normStr(i.name) === n);
+        if (match) return { inst: match, isClean: false };
+      }
+
+      // 2. Direct alias match
+      match = ALL_INSTITUTIONS.find(i => i.aliases && i.aliases.some(a => normStr(a) === n));
+      if (match) return { inst: match, isClean: true };
+      if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {
+        match = EXCLUDED_INSTITUTIONS.find(i => i.aliases && i.aliases.some(a => normStr(a) === n));
+        if (match) return { inst: match, isClean: false };
+      }
+
+      // 3. Brand dictionary match
+      const nPadded = ' ' + n.replace(/[^a-z0-9+&]/g, ' ') + ' ';
+      for (const [key, target] of Object.entries(BRAND_MAP)) {
+        if (nPadded.includes(' ' + key + ' ')) {
+          let f = ALL_INSTITUTIONS.find(i => normStr(i.name) === normStr(target) || normStr(i.name).includes(normStr(target)));
+          if (f) return { inst: f, isClean: true };
+          if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {
+            f = EXCLUDED_INSTITUTIONS.find(i => normStr(i.name) === normStr(target) || normStr(i.name).includes(normStr(target)));
+            if (f) return { inst: f, isClean: false };
+          }
+        }
+      }
+
+      // 4. Token Overlap Ranking
+      const stopWords = new Set(['the','a','an','museum','gallery','centre','center','foundation','art','arts','contemporary','institute','institution','of','for','in','and','de','la','le','du','des','di','del','della','und','fur','van','der','den','het','to','at','modern','d','l','why','is','not','isn','clean','excluded','what','about','happened','on','map','tell','me','how','visit','where','does','can']);
+      const queryWords = n.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !stopWords.has(w));
+      if (queryWords.length === 0) return null;
+
+      let bestMatch = null;
+      let isCleanMatch = false;
+      let maxScore = 0;
+
+      const scoreCandidate = (i, isClean) => {
+        const iNameWords = normStr(i.name).split(/[^a-z0-9]+/).filter(w => w.length > 2 && !stopWords.has(w));
+        let score = 0;
+        for (const qw of queryWords) {
+          if (iNameWords.includes(qw)) score += 10;
+          else if (iNameWords.some(iw => iw.includes(qw) || qw.includes(iw))) score += 5;
+        }
+        if (score > maxScore) {
+          maxScore = score;
+          bestMatch = i;
+          isCleanMatch = isClean;
+        }
+      };
+
+      ALL_INSTITUTIONS.forEach(i => scoreCandidate(i, true));
+      if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {
+        EXCLUDED_INSTITUTIONS.forEach(i => scoreCandidate(i, false));
+      }
+
+      return maxScore >= 10 ? { inst: bestMatch, isClean: isCleanMatch } : null;
+    }
 
     function findMentionedCity(text) {
       const t = (text || '').toLowerCase().trim();
@@ -6455,46 +6424,142 @@ FORMATTING & INTERACTION RULES:
           }
         }
 
-        // M. Specific Institution Lookup
-        const instMatch = ALL_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))) || (i.name.toLowerCase().includes(q) && q.length > 3));
-        if (instMatch) {
+
+        // =========================================================================
+        // ⚖️ ETHICAL TOPICS: ARTWASHING, DONORS, ACTIVISM & LABOR
+        // =========================================================================
+
+        // T1. What is Artwashing?
+        if (q.includes('artwashing') || q.includes('art wash') || q.includes('what is artwashing')) {
           appendCuratorMessage(`
             <p class="text-slate-200">
-              <strong>${formatInstLink(instMatch, {noCity: false})}</strong> (${instMatch.neighborhood}), founded in ${instMatch.year_founded}.
+              <strong>Artwashing</strong> is when corporations with controversial records—like fossil fuel extractors, arms manufacturers, or tobacco and opioid companies—sponsor museums, exhibitions, and artists to clean up their public reputation.
             </p>
             <p class="text-slate-300">
-              - <strong>Admission:</strong> ${instMatch.admission_policy} (${instMatch.admission_details})<br>
-              - <strong>Hours:</strong> ${instMatch.opening_hours}<br>
-              - <strong>Highlight:</strong> <span class="text-amber-300/90 font-normal">${instMatch.highlight}</span><br>
-              - <strong>Transit:</strong> ${instMatch.transit_tips}<br>
-              - <strong>Governance:</strong> ${instMatch.governance_type} · ${instMatch.ethical_safeguard}
+              By putting their logo on museum walls, cultural festivals, and galas, companies buy social legitimacy and distract from environmental damage or human rights abuses. Famous examples include BP's 26-year sponsorship of Tate, the Sackler family's naming rights funded by OxyContin, and weapons manufacturers sponsoring arts prizes.
+            </p>
+            <p class="text-slate-300">
+              Culture Atlas solves this by mapping only verified clean, independent institutions that refuse corporate artwashing money.
             </p>
           `);
-
-          selectInstitution(instMatch, true);
           return;
         }
 
-        // M2. Excluded Institution Lookup & Ethical Audit
-        const excludedMatch = typeof EXCLUDED_INSTITUTIONS !== 'undefined' ? EXCLUDED_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))) || (i.name.toLowerCase().includes(q) && q.length > 3)) : null;
-        if (excludedMatch) {
-          const cleanAlternatives = ALL_INSTITUTIONS.filter(i => matchC(i.city, excludedMatch.city));
-          let altText = '';
-          if (cleanAlternatives.length > 0) {
-            altText = `<br><br><strong>Verified Clean Sanctuaries in ${escapeHtml(excludedMatch.city)}:</strong><br>` + cleanAlternatives.slice(0, 3).map(a => `· ${formatInstLink(a)}`).join('<br>');
-          }
+        // T2. The Sackler Family & P.A.I.N. Protests
+        if (q.includes('sackler') || q.includes('purdue pharma') || q.includes('nan goldin') || q.includes('opioid')) {
           appendCuratorMessage(`
-            <p class="text-rose-300">
-              <strong>EXCLUSION AUDIT: ${escapeHtml(excludedMatch.name)} (${escapeHtml(excludedMatch.city)}, ${escapeHtml(excludedMatch.country)})</strong>
+            <p class="text-slate-200">
+              The <strong>Sackler family</strong> owned Purdue Pharma, which developed and aggressively marketed OxyContin, triggering an opioid epidemic responsible for over 500,000 overdose deaths in North America alone.
             </p>
             <p class="text-slate-300">
-              <strong>Status:</strong> Excluded from this map (${excludedMatch.tier === 'B' ? 'Tier B · Flagged Corporate Sponsor' : 'Tier U · Roster Unverified'}).<br>
-              <strong>Governance & Funding:</strong> ${escapeHtml(excludedMatch.funding || 'Private / Corporate sponsorship')}<br>
-              ${excludedMatch.watch ? `<strong>Audit Watch:</strong> <span class="text-amber-200">${escapeHtml(excludedMatch.watch)}</span><br>` : ''}
-              <strong>Ethical Exclusion Policy:</strong> This map strictly includes verified clean, ethically good cultural spaces that operate free of fossil fuels, weapons manufacturing, private prisons, and predatory corporate underwriting.${altText}
+              For decades, the family used massive donations to place the Sackler name on galleries at the Metropolitan Museum of Art, Louvre, Guggenheim, Tate, Serpentine, and V&A. In 2017, photographer Nan Goldin founded <em>P.A.I.N. (Prescription Addiction Intervention Now)</em>, staging dramatic "die-ins" and throwing fake prescription bottles into museum fountains.
+            </p>
+            <p class="text-slate-300">
+              Under public pressure, every major museum eventually stripped the Sackler name. Institutions that still carry Sackler donor ties or endowments (like Dia Beacon or Dulwich) are excluded from Culture Atlas.
             </p>
           `);
           return;
+        }
+
+        // T3. Warren Kanders & Safariland at the Whitney
+        if (q.includes('kanders') || q.includes('safariland') || q.includes('tear gas')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              In 2019, <strong>Warren B. Kanders</strong> was the vice-chair of the Whitney Museum of American Art in New York. Reporting revealed that his company, Safariland, manufactured tear gas grenades and riot gear used against peaceful asylum seekers at the US-Mexico border and protesters in Standing Rock, Ferguson, and Puerto Rico.
+            </p>
+            <p class="text-slate-300">
+              Artist group <em>Decolonize This Place</em> staged nine weeks of protests at the Whitney. When eight artists pulled their works from the 2019 Whitney Biennial, Kanders was forced to resign. The controversy led artists worldwide to question who sits on museum boards.
+            </p>
+          `);
+          return;
+        }
+
+        // T4. Jeffrey Epstein & Leon Black at MoMA
+        if (q.includes('epstein') || q.includes('leon black')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              In 2021, billionaire financier <strong>Leon Black</strong> was forced to step down as chairman of MoMA (Museum of Modern Art) after a Senate and IRS investigation confirmed he paid $158 million to convicted sex offender Jeffrey Epstein.
+            </p>
+            <p class="text-slate-300">
+              This sparked the <em>Strike MoMA</em> movement, where artists, curators, and activists occupied the museum for ten consecutive weeks, demanding an end to billionaire-dominated trustee boards invested in private prisons, weapons, and hedge funds.
+            </p>
+          `);
+          return;
+        }
+
+        // T5. Vale & The Brumadinho Dam Disaster (Inhotim)
+        if (q.includes('brumadinho') || q.includes('vale dam') || (q.includes('inhotim') && (q.includes('why') || q.includes('disaster') || q.includes('vale')))) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              In January 2019, the Córrego do Feijão tailings dam operated by mining conglomerate <strong>Vale</strong> collapsed in Brumadinho, Brazil, unleashing a wave of 12 million cubic meters of toxic mining waste that killed 270 people and devastated local river ecosystems.
+            </p>
+            <p class="text-slate-300">
+              <strong>Instituto Inhotim</strong>, a world-famous art park nearby, receives its primary operating budget from Vale. Because of this catastrophic environmental and humanitarian disaster, Inhotim is excluded from Culture Atlas.
+            </p>
+          `);
+          return;
+        }
+
+        // T6. Decolonization & Benin Bronzes Restitution
+        if (q.includes('restitution') || q.includes('repatriat') || q.includes('benin bronze') || q.includes('stolen art') || q.includes('colonial loot')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              The <strong>Benin Bronzes</strong> are thousands of exquisite royal brass plaques and sculptures looted in 1897 by British soldiers during a violent punitive expedition against the Kingdom of Benin (now southern Nigeria).
+            </p>
+            <p class="text-slate-300">
+              The sculptures were sold to museums across Britain, Germany, France, and the United States. Following decades of requests from Nigeria and the 2018 Sarr-Savoy Report, Germany, the Smithsonian, and several UK regional museums agreed to legally transfer ownership back to Nigeria.
+            </p>
+            <p class="text-slate-300">
+              Culture Atlas highlights research centers like Framer Framed (Amsterdam) and Iniva (London) that actively work on decolonial provenance and restitution.
+            </p>
+          `);
+          return;
+        }
+
+        // M. Unified Intelligent Entity & Institution Resolution (Clean & Excluded)
+        const matchedEntity = findAnyInstitution(query);
+        if (matchedEntity) {
+          const inst = matchedEntity.inst; const isClean = matchedEntity.isClean;
+          if (isClean) {
+            appendCuratorMessage(`
+              <p class="text-slate-200">
+                <strong>${formatInstLink(inst, {noCity: false})}</strong> (${inst.neighborhood || inst.city}), founded in ${inst.year_founded || 'Historic'}.
+              </p>
+              <p class="text-slate-300">
+                - <strong>Ethical Status:</strong> <span class="text-emerald-400 font-normal">Tier A · Verified Clean Sanctuary</span> (zero fossil fuel, arms, or predatory corporate underwriting).<br>
+                - <strong>Admission:</strong> ${inst.admission_policy} (${inst.admission_details})<br>
+                - <strong>Hours:</strong> ${inst.opening_hours}<br>
+                - <strong>Highlight:</strong> <span class="text-amber-300/90 font-normal">${inst.highlight}</span><br>
+                - <strong>Transit:</strong> ${inst.transit_tips}<br>
+                - <strong>Governance:</strong> ${inst.governance_type} · ${inst.ethical_safeguard}
+              </p>
+            `);
+            selectInstitution(inst, true);
+            return;
+          } else {
+            const cleanAlternatives = ALL_INSTITUTIONS.filter(i => matchC(i.city, inst.city) || matchC(i.country, inst.country));
+            let altText = '';
+            if (cleanAlternatives.length > 0) {
+              altText = `<br><br><strong>Verified Clean Sanctuaries in ${escapeHtml(inst.city)}:</strong><br>` + cleanAlternatives.slice(0, 3).map(a => `· ${formatInstLink(a)}`).join('<br>');
+            }
+            appendCuratorMessage(`
+              <p class="text-rose-300 font-medium">
+                <strong>EXCLUSION AUDIT: ${escapeHtml(inst.name)} (${escapeHtml(inst.city)}, ${escapeHtml(inst.country)})</strong>
+              </p>
+              <p class="text-slate-300">
+                <strong>Status:</strong> Excluded from Culture Atlas (${inst.tier === 'B' ? 'Tier B · Flagged Corporate Sponsor / Contested Patron' : 'Tier U · Roster Unverified'}).<br>
+                <strong>Governance & Funding:</strong> ${escapeHtml(inst.funding || 'Commercial or conflicted corporate sponsorship')}<br>
+                ${inst.watch ? `<strong>Audit Conflict:</strong> <span class="text-amber-200">${escapeHtml(inst.watch)}</span><br>` : ''}
+                <strong>Ethical Exclusion Policy:</strong> Culture Atlas maps strictly verified clean cultural spaces operating free of fossil fuels, weapons manufacturers, private prisons, and predatory corporate underwriting.${altText}
+              </p>
+              <div class="mt-2.5">
+                <button class="curator-dossier-btn px-2.5 py-1 rounded bg-[#2a1318] hover:bg-[#3d1a22] text-rose-300 border border-rose-800 text-[13px] font-mono cursor-pointer transition" data-name="${escapeHtml(inst.name)}">
+                  Open Full Audit Dossier ↗
+                </button>
+              </div>
+            `);
+            return;
+          }
         }
 
         // N. Surprise Me / Recommendations
@@ -6858,6 +6923,11 @@ FORMATTING & INTERACTION RULES:
         const inst = ALL_INSTITUTIONS.find(i => i.name === name || (i.name.toLowerCase() === name.toLowerCase()) || (i.aliases && i.aliases.some(a => a.toLowerCase() === name.toLowerCase())));
         if (inst) {
           selectInstitution(inst, true);
+        } else if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {
+          const exInst = EXCLUDED_INSTITUTIONS.find(i => i.name === name || (i.name.toLowerCase() === name.toLowerCase()) || (i.aliases && i.aliases.some(a => a.toLowerCase() === name.toLowerCase())));
+          if (exInst) {
+            openDossier(exInst);
+          }
         }
         return;
       }
@@ -6868,7 +6938,8 @@ FORMATTING & INTERACTION RULES:
         e.preventDefault();
         e.stopPropagation();
         const name = dossierLink.getAttribute('data-name') || dossierLink.getAttribute('data-dossier');
-        const inst = ALL_INSTITUTIONS.find(i => i.name === name || (i.name.toLowerCase() === name.toLowerCase()));
+        const inst = ALL_INSTITUTIONS.find(i => i.name === name || (i.name.toLowerCase() === name.toLowerCase())) || 
+                     (typeof EXCLUDED_INSTITUTIONS !== 'undefined' ? EXCLUDED_INSTITUTIONS.find(i => i.name === name || (i.name.toLowerCase() === name.toLowerCase())) : null);
         if (inst) {
           openDossier(inst);
         }
@@ -7361,10 +7432,47 @@ FORMATTING & INTERACTION RULES:
     function renderLeftList() {
       const container = document.getElementById('institutionsListContainer');
       if (filteredList.length === 0) {
+        let exHtml = '';
+        if (searchQuery && typeof EXCLUDED_INSTITUTIONS !== 'undefined') {
+          const q = searchQuery.toLowerCase().trim();
+          const matches = EXCLUDED_INSTITUTIONS.filter(i => 
+            i.name.toLowerCase().includes(q) || 
+            (i.aliases && i.aliases.some(a => a.toLowerCase().includes(q))) ||
+            (i.city && i.city.toLowerCase().includes(q))
+          );
+          if (matches.length > 0) {
+            exHtml = `
+              <div class="mt-4 p-3.5 rounded-xl bg-[#1e0e14] border border-rose-800/80 text-left space-y-2">
+                <div class="flex items-center gap-1.5 text-rose-400 font-mono text-[13px] uppercase">
+                  <span>⚠️</span> <span>Ethical Exclusion Notice (${matches.length} Flagged)</span>
+                </div>
+                <p class="text-slate-300 text-[13px] leading-relaxed">
+                  The space you searched is monitored and <strong>excluded from Culture Atlas</strong> under our ethical independence charter.
+                </p>
+                <div class="space-y-1.5 pt-1">
+                  ${matches.slice(0, 3).map(m => `
+                    <div class="bg-[#12080c] p-2 rounded-lg border border-rose-900/60">
+                      <div class="flex items-center justify-between text-[13px]">
+                        <span class="text-white font-medium">${escapeHtml(m.name)}</span>
+                        <span class="text-rose-400 text-[11px] font-mono px-1.5 py-0.5 rounded bg-[#2c1018] border border-rose-800">${m.tier === 'B' ? 'Tier B' : 'Tier U'}</span>
+                      </div>
+                      <p class="text-amber-200 text-[12px] mt-0.5">${escapeHtml(m.watch || m.funding || 'Corporate underwriting conflict')}</p>
+                      <button class="curator-dossier-btn text-rose-300 hover:underline text-[12px] font-mono mt-1 cursor-pointer" data-name="${escapeHtml(m.name)}">
+                        Open Audit Dossier ↗
+                      </button>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            `;
+          }
+        }
+
         container.innerHTML = `
-          <div class="text-center py-8 px-4 text-[#64748b] text-[14px]">
-            <p class="font-normal text-slate-400">No institutions match this filter.</p>
-            <button id="resetFromEmptyBtn" class="mt-3 text-[#3b82f6] hover:underline text-[14px]">Reset filters</button>
+          <div class="text-center py-6 px-4 text-[#64748b] text-[14px]">
+            <p class="font-normal text-slate-400">No clean verified institutions match this filter.</p>
+            ${exHtml}
+            <button id="resetFromEmptyBtn" class="mt-4 px-3 py-1.5 rounded-xl bg-[#212121] border border-[#333] text-[#3b82f6] hover:text-white hover:bg-[#282828] text-[13px] transition cursor-pointer">Reset all filters</button>
           </div>
         `;
         document.getElementById('resetFromEmptyBtn')?.addEventListener('click', clearAllFilters);
