@@ -351,6 +351,15 @@ def update_widget():
         <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="How are museums handling stolen colonial artifacts?">
           Restitution
         </button>
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="What are the essential MIT Press books on museums and art theory?">
+          MIT Press books
+        </button>
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Explain Rosalind Krauss's critique of the late capitalist museum">
+          Late capitalist museum
+        </button>
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Explain Miwon Kwon's 'One Place after Another' and site-specific art">
+          Site-specific art
+        </button>
         <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Which museums and galleries are free to enter?">
           Free admission
         </button>
@@ -920,6 +929,49 @@ def update_widget():
             </p>
             <p class="text-slate-300">
               Pioneering museums are returning stolen artifacts, like the Benin Bronzes transferred back to Nigeria by the Horniman Museum and German state museums.
+            </p>
+          `);
+          return;
+        }}
+
+        // Research: MIT Press Canon
+        if (query.includes('mit press') || query.includes('mit book') || query.includes('mit oress') || query.includes('theory book') || query.includes('reading list')) {{
+          appendWCurator(`
+            <p class="text-slate-200">
+              Essential MIT Press books on museums and art theory:
+            </p>
+            <p class="text-slate-300">
+              - <em>One Place after Another</em> (Miwon Kwon, 2002): How site-specific art changed.<br>
+              - <em>Beyond Objecthood</em> (James Voorhies, 2017): The exhibition as an artwork.<br>
+              - <em>Institutional Critique</em> (Alberro & Stimson, 2009): Artists questioning museum power.<br>
+              - <em>The Cultural Logic of the Late Capitalist Museum</em> (Rosalind Krauss, 1990): Museums as spectacle machines.<br>
+              - <em>Art Power</em> (Boris Groys, 2008): Why public museums protect art from the market.
+            </p>
+          `);
+          return;
+        }}
+
+        // Research: Rosalind Krauss
+        if (query.includes('krauss') || query.includes('late capitalist museum')) {{
+          appendWCurator(`
+            <p class="text-slate-200">
+              Rosalind Krauss on the late capitalist museum (1990):
+            </p>
+            <p class="text-slate-300">
+              She showed how modern mega-museums stopped being quiet libraries for studying individual paintings, turning into dramatic spectacle centers designed like luxury malls to sell bodily thrills and souvenirs.
+            </p>
+          `);
+          return;
+        }}
+
+        // Research: Miwon Kwon
+        if (query.includes('miwon kwon') || query.includes('kwon') || query.includes('site-specific') || query.includes('site specific') || query.includes('one place')) {{
+          appendWCurator(`
+            <p class="text-slate-200">
+              Miwon Kwon on site-specific art (MIT Press, 2002):
+            </p>
+            <p class="text-slate-300">
+              She tracks site-specificity in 3 stages: 1) physical ground (Serra), 2) museum critique (Haacke), and 3) traveling artists hired by biennials like temporary consultants to create projects about local communities.
             </p>
           `);
           return;
