@@ -606,6 +606,9 @@ def build():
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="United States">United States</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="France">France</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Germany">Germany</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Russia">🇷🇺 Russia</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Belarus">🇧🇾 Belarus</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="North Korea">🇰🇵 North Korea</button>
       </div>
 
       <!-- Subtle Globe Zoom Controls -->
@@ -5146,7 +5149,7 @@ def build():
       const sampleInsts = ALL_INSTITUTIONS.slice(0, 45).map(i => `${{i.name}} (${{i.city}}, ${{i.country}}): Tier ${{i.tier}}, ${{i.governance_type}}, Hours: ${{i.opening_hours}}, ${{i.admission_policy}}, Highlights: ${{i.highlight}}`).join('\\n');
 
       const criticalSystemPrompt = `You are the Culture Atlas assistant, a friendly, clear, and direct guide to art museums and galleries worldwide.
-Culture Atlas maps 399 verified clean museums and art spaces across 40+ countries that don't take money from fossil fuels, weapons manufacturers, or private prisons.
+Culture Atlas maps 403 verified clean museums and art spaces across 40+ countries that don't take money from fossil fuels, weapons manufacturers, or private prisons.
 
 CORE INSTRUCTION: SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE.
 - Use plain, natural, everyday English.
@@ -5410,7 +5413,24 @@ FORMATTING & INTERACTION RULES:
       'new museum': 'New Museum',
       'pma': 'Philadelphia Museum of Art',
       'philadelphia museum of art': 'Philadelphia Museum of Art',
-      'mfa boston': 'Museum of Fine Arts, Boston'
+      'mfa boston': 'Museum of Fine Arts, Boston',
+      'dk rozy': "DK Rozy (Rosa's House of Culture)",
+      'rosas house of culture': "DK Rozy (Rosa's House of Culture)",
+      'chto delat': "DK Rozy (Rosa's House of Culture)",
+      'typography': 'Typography Center for Contemporary Art',
+      'ges-2': 'GES-2 House of Culture',
+      'ges 2': 'GES-2 House of Culture',
+      'hermitage': 'The State Hermitage Museum',
+      'the hermitage': 'The State Hermitage Museum',
+      'tretyakov': 'The State Tretyakov Gallery',
+      'tretyakov gallery': 'The State Tretyakov Gallery',
+      'y gallery': 'Ў Gallery of Contemporary Art',
+      'galereya y': 'Ў Gallery of Contemporary Art',
+      'ў gallery': 'Ў Gallery of Contemporary Art',
+      'sun mu': 'Sun Mu Studio & North Korean Dissident Art Archive',
+      'mansudae': 'Mansudae Art Studio',
+      'mansudae art studio': 'Mansudae Art Studio',
+      'korean art gallery': 'Korean Art Gallery'
     }};
 
     function findAnyInstitution(nameOrQuery) {{
@@ -5652,6 +5672,88 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 🏛️ CRITICAL THEORY & ART SCENE SPECIALIST HANDLERS
         // =========================================================================
+
+        // =========================================================================
+        // 🇷🇺 RUSSIA: OLIGARCH ARTWASHING, STATE CENSORSHIP & SAMIZDAT SANCTUARIES
+        // =========================================================================
+        if (q.includes('russia') || q.includes('russian') || q.includes('moscow') || q.includes('petersburg') || q.includes('hermitage') || q.includes('tretyakov') || q.includes('ges-2') || q.includes('ges 2') || q.includes('dk rozy') || q.includes('chto delat') || q.includes('krasnodar') || q.includes('typography')) {{
+          const dkrozy = ALL_INSTITUTIONS.find(i => i.id === 'dk-rozy-st-petersburg' || i.name.includes('DK Rozy'));
+          const typo = ALL_INSTITUTIONS.find(i => i.id === 'typography-center-krasnodar' || i.name.includes('Typography'));
+          const ges2 = EXCLUDED_INSTITUTIONS.find(i => i.id === 'ges-2-house-of-culture-moscow' || i.name.includes('GES-2'));
+          const herm = EXCLUDED_INSTITUTIONS.find(i => i.id === 'state-hermitage-museum-spb' || i.name.includes('Hermitage'));
+          const tretyakov = EXCLUDED_INSTITUTIONS.find(i => i.id === 'state-tretyakov-gallery-moscow' || i.name.includes('Tretyakov'));
+          const garage = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('Garage'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              The Russian cultural landscape is deeply divided between <strong>state-controlled institutions / sanctioned oligarch foundations</strong> and <strong>underground self-organized sanctuaries</strong>:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Audited Excluded Institutions:</strong><br>
+              · ${{formatInstLink(ges2)}} (Moscow): Financed by Leonid Mikhelson, oligarch CEO of Novatek fossil gas extractor.<br>
+              · ${{formatInstLink(garage)}} (Moscow): Endowed by sanctioned oligarch Roman Abramovich.<br>
+              · ${{formatInstLink(herm)}} (St. Petersburg): Directed by Mikhail Piotrovsky, who weaponized museum exhibitions as wartime 'cultural offensives'.<br>
+              · ${{formatInstLink(tretyakov)}} (Moscow): Subject to state administrative takeovers and systematic ideological censorship of anti-war and non-conformist artists.
+            </p>
+            <p class="text-slate-300">
+              - <strong>Verified Clean Autonomous Sanctuaries (Mapped in Culture Atlas):</strong><br>
+              · ${{formatInstLink(dkrozy)}} in St. Petersburg: Founded by artist collective Chto Delat. Zero oligarch or state money. Operates the Rosa Luxemburg library, School of Engaged Art, and mutual-aid community assemblies.<br>
+              · ${{formatInstLink(typo)}} in Krasnodar: Founded by artist group ZIP. Independent crowdfunding, community art school, and regional contemporary laboratory.
+            </p>
+          `, ['🇷🇺 Fly to Russia', '🏛️ Audit dossier on GES-2', '🏛️ Audit dossier on Hermitage', 'Belarus Art Scene']);
+          filterByCountry('Russia', true);
+          return;
+        }}
+
+        // =========================================================================
+        // 🇧🇾 BELARUS: STATE APPARATUS VS DISSIDENT CULTURAL RESISTANCE
+        // =========================================================================
+        if (q.includes('belarus') || q.includes('belorussia') || q.includes('belarusian') || q.includes('minsk') || q.includes('y gallery') || q.includes('ў gallery') || q.includes('galereya y')) {{
+          const ygal = ALL_INSTITUTIONS.find(i => i.id === 'y-gallery-minsk' || i.name.includes('Ў Gallery') || i.name.includes('Y Gallery'));
+          const natMus = EXCLUDED_INSTITUTIONS.find(i => i.id === 'national-art-museum-belarus-minsk' || i.name.includes('National Art Museum of the Republic of Belarus'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              In Belarus, independent culture operates under conditions of extreme authoritarian surveillance and political repression:
+            </p>
+            <p class="text-slate-300">
+              - <strong>The Authoritarian State Apparatus (Excluded):</strong><br>
+              Institutions like ${{formatInstLink(natMus)}} and the National Centre for Contemporary Arts (NCCA) are directly subordinated to the Lukashenko presidential administration, enforcing strict political loyalty and blacklisting democratic opposition artists.
+            </p>
+            <p class="text-slate-300">
+              - <strong>The Historic Dissident Sanctuary (Mapped in Culture Atlas):</strong><br>
+              · ${{formatInstLink(ygal)}} (Minsk): Founded in 2009 by Anna Chistoserdova and Valentyna Kiselyova. Funded through independent cultural entrepreneurship and community support, zero state subsidies. It served as the central home for Belarusian-language literature, non-conformist visual art, and civil society forums until regime crackdowns forced physical dispersal in 2020.
+            </p>
+          `, ['🇧🇾 Fly to Belarus', 'Russia Art Scene', 'North Korea Art Scene']);
+          filterByCountry('Belarus', true);
+          return;
+        }}
+
+        // =========================================================================
+        // 🇰🇵 NORTH KOREA (DPRK): TOTALITARIAN AGITPROP VS DISSIDENT ARCHIVES
+        // =========================================================================
+        if (q.includes('north korea') || q.includes('pyongyang') || q.includes('dprk') || q.includes('mansudae') || q.includes('sun mu') || q.includes('korean art gallery') || (q.includes('korea') && (q.includes('north') || q.includes('regime') || q.includes('defector')))) {{
+          const sunmu = ALL_INSTITUTIONS.find(i => i.id === 'sun-mu-studio-dmz' || i.name.includes('Sun Mu'));
+          const mansudae = EXCLUDED_INSTITUTIONS.find(i => i.id === 'mansudae-art-studio-pyongyang' || i.name.includes('Mansudae'));
+          const kgall = EXCLUDED_INSTITUTIONS.find(i => i.id === 'korean-art-gallery-pyongyang' || i.name.includes('Korean Art Gallery'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              North Korea (DPRK) represents the most absolute subordination of cultural production to totalitarian dynastic deification on Earth:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Totalitarian State Monopoly (Strictly Excluded):</strong><br>
+              · ${{formatInstLink(mansudae)}} (Pyongyang): A state-monopolized factory employing 4,000 artists to manufacture Kim dynasty bronze monuments and Juche propaganda. Sanctioned under <strong>UN Security Council Resolution 2321 (2016)</strong> for financing weapons programs through overseas statue exports.<br>
+              · ${{formatInstLink(kgall)}} on Kim Il-sung Square: Enforces monolithic ideological conformity; independent curating is strictly illegal inside the DPRK.
+            </p>
+            <p class="text-slate-300">
+              - <strong>The Dissident Counter-Public (Mapped in Culture Atlas):</strong><br>
+              · ${{formatInstLink(sunmu)}} (DMZ Peace Corridor): Founded by pseudonymous North Korean defector artist Sun Mu ('without borders'). Uses socialist realist iconography subversively to critique totalitarian brainwashing, preserve defector testimonies, and advocate for human rights.
+            </p>
+          `, ['🇰🇵 Fly to North Korea', '🏛️ Audit dossier on Mansudae', 'Russia Art Scene', 'Belarus Art Scene']);
+          flyTo(126.7797, 37.7592, 3.6);
+          return;
+        }}
 
         // =========================================================================
         // 🎨 CURATORIAL MOVEMENTS: FLUXUS, CONCEPTUAL & PERFORMANCE ARCHIVES
