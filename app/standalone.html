@@ -5347,6 +5347,78 @@ FORMATTING & INTERACTION RULES:
       });
     }
 
+    // =========================================================
+    // 💬 CONVERSATIONAL CURATOR CHAT ENGINE (Messages & History)
+    // =========================================================
+    const curatorMessages = document.getElementById('curatorMessages');
+    const curatorTyping = document.getElementById('curatorTyping');
+
+    function initCuratorConversation() {
+      if (!curatorMessages) return;
+      curatorMessages.innerHTML = '';
+      appendCuratorMessage(`
+        <p class="text-[#ececec]">
+          How can I help you explore verified independent museums and ethical cultural spaces today?
+        </p>
+      `, ['🗺️ Curated City Itineraries', '🏭 Repurposed Architecture', '🌲 Outdoor Sculpture Parks', '🇳🇱 Dutch Research: BAK']);
+    }
+
+    function resetToNewChat() {
+      initCuratorConversation();
+      const suggestions = document.getElementById('workSuggestionsSection');
+      if (suggestions) suggestions.classList.remove('hidden');
+      const workInput = document.getElementById('workInput');
+      if (workInput) workInput.value = '';
+    }
+
+    function appendUserMessage(text) {
+      if (!curatorMessages) return;
+      const suggestions = document.getElementById('workSuggestionsSection');
+      if (suggestions) suggestions.classList.add('hidden');
+      const div = document.createElement('div');
+      div.className = 'flex justify-end my-1';
+      div.innerHTML = `
+        <div class="max-w-[80%] bg-[#2f2f2f] text-[#ececec] text-[14px] px-4 py-2.5 rounded-3xl shadow-sm leading-relaxed whitespace-pre-wrap select-text">
+          ${escapeHtml(text)}
+        </div>
+      `;
+      curatorMessages.appendChild(div);
+      curatorMessages.scrollTop = curatorMessages.scrollHeight;
+    }
+
+    function appendCuratorMessage(htmlContent, followUps = []) {
+      if (!curatorMessages) return;
+      const suggestions = document.getElementById('workSuggestionsSection');
+      if (suggestions) suggestions.classList.add('hidden');
+      const div = document.createElement('div');
+      div.className = 'flex items-start gap-3 my-2 select-text';
+
+      let followUpHtml = '';
+      if (followUps && followUps.length > 0) {
+        followUpHtml = `
+          <div class="flex flex-wrap gap-1.5 mt-2.5 pt-2 border-t border-[#2a2a2a]">
+            ${followUps.map(f => `
+              <button class="curator-followup-pill px-2.5 py-1 rounded-xl bg-[#242424] hover:bg-[#303030] border border-[#383838] hover:border-[#60a5fa] text-[13px] text-[#93c5fd] hover:text-white transition cursor-pointer font-normal flex items-center gap-1.5" data-query="${escapeHtml(f)}">
+                <span>💬</span> <span>${escapeHtml(f)}</span>
+              </button>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      div.innerHTML = `
+        <div class="w-7 h-7 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] text-white shrink-0 mt-0.5 select-none" title="Culture Atlas Curator">
+          🏛️
+        </div>
+        <div class="flex-1 text-[#ececec] text-[14px] leading-relaxed space-y-2">
+          ${htmlContent}
+          ${followUpHtml}
+        </div>
+      `;
+      curatorMessages.appendChild(div);
+      curatorMessages.scrollTop = curatorMessages.scrollHeight;
+    }
+
     // Intelligent Conversational Curator Knowledge Engine
     async function handleCuratorQuery(query) {
       const q = query.toLowerCase().trim();
@@ -5403,6 +5475,114 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 🏛️ CRITICAL THEORY & ART SCENE SPECIALIST HANDLERS
         // =========================================================================
+
+        // =========================================================================
+        // 🎨 CURATORIAL MOVEMENTS: FLUXUS, CONCEPTUAL & PERFORMANCE ARCHIVES
+        // =========================================================================
+        if (q.includes('fluxus') || q.includes('conceptual art') || q.includes('performance archive') || q.includes('ephemeral') || q.includes('happenings') || q.includes('abramovic') || q.includes('nam june paik') || q.includes('beuys')) {
+          const deappel = ALL_INSTITUTIONS.find(i => i.id === 'de-appel' || i.name.includes('De Appel'));
+          const kitch = ALL_INSTITUTIONS.find(i => i.name.includes('The Kitchen'));
+          const artsp = ALL_INSTITUTIONS.find(i => i.name.includes('Artists Space'));
+          const white = ALL_INSTITUTIONS.find(i => i.name.includes('Whitechapel'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Conceptual, Fluxus, and performance art deliberately challenged the commercial museum's obsession with buying and selling luxury objects:
+            </p>
+            <p class="text-slate-300">
+              - <strong>${formatInstLink(deappel)} (Amsterdam):</strong> Founded in 1975 by Wies Smals specifically to support live performance, body art, and ephemeral happenings. It preserves a legendary archive documenting historic performances by Marina Abramović & Ulay and Gina Pane.<br>
+              - <strong>${formatInstLink(kitch)} (New York):</strong> Established in 1971 by Steina and Woody Vasulka. It was the international laboratory for Fluxus-adjacent video and sound art, hosting seminal works by Nam June Paik, Joan Jonas, and Vito Acconci.<br>
+              - <strong>${formatInstLink(artsp)} (New York):</strong> Founded in 1972 as an alternative space where conceptual artists bypassed commercial gallery dealers to present direct political critiques.<br>
+              - <strong>${formatInstLink(white)} (London):</strong> Presented early European conceptual retrospectives, challenging traditional medium hierarchies.
+            </p>
+          `, ['🎞️ Video, Sound & Media Art', '🏛️ Kunsthalle vs Museum', '🇳🇱 Dutch Research: BAK']);
+          return;
+        }
+
+        // =========================================================================
+        // 🌍 DECOLONIAL MUSEOLOGY, RESTITUTION & PROVENANCE ETHICS
+        // =========================================================================
+        if (q.includes('decolonial') || q.includes('decolonize') || q.includes('sarr-savoy') || q.includes('restitution') || q.includes('benin') || q.includes('looted heritage') || q.includes('azoulay') || q.includes('mbembe')) {
+          const framer = ALL_INSTITUTIONS.find(i => i.id === 'framer-framed' || i.name.includes('Framer Framed'));
+          const melly = ALL_INSTITUTIONS.find(i => i.id === 'kunstinstituut-melly' || i.name.includes('Melly'));
+          const iniva = ALL_INSTITUTIONS.find(i => i.name.includes('Iniva'));
+          const hkw = ALL_INSTITUTIONS.find(i => i.name.includes('Haus der Kulturen'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Decolonial museology investigates how European museums were built on imperial conquest and questions who owns world heritage:
+            </p>
+            <p class="text-slate-300">
+              - <strong>${formatInstLink(framer)} (Amsterdam):</strong> A leading European research institute partnering directly with indigenous, African, and Asian curators to dismantle colonial archives, investigate looted objects, and advocate for full cultural restitution.<br>
+              - <strong>${formatInstLink(melly)} (Rotterdam):</strong> Undertook a historic 3-year collective audit to strip the name of 17th-century colonial naval officer Witte de With, renaming itself after Ken Lum's iconic artwork.<br>
+              - <strong>${formatInstLink(iniva)} (London):</strong> Institute of International Visual Arts, founded to document the artistic contributions of global diaspora artists excluded from Eurocentric canons.<br>
+              - <strong>${formatInstLink(hkw)} (Berlin):</strong> Directs global research platforms and assemblies interrogating how Western museum classifications separated cultural artifacts from their living spiritual and ecological contexts.
+            </p>
+          `, ['⚖️ Benin Bronzes Restitution', '🏛️ Decolonial Renaming: Melly', '🇳🇱 Dutch Research: BAK']);
+          return;
+        }
+
+        // =========================================================================
+        // 🌿 ECOLOGICAL, CLIMATE & INTERSPECIES CURATING
+        // =========================================================================
+        if (q.includes('ecology') || q.includes('climate art') || q.includes('anthropocene') || q.includes('interspecies') || q.includes('braidotti') || q.includes('environmental art')) {
+          const bak = ALL_INSTITUTIONS.find(i => i.id === 'bak-utrecht' || i.name.includes('BAK'));
+          const hkw = ALL_INSTITUTIONS.find(i => i.name.includes('Haus der Kulturen'));
+          const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
+          const vanabbe = ALL_INSTITUTIONS.find(i => i.name.includes('Van Abbemuseum'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Progressive curating treats the climate crisis not as a decorative theme, but as an urgent institutional mandate:
+            </p>
+            <p class="text-slate-300">
+              - <strong>${formatInstLink(bak)} (Utrecht):</strong> Developed the <em>Posthuman Glossary</em> with feminist philosopher Rosi Braidotti, organizing research assemblies on environmental grief, affirmative ethics, and multi-species justice.<br>
+              - <strong>${formatInstLink(hkw)} (Berlin):</strong> Spearheaded the <em>Anthropocene Curriculum</em>, bringing geologists, artists, and indigenous activists together to investigate human impact on Earth systems.<br>
+              - <strong>${formatInstLink(kroll)} (Otterlo):</strong> Seamlessly embedded within the De Hoge Veluwe national ecosystem, pairing land art with active conservation.<br>
+              - <strong>${formatInstLink(vanabbe)} (Eindhoven):</strong> Ratified an official institutional climate charter in 2021 prohibiting any sponsorship from fossil fuels and enforcing low-emission loan transports.
+            </p>
+          `, ['🌲 Outdoor Sculpture Parks', '🇳🇱 Dutch Research: BAK', '🌿 Fossil & Defense-Free']);
+          return;
+        }
+
+        // =========================================================================
+        // 📦 FINANCIALIZATION OF ART, FREEPORTS & DUTY FREE ART
+        // =========================================================================
+        if (q.includes('freeport') || q.includes('tax haven') || q.includes('financialization') || q.includes('art as investment') || q.includes('duty free art') || q.includes('geneva freeport')) {
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              The financialization of contemporary art has transformed masterpieces into speculative offshore commodities:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Freeports (Geneva, Singapore, Luxembourg):</strong> As explored by artist Hito Steyerl in <em>Duty Free Art</em> (2015), freeports are high-security tax-free warehouses located in airport customs zones. Over 1,000,000 museum-grade artworks are locked in wooden crates inside these vaults, traded between billionaires without ever being unpacked or viewed by the public, strictly to defer capital gains and inheritance taxes.<br>
+              - <strong>The Mega-Museum as Brand Value Driver:</strong> When a major museum exhibits an artist, their auction market prices skyrocket. Billionaire collectors sit on museum acquisition committees to ensure their own private holdings are validated and appreciated.<br>
+              - <strong>The Culture Atlas Antidote:</strong> We prioritize public non-profit spaces, non-collecting kunsthalles, and artist-run commons where art remains an active public good rather than an offshore financial instrument.
+            </p>
+          `, ['🏛️ Kunsthalle vs Museum', '📖 MIT Press Theory Books', '💼 W.A.G.E. & Museum Unions']);
+          return;
+        }
+
+        // =========================================================================
+        // ♿ TAILORED ITINERARIES: FAMILY, ACCESSIBLE & FREE-ONLY
+        // =========================================================================
+        if (q.includes('family') || q.includes('kids') || q.includes('accessible itinerary') || q.includes('wheelchair route') || q.includes('free tour') || q.includes('free itinerary')) {
+          const camden = ALL_INSTITUTIONS.find(i => i.name.includes('Camden'));
+          const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
+          const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
+          const aros = ALL_INSTITUTIONS.find(i => i.name.includes('ARoS'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              <strong>Tailored Ethical Cultural Routes:</strong>
+            </p>
+            <p class="text-slate-300">
+              - <strong>Family-Friendly & Nature:</strong> ${formatInstLink(kroll)} in the Netherlands offers complimentary white park bicycles and wide sculpture trails through the forest. In Denmark, ${formatInstLink(aros)} features Olafur Eliasson's rainbow glass panorama that delights all ages.<br>
+              - <strong>Universal Step-Free & Accessible:</strong> ${formatInstLink(camden)} in London has step-free garden studios, loaner wheelchairs, accessible restrooms, and free admission for companions.<br>
+              - <strong>100% Free Public Admission Route:</strong> In London, link ${formatInstLink(chis)} (Bow), Whitechapel Gallery, and Gasworks without spending a single penny on admission.
+            </p>
+          `, ['🗺️ Curated City Itineraries', '🌲 Outdoor Sculpture Parks', '🎟️ Free Admission Spaces']);
+          return;
+        }
 
         // =========================================================================
         // 🗺️ CURATED 1-DAY & WEEKEND CITY ITINERARIES (100% Clean Spaces)
@@ -7033,6 +7213,69 @@ FORMATTING & INTERACTION RULES:
       }
     });
 
+    // Voice Input via Web Speech API
+    const workMicBtn = document.getElementById('workMicBtn');
+    let speechRecognizer = null;
+    let isSpeechRecording = false;
+
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+      const SpeechClass = window.SpeechRecognition || window.webkitSpeechRecognition;
+      speechRecognizer = new SpeechClass();
+      speechRecognizer.continuous = false;
+      speechRecognizer.interimResults = true;
+      speechRecognizer.lang = 'en-US';
+
+      speechRecognizer.onstart = () => {
+        isSpeechRecording = true;
+        workMicBtn?.classList.add('bg-rose-500/20', 'text-rose-400', 'animate-pulse');
+        if (workMicBtn) workMicBtn.title = 'Listening... Speak now';
+      };
+
+      speechRecognizer.onresult = (event) => {
+        const transcript = Array.from(event.results)
+          .map(result => result[0].transcript)
+          .join('');
+        if (workInput) workInput.value = transcript;
+      };
+
+      speechRecognizer.onerror = (event) => {
+        console.warn('Speech recognition error:', event.error);
+        stopSpeechRecording();
+      };
+
+      speechRecognizer.onend = () => {
+        stopSpeechRecording();
+        if (workInput && workInput.value.trim()) {
+          handleWorkSend();
+        }
+      };
+    }
+
+    function stopSpeechRecording() {
+      isSpeechRecording = false;
+      workMicBtn?.classList.remove('bg-rose-500/20', 'text-rose-400', 'animate-pulse');
+      if (workMicBtn) workMicBtn.title = 'Voice';
+    }
+
+    workMicBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!speechRecognizer) {
+        alert('Voice speech recognition is supported in Google Chrome, Microsoft Edge, and Safari with microphone permissions.');
+        return;
+      }
+      if (isSpeechRecording) {
+        speechRecognizer.stop();
+        stopSpeechRecording();
+      } else {
+        try {
+          speechRecognizer.start();
+        } catch(err) {
+          console.warn('Failed to start speech recognition:', err);
+          stopSpeechRecording();
+        }
+      }
+    });
+
     // Work Suggestion Cards & Try Buttons
     document.querySelectorAll('.work-suggestion-card, .try-pill').forEach(el => {
       el.addEventListener('click', (e) => {
@@ -7273,6 +7516,18 @@ FORMATTING & INTERACTION RULES:
 
     // Delegated click listener in chat messages for inline links, cards, & city mentions
     curatorMessages.addEventListener('click', (e) => {
+      // 0. Check for interactive follow-up suggestion pills
+      const followUpBtn = e.target.closest('.curator-followup-pill');
+      if (followUpBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const q = followUpBtn.getAttribute('data-query');
+        if (q) {
+          appendUserMessage(q);
+          handleCuratorQuery(q);
+        }
+        return;
+      }
       // 1. Check for institution links
       const instLink = e.target.closest('.inst-link, [data-inst]');
       if (instLink) {
