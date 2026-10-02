@@ -9426,12 +9426,20 @@
         });
       }
 
-      // Priority City Badges
+      // Priority City Badges (with collision detection to prevent overlapping stacks)
       cityBadgeHitboxes = [];
+      const drawnCityBoxes = [];
       ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
-      PRIORITY_CITIES.forEach(city => {
+      
+      const sortedCities = [...PRIORITY_CITIES].sort((a, b) => {
+        const aSel = selectedCityFilter.toLowerCase() === a.name.toLowerCase();
+        const bSel = selectedCityFilter.toLowerCase() === b.name.toLowerCase();
+        return (bSel ? 1 : 0) - (aSel ? 1 : 0);
+      });
+
+      sortedCities.forEach(city => {
         const pt = project(city.lon, city.lat, r, cx, cy);
-        if (pt.front && pt.depth > 0.08) {
+        if (pt.front && pt.depth > 0.12) {
           const isSelected = selectedCityFilter.toLowerCase() === city.name.toLowerCase();
           const txt = (isSelected ? '● ' : '■ ') + city.name;
           const tw = ctx.measureText(txt).width;
@@ -9440,34 +9448,42 @@
           const bx = pt.x - bw / 2;
           const by = pt.y - 26;
 
-          cityBadgeHitboxes.push({
-            name: city.name,
-            x: bx, y: by, w: bw, h: bh,
-            lon: city.lon, lat: city.lat
+          // Check if this badge would collide with an already drawn city badge
+          const collides = drawnCityBoxes.some(box => {
+            return !(bx + bw + 4 < box.x || bx > box.x + box.w + 4 || by + bh + 4 < box.y || by > box.y + box.h + 4);
           });
 
-          ctx.fillStyle = isSelected ? '#1d4ed8' : '#070b14';
-          ctx.beginPath();
-          ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 4) : ctx.rect(bx, by, bw, bh);
-          ctx.fill();
+          if (!collides || isSelected) {
+            drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
+            cityBadgeHitboxes.push({
+              name: city.name,
+              x: bx, y: by, w: bw, h: bh,
+              lon: city.lon, lat: city.lat
+            });
 
-          ctx.strokeStyle = isSelected ? '#93c5fd' : '#222d42';
-          ctx.lineWidth = 1;
-          ctx.stroke();
+            ctx.fillStyle = isSelected ? '#1d4ed8' : '#070b14';
+            ctx.beginPath();
+            ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 4) : ctx.rect(bx, by, bw, bh);
+            ctx.fill();
 
-          ctx.fillStyle = isSelected ? '#ffffff' : '#cbd5e1';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
+            ctx.strokeStyle = isSelected ? '#93c5fd' : '#222d42';
+            ctx.lineWidth = 1;
+            ctx.stroke();
 
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
-          ctx.fillStyle = isSelected ? '#93c5fd' : '#3b82f6';
-          ctx.fill();
+            ctx.fillStyle = isSelected ? '#ffffff' : '#cbd5e1';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
+
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = isSelected ? '#93c5fd' : '#3b82f6';
+            ctx.fill();
+          }
         }
       });
 
-      // Render Institution Dots
+      // Render Institution Dots (true geographic coordinates, no artificial circles or spiral clusters)
       visibleDots = [];
       filteredList.forEach(inst => {
         const pt = project(inst.lon, inst.lat, r, cx, cy);
@@ -9483,51 +9499,20 @@
         }
       });
 
-      // Prevent dot overlaps
-      const clusters = [];
-      const visited = new Uint8Array(visibleDots.length);
-      for (let i = 0; i < visibleDots.length; i++) {
-        if (visited[i]) continue;
-        visited[i] = 1;
-        const grp = [visibleDots[i]];
-        for (let j = i + 1; j < visibleDots.length; j++) {
-          if (visited[j]) continue;
-          if (Math.hypot(visibleDots[i].x - visibleDots[j].x, visibleDots[i].y - visibleDots[j].y) < 12) {
-            visited[j] = 1;
-            grp.push(visibleDots[j]);
-          }
-        }
-        clusters.push(grp);
-      }
-
-      clusters.forEach(grp => {
-        if (grp.length > 1) {
-          let cxG = 0, cyG = 0;
-          grp.forEach(d => { cxG += d.x; cyG += d.y; });
-          cxG /= grp.length; cyG /= grp.length;
-          const sR = Math.min(32, Math.max(8, (grp.length * 12) / (2 * Math.PI)));
-          grp.forEach((d, idx) => {
-            const ang = (idx / grp.length) * Math.PI * 2 - Math.PI / 2;
-            d.renderX = cxG + Math.cos(ang) * sR;
-            d.renderY = cyG + Math.sin(ang) * sR;
-          });
-        }
-      });
-
       visibleDots.forEach(d => {
         const isSel = selectedInstitution && selectedInstitution.name === d.inst.name;
         const isHov = hoveredInstitution && hoveredInstitution.name === d.inst.name;
 
         if (isSel) {
           ctx.beginPath();
-          ctx.arc(d.renderX, d.renderY, 7, 0, Math.PI * 2);
+          ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
           ctx.strokeStyle = '#ffffff';
           ctx.lineWidth = 1.5;
           ctx.stroke();
         }
 
         ctx.beginPath();
-        ctx.arc(d.renderX, d.renderY, isSel ? 4.5 : isHov ? 4 : 2.5, 0, Math.PI * 2);
+        ctx.arc(d.x, d.y, isSel ? 4 : isHov ? 3.5 : 2.2, 0, Math.PI * 2);
         ctx.fillStyle = d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
         ctx.fill();
       });
@@ -12181,7 +12166,7 @@ FORMATTING & INTERACTION RULES:
       // Check institution dot
       for (let i = 0; i < visibleDots.length; i++) {
         const d = visibleDots[i];
-        if (Math.hypot(d.renderX - mx, d.renderY - my) < 9) {
+        if (Math.hypot(d.x - mx, d.y - my) < 9) {
           selectInstitution(d.inst);
           return;
         }

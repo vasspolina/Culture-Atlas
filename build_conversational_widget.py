@@ -627,12 +627,20 @@ def update_widget():
         }}
       }}
 
-      // Priority City Badges
+      // Priority City Badges (with collision detection to prevent overlapping stacks)
       cityBadgeHitboxes = [];
+      const drawnCityBoxes = [];
       ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
-      PRIORITY_CITIES.forEach(city => {{
+      
+      const sortedCities = [...PRIORITY_CITIES].sort((a, b) => {{
+        const aSel = filterCity.toLowerCase() === a.name.toLowerCase();
+        const bSel = filterCity.toLowerCase() === b.name.toLowerCase();
+        return (bSel ? 1 : 0) - (aSel ? 1 : 0);
+      }});
+
+      sortedCities.forEach(city => {{
         const pt = project(city.lon, city.lat, r, cx, cy);
-        if (pt.front && pt.depth > 0.08) {{
+        if (pt.front && pt.depth > 0.12) {{
           const isSelected = filterCity.toLowerCase() === city.name.toLowerCase();
           const txt = (isSelected ? '● ' : '■ ') + city.name;
           const tw = ctx.measureText(txt).width;
@@ -641,24 +649,31 @@ def update_widget():
           const bx = pt.x - bw / 2;
           const by = pt.y - 26;
 
-          cityBadgeHitboxes.push({{
-            name: city.name,
-            x: bx, y: by, w: bw, h: bh,
-            lon: city.lon, lat: city.lat
+          const collides = drawnCityBoxes.some(box => {{
+            return !(bx + bw + 4 < box.x || bx > box.x + box.w + 4 || by + bh + 4 < box.y || by > box.y + box.h + 4);
           }});
 
-          ctx.fillStyle = isSelected ? '#1d4ed8' : '#070b14';
-          ctx.beginPath();
-          ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 4) : ctx.rect(bx, by, bw, bh);
-          ctx.fill();
-          ctx.strokeStyle = isSelected ? '#93c5fd' : '#222d42';
-          ctx.lineWidth = 1;
-          ctx.stroke();
+          if (!collides || isSelected) {{
+            drawnCityBoxes.push({{ x: bx, y: by, w: bw, h: bh }});
+            cityBadgeHitboxes.push({{
+              name: city.name,
+              x: bx, y: by, w: bw, h: bh,
+              lon: city.lon, lat: city.lat
+            }});
 
-          ctx.fillStyle = isSelected ? '#ffffff' : '#cbd5e1';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
+            ctx.fillStyle = isSelected ? '#1d4ed8' : '#070b14';
+            ctx.beginPath();
+            ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 4) : ctx.rect(bx, by, bw, bh);
+            ctx.fill();
+            ctx.strokeStyle = isSelected ? '#93c5fd' : '#222d42';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            ctx.fillStyle = isSelected ? '#ffffff' : '#cbd5e1';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
+          }}
         }}
       }});
 
