@@ -406,18 +406,21 @@ def build():
       </button>
     </div>
 
-    <!-- Right: Status & Quick Controls -->
+    <!-- Right: View Controls (Minimize · Expand) & Status -->
     <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa] bg-[#212121] border border-[#2e2e2e] px-2.5 py-1 rounded-xl shadow-sm">
+        <button id="topViewMinimizeBtn" class="hover:text-white transition cursor-pointer text-[14px]">Minimize</button>
+        <span class="text-[#555]">·</span>
+        <button id="topViewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px]">Expand</button>
+      </div>
+
       <button id="topSettingsBtn" class="flex items-center gap-1.5 px-2.5 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[14px] transition cursor-pointer" title="AI Settings">
         <span id="topStatusDot" class="w-2 h-2 rounded-full bg-amber-400"></span>
         <span id="topStatusLabel" class="hidden md:inline font-mono text-[14px]">Offline Engine</span>
         <span>⚙️</span>
       </button>
       <button id="topResetBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white px-2.5 py-1 rounded-xl text-[14px] transition flex items-center gap-1 cursor-pointer" title="Reset Globe View">
-        <span>🔄</span> <span class="hidden md:inline">Reset</span>
-      </button>
-      <button id="topSpinBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#93c5fd] hover:text-white px-2.5 py-1 rounded-xl text-[14px] transition flex items-center gap-1 cursor-pointer" title="Auto-Spin Globe">
-        <span>⟳</span>
+        <span>🔄</span>
       </button>
     </div>
 
@@ -489,14 +492,19 @@ def build():
     <div id="workViewContainer" class="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pb-12 w-full">
       <div class="w-full max-w-3xl flex flex-col items-center">
         
-        <!-- Center Headline -->
-        <h1 class="text-[24px] font-semibold text-[#f4f4f5] tracking-tight mt-1 mb-5 text-center select-none">
-          What should we work on?
-        </h1>
+        <!-- Center Headline & Sub-headline (Exact user copywriting) -->
+        <div class="text-center mt-1 mb-5 select-none">
+          <h1 class="text-[24px] font-semibold text-[#f4f4f5] tracking-tight">
+            What would you like to explore?
+          </h1>
+          <p class="text-[14px] text-[#a1a1aa] mt-1.5 leading-relaxed max-w-lg mx-auto">
+            Ask about museums and cultural spaces, plan a visit, or find out who funds them.
+          </p>
+        </div>
 
         <!-- Big Rounded Input Card -->
         <div class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-3.5 sm:p-4 shadow-xl transition relative">
-          <textarea id="workInput" rows="2" placeholder="Work with Culture Atlas..." class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] focus:outline-none resize-none font-normal leading-relaxed"></textarea>
+          <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] focus:outline-none resize-none font-normal leading-relaxed"></textarea>
           
           <div class="flex items-center justify-between pt-2">
             <!-- Left: Plus action button -->
@@ -557,63 +565,86 @@ def build():
           </div>
         </div>
 
-        <!-- Subtitle -->
-        <div class="w-full mt-7 mb-3 text-[14px] font-medium text-[#e4e4e7] flex items-center gap-2 select-none">
-          <span>💡</span> <span>See what Work can do</span>
+        <!-- Suggested Prompts Header (Exact user copywriting) -->
+        <div class="w-full mt-7 mb-3 text-[14px] font-medium text-[#e4e4e7] flex items-center justify-between select-none">
+          <div class="flex items-center gap-2">
+            <span>💡</span> <span>Suggested prompts</span>
+          </div>
+          <!-- View controls: Minimize · Expand -->
+          <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa]">
+            <span class="text-[14px] text-[#71717a]">View controls:</span>
+            <button id="viewMinimizeBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Minimize</button>
+            <span class="text-[#555]">·</span>
+            <button id="viewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Expand</button>
+          </div>
         </div>
 
-        <!-- 3 Suggestion Cards (Exact match to screenshot) -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
-          <!-- Card 1 -->
-          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-4 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="How does Culture Atlas research and audit museum funding?">
+        <!-- 4 Suggested Prompt Cards (Exact user copywriting) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
+          <!-- Prompt 1: Find independent art spaces near me -->
+          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find independent art spaces near me">
             <div class="flex items-start justify-between gap-2 mb-2">
               <div class="w-6 h-6 text-[#38bdf8] flex items-center justify-center">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <rect x="3" y="3" width="8" height="8" rx="2" />
-                  <rect x="13" y="3" width="8" height="8" rx="2" />
-                  <rect x="3" y="13" width="8" height="8" rx="2" />
-                  <rect x="13" y="13" width="8" height="8" rx="2" />
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
                 </svg>
               </div>
-              <button class="try-pill px-3 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-medium">Try</button>
+              <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-medium">Try</button>
             </div>
             <div>
-              <div class="font-semibold text-[14px] text-white mb-1 leading-snug">Audit museum funding & Form 990</div>
-              <div class="text-[14px] text-[#a1a1aa] leading-relaxed">Inspect IRS Schedule I filings, UK Charity Commission returns, and board conflicts.</div>
+              <div class="font-semibold text-[14px] text-white mb-1 leading-snug">Find independent art spaces near me</div>
+              <div class="text-[14px] text-[#a1a1aa] leading-relaxed">Locate verified artist-run galleries and non-profits in your area.</div>
             </div>
           </div>
 
-          <!-- Card 2 -->
-          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-4 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the essential MIT Press books on museums, curating, and institutional critique?">
+          <!-- Prompt 2: Who funds this museum? -->
+          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Who funds this museum?">
             <div class="flex items-start justify-between gap-2 mb-2">
-              <div class="flex items-center -space-x-1">
-                <span class="w-5 h-5 rounded-md bg-[#ea4335] flex items-center justify-center text-[10px] text-white font-bold">M</span>
-                <span class="w-5 h-5 rounded-md bg-[#34a853] flex items-center justify-center text-[10px] text-white font-bold">A</span>
-                <span class="w-5 h-5 rounded-md bg-[#4285f4] flex items-center justify-center text-[10px] text-white font-bold">#</span>
+              <div class="w-6 h-6 text-[#10b981] flex items-center justify-center">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
               </div>
-              <button class="try-pill px-3 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-medium">Try</button>
+              <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-medium">Try</button>
             </div>
             <div>
-              <div class="font-semibold text-[14px] text-white mb-1 leading-snug">Study MIT Press art theory & critique</div>
-              <div class="text-[14px] text-[#a1a1aa] leading-relaxed">Explore Krauss, Kwon, Voorhies, Buchloh, and Groys in simple everyday language.</div>
+              <div class="font-semibold text-[14px] text-white mb-1 leading-snug">Who funds this museum?</div>
+              <div class="text-[14px] text-[#a1a1aa] leading-relaxed">Audit Form 990 filings, public subsidies, and board conflict records.</div>
             </div>
           </div>
 
-          <!-- Card 3 -->
-          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-4 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Tell me about independent art spaces with clean funding in London and New York">
+          <!-- Prompt 3: What are the opening hours and ticket prices? -->
+          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the opening hours and ticket prices?">
             <div class="flex items-start justify-between gap-2 mb-2">
-              <div class="w-6 h-6 text-[#94a3b8] flex items-center justify-center">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <rect x="3" y="3" width="18" height="18" rx="3" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="M21 15l-5-5L5 21" />
+              <div class="w-6 h-6 text-[#f59e0b] flex items-center justify-center">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
                 </svg>
               </div>
-              <button class="try-pill px-3 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-medium">Try</button>
+              <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-medium">Try</button>
             </div>
             <div>
-              <div class="font-semibold text-[14px] text-white mb-1 leading-snug">Discover independent art spaces</div>
-              <div class="text-[14px] text-[#a1a1aa] leading-relaxed">Find verified non-profit galleries in London, New York, and Paris with clean funding.</div>
+              <div class="font-semibold text-[14px] text-white mb-1 leading-snug">What are the opening hours and ticket prices?</div>
+              <div class="text-[14px] text-[#a1a1aa] leading-relaxed">Check admission policies, free entry days, and weekly hours.</div>
+            </div>
+          </div>
+
+          <!-- Prompt 4: Find writing about this space in e-flux or MIT Press -->
+          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find writing about this space in e-flux or MIT Press">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <div class="w-6 h-6 text-[#a78bfa] flex items-center justify-center">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+              </div>
+              <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-medium">Try</button>
+            </div>
+            <div>
+              <div class="font-semibold text-[14px] text-white mb-1 leading-snug">Find writing about this space in e-flux or MIT Press</div>
+              <div class="text-[14px] text-[#a1a1aa] leading-relaxed">Read critical theory, curatorial reviews, and institutional critique.</div>
             </div>
           </div>
         </div>
@@ -787,7 +818,7 @@ def build():
               <input 
                 type="text" 
                 id="curatorInput" 
-                placeholder="Message Culture Atlas Curator..." 
+                placeholder="Ask about a museum or cultural space" 
                 class="w-full bg-transparent border-0 text-[14px] text-white placeholder-[#71717a] focus:outline-none py-1.5 font-sans"
               />
               <button 
@@ -2344,6 +2375,69 @@ FORMATTING & INTERACTION RULES:
           }}
         }}
 
+
+        // Exact Prompt 1: Find independent art spaces near me
+        if (q.includes('near me') || q.includes('spaces near me') || q.includes('art spaces near')) {{
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Here are verified independent art spaces with clean funding. Tell me your city (like <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="New York">New York</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Paris">Paris</a>) to find spaces closest to you:
+            </p>
+            <p class="text-slate-300">
+              - In London: ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale')))}} in Bow and ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Camden')))}} in North London (both free).<br>
+              - In New York: ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Artists Space')))}} in Tribeca and ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter')))}} in Queens.<br>
+              - In Paris: ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Bétonsalon')))}} in the 13th and ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo')))}}.
+            </p>
+          `);
+          return;
+        }}
+
+        // Exact Prompt 2: Who funds this museum?
+        if (q.includes('who funds this museum') || (q.includes('who funds') && q.length < 30)) {{
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Every museum in Culture Atlas is audited for clean, transparent funding:
+            </p>
+            <p class="text-slate-300">
+              1. <strong>Civic Arts Councils:</strong> European institutions receive direct public funding (Arts Council England, DRAC France, Danish State), ensuring curators are accountable to the public rather than corporate sponsors.<br>
+              2. <strong>Regulatory Filings:</strong> In the US, we audit IRS Form 990 (Schedule I grants and Schedule L trustee deals) to confirm board members have no ties to weapons manufacturing, fossil fuels, or private prisons.<br>
+              3. <strong>Artist-Run Cooperatives:</strong> Managed directly by artists without billionaire corporate boards.
+            </p>
+            <p class="text-slate-300">
+              Type the name of any museum (like MoMA, Tate, Chisenhale, or CAPC) to see its specific funding audit.
+            </p>
+          `);
+          return;
+        }}
+
+        // Exact Prompt 3: What are the opening hours and ticket prices?
+        if (q.includes('opening hours and ticket') || q.includes('ticket prices') || q.includes('ticket price')) {{
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Here is how opening hours and admission work across Culture Atlas:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Free Public Admission:</strong> Over 60% of our spaces are 100% free to enter, including Chisenhale, Camden Art Centre, and Whitechapel in London, and CAPC in Bordeaux.<br>
+              - <strong>Ticket Prices:</strong> Larger spaces like Dia Beacon ($20 adults, free for Hudson Valley residents) and Louisiana Museum ($20 adults) require advance timed tickets.<br>
+              - <strong>Hours:</strong> Most non-profit galleries are open Wednesday through Sunday, 11:00 AM to 6:00 PM. We also map 24 verified spaces open on Mondays.
+            </p>
+          `);
+          return;
+        }}
+
+        // Exact Prompt 4: Find writing about this space in e-flux or MIT Press
+        if (q.includes('writing about this space') || (q.includes('e-flux') && q.includes('mit press')) || q.includes('find writing about')) {{
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Critical writing and theory from MIT Press and <em>e-flux journal</em> on these spaces:
+            </p>
+            <p class="text-slate-300">
+              - <strong>MIT Press:</strong> In <em>Beyond Objecthood</em> (2017), James Voorhies explores how independent galleries preserved experimental exhibition forms after mega-museums turned art into tourist spectacles. In <em>One Place after Another</em>, Miwon Kwon examines how site-specific art transformed from sculptures to community projects.<br>
+              - <strong>e-flux journal:</strong> Hito Steyerl's <em>Is a Museum a Factory?</em> examines how museum visitors produce economic value for luxury real estate, while Boris Groys analyzes the public museum as an egalitarian secular archive.
+            </p>
+          `);
+          return;
+        }}
+
         // Research Handler 6: MIT Press Canon & Essential Art Theory Books
         if (q.includes('mit press') || q.includes('mit book') || q.includes('mit oress') || q.includes('essential book') || q.includes('theory book') || q.includes('reading list') || q.includes('curatorial book') || (q.includes('mit') && q.includes('art'))) {{
           appendCuratorMessage(`
@@ -3112,6 +3206,44 @@ FORMATTING & INTERACTION RULES:
       document.getElementById('tabCatalogBtn')?.click();
     }});
 
+
+
+    // View Controls: Minimize · Expand
+    let isGlobeMinimized = false;
+    let isGlobeExpanded = false;
+
+    function handleViewMinimize() {{
+      const g = document.getElementById('globeViewport');
+      if (!g) return;
+      isGlobeMinimized = !isGlobeMinimized;
+      isGlobeExpanded = false;
+
+      if (isGlobeMinimized) {{
+        g.style.height = activeViewMode === 'work' ? '120px' : '15vh';
+      }} else {{
+        g.style.height = activeViewMode === 'work' ? '250px' : '38vh';
+      }}
+      setTimeout(resizeCanvas, 40);
+    }}
+
+    function handleViewExpand() {{
+      const g = document.getElementById('globeViewport');
+      if (!g) return;
+      isGlobeExpanded = !isGlobeExpanded;
+      isGlobeMinimized = false;
+
+      if (isGlobeExpanded) {{
+        g.style.height = activeViewMode === 'work' ? '400px' : '65vh';
+      }} else {{
+        g.style.height = activeViewMode === 'work' ? '250px' : '38vh';
+      }}
+      setTimeout(resizeCanvas, 40);
+    }}
+
+    document.getElementById('viewMinimizeBtn')?.addEventListener('click', handleViewMinimize);
+    document.getElementById('topViewMinimizeBtn')?.addEventListener('click', handleViewMinimize);
+    document.getElementById('viewExpandBtn')?.addEventListener('click', handleViewExpand);
+    document.getElementById('topViewExpandBtn')?.addEventListener('click', handleViewExpand);
 
     // Handle Input Send
     function handleSend() {{

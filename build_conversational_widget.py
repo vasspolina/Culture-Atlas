@@ -330,9 +330,11 @@ def update_widget():
           <span class="text-[14px] font-medium text-white truncate">Curator Guide</span>
           <span id="wSheetBadge" class="text-[14px] text-emerald-400 bg-[#0a2016] px-1.5 py-0.2 rounded-lg border border-emerald-900/60 hidden xs:inline">Half Sheet</span>
         </div>
-        <button id="wSheetToggleBtn" class="px-2.5 py-0.5 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white text-[14px] rounded-xl transition flex items-center gap-1">
-          <span>▼</span> <span>Close</span>
-        </button>
+        <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa] bg-[#212121] border border-[#2e2e2e] px-2 py-0.5 rounded-xl">
+          <button id="wMinimizeBtn" class="hover:text-white transition cursor-pointer">Minimize</button>
+          <span class="text-[#555]">·</span>
+          <button id="wExpandBtn" class="hover:text-white transition cursor-pointer">Expand</button>
+        </div>
       </div>
 
       <!-- Conversation Feed -->
@@ -340,8 +342,20 @@ def update_widget():
         <!-- Messages injected dynamically -->
       </div>
 
-      <!-- Inquiry Prompt Chips: Sleek ChatGPT style -->
+      <!-- Inquiry Prompt Chips: Sleek ChatGPT style (User Copywriting) -->
       <div id="wInquiryCarousel" class="px-3 py-1.5 border-t border-[#262626] bg-[#171717] flex items-center gap-1.5 overflow-x-auto custom-scroll text-[14px] whitespace-nowrap shrink-0">
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Find independent art spaces near me">
+          Find spaces near me
+        </button>
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Who funds this museum?">
+          Who funds this museum?
+        </button>
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="What are the opening hours and ticket prices?">
+          Hours & ticket prices
+        </button>
+        <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="Find writing about this space in e-flux or MIT Press">
+          e-flux & MIT Press
+        </button>
         <button class="w-inquiry px-3 py-0.5 rounded-full border border-[#2e2e2e] bg-[#212121] text-[#d4d4d4] hover:bg-[#282828] hover:text-white transition" data-query="How does Culture Atlas research and audit museum funding?">
           Research method
         </button>
@@ -380,7 +394,7 @@ def update_widget():
       <!-- Chat Input Bar: Sleek ChatGPT floating pill -->
       <div id="wInputBar" class="p-2 border-t border-[#262626] bg-[#171717] shrink-0">
         <div class="relative flex items-center bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-1 pl-3.5 pr-1 shadow-sm transition">
-          <input id="wCuratorInput" type="text" placeholder="Message Curator..." class="w-full bg-transparent border-0 text-[14px] text-white placeholder-[#71717a] focus:outline-none py-1 font-sans" />
+          <input id="wCuratorInput" type="text" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent border-0 text-[14px] text-white placeholder-[#71717a] focus:outline-none py-1 font-sans" />
           <button id="wCuratorSend" class="w-7 h-7 rounded-full bg-white text-black hover:bg-neutral-200 transition active:scale-95 flex items-center justify-center shrink-0 shadow-sm ml-1" title="Send">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 19V5M5 12l7-7 7 7"/>
@@ -1140,6 +1154,15 @@ def update_widget():
 
     // Half Sheet Open / Close Controller
     let wSheetOpen = true;
+    document.getElementById('wMinimizeBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      setWSheet(false);
+    }});
+    document.getElementById('wExpandBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      setWSheet(true);
+    }});
+
     function setWSheet(open) {{
       wSheetOpen = open;
       const globe = document.getElementById('wGlobePanel');
