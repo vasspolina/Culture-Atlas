@@ -284,7 +284,11 @@
       align-items: center;
       background: #171717;
       overflow-y: auto;
+      padding-top: 52px;
       transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #curatorMessages:empty {
+      display: none;
     }
 
     /* Card & Button Hover Styles */
@@ -452,17 +456,17 @@
     <!-- ========================================================= -->
     <!-- 💼 UNIFIED WORK & CHAT CANVAS (Single Combined Experience) -->
     <!-- ========================================================= -->
-    <div id="workViewContainer" class="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pb-12 w-full">
-      <div class="w-full max-w-3xl flex flex-col items-center flex-1">
+    <div id="workViewContainer" class="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pb-12 w-full pt-[52px]">
+      <div class="w-full max-w-3xl flex flex-col items-center">
         
 
         <!-- Active Conversation Stream (Messages injected dynamically in work chat) -->
-        <div id="curatorMessages" class="w-full space-y-4 my-2 flex-1">
+        <div id="curatorMessages" class="w-full space-y-4 mb-4">
           <!-- User queries and curator responses flow seamlessly here -->
         </div>
 
         <!-- Typing Indicator -->
-        <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center gap-2">
+        <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center gap-2 mb-2">
           <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] shrink-0">🏛️</div>
           <span class="inline-flex gap-1.5 items-center pl-1">
             <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
@@ -473,7 +477,7 @@
         </div>
 
         <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
-        <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-3.5 sm:p-4 shadow-xl transition relative mt-2 shrink-0">
+        <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-3.5 sm:p-4 shadow-xl transition relative shrink-0">
           <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] focus:outline-none resize-none font-normal leading-[120%]"></textarea>
           
           <div class="flex items-center justify-between pt-2">
