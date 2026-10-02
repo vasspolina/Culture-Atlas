@@ -267,108 +267,24 @@
       text-decoration-color: #ffffff;
     }
 
-    /* App View Modes: Work (ChatGPT homepage) vs Chat vs Full Globe */
+    /* Unified Single-Canvas Architecture (Globe + Work Chat) */
     #globeViewport {
+      height: 250px;
+      min-height: 140px;
+      max-height: 550px;
+      display: flex;
+      background: #171717;
+      border-bottom: 1px solid #262626;
       transition: height 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    #bottomChatSection, #workViewContainer {
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .app-mode-work #globeViewport {
-      height: 250px !important;
-      min-height: 220px !important;
-      max-height: 280px !important;
-      border-bottom: none !important;
-      background: #171717 !important;
-    }
-    .app-mode-work #workViewContainer {
-      display: flex !important;
-    }
-    .app-mode-work #bottomChatSection {
-      display: none !important;
-    }
-
-    /* Chat Mode Sheet States: Half Sheet (default), Closed, and Full */
-    .app-mode-chat #workViewContainer {
-      display: none !important;
-    }
-
-    .app-mode-chat.sheet-half #globeViewport {
-      height: 38vh !important;
-      min-height: 180px !important;
-      display: flex !important;
-      border-bottom: 1px solid #262626 !important;
-      background: #171717 !important;
-    }
-    .app-mode-chat.sheet-half #bottomChatSection {
-      display: flex !important;
-      height: calc(100% - 38vh) !important;
-      min-height: 220px !important;
-    }
-    .app-mode-chat.sheet-half #sheetOpenControls {
-      display: flex !important;
-    }
-    .app-mode-chat.sheet-half #sheetClosedBar {
-      display: none !important;
-    }
-    .app-mode-chat.sheet-half #curatorExperienceContainer,
-    .app-mode-chat.sheet-half #catalogExperienceContainer {
+    #workViewContainer {
       display: flex;
-    }
-
-    /* Closed state: Globe expands to full height, bottom sheet collapses to slim 44px bar */
-    .app-mode-chat.sheet-closed #globeViewport {
-      height: calc(100% - 44px) !important;
-      min-height: 260px !important;
-      display: flex !important;
-      border-bottom: 1px solid #262626 !important;
-      background: #171717 !important;
-    }
-    .app-mode-chat.sheet-closed #bottomChatSection {
-      display: flex !important;
-      height: 44px !important;
-      min-height: 44px !important;
-      overflow: hidden !important;
-    }
-    .app-mode-chat.sheet-closed #sheetOpenControls {
-      display: none !important;
-    }
-    .app-mode-chat.sheet-closed #sheetClosedBar {
-      display: flex !important;
-    }
-    .app-mode-chat.sheet-closed #curatorExperienceContainer,
-    .app-mode-chat.sheet-closed #catalogExperienceContainer {
-      display: none !important;
-    }
-
-    /* Full state: Chat expands to full view, globe minimizes to 0 */
-    .app-mode-chat.sheet-full #globeViewport {
-      height: 0px !important;
-      min-height: 0px !important;
-      display: none !important;
-    }
-    .app-mode-chat.sheet-full #bottomChatSection {
-      display: flex !important;
-      height: 100% !important;
-      flex: 1 1 0% !important;
-    }
-    .app-mode-chat.sheet-full #sheetOpenControls {
-      display: flex !important;
-    }
-    .app-mode-chat.sheet-full #sheetClosedBar {
-      display: none !important;
-    }
-
-    .app-mode-globe #globeViewport {
-      height: 100% !important;
-      border-bottom: none !important;
-      background: #171717 !important;
-    }
-    .app-mode-globe #workViewContainer {
-      display: none !important;
-    }
-    .app-mode-globe #bottomChatSection {
-      display: none !important;
+      flex: 1 1 0%;
+      flex-direction: column;
+      align-items: center;
+      background: #171717;
+      overflow-y: auto;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* Card & Button Hover Styles */
@@ -414,13 +330,11 @@
       </div>
     </div>
 
-    <!-- Center: Segmented Pill Switcher (Exact match to ChatGPT Work screenshot) -->
-    <div class="flex items-center bg-[#212121] border border-[#2e2e2e] rounded-full p-0.5 text-[14px] shadow-sm">
-      <button id="topNavChatBtn" class="px-5 py-1 rounded-full transition text-[#8e8e8e] hover:text-white font-normal text-[14px] cursor-pointer">
-        Chat
-      </button>
-      <button id="topNavWorkBtn" class="px-5 py-1 rounded-full transition bg-[#2f2f2f] text-white font-normal shadow-sm text-[14px] cursor-pointer">
-        Work
+    <!-- Center: Unified + New Chat Action (Single Canvas Experience) -->
+    <div class="flex items-center">
+      <button id="topNewChatBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-full text-[14px] transition shadow-sm cursor-pointer" title="Start a new chat exploration">
+        <span class="text-emerald-400 font-normal">+</span>
+        <span>New Chat</span>
       </button>
     </div>
 
@@ -447,7 +361,7 @@
   <!-- ========================================================= -->
   <!-- MAIN APP CONTAINER (Hosts Globe, Work Home, and Chat Stream) -->
   <!-- ========================================================= -->
-  <div id="mainAppContainer" class="app-mode-work sheet-half relative w-full flex-1 flex flex-col bg-[#171717] overflow-hidden">
+  <div id="mainAppContainer" class="relative w-full flex-1 flex flex-col bg-[#171717] overflow-hidden">
 
     <!-- 🌍 3D GLOBE VIEWPORT -->
     <div id="globeViewport" class="relative w-full h-[250px] flex items-center justify-center bg-[#171717] overflow-hidden shrink-0 select-none">
@@ -505,13 +419,14 @@
     </div>
 
     <!-- ========================================================= -->
-    <!-- VIEW 1: 💼 WORK LANDING VIEW (Exact match to ChatGPT Work in dark mode) -->
+    <!-- ========================================================= -->
+    <!-- 💼 UNIFIED WORK & CHAT CANVAS (Single Combined Experience) -->
     <!-- ========================================================= -->
     <div id="workViewContainer" class="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pb-12 w-full">
-      <div class="w-full max-w-3xl flex flex-col items-center">
+      <div class="w-full max-w-3xl flex flex-col items-center flex-1">
         
         <!-- Center Headline & Sub-headline (Exact user copywriting) -->
-        <div class="text-center mt-1 mb-5 select-none">
+        <div id="workHeroSection" class="text-center mt-2 mb-4 select-none transition-all duration-200">
           <h1 class="text-[24px] font-normal text-[#f4f4f5] leading-[120%]">
             What would you like to explore?
           </h1>
@@ -520,13 +435,29 @@
           </p>
         </div>
 
-        <!-- Big Rounded Input Card -->
-        <div class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-3.5 sm:p-4 shadow-xl transition relative">
+        <!-- Active Conversation Stream (Messages injected dynamically in work chat) -->
+        <div id="curatorMessages" class="w-full space-y-4 my-2 flex-1">
+          <!-- User queries and curator responses flow seamlessly here -->
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] shrink-0">🏛️</div>
+          <span class="inline-flex gap-1.5 items-center pl-1">
+            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+          </span>
+          <span class="text-[14px] text-[#a1a1aa]">Curator is researching...</span>
+        </div>
+
+        <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
+        <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-3.5 sm:p-4 shadow-xl transition relative mt-2 shrink-0">
           <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] focus:outline-none resize-none font-normal leading-[120%]"></textarea>
           
           <div class="flex items-center justify-between pt-2">
             <!-- Left: Plus action button -->
-            <button id="workPlusBtn" class="w-8 h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center text-[18px] transition active:scale-95 cursor-pointer" title="Quick filters">
+            <button id="workPlusBtn" class="w-8 h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center text-[18px] transition active:scale-95 cursor-pointer font-normal" title="Quick filters">
               +
             </button>
 
@@ -545,7 +476,7 @@
                 </svg>
               </button>
 
-              <button id="workSendBtn" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer" title="Send or Start Voice">
+              <button id="workSendBtn" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer" title="Send message">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 3v18M8 6v12M4 9v6M16 6v12M20 9v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
                 </svg>
@@ -555,16 +486,16 @@
 
           <!-- Quick Dropdown Menu for Plus button -->
           <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-52 text-[14px]">
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition" data-query="Which museums and galleries are free to enter?">🎟️ Free Admission Spaces</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition" data-query="Which museums are open on Mondays?">🕒 Monday Openings</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition" data-query="Show spaces that do not take oil or weapons money">🌿 Fossil & Defense-Free</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition" data-query="Tell me about London's independent art spaces">📍 London Art Guide</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition" data-query="Tell me about New York's art spaces and board controversies">📍 New York Art Guide</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums and galleries are free to enter?">🎟️ Free Admission Spaces</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums are open on Mondays?">🕒 Monday Openings</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show spaces that do not take oil or weapons money">🌿 Fossil & Defense-Free</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about London's independent art spaces">📍 London Art Guide</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about New York's art spaces and board controversies">📍 New York Art Guide</button>
           </div>
         </div>
 
         <!-- Attached Shelf -->
-        <div class="w-full mt-2.5 px-2 flex items-center justify-between text-[14px] text-[#a1a1aa] overflow-x-auto custom-scrollbar whitespace-nowrap gap-3 select-none">
+        <div class="w-full mt-2.5 px-2 flex items-center justify-between text-[14px] text-[#a1a1aa] overflow-x-auto custom-scrollbar whitespace-nowrap gap-3 select-none shrink-0">
           <div class="flex items-center gap-3">
             <button class="work-shelf-pill hover:text-white flex items-center gap-1.5 transition cursor-pointer" data-query="Show me all cities mapped in Culture Atlas">
               <span>📁</span> <span>Choose project</span>
@@ -583,86 +514,89 @@
           </div>
         </div>
 
-        <!-- Suggested Prompts Header (Exact user copywriting) -->
-        <div class="w-full mt-7 mb-3 text-[14px] font-normal text-[#e4e4e7] flex items-center justify-between select-none">
-          <div class="flex items-center gap-2">
-            <span>💡</span> <span>Suggested prompts</span>
-          </div>
-          <!-- View controls: Minimize · Expand -->
-          <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa]">
-            <span class="text-[14px] text-[#71717a]">View controls:</span>
-            <button id="viewMinimizeBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Minimize</button>
-            <span class="text-[#555]">·</span>
-            <button id="viewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Expand</button>
-          </div>
-        </div>
-
-        <!-- 4 Suggested Prompt Cards (Exact user copywriting) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
-          <!-- Prompt 1: Find independent art spaces near me -->
-          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find independent art spaces near me">
-            <div class="flex items-start justify-between gap-2 mb-2">
-              <div class="w-6 h-6 text-[#38bdf8] flex items-center justify-center">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-                </svg>
-              </div>
-              <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
+        <!-- Suggested Prompts (Visible on new/empty chat) -->
+        <div id="workSuggestionsSection" class="w-full transition-all duration-200">
+          <!-- Suggested Prompts Header (Exact user copywriting) -->
+          <div class="w-full mt-7 mb-3 text-[14px] font-normal text-[#e4e4e7] flex items-center justify-between select-none leading-[120%]">
+            <div class="flex items-center gap-2">
+              <span>💡</span> <span>Suggested prompts</span>
             </div>
-            <div>
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find independent art spaces near me</div>
-              <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Locate verified artist-run galleries and non-profits in your area.</div>
+            <!-- View controls: Minimize · Expand -->
+            <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa]">
+              <span class="text-[14px] text-[#71717a]">View controls:</span>
+              <button id="viewMinimizeBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Minimize</button>
+              <span class="text-[#555]">·</span>
+              <button id="viewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Expand</button>
             </div>
           </div>
 
-          <!-- Prompt 2: Who funds this museum? -->
-          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Who funds this museum?">
-            <div class="flex items-start justify-between gap-2 mb-2">
-              <div class="w-6 h-6 text-[#10b981] flex items-center justify-center">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                </svg>
+          <!-- 4 Suggested Prompt Cards (Exact user copywriting) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
+            <!-- Prompt 1: Find independent art spaces near me -->
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find independent art spaces near me">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="w-6 h-6 text-[#38bdf8] flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                  </svg>
+                </div>
+                <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
               </div>
-              <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
+              <div>
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find independent art spaces near me</div>
+                <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Locate verified artist-run galleries and non-profits in your area.</div>
+              </div>
             </div>
-            <div>
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Who funds this museum?</div>
-              <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Audit Form 990 filings, public subsidies, and board conflict records.</div>
-            </div>
-          </div>
 
-          <!-- Prompt 3: What are the opening hours and ticket prices? -->
-          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the opening hours and ticket prices?">
-            <div class="flex items-start justify-between gap-2 mb-2">
-              <div class="w-6 h-6 text-[#f59e0b] flex items-center justify-center">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polyline points="12 6 12 12 16 14"/>
-                </svg>
+            <!-- Prompt 2: Who funds this museum? -->
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Who funds this museum?">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="w-6 h-6 text-[#10b981] flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                  </svg>
+                </div>
+                <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
               </div>
-              <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
+              <div>
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Who funds this museum?</div>
+                <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Audit Form 990 filings, public subsidies, and board conflict records.</div>
+              </div>
             </div>
-            <div>
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">What are the opening hours and ticket prices?</div>
-              <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Check admission policies, free entry days, and weekly hours.</div>
-            </div>
-          </div>
 
-          <!-- Prompt 4: Find writing about this space in e-flux or MIT Press -->
-          <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find writing about this space in e-flux or MIT Press">
-            <div class="flex items-start justify-between gap-2 mb-2">
-              <div class="w-6 h-6 text-[#a78bfa] flex items-center justify-center">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                </svg>
+            <!-- Prompt 3: What are the opening hours and ticket prices? -->
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the opening hours and ticket prices?">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="w-6 h-6 text-[#f59e0b] flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
               </div>
-              <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
+              <div>
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">What are the opening hours and ticket prices?</div>
+                <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Check admission policies, free entry days, and weekly hours.</div>
+              </div>
             </div>
-            <div>
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find writing about this space in e-flux or MIT Press</div>
-              <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Read critical theory, curatorial reviews, and institutional critique.</div>
+
+            <!-- Prompt 4: Find writing about this space in e-flux or MIT Press -->
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find writing about this space in e-flux or MIT Press">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="w-6 h-6 text-[#a78bfa] flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                  </svg>
+                </div>
+                <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
+              </div>
+              <div>
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find writing about this space in e-flux or MIT Press</div>
+                <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Read critical theory, curatorial reviews, and institutional critique.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -670,261 +604,35 @@
       </div>
     </div>
 
-    <!-- ========================================================= -->
-    <!-- VIEW 2: 💬 CHAT CONVERSATION VIEW -->
-    <!-- ========================================================= -->
-    <div id="bottomChatSection" class="relative w-full h-[50vh] flex flex-col bg-[#171717] overflow-hidden border-t border-[#262626] z-20">
-      
-      <!-- Sheet Drag Handle & Open/Close Bar -->
-      <div id="sheetHeaderBar" class="px-3 py-1.5 sm:px-6 sm:py-2 border-b border-[#262626] bg-[#171717] flex flex-col gap-1 shrink-0 select-none">
-        
-        <!-- Drag Handle Indicator Pill -->
-        <div id="sheetDragHandle" class="w-8 h-1 bg-[#3a3a3a] hover:bg-[#555] rounded-full mx-auto my-0.5 transition cursor-grab active:cursor-grabbing" title="Drag or tap to toggle sheet"></div>
+  </div>
 
-        <!-- 1. Open State Controls Row (Shown when Half or Full) -->
-        <div id="sheetOpenControls" class="flex items-center justify-between gap-3">
-          
-          <!-- Mode Navigation Tabs: Sleek ChatGPT / Apple-style Segmented Control -->
-          <div class="flex items-center bg-[#212121] border border-[#2e2e2e] rounded-xl p-0.5 text-[14px]">
-            <button id="tabCuratorBtn" class="py-1 px-3 rounded-lg transition text-center flex items-center gap-1.5 bg-[#2f2f2f] text-white font-normal shadow-sm">
-              <span>Curator Guide</span>
-            </button>
-            <button id="tabCatalogBtn" class="py-1 px-3 rounded-lg transition text-center flex items-center gap-1.5 text-[#a1a1aa] hover:text-white">
-              <span>Catalog (203)</span>
-            </button>
-          </div>
-
-          <!-- Right Controls: Status + Settings + Expand/Restore + Close Toggle -->
-          <div class="flex items-center gap-2">
-            <span id="listTotalBadge" class="hidden sm:inline text-[14px] text-[#71717a] px-2 py-0.5">
-              203 mapped
-            </span>
-            <span id="activeFilterBadge" class="hidden text-[14px] text-[#93c5fd] bg-[#1e293b] border border-[#334155] px-2 py-0.5 rounded-lg flex items-center gap-1">
-              <span id="activeFilterText">Filtered</span>
-              <button id="clearActiveFilterBtn" class="text-slate-400 hover:text-white ml-0.5">✕</button>
-            </span>
-
-            <!-- Live AI / Critical Engine Status & Settings Button -->
-            <button id="curatorSettingsBtn" class="flex items-center gap-1.5 px-2.5 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[14px] transition shrink-0 shadow-sm" title="Curator Intelligence Settings & API Status">
-              <span id="curatorStatusDot" class="w-2 h-2 rounded-full bg-amber-400"></span>
-              <span id="curatorStatusLabel" class="hidden sm:inline font-mono text-[14px]">Offline Engine</span>
-              <span class="text-[14px]">⚙️</span>
-            </button>
-
-            <!-- Expand / Half Toggle Button -->
-            <button id="sheetExpandBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white px-2 py-1 rounded-lg text-[14px] transition flex items-center gap-1" title="Expand / Restore Sheet">
-              <span id="sheetExpandIcon">⤢</span>
-              <span id="sheetExpandLabel" class="hidden sm:inline text-[14px]">Full</span>
-            </button>
-
-            <!-- Close Half Sheet Button -->
-            <button id="sheetCloseBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white px-2.5 py-1 rounded-lg text-[14px] transition flex items-center gap-1.5 cursor-pointer" title="Close Half Sheet">
-              <span>✕</span>
-              <span class="text-[14px]">Close</span>
-            </button>
-          </div>
-
+  <!-- ========================================================= -->
+  <!-- 📋 CATALOG MODAL (Browse all 203 spaces) -->
+  <!-- ========================================================= -->
+  <div id="catalogModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
+    <div class="bg-[#171717] border border-[#2e2e2e] rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden font-sans">
+      <div class="p-3 border-b border-[#262626] bg-[#1a1a1a] flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span>🏛️</span>
+          <span class="text-[14px] font-normal text-white">Full Catalog of 203 Sanctuaries</span>
         </div>
-
-        <!-- 2. Closed State Bar (Shown when Closed) -->
-        <div id="sheetClosedBar" class="hidden flex items-center justify-between gap-2 cursor-pointer py-1">
-          <div class="flex items-center gap-2 truncate" id="sheetReopenTitle">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span class="text-[14px] font-normal text-white truncate">Culture Atlas Curator</span>
-            <span class="text-[14px] text-[#71717a] hidden sm:inline truncate">· Half Sheet Closed</span>
-          </div>
-
-          <div class="flex items-center gap-2 shrink-0">
-            <button id="sheetOpenBtn" class="px-3 py-1 bg-[#2f2f2f] hover:bg-[#383838] border border-[#3e3e3e] text-white text-[14px] font-normal rounded-xl transition shadow-sm flex items-center gap-1.5 cursor-pointer">
-              <span>▲</span>
-              <span>Open Chat</span>
-            </button>
-            <button id="sheetBackToWorkBtn" class="px-2.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white text-[14px] font-normal rounded-xl transition shadow-sm flex items-center gap-1 cursor-pointer" title="Return to Work view">
-              <span>💼</span>
-              <span class="hidden xs:inline">Work view</span>
-            </button>
-          </div>
-        </div>
-
+        <button id="closeCatalogModalBtn" class="text-slate-400 hover:text-white p-1 text-[14px]">✕</button>
       </div>
-
-      <!-- VIEW A: 💬 CURATOR CONVERSATIONAL EXPERIENCE (Default in Bottom Half) -->
-      <div id="curatorPanel" class="flex-1 flex flex-col min-h-0 overflow-hidden bg-[#171717]">
-        
-        <!-- Scrollable Conversation Feed -->
-        <div id="curatorMessages" class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-5 space-y-4 max-w-3xl mx-auto w-full">
-          <!-- Messages injected dynamically -->
+      <div class="p-3 border-b border-[#262626] bg-[#171717] flex flex-col gap-2">
+        <input type="text" id="searchInput" placeholder="Search museum, city, or focus..." class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white placeholder-[#71717a] px-3.5 py-2 rounded-xl focus:outline-none" />
+        <div class="grid grid-cols-2 gap-2 text-[14px]">
+          <select id="countrySelect" class="bg-[#212121] border border-[#333333] text-[#e4e4e7] px-3 py-1.5 rounded-xl truncate">
+            <option value="all">All Countries (35)</option>
+          </select>
+          <select id="citySelect" class="bg-[#212121] border border-[#333333] text-[#e4e4e7] px-3 py-1.5 rounded-xl truncate">
+            <option value="all">All Cities (133)</option>
+          </select>
         </div>
-
-        <!-- Typing Indicator -->
-        <div id="curatorTyping" class="hidden max-w-3xl mx-auto w-full px-4 sm:px-6 py-2 text-[14px] text-[#8e8e8e] flex items-center gap-2">
-          <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] shrink-0">🏛️</div>
-          <span class="inline-flex gap-1.5 items-center pl-1">
-            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-          </span>
-        </div>
-
-        <!-- Sleek OpenAI ChatGPT-style Prompt Suggestions -->
-        <div id="curatorInquiryRow" class="max-w-3xl mx-auto w-full px-3 sm:px-6 py-2 flex items-center gap-1.5 overflow-x-auto custom-scrollbar shrink-0 text-[14px] whitespace-nowrap">
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981] hover:bg-[#112d1e] transition active:scale-95 flex items-center gap-1.5" data-filter="free" data-chip-color="green" data-query="Which museums and galleries are free to enter?">
-            <span>🎟️ Free Admission</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="monday" data-chip-color="blue" data-query="Which museums are open on Mondays?">
-            <span>🕒 Hours & Mondays</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="transit" data-chip-color="blue" data-query="How do I get to Dia Beacon or Louisiana by train?">
-            <span>🚇 Public Transit Tips</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="accessibility" data-chip-color="slate" data-query="Which museums have wheelchair and step-free access?">
-            <span>♿ Accessibility</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="amenities" data-chip-color="slate" data-query="Which spaces have great cafés, gardens, or bookshops?">
-            <span>☕ Cafés & Bookshops</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="ethical" data-chip-color="blue" data-query="How do you decide if a museum has clean funding?">
-            <span>🏛️ Clean Funding</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="artist_run" data-chip-color="slate" data-query="What are the best artist-run spaces to visit?">
-            <span>🎨 Artist-Run Spaces</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1b3324] bg-[#0c1f15] text-[#6ee7b7] hover:border-[#10b981] hover:bg-[#112d1e] transition active:scale-95 flex items-center gap-1.5" data-filter="fossil_free" data-chip-color="green" data-query="Show spaces that do not take oil or weapons money">
-            <span>🌿 Fossil & defense-free</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="london" data-chip-color="blue" data-city="London" data-query="Tell me about London's independent art spaces">
-            <span>📍 London guide</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="nyc" data-chip-color="blue" data-city="New York" data-query="Tell me about New York's art spaces and board controversies">
-            <span>📍 New York guide</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#93c5fd] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="paris" data-chip-color="blue" data-city="Paris" data-query="Tell me about art spaces to visit in Paris">
-            <span>📍 Paris guide</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_method" data-chip-color="blue" data-query="How does Culture Atlas research and audit museum funding?">
-            <span>🔬 Research Method</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_shows" data-chip-color="blue" data-query="What landmark exhibitions changed art history and museum critique?">
-            <span>🏛️ Landmark Shows</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_restitution" data-chip-color="blue" data-query="How are museums handling stolen colonial artifacts and restitution?">
-            <span>🌍 Restitution & Looted Art</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_models" data-chip-color="blue" data-query="Compare American private museum boards with European public funding">
-            <span>⚖️ US vs European Models</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_mit" data-chip-color="blue" data-query="What are the essential MIT Press books on museums, curating, and institutional critique?">
-            <span>📚 MIT Press Canon</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_krauss" data-chip-color="blue" data-query="Explain Rosalind Krauss's critique of the late capitalist museum in simple terms">
-            <span>🏛️ Late Capitalist Museum</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#1e293b] bg-[#0f172a] text-[#93c5fd] hover:border-[#38bdf8] hover:bg-[#1e293b] transition active:scale-95 flex items-center gap-1.5" data-filter="research_kwon" data-chip-color="blue" data-query="Explain Miwon Kwon's 'One Place after Another' and site-specific art in simple terms">
-            <span>📍 Site-Specific Art</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_objecthood" data-query="Explain 'Beyond Objecthood' in simple terms">
-            <span>📖 Beyond Objecthood</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_eflux" data-query="Explain e-flux and 'Is a Museum a Factory?' in simple terms">
-            <span>📑 e-flux: Museum as factory</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#2f2f2f] bg-[#212121] text-[#d4d4d4] hover:bg-[#2b2b2b] hover:text-white transition active:scale-95 flex items-center gap-1.5" data-filter="theory_critique" data-query="Explain the three waves of institutional critique in simple terms">
-            <span>⚡ 3 Waves of Critique</span>
-          </button>
-          <button class="inquiry-chip px-3 py-1 rounded-full border border-[#232a3c] bg-[#101522] text-[#cbd5e1] hover:border-[#3b82f6] hover:bg-[#151c30] transition active:scale-95 flex items-center gap-1.5" data-filter="surprise" data-chip-color="slate" data-query="Surprise me with a great art space">
-            <span>✨ Surprise me</span>
-          </button>
-        </div>
-        <div class="p-2 sm:p-3 bg-[#171717] shrink-0 border-t border-[#222222]">
-          <div class="max-w-3xl mx-auto w-full">
-            <div class="relative flex items-center bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-1.5 pl-4 pr-1.5 shadow-md transition">
-              <input 
-                type="text" 
-                id="curatorInput" 
-                placeholder="Ask about a museum or cultural space" 
-                class="w-full bg-transparent border-0 text-[14px] text-white placeholder-[#71717a] focus:outline-none py-1.5 font-sans"
-              />
-              <button 
-                id="curatorSendBtn" 
-                class="w-8 h-8 rounded-full bg-white text-black hover:bg-neutral-200 transition active:scale-95 flex items-center justify-center shrink-0 shadow-sm ml-1.5 opacity-60"
-                title="Send message"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 19V5M5 12l7-7 7 7"/>
-                </svg>
-              </button>
-            </div>
-            <div class="text-center text-[14px] text-[#666] pt-1 select-none">
-              Culture Atlas verifies governance independence and public trust.
-            </div>
-          </div>
-        </div>
-
       </div>
-
-      <!-- VIEW B: 📋 RESEARCH CATALOG (When toggled to Catalog in Bottom Half) -->
-      <div id="catalogPanel" class="hidden flex-1 flex flex-col min-h-0 overflow-hidden bg-[#171717]">
-        
-        <div class="p-3 border-b border-[#262626] bg-[#171717] flex flex-col gap-2.5 shrink-0 max-w-3xl mx-auto w-full">
-          <!-- Active Filter Banner (When city/country clicked) -->
-          <div id="activeFilterBanner" class="hidden flex items-center justify-between bg-[#212121] border border-[#333] px-3 py-1.5 rounded-xl text-[14px]">
-            <div class="flex items-center gap-2 truncate">
-              <span id="filterIcon" class="text-[14px]">📍</span>
-              <span id="filterLabel" class="font-normal text-white truncate">NEW YORK</span>
-              <span id="filterCount" class="text-[#93c5fd] text-[14px]">(11)</span>
-            </div>
-            <button id="clearFilterBtn" class="text-[14px] text-[#a1a1aa] hover:text-white px-2 py-0.5 rounded-lg hover:bg-[#2e2e2e] transition ml-2 flex items-center gap-1">
-              <span>Clear</span> <span>✕</span>
-            </button>
-          </div>
-
-          <!-- Search Input: Clean ChatGPT-style search bar -->
-          <div class="relative">
-            <input 
-              type="text" 
-              id="searchInput" 
-              placeholder="Search museum, city, curatorial focus, or governance..." 
-              class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white placeholder-[#71717a] px-3.5 py-2 rounded-xl focus:outline-none focus:border-[#555] transition shadow-sm"
-            />
-            <button id="clearSearchBtn" class="hidden absolute right-3 top-2 text-[#71717a] hover:text-white text-[14px]">✕</button>
-          </div>
-
-          <!-- Quick Filters: Country & City Dropdowns -->
-          <div class="grid grid-cols-2 gap-2 text-[14px]">
-            <select id="countrySelect" class="bg-[#212121] border border-[#333333] text-[#e4e4e7] px-3 py-1.5 rounded-xl focus:outline-none focus:border-[#555] truncate">
-              <option value="all">All Countries (35)</option>
-            </select>
-            <select id="citySelect" class="bg-[#212121] border border-[#333333] text-[#e4e4e7] px-3 py-1.5 rounded-xl focus:outline-none focus:border-[#555] truncate">
-              <option value="all">All Cities (133)</option>
-            </select>
-          </div>
-
-          <!-- Tier Quick Chips: Clean, understated neutral pills with gentle indicators -->
-          <div class="flex items-center gap-2 text-[14px]">
-            <button class="tier-chip flex-1 py-1.5 px-2 rounded-xl border border-[#333333] bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] text-center transition flex items-center justify-center gap-1.5" data-tier="A">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span>Tier A (135)</span>
-            </button>
-            <button class="tier-chip flex-1 py-1.5 px-2 rounded-xl border border-[#333333] bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] text-center transition flex items-center justify-center gap-1.5" data-tier="B">
-              <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-              <span>Tier B (52)</span>
-            </button>
-            <button class="tier-chip flex-1 py-1.5 px-2 rounded-xl border border-[#333333] bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] text-center transition flex items-center justify-center gap-1.5" data-tier="U">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-              <span>Tier U (16)</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Scrollable Institutions Feed -->
-        <div id="institutionsListContainer" class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-4 space-y-2 max-w-3xl mx-auto w-full pb-8">
-          <!-- Populated dynamically -->
-        </div>
-
+      <div id="institutionsListContainer" class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-2">
+        <!-- Populated dynamically -->
       </div>
-
     </div>
-
   </div>
 
   <!-- ========================================================= -->
@@ -9674,7 +9382,6 @@
       const zoomTarget = shouldSwitchToGlobe ? Math.max(targetRadius, baseRadius * 4.2) : targetRadius;
       if (shouldSwitchToGlobe) {
         targetRadius = zoomTarget;
-        if (currentSheetState === 'full') setChatSheetState('half');
       }
       flyTo(inst.lon, inst.lat, zoomTarget);
 
@@ -9866,9 +9573,8 @@
       if (askAiBtn) {
         askAiBtn.addEventListener('click', () => {
           drawer.classList.add('hidden');
-          if (typeof setChatSheetState === 'function') setChatSheetState('half');
           const prompt = `Can you do a deep research audit on ${inst.name}?`;
-          if (curatorInput) curatorInput.value = prompt;
+          appendUserMessage(prompt);
           handleCuratorQuery(prompt);
         });
       }
@@ -9927,41 +9633,72 @@
       }
     }
 
-    // Initial Welcome Message (Concise, OpenAI ChatGPT style)
+    // Reset to Unified Landing View (+ New Chat)
+    function resetToNewChat() {
+      if (curatorMessages) curatorMessages.innerHTML = '';
+      const hero = document.getElementById('workHeroSection');
+      const suggestions = document.getElementById('workSuggestionsSection');
+      if (hero) hero.style.display = 'block';
+      if (suggestions) suggestions.style.display = 'block';
+      const wInput = document.getElementById('workInput');
+      if (wInput) wInput.value = '';
+      clearAllFilters();
+      const container = document.getElementById('workViewContainer');
+      if (container) container.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function initCuratorConversation() {
-      curatorMessages.innerHTML = '';
-      appendCuratorMessage(`
-        <p class="text-[#ececec]">
-          How can I help you explore museums and art spaces today?
-        </p>
-      `);
+      // In unified work chat, startup presents the clean landing canvas
+      if (curatorMessages) curatorMessages.innerHTML = '';
+      const hero = document.getElementById('workHeroSection');
+      const suggestions = document.getElementById('workSuggestionsSection');
+      if (hero) hero.style.display = 'block';
+      if (suggestions) suggestions.style.display = 'block';
+    }
+
+    function onChatStarted() {
+      const hero = document.getElementById('workHeroSection');
+      const suggestions = document.getElementById('workSuggestionsSection');
+      if (hero) hero.style.display = 'none';
+      if (suggestions) suggestions.style.display = 'none';
+    }
+
+    function scrollToBottom() {
+      const container = document.getElementById('workViewContainer');
+      if (container) {
+        setTimeout(() => {
+          container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+        }, 60);
+      }
     }
 
     function appendUserMessage(text) {
+      onChatStarted();
       const div = document.createElement('div');
-      div.className = 'flex justify-end my-1';
+      div.className = 'flex justify-end my-2.5 select-text w-full';
       div.innerHTML = `
-        <div class="max-w-[80%] bg-[#2f2f2f] text-[#ececec] text-[14px] px-4 py-2.5 rounded-3xl shadow-sm leading-[120%] whitespace-pre-wrap select-text">
+        <div class="max-w-[85%] sm:max-w-[75%] bg-[#2a2a2a] text-[#ececec] text-[14px] px-4 py-2.5 rounded-3xl shadow-sm leading-[120%] whitespace-pre-wrap select-text border border-[#333]">
           ${escapeHtml(text)}
         </div>
       `;
-      curatorMessages.appendChild(div);
-      curatorMessages.scrollTop = curatorMessages.scrollHeight;
+      curatorMessages?.appendChild(div);
+      scrollToBottom();
     }
 
     function appendCuratorMessage(htmlContent) {
+      onChatStarted();
       const div = document.createElement('div');
-      div.className = 'flex items-start gap-3 my-2 select-text';
+      div.className = 'flex items-start gap-3 my-2.5 select-text w-full bg-[#212121] border border-[#2e2e2e] rounded-2xl p-4 shadow-sm';
 
       div.innerHTML = `
-        <div class="w-7 h-7 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] text-white shrink-0 mt-0.5 select-none" title="Culture Atlas Curator">
+        <div class="w-8 h-8 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] text-white shrink-0 mt-0.5 select-none" title="Culture Atlas Curator">
           🏛️
         </div>
         <div class="flex-1 min-w-0 text-[14px] text-[#ececec] leading-[120%] space-y-3 pt-0.5">
           ${htmlContent}
         </div>
       `;
-      curatorMessages.appendChild(div);
+      curatorMessages?.appendChild(div);
 
       // Direct event binding on inline links for immediate responsiveness
       div.querySelectorAll('.inst-link').forEach(link => {
@@ -10005,7 +9742,7 @@
         });
       });
 
-      curatorMessages.scrollTop = curatorMessages.scrollHeight;
+      scrollToBottom();
     }
 
     function escapeHtml(str) {
@@ -11138,59 +10875,13 @@ FORMATTING & INTERACTION RULES:
     }
 
     // =========================================================
-    // 💼 WORK / CHAT MODE CONTROLLER (OpenAI Canvas / Work aesthetic)
+    // 💼 UNIFIED SINGLE-CANVAS CONTROLLER (Combined Work & Chat)
     // =========================================================
-    let activeViewMode = 'work'; // 'work' | 'chat'
+    
+    // Top New Chat Action: Resets chat and returns to fresh landing view
+    document.getElementById('topNewChatBtn')?.addEventListener('click', resetToNewChat);
 
-    function setViewMode(mode) {
-      activeViewMode = mode;
-      const mainApp = document.getElementById('mainAppContainer');
-      const topNavChatBtn = document.getElementById('topNavChatBtn');
-      const topNavWorkBtn = document.getElementById('topNavWorkBtn');
-      const workView = document.getElementById('workViewContainer');
-      const chatSection = document.getElementById('bottomChatSection');
-      const globeViewport = document.getElementById('globeViewport');
-
-      if (mode === 'work') {
-        mainApp.classList.remove('app-mode-chat', 'app-mode-globe');
-        mainApp.classList.add('app-mode-work');
-        
-        if (topNavWorkBtn) {
-          topNavWorkBtn.className = 'px-5 py-1 rounded-full transition bg-[#2f2f2f] text-white font-normal shadow-sm text-[14px] cursor-pointer';
-        }
-        if (topNavChatBtn) {
-          topNavChatBtn.className = 'px-5 py-1 rounded-full transition text-[#8e8e8e] hover:text-white font-normal text-[14px] cursor-pointer';
-        }
-        if (globeViewport) {
-          globeViewport.style.height = '250px';
-          globeViewport.style.display = 'flex';
-        }
-      } else {
-        mainApp.classList.remove('app-mode-work', 'app-mode-globe');
-        mainApp.classList.add('app-mode-chat');
-
-        if (topNavChatBtn) {
-          topNavChatBtn.className = 'px-5 py-1 rounded-full transition bg-[#2f2f2f] text-white font-normal shadow-sm text-[14px] cursor-pointer';
-        }
-        if (topNavWorkBtn) {
-          topNavWorkBtn.className = 'px-5 py-1 rounded-full transition text-[#8e8e8e] hover:text-white font-normal text-[14px] cursor-pointer';
-        }
-        setChatSheetState(currentSheetState === 'closed' ? 'half' : currentSheetState);
-      }
-
-      setTimeout(resizeCanvas, 40);
-    }
-
-    // Top Header Switcher Listeners
-    document.getElementById('topNavChatBtn')?.addEventListener('click', () => {
-      setViewMode('chat');
-    });
-
-    document.getElementById('topNavWorkBtn')?.addEventListener('click', () => {
-      setViewMode('work');
-    });
-
-    // Top Actions
+    // Top Reset Action
     document.getElementById('topResetBtn')?.addEventListener('click', () => {
       targetRotLon = 0;
       targetRotLat = 20;
@@ -11199,12 +10890,7 @@ FORMATTING & INTERACTION RULES:
       flightProgress = 0;
       startRotLon = rotLon;
       startRotLat = rotLat;
-    });
-
-    document.getElementById('topSpinBtn')?.addEventListener('click', () => {
-      isAutoSpinning = !isAutoSpinning;
-      const b = document.getElementById('topSpinBtn');
-      if (b) b.classList.toggle('text-emerald-400', isAutoSpinning);
+      resetToNewChat();
     });
 
     document.getElementById('topSettingsBtn')?.addEventListener('click', () => {
@@ -11234,27 +10920,20 @@ FORMATTING & INTERACTION RULES:
         workPlusMenu?.classList.add('hidden');
         const q = item.getAttribute('data-query');
         if (q) {
-          setViewMode('chat');
           appendUserMessage(q);
           handleCuratorQuery(q);
         }
       });
     });
 
-    // Work Input Send Action
+    // Unified Work Input Send Action
     const workInput = document.getElementById('workInput');
     const workSendBtn = document.getElementById('workSendBtn');
 
     function handleWorkSend() {
       const text = (workInput?.value || '').trim();
-      if (!text) {
-        setViewMode('chat');
-        appendUserMessage("Show me art spaces with clean funding");
-        handleCuratorQuery("Show me art spaces with clean funding");
-        return;
-      }
+      if (!text) return;
       workInput.value = '';
-      setViewMode('chat');
       appendUserMessage(text);
       handleCuratorQuery(text);
     }
@@ -11274,7 +10953,6 @@ FORMATTING & INTERACTION RULES:
         const card = el.closest('.work-suggestion-card') || el;
         const q = card.getAttribute('data-query');
         if (q) {
-          setViewMode('chat');
           appendUserMessage(q);
           handleCuratorQuery(q);
         }
@@ -11286,19 +10964,34 @@ FORMATTING & INTERACTION RULES:
       el.addEventListener('click', () => {
         const q = el.getAttribute('data-query');
         if (q) {
-          setViewMode('chat');
           appendUserMessage(q);
           handleCuratorQuery(q);
         }
       });
     });
 
+    // Catalog Modal Handlers (Full 203 spaces browser)
+    const catalogModal = document.getElementById('catalogModal');
     document.getElementById('workOpenCatalogBtn')?.addEventListener('click', () => {
-      setViewMode('chat');
-      document.getElementById('tabCatalogBtn')?.click();
+      if (catalogModal) catalogModal.classList.remove('hidden');
+      renderLeftList();
+    });
+    document.getElementById('closeCatalogModalBtn')?.addEventListener('click', () => {
+      if (catalogModal) catalogModal.classList.add('hidden');
+    });
+    catalogModal?.addEventListener('click', (e) => {
+      if (e.target === catalogModal) catalogModal.classList.add('hidden');
     });
 
-
+    // Floating Card Ask Curator Button: sends query straight to unified work chat
+    document.getElementById('floatingCardAskCurator')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (selectedInstitution) {
+        const q = `Tell me about ${selectedInstitution.name}`;
+        appendUserMessage(q);
+        handleCuratorQuery(selectedInstitution.name);
+      }
+    });
 
     // View Controls: Minimize · Expand
     let isGlobeMinimized = false;
@@ -11311,9 +11004,9 @@ FORMATTING & INTERACTION RULES:
       isGlobeExpanded = false;
 
       if (isGlobeMinimized) {
-        g.style.height = activeViewMode === 'work' ? '120px' : '15vh';
+        g.style.height = '120px';
       } else {
-        g.style.height = activeViewMode === 'work' ? '250px' : '38vh';
+        g.style.height = '250px';
       }
       setTimeout(resizeCanvas, 40);
     }
@@ -11325,9 +11018,9 @@ FORMATTING & INTERACTION RULES:
       isGlobeMinimized = false;
 
       if (isGlobeExpanded) {
-        g.style.height = activeViewMode === 'work' ? '400px' : '65vh';
+        g.style.height = '420px';
       } else {
-        g.style.height = activeViewMode === 'work' ? '250px' : '38vh';
+        g.style.height = '250px';
       }
       setTimeout(resizeCanvas, 40);
     }
@@ -11336,32 +11029,6 @@ FORMATTING & INTERACTION RULES:
     document.getElementById('topViewMinimizeBtn')?.addEventListener('click', handleViewMinimize);
     document.getElementById('viewExpandBtn')?.addEventListener('click', handleViewExpand);
     document.getElementById('topViewExpandBtn')?.addEventListener('click', handleViewExpand);
-
-    // Handle Input Send
-    function handleSend() {
-      const text = curatorInput.value.trim();
-      if (!text) return;
-      curatorInput.value = '';
-      appendUserMessage(text);
-      handleCuratorQuery(text);
-    }
-
-    curatorSendBtn.addEventListener('click', handleSend);
-    curatorInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        handleSend();
-      }
-    });
-    curatorInput.addEventListener('input', () => {
-      if (curatorInput.value.trim().length > 0) {
-        curatorSendBtn.classList.remove('opacity-60');
-        curatorSendBtn.classList.add('opacity-100');
-      } else {
-        curatorSendBtn.classList.add('opacity-60');
-        curatorSendBtn.classList.remove('opacity-100');
-      }
-    });
 
     function updateFilterChipsUI() {
       document.querySelectorAll('.inquiry-chip').forEach(btn => {
@@ -11557,150 +11224,6 @@ FORMATTING & INTERACTION RULES:
     }
 
     // =========================================================
-    // 📱 OPEN / CLOSE & HALF SHEET CONTROLLER
-    // =========================================================
-    let currentSheetState = 'half';
-    const mainAppContainer = document.getElementById('mainAppContainer');
-    const sheetCloseBtn = document.getElementById('sheetCloseBtn');
-    const sheetOpenBtn = document.getElementById('sheetOpenBtn');
-    const sheetClosedBar = document.getElementById('sheetClosedBar');
-    const sheetExpandBtn = document.getElementById('sheetExpandBtn');
-    const sheetExpandIcon = document.getElementById('sheetExpandIcon');
-    const sheetExpandLabel = document.getElementById('sheetExpandLabel');
-    const sheetDragHandle = document.getElementById('sheetDragHandle');
-    const sheetHeaderBar = document.getElementById('sheetHeaderBar');
-
-    function setChatSheetState(state) {
-      currentSheetState = state;
-      if (!mainAppContainer) return;
-      mainAppContainer.classList.remove('sheet-closed', 'sheet-half', 'sheet-full');
-      mainAppContainer.classList.add(`sheet-${state}`);
-
-      const openControls = document.getElementById('sheetOpenControls');
-      const closedBar = document.getElementById('sheetClosedBar');
-      const chatSection = document.getElementById('bottomChatSection');
-      const globeViewport = document.getElementById('globeViewport');
-
-      if (state === 'closed') {
-        if (openControls) openControls.style.display = 'none';
-        if (closedBar) closedBar.style.display = 'flex';
-        if (chatSection) {
-          chatSection.style.height = '44px';
-          chatSection.style.minHeight = '44px';
-        }
-        if (globeViewport) {
-          globeViewport.style.height = 'calc(100% - 44px)';
-          globeViewport.style.display = 'flex';
-        }
-      } else if (state === 'full') {
-        if (openControls) openControls.style.display = 'flex';
-        if (closedBar) closedBar.style.display = 'none';
-        if (chatSection) {
-          chatSection.style.height = '100%';
-          chatSection.style.minHeight = '100%';
-        }
-        if (globeViewport) {
-          globeViewport.style.height = '0px';
-          globeViewport.style.display = 'none';
-        }
-        if (sheetExpandIcon) sheetExpandIcon.textContent = '⤡';
-        if (sheetExpandLabel) sheetExpandLabel.textContent = 'Half';
-      } else { // 'half'
-        if (openControls) openControls.style.display = 'flex';
-        if (closedBar) closedBar.style.display = 'none';
-        if (chatSection) {
-          chatSection.style.height = 'calc(100% - 38vh)';
-          chatSection.style.minHeight = '220px';
-        }
-        if (globeViewport) {
-          globeViewport.style.height = '38vh';
-          globeViewport.style.display = 'flex';
-        }
-        if (sheetExpandIcon) sheetExpandIcon.textContent = '⤢';
-        if (sheetExpandLabel) sheetExpandLabel.textContent = 'Full';
-      }
-
-      // Smoothly trigger canvas resize during and after CSS transition
-      setTimeout(resizeCanvas, 40);
-      setTimeout(resizeCanvas, 140);
-      setTimeout(resizeCanvas, 320);
-    }
-
-    sheetCloseBtn?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setChatSheetState('closed');
-    });
-
-    sheetOpenBtn?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setChatSheetState('half');
-    });
-
-    sheetClosedBar?.addEventListener('click', (e) => {
-      if (e.target.closest('#sheetBackToWorkBtn')) return;
-      setChatSheetState('half');
-    });
-
-    document.getElementById('sheetBackToWorkBtn')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setViewMode('work');
-    });
-
-    sheetDragHandle?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (currentSheetState === 'closed') setChatSheetState('half');
-      else if (currentSheetState === 'half') setChatSheetState('closed');
-      else setChatSheetState('half');
-    });
-
-    sheetExpandBtn?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (currentSheetState === 'full') {
-        setChatSheetState('half');
-      } else {
-        setChatSheetState('full');
-      }
-    });
-
-    // Touch Swipe Gesture for Sheet Header
-    let touchSheetStartY = 0;
-    sheetHeaderBar?.addEventListener('touchstart', (e) => {
-      touchSheetStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    sheetHeaderBar?.addEventListener('touchend', (e) => {
-      const deltaY = e.changedTouches[0].clientY - touchSheetStartY;
-      if (deltaY > 35) {
-        // Dragged down
-        if (currentSheetState === 'full') setChatSheetState('half');
-        else if (currentSheetState === 'half') setChatSheetState('closed');
-      } else if (deltaY < -35) {
-        // Dragged up
-        if (currentSheetState === 'closed') setChatSheetState('half');
-        else if (currentSheetState === 'half') setChatSheetState('full');
-      }
-    }, { passive: true });
-
-    // Global aliases
-    window.setChatSheetState = setChatSheetState;
-    window.setSheetState = setChatSheetState;
-    window.setMobileView = function(view) {
-      switchTab(view);
-      setChatSheetState('half');
-    };
-
-    tabCuratorBtn.addEventListener('click', () => switchTab('curator'));
-    tabCatalogBtn.addEventListener('click', () => switchTab('catalog'));
-
-    // Floating Card Ask Curator button
-    document.getElementById('floatingCardAskCurator')?.addEventListener('click', () => {
-      if (selectedInstitution) {
-        switchTab('curator');
-        appendUserMessage(`Tell me about ${selectedInstitution.name} and its funding`);
-        handleCuratorQuery(selectedInstitution.name);
-      }
-    });
-
     // Curator Intelligence Settings Modal (Multi-Provider: Claude, OpenAI, Gemini)
     const settingsModal = document.getElementById('curatorSettingsModal');
     const aiApiKeyInput = document.getElementById('aiApiKeyInput');
@@ -12118,9 +11641,6 @@ FORMATTING & INTERACTION RULES:
 
       if (zoom) {
         targetRadius = baseRadius * 4.0;
-        if (currentSheetState === 'full') {
-          setChatSheetState('half');
-        }
       }
 
       // Select top institution in this city
@@ -12396,14 +11916,11 @@ FORMATTING & INTERACTION RULES:
 
     momaAuditFlyNycBtn?.addEventListener('click', () => {
       closeMomaAuditModal();
-      setChatSheetState('half');
       filterByCity('NEW YORK');
     });
 
     momaAuditChatBtn?.addEventListener('click', () => {
       closeMomaAuditModal();
-      setChatSheetState('half');
-      switchTab('curator');
       appendUserMessage('Why is MoMA excluded from Culture Atlas?');
       handleCuratorQuery('Why is MoMA excluded from Culture Atlas?');
     });
