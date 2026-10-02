@@ -76,9 +76,12 @@ def build():
 
     countries_json = json.dumps(out_countries, separators=(',', ':'))
     institutions_raw = open('institutions.json', 'r', encoding='utf-8').read().strip()
-    insts_data = json.loads(institutions_raw)
+    all_raw_institutions = json.loads(institutions_raw)
+    # Strictly filter the map and catalog dataset to ONLY ethically good, clean sponsored places (Tier A Verified Sanctuaries)
+    insts_data = [i for i in all_raw_institutions if i.get('tier') == 'A']
+    excluded_data = [i for i in all_raw_institutions if i.get('tier') != 'A']
     institutions_count = len(insts_data)
-    spaces_count_str = f"{institutions_count} SPACES"
+    spaces_count_str = f"{institutions_count} CLEAN SPACES"
 
     # Compute comprehensive Country & City Registries
     reg_countries = {}
@@ -149,6 +152,7 @@ def build():
     all_countries_registry_json = json.dumps(all_countries_list, separators=(',', ':'))
     all_cities_registry_json = json.dumps(all_cities_list, separators=(',', ':'))
     institutions_json = json.dumps(insts_data, separators=(',', ':'))
+    excluded_json = json.dumps(excluded_data, separators=(',', ':'))
 
     import base64
     b64_reg = base64.b64encode(open('app/fonts/PPTelegraf-Regular.otf', 'rb').read()).decode('ascii')
@@ -1029,6 +1033,7 @@ def build():
     // Embedded Data Sources (Enriched by Researcher Pipeline)
     const COUNTRY_POLYS = {countries_json};
     const ALL_INSTITUTIONS = {institutions_json};
+    const EXCLUDED_INSTITUTIONS = {excluded_json};
 
     const ALL_COUNTRIES_REGISTRY = {all_countries_registry_json};
     const ALL_CITIES_REGISTRY = {all_cities_registry_json};
@@ -3603,7 +3608,7 @@ def build():
 
     // State Variables
     let filteredList = [...ALL_INSTITUTIONS];
-    let selectedTierFilter = new Set(['A', 'B', 'U']);
+    let selectedTierFilter = new Set(['A']);
     let selectedCountryFilter = 'all';
     let selectedCityFilter = 'all';
     let searchQuery = '';
@@ -3823,7 +3828,7 @@ def build():
           const cityCountry = cityMeta ? cityMeta.country : lastSelectedCountry;
           if (badgeIcon) badgeIcon.textContent = '📍';
           if (cityTitleEl) {{
-            cityTitleEl.textContent = `${{activeCity.toUpperCase()}} · ${{cityMatches.length}} SPACES · STREET VIEW`;
+            cityTitleEl.textContent = `${{activeCity.toUpperCase()}} · ${{cityMatches.length}} CLEAN SPACES · STREET VIEW`;
           }}
           if (backCountryBtn && cityCountry) {{
             backCountryBtn.classList.remove('hidden');
@@ -3837,7 +3842,7 @@ def build():
           const countryCities = ALL_CITIES_REGISTRY.filter(c => matchC(c.country, selectedCountryFilter));
           if (badgeIcon) badgeIcon.textContent = '🌍';
           if (cityTitleEl) {{
-            cityTitleEl.textContent = `${{selectedCountryFilter.toUpperCase()}} · ${{countryMatches.length}} SPACES IN ${{countryCities.length}} CITIES`;
+            cityTitleEl.textContent = `${{selectedCountryFilter.toUpperCase()}} · ${{countryMatches.length}} CLEAN SPACES IN ${{countryCities.length}} CITIES`;
           }}
           if (backCountryBtn) backCountryBtn.classList.add('hidden');
         }} else {{
@@ -6619,6 +6624,28 @@ FORMATTING & INTERACTION RULES:
           return;
         }}
 
+        // M2. Excluded Institution Lookup & Ethical Audit
+        const excludedMatch = typeof EXCLUDED_INSTITUTIONS !== 'undefined' ? EXCLUDED_INSTITUTIONS.find(i => q.includes(i.name.toLowerCase()) || (i.aliases && i.aliases.some(a => q.includes(a.toLowerCase()))) || (i.name.toLowerCase().includes(q) && q.length > 3)) : null;
+        if (excludedMatch) {{
+          const cleanAlternatives = ALL_INSTITUTIONS.filter(i => matchC(i.city, excludedMatch.city));
+          let altText = '';
+          if (cleanAlternatives.length > 0) {{
+            altText = `<br><br><strong>Verified Clean Sanctuaries in ${{escapeHtml(excludedMatch.city)}}:</strong><br>` + cleanAlternatives.slice(0, 3).map(a => `· ${{formatInstLink(a)}}`).join('<br>');
+          }}
+          appendCuratorMessage(`
+            <p class="text-rose-300">
+              <strong>EXCLUSION AUDIT: ${{escapeHtml(excludedMatch.name)}} (${{escapeHtml(excludedMatch.city)}}, ${{escapeHtml(excludedMatch.country)}})</strong>
+            </p>
+            <p class="text-slate-300">
+              <strong>Status:</strong> Excluded from this map (${{excludedMatch.tier === 'B' ? 'Tier B · Flagged Corporate Sponsor' : 'Tier U · Roster Unverified'}}).<br>
+              <strong>Governance & Funding:</strong> ${{escapeHtml(excludedMatch.funding || 'Private / Corporate sponsorship')}}<br>
+              ${{excludedMatch.watch ? `<strong>Audit Watch:</strong> <span class="text-amber-200">${{escapeHtml(excludedMatch.watch)}}</span><br>` : ''}}
+              <strong>Ethical Exclusion Policy:</strong> This map strictly includes verified clean, ethically good cultural spaces that operate free of fossil fuels, weapons manufacturing, private prisons, and predatory corporate underwriting.${{altText}}
+            </p>
+          `);
+          return;
+        }}
+
         // N. Surprise Me / Recommendations
         if (q.includes('surprise') || q.includes('recommend') || q.includes('random') || q.includes('hidden gem')) {{
           const randomA = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
@@ -7382,6 +7409,7 @@ FORMATTING & INTERACTION RULES:
 
     function applyFilters() {{
       filteredList = ALL_INSTITUTIONS.filter(inst => {{
+        if (inst.tier !== 'A') return false;
         if (!selectedTierFilter.has(inst.tier)) return false;
 
         if (selectedCountryFilter !== 'all') {{
@@ -7494,8 +7522,8 @@ FORMATTING & INTERACTION RULES:
 
       container.innerHTML = filteredList.map(inst => {{
         const isSel = selectedInstitution && selectedInstitution.name === inst.name;
-        const tierCol = inst.tier === 'A' ? 'text-emerald-400 border-emerald-900/60 bg-[#0a2016]' : inst.tier === 'B' ? 'text-blue-400 border-blue-900/60 bg-[#0d1d33]' : 'text-slate-400 border-slate-700 bg-[#161922]';
-        const tierName = inst.tier === 'A' ? 'Tier A · Verified' : inst.tier === 'B' ? 'Tier B · One Name' : 'Tier U';
+        const tierCol = 'text-emerald-400 border-emerald-900/60 bg-[#0a2016]';
+        const tierName = 'Tier A · Clean Verified';
 
         let displayDomain = 'website';
         try {{
@@ -7660,7 +7688,7 @@ FORMATTING & INTERACTION RULES:
       selectedCategoryFilter = 'all';
       searchQuery = '';
       if (searchInput) searchInput.value = '';
-      selectedTierFilter = new Set(['A', 'B', 'U']);
+      selectedTierFilter = new Set(['A']);
       document.querySelectorAll('.tier-chip').forEach(btn => {{
         btn.classList.add('bg-[#0c2419]', 'bg-[#0e213b]', 'bg-[#171a24]');
       }});
