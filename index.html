@@ -880,6 +880,24 @@
     const COUNTRY_CENTROIDS = ALL_COUNTRIES_REGISTRY;
     const PRIORITY_CITIES = ALL_CITIES_REGISTRY;
 
+    // Trans-National Curatorial Flight Corridors & Exchange Routes
+    const CULTURAL_ARCS = [
+      { from: [-0.1278, 51.5074], to: [2.3522, 48.8566], label: 'London – Paris' },
+      { from: [2.3522, 48.8566], to: [13.405, 52.52], label: 'Paris – Berlin' },
+      { from: [13.405, 52.52], to: [4.9041, 52.3676], label: 'Berlin – Amsterdam' },
+      { from: [-0.1278, 51.5074], to: [-74.006, 40.7128], label: 'London – New York' },
+      { from: [-74.006, 40.7128], to: [-87.6298, 41.8781], label: 'New York – Chicago' },
+      { from: [-87.6298, 41.8781], to: [-118.2437, 34.0522], label: 'Chicago – Los Angeles' },
+      { from: [7.5886, 47.5596], to: [13.405, 52.52], label: 'Basel – Berlin' },
+      { from: [139.6917, 35.6895], to: [126.978, 37.5665], label: 'Tokyo – Seoul' },
+      { from: [2.3522, 48.8566], to: [-3.7038, 40.4168], label: 'Paris – Madrid' },
+      { from: [12.5683, 55.6761], to: [18.0686, 59.3293], label: 'Copenhagen – Stockholm' },
+      { from: [-99.1332, 19.4326], to: [-74.006, 40.7128], label: 'Mexico City – New York' },
+      { from: [-0.1278, 51.5074], to: [144.9631, -37.8136], label: 'London – Melbourne' },
+      { from: [18.4241, -33.9249], to: [-0.1278, 51.5074], label: 'Cape Town – London' },
+      { from: [35.5018, 33.8938], to: [2.3522, 48.8566], label: 'Beirut – Paris' }
+    ];
+
     // Curated Cultural Cartography: Real-World Streets, Avenues & Waterways for Key Cities
     const CITY_STREET_NETWORKS = {
   "london": {
@@ -3052,26 +3070,47 @@
   }
 };
 
-    // Procedural Urban Street Grid Generator for Any City Worldwide
+    // Enhanced Procedural Urban Architectural Fabric Generator for Any City Worldwide
     function generateProceduralCityStreets(cityName, centerLon, centerLat, cityInsts) {
-      let minLon = centerLon - 0.035, maxLon = centerLon + 0.035;
-      let minLat = centerLat - 0.025, maxLat = centerLat + 0.025;
+      let minLon = centerLon - 0.038, maxLon = centerLon + 0.038;
+      let minLat = centerLat - 0.028, maxLat = centerLat + 0.028;
 
       if (cityInsts && cityInsts.length > 0) {
         cityInsts.forEach(i => {
-          if (i.lon < minLon) minLon = i.lon - 0.02;
-          if (i.lon > maxLon) maxLon = i.lon + 0.02;
-          if (i.lat < minLat) minLat = i.lat - 0.02;
-          if (i.lat > maxLat) maxLat = i.lat + 0.02;
+          if (i.lon < minLon) minLon = i.lon - 0.022;
+          if (i.lon > maxLon) maxLon = i.lon + 0.022;
+          if (i.lat < minLat) minLat = i.lat - 0.022;
+          if (i.lat > maxLat) maxLat = i.lat + 0.022;
         });
       }
 
       const major = [];
       const secondary = [];
+      const highways = [];
       const dLon = maxLon - minLon;
       const dLat = maxLat - minLat;
 
-      // Primary Arterial Avenues (Main Cross of the City)
+      // 1. Highways & Outer Ring Expressways
+      highways.push({
+        name: cityName + ' Ring Expressway',
+        pts: [
+          [minLon, minLat + dLat * 0.12],
+          [minLon + dLon * 0.18, minLat],
+          [maxLon - dLon * 0.18, minLat],
+          [maxLon, minLat + dLat * 0.15]
+        ]
+      });
+      highways.push({
+        name: cityName + ' North Bypass',
+        pts: [
+          [minLon, maxLat - dLat * 0.12],
+          [minLon + dLon * 0.22, maxLat],
+          [maxLon - dLon * 0.22, maxLat],
+          [maxLon, maxLat - dLat * 0.14]
+        ]
+      });
+
+      // 2. Primary Arterial Avenues (Main Cross & Diagonals)
       major.push({
         name: cityName + ' Cultural Blvd',
         pts: [[minLon, centerLat], [maxLon, centerLat]]
@@ -3080,21 +3119,23 @@
         name: cityName + ' Central Avenue',
         pts: [[centerLon, minLat], [centerLon, maxLat]]
       });
-
-      // Diagonal Grand Parkway
       major.push({
-        name: cityName + ' Parkway',
+        name: cityName + ' Grand Parkway',
         pts: [[minLon + dLon * 0.15, minLat + dLat * 0.15], [maxLon - dLon * 0.15, maxLat - dLat * 0.15]]
       });
+      major.push({
+        name: 'Avenue de la République',
+        pts: [[minLon + dLon * 0.15, maxLat - dLat * 0.18], [maxLon - dLon * 0.15, minLat + dLat * 0.18]]
+      });
 
-      // Perpendicular Street Grid
-      const steps = 5;
+      // 3. Perpendicular Secondary Street Grid
+      const steps = 6;
       for (let s = 1; s <= steps; s++) {
         const f = s / (steps + 1);
         const y = minLat + dLat * f;
         if (Math.abs(y - centerLat) > 0.003) {
           secondary.push({
-            name: s % 2 === 0 ? cityName + ' North St ' + s : 'Avenue des Arts ' + s,
+            name: s % 2 === 0 ? cityName + ' North St ' + s : 'Rue des Arts ' + s,
             pts: [[minLon, y], [maxLon, y]]
           });
         }
@@ -3110,7 +3151,7 @@
         }
       }
 
-      // Dedicated Streets for Each Mapped Institution using Authentic Address!
+      // 4. Dedicated Streets & Civic Plazas for Each Mapped Institution
       const parks = [];
       if (cityInsts && cityInsts.length > 0) {
         cityInsts.forEach((inst, idx) => {
@@ -3121,42 +3162,40 @@
               streetName = part;
             }
           }
-          // Main street through institution
           secondary.push({
             name: streetName,
-            pts: [[inst.lon - 0.012, inst.lat], [inst.lon + 0.012, inst.lat]]
+            pts: [[inst.lon - 0.014, inst.lat], [inst.lon + 0.014, inst.lat]]
           });
-          // Cross street
           secondary.push({
             name: '',
-            pts: [[inst.lon, inst.lat - 0.008], [inst.lon, inst.lat + 0.008]]
+            pts: [[inst.lon, inst.lat - 0.009], [inst.lon, inst.lat + 0.009]]
           });
 
-          // Cultural plaza / park around first 2 institutions
-          if (idx < 2) {
-            const pSize = 0.004;
+          // Cultural plaza / park around first 3 institutions
+          if (idx < 3) {
+            const pSize = 0.0045;
             parks.push({
               name: inst.name.split(' ')[0] + ' Commons',
               pts: [
-                [inst.lon - pSize, inst.lat - pSize * 0.7],
-                [inst.lon + pSize, inst.lat - pSize * 0.7],
-                [inst.lon + pSize, inst.lat + pSize * 0.7],
-                [inst.lon - pSize, inst.lat + pSize * 0.7]
+                [inst.lon - pSize, inst.lat - pSize * 0.65],
+                [inst.lon + pSize, inst.lat - pSize * 0.65],
+                [inst.lon + pSize, inst.lat + pSize * 0.65],
+                [inst.lon - pSize, inst.lat + pSize * 0.65]
               ]
             });
           }
         });
       }
 
-      // Curving Scenic River / Canal
+      // 5. Curving Scenic River / Canal
       const riverMidY = centerLat - dLat * 0.18;
       const waterways = [
         {
           name: cityName + ' Canal',
-          width: 18,
+          width: 20,
           pts: [
             [minLon, riverMidY + dLat * 0.14],
-            [centerLon - dLon * 0.2, riverMidY + dLat * 0.05],
+            [centerLon - dLon * 0.22, riverMidY + dLat * 0.05],
             [centerLon, riverMidY],
             [centerLon + dLon * 0.25, riverMidY - dLat * 0.08],
             [maxLon, riverMidY - dLat * 0.15]
@@ -3168,14 +3207,20 @@
       const bridges = [
         {
           pts: [
-            [centerLon, riverMidY - 0.003],
-            [centerLon, riverMidY + 0.003]
+            [centerLon, riverMidY - 0.0035],
+            [centerLon, riverMidY + 0.0035]
           ]
         },
         {
           pts: [
-            [centerLon - dLon * 0.2, riverMidY + dLat * 0.05 - 0.003],
-            [centerLon - dLon * 0.2, riverMidY + dLat * 0.05 + 0.003]
+            [centerLon - dLon * 0.22, riverMidY + dLat * 0.05 - 0.0035],
+            [centerLon - dLon * 0.22, riverMidY + dLat * 0.05 + 0.0035]
+          ]
+        },
+        {
+          pts: [
+            [centerLon + dLon * 0.25, riverMidY - dLat * 0.08 - 0.0035],
+            [centerLon + dLon * 0.25, riverMidY - dLat * 0.08 + 0.0035]
           ]
         }
       ];
@@ -3185,27 +3230,208 @@
         waterways: waterways,
         parks: parks,
         bridges: bridges,
+        highways: highways,
         major_streets: major,
         secondary_streets: secondary
       };
     }
 
+    // Universal Enrichment: Augments ANY City (Curated or Procedural) with Cadastral Blocks, Transit & Watermarks
+    function enrichCityData(cityData, cityName, centerLon, centerLat, cityInsts) {
+      if (!cityData) return null;
+      if (cityData._enriched) return cityData;
+      cityData._enriched = true;
+
+      let minLon = centerLon - 0.038, maxLon = centerLon + 0.038;
+      let minLat = centerLat - 0.028, maxLat = centerLat + 0.028;
+
+      if (cityInsts && cityInsts.length > 0) {
+        cityInsts.forEach(i => {
+          if (i.lon < minLon) minLon = i.lon - 0.022;
+          if (i.lon > maxLon) maxLon = i.lon + 0.022;
+          if (i.lat < minLat) minLat = i.lat - 0.022;
+          if (i.lat > maxLat) maxLat = i.lat + 0.022;
+        });
+      }
+
+      const dLon = maxLon - minLon;
+      const dLat = maxLat - minLat;
+
+      // 1. Cadastral Urban Building Blocks & Architectural Parcels
+      if (!cityData.blocks || cityData.blocks.length === 0) {
+        const blocks = [];
+        const cols = 9;
+        const rows = 8;
+        const stepLon = dLon / cols;
+        const stepLat = dLat / rows;
+
+        for (let c = 0; c < cols; c++) {
+          for (let r = 0; r < rows; r++) {
+            const bMinLon = minLon + c * stepLon + stepLon * 0.16;
+            const bMaxLon = minLon + (c + 1) * stepLon - stepLon * 0.16;
+            const bMinLat = minLat + r * stepLat + stepLat * 0.16;
+            const bMaxLat = minLat + (r + 1) * stepLat - stepLat * 0.16;
+
+            // Check park overlap
+            let overlapsPark = false;
+            if (cityData.parks) {
+              overlapsPark = cityData.parks.some(p => {
+                const pMinLon = Math.min(...p.pts.map(pt => pt[0]));
+                const pMaxLon = Math.max(...p.pts.map(pt => pt[0]));
+                const pMinLat = Math.min(...p.pts.map(pt => pt[1]));
+                const pMaxLat = Math.max(...p.pts.map(pt => pt[1]));
+                return !(bMaxLon < pMinLon || bMinLon > pMaxLon || bMaxLat < pMinLat || bMinLat > pMaxLat);
+              });
+            }
+            if (overlapsPark) continue;
+
+            // Subdivide into 2 parcels with alleyway/courtyard spacing
+            const splitH = (c + r) % 2 === 0;
+            if (splitH) {
+              const midY = (bMinLat + bMaxLat) / 2;
+              const gap = stepLat * 0.035;
+              blocks.push({
+                pts: [
+                  [bMinLon, bMinLat], [bMaxLon, bMinLat],
+                  [bMaxLon, midY - gap], [bMinLon, midY - gap]
+                ]
+              });
+              blocks.push({
+                pts: [
+                  [bMinLon, midY + gap], [bMaxLon, midY + gap],
+                  [bMaxLon, bMaxLat], [bMinLon, bMaxLat]
+                ]
+              });
+            } else {
+              const midX = (bMinLon + bMaxLon) / 2;
+              const gap = stepLon * 0.035;
+              blocks.push({
+                pts: [
+                  [bMinLon, bMinLat], [midX - gap, bMinLat],
+                  [midX - gap, bMaxLat], [bMinLon, bMaxLat]
+                ]
+              });
+              blocks.push({
+                pts: [
+                  [midX + gap, bMinLat], [bMaxLon, bMinLat],
+                  [bMaxLon, bMaxLat], [midX + gap, bMaxLat]
+                ]
+              });
+            }
+          }
+        }
+        cityData.blocks = blocks;
+      }
+
+      // 2. Public Transit Network: Metro Line 1 & Line 2 + Stations
+      if (!cityData.transit_lines) {
+        cityData.transit_lines = [
+          {
+            name: 'Metro Line 1 (Cultural Arterial)',
+            color: '#06b6d4',
+            pts: [
+              [minLon, centerLat - dLat * 0.06],
+              [centerLon - dLon * 0.22, centerLat - dLat * 0.04],
+              [centerLon, centerLat],
+              [centerLon + dLon * 0.22, centerLat + dLat * 0.08],
+              [maxLon, centerLat + dLat * 0.12]
+            ]
+          },
+          {
+            name: 'Metro Line 2 (Design Axis)',
+            color: '#ec4899',
+            pts: [
+              [centerLon - dLon * 0.15, minLat],
+              [centerLon - dLon * 0.05, centerLat - dLat * 0.18],
+              [centerLon, centerLat],
+              [centerLon + dLon * 0.08, centerLat + dLat * 0.22],
+              [centerLon + dLon * 0.18, maxLat]
+            ]
+          }
+        ];
+      }
+
+      if (!cityData.transit_stations) {
+        cityData.transit_stations = [
+          { name: 'Central Station', lon: centerLon, lat: centerLat, color: '#38bdf8' },
+          { name: 'Museum Quarter', lon: centerLon + dLon * 0.22, lat: centerLat + dLat * 0.08, color: '#06b6d4' },
+          { name: 'West End Arts', lon: centerLon - dLon * 0.22, lat: centerLat - dLat * 0.04, color: '#06b6d4' },
+          { name: 'Design Plaza', lon: centerLon + dLon * 0.08, lat: centerLat + dLat * 0.22, color: '#ec4899' },
+          { name: 'Grand Promenade', lon: centerLon - dLon * 0.05, lat: centerLat - dLat * 0.18, color: '#ec4899' }
+        ];
+      }
+
+      // 3. Cultural District Watermark Typographic Areas
+      if (!cityData.districts) {
+        cityData.districts = [
+          { name: 'MUSEUM DISTRICT', lon: centerLon + dLon * 0.18, lat: centerLat + dLat * 0.09 },
+          { name: 'HISTORIC CORE', lon: centerLon - dLon * 0.12, lat: centerLat + dLat * 0.04 },
+          { name: 'ARTS & DESIGN PRECINCT', lon: centerLon - dLon * 0.06, lat: centerLat - dLat * 0.15 },
+          { name: 'RIVERSIDE COMMONS', lon: centerLon + dLon * 0.15, lat: centerLat - dLat * 0.18 }
+        ];
+      }
+
+      // 4. Boulevard Tree Canopy Stippling
+      if (!cityData.trees) {
+        const trees = [];
+        const treeSteps = 28;
+        for (let t = 1; t < treeSteps; t++) {
+          const f = t / treeSteps;
+          const x = minLon + dLon * f;
+          const y = centerLat;
+          trees.push([x, y + 0.00075]);
+          trees.push([x, y - 0.00075]);
+          const y2 = minLat + dLat * f;
+          const x2 = centerLon;
+          trees.push([x2 + 0.0009, y2]);
+          trees.push([x2 - 0.0009, y2]);
+        }
+        cityData.trees = trees;
+      }
+
+      // 5. Expressways / Outer Ring
+      if (!cityData.highways) {
+        cityData.highways = [
+          {
+            name: cityName + ' Outer Ring Expressway',
+            pts: [
+              [minLon, minLat + dLat * 0.12],
+              [minLon + dLon * 0.18, minLat],
+              [maxLon - dLon * 0.18, minLat],
+              [maxLon, minLat + dLat * 0.15]
+            ]
+          }
+        ];
+      }
+
+      return cityData;
+    }
+
     function getCityStreetData(cityName) {
       if (!cityName) return null;
       const key = cityName.toLowerCase().trim();
-      if (CITY_STREET_NETWORKS[key]) {
-        return CITY_STREET_NETWORKS[key];
-      }
+      const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
       const pCty = PRIORITY_CITIES.find(c => matchC(c.name, cityName));
       let centerLon = pCty ? pCty.lon : 0;
       let centerLat = pCty ? pCty.lat : 0;
-      const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
       if (!pCty && cityInsts.length > 0) {
         centerLon = cityInsts[0].lon;
         centerLat = cityInsts[0].lat;
       }
-      if (centerLon === 0 && centerLat === 0) return null;
-      return generateProceduralCityStreets(cityName, centerLon, centerLat, cityInsts);
+      
+      let data = null;
+      if (CITY_STREET_NETWORKS[key]) {
+        data = CITY_STREET_NETWORKS[key];
+        if (!centerLon && data.center) {
+          centerLon = data.center[0];
+          centerLat = data.center[1];
+        }
+      } else if (centerLon !== 0 || centerLat !== 0) {
+        data = generateProceduralCityStreets(cityName, centerLon, centerLat, cityInsts);
+      }
+
+      if (!data) return null;
+      return enrichCityData(data, cityName, centerLon, centerLat, cityInsts);
     }
 
     function getCityTargetRadius(cityName) {
@@ -3330,6 +3556,27 @@
       };
     }
 
+    function slerpPoint(lon1, lat1, lon2, lat2, t, r, cx, cy) {
+      const p1 = toRad(lat1), l1 = toRad(lon1);
+      const p2 = toRad(lat2), l2 = toRad(lon2);
+      const x1 = Math.cos(p1) * Math.cos(l1), y1 = Math.cos(p1) * Math.sin(l1), z1 = Math.sin(p1);
+      const x2 = Math.cos(p2) * Math.cos(l2), y2 = Math.cos(p2) * Math.sin(l2), z2 = Math.sin(p2);
+      let dot = x1 * x2 + y1 * y2 + z1 * z2;
+      dot = Math.max(-1, Math.min(1, dot));
+      const omega = Math.acos(dot);
+      if (omega < 0.001) return project(lon1, lat1, r, cx, cy);
+      const sinOmega = Math.sin(omega);
+      const w1 = Math.sin((1 - t) * omega) / sinOmega;
+      const w2 = Math.sin(t * omega) / sinOmega;
+      const x = w1 * x1 + w2 * x2;
+      const y = w1 * y1 + w2 * y2;
+      const z = w1 * z1 + w2 * z2;
+      const lat = Math.asin(Math.max(-1, Math.min(1, z)));
+      const lon = Math.atan2(y, x);
+      const arcAltitude = Math.sin(Math.PI * t) * 0.12 * r;
+      return project(toDeg(lon), toDeg(lat), r + arcAltitude, cx, cy);
+    }
+
     function pointInPolygon(px, py, poly) {
       let inside = false;
       for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
@@ -3448,17 +3695,33 @@
         // 🌍 GLOBAL & REGIONAL 3D SPHERE VIEW
         // =======================================================
 
-        // Dark space / ocean sphere
+        // 1. Outer Atmospheric Limb Glow / Halo
+        const limbGrad = ctx.createRadialGradient(cx, cy, r * 0.95, cx, cy, r * 1.09);
+        limbGrad.addColorStop(0, 'rgba(59, 130, 246, 0.22)');
+        limbGrad.addColorStop(0.35, 'rgba(37, 99, 235, 0.12)');
+        limbGrad.addColorStop(0.7, 'rgba(29, 78, 216, 0.04)');
+        limbGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = limbGrad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 1.09, 0, Math.PI * 2);
+        ctx.fill();
+
+        // 2. 3D Spherical Ocean Lighting
+        const sphereGrad = ctx.createRadialGradient(cx - r * 0.32, cy - r * 0.32, r * 0.08, cx, cy, r);
+        sphereGrad.addColorStop(0, '#061324');
+        sphereGrad.addColorStop(0.5, '#020611');
+        sphereGrad.addColorStop(1, '#010204');
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
-        ctx.fillStyle = '#010204';
+        ctx.fillStyle = sphereGrad;
         ctx.fill();
         ctx.strokeStyle = '#223048';
         ctx.lineWidth = 1.2;
         ctx.stroke();
 
-        // Graticule
-        ctx.strokeStyle = '#0a101d';
+        // 3. Graticule with Latitude Parallels and Longitude Meridians
+        ctx.save();
+        ctx.strokeStyle = '#0e182a';
         ctx.lineWidth = 0.5;
         for (let lat = -60; lat <= 60; lat += 30) {
           ctx.beginPath();
@@ -3470,10 +3733,52 @@
               else ctx.lineTo(p.x, p.y);
             } else first = true;
           }
+          if (lat === 0) {
+            ctx.strokeStyle = '#182740';
+            ctx.lineWidth = 0.8;
+          } else {
+            ctx.strokeStyle = '#0e182a';
+            ctx.lineWidth = 0.5;
+          }
           ctx.stroke();
         }
 
-        // Land Polygons
+        for (let lon = -180; lon < 180; lon += 30) {
+          ctx.beginPath();
+          let first = true;
+          for (let lat = -80; lat <= 80; lat += 4) {
+            const p = project(lon, lat, r, cx, cy);
+            if (p.front) {
+              if (first) { ctx.moveTo(p.x, p.y); first = false; }
+              else ctx.lineTo(p.x, p.y);
+            } else first = true;
+          }
+          ctx.stroke();
+        }
+
+        // Graticule Degree Annotations
+        if (r > baseRadius * 0.9) {
+          ctx.font = '9px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.fillStyle = '#263a55';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          const labels = [
+            { lat: 0, txt: '0° EQ' },
+            { lat: 30, txt: '30° N' },
+            { lat: 60, txt: '60° N' },
+            { lat: -30, txt: '30° S' },
+            { lat: -60, txt: '60° S' }
+          ];
+          labels.forEach(lb => {
+            const p = project(rotLon, lb.lat, r, cx, cy);
+            if (p.front && p.depth > 0.25) {
+              ctx.fillText(lb.txt, p.x, p.y - 2);
+            }
+          });
+        }
+        ctx.restore();
+
+        // 4. Land Polygons with Continental Shelf Glow
         for (let i = 0; i < COUNTRY_POLYS.length; i++) {
           const country = COUNTRY_POLYS[i];
           const isCActive = selectedCountryFilter !== 'all' && matchC(country.n, selectedCountryFilter);
@@ -3494,6 +3799,11 @@
             if (started) {
               ctx.closePath();
               ctx.fill();
+              if (!isCActive && r < baseRadius * 4) {
+                ctx.strokeStyle = '#091524';
+                ctx.lineWidth = 2.4;
+                ctx.stroke();
+              }
               ctx.strokeStyle = isCActive ? '#60a5fa' : '#050c18';
               ctx.lineWidth = isCActive ? 2.2 : 0.75;
               ctx.stroke();
@@ -3501,7 +3811,57 @@
           }
         }
 
-        // Country Centroid Names
+        // 5. Trans-National Curatorial Flight Corridors & Exchange Routes
+        if (typeof CULTURAL_ARCS !== 'undefined' && CULTURAL_ARCS.length > 0 && r < baseRadius * 6) {
+          const now = Date.now();
+          CULTURAL_ARCS.forEach((arc, arcIdx) => {
+            const steps = 28;
+            const pts = [];
+            for (let s = 0; s <= steps; s++) {
+              const t = s / steps;
+              pts.push(slerpPoint(arc.from[0], arc.from[1], arc.to[0], arc.to[1], t, r, cx, cy));
+            }
+
+            ctx.save();
+            ctx.beginPath();
+            let hasDrawn = false;
+            for (let i = 0; i < pts.length; i++) {
+              const p = pts[i];
+              if (p.front) {
+                if (!hasDrawn) { ctx.moveTo(p.x, p.y); hasDrawn = true; }
+                else ctx.lineTo(p.x, p.y);
+              } else {
+                hasDrawn = false;
+              }
+            }
+            ctx.strokeStyle = 'rgba(96, 165, 250, 0.38)';
+            ctx.lineWidth = 1.2;
+            ctx.setLineDash([4, 4]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Animated Flight Pulse Particle
+            const pulseT = ((now / 3200) + arcIdx * 0.17) % 1.0;
+            const pulsePt = slerpPoint(arc.from[0], arc.from[1], arc.to[0], arc.to[1], pulseT, r, cx, cy);
+            if (pulsePt.front) {
+              ctx.beginPath();
+              ctx.arc(pulsePt.x, pulsePt.y, 3.5, 0, Math.PI * 2);
+              ctx.fillStyle = '#60a5fa';
+              ctx.shadowColor = '#93c5fd';
+              ctx.shadowBlur = 6;
+              ctx.fill();
+
+              ctx.beginPath();
+              ctx.arc(pulsePt.x, pulsePt.y, 1.8, 0, Math.PI * 2);
+              ctx.fillStyle = '#ffffff';
+              ctx.fill();
+              ctx.shadowBlur = 0;
+            }
+            ctx.restore();
+          });
+        }
+
+        // 6. Country Centroid Names
         if (r > baseRadius * 0.8) {
           ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.textAlign = 'center';
@@ -3518,7 +3878,7 @@
           });
         }
 
-        // City Badges (All cities in selected country or top cities worldwide)
+        // 7. City Badges (All cities in selected country or top cities worldwide)
         cityBadgeHitboxes = [];
         const drawnCityBoxes = [];
         ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
@@ -3587,7 +3947,7 @@
           }
         });
 
-        // Render Institution Dots on Global Sphere
+        // 8. Render Institution Dots on Global Sphere
         visibleDots = [];
         filteredList.forEach(inst => {
           const pt = project(inst.lon, inst.lat, r, cx, cy);
@@ -3620,7 +3980,6 @@
           ctx.fillStyle = d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
           ctx.fill();
 
-          // In country zoom or when hovered, show quick tooltip pill
           if (isHov || (selectedCountryFilter !== 'all' && isSel)) {
             ctx.save();
             ctx.font = '11px "PP Telegraf", "PP Telegraph", sans-serif';
@@ -3645,23 +4004,23 @@
 
       } else {
         // =======================================================
-        // 🗺️ DEEP ZOOM CITY VIEW: STREET NETWORK, WATERWAYS & MUSEUMS
+        // 🗺️ DEEP ZOOM CITY VIEW: URBAN ARCHITECTURE & CULTURAL CARTOGRAPHY
         // =======================================================
         const streetAlpha = Math.min(1.0, Math.max(0, (r - baseRadius * 2.6) / (baseRadius * 1.4)));
         const cityData = getCityStreetData(activeCity);
 
         // 1. Dark Urban Fabric Base
-        ctx.fillStyle = '#0a0f18';
+        ctx.fillStyle = '#080d16';
         ctx.fillRect(0, 0, width, height);
 
-        // 2. Parks & Urban Commons
-        if (cityData && cityData.parks && cityData.parks.length > 0) {
+        // 2. Cadastral Urban Building Blocks & Architectural Parcels
+        if (cityData && cityData.blocks && cityData.blocks.length > 0) {
           ctx.save();
-          ctx.globalAlpha = streetAlpha * 0.9;
-          cityData.parks.forEach(park => {
+          ctx.globalAlpha = streetAlpha * 0.95;
+          cityData.blocks.forEach(b => {
             ctx.beginPath();
             let started = false;
-            park.pts.forEach(pt => {
+            b.pts.forEach(pt => {
               const p = project(pt[0], pt[1], r, cx, cy);
               if (p.front) {
                 if (!started) { ctx.moveTo(p.x, p.y); started = true; }
@@ -3670,17 +4029,74 @@
             });
             if (started) {
               ctx.closePath();
-              ctx.fillStyle = '#0c2317';
+              ctx.fillStyle = '#0e1626';
               ctx.fill();
-              ctx.strokeStyle = '#164329';
-              ctx.lineWidth = 1.2;
+              ctx.strokeStyle = '#16233b';
+              ctx.lineWidth = 0.9;
               ctx.stroke();
             }
           });
           ctx.restore();
         }
 
-        // 3. Waterways & Canals
+        // 3. Cultural District Watermark Typographic Areas
+        if (cityData && cityData.districts && cityData.districts.length > 0 && r > baseRadius * 15) {
+          ctx.save();
+          ctx.font = '13px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.fillStyle = 'rgba(56, 85, 128, 0.40)';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          cityData.districts.forEach(d => {
+            const p = project(d.lon, d.lat, r, cx, cy);
+            if (p.front) {
+              ctx.fillText(d.name, p.x, p.y);
+            }
+          });
+          ctx.restore();
+        }
+
+        // 4. Urban Parks & Botanical Commons
+        if (cityData && cityData.parks && cityData.parks.length > 0) {
+          ctx.save();
+          ctx.globalAlpha = streetAlpha * 0.95;
+          cityData.parks.forEach(park => {
+            ctx.beginPath();
+            let started = false;
+            const parkProjs = [];
+            park.pts.forEach(pt => {
+              const p = project(pt[0], pt[1], r, cx, cy);
+              if (p.front) {
+                parkProjs.push(p);
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else ctx.lineTo(p.x, p.y);
+              }
+            });
+            if (started) {
+              ctx.closePath();
+              ctx.fillStyle = '#0b2116';
+              ctx.fill();
+              ctx.strokeStyle = '#143d26';
+              ctx.lineWidth = 1.2;
+              ctx.stroke();
+
+              // Decorative inner lake / pond
+              if (parkProjs.length >= 3 && r > baseRadius * 50) {
+                const pMidX = (parkProjs[0].x + parkProjs[2].x) / 2;
+                const pMidY = (parkProjs[0].y + parkProjs[2].y) / 2;
+                ctx.beginPath();
+                ctx.arc(pMidX, pMidY, 7, 0, Math.PI * 2);
+                ctx.fillStyle = '#091b30';
+                ctx.fill();
+                ctx.strokeStyle = '#122c4a';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+            }
+          });
+          ctx.restore();
+        }
+
+        // 5. Waterways & Maritime Detail (Dual-Channel & Wave Ripples)
         if (cityData && cityData.waterways && cityData.waterways.length > 0) {
           ctx.save();
           ctx.globalAlpha = streetAlpha;
@@ -3702,17 +4118,33 @@
               ctx.lineJoin = 'round';
               const wWidth = Math.max(10, Math.min(38, (w.width || 18) * (r / (baseRadius * 500))));
               
-              // River bed
-              ctx.strokeStyle = '#0e2644';
+              // Outer shallow riverbed shelf
+              ctx.strokeStyle = '#081729';
+              ctx.lineWidth = wWidth + 14;
+              ctx.stroke();
+
+              // Deep central channel
+              ctx.strokeStyle = '#0c223a';
               ctx.lineWidth = wWidth;
               ctx.stroke();
 
-              // Water surface sheen
-              ctx.strokeStyle = '#1d3f66';
-              ctx.lineWidth = Math.max(2, wWidth * 0.28);
+              // Water surface sheen stream
+              ctx.strokeStyle = '#1a3d64';
+              ctx.lineWidth = Math.max(2, wWidth * 0.35);
               ctx.stroke();
 
-              // Waterway Label
+              // Animated wave ripple dashes
+              if (r > baseRadius * 25) {
+                ctx.save();
+                ctx.setLineDash([8, 26]);
+                ctx.lineDashOffset = (Date.now() / 60) % 34;
+                ctx.strokeStyle = 'rgba(56, 189, 248, 0.28)';
+                ctx.lineWidth = Math.max(1.5, wWidth * 0.2);
+                ctx.stroke();
+                ctx.restore();
+              }
+
+              // Waterway Name Label
               if (w.name && projPts.length >= 2 && r > baseRadius * 3.5) {
                 const midIdx = Math.floor(projPts.length / 2);
                 const pMid = projPts[midIdx];
@@ -3733,17 +4165,25 @@
           ctx.restore();
         }
 
-        // 4. Bridges
+        // 6. Bridges (with Drop Shadow)
         if (cityData && cityData.bridges && cityData.bridges.length > 0) {
           ctx.save();
           ctx.globalAlpha = streetAlpha;
-          ctx.strokeStyle = '#64748b';
-          ctx.lineWidth = 3.5;
-          ctx.lineCap = 'butt';
           cityData.bridges.forEach(b => {
             const p1 = project(b.pts[0][0], b.pts[0][1], r, cx, cy);
             const p2 = project(b.pts[1][0], b.pts[1][1], r, cx, cy);
             if (p1.front && p2.front) {
+              // Shadow
+              ctx.strokeStyle = '#04070e';
+              ctx.lineWidth = 5;
+              ctx.beginPath();
+              ctx.moveTo(p1.x + 1, p1.y + 2);
+              ctx.lineTo(p2.x + 1, p2.y + 2);
+              ctx.stroke();
+
+              // Bridge Deck
+              ctx.strokeStyle = '#475569';
+              ctx.lineWidth = 3.8;
               ctx.beginPath();
               ctx.moveTo(p1.x, p1.y);
               ctx.lineTo(p2.x, p2.y);
@@ -3753,7 +4193,34 @@
           ctx.restore();
         }
 
-        // 5. Secondary Street Grid
+        // 7. Expressways & Highways
+        if (cityData && cityData.highways && cityData.highways.length > 0) {
+          ctx.save();
+          ctx.globalAlpha = streetAlpha * 0.95;
+          cityData.highways.forEach(h => {
+            if (h.pts.length < 2) return;
+            ctx.beginPath();
+            let started = false;
+            h.pts.forEach(pt => {
+              const p = project(pt[0], pt[1], r, cx, cy);
+              if (p.front) {
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else ctx.lineTo(p.x, p.y);
+              }
+            });
+            if (started) {
+              ctx.strokeStyle = '#2a3d5e';
+              ctx.lineWidth = 7;
+              ctx.stroke();
+              ctx.strokeStyle = '#18263a';
+              ctx.lineWidth = 5;
+              ctx.stroke();
+            }
+          });
+          ctx.restore();
+        }
+
+        // 8. Secondary Street Grid
         if (cityData && cityData.secondary_streets && cityData.secondary_streets.length > 0) {
           ctx.save();
           ctx.globalAlpha = streetAlpha * 0.75;
@@ -3776,13 +4243,10 @@
           ctx.restore();
         }
 
-        // 6. Primary Avenues & Boulevards
+        // 9. Primary Avenues & Boulevards (with Divider Line & Street Names)
         if (cityData && cityData.major_streets && cityData.major_streets.length > 0) {
           ctx.save();
           ctx.globalAlpha = streetAlpha * 0.95;
-          ctx.strokeStyle = '#273854';
-          ctx.lineWidth = Math.max(2.2, Math.min(5.0, (r / (baseRadius * 300)) * 2));
-          ctx.lineCap = 'round';
           cityData.major_streets.forEach(s => {
             if (s.pts.length < 2) return;
             ctx.beginPath();
@@ -3797,7 +4261,25 @@
               }
             });
             if (started) {
+              // Outer Casing
+              ctx.strokeStyle = '#273854';
+              ctx.lineWidth = Math.max(2.6, Math.min(5.2, (r / (baseRadius * 300)) * 2));
+              ctx.lineCap = 'round';
               ctx.stroke();
+
+              // Inner Road Surface
+              ctx.strokeStyle = '#1a273b';
+              ctx.lineWidth = Math.max(1.8, Math.min(3.8, (r / (baseRadius * 300)) * 1.5));
+              ctx.stroke();
+
+              // Center dashed divider line
+              if (r > baseRadius * 40) {
+                ctx.setLineDash([4, 6]);
+                ctx.strokeStyle = 'rgba(96, 165, 250, 0.40)';
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+                ctx.setLineDash([]);
+              }
 
               // Avenue Name Label along Path
               if (s.name && projPts.length >= 2 && r > baseRadius * 4.0) {
@@ -3823,11 +4305,87 @@
           ctx.restore();
         }
 
-        // 7. Render City Cultural Institutions (Exact coordinates, spaced-out callout badges & pins)
+        // 10. Public Transit Network (Metro Lines & Stations)
+        if (cityData && cityData.transit_lines && cityData.transit_lines.length > 0 && r > baseRadius * 20) {
+          ctx.save();
+          cityData.transit_lines.forEach(line => {
+            if (line.pts.length < 2) return;
+            ctx.beginPath();
+            let started = false;
+            line.pts.forEach(pt => {
+              const p = project(pt[0], pt[1], r, cx, cy);
+              if (p.front) {
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else ctx.lineTo(p.x, p.y);
+              }
+            });
+            if (started) {
+              ctx.strokeStyle = line.color || '#06b6d4';
+              ctx.lineWidth = 2.4;
+              ctx.setLineDash([8, 4]);
+              ctx.stroke();
+              ctx.setLineDash([]);
+            }
+          });
+
+          // Metro Stations
+          if (cityData.transit_stations && r > baseRadius * 45) {
+            cityData.transit_stations.forEach(st => {
+              const p = project(st.lon, st.lat, r, cx, cy);
+              if (p.front) {
+                // White Station dot with line color ring
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.fill();
+                ctx.strokeStyle = st.color || '#06b6d4';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Station Name pill
+                ctx.font = '9px "PP Telegraf", "PP Telegraph", sans-serif';
+                const stTxt = 'Ⓜ ' + st.name;
+                const stw = ctx.measureText(stTxt).width;
+                ctx.fillStyle = 'rgba(7, 11, 20, 0.85)';
+                ctx.beginPath();
+                ctx.roundRect ? ctx.roundRect(p.x + 8, p.y - 8, stw + 10, 16, 3) : ctx.rect(p.x + 8, p.y - 8, stw + 10, 16);
+                ctx.fill();
+                ctx.strokeStyle = st.color || '#06b6d4';
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(stTxt, p.x + 13, p.y);
+              }
+            });
+          }
+          ctx.restore();
+        }
+
+        // 11. Boulevard Tree Canopy Stippling
+        if (cityData && cityData.trees && cityData.trees.length > 0 && r > baseRadius * 35) {
+          ctx.save();
+          cityData.trees.forEach(t => {
+            const p = project(t[0], t[1], r, cx, cy);
+            if (p.front) {
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
+              ctx.fillStyle = '#143d24';
+              ctx.fill();
+              ctx.strokeStyle = '#1d5633';
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          });
+          ctx.restore();
+        }
+
+        // 12. Render City Cultural Institutions (Exact coordinates, spaced-out callout badges & pins)
         cityMuseumHitboxes = [];
         const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, activeCity));
 
-        // Sort so hovered/selected renders above other badges
         cityInsts.sort((a, b) => {
           const aSel = selectedInstitution && selectedInstitution.name === a.name;
           const bSel = selectedInstitution && selectedInstitution.name === b.name;
@@ -3842,7 +4400,7 @@
           const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
           const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
 
-          // Precise Geographic Pinpoint Dot & Glow Rings
+          // Pinpoint Dot & Glow Rings
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, isSel ? 7 : isHov ? 5.5 : 4, 0, Math.PI * 2);
           ctx.fillStyle = tierColor;
@@ -3854,7 +4412,7 @@
           ctx.lineWidth = isSel ? 2 : 1;
           ctx.stroke();
 
-          // Museum Callout Badge Dimensions
+          // Callout Badge Dimensions
           ctx.font = '12px "PP Telegraf", "PP Telegraph", sans-serif';
           const nameTxt = inst.name;
           const nw = ctx.measureText(nameTxt).width;
@@ -3864,12 +4422,11 @@
           const bw = Math.max(nw, sw) + 26;
           const bh = 34;
 
-          // Stagger badges to avoid clumping
           const angle = (idx % 4) * (Math.PI / 2) + Math.PI / 4;
           const bx = pt.x + (angle > Math.PI / 2 && angle < 3 * Math.PI / 2 ? -bw - 12 : 14);
           const by = pt.y - bh / 2 + (idx % 2 === 0 ? -12 : 12);
 
-          // Connecting Leader Line
+          // Leader Line
           ctx.beginPath();
           ctx.moveTo(pt.x, pt.y);
           ctx.lineTo(bx > pt.x ? bx : bx + bw, by + bh / 2);
@@ -3894,7 +4451,7 @@
           ctx.textBaseline = 'top';
           ctx.fillText(nameTxt, bx + 8, by + 4);
 
-          // Subtitle (Address / Neighborhood) & Tier Dot
+          // Subtitle
           ctx.beginPath();
           ctx.arc(bx + 11, by + 23, 2.5, 0, Math.PI * 2);
           ctx.fillStyle = tierColor;
@@ -3904,7 +4461,6 @@
           ctx.fillStyle = '#94a3b8';
           ctx.fillText(subTxt, bx + 18, by + 18);
 
-          // Save Hitbox for Canvas Click & Hover
           cityMuseumHitboxes.push({
             inst: inst,
             x: bx,
@@ -3915,6 +4471,126 @@
             pinY: pt.y
           });
         });
+
+        // 13. Architectural Cartographic Live HUD (Scale Bar, Coordinates, Compass Rose)
+        ctx.save();
+        const actualKmPerPx = 6371 / r;
+        const targetPx = 90;
+        const rawKm = actualKmPerPx * targetPx;
+        let scaleVal = 1, scaleUnit = 'km', barPx = targetPx;
+        if (rawKm < 0.2) {
+          const rawMeters = Math.round(rawKm * 1000);
+          scaleVal = rawMeters < 50 ? 50 : rawMeters < 100 ? 100 : rawMeters < 250 ? 200 : 500;
+          barPx = (scaleVal / 1000) / actualKmPerPx;
+          scaleUnit = 'm';
+        } else if (rawKm < 1) {
+          scaleVal = 500;
+          barPx = (scaleVal / 1000) / actualKmPerPx;
+          scaleUnit = 'm';
+        } else if (rawKm < 5) {
+          scaleVal = Math.round(rawKm);
+          if (scaleVal < 1) scaleVal = 1;
+          barPx = scaleVal / actualKmPerPx;
+          scaleUnit = 'km';
+        } else if (rawKm < 20) {
+          scaleVal = Math.round(rawKm / 5) * 5;
+          if (scaleVal < 5) scaleVal = 5;
+          barPx = scaleVal / actualKmPerPx;
+          scaleUnit = 'km';
+        } else {
+          scaleVal = Math.round(rawKm / 20) * 20;
+          barPx = scaleVal / actualKmPerPx;
+          scaleUnit = 'km';
+        }
+        barPx = Math.max(30, Math.min(140, barPx));
+
+        const hudX = 24;
+        const hudY = height - 28;
+
+        // Scale bar background pill
+        ctx.fillStyle = 'rgba(7, 11, 20, 0.85)';
+        ctx.strokeStyle = '#1b2a40';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(hudX - 8, hudY - 22, barPx + 16, 30, 5) : ctx.rect(hudX - 8, hudY - 22, barPx + 16, 30);
+        ctx.fill();
+        ctx.stroke();
+
+        // Scale bar line & ticks
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(hudX, hudY - 4);
+        ctx.lineTo(hudX, hudY + 4);
+        ctx.moveTo(hudX + barPx / 2, hudY - 2);
+        ctx.lineTo(hudX + barPx / 2, hudY + 2);
+        ctx.moveTo(hudX + barPx, hudY - 4);
+        ctx.lineTo(hudX + barPx, hudY + 4);
+        ctx.moveTo(hudX, hudY);
+        ctx.lineTo(hudX + barPx, hudY);
+        ctx.stroke();
+
+        ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.fillStyle = '#cbd5e1';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText(`0           ${scaleVal} ${scaleUnit}`, hudX + barPx / 2, hudY - 6);
+
+        // Coordinates HUD
+        const centerCoord = unproject(cx, cy, r, cx, cy) || { lat: rotLat, lon: rotLon };
+        const latTxt = `${Math.abs(centerCoord.lat).toFixed(4)}° ${centerCoord.lat >= 0 ? 'N' : 'S'}`;
+        const lonTxt = `${Math.abs(centerCoord.lon).toFixed(4)}° ${centerCoord.lon >= 0 ? 'E' : 'W'}`;
+        const coordTxt = `${latTxt}  ${lonTxt}`;
+        const coordW = ctx.measureText(coordTxt).width + 16;
+        const coordX = width - coordW - 24;
+
+        ctx.fillStyle = 'rgba(7, 11, 20, 0.85)';
+        ctx.strokeStyle = '#1b2a40';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(coordX, hudY - 22, coordW, 30, 5) : ctx.rect(coordX, hudY - 22, coordW, 30);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#94a3b8';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(coordTxt, coordX + coordW / 2, hudY - 6);
+
+        // North Compass Rose
+        const compassX = width - 38;
+        const compassY = 38;
+        ctx.fillStyle = 'rgba(7, 11, 20, 0.85)';
+        ctx.strokeStyle = '#1b2a40';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(compassX, compassY, 16, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.beginPath();
+        ctx.moveTo(compassX, compassY - 10);
+        ctx.lineTo(compassX - 3.5, compassY + 3);
+        ctx.lineTo(compassX, compassY);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = '#64748b';
+        ctx.beginPath();
+        ctx.moveTo(compassX, compassY - 10);
+        ctx.lineTo(compassX + 3.5, compassY + 3);
+        ctx.lineTo(compassX, compassY);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.font = '9px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.fillStyle = '#cbd5e1';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText('N', compassX, compassY - 11);
+        ctx.restore();
+
       }
 
       // Floating White Card (Position update)
