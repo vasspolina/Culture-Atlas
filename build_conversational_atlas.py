@@ -75,9 +75,80 @@ def build():
         out_countries.append({'n': name, 'c': col, 'r': polys})
 
     countries_json = json.dumps(out_countries, separators=(',', ':'))
-    institutions_json = open('institutions.json', 'r', encoding='utf-8').read().strip()
-    institutions_count = len(json.loads(institutions_json))
+    institutions_raw = open('institutions.json', 'r', encoding='utf-8').read().strip()
+    insts_data = json.loads(institutions_raw)
+    institutions_count = len(insts_data)
     spaces_count_str = f"{institutions_count} SPACES"
+
+    # Compute comprehensive Country & City Registries
+    reg_countries = {}
+    reg_cities = {}
+    for item in insts_data:
+        co = item.get("country", "").strip()
+        ci = item.get("city", "").strip()
+        if not co or not ci:
+            continue
+        if co not in reg_countries:
+            reg_countries[co] = {"name": co, "count": 0, "lons": [], "lats": [], "cities": set()}
+        reg_countries[co]["count"] += 1
+        reg_countries[co]["lons"].append(item["lon"])
+        reg_countries[co]["lats"].append(item["lat"])
+        reg_countries[co]["cities"].add(ci)
+
+        if ci not in reg_cities:
+            reg_cities[ci] = {"name": ci, "country": co, "count": 0, "lons": [], "lats": [], "addresses": []}
+        reg_cities[ci]["count"] += 1
+        reg_cities[ci]["lons"].append(item["lon"])
+        reg_cities[ci]["lats"].append(item["lat"])
+        if item.get("address"):
+            reg_cities[ci]["addresses"].append(item["address"])
+
+    all_countries_list = []
+    for co, d in reg_countries.items():
+        min_lon, max_lon = min(d["lons"]), max(d["lons"])
+        min_lat, max_lat = min(d["lats"]), max(d["lats"])
+        c_lon = round((min_lon + max_lon) / 2, 4)
+        c_lat = round((min_lat + max_lat) / 2, 4)
+        max_span = max(max_lon - min_lon, max_lat - min_lat)
+        if max_span < 1.0: zoom = 4.8
+        elif max_span < 3.5: zoom = 4.0
+        elif max_span < 8.0: zoom = 3.2
+        elif max_span < 16.0: zoom = 2.6
+        else: zoom = 2.1
+        all_countries_list.append({
+            "name": co,
+            "count": d["count"],
+            "cities": sorted(list(d["cities"])),
+            "lon": c_lon,
+            "lat": c_lat,
+            "zoom": zoom
+        })
+
+    all_cities_list = []
+    for ci, d in reg_cities.items():
+        c_lon = round(sum(d["lons"]) / len(d["lons"]), 5)
+        c_lat = round(sum(d["lats"]) / len(d["lats"]), 5)
+        streets = []
+        for a in d["addresses"]:
+            p = a.split(",")[0].strip()
+            if p and len(p) < 40 and not any(ch.isdigit() for ch in p[:2]):
+                if p not in streets:
+                    streets.append(p)
+        all_cities_list.append({
+            "name": ci,
+            "country": d["country"],
+            "count": d["count"],
+            "lon": c_lon,
+            "lat": c_lat,
+            "streets": streets[:6]
+        })
+
+    all_countries_list.sort(key=lambda x: -x["count"])
+    all_cities_list.sort(key=lambda x: -x["count"])
+
+    all_countries_registry_json = json.dumps(all_countries_list, separators=(',', ':'))
+    all_cities_registry_json = json.dumps(all_cities_list, separators=(',', ':'))
+    institutions_json = json.dumps(insts_data, separators=(',', ':'))
 
     import base64
     b64_reg = base64.b64encode(open('app/fonts/PPTelegraf-Regular.otf', 'rb').read()).decode('ascii')
@@ -500,13 +571,16 @@ def build():
         <button id="clearMapFilterBtn" class="ml-1 text-[#93c5fd] hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[14px]" title="Clear filter">✕</button>
       </div>
 
-      <!-- City Street View Banner & Back to World View Button -->
-      <div id="cityViewControlBanner" class="hidden absolute top-2.5 sm:top-3 left-2.5 sm:left-4 z-20 pointer-events-auto flex items-center gap-2">
-        <button id="backToWorldBtn" class="px-3 py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Zoom out to world globe">
+      <!-- City & Country Navigation Banner -->
+      <div id="cityViewControlBanner" class="hidden absolute top-2.5 sm:top-3 left-2.5 sm:left-4 z-20 pointer-events-auto flex items-center gap-2 flex-wrap">
+        <button id="backToWorldBtn" class="px-2.5 py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Reset to global world view">
           <span>🌍</span> <span class="font-normal">World View</span>
         </button>
-        <div id="cityViewTitleBadge" class="px-3 py-1.5 rounded-xl bg-[#0c1626]/95 border border-[#1e2e4a] text-[#93c5fd] text-[13px] font-mono flex items-center gap-1.5 shadow-lg backdrop-blur">
-          <span>📍</span> <span id="cityViewTitleText">LONDON · STREET VIEW</span>
+        <button id="backToCountryBtn" class="hidden px-2.5 py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Return to country overview">
+          <span>←</span> <span id="backToCountryText" class="font-normal">Country</span>
+        </button>
+        <div id="cityViewTitleBadge" class="px-2.5 py-1.5 rounded-xl bg-[#0c1626]/95 border border-[#1e2e4a] text-[#93c5fd] text-[13px] font-mono flex items-center gap-1.5 shadow-lg backdrop-blur">
+          <span id="cityViewBadgeIcon">📍</span> <span id="cityViewTitleText">LONDON · STREET VIEW</span>
         </div>
       </div>
 
@@ -956,56 +1030,10 @@ def build():
     const COUNTRY_POLYS = {countries_json};
     const ALL_INSTITUTIONS = {institutions_json};
 
-    const COUNTRY_CENTROIDS = [
-      {{ name: 'UNITED STATES', lon: -98.5, lat: 39.8 }},
-      {{ name: 'UNITED KINGDOM', lon: -2.2, lat: 53.5 }},
-      {{ name: 'FRANCE', lon: 2.2, lat: 46.2 }},
-      {{ name: 'GERMANY', lon: 10.4, lat: 51.1 }},
-      {{ name: 'JAPAN', lon: 138.2, lat: 36.2 }},
-      {{ name: 'AUSTRALIA', lon: 133.7, lat: -25.2 }},
-      {{ name: 'CANADA', lon: -106.3, lat: 56.1 }},
-      {{ name: 'SPAIN', lon: -3.7, lat: 40.4 }},
-      {{ name: 'DENMARK', lon: 9.5, lat: 56.2 }},
-      {{ name: 'NORWAY', lon: 8.4, lat: 60.4 }},
-      {{ name: 'NETHERLANDS', lon: 5.2, lat: 52.1 }},
-      {{ name: 'SOUTH AFRICA', lon: 22.9, lat: -30.5 }},
-      {{ name: 'MOROCCO', lon: -7.0, lat: 31.7 }},
-      {{ name: 'MEXICO', lon: -102.5, lat: 23.6 }},
-      {{ name: 'SOUTH KOREA', lon: 127.7, lat: 35.9 }}
-    ];
-
-    const PRIORITY_CITIES = [
-      {{ name: 'NEW YORK', lon: -74.006, lat: 40.7128 }},
-      {{ name: 'LONDON', lon: -0.1278, lat: 51.5074 }},
-      {{ name: 'UTRECHT', lon: 5.1214, lat: 52.0907 }},
-      {{ name: 'AMSTERDAM', lon: 4.9041, lat: 52.3676 }},
-      {{ name: 'ROTTERDAM', lon: 4.4777, lat: 51.9244 }},
-      {{ name: 'EINDHOVEN', lon: 5.4697, lat: 51.4416 }},
-      {{ name: 'TOKYO', lon: 139.6917, lat: 35.6895 }},
-      {{ name: 'PARIS', lon: 2.3522, lat: 48.8566 }},
-      {{ name: 'BERLIN', lon: 13.405, lat: 52.52 }},
-      {{ name: 'CHICAGO', lon: -87.6298, lat: 41.8781 }},
-      {{ name: 'TORONTO', lon: -79.3832, lat: 43.6532 }},
-      {{ name: 'SAN FRANCISCO', lon: -122.4194, lat: 37.7749 }},
-      {{ name: 'MELBOURNE', lon: 144.9631, lat: -37.8136 }},
-      {{ name: 'SYDNEY', lon: 151.2093, lat: -33.8688 }},
-      {{ name: 'VANCOUVER', lon: -123.1207, lat: 49.2827 }},
-      {{ name: 'MONTREAL', lon: -73.5673, lat: 45.5017 }},
-      {{ name: 'COPENHAGEN', lon: 12.5683, lat: 55.6761 }},
-      {{ name: 'AMSTERDAM', lon: 4.9041, lat: 52.3676 }},
-      {{ name: 'MADRID', lon: -3.7038, lat: 40.4168 }},
-      {{ name: 'BARCELONA', lon: 2.1734, lat: 41.3851 }},
-      {{ name: 'EDINBURGH', lon: -3.1883, lat: 55.9533 }},
-      {{ name: 'OSLO', lon: 10.7522, lat: 59.9139 }},
-      {{ name: 'STOCKHOLM', lon: 18.0686, lat: 59.3293 }},
-      {{ name: 'SEOUL', lon: 126.978, lat: 37.5665 }},
-      {{ name: 'MEXICO CITY', lon: -99.1332, lat: 19.4326 }},
-      {{ name: 'BORDEAUX', lon: -0.5792, lat: 44.8378 }},
-      {{ name: 'MARRAKECH', lon: -7.9811, lat: 31.6295 }},
-      {{ name: 'CAPE TOWN', lon: 18.4241, lat: -33.9249 }},
-      {{ name: 'WINNIPEG', lon: -97.1384, lat: 49.8951 }},
-      {{ name: 'AARHUS', lon: 10.2039, lat: 56.1629 }}
-    ];
+    const ALL_COUNTRIES_REGISTRY = {all_countries_registry_json};
+    const ALL_CITIES_REGISTRY = {all_cities_registry_json};
+    const COUNTRY_CENTROIDS = ALL_COUNTRIES_REGISTRY;
+    const PRIORITY_CITIES = ALL_CITIES_REGISTRY;
 
     // Curated Cultural Cartography: Real-World Streets, Avenues & Waterways for Key Cities
     const CITY_STREET_NETWORKS = {{
@@ -3181,15 +3209,15 @@ def build():
 
     // Procedural Urban Street Grid Generator for Any City Worldwide
     function generateProceduralCityStreets(cityName, centerLon, centerLat, cityInsts) {{
-      let minLon = centerLon - 0.025, maxLon = centerLon + 0.025;
-      let minLat = centerLat - 0.020, maxLat = centerLat + 0.020;
+      let minLon = centerLon - 0.035, maxLon = centerLon + 0.035;
+      let minLat = centerLat - 0.025, maxLat = centerLat + 0.025;
 
       if (cityInsts && cityInsts.length > 0) {{
         cityInsts.forEach(i => {{
-          if (i.lon < minLon) minLon = i.lon - 0.015;
-          if (i.lon > maxLon) maxLon = i.lon + 0.015;
-          if (i.lat < minLat) minLat = i.lat - 0.015;
-          if (i.lat > maxLat) maxLat = i.lat + 0.015;
+          if (i.lon < minLon) minLon = i.lon - 0.02;
+          if (i.lon > maxLon) maxLon = i.lon + 0.02;
+          if (i.lat < minLat) minLat = i.lat - 0.02;
+          if (i.lat > maxLat) maxLat = i.lat + 0.02;
         }});
       }}
 
@@ -3198,9 +3226,9 @@ def build():
       const dLon = maxLon - minLon;
       const dLat = maxLat - minLat;
 
-      // Primary Arterial Avenues
+      // Primary Arterial Avenues (Main Cross of the City)
       major.push({{
-        name: cityName + ' Cultural Grand Blvd',
+        name: cityName + ' Cultural Blvd',
         pts: [[minLon, centerLat], [maxLon, centerLat]]
       }});
       major.push({{
@@ -3208,14 +3236,20 @@ def build():
         pts: [[centerLon, minLat], [centerLon, maxLat]]
       }});
 
+      // Diagonal Grand Parkway
+      major.push({{
+        name: cityName + ' Parkway',
+        pts: [[minLon + dLon * 0.15, minLat + dLat * 0.15], [maxLon - dLon * 0.15, maxLat - dLat * 0.15]]
+      }});
+
       // Perpendicular Street Grid
-      const steps = 4;
+      const steps = 5;
       for (let s = 1; s <= steps; s++) {{
         const f = s / (steps + 1);
         const y = minLat + dLat * f;
         if (Math.abs(y - centerLat) > 0.003) {{
           secondary.push({{
-            name: 'Avenue ' + s,
+            name: s % 2 === 0 ? cityName + ' North St ' + s : 'Avenue des Arts ' + s,
             pts: [[minLon, y], [maxLon, y]]
           }});
         }}
@@ -3225,48 +3259,87 @@ def build():
         const x = minLon + dLon * f;
         if (Math.abs(x - centerLon) > 0.003) {{
           secondary.push({{
-            name: 'Street ' + s,
+            name: 'Gallery Way ' + s,
             pts: [[x, minLat], [x, maxLat]]
           }});
         }}
       }}
 
-      // Connecting Streets for Each Mapped Institution
+      // Dedicated Streets for Each Mapped Institution using Authentic Address!
+      const parks = [];
       if (cityInsts && cityInsts.length > 0) {{
-        cityInsts.forEach(inst => {{
-          let streetName = 'Museum Corridor';
+        cityInsts.forEach((inst, idx) => {{
+          let streetName = inst.neighborhood || 'Museum Corridor';
           if (inst.address) {{
             const part = inst.address.split(',')[0].trim();
-            if (part && !part.toLowerCase().includes('central') && part.length < 32) {{
+            if (part && part.length < 34) {{
               streetName = part;
             }}
           }}
+          // Main street through institution
           secondary.push({{
             name: streetName,
-            pts: [[inst.lon - 0.008, inst.lat], [inst.lon + 0.008, inst.lat]]
+            pts: [[inst.lon - 0.012, inst.lat], [inst.lon + 0.012, inst.lat]]
           }});
+          // Cross street
           secondary.push({{
             name: '',
-            pts: [[inst.lon, inst.lat - 0.005], [inst.lon, inst.lat + 0.005]]
+            pts: [[inst.lon, inst.lat - 0.008], [inst.lon, inst.lat + 0.008]]
           }});
+
+          // Cultural plaza / park around first 2 institutions
+          if (idx < 2) {{
+            const pSize = 0.004;
+            parks.push({{
+              name: inst.name.split(' ')[0] + ' Commons',
+              pts: [
+                [inst.lon - pSize, inst.lat - pSize * 0.7],
+                [inst.lon + pSize, inst.lat - pSize * 0.7],
+                [inst.lon + pSize, inst.lat + pSize * 0.7],
+                [inst.lon - pSize, inst.lat + pSize * 0.7]
+              ]
+            }});
+          }}
         }});
       }}
 
+      // Curving Scenic River / Canal
+      const riverMidY = centerLat - dLat * 0.18;
+      const waterways = [
+        {{
+          name: cityName + ' Canal',
+          width: 18,
+          pts: [
+            [minLon, riverMidY + dLat * 0.14],
+            [centerLon - dLon * 0.2, riverMidY + dLat * 0.05],
+            [centerLon, riverMidY],
+            [centerLon + dLon * 0.25, riverMidY - dLat * 0.08],
+            [maxLon, riverMidY - dLat * 0.15]
+          ]
+        }}
+      ];
+
+      // Bridges crossing the canal
+      const bridges = [
+        {{
+          pts: [
+            [centerLon, riverMidY - 0.003],
+            [centerLon, riverMidY + 0.003]
+          ]
+        }},
+        {{
+          pts: [
+            [centerLon - dLon * 0.2, riverMidY + dLat * 0.05 - 0.003],
+            [centerLon - dLon * 0.2, riverMidY + dLat * 0.05 + 0.003]
+          ]
+        }}
+      ];
+
       return {{
         center: [centerLon, centerLat],
-        waterways: [
-          {{
-            name: cityName + ' Waterway',
-            width: 16,
-            pts: [
-              [minLon, centerLat + dLat * 0.25],
-              [centerLon, centerLat + dLat * 0.12],
-              [maxLon, centerLat - dLat * 0.18]
-            ]
-          }}
-        ],
-        parks: [],
-        bridges: [],
+        waterways: waterways,
+        parks: parks,
+        bridges: bridges,
         major_streets: major,
         secondary_streets: secondary
       }};
@@ -3469,31 +3542,57 @@ def build():
       const cy = height / 2;
       const r = currentRadius;
 
-      const isCityZoom = r > baseRadius * 2.8;
+      const isCityZoom = r > baseRadius * 35 || (selectedCityFilter !== 'all' && r > baseRadius * 20);
 
       // Determine active focused city
       let activeCity = selectedCityFilter !== 'all' ? selectedCityFilter : null;
       if (!activeCity && isCityZoom) {{
-        for (let i = 0; i < PRIORITY_CITIES.length; i++) {{
-          const c = PRIORITY_CITIES[i];
+        let closestDist = Infinity;
+        for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {{
+          const c = ALL_CITIES_REGISTRY[i];
           const pt = project(c.lon, c.lat, r, cx, cy);
-          if (pt.front && Math.hypot(pt.x - cx, pt.y - cy) < 320) {{
-            activeCity = c.name;
-            break;
+          if (pt.front) {{
+            const dist = Math.hypot(pt.x - cx, pt.y - cy);
+            if (dist < 380 && dist < closestDist) {{
+              closestDist = dist;
+              activeCity = c.name;
+            }}
           }}
         }}
       }}
 
-      // Update City Control Banner (Back to World View + Title Badge)
+      // Update Unified Navigation Banner (Country View + City Street View + World View)
       const cityBanner = document.getElementById('cityViewControlBanner');
       const cityTitleEl = document.getElementById('cityViewTitleText');
+      const backCountryBtn = document.getElementById('backToCountryBtn');
+      const backCountryText = document.getElementById('backToCountryText');
+      const badgeIcon = document.getElementById('cityViewBadgeIcon');
+
       if (cityBanner) {{
         if (isCityZoom && activeCity) {{
           cityBanner.classList.remove('hidden');
           const cityMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, activeCity));
+          const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, activeCity));
+          const cityCountry = cityMeta ? cityMeta.country : lastSelectedCountry;
+          if (badgeIcon) badgeIcon.textContent = '📍';
           if (cityTitleEl) {{
-            cityTitleEl.textContent = `${{activeCity.toUpperCase()}} · ${{cityMatches.length}} SANCTUARIES · STREET VIEW`;
+            cityTitleEl.textContent = `${{activeCity.toUpperCase()}} · ${{cityMatches.length}} SPACES · STREET VIEW`;
           }}
+          if (backCountryBtn && cityCountry) {{
+            backCountryBtn.classList.remove('hidden');
+            if (backCountryText) backCountryText.textContent = cityCountry;
+          }} else if (backCountryBtn) {{
+            backCountryBtn.classList.add('hidden');
+          }}
+        }} else if (selectedCountryFilter !== 'all') {{
+          cityBanner.classList.remove('hidden');
+          const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, selectedCountryFilter));
+          const countryCities = ALL_CITIES_REGISTRY.filter(c => matchC(c.country, selectedCountryFilter));
+          if (badgeIcon) badgeIcon.textContent = '🌍';
+          if (cityTitleEl) {{
+            cityTitleEl.textContent = `${{selectedCountryFilter.toUpperCase()}} · ${{countryMatches.length}} SPACES IN ${{countryCities.length}} CITIES`;
+          }}
+          if (backCountryBtn) backCountryBtn.classList.add('hidden');
         }} else {{
           cityBanner.classList.add('hidden');
         }}
@@ -3501,7 +3600,7 @@ def build():
 
       if (!isCityZoom) {{
         // =======================================================
-        // 🌍 GLOBAL 3D SPHERE VIEW
+        // 🌍 GLOBAL & REGIONAL 3D SPHERE VIEW
         // =======================================================
 
         // Dark space / ocean sphere
@@ -3533,7 +3632,7 @@ def build():
         for (let i = 0; i < COUNTRY_POLYS.length; i++) {{
           const country = COUNTRY_POLYS[i];
           const isCActive = selectedCountryFilter !== 'all' && matchC(country.n, selectedCountryFilter);
-          ctx.fillStyle = isCActive ? '#1d4ed8' : country.c;
+          ctx.fillStyle = isCActive ? '#1e3a8a' : country.c;
 
           for (let j = 0; j < country.r.length; j++) {{
             const ring = country.r[j];
@@ -3551,7 +3650,7 @@ def build():
               ctx.closePath();
               ctx.fill();
               ctx.strokeStyle = isCActive ? '#60a5fa' : '#050c18';
-              ctx.lineWidth = isCActive ? 2.0 : 0.75;
+              ctx.lineWidth = isCActive ? 2.2 : 0.75;
               ctx.stroke();
             }}
           }}
@@ -3563,65 +3662,80 @@ def build():
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           COUNTRY_CENTROIDS.forEach(c => {{
-            const pt = project(c.lon, c.lat, r, cx, cy);
-            if (pt.front && pt.depth > 0.15) {{
-              const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
-              ctx.fillStyle = isSel ? '#60a5fa' : '#475569';
-              ctx.fillText(c.name, pt.x, pt.y);
+            const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
+            if (selectedCountryFilter === 'all' || isSel) {{
+              const pt = project(c.lon, c.lat, r, cx, cy);
+              if (pt.front && pt.depth > 0.12) {{
+                ctx.fillStyle = isSel ? '#60a5fa' : '#475569';
+                ctx.fillText(c.name, pt.x, pt.y);
+              }}
             }}
           }});
         }}
 
-        // Priority City Badges (with collision detection to prevent overlapping stacks)
+        // City Badges (All cities in selected country or top cities worldwide)
         cityBadgeHitboxes = [];
         const drawnCityBoxes = [];
         ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
         
-        const sortedCities = [...PRIORITY_CITIES].sort((a, b) => {{
+        let candidateCities = [];
+        if (selectedCountryFilter !== 'all') {{
+          candidateCities = ALL_CITIES_REGISTRY.filter(c => matchC(c.country, selectedCountryFilter));
+        }} else {{
+          candidateCities = ALL_CITIES_REGISTRY;
+        }}
+
+        const sortedCities = [...candidateCities].sort((a, b) => {{
           const aSel = selectedCityFilter.toLowerCase() === a.name.toLowerCase();
           const bSel = selectedCityFilter.toLowerCase() === b.name.toLowerCase();
-          return (bSel ? 1 : 0) - (aSel ? 1 : 0);
+          if (aSel) return -1;
+          if (bSel) return 1;
+          return (b.count || 0) - (a.count || 0);
         }});
 
         sortedCities.forEach(city => {{
           const pt = project(city.lon, city.lat, r, cx, cy);
-          if (pt.front && pt.depth > 0.12) {{
+          if (pt.front && pt.depth > 0.08) {{
             const isSelected = selectedCityFilter.toLowerCase() === city.name.toLowerCase();
-            const txt = (isSelected ? '● ' : '■ ') + city.name;
+            const isHovered = hoveredCity && hoveredCity.toLowerCase() === city.name.toLowerCase();
+            const isCountryActive = selectedCountryFilter !== 'all';
+            const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${{city.count}})` : '';
+            const txt = (isSelected ? '● ' : '■ ') + city.name + countLabel;
             const tw = ctx.measureText(txt).width;
-            const bw = tw + 12;
-            const bh = 22;
+            const bw = tw + 14;
+            const bh = 24;
             const bx = pt.x - bw / 2;
-            const by = pt.y - 26;
+            const by = pt.y - 28;
 
             const collides = drawnCityBoxes.some(box => {{
               return !(bx + bw + 4 < box.x || bx > box.x + box.w + 4 || by + bh + 4 < box.y || by > box.y + box.h + 4);
             }});
 
-            if (!collides || isSelected) {{
+            if (!collides || isSelected || isCountryActive) {{
               drawnCityBoxes.push({{ x: bx, y: by, w: bw, h: bh }});
               cityBadgeHitboxes.push({{
                 name: city.name,
+                country: city.country,
                 x: bx, y: by, w: bw, h: bh,
                 lon: city.lon, lat: city.lat
               }});
 
-              ctx.fillStyle = isSelected ? '#1d4ed8' : '#070b14';
+              ctx.fillStyle = isSelected ? '#1d4ed8' : isHovered ? '#1e3a8a' : '#070b14';
               ctx.beginPath();
-              ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 4) : ctx.rect(bx, by, bw, bh);
+              ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 5) : ctx.rect(bx, by, bw, bh);
               ctx.fill();
 
-              ctx.strokeStyle = isSelected ? '#93c5fd' : '#222d42';
-              ctx.lineWidth = 1;
+              ctx.strokeStyle = isSelected ? '#93c5fd' : isHovered ? '#60a5fa' : '#222d42';
+              ctx.lineWidth = isSelected || isHovered ? 1.5 : 1;
               ctx.stroke();
 
-              ctx.fillStyle = isSelected ? '#ffffff' : '#cbd5e1';
+              ctx.fillStyle = isSelected || isHovered ? '#ffffff' : '#cbd5e1';
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
 
               ctx.beginPath();
-              ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
+              ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
               ctx.fillStyle = isSelected ? '#93c5fd' : '#3b82f6';
               ctx.fill();
             }}
@@ -3650,16 +3764,38 @@ def build():
 
           if (isSel) {{
             ctx.beginPath();
-            ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
+            ctx.arc(d.x, d.y, 7, 0, Math.PI * 2);
             ctx.strokeStyle = '#ffffff';
-            ctx.lineWidth = 1.5;
+            ctx.lineWidth = 1.8;
             ctx.stroke();
           }}
 
           ctx.beginPath();
-          ctx.arc(d.x, d.y, isSel ? 4 : isHov ? 3.5 : 2.2, 0, Math.PI * 2);
+          ctx.arc(d.x, d.y, isSel ? 4.5 : isHov ? 4 : 2.5, 0, Math.PI * 2);
           ctx.fillStyle = d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
           ctx.fill();
+
+          // In country zoom or when hovered, show quick tooltip pill
+          if (isHov || (selectedCountryFilter !== 'all' && isSel)) {{
+            ctx.save();
+            ctx.font = '11px "PP Telegraf", "PP Telegraph", sans-serif';
+            const tipText = d.inst.name;
+            const tw = ctx.measureText(tipText).width;
+            const tbx = d.x - tw / 2 - 8;
+            const tby = d.y - 28;
+            ctx.fillStyle = '#0a101b';
+            ctx.beginPath();
+            ctx.roundRect ? ctx.roundRect(tbx, tby, tw + 16, 20, 4) : ctx.rect(tbx, tby, tw + 16, 20);
+            ctx.fill();
+            ctx.strokeStyle = '#3b82f6';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(tipText, d.x, tby + 10.5);
+            ctx.restore();
+          }}
         }});
 
       }} else {{
@@ -4030,13 +4166,20 @@ def build():
         }}
       }});
 
-      const zoomTarget = shouldSwitchToGlobe ? Math.max(targetRadius, baseRadius * 4.2) : targetRadius;
       if (shouldSwitchToGlobe) {{
+        if (inst.city) {{
+          selectedCityFilter = inst.city;
+          const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, inst.city));
+          if (cityMeta && cityMeta.country) {{
+            lastSelectedCountry = cityMeta.country;
+          }}
+        }}
+        const zoomTarget = getCityTargetRadius(inst.city);
         targetRadius = zoomTarget;
+        flyTo(inst.lon, inst.lat, zoomTarget);
+      }} else {{
+        flyTo(inst.lon, inst.lat);
       }}
-      flyTo(inst.lon, inst.lat, zoomTarget);
-
-      // Top half globe is always visible
     }}
 
     // Scholarly Audit Dossier View
@@ -6482,20 +6625,61 @@ FORMATTING & INTERACTION RULES:
       }});
     }}
 
-    // Wire Globe Filter Pills (Quick click city or country)
-    document.querySelectorAll('.globe-filter-pill').forEach(pill => {{
-      pill.addEventListener('click', () => {{
-        const type = pill.getAttribute('data-type');
-        const val = pill.getAttribute('data-value') || '';
-        if (type === 'all') {{
-          clearAllFilters();
-        }} else if (type === 'city') {{
-          filterByCity(val, true, true);
-        }} else if (type === 'country') {{
-          filterByCountry(val);
-        }}
+    function updateGlobeBarForCountry(countryName) {{
+      const bar = document.getElementById('globeCityBar');
+      if (!bar) return;
+      const countryCities = ALL_CITIES_REGISTRY.filter(ci => matchC(ci.country, countryName));
+      if (countryCities.length === 0) return;
+
+      let html = `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="all">🌐 World</button>`;
+      html += `<span class="text-[#555] shrink-0">·</span>`;
+      html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0 shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}}</button>`;
+      html += `<span class="text-[#555] shrink-0">·</span>`;
+
+      countryCities.forEach(city => {{
+        html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="${{escapeHtml(city.name)}}">📍 ${{escapeHtml(city.name)}} <span class="text-[#93c5fd] font-mono text-[12px]">(${{city.count}})</span></button>`;
       }});
-    }});
+
+      bar.innerHTML = html;
+      wireGlobePillListeners();
+    }}
+
+    function renderGlobeBarDefault() {{
+      const bar = document.getElementById('globeCityBar');
+      if (!bar) return;
+      let html = `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">🌐 All</button>`;
+      html += `<span class="text-[#555] shrink-0">·</span>`;
+      const featuredCities = ['London', 'New York', 'Paris', 'Berlin', 'Amsterdam', 'Tokyo', 'Basel', 'Madrid'];
+      featuredCities.forEach(cityName => {{
+        const cMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
+        const count = cMeta ? ` (${{cMeta.count}})` : '';
+        html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="${{cityName}}">${{cityName}}${{count}}</button>`;
+      }});
+      html += `<span class="text-[#555] shrink-0">·</span>`;
+      const featuredCountries = ['Germany', 'United Kingdom', 'United States', 'France', 'Netherlands', 'Switzerland', 'Italy', 'Spain'];
+      featuredCountries.forEach(countryName => {{
+        html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="${{countryName}}">${{countryName}}</button>`;
+      }});
+      bar.innerHTML = html;
+      wireGlobePillListeners();
+    }}
+
+    function wireGlobePillListeners() {{
+      document.querySelectorAll('#globeCityBar .globe-filter-pill').forEach(pill => {{
+        pill.addEventListener('click', () => {{
+          const type = pill.getAttribute('data-type');
+          const val = pill.getAttribute('data-value') || '';
+          if (type === 'all') {{
+            clearAllFilters();
+          }} else if (type === 'city') {{
+            filterByCity(val, true, true);
+          }} else if (type === 'country') {{
+            filterByCountry(val, true);
+          }}
+        }});
+      }});
+    }}
+    wireGlobePillListeners();
 
     let selectedCategoryFilter = 'all';
 
@@ -6711,18 +6895,23 @@ FORMATTING & INTERACTION RULES:
       }});
     }}
 
+    let lastSelectedCountry = null;
+
     function filterByCity(cityName, zoom = true, notifyCurator = true) {{
       selectedCityFilter = cityName;
-      selectedCountryFilter = 'all';
+      const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
+      if (cityMeta && cityMeta.country) {{
+        lastSelectedCountry = cityMeta.country;
+      }}
       applyFilters();
 
-      const cty = PRIORITY_CITIES.find(c => c.name.toLowerCase() === cityName.toLowerCase());
+      const cty = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
       const targetZoom = zoom ? getCityTargetRadius(cityName) : null;
 
       if (cty) {{
         flyTo(cty.lon, cty.lat, targetZoom);
       }} else {{
-        const inst = ALL_INSTITUTIONS.find(i => i.city.toLowerCase() === cityName.toLowerCase());
+        const inst = ALL_INSTITUTIONS.find(i => matchC(i.city, cityName));
         if (inst) flyTo(inst.lon, inst.lat, targetZoom);
       }}
 
@@ -6736,6 +6925,8 @@ FORMATTING & INTERACTION RULES:
       if (cityMatches.length > 0) {{
         selectInstitution(cityMatches[0], false);
       }}
+
+      updateGlobePillsUI();
 
       // Notify Curator if triggered from canvas / UI
       if (notifyCurator && cityMatches.length > 0) {{
@@ -6751,24 +6942,37 @@ FORMATTING & INTERACTION RULES:
       }}
     }}
 
-    function filterByCountry(countryName) {{
+    function filterByCountry(countryName, zoom = true) {{
       selectedCountryFilter = countryName;
       selectedCityFilter = 'all';
+      lastSelectedCountry = countryName;
+      selectedInstitution = null;
       applyFilters();
 
-      const c = COUNTRY_CENTROIDS.find(c => matchC(c.name, countryName));
-      if (c) flyTo(c.lon, c.lat);
+      const c = ALL_COUNTRIES_REGISTRY.find(c => matchC(c.name, countryName));
+      if (c && zoom) {{
+        const countryZoom = baseRadius * (c.zoom || 3.2);
+        targetRadius = countryZoom;
+        flyTo(c.lon, c.lat, countryZoom);
+        isAutoSpinning = false;
+      }} else if (c) {{
+        flyTo(c.lon, c.lat);
+      }}
+
+      updateGlobeBarForCountry(countryName);
+      updateGlobePillsUI();
 
       // Notify the Curator to give an educational briefing on this country
       const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, countryName));
       if (countryMatches.length > 0) {{
         const topInsts = countryMatches.slice(0, 3).map(i => formatInstLink(i)).join(', ');
+        const citiesInCountry = ALL_CITIES_REGISTRY.filter(ci => matchC(ci.country, countryName));
         appendCuratorMessage(`
           <p class="text-slate-200">
-            Across <strong>${{escapeHtml(countryName)}}</strong>, Culture Atlas has <strong>${{countryMatches.length}}</strong> spaces with clean funding.
+            Across <strong>${{escapeHtml(countryName)}}</strong>, Culture Atlas has <strong>${{countryMatches.length}}</strong> clean spaces mapped in <strong>${{citiesInCountry.length}} cities</strong>.
           </p>
           <p class="text-slate-300">
-            Top places to explore include ${{topInsts}}.
+            Top places to explore include ${{topInsts}}. Click any city or space on the map to zoom in to street view!
           </p>
         `);
       }}
@@ -6788,6 +6992,7 @@ FORMATTING & INTERACTION RULES:
       if (citySelect) citySelect.value = 'all';
       targetRadius = baseRadius;
       isAutoSpinning = true;
+      renderGlobeBarDefault();
       applyFilters();
     }}
 
@@ -6860,45 +7065,37 @@ FORMATTING & INTERACTION RULES:
       for (let i = 0; i < cityMuseumHitboxes.length; i++) {{
         const m = cityMuseumHitboxes[i];
         const insideBadge = mx >= m.x && mx <= m.x + m.w && my >= m.y && my <= m.y + m.h;
-        const nearPin = Math.hypot(m.pinX - mx, m.pinY - my) < 16;
+        const nearPin = Math.hypot(m.pinX - mx, m.pinY - my) < 18;
         if (insideBadge || nearPin) {{
           selectInstitution(m.inst, false);
           return;
         }}
       }}
 
-      // 1. Check priority city hitboxes with generous 14px hit padding
+      // 1. Check priority city hitboxes with generous hit padding
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {{
         const b = cityBadgeHitboxes[i];
-        if (mx >= b.x - 12 && mx <= b.x + b.w + 12 && my >= b.y - 10 && my <= b.y + b.h + 10) {{
-          if (selectedCityFilter.toLowerCase() === b.name.toLowerCase()) {{
-            clearAllFilters();
-          }} else {{
-            filterByCity(b.name, true, true);
-          }}
+        if (mx >= b.x - 14 && mx <= b.x + b.w + 14 && my >= b.y - 12 && my <= b.y + b.h + 12) {{
+          filterByCity(b.name, true, true);
           return;
         }}
       }}
 
-      // 2. Check institution dots (14px radius)
+      // 2. Check institution dots (generous 16px radius, zooms directly to street!)
       for (let i = 0; i < visibleDots.length; i++) {{
         const d = visibleDots[i];
-        if (Math.hypot(d.x - mx, d.y - my) < 14) {{
-          selectInstitution(d.inst);
+        if (Math.hypot(d.x - mx, d.y - my) < 16) {{
+          selectInstitution(d.inst, true);
           return;
         }}
       }}
 
-      // 3. Check country centroid text (generous 36px radius for easy clicking)
+      // 3. Check country centroid text (generous 40px radius, zooms directly to country!)
       for (let i = 0; i < COUNTRY_CENTROIDS.length; i++) {{
         const c = COUNTRY_CENTROIDS[i];
         const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 36) {{
-          if (selectedCountryFilter.toLowerCase() === c.name.toLowerCase()) {{
-            clearAllFilters();
-          }} else {{
-            filterByCountry(c.name);
-          }}
+        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 40) {{
+          filterByCountry(c.name, true);
           return;
         }}
       }}
@@ -6910,11 +7107,7 @@ FORMATTING & INTERACTION RULES:
           const country = COUNTRY_POLYS[i];
           for (let j = 0; j < country.r.length; j++) {{
             if (pointInPolygon(geo.lon, geo.lat, country.r[j])) {{
-              if (selectedCountryFilter.toLowerCase() === country.n.toLowerCase()) {{
-                clearAllFilters();
-              }} else {{
-                filterByCountry(country.n);
-              }}
+              filterByCountry(country.n, true);
               return;
             }}
           }}
@@ -6937,11 +7130,15 @@ FORMATTING & INTERACTION RULES:
       const cy = height / 2;
       const r = currentRadius;
 
+      hoveredInstitution = null;
+      hoveredCity = null;
+      hoveredCountry = null;
+
       // Check city museum hitboxes (when in city street view)
       for (let i = 0; i < cityMuseumHitboxes.length; i++) {{
         const m = cityMuseumHitboxes[i];
         const insideBadge = mx >= m.x && mx <= m.x + m.w && my >= m.y && my <= m.y + m.h;
-        const nearPin = Math.hypot(m.pinX - mx, m.pinY - my) < 16;
+        const nearPin = Math.hypot(m.pinX - mx, m.pinY - my) < 18;
         if (insideBadge || nearPin) {{
           canvas.style.cursor = 'pointer';
           hoveredInstitution = m.inst;
@@ -6952,8 +7149,9 @@ FORMATTING & INTERACTION RULES:
       // Check city badge
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {{
         const b = cityBadgeHitboxes[i];
-        if (mx >= b.x - 12 && mx <= b.x + b.w + 12 && my >= b.y - 10 && my <= b.y + b.h + 10) {{
+        if (mx >= b.x - 14 && mx <= b.x + b.w + 14 && my >= b.y - 12 && my <= b.y + b.h + 12) {{
           canvas.style.cursor = 'pointer';
+          hoveredCity = b.name;
           return;
         }}
       }}
@@ -6961,8 +7159,9 @@ FORMATTING & INTERACTION RULES:
       // Check institution dot
       for (let i = 0; i < visibleDots.length; i++) {{
         const d = visibleDots[i];
-        if (Math.hypot(d.x - mx, d.y - my) < 14) {{
+        if (Math.hypot(d.x - mx, d.y - my) < 16) {{
           canvas.style.cursor = 'pointer';
+          hoveredInstitution = d.inst;
           return;
         }}
       }}
@@ -6971,8 +7170,9 @@ FORMATTING & INTERACTION RULES:
       for (let i = 0; i < COUNTRY_CENTROIDS.length; i++) {{
         const c = COUNTRY_CENTROIDS[i];
         const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 36) {{
+        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 40) {{
           canvas.style.cursor = 'pointer';
+          hoveredCountry = c.name;
           return;
         }}
       }}
@@ -6985,6 +7185,7 @@ FORMATTING & INTERACTION RULES:
           for (let j = 0; j < country.r.length; j++) {{
             if (pointInPolygon(geo.lon, geo.lat, country.r[j])) {{
               canvas.style.cursor = 'pointer';
+              hoveredCountry = country.n;
               return;
             }}
           }}
@@ -7028,20 +7229,43 @@ FORMATTING & INTERACTION RULES:
     // Smooth Logarithmic Wheel Zoom
     canvas.addEventListener('wheel', e => {{
       e.preventDefault();
-      const factor = e.deltaY < 0 ? 1.15 : 0.87;
+      const factor = e.deltaY < 0 ? 1.25 : 0.8;
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius * factor));
-      if (targetRadius > baseRadius * 2.5) {{
+      if (targetRadius > baseRadius * 2.0) {{
         isAutoSpinning = false;
+      }}
+      if (targetRadius < baseRadius * 25 && selectedCityFilter !== 'all') {{
+        selectedCityFilter = 'all';
+        applyFilters();
+      }}
+      if (targetRadius < baseRadius * 1.8 && selectedCountryFilter !== 'all') {{
+        selectedCountryFilter = 'all';
+        applyFilters();
+        renderGlobeBarDefault();
       }}
     }}, {{ passive: false }});
 
     document.getElementById('zoomInBtn')?.addEventListener('click', () => {{
       isAutoSpinning = false;
-      targetRadius = Math.min(getMaxRadius(), targetRadius * 1.5);
+      targetRadius = Math.min(getMaxRadius(), targetRadius * 1.8);
     }});
     document.getElementById('zoomOutBtn')?.addEventListener('click', () => {{
-      targetRadius = Math.max(getMinRadius(), targetRadius * 0.67);
-      if (targetRadius < baseRadius * 2.2 && selectedCityFilter !== 'all') {{
+      targetRadius = Math.max(getMinRadius(), targetRadius * 0.55);
+      if (targetRadius < baseRadius * 25 && selectedCityFilter !== 'all') {{
+        selectedCityFilter = 'all';
+        applyFilters();
+      }}
+      if (targetRadius < baseRadius * 1.8 && selectedCountryFilter !== 'all') {{
+        selectedCountryFilter = 'all';
+        applyFilters();
+        renderGlobeBarDefault();
+      }}
+    }});
+    document.getElementById('backToCountryBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      if (lastSelectedCountry) {{
+        filterByCountry(lastSelectedCountry, true);
+      }} else {{
         clearAllFilters();
       }}
     }});
