@@ -1970,7 +1970,7 @@ def build():
         ]
       }},
       {{
-        "name": "53rd St (MoMA)",
+        "name": "53rd St",
         "pts": [
           [
             -73.99,
@@ -1996,7 +1996,7 @@ def build():
         ]
       }},
       {{
-        "name": "82nd St (The Met)",
+        "name": "82nd St",
         "pts": [
           [
             -73.975,
@@ -2009,7 +2009,7 @@ def build():
         ]
       }},
       {{
-        "name": "88th St (Guggenheim)",
+        "name": "88th St",
         "pts": [
           [
             -73.972,
@@ -2463,7 +2463,7 @@ def build():
     ],
     "parks": [
       {{
-        "name": "Museumplein (Stedelijk Museum)",
+        "name": "Museumplein",
         "pts": [
           [
             4.878,
