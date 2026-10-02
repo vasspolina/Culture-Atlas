@@ -914,7 +914,7 @@ def build():
         <div class="bg-[#0e1628] border border-[#1d4ed8]/50 rounded-xl p-3 space-y-1.5">
           <span class="text-[#60a5fa] font-normal text-[14px] uppercase tracking-wider block font-mono">🌿 Verified Ethical Alternatives in New York</span>
           <p class="text-slate-300 text-[14px]">
-            Instead of supporting corporate-compromised boards, visit New York's <strong>11 spaces with clean funding</strong>—including <em>Dia Beacon, SculptureCenter, Artists Space, and The Studio Museum in Harlem</em>.
+            Instead of supporting corporate-compromised boards, visit New York's <strong>verified clean spaces</strong>—including <em>SculptureCenter, Artists Space, Swiss Institute, and The Kitchen</em>.
           </p>
         </div>
 
@@ -2787,7 +2787,7 @@ def build():
         ]
       }},
       {{
-        "name": "Boulevard de S\u00e9bastopol (Pompidou)",
+        "name": "Boulevard de S\u00e9bastopol",
         "pts": [
           [
             2.35,
@@ -2970,7 +2970,7 @@ def build():
         ]
       }},
       {{
-        "name": "Invalidenstra\u00dfe (Hamburger Bahnhof)",
+        "name": "Invalidenstra\u00dfe",
         "pts": [
           [
             13.365,
@@ -5515,28 +5515,26 @@ FORMATTING & INTERACTION RULES:
           const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale Gallery'));
           const camden = ALL_INSTITUTIONS.find(i => i.name.includes('Camden Art Centre'));
           const white = ALL_INSTITUTIONS.find(i => i.name.includes('Whitechapel Gallery'));
-          const serp = ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine Galleries'));
-          const volt = ALL_INSTITUTIONS.find(i => i.name.includes('Studio Voltaire'));
-          const south = ALL_INSTITUTIONS.find(i => i.name.includes('South London Gallery'));
           const gas = ALL_INSTITUTIONS.find(i => i.name.includes('Gasworks'));
-          const tate = ALL_INSTITUTIONS.find(i => i.name.includes('Tate Modern'));
+          const iniva = ALL_INSTITUTIONS.find(i => i.name.includes('Iniva'));
+          const tate = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('Tate Modern'));
 
           appendCuratorMessage(`
             <p class="text-slate-200">
               London has two very different art worlds: the giant corporate museums on the Thames, and a network of independent galleries and artist-run spaces with clean funding.
             </p>
             <p class="text-slate-300">
-              For 26 years, BP sponsored ${{formatInstLink(tate)}}, until artist groups like <em>Liberate Tate</em> and <em>BP or not BP?</em> staged creative protests (including carrying a real wind turbine blade into the Turbine Hall), pushing Tate to drop BP in 2016. In addition, protests by Nan Goldin's group P.A.I.N. forced London museums to take down the Sackler family name because of the opioid crisis.
+              For 26 years, BP sponsored ${{formatInstLink(tate)}}, until artist groups like <em>Liberate Tate</em> and <em>BP or not BP?</em> staged creative protests, pushing Tate to drop BP in 2016. In addition, protests by Nan Goldin's group P.A.I.N. forced institutions like Serpentine to drop the Sackler name.
             </p>
             <p class="text-slate-300">
               Here are great independent spaces to visit in London:
             </p>
             <p class="text-slate-300">
-              - ${{formatInstLink(chis)}} in Bow: Free entry, known for commissioning brand-new work by artists like Lubaina Himid and Rachel Whiteread.<br>
+              - ${{formatInstLink(chis)}} in Bow: Free entry, known for commissioning brand-new work by emerging artists.<br>
               - ${{formatInstLink(camden)}} in North London: Free entry, quiet garden café, and ceramic and sculpture studios.<br>
               - ${{formatInstLink(white)}} in East London: Free entry, showed Picasso's <em>Guernica</em> in 1939 to support the Spanish Republic.<br>
-              - ${{formatInstLink(serp)}} in Kensington Gardens: Free entry, famous for its summer architecture pavilion.<br>
-              - ${{formatInstLink(volt)}} in Clapham, ${{formatInstLink(south)}} in Peckham, and ${{formatInstLink(gas)}} in Vauxhall. None of them accept oil or weapons sponsorships.
+              - ${{formatInstLink(gas)}} in Vauxhall: Artist-led exhibitions and international studios.<br>
+              - ${{formatInstLink(iniva)}}: Championing global diaspora artists and non-commercial public research.
             </p>
           `);
           filterByCity('London', true, false);
@@ -5829,17 +5827,19 @@ FORMATTING & INTERACTION RULES:
 
         // D11. Amsterdam Cultural Guide
         if (q.includes('amsterdam')) {{
-          const sted = ALL_INSTITUTIONS.find(i => i.name.includes('Stedelijk'));
           const deappel = ALL_INSTITUTIONS.find(i => i.id === 'de-appel' || i.name.includes('De Appel'));
           const framer = ALL_INSTITUTIONS.find(i => i.id === 'framer-framed' || i.name.includes('Framer Framed'));
+          const sted = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('Stedelijk'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Amsterdam features historic modern collections alongside pioneering independent research spaces:
+              Amsterdam features pioneering independent research spaces with verified clean funding:
             </p>
             <p class="text-slate-300">
               - ${{formatInstLink(deappel)}}: Historic vanguard founded in 1975, celebrated for 1970s performance art archives and the Curatorial Programme (CP).<br>
-              - ${{formatInstLink(framer)}} in Amsterdam Oost: Intercultural decolonial research platform investigating restitution, climate justice, and community archives.<br>
-              - ${{formatInstLink(sted)}} on Museumplein: The civic modern and contemporary art museum, housed in its iconic futuristic 'Bathtub' wing.
+              - ${{formatInstLink(framer)}} in Amsterdam Oost: Intercultural decolonial research platform investigating restitution, climate justice, and community archives.
+            </p>
+            <p class="text-slate-400 text-[14px]">
+              Note: ${{formatInstLink(sted)}} on Museumplein is monitored and excluded due to commercial and corporate board underwriting.
             </p>
           `);
           filterByCity('Amsterdam', true, false);
@@ -6029,7 +6029,7 @@ FORMATTING & INTERACTION RULES:
             </p>
             <p class="text-slate-300">
               - <strong>Free Public Admission:</strong> Over 60% of our spaces are 100% free to enter, including Chisenhale, Camden Art Centre, and Whitechapel in London, and CAPC in Bordeaux.<br>
-              - <strong>Ticket Prices:</strong> Larger spaces like Dia Beacon ($20 adults, free for Hudson Valley residents) and Louisiana Museum ($20 adults) require advance timed tickets.<br>
+              - <strong>Ticket Prices:</strong> Major spaces like Louisiana Museum ($20 adults, free under 18) and Kröller-Müller Museum require timed tickets, while spaces like Chisenhale, Camden Art Centre, and Artists Space are completely free.<br>
               - <strong>Hours:</strong> Most non-profit galleries are open Wednesday through Sunday, 11:00 AM to 6:00 PM. We also map 24 verified spaces open on Mondays.
             </p>
           `);
@@ -6203,45 +6203,48 @@ FORMATTING & INTERACTION RULES:
           return;
         }}
 
-        // 6. Minimalism, Dia Beacon & Phenomenology
+        // 6. Minimalism, Monumental Sculpture & Ethical Independence
         if (q.includes('minimalism') || q.includes('dia beacon') || q.includes('judds') || q.includes('judd') || q.includes('richard serra') || q.includes('phenomenolog')) {{
-          const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
+          const sculp = ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter'));
+          const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
+          const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
+          const dia = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Minimalism started in the 1960s with artists like Donald Judd, Dan Flavin, and Richard Serra. Instead of paintings that depict a scene, they built simple, large geometric shapes from industrial materials like steel, aluminum, and plywood. The goal was for you to experience the physical space and light directly with your own body.
+              While ${{formatInstLink(dia)}} was historically celebrated for minimalism, Dia Art Foundation was founded on Schlumberger oil wealth and retained Sackler naming until 2019, leading to its exclusion under strict ethical criteria.
             </p>
             <p class="text-slate-300">
-              The best place to see this is ${{formatInstLink(dia)}} in the Hudson Valley, New York. It sits in a huge former 1929 Nabisco box-printing factory lit entirely by natural daylight. You can walk inside Richard Serra's massive curved steel walls and see Donald Judd's wood and aluminum sculptures at full scale.
+              For verified independent monumental sculpture, minimalism, and spatial art:
             </p>
             <p class="text-slate-300">
-              How to get there: take the Metro-North Hudson Line train from Grand Central Station directly to Beacon. The museum is an easy 5-minute walk from the station.
+              - ${{formatInstLink(kroll)}} in Otterlo: One of Europe's largest outdoor sculpture parks with landmark works by Richard Serra, Jean Dubuffet, and Barbara Hepworth.<br>
+              - ${{formatInstLink(sculp)}} in New York: Non-collecting kunsthalle in Long Island City dedicated to experimental sculpture and spatial commissions.<br>
+              - ${{formatInstLink(louis)}} north of Copenhagen: Masterpieces of modernist sculpture situated directly on the Danish coastline.
             </p>
           `);
-          selectInstitution(dia, true);
+          selectInstitution(sculp, true);
           return;
         }}
 
         // 7. New York Art Scene & Board Politics
         if (q.includes('new york') || q.includes('nyc') || q.includes('manhattan')) {{
-          const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
           const sculp = ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter'));
           const artsp = ALL_INSTITUTIONS.find(i => i.name.includes('Artists Space'));
           const kitch = ALL_INSTITUTIONS.find(i => i.name.includes('The Kitchen'));
           const swiss = ALL_INSTITUTIONS.find(i => i.name.includes('Swiss Institute'));
-          const moma = ALL_INSTITUTIONS.find(i => i.name === 'MoMA (The Museum of Modern Art)');
+          const moma = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('MoMA'));
 
           appendCuratorMessage(`
             <p class="text-slate-200">
               New York has some of the biggest museums in the world, but many have faced protests over their donors and board members:
             </p>
             <p class="text-slate-300">
-              MoMA saw months of protests over board members tied to defense contractors and private prisons. The Whitney Museum saw artists pull their work until a tear-gas manufacturer stepped down from the board.
+              ${{formatInstLink(moma)}} saw months of protests over board members tied to defense contractors and private prisons, as well as former chair Leon Black's Jeffrey Epstein payments. The Whitney Museum saw artists pull their work until board vice-chair Warren Kanders (Safariland tear gas) stepped down. Dia Art Foundation retained Sackler naming until 2019.
             </p>
             <p class="text-slate-300">
-              Here are great places in New York with clean, independent funding:
+              Instead, Culture Atlas directs you to New York's verified independent non-profits:
             </p>
             <p class="text-slate-300">
-              - ${{formatInstLink(dia)}} in the Hudson Valley: World-famous for Minimalist art, easy train ride from Grand Central.<br>
               - ${{formatInstLink(artsp)}} in Tribeca: Non-profit gallery championing experimental artists since 1972.<br>
               - ${{formatInstLink(sculp)}} in Long Island City, Queens: Innovative sculpture inside a historic trolley repair shop.<br>
               - ${{formatInstLink(kitch)}} and ${{formatInstLink(swiss)}} in the East Village.
@@ -6254,17 +6257,19 @@ FORMATTING & INTERACTION RULES:
         // 8. Paris Art Scene & Civic Models
         if (q.includes('paris')) {{
           const ptok = ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo'));
-          const pomp = ALL_INSTITUTIONS.find(i => i.name.includes('Pompidou'));
           const beton = ALL_INSTITUTIONS.find(i => i.name.includes('Bétonsalon'));
+          const pomp = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('Pompidou'));
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              In Paris, public civic funding enables museums and research centers to operate with artistic autonomy:
+              In Paris, public civic funding and autonomous research centers provide alternatives to corporate-sponsored institutions:
             </p>
             <p class="text-slate-300">
-              - ${{formatInstLink(ptok)}}: Europe's largest contemporary art space, known for bold, experimental shows and open until midnight.<br>
-              - ${{formatInstLink(pomp)}}: Famous for its colorful inside-out architecture by Renzo Piano and Richard Rogers, with an incredible modern art collection.<br>
+              - ${{formatInstLink(ptok)}}: Europe's largest contemporary art space, known for bold experimental exhibitions and open until midnight.<br>
               - ${{formatInstLink(beton)}}: Non-profit contemporary art and research center located in the 13th Arrondissement, free to the public.
+            </p>
+            <p class="text-slate-400 text-[14px]">
+              Note: ${{formatInstLink(pomp)}} is excluded from the map due to a €50M funding pledge from the Saudi state for its major renovation.
             </p>
           `);
           filterByCity('Paris', true, false);
@@ -6331,13 +6336,12 @@ FORMATTING & INTERACTION RULES:
 
           const pTok = ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo'));
           const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
-          const sted = ALL_INSTITUTIONS.find(i => i.name.includes('Stedelijk'));
           appendCuratorMessage(`
             <p class="text-slate-200">
               Most galleries and art spaces are open <strong>Wednesday to Sunday, 11:00–18:00 or 12:00–18:00</strong>. Many close on Mondays and Tuesdays to set up new exhibitions.
             </p>
             <p class="text-slate-300">
-              For late evenings, ${{formatInstLink(pTok)}} in Paris is open until midnight, while ${{formatInstLink(louis)}} and ${{formatInstLink(sted)}} are open late on weekdays. Click any dot on the map to see its exact opening times.
+              For late evenings, ${{formatInstLink(pTok)}} in Paris is open until midnight, while ${{formatInstLink(louis)}} is open late on weekdays. Click any dot on the map to see its exact opening times.
             </p>
           `);
           return;
@@ -6360,15 +6364,15 @@ FORMATTING & INTERACTION RULES:
             return;
           }}
 
-          const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
           const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
           const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
+          const sculp = ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter'));
           appendCuratorMessage(`
             <p class="text-slate-200">
               Every space in Culture Atlas includes simple public transit directions. Many world-famous places are an easy train ride away:
             </p>
             <p class="text-slate-300">
-              Take the Metro-North train from Grand Central right to ${{formatInstLink(dia)}}, take the coastal train from Copenhagen to ${{formatInstLink(louis)}}, or take a train and free park bicycle to ${{formatInstLink(kroll)}} in the Netherlands.
+              Take the coastal train from Copenhagen to ${{formatInstLink(louis)}}, take a train and free park bicycle to ${{formatInstLink(kroll)}} in the Netherlands, or take the subway to ${{formatInstLink(sculp)}} in New York.
             </p>
           `);
           return;
@@ -6391,15 +6395,15 @@ FORMATTING & INTERACTION RULES:
             return;
           }}
 
-          const serp = ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine'));
           const aros = ALL_INSTITUTIONS.find(i => i.name.includes('ARoS'));
-          const mplus = ALL_INSTITUTIONS.find(i => i.name.includes('M+ Museum'));
+          const camden = ALL_INSTITUTIONS.find(i => i.name.includes('Camden'));
+          const ptok = ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo'));
           appendCuratorMessage(`
             <p class="text-slate-200">
               All institutions in Culture Atlas have step-free access, elevators, wheelchairs to borrow, and free admission for companions.
             </p>
             <p class="text-slate-300">
-              Great accessible spaces include ${{formatInstLink(serp)}} in London, ${{formatInstLink(aros)}} in Denmark, and ${{formatInstLink(mplus)}} in Hong Kong.
+              Great accessible spaces include ${{formatInstLink(aros)}} in Denmark, ${{formatInstLink(camden)}} in London, and ${{formatInstLink(ptok)}} in Paris.
             </p>
           `);
           return;
@@ -6454,14 +6458,14 @@ FORMATTING & INTERACTION RULES:
           }}
 
           const aros = ALL_INSTITUTIONS.find(i => i.name.includes('ARoS'));
-          const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
-          const inhotim = ALL_INSTITUTIONS.find(i => i.name.includes('Inhotim'));
+          const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
+          const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Here are three unforgettable art landmarks you can visit:
+              Here are three unforgettable art landmarks with verified clean funding:
             </p>
             <p class="text-slate-300">
-              Olafur Eliasson's colorful rainbow glass skywalk at ${{formatInstLink(aros)}}, Richard Serra's giant steel sculptures at ${{formatInstLink(dia)}}, and 23 art pavilions set inside a Brazilian rainforest at ${{formatInstLink(inhotim)}}.
+              Olafur Eliasson's colorful rainbow glass skywalk at ${{formatInstLink(aros)}}, the 60-acre sculpture park and van Gogh collection at ${{formatInstLink(kroll)}}, and ${{formatInstLink(louis)}} overlooking the sea in Humlebæk.
             </p>
           `);
           return;
@@ -6487,16 +6491,16 @@ FORMATTING & INTERACTION RULES:
 
         // G. Free Admission
         if (q.includes('free') || q.includes('admission') || q.includes('ticket') || q.includes('accessible') || q.includes('no fee')) {{
-          const freeSpaces = ALL_INSTITUTIONS.filter(i => i.admission_policy.includes('Free Public') || i.admission_policy.includes('Always Free'));
+          const freeSpaces = ALL_INSTITUTIONS.filter(i => i.admission_policy.includes('Free Public') || i.admission_policy.includes('Always Free') || (i.admission_fee && i.admission_fee.toLowerCase().includes('free')));
           const f1 = freeSpaces[0] || ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
-          const f2 = freeSpaces[1] || ALL_INSTITUTIONS.find(i => i.name.includes('Whitechapel'));
-          const f3 = freeSpaces[2] || ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine'));
+          const f2 = freeSpaces[1] || ALL_INSTITUTIONS.find(i => i.name.includes('Camden'));
+          const f3 = freeSpaces[2] || ALL_INSTITUTIONS.find(i => i.name.includes('Artists Space'));
           appendCuratorMessage(`
             <p class="text-slate-200">
               Culture Atlas has <strong>${{freeSpaces.length}}</strong> museums and galleries with completely free admission.
             </p>
             <p class="text-slate-300">
-              Top free spaces include ${{formatInstLink(f1)}} in London, ${{formatInstLink(f2)}}, and ${{formatInstLink(f3)}} in Kensington Gardens. None of them charge admission, and none take oil or arms money.
+              Top free spaces include ${{formatInstLink(f1)}} in London, ${{formatInstLink(f2)}}, and ${{formatInstLink(f3)}} in New York. None of them charge admission, and none take oil or arms money.
             </p>
           `);
           return;
@@ -6523,7 +6527,7 @@ FORMATTING & INTERACTION RULES:
         if (q.includes('fossil') || q.includes('defense') || q.includes('oil') || q.includes('bp') || q.includes('shell') || q.includes('baillie') || q.includes('weapons') || q.includes('divest')) {{
           const c1 = ALL_INSTITUTIONS.find(i => i.name.includes('Camden'));
           const c2 = ALL_INSTITUTIONS.find(i => i.name.includes('Whitechapel'));
-          const c3 = ALL_INSTITUTIONS.find(i => i.name.includes('Nottingham Contemporary'));
+          const c3 = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
           appendCuratorMessage(`
             <p class="text-slate-200">
               For years, oil companies like BP and Shell used museum sponsorships to polish their image ('artwashing'). Recently, artists and activists pressured museums to drop those deals.
@@ -6535,20 +6539,26 @@ FORMATTING & INTERACTION RULES:
           return;
         }}
 
-        // J. Excluded Institutions (MoMA, Whitney, Guggenheim)
-        if (q.includes('moma') || q.includes('whitney') || q.includes('guggenheim') || q.includes('why exclude') || q.includes('excluded') || q.includes('kanders')) {{
-          const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
+        // J. Excluded Institutions (MoMA, Whitney, Guggenheim, Pompidou, Dia, Serpentine)
+        if (q.includes('moma') || q.includes('whitney') || q.includes('guggenheim') || q.includes('pompidou') || q.includes('dia beacon') || q.includes('serpentine') || q.includes('inhotim') || q.includes('why exclude') || q.includes('excluded') || q.includes('kanders')) {{
+          const artsp = ALL_INSTITUTIONS.find(i => i.name.includes('Artists Space'));
           const sculp = ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter'));
-          const serp = ALL_INSTITUTIONS.find(i => i.name.includes('Serpentine'));
+          const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
+          const camden = ALL_INSTITUTIONS.find(i => i.name.includes('Camden'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              We exclude museums whose board members have serious conflicts of interest:
+              We strictly exclude institutions with corporate conflicts, fossil fuel sponsorship, weapons manufacturer board seats, or controversial funding ties:
             </p>
             <p class="text-slate-300">
-              MoMA in New York saw protests over trustees invested in weapons companies and private prisons (its former chair Leon Black also resigned over payments to Jeffrey Epstein). The Whitney Museum saw artists pull their work until board member Warren Kanders, who owned a tear gas company, resigned.
+              - <strong>MoMA & The Met (New York):</strong> Defense contractor board links, private prison investments, former chair Leon Black's Jeffrey Epstein payments, and Sackler / Koch naming.<br>
+              - <strong>Centre Pompidou (Paris):</strong> €50M pledge from the Saudi state for renovation works.<br>
+              - <strong>Dia Art Foundation / Dia Beacon:</strong> Founded on Schlumberger oil wealth; carried Sackler-endowed naming until 2019.<br>
+              - <strong>Serpentine Galleries (London):</strong> Historic Sackler naming and ongoing Bloomberg corporate sponsorship.<br>
+              - <strong>Instituto Inhotim (Brazil):</strong> Funded by mining conglomerate Vale, whose 2019 dam disaster killed 270 people.<br>
+              - <strong>Whitney Museum (New York):</strong> Board vice-chair Warren Kanders owned Safariland tear gas manufacturer (resigned after protests).
             </p>
             <p class="text-slate-300">
-              Instead, we feature spaces with clean funding, like ${{formatInstLink(dia)}}, ${{formatInstLink(sculp)}}, and ${{formatInstLink(serp)}}.
+              Instead, Culture Atlas only maps verified ethically independent spaces like ${{formatInstLink(artsp)}}, ${{formatInstLink(sculp)}}, ${{formatInstLink(chis)}}, and ${{formatInstLink(camden)}}.
             </p>
           `);
           return;
@@ -6670,18 +6680,18 @@ FORMATTING & INTERACTION RULES:
         }}
 
         // O. Fallback with helpful conversational guidance
-        const dia = ALL_INSTITUTIONS.find(i => i.name.includes('Dia Beacon'));
         const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
         const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
+        const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
         appendCuratorMessage(`
           <p class="text-slate-200">
-            I can help you find museums and art spaces across <strong>35 countries and 133 cities</strong> that have clean funding.
+            I can help you find verified ethical art spaces across the globe with zero fossil fuel, arms, or predatory corporate underwriting.
           </p>
           <p class="text-slate-300">
-            Ask me about cities like <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Paris">Paris</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a>, how to get to places like ${{formatInstLink(dia)}} or ${{formatInstLink(louis)}}, or questions about art history and exhibitions.
+            Ask me about cities like <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Paris">Paris</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a>, how to get to places like ${{formatInstLink(louis)}} or ${{formatInstLink(kroll)}}, or questions about transparent public governance.
           </p>
           <p class="text-[#93c5fd]">
-            Which city or kind of art are you interested in?
+            Which city or kind of art space are you exploring?
           </p>
         `);      }}, 300);
     }}
