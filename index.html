@@ -901,23 +901,6 @@
     const COUNTRY_CENTROIDS = ALL_COUNTRIES_REGISTRY;
     const PRIORITY_CITIES = ALL_CITIES_REGISTRY;
 
-    // Trans-National Curatorial Flight Corridors & Exchange Routes
-    const CULTURAL_ARCS = [
-      { from: [-0.1278, 51.5074], to: [2.3522, 48.8566], label: 'London – Paris' },
-      { from: [2.3522, 48.8566], to: [13.405, 52.52], label: 'Paris – Berlin' },
-      { from: [13.405, 52.52], to: [4.9041, 52.3676], label: 'Berlin – Amsterdam' },
-      { from: [-0.1278, 51.5074], to: [-74.006, 40.7128], label: 'London – New York' },
-      { from: [-74.006, 40.7128], to: [-87.6298, 41.8781], label: 'New York – Chicago' },
-      { from: [-87.6298, 41.8781], to: [-118.2437, 34.0522], label: 'Chicago – Los Angeles' },
-      { from: [7.5886, 47.5596], to: [13.405, 52.52], label: 'Basel – Berlin' },
-      { from: [139.6917, 35.6895], to: [126.978, 37.5665], label: 'Tokyo – Seoul' },
-      { from: [2.3522, 48.8566], to: [-3.7038, 40.4168], label: 'Paris – Madrid' },
-      { from: [12.5683, 55.6761], to: [18.0686, 59.3293], label: 'Copenhagen – Stockholm' },
-      { from: [-99.1332, 19.4326], to: [-74.006, 40.7128], label: 'Mexico City – New York' },
-      { from: [-0.1278, 51.5074], to: [144.9631, -37.8136], label: 'London – Melbourne' },
-      { from: [18.4241, -33.9249], to: [-0.1278, 51.5074], label: 'Cape Town – London' },
-      { from: [35.5018, 33.8938], to: [2.3522, 48.8566], label: 'Beirut – Paris' }
-    ];
 
     // Curated Cultural Cartography: Real-World Streets, Avenues & Waterways for Key Cities
     const CITY_STREET_NETWORKS = {
@@ -6632,26 +6615,6 @@
       };
     }
 
-    function slerpPoint(lon1, lat1, lon2, lat2, t, r, cx, cy) {
-      const p1 = toRad(lat1), l1 = toRad(lon1);
-      const p2 = toRad(lat2), l2 = toRad(lon2);
-      const x1 = Math.cos(p1) * Math.cos(l1), y1 = Math.cos(p1) * Math.sin(l1), z1 = Math.sin(p1);
-      const x2 = Math.cos(p2) * Math.cos(l2), y2 = Math.cos(p2) * Math.sin(l2), z2 = Math.sin(p2);
-      let dot = x1 * x2 + y1 * y2 + z1 * z2;
-      dot = Math.max(-1, Math.min(1, dot));
-      const omega = Math.acos(dot);
-      if (omega < 0.001) return project(lon1, lat1, r, cx, cy);
-      const sinOmega = Math.sin(omega);
-      const w1 = Math.sin((1 - t) * omega) / sinOmega;
-      const w2 = Math.sin(t * omega) / sinOmega;
-      const x = w1 * x1 + w2 * x2;
-      const y = w1 * y1 + w2 * y2;
-      const z = w1 * z1 + w2 * z2;
-      const lat = Math.asin(Math.max(-1, Math.min(1, z)));
-      const lon = Math.atan2(y, x);
-      const arcAltitude = Math.sin(Math.PI * t) * 0.12 * r;
-      return project(toDeg(lon), toDeg(lat), r + arcAltitude, cx, cy);
-    }
 
     function pointInPolygon(px, py, poly) {
       let inside = false;
@@ -6895,56 +6858,6 @@
               ctx.stroke();
             }
           }
-        }
-
-        // 5. Trans-National Curatorial Flight Corridors & Exchange Routes
-        if (typeof CULTURAL_ARCS !== 'undefined' && CULTURAL_ARCS.length > 0 && r < baseRadius * 6) {
-          const now = Date.now();
-          CULTURAL_ARCS.forEach((arc, arcIdx) => {
-            const steps = 28;
-            const pts = [];
-            for (let s = 0; s <= steps; s++) {
-              const t = s / steps;
-              pts.push(slerpPoint(arc.from[0], arc.from[1], arc.to[0], arc.to[1], t, r, cx, cy));
-            }
-
-            ctx.save();
-            ctx.beginPath();
-            let hasDrawn = false;
-            for (let i = 0; i < pts.length; i++) {
-              const p = pts[i];
-              if (p.front) {
-                if (!hasDrawn) { ctx.moveTo(p.x, p.y); hasDrawn = true; }
-                else ctx.lineTo(p.x, p.y);
-              } else {
-                hasDrawn = false;
-              }
-            }
-            ctx.strokeStyle = 'rgba(96, 165, 250, 0.38)';
-            ctx.lineWidth = 1.2;
-            ctx.setLineDash([4, 4]);
-            ctx.stroke();
-            ctx.setLineDash([]);
-
-            // Animated Flight Pulse Particle
-            const pulseT = ((now / 3200) + arcIdx * 0.17) % 1.0;
-            const pulsePt = slerpPoint(arc.from[0], arc.from[1], arc.to[0], arc.to[1], pulseT, r, cx, cy);
-            if (pulsePt.front) {
-              ctx.beginPath();
-              ctx.arc(pulsePt.x, pulsePt.y, 3.5, 0, Math.PI * 2);
-              ctx.fillStyle = '#60a5fa';
-              ctx.shadowColor = '#93c5fd';
-              ctx.shadowBlur = 6;
-              ctx.fill();
-
-              ctx.beginPath();
-              ctx.arc(pulsePt.x, pulsePt.y, 1.8, 0, Math.PI * 2);
-              ctx.fillStyle = '#ffffff';
-              ctx.fill();
-              ctx.shadowBlur = 0;
-            }
-            ctx.restore();
-          });
         }
 
         // 6. Country Centroid Names
@@ -7332,16 +7245,6 @@
               ctx.lineWidth = Math.max(2, wWidth * 0.35);
               ctx.stroke();
 
-              // Animated wave ripple dashes
-              if (r > baseRadius * 25) {
-                ctx.save();
-                ctx.setLineDash([8, 26]);
-                ctx.lineDashOffset = (Date.now() / 60) % 34;
-                ctx.strokeStyle = 'rgba(56, 189, 248, 0.28)';
-                ctx.lineWidth = Math.max(1.5, wWidth * 0.2);
-                ctx.stroke();
-                ctx.restore();
-              }
 
               // Waterway Name Label
               if (w.name && projPts.length >= 2 && r > baseRadius * 3.5) {
