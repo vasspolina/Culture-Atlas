@@ -590,22 +590,33 @@ def build():
 
       <!-- Interactive City & Country Quick Bar -->
       <div id="globeCityBar" class="absolute bottom-2 left-2.5 sm:left-4 right-20 sm:right-24 z-10 flex items-center overflow-x-auto custom-scrollbar whitespace-nowrap gap-1.5 select-none pointer-events-auto">
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">🌐 All</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">🌐 All Clean</button>
         <span class="text-[#555] shrink-0">·</span>
+        <!-- Regional Fast Jumps -->
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="europe">🏛️ Europe</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="americas">🗽 Americas</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="asiapacific">🌏 Asia-Pacific</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="mena_africa">🌍 MidEast & Africa</button>
+        <span class="text-[#555] shrink-0">·</span>
+        <!-- Curatorial Focus Filters -->
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="free">🎟️ Free Entry</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="artist_run">🎨 Artist-Run</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="sculpture">🌲 Outdoor & Nature</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="research">🔬 Research Institutes</button>
+        <span class="text-[#555] shrink-0">·</span>
+        <!-- Iconic Clean Cultural Cities -->
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Utrecht">🇳🇱 Utrecht</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Amsterdam">🇳🇱 Amsterdam</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Rotterdam">🇳🇱 Rotterdam</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="London">🇬🇧 London</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="New York">🇺🇸 New York</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Paris">🇫🇷 Paris</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Berlin">🇩🇪 Berlin</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Tokyo">🇯🇵 Tokyo</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Milan">🇮🇹 Milan</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Hanoi">🇻🇳 Hanoi</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Adelaide">🇦🇺 Adelaide</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Birzeit">🇵🇸 Birzeit</button>
         <span class="text-[#555] shrink-0">·</span>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Netherlands">Netherlands</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="United Kingdom">United Kingdom</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="United States">United States</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="France">France</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Germany">Germany</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Russia">🇷🇺 Russia</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Belarus">🇧🇾 Belarus</button>
         <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="North Korea">🇰🇵 North Korea</button>
@@ -5430,7 +5441,47 @@ FORMATTING & INTERACTION RULES:
       'sun mu': 'Sun Mu Studio & North Korean Dissident Art Archive',
       'mansudae': 'Mansudae Art Studio',
       'mansudae art studio': 'Mansudae Art Studio',
-      'korean art gallery': 'Korean Art Gallery'
+      'korean art gallery': 'Korean Art Gallery',
+      'viafarini': 'Viafarini',
+      'viafarini docva': 'Viafarini',
+      'san art': 'Sàn Art',
+      'sàn art': 'Sàn Art',
+      'nha san': 'Nha San Collective',
+      'nhà sàn': 'Nha San Collective',
+      'tandanya': 'Tandanya National Aboriginal Cultural Institute',
+      'palestinian museum': 'The Palestinian Museum',
+      'the palestinian museum': 'The Palestinian Museum',
+      'pinault': 'Pinault Collection (Bourse de Commerce)',
+      'pinault collection': 'Pinault Collection (Bourse de Commerce)',
+      'bourse de commerce': 'Pinault Collection (Bourse de Commerce)',
+      'alula': 'AlUla Arts & Cultural Oasis',
+      'al ula': 'AlUla Arts & Cultural Oasis',
+      'nmacc': 'Nita Mukesh Ambani Cultural Centre (NMACC)',
+      'ambani': 'Nita Mukesh Ambani Cultural Centre (NMACC)',
+      'ambani cultural centre': 'Nita Mukesh Ambani Cultural Centre (NMACC)',
+      'ruangrupa': 'Gudskul (ruangrupa / Serrum / Grafis Huru Hara)',
+      'gudskul': 'Gudskul (ruangrupa / Serrum / Grafis Huru Hara)',
+      'raw material': 'Raw Material Company',
+      'raw material company': 'Raw Material Company',
+      'cca lagos': 'CCA Lagos (Centre for Contemporary Art)',
+      'townhouse': 'Townhouse Gallery',
+      'townhouse gallery': 'Townhouse Gallery',
+      'te papa': 'Te Papa',
+      'jumex': 'Museo Jumex',
+      'museo jumex': 'Museo Jumex',
+      'prada': 'Fondazione Prada',
+      'fondazione prada': 'Fondazione Prada',
+      'pirelli': 'Pirelli HangarBicocca',
+      'pirelli hangarbicocca': 'Pirelli HangarBicocca',
+      'hangarbicocca': 'Pirelli HangarBicocca',
+      'cartier': 'Fondation Cartier',
+      'fondation cartier': 'Fondation Cartier',
+      'louis vuitton': 'Fondation Louis Vuitton',
+      'fondation louis vuitton': 'Fondation Louis Vuitton',
+      'astrup fearnley': 'Astrup Fearnley Museet',
+      'astrup fearnley museet': 'Astrup Fearnley Museet',
+      'vincom': 'Vincom Center for Contemporary Art',
+      'vincom center': 'Vincom Center for Contemporary Art'
     }};
 
     function findAnyInstitution(nameOrQuery) {{
@@ -5672,6 +5723,224 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 🏛️ CRITICAL THEORY & ART SCENE SPECIALIST HANDLERS
         // =========================================================================
+
+        // =========================================================================
+        // 🔍 CORPORATE SPONSOR & PATRONAGE AUDIT ENGINE ("Audit Sponsor: [Name]")
+        // =========================================================================
+        const isSponsorAuditQuery = q.includes('sponsor') || q.includes('patronage') || q.includes('donor') || q.includes('who funds') || q.includes('is clean') || q.includes('dirty money') || q.includes('artwashing') || q.includes('who sponsors') || q.includes('conflict of interest');
+        
+        const sponsorMatch = [
+          {{ key: "bp", label: "BP (British Petroleum)", sector: "Fossil Fuel Major", harm: "Over a century of deep-water drilling disasters (Deepwater Horizon), carbon emissions, and greenwashing through cultural sponsorship.", compromised: "Tate (1990–2016), British Museum, National Portrait Gallery", activism: "Liberate Tate staged die-ins and poured oil in the turbine hall; BP or not BP? held mass theatrical occupations until Tate severed ties in 2016.", alternatives: "Chisenhale Gallery, Whitechapel Gallery, Gasworks, Camden Art Centre" }},
+          {{ key: "shell", label: "Shell (Royal Dutch Shell)", sector: "Fossil Fuel Major", harm: "Decades of environmental devastation in the Niger Delta, lobbying against climate regulations, and continuing global fossil gas expansion.", compromised: "Science Museum London, Van Gogh Museum (severed 2018), Mauritshuis", activism: "Culture Unstained and Fossil Free Culture NL led flash mobs at the Van Gogh Museum until Shell was dropped.", alternatives: "BAK Utrecht, Casco Art Institute, Kunstinstituut Melly, De Appel" }},
+          {{ key: "total", label: "TotalEnergies", sector: "Fossil Fuel Major", harm: "East African Crude Oil Pipeline (EACOP) displacing thousands and threatening vital water basins; carbon-intensive Arctic LNG projects.", compromised: "Louvre Paris, Fondation Louis Vuitton partner", activism: "Extinction Rebellion and 350.org campaigns demanding cultural bans on French oil sponsorship.", alternatives: "Palais de Tokyo, Bétonsalon Centre for Contemporary Art" }},
+          {{ key: "novatek", label: "Novatek (Leonid Mikhelson)", sector: "Russian Fossil Gas Oligarchy", harm: "Russia\'s largest independent natural gas producer, intimately tied to the Kremlin apparatus and wartime state infrastructure.", compromised: "GES-2 House of Culture (V-A-C Foundation, Moscow)", activism: "International sanctions and total cultural boycotts following the full-scale invasion of Ukraine in 2022.", alternatives: "DK Rozy (Rosa\'s House of Culture, St. Petersburg), Typography (Krasnodar)" }},
+          {{ key: "safariland", label: "Safariland (Warren B. Kanders)", sector: "Weapons & Riot Control Munitions", harm: "Manufacturing CS tear gas and projectile rounds deployed against peaceful asylum seekers at the US-Mexico border, Standing Rock, and Ferguson.", compromised: "Whitney Museum of American Art (Vice-Chair until 2019)", activism: "Decolonize This Place staged 9 consecutive weeks of protests; 8 artists pulled work from the 2019 Whitney Biennial forcing Kanders resignation.", alternatives: "Artists Space, SculptureCenter, The Kitchen, Swiss Institute" }},
+          {{ key: "lockheed", label: "Lockheed Martin", sector: "Defense & Aerospace Contractor", harm: "World\'s largest weapons contractor; manufacturer of F-35 fighter jets and missile systems supplied to conflict zones globally.", compromised: "Corporate gala underwriting at major US institutions and STEM museums", activism: "Strike MoMA and anti-militarist coalitions targeting corporate board integration.", alternatives: "SculptureCenter, Artists Space" }},
+          {{ key: "sackler", label: "Sackler Family (Purdue Pharma)", sector: "Predatory Pharmaceuticals & Opioids", harm: "Manufactured and aggressively marketed OxyContin, triggering a North American epidemic resulting in 500,000+ overdose deaths.", compromised: "Met, Guggenheim, Louvre, Tate, Serpentine, V&A, Dia Beacon", activism: "Nan Goldin and P.A.I.N. staged historic die-ins throwing prescription pill bottles into museum water basins, forcing worldwide removal of the Sackler name.", alternatives: "Chisenhale Gallery, Gasworks, Camden Art Centre, Artists Space" }},
+          {{ key: "leon black", label: "Leon Black (Apollo Global Management)", sector: "Private Equity & Predatory Capital", harm: "Paid $158 million to convicted sex offender Jeffrey Epstein; founded Apollo Global, historically profiting from defense manufacturing and distressed debt.", compromised: "MoMA Board Chairman until ousted in 2021", activism: "Strike MoMA occupied the museum for 10 weeks demanding the removal of billionaire oligarchs from the trustee board.", alternatives: "Artists Space (Tribeca), SculptureCenter (Long Island City)" }},
+          {{ key: "kering", label: "Kering / François Pinault", sector: "Luxury Goods Conglomerate", harm: "Billionaire family holding (Gucci, Saint Laurent, Balenciaga) using private cultural foundations for brand validation, luxury real estate appreciation, and tax deductions.", compromised: "Pinault Collection (Bourse de Commerce Paris, Palazzo Grassi Venice)", activism: "Public critiques by art historians of starchitect private vaults serving as tax shelters rather than public trusts.", alternatives: "Bétonsalon Paris, Palais de Tokyo" }},
+          {{ key: "lvmh", label: "LVMH (Bernard Arnault)", sector: "Luxury Conglomerate", harm: "World\'s largest luxury conglomerate; using cultural philanthropy for brand hegemony and tax write-offs while commercializing contemporary art.", compromised: "Fondation Louis Vuitton (Paris)", activism: "Protests against billionaire monopoly control of French cultural patronage.", alternatives: "Palais de Tokyo, Bétonsalon" }},
+          {{ key: "prada", label: "Prada Group", sector: "Luxury Fashion", harm: "Operates as a high-end corporate branding mechanism for luxury fashion holdings, converting avant-garde art into brand capital.", compromised: "Fondazione Prada (Milan & Venice)", activism: "Artworker critiques of corporate fashion conglomerates replacing public municipal arts funding in Italy.", alternatives: "Viafarini (Milan), MACRO (Rome)" }},
+          {{ key: "saadiyat", label: "Saadiyat Island / UAE Tourism", sector: "Petro-State Mega-Projects & Kafala Labor", harm: "Documented by Human Rights Watch: exploitation of migrant workers under the abusive kafala system, wage withholding, and passport confiscations.", compromised: "Louvre Abu Dhabi, Guggenheim Abu Dhabi", activism: "Gulf Labor Coalition staged protests at the Guggenheim NYC and led international artist boycotts.", alternatives: "Townhouse Gallery (Cairo), The Palestinian Museum (Birzeit)" }},
+          {{ key: "alula", label: "Royal Commission for AlUla (Saudi PIF)", sector: "Authoritarian Petro-State Artwashing", harm: "Saudi Crown Prince Mohammed bin Salman\'s cultural megaproject used to sanitize human rights atrocities, political executions, and dissident repression.", compromised: "AlUla Arts, Centre Pompidou Saudi partnership (€50M deal)", activism: "International human rights coalitions calling on Western artists and museums to refuse Saudi state sponsorship.", alternatives: "Townhouse Gallery (Cairo), The Palestinian Museum (Birzeit)" }},
+          {{ key: "bloomberg", label: "Bloomberg LP / Michael Bloomberg", sector: "Financial Media & Corporate Philanthropy", harm: "Corporate board entrenchment; corporate patronage used to establish institutional dependence and influence museum digital infrastructures.", compromised: "Te Papa (New Zealand), Serpentine, London arts roster", activism: "Grassroots transparency campaigns highlighting the corporate concentration of museum digital guides.", alternatives: "Enjoy Contemporary Art Space (Wellington), Artists Space (NYC)" }}
+        ].find(s => q.includes(s.key) || (s.key === 'bp' && (q.includes('british petroleum') || q.includes(' bp ') || q.startsWith('bp ') || q.endsWith(' bp'))));
+
+        if (sponsorMatch || (isSponsorAuditQuery && (q.includes('oil') || q.includes('weapons') || q.includes('defense') || q.includes('pharma') || q.includes('luxury')))) {{
+          const s = sponsorMatch || {{
+            label: 'Conflicted Corporate Sponsorship',
+            sector: 'Fossil Fuels, Defense Contractors & Predatory Private Equity',
+            harm: 'Corporate entities invest in museum naming rights, trustee seats, and gala underwriting strictly to purchase social license and distract from ecological destruction, human rights abuses, or labor exploitation.',
+            compromised: 'MoMA, The Met, Tate, Louvre Abu Dhabi, GES-2, Whitney Museum',
+            activism: 'Historic divestment actions by Liberate Tate, Strike MoMA, P.A.I.N. (Nan Goldin), and Decolonize This Place.',
+            alternatives: 'Culture Atlas maps 398+ verified clean, independent non-profit sanctuaries that refuse all corporate artwashing funds.'
+          }};
+
+          appendCuratorMessage(`
+            <div class="border border-rose-900/60 bg-[#1a0a0f] p-3 rounded-xl space-y-2">
+              <div class="flex items-center justify-between border-b border-rose-900/40 pb-1.5">
+                <span class="text-rose-400 font-mono text-[13px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span>🔴</span> <span>Forensic Sponsor Audit: ${{escapeHtml(s.label)}}</span>
+                </span>
+                <span class="text-rose-300 font-mono text-[12px] px-2 py-0.5 rounded bg-rose-950/80 border border-rose-800">Tier B Excluded</span>
+              </div>
+              <p class="text-slate-200 text-[14px]">
+                <strong>Sector & Harm:</strong> ${{escapeHtml(s.sector)}} — ${{escapeHtml(s.harm)}}
+              </p>
+              <p class="text-rose-200/90 text-[13px]">
+                <strong>Compromised Institutions:</strong> ${{escapeHtml(s.compromised)}}
+              </p>
+              <p class="text-slate-300 text-[13px]">
+                <strong>Activist Divestment Victories:</strong> ${{escapeHtml(s.activism)}}
+              </p>
+              <div class="pt-1 text-emerald-400 text-[13px] border-t border-rose-950/60">
+                <strong>Verified Clean Alternatives:</strong> ${{escapeHtml(s.alternatives)}}
+              </div>
+            </div>
+          `, ['🏛️ Kunsthalle vs Museum', '🌿 Fossil & Defense-Free', '🗺️ Curated City Itineraries']);
+          return;
+        }}
+
+        // =========================================================================
+        // 🌾 LUMBUNG & DOCUMENTA FIFTEEN: COLLECTIVE COMMONS & SHARING ECONOMIES
+        // =========================================================================
+        if (q.includes('lumbung') || q.includes('documenta 15') || q.includes('documenta fifteen') || q.includes('ruangrupa') || q.includes('gudskul')) {{
+          const gudskul = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('gudskul'));
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              <strong>Lumbung</strong> is the Indonesian practice of communal resource-pooling, where surplus harvest is stored in a shared barn and allocated for collective well-being:
+            </p>
+            <p class="text-slate-300">
+              - <strong>documenta fifteen (Kassel, 2022):</strong> Curated by Jakarta-based artist collective <strong>ruangrupa</strong>, documenta 15 radically dismantled the Western model of the lone genius curator. Instead of curating individual artworks, ruangrupa invited dozens of grassroots collectives from the Global South (like Más Arte Más Acción, Chimurenga, and Question of Funding) to manage shared budgets (*lumbung pots*) and practice non-hierarchical collaboration.<br>
+              - <strong>The Controversy & Media Backlash:</strong> The exhibition faced intense political attacks and conservative media scrutiny in Germany over political imagery, exposing how Western cultural establishments struggle with decentralized Global South governance.<br>
+              - <strong>The Living Sanctuary in Culture Atlas:</strong> Visit ${{formatInstLink(gudskul)}} in Jakarta, the educational ecosystem formed by ruangrupa, Serrum, and Grafis Huru Hara, where lumbung continues as an everyday practice of mutual aid and collective learning.
+            </p>
+          `, ['🇮🇩 Fly to Jakarta', 'Casco: The Commons', 'Decolonial Practice']);
+          if (gudskul) selectInstitution(gudskul, true);
+          return;
+        }}
+
+        // =========================================================================
+        // 🌿 INDIGENOUS CULTURAL SOVEREIGNTY & REPATRIATION PROTOCOLS
+        // =========================================================================
+        if (q.includes('indigenous') || q.includes('sovereignty') || q.includes('repatriat') || q.includes('maori') || q.includes('aboriginal') || q.includes('first nations') || q.includes('tandanya') || q.includes('nagpra') || q.includes('sacred ancestor') || q.includes('unceded')) {{
+          const tandanya = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('tandanya'));
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              <strong>Indigenous cultural sovereignty</strong> demands that First Nations, Aboriginal, and Māori peoples hold self-determination over their own cultural heritage, sacred knowledge, and artistic narratives:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Beyond Western Extraction:</strong> For centuries, colonial anthropological museums collected sacred ceremonial objects and ancestral remains (*kōiwi tangata*) without consent, locking them in vitrines as 'specimens'.<br>
+              - <strong>Active Repatriation & Care:</strong> Sovereign frameworks require Western museums to unconditionally return looted ancestors and sacred regalia. Bicultural institutions like Te Papa in Aotearoa (New Zealand) operate under *tikanga Māori* (customary law), allowing Indigenous communities to determine conservation and ceremonial display protocols.<br>
+              - <strong>Independent Indigenous Leadership:</strong> In Australia, ${{formatInstLink(tandanya)}} (Adelaide) is Australia's oldest Aboriginal-owned and governed multi-arts center, operating on Kaurna Yarta with zero resource-extraction sponsorship.
+            </p>
+          `, ['🇦🇺 Fly to Adelaide: Tandanya', '⚖️ Benin Bronzes Restitution', 'Decolonial Practice']);
+          if (tandanya) selectInstitution(tandanya, true);
+          return;
+        }}
+
+        // =========================================================================
+        // 📐 FORENSIC ARCHITECTURE & INVESTIGATIVE AESTHETICS
+        // =========================================================================
+        if (q.includes('forensic architecture') || q.includes('weizman') || q.includes('investigative aesthetics') || q.includes('spatial analysis') || q.includes('counter-forensics')) {{
+          const bak = ALL_INSTITUTIONS.find(i => i.id === 'bak-utrecht' || i.name.includes('BAK'));
+          const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
+          const hkw = ALL_INSTITUTIONS.find(i => i.name.includes('Haus der Kulturen'));
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              Founded in 2010 by architect Eyal Weizman at Goldsmiths, University of London, <strong>Forensic Architecture</strong> pioneered the field of <em>investigative aesthetics</em>:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Spatial Cross-Examination of State Violence:</strong> Combining architectural 3D modeling, fluid dynamics, satellite photogrammetry, and audio ballistic analysis, the collective investigates police killings, border violence, offshore detention, and environmental war crimes.<br>
+              - <strong>The Museum as a Counter-Courtroom:</strong> Rather than selling decorative objects to commercial galleries, Forensic Architecture exhibits its findings inside public cultural spaces—such as ${{formatInstLink(hkw)}} in Berlin, ${{formatInstLink(bak)}} in Utrecht, and ${{formatInstLink(chis)}} in London—using the public visibility of the museum to hold states and corporations legally accountable.<br>
+              - <strong>The 2019 Whitney Biennial Action:</strong> Forensic Architecture created *Triple-Chaser*, an investigative video exposing Whitney board vice-chair Warren Kanders' ownership of Safariland (which manufactured tear gas used against asylum seekers), directly precipitating Kanders' resignation.
+            </p>
+          `, ['Whitney & Kanders Audit', '🇳🇱 Dutch Research: BAK', '🏛️ Kunsthalle vs Museum']);
+          return;
+        }}
+
+        // =========================================================================
+        // 🏳️‍🌈 QUEER ARCHIVES & FEMINIST CARE COMMONS
+        // =========================================================================
+        if (q.includes('queer') || q.includes('lgbt') || q.includes('transgender') || q.includes('feminist art') || q.includes('care ethics') || q.includes('federici') || q.includes('pinkwashing')) {{
+          const casco = ALL_INSTITUTIONS.find(i => i.id === 'casco-art-institute');
+          const dkrozy = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('dk-rozy'));
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              <strong>Queer cultural archives and feminist care commons</strong> resist both authoritarian persecution and corporate commercial "pinkwashing":
+            </p>
+            <p class="text-slate-300">
+              - <strong>Refusing Corporate Pinkwashing:</strong> Mega-museums often brand themselves with rainbow logos during Pride while their trustee boards remain invested in private prisons or defense contracts. Independent sanctuaries maintain true grassroots autonomy.<br>
+              - <strong>Feminist Care & Reproductive Labor:</strong> As articulated by Silvia Federici, care work, community kitchens, and mutual aid are the foundations of society. Spaces like ${{formatInstLink(casco)}} in Utrecht make reproductive labor visible through its *Publishing Class*, community assemblies, and communal kitchen.<br>
+              - <strong>Underground Dissident Solidarity:</strong> In repressive regimes, spaces like ${{formatInstLink(dkrozy)}} in St. Petersburg host feminist self-education libraries and anti-patriarchal study circles without state censorship.
+            </p>
+          `, ['Casco: The Commons', 'DK Rozy: St. Petersburg', '💼 W.A.G.E. & Labor']);
+          return;
+        }}
+
+        // =========================================================================
+        // 🌍 MIDDLE EAST & ARAB WORLD: INDEPENDENT SANCTUARIES VS PETRO-STATE ARTWASHING
+        // =========================================================================
+        if (q.includes('middle east') || q.includes('arab') || q.includes('beirut') || q.includes('cairo') || q.includes('palestine') || q.includes('gulf') || q.includes('dubai') || q.includes('abu dhabi') || q.includes('palestinian museum') || q.includes('townhouse')) {{
+          const pal = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('palestinian-museum'));
+          const town = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('townhouse'));
+          const louvreAD = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('Louvre Abu Dhabi'));
+          const alula = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('AlUla'));
+          const qatar = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('Qatar'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              The cultural geography of the Arab world is defined by a sharp divide between <strong>authoritarian petro-state mega-projects</strong> and <strong>heroic independent civil society havens</strong>:
+            </p>
+            <p class="text-slate-300">
+              - <strong>The Petro-State Megaprojects (Strictly Excluded):</strong><br>
+              · ${{formatInstLink(louvreAD)}} (Abu Dhabi): Human Rights Watch documented systemic kafala labor abuses of South Asian construction workers building Saadiyat Island.<br>
+              · ${{formatInstLink(alula)}} (Saudi Arabia): Chaired by Crown Prince Mohammed bin Salman (MBS); uses multi-billion-dollar art tourism to whitewash severe political repression and executions.<br>
+              · ${{formatInstLink(qatar)}} (Doha): State monarchy cultural apparatus under direct royal patronage.
+            </p>
+            <p class="text-slate-300">
+              - <strong>Verified Clean Civil Society Sanctuaries (Mapped in Culture Atlas):</strong><br>
+              · ${{formatInstLink(pal)}} (Birzeit, Palestine): Independent civic trust cascading down terraced olive hills, preserving Palestinian memory, embroidery, and digital oral histories free of political factionalism.<br>
+              · ${{formatInstLink(town)}} (Cairo, Egypt): Downtown Cairo non-profit sanctuary founded in 1998, catalyzing the independent contemporary art movement in Egypt outside state censorship.
+            </p>
+          `, ['🇵🇸 Fly to Palestine: Palestinian Museum', '🇪🇬 Fly to Cairo: Townhouse', '🔴 Audit Saadiyat Island']);
+          if (pal) selectInstitution(pal, true);
+          return;
+        }}
+
+        // =========================================================================
+        // 🇻🇳 VIETNAM: ARTIST-RUN RESISTANCE VS CORPORATE CONGLOMERATES
+        // =========================================================================
+        if (q.includes('vietnam') || q.includes('hanoi') || q.includes('saigon') || q.includes('ho chi minh') || q.includes('san art') || q.includes('nha san') || q.includes('vincom')) {{
+          const sanart = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('san-art'));
+          const nhasan = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('nha-san'));
+          const vincom = EXCLUDED_INSTITUTIONS.find(i => i.id && i.id.includes('vincom'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              In Vietnam, contemporary art operates between <strong>independent artist-initiated collectives</strong> and <strong>private real estate conglomerates</strong>:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Corporate Conglomerate Foundation (Excluded):</strong><br>
+              · ${{formatInstLink(vincom)}} (Hanoi): Fully bankrolled by Vingroup (property, retail, automotive conglomerate), serving as a corporate prestige asset in a commercial shopping complex.
+            </p>
+            <p class="text-slate-300">
+              - <strong>Verified Clean Grassroots Sanctuaries (Mapped in Culture Atlas):</strong><br>
+              · ${{formatInstLink(sanart)}} (Ho Chi Minh City): Vietnam's premier independent artist-run space founded in 2007 by Dinh Q. Lê, Tuan Andrew Nguyen, and Phnam Thao Nguyen. Funded via international non-profit cultural trusts (Prince Claus Fund, Arts Collaboratory), fostering critical curatorial dialogue.<br>
+              · ${{formatInstLink(nhasan)}} (Hanoi): Founded in 1998 as Nha San Studio, it is the historic pioneer of Vietnamese experimental, installation, and performance art, run entirely through artist solidarity.
+            </p>
+          `, ['🇻🇳 Fly to Vietnam', 'Sàn Art Ho Chi Minh', 'Nha San Collective Hanoi']);
+          if (sanart) selectInstitution(sanart, true);
+          return;
+        }}
+
+        // =========================================================================
+        // 🇮🇹 ITALY: PUBLIC COMMONS & ARTIST ARCHIVES VS LUXURY FASHION ARTWASHING
+        // =========================================================================
+        if (q.includes('italy') || q.includes('milan') || q.includes('rome') || q.includes('prada') || q.includes('pirelli') || q.includes('viafarini') || q.includes('macro')) {{
+          const viafarini = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('viafarini'));
+          const macro = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('macro'));
+          const prada = EXCLUDED_INSTITUTIONS.find(i => i.id && i.id.includes('prada'));
+          const pirelli = EXCLUDED_INSTITUTIONS.find(i => i.id && i.id.includes('pirelli'));
+
+          appendCuratorMessage(`
+            <p class="text-slate-200">
+              In Italy, the cultural sphere is contested between <strong>luxury fashion brand foundations</strong> and <strong>authentic artist-run archives and public commons</strong>:
+            </p>
+            <p class="text-slate-300">
+              - <strong>Corporate Brand Prestige Foundations (Excluded):</strong><br>
+              · ${{formatInstLink(prada)}} (Milan): Financed by the Prada fashion group; operates as an elite corporate marketing instrument converting artistic radicalism into commercial prestige.<br>
+              · ${{formatInstLink(pirelli)}} (Milan): 100% funded and governed by the Pirelli tyre multinational.
+            </p>
+            <p class="text-slate-300">
+              - <strong>Verified Clean Independent Sanctuaries (Mapped in Culture Atlas):</strong><br>
+              · ${{formatInstLink(viafarini)}} (Milan): Established in 1991 at the Fabbrica del Vapore. Non-profit artist-run organization preserving the historic DOCVA visual arts documentation archive of over 40,000 artists, operating with zero commercial luxury sponsorship.<br>
+              · ${{formatInstLink(macro)}} (Rome): Public civic contemporary museum with 100% free admission, operating as an open laboratory for independent research.
+            </p>
+          `, ['🇮🇹 Fly to Milan', 'Viafarini DOCVA Archive', 'MACRO Rome']);
+          if (viafarini) selectInstitution(viafarini, true);
+          return;
+        }}
 
         // =========================================================================
         // 🇷🇺 RUSSIA: OLIGARCH ARTWASHING, STATE CENSORSHIP & SAMIZDAT SANCTUARIES
@@ -8478,6 +8747,18 @@ FORMATTING & INTERACTION RULES:
             filterByCity(val, true, true);
           }} else if (type === 'country') {{
             filterByCountry(val, true);
+          }} else if (type === 'category') {{
+            setCategoryFilter(val, true);
+          }} else if (type === 'region') {{
+            if (val === 'europe') {{
+              flyTo(10.0, 50.0, 2.3);
+            }} else if (val === 'americas') {{
+              flyTo(-85.0, 25.0, 2.0);
+            }} else if (val === 'asiapacific') {{
+              flyTo(120.0, 25.0, 2.0);
+            }} else if (val === 'mena_africa') {{
+              flyTo(25.0, 15.0, 2.0);
+            }}
           }}
         }});
       }});
@@ -8488,6 +8769,8 @@ FORMATTING & INTERACTION RULES:
 
     const FILTER_META = {{
       free: {{ icon: '🎟️', label: 'FREE ADMISSION' }},
+      sculpture: {{ icon: '🌲', label: 'OUTDOOR & SCULPTURE' }},
+      research: {{ icon: '🔬', label: 'RESEARCH & COMMONS' }},
       monday: {{ icon: '🕒', label: 'MONDAY OPENINGS' }},
       transit: {{ icon: '🚇', label: 'PUBLIC TRANSIT TIPS' }},
       accessibility: {{ icon: '♿', label: 'UNIVERSAL ACCESSIBILITY' }},
