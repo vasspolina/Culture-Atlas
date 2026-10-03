@@ -72,7 +72,15 @@ def build():
             palette = [greens, teals, blues][idx % 3]
             col = palette[(idx // 3) % len(palette)]
 
-        out_countries.append({'n': name, 'c': col, 'r': polys})
+        min_lon, max_lon = 180.0, -180.0
+        min_lat, max_lat = 90.0, -90.0
+        for p_ring in polys:
+            for pt in p_ring:
+                if pt[0] < min_lon: min_lon = pt[0]
+                if pt[0] > max_lon: max_lon = pt[0]
+                if pt[1] < min_lat: min_lat = pt[1]
+                if pt[1] > max_lat: max_lat = pt[1]
+        out_countries.append({'n': name, 'c': col, 'r': polys, 'b': [round(min_lon, 1), round(max_lon, 1), round(min_lat, 1), round(max_lat, 1)]})
 
     countries_json = json.dumps(out_countries, separators=(',', ':'))
     institutions_raw = open('institutions.json', 'r', encoding='utf-8').read().strip()
@@ -6146,12 +6154,12 @@ def build():
     function getCityTargetRadius(cityName) {{
       const c = (cityName || '').toLowerCase();
       if (c.includes('utrecht') || c.includes('rotterdam') || c.includes('eindhoven') || c.includes('basel') || c.includes('frankfurt')) {{
-        return baseRadius * 8.5;
+        return baseRadius * 90.0;
       }}
       if (c.includes('new york') || c.includes('paris') || c.includes('berlin') || c.includes('amsterdam') || c.includes('london') || c.includes('tokyo')) {{
-        return baseRadius * 8.0;
+        return baseRadius * 110.0;
       }}
-      return baseRadius * 7.5;
+      return baseRadius * 85.0;
     }}
 
 
@@ -6183,7 +6191,9 @@ def build():
     let targetRadius = baseRadius;
 
     function getMinRadius() {{ return baseRadius * 0.75; }}
-    function getMaxRadius() {{ return baseRadius * 15.0; }}
+    function getMaxRadius() {{ 
+      return selectedCityFilter !== 'all' ? baseRadius * 280.0 : baseRadius * 12.0; 
+    }}
     let startRadius = baseRadius;
 
     // Slower Cinematic Motion Physics
@@ -6339,24 +6349,8 @@ def build():
       const cy = height / 2;
       const r = currentRadius;
 
-      const isCityZoom = (selectedCityFilter !== 'all' && r > baseRadius * 2.2) || (r > baseRadius * 3.4);
-
-      // Determine active focused city
+      const isCityZoom = selectedCityFilter !== 'all' && r > baseRadius * 2.2;
       let activeCity = selectedCityFilter !== 'all' ? selectedCityFilter : null;
-      if (!activeCity && isCityZoom) {{
-        let closestDist = Infinity;
-        for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {{
-          const c = ALL_CITIES_REGISTRY[i];
-          const pt = project(c.lon, c.lat, r, cx, cy);
-          if (pt.front) {{
-            const dist = Math.hypot(pt.x - cx, pt.y - cy);
-            if (dist < 380 && dist < closestDist) {{
-              closestDist = dist;
-              activeCity = c.name;
-            }}
-          }}
-        }}
-      }}
 
       // Update Unified Navigation Banner (Country View + City Street View + World View)
       const cityBanner = document.getElementById('cityViewControlBanner');
@@ -6424,8 +6418,13 @@ def build():
         ctx.lineWidth = 1.2;
         ctx.stroke();
 
-        // 3. Graticule with Latitude Parallels and Longitude Meridians
+        // Clip all globe surface features strictly to the spherical limb
         ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.clip();
+
+        // 3. Graticule with Latitude Parallels and Longitude Meridians
         ctx.strokeStyle = '#0e182a';
         ctx.lineWidth = 0.5;
         for (let lat = -60; lat <= 60; lat += 30) {{
@@ -6481,33 +6480,84 @@ def build():
             }}
           }});
         }}
-        ctx.restore();
 
-        // 4. Land Polygons with Continental Shelf Glow
+        // 4. Land Polygons with Anti-Glitch Horizon Edge Clipping
+        const cosRotLat = Math.max(0.15, Math.cos(toRad(rotLat)));
+        const viewAngleSpan = Math.min(1.8, Math.max(0.08, (Math.max(width, height) / r))) * (180 / Math.PI) + 12;
+        const minVisLat = rotLat - viewAngleSpan;
+        const maxVisLat = rotLat + viewAngleSpan;
+        const lonAngleSpan = viewAngleSpan / cosRotLat + 15;
+
         for (let i = 0; i < COUNTRY_POLYS.length; i++) {{
           const country = COUNTRY_POLYS[i];
           const isCActive = selectedCountryFilter !== 'all' && matchC(country.n, selectedCountryFilter);
+
+          // Fast viewport culling at higher zoom levels
+          if (r > baseRadius * 1.6 && country.b) {{
+            if (country.b[3] < minVisLat || country.b[2] > maxVisLat) continue;
+            const cLon = (country.b[0] + country.b[1]) / 2;
+            const dLon = Math.abs((cLon - rotLon + 540) % 360 - 180);
+            if (dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
+          }}
+
           ctx.fillStyle = isCActive ? '#1e3a8a' : country.c;
 
           for (let j = 0; j < country.r.length; j++) {{
             const ring = country.r[j];
             if (!ring || ring.length < 3) continue;
-            ctx.beginPath();
-            let started = false;
+
+            const proj = [];
+            let anyFront = false;
+            let allFront = true;
             for (let k = 0; k < ring.length; k++) {{
               const p = project(ring[k][0], ring[k][1], r, cx, cy);
-              if (p.front) {{
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
+              proj.push(p);
+              if (p.front) anyFront = true;
+              else allFront = false;
             }}
-            if (started) {{
+
+            if (!anyFront) continue;
+
+            if (allFront) {{
+              ctx.beginPath();
+              ctx.moveTo(proj[0].x, proj[0].y);
+              for (let k = 1; k < proj.length; k++) {{
+                ctx.lineTo(proj[k].x, proj[k].y);
+              }}
               ctx.closePath();
               ctx.fill();
-              if (!isCActive && r < baseRadius * 4) {{
-                ctx.strokeStyle = '#091524';
-                ctx.lineWidth = 2.4;
-                ctx.stroke();
+              ctx.strokeStyle = isCActive ? '#60a5fa' : '#050c18';
+              ctx.lineWidth = isCActive ? 2.2 : 0.75;
+              ctx.stroke();
+            }} else {{
+              // Ring crosses horizon: clip edges strictly at the horizon plane, never cross chords
+              ctx.beginPath();
+              let penDown = false;
+              for (let k = 0; k < proj.length; k++) {{
+                const p1 = proj[k];
+                const p2 = proj[(k + 1) % proj.length];
+                if (p1.front && p2.front) {{
+                  if (!penDown) {{ ctx.moveTo(p1.x, p1.y); penDown = true; }}
+                  ctx.lineTo(p2.x, p2.y);
+                }} else if (p1.front && !p2.front) {{
+                  const t = Math.max(0, Math.min(1, p1.z / (p1.z - p2.z)));
+                  let hx = (p1.x - cx) + t * (p2.x - p1.x);
+                  let hy = (cy - p1.y) + t * (p1.y - p2.y);
+                  const d = Math.hypot(hx, hy);
+                  if (d > 0.001) {{ hx *= r / d; hy *= r / d; }}
+                  if (!penDown) {{ ctx.moveTo(p1.x, p1.y); penDown = true; }}
+                  ctx.lineTo(cx + hx, cy - hy);
+                  penDown = false;
+                }} else if (!p1.front && p2.front) {{
+                  const t = Math.max(0, Math.min(1, p1.z / (p1.z - p2.z)));
+                  let hx = (p1.x - cx) + t * (p2.x - p1.x);
+                  let hy = (cy - p1.y) + t * (p1.y - p2.y);
+                  const d = Math.hypot(hx, hy);
+                  if (d > 0.001) {{ hx *= r / d; hy *= r / d; }}
+                  ctx.moveTo(cx + hx, cy - hy);
+                  ctx.lineTo(p2.x, p2.y);
+                  penDown = true;
+                }}
               }}
               ctx.strokeStyle = isCActive ? '#60a5fa' : '#050c18';
               ctx.lineWidth = isCActive ? 2.2 : 0.75;
@@ -6515,6 +6565,7 @@ def build():
             }}
           }}
         }}
+        ctx.restore();
 
         // 6. Country Centroid Names (Smoothly fade out as zoom approaches city/regional level)
         if (r > baseRadius * 0.8 && r < baseRadius * 2.8) {{
@@ -6673,31 +6724,9 @@ def build():
         ctx.fillStyle = '#050a14';
         ctx.fillRect(0, 0, width, height);
 
-        // 2. Continental Landmass & Coastlines
-        for (let i = 0; i < COUNTRY_POLYS.length; i++) {{
-          const country = COUNTRY_POLYS[i];
-          for (let j = 0; j < country.r.length; j++) {{
-            const ring = country.r[j];
-            if (!ring || ring.length < 3) continue;
-            ctx.beginPath();
-            let started = false;
-            for (let k = 0; k < ring.length; k++) {{
-              const p = project(ring[k][0], ring[k][1], r, cx, cy);
-              if (p.front) {{
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
-            }}
-            if (started) {{
-              ctx.closePath();
-              ctx.fillStyle = '#0a121e';
-              ctx.fill();
-              ctx.strokeStyle = '#14253c';
-              ctx.lineWidth = 1.2;
-              ctx.stroke();
-            }}
-          }}
-        }}
+        // 2. Base Landmass Backdrop for Focused City
+        ctx.fillStyle = '#070f1e';
+        ctx.fillRect(0, 0, width, height);
 
         // 3. Subtle Ambient City Focus Spotlight
         const cityCenter = cityData && cityData.center ? cityData.center : [rotLon, rotLat];
@@ -7143,7 +7172,8 @@ def build():
       isFlying = true;
 
       if (targetZoom) {{
-        targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetZoom));
+        const actualZoom = targetZoom < 30 ? baseRadius * targetZoom : targetZoom;
+        targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), actualZoom));
       }}
     }}
 
@@ -11680,19 +11710,46 @@ FORMATTING & INTERACTION RULES:
       document.getElementById('detailDrawer').classList.add('hidden');
     }});
 
-    // Smooth, Gradual Exponential Wheel & Trackpad Zoom
+    // Smooth, Gradual Exponential Wheel & Trackpad Zoom with Cursor Targeting
     canvas.addEventListener('wheel', e => {{
       e.preventDefault();
       isAutoSpinning = false;
+
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      const cx = width / 2;
+      const cy = height / 2;
+
       const delta = e.deltaY * (e.deltaMode === 1 ? 18 : e.deltaMode === 2 ? 260 : 1);
       // Gentle exponential scaling factor bounded per event (approx 1% - 6% gradual change)
       const factor = Math.exp(-delta * 0.0016);
       const clampedFactor = Math.max(0.91, Math.min(1.09, factor));
+
+      // Calculate geographic point under mouse cursor before zooming
+      const geoBefore = unproject(mx, my, currentRadius, cx, cy);
+
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius * clampedFactor));
 
-      if (targetRadius < baseRadius * 2.5 && selectedCityFilter !== 'all') {{
+      // If zooming in and cursor is over the globe, gently bias rotation towards cursor
+      if (clampedFactor > 1.0 && geoBefore && isFinite(geoBefore.lon) && isFinite(geoBefore.lat)) {{
+        let dLon = (geoBefore.lon - rotLon) % 360;
+        if (dLon > 180) dLon -= 360;
+        if (dLon < -180) dLon += 360;
+        const dLat = geoBefore.lat - rotLat;
+        const nudge = Math.min(0.20, (clampedFactor - 1.0) * 1.4);
+        rotLon = (rotLon + dLon * nudge) % 360;
+        rotLat = Math.max(-80, Math.min(80, rotLat + dLat * nudge));
+      }}
+
+      if (targetRadius < baseRadius * 2.2 && selectedCityFilter !== 'all') {{
         selectedCityFilter = 'all';
         applyFilters();
+        if (selectedCountryFilter !== 'all') {{
+          updateGlobeBarForCountry(selectedCountryFilter);
+        }} else {{
+          renderGlobeBarDefault();
+        }}
       }}
       if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {{
         selectedCountryFilter = 'all';
@@ -11707,9 +11764,14 @@ FORMATTING & INTERACTION RULES:
     }});
     document.getElementById('zoomOutBtn')?.addEventListener('click', () => {{
       targetRadius = Math.max(getMinRadius(), targetRadius * 0.77);
-      if (targetRadius < baseRadius * 2.5 && selectedCityFilter !== 'all') {{
+      if (targetRadius < baseRadius * 2.2 && selectedCityFilter !== 'all') {{
         selectedCityFilter = 'all';
         applyFilters();
+        if (selectedCountryFilter !== 'all') {{
+          updateGlobeBarForCountry(selectedCountryFilter);
+        }} else {{
+          renderGlobeBarDefault();
+        }}
       }}
       if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {{
         selectedCountryFilter = 'all';
@@ -11826,8 +11888,9 @@ FORMATTING & INTERACTION RULES:
         lastX = e.clientX;
         lastY = e.clientY;
         const dragSens = (baseRadius / Math.max(baseRadius, currentRadius)) * 0.18;
-        rotLon = (rotLon - dx * dragSens) % 360;
-        rotLat = Math.max(-85, Math.min(85, rotLat + dy * dragSens));
+        const cosLat = Math.max(0.25, Math.cos(toRad(rotLat)));
+        rotLon = (rotLon - (dx * dragSens) / cosLat) % 360;
+        rotLat = Math.max(-82, Math.min(82, rotLat + dy * dragSens));
       }}
     }});
 
