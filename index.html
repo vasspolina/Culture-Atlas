@@ -6062,6 +6062,17 @@
     let hoveredCity = null;
     let hoveredCountry = null;
 
+    // Fixed Procedural Starfield for Cinematic Deep-Space Background
+    const STARFIELD = [];
+    for (let i = 0; i < 120; i++) {
+      STARFIELD.push({
+        x: ((i * 197.3 + 53) % 1000) / 1000,
+        y: ((i * 311.7 + 91) % 1000) / 1000,
+        r: (i % 4 === 0 ? 1.4 : 0.8),
+        a: 0.12 + (i % 5) * 0.06
+      });
+    }
+
     // Canvas & 3D Math Setup with Native Retina / High-DPI Support
     const canvas = document.getElementById('globeCanvas');
     const ctx = canvas.getContext('2d', { alpha: false });
@@ -6235,7 +6246,15 @@
           const ease = easeInOutCubic(flightProgress);
           rotLon = (startRotLon + (targetRotLon - startRotLon) * ease) % 360;
           rotLat = startRotLat + (targetRotLat - startRotLat) * ease;
-          currentRadius = startRadius + (targetRadius - startRadius) * ease;
+          const baseR = startRadius + (targetRadius - startRadius) * ease;
+          // Smooth parabolic orbital arc on long distance flights
+          const dDeg = Math.hypot(targetRotLon - startRotLon, targetRotLat - startRotLat);
+          if (dDeg > 20 && (startRadius > baseRadius * 3 || targetRadius > baseRadius * 3)) {
+            const arcDip = Math.sin(flightProgress * Math.PI) * Math.min(startRadius * 0.35, baseRadius * 2.2);
+            currentRadius = Math.max(baseRadius * 0.85, baseR - arcDip);
+          } else {
+            currentRadius = baseR;
+          }
         }
       } else {
         currentRadius += (targetRadius - currentRadius) * 0.085;
@@ -6289,6 +6308,25 @@
         // =======================================================
         // 🌍 GLOBAL & REGIONAL 3D SPHERE VIEW
         // =======================================================
+
+        // 0. Cinematic Distant Starfield (Fades out smoothly as camera approaches Earth)
+        if (r < baseRadius * 3.2) {
+          const starAlpha = Math.max(0, 1 - (r - baseRadius) / (baseRadius * 2.2));
+          ctx.save();
+          for (let s = 0; s < STARFIELD.length; s++) {
+            const st = STARFIELD[s];
+            const sx = st.x * width;
+            const sy = st.y * height;
+            // Only draw stars outside the main globe disk
+            if (Math.hypot(sx - cx, sy - cy) > r * 0.95) {
+              ctx.beginPath();
+              ctx.arc(sx, sy, st.r, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(226, 232, 240, ${st.a * starAlpha})`;
+              ctx.fill();
+            }
+          }
+          ctx.restore();
+        }
 
         // 1. Outer Atmospheric Limb Glow / Halo
         const limbGrad = ctx.createRadialGradient(cx, cy, r * 0.95, cx, cy, r * 1.09);
@@ -6387,6 +6425,7 @@
         for (let i = 0; i < COUNTRY_POLYS.length; i++) {
           const country = COUNTRY_POLYS[i];
           const isCActive = selectedCountryFilter !== 'all' && matchC(country.n, selectedCountryFilter);
+          const isCHovered = hoveredCountry && matchC(country.n, hoveredCountry);
 
           // Fast viewport culling at higher zoom levels
           if (r > baseRadius * 1.6 && country.b) {
@@ -6396,7 +6435,7 @@
             if (dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
           }
 
-          ctx.fillStyle = isCActive ? '#1e3a8a' : country.c;
+          ctx.fillStyle = isCActive ? '#1e3a8a' : isCHovered ? '#1e293b' : country.c;
 
           for (let j = 0; j < country.r.length; j++) {
             const ring = country.r[j];
@@ -6422,8 +6461,8 @@
               }
               ctx.closePath();
               ctx.fill();
-              ctx.strokeStyle = isCActive ? '#60a5fa' : '#050c18';
-              ctx.lineWidth = isCActive ? 2.2 : 0.75;
+              ctx.strokeStyle = isCActive ? '#60a5fa' : isCHovered ? '#93c5fd' : '#050c18';
+              ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
               ctx.stroke();
             } else {
               // Ring crosses horizon: clip edges strictly at the horizon plane, never cross chords
@@ -6455,8 +6494,8 @@
                   penDown = true;
                 }
               }
-              ctx.strokeStyle = isCActive ? '#60a5fa' : '#050c18';
-              ctx.lineWidth = isCActive ? 2.2 : 0.75;
+              ctx.strokeStyle = isCActive ? '#60a5fa' : isCHovered ? '#93c5fd' : '#050c18';
+              ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
               ctx.stroke();
             }
           }
@@ -6575,11 +6614,22 @@
           const isHov = hoveredInstitution && hoveredInstitution.name === d.inst.name;
 
           if (isSel) {
+            const pTime = (Date.now() % 2200) / 2200;
+            const pRadius = 7 + pTime * 22;
+            const pAlpha = (1 - pTime) * 0.75;
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, pRadius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(96, 165, 250, ${pAlpha})`;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
             ctx.beginPath();
             ctx.arc(d.x, d.y, 7, 0, Math.PI * 2);
             ctx.strokeStyle = '#ffffff';
-            ctx.lineWidth = 1.8;
+            ctx.lineWidth = 2.0;
             ctx.stroke();
+            ctx.restore();
           }
 
           ctx.beginPath();
@@ -6742,6 +6792,18 @@
           const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
 
           ctx.save();
+          // Pulsing radar ring on active institution
+          if (isSel) {
+            const pTime = (Date.now() % 2200) / 2200;
+            const pRadius = 12 + pTime * 28;
+            const pAlpha = (1 - pTime) * 0.70;
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, pRadius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(96, 165, 250, ${pAlpha})`;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+          }
+
           // Halo
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, isSel ? 16 : isHov ? 12 : 8, 0, Math.PI * 2);
@@ -6904,7 +6966,48 @@
             pinY: pt.y
           });
         });
-        
+
+        // Register hitboxes for remaining pins in dense cities so EVERY pin is interactive
+        projectedInsts.forEach(({ inst, pt }) => {
+          const already = cityMuseumHitboxes.some(h => h.inst.name === inst.name);
+          if (!already) {
+            cityMuseumHitboxes.push({
+              inst: inst,
+              x: pt.x - 14,
+              y: pt.y - 14,
+              w: 28,
+              h: 28,
+              pinX: pt.x,
+              pinY: pt.y
+            });
+          }
+        });
+
+        // Tooltip for non-card pins when hovered
+        if (hoveredInstitution) {
+          const hPin = cityMuseumHitboxes.find(h => h.inst.name === hoveredInstitution.name);
+          const isCardExpanded = displayList.some(d => d.inst.name === hoveredInstitution.name);
+          if (hPin && !isCardExpanded) {
+            ctx.save();
+            ctx.font = 'bold 11px "PP Telegraf", "PP Telegraph", sans-serif';
+            const tipText = hoveredInstitution.name;
+            const tw = ctx.measureText(tipText).width;
+            const tbx = hPin.pinX - tw / 2 - 8;
+            const tby = hPin.pinY > 35 ? hPin.pinY - 28 : hPin.pinY + 14;
+            ctx.fillStyle = '#0a101b';
+            ctx.beginPath();
+            ctx.roundRect ? ctx.roundRect(tbx, tby, tw + 16, 22, 5) : ctx.rect(tbx, tby, tw + 16, 22);
+            ctx.fill();
+            ctx.strokeStyle = '#3b82f6';
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(tipText, hPin.pinX, tby + 11);
+            ctx.restore();
+          }
+        }
       }
 
       // Live Cartographic HUD (Scale Bar, Coordinates, Interactive Compass Rose)
