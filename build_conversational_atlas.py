@@ -596,10 +596,20 @@ def build():
       </div>
 
 
-      <!-- Subtle Globe Zoom Controls -->
-      <div class="absolute bottom-2 right-2.5 sm:right-4 z-10 flex items-center gap-1.5">
-        <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#212121]/90 border border-[#2e2e2e] text-[#d4d4d4] hover:text-white flex items-center justify-center transition shadow-sm text-[14px] cursor-pointer" title="Zoom In">+</button>
-        <button id="zoomOutBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#212121]/90 border border-[#2e2e2e] text-[#d4d4d4] hover:text-white flex items-center justify-center transition shadow-sm text-[14px] cursor-pointer" title="Zoom Out">−</button>
+      <!-- Subtle Globe Zoom & Map Controls -->
+      <div class="absolute bottom-2 right-2.5 sm:right-4 z-10 flex items-center gap-1.5 bg-[#18181b]/85 backdrop-blur-md p-1 rounded-2xl border border-[#2e2e2e] shadow-lg">
+        <button id="hudWorldBtn" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Reset World View">
+          <span>World</span>
+        </button>
+        <button id="hudSpinBtn" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Toggle Auto-Spin">
+          <span id="hudSpinText">Spin</span>
+        </button>
+        <button id="hudExpandBtn" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Maximize Map View">
+          <span id="hudExpandText">Expand</span>
+        </button>
+        <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5"></div>
+        <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition text-[15px] cursor-pointer" title="Zoom In">+</button>
+        <button id="zoomOutBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition text-[15px] cursor-pointer" title="Zoom Out">−</button>
       </div>
 
     </div>
@@ -6379,6 +6389,21 @@ def build():
       return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }}
 
+    // Clean High-Speed Rail Corridors Connecting Ethical Sanctuaries
+    const CLEAN_RAIL_CORRIDORS = [
+      {{ name: "Eurostar High-Speed Rail", from: "London", to: "Paris", pts: [[-0.1278, 51.5074], [1.3, 51.1], [1.8, 50.9], [2.3522, 48.8566]] }},
+      {{ name: "Thalys / Eurostar Clean Corridor", from: "Paris", to: "Brussels", pts: [[2.3522, 48.8566], [3.3, 49.8], [4.3517, 50.8503]] }},
+      {{ name: "Benelux Clean Rail", from: "Brussels", to: "Amsterdam", pts: [[4.3517, 50.8503], [4.5, 51.4], [4.4, 51.9], [4.9041, 52.3676]] }},
+      {{ name: "ICE Clean European Corridor", from: "Amsterdam", to: "Berlin", pts: [[4.9041, 52.3676], [7.0, 52.2], [9.7, 52.4], [13.4050, 52.5200]] }},
+      {{ name: "TGV / ICE Rhine-Main Link", from: "Paris", to: "Frankfurt", pts: [[2.3522, 48.8566], [5.0, 49.0], [7.0, 49.2], [8.6821, 50.1109]] }},
+      {{ name: "ICE Sprinter Corridor", from: "Frankfurt", to: "Berlin", pts: [[8.6821, 50.1109], [9.9, 51.0], [11.5, 51.5], [13.4050, 52.5200]] }},
+      {{ name: "Rhine Valley Ecological Line", from: "Frankfurt", to: "Basel", pts: [[8.6821, 50.1109], [8.4, 49.0], [7.8, 48.0], [7.5886, 47.5596]] }},
+      {{ name: "Amtrak Northeast Electric Corridor", from: "Boston", to: "New York", pts: [[-71.0589, 42.3601], [-72.5, 41.5], [-73.9776, 40.7614]] }},
+      {{ name: "Amtrak Acela Electric Corridor", from: "New York", to: "Washington DC", pts: [[-73.9776, 40.7614], [-75.1652, 39.9526], [-77.0369, 38.9072]] }},
+      {{ name: "Tokaido Shinkansen High-Speed Rail", from: "Tokyo", to: "Kyoto", pts: [[139.6917, 35.6895], [138.5, 35.1], [136.9, 35.1], [135.7681, 35.0116]] }}
+    ];
+
+    let cityClusterHitboxes = [];
     let cityBadgeHitboxes = [];
     let visibleDots = [];
     let cityMuseumHitboxes = [];
@@ -6760,8 +6785,59 @@ def build():
           }}
         }});
 
+        // 7.5 Clean High-Speed Rail Corridors between Cultural Capitals
+        if (r > baseRadius * 1.1 && r < baseRadius * 14.0) {{
+          ctx.save();
+          const pulseOffset = (Date.now() * 0.0003) % 1.0;
+          CLEAN_RAIL_CORRIDORS.forEach(corridor => {{
+            let started = false;
+            let anyFront = false;
+            const projectedPts = [];
+            for (let k = 0; k < corridor.pts.length; k++) {{
+              const p = project(corridor.pts[k][0], corridor.pts[k][1], r, cx, cy);
+              projectedPts.push(p);
+              if (p.front) anyFront = true;
+            }}
+            if (!anyFront) return;
+
+            // Draw dashed ecological transit line
+            ctx.beginPath();
+            ctx.setLineDash([4, 4]);
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.38)';
+            ctx.lineWidth = 1.3;
+            for (let k = 0; k < projectedPts.length; k++) {{
+              const p = projectedPts[k];
+              if (p.front) {{
+                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
+                else ctx.lineTo(p.x, p.y);
+              }} else started = false;
+            }}
+            ctx.stroke();
+
+            // Animated clean transit pulse bead traveling the corridor
+            if (projectedPts.length >= 2) {{
+              const segIdx = Math.floor(pulseOffset * (corridor.pts.length - 1));
+              const segT = (pulseOffset * (corridor.pts.length - 1)) - segIdx;
+              const pA = corridor.pts[segIdx];
+              const pB = corridor.pts[segIdx + 1] || pA;
+              const interpLon = pA[0] + (pB[0] - pA[0]) * segT;
+              const interpLat = pA[1] + (pB[1] - pA[1]) * segT;
+              const beadPt = project(interpLon, interpLat, r, cx, cy);
+              if (beadPt.front && beadPt.depth > 0.1) {{
+                ctx.setLineDash([]);
+                ctx.beginPath();
+                ctx.arc(beadPt.x, beadPt.y, 2.2, 0, Math.PI * 2);
+                ctx.fillStyle = '#38bdf8';
+                ctx.fill();
+              }}
+            }}
+          }});
+          ctx.restore();
+        }}
+
         // 8. Render Institution Dots on Global Sphere
         visibleDots = [];
+        cityClusterHitboxes = [];
         filteredList.forEach(inst => {{
           const pt = project(inst.lon, inst.lat, r, cx, cy);
           if (pt.front && pt.depth > 0.05) {{
@@ -11681,6 +11757,17 @@ FORMATTING & INTERACTION RULES:
       applyFilters();
     }});
 
+    searchInput?.addEventListener('keydown', e => {{
+      if (e.key === 'Enter') {{
+        e.preventDefault();
+        if (filteredList.length > 0) {{
+          const target = filteredList[0];
+          selectInstitution(target, true);
+          flyTo(target.lon, target.lat, getCityTargetRadius(target.city));
+        }}
+      }}
+    }});
+
     document.getElementById('clearSearchBtn')?.addEventListener('click', () => {{
       if (searchInput) searchInput.value = '';
       searchQuery = '';
@@ -11996,6 +12083,27 @@ FORMATTING & INTERACTION RULES:
         renderGlobeBarDefault();
       }}
     }}, {{ passive: false }});
+
+    // Additional HUD Quick Controls (World, Auto-Spin, Expand)
+    document.getElementById('hudWorldBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      clearAllFilters();
+      flyTo(-45, 35, baseRadius);
+    }});
+
+    document.getElementById('hudSpinBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      isAutoSpinning = !isAutoSpinning;
+      const spinTxt = document.getElementById('hudSpinText');
+      if (spinTxt) spinTxt.textContent = isAutoSpinning ? 'Pause' : 'Spin';
+    }});
+
+    document.getElementById('hudExpandBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      handleViewExpand();
+      const expTxt = document.getElementById('hudExpandText');
+      if (expTxt) expTxt.textContent = isGlobeExpanded ? 'Split' : 'Expand';
+    }});
 
     document.getElementById('zoomInBtn')?.addEventListener('click', () => {{
       isAutoSpinning = false;
