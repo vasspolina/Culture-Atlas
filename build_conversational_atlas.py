@@ -711,22 +711,6 @@ def build():
           </div>
         </div>
 
-        <!-- Attached Shelf -->
-        <div class="w-full mt-2.5 px-2 flex items-center justify-between text-[14px] text-[#a1a1aa] overflow-x-auto custom-scrollbar whitespace-nowrap gap-3 select-none shrink-0">
-          <div class="flex items-center gap-3">
-            <button class="work-shelf-pill hover:text-white flex items-center gap-1.5 transition cursor-pointer" data-query="Show me all cities mapped in Culture Atlas">
-              <span>📁</span> <span>Choose project</span>
-            </button>
-            <button class="work-shelf-pill hover:text-white flex items-center gap-1.5 transition cursor-pointer" data-query="What are the essential MIT Press books on museums, curating, and institutional critique?">
-              <span>📖</span> <span>Files</span>
-            </button>
-          </div>
-          <div class="flex items-center gap-2 shrink-0">
-            <button id="workOpenCatalogBtn" class="hover:text-white flex items-center gap-1.5 transition text-[14px] text-[#71717a] cursor-pointer">
-              <span>💻</span> <span>Open desktop app</span>
-            </button>
-          </div>
-        </div>
 
         <!-- Suggested Prompts (Visible on new/empty chat) -->
         <div id="workSuggestionsSection" class="w-full transition-all duration-200">
