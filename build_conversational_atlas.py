@@ -6109,500 +6109,38 @@ def build():
 }}
   }};
 
-    // Authentic Multi-Lingual Cultural Cartography Naming Engine
-    function getLocalizedCartoNaming(cityName, countryName, cityInsts) {{
-      const ctry = (countryName || '').toLowerCase();
-      const city = (cityName || '').toLowerCase();
-
-      // Extract real streets from mapped institutions
-      const instStreets = [];
-      if (cityInsts && cityInsts.length > 0) {{
-        cityInsts.forEach(inst => {{
-          if (inst.address) {{
-            const part = inst.address.split(',')[0].trim().replace(/^#?\d+[\w-]*\s+/, '').replace(/\s+#?\d+.*$/, '').trim();
-            if (part.length > 3 && part.length < 32 && !/^\d+$/.test(part)) {{
-              instStreets.push(part);
-            }}
-          }}
-          if (inst.neighborhood && inst.neighborhood.length > 3 && inst.neighborhood.length < 28) {{
-            instStreets.push(inst.neighborhood);
-          }}
-        }});
-      }}
-
-      const isSpanish = ctry.includes('colombia') || ctry.includes('mexico') || ctry.includes('spain') || 
-                        ctry.includes('argentina') || ctry.includes('chile') || ctry.includes('peru') || 
-                        ctry.includes('costa rica') || ctry.includes('cuba') || ctry.includes('puerto rico') ||
-                        ctry.includes('uruguay') || ctry.includes('venezuela') || ctry.includes('ecuador');
-
-      const isPortuguese = ctry.includes('brazil') || ctry.includes('portugal') || ctry.includes('brasil');
-
-      const isFrench = ctry.includes('france') || ctry.includes('belgium') || ctry.includes('senegal') || 
-                       ctry.includes('morocco') || ctry.includes('tunisia') || ctry.includes('algeria') ||
-                       ctry.includes('lebanon') || ctry.includes('ivory coast') || ctry.includes('cameroon');
-
-      const isGerman = ctry.includes('germany') || ctry.includes('austria') || ctry.includes('switzerland') || ctry.includes('deutschland');
-
-      const isItalian = ctry.includes('italy') || ctry.includes('italia');
-
-      const isDutch = ctry.includes('netherlands') || ctry.includes('nederland') || ctry.includes('holland');
-
-      if (isSpanish) {{
-        return {{
-          lang: 'es',
-          majorAvenues: [
-            instStreets[0] || 'Avenida Central',
-            instStreets[1] || 'Carrera de las Artes',
-            'Paseo de la Cultura',
-            'Avenida de la Libertad',
-            'Bulevar Bolívar',
-            'Avenida de las Américas'
-          ],
-          secondaryStreets: [
-            'Calle Real', 'Calle del Sol', 'Calle Nueva', 'Calle de la Paz',
-            'Calle Bolívar', 'Calle San Juan', 'Calle de las Flores', 'Callejón del Arte',
-            'Calle Mayor', 'Calle 10', 'Calle 24', 'Calle 45', 'Carrera 15'
-          ],
-          highwayName: 'Autopista Metropolitana',
-          riverPrefix: 'Río ',
-          parkSuffix: 'Plaza Mayor',
-          parkNames: ['Plaza de las Esculturas', 'Parque de la Memoria', 'Parque Botánico', 'Plaza Cívica'],
-          transitPrefix: 'Metro Línea ',
-          transitStations: ['Estación Central', 'Estación Bellas Artes', 'Estación Plaza Mayor', 'Estación Universidad'],
-          districts: ['CENTRO HISTÓRICO', 'DISTRITO CULTURAL', 'BARRIO DE LAS ARTES', 'ZONA CÍVICA']
-        }};
-      }}
-
-      if (isPortuguese) {{
-        return {{
-          lang: 'pt',
-          majorAvenues: [
-            instStreets[0] || 'Avenida Central',
-            instStreets[1] || 'Avenida Paulista',
-            'Avenida das Artes',
-            'Avenida da Liberdade',
-            'Alameda dos Museus'
-          ],
-          secondaryStreets: [
-            'Rua Augusta', 'Rua das Flores', 'Rua Direita', 'Rua da Paz',
-            'Rua Quinze de Novembro', 'Rua Oscar Freire', 'Rua do Comércio', 'Rua das Artes'
-          ],
-          highwayName: 'Rodovia Metropolitana',
-          riverPrefix: 'Rio ',
-          parkSuffix: 'Parque Central',
-          parkNames: ['Parque das Esculturas', 'Parque Ibirapuera', 'Jardim Botânico', 'Praça da Sé'],
-          transitPrefix: 'Metrô Linha ',
-          transitStations: ['Estação Central', 'Estação Trianon-Masp', 'Estação República', 'Estação Luz'],
-          districts: ['CENTRO HISTÓRICO', 'DISTRITO DAS ARTES', 'ZONA SUL', 'BAIRRO CULTURAL']
-        }};
-      }}
-
-      if (isFrench) {{
-        return {{
-          lang: 'fr',
-          majorAvenues: [
-            instStreets[0] || 'Boulevard des Arts',
-            instStreets[1] || 'Avenue Centrale',
-            'Quai de la Culture',
-            'Cours de la République',
-            'Boulevard Victor Hugo'
-          ],
-          secondaryStreets: [
-            'Rue de la Paix', 'Rue des Musées', "Rue de l'Université", 'Rue Bonaparte',
-            'Rue de Bretagne', 'Rue Saint-Denis', 'Rue des Archives', 'Rue de Rivoli'
-          ],
-          highwayName: 'Boulevard Périphérique',
-          riverPrefix: 'La ',
-          parkSuffix: 'Jardin des Plantes',
-          parkNames: ['Jardin des Tuileries', 'Parc des Arts', 'Place Centrale', 'Square des Sculptures'],
-          transitPrefix: 'Métro Ligne ',
-          transitStations: ['Gare Centrale', 'Station Musée', 'Station Arts et Métiers', 'Place de la République'],
-          districts: ['QUARTIER DES ARTS', 'CENTRE HISTORIQUE', 'RIVE GAUCHE', 'LE MARAIS']
-        }};
-      }}
-
-      if (isGerman) {{
-        return {{
-          lang: 'de',
-          majorAvenues: [
-            instStreets[0] || 'Kulturring',
-            instStreets[1] || 'Museumsstraße',
-            'Kastanienallee',
-            'Hauptstraße',
-            'Friedrichstraße'
-          ],
-          secondaryStreets: [
-            'Goethestraße', 'Schillerstraße', 'Kirchgasse', 'Brunnenstraße',
-            'Poststraße', 'Lindenstraße', 'Museumsweg', 'Kunstallee'
-          ],
-          highwayName: 'Stadtautobahn',
-          riverPrefix: '',
-          riverSuffix: 'er Fluss',
-          parkSuffix: 'Stadtpark',
-          parkNames: ['Museumspark', 'Lustgarten', 'Schlosspark', 'Bürgerpark'],
-          transitPrefix: 'U-Bahn U',
-          transitStations: ['Hauptbahnhof', 'Museumsinsel', 'Kulturforum', 'Stadtmitte'],
-          districts: ['KULTURVIERTEL', 'ALTSTADT', 'MUSEUMSQUARTIER', 'KUNSTAREAL']
-        }};
-      }}
-
-      if (isItalian) {{
-        return {{
-          lang: 'it',
-          majorAvenues: [
-            instStreets[0] || 'Corso Vittorio',
-            instStreets[1] || 'Viale delle Belle Arti',
-            'Via Roma',
-            'Corso Garibaldi',
-            'Lungotevere'
-          ],
-          secondaryStreets: [
-            'Via Dante', 'Via dei Mille', 'Via della Spiga', 'Via Ripetta',
-            'Via dei Condotti', 'Via Giulia', "Vicolo dell'Arte", 'Via Mercato'
-          ],
-          highwayName: 'Tangenziale Est-Ovest',
-          riverPrefix: 'Fiume ',
-          parkSuffix: 'Giardini Pubblici',
-          parkNames: ['Villa Borghese', 'Parco delle Sculture', 'Piazza Maggiore', 'Giardino delle Arti'],
-          transitPrefix: 'Metro Linea ',
-          transitStations: ['Stazione Centrale', 'Fermata Musei', 'Piazza del Popolo', 'Spagna'],
-          districts: ['CENTRO STORICO', "QUARTIERE DELL'ARTE", 'ZONA NAVIGLI', 'BORGO ANTICO']
-        }};
-      }}
-
-      if (isDutch) {{
-        return {{
-          lang: 'nl',
-          majorAvenues: [
-            instStreets[0] || 'Museumplein',
-            instStreets[1] || 'Singel',
-            'Weteringschans',
-            'Stadhouderskade',
-            'Stationsweg'
-          ],
-          secondaryStreets: [
-            'Herengracht', 'Keizersgracht', 'Prinsengracht', 'Kerkstraat',
-            'Nieuwstraat', 'Spuistraat', 'Rozengracht', 'Damrak'
-          ],
-          highwayName: 'Ringweg A10',
-          riverPrefix: '',
-          riverSuffix: 'se Gracht',
-          parkSuffix: 'Stadspark',
-          parkNames: ['Museumtuin', 'Vondelpark', 'Wilhelminapark', 'Noorderpark'],
-          transitPrefix: 'Tramlijn ',
-          transitStations: ['Centraal Station', 'Museumplein Halte', 'Waterlooplein', 'Rokin'],
-          districts: ['MUSEUMKWARTIER', 'HISTORISCH CENTRUM', 'GRACHTENGORDEL', 'DE PIJP']
-        }};
-      }}
-
-      // Default: English / International
-      return {{
-        lang: 'en',
-        majorAvenues: [
-          instStreets[0] || (cityName + ' Cultural Blvd'),
-          instStreets[1] || 'Central Avenue',
-          'Grand Parkway',
-          'Museum Way',
-          'Civic Corridor',
-          'Broadway'
-        ],
-        secondaryStreets: [
-          'Gallery Way', 'Arts Lane', 'Market Street', 'High Street',
-          'Broad Street', 'Church Road', 'Beacon Street', 'Station Way',
-          'Union Street', 'Crown Passage', 'Mill Street', 'Park Row'
-        ],
-        highwayName: cityName + ' Metropolitan Expressway',
-        riverPrefix: '',
-        riverSuffix: ' River',
-        parkSuffix: 'Civic Commons',
-        parkNames: ['Sculpture Garden', 'Metropolitan Park', 'Botanical Commons', 'Arts Plaza'],
-        transitPrefix: 'Metro Line ',
-        transitStations: ['Central Station', 'Museum Quarter', 'Civic Center', 'Arts District'],
-        districts: ['CULTURAL DISTRICT', 'HISTORIC CORE', 'ARTS PRECINCT', 'DOWNTOWN CIVIC AXIS']
-      }};
-    }}
-
-    // Viewport-Filling Metropolitan Cartography Generator for Any City Worldwide
-    function generateProceduralCityStreets(cityName, centerLon, centerLat, cityInsts) {{
-      let countryName = '';
-      const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
-      if (cityMeta && cityMeta.country) countryName = cityMeta.country;
-      else if (cityInsts && cityInsts.length > 0 && cityInsts[0].country) countryName = cityInsts[0].country;
-
-      const naming = getLocalizedCartoNaming(cityName, countryName, cityInsts);
-
-      // Broad metropolitan bounding box: centerLon +/- 0.18, centerLat +/- 0.14 (~40 km)
-      let minLon = centerLon - 0.18, maxLon = centerLon + 0.18;
-      let minLat = centerLat - 0.14, maxLat = centerLat + 0.14;
-
-      if (cityInsts && cityInsts.length > 0) {{
-        cityInsts.forEach(i => {{
-          if (i.lon < minLon + 0.04) minLon = i.lon - 0.08;
-          if (i.lon > maxLon - 0.04) maxLon = i.lon + 0.08;
-          if (i.lat < minLat + 0.03) minLat = i.lat - 0.06;
-          if (i.lat > maxLat - 0.03) maxLat = i.lat + 0.06;
-        }});
-      }}
-
-      const dLon = maxLon - minLon;
-      const dLat = maxLat - minLat;
-
-      const major = [];
-      const secondary = [];
-      const highways = [];
-      const parks = [];
-      const waterways = [];
-      const bridges = [];
-
-      // 1. Regional Arterials (Crossing the metropolitan extent)
-      highways.push({{
-        name: naming.highwayName,
-        pts: [
-          [minLon, centerLat - dLat * 0.35],
-          [centerLon - dLon * 0.25, centerLat - dLat * 0.15],
-          [centerLon + dLon * 0.25, centerLat + dLat * 0.15],
-          [maxLon, centerLat + dLat * 0.35]
-        ]
-      }});
-
-      // 2. Primary Arterial Avenues (Main Cross & Diagonals with localized names)
-      const av1 = naming.majorAvenues[0] || (cityName + ' Central Avenue');
-      const av2 = naming.majorAvenues[1] || (cityName + ' Boulevard');
-      const av3 = naming.majorAvenues[2] || 'Avenida de la Cultura';
-      const av4 = naming.majorAvenues[3] || 'Paseo Principal';
-
-      major.push({{
-        name: av1,
-        pts: [[minLon, centerLat], [maxLon, centerLat]]
-      }});
-      major.push({{
-        name: av2,
-        pts: [[centerLon, minLat], [centerLon, maxLat]]
-      }});
-      major.push({{
-        name: av3,
-        pts: [[minLon + dLon * 0.08, minLat + dLat * 0.12], [maxLon - dLon * 0.08, maxLat - dLat * 0.12]]
-      }});
-      major.push({{
-        name: av4,
-        pts: [[minLon + dLon * 0.08, maxLat - dLat * 0.12], [maxLon - dLon * 0.08, minLat + dLat * 0.12]]
-      }});
-
-      // 3. Grid of Secondary Avenues & Streets
-      const secNames = naming.secondaryStreets;
-      const numSec = 10;
-      for (let s = 1; s <= numSec; s++) {{
-        const f = s / (numSec + 1);
-        const y = minLat + dLat * f;
-        if (Math.abs(y - centerLat) > 0.005) {{
-          const sName = secNames[(s * 2) % secNames.length] || ('Calle ' + (s * 4));
-          secondary.push({{
-            name: sName,
-            pts: [[minLon, y], [maxLon, y]]
-          }});
-        }}
-      }}
-      for (let s = 1; s <= numSec; s++) {{
-        const f = s / (numSec + 1);
-        const x = minLon + dLon * f;
-        if (Math.abs(x - centerLon) > 0.006) {{
-          const sName = secNames[(s * 2 + 1) % secNames.length] || ('Carrera ' + (s * 3));
-          secondary.push({{
-            name: sName,
-            pts: [[x, minLat], [x, maxLat]]
-          }});
-        }}
-      }}
-
-      // 4. Dedicated Streets directly through each mapped institution
-      if (cityInsts && cityInsts.length > 0) {{
-        cityInsts.forEach((inst, idx) => {{
-          let sName = '';
-          if (inst.address) {{
-            const p = inst.address.split(',')[0].trim().replace(/^#?\d+[\w-]*\s+/, '').replace(/\s+#?\d+.*$/, '').trim();
-            if (p.length > 3 && p.length < 28) sName = p;
-          }}
-          if (!sName && inst.neighborhood) sName = inst.neighborhood;
-          if (!sName) sName = naming.secondaryStreets[idx % naming.secondaryStreets.length];
-
-          secondary.push({{
-            name: sName,
-            pts: [[inst.lon - 0.025, inst.lat], [inst.lon + 0.025, inst.lat]]
-          }});
-          secondary.push({{
-            name: '',
-            pts: [[inst.lon, inst.lat - 0.018], [inst.lon, inst.lat + 0.018]]
-          }});
-
-          // Civic Plaza / Botanical Commons around first 4 institutions
-          if (idx < 4) {{
-            const pSize = 0.006;
-            const pkName = naming.parkNames[idx % naming.parkNames.length] || (inst.name.split(' ')[0] + ' Commons');
-            parks.push({{
-              name: pkName,
-              pts: [
-                [inst.lon - pSize, inst.lat - pSize * 0.7],
-                [inst.lon + pSize, inst.lat - pSize * 0.7],
-                [inst.lon + pSize, inst.lat + pSize * 0.7],
-                [inst.lon - pSize, inst.lat + pSize * 0.7]
-              ]
-            }});
-          }}
-        }});
-      }}
-
-      // 5. Scenic River / Waterway curving across city
-      const riverName = naming.riverPrefix ? (naming.riverPrefix + cityName) : (cityName + (naming.riverSuffix || ' River'));
-      const riverBaseY = centerLat - dLat * 0.12;
-      waterways.push({{
-        name: riverName,
-        width: 24,
-        pts: [
-          [minLon, riverBaseY + dLat * 0.20],
-          [centerLon - dLon * 0.28, riverBaseY + dLat * 0.08],
-          [centerLon, riverBaseY],
-          [centerLon + dLon * 0.30, riverBaseY - dLat * 0.08],
-          [maxLon, riverBaseY - dLat * 0.18]
-        ]
-      }});
-
-      // Bridges where major avenues cross the river
-      bridges.push({{
-        pts: [[centerLon, riverBaseY - 0.004], [centerLon, riverBaseY + 0.004]]
-      }});
-      bridges.push({{
-        pts: [[centerLon - dLon * 0.28, riverBaseY + dLat * 0.08 - 0.004], [centerLon - dLon * 0.28, riverBaseY + dLat * 0.08 + 0.004]]
-      }});
-      bridges.push({{
-        pts: [[centerLon + dLon * 0.30, riverBaseY - dLat * 0.08 - 0.004], [centerLon + dLon * 0.30, riverBaseY - dLat * 0.08 + 0.004]]
-      }});
-
-      // 6. Transit Network
-      const transitLines = [
-        {{
-          name: naming.transitPrefix + '1',
-          color: '#0ea5e9',
-          pts: [
-            [minLon, centerLat - dLat * 0.06],
-            [centerLon - dLon * 0.20, centerLat - dLat * 0.03],
-            [centerLon, centerLat],
-            [centerLon + dLon * 0.20, centerLat + dLat * 0.05],
-            [maxLon, centerLat + dLat * 0.10]
-          ]
-        }},
-        {{
-          name: naming.transitPrefix + '2',
-          color: '#ec4899',
-          pts: [
-            [centerLon - dLon * 0.10, minLat],
-            [centerLon - dLon * 0.04, centerLat - dLat * 0.15],
-            [centerLon, centerLat],
-            [centerLon + dLon * 0.06, centerLat + dLat * 0.18],
-            [centerLon + dLon * 0.12, maxLat]
-          ]
-        }}
-      ];
-
-      const transitStations = [
-        {{ name: naming.transitStations[0] || 'Central Station', lon: centerLon, lat: centerLat, color: '#0ea5e9' }},
-        {{ name: naming.transitStations[1] || 'Bellas Artes', lon: centerLon + dLon * 0.20, lat: centerLat + dLat * 0.05, color: '#0ea5e9' }},
-        {{ name: naming.transitStations[2] || 'Plaza Mayor', lon: centerLon - dLon * 0.20, lat: centerLat - dLat * 0.03, color: '#0ea5e9' }},
-        {{ name: naming.transitStations[3] || 'Universidad', lon: centerLon + dLon * 0.06, lat: centerLat + dLat * 0.18, color: '#ec4899' }}
-      ];
-
-      // 7. Cultural Districts
-      const districts = naming.districts.map((dName, dIdx) => {{
-        const angle = (dIdx / naming.districts.length) * Math.PI * 2;
-        return {{
-          name: dName,
-          lon: centerLon + Math.cos(angle) * dLon * 0.16,
-          lat: centerLat + Math.sin(angle) * dLat * 0.12
-        }};
-      }});
-
-      return {{
-        center: [centerLon, centerLat],
-        waterways: waterways,
-        parks: parks,
-        bridges: bridges,
-        highways: highways,
-        major_streets: major,
-        secondary_streets: secondary,
-        transit_lines: transitLines,
-        transit_stations: transitStations,
-        districts: districts
-      }};
-    }}
-
-    // Universal Enrichment: Augments ANY City (Curated or Procedural)
-    function enrichCityData(cityData, cityName, centerLon, centerLat, cityInsts) {{
-      if (!cityData) return null;
-      if (cityData._enriched) return cityData;
-      cityData._enriched = true;
-
-      let countryName = '';
-      const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
-      if (cityMeta && cityMeta.country) countryName = cityMeta.country;
-      else if (cityInsts && cityInsts.length > 0 && cityInsts[0].country) countryName = cityInsts[0].country;
-
-      const naming = getLocalizedCartoNaming(cityName, countryName, cityInsts);
-
-      // Pre-compute bounding box for parks to assist dynamic parcel rendering
-      if (cityData.parks) {{
-        cityData.parks.forEach(p => {{
-          let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-          p.pts.forEach(pt => {{
-            if (pt[0] < minX) minX = pt[0];
-            if (pt[0] > maxX) maxX = pt[0];
-            if (pt[1] < minY) minY = pt[1];
-            if (pt[1] > maxY) maxY = pt[1];
-          }});
-          p.minLon = minX; p.maxLon = maxX;
-          p.minLat = minY; p.maxLat = maxY;
-        }});
-      }}
-
-      // Cultural District Watermarks if not provided
-      if (!cityData.districts) {{
-        cityData.districts = naming.districts.map((dName, dIdx) => {{
-          const angle = (dIdx / naming.districts.length) * Math.PI * 2;
-          return {{
-            name: dName,
-            lon: centerLon + Math.cos(angle) * 0.035,
-            lat: centerLat + Math.sin(angle) * 0.025
-          }};
-        }});
-      }}
-
-      return cityData;
-    }}
-
+    // Clean Metropolitan Network Lookup (Curated cities only, zero synthetic noise)
     function getCityStreetData(cityName) {{
       if (!cityName) return null;
       const key = cityName.toLowerCase().trim();
       const normKey = key.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
       const pCty = PRIORITY_CITIES.find(c => matchC(c.name, cityName));
+      const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
       let centerLon = pCty ? pCty.lon : 0;
       let centerLat = pCty ? pCty.lat : 0;
       if (!pCty && cityInsts.length > 0) {{
         centerLon = cityInsts[0].lon;
         centerLat = cityInsts[0].lat;
       }}
-      
-      let data = null;
-      if (CITY_STREET_NETWORKS[key] || CITY_STREET_NETWORKS[normKey]) {{
-        data = CITY_STREET_NETWORKS[key] || CITY_STREET_NETWORKS[normKey];
-        if (!centerLon && data.center) {{
-          centerLon = data.center[0];
-          centerLat = data.center[1];
-        }}
-      }} else if (centerLon !== 0 || centerLat !== 0) {{
-        data = generateProceduralCityStreets(cityName, centerLon, centerLat, cityInsts);
+
+      const curated = CITY_STREET_NETWORKS[key] || CITY_STREET_NETWORKS[normKey];
+      if (curated) {{
+        return {{
+          center: curated.center || [centerLon, centerLat],
+          waterways: curated.waterways || [],
+          parks: curated.parks || [],
+          major_streets: curated.major_streets || [],
+          secondary_streets: curated.secondary_streets || []
+        }};
       }}
 
-      if (!data) return null;
-      return enrichCityData(data, cityName, centerLon, centerLat, cityInsts);
+      return {{
+        center: [centerLon, centerLat],
+        waterways: [],
+        parks: [],
+        major_streets: [],
+        secondary_streets: []
+      }};
     }}
 
     function getCityTargetRadius(cityName) {{
@@ -6832,7 +6370,7 @@ def build():
           const cityCountry = cityMeta ? cityMeta.country : lastSelectedCountry;
           if (badgeIcon) badgeIcon.textContent = '';
           if (cityTitleEl) {{
-            cityTitleEl.textContent = `${{activeCity.toUpperCase()}} · ${{cityMatches.length}} CLEAN SPACES · STREET VIEW`;
+            cityTitleEl.textContent = `${{activeCity.toUpperCase()}} · ${{cityMatches.length}} CULTURAL SPACES`;
           }}
           if (backCountryBtn && cityCountry) {{
             backCountryBtn.classList.remove('hidden');
@@ -7119,16 +6657,15 @@ def build():
       }} else {{
         // =======================================================
         // =======================================================
-        // 🗺️ DEEP ZOOM CITY VIEW: URBAN ARCHITECTURE & CULTURAL CARTOGRAPHY
+        // 🗺️ DEEP ZOOM CITY VIEW: PRISTINE ARCHITECTURAL CARTOGRAPHY
         // =======================================================
-        const streetAlpha = Math.min(1.0, Math.max(0, (r - baseRadius * 2.6) / (baseRadius * 1.4)));
         const cityData = getCityStreetData(activeCity);
 
         // 1. Regional Ocean & Water Surface Background
         ctx.fillStyle = '#050a14';
         ctx.fillRect(0, 0, width, height);
 
-        // 2. Continental Landmass & Coastlines (Preserving real geographic landscape continuity)
+        // 2. Continental Landmass & Coastlines
         for (let i = 0; i < COUNTRY_POLYS.length; i++) {{
           const country = COUNTRY_POLYS[i];
           for (let j = 0; j < country.r.length; j++) {{
@@ -7154,665 +6691,267 @@ def build():
           }}
         }}
 
-        // 3. Dynamic Visible Viewport Calculation (Lon / Lat bounds covering 100% of screen)
-        const cosLat = Math.max(0.1, Math.cos(toRad(rotLat)));
-        const degPerPxX = (180 / Math.PI) / (r * cosLat);
-        const degPerPxY = (180 / Math.PI) / r;
-
-        const padX = 140 * degPerPxX;
-        const padY = 140 * degPerPxY;
-        const viewMinLon = rotLon - (width * 0.5) * degPerPxX - padX;
-        const viewMaxLon = rotLon + (width * 0.5) * degPerPxX + padX;
-        const viewMinLat = rotLat - (height * 0.5) * degPerPxY - padY;
-        const viewMaxLat = rotLat + (height * 0.5) * degPerPxY + padY;
-
-        // 4. Cadastral Urban Building Fabric (Tiled Across Entire Visible Canvas)
-        ctx.save();
-        ctx.globalAlpha = streetAlpha * 0.95;
-        const targetBlockPx = Math.max(38, Math.min(75, 52 * (r / (baseRadius * 500))));
-        const stepLon = targetBlockPx * degPerPxX;
-        const stepLat = targetBlockPx * degPerPxY;
-        const startLon = Math.floor(viewMinLon / stepLon) * stepLon;
-        const startLat = Math.floor(viewMinLat / stepLat) * stepLat;
-
-        const parkList = cityData && cityData.parks ? cityData.parks : [];
-
-        ctx.fillStyle = '#0d1626';
-        ctx.strokeStyle = '#152238';
-        ctx.lineWidth = 0.8;
-
-        for (let bLon = startLon; bLon < viewMaxLon; bLon += stepLon) {{
-          for (let bLat = startLat; bLat < viewMaxLat; bLat += stepLat) {{
-            let inPark = false;
-            for (let pk = 0; pk < parkList.length; pk++) {{
-              const pb = parkList[pk];
-              if (pb.minLon !== undefined) {{
-                if (bLon + stepLon > pb.minLon && bLon < pb.maxLon && bLat + stepLat > pb.minLat && bLat < pb.maxLat) {{
-                  inPark = true; break;
-                }}
-              }}
-            }}
-            if (inPark) continue;
-
-            const colIdx = Math.round(bLon / stepLon);
-            const rowIdx = Math.round(bLat / stepLat);
-            const splitH = (colIdx + rowIdx) % 2 === 0;
-
-            const p1MinLon = bLon + stepLon * 0.14;
-            const p1MaxLon = bLon + stepLon * 0.86;
-            const p1MinLat = bLat + stepLat * 0.14;
-            const p1MaxLat = bLat + stepLat * 0.86;
-
-            const midLon = (p1MinLon + p1MaxLon) / 2;
-            const midLat = (p1MinLat + p1MaxLat) / 2;
-            const alleyGap = 0.04;
-
-            const subParcels = splitH ? [
-              [[p1MinLon, p1MinLat], [p1MaxLon, p1MinLat], [p1MaxLon, midLat - stepLat * alleyGap], [p1MinLon, midLat - stepLat * alleyGap]],
-              [[p1MinLon, midLat + stepLat * alleyGap], [p1MaxLon, midLat + stepLat * alleyGap], [p1MaxLon, p1MaxLat], [p1MinLon, p1MaxLat]]
-            ] : [
-              [[p1MinLon, p1MinLat], [midLon - stepLon * alleyGap, p1MinLat], [midLon - stepLon * alleyGap, p1MaxLat], [p1MinLon, p1MaxLat]],
-              [[midLon + stepLon * alleyGap, p1MinLat], [p1MaxLon, p1MinLat], [p1MaxLon, p1MaxLat], [midLon + stepLon * alleyGap, p1MaxLat]]
-            ];
-
-            for (let sp = 0; sp < 2; sp++) {{
-              const pts = subParcels[sp];
-              const p0 = project(pts[0][0], pts[0][1], r, cx, cy);
-              const p1 = project(pts[1][0], pts[1][1], r, cx, cy);
-              const p2 = project(pts[2][0], pts[2][1], r, cx, cy);
-              const p3 = project(pts[3][0], pts[3][1], r, cx, cy);
-              if (p0.front && p1.front && p2.front && p3.front) {{
-                ctx.beginPath();
-                ctx.moveTo(p0.x, p0.y);
-                ctx.lineTo(p1.x, p1.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.lineTo(p3.x, p3.y);
-                ctx.closePath();
-                ctx.fill();
-                ctx.stroke();
-              }}
-            }}
-          }}
+        // 3. Subtle Ambient City Focus Spotlight
+        const cityCenter = cityData && cityData.center ? cityData.center : [rotLon, rotLat];
+        const cProj = project(cityCenter[0], cityCenter[1], r, cx, cy);
+        if (cProj.front) {{
+          const grad = ctx.createRadialGradient(cProj.x, cProj.y, 15, cProj.x, cProj.y, Math.max(width, height) * 0.65);
+          grad.addColorStop(0, 'rgba(15, 30, 54, 0.40)');
+          grad.addColorStop(0.5, 'rgba(10, 20, 36, 0.18)');
+          grad.addColorStop(1, 'rgba(5, 10, 20, 0)');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, width, height);
         }}
-        ctx.restore();
 
-        // 5. Cultural District Watermark Typographic Areas
-        if (cityData && cityData.districts && cityData.districts.length > 0 && r > baseRadius * 15) {{
+        // 4. Subtle City Watermark in Background
+        if (activeCity) {{
           ctx.save();
-          ctx.font = '13px "PP Telegraf", "PP Telegraph", sans-serif';
-          ctx.fillStyle = 'rgba(64, 98, 148, 0.38)';
+          ctx.font = '700 48px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.fillStyle = 'rgba(148, 163, 184, 0.06)';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          cityData.districts.forEach(d => {{
-            const p = project(d.lon, d.lat, r, cx, cy);
-            if (p.front) {{
-              ctx.fillText(d.name, p.x, p.y);
+          ctx.fillText(activeCity.toUpperCase(), width / 2, Math.max(65, height * 0.16));
+          ctx.restore();
+        }}
+
+        // 5. Curated Waterways (Only for real curated networks, zero text clutter)
+        if (cityData && cityData.waterways && cityData.waterways.length > 0) {{
+          ctx.save();
+          cityData.waterways.forEach(w => {{
+            if (!w.pts || w.pts.length < 2) return;
+            ctx.beginPath();
+            let started = false;
+            w.pts.forEach(pt => {{
+              const p = project(pt[0], pt[1], r, cx, cy);
+              if (p.front) {{
+                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
+                else ctx.lineTo(p.x, p.y);
+              }}
+            }});
+            if (started) {{
+              ctx.lineCap = 'round';
+              ctx.lineJoin = 'round';
+              ctx.strokeStyle = '#081729';
+              ctx.lineWidth = (w.width || 18) + 6;
+              ctx.stroke();
+              ctx.strokeStyle = '#0e2947';
+              ctx.lineWidth = (w.width || 18);
+              ctx.stroke();
             }}
           }});
           ctx.restore();
         }}
 
-        // 6. Urban Parks & Botanical Commons
+        // 6. Curated Parks (Only for real curated networks)
         if (cityData && cityData.parks && cityData.parks.length > 0) {{
           ctx.save();
-          ctx.globalAlpha = streetAlpha * 0.95;
           cityData.parks.forEach(park => {{
+            if (!park.pts || park.pts.length < 3) return;
             ctx.beginPath();
             let started = false;
-            const parkProjs = [];
             park.pts.forEach(pt => {{
               const p = project(pt[0], pt[1], r, cx, cy);
               if (p.front) {{
-                parkProjs.push(p);
                 if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
                 else ctx.lineTo(p.x, p.y);
               }}
             }});
             if (started) {{
               ctx.closePath();
-              ctx.fillStyle = '#0b2116';
+              ctx.fillStyle = '#0a1d15';
               ctx.fill();
               ctx.strokeStyle = '#143d26';
-              ctx.lineWidth = 1.2;
+              ctx.lineWidth = 1;
               ctx.stroke();
-
-              // Decorative inner lake / pond
-              if (parkProjs.length >= 3 && r > baseRadius * 50) {{
-                const pMidX = (parkProjs[0].x + parkProjs[2].x) / 2;
-                const pMidY = (parkProjs[0].y + parkProjs[2].y) / 2;
-                ctx.beginPath();
-                ctx.arc(pMidX, pMidY, 7, 0, Math.PI * 2);
-                ctx.fillStyle = '#091b30';
-                ctx.fill();
-                ctx.strokeStyle = '#122c4a';
-                ctx.lineWidth = 1;
-                ctx.stroke();
-              }}
-
-              // Park Name Label
-              if (park.name && parkProjs.length >= 2 && r > baseRadius * 30) {{
-                const pMidX = parkProjs.reduce((acc, pt) => acc + pt.x, 0) / parkProjs.length;
-                const pMidY = parkProjs.reduce((acc, pt) => acc + pt.y, 0) / parkProjs.length;
-                ctx.font = '11px "PP Telegraf", "PP Telegraph", sans-serif';
-                ctx.fillStyle = '#34d399';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(park.name, pMidX, pMidY);
-              }}
             }}
           }});
           ctx.restore();
         }}
 
-        // 7. Waterways & Maritime Detail (Continuous River Across Full Viewport)
-        if (cityData && cityData.waterways && cityData.waterways.length > 0) {{
+        // 7. Curated Major Arterial Streets (Only for real curated networks)
+        if (cityData && cityData.major_streets && cityData.major_streets.length > 0) {{
           ctx.save();
-          ctx.globalAlpha = streetAlpha;
-          cityData.waterways.forEach(w => {{
-            if (w.pts.length < 2) return;
-
-            // Clone points and extend ends to viewport edges if needed
-            const wPts = w.pts.map(pt => [pt[0], pt[1]]);
-            if (wPts.length >= 2) {{
-              const pFirst = wPts[0];
-              const pSecond = wPts[1];
-              const dX1 = pFirst[0] - pSecond[0];
-              const dY1 = pFirst[1] - pSecond[1];
-              const len1 = Math.hypot(dX1, dY1) || 0.01;
-              wPts.unshift([pFirst[0] + (dX1 / len1) * 0.15, pFirst[1] + (dY1 / len1) * 0.15]);
-
-              const pLast = wPts[wPts.length - 1];
-              const pPrev = wPts[wPts.length - 2];
-              const dX2 = pLast[0] - pPrev[0];
-              const dY2 = pLast[1] - pPrev[1];
-              const len2 = Math.hypot(dX2, dY2) || 0.01;
-              wPts.push([pLast[0] + (dX2 / len2) * 0.15, pLast[1] + (dY2 / len2) * 0.15]);
-            }}
-
-            ctx.beginPath();
-            let started = false;
-            const projPts = [];
-            wPts.forEach(pt => {{
-              const p = project(pt[0], pt[1], r, cx, cy);
-              if (p.front) {{
-                projPts.push(p);
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
-            }});
-            if (started && projPts.length >= 2) {{
-              ctx.lineCap = 'round';
-              ctx.lineJoin = 'round';
-              const wWidth = Math.max(12, Math.min(42, (w.width || 20) * (r / (baseRadius * 500))));
-
-              // Outer shallow riverbed shelf
-              ctx.strokeStyle = '#081729';
-              ctx.lineWidth = wWidth + 14;
-              ctx.stroke();
-
-              // Deep central channel
-              ctx.strokeStyle = '#0c223a';
-              ctx.lineWidth = wWidth;
-              ctx.stroke();
-
-              // Water surface sheen stream
-              ctx.strokeStyle = '#1a3d64';
-              ctx.lineWidth = Math.max(2, wWidth * 0.35);
-              ctx.stroke();
-
-
-              // Waterway Name Label
-              if (w.name && projPts.length >= 2 && r > baseRadius * 3.5) {{
-                const midIdx = Math.floor(projPts.length / 2);
-                const pMid = projPts[midIdx];
-                const pNext = projPts[midIdx + 1] || projPts[midIdx - 1];
-                const ang = Math.atan2(pNext.y - pMid.y, pNext.x - pMid.x);
-                ctx.save();
-                ctx.translate(pMid.x, pMid.y);
-                ctx.rotate(ang > Math.PI / 2 || ang < -Math.PI / 2 ? ang + Math.PI : ang);
-                ctx.font = '12px "PP Telegraf", "PP Telegraph", sans-serif';
-                ctx.fillStyle = '#60a5fa';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'bottom';
-                ctx.fillText('~ ' + w.name + ' ~', 0, -wWidth / 2 - 3);
-                ctx.restore();
-              }}
-            }}
-          }});
-          ctx.restore();
-        }}
-
-        // 8. Bridges (with Drop Shadow)
-        if (cityData && cityData.bridges && cityData.bridges.length > 0) {{
-          ctx.save();
-          ctx.globalAlpha = streetAlpha;
-          cityData.bridges.forEach(b => {{
-            const p1 = project(b.pts[0][0], b.pts[0][1], r, cx, cy);
-            const p2 = project(b.pts[1][0], b.pts[1][1], r, cx, cy);
-            if (p1.front && p2.front) {{
-              // Shadow
-              ctx.strokeStyle = '#04070e';
-              ctx.lineWidth = 5.2;
-              ctx.beginPath();
-              ctx.moveTo(p1.x + 1, p1.y + 2);
-              ctx.lineTo(p2.x + 1, p2.y + 2);
-              ctx.stroke();
-
-              // Bridge Deck
-              ctx.strokeStyle = '#475569';
-              ctx.lineWidth = 3.8;
-              ctx.beginPath();
-              ctx.moveTo(p1.x, p1.y);
-              ctx.lineTo(p2.x, p2.y);
-              ctx.stroke();
-            }}
-          }});
-          ctx.restore();
-        }}
-
-        // 9. Secondary Street Network (Ambient Grid + Curated Named Secondary Streets)
-        ctx.save();
-        ctx.globalAlpha = streetAlpha * 0.75;
-        ctx.lineCap = 'round';
-
-        // 9a. Ambient Grid Lines across Viewport
-        ctx.strokeStyle = '#142034';
-        ctx.lineWidth = Math.max(1.0, Math.min(2.0, r / (baseRadius * 500)));
-        ctx.beginPath();
-        for (let bLon = startLon; bLon < viewMaxLon; bLon += stepLon) {{
-          const pTop = project(bLon, viewMaxLat, r, cx, cy);
-          const pBot = project(bLon, viewMinLat, r, cx, cy);
-          if (pTop.front && pBot.front) {{
-            ctx.moveTo(pTop.x, pTop.y);
-            ctx.lineTo(pBot.x, pBot.y);
-          }}
-        }}
-        for (let bLat = startLat; bLat < viewMaxLat; bLat += stepLat) {{
-          const pLeft = project(viewMinLon, bLat, r, cx, cy);
-          const pRight = project(viewMaxLon, bLat, r, cx, cy);
-          if (pLeft.front && pRight.front) {{
-            ctx.moveTo(pLeft.x, pLeft.y);
-            ctx.lineTo(pRight.x, pRight.y);
-          }}
-        }}
-        ctx.stroke();
-
-        // 9b. Curated / Procedural Secondary Streets
-        if (cityData && cityData.secondary_streets && cityData.secondary_streets.length > 0) {{
           ctx.strokeStyle = '#182740';
-          ctx.lineWidth = Math.max(1.4, Math.min(2.8, r / (baseRadius * 400)));
-          cityData.secondary_streets.forEach(s => {{
-            if (s.pts.length < 2) return;
+          ctx.lineWidth = 1.8;
+          ctx.lineCap = 'round';
+          cityData.major_streets.forEach(s => {{
+            if (!s.pts || s.pts.length < 2) return;
             ctx.beginPath();
             let started = false;
-            const projPts = [];
             s.pts.forEach(pt => {{
               const p = project(pt[0], pt[1], r, cx, cy);
               if (p.front) {{
-                projPts.push(p);
                 if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
                 else ctx.lineTo(p.x, p.y);
               }}
             }});
-            if (started) {{
-              ctx.stroke();
-
-              // Secondary Street Name
-              if (s.name && projPts.length >= 2 && r > baseRadius * 45) {{
-                const midIdx = Math.floor(projPts.length / 2);
-                const pMid = projPts[midIdx];
-                const pNext = projPts[midIdx + 1] || projPts[midIdx - 1];
-                const ang = Math.atan2(pNext.y - pMid.y, pNext.x - pMid.x);
-                const len = Math.hypot(pNext.x - pMid.x, pNext.y - pMid.y);
-                if (len > 50) {{
-                  ctx.save();
-                  ctx.translate(pMid.x, pMid.y);
-                  ctx.rotate(ang > Math.PI / 2 || ang < -Math.PI / 2 ? ang + Math.PI : ang);
-                  ctx.font = '9px "PP Telegraf", "PP Telegraph", sans-serif';
-                  ctx.strokeStyle = '#080d16';
-                  ctx.lineWidth = 2.5;
-                  ctx.strokeText(s.name, 0, -2);
-                  ctx.fillStyle = '#64748b';
-                  ctx.textAlign = 'center';
-                  ctx.textBaseline = 'bottom';
-                  ctx.fillText(s.name, 0, -2);
-                  ctx.restore();
-                }}
-              }}
-            }}
-          }});
-        }}
-        ctx.restore();
-
-        // 10. Major Avenues & Boulevards (Continuous Double-Cased Roads)
-        if (cityData && cityData.major_streets && cityData.major_streets.length > 0) {{
-          ctx.save();
-          ctx.globalAlpha = streetAlpha * 0.95;
-          cityData.major_streets.forEach(s => {{
-            if (s.pts.length < 2) return;
-
-            // Extend endpoints out if close to edge
-            const sPts = s.pts.map(pt => [pt[0], pt[1]]);
-            if (sPts.length >= 2) {{
-              const pFirst = sPts[0];
-              const pSecond = sPts[1];
-              const dX1 = pFirst[0] - pSecond[0];
-              const dY1 = pFirst[1] - pSecond[1];
-              const len1 = Math.hypot(dX1, dY1) || 0.01;
-              sPts.unshift([pFirst[0] + (dX1 / len1) * 0.12, pFirst[1] + (dY1 / len1) * 0.12]);
-
-              const pLast = sPts[sPts.length - 1];
-              const pPrev = sPts[sPts.length - 2];
-              const dX2 = pLast[0] - pPrev[0];
-              const dY2 = pLast[1] - pPrev[1];
-              const len2 = Math.hypot(dX2, dY2) || 0.01;
-              sPts.push([pLast[0] + (dX2 / len2) * 0.12, pLast[1] + (dY2 / len2) * 0.12]);
-            }}
-
-            ctx.beginPath();
-            let started = false;
-            const projPts = [];
-            sPts.forEach(pt => {{
-              const p = project(pt[0], pt[1], r, cx, cy);
-              if (p.front) {{
-                projPts.push(p);
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
-            }});
-            if (started && projPts.length >= 2) {{
-              // Outer Casing
-              ctx.strokeStyle = '#273854';
-              ctx.lineWidth = Math.max(3.2, Math.min(6.2, (r / (baseRadius * 300)) * 2.2));
-              ctx.lineCap = 'round';
-              ctx.stroke();
-
-              // Inner Road Surface
-              ctx.strokeStyle = '#1a273b';
-              ctx.lineWidth = Math.max(2.2, Math.min(4.4, (r / (baseRadius * 300)) * 1.6));
-              ctx.stroke();
-
-              // Center dashed divider line
-              if (r > baseRadius * 40) {{
-                ctx.setLineDash([4, 6]);
-                ctx.strokeStyle = 'rgba(96, 165, 250, 0.40)';
-                ctx.lineWidth = 0.8;
-                ctx.stroke();
-                ctx.setLineDash([]);
-              }}
-
-              // Avenue Name Label along Path
-              if (s.name && projPts.length >= 2 && r > baseRadius * 4.0) {{
-                const midIdx = Math.floor(projPts.length / 2);
-                const pMid = projPts[midIdx];
-                const pNext = projPts[midIdx + 1] || projPts[midIdx - 1];
-                const ang = Math.atan2(pNext.y - pMid.y, pNext.x - pMid.x);
-                const len = Math.hypot(pNext.x - pMid.x, pNext.y - pMid.y);
-                if (len > 35) {{
-                  ctx.save();
-                  ctx.translate(pMid.x, pMid.y);
-                  ctx.rotate(ang > Math.PI / 2 || ang < -Math.PI / 2 ? ang + Math.PI : ang);
-                  ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
-                  ctx.strokeStyle = '#080d16';
-                  ctx.lineWidth = 3;
-                  ctx.strokeText(s.name, 0, -3);
-                  ctx.fillStyle = '#94a3b8';
-                  ctx.textAlign = 'center';
-                  ctx.textBaseline = 'bottom';
-                  ctx.fillText(s.name, 0, -3);
-                  ctx.restore();
-                }}
-              }}
-            }}
+            if (started) ctx.stroke();
           }});
           ctx.restore();
         }}
 
-        // 11. Expressways & Highways
-        if (cityData && cityData.highways && cityData.highways.length > 0) {{
-          ctx.save();
-          ctx.globalAlpha = streetAlpha * 0.95;
-          cityData.highways.forEach(h => {{
-            if (h.pts.length < 2) return;
-            ctx.beginPath();
-            let started = false;
-            h.pts.forEach(pt => {{
-              const p = project(pt[0], pt[1], r, cx, cy);
-              if (p.front) {{
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
-            }});
-            if (started) {{
-              ctx.strokeStyle = '#2a3d5e';
-              ctx.lineWidth = 7.5;
-              ctx.stroke();
-              ctx.strokeStyle = '#18263a';
-              ctx.lineWidth = 5.2;
-              ctx.stroke();
-            }}
-          }});
-          ctx.restore();
-        }}
-
-        // 12. Public Transit Network (Metro Lines & Stations)
-        if (cityData && cityData.transit_lines && cityData.transit_lines.length > 0 && r > baseRadius * 15) {{
-          ctx.save();
-          cityData.transit_lines.forEach(line => {{
-            if (line.pts.length < 2) return;
-            ctx.beginPath();
-            let started = false;
-            line.pts.forEach(pt => {{
-              const p = project(pt[0], pt[1], r, cx, cy);
-              if (p.front) {{
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
-            }});
-            if (started) {{
-              ctx.strokeStyle = line.color || '#06b6d4';
-              ctx.lineWidth = 2.6;
-              ctx.setLineDash([8, 4]);
-              ctx.stroke();
-              ctx.setLineDash([]);
-            }}
-          }});
-
-          // Metro Stations
-          if (cityData.transit_stations && r > baseRadius * 35) {{
-            cityData.transit_stations.forEach(st => {{
-              const p = project(st.lon, st.lat, r, cx, cy);
-              if (p.front) {{
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
-                ctx.fillStyle = '#ffffff';
-                ctx.fill();
-                ctx.strokeStyle = st.color || '#06b6d4';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                ctx.font = '9px "PP Telegraf", "PP Telegraph", sans-serif';
-                const stTxt = st.name;
-                const stw = ctx.measureText(stTxt).width;
-                ctx.fillStyle = 'rgba(7, 11, 20, 0.88)';
-                ctx.beginPath();
-                ctx.roundRect ? ctx.roundRect(p.x + 8, p.y - 8, stw + 10, 16, 3) : ctx.rect(p.x + 8, p.y - 8, stw + 10, 16);
-                ctx.fill();
-                ctx.strokeStyle = st.color || '#06b6d4';
-                ctx.lineWidth = 0.8;
-                ctx.stroke();
-
-                ctx.fillStyle = '#ffffff';
-                ctx.textAlign = 'left';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(stTxt, p.x + 13, p.y);
-              }}
-            }});
-          }}
-          ctx.restore();
-        }}
-
-        // 13. Render City Cultural Institutions (Exact coordinates, spaced-out anti-collision callout badges & pins)
+        // 8. Render City Cultural Institutions (Exact Pins & Anti-Collision Badges)
         cityMuseumHitboxes = [];
         const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, activeCity));
 
-        cityInsts.sort((a, b) => {{
-          const aSel = selectedInstitution && selectedInstitution.name === a.name;
-          const bSel = selectedInstitution && selectedInstitution.name === b.name;
-          return (aSel ? 1 : 0) - (bSel ? 1 : 0);
+        const projectedInsts = [];
+        cityInsts.forEach(inst => {{
+          const pt = project(inst.lon, inst.lat, r, cx, cy);
+          if (pt.front) {{
+            projectedInsts.push({{ inst, pt }});
+          }}
         }});
 
-        const placedBadgeBoxes = [];
-
-        cityInsts.forEach((inst, idx) => {{
-          const pt = project(inst.lon, inst.lat, r, cx, cy);
-          if (!pt.front) return;
-
+        // First pass: render crisp pins & haloes
+        projectedInsts.forEach(({{ inst, pt }}) => {{
           const isSel = selectedInstitution && selectedInstitution.name === inst.name;
           const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
           const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
 
-          // Pinpoint Dot & Radiant Halo
           ctx.save();
+          // Halo
           ctx.beginPath();
-          ctx.arc(pt.x, pt.y, isSel ? 7 : isHov ? 5.5 : 4, 0, Math.PI * 2);
-          ctx.fillStyle = tierColor;
-          ctx.shadowColor = tierColor;
-          ctx.shadowBlur = isSel ? 12 : 6;
+          ctx.arc(pt.x, pt.y, isSel ? 16 : isHov ? 12 : 8, 0, Math.PI * 2);
+          ctx.fillStyle = isSel ? 'rgba(59, 130, 246, 0.25)' : inst.tier === 'A' ? 'rgba(16, 185, 129, 0.22)' : 'rgba(59, 130, 246, 0.20)';
           ctx.fill();
 
+          // Stroke ring
           ctx.beginPath();
-          ctx.arc(pt.x, pt.y, isSel ? 12 : isHov ? 9 : 7, 0, Math.PI * 2);
+          ctx.arc(pt.x, pt.y, isSel ? 10 : isHov ? 8 : 6, 0, Math.PI * 2);
           ctx.strokeStyle = isSel ? '#ffffff' : tierColor;
-          ctx.lineWidth = isSel ? 2 : 1;
+          ctx.lineWidth = isSel ? 2 : 1.2;
           ctx.stroke();
-          ctx.restore();
 
-          // Measure Badge Dimensions
+          // Center solid dot
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, isSel ? 5 : isHov ? 4.5 : 3.5, 0, Math.PI * 2);
+          ctx.fillStyle = tierColor;
+          ctx.fill();
+          ctx.restore();
+        }});
+
+        // Second pass: position and render non-colliding callout badges
+        // Sort by latitude descending (top-to-bottom on screen)
+        projectedInsts.sort((a, b) => b.inst.lat - a.inst.lat);
+
+        const placedBoxes = [];
+        const bh = 36;
+
+        projectedInsts.forEach(({{ inst, pt }}) => {{
+          const isSel = selectedInstitution && selectedInstitution.name === inst.name;
+          const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
+          const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
+
           ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
           const nameTxt = inst.name;
           const nw = ctx.measureText(nameTxt).width;
-          const subTxt = inst.neighborhood || (inst.address ? inst.address.split(',')[0].trim() : 'Verified Clean Space');
+
+          const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Sanctuary' : 'Watch Space');
           ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
           const sw = ctx.measureText(subTxt).width;
-          const bw = Math.max(nw, sw, 150) + 32;
-          const bh = 38;
 
-          // Candidate Slots (offset from pin pt.x, pt.y)
-          const candidateSlots = [
-            {{ x: pt.x + 22, y: pt.y - bh - 8, anchor: 'bl' }},
-            {{ x: pt.x + 22, y: pt.y + 12, anchor: 'tl' }},
-            {{ x: pt.x - bw - 22, y: pt.y - bh - 8, anchor: 'br' }},
-            {{ x: pt.x - bw - 22, y: pt.y + 12, anchor: 'tr' }},
-            {{ x: pt.x - bw / 2, y: pt.y - bh - 26, anchor: 'bc' }},
-            {{ x: pt.x - bw / 2, y: pt.y + 26, anchor: 'tc' }},
-            {{ x: pt.x + 36, y: pt.y - bh / 2, anchor: 'cl' }},
-            {{ x: pt.x - bw - 36, y: pt.y - bh / 2, anchor: 'cr' }},
-            {{ x: pt.x + 26, y: pt.y - bh * 1.8, anchor: 'bl' }},
-            {{ x: pt.x - bw - 26, y: pt.y - bh * 1.8, anchor: 'br' }},
-            {{ x: pt.x + 26, y: pt.y + bh + 14, anchor: 'tl' }},
-            {{ x: pt.x - bw - 26, y: pt.y + bh + 14, anchor: 'tr' }}
+          const bw = Math.min(270, Math.max(160, Math.max(nw, sw) + 28));
+
+          // Candidates to test
+          const candidateOffsets = [
+            {{ dx: 24, dy: -bh / 2 }},
+            {{ dx: 24, dy: -bh - 10 }},
+            {{ dx: 24, dy: 10 }},
+            {{ dx: -bw - 24, dy: -bh / 2 }},
+            {{ dx: -bw - 24, dy: -bh - 10 }},
+            {{ dx: -bw - 24, dy: 10 }},
+            {{ dx: -bw / 2, dy: -bh - 28 }},
+            {{ dx: -bw / 2, dy: 28 }}
           ];
 
-          let bestSlot = candidateSlots[0];
-          let minOverlapArea = Infinity;
+          let bestX = pt.x + 24;
+          let bestY = pt.y - bh / 2;
+          let foundClean = false;
 
-          for (let s = 0; s < candidateSlots.length; s++) {{
-            const slot = candidateSlots[s];
-            const clampedX = Math.max(12, Math.min(width - bw - 12, slot.x));
-            const clampedY = Math.max(50, Math.min(height - bh - 50, slot.y));
+          for (const slot of candidateOffsets) {{
+            let candX = Math.max(16, Math.min(width - bw - 16, pt.x + slot.dx));
+            let candY = Math.max(48, Math.min(height - bh - 48, pt.y + slot.dy));
 
-            let overlapArea = 0;
-            for (let p = 0; p < placedBadgeBoxes.length; p++) {{
-              const box = placedBadgeBoxes[p];
-              const ox = Math.max(0, Math.min(clampedX + bw + 8, box.x + box.w + 8) - Math.max(clampedX - 8, box.x - 8));
-              const oy = Math.max(0, Math.min(clampedY + bh + 8, box.y + box.h + 8) - Math.max(clampedY - 8, box.y - 8));
-              overlapArea += ox * oy;
-            }}
+            const collides = placedBoxes.some(box => {{
+              return !(candX + bw + 12 < box.x || candX > box.x + box.w + 12 ||
+                       candY + bh + 12 < box.y || candY > box.y + box.h + 12);
+            }});
 
-            if (overlapArea === 0) {{
-              bestSlot = {{ x: clampedX, y: clampedY, anchor: slot.anchor }};
+            if (!collides) {{
+              bestX = candX;
+              bestY = candY;
+              foundClean = true;
               break;
-            }} else if (overlapArea < minOverlapArea) {{
-              minOverlapArea = overlapArea;
-              bestSlot = {{ x: clampedX, y: clampedY, anchor: slot.anchor }};
             }}
           }}
 
-          const bx = bestSlot.x;
-          const by = bestSlot.y;
-          placedBadgeBoxes.push({{ x: bx, y: by, w: bw, h: bh }});
+          if (!foundClean && placedBoxes.length > 0) {{
+            const lowest = placedBoxes.reduce((max, b) => (b.y + b.h > max.y + max.h ? b : max), placedBoxes[0]);
+            bestX = Math.max(16, Math.min(width - bw - 16, pt.x + 24));
+            bestY = Math.min(height - bh - 48, lowest.y + lowest.h + 10);
+          }}
 
-          // Leader Line from pin to badge
-          let attachX = bx > pt.x ? bx : bx + bw;
-          let attachY = by + bh / 2;
-          if (bestSlot.anchor === 'bc') {{ attachX = bx + bw / 2; attachY = by + bh; }}
-          else if (bestSlot.anchor === 'tc') {{ attachX = bx + bw / 2; attachY = by; }}
+          placedBoxes.push({{ x: bestX, y: bestY, w: bw, h: bh }});
+
+          // Leader line from pin to badge
+          let attachX = bestX > pt.x ? bestX : bestX + bw;
+          let attachY = bestY + bh / 2;
 
           ctx.save();
           ctx.beginPath();
           ctx.moveTo(pt.x, pt.y);
-          const midX = (pt.x + attachX) / 2;
-          ctx.lineTo(midX, pt.y);
-          ctx.lineTo(midX, attachY);
           ctx.lineTo(attachX, attachY);
-          ctx.strokeStyle = isSel ? '#60a5fa' : isHov ? '#38bdf8' : 'rgba(56, 189, 248, 0.35)';
-          ctx.lineWidth = isSel ? 1.8 : 1;
+          ctx.strokeStyle = isSel ? '#60a5fa' : isHov ? '#38bdf8' : 'rgba(56, 189, 248, 0.40)';
+          ctx.lineWidth = isSel ? 1.5 : 1;
           ctx.stroke();
-
-          // Small joint dot on elbow
-          ctx.beginPath();
-          ctx.arc(midX, attachY, 1.8, 0, Math.PI * 2);
-          ctx.fillStyle = isSel ? '#93c5fd' : '#38bdf8';
-          ctx.fill();
           ctx.restore();
 
-          // Modern Glassmorphic Badge Card
+          // Card Background
           ctx.save();
-          ctx.fillStyle = isSel ? 'rgba(15, 26, 46, 0.96)' : isHov ? 'rgba(18, 28, 44, 0.94)' : 'rgba(9, 15, 26, 0.92)';
+          ctx.fillStyle = isSel ? 'rgba(15, 23, 42, 0.97)' : isHov ? 'rgba(15, 23, 42, 0.94)' : 'rgba(10, 16, 28, 0.92)';
           ctx.beginPath();
-          ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 6) : ctx.rect(bx, by, bw, bh);
+          ctx.roundRect ? ctx.roundRect(bestX, bestY, bw, bh, 6) : ctx.rect(bestX, bestY, bw, bh);
           ctx.fill();
 
-          ctx.strokeStyle = isSel ? '#60a5fa' : isHov ? '#38bdf8' : 'rgba(32, 48, 76, 0.85)';
-          ctx.lineWidth = isSel ? 1.6 : 1;
+          ctx.strokeStyle = isSel ? '#60a5fa' : isHov ? '#38bdf8' : (inst.tier === 'A' ? 'rgba(16, 185, 129, 0.45)' : 'rgba(56, 189, 248, 0.35)');
+          ctx.lineWidth = isSel ? 1.5 : 1;
           ctx.stroke();
 
-          // Left tier accent stripe
+          // Left tier accent bar
           ctx.fillStyle = tierColor;
           ctx.beginPath();
-          ctx.roundRect ? ctx.roundRect(bx, by, 3.5, bh, [6, 0, 0, 6]) : ctx.rect(bx, by, 3.5, bh);
+          ctx.roundRect ? ctx.roundRect(bestX, bestY, 3.5, bh, [6, 0, 0, 6]) : ctx.rect(bestX, bestY, 3.5, bh);
           ctx.fill();
 
-          // Institution Name (Bold PP Telegraf)
+          // Institution Name
           ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
-          ctx.fillStyle = isSel ? '#ffffff' : '#f1f5f9';
+          ctx.fillStyle = isSel ? '#ffffff' : '#f8fafc';
           ctx.textAlign = 'left';
           ctx.textBaseline = 'top';
-          ctx.fillText(nameTxt, bx + 10, by + 6);
+          ctx.fillText(nameTxt, bestX + 10, bestY + 5);
 
-          // Subtitle with Emerald Verification Dot
+          // Subtitle
           ctx.beginPath();
-          ctx.arc(bx + 13, by + 25, 2.5, 0, Math.PI * 2);
+          ctx.arc(bestX + 12, bestY + 23, 2, 0, Math.PI * 2);
           ctx.fillStyle = tierColor;
           ctx.fill();
 
           ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.fillStyle = '#94a3b8';
-          ctx.fillText(subTxt, bx + 20, by + 20);
+          ctx.fillText(subTxt, bestX + 18, bestY + 19);
           ctx.restore();
 
           cityMuseumHitboxes.push({{
             inst: inst,
-            x: bx,
-            y: by,
+            x: bestX,
+            y: bestY,
             w: bw,
             h: bh,
             pinX: pt.x,
             pinY: pt.y
           }});
         }});
-
+        
         // 14. Architectural Cartographic Live HUD (Scale Bar, Coordinates, Compass Rose)
         ctx.save();
         const actualKmPerPx = 6371 / r;
