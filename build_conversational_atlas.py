@@ -6124,8 +6124,8 @@ def build():
             "lat": -23.562
         }}
     ]
-}}
-    "new york": {{
+}},
+  "new york": {{
     "center": [-73.9776, 40.7614],
     "waterways": [
       {{
