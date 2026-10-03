@@ -5986,16 +5986,13 @@
 
     function getCityTargetRadius(cityName) {
       const c = (cityName || '').toLowerCase();
-      if (c.includes('utrecht') || c.includes('rotterdam') || c.includes('eindhoven') || c.includes('basel')) {
-        return baseRadius * 1100;
+      if (c.includes('utrecht') || c.includes('rotterdam') || c.includes('eindhoven') || c.includes('basel') || c.includes('frankfurt')) {
+        return baseRadius * 8.5;
       }
-      if (c.includes('new york') || c.includes('paris') || c.includes('berlin') || c.includes('amsterdam') || c.includes('london')) {
-        return baseRadius * 850;
+      if (c.includes('new york') || c.includes('paris') || c.includes('berlin') || c.includes('amsterdam') || c.includes('london') || c.includes('tokyo')) {
+        return baseRadius * 8.0;
       }
-      if (c.includes('medell') || c.includes('bogot') || c.includes('sao paulo') || c.includes('mexico')) {
-        return baseRadius * 650;
-      }
-      return baseRadius * 750;
+      return baseRadius * 7.5;
     }
 
 
@@ -6026,8 +6023,9 @@
     let currentRadius = baseRadius;
     let targetRadius = baseRadius;
 
-    function getMinRadius() { return baseRadius * 0.7; }
-    function getMaxRadius() { return baseRadius * 2500; }
+    function getMinRadius() { return baseRadius * 0.75; }
+    function getMaxRadius() { return baseRadius * 15.0; }
+    let startRadius = baseRadius;
 
     // Slower Cinematic Motion Physics
     let rotLon = -45;
@@ -6141,6 +6139,9 @@
     function easeInOutQuad(t) {
       return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
     }
+    function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
 
     let cityBadgeHitboxes = [];
     let visibleDots = [];
@@ -6158,26 +6159,28 @@
       }
 
       if (isFlying) {
-        flightProgress += 0.012;
+        flightProgress += 0.014;
         if (flightProgress >= 1) {
           flightProgress = 1;
           isFlying = false;
           rotLon = targetRotLon % 360;
           rotLat = targetRotLat;
+          currentRadius = targetRadius;
         } else {
-          const ease = easeInOutQuad(flightProgress);
+          const ease = easeInOutCubic(flightProgress);
           rotLon = (startRotLon + (targetRotLon - startRotLon) * ease) % 360;
           rotLat = startRotLat + (targetRotLat - startRotLat) * ease;
+          currentRadius = startRadius + (targetRadius - startRadius) * ease;
         }
+      } else {
+        currentRadius += (targetRadius - currentRadius) * 0.085;
       }
-
-      currentRadius += (targetRadius - currentRadius) * 0.085;
 
       const cx = width / 2;
       const cy = height / 2;
       const r = currentRadius;
 
-      const isCityZoom = r > baseRadius * 35 || (selectedCityFilter !== 'all' && r > baseRadius * 20);
+      const isCityZoom = (selectedCityFilter !== 'all' && r > baseRadius * 2.2) || (r > baseRadius * 3.4);
 
       // Determine active focused city
       let activeCity = selectedCityFilter !== 'all' ? selectedCityFilter : null;
@@ -6354,9 +6357,12 @@
           }
         }
 
-        // 6. Country Centroid Names
-        if (r > baseRadius * 0.8) {
-          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+        // 6. Country Centroid Names (Smoothly fade out as zoom approaches city/regional level)
+        if (r > baseRadius * 0.8 && r < baseRadius * 2.8) {
+          const fadeAlpha = r > baseRadius * 1.8 ? Math.max(0, 1 - (r - baseRadius * 1.8) / (baseRadius * 1.0)) : 1.0;
+          ctx.save();
+          ctx.globalAlpha = fadeAlpha;
+          ctx.font = '13px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           COUNTRY_CENTROIDS.forEach(c => {
@@ -6369,6 +6375,7 @@
               }
             }
           });
+          ctx.restore();
         }
 
         // 7. City Badges (All cities in selected country or top cities worldwide)
@@ -6406,10 +6413,11 @@
             const by = pt.y - 28;
 
             const collides = drawnCityBoxes.some(box => {
-              return !(bx + bw + 4 < box.x || bx > box.x + box.w + 4 || by + bh + 4 < box.y || by > box.y + box.h + 4);
+              return !(bx + bw + 8 < box.x || bx > box.x + box.w + 8 || by + bh + 6 < box.y || by > box.y + box.h + 6);
             });
 
-            if (!collides || isSelected || isCountryActive) {
+            // Selected city always draws; other cities only draw if they do NOT collide
+            if (!collides || isSelected) {
               drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
               cityBadgeHitboxes.push({
                 name: city.name,
@@ -6672,13 +6680,33 @@
         });
 
         // Second pass: position and render non-colliding callout badges
-        // Sort by latitude descending (top-to-bottom on screen)
-        projectedInsts.sort((a, b) => b.inst.lat - a.inst.lat);
+        // Clear global city hitboxes to prevent phantom clicks
+        cityBadgeHitboxes = [];
+
+        // In dense cities (> 6 institutions), prioritize selected, hovered, and top 5 institutions
+        let displayList = [...projectedInsts];
+        if (projectedInsts.length > 6) {
+          displayList.sort((a, b) => {
+            const aSel = selectedInstitution && selectedInstitution.name === a.inst.name;
+            const bSel = selectedInstitution && selectedInstitution.name === b.inst.name;
+            if (aSel) return -1;
+            if (bSel) return 1;
+            const aHov = hoveredInstitution && hoveredInstitution.name === a.inst.name;
+            const bHov = hoveredInstitution && hoveredInstitution.name === b.inst.name;
+            if (aHov) return -1;
+            if (bHov) return 1;
+            return b.inst.lat - a.inst.lat;
+          });
+          // Cap at 6 expanded badges to guarantee zero screen overcrowding
+          displayList = displayList.slice(0, 6);
+        } else {
+          displayList.sort((a, b) => b.inst.lat - a.inst.lat);
+        }
 
         const placedBoxes = [];
         const bh = 36;
 
-        projectedInsts.forEach(({ inst, pt }) => {
+        displayList.forEach(({ inst, pt }) => {
           const isSel = selectedInstitution && selectedInstitution.name === inst.name;
           const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
           const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
@@ -6949,6 +6977,7 @@
       if (dLon < -180) dLon += 360;
       startRotLon = rotLon;
       startRotLat = rotLat;
+      startRadius = currentRadius;
       targetRotLon = rotLon + dLon;
       targetRotLat = Math.max(-75, Math.min(75, lat));
       flightProgress = 0;
@@ -11492,19 +11521,21 @@ FORMATTING & INTERACTION RULES:
       document.getElementById('detailDrawer').classList.add('hidden');
     });
 
-    // Smooth Logarithmic Wheel Zoom
+    // Smooth, Gradual Exponential Wheel & Trackpad Zoom
     canvas.addEventListener('wheel', e => {
       e.preventDefault();
-      const factor = e.deltaY < 0 ? 1.25 : 0.8;
-      targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius * factor));
-      if (targetRadius > baseRadius * 2.0) {
-        isAutoSpinning = false;
-      }
-      if (targetRadius < baseRadius * 25 && selectedCityFilter !== 'all') {
+      isAutoSpinning = false;
+      const delta = e.deltaY * (e.deltaMode === 1 ? 18 : e.deltaMode === 2 ? 260 : 1);
+      // Gentle exponential scaling factor bounded per event (approx 1% - 6% gradual change)
+      const factor = Math.exp(-delta * 0.0016);
+      const clampedFactor = Math.max(0.91, Math.min(1.09, factor));
+      targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius * clampedFactor));
+
+      if (targetRadius < baseRadius * 2.5 && selectedCityFilter !== 'all') {
         selectedCityFilter = 'all';
         applyFilters();
       }
-      if (targetRadius < baseRadius * 1.8 && selectedCountryFilter !== 'all') {
+      if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
         selectedCountryFilter = 'all';
         applyFilters();
         renderGlobeBarDefault();
@@ -11513,15 +11544,15 @@ FORMATTING & INTERACTION RULES:
 
     document.getElementById('zoomInBtn')?.addEventListener('click', () => {
       isAutoSpinning = false;
-      targetRadius = Math.min(getMaxRadius(), targetRadius * 1.8);
+      targetRadius = Math.min(getMaxRadius(), targetRadius * 1.30);
     });
     document.getElementById('zoomOutBtn')?.addEventListener('click', () => {
-      targetRadius = Math.max(getMinRadius(), targetRadius * 0.55);
-      if (targetRadius < baseRadius * 25 && selectedCityFilter !== 'all') {
+      targetRadius = Math.max(getMinRadius(), targetRadius * 0.77);
+      if (targetRadius < baseRadius * 2.5 && selectedCityFilter !== 'all') {
         selectedCityFilter = 'all';
         applyFilters();
       }
-      if (targetRadius < baseRadius * 1.8 && selectedCountryFilter !== 'all') {
+      if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
         selectedCountryFilter = 'all';
         applyFilters();
         renderGlobeBarDefault();
