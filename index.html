@@ -355,10 +355,10 @@
       <button id="topSettingsBtn" class="flex items-center gap-1.5 px-2.5 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[14px] transition cursor-pointer" title="AI Settings">
         <span id="topStatusDot" class="w-2 h-2 rounded-full bg-amber-400"></span>
         <span id="topStatusLabel" class="hidden md:inline font-mono text-[14px]">Offline Engine</span>
-        <span>⚙️</span>
+        <span>Settings</span>
       </button>
       <button id="topResetBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white px-2.5 py-1 rounded-xl text-[14px] transition flex items-center gap-1 cursor-pointer" title="Reset Globe View">
-        <span>🔄</span>
+        <span>Reset</span>
       </button>
     </div>
 
@@ -395,14 +395,14 @@
           <a id="floatingCardWebLink" href="#" target="_blank" rel="noopener noreferrer" 
              class="inline-flex items-center gap-1 text-[#93c5fd] hover:text-white transition cursor-pointer"
              onclick="event.stopPropagation()">
-            <span>🌐</span> <span id="floatingCardDomain" class="truncate max-w-[90px]">website</span> <span class="text-[14px]">↗</span>
+            <span id="floatingCardDomain" class="truncate max-w-[90px]">website</span> <span class="text-[14px]">↗</span>
           </a>
           <div class="flex items-center gap-2">
             <button id="floatingCardDossierBtn" class="text-[#a1a1aa] hover:text-white transition text-[14px] cursor-pointer" onclick="event.stopPropagation()">
               Audit Dossier →
             </button>
             <button id="floatingCardAskCurator" class="inline-flex items-center gap-1 text-white hover:text-[#93c5fd] font-normal transition text-[14px] cursor-pointer" onclick="event.stopPropagation()">
-              <span>💬</span> <span>Ask</span>
+              <span>Ask</span>
             </button>
           </div>
         </div>
@@ -411,7 +411,6 @@
 
       <!-- Floating Active Map Filter Pill Banner -->
       <div id="activeMapFilterBanner" class="hidden absolute top-2.5 sm:top-3 left-1/2 -translate-x-1/2 z-20 pointer-events-auto flex items-center gap-2 bg-[#0c1a2e]/95 border border-[#38bdf8]/70 text-white px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-xl text-[14px]">
-        <span id="activeMapFilterIcon" class="text-[14px]">🕒</span>
         <span id="activeMapFilterText" class="font-normal tracking-wide text-white text-[14px]">24 MONDAY OPENINGS ON MAP</span>
         <button id="clearMapFilterBtn" class="ml-1 text-[#93c5fd] hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[14px]" title="Clear filter">✕</button>
       </div>
@@ -419,48 +418,48 @@
       <!-- City & Country Navigation Banner -->
       <div id="cityViewControlBanner" class="hidden absolute top-2.5 sm:top-3 left-2.5 sm:left-4 z-20 pointer-events-auto flex items-center gap-2 flex-wrap">
         <button id="backToWorldBtn" class="px-2.5 py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Reset to global world view">
-          <span>🌍</span> <span class="font-normal">World View</span>
+          <span class="font-normal">World View</span>
         </button>
         <button id="backToCountryBtn" class="hidden px-2.5 py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Return to country overview">
           <span>←</span> <span id="backToCountryText" class="font-normal">Country</span>
         </button>
         <div id="cityViewTitleBadge" class="px-2.5 py-1.5 rounded-xl bg-[#0c1626]/95 border border-[#1e2e4a] text-[#93c5fd] text-[13px] font-mono flex items-center gap-1.5 shadow-lg backdrop-blur">
-          <span id="cityViewBadgeIcon">📍</span> <span id="cityViewTitleText">LONDON · STREET VIEW</span>
+          <span id="cityViewTitleText">LONDON · STREET VIEW</span>
         </div>
       </div>
 
       <!-- Interactive City & Country Quick Bar -->
       <div id="globeCityBar" class="absolute bottom-2 left-2.5 sm:left-4 right-20 sm:right-24 z-10 flex items-center overflow-x-auto custom-scrollbar whitespace-nowrap gap-1.5 select-none pointer-events-auto">
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">🌐 All Clean</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">All Clean</button>
         <span class="text-[#555] shrink-0">·</span>
         <!-- Regional Fast Jumps -->
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="europe">🏛️ Europe</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="americas">🗽 Americas</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="asiapacific">🌏 Asia-Pacific</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="mena_africa">🌍 MidEast & Africa</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="asiapacific">Asia-Pacific</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="mena_africa">MidEast & Africa</button>
         <span class="text-[#555] shrink-0">·</span>
         <!-- Curatorial Focus Filters -->
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="free">🎟️ Free Entry</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="artist_run">🎨 Artist-Run</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="sculpture">🌲 Outdoor & Nature</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="research">🔬 Research Institutes</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="sculpture">Outdoor & Nature</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="research">Research Institutes</button>
         <span class="text-[#555] shrink-0">·</span>
         <!-- Iconic Clean Cultural Cities -->
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Utrecht">🇳🇱 Utrecht</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Amsterdam">🇳🇱 Amsterdam</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="London">🇬🇧 London</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="New York">🇺🇸 New York</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Paris">🇫🇷 Paris</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Berlin">🇩🇪 Berlin</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Tokyo">🇯🇵 Tokyo</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Milan">🇮🇹 Milan</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Hanoi">🇻🇳 Hanoi</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Adelaide">🇦🇺 Adelaide</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Birzeit">🇵🇸 Birzeit</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Utrecht">Utrecht</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Amsterdam">Amsterdam</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="London">London</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="New York">New York</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Paris">Paris</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Berlin">Berlin</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Tokyo">Tokyo</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Milan">Milan</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Hanoi">Hanoi</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Adelaide">Adelaide</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Birzeit">Birzeit</button>
         <span class="text-[#555] shrink-0">·</span>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Russia">🇷🇺 Russia</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Belarus">🇧🇾 Belarus</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="North Korea">🇰🇵 North Korea</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Russia">Russia</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Belarus">Belarus</button>
+        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="North Korea">North Korea</button>
       </div>
 
       <!-- Subtle Globe Zoom Controls -->
@@ -535,20 +534,20 @@
 
           <!-- Quick Dropdown Menu for Plus button -->
           <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-80 text-[14px]">
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">🗺️ Curated 1-Day City Itineraries</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">🏭 Repurposed Architecture & Factories</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">🌲 Outdoor Sculpture Parks & Land Art</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show me independent spaces dedicated to video art, sound art, and experimental media">🎞️ Video, Sound & Time-Based Media</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is the difference between a Kunsthalle and a traditional museum?">🏛️ Kunsthalle vs Museum: The Difference</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">💼 W.A.G.E., Fair Pay & Museum Unions</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about Dutch research, BAK Utrecht, and Former West">🇳🇱 Dutch Research: BAK Utrecht</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is Arte Útil and the Commons at Van Abbe and Casco?">⚖️ Commons & Arte Útil: Casco & Van Abbe</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="How did Kunstinstituut Melly rename itself from Witte de With?">🏛️ Decolonial Renaming: Melly</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums and galleries are free to enter?">🎟️ Free Admission Spaces</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums are open on Mondays?">🕒 Monday Openings</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show spaces that do not take oil or weapons money">🌿 Fossil & Defense-Free</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about London's independent art spaces">📍 London Art Guide</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about New York's art spaces and board controversies">📍 New York Art Guide</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">Curated 1-Day City Itineraries</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">Repurposed Architecture & Factories</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">Outdoor Sculpture Parks & Land Art</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show me independent spaces dedicated to video art, sound art, and experimental media">Video, Sound & Time-Based Media</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is the difference between a Kunsthalle and a traditional museum?">Kunsthalle vs Museum: The Difference</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">W.A.G.E., Fair Pay & Museum Unions</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about Dutch research, BAK Utrecht, and Former West">Dutch Research: BAK Utrecht</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is Arte Útil and the Commons at Van Abbe and Casco?">Commons & Arte Útil: Casco & Van Abbe</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="How did Kunstinstituut Melly rename itself from Witte de With?">Decolonial Renaming: Melly</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums and galleries are free to enter?">Free Admission Spaces</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums are open on Mondays?">Monday Openings</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show spaces that do not take oil or weapons money">Fossil & Defense-Free</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about London's independent art spaces">London Art Guide</button>
+            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about New York's art spaces and board controversies">New York Art Guide</button>
           </div>
         </div>
 
@@ -558,7 +557,7 @@
           <!-- Suggested Prompts Header (Exact user copywriting) -->
           <div class="w-full mt-7 mb-3 text-[14px] font-normal text-[#e4e4e7] flex items-center justify-between select-none leading-[120%]">
             <div class="flex items-center gap-2">
-              <span>💡</span> <span>Suggested prompts</span>
+              <span>Suggested prompts</span>
             </div>
             <!-- View controls: Minimize · Expand -->
             <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa]">
@@ -652,7 +651,6 @@
     <div class="bg-[#171717] border border-[#2e2e2e] rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden font-sans">
       <div class="p-3 border-b border-[#262626] bg-[#1a1a1a] flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <span>🏛️</span>
           <span class="text-[14px] font-normal text-white">Full Catalog of 203 Sanctuaries</span>
         </div>
         <button id="closeCatalogModalBtn" class="text-slate-400 hover:text-white p-1 text-[14px]">✕</button>
@@ -680,7 +678,6 @@
   <div id="detailDrawer" class="hidden fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-[#0a0d15]/98 backdrop-blur-2xl border-l border-[#1c212a] shadow-2xl flex flex-col">
     <div class="p-4 border-b border-[#1c212a] flex items-center justify-between bg-[#0e121c]">
       <div class="flex items-center gap-2">
-        <span class="text-[14px]">🔍</span>
         <span class="text-[14px] font-mono font-normal text-[#60a5fa] uppercase tracking-wider">Scholarly Governance & Funding Audit</span>
       </div>
       <button id="closeDetailBtn" class="text-slate-400 hover:text-white p-1 rounded hover:bg-[#1a2234] transition text-[18px]">✕</button>
@@ -700,7 +697,6 @@
       <!-- Modal Header -->
       <div class="px-4 py-3 border-b border-[#252f48] bg-[#141008] flex items-center justify-between shrink-0">
         <div class="flex items-center gap-2">
-          <span class="text-amber-400 text-[18px]">⚠️</span>
           <div>
             <h3 class="font-normal text-white text-[24px]">EXCLUSION AUDIT · Why MoMA is Excluded</h3>
             <p class="text-[14px] font-mono text-amber-300/80">Museum of Modern Art (New York) · Institutional Scrutiny</p>
@@ -714,7 +710,7 @@
         
         <!-- Summary Callout -->
         <div class="bg-[#181207] border border-[#78350f]/60 rounded-xl p-3 text-[14px] space-y-1">
-          <span class="text-amber-400 font-normal uppercase tracking-wider text-[14px] block font-mono">⚡ Exclusion Criteria Assessment</span>
+          <span class="text-amber-400 font-normal uppercase tracking-wider text-[14px] block font-mono">Exclusion Criteria Assessment</span>
           <p class="text-slate-200">
             Culture Atlas celebrates cultural institutions that champion curatorial freedom and clean underwriting. MoMA is excluded from our verified directory due to documented, unaddressed governance ties to defense contractors, private prisons, and controversial private equity financiers.
           </p>
@@ -754,7 +750,7 @@
 
         <!-- Section 4: What to Visit Instead -->
         <div class="bg-[#0e1628] border border-[#1d4ed8]/50 rounded-xl p-3 space-y-1.5">
-          <span class="text-[#60a5fa] font-normal text-[14px] uppercase tracking-wider block font-mono">🌿 Verified Ethical Alternatives in New York</span>
+          <span class="text-[#60a5fa] font-normal text-[14px] uppercase tracking-wider block font-mono">Verified Ethical Alternatives in New York</span>
           <p class="text-slate-300 text-[14px]">
             Instead of supporting corporate-compromised boards, visit New York's <strong>verified clean spaces</strong>—including <em>SculptureCenter, Artists Space, Swiss Institute, and The Kitchen</em>.
           </p>
@@ -765,17 +761,17 @@
       <!-- Modal Footer -->
       <div class="px-4 py-2.5 border-t border-[#252f48] bg-[#0c101c] flex items-center justify-between gap-2 shrink-0">
         <button id="momaAuditFlyNycBtn" class="px-3 py-1.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white text-[14px] font-normal rounded-xl transition flex items-center gap-1.5 shadow">
-          <span>🗽</span> <span>Explore 11 Clean NYC Spaces</span>
+          <span>Explore 11 Clean NYC Spaces</span>
         </button>
         <button id="momaAuditChatBtn" class="px-3 py-1.5 bg-[#172032] hover:bg-[#22304c] border border-[#2b3b5c] text-slate-200 hover:text-white text-[14px] rounded-xl transition flex items-center gap-1.5">
-          <span>💬</span> <span>Ask in Chat</span>
+          <span>Ask in Chat</span>
         </button>
       </div>
 
     </div>
   </div>
 
-  <!-- ⚙️ CURATOR INTELLIGENCE SETTINGS MODAL (Multi-Provider API Support) -->
+  <!-- CURATOR INTELLIGENCE SETTINGS MODAL (Multi-Provider API Support) -->
   <!-- ========================================================================= -->
   <div id="curatorSettingsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#18181b] border border-[#2e2e2e] rounded-3xl max-w-lg w-full p-6 shadow-2xl flex flex-col gap-4 max-h-[92vh] overflow-y-auto custom-scrollbar">
@@ -783,7 +779,6 @@
       <!-- Modal Header -->
       <div class="flex items-center justify-between border-b border-[#2e2e2e] pb-3 shrink-0">
         <div class="flex items-center gap-2.5">
-          <span class="text-[24px]">🏛️</span>
           <div>
             <h3 class="font-normal text-white text-[18px]">Curator Intelligence Settings</h3>
             <p class="text-[14px] text-[#a1a1aa]">Power conversational reasoning with live AI or use the built-in critical engine</p>
@@ -797,13 +792,13 @@
         <label class="block text-[14px] text-[#a1a1aa] font-normal">AI Intelligence Provider</label>
         <div class="grid grid-cols-3 gap-2">
           <button id="providerClaudeBtn" class="provider-tab-btn py-2 px-3 rounded-xl border border-[#3e3e3e] bg-[#27272a] text-white text-[14px] font-normal flex items-center justify-center gap-1.5 transition active:scale-95">
-            <span>🟣</span> <span>Claude</span>
+            <span>Claude</span>
           </button>
           <button id="providerOpenAIBtn" class="provider-tab-btn py-2 px-3 rounded-xl border border-[#27272a] bg-[#1f1f23] text-[#a1a1aa] hover:text-white text-[14px] font-normal flex items-center justify-center gap-1.5 transition active:scale-95">
-            <span>🟢</span> <span>OpenAI</span>
+            <span>OpenAI</span>
           </button>
           <button id="providerGeminiBtn" class="provider-tab-btn py-2 px-3 rounded-xl border border-[#27272a] bg-[#1f1f23] text-[#a1a1aa] hover:text-white text-[14px] font-normal flex items-center justify-center gap-1.5 transition active:scale-95">
-            <span>🔵</span> <span>Gemini</span>
+            <span>Gemini</span>
           </button>
         </div>
         <div id="providerTip" class="text-[14px] text-[#a1a1aa] pt-1">
@@ -8628,7 +8623,7 @@ FORMATTING & INTERACTION RULES:
         <p class="text-[#ececec]">
           How can I help you explore verified independent museums and ethical cultural spaces today?
         </p>
-      `, ['🗺️ Curated City Itineraries', '🏭 Repurposed Architecture', '🌲 Outdoor Sculpture Parks', '🇳🇱 Dutch Research: BAK']);
+      `, ['Curated City Itineraries', 'Repurposed Architecture', 'Outdoor Sculpture Parks', 'Dutch Research: BAK']);
     }
 
     function resetToNewChat() {
@@ -8803,7 +8798,7 @@ FORMATTING & INTERACTION RULES:
                 <strong>Verified Clean Alternatives:</strong> ${escapeHtml(s.alternatives)}
               </div>
             </div>
-          `, ['🏛️ Kunsthalle vs Museum', '🌿 Fossil & Defense-Free', '🗺️ Curated City Itineraries']);
+          `, ['Kunsthalle vs Museum', 'Fossil & Defense-Free', 'Curated City Itineraries']);
           return;
         }
 
@@ -9154,7 +9149,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Universal Step-Free & Accessible:</strong> ${formatInstLink(camden)} in London has step-free garden studios, loaner wheelchairs, accessible restrooms, and free admission for companions.<br>
               - <strong>100% Free Public Admission Route:</strong> In London, link ${formatInstLink(chis)} (Bow), Whitechapel Gallery, and Gasworks without spending a single penny on admission.
             </p>
-          `, ['🗺️ Curated City Itineraries', '🌲 Outdoor Sculpture Parks', '🎟️ Free Admission Spaces']);
+          `, ['Curated City Itineraries', 'Outdoor Sculpture Parks', 'Free Admission Spaces']);
           return;
         }
 
@@ -9619,7 +9614,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Tania Bruguera (Cuba):</strong> Pioneered *Arte Útil* (Useful Art), founding INSTAR (Instituto de Artivismo Hannah Arendt) to use art as legal literacy and civic empowerment against authoritarian repression.<br>
               - <strong>Civic Sanctuaries Mapped:</strong> ${formatInstLink(muac)} in Mexico City (university governance free from private corporate capture), ${formatInstLink(tamayo)} in Chapultepec, and ${formatInstLink(masp)} in São Paulo, famous for architect Lina Bo Bardi's radical transparent glass easels that democratize art viewing.
             </p>
-          `, ['⚖️ Arte Útil & The Commons', '🏛️ Kunsthalle vs Museum', '🗺️ Curated City Itineraries']);
+          `, ['Arte Útil & The Commons', 'Kunsthalle vs Museum', 'Curated City Itineraries']);
           return;
         }
 
