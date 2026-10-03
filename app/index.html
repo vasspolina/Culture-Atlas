@@ -428,39 +428,6 @@
         </div>
       </div>
 
-      <!-- Interactive City & Country Quick Bar -->
-      <div id="globeCityBar" class="absolute bottom-2 left-2.5 sm:left-4 right-20 sm:right-24 z-10 flex items-center overflow-x-auto custom-scrollbar whitespace-nowrap gap-1.5 select-none pointer-events-auto">
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">All Clean</button>
-        <span class="text-[#555] shrink-0">·</span>
-        <!-- Regional Fast Jumps -->
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="mena_africa">MidEast & Africa</button>
-        <span class="text-[#555] shrink-0">·</span>
-        <!-- Curatorial Focus Filters -->
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="sculpture">Outdoor & Nature</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="research">Research Institutes</button>
-        <span class="text-[#555] shrink-0">·</span>
-        <!-- Iconic Clean Cultural Cities -->
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Utrecht">Utrecht</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Amsterdam">Amsterdam</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="London">London</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="New York">New York</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Paris">Paris</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Berlin">Berlin</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Tokyo">Tokyo</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Milan">Milan</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Hanoi">Hanoi</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Adelaide">Adelaide</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Birzeit">Birzeit</button>
-        <span class="text-[#555] shrink-0">·</span>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Russia">Russia</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Belarus">Belarus</button>
-        <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="North Korea">North Korea</button>
-      </div>
 
       <!-- Subtle Globe Zoom Controls -->
       <div class="absolute bottom-2 right-2.5 sm:right-4 z-10 flex items-center gap-1.5">
@@ -490,7 +457,7 @@
 
         <!-- Typing Indicator -->
         <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center gap-2 mb-2">
-          <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] shrink-0">🏛️</div>
+          <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0">CA</div>
           <span class="inline-flex gap-1.5 items-center pl-1">
             <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
             <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
@@ -552,13 +519,45 @@
         </div>
 
 
-        <!-- Suggested Prompts (Visible on new/empty chat) -->
-        <div id="workSuggestionsSection" class="w-full transition-all duration-200">
-          <!-- Suggested Prompts Header (Exact user copywriting) -->
-          <div class="w-full mt-7 mb-3 text-[14px] font-normal text-[#e4e4e7] flex items-center justify-between select-none leading-[120%]">
-            <div class="flex items-center gap-2">
-              <span>Suggested prompts</span>
-            </div>
+        <!-- Interactive City & Country Quick Bar (Underneath Chat Window) -->
+        <div id="globeCityBar" class="w-full mt-3.5 flex items-center overflow-x-auto custom-scrollbar whitespace-nowrap gap-1.5 select-none py-1 shrink-0">
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">All Clean</button>
+          <span class="text-[#555] shrink-0">·</span>
+          <!-- Regional Fast Jumps -->
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="asiapacific">Asia-Pacific</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="mena_africa">MidEast & Africa</button>
+          <span class="text-[#555] shrink-0">·</span>
+          <!-- Curatorial Focus Filters -->
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="sculpture">Outdoor & Nature</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="research">Research Institutes</button>
+          <span class="text-[#555] shrink-0">·</span>
+          <!-- Iconic Clean Cultural Cities -->
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Utrecht">Utrecht</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Amsterdam">Amsterdam</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="London">London</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="New York">New York</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Paris">Paris</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Berlin">Berlin</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Tokyo">Tokyo</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Milan">Milan</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Hanoi">Hanoi</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Adelaide">Adelaide</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Birzeit">Birzeit</button>
+          <span class="text-[#555] shrink-0">·</span>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Russia">Russia</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Belarus">Belarus</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="North Korea">North Korea</button>
+        </div>
+
+        <!-- Suggested Prompts (Visible on new/empty chat, Arranged in 3 Rows) -->
+        <div id="workSuggestionsSection" class="w-full mt-4 transition-all duration-200">
+          <!-- Suggested Prompts Header -->
+          <div class="w-full mb-2.5 text-[14px] font-normal text-[#e4e4e7] flex items-center justify-between select-none leading-[120%]">
+            <span>Suggested prompts</span>
             <!-- View controls: Minimize · Expand -->
             <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa]">
               <span class="text-[14px] text-[#71717a]">View controls:</span>
@@ -568,73 +567,54 @@
             </div>
           </div>
 
-          <!-- 4 Suggested Prompt Cards (Exact user copywriting) -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
-            <!-- Prompt 1: Find independent art spaces near me -->
+          <!-- Suggestions Arranged in 3 Rows (No Icons, Pure Typography) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 w-full">
+            <!-- Row 1 -->
             <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find independent art spaces near me">
-              <div class="flex items-start justify-between gap-2 mb-2">
-                <div class="w-6 h-6 text-[#38bdf8] flex items-center justify-center">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-                  </svg>
-                </div>
-                <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
-              </div>
-              <div>
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find independent art spaces near me</div>
-                <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Locate verified artist-run galleries and non-profits in your area.</div>
-              </div>
+              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find independent art spaces near me</div>
+              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Locate verified artist-run galleries and non-profits in your area.</div>
             </div>
 
-            <!-- Prompt 2: Who funds this museum? -->
             <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Who funds this museum?">
-              <div class="flex items-start justify-between gap-2 mb-2">
-                <div class="w-6 h-6 text-[#10b981] flex items-center justify-center">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                  </svg>
-                </div>
-                <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
-              </div>
-              <div>
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Who funds this museum?</div>
-                <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Audit Form 990 filings, public subsidies, and board conflict records.</div>
-              </div>
+              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Who funds this museum?</div>
+              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Audit Form 990 filings, public subsidies, and board conflict records.</div>
             </div>
 
-            <!-- Prompt 3: What are the opening hours and ticket prices? -->
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the opening hours and ticket prices?">
-              <div class="flex items-start justify-between gap-2 mb-2">
-                <div class="w-6 h-6 text-[#f59e0b] flex items-center justify-center">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                </div>
-                <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
-              </div>
-              <div>
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">What are the opening hours and ticket prices?</div>
-                <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Check admission policies, free entry days, and weekly hours.</div>
-              </div>
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">
+              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Curated 1-day city itineraries</div>
+              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Explore 100% clean gallery walks in London, Berlin, Paris, and New York.</div>
             </div>
 
-            <!-- Prompt 4: Find writing about this space in e-flux or MIT Press -->
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find writing about this space in e-flux or MIT Press">
-              <div class="flex items-start justify-between gap-2 mb-2">
-                <div class="w-6 h-6 text-[#a78bfa] flex items-center justify-center">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                  </svg>
-                </div>
-                <button class="try-pill px-2.5 py-0.5 rounded-full bg-[#2a2a2a] group-hover:bg-[#333] border border-[#383838] text-[14px] text-[#e4e4e7] transition font-normal">Try</button>
-              </div>
-              <div>
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find writing about this space in e-flux or MIT Press</div>
-                <div class="text-[14px] text-[#a1a1aa] leading-[120%]">Read critical theory, curatorial reviews, and institutional critique.</div>
-              </div>
+            <!-- Row 2 -->
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">
+              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Repurposed architecture & factories</div>
+              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Former industrial plants, breweries, and warehouses turned into art spaces.</div>
+            </div>
+
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">
+              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Outdoor sculpture parks & land art</div>
+              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Open-air sculpture centers, forest trails, and pastoral sanctuaries.</div>
+            </div>
+
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Which museums and galleries are free to enter?">
+              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Free admission spaces</div>
+              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Discover verified spaces that offer 100% free public admission.</div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Which museums are open on Mondays?">
+              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Monday openings</div>
+              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Art spaces welcoming visitors on Mondays when major institutions close.</div>
+            </div>
+
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What is the difference between a Kunsthalle and a traditional museum?">
+              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Kunsthalle vs traditional museum</div>
+              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">The structural distinction between non-collecting spaces and museums.</div>
+            </div>
+
+            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">
+              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">W.A.G.E., fair pay & unionization</div>
+              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Artist compensation standards, institutional labor, and union contracts.</div>
             </div>
           </div>
         </div>
@@ -819,7 +799,7 @@
             placeholder="Paste sk-ant-... or sk-... or AIzaSy..." 
             class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white px-3.5 py-2.5 rounded-xl focus:outline-none focus:border-[#60a5fa] transition font-mono pr-10"
           />
-          <button id="toggleKeyVisibilityBtn" class="absolute right-3 text-[#71717a] hover:text-white text-[14px] p-1" title="Toggle visibility">👁️</button>
+          <button id="toggleKeyVisibilityBtn" class="absolute right-3 text-[#71717a] hover:text-white text-[12px] p-1 font-mono uppercase" title="Toggle visibility">Show</button>
         </div>
         <div class="text-[14px] text-[#71717a] flex items-center justify-between">
           <span>Tip: You can also paste your API key straight into the chat box anytime!</span>
@@ -837,14 +817,14 @@
 
       <!-- Connection Test Status Box -->
       <div id="connectionTestBox" class="hidden p-3 rounded-xl text-[14px] border flex items-center gap-2">
-        <span id="testStatusIcon">⏳</span>
+        <span id="testStatusIcon"></span>
         <span id="testStatusMsg" class="font-mono">Testing connection...</span>
       </div>
 
       <!-- Privacy Assurance -->
       <div class="p-3 bg-[#212121] border border-[#2e2e2e] rounded-xl text-[14px] text-[#a1a1aa] leading-[120%]">
         <p>
-          🔒 <strong>100% Client-Side Privacy:</strong> Your key is saved strictly in your local browser's <code class="text-white font-mono text-[14px]">localStorage</code>. Requests are sent directly from your browser to the provider's API. No intermediate backend logs your keys.
+          <strong>100% Client-Side Privacy:</strong> Your key is saved strictly in your local browser's <code class="text-white font-mono text-[14px]">localStorage</code>. Requests are sent directly from your browser to the provider's API. No intermediate backend logs your keys.
         </p>
       </div>
 
@@ -6691,7 +6671,7 @@
           const cityMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, activeCity));
           const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, activeCity));
           const cityCountry = cityMeta ? cityMeta.country : lastSelectedCountry;
-          if (badgeIcon) badgeIcon.textContent = '📍';
+          if (badgeIcon) badgeIcon.textContent = '';
           if (cityTitleEl) {
             cityTitleEl.textContent = `${activeCity.toUpperCase()} · ${cityMatches.length} CLEAN SPACES · STREET VIEW`;
           }
@@ -6705,7 +6685,7 @@
           cityBanner.classList.remove('hidden');
           const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, selectedCountryFilter));
           const countryCities = ALL_CITIES_REGISTRY.filter(c => matchC(c.country, selectedCountryFilter));
-          if (badgeIcon) badgeIcon.textContent = '🌍';
+          if (badgeIcon) badgeIcon.textContent = '';
           if (cityTitleEl) {
             cityTitleEl.textContent = `${selectedCountryFilter.toUpperCase()} · ${countryMatches.length} CLEAN SPACES IN ${countryCities.length} CITIES`;
           }
@@ -7158,7 +7138,7 @@
                 ctx.fillStyle = '#34d399';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText('🌳 ' + park.name, pMidX, pMidY);
+                ctx.fillText(park.name, pMidX, pMidY);
               }
             }
           });
@@ -7493,7 +7473,7 @@
                 ctx.stroke();
 
                 ctx.font = '9px "PP Telegraf", "PP Telegraph", sans-serif';
-                const stTxt = 'Ⓜ ' + st.name;
+                const stTxt = st.name;
                 const stw = ctx.measureText(stTxt).width;
                 ctx.fillStyle = 'rgba(7, 11, 20, 0.88)';
                 ctx.beginPath();
@@ -7937,9 +7917,9 @@
           <div>
             <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
               <span class="text-[13px] font-mono px-2 py-0.5 rounded border ${tierBadgeClass}">${tierLabel}</span>
-              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#101828] text-[#93c5fd] border border-[#202d48]">🏛️ ${escapeHtml(inst.governance_type || 'Civic')}</span>
-              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#141e17] text-[#6ee7b7] border border-[#1b3b2b]">🎨 ${escapeHtml(inst.curatorial_focus || 'Contemporary Art')}</span>
-              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#1f1910] text-amber-300 border border-[#3e2e18]">📅 Est. ${inst.year_founded || 'Historic'}</span>
+              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#101828] text-[#93c5fd] border border-[#202d48]">${escapeHtml(inst.governance_type || 'Civic')}</span>
+              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#141e17] text-[#6ee7b7] border border-[#1b3b2b]">${escapeHtml(inst.curatorial_focus || 'Contemporary Art')}</span>
+              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#1f1910] text-amber-300 border border-[#3e2e18]">Est. ${inst.year_founded || 'Historic'}</span>
             </div>
             <h2 class="text-[18px] sm:text-[20px] font-normal text-white leading-[120%]">${escapeHtml(inst.name)}</h2>
             <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${escapeHtml(inst.location || inst.city)} · ${inst.size || 'Independent Space'}</p>
@@ -7947,7 +7927,7 @@
 
           ${!isClean ? `
             <div class="bg-[#1f0d14] border border-rose-700/80 p-3.5 rounded-xl space-y-1.5">
-              <span class="text-rose-400 font-mono text-[13px] uppercase tracking-wider block font-bold">⚠️ Ethical Exclusion Notice</span>
+              <span class="text-rose-400 font-mono text-[13px] uppercase tracking-wider block font-bold">Ethical Exclusion Notice</span>
               <p class="text-rose-200 text-[14px] leading-relaxed">
                 <strong>Audit Conflict:</strong> ${escapeHtml(inst.watch || 'Corporate underwriting conflict / ethical audit flag.')}
               </p>
@@ -7958,7 +7938,7 @@
 
             ${cleanAlts.length > 0 ? `
               <div class="bg-[#0c1626] border border-blue-800/70 p-3.5 rounded-xl space-y-2">
-                <span class="text-blue-300 font-mono text-[13px] uppercase tracking-wider block font-bold">🌿 Verified Clean Sanctuaries in ${escapeHtml(inst.city)}</span>
+                <span class="text-blue-300 font-mono text-[13px] uppercase tracking-wider block font-bold">Verified Clean Sanctuaries in ${escapeHtml(inst.city)}</span>
                 <p class="text-slate-300 text-[13px]">Instead of supporting compromised boards, explore these verified independent spaces:</p>
                 <div class="space-y-1.5">
                   ${cleanAlts.slice(0, 4).map(a => `
@@ -7975,7 +7955,7 @@
           ${webUrl ? `
             <a href="${webUrl}" target="_blank" rel="noopener noreferrer" 
                class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[14px] rounded-xl transition shadow-md active:scale-95">
-              <span>🌐</span> <span>Visit Official Website (${domain})</span> <span>↗</span>
+              <span>Visit Official Website (${domain})</span> <span>↗</span>
             </a>
           ` : ''}
 
@@ -7988,7 +7968,7 @@
             <div class="bg-[#0b101c] p-3 rounded-xl border border-[#1e2a44] space-y-2.5">
               <div class="flex items-center justify-between border-b border-[#1a253c] pb-1.5">
                 <span class="text-[13px] font-normal text-white uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                  <span>🧭</span> <span>Visitor Planning & Practical Guide</span>
+                  <span>Visitor Planning & Practical Guide</span>
                 </span>
                 ${inst.visit_url ? `
                   <a href="${inst.visit_url}" target="_blank" rel="noopener noreferrer" class="text-[13px] text-[#60a5fa] hover:underline flex items-center gap-1 font-mono">
@@ -8000,21 +7980,21 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]">
                 <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
                   <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>🕒</span> <span>Hours & Schedule</span>
+                    <span>Hours & Schedule</span>
                   </div>
                   <div class="text-slate-200 font-normal text-[13px] leading-[120%]">${escapeHtml(inst.opening_hours || 'Check official site')}</div>
                 </div>
 
                 <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
                   <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>🎟️</span> <span>Admission & Tickets</span>
+                    <span>Admission & Tickets</span>
                   </div>
                   <div class="text-emerald-400 font-normal text-[13px] leading-[120%]">${escapeHtml(inst.admission_fee || 'Subsidized Admission')}</div>
                 </div>
 
                 <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
                   <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>📍</span> <span>Address & Quarter</span>
+                    <span>Address & Quarter</span>
                   </div>
                   <div class="text-slate-200 text-[13px] leading-[120%]">${escapeHtml(inst.address || inst.location)}</div>
                   ${inst.neighborhood ? `<div class="text-[12px] text-[#93c5fd] font-mono mt-0.5">${escapeHtml(inst.neighborhood)}</div>` : ''}
@@ -8022,7 +8002,7 @@
 
                 <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
                   <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>⏱️</span> <span>Suggested Duration</span>
+                    <span>Suggested Duration</span>
                   </div>
                   <div class="text-slate-200 text-[13px] leading-[120%]">${escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}</div>
                 </div>
@@ -8030,14 +8010,14 @@
 
               <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
                 <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                  <span>🚇</span> <span>Public Transit & Directions</span>
+                  <span>Public Transit & Directions</span>
                 </div>
                 <div class="text-[13px] text-slate-300 leading-[120%]">${escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}</div>
               </div>
 
               <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
                 <div class="text-[13px] text-amber-400/90 font-mono flex items-center gap-1 mb-1">
-                  <span>⭐</span> <span>Visitor Highlight & Signature Art</span>
+                  <span>Visitor Highlight & Signature Art</span>
                 </div>
                 <div class="text-[13px] text-slate-200 leading-[120%] font-normal">${escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}</div>
               </div>
@@ -8045,13 +8025,13 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]">
                 <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
                   <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>♿</span> <span>Accessibility</span>
+                    <span>Accessibility</span>
                   </div>
                   <div class="text-[13px] text-slate-300 leading-[120%]">${escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}</div>
                 </div>
                 <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
                   <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>☕</span> <span>Amenities & Facilities</span>
+                    <span>Amenities & Facilities</span>
                   </div>
                   <div class="text-[13px] text-slate-300 leading-[120%]">${escapeHtml(inst.amenities || 'Art bookshop, café, cloakroom, and lockers.')}</div>
                 </div>
@@ -8661,8 +8641,8 @@ FORMATTING & INTERACTION RULES:
         followUpHtml = `
           <div class="flex flex-wrap gap-1.5 mt-2.5 pt-2 border-t border-[#2a2a2a]">
             ${followUps.map(f => `
-              <button class="curator-followup-pill px-2.5 py-1 rounded-xl bg-[#242424] hover:bg-[#303030] border border-[#383838] hover:border-[#60a5fa] text-[13px] text-[#93c5fd] hover:text-white transition cursor-pointer font-normal flex items-center gap-1.5" data-query="${escapeHtml(f)}">
-                <span>💬</span> <span>${escapeHtml(f)}</span>
+              <button class="curator-followup-pill px-2.5 py-1 rounded-xl bg-[#242424] hover:bg-[#303030] border border-[#383838] hover:border-[#60a5fa] text-[13px] text-[#93c5fd] hover:text-white transition cursor-pointer font-normal" data-query="${escapeHtml(f)}">
+                <span>${escapeHtml(f)}</span>
               </button>
             `).join('')}
           </div>
@@ -8670,14 +8650,14 @@ FORMATTING & INTERACTION RULES:
       }
 
       div.innerHTML = `
-        <div class="w-7 h-7 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[14px] text-white shrink-0 mt-0.5 select-none" title="Culture Atlas Curator">
-          🏛️
+        <div class="w-7 h-7 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0 mt-0.5 select-none" title="Culture Atlas Curator">
+          CA
         </div>
         <div class="flex-1 text-[#ececec] text-[14px] leading-relaxed space-y-2">
           <div class="flex items-center justify-between gap-2 mb-0.5 select-none">
             <span class="text-[12px] font-mono text-[#71717a]">Culture Atlas Curator</span>
             <button class="curator-speak-btn px-2 py-0.5 rounded-lg bg-[#222] hover:bg-[#333] border border-[#383838] text-[12px] text-[#a1a1aa] hover:text-white transition flex items-center gap-1 cursor-pointer" title="Listen to audio briefing">
-              <span>🔊</span> <span class="speak-label">Listen</span>
+              <span class="speak-label">Listen</span>
             </button>
           </div>
           ${htmlContent}
@@ -8707,7 +8687,7 @@ FORMATTING & INTERACTION RULES:
         updateAIStatusUI();
         appendCuratorMessage(`
           <p class="text-emerald-400 font-normal">
-            ✓ ${pName} API Key detected and securely saved to your browser!
+            ${pName} API Key detected and securely saved to your browser!
           </p>
           <p class="text-slate-200">
             Live intelligence is now active with <strong>${aiModel}</strong>. Ask me anything about art history, exhibitions, or places to visit.
@@ -8781,7 +8761,7 @@ FORMATTING & INTERACTION RULES:
             <div class="border border-rose-900/60 bg-[#1a0a0f] p-3 rounded-xl space-y-2">
               <div class="flex items-center justify-between border-b border-rose-900/40 pb-1.5">
                 <span class="text-rose-400 font-mono text-[13px] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                  <span>🔴</span> <span>Forensic Sponsor Audit: ${escapeHtml(s.label)}</span>
+                  <span>Forensic Sponsor Audit: ${escapeHtml(s.label)}</span>
                 </span>
                 <span class="text-rose-300 font-mono text-[12px] px-2 py-0.5 rounded bg-rose-950/80 border border-rose-800">Tier B Excluded</span>
               </div>
@@ -8816,7 +8796,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>The Controversy & Media Backlash:</strong> The exhibition faced intense political attacks and conservative media scrutiny in Germany over political imagery, exposing how Western cultural establishments struggle with decentralized Global South governance.<br>
               - <strong>The Living Sanctuary in Culture Atlas:</strong> Visit ${formatInstLink(gudskul)} in Jakarta, the educational ecosystem formed by ruangrupa, Serrum, and Grafis Huru Hara, where lumbung continues as an everyday practice of mutual aid and collective learning.
             </p>
-          `, ['🇮🇩 Fly to Jakarta', 'Casco: The Commons', 'Decolonial Practice']);
+          `, ['Fly to Jakarta', 'Casco: The Commons', 'Decolonial Practice']);
           if (gudskul) selectInstitution(gudskul, true);
           return;
         }
@@ -8835,7 +8815,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Active Repatriation & Care:</strong> Sovereign frameworks require Western museums to unconditionally return looted ancestors and sacred regalia. Bicultural institutions like Te Papa in Aotearoa (New Zealand) operate under *tikanga Māori* (customary law), allowing Indigenous communities to determine conservation and ceremonial display protocols.<br>
               - <strong>Independent Indigenous Leadership:</strong> In Australia, ${formatInstLink(tandanya)} (Adelaide) is Australia's oldest Aboriginal-owned and governed multi-arts center, operating on Kaurna Yarta with zero resource-extraction sponsorship.
             </p>
-          `, ['🇦🇺 Fly to Adelaide: Tandanya', '⚖️ Benin Bronzes Restitution', 'Decolonial Practice']);
+          `, ['Fly to Adelaide: Tandanya', 'Benin Bronzes Restitution', 'Decolonial Practice']);
           if (tandanya) selectInstitution(tandanya, true);
           return;
         }
@@ -8856,7 +8836,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>The Museum as a Counter-Courtroom:</strong> Rather than selling decorative objects to commercial galleries, Forensic Architecture exhibits its findings inside public cultural spaces—such as ${formatInstLink(hkw)} in Berlin, ${formatInstLink(bak)} in Utrecht, and ${formatInstLink(chis)} in London—using the public visibility of the museum to hold states and corporations legally accountable.<br>
               - <strong>The 2019 Whitney Biennial Action:</strong> Forensic Architecture created *Triple-Chaser*, an investigative video exposing Whitney board vice-chair Warren Kanders' ownership of Safariland (which manufactured tear gas used against asylum seekers), directly precipitating Kanders' resignation.
             </p>
-          `, ['Whitney & Kanders Audit', '🇳🇱 Dutch Research: BAK', '🏛️ Kunsthalle vs Museum']);
+          `, ['Whitney & Kanders Audit', 'Dutch Research: BAK', 'Kunsthalle vs Museum']);
           return;
         }
 
@@ -8875,7 +8855,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Feminist Care & Reproductive Labor:</strong> As articulated by Silvia Federici, care work, community kitchens, and mutual aid are the foundations of society. Spaces like ${formatInstLink(casco)} in Utrecht make reproductive labor visible through its *Publishing Class*, community assemblies, and communal kitchen.<br>
               - <strong>Underground Dissident Solidarity:</strong> In repressive regimes, spaces like ${formatInstLink(dkrozy)} in St. Petersburg host feminist self-education libraries and anti-patriarchal study circles without state censorship.
             </p>
-          `, ['Casco: The Commons', 'DK Rozy: St. Petersburg', '💼 W.A.G.E. & Labor']);
+          `, ['Casco: The Commons', 'DK Rozy: St. Petersburg', 'W.A.G.E. & Labor']);
           return;
         }
 
@@ -8904,7 +8884,7 @@ FORMATTING & INTERACTION RULES:
               · ${formatInstLink(pal)} (Birzeit, Palestine): Independent civic trust cascading down terraced olive hills, preserving Palestinian memory, embroidery, and digital oral histories free of political factionalism.<br>
               · ${formatInstLink(town)} (Cairo, Egypt): Downtown Cairo non-profit sanctuary founded in 1998, catalyzing the independent contemporary art movement in Egypt outside state censorship.
             </p>
-          `, ['🇵🇸 Fly to Palestine: Palestinian Museum', '🇪🇬 Fly to Cairo: Townhouse', '🔴 Audit Saadiyat Island']);
+          `, ['Fly to Palestine: Palestinian Museum', 'Fly to Cairo: Townhouse', 'Audit Saadiyat Island']);
           if (pal) selectInstitution(pal, true);
           return;
         }
@@ -8930,7 +8910,7 @@ FORMATTING & INTERACTION RULES:
               · ${formatInstLink(sanart)} (Ho Chi Minh City): Vietnam's premier independent artist-run space founded in 2007 by Dinh Q. Lê, Tuan Andrew Nguyen, and Phnam Thao Nguyen. Funded via international non-profit cultural trusts (Prince Claus Fund, Arts Collaboratory), fostering critical curatorial dialogue.<br>
               · ${formatInstLink(nhasan)} (Hanoi): Founded in 1998 as Nha San Studio, it is the historic pioneer of Vietnamese experimental, installation, and performance art, run entirely through artist solidarity.
             </p>
-          `, ['🇻🇳 Fly to Vietnam', 'Sàn Art Ho Chi Minh', 'Nha San Collective Hanoi']);
+          `, ['Fly to Vietnam', 'Sàn Art Ho Chi Minh', 'Nha San Collective Hanoi']);
           if (sanart) selectInstitution(sanart, true);
           return;
         }
@@ -8958,7 +8938,7 @@ FORMATTING & INTERACTION RULES:
               · ${formatInstLink(viafarini)} (Milan): Established in 1991 at the Fabbrica del Vapore. Non-profit artist-run organization preserving the historic DOCVA visual arts documentation archive of over 40,000 artists, operating with zero commercial luxury sponsorship.<br>
               · ${formatInstLink(macro)} (Rome): Public civic contemporary museum with 100% free admission, operating as an open laboratory for independent research.
             </p>
-          `, ['🇮🇹 Fly to Milan', 'Viafarini DOCVA Archive', 'MACRO Rome']);
+          `, ['Fly to Milan', 'Viafarini DOCVA Archive', 'MACRO Rome']);
           if (viafarini) selectInstitution(viafarini, true);
           return;
         }
@@ -8990,7 +8970,7 @@ FORMATTING & INTERACTION RULES:
               · ${formatInstLink(dkrozy)} in St. Petersburg: Founded by artist collective Chto Delat. Zero oligarch or state money. Operates the Rosa Luxemburg library, School of Engaged Art, and mutual-aid community assemblies.<br>
               · ${formatInstLink(typo)} in Krasnodar: Founded by artist group ZIP. Independent crowdfunding, community art school, and regional contemporary laboratory.
             </p>
-          `, ['🇷🇺 Fly to Russia', '🏛️ Audit dossier on GES-2', '🏛️ Audit dossier on Hermitage', 'Belarus Art Scene']);
+          `, ['Fly to Russia', 'Audit dossier on GES-2', 'Audit dossier on Hermitage', 'Belarus Art Scene']);
           filterByCountry('Russia', true);
           return;
         }
@@ -9014,7 +8994,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>The Historic Dissident Sanctuary (Mapped in Culture Atlas):</strong><br>
               · ${formatInstLink(ygal)} (Minsk): Founded in 2009 by Anna Chistoserdova and Valentyna Kiselyova. Funded through independent cultural entrepreneurship and community support, zero state subsidies. It served as the central home for Belarusian-language literature, non-conformist visual art, and civil society forums until regime crackdowns forced physical dispersal in 2020.
             </p>
-          `, ['🇧🇾 Fly to Belarus', 'Russia Art Scene', 'North Korea Art Scene']);
+          `, ['Fly to Belarus', 'Russia Art Scene', 'North Korea Art Scene']);
           filterByCountry('Belarus', true);
           return;
         }
@@ -9040,7 +9020,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>The Dissident Counter-Public (Mapped in Culture Atlas):</strong><br>
               · ${formatInstLink(sunmu)} (DMZ Peace Corridor): Founded by pseudonymous North Korean defector artist Sun Mu ('without borders'). Uses socialist realist iconography subversively to critique totalitarian brainwashing, preserve defector testimonies, and advocate for human rights.
             </p>
-          `, ['🇰🇵 Fly to North Korea', '🏛️ Audit dossier on Mansudae', 'Russia Art Scene', 'Belarus Art Scene']);
+          `, ['Fly to North Korea', 'Audit dossier on Mansudae', 'Russia Art Scene', 'Belarus Art Scene']);
           flyTo(126.7797, 37.7592, 3.6);
           return;
         }
@@ -9064,7 +9044,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>${formatInstLink(artsp)} (New York):</strong> Founded in 1972 as an alternative space where conceptual artists bypassed commercial gallery dealers to present direct political critiques.<br>
               - <strong>${formatInstLink(white)} (London):</strong> Presented early European conceptual retrospectives, challenging traditional medium hierarchies.
             </p>
-          `, ['🎞️ Video, Sound & Media Art', '🏛️ Kunsthalle vs Museum', '🇳🇱 Dutch Research: BAK']);
+          `, ['Video, Sound & Media Art', 'Kunsthalle vs Museum', 'Dutch Research: BAK']);
           return;
         }
 
@@ -9087,7 +9067,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>${formatInstLink(iniva)} (London):</strong> Institute of International Visual Arts, founded to document the artistic contributions of global diaspora artists excluded from Eurocentric canons.<br>
               - <strong>${formatInstLink(hkw)} (Berlin):</strong> Directs global research platforms and assemblies interrogating how Western museum classifications separated cultural artifacts from their living spiritual and ecological contexts.
             </p>
-          `, ['⚖️ Benin Bronzes Restitution', '🏛️ Decolonial Renaming: Melly', '🇳🇱 Dutch Research: BAK']);
+          `, ['Benin Bronzes Restitution', 'Decolonial Renaming: Melly', 'Dutch Research: BAK']);
           return;
         }
 
@@ -9110,7 +9090,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>${formatInstLink(kroll)} (Otterlo):</strong> Seamlessly embedded within the De Hoge Veluwe national ecosystem, pairing land art with active conservation.<br>
               - <strong>${formatInstLink(vanabbe)} (Eindhoven):</strong> Ratified an official institutional climate charter in 2021 prohibiting any sponsorship from fossil fuels and enforcing low-emission loan transports.
             </p>
-          `, ['🌲 Outdoor Sculpture Parks', '🇳🇱 Dutch Research: BAK', '🌿 Fossil & Defense-Free']);
+          `, ['Outdoor Sculpture Parks', 'Dutch Research: BAK', 'Fossil & Defense-Free']);
           return;
         }
 
@@ -9127,7 +9107,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>The Mega-Museum as Brand Value Driver:</strong> When a major museum exhibits an artist, their auction market prices skyrocket. Billionaire collectors sit on museum acquisition committees to ensure their own private holdings are validated and appreciated.<br>
               - <strong>The Culture Atlas Antidote:</strong> We prioritize public non-profit spaces, non-collecting kunsthalles, and artist-run commons where art remains an active public good rather than an offshore financial instrument.
             </p>
-          `, ['🏛️ Kunsthalle vs Museum', '📖 MIT Press Theory Books', '💼 W.A.G.E. & Museum Unions']);
+          `, ['Kunsthalle vs Museum', 'MIT Press Theory Books', 'W.A.G.E. & Museum Unions']);
           return;
         }
 
@@ -9184,7 +9164,7 @@ FORMATTING & INTERACTION RULES:
             appendCuratorMessage(`
               <div class="mt-2 flex items-center gap-2">
                 <button class="copy-itinerary-btn px-2.5 py-1 rounded bg-[#242424] hover:bg-[#303030] text-[12px] font-mono text-[#93c5fd] hover:text-white border border-[#383838] transition cursor-pointer">
-                  📋 Copy Itinerary
+                  Copy Itinerary
                 </button>
               </div>
             `);
@@ -9455,7 +9435,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Address:</strong> ${inst.address || inst.location} (${inst.neighborhood || inst.city})<br>
               - <strong>Estimated Visit Duration:</strong> About ${inst.visit_duration || '1.5 – 2 hours'}.
             </p>
-          `, ['🕒 Opening Hours', '🎟️ Admission Policy', `📍 More in ${inst.city}`]);
+          `, ['Opening Hours', 'Admission Policy', `More in ${inst.city}`]);
           selectInstitution(inst, true);
           return;
         }
@@ -9471,7 +9451,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Recommended Duration:</strong> ${inst.visit_duration || '1.5 – 2 hours'}<br>
               - <strong>Key Highlight:</strong> <span class="text-amber-300/90">${inst.highlight}</span>
             </p>
-          `, ['🚇 Transit Directions', '🎟️ Ticket Info', `📍 More in ${inst.city}`]);
+          `, ['Transit Directions', 'Ticket Info', `More in ${inst.city}`]);
           selectInstitution(inst, true);
           return;
         }
@@ -9487,7 +9467,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Details & Pricing:</strong> ${inst.admission_details || inst.admission_fee || 'Subsidized entry'}.<br>
               - <strong>Accessibility:</strong> Free admission for assistants/companions.
             </p>
-          `, ['🕒 Opening Hours', '🚇 Transit Directions', '🏛️ Governance & Funding']);
+          `, ['Opening Hours', 'Transit Directions', 'Governance & Funding']);
           selectInstitution(inst, true);
           return;
         }
@@ -9505,7 +9485,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Safeguard:</strong> ${inst.ethical_safeguard}<br>
               - <strong>Transparency Grade:</strong> ${inst.transparency_grade || 'A'}
             </p>
-          `, ['🎟️ Admission Policy', '🚇 How to Get There', '⭐ Highlight Art']);
+          `, ['Admission Policy', 'How to Get There', 'Highlight Art']);
           selectInstitution(inst, true);
           return;
         }
@@ -9587,10 +9567,10 @@ FORMATTING & INTERACTION RULES:
                   </table>
                 </div>
                 <div class="flex gap-2 mt-2">
-                  <button class="inst-link px-2.5 py-1 rounded bg-[#242424] hover:bg-[#303030] text-[13px] text-[#93c5fd] border border-[#383838]" data-name="${escapeHtml(i1.name)}">Fly to ${escapeHtml(i1.name)} 📍</button>
-                  <button class="inst-link px-2.5 py-1 rounded bg-[#242424] hover:bg-[#303030] text-[13px] text-[#93c5fd] border border-[#383838]" data-name="${escapeHtml(i2.name)}">Fly to ${escapeHtml(i2.name)} 📍</button>
+                  <button class="inst-link px-2.5 py-1 rounded bg-[#242424] hover:bg-[#303030] text-[13px] text-[#93c5fd] border border-[#383838]" data-name="${escapeHtml(i1.name)}">Fly to ${escapeHtml(i1.name)}</button>
+                  <button class="inst-link px-2.5 py-1 rounded bg-[#242424] hover:bg-[#303030] text-[13px] text-[#93c5fd] border border-[#383838]" data-name="${escapeHtml(i2.name)}">Fly to ${escapeHtml(i2.name)}</button>
                 </div>
-              `, [`Audit dossier on ${i1.name}`, `Audit dossier on ${i2.name}`, '🏛️ Kunsthalle vs Museum']);
+              `, [`Audit dossier on ${i1.name}`, `Audit dossier on ${i2.name}`, 'Kunsthalle vs Museum']);
               return;
             }
           }
@@ -9631,7 +9611,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Mono-ha ("School of Things", Tokyo, 1968–1972):</strong> Led by philosopher/artist Lee Ufan and Nobuo Sekine. Rejecting Western illusionistic sculpture, Mono-ha juxtaposed raw natural materials (huge stones, soil, tree trunks) with raw industrial matter (steel plates, glass, wire), exploring the spatial and perceptual relationship between matter and the viewer.<br>
               - <strong>Civic & Independent Spaces:</strong> BankART 1929 in Yokohama (adaptive reuse of former waterfront port warehouses) and 21_21 DESIGN SIGHT in Tokyo, maintaining clean public/civic charters.
             </p>
-          `, ['🎞️ Video, Sound & Media Art', '🌲 Outdoor Sculpture Parks', '🏛️ Kunsthalle vs Museum']);
+          `, ['Video, Sound & Media Art', 'Outdoor Sculpture Parks', 'Kunsthalle vs Museum']);
           return;
         }
 
@@ -9651,7 +9631,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Open-Access & Environmental Stewardship:</strong> Nordic museums lead the world in releasing high-resolution collection images into the public domain (zero copyright restriction) and implementing strict ecological footprint caps on exhibition logistics.<br>
               - <strong>Verified Spaces Mapped:</strong> ${formatInstLink(louis)} in Humlebæk (harmoniously integrating modernist architecture with coastal nature) and ${formatInstLink(aros)} in Aarhus with Olafur Eliasson's rainbow glass skywalk.
             </p>
-          `, ['🌲 Outdoor Sculpture Parks', '🏛️ Kunsthalle vs Museum', '🇳🇱 Dutch Research: BAK']);
+          `, ['Outdoor Sculpture Parks', 'Kunsthalle vs Museum', 'Dutch Research: BAK']);
           return;
         }
 
@@ -10093,7 +10073,7 @@ FORMATTING & INTERACTION RULES:
           const sorted = [...PRIORITY_CITIES];
           const cityPills = sorted.map(c => {
             const count = ALL_INSTITUTIONS.filter(i => matchC(i.city, c.name)).length;
-            return `<button class="city-zoom-btn px-2.5 py-1 rounded-xl bg-[#262626] hover:bg-[#333] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] transition cursor-pointer inline-flex items-center gap-1.5" data-city="${escapeHtml(c.name)}"><span>📍</span> <span>${escapeHtml(c.name)}</span> <span class="text-[#93c5fd] font-mono text-[12px]">(${count})</span></button>`;
+            return `<button class="city-zoom-btn px-2.5 py-1 rounded-xl bg-[#262626] hover:bg-[#333] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] transition cursor-pointer inline-flex items-center gap-1.5" data-city="${escapeHtml(c.name)}"><span>${escapeHtml(c.name)}</span> <span class="text-[#93c5fd] font-mono text-[12px]">(${count})</span></button>`;
           }).join(' ');
 
           appendCuratorMessage(`
@@ -10115,7 +10095,7 @@ FORMATTING & INTERACTION RULES:
           const sortedCountries = [...COUNTRY_CENTROIDS];
           const countryPills = sortedCountries.map(c => {
             const count = ALL_INSTITUTIONS.filter(i => matchC(i.country, c.name)).length;
-            return `<button class="country-zoom-btn px-2.5 py-1 rounded-xl bg-[#262626] hover:bg-[#333] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] transition cursor-pointer inline-flex items-center gap-1.5" data-country="${escapeHtml(c.name)}"><span>🌍</span> <span>${escapeHtml(c.name)}</span> <span class="text-[#93c5fd] font-mono text-[12px]">(${count})</span></button>`;
+            return `<button class="country-zoom-btn px-2.5 py-1 rounded-xl bg-[#262626] hover:bg-[#333] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] transition cursor-pointer inline-flex items-center gap-1.5" data-country="${escapeHtml(c.name)}"><span>${escapeHtml(c.name)}</span> <span class="text-[#93c5fd] font-mono text-[12px]">(${count})</span></button>`;
           }).join(' ');
 
           appendCuratorMessage(`
@@ -11376,8 +11356,8 @@ FORMATTING & INTERACTION RULES:
         const card = copyItineraryBtn.closest('.curator-message-wrap');
         const text = card ? card.innerText.replace(/Culture Atlas Curator|Listen|Stop|Copy Itinerary|Copied!|💬.*$/g, '').trim() : '';
         navigator.clipboard.writeText(text).then(() => {
-          copyItineraryBtn.textContent = '✓ Copied!';
-          setTimeout(() => { copyItineraryBtn.textContent = '📋 Copy Itinerary'; }, 2500);
+          copyItineraryBtn.textContent = 'Copied!';
+          setTimeout(() => { copyItineraryBtn.textContent = 'Copy Itinerary'; }, 2500);
         });
         return;
       }
@@ -11593,10 +11573,10 @@ FORMATTING & INTERACTION RULES:
     toggleKeyVisibilityBtn?.addEventListener('click', () => {
       if (aiApiKeyInput.type === 'password') {
         aiApiKeyInput.type = 'text';
-        toggleKeyVisibilityBtn.textContent = '🔒';
+        toggleKeyVisibilityBtn.textContent = 'Hide';
       } else {
         aiApiKeyInput.type = 'password';
-        toggleKeyVisibilityBtn.textContent = '👁️';
+        toggleKeyVisibilityBtn.textContent = 'Show';
       }
     });
 
@@ -11608,15 +11588,15 @@ FORMATTING & INTERACTION RULES:
         return;
       }
       if (k.startsWith('sk-ant-')) {
-        keyDetectBadge.textContent = '🟣 Anthropic Claude key detected';
+        keyDetectBadge.textContent = 'Anthropic Claude key detected';
         keyDetectBadge.className = 'text-[14px] font-mono text-purple-400';
         updateProviderUI('anthropic');
       } else if (k.startsWith('sk-') || k.startsWith('sk-proj-')) {
-        keyDetectBadge.textContent = '🟢 OpenAI key detected';
+        keyDetectBadge.textContent = 'OpenAI key detected';
         keyDetectBadge.className = 'text-[14px] font-mono text-emerald-400';
         updateProviderUI('openai');
       } else if (k.startsWith('AIza')) {
-        keyDetectBadge.textContent = '🔵 Google Gemini key detected';
+        keyDetectBadge.textContent = 'Google Gemini key detected';
         keyDetectBadge.className = 'text-[14px] font-mono text-blue-400';
         updateProviderUI('gemini');
       } else {
@@ -11634,19 +11614,19 @@ FORMATTING & INTERACTION RULES:
       const model = aiModelSelect.value;
       connectionTestBox.classList.remove('hidden', 'border-emerald-500/30', 'bg-emerald-500/10', 'text-emerald-400', 'border-rose-500/30', 'bg-rose-500/10', 'text-rose-400');
       connectionTestBox.classList.add('border-[#3e3e3e]', 'bg-[#27272a]', 'text-[#d4d4d4]');
-      testStatusIcon.textContent = '⏳';
+      testStatusIcon.textContent = '';
       testStatusMsg.textContent = 'Testing connection with live API...';
 
       const res = await testAPIConnection(currentSelectedProvider, key, model);
       if (res.success) {
         connectionTestBox.classList.remove('border-[#3e3e3e]', 'bg-[#27272a]', 'text-[#d4d4d4]');
         connectionTestBox.classList.add('border-emerald-500/30', 'bg-emerald-500/10', 'text-emerald-400');
-        testStatusIcon.textContent = '✓';
+        testStatusIcon.textContent = '';
         testStatusMsg.textContent = res.message;
       } else {
         connectionTestBox.classList.remove('border-[#3e3e3e]', 'bg-[#27272a]', 'text-[#d4d4d4]');
         connectionTestBox.classList.add('border-rose-500/30', 'bg-rose-500/10', 'text-rose-400');
-        testStatusIcon.textContent = '✕';
+        testStatusIcon.textContent = '';
         testStatusMsg.textContent = res.error;
       }
     });
@@ -11724,13 +11704,13 @@ FORMATTING & INTERACTION RULES:
       const countryCities = ALL_CITIES_REGISTRY.filter(ci => matchC(ci.country, countryName));
       if (countryCities.length === 0) return;
 
-      let html = `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="all">🌐 World</button>`;
+      let html = `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="all">World</button>`;
       html += `<span class="text-[#555] shrink-0">·</span>`;
       html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0 shadow-sm" data-type="country" data-value="${escapeHtml(countryName)}">${escapeHtml(countryName)}</button>`;
       html += `<span class="text-[#555] shrink-0">·</span>`;
 
       countryCities.forEach(city => {
-        html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="${escapeHtml(city.name)}">📍 ${escapeHtml(city.name)} <span class="text-[#93c5fd] font-mono text-[12px]">(${city.count})</span></button>`;
+        html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="${escapeHtml(city.name)}">${escapeHtml(city.name)} <span class="text-[#93c5fd] font-mono text-[12px]">(${city.count})</span></button>`;
       });
 
       bar.innerHTML = html;
@@ -11740,7 +11720,7 @@ FORMATTING & INTERACTION RULES:
     function renderGlobeBarDefault() {
       const bar = document.getElementById('globeCityBar');
       if (!bar) return;
-      let html = `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">🌐 All</button>`;
+      let html = `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">All Clean</button>`;
       html += `<span class="text-[#555] shrink-0">·</span>`;
       const featuredCities = ['London', 'New York', 'Paris', 'Berlin', 'Amsterdam', 'Tokyo', 'Basel', 'Madrid'];
       featuredCities.forEach(cityName => {
@@ -11789,26 +11769,26 @@ FORMATTING & INTERACTION RULES:
     let selectedCategoryFilter = 'all';
 
     const FILTER_META = {
-      free: { icon: '🎟️', label: 'FREE ADMISSION' },
-      sculpture: { icon: '🌲', label: 'OUTDOOR & SCULPTURE' },
-      research: { icon: '🔬', label: 'RESEARCH & COMMONS' },
-      monday: { icon: '🕒', label: 'MONDAY OPENINGS' },
-      transit: { icon: '🚇', label: 'PUBLIC TRANSIT TIPS' },
-      accessibility: { icon: '♿', label: 'UNIVERSAL ACCESSIBILITY' },
-      amenities: { icon: '☕', label: 'CAFÉS & BOOKSHOPS' },
-      ethical: { icon: '🏛️', label: 'CLEAN FUNDING' },
-      artist_run: { icon: '🎨', label: 'ARTIST-RUN SPACES' },
-      fossil_free: { icon: '🌿', label: 'FOSSIL & DEFENSE-FREE' },
-      london: { icon: '📍', label: 'LONDON ART SCENE' },
-      nyc: { icon: '📍', label: 'NEW YORK ART SCENE' },
-      paris: { icon: '📍', label: 'PARIS ART SCENE' },
-      research_method: { icon: '🔬', label: 'RESEARCH METHODOLOGY' },
-      research_shows: { icon: '🏛️', label: 'LANDMARK EXHIBITIONS' },
-      research_restitution: { icon: '🌍', label: 'RESTITUTION & REPATRIATION' },
-      research_models: { icon: '⚖️', label: 'FUNDING MODELS RESEARCH' },
-      research_mit: { icon: '📚', label: 'MIT PRESS CANON' },
-      research_krauss: { icon: '🏛️', label: 'LATE CAPITALIST MUSEUM' },
-      research_kwon: { icon: '📍', label: 'SITE-SPECIFIC ART' }
+      free: { label: 'FREE ADMISSION' },
+      sculpture: { label: 'OUTDOOR & SCULPTURE' },
+      research: { label: 'RESEARCH & COMMONS' },
+      monday: { label: 'MONDAY OPENINGS' },
+      transit: { label: 'PUBLIC TRANSIT TIPS' },
+      accessibility: { label: 'UNIVERSAL ACCESSIBILITY' },
+      amenities: { label: 'CAFÉS & BOOKSHOPS' },
+      ethical: { label: 'CLEAN FUNDING' },
+      artist_run: { label: 'ARTIST-RUN SPACES' },
+      fossil_free: { label: 'FOSSIL & DEFENSE-FREE' },
+      london: { label: 'LONDON ART SCENE' },
+      nyc: { label: 'NEW YORK ART SCENE' },
+      paris: { label: 'PARIS ART SCENE' },
+      research_method: { label: 'RESEARCH METHODOLOGY' },
+      research_shows: { label: 'LANDMARK EXHIBITIONS' },
+      research_restitution: { label: 'RESTITUTION & REPATRIATION' },
+      research_models: { label: 'FUNDING MODELS RESEARCH' },
+      research_mit: { label: 'MIT PRESS CANON' },
+      research_krauss: { label: 'LATE CAPITALIST MUSEUM' },
+      research_kwon: { label: 'SITE-SPECIFIC ART' }
     };
 
     function applyFilters() {
@@ -11883,8 +11863,8 @@ FORMATTING & INTERACTION RULES:
       if (activeMapBanner && activeMapText) {
         if (selectedCategoryFilter !== 'all') {
           activeMapBanner.classList.remove('hidden');
-          const meta = FILTER_META[selectedCategoryFilter] || { icon: '📍', label: selectedCategoryFilter.toUpperCase() };
-          activeMapIcon.textContent = meta.icon;
+          const meta = FILTER_META[selectedCategoryFilter] || { label: selectedCategoryFilter.toUpperCase() };
+          if (activeMapIcon) activeMapIcon.textContent = '';
           activeMapText.textContent = `${meta.label} · ${filteredList.length} SPACES ON MAP`;
         } else {
           activeMapBanner.classList.add('hidden');
@@ -11926,7 +11906,7 @@ FORMATTING & INTERACTION RULES:
             exHtml = `
               <div class="mt-4 p-3.5 rounded-xl bg-[#1e0e14] border border-rose-800/80 text-left space-y-2">
                 <div class="flex items-center gap-1.5 text-rose-400 font-mono text-[13px] uppercase">
-                  <span>⚠️</span> <span>Ethical Exclusion Notice (${matches.length} Flagged)</span>
+                  <span>Ethical Exclusion Notice (${matches.length} Flagged)</span>
                 </div>
                 <p class="text-slate-300 text-[13px] leading-relaxed">
                   The space you searched is monitored and <strong>excluded from Culture Atlas</strong> under our ethical independence charter.
@@ -11979,29 +11959,29 @@ FORMATTING & INTERACTION RULES:
             </div>
             
             <div class="flex items-center gap-1.5 text-[14px] text-[#93c5fd] mt-1 font-mono">
-              <span>📍</span> <span class="truncate">${inst.location}</span>
+              <span class="truncate">${inst.location}</span>
               <span class="text-[#555]">·</span>
               <span class="text-[#a1a1aa] text-[14px] shrink-0">Est. ${inst.year_founded}</span>
             </div>
 
             <!-- Researcher Tags: Governance & Admission -->
             <div class="flex items-center gap-1.5 text-[14px] font-mono text-[#a1a1aa] mt-2 flex-wrap">
-              <span class="px-2 py-0.5 rounded-lg bg-[#2a2a2a] border border-[#383838] text-[#d4d4d4]">🏛️ ${inst.governance_type}</span>
-              <span class="px-2 py-0.5 rounded-lg bg-[#2a2a2a] border border-[#383838] text-[#d4d4d4]">🎟️ ${inst.admission_policy}</span>
+              <span class="px-2 py-0.5 rounded-lg bg-[#2a2a2a] border border-[#383838] text-[#d4d4d4]">${inst.governance_type}</span>
+              <span class="px-2 py-0.5 rounded-lg bg-[#2a2a2a] border border-[#383838] text-[#d4d4d4]">${inst.admission_policy}</span>
             </div>
 
             <!-- Quick Visitor Schedule & Pricing Pill -->
             <div class="mt-1.5 flex items-center gap-2 text-[14px] font-mono text-[#a1a1aa]">
-              <span class="truncate">🕒 ${inst.opening_hours ? inst.opening_hours.split(',')[0] : 'Open Weekly'}</span>
+              <span class="truncate">${inst.opening_hours ? inst.opening_hours.split(',')[0] : 'Open Weekly'}</span>
               <span class="text-[#555]">·</span>
-              <span class="text-emerald-400 shrink-0 truncate max-w-[120px]">🎟️ ${inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : 'Free / Subsidized'}</span>
+              <span class="text-emerald-400 shrink-0 truncate max-w-[120px]">${inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : 'Free / Subsidized'}</span>
             </div>
 
             <p class="text-[14px] text-[#d4d4d4] mt-2 leading-[120%] line-clamp-2">${inst.curator_recommendation || inst.funding}</p>
             
             ${inst.watch ? `
               <div class="mt-2 pt-1.5 border-t border-[#2e2e2e] text-[14px] text-amber-300/80 truncate flex items-center gap-1 font-mono">
-                <span>⚠️</span> <span>${inst.watch}</span>
+                <span>${inst.watch}</span>
               </div>
             ` : ''}
             
@@ -12009,7 +11989,6 @@ FORMATTING & INTERACTION RULES:
               <a href="${inst.website || inst.sources[0]}" target="_blank" rel="noopener noreferrer" 
                  class="website-pill inline-flex items-center gap-1 text-[14px] font-mono text-[#93c5fd] hover:text-white bg-[#2a2a2a] hover:bg-[#333] border border-[#383838] px-2.5 py-0.5 rounded-lg transition"
                  onclick="event.stopPropagation()">
-                <span>🌐</span>
                 <span class="truncate max-w-[120px]">${displayDomain}</span>
                 <span class="text-[14px]">↗</span>
               </a>
