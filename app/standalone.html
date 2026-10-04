@@ -267,27 +267,47 @@
       text-decoration-color: #ffffff;
     }
 
-    /* Unified Single-Canvas Architecture (Globe + Work Chat) */
+    /* Unified Split-Screen Architecture: Desktop Vertical Half-and-Half / Mobile Stacked */
     #globeViewport {
       height: 50%;
+      width: 100%;
       min-height: 0;
       flex: 1 1 50%;
       display: flex;
       background: #171717;
       border-bottom: 1px solid #262626;
-      transition: height 0.28s cubic-bezier(0.16, 1, 0.3, 1), flex 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      border-right: none;
+      transition: height 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s cubic-bezier(0.16, 1, 0.3, 1), flex 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     #workViewContainer {
       display: flex;
       height: 50%;
+      width: 100%;
       min-height: 0;
       flex: 1 1 50%;
       flex-direction: column;
-      align-items: center;
       background: #171717;
+      overflow: hidden;
+      padding-top: 0;
+      transition: height 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s cubic-bezier(0.16, 1, 0.3, 1), flex 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @media (min-width: 768px) {
+      #globeViewport {
+        height: 100%;
+        width: 50%;
+        border-bottom: none;
+        border-right: 1px solid #262626;
+      }
+      #workViewContainer {
+        height: 100%;
+        width: 50%;
+      }
+    }
+    #curatorScrollArea {
+      flex: 1 1 0%;
+      min-height: 0;
       overflow-y: auto;
-      padding-top: 47px;
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
     }
     #curatorMessages:empty {
       display: none;
@@ -364,12 +384,12 @@
   </header>
 
   <!-- ========================================================= -->
-  <!-- MAIN APP CONTAINER (Hosts Globe, Work Home, and Chat Stream) -->
+  <!-- MAIN APP CONTAINER (Desktop: 50/50 Vertical Split Screen / Mobile: Stacked) -->
   <!-- ========================================================= -->
-  <div id="mainAppContainer" class="relative w-full flex-1 flex flex-col bg-[#171717] overflow-hidden">
+  <div id="mainAppContainer" class="relative w-full flex-1 min-h-0 flex flex-col md:flex-row bg-[#171717] overflow-hidden">
 
-    <!-- 🌍 3D GLOBE VIEWPORT -->
-    <div id="globeViewport" class="relative w-full h-1/2 flex-1 min-h-0 flex items-center justify-center bg-[#171717] overflow-hidden select-none">
+    <!-- 🌍 3D GLOBE VIEWPORT (Desktop: Left Half / Mobile: Top Half) -->
+    <div id="globeViewport" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex items-center justify-center bg-[#171717] overflow-hidden select-none">
       
       <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
 
@@ -480,195 +500,202 @@
 
     </div>
 
-    <!-- RESIZABLE SPLITTER (Allows user to adjust 50/50 proportion smoothly, double-click resets to 50%) -->
-    <div id="globeSplitter" class="relative w-full h-[5px] bg-[#262626] hover:bg-[#3b82f6]/70 active:bg-[#3b82f6] cursor-row-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split height · Double-click to reset to 50%">
-      <div class="w-10 h-[2px] rounded-full bg-[#52525b] group-hover:bg-[#93c5fd] transition"></div>
+    <!-- RESIZABLE SPLITTER (Desktop: Vertical Drag / Mobile: Horizontal Drag · Double-click resets to 50%) -->
+    <div id="globeSplitter" class="relative w-full md:w-[6px] h-[5px] md:h-full bg-[#262626] hover:bg-[#3b82f6]/70 active:bg-[#3b82f6] cursor-row-resize md:cursor-col-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split screen · Double-click to reset to 50%">
+      <div class="w-10 md:w-[2px] h-[2px] md:h-10 rounded-full bg-[#52525b] group-hover:bg-[#93c5fd] transition"></div>
     </div>
 
     <!-- ========================================================= -->
+    <!-- 💼 UNIFIED WORK & CHAT CANVAS (Desktop: Right Half / Mobile: Bottom Half) -->
     <!-- ========================================================= -->
-    <!-- 💼 UNIFIED WORK & CHAT CANVAS (Single Combined Experience) -->
-    <!-- ========================================================= -->
-    <div id="workViewContainer" class="relative w-full h-1/2 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pb-12 w-full pt-[47px]">
-      <div class="w-full max-w-3xl flex flex-col items-center">
-        
-
-        <!-- Active Conversation Stream (Messages injected dynamically in work chat) -->
-        <div id="curatorMessages" class="w-full space-y-4 mb-4">
-          <!-- User queries and curator responses flow seamlessly here -->
-        </div>
-
-        <!-- Typing Indicator -->
-        <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center gap-2 mb-2">
-          <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0">CA</div>
-          <span class="inline-flex gap-1.5 items-center pl-1">
-            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-            <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-          </span>
-          <span class="text-[14px] text-[#a1a1aa]">Curator is researching...</span>
-        </div>
-
-        <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
-        <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-3.5 sm:p-4 shadow-xl transition relative shrink-0">
-          <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] focus:outline-none resize-none font-normal leading-[120%]"></textarea>
+    <div id="workViewContainer" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex flex-col bg-[#171717] overflow-hidden">
+      
+      <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
+      <div id="curatorScrollArea" class="flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-3 sm:px-5 pt-4 pb-2 w-full">
+        <div class="w-full max-w-3xl flex flex-col items-center">
           
-          <div class="flex items-center justify-between pt-2">
-            <!-- Left: Plus action button -->
-            <button id="workPlusBtn" class="w-8 h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center text-[18px] transition active:scale-95 cursor-pointer font-normal" title="Quick filters">
-              +
-            </button>
+          <!-- Active Conversation Stream (Messages injected dynamically in work chat) -->
+          <div id="curatorMessages" class="w-full space-y-4 mb-3">
+            <!-- User queries and curator responses flow seamlessly here -->
+          </div>
 
-            <!-- Right: Model, mic, and blue circular waveform/send button -->
-            <div class="flex items-center gap-2">
-              <button id="chatAddKeyBtn" class="text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal" title="Configure Claude, OpenAI, or Gemini API Key">
-                <span id="chatAddKeyIcon">🔑</span>
-                <span id="chatAddKeyLabel">Add API Key</span>
-              </button>
+          <!-- Typing Indicator -->
+          <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center gap-2 mb-2">
+            <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0">CA</div>
+            <span class="inline-flex gap-1.5 items-center pl-1">
+              <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+              <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+              <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+            </span>
+            <span class="text-[14px] text-[#a1a1aa]">Curator is researching...</span>
+          </div>
 
-              <button id="workModelBtn" class="text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
-                <span id="workModelLabel">Culture Atlas 4.0 Critical Engine</span>
-                <svg class="w-3.5 h-3.5 text-[#71717a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
+          <!-- Suggested Prompts (Visible on new/empty chat, Arranged in 3 Rows) -->
+          <div id="workSuggestionsSection" class="w-full mt-2 mb-4 transition-all duration-200">
+            <!-- Suggested Prompts Header -->
+            <div class="w-full mb-2.5 text-[14px] font-normal text-[#e4e4e7] flex items-center justify-between select-none leading-[120%]">
+              <span>Suggested prompts</span>
+              <!-- View controls: Minimize · Expand -->
+              <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa]">
+                <span class="text-[14px] text-[#71717a]">View controls:</span>
+                <button id="viewMinimizeBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Minimize</button>
+                <span class="text-[#555]">·</span>
+                <button id="viewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Expand</button>
+              </div>
+            </div>
 
-              <button id="workMicBtn" class="w-8 h-8 rounded-full hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white flex items-center justify-center transition cursor-pointer" title="Voice">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                  <line x1="12" y1="19" x2="12" y2="22" />
-                </svg>
-              </button>
+            <!-- Suggestions Arranged in 3 Rows (No Icons, Pure Typography) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 w-full">
+              <!-- Row 1 -->
+              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find independent art spaces near me">
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find independent art spaces near me</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Locate verified artist-run galleries and non-profits in your area.</div>
+              </div>
 
-              <button id="workSendBtn" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer" title="Send message">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 3v18M8 6v12M4 9v6M16 6v12M20 9v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
-                </svg>
-              </button>
+              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Who funds this museum?">
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Who funds this museum?</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Audit Form 990 filings, public subsidies, and board conflict records.</div>
+              </div>
+
+              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Curated 1-day city itineraries</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Explore 100% clean gallery walks in London, Berlin, Paris, and New York.</div>
+              </div>
+
+              <!-- Row 2 -->
+              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Repurposed architecture & factories</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Former industrial plants, breweries, and warehouses turned into art spaces.</div>
+              </div>
+
+              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Outdoor sculpture parks & land art</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Open-air sculpture centers, forest trails, and pastoral sanctuaries.</div>
+              </div>
+
+              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Which museums and galleries are free to enter?">
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Free admission spaces</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Discover verified spaces that offer 100% free public admission.</div>
+              </div>
+
+              <!-- Row 3 -->
+              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Which museums are open on Mondays?">
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Monday openings</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Art spaces welcoming visitors on Mondays when major institutions close.</div>
+              </div>
+
+              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What is the difference between a Kunsthalle and a traditional museum?">
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Kunsthalle vs traditional museum</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">The structural distinction between non-collecting spaces and museums.</div>
+              </div>
+
+              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">
+                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">W.A.G.E., fair pay & unionization</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Artist compensation standards, institutional labor, and union contracts.</div>
+              </div>
             </div>
           </div>
 
-          <!-- Quick Dropdown Menu for Plus button -->
-          <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-80 text-[14px]">
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">Curated 1-Day City Itineraries</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">Repurposed Architecture & Factories</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">Outdoor Sculpture Parks & Land Art</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show me independent spaces dedicated to video art, sound art, and experimental media">Video, Sound & Time-Based Media</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is the difference between a Kunsthalle and a traditional museum?">Kunsthalle vs Museum: The Difference</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">W.A.G.E., Fair Pay & Museum Unions</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about Dutch research, BAK Utrecht, and Former West">Dutch Research: BAK Utrecht</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is Arte Útil and the Commons at Van Abbe and Casco?">Commons & Arte Útil: Casco & Van Abbe</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="How did Kunstinstituut Melly rename itself from Witte de With?">Decolonial Renaming: Melly</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums and galleries are free to enter?">Free Admission Spaces</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums are open on Mondays?">Monday Openings</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show spaces that do not take oil or weapons money">Fossil & Defense-Free</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about London's independent art spaces">London Art Guide</button>
-            <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about New York's art spaces and board controversies">New York Art Guide</button>
-          </div>
         </div>
-
-
-        <!-- Interactive City & Country Quick Bar (Underneath Chat Window) -->
-        <div id="globeCityBar" class="w-full mt-3.5 flex items-center overflow-x-auto custom-scrollbar whitespace-nowrap gap-1.5 select-none py-1 shrink-0">
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">All Clean</button>
-          <span class="text-[#555] shrink-0">·</span>
-          <!-- Regional Fast Jumps -->
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="mena_africa">MidEast & Africa</button>
-          <span class="text-[#555] shrink-0">·</span>
-          <!-- Curatorial Focus Filters -->
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="sculpture">Outdoor & Nature</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="research">Research Institutes</button>
-          <span class="text-[#555] shrink-0">·</span>
-          <!-- Iconic Clean Cultural Cities -->
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Utrecht">Utrecht</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Amsterdam">Amsterdam</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="London">London</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="New York">New York</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Paris">Paris</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Berlin">Berlin</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Tokyo">Tokyo</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Milan">Milan</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Hanoi">Hanoi</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Adelaide">Adelaide</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Birzeit">Birzeit</button>
-          <span class="text-[#555] shrink-0">·</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Russia">Russia</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Belarus">Belarus</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="North Korea">North Korea</button>
-        </div>
-
-        <!-- Suggested Prompts (Visible on new/empty chat, Arranged in 3 Rows) -->
-        <div id="workSuggestionsSection" class="w-full mt-4 transition-all duration-200">
-          <!-- Suggested Prompts Header -->
-          <div class="w-full mb-2.5 text-[14px] font-normal text-[#e4e4e7] flex items-center justify-between select-none leading-[120%]">
-            <span>Suggested prompts</span>
-            <!-- View controls: Minimize · Expand -->
-            <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa]">
-              <span class="text-[14px] text-[#71717a]">View controls:</span>
-              <button id="viewMinimizeBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Minimize</button>
-              <span class="text-[#555]">·</span>
-              <button id="viewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px] underline-offset-2 hover:underline">Expand</button>
-            </div>
-          </div>
-
-          <!-- Suggestions Arranged in 3 Rows (No Icons, Pure Typography) -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 w-full">
-            <!-- Row 1 -->
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find independent art spaces near me">
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find independent art spaces near me</div>
-              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Locate verified artist-run galleries and non-profits in your area.</div>
-            </div>
-
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Who funds this museum?">
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Who funds this museum?</div>
-              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Audit Form 990 filings, public subsidies, and board conflict records.</div>
-            </div>
-
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Curated 1-day city itineraries</div>
-              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Explore 100% clean gallery walks in London, Berlin, Paris, and New York.</div>
-            </div>
-
-            <!-- Row 2 -->
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Repurposed architecture & factories</div>
-              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Former industrial plants, breweries, and warehouses turned into art spaces.</div>
-            </div>
-
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Outdoor sculpture parks & land art</div>
-              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Open-air sculpture centers, forest trails, and pastoral sanctuaries.</div>
-            </div>
-
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Which museums and galleries are free to enter?">
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Free admission spaces</div>
-              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Discover verified spaces that offer 100% free public admission.</div>
-            </div>
-
-            <!-- Row 3 -->
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Which museums are open on Mondays?">
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Monday openings</div>
-              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Art spaces welcoming visitors on Mondays when major institutions close.</div>
-            </div>
-
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What is the difference between a Kunsthalle and a traditional museum?">
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Kunsthalle vs traditional museum</div>
-              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">The structural distinction between non-collecting spaces and museums.</div>
-            </div>
-
-            <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">
-              <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">W.A.G.E., fair pay & unionization</div>
-              <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Artist compensation standards, institutional labor, and union contracts.</div>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </div>
+
+      <!-- 2. PINNED BOTTOM INPUT DOCK (Always stays firmly in place at bottom!) -->
+      <div id="workBottomDock" class="w-full shrink-0 flex flex-col items-center px-3 sm:px-5 pb-3 sm:pb-4 pt-2 bg-[#171717] border-t border-[#262626] z-10">
+        <div class="w-full max-w-3xl flex flex-col items-center">
+          
+          <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
+          <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-3 sm:p-3.5 shadow-xl transition relative">
+            <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] focus:outline-none resize-none font-normal leading-[120%]"></textarea>
+            
+            <div class="flex items-center justify-between pt-1.5">
+              <!-- Left: Plus action button -->
+              <button id="workPlusBtn" class="w-8 h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center text-[18px] transition active:scale-95 cursor-pointer font-normal" title="Quick filters">
+                +
+              </button>
+
+              <!-- Right: Model, mic, and blue circular waveform/send button -->
+              <div class="flex items-center gap-2">
+                <button id="chatAddKeyBtn" class="text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal" title="Configure Claude, OpenAI, or Gemini API Key">
+                  <span id="chatAddKeyIcon">🔑</span>
+                  <span id="chatAddKeyLabel">Add API Key</span>
+                </button>
+
+                <button id="workModelBtn" class="text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
+                  <span id="workModelLabel">Culture Atlas 4.0 Critical Engine</span>
+                  <svg class="w-3.5 h-3.5 text-[#71717a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+
+                <button id="workMicBtn" class="w-8 h-8 rounded-full hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white flex items-center justify-center transition cursor-pointer" title="Voice">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                    <line x1="12" y1="19" x2="12" y2="22" />
+                  </svg>
+                </button>
+
+                <button id="workSendBtn" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer" title="Send message">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3v18M8 6v12M4 9v6M16 6v12M20 9v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Quick Dropdown Menu for Plus button -->
+            <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-80 text-[14px]">
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">Curated 1-Day City Itineraries</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">Repurposed Architecture & Factories</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">Outdoor Sculpture Parks & Land Art</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show me independent spaces dedicated to video art, sound art, and experimental media">Video, Sound & Time-Based Media</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is the difference between a Kunsthalle and a traditional museum?">Kunsthalle vs Museum: The Difference</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">W.A.G.E., Fair Pay & Museum Unions</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about Dutch research, BAK Utrecht, and Former West">Dutch Research: BAK Utrecht</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is Arte Útil and the Commons at Van Abbe and Casco?">Commons & Arte Útil: Casco & Van Abbe</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="How did Kunstinstituut Melly rename itself from Witte de With?">Decolonial Renaming: Melly</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums and galleries are free to enter?">Free Admission Spaces</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums are open on Mondays?">Monday Openings</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show spaces that do not take oil or weapons money">Fossil & Defense-Free</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about London's independent art spaces">London Art Guide</button>
+              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about New York's art spaces and board controversies">New York Art Guide</button>
+            </div>
+          </div>
+
+          <!-- Interactive City & Country Quick Bar (Pinned under input card) -->
+          <div id="globeCityBar" class="w-full mt-2.5 flex items-center overflow-x-auto custom-scrollbar whitespace-nowrap gap-1.5 select-none py-0.5 shrink-0">
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0" data-type="all">All Clean</button>
+            <span class="text-[#555] shrink-0">·</span>
+            <!-- Regional Fast Jumps -->
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="asiapacific">Asia-Pacific</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="region" data-value="mena_africa">MidEast & Africa</button>
+            <span class="text-[#555] shrink-0">·</span>
+            <!-- Curatorial Focus Filters -->
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="sculpture">Outdoor & Nature</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="category" data-value="research">Research Institutes</button>
+            <span class="text-[#555] shrink-0">·</span>
+            <!-- Iconic Clean Cultural Cities -->
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Utrecht">Utrecht</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Amsterdam">Amsterdam</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="London">London</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="New York">New York</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Paris">Paris</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Berlin">Berlin</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Tokyo">Tokyo</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Milan">Milan</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Hanoi">Hanoi</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Adelaide">Adelaide</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="city" data-value="Birzeit">Birzeit</button>
+            <span class="text-[#555] shrink-0">·</span>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Russia">Russia</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="Belarus">Belarus</button>
+            <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0" data-type="country" data-value="North Korea">North Korea</button>
+          </div>
+
+        </div>
+      </div>
 
   </div>
 
@@ -8783,7 +8810,23 @@ FORMATTING & INTERACTION RULES:
     // 💬 CONVERSATIONAL CURATOR CHAT ENGINE (Messages & History)
     // =========================================================
     const curatorMessages = document.getElementById('curatorMessages');
+    const curatorScrollArea = document.getElementById('curatorScrollArea');
     const curatorTyping = document.getElementById('curatorTyping');
+
+    function scrollChatToBottom(smooth = false) {
+      const scrollArea = document.getElementById('curatorScrollArea') || document.getElementById('workViewContainer');
+      if (scrollArea) {
+        if (smooth) {
+          scrollArea.scrollTo({ top: scrollArea.scrollHeight, behavior: 'smooth' });
+        } else {
+          scrollArea.scrollTop = scrollArea.scrollHeight;
+        }
+        setTimeout(() => {
+          scrollArea.scrollTop = scrollArea.scrollHeight;
+        }, 40);
+      }
+    }
+    window.scrollChatToBottom = scrollChatToBottom;
 
     const curatorContext = {
       lastInst: null,
@@ -8809,6 +8852,8 @@ FORMATTING & INTERACTION RULES:
       if (suggestions) suggestions.classList.remove('hidden');
       const workInput = document.getElementById('workInput');
       if (workInput) workInput.value = '';
+      const scrollArea = document.getElementById('curatorScrollArea');
+      if (scrollArea) scrollArea.scrollTop = 0;
     }
 
     function appendUserMessage(text) {
@@ -8816,14 +8861,14 @@ FORMATTING & INTERACTION RULES:
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.add('hidden');
       const div = document.createElement('div');
-      div.className = 'flex justify-end my-1';
+      div.className = 'flex justify-end my-1 w-full';
       div.innerHTML = `
-        <div class="max-w-[80%] bg-[#2f2f2f] text-[#ececec] text-[14px] px-4 py-2.5 rounded-3xl shadow-sm leading-relaxed whitespace-pre-wrap select-text">
+        <div class="max-w-[85%] bg-[#2f2f2f] text-[#ececec] text-[14px] px-4 py-2.5 rounded-3xl shadow-sm leading-relaxed whitespace-pre-wrap select-text">
           ${escapeHtml(text)}
         </div>
       `;
       curatorMessages.appendChild(div);
-      curatorMessages.scrollTop = curatorMessages.scrollHeight;
+      scrollChatToBottom(true);
     }
 
     function appendCuratorMessage(htmlContent, followUps = []) {
@@ -8831,7 +8876,7 @@ FORMATTING & INTERACTION RULES:
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.add('hidden');
       const div = document.createElement('div');
-      div.className = 'curator-message-wrap flex items-start gap-3 my-2.5 select-text';
+      div.className = 'curator-message-wrap flex items-start gap-3 my-2.5 select-text w-full';
 
       let followUpHtml = '';
       if (followUps && followUps.length > 0) {
@@ -8862,7 +8907,7 @@ FORMATTING & INTERACTION RULES:
         </div>
       `;
       curatorMessages.appendChild(div);
-      curatorMessages.scrollTop = curatorMessages.scrollHeight;
+      scrollChatToBottom(true);
     }
 
     // Intelligent Conversational Curator Knowledge Engine
@@ -11345,13 +11390,28 @@ FORMATTING & INTERACTION RULES:
       if (!g) return;
       isGlobeMinimized = !isGlobeMinimized;
       isGlobeExpanded = false;
+      const isDesktop = window.innerWidth >= 768;
 
-      if (isGlobeMinimized) {
-        g.style.height = '140px';
-        g.style.flex = '0 0 140px';
+      if (isDesktop) {
+        if (isGlobeMinimized) {
+          g.style.width = '240px';
+          g.style.flex = '0 0 240px';
+          g.style.height = '100%';
+        } else {
+          g.style.width = '50%';
+          g.style.flex = '1 1 50%';
+          g.style.height = '100%';
+        }
       } else {
-        g.style.height = '50%';
-        g.style.flex = '1 1 50%';
+        if (isGlobeMinimized) {
+          g.style.height = '140px';
+          g.style.flex = '0 0 140px';
+          g.style.width = '100%';
+        } else {
+          g.style.height = '50%';
+          g.style.flex = '1 1 50%';
+          g.style.width = '100%';
+        }
       }
       setTimeout(resizeCanvas, 40);
     }
@@ -11361,13 +11421,28 @@ FORMATTING & INTERACTION RULES:
       if (!g) return;
       isGlobeExpanded = !isGlobeExpanded;
       isGlobeMinimized = false;
+      const isDesktop = window.innerWidth >= 768;
 
-      if (isGlobeExpanded) {
-        g.style.height = '75%';
-        g.style.flex = '1 1 75%';
+      if (isDesktop) {
+        if (isGlobeExpanded) {
+          g.style.width = '75%';
+          g.style.flex = '1 1 75%';
+          g.style.height = '100%';
+        } else {
+          g.style.width = '50%';
+          g.style.flex = '1 1 50%';
+          g.style.height = '100%';
+        }
       } else {
-        g.style.height = '50%';
-        g.style.flex = '1 1 50%';
+        if (isGlobeExpanded) {
+          g.style.height = '75%';
+          g.style.flex = '1 1 75%';
+          g.style.width = '100%';
+        } else {
+          g.style.height = '50%';
+          g.style.flex = '1 1 50%';
+          g.style.width = '100%';
+        }
       }
       setTimeout(resizeCanvas, 40);
     }
@@ -11377,7 +11452,7 @@ FORMATTING & INTERACTION RULES:
     document.getElementById('viewExpandBtn')?.addEventListener('click', handleViewExpand);
     document.getElementById('topViewExpandBtn')?.addEventListener('click', handleViewExpand);
 
-    // Interactive Splitter Drag between Globe and Work Chat
+    // Interactive Splitter Drag between Globe and Work Chat (Responsive Desktop/Mobile)
     const splitter = document.getElementById('globeSplitter');
     const globeVp = document.getElementById('globeViewport');
     const mainApp = document.getElementById('mainAppContainer');
@@ -11387,20 +11462,33 @@ FORMATTING & INTERACTION RULES:
 
       splitter.addEventListener('mousedown', (e) => {
         isDraggingSplitter = true;
-        document.body.style.cursor = 'row-resize';
+        const isDesktop = window.innerWidth >= 768;
+        document.body.style.cursor = isDesktop ? 'col-resize' : 'row-resize';
         document.body.style.userSelect = 'none';
         e.preventDefault();
       });
 
       window.addEventListener('mousemove', (e) => {
         if (!isDraggingSplitter) return;
+        const isDesktop = window.innerWidth >= 768;
         const rect = mainApp.getBoundingClientRect();
-        const offsetY = e.clientY - rect.top;
-        const minH = 120;
-        const maxH = rect.height - 180;
-        const clamped = Math.max(minH, Math.min(maxH, offsetY));
-        globeVp.style.height = clamped + 'px';
-        globeVp.style.flex = 'none';
+        if (isDesktop) {
+          const offsetX = e.clientX - rect.left;
+          const minW = 260;
+          const maxW = rect.width - 300;
+          const clamped = Math.max(minW, Math.min(maxW, offsetX));
+          globeVp.style.width = clamped + 'px';
+          globeVp.style.height = '100%';
+          globeVp.style.flex = 'none';
+        } else {
+          const offsetY = e.clientY - rect.top;
+          const minH = 130;
+          const maxH = rect.height - 180;
+          const clamped = Math.max(minH, Math.min(maxH, offsetY));
+          globeVp.style.height = clamped + 'px';
+          globeVp.style.width = '100%';
+          globeVp.style.flex = 'none';
+        }
         resizeCanvas();
       });
 
@@ -11415,8 +11503,16 @@ FORMATTING & INTERACTION RULES:
 
       // Double-click resets to exact 50% proportional split
       splitter.addEventListener('dblclick', () => {
-        globeVp.style.height = '50%';
-        globeVp.style.flex = '1 1 50%';
+        const isDesktop = window.innerWidth >= 768;
+        if (isDesktop) {
+          globeVp.style.width = '50%';
+          globeVp.style.height = '100%';
+          globeVp.style.flex = '1 1 50%';
+        } else {
+          globeVp.style.height = '50%';
+          globeVp.style.width = '100%';
+          globeVp.style.flex = '1 1 50%';
+        }
         resizeCanvas();
       });
 
@@ -11427,13 +11523,25 @@ FORMATTING & INTERACTION RULES:
 
       window.addEventListener('touchmove', (e) => {
         if (!isDraggingSplitter || !e.touches || !e.touches[0]) return;
+        const isDesktop = window.innerWidth >= 768;
         const rect = mainApp.getBoundingClientRect();
-        const offsetY = e.touches[0].clientY - rect.top;
-        const minH = 120;
-        const maxH = rect.height - 180;
-        const clamped = Math.max(minH, Math.min(maxH, offsetY));
-        globeVp.style.height = clamped + 'px';
-        globeVp.style.flex = 'none';
+        if (isDesktop) {
+          const offsetX = e.touches[0].clientX - rect.left;
+          const minW = 260;
+          const maxW = rect.width - 300;
+          const clamped = Math.max(minW, Math.min(maxW, offsetX));
+          globeVp.style.width = clamped + 'px';
+          globeVp.style.height = '100%';
+          globeVp.style.flex = 'none';
+        } else {
+          const offsetY = e.touches[0].clientY - rect.top;
+          const minH = 130;
+          const maxH = rect.height - 180;
+          const clamped = Math.max(minH, Math.min(maxH, offsetY));
+          globeVp.style.height = clamped + 'px';
+          globeVp.style.width = '100%';
+          globeVp.style.flex = 'none';
+        }
         resizeCanvas();
       }, { passive: true });
 
@@ -11444,6 +11552,24 @@ FORMATTING & INTERACTION RULES:
         }
       });
     }
+
+    window.addEventListener('resize', () => {
+      const isDesktop = window.innerWidth >= 768;
+      if (globeVp) {
+        if (isDesktop) {
+          if (!globeVp.style.width || globeVp.style.width.endsWith('%')) {
+            globeVp.style.width = '50%';
+            globeVp.style.height = '100%';
+          }
+        } else {
+          if (!globeVp.style.height || globeVp.style.height.endsWith('%')) {
+            globeVp.style.height = '50%';
+            globeVp.style.width = '100%';
+          }
+        }
+      }
+      resizeCanvas();
+    });
 
     function updateFilterChipsUI() {
       document.querySelectorAll('.inquiry-chip').forEach(btn => {
