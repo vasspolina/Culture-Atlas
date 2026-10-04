@@ -627,17 +627,17 @@ def build():
       text-overflow: ellipsis;
       white-space: nowrap;
     }}
-    /* Labels visible by default when zoomed in (zoom >= 12) */
-    .map-zoomed-in .inst-pin-label {{
+    /* Labels always visible on top of dots by default ("otherwise show names of spaces") */
+    .inst-pin-label {{
       opacity: 1;
       visibility: visible;
       transform: translateX(-50%) translateY(0);
     }}
-    /* Labels hidden when zoomed out below threshold to prevent overcrowding */
-    .map-zoomed-out .inst-pin-label {{
-      opacity: 0;
-      visibility: hidden;
-      transform: translateX(-50%) translateY(4px);
+    /* When a pin is clicked and its detail popup card is open, suppress that pin's label */
+    .custom-inst-pin.popup-active .inst-pin-label {{
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
     }}
     .custom-inst-pin:hover .inst-pin-label {{
       opacity: 1 !important;
@@ -7008,13 +7008,9 @@ def build():
       function updateCityZoomClasses() {{
         const mapEl = document.getElementById('cityMapContainer');
         if (!mapEl || !cityVectorMap) return;
-        if (cityVectorMap.getZoom() >= 12) {{
-          mapEl.classList.add('map-zoomed-in');
-          mapEl.classList.remove('map-zoomed-out');
-        }} else {{
-          mapEl.classList.remove('map-zoomed-in');
-          mapEl.classList.add('map-zoomed-out');
-        }}
+        // Keep names of spaces visible across street view zoom levels
+        mapEl.classList.add('map-zoomed-in');
+        mapEl.classList.remove('map-zoomed-out');
       }}
       cityVectorMap.on('zoom', updateCityZoomClasses);
       cityVectorMap.on('load', updateCityZoomClasses);
@@ -7227,6 +7223,13 @@ def build():
           closeButton: true,
           closeOnClick: true
         }}).setHTML(popupContent);
+
+        popup.on('open', () => {{
+          pinEl.classList.add('popup-active');
+        }});
+        popup.on('close', () => {{
+          pinEl.classList.remove('popup-active');
+        }});
 
         const marker = new maplibregl.Marker({{ element: pinEl }})
           .setLngLat([inst.lon, inst.lat])
