@@ -542,33 +542,52 @@ def build():
       <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
 
       <!-- FLOATING INSTITUTION CARD -->
-      <div id="floatingCard" class="hidden absolute z-20 pointer-events-auto bg-[#18181b]/95 backdrop-blur-md text-slate-100 rounded-2xl p-3 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 border border-[#2e2e2e] max-w-[340px] sm:max-w-[380px]">
+      <div id="floatingCard" class="hidden absolute z-20 pointer-events-auto bg-[#18181b]/95 backdrop-blur-md text-slate-100 rounded-2xl p-3.5 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 border border-[#2e2e2e] max-w-[340px] sm:max-w-[390px] w-max">
         <div class="flex items-start justify-between gap-2">
           <div class="truncate pr-1">
-            <div id="floatingCardTitle" class="font-normal text-[18px] text-white leading-[120%] truncate"></div>
-            <div id="floatingCardMeta" class="text-[14px] text-[#a1a1aa] mt-0.5 flex items-center gap-1 font-mono">
+            <a id="floatingCardTitle" href="#" target="_blank" rel="noopener noreferrer" 
+               class="font-normal text-[17px] sm:text-[18px] text-white hover:text-[#93c5fd] hover:underline leading-[120%] truncate block transition cursor-pointer"
+               onclick="event.stopPropagation()" title="Open official website"></a>
+            <div id="floatingCardMeta" class="text-[13px] text-[#a1a1aa] mt-0.5 flex items-center gap-1 font-mono">
               <span></span>
             </div>
           </div>
           <div class="flex items-center gap-1 shrink-0">
-            <span id="floatingCardTier" class="text-[14px] px-2 py-0.5 rounded-lg border border-emerald-900/60 bg-[#0a2016] text-emerald-400">Verified</span>
+            <span id="floatingCardTier" class="text-[12px] font-mono px-2 py-0.5 rounded-lg border border-emerald-900/60 bg-[#0a2016] text-emerald-400">Verified</span>
             <button id="closeFloatingCardBtn" class="text-[#a1a1aa] hover:text-white p-1 rounded-md hover:bg-[#262626] transition text-[14px] leading-none ml-0.5 cursor-pointer" title="Close">✕</button>
           </div>
         </div>
 
-        <div id="floatingCardHours" class="text-[14px] text-emerald-400 mt-1 truncate"></div>
+        <div id="floatingCardHours" class="text-[13px] text-emerald-400 mt-1 truncate font-mono"></div>
 
-        <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between text-[14px] gap-2 flex-wrap sm:flex-nowrap">
+        <!-- DIRECT WEB & VISITOR ACTION BUTTONS -->
+        <div class="mt-2.5 flex items-center gap-2 flex-wrap">
+          <a id="floatingCardDirectWebBtn" href="#" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-normal text-[13px] shadow transition active:scale-95 cursor-pointer"
+             onclick="event.stopPropagation()">
+            <span class="text-[13px]">🌐</span>
+            <span>Visit Website</span>
+            <span id="floatingCardDirectDomain" class="text-[11px] opacity-80 font-mono"></span>
+            <span class="text-[12px]">↗</span>
+          </a>
+          <a id="floatingCardDirectPlanBtn" href="#" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#222834] hover:bg-[#2b3548] text-[#93c5fd] hover:text-white border border-[#2f3d58] font-mono text-[12px] transition active:scale-95 cursor-pointer"
+             onclick="event.stopPropagation()">
+            <span>Plan Visit ↗</span>
+          </a>
+        </div>
+
+        <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between text-[13px] gap-2 flex-wrap sm:flex-nowrap">
           <a id="floatingCardWebLink" href="#" target="_blank" rel="noopener noreferrer" 
              class="inline-flex items-center gap-1 text-[#93c5fd] hover:text-white transition cursor-pointer"
              onclick="event.stopPropagation()">
-            <span id="floatingCardDomain" class="truncate max-w-[90px]">website</span> <span class="text-[14px]">↗</span>
+            <span id="floatingCardDomain" class="truncate max-w-[120px]">website</span> <span class="text-[12px]">↗</span>
           </a>
           <div class="flex items-center gap-2">
-            <button id="floatingCardDossierBtn" class="text-[#a1a1aa] hover:text-white transition text-[14px] cursor-pointer whitespace-nowrap" onclick="event.stopPropagation()">
+            <button id="floatingCardDossierBtn" class="text-[#a1a1aa] hover:text-white transition text-[13px] cursor-pointer whitespace-nowrap" onclick="event.stopPropagation()">
               Read info about institution →
             </button>
-            <button id="floatingCardAskCurator" class="inline-flex items-center gap-1 text-white hover:text-[#93c5fd] font-normal transition text-[14px] cursor-pointer" onclick="event.stopPropagation()">
+            <button id="floatingCardAskCurator" class="inline-flex items-center gap-1 text-white hover:text-[#93c5fd] font-normal transition text-[13px] cursor-pointer" onclick="event.stopPropagation()">
               <span>Ask</span>
             </button>
           </div>
@@ -6639,6 +6658,9 @@ def build():
       const tierColor = isA ? '#10b981' : '#38bdf8';
       const tierLabel = isA ? '● TIER A · SANCTUARY' : '● TIER B · WATCH';
 
+      const webUrl = getValidWebUrl(inst);
+      const domain = getDisplayDomain(webUrl) || 'website';
+
       ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
       const nameText = inst.name;
       const nameW = ctx.measureText(nameText).width;
@@ -6648,8 +6670,11 @@ def build():
       ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
       const subW = ctx.measureText(subText).width;
 
-      const cardW = Math.max(220, Math.min(340, Math.max(nameW, subW) + 28));
-      const cardH = 54;
+      ctx.font = '10px "PP Telegraf", monospace';
+      const webW = ctx.measureText('🌐 ' + domain + ' ↗').width;
+
+      const cardW = Math.max(240, Math.min(360, Math.max(nameW, subW, webW + 36) + 28));
+      const cardH = webUrl ? 74 : 54;
 
       let cardX = px - cardW / 2;
       cardX = Math.max(12, Math.min(width - cardW - 12, cardX));
@@ -6659,7 +6684,7 @@ def build():
 
       ctx.fillStyle = 'rgba(10, 16, 28, 0.96)';
       ctx.beginPath();
-      ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 6) : ctx.rect(cardX, cardY, cardW, cardH);
+      ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 8) : ctx.rect(cardX, cardY, cardW, cardH);
       ctx.fill();
 
       ctx.strokeStyle = tierColor;
@@ -6668,7 +6693,7 @@ def build():
 
       ctx.fillStyle = tierColor;
       ctx.beginPath();
-      ctx.roundRect ? ctx.roundRect(cardX, cardY, 3.5, cardH, [6, 0, 0, 6]) : ctx.rect(cardX, cardY, 3.5, cardH);
+      ctx.roundRect ? ctx.roundRect(cardX, cardY, 3.5, cardH, [8, 0, 0, 8]) : ctx.rect(cardX, cardY, 3.5, cardH);
       ctx.fill();
 
       ctx.font = 'bold 9px "PP Telegraf", monospace';
@@ -6699,9 +6724,49 @@ def build():
       }}
       ctx.fillText(displaySub, cardX + 12, cardY + 36);
 
+      if (webUrl) {{
+        const btnX = cardX + 12;
+        const btnY = cardY + 52;
+        const btnW = webW + 16;
+        const btnH = 16;
+
+        ctx.fillStyle = 'rgba(37, 99, 235, 0.25)';
+        ctx.strokeStyle = 'rgba(96, 165, 250, 0.70)';
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(btnX, btnY, btnW, btnH, 4) : ctx.rect(btnX, btnY, btnW, btnH);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.font = '10px "PP Telegraf", monospace';
+        ctx.fillStyle = '#93c5fd';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        ctx.fillText('🌐 ' + domain + ' ↗', btnX + 8, btnY + 2);
+
+        ctx.font = '9px "PP Telegraf", sans-serif';
+        ctx.fillStyle = '#64748b';
+        ctx.fillText('Click to open website', btnX + btnW + 8, btnY + 3);
+
+        hoveredMicroCardHitbox = {{
+          inst: inst,
+          webUrl: webUrl,
+          btnX: btnX,
+          btnY: btnY,
+          btnW: btnW,
+          btnH: btnH,
+          cardX: cardX,
+          cardY: cardY,
+          cardW: cardW,
+          cardH: cardH
+        }};
+        window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
+      }}
+
       ctx.restore();
     }}
 
+    let hoveredMicroCardHitbox = null;
     let cityClusterHitboxes = [];
     let cityBadgeHitboxes = [];
     let visibleDots = [];
@@ -7570,6 +7635,9 @@ def build():
           const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
           const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
 
+          const webUrl = getValidWebUrl(inst);
+          const domain = getDisplayDomain(webUrl) || 'website';
+
           ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
           const nameTxt = inst.name;
           const nw = ctx.measureText(nameTxt).width;
@@ -7578,7 +7646,7 @@ def build():
           ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
           const sw = ctx.measureText(subTxt).width;
 
-          const bw = Math.min(270, Math.max(160, Math.max(nw, sw) + 28));
+          const bw = Math.min(295, Math.max(160, Math.max(nw, sw) + 28 + (webUrl ? 26 : 0)));
 
           // Candidates to test
           const candidateOffsets = [
@@ -7669,6 +7737,31 @@ def build():
           ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.fillStyle = '#94a3b8';
           ctx.fillText(subTxt, bestX + 18, bestY + 19);
+
+          // Direct Web Link Button on Badge
+          let webBtnData = null;
+          if (webUrl) {{
+            const webBtnW = 20;
+            const webBtnH = 20;
+            const webBtnX = bestX + bw - webBtnW - 6;
+            const webBtnY = bestY + 8;
+
+            ctx.fillStyle = isHov ? 'rgba(37, 99, 235, 0.45)' : 'rgba(37, 99, 235, 0.25)';
+            ctx.strokeStyle = 'rgba(96, 165, 250, 0.75)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.roundRect ? ctx.roundRect(webBtnX, webBtnY, webBtnW, webBtnH, 4) : ctx.rect(webBtnX, webBtnY, webBtnW, webBtnH);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.font = '11px sans-serif';
+            ctx.fillStyle = '#93c5fd';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('↗', webBtnX + webBtnW / 2, webBtnY + webBtnH / 2);
+
+            webBtnData = {{ x: webBtnX, y: webBtnY, w: webBtnW, h: webBtnH, url: webUrl }};
+          }}
           ctx.restore();
 
           cityMuseumHitboxes.push({{
@@ -7678,7 +7771,8 @@ def build():
             w: bw,
             h: bh,
             pinX: pt.x,
-            pinY: pt.y
+            pinY: pt.y,
+            webBtn: webBtnData
           }});
         }});
 
@@ -7900,13 +7994,28 @@ def build():
         curatorContext.lastInst = inst;
         if (inst.city) curatorContext.lastCity = inst.city;
       }}
-      document.getElementById('floatingCardTitle').textContent = inst.name;
+      const webUrl = getValidWebUrl(inst);
+      const domain = getDisplayDomain(webUrl) || 'website';
+
+      const titleEl = document.getElementById('floatingCardTitle');
+      if (titleEl) {{
+        titleEl.textContent = inst.name;
+        if (webUrl) {{
+          titleEl.href = webUrl;
+          titleEl.setAttribute('title', `Open official website for ${{inst.name}}`);
+          titleEl.classList.add('hover:underline', 'cursor-pointer');
+        }} else {{
+          titleEl.removeAttribute('href');
+          titleEl.classList.remove('hover:underline', 'cursor-pointer');
+        }}
+      }}
+
       document.getElementById('floatingCardMeta').textContent = `${{inst.location}} · ${{inst.tier === 'A' ? 'Verified' : 'One Name'}}`;
       
       const tierBadge = document.getElementById('floatingCardTier');
       if (tierBadge) {{
         tierBadge.textContent = inst.tier === 'A' ? 'Verified' : inst.tier === 'B' ? 'One Name' : 'Unverified';
-        tierBadge.className = 'text-[14px] font-mono px-1.5 py-0.5 rounded border shrink-0 ' + 
+        tierBadge.className = 'text-[12px] font-mono px-2 py-0.5 rounded-lg border shrink-0 ' + 
           (inst.tier === 'A' ? 'text-emerald-400 border-emerald-900 bg-[#0a2016]' : 'text-blue-400 border-blue-900 bg-[#0d1d33]');
       }}
       
@@ -7917,8 +8026,30 @@ def build():
         hoursEl.textContent = `${{shortH}} · ${{shortF}}`;
       }}
 
-      const webUrl = getValidWebUrl(inst);
-      const domain = getDisplayDomain(webUrl);
+      // Direct Web Action Buttons on Map Popup
+      const directWebBtn = document.getElementById('floatingCardDirectWebBtn');
+      const directDomain = document.getElementById('floatingCardDirectDomain');
+      if (directWebBtn) {{
+        if (webUrl) {{
+          directWebBtn.href = webUrl;
+          if (directDomain) directDomain.textContent = `· ${{domain}}`;
+          directWebBtn.style.display = 'inline-flex';
+        }} else {{
+          directWebBtn.style.display = 'none';
+        }}
+      }}
+
+      const directPlanBtn = document.getElementById('floatingCardDirectPlanBtn');
+      const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : '';
+      if (directPlanBtn) {{
+        if (visitUrl && visitUrl !== webUrl) {{
+          directPlanBtn.href = visitUrl;
+          directPlanBtn.style.display = 'inline-flex';
+        }} else {{
+          directPlanBtn.style.display = 'none';
+        }}
+      }}
+
       const webEl = document.getElementById('floatingCardWebLink');
       const domEl = document.getElementById('floatingCardDomain');
       if (webEl && domEl) {{
@@ -12293,10 +12424,27 @@ FORMATTING & INTERACTION RULES:
       // 0. Check city museum hitboxes (when in city street view)
       for (let i = 0; i < cityMuseumHitboxes.length; i++) {{
         const m = cityMuseumHitboxes[i];
+        if (m.webBtn && mx >= m.webBtn.x - 4 && mx <= m.webBtn.x + m.webBtn.w + 4 && my >= m.webBtn.y - 4 && my <= m.webBtn.y + m.webBtn.h + 4) {{
+          window.open(m.webBtn.url, '_blank', 'noopener,noreferrer');
+          return;
+        }}
         const insideBadge = mx >= m.x && mx <= m.x + m.w && my >= m.y && my <= m.y + m.h;
         const nearPin = Math.hypot(m.pinX - mx, m.pinY - my) < 18;
         if (insideBadge || nearPin) {{
           selectInstitution(m.inst, false);
+          return;
+        }}
+      }}
+
+      // 0.2 Check hovered micro card web button
+      if (hoveredMicroCardHitbox && hoveredMicroCardHitbox.webUrl) {{
+        const hb = hoveredMicroCardHitbox;
+        if (mx >= hb.btnX - 4 && mx <= hb.btnX + hb.btnW + 4 && my >= hb.btnY - 4 && my <= hb.btnY + hb.btnH + 4) {{
+          window.open(hb.webUrl, '_blank', 'noopener,noreferrer');
+          return;
+        }}
+        if (mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH) {{
+          selectInstitution(hb.inst, false);
           return;
         }}
       }}
@@ -12418,6 +12566,15 @@ FORMATTING & INTERACTION RULES:
       if (Math.hypot(mx - (width - 38), my - 38) < 22) {{
         canvas.style.cursor = 'pointer';
         return;
+      }}
+
+      // Check hovered micro card
+      if (hoveredMicroCardHitbox && hoveredMicroCardHitbox.webUrl) {{
+        const hb = hoveredMicroCardHitbox;
+        if (mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH) {{
+          canvas.style.cursor = 'pointer';
+          return;
+        }}
       }}
 
       // Check city museum hitboxes (when in city street view)
