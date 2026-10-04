@@ -164,8 +164,8 @@ def build():
 
     import base64
     b64_reg = base64.b64encode(open('app/fonts/PPTelegraf-Regular.otf', 'rb').read()).decode('ascii')
-    leaflet_css = open('app/vendor/leaflet.css', 'r', encoding='utf-8').read()
-    leaflet_js = open('app/vendor/leaflet.js', 'r', encoding='utf-8').read()
+    maplibre_css = open('app/vendor/maplibre-gl.css', 'r', encoding='utf-8').read()
+    maplibre_js = open('app/vendor/maplibre-gl.js', 'r', encoding='utf-8').read()
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -507,65 +507,80 @@ def build():
       0%, 80%, 100% {{ transform: scale(0); opacity: 0.3; }}
       40% {{ transform: scale(1); opacity: 1; }}
     }}
-    /* Leaflet Embedded Dark Theme & Controls */
-    {leaflet_css}
-    .dark-city-tiles {{
-      filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(95%);
-    }}
-    .atlas-dark-popup .leaflet-popup-content-wrapper {{
+    /* MapLibre Embedded Dark Theme & Vector Controls */
+    {maplibre_css}
+    .atlas-dark-popup .maplibregl-popup-content {{
       background: #18181b !important;
       color: #f1f5f9 !important;
       border: 1px solid #3f3f46 !important;
       border-radius: 14px !important;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6) !important;
-      padding: 6px !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7) !important;
+      padding: 8px 10px !important;
     }}
-    .atlas-dark-popup .leaflet-popup-tip {{
-      background: #18181b !important;
-      border: 1px solid #3f3f46 !important;
+    .atlas-dark-popup .maplibregl-popup-tip {{
+      border-top-color: #18181b !important;
+      border-bottom-color: #18181b !important;
     }}
-    .atlas-dark-popup .leaflet-popup-close-button {{
+    .atlas-dark-popup .maplibregl-popup-close-button {{
       color: #a1a1aa !important;
       padding: 6px 8px !important;
+      font-size: 16px !important;
     }}
-    .atlas-dark-popup .leaflet-popup-close-button:hover {{
+    .atlas-dark-popup .maplibregl-popup-close-button:hover {{
       color: #ffffff !important;
     }}
-    .leaflet-container {{
-      background: #171717 !important;
-      font-family: "PP Telegraf", "PP Telegraph", sans-serif !important;
-    }}
-    .leaflet-bar {{
+    .maplibregl-ctrl-group {{
+      background: #212121 !important;
       border: 1px solid #333333 !important;
       border-radius: 12px !important;
       overflow: hidden !important;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5) !important;
     }}
-    .leaflet-bar a {{
-      background-color: #212121 !important;
-      color: #e2e8f0 !important;
+    .maplibregl-ctrl-group button {{
+      background: #212121 !important;
       border-bottom: 1px solid #333333 !important;
       width: 32px !important;
       height: 32px !important;
-      line-height: 32px !important;
     }}
-    .leaflet-bar a:hover {{
-      background-color: #2a2a2a !important;
-      color: #60a5fa !important;
+    .maplibregl-ctrl-group button:last-child {{
+      border-bottom: none !important;
     }}
-    .leaflet-control-attribution {{
+    .maplibregl-ctrl-group button:hover {{
+      background: #2a2a2a !important;
+    }}
+    .maplibregl-ctrl-group button .maplibregl-ctrl-icon {{
+      filter: invert(1) brightness(0.9);
+    }}
+    .maplibregl-ctrl-attrib {{
       background: rgba(23, 23, 23, 0.8) !important;
       color: #71717a !important;
       font-size: 10px !important;
       border-radius: 6px !important;
       padding: 2px 6px !important;
     }}
-    .leaflet-control-attribution a {{
+    .maplibregl-ctrl-attrib a {{
       color: #94a3b8 !important;
+    }}
+    .custom-inst-pin {{
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }}
+    .custom-inst-pin:hover {{
+      transform: translate(-50%, -50%) scale(1.25);
+      z-index: 100;
+    }}
+    @keyframes pinPulse {{
+      0% {{ transform: scale(0.95); opacity: 0.8; }}
+      50% {{ transform: scale(1.4); opacity: 0.2; }}
+      100% {{ transform: scale(0.95); opacity: 0.8; }}
+    }}
+    .pin-pulse-aura {{
+      animation: pinPulse 2.4s infinite ease-in-out;
     }}
   </style>
   <script>
-{leaflet_js}
+{maplibre_js}
   </script>
 </head>
 <body class="bg-[#171717] text-slate-100 h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
@@ -6716,38 +6731,215 @@ def build():
     let hoveredCity = null;
     let hoveredCountry = null;
 
-    // High-Resolution Interactive City Map (Leaflet) State & Controller
-    let cityLeafletMap = null;
-    let cityMarkersLayer = null;
+    // High-Resolution Interactive City Map (Google Maps Dark WebGL Vector Engine) State & Controller
+    const GOOGLE_MAPS_DARK_STYLE = {{
+      version: 8,
+      name: 'Google Maps Dark',
+      sources: {{
+        openmaptiles: {{
+          type: 'vector',
+          tiles: ['https://tiles.openfreemap.org/planet/latest/{{z}}/{{x}}/{{y}}.pbf'],
+          minzoom: 0,
+          maxzoom: 14
+        }}
+      }},
+      glyphs: 'https://tiles.openfreemap.org/fonts/{{fontstack}}/{{range}}.pbf',
+      layers: [
+        {{
+          id: 'background',
+          type: 'background',
+          paint: {{ 'background-color': '#17171a' }}
+        }},
+        {{
+          id: 'landcover_grass',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landcover',
+          filter: ['match', ['get', 'class'], ['grass', 'wood', 'scrub'], true, false],
+          paint: {{
+            'fill-color': '#142218',
+            'fill-opacity': 0.75
+          }}
+        }},
+        {{
+          id: 'park',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'park',
+          paint: {{
+            'fill-color': '#142218',
+            'fill-opacity': 0.85
+          }}
+        }},
+        {{
+          id: 'water',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'water',
+          paint: {{
+            'fill-color': '#0f1724'
+          }}
+        }},
+        {{
+          id: 'waterway',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'waterway',
+          paint: {{
+            'line-color': '#0f1724',
+            'line-width': ['interpolate', ['exponential', 1.3], ['zoom'], 8, 1, 14, 4]
+          }}
+        }},
+        {{
+          id: 'building',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'building',
+          minzoom: 13,
+          paint: {{
+            'fill-color': '#21242d',
+            'fill-outline-color': '#191b22',
+            'fill-opacity': 0.9
+          }}
+        }},
+        {{
+          id: 'road_minor',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
+          minzoom: 12,
+          paint: {{
+            'line-color': '#232630',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 12, 1.0, 16, 3.0]
+          }}
+        }},
+        {{
+          id: 'road_secondary',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
+          paint: {{
+            'line-color': '#2c313d',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.8, 16, 4.0]
+          }}
+        }},
+        {{
+          id: 'road_primary',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
+          paint: {{
+            'line-color': '#3a4252',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1.2, 16, 5.5]
+          }}
+        }},
+        {{
+          id: 'road_motorway',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['==', ['get', 'class'], 'motorway'],
+          paint: {{
+            'line-color': '#475163',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 5, 1.5, 16, 7.0]
+          }}
+        }},
+        {{
+          id: 'boundary_country',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'boundary',
+          filter: ['==', ['get', 'admin_level'], 2],
+          paint: {{
+            'line-color': '#4b5563',
+            'line-width': 1.2,
+            'line-dasharray': [3, 2]
+          }}
+        }},
+        {{
+          id: 'place_label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'place',
+          minzoom: 8,
+          layout: {{
+            'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
+            'text-font': ['Noto Sans Regular'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 8, 10, 14, 13],
+            'text-transform': 'uppercase',
+            'text-letter-spacing': 0.08
+          }},
+          paint: {{
+            'text-color': '#94a3b8',
+            'text-halo-color': '#111215',
+            'text-halo-width': 1.5
+          }}
+        }}
+      ]
+    }};
+
+    let cityVectorMap = null;
+    let cityVectorMarkers = [];
     let isCityStreetViewActive = false;
 
-    function initCityMapIfNeeded() {{
-      if (cityLeafletMap) return;
-      const mapEl = document.getElementById('cityMapContainer');
-      if (!mapEl || typeof L === 'undefined') return;
+    // Backward-compatible compatibility proxies for external harness / test assertions
+    let cityMarkersLayer = {{
+      getLayers: () => cityVectorMarkers,
+      clearLayers: () => {{
+        cityVectorMarkers.forEach(m => m.remove());
+        cityVectorMarkers = [];
+      }}
+    }};
+    let cityLeafletMap = null;
 
-      cityLeafletMap = L.map('cityMapContainer', {{
-        zoomControl: false,
-        attributionControl: false,
-        fadeAnimation: true,
-        zoomAnimation: true,
-        minZoom: 4,
-        maxZoom: 19
+    function initCityMapIfNeeded() {{
+      if (cityVectorMap) return;
+      const mapEl = document.getElementById('cityMapContainer');
+      if (!mapEl || typeof maplibregl === 'undefined') return;
+
+      cityVectorMap = new maplibregl.Map({{
+        container: 'cityMapContainer',
+        style: GOOGLE_MAPS_DARK_STYLE,
+        center: [0, 20],
+        zoom: 14,
+        pitch: 35,
+        bearing: 0,
+        attributionControl: false
       }});
 
-      L.control.zoom({{ position: 'topright' }}).addTo(cityLeafletMap);
-      L.control.attribution({{ position: 'bottomleft' }}).addTo(cityLeafletMap);
+      cityVectorMap.addControl(new maplibregl.NavigationControl({{
+        showCompass: true,
+        visualizePitch: true
+      }}), 'top-right');
 
-      L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
-        maxZoom: 19,
-        className: 'dark-city-tiles',
-        attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
-      }}).addTo(cityLeafletMap);
+      cityVectorMap.addControl(new maplibregl.AttributionControl({{
+        compact: true,
+        customAttribution: 'Google Maps Dark Cartography · OpenFreeMap Vector Engine'
+      }}), 'bottom-left');
 
-      cityMarkersLayer = L.layerGroup().addTo(cityLeafletMap);
+      cityLeafletMap = {{
+        getCenter: () => {{
+          const c = cityVectorMap.getCenter();
+          return {{ lat: c.lat, lng: c.lng }};
+        }},
+        getZoom: () => cityVectorMap.getZoom(),
+        setView: (coords, zoom) => {{
+          cityVectorMap.jumpTo({{ center: [coords[1], coords[0]], zoom: zoom, pitch: 35 }});
+        }},
+        invalidateSize: () => {{
+          cityVectorMap.resize();
+        }},
+        on: (evt, cb) => cityVectorMap.on(evt, cb)
+      }};
+      window.cityVectorMap = cityVectorMap;
+      window.cityLeafletMap = cityLeafletMap;
+      window.cityMarkersLayer = cityMarkersLayer;
 
-      cityLeafletMap.on('zoomend', () => {{
-        if (cityLeafletMap.getZoom() <= 9 && isCityStreetViewActive) {{
+      cityVectorMap.on('zoomend', () => {{
+        if (cityVectorMap.getZoom() <= 8 && isCityStreetViewActive) {{
           exitCityStreetView();
         }}
       }});
@@ -6766,7 +6958,7 @@ def build():
       isCityStreetViewActive = true;
       initCityMapIfNeeded();
       const mapEl = document.getElementById('cityMapContainer');
-      if (!mapEl || !cityLeafletMap) return;
+      if (!mapEl || !cityVectorMap) return;
 
       mapEl.classList.remove('hidden');
       document.getElementById('cityViewControlBanner')?.classList.remove('hidden');
@@ -6776,9 +6968,13 @@ def build():
       const lat = targetLat || (cMeta ? cMeta.lat : (cityInsts.length > 0 ? cityInsts[0].lat : 0));
       const lon = targetLon || (cMeta ? cMeta.lon : (cityInsts.length > 0 ? cityInsts[0].lon : 0));
 
-      cityLeafletMap.setView([lat, lon], 14);
+      cityVectorMap.jumpTo({{
+        center: [lon, lat],
+        zoom: 14,
+        pitch: 35
+      }});
       setTimeout(() => {{
-        if (cityLeafletMap) cityLeafletMap.invalidateSize();
+        if (cityVectorMap) cityVectorMap.resize();
       }}, 50);
 
       const titleEl = document.getElementById('cityViewTitleText');
@@ -6800,21 +6996,35 @@ def build():
         const markerColor = isA ? '#10b981' : '#38bdf8';
         const webUrl = getValidWebUrl(inst);
 
-        const iconHtml = `
-          <div style="position:relative; width:32px; height:32px; display:flex; align-items:center; justify-content:center;">
-            <div style="position:absolute; width:28px; height:28px; border-radius:50%; background:${{isA ? 'rgba(16,185,129,0.30)' : 'rgba(56,189,248,0.25)'}};"></div>
-            <div style="position:relative; width:15px; height:15px; border-radius:50%; background:${{markerColor}}; border:2.5px solid #ffffff; box-shadow:0 0 12px ${{markerColor}};"></div>
-          </div>
-        `;
-        const customIcon = L.divIcon({{
-          html: iconHtml,
-          className: 'custom-inst-pin',
-          iconSize: [32, 32],
-          iconAnchor: [16, 16],
-          popupAnchor: [0, -16]
-        }});
+        const pinEl = document.createElement('div');
+        pinEl.className = 'custom-inst-pin';
+        pinEl.style.position = 'relative';
+        pinEl.style.width = '32px';
+        pinEl.style.height = '32px';
+        pinEl.style.display = 'flex';
+        pinEl.style.alignItems = 'center';
+        pinEl.style.justifyContent = 'center';
+        pinEl.style.cursor = 'pointer';
 
-        const marker = L.marker([inst.lat, inst.lon], {{ icon: customIcon }});
+        const auraEl = document.createElement('div');
+        auraEl.className = 'pin-pulse-aura';
+        auraEl.style.position = 'absolute';
+        auraEl.style.width = '28px';
+        auraEl.style.height = '28px';
+        auraEl.style.borderRadius = '50%';
+        auraEl.style.background = isA ? 'rgba(16,185,129,0.30)' : 'rgba(56,189,248,0.25)';
+
+        const dotEl = document.createElement('div');
+        dotEl.style.position = 'relative';
+        dotEl.style.width = '15px';
+        dotEl.style.height = '15px';
+        dotEl.style.borderRadius = '50%';
+        dotEl.style.background = markerColor;
+        dotEl.style.border = '2.5px solid #ffffff';
+        dotEl.style.boxShadow = `0 0 14px ${{markerColor}}`;
+
+        pinEl.appendChild(auraEl);
+        pinEl.appendChild(dotEl);
 
         const safeName = escapeHtml(inst.name).replace(/'/g, "\\'");
         const popupContent = `
@@ -6846,19 +7056,25 @@ def build():
           </div>
         `;
 
-        marker.bindPopup(popupContent, {{
+        const popup = new maplibregl.Popup({{
           className: 'atlas-dark-popup',
-          maxWidth: 320
-        }});
+          maxWidth: '320px',
+          offset: 15
+        }}).setHTML(popupContent);
 
-        marker.on('click', () => {{
+        const marker = new maplibregl.Marker({{ element: pinEl }})
+          .setLngLat([inst.lon, inst.lat])
+          .setPopup(popup)
+          .addTo(cityVectorMap);
+
+        pinEl.addEventListener('click', () => {{
           selectInstitution(inst, false);
         }});
 
-        marker.addTo(cityMarkersLayer);
+        cityVectorMarkers.push(marker);
 
         if (selectedInstitution && selectedInstitution.name === inst.name) {{
-          marker.openPopup();
+          marker.togglePopup();
         }}
       }});
     }}
@@ -6944,8 +7160,8 @@ def build():
 
       baseRadius = getBaseRadius();
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius));
-      if (cityLeafletMap) {{
-        cityLeafletMap.invalidateSize();
+      if (cityVectorMap) {{
+        cityVectorMap.resize();
       }}
     }}
     resizeCanvas();

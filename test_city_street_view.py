@@ -13,13 +13,15 @@ def run_tests():
 
     test_script = """
     <script>
-    // Stub tileLayer so headless chrome does not wait for external network tiles
-    if (typeof L !== 'undefined') {
-      const origTileLayer = L.tileLayer;
-      L.tileLayer = function(url, opts) {
-        return origTileLayer('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', opts);
-      };
-    }
+    // Stub fetch for vector tiles and fonts so headless chrome doesn't wait for network
+    const origFetch = window.fetch;
+    window.fetch = async (url, opts) => {
+      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return origFetch(url, opts);
+    };
 
     window.addEventListener('load', async () => {
       const results = [];
@@ -28,9 +30,10 @@ def run_tests():
       }
 
       try {
-        // 1. Verify Leaflet library is loaded
-        assert('Leaflet library is defined', typeof L !== 'undefined');
-        assert('Leaflet map function exists', typeof L.map === 'function');
+        // 1. Verify MapLibre GL library is loaded
+        assert('MapLibre GL library is defined', typeof maplibregl !== 'undefined');
+        assert('MapLibre map function exists', typeof maplibregl.Map === 'function');
+        assert('GOOGLE_MAPS_DARK_STYLE is defined', typeof GOOGLE_MAPS_DARK_STYLE !== 'undefined' && GOOGLE_MAPS_DARK_STYLE.version === 8);
 
         // 2. Test openCityStreetView for Addis Ababa
         openCityStreetView('Addis Ababa');
@@ -39,7 +42,9 @@ def run_tests():
         assert('cityMapContainer is not null', !!mapContainer);
         assert('cityMapContainer is visible (no hidden class)', !mapContainer.classList.contains('hidden'));
         assert('isCityStreetViewActive is true', isCityStreetViewActive === true);
-        assert('cityLeafletMap is initialized', !!cityLeafletMap);
+        assert('cityVectorMap is initialized', !!cityVectorMap);
+        assert('cityLeafletMap compatibility shim is initialized', !!cityLeafletMap);
+        assert('Map has 3D tilt/pitch active (>= 30 deg)', cityVectorMap.getPitch() >= 30, `pitch: ${cityVectorMap.getPitch()}`);
 
         const banner = document.getElementById('cityViewControlBanner');
         assert('cityViewControlBanner is visible', banner && !banner.classList.contains('hidden'));
@@ -50,10 +55,10 @@ def run_tests():
         const markerCount = cityMarkersLayer ? cityMarkersLayer.getLayers().length : 0;
         assert('Addis Ababa has at least 1 cultural marker (Zoma Museum)', markerCount >= 1, `count: ${markerCount}`);
 
-        // Check center coords of Leaflet map
-        const center = cityLeafletMap.getCenter();
-        assert('Leaflet centered near Addis Ababa latitude ~8.98', Math.abs(center.lat - 8.985) < 0.1, `lat: ${center.lat}`);
-        assert('Leaflet centered near Addis Ababa longitude ~38.72', Math.abs(center.lng - 38.722) < 0.1, `lng: ${center.lng}`);
+        // Check center coords of vector map
+        const center = cityVectorMap.getCenter();
+        assert('Vector map centered near Addis Ababa latitude ~8.98', Math.abs(center.lat - 8.985) < 0.1, `lat: ${center.lat}`);
+        assert('Vector map centered near Addis Ababa longitude ~38.72', Math.abs(center.lng - 38.722) < 0.1, `lng: ${center.lng}`);
 
         // 3. Test exitCityStreetView
         exitCityStreetView();
