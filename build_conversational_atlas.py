@@ -6323,12 +6323,12 @@ def build():
     function getCityTargetRadius(cityName) {{
       const c = (cityName || '').toLowerCase();
       if (c.includes('utrecht') || c.includes('rotterdam') || c.includes('eindhoven') || c.includes('basel') || c.includes('frankfurt')) {{
-        return baseRadius * 90.0;
-      }}
-      if (c.includes('new york') || c.includes('paris') || c.includes('berlin') || c.includes('amsterdam') || c.includes('london') || c.includes('tokyo') || c.includes('vienna') || c.includes('barcelona')) {{
         return baseRadius * 110.0;
       }}
-      return baseRadius * 85.0;
+      if (c.includes('new york') || c.includes('paris') || c.includes('berlin') || c.includes('amsterdam') || c.includes('london') || c.includes('tokyo') || c.includes('vienna') || c.includes('barcelona') || c.includes('mexico city') || c.includes('cdmx') || c.includes('bogota') || c.includes('sao paulo')) {{
+        return baseRadius * 135.0;
+      }}
+      return baseRadius * 105.0;
     }}
 
 
@@ -6372,7 +6372,7 @@ def build():
 
     function getMinRadius() {{ return baseRadius * 0.75; }}
     function getMaxRadius() {{ 
-      return baseRadius * 280.0; 
+      return baseRadius * 450.0; 
     }}
     let startRadius = baseRadius;
 
@@ -6520,6 +6520,86 @@ def build():
       if (dx === 0 && dy === 0) return Math.hypot(px - x1, py - y1);
       const t = Math.max(0, Math.min(1, ((px - x1) * dx + (py - y1) * dy) / (dx * dx + dy * dy)));
       return Math.hypot(px - (x1 + t * dx), py - (y1 + t * dy));
+    }}
+
+    // High-Resolution Dark Matter Vector / Tile Cartography Engine
+    const TILE_CACHE = new Map();
+    const MAX_TILE_CACHE = 160;
+
+    function getTileUrl(z, x, y) {{
+      const subdomains = ['a', 'b', 'c', 'd'];
+      const s = subdomains[(x + y) % subdomains.length];
+      return `https://${{s}}.basemaps.cartocdn.com/dark_all/${{z}}/${{x}}/${{y}}.png`;
+    }}
+
+    function renderMapTiles(ctx, r, cx, cy, rotLon, rotLat, width, height) {{
+      if (r < baseRadius * 1.4) return;
+
+      const cosLat = Math.max(0.15, Math.cos(toRad(rotLat)));
+      const idealZ = Math.log2((2 * Math.PI * r) / (256 * cosLat));
+      const z = Math.max(1, Math.min(18, Math.round(idealZ)));
+      const n = 2.0 ** z;
+
+      const centerTileX = Math.floor(((rotLon + 180.0) / 360.0) * n);
+      const centerTileY = Math.floor(((1.0 - Math.asinh(Math.tan(toRad(rotLat))) / Math.PI) / 2.0) * n);
+
+      const tilePx = (2 * Math.PI * r * cosLat) / n;
+      const tilesAcross = Math.ceil(width / Math.max(20, tilePx)) + 1;
+      const tilesDown = Math.ceil(height / Math.max(20, tilePx)) + 1;
+      const radiusX = Math.min(4, Math.max(1, Math.ceil(tilesAcross / 2)));
+      const radiusY = Math.min(4, Math.max(1, Math.ceil(tilesDown / 2)));
+
+      const tileAlpha = Math.min(1.0, Math.max(0.0, (r - baseRadius * 1.4) / (baseRadius * 1.2)));
+
+      ctx.save();
+      ctx.globalAlpha = tileAlpha;
+
+      for (let dx = -radiusX; dx <= radiusX; dx++) {{
+        for (let dy = -radiusY; dy <= radiusY; dy++) {{
+          const tx = centerTileX + dx;
+          const ty = centerTileY + dy;
+          if (ty < 0 || ty >= n) continue;
+
+          const wrappedX = ((tx % n) + n) % n;
+          const key = `${{z}}/${{wrappedX}}/${{ty}}`;
+
+          let img = TILE_CACHE.get(key);
+          if (!img) {{
+            img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.src = getTileUrl(z, wrappedX, ty);
+            img.onload = () => {{
+              if (typeof requestAnimationFrame === 'function') {{
+                requestAnimationFrame(render);
+              }}
+            }};
+            TILE_CACHE.set(key, img);
+            if (TILE_CACHE.size > MAX_TILE_CACHE) {{
+              const firstKey = TILE_CACHE.keys().next().value;
+              TILE_CACHE.delete(firstKey);
+            }}
+          }}
+
+          if (img.complete && img.naturalWidth > 0) {{
+            const lonMin = (wrappedX / n) * 360.0 - 180.0;
+            const lonMax = ((wrappedX + 1) / n) * 360.0 - 180.0;
+            const latMax = toDeg(Math.atan(Math.sinh(Math.PI * (1 - 2 * ty / n))));
+            const latMin = toDeg(Math.atan(Math.sinh(Math.PI * (1 - 2 * (ty + 1) / n))));
+
+            const pTL = project(lonMin, latMax, r, cx, cy);
+            const pBR = project(lonMax, latMin, r, cx, cy);
+
+            if (pTL.front || pBR.front) {{
+              const dw = pBR.x - pTL.x;
+              const dh = pBR.y - pTL.y;
+              if (dw > 1 && dh > 1 && dw < width * 4 && dh < height * 4) {{
+                ctx.drawImage(img, pTL.x, pTL.y, dw, dh);
+              }}
+            }}
+          }}
+        }}
+      }}
+      ctx.restore();
     }}
 
     function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {{
@@ -6920,6 +7000,11 @@ def build():
         }}
         ctx.restore();
 
+        // 5.5 High-Resolution Dark Map Tiles on Sphere
+        if (r > baseRadius * 1.5) {{
+          renderMapTiles(ctx, r, cx, cy, rotLon, rotLat, width, height);
+        }}
+
         // 6. Country Centroid Names (Smoothly fade out as zoom approaches city/regional level)
         if (r > baseRadius * 0.8 && r < baseRadius * 2.8) {{
           const fadeAlpha = r > baseRadius * 1.8 ? Math.max(0, 1 - (r - baseRadius * 1.8) / (baseRadius * 1.0)) : 1.0;
@@ -7280,6 +7365,9 @@ def build():
           ctx.fillStyle = grad;
           ctx.fillRect(0, 0, width, height);
         }}
+
+        // 3.5 Real Dark Map Street & Neighborhood Tiles
+        renderMapTiles(ctx, r, cx, cy, rotLon, rotLat, width, height);
 
         // 4. Subtle City Watermark in Background
         if (activeCity) {{
