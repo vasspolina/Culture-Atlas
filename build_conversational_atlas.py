@@ -519,10 +519,9 @@ def build():
         <button id="topViewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px]">Expand</button>
       </div>
 
-      <button id="topSettingsBtn" class="flex items-center gap-1.5 px-2.5 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[14px] transition cursor-pointer" title="AI Settings">
-        <span id="topStatusDot" class="w-2 h-2 rounded-full bg-amber-400"></span>
-        <span id="topStatusLabel" class="hidden md:inline font-mono text-[14px]">Offline Engine</span>
-        <span>Settings</span>
+      <button id="topSettingsBtn" class="flex items-center gap-1.5 px-3 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[14px] transition cursor-pointer" title="AI Intelligence & API Key Settings">
+        <span id="topStatusDot" class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+        <span id="topStatusLabel" class="font-normal text-[14px] text-amber-300 flex items-center gap-1">🔑 Add API Key</span>
       </button>
       <button id="topResetBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white px-2.5 py-1 rounded-xl text-[14px] transition flex items-center gap-1 cursor-pointer" title="Reset Globe View">
         <span>Reset</span>
@@ -689,8 +688,13 @@ def build():
 
             <!-- Right: Model, mic, and blue circular waveform/send button -->
             <div class="flex items-center gap-2">
-              <button id="workModelBtn" class="text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status">
-                <span id="workModelLabel">Culture Atlas 4.0 Sol Light</span>
+              <button id="chatAddKeyBtn" class="text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal" title="Configure Claude, OpenAI, or Gemini API Key">
+                <span id="chatAddKeyIcon">🔑</span>
+                <span id="chatAddKeyLabel">Add API Key</span>
+              </button>
+
+              <button id="workModelBtn" class="text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
+                <span id="workModelLabel">Culture Atlas 4.0 Critical Engine</span>
                 <svg class="w-3.5 h-3.5 text-[#71717a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
               </button>
 
@@ -992,8 +996,13 @@ def build():
             <span>Gemini</span>
           </button>
         </div>
-        <div id="providerTip" class="text-[14px] text-[#a1a1aa] pt-1">
-          Recommended: <strong>Claude 3.5 / Haiku 4.5</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and nuanced institutional analysis.
+        <div class="flex items-center justify-between text-[13px] pt-1">
+          <div id="providerTip" class="text-[#a1a1aa] flex-1 pr-2">
+            Recommended: <strong>Claude 3.5 / Haiku 4.5</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.
+          </div>
+          <a id="providerGetKeyLink" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[#93c5fd] hover:underline font-mono text-[12px] flex items-center gap-1">
+            Get Key ↗
+          </a>
         </div>
       </div>
 
@@ -8312,6 +8321,21 @@ def build():
     let aiProvider = localStorage.getItem('atlas_ai_provider') || 'auto';
     let aiModel = localStorage.getItem('atlas_ai_model') || '';
 
+    const PROVIDER_MODELS = {{
+      anthropic: [
+        {{ id: 'claude-haiku-4-5-20251001', name: 'claude-haiku-4-5-20251001 (Fast & Articulate - Recommended)' }},
+        {{ id: 'claude-sonnet-4-5-20250929', name: 'claude-sonnet-4-5-20250929 (Deep Critical Reasoning)' }}
+      ],
+      openai: [
+        {{ id: 'gpt-4o-mini', name: 'gpt-4o-mini (Fast & Versatile)' }},
+        {{ id: 'gpt-4o', name: 'gpt-4o (Full Reasoning)' }}
+      ],
+      gemini: [
+        {{ id: 'gemini-2.5-flash', name: 'gemini-2.5-flash (Fast & Multimodal)' }},
+        {{ id: 'gemini-1.5-flash', name: 'gemini-1.5-flash (Reliable Fallback)' }}
+      ]
+    }};
+
     function detectProvider(key) {{
       if (!key) return null;
       const k = key.trim();
@@ -8335,35 +8359,161 @@ def build():
       return 'claude-haiku-4-5-20251001';
     }}
 
+    let currentSelectedProvider = getEffectiveProvider();
+
+    function updateProviderUI(prov) {{
+      currentSelectedProvider = prov;
+      const claudeBtn = document.getElementById('providerClaudeBtn');
+      const openaiBtn = document.getElementById('providerOpenAIBtn');
+      const geminiBtn = document.getElementById('providerGeminiBtn');
+
+      [claudeBtn, openaiBtn, geminiBtn].forEach(b => {{
+        if (b) {{
+          b.classList.remove('bg-[#27272a]', 'text-white', 'border-[#3e3e3e]');
+          b.classList.add('bg-[#1f1f23]', 'text-[#a1a1aa]', 'border-[#27272a]');
+        }}
+      }});
+
+      const activeBtn = prov === 'anthropic' ? claudeBtn : (prov === 'openai' ? openaiBtn : geminiBtn);
+      if (activeBtn) {{
+        activeBtn.classList.remove('bg-[#1f1f23]', 'text-[#a1a1aa]', 'border-[#27272a]');
+        activeBtn.classList.add('bg-[#27272a]', 'text-white', 'border-[#3e3e3e]');
+      }}
+
+      // Populate model options
+      const modelSelect = document.getElementById('aiModelSelect');
+      if (modelSelect) {{
+        const models = PROVIDER_MODELS[prov] || PROVIDER_MODELS.anthropic;
+        modelSelect.innerHTML = models.map(m => `<option value="${{m.id}}">${{m.name}}</option>`).join('');
+        if (aiModel) modelSelect.value = aiModel;
+      }}
+
+      // Update Tip and Get Key Link
+      const providerTip = document.getElementById('providerTip');
+      const providerGetKeyLink = document.getElementById('providerGetKeyLink');
+      if (prov === 'anthropic') {{
+        if (providerTip) providerTip.innerHTML = 'Recommended: <strong>Claude 3.5 / Haiku 4.5</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.';
+        if (providerGetKeyLink) {{
+          providerGetKeyLink.href = 'https://console.anthropic.com/settings/keys';
+          providerGetKeyLink.textContent = 'Get Claude Key ↗';
+        }}
+      }} else if (prov === 'openai') {{
+        if (providerTip) providerTip.innerHTML = 'OpenAI <strong>GPT-4o / GPT-4o-mini</strong> provides fast conversational guidance across all 403 mapped spaces.';
+        if (providerGetKeyLink) {{
+          providerGetKeyLink.href = 'https://platform.openai.com/api-keys';
+          providerGetKeyLink.textContent = 'Get OpenAI Key ↗';
+        }}
+      }} else {{
+        if (providerTip) providerTip.innerHTML = 'Google <strong>Gemini 2.5 Flash</strong> provides responsive real-time multimodal reasoning with a generous free tier.';
+        if (providerGetKeyLink) {{
+          providerGetKeyLink.href = 'https://aistudio.google.com/app/apikey';
+          providerGetKeyLink.textContent = 'Get Gemini Key (Free) ↗';
+        }}
+      }}
+    }}
+
+    function updateDetectBadge(val) {{
+      const badge = document.getElementById('keyDetectBadge');
+      if (!badge) return;
+      const k = (val || '').trim();
+      if (!k) {{
+        badge.textContent = 'Auto-detecting provider...';
+        badge.className = 'text-[14px] font-mono text-[#a1a1aa]';
+        return;
+      }}
+      if (k.startsWith('sk-ant-')) {{
+        badge.textContent = 'Anthropic Claude key detected';
+        badge.className = 'text-[14px] font-mono text-purple-400';
+        updateProviderUI('anthropic');
+      }} else if (k.startsWith('sk-') || k.startsWith('sk-proj-')) {{
+        badge.textContent = 'OpenAI key detected';
+        badge.className = 'text-[14px] font-mono text-emerald-400';
+        updateProviderUI('openai');
+      }} else if (k.startsWith('AIza')) {{
+        badge.textContent = 'Google Gemini key detected';
+        badge.className = 'text-[14px] font-mono text-blue-400';
+        updateProviderUI('gemini');
+      }} else {{
+        badge.textContent = 'Custom API key';
+        badge.className = 'text-[14px] font-mono text-amber-400';
+      }}
+    }}
+
+    function openSettingsModal() {{
+      const modal = document.getElementById('curatorSettingsModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      const input = document.getElementById('aiApiKeyInput');
+      if (input) {{
+        input.value = aiApiKey || localStorage.getItem('atlas_ai_api_key') || '';
+        updateDetectBadge(input.value);
+        setTimeout(() => input.focus(), 60);
+      }}
+      updateProviderUI(getEffectiveProvider());
+      const testBox = document.getElementById('connectionTestBox');
+      if (testBox) testBox.classList.add('hidden');
+    }}
+    window.openSettingsModal = openSettingsModal;
+
     function updateAIStatusUI() {{
-      const dot = document.getElementById('curatorStatusDot');
-      const label = document.getElementById('curatorStatusLabel');
+      aiApiKey = localStorage.getItem('atlas_ai_api_key') || localStorage.getItem('atlas_gemini_api_key') || aiApiKey || '';
+      aiProvider = localStorage.getItem('atlas_ai_provider') || aiProvider || 'auto';
+      aiModel = localStorage.getItem('atlas_ai_model') || aiModel || '';
+
+      const topDot = document.getElementById('topStatusDot');
+      const topLabel = document.getElementById('topStatusLabel');
+      const chatKeyBtn = document.getElementById('chatAddKeyBtn');
+      const chatKeyIcon = document.getElementById('chatAddKeyIcon');
+      const chatKeyLabel = document.getElementById('chatAddKeyLabel');
       const workLabel = document.getElementById('workModelLabel');
-      
+
       const prov = getEffectiveProvider();
       const pName = prov === 'anthropic' ? 'Claude' : (prov === 'openai' ? 'OpenAI' : 'Gemini');
       const effModel = getEffectiveModel();
-      
+
       if (aiApiKey) {{
-        if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
-        if (label) {{
-          label.textContent = `${{pName}} Live`;
-          label.className = 'hidden sm:inline font-mono text-[14px] text-emerald-400';
+        if (topDot) topDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0';
+        if (topLabel) {{
+          topLabel.className = 'font-mono text-[14px] text-emerald-400 flex items-center gap-1.5';
+          topLabel.innerHTML = `<span>${{pName}} Live</span><span class="text-[#71717a] text-[12px]">⚙️</span>`;
+        }}
+        if (chatKeyBtn) {{
+          chatKeyBtn.className = 'text-[13px] bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:border-emerald-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal';
+          chatKeyBtn.title = `${{pName}} Intelligence Active · Click to adjust settings`;
+        }}
+        if (chatKeyIcon) {{
+          chatKeyIcon.className = 'w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse';
+          chatKeyIcon.textContent = '';
+        }}
+        if (chatKeyLabel) {{
+          chatKeyLabel.textContent = `${{pName}} Active`;
         }}
         if (workLabel) {{
           workLabel.textContent = `${{pName}} · ${{effModel.split('-')[0].toUpperCase()}}`;
         }}
       }} else {{
-        if (dot) dot.className = 'w-2 h-2 rounded-full bg-amber-400';
-        if (label) {{
-          label.textContent = 'Critical Engine';
-          label.className = 'hidden sm:inline font-mono text-[14px] text-[#a1a1aa]';
+        if (topDot) topDot.className = 'w-2 h-2 rounded-full bg-amber-400 shrink-0';
+        if (topLabel) {{
+          topLabel.className = 'font-normal text-[14px] text-amber-300 flex items-center gap-1';
+          topLabel.innerHTML = `<span>🔑 Add API Key</span>`;
+        }}
+        if (chatKeyBtn) {{
+          chatKeyBtn.className = 'text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal';
+          chatKeyBtn.title = 'Connect Claude, OpenAI, or Gemini API Key';
+        }}
+        if (chatKeyIcon) {{
+          chatKeyIcon.className = '';
+          chatKeyIcon.textContent = '🔑';
+        }}
+        if (chatKeyLabel) {{
+          chatKeyLabel.textContent = 'Add API Key';
         }}
         if (workLabel) {{
           workLabel.textContent = 'Culture Atlas 4.0 Critical Engine';
         }}
       }}
     }}
+    window.updateAIStatusUI = updateAIStatusUI;
 
     // Unified Multi-Provider Live Generative AI Engine (Claude, OpenAI, Gemini)
     async function queryAI(userPrompt) {{
@@ -8887,8 +9037,9 @@ FORMATTING & INTERACTION RULES:
       const q = query.toLowerCase().trim();
       const rawTrimmed = query.trim();
 
-      // A. Seamless API Key Detection from Chat Input
-      if (/^(sk-ant-[a-zA-Z0-9_\-]+|AIza[a-zA-Z0-9_\-]+|sk-[a-zA-Z0-9_\-]+)$/.test(rawTrimmed) || rawTrimmed.startsWith('/key ')) {{
+      // A. Seamless API Key Detection & Intent Handling from Chat Input
+      const isKeyDirectInput = /^(sk-ant-[a-zA-Z0-9_\-]+|AIza[a-zA-Z0-9_\-]+|sk-[a-zA-Z0-9_\-]+)$/.test(rawTrimmed) || rawTrimmed.startsWith('/key ');
+      if (isKeyDirectInput) {{
         const key = rawTrimmed.replace(/^\/key\s*/, '').trim();
         const prov = detectProvider(key);
         const pName = prov === 'anthropic' ? 'Anthropic Claude' : (prov === 'openai' ? 'OpenAI' : 'Google Gemini');
@@ -8900,12 +9051,55 @@ FORMATTING & INTERACTION RULES:
         localStorage.setItem('atlas_ai_model', aiModel);
         updateAIStatusUI();
         appendCuratorMessage(`
-          <p class="text-emerald-400 font-normal">
-            ${{pName}} API Key detected and securely saved to your browser!
-          </p>
-          <p class="text-slate-200">
-            Live intelligence is now active with <strong>${{aiModel}}</strong>. Ask me anything about art history, exhibitions, or places to visit.
-          </p>
+          <div class="border border-emerald-500/30 bg-emerald-950/20 p-3.5 rounded-2xl space-y-2">
+            <p class="text-emerald-400 font-normal flex items-center gap-2 text-[15px]">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <strong>${{pName}} API Key connected and securely saved!</strong>
+            </p>
+            <p class="text-slate-200 text-[14px] leading-[130%]">
+              Live intelligence is now active using <strong>${{aiModel}}</strong>. Ask me anything about art history, exhibitions, institutional critique, or visitor recommendations.
+            </p>
+          </div>
+        `);
+        return;
+      }}
+
+      // Check for conversational intent to add/configure API key
+      const isApiKeyIntent = /^(add|set|configure|enter|use|where\s+to\s+add|how\s+to\s+add|provide)?\s*(api\s*key|ai\s*key|api\s*token|keys?|model\s*settings|ai\s*settings)\b/i.test(q) || q === '/key' || q === '/settings' || q === 'add api key' || q === 'api key';
+
+      if (isApiKeyIntent) {{
+        openSettingsModal();
+        appendCuratorMessage(`
+          <div class="p-3.5 bg-[#212121] border border-[#383838] rounded-2xl space-y-2.5">
+            <div class="flex items-center justify-between border-b border-[#333] pb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-[16px]">🔑</span>
+                <span class="font-normal text-white text-[15px]">Connect AI Intelligence (Claude, OpenAI, Gemini)</span>
+              </div>
+              <span class="text-[12px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-2 py-0.5 rounded-full">100% Client-Side</span>
+            </div>
+            <p class="text-[14px] text-slate-300 leading-[130%]">
+              I've opened the <strong>Curator Settings</strong> modal for you. You can connect your personal API key to enable live conversational reasoning across all 403 mapped cultural sanctuaries.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+              <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
+                <div class="text-[13px] font-normal text-white group-hover:text-purple-300">Anthropic Claude ↗</div>
+                <div class="text-[12px] text-[#a1a1aa]">Recommended: deep art history & critical theory</div>
+              </a>
+              <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
+                <div class="text-[13px] font-normal text-white group-hover:text-emerald-300">OpenAI (GPT-4o) ↗</div>
+                <div class="text-[12px] text-[#a1a1aa]">Fast reasoning & visitor guides</div>
+              </a>
+              <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
+                <div class="text-[13px] font-normal text-white group-hover:text-blue-300">Google Gemini ↗</div>
+                <div class="text-[12px] text-[#a1a1aa]">Free tier with high rate limits</div>
+              </a>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-[#2e2e2e] text-[13px] text-[#a1a1aa]">
+              <span>Or simply paste your <code class="text-white font-mono text-[12px]">sk-ant-...</code>, <code class="text-white font-mono text-[12px]">sk-...</code>, or <code class="text-white font-mono text-[12px]">AIza...</code> key right here!</span>
+              <button onclick="openSettingsModal()" class="px-3 py-1 bg-white hover:bg-neutral-200 text-black rounded-lg text-[13px] font-normal transition cursor-pointer shrink-0">Open Settings ⚙️</button>
+            </div>
+          </div>
         `);
         return;
       }}
@@ -11150,13 +11344,9 @@ FORMATTING & INTERACTION RULES:
       resetToNewChat();
     }});
 
-    document.getElementById('topSettingsBtn')?.addEventListener('click', () => {{
-      document.getElementById('curatorSettingsModal')?.classList.remove('hidden');
-    }});
-
-    document.getElementById('workModelBtn')?.addEventListener('click', () => {{
-      document.getElementById('curatorSettingsModal')?.classList.remove('hidden');
-    }});
+    document.getElementById('topSettingsBtn')?.addEventListener('click', openSettingsModal);
+    document.getElementById('chatAddKeyBtn')?.addEventListener('click', openSettingsModal);
+    document.getElementById('workModelBtn')?.addEventListener('click', openSettingsModal);
 
     // Plus Button Quick Menu
     const workPlusBtn = document.getElementById('workPlusBtn');
@@ -11714,80 +11904,19 @@ FORMATTING & INTERACTION RULES:
     const settingsModal = document.getElementById('curatorSettingsModal');
     const aiApiKeyInput = document.getElementById('aiApiKeyInput');
     const aiModelSelect = document.getElementById('aiModelSelect');
-    const keyDetectBadge = document.getElementById('keyDetectBadge');
     const connectionTestBox = document.getElementById('connectionTestBox');
     const testStatusIcon = document.getElementById('testStatusIcon');
     const testStatusMsg = document.getElementById('testStatusMsg');
     const toggleKeyVisibilityBtn = document.getElementById('toggleKeyVisibilityBtn');
-    const providerTip = document.getElementById('providerTip');
-
-    let currentSelectedProvider = getEffectiveProvider();
-
-    const PROVIDER_MODELS = {{
-      anthropic: [
-        {{ id: 'claude-haiku-4-5-20251001', name: 'claude-haiku-4-5-20251001 (Fast & Articulate - Recommended)' }},
-        {{ id: 'claude-sonnet-4-5-20250929', name: 'claude-sonnet-4-5-20250929 (Deep Critical Reasoning)' }}
-      ],
-      openai: [
-        {{ id: 'gpt-4o-mini', name: 'gpt-4o-mini (Fast & Versatile)' }},
-        {{ id: 'gpt-4o', name: 'gpt-4o (Full Reasoning)' }}
-      ],
-      gemini: [
-        {{ id: 'gemini-2.5-flash', name: 'gemini-2.5-flash (Fast & Multimodal)' }},
-        {{ id: 'gemini-1.5-flash', name: 'gemini-1.5-flash (Reliable Fallback)' }}
-      ]
-    }};
-
-    function updateProviderUI(prov) {{
-      currentSelectedProvider = prov;
-      const claudeBtn = document.getElementById('providerClaudeBtn');
-      const openaiBtn = document.getElementById('providerOpenAIBtn');
-      const geminiBtn = document.getElementById('providerGeminiBtn');
-
-      [claudeBtn, openaiBtn, geminiBtn].forEach(b => {{
-        if (b) {{
-          b.classList.remove('bg-[#27272a]', 'text-white', 'border-[#3e3e3e]');
-          b.classList.add('bg-[#1f1f23]', 'text-[#a1a1aa]', 'border-[#27272a]');
-        }}
-      }});
-
-      const activeBtn = prov === 'anthropic' ? claudeBtn : (prov === 'openai' ? openaiBtn : geminiBtn);
-      if (activeBtn) {{
-        activeBtn.classList.remove('bg-[#1f1f23]', 'text-[#a1a1aa]', 'border-[#27272a]');
-        activeBtn.classList.add('bg-[#27272a]', 'text-white', 'border-[#3e3e3e]');
-      }}
-
-      // Populate model options
-      const models = PROVIDER_MODELS[prov] || PROVIDER_MODELS.anthropic;
-      aiModelSelect.innerHTML = models.map(m => `<option value="${{m.id}}">${{m.name}}</option>`).join('');
-      if (aiModel) aiModelSelect.value = aiModel;
-
-      // Update Tip
-      if (providerTip) {{
-        if (prov === 'anthropic') {{
-          providerTip.innerHTML = 'Recommended: <strong>Claude 3.5 / Haiku 4.5</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.';
-        }} else if (prov === 'openai') {{
-          providerTip.innerHTML = 'OpenAI <strong>GPT-4o / GPT-4o-mini</strong> provides fast conversational guidance across all 203 mapped spaces.';
-        }} else {{
-          providerTip.innerHTML = 'Google <strong>Gemini 2.5 Flash</strong> provides responsive real-time multimodal reasoning.';
-        }}
-      }}
-    }}
 
     document.getElementById('providerClaudeBtn')?.addEventListener('click', () => updateProviderUI('anthropic'));
     document.getElementById('providerOpenAIBtn')?.addEventListener('click', () => updateProviderUI('openai'));
     document.getElementById('providerGeminiBtn')?.addEventListener('click', () => updateProviderUI('gemini'));
 
-    document.getElementById('curatorSettingsBtn')?.addEventListener('click', () => {{
-      settingsModal.classList.remove('hidden');
-      aiApiKeyInput.value = aiApiKey;
-      updateProviderUI(getEffectiveProvider());
-      updateDetectBadge(aiApiKey);
-      connectionTestBox.classList.add('hidden');
-    }});
+    document.getElementById('curatorSettingsBtn')?.addEventListener('click', openSettingsModal);
 
     document.getElementById('closeSettingsModalBtn')?.addEventListener('click', () => {{
-      settingsModal.classList.add('hidden');
+      settingsModal?.classList.add('hidden');
     }});
 
     toggleKeyVisibilityBtn?.addEventListener('click', () => {{
@@ -11800,80 +11929,56 @@ FORMATTING & INTERACTION RULES:
       }}
     }});
 
-    function updateDetectBadge(val) {{
-      const k = (val || '').trim();
-      if (!k) {{
-        keyDetectBadge.textContent = 'Auto-detecting provider...';
-        keyDetectBadge.className = 'text-[14px] font-mono text-[#a1a1aa]';
-        return;
-      }}
-      if (k.startsWith('sk-ant-')) {{
-        keyDetectBadge.textContent = 'Anthropic Claude key detected';
-        keyDetectBadge.className = 'text-[14px] font-mono text-purple-400';
-        updateProviderUI('anthropic');
-      }} else if (k.startsWith('sk-') || k.startsWith('sk-proj-')) {{
-        keyDetectBadge.textContent = 'OpenAI key detected';
-        keyDetectBadge.className = 'text-[14px] font-mono text-emerald-400';
-        updateProviderUI('openai');
-      }} else if (k.startsWith('AIza')) {{
-        keyDetectBadge.textContent = 'Google Gemini key detected';
-        keyDetectBadge.className = 'text-[14px] font-mono text-blue-400';
-        updateProviderUI('gemini');
-      }} else {{
-        keyDetectBadge.textContent = 'Custom API key';
-        keyDetectBadge.className = 'text-[14px] font-mono text-amber-400';
-      }}
-    }}
-
     aiApiKeyInput?.addEventListener('input', (e) => {{
       updateDetectBadge(e.target.value);
     }});
 
     document.getElementById('testConnectionBtn')?.addEventListener('click', async () => {{
-      const key = aiApiKeyInput.value.trim();
-      const model = aiModelSelect.value;
+      const key = (aiApiKeyInput?.value || '').trim();
+      const model = aiModelSelect?.value;
+      if (!connectionTestBox) return;
       connectionTestBox.classList.remove('hidden', 'border-emerald-500/30', 'bg-emerald-500/10', 'text-emerald-400', 'border-rose-500/30', 'bg-rose-500/10', 'text-rose-400');
       connectionTestBox.classList.add('border-[#3e3e3e]', 'bg-[#27272a]', 'text-[#d4d4d4]');
-      testStatusIcon.textContent = '';
-      testStatusMsg.textContent = 'Testing connection with live API...';
+      if (testStatusIcon) testStatusIcon.textContent = '';
+      if (testStatusMsg) testStatusMsg.textContent = 'Testing connection with live API...';
 
       const res = await testAPIConnection(currentSelectedProvider, key, model);
       if (res.success) {{
         connectionTestBox.classList.remove('border-[#3e3e3e]', 'bg-[#27272a]', 'text-[#d4d4d4]');
         connectionTestBox.classList.add('border-emerald-500/30', 'bg-emerald-500/10', 'text-emerald-400');
-        testStatusIcon.textContent = '';
-        testStatusMsg.textContent = res.message;
+        if (testStatusIcon) testStatusIcon.textContent = '✓ ';
+        if (testStatusMsg) testStatusMsg.textContent = res.message;
       }} else {{
         connectionTestBox.classList.remove('border-[#3e3e3e]', 'bg-[#27272a]', 'text-[#d4d4d4]');
         connectionTestBox.classList.add('border-rose-500/30', 'bg-rose-500/10', 'text-rose-400');
-        testStatusIcon.textContent = '';
-        testStatusMsg.textContent = res.error;
+        if (testStatusIcon) testStatusIcon.textContent = '✕ ';
+        if (testStatusMsg) testStatusMsg.textContent = res.error;
       }}
     }});
 
     document.getElementById('saveApiKeyBtn')?.addEventListener('click', () => {{
-      aiApiKey = aiApiKeyInput.value.trim();
+      aiApiKey = (aiApiKeyInput?.value || '').trim();
       aiProvider = currentSelectedProvider;
-      aiModel = aiModelSelect.value;
+      aiModel = aiModelSelect?.value || getEffectiveModel();
       localStorage.setItem('atlas_ai_api_key', aiApiKey);
       localStorage.setItem('atlas_ai_provider', aiProvider);
       localStorage.setItem('atlas_ai_model', aiModel);
       updateAIStatusUI();
-      settingsModal.classList.add('hidden');
+      settingsModal?.classList.add('hidden');
     }});
 
     document.getElementById('clearApiKeyBtn')?.addEventListener('click', () => {{
       aiApiKey = '';
       aiProvider = 'auto';
       aiModel = '';
-      aiApiKeyInput.value = '';
+      if (aiApiKeyInput) aiApiKeyInput.value = '';
       localStorage.removeItem('atlas_ai_api_key');
       localStorage.removeItem('atlas_gemini_api_key');
       localStorage.removeItem('atlas_ai_provider');
       localStorage.removeItem('atlas_ai_model');
       updateAIStatusUI();
-      connectionTestBox.classList.add('hidden');
-      settingsModal.classList.add('hidden');
+      connectionTestBox?.classList.add('hidden');
+      settingsModal?.classList.add('hidden');
     }});
 
     // Initialize UI Status on startup
