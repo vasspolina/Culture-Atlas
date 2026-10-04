@@ -7032,6 +7032,19 @@ def build():
           openDossier(inst);
         }}
       }};
+
+      window.atlasOpenDossier = function(instName) {{
+        const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+        if (inst) openDossier(inst);
+      }};
+
+      window.atlasAskCurator = function(instName) {{
+        const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+        if (inst) {{
+          appendUserMessage(`Tell me about ${{inst.name}}`);
+          handleCuratorQuery(inst.name);
+        }}
+      }};
     }}
 
     function openCityStreetView(cityName, targetLat, targetLon) {{
@@ -7040,6 +7053,9 @@ def build():
       initCityMapIfNeeded();
       const mapEl = document.getElementById('cityMapContainer');
       if (!mapEl || !cityVectorMap) return;
+
+      // Ensure globe floating card is strictly hidden in street view
+      document.getElementById('floatingCard')?.classList.add('hidden');
 
       mapEl.classList.remove('hidden');
       mapEl.classList.add('map-zoomed-in');
@@ -7129,39 +7145,87 @@ def build():
         pinEl.appendChild(dotEl);
 
         const safeName = escapeHtml(inst.name).replace(/'/g, "\\'");
+        const domain = getDisplayDomain(webUrl) || 'website';
+        const shortH = inst.opening_hours ? inst.opening_hours.split(',')[0] : 'Open Weekly';
+        const shortF = inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : 'Free / Subsidized';
+        const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : '';
+
         const popupContent = `
-          <div style="font-family:'PP Telegraf',sans-serif; min-width:240px; padding:2px; color:#f1f5f9;">
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:4px;">
-              <span style="font-size:10px; font-weight:bold; letter-spacing:0.05em; color:${{markerColor}};">
-                ${{isA ? '● TIER A · SANCTUARY' : '● TIER B · WATCH'}}
+          <div style="font-family:'PP Telegraf',sans-serif; min-width:250px; max-width:340px; padding:3px 4px; color:#f1f5f9;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:4px;">
+              <div style="padding-right:8px;">
+                <a href="${{escapeHtml(webUrl || '#')}}" target="_blank" rel="noopener noreferrer" 
+                   style="font-size:16px; font-weight:600; color:#ffffff; line-height:1.2; text-decoration:none; display:block;"
+                   onmouseover="this.style.color='#93c5fd';this.style.textDecoration='underline'" 
+                   onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
+                  ${{escapeHtml(inst.name)}}
+                </a>
+                <div style="font-size:12px; color:#a1a1aa; font-family:monospace; margin-top:2px;">
+                  ${{escapeHtml(inst.location || inst.city)}} · ${{isA ? 'Verified' : 'One Name'}}
+                </div>
+              </div>
+              <span style="font-size:11px; font-family:monospace; padding:2px 7px; border-radius:6px; border:1px solid ${{isA ? 'rgba(16,185,129,0.4)' : 'rgba(56,189,248,0.4)'}}; background:${{isA ? '#0a2016' : '#0d1d33'}}; color:${{markerColor}}; white-space:nowrap; shrink:0;">
+                ${{isA ? 'Verified' : 'One Name'}}
               </span>
-              <span style="font-size:10px; color:#94a3b8; font-family:monospace;">${{escapeHtml(inst.city)}}</span>
             </div>
-            <div style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.2; margin-bottom:4px;">
-              ${{escapeHtml(inst.name)}}
+
+            <div style="font-size:12px; color:#34d399; font-family:monospace; margin-top:4px;">
+              ${{escapeHtml(shortH)}} · ${{escapeHtml(shortF)}}
             </div>
-            <div style="font-size:11px; color:#cbd5e1; margin-bottom:8px; line-height:1.3;">
+
+            <div style="font-size:11px; color:#cbd5e1; margin-top:5px; line-height:1.35;">
               ${{escapeHtml(inst.curatorial_focus || inst.neighborhood || inst.location)}}
             </div>
-            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:6px; border-top:1px solid #27272a; padding-top:6px;">
+
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:8px;">
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="display:inline-flex; align-items:center; gap:4px; padding:4px 9px; border-radius:8px; background:#2563eb; color:#ffffff; font-size:11px; text-decoration:none; font-weight:500;">
-                  🌐 Visit Website ↗
+                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 11px; border-radius:10px; background:#2563eb; color:#ffffff; font-size:12px; font-weight:500; text-decoration:none; box-shadow:0 1px 3px rgba(0,0,0,0.4);"
+                   onmouseover="this.style.background='#1d4ed8'" onmouseout="this.style.background='#2563eb'">
+                  <span>🌐</span>
+                  <span>Visit Website</span>
+                  <span style="font-size:10px; opacity:0.8; font-family:monospace;">· ${{escapeHtml(domain)}}</span>
+                  <span>↗</span>
                 </a>
               ` : ''}}
-              <button onclick="window.atlasSelectInst('${{safeName}}')" 
-                      style="display:inline-flex; align-items:center; padding:4px 9px; border-radius:8px; background:#27272a; color:#e2e8f0; font-size:11px; border:1px solid #3f3f46; cursor:pointer;">
-                Ask Curator →
-              </button>
+              ${{visitUrl && visitUrl !== webUrl ? `
+                <a href="${{escapeHtml(visitUrl)}}" target="_blank" rel="noopener noreferrer" 
+                   style="display:inline-flex; align-items:center; gap:4px; padding:5px 9px; border-radius:10px; background:#222834; color:#93c5fd; border:1px solid #2f3d58; font-size:11px; font-family:monospace; text-decoration:none;"
+                   onmouseover="this.style.background='#2b3548';this.style.color='#ffffff'" onmouseout="this.style.background='#222834';this.style.color='#93c5fd'">
+                  <span>Plan Visit ↗</span>
+                </a>
+              ` : ''}}
+            </div>
+
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; padding-top:7px; border-top:1px solid #27272a; font-size:11px;">
+              ${{webUrl ? `
+                <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
+                   style="color:#93c5fd; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:110px;">
+                  ${{escapeHtml(domain)}} ↗
+                </a>
+              ` : '<span></span>'}}
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button onclick="window.atlasOpenDossier('${{safeName}}')" 
+                        style="background:none; border:none; color:#a1a1aa; font-size:11px; cursor:pointer; padding:0;" 
+                        onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#a1a1aa'">
+                  Read info about institution →
+                </button>
+                <button onclick="window.atlasAskCurator('${{safeName}}')" 
+                        style="background:none; border:none; color:#ffffff; font-size:11px; font-weight:600; cursor:pointer; padding:0;" 
+                        onmouseover="this.style.color='#93c5fd'" onmouseout="this.style.color='#ffffff'">
+                  Ask
+                </button>
+              </div>
             </div>
           </div>
         `;
 
         const popup = new maplibregl.Popup({{
           className: 'atlas-dark-popup',
-          maxWidth: '320px',
-          offset: 15
+          maxWidth: '360px',
+          offset: 16,
+          closeButton: true,
+          closeOnClick: true
         }}).setHTML(popupContent);
 
         const marker = new maplibregl.Marker({{ element: pinEl }})
@@ -7169,15 +7233,22 @@ def build():
           .setPopup(popup)
           .addTo(cityVectorMap);
 
-        pinEl.addEventListener('click', () => {{
-          selectInstitution(inst, false);
+        pinEl.addEventListener('click', (e) => {{
+          e.stopPropagation();
+          marker.togglePopup();
+          selectedInstitution = inst;
+          if (typeof curatorContext !== 'undefined' && inst) {{
+            curatorContext.lastInst = inst;
+            if (inst.city) curatorContext.lastCity = inst.city;
+          }}
+          document.querySelectorAll('.inst-card').forEach(c => {{
+            const isTarget = c.getAttribute('data-name') === inst.name;
+            c.classList.toggle('active', isTarget);
+            if (isTarget) c.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+          }});
         }});
 
         cityVectorMarkers.push(marker);
-
-        if (selectedInstitution && selectedInstitution.name === inst.name) {{
-          marker.togglePopup();
-        }}
       }});
     }}
 
@@ -7188,6 +7259,9 @@ def build():
       document.getElementById('cityViewControlBanner')?.classList.add('hidden');
       selectedCityFilter = 'all';
       targetRadius = baseRadius;
+      if (typeof deselectInstitution === 'function') {{
+        deselectInstitution();
+      }}
       applyFilters();
       renderGlobeBarDefault();
       isAutoSpinning = true;
@@ -8719,9 +8793,9 @@ def build():
         ctx.restore();
       }}
 
-            // Floating White Card (Position update)
+            // Floating White Card (Position update - 3D Globe only)
       const floatingCard = document.getElementById('floatingCard');
-      if (selectedInstitution) {{
+      if (selectedInstitution && !isCityStreetViewActive) {{
         const pt = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
         if (pt.front && pt.depth > 0.05) {{
           floatingCard.classList.remove('hidden');
@@ -8869,14 +8943,20 @@ def build():
           if (cityMeta && cityMeta.country) {{
             lastSelectedCountry = cityMeta.country;
           }}
-          openCityStreetView(inst.city, inst.lat, inst.lon);
+          if (!isCityStreetViewActive || !matchC(selectedCityFilter, inst.city)) {{
+            openCityStreetView(inst.city, inst.lat, inst.lon);
+          }}
         }}
         const zoomTarget = getCityTargetRadius(inst.city);
         targetRadius = zoomTarget;
         flyTo(inst.lon, inst.lat, zoomTarget);
       }} else {{
-        if (isCityStreetViewActive && inst.city) {{
-          openCityStreetView(inst.city, inst.lat, inst.lon);
+        if (isCityStreetViewActive) {{
+          if (inst.city && !matchC(selectedCityFilter, inst.city)) {{
+            openCityStreetView(inst.city, inst.lat, inst.lon);
+          }} else if (cityVectorMap && inst.lon && inst.lat) {{
+            cityVectorMap.easeTo({{ center: [inst.lon, inst.lat], duration: 400 }});
+          }}
         }} else {{
           flyTo(inst.lon, inst.lat);
         }}
@@ -13252,11 +13332,7 @@ FORMATTING & INTERACTION RULES:
         exitCityStreetView();
       }}
 
-      // Select top institution in this city
       const cityMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
-      if (cityMatches.length > 0) {{
-        selectInstitution(cityMatches[0], false);
-      }}
 
       updateGlobePillsUI();
 
