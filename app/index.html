@@ -434,6 +434,21 @@
         <button id="hudWorldBtn" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Reset World View">
           <span>World</span>
         </button>
+        <div class="hidden sm:flex items-center gap-1">
+          <button id="hudEuropeBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center cursor-pointer" title="Fly to Europe">
+            <span>Europe</span>
+          </button>
+          <button id="hudAmericasBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center cursor-pointer" title="Fly to Americas">
+            <span>Americas</span>
+          </button>
+          <button id="hudAsiaBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center cursor-pointer" title="Fly to Asia-Pacific">
+            <span>Asia</span>
+          </button>
+          <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5"></div>
+          <button id="hudRailToggle" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1e2e42] text-[#38bdf8] border border-[#0284c7]/40 hover:bg-[#0369a1]/30 text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Toggle Clean Transit Corridors">
+            <span>Rail</span>
+          </button>
+        </div>
         <button id="hudSpinBtn" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Toggle Auto-Spin">
           <span id="hudSpinText">Spin</span>
         </button>
@@ -6011,6 +6026,92 @@
       }
     ]
   },
+  "vienna": {
+    "center": [16.3738, 48.2082],
+    "waterways": [
+      {
+        "name": "Donaukanal",
+        "width": 18,
+        "pts": [[16.345, 48.228], [16.362, 48.220], [16.378, 48.213], [16.395, 48.204], [16.418, 48.192]]
+      }
+    ],
+    "parks": [
+      {
+        "name": "Stadtpark",
+        "pts": [[16.378, 48.202], [16.384, 48.204], [16.383, 48.208], [16.376, 48.206], [16.378, 48.202]]
+      },
+      {
+        "name": "Burggarten & Volksgarten",
+        "pts": [[16.360, 48.204], [16.366, 48.209], [16.362, 48.212], [16.356, 48.207], [16.360, 48.204]]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "Ringstraße",
+        "pts": [[16.361, 48.202], [16.359, 48.206], [16.363, 48.212], [16.371, 48.214], [16.379, 48.211], [16.383, 48.205], [16.375, 48.200], [16.367, 48.200], [16.361, 48.202]]
+      },
+      {
+        "name": "Museumsplatz",
+        "pts": [[16.358, 48.201], [16.360, 48.205], [16.361, 48.209]]
+      }
+    ]
+  },
+  "basel": {
+    "center": [7.5886, 47.5596],
+    "waterways": [
+      {
+        "name": "River Rhine",
+        "width": 24,
+        "pts": [[7.562, 47.554], [7.580, 47.560], [7.594, 47.561], [7.608, 47.558], [7.625, 47.552]]
+      }
+    ],
+    "parks": [
+      {
+        "name": "Kannenfeldpark",
+        "pts": [[7.568, 47.564], [7.574, 47.565], [7.573, 47.568], [7.567, 47.567], [7.568, 47.564]]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "Mittlere Rheinbrücke Corridor",
+        "pts": [[7.586, 47.555], [7.589, 47.560], [7.592, 47.565]]
+      },
+      {
+        "name": "St. Alban-Graben",
+        "pts": [[7.590, 47.554], [7.596, 47.553], [7.601, 47.553]]
+      }
+    ]
+  },
+  "barcelona": {
+    "center": [2.1734, 41.3851],
+    "waterways": [
+      {
+        "name": "Mediterranean Shoreline",
+        "width": 26,
+        "pts": [[2.178, 41.368], [2.188, 41.380], [2.198, 41.392], [2.210, 41.402], [2.224, 41.412]]
+      }
+    ],
+    "parks": [
+      {
+        "name": "Parc de Montjuïc",
+        "pts": [[2.155, 41.365], [2.166, 41.370], [2.163, 41.376], [2.152, 41.372], [2.155, 41.365]]
+      },
+      {
+        "name": "Parc de la Ciutadella",
+        "pts": [[2.185, 41.386], [2.192, 41.390], [2.190, 41.394], [2.183, 41.390], [2.185, 41.386]]
+      }
+    ],
+    "major_streets": [
+      {
+        "name": "La Rambla",
+        "pts": [[2.177, 41.376], [2.174, 41.381], [2.170, 41.387]]
+      },
+      {
+        "name": "Passeig de Gràcia",
+        "pts": [[2.170, 41.387], [2.164, 41.394], [2.158, 41.401]]
+      }
+    ]
+  }
   };
 
     // Clean Metropolitan Network Lookup (Curated cities only, zero synthetic noise)
@@ -6019,6 +6120,9 @@
       let key = cityName.toLowerCase().trim();
       if (key === 'nyc' || key === 'new york city') key = 'new york';
       if (key.includes('frankfurt')) key = 'frankfurt';
+      if (key.includes('vienna') || key === 'wien') key = 'vienna';
+      if (key.includes('basel')) key = 'basel';
+      if (key.includes('barcelona') || key === 'bcn') key = 'barcelona';
       const normKey = key.normalize('NFD').replace(/[̀-ͯ]/g, '');
       const pCty = PRIORITY_CITIES.find(c => matchC(c.name, cityName));
       const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
@@ -6054,7 +6158,7 @@
       if (c.includes('utrecht') || c.includes('rotterdam') || c.includes('eindhoven') || c.includes('basel') || c.includes('frankfurt')) {
         return baseRadius * 90.0;
       }
-      if (c.includes('new york') || c.includes('paris') || c.includes('berlin') || c.includes('amsterdam') || c.includes('london') || c.includes('tokyo')) {
+      if (c.includes('new york') || c.includes('paris') || c.includes('berlin') || c.includes('amsterdam') || c.includes('london') || c.includes('tokyo') || c.includes('vienna') || c.includes('barcelona')) {
         return baseRadius * 110.0;
       }
       return baseRadius * 85.0;
@@ -6225,17 +6329,101 @@
 
     // Clean High-Speed Rail Corridors Connecting Ethical Sanctuaries
     const CLEAN_RAIL_CORRIDORS = [
-      { name: "Eurostar High-Speed Rail", from: "London", to: "Paris", pts: [[-0.1278, 51.5074], [1.3, 51.1], [1.8, 50.9], [2.3522, 48.8566]] },
-      { name: "Thalys / Eurostar Clean Corridor", from: "Paris", to: "Brussels", pts: [[2.3522, 48.8566], [3.3, 49.8], [4.3517, 50.8503]] },
-      { name: "Benelux Clean Rail", from: "Brussels", to: "Amsterdam", pts: [[4.3517, 50.8503], [4.5, 51.4], [4.4, 51.9], [4.9041, 52.3676]] },
-      { name: "ICE Clean European Corridor", from: "Amsterdam", to: "Berlin", pts: [[4.9041, 52.3676], [7.0, 52.2], [9.7, 52.4], [13.4050, 52.5200]] },
-      { name: "TGV / ICE Rhine-Main Link", from: "Paris", to: "Frankfurt", pts: [[2.3522, 48.8566], [5.0, 49.0], [7.0, 49.2], [8.6821, 50.1109]] },
-      { name: "ICE Sprinter Corridor", from: "Frankfurt", to: "Berlin", pts: [[8.6821, 50.1109], [9.9, 51.0], [11.5, 51.5], [13.4050, 52.5200]] },
-      { name: "Rhine Valley Ecological Line", from: "Frankfurt", to: "Basel", pts: [[8.6821, 50.1109], [8.4, 49.0], [7.8, 48.0], [7.5886, 47.5596]] },
-      { name: "Amtrak Northeast Electric Corridor", from: "Boston", to: "New York", pts: [[-71.0589, 42.3601], [-72.5, 41.5], [-73.9776, 40.7614]] },
-      { name: "Amtrak Acela Electric Corridor", from: "New York", to: "Washington DC", pts: [[-73.9776, 40.7614], [-75.1652, 39.9526], [-77.0369, 38.9072]] },
-      { name: "Tokaido Shinkansen High-Speed Rail", from: "Tokyo", to: "Kyoto", pts: [[139.6917, 35.6895], [138.5, 35.1], [136.9, 35.1], [135.7681, 35.0116]] }
+      { name: "Eurostar High-Speed Rail", from: "London", to: "Paris", travel_time: "2h 16m", emission_saving: "90% CO₂ reduction", pts: [[-0.1278, 51.5074], [1.3, 51.1], [1.8, 50.9], [2.3522, 48.8566]] },
+      { name: "Thalys / Eurostar Clean Corridor", from: "Paris", to: "Brussels", travel_time: "1h 22m", emission_saving: "92% CO₂ reduction", pts: [[2.3522, 48.8566], [3.3, 49.8], [4.3517, 50.8503]] },
+      { name: "Benelux Clean Rail", from: "Brussels", to: "Amsterdam", travel_time: "1h 50m", emission_saving: "88% CO₂ reduction", pts: [[4.3517, 50.8503], [4.5, 51.4], [4.4, 51.9], [4.9041, 52.3676]] },
+      { name: "ICE European Corridor", from: "Amsterdam", to: "Berlin", travel_time: "5h 50m", emission_saving: "85% CO₂ reduction", pts: [[4.9041, 52.3676], [7.0, 52.2], [9.7, 52.4], [13.4050, 52.5200]] },
+      { name: "TGV / ICE Rhine-Main Link", from: "Paris", to: "Frankfurt", travel_time: "3h 38m", emission_saving: "91% CO₂ reduction", pts: [[2.3522, 48.8566], [5.0, 49.0], [7.0, 49.2], [8.6821, 50.1109]] },
+      { name: "ICE Sprinter Corridor", from: "Frankfurt", to: "Berlin", travel_time: "3h 54m", emission_saving: "89% CO₂ reduction", pts: [[8.6821, 50.1109], [9.9, 51.0], [11.5, 51.5], [13.4050, 52.5200]] },
+      { name: "Rhine Valley Ecological Line", from: "Frankfurt", to: "Basel", travel_time: "2h 45m", emission_saving: "86% CO₂ reduction", pts: [[8.6821, 50.1109], [8.4, 49.0], [7.8, 48.0], [7.5886, 47.5596]] },
+      { name: "Railjet Trans-Alps Corridor", from: "Frankfurt", to: "Vienna", travel_time: "6h 20m", emission_saving: "88% CO₂ reduction", pts: [[8.6821, 50.1109], [11.58, 48.13], [13.0, 48.2], [16.3738, 48.2082]] },
+      { name: "AVE Clean Speed Line", from: "Madrid", to: "Barcelona", travel_time: "2h 30m", emission_saving: "92% CO₂ reduction", pts: [[-3.692, 40.415], [-0.88, 41.65], [2.1734, 41.3851]] },
+      { name: "Amtrak Northeast Electric Corridor", from: "Boston", to: "New York", travel_time: "3h 40m", emission_saving: "83% CO₂ reduction", pts: [[-71.0589, 42.3601], [-72.5, 41.5], [-73.9776, 40.7614]] },
+      { name: "Amtrak Acela Electric Corridor", from: "New York", to: "Washington DC", travel_time: "2h 55m", emission_saving: "86% CO₂ reduction", pts: [[-73.9776, 40.7614], [-75.1652, 39.9526], [-77.0369, 38.9072]] },
+      { name: "Tokaido Shinkansen High-Speed Rail", from: "Tokyo", to: "Kyoto", travel_time: "2h 15m", emission_saving: "94% CO₂ reduction", pts: [[139.6917, 35.6895], [138.5, 35.1], [136.9, 35.1], [135.7681, 35.0116]] }
     ];
+
+    let isRailVisible = true;
+    let hoveredRailCorridor = null;
+    let hoveredRailPoint = null;
+
+    function distToSegment(px, py, x1, y1, x2, y2) {
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      if (dx === 0 && dy === 0) return Math.hypot(px - x1, py - y1);
+      const t = Math.max(0, Math.min(1, ((px - x1) * dx + (py - y1) * dy) / (dx * dx + dy * dy)));
+      return Math.hypot(px - (x1 + t * dx), py - (y1 + t * dy));
+    }
+
+    function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {
+      if (!inst) return;
+      ctx.save();
+      const isA = inst.tier === 'A';
+      const tierColor = isA ? '#10b981' : '#38bdf8';
+      const tierLabel = isA ? '● TIER A · SANCTUARY' : '● TIER B · WATCH';
+
+      ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
+      const nameText = inst.name;
+      const nameW = ctx.measureText(nameText).width;
+
+      const locText = [inst.city, inst.country].filter(Boolean).join(', ');
+      const subText = locText + (inst.curatorial_focus ? ' · ' + inst.curatorial_focus : (inst.neighborhood ? ' · ' + inst.neighborhood : ''));
+      ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+      const subW = ctx.measureText(subText).width;
+
+      const cardW = Math.max(220, Math.min(340, Math.max(nameW, subW) + 28));
+      const cardH = 54;
+
+      let cardX = px - cardW / 2;
+      cardX = Math.max(12, Math.min(width - cardW - 12, cardX));
+
+      let cardY = py - cardH - 12;
+      if (cardY < 12) cardY = py + 16;
+
+      ctx.fillStyle = 'rgba(10, 16, 28, 0.96)';
+      ctx.beginPath();
+      ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 6) : ctx.rect(cardX, cardY, cardW, cardH);
+      ctx.fill();
+
+      ctx.strokeStyle = tierColor;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.fillStyle = tierColor;
+      ctx.beginPath();
+      ctx.roundRect ? ctx.roundRect(cardX, cardY, 3.5, cardH, [6, 0, 0, 6]) : ctx.rect(cardX, cardY, 3.5, cardH);
+      ctx.fill();
+
+      ctx.font = 'bold 9px "PP Telegraf", monospace';
+      ctx.fillStyle = tierColor;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      ctx.fillText(tierLabel, cardX + 12, cardY + 7);
+
+      ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.fillStyle = '#ffffff';
+      let displayName = nameText;
+      if (ctx.measureText(displayName).width > cardW - 24) {
+        while (displayName.length > 5 && ctx.measureText(displayName + '…').width > cardW - 24) {
+          displayName = displayName.slice(0, -1);
+        }
+        displayName += '…';
+      }
+      ctx.fillText(displayName, cardX + 12, cardY + 20);
+
+      ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.fillStyle = '#94a3b8';
+      let displaySub = subText;
+      if (ctx.measureText(displaySub).width > cardW - 24) {
+        while (displaySub.length > 5 && ctx.measureText(displaySub + '…').width > cardW - 24) {
+          displaySub = displaySub.slice(0, -1);
+        }
+        displaySub += '…';
+      }
+      ctx.fillText(displaySub, cardX + 12, cardY + 36);
+
+      ctx.restore();
+    }
 
     let cityClusterHitboxes = [];
     let cityBadgeHitboxes = [];
@@ -6663,7 +6851,7 @@
         });
 
         // 7.5 Clean High-Speed Rail Corridors between Cultural Capitals
-        if (r > baseRadius * 1.1 && r < baseRadius * 14.0) {
+        if (isRailVisible && r > baseRadius * 1.1 && r < baseRadius * 14.0) {
           ctx.save();
           const pulseOffset = (Date.now() * 0.0003) % 1.0;
           CLEAN_RAIL_CORRIDORS.forEach(corridor => {
@@ -6677,11 +6865,19 @@
             }
             if (!anyFront) return;
 
+            const isHov = hoveredRailCorridor === corridor;
+
             // Draw dashed ecological transit line
             ctx.beginPath();
-            ctx.setLineDash([4, 4]);
-            ctx.strokeStyle = 'rgba(56, 189, 248, 0.38)';
-            ctx.lineWidth = 1.3;
+            ctx.setLineDash(isHov ? [] : [4, 4]);
+            ctx.strokeStyle = isHov ? '#38bdf8' : 'rgba(56, 189, 248, 0.45)';
+            ctx.lineWidth = isHov ? 2.5 : 1.3;
+            if (isHov) {
+              ctx.shadowColor = '#38bdf8';
+              ctx.shadowBlur = 8;
+            } else {
+              ctx.shadowBlur = 0;
+            }
             for (let k = 0; k < projectedPts.length; k++) {
               const p = projectedPts[k];
               if (p.front) {
@@ -6702,14 +6898,52 @@
               const beadPt = project(interpLon, interpLat, r, cx, cy);
               if (beadPt.front && beadPt.depth > 0.1) {
                 ctx.setLineDash([]);
+                ctx.shadowBlur = 0;
                 ctx.beginPath();
-                ctx.arc(beadPt.x, beadPt.y, 2.2, 0, Math.PI * 2);
+                ctx.arc(beadPt.x, beadPt.y, isHov ? 3.0 : 2.2, 0, Math.PI * 2);
                 ctx.fillStyle = '#38bdf8';
                 ctx.fill();
               }
             }
           });
           ctx.restore();
+
+          // Render Rail Corridor Tooltip if hovered
+          if (hoveredRailCorridor && hoveredRailPoint) {
+            ctx.save();
+            const corr = hoveredRailCorridor;
+            const tipHeader = `🚆 ${corr.name.toUpperCase()}`;
+            const tipSub = `${corr.from} ⇄ ${corr.to} · ${corr.travel_time || 'Eco-Transit'} · ${corr.emission_saving || 'Low Carbon'}`;
+            ctx.font = 'bold 10px "PP Telegraf", monospace';
+            const hw = ctx.measureText(tipHeader).width;
+            ctx.font = '11px "PP Telegraf", "PP Telegraph", sans-serif';
+            const sw = ctx.measureText(tipSub).width;
+            const rw = Math.max(hw, sw) + 22;
+            const rh = 40;
+            let rx = hoveredRailPoint.x - rw / 2;
+            let ry = hoveredRailPoint.y - rh - 12;
+            rx = Math.max(16, Math.min(width - rw - 16, rx));
+            if (ry < 16) ry = hoveredRailPoint.y + 16;
+
+            ctx.fillStyle = 'rgba(7, 16, 28, 0.95)';
+            ctx.beginPath();
+            ctx.roundRect ? ctx.roundRect(rx, ry, rw, rh, 6) : ctx.rect(rx, ry, rw, rh);
+            ctx.fill();
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+
+            ctx.font = 'bold 9px "PP Telegraf", monospace';
+            ctx.fillStyle = '#38bdf8';
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'top';
+            ctx.fillText(tipHeader, rx + 10, ry + 6);
+
+            ctx.font = '11px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText(tipSub, rx + 10, ry + 20);
+            ctx.restore();
+          }
         }
 
         // 8. Render Institution Dots & Sanctuary Clusters on Global Sphere
@@ -6849,24 +7083,7 @@
           ctx.fill();
 
           if (isHov || (selectedCountryFilter !== 'all' && isSel)) {
-            ctx.save();
-            ctx.font = '11px "PP Telegraf", "PP Telegraph", sans-serif';
-            const tipText = d.inst.name;
-            const tw = ctx.measureText(tipText).width;
-            const tbx = d.x - tw / 2 - 8;
-            const tby = d.y - 28;
-            ctx.fillStyle = '#0a101b';
-            ctx.beginPath();
-            ctx.roundRect ? ctx.roundRect(tbx, tby, tw + 16, 20, 4) : ctx.rect(tbx, tby, tw + 16, 20);
-            ctx.fill();
-            ctx.strokeStyle = '#3b82f6';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-            ctx.fillStyle = '#ffffff';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(tipText, d.x, tby + 10.5);
-            ctx.restore();
+            drawInstitutionMicroCard(ctx, d.inst, d.x, d.y, width, height);
           }
         });
 
@@ -7201,24 +7418,7 @@
           const hPin = cityMuseumHitboxes.find(h => h.inst.name === hoveredInstitution.name);
           const isCardExpanded = displayList.some(d => d.inst.name === hoveredInstitution.name);
           if (hPin && !isCardExpanded) {
-            ctx.save();
-            ctx.font = 'bold 11px "PP Telegraf", "PP Telegraph", sans-serif';
-            const tipText = hoveredInstitution.name;
-            const tw = ctx.measureText(tipText).width;
-            const tbx = hPin.pinX - tw / 2 - 8;
-            const tby = hPin.pinY > 35 ? hPin.pinY - 28 : hPin.pinY + 14;
-            ctx.fillStyle = '#0a101b';
-            ctx.beginPath();
-            ctx.roundRect ? ctx.roundRect(tbx, tby, tw + 16, 22, 5) : ctx.rect(tbx, tby, tw + 16, 22);
-            ctx.fill();
-            ctx.strokeStyle = '#3b82f6';
-            ctx.lineWidth = 1.2;
-            ctx.stroke();
-            ctx.fillStyle = '#ffffff';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(tipText, hPin.pinX, tby + 11);
-            ctx.restore();
+            drawInstitutionMicroCard(ctx, hPin.inst, hPin.pinX, hPin.pinY, width, height);
           }
         }
       }
@@ -11839,6 +12039,20 @@ FORMATTING & INTERACTION RULES:
         }
       }
 
+      // 5. Check Rail Corridor Click
+      if (hoveredRailCorridor) {
+        const corr = hoveredRailCorridor;
+        appendCuratorMessage(`
+          <p class="text-slate-200">
+            <strong>${escapeHtml(corr.name)}</strong>: High-speed electric link connecting <strong>${escapeHtml(corr.from)}</strong> and <strong>${escapeHtml(corr.to)}</strong> (${escapeHtml(corr.travel_time || 'eco-transit')}).
+          </p>
+          <p class="text-slate-300">
+            Both cultural capitals are home to verified sanctuaries operating free of fossil fuel, chemical, and weapons funding. Traveling between them by electric train cuts carbon emissions by up to 90% compared to flying.
+          </p>
+        `);
+        return;
+      }
+
       // Check Compass Rose click to re-orient North
       if (Math.hypot(mx - (width - 38), my - 38) < 22) {
         flyTo(rotLon, 35);
@@ -11864,6 +12078,28 @@ FORMATTING & INTERACTION RULES:
       hoveredInstitution = null;
       hoveredCity = null;
       hoveredCountry = null;
+
+      // Check Rail Corridor Hover
+      hoveredRailCorridor = null;
+      hoveredRailPoint = null;
+      if (isRailVisible && r > baseRadius * 1.1 && r < baseRadius * 14.0) {
+        for (let i = 0; i < CLEAN_RAIL_CORRIDORS.length; i++) {
+          const corridor = CLEAN_RAIL_CORRIDORS[i];
+          for (let k = 0; k < corridor.pts.length - 1; k++) {
+            const p1 = project(corridor.pts[k][0], corridor.pts[k][1], r, cx, cy);
+            const p2 = project(corridor.pts[k + 1][0], corridor.pts[k + 1][1], r, cx, cy);
+            if (p1.front && p2.front) {
+              const dist = distToSegment(mx, my, p1.x, p1.y, p2.x, p2.y);
+              if (dist < 10) {
+                canvas.style.cursor = 'pointer';
+                hoveredRailCorridor = corridor;
+                hoveredRailPoint = { x: mx, y: my };
+                return;
+              }
+            }
+          }
+        }
+      }
 
       // Check Compass Rose hover
       if (Math.hypot(mx - (width - 38), my - 38) < 22) {
@@ -12090,6 +12326,38 @@ FORMATTING & INTERACTION RULES:
       e.stopPropagation();
       clearAllFilters();
       flyTo(-45, 35, baseRadius);
+    });
+
+    document.getElementById('hudEuropeBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearAllFilters();
+      flyTo(9.5, 49.5, baseRadius * 3.8);
+    });
+
+    document.getElementById('hudAmericasBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearAllFilters();
+      flyTo(-78.0, 32.0, baseRadius * 3.2);
+    });
+
+    document.getElementById('hudAsiaBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearAllFilters();
+      flyTo(137.5, 36.5, baseRadius * 3.6);
+    });
+
+    document.getElementById('hudRailToggle')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isRailVisible = !isRailVisible;
+      const btn = document.getElementById('hudRailToggle');
+      if (btn) {
+        btn.classList.toggle('text-[#38bdf8]', isRailVisible);
+        btn.classList.toggle('bg-[#1e2e42]', isRailVisible);
+        btn.classList.toggle('border-[#0284c7]/40', isRailVisible);
+        btn.classList.toggle('text-[#71717a]', !isRailVisible);
+        btn.classList.toggle('bg-[#242424]', !isRailVisible);
+        btn.classList.toggle('border-transparent', !isRailVisible);
+      }
     });
 
     document.getElementById('hudSpinBtn')?.addEventListener('click', (e) => {
