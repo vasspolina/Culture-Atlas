@@ -164,6 +164,8 @@ def build():
 
     import base64
     b64_reg = base64.b64encode(open('app/fonts/PPTelegraf-Regular.otf', 'rb').read()).decode('ascii')
+    leaflet_css = open('app/vendor/leaflet.css', 'r', encoding='utf-8').read()
+    leaflet_js = open('app/vendor/leaflet.js', 'r', encoding='utf-8').read()
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -505,7 +507,66 @@ def build():
       0%, 80%, 100% {{ transform: scale(0); opacity: 0.3; }}
       40% {{ transform: scale(1); opacity: 1; }}
     }}
+    /* Leaflet Embedded Dark Theme & Controls */
+    {leaflet_css}
+    .dark-city-tiles {{
+      filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(95%);
+    }}
+    .atlas-dark-popup .leaflet-popup-content-wrapper {{
+      background: #18181b !important;
+      color: #f1f5f9 !important;
+      border: 1px solid #3f3f46 !important;
+      border-radius: 14px !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6) !important;
+      padding: 6px !important;
+    }}
+    .atlas-dark-popup .leaflet-popup-tip {{
+      background: #18181b !important;
+      border: 1px solid #3f3f46 !important;
+    }}
+    .atlas-dark-popup .leaflet-popup-close-button {{
+      color: #a1a1aa !important;
+      padding: 6px 8px !important;
+    }}
+    .atlas-dark-popup .leaflet-popup-close-button:hover {{
+      color: #ffffff !important;
+    }}
+    .leaflet-container {{
+      background: #171717 !important;
+      font-family: "PP Telegraf", "PP Telegraph", sans-serif !important;
+    }}
+    .leaflet-bar {{
+      border: 1px solid #333333 !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5) !important;
+    }}
+    .leaflet-bar a {{
+      background-color: #212121 !important;
+      color: #e2e8f0 !important;
+      border-bottom: 1px solid #333333 !important;
+      width: 32px !important;
+      height: 32px !important;
+      line-height: 32px !important;
+    }}
+    .leaflet-bar a:hover {{
+      background-color: #2a2a2a !important;
+      color: #60a5fa !important;
+    }}
+    .leaflet-control-attribution {{
+      background: rgba(23, 23, 23, 0.8) !important;
+      color: #71717a !important;
+      font-size: 10px !important;
+      border-radius: 6px !important;
+      padding: 2px 6px !important;
+    }}
+    .leaflet-control-attribution a {{
+      color: #94a3b8 !important;
+    }}
   </style>
+  <script>
+{leaflet_js}
+  </script>
 </head>
 <body class="bg-[#171717] text-slate-100 h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
 
@@ -559,6 +620,9 @@ def build():
     <div id="globeViewport" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex items-center justify-center bg-[#171717] overflow-hidden select-none">
       
       <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
+
+      <!-- 🗺️ HIGH-RESOLUTION INTERACTIVE CITY STREET MAP (Leaflet) -->
+      <div id="cityMapContainer" class="absolute inset-0 hidden z-10 w-full h-full bg-[#171717]"></div>
 
       <!-- FLOATING INSTITUTION CARD -->
       <div id="floatingCard" class="hidden absolute z-20 pointer-events-auto bg-[#18181b]/95 backdrop-blur-md text-slate-100 rounded-2xl p-3.5 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 border border-[#2e2e2e] max-w-[340px] sm:max-w-[390px] w-max">
@@ -622,6 +686,9 @@ def build():
 
       <!-- City & Country Navigation Banner -->
       <div id="cityViewControlBanner" class="hidden absolute top-2.5 sm:top-3 left-2.5 sm:left-4 z-20 pointer-events-auto flex items-center gap-2 flex-wrap">
+        <button id="exitStreetViewBtn" class="px-2.5 py-1.5 rounded-xl bg-[#1e293b]/95 hover:bg-[#334155] border border-[#38bdf8]/40 hover:border-[#38bdf8] text-[#38bdf8] hover:text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Exit street view to 3D Globe">
+          <span>🌍 Exit to Globe</span>
+        </button>
         <button id="backToWorldBtn" class="px-2.5 py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Reset to global world view">
           <span class="font-normal">World View</span>
         </button>
@@ -6649,6 +6716,168 @@ def build():
     let hoveredCity = null;
     let hoveredCountry = null;
 
+    // High-Resolution Interactive City Map (Leaflet) State & Controller
+    let cityLeafletMap = null;
+    let cityMarkersLayer = null;
+    let isCityStreetViewActive = false;
+
+    function initCityMapIfNeeded() {{
+      if (cityLeafletMap) return;
+      const mapEl = document.getElementById('cityMapContainer');
+      if (!mapEl || typeof L === 'undefined') return;
+
+      cityLeafletMap = L.map('cityMapContainer', {{
+        zoomControl: false,
+        attributionControl: false,
+        fadeAnimation: true,
+        zoomAnimation: true,
+        minZoom: 4,
+        maxZoom: 19
+      }});
+
+      L.control.zoom({{ position: 'topright' }}).addTo(cityLeafletMap);
+      L.control.attribution({{ position: 'bottomleft' }}).addTo(cityLeafletMap);
+
+      L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
+        maxZoom: 19,
+        className: 'dark-city-tiles',
+        attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+      }}).addTo(cityLeafletMap);
+
+      cityMarkersLayer = L.layerGroup().addTo(cityLeafletMap);
+
+      cityLeafletMap.on('zoomend', () => {{
+        if (cityLeafletMap.getZoom() <= 9 && isCityStreetViewActive) {{
+          exitCityStreetView();
+        }}
+      }});
+
+      window.atlasSelectInst = function(instName) {{
+        const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+        if (inst) {{
+          selectInstitution(inst, false);
+          openDossier(inst);
+        }}
+      }};
+    }}
+
+    function openCityStreetView(cityName, targetLat, targetLon) {{
+      if (!cityName || cityName === 'all') return;
+      isCityStreetViewActive = true;
+      initCityMapIfNeeded();
+      const mapEl = document.getElementById('cityMapContainer');
+      if (!mapEl || !cityLeafletMap) return;
+
+      mapEl.classList.remove('hidden');
+      document.getElementById('cityViewControlBanner')?.classList.remove('hidden');
+
+      const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
+      const cMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
+      const lat = targetLat || (cMeta ? cMeta.lat : (cityInsts.length > 0 ? cityInsts[0].lat : 0));
+      const lon = targetLon || (cMeta ? cMeta.lon : (cityInsts.length > 0 ? cityInsts[0].lon : 0));
+
+      cityLeafletMap.setView([lat, lon], 14);
+      setTimeout(() => {{
+        if (cityLeafletMap) cityLeafletMap.invalidateSize();
+      }}, 50);
+
+      const titleEl = document.getElementById('cityViewTitleText');
+      if (titleEl) {{
+        titleEl.textContent = `${{cityName.toUpperCase()}} · ${{cityInsts.length}} CULTURAL SPACES`;
+      }}
+      const backCountryBtn = document.getElementById('backToCountryBtn');
+      const backCountryText = document.getElementById('backToCountryText');
+      const countryName = cMeta ? cMeta.country : (cityInsts.length > 0 ? cityInsts[0].country : null);
+      if (backCountryBtn && countryName) {{
+        backCountryBtn.classList.remove('hidden');
+        if (backCountryText) backCountryText.textContent = countryName;
+      }}
+
+      cityMarkersLayer.clearLayers();
+
+      cityInsts.forEach(inst => {{
+        const isA = inst.tier === 'A';
+        const markerColor = isA ? '#10b981' : '#38bdf8';
+        const webUrl = getValidWebUrl(inst);
+
+        const iconHtml = `
+          <div style="position:relative; width:32px; height:32px; display:flex; align-items:center; justify-content:center;">
+            <div style="position:absolute; width:28px; height:28px; border-radius:50%; background:${{isA ? 'rgba(16,185,129,0.30)' : 'rgba(56,189,248,0.25)'}};"></div>
+            <div style="position:relative; width:15px; height:15px; border-radius:50%; background:${{markerColor}}; border:2.5px solid #ffffff; box-shadow:0 0 12px ${{markerColor}};"></div>
+          </div>
+        `;
+        const customIcon = L.divIcon({{
+          html: iconHtml,
+          className: 'custom-inst-pin',
+          iconSize: [32, 32],
+          iconAnchor: [16, 16],
+          popupAnchor: [0, -16]
+        }});
+
+        const marker = L.marker([inst.lat, inst.lon], {{ icon: customIcon }});
+
+        const safeName = escapeHtml(inst.name).replace(/'/g, "\\'");
+        const popupContent = `
+          <div style="font-family:'PP Telegraf',sans-serif; min-width:240px; padding:2px; color:#f1f5f9;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:4px;">
+              <span style="font-size:10px; font-weight:bold; letter-spacing:0.05em; color:${{markerColor}};">
+                ${{isA ? '● TIER A · SANCTUARY' : '● TIER B · WATCH'}}
+              </span>
+              <span style="font-size:10px; color:#94a3b8; font-family:monospace;">${{escapeHtml(inst.city)}}</span>
+            </div>
+            <div style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.2; margin-bottom:4px;">
+              ${{escapeHtml(inst.name)}}
+            </div>
+            <div style="font-size:11px; color:#cbd5e1; margin-bottom:8px; line-height:1.3;">
+              ${{escapeHtml(inst.curatorial_focus || inst.neighborhood || inst.location)}}
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:6px; border-top:1px solid #27272a; padding-top:6px;">
+              ${{webUrl ? `
+                <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
+                   style="display:inline-flex; align-items:center; gap:4px; padding:4px 9px; border-radius:8px; background:#2563eb; color:#ffffff; font-size:11px; text-decoration:none; font-weight:500;">
+                  🌐 Visit Website ↗
+                </a>
+              ` : ''}}
+              <button onclick="window.atlasSelectInst('${{safeName}}')" 
+                      style="display:inline-flex; align-items:center; padding:4px 9px; border-radius:8px; background:#27272a; color:#e2e8f0; font-size:11px; border:1px solid #3f3f46; cursor:pointer;">
+                Ask Curator →
+              </button>
+            </div>
+          </div>
+        `;
+
+        marker.bindPopup(popupContent, {{
+          className: 'atlas-dark-popup',
+          maxWidth: 320
+        }});
+
+        marker.on('click', () => {{
+          selectInstitution(inst, false);
+        }});
+
+        marker.addTo(cityMarkersLayer);
+
+        if (selectedInstitution && selectedInstitution.name === inst.name) {{
+          marker.openPopup();
+        }}
+      }});
+    }}
+
+    function exitCityStreetView() {{
+      isCityStreetViewActive = false;
+      const mapEl = document.getElementById('cityMapContainer');
+      if (mapEl) mapEl.classList.add('hidden');
+      document.getElementById('cityViewControlBanner')?.classList.add('hidden');
+      selectedCityFilter = 'all';
+      targetRadius = baseRadius;
+      applyFilters();
+      renderGlobeBarDefault();
+      isAutoSpinning = true;
+      if (typeof render === 'function') {{
+        requestAnimationFrame(render);
+      }}
+    }}
+
     // Fixed Procedural Starfield for Cinematic Deep-Space Background
     const STARFIELD = [];
     for (let i = 0; i < 120; i++) {{
@@ -6715,6 +6944,9 @@ def build():
 
       baseRadius = getBaseRadius();
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius));
+      if (cityLeafletMap) {{
+        cityLeafletMap.invalidateSize();
+      }}
     }}
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
@@ -7053,7 +7285,9 @@ def build():
       const badgeIcon = document.getElementById('cityViewBadgeIcon');
 
       if (cityBanner) {{
-        if (isCityZoom && activeCity) {{
+        if (isCityStreetViewActive) {{
+          cityBanner.classList.remove('hidden');
+        }} else if (isCityZoom && activeCity) {{
           cityBanner.classList.remove('hidden');
           const cityMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, activeCity));
           const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, activeCity));
@@ -8297,12 +8531,17 @@ def build():
           if (cityMeta && cityMeta.country) {{
             lastSelectedCountry = cityMeta.country;
           }}
+          openCityStreetView(inst.city, inst.lat, inst.lon);
         }}
         const zoomTarget = getCityTargetRadius(inst.city);
         targetRadius = zoomTarget;
         flyTo(inst.lon, inst.lat, zoomTarget);
       }} else {{
-        flyTo(inst.lon, inst.lat);
+        if (isCityStreetViewActive && inst.city) {{
+          openCityStreetView(inst.city, inst.lat, inst.lon);
+        }} else {{
+          flyTo(inst.lon, inst.lat);
+        }}
       }}
     }}
 
@@ -12679,9 +12918,12 @@ FORMATTING & INTERACTION RULES:
         if (inst) flyTo(inst.lon, inst.lat, targetZoom);
       }}
 
-      if (zoom) {{
+      if (zoom && cityName && cityName !== 'all') {{
         targetRadius = targetZoom || getCityTargetRadius(cityName);
         isAutoSpinning = false;
+        openCityStreetView(cityName);
+      }} else if (cityName === 'all') {{
+        exitCityStreetView();
       }}
 
       // Select top institution in this city
@@ -12707,6 +12949,9 @@ FORMATTING & INTERACTION RULES:
     }}
 
     function filterByCountry(countryName, zoom = true) {{
+      if (isCityStreetViewActive) {{
+        exitCityStreetView();
+      }}
       selectedCountryFilter = countryName;
       selectedCityFilter = 'all';
       lastSelectedCountry = countryName;
@@ -12743,6 +12988,9 @@ FORMATTING & INTERACTION RULES:
     }}
 
     function clearAllFilters() {{
+      if (isCityStreetViewActive) {{
+        exitCityStreetView();
+      }}
       selectedCityFilter = 'all';
       selectedCountryFilter = 'all';
       selectedCategoryFilter = 'all';
@@ -13190,6 +13438,23 @@ FORMATTING & INTERACTION RULES:
         rotLat = Math.max(-80, Math.min(80, rotLat + dLat * nudge));
       }}
 
+      // When zooming deep into the globe, seamlessly transition into interactive city street view
+      if (targetRadius > baseRadius * 8.0 && !isCityStreetViewActive) {{
+        let closestDist = Infinity;
+        let closestCity = null;
+        for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {{
+          const c = ALL_CITIES_REGISTRY[i];
+          const dDeg = Math.hypot(c.lon - rotLon, c.lat - rotLat);
+          if (dDeg < closestDist) {{
+            closestDist = dDeg;
+            closestCity = c;
+          }}
+        }}
+        if (closestCity && closestDist < 3.5) {{
+          filterByCity(closestCity.name, true, false);
+        }}
+      }}
+
       if (targetRadius < baseRadius * 3.5 && selectedCityFilter !== 'all') {{
         selectedCityFilter = 'all';
         applyFilters();
@@ -13209,24 +13474,28 @@ FORMATTING & INTERACTION RULES:
     // Additional HUD Quick Controls (World, Auto-Spin, Expand)
     document.getElementById('hudWorldBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
+      exitCityStreetView();
       clearAllFilters();
       flyTo(-45, 35, baseRadius);
     }});
 
     document.getElementById('hudEuropeBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
+      exitCityStreetView();
       clearAllFilters();
       flyTo(9.5, 49.5, baseRadius * 3.8);
     }});
 
     document.getElementById('hudAmericasBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
+      exitCityStreetView();
       clearAllFilters();
       flyTo(-78.0, 32.0, baseRadius * 3.2);
     }});
 
     document.getElementById('hudAsiaBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
+      exitCityStreetView();
       clearAllFilters();
       flyTo(137.5, 36.5, baseRadius * 3.6);
     }});
@@ -13280,8 +13549,13 @@ FORMATTING & INTERACTION RULES:
         renderGlobeBarDefault();
       }}
     }});
+    document.getElementById('exitStreetViewBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      exitCityStreetView();
+    }});
     document.getElementById('backToCountryBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
+      exitCityStreetView();
       if (lastSelectedCountry) {{
         filterByCountry(lastSelectedCountry, true);
       }} else {{
@@ -13290,9 +13564,11 @@ FORMATTING & INTERACTION RULES:
     }});
     document.getElementById('backToWorldBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
+      exitCityStreetView();
       clearAllFilters();
     }});
     document.getElementById('topResetBtn')?.addEventListener('click', () => {{
+      exitCityStreetView();
       targetRadius = baseRadius;
       flyTo(5.2, 52.1);
       clearAllFilters();
