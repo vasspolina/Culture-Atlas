@@ -480,14 +480,14 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <header class="w-full h-14 bg-[#171717] border-b border-[#262626] px-3 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none">
     
-    <!-- Left: Brand / Title -->
-    <div class="flex items-center gap-2.5">
-      <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+    <!-- Left: Brand / Title (Click to Reset Globe View) -->
+    <button id="topBrandLogoBtn" class="flex items-center gap-2.5 text-left bg-transparent border-0 p-0 m-0 cursor-pointer group focus:outline-none select-none transition hover:opacity-85" title="Reset Globe View" aria-label="Reset Globe View">
+      <div class="w-2.5 h-2.5 rounded-full bg-white group-hover:scale-125 transition-transform"></div>
       <div class="flex items-center gap-2">
-        <span class="text-[18px] font-normal tracking-wider text-white uppercase">CULTURE ATLAS</span>
-        <span id="topSpacesBadge" class="text-[14px] text-emerald-400 bg-[#0a2016] px-2 py-0.5 rounded-full border border-emerald-900/60 hidden sm:inline font-mono">397 CLEAN SPACES</span>
+        <span class="text-[18px] font-normal tracking-wider text-white uppercase group-hover:text-emerald-300 transition-colors">CULTURE ATLAS</span>
+        <span id="topSpacesBadge" class="text-[14px] text-emerald-400 bg-[#0a2016] px-2 py-0.5 rounded-full border border-emerald-900/60 hidden sm:inline font-mono group-hover:border-emerald-700/80 transition-colors">397 CLEAN SPACES</span>
       </div>
-    </div>
+    </button>
 
     <!-- Center: Unified + New Chat Action (Single Canvas Experience) -->
     <div class="flex items-center">
@@ -11906,18 +11906,6 @@ FORMATTING & INTERACTION RULES:
     // Top New Chat Action: Resets chat and returns to fresh landing view
     document.getElementById('topNewChatBtn')?.addEventListener('click', resetToNewChat);
 
-    // Top Reset Action
-    document.getElementById('topResetBtn')?.addEventListener('click', () => {
-      targetRotLon = 0;
-      targetRotLat = 20;
-      targetRadius = baseRadius;
-      isFlying = true;
-      flightProgress = 0;
-      startRotLon = rotLon;
-      startRotLat = rotLat;
-      resetToNewChat();
-    });
-
     document.getElementById('topSettingsBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('chatAddKeyBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('workModelBtn')?.addEventListener('click', openSettingsModal);
@@ -13673,11 +13661,56 @@ FORMATTING & INTERACTION RULES:
       exitCityStreetView();
       clearAllFilters();
     });
-    document.getElementById('topResetBtn')?.addEventListener('click', () => {
-      exitCityStreetView();
+    // =========================================================
+    // 🌍 GLOBAL RESET CONTROLLER: Resets 3D Globe, Clears Filters, Exits Street View
+    // =========================================================
+    function resetGlobeView() {
+      // 1. Exit high-resolution city street view if active and return to 3D Globe
+      if (typeof exitCityStreetView === 'function' && isCityStreetViewActive) {
+        exitCityStreetView();
+      }
+
+      // 2. Clear all active spatial filters (city, country, category, search query, tier reset)
+      if (typeof clearAllFilters === 'function') {
+        clearAllFilters();
+      }
+
+      // 3. Dismiss active dossiers, floating cards, or exclusion audit modals
+      if (typeof deselectInstitution === 'function') {
+        deselectInstitution();
+      }
+      document.getElementById('detailDrawer')?.classList.add('hidden');
+      document.getElementById('floatingCard')?.classList.add('hidden');
+      document.getElementById('momaAuditModal')?.classList.add('hidden');
+
+      // 4. Smoothly reset camera zoom and orientation to global planetary overview
       targetRadius = baseRadius;
-      flyTo(5.2, 52.1);
-      clearAllFilters();
+      if (typeof flyTo === 'function') {
+        flyTo(0, 20, baseRadius);
+      } else {
+        targetRotLon = 0;
+        targetRotLat = 20;
+      }
+      isAutoSpinning = true;
+
+      // 5. Restore default status bar and trigger frame re-render
+      if (typeof renderGlobeBarDefault === 'function') {
+        renderGlobeBarDefault();
+      }
+      if (typeof render === 'function') {
+        requestAnimationFrame(render);
+      }
+    }
+    window.resetGlobeView = resetGlobeView;
+
+    // Both the Header Brand Logo and the Top Reset Button reset the globe view
+    document.getElementById('topBrandLogoBtn')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      resetGlobeView();
+    });
+    document.getElementById('topResetBtn')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      resetGlobeView();
     });
 
     // =========================================================
