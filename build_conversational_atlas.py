@@ -6335,10 +6335,189 @@ def build():
         "pts": [[2.170, 41.387], [2.164, 41.394], [2.158, 41.401]]
       }}
     ]
+  }},
+  "saint petersburg": {{
+    "center": [30.3351, 59.9343],
+    "waterways": [
+      {{
+        "name": "Bolshaya Neva",
+        "width": 26,
+        "pts": [[30.22, 59.93], [30.26, 59.935], [30.30, 59.945], [30.33, 59.952], [30.38, 59.948], [30.41, 59.925], [30.42, 59.895]]
+      }},
+      {{
+        "name": "Malaya Neva",
+        "width": 18,
+        "pts": [[30.26, 59.95], [30.29, 59.955], [30.31, 59.948]]
+      }},
+      {{
+        "name": "Fontanka River",
+        "width": 11,
+        "pts": [[30.337, 59.946], [30.345, 59.935], [30.335, 59.922], [30.305, 59.917], [30.275, 59.915]]
+      }},
+      {{
+        "name": "Moika River",
+        "width": 9,
+        "pts": [[30.333, 59.942], [30.322, 59.934], [30.305, 59.929], [30.285, 59.927]]
+      }},
+      {{
+        "name": "Griboyedov Canal",
+        "width": 7,
+        "pts": [[30.329, 59.940], [30.324, 59.933], [30.312, 59.928], [30.298, 59.921], [30.285, 59.918]]
+      }}
+    ],
+    "parks": [
+      {{
+        "name": "Summer Garden",
+        "pts": [[30.332, 59.944], [30.339, 59.944], [30.339, 59.949], [30.332, 59.949], [30.332, 59.944]]
+      }},
+      {{
+        "name": "Field of Mars",
+        "pts": [[30.326, 59.942], [30.332, 59.942], [30.332, 59.946], [30.326, 59.946], [30.326, 59.942]]
+      }},
+      {{
+        "name": "Mikhailovsky Garden",
+        "pts": [[30.328, 59.937], [30.336, 59.937], [30.336, 59.941], [30.328, 59.941], [30.328, 59.937]]
+      }}
+    ],
+    "major_streets": [
+      {{
+        "name": "Nevsky Prospekt",
+        "pts": [[30.312, 59.937], [30.330, 59.935], [30.360, 59.931], [30.385, 59.924]]
+      }},
+      {{
+        "name": "Sadovaya Street",
+        "pts": [[30.335, 59.943], [30.323, 59.932], [30.310, 59.923], [30.290, 59.916]]
+      }},
+      {{
+        "name": "Liteyny Prospekt",
+        "pts": [[30.348, 59.948], [30.347, 59.934], [30.345, 59.928]]
+      }},
+      {{
+        "name": "Kamennoostrovsky Prospekt",
+        "pts": [[30.320, 59.953], [30.312, 59.967], [30.303, 59.978]]
+      }},
+      {{
+        "name": "Bolshoy Prospekt V.O.",
+        "pts": [[30.300, 59.944], [30.270, 59.938], [30.245, 59.933]]
+      }},
+      {{
+        "name": "Moskovsky Prospekt",
+        "pts": [[30.315, 59.928], [30.318, 59.905], [30.320, 59.880]]
+      }}
+    ],
+    "secondary_streets": [
+      {{ "pts": [[30.290, 59.946], [30.275, 59.935]] }},
+      {{ "pts": [[30.295, 59.948], [30.280, 59.937]] }},
+      {{ "pts": [[30.300, 59.950], [30.285, 59.939]] }},
+      {{ "pts": [[30.320, 59.928], [30.350, 59.925]] }},
+      {{ "pts": [[30.322, 59.923], [30.355, 59.920]] }},
+      {{ "pts": [[30.340, 59.940], [30.370, 59.937]] }}
+    ]
+  }},
+  "krasnodar": {{
+    "center": [38.9760, 45.0355],
+    "waterways": [
+      {{
+        "name": "Kuban River",
+        "width": 22,
+        "pts": [[38.92, 45.01], [38.95, 45.014], [38.97, 45.008], [39.00, 45.012], [39.03, 45.022], [39.06, 45.028]]
+      }},
+      {{
+        "name": "Karasun Lakes",
+        "width": 9,
+        "pts": [[38.995, 45.025], [39.015, 45.028], [39.035, 45.032]]
+      }}
+    ],
+    "parks": [
+      {{
+        "name": "Park Krasnodar (Galitsky Park)",
+        "pts": [[39.026, 45.039], [39.038, 45.039], [39.038, 45.048], [39.026, 45.048], [39.026, 45.039]]
+      }},
+      {{
+        "name": "City Garden",
+        "pts": [[38.965, 45.013], [38.973, 45.013], [38.973, 45.020], [38.965, 45.020], [38.965, 45.013]]
+      }},
+      {{
+        "name": "Chistyakovskaya Roshcha",
+        "pts": [[38.985, 45.056], [38.998, 45.056], [38.998, 45.065], [38.985, 45.065], [38.985, 45.056]]
+      }}
+    ],
+    "major_streets": [
+      {{
+        "name": "Krasnaya Street",
+        "pts": [[38.968, 45.012], [38.972, 45.025], [38.976, 45.035], [38.981, 45.050], [38.985, 45.062]]
+      }},
+      {{
+        "name": "Severnaya Street",
+        "pts": [[38.940, 45.038], [38.976, 45.038], [39.020, 45.038]]
+      }},
+      {{
+        "name": "Stavropolskaya Street",
+        "pts": [[38.988, 45.018], [39.015, 45.020], [39.045, 45.023]]
+      }},
+      {{
+        "name": "Babushkina Street",
+        "pts": [[38.950, 45.050], [38.980, 45.050], [39.010, 45.050]]
+      }}
+    ],
+    "secondary_streets": [
+      {{ "pts": [[38.960, 45.030], [38.990, 45.030]] }},
+      {{ "pts": [[38.960, 45.044], [38.990, 45.044]] }},
+      {{ "pts": [[38.970, 45.020], [38.970, 45.055]] }},
+      {{ "pts": [[38.982, 45.020], [38.982, 45.055]] }}
+    ]
+  }},
+  "moscow": {{
+    "center": [37.6173, 55.7558],
+    "waterways": [
+      {{
+        "name": "Moskva River",
+        "width": 24,
+        "pts": [[37.53, 55.75], [37.56, 55.735], [37.60, 55.742], [37.63, 55.748], [37.66, 55.732], [37.68, 55.715]]
+      }},
+      {{
+        "name": "Vodootvodny Canal",
+        "width": 10,
+        "pts": [[37.605, 55.742], [37.625, 55.746], [37.645, 55.738]]
+      }}
+    ],
+    "parks": [
+      {{
+        "name": "Gorky Park & Muzeon",
+        "pts": [[37.595, 55.728], [37.608, 55.728], [37.608, 55.738], [37.595, 55.738], [37.595, 55.728]]
+      }},
+      {{
+        "name": "Zaryadye Park",
+        "pts": [[37.625, 55.750], [37.633, 55.750], [37.633, 55.754], [37.625, 55.754], [37.625, 55.750]]
+      }}
+    ],
+    "major_streets": [
+      {{
+        "name": "Boulevard Ring",
+        "pts": [[37.602, 55.750], [37.605, 55.760], [37.625, 55.766], [37.642, 55.760], [37.648, 55.748]]
+      }},
+      {{
+        "name": "Garden Ring",
+        "pts": [[37.585, 55.738], [37.582, 55.760], [37.610, 55.772], [37.652, 55.768], [37.658, 55.738], [37.620, 55.730], [37.585, 55.738]]
+      }},
+      {{
+        "name": "Tverskaya Street",
+        "pts": [[37.615, 55.758], [37.605, 55.768], [37.592, 55.778]]
+      }},
+      {{
+        "name": "Novy Arbat",
+        "pts": [[37.602, 55.752], [37.585, 55.752], [37.570, 55.752]]
+      }}
+    ],
+    "secondary_streets": [
+      {{ "pts": [[37.595, 55.755], [37.635, 55.755]] }},
+      {{ "pts": [[37.600, 55.745], [37.630, 55.745]] }},
+      {{ "pts": [[37.615, 55.740], [37.615, 55.770]] }}
+    ]
   }}
   }};
 
-    // Clean Metropolitan Network Lookup (Curated cities only, zero synthetic noise)
+    // Clean Metropolitan Network Lookup with Universal Architectural Cartography
     function getCityStreetData(cityName) {{
       if (!cityName) return null;
       let key = cityName.toLowerCase().trim();
@@ -6347,6 +6526,10 @@ def build():
       if (key.includes('vienna') || key === 'wien') key = 'vienna';
       if (key.includes('basel')) key = 'basel';
       if (key.includes('barcelona') || key === 'bcn') key = 'barcelona';
+      if (key.includes('petersburg') || key.includes('spb') || key.includes('saint p')) key = 'saint petersburg';
+      if (key.includes('krasnodar')) key = 'krasnodar';
+      if (key.includes('moscow') || key.includes('moskva')) key = 'moscow';
+
       const normKey = key.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
       const pCty = PRIORITY_CITIES.find(c => matchC(c.name, cityName));
       const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
@@ -6368,12 +6551,78 @@ def build():
         }};
       }}
 
+      // Universal procedural architectural cartography for any unlisted city
+      const waterways = [];
+      const parks = [];
+      const major_streets = [];
+      const secondary_streets = [];
+
+      if (centerLon === 0 && centerLat === 0) {{
+        centerLon = (typeof rotLon !== 'undefined' && isFinite(rotLon) ? rotLon : 0);
+        centerLat = (typeof rotLat !== 'undefined' && isFinite(rotLat) ? rotLat : 0);
+      }}
+
+      const cosLat = Math.max(0.18, Math.cos(centerLat * Math.PI / 180));
+      const spanLon = 0.075 / cosLat;
+      const spanLat = 0.055;
+
+      waterways.push({{
+        name: "Metropolitan Canal",
+        width: 16,
+        pts: [
+          [centerLon - spanLon * 0.75, centerLat - spanLat * 0.40],
+          [centerLon - spanLon * 0.35, centerLat - spanLat * 0.12],
+          [centerLon, centerLat - spanLat * 0.02],
+          [centerLon + spanLon * 0.35, centerLat + spanLat * 0.22],
+          [centerLon + spanLon * 0.75, centerLat + spanLat * 0.38]
+        ]
+      }});
+
+      parks.push({{
+        name: "Civic Cultural Gardens",
+        pts: [
+          [centerLon + spanLon * 0.06, centerLat + spanLat * 0.06],
+          [centerLon + spanLon * 0.22, centerLat + spanLat * 0.06],
+          [centerLon + spanLon * 0.22, centerLat + spanLat * 0.20],
+          [centerLon + spanLon * 0.06, centerLat + spanLat * 0.20],
+          [centerLon + spanLon * 0.06, centerLat + spanLat * 0.06]
+        ]
+      }});
+
+      major_streets.push(
+        {{ pts: [[centerLon - spanLon * 0.06, centerLat - spanLat * 0.6], [centerLon - spanLon * 0.02, centerLat], [centerLon + spanLon * 0.02, centerLat + spanLat * 0.6]] }},
+        {{ pts: [[centerLon - spanLon * 0.65, centerLat + spanLat * 0.03], [centerLon, centerLat + spanLat * 0.03], [centerLon + spanLon * 0.65, centerLat + spanLat * 0.03]] }},
+        {{ pts: [[centerLon - spanLon * 0.45, centerLat - spanLat * 0.35], [centerLon, centerLat], [centerLon + spanLon * 0.45, centerLat + spanLat * 0.35]] }},
+        {{ pts: [[centerLon - spanLon * 0.45, centerLat + spanLat * 0.35], [centerLon, centerLat], [centerLon + spanLon * 0.45, centerLat - spanLat * 0.35]] }}
+      );
+
+      cityInsts.forEach(inst => {{
+        major_streets.push({{
+          pts: [[centerLon, centerLat], [inst.lon, inst.lat]]
+        }});
+      }});
+
+      const stepX = 0.012 / cosLat;
+      const stepY = 0.009;
+      for (let s = -4; s <= 4; s++) {{
+        if (s === 0) continue;
+        secondary_streets.push({{
+          pts: [[centerLon - spanLon * 0.6, centerLat + s * stepY], [centerLon + spanLon * 0.6, centerLat + s * stepY]]
+        }});
+      }}
+      for (let s = -5; s <= 5; s++) {{
+        if (s === 0) continue;
+        secondary_streets.push({{
+          pts: [[centerLon + s * stepX, centerLat - spanLat * 0.5], [centerLon + s * stepX, centerLat + spanLat * 0.5]]
+        }});
+      }}
+
       return {{
         center: [centerLon, centerLat],
-        waterways: [],
-        parks: [],
-        major_streets: [],
-        secondary_streets: []
+        waterways,
+        parks,
+        major_streets,
+        secondary_streets
       }};
     }}
 
@@ -6607,85 +6856,6 @@ def build():
       return Math.hypot(px - (x1 + t * dx), py - (y1 + t * dy));
     }}
 
-    // High-Resolution Dark Matter Vector / Tile Cartography Engine
-    const TILE_CACHE = new Map();
-    const MAX_TILE_CACHE = 160;
-
-    function getTileUrl(z, x, y) {{
-      const subdomains = ['a', 'b', 'c', 'd'];
-      const s = subdomains[(x + y) % subdomains.length];
-      return `https://${{s}}.basemaps.cartocdn.com/dark_all/${{z}}/${{x}}/${{y}}.png`;
-    }}
-
-    function renderMapTiles(ctx, r, cx, cy, rotLon, rotLat, width, height) {{
-      if (r < baseRadius * 1.4) return;
-
-      const cosLat = Math.max(0.15, Math.cos(toRad(rotLat)));
-      const idealZ = Math.log2((2 * Math.PI * r) / (256 * cosLat));
-      const z = Math.max(1, Math.min(18, Math.round(idealZ)));
-      const n = 2.0 ** z;
-
-      const centerTileX = Math.floor(((rotLon + 180.0) / 360.0) * n);
-      const centerTileY = Math.floor(((1.0 - Math.asinh(Math.tan(toRad(rotLat))) / Math.PI) / 2.0) * n);
-
-      const tilePx = (2 * Math.PI * r * cosLat) / n;
-      const tilesAcross = Math.ceil(width / Math.max(20, tilePx)) + 1;
-      const tilesDown = Math.ceil(height / Math.max(20, tilePx)) + 1;
-      const radiusX = Math.min(4, Math.max(1, Math.ceil(tilesAcross / 2)));
-      const radiusY = Math.min(4, Math.max(1, Math.ceil(tilesDown / 2)));
-
-      const tileAlpha = Math.min(1.0, Math.max(0.0, (r - baseRadius * 1.4) / (baseRadius * 1.2)));
-
-      ctx.save();
-      ctx.globalAlpha = tileAlpha;
-
-      for (let dx = -radiusX; dx <= radiusX; dx++) {{
-        for (let dy = -radiusY; dy <= radiusY; dy++) {{
-          const tx = centerTileX + dx;
-          const ty = centerTileY + dy;
-          if (ty < 0 || ty >= n) continue;
-
-          const wrappedX = ((tx % n) + n) % n;
-          const key = `${{z}}/${{wrappedX}}/${{ty}}`;
-
-          let img = TILE_CACHE.get(key);
-          if (!img) {{
-            img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.src = getTileUrl(z, wrappedX, ty);
-            img.onload = () => {{
-              if (typeof requestAnimationFrame === 'function') {{
-                requestAnimationFrame(render);
-              }}
-            }};
-            TILE_CACHE.set(key, img);
-            if (TILE_CACHE.size > MAX_TILE_CACHE) {{
-              const firstKey = TILE_CACHE.keys().next().value;
-              TILE_CACHE.delete(firstKey);
-            }}
-          }}
-
-          if (img.complete && img.naturalWidth > 0) {{
-            const lonMin = (wrappedX / n) * 360.0 - 180.0;
-            const lonMax = ((wrappedX + 1) / n) * 360.0 - 180.0;
-            const latMax = toDeg(Math.atan(Math.sinh(Math.PI * (1 - 2 * ty / n))));
-            const latMin = toDeg(Math.atan(Math.sinh(Math.PI * (1 - 2 * (ty + 1) / n))));
-
-            const pTL = project(lonMin, latMax, r, cx, cy);
-            const pBR = project(lonMax, latMin, r, cx, cy);
-
-            if (pTL.front || pBR.front) {{
-              const dw = pBR.x - pTL.x;
-              const dh = pBR.y - pTL.y;
-              if (dw > 1 && dh > 1 && dw < width * 4 && dh < height * 4) {{
-                ctx.drawImage(img, pTL.x, pTL.y, dw, dh);
-              }}
-            }}
-          }}
-        }}
-      }}
-      ctx.restore();
-    }}
 
     function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {{
       if (!inst) return;
@@ -6858,7 +7028,7 @@ def build():
 
       // Dynamic City Detection for Free Zooming & Explicit City Selection
       let activeCity = selectedCityFilter !== 'all' ? selectedCityFilter : null;
-      if (!activeCity && r > baseRadius * 16.0) {{
+      if (!activeCity && r > baseRadius * 12.0) {{
         let closestDist = Infinity;
         let closestCity = null;
         for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {{
@@ -6869,11 +7039,11 @@ def build():
             closestCity = c;
           }}
         }}
-        if (closestCity && closestDist < 1.4) {{
+        if (closestCity && closestDist < 2.5) {{
           activeCity = closestCity.name;
         }}
       }}
-      const isCityZoom = !!activeCity && r > baseRadius * 16.0;
+      const isCityZoom = !!activeCity && r > baseRadius * 12.0;
 
       // Update Unified Navigation Banner (Country View + City Street View + World View)
       const cityBanner = document.getElementById('cityViewControlBanner');
@@ -7130,11 +7300,6 @@ def build():
           }}
         }}
         ctx.restore();
-
-        // 5.5 High-Resolution Dark Map Tiles on Sphere
-        if (r > baseRadius * 1.5) {{
-          renderMapTiles(ctx, r, cx, cy, rotLon, rotLat, width, height);
-        }}
 
         // 6. Country Centroid Names (Smoothly fade out as zoom approaches city/regional level)
         if (r > baseRadius * 0.8 && r < baseRadius * 2.8) {{
@@ -7497,9 +7662,6 @@ def build():
           ctx.fillRect(0, 0, width, height);
         }}
 
-        // 3.5 Real Dark Map Street & Neighborhood Tiles
-        renderMapTiles(ctx, r, cx, cy, rotLon, rotLat, width, height);
-
         // 4. Subtle City Watermark in Background
         if (activeCity) {{
           ctx.save();
@@ -7565,11 +7727,33 @@ def build():
           ctx.restore();
         }}
 
-        // 7. Curated Major Arterial Streets (Only for real curated networks)
+        // 6.5 Secondary Streets & Cadastral Block Grid
+        if (cityData && cityData.secondary_streets && cityData.secondary_streets.length > 0) {{
+          ctx.save();
+          ctx.strokeStyle = '#0f1b2d';
+          ctx.lineWidth = 1.0;
+          ctx.lineCap = 'round';
+          cityData.secondary_streets.forEach(s => {{
+            if (!s.pts || s.pts.length < 2) return;
+            ctx.beginPath();
+            let started = false;
+            s.pts.forEach(pt => {{
+              const p = project(pt[0], pt[1], r, cx, cy);
+              if (p.front) {{
+                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
+                else ctx.lineTo(p.x, p.y);
+              }}
+            }});
+            if (started) ctx.stroke();
+          }});
+          ctx.restore();
+        }}
+
+        // 7. Curated Major Arterial Streets & Boulevards
         if (cityData && cityData.major_streets && cityData.major_streets.length > 0) {{
           ctx.save();
-          ctx.strokeStyle = '#182740';
-          ctx.lineWidth = 1.8;
+          ctx.strokeStyle = '#1d314d';
+          ctx.lineWidth = 2.0;
           ctx.lineCap = 'round';
           cityData.major_streets.forEach(s => {{
             if (!s.pts || s.pts.length < 2) return;
