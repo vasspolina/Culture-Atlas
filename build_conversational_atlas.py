@@ -9630,7 +9630,7 @@ FORMATTING & INTERACTION RULES:
             harm: 'Corporate entities invest in museum naming rights, trustee seats, and gala underwriting strictly to purchase social license and distract from ecological destruction, human rights abuses, or labor exploitation.',
             compromised: 'MoMA, The Met, Tate, Louvre Abu Dhabi, GES-2, Whitney Museum',
             activism: 'Historic divestment actions by Liberate Tate, Strike MoMA, P.A.I.N. (Nan Goldin), and Decolonize This Place.',
-            alternatives: 'Culture Atlas maps 398+ verified clean, independent non-profit sanctuaries that refuse all corporate artwashing funds.'
+            alternatives: `Culture Atlas maps ${{ALL_INSTITUTIONS.length}} verified clean, independent non-profit sanctuaries that refuse all corporate artwashing funds.`
           }};
 
           appendCuratorMessage(`
