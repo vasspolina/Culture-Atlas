@@ -453,15 +453,15 @@
       border-color: rgba(18, 20, 26, 0.94) transparent transparent transparent;
     }
     .inst-pin-label-name {
-      max-width: 190px;
+      max-width: 260px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    /* Labels always visible on top of dots by default ("otherwise show names of spaces") */
+    /* Labels always visible on top of dots on all points of view by default */
     .inst-pin-label {
-      opacity: 1;
-      visibility: visible;
+      opacity: 1 !important;
+      visibility: visible !important;
       transform: translateX(-50%) translateY(0);
     }
     /* When a pin is clicked and its detail popup card is open, suppress that pin's label */
@@ -6963,11 +6963,20 @@ return maplibregl$1;
       const lat = targetLat || (cMeta ? cMeta.lat : (cityInsts.length > 0 ? cityInsts[0].lat : 0));
       const lon = targetLon || (cMeta ? cMeta.lon : (cityInsts.length > 0 ? cityInsts[0].lon : 0));
 
-      cityVectorMap.jumpTo({
-        center: [lon, lat],
-        zoom: 14,
-        pitch: 35
-      });
+      if (cityInsts.length > 1 && !targetLat) {
+        const bounds = new maplibregl.LngLatBounds();
+        cityInsts.forEach(i => bounds.extend([i.lon, i.lat]));
+        cityVectorMap.fitBounds(bounds, {
+          padding: { top: 90, bottom: 90, left: 70, right: 70 },
+          maxZoom: 14.5
+        });
+      } else {
+        cityVectorMap.jumpTo({
+          center: [lon, lat],
+          zoom: 14,
+          pitch: 35
+        });
+      }
       setTimeout(() => {
         if (cityVectorMap) cityVectorMap.resize();
       }, 50);
@@ -8161,21 +8170,21 @@ return maplibregl$1;
 
           if (isHov || (selectedCountryFilter !== 'all' && isSel)) {
             drawInstitutionMicroCard(ctx, d.inst, d.x, d.y, width, height);
-          } else if (currentRadius > baseRadius * 2.2 && !isClusterZoom) {
-            // Render institution name on top of dot when zoomed in on globe
+          } else {
+            // Render institution name on top of dot across ALL points of view
             ctx.save();
             ctx.font = '600 10.5px "PP Telegraf", "PP Telegraph", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
-            const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
+            const nameTxt = d.inst.name.length > 25 ? d.inst.name.substring(0, 23) + '…' : d.inst.name;
             const tw = ctx.measureText(nameTxt).width;
             const bx = d.x - tw / 2 - 5;
             const by = d.y - 18;
-            ctx.fillStyle = 'rgba(18, 20, 26, 0.92)';
+            ctx.fillStyle = 'rgba(18, 20, 26, 0.94)';
             if (ctx.roundRect) ctx.roundRect(bx, by, tw + 10, 16, 4);
             else ctx.rect(bx, by, tw + 10, 16);
             ctx.fill();
-            ctx.strokeStyle = d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.5)' : 'rgba(56, 189, 248, 0.5)';
+            ctx.strokeStyle = d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : 'rgba(56, 189, 248, 0.65)';
             ctx.lineWidth = 1;
             ctx.stroke();
             ctx.fillStyle = '#f8fafc';
@@ -8545,7 +8554,7 @@ return maplibregl$1;
           });
         });
 
-        // Register hitboxes for remaining pins in dense cities so EVERY pin is interactive
+        // Register hitboxes and floating labels for remaining pins so EVERY space is labeled on all points of view
         projectedInsts.forEach(({ inst, pt }) => {
           const already = cityMuseumHitboxes.some(h => h.inst.name === inst.name);
           if (!already) {
@@ -8558,6 +8567,26 @@ return maplibregl$1;
               pinX: pt.x,
               pinY: pt.y
             });
+
+            // Floating name label on top of dot
+            ctx.save();
+            ctx.font = '600 11px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            const nameTxt = inst.name.length > 25 ? inst.name.substring(0, 23) + '…' : inst.name;
+            const tw = ctx.measureText(nameTxt).width;
+            const bx = pt.x - tw / 2 - 5;
+            const by = pt.y - 18;
+            ctx.fillStyle = 'rgba(18, 20, 26, 0.94)';
+            if (ctx.roundRect) ctx.roundRect(bx, by, tw + 10, 16, 4);
+            else ctx.rect(bx, by, tw + 10, 16);
+            ctx.fill();
+            ctx.strokeStyle = inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : 'rgba(56, 189, 248, 0.65)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillText(nameTxt, pt.x, pt.y - 5);
+            ctx.restore();
           }
         });
 
