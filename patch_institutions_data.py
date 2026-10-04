@@ -11,8 +11,8 @@ URL_UPDATES = {
         "transit_tips": "Nomadic projects across Hanoi; check event listings for exact locations."
     },
     "Ruang MES 56": {
-        "website": "https://www.instagram.com/mes56/",
-        "visit_url": "https://www.instagram.com/mes56/",
+        "website": "https://www.instagram.com/ruangmes56/",
+        "visit_url": "https://www.instagram.com/ruangmes56/",
         "curator_recommendation": "A foundational artist collective in Yogyakarta exploring photo-based media, self-publishing, and community social practice. Active at Jl. Mangkuyudan No.53 A, Mantrijeron, Yogyakarta."
     },
     "Storefront for Art and Architecture": {
@@ -128,8 +128,8 @@ URL_UPDATES = {
         "visit_url": "https://www.artbank.gov.au/"
     },
     "Bikini Wax EPS": {
-        "website": "https://www.instagram.com/bikiniwaxeps/",
-        "visit_url": "https://www.instagram.com/bikiniwaxeps/"
+        "website": "https://www.instagram.com/biquiniwax_tv/?hl=en",
+        "visit_url": "https://www.instagram.com/biquiniwax_tv/?hl=en"
     },
     "State of Concept Athens": {
         "website": "https://stateofconcept.org/",

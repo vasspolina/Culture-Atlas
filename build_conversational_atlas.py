@@ -1043,6 +1043,8 @@ def build():
     const COUNTRY_POLYS = {countries_json};
     const ALL_INSTITUTIONS = {institutions_json};
     const EXCLUDED_INSTITUTIONS = {excluded_json};
+    window.ALL_INSTITUTIONS = ALL_INSTITUTIONS;
+    window.EXCLUDED_INSTITUTIONS = EXCLUDED_INSTITUTIONS;
 
     const ALL_COUNTRIES_REGISTRY = {all_countries_registry_json};
     const ALL_CITIES_REGISTRY = {all_cities_registry_json};
@@ -6487,6 +6489,34 @@ def build():
       return s1 === s2 || s1.includes(s2) || s2.includes(s1);
     }}
 
+    function getValidWebUrl(inst) {{
+      if (!inst) return '';
+      if (inst.website && typeof inst.website === 'string' && (inst.website.startsWith('http://') || inst.website.startsWith('https://'))) {{
+        return inst.website.trim();
+      }}
+      if (inst.visit_url && typeof inst.visit_url === 'string' && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) {{
+        return inst.visit_url.trim();
+      }}
+      if (inst.sources && Array.isArray(inst.sources)) {{
+        for (const s of inst.sources) {{
+          if (typeof s === 'string' && (s.startsWith('http://') || s.startsWith('https://'))) {{
+            return s.trim();
+          }}
+        }}
+      }}
+      return '';
+    }}
+
+    function getDisplayDomain(url) {{
+      if (!url) return 'website';
+      try {{
+        const u = new URL(url);
+        return u.hostname.replace(/^www\\./, '');
+      }} catch(e) {{
+        return 'website';
+      }}
+    }}
+
     function easeInOutQuad(t) {{
       return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
     }}
@@ -7887,14 +7917,18 @@ def build():
         hoursEl.textContent = `${{shortH}} · ${{shortF}}`;
       }}
 
-      const webUrl = inst.website || (inst.sources && inst.sources[0]) || '';
-      let domain = 'website';
-      try {{ domain = new URL(webUrl).hostname.replace(/^www\\./, ''); }} catch(e) {{}}
+      const webUrl = getValidWebUrl(inst);
+      const domain = getDisplayDomain(webUrl);
       const webEl = document.getElementById('floatingCardWebLink');
       const domEl = document.getElementById('floatingCardDomain');
       if (webEl && domEl) {{
-        webEl.href = webUrl;
-        domEl.textContent = domain;
+        if (webUrl) {{
+          webEl.href = webUrl;
+          domEl.textContent = domain;
+          webEl.style.display = 'inline-flex';
+        }} else {{
+          webEl.style.display = 'none';
+        }}
       }}
 
       document.querySelectorAll('.inst-card').forEach(c => {{
@@ -7928,9 +7962,8 @@ def build():
       const body = document.getElementById('detailBody');
       drawer.classList.remove('hidden');
 
-      let domain = 'website';
-      const webUrl = inst.website || (inst.sources && inst.sources[0]) || '';
-      try {{ domain = new URL(webUrl).hostname.replace(/^www\./, ''); }} catch(e) {{}}
+      const webUrl = getValidWebUrl(inst);
+      const domain = getDisplayDomain(webUrl);
 
       const isClean = inst.tier === 'A';
       const tierBadgeClass = isClean 
@@ -7986,9 +8019,9 @@ def build():
           ` : ''}}
 
           ${{webUrl ? `
-            <a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" 
+            <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
                class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[14px] rounded-xl transition shadow-md active:scale-95">
-              <span>Visit Official Website (${{domain}})</span> <span>↗</span>
+              <span>Visit Official Website (${{escapeHtml(domain)}})</span> <span>↗</span>
             </a>
           ` : ''}}
 
@@ -8003,8 +8036,8 @@ def build():
                 <span class="text-[13px] font-normal text-white uppercase tracking-wider flex items-center gap-1.5 font-mono">
                   <span>Visitor Planning & Practical Guide</span>
                 </span>
-                ${{inst.visit_url ? `
-                  <a href="${{inst.visit_url}}" target="_blank" rel="noopener noreferrer" class="text-[13px] text-[#60a5fa] hover:underline flex items-center gap-1 font-mono">
+                ${{(inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) || webUrl ? `
+                  <a href="${{escapeHtml((inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[13px] text-[#60a5fa] hover:underline flex items-center gap-1 font-mono">
                     <span>Plan Your Visit ↗</span>
                   </a>
                 ` : ''}}
@@ -8097,11 +8130,29 @@ def build():
           <div class="pt-2 border-t border-[#1c212a]">
             <span class="text-[13px] font-normal text-slate-400 uppercase tracking-wider block mb-2 font-mono">Audited Sources, Reports & Filings</span>
             <div class="flex flex-col gap-1.5 font-mono">
-              ${{(inst.sources || []).map(u => `
-                <a href="${{u}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:underline text-[13px] flex items-center gap-1">
-                  <span>↗</span> <span class="truncate">${{escapeHtml(u)}}</span>
-                </a>
-              `).join('')}}
+              ${{(inst.sources || []).map(u => {{
+                const isUrl = typeof u === 'string' && (u.startsWith('http://') || u.startsWith('https://'));
+                if (isUrl) {{
+                  const srcDomain = getDisplayDomain(u);
+                  return `
+                    <a href="${{escapeHtml(u)}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:text-white hover:underline text-[13px] flex items-center gap-1.5 py-0.5 truncate transition">
+                      <span class="text-blue-400 text-[14px]">↗</span> <span class="truncate">${{escapeHtml(u)}}</span> <span class="text-slate-500 text-[11px] shrink-0 font-mono">(${{srcDomain}})</span>
+                    </a>
+                  `;
+                }} else {{
+                  return `
+                    <div class="text-slate-300 text-[13px] flex items-center justify-between gap-2 font-sans py-0.5">
+                      <span class="flex items-center gap-1.5 truncate text-slate-300">
+                        <span class="text-slate-500 font-mono text-[11px] px-1 py-0.5 rounded bg-[#131926] border border-[#222d42]">DOC</span>
+                        <span class="truncate">${{escapeHtml(u)}}</span>
+                      </span>
+                      <a href="https://www.google.com/search?q=${{encodeURIComponent(u + ' ' + (inst.name || ''))}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:text-white hover:underline text-[12px] font-mono shrink-0 ml-1">
+                        Search ↗
+                      </a>
+                    </div>
+                  `;
+                }}
+              }}).join('')}}
             </div>
           </div>
         </div>
@@ -8110,16 +8161,15 @@ def build():
 
     function formatInstLink(inst, opts = {{}}) {{
       if (!inst) return '';
-      const webUrl = inst.website || (inst.sources && inst.sources[0]) || '';
-      let domain = 'website';
-      try {{ domain = new URL(webUrl).hostname.replace(/^www\./, ''); }} catch(e) {{}}
+      const webUrl = getValidWebUrl(inst);
+      const domain = getDisplayDomain(webUrl);
       
       const isEx = inst.tier !== 'A';
       const nameClass = isEx ? 'inst-link text-rose-300 hover:underline font-normal' : 'inst-link font-normal';
       const badge = isEx ? ' <span class="text-[11px] font-mono px-1 py-0.2 rounded bg-[#2a0e14] text-rose-400 border border-rose-800 shrink-0">Excluded</span>' : '';
       const nameLink = `<a href="#" class="${{nameClass}}" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>${{badge}}`;
       const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
-      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[13px] text-[#60a5fa] hover:underline" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{webUrl}}" target="_blank" rel="noopener noreferrer" class="dossier-link text-[13px] text-slate-400 hover:underline">${{domain}} ↗</a>` : ''}})`;
+      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[13px] text-[#60a5fa] hover:underline" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[13px] text-[#93c5fd] hover:text-white hover:underline transition">${{domain}} ↗</a>` : ''}})`;
       
       return `${{nameLink}}${{cityPart}}${{dossierPart}}`;
     }}
@@ -11325,6 +11375,12 @@ FORMATTING & INTERACTION RULES:
 
     // Delegated click listener in chat messages for inline links, cards, & city mentions
     curatorMessages.addEventListener('click', (e) => {{
+      // Explicitly allow external website links to open in a new tab without interference
+      const extLink = e.target.closest('a[target="_blank"], a.ext-web-link, a[href^="http://"], a[href^="https://"]');
+      if (extLink && !extLink.classList.contains('inst-link') && !extLink.classList.contains('city-link') && !extLink.classList.contains('country-link') && !extLink.classList.contains('dossier-link') && !extLink.classList.contains('prompt-link')) {{
+        return;
+      }}
+
       // 0. Check for interactive follow-up suggestion pills
       const followUpBtn = e.target.closest('.curator-followup-pill');
       if (followUpBtn) {{
@@ -11979,10 +12035,8 @@ FORMATTING & INTERACTION RULES:
         const tierCol = 'text-emerald-400 border-emerald-900/60 bg-[#0a2016]';
         const tierName = 'Tier A · Clean Verified';
 
-        let displayDomain = 'website';
-        try {{
-          displayDomain = new URL(inst.website || inst.sources[0]).hostname.replace(/^www\\./, '');
-        }} catch(e) {{}}
+        const webUrl = getValidWebUrl(inst);
+        const displayDomain = getDisplayDomain(webUrl);
 
         return `
           <div class="inst-card bg-[#212121] border border-[#2e2e2e] rounded-2xl p-3.5 cursor-pointer hover:border-[#444] hover:bg-[#282828] transition ${{isSel ? 'border-[#3b82f6] bg-[#222834]' : ''}}" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
@@ -12019,12 +12073,16 @@ FORMATTING & INTERACTION RULES:
             ` : ''}}
             
             <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between">
-              <a href="${{inst.website || inst.sources[0]}}" target="_blank" rel="noopener noreferrer" 
-                 class="website-pill inline-flex items-center gap-1 text-[14px] font-mono text-[#93c5fd] hover:text-white bg-[#2a2a2a] hover:bg-[#333] border border-[#383838] px-2.5 py-0.5 rounded-lg transition"
-                 onclick="event.stopPropagation()">
-                <span class="truncate max-w-[120px]">${{displayDomain}}</span>
-                <span class="text-[14px]">↗</span>
-              </a>
+              ${{webUrl ? `
+                <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
+                   class="website-pill inline-flex items-center gap-1 text-[14px] font-mono text-[#93c5fd] hover:text-white bg-[#2a2a2a] hover:bg-[#333] border border-[#383838] px-2.5 py-0.5 rounded-lg transition"
+                   onclick="event.stopPropagation()">
+                  <span class="truncate max-w-[120px]">${{escapeHtml(displayDomain)}}</span>
+                  <span class="text-[14px]">↗</span>
+                </a>
+              ` : `
+                <span class="text-[13px] font-mono text-slate-500">Verified Sanctuary</span>
+              `}}
               <span class="text-[14px] text-[#71717a] hover:text-white font-mono transition">View on Globe →</span>
             </div>
           </div>
