@@ -563,12 +563,16 @@ def build():
     }}
     .custom-inst-pin {{
       cursor: pointer;
-      transform: translate(-50%, -50%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }}
     .custom-inst-pin:hover {{
-      transform: translate(-50%, -50%) scale(1.25);
-      z-index: 100;
+      transform: scale(1.12);
+      z-index: 9999 !important;
     }}
     @keyframes pinPulse {{
       0% {{ transform: scale(0.95); opacity: 0.8; }}
@@ -577,6 +581,72 @@ def build():
     }}
     .pin-pulse-aura {{
       animation: pinPulse 2.4s infinite ease-in-out;
+    }}
+
+    /* Floating Institution Name Label directly on top of dots */
+    .inst-pin-label {{
+      position: absolute;
+      bottom: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%) translateY(0);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      background: rgba(18, 20, 26, 0.94);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 0, 0, 0.4);
+      font-family: "PP Telegraf", "PP Telegraph", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      white-space: nowrap;
+      pointer-events: auto;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+      z-index: 20;
+    }}
+    .inst-pin-label::after {{
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 4px 4px 0 4px;
+      border-style: solid;
+      border-color: rgba(18, 20, 26, 0.94) transparent transparent transparent;
+    }}
+    .inst-pin-label-name {{
+      max-width: 190px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }}
+    /* Labels visible by default when zoomed in (zoom >= 12) */
+    .map-zoomed-in .inst-pin-label {{
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }}
+    /* Labels hidden when zoomed out below threshold to prevent overcrowding */
+    .map-zoomed-out .inst-pin-label {{
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50%) translateY(4px);
+    }}
+    .custom-inst-pin:hover .inst-pin-label {{
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateX(-50%) translateY(-2px) scale(1.05) !important;
+      border-color: rgba(255, 255, 255, 0.45) !important;
+      background: rgba(24, 27, 36, 0.98) !important;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8), 0 0 12px rgba(16, 185, 129, 0.35) !important;
+      z-index: 9999 !important;
     }}
   </style>
   <script>
@@ -6938,6 +7008,20 @@ def build():
       window.cityLeafletMap = cityLeafletMap;
       window.cityMarkersLayer = cityMarkersLayer;
 
+      function updateCityZoomClasses() {{
+        const mapEl = document.getElementById('cityMapContainer');
+        if (!mapEl || !cityVectorMap) return;
+        if (cityVectorMap.getZoom() >= 12) {{
+          mapEl.classList.add('map-zoomed-in');
+          mapEl.classList.remove('map-zoomed-out');
+        }} else {{
+          mapEl.classList.remove('map-zoomed-in');
+          mapEl.classList.add('map-zoomed-out');
+        }}
+      }}
+      cityVectorMap.on('zoom', updateCityZoomClasses);
+      cityVectorMap.on('load', updateCityZoomClasses);
+
       cityVectorMap.on('zoomend', () => {{
         if (cityVectorMap.getZoom() <= 8 && isCityStreetViewActive) {{
           exitCityStreetView();
@@ -6961,6 +7045,8 @@ def build():
       if (!mapEl || !cityVectorMap) return;
 
       mapEl.classList.remove('hidden');
+      mapEl.classList.add('map-zoomed-in');
+      mapEl.classList.remove('map-zoomed-out');
       document.getElementById('cityViewControlBanner')?.classList.remove('hidden');
 
       const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
@@ -7006,6 +7092,24 @@ def build():
         pinEl.style.justifyContent = 'center';
         pinEl.style.cursor = 'pointer';
 
+        // Floating Institution Name Label directly on top of the dot
+        const labelEl = document.createElement('div');
+        labelEl.className = 'inst-pin-label';
+        labelEl.setAttribute('data-name', inst.name);
+
+        const tierDot = document.createElement('span');
+        tierDot.style.color = markerColor;
+        tierDot.style.fontSize = '9px';
+        tierDot.style.lineHeight = '1';
+        tierDot.textContent = '●';
+
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'inst-pin-label-name';
+        nameSpan.textContent = inst.name;
+
+        labelEl.appendChild(tierDot);
+        labelEl.appendChild(nameSpan);
+
         const auraEl = document.createElement('div');
         auraEl.className = 'pin-pulse-aura';
         auraEl.style.position = 'absolute';
@@ -7023,6 +7127,7 @@ def build():
         dotEl.style.border = '2.5px solid #ffffff';
         dotEl.style.boxShadow = `0 0 14px ${{markerColor}}`;
 
+        pinEl.appendChild(labelEl);
         pinEl.appendChild(auraEl);
         pinEl.appendChild(dotEl);
 
@@ -8082,6 +8187,26 @@ def build():
 
           if (isHov || (selectedCountryFilter !== 'all' && isSel)) {{
             drawInstitutionMicroCard(ctx, d.inst, d.x, d.y, width, height);
+          }} else if (currentRadius > baseRadius * 2.2 && !isClusterZoom) {{
+            // Render institution name on top of dot when zoomed in on globe
+            ctx.save();
+            ctx.font = '600 10.5px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
+            const tw = ctx.measureText(nameTxt).width;
+            const bx = d.x - tw / 2 - 5;
+            const by = d.y - 18;
+            ctx.fillStyle = 'rgba(18, 20, 26, 0.92)';
+            if (ctx.roundRect) ctx.roundRect(bx, by, tw + 10, 16, 4);
+            else ctx.rect(bx, by, tw + 10, 16);
+            ctx.fill();
+            ctx.strokeStyle = d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.5)' : 'rgba(56, 189, 248, 0.5)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillText(nameTxt, d.x, d.y - 5);
+            ctx.restore();
           }}
         }});
 
