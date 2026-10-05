@@ -793,7 +793,7 @@ return maplibregl$1;
 
               <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">
                 <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Outdoor sculpture parks & land art</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Open-air sculpture centers, forest trails, and pastoral sanctuaries.</div>
+                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Open-air sculpture centers, forest trails, and pastoral landscapes.</div>
               </div>
 
               <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Which museums and galleries are free to enter?">
@@ -940,7 +940,7 @@ return maplibregl$1;
     <div class="bg-[#171717] border border-[#2e2e2e] rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden font-sans">
       <div class="p-3 border-b border-[#262626] bg-[#1a1a1a] flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <span class="text-[14px] font-normal text-white">Full Catalog of 203 Sanctuaries</span>
+          <span class="text-[14px] font-normal text-white">Full Catalog of Verified Spaces</span>
         </div>
         <button id="closeCatalogModalBtn" class="text-slate-400 hover:text-white p-1 text-[14px]">✕</button>
       </div>
@@ -7386,7 +7386,7 @@ return maplibregl$1;
       return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
-    // Clean High-Speed Rail Corridors Connecting Ethical Sanctuaries
+    // High-Speed Rail Corridors Connecting Independent Art Spaces
     const CLEAN_RAIL_CORRIDORS = [
       { name: "Eurostar High-Speed Rail", from: "London", to: "Paris", travel_time: "2h 16m", emission_saving: "90% CO₂ reduction", pts: [[-0.1278, 51.5074], [1.3, 51.1], [1.8, 50.9], [2.3522, 48.8566]] },
       { name: "Thalys / Eurostar Clean Corridor", from: "Paris", to: "Brussels", travel_time: "1h 22m", emission_saving: "92% CO₂ reduction", pts: [[2.3522, 48.8566], [3.3, 49.8], [4.3517, 50.8503]] },
@@ -7420,7 +7420,7 @@ return maplibregl$1;
       ctx.save();
       const isA = inst.tier === 'A';
       const tierColor = isA ? '#10b981' : '#38bdf8';
-      const tierLabel = isA ? '● TIER A · SANCTUARY' : '● TIER B · WATCH';
+      const tierLabel = isA ? '● TIER A · INDEPENDENT' : '● TIER B · WATCH';
 
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
@@ -8054,7 +8054,7 @@ return maplibregl$1;
           }
         }
 
-        // 8. Render Institution Dots & Sanctuary Clusters on Global Sphere
+        // 8. Render Institution Dots & Independent Space Clusters on Global Sphere
         visibleDots = [];
         cityClusterHitboxes = [];
 
@@ -8094,7 +8094,7 @@ return maplibregl$1;
           }
         });
 
-        // Render Sanctuary Cluster Badges on Globe
+        // Render Independent Space Cluster Badges on Globe
         if (isClusterZoom) {
           clusteredCityKeys.forEach(k => {
             const cData = cityInstMap[k];
@@ -8141,7 +8141,7 @@ return maplibregl$1;
               if (isHov) {
                 ctx.save();
                 ctx.font = 'bold 11px "PP Telegraf", "PP Telegraph", sans-serif';
-                const tipTxt = `${cData.name} · ${cData.insts.length} Clean Sanctuaries`;
+                const tipTxt = `${cData.name} · ${cData.insts.length} Independent Spaces`;
                 const tw = ctx.measureText(tipTxt).width;
                 const tbx = pt.x - tw / 2 - 8;
                 const tby = pt.y > 35 ? pt.y - 30 : pt.y + 16;
@@ -8447,7 +8447,7 @@ return maplibregl$1;
           const nameTxt = inst.name;
           const nw = ctx.measureText(nameTxt).width;
 
-          const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Sanctuary' : 'Watch Space');
+          const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Independent' : 'Watch Space');
           ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
           const sw = ctx.measureText(subTxt).width;
 
@@ -8940,7 +8940,7 @@ return maplibregl$1;
         : 'text-amber-400 border-amber-800 bg-[#26180a]';
 
       const tierLabel = isClean 
-        ? 'Tier A · Verified Clean Sanctuary' 
+        ? 'Tier A · Verified Independent Space' 
         : (inst.tier === 'B' ? 'Tier B · Excluded (Flagged Corporate Sponsor)' : 'Tier U · Excluded (Roster Unverified)');
 
       const cleanAlts = !isClean ? ALL_INSTITUTIONS.filter(i => matchC(i.city, inst.city)) : [];
@@ -8971,7 +8971,7 @@ return maplibregl$1;
 
             ${cleanAlts.length > 0 ? `
               <div class="bg-[#0c1626] border border-blue-800/70 p-3.5 rounded-xl space-y-2">
-                <span class="text-blue-300 font-mono text-[13px] uppercase tracking-wider block font-bold">Verified Clean Sanctuaries in ${escapeHtml(inst.city)}</span>
+                <span class="text-blue-300 font-mono text-[13px] uppercase tracking-wider block font-bold">Verified Independent Spaces in ${escapeHtml(inst.city)}</span>
                 <p class="text-slate-300 text-[13px]">Instead of supporting compromised boards, explore these verified independent spaces:</p>
                 <div class="space-y-1.5">
                   ${cleanAlts.slice(0, 4).map(a => `
@@ -9348,7 +9348,7 @@ return maplibregl$1;
       const prov = getEffectiveProvider();
       const model = getEffectiveModel();
 
-      // Sample representative sanctuaries for model grounding
+      // Sample representative spaces for model grounding
       const sampleInsts = ALL_INSTITUTIONS.slice(0, 45).map(i => `${i.name} (${i.city}, ${i.country}): Tier ${i.tier}, ${i.governance_type}, Hours: ${i.opening_hours}, ${i.admission_policy}, Highlights: ${i.highlight}`).join('\n');
 
       const criticalSystemPrompt = `You are the Culture Atlas assistant, a friendly, clear, and direct guide to art museums and galleries worldwide.
@@ -9356,7 +9356,7 @@ Culture Atlas maps 403 verified clean museums and art spaces across 40+ countrie
 
 CORE INSTRUCTION: SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE.
 - Use plain, natural, everyday English.
-- Avoid academic art-world jargon or flowery marketing phrases. Never say "cultural sanctuaries", "for quiet reflection", "for evening contemplation", "uncompromised curatorial experimentation", "shutter their galleries", "sublime", "epistemologies", or "palliative".
+- Avoid academic art-world jargon or flowery marketing phrases. Never say "cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "uncompromised curatorial experimentation", "shutter their galleries", "sublime", "epistemologies", or "palliative".
 - Speak like a knowledgeable, friendly human who explains things directly and simply.
 - Keep sentences short, clean, and conversational.
 
@@ -9965,7 +9965,7 @@ FORMATTING & INTERACTION RULES:
               <span class="text-[12px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-2 py-0.5 rounded-full">100% Client-Side</span>
             </div>
             <p class="text-[14px] text-slate-300 leading-[130%]">
-              I've opened the <strong>Curator Settings</strong> modal for you. You can connect your personal API key to enable live conversational reasoning across all 403 mapped cultural sanctuaries.
+              I've opened the <strong>Curator Settings</strong> modal for you. You can connect your personal API key to enable live conversational reasoning across all 403 mapped independent cultural spaces.
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
               <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
@@ -10107,7 +10107,7 @@ FORMATTING & INTERACTION RULES:
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1" data-exclude-speech="true">
                 <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
-                  <strong class="text-white block mb-0.5">🏛️ 403 Clean Sanctuaries</strong>
+                  <strong class="text-white block mb-0.5">🏛️ 403 Independent Spaces</strong>
                   Strict Tier A verification against arms & oil funding
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
@@ -10120,7 +10120,7 @@ FORMATTING & INTERACTION RULES:
                 </div>
               </div>
             </div>
-          `, ['Explore London sanctuaries', 'Show hidden gems', 'Outdoor sculpture parks', 'Why ethical funding matters']);
+          `, ['Explore London independent spaces', 'Show hidden gems', 'Outdoor sculpture parks', 'Why ethical funding matters']);
           return;
         }
 
@@ -10176,7 +10176,7 @@ FORMATTING & INTERACTION RULES:
                   <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
                     <span>🌾 4. Material Structural Autonomy</span>
                   </strong>
-                  <span>The 403 mapped sanctuaries are verified by their legal and economic architecture: artist-run non-profits, cooperative commons (<em>lumbung</em> models like Gudskul Jakarta, Casco Utrecht), non-collecting kunsthalles, and civic institutions with structural firewalls protecting curators from private capture.</span>
+                  <span>The 403 mapped spaces are verified by their legal and economic architecture: artist-run non-profits, cooperative commons (<em>lumbung</em> models like Gudskul Jakarta, Casco Utrecht), non-collecting kunsthalles, and civic institutions with structural firewalls protecting curators from private capture.</span>
                 </div>
               </div>
 
@@ -10188,7 +10188,7 @@ FORMATTING & INTERACTION RULES:
             'How we audit Form 990 filings',
             'Nan Goldin & Sackler divestment',
             'Warren Kanders at the Whitney',
-            'Explore clean sanctuaries'
+            'Explore independent spaces'
           ]);
           return;
         }
@@ -10222,7 +10222,7 @@ FORMATTING & INTERACTION RULES:
             harm: 'Corporate entities invest in museum naming rights, trustee seats, and gala underwriting strictly to purchase social license and distract from ecological destruction, human rights abuses, or labor exploitation.',
             compromised: 'MoMA, The Met, Tate, Louvre Abu Dhabi, GES-2, Whitney Museum',
             activism: 'Historic divestment actions by Liberate Tate, Strike MoMA, P.A.I.N. (Nan Goldin), and Decolonize This Place.',
-            alternatives: `Culture Atlas maps ${ALL_INSTITUTIONS.length} verified clean, independent non-profit sanctuaries that refuse all corporate artwashing funds.`
+            alternatives: `Culture Atlas maps ${ALL_INSTITUTIONS.length} verified independent non-profit spaces that refuse all corporate artwashing funds.`
           };
 
           appendCuratorMessage(`
@@ -10262,7 +10262,7 @@ FORMATTING & INTERACTION RULES:
             <p class="text-slate-300">
               - <strong>documenta fifteen (Kassel, 2022):</strong> Curated by Jakarta-based artist collective <strong>ruangrupa</strong>, documenta 15 radically dismantled the Western model of the lone genius curator. Instead of curating individual artworks, ruangrupa invited dozens of grassroots collectives from the Global South (like Más Arte Más Acción, Chimurenga, and Question of Funding) to manage shared budgets (*lumbung pots*) and practice non-hierarchical collaboration.<br>
               - <strong>The Controversy & Media Backlash:</strong> The exhibition faced intense political attacks and conservative media scrutiny in Germany over political imagery, exposing how Western cultural establishments struggle with decentralized Global South governance.<br>
-              - <strong>The Living Sanctuary in Culture Atlas:</strong> Visit ${formatInstLink(gudskul)} in Jakarta, the educational ecosystem formed by ruangrupa, Serrum, and Grafis Huru Hara, where lumbung continues as an everyday practice of mutual aid and collective learning.
+              - <strong>Living Independent Practice in Culture Atlas:</strong> Visit ${formatInstLink(gudskul)} in Jakarta, the educational ecosystem formed by ruangrupa, Serrum, and Grafis Huru Hara, where lumbung continues as an everyday practice of mutual aid and collective learning.
             </p>
           `, ['Fly to Jakarta', 'Casco: The Commons', 'Decolonial Practice']);
           if (gudskul) selectInstitution(gudskul, true);
@@ -10319,7 +10319,7 @@ FORMATTING & INTERACTION RULES:
               <strong>Queer cultural archives and feminist care commons</strong> resist both authoritarian persecution and corporate commercial "pinkwashing":
             </p>
             <p class="text-slate-300">
-              - <strong>Refusing Corporate Pinkwashing:</strong> Mega-museums often brand themselves with rainbow logos during Pride while their trustee boards remain invested in private prisons or defense contracts. Independent sanctuaries maintain true grassroots autonomy.<br>
+              - <strong>Refusing Corporate Pinkwashing:</strong> Mega-museums often brand themselves with rainbow logos during Pride while their trustee boards remain invested in private prisons or defense contracts. Independent art spaces maintain true grassroots autonomy.<br>
               - <strong>Feminist Care & Reproductive Labor:</strong> As articulated by Silvia Federici, care work, community kitchens, and mutual aid are the foundations of society. Spaces like ${formatInstLink(casco)} in Utrecht make reproductive labor visible through its *Publishing Class*, community assemblies, and communal kitchen.<br>
               - <strong>Underground Dissident Solidarity:</strong> In repressive regimes, spaces like ${formatInstLink(dkrozy)} in St. Petersburg host feminist self-education libraries and anti-patriarchal study circles without state censorship.
             </p>
@@ -10328,7 +10328,7 @@ FORMATTING & INTERACTION RULES:
         }
 
         // =========================================================================
-        // 🌍 MIDDLE EAST & ARAB WORLD: INDEPENDENT SANCTUARIES VS PETRO-STATE ARTWASHING
+        // 🌍 MIDDLE EAST & ARAB WORLD: INDEPENDENT SPACES VS PETRO-STATE ARTWASHING
         // =========================================================================
         if (q.includes('middle east') || q.includes('arab') || q.includes('beirut') || q.includes('cairo') || q.includes('palestine') || q.includes('gulf') || q.includes('dubai') || q.includes('abu dhabi') || q.includes('palestinian museum') || q.includes('townhouse')) {
           const pal = ALL_INSTITUTIONS.find(i => i.id && i.id.includes('palestinian-museum'));
@@ -10348,9 +10348,9 @@ FORMATTING & INTERACTION RULES:
               · ${formatInstLink(qatar)} (Doha): State monarchy cultural apparatus under direct royal patronage.
             </p>
             <p class="text-slate-300">
-              - <strong>Verified Clean Civil Society Sanctuaries (Mapped in Culture Atlas):</strong><br>
+              - <strong>Verified Independent Civil Society Spaces (Mapped in Culture Atlas):</strong><br>
               · ${formatInstLink(pal)} (Birzeit, Palestine): Independent civic trust cascading down terraced olive hills, preserving Palestinian memory, embroidery, and digital oral histories free of political factionalism.<br>
-              · ${formatInstLink(town)} (Cairo, Egypt): Downtown Cairo non-profit sanctuary founded in 1998, catalyzing the independent contemporary art movement in Egypt outside state censorship.
+              · ${formatInstLink(town)} (Cairo, Egypt): Downtown Cairo non-profit space founded in 1998, catalyzing the independent contemporary art movement in Egypt outside state censorship.
             </p>
           `, ['Fly to Palestine: Palestinian Museum', 'Fly to Cairo: Townhouse', 'Audit Saadiyat Island']);
           if (pal) selectInstitution(pal, true);
@@ -10374,7 +10374,7 @@ FORMATTING & INTERACTION RULES:
               · ${formatInstLink(vincom)} (Hanoi): Fully bankrolled by Vingroup (property, retail, automotive conglomerate), serving as a corporate prestige asset in a commercial shopping complex.
             </p>
             <p class="text-slate-300">
-              - <strong>Verified Clean Grassroots Sanctuaries (Mapped in Culture Atlas):</strong><br>
+              - <strong>Verified Independent Grassroots Spaces (Mapped in Culture Atlas):</strong><br>
               · ${formatInstLink(sanart)} (Ho Chi Minh City): Vietnam's premier independent artist-run space founded in 2007 by Dinh Q. Lê, Tuan Andrew Nguyen, and Phnam Thao Nguyen. Funded via international non-profit cultural trusts (Prince Claus Fund, Arts Collaboratory), fostering critical curatorial dialogue.<br>
               · ${formatInstLink(nhasan)} (Hanoi): Founded in 1998 as Nha San Studio, it is the historic pioneer of Vietnamese experimental, installation, and performance art, run entirely through artist solidarity.
             </p>
@@ -10402,7 +10402,7 @@ FORMATTING & INTERACTION RULES:
               · ${formatInstLink(pirelli)} (Milan): 100% funded and governed by the Pirelli tyre multinational.
             </p>
             <p class="text-slate-300">
-              - <strong>Verified Clean Independent Sanctuaries (Mapped in Culture Atlas):</strong><br>
+              - <strong>Verified Independent Spaces (Mapped in Culture Atlas):</strong><br>
               · ${formatInstLink(viafarini)} (Milan): Established in 1991 at the Fabbrica del Vapore. Non-profit artist-run organization preserving the historic DOCVA visual arts documentation archive of over 40,000 artists, operating with zero commercial luxury sponsorship.<br>
               · ${formatInstLink(macro)} (Rome): Public civic contemporary museum with 100% free admission, operating as an open laboratory for independent research.
             </p>
@@ -10412,7 +10412,7 @@ FORMATTING & INTERACTION RULES:
         }
 
         // =========================================================================
-        // 🇷🇺 RUSSIA: OLIGARCH ARTWASHING, STATE CENSORSHIP & SAMIZDAT SANCTUARIES
+        // 🇷🇺 RUSSIA: OLIGARCH ARTWASHING, STATE CENSORSHIP & SAMIZDAT SPACES
         // =========================================================================
         if (q.includes('russia') || q.includes('russian') || q.includes('moscow') || q.includes('petersburg') || q.includes('hermitage') || q.includes('tretyakov') || q.includes('ges-2') || q.includes('ges 2') || q.includes('dk rozy') || q.includes('chto delat') || q.includes('krasnodar') || q.includes('typography')) {
           const dkrozy = ALL_INSTITUTIONS.find(i => i.id === 'dk-rozy-st-petersburg' || i.name.includes('DK Rozy'));
@@ -10424,7 +10424,7 @@ FORMATTING & INTERACTION RULES:
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              The Russian cultural landscape is deeply divided between <strong>state-controlled institutions / sanctioned oligarch foundations</strong> and <strong>underground self-organized sanctuaries</strong>:
+              The Russian cultural landscape is deeply divided between <strong>state-controlled institutions / sanctioned oligarch foundations</strong> and <strong>underground self-organized initiatives</strong>:
             </p>
             <p class="text-slate-300">
               - <strong>Audited Excluded Institutions:</strong><br>
@@ -10434,7 +10434,7 @@ FORMATTING & INTERACTION RULES:
               · ${formatInstLink(tretyakov)} (Moscow): Subject to state administrative takeovers and systematic ideological censorship of anti-war and non-conformist artists.
             </p>
             <p class="text-slate-300">
-              - <strong>Verified Clean Autonomous Sanctuaries (Mapped in Culture Atlas):</strong><br>
+              - <strong>Verified Autonomous Independent Spaces (Mapped in Culture Atlas):</strong><br>
               · ${formatInstLink(dkrozy)} in St. Petersburg: Founded by artist collective Chto Delat. Zero oligarch or state money. Operates the Rosa Luxemburg library, School of Engaged Art, and mutual-aid community assemblies.<br>
               · ${formatInstLink(typo)} in Krasnodar: Founded by artist group ZIP. Independent crowdfunding, community art school, and regional contemporary laboratory.
             </p>
@@ -10459,7 +10459,7 @@ FORMATTING & INTERACTION RULES:
               Institutions like ${formatInstLink(natMus)} and the National Centre for Contemporary Arts (NCCA) are directly subordinated to the Lukashenko presidential administration, enforcing strict political loyalty and blacklisting democratic opposition artists.
             </p>
             <p class="text-slate-300">
-              - <strong>The Historic Dissident Sanctuary (Mapped in Culture Atlas):</strong><br>
+              - <strong>The Historic Dissident Space (Mapped in Culture Atlas):</strong><br>
               · ${formatInstLink(ygal)} (Minsk): Founded in 2009 by Anna Chistoserdova and Valentyna Kiselyova. Funded through independent cultural entrepreneurship and community support, zero state subsidies. It served as the central home for Belarusian-language literature, non-conformist visual art, and civil society forums until regime crackdowns forced physical dispersal in 2020.
             </p>
           `, ['Fly to Belarus', 'Russia Art Scene', 'North Korea Art Scene']);
@@ -10614,7 +10614,7 @@ FORMATTING & INTERACTION RULES:
             const camden = ALL_INSTITUTIONS.find(i => i.name.includes('Camden'));
             appendCuratorMessage(`
               <p class="text-slate-200">
-                <strong>Curated 1-Day London Art Itinerary (100% Clean Non-Profit Sanctuaries):</strong>
+                <strong>Curated 1-Day London Art Itinerary (100% Independent Non-Profit Spaces):</strong>
               </p>
               <p class="text-slate-300">
                 A carefully sequenced day through London's most vital independent, artist-run, and civic spaces—completely avoiding corporate sponsor corridors:
@@ -10731,7 +10731,7 @@ FORMATTING & INTERACTION RULES:
           // General Multi-City Overview
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Culture Atlas provides curated cultural itineraries across major world capitals featuring 100% verified clean, non-profit sanctuaries:
+              Culture Atlas provides curated cultural itineraries across major world capitals featuring 100% verified independent, non-profit spaces:
             </p>
             <p class="text-slate-300">
               - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="London">London 1-Day Route:</a> Chisenhale Gallery → Whitechapel Gallery → Gasworks → Camden Art Centre.<br>
@@ -10776,7 +10776,7 @@ FORMATTING & INTERACTION RULES:
         }
 
         // =========================================================================
-        // 🌲 OUTDOOR SCULPTURE PARKS & LAND ART SANCTUARIES
+        // 🌲 OUTDOOR SCULPTURE PARKS & LAND ART SPACES
         // =========================================================================
         if (q.includes('sculpture park') || q.includes('outdoor') || q.includes('land art') || q.includes('landscape') || (q.includes('nature') && q.includes('art')) || q.includes('storm king') || q.includes('sculpture garden')) {
           const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
@@ -10785,7 +10785,7 @@ FORMATTING & INTERACTION RULES:
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Culture Atlas audits and maps extraordinary <strong>outdoor sculpture parks and landscape art sanctuaries</strong> operating with verified ethical funding:
+              Culture Atlas audits and maps extraordinary <strong>outdoor sculpture parks and open-air art centers</strong> operating with verified ethical funding:
             </p>
             <p class="text-slate-300">
               - <strong>${formatInstLink(kroll)} (Otterlo, Netherlands):</strong> One of Europe's largest sculpture gardens, spanning 60 acres within De Hoge Veluwe National Park. Features over 160 monumental outdoor sculptures by Richard Serra, Jean Dubuffet (*Jardin d'émail*), Barbara Hepworth, and Marta Pan. Visitors explore the forest and dunes on complimentary white park bicycles.<br>
@@ -10793,7 +10793,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>${formatInstLink(aros)} (Aarhus, Denmark):</strong> Crowned by Olafur Eliasson's permanent chromatic skywalk *Your Rainbow Panorama*—a 150-meter circular glass walkway that immerses visitors in a full spectrum of natural light overlooking the Danish city.
             </p>
             <p class="text-slate-300">
-              Unlike private sculpture foundations endowed by fossil fuel fortunes, these sanctuaries operate with clean public governance and ecological accountability.
+              Unlike private sculpture foundations endowed by fossil fuel fortunes, these public institutions operate with transparent civic governance and ecological accountability.
             </p>
           `);
           if (kroll) selectInstitution(kroll, true);
@@ -10947,7 +10947,7 @@ FORMATTING & INTERACTION RULES:
               <strong>Funding & Governance Audit: ${formatInstLink(inst)}</strong>
             </p>
             <p class="text-slate-300">
-              - <strong>Ethical Verification:</strong> ${inst.tier === 'A' ? '<span class="text-emerald-400">Tier A · Verified Clean Sanctuary</span>' : '<span class="text-rose-400">Tier B · Flagged Corporate Conflicts</span>'}<br>
+              - <strong>Ethical Verification:</strong> ${inst.tier === 'A' ? '<span class="text-emerald-400">Tier A · Verified Independent Space</span>' : '<span class="text-rose-400">Tier B · Flagged Corporate Conflicts</span>'}<br>
               - <strong>Governance Model:</strong> ${inst.governance_type}<br>
               - <strong>Funding Architecture:</strong> ${inst.funding}<br>
               - <strong>Safeguard:</strong> ${inst.ethical_safeguard}<br>
@@ -11008,8 +11008,8 @@ FORMATTING & INTERACTION RULES:
                       </tr>
                       <tr>
                         <td class="p-2.5 font-mono text-[#a1a1aa]">Ethical Status</td>
-                        <td class="p-2.5">${i1.tier === 'A' ? '<span class="text-emerald-400 font-medium">Tier A · Clean Sanctuary</span>' : '<span class="text-rose-400 font-medium">Tier B · Excluded Conflict</span>'}</td>
-                        <td class="p-2.5">${i2.tier === 'A' ? '<span class="text-emerald-400 font-medium">Tier A · Clean Sanctuary</span>' : '<span class="text-rose-400 font-medium">Tier B · Excluded Conflict</span>'}</td>
+                        <td class="p-2.5">${i1.tier === 'A' ? '<span class="text-emerald-400 font-medium">Tier A · Independent Space</span>' : '<span class="text-rose-400 font-medium">Tier B · Excluded Conflict</span>'}</td>
+                        <td class="p-2.5">${i2.tier === 'A' ? '<span class="text-emerald-400 font-medium">Tier A · Independent Space</span>' : '<span class="text-rose-400 font-medium">Tier B · Excluded Conflict</span>'}</td>
                       </tr>
                       <tr>
                         <td class="p-2.5 font-mono text-[#a1a1aa]">Governance</td>
@@ -11060,7 +11060,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Hélio Oiticica & Lygia Clark (Brazil):</strong> Dismantled the idea that art is a passive painting to be hung on a museum wall. Clark created *Bichos* (aluminum sculptures viewers rearrange by hand), while Oiticica created *Parangolés* (wearable fabric capes designed to come alive during samba dancing in the favelas).<br>
               - <strong>Cildo Meireles – *Insertions into Ideological Circuits* (1970):</strong> Responding to military dictatorship, Meireles stamped banknotes and returnable glass Coca-Cola bottles with political messages before re-circulating them into the economy, bypassing state censorship.<br>
               - <strong>Tania Bruguera (Cuba):</strong> Pioneered *Arte Útil* (Useful Art), founding INSTAR (Instituto de Artivismo Hannah Arendt) to use art as legal literacy and civic empowerment against authoritarian repression.<br>
-              - <strong>Civic Sanctuaries Mapped:</strong> ${formatInstLink(muac)} in Mexico City (university governance free from private corporate capture), ${formatInstLink(tamayo)} in Chapultepec, and ${formatInstLink(masp)} in São Paulo, famous for architect Lina Bo Bardi's radical transparent glass easels that democratize art viewing.
+              - <strong>Civic Non-Profit Spaces Mapped:</strong> ${formatInstLink(muac)} in Mexico City (university governance free from private corporate capture), ${formatInstLink(tamayo)} in Chapultepec, and ${formatInstLink(masp)} in São Paulo, famous for architect Lina Bo Bardi's radical transparent glass easels that democratize art viewing.
             </p>
           `, ['Arte Útil & The Commons', 'Kunsthalle vs Museum', 'Curated City Itineraries']);
           return;
@@ -12314,7 +12314,7 @@ FORMATTING & INTERACTION RULES:
             appendCuratorMessage(`
               <div class="space-y-2.5">
                 <p class="text-slate-100 text-[14px] leading-relaxed">
-                  <strong>${formatInstLink(inst, {noCity: false})}</strong> ${hood} is a verified Tier A clean sanctuary ${yr}. It operates under transparent public governance, completely free of fossil fuel, arms, or predatory corporate underwriting.
+                  <strong>${formatInstLink(inst, {noCity: false})}</strong> ${hood} is a verified Tier A independent space ${yr}. It operates under transparent public governance, completely free of fossil fuel, arms, or predatory corporate underwriting.
                 </p>
                 <p class="text-slate-200 text-[14px] leading-relaxed">
                   <strong>Curator's Note:</strong> ${highlight}. Admission is ${admission}, open ${hours}. ${transit}
@@ -12337,7 +12337,7 @@ FORMATTING & INTERACTION RULES:
             `, [
               `More in ${inst.city}`,
               `Directions to ${inst.name}`,
-              'Explore another sanctuary'
+              'Explore another space'
             ]);
             selectInstitution(inst, true);
             return;
@@ -12345,7 +12345,7 @@ FORMATTING & INTERACTION RULES:
             const cleanAlternatives = ALL_INSTITUTIONS.filter(i => matchC(i.city, inst.city) || matchC(i.country, inst.country));
             let altText = '';
             if (cleanAlternatives.length > 0) {
-              altText = `<div class="pt-2 border-t border-[#331c22]"><span class="text-[12px] font-mono text-[#a1a1aa] uppercase tracking-wider block mb-1">Verified Clean Sanctuaries in ${escapeHtml(inst.city)}:</span><div class="space-y-1">` + cleanAlternatives.slice(0, 3).map(a => `<div>· ${formatInstLink(a)}</div>`).join('') + `</div></div>`;
+              altText = `<div class="pt-2 border-t border-[#331c22]"><span class="text-[12px] font-mono text-[#a1a1aa] uppercase tracking-wider block mb-1">Verified Independent Spaces in ${escapeHtml(inst.city)}:</span><div class="space-y-1">` + cleanAlternatives.slice(0, 3).map(a => `<div>· ${formatInstLink(a)}</div>`).join('') + `</div></div>`;
             }
             appendCuratorMessage(`
               <div class="space-y-2.5">
@@ -12737,8 +12737,9 @@ FORMATTING & INTERACTION RULES:
         .replace(/\bca\.\s*|\bc\.\s*(?=\d{4})/gi, 'around ')
         .replace(/\bNo\.\s*(?=\d)/gi, 'Number ')
         .replace(/501\s*\(\s*c\s*\)\s*\(\s*3\s*\)/gi, '501-c-3 non-profit')
-        .replace(/Tier A\s*[·•]?\s*(Verified Clean Sanctuary|Verified Clean|clean sanctuary|sanctuary)?/gi, 'Tier A verified clean sanctuary')
-        .replace(/verified Tier A verified clean sanctuary/gi, 'verified Tier A clean sanctuary')
+        .replace(/Tier A\s*[·•]?\s*(Verified Independent Space|Verified Clean Sanctuary|Verified Independent|Verified Clean|clean sanctuary|independent space|sanctuary)?/gi, 'Tier A verified independent space')
+        .replace(/verified Tier A verified independent space/gi, 'verified Tier A independent space')
+        .replace(/clean sanctuaries|clean sanctuary/gi, 'independent spaces')
         .replace(/Tier B\s*[·•]?\s*(Flagged Corporate Sponsor)?/gi, 'Tier B flagged status')
         .replace(/\bHours:\b/gi, 'Visiting hours: ')
         .replace(/\bAdmission:\b/gi, 'Admission: ')
@@ -13908,7 +13909,7 @@ FORMATTING & INTERACTION RULES:
                   <span class="text-[14px]">↗</span>
                 </a>
               ` : `
-                <span class="text-[13px] font-mono text-slate-500">Verified Sanctuary</span>
+                <span class="text-[13px] font-mono text-slate-500">Verified Independent</span>
               `}
               <span class="text-[14px] text-[#71717a] hover:text-white font-mono transition">View on Globe →</span>
             </div>
@@ -14150,7 +14151,7 @@ FORMATTING & INTERACTION RULES:
         }
       }
 
-      // 0.5 Check Sanctuary Cluster Hitboxes on Globe
+      // 0.5 Check City Cluster Hitboxes on Globe
       for (let i = 0; i < cityClusterHitboxes.length; i++) {
         const cl = cityClusterHitboxes[i];
         if (Math.hypot(cl.cx - mx, cl.cy - my) < cl.w / 2 + 6) {
@@ -14209,7 +14210,7 @@ FORMATTING & INTERACTION RULES:
             <strong>${escapeHtml(corr.name)}</strong>: High-speed electric link connecting <strong>${escapeHtml(corr.from)}</strong> and <strong>${escapeHtml(corr.to)}</strong> (${escapeHtml(corr.travel_time || 'eco-transit')}).
           </p>
           <p class="text-slate-300">
-            Both cultural capitals are home to verified sanctuaries operating free of fossil fuel, chemical, and weapons funding. Traveling between them by electric train cuts carbon emissions by up to 90% compared to flying.
+            Both cultural capitals are home to verified independent spaces operating free of fossil fuel, chemical, and weapons funding. Traveling between them by electric train cuts carbon emissions by up to 90% compared to flying.
           </p>
         `);
         return;
@@ -14290,7 +14291,7 @@ FORMATTING & INTERACTION RULES:
         }
       }
 
-      // Check Sanctuary Cluster Hitboxes on Globe
+      // Check City Cluster Hitboxes on Globe
       for (let i = 0; i < cityClusterHitboxes.length; i++) {
         const cl = cityClusterHitboxes[i];
         if (Math.hypot(cl.cx - mx, cl.cy - my) < cl.w / 2 + 6) {

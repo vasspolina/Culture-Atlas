@@ -36,7 +36,7 @@ def run_tests():
         // 2. cleanTextForSpeech expands abbreviations, strips markdown, URLs, arrows, emojis
         const rawSample = `
           ### Chisenhale Gallery
-          **Chisenhale Gallery** is a 501(c)(3) Tier A · Verified Clean Sanctuary.
+          **Chisenhale Gallery** is a 501(c)(3) Tier A · Verified Independent Space.
           Open Tue–Sat, e.g., for public viewings.
           - Admission: Free (audit dossier · https://chisenhale.org.uk ↗)
           🎨 Visit today!
@@ -45,7 +45,7 @@ def run_tests():
         assert('cleanTextForSpeech expands 501(c)(3)', cleaned.includes('501-c-3 non-profit'), cleaned);
         assert('cleanTextForSpeech expands Tue-Sat', cleaned.includes('Tuesday through Saturday'), cleaned);
         assert('cleanTextForSpeech expands e.g.', cleaned.includes('for example'), cleaned);
-        assert('cleanTextForSpeech expands Tier A sanctuary', cleaned.includes('Tier A verified clean sanctuary'), cleaned);
+        assert('cleanTextForSpeech expands Tier A independent space', cleaned.includes('Tier A verified independent space'), cleaned);
         assert('cleanTextForSpeech strips markdown headers', !cleaned.includes('#'), cleaned);
         assert('cleanTextForSpeech strips markdown bold', !cleaned.includes('**'), cleaned);
         assert('cleanTextForSpeech strips raw URLs', !cleaned.includes('https://'), cleaned);
@@ -160,7 +160,7 @@ def run_tests():
 
         assert('Institution query renders structured data grid card', hasCard);
         assert('Institution query data card has data-exclude-speech', hasExcluded);
-        assert('Spoken text contains articulate narrative overview', instCleaned.includes('verified Tier A clean sanctuary'), instCleaned);
+        assert('Spoken text contains articulate narrative overview', instCleaned.includes('verified Tier A independent space'), instCleaned);
         assert('Spoken text omits raw database bullets', !instCleaned.includes('- Ethical Status:'), instCleaned);
 
         // 11. Material Research Inquiry does NOT false-match Raw Material Company and provides forensic methodology response
