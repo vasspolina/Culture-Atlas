@@ -9969,14 +9969,14 @@ FORMATTING & INTERACTION RULES:
       }}
 
       div.innerHTML = `
-        <div class="w-7 h-7 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0 mt-0.5 select-none" title="Culture Atlas Curator">
+        <div class="w-7 h-7 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0 mt-0.5 select-none" title="Culture Atlas Curator" data-exclude-speech="true">
           CA
         </div>
         <div class="flex-1 text-[#ececec] text-[14px] leading-relaxed space-y-2">
           <div class="flex items-center justify-between gap-2 mb-0.5 select-none">
             <span class="text-[12px] font-mono text-[#71717a]">Culture Atlas Curator</span>
-            <button class="curator-speak-btn px-2 py-0.5 rounded-lg bg-[#222] hover:bg-[#333] border border-[#383838] text-[12px] text-[#a1a1aa] hover:text-white transition flex items-center gap-1 cursor-pointer" title="Listen to audio briefing">
-              <span class="speak-label">Listen</span>
+            <button class="curator-speak-btn px-2 py-0.5 rounded-lg bg-[#222] hover:bg-[#333] border border-[#383838] text-[12px] text-[#a1a1aa] hover:text-white transition flex items-center gap-1.5 cursor-pointer" title="Listen to audio briefing">
+              <span class="speak-icon text-[11px]">🔊</span><span class="speak-label">Listen</span>
             </button>
           </div>
           ${{htmlContent}}
@@ -9985,6 +9985,14 @@ FORMATTING & INTERACTION RULES:
       `;
       curatorMessages.appendChild(div);
       scrollChatToBottom(true);
+
+      const speakBtn = div.querySelector('.curator-speak-btn');
+      if (autoSpeakNextCuratorResponse && speakBtn) {{
+        autoSpeakNextCuratorResponse = false;
+        setTimeout(() => {{
+          speakCuratorText(div, speakBtn);
+        }}, 150);
+      }}
     }}
 
     // Intelligent Conversational Curator Knowledge Engine
@@ -10087,6 +10095,50 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 🏛️ CRITICAL THEORY & ART SCENE SPECIALIST HANDLERS
         // =========================================================================
+
+        // 0. Conversational Greeting, Identity & Audio Docent Voice Intent
+        const isGreeting = /^(hello|hi|hey|greetings|good\s+(morning|afternoon|evening)|howdy)(\s+|$|[!?,.])/i.test(q) || q === 'hello' || q === 'hi' || q === 'hey';
+        const isWhoAreYou = /^(who\s+are\s+you|what\s+are\s+you|what\s+is\s+this|what\s+can\s+you\s+do|how\s+does\s+this\s+work|introduce\s+yourself|tell\s+me\s+about\s+yourself)(\s+|$|[!?,.])/i.test(q);
+        const isVoiceTest = /^(make\s+it\s+talk\s+properly|talk\s+properly|speak\s+properly|can\s+you\s+speak|talk\s+to\s+me|speak\s+to\s+me|test\s+voice|audio\s+test|say\s+something)(\s+|$|[!?,.])/i.test(q) || q.includes('talk properly') || q.includes('speak properly');
+
+        if (isGreeting || isWhoAreYou || isVoiceTest) {{
+          let greetingTitle = "Hello! I am your Culture Atlas Curator.";
+          let greetingProse = "I guide you through 403 verified independent art spaces, artist-run centers, and ethical museums across 50 global cities. Every space on this globe is verified clean of fossil fuel, weapons, and predatory corporate sponsorship.";
+          if (isVoiceTest) {{
+            greetingTitle = "Curator Audio Docent Active";
+            greetingProse = "I am speaking to you now with articulate speech synthesis. You can tap the Listen button on any briefing to hear natural audio, or tap the microphone to talk with me in real time.";
+            autoSpeakNextCuratorResponse = true;
+          }} else if (isWhoAreYou) {{
+            greetingTitle = "Culture Atlas Curator & Ethical Art Guide";
+            greetingProse = "I provide deep context on contemporary art, institutional transparency, public collections, and urban art itineraries. You can ask me about specific museums, research centers, architectural histories, or transit routes to remote sculpture parks.";
+          }}
+
+          appendCuratorMessage(`
+            <div class="space-y-2.5">
+              <p class="text-white font-medium text-[15px]">
+                ${{greetingTitle}}
+              </p>
+              <p class="text-slate-300 leading-relaxed text-[14px]">
+                ${{greetingProse}}
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1" data-exclude-speech="true">
+                <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
+                  <strong class="text-white block mb-0.5">🏛️ 403 Clean Sanctuaries</strong>
+                  Strict Tier A verification against arms & oil funding
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
+                  <strong class="text-white block mb-0.5">🎙️ Audio Docent</strong>
+                  Articulate spoken briefings on every response
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
+                  <strong class="text-white block mb-0.5">🌍 50 Cities</strong>
+                  From London and Paris to Tokyo and Buenos Aires
+                </div>
+              </div>
+            </div>
+          `, ['Explore London sanctuaries', 'Show hidden gems', 'Outdoor sculpture parks', 'Why ethical funding matters']);
+          return;
+        }}
 
         // =========================================================================
         // 🔍 CORPORATE SPONSOR & PATRONAGE AUDIT ENGINE ("Audit Sponsor: [Name]")
@@ -12199,43 +12251,70 @@ FORMATTING & INTERACTION RULES:
         if (matchedEntity) {{
           const inst = matchedEntity.inst; const isClean = matchedEntity.isClean;
           if (isClean) {{
+            const yr = inst.year_founded ? `founded in ${{inst.year_founded}}` : 'established as an essential cultural space';
+            const hood = inst.neighborhood ? `in ${{inst.neighborhood}}, ${{inst.city}}` : `in ${{inst.city}}`;
+            const admission = inst.admission_policy ? `${{inst.admission_policy}} (${{inst.admission_details}})` : 'Free admission';
+            const hours = inst.opening_hours || 'Check local listings for hours';
+            const highlight = inst.highlight || 'Pioneering contemporary exhibitions and community programs';
+            const transit = inst.transit_tips ? `Transit directions: ${{inst.transit_tips}}` : '';
+
             appendCuratorMessage(`
-              <p class="text-slate-200">
-                <strong>${{formatInstLink(inst, {{noCity: false}})}}</strong> (${{inst.neighborhood || inst.city}}), founded in ${{inst.year_founded || 'Historic'}}.
-              </p>
-              <p class="text-slate-300">
-                - <strong>Ethical Status:</strong> <span class="text-emerald-400 font-normal">Tier A · Verified Clean Sanctuary</span> (zero fossil fuel, arms, or predatory corporate underwriting).<br>
-                - <strong>Admission:</strong> ${{inst.admission_policy}} (${{inst.admission_details}})<br>
-                - <strong>Hours:</strong> ${{inst.opening_hours}}<br>
-                - <strong>Highlight:</strong> <span class="text-amber-300/90 font-normal">${{inst.highlight}}</span><br>
-                - <strong>Transit:</strong> ${{inst.transit_tips}}<br>
-                - <strong>Governance:</strong> ${{inst.governance_type}} · ${{inst.ethical_safeguard}}
-              </p>
-            `);
+              <div class="space-y-2.5">
+                <p class="text-slate-100 text-[14px] leading-relaxed">
+                  <strong>${{formatInstLink(inst, {{noCity: false}})}}</strong> ${{hood}} is a verified Tier A clean sanctuary ${{yr}}. It operates under transparent public governance, completely free of fossil fuel, arms, or predatory corporate underwriting.
+                </p>
+                <p class="text-slate-200 text-[14px] leading-relaxed">
+                  <strong>Curator's Note:</strong> ${{highlight}}. Admission is ${{admission}}, open ${{hours}}. ${{transit}}
+                </p>
+                <div class="grid grid-cols-2 gap-2 pt-1 text-[12px]" data-exclude-speech="true">
+                  <div class="p-2 rounded-lg bg-[#1e1e24] border border-[#2e2e38]">
+                    <span class="text-[#71717a] block text-[11px] uppercase tracking-wider font-mono">Admission</span>
+                    <span class="text-emerald-400 font-medium">${{admission}}</span>
+                  </div>
+                  <div class="p-2 rounded-lg bg-[#1e1e24] border border-[#2e2e38]">
+                    <span class="text-[#71717a] block text-[11px] uppercase tracking-wider font-mono">Hours</span>
+                    <span class="text-slate-200">${{hours}}</span>
+                  </div>
+                  <div class="p-2 rounded-lg bg-[#1e1e24] border border-[#2e2e38] col-span-2">
+                    <span class="text-[#71717a] block text-[11px] uppercase tracking-wider font-mono">Governance & Safeguard</span>
+                    <span class="text-slate-300">${{inst.governance_type}} · ${{inst.ethical_safeguard}}</span>
+                  </div>
+                </div>
+              </div>
+            `, [
+              `More in ${{inst.city}}`,
+              `Directions to ${{inst.name}}`,
+              'Explore another sanctuary'
+            ]);
             selectInstitution(inst, true);
             return;
           }} else {{
             const cleanAlternatives = ALL_INSTITUTIONS.filter(i => matchC(i.city, inst.city) || matchC(i.country, inst.country));
             let altText = '';
             if (cleanAlternatives.length > 0) {{
-              altText = `<br><br><strong>Verified Clean Sanctuaries in ${{escapeHtml(inst.city)}}:</strong><br>` + cleanAlternatives.slice(0, 3).map(a => `· ${{formatInstLink(a)}}`).join('<br>');
+              altText = `<div class="pt-2 border-t border-[#331c22]"><span class="text-[12px] font-mono text-[#a1a1aa] uppercase tracking-wider block mb-1">Verified Clean Sanctuaries in ${{escapeHtml(inst.city)}}:</span><div class="space-y-1">` + cleanAlternatives.slice(0, 3).map(a => `<div>· ${{formatInstLink(a)}}</div>`).join('') + `</div></div>`;
             }}
             appendCuratorMessage(`
-              <p class="text-rose-300 font-medium">
-                <strong>EXCLUSION AUDIT: ${{escapeHtml(inst.name)}} (${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}})</strong>
-              </p>
-              <p class="text-slate-300">
-                <strong>Status:</strong> Excluded from Culture Atlas (${{inst.tier === 'B' ? 'Tier B · Flagged Corporate Sponsor / Contested Patron' : 'Tier U · Roster Unverified'}}).<br>
-                <strong>Governance & Funding:</strong> ${{escapeHtml(inst.funding || 'Commercial or conflicted corporate sponsorship')}}<br>
-                ${{inst.watch ? `<strong>Audit Conflict:</strong> <span class="text-amber-200">${{escapeHtml(inst.watch)}}</span><br>` : ''}}
-                <strong>Ethical Exclusion Policy:</strong> Culture Atlas maps strictly verified clean cultural spaces operating free of fossil fuels, weapons manufacturers, private prisons, and predatory corporate underwriting.${{altText}}
-              </p>
-              <div class="mt-2.5">
-                <button class="curator-dossier-btn px-2.5 py-1 rounded bg-[#2a1318] hover:bg-[#3d1a22] text-rose-300 border border-rose-800 text-[13px] font-mono cursor-pointer transition" data-name="${{escapeHtml(inst.name)}}">
-                  Open Full Audit Dossier ↗
-                </button>
+              <div class="space-y-2.5">
+                <p class="text-rose-300 font-medium">
+                  <strong>EXCLUSION AUDIT: ${{escapeHtml(inst.name)}} (${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}})</strong>
+                </p>
+                <p class="text-slate-200 text-[14px] leading-relaxed">
+                  ${{escapeHtml(inst.name)}} is excluded from the Culture Atlas clean roster under ${{inst.tier === 'B' ? 'Tier B flagged status for corporate sponsor conflict' : 'Tier U unverified status'}}.
+                  ${{inst.watch ? ` Audit conflict: ${{escapeHtml(inst.watch)}}.` : ''}}
+                  Governance & funding profile: ${{escapeHtml(inst.funding || 'Commercial or conflicted corporate sponsorship')}}.
+                </p>
+                <p class="text-slate-300 text-[13px] leading-relaxed">
+                  Culture Atlas strictly maps verified clean cultural spaces operating free of fossil fuels, weapons manufacturers, private prisons, and predatory corporate underwriting.
+                </p>
+                ${{altText}}
+                <div class="mt-2" data-exclude-speech="true">
+                  <button class="curator-dossier-btn px-2.5 py-1 rounded bg-[#2a1318] hover:bg-[#3d1a22] text-rose-300 border border-rose-800 text-[13px] font-mono cursor-pointer transition" data-name="${{escapeHtml(inst.name)}}">
+                    Open Full Audit Dossier ↗
+                  </button>
+                </div>
               </div>
-            `);
+            `, cleanAlternatives.length > 0 ? cleanAlternatives.slice(0, 3).map(a => a.name) : ['Why ethical funding matters']);
             return;
           }}
         }}
@@ -12503,6 +12582,7 @@ FORMATTING & INTERACTION RULES:
       speechRecognizer.onend = () => {{
         stopSpeechRecording();
         if (workInput && workInput.value.trim()) {{
+          autoSpeakNextCuratorResponse = true;
           handleWorkSend();
         }}
       }};
@@ -12532,6 +12612,294 @@ FORMATTING & INTERACTION RULES:
         }}
       }}
     }});
+
+    // =========================================================
+    // 🎙️ HIGH-FIDELITY CURATOR SPEECH SYNTHESIS ENGINE
+    // =========================================================
+
+    let cachedCuratorVoices = [];
+    let activeSpeechHeartbeat = null;
+    let isCuratorSpeaking = false;
+    let currentSpeakingBtn = null;
+    let autoSpeakNextCuratorResponse = false;
+    let speechChunkQueue = [];
+    let activeSpeechUtterance = null;
+
+    function refreshVoices() {{
+      if (!('speechSynthesis' in window)) return [];
+      cachedCuratorVoices = window.speechSynthesis.getVoices() || [];
+      return cachedCuratorVoices;
+    }}
+
+    if ('speechSynthesis' in window) {{
+      refreshVoices();
+      window.speechSynthesis.onvoiceschanged = refreshVoices;
+    }}
+
+    // Select the most natural, human-sounding English voice on the device
+    function selectCuratorVoice() {{
+      const voices = refreshVoices();
+      if (!voices || voices.length === 0) return null;
+
+      // 1. Natural / Enhanced / Neural English voices (Apple Samantha Enhanced, Siri, Google Natural, MS Online)
+      const topPicks = [
+        v => v.lang && v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Online (Natural)') || v.name.includes('Neural')),
+        v => v.lang && v.lang.startsWith('en') && (v.name.includes('Enhanced') || v.name.includes('Premium')),
+        v => (v.name === 'Samantha' || v.name.includes('Samantha')) && v.lang && v.lang.startsWith('en'),
+        v => v.lang && v.lang.startsWith('en') && (v.name.includes('Google UK English') || v.name.includes('Google US English')),
+        v => v.lang && v.lang.startsWith('en') && (v.name.includes('Daniel') || v.name.includes('Karen') || v.name.includes('Moira') || v.name.includes('Serena')),
+        v => v.name === 'Alex' && v.lang && v.lang.startsWith('en'),
+        v => v.lang && v.lang.startsWith('en'),
+        v => true
+      ];
+
+      for (let i = 0; i < topPicks.length; i++) {{
+        const found = voices.find(topPicks[i]);
+        if (found) return found;
+      }}
+      return voices[0] || null;
+    }}
+
+    // Convert raw DOM/HTML into clean, natural spoken prose
+    function cleanTextForSpeech(source) {{
+      let text = '';
+      if (typeof source === 'string') {{
+        const temp = document.createElement('div');
+        temp.innerHTML = source;
+        text = extractSpokenTextFromElement(temp);
+      }} else if (source && source.nodeType) {{
+        text = extractSpokenTextFromElement(source);
+      }}
+
+      if (!text) return '';
+
+      // Conversational phonetic cleanup
+      text = text
+        // Expand common abbreviations into natural spoken English
+        .replace(/\\be\\.g\\.,?\\s*/gi, 'for example, ')
+        .replace(/\\bi\\.e\\.,?\\s*/gi, 'that is, ')
+        .replace(/\\betc\\.\\s*/gi, 'and so forth. ')
+        .replace(/\\bvs\\.\\s*|\\bvs\\s+/gi, 'versus ')
+        .replace(/\\bw\\/\\s*/gi, 'with ')
+        .replace(/\\bca\\.\\s*|\\bc\\.\\s*(?=\\d{{4}})/gi, 'around ')
+        .replace(/\\bNo\\.\\s*(?=\\d)/gi, 'Number ')
+        .replace(/501\\s*\\(\\s*c\\s*\\)\\s*\\(\\s*3\\s*\\)/gi, '501-c-3 non-profit')
+        .replace(/Tier A\s*[·•]?\s*(Verified Clean Sanctuary|Verified Clean|clean sanctuary|sanctuary)?/gi, 'Tier A verified clean sanctuary')
+        .replace(/verified Tier A verified clean sanctuary/gi, 'verified Tier A clean sanctuary')
+        .replace(/Tier B\s*[·•]?\s*(Flagged Corporate Sponsor)?/gi, 'Tier B flagged status')
+        .replace(/\\bHours:\\b/gi, 'Visiting hours: ')
+        .replace(/\\bAdmission:\\b/gi, 'Admission: ')
+        .replace(/\\bTransit:\\b/gi, 'Transit directions: ')
+        .replace(/\\bHighlight:\\b/gi, 'Highlights: ')
+        .replace(/\\bGovernance:\\b/gi, 'Governance model: ')
+        // Days of the week
+        .replace(/\\bTue[–-]Sat\\b/gi, 'Tuesday through Saturday')
+        .replace(/\\bMon[–-]Fri\\b/gi, 'Monday through Friday')
+        .replace(/\\bWed[–-]Sun\\b/gi, 'Wednesday through Sunday')
+        .replace(/\\bClosed Mon & Tue\\b/gi, 'Closed Monday and Tuesday')
+        .replace(/\\bMon\\b/g, 'Monday')
+        .replace(/\\bTue\\b/g, 'Tuesday')
+        .replace(/\\bWed\\b/g, 'Wednesday')
+        .replace(/\\bThu\\b/g, 'Thursday')
+        .replace(/\\bFri\\b/g, 'Friday')
+        .replace(/\\bSat\\b/g, 'Saturday')
+        .replace(/\\bSun\\b/g, 'Sunday')
+        // Strip markdown syntax
+        .replace(/#{{1,6}}\\s+/g, '')
+        .replace(/\\*\\*([^*]+)\\*\\*/g, '$1')
+        .replace(/\\*([^*]+)\\*/g, '$1')
+        .replace(/__([^_]+)__/g, '$1')
+        .replace(/_([^_]+)_/g, '$1')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/~~([^~]+)~~/g, '$1')
+        .replace(/^[-\\*•]\\s+/gm, '')
+        // Clean special characters and arrows
+        .replace(/[↗→←↑↓]/g, '')
+        .replace(/[·•]/g, ', ')
+        .replace(/&/g, ' and ')
+        // Strip bracketed citations or audit links
+        .replace(/\\[\\d+\\]/g, '')
+        .replace(/\\[audit dossier\\]/gi, '')
+        .replace(/\\(audit dossier\\)/gi, '')
+        // Strip raw URLs
+        .replace(/https?:\\/\\/\\S+/gi, '')
+        // Strip leftover empty parentheses/brackets
+        .replace(/\\(\\s*[,;\\s]*\\)/g, '')
+        .replace(/\\[\\s*[,;\\s]*\\]/g, '')
+        // Strip emojis
+        .replace(/[\\u{{1F300}}-\\u{{1F9FF}}\\u{{2600}}-\\u{{26FF}}\\u{{2700}}-\\u{{27BF}}]/gu, '')
+        // Normalize punctuation and whitespace
+        .replace(/\\s*,\\s*,+/g, ', ')
+        .replace(/,\\s*\\./g, '.')
+        .replace(/\\.\\s*\\./g, '.')
+        .replace(/\\s+/g, ' ')
+        .replace(/\\s*([,.;?!])\\s*/g, '$1 ')
+        .trim();
+
+      return text;
+    }}
+
+    function extractSpokenTextFromElement(container) {{
+      const clone = container.cloneNode(true);
+      // Remove all interactive action buttons, pills, headers, badges, external links
+      const selectorsToRemove = [
+        '.curator-speak-btn',
+        '.curator-followup-pill',
+        '.copy-itinerary-btn',
+        '.dossier-link',
+        '.ext-web-link',
+        '.curator-dossier-btn',
+        'button',
+        'svg',
+        '.speak-label',
+        '[data-exclude-speech]',
+        '[title="Culture Atlas Curator"]'
+      ];
+      selectorsToRemove.forEach(sel => {{
+        clone.querySelectorAll(sel).forEach(el => el.remove());
+      }});
+
+      // Remove "Culture Atlas Curator" header title if present in text, and CA avatar
+      let txt = clone.innerText || clone.textContent || '';
+      txt = txt.replace(/^CA\s+/gm, '')
+               .replace(/Culture Atlas Curator|Listen|Stop|Copied!|Copy Itinerary/g, '')
+               .trim();
+      return txt;
+    }}
+
+    // Split text into natural conversational chunks to eliminate Chrome 15-second cutoff
+    function splitTextIntoSentences(text, maxChunkLen = 175) {{
+      if (!text) return [];
+      const rawSentences = text.match(/[^.!?]+[.!?]+(\\s|$)|[^.!?]+$/g) || [text];
+      const chunks = [];
+      let current = '';
+
+      rawSentences.forEach(s => {{
+        const sentence = s.trim();
+        if (!sentence) return;
+        if ((current + ' ' + sentence).length <= maxChunkLen) {{
+          current = current ? current + ' ' + sentence : sentence;
+        }} else {{
+          if (current) chunks.push(current);
+          if (sentence.length > maxChunkLen) {{
+            // Split by comma or semicolon
+            const clauses = sentence.split(/([,;]\\s+)/);
+            let subCurrent = '';
+            clauses.forEach(cl => {{
+              if ((subCurrent + cl).length <= maxChunkLen) {{
+                subCurrent += cl;
+              }} else {{
+                if (subCurrent) chunks.push(subCurrent.trim());
+                subCurrent = cl;
+              }}
+            }});
+            if (subCurrent) chunks.push(subCurrent.trim());
+            current = '';
+          }} else {{
+            current = sentence;
+          }}
+        }}
+      }});
+      if (current) chunks.push(current.trim());
+      return chunks;
+    }}
+
+    function stopCuratorSpeech() {{
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      if (activeSpeechHeartbeat) {{
+        clearInterval(activeSpeechHeartbeat);
+        activeSpeechHeartbeat = null;
+      }}
+      speechChunkQueue = [];
+      activeSpeechUtterance = null;
+      isCuratorSpeaking = false;
+      document.querySelectorAll('.curator-speak-btn').forEach(btn => {{
+        btn.classList.remove('bg-rose-500/20', 'text-rose-400', 'border-rose-500/40');
+        const icon = btn.querySelector('.speak-icon');
+        if (icon) icon.textContent = '🔊';
+        const lbl = btn.querySelector('.speak-label');
+        if (lbl) lbl.textContent = 'Listen';
+      }});
+      currentSpeakingBtn = null;
+    }}
+
+    function speakCuratorText(rawTextOrElement, btnElement) {{
+      if (!('speechSynthesis' in window)) {{
+        alert('Speech synthesis is not supported on this device/browser.');
+        return;
+      }}
+
+      // If already speaking from this button, toggle off
+      if (isCuratorSpeaking && currentSpeakingBtn === btnElement) {{
+        stopCuratorSpeech();
+        return;
+      }}
+
+      // Stop any ongoing speech
+      stopCuratorSpeech();
+
+      const spokenText = cleanTextForSpeech(rawTextOrElement);
+      if (!spokenText) return;
+
+      const chunks = splitTextIntoSentences(spokenText);
+      if (chunks.length === 0) return;
+
+      const voice = selectCuratorVoice();
+      isCuratorSpeaking = true;
+      currentSpeakingBtn = btnElement;
+
+      if (btnElement) {{
+        btnElement.classList.add('bg-rose-500/20', 'text-rose-400', 'border-rose-500/40');
+        const icon = btnElement.querySelector('.speak-icon');
+        if (icon) icon.textContent = '⏹️';
+        const lbl = btnElement.querySelector('.speak-label');
+        if (lbl) lbl.textContent = 'Stop';
+      }}
+
+      // Chromium keepalive heartbeat to prevent speech cutoff
+      activeSpeechHeartbeat = setInterval(() => {{
+        if (window.speechSynthesis && window.speechSynthesis.speaking) {{
+          window.speechSynthesis.pause();
+          window.speechSynthesis.resume();
+        }}
+      }}, 6500);
+
+      speechChunkQueue = chunks.slice();
+
+      function playNext() {{
+        if (!isCuratorSpeaking || speechChunkQueue.length === 0) {{
+          stopCuratorSpeech();
+          return;
+        }}
+
+        const chunk = speechChunkQueue.shift();
+        const utter = new SpeechSynthesisUtterance(chunk);
+        if (voice) utter.voice = voice;
+        utter.rate = 1.0;
+        utter.pitch = 1.0;
+        activeSpeechUtterance = utter;
+
+        utter.onend = () => {{
+          playNext();
+        }};
+
+        utter.onerror = (err) => {{
+          console.warn('Utterance error:', err);
+          stopCuratorSpeech();
+        }};
+
+        window.speechSynthesis.speak(utter);
+      }}
+
+      playNext();
+    }}
+
+    window.cleanTextForSpeech = cleanTextForSpeech;
+    window.selectCuratorVoice = selectCuratorVoice;
+    window.splitTextIntoSentences = splitTextIntoSentences;
+    window.speakCuratorText = speakCuratorText;
+    window.stopCuratorSpeech = stopCuratorSpeech;
 
     // Work Suggestion Cards & Try Buttons
     document.querySelectorAll('.work-suggestion-card, .try-pill').forEach(el => {{
@@ -12878,41 +13246,8 @@ FORMATTING & INTERACTION RULES:
       if (speakBtn) {{
         e.preventDefault();
         e.stopPropagation();
-        if (!('speechSynthesis' in window)) {{
-          alert('Speech synthesis is not supported in this browser.');
-          return;
-        }}
-        if (window.speechSynthesis.speaking) {{
-          window.speechSynthesis.cancel();
-          document.querySelectorAll('.curator-speak-btn .speak-label').forEach(l => l.textContent = 'Listen');
-          document.querySelectorAll('.curator-speak-btn').forEach(b => b.classList.remove('bg-rose-500/20', 'text-rose-400'));
-          return;
-        }}
-
         const msgDiv = speakBtn.closest('.curator-message-wrap');
-        const textContent = msgDiv ? msgDiv.innerText.replace(/Culture Atlas Curator|Listen|Stop|Copy Itinerary|Copied!|💬.*$/g, '').trim() : '';
-        if (!textContent) return;
-
-        const utter = new SpeechSynthesisUtterance(textContent);
-        utter.rate = 1.0;
-        utter.pitch = 1.0;
-        const voices = window.speechSynthesis.getVoices();
-        const enVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Google') || v.name.includes('Daniel')));
-        if (enVoice) utter.voice = enVoice;
-
-        utter.onstart = () => {{
-          speakBtn.classList.add('bg-rose-500/20', 'text-rose-400');
-          const lbl = speakBtn.querySelector('.speak-label');
-          if (lbl) lbl.textContent = 'Stop';
-        }};
-
-        utter.onend = utter.onerror = () => {{
-          speakBtn.classList.remove('bg-rose-500/20', 'text-rose-400');
-          const lbl = speakBtn.querySelector('.speak-label');
-          if (lbl) lbl.textContent = 'Listen';
-        }};
-
-        window.speechSynthesis.speak(utter);
+        speakCuratorText(msgDiv, speakBtn);
         return;
       }}
 

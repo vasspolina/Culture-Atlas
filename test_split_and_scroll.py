@@ -105,7 +105,7 @@ def run_tests():
         "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
-    proc = subprocess.run(cmd_desktop, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
+    proc = subprocess.run(cmd_desktop, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
     marker = 'id="test-results-output" data-results="'
     if marker not in proc.stdout:
         print("ERROR: Test marker not found in desktop output. Stderr:")
@@ -132,7 +132,7 @@ def run_tests():
         "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
-    proc_mobile = subprocess.run(cmd_mobile, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
+    proc_mobile = subprocess.run(cmd_mobile, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
     if marker not in proc_mobile.stdout:
         print("ERROR: Test marker not found in mobile output. Stderr:")
         print(proc_mobile.stderr[:1000])

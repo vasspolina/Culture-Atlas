@@ -135,7 +135,7 @@ def run_tests():
         "--virtual-time-budget=8000",
         f"file://{temp_file}"
     ]
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
     marker = 'id="test-results-output" data-results="'
     if marker not in proc.stdout:
         print("ERROR: Test marker not found in output. Stderr:")

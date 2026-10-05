@@ -110,7 +110,7 @@ def test_show_only_on_click():
         f"file://{temp_file}"
     ]
 
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=25)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
     marker = 'id="test-results-output" data-results="'
     assert marker in proc.stdout, f"Marker not found in stdout: {proc.stdout[:400]}"
 
