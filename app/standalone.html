@@ -9996,10 +9996,13 @@ FORMATTING & INTERACTION RULES:
       const isGreeting = /^(hello|hi|hey|greetings|good\s+(morning|afternoon|evening)|howdy)(\s+|$|[!?,.])/i.test(q) || q === 'hello' || q === 'hi' || q === 'hey';
       const isWhoAreYou = /^(who\s+are\s+you|what\s+are\s+you|what\s+is\s+this|what\s+can\s+you\s+do|how\s+does\s+this\s+work|introduce\s+yourself|tell\s+me\s+about\s+yourself)(\s+|$|[!?,.])/i.test(q);
       const isVoiceTest = /^(make\s+it\s+talk\s+properly|talk\s+properly|speak\s+properly|can\s+you\s+speak|talk\s+to\s+me|speak\s+to\s+me|test\s+voice|audio\s+test|say\s+something)(\s+|$|[!?,.])/i.test(q) || q.includes('talk properly') || q.includes('speak properly');
-      const isMethodologyQuery = /material\s*research|material\s*investigation|online\s*(available\s*)?info|available\s*online|scraped|scraping|unethical\s*practices|knowingly\s*make|why\s+would\s+an\s+organi[sz]ation|how\s+do\s+you\s+(know|audit|research|verify)|research\s+method|audit\s+method|how\s+we\s+audit|form\s*990|is\s+all\s+this\s+based|based\s+on\s+online/i.test(q) ||
+      const isTalkBackIntent = /talk\s*back|train\s*(it|you)?\s*(to\s*)?talk\s*back|can\s*you\s*talk\s*back|push\s*back|argue\s*with\s*me|defend\s*yourself|debate\s*me/i.test(q) || q.includes('talk back');
+      const isMethodologyQuery = /material\s*research|material\s*investigation|online\s*(available\s*)?info|available\s*online|scraped|scraping|scrapping|unethical\s*practices|knowingly\s*make|why\s+would\s+an\s+organi[sz]ation|how\s+do\s+you\s+(know|audit|research|verify)|research\s+method|audit\s+method|how\s+we\s+audit|form\s*990|is\s+all\s+this\s+based|based\s+on\s+online|publicly\s*avail|bad\s*info|just\s*online|online\s*scrap/i.test(q) ||
         (q.includes('material') && (q.includes('research') || q.includes('online') || q.includes('info') || q.includes('practice') || q.includes('unethical'))) ||
-        (q.includes('unethical') && (q.includes('online') || q.includes('admit') || q.includes('make') || q.includes('available') || q.includes('practices')));
-      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isMethodologyQuery;
+        (q.includes('unethical') && (q.includes('online') || q.includes('admit') || q.includes('make') || q.includes('available') || q.includes('practices'))) ||
+        (q.includes('bad') && q.includes('info') && (q.includes('public') || q.includes('online') || q.includes('available'))) ||
+        (q.includes('online') && (q.includes('scrap') || q.includes('public') || q.includes('bad')));
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery;
 
       // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
       if (!isMetaInquiry) {
@@ -10030,7 +10033,58 @@ FORMATTING & INTERACTION RULES:
         // 🏛️ CRITICAL THEORY & ART SCENE SPECIALIST HANDLERS
         // =========================================================================
 
-        // 0. Conversational Greeting, Identity & Audio Docent Voice Intent
+        // 0. Conversational Greeting, Identity, Audio Docent Voice & Talk Back Intent
+        if (isTalkBackIntent) {
+          appendCuratorMessage(`
+            <div class="border border-purple-500/30 bg-[#161022] p-3.5 rounded-2xl space-y-3">
+              <div class="flex items-center justify-between border-b border-purple-500/20 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-[17px]">⚡</span>
+                  <span class="font-medium text-white text-[15px]">Curator Critical Sparring Mode Active</span>
+                </div>
+                <span class="text-[12px] font-mono text-purple-400 bg-purple-950/80 border border-purple-700/60 px-2 py-0.5 rounded-full">Trained to Talk Back</span>
+              </div>
+
+              <p class="text-slate-100 text-[14px] leading-relaxed">
+                <strong>Challenge accepted. I was built with critical teeth—not as a compliant corporate concierge or a passive tourism brochure.</strong>
+              </p>
+              <p class="text-slate-300 text-[14px] leading-relaxed">
+                Culture Atlas exists specifically to challenge the polite fiction of institutional neutrality. Major museums want visitors to believe their white marble halls transcend politics, while their trustee board chairs profit from defense manufacturing, private prisons, and fossil fuels, and while frontline workers unionize for living wages.
+              </p>
+              <p class="text-slate-300 text-[14px] leading-relaxed">
+                If you want to test my reasoning or debate institutional ethics, give me your hardest pushback:
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-[13px]" data-exclude-speech="true">
+                <div class="p-2.5 rounded-xl bg-[#201630] border border-purple-900/40 text-slate-300">
+                  <strong class="text-purple-300 block mb-0.5">"Isn't this just online scraping?"</strong>
+                  I'll show you why all the bad info is publicly available too.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#201630] border border-purple-900/40 text-slate-300">
+                  <strong class="text-purple-300 block mb-0.5">"Why would orgs admit bad practices?"</strong>
+                  We trace legal perjury filings and SEC registries, not marketing copy.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#201630] border border-purple-900/40 text-slate-300">
+                  <strong class="text-purple-300 block mb-0.5">"Can mega-museums be ethical?"</strong>
+                  Let's audit MoMA, Tate, and the Whitney side-by-side.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#201630] border border-purple-900/40 text-slate-300">
+                  <strong class="text-purple-300 block mb-0.5">"Aren't independent spaces subsidized?"</strong>
+                  Let's examine the commons and <em>lumbung</em> sharing economies.
+                </div>
+              </div>
+              <div class="pt-2 border-t border-purple-900/40 text-[13px] text-purple-200/90 leading-relaxed">
+                Go ahead. Pick a debate, challenge my criteria, or ask about any museum on Earth.
+              </div>
+            </div>
+          `, [
+            "Isn't this just online scraping?",
+            'Why would orgs admit bad practices?',
+            'Audit MoMA trustee conflicts',
+            'Warren Kanders at the Whitney'
+          ]);
+          return;
+        }
+
         if (isGreeting || isWhoAreYou || isVoiceTest) {
           let greetingTitle = "Hello! I am your Culture Atlas Curator.";
           let greetingProse = "I guide you through 403 verified independent art spaces, artist-run centers, and ethical museums across 50 global cities. Every space on this globe is verified clean of fossil fuel, weapons, and predatory corporate sponsorship.";
@@ -10084,14 +10138,16 @@ FORMATTING & INTERACTION RULES:
                 <span class="text-[12px] font-mono text-sky-400 bg-sky-950/80 border border-sky-700/60 px-2 py-0.5 rounded-full">Forensic Methodology</span>
               </div>
 
+              <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-amber-200 text-[13.5px] leading-relaxed">
+                <span class="text-amber-300 font-semibold block mb-0.5">"What organisation would knowingly make information about their unethical practices available online?"</span>
+                <span class="text-slate-200">Answer: None. But in open-source intelligence, <strong>all the bad info is publicly available too</strong>—if you know where to cross-examine.</span>
+              </div>
+
               <p class="text-slate-100 text-[14px] leading-relaxed">
-                <strong>Your skepticism cuts directly to the core of institutional critique:</strong> <em>No unethical corporation or compromised museum will ever publish an admission of its complicity on its official website.</em>
+                No predatory conglomerate or compromised museum ever publishes a confession on their glossy homepage. You will never find a page titled <em>"Our Board Profits from War Munitions."</em> Corporate artwashing exists precisely to construct an immaculate public facade.
               </p>
               <p class="text-slate-300 text-[14px] leading-relaxed">
-                Corporate artwashing and cultural philanthropy exist precisely to construct an immaculate public facade and purchase social license. If Culture Atlas relied on self-reported PR copy or scraped museum websites, it would reproduce the very propaganda it exists to dismantle.
-              </p>
-              <p class="text-slate-300 text-[14px] leading-relaxed">
-                Instead, our verification is built upon <strong>four independent evidentiary pillars of material investigation</strong>:
+                If Culture Atlas merely scraped institutional PR, it would be worse than useless—it would amplify the very propaganda it exists to expose. Instead, our verification relies on the reality that institutional complicity leaves an indelible, legally mandated public trail across <strong>four evidentiary pillars of material investigation</strong>:
               </p>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" data-exclude-speech="true">
@@ -10113,7 +10169,7 @@ FORMATTING & INTERACTION RULES:
                   <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
                     <span>✊ 3. Activist Direct Action & FOI Leaks</span>
                   </strong>
-                  <span>We incorporate evidence from frontline coalitions: Nan Goldin's <strong>P.A.I.N.</strong> (uncovering internal Sackler opioid memos), <strong>Decolonize This Place</strong> & Forensic Architecture at the Whitney, <strong>Liberate Tate</strong> (using Freedom of Information releases to expose BP sponsorship), and <strong>Gulf Labor</strong> on Saadiyat Island.</span>
+                  <span>We incorporate evidence from frontline coalitions: Nan Goldin's <strong>P.A.I.N.</strong> (uncovering internal Sackler opioid memos on court dockets), <strong>Decolonize This Place</strong> & Forensic Architecture at the Whitney, <strong>Liberate Tate</strong> (using Freedom of Information releases to expose BP sponsorship), and <strong>Gulf Labor</strong> on Saadiyat Island.</span>
                 </div>
 
                 <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[13px] text-slate-300 space-y-1">

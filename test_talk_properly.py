@@ -190,8 +190,31 @@ def run_tests():
         lastMsg = msgs[msgs.length - 1];
 
         assert('Unethical practices online inquiry returns forensic critique', lastMsg.innerText.includes('Material Research vs. Corporate Artwashing'), lastMsg.innerText);
-        assert('Affirms no unethical corporation will publish complicity on its website', lastMsg.innerText.includes('No unethical corporation or compromised museum will ever publish an admission'), lastMsg.innerText);
+        assert('Affirms all the bad info is publicly available too', lastMsg.innerText.includes('all the bad info is publicly available too'), lastMsg.innerText);
         assert('Unethical practices inquiry does not set curatorContext.lastInst to Raw Material Company', !curatorContext.lastInst || !curatorContext.lastInst.name.includes('Raw Material'), curatorContext.lastInst ? curatorContext.lastInst.name : 'null');
+
+        // 13. "i need to train it to talk back" activates Critical Sparring Mode
+        workInput.value = 'i need to train it to talk back';
+        workSendBtn.click();
+
+        await new Promise(r => setTimeout(r, 450));
+        msgs = document.querySelectorAll('.curator-message-wrap');
+        lastMsg = msgs[msgs.length - 1];
+
+        assert('Talk back inquiry activates critical sparring mode', lastMsg.innerText.includes('Curator Critical Sparring Mode Active'), lastMsg.innerText);
+        assert('Sparring mode shows Trained to Talk Back badge', lastMsg.innerText.includes('Trained to Talk Back'), lastMsg.innerText);
+        assert('Sparring mode accepts challenge with critical teeth', lastMsg.innerText.includes('built with critical teeth'), lastMsg.innerText);
+
+        // 14. "and all bad info is also publicly availiable" returns the open-source intelligence cross-examination
+        workInput.value = 'and all bad info is also publicly availiable';
+        workSendBtn.click();
+
+        await new Promise(r => setTimeout(r, 450));
+        msgs = document.querySelectorAll('.curator-message-wrap');
+        lastMsg = msgs[msgs.length - 1];
+
+        assert('Publicly available bad info query returns forensic methodology', lastMsg.innerText.includes('Material Research vs. Corporate Artwashing'), lastMsg.innerText);
+        assert('Explicitly states all bad info is publicly available too', lastMsg.innerText.includes('all the bad info is publicly available too'), lastMsg.innerText);
 
         window.stopCuratorSpeech();
 
