@@ -163,6 +163,36 @@ def run_tests():
         assert('Spoken text contains articulate narrative overview', instCleaned.includes('verified Tier A clean sanctuary'), instCleaned);
         assert('Spoken text omits raw database bullets', !instCleaned.includes('- Ethical Status:'), instCleaned);
 
+        // 11. Material Research Inquiry does NOT false-match Raw Material Company and provides forensic methodology response
+        curatorContext.lastInst = null;
+        workInput.value = 'have you done any material research, or is all this based on online available information?';
+        workSendBtn.click();
+
+        await new Promise(r => setTimeout(r, 450));
+        msgs = document.querySelectorAll('.curator-message-wrap');
+        lastMsg = msgs[msgs.length - 1];
+
+        assert('Material research inquiry does not match Raw Material Company', !lastMsg.innerText.includes('Raw Material Company'), lastMsg.innerText);
+        assert('Material research inquiry does not set curatorContext.lastInst to Raw Material Company', !curatorContext.lastInst || !curatorContext.lastInst.name.includes('Raw Material'), curatorContext.lastInst ? curatorContext.lastInst.name : 'null');
+        assert('Material research inquiry returns forensic methodology card', lastMsg.innerText.includes('Material Research vs. Corporate Artwashing'), lastMsg.innerText);
+        assert('Methodology explains IRS Form 990 statutory disclosures', lastMsg.innerText.includes('IRS Form 990'), lastMsg.innerText);
+        assert('Methodology explains regulatory perjury penalties', lastMsg.innerText.includes('penalties'), lastMsg.innerText);
+        assert('Methodology explains trustee corporate cross-referencing', lastMsg.innerText.includes('Trustee Corporate Cross-Referencing'), lastMsg.innerText);
+        assert('Methodology explains activist direct action and FOI leaks', lastMsg.innerText.includes('Activist Direct Action & FOI Leaks'), lastMsg.innerText);
+        assert('Methodology explains material structural autonomy', lastMsg.innerText.includes('Material Structural Autonomy'), lastMsg.innerText);
+
+        // 12. Rhetorical Inquiry: "what organisation would knowingly make information about their unethical practices available online?"
+        workInput.value = 'what organisation would knowingly make information about their unethical practices available online?';
+        workSendBtn.click();
+
+        await new Promise(r => setTimeout(r, 450));
+        msgs = document.querySelectorAll('.curator-message-wrap');
+        lastMsg = msgs[msgs.length - 1];
+
+        assert('Unethical practices online inquiry returns forensic critique', lastMsg.innerText.includes('Material Research vs. Corporate Artwashing'), lastMsg.innerText);
+        assert('Affirms no unethical corporation will publish complicity on its website', lastMsg.innerText.includes('No unethical corporation or compromised museum will ever publish an admission'), lastMsg.innerText);
+        assert('Unethical practices inquiry does not set curatorContext.lastInst to Raw Material Company', !curatorContext.lastInst || !curatorContext.lastInst.name.includes('Raw Material'), curatorContext.lastInst ? curatorContext.lastInst.name : 'null');
+
         window.stopCuratorSpeech();
 
       } catch (err) {

@@ -9820,9 +9820,20 @@ FORMATTING & INTERACTION RULES:
       }}
 
       // 4. Token Overlap Ranking
-      const stopWords = new Set(['the','a','an','museum','gallery','centre','center','foundation','art','arts','contemporary','institute','institution','of','for','in','and','de','la','le','du','des','di','del','della','und','fur','van','der','den','het','to','at','modern','d','l','why','is','not','isn','clean','excluded','what','about','happened','on','map','tell','me','how','visit','where','does','can']);
+      const stopWords = new Set([
+        'the','a','an','museum','gallery','centre','center','foundation','art','arts','contemporary','institute','institution',
+        'of','for','in','and','de','la','le','du','des','di','del','della','und','fur','van','der','den','het','to','at','modern',
+        'd','l','why','is','not','isn','clean','excluded','what','about','happened','on','map','tell','me','how','visit','where',
+        'does','can','have','you','done','any','all','this','based','online','available','information','material','research',
+        'investigation','practices','unethical','knowingly','make','would','organisation','organization','org','they','their',
+        'who','which','when','will','should','could','from','with','into','some','more','like','good','great','best','check',
+        'show','find','help','please','know','think','say','see','look','looking','want','get',
+        'company','space','spaces','collective','project','projects','studio','studios','initiative','initiatives'
+      ]);
       const queryWords = n.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !stopWords.has(w));
       if (queryWords.length === 0) return null;
+
+      const isSentence = queryWords.length >= 3 || n.split(/\s+/).length >= 4 || n.includes('?') || /^(what|how|why|is|are|can|could|would|should|do|does|did|have|has|where|when|who)(\s+|$|[!?,.])/i.test(n);
 
       let bestMatch = null;
       let isCleanMatch = false;
@@ -9830,11 +9841,33 @@ FORMATTING & INTERACTION RULES:
 
       const scoreCandidate = (i, isClean) => {{
         const iNameWords = normStr(i.name).split(/[^a-z0-9]+/).filter(w => w.length > 2 && !stopWords.has(w));
+        if (iNameWords.length === 0) return;
+        let matchCount = 0;
         let score = 0;
         for (const qw of queryWords) {{
-          if (iNameWords.includes(qw)) score += 10;
-          else if (iNameWords.some(iw => iw.includes(qw) || qw.includes(iw))) score += 5;
+          if (iNameWords.includes(qw)) {{
+            matchCount++;
+            score += 10;
+          }} else if (iNameWords.some(iw => iw.includes(qw) || qw.includes(iw))) {{
+            score += 4;
+          }}
         }}
+
+        // If query is a full sentence or question, require either full name/alias substring or at least 2 distinct token matches
+        if (isSentence) {{
+          const fullName = normStr(i.name);
+          const hasExactSub = fullName.length >= 5 && nPadded.includes(' ' + fullName + ' ');
+          const hasAliasSub = i.aliases && i.aliases.some(a => normStr(a).length >= 4 && nPadded.includes(' ' + normStr(a) + ' '));
+          if (!hasExactSub && !hasAliasSub && matchCount < 2) {{
+            return;
+          }}
+        }} else {{
+          // In short queries, a single matched word must be at least 4 chars and represent at least 34% of the institution's distinctive words
+          if (matchCount === 1 && (queryWords[0].length < 4 || (iNameWords.length > 2 && matchCount / iNameWords.length < 0.34))) {{
+            return;
+          }}
+        }}
+
         if (score > maxScore) {{
           maxScore = score;
           bestMatch = i;
@@ -10069,13 +10102,24 @@ FORMATTING & INTERACTION RULES:
 
       curatorTyping.classList.remove('hidden');
 
-      // Proactively zoom into any mentioned location or city immediately
-      const earlyInst = findMentionedInst(query);
-      const earlyCity = findMentionedCity(query);
-      if (earlyInst) {{
-        selectInstitution(earlyInst, true);
-      }} else if (earlyCity) {{
-        filterByCity(earlyCity, true, false);
+      // B. Meta & Methodology Intent Detection (Bypasses Early Geo-Zoom)
+      const isGreeting = /^(hello|hi|hey|greetings|good\s+(morning|afternoon|evening)|howdy)(\s+|$|[!?,.])/i.test(q) || q === 'hello' || q === 'hi' || q === 'hey';
+      const isWhoAreYou = /^(who\s+are\s+you|what\s+are\s+you|what\s+is\s+this|what\s+can\s+you\s+do|how\s+does\s+this\s+work|introduce\s+yourself|tell\s+me\s+about\s+yourself)(\s+|$|[!?,.])/i.test(q);
+      const isVoiceTest = /^(make\s+it\s+talk\s+properly|talk\s+properly|speak\s+properly|can\s+you\s+speak|talk\s+to\s+me|speak\s+to\s+me|test\s+voice|audio\s+test|say\s+something)(\s+|$|[!?,.])/i.test(q) || q.includes('talk properly') || q.includes('speak properly');
+      const isMethodologyQuery = /material\s*research|material\s*investigation|online\s*(available\s*)?info|available\s*online|scraped|scraping|unethical\s*practices|knowingly\s*make|why\s+would\s+an\s+organi[sz]ation|how\s+do\s+you\s+(know|audit|research|verify)|research\s+method|audit\s+method|how\s+we\s+audit|form\s*990|is\s+all\s+this\s+based|based\s+on\s+online/i.test(q) ||
+        (q.includes('material') && (q.includes('research') || q.includes('online') || q.includes('info') || q.includes('practice') || q.includes('unethical'))) ||
+        (q.includes('unethical') && (q.includes('online') || q.includes('admit') || q.includes('make') || q.includes('available') || q.includes('practices')));
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isMethodologyQuery;
+
+      // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
+      if (!isMetaInquiry) {{
+        const earlyInst = findMentionedInst(query);
+        const earlyCity = findMentionedCity(query);
+        if (earlyInst) {{
+          selectInstitution(earlyInst, true);
+        }} else if (earlyCity) {{
+          filterByCity(earlyCity, true, false);
+        }}
       }}
 
       // 1. Try Live Generative AI Model if API Key is configured
@@ -10097,10 +10141,6 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
 
         // 0. Conversational Greeting, Identity & Audio Docent Voice Intent
-        const isGreeting = /^(hello|hi|hey|greetings|good\s+(morning|afternoon|evening)|howdy)(\s+|$|[!?,.])/i.test(q) || q === 'hello' || q === 'hi' || q === 'hey';
-        const isWhoAreYou = /^(who\s+are\s+you|what\s+are\s+you|what\s+is\s+this|what\s+can\s+you\s+do|how\s+does\s+this\s+work|introduce\s+yourself|tell\s+me\s+about\s+yourself)(\s+|$|[!?,.])/i.test(q);
-        const isVoiceTest = /^(make\s+it\s+talk\s+properly|talk\s+properly|speak\s+properly|can\s+you\s+speak|talk\s+to\s+me|speak\s+to\s+me|test\s+voice|audio\s+test|say\s+something)(\s+|$|[!?,.])/i.test(q) || q.includes('talk properly') || q.includes('speak properly');
-
         if (isGreeting || isWhoAreYou || isVoiceTest) {{
           let greetingTitle = "Hello! I am your Culture Atlas Curator.";
           let greetingProse = "I guide you through 403 verified independent art spaces, artist-run centers, and ethical museums across 50 global cities. Every space on this globe is verified clean of fossil fuel, weapons, and predatory corporate sponsorship.";
@@ -10137,6 +10177,73 @@ FORMATTING & INTERACTION RULES:
               </div>
             </div>
           `, ['Explore London sanctuaries', 'Show hidden gems', 'Outdoor sculpture parks', 'Why ethical funding matters']);
+          return;
+        }}
+
+        // =========================================================================
+        // 🔬 0B. FORENSIC METHODOLOGY, MATERIAL AUDITS & EPISTEMIC CRITIQUE
+        // =========================================================================
+        if (isMethodologyQuery) {{
+          appendCuratorMessage(`
+            <div class="border border-sky-500/30 bg-[#10141d] p-3.5 rounded-2xl space-y-3">
+              <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-[17px]">🔬</span>
+                  <span class="font-medium text-white text-[15px]">Material Research vs. Corporate Artwashing</span>
+                </div>
+                <span class="text-[12px] font-mono text-sky-400 bg-sky-950/80 border border-sky-700/60 px-2 py-0.5 rounded-full">Forensic Methodology</span>
+              </div>
+
+              <p class="text-slate-100 text-[14px] leading-relaxed">
+                <strong>Your skepticism cuts directly to the core of institutional critique:</strong> <em>No unethical corporation or compromised museum will ever publish an admission of its complicity on its official website.</em>
+              </p>
+              <p class="text-slate-300 text-[14px] leading-relaxed">
+                Corporate artwashing and cultural philanthropy exist precisely to construct an immaculate public facade and purchase social license. If Culture Atlas relied on self-reported PR copy or scraped museum websites, it would reproduce the very propaganda it exists to dismantle.
+              </p>
+              <p class="text-slate-300 text-[14px] leading-relaxed">
+                Instead, our verification is built upon <strong>four independent evidentiary pillars of material investigation</strong>:
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" data-exclude-speech="true">
+                <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[13px] text-slate-300 space-y-1">
+                  <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
+                    <span>📋 1. Regulatory Filings Under Perjury</span>
+                  </strong>
+                  <span>We inspect mandatory statutory disclosures: <strong>IRS Form 990</strong> (Schedule I for grants and Schedule L for trustee financial conflicts), <strong>UK Charity Commission</strong> annual returns, Dutch <strong>ANBI</strong> registries, and French <strong>DRAC</strong> audits. Omissions in these legal filings carry criminal and regulatory penalties.</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[13px] text-slate-300 space-y-1">
+                  <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
+                    <span>🔗 2. Trustee Corporate Cross-Referencing</span>
+                  </strong>
+                  <span>We cross-reference museum board trustees against SEC 10-K filings, Companies House registries, and Bloomberg portfolios—tracking directorships in weapons manufacturing (e.g. Warren Kanders / Safariland), fossil gas extraction (Leonid Mikhelson / Novatek), private equity, and predatory pharma (Sackler / Purdue).</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[13px] text-slate-300 space-y-1">
+                  <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
+                    <span>✊ 3. Activist Direct Action & FOI Leaks</span>
+                  </strong>
+                  <span>We incorporate evidence from frontline coalitions: Nan Goldin's <strong>P.A.I.N.</strong> (uncovering internal Sackler opioid memos), <strong>Decolonize This Place</strong> & Forensic Architecture at the Whitney, <strong>Liberate Tate</strong> (using Freedom of Information releases to expose BP sponsorship), and <strong>Gulf Labor</strong> on Saadiyat Island.</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[13px] text-slate-300 space-y-1">
+                  <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
+                    <span>🌾 4. Material Structural Autonomy</span>
+                  </strong>
+                  <span>The 403 mapped sanctuaries are verified by their legal and economic architecture: artist-run non-profits, cooperative commons (<em>lumbung</em> models like Gudskul Jakarta, Casco Utrecht), non-collecting kunsthalles, and civic institutions with structural firewalls protecting curators from private capture.</span>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-sky-900/40 text-[13px] text-sky-200/90 leading-relaxed">
+                Culture Atlas does not take an institution's word for its ethics. We trace the material flow of capital, contracts, and board influence.
+              </div>
+            </div>
+          `, [
+            'How we audit Form 990 filings',
+            'Nan Goldin & Sackler divestment',
+            'Warren Kanders at the Whitney',
+            'Explore clean sanctuaries'
+          ]);
           return;
         }}
 
