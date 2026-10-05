@@ -548,38 +548,52 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <!-- 🧭 TOP HEADER: BRANDING, MODE SWITCHER (CHAT / WORK) & CONTROLS -->
   <!-- ========================================================= -->
-  <header class="w-full h-14 bg-[#171717] border-b border-[#262626] px-3 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none">
+  <header class="w-full h-14 bg-[#171717] border-b border-[#262626] px-2.5 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-1 sm:gap-2">
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
-    <button id="topBrandLogoBtn" class="flex items-center gap-2.5 text-left bg-transparent border-0 p-0 m-0 cursor-pointer group focus:outline-none select-none transition hover:opacity-85" title="Reset Globe View" aria-label="Reset Globe View">
-      <div class="w-2.5 h-2.5 rounded-full bg-white group-hover:scale-125 transition-transform"></div>
+    <button id="topBrandLogoBtn" class="flex items-center gap-1.5 sm:gap-2 text-left bg-transparent border-0 p-0 m-0 cursor-pointer group focus:outline-none select-none transition hover:opacity-85 shrink-0" title="Reset Globe View" aria-label="Reset Globe View">
+      <div class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-white group-hover:scale-125 transition-transform shrink-0"></div>
       <div class="flex items-center gap-2">
-        <span class="text-[18px] font-normal tracking-wider text-white uppercase group-hover:text-emerald-300 transition-colors">CULTURE ATLAS</span>
-        <span id="topSpacesBadge" class="text-[14px] text-emerald-400 bg-[#0a2016] px-2 py-0.5 rounded-full border border-emerald-900/60 hidden sm:inline font-mono group-hover:border-emerald-700/80 transition-colors">423 CLEAN SPACES</span>
+        <span class="text-[13px] sm:text-[18px] font-normal tracking-wider text-white uppercase group-hover:text-emerald-300 transition-colors whitespace-nowrap">CULTURE ATLAS</span>
+        <span id="topSpacesBadge" class="text-[13px] text-emerald-400 bg-[#0a2016] px-2 py-0.5 rounded-full border border-emerald-900/60 hidden lg:inline font-mono group-hover:border-emerald-700/80 transition-colors">423 CLEAN SPACES</span>
       </div>
     </button>
 
-    <!-- Center: Unified + New Chat Action (Single Canvas Experience) -->
+    <!-- Center: Mobile Mode Switcher (Map / Split / Chat) & Desktop New Chat -->
     <div class="flex items-center">
-      <button id="topNewChatBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-full text-[14px] transition shadow-sm cursor-pointer" title="Start a new chat exploration">
-        <span class="text-emerald-400 font-normal">+</span>
+      <!-- Mobile Segmented Control (Phone Only) -->
+      <div id="mobileModeSwitch" class="flex md:hidden items-center bg-[#222222] border border-[#333333] p-0.5 rounded-xl text-[11px] select-none shadow-sm">
+        <button id="mobileModeMapBtn" class="px-2 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Map View">Map</button>
+        <button id="mobileModeSplitBtn" class="px-2 py-0.5 rounded-lg bg-[#2563eb] text-white font-medium transition cursor-pointer" title="Split View">Split</button>
+        <button id="mobileModeChatBtn" class="px-2 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Curator Chat">Chat</button>
+      </div>
+
+      <!-- Desktop Center New Chat Button -->
+      <button id="topNewChatBtn" class="hidden md:flex items-center gap-1.5 px-3.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-full text-[14px] transition shadow-sm cursor-pointer" title="Start a new chat exploration">
+        <span class="text-emerald-400 font-bold">+</span>
         <span>New Chat</span>
       </button>
     </div>
 
-    <!-- Right: View Controls (Minimize · Expand) & Status -->
-    <div class="flex items-center gap-2">
-      <div class="flex items-center gap-1.5 text-[14px] text-[#a1a1aa] bg-[#212121] border border-[#2e2e2e] px-2.5 py-1 rounded-xl shadow-sm">
+    <!-- Right: View Controls (Desktop) & Status / Reset (Compact Mobile) -->
+    <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+      <!-- Desktop View Controls: Minimize · Expand -->
+      <div class="hidden md:flex items-center gap-1.5 text-[14px] text-[#a1a1aa] bg-[#212121] border border-[#2e2e2e] px-2.5 py-1 rounded-xl shadow-sm">
         <button id="topViewMinimizeBtn" class="hover:text-white transition cursor-pointer text-[14px]">Minimize</button>
         <span class="text-[#555]">·</span>
         <button id="topViewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px]">Expand</button>
       </div>
 
-      <button id="topSettingsBtn" class="flex items-center gap-1.5 px-3 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[14px] transition cursor-pointer" title="AI Intelligence & API Key Settings">
-        <span id="topStatusDot" class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
-        <span id="topStatusLabel" class="font-normal text-[14px] text-amber-300 flex items-center gap-1">🔑 Add API Key</span>
+      <!-- Mobile + New Chat Icon Button -->
+      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-emerald-400 hover:text-white rounded-full text-[15px] sm:text-[16px] font-bold transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
+        +
       </button>
-      <button id="topResetBtn" class="bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white px-2.5 py-1 rounded-xl text-[14px] transition flex items-center gap-1 cursor-pointer" title="Reset Globe View">
+
+      <button id="topSettingsBtn" class="flex items-center gap-1 px-1.5 sm:px-3 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[12px] sm:text-[14px] transition cursor-pointer shrink-0" title="AI Intelligence & API Key Settings">
+        <span id="topStatusDot" class="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-amber-400 shrink-0"></span>
+        <span id="topStatusLabel" class="font-normal text-amber-300 flex items-center gap-1"><span>🔑</span><span class="hidden sm:inline"> Add API Key</span></span>
+      </button>
+      <button id="topResetBtn" class="hidden sm:flex bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white px-2 sm:px-2.5 py-1 rounded-xl text-[12px] sm:text-[14px] transition items-center gap-1 cursor-pointer shrink-0" title="Reset Globe View">
         <span>Reset</span>
       </button>
     </div>
@@ -660,28 +674,28 @@ return maplibregl$1;
       </div>
 
       <!-- City & Country Navigation Banner -->
-      <div id="cityViewControlBanner" class="hidden absolute top-2.5 sm:top-3 left-2.5 sm:left-4 z-20 pointer-events-auto flex items-center gap-2 flex-wrap">
-        <button id="exitStreetViewBtn" class="px-2.5 py-1.5 rounded-xl bg-[#1e293b]/95 hover:bg-[#334155] border border-[#38bdf8]/40 hover:border-[#38bdf8] text-[#38bdf8] hover:text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Exit street view to 3D Globe">
-          <span>🌍 Exit to Globe</span>
+      <div id="cityViewControlBanner" class="hidden absolute top-2 sm:top-3 left-2 sm:left-4 z-20 pointer-events-auto flex items-center gap-1.5 sm:gap-2 max-w-[calc(100%-16px)] overflow-x-auto select-none">
+        <button id="exitStreetViewBtn" class="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-[#1e293b]/95 hover:bg-[#334155] border border-[#38bdf8]/40 hover:border-[#38bdf8] text-[#38bdf8] hover:text-white text-[12px] sm:text-[13px] flex items-center gap-1 shadow-lg backdrop-blur transition cursor-pointer active:scale-95 shrink-0" title="Exit street view to 3D Globe">
+          <span>🌍 Exit</span>
         </button>
-        <button id="backToWorldBtn" class="px-2.5 py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Reset to global world view">
-          <span class="font-normal">World View</span>
+        <button id="backToWorldBtn" class="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[12px] sm:text-[13px] flex items-center gap-1 shadow-lg backdrop-blur transition cursor-pointer active:scale-95 shrink-0" title="Reset to global world view">
+          <span class="font-normal">World</span>
         </button>
-        <button id="backToCountryBtn" class="hidden px-2.5 py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[13px] flex items-center gap-1.5 shadow-lg backdrop-blur transition cursor-pointer active:scale-95" title="Return to country overview">
+        <button id="backToCountryBtn" class="hidden px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[12px] sm:text-[13px] flex items-center gap-1 shadow-lg backdrop-blur transition cursor-pointer active:scale-95 shrink-0" title="Return to country overview">
           <span>←</span> <span id="backToCountryText" class="font-normal">Country</span>
         </button>
-        <div id="cityViewTitleBadge" class="px-2.5 py-1.5 rounded-xl bg-[#0c1626]/95 border border-[#1e2e4a] text-[#93c5fd] text-[13px] font-mono flex items-center gap-1.5 shadow-lg backdrop-blur">
+        <div id="cityViewTitleBadge" class="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-[#0c1626]/95 border border-[#1e2e4a] text-[#93c5fd] text-[11px] sm:text-[13px] font-mono flex items-center gap-1 shadow-lg backdrop-blur shrink-0 truncate max-w-[190px] sm:max-w-none">
           <span id="cityViewTitleText">LONDON · STREET VIEW</span>
         </div>
       </div>
 
 
       <!-- Subtle Globe Zoom & Map Controls -->
-      <div class="absolute bottom-2 right-2.5 sm:right-4 z-10 flex items-center gap-1.5 bg-[#18181b]/85 backdrop-blur-md p-1 rounded-2xl border border-[#2e2e2e] shadow-lg">
-        <button id="hudWorldBtn" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Reset World View">
+      <div class="absolute bottom-2 right-2 sm:right-4 z-10 flex items-center gap-1 sm:gap-1.5 bg-[#18181b]/90 backdrop-blur-md p-1 rounded-2xl border border-[#2e2e2e] shadow-lg max-w-[calc(100%-16px)] overflow-x-auto select-none">
+        <button id="hudWorldBtn" class="px-2 sm:px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[11px] sm:text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Reset World View">
           <span>World</span>
         </button>
-        <div class="hidden sm:flex items-center gap-1">
+        <div class="hidden sm:flex items-center gap-1 shrink-0">
           <button id="hudEuropeBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center cursor-pointer" title="Fly to Europe">
             <span>Europe</span>
           </button>
@@ -696,15 +710,15 @@ return maplibregl$1;
             <span>Rail</span>
           </button>
         </div>
-        <button id="hudSpinBtn" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Toggle Auto-Spin">
+        <button id="hudSpinBtn" class="px-2 sm:px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[11px] sm:text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Toggle Auto-Spin">
           <span id="hudSpinText">Spin</span>
         </button>
-        <button id="hudExpandBtn" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Maximize Map View">
+        <button id="hudExpandBtn" class="px-2 sm:px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[11px] sm:text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Maximize Map View">
           <span id="hudExpandText">Expand</span>
         </button>
-        <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5"></div>
-        <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition text-[15px] cursor-pointer" title="Zoom In">+</button>
-        <button id="zoomOutBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition text-[15px] cursor-pointer" title="Zoom Out">−</button>
+        <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5 shrink-0"></div>
+        <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition text-[14px] sm:text-[15px] cursor-pointer shrink-0" title="Zoom In">+</button>
+        <button id="zoomOutBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition text-[14px] sm:text-[15px] cursor-pointer shrink-0" title="Zoom Out">−</button>
       </div>
 
     </div>
@@ -809,41 +823,42 @@ return maplibregl$1;
       </div>
 
       <!-- 2. PINNED BOTTOM INPUT DOCK (Always stays firmly in place at bottom!) -->
-      <div id="workBottomDock" class="w-full shrink-0 flex flex-col items-center px-3 sm:px-5 pb-3 sm:pb-4 pt-2 bg-[#171717] border-t border-[#262626] z-10">
+      <div id="workBottomDock" class="w-full shrink-0 flex flex-col items-center px-2.5 sm:px-5 pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-[#171717] border-t border-[#262626] z-10">
         <div class="w-full max-w-3xl flex flex-col items-center">
           
           <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
-          <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-3xl p-3 sm:p-3.5 shadow-xl transition relative">
-            <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] focus:outline-none resize-none font-normal leading-[120%]"></textarea>
+          <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 shadow-xl transition relative">
+            <textarea id="workInput" rows="1" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[13px] sm:text-[14px] focus:outline-none resize-none font-normal leading-[120%] max-h-32"></textarea>
             
-            <div class="flex items-center justify-between pt-1.5">
+            <div class="flex items-center justify-between pt-1">
               <!-- Left: Plus action button -->
-              <button id="workPlusBtn" class="w-8 h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center text-[18px] transition active:scale-95 cursor-pointer font-normal" title="Quick filters">
+              <button id="workPlusBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center text-[16px] sm:text-[18px] transition active:scale-95 cursor-pointer font-normal shrink-0" title="Quick filters">
                 +
               </button>
 
               <!-- Right: Model, mic, and blue circular waveform/send button -->
-              <div class="flex items-center gap-2">
-                <button id="chatAddKeyBtn" class="text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal" title="Configure Claude, OpenAI, or Gemini API Key">
+              <div class="flex items-center gap-1.5 sm:gap-2">
+                <button id="chatAddKeyBtn" class="text-[12px] sm:text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Configure Claude, OpenAI, or Gemini API Key">
                   <span id="chatAddKeyIcon">🔑</span>
-                  <span id="chatAddKeyLabel">Add API Key</span>
+                  <span id="chatAddKeyLabel" class="hidden sm:inline">Add API Key</span>
                 </button>
 
-                <button id="workModelBtn" class="text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
-                  <span id="workModelLabel">Culture Atlas 4.0 Critical Engine</span>
+                <button id="workModelBtn" class="text-[12px] sm:text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
+                  <span id="workModelLabel" class="hidden sm:inline">Culture Atlas 4.0 Critical Engine</span>
+                  <span class="inline sm:hidden text-[11px] text-[#8e8e8e]">Engine 4.0</span>
                   <svg class="w-3.5 h-3.5 text-[#71717a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
 
-                <button id="workMicBtn" class="w-8 h-8 rounded-full hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white flex items-center justify-center transition cursor-pointer" title="Voice">
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <button id="workMicBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white flex items-center justify-center transition cursor-pointer shrink-0" title="Voice">
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
                     <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
                     <line x1="12" y1="19" x2="12" y2="22" />
                   </svg>
                 </button>
 
-                <button id="workSendBtn" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer" title="Send message">
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <button id="workSendBtn" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer shrink-0" title="Send message">
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 3v18M8 6v12M4 9v6M16 6v12M20 9v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
                   </svg>
                 </button>
@@ -6920,28 +6935,31 @@ return maplibregl$1;
           exitCityStreetView();
         }
       });
-
-      window.atlasSelectInst = function(instName) {
-        const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
-        if (inst) {
-          selectInstitution(inst, false);
-          openDossier(inst);
-        }
-      };
-
-      window.atlasOpenDossier = function(instName) {
-        const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
-        if (inst) openDossier(inst);
-      };
-
-      window.atlasAskCurator = function(instName) {
-        const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
-        if (inst) {
-          appendUserMessage(`Tell me about ${inst.name}`);
-          handleCuratorQuery(inst.name);
-        }
-      };
     }
+
+    window.atlasSelectInst = function(instName) {
+      const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+      if (inst) {
+        selectInstitution(inst, false);
+        openDossier(inst);
+      }
+    };
+
+    window.atlasOpenDossier = function(instName) {
+      const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+      if (inst) openDossier(inst);
+    };
+
+    window.atlasAskCurator = function(instName) {
+      const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+      if (inst) {
+        if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {
+          setMobileViewMode('chat');
+        }
+        appendUserMessage(`Tell me about ${inst.name}`);
+        handleCuratorQuery(inst.name);
+      }
+    };
 
     function openCityStreetView(cityName, targetLat, targetLon) {
       if (!cityName || cityName === 'all') return;
@@ -7244,10 +7262,14 @@ return maplibregl$1;
 
       // Logical layout display dimensions
       canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-
+      const oldBase = baseRadius;
       baseRadius = getBaseRadius();
-      targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius));
+      if (!isFlying && (Math.abs(targetRadius - oldBase) < 2 || targetRadius === oldBase)) {
+        targetRadius = baseRadius;
+        currentRadius = baseRadius;
+      } else {
+        targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius));
+      }
       if (cityVectorMap) {
         cityVectorMap.resize();
       }
@@ -8168,9 +8190,14 @@ return maplibregl$1;
           ctx.fillStyle = d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
           ctx.fill();
 
+          const shouldDrawGlobeLabel = isHov || isSel || 
+            selectedCountryFilter !== 'all' || 
+            selectedCityFilter !== 'all' || 
+            currentRadius >= baseRadius * 1.35;
+
           if (isHov || (selectedCountryFilter !== 'all' && isSel)) {
             drawInstitutionMicroCard(ctx, d.inst, d.x, d.y, width, height);
-          } else {
+          } else if (shouldDrawGlobeLabel) {
             // Render institution name on top of dot across ALL points of view
             ctx.save();
             ctx.font = '600 10.5px "PP Telegraf", "PP Telegraph", sans-serif';
@@ -9274,8 +9301,8 @@ return maplibregl$1;
       if (aiApiKey) {
         if (topDot) topDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0';
         if (topLabel) {
-          topLabel.className = 'font-mono text-[14px] text-emerald-400 flex items-center gap-1.5';
-          topLabel.innerHTML = `<span>${pName} Live</span><span class="text-[#71717a] text-[12px]">⚙️</span>`;
+          topLabel.className = 'font-mono text-[13px] sm:text-[14px] text-emerald-400 flex items-center gap-1.5';
+          topLabel.innerHTML = `<span>⚙️</span><span class="hidden sm:inline">${pName} Live</span>`;
         }
         if (chatKeyBtn) {
           chatKeyBtn.className = 'text-[13px] bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:border-emerald-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal';
@@ -9292,10 +9319,10 @@ return maplibregl$1;
           workLabel.textContent = `${pName} · ${effModel.split('-')[0].toUpperCase()}`;
         }
       } else {
-        if (topDot) topDot.className = 'w-2 h-2 rounded-full bg-amber-400 shrink-0';
+        if (topDot) topDot.className = 'w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-amber-400 shrink-0';
         if (topLabel) {
-          topLabel.className = 'font-normal text-[14px] text-amber-300 flex items-center gap-1';
-          topLabel.innerHTML = `<span>🔑 Add API Key</span>`;
+          topLabel.className = 'font-normal text-[13px] sm:text-[14px] text-amber-300 flex items-center gap-1';
+          topLabel.innerHTML = `<span>🔑</span><span class="hidden sm:inline"> Add API Key</span>`;
         }
         if (chatKeyBtn) {
           chatKeyBtn.className = 'text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal';
@@ -12147,8 +12174,139 @@ FORMATTING & INTERACTION RULES:
     // 💼 UNIFIED SINGLE-CANVAS CONTROLLER (Combined Work & Chat)
     // =========================================================
     
-    // Top New Chat Action: Resets chat and returns to fresh landing view
-    document.getElementById('topNewChatBtn')?.addEventListener('click', resetToNewChat);
+    // Top New Chat Actions (Desktop + Mobile): Resets chat and returns to fresh landing view
+    document.getElementById('topNewChatBtn')?.addEventListener('click', () => {
+      resetToNewChat();
+      if (window.innerWidth < 768 && currentMobileMode === 'map') {
+        setMobileViewMode('chat');
+      }
+    });
+    document.getElementById('mobileNewChatBtn')?.addEventListener('click', () => {
+      resetToNewChat();
+      if (window.innerWidth < 768 && currentMobileMode === 'map') {
+        setMobileViewMode('chat');
+      }
+    });
+
+    // Mobile Viewport Mode Switcher (Map / Split / Chat)
+    let currentMobileMode = 'split';
+
+    function setMobileViewMode(mode) {
+      if (window.innerWidth >= 768) return;
+      currentMobileMode = mode;
+
+      const globe = document.getElementById('globeViewport');
+      const workView = document.getElementById('workViewContainer');
+      const splitter = document.getElementById('globeSplitter');
+      const mapBtn = document.getElementById('mobileModeMapBtn');
+      const splitBtn = document.getElementById('mobileModeSplitBtn');
+      const chatBtn = document.getElementById('mobileModeChatBtn');
+      const cityBar = document.getElementById('globeCityBar');
+
+      [mapBtn, splitBtn, chatBtn].forEach(b => {
+        if (!b) return;
+        b.classList.remove('bg-[#2563eb]', 'text-white', 'font-medium');
+        b.classList.add('text-[#a1a1aa]');
+      });
+
+      if (mode === 'map') {
+        mapBtn?.classList.remove('text-[#a1a1aa]');
+        mapBtn?.classList.add('bg-[#2563eb]', 'text-white', 'font-medium');
+        if (globe) {
+          globe.style.display = 'flex';
+          globe.style.height = '100%';
+          globe.style.flex = '1 1 0%';
+        }
+        if (workView) {
+          workView.style.display = 'none';
+          workView.style.height = '0%';
+          workView.style.flex = '0 0 auto';
+        }
+        if (splitter) {
+          splitter.style.display = 'none';
+        }
+        resizeCanvas();
+        if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
+      } else if (mode === 'chat') {
+        chatBtn?.classList.remove('text-[#a1a1aa]');
+        chatBtn?.classList.add('bg-[#2563eb]', 'text-white', 'font-medium');
+        if (globe) {
+          globe.style.display = 'none';
+          globe.style.height = '0%';
+          globe.style.flex = '0 0 auto';
+        }
+        if (workView) {
+          workView.style.display = 'flex';
+          workView.style.height = '100%';
+          workView.style.flex = '1 1 0%';
+        }
+        if (splitter) {
+          splitter.style.display = 'none';
+        }
+        if (cityBar) {
+          cityBar.classList.remove('max-h-[58px]');
+          cityBar.classList.add('max-h-[140px]');
+        }
+        scrollChatToBottom(false);
+      } else {
+        // split (default)
+        splitBtn?.classList.remove('text-[#a1a1aa]');
+        splitBtn?.classList.add('bg-[#2563eb]', 'text-white', 'font-medium');
+        if (globe) {
+          globe.style.display = 'flex';
+          globe.style.height = '50%';
+          globe.style.flex = '1 1 0%';
+        }
+        if (workView) {
+          workView.style.display = 'flex';
+          workView.style.height = '50%';
+          workView.style.flex = '1 1 0%';
+        }
+        if (splitter) {
+          splitter.style.display = 'flex';
+        }
+        if (cityBar) {
+          cityBar.classList.remove('max-h-[140px]');
+          cityBar.classList.add('max-h-[58px]');
+        }
+        resizeCanvas();
+        if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
+      }
+    }
+
+    window.setMobileViewMode = setMobileViewMode;
+    document.getElementById('mobileModeMapBtn')?.addEventListener('click', () => setMobileViewMode('map'));
+    document.getElementById('mobileModeSplitBtn')?.addEventListener('click', () => setMobileViewMode('split'));
+    document.getElementById('mobileModeChatBtn')?.addEventListener('click', () => setMobileViewMode('chat'));
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        const globe = document.getElementById('globeViewport');
+        const workView = document.getElementById('workViewContainer');
+        const splitter = document.getElementById('globeSplitter');
+        const cityBar = document.getElementById('globeCityBar');
+        if (globe) {
+          globe.style.display = '';
+          globe.style.height = '';
+          globe.style.flex = '';
+        }
+        if (workView) {
+          workView.style.display = '';
+          workView.style.height = '';
+          workView.style.flex = '';
+        }
+        if (splitter) {
+          splitter.style.display = '';
+        }
+        if (cityBar) {
+          cityBar.classList.remove('max-h-[140px]', 'max-h-[58px]');
+        }
+        resizeCanvas();
+        if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
+      } else {
+        setMobileViewMode(currentMobileMode);
+      }
+    });
 
     document.getElementById('topSettingsBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('chatAddKeyBtn')?.addEventListener('click', openSettingsModal);
@@ -12187,6 +12345,9 @@ FORMATTING & INTERACTION RULES:
       const text = (workInput?.value || '').trim();
       if (!text) return;
       workInput.value = '';
+      if (window.innerWidth < 768 && currentMobileMode === 'map') {
+        setMobileViewMode('split');
+      }
       appendUserMessage(text);
       handleCuratorQuery(text);
     }
@@ -13970,6 +14131,7 @@ FORMATTING & INTERACTION RULES:
 
       // 4. Smoothly reset camera zoom and orientation to global planetary overview
       targetRadius = baseRadius;
+      currentRadius = baseRadius;
       if (typeof flyTo === 'function') {
         flyTo(0, 20, baseRadius);
       } else {
