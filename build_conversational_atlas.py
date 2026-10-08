@@ -799,6 +799,11 @@ def build():
             <span id="floatingCardDirectDomain" class="text-[11px] opacity-80 font-mono"></span>
             <span class="text-[12px]">↗</span>
           </a>
+          <a id="floatingCardDirectAuditBtn" href="#" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#141d2c] hover:bg-[#1e2a3f] text-sky-300 hover:text-white border border-[#273a58] font-mono text-[12px] transition active:scale-95 cursor-pointer"
+             onclick="event.stopPropagation()">
+            <span>📋 Audit Dossier ↗</span>
+          </a>
           <button id="floatingCardDirectPlanBtn" type="button" 
              class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#222834] hover:bg-[#2b3548] text-[#93c5fd] hover:text-white border border-[#2f3d58] font-mono text-[12px] transition active:scale-95 cursor-pointer"
              onclick="event.stopPropagation(); if (typeof window.atlasPlanVisit === 'function') window.atlasPlanVisit(selectedInstitution);">
@@ -1828,8 +1833,48 @@ def build():
           </div>
         </div>
 
+        <!-- 7 Standardized Legal Governance Taxonomies -->
+        <div class="space-y-2 pt-2 border-t border-[#232f48]">
+          <h4 class="text-[14px] font-semibold text-white flex items-center gap-2">
+            <span>🏛️ Standardized Legal Governance Taxonomy (7 Models)</span>
+          </h4>
+          <p class="text-[12.5px] text-slate-300">
+            Every cultural space on Culture Atlas is mapped to one of seven standardized legal and organizational structures, defining board accountability, capital flows, and statutory oversight:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12px]">
+            <div class="p-2.5 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
+              <strong class="text-emerald-400 block font-mono">1. Artist-Run Collective & Non-Profit Kunsthalle</strong>
+              <span class="text-slate-300">Democratic artist-led or non-profit trust without permanent acquisitions; structural independence protected by artist-run board charters and zero corporate trustees.</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
+              <strong class="text-sky-400 block font-mono">2. Civic & Municipal Public Trust</strong>
+              <span class="text-slate-300">100% municipal city council or local authority public entity funded by civil taxation; civic gift policies prohibiting fossil fuel, weapons, and private prison underwriting.</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
+              <strong class="text-blue-400 block font-mono">3. National / State Cultural Institution</strong>
+              <span class="text-slate-300">Sovereign parliamentary or cultural ministry institution governed by civil service statutes and transparent public donor registers subject to statutory audit.</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
+              <strong class="text-indigo-400 block font-mono">4. University & Academic Research Institute</strong>
+              <span class="text-slate-300">Campus museum or academic laboratory operating under university academic senate ethics protocols; free from speculative market consignment pressures.</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
+              <strong class="text-teal-400 block font-mono">5. Endowed Independent Foundation</strong>
+              <span class="text-slate-300">Asset-locked philanthropic foundation with an independent deed of trust; self-sustaining non-profit endowment free of extractive board interlocks.</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
+              <strong class="text-cyan-400 block font-mono">6. Public-Civic Co-Governance Trust</strong>
+              <span class="text-slate-300">Multi-stakeholder cooperative or civic-community co-management trust; shared commons stewardship preventing speculative privatization.</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#20142e] border border-[#8a3ffc]/40 sm:col-span-2 space-y-1">
+              <strong class="text-[#be95ff] block font-mono">7. Private Commercial / Corporate Foundation</strong>
+              <span class="text-slate-300">Corporate or private billionaire foundation where board governance interlocks with commercial corporate conglomerates, defense contractors, fossil fuels, or private equity assets.</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Four Auditing Dossier Pillars -->
-        <div class="space-y-2">
+        <div class="space-y-2 pt-2 border-t border-[#232f48]">
           <h4 class="text-[14px] font-semibold text-white flex items-center gap-2">
             <span>📋 Statutory Filing Sources & Audit Records</span>
           </h4>
@@ -10102,6 +10147,16 @@ def build():
         }}
       }}
 
+      const directAuditBtn = document.getElementById('floatingCardDirectAuditBtn');
+      if (directAuditBtn) {{
+        if (inst.audit_dossier_url) {{
+          directAuditBtn.href = inst.audit_dossier_url;
+          directAuditBtn.style.display = 'inline-flex';
+        }} else {{
+          directAuditBtn.style.display = 'none';
+        }}
+      }}
+
       const directPlanBtn = document.getElementById('floatingCardDirectPlanBtn');
       if (directPlanBtn) {{
         directPlanBtn.style.display = 'inline-flex';
@@ -10346,23 +10401,26 @@ def build():
             ` : ''}}
           ` : ''}}
 
-          ${{webUrl ? `
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
-                      class="inline-flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-[13.5px] rounded-xl transition shadow-md active:scale-95 cursor-pointer">
-                <span>🏛️</span> <span>Zoom to Building & Archives</span>
-              </button>
-              <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                 class="inline-flex items-center justify-center gap-2 py-2.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[13.5px] rounded-xl transition shadow-md active:scale-95">
-                <span>Official Site (${{escapeHtml(domain)}})</span> <span>↗</span>
-              </a>
-            </div>
-          ` : `
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
-                    class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-[13.5px] rounded-xl transition shadow-md active:scale-95 cursor-pointer">
-              <span>🏛️</span> <span>Zoom to Building & Archives</span>
+                    class="inline-flex items-center justify-center gap-1.5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-[13px] rounded-xl transition shadow-md active:scale-95 cursor-pointer">
+              <span>🏛️</span> <span>Zoom to 3D</span>
             </button>
-          `}}
+            <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center justify-center gap-1.5 py-2.5 bg-[#141d2c] hover:bg-[#1f2b40] text-sky-300 hover:text-white border border-[#233550] font-mono text-[13px] rounded-xl transition shadow-md active:scale-95 cursor-pointer">
+              <span>📋</span> <span>Audit Dossier ↗</span>
+            </a>
+            ${{webUrl ? `
+              <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center justify-center gap-1.5 py-2.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[13px] rounded-xl transition shadow-md active:scale-95">
+                <span>Site (${{escapeHtml(domain)}}) ↗</span>
+              </a>
+            ` : `
+              <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="inline-flex items-center justify-center gap-1.5 py-2.5 bg-[#1e2638] hover:bg-[#2a364e] text-slate-200 font-normal text-[13px] rounded-xl transition shadow-md cursor-pointer">
+                <span>Plan Visit 💬</span>
+              </button>
+            `}}
+          </div>
 
           <!-- 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING PROFILE SECTION -->
           <div class="p-3.5 bg-[#0e1622] border border-[#213247] rounded-2xl space-y-3">
@@ -10488,6 +10546,19 @@ def build():
               <button type="button" onclick="openResearchFeedbackModal('${{escapeHtml(inst.name)}}', '${{escapeHtml(inst.city)}}')" class="text-[12px] font-mono text-[#78a9ff] hover:underline cursor-pointer flex items-center gap-1">
                 <span>Suggest Update ✍️</span>
               </button>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#101726] border border-[#1e2c45] mb-2 flex items-center justify-between gap-2">
+              <div class="truncate">
+                <div class="text-[12px] font-mono text-sky-400 font-bold flex items-center gap-1.5">
+                  <span>📋</span> <span>Statutory Regulatory Filing Dossier</span>
+                </div>
+                <div class="text-[11.5px] text-slate-300 mt-0.5 truncate">
+                  Audited statutory records: Charity Commission / Form 990 / Bundesanzeiger / Official Register
+                </div>
+              </div>
+              <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded bg-sky-950/80 hover:bg-sky-900 border border-sky-700/60 text-sky-300 hover:text-white text-[11.5px] font-mono shrink-0 transition">
+                Inspect Filing ↗
+              </a>
             </div>
             <div class="flex flex-col gap-1.5 font-mono">
               ${{(inst.sources || []).filter(u => typeof u !== 'string' || (!u.toLowerCase().includes('wikipedia.org') && !u.toLowerCase().includes('wikimedia.org'))).map(u => {{
@@ -11588,8 +11659,10 @@ def build():
       const wings = (bArch.wings || []).map(w => w.name).join(', ') || 'Exhibition galleries';
       return `- INSTITUTION: ${{i.name}}
   Location: ${{i.city}}, ${{i.country}} (${{i.address || 'Central'}}, Neighborhood: ${{i.neighborhood || i.city}})
-  Governance Classification: ${{i.tier_label || (i.tier === 'A' ? 'Verified Independent Space' : 'Flagged Corporate Underwriting')}} (${{i.governance_classification || i.governance_type || 'Civic Non-Profit'}})
+  Legal Governance Structure: ${{i.governance_type || 'Civic & Municipal Public Trust'}}
+  Governance Classification: ${{i.tier_label || (i.tier === 'A' ? 'Verified Independent Space' : 'Flagged Corporate Underwriting')}}
   Governance & Ethical Safeguard: ${{i.governance_details || i.ethical_safeguard || 'Statutory audited non-profit'}}
+  Statutory Audit Dossier: ${{i.audit_dossier_url || ''}}
   Curatorial Focus: ${{i.curatorial_focus || 'Contemporary artistic experimentation'}}
   Specific Highlights & Permanent Collections: ${{i.highlight || 'Curated landmark holdings'}}
   Admission Model: ${{i.admission_policy || 'Always Free Public Admission'}} (${{i.admission_details || i.admission_fee || 'Public civic admission'}})
@@ -12517,7 +12590,10 @@ FORMATTING & INTERACTION RULES:
 
                 <div class="pt-2 border-t border-[#232f48] flex items-center justify-between gap-2 flex-wrap text-[12px]">
                   <span class="text-slate-400">Want deeper inspection?</span>
-                  <div class="flex items-center gap-2">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <a href="${{escapeHtml(targetInst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-[#141b2a] hover:bg-[#1f2b42] text-sky-300 hover:text-white border border-[#233552] font-mono transition inline-flex items-center gap-1 cursor-pointer">
+                      📋 Audit Dossier ↗
+                    </a>
                     <button type="button" onclick="openBuildingArchivesModal('${{escapeHtml(targetInst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#1e293b] hover:bg-[#2b3a52] text-slate-200 hover:text-white border border-slate-700 font-mono transition cursor-pointer">
                       🏛️ 3D Building & Archives
                     </button>
