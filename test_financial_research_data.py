@@ -65,8 +65,9 @@ def run_tests():
           assert('Detail body displays Program Spend Ratio', detailBody && detailBody.innerHTML.includes('PROGRAM SPEND RATIO'));
         }
 
-        // Mock external web scraping to keep test deterministic and fast
+        // Mock external web scraping and live AI calls to test offline financial knowledge engine deterministically
         window.scrapeWebForQuery = async () => null;
+        window.queryAI = async () => null;
 
         // 4. Verify Curator academic finance research query
         let prevCount = document.querySelectorAll('.curator-message-wrap').length;
