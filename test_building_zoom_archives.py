@@ -13,14 +13,9 @@ def run_tests():
 
     test_script = """
     <script>
-    // Stub fetch so headless chrome does not wait for external tiles
-    const origFetch = window.fetch;
+    // Stub fetch so headless chrome does not hang on external network
     window.fetch = async (url, opts) => {
-      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
-      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
-        return new Response(new Uint8Array(0), { status: 200 });
-      }
-      return origFetch(url, opts);
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
 
     window.addEventListener('load', async () => {
@@ -168,7 +163,7 @@ def run_tests():
     ]
 
     try:
-        proc = subprocess.run(chrome_cmd, capture_output=True, text=True, timeout=15)
+        proc = subprocess.run(chrome_cmd, capture_output=True, text=True, timeout=30)
         dom = proc.stdout
 
         marker = 'id="test-results-output" data-results="'

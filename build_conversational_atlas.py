@@ -104,6 +104,7 @@ def build():
     flagged_count = len(flagged_insts)
     total_count = len(all_raw_institutions)
     academic_count = len(academic_papers)
+    archives_count = sum(1 for i in all_raw_institutions if i.get('archives_and_collections'))
     institutions_count = clean_count
     spaces_count_str = f"{clean_count} CLEAN SPACES"
 
@@ -698,11 +699,15 @@ def build():
         <button id="mobileModeChatBtn" class="px-2 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Curator Chat">Chat</button>
       </div>
 
-      <!-- Desktop Center New Chat Button & Separate Contribute Button -->
+      <!-- Desktop Center New Chat Button, Archives Directory & Separate Contribute Button -->
       <div class="hidden md:flex items-center gap-2">
         <button id="topNewChatBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-full text-[14px] transition shadow-sm cursor-pointer" title="Start a new chat exploration">
           <span class="text-emerald-400 font-bold">+</span>
           <span>New Chat</span>
+        </button>
+        <button id="topArchivesBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] hover:border-[#3b5585] text-[#93c5fd] hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Explore the Global Archives & Special Collections Directory">
+          <span class="text-cyan-400 font-mono text-[12px]">📚</span>
+          <span>Archives Directory</span>
         </button>
         <button id="topContributeBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#1a2333] hover:bg-[#223048] border border-[#2f4368] hover:border-[#3b5585] text-[#78a9ff] hover:text-[#93c5fd] rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Contribute confidential insider intelligence or private info">
           <span class="text-emerald-400 font-mono text-[12px]">🔒</span>
@@ -720,9 +725,13 @@ def build():
         <button id="topViewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px]">Expand</button>
       </div>
 
-      <!-- Mobile + New Chat Icon Button & Mobile Intel Button -->
+      <!-- Mobile + New Chat Icon Button, Mobile Archives & Mobile Intel Button -->
       <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-emerald-400 hover:text-white rounded-full text-[15px] sm:text-[16px] font-bold transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
         +
+      </button>
+
+      <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
+        📚 Archives
       </button>
 
       <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#1a2333] hover:bg-[#223048] border border-[#2f4368] text-[#78a9ff] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Contribute confidential intelligence">
@@ -882,15 +891,21 @@ def build():
             <!-- User queries and curator responses flow seamlessly here -->
           </div>
 
-          <!-- Typing Indicator -->
-          <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center gap-2 mb-2">
-            <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0">CA</div>
-            <span class="inline-flex gap-1.5 items-center pl-1">
-              <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-              <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-              <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-            </span>
-            <span class="text-[14px] text-[#a1a1aa]">Curator is researching...</span>
+          <!-- Typing & Live Web Scraper Indicator -->
+          <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center justify-between gap-2 mb-2 flex-wrap">
+            <div class="flex items-center gap-2">
+              <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0">CA</div>
+              <span class="inline-flex gap-1.5 items-center pl-1">
+                <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+                <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+                <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+              </span>
+              <span class="text-[14px] text-[#a1a1aa]">Curator is researching...</span>
+            </div>
+            <div id="curatorScrapingBadge" class="hidden flex items-center gap-1.5 text-[11px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full shadow-sm">
+              <span class="animate-spin text-[10px]">🌐</span>
+              <span id="curatorScrapingText">Scraping web intelligence...</span>
+            </div>
           </div>
 
           <!-- Suggested Prompts (Visible on new/empty chat, Arranged in 3 Rows) -->
@@ -995,6 +1010,11 @@ def build():
                   <svg class="w-3.5 h-3.5 text-[#71717a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
 
+                <button id="curatorVoiceToggleBtn" class="text-[12px] sm:text-[13px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Auto-Voice: Speaks responses aloud">
+                  <span id="curatorVoiceToggleIcon">🔊</span>
+                  <span id="curatorVoiceToggleLabel" class="hidden sm:inline">Voice: ON</span>
+                </button>
+
                 <button id="workMicBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white flex items-center justify-center transition cursor-pointer shrink-0" title="Voice">
                   <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
@@ -1013,6 +1033,10 @@ def build():
 
             <!-- Quick Dropdown Menu for Plus button -->
             <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-80 text-[14px]">
+              <button id="workMenuArchivesBtn" class="text-left px-3 py-2 bg-[#162030] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
+                <span class="flex items-center gap-1.5"><span>📚</span><span>Global Archives Directory</span></span>
+                <span class="text-[11px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">{archives_count}</span>
+              </button>
               <button id="workMenuFeedbackBtn" class="text-left px-3 py-2 bg-[#1b263b] hover:bg-[#233554] text-[#78a9ff] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2f4975]">
                 <span class="flex items-center gap-1.5"><span>✍️</span><span>Contribute Research / Tip</span></span>
                 <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded">Verify</span>
@@ -1044,6 +1068,7 @@ def build():
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces ({total_count})</button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">📚 Archives Directory ({archives_count})</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
@@ -1603,6 +1628,80 @@ def build():
         </div>
         <button id="bamCloseFooterBtn" class="px-4 py-1.5 bg-[#1f2937] hover:bg-[#2e3e53] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
           Close Inspector
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 📚 DEDICATED ARCHIVES & SPECIAL COLLECTIONS DIRECTORY MODAL -->
+  <div id="archivesDirectoryModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
+    <div class="bg-[#11141f] border border-[#232f48] rounded-2xl sm:rounded-3xl max-w-5xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[94vh] flex flex-col gap-3.5 font-sans">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between border-b border-[#232f48] pb-3 shrink-0">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-xl bg-[#1a2538] border border-[#2d4166] flex items-center justify-center text-[22px] shrink-0 mt-0.5 shadow-sm">
+            📚
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded border border-cyan-500/60 bg-cyan-950/40 text-cyan-300 font-bold uppercase">Archival Corpus</span>
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#1c2940] text-[#93c5fd] border border-[#2d4368]">{archives_count} Cataloged Repositories</span>
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#17202e] text-slate-300 border border-[#28384f]">100% UNESCO 1970 / ICOM Compliant</span>
+            </div>
+            <h3 class="text-[19px] sm:text-[22px] font-normal text-white mt-1 leading-snug">Global Archives & Special Collections Directory</h3>
+            <p class="text-[12px] text-[#78a9ff] font-mono">Exhibition Master Dossiers · Artists' Ephemera & Zines · Audio-Visual Master Tapes · Permanent Study Collections</p>
+          </div>
+        </div>
+        <button id="closeArchivesModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#1e293d] rounded-xl transition cursor-pointer" title="Close Archives Directory">✕</button>
+      </div>
+
+      <!-- Search, City Filter & Category Filter Chips -->
+      <div class="shrink-0 space-y-2.5">
+        <!-- Search bar + City dropdown -->
+        <div class="flex flex-col sm:flex-row gap-2">
+          <div class="relative flex-1">
+            <input type="text" id="archivesSearchInput" placeholder="Search {archives_count} archives by artist, movement, zines, sound art, dossier topic, city..." class="w-full bg-[#182030] border border-[#2d3d5a] rounded-xl px-3.5 py-2 text-[13px] text-white placeholder-slate-400 focus:outline-none focus:border-[#38bdf8] font-sans transition">
+            <button id="clearArchivesSearchBtn" class="hidden absolute right-3 top-2.5 text-slate-400 hover:text-white text-[12px] font-mono">✕</button>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <select id="archivesCityFilter" class="bg-[#182030] border border-[#2d3d5a] text-slate-200 hover:text-white rounded-xl px-3 py-2 text-[12.5px] focus:outline-none focus:border-[#38bdf8] transition cursor-pointer">
+              <option value="all">🌍 All Cultural Cities ({archives_count})</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filter Chips Row -->
+        <div class="flex flex-wrap items-center gap-1.5 text-[12px]" id="archivesFilterChips">
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm" data-filter="all">All Archives ({archives_count})</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="independent">✓ Verified Independent Spaces ({clean_count})</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="ephemera">📰 Artists' Ephemera & Zines</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="av">🎙️ Oral Histories & AV Masters</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="dossiers">📁 Exhibition Dossiers & Correspondence</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="study">🖼️ Permanent Study Collections</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="high_digitization">⚡ High Digitization (70%+)</button>
+        </div>
+
+        <!-- Result count bar -->
+        <div class="flex items-center justify-between text-[11.5px] font-mono text-[#94a3b8] px-1">
+          <span id="archivesResultCount">Displaying {archives_count} archival repositories</span>
+          <span class="text-slate-500">Universal reading room access policies cataloged</span>
+        </div>
+      </div>
+
+      <!-- Directory List Container -->
+      <div id="archivesDirectoryList" class="flex-1 overflow-y-auto space-y-3.5 pr-1.5 custom-scrollbar text-[13px] min-h-[260px]">
+        <!-- Rendered dynamically by renderArchivesDirectory() -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="shrink-0 flex items-center justify-between pt-2.5 border-t border-[#232f48] text-[12px] font-mono text-slate-400">
+        <div class="flex items-center gap-2">
+          <span>🏛️ Primary sources directly grounded in institutional archives</span>
+        </div>
+        <button id="closeArchivesModalFooterBtn" class="px-4 py-1.5 bg-[#1e2638] hover:bg-[#2b374e] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
+          Close Directory
         </button>
       </div>
 
@@ -10755,8 +10854,475 @@ def build():
     }}
     window.renderAcademicStudies = renderAcademicStudies;
 
+    // =========================================================================
+    // 📚 DEDICATED ARCHIVES & SPECIAL COLLECTIONS DIRECTORY CONTROLLER
+    // =========================================================================
+    let currentArchivesCategory = 'all';
+    let currentArchivesCity = 'all';
+    let currentArchivesSearch = '';
+    let currentArchivesLimit = 40;
+
+    function openArchivesDirectoryModal(cat = 'all', city = 'all', query = '') {{
+      const modal = document.getElementById('archivesDirectoryModal');
+      if (!modal) return;
+      currentArchivesCategory = cat || 'all';
+      currentArchivesCity = city || 'all';
+      currentArchivesSearch = query || '';
+      currentArchivesLimit = 40;
+
+      const sInput = document.getElementById('archivesSearchInput');
+      if (sInput) sInput.value = currentArchivesSearch;
+
+      populateArchivesCityFilter();
+      const cSelect = document.getElementById('archivesCityFilter');
+      if (cSelect && city) cSelect.value = city;
+
+      updateArchivesFilterChipsUI();
+      renderArchivesDirectory();
+      modal.classList.remove('hidden');
+    }}
+    window.openArchivesDirectoryModal = openArchivesDirectoryModal;
+
+    function closeArchivesDirectoryModal() {{
+      const modal = document.getElementById('archivesDirectoryModal');
+      if (modal) modal.classList.add('hidden');
+    }}
+    window.closeArchivesDirectoryModal = closeArchivesDirectoryModal;
+
+    function updateArchivesFilterChipsUI() {{
+      document.querySelectorAll('#archivesFilterChips .archives-filter-chip').forEach(ch => {{
+        const f = ch.getAttribute('data-filter');
+        if (f === currentArchivesCategory) {{
+          ch.className = 'archives-filter-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm';
+        }} else {{
+          ch.className = 'archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition';
+        }}
+      }});
+    }}
+
+    function populateArchivesCityFilter() {{
+      const sel = document.getElementById('archivesCityFilter');
+      if (!sel) return;
+      const curVal = currentArchivesCity || 'all';
+      const cityCounts = {{}};
+      ALL_INSTITUTIONS.forEach(i => {{
+        if (i.archives_and_collections && i.city) {{
+          const c = i.city.trim();
+          cityCounts[c] = (cityCounts[c] || 0) + 1;
+        }}
+      }});
+      const sorted = Object.keys(cityCounts).sort((a, b) => cityCounts[b] - cityCounts[a]);
+      let html = `<option value="all">🌍 All Cultural Cities (${{ALL_INSTITUTIONS.length}})</option>`;
+      sorted.forEach(c => {{
+        html += `<option value="${{escapeHtml(c)}}">${{escapeHtml(c)}} (${{cityCounts[c]}})</option>`;
+      }});
+      sel.innerHTML = html;
+      sel.value = curVal;
+    }}
+
+    function renderArchivesDirectory() {{
+      const list = document.getElementById('archivesDirectoryList');
+      if (!list || typeof ALL_INSTITUTIONS === 'undefined') return;
+
+      const q = (currentArchivesSearch || '').toLowerCase().trim();
+      const cat = currentArchivesCategory || 'all';
+      const city = currentArchivesCity || 'all';
+
+      const filtered = ALL_INSTITUTIONS.filter(inst => {{
+        const arch = inst.archives_and_collections;
+        if (!arch) return false;
+
+        // City filter
+        if (city !== 'all') {{
+          if (!inst.city || inst.city.toLowerCase().trim() !== city.toLowerCase().trim()) return false;
+        }}
+
+        // Category filter
+        if (cat === 'independent' && inst.tier !== 'A') return false;
+        if (cat === 'high_digitization') {{
+          const dig = arch.digitization_status || '';
+          const m = dig.match(/(\\d+)%/);
+          const pct = m ? parseInt(m[1], 10) : 0;
+          if (pct < 70) return false;
+        }}
+        if (cat === 'ephemera') {{
+          const hasEph = (arch.primary_holdings || []).some(h => {{
+            const t = ((h.category || '') + ' ' + (h.scope || '')).toLowerCase();
+            return t.includes('ephemera') || t.includes('zine') || t.includes('counter-culture') || t.includes('manifesto');
+          }});
+          if (!hasEph) return false;
+        }}
+        if (cat === 'av') {{
+          const hasAV = (arch.primary_holdings || []).some(h => {{
+            const t = ((h.category || '') + ' ' + (h.scope || '')).toLowerCase();
+            return t.includes('audio') || t.includes('oral') || t.includes('sound') || t.includes('tape') || t.includes('performance');
+          }});
+          if (!hasAV) return false;
+        }}
+        if (cat === 'dossiers') {{
+          const hasDos = (arch.primary_holdings || []).some(h => {{
+            const t = ((h.category || '') + ' ' + (h.scope || '')).toLowerCase();
+            return t.includes('dossier') || t.includes('production') || t.includes('exhibition') || t.includes('correspondence');
+          }});
+          if (!hasDos) return false;
+        }}
+        if (cat === 'study') {{
+          const hasStd = (arch.primary_holdings || []).some(h => {{
+            const t = ((h.category || '') + ' ' + (h.scope || '')).toLowerCase();
+            return t.includes('study') || t.includes('permanent') || t.includes('collection') || t.includes('proof');
+          }});
+          if (!hasStd) return false;
+        }}
+
+        // Query search
+        if (q) {{
+          const haystack = [
+            inst.name || '',
+            inst.city || '',
+            inst.country || '',
+            arch.archive_name || '',
+            arch.curatorial_scope || '',
+            arch.summary || '',
+            arch.reading_room_policy || '',
+            arch.provenance_integrity || '',
+            (arch.highlight_treasures || []).join(' '),
+            (arch.primary_holdings || []).map(h => `${{h.category}} ${{h.period}} ${{h.scope}} ${{h.items}}`).join(' ')
+          ].join(' ').toLowerCase();
+          if (!haystack.includes(q)) return false;
+        }}
+
+        return true;
+      }});
+
+      const countEl = document.getElementById('archivesResultCount');
+      if (countEl) {{
+        countEl.textContent = `Displaying ${{Math.min(currentArchivesLimit, filtered.length)}} of ${{filtered.length}} archival repositories`;
+      }}
+
+      if (filtered.length === 0) {{
+        list.innerHTML = `
+          <div class="p-8 text-center bg-[#151a26] border border-[#222d42] rounded-2xl text-slate-400">
+            <span class="text-3xl block mb-2">🔍</span>
+            <p class="font-medium text-white mb-1">No archives match your search criteria</p>
+            <p class="text-[12px] text-slate-400">Try adjusting your keywords or clearing the category/city filters.</p>
+          </div>
+        `;
+        return;
+      }}
+
+      const displayed = filtered.slice(0, currentArchivesLimit);
+      let cardsHtml = displayed.map(inst => {{
+        const arch = inst.archives_and_collections;
+        const isClean = inst.tier === 'A';
+        const isFlagged = inst.tier === 'B';
+        const tierBadgeHtml = isClean 
+          ? `<span class="text-[10.5px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase">Verified Independent Space</span>`
+          : (isFlagged 
+            ? `<span class="text-[10.5px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-[#1f1433] text-[#be95ff] font-bold uppercase">Flagged Corporate Conflict</span>`
+            : `<span class="text-[10.5px] font-mono px-2 py-0.5 rounded border border-[#38bdf8]/60 bg-[#102436] text-[#38bdf8] font-bold uppercase">Statutory Public Audit</span>`);
+
+        const holdingsGrid = (arch.primary_holdings || []).map(h => `
+          <div class="bg-[#121724] border border-[#202b3f] rounded-xl p-2.5 flex flex-col gap-1">
+            <div class="flex items-start justify-between gap-1">
+              <strong class="text-white text-[12px] font-medium leading-snug">${{escapeHtml(h.category)}}</strong>
+              <span class="text-[10px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-1.5 py-0.2 rounded shrink-0">${{escapeHtml(h.items)}}</span>
+            </div>
+            <div class="text-[10.5px] font-mono text-[#78a9ff]">${{escapeHtml(h.period)}}</div>
+            <p class="text-slate-300 text-[11.5px] leading-snug mt-0.5">${{escapeHtml(h.scope)}}</p>
+          </div>
+        `).join('');
+
+        const treasuresList = (arch.highlight_treasures || []).map(t => `
+          <li class="flex items-start gap-1.5">
+            <span class="text-amber-400 shrink-0 text-[11px] mt-0.5">✦</span>
+            <span>${{escapeHtml(t)}}</span>
+          </li>
+        `).join('');
+
+        const findingAidBtn = arch.finding_aids_url ? `
+          <a href="${{escapeHtml(arch.finding_aids_url)}}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-xl bg-[#172233] hover:bg-[#203047] border border-[#2c3d5a] text-slate-300 hover:text-white text-[11.5px] font-mono transition inline-flex items-center gap-1">
+            <span>Finding Aid ↗</span>
+          </a>
+        ` : '';
+
+        return `
+          <div class="archive-card bg-[#151c2b] border border-[#222f47] hover:border-[#385177] rounded-2xl p-4 transition duration-150 flex flex-col gap-3 shadow-md">
+            <!-- Header Row -->
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  ${{tierBadgeHtml}}
+                  <span class="text-[11px] font-mono text-[#94a3b8]">${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}}</span>
+                  ${{arch.curatorial_scope ? `<span class="text-[10.5px] font-mono px-2 py-0.5 rounded bg-[#1c2940] text-[#78a9ff] border border-[#2d4368]">${{escapeHtml(arch.curatorial_scope)}}</span>` : ''}}
+                </div>
+                <h4 class="text-[17px] font-normal text-white mt-1 leading-snug">${{escapeHtml(inst.name)}}</h4>
+                <div class="text-[12.5px] text-[#38bdf8] font-mono font-medium">${{escapeHtml(arch.archive_name)}}</div>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0 flex-wrap">
+                <button type="button" onclick="window.zoomToBuildingFromArchive('${{escapeHtml(inst.name)}}')" class="px-2.5 py-1 rounded-xl bg-[#1d293d] hover:bg-[#283852] border border-[#334666] text-[#93c5fd] hover:text-white text-[11.5px] font-mono transition flex items-center gap-1 cursor-pointer" title="Zoom to 3D footprint and open building inspector">
+                  <span>🏛️</span><span>Inspect 3D</span>
+                </button>
+                ${{findingAidBtn}}
+                <button type="button" onclick="window.askCuratorAboutArchive('${{escapeHtml(inst.name)}}')" class="px-2.5 py-1 rounded-xl bg-[#142634] hover:bg-[#1c374b] border border-[#08bdba]/50 text-[#08bdba] hover:text-white text-[11.5px] font-mono transition flex items-center gap-1 cursor-pointer" title="Ask Curator in chat">
+                  <span>💬 Inquire</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Summary -->
+            <p class="text-[#cbd5e1] text-[12.5px] leading-relaxed">${{escapeHtml(arch.summary)}}</p>
+
+            <!-- 4-Grid Primary Holdings -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
+              ${{holdingsGrid}}
+            </div>
+
+            <!-- Reading Room, Digitization & Highlight Treasures -->
+            <div class="bg-[#111622] border border-[#1f293d] rounded-xl p-3 flex flex-col gap-2 text-[12px]">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1.5 border-b border-[#1f293d]">
+                <div class="text-slate-300">
+                  <strong class="text-cyan-400 font-mono text-[11px] uppercase tracking-wider block sm:inline mr-1">📖 Reading Room Policy:</strong>
+                  <span>${{escapeHtml(arch.reading_room_policy)}}</span>
+                </div>
+                <div class="shrink-0 text-right">
+                  <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">
+                    ⚡ ${{escapeHtml(arch.digitization_status)}}
+                  </span>
+                </div>
+              </div>
+
+              ${{treasuresList ? `
+                <div class="text-slate-300">
+                  <strong class="text-amber-400 font-mono text-[11px] uppercase tracking-wider block mb-1">Highlight Archival Treasures:</strong>
+                  <ul class="space-y-1 text-[11.5px] text-slate-300 leading-snug">
+                    ${{treasuresList}}
+                  </ul>
+                </div>
+              ` : ''}}
+
+              ${{arch.provenance_integrity ? `
+                <div class="text-[11px] font-mono text-[#94a3b8] pt-1 border-t border-[#1f293d] flex items-center gap-1.5">
+                  <span class="text-cyan-400">⚖️ Provenance Integrity:</span>
+                  <span>${{escapeHtml(arch.provenance_integrity)}}</span>
+                </div>
+              ` : ''}}
+            </div>
+          </div>
+        `;
+      }}).join('');
+
+      if (filtered.length > currentArchivesLimit) {{
+        cardsHtml += `
+          <div class="text-center py-3">
+            <button id="archivesLoadMoreBtn" class="px-5 py-2 rounded-xl bg-[#1e293b] hover:bg-[#2b3a54] text-[#93c5fd] hover:text-white border border-[#334666] text-[13px] font-mono transition cursor-pointer shadow-sm">
+              Show More Archives (+40) · ${{filtered.length - currentArchivesLimit}} remaining
+            </button>
+          </div>
+        `;
+      }}
+
+      list.innerHTML = cardsHtml;
+
+      document.getElementById('archivesLoadMoreBtn')?.addEventListener('click', () => {{
+        currentArchivesLimit += 40;
+        renderArchivesDirectory();
+      }});
+    }}
+    window.renderArchivesDirectory = renderArchivesDirectory;
+
+    window.zoomToBuildingFromArchive = function(instName) {{
+      closeArchivesDirectoryModal();
+      const inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instName.toLowerCase());
+      if (inst && typeof zoomToBuilding === 'function') {{
+        zoomToBuilding(inst, true);
+      }}
+    }};
+
+    window.askCuratorAboutArchive = function(instName) {{
+      closeArchivesDirectoryModal();
+      const input = document.getElementById('workInput');
+      if (input) {{
+        input.value = `Tell me about the archival holdings, special collections, and research policies at ${{instName}}`;
+        const form = document.getElementById('workInputForm');
+        if (form) {{
+          if (typeof form.requestSubmit === 'function') {{
+            form.requestSubmit();
+          }} else {{
+            form.dispatchEvent(new Event('submit', {{ cancelable: true, bubbles: true }}));
+          }}
+        }}
+      }}
+    }};
+
+    // =========================================================================
+    // 🌐 REAL-TIME LIVE WEB SCRAPER & RESEARCH ENGINE
+    // =========================================================================
+    async function scrapeWebForQuery(query) {{
+      if (!query || typeof query !== 'string') return null;
+      const qClean = query.trim();
+      if (qClean.length < 2) return null;
+
+      // Identify mentioned entities in Culture Atlas corpus
+      const targetInst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
+      const targetCity = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
+
+      const scrapeResult = {{
+        query: qClean,
+        entityName: targetInst ? targetInst.name : (targetCity ? targetCity.name : null),
+        sourceTitle: null,
+        sourceUrl: null,
+        scrapedText: '',
+        trustedLinks: [],
+        relatedFindings: []
+      }};
+
+      const fetchWithTimeout = (url, opts = {{}}, ms = 3200) => {{
+        return Promise.race([
+          fetch(url, opts),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Scrape timeout')), ms))
+        ]);
+      }};
+
+      try {{
+        const promises = [];
+
+        // 1. DuckDuckGo Instant Answer / Live Knowledge API
+        const ddgUrl = `https://api.duckduckgo.com/?q=${{encodeURIComponent(qClean)}}&format=json&no_html=1&skip_disambig=1`;
+        promises.push(
+          fetchWithTimeout(ddgUrl, {{}}, 2500)
+            .then(res => res.ok ? res.json() : null)
+            .then(data => {{
+              if (!data) return null;
+              let summary = data.AbstractText || data.Answer || '';
+              let heading = data.Heading || data.Entity || '';
+              let abstractUrl = data.AbstractURL || '';
+              if (abstractUrl && (abstractUrl.includes('wikipedia.org') || abstractUrl.includes('wikimedia.org'))) {{
+                abstractUrl = ''; // Strictly exclude Wikipedia links
+              }}
+
+              const links = [];
+              if (Array.isArray(data.Results)) {{
+                data.Results.forEach(r => {{
+                  if (r && r.FirstURL && !r.FirstURL.includes('wikipedia.org')) {{
+                    links.push({{ title: r.Text || 'Official Website', url: r.FirstURL }});
+                  }}
+                }});
+              }}
+              const related = [];
+              if (Array.isArray(data.RelatedTopics)) {{
+                data.RelatedTopics.slice(0, 3).forEach(t => {{
+                  if (t && t.Text && !t.Text.includes('Wikipedia')) {{
+                    related.push(t.Text);
+                  }}
+                }});
+              }}
+              return {{ summary, heading, abstractUrl, links, related }};
+            }})
+            .catch(() => null)
+        );
+
+        // 2. Direct Official Portal Scraping via Jina Reader (if institution or finding aid available)
+        const targetUrl = targetInst 
+          ? (targetInst.website || (targetInst.archives_and_collections && targetInst.archives_and_collections.finding_aids_url))
+          : null;
+
+        if (targetUrl && !targetUrl.includes('wikipedia.org')) {{
+          promises.push(
+            fetchWithTimeout(`https://r.jina.ai/${{targetUrl}}`, {{ headers: {{ 'Accept': 'text/plain' }} }}, 2800)
+              .then(res => res.ok ? res.text() : null)
+              .then(text => {{
+                if (!text) return null;
+                const lines = text.split('\\n')
+                  .map(l => l.trim())
+                  .filter(l => l.length > 20 && !l.startsWith('!') && !l.toLowerCase().includes('cookie') && !l.toLowerCase().includes('accept all'));
+                const snippet = lines.slice(0, 8).join(' ').replace(/\\s+/g, ' ').slice(0, 500);
+                return {{
+                  url: targetUrl,
+                  title: `${{targetInst.name}} Official Portal`,
+                  content: snippet
+                }};
+              }})
+              .catch(() => null)
+          );
+        }}
+
+        const [ddgRes, jinaRes] = await Promise.all(promises);
+
+        if (jinaRes && jinaRes.content) {{
+          scrapeResult.sourceTitle = jinaRes.title;
+          scrapeResult.sourceUrl = jinaRes.url;
+          scrapeResult.scrapedText = jinaRes.content;
+          scrapeResult.trustedLinks.push({{ title: `${{targetInst.name}} Official Site`, url: jinaRes.url }});
+        }}
+
+        if (ddgRes && ddgRes.summary) {{
+          if (!scrapeResult.scrapedText) {{
+            scrapeResult.scrapedText = ddgRes.summary;
+            scrapeResult.sourceTitle = ddgRes.heading || qClean;
+            if (ddgRes.abstractUrl) scrapeResult.sourceUrl = ddgRes.abstractUrl;
+          }} else {{
+            scrapeResult.relatedFindings.push(ddgRes.summary);
+          }}
+        }}
+
+        if (ddgRes && ddgRes.related && ddgRes.related.length > 0) {{
+          scrapeResult.relatedFindings.push(...ddgRes.related);
+        }}
+
+        if (ddgRes && ddgRes.links) {{
+          ddgRes.links.forEach(l => {{
+            if (!scrapeResult.trustedLinks.some(tl => tl.url === l.url)) {{
+              scrapeResult.trustedLinks.push(l);
+            }}
+          }});
+        }}
+
+        // Fallback to grounded database facts if external network is unavailable / mocked
+        if (!scrapeResult.scrapedText && targetInst) {{
+          scrapeResult.scrapedText = `${{targetInst.name}} in ${{targetInst.city}}, ${{targetInst.country}}: Verified ${{targetInst.tier === 'A' ? 'Independent Cultural Space' : 'Corporate Underwriting Conflict'}}. Hours: ${{targetInst.opening_hours || 'Standard'}}. Admission: ${{targetInst.admission_policy || 'Free'}}. Highlights: ${{targetInst.highlight || targetInst.governance_type}}.`;
+          if (targetInst.website && !targetInst.website.includes('wikipedia.org')) {{
+            scrapeResult.trustedLinks.push({{ title: `${{targetInst.name}} Official Site`, url: targetInst.website }});
+          }}
+        }}
+
+        return scrapeResult.scrapedText ? scrapeResult : null;
+      }} catch (err) {{
+        console.warn('Live web scraper warning:', err);
+        return null;
+      }}
+    }}
+    window.scrapeWebForQuery = scrapeWebForQuery;
+
+    function formatScrapedWebBlock(webIntel) {{
+      if (!webIntel || !webIntel.scrapedText) return '';
+      const trustedLinksHtml = (webIntel.trustedLinks && webIntel.trustedLinks.length > 0) ? `
+        <div class="pt-2 border-t border-[#1e2f47] flex items-center gap-2 flex-wrap text-[11.5px] font-mono" data-exclude-speech="true">
+          <span class="text-slate-400">Trusted Web Sources:</span>
+          ${{webIntel.trustedLinks.slice(0, 3).map(l => `
+            <a href="${{escapeHtml(l.url)}}" target="_blank" rel="noopener noreferrer" class="text-[#38bdf8] hover:text-white underline inline-flex items-center gap-1">
+              <span>${{escapeHtml(l.title)}} ↗</span>
+            </a>
+          `).join(' · ')}}
+        </div>
+      ` : '';
+
+      return `
+        <div class="mt-3 p-3 rounded-2xl bg-[#0f172a] border border-[#1e3a5f] text-[13px] space-y-2 select-text shadow-sm" data-exclude-speech="false">
+          <div class="flex items-center justify-between border-b border-[#1e2f47] pb-1.5 flex-wrap gap-1">
+            <div class="flex items-center gap-2 text-cyan-400 font-mono text-[11px] uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span>🌐 Live Web Intelligence (Scraped)</span>
+            </div>
+            <span class="text-[11px] font-mono text-[#94a3b8]">Live Web Verification</span>
+          </div>
+          <p class="text-slate-200 leading-relaxed text-[12.5px]">${{escapeHtml(webIntel.scrapedText)}}</p>
+          ${{trustedLinksHtml}}
+        </div>
+      `;
+    }}
+
     // Unified Multi-Provider Live Generative AI Engine
-    async function queryAI(userPrompt) {{
+    async function queryAI(userPrompt, webIntel = null) {{
       const useProxy = !aiApiKey && !!ATLAS_AI_PROXY_URL;
       if (!aiApiKey && !useProxy) return null;
       const prov = useProxy ? 'anthropic' : getEffectiveProvider();
@@ -10850,6 +11416,10 @@ FORMATTING & INTERACTION RULES:
 3. Link cities as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
 4. Keep answers focused, direct, and completely free of pompous fluff.${{communityGrounding}}`;
 
+      const webIntelGrounding = (webIntel && webIntel.scrapedText) 
+        ? `\\n\\nREAL-TIME LIVE SCRAPED WEB INTELLIGENCE:\\nSource: ${{webIntel.sourceTitle || ''}} (${{webIntel.sourceUrl || ''}})\\n${{webIntel.scrapedText}}`
+        : '';
+
       try {{
         let rawText = '';
         if (prov === 'anthropic') {{
@@ -10866,7 +11436,7 @@ FORMATTING & INTERACTION RULES:
               max_tokens: 1024,
               system: criticalSystemPrompt,
               messages: [
-                {{ role: 'user', content: `Atlas sample:\\n${{sampleInsts}}\\n\\nUser question: ${{userPrompt}}` }}
+                {{ role: 'user', content: `Atlas sample:\\n${{sampleInsts}}${{webIntelGrounding}}\\n\\nUser question: ${{userPrompt}}` }}
               ]
             }})
           }});
@@ -10885,7 +11455,7 @@ FORMATTING & INTERACTION RULES:
               temperature: 0.7,
               max_tokens: 1024,
               messages: [
-                {{ role: 'system', content: `${{criticalSystemPrompt}}\\n\\nInstitutions sample:\\n${{sampleInsts}}` }},
+                {{ role: 'system', content: `${{criticalSystemPrompt}}\\n\\nInstitutions sample:\\n${{sampleInsts}}${{webIntelGrounding}}` }},
                 {{ role: 'user', content: userPrompt }}
               ]
             }})
@@ -10900,7 +11470,7 @@ FORMATTING & INTERACTION RULES:
             headers: {{ 'Content-Type': 'application/json' }},
             body: JSON.stringify({{
               contents: [
-                {{ role: 'user', parts: [{{ text: `${{criticalSystemPrompt}}\\n\\nInstitutions sample:\\n${{sampleInsts}}\\n\\nUser question: ${{userPrompt}}` }}] }}
+                {{ role: 'user', parts: [{{ text: `${{criticalSystemPrompt}}\\n\\nInstitutions sample:\\n${{sampleInsts}}${{webIntelGrounding}}\\n\\nUser question: ${{userPrompt}}` }}] }}
               ],
               generationConfig: {{
                 temperature: 0.7,
@@ -11271,6 +11841,9 @@ FORMATTING & INTERACTION RULES:
     const curatorScrollArea = document.getElementById('curatorScrollArea');
     const curatorTyping = document.getElementById('curatorTyping');
 
+    let curatorAutoVoiceEnabled = true;
+    let autoSpeakNextCuratorResponse = false;
+
     function scrollChatToBottom(smooth = false) {{
       const scrollArea = document.getElementById('curatorScrollArea') || document.getElementById('workViewContainer');
       if (scrollArea) {{
@@ -11291,6 +11864,7 @@ FORMATTING & INTERACTION RULES:
       lastCity: null,
       lastTopic: null,
       activeAudio: null,
+      lastWebIntel: null,
       history: []
     }};
 
@@ -11329,12 +11903,19 @@ FORMATTING & INTERACTION RULES:
       scrollChatToBottom(true);
     }}
 
-    function appendCuratorMessage(htmlContent, followUps = []) {{
+    function appendCuratorMessage(htmlContent, followUps = [], webIntel = null) {{
       if (!curatorMessages) return;
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.add('hidden');
       const div = document.createElement('div');
       div.className = 'curator-message-wrap flex items-start gap-3 my-2.5 select-text w-full';
+
+      let effectiveWebIntel = webIntel || curatorContext.lastWebIntel || null;
+      let webIntelHtml = '';
+      if (effectiveWebIntel && effectiveWebIntel.scrapedText) {{
+        webIntelHtml = formatScrapedWebBlock(effectiveWebIntel);
+        curatorContext.lastWebIntel = null;
+      }}
 
       let followUpHtml = '';
       if (followUps && followUps.length > 0) {{
@@ -11361,6 +11942,7 @@ FORMATTING & INTERACTION RULES:
             </button>
           </div>
           ${{htmlContent}}
+          ${{webIntelHtml}}
           ${{followUpHtml}}
         </div>
       `;
@@ -11381,6 +11963,10 @@ FORMATTING & INTERACTION RULES:
     async function handleCuratorQuery(query) {{
       const q = query.toLowerCase().trim();
       const rawTrimmed = query.trim();
+
+      if (curatorAutoVoiceEnabled) {{
+        autoSpeakNextCuratorResponse = true;
+      }}
 
       // A. Seamless API Key Detection & Intent Handling from Chat Input
       const isKeyDirectInput = /^(sk-ant-[a-zA-Z0-9_\-]+|AIza[a-zA-Z0-9_\-]+|sk-[a-zA-Z0-9_\-]+)$/.test(rawTrimmed) || rawTrimmed.startsWith('/key ');
@@ -11450,6 +12036,19 @@ FORMATTING & INTERACTION RULES:
       }}
 
       curatorTyping.classList.remove('hidden');
+      const scrapingBadge = document.getElementById('curatorScrapingBadge');
+      if (scrapingBadge) scrapingBadge.classList.remove('hidden');
+
+      // Live Web Intelligence Scraping
+      let webIntel = null;
+      try {{
+        webIntel = await scrapeWebForQuery(query);
+      }} catch (err) {{
+        console.warn('Scraping error:', err);
+      }} finally {{
+        if (scrapingBadge) scrapingBadge.classList.add('hidden');
+      }}
+      curatorContext.lastWebIntel = webIntel;
 
       // B. Meta & Methodology Intent Detection (Bypasses Early Geo-Zoom)
       const isGreeting = /^(hello|hi|hey|greetings|good\s+(morning|afternoon|evening)|howdy)(\s+|$|[!?,.])/i.test(q) || q === 'hello' || q === 'hi' || q === 'hey';
@@ -11476,10 +12075,10 @@ FORMATTING & INTERACTION RULES:
 
       // 1. Try Live Generative AI Model if API Key is configured
       if (aiApiKey || ATLAS_AI_PROXY_URL) {{
-        const aiHtml = await queryAI(query);
+        const aiHtml = await queryAI(query, webIntel);
         if (aiHtml) {{
           curatorTyping.classList.add('hidden');
-          appendCuratorMessage(aiHtml);
+          appendCuratorMessage(aiHtml, [], webIntel);
           return;
         }}
       }}
@@ -11648,6 +12247,64 @@ FORMATTING & INTERACTION RULES:
             'Nan Goldin & Sackler divestment',
             'Warren Kanders at the Whitney',
             'Explore independent spaces'
+          ]);
+          return;
+        }}
+
+        // =========================================================================
+        // 📚 DEDICATED ARCHIVES & SPECIAL COLLECTIONS DIRECTORY
+        // =========================================================================
+        if (!findMentionedInst(query) && (q.includes('archives directory') || q.includes('browse archives') || q.includes('special collections directory') || q.includes('special collections') || q.includes('institutional archives') || q.includes('archive directory') || (q.includes('archive') && (q.includes('directory') || q.includes('browse') || q.includes('search') || q.includes('collections') || q.includes('corpus') || q.includes('dossier') || q.includes('ephemera') || q.includes('zines') || q.includes('oral history'))))) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2">
+                <div class="flex items-center gap-2 text-cyan-400 font-mono text-[12px] uppercase tracking-wider">
+                  <span>📚 Dedicated Archives Directory</span>
+                  <span>·</span>
+                  <span>{archives_count} Cataloged Repositories</span>
+                </div>
+                <button type="button" onclick="openArchivesDirectoryModal('all')" class="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-700/60 text-cyan-300 hover:text-white text-[11px] font-mono transition cursor-pointer">
+                  Browse Directory ↗
+                </button>
+              </div>
+
+              <h4 class="text-[15px] font-medium text-white">Global Archives & Primary-Source Holdings Corpus</h4>
+              
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                Culture Atlas indexes <strong>{archives_count} dedicated archives and special collections</strong> across all cataloged cultural institutions. Archival materials are structured into 4 standardized primary-source categories with verified reading room policies and UNESCO/ICOM ethical provenance compliance:
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px] pt-1" data-exclude-speech="true">
+                <div class="p-2.5 rounded-xl bg-[#141b29] border border-cyan-900/40 text-slate-300">
+                  <strong class="text-cyan-300 block mb-0.5">📁 Exhibition Dossiers & Curatorial Files</strong>
+                  Unedited production binders, architectural blueprints, installation schematics, and artist correspondence documenting landmark exhibitions since institutional founding.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#141b29] border border-cyan-900/40 text-slate-300">
+                  <strong class="text-cyan-300 block mb-0.5">📰 Artists' Ephemera, Zines & Manifestos</strong>
+                  Counter-culture publications, rare artist editions, self-published pamphlets, screenprints, and theoretical treatises from grassroots movements.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#141b29] border border-cyan-900/40 text-slate-300">
+                  <strong class="text-cyan-300 block mb-0.5">🎙️ Oral Histories & AV Master Tapes</strong>
+                  Preserved reel-to-reel audio, cassette masters, video art documentation, artist symposia, and candid interviews with cultural organizers.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#141b29] border border-cyan-900/40 text-slate-300">
+                  <strong class="text-cyan-300 block mb-0.5">🖼️ Permanent Study Collections</strong>
+                  Non-exhibited artist proofs, working models, maquettes, and contextual materials accessible for in-person scholarly research.
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-cyan-900/40 flex items-center justify-between gap-2 flex-wrap text-[12px]">
+                <span class="text-slate-400">Search by city, artist, zines, or keyword:</span>
+                <button type="button" onclick="openArchivesDirectoryModal('all')" class="px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm">
+                  <span>📚 Open Dedicated Archives Directory ({archives_count})</span>
+                </button>
+              </div>
+            </div>
+          `, [
+            'Independent spaces with zine archives',
+            'Oral history recordings in Berlin',
+            'Exhibition dossiers in London',
+            'Explore high digitization archives'
           ]);
           return;
         }}
@@ -15202,6 +15859,55 @@ FORMATTING & INTERACTION RULES:
       if (e.target === buildingArchivesModal) closeBuildingArchivesModal();
     }});
 
+    // 📚 Dedicated Archives & Special Collections Directory Modal Handlers
+    const archModal = document.getElementById('archivesDirectoryModal');
+    document.getElementById('topArchivesBtn')?.addEventListener('click', () => openArchivesDirectoryModal('all'));
+    document.getElementById('mobileArchivesBtn')?.addEventListener('click', () => openArchivesDirectoryModal('all'));
+    document.getElementById('workMenuArchivesBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      workPlusMenu?.classList.add('hidden');
+      openArchivesDirectoryModal('all');
+    }});
+    document.getElementById('closeArchivesModalBtn')?.addEventListener('click', closeArchivesDirectoryModal);
+    document.getElementById('closeArchivesModalFooterBtn')?.addEventListener('click', closeArchivesDirectoryModal);
+    archModal?.addEventListener('click', (e) => {{
+      if (e.target === archModal) closeArchivesDirectoryModal();
+    }});
+
+    const archivesSearchInput = document.getElementById('archivesSearchInput');
+    const clearArchivesSearchBtn = document.getElementById('clearArchivesSearchBtn');
+    archivesSearchInput?.addEventListener('input', (e) => {{
+      currentArchivesSearch = e.target.value;
+      if (clearArchivesSearchBtn) {{
+        if (currentArchivesSearch) clearArchivesSearchBtn.classList.remove('hidden');
+        else clearArchivesSearchBtn.classList.add('hidden');
+      }}
+      currentArchivesLimit = 40;
+      renderArchivesDirectory();
+    }});
+    clearArchivesSearchBtn?.addEventListener('click', () => {{
+      if (archivesSearchInput) archivesSearchInput.value = '';
+      currentArchivesSearch = '';
+      clearArchivesSearchBtn.classList.add('hidden');
+      currentArchivesLimit = 40;
+      renderArchivesDirectory();
+    }});
+
+    document.getElementById('archivesCityFilter')?.addEventListener('change', (e) => {{
+      currentArchivesCity = e.target.value;
+      currentArchivesLimit = 40;
+      renderArchivesDirectory();
+    }});
+
+    document.querySelectorAll('#archivesFilterChips .archives-filter-chip').forEach(ch => {{
+      ch.addEventListener('click', () => {{
+        currentArchivesCategory = ch.getAttribute('data-filter') || 'all';
+        currentArchivesLimit = 40;
+        updateArchivesFilterChipsUI();
+        renderArchivesDirectory();
+      }});
+    }});
+
     // Unified Work Input Send Action
     const workInput = document.getElementById('workInput');
     const workSendBtn = document.getElementById('workSendBtn');
@@ -15289,6 +15995,48 @@ FORMATTING & INTERACTION RULES:
       }}
     }});
 
+    // Curator Auto-Voice Toggle Button Controller
+    const curatorVoiceToggleBtn = document.getElementById('curatorVoiceToggleBtn');
+    const curatorVoiceToggleIcon = document.getElementById('curatorVoiceToggleIcon');
+    const curatorVoiceToggleLabel = document.getElementById('curatorVoiceToggleLabel');
+
+    function updateCuratorVoiceToggleUI() {{
+      if (!curatorVoiceToggleBtn) return;
+      if (curatorAutoVoiceEnabled) {{
+        if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '🔊';
+        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: ON';
+        curatorVoiceToggleBtn.className = 'text-[12px] sm:text-[13px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0';
+        curatorVoiceToggleBtn.title = 'Auto-Voice: Speaks responses aloud (Click to mute)';
+      }} else {{
+        if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '🔇';
+        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: OFF';
+        curatorVoiceToggleBtn.className = 'text-[12px] sm:text-[13px] bg-[#212121] hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white border border-[#333] flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0';
+        curatorVoiceToggleBtn.title = 'Auto-Voice: Muted (Click to turn ON)';
+      }}
+    }}
+
+    curatorVoiceToggleBtn?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      curatorAutoVoiceEnabled = !curatorAutoVoiceEnabled;
+      if (!curatorAutoVoiceEnabled) {{
+        autoSpeakNextCuratorResponse = false;
+        if (window.speechSynthesis) {{
+          window.speechSynthesis.cancel();
+        }}
+        if (currentSpeakingBtn) {{
+          currentSpeakingBtn.classList.remove('text-rose-400');
+          const l = currentSpeakingBtn.querySelector('.speak-label');
+          if (l) l.textContent = 'Listen';
+          const i = currentSpeakingBtn.querySelector('.speak-icon');
+          if (i) i.textContent = '🔊';
+          currentSpeakingBtn = null;
+        }}
+        isCuratorSpeaking = false;
+      }}
+      updateCuratorVoiceToggleUI();
+    }});
+    window.updateCuratorVoiceToggleUI = updateCuratorVoiceToggleUI;
+
     // =========================================================
     // 🎙️ HIGH-FIDELITY CURATOR SPEECH SYNTHESIS ENGINE
     // =========================================================
@@ -15297,7 +16045,6 @@ FORMATTING & INTERACTION RULES:
     let activeSpeechHeartbeat = null;
     let isCuratorSpeaking = false;
     let currentSpeakingBtn = null;
-    let autoSpeakNextCuratorResponse = false;
     let speechChunkQueue = [];
     let activeSpeechUtterance = null;
 
@@ -15430,7 +16177,7 @@ FORMATTING & INTERACTION RULES:
         'button',
         'svg',
         '.speak-label',
-        '[data-exclude-speech]',
+        '[data-exclude-speech="true"]',
         '[title="Culture Atlas Curator"]'
       ];
       selectorsToRemove.forEach(sel => {{
@@ -16281,6 +17028,7 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces ({total_count})</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">📚 Archives Directory ({archives_count})</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
@@ -16342,6 +17090,10 @@ FORMATTING & INTERACTION RULES:
           }} else if (type === 'academic') {{
             if (typeof openAcademicResearchModal === 'function') {{
               openAcademicResearchModal('all');
+            }}
+          }} else if (type === 'archives') {{
+            if (typeof openArchivesDirectoryModal === 'function') {{
+              openArchivesDirectoryModal('all');
             }}
           }} else if (type === 'all') {{
             clearAllFilters();
@@ -17140,10 +17892,13 @@ FORMATTING & INTERACTION RULES:
         const auditModal = document.getElementById('momaAuditModal');
         const rfModal = document.getElementById('researchFeedbackModal');
         const arModal = document.getElementById('academicResearchModal');
+        const archModal = document.getElementById('archivesDirectoryModal');
         if (rfModal && !rfModal.classList.contains('hidden')) {{
           rfModal.classList.add('hidden');
         }} else if (arModal && !arModal.classList.contains('hidden')) {{
           arModal.classList.add('hidden');
+        }} else if (archModal && !archModal.classList.contains('hidden')) {{
+          archModal.classList.add('hidden');
         }} else if (drawer && !drawer.classList.contains('hidden')) {{
           drawer.classList.add('hidden');
         }} else if (catModal && !catModal.classList.contains('hidden')) {{

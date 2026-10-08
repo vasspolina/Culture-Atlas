@@ -247,6 +247,45 @@ const runAllTests = async () => {
         const confTxt = confBody ? confBody.textContent : '';
         assert('Confidential intake guidance prompts for private internal info', confTxt.includes('private or internal information') && confTxt.includes('not publicly available'));
 
+        // =========================================================================
+        // 5. DEDICATED ARCHIVES & SPECIAL COLLECTIONS DIRECTORY
+        // =========================================================================
+        const archModal = document.getElementById('archivesDirectoryModal');
+        const topArchBtn = document.getElementById('topArchivesBtn');
+        const mobileArchBtn = document.getElementById('mobileArchivesBtn');
+        const workMenuArchBtn = document.getElementById('workMenuArchivesBtn');
+        const globeArchPill = document.querySelector('.globe-filter-pill[data-type="archives"]');
+
+        assert('Archives Directory Modal exists', !!archModal);
+        assert('Top Archives button exists', !!topArchBtn);
+        assert('Mobile Archives button exists', !!mobileArchBtn);
+        assert('Work Menu Archives button exists', !!workMenuArchBtn);
+        assert('Globe Bar Archives filter pill exists', !!globeArchPill);
+
+        // Open Archives Directory Modal
+        window.openArchivesDirectoryModal('all');
+        assert('Archives Modal opens and unhides', !archModal.classList.contains('hidden'));
+
+        const archList = document.getElementById('archivesDirectoryList');
+        const archCards = archList ? archList.querySelectorAll('.archive-card') : [];
+        assert('Archives Directory renders catalog cards', archCards.length > 0, `Rendered: ${archCards.length}`);
+
+        const firstCardText = archCards[0] ? archCards[0].textContent : '';
+        assert('Archives Card contains reading room policy and holdings', firstCardText.includes('Reading Room Policy') && (firstCardText.includes('Dossiers') || firstCardText.includes('Ephemera') || firstCardText.includes('Audio') || firstCardText.includes('Holdings')));
+
+        // Test search filter
+        const sInput = document.getElementById('archivesSearchInput');
+        if (sInput) {
+          sInput.value = 'zines';
+          sInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        const filteredArchCards = archList ? archList.querySelectorAll('.archive-card') : [];
+        assert('Archives search filters by keyword', filteredArchCards.length > 0 && filteredArchCards.length <= archCards.length);
+
+        // Test Curator Archives Query handler
+        const archResMsg = await queryCurator('Show me the archives directory and special collections');
+        assert('Curator responds to archives directory query', archResMsg.includes('Dedicated Archives Directory'));
+
 
       } catch (err) {
         assert('JavaScript Execution Exception', false, err.stack || err.toString());

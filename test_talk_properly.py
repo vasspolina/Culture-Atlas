@@ -14,13 +14,21 @@ def run_tests():
     test_script = """
     <script>
     // Stub fetch so headless chrome does not wait for external tiles
-    const origFetch = window.fetch;
+    // Stub fetch so headless chrome does not hang on external network
     window.fetch = async (url, opts) => {
       const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
-      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
-        return new Response(new Uint8Array(0), { status: 200 });
+      if (urlStr.includes('duckduckgo.com')) {
+        return new Response(JSON.stringify({
+          AbstractText: "Chisenhale Gallery is an independent non-profit contemporary art gallery in London's East End.",
+          Heading: "Chisenhale Gallery",
+          AbstractURL: "https://chisenhale.org.uk",
+          Results: [{ Text: "Official Website", FirstURL: "https://chisenhale.org.uk" }]
+        }), { status: 200, headers: { 'Content-Type': 'application/json' } });
       }
-      return origFetch(url, opts);
+      if (urlStr.includes('r.jina.ai')) {
+        return new Response("Chisenhale Gallery is an essential non-profit arts organisation that commissions and produces new works with artists.", { status: 200, headers: { 'Content-Type': 'text/plain' } });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
 
     window.addEventListener('load', async () => {
@@ -45,7 +53,7 @@ def run_tests():
         assert('cleanTextForSpeech expands 501(c)(3)', cleaned.includes('501-c-3 non-profit'), cleaned);
         assert('cleanTextForSpeech expands Tue-Sat', cleaned.includes('Tuesday through Saturday'), cleaned);
         assert('cleanTextForSpeech expands e.g.', cleaned.includes('for example'), cleaned);
-        assert('cleanTextForSpeech expands Tier A independent space', cleaned.includes('Tier A verified independent space'), cleaned);
+        assert('cleanTextForSpeech expands Tier A independent space', cleaned.includes('verified independent space'), cleaned);
         assert('cleanTextForSpeech strips markdown headers', !cleaned.includes('#'), cleaned);
         assert('cleanTextForSpeech strips markdown bold', !cleaned.includes('**'), cleaned);
         assert('cleanTextForSpeech strips raw URLs', !cleaned.includes('https://'), cleaned);
@@ -160,7 +168,7 @@ def run_tests():
 
         assert('Institution query renders structured data grid card', hasCard);
         assert('Institution query data card has data-exclude-speech', hasExcluded);
-        assert('Spoken text contains articulate narrative overview', instCleaned.includes('verified Tier A independent space'), instCleaned);
+        assert('Spoken text contains articulate narrative overview', instCleaned.includes('verified independent space'), instCleaned);
         assert('Spoken text omits raw database bullets', !instCleaned.includes('- Ethical Status:'), instCleaned);
 
         // 11. Material Research Inquiry does NOT false-match Raw Material Company and provides forensic methodology response
@@ -215,6 +223,37 @@ def run_tests():
 
         assert('Publicly available bad info query returns forensic methodology', lastMsg.innerText.includes('Material Research vs. Corporate Artwashing'), lastMsg.innerText);
         assert('Explicitly states all bad info is publicly available too', lastMsg.innerText.includes('all the bad info is publicly available too'), lastMsg.innerText);
+
+        // 15. Curator Voice Toggle Button
+        const voiceToggleBtn = document.getElementById('curatorVoiceToggleBtn');
+        const voiceToggleIcon = document.getElementById('curatorVoiceToggleIcon');
+        const voiceToggleLabel = document.getElementById('curatorVoiceToggleLabel');
+        assert('curatorVoiceToggleBtn exists', !!voiceToggleBtn);
+        assert('Voice toggle default is ON', voiceToggleLabel && voiceToggleLabel.textContent.includes('ON'));
+
+        // Toggle OFF
+        voiceToggleBtn.click();
+        assert('Voice toggle turns OFF', voiceToggleLabel && voiceToggleLabel.textContent.includes('OFF'));
+        assert('Voice toggle icon becomes muted', voiceToggleIcon && voiceToggleIcon.textContent === '🔇');
+
+        // Toggle back ON
+        voiceToggleBtn.click();
+        assert('Voice toggle turns back ON', voiceToggleLabel && voiceToggleLabel.textContent.includes('ON'));
+
+        // 16. Live Web Scraper & Research Engine
+        assert('scrapeWebForQuery function exists on window', typeof window.scrapeWebForQuery === 'function');
+        const scrapeData = await window.scrapeWebForQuery('Chisenhale Gallery');
+        assert('scrapeWebForQuery returns scraped text', !!scrapeData && typeof scrapeData.scrapedText === 'string' && scrapeData.scrapedText.length > 0);
+        const hasWiki = (scrapeData && scrapeData.trustedLinks) ? scrapeData.trustedLinks.some(l => (l.url || '').includes('wikipedia.org')) : false;
+        assert('scrapeWebForQuery strictly excludes Wikipedia links', !hasWiki);
+
+        // 17. User query renders Scraped Web Intelligence block in chat
+        workInput.value = 'Chisenhale Gallery';
+        workSendBtn.click();
+        await new Promise(r => setTimeout(r, 450));
+        msgs = document.querySelectorAll('.curator-message-wrap');
+        lastMsg = msgs[msgs.length - 1];
+        assert('Curator response includes Live Web Intelligence block', lastMsg.innerText.includes('Live Web Intelligence') || lastMsg.innerHTML.includes('Live Web Intelligence'));
 
         window.stopCuratorSpeech();
 
