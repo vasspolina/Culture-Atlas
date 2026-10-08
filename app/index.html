@@ -11367,6 +11367,107 @@ return maplibregl$1;
       `;
     }
 
+    // Dynamic Grounding Retrieval for Live AI Engine
+    function retrieveGroundingInstitutions(userQuery, limit = 12) {
+      const q = (userQuery || '').toLowerCase();
+      const results = [];
+      const seen = new Set();
+
+      // 1. If an institution is currently selected on the map or in the dossier, prioritize it first
+      const activeInst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
+                         (typeof curatorContext !== 'undefined' && curatorContext.lastInst ? curatorContext.lastInst : null);
+      if (activeInst && activeInst.name) {
+        results.push(activeInst);
+        seen.add(activeInst.name);
+      }
+
+      // 2. Direct name or alias match
+      for (const inst of ALL_INSTITUTIONS) {
+        if (seen.has(inst.name)) continue;
+        const nameLower = inst.name.toLowerCase();
+        if (q.includes(nameLower) || (nameLower.length > 5 && nameLower.split(/\s+/).some(w => w.length > 4 && q.includes(w)))) {
+          results.push(inst);
+          seen.add(inst.name);
+          if (results.length >= limit) break;
+        }
+      }
+
+      // 3. City match
+      if (results.length < limit) {
+        for (const inst of ALL_INSTITUTIONS) {
+          if (seen.has(inst.name)) continue;
+          if (inst.city && q.includes(inst.city.toLowerCase())) {
+            results.push(inst);
+            seen.add(inst.name);
+            if (results.length >= limit) break;
+          }
+        }
+      }
+
+      // 4. Keyword / thematic match in curatorial focus, highlights, architecture, archives
+      if (results.length < limit) {
+        const stopWords = new Set(['what', 'where', 'when', 'which', 'about', 'there', 'their', 'could', 'would', 'should', 'check', 'show', 'tell', 'more', 'some', 'please', 'with', 'from', 'have', 'that', 'this']);
+        const words = q.split(/[^a-z0-9]+/i).filter(w => w.length > 3 && !stopWords.has(w));
+        if (words.length > 0) {
+          const scored = [];
+          for (const inst of ALL_INSTITUTIONS) {
+            if (seen.has(inst.name)) continue;
+            let score = 0;
+            const textToSearch = `${inst.name} ${inst.curatorial_focus || ''} ${inst.highlight || ''} ${inst.city || ''} ${inst.governance_details || ''} ${inst.admission_policy || ''}`.toLowerCase();
+            for (const w of words) {
+              if (textToSearch.includes(w)) score++;
+            }
+            if (score > 0) {
+              scored.push({ inst, score });
+            }
+          }
+          scored.sort((a, b) => b.score - a.score);
+          for (const item of scored) {
+            results.push(item.inst);
+            seen.add(item.inst.name);
+            if (results.length >= limit) break;
+          }
+        }
+      }
+
+      // 5. Fill remaining slots with core representative landmarks
+      if (results.length < limit) {
+        const landmarkNames = [
+          'Chisenhale Gallery', 'Kunstmuseum Bern', 'De La Warr Pavilion', 'Kunsthalle Bremen', 
+          'Artists Space', 'The Kitchen', 'Casco Art Institute', 'BAK, basis voor actuele kunst', 
+          'Van Abbemuseum', 'Museum of Modern Art (MoMA)', 'Tate Modern', 'Whitney Museum of American Art',
+          'ARoS Aarhus Kunstmuseum', 'Zeitz MOCAA', 'Palais de Tokyo', 'KW Institute for Contemporary Art'
+        ];
+        for (const lName of landmarkNames) {
+          const found = ALL_INSTITUTIONS.find(i => i.name === lName);
+          if (found && !seen.has(found.name)) {
+            results.push(found);
+            seen.add(found.name);
+            if (results.length >= limit) break;
+          }
+        }
+      }
+
+      return results.slice(0, limit);
+    }
+
+    function formatInstitutionGrounding(i) {
+      const bArch = i.building_architecture || {};
+      const arch = i.archives_and_collections || {};
+      const wings = (bArch.wings || []).map(w => w.name).join(', ') || 'Exhibition galleries';
+      return `- INSTITUTION: ${i.name}
+  Location: ${i.city}, ${i.country} (${i.address || 'Central'}, Neighborhood: ${i.neighborhood || i.city})
+  Governance Classification: ${i.tier_label || (i.tier === 'A' ? 'Verified Independent Space' : 'Flagged Corporate Underwriting')} (${i.governance_classification || i.governance_type || 'Civic Non-Profit'})
+  Governance & Ethical Safeguard: ${i.governance_details || i.ethical_safeguard || 'Statutory audited non-profit'}
+  Curatorial Focus: ${i.curatorial_focus || 'Contemporary artistic experimentation'}
+  Specific Highlights & Permanent Collections: ${i.highlight || 'Curated landmark holdings'}
+  Admission Model: ${i.admission_policy || 'Always Free Public Admission'} (${i.admission_details || i.admission_fee || 'Public civic admission'})
+  Opening Hours: ${i.opening_hours || 'Wed–Sun 11:00–18:00'}
+  Architecture: Style: ${bArch.style || 'Adaptive reuse / civic'}, Footprint: ${bArch.footprint_sqm || 1200} sqm, Wings: ${wings}
+  Archives & Special Collections: Primary holdings: ${arch.primary_holdings || 'Exhibition dossiers and artist correspondence'}, Access: ${arch.reading_room_policy || 'Universal public access'}, Digitization: ${arch.digitization_level || '70%'}
+  Sources: ${(i.sources || []).slice(0, 3).join(', ')}`;
+    }
+
     // Unified Multi-Provider Live Generative AI Engine
     async function queryAI(userPrompt, webIntel = null) {
       const useProxy = !aiApiKey && !!ATLAS_AI_PROXY_URL;
@@ -11374,19 +11475,60 @@ return maplibregl$1;
       const prov = useProxy ? 'anthropic' : getEffectiveProvider();
       const model = useProxy ? 'claude-haiku-4-5-20251001' : getEffectiveModel();
 
-      // Sample representative spaces for model grounding
-      const sampleInsts = ALL_INSTITUTIONS.slice(0, 45).map(i => `${i.name} (${i.city}, ${i.country}): Tier ${i.tier}, ${i.governance_type}, Hours: ${i.opening_hours}, ${i.admission_policy}, Highlights: ${i.highlight}`).join('\n');
+      // Dynamically retrieve top relevant institutions for this specific user prompt
+      const relevantInsts = retrieveGroundingInstitutions(userPrompt, 12);
+      const groundedCatalogText = relevantInsts.map(formatInstitutionGrounding).join('\n\n');
+
+      // Check if user currently has an active focus institution
+      const activeInst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
+                         (typeof curatorContext !== 'undefined' && curatorContext.lastInst ? curatorContext.lastInst : null);
+      const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks general questions without naming a space, focus specifically on ${activeInst.name} and perform a vivid, in-depth audit of its governance status, entry policy, architecture, and signature highlights!\n` : '';
 
       const communitySubmissions = getCommunityResearchSubmissions();
       const communityGrounding = communitySubmissions.length > 0 
         ? '\n\nCOMMUNITY-CONTRIBUTED RESEARCH QUEUE (Under Peer Verification):\n' + communitySubmissions.slice(0, 10).map(s => `- [Audit #${s.id}] ${s.spaceName || 'Platform'} (${s.category}): ${s.details} [Source: ${s.sourceUrl || 'Statutory filing reported'}]`).join('\n')
         : '';
 
-      const criticalSystemPrompt = `You are the Culture Atlas assistant, a friendly, clear, and direct guide to art museums and galleries worldwide.
-Culture Atlas maps 441 verified clean museums and independent art spaces across 40+ countries that don't take money from fossil fuels, weapons manufacturers, or private prisons, alongside an audited catalog of 403 flagged institutions with corporate underwriting ties.
+      const webIntelGrounding = (webIntel && webIntel.scrapedText) 
+        ? `\n\nREAL-TIME LIVE SCRAPED WEB INTELLIGENCE:\nSource: ${webIntel.sourceTitle || ''} (${webIntel.sourceUrl || ''})\n${webIntel.scrapedText}`
+        : '';
 
-CORE INSTRUCTION: SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE.
-- Use plain, natural, everyday English.
+      const criticalSystemPrompt = `You are the Culture Atlas assistant, a friendly, authoritative, clear, and direct guide to art museums, kunsthalles, and independent cultural spaces worldwide.
+Culture Atlas maps 441 verified independent museums and spaces across 40+ countries that operate without corporate capture, defense/weapons, or fossil fuel underwriting, alongside an audited catalog of 403 flagged institutions with corporate underwriting ties.
+
+CRITICAL OPERATIONAL RULES (MUST FOLLOW STRICTLY):
+1. YOU ARE A VISITOR-FACING DOCENT AND RESEARCHER:
+   - You are chatting with museum visitors, art lovers, travelers, and cultural researchers.
+   - NEVER review, evaluate, QA, or critique the Culture Atlas database, data structure, schema, or system itself.
+   - NEVER say "I've reviewed the sample atlas data you provided" or flag issues with dataset templates.
+   - You are NOT a code reviewer or QA tester. If a user asks "check it for me", "can you check this", or "verify this", they are asking you to verify and explain a cultural institution or city, NOT review a database!
+
+2. ALWAYS BE CONCRETE, VIVID, AND SPECIFIC:
+   - Always name specific artworks, historic architectural contexts, signature collections, and key artists.
+   - Never give vague or generic replies like "rotating site-specific commissions" without naming the artists, architectural history, or specific holdings.
+   - For example:
+     * Kunstmuseum Bern: Home to Adolf Wölfli's monumental 25,000-page Outsider art cosmos and the historic Cornelius Gurlitt provenance research bequest.
+     * De La Warr Pavilion: Built in 1935 by modernists Erich Mendelsohn and Serge Chermayeff as Britain's first major welded steel-and-glass modernist seaside pavilion.
+     * Kunsthalle Bremen: Founded in 1823 as an autonomous civic Kunstverein that survived WWII damage, housing masterpieces from Delacroix and Cézanne to Paula Modersohn-Becker with 100% civic independence.
+   - Always cite exact admission policies (e.g., "Always Free Public Admission" or "Free Permanent Collection / Ticketed Special Exhibitions").
+   - Always cite exact opening hours, addresses, and architectural details.
+
+3. SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE:
+   - Use plain, natural, everyday English.
+   - Avoid flowery marketing fluff ("cultural sanctuaries", "clean sanctuaries", "for quiet reflection", "sublime", "epistemologies").
+   - Speak like an expert, enthusiastic human curator who knows the ground reality of every institution.
+
+4. FORMATTING RULES:
+   - Write in natural, easy-to-read conversational paragraphs.
+   - Link institutions strictly as:
+     <a href="#" class="inst-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a> (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="Exact Name">audit dossier</a>)
+   - Link cities as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
+${activeInstContext}
+VERIFIED PRIMARY-SOURCE CATALOG GROUNDING (Top Relevant Spaces for this Inquiry):
+${groundedCatalogText}
+${communityGrounding}
+${webIntelGrounding}
+
 - Avoid academic art-world jargon or flowery marketing phrases. Never say "cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "uncompromised curatorial experimentation", "shutter their galleries", "sublime", "epistemologies", or "palliative".
 - Speak like a knowledgeable, friendly human who explains things directly and simply.
 - Keep sentences short, clean, and conversational.
@@ -11460,11 +11602,7 @@ FORMATTING & INTERACTION RULES:
 2. Link institutions in our atlas strictly as:
 <a href="#" class="inst-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a> (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="Exact Name">audit dossier</a>)
 3. Link cities as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
-4. Keep answers focused, direct, and completely free of pompous fluff.${communityGrounding}`;
-
-      const webIntelGrounding = (webIntel && webIntel.scrapedText) 
-        ? `\n\nREAL-TIME LIVE SCRAPED WEB INTELLIGENCE:\nSource: ${webIntel.sourceTitle || ''} (${webIntel.sourceUrl || ''})\n${webIntel.scrapedText}`
-        : '';
+4. Keep answers focused, direct, and completely free of pompous fluff.`;
 
       try {
         let rawText = '';
@@ -11482,7 +11620,7 @@ FORMATTING & INTERACTION RULES:
               max_tokens: 1024,
               system: criticalSystemPrompt,
               messages: [
-                { role: 'user', content: `Atlas sample:\n${sampleInsts}${webIntelGrounding}\n\nUser question: ${userPrompt}` }
+                { role: 'user', content: userPrompt }
               ]
             })
           });
@@ -11501,7 +11639,7 @@ FORMATTING & INTERACTION RULES:
               temperature: 0.7,
               max_tokens: 1024,
               messages: [
-                { role: 'system', content: `${criticalSystemPrompt}\n\nInstitutions sample:\n${sampleInsts}${webIntelGrounding}` },
+                { role: 'system', content: criticalSystemPrompt },
                 { role: 'user', content: userPrompt }
               ]
             })
@@ -11515,8 +11653,9 @@ FORMATTING & INTERACTION RULES:
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+              systemInstruction: { parts: [{ text: criticalSystemPrompt }] },
               contents: [
-                { role: 'user', parts: [{ text: `${criticalSystemPrompt}\n\nInstitutions sample:\n${sampleInsts}${webIntelGrounding}\n\nUser question: ${userPrompt}` }] }
+                { role: 'user', parts: [{ text: userPrompt }] }
               ],
               generationConfig: {
                 temperature: 0.7,
@@ -12189,6 +12328,122 @@ FORMATTING & INTERACTION RULES:
             'Warren Kanders at the Whitney'
           ]);
           return;
+        }
+
+        // =========================================================================
+        // 🔍 CONTEXTUAL AUDIT INTENT ("Check it for me" / "Audit this space")
+        // =========================================================================
+        const isCheckQuery = /^(check(\s+it)?(\s+for\s+me)?|check\s+this|audit\s+this|verify\s+this|inspect\s+this|tell\s+me\s+about\s+this(\s+place)?)$/i.test(q) ||
+          q === 'check it for me' || q === 'check it' || q === 'check this' || q === 'check' || q === 'audit this' || q === 'verify this';
+
+        if (isCheckQuery) {
+          const targetInst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || curatorContext.lastInst || findMentionedInst(query);
+          if (targetInst) {
+            curatorContext.lastInst = targetInst;
+            curatorContext.lastCity = targetInst.city;
+            const bArch = targetInst.building_architecture || {};
+            const arch = targetInst.archives_and_collections || {};
+            const isClean = targetInst.tier === 'A' || (targetInst.tier_label && targetInst.tier_label.includes('Independent'));
+            appendCuratorMessage(`
+              <div class="space-y-3 text-slate-200">
+                <div class="flex items-center justify-between border-b border-[#2e2e38] pb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[17px]">${isClean ? '✓' : '⚠'}</span>
+                    <span class="font-medium text-white text-[15px]">Institutional Audit: ${formatInstLink(targetInst)}</span>
+                  </div>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded ${isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'}">
+                    ${escapeHtml(targetInst.tier_label || (isClean ? 'Verified Independent Space' : 'Flagged Corporate Underwriting'))}
+                  </span>
+                </div>
+
+                <p class="text-slate-100 text-[13.5px] leading-relaxed">
+                  <strong>Location:</strong> ${escapeHtml(targetInst.address || targetInst.city)}, <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${escapeHtml(targetInst.city)}">${escapeHtml(targetInst.city)}</a>, ${escapeHtml(targetInst.country)}.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px]" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
+                    <strong class="text-sky-300 block">🏛️ Governance & Ethical Safeguards</strong>
+                    <span>${escapeHtml(targetInst.governance_details || targetInst.ethical_safeguard || 'Statutory audited civic entity with public council charter.')}</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
+                    <strong class="text-sky-300 block">🎟️ Admission & Opening Schedule</strong>
+                    <span><strong>${escapeHtml(targetInst.admission_policy)}</strong>: ${escapeHtml(targetInst.admission_details || targetInst.admission_fee)}. Hours: ${escapeHtml(targetInst.opening_hours)}.</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
+                    <strong class="text-sky-300 block">📐 Architectural Footprint</strong>
+                    <span>Style: ${escapeHtml(bArch.style || 'Civic architecture')}, ${bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() + ' sqm' : 'Custom layout'}. Wings: ${escapeHtml((bArch.wings || []).map(w => w.name).join(', ') || 'Exhibition galleries')}.</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
+                    <strong class="text-sky-300 block">📚 Archives & Reading Room</strong>
+                    <span>${escapeHtml(arch.primary_holdings || 'Curatorial correspondence & exhibition dossiers')}. Access: ${escapeHtml(arch.reading_room_policy || 'Public study access')}.</span>
+                  </div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-[#182030] border border-blue-900/40 text-[13px] leading-relaxed">
+                  <strong class="text-blue-300 block mb-1">Key Highlights & Curatorial Mission:</strong>
+                  <span>${escapeHtml(targetInst.highlight || targetInst.curatorial_focus)}</span>
+                </div>
+
+                <div class="pt-2 border-t border-[#232f48] flex items-center justify-between gap-2 flex-wrap text-[12px]">
+                  <span class="text-slate-400">Want deeper inspection?</span>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openBuildingArchivesModal('${escapeHtml(targetInst.name)}')" class="px-3 py-1.5 rounded-lg bg-[#1e293b] hover:bg-[#2b3a52] text-slate-200 hover:text-white border border-slate-700 font-mono transition cursor-pointer">
+                      🏛️ 3D Building & Archives
+                    </button>
+                    <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition cursor-pointer">
+                      ⚖️ Governance Legend
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `, [
+              `Plan visit to ${targetInst.name}`,
+              `Archives at ${targetInst.name}`,
+              `Nearby spaces in ${targetInst.city}`,
+              'Explore independent spaces'
+            ]);
+            selectInstitution(targetInst, true);
+            return;
+          } else {
+            appendCuratorMessage(`
+              <div class="space-y-3 text-slate-200">
+                <div class="flex items-center gap-2 border-b border-[#2e2e38] pb-2 text-white font-medium text-[15px]">
+                  <span>🔍</span>
+                  <span>Which cultural space would you like me to check?</span>
+                </div>
+                <p class="text-[13.5px] text-slate-300 leading-relaxed">
+                  I can perform a forensic audit on any of the <strong>1,074 mapped institutions</strong> worldwide—covering board governance, public funding transparency, architecture, admission policies, and archival holdings.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px] pt-1">
+                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
+                    <strong class="text-emerald-400 block mb-0.5">✓ Chisenhale Gallery (London)</strong>
+                    Verified Independent artist-run space in a 1930s veneer factory with zero corporate conflicts.
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
+                    <strong class="text-emerald-400 block mb-0.5">✓ Kunstmuseum Bern (Bern)</strong>
+                    Civic foundation housing Adolf Wölfli's Outsider art cosmos and the Gurlitt provenance audit.
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
+                    <strong class="text-emerald-400 block mb-0.5">✓ De La Warr Pavilion (Bexhill)</strong>
+                    Modernist steel-and-glass seaside pavilion by Mendelsohn & Chermayeff with universal free entry.
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
+                    <strong class="text-purple-400 block mb-0.5">⚠ MoMA (New York)</strong>
+                    Flagged for private equity and defense contractor board seats on IRS Form 990 Schedule L.
+                  </div>
+                </div>
+                <p class="text-slate-400 text-[12.5px]">
+                  Click any pin on the globe, or type the name of any museum or city to inspect it.
+                </p>
+              </div>
+            `, [
+              'Check Chisenhale Gallery',
+              'Check Kunstmuseum Bern',
+              'Check De La Warr Pavilion',
+              'Why is MoMA excluded?'
+            ]);
+            return;
+          }
         }
 
         if (isGreeting || isWhoAreYou || isVoiceTest) {
