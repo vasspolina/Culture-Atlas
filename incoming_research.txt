@@ -1,0 +1,115 @@
+The following is a <SYSTEM_MESSAGE> not actually sent by the user. It is provided by the system as important information to pay attention to.
+
+<SYSTEM_MESSAGE>
+[Message] timestamp=2026-10-05T10:10:57Z sender=b997e616-4551-453e-83cc-4ba184f90abf/task-11267 priority=MESSAGE_PRIORITY_HIGH content=Task id "b997e616-4551-453e-83cc-4ba184f90abf/task-11267" finished with result:
+
+The command exited with code 0.
+Output:
+
+--- RUNNING SHOW ONLY ON CLICK HEADLESS SUITE ---
+[PASS] cityMapContainer is visible for Bilbao
+[PASS] isCityStreetViewActive is true
+[PASS] floatingCard is HIDDEN initially on city navigation
+[PASS] ZERO MapLibre popups open automatically on city navigation (found: 0)
+[PASS] Pin element exists in DOM
+[PASS] Exactly 1 MapLibre popup opens ON CLICK (found: 1)
+[PASS] floatingCard remains HIDDEN on city street view (no duplicate)
+[PASS] Popup contains Bulegoa z/b
+[PASS] Popup contains Visit Website
+[PASS] Popup contains Plan Visit or Hours
+[PASS] Popup contains Read info about institution
+[PASS] Popup contains Ask
+[PASS] Close button exists on popup
+[PASS] Popup is dismissed after clicking close button (found: 0)
+[PASS] inst-pin-label exists
+[PASS] Popup opens on clicking institution name label (found: 1)
+[PASS] isCityStreetViewActive is false after exit
+[PASS] cityMapContainer is hidden
+[PASS] floatingCard is hidden after exit
+
+ALL SHOW ONLY ON CLICK TESTS PASSED (19/19)!
+
+--- RUNNING HEADLESS CHROME ALL POINTS OF VIEW LABELS SUITE ---
+[PASS] Buenos Aires has 2 markers (count: 2)
+[PASS] Both Buenos Aires markers have visible labels (["●Museo Nacional de Bellas Artes","●Palacio Libertad"])
+[PASS] Label contains Bellas Artes
+[PASS] Label contains Palacio Libertad
+[PASS] Labels remain visible even when zoomed out to 10
+[PASS] Labels remain visible when zoomed in to 16
+[PASS] City street view is inactive after exit
+[PASS] Bilbao has markers (count: 2)
+[PASS] All Bilbao markers have visible labels (2/2)
+[PASS] Bilbao label contains Bulegoa z/b
+
+ALL ALL-POINTS-OF-VIEW LABEL TESTS PASSED (10/10)!
+--- RUNNING HEADLESS CHROME LOGO RESET SUITE ---
+[PASS] topBrandLogoBtn exists in DOM
+[PASS] topBrandLogoBtn has title attribute
+[PASS] topBrandLogoBtn contains CULTURE ATLAS
+[PASS] topBrandLogoBtn contains clean spaces badge
+[PASS] resetGlobeView function is globally defined
+[PASS] City street view is active before logo click
+[PASS] cityMapContainer is visible
+[PASS] isCityStreetViewActive is false after logo click
+[PASS] cityMapContainer has hidden class after logo click
+[PASS] targetRadius reset to baseRadius (targetRadius: 210.21, baseRadius: 210.21)
+[PASS] isAutoSpinning restored to true
+[PASS] selectedCountryFilter reset to all
+[PASS] selectedCityFilter reset to all
+[PASS] searchQuery reset to empty
+[PASS] searchInput value reset to empty
+[PASS] targetRadius reset back to baseRadius after zoom
+[PASS] detailDrawer is open before logo click
+[PASS] selectedInstitution is set before logo click
+[PASS] detailDrawer is closed after logo click
+[PASS] selectedInstitution is null after logo click
+[PASS] City street view active before topResetBtn click
+[PASS] topResetBtn exists
+[PASS] isCityStreetViewActive is false after topResetBtn click
+[PASS] cityMapContainer hidden after topResetBtn click
+
+ALL LOGO RESET TESTS PASSED (24/24)!
+--- RUNNING HEADLESS CHROME ZOOMED PIN LABELS SUITE ---
+[PASS] cityMapContainer is visible
+[PASS] cityMapContainer has map-zoomed-in class
+[PASS] Amsterdam has markers (count: 7)
+[PASS] All markers have floating inst-pin-label (7/7)
+[PASS] Sample label has valid text name (De Appel)
+[PASS] Label is visible when zoomed in (opacity: 1, visibility: visible)
+[PASS] Clicking label selects institution (selected: De Appel, expected: De Appel)
+[PASS] Addis Ababa has at least 1 marker
+[PASS] Addis Ababa marker has label for Zoma Museum
+
+ALL ZOOMED PIN LABEL TESTS PASSED (9/9)!
+--- RUNNING DESKTOP (1280x800) SUITE ---
+[PASS] Main container exists
+[PASS] Globe viewport exists
+[PASS] Splitter exists
+[PASS] Work view container exists
+[PASS] Curator scroll area exists
+[PASS] Work bottom dock exists
+[PASS] Work input card inside dock
+[PASS] Desktop main container has flex-direction row (row)
+[PASS] Globe viewport width is ~50% (between 40% and 60%) (49.8%)
+[PASS] Work view width is ~50% (between 40% and 60%) (49.8%)
+[PASS] Globe height fills main container height (664 vs 664)
+[PASS] Work view height fills main container height (664 vs 664)
+[PASS] Curator scroll area is scrollable after 20 messages (scrollHeight: 2910, clientHeight: 374)
+[PASS] Curator scroll area scrolled down (scrollTop: 2536)
+[PASS] Bottom dock remains pinned to the bottom of workViewContainer (dockBottom: 713, workBottom: 713)
+
+--- RUNNING MOBILE (375x667) SUITE ---
+[PASS] Main container exists
+[PASS] Globe viewport exists
+[PASS] Splitter exists
+[PASS] Work view container exists
+[PASS] Curator scroll area exists
+[PASS] Work bottom dock exists
+[PASS] Work input card inside dock
+[PASS] Curator scroll area is scrollable after 20 messages (scrollHeight: 2910, clientHeight: 115)
+[PASS] Curator scroll area scrolled down (scrollTop: 2795)
+[PASS] Bottom dock remains pinned to the bottom of workViewContainer (dockBottom: 580, workBottom: 580)
+
+
+Log: file:///Users/polinavasilyeva/.gemini/antigravity/brain/b997e616-4551-453e-83cc-4ba184f90abf/.system_generated/tasks/task-11267.log
+</SYSTEM_MESSAGE>

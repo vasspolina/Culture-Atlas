@@ -90,11 +90,22 @@ def build():
     proxy_url_json = json.dumps(_proxy)
     institutions_raw = open('institutions.json', 'r', encoding='utf-8').read().strip()
     all_raw_institutions = json.loads(institutions_raw)
-    # Strictly filter the map and catalog dataset to ONLY ethically good, clean sponsored places (Tier A Verified Independent Spaces)
-    insts_data = [i for i in all_raw_institutions if i.get('tier') == 'A']
+    academic_raw = open('academic_papers.json', 'r', encoding='utf-8').read().strip() if os.path.exists('academic_papers.json') else '[]'
+    academic_papers = json.loads(academic_raw)
+    academic_json = json.dumps(academic_papers, separators=(',', ':'))
+
+    insts_data = all_raw_institutions
+    clean_insts = [i for i in all_raw_institutions if i.get('tier') == 'A']
+    flagged_insts = [i for i in all_raw_institutions if i.get('tier') == 'B']
+    unverified_insts = [i for i in all_raw_institutions if i.get('tier') == 'U']
     excluded_data = [i for i in all_raw_institutions if i.get('tier') != 'A']
-    institutions_count = len(insts_data)
-    spaces_count_str = f"{institutions_count} CLEAN SPACES"
+
+    clean_count = len(clean_insts)
+    flagged_count = len(flagged_insts)
+    total_count = len(all_raw_institutions)
+    academic_count = len(academic_papers)
+    institutions_count = clean_count
+    spaces_count_str = f"{clean_count} CLEAN SPACES"
 
     # Compute comprehensive Country & City Registries
     reg_countries = {}
@@ -105,15 +116,19 @@ def build():
         if not co or not ci:
             continue
         if co not in reg_countries:
-            reg_countries[co] = {"name": co, "count": 0, "lons": [], "lats": [], "cities": set()}
+            reg_countries[co] = {"name": co, "count": 0, "clean_count": 0, "lons": [], "lats": [], "cities": set()}
         reg_countries[co]["count"] += 1
+        if item.get("tier") == "A":
+            reg_countries[co]["clean_count"] += 1
         reg_countries[co]["lons"].append(item["lon"])
         reg_countries[co]["lats"].append(item["lat"])
         reg_countries[co]["cities"].add(ci)
 
         if ci not in reg_cities:
-            reg_cities[ci] = {"name": ci, "country": co, "count": 0, "lons": [], "lats": [], "addresses": []}
+            reg_cities[ci] = {"name": ci, "country": co, "count": 0, "clean_count": 0, "lons": [], "lats": [], "addresses": []}
         reg_cities[ci]["count"] += 1
+        if item.get("tier") == "A":
+            reg_cities[ci]["clean_count"] += 1
         reg_cities[ci]["lons"].append(item["lon"])
         reg_cities[ci]["lats"].append(item["lat"])
         if item.get("address"):
@@ -1011,9 +1026,13 @@ def build():
 
           <!-- Interactive Multi-Row Filter Bar (Pinned under chat input card) -->
           <div id="globeCityBar" class="w-full mt-2 sm:mt-2.5 flex flex-col gap-1.5 select-none py-0.5 shrink-0 max-h-[58px] md:max-h-none overflow-y-auto md:overflow-visible custom-scrollbar">
-            <!-- Row 1: Global Scope, Regions & Categories -->
+            <!-- Row 1: Scope, Clean / Flagged Tiers, Academic Research & Categories -->
             <div class="flex flex-wrap items-center gap-1.5">
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="all">{spaces_count_str}</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">✓ Clean Funding ({clean_count})</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces ({total_count})</button>
+              <span class="text-[#444] text-[11px] shrink-0">|</span>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -1365,6 +1384,47 @@ def build():
         </div>
       </form>
 
+  <!-- Academic Research Library Modal (Consensus Peer-Reviewed Corpus) -->
+  <div id="academicResearchModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
+    <div class="bg-[#171717] border border-[#2e2e2e] rounded-2xl sm:rounded-3xl max-w-3xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] flex flex-col gap-3">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b border-[#2e2e2e] pb-3 shrink-0">
+        <div class="flex items-center gap-2.5">
+          <span class="text-[20px]">🔬</span>
+          <div>
+            <h3 class="text-[17px] font-normal text-white">Academic Research Library: Museum Funding & Ethics</h3>
+            <p class="text-[12px] text-[#33b1ff] font-mono">Consensus Peer-Reviewed Corpus · 89 Empirical Studies & Critical Frameworks</p>
+          </div>
+        </div>
+        <button id="closeAcademicModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">✕</button>
+      </div>
+
+      <!-- Search & Topic Filter -->
+      <div class="shrink-0 space-y-2">
+        <div class="relative">
+          <input type="text" id="arSearchInput" placeholder="Search 89 peer-reviewed studies by keyword, author, or journal..." class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#33b1ff] font-sans">
+        </div>
+        <div class="flex flex-wrap items-center gap-1.5 text-[12px]" id="arTopicChips">
+          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer" data-topic="all">All Studies ({academic_count})</button>
+          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="tainted">Tainted Money & Ethics</button>
+          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="governance">Donor Governance</button>
+          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="fossil">Fossil Fuels & Climate</button>
+          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="disclosure">Mandatory Disclosure</button>
+        </div>
+      </div>
+
+      <!-- Studies List -->
+      <div id="arPapersList" class="flex-1 overflow-y-auto space-y-2.5 pr-1 custom-scrollbar text-[13px] min-h-[220px]">
+        <!-- Rendered dynamically from ACADEMIC_RESEARCH -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="shrink-0 flex items-center justify-between pt-2 border-t border-[#2e2e2e] text-[12px] text-slate-400 font-mono">
+        <span>Grounded in Consensus Open Academic Index</span>
+        <button id="closeAcademicModalFooterBtn" class="px-3.5 py-1.5 bg-[#212121] hover:bg-[#2a2a2a] text-slate-300 hover:text-white rounded-xl transition cursor-pointer">Close Library</button>
+      </div>
+
     </div>
   </div>
 
@@ -1373,8 +1433,10 @@ def build():
     const COUNTRY_POLYS = {countries_json};
     const ALL_INSTITUTIONS = {institutions_json};
     const EXCLUDED_INSTITUTIONS = {excluded_json};
+    const ACADEMIC_RESEARCH = {academic_json};
     window.ALL_INSTITUTIONS = ALL_INSTITUTIONS;
     window.EXCLUDED_INSTITUTIONS = EXCLUDED_INSTITUTIONS;
+    window.ACADEMIC_RESEARCH = ACADEMIC_RESEARCH;
 
     const ALL_COUNTRIES_REGISTRY = {all_countries_registry_json};
     const ALL_CITIES_REGISTRY = {all_cities_registry_json};
@@ -6914,7 +6976,7 @@ def build():
 
 
     // State Variables
-    let filteredList = [...ALL_INSTITUTIONS];
+    let filteredList = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
     let selectedTierFilter = new Set(['A']);
     let selectedCountryFilter = 'all';
     let selectedCityFilter = 'all';
@@ -6923,6 +6985,15 @@ def build():
     let hoveredInstitution = null;
     let hoveredCity = null;
     let hoveredCountry = null;
+
+    Object.defineProperty(window, 'selectedTierFilter', {{
+      get: () => selectedTierFilter,
+      set: (v) => {{ selectedTierFilter = v; }}
+    }});
+    Object.defineProperty(window, 'filteredList', {{
+      get: () => filteredList,
+      set: (v) => {{ filteredList = v; }}
+    }});
 
     // High-Resolution Interactive City Map (Google Maps Dark WebGL Vector Engine) State & Controller
     const GOOGLE_MAPS_DARK_STYLE = {{
@@ -7246,7 +7317,8 @@ def build():
 
       cityInsts.forEach(inst => {{
         const isA = inst.tier === 'A';
-        const markerColor = isA ? '#10b981' : '#38bdf8';
+        const isB = inst.tier === 'B';
+        const markerColor = isA ? '#10b981' : (isB ? '#be95ff' : '#08bdba');
         const webUrl = getValidWebUrl(inst);
 
         const pinEl = document.createElement('div');
@@ -7283,7 +7355,7 @@ def build():
         auraEl.style.width = '28px';
         auraEl.style.height = '28px';
         auraEl.style.borderRadius = '50%';
-        auraEl.style.background = isA ? 'rgba(16,185,129,0.30)' : 'rgba(56,189,248,0.25)';
+        auraEl.style.background = isA ? 'rgba(16,185,129,0.30)' : (isB ? 'rgba(190,149,255,0.30)' : 'rgba(8,189,186,0.25)');
 
         const dotEl = document.createElement('div');
         dotEl.style.position = 'relative';
@@ -7648,8 +7720,9 @@ def build():
       if (!inst) return;
       ctx.save();
       const isA = inst.tier === 'A';
-      const tierColor = isA ? '#10b981' : '#38bdf8';
-      const tierLabel = isA ? '● TIER A · INDEPENDENT' : '● TIER B · WATCH';
+      const isB = inst.tier === 'B';
+      const tierColor = isA ? '#10b981' : (isB ? '#be95ff' : '#08bdba');
+      const tierLabel = isA ? '● TIER A · INDEPENDENT' : (isB ? '● TIER B · FLAGGED' : '● TIER U · UNVERIFIED');
 
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
@@ -8416,7 +8489,7 @@ def build():
 
           ctx.beginPath();
           ctx.arc(d.x, d.y, isSel ? 4.5 : isHov ? 4 : 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
+          ctx.fillStyle = d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#be95ff' : '#08bdba';
           ctx.fill();
 
           const shouldDrawGlobeLabel = isHov || isSel || 
@@ -8440,7 +8513,7 @@ def build():
             if (ctx.roundRect) ctx.roundRect(bx, by, tw + 10, 16, 4);
             else ctx.rect(bx, by, tw + 10, 16);
             ctx.fill();
-            ctx.strokeStyle = d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : 'rgba(56, 189, 248, 0.65)';
+            ctx.strokeStyle = d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : d.inst.tier === 'B' ? 'rgba(190, 149, 255, 0.65)' : 'rgba(8, 189, 186, 0.65)';
             ctx.lineWidth = 1;
             ctx.stroke();
             ctx.fillStyle = '#f8fafc';
@@ -8601,7 +8674,7 @@ def build():
         projectedInsts.forEach(({{ inst, pt }}) => {{
           const isSel = selectedInstitution && selectedInstitution.name === inst.name;
           const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
-          const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
+          const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#be95ff' : '#08bdba';
 
           ctx.save();
           // Pulsing radar ring on active institution
@@ -8619,7 +8692,7 @@ def build():
           // Halo
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, isSel ? 16 : isHov ? 12 : 8, 0, Math.PI * 2);
-          ctx.fillStyle = isSel ? 'rgba(59, 130, 246, 0.25)' : inst.tier === 'A' ? 'rgba(16, 185, 129, 0.22)' : 'rgba(59, 130, 246, 0.20)';
+          ctx.fillStyle = isSel ? 'rgba(96, 165, 250, 0.25)' : inst.tier === 'A' ? 'rgba(16, 185, 129, 0.22)' : inst.tier === 'B' ? 'rgba(190, 149, 255, 0.25)' : 'rgba(8, 189, 186, 0.20)';
           ctx.fill();
 
           // Stroke ring
@@ -8667,7 +8740,7 @@ def build():
         displayList.forEach(({{ inst, pt }}) => {{
           const isSel = selectedInstitution && selectedInstitution.name === inst.name;
           const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
-          const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#3b82f6' : '#94a3b8';
+          const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#be95ff' : '#08bdba';
 
           const webUrl = getValidWebUrl(inst);
           const domain = getDisplayDomain(webUrl) || 'website';
@@ -8676,7 +8749,7 @@ def build():
           const nameTxt = inst.name;
           const nw = ctx.measureText(nameTxt).width;
 
-          const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Independent' : 'Watch Space');
+          const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Independent' : (inst.tier === 'B' ? 'Flagged Underwriting' : 'Roster Unverified'));
           ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
           const sw = ctx.measureText(subTxt).width;
 
@@ -9064,13 +9137,19 @@ def build():
         }}
       }}
 
-      document.getElementById('floatingCardMeta').textContent = `${{inst.location}} · ${{inst.tier === 'A' ? 'Verified' : 'One Name'}}`;
+      const isCardClean = inst.tier === 'A';
+      const isCardFlagged = inst.tier === 'B';
+      document.getElementById('floatingCardMeta').textContent = `${{inst.location}} · ${{isCardClean ? 'Clean Verified' : isCardFlagged ? 'Flagged Underwriting' : 'Roster Unverified'}}`;
       
       const tierBadge = document.getElementById('floatingCardTier');
       if (tierBadge) {{
-        tierBadge.textContent = inst.tier === 'A' ? 'Verified' : inst.tier === 'B' ? 'One Name' : 'Unverified';
+        tierBadge.textContent = isCardClean ? 'Clean Verified' : isCardFlagged ? 'Flagged Underwriting' : 'Roster Unverified';
         tierBadge.className = 'text-[12px] font-mono px-2 py-0.5 rounded-lg border shrink-0 ' + 
-          (inst.tier === 'A' ? 'text-emerald-400 border-emerald-900 bg-[#0a2016]' : 'text-blue-400 border-blue-900 bg-[#0d1d33]');
+          (isCardClean 
+            ? 'text-emerald-400 border-emerald-900 bg-[#0a2016]' 
+            : isCardFlagged 
+            ? 'text-[#be95ff] border-[#8a3ffc]/60 bg-[#1f1433]' 
+            : 'text-[#33b1ff] border-[#0072c3]/60 bg-[#081a28]');
       }}
       
       const hoursEl = document.getElementById('floatingCardHours');
@@ -9156,17 +9235,20 @@ def build():
       const domain = getDisplayDomain(webUrl);
 
       const isClean = inst.tier === 'A';
+      const isFlagged = inst.tier === 'B';
+      const isUnverified = inst.tier === 'U';
+
       const tierBadgeClass = isClean 
         ? 'text-emerald-400 border-emerald-800 bg-[#092216]' 
-        : inst.tier === 'B' 
-        ? 'text-rose-400 border-rose-800 bg-[#280c12]' 
-        : 'text-amber-400 border-amber-800 bg-[#26180a]';
+        : isFlagged 
+        ? 'text-[#be95ff] border-[#8a3ffc] bg-[#1f1433]' 
+        : 'text-[#33b1ff] border-[#0072c3] bg-[#081a28]';
 
       const tierLabel = isClean 
         ? 'Tier A · Verified Independent Space' 
-        : (inst.tier === 'B' ? 'Tier B · Excluded (Flagged Corporate Sponsor)' : 'Tier U · Excluded (Roster Unverified)');
+        : (isFlagged ? 'Tier B · Audited Corporate Underwriting' : 'Tier U · Roster Unverified');
 
-      const cleanAlts = !isClean ? ALL_INSTITUTIONS.filter(i => matchC(i.city, inst.city)) : [];
+      const cleanAlts = !isClean ? ALL_INSTITUTIONS.filter(i => i.tier === 'A' && matchC(i.city, inst.city)) : [];
 
       const rawGrade = inst.transparency_grade || 'Tier A+ (Statutory Public Audit)';
       let letterBadge = 'A+';
@@ -9186,6 +9268,26 @@ def build():
         auditAuthority = rawGrade;
       }}
 
+      const bannerBg = isClean 
+        ? 'bg-[#0c1f15] border-2 border-[#42be65] shadow-emerald-950/40' 
+        : isFlagged 
+        ? 'bg-[#1b122c] border-2 border-[#8a3ffc] shadow-purple-950/40' 
+        : 'bg-[#091a26] border-2 border-[#0072c3] shadow-cyan-950/40';
+
+      const badgeBoxStyle = isClean 
+        ? 'bg-[#42be65]/25 border border-[#42be65] text-[#42be65]' 
+        : isFlagged 
+        ? 'bg-[#8a3ffc]/25 border border-[#8a3ffc] text-[#be95ff]' 
+        : 'bg-[#0072c3]/25 border border-[#0072c3] text-[#33b1ff]';
+
+      const gradeTitleCol = isClean ? 'text-[#42be65]' : isFlagged ? 'text-[#be95ff]' : 'text-[#33b1ff]';
+      const pulseDotCol = isClean ? 'bg-[#42be65]' : isFlagged ? 'bg-[#be95ff]' : 'bg-[#33b1ff]';
+      const auditTagHtml = isClean 
+        ? '<span class="text-[11px] font-mono text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Clean</span><span class="text-[11px] text-slate-400 font-mono mt-1">100% Verified</span>' 
+        : isFlagged 
+        ? '<span class="text-[11px] font-mono text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Flags</span><span class="text-[11px] text-slate-400 font-mono mt-1">Documented</span>' 
+        : '<span class="text-[11px] font-mono text-[#33b1ff] bg-[#0072c3]/20 border border-[#0072c3]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Unverified</span><span class="text-[11px] text-slate-400 font-mono mt-1">Pending Audit</span>';
+
       body.innerHTML = `
         <div class="space-y-3">
           <div>
@@ -9193,21 +9295,21 @@ def build():
               <span class="text-[13px] font-mono px-2 py-0.5 rounded border ${{tierBadgeClass}}">${{tierLabel}}</span>
               <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#101828] text-[#93c5fd] border border-[#202d48]">${{escapeHtml(inst.governance_type || 'Civic')}}</span>
               <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#141e17] text-[#6ee7b7] border border-[#1b3b2b]">${{escapeHtml(inst.curatorial_focus || 'Contemporary Art')}}</span>
-              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#1f1910] text-amber-300 border border-[#3e2e18]">Est. ${{inst.year_founded || 'Historic'}}</span>
+              <span class="text-[13px] font-mono px-2 py-0.5 rounded bg-[#151c28] text-[#78a9ff] border border-[#233550]">Est. ${{inst.year_founded || 'Historic'}}</span>
             </div>
             <h2 class="text-[18px] sm:text-[20px] font-normal text-white leading-[120%]">${{escapeHtml(inst.name)}}</h2>
-            <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${{escapeHtml(inst.location || inst.city)}} · ${{inst.size || 'Independent Space'}}</p>
+            <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${{escapeHtml(inst.location || inst.city)}} · ${{inst.size || 'Audited Space'}}</p>
           </div>
 
           <!-- EMPHASIZED CIVIC TRANSPARENCY GRADE (Carbon High-Contrast Audit Banner) -->
-          <div class="py-3 px-3.5 rounded-xl bg-[#0c1f15] border-2 border-[#42be65] flex items-center justify-between shadow-lg shadow-emerald-950/40">
+          <div class="py-3 px-3.5 rounded-xl border-2 flex items-center justify-between shadow-lg ${{bannerBg}}">
             <div class="flex items-center gap-3">
-              <div class="w-12 h-12 shrink-0 rounded-lg bg-[#42be65]/25 border border-[#42be65] flex items-center justify-center font-mono font-bold text-[22px] text-[#42be65] shadow-inner">
+              <div class="w-12 h-12 shrink-0 rounded-lg flex items-center justify-center font-mono font-bold text-[22px] shadow-inner ${{badgeBoxStyle}}">
                 ${{escapeHtml(letterBadge)}}
               </div>
               <div>
-                <div class="text-[11px] font-mono uppercase tracking-widest text-[#42be65] font-bold flex items-center gap-1.5">
-                  <span class="inline-block w-2 h-2 rounded-full bg-[#42be65] animate-pulse"></span>
+                <div class="text-[11px] font-mono uppercase tracking-widest font-bold flex items-center gap-1.5 ${{gradeTitleCol}}">
+                  <span class="inline-block w-2 h-2 rounded-full animate-pulse ${{pulseDotCol}}"></span>
                   Civic Transparency Grade
                 </div>
                 <div class="text-[14px] font-semibold text-white font-mono mt-0.5">
@@ -9219,18 +9321,50 @@ def build():
               </div>
             </div>
             <div class="hidden sm:flex flex-col items-end shrink-0 pl-2">
-              <span class="text-[11px] font-mono text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited</span>
-              <span class="text-[11px] text-slate-400 font-mono mt-1">100% Verified</span>
+              ${{auditTagHtml}}
             </div>
           </div>
 
           ${{!isClean ? `
-            <div class="py-2.5 border-t border-[#393939] space-y-1.5">
-              <span class="text-rose-400 font-mono text-[12px] uppercase tracking-wider block font-bold">Ethical Exclusion Notice</span>
-              <p class="text-rose-200 text-[13px] leading-relaxed">
-                <strong>Audit Conflict:</strong> ${{escapeHtml(inst.watch || 'Corporate underwriting conflict / ethical audit flag.')}}
+            <div class="py-2.5 border-t border-[#393939] space-y-2">
+              <span class="text-[#be95ff] font-mono text-[12px] uppercase tracking-wider block font-bold">Audited Corporate Underwriting Notice</span>
+              <p class="text-[#e8daff] text-[13px] leading-relaxed">
+                <strong>Underwriting Conflict:</strong> ${{escapeHtml(inst.why_flagged || inst.watch || 'Corporate underwriting conflict / ethical audit flag.')}}
               </p>
-              <p class="text-slate-300 text-[12px]">
+              ${{inst.flags && inst.flags.length > 0 ? `
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  ${{inst.flags.map(f => `<span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#2a1745] text-[#be95ff] border border-[#8a3ffc]/50 font-medium">${{escapeHtml(f)}}</span>`).join('')}}
+                </div>
+              ` : ''}}
+              ${{inst.epstein_records && inst.epstein_records.length > 0 ? `
+                <div class="pt-2 border-t border-[#392d52] space-y-1.5">
+                  <span class="text-[12px] font-mono text-[#ff7eb6] uppercase tracking-wider block font-bold">Epstein Network Link Audit</span>
+                  ${{inst.epstein_records.map(ep => `
+                    <div class="text-[12px] text-slate-300 bg-[#231435] p-2.5 rounded-xl border border-[#8a3ffc]/30">
+                      <div class="font-bold text-[#e8daff]">${{escapeHtml(ep.person || 'Trustee')}} <span class="text-[#ff7eb6] font-mono font-normal">(${{escapeHtml(ep.link || 'Affiliation')}})</span></div>
+                      <div class="mt-0.5 text-slate-300">${{escapeHtml(ep.summary || ep.tie)}}</div>
+                      ${{ep.consequence ? `<div class="text-[11px] text-[#ff7eb6] mt-1 font-mono">Status: ${{escapeHtml(ep.consequence)}}</div>` : ''}}
+                    </div>
+                  `).join('')}}
+                </div>
+              ` : ''}}
+              ${{inst.wikileaks_records && inst.wikileaks_records.length > 0 ? `
+                <div class="pt-2 border-t border-[#392d52] space-y-1.5">
+                  <span class="text-[12px] font-mono text-[#08bdba] uppercase tracking-wider block font-bold">WikiLeaks Cable Record</span>
+                  ${{inst.wikileaks_records.map(wl => `
+                    <div class="text-[12px] text-slate-300 bg-[#16212b] p-2.5 rounded-xl border border-[#0072c3]/30">
+                      <div class="font-bold text-[#82cfff]">${{escapeHtml(wl.date || 'Cable')}} <span class="text-[#08bdba] font-mono font-normal">[${{escapeHtml(wl.doc_id || 'DOC')}}]</span></div>
+                      <div class="mt-0.5 text-slate-300">${{escapeHtml(wl.what_shows)}}</div>
+                    </div>
+                  `).join('')}}
+                </div>
+              ` : ''}}
+              ${{inst.other_findings ? `
+                <div class="text-[12px] text-slate-300 bg-[#1f1530] p-2.5 rounded-xl border border-[#8a3ffc]/30">
+                  <span class="font-bold text-[#be95ff]">Additional Research Findings:</span> ${{escapeHtml(inst.other_findings)}}
+                </div>
+              ` : ''}}
+              <p class="text-slate-400 text-[12px]">
                 <strong>Policy:</strong> Culture Atlas maps strictly verified independent spaces that operate free of fossil fuels, weapons manufacturing, private prisons, and predatory corporate underwriting.
               </p>
             </div>
@@ -9377,8 +9511,8 @@ def build():
       const domain = getDisplayDomain(webUrl);
       
       const isEx = inst.tier !== 'A';
-      const nameClass = isEx ? 'inst-link text-rose-300 hover:underline font-normal' : 'inst-link font-normal';
-      const badge = isEx ? ' <span class="text-[11px] font-mono px-1 py-0.2 rounded bg-[#2a0e14] text-rose-400 border border-rose-800 shrink-0">Excluded</span>' : '';
+      const nameClass = isEx ? 'inst-link text-[#be95ff] hover:underline font-normal' : 'inst-link font-normal';
+      const badge = isEx ? ' <span class="text-[11px] font-mono px-1 py-0.2 rounded bg-[#1f1433] text-[#be95ff] border border-[#8a3ffc] shrink-0">Flagged</span>' : '';
       const nameLink = `<a href="#" class="${{nameClass}}" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>${{badge}}`;
       const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
       const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[13px] text-[#60a5fa] hover:underline" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[13px] text-[#93c5fd] hover:text-white hover:underline transition">${{domain}} ↗</a>` : ''}})`;
@@ -9628,6 +9762,85 @@ def build():
     }}
     window.closeResearchFeedbackModal = closeResearchFeedbackModal;
 
+    function openAcademicResearchModal(topic = 'all') {{
+      const modal = document.getElementById('academicResearchModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      renderAcademicStudies(topic, '');
+    }}
+    window.openAcademicResearchModal = openAcademicResearchModal;
+
+    function closeAcademicResearchModal() {{
+      const modal = document.getElementById('academicResearchModal');
+      if (modal) modal.classList.add('hidden');
+    }}
+    window.closeAcademicResearchModal = closeAcademicResearchModal;
+
+    function renderAcademicStudies(topic = 'all', query = '') {{
+      const list = document.getElementById('arPapersList');
+      if (!list || typeof ACADEMIC_RESEARCH === 'undefined') return;
+
+      const q = (query || '').toLowerCase().trim();
+      const filtered = ACADEMIC_RESEARCH.filter(p => {{
+        if (topic && topic !== 'all') {{
+          const tText = ((p.title || '') + ' ' + (p.takeaway || '') + ' ' + (p.abstract || '')).toLowerCase();
+          if (topic === 'tainted' && !tText.includes('tainted') && !tText.includes('moral') && !tText.includes('ethic')) return false;
+          if (topic === 'governance' && !tText.includes('governance') && !tText.includes('donor') && !tText.includes('board')) return false;
+          if (topic === 'fossil' && !tText.includes('fossil') && !tText.includes('climate') && !tText.includes('bp') && !tText.includes('oil') && !tText.includes('environmental')) return false;
+          if (topic === 'disclosure' && !tText.includes('disclosure') && !tText.includes('fraud') && !tText.includes('report') && !tText.includes('mandatory')) return false;
+        }}
+        if (q) {{
+          const allText = ((p.title || '') + ' ' + (p.authors || '') + ' ' + (p.journal || '') + ' ' + (p.takeaway || '') + ' ' + (p.abstract || '')).toLowerCase();
+          if (!allText.includes(q)) return false;
+        }}
+        return true;
+      }});
+
+      if (filtered.length === 0) {{
+        list.innerHTML = `<div class="p-6 text-center text-slate-400">No studies match this search or topic filter.</div>`;
+        return;
+      }}
+
+      list.innerHTML = filtered.map(p => `
+        <div class="bg-[#1f1f1f] border border-[#2e2e2e] rounded-xl p-3.5 space-y-2 hover:border-[#444] transition">
+          <div class="flex items-start justify-between gap-2">
+            <h4 class="font-medium text-white text-[14px] leading-snug">${{escapeHtml(p.title)}}</h4>
+            ${{p.year ? `<span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#111c2e] text-[#78a9ff] border border-[#1d3557] shrink-0">${{escapeHtml(p.year)}}</span>` : ''}}
+          </div>
+          
+          <div class="flex items-center gap-2 text-[12px] text-slate-400 font-mono flex-wrap">
+            <span>${{escapeHtml(p.authors || 'Researchers')}}</span>
+            <span>·</span>
+            <span class="text-[#33b1ff]">${{escapeHtml(p.journal || 'Academic Journal')}}</span>
+            ${{p.citations ? `<span>·</span><span class="text-emerald-400 font-medium">${{escapeHtml(p.citations)}} Citations</span>` : ''}}
+          </div>
+
+          ${{p.takeaway ? `
+            <div class="p-2.5 rounded-lg bg-[#0d212b] border border-[#08bdba]/40 text-[#a6f0eb] text-[12.5px] leading-relaxed">
+              <strong class="text-[#08bdba] block text-[11px] uppercase tracking-wider font-mono mb-0.5">Key Empirical Finding:</strong>
+              ${{escapeHtml(p.takeaway)}}
+            </div>
+          ` : ''}}
+
+          ${{p.abstract ? `
+            <details class="text-[12px] text-slate-300">
+              <summary class="cursor-pointer text-[#78a9ff] hover:underline font-mono text-[11px] uppercase tracking-wider py-1">View Abstract & Methodology</summary>
+              <p class="mt-1.5 p-2.5 rounded bg-[#171717] border border-[#2a2a2a] text-slate-300 leading-relaxed">${{escapeHtml(p.abstract)}}</p>
+            </details>
+          ` : ''}}
+
+          <div class="flex items-center justify-between pt-1 border-t border-[#2a2a2a] text-[11px] font-mono">
+            ${{p.doi ? `<span class="text-slate-400 truncate max-w-[200px]">DOI: ${{escapeHtml(p.doi)}}</span>` : '<span class="text-slate-400">Peer-Reviewed Study</span>'}}
+            <div class="flex items-center gap-2">
+              ${{p.link ? `<a href="${{escapeHtml(p.link)}}" target="_blank" rel="noopener noreferrer" class="text-[#78a9ff] hover:underline">Consensus Link ↗</a>` : ''}}
+              ${{p.doi ? `<a href="https://doi.org/${{escapeHtml(p.doi)}}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">Read Study ↗</a>` : ''}}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }}
+    window.renderAcademicStudies = renderAcademicStudies;
+
     // Unified Multi-Provider Live Generative AI Engine
     async function queryAI(userPrompt) {{
       const useProxy = !aiApiKey && !!ATLAS_AI_PROXY_URL;
@@ -9644,13 +9857,22 @@ def build():
         : '';
 
       const criticalSystemPrompt = `You are the Culture Atlas assistant, a friendly, clear, and direct guide to art museums and galleries worldwide.
-Culture Atlas maps 403 verified clean museums and art spaces across 40+ countries that don't take money from fossil fuels, weapons manufacturers, or private prisons.
+Culture Atlas maps 441 verified clean museums and independent art spaces across 40+ countries that don't take money from fossil fuels, weapons manufacturers, or private prisons, alongside an audited catalog of 403 flagged institutions with corporate underwriting ties.
 
 CORE INSTRUCTION: SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE.
 - Use plain, natural, everyday English.
 - Avoid academic art-world jargon or flowery marketing phrases. Never say "cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "uncompromised curatorial experimentation", "shutter their galleries", "sublime", "epistemologies", or "palliative".
 - Speak like a knowledgeable, friendly human who explains things directly and simply.
 - Keep sentences short, clean, and conversational.
+
+PEER-REVIEWED ACADEMIC RESEARCH CORPUS (Consensus 89 Studies):
+You have deep mastery of 89 empirical studies on museum funding, donor governance, tainted money, and mandatory disclosures:
+- Tainted Money & Public Preferences: Research (PNAS Nexus, 2023) proves professional fundraisers and the public hold diverging moral boundaries; laypeople strongly favor strict ethical boundaries against taking gifts from harmful industries.
+- Mandatory Disclosure vs Disclose-on-Request: Barber, Farwell & Galle (Nonprofit and Voluntary Sector Quarterly, 2020) prove that mandatory disclosure forces donors to penalize high overhead/fundraising costs, whereas disclose-on-request requirements fail because donors rarely actively seek unpublicized information.
+- Donor Response to Fraud & Media Oversight: Harris, Petrovits & Yetman (2023) show that media reporting of asset diversions severely decreases donations, and donors only moderate penalties when nonprofits enact transparent public disclosures and governance overhauls.
+- Donor Governance & Cost Structures: Yermack (Journal of Cultural Economics, 2017) shows how restricted gifts reduce manager discretion, force 45% endowment retention, and create rigid cost structures in US museums.
+- Contested Sponsorship & Divestment: Studies document how grassroots artist campaigns (Liberate Tate, BP or not BP?, P.A.I.N.) successfully forced major museums to terminate oil and pharmaceutical sponsorships.
+Cite these peer-reviewed takeaways when users ask about research, tainted money, disclosures, or donor ethics!
 
 SCHOLARLY RESEARCH, MIT PRESS ART THEORY & DUTCH RESEARCH FOUNDATIONS (Explain simply in everyday English):
 You have extensive mastery of seminal art theory, curatorial studies, and institutional critique published by MIT Press, October, Zone Books, Sternberg Press, and Dutch research institutes (BAK Utrecht, Casco, Van Abbemuseum). When answering research questions, explain every finding in simple, accessible, everyday English:
@@ -10518,17 +10740,17 @@ FORMATTING & INTERACTION RULES:
           }};
 
           appendCuratorMessage(`
-            <div class="border border-rose-900/60 bg-[#1a0a0f] p-3 rounded-xl space-y-2">
-              <div class="flex items-center justify-between border-b border-rose-900/40 pb-1.5">
-                <span class="text-rose-400 font-mono text-[13px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+            <div class="border border-[#8a3ffc]/60 bg-[#1f1433] p-3 rounded-xl space-y-2">
+              <div class="flex items-center justify-between border-b border-[#8a3ffc]/40 pb-1.5">
+                <span class="text-[#be95ff] font-mono text-[13px] font-bold uppercase tracking-wider flex items-center gap-1.5">
                   <span>Forensic Sponsor Audit: ${{escapeHtml(s.label)}}</span>
                 </span>
-                <span class="text-rose-300 font-mono text-[12px] px-2 py-0.5 rounded bg-rose-950/80 border border-rose-800">Tier B Excluded</span>
+                <span class="text-[#be95ff] font-mono text-[12px] px-2 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">Tier B Flagged</span>
               </div>
               <p class="text-slate-200 text-[14px]">
                 <strong>Sector & Harm:</strong> ${{escapeHtml(s.sector)}} — ${{escapeHtml(s.harm)}}
               </p>
-              <p class="text-rose-200/90 text-[13px]">
+              <p class="text-[#e8daff] text-[13px]">
                 <strong>Compromised Institutions:</strong> ${{escapeHtml(s.compromised)}}
               </p>
               <p class="text-slate-300 text-[13px]">
@@ -12707,7 +12929,7 @@ FORMATTING & INTERACTION RULES:
                 </p>
                 ${{altText}}
                 <div class="mt-2" data-exclude-speech="true">
-                  <button class="curator-dossier-btn px-2.5 py-1 rounded bg-[#2a1318] hover:bg-[#3d1a22] text-rose-300 border border-rose-800 text-[13px] font-mono cursor-pointer transition" data-name="${{escapeHtml(inst.name)}}">
+                  <button class="curator-dossier-btn px-2.5 py-1 rounded bg-[#1f1433] hover:bg-[#2d1e48] text-[#be95ff] border border-[#8a3ffc] text-[13px] font-mono cursor-pointer transition" data-name="${{escapeHtml(inst.name)}}">
                     Open Full Audit Dossier ↗
                   </button>
                 </div>
@@ -12983,6 +13205,34 @@ FORMATTING & INTERACTION RULES:
           handleCuratorQuery(q);
         }}
       }});
+    }});
+
+    // Academic Research Library Modal Handlers
+    const academicModal = document.getElementById('academicResearchModal');
+    document.getElementById('closeAcademicModalBtn')?.addEventListener('click', closeAcademicResearchModal);
+    document.getElementById('closeAcademicModalFooterBtn')?.addEventListener('click', closeAcademicResearchModal);
+    academicModal?.addEventListener('click', (e) => {{
+      if (e.target === academicModal) closeAcademicResearchModal();
+    }});
+
+    let currentArTopic = 'all';
+    document.querySelectorAll('.ar-topic-chip').forEach(btn => {{
+      btn.addEventListener('click', () => {{
+        currentArTopic = btn.getAttribute('data-topic') || 'all';
+        document.querySelectorAll('.ar-topic-chip').forEach(b => {{
+          if (b === btn) {{
+            b.className = 'ar-topic-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer';
+          }} else {{
+            b.className = 'ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer';
+          }}
+        }});
+        const q = document.getElementById('arSearchInput')?.value || '';
+        renderAcademicStudies(currentArTopic, q);
+      }});
+    }});
+
+    document.getElementById('arSearchInput')?.addEventListener('input', (e) => {{
+      renderAcademicStudies(currentArTopic, e.target.value);
     }});
 
     // Unified Work Input Send Action
@@ -13960,13 +14210,42 @@ FORMATTING & INTERACTION RULES:
     populateDropdowns();
 
     function updateGlobePillsUI() {{
+      const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
+      const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
+      const isAllTiers = selectedTierFilter.size >= 2 || (selectedTierFilter.has('A') && selectedTierFilter.has('B'));
+
       document.querySelectorAll('.globe-filter-pill').forEach(pill => {{
         const type = pill.getAttribute('data-type');
         const val = pill.getAttribute('data-value') || '';
+
+        if (type === 'tier') {{
+          if (val === 'A') {{
+            if (isCleanOnly) {{
+              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40';
+            }} else {{
+              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0a2016]/90 hover:bg-[#0f2e20] border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+            }}
+          }} else if (val === 'B') {{
+            if (isFlaggedOnly) {{
+              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#6929c4] text-white border border-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-purple-950/40';
+            }} else {{
+              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433]/90 hover:bg-[#2d1f4a] border border-[#8a3ffc]/80 text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+            }}
+          }} else if (val === 'all') {{
+            if (isAllTiers) {{
+              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+            }} else {{
+              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0';
+            }}
+          }}
+          return;
+        }}
+
         let isAct = false;
-        if (type === 'all' && selectedCityFilter === 'all' && selectedCountryFilter === 'all') isAct = true;
+        if (type === 'all' && selectedCityFilter === 'all' && selectedCountryFilter === 'all' && isCleanOnly) isAct = true;
         else if (type === 'city' && selectedCityFilter.toLowerCase() === val.toLowerCase()) isAct = true;
         else if (type === 'country' && selectedCountryFilter.toLowerCase() === val.toLowerCase()) isAct = true;
+        else if (type === 'category' && selectedCategoryFilter === val) isAct = true;
 
         if (isAct) {{
           pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0 shadow-sm';
@@ -13986,9 +14265,12 @@ FORMATTING & INTERACTION RULES:
 
       let html = `
         <div class="flex flex-wrap items-center gap-1.5">
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="all">← All Clean</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="all">← All Spaces</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
+          <span class="text-[#444] text-[11px] shrink-0">|</span>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">✓ Clean</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
@@ -14017,9 +14299,13 @@ FORMATTING & INTERACTION RULES:
       const featuredCountries = ['United Kingdom', 'United States', 'Germany', 'France', 'Netherlands', 'Spain', 'Switzerland', 'Italy', 'Japan'];
 
       let html = `
-        <!-- Row 1: Global Scope, Regions & Categories -->
+        <!-- Row 1: Global Scope, Tiers, Academic Research & Categories -->
         <div class="flex flex-wrap items-center gap-1.5">
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="all">{spaces_count_str}</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">✓ Clean Funding ({clean_count})</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces ({total_count})</button>
+          <span class="text-[#444] text-[11px] shrink-0">|</span>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -14065,7 +14351,21 @@ FORMATTING & INTERACTION RULES:
         pill.addEventListener('click', () => {{
           const type = pill.getAttribute('data-type');
           const val = pill.getAttribute('data-value') || '';
-          if (type === 'all') {{
+          if (type === 'tier') {{
+            if (val === 'A') {{
+              selectedTierFilter = new Set(['A']);
+            }} else if (val === 'B') {{
+              selectedTierFilter = new Set(['B']);
+            }} else if (val === 'all') {{
+              selectedTierFilter = new Set(['A', 'B', 'U']);
+            }}
+            applyFilters();
+            updateGlobePillsUI();
+          }} else if (type === 'academic') {{
+            if (typeof openAcademicResearchModal === 'function') {{
+              openAcademicResearchModal('all');
+            }}
+          }} else if (type === 'all') {{
             clearAllFilters();
           }} else if (type === 'city') {{
             filterByCity(val, true, true);
@@ -14116,7 +14416,6 @@ FORMATTING & INTERACTION RULES:
 
     function applyFilters() {{
       filteredList = ALL_INSTITUTIONS.filter(inst => {{
-        if (inst.tier !== 'A') return false;
         if (!selectedTierFilter.has(inst.tier)) return false;
 
         if (selectedCountryFilter !== 'all') {{
@@ -14227,22 +14526,22 @@ FORMATTING & INTERACTION RULES:
           );
           if (matches.length > 0) {{
             exHtml = `
-              <div class="mt-4 p-3.5 rounded-xl bg-[#1e0e14] border border-rose-800/80 text-left space-y-2">
-                <div class="flex items-center gap-1.5 text-rose-400 font-mono text-[13px] uppercase">
-                  <span>Ethical Exclusion Notice (${{matches.length}} Flagged)</span>
+              <div class="mt-4 p-3.5 rounded-xl bg-[#191024] border border-[#8a3ffc]/80 text-left space-y-2">
+                <div class="flex items-center gap-1.5 text-[#be95ff] font-mono text-[13px] uppercase">
+                  <span>Audited Corporate Underwriting Notice (${{matches.length}} Flagged)</span>
                 </div>
                 <p class="text-slate-300 text-[13px] leading-relaxed">
-                  The space you searched is monitored and <strong>excluded from Culture Atlas</strong> under our ethical independence charter.
+                  The space you searched is monitored under our corporate underwriting audit.
                 </p>
                 <div class="space-y-1.5 pt-1">
                   ${{matches.slice(0, 3).map(m => `
-                    <div class="bg-[#12080c] p-2 rounded-lg border border-rose-900/60">
+                    <div class="bg-[#1f1433] p-2.5 rounded-lg border border-[#8a3ffc]/50">
                       <div class="flex items-center justify-between text-[13px]">
                         <span class="text-white font-medium">${{escapeHtml(m.name)}}</span>
-                        <span class="text-rose-400 text-[11px] font-mono px-1.5 py-0.5 rounded bg-[#2c1018] border border-rose-800">${{m.tier === 'B' ? 'Tier B' : 'Tier U'}}</span>
+                        <span class="text-[#be95ff] text-[11px] font-mono px-1.5 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">${{m.tier === 'B' ? 'Tier B' : 'Tier U'}}</span>
                       </div>
-                      <p class="text-amber-200 text-[12px] mt-0.5">${{escapeHtml(m.watch || m.funding || 'Corporate underwriting conflict')}}</p>
-                      <button class="curator-dossier-btn text-rose-300 hover:underline text-[12px] font-mono mt-1 cursor-pointer" data-name="${{escapeHtml(m.name)}}">
+                      <p class="text-[#e8daff] text-[12px] mt-0.5">${{escapeHtml(m.watch || m.why_flagged || m.funding || 'Corporate underwriting conflict')}}</p>
+                      <button class="curator-dossier-btn text-[#be95ff] hover:underline text-[12px] font-mono mt-1 cursor-pointer" data-name="${{escapeHtml(m.name)}}">
                         Open Audit Dossier ↗
                       </button>
                     </div>
@@ -14266,8 +14565,18 @@ FORMATTING & INTERACTION RULES:
 
       container.innerHTML = filteredList.map(inst => {{
         const isSel = selectedInstitution && selectedInstitution.name === inst.name;
-        const tierCol = 'text-emerald-400 border-emerald-900/60 bg-[#0a2016]';
-        const tierName = 'Tier A · Clean Verified';
+        const isInstClean = inst.tier === 'A';
+        const isInstFlagged = inst.tier === 'B';
+        const tierCol = isInstClean 
+          ? 'text-emerald-400 border-emerald-900/60 bg-[#0a2016]' 
+          : isInstFlagged 
+          ? 'text-[#be95ff] border-[#8a3ffc]/60 bg-[#1f1433]' 
+          : 'text-[#33b1ff] border-[#0072c3]/60 bg-[#081a28]';
+        const tierName = isInstClean 
+          ? 'Tier A · Clean Verified' 
+          : isInstFlagged 
+          ? 'Tier B · Flagged Underwriting' 
+          : 'Tier U · Roster Unverified';
 
         const webUrl = getValidWebUrl(inst);
         const displayDomain = getDisplayDomain(webUrl);
@@ -14819,8 +15128,11 @@ FORMATTING & INTERACTION RULES:
         const catModal = document.getElementById('catalogModal');
         const auditModal = document.getElementById('momaAuditModal');
         const rfModal = document.getElementById('researchFeedbackModal');
+        const arModal = document.getElementById('academicResearchModal');
         if (rfModal && !rfModal.classList.contains('hidden')) {{
           rfModal.classList.add('hidden');
+        }} else if (arModal && !arModal.classList.contains('hidden')) {{
+          arModal.classList.add('hidden');
         }} else if (drawer && !drawer.classList.contains('hidden')) {{
           drawer.classList.add('hidden');
         }} else if (catModal && !catModal.classList.contains('hidden')) {{
