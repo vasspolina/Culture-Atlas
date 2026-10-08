@@ -699,7 +699,7 @@ def build():
         <button id="mobileModeChatBtn" class="px-2 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Curator Chat">Chat</button>
       </div>
 
-      <!-- Desktop Center New Chat Button, Archives Directory & Separate Contribute Button -->
+      <!-- Desktop Center New Chat Button, Archives Directory, Governance Legend & Separate Contribute Button -->
       <div class="hidden md:flex items-center gap-2">
         <button id="topNewChatBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-full text-[14px] transition shadow-sm cursor-pointer" title="Start a new chat exploration">
           <span class="text-emerald-400 font-bold">+</span>
@@ -708,6 +708,10 @@ def build():
         <button id="topArchivesBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] hover:border-[#3b5585] text-[#93c5fd] hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Explore the Global Archives & Special Collections Directory">
           <span class="text-cyan-400 font-mono text-[12px]">📚</span>
           <span>Archives Directory</span>
+        </button>
+        <button id="topGovernanceBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] hover:border-[#3b5585] text-slate-300 hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Governance & Funding Transparency Methodology Legend">
+          <span class="text-blue-400 font-mono text-[12px]">⚖️</span>
+          <span>Methodology</span>
         </button>
         <button id="topContributeBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#1a2333] hover:bg-[#223048] border border-[#2f4368] hover:border-[#3b5585] text-[#78a9ff] hover:text-[#93c5fd] rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Contribute confidential insider intelligence or private info">
           <span class="text-emerald-400 font-mono text-[12px]">🔒</span>
@@ -732,6 +736,10 @@ def build():
 
       <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
         📚 Archives
+      </button>
+
+      <button id="mobileGovernanceBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
+        ⚖️ Legend
       </button>
 
       <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#1a2333] hover:bg-[#223048] border border-[#2f4368] text-[#78a9ff] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Contribute confidential intelligence">
@@ -873,8 +881,8 @@ def build():
     </div>
 
     <!-- RESIZABLE SPLITTER (Desktop: Vertical Drag / Mobile: Horizontal Drag · Double-click resets to 50%) -->
-    <div id="globeSplitter" class="relative w-full md:w-[6px] h-[5px] md:h-full bg-[#262626] hover:bg-[#3b82f6]/70 active:bg-[#3b82f6] cursor-row-resize md:cursor-col-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split screen · Double-click to reset to 50%">
-      <div class="w-10 md:w-[2px] h-[2px] md:h-10 rounded-full bg-[#52525b] group-hover:bg-[#93c5fd] transition"></div>
+    <div id="globeSplitter" class="relative w-full md:w-[6px] h-[5px] md:h-full bg-[#1c1c1f] hover:bg-[#2b2b30] active:bg-[#33333a] border-y md:border-y-0 md:border-x border-[#27272a] cursor-row-resize md:cursor-col-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split screen · Double-click to reset to 50%">
+      <div class="w-10 md:w-[2px] h-[2px] md:h-8 rounded-full bg-[#52525b] group-hover:bg-[#a1a1aa] transition"></div>
     </div>
 
     <!-- ========================================================= -->
@@ -1037,6 +1045,10 @@ def build():
                 <span class="flex items-center gap-1.5"><span>📚</span><span>Global Archives Directory</span></span>
                 <span class="text-[11px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">{archives_count}</span>
               </button>
+              <button id="workMenuGovernanceBtn" class="text-left px-3 py-2 bg-[#182030] hover:bg-[#222e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
+                <span class="flex items-center gap-1.5"><span>⚖️</span><span>Governance Methodology Legend</span></span>
+                <span class="text-[11px] font-mono text-blue-400 bg-blue-950/70 border border-blue-800/80 px-1.5 py-0.5 rounded">Audit</span>
+              </button>
               <button id="workMenuFeedbackBtn" class="text-left px-3 py-2 bg-[#1b263b] hover:bg-[#233554] text-[#78a9ff] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2f4975]">
                 <span class="flex items-center gap-1.5"><span>✍️</span><span>Contribute Research / Tip</span></span>
                 <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded">Verify</span>
@@ -1067,6 +1079,7 @@ def build():
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces ({total_count})</button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/60 text-[#60a5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="governance">⚖️ Governance Legend</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">📚 Archives Directory ({archives_count})</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
@@ -1702,6 +1715,158 @@ def build():
         </div>
         <button id="closeArchivesModalFooterBtn" class="px-4 py-1.5 bg-[#1e2638] hover:bg-[#2b374e] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
           Close Directory
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⚖️ GOVERNANCE & FUNDING TRANSPARENCY METHODOLOGY MODAL -->
+  <div id="governanceMethodologyModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
+    <div class="bg-[#10141f] border border-[#232f48] rounded-2xl sm:rounded-3xl max-w-4xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] flex flex-col gap-4 font-sans">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between border-b border-[#232f48] pb-3 shrink-0">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-xl bg-[#182030] border border-[#2d3d5a] flex items-center justify-center text-[22px] shrink-0 mt-0.5 shadow-sm">
+            ⚖️
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded border border-blue-500/60 bg-blue-950/40 text-blue-300 font-bold uppercase">Auditing Standard</span>
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#1c2940] text-[#93c5fd] border border-[#2d4368]">{total_count} Verified & Flagged Entities</span>
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#17202e] text-slate-300 border border-[#28384f]">IRS 990 · Charity Comm · DRAC · ANBI</span>
+            </div>
+            <h3 class="text-[18px] sm:text-[20px] font-semibold text-white tracking-tight mt-1 flex items-center gap-2">
+              <span>Governance & Funding Transparency Methodology</span>
+            </h3>
+            <p class="text-[12.5px] sm:text-[13px] text-slate-300 leading-snug">
+              Rigorous criteria used by Culture Atlas to investigate board conflicts, defense/fossil underwriting, and civic structural independence.
+            </p>
+          </div>
+        </div>
+        <button id="closeGovernanceModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-[#1a2333] transition cursor-pointer text-xl font-mono leading-none shrink-0" title="Close Modal">✕</button>
+      </div>
+
+      <!-- Scrollable Modal Body -->
+      <div class="flex-1 overflow-y-auto space-y-4 pr-1.5 custom-scrollbar text-[13px] leading-relaxed">
+        
+        <!-- Summary Callout -->
+        <div class="p-3.5 rounded-2xl bg-gradient-to-r from-[#141d2e] to-[#121927] border border-blue-900/50 space-y-2">
+          <div class="flex items-center gap-2 text-blue-400 font-mono text-[12px] font-semibold uppercase tracking-wider">
+            <span>🔬 Material Investigation Over Corporate PR</span>
+          </div>
+          <p class="text-slate-200 text-[13.5px]">
+            No predatory corporation or compromising trustee ever documents their conflicts on institutional PR websites. Culture Atlas tracks the <strong>material flow of capital, contracts, and board seats</strong> by auditing statutory filings submitted under penalty of perjury alongside open-source investigative dossiers.
+          </p>
+        </div>
+
+        <!-- 3 Core Classifications Grid -->
+        <div>
+          <h4 class="text-[14px] font-semibold text-white mb-2.5 flex items-center gap-2">
+            <span>🏛️ Institutional Governance Classifications</span>
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            
+            <!-- Verified Independent -->
+            <div class="p-3.5 rounded-2xl bg-[#0f172a]/90 border border-emerald-500/40 flex flex-col justify-between space-y-2.5">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded-md text-[11px] font-bold font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">VERIFIED</span>
+                  <span class="text-[12px] font-mono text-emerald-400">{clean_count} Spaces</span>
+                </div>
+                <h5 class="text-[15px] font-semibold text-white mt-1.5">Verified Independent Space</h5>
+                <p class="text-[12px] text-slate-300 mt-1">
+                  Spaces with structurally verified firewalls against predatory corporate capture: artist-run non-profits, cooperative commons, civic kunsthalles, and public university galleries.
+                </p>
+              </div>
+              <ul class="text-[11.5px] text-slate-300 space-y-1 list-disc list-inside border-t border-emerald-900/40 pt-2">
+                <li>Zero defense, fossil extraction, or predatory pharma trustees</li>
+                <li>No naming rights leased to controversial donors</li>
+                <li>Audited non-profit filings confirm civic missions</li>
+              </ul>
+            </div>
+
+            <!-- Flagged Underwriting -->
+            <div class="p-3.5 rounded-2xl bg-[#191428]/90 border border-purple-500/40 flex flex-col justify-between space-y-2.5">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded-md text-[11px] font-bold font-mono bg-purple-950/80 text-purple-300 border border-purple-700/60">FLAGGED</span>
+                  <span class="text-[12px] font-mono text-purple-400">{flagged_count} Spaces</span>
+                </div>
+                <h5 class="text-[15px] font-semibold text-white mt-1.5">Flagged Corporate Underwriting</h5>
+                <p class="text-[12px] text-slate-300 mt-1">
+                  Institutions with documented board conflicts, weapons manufacturing trustees, fossil fuel underwriting, private prison ties, or toxic philanthropy.
+                </p>
+              </div>
+              <ul class="text-[11.5px] text-slate-300 space-y-1 list-disc list-inside border-t border-purple-900/40 pt-2">
+                <li>Board seats tied to SEC 10-K defense/extractive firms</li>
+                <li>Sponsorships used for reputational artwashing</li>
+                <li>Exclusionary governance models documented</li>
+              </ul>
+            </div>
+
+            <!-- Community Layer -->
+            <div class="p-3.5 rounded-2xl bg-[#0c1c24]/90 border border-cyan-500/40 flex flex-col justify-between space-y-2.5">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded-md text-[11px] font-bold font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-700/60">COMMUNITY</span>
+                  <span class="text-[12px] font-mono text-cyan-400">Peer Reviewed</span>
+                </div>
+                <h5 class="text-[15px] font-semibold text-white mt-1.5">Community Layer</h5>
+                <p class="text-[12px] text-slate-300 mt-1">
+                  Grassroots artist-run project spaces, DIY venues, squat galleries, and local archives cataloged through whistleblower intakes and community researcher verification.
+                </p>
+              </div>
+              <ul class="text-[11.5px] text-slate-300 space-y-1 list-disc list-inside border-t border-cyan-900/40 pt-2">
+                <li>Crowdsourced field intelligence & local tips</li>
+                <li>Continuously verified against municipal filings</li>
+                <li>Open for peer corroboration and review</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Four Auditing Dossier Pillars -->
+        <div class="space-y-2">
+          <h4 class="text-[14px] font-semibold text-white flex items-center gap-2">
+            <span>📋 Statutory Filing Sources & Audit Records</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[12.5px]">
+            <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] text-slate-300 space-y-1">
+              <strong class="text-blue-300 block text-[13px]">1. IRS Form 990 (United States)</strong>
+              <span>We audit Schedules I (grants paid) and L (transactions with interested persons/trustee business ties). Under US federal perjury laws, undisclosed trustee contracts carry criminal liability.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] text-slate-300 space-y-1">
+              <strong class="text-blue-300 block text-[13px]">2. UK Charity Commission Register</strong>
+              <span>Statutory annual reports, trustee pecuniary registers, and public benefit declarations for UK art galleries and trusts under the Charities Act 2011.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] text-slate-300 space-y-1">
+              <strong class="text-blue-300 block text-[13px]">3. DRAC & European Civic Subsidies</strong>
+              <span>Public conventionnement records from France's Direction Régionale des Affaires Culturelles and Dutch ANBI (Public Benefit Organization) registries verifying non-commercial governance.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] text-slate-300 space-y-1">
+              <strong class="text-blue-300 block text-[13px]">4. Frontline Direct Action Alliances</strong>
+              <span>Direct corroboration with campaigns: Nan Goldin's P.A.I.N. (Sackler opioid divestment), Decolonize This Place, Liberate Tate (BP divestment), and Gulf Labor Coalition.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="shrink-0 flex items-center justify-between pt-2.5 border-t border-[#232f48] text-[12px] font-mono text-slate-400 flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <button id="govModalFilterCleanBtn" class="px-3 py-1.5 bg-[#059669] hover:bg-[#047857] text-white rounded-xl transition cursor-pointer font-medium flex items-center gap-1.5">
+            <span>✓ Show Independent ({clean_count})</span>
+          </button>
+          <button id="govModalFilterFlaggedBtn" class="px-3 py-1.5 bg-[#5b21b6] hover:bg-[#4c1d95] text-purple-200 hover:text-white rounded-xl transition cursor-pointer font-medium flex items-center gap-1.5">
+            <span>⚠ Show Flagged ({flagged_count})</span>
+          </button>
+        </div>
+        <button id="closeGovernanceModalFooterBtn" class="px-4 py-1.5 bg-[#1e2638] hover:bg-[#2b374e] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
+          Close Legend
         </button>
       </div>
 
@@ -10889,6 +11054,18 @@ def build():
     }}
     window.closeArchivesDirectoryModal = closeArchivesDirectoryModal;
 
+    function openGovernanceMethodologyModal() {{
+      const modal = document.getElementById('governanceMethodologyModal');
+      if (modal) modal.classList.remove('hidden');
+    }}
+    window.openGovernanceMethodologyModal = openGovernanceMethodologyModal;
+
+    function closeGovernanceMethodologyModal() {{
+      const modal = document.getElementById('governanceMethodologyModal');
+      if (modal) modal.classList.add('hidden');
+    }}
+    window.closeGovernanceMethodologyModal = closeGovernanceMethodologyModal;
+
     function updateArchivesFilterChipsUI() {{
       document.querySelectorAll('#archivesFilterChips .archives-filter-chip').forEach(ch => {{
         const f = ch.getAttribute('data-filter');
@@ -12055,7 +12232,9 @@ FORMATTING & INTERACTION RULES:
       const isWhoAreYou = /^(who\s+are\s+you|what\s+are\s+you|what\s+is\s+this|what\s+can\s+you\s+do|how\s+does\s+this\s+work|introduce\s+yourself|tell\s+me\s+about\s+yourself)(\s+|$|[!?,.])/i.test(q);
       const isVoiceTest = /^(make\s+it\s+talk\s+properly|talk\s+properly|speak\s+properly|can\s+you\s+speak|talk\s+to\s+me|speak\s+to\s+me|test\s+voice|audio\s+test|say\s+something)(\s+|$|[!?,.])/i.test(q) || q.includes('talk properly') || q.includes('speak properly');
       const isTalkBackIntent = /talk\s*back|train\s*(it|you)?\s*(to\s*)?talk\s*back|can\s*you\s*talk\s*back|push\s*back|argue\s*with\s*me|defend\s*yourself|debate\s*me/i.test(q) || q.includes('talk back');
-      const isMethodologyQuery = /material\s*research|material\s*investigation|online\s*(available\s*)?info|available\s*online|scraped|scraping|scrapping|unethical\s*practices|knowingly\s*make|why\s+would\s+an\s+organi[sz]ation|how\s+do\s+you\s+(know|audit|research|verify)|research\s+method|audit\s+method|how\s+we\s+audit|form\s*990|is\s+all\s+this\s+based|based\s+on\s+online|publicly\s*avail|bad\s*info|just\s*online|online\s*scrap/i.test(q) ||
+      const isMethodologyQuery = /atlas\s*methodology|governance\s*methodology|governance\s*legend|funding\s*methodology|funding\s*transparency|statutory\s*filing|audit\s*dossier|how\s+do\s+you\s+classify|classification\s*criteria|how\s+we\s+audit|how\s+do\s+you\s+(audit|verify)|material\s*research|material\s*investigation|online\s*(available\s*)?info|available\s*online|scraped|scraping|scrapping|unethical\s*practices|knowingly\s*make|why\s+would\s+an\s+organi[sz]ation|is\s+all\s+this\s+based|based\s+on\s+online|publicly\s*avail|bad\s*info|just\s*online|online\s*scrap/i.test(q) ||
+        (q.includes('governance') && (q.includes('method') || q.includes('legend') || (q.includes('atlas') && q.includes('tier')) || q.includes('transparency legend') || q.includes('how do you classify') || q.includes('classification criteria'))) ||
+        (q.includes('methodology') && (q.includes('atlas') || q.includes('audit') || q.includes('funding') || q.includes('research') || q.includes('legend') || q.includes('forensic'))) ||
         (q.includes('material') && (q.includes('research') || q.includes('online') || q.includes('info') || q.includes('practice') || q.includes('unethical'))) ||
         (q.includes('unethical') && (q.includes('online') || q.includes('admit') || q.includes('make') || q.includes('available') || q.includes('practices'))) ||
         (q.includes('bad') && q.includes('info') && (q.includes('public') || q.includes('online') || q.includes('available'))) ||
@@ -12238,8 +12417,11 @@ FORMATTING & INTERACTION RULES:
                 </div>
               </div>
 
-              <div class="pt-2 border-t border-sky-900/40 text-[13px] text-sky-200/90 leading-relaxed">
-                Culture Atlas does not take an institution's word for its ethics. We trace the material flow of capital, contracts, and board influence.
+              <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[13px]">
+                <span class="text-sky-200/90">Culture Atlas traces the material flow of capital, contracts, and board influence.</span>
+                <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm text-[12.5px]">
+                  <span>⚖️ Open Governance Legend ({total_count})</span>
+                </button>
               </div>
             </div>
           `, [
@@ -15874,6 +16056,33 @@ FORMATTING & INTERACTION RULES:
       if (e.target === archModal) closeArchivesDirectoryModal();
     }});
 
+    // ⚖️ Governance & Funding Transparency Methodology Modal Handlers
+    const govModal = document.getElementById('governanceMethodologyModal');
+    document.getElementById('topGovernanceBtn')?.addEventListener('click', openGovernanceMethodologyModal);
+    document.getElementById('mobileGovernanceBtn')?.addEventListener('click', openGovernanceMethodologyModal);
+    document.getElementById('workMenuGovernanceBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      workPlusMenu?.classList.add('hidden');
+      openGovernanceMethodologyModal();
+    }});
+    document.getElementById('closeGovernanceModalBtn')?.addEventListener('click', closeGovernanceMethodologyModal);
+    document.getElementById('closeGovernanceModalFooterBtn')?.addEventListener('click', closeGovernanceMethodologyModal);
+    govModal?.addEventListener('click', (e) => {{
+      if (e.target === govModal) closeGovernanceMethodologyModal();
+    }});
+    document.getElementById('govModalFilterCleanBtn')?.addEventListener('click', () => {{
+      closeGovernanceMethodologyModal();
+      selectedTierFilter = new Set(['A']);
+      applyFilters();
+      updateGlobePillsUI();
+    }});
+    document.getElementById('govModalFilterFlaggedBtn')?.addEventListener('click', () => {{
+      closeGovernanceMethodologyModal();
+      selectedTierFilter = new Set(['B']);
+      applyFilters();
+      updateGlobePillsUI();
+    }});
+
     const archivesSearchInput = document.getElementById('archivesSearchInput');
     const clearArchivesSearchBtn = document.getElementById('clearArchivesSearchBtn');
     archivesSearchInput?.addEventListener('input', (e) => {{
@@ -17094,6 +17303,10 @@ FORMATTING & INTERACTION RULES:
           }} else if (type === 'archives') {{
             if (typeof openArchivesDirectoryModal === 'function') {{
               openArchivesDirectoryModal('all');
+            }}
+          }} else if (type === 'governance') {{
+            if (typeof openGovernanceMethodologyModal === 'function') {{
+              openGovernanceMethodologyModal();
             }}
           }} else if (type === 'all') {{
             clearAllFilters();
