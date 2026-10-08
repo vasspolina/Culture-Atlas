@@ -36,7 +36,7 @@ def run_tests():
         const allLen = window.ALL_INSTITUTIONS ? window.ALL_INSTITUTIONS.length : 0;
         const arLen = window.ACADEMIC_RESEARCH ? window.ACADEMIC_RESEARCH.length : 0;
         assert('Total institutions loaded >= 1000', allLen >= 1000, `Found: ${allLen}`);
-        assert('Academic studies loaded >= 80', arLen >= 80, `Found: ${arLen}`);
+        assert('Academic studies loaded >= 100', arLen >= 100, `Found: ${arLen}`);
 
         // =========================================================================
         // 2. CLEAN FUNDING FILTER ON ON LOAD
@@ -99,7 +99,7 @@ def run_tests():
         if (closeBtn) closeBtn.click();
 
         // =========================================================================
-        // 5. ACADEMIC RESEARCH LIBRARY MODAL
+        // 5. ACADEMIC RESEARCH LIBRARY MODAL & SPONSOR NETWORKS TOPIC
         // =========================================================================
         const arModal = document.getElementById('academicResearchModal');
         assert('academicResearchModal exists in DOM', !!arModal);
@@ -110,6 +110,16 @@ def run_tests():
 
           const papersList = document.getElementById('arPapersList');
           assert('Academic papers list is populated', papersList && papersList.children.length > 0, `Papers rendered: ${papersList ? papersList.children.length : 0}`);
+
+          // Test Sponsor Networks topic filtering
+          const networksChip = document.querySelector('.ar-topic-chip[data-topic="networks"]');
+          assert('Sponsor Networks topic chip exists', !!networksChip);
+          if (networksChip) {
+            networksChip.click();
+            await new Promise(r => setTimeout(r, 100));
+            const netCount = papersList.children.length;
+            assert('Sponsor Networks topic filters relevant studies', netCount > 0, `Studies found: ${netCount}`);
+          }
 
           // Test search filtering in academic modal
           const searchInput = document.getElementById('arSearchInput');
@@ -126,6 +136,19 @@ def run_tests():
             window.closeAcademicResearchModal();
             assert('closeAcademicResearchModal hides modal', arModal.classList.contains('hidden'));
           }
+        }
+
+        // =========================================================================
+        // 6. CURATOR CHAT CONNECTIONS AMONG CULTURAL SPONSORS INQUIRY
+        // =========================================================================
+        if (typeof window.atlasAskCurator === 'function') {
+          window.atlasAskCurator('connections among cultural sponsors');
+          await new Promise(r => setTimeout(r, 300));
+
+          const curatorMsgs = document.querySelectorAll('.curator-message-wrap');
+          const lastMsg = curatorMsgs[curatorMsgs.length - 1];
+          assert('Curator responds to connections among cultural sponsors inquiry', lastMsg && (lastMsg.textContent.includes('Network Logic') || lastMsg.textContent.includes('Consensus Academic Graph')), lastMsg ? lastMsg.textContent.slice(0, 150) : '');
+          assert('Curator response covers legitimacy transfer and self-censorship', lastMsg && (lastMsg.textContent.includes('Legitimacy Transfer') || lastMsg.textContent.includes('Self-Censorship')));
         }
 
       } catch (err) {

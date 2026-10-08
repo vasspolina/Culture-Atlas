@@ -1394,7 +1394,7 @@ def build():
           <span class="text-[20px]">🔬</span>
           <div>
             <h3 class="text-[17px] font-normal text-white">Academic Research Library: Museum Funding & Ethics</h3>
-            <p class="text-[12px] text-[#33b1ff] font-mono">Consensus Peer-Reviewed Corpus · 89 Empirical Studies & Critical Frameworks</p>
+            <p class="text-[12px] text-[#33b1ff] font-mono">Consensus Peer-Reviewed Corpus · {academic_count} Empirical Studies & Critical Frameworks</p>
           </div>
         </div>
         <button id="closeAcademicModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">✕</button>
@@ -1403,10 +1403,11 @@ def build():
       <!-- Search & Topic Filter -->
       <div class="shrink-0 space-y-2">
         <div class="relative">
-          <input type="text" id="arSearchInput" placeholder="Search 89 peer-reviewed studies by keyword, author, or journal..." class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#33b1ff] font-sans">
+          <input type="text" id="arSearchInput" placeholder="Search {academic_count} peer-reviewed studies by keyword, author, or journal..." class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#33b1ff] font-sans">
         </div>
         <div class="flex flex-wrap items-center gap-1.5 text-[12px]" id="arTopicChips">
           <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer" data-topic="all">All Studies ({academic_count})</button>
+          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="networks">Sponsor Networks & Interlocks</button>
           <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="tainted">Tainted Money & Ethics</button>
           <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="governance">Donor Governance</button>
           <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="fossil">Fossil Fuels & Climate</button>
@@ -7232,14 +7233,17 @@ def build():
       if (inst) openDossier(inst);
     }};
 
-    window.atlasAskCurator = function(instName) {{
-      const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+    window.atlasAskCurator = function(queryOrInstName) {{
+      if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {{
+        setMobileViewMode('chat');
+      }}
+      const inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === (queryOrInstName || '').toLowerCase());
       if (inst) {{
-        if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {{
-          setMobileViewMode('chat');
-        }}
         appendUserMessage(`Tell me about ${{inst.name}}`);
         handleCuratorQuery(inst.name);
+      }} else if (queryOrInstName) {{
+        appendUserMessage(queryOrInstName);
+        handleCuratorQuery(queryOrInstName);
       }}
     }};
 
@@ -9784,6 +9788,7 @@ def build():
       const filtered = ACADEMIC_RESEARCH.filter(p => {{
         if (topic && topic !== 'all') {{
           const tText = ((p.title || '') + ' ' + (p.takeaway || '') + ' ' + (p.abstract || '')).toLowerCase();
+          if (topic === 'networks' && !tText.includes('network') && !tText.includes('interlock') && !tText.includes('sponsor') && !tText.includes('corporate') && !tText.includes('tie') && !tText.includes('connect') && !tText.includes('patron')) return false;
           if (topic === 'tainted' && !tText.includes('tainted') && !tText.includes('moral') && !tText.includes('ethic')) return false;
           if (topic === 'governance' && !tText.includes('governance') && !tText.includes('donor') && !tText.includes('board')) return false;
           if (topic === 'fossil' && !tText.includes('fossil') && !tText.includes('climate') && !tText.includes('bp') && !tText.includes('oil') && !tText.includes('environmental')) return false;
@@ -9865,14 +9870,18 @@ CORE INSTRUCTION: SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE.
 - Speak like a knowledgeable, friendly human who explains things directly and simply.
 - Keep sentences short, clean, and conversational.
 
-PEER-REVIEWED ACADEMIC RESEARCH CORPUS (Consensus 89 Studies):
-You have deep mastery of 89 empirical studies on museum funding, donor governance, tainted money, and mandatory disclosures:
-- Tainted Money & Public Preferences: Research (PNAS Nexus, 2023) proves professional fundraisers and the public hold diverging moral boundaries; laypeople strongly favor strict ethical boundaries against taking gifts from harmful industries.
-- Mandatory Disclosure vs Disclose-on-Request: Barber, Farwell & Galle (Nonprofit and Voluntary Sector Quarterly, 2020) prove that mandatory disclosure forces donors to penalize high overhead/fundraising costs, whereas disclose-on-request requirements fail because donors rarely actively seek unpublicized information.
+PEER-REVIEWED ACADEMIC RESEARCH CORPUS (Consensus {academic_count} Studies):
+You have deep mastery of {academic_count} empirical studies on museum funding, sponsor networks, donor governance, tainted money, and mandatory disclosures:
+- Connections Among Cultural Sponsors & Network Logic: Research on sponsor networks reveals that corporate sponsorship functions as a multi-organizational political-economic network rather than isolated philanthropic transactions. Controversial corporate sponsors (fossil fuels, defense manufacturing, tobacco, private equity) invest in cultural institutions to secure legitimacy transfer, social license, and elite access until public scrutiny ruptures the relationship.
+- Curatorial Autonomy & Indirect Self-Censorship: Davidsson & Sørensen (2010), Mateos Rusillo (2019), and Alexander prove that corporate influence primarily acts through anticipatory self-censorship, blockbuster exhibition favoritism, and subtle alignment with sponsor marketing goals rather than direct editorial diktats.
+- Board Interlocks & Political Embeddedness: Zheng & Ni (2023), Zhou et al. (2021), and Betzler (2015) demonstrate how interlocking boards and political ties generate performative compliance while dampening substantive disclosure of controversial patron arrangements.
+- Corporate Art Intervention & Commercialization: Chin-tao Wu (Privatising Culture: Corporate Art Intervention Since the 1980s, Verso) and Steele (2008) trace how corporate tax incentives and trustee commercialization reshaped museum priorities.
+- Tax-Exempt Corporate Lobbying: Bertrand, Bombardini, Fisman & Trebbi (American Economic Review) establish corporate philanthropy functions as strategic political influence.
+- Tainted Donors & Rupture Catalysts: Dunn (2010), Wright et al. (2019), and Epstein file case studies show that institutions cling to tainted funding under competitive pressures until investigative media exposure (The Guardian, Democracy Now, e-flux, Dutch press) and artist activism (Liberate Tate, Nan Goldin P.A.I.N.) make the association too public and costly to defend.
+- Mandatory Disclosure vs Disclose-on-Request: Barber, Farwell & Galle (Nonprofit and Voluntary Sector Quarterly, 2020) and Harris & Neely (2018) prove that mandatory disclosure forces donors to penalize high overhead/fundraising costs, whereas disclose-on-request requirements fail because donors rarely actively seek unpublicized information.
 - Donor Response to Fraud & Media Oversight: Harris, Petrovits & Yetman (2023) show that media reporting of asset diversions severely decreases donations, and donors only moderate penalties when nonprofits enact transparent public disclosures and governance overhauls.
 - Donor Governance & Cost Structures: Yermack (Journal of Cultural Economics, 2017) shows how restricted gifts reduce manager discretion, force 45% endowment retention, and create rigid cost structures in US museums.
-- Contested Sponsorship & Divestment: Studies document how grassroots artist campaigns (Liberate Tate, BP or not BP?, P.A.I.N.) successfully forced major museums to terminate oil and pharmaceutical sponsorships.
-Cite these peer-reviewed takeaways when users ask about research, tainted money, disclosures, or donor ethics!
+Cite these peer-reviewed takeaways when users ask about research, sponsor networks, tainted money, disclosures, or donor ethics!
 
 SCHOLARLY RESEARCH, MIT PRESS ART THEORY & DUTCH RESEARCH FOUNDATIONS (Explain simply in everyday English):
 You have extensive mastery of seminal art theory, curatorial studies, and institutional critique published by MIT Press, October, Zone Books, Sternberg Press, and Dutch research institutes (BAK Utrecht, Casco, Van Abbemuseum). When answering research questions, explain every finding in simple, accessible, everyday English:
@@ -12245,6 +12254,38 @@ FORMATTING & INTERACTION RULES:
               - <strong>The Sensation of Space:</strong> Under modern capitalism, mega-museums (like the Guggenheim or new blockbuster wings) redesigned themselves around massive cavernous atriums. Instead of focusing on art, visitors go to experience a dizzying bodily thrill inside dramatic architecture.<br>
               - <strong>Museums as Shopping Malls:</strong> Krauss warned that museum visitors were being turned into consumers. The museum experience became focused on gift shops, restaurant atriums, and fast visual sensations—treating art as a lifestyle backdrop rather than a subject for serious reflection.
             </p>
+          `);
+          return;
+        }}
+
+        // Research Handler: Connections Among Cultural Sponsors & Network Logic (Consensus Thread)
+        if (q.includes('connections among') || q.includes('connections between') || q.includes('sponsor network') || q.includes('sponsor networks') || q.includes('interlocking') || (q.includes('guardian') && (q.includes('democracy now') || q.includes('e-flux')))) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-[#be95ff] font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Empirical Research Synthesis</span>
+                <span>·</span>
+                <span>Consensus Academic Graph</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Connections Among Cultural Sponsors: Network Logic & Institutional Influence</h4>
+              <p class="text-slate-300 leading-relaxed text-[13px]">
+                Consensus synthesis of peer-reviewed studies (PNAS Nexus, Barabási & Shekhtman, Yermack, Chin-tao Wu, Bertrand et al.) demonstrates that cultural sponsorship operates as an interlocking <strong>political-economic network</strong> rather than isolated charitable gifts:
+              </p>
+              <div class="space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>1. Legitimacy Transfer over Direct Control:</strong> Controversial corporate sponsors (fossil fuels, defense manufacturing, tobacco, private equity) rarely demand overt editorial control. Instead, they buy <em>legitimacy transfer</em>—using the moral authority and public trust of respected museums to acquire social license and insulate their corporate brands.
+                </p>
+                <p>
+                  <strong>2. Anticipatory Self-Censorship:</strong> Empirical studies (Davidsson & Sørensen 2010; Mateos Rusillo 2019) show that funding dependence induces <em>anticipatory self-censorship</em> among museum leadership, subtly biasing programming toward safe blockbuster formats and corporate-friendly narratives.
+                </p>
+                <p>
+                  <strong>3. Interlocking Boards & Elite Conduits:</strong> Network analyses (Zheng & Ni 2023; Betzler 2015; Zhou et al. 2021; Barabási & Shekhtman) document how museum trustees create conduits between cultural institutions, corporate boardrooms, and regulatory regimes, converting cultural capital into political proximity.
+                </p>
+                <p>
+                  <strong>4. What Triggers Rupture:</strong> Research confirms institutions rarely divest from tainted sponsors voluntarily. Severance occurs only when investigative journalism (The Guardian, Democracy Now, e-flux, Dutch newspapers) and artist coalitions (Liberate Tate, Nan Goldin's P.A.I.N., Decolonize This Place) make the association highly visible and intolerable to the public.
+                </p>
+              </div>
+            </div>
           `);
           return;
         }}
