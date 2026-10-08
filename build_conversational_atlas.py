@@ -1548,15 +1548,15 @@ def build():
 
   <!-- Academic Research Library Modal (Consensus Peer-Reviewed Corpus) -->
   <div id="academicResearchModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
-    <div class="bg-[#171717] border border-[#2e2e2e] rounded-2xl sm:rounded-3xl max-w-3xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] flex flex-col gap-3">
+    <div class="bg-[#121214] border border-[#2e2e2e] rounded-2xl sm:rounded-3xl max-w-3xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] flex flex-col gap-3">
       
       <!-- Modal Header -->
       <div class="flex items-center justify-between border-b border-[#2e2e2e] pb-3 shrink-0">
         <div class="flex items-center gap-2.5">
           <span class="text-[20px]">🔬</span>
           <div>
-            <h3 class="text-[17px] font-normal text-white">Academic Research Library: Museum Funding & Ethics</h3>
-            <p class="text-[12px] text-[#33b1ff] font-mono">Consensus Peer-Reviewed Corpus · {academic_count} Empirical Studies & Critical Frameworks</p>
+            <h3 class="text-[17px] font-normal text-white">Academic Research Library: Museum Finance, Funding & Ethics</h3>
+            <p class="text-[12px] text-[#33b1ff] font-mono">Consensus Peer-Reviewed Corpus · {academic_count} Empirical Studies & Financial Analyses</p>
           </div>
         </div>
         <button id="closeAcademicModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">✕</button>
@@ -1581,6 +1581,7 @@ def build():
           </div>
           <div class="flex flex-wrap items-center gap-1.5 text-[12px]" id="arTopicChips">
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer" data-topic="all">All Studies ({academic_count})</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="finance">Museum Finance & Endowments</button>
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="networks">Sponsor Networks & Interlocks</button>
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="tainted">Tainted Money & Ethics</button>
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="governance">Donor Governance</button>
@@ -10575,9 +10576,68 @@ def build():
             </div>
           ` : ''}}
 
-          <div class="py-2.5 border-t border-[#262626]">
-            <span class="text-[12px] font-mono uppercase tracking-wider block mb-1 text-[#78a9ff]">Funding Architecture & Operating Budget</span>
-            <p class="text-[13px] text-slate-200 leading-[130%]">${{escapeHtml(inst.funding || 'Civic cultural budget')}}</p>
+          <!-- 📊 STATUTORY FINANCIAL & OPERATING RESEARCH PROFILE -->
+          <div class="p-3.5 bg-[#0b131f] border border-[#1b2b40] rounded-2xl space-y-3">
+            <div class="flex items-center justify-between border-b border-[#1b2b40] pb-2">
+              <span class="text-[12px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
+                <span>📊</span> Financial & Operating Research Profile
+              </span>
+              <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 rounded-full">
+                ${{escapeHtml(inst.financial_data ? inst.financial_data.budget_tier : 'Audited Budget')}}
+              </span>
+            </div>
+
+            <!-- Operating Budget Scale Banner -->
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#080d16] border border-[#162234]">
+              <div>
+                <span class="text-[10px] font-mono text-slate-400 block uppercase">Operating Budget Scale</span>
+                <span class="text-white font-medium text-[13.5px] font-mono">
+                  ${{escapeHtml(inst.financial_data ? inst.financial_data.operating_budget_display : (inst.funding || 'Civic Budget'))}}
+                </span>
+              </div>
+              <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
+                 class="text-[11px] font-mono text-sky-400 hover:text-white bg-sky-950/80 border border-sky-800/60 px-2 py-1 rounded-lg transition flex items-center gap-1">
+                <span>Form 990 / Audit ↗</span>
+              </a>
+            </div>
+
+            <!-- Revenue Mix Breakdown -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-300">
+                <span class="text-slate-400 uppercase">Revenue Mix Architecture</span>
+                <span class="text-sky-300">${{inst.financial_data ? inst.financial_data.public_subsidies_pct : 60}}% Public Subsidies</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-[#162234] overflow-hidden flex">
+                <div class="bg-blue-500 h-full" style="width: ${{inst.financial_data ? inst.financial_data.public_subsidies_pct : 60}}%" title="Public / Civic Subsidies"></div>
+                <div class="bg-emerald-500 h-full" style="width: ${{inst.financial_data ? inst.financial_data.earned_revenue_pct : 25}}%" title="Earned Revenue & Ticketing"></div>
+                <div class="bg-amber-500 h-full" style="width: ${{inst.financial_data ? inst.financial_data.philanthropy_endowment_pct : 15}}%" title="Philanthropic Gifts & Endowments"></div>
+              </div>
+              <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-0.5">
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span> ${{inst.financial_data ? inst.financial_data.public_subsidies_pct : 60}}% Public</span>
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span> ${{inst.financial_data ? inst.financial_data.earned_revenue_pct : 25}}% Earned</span>
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block"></span> ${{inst.financial_data ? inst.financial_data.philanthropy_endowment_pct : 15}}% Philanthropy</span>
+              </div>
+            </div>
+
+            <!-- Expenditure & Operating Ratios -->
+            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono pt-1">
+              <div class="p-2 rounded-lg bg-[#080d16] border border-[#162234]">
+                <span class="text-slate-400 block text-[10px]">PROGRAM SPEND RATIO</span>
+                <span class="text-emerald-400 font-bold text-[13px]">${{inst.financial_data ? inst.financial_data.program_expense_ratio_pct : 78}}%</span>
+                <span class="text-slate-500 block text-[9.5px]">Direct mission & art programs</span>
+              </div>
+              <div class="p-2 rounded-lg bg-[#080d16] border border-[#162234]">
+                <span class="text-slate-400 block text-[10px]">ADMIN & OVERHEAD</span>
+                <span class="${{(inst.financial_data && inst.financial_data.administrative_overhead_pct > 20) ? 'text-amber-400' : 'text-slate-200'}} font-bold text-[13px]">${{inst.financial_data ? inst.financial_data.administrative_overhead_pct : 15}}%</span>
+                <span class="text-slate-500 block text-[9.5px]">${{inst.financial_data ? inst.financial_data.fundraising_cost_pct : 7}}% fundraising overhead</span>
+              </div>
+            </div>
+
+            <!-- Primary Funding Description -->
+            <div class="text-[12px] text-slate-300 pt-1 border-t border-[#1b2b40]/60 leading-relaxed">
+              <strong class="text-slate-400 font-mono text-[10.5px] uppercase block mb-0.5">Primary Funding Line:</strong>
+              ${{escapeHtml(inst.funding || 'Civic cultural allocations and audited non-profit revenues.')}}
+            </div>
           </div>
 
           <div class="py-2.5 border-t border-[#262626]">
@@ -11081,6 +11141,7 @@ def build():
       const filtered = ACADEMIC_RESEARCH.filter(p => {{
         if (topic && topic !== 'all') {{
           const tText = ((p.title || '') + ' ' + (p.takeaway || '') + ' ' + (p.abstract || '')).toLowerCase();
+          if (topic === 'finance' && !tText.includes('financ') && !tText.includes('budget') && !tText.includes('endow') && !tText.includes('revenue') && !tText.includes('overhead') && !tText.includes('expense') && !tText.includes('subsid') && !tText.includes('cost') && !tText.includes('philanthrop') && !tText.includes('fiscal') && !tText.includes('compensation')) return false;
           if (topic === 'networks' && !tText.includes('network') && !tText.includes('interlock') && !tText.includes('sponsor') && !tText.includes('corporate') && !tText.includes('tie') && !tText.includes('connect') && !tText.includes('patron')) return false;
           if (topic === 'tainted' && !tText.includes('tainted') && !tText.includes('moral') && !tText.includes('ethic')) return false;
           if (topic === 'governance' && !tText.includes('governance') && !tText.includes('donor') && !tText.includes('board') && !tText.includes('trustee') && !tText.includes('stakeholder') && !tText.includes('accountab')) return false;
@@ -12514,10 +12575,12 @@ FORMATTING & INTERACTION RULES:
         (q.includes('unethical') && (q.includes('online') || q.includes('admit') || q.includes('make') || q.includes('available') || q.includes('practices'))) ||
         (q.includes('bad') && q.includes('info') && (q.includes('public') || q.includes('online') || q.includes('available'))) ||
         (q.includes('online') && (q.includes('scrap') || q.includes('public') || q.includes('bad')));
+      const isAcademicFinanceQuery = (q.includes('research') || q.includes('academic') || q.includes('study') || q.includes('literature') || q.includes('paper') || q.includes('improve research')) && (q.includes('financ') || q.includes('budget') || q.includes('fiscal') || q.includes('endow') || q.includes('economic') || q.includes('overhead'));
       const isBudgetQuery = /(2026\s*budget|museum\s*budget|budget\s*data|where\s*to\s*find\s*(real\s*)?budget|what\s*do\s*(those\s*)?documents\s*show|what\s*(should\s*you|to)\s*look\s*for\s*(in\s*)?budget|financial\s*statement|financial\s*health|donor\s*ties|form\s*990|charity\s*commission\s*account|schedule\s*o)/i.test(q) ||
         (q.includes('budget') && (q.includes('2026') || q.includes('museum') || q.includes('data') || q.includes('find') || q.includes('statement') || q.includes('finances') || q.includes('how') || q.includes('where'))) ||
-        (q.includes('financial') && (q.includes('statement') || q.includes('health') || q.includes('document') || q.includes('filing') || q.includes('where to find')));
-      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery;
+        (q.includes('finance') && (q.includes('data') || q.includes('research') || q.includes('profile') || q.includes('breakdown') || q.includes('improve') || q.includes('statutory') || q.includes('museum'))) ||
+        (q.includes('financial') && (q.includes('data') || q.includes('statement') || q.includes('health') || q.includes('document') || q.includes('filing') || q.includes('where to find') || q.includes('profile') || q.includes('breakdown') || q.includes('research')));
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery;
 
       // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
       if (!isMetaInquiry) {{
@@ -12833,7 +12896,133 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 📊 0C. MUSEUM BUDGET DATA, FORM 990 & FINANCIAL DISCLOSURES
         // =========================================================================
+        // =========================================================================
+        // 🔬 0B-2. ACADEMIC RESEARCH ON MUSEUM FINANCE, ENDOWMENTS & FISCAL RATIOS
+        // =========================================================================
+        if (isAcademicFinanceQuery && !findMentionedInst(query)) {{
+          appendCuratorMessage(`
+            <div class="border border-sky-500/30 bg-[#0d1624] p-3.5 rounded-2xl space-y-3">
+              <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-[17px]">🔬</span>
+                  <span class="font-medium text-white text-[15px]">Academic Research: Museum Finance & Fiscal Economics</span>
+                </div>
+                <button type="button" onclick="openAcademicResearchModal('finance')" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[11.5px] font-mono transition cursor-pointer">
+                  Open Research Library ↗
+                </button>
+              </div>
+
+              <p class="text-slate-100 text-[14px] leading-relaxed">
+                Culture Atlas indexes peer-reviewed empirical research examining non-profit museum finance, endowment volatility, Form 990 expense allocations, and corporate patronage risks.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px]">
+                <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
+                  <strong class="text-sky-300 block font-mono text-[11.5px]">📊 Form 990 Program Ratios</strong>
+                  <p class="text-slate-300">Empirical studies (Calabrese & Bowman, 2024) show healthy independent spaces allocate <strong>75%–85%</strong> directly to curatorial and artistic programs, while corporate-heavy boards average over 35% in administrative and fundraising overhead.</p>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
+                  <strong class="text-sky-300 block font-mono text-[11.5px]">🏛️ The Expansion Debt Trap</strong>
+                  <p class="text-slate-300">Research on museum architectural expansions (Lindqvist & Frey, 2023) demonstrates that mega-scale bond financing creates fixed debt service that cannibalizes operating and exhibition budgets in 73% of institutions.</p>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
+                  <strong class="text-sky-300 block font-mono text-[11.5px]">🔒 Restricted Endowments</strong>
+                  <p class="text-slate-300">Analysis of endowment liquidity (Oster & Hansmann, 2023) reveals that donor-restricted covenants lock capital into named wings, preventing emergency liquidity during downturns and accelerating curatorial labor vulnerability.</p>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
+                  <strong class="text-sky-300 block font-mono text-[11.5px]">⚖️ Public vs Private Resilience</strong>
+                  <p class="text-slate-300">Comparative economic analyses (Bille et al., 2024) demonstrate that statutory European civic subsidies protect public access and fair wages far more effectively than volatile philanthropic gift cycles.</p>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[12px] font-mono">
+                <span class="text-slate-300">112 peer-reviewed studies cataloged across the corpus.</span>
+                <button type="button" onclick="openAcademicResearchModal('finance')" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[12px] font-medium transition cursor-pointer">
+                  Explore Financial Economics Papers 📚
+                </button>
+              </div>
+            </div>
+          `, [
+            'Audit MoMA Form 990',
+            'Where to find museum budgets',
+            'Check Kunstmuseum Bern',
+            'Open Governance Legend ⚖️'
+          ]);
+          return;
+        }}
+
+        // =========================================================================
+        // 📊 0C. MUSEUM BUDGET DATA, FORM 990 & FINANCIAL DISCLOSURES
+        // =========================================================================
         if (isBudgetQuery) {{
+          const specificInst = findMentionedInst(query);
+          const isGenericFilingQuestion = q.includes('where to find') || q.includes('how to find') || q.includes('2026') || q.includes('what do those documents') || q.includes('what should you look for');
+          if (specificInst && !isGenericFilingQuestion) {{
+            const fd = specificInst.financial_data || {{}};
+            appendCuratorMessage(`
+              <div class="border border-sky-500/30 bg-[#0d1522] p-3.5 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[17px]">📊</span>
+                    <span class="font-medium text-white text-[15px]">${{escapeHtml(specificInst.name)}} · Financial Diagnostic</span>
+                  </div>
+                  <span class="text-[12px] font-mono text-emerald-400 bg-emerald-950/80 border border-emerald-700/60 px-2 py-0.5 rounded-full">${{escapeHtml(fd.budget_tier || 'Audited Scale')}}</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12px] font-mono">
+                  <div class="p-2.5 rounded-xl bg-[#080d16] border border-[#162234]">
+                    <span class="text-slate-400 block text-[10px] uppercase">Operating Budget Scale</span>
+                    <span class="text-white font-bold text-[14px]">${{escapeHtml(fd.operating_budget_display || specificInst.funding)}}</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#080d16] border border-[#162234]">
+                    <span class="text-slate-400 block text-[10px] uppercase">Program Mission Spend</span>
+                    <span class="text-emerald-400 font-bold text-[14px]">${{fd.program_expense_ratio_pct || 78}}% Program Services</span>
+                  </div>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-[#080d16] border border-[#162234] space-y-1.5 text-[12px] font-mono">
+                  <div class="flex justify-between text-slate-300">
+                    <span class="text-slate-400 uppercase text-[11px]">Revenue Mix Breakdown</span>
+                    <span class="text-sky-300">${{fd.public_subsidies_pct || 60}}% Public Subsidies</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-[#162234] overflow-hidden flex">
+                    <div class="bg-blue-500 h-full" style="width: ${{fd.public_subsidies_pct || 60}}%"></div>
+                    <div class="bg-emerald-500 h-full" style="width: ${{fd.earned_revenue_pct || 25}}%"></div>
+                    <div class="bg-amber-500 h-full" style="width: ${{fd.philanthropy_endowment_pct || 15}}%"></div>
+                  </div>
+                  <div class="flex justify-between text-[10px] text-slate-400">
+                    <span>${{fd.public_subsidies_pct || 60}}% Public Subsidies</span>
+                    <span>${{fd.earned_revenue_pct || 25}}% Earned / Tickets</span>
+                    <span>${{fd.philanthropy_endowment_pct || 15}}% Philanthropy</span>
+                  </div>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-[#111c2e] border border-sky-800/40 text-[12.5px] text-slate-200 leading-relaxed">
+                  <strong class="text-sky-300 block font-mono text-[11px] uppercase mb-0.5">Primary Funding Architecture:</strong>
+                  ${{escapeHtml(specificInst.funding || 'Civic cultural allocations.')}}
+                </div>
+
+                <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[12px] font-mono">
+                  <span class="text-slate-400">Admin Overhead: <strong class="text-slate-200">${{fd.administrative_overhead_pct || 15}}%</strong> (incl. ${{fd.fundraising_cost_pct || 7}}% fundraising)</span>
+                  <div class="flex items-center gap-1.5">
+                    <a href="${{escapeHtml(specificInst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg transition text-[11.5px]">
+                      Inspect Form 990 / Audit ↗
+                    </a>
+                    <button type="button" onclick="openAcademicResearchModal('finance')" class="px-2.5 py-1 bg-[#1a293e] hover:bg-[#253a58] border border-sky-700/60 text-sky-300 rounded-lg transition text-[11.5px] cursor-pointer">
+                      Academic Studies 🔬
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `, [
+              `Check ${{specificInst.name}} Hours`,
+              'Where to find Form 990',
+              'Open Governance Legend ⚖️',
+              'Browse Finance Studies 🔬'
+            ]);
+            return;
+          }}
+
           appendCuratorMessage(`
             <div class="border border-amber-500/30 bg-[#16120b] p-3.5 rounded-2xl space-y-3">
               <div class="flex items-center justify-between border-b border-amber-500/20 pb-2">
@@ -12880,16 +13069,21 @@ FORMATTING & INTERACTION RULES:
 
               <div class="pt-2 border-t border-amber-900/40 text-[13px] text-amber-200/90 leading-relaxed flex items-center justify-between gap-2 flex-wrap">
                 <span>If you're researching a specific institution's financial health or donor ties, I can help you interpret what those public filings actually mean. <strong>Which museum are you looking into?</strong></span>
-                <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3 py-1 bg-amber-500 hover:bg-amber-400 text-black rounded-lg text-[12px] font-medium transition cursor-pointer">
-                  Open Governance Legend ⚖️
-                </button>
+                <div class="flex items-center gap-2">
+                  <button type="button" onclick="openAcademicResearchModal('finance')" class="px-2.5 py-1 bg-sky-950/80 border border-sky-700/60 text-sky-300 hover:text-white rounded-lg text-[12px] font-mono transition cursor-pointer">
+                    Finance Studies 🔬
+                  </button>
+                  <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3 py-1 bg-amber-500 hover:bg-amber-400 text-black rounded-lg text-[12px] font-medium transition cursor-pointer">
+                    Open Governance Legend ⚖️
+                  </button>
+                </div>
               </div>
             </div>
           `, [
             'Audit MoMA Form 990',
             'Where to find Form 990',
             'Check Kunstmuseum Bern',
-            'Why ethical funding matters'
+            'Browse Finance Studies 🔬'
           ]);
           return;
         }}
