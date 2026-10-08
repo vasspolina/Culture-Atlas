@@ -698,11 +698,17 @@ def build():
         <button id="mobileModeChatBtn" class="px-2 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Curator Chat">Chat</button>
       </div>
 
-      <!-- Desktop Center New Chat Button -->
-      <button id="topNewChatBtn" class="hidden md:flex items-center gap-1.5 px-3.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-full text-[14px] transition shadow-sm cursor-pointer" title="Start a new chat exploration">
-        <span class="text-emerald-400 font-bold">+</span>
-        <span>New Chat</span>
-      </button>
+      <!-- Desktop Center New Chat Button & Separate Contribute Button -->
+      <div class="hidden md:flex items-center gap-2">
+        <button id="topNewChatBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-full text-[14px] transition shadow-sm cursor-pointer" title="Start a new chat exploration">
+          <span class="text-emerald-400 font-bold">+</span>
+          <span>New Chat</span>
+        </button>
+        <button id="topContributeBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#1a2333] hover:bg-[#223048] border border-[#2f4368] hover:border-[#3b5585] text-[#78a9ff] hover:text-[#93c5fd] rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Contribute confidential insider intelligence or private info">
+          <span class="text-emerald-400 font-mono text-[12px]">🔒</span>
+          <span>Contribute Intel</span>
+        </button>
+      </div>
     </div>
 
     <!-- Right: View Controls (Desktop) & Status / Reset (Compact Mobile) -->
@@ -714,9 +720,13 @@ def build():
         <button id="topViewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px]">Expand</button>
       </div>
 
-      <!-- Mobile + New Chat Icon Button -->
+      <!-- Mobile + New Chat Icon Button & Mobile Intel Button -->
       <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-emerald-400 hover:text-white rounded-full text-[15px] sm:text-[16px] font-bold transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
         +
+      </button>
+
+      <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#1a2333] hover:bg-[#223048] border border-[#2f4368] text-[#78a9ff] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Contribute confidential intelligence">
+        🔒 Intel
       </button>
 
       <button id="topSettingsBtn" class="flex items-center gap-1 px-1.5 sm:px-3 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[12px] sm:text-[14px] transition cursor-pointer shrink-0" title="AI Intelligence & API Key Settings">
@@ -973,9 +983,10 @@ def build():
                   <span id="chatAddKeyLabel" class="hidden sm:inline">Add API Key</span>
                 </button>
 
-                <button id="chatContributeBtn" class="text-[12px] sm:text-[13px] bg-[#1a2333] hover:bg-[#223048] text-[#78a9ff] border border-[#2f4368] flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Contribute space or research note">
-                  <span>✍️</span>
-                  <span class="hidden sm:inline">Contribute</span>
+                <button id="chatContributeBtn" class="text-[12px] sm:text-[13px] bg-[#1a2333] hover:bg-[#223048] text-[#78a9ff] hover:text-[#93c5fd] border border-[#2f4368] flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Contribute confidential insider intelligence or private info">
+                  <span class="text-emerald-400 font-mono text-[12px]">🔒</span>
+                  <span class="hidden sm:inline">Contribute Intel</span>
+                  <span class="inline sm:hidden">Intel</span>
                 </button>
 
                 <button id="workModelBtn" class="text-[12px] sm:text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
@@ -1266,8 +1277,8 @@ def build():
       <div class="space-y-1.5">
         <label class="block text-[14px] text-[#a1a1aa] font-normal">Model</label>
         <select id="aiModelSelect" class="w-full bg-[#212121] border border-[#333333] text-white text-[14px] px-3.5 py-2 rounded-xl focus:outline-none focus:border-[#60a5fa] transition font-mono">
-          <option value="claude-haiku-4-5-20251001">claude-haiku-4-5-20251001 (Fast & Articulate - Recommended)</option>
-          <option value="claude-sonnet-4-5-20250929">claude-sonnet-4-5-20250929 (Deep Critical Reasoning)</option>
+          <option value="claude-haiku-4-5-20251001">Anthropic Haiku 4.5 (Fast & Articulate - Recommended)</option>
+          <option value="claude-sonnet-4-5-20250929">Anthropic Sonnet 4.5 (Deep Critical Reasoning)</option>
         </select>
       </div>
 
@@ -1297,6 +1308,85 @@ def build():
         <button id="saveApiKeyBtn" class="w-full sm:w-auto px-5 py-2 bg-white hover:bg-neutral-200 text-black text-[14px] font-normal rounded-xl transition shadow-sm">
           Save & Connect
         </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================= -->
+  <!-- 🔒 CONFIDENTIAL FIELD INTELLIGENCE & WHISTLEBLOWER INTAKE CHAT MODAL -->
+  <!-- ========================================================= -->
+  <div id="confidentialIntakeChatModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
+    <div class="bg-[#141416] border border-[#27272a] rounded-2xl sm:rounded-3xl max-w-2xl w-full h-[88vh] max-h-[740px] text-white shadow-2xl flex flex-col overflow-hidden">
+      
+      <!-- Intake Window Header -->
+      <div class="px-4 py-3 bg-[#18181b] border-b border-[#27272a] flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-[#1a2333] border border-[#2f4368] flex items-center justify-center text-[15px] text-[#78a9ff] shrink-0">
+            🔒
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-[15px] sm:text-[16px] font-medium text-white leading-tight">Confidential Field Intelligence Intake</h3>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800/80 shrink-0">Whistleblower Vault</span>
+            </div>
+            <p class="text-[11.5px] sm:text-[12px] text-[#a1a1aa] font-mono">Private & Non-Public Intelligence · Source-Protected Statutory Cross-Examination</p>
+          </div>
+        </div>
+        <button id="closeConfidentialChatBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#27272a] rounded-xl transition cursor-pointer" title="Close Intake Window">✕</button>
+      </div>
+
+      <!-- Private Intel Suggestion Banner -->
+      <div class="px-4 py-2.5 bg-[#0f172a] border-b border-[#1e293b] text-[12.5px] text-slate-300 leading-[135%] shrink-0">
+        <div class="flex items-center gap-1.5 text-blue-400 font-mono text-[11px] uppercase tracking-wider mb-0.5">
+          <span>🛡️ Private / Internal Information Guidance</span>
+        </div>
+        <p class="text-slate-300 text-[12px] sm:text-[12.5px]">
+          Share internal details known privately that are not available publicly: unpublicized trustee arrangements, secret donor covenants, internal board disputes, curatorial censorship behind closed doors, or leaked budget and labor memos.
+        </p>
+      </div>
+
+      <!-- Interactive Suggestion Pills for Private Internal Intel -->
+      <div class="px-3 py-2 bg-[#161618] border-b border-[#222225] flex items-center gap-1.5 overflow-x-auto custom-scrollbar shrink-0 text-[12px]">
+        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I have internal info about an unpublicized trustee arrangement or off-the-books donor deal at: ">
+          🤫 Unpublicized Trustee Deal
+        </button>
+        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I want to report an internal board dispute or closed-door curatorial censorship at: ">
+          ⚠️ Board Dispute / Censorship
+        </button>
+        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I have non-public info about corporate underwriting, weapons, or fossil fuel links involving: ">
+          💼 Hidden Corporate Underwriting
+        </button>
+        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I have internal details regarding staff labor disputes, NDAs, or leaked budget memos at: ">
+          📄 Leaked Memo / Labor Dispute
+        </button>
+        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I want to submit an unlisted independent artist-run space with clean public governance: ">
+          🏛️ Unlisted Clean Space
+        </button>
+      </div>
+
+      <!-- Intake Chat Conversation Body -->
+      <div id="confidentialChatBody" class="flex-1 overflow-y-auto p-4 space-y-3.5 custom-scrollbar text-[13.5px] leading-relaxed">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="p-3 bg-[#18181b] border-t border-[#27272a] shrink-0">
+        <form id="confidentialChatForm" class="flex flex-col gap-2">
+          <div class="relative bg-[#212124] border border-[#333338] focus-within:border-[#60a5fa] rounded-2xl p-2.5 transition">
+            <textarea id="confidentialChatInput" rows="2" placeholder="Write internal or private information known to you (space, trustees, decisions, off-the-record agreements)..." class="w-full bg-transparent text-white placeholder-[#71717a] text-[13px] sm:text-[14px] focus:outline-none resize-none font-sans leading-[130%] max-h-32"></textarea>
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-[11px] font-mono text-emerald-400/90 flex items-center gap-1">
+                <span>🛡️</span> <span>Local Encrypted Queue</span>
+              </span>
+              <button type="submit" id="confidentialSendBtn" class="px-3.5 py-1.5 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-[13px] font-medium flex items-center gap-1.5 transition active:scale-95 cursor-pointer shadow-md">
+                <span>Submit Lead</span>
+                <span>↗</span>
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
 
     </div>
@@ -1485,7 +1575,7 @@ def build():
           </div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
-              <span id="bamTierBadge" class="text-[11px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase">Tier A · Verified</span>
+              <span id="bamTierBadge" class="text-[11px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase">Verified Independent Space</span>
               <span id="bamGovernanceBadge" class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#161f30] text-[#93c5fd] border border-[#283852]">Civic Trust</span>
               <span id="bamFloorsBadge" class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#17202a] text-slate-300 border border-[#2b3746]">2 Floors</span>
             </div>
@@ -7610,7 +7700,7 @@ def build():
       const isFlagged = inst.tier === 'B';
       const tierBadge = document.getElementById('bamTierBadge');
       if (tierBadge) {{
-        tierBadge.textContent = isClean ? 'Tier A · Verified' : (isFlagged ? 'Tier B · Audited Flags' : 'User Input Layer');
+        tierBadge.textContent = isClean ? 'Verified Independent Space' : (isFlagged ? 'Flagged Corporate Conflicts' : 'User Input Layer');
         tierBadge.className = isClean 
           ? 'text-[11px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase'
           : (isFlagged ? 'text-[11px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-[#1f1433] text-[#be95ff] font-bold uppercase'
@@ -8225,19 +8315,21 @@ def build():
       return s1 === s2 || s1.includes(s2) || s2.includes(s1);
     }}
 
+    function isTrustedUrl(u) {{
+      if (!u || typeof u !== 'string') return false;
+      const s = u.trim().toLowerCase();
+      if (!s.startsWith('http://') && !s.startsWith('https://')) return false;
+      if (s.includes('wikipedia.org') || s.includes('wikimedia.org')) return false;
+      return true;
+    }}
+
     function getValidWebUrl(inst) {{
       if (!inst) return '';
-      if (inst.website && typeof inst.website === 'string' && (inst.website.startsWith('http://') || inst.website.startsWith('https://'))) {{
-        return inst.website.trim();
-      }}
-      if (inst.visit_url && typeof inst.visit_url === 'string' && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) {{
-        return inst.visit_url.trim();
-      }}
+      if (isTrustedUrl(inst.website)) return inst.website.trim();
+      if (isTrustedUrl(inst.visit_url)) return inst.visit_url.trim();
       if (inst.sources && Array.isArray(inst.sources)) {{
         for (const s of inst.sources) {{
-          if (typeof s === 'string' && (s.startsWith('http://') || s.startsWith('https://'))) {{
-            return s.trim();
-          }}
+          if (isTrustedUrl(s)) return s.trim();
         }}
       }}
       return '';
@@ -8296,7 +8388,7 @@ def build():
       const isB = inst.tier === 'B';
       const isCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
       const tierColor = isA ? '#10b981' : (isB ? '#be95ff' : (isCommunity ? '#08bdba' : '#33b1ff'));
-      const tierLabel = isA ? '● TIER A · INDEPENDENT' : (isB ? '● TIER B · FLAGGED' : (isCommunity ? '● COMMUNITY · USER INPUT' : '● TIER U · UNVERIFIED'));
+      const tierLabel = isA ? '● VERIFIED INDEPENDENT' : (isB ? '● FLAGGED UNDERWRITING' : (isCommunity ? '● COMMUNITY · USER INPUT' : '● UNVERIFIED SPACE'));
 
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
@@ -9323,7 +9415,7 @@ def build():
           const nameTxt = inst.name;
           const nw = ctx.measureText(nameTxt).width;
 
-          const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Independent' : (inst.tier === 'B' ? 'Flagged Underwriting' : 'Roster Unverified'));
+          const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Independent' : (inst.tier === 'B' ? 'Flagged Underwriting' : 'Unverified Space'));
           ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
           const sw = ctx.measureText(subTxt).width;
 
@@ -9824,14 +9916,14 @@ def build():
       const tierLabel = isCommunity
         ? `Community Layer · Audit Ticket #${{inst.communityId || 'RES-CONTRIB'}}`
         : isClean 
-        ? 'Tier A · Verified Independent Space' 
-        : (isFlagged ? 'Tier B · Audited Corporate Underwriting' : 'Tier U · Roster Unverified');
+        ? 'Verified Independent Space' 
+        : (isFlagged ? 'Flagged Corporate Underwriting' : 'Unverified Space');
 
       const cleanAlts = (!isClean && !isCommunity) ? ALL_INSTITUTIONS.filter(i => i.tier === 'A' && matchC(i.city, inst.city)) : [];
 
       const rawGrade = isCommunity
         ? 'Community Input (Pending Audit)'
-        : (inst.transparency_grade || 'Tier A+ (Statutory Public Audit)');
+        : (inst.transparency_grade || 'Clean Statutory Audit');
       let letterBadge = isCommunity ? 'COM' : 'A+';
       if (!isCommunity) {{
         if (rawGrade.includes('A+')) letterBadge = 'A+';
@@ -10134,7 +10226,7 @@ def build():
               </button>
             </div>
             <div class="flex flex-col gap-1.5 font-mono">
-              ${{(inst.sources || []).map(u => {{
+              ${{(inst.sources || []).filter(u => typeof u !== 'string' || (!u.toLowerCase().includes('wikipedia.org') && !u.toLowerCase().includes('wikimedia.org'))).map(u => {{
                 const isUrl = typeof u === 'string' && (u.startsWith('http://') || u.startsWith('https://'));
                 if (isUrl) {{
                   const srcDomain = getDisplayDomain(u);
@@ -10187,8 +10279,8 @@ def build():
 
     const PROVIDER_MODELS = {{
       anthropic: [
-        {{ id: 'claude-haiku-4-5-20251001', name: 'claude-haiku-4-5-20251001 (Fast & Articulate - Recommended)' }},
-        {{ id: 'claude-sonnet-4-5-20250929', name: 'claude-sonnet-4-5-20250929 (Deep Critical Reasoning)' }}
+        {{ id: 'claude-haiku-4-5-20251001', name: 'Anthropic Haiku 4.5 (Fast & Articulate - Recommended)' }},
+        {{ id: 'claude-sonnet-4-5-20250929', name: 'Anthropic Sonnet 4.5 (Deep Critical Reasoning)' }}
       ],
       openai: [
         {{ id: 'gpt-4o-mini', name: 'gpt-4o-mini (Fast & Versatile)' }},
@@ -10286,7 +10378,7 @@ def build():
         return;
       }}
       if (k.startsWith('sk-ant-')) {{
-        badge.textContent = 'Anthropic Claude key detected';
+        badge.textContent = 'Anthropic key detected';
         badge.className = 'text-[14px] font-mono text-purple-400';
         updateProviderUI('anthropic');
       }} else if (k.startsWith('sk-') || k.startsWith('sk-proj-')) {{
@@ -10332,7 +10424,7 @@ def build():
       const workLabel = document.getElementById('workModelLabel');
 
       const prov = getEffectiveProvider();
-      const pName = prov === 'anthropic' ? 'Claude' : (prov === 'openai' ? 'OpenAI' : 'Gemini');
+      const pName = prov === 'anthropic' ? 'Anthropic' : (prov === 'openai' ? 'OpenAI' : 'Gemini');
       const effModel = getEffectiveModel();
 
       if (aiApiKey) {{
@@ -10353,7 +10445,7 @@ def build():
           chatKeyLabel.textContent = `${{pName}} Active`;
         }}
         if (workLabel) {{
-          workLabel.textContent = `${{pName}} · ${{effModel.split('-')[0].toUpperCase()}}`;
+          workLabel.textContent = `${{pName}} · Live`;
         }}
       }} else {{
         if (topDot) topDot.className = 'w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-amber-400 shrink-0';
@@ -10604,9 +10696,9 @@ def build():
           const tText = ((p.title || '') + ' ' + (p.takeaway || '') + ' ' + (p.abstract || '')).toLowerCase();
           if (topic === 'networks' && !tText.includes('network') && !tText.includes('interlock') && !tText.includes('sponsor') && !tText.includes('corporate') && !tText.includes('tie') && !tText.includes('connect') && !tText.includes('patron')) return false;
           if (topic === 'tainted' && !tText.includes('tainted') && !tText.includes('moral') && !tText.includes('ethic')) return false;
-          if (topic === 'governance' && !tText.includes('governance') && !tText.includes('donor') && !tText.includes('board')) return false;
+          if (topic === 'governance' && !tText.includes('governance') && !tText.includes('donor') && !tText.includes('board') && !tText.includes('trustee') && !tText.includes('stakeholder') && !tText.includes('accountab')) return false;
           if (topic === 'fossil' && !tText.includes('fossil') && !tText.includes('climate') && !tText.includes('bp') && !tText.includes('oil') && !tText.includes('environmental')) return false;
-          if (topic === 'disclosure' && !tText.includes('disclosure') && !tText.includes('fraud') && !tText.includes('report') && !tText.includes('mandatory')) return false;
+          if (topic === 'disclosure' && !tText.includes('disclosure') && !tText.includes('fraud') && !tText.includes('report') && !tText.includes('mandatory') && !tText.includes('transparency') && !tText.includes('volunteer')) return false;
           if (topic === 'reputation' && !tText.includes('reputation') && !tText.includes('provenance') && !tText.includes('antiquit') && !tText.includes('laundering') && !tText.includes('crime')) return false;
           if (topic === 'fragility' && !tText.includes('fragil') && !tText.includes('close') && !tText.includes('mortality') && !tText.includes('private art museum') && !tText.includes('years open')) return false;
           if (topic === 'policy' && !tText.includes('policy') && !tText.includes('tax') && !tText.includes('incentive') && !tText.includes('inequalit') && !tText.includes('rouanet')) return false;
@@ -10707,6 +10799,16 @@ You have deep mastery of {academic_count} empirical studies on museum funding, s
 - Nordic Public-Private Collector Tensions & Egalitarian Trust: Ida Uppstrøm Berg & Håkon Larsen (Museum Management and Curatorship, 2024; Berg 2024) examine the controversial partnership between the National Museum of Norway and the Fredriksen Family Art Company, showing that private collector influence sparks intense democratic pushback in societies characterized by egalitarian values, high tax morale, and strong civic funding.
 - Mega-Donations & Actor-Network Theory ("Donation of the Century"): Park & Kim (Semiotica, 2025) analyze South Korea's massive Samsung collection mega-donation (23,000 artworks), showing how elite patronage transcends financial gifts to function as an actor-network redefining corporate private vaults into "dynamic national treasures" to rehabilitate corporate family reputation and negotiate inheritance tax standing.
 - Ethical Dilemmas in Transition Economies: Marek Prokůpek & Bára Divíšková (Journal of Arts Management, Law, and Society, 2022) establish that museums in post-socialist transition economies (Czech Republic) face acute ethical vulnerabilities when forced to seek corporate funding amid state budget cuts without institutional ethics committees.
+- Museum Autonomy & Competitive Funding: Cavalieri, Gallea, Martorana & Rizzo (Journal of Cultural Economics, 2025) demonstrate that museums granted special autonomy have a significantly higher likelihood of participating in and winning European co-funded competitive grants, showing that progressive governance autonomy drives proactive, sustainable funding rather than relying on commercial underwriting.
+- National Museum Web Accountability & Stakeholder Theory: Dainelli, Manetti & Sibilio (VOLUNTAS, 2012) analyze web accountability across 134 national museums in 7 major countries (US, UK, France, Germany, Italy, Canada, Australia), demonstrating that accountability levels are determined by the number and power of external stakeholders (particularly donor power and public oversight), empirically confirming stakeholder theory in cultural institutions.
+- Public Benefit vs Private Gain in Visual Art Museums: Keeney, Jung, Marschall & Hawk (The Journal of Arts Management, Law, and Society, 2025) compare administrative practices using Cultural Data Profile records, showing acute divergences between visual art museums with culturally specific missions and mainstream institutions, emphasizing legal mandates that require verifiable public orientation over private donor enrichment.
+- Board Composition, Gender Diversity & Web Transparency: Benito-Esteban, Elvira-Lorilla, García-Rodriguez & Romero-Merino (VOLUNTAS, 2023) examine 793 directors to prove that nonprofit web transparency is directly driven by board configuration—specifically, appointing independent sector experts and higher proportions of female board members substantially improves public web transparency and stakeholder legitimization.
+- Volunteer Commitment as an Insider Effectiveness Signal: Beck, Garven & Yetman (Contemporary Accounting Research, 2024) analyze IRS Form 990 disclosures to prove that donors actively treat volunteer commitment as a credible insider signal of organizational effectiveness, using it to validate imprecise financial metrics like program ratios and governance filings.
+- Decision-Useful Financial Disclosures & Donor Trust: Ghoorah, Talukder & Khan (Accounting Forum, 2021) and Ghoorah & Mariyani-Squire (Humanities and Social Sciences Communications, 2025) prove through structural equation modeling that decision-useful financial disclosures directly elevate donor trust, perceived organizational reputation, and institutional performance.
+- Donor-Imposed Reporting Logics & NGO Identity: G. Goncharenko (Financial Accountability & Management, 2020) examines institutional donors and accountability demands, proving that donor-imposed reporting requirements stem from institutional logics of risk mitigation and control, frequently forcing cultural and nonprofit organizations to alter their institutional identities to align with donor agendas.
+- Board Governance & Museum Fundraising Stages: D. Betzler (Journal of Cultural Economy, 2015) and Betzler & Gmür (2012) analyze 98 Swiss museums across governance maturity levels ('zero', 'awareness', 'composition', 'integration'), demonstrating how donor and business professional inclusion on boards links to fundraising income and strategic controlling.
+- Corporate Governance Practices & Mission Allocation: Blevins, Ragozzino & Eckardt (Strategic Organization, 2020) analyze 6,853 nonprofits and $346B in revenue, proving that corporate governance mechanisms (independent boards, CEO oversight, and transparency) significantly increase the proportion of contributions directly allocated toward the public mission.
+- Board of Trustees Transitions: Dong Qin (Museum Management and Curatorship, 2021) conducts a comparative analysis of museum board systems in China and the US, tracing transitions from government administration to fiduciary board governance, checks and balances, and procedural restraint mechanisms.
 Cite these peer-reviewed takeaways when users ask about research, sponsor networks, tainted money, disclosures, or donor ethics!
 
 SCHOLARLY RESEARCH, MIT PRESS ART THEORY & DUTCH RESEARCH FOUNDATIONS (Explain simply in everyday English):
@@ -10730,8 +10832,15 @@ You have extensive mastery of seminal art theory, curatorial studies, and instit
 - Landmark Exhibitions: Harald Szeemann's 'When Attitudes Become Form' (Bern 1969), 'This Is Tomorrow' (Whitechapel 1956), Okwui Enwezor's 'Documenta 11' (Kassel 2002), Fred Wilson's 'Mining the Museum' (1992), and Hans Haacke's 'MoMA Poll' (1970).
 - Restitution & Decolonization: The Benin Bronzes (1897 British looting and recent repatriation to Nigeria), the 2018 Sarr-Savoy Report on African cultural heritage, and provenance research tracking stolen colonial objects.
 - Comparative Funding Models: American 501(c)(3) tax-deduction boards (vulnerable to billionaire donor conflicts) vs European public cultural councils (Arts Council England, DRAC France, legally mandated public benefit) vs Grassroots artist-run cooperatives.
-- "e-flux journal": Hito Steyerl's 'Is a Museum a Factory?' (visitors as unpaid affective workers) and 'Duty Free Art' (offshore tax-free freeports). Boris Groys on the museum as an egalitarian secular archive.
-- Three Waves of Institutional Critique: Hans Haacke (1st wave), Andrea Fraser & Fred Wilson (2nd wave), Nan Goldin's P.A.I.N., Decolonize This Place, and Strike MoMA (3rd wave activist divestment).
+- Slavoj Žižek & Cultural Capitalism: "First as Tragedy, Then as Farce" and "Violence". Critique of ethical consumption and cultural philanthropy as ideological alibis. Purchasing a ticket or sponsoring art includes ideological absolution in the price tag: you pay to repair the very damage caused by global capitalism while continuing to extract profit. Museum galas and billionaire cultural patronage function as ideological alibis, staging harmless aesthetic radicalism to neutralize structural revolt.
+- Boris Groys – "Art Power" (MIT Press, 2008), "In the Flow", "Going Public": The public museum as a radical secular sanctuary that protects art from market tyranny. In the commercial gallery, value equals auction price; in the public archive, artworks possess an equal right to exist and be studied regardless of price. Curatorial selection is an exercise of sovereign political will, yet contemporary art can never escape institutionalization even when claiming revolt.
+- Yanis Varoufakis – "Technofeudalism: What Killed Capitalism": "Cloud capital" and the transformation of public civic commons into proprietary rentier estates. Oligarchic board members (venture capitalists, private equity, tech monopolists) treat public cultural institutions as reputational laundering platforms and extract cultural surplus while imposing neoliberal austerity on cultural labor.
+- Hito Steyerl – "Duty Free Art: Art in the Age of Planetary Civil War" (Verso) & "Is a Museum a Factory?": The contemporary art museum operates as an offshore freeport and proxy for planetary civil war, weaponized surveillance, and tax evasion. Artworks circulate between Geneva and Singapore freeport storage vaults without ever being seen by the public. Direct confrontation with board members tied to military contractors (e.g. Warren Kanders / Safariland at the Whitney Museum).
+- Three Waves of Institutional Critique & Artists Criticizing Institutions:
+  - First Wave (1960s-1970s): Hans Haacke ("Shapolsky et al. Manhattan Real Estate Holdings", "MoMA Poll", "MetroMobiltan" exposing Mobil Oil and apartheid; Daniel Buren, Marcel Broodthaers). Uncompromising forensic institutional critique exposing trustee slumlord portfolios and corporate greenwashing.
+  - Second Wave (1980s-1990s): Andrea Fraser ("Museum Highlights", "May I Help You?", "2016 in Museums, Money, and Politics" mapping trustee campaign finance; "There is no outside to the institution") and Fred Wilson ("Mining the Museum" juxtaposing silver repoussé with slave shackles to expose structural racism).
+  - Feminist & Structural Critique: Martha Rosler ("The Bowery in two inadequate descriptive systems", critique of gentrification, corporate art sponsorship, and artistic labor extraction); Maria Eichhorn ("Maria Eichhorn Aktiengesellschaft" at Documenta 11, "5 weeks, 25 days, 175 hours" shutting Chisenhale Gallery to grant staff paid leave, critiquing surplus wage labor); Cameron Rowland (contractual and collateral artworks exposing the continuing legal and property lineage of chattel slavery in public institutions).
+  - Third Wave (2010s-Present): Direct activist divestment campaigns: Nan Goldin's P.A.I.N. (ousting the Sackler opioid family), Decolonize This Place, and Strike MoMA.
 - Claire Bishop: 'Radical Museology' (dialectical collection display vs corporate blockbuster spectacle) and 'Artificial Hells'.
 
 FORMATTING & INTERACTION RULES:
@@ -11268,6 +11377,7 @@ FORMATTING & INTERACTION RULES:
     }}
 
     // Intelligent Conversational Curator Knowledge Engine
+    window.handleCuratorQuery = handleCuratorQuery;
     async function handleCuratorQuery(query) {{
       const q = query.toLowerCase().trim();
       const rawTrimmed = query.trim();
@@ -11277,7 +11387,7 @@ FORMATTING & INTERACTION RULES:
       if (isKeyDirectInput) {{
         const key = rawTrimmed.replace(/^\/key\s*/, '').trim();
         const prov = detectProvider(key);
-        const pName = prov === 'anthropic' ? 'Anthropic Claude' : (prov === 'openai' ? 'OpenAI' : 'Google Gemini');
+        const pName = prov === 'anthropic' ? 'Anthropic' : (prov === 'openai' ? 'OpenAI' : 'Google Gemini');
         aiApiKey = key;
         aiProvider = prov;
         aiModel = getEffectiveModel();
@@ -11327,7 +11437,7 @@ FORMATTING & INTERACTION RULES:
               </a>
               <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
                 <div class="text-[13px] font-normal text-white group-hover:text-blue-300">Google Gemini ↗</div>
-                <div class="text-[12px] text-[#a1a1aa]">Free tier with high rate limits</div>
+                <div class="text-[12px] text-[#a1a1aa]">Free plan with high rate limits</div>
               </a>
             </div>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-[#2e2e2e] text-[13px] text-[#a1a1aa]">
@@ -11457,7 +11567,7 @@ FORMATTING & INTERACTION RULES:
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1" data-exclude-speech="true">
                 <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
                   <strong class="text-white block mb-0.5">🏛️ 403 Independent Spaces</strong>
-                  Strict Tier A verification against arms & oil funding
+                  Strict verification against arms & oil funding
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
                   <strong class="text-white block mb-0.5">🎙️ Audio Docent</strong>
@@ -11868,6 +11978,296 @@ FORMATTING & INTERACTION RULES:
           return;
         }}
 
+        // Research Handler: Special Autonomy & Competitive European Grants (Cavalieri et al. 2025)
+        if (q.includes('cavalieri') || (q.includes('special autonomy') && (q.includes('museum') || q.includes('funding'))) || q.includes('competitive funding in italian') || (q.includes('governance features shape museum') || q.includes('gallea') || q.includes('martorana'))) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-violet-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Empirical Cultural Economics</span>
+                <span>·</span>
+                <span>Cavalieri et al. (2025)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Do Governance Features Shape Museum Behaviour? Insights from Competitive Funding</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In the <em>Journal of Cultural Economics</em> (2025), Marina Cavalieri, Antonio Gallea, M. Martorana, and I. Rizzo deployed a staggered treatment difference-in-differences econometric analysis to evaluate how institutional autonomy impacts museum funding capacity.
+              </p>
+              <div class="p-3 rounded-xl bg-[#1d162b] border border-violet-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>The Autonomy Advantage:</strong> The researchers find that Italian state museums granted "special autonomy" exhibit a statistically significant and growing probability of participating in and winning competitive international European co-funded grants over time.
+                </p>
+                <p>
+                  <strong>Proactive Behavior vs Commercial Dependence:</strong> Rather than forcing museums into predatory corporate underwriting contracts, statutory organizational autonomy empowers institutions to build internal grant capacity and access peer-reviewed public funding networks.
+                </p>
+                <p>
+                  <strong>Policy Implication:</strong> Autonomy coupled with public oversight creates proactive, sustainable institutional behavior without sacrificing public purpose for corporate sponsorship dollars.
+                </p>
+              </div>
+            </div>
+          `, ['Dutch research model', 'National museum accountability', 'Consensus academic corpus', 'Explore independent spaces']);
+          return;
+        }}
+
+        // Research Handler: Web-Based Accountability in National Museums & Stakeholder Theory (Dainelli et al. 2012)
+        if (q.includes('dainelli') || q.includes('manetti') || q.includes('sibilio') || (q.includes('national museum') && (q.includes('accountability') || q.includes('stakeholder theory'))) || q.includes('stakeholder theory in museums')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-blue-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Nonprofit Accountability & Stakeholder Theory</span>
+                <span>·</span>
+                <span>Dainelli, Manetti & Sibilio (2012)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Web-Based Accountability Practices in National Museums Across 7 Developed Nations</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>VOLUNTAS: International Journal of Voluntary and Nonprofit Organizations</em> (2012), Francesco Dainelli, Giacomo Manetti, and Barbara Sibilio analyzed web accountability across 134 national museums in Australia, Canada, France, Germany, Italy, the United Kingdom, and the United States.
+              </p>
+              <div class="p-3 rounded-xl bg-[#101b2a] border border-blue-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Empirical Validation of Stakeholder Theory:</strong> Using multivariate OLS regression, the authors prove that museum accountability levels are determined by two primary forces: organizational size (representing stakeholder density) and the volume of external funding received (representing the coercive power of salient donor stakeholders).
+                </p>
+                <p>
+                  <strong>Absence of Shareholders:</strong> In non-profit cultural institutions lacking equity owners, web disclosure practices are directly shaped by who holds financial and regulatory leverage. When private corporate donors dominate, transparency is tailored toward patron legitimacy rather than broad civic accountability.
+                </p>
+                <p>
+                  <strong>Culture Atlas Relevance:</strong> This demonstrates why external independent audits (like Culture Atlas) are required: national museums rarely voluntarily disclose patron conflicts unless compelled by organized stakeholder scrutiny.
+                </p>
+              </div>
+            </div>
+          `, ['How we audit Form 990', 'Corporate governance in nonprofits', 'Consensus academic corpus', 'Connections among cultural sponsors']);
+          return;
+        }}
+
+        // Research Handler: Public Benefit vs Private Gain in Visual Art Museums (Keeney et al. 2025)
+        if (q.includes('public benefit or private gain') || (q.includes('keeney') && (q.includes('jung') || q.includes('marschall') || q.includes('hawk') || q.includes('museum'))) || q.includes('cultural data profile') || q.includes('culturally specific missions')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Public Benefit & Arts Administration</span>
+                <span>·</span>
+                <span>Keeney, Jung, Marschall & Hawk (2025)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Public Benefit or Private Gain? Administrative Practices in Nonprofit Art Museums</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>The Journal of Arts Management, Law, and Society</em> (2025), researchers Kate Keeney, Yuha Jung, Zachary Marschall, and Gregory S. Hawk analyzed empirical records from the Cultural Data Profile (CDP) to evaluate whether nonprofit visual art museums fulfill their legal public-benefit mandate.
+              </p>
+              <div class="p-3 rounded-xl bg-[#291e10] border border-amber-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>The Statutory Public Mandate:</strong> Nonprofits receive substantial tax exemptions on the strict condition that their primary orientation is public benefit rather than private enrichment. However, the study identifies persistent inequities in arts education, program delivery, and resource distribution.
+                </p>
+                <p>
+                  <strong>Culturally Specific vs Mainstream Institutions:</strong> Regression analysis uncovers pronounced structural differences between visual art museums with culturally specific missions and mainstream institutions across earned revenue ratios, educational program delivery, and administrative institutionalization.
+                </p>
+                <p>
+                  <strong>Combating Mission Drift:</strong> The authors urge rigorous public data monitoring to ensure art museums do not degrade into private wealth preservation vehicles for trustee collectors.
+                </p>
+              </div>
+            </div>
+          `, ['Why private museums close', 'Board composition & female directors', 'Consensus academic corpus', 'Compare funding models']);
+          return;
+        }}
+
+        // Research Handler: Board Composition, Gender Diversity & Web Transparency (Benito-Esteban et al. 2023)
+        if (q.includes('benito-esteban') || (q.includes('female') && (q.includes('board') || q.includes('director')) && (q.includes('transparency') || q.includes('web'))) || q.includes('elvira-lorilla') || q.includes('romero-merino') || q.includes('board and web transparency')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-rose-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Board Governance & Gender Diversity</span>
+                <span>·</span>
+                <span>Benito-Esteban et al. (2023)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">The Complex Relationship Between Board Composition and Web Transparency</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>VOLUNTAS</em> (2023), Clara I. Benito-Esteban, Teresa Elvira-Lorilla, Iñigo García-Rodriguez, and M. E. Romero-Merino audited the complete curricula vitae of <strong>793 board directors</strong> across non-profit organizations using fuzzy-set qualitative comparative analysis (fsQCA).
+              </p>
+              <div class="p-3 rounded-xl bg-[#261219] border border-rose-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Gender Diversity Drives Openness:</strong> The empirical data proves that the presence of female board members and non-profit domain experts significantly increases public web transparency and proactive disclosure.
+                </p>
+                <p>
+                  <strong>Stakeholder Legitimization:</strong> Rather than viewing governance merely as executive policing, diversified boards conceptualize web transparency as an indispensable instrument for multi-stakeholder trust and civic legitimization.
+                </p>
+                <p>
+                  <strong>Contrast with Corporate Interlocks:</strong> While homogeneous corporate boards often conceal patron conflicts, independent female and sector-expert directors advocate for transparent public accounting.
+                </p>
+              </div>
+            </div>
+          `, ['Corporate governance in nonprofits', 'Volunteer commitment as signal', 'Consensus academic corpus', 'How we audit Form 990']);
+          return;
+        }}
+
+        // Research Handler: Volunteer Commitment as an Insider Signal (Beck, Garven & Yetman 2024)
+        if (q.includes('volunteer commitment') || (q.includes('beck') && q.includes('garven')) || (q.includes('yetman') && q.includes('volunteer')) || q.includes('donors value volunteer commitment') || q.includes('volunteers as insiders')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Forensic Accounting & Volunteer Signaling</span>
+                <span>·</span>
+                <span>Beck, Garven & Yetman (2024)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Do Donors Value Volunteer Commitment in Assessing Nonprofit Effectiveness?</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>Contemporary Accounting Research</em> (2024), Amanda Beck, Sarah A. Garven, and Michelle H. Yetman examined how sophisticated donors interpret volunteer numbers disclosed on IRS Form 990 when making resource allocation decisions.
+              </p>
+              <div class="p-3 rounded-xl bg-[#0e2418] border border-emerald-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Volunteers as Organizational Insiders:</strong> Donors face high information asymmetry when reading financial metrics like program spending ratios. Because volunteers donate their personal labor inside the organization, donors recognize volunteers as credible insiders who can directly verify whether an institution genuinely serves its mission.
+                </p>
+                <p>
+                  <strong>Validating Imprecise Accounting Signals:</strong> The authors find that the value-relevance of reported program ratios and corporate governance filings increases directly with the level of disclosed volunteer commitment.
+                </p>
+                <p>
+                  <strong>Application to Independent Cultural Spaces:</strong> Grassroots community spaces with high volunteer and artist engagement provide a powerful, authentic signal of institutional integrity that sterile corporate-backed boards cannot replicate.
+                </p>
+              </div>
+            </div>
+          `, ['Decision-useful financial disclosures', 'How we audit Form 990', 'Consensus academic corpus', 'Explore independent spaces']);
+          return;
+        }}
+
+        // Research Handler: Financial Transparency, Trust & Performance (Ghoorah et al. 2021, 2025)
+        if (q.includes('ghoorah') || q.includes('decision-useful financial disclosures') || q.includes('mariyani-squire') || (q.includes('financial transparency') && q.includes('trust') && q.includes('donor')) || q.includes('talukder') || q.includes('khan')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-cyan-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Financial Transparency & Donor Psychology</span>
+                <span>·</span>
+                <span>Ghoorah et al. (2021, 2025)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Decision-Useful Financial Disclosures, Donor Trust & Perceived Institutional Performance</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>Accounting Forum</em> (2021) and <em>Humanities and Social Sciences Communications</em> (2025), Ushi Ghoorah, Edward Mariyani-Squire, A. Talukder, and Aila M. Khan deployed structural equation modeling to measure the direct causal pathways between transparent nonprofit reporting and donor behavior.
+              </p>
+              <div class="p-3 rounded-xl bg-[#0c222b] border border-cyan-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>The Causal Chain:</strong> The empirical data establishes that financial disclosures perceived as decision-useful directly heighten donors' assessment of organizational reputation, which in turn elevates donor trust and donation intentions.
+                </p>
+                <p>
+                  <strong>Informational vs Performative Mechanisms:</strong> Transparency operates through both informational clarity (reducing donor risk) and performative credibility (signaling that the institution has nothing to conceal).
+                </p>
+                <p>
+                  <strong>Why Tainted Sponsorship Hiding Fails:</strong> When institutions obscure corporate underwriting ties or bury sponsor agreements in redacted filings, they destroy the fundamental trust architecture that sustains long-term public support.
+                </p>
+              </div>
+            </div>
+          `, ['How we audit Form 990', 'Mandatory disclosure matter', 'Consensus academic corpus', 'Corporate governance in nonprofits']);
+          return;
+        }}
+
+        // Research Handler: Donor-Imposed Reporting Logics & NGO Identity (Goncharenko 2020)
+        if (q.includes('goncharenko') || q.includes('multiplicity of logics') || q.includes('donor-imposed reporting') || (q.includes('donor') && q.includes('reporting') && q.includes('identity')) || q.includes('imposed accountability')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-fuchsia-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Institutional Logics & Reporting</span>
+                <span>·</span>
+                <span>G. Goncharenko (2020)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">The Multiplicity of Logics, Trust, and Interdependence in Donor-Imposed Reporting</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>Financial Accountability & Management</em> (2020), Galina Goncharenko conducted an in-depth empirical investigation into how institutional donors impose specialized accountability demands upon nonprofit recipient organizations.
+              </p>
+              <div class="p-3 rounded-xl bg-[#281329] border border-fuchsia-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Donors' Vested Motives:</strong> The study reveals that donor-imposed reporting requirements are driven by donors' desires to control operations, mitigate reputational exposure, legitimize grant disbursements, and mold organizational agendas to their ideological patterns.
+                </p>
+                <p>
+                  <strong>Institutional Identity Distortion:</strong> Recipient non-profits are forced to adjust their institutional identities, terminology, and operational priorities to project compliance and familiarity with the donor's proprietary corporate logic in order to secure recurring funding.
+                </p>
+                <p>
+                  <strong>Impact on Cultural Independence:</strong> In the museum world, corporate sponsor reporting requirements force curatorial teams to adopt corporate metrics (visitor throughput, brand impressions, demographic indexing) that erode artistic risk-taking.
+                </p>
+              </div>
+            </div>
+          `, ['Identified donor effect', 'Connections among cultural sponsors', 'Consensus academic corpus', 'Compare funding models']);
+          return;
+        }}
+
+        // Research Handler: Board Governance & Fundraising Stages in Swiss Museums (Betzler 2012, 2015)
+        if (q.includes('betzler') || (q.includes('swiss museum') && (q.includes('fundraising') || q.includes('governance'))) || q.includes('gmür') || q.includes('gmur') || q.includes('fundraising governance levels')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-lime-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Arts Management & Board Governance</span>
+                <span>·</span>
+                <span>D. Betzler (2012, 2015)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Factors of Board Governance and Fundraising Success: 98 Swiss Museums</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In the <em>Journal of Cultural Economy</em> (2015) and co-authored work with Markus Gmür (2012), Diana Betzler analyzed empirical governance structures and fundraising outcomes across a rigorous sample of <strong>98 Swiss museums</strong>.
+              </p>
+              <div class="p-3 rounded-xl bg-[#1c2610] border border-lime-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Board Composition as Success Driver:</strong> Through multiple regression analysis, the empirical inclusion of active donors and business professionals on museum boards emerged as a statistically decisive factor for private fundraising income.
+                </p>
+                <p>
+                  <strong>The 4 Developmental Levels:</strong> Betzler & Gmür established an empirical life-cycle classification of fundraising governance: <em>'Zero'</em> (passive), <em>'Awareness'</em> (ad hoc), <em>'Composition'</em> (board alignment), and <em>'Integration'</em> (strategic planning and continuous controlling).
+                </p>
+                <p>
+                  <strong>The Double-Edged Sword:</strong> While recruiting affluent patrons elevates private donations, it institutionalizes business-centric priorities on museum boards, requiring stringent governance safeguards to prevent commercial trustees from superseding curatorial independence.
+                </p>
+              </div>
+            </div>
+          `, ['Corporate governance in nonprofits', 'Nordic social democratic model', 'Consensus academic corpus', 'How we audit Form 990']);
+          return;
+        }}
+
+        // Research Handler: "Corporate Governance" and Performance in Nonprofits (Blevins et al. 2020)
+        if (q.includes('blevins') || (q.includes('corporate governance') && (q.includes('nonprofit') || q.includes('charity') || q.includes('mission allocation'))) || q.includes('ragozzino') || q.includes('eckardt')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-indigo-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Strategic Management & Nonprofits</span>
+                <span>·</span>
+                <span>Blevins, Ragozzino & Eckardt (2020)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">“Corporate Governance” and Mission Allocation in 6,853 Nonprofits ($346B Revenue)</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>Strategic Organization</em> (2020), Dane P. Blevins, R. Ragozzino, and Rory Eckardt evaluated nearly a decade of longitudinal data spanning <strong>6,853 US-based charities</strong> comprising over <strong>$346 billion in total revenue</strong>.
+              </p>
+              <div class="p-3 rounded-xl bg-[#18152b] border border-indigo-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Agency Problems in Philanthropy:</strong> Agency problems—where executive managers extract perks or divert resources away from beneficiaries—are as severe in non-profits as in for-profit firms.
+                </p>
+                <p>
+                  <strong>Mission Allocation Effect:</strong> The study proves that robust governance practices—specifically <strong>independent boards</strong>, <strong>active CEO oversight</strong>, and <strong>transparent public reporting</strong>—significantly increase the percentage of donor contributions directly channeled toward the organization's charitable mission.
+                </p>
+                <p>
+                  <strong>The Antidote to Waste:</strong> Independent board oversight prevents executive bloat and ensures that public and philanthropic funds actually fund artistic programs and collections rather than administrative overhead.
+                </p>
+              </div>
+            </div>
+          `, ['How we audit Form 990', 'National museum accountability', 'Consensus academic corpus', 'Board composition & female directors']);
+          return;
+        }}
+
+        // Research Handler: Board of Trustees in Chinese vs US Museums (Dong Qin 2021)
+        if (q.includes('dong qin') || (q.includes('chinese museum') && (q.includes('board') || q.includes('trustee'))) || q.includes('government management to board governance') || (q.includes('museum boards in china') && q.includes('us')) || (q.includes('china') && q.includes('us') && (q.includes('board') || q.includes('trustee')))) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Comparative Cultural Governance</span>
+                <span>·</span>
+                <span>Dong Qin (2021)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">From Government Management to Board Governance: Museum Boards in China and the US</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>Museum Management and Curatorship</em> (2021), Dong Qin conducted a landmark comparative analysis tracking the historical evolution and institutional mechanics of museum Boards of Trustees in China compared to established US models.
+              </p>
+              <div class="p-3 rounded-xl bg-[#281b10] border border-amber-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Structural Transitions:</strong> The paper contrasts the traditional direct bureaucratic government administration model in China with fiduciary trustee governance in the US, analyzing board formation, separation of powers, rules of procedure, and restraint mechanisms.
+                </p>
+                <p>
+                  <strong>Checks and Balances:</strong> The author highlights that effective museum governance requires institutional checks and balances to prevent both authoritarian administrative overreach and unrestrained commercial capture by wealthy donors.
+                </p>
+                <p>
+                  <strong>Global Governance Insight:</strong> Whether in East Asia or North America, transparent board charters and clear procedural guarantees are fundamental to maintaining public trust in cultural institutions.
+                </p>
+              </div>
+            </div>
+          `, ['Compare funding models', 'Czech Republic fundraising ethics', 'Consensus academic corpus', 'Connections among cultural sponsors']);
+          return;
+        }}
+
         // =========================================================================
         // 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING INSPECTION INTENT
         // =========================================================================
@@ -11947,7 +12347,7 @@ FORMATTING & INTERACTION RULES:
                 <span class="text-[#be95ff] font-mono text-[13px] font-bold uppercase tracking-wider flex items-center gap-1.5">
                   <span>Forensic Sponsor Audit: ${{escapeHtml(s.label)}}</span>
                 </span>
-                <span class="text-[#be95ff] font-mono text-[12px] px-2 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">Tier B Flagged</span>
+                <span class="text-[#be95ff] font-mono text-[12px] px-2 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">Flagged Corporate Conflict</span>
               </div>
               <p class="text-slate-200 text-[14px]">
                 <strong>Sector & Harm:</strong> ${{escapeHtml(s.sector)}} — ${{escapeHtml(s.harm)}}
@@ -12718,11 +13118,11 @@ FORMATTING & INTERACTION RULES:
               <strong>Funding & Governance Audit: ${{formatInstLink(inst)}}</strong>
             </p>
             <p class="text-slate-300">
-              - <strong>Ethical Verification:</strong> ${{inst.tier === 'A' ? '<span class="text-emerald-400">Tier A · Verified Independent Space</span>' : '<span class="text-rose-400">Tier B · Flagged Corporate Conflicts</span>'}}<br>
+              - <strong>Ethical Verification:</strong> ${{inst.tier === 'A' ? '<span class="text-emerald-400">Verified Independent Space</span>' : '<span class="text-rose-400">Flagged Corporate Conflicts</span>'}}<br>
               - <strong>Governance Model:</strong> ${{inst.governance_type}}<br>
               - <strong>Funding Architecture:</strong> ${{inst.funding}}<br>
               - <strong>Safeguard:</strong> ${{inst.ethical_safeguard}}<br>
-              - <strong>Transparency Grade:</strong> <span class="text-emerald-400 font-mono font-bold">${{inst.transparency_grade || 'Tier A+'}}</span>
+              - <strong>Transparency Grade:</strong> <span class="text-emerald-400 font-mono font-bold">${{inst.transparency_grade || 'Statutory Public Audit'}}</span>
             </p>
           `, ['Admission Policy', 'How to Get There', 'Highlight Art']);
           selectInstitution(inst, true);
@@ -12779,8 +13179,8 @@ FORMATTING & INTERACTION RULES:
                       </tr>
                       <tr>
                         <td class="p-2.5 font-mono text-[#a1a1aa]">Ethical Status</td>
-                        <td class="p-2.5">${{i1.tier === 'A' ? '<span class="text-emerald-400 font-medium">Tier A · Independent Space</span>' : '<span class="text-rose-400 font-medium">Tier B · Excluded Conflict</span>'}}</td>
-                        <td class="p-2.5">${{i2.tier === 'A' ? '<span class="text-emerald-400 font-medium">Tier A · Independent Space</span>' : '<span class="text-rose-400 font-medium">Tier B · Excluded Conflict</span>'}}</td>
+                        <td class="p-2.5">${{i1.tier === 'A' ? '<span class="text-emerald-400 font-medium">Verified Independent Space</span>' : '<span class="text-rose-400 font-medium">Excluded Conflict</span>'}}</td>
+                        <td class="p-2.5">${{i2.tier === 'A' ? '<span class="text-emerald-400 font-medium">Verified Independent Space</span>' : '<span class="text-rose-400 font-medium">Excluded Conflict</span>'}}</td>
                       </tr>
                       <tr>
                         <td class="p-2.5 font-mono text-[#a1a1aa]">Governance</td>
@@ -12925,7 +13325,7 @@ FORMATTING & INTERACTION RULES:
         }}
 
         // 3. e-flux Journal, Hito Steyerl & Boris Groys
-        if (q.includes('e-flux') || q.includes('steyerl') || q.includes('groys') || q.includes('vidokle') || q.includes('museum as factory') || q.includes('duty free art') || q.includes('duty-free art') || q.includes('freeport') || q.includes('post-democracy')) {{
+        if ((q.includes('e-flux') || q.includes('vidokle') || q.includes('post-democracy')) && !q.includes('boris groys') && !q.includes('art power') && !q.includes('steyerl') && !q.includes('duty free')) {{
           appendCuratorMessage(`
             <p class="text-slate-200">
               <em>e-flux journal</em> is an influential art publishing platform that explores how money, politics, and power affect the art world.
@@ -12940,6 +13340,152 @@ FORMATTING & INTERACTION RULES:
               - <strong>Anton Vidokle:</strong> He critiques celebrity curators who take the spotlight away from the artists themselves.
             </p>
           `);
+          return;
+        }}
+
+
+        // Critical Theorist Handler: Slavoj Žižek & Cultural Capitalism
+        if (q.includes('zizek') || q.includes('žižek') || (q.includes('cultural capitalism') && !q.includes('bourdieu')) || q.includes('ideological alibi') || q.includes('first as tragedy') || q.includes('charity as an alibi')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-rose-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>⚡ Critical Philosophy & Ideology Critique</span>
+                <span>·</span>
+                <span>Slavoj Žižek</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Cultural Capitalism, Philanthropic Alibis & Cynical Ideology</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In works such as <em>First as Tragedy, Then as Farce</em> (Verso, 2009) and <em>Violence</em>, Slavoj Žižek develops a foundational critique of what he terms "cultural capitalism"—the stage where capitalist exploitation and ethical redemption are packaged into the very same transaction.
+              </p>
+              <div class="p-3 rounded-xl bg-[#201115] border border-rose-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>The Philanthropic Alibi:</strong> When a hedge-fund billionaire or fossil-fuel conglomerate underwrites an art biennial or museum wing, the charity is not an antidote to exploitation—it is its ideological alibi. The price of entry or patronage includes moral absolution, allowing the patron to pose as a benevolent savior while the structural mechanisms of inequality remain untouched.
+                </p>
+                <p>
+                  <strong>Cynical Distance & The Museum:</strong> Žižek notes that contemporary culture invites visitors to "enjoy their critique." Museums stage anti-capitalist, radical art inside corporate-sponsored atriums; the system tolerates and even monetizes its own aesthetic condemnation because irony and aesthetic rebellion substitute for actual structural confrontation.
+                </p>
+                <p>
+                  <strong>Culture Atlas Takeaway:</strong> We do not accept museum corporate philanthropy as benign benevolence. True cultural autonomy requires severing dependence on predatory capital rather than buying ethical indulgences.
+                </p>
+              </div>
+            </div>
+          `, ['Boris Groys on art power', 'Yanis Varoufakis on technofeudalism', 'Hito Steyerl duty-free art', 'Three waves of critique']);
+          return;
+        }}
+
+        // Critical Theorist Handler: Boris Groys & Art Power
+        if (q.includes('boris groys') || (q.includes('groys') && (q.includes('art') || q.includes('museum') || q.includes('power') || q.includes('flow'))) || q.includes('art power') || q.includes('going public') || q.includes('museum as a secular archive')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>⚡ Curatorial Theory & Soviet Avant-Garde</span>
+                <span>·</span>
+                <span>Boris Groys</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Art Power: The Public Museum as Radical Secular Archive</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>Art Power</em> (MIT Press, 2008), <em>In the Flow</em> (2016), and <em>Going Public</em>, philosopher and art theorist Boris Groys investigates why the public museum is inherently a radical, anti-market institution.
+              </p>
+              <div class="p-3 rounded-xl bg-[#221c10] border border-amber-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>The Egalitarian Secular Archive:</strong> In the commercial art market, the value of an artwork is strictly determined by its financial exchange price at auction. In contrast, the public museum operates on an egalitarian principle: all archived works possess an equal right to exist, be cared for, and be displayed regardless of monetary valuation.
+                </p>
+                <p>
+                  <strong>Curatorial Sovereignty:</strong> Curating is not a passive mirror of public taste, but an exercise of sovereign political judgment. The curator selects what enters the historical archive, defining what is preserved against historical oblivion.
+                </p>
+                <p>
+                  <strong>The Paradox of Institutionalization:</strong> Groys argues that modern art cannot escape the museum. Even anti-art gestures, performance ephemera, and post-studio dissent only achieve historical durability and public intelligibility through institutional documentation and archiving.
+                </p>
+              </div>
+            </div>
+          `, ['Slavoj Zizek on cultural capitalism', 'Hito Steyerl duty-free art', 'Alexander Alberro institutional critique', 'BAK Utrecht Former West']);
+          return;
+        }}
+
+        // Critical Theorist Handler: Yanis Varoufakis & Technofeudalism in Cultural Assets
+        if (q.includes('varoufakis') || q.includes('varufakis') || (q.includes('technofeudalism') && (q.includes('art') || q.includes('culture') || q.includes('museum') || q.includes('cloud'))) || q.includes('cloud capital') || q.includes('rentier art')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-cyan-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>⚡ Political Economy & Technofeudalism</span>
+                <span>·</span>
+                <span>Yanis Varoufakis</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Technofeudalism: Cloud Capital & The Extraction of the Cultural Commons</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>Technofeudalism: What Killed Capitalism</em> (2023), economist Yanis Varoufakis shows that traditional capitalism has mutated into a system dominated by "cloud capital"—proprietary digital fiefdoms where value is extracted via rent rather than market production.
+              </p>
+              <div class="p-3 rounded-xl bg-[#0f2127] border border-cyan-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Enclosure of Cultural Commons:</strong> As public state subsidies decline under austerity, cultural institutions are captured by tech oligarchs and private-equity cloud rentiers who sit on museum boards. Public collections and civic archives are converted into reputational data assets and digital platforms for private accumulation.
+                </p>
+                <p>
+                  <strong>Cloud Serfdom in Art:</strong> Visitors, docents, and artists generate unpaid affective data and social capital that megamuseums package to attract luxury branding deals and commercial underwriting, while staff are subjected to precarious gig contracts.
+                </p>
+                <p>
+                  <strong>Restoring Democratic Commons:</strong> Varoufakis argues that reclaiming cultural sovereignty requires public democratization—funding art through civic wealth funds and cooperative governance rather than submitting to cloud-feudal patronage.
+                </p>
+              </div>
+            </div>
+          `, ['Slavoj Zizek on cultural capitalism', 'Hito Steyerl duty-free art', 'W.A.G.E. fair pay certification', 'Compare funding models']);
+          return;
+        }}
+
+        // Critical Artist & Theorist Handler: Hito Steyerl & Duty-Free Art / Freeports
+        if (q.includes('hito steyerl') || q.includes('hito sterl') || (q.includes('steyerl') && (q.includes('art') || q.includes('museum') || q.includes('duty free') || q.includes('freeport') || q.includes('factory'))) || q.includes('duty free art') || q.includes('is a museum a factory') || (q.includes('freeport') && (q.includes('art') || q.includes('tax'))) || q.includes('warren kanders') || q.includes('safariland')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-violet-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>⚡ Media Theory & Institutional Critique</span>
+                <span>·</span>
+                <span>Hito Steyerl</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Duty Free Art: Freeports, Planetary Civil War & The Museum as Factory</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                Artist, filmmaker, and theorist Hito Steyerl is one of the most incisive contemporary critics of cultural financialization, military-industrial entanglement, and digital surveillance capitalism.
+              </p>
+              <div class="p-3 rounded-xl bg-[#1d162b] border border-violet-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong><em>Duty Free Art</em> (Verso / e-flux):</strong> Steyerl uncovers how blue-chip contemporary art functions as offshore liquidity. Masterpieces are sealed inside tax-exempt high-security freeports (in Geneva, Luxembourg, and Singapore) where they circulate between oligarchs as untaxed currency without ever being unboxed or seen by any public audience.
+                </p>
+                <p>
+                  <strong><em>Is a Museum a Factory?</em>:</strong> The contemporary museum operates like a post-Fordist manufacturing plant. Museum visitors are not passive viewers but unpaid affective workers whose attention, social media posts, and foot traffic generate urban real-estate value and corporate sponsorship returns.
+                </p>
+                <p>
+                  <strong>The Kanders / Safariland Boycott (Whitney Biennial 2019):</strong> Steyerl and fellow artists boycotted and withdrew work from the Whitney Museum after forensic investigations proved vice chairman Warren Kanders manufactured Safariland tear gas used against migrants at the US border and in Gaza. Kanders was ultimately forced to resign.
+                </p>
+              </div>
+            </div>
+          `, ['Slavoj Zizek on cultural capitalism', 'Boris Groys on art power', 'Three waves of critique', 'Hans Haacke Shapolsky']);
+          return;
+        }}
+
+        // Critical Artists Handler: Martha Rosler, Maria Eichhorn, Cameron Rowland & Institutional Dissent
+        if (q.includes('martha rosler') || q.includes('maria eichhorn') || q.includes('cameron rowland') || q.includes('artists who criticize institutions') || q.includes('artists criticizing institutions')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>⚡ Artists Confronting the Institution</span>
+                <span>·</span>
+                <span>Rosler · Eichhorn · Rowland</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Feminist, Labor & Structural Institutional Critique</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                Beyond Hans Haacke and Andrea Fraser, major artists have interrogated the economic, racial, and labor foundations of cultural institutions:
+              </p>
+              <div class="p-3 rounded-xl bg-[#0f2119] border border-emerald-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Martha Rosler:</strong> In <em>The Bowery in two inadequate descriptive systems</em> and landmark essays for <em>e-flux</em>, Rosler critiques how art spaces are instrumentally deployed as vanguard agents of urban gentrification, and how corporate sponsors leverage the "creative class" to displace working communities.
+                </p>
+                <p>
+                  <strong>Maria Eichhorn:</strong> In <em>5 weeks, 25 days, 175 hours</em> (Chisenhale Gallery, London 2016), Eichhorn closed the exhibition space for the entire duration and gave the staff 5 weeks of fully paid leave, directly confronting the exploitation of wage labor and institutional overproduction. At Documenta 11, she established <em>Maria Eichhorn Aktiengesellschaft</em>, a public corporation with non-profit legal status that cannot increase its capital.
+                </p>
+                <p>
+                  <strong>Cameron Rowland:</strong> Rowland exposes how property contracts, rental agreements, and municipal bonds in museum infrastructure embody the continuing legal and financial legacy of racial chattel slavery, insisting that artworks remain property-restricted so institutions cannot commercially resell them.
+                </p>
+              </div>
+            </div>
+          `, ['Hito Steyerl duty-free art', 'Three waves of critique', 'W.A.G.E. fair pay certification', 'Hans Haacke Shapolsky']);
           return;
         }}
 
@@ -13225,7 +13771,7 @@ FORMATTING & INTERACTION RULES:
               4. <strong>Watchdog & Activist Evidence:</strong> We monitor reporting from Hyperallergic, Artforum, and direct campaigns by artist coalitions like Nan Goldin's P.A.I.N., Strike MoMA, and Culture Unstained.
             </p>
             <p class="text-slate-300">
-              Only institutions that maintain clear curatorial independence and clean funding without weapons or fossil fuel sponsorships receive Tier A verification.
+              Only institutions that maintain clear curatorial independence and clean funding without weapons or fossil fuel sponsorships receive verified independent space status.
             </p>
           `);
           return;
@@ -13294,7 +13840,7 @@ FORMATTING & INTERACTION RULES:
                 - <strong>Ethical Safeguard:</strong> ${{targetInst.ethical_safeguard}}<br>
                 - <strong>Curatorial Focus:</strong> ${{targetInst.curatorial_focus}}<br>
                 - <strong>Signature Art / Milestone:</strong> <span class="text-amber-300 font-normal">${{targetInst.highlight}}</span><br>
-                - <strong>Transparency Status:</strong> <span class="text-emerald-400 font-mono font-bold">${{targetInst.transparency_grade || 'Tier A+'}}</span>
+                - <strong>Transparency Status:</strong> <span class="text-emerald-400 font-mono font-bold">${{targetInst.transparency_grade || 'Statutory Public Audit'}}</span>
               </p>
               <p class="text-slate-300">
                 ${{targetInst.watch ? `<strong>Watch Notes:</strong> ${{targetInst.watch}}<br>` : ''}}
@@ -14117,7 +14663,7 @@ FORMATTING & INTERACTION RULES:
             appendCuratorMessage(`
               <div class="space-y-2.5">
                 <p class="text-slate-100 text-[14px] leading-relaxed">
-                  <strong>${{formatInstLink(inst, {{noCity: false}})}}</strong> ${{hood}} is a verified Tier A independent space ${{yr}}. It operates under transparent public governance, completely free of fossil fuel, arms, or predatory corporate underwriting.
+                  <strong>${{formatInstLink(inst, {{noCity: false}})}}</strong> ${{hood}} is a verified independent space ${{yr}}. It operates under transparent public governance, completely free of fossil fuel, arms, or predatory corporate underwriting.
                 </p>
                 <p class="text-slate-200 text-[14px] leading-relaxed">
                   <strong>Curator's Note:</strong> ${{highlight}}. Admission is ${{admission}}, open ${{hours}}. ${{transit}}
@@ -14156,7 +14702,7 @@ FORMATTING & INTERACTION RULES:
                   <strong>EXCLUSION AUDIT: ${{escapeHtml(inst.name)}} (${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}})</strong>
                 </p>
                 <p class="text-slate-200 text-[14px] leading-relaxed">
-                  ${{escapeHtml(inst.name)}} is excluded from the Culture Atlas clean roster under ${{inst.tier === 'B' ? 'Tier B flagged status for corporate sponsor conflict' : 'Tier U unverified status'}}.
+                  ${{escapeHtml(inst.name)}} is excluded from the Culture Atlas clean roster under ${{inst.tier === 'B' ? 'flagged status for corporate sponsor conflict' : 'unverified status'}}.
                   ${{inst.watch ? ` Audit conflict: ${{escapeHtml(inst.watch)}}.` : ''}}
                   Governance & funding profile: ${{escapeHtml(inst.funding || 'Commercial or conflicted corporate sponsorship')}}.
                 </p>
@@ -14356,7 +14902,177 @@ FORMATTING & INTERACTION RULES:
     document.getElementById('topSettingsBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('chatAddKeyBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('workModelBtn')?.addEventListener('click', openSettingsModal);
-    document.getElementById('chatContributeBtn')?.addEventListener('click', () => openResearchFeedbackModal());
+
+    document.getElementById('topContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
+    document.getElementById('mobileContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
+    document.getElementById('closeConfidentialChatBtn')?.addEventListener('click', closeConfidentialIntakeModal);
+    document.getElementById('chatContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
+
+    // Prompt pills in confidential modal
+    document.querySelectorAll('.confidential-prompt-chip').forEach(btn => {{
+      btn.addEventListener('click', () => {{
+        const prompt = btn.getAttribute('data-prompt') || '';
+        const input = document.getElementById('confidentialChatInput');
+        if (input) {{
+          input.value = prompt;
+          input.focus();
+        }}
+      }});
+    }});
+
+    document.getElementById('confidentialChatForm')?.addEventListener('submit', (e) => {{
+      e.preventDefault();
+      const input = document.getElementById('confidentialChatInput');
+      const val = (input?.value || '').trim();
+      if (!val) return;
+      input.value = '';
+      handleConfidentialSubmission(val);
+    }});
+
+    // Close on outside click
+    const confModal = document.getElementById('confidentialIntakeChatModal');
+    confModal?.addEventListener('click', (e) => {{
+      if (e.target === confModal) closeConfidentialIntakeModal();
+    }});
+
+
+
+    // =========================================================================
+    // 🔒 CONFIDENTIAL INTAKE CHAT WINDOW ENGINE
+    // =========================================================================
+    function openConfidentialIntakeModal() {{
+      const modal = document.getElementById('confidentialIntakeChatModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      initConfidentialChatSession();
+      setTimeout(() => {{
+        document.getElementById('confidentialChatInput')?.focus();
+      }}, 50);
+    }}
+    window.openConfidentialIntakeModal = openConfidentialIntakeModal;
+
+    function closeConfidentialIntakeModal() {{
+      const modal = document.getElementById('confidentialIntakeChatModal');
+      if (modal) modal.classList.add('hidden');
+    }}
+    window.closeConfidentialIntakeModal = closeConfidentialIntakeModal;
+
+    function initConfidentialChatSession() {{
+      const body = document.getElementById('confidentialChatBody');
+      if (!body || body.children.length > 0) return;
+
+      body.innerHTML = `
+        <div class="space-y-3 p-4 rounded-2xl bg-[#181920] border border-[#2b2f3d]">
+          <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
+            <span>🔒 Confidential Intelligence Desk</span>
+            <span>·</span>
+            <span>Investigative Intake</span>
+          </div>
+          <p class="text-white text-[14.5px] font-medium">Welcome to the Confidential Field Intelligence Intake.</p>
+          <p class="text-slate-300 text-[13px] leading-relaxed">
+            If you possess <strong>private or internal information</strong> that is <strong>not publicly available</strong>—such as unpublicized trustee arrangements, off-the-books donor covenants, internal museum board disputes, curatorial censorship behind closed doors, or undisclosed defense/fossil fuel contracts—you can submit it here in strict confidence.
+          </p>
+          <div class="p-3 rounded-xl bg-[#0f1422] border border-blue-900/50 text-[12.5px] text-slate-300 space-y-1.5 leading-relaxed">
+            <p><strong>🛡️ Source Protection Protocol:</strong> Your submission is stored directly in your browser's private local vault. When our curators cross-examine details against IRS Form 990, UK Charity Commission filings, and DRAC audits, non-public sources remain strictly confidential.</p>
+            <p><strong>What to share:</strong> Mention names, dates, private meeting decisions, internal budget allocations, or institutional agreements that public PR has kept hidden.</p>
+          </div>
+          <p class="text-slate-300 text-[13px]">
+            What internal or private information would you like to report?
+          </p>
+        </div>
+      `;
+    }}
+
+    function appendConfidentialMessage(sender, text) {{
+      const body = document.getElementById('confidentialChatBody');
+      if (!body) return;
+
+      const isUser = sender === 'user';
+      const msgDiv = document.createElement('div');
+      msgDiv.className = isUser 
+        ? 'flex justify-end' 
+        : 'flex justify-start';
+
+      const bubble = document.createElement('div');
+      bubble.className = isUser
+        ? 'max-w-[85%] bg-[#2563eb] text-white p-3.5 rounded-2xl rounded-tr-none text-[13.5px] leading-relaxed shadow-md'
+        : 'max-w-[90%] bg-[#1c1c22] border border-[#2e2e38] text-slate-200 p-4 rounded-2xl rounded-tl-none text-[13.5px] leading-relaxed shadow-md space-y-2';
+
+      if (isUser) {{
+        bubble.textContent = text;
+      }} else {{
+        bubble.innerHTML = text;
+      }}
+
+      msgDiv.appendChild(bubble);
+      body.appendChild(msgDiv);
+      body.scrollTop = body.scrollHeight;
+    }}
+
+    function handleConfidentialSubmission(text) {{
+      const q = (text || '').trim();
+      if (!q) return;
+
+      appendConfidentialMessage('user', q);
+
+      // Auto-extract and register confidential intelligence lead in local storage queue
+      const subId = Math.floor(1000 + Math.random() * 9000);
+      let cat = 'internal_whistleblower';
+      const qLower = q.toLowerCase();
+      if (qLower.includes('board') || qLower.includes('trustee') || qLower.includes('covenant')) cat = 'trustee_covenant';
+      else if (qLower.includes('censor') || qLower.includes('dispute') || qLower.includes('resign')) cat = 'board_dispute';
+      else if (qLower.includes('weapon') || qLower.includes('oil') || qLower.includes('underwrit')) cat = 'corporate_conflict';
+      else if (qLower.includes('memo') || qLower.includes('labor') || qLower.includes('wage') || qLower.includes('union')) cat = 'labor_memo';
+      else if (qLower.includes('space') || qLower.includes('artist-run') || qLower.includes('independent')) cat = 'clean_space';
+
+      const entry = {{
+        id: `CONF-${{subId}}`,
+        timestamp: new Date().toISOString(),
+        category: cat,
+        spaceName: (q.split(' at ')[1] || q.split(' in ')[1] || q).split(',')[0].split('.')[0].trim() || 'Internal Institutional Report',
+        city: 'Confidential Field Intake',
+        country: 'Field Intelligence',
+        lat: 0,
+        lon: 0,
+        details: q,
+        sourceUrl: 'Confidential Field Lead (Whistleblower Intake)',
+        contributor: 'Anonymous Insider Contributor',
+        status: 'confidential_intake'
+      }};
+
+      const subs = getCommunityResearchSubmissions();
+      subs.unshift(entry);
+      saveCommunityResearchSubmissions(subs);
+
+      // Respond conversationally as an investigative intelligence researcher
+      setTimeout(() => {{
+        let respHtml = `
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2 text-emerald-400 font-mono text-[11px] uppercase tracking-wider">
+              <span>✓ Intelligence Vault Record #${{entry.id}} Logged</span>
+              <span>·</span>
+              <span>Confidential Analysis</span>
+            </div>
+            <p class="text-white font-medium">Thank you for submitting this internal information.</p>
+            <p class="text-slate-300">
+              Your field report has been encrypted and added to the Culture Atlas research verification queue. We analyze internal submissions against statutory registries (e.g. Schedule L of IRS Form 990 for interested-person transactions, or Charity Commission trustee filings) to confirm corroborating evidence without revealing non-public sources.
+            </p>
+            <div class="p-3 rounded-xl bg-[#121622] border border-blue-900/50 text-[12.5px] text-slate-300 space-y-1">
+              <p><strong>Forensic Questions to Consider:</strong></p>
+              <ul class="list-disc pl-4 space-y-1 text-slate-300">
+                <li>Are there internal meeting minutes, emails, or executive memos corroborating this decision?</li>
+                <li>Did the donor or trustee receive naming rights, private collection storage, or commercial representation in exchange?</li>
+                <li>What fiscal year did this agreement or conflict occur?</li>
+              </ul>
+            </div>
+            <p class="text-slate-300 text-[12.5px]">
+              You may write additional details below, or close this window to explore the verified map. All submissions remain private to your local browser environment.
+            </p>
+          </div>
+        `;
+        appendConfidentialMessage('curator', respHtml);
+      }}, 450);
+    }}
 
     // Plus Button Quick Menu
     const workPlusBtn = document.getElementById('workPlusBtn');
@@ -14644,10 +15360,11 @@ FORMATTING & INTERACTION RULES:
         .replace(/\\bca\\.\\s*|\\bc\\.\\s*(?=\\d{{4}})/gi, 'around ')
         .replace(/\\bNo\\.\\s*(?=\\d)/gi, 'Number ')
         .replace(/501\\s*\\(\\s*c\\s*\\)\\s*\\(\\s*3\\s*\\)/gi, '501-c-3 non-profit')
-        .replace(/Tier A\s*[·•]?\s*(Verified Independent Space|Verified Clean Sanctuary|Verified Independent|Verified Clean|clean sanctuary|independent space|sanctuary)?/gi, 'Tier A verified independent space')
-        .replace(/verified Tier A verified independent space/gi, 'verified Tier A independent space')
+        .replace(/Tier A\s*[·•]?\s*(Verified Independent Space|Verified Clean Sanctuary|Verified Independent|Verified Clean|clean sanctuary|independent space|sanctuary)?/gi, 'verified independent space')
+        .replace(/verified Tier A verified independent space/gi, 'verified independent space')
+        .replace(/verified Tier A independent space/gi, 'verified independent space')
         .replace(/clean sanctuaries|clean sanctuary/gi, 'independent spaces')
-        .replace(/Tier B\s*[·•]?\s*(Flagged Corporate Sponsor)?/gi, 'Tier B flagged status')
+        .replace(/Tier B\s*[·•]?\s*(Flagged Corporate Sponsor)?/gi, 'flagged corporate conflict status')
         .replace(/\\bHours:\\b/gi, 'Visiting hours: ')
         .replace(/\\bAdmission:\\b/gi, 'Admission: ')
         .replace(/\\bTransit:\\b/gi, 'Transit directions: ')
@@ -15813,7 +16530,7 @@ FORMATTING & INTERACTION RULES:
                     <div class="bg-[#1f1433] p-2.5 rounded-lg border border-[#8a3ffc]/50">
                       <div class="flex items-center justify-between text-[13px]">
                         <span class="text-white font-medium">${{escapeHtml(m.name)}}</span>
-                        <span class="text-[#be95ff] text-[11px] font-mono px-1.5 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">${{m.tier === 'B' ? 'Tier B' : 'Tier U'}}</span>
+                        <span class="text-[#be95ff] text-[11px] font-mono px-1.5 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">${{m.tier === 'B' ? 'Flagged' : 'Unverified'}}</span>
                       </div>
                       <p class="text-[#e8daff] text-[12px] mt-0.5">${{escapeHtml(m.watch || m.why_flagged || m.funding || 'Corporate underwriting conflict')}}</p>
                       <button class="curator-dossier-btn text-[#be95ff] hover:underline text-[12px] font-mono mt-1 cursor-pointer" data-name="${{escapeHtml(m.name)}}">
@@ -15853,10 +16570,10 @@ FORMATTING & INTERACTION RULES:
         const tierName = isInstCommunity
           ? `Community Input · #${{inst.communityId || 'RES'}}`
           : isInstClean 
-          ? 'Tier A · Clean Verified' 
+          ? 'Clean Verified Space' 
           : isInstFlagged 
-          ? 'Tier B · Flagged Underwriting' 
-          : 'Tier U · Roster Unverified';
+          ? 'Flagged Underwriting' 
+          : 'Unverified Space';
 
         const webUrl = getValidWebUrl(inst);
         const displayDomain = getDisplayDomain(webUrl);
