@@ -723,6 +723,45 @@ return maplibregl$1;
         </div>
       </div>
 
+      <!-- Active Curatorial Route HUD Card (Floating on Street View) -->
+      <div id="activeRouteBanner" class="hidden absolute top-12 sm:top-14 left-2 sm:left-4 z-20 pointer-events-auto flex flex-col gap-2 p-2.5 sm:p-3 rounded-2xl bg-[#071912]/95 border border-emerald-500/70 shadow-2xl backdrop-blur-md max-w-[320px] sm:max-w-[390px] select-none text-zinc-200">
+        <div class="flex items-center justify-between gap-2 border-b border-emerald-900/60 pb-1.5">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+            <div class="min-w-0">
+              <span id="activeRouteTitle" class="text-[12.5px] sm:text-[13.5px] font-semibold text-emerald-200 truncate block">Curatorial Art Crawl</span>
+              <span id="activeRouteStats" class="text-[10.5px] font-mono text-emerald-400/80 block">4 Stops · ~3.2 km · 45 min walk</span>
+            </div>
+          </div>
+          <button id="closeActiveRouteBtn" class="text-zinc-400 hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[13px] cursor-pointer shrink-0" title="Exit active route">✕</button>
+        </div>
+
+        <!-- Current Stop Details Card -->
+        <div id="activeRouteStopCard" class="bg-[#0c241b] border border-emerald-500/30 rounded-xl p-2 sm:p-2.5 space-y-1 text-xs">
+          <div class="flex items-center justify-between gap-1 text-[10.5px] font-mono text-emerald-300">
+            <span id="activeRouteStopBadge">STOP 1 OF 4</span>
+            <span id="activeRouteStopTier" class="px-1.5 py-0.2 rounded bg-emerald-950 border border-emerald-700/60 text-emerald-300 font-bold">✓ CLEAN</span>
+          </div>
+          <div id="activeRouteStopName" class="text-[13px] sm:text-[14px] font-semibold text-white leading-tight">Whitechapel Gallery</div>
+          <div id="activeRouteStopHours" class="text-[11px] font-mono text-emerald-300/90">🕒 Wed–Sun 11:00–18:00</div>
+          <div id="activeRouteStopFee" class="text-[11px] text-zinc-300">🎟️ Free Public Admission</div>
+          <div id="activeRouteStopFocus" class="text-[11px] text-zinc-400 line-clamp-2 leading-snug">Historic pioneering community gallery...</div>
+        </div>
+
+        <!-- Stop Controls Navigation -->
+        <div class="flex items-center gap-1.5 pt-0.5">
+          <button id="routePrevStopBtn" class="flex-1 py-1 sm:py-1.5 px-2 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 text-[11.5px] font-medium transition cursor-pointer flex items-center justify-center gap-1 disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+            <span>← Prev</span>
+          </button>
+          <button id="routeNextStopBtn" class="flex-1 py-1 sm:py-1.5 px-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-[11.5px] font-semibold transition cursor-pointer flex items-center justify-center gap-1 shadow-sm">
+            <span>Next Stop →</span>
+          </button>
+          <button id="routeOverviewBtn" class="py-1 sm:py-1.5 px-2.5 rounded-xl bg-[#132c23] hover:bg-[#1c3e32] border border-emerald-600/50 text-emerald-300 text-[11.5px] transition cursor-pointer shrink-0" title="Fit all route stops on map">
+            <span>Fit 🔍</span>
+          </button>
+        </div>
+      </div>
+
 
       <!-- Prominent Floating Field Intelligence / Whistleblower Badge (Map Viewport) -->
       <div class="absolute bottom-2 left-2 sm:left-4 z-10 select-none">
@@ -751,6 +790,9 @@ return maplibregl$1;
           <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5"></div>
           <button id="hudFiscalBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0f2438] text-[#38bdf8] border border-[#0284c7]/50 hover:bg-[#163654] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Open Institutional Fiscal Analytics Dashboard">
             <span>📊 Fiscal</span>
+          </button>
+          <button id="hudRouteBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#09261b] text-emerald-300 border border-emerald-500/50 hover:bg-[#0e3b2a] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Curatorial Itinerary & Art Crawl Generator">
+            <span>📍 Crawls</span>
           </button>
           <button id="hudRailToggle" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1e2e42] text-[#38bdf8] border border-[#0284c7]/40 hover:bg-[#0369a1]/30 text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Toggle Clean Transit Corridors">
             <span>Rail</span>
@@ -999,6 +1041,7 @@ return maplibregl$1;
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">📚 Archives Directory (1074)</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>📍 Curatorial Itineraries</span></button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -1986,6 +2029,58 @@ return maplibregl$1;
         </div>
         <button id="closeFiscalModalFooterBtn" class="px-4 py-1.5 bg-[#172235] hover:bg-[#233452] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
           Close Analytics
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 📍 CURATORIAL ITINERARY & ART CRAWL GENERATOR MODAL -->
+  <!-- ========================================================= -->
+  <div id="curatorialItineraryModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
+    <div class="relative w-full max-w-4xl max-h-[92vh] flex flex-col bg-[#081711] border border-emerald-500/50 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-3.5 sm:p-5 border-b border-[#1b3328] bg-gradient-to-r from-[#071912] via-[#0d281d] to-[#071912] flex items-center justify-between gap-3 shrink-0">
+        <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-950/90 border border-emerald-500/60 flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm">
+            <span>📍</span>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 class="text-[15px] sm:text-[18px] font-semibold text-white tracking-tight">Curatorial Itinerary &amp; Art Crawl Generator</h2>
+              <span class="text-[11px] font-mono text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800/80">Vector Street Map · Active Routing</span>
+            </div>
+            <p class="text-xs sm:text-[13px] text-emerald-200/70 truncate">Multi-space walking &amp; clean-transit itineraries with synchronized street route lines, opening hours verification, and admission policies.</p>
+          </div>
+        </div>
+        <button id="closeItineraryModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#133024] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">✕</button>
+      </div>
+
+      <!-- Navigation & Mode Tabs -->
+      <div class="flex items-center gap-2 px-3.5 sm:px-5 py-2.5 bg-[#0a1b14] border-b border-[#173024] text-xs font-mono shrink-0 overflow-x-auto">
+        <button id="itineraryTabSignature" class="itinerary-tab-btn active px-3.5 py-1.5 rounded-xl bg-emerald-900/70 border border-emerald-500/80 text-emerald-200 font-medium transition cursor-pointer flex items-center gap-1.5">
+          <span>⭐ Signature Curated Crawls (6)</span>
+        </button>
+        <button id="itineraryTabCustom" class="itinerary-tab-btn px-3.5 py-1.5 rounded-xl bg-[#11241c] hover:bg-[#18362a] border border-[#234b39] text-zinc-300 hover:text-white transition cursor-pointer flex items-center gap-1.5">
+          <span>⚙️ Custom City Crawl Builder</span>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div id="itineraryModalBody" class="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-4 custom-scrollbar text-zinc-200 text-xs sm:text-[13px]">
+        <!-- Rendered dynamically by renderItineraryModalUI -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-3 sm:p-4 border-t border-[#1b3328] bg-[#07140e] flex items-center justify-between gap-3 shrink-0 flex-wrap text-xs">
+        <div class="flex items-center gap-2 text-zinc-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-[11.5px] font-mono">1,074 Mapped Institutions · Verified Operating Hours · Haversine Walking Times</span>
+        </div>
+        <button id="closeItineraryModalFooterBtn" class="px-4 py-1.5 bg-[#142e22] hover:bg-[#1c3e2f] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
+          Close Itineraries
         </button>
       </div>
 
@@ -7845,7 +7940,12 @@ return maplibregl$1;
         mapEl.classList.remove('map-zoomed-out');
       }
       cityVectorMap.on('zoom', updateCityZoomClasses);
-      cityVectorMap.on('load', updateCityZoomClasses);
+      cityVectorMap.on('load', () => {
+        updateCityZoomClasses();
+        if (typeof ensureCuratorialRouteLayer === 'function') {
+          ensureCuratorialRouteLayer();
+        }
+      });
 
       cityVectorMap.on('zoomend', () => {
         if (cityVectorMap.getZoom() <= 8 && isCityStreetViewActive) {
@@ -8534,6 +8634,10 @@ return maplibregl$1;
       const mapEl = document.getElementById('cityMapContainer');
       if (mapEl) mapEl.classList.add('hidden');
       document.getElementById('cityViewControlBanner')?.classList.add('hidden');
+      document.getElementById('activeRouteBanner')?.classList.add('hidden');
+      if (typeof clearCuratorialRoute === 'function') {
+        clearCuratorialRoute();
+      }
       selectedCityFilter = 'all';
       targetRadius = baseRadius;
       if (typeof deselectInstitution === 'function') {
@@ -8546,6 +8650,812 @@ return maplibregl$1;
         requestAnimationFrame(render);
       }
     }
+
+    // =========================================================================
+    // 📍 CURATORIAL ITINERARY & ART CRAWL ENGINE
+    // =========================================================================
+    const SIGNATURE_ITINERARIES = [
+      {
+        id: 'london-east-vanguard',
+        city: 'London',
+        title: 'East London Vanguard & Non-Profit Art Crawl',
+        subtitle: 'From historic radical galleries to artist-run grassroots institutions in Bethnal Green and Whitechapel',
+        description: 'Traverse East London’s historic cultural vanguard connecting civic non-profits, photographic research centers, and artist-run exhibition spaces with verified clean non-corporate funding.',
+        institutionNames: [
+          'Whitechapel Gallery',
+          'Raven Row',
+          'Autograph',
+          'Iniva (Institute of International Visual Arts)',
+          'Chisenhale Gallery'
+        ]
+      },
+      {
+        id: 'berlin-mitte-kreuzberg',
+        city: 'Berlin',
+        title: 'Berlin Mitte-to-Kreuzberg Contemporary Trail',
+        subtitle: 'Cutting-edge Kunstvereine, public discourse halls, and historic Kreuzberg cultural laboratories',
+        description: 'An essential Berlin contemporary art route linking Mitte’s historic institutions to Kreuzberg’s grassroots civic laboratories housed within the 19th-century Bethanien hospital complex.',
+        institutionNames: [
+          'KW Institute for Contemporary Art',
+          'Neuer Berliner Kunstverein (n.b.k.)',
+          'daadgalerie',
+          'Gropius Bau',
+          'Kunstraum Kreuzberg/Bethanien'
+        ]
+      },
+      {
+        id: 'ny-downtown-vanguard',
+        city: 'New York',
+        title: 'Lower Manhattan Radical & Non-Profit Spaces',
+        subtitle: 'Tribeca, SoHo & Lower East Side alternative exhibition spaces and architectural platforms',
+        description: 'Experience New York’s vital independent infrastructure across experimental non-profits and artist-driven foundations free from corporate board capture.',
+        institutionNames: [
+          'Apexart',
+          'Artists Space',
+          'Storefront for Art and Architecture',
+          'Swiss Institute'
+        ]
+      },
+      {
+        id: 'paris-contemporary-seine',
+        city: 'Paris',
+        title: 'Paris Contemporary Art & Seine Crossings',
+        subtitle: 'From the Marais to the Tuileries and western midnight pavilions',
+        description: 'Traverse the Seine basin through non-commercial contemporary art centers, private civic collections, and monumental exhibition spaces open until midnight.',
+        institutionNames: [
+          'Musée de la Chasse et de la Nature',
+          'Pinault Collection (Bourse de Commerce)',
+          'Jeu de Paume',
+          'Palais de Tokyo'
+        ]
+      },
+      {
+        id: 'amsterdam-canal-vanguard',
+        city: 'Amsterdam',
+        title: 'Amsterdam Canal Ring Non-Profit & Sound Circuit',
+        subtitle: 'Museumplein to central artist-run laboratories and media arts spaces',
+        description: 'A dynamic Dutch contemporary art traverse linking major civic collections with pioneering non-profit artist platforms and media art institutions.',
+        institutionNames: [
+          'Stedelijk Museum Amsterdam',
+          'Foam Fotografiemuseum Amsterdam',
+          'Sonic Acts',
+          'W139'
+        ]
+      },
+      {
+        id: 'basel-rhine-triad',
+        city: 'Basel',
+        title: 'Basel Rhine Contemporary Art Walk',
+        subtitle: 'Kinetic art, international kunsthalles, and grassroots artist-run platforms along the Rhine',
+        description: 'Cross the scenic Rhine riverbanks exploring Basel’s premier independent Kunsthalle, world-renowned civic collections, and non-profit project spaces.',
+        institutionNames: [
+          'Kaskadenkondensator (Kasko)',
+          'Museum Tinguely',
+          'Kunstmuseum Basel',
+          'Kunsthalle Basel'
+        ]
+      }
+    ];
+
+    let activeCuratorialRoute = null;
+    let activeCuratorialStopIndex = 0;
+    let curatorialRouteMarkers = [];
+    let activeItineraryTab = 'signature';
+    let currentModalCuratorialRoute = null;
+
+    window.SIGNATURE_ITINERARIES = SIGNATURE_ITINERARIES;
+    window.activeCuratorialRoute = null;
+
+    function getHaversineDistanceKm(lat1, lon1, lat2, lon2) {
+      if (lat1 === undefined || lon1 === undefined || lat2 === undefined || lon2 === undefined) return 0;
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return Math.round(R * c * 100) / 100;
+    }
+    window.getHaversineDistanceKm = getHaversineDistanceKm;
+
+    function estimateWalkMinutes(distanceKm) {
+      return Math.max(2, Math.round(distanceKm * 13.5));
+    }
+    window.estimateWalkMinutes = estimateWalkMinutes;
+
+    function compileCuratorialRoute(routeDefOrCity, options = {}) {
+      let matchedSig = null;
+      let targetCity = null;
+
+      if (typeof routeDefOrCity === 'string') {
+        matchedSig = SIGNATURE_ITINERARIES.find(s => s.id === routeDefOrCity || s.title.toLowerCase() === routeDefOrCity.toLowerCase() || s.city.toLowerCase() === routeDefOrCity.toLowerCase());
+        targetCity = matchedSig ? matchedSig.city : routeDefOrCity;
+      } else if (routeDefOrCity && typeof routeDefOrCity === 'object') {
+        if (routeDefOrCity.id) {
+          matchedSig = SIGNATURE_ITINERARIES.find(s => s.id === routeDefOrCity.id);
+        }
+        targetCity = routeDefOrCity.city || (matchedSig ? matchedSig.city : null);
+      }
+
+      if (!targetCity) targetCity = 'London';
+
+      let resolvedInsts = [];
+
+      if (matchedSig && (!options || Object.keys(options).length === 0)) {
+        matchedSig.institutionNames.forEach(name => {
+          const found = ALL_INSTITUTIONS.find(i => matchC(i.city, matchedSig.city) && i.name.toLowerCase() === name.toLowerCase()) ||
+                        ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === name.toLowerCase());
+          if (found && found.lat && found.lon && (found.lat !== 0 || found.lon !== 0)) {
+            resolvedInsts.push(found);
+          }
+        });
+      }
+
+      if (resolvedInsts.length === 0) {
+        // Dynamic algorithmic generation from city catalog
+        let pool = ALL_INSTITUTIONS.filter(i => matchC(i.city, targetCity) && i.lat && i.lon && (i.lat !== 0 || i.lon !== 0));
+        if (options.cleanOnly) {
+          const cleanPool = pool.filter(i => i.tier === 'A');
+          if (cleanPool.length >= 2) pool = cleanPool;
+        }
+        if (options.freeOnly) {
+          const freePool = pool.filter(i => i.admission_fee && (i.admission_fee.toLowerCase().includes('free') || i.admission_fee.toLowerCase().includes('subsidized') || i.admission_fee.toLowerCase().includes('voluntary')));
+          if (freePool.length >= 2) pool = freePool;
+        }
+
+        const maxStops = options.pace === 'half' ? 3 : (options.pace === 'quick' ? 2 : 5);
+        if (pool.length > 0) {
+          let current = pool[0];
+          resolvedInsts.push(current);
+          let remaining = pool.slice(1);
+          while (remaining.length > 0 && resolvedInsts.length < maxStops) {
+            let bestIdx = 0;
+            let bestDist = Infinity;
+            for (let j = 0; j < remaining.length; j++) {
+              const d = getHaversineDistanceKm(current.lat, current.lon, remaining[j].lat, remaining[j].lon);
+              if (d < bestDist) {
+                bestDist = d;
+                bestIdx = j;
+              }
+            }
+            current = remaining.splice(bestIdx, 1)[0];
+            resolvedInsts.push(current);
+          }
+        }
+      }
+
+      if (resolvedInsts.length === 0) return null;
+
+      const stops = [];
+      let totalKm = 0;
+      let totalWalkMinutes = 0;
+
+      for (let i = 0; i < resolvedInsts.length; i++) {
+        const inst = resolvedInsts[i];
+        let legDist = 0;
+        let legMin = 0;
+        if (i > 0) {
+          const prev = resolvedInsts[i - 1];
+          legDist = getHaversineDistanceKm(prev.lat, prev.lon, inst.lat, inst.lon);
+          legMin = estimateWalkMinutes(legDist);
+          totalKm += legDist;
+          totalWalkMinutes += legMin;
+        }
+
+        const rawH = inst.opening_hours || 'Wednesday–Sunday 11:00–18:00';
+        let advisory = '';
+        if (rawH.toLowerCase().includes('closed mo')) advisory += '⚠️ Closed Mon · ';
+        if (rawH.toLowerCase().includes('closed tu')) advisory += '⚠️ Closed Tue · ';
+        if (rawH.toLowerCase().includes('midnight') || rawH.toLowerCase().includes('22:00') || rawH.toLowerCase().includes('21:00')) advisory += '🌙 Open Late · ';
+        if (inst.admission_fee && inst.admission_fee.toLowerCase().includes('free')) advisory += '🎟️ Free Admission';
+
+        stops.push({
+          stopIndex: i + 1,
+          name: inst.name,
+          inst: inst,
+          lat: inst.lat,
+          lon: inst.lon,
+          tier: inst.tier,
+          address: inst.address || inst.location || inst.neighborhood || targetCity,
+          openingHours: rawH,
+          admissionFee: inst.admission_fee || 'Civic subsidized entry',
+          curatorialFocus: inst.curatorial_focus || inst.neighborhood || 'Independent contemporary art platform',
+          legDistanceKm: legDist,
+          legWalkMinutes: legMin,
+          advisoryNote: advisory.trim()
+        });
+      }
+
+      for (let i = 0; i < stops.length - 1; i++) {
+        stops[i].nextLegKm = stops[i + 1].legDistanceKm;
+        stops[i].nextLegMin = stops[i + 1].legWalkMinutes;
+      }
+
+      totalKm = Math.round(totalKm * 100) / 100;
+      const estimatedTotalHours = Math.round((totalWalkMinutes + stops.length * 55) / 60 * 10) / 10;
+
+      const coordinates = stops.map(s => [s.lon, s.lat]);
+      const geojson = {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'LineString',
+              coordinates: coordinates
+            },
+            properties: {
+              title: matchedSig ? matchedSig.title : `${targetCity} Curatorial Walking Itinerary`,
+              stopsCount: stops.length,
+              totalKm: totalKm
+            }
+          }
+        ]
+      };
+
+      return {
+        id: matchedSig ? matchedSig.id : `custom-${targetCity.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}`,
+        city: targetCity,
+        title: matchedSig ? matchedSig.title : `${targetCity} Independent Art Crawl`,
+        subtitle: matchedSig ? matchedSig.subtitle : `Algorithmic walking itinerary connecting ${stops.length} cultural spaces across ${targetCity}`,
+        description: matchedSig ? matchedSig.description : `Optimized curatorial route through ${targetCity}, minimizing transit friction between independent spaces with verified operating hours.`,
+        stops: stops,
+        totalKm: totalKm,
+        totalWalkMinutes: totalWalkMinutes,
+        estimatedTotalHours: estimatedTotalHours,
+        geojson: geojson
+      };
+    }
+    window.compileCuratorialRoute = compileCuratorialRoute;
+
+    function ensureCuratorialRouteLayer() {
+      if (!cityVectorMap) return;
+      try {
+        if (!cityVectorMap.getSource('curatorial-route-source')) {
+          cityVectorMap.addSource('curatorial-route-source', {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: []
+            }
+          });
+        }
+        if (!cityVectorMap.getLayer('curatorial-route-glow')) {
+          cityVectorMap.addLayer({
+            id: 'curatorial-route-glow',
+            type: 'line',
+            source: 'curatorial-route-source',
+            layout: {
+              'line-join': 'round',
+              'line-cap': 'round'
+            },
+            paint: {
+              'line-color': '#064e3b',
+              'line-width': 8,
+              'line-opacity': 0.75,
+              'line-blur': 3
+            }
+          });
+        }
+        if (!cityVectorMap.getLayer('curatorial-route-line')) {
+          cityVectorMap.addLayer({
+            id: 'curatorial-route-line',
+            type: 'line',
+            source: 'curatorial-route-source',
+            layout: {
+              'line-join': 'round',
+              'line-cap': 'round'
+            },
+            paint: {
+              'line-color': '#10b981',
+              'line-width': 4,
+              'line-opacity': 0.95,
+              'line-dasharray': [2, 1]
+            }
+          });
+        }
+      } catch (e) {
+        console.warn('ensureCuratorialRouteLayer warning:', e);
+      }
+    }
+    window.ensureCuratorialRouteLayer = ensureCuratorialRouteLayer;
+
+    function launchCuratorialRoute(routeInput) {
+      const route = typeof routeInput === 'string'
+        ? compileCuratorialRoute(routeInput)
+        : (routeInput && routeInput.stops ? routeInput : compileCuratorialRoute(routeInput));
+      if (!route || !route.stops || route.stops.length === 0) {
+        console.warn('Could not compile itinerary route:', routeInput);
+        return;
+      }
+
+      activeCuratorialRoute = route;
+      window.activeCuratorialRoute = route;
+      activeCuratorialStopIndex = 0;
+
+      // Switch to street view for this city
+      openCityStreetView(route.city, route.stops[0].lat, route.stops[0].lon);
+
+      // Show HUD banner immediately
+      updateActiveRouteBannerUI();
+
+      function renderRouteOnMap() {
+        if (!cityVectorMap) return;
+        ensureCuratorialRouteLayer();
+        const src = cityVectorMap.getSource('curatorial-route-source');
+        if (src) {
+          src.setData(route.geojson);
+        }
+
+        // Clear existing route stop markers
+        curatorialRouteMarkers.forEach(m => m.remove());
+        curatorialRouteMarkers = [];
+
+        // Add custom numbered stop markers
+        route.stops.forEach((stop, idx) => {
+          const pinEl = document.createElement('div');
+          pinEl.className = 'curatorial-route-stop-pin';
+          pinEl.setAttribute('data-stop-idx', String(idx));
+          pinEl.style.position = 'relative';
+          pinEl.style.width = '36px';
+          pinEl.style.height = '36px';
+          pinEl.style.display = 'flex';
+          pinEl.style.alignItems = 'center';
+          pinEl.style.justifyContent = 'center';
+          pinEl.style.cursor = 'pointer';
+          pinEl.style.zIndex = '35';
+
+          const auraEl = document.createElement('div');
+          auraEl.style.position = 'absolute';
+          auraEl.style.width = '34px';
+          auraEl.style.height = '34px';
+          auraEl.style.borderRadius = '50%';
+          auraEl.style.background = 'rgba(16, 185, 129, 0.4)';
+          auraEl.style.animation = 'pulse 2s infinite';
+
+          const badgeEl = document.createElement('div');
+          badgeEl.className = 'route-stop-badge';
+          badgeEl.style.position = 'relative';
+          badgeEl.style.width = '28px';
+          badgeEl.style.height = '28px';
+          badgeEl.style.borderRadius = '50%';
+          badgeEl.style.background = 'linear-gradient(135deg, #064e3b 0%, #022c22 100%)';
+          badgeEl.style.border = '2.5px solid #34d399';
+          badgeEl.style.color = '#ffffff';
+          badgeEl.style.fontFamily = 'monospace';
+          badgeEl.style.fontSize = '13px';
+          badgeEl.style.fontWeight = 'bold';
+          badgeEl.style.display = 'flex';
+          badgeEl.style.alignItems = 'center';
+          badgeEl.style.justifyContent = 'center';
+          badgeEl.style.boxShadow = '0 0 14px rgba(16, 185, 129, 0.75)';
+          badgeEl.textContent = String(stop.stopIndex);
+
+          pinEl.appendChild(auraEl);
+          pinEl.appendChild(badgeEl);
+
+          const safeName = escapeHtml(stop.name).replace(/'/g, "\'");
+          const isClean = stop.tier === 'A';
+          const popupHtml = `
+            <div style="font-family:'PP Telegraf',sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f1f5f9;">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
+                <span style="font-size:11px; font-family:monospace; color:#34d399; font-weight:600; text-transform:uppercase;">
+                  Stop ${stop.stopIndex} of ${route.stops.length}
+                </span>
+                <span style="font-size:10px; font-family:monospace; padding:1px 6px; border-radius:4px; background:${isClean ? '#06261c' : '#1e1133'}; color:${isClean ? '#34d399' : '#c084fc'}; border:1px solid ${isClean ? '#0f4c39' : '#581c87'};">
+                  ${isClean ? '✓ Clean Funding' : 'Flagged'}
+                </span>
+              </div>
+              <div style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.2; margin-bottom:4px;">
+                ${escapeHtml(stop.name)}
+              </div>
+              <div style="font-size:11.5px; color:#a1a1aa; margin-bottom:6px;">
+                ${escapeHtml(stop.address || stop.neighborhood || stop.city)}
+              </div>
+              <div style="font-size:11.5px; font-family:monospace; color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
+                🕒 ${escapeHtml(stop.openingHours)}
+              </div>
+              <div style="font-size:11px; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
+                ${escapeHtml(stop.curatorialFocus || '')}
+              </div>
+              ${idx < route.stops.length - 1 ? `
+                <div style="font-size:11px; font-family:monospace; color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                  → Next stop: ${escapeHtml(route.stops[idx + 1].name)} (${stop.nextLegKm || route.stops[idx+1].legDistanceKm} km · ${stop.nextLegMin || route.stops[idx+1].legWalkMinutes} min walk)
+                </div>
+              ` : `
+                <div style="font-size:11px; font-family:monospace; color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                  🏁 Final Itinerary Destination
+                </div>
+              `}
+              <div style="display:flex; align-items:center; gap:6px; margin-top:8px;">
+                <button onclick="window.jumpToRouteStop(${idx})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:11px; font-weight:600; border:none; cursor:pointer;">
+                  Focus Stop
+                </button>
+                <button onclick="window.atlasPlanVisit('${safeName}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:11px; border:1px solid #334155; cursor:pointer;">
+                  Plan Visit 💬
+                </button>
+              </div>
+            </div>
+          `;
+
+          const popup = new maplibregl.Popup({
+            className: 'atlas-dark-popup',
+            maxWidth: '340px',
+            offset: 14,
+            closeButton: true,
+            closeOnClick: false
+          }).setHTML(popupHtml);
+
+          const marker = new maplibregl.Marker({ element: pinEl })
+            .setLngLat([stop.lon, stop.lat])
+            .setPopup(popup)
+            .addTo(cityVectorMap);
+
+          pinEl.addEventListener('click', (e) => {
+            e.stopPropagation();
+            jumpToRouteStop(idx);
+          });
+
+          curatorialRouteMarkers.push(marker);
+        });
+
+        // Fit map bounds smoothly
+        const bounds = new maplibregl.LngLatBounds();
+        route.stops.forEach(s => bounds.extend([s.lon, s.lat]));
+        cityVectorMap.fitBounds(bounds, {
+          padding: { top: 120, bottom: 90, left: 80, right: 80 },
+          maxZoom: 14.5
+        });
+
+        updateActiveRouteBannerUI();
+      }
+
+      if (cityVectorMap && cityVectorMap.loaded()) {
+        renderRouteOnMap();
+      } else if (cityVectorMap) {
+        cityVectorMap.once('load', renderRouteOnMap);
+        setTimeout(renderRouteOnMap, 200);
+      }
+
+      closeCuratorialItineraryModal();
+
+      if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {
+        setMobileViewMode('map');
+      }
+    }
+    window.launchCuratorialRoute = launchCuratorialRoute;
+
+    function jumpToRouteStop(idx) {
+      if (!activeCuratorialRoute || !activeCuratorialRoute.stops || idx < 0 || idx >= activeCuratorialRoute.stops.length) return;
+      activeCuratorialStopIndex = idx;
+      const stop = activeCuratorialRoute.stops[idx];
+      if (cityVectorMap && stop.lat && stop.lon) {
+        cityVectorMap.flyTo({
+          center: [stop.lon, stop.lat],
+          zoom: 16.0,
+          pitch: 45,
+          bearing: 15,
+          essential: true
+        });
+      }
+
+      if (curatorialRouteMarkers[idx]) {
+        curatorialRouteMarkers.forEach((m, i) => {
+          if (i === idx) {
+            if (!m.getPopup().isOpen()) m.togglePopup();
+          } else {
+            if (m.getPopup().isOpen()) m.togglePopup();
+          }
+        });
+      }
+
+      updateActiveRouteBannerUI();
+    }
+    window.jumpToRouteStop = jumpToRouteStop;
+
+    function updateActiveRouteBannerUI() {
+      const banner = document.getElementById('activeRouteBanner');
+      if (!banner || !activeCuratorialRoute) return;
+
+      banner.classList.remove('hidden');
+
+      const titleEl = document.getElementById('activeRouteTitle');
+      if (titleEl) titleEl.textContent = activeCuratorialRoute.title;
+
+      const statsEl = document.getElementById('activeRouteStats');
+      if (statsEl) {
+        statsEl.textContent = `${activeCuratorialRoute.stops.length} Stops · ~${activeCuratorialRoute.totalKm} km · ${activeCuratorialRoute.totalWalkMinutes} min walk · Est. ${activeCuratorialRoute.estimatedTotalHours} hrs`;
+      }
+
+      const idx = activeCuratorialStopIndex || 0;
+      const stop = activeCuratorialRoute.stops[idx];
+
+      const badgeEl = document.getElementById('activeRouteStopBadge');
+      if (badgeEl) badgeEl.textContent = `STOP ${idx + 1} OF ${activeCuratorialRoute.stops.length}`;
+
+      const tierEl = document.getElementById('activeRouteStopTier');
+      if (tierEl) {
+        const isClean = stop.tier === 'A';
+        tierEl.textContent = isClean ? '✓ CLEAN' : 'FLAGGED';
+        tierEl.className = isClean 
+          ? 'px-1.5 py-0.2 rounded bg-emerald-950 border border-emerald-700/60 text-emerald-300 font-bold'
+          : 'px-1.5 py-0.2 rounded bg-purple-950 border border-purple-700/60 text-purple-300 font-bold';
+      }
+
+      const nameEl = document.getElementById('activeRouteStopName');
+      if (nameEl) nameEl.textContent = stop.name;
+
+      const hoursEl = document.getElementById('activeRouteStopHours');
+      if (hoursEl) hoursEl.textContent = `🕒 ${stop.openingHours}`;
+
+      const feeEl = document.getElementById('activeRouteStopFee');
+      if (feeEl) feeEl.textContent = `🎟️ ${stop.admissionFee}`;
+
+      const focusEl = document.getElementById('activeRouteStopFocus');
+      if (focusEl) focusEl.textContent = stop.curatorialFocus || stop.address || '';
+
+      const prevBtn = document.getElementById('routePrevStopBtn');
+      if (prevBtn) {
+        prevBtn.disabled = idx === 0;
+      }
+
+      const nextBtn = document.getElementById('routeNextStopBtn');
+      if (nextBtn) {
+        if (idx === activeCuratorialRoute.stops.length - 1) {
+          nextBtn.innerHTML = '<span>🏁 Loop to Start</span>';
+        } else {
+          nextBtn.innerHTML = '<span>Next Stop →</span>';
+        }
+      }
+    }
+    window.updateActiveRouteBannerUI = updateActiveRouteBannerUI;
+
+    function clearCuratorialRoute() {
+      activeCuratorialRoute = null;
+      window.activeCuratorialRoute = null;
+      activeCuratorialStopIndex = 0;
+      curatorialRouteMarkers.forEach(m => m.remove());
+      curatorialRouteMarkers = [];
+      if (cityVectorMap) {
+        try {
+          const src = cityVectorMap.getSource('curatorial-route-source');
+          if (src) {
+            src.setData({ type: 'FeatureCollection', features: [] });
+          }
+        } catch (e) {}
+      }
+      document.getElementById('activeRouteBanner')?.classList.add('hidden');
+    }
+    window.clearCuratorialRoute = clearCuratorialRoute;
+
+    function openCuratorialItineraryModal(cityOrRouteId) {
+      const modal = document.getElementById('curatorialItineraryModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+
+      if (cityOrRouteId) {
+        const isSig = SIGNATURE_ITINERARIES.some(s => s.id === cityOrRouteId || s.city.toLowerCase() === cityOrRouteId.toLowerCase());
+        if (isSig) {
+          activeItineraryTab = 'signature';
+        } else {
+          activeItineraryTab = 'custom';
+          currentModalCuratorialRoute = compileCuratorialRoute(cityOrRouteId);
+        }
+      }
+
+      renderItineraryModalUI();
+    }
+    window.openCuratorialItineraryModal = openCuratorialItineraryModal;
+
+    function closeCuratorialItineraryModal() {
+      const modal = document.getElementById('curatorialItineraryModal');
+      if (modal) modal.classList.add('hidden');
+    }
+    window.closeCuratorialItineraryModal = closeCuratorialItineraryModal;
+
+    function switchItineraryTab(tabName) {
+      activeItineraryTab = tabName;
+      document.querySelectorAll('.itinerary-tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-emerald-900/70', 'border-emerald-500/80', 'text-emerald-200');
+        btn.classList.add('bg-[#11241c]', 'border-[#234b39]', 'text-zinc-300');
+      });
+      const activeBtn = document.getElementById(tabName === 'signature' ? 'itineraryTabSignature' : 'itineraryTabCustom');
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-emerald-900/70', 'border-emerald-500/80', 'text-emerald-200');
+        activeBtn.classList.remove('bg-[#11241c]', 'border-[#234b39]', 'text-zinc-300');
+      }
+      renderItineraryModalUI();
+    }
+    window.switchItineraryTab = switchItineraryTab;
+
+    function renderItineraryModalUI() {
+      const body = document.getElementById('itineraryModalBody');
+      if (!body) return;
+
+      if (activeItineraryTab === 'signature') {
+        body.innerHTML = `
+          <div class="space-y-4">
+            <div class="p-3 rounded-2xl bg-[#091f16] border border-emerald-800/60 text-xs text-emerald-200/90 leading-relaxed">
+              Curated walking itineraries traversing verified clean-funding institutions and pioneering artist-run initiatives across major cultural centers. Launching an itinerary draws a glowing route line on the vector street map with sequential stop navigation.
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              ${SIGNATURE_ITINERARIES.map(sig => {
+                const r = compileCuratorialRoute(sig.id);
+                return `
+                  <div class="p-3.5 sm:p-4 rounded-2xl bg-[#0b2118] border border-emerald-700/50 hover:border-emerald-500 flex flex-col justify-between gap-3 transition group">
+                    <div class="space-y-1.5">
+                      <div class="flex items-center justify-between gap-2">
+                        <span class="text-[10.5px] font-mono uppercase bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-700/80 font-bold">${escapeHtml(sig.city)}</span>
+                        <span class="text-[11px] font-mono text-emerald-400 font-semibold">${r ? r.stops.length : 4} Stops · ~${r ? r.totalKm : '3.5'} km</span>
+                      </div>
+                      <h3 class="text-[14px] sm:text-[15px] font-bold text-white group-hover:text-emerald-300 transition">${escapeHtml(sig.title)}</h3>
+                      <p class="text-[12px] text-zinc-300 leading-snug">${escapeHtml(sig.description)}</p>
+
+                      <!-- Stop Pills Preview -->
+                      <div class="pt-2 border-t border-emerald-900/50 space-y-1 text-[11px] font-mono">
+                        ${(r ? r.stops : []).map(s => `
+                          <div class="flex items-center justify-between gap-1 text-zinc-300">
+                            <span class="truncate"><strong class="text-emerald-400">${s.stopIndex}.</strong> ${escapeHtml(s.name)}</span>
+                            <span class="text-[10px] text-emerald-400/80 shrink-0">${escapeHtml(s.openingHours.split('(')[0].split(',')[0].trim())}</span>
+                          </div>
+                        `).join('')}
+                      </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 pt-2 border-t border-emerald-900/50">
+                      <button type="button" onclick="window.launchCuratorialRoute('${sig.id}')" class="flex-1 py-1.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs transition cursor-pointer flex items-center justify-center gap-1.5 shadow-md">
+                        <span>🗺️ Launch on Map</span>
+                      </button>
+                      <button type="button" onclick="window.switchItineraryTab('custom'); window.openCuratorialItineraryModal('${sig.city}');" class="py-1.5 px-2.5 rounded-xl bg-[#122c22] hover:bg-[#1a3d30] border border-emerald-700/60 text-emerald-300 text-xs transition cursor-pointer" title="Customize this city crawl">
+                        <span>⚙️ Customize</span>
+                      </button>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      } else {
+        // Custom Generator Tab
+        const availableCities = ALL_CITIES_REGISTRY.filter(c => c.count >= 2);
+        const defaultCity = currentModalCuratorialRoute ? currentModalCuratorialRoute.city : 'London';
+
+        body.innerHTML = `
+          <div class="space-y-4">
+            <!-- Controls Form Card -->
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-[#091f16] border border-emerald-800/60 space-y-3">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="space-y-1">
+                  <label class="text-[11px] font-mono uppercase text-emerald-400 font-semibold block">Select Cultural City</label>
+                  <select id="customCrawlCitySelect" class="w-full bg-[#0c2b1f] border border-emerald-600/60 text-white rounded-xl px-2.5 py-1.5 text-xs font-medium focus:outline-none focus:border-emerald-400">
+                    ${availableCities.map(c => `
+                      <option value="${escapeHtml(c.name)}" ${matchC(c.name, defaultCity) ? 'selected' : ''}>${escapeHtml(c.name)} (${c.count} spaces)</option>
+                    `).join('')}
+                  </select>
+                </div>
+                <div class="space-y-1">
+                  <label class="text-[11px] font-mono uppercase text-emerald-400 font-semibold block">Crawl Pace & Scope</label>
+                  <select id="customCrawlPaceSelect" class="w-full bg-[#0c2b1f] border border-emerald-600/60 text-white rounded-xl px-2.5 py-1.5 text-xs font-medium focus:outline-none focus:border-emerald-400">
+                    <option value="half">Half-Day (2-3 stops · ~2.5 hrs)</option>
+                    <option value="full" selected>Full-Day (4-5 stops · ~4.5 hrs)</option>
+                    <option value="quick">Express Highlights (2 stops · ~1.5 hrs)</option>
+                  </select>
+                </div>
+                <div class="space-y-1">
+                  <label class="text-[11px] font-mono uppercase text-emerald-400 font-semibold block">Ethical & Admission Filters</label>
+                  <div class="flex items-center gap-3 pt-1">
+                    <label class="inline-flex items-center gap-1.5 text-[11.5px] text-zinc-300 cursor-pointer">
+                      <input type="checkbox" id="customCrawlCleanOnly" class="rounded accent-emerald-500" checked>
+                      <span>Clean Only</span>
+                    </label>
+                    <label class="inline-flex items-center gap-1.5 text-[11.5px] text-zinc-300 cursor-pointer">
+                      <input type="checkbox" id="customCrawlFreeOnly" class="rounded accent-emerald-500">
+                      <span>Free Entry Only</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-emerald-900/60 flex items-center justify-between gap-2 flex-wrap">
+                <span class="text-[11px] text-zinc-400 font-mono">Algorithms minimize transit zigzagging via Haversine distance matrix.</span>
+                <button type="button" id="customCrawlGenerateBtn" class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs transition cursor-pointer shadow-md flex items-center gap-1.5">
+                  <span>Generate Itinerary 🚀</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Preview Card -->
+            <div id="customCrawlPreviewContainer" class="space-y-3">
+              <!-- Rendered by updateCustomCrawlPreview -->
+            </div>
+          </div>
+        `;
+
+        function updateCustomCrawlPreview() {
+          const cityEl = document.getElementById('customCrawlCitySelect');
+          const paceEl = document.getElementById('customCrawlPaceSelect');
+          const cleanEl = document.getElementById('customCrawlCleanOnly');
+          const freeEl = document.getElementById('customCrawlFreeOnly');
+          const previewEl = document.getElementById('customCrawlPreviewContainer');
+          if (!cityEl || !previewEl) return;
+
+          const city = cityEl.value;
+          const pace = paceEl ? paceEl.value : 'full';
+          const cleanOnly = cleanEl ? cleanEl.checked : true;
+          const freeOnly = freeEl ? freeEl.checked : false;
+
+          const route = compileCuratorialRoute(city, { pace, cleanOnly, freeOnly });
+          currentModalCuratorialRoute = route;
+          window.currentModalCuratorialRoute = route;
+
+          if (!route || !route.stops || route.stops.length === 0) {
+            previewEl.innerHTML = `
+              <div class="p-4 rounded-2xl bg-[#141b17] border border-[#23352b] text-center text-zinc-400 text-xs">
+                No matching spaces found for the selected criteria in ${escapeHtml(city)}. Try disabling filters to expand the search.
+              </div>
+            `;
+            return;
+          }
+
+          previewEl.innerHTML = `
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-[#0b2118] border border-emerald-700/60 space-y-3">
+              <div class="flex items-center justify-between border-b border-emerald-900/60 pb-2.5 flex-wrap gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-[15px] font-bold text-white">${escapeHtml(route.title)}</h3>
+                    <span class="text-[10px] font-mono uppercase bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-700/80 font-bold">${escapeHtml(route.city)}</span>
+                  </div>
+                  <p class="text-[11.5px] font-mono text-emerald-300/90">${route.stops.length} Stops · ~${route.totalKm} km walking · ${route.totalWalkMinutes} min walk · Est. ${route.estimatedTotalHours} hrs total</p>
+                </div>
+                <button type="button" onclick="window.launchCuratorialRoute(window.currentModalCuratorialRoute)" class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs shadow-md transition cursor-pointer flex items-center gap-1.5">
+                  <span>🗺️ Launch on Vector Map</span>
+                </button>
+              </div>
+
+              <div class="space-y-2">
+                ${route.stops.map((s, idx) => `
+                  <div class="p-2.5 rounded-xl bg-[#061c14] border border-emerald-800/40 space-y-1">
+                    <div class="flex items-center justify-between gap-2">
+                      <div class="flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-full bg-emerald-700 text-white font-mono text-[11px] font-bold flex items-center justify-center">${s.stopIndex}</span>
+                        <strong class="text-white text-xs sm:text-[13px]">${escapeHtml(s.name)}</strong>
+                      </div>
+                      <span class="text-[10px] font-mono px-1.5 py-0.2 rounded ${s.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950 text-purple-300 border border-purple-700/60'}">${s.tier === 'A' ? '✓ Clean' : 'Flagged'}</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-[11px] font-mono text-emerald-300 flex-wrap">
+                      <span>🕒 ${escapeHtml(s.openingHours)}</span>
+                      <span>·</span>
+                      <span class="text-zinc-300">🎟️ ${escapeHtml(s.admissionFee)}</span>
+                      ${s.advisoryNote ? `<span class="text-amber-400">· ${escapeHtml(s.advisoryNote)}</span>` : ''}
+                    </div>
+                    <div class="text-[11px] text-zinc-400 leading-snug">
+                      ${escapeHtml(s.curatorialFocus || '')}
+                    </div>
+                    ${idx < route.stops.length - 1 ? `
+                      <div class="text-[10.5px] font-mono text-sky-400 pt-0.5">
+                        ↓ ~${s.nextLegKm || route.stops[idx+1].legDistanceKm} km (${s.nextLegMin || route.stops[idx+1].legWalkMinutes} min walk) to Stop ${s.stopIndex + 1}
+                      </div>
+                    ` : ''}
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+
+        document.getElementById('customCrawlGenerateBtn')?.addEventListener('click', updateCustomCrawlPreview);
+        document.getElementById('customCrawlCitySelect')?.addEventListener('change', updateCustomCrawlPreview);
+        document.getElementById('customCrawlPaceSelect')?.addEventListener('change', updateCustomCrawlPreview);
+        document.getElementById('customCrawlCleanOnly')?.addEventListener('change', updateCustomCrawlPreview);
+        document.getElementById('customCrawlFreeOnly')?.addEventListener('change', updateCustomCrawlPreview);
+
+        updateCustomCrawlPreview();
+      }
+    }
+    window.renderItineraryModalUI = renderItineraryModalUI;
 
     // Fixed Procedural Starfield for Cinematic Deep-Space Background
     const STARFIELD = [];
@@ -12836,7 +13746,9 @@ FORMATTING & INTERACTION RULES:
         (q.includes('fiscal') && (q.includes('analytics') || q.includes('dashboard') || q.includes('hud') || q.includes('summary') || q.includes('metrics'))) ||
         (q.includes('budget') && q.includes('dashboard')) ||
         (q.includes('finance') && (q.includes('dashboard') || q.includes('analytics')));
-      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery;
+      const isItineraryQuery = /(plan\s*(a\s*)?(day|visit|tour|itinerary|route|crawl)|art\s*(crawl|walk|tour|circuit|route|itinerary)|curatorial\s*(itinerary|route|tour|circuit|walk)|visit\s*itinerary|curated\s*(route|crawl|walk)|gallery\s*crawl|museum\s*crawl|walking\s*route)/i.test(q) ||
+        (q.includes('itinerary') || q.includes('art crawl') || (q.includes('crawl') && (q.includes('art') || q.includes('museum') || q.includes('gallery'))) || (q.includes('plan') && (q.includes('route') || q.includes('day') || q.includes('tour') || q.includes('crawl'))));
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery;
 
       // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
       if (!isMetaInquiry) {
@@ -12849,7 +13761,7 @@ FORMATTING & INTERACTION RULES:
         }
       }
 
-      // Direct interactive UI commands
+      // Direct interactive UI commands: Fiscal Analytics
       if (isFiscalAnalyticsQuery) {
         curatorTyping.classList.add('hidden');
         openFiscalAnalyticsHUD();
@@ -12905,6 +13817,158 @@ FORMATTING & INTERACTION RULES:
           'Filter High Program Spend',
           'Where to find museum budgets',
           'Explore Finance Papers 🔬'
+        ]);
+        return;
+      }
+
+      // Direct interactive UI commands: Curatorial Itinerary & Art Crawl
+      if (isItineraryQuery) {
+        curatorTyping.classList.add('hidden');
+        const detectedCity = findMentionedCity(query) || (curatorContext.lastCity && !['all', 'world'].includes(curatorContext.lastCity.toLowerCase()) ? curatorContext.lastCity : null);
+        
+        if (detectedCity) {
+          const cleanOnly = /clean|ethical|unflagged/i.test(q);
+          const freeOnly = /free|no fee/i.test(q);
+          const pace = /half|quick|short/i.test(q) ? 'half' : 'full';
+          const route = compileCuratorialRoute(detectedCity, { cleanOnly, freeOnly, pace });
+          if (route && route.stops && route.stops.length > 0) {
+            appendCuratorMessage(`
+              <div class="border border-emerald-500/40 bg-[#081a14] p-3.5 sm:p-4 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2 flex-wrap gap-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">📍</span>
+                    <div>
+                      <h4 class="font-semibold text-white text-[15px]">${escapeHtml(route.title)}</h4>
+                      <p class="text-[11.5px] font-mono text-emerald-300">${route.stops.length} Stops · ~${route.totalKm} km · ${route.totalWalkMinutes} min walk · Est. ${route.estimatedTotalHours} hrs</p>
+                    </div>
+                  </div>
+                  <button type="button" onclick="window.launchCuratorialRoute('${escapeHtml(route.id || route.city)}')" class="px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
+                    <span>🗺️ Launch on Map</span>
+                  </button>
+                </div>
+
+                <p class="text-slate-200 text-xs sm:text-[13px] leading-relaxed">
+                  ${escapeHtml(route.description)}
+                </p>
+
+                <!-- Stops Timeline -->
+                <div class="space-y-2 pt-1 border-t border-emerald-900/40">
+                  <div class="text-[11px] font-mono uppercase text-emerald-400 font-bold">Route Timeline & Operating Hours:</div>
+                  ${route.stops.map((s, idx) => `
+                    <div class="p-2 sm:p-2.5 rounded-xl bg-[#0b261d] border border-emerald-800/40 space-y-1">
+                      <div class="flex items-center justify-between gap-1.5">
+                        <div class="flex items-center gap-1.5">
+                          <span class="w-5 h-5 rounded-full bg-emerald-700 text-white font-mono text-[11px] font-bold flex items-center justify-center shrink-0">${s.stopIndex}</span>
+                          <span class="font-medium text-white text-xs sm:text-[13px]">${escapeHtml(s.name)}</span>
+                        </div>
+                        <span class="text-[10px] font-mono px-1.5 py-0.2 rounded ${s.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950 text-purple-300 border border-purple-700/60'} shrink-0">${s.tier === 'A' ? '✓ Clean' : 'Flagged'}</span>
+                      </div>
+                      <div class="flex items-center gap-2 text-[11px] font-mono text-emerald-300 flex-wrap">
+                        <span>🕒 ${escapeHtml(s.openingHours)}</span>
+                        <span>·</span>
+                        <span class="text-zinc-300">🎟️ ${escapeHtml(s.admissionFee)}</span>
+                        ${s.advisoryNote ? `<span class="text-amber-400">· ${escapeHtml(s.advisoryNote)}</span>` : ''}
+                      </div>
+                      <div class="text-[11px] text-zinc-400 leading-snug">
+                        ${escapeHtml(s.curatorialFocus || '')}
+                      </div>
+                      ${idx < route.stops.length - 1 ? `
+                        <div class="text-[10.5px] font-mono text-sky-400 pt-0.5">
+                          ↓ ~${s.nextLegKm || route.stops[idx+1].legDistanceKm} km walk (${s.nextLegMin || route.stops[idx+1].legWalkMinutes} min) to Stop ${s.stopIndex + 1}
+                        </div>
+                      ` : ''}
+                    </div>
+                  `).join('')}
+                </div>
+
+                <div class="flex items-center justify-between gap-2 pt-2 border-t border-emerald-900/50 flex-wrap text-xs">
+                  <span class="text-zinc-400 text-[11.5px]">Open street map with live dashed route corridor:</span>
+                  <div class="flex items-center gap-1.5">
+                    <button type="button" onclick="window.launchCuratorialRoute('${escapeHtml(route.id || route.city)}')" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
+                      Launch Route 🗺️
+                    </button>
+                    <button type="button" onclick="window.openCuratorialItineraryModal('${escapeHtml(route.city)}')" class="px-2.5 py-1 bg-[#152e24] hover:bg-[#1e4234] border border-emerald-700/60 text-emerald-300 rounded-lg text-xs transition cursor-pointer">
+                      Builder ⚙️
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `, [
+              `Launch ${route.city} route 🗺️`,
+              'Art crawl in Berlin',
+              'Art crawl in Paris',
+              'Art crawl in New York'
+            ]);
+            return;
+          }
+        }
+
+        // No specific city detected -> present Signature Crawls Hub
+        appendCuratorMessage(`
+          <div class="border border-emerald-500/40 bg-[#081a14] p-3.5 sm:p-4 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">📍</span>
+                <div>
+                  <h4 class="font-semibold text-white text-[15px]">Curatorial Itineraries &amp; Art Crawls</h4>
+                  <p class="text-[11.5px] font-mono text-emerald-300">Synchronized Street Routes · Verified Hours · Walking Corridors</p>
+                </div>
+              </div>
+              <button type="button" onclick="window.openCuratorialItineraryModal()" class="px-2.5 py-1 bg-emerald-700/70 hover:bg-emerald-600 text-white rounded-lg text-xs font-mono transition cursor-pointer">
+                All Crawls ↗
+              </button>
+            </div>
+
+            <p class="text-slate-200 text-xs sm:text-[13px] leading-relaxed">
+              Explore curated multi-space art crawls connecting independent cultural spaces with clean public or grassroots funding. Each itinerary plots glowing walking corridors on the vector street map with verified opening hours:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <div onclick="window.launchCuratorialRoute('london-east-vanguard')" class="p-2.5 rounded-xl bg-[#0b261d] hover:bg-[#0f3427] border border-emerald-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-emerald-300">London: East Vanguard</span>
+                  <span class="text-[10px] font-mono text-emerald-400">5 Stops · 4.9 km</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Whitechapel Gallery → Raven Row → Autograph → Iniva → Chisenhale</p>
+              </div>
+
+              <div onclick="window.launchCuratorialRoute('berlin-mitte-kreuzberg')" class="p-2.5 rounded-xl bg-[#0b261d] hover:bg-[#0f3427] border border-emerald-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-emerald-300">Berlin: Mitte to Kreuzberg</span>
+                  <span class="text-[10px] font-mono text-emerald-400">5 Stops · 6.7 km</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">KW Institute → n.b.k. → daadgalerie → Gropius Bau → Bethanien</p>
+              </div>
+
+              <div onclick="window.launchCuratorialRoute('ny-downtown-vanguard')" class="p-2.5 rounded-xl bg-[#0b261d] hover:bg-[#0f3427] border border-emerald-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-emerald-300">New York: Lower Manhattan</span>
+                  <span class="text-[10px] font-mono text-emerald-400">4 Stops · 1.4 km</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Apexart → Artists Space → Storefront for Art → Swiss Institute</p>
+              </div>
+
+              <div onclick="window.launchCuratorialRoute('paris-contemporary-seine')" class="p-2.5 rounded-xl bg-[#0b261d] hover:bg-[#0f3427] border border-emerald-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-emerald-300">Paris: Marais to Seine</span>
+                  <span class="text-[10px] font-mono text-emerald-400">4 Stops · 4.8 km</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Chasse &amp; Nature → Bourse de Commerce → Jeu de Paume → Palais de Tokyo</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-emerald-900/50 flex-wrap text-xs">
+              <span class="text-zinc-400 text-[11.5px]">Or pick any city to generate an algorithmic crawl:</span>
+              <button type="button" onclick="window.openCuratorialItineraryModal()" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
+                Open Crawl Generator 🚀
+              </button>
+            </div>
+          </div>
+        `, [
+          'Art crawl in London',
+          'Art crawl in Berlin',
+          'Art crawl in New York',
+          'Art crawl in Paris'
         ]);
         return;
       }
@@ -16831,6 +17895,40 @@ FORMATTING & INTERACTION RULES:
     document.getElementById('hudContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
     document.getElementById('closeConfidentialChatBtn')?.addEventListener('click', closeConfidentialIntakeModal);
 
+    // Curatorial Itinerary HUD & Modal event listeners
+    document.getElementById('hudRouteBtn')?.addEventListener('click', () => {
+      openCuratorialItineraryModal();
+    });
+    document.getElementById('closeActiveRouteBtn')?.addEventListener('click', clearCuratorialRoute);
+    document.getElementById('routePrevStopBtn')?.addEventListener('click', () => {
+      jumpToRouteStop(activeCuratorialStopIndex - 1);
+    });
+    document.getElementById('routeNextStopBtn')?.addEventListener('click', () => {
+      if (activeCuratorialRoute && activeCuratorialStopIndex === activeCuratorialRoute.stops.length - 1) {
+        jumpToRouteStop(0);
+      } else {
+        jumpToRouteStop(activeCuratorialStopIndex + 1);
+      }
+    });
+    document.getElementById('routeOverviewBtn')?.addEventListener('click', () => {
+      if (cityVectorMap && activeCuratorialRoute && activeCuratorialRoute.stops.length > 0) {
+        const bounds = new maplibregl.LngLatBounds();
+        activeCuratorialRoute.stops.forEach(s => bounds.extend([s.lon, s.lat]));
+        cityVectorMap.fitBounds(bounds, {
+          padding: { top: 120, bottom: 90, left: 80, right: 80 },
+          maxZoom: 14.5
+        });
+      }
+    });
+    document.getElementById('closeItineraryModalBtn')?.addEventListener('click', closeCuratorialItineraryModal);
+    document.getElementById('closeItineraryModalFooterBtn')?.addEventListener('click', closeCuratorialItineraryModal);
+    document.getElementById('itineraryTabSignature')?.addEventListener('click', () => switchItineraryTab('signature'));
+    document.getElementById('itineraryTabCustom')?.addEventListener('click', () => switchItineraryTab('custom'));
+    const itinModal = document.getElementById('curatorialItineraryModal');
+    itinModal?.addEventListener('click', (e) => {
+      if (e.target === itinModal) closeCuratorialItineraryModal();
+    });
+
     // Prompt pills in confidential modal
     document.querySelectorAll('.confidential-prompt-chip').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -18366,6 +19464,7 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">📚 Archives Directory (1074)</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>📍 Curatorial Itineraries</span></button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -18437,6 +19536,10 @@ FORMATTING & INTERACTION RULES:
           } else if (type === 'fiscal_analytics') {
             if (typeof openFiscalAnalyticsHUD === 'function') {
               openFiscalAnalyticsHUD();
+            }
+          } else if (type === 'curatorial_itineraries') {
+            if (typeof openCuratorialItineraryModal === 'function') {
+              openCuratorialItineraryModal();
             }
           } else if (type === 'contribute_intel') {
             if (typeof openConfidentialIntakeModal === 'function') {
