@@ -464,8 +464,8 @@ def build():
       min-height: 0;
       flex: 1 1 50%;
       display: flex;
-      background: #171717;
-      border-bottom: 1px solid #262626;
+      background: #000000;
+      border-bottom: 1px solid #1c1c1f;
       border-right: none;
       transition: height 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s cubic-bezier(0.16, 1, 0.3, 1), flex 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }}
@@ -476,7 +476,7 @@ def build():
       min-height: 0;
       flex: 1 1 50%;
       flex-direction: column;
-      background: #171717;
+      background: #000000;
       overflow: hidden;
       padding-top: 0;
       transition: height 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s cubic-bezier(0.16, 1, 0.3, 1), flex 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -486,7 +486,7 @@ def build():
         height: 100%;
         width: 50%;
         border-bottom: none;
-        border-right: 1px solid #262626;
+        border-right: none;
       }}
       #workViewContainer {{
         height: 100%;
@@ -674,12 +674,12 @@ def build():
 {maplibre_js}
   </script>
 </head>
-<body class="bg-[#171717] text-slate-100 h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
+<body class="bg-black text-slate-100 h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
 
   <!-- ========================================================= -->
   <!-- 🧭 TOP HEADER: BRANDING, MODE SWITCHER (CHAT / WORK) & CONTROLS -->
   <!-- ========================================================= -->
-  <header class="w-full h-14 bg-[#171717] border-b border-[#262626] px-2.5 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-1 sm:gap-2">
+  <header class="w-full h-14 bg-black border-b border-[#1c1c1f] px-2.5 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-1 sm:gap-2">
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
     <button id="topBrandLogoBtn" class="flex items-center gap-1.5 sm:gap-2 text-left bg-transparent border-0 p-0 m-0 cursor-pointer group focus:outline-none select-none transition hover:opacity-85 shrink-0" title="Reset Globe View" aria-label="Reset Globe View">
@@ -760,15 +760,15 @@ def build():
   <!-- ========================================================= -->
   <!-- MAIN APP CONTAINER (Desktop: 50/50 Vertical Split Screen / Mobile: Stacked) -->
   <!-- ========================================================= -->
-  <div id="mainAppContainer" class="relative w-full flex-1 min-h-0 flex flex-col md:flex-row bg-[#171717] overflow-hidden">
+  <div id="mainAppContainer" class="relative w-full flex-1 min-h-0 flex flex-col md:flex-row bg-black overflow-hidden">
 
     <!-- 🌍 3D GLOBE VIEWPORT (Desktop: Left Half / Mobile: Top Half) -->
-    <div id="globeViewport" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex items-center justify-center bg-[#171717] overflow-hidden select-none">
+    <div id="globeViewport" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex items-center justify-center bg-black overflow-hidden select-none">
       
       <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
 
       <!-- 🗺️ HIGH-RESOLUTION INTERACTIVE CITY STREET MAP (Leaflet) -->
-      <div id="cityMapContainer" class="absolute inset-0 hidden z-10 w-full h-full bg-[#171717]"></div>
+      <div id="cityMapContainer" class="absolute inset-0 hidden z-10 w-full h-full bg-black"></div>
 
       <!-- FLOATING INSTITUTION CARD -->
       <div id="floatingCard" class="hidden absolute z-20 pointer-events-auto bg-[#18181b]/95 backdrop-blur-md text-slate-100 rounded-2xl p-3.5 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 border border-[#2e2e2e] max-w-[340px] sm:max-w-[390px] w-max">
@@ -886,17 +886,45 @@ def build():
     </div>
 
     <!-- RESIZABLE SPLITTER (Desktop: Vertical Drag / Mobile: Horizontal Drag · Double-click resets to 50%) -->
-    <div id="globeSplitter" class="relative w-full md:w-[6px] h-[5px] md:h-full bg-[#1c1c1f] hover:bg-[#2b2b30] active:bg-[#33333a] border-y md:border-y-0 md:border-x border-[#27272a] cursor-row-resize md:cursor-col-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split screen · Double-click to reset to 50%">
-      <div class="w-10 md:w-[2px] h-[2px] md:h-8 rounded-full bg-[#52525b] group-hover:bg-[#a1a1aa] transition"></div>
+    <div id="globeSplitter" class="relative w-full md:w-[6px] h-[5px] md:h-full bg-[#111113] hover:bg-[#1f1f23] active:bg-[#27272a] border-y md:border-y-0 md:border-x border-[#1c1c1f] cursor-row-resize md:cursor-col-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split screen · Double-click to reset to 50%">
+      <div class="w-10 md:w-[2px] h-[2px] md:h-8 rounded-full bg-[#3f3f46] group-hover:bg-[#a1a1aa] transition"></div>
     </div>
 
     <!-- ========================================================= -->
     <!-- 💼 UNIFIED WORK & CHAT CANVAS (Desktop: Right Half / Mobile: Bottom Half) -->
     <!-- ========================================================= -->
-    <div id="workViewContainer" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex flex-col bg-[#171717] overflow-hidden">
+    <div id="workViewContainer" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex flex-col bg-black overflow-hidden">
       
+      <!-- Subtle Celestial Deep-Space Starfield Overlay (matching globe backdrop) -->
+      <div id="workStarfield" class="pointer-events-none absolute inset-0 overflow-hidden z-0 select-none opacity-60" aria-hidden="true">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12%" cy="8%" r="1" fill="rgba(226, 232, 240, 0.18)"/>
+          <circle cx="28%" cy="19%" r="0.8" fill="rgba(226, 232, 240, 0.14)"/>
+          <circle cx="45%" cy="11%" r="1.2" fill="rgba(226, 232, 240, 0.22)"/>
+          <circle cx="67%" cy="6%" r="0.8" fill="rgba(226, 232, 240, 0.15)"/>
+          <circle cx="84%" cy="14%" r="1" fill="rgba(226, 232, 240, 0.20)"/>
+          <circle cx="93%" cy="28%" r="0.8" fill="rgba(226, 232, 240, 0.12)"/>
+          <circle cx="18%" cy="32%" r="1.1" fill="rgba(226, 232, 240, 0.19)"/>
+          <circle cx="36%" cy="41%" r="0.8" fill="rgba(226, 232, 240, 0.14)"/>
+          <circle cx="58%" cy="26%" r="1" fill="rgba(226, 232, 240, 0.16)"/>
+          <circle cx="75%" cy="38%" r="1.2" fill="rgba(226, 232, 240, 0.24)"/>
+          <circle cx="89%" cy="49%" r="0.8" fill="rgba(226, 232, 240, 0.13)"/>
+          <circle cx="8%" cy="56%" r="1" fill="rgba(226, 232, 240, 0.17)"/>
+          <circle cx="24%" cy="63%" r="0.8" fill="rgba(226, 232, 240, 0.15)"/>
+          <circle cx="48%" cy="58%" r="1.2" fill="rgba(226, 232, 240, 0.21)"/>
+          <circle cx="69%" cy="67%" r="0.8" fill="rgba(226, 232, 240, 0.14)"/>
+          <circle cx="82%" cy="72%" r="1" fill="rgba(226, 232, 240, 0.18)"/>
+          <circle cx="15%" cy="81%" r="0.8" fill="rgba(226, 232, 240, 0.13)"/>
+          <circle cx="39%" cy="86%" r="1.1" fill="rgba(226, 232, 240, 0.20)"/>
+          <circle cx="62%" cy="84%" r="0.8" fill="rgba(226, 232, 240, 0.15)"/>
+          <circle cx="88%" cy="89%" r="1.2" fill="rgba(226, 232, 240, 0.22)"/>
+          <circle cx="53%" cy="94%" r="0.8" fill="rgba(226, 232, 240, 0.14)"/>
+          <circle cx="77%" cy="96%" r="1" fill="rgba(226, 232, 240, 0.16)"/>
+        </svg>
+      </div>
+
       <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
-      <div id="curatorScrollArea" class="flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-3 sm:px-5 pt-4 pb-2 w-full">
+      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-3 sm:px-5 pt-4 pb-2 w-full bg-transparent">
         <div class="w-full max-w-3xl flex flex-col items-center">
           
           <!-- Active Conversation Stream (Messages injected dynamically in work chat) -->
@@ -991,7 +1019,7 @@ def build():
       </div>
 
       <!-- 2. PINNED BOTTOM INPUT DOCK (Always stays firmly in place at bottom!) -->
-      <div id="workBottomDock" class="w-full shrink-0 flex flex-col items-center px-2.5 sm:px-5 pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-[#171717] border-t border-[#262626] z-10">
+      <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-2.5 sm:px-5 pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-black border-t border-[#1c1c1f]">
         <div class="w-full max-w-3xl flex flex-col items-center">
           
           <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
