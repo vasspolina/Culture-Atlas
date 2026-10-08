@@ -151,6 +151,116 @@ def run_tests():
           assert('Curator response covers legitimacy transfer and self-censorship', lastMsg && (lastMsg.textContent.includes('Legitimacy Transfer') || lastMsg.textContent.includes('Self-Censorship')));
         }
 
+        // =========================================================================
+        // 7. USER INPUT LAYER SEGREGATION FROM ACTUAL RESEARCH RESULTS
+        // =========================================================================
+        const cleanPillInit = document.querySelector('.globe-filter-pill[data-type="tier"][data-value="A"]');
+        if (cleanPillInit) cleanPillInit.click();
+        await new Promise(r => setTimeout(r, 100));
+
+        const cleanSpacesOnly = window.filteredList.every(i => !i.isCommunityLayer && i.tier === 'A');
+        assert('Clean funding filter contains strictly 0 user input items', cleanSpacesOnly);
+
+        // Click All Spaces: verify user inputs are still filtered out
+        const allPill = document.querySelector('.globe-filter-pill[data-type="tier"][data-value="all"]');
+        assert('All spaces pill exists', !!allPill);
+        if (allPill) {
+          allPill.click();
+          await new Promise(r => setTimeout(r, 100));
+          const allHasNoUser = window.filteredList.every(i => !i.isCommunityLayer && i.tier !== 'COMMUNITY');
+          assert('All Spaces layer strictly filters out user input items', allHasNoUser, `Count: ${window.filteredList.length}`);
+          assert('All Spaces layer has verified spaces >= 1000', window.filteredList.length >= 1000);
+        }
+
+        // Click Community Layer pill: functions as another independent layer
+        const commPill = document.querySelector('.globe-filter-pill[data-type="tier"][data-value="COMMUNITY"]');
+        assert('Community Layer pill exists in header bar', !!commPill);
+        if (commPill) {
+          commPill.click();
+          await new Promise(r => setTimeout(r, 100));
+
+          const curTiers = Array.from(window.selectedTierFilter || []);
+          assert('selectedTierFilter switches to COMMUNITY', curTiers.length === 1 && curTiers[0] === 'COMMUNITY', JSON.stringify(curTiers));
+
+          const isOnlyCommunity = window.filteredList.length > 0 && window.filteredList.every(i => i.isCommunityLayer && i.tier === 'COMMUNITY');
+          assert('Community layer contains only user input submissions and 0 verified results', isOnlyCommunity, `Count: ${window.filteredList.length}`);
+
+          // Check active pill styling
+          assert('Community pill is active with cyan/teal styling', commPill.className.includes('bg-[#0072c3]') || commPill.className.includes('border-[#33b1ff]'));
+
+          // Check active map filter banner
+          const mapBanner = document.getElementById('activeMapFilterBanner');
+          const mapBannerText = document.getElementById('activeMapFilterText');
+          assert('Map filter banner activates for Community Layer', mapBanner && !mapBanner.classList.contains('hidden'));
+          assert('Map filter banner states community user contributions segregated from verified', mapBannerText && mapBannerText.textContent.includes('COMMUNITY RESEARCH LAYER'));
+
+          // Open dossier for a community submission
+          const sampleComm = window.filteredList[0];
+          assert('Sample community submission exists', !!sampleComm);
+          if (sampleComm) {
+            window.atlasOpenDossier(sampleComm.name);
+            const detailBody = document.getElementById('detailBody');
+            assert('Dossier opens for community submission', detailBody && detailBody.innerHTML.length > 50);
+
+            const dossierHtml = detailBody.innerHTML;
+            assert('Dossier indicates Community Layer audit ticket', dossierHtml.includes('Community Layer · Audit Ticket'));
+            assert('Dossier has segregation notice from verified results', dossierHtml.includes('strictly filtered and segregated from verified'));
+            assert('Dossier displays Carbon Teal #08bdba styling', dossierHtml.includes('#08bdba'));
+          }
+
+          // Close dossier
+          const closeBtn = document.getElementById('closeDetailBtn');
+          if (closeBtn) closeBtn.click();
+        }
+
+        // =========================================================================
+        // 8. ACADEMIC MODAL TABS: STUDIES VS COMMUNITY RESEARCH NOTES
+        // =========================================================================
+        if (typeof window.openAcademicResearchModal === 'function') {
+          window.openAcademicResearchModal('all', 'studies');
+          const studiesSec = document.getElementById('arStudiesSection');
+          const commSec = document.getElementById('arCommunitySection');
+          const tabStudies = document.getElementById('arTabStudies');
+          const tabComm = document.getElementById('arTabCommunity');
+
+          assert('Studies section visible initially in academic modal', studiesSec && !studiesSec.classList.contains('hidden'));
+          assert('Community section hidden initially in academic modal', commSec && commSec.classList.contains('hidden'));
+
+          // Switch to Community tab in modal
+          if (tabComm) {
+            tabComm.click();
+            await new Promise(r => setTimeout(r, 100));
+
+            assert('Studies section hidden after clicking community tab', studiesSec.classList.contains('hidden'));
+            assert('Community section visible after clicking community tab', !commSec.classList.contains('hidden'));
+
+            const commList = document.getElementById('arCommunityNotesList');
+            assert('Community notes list rendered with items', commList && commList.children.length > 0, `Notes: ${commList ? commList.children.length : 0}`);
+
+            const commText = commSec.textContent;
+            assert('Community tab has segregation disclaimer from peer-reviewed studies', commText.includes('strictly filtered out from peer-reviewed academic papers'));
+          }
+
+          // Switch back to studies tab
+          if (tabStudies) {
+            tabStudies.click();
+            await new Promise(r => setTimeout(r, 100));
+            assert('Studies section restored after clicking studies tab', !studiesSec.classList.contains('hidden'));
+            assert('Community section hidden after clicking studies tab', commSec.classList.contains('hidden'));
+          }
+
+          window.closeAcademicResearchModal();
+        }
+
+        // Re-verify Clean Funding filter when clicking Clean pill
+        const cleanPillReturn = document.querySelector('.globe-filter-pill[data-type="tier"][data-value="A"]');
+        if (cleanPillReturn) {
+          cleanPillReturn.click();
+          await new Promise(r => setTimeout(r, 100));
+          const returnCleanOnly = window.filteredList.every(i => !i.isCommunityLayer && i.tier === 'A');
+          assert('Returning to Clean Funding filter keeps strictly 0 user input items', returnCleanOnly);
+        }
+
       } catch (err) {
         assert('JavaScript Execution Exception', false, err.stack || err.toString());
       }
@@ -192,7 +302,7 @@ def run_tests():
         status = "PASS" if r['pass'] else "FAIL"
         if not r['pass']:
             all_passed = False
-        extra = f" ({r['extra']})" if r.get('extra') else ""
+        extra = f" ({r['extra']})" if not r['pass'] and r.get('extra') else ""
         print(f"[{status}] {r['name']}{extra}")
 
     if all_passed:

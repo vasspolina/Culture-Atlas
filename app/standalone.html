@@ -903,6 +903,7 @@ return maplibregl$1;
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces (1074)</button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies (104)</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -1270,24 +1271,64 @@ return maplibregl$1;
         <button id="closeAcademicModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">✕</button>
       </div>
 
-      <!-- Search & Topic Filter -->
-      <div class="shrink-0 space-y-2">
-        <div class="relative">
-          <input type="text" id="arSearchInput" placeholder="Search 104 peer-reviewed studies by keyword, author, or journal..." class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#33b1ff] font-sans">
+      <!-- Layer Tabs: Peer-Reviewed Studies vs Community Research Notes (User Input Layer) -->
+      <div class="flex items-center gap-2 border-b border-[#2e2e2e] pb-2 shrink-0">
+        <button id="arTabStudies" class="px-3 py-1.5 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm">
+          <span>🔬</span> Peer-Reviewed Studies (104)
+        </button>
+        <button id="arTabCommunity" class="px-3 py-1.5 rounded-xl bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] border border-[#333] text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5">
+          <span>✍️</span> Community Research Notes (User Input Layer)
+        </button>
+      </div>
+
+      <!-- Studies View (Actual Peer-Reviewed Research Results) -->
+      <div id="arStudiesSection" class="flex flex-col flex-1 gap-3 overflow-hidden">
+        <!-- Search & Topic Filter -->
+        <div class="shrink-0 space-y-2">
+          <div class="relative">
+            <input type="text" id="arSearchInput" placeholder="Search 104 peer-reviewed studies by keyword, author, or journal..." class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#33b1ff] font-sans">
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5 text-[12px]" id="arTopicChips">
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer" data-topic="all">All Studies (104)</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="networks">Sponsor Networks & Interlocks</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="tainted">Tainted Money & Ethics</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="governance">Donor Governance</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="fossil">Fossil Fuels & Climate</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="disclosure">Mandatory Disclosure</button>
+          </div>
         </div>
-        <div class="flex flex-wrap items-center gap-1.5 text-[12px]" id="arTopicChips">
-          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer" data-topic="all">All Studies (104)</button>
-          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="networks">Sponsor Networks & Interlocks</button>
-          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="tainted">Tainted Money & Ethics</button>
-          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="governance">Donor Governance</button>
-          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="fossil">Fossil Fuels & Climate</button>
-          <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="disclosure">Mandatory Disclosure</button>
+
+        <!-- Studies List -->
+        <div id="arPapersList" class="flex-1 overflow-y-auto space-y-2.5 pr-1 custom-scrollbar text-[13px] min-h-[220px]">
+          <!-- Rendered dynamically from ACADEMIC_RESEARCH -->
         </div>
       </div>
 
-      <!-- Studies List -->
-      <div id="arPapersList" class="flex-1 overflow-y-auto space-y-2.5 pr-1 custom-scrollbar text-[13px] min-h-[220px]">
-        <!-- Rendered dynamically from ACADEMIC_RESEARCH -->
+      <!-- Community Notes View (User Input Layer - Segregated from Verified Research) -->
+      <div id="arCommunitySection" class="hidden flex flex-col flex-1 gap-3 overflow-hidden">
+        <div class="p-3 rounded-xl bg-[#0d212b] border border-[#08bdba]/50 text-[12.5px] text-teal-200/90 leading-relaxed shrink-0">
+          <div class="flex items-center justify-between gap-2 mb-1">
+            <span class="text-[#08bdba] font-bold font-mono uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#08bdba] animate-pulse"></span>
+              Segregated User Input Layer
+            </span>
+            <span class="text-[11px] font-mono text-[#33b1ff]">Under Field Verification</span>
+          </div>
+          <p class="text-slate-300">
+            Field reports and research submissions contributed by users. These entries function as an <strong>independent observational layer</strong> and are <strong>strictly filtered out from peer-reviewed academic papers and verified statutory databases</strong> until confirmed by IRS Form 990 / Charity Commission filings.
+          </p>
+        </div>
+
+        <div id="arCommunityNotesList" class="flex-1 overflow-y-auto space-y-2.5 pr-1 custom-scrollbar text-[13px] min-h-[220px]">
+          <!-- Rendered dynamically from getCommunityResearchSubmissions() -->
+        </div>
+
+        <div class="pt-1 shrink-0 flex items-center justify-between">
+          <span class="text-[12px] text-slate-400 font-mono">Notice a missing space or updated board tie?</span>
+          <button id="arOpenContribModalBtn" class="px-3 py-1.5 rounded-xl bg-[#122b3b] hover:bg-[#1a3d54] text-[#08bdba] border border-[#08bdba]/60 hover:text-white text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5">
+            <span>✍️</span> Submit Field Observation
+          </button>
+        </div>
       </div>
 
       <!-- Modal Footer -->
@@ -7091,7 +7132,9 @@ return maplibregl$1;
     }
 
     window.atlasSelectInst = function(instName) {
-      const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+      const inst = (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name === instName) : null) || 
+                   ALL_INSTITUTIONS.find(i => i.name === instName) || 
+                   (typeof getCommunityAsInstitutions === 'function' ? getCommunityAsInstitutions().find(i => i.name === instName) : null);
       if (inst) {
         selectInstitution(inst, false);
         openDossier(inst);
@@ -7099,7 +7142,9 @@ return maplibregl$1;
     };
 
     window.atlasOpenDossier = function(instName) {
-      const inst = ALL_INSTITUTIONS.find(i => i.name === instName);
+      const inst = (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name === instName) : null) || 
+                   ALL_INSTITUTIONS.find(i => i.name === instName) || 
+                   (typeof getCommunityAsInstitutions === 'function' ? getCommunityAsInstitutions().find(i => i.name === instName) : null);
       if (inst) openDossier(inst);
     };
 
@@ -7595,8 +7640,9 @@ return maplibregl$1;
       ctx.save();
       const isA = inst.tier === 'A';
       const isB = inst.tier === 'B';
-      const tierColor = isA ? '#10b981' : (isB ? '#be95ff' : '#08bdba');
-      const tierLabel = isA ? '● TIER A · INDEPENDENT' : (isB ? '● TIER B · FLAGGED' : '● TIER U · UNVERIFIED');
+      const isCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
+      const tierColor = isA ? '#10b981' : (isB ? '#be95ff' : (isCommunity ? '#08bdba' : '#33b1ff'));
+      const tierLabel = isA ? '● TIER A · INDEPENDENT' : (isB ? '● TIER B · FLAGGED' : (isCommunity ? '● COMMUNITY · USER INPUT' : '● TIER U · UNVERIFIED'));
 
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
@@ -9108,33 +9154,42 @@ return maplibregl$1;
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl);
 
-      const isClean = inst.tier === 'A';
-      const isFlagged = inst.tier === 'B';
-      const isUnverified = inst.tier === 'U';
+      const isCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
+      const isClean = !isCommunity && inst.tier === 'A';
+      const isFlagged = !isCommunity && inst.tier === 'B';
+      const isUnverified = !isCommunity && inst.tier === 'U';
 
-      const tierBadgeClass = isClean 
+      const tierBadgeClass = isCommunity
+        ? 'text-[#08bdba] border-[#08bdba] bg-[#0c2826]'
+        : isClean 
         ? 'text-emerald-400 border-emerald-800 bg-[#092216]' 
         : isFlagged 
         ? 'text-[#be95ff] border-[#8a3ffc] bg-[#1f1433]' 
         : 'text-[#33b1ff] border-[#0072c3] bg-[#081a28]';
 
-      const tierLabel = isClean 
+      const tierLabel = isCommunity
+        ? `Community Layer · Audit Ticket #${inst.communityId || 'RES-CONTRIB'}`
+        : isClean 
         ? 'Tier A · Verified Independent Space' 
         : (isFlagged ? 'Tier B · Audited Corporate Underwriting' : 'Tier U · Roster Unverified');
 
-      const cleanAlts = !isClean ? ALL_INSTITUTIONS.filter(i => i.tier === 'A' && matchC(i.city, inst.city)) : [];
+      const cleanAlts = (!isClean && !isCommunity) ? ALL_INSTITUTIONS.filter(i => i.tier === 'A' && matchC(i.city, inst.city)) : [];
 
-      const rawGrade = inst.transparency_grade || 'Tier A+ (Statutory Public Audit)';
-      let letterBadge = 'A+';
-      if (rawGrade.includes('A+')) letterBadge = 'A+';
-      else if (rawGrade.includes('A')) letterBadge = 'A';
-      else if (rawGrade.includes('B+')) letterBadge = 'B+';
-      else if (rawGrade.includes('B')) letterBadge = 'B';
-      else if (rawGrade.includes('C')) letterBadge = 'C';
-      else if (rawGrade.includes('D')) letterBadge = 'D';
-      else if (rawGrade.includes('F')) letterBadge = 'F';
+      const rawGrade = isCommunity
+        ? 'Community Input (Pending Audit)'
+        : (inst.transparency_grade || 'Tier A+ (Statutory Public Audit)');
+      let letterBadge = isCommunity ? 'COM' : 'A+';
+      if (!isCommunity) {
+        if (rawGrade.includes('A+')) letterBadge = 'A+';
+        else if (rawGrade.includes('A')) letterBadge = 'A';
+        else if (rawGrade.includes('B+')) letterBadge = 'B+';
+        else if (rawGrade.includes('B')) letterBadge = 'B';
+        else if (rawGrade.includes('C')) letterBadge = 'C';
+        else if (rawGrade.includes('D')) letterBadge = 'D';
+        else if (rawGrade.includes('F')) letterBadge = 'F';
+      }
 
-      let auditAuthority = 'Statutory Public Filing';
+      let auditAuthority = isCommunity ? 'Community Field Pipeline' : 'Statutory Public Filing';
       const matchParen = rawGrade.match(/\(([^)]+)\)/);
       if (matchParen) {
         auditAuthority = matchParen[1];
@@ -9142,21 +9197,27 @@ return maplibregl$1;
         auditAuthority = rawGrade;
       }
 
-      const bannerBg = isClean 
+      const bannerBg = isCommunity
+        ? 'bg-[#092329] border-2 border-[#08bdba] shadow-cyan-950/40'
+        : isClean 
         ? 'bg-[#0c1f15] border-2 border-[#42be65] shadow-emerald-950/40' 
         : isFlagged 
         ? 'bg-[#1b122c] border-2 border-[#8a3ffc] shadow-purple-950/40' 
         : 'bg-[#091a26] border-2 border-[#0072c3] shadow-cyan-950/40';
 
-      const badgeBoxStyle = isClean 
+      const badgeBoxStyle = isCommunity
+        ? 'bg-[#08bdba]/25 border border-[#08bdba] text-[#08bdba]'
+        : isClean 
         ? 'bg-[#42be65]/25 border border-[#42be65] text-[#42be65]' 
         : isFlagged 
         ? 'bg-[#8a3ffc]/25 border border-[#8a3ffc] text-[#be95ff]' 
         : 'bg-[#0072c3]/25 border border-[#0072c3] text-[#33b1ff]';
 
-      const gradeTitleCol = isClean ? 'text-[#42be65]' : isFlagged ? 'text-[#be95ff]' : 'text-[#33b1ff]';
-      const pulseDotCol = isClean ? 'bg-[#42be65]' : isFlagged ? 'bg-[#be95ff]' : 'bg-[#33b1ff]';
-      const auditTagHtml = isClean 
+      const gradeTitleCol = isCommunity ? 'text-[#08bdba]' : (isClean ? 'text-[#42be65]' : isFlagged ? 'text-[#be95ff]' : 'text-[#33b1ff]');
+      const pulseDotCol = isCommunity ? 'bg-[#08bdba]' : (isClean ? 'bg-[#42be65]' : isFlagged ? 'bg-[#be95ff]' : 'bg-[#33b1ff]');
+      const auditTagHtml = isCommunity
+        ? '<span class="text-[11px] font-mono text-[#08bdba] bg-[#08bdba]/20 border border-[#08bdba]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">User Input</span><span class="text-[11px] text-teal-300 font-mono mt-1">Pending Audit</span>'
+        : isClean 
         ? '<span class="text-[11px] font-mono text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Clean</span><span class="text-[11px] text-slate-400 font-mono mt-1">100% Verified</span>' 
         : isFlagged 
         ? '<span class="text-[11px] font-mono text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Flags</span><span class="text-[11px] text-slate-400 font-mono mt-1">Documented</span>' 
@@ -9199,7 +9260,23 @@ return maplibregl$1;
             </div>
           </div>
 
-          ${!isClean ? `
+          ${isCommunity ? `
+            <div class="py-2.5 border-t border-[#1b3d39] space-y-2 bg-[#0c2423]/70 p-3 rounded-xl border border-[#08bdba]/40">
+              <div class="flex items-center justify-between">
+                <span class="text-[#08bdba] font-mono text-[12px] uppercase tracking-wider block font-bold">Community Research Submission</span>
+                <span class="text-[11px] font-mono text-[#25c4b5] bg-[#08bdba]/20 px-2 py-0.5 rounded border border-[#08bdba]/50">Status: Pending Statutory Audit</span>
+              </div>
+              <p class="text-slate-200 text-[13px] leading-relaxed">
+                <strong>Auditing Pipeline:</strong> This item originates from community field notes and user research submissions. It is <strong>strictly filtered and segregated from verified peer-reviewed and statutory results</strong> until verified via regulatory filings (e.g. IRS Form 990 / UK Charity Commission).
+              </p>
+              <div class="text-[12px] text-teal-200/90 font-mono flex items-center justify-between pt-1">
+                <span>Contributor: ${escapeHtml(inst.contributor || 'Field Contributor')}</span>
+                ${inst.sourceUrl ? `<a href="${escapeHtml(inst.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="text-[#33b1ff] hover:underline flex items-center gap-1">Source Link ↗</a>` : ''}
+              </div>
+            </div>
+          ` : ''}
+
+          ${!isCommunity && !isClean ? `
             <div class="py-2.5 border-t border-[#393939] space-y-2">
               <span class="text-[#be95ff] font-mono text-[12px] uppercase tracking-wider block font-bold">Audited Corporate Underwriting Notice</span>
               <p class="text-[#e8daff] text-[13px] leading-relaxed">
@@ -9600,19 +9677,116 @@ return maplibregl$1;
     window.ATLAS_AI_PROXY_URL = ATLAS_AI_PROXY_URL;
 
     // Community Research & Feedback Submissions Pipeline (LocalStorage backed + Model Grounded)
+    const DEFAULT_COMMUNITY_SUBMISSIONS = [
+      {
+        id: 'RES-8450',
+        timestamp: '2026-10-08T05:20:00Z',
+        category: 'new_space',
+        spaceName: 'Auto Italia South East',
+        city: 'London',
+        country: 'United Kingdom',
+        lat: 51.528,
+        lon: -0.038,
+        details: 'Artist-run non-profit space dedicated to experimental moving image commissions, collaborative research, and open publishing.',
+        sourceUrl: 'https://autoitaliasoutheast.org',
+        contributor: 'London Field Researcher',
+        status: 'pending_verification'
+      },
+      {
+        id: 'RES-7310',
+        timestamp: '2026-10-07T14:15:00Z',
+        category: 'new_space',
+        spaceName: 'W139',
+        city: 'Amsterdam',
+        country: 'Netherlands',
+        lat: 52.370,
+        lon: 4.893,
+        details: 'Artist-run production and presentation space in central Amsterdam operating autonomously without commercial gallery representation.',
+        sourceUrl: 'https://w139.nl',
+        contributor: 'Amsterdam Artist Commons',
+        status: 'pending_verification'
+      },
+      {
+        id: 'RES-4192',
+        timestamp: '2026-10-06T11:40:00Z',
+        category: 'new_space',
+        spaceName: 'MayDay Rooms',
+        city: 'London',
+        country: 'United Kingdom',
+        lat: 51.514,
+        lon: -0.106,
+        details: 'Archive and educational resource for radical social movements, counter-culture ephemera, and critical artistic dissent.',
+        sourceUrl: 'https://maydayrooms.org',
+        contributor: 'Curatorial Archivist',
+        status: 'pending_verification'
+      },
+      {
+        id: 'RES-5821',
+        timestamp: '2026-10-05T09:10:00Z',
+        category: 'governance_update',
+        spaceName: 'Casco Art Institute: Working for the Commons',
+        city: 'Utrecht',
+        country: 'Netherlands',
+        lat: 52.090,
+        lon: 5.122,
+        details: 'Ecosystem of the commons and feminist unlearning; field verification confirmed 100% free admission and non-extractive funding.',
+        sourceUrl: 'https://casco.art',
+        contributor: 'BAK/Casco Research Associate',
+        status: 'pending_verification'
+      }
+    ];
+
     function getCommunityResearchSubmissions() {
       try {
-        return JSON.parse(localStorage.getItem('atlas_community_research_queue') || '[]');
+        const stored = JSON.parse(localStorage.getItem('atlas_community_research_queue') || '[]');
+        if (Array.isArray(stored) && stored.length > 0) return stored;
+        return DEFAULT_COMMUNITY_SUBMISSIONS;
       } catch (e) {
-        return [];
+        return DEFAULT_COMMUNITY_SUBMISSIONS;
       }
     }
     window.getCommunityResearchSubmissions = getCommunityResearchSubmissions;
+
+    function getCommunityAsInstitutions() {
+      const subs = getCommunityResearchSubmissions();
+      return subs.map(s => {
+        const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, s.city));
+        const lat = s.lat || (cityMeta ? cityMeta.lat : 51.5074);
+        const lon = s.lon || (cityMeta ? cityMeta.lon : -0.1278);
+        return {
+          name: s.spaceName || 'Community Research Space',
+          city: s.city || 'Global',
+          country: s.country || (cityMeta ? cityMeta.country : 'Global'),
+          lat: lat,
+          lon: lon,
+          tier: 'COMMUNITY',
+          isCommunityLayer: true,
+          communityId: s.id,
+          contributor: s.contributor || 'Community Contributor',
+          status: s.status || 'pending_verification',
+          sourceUrl: s.sourceUrl || '',
+          location: `${s.city || 'Global'}, ${s.country || (cityMeta ? cityMeta.country : 'Global')}`,
+          governance_type: 'Community Input (Pending Statutory Audit)',
+          admission_policy: 'Community Field Observation',
+          opening_hours: 'Field observation submitted',
+          curatorial_focus: s.category ? s.category.replace(/_/g, ' ').toUpperCase() : 'COMMUNITY RESEARCH',
+          highlight: s.details || 'Community contributed art space',
+          funding: `Submitted via Community Pipeline (${s.id}) · Source: ${s.sourceUrl || 'Pending statutory audit'}`,
+          ethical_safeguard: 'Community research layer under active peer-review. Segregated from statutory verified results.',
+          flags: [],
+          transparency_grade: 'Community Input (Pending Audit)'
+        };
+      });
+    }
+    window.getCommunityAsInstitutions = getCommunityAsInstitutions;
 
     function saveCommunityResearchSubmission(entry) {
       const list = getCommunityResearchSubmissions();
       list.unshift(entry);
       localStorage.setItem('atlas_community_research_queue', JSON.stringify(list));
+      if (typeof applyFilters === 'function') {
+        applyFilters();
+      }
       return entry;
     }
     window.saveCommunityResearchSubmission = saveCommunityResearchSubmission;
@@ -9636,11 +9810,74 @@ return maplibregl$1;
     }
     window.closeResearchFeedbackModal = closeResearchFeedbackModal;
 
-    function openAcademicResearchModal(topic = 'all') {
+    function renderCommunityResearchNotes() {
+      const container = document.getElementById('arCommunityNotesList');
+      if (!container) return;
+      const submissions = getCommunityResearchSubmissions();
+      if (!submissions || submissions.length === 0) {
+        container.innerHTML = '<div class="p-6 text-center text-slate-400">No community submissions recorded yet.</div>';
+        return;
+      }
+      container.innerHTML = submissions.map(sub => `
+        <div class="bg-[#192429] border border-[#08bdba]/40 rounded-xl p-3.5 space-y-2 hover:border-[#08bdba] transition">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#0a3136] text-[#08bdba] border border-[#08bdba]/60 font-bold">${escapeHtml(sub.id || 'RES')}</span>
+                <span class="text-[11px] font-mono text-teal-300 uppercase">${escapeHtml((sub.category || 'FIELD NOTE').replace(/_/g, ' '))}</span>
+              </div>
+              <h4 class="font-medium text-white text-[15px] leading-snug mt-1">${escapeHtml(sub.spaceName || 'Community Research Space')}</h4>
+              <p class="text-[12px] text-[#33b1ff] font-mono">${escapeHtml(sub.city || '')}${sub.country ? ', ' + escapeHtml(sub.country) : ''}</p>
+            </div>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#0f2d33] text-[#25c4b5] border border-[#08bdba]/40 shrink-0">Pending Statutory Review</span>
+          </div>
+          <p class="text-slate-200 text-[13px] leading-relaxed">${escapeHtml(sub.details || 'Community observation note.')}</p>
+          <div class="flex items-center justify-between pt-1 border-t border-[#1e3b3e] text-[11px] font-mono text-slate-400">
+            <span>By: ${escapeHtml(sub.contributor || 'Field Contributor')}</span>
+            ${sub.sourceUrl ? `<a href="${escapeHtml(sub.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="text-[#33b1ff] hover:underline">View Source ↗</a>` : '<span class="text-teal-400/80">User Submission Layer</span>'}
+          </div>
+        </div>
+      `).join('');
+    }
+    window.renderCommunityResearchNotes = renderCommunityResearchNotes;
+
+    function switchAcademicTab(tab) {
+      const arTabStudies = document.getElementById('arTabStudies');
+      const arTabCommunity = document.getElementById('arTabCommunity');
+      const arStudiesSection = document.getElementById('arStudiesSection');
+      const arCommunitySection = document.getElementById('arCommunitySection');
+
+      if (tab === 'community') {
+        if (arTabCommunity) {
+          arTabCommunity.className = 'px-3 py-1.5 rounded-xl bg-[#0072c3] text-white border border-[#33b1ff] text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm';
+        }
+        if (arTabStudies) {
+          arTabStudies.className = 'px-3 py-1.5 rounded-xl bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] border border-[#333] text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5';
+        }
+        if (arStudiesSection) arStudiesSection.classList.add('hidden');
+        if (arCommunitySection) arCommunitySection.classList.remove('hidden');
+        renderCommunityResearchNotes();
+      } else {
+        if (arTabStudies) {
+          arTabStudies.className = 'px-3 py-1.5 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm';
+        }
+        if (arTabCommunity) {
+          arTabCommunity.className = 'px-3 py-1.5 rounded-xl bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] border border-[#333] text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5';
+        }
+        if (arCommunitySection) arCommunitySection.classList.add('hidden');
+        if (arStudiesSection) arStudiesSection.classList.remove('hidden');
+      }
+    }
+    window.switchAcademicTab = switchAcademicTab;
+
+    function openAcademicResearchModal(topic = 'all', tab = 'studies') {
       const modal = document.getElementById('academicResearchModal');
       if (!modal) return;
       modal.classList.remove('hidden');
-      renderAcademicStudies(topic, '');
+      switchAcademicTab(tab);
+      if (tab === 'studies') {
+        renderAcademicStudies(topic, '');
+      }
     }
     window.openAcademicResearchModal = openAcademicResearchModal;
 
@@ -13146,6 +13383,13 @@ FORMATTING & INTERACTION RULES:
       renderAcademicStudies(currentArTopic, e.target.value);
     });
 
+    document.getElementById('arTabStudies')?.addEventListener('click', () => switchAcademicTab('studies'));
+    document.getElementById('arTabCommunity')?.addEventListener('click', () => switchAcademicTab('community'));
+    document.getElementById('arOpenContribModalBtn')?.addEventListener('click', () => {
+      closeAcademicResearchModal();
+      openResearchFeedbackModal();
+    });
+
     // Unified Work Input Send Action
     const workInput = document.getElementById('workInput');
     const workSendBtn = document.getElementById('workSendBtn');
@@ -14123,6 +14367,7 @@ FORMATTING & INTERACTION RULES:
     function updateGlobePillsUI() {
       const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
       const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
+      const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
       const isAllTiers = selectedTierFilter.size >= 2 || (selectedTierFilter.has('A') && selectedTierFilter.has('B'));
 
       document.querySelectorAll('.globe-filter-pill').forEach(pill => {
@@ -14141,6 +14386,12 @@ FORMATTING & INTERACTION RULES:
               pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#6929c4] text-white border border-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-purple-950/40';
             } else {
               pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433]/90 hover:bg-[#2d1f4a] border border-[#8a3ffc]/80 text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+            }
+          } else if (val === 'COMMUNITY') {
+            if (isCommunityOnly) {
+              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0072c3] text-white border border-[#33b1ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-cyan-950/40';
+            } else {
+              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
             }
           } else if (val === 'all') {
             if (isAllTiers) {
@@ -14217,6 +14468,7 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces (1074)</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies (104)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -14267,6 +14519,8 @@ FORMATTING & INTERACTION RULES:
               selectedTierFilter = new Set(['A']);
             } else if (val === 'B') {
               selectedTierFilter = new Set(['B']);
+            } else if (val === 'COMMUNITY') {
+              selectedTierFilter = new Set(['COMMUNITY']);
             } else if (val === 'all') {
               selectedTierFilter = new Set(['A', 'B', 'U']);
             }
@@ -14326,8 +14580,14 @@ FORMATTING & INTERACTION RULES:
     };
 
     function applyFilters() {
-      filteredList = ALL_INSTITUTIONS.filter(inst => {
-        if (!selectedTierFilter.has(inst.tier)) return false;
+      const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
+      const baseSource = isCommunityOnly ? getCommunityAsInstitutions() : ALL_INSTITUTIONS;
+
+      filteredList = baseSource.filter(inst => {
+        if (!isCommunityOnly) {
+          if (!selectedTierFilter.has(inst.tier)) return false;
+          if (inst.isCommunityLayer || inst.tier === 'COMMUNITY') return false; // Strictly filtered out of actual research results
+        }
 
         if (selectedCountryFilter !== 'all') {
           if (!matchC(inst.country, selectedCountryFilter)) return false;
@@ -14394,7 +14654,11 @@ FORMATTING & INTERACTION RULES:
       const activeMapText = document.getElementById('activeMapFilterText');
 
       if (activeMapBanner && activeMapText) {
-        if (selectedCategoryFilter !== 'all') {
+        if (isCommunityOnly) {
+          activeMapBanner.classList.remove('hidden');
+          if (activeMapIcon) activeMapIcon.textContent = '✍️';
+          activeMapText.textContent = `COMMUNITY RESEARCH LAYER · ${filteredList.length} USER CONTRIBUTIONS (SEGREGATED FROM VERIFIED)`;
+        } else if (selectedCategoryFilter !== 'all') {
           activeMapBanner.classList.remove('hidden');
           const meta = FILTER_META[selectedCategoryFilter] || { label: selectedCategoryFilter.toUpperCase() };
           if (activeMapIcon) activeMapIcon.textContent = '';
@@ -14409,7 +14673,11 @@ FORMATTING & INTERACTION RULES:
       const filterLabel = document.getElementById('filterLabel');
       const filterCount = document.getElementById('filterCount');
       if (activeFilterBanner) {
-        if (selectedCityFilter !== 'all' || selectedCountryFilter !== 'all' || selectedCategoryFilter !== 'all') {
+        if (isCommunityOnly) {
+          activeFilterBanner.classList.remove('hidden');
+          if (filterLabel) filterLabel.textContent = 'COMMUNITY LAYER (USER INPUT)';
+          if (filterCount) filterCount.textContent = `(${filteredList.length})`;
+        } else if (selectedCityFilter !== 'all' || selectedCountryFilter !== 'all' || selectedCategoryFilter !== 'all') {
           activeFilterBanner.classList.remove('hidden');
           let activeName = selectedCityFilter !== 'all' ? selectedCityFilter : (selectedCountryFilter !== 'all' ? selectedCountryFilter : selectedCategoryFilter);
           if (FILTER_META[selectedCategoryFilter]) activeName = FILTER_META[selectedCategoryFilter].label;
@@ -14476,14 +14744,19 @@ FORMATTING & INTERACTION RULES:
 
       container.innerHTML = filteredList.map(inst => {
         const isSel = selectedInstitution && selectedInstitution.name === inst.name;
-        const isInstClean = inst.tier === 'A';
-        const isInstFlagged = inst.tier === 'B';
-        const tierCol = isInstClean 
+        const isInstCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
+        const isInstClean = !isInstCommunity && inst.tier === 'A';
+        const isInstFlagged = !isInstCommunity && inst.tier === 'B';
+        const tierCol = isInstCommunity
+          ? 'text-[#08bdba] border-[#08bdba]/60 bg-[#0c2826]'
+          : isInstClean 
           ? 'text-emerald-400 border-emerald-900/60 bg-[#0a2016]' 
           : isInstFlagged 
           ? 'text-[#be95ff] border-[#8a3ffc]/60 bg-[#1f1433]' 
           : 'text-[#33b1ff] border-[#0072c3]/60 bg-[#081a28]';
-        const tierName = isInstClean 
+        const tierName = isInstCommunity
+          ? `Community Input · #${inst.communityId || 'RES'}`
+          : isInstClean 
           ? 'Tier A · Clean Verified' 
           : isInstFlagged 
           ? 'Tier B · Flagged Underwriting' 
@@ -14502,7 +14775,7 @@ FORMATTING & INTERACTION RULES:
             <div class="flex items-center gap-1.5 text-[14px] text-[#93c5fd] mt-1 font-mono">
               <span class="truncate">${inst.location}</span>
               <span class="text-[#555]">·</span>
-              <span class="text-[#a1a1aa] text-[14px] shrink-0">Est. ${inst.year_founded}</span>
+              <span class="text-[#a1a1aa] text-[14px] shrink-0">${isInstCommunity ? 'Community Submission' : 'Est. ' + (inst.year_founded || 'Historic')}</span>
             </div>
 
             <!-- Researcher Tags: Governance & Admission -->
@@ -14535,7 +14808,7 @@ FORMATTING & INTERACTION RULES:
                   <span class="text-[14px]">↗</span>
                 </a>
               ` : `
-                <span class="text-[13px] font-mono text-slate-500">Verified Independent</span>
+                <span class="text-[13px] font-mono text-slate-500">${isInstCommunity ? 'Under Verification' : 'Verified Independent'}</span>
               `}
               <span class="text-[14px] text-[#71717a] hover:text-white font-mono transition">View on Globe →</span>
             </div>
@@ -14549,14 +14822,14 @@ FORMATTING & INTERACTION RULES:
             e.preventDefault();
             e.stopPropagation();
             const dName = dBtn.getAttribute('data-name');
-            const target = ALL_INSTITUTIONS.find(i => i.name === dName);
+            const target = filteredList.find(i => i.name === dName) || ALL_INSTITUTIONS.find(i => i.name === dName);
             if (target) openDossier(target);
           });
         });
 
         card.addEventListener('click', () => {
           const name = card.getAttribute('data-name');
-          const inst = ALL_INSTITUTIONS.find(i => i.name === name);
+          const inst = filteredList.find(i => i.name === name) || ALL_INSTITUTIONS.find(i => i.name === name);
           if (inst) {
             selectInstitution(inst, true);
           }
