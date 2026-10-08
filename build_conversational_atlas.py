@@ -922,6 +922,9 @@ def build():
           <button id="hudFiscalBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0f2438] text-[#38bdf8] border border-[#0284c7]/50 hover:bg-[#163654] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Open Institutional Fiscal Analytics Dashboard">
             <span>📊 Fiscal</span>
           </button>
+          <button id="hudTrusteesBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1a1329] text-purple-300 border border-purple-500/50 hover:bg-[#281b3f] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Interactive Institutional Trustee & Board Conflict Network">
+            <span>🕸️ Boards</span>
+          </button>
           <button id="hudRouteBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#09261b] text-emerald-300 border border-emerald-500/50 hover:bg-[#0e3b2a] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Curatorial Itinerary & Art Crawl Generator">
             <span>📍 Crawls</span>
           </button>
@@ -1173,6 +1176,7 @@ def build():
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>📍 Curatorial Itineraries</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>🕸️ Board Conflicts</span></button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -2212,6 +2216,122 @@ def build():
         </div>
         <button id="closeItineraryModalFooterBtn" class="px-4 py-1.5 bg-[#142e22] hover:bg-[#1c3e2f] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
           Close Itineraries
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 🕸️ INSTITUTIONAL TRUSTEE & BOARD CONFLICT NETWORK MODAL -->
+  <!-- ========================================================= -->
+  <div id="trusteeConflictNetworkModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-text">
+    <div class="relative w-full max-w-6xl max-h-[94vh] h-[94vh] flex flex-col bg-[#0b0813] border border-purple-500/50 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden text-zinc-200">
+      
+      <!-- Modal Header -->
+      <div class="p-3.5 sm:p-4 border-b border-purple-900/60 bg-gradient-to-r from-[#120921] via-[#1b0d33] to-[#120921] flex items-center justify-between gap-3 shrink-0">
+        <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-purple-950/90 border border-purple-500/60 flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm">
+            <span>🕸️</span>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 class="text-[15px] sm:text-[18px] font-semibold text-white tracking-tight">Institutional Trustee &amp; Board Conflict Network</h2>
+              <span class="text-[11px] font-mono text-purple-300 bg-purple-950/80 px-2 py-0.5 rounded-full border border-purple-800/80">Relational Graph · 32 Interlocks · IRS 990 Schedule L</span>
+            </div>
+            <p class="text-xs sm:text-[13px] text-purple-200/70 truncate">Forensic mapping of corporate board interlocks, predatory private equity, weapons contractors, opioid dynasties, and fossil fuel underwriters.</p>
+          </div>
+        </div>
+        <button id="closeTrusteeModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#251542] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">✕</button>
+      </div>
+
+      <!-- Controls & Filter Toolbar -->
+      <div class="px-3.5 sm:px-4 py-2.5 bg-[#100a1c] border-b border-purple-950/80 flex flex-wrap items-center justify-between gap-2 text-xs shrink-0">
+        <!-- Search & Filter Controls -->
+        <div class="flex items-center gap-2 flex-1 min-w-[240px]">
+          <div class="relative flex-1 max-w-xs">
+            <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-zinc-400 text-xs">🔍</span>
+            <input id="trusteeSearchInput" type="text" placeholder="Search trustee, museum, or firm..." class="w-full bg-[#181028] border border-purple-900/70 rounded-xl pl-7 pr-3 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400">
+          </div>
+
+          <label class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#1d1133] border border-purple-700/60 text-purple-200 hover:text-white cursor-pointer text-xs select-none shrink-0 font-medium transition">
+            <input type="checkbox" id="trusteeInterlocksOnly" class="rounded accent-purple-500 cursor-pointer">
+            <span>Interlocks Only (≥2 Flagged Boards)</span>
+          </label>
+        </div>
+
+        <!-- Graph View Zoom & Reset Actions -->
+        <div class="flex items-center gap-1.5 shrink-0">
+          <button id="trusteeZoomInBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 font-mono text-sm flex items-center justify-center transition cursor-pointer" title="Zoom In">+</button>
+          <button id="trusteeZoomOutBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 font-mono text-sm flex items-center justify-center transition cursor-pointer" title="Zoom Out">−</button>
+          <button id="trusteeResetGraphBtn" class="px-2.5 py-1 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 text-xs font-mono transition cursor-pointer flex items-center gap-1" title="Reset Force Simulation and Zoom">
+            <span>↺ Reset</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sector Filter Pills Bar -->
+      <div class="px-3.5 sm:px-4 py-2 bg-[#0d0717] border-b border-purple-950/80 flex items-center gap-1.5 overflow-x-auto text-xs shrink-0 select-none custom-scrollbar">
+        <span class="text-[11px] font-mono text-zinc-400 uppercase tracking-wider mr-1 shrink-0">Sectors:</span>
+        <button class="trustee-sector-pill active px-2.5 py-1 rounded-xl bg-purple-700 text-white border border-purple-500 text-[11.5px] font-medium transition cursor-pointer shrink-0" data-sector="all">All Sectors (33)</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="defense">⚔️ Defense &amp; Weapons</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="fossil">🛢️ Fossil Fuels</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="private_equity">📈 Private Equity &amp; Debt</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="pharma">💊 Big Pharma / Opioids</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="banking">🏦 Mega-Banks &amp; Finance</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="artwashing">👑 Authoritarian Artwashing</button>
+      </div>
+
+      <!-- Main Graph Simulation + Inspector Grid -->
+      <div class="flex-1 flex flex-col lg:flex-row min-h-0 overflow-hidden relative">
+        
+        <!-- Canvas Graph Area -->
+        <div class="flex-1 relative bg-[#090510] overflow-hidden select-none min-h-[300px]">
+          <canvas id="trusteeNetworkCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
+          
+          <!-- Floating Legend Overlay -->
+          <div class="absolute bottom-3 left-3 z-10 p-2.5 rounded-2xl bg-[#120a22]/90 border border-purple-800/60 backdrop-blur-md text-[11px] space-y-1.5 shadow-xl max-w-xs pointer-events-none">
+            <div class="font-mono text-purple-300 font-bold uppercase tracking-wider text-[10px]">Relational Graph Key:</div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-[#ef4444] shrink-0 border border-red-300/60"></span>
+              <span class="text-zinc-300">Corporate Trustee / Underwriter</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-[#3b82f6] shrink-0 border border-blue-300/60"></span>
+              <span class="text-zinc-300">Cultural Institution (Flagged)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-[#10b981] shrink-0 border border-emerald-300/60"></span>
+              <span class="text-zinc-300">Clean / Counter-Model Space</span>
+            </div>
+            <div class="flex items-center gap-2 pt-0.5 border-t border-purple-950/80 text-[10.5px] text-zinc-400">
+              <span class="text-purple-400">Dashed Line:</span>
+              <span>Divested / Ousted after Boycotts</span>
+            </div>
+          </div>
+
+          <!-- Tooltip Overlay -->
+          <div id="trusteeNetworkTooltip" class="hidden absolute z-20 pointer-events-none px-2.5 py-1.5 rounded-xl bg-[#1b1030]/95 border border-purple-400 text-white text-xs shadow-2xl backdrop-blur max-w-xs transition-opacity duration-150">
+            <div id="trusteeTooltipTitle" class="font-semibold text-purple-200"></div>
+            <div id="trusteeTooltipSub" class="text-[11px] text-zinc-400 font-mono"></div>
+          </div>
+        </div>
+
+        <!-- Slide-in / Side Inspector Panel -->
+        <div id="trusteeInspectorPanel" class="w-full lg:w-[380px] xl:w-[420px] bg-[#0f091a] border-t lg:border-t-0 lg:border-l border-purple-950/80 flex flex-col shrink-0 overflow-y-auto custom-scrollbar p-3.5 sm:p-4 space-y-3.5 text-xs select-text">
+          <!-- Rendered dynamically by renderTrusteeInspectorUI -->
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-3 sm:p-3.5 border-t border-purple-900/60 bg-[#0a0512] flex items-center justify-between gap-3 shrink-0 flex-wrap text-xs">
+        <div class="flex items-center gap-2 text-zinc-400">
+          <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+          <span class="text-[11px] font-mono">Forensic Records: IRS Form 990 Schedule L, UK Charity Commission Reg 313014, Decolonize This Place, Strike MoMA</span>
+        </div>
+        <button id="closeTrusteeModalFooterBtn" class="px-4 py-1.5 bg-[#201338] hover:bg-[#2d1b4f] text-purple-200 hover:text-white rounded-xl transition cursor-pointer font-medium">
+          Close Network
         </button>
       </div>
 
@@ -9588,6 +9708,891 @@ def build():
     }}
     window.renderItineraryModalUI = renderItineraryModalUI;
 
+    // =========================================================================
+    // 🕸️ INSTITUTIONAL TRUSTEE & BOARD CONFLICT RELATIONAL GRAPH ENGINE
+    // =========================================================================
+    const BOARD_CONFLICT_NODES = [
+      // Cultural Institutions
+      {{ id: 'moma', name: 'Museum of Modern Art (MoMA)', shortName: 'MoMA', type: 'institution', city: 'New York', country: 'United States', tier: 'B', role: 'Major Modern Art Museum', summary: 'Flagged for multiple billionaire trustees holding defense contracts, vulture funds, and predatory private equity holdings.', harmsSummary: 'Leadership board entanglements with Apollo Global, BlackRock, and GoldenTree vulture debt.', filings: 'IRS Form 990 Part VII; Schedule L Interested Persons ($45M+ commitments).' }},
+      {{ id: 'whitney', name: 'Whitney Museum of American Art', shortName: 'Whitney', type: 'institution', city: 'New York', country: 'United States', tier: 'B', role: 'American Modern & Contemporary Art', summary: 'Site of the historic 2019 Whitney Biennial boycott targeting Vice-Chair Warren Kanders over Safariland tear gas production.', harmsSummary: 'Munitions and defense contractor representation on museum leadership board.', filings: 'IRS Form 990 Schedule L; 2019 Whitney Biennial Artist Withdrawal Letters.' }},
+      {{ id: 'the_met', name: 'The Metropolitan Museum of Art', shortName: 'The Met', type: 'institution', city: 'New York', country: 'United States', tier: 'B', role: 'Encyclopedic Civic Museum', summary: 'Accepted $30M+ from Purdue Pharma owners and $65M from fossil magnate David Koch; stripped Sackler name in Dec 2021.', harmsSummary: 'Opioid dynasty naming rights and fossil fuel corporate sponsorships.', filings: 'IRS Form 990 Schedule I & L; Met Board Renaming Resolution Dec 2021.' }},
+      {{ id: 'guggenheim', name: 'Solomon R. Guggenheim Museum', shortName: 'Guggenheim', type: 'institution', city: 'New York', country: 'United States', tier: 'B', role: 'Modern & Contemporary Museum', summary: 'Target of P.A.I.N. (Nan Goldin) blizzard die-ins over Mortimer D. Sackler Arts Education Center gifts; severed ties March 2019.', harmsSummary: 'Accepted $9M+ from Purdue Pharma owners; dropped Sackler funding following protests.', filings: 'IRS Form 990 Schedule A; Guggenheim Board Gift Protocol March 2019.' }},
+      {{ id: 'tate', name: 'Tate Modern & Tate Britain', shortName: 'Tate', type: 'institution', city: 'London', country: 'United Kingdom', tier: 'B', role: 'UK National Modern Art Gallery', summary: 'Accepted BP oil sponsorship for 26 years until Liberate Tate direct actions; severed Sackler funding in 2019.', harmsSummary: 'Fossil fuel social-licensing partnership and opioid family endowment underwriting.', filings: 'UK Charity Commission Reg 313014 Annual Accounts; Liberate Tate FOI disclosures.' }},
+      {{ id: 'british_museum', name: 'British Museum', shortName: 'British Museum', type: 'institution', city: 'London', country: 'United Kingdom', tier: 'B', role: 'National Antiquities & Cultural History', summary: 'Renewed controversial £50M 10-year partnership with BP in late 2023 despite extensive worker and artist opposition.', harmsSummary: 'Longstanding oil major sponsorship and contested colonial heritage restitution cases.', filings: 'UK Charity Commission & DCMS statutory accounts; BP Master Agreement 2023.' }},
+      {{ id: 'npg_london', name: 'National Portrait Gallery', shortName: 'NPG London', type: 'institution', city: 'London', country: 'United Kingdom', tier: 'B', role: 'UK National Portrait Collection', summary: 'Former host of the BP Portrait Award; terminated 30-year BP contract in 2022 and rejected a £1M Sackler grant.', harmsSummary: 'Historical fossil fuel artwashing anchor prior to artist-led divestment victory.', filings: 'UK Charity Commission Accounts; March 2019 NPG Board Statement.' }},
+      {{ id: 'louvre', name: 'Musée du Louvre', shortName: 'Louvre', type: 'institution', city: 'Paris', country: 'France', tier: 'B', role: 'French National Museum', summary: 'First global museum to remove Sackler name plaques from its Oriental Antiquities wing; sponsored by TotalEnergies.', harmsSummary: 'Fossil fuel corporate patron circle and historical pharmaceutical naming.', filings: 'Cour des Comptes National Museum Audits; Louvre Cercle des Mécènes.' }},
+      {{ id: 'pompidou', name: 'Centre Pompidou', shortName: 'Centre Pompidou', type: 'institution', city: 'Paris', country: 'France', tier: 'B', role: 'National Modern Art Museum', summary: 'Signed major consulting and partnership protocols with Saudi Royal Commission for AlUla cultural expansion.', harmsSummary: 'Deepening financial agreements with authoritarian Gulf state entities.', filings: 'French Ministry of Culture Bilateral Protocols; Pompidou AlUla 2023 Agreement.' }},
+      {{ id: 'macba', name: 'MACBA Museu d’Art Contemporani', shortName: 'MACBA', type: 'institution', city: 'Barcelona', country: 'Spain', tier: 'B', role: 'Catalan Contemporary Art Museum', summary: 'Corporate Foundation Board includes prominent Spanish fossil fuel utilities Repsol and Naturgy.', harmsSummary: 'Corporate energy underwriter influence on foundation governance board.', filings: 'Fundació MACBA Memòria Anual; Generalitat de Catalunya Transparency Portal.' }},
+      {{ id: 'van_gogh', name: 'Van Gogh Museum', shortName: 'Van Gogh Museum', type: 'institution', city: 'Amsterdam', country: 'Netherlands', tier: 'B', role: 'Monographic Public Museum', summary: 'Severed 18-year sponsorship agreement with oil supermajor Shell in 2018 following Fossil Free Culture NL interventions.', harmsSummary: 'Extensive fossil fuel corporate branding prior to 2018 divestment.', filings: 'Stichting Van Gogh Museum Jaarverslag 2018; ANBI Public Governance.' }},
+      {{ id: 'basel_kunstmuseum', name: 'Kunstmuseum Basel', shortName: 'Kunstmuseum Basel', type: 'institution', city: 'Basel', country: 'Switzerland', tier: 'B', role: 'Municipal Art Museum of Basel', summary: 'Governance and major exhibition underwriting heavily intertwined with Swiss pharma (Novartis, Roche) and private wealth banks.', harmsSummary: 'Dominant pharmaceutical dynasty and private wealth corporate patron circle.', filings: 'Kanton Basel-Stadt Rechnungslegung; Kunstmuseum Jahresbericht.' }},
+      {{ id: 'serpentine', name: 'Serpentine Galleries', shortName: 'Serpentine', type: 'institution', city: 'London', country: 'United Kingdom', tier: 'B', role: 'Contemporary Art Commissioning Hub', summary: 'Formerly named the Serpentine Sackler Gallery; renamed Serpentine North in 2021; pharmaceutical dynasty governance.', harmsSummary: 'Opioid family naming and billionaire tech/pharma council representation.', filings: 'UK Charity Commission Reg 298890 Annual Reports; 2021 Renaming Registry.' }},
+      {{ id: 'dia', name: 'Dia Art Foundation', shortName: 'Dia Foundation', type: 'institution', city: 'New York', country: 'United States', tier: 'B', role: 'Monographic & Land Art Institution', summary: 'Pioneering Land Art steward that formerly received Sackler family endowment grants; cut ties and returned funds in 2019.', harmsSummary: 'Historical opioid family endowment gifts severed following activist mobilization.', filings: 'IRS Form 990 Part VIII & Schedule O Statement of Program Governance.' }},
+      {{ id: 'whitechapel', name: 'Whitechapel Gallery', shortName: 'Whitechapel', type: 'institution', city: 'London', country: 'United Kingdom', tier: 'A', role: 'Pioneering Public Community Gallery', summary: 'Clean funding model supported by Arts Council England, democratic civic patrons, and transparent gift screening.', harmsSummary: 'No predatory private equity, weapons, or fossil fuel corporate board interlocks.', filings: 'UK Charity Commission Reg 312162; ACE National Portfolio Audits.' }},
+      {{ id: 'chisenhale', name: 'Chisenhale Gallery', shortName: 'Chisenhale', type: 'institution', city: 'London', country: 'United Kingdom', tier: 'A', role: 'Artist-Led Commissioning Space', summary: 'Strict ethical fundraising charter rejecting extractive corporate sponsorships and predatory private finance.', harmsSummary: 'Zero corporate interlocks with flagged defense, fossil, or vulture debt funds.', filings: 'UK Charity Commission Reg 1025797; ACE Annual Accounts.' }},
+      {{ id: 'artists_space', name: 'Artists Space', shortName: 'Artists Space', type: 'institution', city: 'New York', country: 'United States', tier: 'A', role: 'Historic Artist-Founded Non-Profit', summary: 'Founded in 1972 as an alternative space; maintains operational independence from corporate board hegemony.', harmsSummary: 'Independent artist-led governance model free of corporate conflict seats.', filings: 'IRS Form 990; NYS Charities Bureau Reg 02-39-36.' }},
+
+      // Corporate Trustees & Entities
+      {{ id: 'leon_black', name: 'Leon Black', shortName: 'L. Black', type: 'trustee', org: 'Apollo Global Management', category: 'private_equity', role: 'Former MoMA Board Chairman & Private Equity Mogul', city: 'New York',
+        harms: ['Co-founder of Apollo Global Management ($500B+ AUM holding defense, fossil, and surveillance assets)', 'Paid $158M in personal advisory fees to convicted sex offender Jeffrey Epstein (2012–2017)', 'Stepped down as MoMA Board Chairman in March 2021 after 10-week Strike MoMA campaign'],
+        campaigns: ['Strike MoMA 10-Week Direct Action Series (2021)', 'MoMA Worker Petition (150+ signatories)', 'Hyperallergic Investigative Exposés'],
+        filings: 'IRS Form 990 MoMA Schedule L; Dechert LLP Independent Apollo Committee Report (Jan 2021).' }},
+      {{ id: 'warren_kanders', name: 'Warren B. Kanders', shortName: 'W. Kanders', type: 'trustee', org: 'Safariland / Defense Technology', category: 'defense', role: 'Former Whitney Vice-Chair & Munitions Manufacturer', city: 'New York',
+        harms: ['Majority owner & CEO of Safariland, producing Defense Technology tear gas canisters', 'Safariland tear gas was fired at asylum seekers at US-Mexico border and Ferguson BLM protesters', 'Resigned from Whitney board in July 2019 after 8 artists withdrew work from Whitney Biennial'],
+        campaigns: ['Decolonize This Place 9-Week Action Series', 'Whitney Staff Open Letter (100+ signatures)', '2019 Whitney Biennial Artist Boycott (Hannah Black, Forensic Architecture)'],
+        filings: 'IRS Form 990 Whitney Museum Schedule L; Warren Kanders Resignation Letter (July 25, 2019).' }},
+      {{ id: 'larry_fink', name: 'Larry Fink', shortName: 'L. Fink', type: 'trustee', org: 'BlackRock', category: 'private_equity', role: 'MoMA Trustee & CEO of BlackRock ($10T AUM)', city: 'New York',
+        harms: ['Chairman & CEO of BlackRock, world’s largest asset manager with massive thermal coal, arms, and private prison assets', 'Target of global climate campaigns demanding divestment from Amazon deforestation and defense contractors', 'Active sitting trustee on MoMA’s Board of Trustees despite persistent community divestment demands'],
+        campaigns: ['BlackRock’s Big Problem Global Coalition', 'Strike MoMA Framework for Disassembly', 'New York Communities for Change (NYCC) Protests'],
+        filings: 'IRS Form 990 MoMA Part VII; BlackRock SEC Form 10-K Institutional Shareholdings.' }},
+      {{ id: 'steven_tananbaum', name: 'Steven Tananbaum', shortName: 'S. Tananbaum', type: 'trustee', org: 'GoldenTree Asset Management', category: 'private_equity', role: 'MoMA Trustee & Vulture Debt Hedge Fund Founder', city: 'New York',
+        harms: ['Founder of GoldenTree Asset Management holding $1B+ in Puerto Rico distressed municipal debt', 'Enforced severe austerity and debt extraction while Puerto Rico suffered post-Hurricane Maria crises', 'Sparked large-scale protests during MoMA’s $450M reopening in October 2019'],
+        campaigns: ['Hedge Clippers Direct Action Series', 'Decolonize This Place MoMA Reopening Picket', 'Diáspora en Resistencia Coalitions'],
+        filings: 'IRS Form 990 MoMA Schedule L; US Bankruptcy Court District of Puerto Rico PROMESA Filings.' }},
+      {{ id: 'glenn_dubin', name: 'Glenn Dubin', shortName: 'G. Dubin', type: 'trustee', org: 'Highbridge Capital / Dubin & Co.', category: 'private_equity', role: 'Former MoMA Trustee & Hedge Fund Billionaire', city: 'New York',
+        harms: ['Billionaire hedge fund manager named extensively in unsealed Epstein court records', 'Resigned quietly from MoMA’s Board of Trustees in late 2019 following mounting public outrage'],
+        campaigns: ['Strike MoMA Research Disclosures', 'Unsealed Giuffre v. Maxwell Federal Deposition Audits'],
+        filings: 'IRS Form 990 MoMA Part VII (Trustee Exit Records).' }},
+      {{ id: 'sackler_family', name: 'Sackler Dynasty', shortName: 'Sackler Family', type: 'trustee', org: 'Purdue Pharma / OxyContin', category: 'pharma', role: 'Opioid Dynasty & Former Museum Namesakes (7 Institutions)', city: 'New York / London',
+        harms: ['Owners of Purdue Pharma, orchestrated fraudulent marketing of OxyContin driving 500,000+ opioid overdose deaths', 'Artwashed corporate profits across Met, Guggenheim, Tate, Louvre, British Museum, Dia, and Serpentine', 'Forced off boards and stripped from walls after Nan Goldin and P.A.I.N. staged direct-action die-ins'],
+        campaigns: ['P.A.I.N. (Nan Goldin) Museum Die-Ins & Prescription Blizzards', 'Nan Goldin Retrospective Boycott Ultimatum', 'Strike MoMA'],
+        filings: 'US Bankruptcy Court SDNY Purdue Settlement Protocols; Met, Guggenheim, Tate Renaming Resolutions.' }},
+      {{ id: 'ken_griffin', name: 'Kenneth C. Griffin', shortName: 'K. Griffin', type: 'trustee', org: 'Citadel LLC', category: 'banking', role: 'MoMA Trustee & Major Benefactor (Whitney Museum)', city: 'New York / Miami',
+        harms: ['Founder & CEO of Citadel, dominant financial market maker managing $60B+', 'Mega-donor funding anti-regulatory PACs, fossil fuel industry lobbying, and high-frequency speculative finance', 'Griffin Lobby namesake at the Whitney Museum and major sitting trustee on MoMA’s governing body'],
+        campaigns: ['Occupy Wall Street Successor Actions', 'Strike MoMA Forensic Board Mapping'],
+        filings: 'IRS Form 990 MoMA Part VII; FEC Political Contribution Disclosures; Whitney Donor Walls.' }},
+      {{ id: 'david_koch', name: 'David H. Koch', shortName: 'D. Koch', type: 'trustee', org: 'Koch Industries', category: 'fossil', role: 'Former Met Trustee & Fossil Conglomerate Billionaire', city: 'New York',
+        harms: ['Executive VP of Koch Industries, billionaire oil and chemicals conglomerate', 'Funded climate denial networks and anti-environmental political lobbies', 'Donated $65M to The Met to rebuild outdoor plaza as David H. Koch Plaza, sparking decade-long protests'],
+        campaigns: ['The Natural History Museum Pop-Up Collective', 'Occupy Museums Koch Plaza Interventions'],
+        filings: 'IRS Form 990 The Met Schedule I; Greenpeace Koch Industries Investigative Files.' }},
+      {{ id: 'bp', name: 'BP (British Petroleum)', shortName: 'BP', type: 'corporation', org: 'BP plc', category: 'fossil', role: 'Lead Underwriter (British Museum, former Tate & NPG partner)', city: 'London',
+        harms: ['Multinational oil supermajor responsible for Deepwater Horizon spill and continuous exploration of new fossil reserves', 'Used museum branding across London for 30+ years to buy social license for oil extraction', 'Divested from Tate in 2016 and NPG in 2022; secured a controversial £50M extension at British Museum in late 2023'],
+        campaigns: ['Liberate Tate (6-year unsanctioned direct action series)', 'BP or not BP? Flashmobs & Trojan Horse actions', 'Culture Unstained'],
+        filings: 'UK Charity Commission Reg 313014 Annual Accounts; British Museum Partnership Contracts 2023.' }},
+      {{ id: 'shell', name: 'Shell plc', shortName: 'Shell', type: 'corporation', org: 'Shell plc', category: 'fossil', role: 'Former Lead Sponsor (Van Gogh Museum, British Museum)', city: 'The Hague / London',
+        harms: ['Global fossil fuel conglomerate facing international human rights and environmental litigation in the Niger Delta', 'Sponsored the Van Gogh Museum for 18 years until Fossil Free Culture NL stage-dropped oil droplets and direct actions ended the deal in 2018'],
+        campaigns: ['Fossil Free Culture NL (Drop the Shell Actions)', 'Shell Must Fall Civil Disobedience'],
+        filings: 'Van Gogh Museum Annual Governance Report 2018; Shell Corporate Responsibility Filings.' }},
+      {{ id: 'totalenergies', name: 'TotalEnergies', shortName: 'TotalEnergies', type: 'corporation', org: 'TotalEnergies SE', category: 'fossil', role: 'Lead Corporate Benefactor (Musée du Louvre, Centre Pompidou)', city: 'Paris',
+        harms: ['French oil and gas multinational developing the controversial East African Crude Oil Pipeline (EACOP)', 'Maintains major philanthropic underwriting at the Louvre, sponsoring exhibitions to mitigate reputational damage'],
+        campaigns: ['Libérons le Louvre (350.org)', 'Clean Arts Collective Louvre Pyramid Die-Ins'],
+        filings: 'Musée du Louvre Cercle des Mécènes Report; TotalEnergies Foundation Philanthropy Accounts.' }},
+      {{ id: 'maja_hoffmann', name: 'Maja Hoffmann', shortName: 'M. Hoffmann', type: 'trustee', org: 'Roche Pharmaceutical Dynasty / Luma', category: 'pharma', role: 'Trustee (Tate), Council Member (Serpentine), Patron (Kunstmuseum Basel)', city: 'Basel / London',
+        harms: ['Billionaire heir to the Hoffmann-La Roche pharmaceutical dynasty ($30B+ market cap)', 'Holds interlocking governance seats across Tate, Serpentine Galleries, and Swiss institutions through the Luma Foundation'],
+        campaigns: ['Swiss Governance Transparency Audits', 'Cultural Monopolies Investigative Reports'],
+        filings: 'UK Charity Commission Reg 313014 (Tate Board Register); Roche Holding AG Shareholder Register.' }},
+      {{ id: 'repsol_naturgy', name: 'Repsol & Naturgy', shortName: 'Repsol/Naturgy', type: 'corporation', org: 'Repsol SA & Naturgy Energy', category: 'fossil', role: 'Corporate Foundation Trustees (MACBA Barcelona)', city: 'Barcelona / Madrid',
+        harms: ['Spanish fossil fuel and utility giants responsible for oil spills in Peru and extensive fossil gas emissions', 'Sit on the MACBA Foundation Board of Trustees influencing contemporary cultural programming in Catalonia'],
+        campaigns: ['Ecologistas en Acción Artwashing Interventions', 'Fridays For Future Barcelona MACBA Protests'],
+        filings: 'Fundació MACBA Patronat Minutes; CNMV Spanish Corporate Registry.' }},
+      {{ id: 'ubs_novartis', name: 'UBS Group & Novartis', shortName: 'UBS / Novartis', type: 'corporation', org: 'UBS Group AG & Novartis AG', category: 'banking', role: 'Lead Institutional Partners (Kunstmuseum Basel)', city: 'Basel / Zurich',
+        harms: ['Global wealth management giant UBS and pharmaceutical giant Novartis holding dominant underwriting control over Basel’s cultural institutions', 'UBS manages global offshore capital while serving as Art Basel’s principal global partner'],
+        campaigns: ['Swiss Banking Secrecy & Cultural Capital Investigations', 'Public Eye NGO Audits'],
+        filings: 'Kunstmuseum Basel Jahresbericht Sponsoring Register; FINMA Regulatory Filings.' }},
+      {{ id: 'lockheed_martin', name: 'Lockheed Martin', shortName: 'Lockheed', type: 'corporation', org: 'Lockheed Martin Corp.', category: 'defense', role: 'Corporate Underwriter (The Met, Whitney)', city: 'Bethesda / New York',
+        harms: ['World’s largest military weapons contractor, producing fighter jets, Hellfire missiles, and guided munitions', 'Funds museum educational and cultural initiatives to sanitize defense contracting image'],
+        campaigns: ['Demilitarize Culture Pickets', 'Strike MoMA Weapons Contractor Mapping'],
+        filings: 'The Met Corporate Partner Register; US Department of Defense Federal Procurement Records.' }},
+      {{ id: 'saudi_pif', name: 'Saudi Public Investment Fund', shortName: 'Saudi PIF / AlUla', type: 'corporation', org: 'Public Investment Fund / RCU', category: 'artwashing', role: 'Strategic Partner (Centre Pompidou AlUla, Musée du Louvre)', city: 'Riyadh / Paris',
+        harms: ['Sovereign wealth fund controlled by the Saudi state, deploying billions in cultural capital to offset severe human rights violations and suppression of dissent', 'Direct multi-million euro agreements with Pompidou and Louvre to design cultural infrastructure in AlUla and Riyadh'],
+        campaigns: ['ALQST Human Rights Defending Free Speech in Culture', 'French Cultural Workers Against Authoritarian Partnerships'],
+        filings: 'French Ministry of Foreign Affairs Bilateral Protocols; Centre Pompidou Board Minutes 2023.' }}
+    ];
+
+    const BOARD_CONFLICT_EDGES = [
+      {{ source: 'leon_black', target: 'moma', role: 'Board Chairman (Resigned 2021)', sector: 'private_equity', status: 'ousted', years: '1997–2021', filing: 'IRS Form 990 Schedule L', campaign: 'Strike MoMA 10-Week Direct Action' }},
+      {{ source: 'leon_black', target: 'the_met', role: 'Trustee & Major Benefactor', sector: 'private_equity', status: 'active', years: '2000–Active', filing: 'IRS Form 990 Part VII', campaign: 'Decolonize This Place Inquiries' }},
+      {{ source: 'warren_kanders', target: 'whitney', role: 'Vice-Chairman (Resigned 2019)', sector: 'defense', status: 'ousted', years: '2006–2019', filing: 'IRS Form 990 Schedule L', campaign: 'Whitney Biennial Boycott / DTP' }},
+      {{ source: 'larry_fink', target: 'moma', role: 'Trustee & Board Member', sector: 'private_equity', status: 'active', years: '2009–Active', filing: 'IRS Form 990 Part VII', campaign: 'Strike MoMA / BlackRock’s Big Problem' }},
+      {{ source: 'steven_tananbaum', target: 'moma', role: 'Trustee & Exhibition Underwriter', sector: 'private_equity', status: 'active', years: '2014–Active', filing: 'IRS Form 990 Schedule L', campaign: 'Decolonize This Place Puerto Rico Actions' }},
+      {{ source: 'glenn_dubin', target: 'moma', role: 'Trustee (Resigned 2019)', sector: 'private_equity', status: 'ousted', years: '2010–2019', filing: 'IRS Form 990 Part VII', campaign: 'Unsealed Epstein Court Revelations' }},
+      {{ source: 'sackler_family', target: 'the_met', role: 'Sackler Wing Namesake (Stripped 2021)', sector: 'pharma', status: 'ousted', years: '1974–2021', filing: 'IRS Form 990 Schedule I & L', campaign: 'Nan Goldin & P.A.I.N. Die-In' }},
+      {{ source: 'sackler_family', target: 'guggenheim', role: 'Sackler Center Namesake (Dropped 2019)', sector: 'pharma', status: 'ousted', years: '1995–2019', filing: 'Board Gift Protocol March 2019', campaign: 'Guggenheim Spiral Prescription Blizzard' }},
+      {{ source: 'sackler_family', target: 'tate', role: 'Sackler Escalator & Benefactor (Dropped 2019)', sector: 'pharma', status: 'ousted', years: '2000–2019', filing: 'UK Charity Commission Reg 313014', campaign: 'P.A.I.N. & Artist Open Letters' }},
+      {{ source: 'sackler_family', target: 'louvre', role: 'Sackler Oriental Antiquities Wing (Removed 2019)', sector: 'pharma', status: 'ousted', years: '1997–2019', filing: 'Louvre Cour des Comptes Audit', campaign: 'P.A.I.N. Louvre Pyramid Action' }},
+      {{ source: 'sackler_family', target: 'british_museum', role: 'Sackler Gallery Namesake (Stripped 2022)', sector: 'pharma', status: 'ousted', years: '1993–2022', filing: 'BM Board Minutes March 2022', campaign: 'Culture Unstained Pressure' }},
+      {{ source: 'sackler_family', target: 'dia', role: 'Major Endowment Gifts (Divested 2019)', sector: 'pharma', status: 'ousted', years: '2001–2019', filing: 'IRS Form 990 Part VIII', campaign: 'P.A.I.N. Direct Ultimatum' }},
+      {{ source: 'ken_griffin', target: 'moma', role: 'Trustee & Board Member', sector: 'banking', status: 'active', years: '2015–Active', filing: 'IRS Form 990 Part VII', campaign: 'Strike MoMA Corporate Pickets' }},
+      {{ source: 'ken_griffin', target: 'whitney', role: 'Griffin Lobby Lead Underwriter', sector: 'banking', status: 'active', years: '2015–Active', filing: 'Whitney Capital Campaign Disclosures', campaign: 'Occupy Museums Audits' }},
+      {{ source: 'david_koch', target: 'the_met', role: 'Trustee & David H. Koch Plaza Namesake', sector: 'fossil', status: 'active', years: '2008–2019 (Legacy)', filing: 'IRS Form 990 Schedule I', campaign: 'Occupy Museums Koch Plaza Actions' }},
+      {{ source: 'bp', target: 'british_museum', role: 'Lead Corporate Underwriter (£50M Extension)', sector: 'fossil', status: 'active', years: '1996–Active (2033)', filing: 'BM Sponsorship Agreement 2023', campaign: 'BP or not BP? Flashmobs & Boycotts' }},
+      {{ source: 'bp', target: 'npg_london', role: 'BP Portrait Award Sponsor (Divested 2022)', sector: 'fossil', status: 'divested', years: '1989–2022', filing: 'NPG Charity Commission Filings', campaign: 'Culture Unstained & Artist Resistance' }},
+      {{ source: 'bp', target: 'tate', role: 'Lead Corporate Underwriter (Divested 2016)', sector: 'fossil', status: 'divested', years: '1990–2016', filing: 'UK Charity Commission Accounts', campaign: 'Liberate Tate 26-Year Campaign' }},
+      {{ source: 'shell', target: 'van_gogh', role: 'Lead Educational Sponsor (Divested 2018)', sector: 'fossil', status: 'divested', years: '2000–2018', filing: 'Van Gogh Museum Jaarverslag 2018', campaign: 'Fossil Free Culture NL Direct Actions' }},
+      {{ source: 'shell', target: 'british_museum', role: 'Corporate Partner', sector: 'fossil', status: 'divested', years: '2004–2019', filing: 'BM Freedom of Information Disclosures', campaign: 'BP or not BP? Interventions' }},
+      {{ source: 'totalenergies', target: 'louvre', role: 'Lead Corporate Patron', sector: 'fossil', status: 'active', years: '2004–Active', filing: 'Louvre Cercle des Mécènes', campaign: 'Libérons le Louvre (350.org)' }},
+      {{ source: 'totalenergies', target: 'pompidou', role: 'Foundation Cultural Underwriter', sector: 'fossil', status: 'active', years: '2012–Active', filing: 'Pompidou Philanthropy Registry', campaign: 'Clean Arts Collective Actions' }},
+      {{ source: 'maja_hoffmann', target: 'tate', role: 'Trustee & Collection Committee', sector: 'pharma', status: 'active', years: '2014–Active', filing: 'UK Charity Commission Reg 313014', campaign: 'Swiss Governance Watchdog Reviews' }},
+      {{ source: 'maja_hoffmann', target: 'serpentine', role: 'Council Member & Benefactor', sector: 'pharma', status: 'active', years: '2010–Active', filing: 'Serpentine Charity Commission Accounts', campaign: 'Pharma Hegemony Investigations' }},
+      {{ source: 'maja_hoffmann', target: 'basel_kunstmuseum', role: 'Major Acquisition Patron (Luma)', sector: 'pharma', status: 'active', years: '2006–Active', filing: 'Kunstmuseum Basel Jahresbericht', campaign: 'Basler Kulturdialog Reports' }},
+      {{ source: 'repsol_naturgy', target: 'macba', role: 'Foundation Board of Trustees Underwriters', sector: 'fossil', status: 'active', years: '2008–Active', filing: 'Fundació MACBA Memòria Anual', campaign: 'Ecologistas en Acción Pickets' }},
+      {{ source: 'ubs_novartis', target: 'basel_kunstmuseum', role: 'Lead Institutional Underwriters', sector: 'banking', status: 'active', years: '2005–Active', filing: 'Kunstmuseum Basel Annual Accounts', campaign: 'Public Eye Swiss NGO Audits' }},
+      {{ source: 'lockheed_martin', target: 'the_met', role: 'Corporate Advisory Partner', sector: 'defense', status: 'active', years: '2012–Active', filing: 'The Met Corporate Partners Roster', campaign: 'Demilitarize Culture Pickets' }},
+      {{ source: 'lockheed_martin', target: 'whitney', role: 'Historical Corporate Patron', sector: 'defense', status: 'divested', years: '2008–2018', filing: 'Whitney Corporate Benefactor Filings', campaign: 'Decolonize This Place Munitions Map' }},
+      {{ source: 'saudi_pif', target: 'pompidou', role: 'AlUla Museum Strategic Consulting Partnership', sector: 'artwashing', status: 'active', years: '2023–Active', filing: 'French Ministry of Culture Protocol', campaign: 'ALQST Human Rights Protests' }},
+      {{ source: 'saudi_pif', target: 'louvre', role: 'Islamic Arts Wing Benefaction Partnership', sector: 'artwashing', status: 'active', years: '2021–Active', filing: 'Louvre Bilateral International Roster', campaign: 'Freedom of Speech in Culture Coalition' }}
+    ];
+    window.BOARD_CONFLICT_NODES = BOARD_CONFLICT_NODES;
+    window.BOARD_CONFLICT_EDGES = BOARD_CONFLICT_EDGES;
+
+    // Calculate degree / interlocks for all nodes
+    BOARD_CONFLICT_NODES.forEach(n => {{
+      const connectedEdges = BOARD_CONFLICT_EDGES.filter(e => e.source === n.id || e.target === n.id);
+      n.interlocks = connectedEdges.length;
+    }});
+
+    // Graph Engine State
+    let trusteeGraphInitialized = false;
+    let trusteeGraphNodes = [];
+    let trusteeGraphEdges = [];
+    let selectedTrusteeNodeId = null;
+    let hoveredTrusteeNodeId = null;
+    let activeTrusteeSector = 'all';
+    let trusteeInterlocksOnly = false;
+    let trusteeSearchQuery = '';
+
+    // Canvas & Physics State
+    let trusteeCanvas = null;
+    let trusteeCtx = null;
+    let trusteeAnimFrame = null;
+    let trusteeSimAlpha = 1.0;
+    let trusteePanX = 0;
+    let trusteePanY = 0;
+    let trusteeZoom = 1.0;
+    let isTrusteeDragging = false;
+    let draggedNode = null;
+    let isTrusteePanning = false;
+    let panStartX = 0;
+    let panStartY = 0;
+    let pointerMovedDist = 0;
+
+    const SECTOR_COLORS = {{
+      defense: '#f87171',
+      fossil: '#fbbf24',
+      private_equity: '#c084fc',
+      pharma: '#2dd4bf',
+      banking: '#38bdf8',
+      artwashing: '#fb7185',
+      all: '#a855f7'
+    }};
+
+    function initTrusteeNetworkGraph() {{
+      trusteeCanvas = document.getElementById('trusteeNetworkCanvas');
+      if (!trusteeCanvas) return;
+      trusteeCtx = trusteeCanvas.getContext('2d');
+
+      resizeTrusteeCanvas();
+      window.addEventListener('resize', resizeTrusteeCanvas);
+
+      // Initialize Node Physics Positions
+      const rect = trusteeCanvas.getBoundingClientRect();
+      const cx = rect.width / 2 || 350;
+      const cy = rect.height / 2 || 250;
+
+      trusteeGraphNodes = BOARD_CONFLICT_NODES.map((n, i) => {{
+        const isInst = n.type === 'institution';
+        const angle = (i / BOARD_CONFLICT_NODES.length) * Math.PI * 2;
+        const radius = isInst ? 130 + (i % 3) * 35 : 220 + (i % 3) * 45;
+        return {{
+          ...n,
+          x: cx + Math.cos(angle) * radius + (Math.random() - 0.5) * 20,
+          y: cy + Math.sin(angle) * radius + (Math.random() - 0.5) * 20,
+          vx: 0,
+          vy: 0,
+          radius: isInst ? (n.tier === 'A' ? 14 : 17) : (n.interlocks >= 2 ? 18 : 14),
+          visible: true
+        }};
+      }});
+
+      trusteeGraphEdges = BOARD_CONFLICT_EDGES.map(e => ({{
+        ...e,
+        sourceNode: trusteeGraphNodes.find(n => n.id === e.source),
+        targetNode: trusteeGraphNodes.find(n => n.id === e.target),
+        visible: true
+      }}));
+
+      wireTrusteeCanvasInteractions();
+      window.trusteeGraphNodes = trusteeGraphNodes;
+      window.trusteeGraphEdges = trusteeGraphEdges;
+      window.filterTrusteeGraph = filterTrusteeGraph;
+      filterTrusteeGraph();
+      trusteeGraphInitialized = true;
+    }}
+
+    function resizeTrusteeCanvas() {{
+      if (!trusteeCanvas) return;
+      const rect = trusteeCanvas.parentElement.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      trusteeCanvas.width = (rect.width || 700) * dpr;
+      trusteeCanvas.height = (rect.height || 500) * dpr;
+      if (trusteeCtx) {{
+        trusteeCtx.scale(dpr, dpr);
+      }}
+    }}
+
+    function filterTrusteeGraph() {{
+      const query = trusteeSearchQuery.trim().toLowerCase();
+
+      trusteeGraphNodes.forEach(n => {{
+        let matchSector = true;
+        if (activeTrusteeSector !== 'all') {{
+          if (n.type === 'institution') {{
+            // Must have edge with this sector
+            matchSector = BOARD_CONFLICT_EDGES.some(e => e.target === n.id && e.sector === activeTrusteeSector);
+          }} else {{
+            matchSector = (n.category === activeTrusteeSector);
+          }}
+        }}
+
+        let matchInterlocks = true;
+        if (trusteeInterlocksOnly) {{
+          matchInterlocks = (n.interlocks >= 2);
+        }}
+
+        let matchSearch = true;
+        if (query) {{
+          matchSearch = n.name.toLowerCase().includes(query) ||
+                        (n.shortName && n.shortName.toLowerCase().includes(query)) ||
+                        (n.org && n.org.toLowerCase().includes(query)) ||
+                        (n.city && n.city.toLowerCase().includes(query));
+        }}
+
+        n.visible = matchSector && matchInterlocks && matchSearch;
+        const orig = BOARD_CONFLICT_NODES.find(on => on.id === n.id);
+        if (orig) orig.visible = n.visible;
+      }});
+
+      trusteeGraphEdges.forEach(e => {{
+        const sNode = trusteeGraphNodes.find(n => n.id === e.source);
+        const tNode = trusteeGraphNodes.find(n => n.id === e.target);
+        const matchSector = (activeTrusteeSector === 'all' || e.sector === activeTrusteeSector);
+        e.visible = sNode && sNode.visible && tNode && tNode.visible && matchSector;
+      }});
+
+      trusteeSimAlpha = 1.0;
+      renderTrusteeInspectorUI();
+    }}
+
+    function stepTrusteeSimulation() {{
+      if (!trusteeCanvas || trusteeSimAlpha < 0.005) return;
+
+      const rect = trusteeCanvas.getBoundingClientRect();
+      const cx = (rect.width || 700) / 2;
+      const cy = (rect.height || 500) / 2;
+
+      const visibleNodes = trusteeGraphNodes.filter(n => n.visible);
+
+      // 1. Repulsion between visible nodes
+      for (let i = 0; i < visibleNodes.length; i++) {{
+        const na = visibleNodes[i];
+        for (let j = i + 1; j < visibleNodes.length; j++) {{
+          const nb = visibleNodes[j];
+          const dx = nb.x - na.x;
+          const dy = nb.y - na.y;
+          const distSq = dx * dx + dy * dy + 1;
+          const dist = Math.sqrt(distSq);
+          const force = (na.type === nb.type ? 3200 : 2200) / distSq;
+          const fx = (dx / dist) * force;
+          const fy = (dy / dist) * force;
+
+          if (na !== draggedNode) {{ na.vx -= fx; na.vy -= fy; }}
+          if (nb !== draggedNode) {{ nb.vx += fx; nb.vy += fy; }}
+        }}
+
+        // Central gravity
+        if (na !== draggedNode) {{
+          const dcx = cx - na.x;
+          const dcy = cy - na.y;
+          na.vx += dcx * 0.015;
+          na.vy += dcy * 0.015;
+        }}
+      }}
+
+      // 2. Spring attraction along visible edges
+      trusteeGraphEdges.filter(e => e.visible).forEach(e => {{
+        const s = e.sourceNode;
+        const t = e.targetNode;
+        if (!s || !t) return;
+
+        const dx = t.x - s.x;
+        const dy = t.y - s.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const restLen = 110;
+        const displacement = dist - restLen;
+        const springForce = displacement * 0.045;
+        const fx = (dx / dist) * springForce;
+        const fy = (dy / dist) * springForce;
+
+        if (s !== draggedNode) {{ s.vx += fx; s.vy += fy; }}
+        if (t !== draggedNode) {{ t.vx -= fx; t.vy -= fy; }}
+      }});
+
+      // 3. Integrate position & damping
+      visibleNodes.forEach(n => {{
+        if (n === draggedNode) return;
+        n.vx *= 0.82;
+        n.vy *= 0.82;
+        n.x += n.vx * trusteeSimAlpha;
+        n.y += n.vy * trusteeSimAlpha;
+      }});
+
+      trusteeSimAlpha *= 0.985;
+    }}
+
+    function renderTrusteeNetworkCanvas() {{
+      if (!trusteeCanvas || !trusteeCtx) return;
+      const rect = trusteeCanvas.getBoundingClientRect();
+      const w = rect.width || 700;
+      const h = rect.height || 500;
+
+      stepTrusteeSimulation();
+
+      trusteeCtx.save();
+      trusteeCtx.clearRect(0, 0, w, h);
+
+      // Canvas background
+      trusteeCtx.fillStyle = '#090510';
+      trusteeCtx.fillRect(0, 0, w, h);
+
+      // Subtle celestial orbit rings
+      const cx = w / 2 + trusteePanX;
+      const cy = h / 2 + trusteePanY;
+      trusteeCtx.strokeStyle = 'rgba(168, 85, 247, 0.06)';
+      trusteeCtx.lineWidth = 1;
+      [110, 200, 290].forEach(r => {{
+        trusteeCtx.beginPath();
+        trusteeCtx.arc(cx, cy, r * trusteeZoom, 0, Math.PI * 2);
+        trusteeCtx.stroke();
+      }});
+
+      // Apply Pan & Zoom Transform
+      trusteeCtx.translate(trusteePanX, trusteePanY);
+      trusteeCtx.translate(w / 2, h / 2);
+      trusteeCtx.scale(trusteeZoom, trusteeZoom);
+      trusteeCtx.translate(-w / 2, -h / 2);
+
+      const activeFocusId = hoveredTrusteeNodeId || selectedTrusteeNodeId;
+
+      // Draw Edges
+      trusteeGraphEdges.filter(e => e.visible).forEach(e => {{
+        const s = e.sourceNode;
+        const t = e.targetNode;
+        if (!s || !t) return;
+
+        const isConnectedToFocus = activeFocusId && (s.id === activeFocusId || t.id === activeFocusId);
+        const isDimmed = activeFocusId && !isConnectedToFocus;
+
+        trusteeCtx.beginPath();
+        if (e.status === 'ousted' || e.status === 'divested') {{
+          trusteeCtx.setLineDash([4, 4]);
+        }} else {{
+          trusteeCtx.setLineDash([]);
+        }}
+
+        if (isConnectedToFocus) {{
+          trusteeCtx.lineWidth = 3.0;
+          trusteeCtx.strokeStyle = '#c084fc';
+          trusteeCtx.shadowColor = '#c084fc';
+          trusteeCtx.shadowBlur = 10;
+        }} else if (isDimmed) {{
+          trusteeCtx.lineWidth = 0.8;
+          trusteeCtx.strokeStyle = 'rgba(100, 90, 130, 0.15)';
+          trusteeCtx.shadowBlur = 0;
+        }} else {{
+          trusteeCtx.lineWidth = 1.5;
+          trusteeCtx.strokeStyle = SECTOR_COLORS[e.sector] ? `${{SECTOR_COLORS[e.sector]}}88` : 'rgba(168, 85, 247, 0.4)';
+          trusteeCtx.shadowBlur = 0;
+        }}
+
+        trusteeCtx.moveTo(s.x, s.y);
+        trusteeCtx.lineTo(t.x, t.y);
+        trusteeCtx.stroke();
+        trusteeCtx.setLineDash([]);
+        trusteeCtx.shadowBlur = 0;
+      }});
+
+      // Draw Nodes
+      trusteeGraphNodes.filter(n => n.visible).forEach(n => {{
+        const isHovered = (n.id === hoveredTrusteeNodeId);
+        const isSelected = (n.id === selectedTrusteeNodeId);
+        const isFocus = isHovered || isSelected;
+        const isConnectedToFocus = activeFocusId && (
+          n.id === activeFocusId ||
+          BOARD_CONFLICT_EDGES.some(e =>
+            (e.source === activeFocusId && e.target === n.id) ||
+            (e.target === activeFocusId && e.source === n.id)
+          )
+        );
+        const isDimmed = activeFocusId && !isConnectedToFocus;
+
+        const r = n.radius;
+
+        // Outer Glow / Selection Ring
+        if (isFocus) {{
+          trusteeCtx.beginPath();
+          trusteeCtx.arc(n.x, n.y, r + 7, 0, Math.PI * 2);
+          trusteeCtx.fillStyle = 'rgba(192, 132, 252, 0.25)';
+          trusteeCtx.fill();
+          trusteeCtx.strokeStyle = '#e9d5ff';
+          trusteeCtx.lineWidth = 2.5;
+          trusteeCtx.stroke();
+        }}
+
+        // Node Circle Fill
+        trusteeCtx.beginPath();
+        trusteeCtx.arc(n.x, n.y, r, 0, Math.PI * 2);
+
+        let fillColor = '#ef4444';
+        let strokeColor = '#fca5a5';
+
+        if (n.type === 'institution') {{
+          if (n.tier === 'A') {{
+            fillColor = isDimmed ? 'rgba(16, 185, 129, 0.25)' : '#059669';
+            strokeColor = '#34d399';
+          }} else {{
+            fillColor = isDimmed ? 'rgba(59, 130, 246, 0.25)' : '#2563eb';
+            strokeColor = '#60a5fa';
+          }}
+        }} else {{
+          // Trustee / Corporation
+          const secCol = SECTOR_COLORS[n.category] || '#ef4444';
+          fillColor = isDimmed ? 'rgba(150, 80, 80, 0.25)' : secCol;
+          strokeColor = '#fca5a5';
+        }}
+
+        trusteeCtx.fillStyle = fillColor;
+        trusteeCtx.fill();
+        trusteeCtx.strokeStyle = isDimmed ? 'rgba(255,255,255,0.2)' : strokeColor;
+        trusteeCtx.lineWidth = isFocus ? 3 : 1.8;
+        trusteeCtx.stroke();
+
+        // Icon or Initial in center
+        trusteeCtx.fillStyle = '#ffffff';
+        trusteeCtx.font = `bold ${{Math.max(9, Math.round(r * 0.75))}}px sans-serif`;
+        trusteeCtx.textAlign = 'center';
+        trusteeCtx.textBaseline = 'middle';
+        const glyph = n.type === 'institution' ? (n.tier === 'A' ? '✓' : '🏛️') : '⚠️';
+        trusteeCtx.fillText(glyph, n.x, n.y);
+
+        // Interlock Count Badge for prominent nodes (>= 2 interlocks)
+        if (n.interlocks >= 2 && !isDimmed) {{
+          trusteeCtx.beginPath();
+          const badgeX = n.x + r * 0.7;
+          const badgeY = n.y - r * 0.7;
+          trusteeCtx.arc(badgeX, badgeY, 7.5, 0, Math.PI * 2);
+          trusteeCtx.fillStyle = '#7e22ce';
+          trusteeCtx.fill();
+          trusteeCtx.strokeStyle = '#e9d5ff';
+          trusteeCtx.lineWidth = 1;
+          trusteeCtx.stroke();
+
+          trusteeCtx.fillStyle = '#ffffff';
+          trusteeCtx.font = 'bold 8.5px monospace';
+          trusteeCtx.fillText(`${{n.interlocks}}`, badgeX, badgeY);
+        }}
+
+        // Text Label
+        if (!isDimmed || isFocus) {{
+          const label = n.shortName || n.name;
+          trusteeCtx.font = isFocus ? 'bold 11px sans-serif' : '10px sans-serif';
+          const tw = trusteeCtx.measureText(label).width;
+          const ly = n.y + r + 12;
+
+          // Capsule background
+          trusteeCtx.fillStyle = 'rgba(15, 9, 26, 0.85)';
+          trusteeCtx.beginPath();
+          trusteeCtx.roundRect(n.x - tw / 2 - 4, ly - 7, tw + 8, 14, 4);
+          trusteeCtx.fill();
+
+          trusteeCtx.fillStyle = isFocus ? '#f3e8ff' : (isDimmed ? '#94a3b8' : '#e2e8f0');
+          trusteeCtx.textAlign = 'center';
+          trusteeCtx.textBaseline = 'middle';
+          trusteeCtx.fillText(label, n.x, ly);
+        }}
+      }});
+
+      trusteeCtx.restore();
+
+      trusteeAnimFrame = requestAnimationFrame(renderTrusteeNetworkCanvas);
+    }}
+
+    function wireTrusteeCanvasInteractions() {{
+      if (!trusteeCanvas) return;
+
+      function getPointerWorldCoords(e) {{
+        const rect = trusteeCanvas.getBoundingClientRect();
+        const screenX = e.clientX - rect.left;
+        const screenY = e.clientY - rect.top;
+        const w = rect.width || 700;
+        const h = rect.height || 500;
+
+        // Inverse transform of Pan & Zoom
+        const transformedX = (screenX - trusteePanX - w / 2) / trusteeZoom + w / 2;
+        const transformedY = (screenY - trusteePanY - h / 2) / trusteeZoom + h / 2;
+        return {{ wx: transformedX, wy: transformedY, sx: screenX, sy: screenY }};
+      }}
+
+      function findNodeAt(wx, wy) {{
+        const visibleNodes = trusteeGraphNodes.filter(n => n.visible);
+        for (let i = visibleNodes.length - 1; i >= 0; i--) {{
+          const n = visibleNodes[i];
+          const dx = n.x - wx;
+          const dy = n.y - wy;
+          if (dx * dx + dy * dy <= (n.radius + 8) * (n.radius + 8)) {{
+            return n;
+          }}
+        }}
+        return null;
+      }}
+
+      trusteeCanvas.addEventListener('pointerdown', (e) => {{
+        const {{ wx, wy, sx, sy }} = getPointerWorldCoords(e);
+        pointerMovedDist = 0;
+        panStartX = sx;
+        panStartY = sy;
+
+        const hit = findNodeAt(wx, wy);
+        if (hit) {{
+          isTrusteeDragging = true;
+          draggedNode = hit;
+          trusteeSimAlpha = 0.5;
+        }} else {{
+          isTrusteePanning = true;
+        }}
+      }});
+
+      window.addEventListener('pointermove', (e) => {{
+        if (!trusteeCanvas || (!isTrusteeDragging && !isTrusteePanning)) {{
+          if (trusteeCanvas) {{
+            // Hover detection
+            const {{ wx, wy, sx, sy }} = getPointerWorldCoords(e);
+            const hit = findNodeAt(wx, wy);
+            const prevHover = hoveredTrusteeNodeId;
+            hoveredTrusteeNodeId = hit ? hit.id : null;
+
+            const tooltip = document.getElementById('trusteeNetworkTooltip');
+            if (hit && tooltip) {{
+              tooltip.classList.remove('hidden');
+              tooltip.style.left = `${{Math.min(window.innerWidth - 220, sx + 15)}}px`;
+              tooltip.style.top = `${{Math.min(window.innerHeight - 80, sy + 15)}}px`;
+              document.getElementById('trusteeTooltipTitle').textContent = hit.name;
+              document.getElementById('trusteeTooltipSub').textContent = hit.type === 'institution'
+                ? `🏛️ ${{hit.city}} · ${{hit.interlocks}} documented interlocks`
+                : `⚠️ ${{hit.org || hit.category}} · ${{hit.interlocks}} board interlocks`;
+            }} else if (tooltip) {{
+              tooltip.classList.add('hidden');
+            }}
+          }}
+          return;
+        }}
+
+        const rect = trusteeCanvas.getBoundingClientRect();
+        const sx = e.clientX - rect.left;
+        const sy = e.clientY - rect.top;
+        const dx = sx - panStartX;
+        const dy = sy - panStartY;
+        pointerMovedDist += Math.abs(dx) + Math.abs(dy);
+
+        if (isTrusteeDragging && draggedNode) {{
+          const {{ wx, wy }} = getPointerWorldCoords(e);
+          draggedNode.x = wx;
+          draggedNode.y = wy;
+          draggedNode.vx = 0;
+          draggedNode.vy = 0;
+          trusteeSimAlpha = 0.3;
+        }} else if (isTrusteePanning) {{
+          trusteePanX += dx;
+          trusteePanY += dy;
+          panStartX = sx;
+          panStartY = sy;
+        }}
+      }});
+
+      window.addEventListener('pointerup', (e) => {{
+        if (pointerMovedDist < 6) {{
+          // Click event
+          const {{ wx, wy }} = getPointerWorldCoords(e);
+          const hit = findNodeAt(wx, wy);
+          if (hit) {{
+            selectTrusteeGraphNode(hit.id);
+          }} else {{
+            selectTrusteeGraphNode(null);
+          }}
+        }}
+
+        isTrusteeDragging = false;
+        draggedNode = null;
+        isTrusteePanning = false;
+      }});
+
+      trusteeCanvas.addEventListener('wheel', (e) => {{
+        e.preventDefault();
+        const zoomDelta = e.deltaY < 0 ? 1.1 : 0.9;
+        trusteeZoom = Math.max(0.4, Math.min(2.8, trusteeZoom * zoomDelta));
+      }}, {{ passive: false }});
+    }}
+
+    function selectTrusteeGraphNode(nodeId) {{
+      selectedTrusteeNodeId = nodeId;
+      renderTrusteeInspectorUI();
+    }}
+    window.selectTrusteeGraphNode = selectTrusteeGraphNode;
+
+    function renderTrusteeInspectorUI() {{
+      const panel = document.getElementById('trusteeInspectorPanel');
+      if (!panel) return;
+
+      if (!selectedTrusteeNodeId) {{
+        // Overview / Default State
+        panel.innerHTML = `
+          <div class="space-y-4">
+            <div class="p-3.5 rounded-2xl bg-[#170e28] border border-purple-800/60 space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🕸️</span>
+                <div>
+                  <h4 class="font-semibold text-white text-[14px]">Interlocking Board Forensics</h4>
+                  <p class="text-[11px] font-mono text-purple-300">Click any node in the graph to inspect board seats</p>
+                </div>
+              </div>
+              <p class="text-xs text-zinc-300 leading-relaxed">
+                Cultural institutions in New York, London, and Paris share corporate board directors managing defense contractors, predatory private equity, and fossil fuel conglomerates.
+              </p>
+            </div>
+
+            <div class="space-y-2">
+              <div class="text-[11px] font-mono text-purple-300 uppercase tracking-wider font-semibold">Priority Interlock Dossiers:</div>
+              <div class="space-y-1.5">
+                <button type="button" onclick="selectTrusteeGraphNode('sackler_family')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
+                  <div>
+                    <span class="font-medium text-white text-xs group-hover:text-purple-300 block">Sackler Dynasty (Purdue Pharma)</span>
+                    <span class="text-[10.5px] text-zinc-400 font-mono">6 Interlocked Museums · OxyContin Epidemic</span>
+                  </div>
+                  <span class="text-xs text-purple-400">Inspect →</span>
+                </button>
+                <button type="button" onclick="selectTrusteeGraphNode('leon_black')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
+                  <div>
+                    <span class="font-medium text-white text-xs group-hover:text-purple-300 block">Leon Black (Apollo Global)</span>
+                    <span class="text-[10.5px] text-zinc-400 font-mono">MoMA & The Met · Epstein Financial Disclosures</span>
+                  </div>
+                  <span class="text-xs text-purple-400">Inspect →</span>
+                </button>
+                <button type="button" onclick="selectTrusteeGraphNode('warren_kanders')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
+                  <div>
+                    <span class="font-medium text-white text-xs group-hover:text-purple-300 block">Warren Kanders (Safariland)</span>
+                    <span class="text-[10.5px] text-zinc-400 font-mono">Whitney Museum · Border Tear Gas Deployment</span>
+                  </div>
+                  <span class="text-xs text-purple-400">Inspect →</span>
+                </button>
+                <button type="button" onclick="selectTrusteeGraphNode('bp')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
+                  <div>
+                    <span class="font-medium text-white text-xs group-hover:text-purple-300 block">BP (British Petroleum)</span>
+                    <span class="text-[10.5px] text-zinc-400 font-mono">British Museum, Tate, NPG · Fossil Social Licensing</span>
+                  </div>
+                  <span class="text-xs text-purple-400">Inspect →</span>
+                </button>
+                <button type="button" onclick="selectTrusteeGraphNode('larry_fink')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
+                  <div>
+                    <span class="font-medium text-white text-xs group-hover:text-purple-300 block">Larry Fink (BlackRock)</span>
+                    <span class="text-[10.5px] text-zinc-400 font-mono">MoMA Trustee · $10 Trillion Extractive Asset Manager</span>
+                  </div>
+                  <span class="text-xs text-purple-400">Inspect →</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-[#0f071c] border border-purple-950 text-[11px] text-zinc-400 leading-normal">
+              💡 <em>Tip: Use the sector filter pills above to isolate Defense contractors, Fossil fuel underwriters, or Private equity interlocks.</em>
+            </div>
+          </div>
+        `;
+        return;
+      }}
+
+      // Selected Node Dossier
+      const node = BOARD_CONFLICT_NODES.find(n => n.id === selectedTrusteeNodeId);
+      if (!node) return;
+
+      const isInst = (node.type === 'institution');
+      const connectedEdges = BOARD_CONFLICT_EDGES.filter(e => e.source === node.id || e.target === node.id);
+
+      panel.innerHTML = `
+        <div class="space-y-3.5">
+          <!-- Dossier Header -->
+          <div class="p-3.5 rounded-2xl bg-[#170e28] border border-purple-800/80 space-y-2">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold uppercase ${{
+                isInst
+                  ? (node.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-blue-950 text-blue-300 border border-blue-700/60')
+                  : 'bg-red-950 text-red-300 border border-red-700/60'
+              }}">
+                ${{isInst ? (node.tier === 'A' ? '✓ Clean Cultural Institution' : 'Flagged Cultural Institution') : `⚠️ Corporate Trustee · ${{node.category.toUpperCase()}}`}}
+              </span>
+              <span class="text-[10.5px] font-mono text-purple-300">${{connectedEdges.length}} Connected Interlocks</span>
+            </div>
+
+            <div>
+              <h3 class="text-[16px] font-bold text-white leading-snug">${{escapeHtml(node.name)}}</h3>
+              <p class="text-xs text-purple-200/90 font-mono">${{escapeHtml(node.org || node.role || '')}} ${{node.city ? `· ${{node.city}}` : ''}}</p>
+            </div>
+
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              ${{escapeHtml(node.summary || '')}}
+            </p>
+          </div>
+
+          <!-- Harm / Controversy Breakdown -->
+          ${{node.harms ? `
+            <div class="p-3 rounded-xl bg-[#200d16] border border-red-900/60 space-y-1.5">
+              <div class="flex items-center gap-1.5 text-xs font-mono font-bold text-red-300 uppercase">
+                <span>⚠️</span>
+                <span>Documented Harm &amp; Conflicts:</span>
+              </div>
+              <ul class="space-y-1.5 text-xs text-red-100/90 list-disc list-inside">
+                ${{node.harms.map(h => `<li class="leading-relaxed">${{escapeHtml(h)}}</li>`).join('')}}
+              </ul>
+            </div>
+          ` : (node.harmsSummary ? `
+            <div class="p-3 rounded-xl bg-[#1b1229] border border-purple-900/60 space-y-1">
+              <div class="text-[11px] font-mono font-semibold text-purple-300 uppercase">Governance Risk Assessment:</div>
+              <p class="text-xs text-zinc-200 leading-relaxed">${{escapeHtml(node.harmsSummary)}}</p>
+            </div>
+          ` : '')}}
+
+          <!-- Activist Resistance & Direct Actions -->
+          ${{node.campaigns && node.campaigns.length > 0 ? `
+            <div class="p-3 rounded-xl bg-[#091f16] border border-emerald-900/60 space-y-1.5">
+              <div class="flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-300 uppercase">
+                <span>✊</span>
+                <span>Activist Divestment &amp; Boycott Campaigns:</span>
+              </div>
+              <div class="space-y-1">
+                ${{node.campaigns.map(c => `
+                  <div class="text-xs text-emerald-100 flex items-start gap-1.5">
+                    <span class="text-emerald-400">✓</span>
+                    <span>${{escapeHtml(c)}}</span>
+                  </div>
+                `).join('')}}
+              </div>
+            </div>
+          ` : ''}}
+
+          <!-- Statutory Disclosures & Filings -->
+          ${{node.filings ? `
+            <div class="p-2.5 rounded-xl bg-[#0d1624] border border-sky-900/50 space-y-1">
+              <div class="text-[10.5px] font-mono font-semibold text-sky-400 uppercase">Statutory Records &amp; 990 Disclosures:</div>
+              <p class="text-[11.5px] font-mono text-slate-300 leading-relaxed">${{escapeHtml(node.filings)}}</p>
+            </div>
+          ` : ''}}
+
+          <!-- Interlocked Board Seats Roster -->
+          <div class="space-y-2 pt-1 border-t border-purple-950">
+            <div class="text-[11px] font-mono text-purple-300 uppercase font-semibold">
+              ${{isInst ? 'Flagged Board Members & Sponsors:' : 'Interlocked Cultural Institutions:'}}
+            </div>
+
+            <div class="space-y-1.5">
+              ${{connectedEdges.map(e => {{
+                const counterpartId = (e.source === node.id ? e.target : e.source);
+                const cpNode = BOARD_CONFLICT_NODES.find(n => n.id === counterpartId);
+                if (!cpNode) return '';
+                const isDivested = (e.status === 'ousted' || e.status === 'divested');
+                return `
+                  <div onclick="selectTrusteeGraphNode('${{cpNode.id}}')" class="p-2 rounded-xl bg-[#140b24] hover:bg-[#201239] border border-purple-900/60 transition cursor-pointer flex items-center justify-between group">
+                    <div class="min-w-0 pr-2">
+                      <div class="flex items-center gap-1.5">
+                        <span class="font-medium text-white text-xs group-hover:text-purple-300 truncate">${{escapeHtml(cpNode.name)}}</span>
+                        <span class="text-[9.5px] font-mono px-1 py-0.2 rounded ${{isDivested ? 'bg-amber-950 text-amber-300 border border-amber-800/60' : 'bg-purple-950 text-purple-300 border border-purple-800/60'}}">${{isDivested ? 'Ousted / Divested' : 'Active'}}</span>
+                      </div>
+                      <div class="text-[10.5px] text-zinc-400 font-mono truncate">${{escapeHtml(e.role)}} · ${{escapeHtml(e.years)}}</div>
+                    </div>
+                    <span class="text-xs text-purple-400 shrink-0">Focus →</span>
+                  </div>
+                `;
+              }}).join('')}}
+            </div>
+          </div>
+
+          <!-- Atlas Integration Actions -->
+          <div class="pt-2 border-t border-purple-950 flex flex-col gap-2">
+            <button type="button" onclick="highlightConnectedInstitutionsOnMap('${{node.id}}')" class="w-full py-2 px-3 rounded-xl bg-purple-700 hover:bg-purple-600 text-white font-medium text-xs transition cursor-pointer flex items-center justify-center gap-1.5 shadow-md">
+              <span>🗺️ Focus Connected Spaces on Atlas Map</span>
+            </button>
+            <button type="button" onclick="askCuratorAboutTrustee('${{escapeHtml(node.name)}}')" class="w-full py-1.5 px-3 rounded-xl bg-[#1e1333] hover:bg-[#2a1a47] border border-purple-700/60 text-purple-200 text-xs transition cursor-pointer flex items-center justify-center gap-1">
+              <span>💬 Ask Curator Dossier</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }}
+
+    function highlightConnectedInstitutionsOnMap(nodeId) {{
+      const node = BOARD_CONFLICT_NODES.find(n => n.id === nodeId);
+      if (!node) return;
+
+      closeTrusteeConflictNetworkModal();
+
+      if (node.type === 'institution') {{
+        const inst = ALL_INSTITUTIONS.find(i => matchInst(i.name, node.name) || matchInst(i.name, node.shortName));
+        if (inst) {{
+          selectInstitution(inst, true);
+        }} else if (node.city) {{
+          filterByCity(node.city, true, false);
+        }}
+      }} else {{
+        // Trustee: find all connected institutions
+        const edges = BOARD_CONFLICT_EDGES.filter(e => e.source === nodeId || e.target === nodeId);
+        const targetNames = edges.map(e => (e.source === nodeId ? e.target : e.source));
+        
+        // Find first mapped institution or city
+        const targetInst = ALL_INSTITUTIONS.find(i => targetNames.some(t => matchInst(i.name, t)));
+        if (targetInst) {{
+          selectInstitution(targetInst, true);
+        }} else {{
+          filterByCity('New York', true, false);
+        }}
+      }}
+    }}
+    window.highlightConnectedInstitutionsOnMap = highlightConnectedInstitutionsOnMap;
+
+    function askCuratorAboutTrustee(name) {{
+      closeTrusteeConflictNetworkModal();
+      handleCuratorQuery(`Tell me about ${{name}} and museum board conflicts`);
+    }}
+    window.askCuratorAboutTrustee = askCuratorAboutTrustee;
+
+    function openTrusteeConflictNetworkModal(initialNodeId) {{
+      const modal = document.getElementById('trusteeConflictNetworkModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+
+      if (!trusteeGraphInitialized) {{
+        initTrusteeNetworkGraph();
+      }} else {{
+        resizeTrusteeCanvas();
+      }}
+
+      if (initialNodeId) {{
+        selectedTrusteeNodeId = initialNodeId;
+      }}
+      trusteeSimAlpha = 1.0;
+      renderTrusteeInspectorUI();
+
+      if (!trusteeAnimFrame) {{
+        trusteeAnimFrame = requestAnimationFrame(renderTrusteeNetworkCanvas);
+      }}
+    }}
+    window.openTrusteeConflictNetworkModal = openTrusteeConflictNetworkModal;
+
+    function closeTrusteeConflictNetworkModal() {{
+      const modal = document.getElementById('trusteeConflictNetworkModal');
+      if (modal) modal.classList.add('hidden');
+      if (trusteeAnimFrame) {{
+        cancelAnimationFrame(trusteeAnimFrame);
+        trusteeAnimFrame = null;
+      }}
+    }}
+    window.closeTrusteeConflictNetworkModal = closeTrusteeConflictNetworkModal;
+
+
     // Fixed Procedural Starfield for Cinematic Deep-Space Background
     const STARFIELD = [];
     for (let i = 0; i < 120; i++) {{
@@ -13877,9 +14882,12 @@ FORMATTING & INTERACTION RULES:
         (q.includes('fiscal') && (q.includes('analytics') || q.includes('dashboard') || q.includes('hud') || q.includes('summary') || q.includes('metrics'))) ||
         (q.includes('budget') && q.includes('dashboard')) ||
         (q.includes('finance') && (q.includes('dashboard') || q.includes('analytics')));
+      const isBoardConflictQuery = /(trustee|board\s*(member|seat|interlock|conflict|governance|ties)|directorate|interlocking|corporate\s*(board|conflict|sponsor|underwriter)|leon\s*black|kanders|safariland|sackler|larry\s*fink|steven\s*tananbaum|glenn\s*dubin|ken\s*griffin|david\s*koch|maja\s*hoffmann|strike\s*moma|decolonize\s*this\s*place|liberate\s*tate|who\s*is\s*on\s*the\s*board)/i.test(q) ||
+        (q.includes('board') && (q.includes('conflict') || q.includes('member') || q.includes('trustee') || q.includes('seat') || q.includes('interlock') || q.includes('moma') || q.includes('whitney') || q.includes('tate') || q.includes('met') || q.includes('scandal'))) ||
+        (q.includes('trustee') && (q.includes('conflict') || q.includes('board') || q.includes('network') || q.includes('investigate') || q.includes('who') || q.includes('resigned') || q.includes('ousted')));
       const isItineraryQuery = /(plan\s*(a\s*)?(day|visit|tour|itinerary|route|crawl)|art\s*(crawl|walk|tour|circuit|route|itinerary)|curatorial\s*(itinerary|route|tour|circuit|walk)|visit\s*itinerary|curated\s*(route|crawl|walk)|gallery\s*crawl|museum\s*crawl|walking\s*route)/i.test(q) ||
         (q.includes('itinerary') || q.includes('art crawl') || (q.includes('crawl') && (q.includes('art') || q.includes('museum') || q.includes('gallery'))) || (q.includes('plan') && (q.includes('route') || q.includes('day') || q.includes('tour') || q.includes('crawl'))));
-      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery;
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery || isBoardConflictQuery;
 
       // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
       if (!isMetaInquiry) {{
@@ -13948,6 +14956,97 @@ FORMATTING & INTERACTION RULES:
           'Filter High Program Spend',
           'Where to find museum budgets',
           'Explore Finance Papers 🔬'
+        ]);
+        return;
+      }}
+
+      // Direct interactive UI commands: Institutional Board & Trustee Conflict Network
+      if (isBoardConflictQuery) {{
+        curatorTyping.classList.add('hidden');
+        const instMatch = findMentionedInst(query);
+        const instId = instMatch ? (
+          /moma|modern art/i.test(instMatch.name) ? 'moma' :
+          /whitney/i.test(instMatch.name) ? 'whitney' :
+          /metropolitan|the met/i.test(instMatch.name) ? 'the_met' :
+          /guggenheim/i.test(instMatch.name) ? 'guggenheim' :
+          /tate/i.test(instMatch.name) ? 'tate' :
+          /british museum/i.test(instMatch.name) ? 'british_museum' :
+          /louvre/i.test(instMatch.name) ? 'louvre' :
+          /pompidou/i.test(instMatch.name) ? 'pompidou' : null
+        ) : null;
+
+        const headerTitle = instMatch 
+          ? `${{escapeHtml(instMatch.name)}} · Board Conflicts &amp; Interlocks`
+          : `Institutional Trustee &amp; Board Conflict Network`;
+        const leadText = instMatch
+          ? `Forensic board analysis for <strong>${{escapeHtml(instMatch.name)}}</strong>. This institution is linked to corporate trustees and underwriting networks tracked in Culture Atlas's relational graph:`
+          : `Major cultural boards in New York, London, and Paris share interlocking corporate directors managing <strong>defense munitions</strong>, <strong>vulture debt hedge funds</strong>, <strong>opioid manufacturers</strong>, and <strong>fossil fuel conglomerates</strong>.`;
+
+        appendCuratorMessage(`
+          <div class="border border-purple-500/40 bg-[#11091f] p-3.5 sm:p-4 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between border-b border-purple-500/20 pb-2 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🕸️</span>
+                <div>
+                  <h4 class="font-semibold text-white text-[15px]">${{headerTitle}}</h4>
+                  <p class="text-[11.5px] font-mono text-purple-300">Force-Directed Relational Graph · 32 Documented Interlocks</p>
+                </div>
+              </div>
+              <button type="button" onclick="window.openTrusteeConflictNetworkModal('${{instId || ''}}')" class="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
+                <span>🕸️ Launch Network Graph</span>
+              </button>
+            </div>
+
+            <p class="text-slate-200 text-xs sm:text-[13px] leading-relaxed">
+              ${{leadText}}
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <div onclick="window.openTrusteeConflictNetworkModal('sackler_family')" class="p-2.5 rounded-xl bg-[#190d2e] hover:bg-[#251345] border border-purple-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-purple-300">Sackler Dynasty (Purdue)</span>
+                  <span class="text-[10px] font-mono text-purple-400">6 Museums</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Stripped from Met, Guggenheim, Tate, Louvre, British Museum, Dia.</p>
+              </div>
+
+              <div onclick="window.openTrusteeConflictNetworkModal('leon_black')" class="p-2.5 rounded-xl bg-[#190d2e] hover:bg-[#251345] border border-purple-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-purple-300">Leon Black (Apollo Global)</span>
+                  <span class="text-[10px] font-mono text-purple-400">MoMA &amp; The Met</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Resigned MoMA Chair in 2021 after Epstein ties &amp; defense holdings exposed.</p>
+              </div>
+
+              <div onclick="window.openTrusteeConflictNetworkModal('warren_kanders')" class="p-2.5 rounded-xl bg-[#190d2e] hover:bg-[#251345] border border-purple-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-purple-300">Warren Kanders (Safariland)</span>
+                  <span class="text-[10px] font-mono text-purple-400">Whitney Museum</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Ousted Whitney Vice-Chair after 8 artists boycotted 2019 Biennial.</p>
+              </div>
+
+              <div onclick="window.openTrusteeConflictNetworkModal('bp')" class="p-2.5 rounded-xl bg-[#190d2e] hover:bg-[#251345] border border-purple-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-purple-300">BP (British Petroleum)</span>
+                  <span class="text-[10px] font-mono text-purple-400">British Museum, Tate, NPG</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Divested from Tate &amp; NPG; £50M renewal at British Museum in 2023.</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-purple-900/50 flex-wrap text-xs">
+              <span class="text-zinc-400 text-[11.5px]">Open interactive force-directed canvas with IRS 990 filings:</span>
+              <button type="button" onclick="window.openTrusteeConflictNetworkModal('${{instId || ''}}')" class="px-3 py-1 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
+                Explore Relational Graph 🕸️
+              </button>
+            </div>
+          </div>
+        `, [
+          'Why did Leon Black resign from MoMA?',
+          'What is the Sackler family divestment timeline?',
+          'Who is Warren Kanders?',
+          'Explore Private Equity on Museum Boards'
         ]);
         return;
       }}
@@ -18060,6 +19159,57 @@ FORMATTING & INTERACTION RULES:
       if (e.target === itinModal) closeCuratorialItineraryModal();
     }});
 
+    // Trustee & Board Conflict Network Modal Event Listeners
+    document.getElementById('hudTrusteesBtn')?.addEventListener('click', () => {{
+      openTrusteeConflictNetworkModal();
+    }});
+    document.getElementById('closeTrusteeModalBtn')?.addEventListener('click', closeTrusteeConflictNetworkModal);
+    document.getElementById('closeTrusteeModalFooterBtn')?.addEventListener('click', closeTrusteeConflictNetworkModal);
+    const trusteeModal = document.getElementById('trusteeConflictNetworkModal');
+    trusteeModal?.addEventListener('click', (e) => {{
+      if (e.target === trusteeModal) closeTrusteeConflictNetworkModal();
+    }});
+
+    document.getElementById('trusteeResetGraphBtn')?.addEventListener('click', () => {{
+      trusteePanX = 0;
+      trusteePanY = 0;
+      trusteeZoom = 1.0;
+      trusteeSimAlpha = 1.0;
+    }});
+
+    document.getElementById('trusteeZoomInBtn')?.addEventListener('click', () => {{
+      trusteeZoom = Math.min(2.8, trusteeZoom * 1.2);
+    }});
+
+    document.getElementById('trusteeZoomOutBtn')?.addEventListener('click', () => {{
+      trusteeZoom = Math.max(0.4, trusteeZoom * 0.8);
+    }});
+
+    document.getElementById('trusteeSearchInput')?.addEventListener('input', (e) => {{
+      trusteeSearchQuery = e.target.value;
+      filterTrusteeGraph();
+    }});
+
+    document.getElementById('trusteeInterlocksOnly')?.addEventListener('change', (e) => {{
+      trusteeInterlocksOnly = e.target.checked;
+      filterTrusteeGraph();
+    }});
+
+    document.querySelectorAll('.trustee-sector-pill').forEach(pill => {{
+      pill.addEventListener('click', () => {{
+        document.querySelectorAll('.trustee-sector-pill').forEach(p => {{
+          p.classList.remove('active', 'bg-purple-700', 'text-white', 'border-purple-500');
+          p.classList.add('bg-[#170e28]', 'border-purple-900/60', 'text-zinc-300');
+        }});
+        pill.classList.add('active', 'bg-purple-700', 'text-white', 'border-purple-500');
+        pill.classList.remove('bg-[#170e28]', 'border-purple-900/60', 'text-zinc-300');
+
+        activeTrusteeSector = pill.getAttribute('data-sector') || 'all';
+        filterTrusteeGraph();
+      }});
+    }});
+
+
     // Prompt pills in confidential modal
     document.querySelectorAll('.confidential-prompt-chip').forEach(btn => {{
       btn.addEventListener('click', () => {{
@@ -19596,6 +20746,7 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>📍 Curatorial Itineraries</span></button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>🕸️ Board Conflicts</span></button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -19671,6 +20822,10 @@ FORMATTING & INTERACTION RULES:
           }} else if (type === 'curatorial_itineraries') {{
             if (typeof openCuratorialItineraryModal === 'function') {{
               openCuratorialItineraryModal();
+            }}
+          }} else if (type === 'board_conflicts') {{
+            if (typeof openTrusteeConflictNetworkModal === 'function') {{
+              openTrusteeConflictNetworkModal();
             }}
           }} else if (type === 'contribute_intel') {{
             if (typeof openConfidentialIntakeModal === 'function') {{

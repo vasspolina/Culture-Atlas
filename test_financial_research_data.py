@@ -125,10 +125,10 @@ def run_tests():
     chrome_bin = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     cmd = [
         chrome_bin,
-        "--headless=new",
+        "--headless",
+        "--disable-gpu",
         "--dump-dom",
-        "--window-size=1280,800",
-        "--virtual-time-budget=5000",
+        "--virtual-time-budget=12000",
         f"file://{temp_file}"
     ]
     res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
