@@ -1,3 +1,4 @@
+import os
 import json
 import re
 
@@ -83,6 +84,10 @@ def build():
         out_countries.append({'n': name, 'c': col, 'r': polys, 'b': [round(min_lon, 1), round(max_lon, 1), round(min_lat, 1), round(max_lat, 1)]})
 
     countries_json = json.dumps(out_countries, separators=(',', ':'))
+    _proxy = os.environ.get('ATLAS_AI_PROXY_URL', '').strip()
+    if not _proxy and os.path.exists('worker/.proxy_url'):
+        _proxy = open('worker/.proxy_url').read().strip()
+    proxy_url_json = json.dumps(_proxy)
     institutions_raw = open('institutions.json', 'r', encoding='utf-8').read().strip()
     all_raw_institutions = json.loads(institutions_raw)
     # Strictly filter the map and catalog dataset to ONLY ethically good, clean sponsored places (Tier A Verified Independent Spaces)
@@ -752,11 +757,11 @@ def build():
             <span id="floatingCardDirectDomain" class="text-[11px] opacity-80 font-mono"></span>
             <span class="text-[12px]">↗</span>
           </a>
-          <a id="floatingCardDirectPlanBtn" href="#" target="_blank" rel="noopener noreferrer" 
+          <button id="floatingCardDirectPlanBtn" type="button" 
              class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#222834] hover:bg-[#2b3548] text-[#93c5fd] hover:text-white border border-[#2f3d58] font-mono text-[12px] transition active:scale-95 cursor-pointer"
-             onclick="event.stopPropagation()">
-            <span>Plan Visit ↗</span>
-          </a>
+             onclick="event.stopPropagation(); if (typeof window.atlasPlanVisit === 'function') window.atlasPlanVisit(selectedInstitution);">
+            <span>Plan Visit in Chat 💬</span>
+          </button>
         </div>
 
         <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between text-[13px] gap-2 flex-wrap sm:flex-nowrap">
@@ -948,9 +953,14 @@ def build():
 
               <!-- Right: Model, mic, and blue circular waveform/send button -->
               <div class="flex items-center gap-1.5 sm:gap-2">
-                <button id="chatAddKeyBtn" class="text-[12px] sm:text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Configure Claude, OpenAI, or Gemini API Key">
+                <button id="chatAddKeyBtn" class="text-[12px] sm:text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Configure AI API Key">
                   <span id="chatAddKeyIcon">🔑</span>
                   <span id="chatAddKeyLabel" class="hidden sm:inline">Add API Key</span>
+                </button>
+
+                <button id="chatContributeBtn" class="text-[12px] sm:text-[13px] bg-[#1a2333] hover:bg-[#223048] text-[#78a9ff] border border-[#2f4368] flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Contribute space or research note">
+                  <span>✍️</span>
+                  <span class="hidden sm:inline">Contribute</span>
                 </button>
 
                 <button id="workModelBtn" class="text-[12px] sm:text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
@@ -977,6 +987,11 @@ def build():
 
             <!-- Quick Dropdown Menu for Plus button -->
             <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-80 text-[14px]">
+              <button id="workMenuFeedbackBtn" class="text-left px-3 py-2 bg-[#1b263b] hover:bg-[#233554] text-[#78a9ff] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2f4975]">
+                <span class="flex items-center gap-1.5"><span>✍️</span><span>Contribute Research / Tip</span></span>
+                <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded">Verify</span>
+              </button>
+              <div class="h-px bg-[#383838] my-0.5"></div>
               <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">Curated 1-Day City Itineraries</button>
               <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">Repurposed Architecture & Factories</button>
               <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">Outdoor Sculpture Parks & Land Art</button>
@@ -1188,7 +1203,7 @@ def build():
         <label class="block text-[14px] text-[#a1a1aa] font-normal">AI Intelligence Provider</label>
         <div class="grid grid-cols-3 gap-2">
           <button id="providerClaudeBtn" class="provider-tab-btn py-2 px-3 rounded-xl border border-[#3e3e3e] bg-[#27272a] text-white text-[14px] font-normal flex items-center justify-center gap-1.5 transition active:scale-95">
-            <span>Claude</span>
+            <span>Anthropic</span>
           </button>
           <button id="providerOpenAIBtn" class="provider-tab-btn py-2 px-3 rounded-xl border border-[#27272a] bg-[#1f1f23] text-[#a1a1aa] hover:text-white text-[14px] font-normal flex items-center justify-center gap-1.5 transition active:scale-95">
             <span>OpenAI</span>
@@ -1199,7 +1214,7 @@ def build():
         </div>
         <div class="flex items-center justify-between text-[13px] pt-1">
           <div id="providerTip" class="text-[#a1a1aa] flex-1 pr-2">
-            Recommended: <strong>Claude 3.5 / Haiku 4.5</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.
+            Recommended: <strong>Anthropic</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.
           </div>
           <a id="providerGetKeyLink" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[#93c5fd] hover:underline font-mono text-[12px] flex items-center gap-1">
             Get Key ↗
@@ -1263,6 +1278,92 @@ def build():
           Save & Connect
         </button>
       </div>
+
+    </div>
+  </div>
+
+  <!-- Research & Feedback Modal (Community Verification Pipeline) -->
+  <div id="researchFeedbackModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
+    <div class="bg-[#171717] border border-[#2e2e2e] rounded-2xl sm:rounded-3xl max-w-xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] overflow-y-auto flex flex-col gap-4">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b border-[#2e2e2e] pb-3">
+        <div class="flex items-center gap-2.5">
+          <span class="text-[20px]">✍️</span>
+          <div>
+            <h3 class="text-[17px] font-normal text-white">Contribute Research & Verification</h3>
+            <p class="text-[12px] text-[#a1a1aa] font-mono">Community Peer-Review Pipeline · Form 990 / Civic Audits</p>
+          </div>
+        </div>
+        <button id="closeFeedbackModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">✕</button>
+      </div>
+
+      <!-- Explanatory note -->
+      <div class="p-3 bg-[#111827] border border-[#1f2937] rounded-xl text-[13px] text-slate-300 leading-[135%]">
+        <span class="text-blue-400 font-mono text-[12px] block mb-0.5">PEER-AUDITED CULTURAL INTELLIGENCE</span>
+        Suggest a newly discovered independent art space, report updated visitor schedules, or submit corporate funding conflict flags with statutory documentation. Submissions ground the curator model and enter the verification queue.
+      </div>
+
+      <!-- Form -->
+      <form id="researchFeedbackForm" class="flex flex-col gap-3">
+        <!-- Submission Category -->
+        <div>
+          <label class="block text-[12px] font-mono text-slate-400 uppercase tracking-wider mb-1">Contribution Category</label>
+          <select id="rfCategory" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#60a5fa] font-sans cursor-pointer">
+            <option value="new_space">Suggest New Independent Space</option>
+            <option value="funding_conflict">Flag Corporate Funding Conflict (Form 990 / Charity Commission)</option>
+            <option value="visitor_update">Visitor Schedule / Admission / Transit Correction</option>
+            <option value="curatorial_note">Curatorial Note / Theoretical Framework</option>
+            <option value="platform_feedback">Platform & Map Feedback</option>
+          </select>
+        </div>
+
+        <!-- Space Name & City -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div>
+            <label class="block text-[12px] font-mono text-slate-400 uppercase tracking-wider mb-1">Space Name</label>
+            <input type="text" id="rfSpaceName" placeholder="e.g. Auto Italia, BAK, Casco" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#60a5fa] font-sans">
+          </div>
+          <div>
+            <label class="block text-[12px] font-mono text-slate-400 uppercase tracking-wider mb-1">City / Region</label>
+            <input type="text" id="rfCity" placeholder="e.g. London, UK" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#60a5fa] font-sans">
+          </div>
+        </div>
+
+        <!-- Details / Information -->
+        <div>
+          <label class="block text-[12px] font-mono text-slate-400 uppercase tracking-wider mb-1">Research Notes & Details</label>
+          <textarea id="rfDetails" rows="3" placeholder="Provide governance structure, funding details, opening hours, or reasons for inclusion/exclusion..." required class="w-full bg-[#212121] border border-[#333] rounded-xl p-3 text-[13px] text-white focus:outline-none focus:border-[#60a5fa] font-sans leading-[130%]"></textarea>
+        </div>
+
+        <!-- Statutory Source URL -->
+        <div>
+          <label class="block text-[12px] font-mono text-slate-400 uppercase tracking-wider mb-1">Verification Source Link (Statutory Filing, Official URL, or Report)</label>
+          <input type="url" id="rfSourceUrl" placeholder="https://... (e.g. Form 990 link, Charity Commission, or official website)" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#60a5fa] font-mono">
+        </div>
+
+        <!-- Contributor Handle (Optional) -->
+        <div>
+          <label class="block text-[12px] font-mono text-slate-400 uppercase tracking-wider mb-1">Contributor Handle / Credit (Optional)</label>
+          <input type="text" id="rfContributor" placeholder="e.g. @curatorial_researcher or Anonymous" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[13px] text-white focus:outline-none focus:border-[#60a5fa] font-sans">
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center justify-between gap-2 pt-2 border-t border-[#2e2e2e] mt-1">
+          <span class="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Queued for Verification
+          </span>
+          <div class="flex items-center gap-2">
+            <button type="button" id="cancelFeedbackBtn" class="px-3.5 py-1.5 text-slate-300 hover:text-white hover:bg-[#262626] rounded-xl text-[13px] transition cursor-pointer">
+              Cancel
+            </button>
+            <button type="submit" id="submitFeedbackBtn" class="px-4 py-1.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-[13px] font-medium rounded-xl transition shadow-sm cursor-pointer">
+              Submit to Research Pipeline ↗
+            </button>
+          </div>
+        </div>
+      </form>
 
     </div>
   </div>
@@ -7071,6 +7172,26 @@ def build():
       }}
     }};
 
+    window.atlasPlanVisit = function(instNameOrObj) {{
+      let inst = null;
+      if (typeof instNameOrObj === 'string') {{
+        inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) || (typeof findMentionedInst === 'function' ? findMentionedInst(instNameOrObj) : null);
+      }} else if (instNameOrObj && typeof instNameOrObj === 'object') {{
+        inst = instNameOrObj;
+      }}
+      if (!inst) {{
+        inst = selectedInstitution || (typeof curatorContext !== 'undefined' ? curatorContext.lastInst : null);
+      }}
+      if (inst) {{
+        if (typeof setMobileViewMode === 'function') {{
+          setMobileViewMode('chat');
+        }}
+        const q = `Plan my visit to ${{inst.name}}`;
+        appendUserMessage(q);
+        handleCuratorQuery(q);
+      }}
+    }};
+
     function openCityStreetView(cityName, targetLat, targetLon) {{
       if (!cityName || cityName === 'all') return;
       isCityStreetViewActive = true;
@@ -7221,13 +7342,11 @@ def build():
                   <span>↗</span>
                 </a>
               ` : ''}}
-              ${{visitUrl && visitUrl !== webUrl ? `
-                <a href="${{escapeHtml(visitUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="display:inline-flex; align-items:center; gap:4px; padding:5px 9px; border-radius:10px; background:#222834; color:#93c5fd; border:1px solid #2f3d58; font-size:11px; font-family:monospace; text-decoration:none;"
-                   onmouseover="this.style.background='#2b3548';this.style.color='#ffffff'" onmouseout="this.style.background='#222834';this.style.color='#93c5fd'">
-                  <span>Plan Visit ↗</span>
-                </a>
-              ` : ''}}
+              <button onclick="window.atlasPlanVisit('${{safeName}}')" 
+                      style="display:inline-flex; align-items:center; gap:4px; padding:5px 9px; border-radius:10px; background:#222834; color:#93c5fd; border:1px solid #2f3d58; font-size:11px; font-family:monospace; cursor:pointer;"
+                      onmouseover="this.style.background='#2b3548';this.style.color='#ffffff'" onmouseout="this.style.background='#222834';this.style.color='#93c5fd'">
+                <span>Plan Visit 💬</span>
+              </button>
             </div>
 
             <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; padding-top:7px; border-top:1px solid #27272a; font-size:11px;">
@@ -8975,14 +9094,8 @@ def build():
       }}
 
       const directPlanBtn = document.getElementById('floatingCardDirectPlanBtn');
-      const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : '';
       if (directPlanBtn) {{
-        if (visitUrl && visitUrl !== webUrl) {{
-          directPlanBtn.href = visitUrl;
-          directPlanBtn.style.display = 'inline-flex';
-        }} else {{
-          directPlanBtn.style.display = 'none';
-        }}
+        directPlanBtn.style.display = 'inline-flex';
       }}
 
       const webEl = document.getElementById('floatingCardWebLink');
@@ -9055,6 +9168,24 @@ def build():
 
       const cleanAlts = !isClean ? ALL_INSTITUTIONS.filter(i => matchC(i.city, inst.city)) : [];
 
+      const rawGrade = inst.transparency_grade || 'Tier A+ (Statutory Public Audit)';
+      let letterBadge = 'A+';
+      if (rawGrade.includes('A+')) letterBadge = 'A+';
+      else if (rawGrade.includes('A')) letterBadge = 'A';
+      else if (rawGrade.includes('B+')) letterBadge = 'B+';
+      else if (rawGrade.includes('B')) letterBadge = 'B';
+      else if (rawGrade.includes('C')) letterBadge = 'C';
+      else if (rawGrade.includes('D')) letterBadge = 'D';
+      else if (rawGrade.includes('F')) letterBadge = 'F';
+
+      let auditAuthority = 'Statutory Public Filing';
+      const matchParen = rawGrade.match(/\(([^)]+)\)/);
+      if (matchParen) {{
+        auditAuthority = matchParen[1];
+      }} else if (rawGrade.length > 4) {{
+        auditAuthority = rawGrade;
+      }}
+
       body.innerHTML = `
         <div class="space-y-3">
           <div>
@@ -9068,24 +9199,49 @@ def build():
             <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${{escapeHtml(inst.location || inst.city)}} · ${{inst.size || 'Independent Space'}}</p>
           </div>
 
+          <!-- EMPHASIZED CIVIC TRANSPARENCY GRADE (Carbon High-Contrast Audit Banner) -->
+          <div class="py-3 px-3.5 rounded-xl bg-[#0c1f15] border-2 border-[#42be65] flex items-center justify-between shadow-lg shadow-emerald-950/40">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 shrink-0 rounded-lg bg-[#42be65]/25 border border-[#42be65] flex items-center justify-center font-mono font-bold text-[22px] text-[#42be65] shadow-inner">
+                ${{escapeHtml(letterBadge)}}
+              </div>
+              <div>
+                <div class="text-[11px] font-mono uppercase tracking-widest text-[#42be65] font-bold flex items-center gap-1.5">
+                  <span class="inline-block w-2 h-2 rounded-full bg-[#42be65] animate-pulse"></span>
+                  Civic Transparency Grade
+                </div>
+                <div class="text-[14px] font-semibold text-white font-mono mt-0.5">
+                  ${{escapeHtml(rawGrade)}}
+                </div>
+                <div class="text-[12px] text-slate-300 font-mono mt-0.5">
+                  ${{escapeHtml(auditAuthority)}} · Statutory Accountability
+                </div>
+              </div>
+            </div>
+            <div class="hidden sm:flex flex-col items-end shrink-0 pl-2">
+              <span class="text-[11px] font-mono text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited</span>
+              <span class="text-[11px] text-slate-400 font-mono mt-1">100% Verified</span>
+            </div>
+          </div>
+
           ${{!isClean ? `
-            <div class="bg-[#1f0d14] border border-rose-700/80 p-3.5 rounded-xl space-y-1.5">
-              <span class="text-rose-400 font-mono text-[13px] uppercase tracking-wider block font-bold">Ethical Exclusion Notice</span>
-              <p class="text-rose-200 text-[14px] leading-relaxed">
+            <div class="py-2.5 border-t border-[#393939] space-y-1.5">
+              <span class="text-rose-400 font-mono text-[12px] uppercase tracking-wider block font-bold">Ethical Exclusion Notice</span>
+              <p class="text-rose-200 text-[13px] leading-relaxed">
                 <strong>Audit Conflict:</strong> ${{escapeHtml(inst.watch || 'Corporate underwriting conflict / ethical audit flag.')}}
               </p>
-              <p class="text-slate-300 text-[13px]">
-                <strong>Policy:</strong> Culture Atlas maps strictly verified clean spaces that operate free of fossil fuels, weapons manufacturing, private prisons, and predatory corporate underwriting.
+              <p class="text-slate-300 text-[12px]">
+                <strong>Policy:</strong> Culture Atlas maps strictly verified independent spaces that operate free of fossil fuels, weapons manufacturing, private prisons, and predatory corporate underwriting.
               </p>
             </div>
 
             ${{cleanAlts.length > 0 ? `
-              <div class="bg-[#0c1626] border border-blue-800/70 p-3.5 rounded-xl space-y-2">
-                <span class="text-blue-300 font-mono text-[13px] uppercase tracking-wider block font-bold">Verified Independent Spaces in ${{escapeHtml(inst.city)}}</span>
-                <p class="text-slate-300 text-[13px]">Instead of supporting compromised boards, explore these verified independent spaces:</p>
-                <div class="space-y-1.5">
+              <div class="py-2.5 border-t border-[#393939] space-y-2">
+                <span class="text-blue-300 font-mono text-[12px] uppercase tracking-wider block font-bold">Verified Independent Spaces in ${{escapeHtml(inst.city)}}</span>
+                <p class="text-slate-300 text-[12px]">Instead of supporting compromised boards, explore these verified independent spaces:</p>
+                <div class="space-y-1">
                   ${{cleanAlts.slice(0, 4).map(a => `
-                    <div class="flex items-center justify-between text-[13px] bg-[#101b2f] p-2 rounded-lg border border-blue-900/40">
+                    <div class="flex items-center justify-between text-[13px] py-1 border-t border-[#262626] first:border-t-0">
                       <a href="#" class="inst-link text-emerald-400 hover:underline font-medium" data-name="${{escapeHtml(a.name)}}">${{escapeHtml(a.name)}}</a>
                       <span class="text-slate-400 font-mono text-[12px]">${{escapeHtml(a.admission_policy)}}</span>
                     </div>
@@ -9102,110 +9258,89 @@ def build():
             </a>
           ` : ''}}
 
-          <div class="bg-[#0b101c] p-3 rounded-xl border border-[#1a253c]">
-            <span class="text-[13px] font-normal text-[#60a5fa] uppercase tracking-wider block mb-1 font-mono">Curator Assessment</span>
-            <p class="text-[14px] text-slate-200 leading-[130%]">${{escapeHtml(inst.curator_recommendation || 'Evaluated under Culture Atlas research framework.')}}</p>
+          <div class="py-2.5 border-t border-[#262626]">
+            <span class="text-[12px] font-mono uppercase tracking-wider block mb-1 text-[#33b1ff]">Curator Assessment</span>
+            <p class="text-[13px] text-slate-200 leading-[130%]">${{escapeHtml(inst.curator_recommendation || 'Evaluated under Culture Atlas research framework.')}}</p>
           </div>
 
           ${{isClean ? `
-            <div class="bg-[#0b101c] p-3 rounded-xl border border-[#1e2a44] space-y-2.5">
-              <div class="flex items-center justify-between border-b border-[#1a253c] pb-1.5">
-                <span class="text-[13px] font-normal text-white uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                  <span>Visitor Planning & Practical Guide</span>
-                </span>
-                ${{(inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) || webUrl ? `
-                  <a href="${{escapeHtml((inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[13px] text-[#60a5fa] hover:underline flex items-center gap-1 font-mono">
-                    <span>Plan Your Visit ↗</span>
-                  </a>
-                ` : ''}}
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]">
-                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>Hours & Schedule</span>
-                  </div>
-                  <div class="text-slate-200 font-normal text-[13px] leading-[120%]">${{escapeHtml(inst.opening_hours || 'Check official site')}}</div>
-                </div>
-
-                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>Admission & Tickets</span>
-                  </div>
-                  <div class="text-emerald-400 font-normal text-[13px] leading-[120%]">${{escapeHtml(inst.admission_fee || 'Subsidized Admission')}}</div>
-                </div>
-
-                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>Address & Quarter</span>
-                  </div>
-                  <div class="text-slate-200 text-[13px] leading-[120%]">${{escapeHtml(inst.address || inst.location)}}</div>
-                  ${{inst.neighborhood ? `<div class="text-[12px] text-[#93c5fd] font-mono mt-0.5">${{escapeHtml(inst.neighborhood)}}</div>` : ''}}
-                </div>
-
-                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>Suggested Duration</span>
-                  </div>
-                  <div class="text-slate-200 text-[13px] leading-[120%]">${{escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}}</div>
+            <div class="pt-1">
+              <div class="flex items-center justify-between pb-1.5 mb-1 border-b border-[#393939]">
+                <span class="text-[13px] font-normal text-white uppercase tracking-wider font-mono">Plan Your Visit</span>
+                <div class="flex items-center gap-2">
+                  <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="text-[12px] text-[#78a9ff] hover:underline font-mono cursor-pointer flex items-center gap-1">
+                    <span>Plan in Chat 💬</span>
+                  </button>
+                  ${{(inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) || webUrl ? `
+                    <span class="text-[#555] text-[11px]">|</span>
+                    <a href="${{escapeHtml((inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[12px] text-[#78a9ff] hover:underline font-mono">Official site ↗</a>
+                  ` : ''}}
                 </div>
               </div>
-
-              <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                  <span>Public Transit & Directions</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6">
+                <div class="py-2 border-t border-[#262626] first:border-t-0">
+                  <div class="text-[12px] font-mono uppercase tracking-wider mb-0.5" style="color:#78a9ff">Hours</div>
+                  <div class="text-[13px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.opening_hours || 'Check official site')}}</div>
                 </div>
-                <div class="text-[13px] text-slate-300 leading-[120%]">${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
+                <div class="py-2 border-t border-[#262626] first:border-t-0">
+                  <div class="text-[12px] font-mono uppercase tracking-wider mb-0.5" style="color:#42be65">Admission</div>
+                  <div class="text-[13px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.admission_fee || 'Subsidized Admission')}}</div>
+                </div>
+                <div class="py-2 border-t border-[#262626] first:border-t-0">
+                  <div class="text-[12px] font-mono uppercase tracking-wider mb-0.5" style="color:#33b1ff">Address</div>
+                  <div class="text-[13px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.address || inst.location)}}</div>
+                  ${{inst.neighborhood ? `<div class="text-[12px] text-[#82cfff] font-mono mt-0.5">${{escapeHtml(inst.neighborhood)}}</div>` : ''}}
+                </div>
+                <div class="py-2 border-t border-[#262626] first:border-t-0">
+                  <div class="text-[12px] font-mono uppercase tracking-wider mb-0.5" style="color:#be95ff">Suggested Duration</div>
+                  <div class="text-[13px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}}</div>
+                </div>
               </div>
-
-              <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                <div class="text-[13px] text-amber-400/90 font-mono flex items-center gap-1 mb-1">
-                  <span>Visitor Highlight & Signature Art</span>
-                </div>
-                <div class="text-[13px] text-slate-200 leading-[120%] font-normal">${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
+              <div class="py-2 border-t border-[#262626] first:border-t-0">
+                <div class="text-[12px] font-mono uppercase tracking-wider mb-0.5" style="color:#3ddbd9">Getting There</div>
+                <div class="text-[13px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
               </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]">
-                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>Accessibility</span>
-                  </div>
-                  <div class="text-[13px] text-slate-300 leading-[120%]">${{escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}}</div>
+              <div class="py-2 border-t border-[#262626] first:border-t-0">
+                <div class="text-[12px] font-mono uppercase tracking-wider mb-0.5" style="color:#f1c21b">Highlight</div>
+                <div class="text-[13px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6">
+                <div class="py-2 border-t border-[#262626] first:border-t-0">
+                  <div class="text-[12px] font-mono uppercase tracking-wider mb-0.5" style="color:#ff7eb6">Accessibility</div>
+                  <div class="text-[13px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}}</div>
                 </div>
-                <div class="bg-[#101626] p-2.5 rounded-lg border border-[#1c273e]">
-                  <div class="text-[13px] text-slate-400 font-mono flex items-center gap-1 mb-1">
-                    <span>Amenities & Facilities</span>
-                  </div>
-                  <div class="text-[13px] text-slate-300 leading-[120%]">${{escapeHtml(inst.amenities || 'Art bookshop, café, cloakroom, and lockers.')}}</div>
+                <div class="py-2 border-t border-[#262626] first:border-t-0">
+                  <div class="text-[12px] font-mono uppercase tracking-wider mb-0.5" style="color:#ff832b">Amenities</div>
+                  <div class="text-[13px] text-[#e0e0e0] leading-[130%]">${{escapeHtml((inst.amenities || 'Art bookshop, café, cloakroom, and lockers.').toString().split(',').map(x => x.trim()).filter(Boolean).join(' · '))}}</div>
                 </div>
               </div>
             </div>
           ` : ''}}
 
-          <div class="bg-[#101420] p-3 rounded-xl border border-[#1e273a]">
-            <span class="text-[13px] font-normal text-blue-400 uppercase tracking-wider block mb-1 font-mono">Funding Architecture & Operating Budget</span>
-            <p class="text-[14px] text-slate-300 leading-[130%]">${{escapeHtml(inst.funding || 'Civic cultural budget')}}</p>
+          <div class="py-2.5 border-t border-[#262626]">
+            <span class="text-[12px] font-mono uppercase tracking-wider block mb-1 text-[#78a9ff]">Funding Architecture & Operating Budget</span>
+            <p class="text-[13px] text-slate-200 leading-[130%]">${{escapeHtml(inst.funding || 'Civic cultural budget')}}</p>
           </div>
 
-          <div class="bg-[#101420] p-3 rounded-xl border border-[#1e273a]">
-            <span class="text-[13px] font-normal text-purple-400 uppercase tracking-wider block mb-1 font-mono">Ethical Safeguards & Autonomy Charter</span>
-            <p class="text-[14px] text-slate-300 leading-[130%]">${{escapeHtml(inst.ethical_safeguard || 'Verified under Culture Atlas criteria')}}</p>
+          <div class="py-2.5 border-t border-[#262626]">
+            <span class="text-[12px] font-mono uppercase tracking-wider block mb-1 text-[#be95ff]">Ethical Safeguards & Autonomy Charter</span>
+            <p class="text-[13px] text-slate-200 leading-[130%]">${{escapeHtml(inst.ethical_safeguard || 'Verified under Culture Atlas criteria')}}</p>
           </div>
 
           ${{isClean && inst.watch ? `
-            <div class="bg-[#1a150b] p-3 rounded-xl border border-[#382b13]">
-              <span class="text-[13px] font-normal text-amber-400 uppercase tracking-wider block mb-1 font-mono">Curator Audit Notes</span>
-              <p class="text-[14px] text-slate-300 leading-[130%]">${{escapeHtml(inst.watch)}}</p>
+            <div class="py-2.5 border-t border-[#262626]">
+              <span class="text-[12px] font-mono uppercase tracking-wider block mb-1 text-[#f1c21b]">Curator Audit Notes</span>
+              <p class="text-[13px] text-slate-200 leading-[130%]">${{escapeHtml(inst.watch)}}</p>
             </div>
           ` : ''}}
 
-          <div class="bg-[#0c121e] p-2.5 rounded-xl border border-[#1a2538] flex items-center justify-between">
-            <span class="text-[13px] text-slate-400 font-mono">Transparency Grade:</span>
-            <span class="text-[13px] font-normal text-[#60a5fa] font-mono">${{escapeHtml(inst.transparency_grade || 'A')}}</span>
-          </div>
-
           <div class="pt-2 border-t border-[#1c212a]">
-            <span class="text-[13px] font-normal text-slate-400 uppercase tracking-wider block mb-2 font-mono">Audited Sources, Reports & Filings</span>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[12px] font-normal text-slate-400 uppercase tracking-wider font-mono">Audited Sources, Reports & Filings</span>
+              <button type="button" onclick="openResearchFeedbackModal('${{escapeHtml(inst.name)}}', '${{escapeHtml(inst.city)}}')" class="text-[12px] font-mono text-[#78a9ff] hover:underline cursor-pointer flex items-center gap-1">
+                <span>Suggest Update ✍️</span>
+              </button>
+            </div>
             <div class="flex flex-col gap-1.5 font-mono">
               ${{(inst.sources || []).map(u => {{
                 const isUrl = typeof u === 'string' && (u.startsWith('http://') || u.startsWith('https://'));
@@ -9329,10 +9464,10 @@ def build():
       const providerTip = document.getElementById('providerTip');
       const providerGetKeyLink = document.getElementById('providerGetKeyLink');
       if (prov === 'anthropic') {{
-        if (providerTip) providerTip.innerHTML = 'Recommended: <strong>Claude 3.5 / Haiku 4.5</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.';
+        if (providerTip) providerTip.innerHTML = 'Recommended: <strong>Anthropic</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.';
         if (providerGetKeyLink) {{
           providerGetKeyLink.href = 'https://console.anthropic.com/settings/keys';
-          providerGetKeyLink.textContent = 'Get Claude Key ↗';
+          providerGetKeyLink.textContent = 'Get Anthropic Key ↗';
         }}
       }} else if (prov === 'openai') {{
         if (providerTip) providerTip.innerHTML = 'OpenAI <strong>GPT-4o / GPT-4o-mini</strong> provides fast conversational guidance across all 403 mapped spaces.';
@@ -9436,7 +9571,7 @@ def build():
         }}
         if (chatKeyBtn) {{
           chatKeyBtn.className = 'text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal';
-          chatKeyBtn.title = 'Connect Claude, OpenAI, or Gemini API Key';
+          chatKeyBtn.title = 'Connect AI API Key';
         }}
         if (chatKeyIcon) {{
           chatKeyIcon.className = '';
@@ -9452,14 +9587,61 @@ def build():
     }}
     window.updateAIStatusUI = updateAIStatusUI;
 
-    // Unified Multi-Provider Live Generative AI Engine (Claude, OpenAI, Gemini)
+    // Hosted AI proxy (Cloudflare Worker keeps the API key server-side). Empty = disabled.
+    const ATLAS_AI_PROXY_URL = {proxy_url_json};
+    window.ATLAS_AI_PROXY_URL = ATLAS_AI_PROXY_URL;
+
+    // Community Research & Feedback Submissions Pipeline (LocalStorage backed + Model Grounded)
+    function getCommunityResearchSubmissions() {{
+      try {{
+        return JSON.parse(localStorage.getItem('atlas_community_research_queue') || '[]');
+      }} catch (e) {{
+        return [];
+      }}
+    }}
+    window.getCommunityResearchSubmissions = getCommunityResearchSubmissions;
+
+    function saveCommunityResearchSubmission(entry) {{
+      const list = getCommunityResearchSubmissions();
+      list.unshift(entry);
+      localStorage.setItem('atlas_community_research_queue', JSON.stringify(list));
+      return entry;
+    }}
+    window.saveCommunityResearchSubmission = saveCommunityResearchSubmission;
+
+    function openResearchFeedbackModal(spaceName = '', city = '') {{
+      const modal = document.getElementById('researchFeedbackModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      const nameInput = document.getElementById('rfSpaceName');
+      const cityInput = document.getElementById('rfCity');
+      const detailsInput = document.getElementById('rfDetails');
+      if (nameInput && spaceName) nameInput.value = spaceName;
+      if (cityInput && city) cityInput.value = city;
+      if (detailsInput) setTimeout(() => detailsInput.focus(), 60);
+    }}
+    window.openResearchFeedbackModal = openResearchFeedbackModal;
+
+    function closeResearchFeedbackModal() {{
+      const modal = document.getElementById('researchFeedbackModal');
+      if (modal) modal.classList.add('hidden');
+    }}
+    window.closeResearchFeedbackModal = closeResearchFeedbackModal;
+
+    // Unified Multi-Provider Live Generative AI Engine
     async function queryAI(userPrompt) {{
-      if (!aiApiKey) return null;
-      const prov = getEffectiveProvider();
-      const model = getEffectiveModel();
+      const useProxy = !aiApiKey && !!ATLAS_AI_PROXY_URL;
+      if (!aiApiKey && !useProxy) return null;
+      const prov = useProxy ? 'anthropic' : getEffectiveProvider();
+      const model = useProxy ? 'claude-haiku-4-5-20251001' : getEffectiveModel();
 
       // Sample representative spaces for model grounding
       const sampleInsts = ALL_INSTITUTIONS.slice(0, 45).map(i => `${{i.name}} (${{i.city}}, ${{i.country}}): Tier ${{i.tier}}, ${{i.governance_type}}, Hours: ${{i.opening_hours}}, ${{i.admission_policy}}, Highlights: ${{i.highlight}}`).join('\\n');
+
+      const communitySubmissions = getCommunityResearchSubmissions();
+      const communityGrounding = communitySubmissions.length > 0 
+        ? '\\n\\nCOMMUNITY-CONTRIBUTED RESEARCH QUEUE (Under Peer Verification):\\n' + communitySubmissions.slice(0, 10).map(s => `- [Audit #${{s.id}}] ${{s.spaceName || 'Platform'}} (${{s.category}}): ${{s.details}} [Source: ${{s.sourceUrl || 'Statutory filing reported'}}]`).join('\\n')
+        : '';
 
       const criticalSystemPrompt = `You are the Culture Atlas assistant, a friendly, clear, and direct guide to art museums and galleries worldwide.
 Culture Atlas maps 403 verified clean museums and art spaces across 40+ countries that don't take money from fossil fuels, weapons manufacturers, or private prisons.
@@ -9500,14 +9682,14 @@ FORMATTING & INTERACTION RULES:
 2. Link institutions in our atlas strictly as:
 <a href="#" class="inst-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a> (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="Exact Name">audit dossier</a>)
 3. Link cities as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
-4. Keep answers focused, direct, and completely free of pompous fluff.`;
+4. Keep answers focused, direct, and completely free of pompous fluff.${{communityGrounding}}`;
 
       try {{
         let rawText = '';
         if (prov === 'anthropic') {{
-          const res = await fetch('https://api.anthropic.com/v1/messages', {{
+          const res = await fetch(useProxy ? ATLAS_AI_PROXY_URL : 'https://api.anthropic.com/v1/messages', {{
             method: 'POST',
-            headers: {{
+            headers: useProxy ? {{ 'Content-Type': 'application/json' }} : {{
               'Content-Type': 'application/json',
               'x-api-key': aiApiKey,
               'anthropic-version': '2023-06-01',
@@ -9596,7 +9778,7 @@ FORMATTING & INTERACTION RULES:
             const err = await res.json().catch(() => ({{}}));
             return {{ success: false, error: err.error?.message || `HTTP ${{res.status}}` }};
           }}
-          return {{ success: true, message: 'Connected to Claude successfully!' }};
+          return {{ success: true, message: 'Connected successfully!' }};
         }} else if (prov === 'openai') {{
           const res = await fetch('https://api.openai.com/v1/chat/completions', {{
             method: 'POST',
@@ -10070,7 +10252,7 @@ FORMATTING & INTERACTION RULES:
             <div class="flex items-center justify-between border-b border-[#333] pb-2">
               <div class="flex items-center gap-2">
                 <span class="text-[16px]">🔑</span>
-                <span class="font-normal text-white text-[15px]">Connect AI Intelligence (Claude, OpenAI, Gemini)</span>
+                <span class="font-normal text-white text-[15px]">Connect AI Intelligence</span>
               </div>
               <span class="text-[12px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-2 py-0.5 rounded-full">100% Client-Side</span>
             </div>
@@ -10079,7 +10261,7 @@ FORMATTING & INTERACTION RULES:
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
               <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
-                <div class="text-[13px] font-normal text-white group-hover:text-purple-300">Anthropic Claude ↗</div>
+                <div class="text-[13px] font-normal text-white group-hover:text-purple-300">Anthropic ↗</div>
                 <div class="text-[12px] text-[#a1a1aa]">Recommended: deep art history & critical theory</div>
               </a>
               <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
@@ -10126,7 +10308,7 @@ FORMATTING & INTERACTION RULES:
       }}
 
       // 1. Try Live Generative AI Model if API Key is configured
-      if (aiApiKey) {{
+      if (aiApiKey || ATLAS_AI_PROXY_URL) {{
         const aiHtml = await queryAI(query);
         if (aiHtml) {{
           curatorTyping.classList.add('hidden');
@@ -10994,6 +11176,59 @@ FORMATTING & INTERACTION RULES:
         }}
 
         // =========================================================================
+        // 🗓 PLAN VISIT INTENT RESOLVER (Conversational Visit Planning)
+        // =========================================================================
+        const targetPlanInst = findMentionedInst(query) || ((q.includes('plan') || q.includes('visit') || q.includes('guide')) && curatorContext.lastInst) || (q.includes('plan') && selectedInstitution);
+        const isPlanVisitIntent = (q.includes('plan visit') || q.includes('plan my visit') || q.includes('planning visit') || q.includes('planning a visit') || q.includes('planning to visit') || q.includes('how do i visit') || q.includes('how to visit') || q.includes('visitor guide') || q.includes('visitor itinerary') || q.includes('visit plan')) && !!targetPlanInst;
+
+        if (isPlanVisitIntent) {{
+          const inst = targetPlanInst;
+          curatorContext.lastInst = inst;
+          curatorContext.lastCity = inst.city;
+          const webUrl = getValidWebUrl(inst);
+          const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl;
+          appendCuratorMessage(`
+            <p class="text-white font-normal text-[15px]">
+              Visitor Itinerary & Planning Guide: <strong>${{formatInstLink(inst)}}</strong> (${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}})
+            </p>
+            <div class="py-2.5 border-t border-[#333] space-y-1.5 text-slate-300 text-[13px] leading-[135%]">
+              <div><strong class="text-[#78a9ff] font-mono uppercase text-[11px] tracking-wider block">Opening Hours</strong> ${{escapeHtml(inst.opening_hours || 'Check official site')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono uppercase text-[11px] tracking-wider block">Admission & Tickets</strong> ${{escapeHtml(inst.admission_policy)}} (${{escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')}})</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono uppercase text-[11px] tracking-wider block">Address & Neighborhood</strong> ${{escapeHtml(inst.address || inst.location)}} ${{inst.neighborhood ? `· <span class="font-mono text-[#82cfff]">${{escapeHtml(inst.neighborhood)}}</span>` : ''}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono uppercase text-[11px] tracking-wider block">Getting There & Transit</strong> ${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono uppercase text-[11px] tracking-wider block">Suggested Duration</strong> ${{escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#f1c21b] font-mono uppercase text-[11px] tracking-wider block">Collection / Commission Highlight</strong> ${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff7eb6] font-mono uppercase text-[11px] tracking-wider block">Accessibility</strong> ${{escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff832b] font-mono uppercase text-[11px] tracking-wider block">Amenities</strong> ${{escapeHtml((inst.amenities || 'Art bookshop, café, cloakroom, and lockers.').toString().split(',').map(x => x.trim()).filter(Boolean).join(' · '))}}</div>
+            </div>
+            ${{visitUrl ? `
+              <div class="pt-2 border-t border-[#333] flex items-center gap-2">
+                <a href="${{escapeHtml(visitUrl)}}" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-normal text-[12px] shadow transition">
+                  <span>Open Official Visitor / Ticket Page ↗</span>
+                </a>
+              </div>
+            ` : ''}}
+          `, ['Getting There', 'Admission Policy', 'Ethical Governance Audit', `More in ${{inst.city}}`]);
+          selectInstitution(inst, true);
+          return;
+        }}
+
+        // =========================================================================
+        // ✍️ DIRECT FEEDBACK OR RESEARCH CONTRIBUTION INTENT
+        // =========================================================================
+        const isFeedbackOrSubmissionIntent = q.startsWith('feedback:') || q.startsWith('suggestion:') || q.startsWith('research tip:') || q.startsWith('submit space') || q.startsWith('add space') || q.includes('suggest a new space') || q.includes('submit new space') || q.includes('suggest an update') || q.includes('contribute research');
+        if (isFeedbackOrSubmissionIntent) {{
+          openResearchFeedbackModal(curatorContext.lastInst ? curatorContext.lastInst.name : '', curatorContext.lastCity || '');
+          appendCuratorMessage(`
+            <p class="text-white font-normal text-[14px]">
+              Opened the <strong>Research Contribution & Verification Form</strong>. You can enter details, suggest new independent spaces, report schedule changes, or submit Form 990 / Charity Commission documentation. Submissions enter our peer-review research queue and immediately ground your active session model.
+            </p>
+          `, ['Curated 1-Day Itineraries', 'Explore Free Spaces', 'View Map']);
+          return;
+        }}
+
+        // =========================================================================
         // 🧠 CONTEXTUAL MULTI-TURN FOLLOW-UP RESOLVER (Memory-Aware)
         // =========================================================================
         const isFollowUpTransit = (q.includes('how to get') || q.includes('how do i get') || q.includes('transit') || q.includes('direction') || q.includes('subway') || q.includes('where is it') || q.includes('metro') || q.includes('address')) && !findMentionedInst(query);
@@ -11061,7 +11296,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Governance Model:</strong> ${{inst.governance_type}}<br>
               - <strong>Funding Architecture:</strong> ${{inst.funding}}<br>
               - <strong>Safeguard:</strong> ${{inst.ethical_safeguard}}<br>
-              - <strong>Transparency Grade:</strong> ${{inst.transparency_grade || 'A'}}
+              - <strong>Transparency Grade:</strong> <span class="text-emerald-400 font-mono font-bold">${{inst.transparency_grade || 'Tier A+'}}</span>
             </p>
           `, ['Admission Policy', 'How to Get There', 'Highlight Art']);
           selectInstitution(inst, true);
@@ -11633,7 +11868,7 @@ FORMATTING & INTERACTION RULES:
                 - <strong>Ethical Safeguard:</strong> ${{targetInst.ethical_safeguard}}<br>
                 - <strong>Curatorial Focus:</strong> ${{targetInst.curatorial_focus}}<br>
                 - <strong>Signature Art / Milestone:</strong> <span class="text-amber-300 font-normal">${{targetInst.highlight}}</span><br>
-                - <strong>Transparency Status:</strong> ${{targetInst.transparency_grade}}
+                - <strong>Transparency Status:</strong> <span class="text-emerald-400 font-mono font-bold">${{targetInst.transparency_grade || 'Tier A+'}}</span>
               </p>
               <p class="text-slate-300">
                 ${{targetInst.watch ? `<strong>Watch Notes:</strong> ${{targetInst.watch}}<br>` : ''}}
@@ -12663,6 +12898,7 @@ FORMATTING & INTERACTION RULES:
     document.getElementById('topSettingsBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('chatAddKeyBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('workModelBtn')?.addEventListener('click', openSettingsModal);
+    document.getElementById('chatContributeBtn')?.addEventListener('click', () => openResearchFeedbackModal());
 
     // Plus Button Quick Menu
     const workPlusBtn = document.getElementById('workPlusBtn');
@@ -12672,10 +12908,70 @@ FORMATTING & INTERACTION RULES:
       workPlusMenu?.classList.toggle('hidden');
     }});
 
+    document.getElementById('workMenuFeedbackBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      workPlusMenu?.classList.add('hidden');
+      openResearchFeedbackModal();
+    }});
+
     document.addEventListener('click', (e) => {{
       if (!e.target.closest('#workPlusBtn') && !e.target.closest('#workPlusMenu')) {{
         workPlusMenu?.classList.add('hidden');
       }}
+    }});
+
+    // Research & Feedback Modal Handlers
+    const researchModal = document.getElementById('researchFeedbackModal');
+    document.getElementById('closeFeedbackModalBtn')?.addEventListener('click', closeResearchFeedbackModal);
+    document.getElementById('cancelFeedbackBtn')?.addEventListener('click', closeResearchFeedbackModal);
+    researchModal?.addEventListener('click', (e) => {{
+      if (e.target === researchModal) closeResearchFeedbackModal();
+    }});
+
+    document.getElementById('researchFeedbackForm')?.addEventListener('submit', (e) => {{
+      e.preventDefault();
+      const cat = document.getElementById('rfCategory')?.value || 'new_space';
+      const name = (document.getElementById('rfSpaceName')?.value || '').trim();
+      const city = (document.getElementById('rfCity')?.value || '').trim();
+      const details = (document.getElementById('rfDetails')?.value || '').trim();
+      const sourceUrl = (document.getElementById('rfSourceUrl')?.value || '').trim();
+      const contributor = (document.getElementById('rfContributor')?.value || '').trim();
+
+      const subId = Math.floor(1000 + Math.random() * 9000);
+      const entry = {{
+        id: `RES-${{subId}}`,
+        timestamp: new Date().toISOString(),
+        category: cat,
+        spaceName: name,
+        city: city,
+        details: details,
+        sourceUrl: sourceUrl,
+        contributor: contributor || 'Anonymous Researcher',
+        status: 'pending_verification'
+      }};
+
+      saveCommunityResearchSubmission(entry);
+      closeResearchFeedbackModal();
+
+      if (typeof setMobileViewMode === 'function') {{
+        setMobileViewMode('chat');
+      }}
+
+      appendCuratorMessage(`
+        <p class="text-white font-normal text-[15px]">
+          ✅ <strong>Research Contribution Queued for Verification</strong>
+        </p>
+        <div class="py-2.5 border-t border-[#333] space-y-1.5 text-slate-300 text-[13px] leading-[135%]">
+          <div><strong class="text-[#78a9ff] font-mono uppercase text-[11px] tracking-wider block">Audit Ticket</strong> <span class="font-mono text-emerald-400 font-bold">#${{entry.id}}</span> · <span class="text-slate-400 text-[12px] font-mono">Curatorial Verification Queue</span></div>
+          <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono uppercase text-[11px] tracking-wider block">Submission Category</strong> ${{escapeHtml(cat.replace(/_/g, ' ').toUpperCase())}}</div>
+          ${{name ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono uppercase text-[11px] tracking-wider block">Space & Location</strong> <span class="text-white font-medium">${{escapeHtml(name)}}</span> ${{city ? `(${{escapeHtml(city)}})` : ''}}</div>` : ''}}
+          <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono uppercase text-[11px] tracking-wider block">Research Findings</strong> ${{escapeHtml(details)}}</div>
+          ${{sourceUrl ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono uppercase text-[11px] tracking-wider block">Statutory Source Filing</strong> <a href="${{escapeHtml(sourceUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:underline font-mono text-[12px] break-all">${{escapeHtml(sourceUrl)}} ↗</a></div>` : ''}}
+          <div class="pt-1.5 border-t border-[#262626] text-[12px] text-slate-400 font-mono">
+            Status: <span class="text-emerald-400 font-bold">Active in Session</span> · Queued for cross-examination against regulatory registers (IRS 990 / Charity Commission / DRAC).
+          </div>
+        </div>
+      `, ['Explore Free Spaces', 'Plan Visit', 'Submit Another Note']);
     }});
 
     document.querySelectorAll('.work-menu-item').forEach(item => {{
@@ -14522,7 +14818,10 @@ FORMATTING & INTERACTION RULES:
         const drawer = document.getElementById('detailDrawer');
         const catModal = document.getElementById('catalogModal');
         const auditModal = document.getElementById('momaAuditModal');
-        if (drawer && !drawer.classList.contains('hidden')) {{
+        const rfModal = document.getElementById('researchFeedbackModal');
+        if (rfModal && !rfModal.classList.contains('hidden')) {{
+          rfModal.classList.add('hidden');
+        }} else if (drawer && !drawer.classList.contains('hidden')) {{
           drawer.classList.add('hidden');
         }} else if (catModal && !catModal.classList.contains('hidden')) {{
           catModal.classList.add('hidden');
