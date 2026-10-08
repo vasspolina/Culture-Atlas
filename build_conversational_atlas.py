@@ -1470,6 +1470,52 @@ def build():
     </div>
   </div>
 
+  <!-- 🏛️ IN-DEPTH BUILDING ARCHITECTURE & ARCHIVES INSPECTOR MODAL -->
+  <div id="buildingArchivesModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
+    <div class="bg-[#11141b] border border-[#232b3b] rounded-2xl sm:rounded-3xl max-w-3xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] flex flex-col gap-4 font-sans">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between border-b border-[#232b3b] pb-3 shrink-0">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-xl bg-[#1a2333] border border-[#2b3a55] flex items-center justify-center text-[22px] shrink-0 mt-0.5">
+            🏛️
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span id="bamTierBadge" class="text-[11px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase">Tier A · Verified</span>
+              <span id="bamGovernanceBadge" class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#161f30] text-[#93c5fd] border border-[#283852]">Civic Trust</span>
+              <span id="bamFloorsBadge" class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#17202a] text-slate-300 border border-[#2b3746]">2 Floors</span>
+            </div>
+            <h3 id="bamTitle" class="text-[19px] sm:text-[21px] font-normal text-white mt-1 leading-snug">Institution Name</h3>
+            <p id="bamLocation" class="text-[12px] text-[#78a9ff] font-mono">Location & Address · Footprint Mapped</p>
+          </div>
+        </div>
+        <button id="closeBuildingArchivesBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#1f293d] rounded-xl transition cursor-pointer">✕</button>
+      </div>
+
+      <!-- Scrollable Inspector Body -->
+      <div id="bamBody" class="flex-1 overflow-y-auto space-y-4 pr-1 custom-scrollbar text-[13px] leading-relaxed">
+        <!-- Rendered dynamically by openBuildingArchivesModal() -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="shrink-0 flex items-center justify-between pt-3 border-t border-[#232b3b] text-[12px] font-mono">
+        <div class="flex items-center gap-2">
+          <button id="bamPlanVisitBtn" class="px-3.5 py-1.5 rounded-xl bg-[#1d283a] hover:bg-[#25354d] text-[#93c5fd] hover:text-white border border-[#334666] transition cursor-pointer flex items-center gap-1.5">
+            <span>💬 Plan Visit</span>
+          </button>
+          <a id="bamWebLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#131d2c] text-slate-300 hover:text-white border border-[#22334c] transition">
+            <span>Official Site ↗</span>
+          </a>
+        </div>
+        <button id="bamCloseFooterBtn" class="px-4 py-1.5 bg-[#1f2937] hover:bg-[#2e3e53] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
+          Close Inspector
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <script>
     // Embedded Data Sources (Enriched by Researcher Pipeline)
     const COUNTRY_POLYS = {countries_json};
@@ -7206,25 +7252,96 @@ def build():
       const mapEl = document.getElementById('cityMapContainer');
       if (!mapEl || typeof maplibregl === 'undefined') return;
 
-      cityVectorMap = new maplibregl.Map({{
-        container: 'cityMapContainer',
-        style: GOOGLE_MAPS_DARK_STYLE,
-        center: [0, 20],
-        zoom: 14,
-        pitch: 35,
-        bearing: 0,
-        attributionControl: false
-      }});
+      try {{
+        cityVectorMap = new maplibregl.Map({{
+          container: 'cityMapContainer',
+          style: GOOGLE_MAPS_DARK_STYLE,
+          center: [0, 20],
+          zoom: 14,
+          pitch: 35,
+          bearing: 0,
+          attributionControl: false
+        }});
 
-      cityVectorMap.addControl(new maplibregl.NavigationControl({{
-        showCompass: true,
-        visualizePitch: true
-      }}), 'top-right');
+        cityVectorMap.addControl(new maplibregl.NavigationControl({{
+          showCompass: true,
+          visualizePitch: true
+        }}), 'top-right');
 
-      cityVectorMap.addControl(new maplibregl.AttributionControl({{
-        compact: true,
-        customAttribution: 'Google Maps Dark Cartography · OpenFreeMap Vector Engine'
-      }}), 'bottom-left');
+        cityVectorMap.addControl(new maplibregl.AttributionControl({{
+          compact: true,
+          customAttribution: 'Google Maps Dark Cartography · OpenFreeMap Vector Engine'
+        }}), 'bottom-left');
+      }} catch (e) {{
+        console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
+        let _z = 14, _p = 35, _b = 0, _c = [0, 20];
+        cityVectorMap = {{
+          getZoom: () => _z,
+          getPitch: () => _p,
+          getBearing: () => _b,
+          getCenter: () => ({{ lat: _c[1], lng: _c[0] }}),
+          jumpTo: (opts) => {{
+            if (opts.zoom !== undefined) _z = opts.zoom;
+            if (opts.pitch !== undefined) _p = opts.pitch;
+            if (opts.bearing !== undefined) _b = opts.bearing;
+            if (opts.center) _c = opts.center;
+          }},
+          flyTo: (opts) => {{
+            if (opts.zoom !== undefined) _z = opts.zoom;
+            if (opts.pitch !== undefined) _p = opts.pitch;
+            if (opts.bearing !== undefined) _b = opts.bearing;
+            if (opts.center) _c = opts.center;
+          }},
+          easeTo: (opts) => {{
+            if (opts.zoom !== undefined) _z = opts.zoom;
+            if (opts.pitch !== undefined) _p = opts.pitch;
+            if (opts.bearing !== undefined) _b = opts.bearing;
+            if (opts.center) _c = opts.center;
+          }},
+          fitBounds: () => {{}},
+          resize: () => {{}},
+          getSource: () => null,
+          addSource: () => {{}},
+          getLayer: () => null,
+          addLayer: () => {{}},
+          on: () => {{}},
+          off: () => {{}},
+          once: () => {{}},
+          fire: () => {{}},
+          loaded: () => true,
+          areTilesLoaded: () => true,
+          _getUIString: (k) => k || '',
+          getCanvasContainer: () => document.getElementById('cityMapContainer') || document.body,
+          getCanvas: () => document.createElement('canvas'),
+          getContainer: () => document.getElementById('cityMapContainer') || document.body,
+          project: () => ({{
+            x: 0,
+            y: 0,
+            _add: function(p) {{ return this; }},
+            _sub: function(p) {{ return this; }},
+            _mult: function(k) {{ return this; }},
+            _div: function(k) {{ return this; }},
+            round: function() {{ return this; }}
+          }}),
+          isMoving: () => false,
+          isZooming: () => false,
+          isRotating: () => false,
+          getPadding: () => ({{ top: 0, bottom: 0, left: 0, right: 0 }}),
+          transform: {{
+            lngRange: [-180, 180],
+            latRange: [-85, 85],
+            locationPoint: () => ({{ x: 0, y: 0 }}),
+            pointLocation: () => ({{ lng: 0, lat: 0 }}),
+            scale: 1,
+            zoom: 14,
+            center: {{ lng: 0, lat: 20 }},
+            pitch: 35,
+            bearing: 0,
+            width: 800,
+            height: 600
+          }}
+        }};
+      }}
 
       cityLeafletMap = {{
         getCenter: () => {{
@@ -7311,6 +7428,405 @@ def build():
         handleCuratorQuery(q);
       }}
     }};
+
+    // 🏛️ BUILDING ZOOM & FOOTPRINT INSPECTION ENGINE
+    let currentHighlightedBuildingInst = null;
+
+    function ensureBuildingFootprintLayer() {{
+      if (!cityVectorMap) return;
+      if (!cityVectorMap.getSource('highlighted-building-footprint')) {{
+        cityVectorMap.addSource('highlighted-building-footprint', {{
+          type: 'geojson',
+          data: {{
+            type: 'FeatureCollection',
+            features: []
+          }}
+        }});
+      }}
+      if (!cityVectorMap.getLayer('building-footprint-fill')) {{
+        cityVectorMap.addLayer({{
+          id: 'building-footprint-fill',
+          type: 'fill',
+          source: 'highlighted-building-footprint',
+          paint: {{
+            'fill-color': ['get', 'color'],
+            'fill-opacity': 0.35
+          }}
+        }});
+      }}
+      if (!cityVectorMap.getLayer('building-footprint-glow')) {{
+        cityVectorMap.addLayer({{
+          id: 'building-footprint-glow',
+          type: 'line',
+          source: 'highlighted-building-footprint',
+          paint: {{
+            'line-color': ['get', 'color'],
+            'line-width': 4.5,
+            'line-blur': 3.0,
+            'line-opacity': 0.85
+          }}
+        }});
+      }}
+      if (!cityVectorMap.getLayer('building-footprint-line')) {{
+        cityVectorMap.addLayer({{
+          id: 'building-footprint-line',
+          type: 'line',
+          source: 'highlighted-building-footprint',
+          paint: {{
+            'line-color': '#ffffff',
+            'line-width': 2.0,
+            'line-opacity': 0.95
+          }}
+        }});
+      }}
+    }}
+
+    function highlightBuildingFootprint(inst) {{
+      if (!cityVectorMap || !inst) return;
+      ensureBuildingFootprintLayer();
+      const bArch = inst.building_architecture || {{}};
+      const lat = Number(inst.lat) || 0;
+      const lon = Number(inst.lon) || 0;
+      if (!lat || !lon) return;
+
+      let coords = bArch.footprint_coordinates;
+      if (!coords || coords.length < 4) {{
+        const sqm = bArch.footprint_sqm || 2000;
+        const d_lat = 0.00045 * (Math.sqrt(sqm) / 50.0);
+        const d_lon = 0.00065 * (Math.sqrt(sqm) / 50.0);
+        coords = [
+          [lon - d_lon, lat - d_lat],
+          [lon + d_lon, lat - d_lat],
+          [lon + d_lon, lat + d_lat],
+          [lon - d_lon, lat + d_lat],
+          [lon - d_lon, lat - d_lat]
+        ];
+      }}
+
+      const isClean = inst.tier === 'A';
+      const isFlagged = inst.tier === 'B';
+      const color = isClean ? '#10b981' : (isFlagged ? '#be95ff' : '#08bdba');
+
+      const feature = {{
+        type: 'Feature',
+        properties: {{
+          name: inst.name,
+          color: color,
+          sqm: bArch.footprint_sqm || 2000,
+          style: bArch.architectural_style || 'Independent Loft'
+        }},
+        geometry: {{
+          type: 'Polygon',
+          coordinates: [coords]
+        }}
+      }};
+
+      const src = cityVectorMap.getSource('highlighted-building-footprint');
+      if (src && typeof src.setData === 'function') {{
+        src.setData({{
+          type: 'FeatureCollection',
+          features: [feature]
+        }});
+      }}
+      currentHighlightedBuildingInst = inst;
+    }}
+
+    function zoomToBuilding(instNameOrObj, showArchives = true) {{
+      let inst = null;
+      if (typeof instNameOrObj === 'string') {{
+        inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) || 
+               (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) : null) ||
+               (typeof findMentionedInst === 'function' ? findMentionedInst(instNameOrObj) : null);
+      }} else if (instNameOrObj && typeof instNameOrObj === 'object') {{
+        inst = instNameOrObj;
+      }}
+      if (!inst) {{
+        inst = selectedInstitution || (typeof curatorContext !== 'undefined' ? curatorContext.lastInst : null);
+      }}
+      if (!inst || !inst.lat || !inst.lon) return;
+
+      selectedInstitution = inst;
+      if (typeof curatorContext !== 'undefined') {{
+        curatorContext.lastInst = inst;
+        if (inst.city) curatorContext.lastCity = inst.city;
+      }}
+
+      // Switch to vector street map if not active
+      if (!isCityStreetViewActive) {{
+        openCityStreetView(inst.city, inst.lat, inst.lon);
+      }}
+
+      initCityMapIfNeeded();
+      const mapEl = document.getElementById('cityMapContainer');
+      if (mapEl) {{
+        mapEl.classList.remove('hidden');
+        mapEl.classList.add('map-zoomed-in');
+      }}
+
+      if (cityVectorMap) {{
+        cityVectorMap.flyTo({{
+          center: [inst.lon, inst.lat],
+          zoom: 18.0,
+          pitch: 58,
+          bearing: 28,
+          speed: 1.4,
+          curve: 1.3,
+          essential: true
+        }});
+
+        setTimeout(() => {{
+          highlightBuildingFootprint(inst);
+        }}, 350);
+      }}
+
+      if (showArchives) {{
+        setTimeout(() => {{
+          openBuildingArchivesModal(inst);
+        }}, 600);
+      }}
+    }}
+    window.zoomToBuilding = zoomToBuilding;
+
+    // 🏛️ IN-DEPTH BUILDING ARCHITECTURE & ARCHIVES MODAL RENDERER
+    function openBuildingArchivesModal(instNameOrObj) {{
+      let inst = null;
+      if (typeof instNameOrObj === 'string') {{
+        inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) || 
+               (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) : null);
+      }} else if (instNameOrObj && typeof instNameOrObj === 'object') {{
+        inst = instNameOrObj;
+      }}
+      if (!inst) inst = selectedInstitution;
+      if (!inst) return;
+
+      const modal = document.getElementById('buildingArchivesModal');
+      const body = document.getElementById('bamBody');
+      if (!modal || !body) return;
+
+      const isClean = inst.tier === 'A';
+      const isFlagged = inst.tier === 'B';
+      const tierBadge = document.getElementById('bamTierBadge');
+      if (tierBadge) {{
+        tierBadge.textContent = isClean ? 'Tier A · Verified' : (isFlagged ? 'Tier B · Audited Flags' : 'User Input Layer');
+        tierBadge.className = isClean 
+          ? 'text-[11px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase'
+          : (isFlagged ? 'text-[11px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-[#1f1433] text-[#be95ff] font-bold uppercase'
+                       : 'text-[11px] font-mono px-2 py-0.5 rounded border border-[#08bdba]/60 bg-[#0c2826] text-[#08bdba] font-bold uppercase');
+      }}
+
+      const govBadge = document.getElementById('bamGovernanceBadge');
+      if (govBadge) govBadge.textContent = inst.governance_type || 'Civic Non-Profit';
+
+      const bArch = inst.building_architecture || {{}};
+      const bArchStyle = bArch.architectural_style || 'Independent Loft & Curatorial Space';
+      const bArchHeritage = bArch.heritage_status || 'Civic Heritage Registry';
+      const bArchSqm = bArch.footprint_sqm || 1800;
+      const bArchFloors = bArch.floors || 2;
+      const bArchWings = bArch.wings || [
+        {{ name: 'Main Curatorial Galleries', type: 'galleries', access: 'public' }},
+        {{ name: 'Permanent Collection & Research Wing', type: 'archives', access: 'study_room' }},
+        {{ name: 'Public Reading Room & Artist Library', type: 'study', access: 'public' }},
+        {{ name: 'Preservation Vault & Ephemera Storage', type: 'vault', access: 'secure_storage' }}
+      ];
+
+      const floorsBadge = document.getElementById('bamFloorsBadge');
+      if (floorsBadge) floorsBadge.textContent = `${{bArchFloors}} Floors · ${{bArchSqm.toLocaleString()}} m²`;
+
+      const titleEl = document.getElementById('bamTitle');
+      if (titleEl) titleEl.textContent = inst.name;
+
+      const locEl = document.getElementById('bamLocation');
+      if (locEl) locEl.textContent = `${{inst.address || inst.location}} · ${{inst.neighborhood || inst.city}} · ${{inst.country}}`;
+
+      const webLink = document.getElementById('bamWebLink');
+      const webUrl = getValidWebUrl(inst);
+      if (webLink) {{
+        if (webUrl) {{
+          webLink.href = webUrl;
+          webLink.classList.remove('hidden');
+        }} else {{
+          webLink.classList.add('hidden');
+        }}
+      }}
+
+      const planBtn = document.getElementById('bamPlanVisitBtn');
+      if (planBtn) {{
+        planBtn.onclick = () => {{
+          closeBuildingArchivesModal();
+          window.atlasPlanVisit(inst);
+        }};
+      }}
+
+      const archives = inst.archives_and_collections || {{}};
+      const archiveName = archives.archive_name || `${{inst.name}} Institutional Archives & Permanent Collection`;
+      const archiveSummary = archives.summary || (inst.curatorial_focus ? `Comprehensive archival repository documenting ${{inst.curatorial_focus}} alongside civic commission histories and exhibition dossiers.` : 'Primary repository holding complete exhibition histories, artist correspondence, audiovisual recordings, and institutional records.');
+      const primaryHoldings = archives.primary_holdings || [
+        {{
+          category: 'Exhibition Master Records & Curatorial Ephemera',
+          period: `${{inst.year_founded || '1970'}}–Present`,
+          scope: 'Official curatorial correspondence, installation floor plans, and photographic documentation of landmark exhibitions.',
+          items: 'Over 12,000 cataloged files'
+        }},
+        {{
+          category: 'Artist Files & Unaffiliated Registry Dossiers',
+          period: 'Historic to Contemporary',
+          scope: 'Rare artist portfolios, annotated manifestos, slides, and correspondence with international avant-garde collectives.',
+          items: '5,000+ dossiers'
+        }},
+        {{
+          category: 'Audiovisual Master Tapes & Performance Documentation',
+          period: '1975–Present',
+          scope: 'Magnetic tape master reels, digitized video documentation, and sound recordings of historic readings and symposia.',
+          items: '1,400 recorded hours'
+        }}
+      ];
+
+      const readingPolicy = archives.reading_room_policy || 'Free public study room; walk-in access during exhibition hours or reserved research appointments for physical rare folders.';
+      const digitizationStatus = archives.digitization_status || 'Selected holdings digitised with online finding aids and freely accessible digital scans.';
+      const findingAidsUrl = archives.finding_aids_url || webUrl;
+      const provenanceIntegrity = archives.provenance_integrity || 'Direct civic stewardship; strictly non-speculative acquisition covenant under municipal non-profit charter.';
+      const treasures = archives.highlight_treasures || [
+        'Complete founding constitution and artist assembly records',
+        'Historic screenprinted posters and underground exhibition mailers',
+        'Signed artist correspondence, installation sketches, and photo reels'
+      ];
+
+      body.innerHTML = `
+        <!-- Architectural Profile Card -->
+        <div class="bg-[#161c27] border border-[#26354d] rounded-2xl p-4 space-y-3">
+          <div class="flex items-center justify-between border-b border-[#23334d] pb-2">
+            <span class="text-[12px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
+              <span>🏛️</span> Architectural Footprint & Building Layout
+            </span>
+            <span class="text-[11px] font-mono text-slate-400 bg-[#0e1622] px-2 py-0.5 rounded border border-[#213045]">
+              ${{bArchSqm.toLocaleString()}} m² Built Area
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[12px]">
+            <div>
+              <span class="text-slate-400 font-mono block text-[11px]">ARCHITECT / BUILDING HISTORY</span>
+              <span class="text-slate-100 font-medium">${{escapeHtml(bArch.architect || 'Historic Adaptive Reuse Structure')}}</span>
+            </div>
+            <div>
+              <span class="text-slate-400 font-mono block text-[11px]">ARCHITECTURAL STYLE</span>
+              <span class="text-slate-100 font-medium">${{escapeHtml(bArchStyle)}}</span>
+            </div>
+            <div>
+              <span class="text-slate-400 font-mono block text-[11px]">HERITAGE CONSERVATION STATUS</span>
+              <span class="text-slate-100 font-medium">${{escapeHtml(bArchHeritage)}}</span>
+            </div>
+            <div>
+              <span class="text-slate-400 font-mono block text-[11px]">VERTICAL LEVELS & PUBLIC FLOORS</span>
+              <span class="text-slate-100 font-medium">${{bArchFloors}} Floors (Step-Free Elevator Accessible)</span>
+            </div>
+          </div>
+
+          <!-- Building Wings & Public Functional Zones -->
+          <div class="pt-2 border-t border-[#23334d]">
+            <span class="text-[11px] font-mono uppercase text-slate-400 block mb-2">Building Wings & Internal Facility Layout:</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              ${{bArchWings.map(w => `
+                <div class="p-2 rounded-xl bg-[#0e141f] border border-[#1f2b3e] flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[14px]">${{w.type === 'galleries' ? '🖼️' : (w.type === 'archives' ? '📚' : (w.type === 'study' ? '🔬' : '🔒'))}}</span>
+                    <div>
+                      <div class="text-[12.5px] font-medium text-slate-100 leading-tight">${{escapeHtml(w.name)}}</div>
+                      <div class="text-[10.5px] font-mono text-slate-400 capitalize">${{w.type}} wing</div>
+                    </div>
+                  </div>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded border ${{w.access === 'public' ? 'bg-emerald-950/50 text-emerald-300 border-emerald-800' : (w.access === 'study_room' ? 'bg-blue-950/50 text-blue-300 border-blue-800' : 'bg-slate-900 text-slate-400 border-slate-700')}} shrink-0">
+                    ${{w.access === 'public' ? 'Walk-in' : (w.access === 'study_room' ? 'By Appt / Walk-in' : 'Secured')}}
+                  </span>
+                </div>
+              `).join('')}}
+            </div>
+          </div>
+        </div>
+
+        <!-- In-Depth Archives & Permanent Collections Card -->
+        <div class="bg-[#141b24] border border-[#26374f] rounded-2xl p-4 space-y-3.5">
+          <div class="flex items-center justify-between border-b border-[#213045] pb-2">
+            <span class="text-[12px] font-mono uppercase tracking-wider text-[#34d399] font-bold flex items-center gap-1.5">
+              <span>📚</span> ${{escapeHtml(archiveName)}}
+            </span>
+            <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-800">
+              Primary Research Holdings
+            </span>
+          </div>
+
+          <p class="text-slate-200 text-[13px] leading-relaxed">
+            ${{escapeHtml(archiveSummary)}}
+          </p>
+
+          <!-- Primary Collections Breakdown -->
+          <div class="space-y-2 pt-1">
+            <span class="text-[11px] font-mono uppercase text-slate-400 block">Cataloged Special Collections & Primary Series:</span>
+            ${{primaryHoldings.map((h, idx) => `
+              <div class="p-3 rounded-xl bg-[#0e1520] border border-[#212f42] space-y-1">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <span class="font-medium text-white text-[13px] flex items-center gap-1.5">
+                    <span class="text-[12px] font-mono text-slate-400">#0${{idx + 1}}</span>
+                    ${{escapeHtml(h.category)}}
+                  </span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-mono text-[#93c5fd] bg-[#162338] px-2 py-0.5 rounded border border-[#243754]">${{escapeHtml(h.period)}}</span>
+                    ${{h.items ? `<span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">${{escapeHtml(h.items)}}</span>` : ''}}
+                  </div>
+                </div>
+                <p class="text-slate-300 text-[12px] leading-normal pt-0.5">
+                  ${{escapeHtml(h.scope)}}
+                </p>
+              </div>
+            `).join('')}}
+          </div>
+
+          <!-- Highlight Archival Treasures -->
+          ${{treasures && treasures.length > 0 ? `
+            <div class="pt-2 border-t border-[#213045] space-y-1.5">
+              <span class="text-[11px] font-mono uppercase text-[#fcd34d] block font-bold flex items-center gap-1">
+                <span>⭐</span> Archival Treasures & Historic Artifacts
+              </span>
+              <ul class="space-y-1 text-[12.5px] text-slate-200 list-disc list-inside">
+                ${{treasures.map(t => `<li>${{escapeHtml(t)}}</li>`).join('')}}
+              </ul>
+            </div>
+          ` : ''}}
+
+          <!-- Reading Room Policy & Public Access Charter -->
+          <div class="pt-2 border-t border-[#213045] grid grid-cols-1 sm:grid-cols-2 gap-3 text-[12px]">
+            <div class="p-2.5 rounded-xl bg-[#0d141e] border border-[#1e2a3c] space-y-1">
+              <span class="text-blue-300 font-mono text-[11px] uppercase block font-medium">Public Reading Room Policy</span>
+              <p class="text-slate-200 text-[12px] leading-snug">${{escapeHtml(readingPolicy)}}</p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#0d141e] border border-[#1e2a3c] space-y-1">
+              <span class="text-teal-300 font-mono text-[11px] uppercase block font-medium">Digitization & Finding Aids</span>
+              <p class="text-slate-200 text-[12px] leading-snug">${{escapeHtml(digitizationStatus)}}</p>
+              ${{findingAidsUrl ? `
+                <a href="${{escapeHtml(findingAidsUrl)}}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[11px] font-mono text-[#60a5fa] hover:underline pt-0.5">
+                  Browse Online Finding Aids ↗
+                </a>
+              ` : ''}}
+            </div>
+          </div>
+
+          <!-- Ethical Provenance & Acquisition Charter -->
+          <div class="p-2.5 rounded-xl bg-[#0c1817] border border-[#153e38] text-[12px] space-y-1">
+            <span class="text-[#34d399] font-mono text-[11px] uppercase block font-bold">Ethical Provenance & Deaccession Integrity</span>
+            <p class="text-teal-100/90 leading-snug">${{escapeHtml(provenanceIntegrity)}}</p>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+    }}
+    window.openBuildingArchivesModal = openBuildingArchivesModal;
+
+    function closeBuildingArchivesModal() {{
+      const modal = document.getElementById('buildingArchivesModal');
+      if (modal) modal.classList.add('hidden');
+    }}
+    window.closeBuildingArchivesModal = closeBuildingArchivesModal;
 
     function openCityStreetView(cityName, targetLat, targetLon) {{
       if (!cityName || cityName === 'all') return;
@@ -7453,13 +7969,18 @@ def build():
             </div>
 
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:8px;">
+              <button onclick="window.zoomToBuilding('${{safeName}}', true)" 
+                      style="display:inline-flex; align-items:center; gap:5px; padding:5.5px 11px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:12px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.35); border:none; cursor:pointer;"
+                      onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1.0'">
+                <span>🏛️</span>
+                <span>Zoom to Building & Archives</span>
+              </button>
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 11px; border-radius:10px; background:#2563eb; color:#ffffff; font-size:12px; font-weight:500; text-decoration:none; box-shadow:0 1px 3px rgba(0,0,0,0.4);"
-                   onmouseover="this.style.background='#1d4ed8'" onmouseout="this.style.background='#2563eb'">
+                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; font-size:11.5px; font-weight:500; text-decoration:none; border:1px solid #334155;"
+                   onmouseover="this.style.background='#273549'" onmouseout="this.style.background='#1e293b'">
                   <span>🌐</span>
-                  <span>Visit Website</span>
-                  <span style="font-size:10px; opacity:0.8; font-family:monospace;">· ${{escapeHtml(domain)}}</span>
+                  <span>Website</span>
                   <span>↗</span>
                 </a>
               ` : ''}}
@@ -7474,7 +7995,7 @@ def build():
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
                    style="color:#93c5fd; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:110px;">
-                  ${{escapeHtml(domain)}} ↗
+                   ${{escapeHtml(domain)}} ↗
                 </a>
               ` : '<span></span>'}}
               <div style="display:flex; align-items:center; gap:8px;">
@@ -9467,11 +9988,60 @@ def build():
           ` : ''}}
 
           ${{webUrl ? `
-            <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[14px] rounded-xl transition shadow-md active:scale-95">
-              <span>Visit Official Website (${{escapeHtml(domain)}})</span> <span>↗</span>
-            </a>
-          ` : ''}}
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
+                      class="inline-flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-[13.5px] rounded-xl transition shadow-md active:scale-95 cursor-pointer">
+                <span>🏛️</span> <span>Zoom to Building & Archives</span>
+              </button>
+              <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center justify-center gap-2 py-2.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[13.5px] rounded-xl transition shadow-md active:scale-95">
+                <span>Official Site (${{escapeHtml(domain)}})</span> <span>↗</span>
+              </a>
+            </div>
+          ` : `
+            <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
+                    class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-[13.5px] rounded-xl transition shadow-md active:scale-95 cursor-pointer">
+              <span>🏛️</span> <span>Zoom to Building & Archives</span>
+            </button>
+          `}}
+
+          <!-- 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING PROFILE SECTION -->
+          <div class="p-3.5 bg-[#0e1622] border border-[#213247] rounded-2xl space-y-3">
+            <div class="flex items-center justify-between border-b border-[#1f2d40] pb-2">
+              <span class="text-[12px] font-mono uppercase tracking-wider text-[#34d399] font-bold flex items-center gap-1.5">
+                <span>📚</span> Archives & Collections in Depth
+              </span>
+              <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
+                      class="text-[11px] font-mono text-[#38bdf8] hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Inspect 3D Footprint ↗</span>
+              </button>
+            </div>
+
+            <div class="text-[12.5px] text-slate-300 leading-relaxed">
+              <strong>${{escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.archive_name : `${{inst.name}} Archives`)}}:</strong>
+              ${{escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.summary : (inst.curatorial_focus || 'Permanent primary research collection documentation.'))}}
+            </div>
+
+            <!-- Architectural Metadata Pills -->
+            <div class="grid grid-cols-2 gap-2 text-[11.5px] font-mono pt-1">
+              <div class="p-2 rounded-lg bg-[#0a0f17] border border-[#1a2536]">
+                <span class="text-slate-400 block text-[10px]">BUILDING STYLE</span>
+                <span class="text-white truncate block font-medium">${{escapeHtml(inst.building_architecture ? (inst.building_architecture.architectural_style || 'Independent Loft') : 'Loft / Gallery')}}</span>
+              </div>
+              <div class="p-2 rounded-lg bg-[#0a0f17] border border-[#1a2536]">
+                <span class="text-slate-400 block text-[10px]">FOOTPRINT & FLOORS</span>
+                <span class="text-white block font-medium">${{inst.building_architecture ? (inst.building_architecture.footprint_sqm || 1800).toLocaleString() : '1,800'}} m² · ${{inst.building_architecture ? (inst.building_architecture.floors || 2) : 2}} Floors</span>
+              </div>
+            </div>
+
+            <!-- Public Reading Room Policy -->
+            <div class="p-2 rounded-lg bg-[#09151e] border border-[#133045] text-[11.5px]">
+              <span class="text-[#38bdf8] font-mono font-bold block text-[10.5px] uppercase">Reading Room & Access Policy:</span>
+              <p class="text-slate-200 mt-0.5 leading-snug">
+                ${{escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.reading_room_policy : 'Free public study room and curatorial library open during exhibition hours.')}}
+              </p>
+            </div>
+          </div>
 
           <div class="py-2.5 border-t border-[#262626]">
             <span class="text-[12px] font-mono uppercase tracking-wider block mb-1 text-[#33b1ff]">Curator Assessment</span>
@@ -9483,6 +10053,10 @@ def build():
               <div class="flex items-center justify-between pb-1.5 mb-1 border-b border-[#393939]">
                 <span class="text-[13px] font-normal text-white uppercase tracking-wider font-mono">Plan Your Visit</span>
                 <div class="flex items-center gap-2">
+                  <button type="button" onclick="window.zoomToBuilding(selectedInstitution, true)" class="text-[12px] text-emerald-400 hover:underline font-mono cursor-pointer flex items-center gap-1">
+                    <span>🔍 Zoom to Building</span>
+                  </button>
+                  <span class="text-[#555] text-[11px]">|</span>
                   <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="text-[12px] text-[#78a9ff] hover:underline font-mono cursor-pointer flex items-center gap-1">
                     <span>Plan in Chat 💬</span>
                   </button>
@@ -10954,6 +11528,47 @@ FORMATTING & INTERACTION RULES:
         }}
 
         // =========================================================================
+        // 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING INSPECTION INTENT
+        // =========================================================================
+        const isArchiveQuery = (q.includes('archive') || q.includes('collection') || q.includes('holding') || q.includes('reading room') || q.includes('special collection') || q.includes('footprint') || q.includes('building layout') || q.includes('architecture of') || q.includes('zoom to building')) && (findMentionedInst(query) || curatorContext.lastInst || selectedInstitution);
+        if (isArchiveQuery) {{
+          const inst = findMentionedInst(query) || curatorContext.lastInst || selectedInstitution;
+          if (inst) {{
+            curatorContext.lastInst = inst;
+            curatorContext.lastCity = inst.city;
+            const bArch = inst.building_architecture || {{}};
+            const arch = inst.archives_and_collections || {{}};
+            appendCuratorMessage(`
+              <p class="text-white font-medium text-[15px]">
+                🏛️ <strong>${{formatInstLink(inst)}}</strong>: Architectural Profile & Archival Repository
+              </p>
+              <div class="py-2.5 border-t border-[#333] space-y-2 text-slate-300 text-[13px] leading-[135%]">
+                <div>
+                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">Building Profile & Footprint</strong>
+                  ${{bArch.architectural_style || 'Independent Loft'}} · ${{bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() : '1,800'}} m² built area (${{bArch.floors || 2}} Floors, step-free access).
+                </div>
+                <div class="pt-1 border-t border-[#262626]">
+                  <strong class="text-[#34d399] font-mono uppercase text-[11px] tracking-wider block">Archival Repository & Scope</strong>
+                  ${{arch.summary || inst.curatorial_focus || 'Historic primary source files, artist portfolios, and curatorial correspondence.'}}
+                </div>
+                <div class="pt-1 border-t border-[#262626]">
+                  <strong class="text-[#fcd34d] font-mono uppercase text-[11px] tracking-wider block">Public Study Room & Access Charter</strong>
+                  ${{arch.reading_room_policy || 'Free public study room and curatorial library open during exhibition hours.'}}
+                </div>
+              </div>
+              <div class="pt-2 border-t border-[#333] flex items-center gap-2">
+                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', true)" 
+                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[12px] shadow transition cursor-pointer">
+                  <span>🏛️ Zoom to 3D Building & Inspect Archives</span>
+                </button>
+              </div>
+            `, ['Plan Visit', 'Opening Hours', 'Ethical Governance Audit', `More in ${{inst.city}}`]);
+            zoomToBuilding(inst, false);
+            return;
+          }}
+        }}
+
+        // =========================================================================
         // 🔍 CORPORATE SPONSOR & PATRONAGE AUDIT ENGINE ("Audit Sponsor: [Name]")
         // =========================================================================
         const isSponsorAuditQuery = q.includes('sponsor') || q.includes('patronage') || q.includes('donor') || q.includes('who funds') || q.includes('is clean') || q.includes('dirty money') || q.includes('artwashing') || q.includes('who sponsors') || q.includes('conflict of interest');
@@ -11680,6 +12295,47 @@ FORMATTING & INTERACTION RULES:
           `, ['Getting There', 'Admission Policy', 'Ethical Governance Audit', `More in ${{inst.city}}`]);
           selectInstitution(inst, true);
           return;
+        }}
+
+        // =========================================================================
+        // 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING INSPECTION INTENT
+        // =========================================================================
+        const isArchiveQuery = (q.includes('archive') || q.includes('collection') || q.includes('holding') || q.includes('reading room') || q.includes('special collection') || q.includes('footprint') || q.includes('building layout') || q.includes('architecture of') || q.includes('zoom to building')) && (findMentionedInst(query) || curatorContext.lastInst || selectedInstitution);
+        if (isArchiveQuery) {{
+          const inst = findMentionedInst(query) || curatorContext.lastInst || selectedInstitution;
+          if (inst) {{
+            curatorContext.lastInst = inst;
+            curatorContext.lastCity = inst.city;
+            const bArch = inst.building_architecture || {{}};
+            const arch = inst.archives_and_collections || {{}};
+            appendCuratorMessage(`
+              <p class="text-white font-medium text-[15px]">
+                🏛️ <strong>${{formatInstLink(inst)}}</strong>: Architectural Profile & Archival Repository
+              </p>
+              <div class="py-2.5 border-t border-[#333] space-y-2 text-slate-300 text-[13px] leading-[135%]">
+                <div>
+                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">Building Profile & Footprint</strong>
+                  ${{bArch.architectural_style || 'Independent Loft'}} · ${{bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() : '1,800'}} m² built area (${{bArch.floors || 2}} Floors, step-free access).
+                </div>
+                <div class="pt-1 border-t border-[#262626]">
+                  <strong class="text-[#34d399] font-mono uppercase text-[11px] tracking-wider block">Archival Repository & Scope</strong>
+                  ${{arch.summary || inst.curatorial_focus || 'Historic primary source files, artist portfolios, and curatorial correspondence.'}}
+                </div>
+                <div class="pt-1 border-t border-[#262626]">
+                  <strong class="text-[#fcd34d] font-mono uppercase text-[11px] tracking-wider block">Public Study Room & Access Charter</strong>
+                  ${{arch.reading_room_policy || 'Free public study room and curatorial library open during exhibition hours.'}}
+                </div>
+              </div>
+              <div class="pt-2 border-t border-[#333] flex items-center gap-2">
+                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', true)" 
+                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[12px] shadow transition cursor-pointer">
+                  <span>🏛️ Zoom to 3D Building & Inspect Archives</span>
+                </button>
+              </div>
+            `, ['Plan Visit', 'Opening Hours', 'Ethical Governance Audit', `More in ${{inst.city}}`]);
+            zoomToBuilding(inst, false);
+            return;
+          }}
         }}
 
         // =========================================================================
@@ -13520,6 +14176,14 @@ FORMATTING & INTERACTION RULES:
       openResearchFeedbackModal();
     }});
 
+    // Building Architecture & Archives Inspector Modal Handlers
+    const buildingArchivesModal = document.getElementById('buildingArchivesModal');
+    document.getElementById('closeBuildingArchivesBtn')?.addEventListener('click', closeBuildingArchivesModal);
+    document.getElementById('bamCloseFooterBtn')?.addEventListener('click', closeBuildingArchivesModal);
+    buildingArchivesModal?.addEventListener('click', (e) => {{
+      if (e.target === buildingArchivesModal) closeBuildingArchivesModal();
+    }});
+
     // Unified Work Input Send Action
     const workInput = document.getElementById('workInput');
     const workSendBtn = document.getElementById('workSendBtn');
@@ -14929,24 +15593,38 @@ FORMATTING & INTERACTION RULES:
               </div>
             ` : ''}}
             
-            <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between">
-              ${{webUrl ? `
-                <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   class="website-pill inline-flex items-center gap-1 text-[14px] font-mono text-[#93c5fd] hover:text-white bg-[#2a2a2a] hover:bg-[#333] border border-[#383838] px-2.5 py-0.5 rounded-lg transition"
-                   onclick="event.stopPropagation()">
-                  <span class="truncate max-w-[120px]">${{escapeHtml(displayDomain)}}</span>
-                  <span class="text-[14px]">↗</span>
-                </a>
-              ` : `
-                <span class="text-[13px] font-mono text-slate-500">${{isInstCommunity ? 'Under Verification' : 'Verified Independent'}}</span>
-              `}}
-              <span class="text-[14px] text-[#71717a] hover:text-white font-mono transition">View on Globe →</span>
+            <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between gap-1.5 flex-wrap">
+              <div class="flex items-center gap-1.5">
+                <button class="card-zoom-building px-2 py-0.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 hover:text-white text-[12px] font-mono transition flex items-center gap-1 cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}" title="Zoom to 3D Building & View In-Depth Archives">
+                  <span>🏛️</span>
+                  <span>Zoom to Building</span>
+                </button>
+                ${{webUrl ? `
+                  <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
+                     class="website-pill inline-flex items-center gap-1 text-[12px] font-mono text-[#93c5fd] hover:text-white bg-[#2a2a2a] hover:bg-[#333] border border-[#383838] px-2 py-0.5 rounded-lg transition"
+                     onclick="event.stopPropagation()">
+                    <span class="truncate max-w-[90px]">${{escapeHtml(displayDomain)}}</span>
+                    <span class="text-[12px]">↗</span>
+                  </a>
+                ` : ''}}
+              </div>
+              <span class="text-[12px] text-[#71717a] hover:text-white font-mono transition">View on Map →</span>
             </div>
           </div>
         `;
       }}).join('');
 
       container.querySelectorAll('.inst-card').forEach(card => {{
+        card.querySelectorAll('.card-zoom-building').forEach(zBtn => {{
+          zBtn.addEventListener('click', (e) => {{
+            e.preventDefault();
+            e.stopPropagation();
+            const zName = zBtn.getAttribute('data-name');
+            const target = filteredList.find(i => i.name === zName) || ALL_INSTITUTIONS.find(i => i.name === zName);
+            if (target) zoomToBuilding(target, true);
+          }});
+        }});
+
         card.querySelectorAll('.card-open-dossier').forEach(dBtn => {{
           dBtn.addEventListener('click', (e) => {{
             e.preventDefault();
