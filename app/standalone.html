@@ -9798,7 +9798,24 @@ return maplibregl$1;
       { id: 'saudi_pif', name: 'Saudi Public Investment Fund', shortName: 'Saudi PIF / AlUla', type: 'corporation', org: 'Public Investment Fund / RCU', category: 'artwashing', role: 'Strategic Partner (Centre Pompidou AlUla, Musée du Louvre)', city: 'Riyadh / Paris',
         harms: ['Sovereign wealth fund controlled by the Saudi state, deploying billions in cultural capital to offset severe human rights violations and suppression of dissent', 'Direct multi-million euro agreements with Pompidou and Louvre to design cultural infrastructure in AlUla and Riyadh'],
         campaigns: ['ALQST Human Rights Defending Free Speech in Culture', 'French Cultural Workers Against Authoritarian Partnerships'],
-        filings: 'French Ministry of Foreign Affairs Bilateral Protocols; Centre Pompidou Board Minutes 2023.' }
+        filings: 'French Ministry of Foreign Affairs Bilateral Protocols; Centre Pompidou Board Minutes 2023.' },
+      { id: 'science_museum', name: 'Science Museum (London)', shortName: 'Science Museum', type: 'institution', city: 'London', country: 'United Kingdom', tier: 'B', role: 'National Science & Industry Museum', summary: 'Epicenter of UK climate protests over sponsorship deals with Adani Group, Shell, and Equinor, featuring gagging clauses uncovered by The Guardian.', harmsSummary: 'Accepted thermal coal-backed sponsorship with contract clauses barring reputational criticism of sponsors.', filings: 'UK Charity Commission Reg 1062085; SMG Sponsorship Agreement Disclosure.' },
+      { id: 'george_osborne', name: 'George Osborne', shortName: 'G. Osborne', type: 'trustee', org: 'British Museum / Ex-Chancellor', category: 'fossil_fuel', role: 'British Museum Chair & Architect of £50M BP Renewal', city: 'London',
+        harms: ['Pushed through 10-year £50M BP sponsorship extension in late 2023 despite extensive public and climate opposition (The Guardian)', 'Presided over museum during the theft of 1,500+ uncatalogued treasures and senior executive resignations', 'Defended fossil fuel social licensing while museum frontline workers unionized over wage erosion'],
+        campaigns: ['Culture Unstained Trustee Minutes FOI Revelations', 'Energy Embargo for Palestine Great Court Occupations', 'PCS Union Strike Mobilizations'],
+        filings: 'British Museum Trustee Minutes June 2023 (unanimous vote with recorded internal dissent); Charity Commission.' },
+      { id: 'adani_group', name: 'Adani Group / Gautam Adani', shortName: 'Adani Group', type: 'corporation', org: 'Adani Green Energy / Adani Coal', category: 'fossil_fuel', role: 'Title Sponsor (Science Museum Energy Revolution Gallery)', city: 'London / Ahmedabad',
+        harms: ['Operates massive thermal coal extraction including the Carmichael mega-mine in Queensland Australia, displacing Indigenous lands', 'Contract signed for Energy Revolution Gallery triggered immediate resignations of trustees Dr. Hannah Fry and Jo Foster (The Guardian)', 'Freedom of Information disclosures revealed contracts barring museum from making statements that damage sponsor reputation'],
+        campaigns: ['Fossil Free Science Museum Occupations', 'Scientists on Survival Global Open Letters', 'Wangan and Jagalingou Indigenous Resistance'],
+        filings: 'UK Charity Commission Reg 1062085; Science Museum Group Sponsorship Agreement FOI.' },
+      { id: 'baillie_gifford', name: 'Baillie Gifford', shortName: 'Baillie Gifford', type: 'corporation', org: 'Baillie Gifford & Co. (£220B AUM)', category: 'fossil_fuel', role: 'Investment Firm & Former Literary Festival Sponsor', city: 'Edinburgh',
+        harms: ['Held £5B+ in fossil fuel conglomerates and defense technology firms supplying military operations', 'Dominated UK literary festival underwriting until author-led Fossil Free Books campaign prompted mass walkouts in 2024 (The Guardian)', 'Severed or suspended partnerships across Hay Festival, Edinburgh International Book Festival, Cheltenham, and Cambridge'],
+        campaigns: ['Fossil Free Books Boycott (Hundreds of Authors & Industry Workers)', 'Charlotte Church, Nish Kumar, and Dawn Butler Festival Withdrawals'],
+        filings: 'FCA Institutional Register; Hay Festival & Edinburgh International Book Festival Joint Termination Statements 2024.' },
+      { id: 'poju_zabludowicz', name: 'Poju & Anita Zabludowicz', shortName: 'P. Zabludowicz', type: 'trustee', org: 'Zabludowicz Art Trust / Tamares', category: 'defense', role: 'Arms Manufacturing Heirs & Gallery Founders', city: 'London',
+        harms: ['Billionaire fortune founded on Soltam Systems, Israeli defense manufacturer of artillery munitions and heavy mortars', 'Funded pro-Israel lobbying initiatives (BICOM) in the United Kingdom', 'Permanently closed 176 Prince of Wales Road London gallery in Dec 2023 after 9-year boycott by artists (The Guardian)'],
+        campaigns: ['Boycott Divest Zabludowicz (BDZ) Decade Campaign (2014–2023)', 'Artist Deauthorization Movement (BDZ Pledge)'],
+        filings: 'UK Charity Commission Reg 1118408; Zabludowicz Art Trust Annual Accounts.' }
     ];
 
     const BOARD_CONFLICT_EDGES = [
@@ -9822,8 +9839,13 @@ return maplibregl$1;
       { source: 'bp', target: 'tate', role: 'Lead Corporate Underwriter (Divested 2016)', sector: 'fossil', status: 'divested', years: '1990–2016', filing: 'UK Charity Commission Accounts', campaign: 'Liberate Tate 26-Year Campaign' },
       { source: 'shell', target: 'van_gogh', role: 'Lead Educational Sponsor (Divested 2018)', sector: 'fossil', status: 'divested', years: '2000–2018', filing: 'Van Gogh Museum Jaarverslag 2018', campaign: 'Fossil Free Culture NL Direct Actions' },
       { source: 'shell', target: 'british_museum', role: 'Corporate Partner', sector: 'fossil', status: 'divested', years: '2004–2019', filing: 'BM Freedom of Information Disclosures', campaign: 'BP or not BP? Interventions' },
+      { source: 'shell', target: 'science_museum', role: 'Atmosphere Gallery Corporate Underwriter', sector: 'fossil', status: 'active', years: '2010–Active', filing: 'SMG Shell Contract FOI (Clause 11 Gagging Term)', campaign: 'Culture Unstained Direct Actions' },
       { source: 'totalenergies', target: 'louvre', role: 'Lead Corporate Patron', sector: 'fossil', status: 'active', years: '2004–Active', filing: 'Louvre Cercle des Mécènes', campaign: 'Libérons le Louvre (350.org)' },
       { source: 'totalenergies', target: 'pompidou', role: 'Foundation Cultural Underwriter', sector: 'fossil', status: 'active', years: '2012–Active', filing: 'Pompidou Philanthropy Registry', campaign: 'Clean Arts Collective Actions' },
+      { source: 'george_osborne', target: 'british_museum', role: 'Board of Trustees Chairman', sector: 'fossil', status: 'active', years: '2021–Active', filing: 'British Museum Trustee Minutes June 2023', campaign: 'The Guardian Trustee Dissension Revelations' },
+      { source: 'adani_group', target: 'science_museum', role: 'Energy Revolution Gallery Title Sponsor', sector: 'fossil', status: 'active', years: '2021–Active', filing: 'UK Charity Commission Reg 1062085', campaign: 'Dr. Hannah Fry & Jo Foster Resignations' },
+      { source: 'poju_zabludowicz', target: 'serpentine', role: 'Serpentine Council & Directorate Benefactor', sector: 'defense', status: 'divested', years: '2010–2023', filing: 'Serpentine Annual Review Donor Registry', campaign: 'Boycott Divest Zabludowicz (BDZ)' },
+      { source: 'poju_zabludowicz', target: 'tate', role: 'International Council Member & Acquisition Patron', sector: 'defense', status: 'divested', years: '2005–2021', filing: 'Tate International Council Filings', campaign: 'Artists for Palestine Campaign' },
       { source: 'maja_hoffmann', target: 'tate', role: 'Trustee & Collection Committee', sector: 'pharma', status: 'active', years: '2014–Active', filing: 'UK Charity Commission Reg 313014', campaign: 'Swiss Governance Watchdog Reviews' },
       { source: 'maja_hoffmann', target: 'serpentine', role: 'Council Member & Benefactor', sector: 'pharma', status: 'active', years: '2010–Active', filing: 'Serpentine Charity Commission Accounts', campaign: 'Pharma Hegemony Investigations' },
       { source: 'maja_hoffmann', target: 'basel_kunstmuseum', role: 'Major Acquisition Patron (Luma)', sector: 'pharma', status: 'active', years: '2006–Active', filing: 'Kunstmuseum Basel Jahresbericht', campaign: 'Basler Kulturdialog Reports' },
@@ -10615,7 +10637,12 @@ return maplibregl$1;
       { id: 'npg_ends_bp', year: 2022, date: 'February 2022', movement: 'climate', title: 'VICTORY: National Portrait Gallery Ends 30-Year BP Partnership', actors: 'Culture Unstained, BP or not BP?, Artist Boycott', institution: 'National Portrait Gallery', target: 'BP (British Petroleum)', outcomeType: 'victory', outcomeSummary: 'NPG terminates the BP Portrait Award after 3 decades of uninterrupted fossil fuel sponsorship.', description: 'Artists led by Gary Hume and previous award winners pledged to boycott the competition if BP remained lead underwriter, forcing the board to cut ties.', statutoryImpact: 'UK Charity Commission: Formal sunsetting of BP corporate sponsorship contract.' },
       { id: 'british_museum_drops_sackler', year: 2022, date: 'March 2022', movement: 'anti_opiate', title: 'VICTORY: British Museum Drops Sackler Name and Closes Trust', actors: 'P.A.I.N., Culture Unstained', institution: 'British Museum', target: 'Raymond and Beverly Sackler Wing', outcomeType: 'victory', outcomeSummary: 'British Museum confirms removal of Sackler name from its antiquities galleries and education rooms.', description: 'Trustees concluded that maintaining the Sackler branding caused severe reputational damage incompatible with the museum’s public trust mission.', statutoryImpact: 'DCMS & Charity Commission: Official de-naming of British Museum galleries.' },
       { id: 'museum_unions_wave', year: 2022, date: '2022–2024', movement: 'labor', title: 'Historic Cultural Worker Unionization Wave (UAW 2110 & AFSCME)', actors: 'UAW Local 2110, AFSCME Cultural Workers United', institution: 'MoMA, Whitney, Guggenheim, New Museum, PMA', target: 'Wage Stagnation & Trustee Wealth Disparity', outcomeType: 'victory', outcomeSummary: 'Workers across 20+ major US museums win certified union contracts with guaranteed wage minimums and healthcare.', description: 'Highlighting extreme disparities between million-dollar executive salaries and precarious floor staff, workers mobilized strike votes and public picket lines.', statutoryImpact: 'IRS Form 990 Schedule O: Implementation of collective bargaining wage agreements.' },
-      { id: 'pompidou_saudi_protests', year: 2024, date: '2024–2026', movement: 'restitution', title: 'French Cultural Workers Mobilize Against Pompidou-AlUla Saudi Deal', actors: 'Collectif des Travailleurs de la Culture, ALQST', institution: 'Centre Pompidou', target: 'Saudi State Royal Commission for AlUla', outcomeType: 'ongoing_struggle', outcomeSummary: 'Staff open letters and public debates demanding transparency on French state cultural diplomacy and authoritarian contracts.', description: 'Cultural workers challenged a multi-million-euro deal sending Pompidou collections and curators to Saudi Arabia amidst continuous human rights crackdowns.', statutoryImpact: 'French Ministry of Culture Bilateral Transparency Review.' }
+      { id: 'pompidou_saudi_protests', year: 2024, date: '2024–2026', movement: 'restitution', title: 'French Cultural Workers Mobilize Against Pompidou-AlUla Saudi Deal', actors: 'Collectif des Travailleurs de la Culture, ALQST', institution: 'Centre Pompidou', target: 'Saudi State Royal Commission for AlUla', outcomeType: 'ongoing_struggle', outcomeSummary: 'Staff open letters and public debates demanding transparency on French state cultural diplomacy and authoritarian contracts.', description: 'Cultural workers challenged a multi-million-euro deal sending Pompidou collections and curators to Saudi Arabia amidst continuous human rights crackdowns.', statutoryImpact: 'French Ministry of Culture Bilateral Transparency Review.' },
+      { id: 'science_museum_adani_resignations', year: 2021, date: 'October 2021', movement: 'climate', title: 'Science Museum Trustee Resignations Over Adani Coal Deal', actors: 'Dr. Hannah Fry, Jo Foster, Prof. Chris Rapley', institution: 'Science Museum (London)', target: 'Adani Green Energy / Adani Coal Conglomerate', outcomeType: 'whistleblower_rupture', outcomeSummary: 'Trustees Dr. Hannah Fry and Jo Foster resign in protest of Adani deal; Guardian reveals Clause 11 gagging terms barring sponsor criticism.', description: 'Guardian investigation exposed secret contract clauses forbidding the Science Museum from making statements discrediting sponsor Adani, whose Carmichael mega-mine operates in Australia.', statutoryImpact: 'UK Charity Commission Reg 1062085: Formal trustee resignations and FOI disclosures.' },
+      { id: 'zabludowicz_london_closure', year: 2023, date: 'December 2023', movement: 'demilitarization', title: 'VICTORY: Zabludowicz Collection Closes London Space After 9-Year Boycott', actors: 'Boycott Divest Zabludowicz (BDZ), 600+ Signatory Artists', institution: 'Zabludowicz Collection (London)', target: 'Poju & Anita Zabludowicz (Soltam Systems)', outcomeType: 'victory', outcomeSummary: 'Billionaire arms-heir gallery 176 Prince of Wales Road permanently closes after 600+ artists deauthorized works and boycotted exhibitions.', description: 'Following a 9-year campaign by BDZ highlighting how the founders\' fortune derived from Israeli arms manufacturer Soltam Systems, the London space shut down permanently.', statutoryImpact: 'UK Charity Commission Reg 1118408: Permanent cessation of London gallery public operations.' },
+      { id: 'british_museum_bp_50m_backlash', year: 2023, date: 'December 2023', movement: 'climate', title: 'British Museum BP £50M Renewal Pushed Through Under George Osborne', actors: 'Culture Unstained, Energy Embargo for Palestine, PCS Union', institution: 'British Museum', target: 'BP (British Petroleum) & George Osborne', outcomeType: 'escalation', outcomeSummary: 'Chair George Osborne pushes through 10-year £50M BP partnership amid stolen artefacts crisis; FOI reveals trustee dissent and sparks massive occupations.', description: 'Guardian investigation revealed trustee minutes where the deal was forced through despite staff outrage, leading to rolling protests and occupations across the Great Court.', statutoryImpact: 'British Museum Trustee Minutes & DCMS Masterplan Filings.' },
+      { id: 'ace_political_guidance_uturn', year: 2024, date: 'February 2024', movement: 'labor', title: 'VICTORY: Arts Council England Forced into U-Turn Over Political Censorship', actors: 'Equity, Robert Macfarlane, Index on Censorship, Cultural Workers', institution: 'Arts Council England (ACE)', target: 'Department for Culture, Media and Sport (DCMS) Political Restrictions', outcomeType: 'victory', outcomeSummary: 'ACE abandons guidance threatening funding cuts for artists making "overtly political" statements after massive sector-wide revolt.', description: 'The Guardian exposed that ACE quietly updated reputation management policies to penalize political speech. Facing legal challenges and artist protests, ACE issued a total retraction.', statutoryImpact: 'ACE Relationship Framework 2024–26: Formal removal of political speech penalties.' },
+      { id: 'baillie_gifford_festival_boycott', year: 2024, date: 'May 2024', movement: 'climate', title: 'VICTORY: Baillie Gifford Dropped by UK Book Festivals After Author Boycott', actors: 'Fossil Free Books, Charlotte Church, Nish Kumar, Dawn Butler', institution: 'Hay Festival, Edinburgh International Book Festival, Cheltenham', target: 'Baillie Gifford (£5B+ Fossil & Defense Holdings)', outcomeType: 'victory', outcomeSummary: 'Hay Festival, Edinburgh Book Festival, and Cheltenham sever contracts with investment giant Baillie Gifford following coordinated author walkouts.', description: 'Guardian coverage of Fossil Free Books sparked widespread speaker cancellations over Baillie Gifford’s investments in fossil fuels and Israeli tech firms, forcing festivals to divest.', statutoryImpact: 'Festival Charters 2024: Adoption of ethical sponsorship screen criteria.' }
     ];
     window.CULTURAL_RESISTANCE_TIMELINE = CULTURAL_RESISTANCE_TIMELINE;
 
@@ -10742,7 +10769,8 @@ return maplibregl$1;
       { id: 'british_museum', name: 'British Museum', ein: 'UK Exempt Charity / DCMS', jurisdiction: 'UK (National Museum Statutory Accounts)', fiscalYear: 'FY2022–2023', totalBudget: '£126M', totalEndowment: '£140M', programSpendRatio: 79.5, adminOverheadRatio: 13.2, fundraisingRatio: 7.3, scheduleLCount: 3, directorComp: '£215,000', keyStaffRatio: '7.5:1', scheduleLConflicts: ['BP plc Master Partnership Agreement (£50M 10-year renewal 2023–2033)', 'Raymond & Beverly Sackler Wing naming (stripped 2022)'], scheduleONarratives: 'Capital master plan undergoing major restructuring. Contested provenance holdings under ongoing international parliamentary scrutiny.' },
       { id: 'whitechapel', name: 'Whitechapel Gallery (Clean Counter-Model)', ein: 'UK Charity Reg 312162', jurisdiction: 'UK (Arts Council England NPO)', fiscalYear: 'FY2022–2023', totalBudget: '£4.8M', totalEndowment: '£3.2M', programSpendRatio: 84.5, adminOverheadRatio: 11.2, fundraisingRatio: 4.3, scheduleLCount: 0, directorComp: '£95,000', keyStaffRatio: '3.8:1 (Equitable Clean Model)', scheduleLConflicts: ['NONE — Zero defense, fossil fuel, or predatory private equity board interlocks'], scheduleONarratives: 'Exemplary civic model funded by Arts Council England and transparent community donations. High program efficiency (84.5%) with zero ticket fees for main galleries.' },
       { id: 'chisenhale', name: 'Chisenhale Gallery (Clean Counter-Model)', ein: 'UK Charity Reg 1025797', jurisdiction: 'UK (Arts Council England)', fiscalYear: 'FY2022–2023', totalBudget: '£1.1M', totalEndowment: '£450K', programSpendRatio: 86.8, adminOverheadRatio: 9.4, fundraisingRatio: 3.8, scheduleLCount: 0, directorComp: '£55,000', keyStaffRatio: '2.2:1', scheduleLConflicts: ['NONE — Strict ethical sponsorship policy prohibiting extractive corporate gifts'], scheduleONarratives: '100% free admission. Direct artist commissioning model with democratic oversight.' },
-      { id: 'artists_space', name: 'Artists Space (Clean Counter-Model)', ein: '13-2741982', jurisdiction: 'US (IRS Form 990 / NYS Charities)', fiscalYear: 'FY2022–2023', totalBudget: '$1.4M', totalEndowment: '$650K', programSpendRatio: 85.2, adminOverheadRatio: 10.1, fundraisingRatio: 4.7, scheduleLCount: 0, directorComp: '$92,000', keyStaffRatio: '2.1:1', scheduleLConflicts: ['NONE — Artist-governed alternative space model'], scheduleONarratives: 'Historic 50-year downtown alternative space maintaining governance independence.' }
+      { id: 'artists_space', name: 'Artists Space (Clean Counter-Model)', ein: '13-2741982', jurisdiction: 'US (IRS Form 990 / NYS Charities)', fiscalYear: 'FY2022–2023', totalBudget: '$1.4M', totalEndowment: '$650K', programSpendRatio: 85.2, adminOverheadRatio: 10.1, fundraisingRatio: 4.7, scheduleLCount: 0, directorComp: '$92,000', keyStaffRatio: '2.1:1', scheduleLConflicts: ['NONE — Artist-governed alternative space model'], scheduleONarratives: 'Historic 50-year downtown alternative space maintaining governance independence.' },
+      { id: 'science_museum', name: 'Science Museum Group (London)', ein: 'UK Charity Reg 1062085', jurisdiction: 'UK (Charity Commission / DCMS SORP)', fiscalYear: 'FY2022–2023', totalBudget: '£92M', totalEndowment: '£48M', programSpendRatio: 77.2, adminOverheadRatio: 14.8, fundraisingRatio: 8.0, scheduleLCount: 4, directorComp: '£205,000 (Ian Blatchford, Director)', keyStaffRatio: '7.8:1', scheduleLConflicts: ['Adani Green Energy / Adani Group Title Sponsorship (Energy Revolution Gallery, triggered trustee resignations)', 'Shell International Petroleum Company (Atmosphere Gallery with Clause 11 gagging term)', 'Equinor ASA (Wonderlab title sponsorship)'], scheduleONarratives: 'Subject of landmark Guardian investigative reports uncovering contract gagging clauses (Clause 11) barring the institution from criticizing fossil fuel sponsors. Prominent climate trustees resigned in protest.' }
     ];
     window.INSTITUTIONAL_FILINGS_REGISTRY = INSTITUTIONAL_FILINGS_REGISTRY;
 
@@ -15237,9 +15265,11 @@ FORMATTING & INTERACTION RULES:
         (q.includes('itinerary') || q.includes('art crawl') || (q.includes('crawl') && (q.includes('art') || q.includes('museum') || q.includes('gallery'))) || (q.includes('plan') && (q.includes('route') || q.includes('day') || q.includes('tour') || q.includes('crawl'))));
       const isContributeQuery = /(how\s+to\s+)?(contribute|submit)\s*(intel|tip|leak|research|data)|whistleblow|report\s*(a\s*)?(leak|conflict|covenant|violation)|confidential\s*(intake|pipeline|submission)/i.test(q) ||
         (q.includes('contribute') && (q.includes('intel') || q.includes('leak') || q.includes('tip') || q.includes('whistleblow')));
+      const isGuardianQuery = /(guardian|the\s*guardian|george\s*osborne|adani|baillie\s*gifford|zabludowicz|arts\s*council\s*england\s*censorship|ace\s*u-?turn|hannah\s*fry|clause\s*11|gagging\s*clause)/i.test(q) ||
+        (q.includes('guardian') && (q.includes('report') || q.includes('investigat') || q.includes('article') || q.includes('museum') || q.includes('sponsor')));
       const isDirectWhistleblowerSubmission = /^(leak|whistleblow|confidential|board\s*conflict|sponsorship\s*leak|schedule\s*l\s*disclosure|labor\s*\/\s*wage|unlisted\s*independent|internal\s*memo):/i.test(rawTrimmed) ||
         /(non-public|internal\s*memo|donor\s*agreement|whistleblower\s*leak)/i.test(rawTrimmed);
-      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery || isBoardConflictQuery || isTimelineQuery || isFilingQuery || isContributeQuery || isDirectWhistleblowerSubmission;
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery || isBoardConflictQuery || isTimelineQuery || isFilingQuery || isGuardianQuery || isContributeQuery || isDirectWhistleblowerSubmission;
 
       // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
       if (!isMetaInquiry) {
@@ -15263,6 +15293,88 @@ FORMATTING & INTERACTION RULES:
       if (isContributeQuery) {
         curatorTyping.classList.add('hidden');
         triggerInChatContributeFlow();
+        return;
+      }
+
+      // Direct interactive UI commands: Guardian Investigative Cultural Dossier
+      if (isGuardianQuery) {
+        curatorTyping.classList.add('hidden');
+        appendCuratorMessage(`
+          <div class="border border-sky-500/40 bg-[#081827] p-3.5 sm:p-4 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between border-b border-sky-500/20 pb-2 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">📰</span>
+                <div>
+                  <h4 class="font-semibold text-white text-[15px]">The Guardian Investigative Cultural Dossier</h4>
+                  <p class="text-[11.5px] font-mono text-sky-300">Journalistic Revelations &amp; Whistleblower Disclosures</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button type="button" onclick="window.openResistanceTimelineModal()" class="px-2.5 py-1 bg-amber-600/80 hover:bg-amber-500 text-white rounded-lg text-xs font-mono transition cursor-pointer">
+                  Timeline ✊
+                </button>
+                <button type="button" onclick="window.openTrusteeConflictNetworkModal('science_museum')" class="px-2.5 py-1 bg-purple-600/80 hover:bg-purple-500 text-white rounded-lg text-xs font-mono transition cursor-pointer">
+                  Network 🕸️
+                </button>
+              </div>
+            </div>
+
+            <p class="text-slate-200 text-xs sm:text-[13px] leading-relaxed">
+              Culture Atlas continuously synthesizes investigative reporting by <em>The Guardian</em> on arts sponsorship, board conflicts, and divestment boycotts:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <div onclick="window.openTrusteeConflictNetworkModal('george_osborne')" class="p-2.5 rounded-xl bg-[#0f243a] hover:bg-[#163352] border border-sky-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-sky-300">British Museum £50M BP Renewal</span>
+                  <span class="text-[10px] font-mono text-amber-400">Dec 2023</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">FOI trustee minutes revealed George Osborne pushed through 10-year BP deal amid 1,500 stolen antiquities crisis.</p>
+              </div>
+
+              <div onclick="window.openStatutoryFilingsModal('science_museum')" class="p-2.5 rounded-xl bg-[#0f243a] hover:bg-[#163352] border border-sky-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-sky-300">Science Museum &amp; Adani / Shell</span>
+                  <span class="text-[10px] font-mono text-rose-400">Gagging Clauses</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Guardian exposed Clause 11 gagging terms barring sponsor criticism; led to resignations of Hannah Fry &amp; Jo Foster.</p>
+              </div>
+
+              <div onclick="window.openResistanceTimelineModal()" class="p-2.5 rounded-xl bg-[#0f243a] hover:bg-[#163352] border border-sky-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-sky-300">Baillie Gifford Literary Boycotts</span>
+                  <span class="text-[10px] font-mono text-emerald-400">2024 Victories</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Fossil Free Books author walkouts forced Hay Festival and Edinburgh Book Festival to sever multi-decade partnerships.</p>
+              </div>
+
+              <div onclick="window.openTrusteeConflictNetworkModal('poju_zabludowicz')" class="p-2.5 rounded-xl bg-[#0f243a] hover:bg-[#163352] border border-sky-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-sky-300">Zabludowicz Gallery London Closure</span>
+                  <span class="text-[10px] font-mono text-cyan-400">Dec 2023</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Permanent shutdown of 176 Prince of Wales Road gallery following 9-year boycott over Soltam Systems arms fortune.</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-sky-900/50 flex-wrap text-xs">
+              <span class="text-zinc-400 text-[11.5px]">Open investigative data sources:</span>
+              <div class="flex items-center gap-1.5">
+                <button type="button" onclick="window.openStatutoryFilingsModal('science_museum')" class="px-2.5 py-1 bg-sky-700 hover:bg-sky-600 text-white rounded-lg text-xs font-medium transition cursor-pointer">
+                  Science Museum Filings 📑
+                </button>
+                <button type="button" onclick="window.openResistanceTimelineModal()" class="px-2.5 py-1 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
+                  Divestment Timeline ✊
+                </button>
+              </div>
+            </div>
+          </div>
+        `, [
+          'Science Museum Adani sponsorship',
+          'British Museum BP deal',
+          'Baillie Gifford book festival boycott',
+          'Zabludowicz collection closure'
+        ]);
         return;
       }
 
@@ -15337,6 +15449,7 @@ FORMATTING & INTERACTION RULES:
           /guggenheim/i.test(instMatch.name) ? 'guggenheim' :
           /tate/i.test(instMatch.name) ? 'tate' :
           /british museum/i.test(instMatch.name) ? 'british_museum' :
+          /science museum/i.test(instMatch.name) ? 'science_museum' :
           /louvre/i.test(instMatch.name) ? 'louvre' :
           /pompidou/i.test(instMatch.name) ? 'pompidou' : null
         ) : null;
@@ -15355,7 +15468,7 @@ FORMATTING & INTERACTION RULES:
                 <span class="text-xl">🕸️</span>
                 <div>
                   <h4 class="font-semibold text-white text-[15px]">${headerTitle}</h4>
-                  <p class="text-[11.5px] font-mono text-purple-300">Force-Directed Relational Graph · 32 Documented Interlocks</p>
+                  <p class="text-[11.5px] font-mono text-purple-300">Force-Directed Relational Graph · 38 Documented Interlocks</p>
                 </div>
               </div>
               <button type="button" onclick="window.openTrusteeConflictNetworkModal('${instId || ''}')" class="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
@@ -15579,7 +15692,7 @@ FORMATTING & INTERACTION RULES:
                 <span class="text-xl">✊</span>
                 <div>
                   <h4 class="font-semibold text-white text-[15px]">Timeline of Cultural Boycotts &amp; Divestment Victories</h4>
-                  <p class="text-[11.5px] font-mono text-amber-300">17 Landmark Direct Actions · 1971–2026 Archive</p>
+                  <p class="text-[11.5px] font-mono text-amber-300">22 Landmark Direct Actions · 1971–2026 Archive</p>
                 </div>
               </div>
               <button type="button" onclick="window.openResistanceTimelineModal()" class="px-3 py-1.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
@@ -15652,6 +15765,7 @@ FORMATTING & INTERACTION RULES:
           /guggenheim/i.test(instMatch.name) ? 'guggenheim' :
           /tate/i.test(instMatch.name) ? 'tate' :
           /british museum/i.test(instMatch.name) ? 'british_museum' :
+          /science museum/i.test(instMatch.name) ? 'science_museum' :
           /whitechapel/i.test(instMatch.name) ? 'whitechapel' :
           /chisenhale/i.test(instMatch.name) ? 'chisenhale' :
           /artists space/i.test(instMatch.name) ? 'artists_space' : 'moma'
