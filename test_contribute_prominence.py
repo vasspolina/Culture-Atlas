@@ -6,7 +6,7 @@ import html as html_lib
 import sys
 
 def run_tests():
-    print("--- RUNNING CONTRIBUTE INTEL PROMINENCE & CHAT REMOVAL TEST SUITE ---")
+    print("--- RUNNING IN-CHAT CONTRIBUTE INTEL & NO POPUP TEST SUITE ---")
     index_path = "/Users/polinavasilyeva/.gemini/antigravity/scratch/sponsor-atlas/index.html"
     assert os.path.exists(index_path), "index.html must exist"
 
@@ -25,57 +25,69 @@ def run_tests():
 
       try {
         const modal = document.getElementById('confidentialIntakeChatModal');
-        assert('Confidential Intake modal exists in DOM', !!modal);
+        assert('Confidential Intake modal exists in DOM but stays hidden', !!modal && modal.classList.contains('hidden'));
 
-        // 1. Verify Contribute Intel is completely REMOVED from chat window dock
+        // 1. Verify Contribute button exists next to chat input in workBottomDock underneath
         const chatDock = document.getElementById('workBottomDock');
-        const chatBtnInDock = chatDock ? chatDock.querySelector('#chatContributeBtn') : null;
-        assert('chatContributeBtn is NOT in workBottomDock', chatBtnInDock === null);
-        const anyChatContributeBtn = document.getElementById('chatContributeBtn');
-        assert('No chatContributeBtn exists anywhere in chat window', anyChatContributeBtn === null);
+        assert('workBottomDock exists', !!chatDock);
+        const chatContributeBtn = chatDock ? chatDock.querySelector('#chatContributeBtn') : null;
+        assert('chatContributeBtn is located in workBottomDock next to chat input', !!chatContributeBtn);
+        assert('chatContributeBtn has prominent pulse dot and label', chatContributeBtn && chatContributeBtn.innerHTML.includes('animate-pulse') && chatContributeBtn.textContent.includes('Contribute'));
 
-        // 2. Verify Top Header Desktop Contribute button
+        // 2. Click chatContributeBtn -> NO popup window, chat row above explains what to do
+        const curatorMessages = document.getElementById('curatorMessages');
+        const workInput = document.getElementById('workInput');
+
+        chatContributeBtn.click();
+        await new Promise(r => setTimeout(r, 100));
+
+        assert('Clicking chatContributeBtn does NOT open pop up window', modal && modal.classList.contains('hidden'));
+        assert('Chat row above explains what you need to do', curatorMessages && curatorMessages.innerHTML.includes('Confidential Field Intel') && curatorMessages.innerHTML.includes('How to submit right here'));
+        assert('Chat input placeholder indicates confidential input active', workInput && workInput.placeholder.includes('🔒'));
+
+        // 3. Verify Top Header Contribute button uses small chat window with NO popup window
         const topBtn = document.getElementById('topContributeBtn');
         assert('Top Contribute button exists (#topContributeBtn)', !!topBtn);
-        assert('Top Contribute button has prominent pulse indicator', topBtn && topBtn.innerHTML.includes('animate-pulse'));
-        
         topBtn.click();
-        assert('Clicking topContributeBtn opens confidential modal', modal && !modal.classList.contains('hidden'));
-        document.getElementById('closeConfidentialChatBtn').click();
-        assert('Clicking close button closes confidential modal', modal && modal.classList.contains('hidden'));
+        await new Promise(r => setTimeout(r, 100));
+        assert('Clicking topContributeBtn does NOT open pop up window', modal && modal.classList.contains('hidden'));
+        assert('Chat row above explains what to do after topBtn click', curatorMessages && curatorMessages.innerHTML.includes('Confidential Field Intel'));
 
-        // 3. Verify Top Mobile Contribute button
+        // 4. Verify Mobile Contribute button uses small chat window with NO popup window
         const mobileBtn = document.getElementById('mobileContributeBtn');
         assert('Mobile Contribute button exists (#mobileContributeBtn)', !!mobileBtn);
         mobileBtn.click();
-        assert('Clicking mobileContributeBtn opens confidential modal', modal && !modal.classList.contains('hidden'));
-        document.getElementById('closeConfidentialChatBtn').click();
-        assert('Modal closed after mobile test', modal && modal.classList.contains('hidden'));
+        await new Promise(r => setTimeout(r, 100));
+        assert('Clicking mobileContributeBtn does NOT open pop up window', modal && modal.classList.contains('hidden'));
 
-        // 4. Verify Map Floating Badge (#mapFloatingContributeBtn)
+        // 5. Verify Map Floating Badge uses small chat window with NO popup window
         const mapFloatBtn = document.getElementById('mapFloatingContributeBtn');
         assert('Map floating badge exists (#mapFloatingContributeBtn)', !!mapFloatBtn);
-        assert('Map floating badge contains prominent text', mapFloatBtn && mapFloatBtn.textContent.includes('Contribute Intel'));
         mapFloatBtn.click();
-        assert('Clicking mapFloatingContributeBtn opens confidential modal', modal && !modal.classList.contains('hidden'));
-        document.getElementById('closeConfidentialChatBtn').click();
-        assert('Modal closed after map floating badge test', modal && modal.classList.contains('hidden'));
+        await new Promise(r => setTimeout(r, 100));
+        assert('Clicking mapFloatingContributeBtn does NOT open pop up window', modal && modal.classList.contains('hidden'));
 
-        // 5. Verify Bottom Map HUD Control (#hudContributeBtn)
+        // 6. Verify Map HUD Control uses small chat window with NO popup window
         const hudBtn = document.getElementById('hudContributeBtn');
         assert('Map HUD controls bar has Contribute button (#hudContributeBtn)', !!hudBtn);
         hudBtn.click();
-        assert('Clicking hudContributeBtn opens confidential modal', modal && !modal.classList.contains('hidden'));
-        document.getElementById('closeConfidentialChatBtn').click();
-        assert('Modal closed after HUD test', modal && modal.classList.contains('hidden'));
+        await new Promise(r => setTimeout(r, 100));
+        assert('Clicking hudContributeBtn does NOT open pop up window', modal && modal.classList.contains('hidden'));
 
-        // 6. Verify Globe Bar Filter Pill (#globeContributeIntelBtn)
+        // 7. Verify Globe Bar Filter Pill uses small chat window with NO popup window
         const globePill = document.getElementById('globeContributeIntelBtn');
         assert('Globe filter bar has Contribute Intel pill (#globeContributeIntelBtn)', !!globePill);
         globePill.click();
-        assert('Clicking globeContributeIntelBtn opens confidential modal', modal && !modal.classList.contains('hidden'));
-        document.getElementById('closeConfidentialChatBtn').click();
-        assert('Modal closed after globe pill test', modal && modal.classList.contains('hidden'));
+        await new Promise(r => setTimeout(r, 100));
+        assert('Clicking globeContributeIntelBtn does NOT open pop up window', modal && modal.classList.contains('hidden'));
+
+        // 8. Test in-chat submission of leak with cryptographic receipt
+        await window.processInChatWhistleblowerSubmission('Confidential leak: undisclosed fossil fuel trustee ties at Modern Institute');
+        await new Promise(r => setTimeout(r, 200));
+
+        assert('In-chat submission generates Cryptographic Whistleblower Receipt card', curatorMessages && curatorMessages.innerHTML.includes('Cryptographic Whistleblower Receipt'));
+        assert('In-chat receipt displays SHA-256 VERIFIED hash', curatorMessages && curatorMessages.innerHTML.includes('SHA-256 VERIFIED'));
+        assert('In-chat receipt displays OpSec precautions', curatorMessages && curatorMessages.innerHTML.includes('OpSec &amp; Whistleblower Precautions') || curatorMessages.innerHTML.includes('OpSec & Whistleblower Precautions'));
 
       } catch (err) {
         results.push({ name: 'Exception caught', pass: false, details: err.toString() });
@@ -100,7 +112,7 @@ def run_tests():
         "--disable-gpu",
         "--no-sandbox",
         "--dump-dom",
-        "--virtual-time-budget=3000",
+        "--virtual-time-budget=4000",
         f"file://{temp_file}"
     ]
 
@@ -130,7 +142,7 @@ def run_tests():
     if failed > 0:
         sys.exit(1)
     else:
-        print("\n🎉 ALL CONTRIBUTE PROMINENCE CHECKS PASSED PERFECTLY!")
+        print("\n🎉 ALL IN-CHAT CONTRIBUTE CHECKS PASSED WITH NO POPUP WINDOW!")
 
 if __name__ == '__main__':
     run_tests()

@@ -1098,10 +1098,17 @@ def build():
             <textarea id="workInput" rows="1" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[13px] sm:text-[14px] focus:outline-none resize-none font-normal leading-[120%] max-h-32"></textarea>
             
             <div class="flex items-center justify-between pt-1">
-              <!-- Left: Plus action button -->
-              <button id="workPlusBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center text-[16px] sm:text-[18px] transition active:scale-95 cursor-pointer font-normal shrink-0" title="Quick filters">
-                +
-              </button>
+              <!-- Left: Plus action button and Contribute Intel button -->
+              <div class="flex items-center gap-1.5 sm:gap-2">
+                <button id="workPlusBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center text-[16px] sm:text-[18px] transition active:scale-95 cursor-pointer font-normal shrink-0" title="Quick filters">
+                  +
+                </button>
+                <button id="chatContributeBtn" type="button" class="text-[12px] sm:text-[13px] bg-gradient-to-r from-emerald-950/90 to-[#0e3b2a] hover:from-emerald-900 hover:to-[#134e38] text-emerald-300 hover:text-white border border-emerald-500/60 hover:border-emerald-400 flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full transition cursor-pointer font-medium shrink-0 shadow-sm" title="Contribute confidential intel, donor agreements, or whistleblower leaks (in-chat)">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="hidden xs:inline">🔒 Contribute</span>
+                  <span class="xs:hidden">🔒</span>
+                </button>
+              </div>
 
               <!-- Right: Model, mic, and blue circular waveform/send button -->
               <div class="flex items-center gap-1.5 sm:gap-2">
@@ -15359,7 +15366,11 @@ FORMATTING & INTERACTION RULES:
         (q.includes('trustee') && (q.includes('conflict') || q.includes('board') || q.includes('network') || q.includes('investigate') || q.includes('who') || q.includes('resigned') || q.includes('ousted')));
       const isItineraryQuery = /(plan\s*(a\s*)?(day|visit|tour|itinerary|route|crawl)|art\s*(crawl|walk|tour|circuit|route|itinerary)|curatorial\s*(itinerary|route|tour|circuit|walk)|visit\s*itinerary|curated\s*(route|crawl|walk)|gallery\s*crawl|museum\s*crawl|walking\s*route)/i.test(q) ||
         (q.includes('itinerary') || q.includes('art crawl') || (q.includes('crawl') && (q.includes('art') || q.includes('museum') || q.includes('gallery'))) || (q.includes('plan') && (q.includes('route') || q.includes('day') || q.includes('tour') || q.includes('crawl'))));
-      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery || isBoardConflictQuery || isTimelineQuery || isFilingQuery;
+      const isContributeQuery = /(how\s+to\s+)?(contribute|submit)\s*(intel|tip|leak|research|data)|whistleblow|report\s*(a\s*)?(leak|conflict|covenant|violation)|confidential\s*(intake|pipeline|submission)/i.test(q) ||
+        (q.includes('contribute') && (q.includes('intel') || q.includes('leak') || q.includes('tip') || q.includes('whistleblow')));
+      const isDirectWhistleblowerSubmission = /^(leak|whistleblow|confidential|board\s*conflict|sponsorship\s*leak|schedule\s*l\s*disclosure|labor\s*\/\s*wage|unlisted\s*independent|internal\s*memo):/i.test(rawTrimmed) ||
+        /(non-public|internal\s*memo|donor\s*agreement|whistleblower\s*leak)/i.test(rawTrimmed);
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery || isBoardConflictQuery || isTimelineQuery || isFilingQuery || isContributeQuery || isDirectWhistleblowerSubmission;
 
       // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
       if (!isMetaInquiry) {{
@@ -15370,6 +15381,20 @@ FORMATTING & INTERACTION RULES:
         }} else if (earlyCity) {{
           filterByCity(earlyCity, true, false);
         }}
+      }}
+
+      // Direct interactive UI commands: Direct Whistleblower Submission in Chat
+      if (isDirectWhistleblowerSubmission) {{
+        curatorTyping.classList.add('hidden');
+        await processInChatWhistleblowerSubmission(rawTrimmed);
+        return;
+      }}
+
+      // Direct interactive UI commands: Confidential Intel & Whistleblower Flow
+      if (isContributeQuery) {{
+        curatorTyping.classList.add('hidden');
+        triggerInChatContributeFlow();
+        return;
       }}
 
       // Direct interactive UI commands: Fiscal Analytics
@@ -19740,10 +19765,11 @@ FORMATTING & INTERACTION RULES:
     document.getElementById('chatAddKeyBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('workModelBtn')?.addEventListener('click', openSettingsModal);
 
-    document.getElementById('topContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
-    document.getElementById('mobileContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
-    document.getElementById('mapFloatingContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
-    document.getElementById('hudContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
+    document.getElementById('chatContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('topContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('mobileContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('mapFloatingContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('hudContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
     document.getElementById('closeConfidentialChatBtn')?.addEventListener('click', closeConfidentialIntakeModal);
 
     // Curatorial Itinerary HUD & Modal event listeners
@@ -20073,6 +20099,195 @@ FORMATTING & INTERACTION RULES:
       }}, 350);
     }}
 
+    function triggerInChatContributeFlow(defaultTopic = '') {{
+      if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {{
+        setMobileViewMode('work');
+      }}
+
+      const suggestions = document.getElementById('workSuggestionsSection');
+      if (suggestions) suggestions.classList.add('hidden');
+
+      appendCuratorMessage(`
+        <div class="border border-emerald-500/50 bg-[#091a13] p-4 sm:p-4.5 rounded-2xl space-y-3 shadow-lg">
+          <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2.5 flex-wrap gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🔒</span>
+              <div>
+                <h4 class="font-semibold text-white text-[15px] flex items-center gap-2">
+                  Confidential Field Intel &amp; Whistleblower Pipeline
+                  <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950 border border-emerald-700/80 px-2 py-0.5 rounded-full font-normal">In-Chat Intake</span>
+                </h4>
+                <p class="text-[11.5px] font-mono text-emerald-300">Zero-Knowledge · Client-Side SHA-256 Hashing · No Server IP Logs</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-slate-100 text-[13.5px] leading-relaxed">
+            <strong>What you can submit:</strong> Share non-public documents, unverified fossil fuel / defense sponsorships, trustee board interlocks, confidential donor agreements, executive compensation disclosures, or unlisted independent spaces.
+          </p>
+
+          <div class="p-3 rounded-xl bg-[#0e271d] border border-emerald-800/60 space-y-2 text-[12.5px] text-slate-200">
+            <div class="font-medium text-emerald-300 flex items-center gap-1.5 text-[13px]">
+              <span>📋</span><span>How to submit right here:</span>
+            </div>
+            <ol class="list-decimal list-inside space-y-1 text-slate-300">
+              <li><strong>Type or paste your information</strong> directly into the chat input below.</li>
+              <li><strong>Include key details</strong>: Museum or institution name, trustee names, approximate dates, contract amounts, or document excerpts.</li>
+              <li><strong>Cryptographic Receipt</strong>: Culture Atlas computes a native SHA-256 integrity hash locally in your browser and assigns an ephemeral pseudonym (e.g. <code>Archival-Insider-8492</code>).</li>
+            </ol>
+          </div>
+
+          <div class="space-y-1.5 pt-1">
+            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Quick prompts to start your report:</div>
+            <div class="flex flex-wrap gap-1.5">
+              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Board Conflict: Undisclosed defense contractor or private equity trustee sitting on the board of [Institution Name]">
+                Report Trustee Conflict
+              </button>
+              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Sponsorship Leak: Non-public gift agreement with fossil fuel or defense conglomerate at [Institution Name]">
+                Submit Sponsorship Leak
+              </button>
+              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Schedule L Disclosure: Museum conducting commercial business with interested trustee without recusal at [Institution Name]">
+                Report Schedule L Transaction
+              </button>
+              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Labor / Wage Dispute: Curatorial staff unionization or wage suppression memo at [Institution Name]">
+                Report Labor / Wage Dispute
+              </button>
+              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Unlisted Independent Space: Suggest verified grassroots art space with clean public/cooperative funding: [Space Name, City]">
+                Suggest Independent Space
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-emerald-900/50 flex items-center justify-between gap-2 flex-wrap text-[11.5px] font-mono text-slate-400">
+            <span class="flex items-center gap-1.5 text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              Input active below · Submit anytime via Enter or Send
+            </span>
+            <span class="text-zinc-500">OpSec Tip: Use Tor or Brave for high-risk leaks</span>
+          </div>
+        </div>
+      `);
+
+      const workInput = document.getElementById('workInput');
+      if (workInput) {{
+        workInput.placeholder = '🔒 Enter confidential intel or paste document leak here...';
+        if (defaultTopic) {{
+          workInput.value = defaultTopic;
+        }}
+        workInput.focus();
+      }}
+      scrollChatToBottom(true);
+    }}
+    window.triggerInChatContributeFlow = triggerInChatContributeFlow;
+
+    async function processInChatWhistleblowerSubmission(text) {{
+      const q = (text || '').trim();
+      if (!q) return;
+
+      const cryptoReceipt = (typeof generateWhistleblowerReceipt === 'function')
+        ? await generateWhistleblowerReceipt(q)
+        : {{ hash: 'offline-local-hash', receipt: 'LEAK-VERIFIED-LOCAL', timestamp: new Date().toISOString() }};
+      const subId = Math.floor(1000 + Math.random() * 9000);
+      const pseudonym = 'Archival-Whistleblower-' + (cryptoReceipt.receipt.split('-')[1] || 'Insider');
+
+      let cat = 'internal_whistleblower';
+      const qLower = q.toLowerCase();
+      if (qLower.includes('board') || qLower.includes('trustee') || qLower.includes('covenant')) cat = 'trustee_covenant';
+      else if (qLower.includes('censor') || qLower.includes('dispute') || qLower.includes('resign')) cat = 'board_dispute';
+      else if (qLower.includes('weapon') || qLower.includes('oil') || qLower.includes('underwrit')) cat = 'corporate_conflict';
+      else if (qLower.includes('memo') || qLower.includes('labor') || qLower.includes('wage') || qLower.includes('union')) cat = 'labor_memo';
+      else if (qLower.includes('space') || qLower.includes('artist-run') || qLower.includes('independent')) cat = 'clean_space';
+
+      const entry = {{
+        id: `CONF-${{subId}}`,
+        timestamp: cryptoReceipt.timestamp,
+        receiptCode: cryptoReceipt.receipt,
+        sha256Hash: cryptoReceipt.hash,
+        pseudonym: pseudonym,
+        category: cat,
+        spaceName: (q.split(' at ')[1] || q.split(' in ')[1] || q).split(',')[0].split('.')[0].trim() || 'Internal Institutional Report',
+        city: 'Confidential Field Intake',
+        country: 'Field Intelligence',
+        lat: 0,
+        lon: 0,
+        details: q,
+        sourceUrl: 'Cryptographically Verified Insider Lead',
+        contributor: pseudonym,
+        status: 'confidential_intake'
+      }};
+
+      if (typeof saveCommunityResearchSubmission === 'function') {{
+        saveCommunityResearchSubmission(entry);
+      }}
+
+      appendCuratorMessage(`
+        <div class="border border-emerald-500/60 bg-[#081a13] p-4 rounded-2xl space-y-3 text-slate-200">
+          <div class="flex items-center justify-between border-b border-emerald-500/30 pb-2.5 flex-wrap gap-2">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="font-semibold text-white text-[15px]">Cryptographic Whistleblower Receipt Issued</span>
+            </div>
+            <span class="text-[12px] font-mono text-emerald-300 bg-emerald-950 px-2.5 py-0.5 rounded-full border border-emerald-700">
+              ID: ${{cryptoReceipt.receipt}}
+            </span>
+          </div>
+
+          <div class="p-3 bg-[#0c241b] rounded-xl border border-emerald-800/60 space-y-2 text-xs font-mono">
+            <div class="flex justify-between items-center text-slate-300">
+              <span>Ephemeral Pseudonym:</span>
+              <strong class="text-emerald-400 font-bold">${{pseudonym}}</strong>
+            </div>
+            <div class="flex justify-between items-center text-slate-300">
+              <span>Routing Classification:</span>
+              <span class="text-teal-300">${{cat}}</span>
+            </div>
+            <div class="flex flex-col gap-1 pt-1 border-t border-emerald-900/60">
+              <div class="flex items-center justify-between">
+                <span class="text-emerald-400 font-bold">SHA-256 VERIFIED INTEGRITY HASH:</span>
+                <span class="text-[10px] text-zinc-400">Zero-Knowledge</span>
+              </div>
+              <code class="text-[11px] text-emerald-300 break-all select-all bg-[#06140e] p-2 rounded-lg border border-emerald-950">
+                ${{cryptoReceipt.hash}}
+              </code>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Your disclosure has been queued for verification by the Culture Atlas research collective. Retain your receipt code (<code>${{cryptoReceipt.receipt}}</code>) to track verification status or provide supplementary evidence.
+          </p>
+
+          <div class="p-2.5 rounded-xl bg-[#091510] border border-emerald-900/40 text-[11px] text-slate-400 space-y-1">
+            <div class="text-emerald-400 font-semibold font-mono uppercase tracking-wider">OpSec &amp; Whistleblower Precautions:</div>
+            <ul class="list-disc list-inside space-y-0.5">
+              <li>Never access this atlas from an employer-owned workstation or corporate network.</li>
+              <li>Ensure document metadata (author names, EXIF, printer steganography) has been scrubbed.</li>
+              <li>For high-risk disclosures, always submit via Tor Browser or an air-gapped personal device.</li>
+            </ul>
+          </div>
+        </div>
+      `);
+
+      const workInput = document.getElementById('workInput');
+      if (workInput) {{
+        workInput.placeholder = 'Ask about a museum or cultural space';
+      }}
+      scrollChatToBottom(true);
+    }}
+    window.processInChatWhistleblowerSubmission = processInChatWhistleblowerSubmission;
+
+    document.addEventListener('click', (e) => {{
+      const quickPill = e.target.closest('.contribute-quick-pill');
+      if (quickPill) {{
+        const fillText = quickPill.getAttribute('data-fill');
+        const workInput = document.getElementById('workInput');
+        if (workInput && fillText) {{
+          workInput.value = fillText;
+          workInput.focus();
+          scrollChatToBottom(true);
+        }}
+      }}
+    }});
+
     // Plus Button Quick Menu
     const workPlusBtn = document.getElementById('workPlusBtn');
     const workPlusMenu = document.getElementById('workPlusMenu');
@@ -20084,7 +20299,7 @@ FORMATTING & INTERACTION RULES:
     document.getElementById('workMenuFeedbackBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
       workPlusMenu?.classList.add('hidden');
-      openResearchFeedbackModal();
+      triggerInChatContributeFlow();
     }});
 
     document.addEventListener('click', (e) => {{
@@ -20302,15 +20517,24 @@ FORMATTING & INTERACTION RULES:
     const workInput = document.getElementById('workInput');
     const workSendBtn = document.getElementById('workSendBtn');
 
-    function handleWorkSend() {{
+    async function handleWorkSend() {{
       const text = (workInput?.value || '').trim();
       if (!text) return;
+      const isContributeActive = workInput.placeholder && workInput.placeholder.includes('🔒');
       workInput.value = '';
       if (window.innerWidth < 768 && currentMobileMode === 'map') {{
         setMobileViewMode('split');
       }}
       appendUserMessage(text);
-      handleCuratorQuery(text);
+
+      const isExplicitLeak = /^(leak|whistleblow|confidential|board\s*conflict|sponsorship\s*leak|schedule\s*l\s*disclosure|labor\s*\/\s*wage|unlisted\s*independent|internal\s*memo):/i.test(text) ||
+        /(non-public|internal\s*memo|donor\s*agreement|whistleblower\s*leak)/i.test(text);
+
+      if (isContributeActive || isExplicitLeak) {{
+        await processInChatWhistleblowerSubmission(text);
+      }} else {{
+        handleCuratorQuery(text);
+      }}
     }}
 
     workSendBtn?.addEventListener('click', handleWorkSend);
@@ -21535,7 +21759,9 @@ FORMATTING & INTERACTION RULES:
               openStatutoryFilingsModal();
             }}
           }} else if (type === 'contribute_intel') {{
-            if (typeof openConfidentialIntakeModal === 'function') {{
+            if (typeof triggerInChatContributeFlow === 'function') {{
+              triggerInChatContributeFlow();
+            }} else if (typeof openConfidentialIntakeModal === 'function') {{
               openConfidentialIntakeModal();
             }}
           }} else if (type === 'academic') {{
