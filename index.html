@@ -12935,25 +12935,25 @@ return maplibregl$1;
               </span>
             </div>
 
-            <!-- Operating Budget Scale Banner -->
-            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#080d16] border border-[#162234]">
+            <!-- Operating Budget Scale (Clean header, no nested box) -->
+            <div class="flex items-baseline justify-between pt-0.5">
               <div>
-                <span class="text-[10px] font-mono text-slate-400 block uppercase">Operating Budget Scale</span>
-                <span class="text-white font-medium text-[13.5px] font-mono">
+                <span class="text-[10px] font-mono text-slate-400 block uppercase tracking-wider">Operating Budget Scale</span>
+                <span class="text-white font-medium text-[15px] font-mono">
                   ${escapeHtml(inst.financial_data ? inst.financial_data.operating_budget_display : (inst.funding || 'Civic Budget'))}
                 </span>
               </div>
               <a href="${escapeHtml(inst.audit_dossier_url || '#')}" target="_blank" rel="noopener noreferrer" 
-                 class="text-[11px] font-mono text-sky-400 hover:text-white bg-sky-950/80 border border-sky-800/60 px-2 py-1 rounded-lg transition flex items-center gap-1">
+                 class="text-[11.5px] font-mono text-sky-400 hover:text-white hover:underline transition flex items-center gap-1">
                 <span>Form 990 / Audit ↗</span>
               </a>
             </div>
 
             <!-- Revenue Mix Breakdown -->
-            <div class="space-y-1.5">
+            <div class="space-y-1.5 pt-1">
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-300">
                 <span class="text-slate-400 uppercase">Revenue Mix Architecture</span>
-                <span class="text-sky-300">${inst.financial_data ? inst.financial_data.public_subsidies_pct : 60}% Public Subsidies</span>
+                <span class="text-sky-300 font-semibold">${inst.financial_data ? inst.financial_data.public_subsidies_pct : 60}% Public Subsidies</span>
               </div>
               <div class="w-full h-2 rounded-full bg-[#162234] overflow-hidden flex">
                 <div class="bg-blue-500 h-full" style="width: ${inst.financial_data ? inst.financial_data.public_subsidies_pct : 60}%" title="Public / Civic Subsidies"></div>
@@ -12967,17 +12967,17 @@ return maplibregl$1;
               </div>
             </div>
 
-            <!-- Expenditure & Operating Ratios -->
-            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono pt-1">
-              <div class="p-2 rounded-lg bg-[#080d16] border border-[#162234]">
-                <span class="text-slate-400 block text-[10px]">PROGRAM SPEND RATIO</span>
-                <span class="text-emerald-400 font-bold text-[13px]">${inst.financial_data ? inst.financial_data.program_expense_ratio_pct : 78}%</span>
-                <span class="text-slate-500 block text-[9.5px]">Direct mission & art programs</span>
+            <!-- Expenditure & Operating Ratios (Clean typography, no nested boxes) -->
+            <div class="grid grid-cols-2 gap-3 text-[11px] font-mono pt-1 border-t border-[#1b2b40]/60">
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase mb-0.5">PROGRAM SPEND RATIO</span>
+                <span class="text-emerald-400 font-bold text-[14px] leading-tight block">${inst.financial_data ? inst.financial_data.program_expense_ratio_pct : 78}%</span>
+                <span class="text-slate-500 block text-[10px]">Direct mission & art programs</span>
               </div>
-              <div class="p-2 rounded-lg bg-[#080d16] border border-[#162234]">
-                <span class="text-slate-400 block text-[10px]">ADMIN & OVERHEAD</span>
-                <span class="${(inst.financial_data && inst.financial_data.administrative_overhead_pct > 20) ? 'text-amber-400' : 'text-slate-200'} font-bold text-[13px]">${inst.financial_data ? inst.financial_data.administrative_overhead_pct : 15}%</span>
-                <span class="text-slate-500 block text-[9.5px]">${inst.financial_data ? inst.financial_data.fundraising_cost_pct : 7}% fundraising overhead</span>
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase mb-0.5">ADMIN & OVERHEAD</span>
+                <span class="${(inst.financial_data && inst.financial_data.administrative_overhead_pct > 20) ? 'text-amber-400' : 'text-slate-200'} font-bold text-[14px] leading-tight block">${inst.financial_data ? inst.financial_data.administrative_overhead_pct : 15}%</span>
+                <span class="text-slate-500 block text-[10px]">${inst.financial_data ? inst.financial_data.fundraising_cost_pct : 7}% fundraising overhead</span>
               </div>
             </div>
 
@@ -13026,22 +13026,22 @@ return maplibregl$1;
               ${escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.summary : (inst.curatorial_focus || 'Permanent primary research collection documentation.'))}
             </div>
 
-            <!-- Architectural Metadata Pills -->
-            <div class="grid grid-cols-2 gap-2 text-[11.5px] font-mono pt-1">
-              <div class="p-2 rounded-lg bg-[#0a0f17] border border-[#1a2536]">
-                <span class="text-slate-400 block text-[10px]">BUILDING STYLE</span>
-                <span class="text-white truncate block font-medium">${escapeHtml(inst.building_architecture ? (inst.building_architecture.architectural_style || 'Independent Loft') : 'Loft / Gallery')}</span>
+            <!-- Architectural Metadata (Clean typography, no nested boxes) -->
+            <div class="grid grid-cols-2 gap-3 text-[11.5px] font-mono pt-1 border-t border-[#1f2d40]/60">
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase mb-0.5">BUILDING STYLE</span>
+                <span class="text-white truncate block font-medium text-[13px]">${escapeHtml(inst.building_architecture ? (inst.building_architecture.architectural_style || 'Independent Loft') : 'Loft / Gallery')}</span>
               </div>
-              <div class="p-2 rounded-lg bg-[#0a0f17] border border-[#1a2536]">
-                <span class="text-slate-400 block text-[10px]">FOOTPRINT & FLOORS</span>
-                <span class="text-white block font-medium">${inst.building_architecture ? (inst.building_architecture.footprint_sqm || 1800).toLocaleString() : '1,800'} m² · ${inst.building_architecture ? (inst.building_architecture.floors || 2) : 2} Floors</span>
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase mb-0.5">FOOTPRINT & FLOORS</span>
+                <span class="text-white block font-medium text-[13px]">${inst.building_architecture ? (inst.building_architecture.footprint_sqm || 1800).toLocaleString() : '1,800'} m² · ${inst.building_architecture ? (inst.building_architecture.floors || 2) : 2} Floors</span>
               </div>
             </div>
 
-            <!-- Public Reading Room Policy -->
-            <div class="p-2 rounded-lg bg-[#09151e] border border-[#133045] text-[11.5px]">
-              <span class="text-[#38bdf8] font-mono font-bold block text-[10.5px] uppercase">Reading Room & Access Policy:</span>
-              <p class="text-slate-200 mt-0.5 leading-snug">
+            <!-- Public Reading Room Policy (Clean typography, no nested box) -->
+            <div class="pt-1 border-t border-[#1f2d40]/60 text-[11.5px]">
+              <span class="text-[#38bdf8] font-mono font-bold block text-[10.5px] uppercase mb-0.5">Reading Room & Access Policy:</span>
+              <p class="text-slate-200 leading-snug">
                 ${escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.reading_room_policy : 'Free public study room and curatorial library open during exhibition hours.')}
               </p>
             </div>
