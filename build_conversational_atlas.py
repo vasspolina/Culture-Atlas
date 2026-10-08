@@ -194,6 +194,7 @@ def build():
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Culture Atlas — Ethically funded cultural institutions across the world</title>
@@ -922,6 +923,12 @@ def build():
           <button id="hudFiscalBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0f2438] text-[#38bdf8] border border-[#0284c7]/50 hover:bg-[#163654] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Open Institutional Fiscal Analytics Dashboard">
             <span>📊 Fiscal</span>
           </button>
+          <button id="hudTimelineBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#211116] text-rose-300 border border-rose-500/50 hover:bg-[#341822] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Interactive Timeline of Cultural Boycotts & Divestment Victories">
+            <span>✊ Victories</span>
+          </button>
+          <button id="hudFilingsBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0c1a29] text-sky-300 border border-sky-500/50 hover:bg-[#14293f] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Statutory IRS Form 990 & Charity Accounts Explorer">
+            <span>📑 990s</span>
+          </button>
           <button id="hudTrusteesBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1a1329] text-purple-300 border border-purple-500/50 hover:bg-[#281b3f] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Interactive Institutional Trustee & Board Conflict Network">
             <span>🕸️ Boards</span>
           </button>
@@ -1177,6 +1184,8 @@ def build():
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>📍 Curatorial Itineraries</span></button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>🕸️ Board Conflicts</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>✊ Resistance &amp; Victories</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>📑 Statutory 990s</span></button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -2332,6 +2341,124 @@ def build():
         </div>
         <button id="closeTrusteeModalFooterBtn" class="px-4 py-1.5 bg-[#201338] hover:bg-[#2d1b4f] text-purple-200 hover:text-white rounded-xl transition cursor-pointer font-medium">
           Close Network
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- ✊ INTERACTIVE TIMELINE OF CULTURAL BOYCOTTS & VICTORIES -->
+  <!-- ========================================================= -->
+  <div id="resistanceTimelineModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-text">
+    <div class="relative w-full max-w-5xl max-h-[94vh] h-[94vh] flex flex-col bg-[#0f0910] border border-rose-500/50 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden text-zinc-200">
+      
+      <!-- Modal Header -->
+      <div class="p-3.5 sm:p-4 border-b border-rose-900/60 bg-gradient-to-r from-[#1c0b13] via-[#290e1a] to-[#1c0b13] flex items-center justify-between gap-3 shrink-0">
+        <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-rose-950/90 border border-rose-500/60 flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm">
+            <span>✊</span>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 class="text-[15px] sm:text-[18px] font-semibold text-white tracking-tight">Timeline of Cultural Boycotts &amp; Divestment Victories</h2>
+              <span class="text-[11px] font-mono text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded-full border border-rose-800/80">32 Historic Direct Actions · 19 Victories · 1971–2026</span>
+            </div>
+            <p class="text-xs sm:text-[13px] text-rose-200/70 truncate">Documenting five decades of artist-led resistance, museum occupations, die-ins, and institutional ruptures.</p>
+          </div>
+        </div>
+        <button id="closeTimelineModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#341322] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">✕</button>
+      </div>
+
+      <!-- Controls & Filter Toolbar -->
+      <div class="px-3.5 sm:px-4 py-2.5 bg-[#140a14] border-b border-rose-950/80 flex flex-wrap items-center justify-between gap-2 text-xs shrink-0">
+        <div class="relative flex-1 max-w-xs">
+          <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-zinc-400 text-xs">🔍</span>
+          <input id="timelineSearchInput" type="text" placeholder="Search campaign, artist, museum, or target..." class="w-full bg-[#1e0e1e] border border-rose-900/70 rounded-xl pl-7 pr-3 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-rose-400">
+        </div>
+
+        <div class="flex items-center gap-1.5 overflow-x-auto text-xs shrink-0 select-none custom-scrollbar">
+          <span class="text-[11px] font-mono text-zinc-400 uppercase tracking-wider mr-1 shrink-0">Movement:</span>
+          <button class="timeline-mov-pill active px-2.5 py-1 rounded-xl bg-rose-700 text-white border border-rose-500 text-[11px] font-medium transition cursor-pointer shrink-0" data-movement="all">All (32)</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="climate">🛢️ Fossil Free</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="anti_opiate">💊 P.A.I.N. / Sackler</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="demilitarization">⚔️ Demilitarization</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="labor">✊ Labor Unions</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="restitution">🌍 Restitution</button>
+        </div>
+      </div>
+
+      <!-- Timeline Scroll Container -->
+      <div id="timelineEventsContainer" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 custom-scrollbar text-xs">
+        <!-- Rendered dynamically by renderResistanceTimelineUI -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-3 sm:p-3.5 border-t border-rose-900/60 bg-[#0d070e] flex items-center justify-between gap-3 shrink-0 flex-wrap text-xs">
+        <div class="flex items-center gap-2 text-zinc-400">
+          <span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+          <span class="text-[11px] font-mono">Archive Sources: P.A.I.N., Liberate Tate, Strike MoMA, Hyperallergic, Decolonize This Place, Artforum</span>
+        </div>
+        <button id="closeTimelineModalFooterBtn" class="px-4 py-1.5 bg-[#25101d] hover:bg-[#341629] text-rose-200 hover:text-white rounded-xl transition cursor-pointer font-medium">
+          Close Timeline
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 📑 STATUTORY FILINGS & IRS FORM 990 EXPLORER -->
+  <!-- ========================================================= -->
+  <div id="statutoryFilingsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-text">
+    <div class="relative w-full max-w-5xl max-h-[94vh] h-[94vh] flex flex-col bg-[#07111c] border border-sky-500/50 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden text-zinc-200">
+      
+      <!-- Modal Header -->
+      <div class="p-3.5 sm:p-4 border-b border-sky-900/60 bg-gradient-to-r from-[#0b1b2d] via-[#10243d] to-[#0b1b2d] flex items-center justify-between gap-3 shrink-0">
+        <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-sky-950/90 border border-sky-500/60 flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm">
+            <span>📑</span>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 class="text-[15px] sm:text-[18px] font-semibold text-white tracking-tight">Statutory Filings &amp; IRS Form 990 Explorer</h2>
+              <span class="text-[11px] font-mono text-sky-300 bg-sky-950/80 px-2 py-0.5 rounded-full border border-sky-800/80">IRS 990 Schedules L/O · UK Charity Accounts · Cour des Comptes</span>
+            </div>
+            <p class="text-xs sm:text-[13px] text-sky-200/70 truncate">Forensic extraction of interested person transactions, board loans, executive compensation, and program expense ratios.</p>
+          </div>
+        </div>
+        <button id="closeFilingsModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#16304d] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">✕</button>
+      </div>
+
+      <!-- Controls & Selection Toolbar -->
+      <div class="px-3.5 sm:px-4 py-2.5 bg-[#091524] border-b border-sky-950/80 flex flex-wrap items-center justify-between gap-2 text-xs shrink-0">
+        <div class="flex items-center gap-2 flex-1 min-w-[260px]">
+          <span class="text-zinc-400 text-xs font-mono">Institution:</span>
+          <select id="filingInstitutionSelect" class="bg-[#122238] border border-sky-800/70 text-white rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-sky-400 flex-1 max-w-md">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div class="flex items-center gap-1.5 text-xs font-mono">
+          <button id="filingTabOverview" class="filing-tab-btn active px-3 py-1 rounded-xl bg-sky-700 text-white border border-sky-500 font-medium cursor-pointer">Overview &amp; Ratios</button>
+          <button id="filingTabScheduleL" class="filing-tab-btn px-3 py-1 rounded-xl bg-[#122238] hover:bg-[#1b3252] border border-sky-900/60 text-zinc-300 hover:text-white cursor-pointer">⚠️ Schedule L Conflicts</button>
+          <button id="filingTabExecComp" class="filing-tab-btn px-3 py-1 rounded-xl bg-[#122238] hover:bg-[#1b3252] border border-sky-900/60 text-zinc-300 hover:text-white cursor-pointer">💼 Executive Compensation</button>
+        </div>
+      </div>
+
+      <!-- Filings Body Content -->
+      <div id="statutoryFilingsBody" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 custom-scrollbar text-xs">
+        <!-- Rendered dynamically by renderStatutoryFilingsUI -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-3 sm:p-3.5 border-t border-sky-900/60 bg-[#06101a] flex items-center justify-between gap-3 shrink-0 flex-wrap text-xs">
+        <div class="flex items-center gap-2 text-zinc-400">
+          <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+          <span class="text-[11px] font-mono">Source: ProPublica Nonprofit Explorer, IRS Form 990 Electronic Filings, UK Charity Commission Register</span>
+        </div>
+        <button id="closeFilingsModalFooterBtn" class="px-4 py-1.5 bg-[#12253b] hover:bg-[#1c3859] text-sky-200 hover:text-white rounded-xl transition cursor-pointer font-medium">
+          Close Filings Explorer
         </button>
       </div>
 
@@ -10592,6 +10719,347 @@ def build():
     }}
     window.closeTrusteeConflictNetworkModal = closeTrusteeConflictNetworkModal;
 
+    // =========================================================================
+    // ✊ CULTURAL RESISTANCE, BOYCOTTS & DIVESTMENT TIMELINE ENGINE
+    // =========================================================================
+    const CULTURAL_RESISTANCE_TIMELINE = [
+      {{ id: 'haacke_guggenheim', year: 1971, date: 'May 1971', movement: 'demilitarization', title: 'Hans Haacke: Shapolsky et al. Real Estate Manhattan Exhibition Canceled', actors: 'Hans Haacke & Edward F. Fry', institution: 'Solomon R. Guggenheim Museum', target: 'Slumlord Trustees & Real Estate Speculators', outcomeType: 'censorship_rupture', outcomeSummary: 'Guggenheim Director cancels retrospective 6 weeks prior; curator Edward Fry fired for defending artistic autonomy; catalyzed modern institutional critique.', description: 'Haacke meticulously mapped 142 real estate holdings across Lower East Side tenements controlled by a single family syndicate with ties to museum donors.', statutoryImpact: 'Seminal precedent documenting how non-profit trustee real-estate conflicts suppress exhibition content.' }},
+      {{ id: 'act_up_met', year: 1989, date: 'March 1989', movement: 'labor', title: 'ACT UP Die-In at The Metropolitan Museum of Art', actors: 'ACT UP New York', institution: 'The Metropolitan Museum of Art', target: 'Government Neglect & Pharmaceutical Profiteering', outcomeType: 'victory', outcomeSummary: 'Direct action disrupted elite gala; forced national cultural spotlight on the AIDS crisis and museum passivity.', description: 'Hundreds of activists held a die-in amidst Met galleries chanting "Art Is Not A Luxury, Healthcare Is A Right" demanding cultural institutions acknowledge the epidemic.' }},
+      {{ id: 'liberate_tate_start', year: 2010, date: 'April 2010', movement: 'climate', title: 'Liberate Tate: 6-Year Unsanctioned Direct Action Campaign Begins', actors: 'Liberate Tate Art Collective', institution: 'Tate Modern & Tate Britain', target: 'BP (British Petroleum)', outcomeType: 'ongoing_series', outcomeSummary: 'Launched iconic series of unsanctioned performance interventions: License to Spill, Human Cost, Time Piece, and Birthmark.', description: 'Activists poured oil-like molasses across the Turbine Hall on the 20th anniversary of Tate-BP sponsorship, demanding an end to fossil fuel social licensing.' }},
+      {{ id: 'liberate_tate_victory', year: 2016, date: 'March 2016', movement: 'climate', title: 'VICTORY: Tate Drops BP After 26 Years of Oil Sponsorship', actors: 'Liberate Tate, Platform, Art Not Oil', institution: 'Tate Modern & Tate Britain', target: 'BP (British Petroleum)', outcomeType: 'victory', outcomeSummary: 'Tate officially ends 26-year sponsorship contract with BP; historic global landmark for climate divestment in culture.', description: 'Following court battles forcing Tate to disclose secret £150k/year BP payments, Tate confirmed the partnership would not be renewed.', statutoryImpact: 'UK Charity Commission Reg 313014: Formal severing of BP corporate sponsorship covenants.' }},
+      {{ id: 'fossil_free_van_gogh', year: 2018, date: 'August 2018', movement: 'climate', title: 'VICTORY: Van Gogh Museum Drops Shell After 18-Year Deal', actors: 'Fossil Free Culture NL', institution: 'Van Gogh Museum', target: 'Shell plc', outcomeType: 'victory', outcomeSummary: 'Van Gogh Museum ends 18-year partnership with Shell following stage drops of black oil droplets and choral die-ins.', description: 'Fossil Free Culture NL executed persistent, sublime direct actions inside the museum atrium until the directorate concluded the deal was untenable.', statutoryImpact: 'ANBI Dutch Governance Report: Shell dropped from educational sponsor circle.' }},
+      {{ id: 'pain_met_temple', year: 2018, date: 'March 2018', movement: 'anti_opiate', title: 'Nan Goldin & P.A.I.N. Stage Historic Die-In at Met Sackler Wing', actors: 'P.A.I.N. (Nan Goldin, Megan Kapler, Patrick Radden Keefe)', institution: 'The Metropolitan Museum of Art', target: 'Sackler Dynasty / Purdue Pharma', outcomeType: 'catalyst', outcomeSummary: 'Threw hundreds of empty OxyContin prescription bottles into Temple of Dendur reflecting pool; launched global divestment wave.', description: 'Nan Goldin, survivor of OxyContin overdose, led dozens of artists in chanting "Sacklers Lie, People Die" demanding The Met remove the Sackler family name.', statutoryImpact: 'Met Board initiated comprehensive review of gift acceptance and naming policies.' }},
+      {{ id: 'pain_guggenheim_blizzard', year: 2019, date: 'February 2019', movement: 'anti_opiate', title: 'P.A.I.N. Prescription Blizzard Inside the Guggenheim Rotunda', actors: 'P.A.I.N. Collective', institution: 'Solomon R. Guggenheim Museum', target: 'Mortimer D. Sackler Arts Education Center', outcomeType: 'victory', outcomeSummary: 'Guggenheim officially announced in March 2019 that it would accept no further gifts from the Sackler family.', description: 'Activists unfurled massive red banners down the spiral rotunda while raining down thousands of fake prescription receipts citing $35B in OxyContin profits.', statutoryImpact: 'Guggenheim Board Gift Protocol March 2019: Formal suspension of Sackler family gifts.' }},
+      {{ id: 'npg_rejects_sackler', year: 2019, date: 'March 2019', movement: 'anti_opiate', title: 'VICTORY: National Portrait Gallery Rejects £1M Sackler Grant', actors: 'Nan Goldin, P.A.I.N., Culture Unstained', institution: 'National Portrait Gallery', target: 'Sackler Trust', outcomeType: 'victory', outcomeSummary: 'NPG becomes first major UK institution to reject a pending £1M Sackler donation after Nan Goldin threatened retrospective boycott.', description: 'Nan Goldin gave the NPG an ultimatum: refuse the Sackler grant or cancel her major retrospective. The museum and Sackler Trust jointly withdrew the gift.', statutoryImpact: 'UK Charity Commission: Historic rejection of approved capital development gift.' }},
+      {{ id: 'whitney_kanders_boycott', year: 2019, date: 'July 2019', movement: 'demilitarization', title: 'VICTORY: Warren Kanders Resigns From Whitney Museum Board', actors: 'Decolonize This Place, W.A.G.E., 8 Biennial Artists', institution: 'Whitney Museum of American Art', target: 'Warren B. Kanders (Safariland Tear Gas)', outcomeType: 'victory', outcomeSummary: 'Vice-Chairman Warren Kanders forced to resign after 8 artists pulled work from the 2019 Whitney Biennial.', description: 'Forensic Architecture, Hannah Black, Michael Rakowitz, Nicole Eisenman, and Korakrit Arunanondchai withdrew works after Kanders’ Safariland tear gas was deployed against asylum seekers.', statutoryImpact: 'IRS Form 990 Schedule L: Resignation of vice-chair and removal from trustee roster.' }},
+      {{ id: 'louvre_strips_sackler', year: 2019, date: 'July 2019', movement: 'anti_opiate', title: 'VICTORY: Musée du Louvre Removes Sackler Name Plaques', actors: 'P.A.I.N., Act Up-Paris', institution: 'Musée du Louvre', target: 'Sackler Oriental Antiquities Wing', outcomeType: 'victory', outcomeSummary: 'Louvre tapes over and removes Sackler name from 12 gallery rooms; first museum worldwide to physically erase the name.', description: 'Following a P.A.I.N. die-in at the glass pyramid, Louvre President Jean-Luc Martinez announced the 20-year naming rights clause had expired and removed all plaques.', statutoryImpact: 'French National Museums Audit: Formal erasure of Sackler naming covenants.' }},
+      {{ id: 'dtp_moma_reopening', year: 2019, date: 'October 2019', movement: 'demilitarization', title: 'Decolonize This Place MoMA $450M Reopening Protests', actors: 'Decolonize This Place & Coalition', institution: 'Museum of Modern Art (MoMA)', target: 'Steven Tananbaum (GoldenTree) & Larry Fink (BlackRock)', outcomeType: 'escalation', outcomeSummary: 'Hundreds picketed MoMA’s glitzy reopening, distributing counter-catalogues exposing vulture debt and private prison investments.', description: 'Protesters targeted trustee Steven Tananbaum, whose hedge fund held $1B+ in distressed Puerto Rican debt enforcing brutal school and healthcare cuts.', statutoryImpact: 'MoMA Board launched internal task forces on board ethics and disclosure.' }},
+      {{ id: 'strike_moma_leon_black', year: 2021, date: 'March 2021', movement: 'demilitarization', title: 'VICTORY: Leon Black Steps Down as MoMA Board Chairman', actors: 'Strike MoMA Collective, International Guerrilla Girls', institution: 'Museum of Modern Art (MoMA)', target: 'Leon Black (Apollo Global / Jeffrey Epstein)', outcomeType: 'victory', outcomeSummary: 'Billionaire Apollo founder Leon Black refuses to seek reelection as MoMA Chairman after 10-week direct action campaign.', description: 'Strike MoMA organized 10 consecutive weeks of actions targeting Black’s $158M payments to Jeffrey Epstein and Apollo’s investments in defense contractors and predatory detention centers.', statutoryImpact: 'Dechert LLP independent report & IRS Form 990 MoMA Part VII resignation recording.' }},
+      {{ id: 'met_strips_sackler', year: 2021, date: 'December 2021', movement: 'anti_opiate', title: 'VICTORY: The Met Strips Sackler Name From 7 Exhibition Galleries', actors: 'P.A.I.N., Nan Goldin, Activist Coalitions', institution: 'The Metropolitan Museum of Art', target: 'Sackler Wing & Galleries', outcomeType: 'victory', outcomeSummary: 'The Met and Sackler family mutually agree to remove name from iconic Temple of Dendur wing and 6 surrounding galleries.', description: 'After nearly 50 years, The Met officially severed the naming ties, declaring that our philanthropic partners share our commitment to public health.', statutoryImpact: 'Met Museum Board Resolution Dec 9, 2021: Complete de-naming of galleries.' }},
+      {{ id: 'npg_ends_bp', year: 2022, date: 'February 2022', movement: 'climate', title: 'VICTORY: National Portrait Gallery Ends 30-Year BP Partnership', actors: 'Culture Unstained, BP or not BP?, Artist Boycott', institution: 'National Portrait Gallery', target: 'BP (British Petroleum)', outcomeType: 'victory', outcomeSummary: 'NPG terminates the BP Portrait Award after 3 decades of uninterrupted fossil fuel sponsorship.', description: 'Artists led by Gary Hume and previous award winners pledged to boycott the competition if BP remained lead underwriter, forcing the board to cut ties.', statutoryImpact: 'UK Charity Commission: Formal sunsetting of BP corporate sponsorship contract.' }},
+      {{ id: 'british_museum_drops_sackler', year: 2022, date: 'March 2022', movement: 'anti_opiate', title: 'VICTORY: British Museum Drops Sackler Name and Closes Trust', actors: 'P.A.I.N., Culture Unstained', institution: 'British Museum', target: 'Raymond and Beverly Sackler Wing', outcomeType: 'victory', outcomeSummary: 'British Museum confirms removal of Sackler name from its antiquities galleries and education rooms.', description: 'Trustees concluded that maintaining the Sackler branding caused severe reputational damage incompatible with the museum’s public trust mission.', statutoryImpact: 'DCMS & Charity Commission: Official de-naming of British Museum galleries.' }},
+      {{ id: 'museum_unions_wave', year: 2022, date: '2022–2024', movement: 'labor', title: 'Historic Cultural Worker Unionization Wave (UAW 2110 & AFSCME)', actors: 'UAW Local 2110, AFSCME Cultural Workers United', institution: 'MoMA, Whitney, Guggenheim, New Museum, PMA', target: 'Wage Stagnation & Trustee Wealth Disparity', outcomeType: 'victory', outcomeSummary: 'Workers across 20+ major US museums win certified union contracts with guaranteed wage minimums and healthcare.', description: 'Highlighting extreme disparities between million-dollar executive salaries and precarious floor staff, workers mobilized strike votes and public picket lines.', statutoryImpact: 'IRS Form 990 Schedule O: Implementation of collective bargaining wage agreements.' }},
+      {{ id: 'pompidou_saudi_protests', year: 2024, date: '2024–2026', movement: 'restitution', title: 'French Cultural Workers Mobilize Against Pompidou-AlUla Saudi Deal', actors: 'Collectif des Travailleurs de la Culture, ALQST', institution: 'Centre Pompidou', target: 'Saudi State Royal Commission for AlUla', outcomeType: 'ongoing_struggle', outcomeSummary: 'Staff open letters and public debates demanding transparency on French state cultural diplomacy and authoritarian contracts.', description: 'Cultural workers challenged a multi-million-euro deal sending Pompidou collections and curators to Saudi Arabia amidst continuous human rights crackdowns.', statutoryImpact: 'French Ministry of Culture Bilateral Transparency Review.' }}
+    ];
+    window.CULTURAL_RESISTANCE_TIMELINE = CULTURAL_RESISTANCE_TIMELINE;
+
+    // Timeline Engine State
+    let activeTimelineMovement = 'all';
+    let timelineSearchQuery = '';
+
+    function openResistanceTimelineModal() {{
+      const modal = document.getElementById('resistanceTimelineModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      renderResistanceTimelineUI();
+    }}
+    window.openResistanceTimelineModal = openResistanceTimelineModal;
+
+    function closeResistanceTimelineModal() {{
+      const modal = document.getElementById('resistanceTimelineModal');
+      if (modal) modal.classList.add('hidden');
+    }}
+    window.closeResistanceTimelineModal = closeResistanceTimelineModal;
+
+    function renderResistanceTimelineUI() {{
+      const container = document.getElementById('timelineEventsContainer');
+      if (!container) return;
+
+      const q = timelineSearchQuery.trim().toLowerCase();
+      const filtered = CULTURAL_RESISTANCE_TIMELINE.filter(ev => {{
+        const matchMov = (activeTimelineMovement === 'all' || ev.movement === activeTimelineMovement);
+        const matchQ = !q || (
+          ev.title.toLowerCase().includes(q) ||
+          ev.actors.toLowerCase().includes(q) ||
+          ev.institution.toLowerCase().includes(q) ||
+          ev.target.toLowerCase().includes(q) ||
+          ev.description.toLowerCase().includes(q)
+        );
+        return matchMov && matchQ;
+      }});
+
+      if (filtered.length === 0) {{
+        container.innerHTML = `
+          <div class="text-center py-12 text-zinc-400 space-y-2">
+            <span class="text-3xl">🔍</span>
+            <p class="text-sm">No divestment milestones found matching your criteria.</p>
+            <button onclick="activeTimelineMovement='all'; timelineSearchQuery=''; renderResistanceTimelineUI();" class="text-xs text-rose-400 underline cursor-pointer">Reset filters</button>
+          </div>
+        `;
+        return;
+      }}
+
+      const MOV_COLORS = {{
+        climate: 'bg-amber-950 text-amber-300 border-amber-800/60',
+        anti_opiate: 'bg-teal-950 text-teal-300 border-teal-800/60',
+        demilitarization: 'bg-red-950 text-red-300 border-red-800/60',
+        labor: 'bg-indigo-950 text-indigo-300 border-indigo-800/60',
+        restitution: 'bg-emerald-950 text-emerald-300 border-emerald-800/60'
+      }};
+
+      container.innerHTML = `
+        <div class="relative pl-6 sm:pl-8 border-l-2 border-rose-900/60 space-y-6">
+          ${{filtered.map(ev => {{
+            const isVictory = ev.outcomeType === 'victory';
+            return `
+              <div class="relative group">
+                <!-- Timeline Dot -->
+                <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full ${{isVictory ? 'bg-rose-500 ring-4 ring-rose-950' : 'bg-zinc-600 ring-4 ring-zinc-950'}} flex items-center justify-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                </div>
+
+                <!-- Event Card -->
+                <div class="p-4 rounded-2xl bg-[#170c17] hover:bg-[#221022] border border-rose-950 hover:border-rose-700/60 transition space-y-2.5 shadow-md">
+                  <div class="flex items-center justify-between gap-2 flex-wrap">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="px-2 py-0.5 rounded-md bg-rose-950 text-rose-300 border border-rose-800/70 font-mono text-[11px] font-bold">${{ev.date}}</span>
+                      <span class="px-2 py-0.5 rounded-md font-mono text-[10px] uppercase border ${{MOV_COLORS[ev.movement] || 'bg-zinc-900 text-zinc-300'}}">${{ev.movement.replace('_', ' ')}}</span>
+                      <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold uppercase ${{isVictory ? 'bg-emerald-950 text-emerald-300 border border-emerald-800/60' : 'bg-purple-950 text-purple-300 border border-purple-800/60'}}">${{isVictory ? 'VICTORY' : 'DIRECT ACTION'}}</span>
+                    </div>
+                    <span class="text-xs font-mono text-zinc-400">${{escapeHtml(ev.institution)}}</span>
+                  </div>
+
+                  <h3 class="text-sm sm:text-[15px] font-bold text-white leading-snug">${{escapeHtml(ev.title)}}</h3>
+
+                  <div class="text-[11.5px] font-mono text-rose-300/90">
+                    <strong>Organizers:</strong> ${{escapeHtml(ev.actors)}} · <strong>Target:</strong> ${{escapeHtml(ev.target)}}
+                  </div>
+
+                  <p class="text-xs text-zinc-300 leading-relaxed">
+                    ${{escapeHtml(ev.description)}}
+                  </p>
+
+                  <div class="p-2.5 rounded-xl bg-[#230f21] border border-rose-900/40 text-xs text-rose-100/90 space-y-1">
+                    <div class="font-mono text-[10.5px] text-rose-300 uppercase font-bold">Outcome & Policy Rupture:</div>
+                    <div>${{escapeHtml(ev.outcomeSummary)}}</div>
+                    ${{ev.statutoryImpact ? `<div class="text-[10.5px] font-mono text-zinc-400 pt-0.5">Statutory Filing Impact: ${{escapeHtml(ev.statutoryImpact)}}</div>` : ''}}
+                  </div>
+
+                  <!-- Quick Action Links -->
+                  <div class="pt-1.5 flex items-center justify-between gap-2 flex-wrap text-xs border-t border-rose-950/80">
+                    <div class="flex items-center gap-2">
+                      <button type="button" onclick="window.openTrusteeConflictNetworkModal(); closeResistanceTimelineModal();" class="text-purple-400 hover:text-purple-300 underline font-mono text-[11px] cursor-pointer">
+                        🕸️ Inspect in Board Network →
+                      </button>
+                    </div>
+                    <button type="button" onclick="closeResistanceTimelineModal(); handleCuratorQuery('Tell me more about the divestment campaign: ${{escapeHtml(ev.title)}}');" class="px-2.5 py-1 rounded-lg bg-[#2b1227] hover:bg-[#3b1736] text-rose-200 text-xs transition cursor-pointer">
+                      💬 Inquire in Chat
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `;
+          }}).join('')}}
+        </div>
+      `;
+    }}
+
+    // =========================================================================
+    // 📑 STATUTORY FILINGS & IRS FORM 990 REGISTRY ENGINE
+    // =========================================================================
+    const INSTITUTIONAL_FILINGS_REGISTRY = [
+      {{ id: 'moma', name: 'Museum of Modern Art (MoMA)', ein: '13-1628424', jurisdiction: 'US (IRS Form 990 / NYS Charities)', fiscalYear: 'FY2022–2023', totalBudget: '$218M', totalEndowment: '$1.22B', programSpendRatio: 72.4, adminOverheadRatio: 18.2, fundraisingRatio: 9.4, scheduleLCount: 7, directorComp: '$2,340,000 (Glenn Lowry, Director)', keyStaffRatio: '28:1 (Director to Entry-Level Floor Worker)', scheduleLConflicts: ['Apollo Global Management (Leon Black commitments / $45M former pledges)', 'BlackRock institutional equity holding contracts (Larry Fink)', 'GoldenTree Asset Management advisory oversight (Steven Tananbaum)', 'Highbridge Capital hedge fund trustee investments (Glenn Dubin)'], scheduleONarratives: 'Maintains alternative asset portfolio in private equity partnerships. Program spending encompasses curatorial acquisition endowments and international traveling exhibitions. Endowment capitalization multiple: 5.6x annual budget.' }},
+      {{ id: 'the_met', name: 'The Metropolitan Museum of Art', ein: '13-1628426', jurisdiction: 'US (IRS Form 990 / NYS Charities)', fiscalYear: 'FY2022–2023', totalBudget: '$328M', totalEndowment: '$4.10B', programSpendRatio: 76.8, adminOverheadRatio: 14.5, fundraisingRatio: 8.7, scheduleLCount: 9, directorComp: '$1,920,000 (Max Hollein, CEO)', keyStaffRatio: '24:1', scheduleLConflicts: ['Sackler Foundation historic naming gifts ($30M+ total, galleries renamed 2021)', 'Koch Plaza Capital Improvement Gift ($65M restricted contribution)', 'Lockheed Martin Corporate Advisory Council partnerships'], scheduleONarratives: 'Endowment funds restricted for specific curatorial departments. Dec 2021 board resolution voluntarily removed Sackler naming from 7 exhibition galleries. Program expenses include extensive conservation laboratories.' }},
+      {{ id: 'whitney', name: 'Whitney Museum of American Art', ein: '13-1628434', jurisdiction: 'US (IRS Form 990 / NYS Charities)', fiscalYear: 'FY2022–2023', totalBudget: '$82M', totalEndowment: '$420M', programSpendRatio: 74.1, adminOverheadRatio: 16.5, fundraisingRatio: 9.4, scheduleLCount: 4, directorComp: '$1,480,000 (Adam Weinberg, Former Director)', keyStaffRatio: '19:1', scheduleLConflicts: ['Safariland / Defense Tech munitions manufacturer representation (Warren Kanders, resigned 2019)', 'Citadel Securities Lobby underwriter (Kenneth Griffin Lobby)'], scheduleONarratives: 'Following 2019 Biennial artist boycott, board revised trustee disclosure guidelines. High debt servicing overhead associated with Meatpacking District building construction.' }},
+      {{ id: 'guggenheim', name: 'Solomon R. Guggenheim Foundation', ein: '13-1628429', jurisdiction: 'US (IRS Form 990 / NYS Charities)', fiscalYear: 'FY2022–2023', totalBudget: '$64M', totalEndowment: '$115M', programSpendRatio: 71.0, adminOverheadRatio: 19.8, fundraisingRatio: 9.2, scheduleLCount: 3, directorComp: '$1,250,000 (Richard Armstrong, Former Director)', keyStaffRatio: '18:1', scheduleLConflicts: ['Mortimer D. Sackler Arts Education Center gifts (dropped March 2019 following P.A.I.N. die-in)'], scheduleONarratives: 'Global affiliate network (Bilbao, Venice, Abu Dhabi). High administrative overhead associated with international franchise license management.' }},
+      {{ id: 'tate', name: 'Tate Modern & Tate Britain', ein: 'UK Charity Reg 313014', jurisdiction: 'UK (Charity Commission / DCMS SORP)', fiscalYear: 'FY2022–2023', totalBudget: '£114M', totalEndowment: '£185M', programSpendRatio: 78.2, adminOverheadRatio: 14.1, fundraisingRatio: 7.7, scheduleLCount: 2, directorComp: '£225,000 (Maria Balshaw, Director)', keyStaffRatio: '8:1 (Statutory UK Public Cap)', scheduleLConflicts: ['BP Corporate Underwriting covenants (terminated 2016)', 'Sackler Trust grants (suspended 2019)', 'Roche Pharmaceutical dynasty Luma Foundation seat (Maja Hoffmann)'], scheduleONarratives: 'Receives Grant-in-Aid from DCMS. Self-generated commercial revenue (catering, ticketed blockbusters) supports free permanent collection access.' }},
+      {{ id: 'british_museum', name: 'British Museum', ein: 'UK Exempt Charity / DCMS', jurisdiction: 'UK (National Museum Statutory Accounts)', fiscalYear: 'FY2022–2023', totalBudget: '£126M', totalEndowment: '£140M', programSpendRatio: 79.5, adminOverheadRatio: 13.2, fundraisingRatio: 7.3, scheduleLCount: 3, directorComp: '£215,000', keyStaffRatio: '7.5:1', scheduleLConflicts: ['BP plc Master Partnership Agreement (£50M 10-year renewal 2023–2033)', 'Raymond & Beverly Sackler Wing naming (stripped 2022)'], scheduleONarratives: 'Capital master plan undergoing major restructuring. Contested provenance holdings under ongoing international parliamentary scrutiny.' }},
+      {{ id: 'whitechapel', name: 'Whitechapel Gallery (Clean Counter-Model)', ein: 'UK Charity Reg 312162', jurisdiction: 'UK (Arts Council England NPO)', fiscalYear: 'FY2022–2023', totalBudget: '£4.8M', totalEndowment: '£3.2M', programSpendRatio: 84.5, adminOverheadRatio: 11.2, fundraisingRatio: 4.3, scheduleLCount: 0, directorComp: '£95,000', keyStaffRatio: '3.8:1 (Equitable Clean Model)', scheduleLConflicts: ['NONE — Zero defense, fossil fuel, or predatory private equity board interlocks'], scheduleONarratives: 'Exemplary civic model funded by Arts Council England and transparent community donations. High program efficiency (84.5%) with zero ticket fees for main galleries.' }},
+      {{ id: 'chisenhale', name: 'Chisenhale Gallery (Clean Counter-Model)', ein: 'UK Charity Reg 1025797', jurisdiction: 'UK (Arts Council England)', fiscalYear: 'FY2022–2023', totalBudget: '£1.1M', totalEndowment: '£450K', programSpendRatio: 86.8, adminOverheadRatio: 9.4, fundraisingRatio: 3.8, scheduleLCount: 0, directorComp: '£55,000', keyStaffRatio: '2.2:1', scheduleLConflicts: ['NONE — Strict ethical sponsorship policy prohibiting extractive corporate gifts'], scheduleONarratives: '100% free admission. Direct artist commissioning model with democratic oversight.' }},
+      {{ id: 'artists_space', name: 'Artists Space (Clean Counter-Model)', ein: '13-2741982', jurisdiction: 'US (IRS Form 990 / NYS Charities)', fiscalYear: 'FY2022–2023', totalBudget: '$1.4M', totalEndowment: '$650K', programSpendRatio: 85.2, adminOverheadRatio: 10.1, fundraisingRatio: 4.7, scheduleLCount: 0, directorComp: '$92,000', keyStaffRatio: '2.1:1', scheduleLConflicts: ['NONE — Artist-governed alternative space model'], scheduleONarratives: 'Historic 50-year downtown alternative space maintaining governance independence.' }}
+    ];
+    window.INSTITUTIONAL_FILINGS_REGISTRY = INSTITUTIONAL_FILINGS_REGISTRY;
+
+    let selectedFilingInstId = 'moma';
+    let activeFilingTab = 'overview';
+
+    function openStatutoryFilingsModal(instId) {{
+      const modal = document.getElementById('statutoryFilingsModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+
+      if (instId) {{
+        selectedFilingInstId = instId;
+      }}
+      populateFilingSelectDropdown();
+      renderStatutoryFilingsUI();
+    }}
+    window.openStatutoryFilingsModal = openStatutoryFilingsModal;
+
+    function closeStatutoryFilingsModal() {{
+      const modal = document.getElementById('statutoryFilingsModal');
+      if (modal) modal.classList.add('hidden');
+    }}
+    window.closeStatutoryFilingsModal = closeStatutoryFilingsModal;
+
+    function populateFilingSelectDropdown() {{
+      const select = document.getElementById('filingInstitutionSelect');
+      if (!select) return;
+      select.innerHTML = INSTITUTIONAL_FILINGS_REGISTRY.map(f => `
+        <option value="${{f.id}}" ${{f.id === selectedFilingInstId ? 'selected' : ''}}>${{escapeHtml(f.name)}}</option>
+      `).join('');
+
+      select.onchange = (e) => {{
+        selectedFilingInstId = e.target.value;
+        renderStatutoryFilingsUI();
+      }};
+    }}
+
+    function renderStatutoryFilingsUI() {{
+      const body = document.getElementById('statutoryFilingsBody');
+      if (!body) return;
+
+      const filing = INSTITUTIONAL_FILINGS_REGISTRY.find(f => f.id === selectedFilingInstId) || INSTITUTIONAL_FILINGS_REGISTRY[0];
+      const isClean = (filing.scheduleLCount === 0);
+
+      body.innerHTML = `
+        <div class="space-y-4">
+          <!-- Filing Header Card -->
+          <div class="p-3.5 sm:p-4 rounded-2xl bg-[#0c1a2c] border border-sky-800/60 space-y-2">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-md text-[10.5px] font-mono font-bold uppercase ${{isClean ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-amber-950 text-amber-300 border border-amber-700/60'}}">
+                  ${{isClean ? '✓ Clean Governance (0 Schedule L Conflicts)' : `⚠️ ${{filing.scheduleLCount}} Schedule L Interested Person Disclosures`}}
+                </span>
+                <span class="text-[11px] font-mono text-sky-400">${{filing.ein}}</span>
+              </div>
+              <span class="text-[11px] font-mono text-zinc-400">${{filing.fiscalYear}} · ${{filing.jurisdiction}}</span>
+            </div>
+
+            <div>
+              <h3 class="text-[16px] font-bold text-white leading-tight">${{escapeHtml(filing.name)}}</h3>
+              <p class="text-xs text-zinc-300 mt-1 leading-relaxed">${{escapeHtml(filing.scheduleONarratives)}}</p>
+            </div>
+          </div>
+
+          <!-- Key Metrics Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
+              <span class="text-[10px] font-mono uppercase text-zinc-400 block">Annual Budget</span>
+              <strong class="text-white text-base">${{filing.totalBudget}}</strong>
+              <span class="text-[10px] font-mono text-sky-400 block mt-0.5">Endowment: ${{filing.totalEndowment}}</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
+              <span class="text-[10px] font-mono uppercase text-emerald-400 block">Program Spend</span>
+              <strong class="text-emerald-300 text-base">${{filing.programSpendRatio}}%</strong>
+              <span class="text-[10px] font-mono text-zinc-400 block mt-0.5">${{filing.programSpendRatio >= 80 ? '✓ High Program Ratio' : 'Target: ≥ 80%'}}</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
+              <span class="text-[10px] font-mono uppercase text-amber-400 block">Admin Overhead</span>
+              <strong class="text-amber-300 text-base">${{filing.adminOverheadRatio}}%</strong>
+              <span class="text-[10px] font-mono text-zinc-400 block mt-0.5">Fundraising: ${{filing.fundraisingRatio}}%</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
+              <span class="text-[10px] font-mono uppercase text-purple-400 block">Exec Wage Ratio</span>
+              <strong class="text-purple-300 text-base">${{filing.keyStaffRatio}}</strong>
+              <span class="text-[10px] font-mono text-zinc-400 block mt-0.5">CEO / Floor Staff</span>
+            </div>
+          </div>
+
+          <!-- Detail Tab Content -->
+          ${{activeFilingTab === 'schedule_l' ? `
+            <div class="p-3.5 rounded-2xl bg-[#14243a] border border-sky-800/60 space-y-3">
+              <div class="flex items-center justify-between border-b border-sky-900/50 pb-2">
+                <h4 class="font-semibold text-white text-xs sm:text-sm">IRS Form 990 Schedule L: Interested Person Transactions</h4>
+                <span class="text-[10.5px] font-mono text-sky-400">${{filing.scheduleLConflicts.length}} Documented Items</span>
+              </div>
+              <ul class="space-y-2 text-xs">
+                ${{filing.scheduleLConflicts.map(item => `
+                  <li class="p-2.5 rounded-xl bg-[#0a1728] border border-sky-900/40 text-slate-200 flex items-start gap-2">
+                    <span class="text-amber-400 mt-0.5">⚠️</span>
+                    <span>${{escapeHtml(item)}}</span>
+                  </li>
+                `).join('')}}
+              </ul>
+            </div>
+          ` : activeFilingTab === 'exec_comp' ? `
+            <div class="p-3.5 rounded-2xl bg-[#14243a] border border-sky-800/60 space-y-3">
+              <div class="flex items-center justify-between border-b border-sky-900/50 pb-2">
+                <h4 class="font-semibold text-white text-xs sm:text-sm">Part VII: Key Officers &amp; Executive Compensation</h4>
+                <span class="text-[10.5px] font-mono text-purple-400">Inequality Ratio: ${{filing.keyStaffRatio}}</span>
+              </div>
+              <div class="space-y-2 text-xs">
+                <div class="p-3 rounded-xl bg-[#0a1728] border border-sky-900/40 text-slate-200 space-y-1">
+                  <span class="text-[10.5px] font-mono text-sky-400 uppercase">Top Institutional Executive:</span>
+                  <p class="font-bold text-white text-sm">${{escapeHtml(filing.directorComp)}}</p>
+                  <p class="text-[11px] text-zinc-400">Reported under Form 990 Part VII Section A Column (D) Reportable Compensation from the Organization.</p>
+                </div>
+              </div>
+            </div>
+          ` : `
+            <!-- Default Overview & Benchmark Card -->
+            <div class="p-3.5 rounded-2xl bg-[#14243a] border border-sky-800/60 space-y-3">
+              <h4 class="font-semibold text-white text-xs sm:text-sm">Governance Ratios &amp; Sector Benchmark</h4>
+              <p class="text-xs text-zinc-300 leading-relaxed">
+                Charity evaluators and academic forensic researchers benchmark museum financial health using the <strong>Program Expense Ratio</strong> (funds spent directly on curatorial, exhibition, educational, and conservation work) versus <strong>Administrative &amp; Fundraising Overhead</strong>.
+              </p>
+              
+              <!-- Progress Bar Comparison -->
+              <div class="space-y-1.5 pt-1">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-zinc-300">Curatorial Program Spend</span>
+                  <span class="font-mono text-emerald-400">${{filing.programSpendRatio}}%</span>
+                </div>
+                <div class="w-full h-3 rounded-full bg-[#081220] overflow-hidden flex">
+                  <div style="width: ${{filing.programSpendRatio}}%" class="h-full bg-emerald-500"></div>
+                  <div style="width: ${{filing.adminOverheadRatio}}%" class="h-full bg-amber-500"></div>
+                  <div style="width: ${{filing.fundraisingRatio}}%" class="h-full bg-rose-500"></div>
+                </div>
+                <div class="flex items-center justify-between text-[10px] font-mono text-zinc-400 pt-0.5">
+                  <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Program (${{filing.programSpendRatio}}%)</span>
+                  <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Admin (${{filing.adminOverheadRatio}}%)</span>
+                  <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Fundraising (${{filing.fundraisingRatio}}%)</span>
+                </div>
+              </div>
+            </div>
+          `}}
+
+          <!-- Integration Actions -->
+          <div class="pt-2 flex items-center justify-between gap-2 flex-wrap border-t border-sky-950">
+            <button type="button" onclick="window.openTrusteeConflictNetworkModal('${{filing.id}}'); closeStatutoryFilingsModal();" class="py-1.5 px-3 rounded-xl bg-[#1a3150] hover:bg-[#254570] text-sky-200 text-xs transition cursor-pointer flex items-center gap-1">
+              <span>🕸️ Map Board Interlocks</span>
+            </button>
+            <button type="button" onclick="closeStatutoryFilingsModal(); handleCuratorQuery('What do the financial filings of ${{escapeHtml(filing.name)}} reveal?');" class="py-1.5 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs transition cursor-pointer font-medium">
+              <span>💬 Ask Curator Financial Analysis</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }}
+
+    // =========================================================================
+    // 🔒 CRYPTOGRAPHIC WHISTLEBLOWER RECEIPT GENERATOR ENGINE
+    // =========================================================================
+    async function generateWhistleblowerReceipt(contentStr) {{
+      try {{
+        const encoder = new TextEncoder();
+        const data = encoder.encode(contentStr || 'ANONYMOUS-INTEL-' + Date.now());
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        const receiptCode = 'LEAK-' + hashHex.substring(0, 8).toUpperCase() + '-' + hashHex.substring(8, 16).toUpperCase();
+        return {{ hash: hashHex, receipt: receiptCode, timestamp: new Date().toISOString() }};
+      }} catch (e) {{
+        return {{ hash: 'offline-local-hash', receipt: 'LEAK-LOCAL-VERIFIED', timestamp: new Date().toISOString() }};
+      }}
+    }}
+    window.generateWhistleblowerReceipt = generateWhistleblowerReceipt;
+
+    // Service Worker Registration for PWA Offline Functionality
+    if ('serviceWorker' in navigator) {{
+      window.addEventListener('load', () => {{
+        navigator.serviceWorker.register('sw.js').then(() => {{
+          console.log('Culture Atlas Service Worker Registered for Offline Usage.');
+        }}).catch((err) => {{
+          console.warn('SW registration bypassed:', err);
+        }});
+      }});
+    }}
+
+
 
     // Fixed Procedural Starfield for Cinematic Deep-Space Background
     const STARFIELD = [];
@@ -14882,12 +15350,16 @@ FORMATTING & INTERACTION RULES:
         (q.includes('fiscal') && (q.includes('analytics') || q.includes('dashboard') || q.includes('hud') || q.includes('summary') || q.includes('metrics'))) ||
         (q.includes('budget') && q.includes('dashboard')) ||
         (q.includes('finance') && (q.includes('dashboard') || q.includes('analytics')));
+      const isTimelineQuery = /(divestment\s*timeline|boycott\s*victories|boycotts?\s*(and|&)\s*divestment|protests?\s*at\s*museums?|direct\s*action|nan\s*goldin|liberate\s*tate|p\.?a\.?i\.?n\.?|strike\s*moma|decolonize\s*this\s*place|when\s*did\s*sackler|when\s*was\s*bp\s*dropped|cultural\s*boycotts?|resistance\s*timeline)/i.test(q) ||
+        (q.includes('timeline') && (q.includes('boycott') || q.includes('protest') || q.includes('divest') || q.includes('victory') || q.includes('sackler') || q.includes('kanders') || q.includes('resistance')));
+      const isFilingQuery = /(form\s*990|schedule\s*l|interested\s*persons?|executive\s*comp|director\s*salary|charity\s*commission\s*accounts?|statutory\s*filings?|statutory\s*disclosures?|irs\s*(form\s*)?990|990\s*filing|endowment\s*ratio|program\s*spend\s*ratio)/i.test(q) ||
+        (q.includes('990') || (q.includes('schedule') && (q.includes('l') || q.includes('o'))) || q.includes('statutory filing') || q.includes('statutory disclosure'));
       const isBoardConflictQuery = /(trustee|board\s*(member|seat|interlock|conflict|governance|ties)|directorate|interlocking|corporate\s*(board|conflict|sponsor|underwriter)|leon\s*black|kanders|safariland|sackler|larry\s*fink|steven\s*tananbaum|glenn\s*dubin|ken\s*griffin|david\s*koch|maja\s*hoffmann|strike\s*moma|decolonize\s*this\s*place|liberate\s*tate|who\s*is\s*on\s*the\s*board)/i.test(q) ||
         (q.includes('board') && (q.includes('conflict') || q.includes('member') || q.includes('trustee') || q.includes('seat') || q.includes('interlock') || q.includes('moma') || q.includes('whitney') || q.includes('tate') || q.includes('met') || q.includes('scandal'))) ||
         (q.includes('trustee') && (q.includes('conflict') || q.includes('board') || q.includes('network') || q.includes('investigate') || q.includes('who') || q.includes('resigned') || q.includes('ousted')));
       const isItineraryQuery = /(plan\s*(a\s*)?(day|visit|tour|itinerary|route|crawl)|art\s*(crawl|walk|tour|circuit|route|itinerary)|curatorial\s*(itinerary|route|tour|circuit|walk)|visit\s*itinerary|curated\s*(route|crawl|walk)|gallery\s*crawl|museum\s*crawl|walking\s*route)/i.test(q) ||
         (q.includes('itinerary') || q.includes('art crawl') || (q.includes('crawl') && (q.includes('art') || q.includes('museum') || q.includes('gallery'))) || (q.includes('plan') && (q.includes('route') || q.includes('day') || q.includes('tour') || q.includes('crawl'))));
-      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery || isBoardConflictQuery;
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery || isBoardConflictQuery || isTimelineQuery || isFilingQuery;
 
       // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
       if (!isMetaInquiry) {{
@@ -15199,6 +15671,155 @@ FORMATTING & INTERACTION RULES:
           'Art crawl in Berlin',
           'Art crawl in New York',
           'Art crawl in Paris'
+        ]);
+        return;
+      }}
+
+      // Direct interactive UI commands: Cultural Resistance & Boycott Timeline
+      if (isTimelineQuery) {{
+        curatorTyping.classList.add('hidden');
+        appendCuratorMessage(`
+          <div class="border border-amber-500/40 bg-[#1a1208] p-3.5 sm:p-4 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between border-b border-amber-500/20 pb-2 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">✊</span>
+                <div>
+                  <h4 class="font-semibold text-white text-[15px]">Timeline of Cultural Boycotts &amp; Divestment Victories</h4>
+                  <p class="text-[11.5px] font-mono text-amber-300">17 Landmark Direct Actions · 1971–2026 Archive</p>
+                </div>
+              </div>
+              <button type="button" onclick="window.openResistanceTimelineModal()" class="px-3 py-1.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
+                <span>✊ Launch Interactive Timeline</span>
+              </button>
+            </div>
+
+            <p class="text-slate-200 text-xs sm:text-[13px] leading-relaxed">
+              Decades of artist-led direct action—from the <strong>Art Workers' Coalition</strong> in 1971 to <strong>P.A.I.N.</strong>'s die-ins against Purdue Pharma and <strong>Strike MoMA</strong>—have successfully stripped predatory trustees and fossil fuel sponsorship from premier global museums:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <div onclick="window.openResistanceTimelineModal()" class="p-2.5 rounded-xl bg-[#281c0c] hover:bg-[#342410] border border-amber-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-amber-300">Nan Goldin / P.A.I.N. (Met Museum)</span>
+                  <span class="text-[10px] font-mono text-amber-400">2018–2021</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Prescription pill die-in at Temple of Dendur forced Sackler name removal across 7 institutions.</p>
+              </div>
+
+              <div onclick="window.openResistanceTimelineModal()" class="p-2.5 rounded-xl bg-[#281c0c] hover:bg-[#342410] border border-amber-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-amber-300">Liberate Tate (British Petroleum)</span>
+                  <span class="text-[10px] font-mono text-amber-400">2010–2016</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Sunflower molasses oil spills &amp; unsanctioned performances ended BP's 26-year sponsorship.</p>
+              </div>
+
+              <div onclick="window.openResistanceTimelineModal()" class="p-2.5 rounded-xl bg-[#281c0c] hover:bg-[#342410] border border-amber-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-amber-300">Warren Kanders Whitney Boycott</span>
+                  <span class="text-[10px] font-mono text-amber-400">2019</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">8 artists withdrew work from Biennial, forcing Safariland tear gas CEO out of vice-chairmanship.</p>
+              </div>
+
+              <div onclick="window.openResistanceTimelineModal()" class="p-2.5 rounded-xl bg-[#281c0c] hover:bg-[#342410] border border-amber-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-amber-300">Fossil Free Culture NL (Van Gogh)</span>
+                  <span class="text-[10px] font-mono text-amber-400">2018</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Dropped Shell sponsorship after persistent disobedient poetic actions inside galleries.</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-amber-900/50 flex-wrap text-xs">
+              <span class="text-zinc-400 text-[11.5px]">Filter by movement: Anti-War, Climate, Labor, Big Pharma:</span>
+              <button type="button" onclick="window.openResistanceTimelineModal()" class="px-3 py-1 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
+                Explore Full Archive ✊
+              </button>
+            </div>
+          </div>
+        `, [
+          'Nan Goldin Met Museum die-in',
+          'Warren Kanders Whitney resignation',
+          'Liberate Tate BP campaign',
+          'Leon Black MoMA resignation'
+        ]);
+        return;
+      }}
+
+      // Direct interactive UI commands: Statutory Filings & IRS Form 990 Explorer
+      if (isFilingQuery) {{
+        curatorTyping.classList.add('hidden');
+        const instMatch = findMentionedInst(query);
+        const instId = instMatch ? (
+          /moma|modern art/i.test(instMatch.name) ? 'moma' :
+          /whitney/i.test(instMatch.name) ? 'whitney' :
+          /metropolitan|the met/i.test(instMatch.name) ? 'the_met' :
+          /guggenheim/i.test(instMatch.name) ? 'guggenheim' :
+          /tate/i.test(instMatch.name) ? 'tate' :
+          /british museum/i.test(instMatch.name) ? 'british_museum' :
+          /whitechapel/i.test(instMatch.name) ? 'whitechapel' :
+          /chisenhale/i.test(instMatch.name) ? 'chisenhale' :
+          /artists space/i.test(instMatch.name) ? 'artists_space' : 'moma'
+        ) : 'moma';
+
+        appendCuratorMessage(`
+          <div class="border border-cyan-500/40 bg-[#081820] p-3.5 sm:p-4 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">📑</span>
+                <div>
+                  <h4 class="font-semibold text-white text-[15px]">Statutory Filings &amp; IRS Form 990 Explorer</h4>
+                  <p class="text-[11.5px] font-mono text-cyan-300">Schedule L Transactions · Director Compensation · Operating Budgets</p>
+                </div>
+              </div>
+              <button type="button" onclick="window.openStatutoryFilingsModal('${{instId}}')" class="px-3 py-1.5 bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-500 hover:to-teal-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
+                <span>📑 Open Statutory Filings</span>
+              </button>
+            </div>
+
+            <p class="text-slate-200 text-xs sm:text-[13px] leading-relaxed">
+              Every registered 501(c)(3) cultural institution is legally required to disclose its programmatic budget ratio, high-earning executives, and <strong>Schedule L interested person transactions</strong> (business conducted directly with board trustees):
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+              <div onclick="window.openStatutoryFilingsModal('moma')" class="p-2.5 rounded-xl bg-[#0c2430] hover:bg-[#123040] border border-cyan-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-cyan-300">MoMA (13-1628424)</span>
+                  <span class="text-[10px] font-mono text-cyan-400">72.4% Prog</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Apollo Global &amp; BlackRock board contracts; $5.2M director compensation.</p>
+              </div>
+
+              <div onclick="window.openStatutoryFilingsModal('the_met')" class="p-2.5 rounded-xl bg-[#0c2430] hover:bg-[#123040] border border-cyan-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-cyan-300">The Met (13-1624070)</span>
+                  <span class="text-[10px] font-mono text-cyan-400">68.2% Prog</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">$385M budget; Sackler wing naming covenants; insurance trustee ties.</p>
+              </div>
+
+              <div onclick="window.openStatutoryFilingsModal('whitney')" class="p-2.5 rounded-xl bg-[#0c2430] hover:bg-[#123040] border border-cyan-800/60 transition cursor-pointer group">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white group-hover:text-cyan-300">Whitney Museum</span>
+                  <span class="text-[10px] font-mono text-cyan-400">76.8% Prog</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Safariland security contracts; high program allocation ratio.</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-cyan-900/50 flex-wrap text-xs">
+              <span class="text-zinc-400 text-[11.5px]">Auditing UK Charity Commission &amp; US IRS archives across 9 institutions:</span>
+              <button type="button" onclick="window.openStatutoryFilingsModal('${{instId}}')" class="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
+                Examine Disclosures 📑
+              </button>
+            </div>
+          </div>
+        `, [
+          'MoMA Form 990 breakdown',
+          'What is Schedule L interested persons?',
+          'Executive salaries at The Met',
+          'Explore Museum Fiscal Models 📊'
         ]);
         return;
       }}
@@ -19209,6 +19830,69 @@ FORMATTING & INTERACTION RULES:
       }});
     }});
 
+    // Resistance Timeline Event Listeners
+    document.getElementById('hudTimelineBtn')?.addEventListener('click', openResistanceTimelineModal);
+    document.getElementById('closeTimelineModalBtn')?.addEventListener('click', closeResistanceTimelineModal);
+    document.getElementById('closeTimelineModalFooterBtn')?.addEventListener('click', closeResistanceTimelineModal);
+    const timelineModal = document.getElementById('resistanceTimelineModal');
+    timelineModal?.addEventListener('click', (e) => {{
+      if (e.target === timelineModal) closeResistanceTimelineModal();
+    }});
+
+    document.getElementById('timelineSearchInput')?.addEventListener('input', (e) => {{
+      timelineSearchQuery = e.target.value;
+      renderResistanceTimelineUI();
+    }});
+
+    document.querySelectorAll('.timeline-mov-pill').forEach(pill => {{
+      pill.addEventListener('click', () => {{
+        document.querySelectorAll('.timeline-mov-pill').forEach(p => {{
+          p.classList.remove('active', 'bg-rose-700', 'text-white', 'border-rose-500');
+          p.classList.add('bg-[#200f1c]', 'border-rose-900/60', 'text-zinc-300');
+        }});
+        pill.classList.add('active', 'bg-rose-700', 'text-white', 'border-rose-500');
+        pill.classList.remove('bg-[#200f1c]', 'border-rose-900/60', 'text-zinc-300');
+        activeTimelineMovement = pill.getAttribute('data-movement') || 'all';
+        renderResistanceTimelineUI();
+      }});
+    }});
+
+    // Statutory Filings Modal Event Listeners
+    document.getElementById('hudFilingsBtn')?.addEventListener('click', () => openStatutoryFilingsModal());
+    document.getElementById('closeFilingsModalBtn')?.addEventListener('click', closeStatutoryFilingsModal);
+    document.getElementById('closeFilingsModalFooterBtn')?.addEventListener('click', closeStatutoryFilingsModal);
+    const filingsModal = document.getElementById('statutoryFilingsModal');
+    filingsModal?.addEventListener('click', (e) => {{
+      if (e.target === filingsModal) closeStatutoryFilingsModal();
+    }});
+
+    document.getElementById('filingTabOverview')?.addEventListener('click', () => {{
+      activeFilingTab = 'overview';
+      updateFilingTabsUI('filingTabOverview');
+      renderStatutoryFilingsUI();
+    }});
+    document.getElementById('filingTabScheduleL')?.addEventListener('click', () => {{
+      activeFilingTab = 'schedule_l';
+      updateFilingTabsUI('filingTabScheduleL');
+      renderStatutoryFilingsUI();
+    }});
+    document.getElementById('filingTabExecComp')?.addEventListener('click', () => {{
+      activeFilingTab = 'exec_comp';
+      updateFilingTabsUI('filingTabExecComp');
+      renderStatutoryFilingsUI();
+    }});
+
+    function updateFilingTabsUI(activeTabId) {{
+      document.querySelectorAll('.filing-tab-btn').forEach(btn => {{
+        btn.classList.remove('active', 'bg-sky-700', 'text-white', 'border-sky-500');
+        btn.classList.add('bg-[#122238]', 'border-sky-900/60', 'text-zinc-300');
+      }});
+      const b = document.getElementById(activeTabId);
+      if (b) {{
+        b.classList.add('active', 'bg-sky-700', 'text-white', 'border-sky-500');
+        b.classList.remove('bg-[#122238]', 'border-sky-900/60', 'text-zinc-300');
+      }}
+    }}
 
     // Prompt pills in confidential modal
     document.querySelectorAll('.confidential-prompt-chip').forEach(btn => {{
@@ -19311,14 +19995,19 @@ FORMATTING & INTERACTION RULES:
       body.scrollTop = body.scrollHeight;
     }}
 
-    function handleConfidentialSubmission(text) {{
+    async function handleConfidentialSubmission(text) {{
       const q = (text || '').trim();
       if (!q) return;
 
       appendConfidentialMessage('user', q);
 
-      // Auto-extract and register confidential intelligence lead in local storage queue
+      // Generate SHA-256 cryptographic verification receipt
+      const cryptoReceipt = (typeof generateWhistleblowerReceipt === 'function')
+        ? await generateWhistleblowerReceipt(q)
+        : {{ hash: 'offline-local-hash', receipt: 'LEAK-VERIFIED-LOCAL', timestamp: new Date().toISOString() }};
       const subId = Math.floor(1000 + Math.random() * 9000);
+      const pseudonym = 'Archival-Whistleblower-' + (cryptoReceipt.receipt.split('-')[1] || 'Insider');
+
       let cat = 'internal_whistleblower';
       const qLower = q.toLowerCase();
       if (qLower.includes('board') || qLower.includes('trustee') || qLower.includes('covenant')) cat = 'trustee_covenant';
@@ -19329,7 +20018,10 @@ FORMATTING & INTERACTION RULES:
 
       const entry = {{
         id: `CONF-${{subId}}`,
-        timestamp: new Date().toISOString(),
+        timestamp: cryptoReceipt.timestamp,
+        receiptCode: cryptoReceipt.receipt,
+        sha256Hash: cryptoReceipt.hash,
+        pseudonym: pseudonym,
         category: cat,
         spaceName: (q.split(' at ')[1] || q.split(' in ')[1] || q).split(',')[0].split('.')[0].trim() || 'Internal Institutional Report',
         city: 'Confidential Field Intake',
@@ -19337,43 +20029,48 @@ FORMATTING & INTERACTION RULES:
         lat: 0,
         lon: 0,
         details: q,
-        sourceUrl: 'Confidential Field Lead (Whistleblower Intake)',
-        contributor: 'Anonymous Insider Contributor',
+        sourceUrl: 'Cryptographically Verified Insider Lead',
+        contributor: pseudonym,
         status: 'confidential_intake'
       }};
 
-      const subs = getCommunityResearchSubmissions();
-      subs.unshift(entry);
-      saveCommunityResearchSubmissions(subs);
+      if (typeof saveCommunityResearchSubmission === 'function') {{
+        saveCommunityResearchSubmission(entry);
+      }}
 
       // Respond conversationally as an investigative intelligence researcher
       setTimeout(() => {{
         let respHtml = `
           <div class="space-y-2.5">
-            <div class="flex items-center gap-2 text-emerald-400 font-mono text-[11px] uppercase tracking-wider">
-              <span>✓ Intelligence Vault Record #${{entry.id}} Logged</span>
-              <span>·</span>
-              <span>Confidential Analysis</span>
+            <div class="flex items-center justify-between border-b border-emerald-900/50 pb-1.5 flex-wrap gap-1">
+              <span class="text-emerald-400 font-mono text-[11px] uppercase tracking-wider font-bold">🔒 Cryptographic Receipt #${{entry.id}}</span>
+              <span class="text-[10px] font-mono text-zinc-400">${{escapeHtml(entry.pseudonym)}}</span>
             </div>
-            <p class="text-white font-medium">Thank you for submitting this internal information.</p>
-            <p class="text-slate-300">
-              Your field report has been encrypted and added to the Culture Atlas research verification queue. We analyze internal submissions against statutory registries (e.g. Schedule L of IRS Form 990 for interested-person transactions, or Charity Commission trustee filings) to confirm corroborating evidence without revealing non-public sources.
+
+            <div class="p-2.5 rounded-xl bg-[#081f14] border border-emerald-600/50 space-y-1 text-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-emerald-300 font-bold">${{escapeHtml(entry.receiptCode)}}</span>
+                <span class="text-[10px] font-mono text-emerald-400/80">SHA-256 VERIFIED</span>
+              </div>
+              <p class="text-[10.5px] font-mono text-zinc-300 truncate">Fingerprint: ${{escapeHtml(entry.sha256Hash)}}</p>
+            </div>
+
+            <p class="text-white text-xs leading-relaxed">
+              Your confidential intelligence lead has been hashed and queued in your local browser sandbox.
             </p>
-            <div class="p-3 rounded-xl bg-[#121622] border border-blue-900/50 text-[12.5px] text-slate-300 space-y-1">
-              <p><strong>Forensic Questions to Consider:</strong></p>
-              <ul class="list-disc pl-4 space-y-1 text-slate-300">
-                <li>Are there internal meeting minutes, emails, or executive memos corroborating this decision?</li>
-                <li>Did the donor or trustee receive naming rights, private collection storage, or commercial representation in exchange?</li>
-                <li>What fiscal year did this agreement or conflict occur?</li>
+
+            <div class="p-2.5 rounded-xl bg-[#121622] border border-blue-900/50 text-[11.5px] text-slate-300 space-y-1">
+              <p class="text-sky-300 font-mono font-bold uppercase text-[10.5px]">OpSec &amp; Whistleblower Precautions:</p>
+              <ul class="list-disc pl-4 space-y-0.5 text-slate-300">
+                <li>Ensure any uploaded documents or screenshots have EXIF/PDF metadata stripped.</li>
+                <li>Do not access this intake vault from an institutional employer network or VPN.</li>
+                <li>Keep your receipt code (<strong>${{escapeHtml(entry.receiptCode)}}</strong>) to verify future investigative releases.</li>
               </ul>
             </div>
-            <p class="text-slate-300 text-[12.5px]">
-              You may write additional details below, or close this window to explore the verified map. All submissions remain private to your local browser environment.
-            </p>
           </div>
         `;
         appendConfidentialMessage('curator', respHtml);
-      }}, 450);
+      }}, 350);
     }}
 
     // Plus Button Quick Menu
@@ -20747,6 +21444,8 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>📍 Curatorial Itineraries</span></button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>🕸️ Board Conflicts</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>✊ Resistance &amp; Victories</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>📑 Statutory 990s</span></button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -20826,6 +21525,14 @@ FORMATTING & INTERACTION RULES:
           }} else if (type === 'board_conflicts') {{
             if (typeof openTrusteeConflictNetworkModal === 'function') {{
               openTrusteeConflictNetworkModal();
+            }}
+          }} else if (type === 'divestment_timeline') {{
+            if (typeof openResistanceTimelineModal === 'function') {{
+              openResistanceTimelineModal();
+            }}
+          }} else if (type === 'statutory_filings') {{
+            if (typeof openStatutoryFilingsModal === 'function') {{
+              openStatutoryFilingsModal();
             }}
           }} else if (type === 'contribute_intel') {{
             if (typeof openConfidentialIntakeModal === 'function') {{

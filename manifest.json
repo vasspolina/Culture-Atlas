@@ -1,0 +1,17 @@
+{
+  "name": "Culture Atlas \u2014 Forensic Cartography of Cultural Institutions",
+  "short_name": "Culture Atlas",
+  "description": "Interactive atlas mapping 1,074+ cultural institutions, corporate board conflicts, clean independent funding, and curatorial itineraries.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#090510",
+  "theme_color": "#090510",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23090510'/><text x='50' y='65' font-size='50' text-anchor='middle' fill='%23a855f7'>\ud83d\udd78\ufe0f</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
