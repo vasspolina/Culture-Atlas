@@ -11240,6 +11240,25 @@ def build():
         .replace(/'/g, '&#039;');
     }}
 
+    function deduplicateNoticeText(str) {{
+      if (!str || typeof str !== 'string') return '';
+      const val = str.trim();
+      const m = val.match(/^([A-Z\s/]+:\s*)(.*)$/);
+      const prefix = (m && /(WATCH|EXCLUDED|UNVERIFIED|AUDITED|NOTICE)/i.test(m[1])) ? m[1] : '';
+      const body = prefix ? m[2] : val;
+      const rawSentences = body.split(/(?<=[.!?])\s+/).map(s => s.trim()).filter(Boolean);
+      const seen = new Set();
+      const cleaned = [];
+      for (const s of rawSentences) {{
+        const norm = s.replace(/\s+/g, ' ').trim();
+        if (!seen.has(norm)) {{
+          seen.add(norm);
+          cleaned.push(s);
+        }}
+      }}
+      return (prefix + cleaned.join(' ')).trim();
+    }}
+
     function matchC(a, b) {{
       if (!a || !b) return false;
       const s1 = a.toLowerCase().trim();
@@ -12968,7 +12987,7 @@ def build():
             <div class="py-2.5 border-t border-[#393939] space-y-2">
               <span class="text-[#be95ff] font-mono text-[12px] uppercase tracking-wider block font-bold">Audited Corporate Underwriting Notice</span>
               <p class="text-[#e8daff] text-[13px] leading-relaxed">
-                <strong>Underwriting Conflict:</strong> ${{escapeHtml(inst.why_flagged || inst.watch || 'Corporate underwriting conflict / ethical audit flag.')}}
+                <strong>Underwriting Conflict:</strong> ${{escapeHtml(deduplicateNoticeText(inst.why_flagged || inst.watch || 'Corporate underwriting conflict / ethical audit flag.'))}}
               </p>
               ${{inst.flags && inst.flags.length > 0 ? `
                 <div class="flex flex-wrap gap-1.5 pt-1">
@@ -22105,7 +22124,7 @@ FORMATTING & INTERACTION RULES:
                         <span class="text-white font-medium">${{escapeHtml(m.name)}}</span>
                         <span class="text-[#be95ff] text-[11px] font-mono px-1.5 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">${{m.tier === 'B' ? 'Flagged' : 'Unverified'}}</span>
                       </div>
-                      <p class="text-[#e8daff] text-[12px] mt-0.5">${{escapeHtml(m.watch || m.why_flagged || m.funding || 'Corporate underwriting conflict')}}</p>
+                      <p class="text-[#e8daff] text-[12px] mt-0.5">${{escapeHtml(deduplicateNoticeText(m.watch || m.why_flagged || m.funding || 'Corporate underwriting conflict'))}}</p>
                       <button class="curator-dossier-btn text-[#be95ff] hover:underline text-[12px] font-mono mt-1 cursor-pointer" data-name="${{escapeHtml(m.name)}}">
                         Open Audit Dossier ↗
                       </button>
