@@ -1425,6 +1425,9 @@ def build():
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="governance">Donor Governance</button>
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="fossil">Fossil Fuels & Climate</button>
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="disclosure">Mandatory Disclosure</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="reputation">Reputation & Provenance</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="fragility">Private Museum Fragility</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="policy">Tax Policy & Inequality</button>
           </div>
         </div>
 
@@ -10604,6 +10607,9 @@ def build():
           if (topic === 'governance' && !tText.includes('governance') && !tText.includes('donor') && !tText.includes('board')) return false;
           if (topic === 'fossil' && !tText.includes('fossil') && !tText.includes('climate') && !tText.includes('bp') && !tText.includes('oil') && !tText.includes('environmental')) return false;
           if (topic === 'disclosure' && !tText.includes('disclosure') && !tText.includes('fraud') && !tText.includes('report') && !tText.includes('mandatory')) return false;
+          if (topic === 'reputation' && !tText.includes('reputation') && !tText.includes('provenance') && !tText.includes('antiquit') && !tText.includes('laundering') && !tText.includes('crime')) return false;
+          if (topic === 'fragility' && !tText.includes('fragil') && !tText.includes('close') && !tText.includes('mortality') && !tText.includes('private art museum') && !tText.includes('years open')) return false;
+          if (topic === 'policy' && !tText.includes('policy') && !tText.includes('tax') && !tText.includes('incentive') && !tText.includes('inequalit') && !tText.includes('rouanet')) return false;
         }}
         if (q) {{
           const allText = ((p.title || '') + ' ' + (p.authors || '') + ' ' + (p.journal || '') + ' ' + (p.takeaway || '') + ' ' + (p.abstract || '')).toLowerCase();
@@ -10692,6 +10698,15 @@ You have deep mastery of {academic_count} empirical studies on museum funding, s
 - Mandatory Disclosure vs Disclose-on-Request: Barber, Farwell & Galle (Nonprofit and Voluntary Sector Quarterly, 2020) and Harris & Neely (2018) prove that mandatory disclosure forces donors to penalize high overhead/fundraising costs, whereas disclose-on-request requirements fail because donors rarely actively seek unpublicized information.
 - Donor Response to Fraud & Media Oversight: Harris, Petrovits & Yetman (2023) show that media reporting of asset diversions severely decreases donations, and donors only moderate penalties when nonprofits enact transparent public disclosures and governance overhauls.
 - Donor Governance & Cost Structures: Yermack (Journal of Cultural Economics, 2017) shows how restricted gifts reduce manager discretion, force 45% endowment retention, and create rigid cost structures in US museums.
+- Reputation Laundering & Hidden Antiquities Fraud: Yates & Graham (International Journal of Heritage Studies, 2023) deploy machine-learning provenance audits on museum acquisition records, uncovering multi-decade schemes of "reputation laundering" where prospective bad actors donate low-value antiquities across decades to build clean institutional credibility and patron status ahead of major financial or provenance fraud.
+- Extractive Industry PR & Oil Sponsorship in Art ("The Spirit Sings"): C. Sharp (Museum and Society, 2022) analyzes Shell Canada's $1.1M sponsorship of 'The Spirit Sings' at Calgary's Glenbow Museum during the 1988 Winter Olympics, documenting how fossil fuel extractors deploy museum underwriting as a PR shield against Indigenous land rights challenges (Lubicon Lake Cree boycott) and environmental resistance in extractive regions.
+- Fragility & Mortality of Private Art Museums (<10 Years): Velthuis & Gera (International Journal of Cultural Policy, 2024) document that private contemporary art museums are inherently fragile organizations with a median lifespan of less than 10 years before closing permanently, driven by financial exhaustion, audience deficits, and fatal over-reliance on a single living founder.
+- Tax Incentives & Resource Inequality in Contemporary Art: Sara de Andrade Silva (International Journal of Cultural Policy, 2025) demonstrates through Brazilian tax incentive laws (Rouanet Law) that corporate sponsorship mechanisms direct disproportionate subsidies to hyper-commercialized contemporary art, exacerbating acute resource inequality compared to performing arts, music, or community culture.
+- The Identified Donor Effect & Recipient Obligation: Chen & Gao (2021) demonstrate experimentally that publicly disclosing a donor's identity triggers a psychological obligation effect in recipient institutions to comply with donor objectives and moral boundaries, explaining why named sponsorships inherently constrain curatorial autonomy.
+- Voluntary Fraud Disclosures & Backlash Dynamics: Jonathan Kugel & Julie M. Mercado (2026) prove experimentally that voluntary disclosures of nonprofit fraud originating directly from the board of directors generate significantly less donor backlash than disclosures issued by executive management; while Saxton, Kuo & Ho (2012) prove voluntary disclosure is primarily adopted by smaller, insider-dominated boards, reinforcing the critical necessity of mandatory Form 990 / Charity Commission disclosures.
+- Nordic Public-Private Collector Tensions & Egalitarian Trust: Ida Uppstrøm Berg & Håkon Larsen (Museum Management and Curatorship, 2024; Berg 2024) examine the controversial partnership between the National Museum of Norway and the Fredriksen Family Art Company, showing that private collector influence sparks intense democratic pushback in societies characterized by egalitarian values, high tax morale, and strong civic funding.
+- Mega-Donations & Actor-Network Theory ("Donation of the Century"): Park & Kim (Semiotica, 2025) analyze South Korea's massive Samsung collection mega-donation (23,000 artworks), showing how elite patronage transcends financial gifts to function as an actor-network redefining corporate private vaults into "dynamic national treasures" to rehabilitate corporate family reputation and negotiate inheritance tax standing.
+- Ethical Dilemmas in Transition Economies: Marek Prokůpek & Bára Divíšková (Journal of Arts Management, Law, and Society, 2022) establish that museums in post-socialist transition economies (Czech Republic) face acute ethical vulnerabilities when forced to seek corporate funding amid state budget cuts without institutional ethics committees.
 Cite these peer-reviewed takeaways when users ask about research, sponsor networks, tainted money, disclosures, or donor ethics!
 
 SCHOLARLY RESEARCH, MIT PRESS ART THEORY & DUTCH RESEARCH FOUNDATIONS (Explain simply in everyday English):
@@ -11528,6 +11543,332 @@ FORMATTING & INTERACTION RULES:
         }}
 
         // =========================================================================
+        // 🔬 ACADEMIC RESEARCH CORPUS & PEER-REVIEWED CONSENSUS STUDIES
+        // =========================================================================
+
+        // Research Handler: Consensus Academic Research Corpus Overview
+        if (q.includes('academic research') || q.includes('academic studies') || q.includes('academic paper') || q.includes('peer-reviewed') || q.includes('peer reviewed') || q.includes('research studies') || q.includes('consensus studies') || q.includes('what research') || q.includes('research corpus') || q.includes('studies in the model') || q.includes('research in the model') || (q.includes('academic') && (q.includes('model') || q.includes('studies') || q.includes('corpus')))) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
+                <div class="flex items-center gap-2 text-sky-400 font-mono text-[12px] uppercase tracking-wider">
+                  <span>🔬 Peer-Reviewed Academic Corpus</span>
+                  <span>·</span>
+                  <span>{academic_count} Empirical Studies</span>
+                </div>
+                <button type="button" onclick="openAcademicResearchModal('all')" class="px-2 py-0.5 rounded bg-sky-950/80 border border-sky-700/60 text-sky-300 hover:text-white text-[11px] font-mono transition cursor-pointer">
+                  Browse Studies Library ↗
+                </button>
+              </div>
+
+              <h4 class="text-[15px] font-medium text-white">Empirical Research Grounding in Culture Atlas</h4>
+              
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                Culture Atlas is grounded in a consensus corpus of <strong>{academic_count} peer-reviewed empirical studies</strong> published in top academic journals (<em>American Economic Review</em>, <em>PNAS Nexus</em>, <em>Nonprofit and Voluntary Sector Quarterly</em>, <em>International Journal of Cultural Policy</em>, <em>Journal of Cultural Economics</em>).
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px] pt-1" data-exclude-speech="true">
+                <div class="p-2.5 rounded-xl bg-[#161c28] border border-sky-900/40 text-slate-300">
+                  <strong class="text-sky-300 block mb-0.5">🔗 Sponsor Networks & Self-Censorship</strong>
+                  Davidsson & Sørensen (2010), Mateos Rusillo (2019), and Zheng & Ni (2023) show how corporate funding triggers anticipatory self-censorship and blockbuster favoritism without explicit editorial orders.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#161c28] border border-sky-900/40 text-slate-300">
+                  <strong class="text-sky-300 block mb-0.5">🏺 Antiquities Reputation Laundering</strong>
+                  Yates & Graham (2023) deploy machine learning to prove bad actors donate low-value antiquities over decades to construct institutional credibility before committing financial fraud.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#161c28] border border-sky-900/40 text-slate-300">
+                  <strong class="text-sky-300 block mb-0.5">🏛️ Private Museum Fragility (&lt; 10 Yrs)</strong>
+                  Velthuis & Gera (2024) prove private art museums are inherently fragile organizations with a median lifespan of less than 10 years due to financial strain and founder over-reliance.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#161c28] border border-sky-900/40 text-slate-300">
+                  <strong class="text-sky-300 block mb-0.5">📋 Mandatory vs Voluntary Disclosure</strong>
+                  Barber et al. (2020), Kugel & Mercado (2026), and Harris et al. (2023) prove voluntary disclosure is inadequate, whereas mandatory Form 990 / Charity Commission audits drive public accountability.
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[12px]">
+                <span class="text-slate-400">Examine specific authors, datasets, and DOIs:</span>
+                <button type="button" onclick="openAcademicResearchModal('all')" class="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition cursor-pointer">
+                  🔬 Open Full Academic Studies Modal ({academic_count})
+                </button>
+              </div>
+            </div>
+          `, [
+            'Reputation laundering in antiquities',
+            'Why private museums close',
+            'The Spirit Sings oil PR case',
+            'Identified donor effect'
+          ]);
+          return;
+        }}
+
+        // Research Handler: Reputation Laundering & Hidden Antiquities Fraud (Yates & Graham 2023)
+        if (q.includes('reputation laundering') || q.includes('yates') || q.includes('shawn graham') || q.includes('antiquities fraud') || q.includes('hidden crime in provenance') || q.includes('provenance machine learning')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-purple-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Academic Study Profile</span>
+                <span>·</span>
+                <span>Yates & Graham (2023)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Reputation Laundering and Museum Collections: Provenance, Priorities & Hidden Crime</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                Published in the <em>International Journal of Heritage Studies</em> (2023), Donna Yates and Shawn Graham used machine-learning algorithmic audits on museum acquisition records and provenance datasets.
+              </p>
+              <div class="p-3 rounded-xl bg-[#181126] border border-purple-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>The Discovery:</strong> The authors uncovered systematic evidence of <em>"reputation laundering."</em> Prospective bad actors do not begin by donating multi-million-dollar illicit masterworks. Instead, they make strategic, multi-decade donations of low-value antiquities and minor artifacts to prominent museums.
+                </p>
+                <p>
+                  <strong>The Mechanism:</strong> These repeated gifts establish the donor as a trusted patron, civic benefactor, and cultural connoisseur in public and institutional registries. Once institutional trust and social license are secured, that clean reputation is leveraged to facilitate large-scale financial fraud, tax write-offs, or illicit antiquities circulation with minimal suspicion.
+                </p>
+                <p>
+                  <strong>Culture Atlas Takeaway:</strong> Provenance transparency cannot be limited to famous masterpieces; regulatory oversight must trace long-tail donation patterns and trustee networks to prevent museums from acting as reputational shields for illicit capital.
+                </p>
+              </div>
+              <div class="pt-1 flex items-center gap-2">
+                <button type="button" onclick="openAcademicResearchModal('reputation')" class="px-2.5 py-1 rounded bg-[#2a1b42] hover:bg-[#39245a] text-purple-300 border border-purple-700/60 text-[12px] font-mono transition cursor-pointer">
+                  View in Academic Library ↗
+                </button>
+              </div>
+            </div>
+          `, ['Why private museums close', 'Identified donor effect', 'Mandatory disclosure matter', 'How we audit Form 990']);
+          return;
+        }}
+
+        // Research Handler: 'The Spirit Sings' & Extractive Oil Sponsorship (Sharp 2022)
+        if (q.includes('spirit sings') || q.includes('the spirit sings') || (q.includes('sharp') && (q.includes('oil') || q.includes('glenbow') || q.includes('spirit'))) || q.includes('glenbow') || q.includes('lubicon')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Historical Case Study</span>
+                <span>·</span>
+                <span>C. Sharp (2022)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">'Shell is Proud to Present… The Spirit Sings': Museum Sponsorship and Public Relations in Oil Country</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>Museum and Society</em> (2022), researcher C. Sharp provides a definitive historical case study on how fossil fuel corporations deploy museum underwriting as an extractive public relations shield, examining the 1988 Winter Olympics exhibition <em>The Spirit Sings: Artistic Traditions of Canada's First Peoples</em> at Calgary's Glenbow Museum.
+              </p>
+              <div class="p-3 rounded-xl bg-[#231a0e] border border-amber-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Extractive Sponsorship in Oil Country:</strong> Shell Canada provided CAD $1.1 million to sponsor the blockbuster Indigenous art exhibition. Simultaneously, Shell was aggressively drilling for oil and natural gas on unceded land belonging to the Lubicon Lake Cree in northern Alberta.
+                </p>
+                <p>
+                  <strong>The Boycott & Decolonization Milestone:</strong> The Lubicon Lake Cree launched an international cultural boycott of the exhibition, supported by First Nations leaders and museum professionals globally. Protesters exposed the hypocrisy of Shell and the museum celebrating Indigenous heritage inside vitrines while actively destroying living Indigenous communities and sacred territories outside.
+                </p>
+                <p>
+                  <strong>Contemporary Relevance:</strong> Sharp demonstrates that the controversy catalyzed modern decolonization, restitution, and fossil-free divestment movements across museum management worldwide, proving that corporate sponsorship debates cannot be separated from territorial and environmental justice.
+                </p>
+              </div>
+            </div>
+          `, ['Connections among cultural sponsors', 'BP and Tate sponsorship', 'Decolonial Practice', 'Fossil & Defense-Free']);
+          return;
+        }}
+
+        // Research Handler: Fragility & Closure of Private Art Museums (Velthuis & Gera 2024)
+        if (q.includes('why private museums close') || q.includes('fragility of cultural philanthropy') || q.includes('fragility of private') || q.includes('velthuis') || q.includes('marton gera') || q.includes('private museums close') || q.includes('years open before closing') || (q.includes('private') && q.includes('museum') && (q.includes('close') || q.includes('fragil')))) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-rose-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Empirical Demography</span>
+                <span>·</span>
+                <span>Velthuis & Gera (2024)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">The Fragility of Cultural Philanthropy: Why Private Art Museums Close</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                Published in the <em>International Journal of Cultural Policy</em> (2024), sociologists Olav Velthuis and Marton Gera conducted the first comprehensive demographic study of private contemporary art museums worldwide.
+              </p>
+              <div class="p-3 rounded-xl bg-[#251016] border border-rose-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Staggering Fragility (&lt; 10 Year Median):</strong> Contrary to the myth of enduring philanthropic legacies, private art museums are inherently fragile organizations. The authors discovered that the median number of years a private art museum remains open before permanently shutting its doors is <strong>less than 10 years</strong>.
+                </p>
+                <p>
+                  <strong>Key Mortality Factors:</strong>
+                  <br>· <em>Founder Over-Reliance:</em> Most private museums lack independent governance boards or endowment diversification, depending entirely on the personal ego, liquidity, or tax advantages of a single wealthy collector.
+                  <br>· <em>Generational & Financial Rupture:</em> When the founder dies, divorces, or faces market downturns, heirs rarely share the desire to subsidize operating deficits, forcing deaccessioning or complete liquidation.
+                  <br>· <em>Audience Deficits:</em> Vanity institutions constructed in isolated suburban or real-estate development zones suffer rapid drops in attendance once initial opening fanfare fades.
+                </p>
+                <p>
+                  <strong>Policy Implication:</strong> The research underscores why public arts funding and civic institutions are essential: private billionaire patronage creates volatile, short-lived monuments rather than durable civic commons.
+                </p>
+              </div>
+            </div>
+          `, ['Kunsthalle vs Museum', 'Tax incentives in Brazilian art', 'Compare funding models', 'Norwegian collector collaborations']);
+          return;
+        }}
+
+        // Research Handler: The Identified Donor Effect (Chen & Gao 2021)
+        if (q.includes('identified donor effect') || (q.includes('chen') && q.includes('gao') && (q.includes('donor') || q.includes('effect'))) || q.includes('disclosing the donor') || q.includes('donor name shapes recipient')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Behavioral Economics</span>
+                <span>·</span>
+                <span>Chen & Gao (2021)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">The Identified Donor Effect: Disclosure of the Donor’s Name Shapes the Recipient’s Behavior</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In a seminal experimental study by Yun-Qing Chen and Lei-Lei Gao (2021), behavioral researchers examined how naming donors transforms the psychological mindset and operational conduct of institutional recipients.
+              </p>
+              <div class="p-3 rounded-xl bg-[#0f231a] border border-emerald-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>The Reciprocal Obligation Mechanism:</strong> When a donor's name is publicly identified and attached to a grant or exhibition, recipient organizations experience a dramatic increase in psychological obligation to align with the donor's expectations and social sensibilities.
+                </p>
+                <p>
+                  <strong>Impact on Institutional Autonomy:</strong> While naming gifts can encourage ethical adherence when donors hold high civic standards, in corporate and high-net-worth cultural sponsorships, this mechanism leads recipient curators to anticipate donor preferences, actively avoid controversial programming, and conform to the patron's brand reputation.
+                </p>
+                <p>
+                  <strong>Why Anonymous or Civic Grants Protect Art:</strong> This empirical finding explains why grassroots artist cooperatives and structural civic grants (like the Mondriaan Fund) are crucial: removing named patron branding liberates curators from interpersonal psychological debts.
+                </p>
+              </div>
+            </div>
+          `, ['Connections among cultural sponsors', 'Mandatory disclosure matter', 'Dutch research model', 'W.A.G.E. & Labor']);
+          return;
+        }}
+
+        // Research Handler: Donor Backlash to Fraud & Voluntary Disclosures (Kugel & Mercado 2026; Harris et al. 2023)
+        if (q.includes('nonprofit fraud') || q.includes('voluntary fraud disclosure') || q.includes('kugel') || q.includes('mercado') || q.includes('donor backlash') || q.includes('spreading the news') || q.includes('asset diversion') || (q.includes('harris') && q.includes('petrovits'))) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-cyan-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Governance & Audit Science</span>
+                <span>·</span>
+                <span>Kugel & Mercado (2026) / Harris et al. (2023)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Donor Response, Asset Diversions & Voluntary vs. Mandatory Fraud Disclosures</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                Groundbreaking accounting and governance studies provide definitive empirical proof on how public transparency dictates donor retention and organizational survival:
+              </p>
+              <div class="p-3 rounded-xl bg-[#0d212b] border border-cyan-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Board Disclosures vs Management (Kugel & Mercado 2026):</strong> In <em>"Call Me Maybe? An Experimental Analysis of Donor Backlash to Voluntary Nonprofit Fraud Disclosure"</em>, the authors demonstrate that when an organization voluntarily discloses fraud, disclosures issued directly by the <strong>board of directors</strong> trigger far less donor backlash than statements issued by executive management. Donors perceive board intervention as proof of fiduciary independence and corrective action.
+                </p>
+                <p>
+                  <strong>Media Exposure & Recovery (Harris, Petrovits & Yetman 2023):</strong> In <em>"Spreading the News"</em> (Nonprofit and Voluntary Sector Quarterly), analyzing thousands of IRS Form 990 diversion disclosures, researchers found that media reporting of asset diversions causes steep, lasting drops in donor contributions. However, organizations that report substantive legal recoveries and structural governance reforms suffer significantly smaller penalties.
+                </p>
+                <p>
+                  <strong>Why Mandatory Oversight is Irreplaceable (Saxton et al. 2012; Barber et al. 2020):</strong> Saxton, Kuo & Ho proved that voluntary disclosure is largely confined to low-debt, insular nonprofits. Because compromised organizations rarely self-disclose voluntarily, statutory mandatory disclosures (Form 990 Schedule L) and external forensic audits are vital to protect the public trust.
+                </p>
+              </div>
+            </div>
+          `, ['How we audit Form 990', 'Reputation laundering in antiquities', 'Consensus academic corpus', 'Explore independent spaces']);
+          return;
+        }}
+
+        // Research Handler: Corporate Sponsorship & Tax Incentives in Brazilian Contemporary Art (Silva 2025)
+        if (q.includes('brazilian contemporary art') || q.includes('tax incentives in brazilian') || q.includes('silva 2025') || (q.includes('silva') && q.includes('brazil')) || q.includes('corporate sponsorship as cultural policy') || q.includes('rouanet law') || q.includes('rouanet')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-yellow-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Cultural Policy & Inequality</span>
+                <span>·</span>
+                <span>Sara de Andrade Silva (2025)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Corporate Sponsorship as Cultural Policy: Tax Incentives in Brazilian Contemporary Art</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                Published in the <em>International Journal of Cultural Policy</em> (2025), Sara de Andrade Silva conducted an in-depth empirical investigation of corporate sponsorship laws and cultural tax deductions (such as Brazil's Lei Rouanet).
+              </p>
+              <div class="p-3 rounded-xl bg-[#262010] border border-yellow-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Subsidizing Commercial Inequality:</strong> Tax incentive policies allow private corporations to redirect state tax liabilities into cultural marketing of their own choosing. Silva's quantitative analysis proves that contemporary art exhibits vastly <strong>greater resource inequality</strong> than performing arts, music, or theater.
+                </p>
+                <p>
+                  <strong>Elite Corporate Capture:</strong> Corporate marketing departments systematically allocate state-subsidized funds to blue-chip, high-prestige institutions that cater to wealthy consumer demographics, while starving community cultural spaces, Indigenous heritage programs, and dissident experimental artists of resources.
+                </p>
+                <p>
+                  <strong>Policy Conclusion:</strong> Shifting cultural funding from direct democratic public endowments to corporate tax incentives effectively privatizes cultural policy, exacerbating wealth concentration and aesthetic conservatism.
+                </p>
+              </div>
+            </div>
+          `, ['Vale dam disaster at Inhotim', 'Latin American avant-garde', 'Why private museums close', 'Compare funding models']);
+          return;
+        }}
+
+        // Research Handler: Norwegian Public-Private Collaborations & Fredriksen (Berg & Larsen 2024; Berg 2024)
+        if (q.includes('fredriksen') || q.includes('national museum in norway') || q.includes('berg & larsen') || (q.includes('berg') && q.includes('norway')) || q.includes('norwegian art museum') || q.includes('egalitarian values and high tax moral')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-blue-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Public Trust & Collector Pacts</span>
+                <span>·</span>
+                <span>Berg & Larsen (2024) / Berg (2024)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Public Art and Private Wealth: The National Museum of Norway & Fredriksen Collaboration</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In two seminal studies in <em>Museum Management and Curatorship</em> and the <em>International Journal of Cultural Policy</em> (2024), researchers Ida Uppstrøm Berg and Håkon Larsen analyzed the heated national debate sparked by the collaboration between Norway's National Museum and the Fredriksen Family Art Company Limited (billionaire shipping tycoon John Fredriksen).
+              </p>
+              <div class="p-3 rounded-xl bg-[#101b2a] border border-blue-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>The Friction with Nordic Egalitarianism:</strong> In Norway, cultural life is rooted in egalitarian values, high tax morale, and direct public state subsidies. When the National Museum entered a long-term commercial collaboration with an offshore private family holding, it triggered severe public, artistic, and media condemnation.
+                </p>
+                <p>
+                  <strong>The Museum Director Dilemma (Berg 2024):</strong> Interviews with museum directors revealed that directors increasingly feel public-private deals are an "inevitable solution" under international art market inflation, even while acknowledging that demands from private collectors threaten democratic public missions.
+                </p>
+                <p>
+                  <strong>Critical Lesson:</strong> Even in well-funded social democratic cultural ecosystems, creeping privatization compromises public trust unless clear statutory firewalls defend public collections from private asset enhancement.
+                </p>
+              </div>
+            </div>
+          `, ['Nordic social democratic model', 'Kunsthalle vs Museum', 'Connections among cultural sponsors', 'Dutch research model']);
+          return;
+        }}
+
+        // Research Handler: Mega-Donations & Actor-Network Theory (Samsung Collection / Park & Kim 2025)
+        if (q.includes('donation of the century') || q.includes('samsung collection') || (q.includes('park') && q.includes('kim') && (q.includes('semiotica') || q.includes('actor-network') || q.includes('donation'))) || q.includes('actor-network theory in south korea')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-indigo-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Semiotics & Actor-Network Theory</span>
+                <span>·</span>
+                <span>Park & Kim (2025)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">From Donors to Networks: The "Donation of the Century" in South Korea</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>Semiotica</em> (2025), Gye-hong Park and Sung Do Kim deployed Bruno Latour's Actor-Network Theory (ANT) to dissect South Korea's "donation of the century"—the massive transfer of 23,000 priceless art assets from the late Samsung Group Chairman Lee Kun-hee's collection to public state institutions.
+              </p>
+              <div class="p-3 rounded-xl bg-[#17142b] border border-indigo-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Beyond Material Altruism:</strong> The authors prove that philanthropic mega-donations are not isolated acts of civic generosity. Instead, they operate as elaborate actor-networks linking legal inheritance tax settlements, corporate conglomerate reputation rehabilitation, and state prestige.
+                </p>
+                <p>
+                  <strong>Transforming Private Hoards into "Dynamic National Treasures":</strong> Through institutional integration and state media choreography, private corporate family assets are semiotically re-coded into sacred national heritage, legitimizing dynastic chaebol wealth while shaping the state's cultural agenda.
+                </p>
+                <p>
+                  <strong>Culture Atlas Lens:</strong> Mega-philanthropy frequently functions as an institutional transaction negotiating civic immunity and cultural hegemony.
+                </p>
+              </div>
+            </div>
+          `, ['Connections among cultural sponsors', 'East Asian avant-garde', 'Tax-exempt corporate lobbying', 'Why private museums close']);
+          return;
+        }}
+
+        // Research Handler: Ethics in Museum Fundraising: Czech Republic (Prokůpek & Divíšková 2022)
+        if (q.includes('czech republic') || q.includes('prokůpek') || q.includes('prokupek') || q.includes('divíšková') || q.includes('diviskova') || q.includes('ethics in museum fundraising')) {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 text-teal-400 font-mono text-[12px] uppercase tracking-wider">
+                <span>🔬 Transition Economies & Ethics</span>
+                <span>·</span>
+                <span>Prokůpek & Divíšková (2022)</span>
+              </div>
+              <h4 class="text-[15px] font-medium text-white">Ethics in Museum Fundraising: Evidence from the Czech Republic</h4>
+              <p class="text-slate-300 leading-relaxed text-[13.5px]">
+                In <em>The Journal of Arts Management, Law, and Society</em> (2022), Marek Prokůpek and Bára Divíšková investigated how cultural institutions in post-socialist Central and Eastern Europe navigate corporate fundraising ethics.
+              </p>
+              <div class="p-3 rounded-xl bg-[#0e211f] border border-teal-900/50 space-y-2 text-[13px] text-slate-300">
+                <p>
+                  <strong>Funding Transition Pressures:</strong> Following reductions in post-communist state subsidies, Czech museums were pressured to engage the private corporate sector. However, the study reveals that the majority of institutions lacked formal ethical guidelines, ethics committees, or transparent conflict-of-interest protocols.
+                </p>
+                <p>
+                  <strong>The Ethical Frontier:</strong> The authors demonstrate that determining "who should cooperate and with whom" cannot be left to informal director discretion. Without codified institutional safeguards, museums in emerging market economies risk rapid capture by commercial sponsors seeking cheap social legitimacy.
+                </p>
+              </div>
+            </div>
+          `, ['Compare funding models', 'Connections among cultural sponsors', 'How we audit Form 990', 'Consensus academic corpus']);
+          return;
+        }}
+
+        // =========================================================================
         // 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING INSPECTION INTENT
         // =========================================================================
         const isArchiveQuery = (q.includes('archive') || q.includes('collection') || q.includes('holding') || q.includes('reading room') || q.includes('special collection') || q.includes('footprint') || q.includes('building layout') || q.includes('architecture of') || q.includes('zoom to building')) && (findMentionedInst(query) || curatorContext.lastInst || selectedInstitution);
@@ -12227,7 +12568,7 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 💼 W.A.G.E. CERTIFICATION, FAIR PAY & MUSEUM LABOR UNIONS
         // =========================================================================
-        if (q.includes('wage') || q.includes('fair pay') || q.includes('union') || q.includes('local 2110') || q.includes('labor') || q.includes('strike moma') || q.includes('museum workers') || q.includes('minimum fee')) {{
+        if (q.includes('wage') || q.includes('fair pay') || q.includes('union') || q.includes('local 2110') || /\blabor\b/i.test(q) || q.includes('strike moma') || q.includes('museum workers') || q.includes('minimum fee')) {{
           appendCuratorMessage(`
             <p class="text-slate-200">
               Ethical cultural stewardship is inseparable from <strong>fair artist remuneration and museum worker labor rights</strong>:
@@ -12297,46 +12638,7 @@ FORMATTING & INTERACTION RULES:
           return;
         }}
 
-        // =========================================================================
-        // 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING INSPECTION INTENT
-        // =========================================================================
-        const isArchiveQuery = (q.includes('archive') || q.includes('collection') || q.includes('holding') || q.includes('reading room') || q.includes('special collection') || q.includes('footprint') || q.includes('building layout') || q.includes('architecture of') || q.includes('zoom to building')) && (findMentionedInst(query) || curatorContext.lastInst || selectedInstitution);
-        if (isArchiveQuery) {{
-          const inst = findMentionedInst(query) || curatorContext.lastInst || selectedInstitution;
-          if (inst) {{
-            curatorContext.lastInst = inst;
-            curatorContext.lastCity = inst.city;
-            const bArch = inst.building_architecture || {{}};
-            const arch = inst.archives_and_collections || {{}};
-            appendCuratorMessage(`
-              <p class="text-white font-medium text-[15px]">
-                🏛️ <strong>${{formatInstLink(inst)}}</strong>: Architectural Profile & Archival Repository
-              </p>
-              <div class="py-2.5 border-t border-[#333] space-y-2 text-slate-300 text-[13px] leading-[135%]">
-                <div>
-                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">Building Profile & Footprint</strong>
-                  ${{bArch.architectural_style || 'Independent Loft'}} · ${{bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() : '1,800'}} m² built area (${{bArch.floors || 2}} Floors, step-free access).
-                </div>
-                <div class="pt-1 border-t border-[#262626]">
-                  <strong class="text-[#34d399] font-mono uppercase text-[11px] tracking-wider block">Archival Repository & Scope</strong>
-                  ${{arch.summary || inst.curatorial_focus || 'Historic primary source files, artist portfolios, and curatorial correspondence.'}}
-                </div>
-                <div class="pt-1 border-t border-[#262626]">
-                  <strong class="text-[#fcd34d] font-mono uppercase text-[11px] tracking-wider block">Public Study Room & Access Charter</strong>
-                  ${{arch.reading_room_policy || 'Free public study room and curatorial library open during exhibition hours.'}}
-                </div>
-              </div>
-              <div class="pt-2 border-t border-[#333] flex items-center gap-2">
-                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', true)" 
-                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[12px] shadow transition cursor-pointer">
-                  <span>🏛️ Zoom to 3D Building & Inspect Archives</span>
-                </button>
-              </div>
-            `, ['Plan Visit', 'Opening Hours', 'Ethical Governance Audit', `More in ${{inst.city}}`]);
-            zoomToBuilding(inst, false);
-            return;
-          }}
-        }}
+
 
         // =========================================================================
         // ✍️ DIRECT FEEDBACK OR RESEARCH CONTRIBUTION INTENT
