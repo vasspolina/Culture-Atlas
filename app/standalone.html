@@ -1767,6 +1767,30 @@ return maplibregl$1;
           </div>
         </div>
 
+        <!-- Museum Budgets & Fiscal Year Disclosure Timing -->
+        <div class="space-y-2 pt-2 border-t border-[#232f48]">
+          <h4 class="text-[14px] font-semibold text-white flex items-center gap-2">
+            <span>📊 Museum Budgets & Fiscal Year Disclosure Timing (2026 Notice)</span>
+          </h4>
+          <p class="text-[12.5px] text-slate-300 leading-relaxed">
+            I don't have access to 2026 budget data for any museums. Those budgets haven't been published yet, and most institutions only release their annual financial statements after they close their fiscal year—typically in the spring or summer following the year in question.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-[12px]">
+            <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
+              <strong class="text-amber-300 block font-mono">📁 Where to find real budget info</strong>
+              <span class="text-slate-300">In the US, check IRS Form 990 (Schedule O contains narrative budget plans). In the UK, search the Charity Commission register for audited accounts. In Europe, national cultural ministries publish statutory reports.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
+              <strong class="text-amber-300 block font-mono">🔍 What those documents show</strong>
+              <span class="text-slate-300">Trustee names, executive salary expenses, restricted vs unrestricted gifts, and whether money flows toward the actual mission or gets stuck in endowment. Red flags: 40% fundraising overhead or trustee consulting fees.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
+              <strong class="text-amber-300 block font-mono">⚖️ What you should look for</strong>
+              <span class="text-slate-300">Program expenses (actual art and curatorial work), administrative overhead, fundraising costs, and donor restrictions that lock money into donor-named wings rather than flexible operations.</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Modal Footer -->
@@ -11596,6 +11620,17 @@ CRITICAL OPERATIONAL RULES (MUST FOLLOW STRICTLY):
    - Link institutions strictly as:
      <a href="#" class="inst-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a> (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="Exact Name">audit dossier</a>)
    - Link cities as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
+
+5. MUSEUM BUDGET & FINANCIAL DISCLOSURE GUIDANCE:
+   - If the user asks about 2026 budget data, current museum finances, or how to inspect budgets:
+   - State clearly: "I don't have access to 2026 budget data for any museums. Those budgets haven't been published yet, and most institutions only release their annual financial statements after they close their fiscal year—typically in the spring or summer following the year in question."
+   - Explain where to find real budget information:
+     * In the US: Check their IRS Form 990 (Schedule O contains narrative budget plans and program disclosures).
+     * In the UK: Search the Charity Commission register for their latest audited accounts.
+     * In Europe: National cultural ministries and arts councils often publish financial reports.
+   - Explain what those documents actually show: trustee names, salary expenses, restricted vs unrestricted gifts, and whether money flows toward the actual mission or gets stuck in endowment. Highlight red flags like a museum spending 40% on fundraising overhead, or a trustee siphoning consulting fees to their own firm.
+   - Explain what you should look for: Program expenses (the actual art and curatorial work), administrative overhead, fundraising costs, and donor restrictions that lock money into donor-named wings rather than flexible operations. Museums with transparent web reporting of these numbers tend to have better governance.
+   - Ask: "Which museum are you looking into?" so you can help interpret what those public filings actually mean.
 ${activeInstContext}
 VERIFIED PRIMARY-SOURCE CATALOG GROUNDING (Top Relevant Spaces for this Inquiry):
 ${groundedCatalogText}
@@ -12133,7 +12168,7 @@ FORMATTING & INTERACTION RULES:
         <p class="text-[#ececec]">
           How can I help you explore verified independent museums and ethical cultural spaces today?
         </p>
-      `, ['Curated City Itineraries', 'Repurposed Architecture', 'Outdoor Sculpture Parks', 'Dutch Research: BAK']);
+      `, ['Curated City Itineraries', 'Repurposed Architecture', 'Where to find museum budgets', 'Dutch Research: BAK']);
     }
 
     function resetToNewChat() {
@@ -12320,7 +12355,10 @@ FORMATTING & INTERACTION RULES:
         (q.includes('unethical') && (q.includes('online') || q.includes('admit') || q.includes('make') || q.includes('available') || q.includes('practices'))) ||
         (q.includes('bad') && q.includes('info') && (q.includes('public') || q.includes('online') || q.includes('available'))) ||
         (q.includes('online') && (q.includes('scrap') || q.includes('public') || q.includes('bad')));
-      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery;
+      const isBudgetQuery = /(2026\s*budget|museum\s*budget|budget\s*data|where\s*to\s*find\s*(real\s*)?budget|what\s*do\s*(those\s*)?documents\s*show|what\s*(should\s*you|to)\s*look\s*for\s*(in\s*)?budget|financial\s*statement|financial\s*health|donor\s*ties|form\s*990|charity\s*commission\s*account|schedule\s*o)/i.test(q) ||
+        (q.includes('budget') && (q.includes('2026') || q.includes('museum') || q.includes('data') || q.includes('find') || q.includes('statement') || q.includes('finances') || q.includes('how') || q.includes('where'))) ||
+        (q.includes('financial') && (q.includes('statement') || q.includes('health') || q.includes('document') || q.includes('filing') || q.includes('where to find')));
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery;
 
       // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
       if (!isMetaInquiry) {
@@ -12629,6 +12667,70 @@ FORMATTING & INTERACTION RULES:
             'Nan Goldin & Sackler divestment',
             'Warren Kanders at the Whitney',
             'Explore independent spaces'
+          ]);
+          return;
+        }
+
+        // =========================================================================
+        // 📊 0C. MUSEUM BUDGET DATA, FORM 990 & FINANCIAL DISCLOSURES
+        // =========================================================================
+        if (isBudgetQuery) {
+          appendCuratorMessage(`
+            <div class="border border-amber-500/30 bg-[#16120b] p-3.5 rounded-2xl space-y-3">
+              <div class="flex items-center justify-between border-b border-amber-500/20 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-[17px]">📊</span>
+                  <span class="font-medium text-white text-[15px]">Museum Budgets & Financial Disclosures</span>
+                </div>
+                <span class="text-[12px] font-mono text-amber-400 bg-amber-950/80 border border-amber-700/60 px-2 py-0.5 rounded-full">Audited Filings</span>
+              </div>
+
+              <p class="text-slate-100 text-[14px] leading-relaxed">
+                <strong>I don't have access to 2026 budget data for any museums. Those budgets haven't been published yet, and most institutions only release their annual financial statements after they close their fiscal year—typically in the spring or summer following the year in question.</strong>
+              </p>
+
+              <p class="text-slate-300 text-[13.5px] leading-relaxed">
+                Here's what I can tell you:
+              </p>
+
+              <div class="p-3 rounded-xl bg-[#20180d] border border-amber-900/40 space-y-1.5">
+                <strong class="text-amber-300 block text-[13px] font-mono">📁 Where to find real budget information:</strong>
+                <p class="text-slate-200 text-[13px] leading-relaxed">
+                  If you're researching a specific museum's finances, look for their most recent audited financial statements:
+                </p>
+                <ul class="text-[12.5px] text-slate-300 space-y-1 list-disc list-inside pt-1">
+                  <li><strong>United States:</strong> Check their <strong>IRS Form 990</strong> (Schedule O contains narrative budget plans and program disclosures).</li>
+                  <li><strong>United Kingdom:</strong> Search the <strong>Charity Commission register</strong> for their latest audited accounts.</li>
+                  <li><strong>Europe:</strong> National cultural ministries and arts councils often publish financial reports.</li>
+                </ul>
+              </div>
+
+              <div class="p-3 rounded-xl bg-[#20180d] border border-amber-900/40 space-y-1.5">
+                <strong class="text-amber-300 block text-[13px] font-mono">🔍 What those documents actually show:</strong>
+                <p class="text-slate-200 text-[13px] leading-relaxed">
+                  The Form 990 and Charity Commission accounts reveal trustee names, salary expenses, restricted vs unrestricted gifts, and whether money flows toward the actual mission or gets stuck in endowment. This is where you'll spot red flags—like a museum spending 40% on fundraising overhead, or a trustee siphoning consulting fees to their own firm.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-[#20180d] border border-amber-900/40 space-y-1.5">
+                <strong class="text-amber-300 block text-[13px] font-mono">⚖️ What you should look for:</strong>
+                <p class="text-slate-200 text-[13px] leading-relaxed">
+                  Program expenses (the actual art and curatorial work), administrative overhead, fundraising costs, and donor restrictions that lock money into donor-named wings rather than flexible operations. Museums with transparent web reporting of these numbers tend to have better governance.
+                </p>
+              </div>
+
+              <div class="pt-2 border-t border-amber-900/40 text-[13px] text-amber-200/90 leading-relaxed flex items-center justify-between gap-2 flex-wrap">
+                <span>If you're researching a specific institution's financial health or donor ties, I can help you interpret what those public filings actually mean. <strong>Which museum are you looking into?</strong></span>
+                <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3 py-1 bg-amber-500 hover:bg-amber-400 text-black rounded-lg text-[12px] font-medium transition cursor-pointer">
+                  Open Governance Legend ⚖️
+                </button>
+              </div>
+            </div>
+          `, [
+            'Audit MoMA Form 990',
+            'Where to find Form 990',
+            'Check Kunstmuseum Bern',
+            'Why ethical funding matters'
           ]);
           return;
         }
