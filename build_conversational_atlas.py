@@ -13119,23 +13119,23 @@ def build():
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <div class="flex flex-col gap-2">
             <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
-                    class="inline-flex items-center justify-center gap-1.5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-[13px] rounded-xl transition shadow-md active:scale-95 cursor-pointer">
-              <span>🏛️</span> <span>Zoom to 3D</span>
+                    class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-[13px] rounded-xl transition shadow-md active:scale-[0.99] cursor-pointer">
+              <span>🏛️</span> <span>Zoom to 3D Building Footprint</span>
             </button>
             <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center justify-center gap-1.5 py-2.5 bg-[#141d2c] hover:bg-[#1f2b40] text-sky-300 hover:text-white border border-[#233550] font-mono text-[13px] rounded-xl transition shadow-md active:scale-95 cursor-pointer">
-              <span>📋</span> <span>Audit Dossier ↗</span>
+               class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#141d2c] hover:bg-[#1f2b40] text-sky-300 hover:text-white border border-[#233550] font-mono text-[13px] rounded-xl transition shadow-sm active:scale-[0.99] cursor-pointer">
+              <span>📋</span> <span>Statutory Audit Dossier ↗</span>
             </a>
             ${{webUrl ? `
               <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                 class="inline-flex items-center justify-center gap-1.5 py-2.5 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[13px] rounded-xl transition shadow-md active:scale-95">
-                <span>Site (${{escapeHtml(domain)}}) ↗</span>
+                 class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[13px] rounded-xl transition shadow-sm active:scale-[0.99]">
+                <span>🌐</span> <span>Official Website (${{escapeHtml(domain)}}) ↗</span>
               </a>
             ` : `
-              <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="inline-flex items-center justify-center gap-1.5 py-2.5 bg-[#1e2638] hover:bg-[#2a364e] text-slate-200 font-normal text-[13px] rounded-xl transition shadow-md cursor-pointer">
-                <span>Plan Visit 💬</span>
+              <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#1e2638] hover:bg-[#2a364e] text-slate-200 font-normal text-[13px] rounded-xl transition shadow-sm cursor-pointer">
+                <span>💬</span> <span>Plan Visit in Chat</span>
               </button>
             `}}
           </div>
