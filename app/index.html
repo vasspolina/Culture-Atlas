@@ -582,9 +582,9 @@ return maplibregl$1;
           <span class="text-blue-400 font-mono text-[12px]">⚖️</span>
           <span>Methodology</span>
         </button>
-        <button id="topContributeBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#1a2333] hover:bg-[#223048] border border-[#2f4368] hover:border-[#3b5585] text-[#78a9ff] hover:text-[#93c5fd] rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Contribute confidential insider intelligence or private info">
-          <span class="text-emerald-400 font-mono text-[12px]">🔒</span>
-          <span>Contribute Intel</span>
+        <button id="topContributeBtn" class="flex items-center gap-2 px-3.5 py-1.5 bg-gradient-to-r from-[#09261b] via-[#0d3425] to-[#082218] hover:from-[#0e3b2a] hover:to-[#114733] border border-emerald-500/70 hover:border-emerald-400 text-emerald-200 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-medium shadow-md shadow-emerald-950/60 active:scale-95" title="Contribute confidential insider intelligence or unlisted independent spaces">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+          <span>🔒 Contribute Intel</span>
         </button>
       </div>
     </div>
@@ -611,8 +611,8 @@ return maplibregl$1;
         ⚖️ Legend
       </button>
 
-      <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#1a2333] hover:bg-[#223048] border border-[#2f4368] text-[#78a9ff] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Contribute confidential intelligence">
-        🔒 Intel
+      <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-2.5 py-1 bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/70 text-emerald-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Contribute confidential intelligence">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span> 🔒 Intel
       </button>
 
       <button id="topSettingsBtn" class="flex items-center gap-1 px-1.5 sm:px-3 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[12px] sm:text-[14px] transition cursor-pointer shrink-0" title="AI Intelligence & API Key Settings">
@@ -724,6 +724,15 @@ return maplibregl$1;
       </div>
 
 
+      <!-- Prominent Floating Field Intelligence / Whistleblower Badge (Map Viewport) -->
+      <div class="absolute bottom-2 left-2 sm:left-4 z-10 select-none">
+        <button id="mapFloatingContributeBtn" class="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r from-[#071f15]/95 via-[#0c2b1e]/95 to-[#082318]/95 hover:from-[#0d3626] hover:to-[#0e3b2a] border border-emerald-500/70 hover:border-emerald-400 text-emerald-300 hover:text-white rounded-2xl text-[12px] sm:text-[13px] font-medium shadow-xl shadow-black/80 backdrop-blur-md transition-all duration-200 cursor-pointer active:scale-95 group" title="Contribute confidential insider intelligence, whistleblower leaks, or unlisted independent spaces">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+          <span class="font-medium text-emerald-200 group-hover:text-white">🔒 Contribute Intel</span>
+          <span class="hidden lg:inline text-[10px] font-mono uppercase bg-emerald-950/90 text-emerald-400 border border-emerald-800/80 px-1.5 py-0.5 rounded">Whistleblower Vault</span>
+        </button>
+      </div>
+
       <!-- Subtle Globe Zoom & Map Controls -->
       <div class="absolute bottom-2 right-2 sm:right-4 z-10 flex items-center gap-1 sm:gap-1.5 bg-[#18181b]/90 backdrop-blur-md p-1 rounded-2xl border border-[#2e2e2e] shadow-lg max-w-[calc(100%-16px)] overflow-x-auto select-none">
         <button id="hudWorldBtn" class="px-2 sm:px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[11px] sm:text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Reset World View">
@@ -745,6 +754,10 @@ return maplibregl$1;
           </button>
           <button id="hudRailToggle" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1e2e42] text-[#38bdf8] border border-[#0284c7]/40 hover:bg-[#0369a1]/30 text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Toggle Clean Transit Corridors">
             <span>Rail</span>
+          </button>
+          <button id="hudContributeBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-gradient-to-r from-[#0c261e] to-[#0f3429] hover:from-[#11382c] hover:to-[#144738] text-emerald-300 hover:text-white border border-emerald-500/60 text-[12px] font-medium transition flex items-center gap-1 cursor-pointer shadow-sm shrink-0" title="Contribute confidential insider intelligence or private info">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>🔒 Intel</span>
           </button>
         </div>
         <button id="hudSpinBtn" class="px-2 sm:px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[11px] sm:text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Toggle Auto-Spin">
@@ -914,12 +927,6 @@ return maplibregl$1;
                   <span id="chatAddKeyLabel" class="hidden sm:inline">Add API Key</span>
                 </button>
 
-                <button id="chatContributeBtn" class="text-[12px] sm:text-[13px] bg-[#1a2333] hover:bg-[#223048] text-[#78a9ff] hover:text-[#93c5fd] border border-[#2f4368] flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Contribute confidential insider intelligence or private info">
-                  <span class="text-emerald-400 font-mono text-[12px]">🔒</span>
-                  <span class="hidden sm:inline">Contribute Intel</span>
-                  <span class="inline sm:hidden">Intel</span>
-                </button>
-
                 <button id="workModelBtn" class="text-[12px] sm:text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
                   <span id="workModelLabel" class="hidden sm:inline">Culture Atlas 4.0 Critical Engine</span>
                   <span class="inline sm:hidden text-[11px] text-[#8e8e8e]">Engine 4.0</span>
@@ -991,6 +998,7 @@ return maplibregl$1;
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies (112)</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">📚 Archives Directory (1074)</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -16819,8 +16827,9 @@ FORMATTING & INTERACTION RULES:
 
     document.getElementById('topContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
     document.getElementById('mobileContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
+    document.getElementById('mapFloatingContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
+    document.getElementById('hudContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
     document.getElementById('closeConfidentialChatBtn')?.addEventListener('click', closeConfidentialIntakeModal);
-    document.getElementById('chatContributeBtn')?.addEventListener('click', openConfidentialIntakeModal);
 
     // Prompt pills in confidential modal
     document.querySelectorAll('.confidential-prompt-chip').forEach(btn => {
@@ -18313,6 +18322,7 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="fiscal_analytics">📊 Fiscal Analytics</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
         </div>
 
         <div class="flex flex-wrap items-center gap-1.5">
@@ -18355,6 +18365,7 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies (112)</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">📚 Archives Directory (1074)</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -18426,6 +18437,10 @@ FORMATTING & INTERACTION RULES:
           } else if (type === 'fiscal_analytics') {
             if (typeof openFiscalAnalyticsHUD === 'function') {
               openFiscalAnalyticsHUD();
+            }
+          } else if (type === 'contribute_intel') {
+            if (typeof openConfidentialIntakeModal === 'function') {
+              openConfidentialIntakeModal();
             }
           } else if (type === 'academic') {
             if (typeof openAcademicResearchModal === 'function') {
