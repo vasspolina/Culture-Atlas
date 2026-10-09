@@ -1081,10 +1081,10 @@ def build():
       color: #ffffff !important;
       border-radius: 9999px !important;
       padding: 7px 16px;
-      font-family: -apple-system, BlinkMacSystemFont, "PP Telegraf", "PP Telegraph", "Inter", "Segoe UI", Roboto, sans-serif;
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-size: 14px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
+      font-weight: 200 !important;
+      letter-spacing: 0.02em;
       line-height: 1.2;
       text-decoration: none !important;
       border: 1px solid rgba(255, 255, 255, 0.22) !important;
@@ -1139,7 +1139,7 @@ def build():
       justify-content: center !important;
     }}
 
-    /* 🏷️ Suggestion & Secondary Filter Outline Pills (Matching Minimalist Monospace Spec) */
+    /* 🏷️ Suggestion & Secondary Filter Outline Pills (Dinamo Minimalist Aesthetic) */
     .atlas-suggestion-pill,
     .work-suggestion-card.is-suggestion,
     .curator-followup-pill,
@@ -1154,10 +1154,10 @@ def build():
       border: 1px solid rgba(255, 255, 255, 0.35) !important;
       border-radius: 9999px !important;
       padding: 5px 14px !important;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-size: 14px !important;
-      font-weight: 400 !important;
-      letter-spacing: -0.01em !important;
+      font-weight: 200 !important;
+      letter-spacing: 0.02em !important;
       line-height: 1.3 !important;
       text-decoration: none !important;
       box-shadow: none !important;
@@ -2052,8 +2052,8 @@ def build():
             <div class="flex items-center justify-between pt-1.5">
               <!-- Left: Plus action button & Input Mode Badge -->
               <div class="flex items-center gap-2 sm:gap-2.5">
-                <button id="workPlusBtn" class="w-10 sm:w-11 h-8 sm:h-9 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0 shadow-sm" title="Quick filters">
-                  <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <button id="workPlusBtn" class="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0 shadow-sm" title="Quick filters">
+                  <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                   </svg>
@@ -2064,16 +2064,17 @@ def build():
                 </div>
               </div>
 
-              <!-- Right: Model, mic, and blue circular waveform/send button -->
+              <!-- Right: Model, mic, and send button -->
               <div class="flex items-center gap-2 sm:gap-2.5">
-                <button id="workModelBtn" class="text-[13px] sm:text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
-                  <span id="workModelLabel" class="hidden sm:inline">Culture Atlas 4.0 Critical Engine</span>
-                  <span class="inline sm:hidden text-[11px] text-[#8e8e8e]">Engine 4.0</span>
+                <button id="workModelBtn" class="text-[12px] sm:text-[13px] bg-black hover:bg-[#1c1c1c] text-[#d4d4d8] hover:text-white border border-white/20 hover:border-white/40 flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition cursor-pointer font-normal shrink-0 shadow-sm" title="AI Model Status & Settings">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span id="workModelLabel" class="hidden sm:inline">Engine 4.0 Critical</span>
+                  <span class="inline sm:hidden text-[11px]">Engine 4.0</span>
                 </button>
 
-                <button id="curatorVoiceToggleBtn" class="text-[13px] sm:text-[14px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1.5 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition cursor-pointer font-normal shrink-0" title="Auto-Voice: Speaks responses aloud (Click to toggle)">
-                  <span id="curatorVoiceToggleIcon" class="text-[12px] leading-none">🔊</span>
-                  <span id="curatorVoiceToggleLabel" class="font-mono text-[12px] sm:text-[13px]">Voice: ON</span>
+                <button id="curatorVoiceToggleBtn" class="text-[12px] sm:text-[13px] bg-black hover:bg-[#1c1c1c] text-[#d4d4d8] hover:text-white border border-white/20 hover:border-white/40 flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition cursor-pointer font-normal shrink-0 shadow-sm" title="Auto-Voice: Speaks responses aloud (Click to toggle)">
+                  <span id="curatorVoiceToggleIcon" class="text-[11px] leading-none">🔊</span>
+                  <span id="curatorVoiceToggleLabel" class="text-[11.5px] sm:text-[12.5px]">Voice: ON</span>
                 </button>
 
                 <button id="workSendBtn" class="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center gap-2 transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[13px] sm:text-[14px] font-medium" title="Send message">
