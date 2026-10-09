@@ -1221,12 +1221,12 @@ def build():
       color: #e4e4e7 !important;
       border: 1px solid rgba(255, 255, 255, 0.35) !important;
       border-radius: 9999px !important;
-      padding: 5px 14px !important;
+      padding: 2px 8px !important;
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14px !important;
+      font-size: 13px !important;
       font-weight: 200 !important;
       letter-spacing: 0.02em !important;
-      line-height: 1.3 !important;
+      line-height: 1.25 !important;
       text-decoration: none !important;
       box-shadow: none !important;
       transition: all 0.16s ease-in-out !important;
@@ -1234,6 +1234,10 @@ def build():
       user-select: none !important;
       white-space: nowrap !important;
       position: relative !important;
+    }}
+    .globe-filter-pill.is-active {{
+      padding: 2px 8px !important;
+      line-height: 1.25 !important;
     }}
     .atlas-suggestion-pill:focus,
     .atlas-suggestion-pill:focus-visible,
@@ -2202,10 +2206,10 @@ def build():
           </button>
 
           <!-- Interactive Multi-Row Filter Bar (Pinned under chat input card) -->
-          <div id="globeCityBar" class="w-full mt-2 sm:mt-2.5 flex flex-col gap-2 select-none py-1 shrink-0 max-h-[64px] md:max-h-none overflow-y-auto md:overflow-visible custom-scrollbar">
+          <div id="globeCityBar" class="w-full mt-1.5 sm:mt-2 flex flex-col gap-1.5 select-none py-[2px] shrink-0 max-h-[64px] md:max-h-none overflow-y-auto md:overflow-visible custom-scrollbar">
             <!-- Row 1: Scope, Clean / Flagged Tiers, Academic Research & Categories -->
-            <div class="flex flex-wrap items-center gap-2">
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
+            <div class="flex flex-wrap items-center gap-1.5">
+              <button class="globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
               <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
               <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
               <span class="text-zinc-500 text-[11px] shrink-0">|</span>
@@ -13270,7 +13274,7 @@ def build():
 
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=10').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=11').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
@@ -25860,31 +25864,31 @@ FORMATTING & INTERACTION RULES:
         if (type === 'tier') {{
           if (val === 'A') {{
             if (isCleanOnly) {{
-              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40';
+              pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40';
             }} else {{
               pill.className = 'globe-filter-pill atlas-suggestion-pill';
             }}
           }} else if (val === 'B') {{
             if (isFlaggedOnly) {{
-              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#6929c4] text-white border border-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-purple-950/40';
+              pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#6929c4] text-white border border-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-purple-950/40';
             }} else {{
               pill.className = 'globe-filter-pill atlas-suggestion-pill';
             }}
           }} else if (val === 'COMMUNITY') {{
             if (isCommunityOnly) {{
-              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0072c3] text-white border border-[#33b1ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-cyan-950/40';
+              pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#0072c3] text-white border border-[#33b1ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-cyan-950/40';
             }} else {{
               pill.className = 'globe-filter-pill atlas-suggestion-pill';
             }}
           }} else if (val === 'VISUAL_CRITIQUE') {{
             if (isVisualCritiqueOnly) {{
-              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-amber-600 text-white border border-amber-400 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-amber-950/40 flex items-center gap-1.5';
+              pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-amber-600 text-white border border-amber-400 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-amber-950/40 flex items-center gap-1.5';
             }} else {{
               pill.className = 'globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5';
             }}
           }} else if (val === 'all') {{
             if (isAllTiers) {{
-              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+              pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
             }} else {{
               pill.className = 'globe-filter-pill atlas-suggestion-pill';
             }}
@@ -25894,7 +25898,7 @@ FORMATTING & INTERACTION RULES:
 
         if (type === 'academic') {{
           if (isAcademicOnly) {{
-            pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0369a1] text-white border border-[#38bdf8] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40';
+            pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#0369a1] text-white border border-[#38bdf8] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40';
           }} else {{
             pill.className = 'globe-filter-pill atlas-suggestion-pill';
           }}
@@ -25908,7 +25912,7 @@ FORMATTING & INTERACTION RULES:
         else if (type === 'category' && selectedCategoryFilter === val) isAct = true;
 
         if (isAct) {{
-          pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+          pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
         }} else {{
           pill.className = 'globe-filter-pill atlas-suggestion-pill';
         }}
@@ -25948,9 +25952,9 @@ FORMATTING & INTERACTION RULES:
         <div class="flex flex-wrap items-center gap-2">
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="all">All Spaces</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
+          <button class="globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
+          <button class="globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="B">Flagged</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="free">Free Entry</button>
@@ -25989,7 +25993,7 @@ FORMATTING & INTERACTION RULES:
       let html = `
         <!-- Row 1: Global Scope, Tiers, Academic Research & Categories -->
         <div class="flex flex-wrap items-center gap-2">
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
+          <button class="globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
