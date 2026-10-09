@@ -108,6 +108,74 @@ def build():
     institutions_count = clean_count
     spaces_count_str = f"{clean_count} CLEAN SPACES"
 
+    KNOWN_CITY_COORDINATES = {
+        "London": (51.5074, -0.1278),
+        "Paris": (48.8566, 2.3522),
+        "New York": (40.7128, -74.0060),
+        "Amsterdam": (52.3676, 4.9041),
+        "The Hague": (52.0705, 4.3007),
+        "Edinburgh": (55.9533, -3.1883),
+        "Los Angeles": (34.0522, -118.2437),
+        "Houston": (29.7604, -95.3698),
+        "Miami": (25.7617, -80.1918),
+        "San Francisco": (37.7749, -122.4194),
+        "São Paulo": (-23.5505, -46.6333),
+        "Rio de Janeiro": (-22.9068, -43.1729),
+        "Sydney": (-33.8688, 151.2093),
+        "Perth": (-31.9505, 115.8605),
+        "Dhaka": (23.8103, 90.4125),
+        "Calgary": (51.0447, -114.0719),
+        "Hong Kong": (22.3193, 114.1694),
+        "Shanghai": (31.2304, 121.4737),
+        "Beijing": (39.9042, 116.4074),
+        "New Delhi": (28.6139, 77.2090),
+        "Jakarta": (-6.2088, 106.8456),
+        "Dublin": (53.3498, -6.2603),
+        "Venice": (45.4408, 12.3155),
+        "Mexico City": (19.4326, -99.1332),
+        "Wellington": (-41.2865, 174.7762),
+        "Bergen": (60.3913, 5.3221),
+        "Oslo": (59.9139, 10.7522),
+        "Lisbon": (38.7223, -9.1393),
+        "Seoul": (37.5665, 126.9780),
+        "Bilbao": (43.2630, -2.9350),
+        "Zürich": (47.3769, 8.5417),
+        "Bangkok": (13.7563, 100.5018),
+        "Luanda": (-8.8390, 13.2894),
+        "Macau": (22.1987, 113.5439),
+        "Havana": (23.1136, -82.3666),
+        "Aalborg": (57.0488, 9.9217),
+        "Kolding": (55.4959, 9.4731),
+        "Santiago de los Caballeros": (19.4517, -70.6970),
+        "Kassel": (51.3127, 9.4797),
+        "Nagoya": (35.1815, 136.9066),
+        "Almaty": (43.2220, 76.8512),
+        "Kaesong": (37.9708, 126.5544),
+        "Sinchon": (38.3547, 125.6425),
+        "Warsaw": (52.2297, 21.0122),
+        "Samara": (53.1959, 50.1002),
+        "St Petersburg": (59.9343, 30.3351),
+        "Vyksa": (55.3186, 42.1867),
+        "Yekaterinburg": (56.8389, 60.6057),
+        "Dhahran": (26.2361, 50.0393),
+        "Singapore": (1.3521, 103.8198),
+        "Gwangju": (35.1595, 126.8526),
+        "Istanbul": (41.0082, 28.9784),
+        "Berlin": (52.5200, 13.4050),
+        "Tokyo": (35.6762, 139.6503),
+        "Vienna": (48.2082, 16.3738),
+        "Madrid": (40.4168, -3.7038),
+        "Barcelona": (41.3879, 2.1699),
+        "Chicago": (41.8781, -87.6298)
+    }
+
+    # Pre-pass: backfill placeholder 0,0 coordinates from known city centers
+    for item in insts_data:
+        ci = item.get("city", "").strip()
+        if abs(item.get("lat", 0)) < 0.001 and abs(item.get("lon", 0)) < 0.001:
+            if ci in KNOWN_CITY_COORDINATES:
+                item["lat"], item["lon"] = KNOWN_CITY_COORDINATES[ci]
+
     # Compute comprehensive Country & City Registries
     reg_countries = {}
     reg_cities = {}
@@ -121,8 +189,10 @@ def build():
         reg_countries[co]["count"] += 1
         if item.get("tier") == "A":
             reg_countries[co]["clean_count"] += 1
-        reg_countries[co]["lons"].append(item["lon"])
-        reg_countries[co]["lats"].append(item["lat"])
+        has_coord = abs(item.get("lat", 0)) > 0.001 or abs(item.get("lon", 0)) > 0.001
+        if has_coord:
+            reg_countries[co]["lons"].append(item["lon"])
+            reg_countries[co]["lats"].append(item["lat"])
         reg_countries[co]["cities"].add(ci)
 
         if ci not in reg_cities:
@@ -130,13 +200,16 @@ def build():
         reg_cities[ci]["count"] += 1
         if item.get("tier") == "A":
             reg_cities[ci]["clean_count"] += 1
-        reg_cities[ci]["lons"].append(item["lon"])
-        reg_cities[ci]["lats"].append(item["lat"])
+        if has_coord:
+            reg_cities[ci]["lons"].append(item["lon"])
+            reg_cities[ci]["lats"].append(item["lat"])
         if item.get("address"):
             reg_cities[ci]["addresses"].append(item["address"])
 
     all_countries_list = []
     for co, d in reg_countries.items():
+        if not d["lons"]:
+            continue
         min_lon, max_lon = min(d["lons"]), max(d["lons"])
         min_lat, max_lat = min(d["lats"]), max(d["lats"])
         c_lon = round((min_lon + max_lon) / 2, 4)
@@ -158,8 +231,14 @@ def build():
 
     all_cities_list = []
     for ci, d in reg_cities.items():
-        c_lon = round(sum(d["lons"]) / len(d["lons"]), 5)
-        c_lat = round(sum(d["lats"]) / len(d["lats"]), 5)
+        if not d["lons"]:
+            if ci in KNOWN_CITY_COORDINATES:
+                c_lat, c_lon = KNOWN_CITY_COORDINATES[ci]
+            else:
+                continue
+        else:
+            c_lon = round(sum(d["lons"]) / len(d["lons"]), 5)
+            c_lat = round(sum(d["lats"]) / len(d["lats"]), 5)
         streets = []
         for a in d["addresses"]:
             p = a.split(",")[0].strip()
@@ -11819,15 +11898,19 @@ def build():
           const bSel = selectedCityFilter.toLowerCase() === b.name.toLowerCase();
           if (aSel) return -1;
           if (bSel) return 1;
+          const aHov = hoveredCity && hoveredCity.toLowerCase() === a.name.toLowerCase();
+          const bHov = hoveredCity && hoveredCity.toLowerCase() === b.name.toLowerCase();
+          if (aHov) return -1;
+          if (bHov) return 1;
           return (b.count || 0) - (a.count || 0);
         }});
 
         sortedCities.forEach(city => {{
           const isSelected = selectedCityFilter.toLowerCase() === city.name.toLowerCase();
+          const isHovered = hoveredCity && hoveredCity.toLowerCase() === city.name.toLowerCase();
           if (r > baseRadius * 14.0 && !isSelected) return;
           const pt = project(city.lon, city.lat, r, cx, cy);
           if (pt.front && pt.depth > 0.08) {{
-            const isHovered = hoveredCity && hoveredCity.toLowerCase() === city.name.toLowerCase();
             const isCountryActive = selectedCountryFilter !== 'all';
             const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${{city.count}})` : '';
             const txt = (isSelected ? '● ' : '■ ') + city.name + countLabel;
@@ -11841,14 +11924,16 @@ def build():
               return !(bx + bw + 8 < box.x || bx > box.x + box.w + 8 || by + bh + 6 < box.y || by > box.y + box.h + 6);
             }});
 
-            // Selected city always draws; other cities only draw if they do NOT collide
-            if (!collides || isSelected) {{
+            // Selected city or hovered city always draws; other cities only draw if they do NOT collide
+            if (!collides || isSelected || isHovered) {{
               drawnCityBoxes.push({{ x: bx, y: by, w: bw, h: bh }});
               cityBadgeHitboxes.push({{
                 name: city.name,
                 country: city.country,
                 x: bx, y: by, w: bw, h: bh,
-                lon: city.lon, lat: city.lat
+                cx: pt.x, cy: pt.y,
+                lon: city.lon, lat: city.lat,
+                count: city.count
               }});
 
               const badgeAlpha = isSelected ? 1.0 : (r > baseRadius * 10.0 ? Math.max(0, 1 - (r - baseRadius * 10.0) / (baseRadius * 4.0)) : 1.0);
@@ -12139,6 +12224,71 @@ def build():
             ctx.restore();
           }}
         }});
+
+        // 8.5 Render Rich Interactive Hover Card for Hovered City on Globe
+        if (hoveredCity && !isCityStreetViewActive && r < baseRadius * 12.0) {{
+          const hMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, hoveredCity));
+          if (hMeta) {{
+            const hPt = project(hMeta.lon, hMeta.lat, r, cx, cy);
+            if (hPt.front && hPt.depth > 0.05) {{
+              ctx.save();
+              // Pulsing glowing cyan halo on the city pin
+              ctx.beginPath();
+              ctx.arc(hPt.x, hPt.y, 16, 0, Math.PI * 2);
+              ctx.fillStyle = 'rgba(56, 189, 248, 0.35)';
+              ctx.fill();
+
+              ctx.beginPath();
+              ctx.arc(hPt.x, hPt.y, 6.5, 0, Math.PI * 2);
+              ctx.fillStyle = '#38bdf8';
+              ctx.strokeStyle = '#ffffff';
+              ctx.lineWidth = 2;
+              ctx.fill();
+              ctx.stroke();
+
+              // Card dimensions & positioning
+              const titleTxt = `🏙️ ${{hMeta.name.toUpperCase()}}${{hMeta.country ? ' · ' + hMeta.country : ''}}`;
+              const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
+              const subTxt = `${{countVal}} Verified Cultural Space${{countVal === 1 ? '' : 's'}} · Click to Explore →`;
+
+              ctx.font = 'bold 12px "PP Telegraf", monospace';
+              const tw1 = ctx.measureText(titleTxt).width;
+              ctx.font = '11.5px "PP Telegraf", "PP Telegraph", sans-serif';
+              const tw2 = ctx.measureText(subTxt).width;
+
+              const cardW = Math.max(tw1, tw2) + 26;
+              const cardH = 46;
+              const cardX = Math.max(12, Math.min(width - cardW - 12, hPt.x - cardW / 2));
+              const cardY = hPt.y > 60 ? hPt.y - 58 : hPt.y + 18;
+
+              // Drop shadow & glass fill
+              ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
+              ctx.shadowBlur = 14;
+              ctx.fillStyle = '#070c16';
+              ctx.beginPath();
+              ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 8) : ctx.rect(cardX, cardY, cardW, cardH);
+              ctx.fill();
+
+              // Border outline
+              ctx.shadowBlur = 0;
+              ctx.strokeStyle = '#38bdf8';
+              ctx.lineWidth = 1.5;
+              ctx.stroke();
+
+              // Text rendering
+              ctx.font = 'bold 12px "PP Telegraf", monospace';
+              ctx.fillStyle = '#38bdf8';
+              ctx.textAlign = 'left';
+              ctx.textBaseline = 'top';
+              ctx.fillText(titleTxt, cardX + 13, cardY + 8);
+
+              ctx.font = '11.5px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.fillStyle = '#f1f5f9';
+              ctx.fillText(subTxt, cardX + 13, cardY + 25);
+              ctx.restore();
+            }}
+          }}
+        }}
 
       }} else {{
         // =======================================================
@@ -22481,22 +22631,11 @@ FORMATTING & INTERACTION RULES:
         }}
       }}
 
-      // 0.5 Check City Cluster Hitboxes on Globe
-      for (let i = 0; i < cityClusterHitboxes.length; i++) {{
-        const cl = cityClusterHitboxes[i];
-        if (Math.hypot(cl.cx - mx, cl.cy - my) < cl.w / 2 + 6) {{
-          filterByCity(cl.cityName, true, true);
-          return;
-        }}
-      }}
-
-      // 1. Check priority city hitboxes with generous hit padding
-      for (let i = 0; i < cityBadgeHitboxes.length; i++) {{
-        const b = cityBadgeHitboxes[i];
-        if (mx >= b.x - 14 && mx <= b.x + b.w + 14 && my >= b.y - 12 && my <= b.y + b.h + 12) {{
-          filterByCity(b.name, true, true);
-          return;
-        }}
+      // 0.3 Priority: Check City Click on Globe when zoomed out
+      const clickedCity = findCityAt(mx, my);
+      if (clickedCity) {{
+        filterByCity(clickedCity.name, true, true);
+        return;
       }}
 
       // 2. Check institution dots (generous 16px radius, zooms directly to street!)
@@ -22558,6 +22697,55 @@ FORMATTING & INTERACTION RULES:
       }}
     }}
 
+    // Precise, priority city detection across globe badges, clusters, and coordinates
+    function findCityAt(mx, my) {{
+      if (isCityStreetViewActive) return null;
+      const r = currentRadius;
+      const cx = width / 2;
+      const cy = height / 2;
+
+      // 1. Direct hit on an active rendered city badge label
+      for (let i = 0; i < cityBadgeHitboxes.length; i++) {{
+        const b = cityBadgeHitboxes[i];
+        const inBadge = mx >= b.x - 3 && mx <= b.x + b.w + 3 && my >= b.y - 3 && my <= b.y + b.h + 3;
+        if (inBadge) {{
+          return ALL_CITIES_REGISTRY.find(c => matchC(c.name, b.name)) || {{
+            name: b.name,
+            country: b.country || '',
+            count: b.count || 1,
+            lon: b.lon,
+            lat: b.lat
+          }};
+        }}
+      }}
+
+      // 2. Surface hit on globe city pins & clusters
+      // Weighted by distance & institution count so major hubs are not overshadowed by adjacent 1-space satellite towns
+      let bestCity = null;
+      let bestScore = Infinity;
+
+      for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {{
+        const c = ALL_CITIES_REGISTRY[i];
+        const pt = project(c.lon, c.lat, r, cx, cy);
+        if (pt.front && pt.depth > 0.05) {{
+          const pinDist = Math.hypot(pt.x - mx, pt.y - my);
+          if (pinDist <= 24) {{
+            // Logarithmic count weight prevents 1-space towns from eclipsing large cities nearby
+            const countWeight = 1 + Math.log2(Math.max(1, c.count || 1)) * 0.75;
+            const score = pinDist / countWeight;
+            if (score < bestScore) {{
+              bestScore = score;
+              bestCity = c;
+            }}
+          }}
+        }}
+      }}
+
+      return bestCity;
+    }}
+    window.findCityAt = findCityAt;
+    window.handleGlobeClick = handleGlobeClick;
+
     // Check hover target for dynamic pointer cursor feedback
     function updateHoverCursor(clientX, clientY) {{
       if (isDragging) return;
@@ -22569,7 +22757,6 @@ FORMATTING & INTERACTION RULES:
       const r = currentRadius;
 
       hoveredInstitution = null;
-      hoveredCity = null;
       hoveredCountry = null;
 
       // Check Rail Corridor Hover
@@ -22609,6 +22796,23 @@ FORMATTING & INTERACTION RULES:
         }}
       }}
 
+      // Priority: Check City Hover when on Globe
+      const targetHoverCity = findCityAt(mx, my);
+      if (targetHoverCity) {{
+        canvas.style.cursor = 'pointer';
+        const changed = hoveredCity !== targetHoverCity.name;
+        hoveredCity = targetHoverCity.name;
+        if (changed && typeof render === 'function') {{
+          requestAnimationFrame(render);
+        }}
+        return;
+      }} else if (hoveredCity !== null) {{
+        hoveredCity = null;
+        if (typeof render === 'function') {{
+          requestAnimationFrame(render);
+        }}
+      }}
+
       // Check city museum hitboxes (when in city street view)
       for (let i = 0; i < cityMuseumHitboxes.length; i++) {{
         const m = cityMuseumHitboxes[i];
@@ -22617,26 +22821,6 @@ FORMATTING & INTERACTION RULES:
         if (insideBadge || nearPin) {{
           canvas.style.cursor = 'pointer';
           hoveredInstitution = m.inst;
-          return;
-        }}
-      }}
-
-      // Check City Cluster Hitboxes on Globe
-      for (let i = 0; i < cityClusterHitboxes.length; i++) {{
-        const cl = cityClusterHitboxes[i];
-        if (Math.hypot(cl.cx - mx, cl.cy - my) < cl.w / 2 + 6) {{
-          canvas.style.cursor = 'pointer';
-          hoveredCity = cl.cityName;
-          return;
-        }}
-      }}
-
-      // Check city badge
-      for (let i = 0; i < cityBadgeHitboxes.length; i++) {{
-        const b = cityBadgeHitboxes[i];
-        if (mx >= b.x - 14 && mx <= b.x + b.w + 14 && my >= b.y - 12 && my <= b.y + b.h + 12) {{
-          canvas.style.cursor = 'pointer';
-          hoveredCity = b.name;
           return;
         }}
       }}
@@ -22679,6 +22863,7 @@ FORMATTING & INTERACTION RULES:
 
       canvas.style.cursor = 'grab';
     }}
+    window.updateHoverCursor = updateHoverCursor;
 
     canvas.addEventListener('pointermove', e => {{
       updateHoverCursor(e.clientX, e.clientY);
