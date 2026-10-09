@@ -852,6 +852,18 @@ def build():
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8), 0 0 12px rgba(16, 185, 129, 0.35) !important;
       z-index: 9999 !important;
     }}
+    /* Floating Card & Yellow Gossip Mode Transitions */
+    #floatingCard {{
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease-out;
+    }}
+    #floatingCard.gossip-yellow-card {{
+      background: rgba(24, 20, 4, 0.98) !important;
+      border-color: rgba(234, 179, 8, 0.85) !important;
+      box-shadow: 0 0 30px rgba(234, 179, 8, 0.35), 0 20px 40px rgba(0, 0, 0, 0.9) !important;
+    }}
   .speak-icon {{ display: none !important; }}
 #curatorVoiceToggleIcon {{ display: none !important; }}
 </style>
@@ -982,76 +994,99 @@ def build():
           </div>
         </div>
 
-        <!-- 💶 BUDGET & MONEY SECTION -->
-        <div id="floatingCardBudgetSection" class="mt-2.5 pt-2 border-t border-[#2e2e2e]/80 space-y-1.5">
-          <!-- Operating Budget Scale Banner & Tier -->
-          <div class="flex items-center justify-between gap-1.5 flex-wrap">
-            <div id="floatingCardBudget" class="text-[13px] font-mono text-slate-100 flex items-center gap-1.5">
-              <span class="text-amber-400 font-bold">Budget:</span>
-              <strong id="floatingCardBudgetAmount" class="font-semibold text-white"></strong>
-            </div>
-            <span id="floatingCardBudgetTier" class="text-[11px] font-mono px-2 py-0.5 rounded border border-sky-800/60 bg-sky-950/40 text-sky-300"></span>
-          </div>
-
-          <!-- Money Flow & Revenue Mix Badges -->
-          <div id="floatingCardRevenueMix" class="flex items-center gap-1.5 flex-wrap text-[11px] font-mono">
-            <span id="floatingCardPublicSubsidies" class="px-1.5 py-0.5 rounded bg-[#0b2218] border border-emerald-800/60 text-emerald-300"></span>
-            <span id="floatingCardPhilanthropy" class="px-1.5 py-0.5 rounded bg-[#20152e] border border-purple-800/60 text-purple-300"></span>
-            <span id="floatingCardEarnedRevenue" class="px-1.5 py-0.5 rounded bg-[#111e30] border border-sky-800/60 text-sky-300"></span>
-            <span id="floatingCardProgramRatio" class="px-1.5 py-0.5 rounded bg-[#271d0b] border border-amber-800/60 text-amber-300"></span>
-          </div>
-
-          <!-- Specific Funding Sources & Endowments -->
-          <div id="floatingCardFundingSource" class="text-[11.5px] text-slate-300 leading-snug line-clamp-2">
-            <span class="text-slate-400 font-mono text-[11px]">Money & Funding:</span> <span id="floatingCardFundingText"></span>
-          </div>
+        <!-- 🔄 SWIPEABLE MODE SELECTOR (VERIFIED INFO <-> YELLOW GOSSIP MODE) -->
+        <div id="floatingCardModeSwitcher" class="mt-2.5 flex items-center p-0.5 bg-[#121215] border border-[#27272a] rounded-xl text-[12px] font-mono select-none">
+          <button id="floatingCardTabInfo" type="button" class="flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-zinc-800 text-white shadow-sm" onclick="event.stopPropagation(); window.setCardMode('info');">
+            <span>Verified Info</span>
+          </button>
+          <button id="floatingCardTabGossip" type="button" class="flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer text-[#a1a1aa] hover:text-yellow-400" onclick="event.stopPropagation(); window.setCardMode('gossip');">
+            <span>Yellow Gossip Mode</span>
+          </button>
+        </div>
+        <div id="floatingCardSwipeHint" class="mt-1 flex items-center justify-between text-[10px] font-mono text-[#71717a] px-1 select-none">
+          <span>Swipe ↔ Gossip Mode</span>
+          <span>Swipe ↑ Full Dossier</span>
         </div>
 
-        <div id="floatingCardHours" class="text-[12.5px] text-emerald-400 mt-2 truncate font-mono"></div>
-
-        <!-- 🖼️ CURRENT SHOWS & OPENING NIGHT TRACKER (TEMPORARY SHOWS) -->
-        <div id="floatingCardCurrentShowsSection" class="mt-2.5 pt-2 border-t border-[#2e2e2e]/80 space-y-1.5">
-          <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
-            <span class="text-amber-400 font-bold flex items-center gap-1">
-              CURRENT SHOW ON VIEW
-            </span>
-            <span id="floatingCardShowStatusBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-emerald-800 bg-emerald-950/60 text-emerald-300 font-semibold">Now On View</span>
-          </div>
-          <div class="bg-[#121620] border border-[#232d3f] rounded-xl p-2.5 space-y-1 text-xs">
-            <div class="flex items-center justify-between gap-1">
-              <span id="floatingCardShowTitle" class="text-[13px] text-white font-semibold leading-tight line-clamp-1"></span>
-              <span id="floatingCardShowFloorPill" class="px-1.5 py-0.2 rounded bg-sky-950 border border-sky-800 text-[#7dd3fc] text-[10px] font-mono shrink-0">L1</span>
-            </div>
-            <div id="floatingCardShowMeta" class="text-[11px] text-slate-300 font-mono"></div>
-            <!-- 🍾 Opening Night / Vernissage Tracker -->
-            <div id="floatingCardOpeningNightBox" class="mt-1 pt-1 border-t border-[#1b2536] flex items-center justify-between gap-1 text-[11px] font-mono flex-wrap">
-              <div class="flex items-center gap-1 text-emerald-300">
-                <span>Vernissage:</span>
-                <span id="floatingCardOpeningNightDate" class="font-semibold text-white"></span>
+        <!-- 📄 VERIFIED INFO PANE -->
+        <div id="floatingCardInfoPane" class="space-y-1.5 transition-all duration-200">
+          <!-- 💶 BUDGET & MONEY SECTION -->
+          <div id="floatingCardBudgetSection" class="mt-2 pt-2 border-t border-[#2e2e2e]/80 space-y-1.5">
+            <!-- Operating Budget Scale Banner & Tier -->
+            <div class="flex items-center justify-between gap-1.5 flex-wrap">
+              <div id="floatingCardBudget" class="text-[13px] font-mono text-slate-100 flex items-center gap-1.5">
+                <span class="text-amber-400 font-bold">Budget:</span>
+                <strong id="floatingCardBudgetAmount" class="font-semibold text-white"></strong>
               </div>
-              <span id="floatingCardOpeningNightRsvp" class="text-[10px] text-sky-300 bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-800/60">Free / RSVP</span>
+              <span id="floatingCardBudgetTier" class="text-[11px] font-mono px-2 py-0.5 rounded border border-sky-800/60 bg-sky-950/40 text-sky-300"></span>
+            </div>
+
+            <!-- Money Flow & Revenue Mix Badges -->
+            <div id="floatingCardRevenueMix" class="flex items-center gap-1.5 flex-wrap text-[11px] font-mono">
+              <span id="floatingCardPublicSubsidies" class="px-1.5 py-0.5 rounded bg-[#0b2218] border border-emerald-800/60 text-emerald-300"></span>
+              <span id="floatingCardPhilanthropy" class="px-1.5 py-0.5 rounded bg-[#20152e] border border-purple-800/60 text-purple-300"></span>
+              <span id="floatingCardEarnedRevenue" class="px-1.5 py-0.5 rounded bg-[#111e30] border border-sky-800/60 text-sky-300"></span>
+              <span id="floatingCardProgramRatio" class="px-1.5 py-0.5 rounded bg-[#271d0b] border border-amber-800/60 text-amber-300"></span>
+            </div>
+
+            <!-- Specific Funding Sources & Endowments -->
+            <div id="floatingCardFundingSource" class="text-[11.5px] text-slate-300 leading-snug line-clamp-2">
+              <span class="text-slate-400 font-mono text-[11px]">Money & Funding:</span> <span id="floatingCardFundingText"></span>
+            </div>
+          </div>
+
+          <div id="floatingCardHours" class="text-[12.5px] text-emerald-400 mt-2 truncate font-mono"></div>
+
+          <!-- 🖼️ CURRENT SHOWS & OPENING NIGHT TRACKER (TEMPORARY SHOWS) -->
+          <div id="floatingCardCurrentShowsSection" class="mt-2 pt-2 border-t border-[#2e2e2e]/80 space-y-1.5">
+            <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
+              <span class="text-amber-400 font-bold flex items-center gap-1">
+                CURRENT SHOW ON VIEW
+              </span>
+              <span id="floatingCardShowStatusBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-emerald-800 bg-emerald-950/60 text-emerald-300 font-semibold">Now On View</span>
+            </div>
+            <div class="bg-[#121620] border border-[#232d3f] rounded-xl p-2.5 space-y-1 text-xs">
+              <div class="flex items-center justify-between gap-1">
+                <span id="floatingCardShowTitle" class="text-[13px] text-white font-semibold leading-tight line-clamp-1"></span>
+                <span id="floatingCardShowFloorPill" class="px-1.5 py-0.2 rounded bg-sky-950 border border-sky-800 text-[#7dd3fc] text-[10px] font-mono shrink-0">L1</span>
+              </div>
+              <div id="floatingCardShowMeta" class="text-[11px] text-slate-300 font-mono"></div>
+              <!-- 🍾 Opening Night / Vernissage Tracker -->
+              <div id="floatingCardOpeningNightBox" class="mt-1 pt-1 border-t border-[#1b2536] flex items-center justify-between gap-1 text-[11px] font-mono flex-wrap">
+                <div class="flex items-center gap-1 text-emerald-300">
+                  <span>Vernissage:</span>
+                  <span id="floatingCardOpeningNightDate" class="font-semibold text-white"></span>
+                </div>
+                <span id="floatingCardOpeningNightRsvp" class="text-[10px] text-sky-300 bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-800/60">Free / RSVP</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- 🟡 GOSSIP MODE DOSSIER (YELLOW MODE) -->
-        <div id="floatingCardGossipSection" class="mt-2 pt-2 border-t border-yellow-900/60 space-y-1.5 bg-[#171408]/60 p-2 rounded-xl border border-yellow-700/40">
-          <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
-            <span class="text-yellow-400 font-bold flex items-center gap-1">
-              ART WORLD WHISPERS & GOSSIP
-            </span>
-            <span id="floatingCardGossipIntensityBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-yellow-700 bg-yellow-950 text-yellow-300 font-bold">HOT</span>
-          </div>
-          <p id="floatingCardGossipHeadline" class="text-[12px] text-yellow-200/95 leading-tight font-medium"></p>
-          <div class="space-y-1 pt-0.5 text-[11px] font-mono">
-            <div id="floatingCardGossipReddit" class="text-slate-300 bg-[#0d0c06] p-1.5 rounded border border-yellow-900/40 flex items-baseline gap-1.5">
-              <span class="text-orange-400 font-bold shrink-0">r/art:</span>
-              <span id="floatingCardGossipRedditText" class="truncate text-slate-200"></span>
+        <!-- 🟡 YELLOW GOSSIP PANE -->
+        <div id="floatingCardGossipPane" class="hidden space-y-2 transition-all duration-200">
+          <div id="floatingCardGossipSection" class="mt-2 pt-2 border-t border-yellow-900/60 space-y-2 bg-[#171408]/90 p-2.5 rounded-xl border border-yellow-700/60 shadow-inner">
+            <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
+              <span class="text-yellow-400 font-bold flex items-center gap-1 tracking-wide">
+                ART WORLD WHISPERS & GOSSIP
+              </span>
+              <span id="floatingCardGossipIntensityBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-yellow-600 bg-yellow-950 text-yellow-300 font-bold shadow-sm">HOT</span>
             </div>
-            <div id="floatingCardGossipTwitter" class="text-slate-300 bg-[#0d0c06] p-1.5 rounded border border-yellow-900/40 flex items-baseline gap-1.5">
-              <span class="text-sky-400 font-bold shrink-0">X post:</span>
-              <span id="floatingCardGossipTwitterText" class="truncate text-slate-200"></span>
+            <p id="floatingCardGossipHeadline" class="text-[12.5px] text-yellow-200/95 leading-snug font-medium"></p>
+            <div class="space-y-1.5 pt-0.5 text-[11px] font-mono">
+              <div id="floatingCardGossipReddit" class="text-slate-300 bg-[#0d0c06] p-2 rounded-lg border border-yellow-900/50 flex items-baseline gap-1.5">
+                <span class="text-orange-400 font-bold shrink-0">r/art:</span>
+                <span id="floatingCardGossipRedditText" class="truncate text-slate-200"></span>
+              </div>
+              <div id="floatingCardGossipTwitter" class="text-slate-300 bg-[#0d0c06] p-2 rounded-lg border border-yellow-900/50 flex items-baseline gap-1.5">
+                <span class="text-sky-400 font-bold shrink-0">X post:</span>
+                <span id="floatingCardGossipTwitterText" class="truncate text-slate-200"></span>
+              </div>
             </div>
+            <button type="button" onclick="event.stopPropagation(); window.toggleGossipMode();" 
+                    class="w-full mt-1.5 py-1.5 px-2.5 rounded-lg bg-yellow-500 hover:bg-yellow-400 text-black font-semibold text-[11.5px] font-mono flex items-center justify-center gap-1.5 transition shadow cursor-pointer">
+              <span>Radiate Yellow Beacons on Map</span>
+            </button>
           </div>
         </div>
 
@@ -9489,8 +9524,12 @@ def build():
     }}
     window.toggleExploded3DMode = toggleExploded3DMode;
 
-    function toggleGossipMode() {{
-      isGossipModeActive = !isGossipModeActive;
+    function toggleGossipMode(forceState) {{
+      if (typeof forceState === 'boolean') {{
+        isGossipModeActive = forceState;
+      }} else {{
+        isGossipModeActive = !isGossipModeActive;
+      }}
       const topBtn = document.getElementById('topGossipBtn');
       const mobileBtn = document.getElementById('mobileGossipBtn');
 
@@ -9542,6 +9581,11 @@ def build():
         }}
       }}
 
+      // Synchronize floating card mode with active gossip state
+      if (typeof window.setCardMode === 'function') {{
+        window.setCardMode(isGossipModeActive ? 'gossip' : 'info', false);
+      }}
+
       if (typeof render === 'function') {{
         render();
       }}
@@ -9551,6 +9595,89 @@ def build():
       }}
     }}
     window.toggleGossipMode = toggleGossipMode;
+
+    let currentCardMode = 'info';
+    function setCardMode(mode, syncGlobal = false) {{
+      currentCardMode = mode === 'gossip' ? 'gossip' : 'info';
+      const card = document.getElementById('floatingCard');
+      const tabInfo = document.getElementById('floatingCardTabInfo');
+      const tabGossip = document.getElementById('floatingCardTabGossip');
+      const infoPane = document.getElementById('floatingCardInfoPane');
+      const gossipPane = document.getElementById('floatingCardGossipPane');
+      const tierBadge = document.getElementById('floatingCardTier');
+
+      if (currentCardMode === 'gossip') {{
+        if (tabGossip) {{
+          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-yellow-400 text-black shadow-[0_0_12px_rgba(250,204,21,0.6)]';
+        }}
+        if (tabInfo) {{
+          tabInfo.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-yellow-200/70 hover:text-white';
+        }}
+        if (infoPane) infoPane.classList.add('hidden');
+        if (gossipPane) gossipPane.classList.remove('hidden');
+        if (card) {{
+          card.classList.add('gossip-yellow-card', 'border-yellow-500/80', 'bg-[#181404]/98', 'shadow-[0_0_25px_rgba(234,179,8,0.3)]');
+          card.classList.remove('border-[#2e2e2e]', 'bg-[#18181b]/95');
+        }}
+        if (tierBadge) {{
+          tierBadge.className = 'text-[12px] font-mono px-2 py-0.5 rounded-lg border border-yellow-600/80 bg-yellow-950/80 text-yellow-300 font-bold';
+          tierBadge.textContent = 'Gossip Mode';
+        }}
+        if (syncGlobal && !isGossipModeActive && typeof toggleGossipMode === 'function') {{
+          toggleGossipMode(true);
+        }}
+      }} else {{
+        if (tabInfo) {{
+          tabInfo.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-zinc-800 text-white shadow-sm';
+        }}
+        if (tabGossip) {{
+          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-[#a1a1aa] hover:text-yellow-400';
+        }}
+        if (infoPane) infoPane.classList.remove('hidden');
+        if (gossipPane) gossipPane.classList.add('hidden');
+        if (card) {{
+          card.classList.remove('gossip-yellow-card', 'border-yellow-500/80', 'bg-[#181404]/98', 'shadow-[0_0_25px_rgba(234,179,8,0.3)]');
+          card.classList.add('border-[#2e2e2e]', 'bg-[#18181b]/95');
+        }}
+        if (tierBadge) {{
+          const isA = selectedInstitution && selectedInstitution.tier === 'A';
+          tierBadge.className = 'text-[12px] font-mono px-2 py-0.5 rounded-lg border border-emerald-900/60 bg-[#0a2016] text-emerald-400';
+          tierBadge.textContent = isA ? 'Verified' : 'Audited';
+        }}
+      }}
+    }}
+    window.setCardMode = setCardMode;
+
+    function setDrawerMode(mode) {{
+      const tabAudit = document.getElementById('drawerTabAudit');
+      const tabGossip = document.getElementById('drawerTabGossip');
+      const auditView = document.getElementById('drawerAuditView');
+      const gossipView = document.getElementById('drawerGossipView');
+      const drawer = document.getElementById('detailDrawer');
+
+      if (mode === 'gossip') {{
+        if (tabGossip) {{
+          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-bold transition cursor-pointer bg-yellow-400 text-black shadow-[0_0_12px_rgba(250,204,21,0.6)]';
+        }}
+        if (tabAudit) {{
+          tabAudit.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-yellow-200/70 hover:text-white';
+        }}
+        if (auditView) auditView.classList.add('hidden');
+        if (gossipView) gossipView.classList.remove('hidden');
+        if (drawer) drawer.classList.add('border-yellow-600/70');
+      }} else {{
+        if (tabAudit) {{
+          tabAudit.className = 'flex-1 py-1 px-3 rounded-lg text-center font-medium transition cursor-pointer bg-zinc-800 text-white shadow-sm';
+        }}
+        if (tabGossip) {{
+          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-yellow-400';
+        }}
+        if (auditView) auditView.classList.remove('hidden');
+        if (gossipView) gossipView.classList.add('hidden');
+        if (drawer) drawer.classList.remove('border-yellow-600/70');
+      }}
+    }}
+    window.setDrawerMode = setDrawerMode;
 
     function zoomToBuilding(instNameOrObj, showArchives = false) {{
       let inst = null;
@@ -14350,6 +14477,17 @@ def build():
         if (gSection) {{
           gSection.style.display = 'block';
         }}
+      }} else if (gHeadline) {{
+        gHeadline.textContent = `${{inst.name}}: Curatorial autonomy, trustee deliberations, and donor ethics discussions on art community backchannels.`;
+        if (gBadge) gBadge.textContent = 'ACTIVE';
+        if (gRedditText) gRedditText.textContent = `Discussion on r/contemporaryart: Auditing institutional backing for ${{inst.name}}.`;
+        if (gTwitterText) gTwitterText.textContent = `Curatorial discourse tracking exhibition sponsorship and governance.`;
+        if (gSection) gSection.style.display = 'block';
+      }}
+
+      // Synchronize floating card mode with active gossip state
+      if (typeof window.setCardMode === 'function') {{
+        window.setCardMode(isGossipModeActive ? 'gossip' : 'info', false);
       }}
 
       // Direct Web Action Buttons on Map Popup
@@ -14494,6 +14632,22 @@ def build():
             <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${{escapeHtml(inst.location || inst.city)}} · ${{inst.size || 'Audited Space'}}</p>
           </div>
 
+          <!-- DRAWER MODE TOGGLE (SCHOLARLY AUDIT <-> YELLOW GOSSIP DOSSIER) -->
+          <div class="flex items-center p-0.5 bg-[#121620] border border-[#232f48] rounded-xl text-[12px] font-mono select-none">
+            <button id="drawerTabAudit" type="button" class="flex-1 py-1 px-3 rounded-lg text-center font-medium transition cursor-pointer bg-zinc-800 text-white shadow-sm" onclick="setDrawerMode('audit')">
+              <span>Scholarly Audit Dossier</span>
+            </button>
+            <button id="drawerTabGossip" type="button" class="flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-yellow-400" onclick="setDrawerMode('gossip')">
+              <span>Yellow Gossip Dossier</span>
+            </button>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-[#71717a] px-1 select-none">
+            <span>Swipe ↔ Gossip / Audit</span>
+            <span>Tap tabs to switch view</span>
+          </div>
+
+          <!-- SCHOLARLY AUDIT VIEWPORT -->
+          <div id="drawerAuditView" class="space-y-3">
           <!-- SIMPLIFIED AUDIT CLASSIFICATION BANNER -->
           <div class="py-2.5 px-3.5 rounded-xl border flex items-center justify-between shadow-md ${{bannerBg}}">
             <div class="flex items-center gap-2.5 min-w-0">
@@ -14800,7 +14954,84 @@ def build():
             </div>
           </div>
         </div>
+        <!-- /drawerAuditView -->
+
+        <!-- YELLOW GOSSIP DOSSIER VIEWPORT -->
+        <div id="drawerGossipView" class="hidden space-y-3">
+          <div class="p-4 rounded-2xl bg-[#171408] border border-yellow-600/70 shadow-lg space-y-3">
+            <div class="flex items-center justify-between border-b border-yellow-800/60 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse"></span>
+                <span class="text-[13px] font-mono text-yellow-300 font-bold uppercase tracking-wider">
+                  Unvarnished Art World Whispers & Leaks
+                </span>
+              </div>
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-yellow-950 text-yellow-300 border border-yellow-700 font-bold">
+                HOT INTEL
+              </span>
+            </div>
+
+            <!-- Main Gossip Headline -->
+            <div>
+              <h3 class="text-[16px] sm:text-[17px] font-normal text-yellow-100 leading-snug">
+                ${{escapeHtml(inst.gossip_data ? inst.gossip_data.headline : `${{inst.name}}: Inside curatorial murmurings, donor governance debates, and backchannel discussions.`)}}
+              </h3>
+            </div>
+
+            <!-- Reddit Community Debate -->
+            <div class="p-3 rounded-xl bg-[#0e0c06] border border-yellow-900/60 space-y-1.5">
+              <div class="flex items-center justify-between text-[11px] font-mono">
+                <span class="text-orange-400 font-bold flex items-center gap-1">
+                  <span>Reddit Community Thread</span>
+                </span>
+                <span class="text-slate-400">r/contemporaryart</span>
+              </div>
+              <p class="text-[13px] text-slate-200 leading-relaxed font-sans">
+                ${{escapeHtml(inst.gossip_data && inst.gossip_data.reddit ? inst.gossip_data.reddit.snippet : `Curatorial staff and local artists active in threads discussing institutional independence and funding priorities at ${{inst.name}}.`)}}
+              </p>
+              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-yellow-950 flex items-center justify-between">
+                <span>Thread Sentiment: Lively Curatorial Debate</span>
+                <span>Primary Subreddit</span>
+              </div>
+            </div>
+
+            <!-- Twitter / X Curatorial Discourse -->
+            <div class="p-3 rounded-xl bg-[#0e0c06] border border-yellow-900/60 space-y-1.5">
+              <div class="flex items-center justify-between text-[11px] font-mono">
+                <span class="text-sky-400 font-bold flex items-center gap-1">
+                  <span>Curatorial X / Twitter Leaks</span>
+                </span>
+                <span class="text-slate-400">Curator Discourse</span>
+              </div>
+              <p class="text-[13px] text-slate-200 leading-relaxed font-sans">
+                ${{escapeHtml(inst.gossip_data && inst.gossip_data.twitter_x ? inst.gossip_data.twitter_x.snippet : `Leaked curatorial correspondence and critical threads examining corporate donor ethics and programming independence.`)}}
+              </p>
+              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-yellow-950 flex items-center justify-between">
+                <span>Verified Curatorial Accounts</span>
+                <span>Art World Commentary</span>
+              </div>
+            </div>
+
+            <!-- Plain English Governance Context -->
+            <div class="p-3 rounded-xl bg-[#1a170a] border border-yellow-700/50 space-y-1 text-[13px] text-yellow-200/90 leading-relaxed">
+              <strong class="text-yellow-400 font-mono text-[11px] uppercase block">Why this matters:</strong>
+              Museums often operate under diplomatic public faces, but curatorial friction, private trustee pressures, and underwriting negotiations happen out of sight. Yellow Gossip Mode maps these unspoken real-world dynamics so cultural practitioners know the actual internal environment.
+            </div>
+
+            <div class="pt-2 flex items-center gap-2">
+              <button type="button" onclick="window.toggleGossipMode();" 
+                      class="w-full py-2.5 px-4 rounded-xl bg-yellow-500 hover:bg-yellow-400 text-black font-semibold text-[13px] font-mono flex items-center justify-center gap-2 transition shadow cursor-pointer">
+                <span>Toggle Full Yellow Mode Across Map & Globe</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       `;
+
+      if (typeof window.setDrawerMode === 'function') {{
+        window.setDrawerMode(isGossipModeActive ? 'gossip' : 'audit');
+      }}
     }}
 
     function formatInstLink(inst, opts = {{}}) {{
@@ -24406,10 +24637,124 @@ FORMATTING & INTERACTION RULES:
       if (selectedInstitution) openDossier(selectedInstitution);
     }});
 
-    document.getElementById('floatingCard')?.addEventListener('click', (e) => {{
-      if (e.target.closest('a') || e.target.closest('button')) return;
-      if (selectedInstitution) openDossier(selectedInstitution);
-    }});
+    // =========================================================
+    // 👆 TOUCH & POINTER SWIPE GESTURE CONTROLLER (FLOATING CARD & DRAWER)
+    // "Swipe for info / swipe to put to gossip yellow mode"
+    // - Horizontal Swipe: Swipes between Verified Info and Yellow Gossip Mode
+    // - Vertical Upward Swipe: Swipes up to open full Scholarly Audit Dossier
+    // =========================================================
+    let didCardSwipe = false;
+    const cardEl = document.getElementById('floatingCard');
+    if (cardEl) {{
+      let cardStartX = 0;
+      let cardStartY = 0;
+      let cardStartTime = 0;
+      let isCardDragging = false;
+
+      const handleCardSwipeStart = (clientX, clientY) => {{
+        cardStartX = clientX;
+        cardStartY = clientY;
+        cardStartTime = Date.now();
+        isCardDragging = true;
+      }};
+
+      const handleCardSwipeEnd = (clientX, clientY) => {{
+        if (!isCardDragging) return;
+        isCardDragging = false;
+        const dx = clientX - cardStartX;
+        const dy = clientY - cardStartY;
+        const dt = Date.now() - cardStartTime;
+
+        const absDx = Math.abs(dx);
+        const absDy = Math.abs(dy);
+
+        // 1. Upward swipe: Swipe up to view full info / audit dossier
+        if (dy < -40 && absDy > absDx && dt < 900) {{
+          didCardSwipe = true;
+          setTimeout(() => {{ didCardSwipe = false; }}, 200);
+          if (selectedInstitution && typeof openDossier === 'function') {{
+            openDossier(selectedInstitution);
+          }}
+          return;
+        }}
+
+        // 2. Horizontal swipe: Swipe left or right to switch between Info and Gossip Yellow Mode
+        if (absDx > 35 && absDx > absDy && dt < 900) {{
+          didCardSwipe = true;
+          setTimeout(() => {{ didCardSwipe = false; }}, 200);
+          if (dx < 0) {{
+            // Swiped left -> put to gossip yellow mode
+            setCardMode('gossip', true);
+          }} else {{
+            // Swiped right -> put to verified info mode
+            setCardMode('info', false);
+          }}
+        }}
+      }};
+
+      // Mobile Touch Events
+      cardEl.addEventListener('touchstart', (e) => {{
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        const t = e.touches[0];
+        handleCardSwipeStart(t.clientX, t.clientY);
+      }}, {{ passive: true }});
+
+      cardEl.addEventListener('touchend', (e) => {{
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        const t = e.changedTouches[0];
+        handleCardSwipeEnd(t.clientX, t.clientY);
+      }}, {{ passive: true }});
+
+      // Desktop Pointer / Drag Events
+      cardEl.addEventListener('pointerdown', (e) => {{
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        handleCardSwipeStart(e.clientX, e.clientY);
+      }});
+
+      cardEl.addEventListener('pointerup', (e) => {{
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        handleCardSwipeEnd(e.clientX, e.clientY);
+      }});
+
+      cardEl.addEventListener('click', (e) => {{
+        if (didCardSwipe) return;
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        if (selectedInstitution && typeof openDossier === 'function') {{
+          openDossier(selectedInstitution);
+        }}
+      }});
+    }}
+
+    // Swipe gestures on Dossier Drawer (horizontal swipe between audit and gossip)
+    const drawerEl = document.getElementById('detailDrawer');
+    if (drawerEl) {{
+      let drawerStartX = 0;
+      let drawerStartY = 0;
+      let isDrawerDragging = false;
+
+      drawerEl.addEventListener('touchstart', (e) => {{
+        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('input')) return;
+        const t = e.touches[0];
+        drawerStartX = t.clientX;
+        drawerStartY = t.clientY;
+        isDrawerDragging = true;
+      }}, {{ passive: true }});
+
+      drawerEl.addEventListener('touchend', (e) => {{
+        if (!isDrawerDragging) return;
+        isDrawerDragging = false;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - drawerStartX;
+        const dy = t.clientY - drawerStartY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {{
+          if (dx < 0) {{
+            setDrawerMode('gossip');
+          }} else {{
+            setDrawerMode('audit');
+          }}
+        }}
+      }}, {{ passive: true }});
+    }}
 
     document.getElementById('closeDetailBtn').addEventListener('click', () => {{
       document.getElementById('detailDrawer').classList.add('hidden');
