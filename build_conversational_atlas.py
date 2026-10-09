@@ -929,6 +929,26 @@ def build():
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8), 0 0 12px rgba(16, 185, 129, 0.35) !important;
       z-index: 9999 !important;
     }}
+    /* ⌨️ FULL-WIDTH INPUT MODE WORKSPACE */
+    #fullWidthInputModeBtn {{
+      font-family: "PP Telegraf", "PP Telegraph", -apple-system, sans-serif !important;
+      font-weight: 200 !important;
+    }}
+    body.chat-input-mode-active #globeViewport {{
+      width: 0 !important;
+      min-width: 0 !important;
+      flex: 0 0 0 !important;
+      opacity: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }}
+    body.chat-input-mode-active #workCanvas {{
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 100% !important;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }}
     /* Floating Card & Yellow Gossip Mode Transitions */
     #floatingCard {{
       touch-action: pan-y;
@@ -2126,6 +2146,12 @@ def build():
           <button id="chatContributeBtn" type="button" class="hidden" style="display:none;" aria-hidden="true" title="Contribute confidential intel (in-chat)">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
             <span>Contribute</span>
+          </button>
+
+          <!-- Full-Width Input Mode Button (Underneath Chat) -->
+          <button id="fullWidthInputModeBtn" type="button" onclick="window.toggleChatInputMode()" class="w-full mt-2 sm:mt-2.5 py-2.5 sm:py-3 px-4 rounded-full bg-[#18181b] hover:bg-[#27272a] text-white border border-white/20 hover:border-white/40 transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer shadow-md text-[13px] sm:text-[14px] font-normal tracking-wide active:scale-[0.99] select-none" title="Switch whole chat to Input Mode">
+            <span id="fullWidthInputModeDot" class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+            <span id="fullWidthInputModeText">Input Mode</span>
           </button>
 
           <!-- Interactive Multi-Row Filter Bar (Pinned under chat input card) -->
@@ -24100,37 +24126,60 @@ FORMATTING & INTERACTION RULES:
     function enterChatInputMode(defaultTopic = '') {{
       isChatInputMode = true;
 
-      // 1. Switch whole view to chat mode (mobile full screen, desktop expand chat)
+      // 1. Activate whole-chat full-width mode via body class & collapse globe
+      document.body.classList.add('chat-input-mode-active');
       if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {{
         setMobileViewMode('chat');
       }} else if (window.innerWidth >= 768) {{
         const g = document.getElementById('globeViewport');
         if (g) {{
           preInputModeGlobeWidth = g.style.width || '';
-          g.style.width = '240px';
-          g.style.flex = '0 0 240px';
           setTimeout(resizeCanvas, 40);
         }}
       }}
 
-      // 2. Hide suggestions & multi-row filter pills slop
+      // 2. Expand input textarea & focus
+      const workInput = document.getElementById('workInput');
+      if (workInput) {{
+        workInput.rows = 4;
+        workInput.classList.add('min-h-[110px]');
+        workInput.placeholder = '🔒 [Input Mode] Enter notes, queries, or confidential intel here...';
+        if (defaultTopic) {{
+          workInput.value = defaultTopic;
+        }}
+        workInput.focus();
+      }}
+
+      // 3. Update full-width input mode button state
+      const fwBtn = document.getElementById('fullWidthInputModeBtn');
+      const fwText = document.getElementById('fullWidthInputModeText');
+      const fwDot = document.getElementById('fullWidthInputModeDot');
+      if (fwBtn) {{
+        fwBtn.classList.add('bg-[#072418]', 'border-emerald-500/70', 'text-emerald-300');
+        fwBtn.classList.remove('bg-[#18181b]', 'text-white', 'border-white/20');
+        fwBtn.setAttribute('title', 'Click to exit Input Mode');
+      }}
+      if (fwText) fwText.textContent = 'Exit Input Mode';
+      if (fwDot) fwDot.classList.add('animate-ping');
+
+      // 3. Hide suggestions & multi-row filter pills
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.add('hidden');
 
       const cityBar = document.getElementById('globeCityBar');
       if (cityBar) cityBar.classList.add('hidden');
 
-      // 3. Show top sticky input mode header
+      // 4. Show top sticky input mode header
       const inputModeHeader = document.getElementById('chatInputModeHeader');
       if (inputModeHeader) inputModeHeader.classList.remove('hidden');
 
-      // 4. Style input card as dedicated secure vault
+      // 5. Style input card as dedicated secure vault
       const inputCard = document.getElementById('workInputCard');
       if (inputCard) {{
         inputCard.classList.add('border-emerald-500/80', 'bg-[#0a1e16]', 'shadow-emerald-950/70', 'ring-1', 'ring-emerald-500/40');
       }}
 
-      // 5. Hide irrelevant AI model / voice buttons in input card
+      // 6. Hide irrelevant AI model / voice buttons in input card
       const modelBtn = document.getElementById('workModelBtn');
       if (modelBtn) modelBtn.classList.add('hidden');
 
@@ -24143,7 +24192,7 @@ FORMATTING & INTERACTION RULES:
         inputBadge.classList.add('flex');
       }}
 
-      // 6. Style Send button as dedicated emerald Submit Intel button
+      // 7. Style Send button as dedicated emerald Submit Intel button
       const sendBtn = document.getElementById('workSendBtn');
       if (sendBtn) {{
         sendBtn.classList.remove('bg-black', 'hover:bg-[#1c1c1c]', 'border-white/20');
@@ -24157,93 +24206,108 @@ FORMATTING & INTERACTION RULES:
         sendBtn.title = 'Cryptographically submit confidential intelligence';
       }}
 
-      // 7. Inject dedicated Intake Workspace into curatorMessages
-      appendCuratorMessage(`
-        <div id="inputModeIntakePanel" class="space-y-3.5 text-slate-200 bg-[#071f16]/95 border border-emerald-500/60 rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl backdrop-blur-md">
-          <div class="flex items-center justify-between border-b border-emerald-800/60 pb-2.5">
-            <div class="flex items-center gap-2.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-              <h3 class="text-white font-semibold text-[14.5px] sm:text-[15.5px]">Confidential Field Intel &amp; Whistleblower Pipeline</h3>
+      // 9. Inject dedicated Intake Workspace into curatorMessages if not already injected
+      try {{
+        if (!document.getElementById('inputModeIntakePanel') && typeof appendCuratorMessage === 'function') {{
+          appendCuratorMessage(`
+            <div id="inputModeIntakePanel" class="space-y-3.5 text-slate-200 bg-[#071f16]/95 border border-emerald-500/60 rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl backdrop-blur-md">
+              <div class="flex items-center justify-between border-b border-emerald-800/60 pb-2.5">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                  <h3 class="text-white font-semibold text-[14.5px] sm:text-[15.5px]">Confidential Field Intel &amp; Whistleblower Pipeline</h3>
+                </div>
+                <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700/60">In-Chat Intake Active</span>
+              </div>
+              
+              <p class="text-white text-[13.5px] sm:text-[14px] leading-relaxed">
+                <strong>How to submit right here:</strong> Share non-public documents, unverified corporate sponsorships, board conflicts, or suggest unlisted independent art spaces directly in the chat below.
+              </p>
+
+              <div class="space-y-1.5 text-xs text-slate-300 bg-[#04140e]/80 p-3 rounded-xl border border-emerald-900/60">
+                <div class="font-medium text-emerald-300 font-mono text-[11px] uppercase tracking-wider flex items-center gap-1.5">
+                  <span>Verification Protocol (Zero-Knowledge)</span>
+                </div>
+                <ol class="list-decimal list-inside space-y-1 text-[12px] text-slate-300">
+                  <li>Type or paste your information directly into the input vault below.</li>
+                  <li>Include key details: Museum or institution name, trustee names, dates, or document excerpts.</li>
+                  <li><strong>Cryptographic Receipt:</strong> Culture Atlas computes a native SHA-256 integrity hash locally in your browser and assigns an ephemeral pseudonym.</li>
+                </ol>
+              </div>
+
+              <div class="pt-1">
+                <div class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold mb-2">Quick Prompts to Start Your Report:</div>
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Board Conflict: Undisclosed defense contractor or private equity trustee sitting on the board of [Institution Name]">
+                    Report Trustee Conflict
+                  </button>
+                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Sponsorship Leak: Non-public gift agreement with fossil fuel or defense conglomerate at [Institution Name]">
+                    Submit Sponsorship Leak
+                  </button>
+                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Schedule L Disclosure: Museum conducting commercial business with interested trustee without recusal at [Institution Name]">
+                    Report Schedule L Transaction
+                  </button>
+                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Labor / Wage Dispute: Curatorial staff unionization or wage suppression memo at [Institution Name]">
+                    Report Labor Dispute
+                  </button>
+                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Unlisted Independent Space: Suggest verified grassroots art space with clean public/cooperative funding: [Space Name, City]">
+                    Suggest Independent Space
+                  </button>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-emerald-900/60 flex items-center justify-between text-[11.5px] font-mono text-emerald-400/90 flex-wrap gap-2">
+                <span class="flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span>Input active below · Submit anytime via Enter or Send</span>
+                </span>
+                <span class="text-zinc-400">OpSec Tip: Use Tor or Brave for high-risk leaks</span>
+              </div>
             </div>
-            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700/60">In-Chat Intake Active</span>
-          </div>
-          
-          <p class="text-white text-[13.5px] sm:text-[14px] leading-relaxed">
-            <strong>How to submit right here:</strong> Share non-public documents, unverified corporate sponsorships, board conflicts, or suggest unlisted independent art spaces directly in the chat below.
-          </p>
-
-          <div class="space-y-1.5 text-xs text-slate-300 bg-[#04140e]/80 p-3 rounded-xl border border-emerald-900/60">
-            <div class="font-medium text-emerald-300 font-mono text-[11px] uppercase tracking-wider flex items-center gap-1.5">
-              <span>Verification Protocol (Zero-Knowledge)</span>
-            </div>
-            <ol class="list-decimal list-inside space-y-1 text-[12px] text-slate-300">
-              <li>Type or paste your information directly into the input vault below.</li>
-              <li>Include key details: Museum or institution name, trustee names, dates, or document excerpts.</li>
-              <li><strong>Cryptographic Receipt:</strong> Culture Atlas computes a native SHA-256 integrity hash locally in your browser and assigns an ephemeral pseudonym.</li>
-            </ol>
-          </div>
-
-          <div class="pt-1">
-            <div class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold mb-2">Quick Prompts to Start Your Report:</div>
-            <div class="flex flex-wrap gap-2">
-              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Board Conflict: Undisclosed defense contractor or private equity trustee sitting on the board of [Institution Name]">
-                Report Trustee Conflict
-              </button>
-              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Sponsorship Leak: Non-public gift agreement with fossil fuel or defense conglomerate at [Institution Name]">
-                Submit Sponsorship Leak
-              </button>
-              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Schedule L Disclosure: Museum conducting commercial business with interested trustee without recusal at [Institution Name]">
-                Report Schedule L Transaction
-              </button>
-              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Labor / Wage Dispute: Curatorial staff unionization or wage suppression memo at [Institution Name]">
-                Report Labor Dispute
-              </button>
-              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Unlisted Independent Space: Suggest verified grassroots art space with clean public/cooperative funding: [Space Name, City]">
-                Suggest Independent Space
-              </button>
-            </div>
-          </div>
-
-          <div class="pt-2 border-t border-emerald-900/60 flex items-center justify-between text-[11.5px] font-mono text-emerald-400/90 flex-wrap gap-2">
-            <span class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span>Input active below · Submit anytime via Enter or Send</span>
-            </span>
-            <span class="text-zinc-400">OpSec Tip: Use Tor or Brave for high-risk leaks</span>
-          </div>
-        </div>
-      `);
-
-      // 8. Update input placeholder & focus
-      const workInput = document.getElementById('workInput');
-      if (workInput) {{
-        workInput.placeholder = '🔒 [Confidential Vault] Enter confidential intel or paste document leak here...';
-        if (defaultTopic) {{
-          workInput.value = defaultTopic;
+          `);
         }}
-        workInput.focus();
+      }} catch (err) {{
+        console.warn('Could not inject intake panel:', err);
       }}
+
       scrollChatToBottom(true);
     }}
 
     function exitChatInputMode() {{
       isChatInputMode = false;
 
-      // 1. Hide sticky input mode header
+      // 1. Deactivate whole-chat full-width mode
+      document.body.classList.remove('chat-input-mode-active');
+      if (typeof resizeCanvas === 'function') {{
+        setTimeout(resizeCanvas, 360);
+      }}
+
+      // 2. Reset full-width input mode button state
+      const fwBtn = document.getElementById('fullWidthInputModeBtn');
+      const fwText = document.getElementById('fullWidthInputModeText');
+      const fwDot = document.getElementById('fullWidthInputModeDot');
+      if (fwBtn) {{
+        fwBtn.classList.remove('bg-[#072418]', 'border-emerald-500/70', 'text-emerald-300');
+        fwBtn.classList.add('bg-[#18181b]', 'text-white', 'border-white/20');
+        fwBtn.setAttribute('title', 'Switch whole chat to Input Mode');
+      }}
+      if (fwText) fwText.textContent = 'Input Mode';
+      if (fwDot) fwDot.classList.remove('animate-ping');
+
+      // 3. Hide sticky input mode header
       const inputModeHeader = document.getElementById('chatInputModeHeader');
       if (inputModeHeader) inputModeHeader.classList.add('hidden');
 
-      // 2. Restore filter bar below input
+      // 4. Restore filter bar below input
       const cityBar = document.getElementById('globeCityBar');
       if (cityBar) cityBar.classList.remove('hidden');
 
-      // 3. Restore input card styling
+      // 5. Restore input card styling & height
       const inputCard = document.getElementById('workInputCard');
       if (inputCard) {{
         inputCard.classList.remove('border-emerald-500/80', 'bg-[#0a1e16]', 'shadow-emerald-950/70', 'ring-1', 'ring-emerald-500/40');
       }}
 
-      // 4. Restore AI controls
+      // 6. Restore AI controls
       const modelBtn = document.getElementById('workModelBtn');
       if (modelBtn) modelBtn.classList.remove('hidden');
 
@@ -24256,7 +24320,7 @@ FORMATTING & INTERACTION RULES:
         inputBadge.classList.remove('flex');
       }}
 
-      // 5. Restore Send button
+      // 7. Restore Send button
       const sendBtn = document.getElementById('workSendBtn');
       if (sendBtn) {{
         sendBtn.classList.remove('bg-gradient-to-r', 'from-emerald-600', 'to-teal-600', 'hover:from-emerald-500', 'hover:to-teal-500', 'shadow-emerald-900/60');
@@ -24270,13 +24334,15 @@ FORMATTING & INTERACTION RULES:
         sendBtn.title = 'Send message';
       }}
 
-      // 6. Restore placeholder
+      // 8. Restore placeholder & row height
       const workInput = document.getElementById('workInput');
       if (workInput) {{
+        workInput.rows = 2;
+        workInput.classList.remove('min-h-[110px]');
         workInput.placeholder = 'Ask about a museum or cultural space';
       }}
 
-      // 7. Desktop split view restoration if previously minimized
+      // 9. Desktop split view restoration if previously minimized
       if (window.innerWidth >= 768) {{
         const g = document.getElementById('globeViewport');
         if (g && (g.style.width === '240px' || preInputModeGlobeWidth)) {{
@@ -24294,6 +24360,15 @@ FORMATTING & INTERACTION RULES:
       `);
       scrollChatToBottom(true);
     }}
+
+    function toggleChatInputMode() {{
+      if (isChatInputMode) {{
+        exitChatInputMode();
+      }} else {{
+        enterChatInputMode();
+      }}
+    }}
+    window.toggleChatInputMode = toggleChatInputMode;
 
     function triggerInChatContributeFlow(defaultTopic = '') {{
       enterChatInputMode(defaultTopic);
