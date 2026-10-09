@@ -1637,58 +1637,58 @@ def build():
           </div>
 
           <!-- Interactive Multi-Row Filter Bar (Pinned under chat input card) -->
-          <div id="globeCityBar" class="w-full mt-2 sm:mt-2.5 flex flex-col gap-1.5 select-none py-0.5 shrink-0 max-h-[58px] md:max-h-none overflow-y-auto md:overflow-visible custom-scrollbar">
+          <div id="globeCityBar" class="w-full mt-2 sm:mt-2.5 flex flex-col gap-2 select-none py-1 shrink-0 max-h-[64px] md:max-h-none overflow-y-auto md:overflow-visible custom-scrollbar">
             <!-- Row 1: Scope, Clean / Flagged Tiers, Academic Research & Categories -->
-            <div class="flex flex-wrap items-center gap-1.5">
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces ({total_count})</button>
-              <span class="text-[#444] text-[11px] shrink-0">|</span>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/60 text-[#60a5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="governance">Governance Legend</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">Archives Directory ({archives_count})</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Contribute Intel</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
-              <span class="text-[#444] text-[11px] shrink-0">|</span>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="mena_africa">MidEast & Africa</button>
-              <span class="text-[#444] text-[11px] shrink-0">|</span>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
+            <div class="flex flex-wrap items-center gap-2">
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Spaces ({total_count})</button>
+              <span class="text-zinc-500 text-[11px] shrink-0">|</span>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="governance">Governance Legend</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies ({academic_count})</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="archives">Archives Directory ({archives_count})</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
+              <span class="text-zinc-500 text-[11px] shrink-0">|</span>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="europe">Europe</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="americas">Americas</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="asiapacific">Asia-Pacific</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="mena_africa">MidEast & Africa</button>
+              <span class="text-zinc-500 text-[11px] shrink-0">|</span>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
             </div>
 
             <!-- Row 2: Featured Cultural Cities -->
-            <div class="flex flex-wrap items-center gap-1.5">
+            <div class="flex flex-wrap items-center gap-2">
               <span class="text-[11px] text-[#71717a] font-mono shrink-0 mr-0.5 uppercase tracking-wider">Cities:</span>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="London">London (18)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="New York">New York (16)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="Paris">Paris (12)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="Berlin">Berlin (10)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="Amsterdam">Amsterdam (7)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="Madrid">Madrid (4)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="Tokyo">Tokyo (3)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="Basel">Basel (2)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="Bilbao">Bilbao (2)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="London">London (18)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="New York">New York (16)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Paris">Paris (12)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Berlin">Berlin (10)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Amsterdam">Amsterdam (7)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Madrid">Madrid (4)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Tokyo">Tokyo (3)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Basel">Basel (2)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Bilbao">Bilbao (2)</button>
             </div>
 
             <!-- Row 3: Featured Countries -->
-            <div class="flex flex-wrap items-center gap-1.5">
+            <div class="flex flex-wrap items-center gap-2">
               <span class="text-[11px] text-[#71717a] font-mono shrink-0 mr-0.5 uppercase tracking-wider">Countries:</span>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="United Kingdom">United Kingdom</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="United States">United States</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="Germany">Germany</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="France">France</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="Netherlands">Netherlands</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="Spain">Spain</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="Switzerland">Switzerland</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="Italy">Italy</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="Japan">Japan</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="United Kingdom">United Kingdom</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="United States">United States</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Germany">Germany</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="France">France</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Netherlands">Netherlands</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Spain">Spain</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Switzerland">Switzerland</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Italy">Italy</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Japan">Japan</button>
             </div>
           </div>
 
@@ -2250,14 +2250,14 @@ def build():
         </div>
 
         <!-- Filter Chips Row -->
-        <div class="flex flex-wrap items-center gap-1.5 text-[12px]" id="archivesFilterChips">
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm" data-filter="all">All Archives ({archives_count})</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="independent">Verified Independent Spaces ({clean_count})</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="ephemera">Artists' Ephemera & Zines</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="av">Oral Histories & AV Masters</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="dossiers">Exhibition Dossiers & Correspondence</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="study">Permanent Study Collections</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="high_digitization">High Digitization (70%+)</button>
+        <div class="flex flex-wrap items-center gap-2 text-[12px]" id="archivesFilterChips">
+          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm text-[12px] sm:text-[13px]" data-filter="all">All Archives ({archives_count})</button>
+          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="independent">Verified Independent Spaces ({clean_count})</button>
+          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="ephemera">Artists' Ephemera & Zines</button>
+          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="av">Oral Histories & AV Masters</button>
+          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="dossiers">Exhibition Dossiers & Correspondence</button>
+          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="study">Permanent Study Collections</button>
+          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="high_digitization">High Digitization (70%+)</button>
         </div>
 
         <!-- Result count bar -->
@@ -16050,9 +16050,9 @@ def build():
       document.querySelectorAll('#archivesFilterChips .archives-filter-chip').forEach(ch => {{
         const f = ch.getAttribute('data-filter');
         if (f === currentArchivesCategory) {{
-          ch.className = 'archives-filter-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm';
+          ch.className = 'archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm text-[12px] sm:text-[13px]';
         }} else {{
-          ch.className = 'archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition';
+          ch.className = 'archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm';
         }}
       }});
     }}
@@ -23769,27 +23769,27 @@ FORMATTING & INTERACTION RULES:
         if (type === 'tier') {{
           if (val === 'A') {{
             if (isCleanOnly) {{
-              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40';
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40';
             }} else {{
-              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0a2016]/90 hover:bg-[#0f2e20] border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
             }}
           }} else if (val === 'B') {{
             if (isFlaggedOnly) {{
-              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#6929c4] text-white border border-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-purple-950/40';
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#6929c4] text-white border border-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-purple-950/40';
             }} else {{
-              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433]/90 hover:bg-[#2d1f4a] border border-[#8a3ffc]/80 text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
             }}
           }} else if (val === 'COMMUNITY') {{
             if (isCommunityOnly) {{
-              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0072c3] text-white border border-[#33b1ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-cyan-950/40';
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0072c3] text-white border border-[#33b1ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-cyan-950/40';
             }} else {{
-              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
             }}
           }} else if (val === 'all') {{
             if (isAllTiers) {{
-              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
             }} else {{
-              pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0';
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
             }}
           }}
           return;
@@ -23802,9 +23802,9 @@ FORMATTING & INTERACTION RULES:
         else if (type === 'category' && selectedCategoryFilter === val) isAct = true;
 
         if (isAct) {{
-          pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[13px] shrink-0 shadow-sm';
+          pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
         }} else {{
-          pill.className = 'globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[13px] shrink-0';
+          pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
         }}
       }});
     }}
@@ -23818,33 +23818,33 @@ FORMATTING & INTERACTION RULES:
       const totalSpaces = countryCities.reduce((acc, c) => acc + c.count, 0);
 
       let html = `
-        <div class="flex flex-wrap items-center gap-1.5">
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="all">All Spaces</button>
-          <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
-          <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged</button>
-          <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="fiscal_analytics">Fiscal Analytics</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Contribute Intel</span></button>
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="all">All Spaces</button>
+          <span class="text-zinc-500 text-[11px] shrink-0">|</span>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
+          <span class="text-zinc-500 text-[11px] shrink-0">|</span>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged</button>
+          <span class="text-zinc-500 text-[11px] shrink-0">|</span>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="fiscal_analytics">Fiscal Analytics</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5" data-type="contribute_intel"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
         </div>
 
-        <div class="flex flex-wrap items-center gap-1.5">
+        <div class="flex flex-wrap items-center gap-2">
           <span class="text-[11px] text-[#38bdf8] font-mono shrink-0 mr-0.5 uppercase tracking-wider font-semibold">Fiscal Models:</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_endowed">Endowed (≥30%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_endowed">Endowed (≥30%)</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
         </div>
 
-        <div class="flex flex-wrap items-center gap-1.5">
+        <div class="flex flex-wrap items-center gap-2">
           <span class="text-[11px] text-[#71717a] font-mono shrink-0 mr-0.5 uppercase tracking-wider">Cities:</span>
       `;
 
       countryCities.forEach(city => {{
-        html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="${{escapeHtml(city.name)}}">${{escapeHtml(city.name)}} <span class="text-[#93c5fd] font-mono text-[11px]">(${{city.count}})</span></button>`;
+        html += `<button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="${{escapeHtml(city.name)}}">${{escapeHtml(city.name)}} <span class="text-[#2563eb] font-mono text-[11px]">(${{city.count}})</span></button>`;
       }});
 
       html += `</div>`;
@@ -23863,62 +23863,62 @@ FORMATTING & INTERACTION RULES:
 
       let html = `
         <!-- Row 1: Global Scope, Tiers, Academic Research & Categories -->
-        <div class="flex flex-wrap items-center gap-1.5">
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces ({total_count})</button>
-          <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40" data-type="fiscal_analytics" id="globeFiscalAnalyticsBtn">Fiscal Analytics</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">Archives Directory ({archives_count})</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Contribute Intel</span></button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
-          <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="mena_africa">MidEast & Africa</button>
-          <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Spaces ({total_count})</button>
+          <span class="text-zinc-500 text-[11px] shrink-0">|</span>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="fiscal_analytics" id="globeFiscalAnalyticsBtn">Fiscal Analytics</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies ({academic_count})</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="archives">Archives Directory ({archives_count})</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
+          <span class="text-zinc-500 text-[11px] shrink-0">|</span>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="europe">Europe</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="americas">Americas</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="asiapacific">Asia-Pacific</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="mena_africa">MidEast & Africa</button>
+          <span class="text-zinc-500 text-[11px] shrink-0">|</span>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
         </div>
 
         <!-- Row 2: Fiscal & Revenue Architecture Models -->
-        <div class="flex flex-wrap items-center gap-1.5">
+        <div class="flex flex-wrap items-center gap-2">
           <span class="text-[11px] text-[#38bdf8] font-mono shrink-0 mr-0.5 uppercase tracking-wider font-semibold">Fiscal Models:</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_endowed">Endowed / Philanthropy (≥30%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_earned">Earned Revenue (≥35%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_artist_run">Lean Artist-Run</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_major">Major Metropolitan</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_endowed">Endowed / Philanthropy (≥30%)</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_earned">Earned Revenue (≥35%)</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_artist_run">Lean Artist-Run</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_major">Major Metropolitan</button>
         </div>
 
         <!-- Row 3: Featured Cultural Cities -->
-        <div class="flex flex-wrap items-center gap-1.5">
+        <div class="flex flex-wrap items-center gap-2">
           <span class="text-[11px] text-[#71717a] font-mono shrink-0 mr-0.5 uppercase tracking-wider">Cities:</span>
       `;
 
       featuredCities.forEach(cityName => {{
         const cMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
         const count = cMeta ? ` (${{cMeta.count}})` : '';
-        html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="city" data-value="${{cityName}}">${{cityName}}${{count}}</button>`;
+        html += `<button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="${{cityName}}">${{cityName}}${{count}}</button>`;
       }});
 
       html += `
         </div>
 
         <!-- Row 4: Featured Countries -->
-        <div class="flex flex-wrap items-center gap-1.5">
+        <div class="flex flex-wrap items-center gap-2">
           <span class="text-[11px] text-[#71717a] font-mono shrink-0 mr-0.5 uppercase tracking-wider">Countries:</span>
       `;
 
       featuredCountries.forEach(countryName => {{
-        html += `<button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="country" data-value="${{countryName}}">${{countryName}}</button>`;
+        html += `<button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="${{countryName}}">${{countryName}}</button>`;
       }});
 
       html += `</div>`;
