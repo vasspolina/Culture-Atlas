@@ -13,6 +13,8 @@ def run_tests():
 
     test_script = """
     <script>
+    window.requestAnimationFrame = () => 1;
+    window.cancelAnimationFrame = () => {};
     // Stub fetch so headless chrome does not wait for external tiles
     // Stub fetch so headless chrome does not hang on external network
     window.fetch = async (url, opts) => {

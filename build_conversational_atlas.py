@@ -1468,6 +1468,23 @@ def build():
       <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[10%] pt-4 pb-2 w-full bg-transparent" style="padding-left: 10%; padding-right: 10%;">
         <div id="curatorScrollContent" class="w-full max-w-3xl flex flex-col items-center">
           
+          <!-- Dedicated Input Mode Sticky / Top Header -->
+          <div id="chatInputModeHeader" class="hidden w-full mb-3 p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-[#061f15]/95 via-[#0b2b1e]/95 to-[#061f15]/95 border border-emerald-500/60 shadow-lg shadow-emerald-950/40 backdrop-blur-md flex items-center justify-between gap-3 text-slate-200">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+              <div class="min-w-0">
+                <div class="text-[13px] sm:text-[14px] font-semibold text-emerald-300 flex items-center gap-2 truncate">
+                  <span>Confidential Field Intel &amp; Whistleblower Vault</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/60 uppercase">Zero-Knowledge</span>
+                </div>
+                <p class="text-[11px] font-mono text-emerald-400/80 truncate">Client-Side SHA-256 Hashing · No IP Logs · Ephemeral Pseudonyms</p>
+              </div>
+            </div>
+            <button id="exitInputModeBtn" type="button" onclick="window.exitChatInputMode()" class="px-3 py-1.5 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700 text-xs font-medium transition cursor-pointer flex items-center gap-1.5 shrink-0 shadow-sm" title="Exit Input Mode &amp; return to normal chat">
+              <span>✕ Exit Input Mode</span>
+            </button>
+          </div>
+
           <!-- Active Conversation Stream (Messages injected dynamically in work chat) -->
           <div id="curatorMessages" class="w-full space-y-4 mb-3">
             <!-- User queries and curator responses flow seamlessly here -->
@@ -1566,7 +1583,7 @@ def build():
             <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[13.5px] sm:text-[14.5px] focus:outline-none resize-none font-normal leading-[140%] min-h-[34px] sm:min-h-[42px] max-h-36 mb-1.5"></textarea>
             
             <div class="flex items-center justify-between pt-1.5">
-              <!-- Left: Plus action button -->
+              <!-- Left: Plus action button & Input Mode Badge -->
               <div class="flex items-center gap-2 sm:gap-2.5">
                 <button id="workPlusBtn" class="w-10 sm:w-11 h-8 sm:h-9 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0 shadow-sm" title="Quick filters">
                   <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1574,6 +1591,10 @@ def build():
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                   </svg>
                 </button>
+                <div id="workInputModeBadge" class="hidden items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/90 text-emerald-300 border border-emerald-700/70 text-[11.5px] font-mono shadow-sm">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Confidential Vault Active</span>
+                </div>
               </div>
 
               <!-- Right: Model, mic, and blue circular waveform/send button -->
@@ -18525,7 +18546,7 @@ FORMATTING & INTERACTION RULES:
               </div>
 
               <p class="text-slate-100 text-[14px] leading-relaxed">
-                <strong>Oh, you want to spar? Challenge accepted. Darling, I wasn't coded to be a polite museum gift-shop clerk nodding along to blue-chip PR fluff.</strong>
+                <strong>Oh, you want to spar? Challenge accepted. Darling, I was built with critical teeth and wasn't coded to be a polite museum gift-shop clerk nodding along to blue-chip PR fluff.</strong>
               </p>
               <p class="text-slate-300 text-[14px] leading-relaxed">
                 Culture Atlas exists specifically to puncture the polite fiction of institutional neutrality. Mega-museums love selling you 'spatial contemplation' in cavernous white cube atriums while their trustee chairs make billions off defense manufacturing and private equity. We're taking the piss out of that whole charade.
@@ -18685,7 +18706,7 @@ FORMATTING & INTERACTION RULES:
 
         if (isGreeting || isWhoAreYou || isVoiceTest) {{
           let greetingTitle = "Well, hello there! Welcome to the unvarnished side of the gallery.";
-          let greetingProse = "Think of me as your resident Culture Atlas curator with the sharp wit of Yandex Alisa, an allergy to corporate artwashing, and an encyclopedia of transatlantic art slang. I navigate 441 verified independent spaces across 50 global cities—completely clean of fossil fuel, defense contractors, and donor-class vanity projects. Whether you're planning a proper Chelsea gallery crawl, suffering from Frieze week white cube fatigue, or hunting down where to find actual radical art without £30 ticket gouging, ask away. What are we dissecting today?";
+          let greetingProse = "Hello! I am your Culture Atlas Curator. Think of me as your resident guide with the sharp wit of Yandex Alisa, an allergy to corporate artwashing, and an encyclopedia of transatlantic art slang. I navigate 441 verified independent spaces across 50 global cities—completely clean of fossil fuel, defense contractors, and donor-class vanity projects. Whether you're planning a proper Chelsea gallery crawl, suffering from Frieze week white cube fatigue, or hunting down where to find actual radical art without £30 ticket gouging, ask away. What are we dissecting today?";
           if (isVoiceTest) {{
             greetingTitle = "Curator Audio Docent Active · Loud & Clear";
             greetingProse = "Testing, testing—darling, my audio docent synthesis is in full swing. None of that monotone museum audio-guide drivel here; tap the Listen button on any briefing or hit the mic to spar in real time. Proper acoustics, no corporate sponsor filter.";
@@ -22723,47 +22744,125 @@ FORMATTING & INTERACTION RULES:
     }}
     window.handleConfidentialSubmission = handleConfidentialSubmission;
 
-    function triggerInChatContributeFlow(defaultTopic = '') {{
+    let isChatInputMode = false;
+    let preInputModeGlobeWidth = '';
+
+    function enterChatInputMode(defaultTopic = '') {{
+      isChatInputMode = true;
+
+      // 1. Switch whole view to chat mode (mobile full screen, desktop expand chat)
       if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {{
-        setMobileViewMode('work');
+        setMobileViewMode('chat');
+      }} else if (window.innerWidth >= 768) {{
+        const g = document.getElementById('globeViewport');
+        if (g) {{
+          preInputModeGlobeWidth = g.style.width || '';
+          g.style.width = '240px';
+          g.style.flex = '0 0 240px';
+          setTimeout(resizeCanvas, 40);
+        }}
       }}
 
+      // 2. Hide suggestions & multi-row filter pills slop
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.add('hidden');
 
+      const cityBar = document.getElementById('globeCityBar');
+      if (cityBar) cityBar.classList.add('hidden');
+
+      // 3. Show top sticky input mode header
+      const inputModeHeader = document.getElementById('chatInputModeHeader');
+      if (inputModeHeader) inputModeHeader.classList.remove('hidden');
+
+      // 4. Style input card as dedicated secure vault
+      const inputCard = document.getElementById('workInputCard');
+      if (inputCard) {{
+        inputCard.classList.add('border-emerald-500/80', 'bg-[#0a1e16]', 'shadow-emerald-950/70', 'ring-1', 'ring-emerald-500/40');
+      }}
+
+      // 5. Hide irrelevant AI model / voice buttons in input card
+      const modelBtn = document.getElementById('workModelBtn');
+      if (modelBtn) modelBtn.classList.add('hidden');
+
+      const voiceToggleBtn = document.getElementById('curatorVoiceToggleBtn');
+      if (voiceToggleBtn) voiceToggleBtn.classList.add('hidden');
+
+      const inputBadge = document.getElementById('workInputModeBadge');
+      if (inputBadge) {{
+        inputBadge.classList.remove('hidden');
+        inputBadge.classList.add('flex');
+      }}
+
+      // 6. Style Send button as dedicated emerald Submit Intel button
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) {{
+        sendBtn.classList.remove('bg-[#2563eb]', 'hover:bg-[#1d4ed8]');
+        sendBtn.classList.add('bg-gradient-to-r', 'from-emerald-600', 'to-teal-600', 'hover:from-emerald-500', 'hover:to-teal-500', 'shadow-emerald-900/60');
+        sendBtn.innerHTML = `Submit Intel`;
+        sendBtn.title = 'Cryptographically submit confidential intelligence';
+      }}
+
+      // 7. Inject dedicated Intake Workspace into curatorMessages
       appendCuratorMessage(`
-        <div class="space-y-3 text-slate-200">
-          <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Confidential Field Intel &amp; Whistleblower Pipeline</span>
+        <div id="inputModeIntakePanel" class="space-y-3.5 text-slate-200 bg-[#071f16]/95 border border-emerald-500/60 rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl backdrop-blur-md">
+          <div class="flex items-center justify-between border-b border-emerald-800/60 pb-2.5">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+              <h3 class="text-white font-semibold text-[14.5px] sm:text-[15.5px]">Confidential Field Intel &amp; Whistleblower Pipeline</h3>
+            </div>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700/60">In-Chat Intake Active</span>
           </div>
-          <p class="text-white text-[14px] leading-relaxed">
+          
+          <p class="text-white text-[13.5px] sm:text-[14px] leading-relaxed">
             <strong>How to submit right here:</strong> Share non-public documents, unverified corporate sponsorships, board conflicts, or suggest unlisted independent art spaces directly in the chat below.
           </p>
 
-          <div class="flex flex-wrap gap-2 pt-1">
-            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Board Conflict: Undisclosed defense contractor or private equity trustee sitting on the board of [Institution Name]">
-              Report Trustee Conflict
-            </button>
-            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Sponsorship Leak: Non-public gift agreement with fossil fuel or defense conglomerate at [Institution Name]">
-              Submit Sponsorship Leak
-            </button>
-            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Schedule L Disclosure: Museum conducting commercial business with interested trustee without recusal at [Institution Name]">
-              Report Schedule L Transaction
-            </button>
-            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Labor / Wage Dispute: Curatorial staff unionization or wage suppression memo at [Institution Name]">
-              Report Labor Dispute
-            </button>
-            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Unlisted Independent Space: Suggest verified grassroots art space with clean public/cooperative funding: [Space Name, City]">
-              Suggest Independent Space
-            </button>
+          <div class="space-y-1.5 text-xs text-slate-300 bg-[#04140e]/80 p-3 rounded-xl border border-emerald-900/60">
+            <div class="font-medium text-emerald-300 font-mono text-[11px] uppercase tracking-wider flex items-center gap-1.5">
+              <span>Verification Protocol (Zero-Knowledge)</span>
+            </div>
+            <ol class="list-decimal list-inside space-y-1 text-[12px] text-slate-300">
+              <li>Type or paste your information directly into the input vault below.</li>
+              <li>Include key details: Museum or institution name, trustee names, dates, or document excerpts.</li>
+              <li><strong>Cryptographic Receipt:</strong> Culture Atlas computes a native SHA-256 integrity hash locally in your browser and assigns an ephemeral pseudonym.</li>
+            </ol>
+          </div>
+
+          <div class="pt-1">
+            <div class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold mb-2">Quick Prompts to Start Your Report:</div>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Board Conflict: Undisclosed defense contractor or private equity trustee sitting on the board of [Institution Name]">
+                Report Trustee Conflict
+              </button>
+              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Sponsorship Leak: Non-public gift agreement with fossil fuel or defense conglomerate at [Institution Name]">
+                Submit Sponsorship Leak
+              </button>
+              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Schedule L Disclosure: Museum conducting commercial business with interested trustee without recusal at [Institution Name]">
+                Report Schedule L Transaction
+              </button>
+              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Labor / Wage Dispute: Curatorial staff unionization or wage suppression memo at [Institution Name]">
+                Report Labor Dispute
+              </button>
+              <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Unlisted Independent Space: Suggest verified grassroots art space with clean public/cooperative funding: [Space Name, City]">
+                Suggest Independent Space
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-emerald-900/60 flex items-center justify-between text-[11.5px] font-mono text-emerald-400/90 flex-wrap gap-2">
+            <span class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>Input active below · Submit anytime via Enter or Send</span>
+            </span>
+            <span class="text-zinc-400">OpSec Tip: Use Tor or Brave for high-risk leaks</span>
           </div>
         </div>
       `);
 
+      // 8. Update input placeholder & focus
       const workInput = document.getElementById('workInput');
       if (workInput) {{
-        workInput.placeholder = '🔒 Confidential: paste intel, donor agreement leak, or trustee conflict...';
+        workInput.placeholder = '🔒 [Confidential Vault] Enter confidential intel or paste document leak here...';
         if (defaultTopic) {{
           workInput.value = defaultTopic;
         }}
@@ -22771,7 +22870,77 @@ FORMATTING & INTERACTION RULES:
       }}
       scrollChatToBottom(true);
     }}
+
+    function exitChatInputMode() {{
+      isChatInputMode = false;
+
+      // 1. Hide sticky input mode header
+      const inputModeHeader = document.getElementById('chatInputModeHeader');
+      if (inputModeHeader) inputModeHeader.classList.add('hidden');
+
+      // 2. Restore filter bar below input
+      const cityBar = document.getElementById('globeCityBar');
+      if (cityBar) cityBar.classList.remove('hidden');
+
+      // 3. Restore input card styling
+      const inputCard = document.getElementById('workInputCard');
+      if (inputCard) {{
+        inputCard.classList.remove('border-emerald-500/80', 'bg-[#0a1e16]', 'shadow-emerald-950/70', 'ring-1', 'ring-emerald-500/40');
+      }}
+
+      // 4. Restore AI controls
+      const modelBtn = document.getElementById('workModelBtn');
+      if (modelBtn) modelBtn.classList.remove('hidden');
+
+      const voiceToggleBtn = document.getElementById('curatorVoiceToggleBtn');
+      if (voiceToggleBtn) voiceToggleBtn.classList.remove('hidden');
+
+      const inputBadge = document.getElementById('workInputModeBadge');
+      if (inputBadge) {{
+        inputBadge.classList.add('hidden');
+        inputBadge.classList.remove('flex');
+      }}
+
+      // 5. Restore Send button
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) {{
+        sendBtn.classList.remove('bg-gradient-to-r', 'from-emerald-600', 'to-teal-600', 'hover:from-emerald-500', 'hover:to-teal-500', 'shadow-emerald-900/60');
+        sendBtn.classList.add('bg-[#2563eb]', 'hover:bg-[#1d4ed8]');
+        sendBtn.innerHTML = `Send`;
+        sendBtn.title = 'Send message';
+      }}
+
+      // 6. Restore placeholder
+      const workInput = document.getElementById('workInput');
+      if (workInput) {{
+        workInput.placeholder = 'Ask about a museum or cultural space';
+      }}
+
+      // 7. Desktop split view restoration if previously minimized
+      if (window.innerWidth >= 768) {{
+        const g = document.getElementById('globeViewport');
+        if (g && (g.style.width === '240px' || preInputModeGlobeWidth)) {{
+          g.style.width = preInputModeGlobeWidth || '50%';
+          g.style.flex = preInputModeGlobeWidth ? `1 1 ${{preInputModeGlobeWidth}}` : '1 1 50%';
+          setTimeout(resizeCanvas, 40);
+        }}
+      }}
+
+      appendCuratorMessage(`
+        <div class="text-[13px] text-zinc-400 py-1 flex items-center justify-between border-y border-zinc-800">
+          <span>Returned to Curator Chat. How can I help you explore cultural spaces?</span>
+          <button type="button" onclick="window.enterChatInputMode()" class="text-emerald-400 hover:underline cursor-pointer font-mono text-[11px]">Re-open Intel Vault</button>
+        </div>
+      `);
+      scrollChatToBottom(true);
+    }}
+
+    function triggerInChatContributeFlow(defaultTopic = '') {{
+      enterChatInputMode(defaultTopic);
+    }}
     window.triggerInChatContributeFlow = triggerInChatContributeFlow;
+    window.enterChatInputMode = enterChatInputMode;
+    window.exitChatInputMode = exitChatInputMode;
 
     async function processInChatWhistleblowerSubmission(text) {{
       const q = (text || '').trim();
@@ -22830,12 +22999,24 @@ FORMATTING & INTERACTION RULES:
             <strong class="text-emerald-400 block mb-0.5 font-mono uppercase text-[10.5px]">OpSec &amp; Whistleblower Precautions:</strong>
             Your lead is logged under anonymous pseudonym ${{escapeHtml(pseudonym)}}. Retain your receipt code.
           </div>
+          <div class="pt-2 border-t border-emerald-900/60 flex items-center justify-between gap-2 flex-wrap">
+            <button type="button" onclick="window.enterChatInputMode()" class="px-3 py-1.5 rounded-lg bg-emerald-800/80 hover:bg-emerald-700 text-emerald-200 hover:text-white border border-emerald-600/70 text-xs font-medium cursor-pointer transition">
+              + Submit Another Report
+            </button>
+            <button type="button" onclick="window.exitChatInputMode()" class="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white border border-zinc-700 text-xs font-medium cursor-pointer transition">
+              ✕ Return to Curator Chat
+            </button>
+          </div>
         </div>
       `);
 
       const workInput = document.getElementById('workInput');
       if (workInput) {{
-        workInput.placeholder = 'Ask about a museum or cultural space';
+        if (isChatInputMode) {{
+          workInput.placeholder = '🔒 [Confidential Vault] Enter additional intel or paste document leak here...';
+        }} else {{
+          workInput.placeholder = 'Ask about a museum or cultural space';
+        }}
       }}
       scrollChatToBottom(true);
     }}
@@ -23111,7 +23292,7 @@ FORMATTING & INTERACTION RULES:
     async function handleWorkSend() {{
       const text = (workInput?.value || '').trim();
       if (!text) return;
-      const isContributeActive = workInput.placeholder && (workInput.placeholder.includes('Confidential') || workInput.placeholder.includes('🔒'));
+      const isContributeActive = isChatInputMode || (workInput.placeholder && (workInput.placeholder.includes('Confidential') || workInput.placeholder.includes('🔒')));
       workInput.value = '';
       if (window.innerWidth < 768 && currentMobileMode === 'map') {{
         setMobileViewMode('split');
@@ -23133,6 +23314,11 @@ FORMATTING & INTERACTION RULES:
       if (e.key === 'Enter' && !e.shiftKey) {{
         e.preventDefault();
         handleWorkSend();
+      }}
+    }});
+    workInput?.addEventListener('focus', () => {{
+      if (window.innerWidth < 768 && currentMobileMode === 'split') {{
+        setMobileViewMode('chat');
       }}
     }});
 

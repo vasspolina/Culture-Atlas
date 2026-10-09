@@ -69,6 +69,8 @@ def test_browser_runtime():
 
     test_script = """
     <script>
+    window.requestAnimationFrame = () => 1;
+    window.cancelAnimationFrame = () => {};
     window.addEventListener('load', async () => {
         const results = [];
         function assert(desc, passed, detail = '') {
