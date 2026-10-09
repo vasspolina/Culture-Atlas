@@ -14588,10 +14588,10 @@ def build():
             ` : ''}}
           ` : ''}}
 
-          <!-- 📊 STATUTORY FINANCIAL & OPERATING RESEARCH PROFILE (BUDGET ABOVE ALL SPACE INFO) -->
+          <!-- Financial & Operating Research Profile (Plain Text in Simple Language) -->
           <div class="p-3.5 bg-[#0b131f] border border-[#1b2b40] rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-[#1b2b40] pb-2">
-              <span class="text-[12px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
+              <span class="text-[12px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold">
                 Financial &amp; Operating Research Profile
               </span>
               <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 rounded-full">
@@ -14599,56 +14599,27 @@ def build():
               </span>
             </div>
 
-            <!-- Operating Budget Scale (Clean header, no nested box) -->
-            <div class="flex items-baseline justify-between pt-0.5">
-              <div>
-                <span class="text-[10px] font-mono text-slate-400 block uppercase tracking-wider">Operating Budget Scale</span>
-                <span class="text-white font-medium text-[15px] font-mono">
-                  ${{escapeHtml(inst.financial_data ? inst.financial_data.operating_budget_display : (inst.funding || 'Civic Budget'))}}
-                </span>
+            <!-- Plain English Budget & Revenue Summary -->
+            <p class="text-[13px] text-slate-200 leading-relaxed">
+              <strong class="text-white">Operating Budget Scale:</strong> Runs on an estimated annual budget of <strong class="text-white">${{escapeHtml(inst.financial_data ? inst.financial_data.operating_budget_display : (inst.funding || 'Civic Budget'))}}</strong>.
+              ${{inst.financial_data ? `In terms of its <strong class="text-slate-300">Revenue Mix Architecture</strong>, roughly <strong>${{inst.financial_data.public_subsidies_pct}}%</strong> comes from public subsidies and civic grants, <strong>${{inst.financial_data.earned_revenue_pct}}%</strong> from ticket admissions and earned revenue, and <strong>${{inst.financial_data.philanthropy_endowment_pct}}%</strong> from private philanthropy and donations.` : ''}}
+            </p>
+
+            <!-- Plain English Spending Breakdown -->
+            <p class="text-[13px] text-slate-300 leading-relaxed">
+              <strong class="text-white">Where the funding goes:</strong> The direct <strong class="text-emerald-400">PROGRAM SPEND RATIO</strong> is <strong>${{inst.financial_data ? inst.financial_data.program_expense_ratio_pct : 78}}%</strong>, meaning the majority of annual spending goes straight into staging exhibitions, research, and artist commissions. Administrative overhead is <strong>${{inst.financial_data ? inst.financial_data.administrative_overhead_pct : 15}}%</strong>${{inst.financial_data ? ` (including ${{inst.financial_data.fundraising_cost_pct}}% for fundraising costs)` : ''}}.
+            </p>
+
+            <!-- Primary Funding Line & Filing Link -->
+            <div class="pt-2 border-t border-[#1b2b40]/60 flex items-start justify-between gap-3 text-[12px] text-slate-300 leading-relaxed">
+              <div class="min-w-0">
+                <span class="text-slate-400 font-mono text-[10.5px] uppercase block mb-0.5">Primary Funding Line:</span>
+                <span>${{escapeHtml(inst.funding || 'Civic cultural allocations and audited non-profit revenues.')}}</span>
               </div>
               <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
-                 class="text-[11.5px] font-mono text-sky-400 hover:text-white hover:underline transition flex items-center gap-1">
-                <span>Form 990 / Audit</span>
+                 class="shrink-0 text-[11.5px] font-mono text-sky-400 hover:text-white hover:underline transition mt-0.5">
+                Form 990 / Audit
               </a>
-            </div>
-
-            <!-- Revenue Mix Breakdown -->
-            <div class="space-y-1.5 pt-1">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-300">
-                <span class="text-slate-400 uppercase">Revenue Mix Architecture</span>
-                <span class="text-sky-300 font-semibold">${{inst.financial_data ? inst.financial_data.public_subsidies_pct : 60}}% Public Subsidies</span>
-              </div>
-              <div class="w-full h-2 rounded-full bg-[#162234] overflow-hidden flex">
-                <div class="bg-blue-500 h-full" style="width: ${{inst.financial_data ? inst.financial_data.public_subsidies_pct : 60}}%" title="Public / Civic Subsidies"></div>
-                <div class="bg-emerald-500 h-full" style="width: ${{inst.financial_data ? inst.financial_data.earned_revenue_pct : 25}}%" title="Earned Revenue & Ticketing"></div>
-                <div class="bg-amber-500 h-full" style="width: ${{inst.financial_data ? inst.financial_data.philanthropy_endowment_pct : 15}}%" title="Philanthropic Gifts & Endowments"></div>
-              </div>
-              <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-0.5">
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span> ${{inst.financial_data ? inst.financial_data.public_subsidies_pct : 60}}% Public</span>
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span> ${{inst.financial_data ? inst.financial_data.earned_revenue_pct : 25}}% Earned</span>
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block"></span> ${{inst.financial_data ? inst.financial_data.philanthropy_endowment_pct : 15}}% Philanthropy</span>
-              </div>
-            </div>
-
-            <!-- Expenditure & Operating Ratios (Clean typography, no nested boxes) -->
-            <div class="grid grid-cols-2 gap-3 text-[11px] font-mono pt-1 border-t border-[#1b2b40]/60">
-              <div>
-                <span class="text-slate-400 block text-[10px] uppercase mb-0.5">PROGRAM SPEND RATIO</span>
-                <span class="text-emerald-400 font-bold text-[14px] leading-tight block">${{inst.financial_data ? inst.financial_data.program_expense_ratio_pct : 78}}%</span>
-                <span class="text-slate-500 block text-[10px]">Direct mission & art programs</span>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px] uppercase mb-0.5">ADMIN & OVERHEAD</span>
-                <span class="${{(inst.financial_data && inst.financial_data.administrative_overhead_pct > 20) ? 'text-amber-400' : 'text-slate-200'}} font-bold text-[14px] leading-tight block">${{inst.financial_data ? inst.financial_data.administrative_overhead_pct : 15}}%</span>
-                <span class="text-slate-500 block text-[10px]">${{inst.financial_data ? inst.financial_data.fundraising_cost_pct : 7}}% fundraising overhead</span>
-              </div>
-            </div>
-
-            <!-- Primary Funding Description -->
-            <div class="text-[12px] text-slate-300 pt-1 border-t border-[#1b2b40]/60 leading-relaxed">
-              <strong class="text-slate-400 font-mono text-[10.5px] uppercase block mb-0.5">Primary Funding Line:</strong>
-              ${{escapeHtml(inst.funding || 'Civic cultural allocations and audited non-profit revenues.')}}
             </div>
           </div>
 
@@ -14680,11 +14651,11 @@ def build():
             </a>
           </div>
 
-          <!-- 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING PROFILE SECTION -->
-          <div class="p-3.5 bg-[#0e1622] border border-[#213247] rounded-2xl space-y-3">
+          <!-- Archives, Collections & Building Profile (Plain Text in Simple Language) -->
+          <div class="p-3.5 bg-[#0e1622] border border-[#213247] rounded-2xl space-y-2.5">
             <div class="flex items-center justify-between border-b border-[#1f2d40] pb-2">
-              <span class="text-[12px] font-mono uppercase tracking-wider text-[#34d399] font-bold flex items-center gap-1.5">
-                Archives & Collections in Depth
+              <span class="text-[12px] font-mono uppercase tracking-wider text-[#34d399] font-bold">
+                Archives &amp; Collections in Depth
               </span>
               <button onclick="window.zoomToBuilding(selectedInstitution, false)" 
                       class="text-[11px] font-mono text-[#38bdf8] hover:underline flex items-center gap-1 cursor-pointer">
@@ -14692,30 +14663,19 @@ def build():
               </button>
             </div>
 
-            <div class="text-[12.5px] text-slate-300 leading-relaxed">
-              <strong>${{escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.archive_name : `${{inst.name}} Archives`)}}:</strong>
+            <p class="text-[13px] text-slate-200 leading-relaxed">
+              <strong class="text-white">${{escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.archive_name : `${{inst.name}} Archives`)}}:</strong>
               ${{escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.summary : (inst.curatorial_focus || 'Permanent primary research collection documentation.'))}}
-            </div>
+            </p>
 
-            <!-- Architectural Metadata (Clean typography, no nested boxes) -->
-            <div class="grid grid-cols-2 gap-3 text-[11.5px] font-mono pt-1 border-t border-[#1f2d40]/60">
-              <div>
-                <span class="text-slate-400 block text-[10px] uppercase mb-0.5">BUILDING STYLE</span>
-                <span class="text-white truncate block font-medium text-[13px]">${{escapeHtml(inst.building_architecture ? (inst.building_architecture.architectural_style || 'Independent Loft') : 'Loft / Gallery')}}</span>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px] uppercase mb-0.5">FOOTPRINT & FLOORS</span>
-                <span class="text-white block font-medium text-[13px]">${{inst.building_architecture ? (inst.building_architecture.footprint_sqm || 1800).toLocaleString() : '1,800'}} m² · ${{inst.building_architecture ? (inst.building_architecture.floors || 2) : 2}} Floors</span>
-              </div>
-            </div>
+            <p class="text-[13px] text-slate-300 leading-relaxed pt-1.5 border-t border-[#1f2d40]/60">
+              <strong class="text-slate-200">Building &amp; Space:</strong> A ${{escapeHtml(inst.building_architecture ? (inst.building_architecture.architectural_style || 'curatorial space') : 'curatorial space')}} covering ${{inst.building_architecture ? (inst.building_architecture.footprint_sqm || 1800).toLocaleString() : '1,800'}} m² across ${{inst.building_architecture ? (inst.building_architecture.floors || 2) : 2}} floors.
+            </p>
 
-            <!-- Public Reading Room Policy (Clean typography, no nested box) -->
-            <div class="pt-1 border-t border-[#1f2d40]/60 text-[11.5px]">
-              <span class="text-[#38bdf8] font-mono font-bold block text-[10.5px] uppercase mb-0.5">Reading Room & Access Policy:</span>
-              <p class="text-slate-200 leading-snug">
-                ${{escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.reading_room_policy : 'Free public study room and curatorial library open during exhibition hours.')}}
-              </p>
-            </div>
+            <p class="text-[13px] text-slate-300 leading-relaxed pt-1.5 border-t border-[#1f2d40]/60">
+              <strong class="text-slate-200">Reading Room &amp; Access Policy:</strong>
+              ${{escapeHtml(inst.archives_and_collections ? inst.archives_and_collections.reading_room_policy : 'Free public study room and curatorial library open during exhibition hours.')}}
+            </p>
           </div>
 
           <div class="py-2.5 border-t border-[#262626]">
