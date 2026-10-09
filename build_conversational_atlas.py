@@ -8931,6 +8931,26 @@ def build():
         // Keep names of spaces visible across street view zoom levels
         mapEl.classList.add('map-zoomed-in');
         mapEl.classList.remove('map-zoomed-out');
+
+        const currentZoom = cityVectorMap.getZoom();
+        if (currentZoom >= 16.0) {{
+          // At building architectural zoom, close 2D marker popups to prevent collision with 3D building callouts
+          document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+          document.querySelectorAll('.city-marker-pin').forEach(pin => {{
+            pin.style.opacity = '0.25';
+            pin.style.pointerEvents = 'none';
+          }});
+        }} else {{
+          document.querySelectorAll('.city-marker-pin').forEach(pin => {{
+            pin.style.opacity = '1';
+            pin.style.pointerEvents = 'auto';
+          }});
+          if (currentZoom < 15.2) {{
+            if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers();
+            const bfiHud = document.getElementById('buildingFloorInspectorHud');
+            if (bfiHud && !bfiHud.classList.contains('hidden')) bfiHud.classList.add('hidden');
+          }}
+        }}
       }}
       cityVectorMap.on('zoom', updateCityZoomClasses);
       cityVectorMap.on('load', () => {{
@@ -9026,7 +9046,7 @@ def build():
       }}
       currentBuildingMastMarker = null;
       currentBuildingFacadeMarker = null;
-      const plates = document.querySelectorAll('.building-3d-mast-plate, .building-3d-facade-stack');
+      const plates = document.querySelectorAll('.building-3d-mast-plate, .building-3d-facade-stack, .building-3d-room-badge');
       plates.forEach(p => {{ try {{ p.remove(); }} catch (e) {{}} }});
     }}
     window.clearBuilding3DInfoMarkers = clearBuilding3DInfoMarkers;
@@ -9052,6 +9072,15 @@ def build():
       stacks.forEach(s => {{ try {{ s.remove(); }} catch (e) {{}} }});
     }}
     window.closeBuildingFacade = closeBuildingFacade;
+
+    function dismissBuildingRoomBadge(btn) {{
+      if (!btn) return;
+      try {{
+        const badge = btn.closest('.building-3d-room-badge');
+        if (badge) badge.remove();
+      }} catch (e) {{}}
+    }}
+    window.dismissBuildingRoomBadge = dismissBuildingRoomBadge;
 
     function ensureBuildingFootprintLayer() {{
       if (!cityVectorMap) return;
@@ -9549,6 +9578,9 @@ def build():
       clearBuilding3DInfoMarkers();
       if (!cityVectorMap || !inst || !isCityStreetViewActive || typeof maplibregl === 'undefined') return;
 
+      // Close any open 2D marker popups so they do not overlap 3D building callouts
+      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+
       const lat = Number(inst.lat);
       const lon = Number(inst.lon);
       if (!lat || !lon) return;
@@ -9571,8 +9603,8 @@ def build():
       const mastEl = document.createElement('div');
       mastEl.className = 'building-3d-mast-plate pointer-events-auto select-none';
       mastEl.style.cssText = isMobileScreen
-        ? 'width:calc(100vw - 24px); max-width:340px; min-width:0; box-sizing:border-box; padding:9px 12px; border-radius:14px; background:rgba(12,19,34,0.97); border:1px solid rgba(56,189,248,0.7); box-shadow:0 12px 28px rgba(0,0,0,0.8); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; transform:translate(-50%,-100%); margin-bottom:12px; z-index:30;'
-        : 'min-width:280px; max-width:350px; padding:12px 14px; border-radius:16px; background:rgba(12,19,34,0.96); border:1px solid rgba(56,189,248,0.7); box-shadow:0 16px 36px rgba(0,0,0,0.7), 0 0 20px rgba(56,189,248,0.25); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; transform:translate(-50%,-100%); margin-bottom:20px; z-index:30;';
+        ? 'width:calc(100vw - 24px); max-width:340px; min-width:0; box-sizing:border-box; padding:9px 12px; border-radius:14px; background:rgba(12,19,34,0.97); border:1px solid rgba(56,189,248,0.7); box-shadow:0 12px 28px rgba(0,0,0,0.8); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:12px; z-index:30;'
+        : 'min-width:280px; max-width:340px; padding:12px 14px; border-radius:16px; background:rgba(12,19,34,0.96); border:1px solid rgba(56,189,248,0.7); box-shadow:0 16px 36px rgba(0,0,0,0.7), 0 0 20px rgba(56,189,248,0.25); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:18px; z-index:30;';
 
       const webUrl = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || '');
       const fin = inst.financial_data || {{}};
@@ -9634,8 +9666,10 @@ def build():
         '<div style="position:absolute; bottom:-9px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-top:9px solid rgba(56,189,248,0.8);"></div>';
 
       try {{
+        const mastLon = isMobileScreen ? lon : (lon - d_lon * 0.70);
+        const mastLat = lat + d_lat * (isMobileScreen ? 0.90 : 1.05);
         const mastMarker = new maplibregl.Marker({{ element: mastEl, anchor: 'bottom' }})
-          .setLngLat([lon, lat + d_lat * (isMobileScreen ? 0.75 : 0.95)])
+          .setLngLat([mastLon, mastLat])
           .addTo(cityVectorMap);
         building3DInfoMarkers.push(mastMarker);
         currentBuildingMastMarker = mastMarker;
@@ -9722,17 +9756,20 @@ def build():
         const curArch = activeFl.archive_holdings || null;
         const curLevelCode = activeFl.level_code || ('L' + (activeFl.level || 0));
 
-        // Curatorial Gallery Room Badge
+        // Curatorial Gallery Room Badge (North-East quadrant)
         const galName = (curShow && curShow.room) || (activeFl.wing_name ? activeFl.wing_name.split('&')[0].trim() : 'Curatorial Main Gallery');
         const galTitle = curShow ? curShow.title : (inst.name + ' Commissions');
         const galEl = document.createElement('div');
         galEl.className = 'building-3d-room-badge pointer-events-auto select-none';
-        galEl.style.cssText = 'max-width:240px; padding:6px 9px; border-radius:10px; background:rgba(6,19,34,0.94); border:1px solid #10b981; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(16,185,129,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; transform:translate(-50%,-100%); margin-bottom:10px; z-index:26;';
+        galEl.style.cssText = 'max-width:240px; padding:6px 9px; border-radius:10px; background:rgba(6,19,34,0.94); border:1px solid #10b981; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(16,185,129,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:26;';
         galEl.onclick = () => selectBfiFloor(currentBfiFloorIndex);
         galEl.innerHTML = 
           '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">' +
             '<span style="font-family:monospace; font-size:9px; font-weight:bold; padding:1px 4px; border-radius:3px; background:#047857; color:#a7f3d0; text-transform:uppercase;">EXHIBITION GALLERY</span>' +
-            '<span style="font-size:9.5px; font-family:monospace; color:#6ee7b7;">' + escapeHtml(curLevelCode) + '</span>' +
+            '<div style="display:flex; align-items:center; gap:4px;">' +
+              '<span style="font-size:9.5px; font-family:monospace; color:#6ee7b7;">' + escapeHtml(curLevelCode) + '</span>' +
+              '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:16px; height:16px; border:none; background:rgba(255,255,255,0.15); color:#fff; border-radius:3px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; padding:0;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
+            '</div>' +
           '</div>' +
           '<div style="font-size:11px; font-weight:600; color:#ffffff; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
             escapeHtml(galName) +
@@ -9743,25 +9780,30 @@ def build():
           '<div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #10b981;"></div>';
 
         try {{
+          const galLon = isMobileScreen ? lon : (lon + d_lon * 0.70);
+          const galLat = lat + d_lat * (isMobileScreen ? 0.45 : 0.55);
           const galMarker = new maplibregl.Marker({{ element: galEl, anchor: 'bottom' }})
-            .setLngLat([lon, lat + d_lat * 0.45])
+            .setLngLat([galLon, galLat])
             .addTo(cityVectorMap);
           building3DInfoMarkers.push(galMarker);
         }} catch (e) {{}}
 
-        // Archives Room Badge
+        // Archives Room Badge (South-West quadrant)
         const archName = (curArch && curArch.collection_title) 
           ? (curArch.collection_title.length > 26 ? curArch.collection_title.slice(0, 24) + '...' : curArch.collection_title)
           : 'Archives & Study Room';
         const archItems = (curArch && curArch.items_count) ? curArch.items_count : 'Primary Curatorial Records';
         const archEl = document.createElement('div');
         archEl.className = 'building-3d-room-badge pointer-events-auto select-none';
-        archEl.style.cssText = 'max-width:220px; padding:6px 9px; border-radius:10px; background:rgba(28,19,8,0.94); border:1px solid #f59e0b; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(245,158,11,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; transform:translate(-50%,-100%); margin-bottom:10px; z-index:25;';
+        archEl.style.cssText = 'max-width:220px; padding:6px 9px; border-radius:10px; background:rgba(28,19,8,0.94); border:1px solid #f59e0b; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(245,158,11,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:25;';
         archEl.onclick = () => selectBfiFloor(currentBfiFloorIndex);
         archEl.innerHTML = 
           '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">' +
             '<span style="font-family:monospace; font-size:9px; font-weight:bold; padding:1px 4px; border-radius:3px; background:#b45309; color:#fde68a; text-transform:uppercase;">ARCHIVES & STUDY</span>' +
-            '<span style="font-size:9.5px; font-family:monospace; color:#fcd34d;">' + escapeHtml(curLevelCode) + '</span>' +
+            '<div style="display:flex; align-items:center; gap:4px;">' +
+              '<span style="font-size:9.5px; font-family:monospace; color:#fcd34d;">' + escapeHtml(curLevelCode) + '</span>' +
+              '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:16px; height:16px; border:none; background:rgba(255,255,255,0.15); color:#fff; border-radius:3px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; padding:0;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
+            '</div>' +
           '</div>' +
           '<div style="font-size:11px; font-weight:600; color:#fef3c7; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
             escapeHtml(archName) +
@@ -9772,25 +9814,30 @@ def build():
           '<div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #f59e0b;"></div>';
 
         try {{
+          const archLon = lon - d_lon * 0.70;
+          const archLat = lat - d_lat * 0.50;
           const archMarker = new maplibregl.Marker({{ element: archEl, anchor: 'bottom' }})
-            .setLngLat([lon - d_lon * 0.45, lat - d_lat * 0.45])
+            .setLngLat([archLon, archLat])
             .addTo(cityVectorMap);
           building3DInfoMarkers.push(archMarker);
         }} catch (e) {{}}
 
-        // Public Atrium Badge
+        // Public Atrium Badge (South-East quadrant)
         const atName = (activeFl.facilities && activeFl.facilities[0])
           ? (activeFl.facilities[0] + ' & Forum')
           : 'Public Forum & Atrium';
         const atAccess = activeFl.access_policy || 'Universal Free Public Access';
         const atEl = document.createElement('div');
         atEl.className = 'building-3d-room-badge pointer-events-auto select-none';
-        atEl.style.cssText = 'max-width:220px; padding:6px 9px; border-radius:10px; background:rgba(15,15,35,0.94); border:1px solid #6366f1; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(99,102,241,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; transform:translate(-50%,-100%); margin-bottom:10px; z-index:25;';
+        atEl.style.cssText = 'max-width:220px; padding:6px 9px; border-radius:10px; background:rgba(15,15,35,0.94); border:1px solid #6366f1; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(99,102,241,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:25;';
         atEl.onclick = () => selectBfiFloor(currentBfiFloorIndex);
         atEl.innerHTML = 
           '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">' +
             '<span style="font-family:monospace; font-size:9px; font-weight:bold; padding:1px 4px; border-radius:3px; background:#4338ca; color:#c7d2fe; text-transform:uppercase;">PUBLIC FORUM</span>' +
-            '<span style="font-size:9.5px; font-family:monospace; color:#a5b4fc;">' + escapeHtml(curLevelCode) + '</span>' +
+            '<div style="display:flex; align-items:center; gap:4px;">' +
+              '<span style="font-size:9.5px; font-family:monospace; color:#a5b4fc;">' + escapeHtml(curLevelCode) + '</span>' +
+              '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:16px; height:16px; border:none; background:rgba(255,255,255,0.15); color:#fff; border-radius:3px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; padding:0;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
+            '</div>' +
           '</div>' +
           '<div style="font-size:11px; font-weight:600; color:#e0e7ff; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
             escapeHtml(atName) +
@@ -9801,8 +9848,10 @@ def build():
           '<div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #6366f1;"></div>';
 
         try {{
+          const atLon = lon + d_lon * 0.70;
+          const atLat = lat - d_lat * 0.50;
           const atMarker = new maplibregl.Marker({{ element: atEl, anchor: 'bottom' }})
-            .setLngLat([lon + d_lon * 0.45, lat - d_lat * 0.45])
+            .setLngLat([atLon, atLat])
             .addTo(cityVectorMap);
           building3DInfoMarkers.push(atMarker);
         }} catch (e) {{}}
@@ -9999,6 +10048,9 @@ def build():
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) floatingCard.classList.add('hidden');
 
+      // Close all 2D marker popups so they do not overlap 3D building callouts
+      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+
       // Switch to vector street map if not active
       if (!isCityStreetViewActive) {{
         openCityStreetView(inst.city, inst.lat, inst.lon);
@@ -10045,6 +10097,7 @@ def build():
     function zoomCloserToBuilding(targetZoom = 20.0) {{
       const inst = selectedInstitution || currentHighlightedBuildingInst;
       if (!inst || !cityVectorMap) return;
+      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
       cityVectorMap.flyTo({{
         center: [inst.lon, inst.lat],
         zoom: targetZoom,
@@ -10689,7 +10742,7 @@ def build():
             </div>
 
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:8px;">
-              <button onclick="window.zoomToBuilding('${{safeName}}', false)" 
+              <button onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${{safeName}}', false)" 
                       style="display:inline-flex; align-items:center; gap:5px; padding:5.5px 11px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:12px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.35); border:none; cursor:pointer;"
                       onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1.0'">
                 
@@ -10756,6 +10809,12 @@ def build():
 
         pinEl.addEventListener('click', (e) => {{
           e.stopPropagation();
+          const curZ = cityVectorMap ? cityVectorMap.getZoom() : 0;
+          if (curZ >= 16.0) {{
+            highlightBuildingFootprint(inst);
+            showBuildingFloorInspectorHud(inst);
+            return;
+          }}
           marker.togglePopup();
           selectedInstitution = inst;
           if (typeof curatorContext !== 'undefined' && inst) {{
