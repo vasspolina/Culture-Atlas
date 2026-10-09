@@ -641,7 +641,7 @@ return maplibregl$1;
       <div id="cityMapContainer" class="absolute inset-0 hidden z-10 w-full h-full bg-black"></div>
 
       <!-- FLOATING INSTITUTION CARD -->
-      <div id="floatingCard" class="hidden absolute z-20 pointer-events-auto bg-[#18181b]/95 backdrop-blur-md text-slate-100 rounded-2xl p-3.5 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 border border-[#2e2e2e] max-w-[340px] sm:max-w-[390px] w-max">
+      <div id="floatingCard" class="hidden absolute z-20 pointer-events-auto bg-[#18181b]/95 backdrop-blur-md text-slate-100 rounded-2xl p-3.5 shadow-2xl transition duration-150 transform -translate-x-1/2 -translate-y-full mb-3 border border-[#2e2e2e] max-w-[340px] sm:max-w-[420px] w-max">
         <div class="flex items-start justify-between gap-2">
           <div class="truncate pr-1">
             <a id="floatingCardTitle" href="#" target="_blank" rel="noopener noreferrer" 
@@ -657,8 +657,32 @@ return maplibregl$1;
           </div>
         </div>
 
-        <div id="floatingCardBudget" class="text-[12.5px] text-sky-300 font-mono flex items-center gap-1.5 mt-1 hidden"></div>
-        <div id="floatingCardHours" class="text-[13px] text-emerald-400 mt-0.5 truncate font-mono"></div>
+        <!-- 💶 BUDGET & MONEY SECTION -->
+        <div id="floatingCardBudgetSection" class="mt-2.5 pt-2 border-t border-[#2e2e2e]/80 space-y-1.5">
+          <!-- Operating Budget Scale Banner & Tier -->
+          <div class="flex items-center justify-between gap-1.5 flex-wrap">
+            <div id="floatingCardBudget" class="text-[13px] font-mono text-slate-100 flex items-center gap-1.5">
+              <span class="text-amber-400 font-bold">💶 Budget:</span>
+              <strong id="floatingCardBudgetAmount" class="font-semibold text-white"></strong>
+            </div>
+            <span id="floatingCardBudgetTier" class="text-[11px] font-mono px-2 py-0.5 rounded border border-sky-800/60 bg-sky-950/40 text-sky-300"></span>
+          </div>
+
+          <!-- Money Flow & Revenue Mix Badges -->
+          <div id="floatingCardRevenueMix" class="flex items-center gap-1.5 flex-wrap text-[11px] font-mono">
+            <span id="floatingCardPublicSubsidies" class="px-1.5 py-0.5 rounded bg-[#0b2218] border border-emerald-800/60 text-emerald-300"></span>
+            <span id="floatingCardPhilanthropy" class="px-1.5 py-0.5 rounded bg-[#20152e] border border-purple-800/60 text-purple-300"></span>
+            <span id="floatingCardEarnedRevenue" class="px-1.5 py-0.5 rounded bg-[#111e30] border border-sky-800/60 text-sky-300"></span>
+            <span id="floatingCardProgramRatio" class="px-1.5 py-0.5 rounded bg-[#271d0b] border border-amber-800/60 text-amber-300"></span>
+          </div>
+
+          <!-- Specific Funding Sources & Endowments -->
+          <div id="floatingCardFundingSource" class="text-[11.5px] text-slate-300 leading-snug line-clamp-2">
+            <span class="text-slate-400 font-mono text-[11px]">Money & Funding:</span> <span id="floatingCardFundingText"></span>
+          </div>
+        </div>
+
+        <div id="floatingCardHours" class="text-[12.5px] text-emerald-400 mt-2 truncate font-mono"></div>
 
         <!-- DIRECT WEB & VISITOR ACTION BUTTONS -->
         <div class="mt-2.5 flex items-center gap-2 flex-wrap">
@@ -12710,22 +12734,75 @@ return maplibregl$1;
             : 'text-[#33b1ff] border-[#0072c3]/60 bg-[#081a28]');
       }
       
-      const budgetEl = document.getElementById('floatingCardBudget');
-      if (budgetEl) {
-        const bDisplay = inst.financial_data ? inst.financial_data.operating_budget_display : (inst.funding || '');
-        if (bDisplay) {
-          budgetEl.innerHTML = `<span class="text-slate-400">💶 Budget:</span> <strong class="text-white">${escapeHtml(bDisplay)}</strong> <span class="text-[11px] text-emerald-400">(${escapeHtml(inst.financial_data ? inst.financial_data.budget_tier : 'Audited')})</span>`;
-          budgetEl.classList.remove('hidden');
+      // Populate Budget & Money Section on Floating Card
+      const bSec = document.getElementById('floatingCardBudgetSection');
+      const bAmt = document.getElementById('floatingCardBudgetAmount');
+      const bTier = document.getElementById('floatingCardBudgetTier');
+      const fPub = document.getElementById('floatingCardPublicSubsidies');
+      const fPhil = document.getElementById('floatingCardPhilanthropy');
+      const fEarn = document.getElementById('floatingCardEarnedRevenue');
+      const fProg = document.getElementById('floatingCardProgramRatio');
+      const fText = document.getElementById('floatingCardFundingText');
+      const fSrcContainer = document.getElementById('floatingCardFundingSource');
+
+      const fin = inst.financial_data || {};
+      const bDisplay = fin.operating_budget_display || inst.funding || 'Independent Operational Scale';
+      const bTierText = fin.budget_tier || (inst.tier === 'A' ? 'Verified Independent' : 'Audited Non-Profit');
+
+      if (bAmt) bAmt.textContent = bDisplay;
+      if (bTier) bTier.textContent = bTierText;
+
+      // Badges for Money Flow / Revenue Architecture
+      if (fPub) {
+        if (fin.public_subsidies_pct != null) {
+          fPub.textContent = `🏛️ ${fin.public_subsidies_pct}% Public`;
+          fPub.style.display = 'inline-block';
         } else {
-          budgetEl.classList.add('hidden');
+          fPub.style.display = 'none';
         }
       }
+      if (fPhil) {
+        if (fin.philanthropy_endowment_pct != null) {
+          fPhil.textContent = `🤝 ${fin.philanthropy_endowment_pct}% Grants/Endow`;
+          fPhil.style.display = 'inline-block';
+        } else {
+          fPhil.style.display = 'none';
+        }
+      }
+      if (fEarn) {
+        if (fin.earned_revenue_pct != null) {
+          fEarn.textContent = `🎟️ ${fin.earned_revenue_pct}% Earned`;
+          fEarn.style.display = 'inline-block';
+        } else {
+          fEarn.style.display = 'none';
+        }
+      }
+      if (fProg) {
+        if (fin.program_expense_ratio_pct != null) {
+          fProg.textContent = `🎯 ${fin.program_expense_ratio_pct}% Program Ratio`;
+          fProg.style.display = 'inline-block';
+        } else {
+          fProg.style.display = 'none';
+        }
+      }
+
+      // Specific funding source description text
+      if (fText) {
+        const fundingDesc = inst.funding || (fin.regulatory_regime ? `${fin.regulatory_regime} · ${fin.fiscal_calendar || ''}` : '');
+        if (fundingDesc) {
+          fText.textContent = fundingDesc;
+          if (fSrcContainer) fSrcContainer.style.display = 'block';
+        } else {
+          if (fSrcContainer) fSrcContainer.style.display = 'none';
+        }
+      }
+      if (bSec) bSec.classList.remove('hidden');
 
       const hoursEl = document.getElementById('floatingCardHours');
       if (hoursEl) {
         const shortH = inst.opening_hours ? inst.opening_hours.split(',')[0] : 'Open Weekly';
-        const shortF = inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : 'Free / Subsidized';
-        hoursEl.textContent = `${shortH} · ${shortF}`;
+        const shortF = inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : (inst.admission_policy ? inst.admission_policy.split(' ')[0] : 'Free Admission');
+        hoursEl.textContent = `🕒 ${shortH} · 🎟️ ${shortF}`;
       }
 
       // Direct Web Action Buttons on Map Popup
