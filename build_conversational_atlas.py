@@ -1027,7 +1027,6 @@ def build():
         </button>
         <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 hover:border-yellow-400 text-yellow-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Yellow Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
           <span>Gossip Mode</span>
-          <span class="text-[10px] px-1.5 py-0.2 rounded bg-yellow-400/20 text-yellow-300 font-mono font-bold">REDDIT & X</span>
         </button>
         <button id="topContributeBtn" class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#09261b] via-[#0d3425] to-[#082218] hover:from-[#0e3b2a] hover:to-[#114733] border border-emerald-500/70 hover:border-emerald-400 text-emerald-200 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-medium shadow-md shadow-emerald-950/60 active:scale-95" title="Contribute confidential insider intelligence or unlisted independent spaces">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
@@ -9733,7 +9732,7 @@ def build():
         if (topBtn) {{
           topBtn.classList.add('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold', 'shadow-[0_0_15px_rgba(234,179,8,0.6)]');
           topBtn.classList.remove('bg-[#1c1806]', 'text-yellow-300');
-          topBtn.innerHTML = '<span>Gossip Mode: ACTIVE [REDDIT & X]</span>';
+          topBtn.innerHTML = '<span>Gossip Mode: Active</span>';
         }}
         if (mobileBtn) {{
           mobileBtn.classList.add('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold');
@@ -9747,7 +9746,7 @@ def build():
         if (topBtn) {{
           topBtn.classList.remove('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold', 'shadow-[0_0_15px_rgba(234,179,8,0.6)]');
           topBtn.classList.add('bg-[#1c1806]', 'text-yellow-300');
-          topBtn.innerHTML = '<span>Gossip Mode [REDDIT & X]</span>';
+          topBtn.innerHTML = '<span>Gossip Mode</span>';
         }}
         if (mobileBtn) {{
           mobileBtn.classList.remove('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold');
