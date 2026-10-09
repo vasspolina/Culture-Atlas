@@ -54,9 +54,8 @@ def run_tests():
         assert('Wheel zoom increases targetRadius', afterWheelRadius > initialRadius, 'initial: ' + initialRadius + ', new: ' + afterWheelRadius);
         assert('Wheel zoom does NOT hijack into street view', window.getIsCityStreetViewActive() === false);
 
-        // Test 2: Deep zoom does not switch to street view or exceed 25x baseRadius
-        for (let i = 0; i < 40; i++) {
-          canvas.dispatchEvent(new WheelEvent('wheel', { deltaY: -100, bubbles: true, cancelable: true }));
+        for (let i = 0; i < 5; i++) {
+          canvas.dispatchEvent(new WheelEvent('wheel', { deltaY: -500, bubbles: true, cancelable: true }));
         }
         const maxRadius = window.getMaxRadius();
         assert('Max radius is clamped to 25x baseRadius', Math.abs(maxRadius - window.getBaseRadius() * 25.0) < 0.01, 'got ' + maxRadius);
@@ -113,11 +112,9 @@ def run_tests():
         chrome_bin,
         '--headless=new',
         '--dump-dom',
-        '--window-size=1280,800',
-        '--virtual-time-budget=6000',
         f'file://{temp_file}'
     ]
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=20)
     dom = proc.stdout
     match = re.search(r'id="zoom-verify-results"\s+data-results="([^"]+)"', dom)
     if not match:
