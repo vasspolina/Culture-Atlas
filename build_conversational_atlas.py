@@ -477,15 +477,25 @@ def build():
       font-weight: 200 !important;
     }}
 
-    body {{
+    html, body {{
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       background-color: #000000;
       color: #f8fafc;
       margin: 0;
       padding: 0;
-      overflow: hidden;
+      overflow-x: hidden !important;
+      overflow-y: hidden;
+      width: 100% !important;
+      max-width: 100vw !important;
+      position: relative !important;
+      box-sizing: border-box !important;
       height: 100vh;
       height: 100dvh;
+    }}
+    header, #mainAppContainer {{
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      box-sizing: border-box !important;
     }}
     .font-mono {{
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
@@ -808,15 +818,29 @@ def build():
       letter-spacing: 2px;
       color: #ffffff;
       white-space: nowrap;
-      text-transform: none;
+      text-transform: uppercase;
       display: inline-block;
       transition: color 0.2s ease;
     }}
-    @media (max-width: 640px) {{
+    @media (max-width: 480px) {{
+      .brand-logo-title {{
+        font-size: 13.5px;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+      }}
+    }}
+    @media (min-width: 481px) and (max-width: 640px) {{
+      .brand-logo-title {{
+        font-size: 15px;
+        line-height: 18px;
+        letter-spacing: 0.5px;
+      }}
+    }}
+    @media (min-width: 641px) and (max-width: 1024px) {{
       .brand-logo-title {{
         font-size: 22px;
         line-height: 20px;
-        letter-spacing: 1.2px;
+        letter-spacing: 1px;
       }}
     }}
     .brand-clean-spaces-badge {{
@@ -948,6 +972,19 @@ def build():
       max-width: 100% !important;
       flex: 1 1 100% !important;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }}
+    @media (max-width: 767px) {{
+      body.chat-input-mode-active #globeViewport {{
+        height: 0 !important;
+        min-height: 0 !important;
+        display: none !important;
+      }}
+      body.chat-input-mode-active #workViewContainer,
+      body.chat-input-mode-active #workCanvas {{
+        height: 100% !important;
+        max-height: 100% !important;
+        flex: 1 1 100% !important;
+      }}
     }}
     /* Floating Card & Yellow Gossip Mode Transitions */
     #floatingCard {{
@@ -1330,6 +1367,16 @@ def build():
 
     /* Mobile-Optimized Fixed Bottom Sheet for Floating Card & Gossip Pane */
     @media (max-width: 767px) {{
+      html, body {{
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        width: 100vw !important;
+      }}
+      #globeViewport, #workViewContainer, #workCanvas {{
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow: hidden !important;
+      }}
       #floatingCard {{
         position: fixed !important;
         left: 8px !important;
@@ -1371,26 +1418,26 @@ def build():
   <!-- ========================================================= -->
   <!-- 🧭 TOP HEADER: BRANDING, MODE SWITCHER (CHAT / WORK) & CONTROLS -->
   <!-- ========================================================= -->
-  <header class="w-full h-14 bg-black border-b border-[#1c1c1f] px-2.5 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-1 sm:gap-2">
+  <header class="w-full h-14 bg-black border-b border-[#1c1c1f] px-2 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-1 sm:gap-2 max-w-[100vw] overflow-hidden">
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
-    <button id="topBrandLogoBtn" class="brand-logo-btn group focus:outline-none" title="Reset Globe View" aria-label="Reset Globe View">
+    <button id="topBrandLogoBtn" class="brand-logo-btn group focus:outline-none shrink-0" title="Reset Globe View" aria-label="Reset Globe View">
       <div class="brand-city-dot-container hidden" style="display:none;" aria-hidden="true">
         <div class="brand-city-dot-aura"></div>
         <div class="brand-city-dot-ping"></div>
         <div class="brand-city-dot-core"></div>
       </div>
-      <span class="brand-logo-title">Culture Atlas</span>
-      <span id="topSpacesBadge" class="brand-clean-spaces-badge hidden sm:inline-flex">441 Clean spaces</span>
+      <span class="brand-logo-title">CULTURE ATLAS</span>
+      <span id="topSpacesBadge" class="brand-clean-spaces-badge hidden sm:inline-flex">{spaces_count_str}</span>
     </button>
 
     <!-- Center: Mobile Mode Switcher (Map / Split / Chat) & Desktop New Chat -->
-    <div class="flex items-center">
+    <div class="flex items-center shrink-0">
       <!-- Mobile Segmented Control (Phone Only) -->
-      <div id="mobileModeSwitch" class="flex md:hidden items-center bg-[#222222] border border-[#333333] p-0.5 rounded-xl text-[11px] select-none shadow-sm">
-        <button id="mobileModeMapBtn" class="px-2 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Map View">Map</button>
-        <button id="mobileModeSplitBtn" class="px-2 py-0.5 rounded-lg bg-[#2563eb] text-white font-medium transition cursor-pointer" title="Split View">Split</button>
-        <button id="mobileModeChatBtn" class="px-2 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Curator Chat">Chat</button>
+      <div id="mobileModeSwitch" class="flex md:hidden items-center bg-[#222222] border border-[#333333] p-0.5 rounded-xl text-[10.5px] select-none shadow-sm">
+        <button id="mobileModeMapBtn" class="px-1.5 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Map View">Map</button>
+        <button id="mobileModeSplitBtn" class="px-1.5 py-0.5 rounded-lg bg-[#2563eb] text-white font-medium transition cursor-pointer" title="Split View">Split</button>
+        <button id="mobileModeChatBtn" class="px-1.5 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Curator Chat">Chat</button>
       </div>
 
       <!-- Desktop Center New Chat Button, Archives Directory, Governance Legend & Separate Contribute Button -->
@@ -1423,7 +1470,7 @@ def build():
     </div>
 
     <!-- Right: View Controls (Desktop) & Status / Reset (Compact Mobile) -->
-    <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar max-w-[64vw] md:max-w-none shrink-0 py-1">
+    <div class="flex items-center gap-1 sm:gap-1.5 shrink-0 py-1">
       <!-- Desktop View Controls: Retained hidden stubs for DOM safety -->
       <div class="hidden" style="display:none;" aria-hidden="true">
         <button id="topViewMinimizeBtn"></button>
@@ -1431,35 +1478,35 @@ def build():
       </div>
 
       <!-- Mobile + New Chat Icon Button & Prioritized Mobile Gossip Button -->
-      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-8 h-8 bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
+      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
         <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
           <line x1="12" y1="5" x2="12" y2="19"></line>
           <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
       </button>
 
-      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-3 py-1 bg-[#271206] hover:bg-[#381a09] border border-orange-700/80 text-orange-300 rounded-full text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
-        <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-2 sm:px-3 py-1 bg-[#271206] hover:bg-[#381a09] border border-orange-700/80 text-orange-300 rounded-full text-[11px] sm:text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
+        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-orange-500 animate-pulse"></span>
         <span>Gossip</span>
       </button>
 
-      <button id="mobileCatalogBtn" class="flex md:hidden items-center justify-center px-3 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Browse All Findings">
+      <button id="mobileCatalogBtn" class="hidden sm:flex md:hidden items-center justify-center px-3 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Browse All Findings">
         Findings
       </button>
 
-      <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-3 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
+      <button id="mobileArchivesBtn" class="hidden sm:flex md:hidden items-center justify-center px-3 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
         Archives
       </button>
 
-      <button id="mobileGovernanceBtn" class="flex md:hidden items-center justify-center px-3 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
+      <button id="mobileGovernanceBtn" class="hidden sm:flex md:hidden items-center justify-center px-3 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
         Legend
       </button>
 
-      <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-3.5 py-1 bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/70 text-emerald-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Contribute confidential intelligence">
+      <button id="mobileContributeBtn" class="hidden sm:flex md:hidden items-center justify-center px-3.5 py-1 bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/70 text-emerald-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Contribute confidential intelligence">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span> Intel
       </button>
 
-      <button id="topSettingsBtn" class="flex items-center gap-1 px-2 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[12px] transition cursor-pointer shrink-0" title="AI Intelligence & API Key Settings">
+      <button id="topSettingsBtn" class="flex items-center gap-1 px-1.5 sm:px-2 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[11px] sm:text-[12px] transition cursor-pointer shrink-0" title="AI Intelligence & API Key Settings">
         <span id="topStatusDot" class="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
         <span id="topStatusLabel" class="font-normal text-amber-300 flex items-center gap-1"><span class="hidden sm:inline">Add API Key</span></span>
       </button>
@@ -1951,7 +1998,7 @@ def build():
       </div>
 
       <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
-      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[10%] pt-4 pb-2 w-full bg-transparent" style="padding-left: 10%; padding-right: 10%;">
+      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-2.5 sm:px-4 md:px-[10%] pt-4 pb-2 w-full bg-transparent">
         <div id="curatorScrollContent" class="w-full max-w-3xl flex flex-col items-center">
           
           <!-- Dedicated Input Mode Sticky / Top Header -->
@@ -2062,7 +2109,7 @@ def build():
       </div>
 
       <!-- 2. PINNED BOTTOM INPUT DOCK (Always stays firmly in place at bottom!) -->
-      <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-[10%] pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-black border-t border-[#1c1c1f]" style="padding-left: 10%; padding-right: 10%;">
+      <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-2.5 sm:px-4 md:px-[10%] pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-black border-t border-[#1c1c1f]">
         <div class="w-full max-w-3xl flex flex-col items-center">
           
           <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
@@ -2085,19 +2132,19 @@ def build():
               </div>
 
               <!-- Right: Model, mic, and send button -->
-              <div class="flex items-center gap-2 sm:gap-2.5">
-                <button id="workModelBtn" class="text-[12px] sm:text-[13px] bg-black hover:bg-[#1c1c1c] text-[#d4d4d8] hover:text-white border border-white/20 hover:border-white/40 flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition cursor-pointer font-normal shrink-0 shadow-sm" title="AI Model Status & Settings">
+              <div class="flex items-center gap-1.5 sm:gap-2.5">
+                <button id="workModelBtn" class="text-[11px] sm:text-[13px] bg-black hover:bg-[#1c1c1c] text-[#d4d4d8] hover:text-white border border-white/20 hover:border-white/40 flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition cursor-pointer font-normal shrink-0 shadow-sm" title="AI Model Status & Settings">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                   <span id="workModelLabel" class="hidden sm:inline">Engine 4.0 Critical</span>
                   <span class="inline sm:hidden text-[11px]">Engine 4.0</span>
                 </button>
 
-                <button id="curatorVoiceToggleBtn" class="text-[12px] sm:text-[13px] bg-black hover:bg-[#1c1c1c] text-[#d4d4d8] hover:text-white border border-white/20 hover:border-white/40 flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition cursor-pointer font-normal shrink-0 shadow-sm" title="Auto-Voice: Speaks responses aloud (Click to toggle)">
+                <button id="curatorVoiceToggleBtn" class="text-[11px] sm:text-[13px] bg-black hover:bg-[#1c1c1c] text-[#d4d4d8] hover:text-white border border-white/20 hover:border-white/40 flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition cursor-pointer font-normal shrink-0 shadow-sm" title="Auto-Voice: Speaks responses aloud (Click to toggle)">
                   <span id="curatorVoiceToggleIcon" class="text-[11px] leading-none">🔊</span>
-                  <span id="curatorVoiceToggleLabel" class="text-[11.5px] sm:text-[12.5px]">Voice: ON</span>
+                  <span id="curatorVoiceToggleLabel" class="text-[11px] sm:text-[12.5px]"><span class="hidden sm:inline">Voice: </span>ON</span>
                 </button>
 
-                <button id="workSendBtn" class="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center gap-2 transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[13px] sm:text-[14px] font-medium" title="Send message">
+                <button id="workSendBtn" class="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center gap-1.5 sm:gap-2 transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[12px] sm:text-[14px] font-medium" title="Send message">
                   <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                   </svg>
