@@ -24234,26 +24234,6 @@ FORMATTING & INTERACTION RULES:
                 </ol>
               </div>
 
-              <div class="pt-1">
-                <div class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold mb-2">Quick Prompts to Start Your Report:</div>
-                <div class="flex flex-wrap gap-2">
-                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Board Conflict: Undisclosed defense contractor or private equity trustee sitting on the board of [Institution Name]">
-                    Report Trustee Conflict
-                  </button>
-                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Sponsorship Leak: Non-public gift agreement with fossil fuel or defense conglomerate at [Institution Name]">
-                    Submit Sponsorship Leak
-                  </button>
-                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Schedule L Disclosure: Museum conducting commercial business with interested trustee without recusal at [Institution Name]">
-                    Report Schedule L Transaction
-                  </button>
-                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Labor / Wage Dispute: Curatorial staff unionization or wage suppression memo at [Institution Name]">
-                    Report Labor Dispute
-                  </button>
-                  <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#112d22] hover:bg-[#1a4030] text-emerald-200 hover:text-white border border-emerald-600/50 text-[12px] sm:text-[13px] transition cursor-pointer font-medium" data-fill="Unlisted Independent Space: Suggest verified grassroots art space with clean public/cooperative funding: [Space Name, City]">
-                    Suggest Independent Space
-                  </button>
-                </div>
-              </div>
 
               <div class="pt-2 border-t border-emerald-900/60 flex items-center justify-between text-[11.5px] font-mono text-emerald-400/90 flex-wrap gap-2">
                 <span class="flex items-center gap-1.5">
