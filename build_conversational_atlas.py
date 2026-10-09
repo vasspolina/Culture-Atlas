@@ -2076,8 +2076,11 @@ def build():
                   <span id="curatorVoiceToggleLabel" class="font-mono text-[12px] sm:text-[13px]">Voice: ON</span>
                 </button>
 
-                <button id="workSendBtn" class="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[13px] sm:text-[14px] font-mono font-medium" title="Send message">
-                  Send
+                <button id="workSendBtn" class="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center gap-2 transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[13px] sm:text-[14px] font-medium" title="Send message">
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                  </svg>
+                  <span>Send</span>
                 </button>
               </div>
             </div>
@@ -2493,7 +2496,10 @@ def build():
               <span class="text-[11px] font-mono text-emerald-400/90 flex items-center gap-1">
                 <span>Local Encrypted Queue</span>
               </span>
-              <button type="submit" id="confidentialSendBtn" class="px-3.5 py-1.5 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-[13px] font-medium flex items-center gap-1.5 transition active:scale-95 cursor-pointer shadow-md">
+              <button type="submit" id="confidentialSendBtn" class="px-4 py-1.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 text-[13px] font-medium flex items-center gap-1.5 transition active:scale-95 cursor-pointer shadow-md">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                </svg>
                 <span>Submit Lead</span>
               </button>
             </div>
@@ -24500,9 +24506,14 @@ FORMATTING & INTERACTION RULES:
       // 6. Style Send button as dedicated emerald Submit Intel button
       const sendBtn = document.getElementById('workSendBtn');
       if (sendBtn) {{
-        sendBtn.classList.remove('bg-[#2563eb]', 'hover:bg-[#1d4ed8]');
+        sendBtn.classList.remove('bg-black', 'hover:bg-[#1c1c1c]', 'border-white/20');
         sendBtn.classList.add('bg-gradient-to-r', 'from-emerald-600', 'to-teal-600', 'hover:from-emerald-500', 'hover:to-teal-500', 'shadow-emerald-900/60');
-        sendBtn.innerHTML = `Submit Intel`;
+        sendBtn.innerHTML = `
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+          </svg>
+          <span>Submit Intel</span>
+        `;
         sendBtn.title = 'Cryptographically submit confidential intelligence';
       }}
 
@@ -24609,8 +24620,13 @@ FORMATTING & INTERACTION RULES:
       const sendBtn = document.getElementById('workSendBtn');
       if (sendBtn) {{
         sendBtn.classList.remove('bg-gradient-to-r', 'from-emerald-600', 'to-teal-600', 'hover:from-emerald-500', 'hover:to-teal-500', 'shadow-emerald-900/60');
-        sendBtn.classList.add('bg-[#2563eb]', 'hover:bg-[#1d4ed8]');
-        sendBtn.innerHTML = `Send`;
+        sendBtn.classList.add('bg-black', 'hover:bg-[#1c1c1c]', 'border-white/20');
+        sendBtn.innerHTML = `
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+          <span>Send</span>
+        `;
         sendBtn.title = 'Send message';
       }}
 
