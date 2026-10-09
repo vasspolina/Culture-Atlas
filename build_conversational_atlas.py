@@ -2242,7 +2242,7 @@ def build():
             <div class="flex flex-wrap items-center gap-1.5">
               <button class="globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
               <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
-              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
+              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fd] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/60 text-[#60a5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="governance">Governance Legend</button>
               <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
@@ -2256,33 +2256,33 @@ def build():
               <button class="globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
               <button class="globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
-              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
-              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
-              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="mena_africa">MidEast & Africa</button>
+              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="region" data-value="europe">Europe</button>
+              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="region" data-value="americas">Americas</button>
+              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="region" data-value="asiapacific">Asia-Pacific</button>
+              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="region" data-value="mena_africa">MidEast & Africa</button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
-              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
-              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
+              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0a2016]/90 hover:bg-[#0f2e20] border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="category" data-value="free">Free Entry</button>
+              <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0a2016]/90 hover:bg-[#0f2e20] border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="category" data-value="artist_run">Artist-Run</button>
             </div>
 
             <!-- Row 1.5: Visual Critique & Artist Feedback Sub-Strategies -->
             <div id="visualCritiqueSubBar" class="hidden flex flex-wrap items-center gap-1.5 p-1.5 bg-[#18181b]/95 border border-amber-600/50 rounded-xl shadow-lg">
-          <span class="text-[11px] text-amber-400 font-mono shrink-0 mr-1 uppercase tracking-wider font-semibold flex items-center gap-1">
-            <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-            Critique Strategies:
-          </span>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="all">All ({visual_critique_count})</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="sponsor_exposure">Sponsor &amp; Debt Exposure</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="forensic_investigation">Algorithmic Forensics</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="pharma_fossil_denaming">Pharma &amp; Fossil De-Naming</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="feminist_counter_survey">Feminist Counter-Surveys</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="direct_polling">Direct Polling &amp; Data</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="board_boycott">Grassroots Agitation &amp; Boycotts</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="curatorial_subversion">Curatorial Subversion</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="parodic_museums">Parodic Museums</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="ideological_distribution">Ideological Circuits</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="physical_intervention">Physical Intervention</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="environmental_satire">Environmental Satire</button>
+              <span class="text-[11px] text-amber-400 font-mono shrink-0 mr-1 uppercase tracking-wider font-semibold flex items-center gap-1">
+                <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                Critique Strategies:
+              </span>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm shadow-amber-950/40" data-strategy="all">All ({visual_critique_count})</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#280f18] hover:bg-[#3d1624] border border-rose-500/70 text-rose-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="sponsor_exposure">Sponsor &amp; Debt Exposure</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#0a232e] hover:bg-[#113547] border border-cyan-500/70 text-cyan-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="forensic_investigation">Algorithmic Forensics</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#22102f] hover:bg-[#341847] border border-purple-500/70 text-purple-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="pharma_fossil_denaming">Pharma &amp; Fossil De-Naming</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#2b0f27] hover:bg-[#3f163a] border border-fuchsia-500/70 text-fuchsia-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="feminist_counter_survey">Feminist Counter-Surveys</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#0d1e30] hover:bg-[#142d48] border border-sky-500/70 text-sky-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="direct_polling">Direct Polling &amp; Data</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#2a0e0e] hover:bg-[#3e1414] border border-red-500/70 text-red-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="board_boycott">Grassroots Agitation &amp; Boycotts</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#082420] hover:bg-[#0f3832] border border-teal-500/70 text-teal-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="curatorial_subversion">Curatorial Subversion</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#2e190a] hover:bg-[#43240e] border border-orange-500/70 text-orange-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="parodic_museums">Parodic Museums</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#13152f] hover:bg-[#1d2047] border border-indigo-500/70 text-indigo-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="ideological_distribution">Ideological Circuits</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#0a2318] hover:bg-[#103726] border border-emerald-500/70 text-emerald-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="physical_intervention">Physical Intervention</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#1a240a] hover:bg-[#28380f] border border-lime-500/70 text-lime-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="environmental_satire">Environmental Satire</button>
             </div>
 
             <!-- Row 2: Featured Cultural Cities -->
@@ -13302,14 +13302,14 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v14') caches.delete(k);
+          if (k !== 'culture-atlas-v15') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=13').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=15').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
@@ -25885,16 +25885,29 @@ FORMATTING & INTERACTION RULES:
       const isAllTiers = !isCleanOnly && !isFlaggedOnly && !isAcademicOnly && !isCommunityOnly && !isVisualCritiqueOnly;
 
       const vcSubBar = document.getElementById('visualCritiqueSubBar');
+      const vcThemes = {{
+        all: {{ active: 'bg-amber-600 text-white border-amber-400 shadow-amber-950/40', inactive: 'bg-[#2b1f0c] hover:bg-[#3d2c12] border-amber-500/80 text-amber-300' }},
+        sponsor_exposure: {{ active: 'bg-rose-600 text-white border-rose-400 shadow-rose-950/40', inactive: 'bg-[#280f18] hover:bg-[#3d1624] border-rose-500/70 text-rose-300' }},
+        forensic_investigation: {{ active: 'bg-cyan-600 text-white border-cyan-400 shadow-cyan-950/40', inactive: 'bg-[#0a232e] hover:bg-[#113547] border-cyan-500/70 text-cyan-300' }},
+        pharma_fossil_denaming: {{ active: 'bg-purple-600 text-white border-purple-400 shadow-purple-950/40', inactive: 'bg-[#22102f] hover:bg-[#341847] border-purple-500/70 text-purple-300' }},
+        feminist_counter_survey: {{ active: 'bg-fuchsia-600 text-white border-fuchsia-400 shadow-fuchsia-950/40', inactive: 'bg-[#2b0f27] hover:bg-[#3f163a] border-fuchsia-500/70 text-fuchsia-300' }},
+        direct_polling: {{ active: 'bg-sky-600 text-white border-sky-400 shadow-sky-950/40', inactive: 'bg-[#0d1e30] hover:bg-[#142d48] border-sky-500/70 text-sky-300' }},
+        board_boycott: {{ active: 'bg-red-600 text-white border-red-400 shadow-red-950/40', inactive: 'bg-[#2a0e0e] hover:bg-[#3e1414] border-red-500/70 text-red-300' }},
+        curatorial_subversion: {{ active: 'bg-teal-600 text-white border-teal-400 shadow-teal-950/40', inactive: 'bg-[#082420] hover:bg-[#0f3832] border-teal-500/70 text-teal-300' }},
+        parodic_museums: {{ active: 'bg-orange-600 text-white border-orange-400 shadow-orange-950/40', inactive: 'bg-[#2e190a] hover:bg-[#43240e] border-orange-500/70 text-orange-300' }},
+        ideological_distribution: {{ active: 'bg-indigo-600 text-white border-indigo-400 shadow-indigo-950/40', inactive: 'bg-[#13152f] hover:bg-[#1d2047] border-indigo-500/70 text-indigo-300' }},
+        physical_intervention: {{ active: 'bg-emerald-600 text-white border-emerald-400 shadow-emerald-950/40', inactive: 'bg-[#0a2318] hover:bg-[#103726] border-emerald-500/70 text-emerald-300' }},
+        environmental_satire: {{ active: 'bg-lime-600 text-white border-lime-400 shadow-lime-950/40', inactive: 'bg-[#1a240a] hover:bg-[#28380f] border-lime-500/70 text-lime-300' }}
+      }};
+
       if (vcSubBar) {{
         if (isVisualCritiqueOnly) {{
           vcSubBar.classList.remove('hidden');
           document.querySelectorAll('.vc-strat-pill').forEach(sp => {{
-            const strat = sp.getAttribute('data-strategy');
-            if (strat === selectedVisualCritiqueStrategy) {{
-              sp.className = 'vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm';
-            }} else {{
-              sp.className = 'vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer';
-            }}
+            const strat = sp.getAttribute('data-strategy') || 'all';
+            const theme = vcThemes[strat] || vcThemes.all;
+            const isAct = (strat === selectedVisualCritiqueStrategy);
+            sp.className = `vc-strat-pill px-2.5 py-1 rounded-full border text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm ${{isAct ? theme.active : theme.inactive}}`;
           }});
         }} else {{
           vcSubBar.classList.add('hidden');
@@ -25934,7 +25947,7 @@ FORMATTING & INTERACTION RULES:
             if (isAllTiers) {{
               pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
             }} else {{
-              pill.className = 'globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0';
+              pill.className = 'globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fd] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
             }}
           }}
           return;
@@ -25960,11 +25973,74 @@ FORMATTING & INTERACTION RULES:
           return;
         }}
 
+        if (type === 'governance') {{
+          pill.className = 'globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/60 text-[#60a5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+          return;
+        }}
+
+        if (type === 'archives') {{
+          pill.className = 'globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+          return;
+        }}
+
+        if (type === 'contribute_intel') {{
+          pill.className = 'globe-filter-pill flex items-center gap-1.5 px-2.5 py-[2px] rounded-full bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+          return;
+        }}
+
+        if (type === 'curatorial_itineraries') {{
+          pill.className = 'globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+          return;
+        }}
+
+        if (type === 'board_conflicts') {{
+          pill.className = 'globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+          return;
+        }}
+
+        if (type === 'divestment_timeline') {{
+          pill.className = 'globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+          return;
+        }}
+
+        if (type === 'statutory_filings') {{
+          pill.className = 'globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+          return;
+        }}
+
+        if (type === 'fiscal_analytics') {{
+          pill.className = 'globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40';
+          return;
+        }}
+
+        if (type === 'region') {{
+          pill.className = 'globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+          return;
+        }}
+
         let isAct = false;
         if (type === 'all' && selectedCityFilter === 'all' && selectedCountryFilter === 'all' && isCleanOnly) isAct = true;
         else if (type === 'city' && selectedCityFilter.toLowerCase() === val.toLowerCase()) isAct = true;
         else if (type === 'country' && selectedCountryFilter.toLowerCase() === val.toLowerCase()) isAct = true;
         else if (type === 'category' && selectedCategoryFilter === val) isAct = true;
+
+        if (type === 'category' && val.startsWith('finance_')) {{
+          if (isAct) {{
+            pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#0284c7] text-white border border-[#38bdf8] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40';
+          }} else {{
+            pill.className = 'globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40';
+          }}
+          return;
+        }}
+
+        if (type === 'category' && (val === 'free' || val === 'artist_run')) {{
+          if (isAct) {{
+            pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+          }} else {{
+            pill.className = 'globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0a2016]/90 hover:bg-[#0f2e20] border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium';
+          }}
+          return;
+        }}
 
         if (isAct) {{
           pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
@@ -26005,15 +26081,15 @@ FORMATTING & INTERACTION RULES:
 
       let html = `
         <div class="flex flex-wrap items-center gap-1.5">
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="all">All Spaces</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fd] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="all">All Spaces</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
           <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0a2016]/90 hover:bg-[#0f2e20] border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="category" data-value="free">Free Entry</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0a2016]/90 hover:bg-[#0f2e20] border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="category" data-value="artist_run">Artist-Run</button>
         </div>
 
         <div class="flex flex-wrap items-center gap-1.5">
@@ -26052,25 +26128,25 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
           <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40" data-type="fiscal_analytics" id="globeFiscalAnalyticsBtn">Fiscal Analytics</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/60 text-[#60a5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="governance">Governance Legend</button>
           <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
           <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">Archives Directory ({archives_count})</button>
           <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
           <button class="globe-filter-pill flex items-center gap-1.5 px-2.5 py-[2px] rounded-full bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 hover:border-yellow-400 text-yellow-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
           <button class="globe-filter-pill flex items-center gap-1.5 px-2.5 py-[2px] rounded-full bg-[#2b1f0c] hover:bg-[#3d2c12] border border-amber-500/80 text-amber-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
-          <button class="globe-filter-pill hidden" data-type="contribute_intel" id="globeContributeIntelBtn" style="display:none;" aria-hidden="true"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
+          <button class="globe-filter-pill flex items-center gap-1.5 px-2.5 py-[2px] rounded-full bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Contribute Intel</span></button>
           <button class="globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
           <button class="globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
           <button class="globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
           <button class="globe-filter-pill flex items-center gap-1 px-2.5 py-[2px] rounded-full bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="mena_africa">MidEast & Africa</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="region" data-value="europe">Europe</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="region" data-value="americas">Americas</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="region" data-value="asiapacific">Asia-Pacific</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/50 text-[#93c5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="region" data-value="mena_africa">MidEast & Africa</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0a2016]/90 hover:bg-[#0f2e20] border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="category" data-value="free">Free Entry</button>
+          <button class="globe-filter-pill px-2.5 py-[2px] rounded-full bg-[#0a2016]/90 hover:bg-[#0f2e20] border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="category" data-value="artist_run">Artist-Run</button>
         </div>
 
         <!-- Row 1.5: Visual Critique & Artist Feedback Sub-Strategies -->
@@ -26079,18 +26155,18 @@ FORMATTING & INTERACTION RULES:
             <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
             Critique Strategies:
           </span>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="all">All ({visual_critique_count})</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="sponsor_exposure">Sponsor &amp; Debt Exposure</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="forensic_investigation">Algorithmic Forensics</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="pharma_fossil_denaming">Pharma &amp; Fossil De-Naming</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="feminist_counter_survey">Feminist Counter-Surveys</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="direct_polling">Direct Polling &amp; Data</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="board_boycott">Grassroots Agitation &amp; Boycotts</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="curatorial_subversion">Curatorial Subversion</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="parodic_museums">Parodic Museums</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="ideological_distribution">Ideological Circuits</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="physical_intervention">Physical Intervention</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="environmental_satire">Environmental Satire</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm shadow-amber-950/40" data-strategy="all">All ({visual_critique_count})</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#280f18] hover:bg-[#3d1624] border border-rose-500/70 text-rose-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="sponsor_exposure">Sponsor &amp; Debt Exposure</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#0a232e] hover:bg-[#113547] border border-cyan-500/70 text-cyan-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="forensic_investigation">Algorithmic Forensics</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#22102f] hover:bg-[#341847] border border-purple-500/70 text-purple-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="pharma_fossil_denaming">Pharma &amp; Fossil De-Naming</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#2b0f27] hover:bg-[#3f163a] border border-fuchsia-500/70 text-fuchsia-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="feminist_counter_survey">Feminist Counter-Surveys</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#0d1e30] hover:bg-[#142d48] border border-sky-500/70 text-sky-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="direct_polling">Direct Polling &amp; Data</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#2a0e0e] hover:bg-[#3e1414] border border-red-500/70 text-red-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="board_boycott">Grassroots Agitation &amp; Boycotts</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#082420] hover:bg-[#0f3832] border border-teal-500/70 text-teal-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="curatorial_subversion">Curatorial Subversion</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#2e190a] hover:bg-[#43240e] border border-orange-500/70 text-orange-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="parodic_museums">Parodic Museums</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#13152f] hover:bg-[#1d2047] border border-indigo-500/70 text-indigo-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="ideological_distribution">Ideological Circuits</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#0a2318] hover:bg-[#103726] border border-emerald-500/70 text-emerald-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="physical_intervention">Physical Intervention</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#1a240a] hover:bg-[#28380f] border border-lime-500/70 text-lime-300 hover:text-white text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="environmental_satire">Environmental Satire</button>
         </div>
 
         <!-- Row 2: Fiscal & Revenue Architecture Models -->

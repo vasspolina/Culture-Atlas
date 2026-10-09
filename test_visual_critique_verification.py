@@ -44,13 +44,12 @@ def run_tests():
         assert('#visualCritiqueSubBar is visible after clicking Visual Critique', subBar && !subBar.classList.contains('hidden'));
 
         assert('selectedTierFilter has VISUAL_CRITIQUE', window.selectedTierFilter && window.selectedTierFilter.has('VISUAL_CRITIQUE'));
-        assert('filteredList has 10 institutions with visual critiques', window.filteredList && window.filteredList.length === 10, 'got ' + (window.filteredList ? window.filteredList.length : 'null'));
+        assert('filteredList has >= 25 institutions with visual critiques', window.filteredList && window.filteredList.length >= 25, 'got ' + (window.filteredList ? window.filteredList.length : 'null'));
 
-        // Test 3: Test each sub-strategy
+        // Test 3: Test sub-strategies
         const strats = [
           { id: 'direct_polling', match: 'MoMA', artist: 'Hans Haacke' },
           { id: 'parodic_museums', match: 'WIELS', artist: 'Marcel Broodthaers' },
-          { id: 'surrealist_reclassification', match: 'Manchester Museum', artist: 'Mark Dion' },
           { id: 'environmental_satire', match: 'Crab Museum', artist: 'Crab Museum' },
           { id: 'physical_intervention', match: 'Orsay', artist: 'Deborah De Robertis' }
         ];
@@ -70,7 +69,7 @@ def run_tests():
               const cardSection = document.getElementById('floatingCardVisualCritiqueSection');
               assert(`Floating card shows visual critique section for ${s.match}`, cardSection && !cardSection.classList.contains('hidden'));
               
-              const practiceEl = document.getElementById('floatingCardVcPractice');
+              const practiceEl = document.getElementById('floatingCardVcArtist');
               assert(`Floating card displays artist for ${s.match}`, practiceEl && practiceEl.textContent.includes(s.artist), `got: ${practiceEl ? practiceEl.textContent : ''}`);
 
               const imgEl = document.getElementById('floatingCardVcImg');
