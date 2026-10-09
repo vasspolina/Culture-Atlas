@@ -1485,19 +1485,27 @@ def build():
             <!-- User queries and curator responses flow seamlessly here -->
           </div>
 
-          <!-- Typing & Live Web Scraper Indicator -->
-          <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center justify-between gap-2 mb-2 flex-wrap">
-            <div class="flex items-center gap-2">
-              <span class="inline-flex gap-1.5 items-center">
-                <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-                <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
-                <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
+          <!-- ChatGPT-Style Reasoning / Thinking Indicator ("Working for Xs") -->
+          <div id="curatorTyping" class="hidden w-full pt-1 pb-3 select-text">
+            <div class="text-[13px] font-normal text-[#8e8e8e] border-b border-[#303030] pb-2 mb-2.5 flex items-center justify-between">
+              <span class="flex items-center gap-1.5">
+                <span>Working for <span id="curatorThinkingTimer">1</span>s</span>
               </span>
-              <span class="text-[13.5px] text-[#a1a1aa]">Curator is researching...</span>
+              <div id="curatorScrapingBadge" class="hidden flex items-center gap-1.5 text-[11px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full shadow-sm">
+                <span id="curatorScrapingText">Scraping web intelligence...</span>
+              </div>
             </div>
-            <div id="curatorScrapingBadge" class="hidden flex items-center gap-1.5 text-[11px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full shadow-sm">
-              
-              <span id="curatorScrapingText">Scraping web intelligence...</span>
+            <p id="curatorThinkingThought" class="text-[14.5px] text-[#e4e4e7] leading-relaxed mb-2.5 font-normal">
+              I’ll inspect the prepare job and workflow context, then propose the smallest reversible fix for review.
+            </p>
+            <div id="curatorThinkingStep" class="flex items-center gap-2 text-[13px] text-[#a1a1aa]">
+              <span class="inline-flex items-center justify-center w-4 h-4 rounded border border-[#444] bg-[#1e1e1e] text-[#a1a1aa] shrink-0">
+                <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="4 17 10 11 4 5"></polyline>
+                  <line x1="12" y1="19" x2="20" y2="19"></line>
+                </svg>
+              </span>
+              <span id="curatorThinkingStepLabel">Scanning Repository Configuration Files</span>
             </div>
           </div>
 
@@ -17153,6 +17161,111 @@ FORMATTING & INTERACTION RULES:
       history: []
     }};
 
+    // =========================================================
+    // 🧠 CHATGPT-STYLE THINKING & REASONING ENGINE ("Working for Xs")
+    // =========================================================
+    let currentThinkingPlan = null;
+    let thinkingTimerInterval = null;
+    let thinkingStartTimestamp = 0;
+
+    function generateThinkingPlan(query) {{
+      const q = (query || '').toLowerCase().trim();
+      const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
+      const city = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
+
+      if (inst) {{
+        return {{
+          thought: `I’ll inspect the prepare context and governance records for ${{inst.name}}, then propose the verified findings for review.`,
+          step: `Auditing Form 990 & Trustee Interlocks for ${{inst.name}}`
+        }};
+      }}
+
+      if (city) {{
+        return {{
+          thought: `I’ll inspect verified independent kunsthalles and artist-run spaces in ${{city}}, then propose the smallest curated selection for review.`,
+          step: `Scanning Independent Arts Corpus for ${{city}}`
+        }};
+      }}
+
+      if (/itinerary|crawl|tour|visit|route/i.test(q)) {{
+        return {{
+          thought: `I’ll inspect the transit nodes and independent exhibition venues, then propose the optimal pedestrian circuit for review.`,
+          step: `Synthesizing Curatorial Itinerary & Transit Nodes`
+        }};
+      }}
+
+      if (/budget|financ|form\s*990|filing|schedule\s*l|endow/i.test(q)) {{
+        return {{
+          thought: `I’ll inspect IRS Form 990 statutory disclosures and program expense ratios, then propose the financial breakdown for review.`,
+          step: `Extracting Statutory Filings & Executive Compensation Records`
+        }};
+      }}
+
+      if (/trustee|board|interlock|conflict|director/i.test(q)) {{
+        return {{
+          thought: `I’ll inspect corporate board interlocks, private equity affiliations, and conflict matrices for review.`,
+          step: `Traversing Institutional Directorate Network`
+        }};
+      }}
+
+      if (/material|research|online|unethical|whistleblower/i.test(q)) {{
+        return {{
+          thought: `I’ll inspect the investigative audit methodology and cross-reference public records, then propose the forensic analysis for review.`,
+          step: `Cross-Referencing Statutory Filing Disclosures & FOI Leaks`
+        }};
+      }}
+
+      if (/timeline|boycott|protest|resistance|sackler/i.test(q)) {{
+        return {{
+          thought: `I’ll inspect landmark direct actions and museum divestment records, then propose the chronological overview for review.`,
+          step: `Querying Cultural Resistance & Divestment Timeline`
+        }};
+      }}
+
+      return {{
+        thought: `I’ll inspect the prepare job and workflow context, then propose the smallest reversible fix for review.`,
+        step: `Scanning Repository Configuration Files`
+      }};
+    }}
+
+    function startCuratorThinking(query) {{
+      currentThinkingPlan = generateThinkingPlan(query);
+      thinkingStartTimestamp = Date.now();
+
+      const typingEl = document.getElementById('curatorTyping');
+      const timerEl = document.getElementById('curatorThinkingTimer');
+      const thoughtEl = document.getElementById('curatorThinkingThought');
+      const stepLabelEl = document.getElementById('curatorThinkingStepLabel');
+
+      if (timerEl) timerEl.textContent = '1';
+      if (thoughtEl) thoughtEl.textContent = currentThinkingPlan.thought;
+      if (stepLabelEl) stepLabelEl.textContent = currentThinkingPlan.step;
+      if (typingEl) typingEl.classList.remove('hidden');
+
+      if (thinkingTimerInterval) clearInterval(thinkingTimerInterval);
+      thinkingTimerInterval = setInterval(() => {{
+        const elapsed = Math.max(1, Math.floor((Date.now() - thinkingStartTimestamp) / 1000));
+        if (timerEl) timerEl.textContent = elapsed;
+      }}, 1000);
+    }}
+
+    function stopCuratorThinking() {{
+      if (thinkingTimerInterval) {{
+        clearInterval(thinkingTimerInterval);
+        thinkingTimerInterval = null;
+      }}
+      const typingEl = document.getElementById('curatorTyping');
+      if (typingEl) typingEl.classList.add('hidden');
+
+      if (!thinkingStartTimestamp) return null;
+      const elapsed = Math.max(1, Math.round((Date.now() - thinkingStartTimestamp) / 1000));
+      thinkingStartTimestamp = 0;
+      return {{
+        ...(currentThinkingPlan || generateThinkingPlan('')),
+        duration: elapsed
+      }};
+    }}
+
     function initCuratorConversation() {{
       if (!curatorMessages) return;
       curatorMessages.innerHTML = '';
@@ -17178,6 +17291,7 @@ FORMATTING & INTERACTION RULES:
     }}
 
     function resetToNewChat() {{
+      stopCuratorThinking();
       initCuratorConversation();
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.remove('hidden');
@@ -17206,7 +17320,7 @@ FORMATTING & INTERACTION RULES:
       scrollChatToBottom(true);
     }}
 
-    function appendCuratorMessage(htmlContent, followUps = [], webIntel = null) {{
+    function appendCuratorMessage(htmlContent, followUps = [], webIntel = null, thinkingData = null) {{
       if (!curatorMessages) return;
       const hero = document.getElementById('curatorHeroGreeting');
       if (hero) hero.remove();
@@ -17216,6 +17330,34 @@ FORMATTING & INTERACTION RULES:
       if (suggestions) suggestions.classList.add('hidden');
       const div = document.createElement('div');
       div.className = 'curator-message-wrap my-3 select-text w-full';
+
+      let effectiveThinking = thinkingData || stopCuratorThinking();
+      let thinkingHtml = '';
+      if (effectiveThinking && effectiveThinking.thought) {{
+        const sec = effectiveThinking.duration || 2;
+        thinkingHtml = `
+          <div class="curator-thought-accordion mb-3 select-text" data-exclude-speech="true">
+            <button type="button" class="curator-thought-toggle flex items-center gap-1.5 text-[13px] font-normal text-[#8e8e8e] hover:text-[#d4d4d8] transition cursor-pointer select-none py-0.5" onclick="const c = this.nextElementSibling; if (c) c.classList.toggle('hidden'); const ic = this.querySelector('.curator-thought-chevron'); if (ic) ic.classList.toggle('rotate-180');">
+              <span>Thought for ${{sec}}s</span>
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 curator-thought-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="curator-thought-content hidden mt-2.5 pl-3 border-l border-[#383838] space-y-2 text-[13.5px]">
+              <p class="text-[#d4d4d8] leading-relaxed font-normal">${{escapeHtml(effectiveThinking.thought)}}</p>
+              <div class="flex items-center gap-2 text-[13px] text-[#a1a1aa]">
+                <span class="inline-flex items-center justify-center w-4 h-4 rounded border border-[#444] bg-[#1e1e1e] text-[#a1a1aa] shrink-0">
+                  <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 17 10 11 4 5"></polyline>
+                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                  </svg>
+                </span>
+                <span>${{escapeHtml(effectiveThinking.step)}}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }}
 
       let effectiveWebIntel = webIntel || curatorContext.lastWebIntel || null;
       let webIntelHtml = '';
@@ -17239,6 +17381,7 @@ FORMATTING & INTERACTION RULES:
 
       div.innerHTML = `
         <div class="text-[#ececec] text-[14.5px] leading-relaxed space-y-2.5">
+          ${{thinkingHtml}}
           ${{htmlContent}}
           ${{webIntelHtml}}
           ${{followUpHtml}}
@@ -17403,7 +17546,7 @@ FORMATTING & INTERACTION RULES:
         }}
       }}
 
-      curatorTyping.classList.remove('hidden');
+      startCuratorThinking(query);
       const scrapingBadge = document.getElementById('curatorScrapingBadge');
       if (scrapingBadge) scrapingBadge.classList.remove('hidden');
 
