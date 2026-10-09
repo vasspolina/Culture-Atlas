@@ -856,6 +856,13 @@ def build():
       visibility: hidden !important;
       pointer-events: none !important;
     }}
+    /* When viewing 3D building architectural perspective, hide 2D pins and floating labels so they do not obstruct 3D floors */
+    #cityMapContainer.building-view-active .custom-inst-pin,
+    #cityMapContainer.building-view-active .inst-pin-label {{
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }}
     .custom-inst-pin:hover .inst-pin-label {{
       opacity: 1 !important;
       visibility: visible !important;
@@ -8934,19 +8941,23 @@ def build():
 
         const currentZoom = cityVectorMap.getZoom();
         if (currentZoom >= 16.0) {{
-          // At building architectural zoom, close 2D marker popups to prevent collision with 3D building callouts
+          // At building architectural zoom, close 2D marker popups and hide 2D pins so they don't block the 3D model
           document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-          document.querySelectorAll('.city-marker-pin').forEach(pin => {{
-            pin.style.opacity = '0.25';
+          document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {{
+            pin.style.opacity = '0';
             pin.style.pointerEvents = 'none';
           }});
+          mapEl.classList.add('building-view-active');
         }} else {{
-          document.querySelectorAll('.city-marker-pin').forEach(pin => {{
+          document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {{
             pin.style.opacity = '1';
             pin.style.pointerEvents = 'auto';
           }});
+          mapEl.classList.remove('building-view-active');
           if (currentZoom < 15.2) {{
-            if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers();
+            if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(false);
+            if (typeof isBuildingMastDismissed !== 'undefined') isBuildingMastDismissed = false;
+            if (typeof isBuildingFacadeDismissed !== 'undefined') isBuildingFacadeDismissed = false;
             const bfiHud = document.getElementById('buildingFloorInspectorHud');
             if (bfiHud && !bfiHud.classList.contains('hidden')) bfiHud.classList.add('hidden');
           }}
@@ -9036,8 +9047,10 @@ def build():
     let currentBuildingMastMarker = null;
     let currentBuildingFacadeMarker = null;
     let isBuildingLayerEventsBound = false;
+    let isBuildingMastDismissed = false;
+    let isBuildingFacadeDismissed = false;
 
-    function clearBuilding3DInfoMarkers() {{
+    function clearBuilding3DInfoMarkers(preserveDismissed = true) {{
       if (building3DInfoMarkers && building3DInfoMarkers.length) {{
         building3DInfoMarkers.forEach(m => {{
           try {{ m.remove(); }} catch (e) {{}}
@@ -9048,10 +9061,15 @@ def build():
       currentBuildingFacadeMarker = null;
       const plates = document.querySelectorAll('.building-3d-mast-plate, .building-3d-facade-stack, .building-3d-room-badge');
       plates.forEach(p => {{ try {{ p.remove(); }} catch (e) {{}} }});
+      if (!preserveDismissed) {{
+        isBuildingMastDismissed = false;
+        isBuildingFacadeDismissed = false;
+      }}
     }}
     window.clearBuilding3DInfoMarkers = clearBuilding3DInfoMarkers;
 
     function closeBuildingMast() {{
+      isBuildingMastDismissed = true;
       if (currentBuildingMastMarker) {{
         try {{ currentBuildingMastMarker.remove(); }} catch (e) {{}}
         building3DInfoMarkers = building3DInfoMarkers.filter(m => m !== currentBuildingMastMarker);
@@ -9063,6 +9081,7 @@ def build():
     window.closeBuildingMast = closeBuildingMast;
 
     function closeBuildingFacade() {{
+      isBuildingFacadeDismissed = true;
       if (currentBuildingFacadeMarker) {{
         try {{ currentBuildingFacadeMarker.remove(); }} catch (e) {{}}
         building3DInfoMarkers = building3DInfoMarkers.filter(m => m !== currentBuildingFacadeMarker);
@@ -9221,6 +9240,10 @@ def build():
         // Interactive 3D click & hover directly on building floor slabs, rooms and core
         if (!isBuildingLayerEventsBound && typeof cityVectorMap.on === 'function') {{
           const handleFloorClick = (e) => {{
+            if (e.originalEvent) {{
+              try {{ e.originalEvent.stopPropagation(); }} catch (err) {{}}
+            }}
+            document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
             if (e.features && e.features.length) {{
               const p = e.features[0].properties;
               if (p && p.floorIndex !== undefined && Number(p.floorIndex) >= 0) {{
@@ -9248,7 +9271,7 @@ def build():
       }}
     }}
 
-    function highlightBuildingFootprint(inst) {{
+    function highlightBuildingFootprint(inst, options = {{}}) {{
       if (!cityVectorMap || !inst) return;
       ensureBuildingFootprintLayer();
       const bArch = inst.building_architecture || {{}};
@@ -9568,18 +9591,27 @@ def build():
       }}
 
       currentHighlightedBuildingInst = inst;
-      updateBuilding3DInfoMarkers(inst);
+      updateBuilding3DInfoMarkers(inst, options);
     }}
 
     // =========================================================================
     // 📍 SPATIAL 3D ON-BUILDING INFORMATION & INTERIOR ROOM MAPPING SYSTEM
     // =========================================================================
-    function updateBuilding3DInfoMarkers(inst) {{
-      clearBuilding3DInfoMarkers();
+    function updateBuilding3DInfoMarkers(inst, options = {{}}) {{
+      const isFloorChange = Boolean(options && options.isFloorChange);
       if (!cityVectorMap || !inst || !isCityStreetViewActive || typeof maplibregl === 'undefined') return;
 
       // Close any open 2D marker popups so they do not overlap 3D building callouts
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+
+      if (isFloorChange) {{
+        // On floor navigation, only refresh the room badges for the newly selected level
+        const badges = document.querySelectorAll('.building-3d-room-badge');
+        badges.forEach(b => {{ try {{ b.remove(); }} catch (e) {{}} }});
+        building3DInfoMarkers = building3DInfoMarkers.filter(m => m === currentBuildingMastMarker || m === currentBuildingFacadeMarker);
+      }} else {{
+        clearBuilding3DInfoMarkers(true);
+      }}
 
       const lat = Number(inst.lat);
       const lon = Number(inst.lon);
@@ -9600,7 +9632,8 @@ def build():
 
       // 1. 🏛️ ROOFTOP BUILDING MAST PLATE (Anchored directly over 3D Building apex)
       const isMobileScreen = window.innerWidth < 640;
-      const mastEl = document.createElement('div');
+      if (!isBuildingMastDismissed && !isFloorChange && !currentBuildingMastMarker) {{
+        const mastEl = document.createElement('div');
       mastEl.className = 'building-3d-mast-plate pointer-events-auto select-none';
       mastEl.style.cssText = isMobileScreen
         ? 'width:calc(100vw - 24px); max-width:340px; min-width:0; box-sizing:border-box; padding:9px 12px; border-radius:14px; background:rgba(12,19,34,0.97); border:1px solid rgba(56,189,248,0.7); box-shadow:0 12px 28px rgba(0,0,0,0.8); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:12px; z-index:30;'
@@ -9676,10 +9709,11 @@ def build():
       }} catch (e) {{
         console.warn('Could not add rooftop mast marker:', e);
       }}
+      }}
 
       // 2. 🏢 3D FLOOR-BY-FLOOR FACADE CALLOUT STACK (Only on Desktop >= 640px to prevent mobile overlap)
       if (floors.length) {{
-        if (!isMobileScreen) {{
+        if (!isMobileScreen && !isBuildingFacadeDismissed && !isFloorChange && !currentBuildingFacadeMarker) {{
           const facadeEl = document.createElement('div');
           facadeEl.className = 'building-3d-facade-stack pointer-events-auto select-none';
           facadeEl.style.cssText = 'min-width:270px; max-width:330px; display:flex; flex-direction:column; gap:6px; padding:10px 12px; border-radius:16px; background:rgba(10,16,28,0.95); border:1px solid rgba(56,189,248,0.5); box-shadow:0 16px 32px rgba(0,0,0,0.75); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; z-index:28;';
@@ -10051,6 +10085,10 @@ def build():
       // Close all 2D marker popups so they do not overlap 3D building callouts
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
 
+      // Reset dismissed state for the newly focused building
+      isBuildingMastDismissed = false;
+      isBuildingFacadeDismissed = false;
+
       // Switch to vector street map if not active
       if (!isCityStreetViewActive) {{
         openCityStreetView(inst.city, inst.lat, inst.lon);
@@ -10061,7 +10099,12 @@ def build():
       if (mapEl) {{
         mapEl.classList.remove('hidden');
         mapEl.classList.add('map-zoomed-in');
+        mapEl.classList.add('building-view-active');
       }}
+      document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {{
+        pin.style.opacity = '0';
+        pin.style.pointerEvents = 'none';
+      }});
 
       if (cityVectorMap) {{
         cityVectorMap.flyTo({{
@@ -10229,7 +10272,7 @@ def build():
       currentBfiFloorIndex = idx;
       const inst = selectedInstitution || currentHighlightedBuildingInst;
       if (inst) {{
-        highlightBuildingFootprint(inst);
+        highlightBuildingFootprint(inst, {{ isFloorChange: true }});
         showBuildingFloorInspectorHud(inst);
         const fl = (inst.floor_plans && inst.floor_plans[idx]) || null;
         if (fl && fl.current_shows && fl.current_shows[0]) {{
@@ -10811,7 +10854,8 @@ def build():
           e.stopPropagation();
           const curZ = cityVectorMap ? cityVectorMap.getZoom() : 0;
           if (curZ >= 16.0) {{
-            highlightBuildingFootprint(inst);
+            document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+            highlightBuildingFootprint(inst, {{ isFloorChange: true }});
             showBuildingFloorInspectorHud(inst);
             return;
           }}
