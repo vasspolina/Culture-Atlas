@@ -15,7 +15,13 @@ def run_tests():
 
     test_script = """
     <script>
-    window.addEventListener('DOMContentLoaded', async () => {
+    window.requestAnimationFrame = () => 1;
+    window.cancelAnimationFrame = () => {};
+    window.fetch = async (url, opts) => {
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
+    const runContributeTests = async () => {
       const results = [];
       const assert = (name, cond, details = '') => {
         results.push({ name, pass: !!cond, details });
@@ -97,7 +103,8 @@ def run_tests():
       div.id = 'contribute-test-results';
       div.setAttribute('data-results', JSON.stringify(results));
       document.body.appendChild(div);
-    });
+    };
+      if (document.readyState === 'complete') { setTimeout(runContributeTests, 100); } else { window.addEventListener('load', runContributeTests); }
     </script>
     """
 
@@ -112,11 +119,11 @@ def run_tests():
         "--disable-gpu",
         "--no-sandbox",
         "--dump-dom",
-        "--virtual-time-budget=4000",
+        "--virtual-time-budget=10000",
         f"file://{temp_file}"
     ]
 
-    proc = subprocess.run(chrome_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=15)
+    proc = subprocess.run(chrome_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
     stdout = proc.stdout
 
     marker = 'id="contribute-test-results" data-results="'

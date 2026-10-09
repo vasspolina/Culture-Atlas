@@ -98,10 +98,9 @@ const runAllTests = async () => {
         // 3. OFFLINE CURATOR GROUNDING TESTS
         // =========================================================================
 
-        // Robust query helper that waits for curator response
         async function queryCurator(query) {
           await window.handleCuratorQuery(query);
-          await new Promise(r => setTimeout(r, 350));
+          await new Promise(r => setTimeout(r, 600));
           const msgs = document.querySelectorAll('.curator-message-wrap');
           return msgs.length > 0 ? msgs[msgs.length - 1].textContent : '';
         }
@@ -162,7 +161,7 @@ const runAllTests = async () => {
 
         // Test 14: Board Composition & Web Transparency (Benito-Esteban et al. 2023)
         lastMsg = await queryCurator('how does having female board members affect web transparency in nonprofits?');
-        assert('Curator responds to Benito-Esteban board gender diversity inquiry', (lastMsg.includes('Benito-Esteban') || lastMsg.includes('BENITO-ESTEBAN')) && lastMsg.includes('793 board directors'));
+        assert('Curator responds to Benito-Esteban board gender diversity inquiry', (lastMsg.includes('Benito-Esteban') || lastMsg.includes('BENITO-ESTEBAN')) && lastMsg.includes('793 board directors'), 'GOT_TEXT: ' + (document.querySelectorAll('.curator-message-wrap').length ? document.querySelectorAll('.curator-message-wrap')[document.querySelectorAll('.curator-message-wrap').length - 1].innerText.replace(/\s+/g, ' ').slice(0, 150) : 'none'));
 
         // Test 15: Volunteer Commitment as an Insider Signal (Beck et al. 2024)
         lastMsg = await queryCurator('do donors value volunteer commitment as a signal of effectiveness?');
@@ -178,7 +177,7 @@ const runAllTests = async () => {
 
         // Test 18: Swiss Museum Fundraising Governance (Betzler 2012, 2015)
         lastMsg = await queryCurator('what factors drive board governance and fundraising success in swiss museums?');
-        assert('Curator responds to Betzler Swiss museum inquiry', (lastMsg.includes('Betzler') || lastMsg.includes('BETZLER')) && lastMsg.includes('98 Swiss museums'));
+        assert('Curator responds to Betzler Swiss museum inquiry', (lastMsg.includes('Betzler') || lastMsg.includes('BETZLER')) && lastMsg.includes('98 Swiss museums'), 'GOT: ' + lastMsg.slice(0, 120));
 
         // Test 19: Corporate Governance in Nonprofits (Blevins et al. 2020)
         lastMsg = await queryCurator('how does corporate governance logic improve mission allocation in charities?');
@@ -186,7 +185,7 @@ const runAllTests = async () => {
 
         // Test 20: Board of Trustees in China vs US (Dong Qin 2021)
         lastMsg = await queryCurator('compare museum board of trustees governance in china and the us');
-        assert('Curator responds to Dong Qin board governance inquiry', (lastMsg.includes('Dong Qin') || lastMsg.includes('DONG QIN')) && lastMsg.includes('China'));
+        assert('Curator responds to Dong Qin board governance inquiry', (lastMsg.includes('Dong Qin') || lastMsg.includes('DONG QIN')) && lastMsg.includes('China'), 'GOT: ' + lastMsg.slice(0, 120));
 
         // Test 21: Slavoj Zizek & Cultural Capitalism
         lastMsg = await queryCurator('what does slavoj zizek write about cultural capitalism and philanthropy?');

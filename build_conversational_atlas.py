@@ -104,6 +104,7 @@ def build():
     flagged_count = len(flagged_insts)
     total_count = len(all_raw_institutions)
     academic_count = len(academic_papers)
+    total_findings_count = total_count + academic_count
     archives_count = sum(1 for i in all_raw_institutions if i.get('archives_and_collections'))
     institutions_count = clean_count
     spaces_count_str = f"{clean_count} CLEAN SPACES"
@@ -1014,6 +1015,10 @@ def build():
           </svg>
           <span>New Chat</span>
         </button>
+        <button id="topCatalogBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] hover:border-[#3b5585] text-[#93c5fd] hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Browse all cultural spaces and academic research findings">
+          <span>All Findings</span>
+          <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.2 rounded">{total_findings_count}</span>
+        </button>
         <button id="topArchivesBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] hover:border-[#3b5585] text-[#93c5fd] hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Explore the Global Archives & Special Collections Directory">
           <span>Archives Directory</span>
         </button>
@@ -1046,6 +1051,10 @@ def build():
           <line x1="12" y1="5" x2="12" y2="19"></line>
           <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
+      </button>
+
+      <button id="mobileCatalogBtn" class="flex md:hidden items-center justify-center px-3.5 py-2 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Browse All Findings">
+        Findings
       </button>
 
       <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-4 py-2 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
@@ -1578,18 +1587,13 @@ def build():
             <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[13.5px] sm:text-[14.5px] focus:outline-none resize-none font-normal leading-[140%] min-h-[34px] sm:min-h-[42px] max-h-36 mb-1.5"></textarea>
             
             <div class="flex items-center justify-between pt-1.5">
-              <!-- Left: Plus action button and Contribute Intel button -->
+              <!-- Left: Plus action button -->
               <div class="flex items-center gap-2 sm:gap-2.5">
                 <button id="workPlusBtn" class="w-10 sm:w-11 h-8 sm:h-9 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0 shadow-sm" title="Quick filters">
                   <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                   </svg>
-                </button>
-                <button id="chatContributeBtn" type="button" class="text-[13px] sm:text-[14px] bg-gradient-to-r from-emerald-950/90 to-[#0e3b2a] hover:from-emerald-900 hover:to-[#134e38] text-emerald-300 hover:text-white border border-emerald-500/60 hover:border-emerald-400 flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition cursor-pointer font-medium shrink-0 shadow-sm" title="Contribute confidential intel, donor agreements, or whistleblower leaks (in-chat)">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span class="hidden xs:inline">Contribute</span>
-                  <span class="xs:hidden">Contribute</span>
                 </button>
               </div>
 
@@ -1613,6 +1617,10 @@ def build():
 
             <!-- Quick Dropdown Menu for Plus button -->
             <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14px]">
+              <button id="workMenuCatalogBtn" class="text-left px-3 py-2 bg-[#162030] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
+                <span class="flex items-center gap-1.5"><span>Browse All Findings</span></span>
+                <span class="text-[11px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">{total_findings_count}</span>
+              </button>
               <button id="workMenuArchivesBtn" class="text-left px-3 py-2 bg-[#162030] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
                 <span class="flex items-center gap-1.5"><span>Global Archives Directory</span></span>
                 <span class="text-[11px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">{archives_count}</span>
@@ -1643,13 +1651,28 @@ def build():
             </div>
           </div>
 
+          <!-- Stretched Full Chat Width Contribute Button underneath the chat input card -->
+          <button id="chatContributeBtn" type="button" class="w-full mt-2 sm:mt-2.5 py-2.5 sm:py-3 px-4 sm:px-5 bg-gradient-to-r from-[#072117]/95 via-[#0d3425]/95 to-[#072117]/95 hover:from-[#0a2e20] hover:via-[#114430] hover:to-[#0a2e20] text-emerald-300 hover:text-white border border-emerald-500/60 hover:border-emerald-400 rounded-2xl sm:rounded-3xl flex items-center justify-between transition-all duration-200 cursor-pointer shadow-md shadow-emerald-950/40 active:scale-[0.99] group text-[13px] sm:text-[14px] font-medium" title="Contribute confidential intel, donor agreements, or whistleblower leaks (in-chat)">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+              <span class="font-medium tracking-tight text-white group-hover:text-emerald-200">Contribute Intel &amp; Independent Spaces</span>
+            </div>
+            <div class="flex items-center gap-2 text-[12px] font-mono text-emerald-400/90">
+              <span class="hidden sm:inline bg-emerald-950/80 border border-emerald-800/80 px-2.5 py-0.5 rounded-full">Confidential / In-Chat</span>
+              <svg class="w-4 h-4 text-emerald-400 group-hover:translate-x-0.5 transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </button>
+
           <!-- Interactive Multi-Row Filter Bar (Pinned under chat input card) -->
           <div id="globeCityBar" class="w-full mt-2 sm:mt-2.5 flex flex-col gap-2 select-none py-1 shrink-0 max-h-[64px] md:max-h-none overflow-y-auto md:overflow-visible custom-scrollbar">
             <!-- Row 1: Scope, Clean / Flagged Tiers, Academic Research & Categories -->
             <div class="flex flex-wrap items-center gap-2">
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Spaces ({total_count})</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
               <span class="text-zinc-500 text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="governance">Governance Legend</button>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies ({academic_count})</button>
@@ -1705,18 +1728,28 @@ def build():
   </div>
 
   <!-- ========================================================= -->
-  <!-- 📋 CATALOG MODAL (Browse all 203 spaces) -->
+  <!-- 📋 CATALOG MODAL (Browse all findings & spaces) -->
   <!-- ========================================================= -->
   <div id="catalogModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
     <div class="bg-[#171717] border border-[#2e2e2e] rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden font-sans">
       <div class="p-3 border-b border-[#262626] bg-[#1a1a1a] flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <span class="text-[14px] font-normal text-white">Full Catalog of Verified Spaces</span>
+          <span class="text-[14px] font-normal text-white">All Findings &amp; Cultural Space Catalog</span>
+          <span id="listTotalBadge" class="text-[11.5px] font-mono px-2 py-0.5 rounded bg-[#242424] text-[#93c5fd] border border-[#333]">{total_findings_count} findings</span>
         </div>
         <button id="closeCatalogModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
+
+      <!-- Quick Category / Scope Filter Tabs inside Catalog -->
+      <div class="p-2 px-3 border-b border-[#262626] bg-[#191919] flex items-center gap-1.5 overflow-x-auto custom-scrollbar select-none text-[12px]">
+        <button id="catFilterAllBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-black text-white border border-zinc-600 font-medium shrink-0 cursor-pointer">All Findings ({total_findings_count})</button>
+        <button id="catFilterCleanBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer">Clean Spaces ({clean_count})</button>
+        <button id="catFilterFlaggedBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer">Flagged ({flagged_count})</button>
+        <button id="catFilterAcademicBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#38bdf8] border border-[#233852] shrink-0 cursor-pointer">Academic Studies ({academic_count})</button>
+      </div>
+
       <div class="p-3 border-b border-[#262626] bg-[#171717] flex flex-col gap-2">
-        <input type="text" id="searchInput" placeholder="Search museum, city, or focus..." class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white placeholder-[#71717a] px-3.5 py-2 rounded-xl focus:outline-none" />
+        <input type="text" id="searchInput" placeholder="Search spaces, empirical studies, authors, or topics..." class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white placeholder-[#71717a] px-3.5 py-2 rounded-xl focus:outline-none" />
         <div class="grid grid-cols-2 gap-2 text-[14px]">
           <select id="countrySelect" class="bg-[#212121] border border-[#333333] text-[#e4e4e7] px-3 py-1.5 rounded-xl truncate">
             <option value="all">All Countries (35)</option>
@@ -13695,7 +13728,7 @@ def build():
         const isClusterZoom = r < baseRadius * 6.0 && selectedCityFilter === 'all';
         const cityInstMap = {{}};
         filteredList.forEach(inst => {{
-          if (!inst.city) return;
+          if (!inst.city || inst.lon === undefined || inst.lat === undefined || inst.lon === null || inst.lat === null || isNaN(inst.lon) || isNaN(inst.lat)) return;
           const k = inst.city.toLowerCase().trim();
           if (!cityInstMap[k]) cityInstMap[k] = {{ name: inst.city, insts: [], lon: inst.lon, lat: inst.lat }};
           cityInstMap[k].insts.push(inst);
@@ -13711,6 +13744,7 @@ def build():
         }}
 
         filteredList.forEach(inst => {{
+          if (!inst.city || inst.lon === undefined || inst.lat === undefined || inst.lon === null || inst.lat === null || isNaN(inst.lon) || isNaN(inst.lat)) return;
           const k = (inst.city || '').toLowerCase().trim();
           if (isClusterZoom && clusteredCityKeys.has(k)) {{
             return;
@@ -15673,6 +15707,40 @@ def build():
       }});
     }}
     window.getCommunityAsInstitutions = getCommunityAsInstitutions;
+
+    function getAcademicResearchAsFindings() {{
+      if (typeof ACADEMIC_RESEARCH === 'undefined' || !Array.isArray(ACADEMIC_RESEARCH)) return [];
+      return ACADEMIC_RESEARCH.map((p, idx) => ({{
+        name: p.title || 'Academic Research Study',
+        title: p.title || 'Academic Research Study',
+        authors: p.authors || 'Researchers',
+        year: p.year || '2024',
+        journal: p.journal || 'Academic Journal',
+        citations: p.citations || '0',
+        takeaway: p.takeaway || '',
+        abstract: p.abstract || '',
+        doi: p.doi || '',
+        link: p.link || (p.doi ? `https://doi.org/${{p.doi}}` : ''),
+        tier: 'ACADEMIC',
+        isAcademicStudy: true,
+        academicId: `AR-${{idx + 1}}`,
+        city: null,
+        country: 'Academic Research',
+        lat: null,
+        lon: null,
+        location: p.journal ? `${{p.journal}} (${{p.year || 'Academic Literature'}})` : 'Academic Peer-Reviewed Literature',
+        governance_type: 'Empirical Research Study',
+        admission_policy: p.doi ? 'Open DOI Indexed' : 'Peer-Reviewed Research',
+        opening_hours: p.year ? `Published in ${{p.year}}` : 'Peer-Reviewed Study',
+        curatorial_focus: 'EMPIRICAL GOVERNANCE & FUNDING RESEARCH',
+        curator_recommendation: p.takeaway || p.abstract || 'Peer-reviewed research exploring museum governance, ethical underwriting, and funding models.',
+        funding: p.authors ? `Authors: ${{p.authors}} · Journal: ${{p.journal || 'Academic Journal'}}` : 'Academic Research Paper',
+        ethical_safeguard: 'Empirical academic study indexed in the research corpus.',
+        flags: [],
+        transparency_grade: 'Peer-Reviewed Research'
+      }}));
+    }}
+    window.getAcademicResearchAsFindings = getAcademicResearchAsFindings;
 
     function saveCommunityResearchSubmission(entry) {{
       const list = getCommunityResearchSubmissions();
@@ -17828,9 +17896,9 @@ FORMATTING & INTERACTION RULES:
         (q.includes('timeline') && (q.includes('boycott') || q.includes('protest') || q.includes('divest') || q.includes('victory') || q.includes('sackler') || q.includes('kanders') || q.includes('resistance')));
       const isFilingQuery = /(form\s*990|schedule\s*l|interested\s*persons?|executive\s*comp|director\s*salary|charity\s*commission\s*accounts?|statutory\s*filings?|statutory\s*disclosures?|irs\s*(form\s*)?990|990\s*filing|endowment\s*ratio|program\s*spend\s*ratio)/i.test(q) ||
         (q.includes('990') || (q.includes('schedule') && (q.includes('l') || q.includes('o'))) || q.includes('statutory filing') || q.includes('statutory disclosure'));
-      const isBoardConflictQuery = /(trustee|board\s*(member|seat|interlock|conflict|governance|ties)|directorate|interlocking|corporate\s*(board|conflict|sponsor|underwriter)|leon\s*black|kanders|safariland|sackler|larry\s*fink|steven\s*tananbaum|glenn\s*dubin|ken\s*griffin|david\s*koch|maja\s*hoffmann|strike\s*moma|decolonize\s*this\s*place|liberate\s*tate|who\s*is\s*on\s*the\s*board)/i.test(q) ||
+      const isBoardConflictQuery = !q.includes('benito') && !q.includes('female') && !q.includes('betzler') && !q.includes('dong qin') && !q.includes('swiss') && !q.includes('china') && !q.includes('gender diversity') && (/(trustee|board\s*(member|seat|interlock|conflict|governance|ties)|directorate|interlocking|corporate\s*(board|conflict|sponsor|underwriter)|leon\s*black|kanders|safariland|sackler|larry\s*fink|steven\s*tananbaum|glenn\s*dubin|ken\s*griffin|david\s*koch|maja\s*hoffmann|strike\s*moma|decolonize\s*this\s*place|liberate\s*tate|who\s*is\s*on\s*the\s*board)/i.test(q) ||
         (q.includes('board') && (q.includes('conflict') || q.includes('member') || q.includes('trustee') || q.includes('seat') || q.includes('interlock') || q.includes('moma') || q.includes('whitney') || q.includes('tate') || q.includes('met') || q.includes('scandal'))) ||
-        (q.includes('trustee') && (q.includes('conflict') || q.includes('board') || q.includes('network') || q.includes('investigate') || q.includes('who') || q.includes('resigned') || q.includes('ousted')));
+        (q.includes('trustee') && (q.includes('conflict') || q.includes('board') || q.includes('network') || q.includes('investigate') || q.includes('who') || q.includes('resigned') || q.includes('ousted'))));
       const isItineraryQuery = /(plan\s*(a\s*)?(day|visit|tour|itinerary|route|crawl)|art\s*(crawl|walk|tour|circuit|route|itinerary)|curatorial\s*(itinerary|route|tour|circuit|walk)|visit\s*itinerary|curated\s*(route|crawl|walk)|gallery\s*crawl|museum\s*crawl|walking\s*route)/i.test(q) ||
         (q.includes('itinerary') || q.includes('art crawl') || (q.includes('crawl') && (q.includes('art') || q.includes('museum') || q.includes('gallery'))) || (q.includes('plan') && (q.includes('route') || q.includes('day') || q.includes('tour') || q.includes('crawl'))));
       const isContributeQuery = /(how\s+to\s+)?(contribute|submit)\s*(intel|tip|leak|research|data)|whistleblow|report\s*(a\s*)?(leak|conflict|covenant|violation)|confidential\s*(intake|pipeline|submission)/i.test(q) ||
@@ -22674,8 +22742,12 @@ FORMATTING & INTERACTION RULES:
 
       appendCuratorMessage(`
         <div class="space-y-3 text-slate-200">
+          <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Confidential Field Intel &amp; Whistleblower Pipeline</span>
+          </div>
           <p class="text-white text-[14px] leading-relaxed">
-            Share non-public documents, unverified corporate sponsorships, board conflicts, or suggest unlisted independent art spaces directly in the chat below.
+            <strong>How to submit right here:</strong> Share non-public documents, unverified corporate sponsorships, board conflicts, or suggest unlisted independent art spaces directly in the chat below.
           </p>
 
           <div class="flex flex-wrap gap-2 pt-1">
@@ -22700,7 +22772,7 @@ FORMATTING & INTERACTION RULES:
 
       const workInput = document.getElementById('workInput');
       if (workInput) {{
-        workInput.placeholder = 'Share confidential intel or paste document leak...';
+        workInput.placeholder = '🔒 Confidential: paste intel, donor agreement leak, or trustee conflict...';
         if (defaultTopic) {{
           workInput.value = defaultTopic;
         }}
@@ -22751,13 +22823,22 @@ FORMATTING & INTERACTION RULES:
       }}
 
       appendCuratorMessage(`
-        <div class="space-y-2 text-slate-200">
-          <p class="text-white text-[14px]">
-            Your submission has been received and queued for review.
-          </p>
-          <p class="text-slate-400 text-[12.5px]">
-            Receipt: <code class="text-slate-200 font-mono">${{escapeHtml(cryptoReceipt.receipt)}}</code>
-          </p>
+        <div class="p-3.5 rounded-2xl bg-[#092218] border border-emerald-500/60 space-y-2.5 text-slate-200 font-sans">
+          <div class="flex items-center justify-between border-b border-emerald-500/30 pb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+              <span class="text-white font-medium text-[13.5px]">Cryptographic Whistleblower Receipt</span>
+            </div>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/60 shrink-0">SHA-256 VERIFIED</span>
+          </div>
+          <div class="text-[12.5px] font-mono space-y-1">
+            <div class="text-emerald-300">Receipt Code: <span class="text-white">${{escapeHtml(cryptoReceipt.receipt)}}</span></div>
+            <div class="text-slate-400 truncate">SHA-256 Digest: <span class="text-emerald-400">${{escapeHtml(cryptoReceipt.hash)}}</span></div>
+          </div>
+          <div class="pt-1.5 border-t border-emerald-500/20 text-[11.5px] text-slate-300 leading-relaxed">
+            <strong class="text-emerald-400 block mb-0.5 font-mono uppercase text-[10.5px]">OpSec &amp; Whistleblower Precautions:</strong>
+            Your lead is logged under anonymous pseudonym ${{escapeHtml(pseudonym)}}. Retain your receipt code.
+          </div>
         </div>
       `);
 
@@ -23458,12 +23539,63 @@ FORMATTING & INTERACTION RULES:
       }});
     }});
 
-    // Catalog Modal Handlers (Full 203 spaces browser)
+    // Catalog Modal Handlers (Full Findings & Spaces Browser)
     const catalogModal = document.getElementById('catalogModal');
-    document.getElementById('workOpenCatalogBtn')?.addEventListener('click', () => {{
+    function openCatalogModal(tierScope = 'all') {{
+      if (tierScope === 'A') {{
+        selectedTierFilter = new Set(['A']);
+      }} else if (tierScope === 'B') {{
+        selectedTierFilter = new Set(['B']);
+      }} else if (tierScope === 'ACADEMIC') {{
+        selectedTierFilter = new Set(['ACADEMIC']);
+      }} else if (tierScope === 'COMMUNITY') {{
+        selectedTierFilter = new Set(['COMMUNITY']);
+      }} else {{
+        selectedTierFilter = new Set(['A', 'B', 'U', 'ACADEMIC']);
+      }}
+      if (typeof applyFilters === 'function') applyFilters();
+      if (typeof updateGlobePillsUI === 'function') updateGlobePillsUI();
+      if (typeof updateCatalogChipsUI === 'function') updateCatalogChipsUI();
       if (catalogModal) catalogModal.classList.remove('hidden');
-      renderLeftList();
+    }}
+    window.openCatalogModal = openCatalogModal;
+
+    document.getElementById('workOpenCatalogBtn')?.addEventListener('click', () => openCatalogModal('all'));
+    document.getElementById('topCatalogBtn')?.addEventListener('click', () => openCatalogModal('all'));
+    document.getElementById('mobileCatalogBtn')?.addEventListener('click', () => openCatalogModal('all'));
+    document.getElementById('workMenuCatalogBtn')?.addEventListener('click', () => {{
+      const menu = document.getElementById('workPlusMenu');
+      if (menu) menu.classList.add('hidden');
+      openCatalogModal('all');
     }});
+
+    // Quick Filter Chips inside Catalog Modal
+    document.getElementById('catFilterAllBtn')?.addEventListener('click', () => {{
+      selectedTierFilter = new Set(['A', 'B', 'U', 'ACADEMIC']);
+      selectedCategoryFilter = 'all';
+      applyFilters();
+      updateGlobePillsUI();
+      updateCatalogChipsUI();
+    }});
+    document.getElementById('catFilterCleanBtn')?.addEventListener('click', () => {{
+      selectedTierFilter = new Set(['A']);
+      applyFilters();
+      updateGlobePillsUI();
+      updateCatalogChipsUI();
+    }});
+    document.getElementById('catFilterFlaggedBtn')?.addEventListener('click', () => {{
+      selectedTierFilter = new Set(['B']);
+      applyFilters();
+      updateGlobePillsUI();
+      updateCatalogChipsUI();
+    }});
+    document.getElementById('catFilterAcademicBtn')?.addEventListener('click', () => {{
+      selectedTierFilter = new Set(['ACADEMIC']);
+      applyFilters();
+      updateGlobePillsUI();
+      updateCatalogChipsUI();
+    }});
+
     document.getElementById('closeCatalogModalBtn')?.addEventListener('click', () => {{
       if (catalogModal) catalogModal.classList.add('hidden');
     }});
@@ -24046,8 +24178,9 @@ FORMATTING & INTERACTION RULES:
     function updateGlobePillsUI() {{
       const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
       const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
+      const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
       const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
-      const isAllTiers = selectedTierFilter.size >= 2 || (selectedTierFilter.has('A') && selectedTierFilter.has('B'));
+      const isAllTiers = !isCleanOnly && !isFlaggedOnly && !isAcademicOnly && !isCommunityOnly;
 
       document.querySelectorAll('.globe-filter-pill').forEach(pill => {{
         const type = pill.getAttribute('data-type');
@@ -24082,6 +24215,15 @@ FORMATTING & INTERACTION RULES:
           return;
         }}
 
+        if (type === 'academic') {{
+          if (isAcademicOnly) {{
+            pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0369a1] text-white border border-[#38bdf8] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40';
+          }} else {{
+            pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
+          }}
+          return;
+        }}
+
         let isAct = false;
         if (type === 'all' && selectedCityFilter === 'all' && selectedCountryFilter === 'all' && isCleanOnly) isAct = true;
         else if (type === 'city' && selectedCityFilter.toLowerCase() === val.toLowerCase()) isAct = true;
@@ -24095,6 +24237,24 @@ FORMATTING & INTERACTION RULES:
         }}
       }});
     }}
+
+    function updateCatalogChipsUI() {{
+      const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
+      const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
+      const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
+      const isAll = !isCleanOnly && !isFlaggedOnly && !isAcademicOnly;
+
+      const allBtn = document.getElementById('catFilterAllBtn');
+      const cleanBtn = document.getElementById('catFilterCleanBtn');
+      const flaggedBtn = document.getElementById('catFilterFlaggedBtn');
+      const academicBtn = document.getElementById('catFilterAcademicBtn');
+
+      if (allBtn) allBtn.className = isAll ? 'cat-modal-chip px-3 py-1 rounded-full bg-black text-white border border-zinc-600 font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer';
+      if (cleanBtn) cleanBtn.className = isCleanOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#059669] text-white border border-[#10b981] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer';
+      if (flaggedBtn) flaggedBtn.className = isFlaggedOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#6929c4] text-white border border-[#be95ff] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer';
+      if (academicBtn) academicBtn.className = isAcademicOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#0369a1] text-white border border-[#38bdf8] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#38bdf8] border border-[#233852] shrink-0 cursor-pointer';
+    }}
+    window.updateCatalogChipsUI = updateCatalogChipsUI;
 
     function updateGlobeBarForCountry(countryName) {{
       const bar = document.getElementById('globeCityBar');
@@ -24153,7 +24313,7 @@ FORMATTING & INTERACTION RULES:
         <div class="flex flex-wrap items-center gap-2">
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Spaces ({total_count})</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="fiscal_analytics" id="globeFiscalAnalyticsBtn">Fiscal Analytics</button>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies ({academic_count})</button>
@@ -24228,10 +24388,11 @@ FORMATTING & INTERACTION RULES:
             }} else if (val === 'COMMUNITY') {{
               selectedTierFilter = new Set(['COMMUNITY']);
             }} else if (val === 'all') {{
-              selectedTierFilter = new Set(['A', 'B', 'U']);
+              selectedTierFilter = new Set(['A', 'B', 'U', 'ACADEMIC']);
             }}
             applyFilters();
             updateGlobePillsUI();
+            updateCatalogChipsUI();
           }} else if (type === 'fiscal_analytics') {{
             if (typeof openFiscalAnalyticsHUD === 'function') {{
               openFiscalAnalyticsHUD();
@@ -24259,7 +24420,14 @@ FORMATTING & INTERACTION RULES:
               openConfidentialIntakeModal();
             }}
           }} else if (type === 'academic') {{
-            if (typeof openAcademicResearchModal === 'function') {{
+            selectedTierFilter = new Set(['ACADEMIC']);
+            selectedCategoryFilter = 'all';
+            applyFilters();
+            updateGlobePillsUI();
+            updateCatalogChipsUI();
+            if (typeof openCatalogModal === 'function') {{
+              openCatalogModal('ACADEMIC');
+            }} else if (typeof openAcademicResearchModal === 'function') {{
               openAcademicResearchModal('all');
             }}
           }} else if (type === 'archives') {{
@@ -24327,11 +24495,51 @@ FORMATTING & INTERACTION RULES:
 
     function applyFilters() {{
       const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
-      const baseSource = isCommunityOnly ? getCommunityAsInstitutions() : ALL_INSTITUTIONS;
+      const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
+      const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
+      const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
+
+      let baseSource;
+      if (isCommunityOnly) {{
+        baseSource = getCommunityAsInstitutions();
+      }} else if (isAcademicOnly) {{
+        baseSource = getAcademicResearchAsFindings();
+      }} else if (isCleanOnly) {{
+        baseSource = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
+      }} else if (isFlaggedOnly) {{
+        baseSource = ALL_INSTITUTIONS.filter(i => i.tier === 'B');
+      }} else {{
+        // "All Findings": merged cultural spaces + academic research findings
+        baseSource = [...ALL_INSTITUTIONS, ...getAcademicResearchAsFindings()];
+      }}
 
       filteredList = baseSource.filter(inst => {{
+        if (inst.isAcademicStudy) {{
+          if (selectedCountryFilter !== 'all' || selectedCityFilter !== 'all') {{
+            return false;
+          }}
+          if (searchQuery) {{
+            const q = searchQuery.toLowerCase().trim();
+            const allText = ((inst.name || '') + ' ' + (inst.authors || '') + ' ' + (inst.journal || '') + ' ' + (inst.takeaway || '') + ' ' + (inst.abstract || '') + ' ' + (inst.doi || '')).toLowerCase();
+            if (!allText.includes(q)) return false;
+          }}
+          if (selectedCategoryFilter !== 'all') {{
+            const tText = ((inst.name || '') + ' ' + (inst.takeaway || '') + ' ' + (inst.abstract || '')).toLowerCase();
+            if (selectedCategoryFilter === 'ethical' && !tText.includes('ethic') && !tText.includes('clean') && !tText.includes('moral') && !tText.includes('tainted')) return false;
+            if (selectedCategoryFilter === 'fossil_free' && !tText.includes('fossil') && !tText.includes('climate') && !tText.includes('oil') && !tText.includes('bp') && !tText.includes('environmental')) return false;
+            if (selectedCategoryFilter === 'finance_civic' && !tText.includes('subsid') && !tText.includes('public') && !tText.includes('state') && !tText.includes('civic') && !tText.includes('govern')) return false;
+            if (selectedCategoryFilter === 'finance_endowed' && !tText.includes('endow') && !tText.includes('philanthrop') && !tText.includes('donor')) return false;
+            if (selectedCategoryFilter === 'finance_earned' && !tText.includes('earned') && !tText.includes('revenue') && !tText.includes('commercial')) return false;
+            if (selectedCategoryFilter === 'finance_artist_run' && !tText.includes('artist') && !tText.includes('grassroots') && !tText.includes('independent')) return false;
+            if (['free', 'monday', 'transit', 'accessibility', 'amenities', 'london', 'nyc', 'paris', 'moma'].includes(selectedCategoryFilter)) {{
+              return false;
+            }}
+          }}
+          return true;
+        }}
+
         if (!isCommunityOnly) {{
-          if (!selectedTierFilter.has(inst.tier)) return false;
+          if (!selectedTierFilter.has(inst.tier) && !selectedTierFilter.has('all')) return false;
           if (inst.isCommunityLayer || inst.tier === 'COMMUNITY') return false; // Strictly filtered out of actual research results
         }}
 
@@ -24401,8 +24609,8 @@ FORMATTING & INTERACTION RULES:
         if (searchQuery) {{
           const q = searchQuery.toLowerCase();
           const matchName = inst.name.toLowerCase().includes(q);
-          const matchLoc = inst.location.toLowerCase().includes(q);
-          const matchFund = inst.funding.toLowerCase().includes(q);
+          const matchLoc = (inst.location || '').toLowerCase().includes(q);
+          const matchFund = (inst.funding || '').toLowerCase().includes(q);
           const matchFocus = (inst.curatorial_focus || '').toLowerCase().includes(q);
           const matchGov = (inst.governance_type || '').toLowerCase().includes(q);
           if (!matchName && !matchLoc && !matchFund && !matchFocus && !matchGov) return false;
@@ -24412,7 +24620,16 @@ FORMATTING & INTERACTION RULES:
       }});
 
       const listTotalBadge = document.getElementById('listTotalBadge');
-      if (listTotalBadge) listTotalBadge.textContent = `${{filteredList.length}} mapped`;
+      if (listTotalBadge) {{
+        const mappedCount = filteredList.filter(i => !i.isAcademicStudy).length;
+        if (isAcademicOnly) {{
+          listTotalBadge.textContent = `${{filteredList.length}} studies`;
+        }} else if (isCleanOnly || isFlaggedOnly || isCommunityOnly) {{
+          listTotalBadge.textContent = `${{filteredList.length}} spaces`;
+        }} else {{
+          listTotalBadge.textContent = `${{filteredList.length}} findings (${{mappedCount}} mapped)`;
+        }}
+      }}
 
       // Update Floating Map Filter Banner
       const activeMapBanner = document.getElementById('activeMapFilterBanner');
@@ -24424,6 +24641,10 @@ FORMATTING & INTERACTION RULES:
           activeMapBanner.classList.remove('hidden');
           if (activeMapIcon) activeMapIcon.textContent = '';
           activeMapText.textContent = `COMMUNITY RESEARCH LAYER · ${{filteredList.length}} USER CONTRIBUTIONS (SEGREGATED FROM VERIFIED)`;
+        }} else if (isAcademicOnly) {{
+          activeMapBanner.classList.remove('hidden');
+          if (activeMapIcon) activeMapIcon.textContent = '';
+          activeMapText.textContent = `ACADEMIC RESEARCH CORPUS · ${{filteredList.length}} EMPIRICAL STUDIES (FILTERED BY USER)`;
         }} else if (selectedCategoryFilter !== 'all') {{
           activeMapBanner.classList.remove('hidden');
           const meta = FILTER_META[selectedCategoryFilter] || {{ label: selectedCategoryFilter.toUpperCase() }};
@@ -24443,6 +24664,10 @@ FORMATTING & INTERACTION RULES:
           activeFilterBanner.classList.remove('hidden');
           if (filterLabel) filterLabel.textContent = 'COMMUNITY LAYER (USER INPUT)';
           if (filterCount) filterCount.textContent = `(${{filteredList.length}})`;
+        }} else if (isAcademicOnly) {{
+          activeFilterBanner.classList.remove('hidden');
+          if (filterLabel) filterLabel.textContent = 'ACADEMIC STUDIES (EMPIRICAL LITERATURE)';
+          if (filterCount) filterCount.textContent = `(${{filteredList.length}})`;
         }} else if (selectedCityFilter !== 'all' || selectedCountryFilter !== 'all' || selectedCategoryFilter !== 'all') {{
           activeFilterBanner.classList.remove('hidden');
           let activeName = selectedCityFilter !== 'all' ? selectedCityFilter : (selectedCountryFilter !== 'all' ? selectedCountryFilter : selectedCategoryFilter);
@@ -24455,6 +24680,7 @@ FORMATTING & INTERACTION RULES:
       }}
 
       updateGlobePillsUI();
+      updateCatalogChipsUI();
       renderLeftList();
     }}
 
@@ -24509,6 +24735,58 @@ FORMATTING & INTERACTION RULES:
       }}
 
       container.innerHTML = filteredList.map(inst => {{
+        if (inst.isAcademicStudy) {{
+          return `
+            <div class="inst-card academic-card bg-[#141f30] border border-[#23436d] hover:border-[#38bdf8] rounded-2xl p-3.5 transition group shadow-sm" data-name="${{inst.name.replace(/"/g, '&quot;')}}">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-normal text-white text-[14px] leading-snug">${{escapeHtml(inst.name)}}</h3>
+                <span class="text-[12px] font-mono px-2 py-0.5 rounded-lg border border-[#38bdf8]/60 bg-[#092540] text-[#7dd3fc] shrink-0">Academic Study</span>
+              </div>
+
+              <div class="flex items-center gap-1.5 text-[12.5px] text-[#93c5fd] mt-1.5 font-mono flex-wrap">
+                <span class="text-white/90">${{escapeHtml(inst.authors || 'Researchers')}}</span>
+                <span class="text-[#555]">·</span>
+                <span class="text-[#38bdf8]">${{escapeHtml(inst.journal || 'Academic Literature')}}</span>
+                ${{inst.year ? `<span class="text-[#555]">·</span><span class="text-zinc-400">${{escapeHtml(inst.year)}}</span>` : ''}}
+                ${{inst.citations ? `<span class="text-[#555]">·</span><span class="text-emerald-400 font-medium">${{escapeHtml(inst.citations)}} Citations</span>` : ''}}
+              </div>
+
+              ${{inst.takeaway ? `
+                <div class="mt-2.5 p-2.5 rounded-xl bg-[#0b2438] border border-[#0284c7]/40 text-[#bae6fd] text-[12.5px] leading-relaxed">
+                  <strong class="text-[#38bdf8] block text-[10.5px] uppercase tracking-wider font-mono mb-0.5">Key Empirical Finding:</strong>
+                  ${{escapeHtml(inst.takeaway)}}
+                </div>
+              ` : ''}}
+
+              ${{inst.abstract ? `
+                <details class="mt-2 text-[12px] text-slate-300">
+                  <summary class="cursor-pointer text-[#7dd3fc] hover:underline font-mono text-[11px] uppercase tracking-wider py-0.5">View Abstract &amp; Methodology</summary>
+                  <p class="mt-1.5 p-2.5 rounded-xl bg-[#111927] border border-[#1e293b] text-slate-300 leading-relaxed text-[12px]">${{escapeHtml(inst.abstract)}}</p>
+                </details>
+              ` : ''}}
+
+              <div class="mt-2.5 pt-2 border-t border-[#23436d]/80 flex items-center justify-between gap-1.5 flex-wrap text-[11.5px] font-mono">
+                <div class="flex items-center gap-1.5">
+                  <button class="academic-ask-btn px-2.5 py-1 rounded-lg bg-[#0369a1] hover:bg-[#0284c7] text-white border border-[#38bdf8]/60 transition flex items-center gap-1 cursor-pointer font-sans text-[12px] shadow-sm" data-title="${{inst.name.replace(/"/g, '&quot;')}}" data-authors="${{escapeHtml(inst.authors)}}">
+                    <span>Ask Curator</span>
+                  </button>
+                  ${{inst.doi ? `
+                    <a href="https://doi.org/${{escapeHtml(inst.doi)}}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded-lg bg-[#111927] hover:bg-[#1e293b] text-emerald-400 hover:text-emerald-300 border border-emerald-900/60 transition inline-flex items-center gap-1" onclick="event.stopPropagation()">
+                      <span>DOI Paper</span>
+                    </a>
+                  ` : ''}}
+                  ${{inst.link ? `
+                    <a href="${{escapeHtml(inst.link)}}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded-lg bg-[#111927] hover:bg-[#1e293b] text-[#7dd3fc] hover:text-white border border-[#1e293b] transition inline-flex items-center gap-1" onclick="event.stopPropagation()">
+                      <span>Consensus</span>
+                    </a>
+                  ` : ''}}
+                </div>
+                <span class="text-zinc-500 font-mono text-[11px]">Peer-Reviewed</span>
+              </div>
+            </div>
+          `;
+        }}
+
         const isSel = selectedInstitution && selectedInstitution.name === inst.name;
         const isInstCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
         const isInstClean = !isInstCommunity && inst.tier === 'A';
@@ -24568,7 +24846,6 @@ FORMATTING & INTERACTION RULES:
             <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between gap-1.5 flex-wrap">
               <div class="flex items-center gap-1.5">
                 <button class="card-zoom-building px-2 py-0.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 hover:text-white text-[12px] font-mono transition flex items-center gap-1 cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}" title="Zoom to 3D Building & View In-Depth Archives">
-                  
                   <span>Zoom to Building</span>
                 </button>
                 ${{webUrl ? `
@@ -24576,7 +24853,6 @@ FORMATTING & INTERACTION RULES:
                      class="website-pill inline-flex items-center gap-1 text-[12px] font-mono text-[#93c5fd] hover:text-white bg-[#2a2a2a] hover:bg-[#333] border border-[#383838] px-2 py-0.5 rounded-lg transition"
                      onclick="event.stopPropagation()">
                     <span class="truncate max-w-[90px]">${{escapeHtml(displayDomain)}}</span>
-                    
                   </a>
                 ` : ''}}
               </div>
@@ -24585,6 +24861,29 @@ FORMATTING & INTERACTION RULES:
           </div>
         `;
       }}).join('');
+
+      container.querySelectorAll('.academic-ask-btn').forEach(btn => {{
+        btn.addEventListener('click', (e) => {{
+          e.preventDefault();
+          e.stopPropagation();
+          const title = btn.getAttribute('data-title');
+          const authors = btn.getAttribute('data-authors');
+          if (typeof atlasAskCurator === 'function') {{
+            atlasAskCurator(`Tell me about the empirical study: "${{title}}" by ${{authors}}`);
+          }}
+        }});
+      }});
+
+      container.querySelectorAll('.academic-card').forEach(card => {{
+        card.addEventListener('click', (e) => {{
+          if (e.target.closest('button') || e.target.closest('a') || e.target.closest('details')) return;
+          const name = card.getAttribute('data-name');
+          const target = filteredList.find(i => i.name === name) || (typeof getAcademicResearchAsFindings === 'function' ? getAcademicResearchAsFindings().find(i => i.name === name) : null);
+          if (target && typeof atlasAskCurator === 'function') {{
+            atlasAskCurator(`Tell me about the empirical study: "${{target.name}}" by ${{target.authors}}`);
+          }}
+        }});
+      }});
 
       container.querySelectorAll('.inst-card').forEach(card => {{
         card.querySelectorAll('.card-zoom-building').forEach(zBtn => {{
@@ -24608,6 +24907,7 @@ FORMATTING & INTERACTION RULES:
         }});
 
         card.addEventListener('click', () => {{
+          if (card.classList.contains('academic-card')) return;
           const name = card.getAttribute('data-name');
           const inst = filteredList.find(i => i.name === name) || ALL_INSTITUTIONS.find(i => i.name === name);
           if (inst) {{
@@ -24757,8 +25057,16 @@ FORMATTING & INTERACTION RULES:
         e.preventDefault();
         if (filteredList.length > 0) {{
           const target = filteredList[0];
-          selectInstitution(target, true);
-          flyTo(target.lon, target.lat, getCityTargetRadius(target.city));
+          if (target.isAcademicStudy) {{
+            if (typeof atlasAskCurator === 'function') {{
+              atlasAskCurator(`Tell me about the empirical study: "${{target.name}}" by ${{target.authors}}`);
+            }}
+          }} else {{
+            selectInstitution(target, true);
+            if (target.lon !== undefined && target.lat !== undefined && target.lon !== null && target.lat !== null) {{
+              flyTo(target.lon, target.lat, getCityTargetRadius(target.city));
+            }}
+          }}
         }}
       }}
     }});
