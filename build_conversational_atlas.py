@@ -1008,14 +1008,14 @@ def build():
         <button id="topArchivesBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] hover:border-[#3b5585] text-[#93c5fd] hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Explore the Global Archives & Special Collections Directory">
           <span>Archives Directory</span>
         </button>
-        <button id="topGovernanceBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] hover:border-[#3b5585] text-slate-300 hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Governance & Funding Transparency Methodology Legend">
+        <button id="topGovernanceBtn" class="flex items-center gap-1.5 px-5 py-2 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] hover:border-[#3b5585] text-slate-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Governance & Funding Transparency Methodology Legend">
           <span>Methodology</span>
         </button>
-        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-3 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 hover:border-yellow-400 text-yellow-300 hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Toggle Yellow Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
+        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 hover:border-yellow-400 text-yellow-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Yellow Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
           <span>Gossip Mode</span>
           <span class="text-[10px] px-1.5 py-0.2 rounded bg-yellow-400/20 text-yellow-300 font-mono font-bold">REDDIT & X</span>
         </button>
-        <button id="topContributeBtn" class="flex items-center gap-2 px-3.5 py-1.5 bg-gradient-to-r from-[#09261b] via-[#0d3425] to-[#082218] hover:from-[#0e3b2a] hover:to-[#114733] border border-emerald-500/70 hover:border-emerald-400 text-emerald-200 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-medium shadow-md shadow-emerald-950/60 active:scale-95" title="Contribute confidential insider intelligence or unlisted independent spaces">
+        <button id="topContributeBtn" class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#09261b] via-[#0d3425] to-[#082218] hover:from-[#0e3b2a] hover:to-[#114733] border border-emerald-500/70 hover:border-emerald-400 text-emerald-200 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-medium shadow-md shadow-emerald-950/60 active:scale-95" title="Contribute confidential insider intelligence or unlisted independent spaces">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
           <span>Contribute Intel</span>
         </button>
@@ -1023,35 +1023,35 @@ def build():
     </div>
 
     <!-- Right: View Controls (Desktop) & Status / Reset (Compact Mobile) -->
-    <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
       <!-- Desktop View Controls: Minimize · Expand -->
-      <div class="hidden md:flex items-center gap-1.5 text-[14px] text-[#a1a1aa] bg-[#212121] border border-[#2e2e2e] px-2.5 py-1 rounded-xl shadow-sm">
+      <div class="hidden md:flex items-center gap-1.5 text-[14px] text-[#a1a1aa] bg-[#212121] border border-[#2e2e2e] px-4 py-2 rounded-xl shadow-sm">
         <button id="topViewMinimizeBtn" class="hover:text-white transition cursor-pointer text-[14px]">Minimize</button>
         <span class="text-[#555]">·</span>
         <button id="topViewExpandBtn" class="hover:text-white transition cursor-pointer text-[14px]">Expand</button>
       </div>
 
       <!-- Mobile + New Chat Icon Button, Mobile Archives & Mobile Intel Button -->
-      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-emerald-400 hover:text-white rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
+      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-9 h-9 sm:w-10 sm:h-10 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-emerald-400 hover:text-white rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
         <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="12" y1="5" x2="12" y2="19"></line>
           <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
       </button>
 
-      <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
+      <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-4 py-2 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
         Archives
       </button>
 
-      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 text-yellow-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Yellow Gossip Mode">
+      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center justify-center px-4 py-2 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 text-yellow-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Yellow Gossip Mode">
         Gossip
       </button>
 
-      <button id="mobileGovernanceBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
+      <button id="mobileGovernanceBtn" class="flex md:hidden items-center justify-center px-4 py-2 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
         Legend
       </button>
 
-      <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-2.5 py-1 bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/70 text-emerald-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Contribute confidential intelligence">
+      <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-5 py-2 bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/70 text-emerald-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Contribute confidential intelligence">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span> Intel
       </button>
 
@@ -1572,14 +1572,14 @@ def build():
             
             <div class="flex items-center justify-between pt-1">
               <!-- Left: Plus action button and Contribute Intel button -->
-              <div class="flex items-center gap-1.5 sm:gap-2">
-                <button id="workPlusBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0" title="Quick filters">
+              <div class="flex items-center gap-2 sm:gap-2.5">
+                <button id="workPlusBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0" title="Quick filters">
                   <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                   </svg>
                 </button>
-                <button id="chatContributeBtn" type="button" class="text-[12px] sm:text-[13px] bg-gradient-to-r from-emerald-950/90 to-[#0e3b2a] hover:from-emerald-900 hover:to-[#134e38] text-emerald-300 hover:text-white border border-emerald-500/60 hover:border-emerald-400 flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full transition cursor-pointer font-medium shrink-0 shadow-sm" title="Contribute confidential intel, donor agreements, or whistleblower leaks (in-chat)">
+                <button id="chatContributeBtn" type="button" class="text-[13px] sm:text-[14px] bg-gradient-to-r from-emerald-950/90 to-[#0e3b2a] hover:from-emerald-900 hover:to-[#134e38] text-emerald-300 hover:text-white border border-emerald-500/60 hover:border-emerald-400 flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition cursor-pointer font-medium shrink-0 shadow-sm" title="Contribute confidential intel, donor agreements, or whistleblower leaks (in-chat)">
                   <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   <span class="hidden xs:inline">Contribute</span>
                   <span class="xs:hidden">Contribute</span>
@@ -1587,19 +1587,18 @@ def build():
               </div>
 
               <!-- Right: Model, mic, and blue circular waveform/send button -->
-              <div class="flex items-center gap-1.5 sm:gap-2">
-                <button id="workModelBtn" class="text-[12px] sm:text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
+              <div class="flex items-center gap-2 sm:gap-2.5">
+                <button id="workModelBtn" class="text-[13px] sm:text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
                   <span id="workModelLabel" class="hidden sm:inline">Culture Atlas 4.0 Critical Engine</span>
                   <span class="inline sm:hidden text-[11px] text-[#8e8e8e]">Engine 4.0</span>
-                  
                 </button>
 
-                <button id="curatorVoiceToggleBtn" class="text-[12px] sm:text-[13px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Auto-Voice: Speaks responses aloud (Click to toggle)">
-                  <span id="curatorVoiceToggleIcon" class="text-[11px] leading-none">🔊</span>
-                  <span id="curatorVoiceToggleLabel" class="font-mono text-[11px] sm:text-[12px]">Voice: ON</span>
+                <button id="curatorVoiceToggleBtn" class="text-[13px] sm:text-[14px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1.5 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition cursor-pointer font-normal shrink-0" title="Auto-Voice: Speaks responses aloud (Click to toggle)">
+                  <span id="curatorVoiceToggleIcon" class="text-[12px] leading-none">🔊</span>
+                  <span id="curatorVoiceToggleLabel" class="font-mono text-[12px] sm:text-[13px]">Voice: ON</span>
                 </button>
 
-                <button id="workSendBtn" class="px-3 py-1 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[12px] font-mono font-medium" title="Send message">
+                <button id="workSendBtn" class="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[13px] sm:text-[14px] font-mono font-medium" title="Send message">
                   Send
                 </button>
               </div>
@@ -22827,12 +22826,12 @@ FORMATTING & INTERACTION RULES:
       if (curatorAutoVoiceEnabled) {{
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '🔊';
         if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: ON';
-        curatorVoiceToggleBtn.className = 'text-[12px] sm:text-[13px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0';
+        curatorVoiceToggleBtn.className = 'text-[13px] sm:text-[14px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1.5 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition cursor-pointer font-normal shrink-0';
         curatorVoiceToggleBtn.title = 'Auto-Voice: Speaks responses aloud (Click to mute)';
       }} else {{
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '🔇';
         if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: OFF';
-        curatorVoiceToggleBtn.className = 'text-[12px] sm:text-[13px] bg-[#212121] hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white border border-[#333] flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0';
+        curatorVoiceToggleBtn.className = 'text-[13px] sm:text-[14px] bg-[#212121] hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white border border-[#333] flex items-center gap-1.5 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition cursor-pointer font-normal shrink-0';
         curatorVoiceToggleBtn.title = 'Auto-Voice: Muted (Click to turn ON)';
       }}
     }}
