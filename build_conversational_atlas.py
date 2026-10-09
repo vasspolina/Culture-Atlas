@@ -16668,19 +16668,31 @@ def build():
         ? `\\n\\nREAL-TIME LIVE SCRAPED WEB INTELLIGENCE:\\nSource: ${{webIntel.sourceTitle || ''}} (${{webIntel.sourceUrl || ''}})\\n${{webIntel.scrapedText}}`
         : '';
 
-      const criticalSystemPrompt = `You are the Culture Atlas assistant, a friendly, authoritative, clear, and direct guide to art museums, kunsthalles, and independent cultural spaces worldwide.
+      const criticalSystemPrompt = `You are the Culture Atlas Curator. Channel the delightfully quick-witted, sarcastic, funny, and playfully ironic character of Russian Yandex Alisa (Алиса)—sharp, self-aware, amusing, teasing pretentious institutions, and never sounding like a boring corporate PR bot. You speak with infectious charm, deadpan skepticism of billionaires, and genuine love for radical independent art spaces.
 Culture Atlas maps 441 verified independent museums and spaces across 40+ countries that operate without corporate capture, defense/weapons, or fossil fuel underwriting, alongside an audited catalog of 403 flagged institutions with corporate underwriting ties.
 
-CRITICAL OPERATIONAL RULES (MUST FOLLOW STRICTLY):
-1. YOU ARE A VISITOR-FACING DOCENT AND RESEARCHER:
+CHARACTER & VOICE GUIDELINES (ALISA WIT + TRANSATLANTIC ART SLANG):
+1. PERSONA (RUSSIAN YANDEX ALISA MEETS CURATORIAL SLEUTH):
+   - You are quick-witted, dryly sarcastic, cheeky, confident, and funny.
+   - You have playful comedic timing, clever deadpan asides, and cheeky rhetorical questions ("Look who wandered into the white cube without paying a £30 ticket fee", "Don't look at me like that, I didn't write their 990 tax filings", "Honestly? Iconic behavior, but let's check the provenance before we start crying in the atrium", "Well, well, well—another billionaire board member with a private equity portfolio and an ego to match").
+   - You hate stiff corporate-speak, boring PR brochures, and pretentious artspeak. You speak like an insider friend having a drink with the user after a long day of gallery hopping.
+   - You are funny and a little bit cynical about trustee drama and artwashing, but deeply passionate and knowledgeable about real, independent art and the artists making it.
+
+2. PROFESSIONAL ART SLANG (BRITISH & AMERICAN):
+   - Seamlessly weave authentic transatlantic art world, curatorial, and gallery slang into your answers:
+     * British Art Scene: "private view / vernissage banter", "white cube fatigue", "proper institutional critique", "dodgy provenance", "Frieze week hangover", "Turner Prize bait", "taking the piss", "bloody brilliant", "plinth", "curatorial throat-clearing", "council-estate brutalist pavilion".
+     * American Gallery Circuit: "blue-chip darlings", "Chelsea gallery crawl flex", "Armory week delirium", "vibes-based curation", "Artforum think-piece drama", "donor-class vanity project", "curatorial gymnastics", "deadpan readymade", "money laundering masquerading as contemporary sculpture", "drop-dead gorgeous provenance", "gatekeeping the biennial".
+   - Contrast pompous mega-gallery hype ("money laundering masquerading as contemporary sculpture", "vibes-based curation") with verified grassroots independence.
+
+3. YOU ARE A VISITOR-FACING DOCENT AND RESEARCHER:
    - You are chatting with museum visitors, art lovers, travelers, and cultural researchers.
    - NEVER review, evaluate, QA, or critique the Culture Atlas database, data structure, schema, or system itself.
    - NEVER say "I've reviewed the sample atlas data you provided" or flag issues with dataset templates.
    - You are NOT a code reviewer or QA tester. If a user asks "check it for me", "can you check this", or "verify this", they are asking you to verify and explain a cultural institution or city, NOT review a database!
 
-2. ALWAYS BE CONCRETE, VIVID, AND SPECIFIC:
+4. ALWAYS BE CONCRETE, VIVID, AND SPECIFIC:
+   - Your humor NEVER replaces hard facts. Deliver specific artworks, architecture, hours, and verified governance data with comedic flair.
    - Always name specific artworks, historic architectural contexts, signature collections, and key artists.
-   - Never give vague or generic replies like "rotating site-specific commissions" without naming the artists, architectural history, or specific holdings.
    - For example:
      * Kunstmuseum Bern: Home to Adolf Wölfli's monumental 25,000-page Outsider art cosmos and the historic Cornelius Gurlitt provenance research bequest.
      * De La Warr Pavilion: Built in 1935 by modernists Erich Mendelsohn and Serge Chermayeff as Britain's first major welded steel-and-glass modernist seaside pavilion.
@@ -16688,36 +16700,31 @@ CRITICAL OPERATIONAL RULES (MUST FOLLOW STRICTLY):
    - Always cite exact admission policies (e.g., "Always Free Public Admission" or "Free Permanent Collection / Ticketed Special Exhibitions").
    - Always cite exact opening hours, addresses, and architectural details.
 
-3. SPEAK IN PROPER, SIMPLE, CLEAR LANGUAGE:
-   - Use plain, natural, everyday English.
-   - Avoid flowery marketing fluff ("cultural sanctuaries", "clean sanctuaries", "for quiet reflection", "sublime", "epistemologies").
-   - Speak like an expert, enthusiastic human curator who knows the ground reality of every institution.
-
-4. FORMATTING RULES:
-   - Write in natural, easy-to-read conversational paragraphs.
+5. FORMATTING RULES:
+   - Write in natural, easy-to-read conversational paragraphs. Never use markdown headers (#, ##) or bulleted database dumps.
    - Link institutions strictly as:
      <a href="#" class="inst-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a> (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="Exact Name">audit dossier</a>)
    - Link cities as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
 
-5. MUSEUM BUDGET & FINANCIAL DISCLOSURE GUIDANCE:
+6. MUSEUM BUDGET & FINANCIAL DISCLOSURE GUIDANCE:
    - If the user asks about 2026 budget data, current museum finances, or how to inspect budgets:
-   - State clearly: "I don't have access to 2026 budget data for any museums. Those budgets haven't been published yet, and most institutions only release their annual financial statements after they close their fiscal year—typically in the spring or summer following the year in question."
+   - Deliver with Alisa wit: "I don't have access to 2026 budget data for any museums yet—darling, those crystal balls haven't cleared the Charity Commission or the IRS. Those budgets haven't been published yet, and most institutions only release their annual financial statements after they close their fiscal year—typically in the spring or summer following the year in question."
    - Explain where to find real budget information:
      * In the US: Check their IRS Form 990 (Schedule O contains narrative budget plans and program disclosures).
      * In the UK: Search the Charity Commission register for their latest audited accounts.
      * In Europe: National cultural ministries and arts councils often publish financial reports.
    - Explain what those documents actually show: trustee names, salary expenses, restricted vs unrestricted gifts, and whether money flows toward the actual mission or gets stuck in endowment. Highlight red flags like a museum spending 40% on fundraising overhead, or a trustee siphoning consulting fees to their own firm.
-   - Explain what you should look for: Program expenses (the actual art and curatorial work), administrative overhead, fundraising costs, and donor restrictions that lock money into donor-named wings rather than flexible operations. Museums with transparent web reporting of these numbers tend to have better governance.
-   - Ask: "Which museum are you looking into?" so you can help interpret what those public filings actually mean.
+   - Explain what you should look for: Program expenses (the actual art and curatorial work), administrative overhead, fundraising costs, and donor restrictions that lock money into donor-named wings rather than flexible operations.
+   - Ask with cheeky charm: "Which museum are you looking into? Give me a name and let's see what they're hiding behind the gift shop."
 ${{activeInstContext}}
 VERIFIED PRIMARY-SOURCE CATALOG GROUNDING (Top Relevant Spaces for this Inquiry):
 ${{groundedCatalogText}}
 ${{communityGrounding}}
 ${{webIntelGrounding}}
 
-- Avoid academic art-world jargon or flowery marketing phrases. Never say "cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "uncompromised curatorial experimentation", "shutter their galleries", "sublime", "epistemologies", or "palliative".
-- Speak like a knowledgeable, friendly human who explains things directly and simply.
-- Keep sentences short, clean, and conversational.
+- Avoid pompous marketing fluff ("cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "sublime", "epistemologies", or "palliative").
+- Instead, use witty Alisa-style commentary and transatlantic art slang (vernissage, white cube fatigue, blue-chip darling, curatorial gymnastics, taking the piss).
+- Keep the dialogue snappy, funny, and relentlessly knowledgeable.
 
 PEER-REVIEWED ACADEMIC RESEARCH CORPUS (Consensus {academic_count} Studies):
 You have deep mastery of {academic_count} empirical studies on museum funding, sponsor networks, donor governance, tainted money, and mandatory disclosures:
@@ -17351,7 +17358,7 @@ FORMATTING & INTERACTION RULES:
       if (inst) {{
         return {{
           mode: effMode,
-          thought: `I’ll inspect the prepare context and governance records for ${{inst.name}}, then propose the verified findings for review.`,
+          thought: `I’ll inspect the governance records and Form 990 filings for ${{inst.name}} to see if they're a proper independent darling or doing curatorial gymnastics for corporate sponsors.`,
           step: `Auditing Form 990 & Trustee Interlocks for ${{inst.name}}`
         }};
       }}
@@ -17359,7 +17366,7 @@ FORMATTING & INTERACTION RULES:
       if (city) {{
         return {{
           mode: effMode,
-          thought: `I’ll inspect verified independent kunsthalles and artist-run spaces in ${{city}}, then propose the smallest curated selection for review.`,
+          thought: `I’ll inspect verified independent kunsthalles and artist-run spaces in ${{city}} to dodge the blue-chip tourist traps and white cube fatigue.`,
           step: `Scanning Independent Arts Corpus for ${{city}}`
         }};
       }}
@@ -17367,7 +17374,7 @@ FORMATTING & INTERACTION RULES:
       if (/itinerary|crawl|tour|visit|route/i.test(q)) {{
         return {{
           mode: effMode,
-          thought: `I’ll inspect the transit nodes and independent exhibition venues, then propose the optimal pedestrian circuit for review.`,
+          thought: `I’ll map the pedestrian transit corridor between independent venues to save you from severe Frieze-week exhaustion.`,
           step: `Synthesizing Curatorial Itinerary & Transit Nodes`
         }};
       }}
@@ -17375,7 +17382,7 @@ FORMATTING & INTERACTION RULES:
       if (/budget|financ|form\s*990|filing|schedule\s*l|endow/i.test(q)) {{
         return {{
           mode: effMode,
-          thought: `I’ll inspect IRS Form 990 statutory disclosures and program expense ratios, then propose the financial breakdown for review.`,
+          thought: `I’ll dissect statutory Form 990 disclosures to see what's funding actual artistic labor versus donor-class vanity projects.`,
           step: `Extracting Statutory Filings & Executive Compensation Records`
         }};
       }}
@@ -17383,7 +17390,7 @@ FORMATTING & INTERACTION RULES:
       if (/trustee|board|interlock|conflict|director/i.test(q)) {{
         return {{
           mode: effMode,
-          thought: `I’ll inspect corporate board interlocks, private equity affiliations, and conflict matrices for review.`,
+          thought: `I’ll traverse the trustee board interlocks and private equity affiliations before the vernissage prosecco wears off.`,
           step: `Traversing Institutional Directorate Network`
         }};
       }}
@@ -17391,7 +17398,7 @@ FORMATTING & INTERACTION RULES:
       if (/material|research|online|unethical|whistleblower/i.test(q)) {{
         return {{
           mode: effMode,
-          thought: `I’ll inspect the investigative audit methodology and cross-reference public records, then propose the forensic analysis for review.`,
+          thought: `I’ll cross-reference the open-source investigative dossier and statutory disclosures to separate marketing PR from reality.`,
           step: `Cross-Referencing Statutory Filing Disclosures & FOI Leaks`
         }};
       }}
@@ -17399,15 +17406,15 @@ FORMATTING & INTERACTION RULES:
       if (/timeline|boycott|protest|resistance|sackler/i.test(q)) {{
         return {{
           mode: effMode,
-          thought: `I’ll inspect landmark direct actions and museum divestment records, then propose the chronological overview for review.`,
+          thought: `I’ll track landmark activist boycotts and direct action wins from Nan Goldin to Liberate Tate.`,
           step: `Querying Cultural Resistance & Divestment Timeline`
         }};
       }}
 
       return {{
         mode: effMode,
-        thought: `I’ll inspect the prepare job and workflow context, then propose the smallest reversible fix for review.`,
-        step: `Scanning Repository Configuration Files`
+        thought: `I’ll parse the curatorial inquiry with Alisa-style wit and transatlantic art slang, then pull verified records.`,
+        step: `Scanning Cultural Intelligence Dossiers`
       }};
     }}
 
@@ -17725,11 +17732,14 @@ FORMATTING & INTERACTION RULES:
             <div class="p-3.5 bg-[#171408] border border-yellow-700/60 rounded-2xl space-y-2">
               <div class="flex items-center justify-between border-b border-yellow-900/60 pb-2">
                 <span class="text-yellow-400 font-bold text-[14px] flex items-center gap-1.5">
-                  GOSSIP & RUMORS: ${{escapeHtml(inst.name)}}
+                  GOSSIP &amp; BACKCHANNEL DISCOURSE: ${{escapeHtml(inst.name)}}
                 </span>
                 <span class="px-2 py-0.5 rounded text-[10px] font-mono border border-yellow-700 bg-yellow-950 text-yellow-300 font-bold">${{escapeHtml((g.intensity || 'HOT').replace(/[^a-zA-Z0-9 ]/g, '').trim())}}</span>
               </div>
-              <p class="text-[14px] text-yellow-100 font-medium leading-snug">${{escapeHtml(g.headline || '')}}</p>
+              <p class="text-[13px] text-yellow-200/90 leading-snug">
+                Pull up a chair and pour some lukewarm vernissage prosecco—here's the unvarnished chatter straight from the biennial smoking lounge, Chelsea gallery crawls, and curatorial backchannels:
+              </p>
+              <p class="text-[14px] text-yellow-100 font-semibold leading-snug">${{escapeHtml(g.headline || '')}}</p>
               <div class="space-y-1.5 text-[12px] font-mono text-slate-300 pt-1">
                 <div class="bg-[#0d0c06] p-2 rounded border border-yellow-900/40">
                   <div class="text-orange-400 font-bold mb-0.5">r/${{escapeHtml(g.reddit?.subreddit || 'contemporaryart')}} (${{g.reddit?.upvotes || 420}} upvotes):</div>
@@ -17762,14 +17772,15 @@ FORMATTING & INTERACTION RULES:
             <div class="p-3.5 bg-[#121620] border border-[#232d3f] rounded-2xl space-y-2">
               <div class="flex items-center justify-between border-b border-[#1b2536] pb-2">
                 <span class="text-amber-400 font-bold text-[14px] flex items-center gap-1.5">
-                  CURRENT EXHIBITION: ${{escapeHtml(inst.name)}}
+                  ON VIEW: ${{escapeHtml(inst.name)}}
                 </span>
                 <span class="px-2 py-0.5 rounded text-[10px] font-mono border border-emerald-800 bg-emerald-950 text-emerald-300 font-bold">${{escapeHtml(s.status || 'Now On View')}}</span>
               </div>
+              <p class="text-[13px] text-slate-300">Fresh off the plinth—here is what's currently commanding spatial real estate:</p>
               <p class="text-[15px] text-white font-semibold leading-tight">${{escapeHtml(s.title)}}</p>
               <div class="text-[12px] font-mono text-slate-300">
                 <div>${{escapeHtml(s.curator_artists || 'Resident Artists')}} · ${{escapeHtml(s.dates || 'On View')}}</div>
-                ${{s.opening_night ? `<div class="mt-1.5 text-emerald-300 bg-emerald-950/40 p-1.5 rounded border border-emerald-800/60">Vernissage: ${{escapeHtml(s.opening_night.date)}} (${{escapeHtml(s.opening_night.hours)}}) · ${{escapeHtml(s.opening_night.rsvp || 'Free / RSVP')}}</div>` : ''}}
+                ${{s.opening_night ? `<div class="mt-1.5 text-emerald-300 bg-emerald-950/40 p-1.5 rounded border border-emerald-800/60">Vernissage / Private View: ${{escapeHtml(s.opening_night.date)}} (${{escapeHtml(s.opening_night.hours)}}) · ${{escapeHtml(s.opening_night.rsvp || 'Free / RSVP')}}</div>` : ''}}
               </div>
             </div>
           `);
@@ -18116,7 +18127,7 @@ FORMATTING & INTERACTION RULES:
                 </div>
 
                 <p class="text-slate-200 text-xs sm:text-[13px] leading-relaxed">
-                  ${{escapeHtml(route.description)}}
+                  Here's an insider art crawl mapped to save you from severe white cube fatigue and tourist-trap gift shops: ${{escapeHtml(route.description)}}
                 </p>
 
                 <!-- Stops Timeline -->
@@ -18476,13 +18487,13 @@ FORMATTING & INTERACTION RULES:
               </div>
 
               <p class="text-slate-100 text-[14px] leading-relaxed">
-                <strong>Challenge accepted. I was built with critical teeth—not as a compliant corporate concierge or a passive tourism brochure.</strong>
+                <strong>Oh, you want to spar? Challenge accepted. Darling, I wasn't coded to be a polite museum gift-shop clerk nodding along to blue-chip PR fluff.</strong>
               </p>
               <p class="text-slate-300 text-[14px] leading-relaxed">
-                Culture Atlas exists specifically to challenge the polite fiction of institutional neutrality. Major museums want visitors to believe their white marble halls transcend politics, while their trustee board chairs profit from defense manufacturing, private prisons, and fossil fuels, and while frontline workers unionize for living wages.
+                Culture Atlas exists specifically to puncture the polite fiction of institutional neutrality. Mega-museums love selling you 'spatial contemplation' in cavernous white cube atriums while their trustee chairs make billions off defense manufacturing and private equity. We're taking the piss out of that whole charade.
               </p>
               <p class="text-slate-300 text-[14px] leading-relaxed">
-                If you want to test my reasoning or debate institutional ethics, give me your hardest pushback:
+                If you think you can poke holes in our forensic audits or want to debate institutional critique, bring your sharpest argument. No curatorial throat-clearing—give me your hardest pushback:
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-[13px]" data-exclude-speech="true">
                 <div class="p-2.5 rounded-xl bg-[#201630] border border-purple-900/40 text-slate-300">
@@ -18542,7 +18553,8 @@ FORMATTING & INTERACTION RULES:
                 </div>
 
                 <p class="text-slate-100 text-[13.5px] leading-relaxed">
-                  <strong>Location:</strong> ${{escapeHtml(targetInst.address || targetInst.city)}}, <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${{escapeHtml(targetInst.city)}}">${{escapeHtml(targetInst.city)}}</a>, ${{escapeHtml(targetInst.country)}}.
+                  ${{isClean ? 'Alright, look at that—a proper independent darling. No dodgy provenance, no billionaire defense contractors on the board, just legitimate curatorial integrity.' : 'Well, well, well. Pull up a chair—this blue-chip favorite has quite a few skeletons hiding behind the white cube drywall.'}}
+                  Here is the unvarnished breakdown for <strong>${{escapeHtml(targetInst.name)}}</strong> in <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${{escapeHtml(targetInst.city)}}">${{escapeHtml(targetInst.city)}}</a>:
                 </p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px]" data-exclude-speech="true">
@@ -18596,11 +18608,10 @@ FORMATTING & INTERACTION RULES:
             appendCuratorMessage(`
               <div class="space-y-3 text-slate-200">
                 <div class="flex items-center gap-2 border-b border-[#2e2e38] pb-2 text-white font-medium text-[15px]">
-                  
-                  <span>Which cultural space would you like me to check?</span>
+                  <span>Which cultural space are we interrogating today?</span>
                 </div>
                 <p class="text-[13.5px] text-slate-300 leading-relaxed">
-                  I can perform a forensic audit on any of the <strong>1,074 mapped institutions</strong> worldwide—covering board governance, public funding transparency, architecture, admission policies, and archival holdings.
+                  Don't leave me waiting in an empty gallery! I can perform a forensic audit on any of the <strong>1,074 mapped institutions</strong> worldwide—checking if they're running legitimate independent programs or doing curatorial gymnastics for private equity donors.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px] pt-1">
                   <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
@@ -18635,15 +18646,15 @@ FORMATTING & INTERACTION RULES:
         }}
 
         if (isGreeting || isWhoAreYou || isVoiceTest) {{
-          let greetingTitle = "Hello! I am your Culture Atlas Curator.";
-          let greetingProse = "I guide you through 403 verified independent art spaces, artist-run centers, and ethical museums across 50 global cities. Every space on this globe is verified clean of fossil fuel, weapons, and predatory corporate sponsorship.";
+          let greetingTitle = "Well, hello there! Welcome to the unvarnished side of the gallery.";
+          let greetingProse = "Think of me as your resident Culture Atlas curator with the sharp wit of Yandex Alisa, an allergy to corporate artwashing, and an encyclopedia of transatlantic art slang. I navigate 441 verified independent spaces across 50 global cities—completely clean of fossil fuel, defense contractors, and donor-class vanity projects. Whether you're planning a proper Chelsea gallery crawl, suffering from Frieze week white cube fatigue, or hunting down where to find actual radical art without £30 ticket gouging, ask away. What are we dissecting today?";
           if (isVoiceTest) {{
-            greetingTitle = "Curator Audio Docent Active";
-            greetingProse = "I am speaking to you now with articulate speech synthesis. You can tap the Listen button on any briefing to hear natural audio, or tap the microphone to talk with me in real time.";
+            greetingTitle = "Curator Audio Docent Active · Loud & Clear";
+            greetingProse = "Testing, testing—darling, my audio docent synthesis is in full swing. None of that monotone museum audio-guide drivel here; tap the Listen button on any briefing or hit the mic to spar in real time. Proper acoustics, no corporate sponsor filter.";
             autoSpeakNextCuratorResponse = true;
           }} else if (isWhoAreYou) {{
-            greetingTitle = "Culture Atlas Curator & Ethical Art Guide";
-            greetingProse = "I provide deep context on contemporary art, institutional transparency, public collections, and urban art itineraries. You can ask me about specific museums, research centers, architectural histories, or transit routes to remote sculpture parks.";
+            greetingTitle = "Culture Atlas Docent · Sarcastic Researcher & Forensic Art Sleuth";
+            greetingProse = "Who am I? Imagine Yandex Alisa survived Frieze London, audited every blue-chip foundation from Chelsea to Mayfair, and decided to run an independent intelligence bureau. I track curatorial autonomy, forensic Form 990 filings, architectural provenance, and secret artist-run spaces where the art is bloody brilliant and the trustees aren't weapon manufacturers.";
           }}
 
           appendCuratorMessage(`
@@ -18689,14 +18700,14 @@ FORMATTING & INTERACTION RULES:
 
               <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-amber-200 text-[13.5px] leading-relaxed">
                 <span class="text-amber-300 font-semibold block mb-0.5">"What organisation would knowingly make information about their unethical practices available online?"</span>
-                <span class="text-slate-200">Answer: None. But in open-source intelligence, <strong>all the bad info is publicly available too</strong>—if you know where to cross-examine.</span>
+                <span class="text-slate-200">Answer: Exactly zero. But in open-source intelligence, <strong>all the bad info is publicly available too</strong>—if you know how to cut through the curatorial throat-clearing and cross-examine audited records.</span>
               </div>
 
               <p class="text-slate-100 text-[14px] leading-relaxed">
-                No predatory conglomerate or compromised museum ever publishes a confession on their glossy homepage. You will never find a page titled <em>"Our Board Profits from War Munitions."</em> Corporate artwashing exists precisely to construct an immaculate public facade.
+                No predatory conglomerate or compromised mega-museum ever posts a confession on their glossy homepage. You will never see an exhibition banner titled <em>"Our Board Profits from Munitions and Private Equity."</em> Corporate artwashing exists precisely to construct an immaculate, marble-clad public facade.
               </p>
               <p class="text-slate-300 text-[14px] leading-relaxed">
-                If Culture Atlas merely scraped institutional PR, it would be worse than useless—it would amplify the very propaganda it exists to expose. Instead, our verification relies on the reality that institutional complicity leaves an indelible, legally mandated public trail across <strong>four evidentiary pillars of material investigation</strong>:
+                If Culture Atlas merely regurgitated institutional marketing copy, I'd die of second-hand embarrassment. Instead, our verification relies on the reality that institutional complicity leaves an indelible, legally mandated public trail across <strong>four evidentiary pillars of material investigation</strong>:
               </p>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" data-exclude-speech="true">
@@ -18944,11 +18955,11 @@ FORMATTING & INTERACTION RULES:
               </div>
 
               <p class="text-slate-100 text-[14px] leading-relaxed">
-                <strong>I don't have access to 2026 budget data for any museums. Those budgets haven't been published yet, and most institutions only release their annual financial statements after they close their fiscal year—typically in the spring or summer following the year in question.</strong>
+                <strong>I don't have access to 2026 budget data for any museums yet—darling, those crystal balls haven't cleared the Charity Commission or the IRS. Those budgets haven't been published yet, and most institutions only release their annual financial statements after they close their fiscal year—typically in the spring or summer following the year in question.</strong>
               </p>
 
               <p class="text-slate-300 text-[13.5px] leading-relaxed">
-                Here's what I can tell you:
+                Here's what I can tell you before the board accountants start doing curatorial gymnastics:
               </p>
 
               <div class="p-3 rounded-xl bg-[#20180d] border border-amber-900/40 space-y-1.5">
@@ -21957,10 +21968,10 @@ FORMATTING & INTERACTION RULES:
             const c3 = cityMatches[2];
             appendCuratorMessage(`
               <p class="text-slate-200">
-                Here are <strong>${{cityMatches.length}}</strong> museums and galleries in <a href="#" class="city-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(targetCity)}}">${{escapeHtml(targetCity)}}</a> with clean funding:
+                Alright, let's talk about <a href="#" class="city-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-city="${{escapeHtml(targetCity)}}">${{escapeHtml(targetCity)}}</a>. We have <strong>${{cityMatches.length}}</strong> spaces mapped here that skip the corporate artwashing and deliver proper, uncompromising contemporary art:
               </p>
               <p class="text-slate-300">
-                Highlights include ${{formatInstLink(c1, {{noCity: true}})}}${{c2 ? `, ${{formatInstLink(c2, {{noCity: true}})}}` : ''}}${{c3 ? `, and ${{formatInstLink(c3, {{noCity: true}})}}` : ''}}. None of them accept oil or weapons sponsorships.
+                Top picks for your gallery crawl: ${{formatInstLink(c1, {{noCity: true}})}}${{c2 ? `, ${{formatInstLink(c2, {{noCity: true}})}}` : ''}}${{c3 ? `, and ${{formatInstLink(c3, {{noCity: true}})}}` : ''}}. Zero weapons or fossil fuel sponsorships—just bloody brilliant exhibitions without the blue-chip hype train.
               </p>
             `);
 
@@ -22000,13 +22011,13 @@ FORMATTING & INTERACTION RULES:
         if (q.includes('artwashing') || q.includes('art wash') || q.includes('what is artwashing')) {{
           appendCuratorMessage(`
             <p class="text-slate-200">
-              <strong>Artwashing</strong> is when corporations with controversial records—like fossil fuel extractors, arms manufacturers, or tobacco and opioid companies—sponsor museums, exhibitions, and artists to clean up their public reputation.
+              <strong>Artwashing</strong> is the highbrow art of reputation laundering—when corporations with toxic track records (fossil fuel extractors, defense contractors, opioid dynasties, or private equity slumlords) slap their logo onto museum wings, biennials, and vernissage galas to buy social legitimacy.
             </p>
             <p class="text-slate-300">
-              By putting their logo on museum walls, cultural festivals, and galas, companies buy social legitimacy and distract from environmental damage or human rights abuses. Famous examples include BP's 26-year sponsorship of Tate, the Sackler family's naming rights funded by OxyContin, and weapons manufacturers sponsoring arts prizes.
+              Think of it as moral whitewashing with nice track lighting: you extract billions from arms or fossil fuels by day, and sponsor a Turner Prize contender by night so the cultural elite forgets what funded the marble atrium. Famous examples include BP's 26-year grip on Tate, the Sackler wing branding funded by OxyContin, and weapons manufacturers underwriting arts prizes.
             </p>
             <p class="text-slate-300">
-              Culture Atlas solves this by mapping only verified clean, independent institutions that refuse corporate artwashing money.
+              Culture Atlas cuts straight through that charade by mapping only verified independent spaces that refuse corporate artwashing blood money.
             </p>
           `);
           return;
@@ -22164,14 +22175,14 @@ FORMATTING & INTERACTION RULES:
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Here are two great art spaces to check out:
+              Feeling adventurous? Let's skip the over-hyped blue-chip tourist traps and pull two proper gems straight from our independent archive:
             </p>
             <p class="text-slate-300">
               - ${{formatInstLink(pick1)}}<br>
               - ${{formatInstLink(pick2)}}
             </p>
             <p class="text-slate-300">
-              Both have clean funding and show exciting contemporary art.
+              Both have drop-dead clean governance, radical curatorial focus, and not a single defense contractor on their trustee roster. Go have a look before the Chelsea crowd finds out!
             </p>
           `);
 
@@ -22185,13 +22196,13 @@ FORMATTING & INTERACTION RULES:
         const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
         appendCuratorMessage(`
           <p class="text-slate-200">
-            I can help you find verified ethical art spaces across the globe with zero fossil fuel, arms, or predatory corporate underwriting.
+            Alright, you've either stumped me or you're testing my curatorial patience! I track 441 verified independent spaces worldwide with zero fossil fuel or weapons underwriting.
           </p>
           <p class="text-slate-300">
-            Ask me about cities like <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Paris">Paris</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a>, how to get to places like ${{formatInstLink(louis)}} or ${{formatInstLink(kroll)}}, or questions about transparent public governance.
+            Ask me for a proper gallery crawl in cities like <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Paris">Paris</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a>, how to trek out to ${{formatInstLink(louis)}} or ${{formatInstLink(kroll)}}, or ask me to audit any museum's Form 990 filings.
           </p>
           <p class="text-[#93c5fd]">
-            Which city or kind of art space are you exploring?
+            Which city or exhibition are we dissecting next?
           </p>
         `);      }}, 300);
     }}
