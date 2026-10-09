@@ -23,7 +23,7 @@ def run_tests():
       return origFetch(url, opts);
     };
 
-    window.addEventListener('load', async () => {
+    window.addEventListener('DOMContentLoaded', async () => {
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });

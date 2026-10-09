@@ -705,15 +705,13 @@ def build():
     .maplibregl-ctrl-group button .maplibregl-ctrl-icon {{
       filter: invert(1) brightness(0.9);
     }}
-    .maplibregl-ctrl-attrib {{
-      background: rgba(23, 23, 23, 0.8) !important;
-      color: #71717a !important;
-      font-size: 14px !important;
-      border-radius: 6px !important;
-      padding: 2px 6px !important;
-    }}
-    .maplibregl-ctrl-attrib a {{
-      color: #94a3b8 !important;
+    .maplibregl-ctrl-attrib,
+    .maplibregl-ctrl-attrib-inner,
+    .maplibregl-compact {{
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }}
     .custom-inst-pin {{
       cursor: pointer;
@@ -9376,11 +9374,6 @@ def build():
           showCompass: true,
           visualizePitch: true
         }}), 'top-right');
-
-        cityVectorMap.addControl(new maplibregl.AttributionControl({{
-          compact: true,
-          customAttribution: 'Google Maps Dark Cartography · OpenFreeMap Vector Engine'
-        }}), 'bottom-left');
       }} catch (e) {{
         console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
         let _z = 14, _p = 35, _b = 0, _c = [0, 20];
