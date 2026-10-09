@@ -732,6 +732,61 @@ def build():
       animation: pinPulse 2.4s infinite ease-in-out;
     }}
 
+    /* Header Brand Logo Glowing City Dot (Matches Map City Dot) */
+    @keyframes cityRadarPing {{
+      0% {{
+        transform: scale(0.9);
+        opacity: 0.85;
+      }}
+      75%, 100% {{
+        transform: scale(2.4);
+        opacity: 0;
+      }}
+    }}
+    .brand-city-dot-container {{
+      position: relative;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }}
+    .brand-city-dot-aura {{
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.35);
+      animation: pinPulse 2.4s infinite ease-in-out;
+      pointer-events: none;
+      transition: background-color 0.3s ease;
+    }}
+    .brand-city-dot-ping {{
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(52, 211, 153, 0.85);
+      animation: cityRadarPing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+      pointer-events: none;
+      transition: border-color 0.3s ease;
+    }}
+    .brand-city-dot-core {{
+      position: relative;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10b981;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px #10b981, 0 0 18px rgba(16, 185, 129, 0.7);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.3s ease;
+    }}
+    #topBrandLogoBtn:hover .brand-city-dot-core {{
+      transform: scale(1.2);
+      box-shadow: 0 0 14px #34d399, 0 0 24px rgba(52, 211, 153, 0.9);
+    }}
+
     /* Floating Institution Name Label directly on top of dots */
     .inst-pin-label {{
       position: absolute;
@@ -812,8 +867,12 @@ def build():
   <header class="w-full h-14 bg-black border-b border-[#1c1c1f] px-2.5 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-1 sm:gap-2">
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
-    <button id="topBrandLogoBtn" class="flex items-center gap-1.5 sm:gap-2 text-left bg-transparent border-0 p-0 m-0 cursor-pointer group focus:outline-none select-none transition hover:opacity-85 shrink-0" title="Reset Globe View" aria-label="Reset Globe View">
-      <div class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-white group-hover:scale-125 transition-transform shrink-0"></div>
+    <button id="topBrandLogoBtn" class="flex items-center gap-2 sm:gap-2.5 text-left bg-transparent border-0 p-0 m-0 cursor-pointer group focus:outline-none select-none transition hover:opacity-90 shrink-0" title="Reset Globe View" aria-label="Reset Globe View">
+      <div class="brand-city-dot-container">
+        <div class="brand-city-dot-aura"></div>
+        <div class="brand-city-dot-ping"></div>
+        <div class="brand-city-dot-core"></div>
+      </div>
       <div class="flex items-center gap-2">
         <span class="text-[13px] sm:text-[18px] font-normal tracking-wider text-white uppercase group-hover:text-emerald-300 transition-colors whitespace-nowrap">CULTURE ATLAS</span>
         <span id="topSpacesBadge" class="text-[13px] text-emerald-400 bg-[#0a2016] px-2 py-0.5 rounded-full border border-emerald-900/60 hidden lg:inline font-mono group-hover:border-emerald-700/80 transition-colors">{spaces_count_str}</span>
@@ -9219,6 +9278,27 @@ def build():
           mobileBtn.classList.remove('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold');
           mobileBtn.classList.add('bg-[#1c1806]', 'text-yellow-300');
           mobileBtn.innerHTML = '<span>Gossip</span>';
+        }}
+      }}
+
+      // Synchronize Brand City Dot Glow with Atlas Mode
+      const bDotAura = document.querySelector('.brand-city-dot-aura');
+      const bDotPing = document.querySelector('.brand-city-dot-ping');
+      const bDotCore = document.querySelector('.brand-city-dot-core');
+
+      if (isGossipModeActive) {{
+        if (bDotAura) bDotAura.style.background = 'rgba(250, 204, 21, 0.45)';
+        if (bDotPing) bDotPing.style.borderColor = 'rgba(250, 204, 21, 0.90)';
+        if (bDotCore) {{
+          bDotCore.style.background = '#facc15';
+          bDotCore.style.boxShadow = '0 0 10px #facc15, 0 0 18px rgba(250, 204, 21, 0.85)';
+        }}
+      }} else {{
+        if (bDotAura) bDotAura.style.background = 'rgba(16, 185, 129, 0.35)';
+        if (bDotPing) bDotPing.style.borderColor = 'rgba(52, 211, 153, 0.85)';
+        if (bDotCore) {{
+          bDotCore.style.background = '#10b981';
+          bDotCore.style.boxShadow = '0 0 10px #10b981, 0 0 18px rgba(16, 185, 129, 0.7)';
         }}
       }}
 
