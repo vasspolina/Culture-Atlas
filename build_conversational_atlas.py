@@ -1998,8 +1998,8 @@ def build():
       </div>
 
       <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
-      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-2.5 sm:px-4 md:px-[10%] pt-4 pb-2 w-full bg-transparent">
-        <div id="curatorScrollContent" class="w-full max-w-3xl flex flex-col items-center">
+      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[20px] pt-4 pb-2 w-full bg-transparent">
+        <div id="curatorScrollContent" class="w-full flex flex-col items-center">
           
           <!-- Dedicated Input Mode Sticky / Top Header -->
           <div id="chatInputModeHeader" class="hidden w-full mb-3 p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-[#061f15]/95 via-[#0b2b1e]/95 to-[#061f15]/95 border border-emerald-500/60 shadow-lg shadow-emerald-950/40 backdrop-blur-md flex items-center justify-between gap-3 text-slate-200">
@@ -2109,8 +2109,8 @@ def build():
       </div>
 
       <!-- 2. PINNED BOTTOM INPUT DOCK (Always stays firmly in place at bottom!) -->
-      <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-2.5 sm:px-4 md:px-[10%] pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-black border-t border-[#1c1c1f]">
-        <div class="w-full max-w-3xl flex flex-col items-center">
+      <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-[20px] pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-black border-t border-[#1c1c1f]">
+        <div class="w-full flex flex-col items-center">
           
           <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
           <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-2xl sm:rounded-3xl py-3.5 sm:py-4.5 px-3.5 sm:px-4.5 shadow-xl transition relative">
@@ -13263,14 +13263,14 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v6') caches.delete(k);
+          if (k !== 'culture-atlas-v7') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=6').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=7').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
