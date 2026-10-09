@@ -1998,7 +1998,7 @@ def build():
       </div>
 
       <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
-      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[20px] pt-4 pb-2 w-full bg-transparent">
+      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[16px] sm:px-[20px] pt-4 pb-2 w-full bg-transparent">
         <div id="curatorScrollContent" class="w-full flex flex-col items-center">
           
           <!-- Dedicated Input Mode Sticky / Top Header -->
@@ -2109,7 +2109,7 @@ def build():
       </div>
 
       <!-- 2. PINNED BOTTOM INPUT DOCK (Always stays firmly in place at bottom!) -->
-      <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-[20px] pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-black border-t border-[#1c1c1f]">
+      <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-[16px] sm:px-[20px] pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-black border-t border-[#1c1c1f]">
         <div class="w-full flex flex-col items-center">
           
           <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
@@ -13263,14 +13263,14 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v7') caches.delete(k);
+          if (k !== 'culture-atlas-v8') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=7').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=8').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
