@@ -1000,6 +1000,70 @@ def build():
       transform: scale(1.15);
     }}
 
+    /* 🏷️ Sleek Black Pill Button System (Matching Minimalist Brutalist Design) */
+    .atlas-pill-btn {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background-color: #000000 !important;
+      color: #ffffff !important;
+      border-radius: 9999px !important;
+      padding: 7px 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "PP Telegraf", "PP Telegraph", "Inter", "Segoe UI", Roboto, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      text-decoration: none !important;
+      border: 1px solid rgba(255, 255, 255, 0.22) !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }}
+    .atlas-pill-btn:hover {{
+      background-color: #171717 !important;
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.55) !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }}
+    .atlas-pill-btn:active {{
+      transform: translateY(0) scale(0.97);
+      background-color: #0a0a0a !important;
+    }}
+    .atlas-pill-btn svg.arrow-icon {{
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.18s ease;
+      flex-shrink: 0;
+    }}
+    .atlas-pill-btn:hover svg.arrow-icon {{
+      transform: translate(1.5px, 1.5px);
+    }}
+
+    .atlas-pill-btn.pill-sm {{
+      padding: 5px 12px !important;
+      font-size: 11px !important;
+      gap: 5px !important;
+    }}
+    .atlas-pill-btn.pill-sm svg.arrow-icon {{
+      width: 10px !important;
+      height: 10px !important;
+      stroke-width: 2.5 !important;
+    }}
+    .atlas-pill-btn.pill-full {{
+      width: 100% !important;
+      justify-content: center !important;
+    }}
+
     /* ========================================================= */
     /* 📱 MOBILE POPUP & MODAL CUT-OFF PREVENTION SYSTEM */
     /* ========================================================= */
@@ -1337,21 +1401,22 @@ def build():
         <!-- DIRECT WEB & VISITOR ACTION BUTTONS -->
         <div class="mt-2.5 flex items-center gap-2 flex-wrap">
           <a id="floatingCardDirectWebBtn" href="#" target="_blank" rel="noopener noreferrer" 
-             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-normal text-[13px] shadow transition active:scale-95 cursor-pointer"
+             class="atlas-pill-btn pill-sm"
              onclick="event.stopPropagation()">
-            
+            <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
             <span>Visit Website</span>
-            <span id="floatingCardDirectDomain" class="text-[11px] opacity-80 font-mono"></span>
-            
+            <span id="floatingCardDirectDomain" class="text-[10px] opacity-70 font-mono"></span>
           </a>
           <a id="floatingCardDirectAuditBtn" href="#" target="_blank" rel="noopener noreferrer" 
-             class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#141d2c] hover:bg-[#1e2a3f] text-sky-300 hover:text-white border border-[#273a58] font-mono text-[12px] transition active:scale-95 cursor-pointer"
+             class="atlas-pill-btn pill-sm"
              onclick="event.preventDefault(); event.stopPropagation(); if (typeof window.openDossier === 'function' && selectedInstitution) window.openDossier(selectedInstitution);">
+            <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
             <span>Audit Dossier</span>
           </a>
           <button id="floatingCardDirectPlanBtn" type="button" 
-             class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#222834] hover:bg-[#2b3548] text-[#93c5fd] hover:text-white border border-[#2f3d58] font-mono text-[12px] transition active:scale-95 cursor-pointer"
+             class="atlas-pill-btn pill-sm"
              onclick="event.stopPropagation(); if (typeof window.atlasPlanVisit === 'function') window.atlasPlanVisit(selectedInstitution);">
+            <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
             <span>Plan Visit in Chat</span>
           </button>
         </div>
@@ -1363,10 +1428,12 @@ def build():
             <span id="floatingCardDomain" class="truncate max-w-[120px]">website</span> 
           </a>
           <div class="flex items-center gap-2">
-            <button id="floatingCardDossierBtn" class="text-[#a1a1aa] hover:text-white transition text-[13px] cursor-pointer whitespace-nowrap" onclick="event.stopPropagation()">
-              Read info about institution
+            <button id="floatingCardDossierBtn" class="atlas-pill-btn pill-sm" onclick="event.stopPropagation()">
+              <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+              <span>Read info about institution</span>
             </button>
-            <button id="floatingCardAskCurator" class="inline-flex items-center gap-1 text-white hover:text-[#93c5fd] font-normal transition text-[13px] cursor-pointer" onclick="event.stopPropagation()">
+            <button id="floatingCardAskCurator" class="atlas-pill-btn pill-sm" onclick="event.stopPropagation()">
+              <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
               <span>Ask</span>
             </button>
           </div>
@@ -9740,20 +9807,24 @@ def build():
         '</div>' +
         floorSelectorBarHtml +
 
-        '<div style="margin-top:9px; padding-top:8px; border-top:1px solid #1e2c42; display:flex; align-items:center; gap:6px; flex-wrap:wrap;">' +
-          '<button type="button" onclick="window.askCuratorAboutCurrentBuilding()" style="background:#0284c7; color:#ffffff; border:1px solid #38bdf8; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer; font-weight:bold;" title="Ask curator about this space in chat">' +
+        '<div style="margin-top:10px; padding-top:8px; border-top:1px solid #1e2c42; display:flex; align-items:center; gap:6px; flex-wrap:wrap;">' +
+          '<button type="button" onclick="window.askCuratorAboutCurrentBuilding()" class="atlas-pill-btn pill-sm" title="Ask curator about this space in chat">' +
+            '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
             '<span>Ask Curator 💬</span>' +
           '</button>' +
-          '<button type="button" onclick="window.toggleExploded3DMode()" style="background:#1d3557; color:#7dd3fc; border:1px solid #38bdf8; padding:4px 9px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer; font-weight:bold; transition:all 0.15s;" title="Toggle 3D exploded axonometric floor separation">' +
+          '<button type="button" onclick="window.toggleExploded3DMode()" class="atlas-pill-btn pill-sm" title="Toggle 3D exploded axonometric floor separation">' +
+            '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
             '<span>' + (isExploded3DMode ? 'Stack 3D Building' : 'Explode 3D Floors') + '</span>' +
           '</button>' +
-          '<button type="button" onclick="window.zoomCloserToBuilding(20.0)" style="background:#132035; color:#93c5fd; border:1px solid #2b4266; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer;" title="Zoom into 20x street perspective">' +
+          '<button type="button" onclick="window.zoomCloserToBuilding(20.0)" class="atlas-pill-btn pill-sm" title="Zoom into 20x street perspective">' +
+            '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
             '<span>20x Zoom</span>' +
           '</button>' +
-          '<button type="button" onclick="window.openBuildingArchivesModal(selectedInstitution)" style="background:#092b1e; color:#34d399; border:1px solid #10b981; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer;" title="Open full building & archives dossier">' +
+          '<button type="button" onclick="window.openBuildingArchivesModal(selectedInstitution)" class="atlas-pill-btn pill-sm" title="Open full building & archives dossier">' +
+            '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
             '<span>Dossier</span>' +
           '</button>' +
-          (webUrl ? ('<a href="' + escapeHtml(webUrl) + '" target="_blank" rel="noopener noreferrer" style="background:#1f2937; color:#e2e8f0; border:1px solid #374151; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; text-decoration:none;">Website</a>') : '') +
+          (webUrl ? ('<a href="' + escapeHtml(webUrl) + '" target="_blank" rel="noopener noreferrer" class="atlas-pill-btn pill-sm" style="text-decoration:none;"><svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg><span>Website</span></a>') : '') +
         '</div>' +
         '<div style="position:absolute; bottom:-9px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-top:9px solid rgba(56,189,248,0.8);"></div>';
 
@@ -9895,9 +9966,11 @@ def build():
             '<span>' + escapeHtml(galAdmission) + '</span>' +
           '</div>' +
           (galSynopsis ? ('<div style="font-size:10px; color:#cbd5e1; line-height:1.35; margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(galSynopsis) + '</div>') : '') +
-          '<div style="margin-top:7px; padding-top:6px; border-top:1px solid rgba(16,185,129,0.25); display:flex; align-items:center; justify-content:space-between; font-size:10px; font-family:monospace; color:#6ee7b7;">' +
-            '<span style="display:flex; align-items:center; gap:4px;">✦ Ask Curator · Pull into Chat</span>' +
-            '<span style="font-size:11px;">💬</span>' +
+          '<div style="margin-top:9px; padding-top:7px; border-top:1px solid rgba(16,185,129,0.25);">' +
+            '<button type="button" class="atlas-pill-btn pill-full" style="padding:6px 12px; font-size:11.5px;">' +
+              '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
+              '<span>Ask Curator · Pull into Chat</span>' +
+            '</button>' +
           '</div>' +
           '<div style="position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid #10b981;"></div>';
 
@@ -9948,9 +10021,11 @@ def build():
           '</div>' +
           (archPolicy ? ('<div style="font-size:10px; color:#e2e8f0; line-height:1.35; margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(archPolicy) + '</div>') : '') +
           (archScope ? ('<div style="font-size:9.5px; color:#94a3b8; line-height:1.35; margin-top:3px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(archScope) + '</div>') : '') +
-          '<div style="margin-top:7px; padding-top:6px; border-top:1px solid rgba(245,158,11,0.25); display:flex; align-items:center; justify-content:space-between; font-size:10px; font-family:monospace; color:#fde68a;">' +
-            '<span style="display:flex; align-items:center; gap:4px;">✦ Consult Archive · Pull into Chat</span>' +
-            '<span style="font-size:11px;">📜</span>' +
+          '<div style="margin-top:9px; padding-top:7px; border-top:1px solid rgba(245,158,11,0.25);">' +
+            '<button type="button" class="atlas-pill-btn pill-full" style="padding:6px 12px; font-size:11.5px;">' +
+              '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
+              '<span>Consult Archive · Pull into Chat</span>' +
+            '</button>' +
           '</div>' +
           '<div style="position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid #f59e0b;"></div>';
 
@@ -10006,9 +10081,11 @@ def build():
           '<div style="font-size:9.5px; font-family:monospace; color:#94a3b8; margin-top:3px;">' +
             escapeHtml(atElevation) + (activeFl.area_sqm ? (' · ' + activeFl.area_sqm + ' m²') : '') +
           '</div>' +
-          '<div style="margin-top:7px; padding-top:6px; border-top:1px solid rgba(99,102,241,0.25); display:flex; align-items:center; justify-content:space-between; font-size:10px; font-family:monospace; color:#c7d2fe;">' +
-            '<span style="display:flex; align-items:center; gap:4px;">✦ Explore Forum · Pull into Chat</span>' +
-            '<span style="font-size:11px;">🏛️</span>' +
+          '<div style="margin-top:9px; padding-top:7px; border-top:1px solid rgba(99,102,241,0.25);">' +
+            '<button type="button" class="atlas-pill-btn pill-full" style="padding:6px 12px; font-size:11.5px;">' +
+              '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
+              '<span>Explore Forum · Pull into Chat</span>' +
+            '</button>' +
           '</div>' +
           '<div style="position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid #6366f1;"></div>';
 
@@ -18327,15 +18404,18 @@ FORMATTING & INTERACTION RULES:
                   <div class="text-[11px] text-amber-100/70 mt-0.5">${{escapeHtml(activeFloor.archive_holdings.items_count || '')}}</div>
                 </div>
               ` : ''}}
-              <div class="flex items-center gap-2 pt-2 border-t border-emerald-500/20 flex-wrap">
-                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-[11px] font-medium transition cursor-pointer">
-                  Inspect Level in 3D Cutaway
+              <div class="flex items-center gap-2 pt-2.5 border-t border-emerald-500/20 flex-wrap">
+                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="atlas-pill-btn pill-sm">
+                  <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                  <span>Inspect Level in 3D Cutaway</span>
                 </button>
-                <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#182334] hover:bg-[#203046] text-sky-300 font-mono text-[11px] border border-sky-500/30 transition cursor-pointer">
-                  Plan Visit
+                <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="atlas-pill-btn pill-sm">
+                  <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                  <span>Plan Visit</span>
                 </button>
-                <button type="button" onclick="window.atlasAskCurator('Audit funding for ${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#25182e] hover:bg-[#34223f] text-pink-300 font-mono text-[11px] border border-pink-500/30 transition cursor-pointer">
-                  Audit Sponsor Integrity
+                <button type="button" onclick="window.atlasAskCurator('Audit funding for ${{escapeHtml(inst.name)}}')" class="atlas-pill-btn pill-sm">
+                  <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                  <span>Audit Sponsor Integrity</span>
                 </button>
               </div>
             </div>
@@ -20444,15 +20524,18 @@ FORMATTING & INTERACTION RULES:
                       <div class="text-[11px] text-amber-100/70 mt-0.5">${{escapeHtml(targetFloor.archive_holdings.items_count || '')}}</div>
                     </div>
                   ` : ''}}
-                  <div class="flex items-center gap-2 pt-2 border-t border-emerald-500/20 flex-wrap">
-                    <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-[11px] font-medium transition cursor-pointer">
-                      Inspect Level in 3D Cutaway
+                  <div class="flex items-center gap-2 pt-2.5 border-t border-emerald-500/20 flex-wrap">
+                    <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="atlas-pill-btn pill-sm">
+                      <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                      <span>Inspect Level in 3D Cutaway</span>
                     </button>
-                    <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#182334] hover:bg-[#203046] text-sky-300 font-mono text-[11px] border border-sky-500/30 transition cursor-pointer">
-                      Plan Visit
+                    <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="atlas-pill-btn pill-sm">
+                      <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                      <span>Plan Visit</span>
                     </button>
-                    <button type="button" onclick="window.atlasAskCurator('Audit funding for ${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#25182e] hover:bg-[#34223f] text-pink-300 font-mono text-[11px] border border-pink-500/30 transition cursor-pointer">
-                      Audit Sponsor Integrity
+                    <button type="button" onclick="window.atlasAskCurator('Audit funding for ${{escapeHtml(inst.name)}}')" class="atlas-pill-btn pill-sm">
+                      <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                      <span>Audit Sponsor Integrity</span>
                     </button>
                   </div>
                 </div>
@@ -20497,15 +20580,18 @@ FORMATTING & INTERACTION RULES:
                       ${{targetFloor.facilities.map(f => `<span class="bg-amber-950/60 border border-amber-700/40 px-2 py-0.5 rounded text-amber-200">${{escapeHtml(f)}}</span>`).join('')}}
                     </div>
                   ` : ''}}
-                  <div class="flex items-center gap-2 pt-2 border-t border-amber-500/20 flex-wrap">
-                    <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-mono text-[11px] font-medium transition cursor-pointer">
-                      Inspect Study Room in 3D
+                  <div class="flex items-center gap-2 pt-2.5 border-t border-amber-500/20 flex-wrap">
+                    <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="atlas-pill-btn pill-sm">
+                      <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                      <span>Inspect Study Room in 3D</span>
                     </button>
-                    <button type="button" onclick="window.openBuildingArchivesModal(selectedInstitution || curatorContext.lastInst)" class="px-3 py-1.5 rounded-lg bg-[#271d0b] hover:bg-[#3d2d11] text-amber-200 font-mono text-[11px] border border-amber-500/40 transition cursor-pointer">
-                      Open Full Archives Dossier
+                    <button type="button" onclick="window.openBuildingArchivesModal(selectedInstitution || curatorContext.lastInst)" class="atlas-pill-btn pill-sm">
+                      <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                      <span>Open Full Archives Dossier</span>
                     </button>
-                    <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#182334] hover:bg-[#203046] text-sky-300 font-mono text-[11px] border border-sky-500/30 transition cursor-pointer">
-                      Plan Visit
+                    <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="atlas-pill-btn pill-sm">
+                      <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                      <span>Plan Visit</span>
                     </button>
                   </div>
                 </div>
@@ -20540,12 +20626,14 @@ FORMATTING & INTERACTION RULES:
                       ${{(targetFloor.facilities || ['Universal Step-Free Access', 'Public Reading Commons', 'Restroom']).map(f => `<span class="bg-indigo-950/80 border border-indigo-700/50 px-2 py-0.5 rounded text-indigo-200 font-mono text-[11px]">${{escapeHtml(f)}}</span>`).join('')}}
                     </div>
                   </div>
-                  <div class="flex items-center gap-2 pt-2 border-t border-indigo-500/20 flex-wrap">
-                    <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-[11px] font-medium transition cursor-pointer">
-                      Inspect Floor in 3D Cutaway
+                  <div class="flex items-center gap-2 pt-2.5 border-t border-indigo-500/20 flex-wrap">
+                    <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="atlas-pill-btn pill-sm">
+                      <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                      <span>Inspect Floor in 3D Cutaway</span>
                     </button>
-                    <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#182334] hover:bg-[#203046] text-sky-300 font-mono text-[11px] border border-sky-500/30 transition cursor-pointer">
-                      Plan Visit
+                    <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="atlas-pill-btn pill-sm">
+                      <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                      <span>Plan Visit</span>
                     </button>
                   </div>
                 </div>
@@ -20599,13 +20687,13 @@ FORMATTING & INTERACTION RULES:
                 </div>
                 ${{floorsHtml}}
               </div>
-              <div class="pt-2 border-t border-[#333] flex items-center gap-2 flex-wrap">
-                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false)" 
-                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[12px] shadow transition cursor-pointer">
+              <div class="pt-2.5 border-t border-[#333] flex items-center gap-2 flex-wrap">
+                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false)" class="atlas-pill-btn pill-sm">
+                  <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
                   <span>Zoom to 3D Building &amp; Inspect Archives</span>
                 </button>
-                <button type="button" onclick="window.zoomCloserToBuilding(20.0)" 
-                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white font-medium text-[12px] shadow transition cursor-pointer">
+                <button type="button" onclick="window.zoomCloserToBuilding(20.0)" class="atlas-pill-btn pill-sm">
+                  <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
                   <span>Zoom 20x Closer</span>
                 </button>
               </div>
