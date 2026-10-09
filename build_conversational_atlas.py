@@ -13263,14 +13263,14 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v4') caches.delete(k);
+          if (k !== 'culture-atlas-v5') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=5').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
