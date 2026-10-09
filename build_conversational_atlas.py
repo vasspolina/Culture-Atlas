@@ -1588,11 +1588,6 @@ def build():
 
               <!-- Right: Model, mic, and blue circular waveform/send button -->
               <div class="flex items-center gap-1.5 sm:gap-2">
-                <button id="chatAddKeyBtn" class="text-[12px] sm:text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Configure AI API Key">
-                  <span id="chatAddKeyIcon" class="hidden"></span>
-                  <span id="chatAddKeyLabel" class="hidden sm:inline">Add API Key</span>
-                </button>
-
                 <button id="workModelBtn" class="text-[12px] sm:text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
                   <span id="workModelLabel" class="hidden sm:inline">Culture Atlas 4.0 Critical Engine</span>
                   <span class="inline sm:hidden text-[11px] text-[#8e8e8e]">Engine 4.0</span>

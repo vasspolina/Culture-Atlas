@@ -90,12 +90,11 @@ def run_tests():
         const topDot = document.getElementById('topStatusDot');
         const topLabel = document.getElementById('topStatusLabel');
         const chatKeyBtn = document.getElementById('chatAddKeyBtn');
-        const chatKeyLabel = document.getElementById('chatAddKeyLabel');
         const workLabel = document.getElementById('workModelLabel');
 
         assert('Top status dot has emerald pulse animation', topDot && topDot.className.includes('bg-emerald-400') && topDot.className.includes('animate-pulse'));
         assert('Top status label shows Anthropic Live', topLabel && topLabel.textContent.includes('Anthropic Live'), topLabel?.textContent);
-        assert('Chat key button shows Anthropic Active', chatKeyLabel && chatKeyLabel.textContent.includes('Anthropic Active'), chatKeyLabel?.textContent);
+        assert('Redundant chat key button is deleted', !chatKeyBtn);
         assert('Work model label shows Anthropic · Live', workLabel && workLabel.textContent.includes('Anthropic · Live'), workLabel?.textContent);
 
         // 3. Test openSettingsModal displays universal system key status

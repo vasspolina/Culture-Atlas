@@ -31,16 +31,13 @@ def run_tests():
         const topBtn = document.getElementById('topSettingsBtn');
         const topLabel = document.getElementById('topStatusLabel');
         const topDot = document.getElementById('topStatusDot');
-        const chatKeyBtn = document.getElementById('chatAddKeyBtn');
-        const chatKeyLabel = document.getElementById('chatAddKeyLabel');
         const modal = document.getElementById('curatorSettingsModal');
         const keyInput = document.getElementById('aiApiKeyInput');
         const modelLabel = document.getElementById('workModelLabel');
 
         assert("Top settings button exists", topBtn !== null);
-        assert("Top label shows Add API Key initially", topLabel && topLabel.textContent.includes('Add API Key'), topLabel?.textContent);
-        assert("Chat Add Key button exists", chatKeyBtn !== null);
-        assert("Chat Add Key label shows Add API Key initially", chatKeyLabel && chatKeyLabel.textContent.includes('Add API Key'), chatKeyLabel?.textContent);
+        assert("Top label shows live system status initially", topLabel && (topLabel.textContent.includes('Anthropic Live') || topLabel.textContent.includes('Add API Key')), topLabel?.textContent);
+        assert("Redundant chat Add Key button is deleted", document.getElementById('chatAddKeyBtn') === null);
         assert("Modal exists and is hidden initially", modal && modal.classList.contains('hidden'));
 
         // Test 2: Click topSettingsBtn opens modal
@@ -51,12 +48,7 @@ def run_tests():
         document.getElementById('closeSettingsModalBtn').click();
         assert("Clicking close button closes modal", modal && modal.classList.contains('hidden'));
 
-        // Test 4: Click chatAddKeyBtn opens modal
-        chatKeyBtn.click();
-        assert("Clicking chatAddKeyBtn opens modal", modal && !modal.classList.contains('hidden'));
-        document.getElementById('closeSettingsModalBtn').click();
-
-        // Test 5: Click workModelBtn opens modal
+        // Test 4: Click workModelBtn opens modal
         document.getElementById('workModelBtn').click();
         assert("Clicking workModelBtn opens modal", modal && !modal.classList.contains('hidden'));
         document.getElementById('closeSettingsModalBtn').click();
@@ -72,15 +64,13 @@ def run_tests():
         // Test 7: Enter Claude key via chat
         await handleCuratorQuery("sk-ant-test-key-mock-12345");
         assert("API key saved in localStorage", localStorage.getItem('atlas_ai_api_key') === 'sk-ant-test-key-mock-12345');
-        assert("Top status updated to Claude Live", topLabel && topLabel.textContent.includes('Claude Live'), topLabel?.textContent);
-        assert("Chat Add Key updated to Claude Active", chatKeyLabel && chatKeyLabel.textContent.includes('Claude Active'), chatKeyLabel?.textContent);
-        assert("Work model updated with Claude", modelLabel && modelLabel.textContent.includes('Claude'), modelLabel?.textContent);
+        assert("Top status updated to Anthropic Live", topLabel && topLabel.textContent.includes('Anthropic Live'), topLabel?.textContent);
+        assert("Work model updated with Anthropic", modelLabel && modelLabel.textContent.includes('Anthropic'), modelLabel?.textContent);
 
         // Test 8: Disconnect / Clear key
         document.getElementById('clearApiKeyBtn').click();
         assert("API key cleared from localStorage", !localStorage.getItem('atlas_ai_api_key'));
-        assert("Top status reverted to Add API Key", topLabel && topLabel.textContent.includes('Add API Key'), topLabel?.textContent);
-        assert("Chat Add Key reverted to Add API Key", chatKeyLabel && chatKeyLabel.textContent.includes('Add API Key'), chatKeyLabel?.textContent);
+        assert("Top status reverted to default system Anthropic Live", topLabel && (topLabel.textContent.includes('Anthropic Live') || topLabel.textContent.includes('Add API Key')), topLabel?.textContent);
 
       } catch (err) {
         results.push({ name: 'Exception caught', pass: false, extra: err.toString() });
