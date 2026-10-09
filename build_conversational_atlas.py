@@ -1067,7 +1067,7 @@ def build():
           </a>
           <a id="floatingCardDirectAuditBtn" href="#" target="_blank" rel="noopener noreferrer" 
              class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#141d2c] hover:bg-[#1e2a3f] text-sky-300 hover:text-white border border-[#273a58] font-mono text-[12px] transition active:scale-95 cursor-pointer"
-             onclick="event.stopPropagation()">
+             onclick="event.preventDefault(); event.stopPropagation(); if (typeof window.openDossier === 'function' && selectedInstitution) window.openDossier(selectedInstitution);">
             <span>Audit Dossier</span>
           </a>
           <button id="floatingCardDirectPlanBtn" type="button" 
@@ -14407,25 +14407,32 @@ def build():
             </div>
           </div>
 
-          <div class="flex flex-col gap-2">
-            <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
-                    class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-[13px] rounded-xl transition shadow-md active:scale-[0.99] cursor-pointer">
-              <span>Zoom to 3D Building Footprint</span>
-            </button>
-            <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
-               class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#141d2c] hover:bg-[#1f2b40] text-sky-300 hover:text-white border border-[#233550] font-mono text-[13px] rounded-xl transition shadow-sm active:scale-[0.99] cursor-pointer">
-              <span>Statutory Audit Dossier</span>
-            </a>
-            ${{webUrl ? `
-              <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                 class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[13px] rounded-xl transition shadow-sm active:scale-[0.99]">
-                <span>Official Website (${{escapeHtml(domain)}})</span>
-              </a>
-            ` : `
-              <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#1e2638] hover:bg-[#2a364e] text-slate-200 font-normal text-[13px] rounded-xl transition shadow-sm cursor-pointer">
-                <span>Plan Visit in Chat</span>
+          <div class="space-y-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
+                      class="inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[13px] rounded-xl transition shadow-sm cursor-pointer">
+                <span>Zoom to 3D Building</span>
               </button>
-            `}}
+              ${{webUrl ? `
+                <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center justify-center gap-1.5 py-2.5 px-4 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[13px] rounded-xl transition shadow-sm truncate">
+                  <span class="truncate">Official Site</span>
+                  <span class="text-[11px] font-mono opacity-80 shrink-0">(${{escapeHtml(domain)}})</span>
+                </a>
+              ` : `
+                <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#1e2638] hover:bg-[#2a364e] text-slate-200 font-normal text-[13px] rounded-xl transition shadow-sm cursor-pointer">
+                  <span>Plan Visit in Chat</span>
+                </button>
+              `}}
+            </div>
+            <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
+               class="w-full inline-flex items-center justify-between py-2 px-3.5 bg-[#111723] hover:bg-[#182234] text-sky-300 hover:text-white border border-[#233550] font-mono text-[12px] rounded-xl transition shadow-sm cursor-pointer" title="Inspect Primary Audit Source / Statutory Regulatory Records">
+              <span class="flex items-center gap-2 truncate">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0"></span>
+                <span class="truncate">Verified Audit Source: ${{escapeHtml(getDisplayDomain(inst.audit_dossier_url || webUrl))}}</span>
+              </span>
+              <span class="text-[11px] text-slate-400 shrink-0 ml-2">Inspect Filing</span>
+            </a>
           </div>
 
           <!-- 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING PROFILE SECTION -->
