@@ -440,6 +440,31 @@ def build():
     *, *::before, *::after {{
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 200 !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }}
+
+    /* 🚫 Universal Focus & Outline Reset: Eliminate browser default blue focus rings */
+    *:focus,
+    *:focus-visible,
+    button:focus,
+    button:focus-visible,
+    a:focus,
+    a:focus-visible,
+    input:focus,
+    textarea:focus,
+    select:focus,
+    summary:focus,
+    summary:focus-visible,
+    [tabindex]:focus,
+    [tabindex]:focus-visible {{
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }}
+
+    button::-moz-focus-inner,
+    input::-moz-focus-inner {{
+      border: 0 !important;
+      outline: 0 !important;
     }}
 
     body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b, em, i {{
@@ -632,6 +657,21 @@ def build():
     .atlas-dark-popup .maplibregl-popup-close-button:hover {{
       color: #000000 !important;
       background: #ffffff !important;
+    }}
+    .atlas-dark-popup button,
+    .atlas-dark-popup a,
+    .atlas-dark-popup .maplibregl-popup-close-button {{
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }}
+    .atlas-dark-popup button:focus,
+    .atlas-dark-popup button:focus-visible,
+    .atlas-dark-popup a:focus,
+    .atlas-dark-popup a:focus-visible,
+    .atlas-dark-popup .maplibregl-popup-close-button:focus,
+    .atlas-dark-popup .maplibregl-popup-close-button:focus-visible {{
+      outline: none !important;
+      box-shadow: none !important;
     }}
     .maplibregl-ctrl-group {{
       background: #212121 !important;
@@ -1080,6 +1120,10 @@ def build():
       transform: translate(1.5px, 1.5px);
     }}
 
+    .atlas-pill-btn:focus,
+    .atlas-pill-btn:focus-visible {{
+      outline: none !important;
+    }}
     .atlas-pill-btn.pill-sm {{
       padding: 5px 12px !important;
       font-size: 14px !important;
@@ -1122,6 +1166,19 @@ def build():
       user-select: none !important;
       white-space: nowrap !important;
       position: relative !important;
+    }}
+    .atlas-suggestion-pill:focus,
+    .atlas-suggestion-pill:focus-visible,
+    .work-suggestion-card.is-suggestion:focus,
+    .work-suggestion-card.is-suggestion:focus-visible,
+    .curator-followup-pill:focus,
+    .curator-followup-pill:focus-visible,
+    .confidential-prompt-chip:focus,
+    .confidential-prompt-chip:focus-visible,
+    .globe-filter-pill:focus,
+    .globe-filter-pill:focus-visible {{
+      outline: none !important;
+      box-shadow: none !important;
     }}
     .atlas-suggestion-pill:hover,
     .work-suggestion-card.is-suggestion:hover,
@@ -1605,11 +1662,11 @@ def build():
             <span id="floatingCardDomain" class="truncate max-w-[120px]">website</span> 
           </a>
           <div class="flex items-center gap-2">
-            <button id="floatingCardDossierBtn" class="atlas-pill-btn pill-sm" onclick="event.stopPropagation()">
+            <button id="floatingCardDossierBtn" class="atlas-pill-btn pill-sm focus:outline-none focus:ring-0" onclick="event.stopPropagation()">
               <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
               <span>Read info about institution</span>
             </button>
-            <button id="floatingCardAskCurator" class="atlas-pill-btn pill-sm" onclick="event.stopPropagation()">
+            <button id="floatingCardAskCurator" class="atlas-pill-btn pill-sm focus:outline-none focus:ring-0" onclick="event.stopPropagation()">
               <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
               <span>Ask</span>
             </button>
@@ -11323,22 +11380,19 @@ def build():
 
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:8px;">
               <button onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${{safeName}}', false)" 
-                      style="display:inline-flex; align-items:center; gap:5px; padding:5.5px 11px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.35); border:none; cursor:pointer;"
+                      style="display:inline-flex; align-items:center; gap:5px; padding:5.5px 11px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.35); border:none; outline:none; cursor:pointer;"
                       onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1.0'">
-                
                 <span>Zoom to Building & Archives</span>
               </button>
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; font-size:14px; font-weight:500; text-decoration:none; border:1px solid #334155;"
+                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; font-size:14px; font-weight:500; text-decoration:none; border:1px solid #334155; outline:none;"
                    onmouseover="this.style.background='#273549'" onmouseout="this.style.background='#1e293b'">
-                  
                   <span>Website</span>
-                  
                 </a>
               ` : ''}}
               <button onclick="window.atlasPlanVisit('${{safeName}}')" 
-                      style="display:inline-flex; align-items:center; gap:4px; padding:5px 9px; border-radius:10px; background:#222834; color:#93c5fd; border:1px solid #2f3d58; font-size:14px; font-family:monospace; cursor:pointer;"
+                      style="display:inline-flex; align-items:center; gap:4px; padding:5px 9px; border-radius:10px; background:#222834; color:#93c5fd; border:1px solid #2f3d58; font-size:14px; font-family:monospace; outline:none; cursor:pointer;"
                       onmouseover="this.style.background='#2b3548';this.style.color='#ffffff'" onmouseout="this.style.background='#222834';this.style.color='#93c5fd'">
                 <span>Plan Visit</span>
               </button>
@@ -11347,18 +11401,18 @@ def build():
             <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; padding-top:7px; border-top:1px solid #27272a; font-size:14px;">
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="color:#93c5fd; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:110px;">
+                   style="color:#93c5fd; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:110px; outline:none;">
                    ${{escapeHtml(domain)}}
                 </a>
               ` : '<span></span>'}}
               <div style="display:flex; align-items:center; gap:8px;">
                 <button onclick="window.atlasOpenDossier('${{safeName}}')" 
-                        style="background:none; border:none; color:#a1a1aa; font-size:14px; cursor:pointer; padding:0;" 
+                        style="background:none; border:none; outline:none; box-shadow:none; color:#a1a1aa; font-size:14px; cursor:pointer; padding:0;" 
                         onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#a1a1aa'">
                   Read info about institution
                 </button>
                 <button onclick="window.atlasAskCurator('${{safeName}}')" 
-                        style="background:none; border:none; color:#ffffff; font-size:14px; font-weight:600; cursor:pointer; padding:0;" 
+                        style="background:none; border:none; outline:none; box-shadow:none; color:#ffffff; font-size:14px; font-weight:600; cursor:pointer; padding:0;" 
                         onmouseover="this.style.color='#93c5fd'" onmouseout="this.style.color='#ffffff'">
                   Ask
                 </button>
