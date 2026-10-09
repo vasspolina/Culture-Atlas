@@ -66,6 +66,10 @@ def test_zoomed_out_city_interaction():
         assert('After exit, isCityStreetViewActive is false', isCityStreetViewActive === false);
 
         flyTo(2.3522, 48.8566, baseRadius);
+        targetRotX = -(48.8566 * Math.PI / 180);
+        rotX = targetRotX;
+        targetRotY = (2.3522 * Math.PI / 180);
+        rotY = targetRotY;
         isAutoSpinning = false;
         await new Promise(r => setTimeout(r, 600));
 

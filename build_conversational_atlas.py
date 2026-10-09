@@ -959,6 +959,68 @@ def build():
         </div>
       </div>
 
+      <!-- 🏢 3D BUILDING FLOOR-BY-FLOOR INSPECTOR HUD (Floating on 3D Building View) -->
+      <div id="buildingFloorInspectorHud" class="hidden absolute top-12 sm:top-14 right-2 sm:right-4 z-20 pointer-events-auto flex flex-col gap-2 p-3 sm:p-3.5 rounded-2xl bg-[#0c1322]/95 border border-[#38bdf8]/70 shadow-2xl backdrop-blur-md max-w-[340px] sm:max-w-[420px] select-none text-zinc-100">
+        <!-- Header -->
+        <div class="flex items-center justify-between gap-2 border-b border-[#233552] pb-2">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="text-[16px] shrink-0">🏛️</span>
+            <div class="min-w-0">
+              <span id="bfiBuildingName" class="text-[13px] sm:text-[14px] font-semibold text-white truncate block"></span>
+              <span id="bfiBuildingMeta" class="text-[10.5px] font-mono text-[#7dd3fc] block truncate"></span>
+            </div>
+          </div>
+          <button id="closeBfiHudBtn" class="text-zinc-400 hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[13px] cursor-pointer shrink-0" title="Close Building Inspector">✕</button>
+        </div>
+
+        <!-- Zoom Depth Action Controls -->
+        <div class="flex items-center gap-1.5 pt-0.5">
+          <button id="bfiZoomCloserBtn" class="flex-1 py-1 px-2 rounded-xl bg-[#1d3557] hover:bg-[#254673] border border-[#38bdf8]/60 text-[#7dd3fc] hover:text-white text-[11px] font-mono transition cursor-pointer flex items-center justify-center gap-1" title="Zoom in to 20x 3D architectural perspective">
+            <span>🔍 Zoom 20x Closer</span>
+          </button>
+          <button id="bfiResetZoomBtn" class="py-1 px-2.5 rounded-xl bg-[#162032] hover:bg-[#1e2c45] border border-[#2b3e5e] text-slate-300 text-[11px] font-mono transition cursor-pointer" title="Reset to standard 18x view">
+            <span>📐 18x</span>
+          </button>
+          <button id="bfiOpenModalBtn" class="py-1 px-2.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 text-[11px] font-mono transition cursor-pointer flex items-center gap-1" title="Open full building & archives dossier">
+            <span>📖 Full Dossier</span>
+          </button>
+        </div>
+
+        <!-- Interactive Floor Level Pills -->
+        <div class="pt-1">
+          <span class="text-[10.5px] font-mono uppercase text-slate-400 block mb-1">SELECT FLOOR LEVEL:</span>
+          <div id="bfiFloorTabs" class="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar"></div>
+        </div>
+
+        <!-- Active Floor Details Card -->
+        <div id="bfiFloorCard" class="bg-[#10192b] border border-[#253959] rounded-xl p-2.5 sm:p-3 space-y-2 text-xs">
+          <!-- Floor title & elevation -->
+          <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
+            <span id="bfiFloorTitle" class="text-[#38bdf8] font-bold"></span>
+            <span id="bfiFloorElevation" class="text-slate-400"></span>
+          </div>
+
+          <!-- Current Show on Floor -->
+          <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
+            <span class="text-[10px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1">
+              <span>🖼️</span> CURRENT SHOW ON THIS LEVEL
+            </span>
+            <div id="bfiShowTitle" class="text-[12.5px] font-semibold text-white leading-tight"></div>
+            <div id="bfiShowMeta" class="text-[10.5px] text-slate-300 font-mono"></div>
+            <p id="bfiShowSynopsis" class="text-[11px] text-slate-300 leading-snug line-clamp-2"></p>
+          </div>
+
+          <!-- Archive Holdings on Floor -->
+          <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
+            <span class="text-[10px] font-mono uppercase text-emerald-400 font-bold flex items-center gap-1">
+              <span>📚</span> ARCHIVE HOLDING ON THIS LEVEL
+            </span>
+            <div id="bfiArchiveTitle" class="text-[12px] font-semibold text-emerald-200 leading-tight"></div>
+            <div id="bfiArchivePolicy" class="text-[10.5px] text-slate-400 leading-tight"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- Active Curatorial Route HUD Card (Floating on Street View) -->
       <div id="activeRouteBanner" class="hidden absolute top-12 sm:top-14 left-2 sm:left-4 z-20 pointer-events-auto flex flex-col gap-2 p-2.5 sm:p-3 rounded-2xl bg-[#071912]/95 border border-emerald-500/70 shadow-2xl backdrop-blur-md max-w-[320px] sm:max-w-[390px] select-none text-zinc-200">
         <div class="flex items-center justify-between gap-2 border-b border-emerald-900/60 pb-1.5">
@@ -8631,7 +8693,7 @@ def build():
       if (cityVectorMap) {{
         cityVectorMap.flyTo({{
           center: [inst.lon, inst.lat],
-          zoom: 18.0,
+          zoom: 18.5,
           pitch: 58,
           bearing: 28,
           speed: 1.4,
@@ -8641,6 +8703,7 @@ def build():
 
         setTimeout(() => {{
           highlightBuildingFootprint(inst);
+          showBuildingFloorInspectorHud(inst);
         }}, 350);
       }}
 
@@ -8651,6 +8714,150 @@ def build():
       }}
     }}
     window.zoomToBuilding = zoomToBuilding;
+
+    // 🔍 Ultra-close 20x building zoom
+    function zoomCloserToBuilding(targetZoom = 20.0) {{
+      const inst = selectedInstitution || currentHighlightedBuildingInst;
+      if (!inst || !cityVectorMap) return;
+      cityVectorMap.flyTo({{
+        center: [inst.lon, inst.lat],
+        zoom: targetZoom,
+        pitch: 65,
+        bearing: 35,
+        speed: 1.2,
+        curve: 1.2,
+        essential: true
+      }});
+      showBuildingFloorInspectorHud(inst);
+    }}
+    window.zoomCloserToBuilding = zoomCloserToBuilding;
+
+    // 🏢 3D Building Floor Inspector HUD Controller
+    let currentBfiFloorIndex = 0;
+
+    function showBuildingFloorInspectorHud(inst) {{
+      if (!inst) inst = selectedInstitution || currentHighlightedBuildingInst;
+      if (!inst) return;
+      const hud = document.getElementById('buildingFloorInspectorHud');
+      if (!hud) return;
+
+      const nameEl = document.getElementById('bfiBuildingName');
+      const metaEl = document.getElementById('bfiBuildingMeta');
+      if (nameEl) nameEl.textContent = inst.name;
+      if (metaEl) {{
+        const style = inst.building_architecture ? (inst.building_architecture.architectural_style || 'Curatorial Space') : 'Cultural Building';
+        metaEl.textContent = `${{style}} · ${{inst.city}}`;
+      }}
+
+      const floors = inst.floor_plans || (inst.building_architecture && inst.building_architecture.floor_plans) || [];
+      if (!floors.length) {{
+        floors.push({{
+          level: 0,
+          level_code: 'L0',
+          floor_name: 'Level 0 · Ground Floor (Main Hall)',
+          elevation: '0.0m',
+          current_shows: [{{
+            title: inst.highlight || `${{inst.name}} Permanent Collections & Current Commissions`,
+            curator_artists: 'Resident Curators & Artists',
+            dates: 'On View 2026',
+            synopsis: inst.curatorial_focus || 'Curated independent cultural space.'
+          }}],
+          archive_holdings: {{
+            collection_title: inst.archives_and_collections ? inst.archives_and_collections.archive_name : `${{inst.name}} Archives`,
+            reading_room_policy: 'Public study access'
+          }}
+        }});
+      }}
+
+      if (currentBfiFloorIndex >= floors.length) currentBfiFloorIndex = 0;
+      if (currentBfiFloorIndex < 0) currentBfiFloorIndex = 0;
+
+      // Populate Floor Level Selector Tabs
+      const tabsEl = document.getElementById('bfiFloorTabs');
+      if (tabsEl) {{
+        tabsEl.innerHTML = floors.map((fl, idx) => {{
+          const isActive = idx === currentBfiFloorIndex;
+          const label = fl.level_code || (fl.level === 0 ? 'L0 Ground' : (fl.level < 0 ? `L${{fl.level}} Vault` : `L${{fl.level}}`));
+          return `
+            <button type="button" onclick="selectBfiFloor(${{idx}})" 
+              class="px-2.5 py-1 rounded-lg text-[11px] font-mono shrink-0 transition cursor-pointer ${{
+                isActive 
+                  ? 'bg-[#38bdf8] text-[#0c1322] font-bold shadow-sm' 
+                  : 'bg-[#162338] hover:bg-[#20324e] text-sky-200 border border-[#2b3e5e]'
+              }}">
+              ${{label}}
+            </button>
+          `;
+        }}).join('');
+      }}
+
+      // Populate active floor details
+      const activeFl = floors[currentBfiFloorIndex] || floors[0];
+      const floorTitleEl = document.getElementById('bfiFloorTitle');
+      const floorElevEl = document.getElementById('bfiFloorElevation');
+      if (floorTitleEl) floorTitleEl.textContent = activeFl.floor_name || `Level ${{activeFl.level}}`;
+      if (floorElevEl) floorElevEl.textContent = activeFl.elevation || '';
+
+      const show = (activeFl.current_shows && activeFl.current_shows[0]) || {{
+        title: 'Curatorial Commissions On View',
+        curator_artists: 'Artists in Residence',
+        dates: 'Autumn 2026',
+        synopsis: 'Exhibitions and temporal commissions.'
+      }};
+      const showTitleEl = document.getElementById('bfiShowTitle');
+      const showMetaEl = document.getElementById('bfiShowMeta');
+      const showSynEl = document.getElementById('bfiShowSynopsis');
+      if (showTitleEl) showTitleEl.textContent = show.title;
+      if (showMetaEl) showMetaEl.textContent = `${{show.curator_artists || ''}} · ${{show.dates || ''}}`;
+      if (showSynEl) showSynEl.textContent = show.synopsis || '';
+
+      const arch = activeFl.archive_holdings || {{
+        collection_title: 'Institutional Archives & Special Collections',
+        reading_room_policy: 'Open study room consultation'
+      }};
+      const archTitleEl = document.getElementById('bfiArchiveTitle');
+      const archPolicyEl = document.getElementById('bfiArchivePolicy');
+      if (archTitleEl) archTitleEl.textContent = arch.collection_title;
+      if (archPolicyEl) archPolicyEl.textContent = `${{arch.items_count ? arch.items_count + ' · ' : ''}}${{arch.reading_room_policy || 'Open study access'}}`;
+
+      hud.classList.remove('hidden');
+
+      // Wire Action Buttons
+      const zoomCloserBtn = document.getElementById('bfiZoomCloserBtn');
+      if (zoomCloserBtn) {{
+        zoomCloserBtn.onclick = () => zoomCloserToBuilding(20.0);
+      }}
+      const resetZoomBtn = document.getElementById('bfiResetZoomBtn');
+      if (resetZoomBtn) {{
+        resetZoomBtn.onclick = () => {{
+          if (cityVectorMap && inst.lon && inst.lat) {{
+            cityVectorMap.flyTo({{ center: [inst.lon, inst.lat], zoom: 18.0, pitch: 58, bearing: 28 }});
+          }}
+        }};
+      }}
+      const openModalBtn = document.getElementById('bfiOpenModalBtn');
+      if (openModalBtn) {{
+        openModalBtn.onclick = () => openBuildingArchivesModal(inst);
+      }}
+      const closeHudBtn = document.getElementById('closeBfiHudBtn');
+      if (closeHudBtn) {{
+        closeHudBtn.onclick = hideBuildingFloorInspectorHud;
+      }}
+    }}
+    window.showBuildingFloorInspectorHud = showBuildingFloorInspectorHud;
+
+    function selectBfiFloor(idx) {{
+      currentBfiFloorIndex = idx;
+      const inst = selectedInstitution || currentHighlightedBuildingInst;
+      if (inst) showBuildingFloorInspectorHud(inst);
+    }}
+    window.selectBfiFloor = selectBfiFloor;
+
+    function hideBuildingFloorInspectorHud() {{
+      const hud = document.getElementById('buildingFloorInspectorHud');
+      if (hud) hud.classList.add('hidden');
+    }}
+    window.hideBuildingFloorInspectorHud = hideBuildingFloorInspectorHud;
 
     // 🏛️ IN-DEPTH BUILDING ARCHITECTURE & ARCHIVES MODAL RENDERER
     function openBuildingArchivesModal(instNameOrObj) {{
@@ -8756,6 +8963,8 @@ def build():
         'Signed artist correspondence, installation sketches, and photo reels'
       ];
 
+      const instFloors = inst.floor_plans || (inst.building_architecture && inst.building_architecture.floor_plans) || [];
+
       body.innerHTML = `
         <!-- Architectural Profile Card -->
         <div class="bg-[#161c27] border border-[#26354d] rounded-2xl p-4 space-y-3">
@@ -8806,6 +9015,92 @@ def build():
                 </div>
               `).join('')}}
             </div>
+          </div>
+        </div>
+
+        <!-- 🏢 FLOOR-BY-FLOOR ARCHITECTURAL DIRECTORY: CURRENT SHOWS & ARCHIVAL HOLDINGS -->
+        <div class="bg-[#121926] border border-[#233550] rounded-2xl p-4 space-y-3">
+          <div class="flex items-center justify-between border-b border-[#1f2f47] pb-2 flex-wrap gap-2">
+            <span class="text-[12px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
+              <span>🏢</span> Floor-by-Floor Directory: Current Shows & Archival Holdings
+            </span>
+            <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-800">
+              Active Cultural Program
+            </span>
+          </div>
+
+          <!-- Floor Level Pills -->
+          <div class="flex items-center gap-1.5 flex-wrap" id="bamFloorFilterTabs">
+            <button class="px-2.5 py-1 rounded-lg bg-[#2563eb] text-white text-[11px] font-mono transition cursor-pointer" onclick="filterBamFloorLevel('all')">All Floors</button>
+            ${{instFloors.map(fl => `
+              <button class="px-2.5 py-1 rounded-lg bg-[#142033] hover:bg-[#1d2d47] text-[#93c5fd] text-[11px] font-mono border border-[#273a58] transition cursor-pointer" onclick="filterBamFloorLevel('${{fl.level}}')">
+                Level ${{fl.level}}
+              </button>
+            `).join('')}}
+          </div>
+
+          <!-- Floor Cards Container -->
+          <div class="space-y-3 pt-1" id="bamFloorCardsContainer">
+            ${{instFloors.map(fl => `
+              <div class="p-3.5 rounded-xl bg-[#0d1420] border border-[#21324c] space-y-2.5 bam-floor-card" data-floor-level="${{fl.level}}">
+                <!-- Level Header -->
+                <div class="flex items-center justify-between gap-2 border-b border-[#1b293e] pb-1.5 flex-wrap">
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded bg-sky-950 border border-sky-700/60 text-[#7dd3fc] font-mono font-bold text-[11.5px]">${{fl.level_code || ('L' + fl.level)}}</span>
+                    <span class="text-white font-semibold text-[13px]">${{escapeHtml(fl.floor_name || ('Level ' + fl.level))}}</span>
+                  </div>
+                  <span class="text-[11px] font-mono text-slate-400">${{fl.elevation || ''}} · ${{fl.area_sqm ? fl.area_sqm + ' m²' : ''}}</span>
+                </div>
+
+                <!-- Current Shows on Floor -->
+                <div class="space-y-1.5">
+                  <span class="text-[10.5px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1">
+                    <span>🖼️</span> CURRENT SHOW ON THIS LEVEL
+                  </span>
+                  ${{(fl.current_shows || []).map(show => `
+                    <div class="p-2.5 rounded-lg bg-[#141b26] border border-[#2b3a4f] space-y-1">
+                      <div class="flex items-center justify-between gap-2 flex-wrap">
+                        <span class="text-[13px] font-semibold text-white">${{escapeHtml(show.title)}}</span>
+                        <span class="text-[10.5px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">${{escapeHtml(show.admission || 'Free Admission')}}</span>
+                      </div>
+                      <div class="text-[11px] font-mono text-slate-300">
+                        ${{escapeHtml(show.curator_artists || '')}} · <span class="text-amber-300">${{escapeHtml(show.dates || 'On View')}}</span>
+                      </div>
+                      <p class="text-[11.5px] text-slate-300 leading-snug pt-0.5">
+                        ${{escapeHtml(show.synopsis || '')}}
+                      </p>
+                    </div>
+                  `).join('')}}
+                </div>
+
+                <!-- Archival Holdings on Floor -->
+                <div class="space-y-1 pt-1 border-t border-[#1b293e]">
+                  <span class="text-[10.5px] font-mono uppercase text-emerald-400 font-bold flex items-center gap-1">
+                    <span>📚</span> ARCHIVE HOLDING ON THIS LEVEL
+                  </span>
+                  <div class="p-2.5 rounded-lg bg-[#0b1b16] border border-[#1b3d32] space-y-1 text-[12px]">
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                      <span class="font-semibold text-emerald-200 text-[12.5px]">${{escapeHtml(fl.archive_holdings ? fl.archive_holdings.collection_title : 'Special Collections')}}</span>
+                      <span class="text-[10.5px] font-mono text-emerald-300 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">${{escapeHtml(fl.archive_holdings ? fl.archive_holdings.period || 'Cataloged' : '')}}</span>
+                    </div>
+                    <p class="text-[11.5px] text-slate-300 leading-snug">
+                      ${{escapeHtml(fl.archive_holdings ? fl.archive_holdings.scope || '' : '')}}
+                    </p>
+                    <div class="text-[11px] font-mono text-slate-400 pt-0.5">
+                      <span class="text-emerald-400">Access:</span> ${{escapeHtml(fl.archive_holdings ? fl.archive_holdings.reading_room_policy || 'Open consultation' : '')}}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Facilities -->
+                ${{fl.facilities && fl.facilities.length ? `
+                  <div class="flex items-center gap-1.5 flex-wrap pt-0.5 text-[10.5px] font-mono text-slate-400">
+                    <span class="text-slate-500">Facilities:</span>
+                    ${{fl.facilities.map(fac => `<span class="px-1.5 py-0.5 rounded bg-[#101724] border border-[#1e2a3c] text-slate-300">${{escapeHtml(fac)}}</span>`).join('')}}
+                  </div>
+                ` : ''}}
+              </div>
+            `).join('')}}
           </div>
         </div>
 
@@ -8886,6 +9181,27 @@ def build():
       modal.classList.remove('hidden');
     }}
     window.openBuildingArchivesModal = openBuildingArchivesModal;
+
+    function filterBamFloorLevel(levelStr) {{
+      const cards = document.querySelectorAll('.bam-floor-card');
+      cards.forEach(card => {{
+        if (levelStr === 'all' || card.getAttribute('data-floor-level') === String(levelStr)) {{
+          card.style.display = 'block';
+        }} else {{
+          card.style.display = 'none';
+        }}
+      }});
+      const tabs = document.querySelectorAll('#bamFloorFilterTabs button');
+      tabs.forEach(t => {{
+        const isSelected = (levelStr === 'all' && t.textContent.includes('All')) || (levelStr !== 'all' && t.textContent.includes(`Level ${{levelStr}}`));
+        if (isSelected) {{
+          t.className = 'px-2.5 py-1 rounded-lg bg-[#2563eb] text-white text-[11px] font-mono transition cursor-pointer font-bold shadow-sm';
+        }} else {{
+          t.className = 'px-2.5 py-1 rounded-lg bg-[#142033] hover:bg-[#1d2d47] text-[#93c5fd] text-[11px] font-mono border border-[#273a58] transition cursor-pointer';
+        }}
+      }});
+    }}
+    window.filterBamFloorLevel = filterBamFloorLevel;
 
     function closeBuildingArchivesModal() {{
       const modal = document.getElementById('buildingArchivesModal');
@@ -9124,6 +9440,7 @@ def build():
       if (mapEl) mapEl.classList.add('hidden');
       document.getElementById('cityViewControlBanner')?.classList.add('hidden');
       document.getElementById('activeRouteBanner')?.classList.add('hidden');
+      document.getElementById('buildingFloorInspectorHud')?.classList.add('hidden');
       if (typeof clearCuratorialRoute === 'function') {{
         clearCuratorialRoute();
       }}
@@ -17505,7 +17822,7 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING INSPECTION INTENT
         // =========================================================================
-        const isArchiveQuery = (q.includes('archive') || q.includes('collection') || q.includes('holding') || q.includes('reading room') || q.includes('special collection') || q.includes('footprint') || q.includes('building layout') || q.includes('architecture of') || q.includes('zoom to building')) && (findMentionedInst(query) || curatorContext.lastInst || selectedInstitution);
+        const isArchiveQuery = (q.includes('archive') || q.includes('collection') || q.includes('holding') || q.includes('reading room') || q.includes('special collection') || q.includes('footprint') || q.includes('building layout') || q.includes('architecture of') || q.includes('zoom to building') || q.includes('floor') || q.includes('current show') || q.includes('shows') || q.includes('exhibition') || q.includes('on view')) && (findMentionedInst(query) || curatorContext.lastInst || selectedInstitution);
         if (isArchiveQuery) {{
           const inst = findMentionedInst(query) || curatorContext.lastInst || selectedInstitution;
           if (inst) {{
@@ -17513,6 +17830,32 @@ FORMATTING & INTERACTION RULES:
             curatorContext.lastCity = inst.city;
             const bArch = inst.building_architecture || {{}};
             const arch = inst.archives_and_collections || {{}};
+            const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
+            let floorsHtml = '';
+            if (floors && floors.length) {{
+              floorsHtml = `
+                <div class="pt-2 border-t border-[#333] space-y-2">
+                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">🏢 Floor-by-Floor Current Shows & Archival Holdings:</strong>
+              ` + floors.map(fl => {{
+                const show = (fl.current_shows && fl.current_shows[0]) || {{ title: 'Curatorial Commissions', dates: 'On View' }};
+                const archHold = fl.archive_holdings || {{ collection_title: 'Special Collections' }};
+                return `
+                  <div class="p-2 rounded-lg bg-[#141b26] border border-[#23354d] space-y-1 text-xs">
+                    <div class="flex items-center justify-between text-[11px] font-mono text-[#7dd3fc]">
+                      <span class="font-bold">${{fl.level_code || ('L' + fl.level)}} · ${{escapeHtml(fl.floor_name || '')}}</span>
+                      <span class="text-slate-400">${{fl.elevation || ''}}</span>
+                    </div>
+                    <div class="text-[12px] text-white">
+                      <span class="text-amber-400 font-mono text-[10.5px]">🖼️ Show:</span> <strong>${{escapeHtml(show.title)}}</strong> <span class="text-[10px] text-slate-300 font-mono">(${{escapeHtml(show.dates || 'Active')}})</span>
+                    </div>
+                    <div class="text-[11.5px] text-emerald-300">
+                      <span class="text-emerald-400 font-mono text-[10.5px]">📚 Archive:</span> ${{escapeHtml(archHold.collection_title)}}
+                    </div>
+                  </div>
+                `;
+              }}).join('') + `</div>`;
+            }}
+
             appendCuratorMessage(`
               <p class="text-white font-medium text-[15px]">
                 🏛️ <strong>${{formatInstLink(inst)}}</strong>: Architectural Profile & Archival Repository
@@ -17530,11 +17873,16 @@ FORMATTING & INTERACTION RULES:
                   <strong class="text-[#fcd34d] font-mono uppercase text-[11px] tracking-wider block">Public Study Room & Access Charter</strong>
                   ${{arch.reading_room_policy || 'Free public study room and curatorial library open during exhibition hours.'}}
                 </div>
+                ${{floorsHtml}}
               </div>
-              <div class="pt-2 border-t border-[#333] flex items-center gap-2">
+              <div class="pt-2 border-t border-[#333] flex items-center gap-2 flex-wrap">
                 <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', true)" 
                         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[12px] shadow transition cursor-pointer">
                   <span>🏛️ Zoom to 3D Building & Inspect Archives</span>
+                </button>
+                <button type="button" onclick="window.zoomCloserToBuilding(20.0)" 
+                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white font-medium text-[12px] shadow transition cursor-pointer">
+                  <span>🔍 Zoom 20x Closer</span>
                 </button>
               </div>
             `, ['Plan Visit', 'Opening Hours', 'Ethical Governance Audit', `More in ${{inst.city}}`]);
