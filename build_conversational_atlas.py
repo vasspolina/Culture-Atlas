@@ -1933,41 +1933,27 @@ def build():
         <div class="flex items-center gap-2.5">
           <div class="hidden"></div>
           <div>
-            <div class="flex items-center gap-2">
-              <h3 class="text-[15px] sm:text-[16px] font-medium text-white leading-tight">Confidential Field Intelligence Intake</h3>
-              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800/80 shrink-0">Whistleblower Vault</span>
-            </div>
-            <p class="text-[11.5px] sm:text-[12px] text-[#a1a1aa] font-mono">Private & Non-Public Intelligence · Source-Protected Statutory Cross-Examination</p>
+            <h3 class="text-[15px] sm:text-[16px] font-medium text-white leading-tight">Confidential Field Intelligence Intake</h3>
           </div>
         </div>
-        <button id="closeConfidentialChatBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#27272a] rounded-xl transition cursor-pointer" title="Close Intake Window">Close</button>
+        <button id="closeConfidentialChatBtn" class="text-[#a1a1aa] hover:text-white text-[13px] px-3 py-1 hover:bg-[#27272a] rounded-full transition cursor-pointer" title="Close Intake Window">Close</button>
       </div>
 
-      <!-- Private Intel Suggestion Banner -->
-      <div class="px-4 py-2.5 bg-[#0f172a] border-b border-[#1e293b] text-[12.5px] text-slate-300 leading-[135%] shrink-0">
-        <div class="flex items-center gap-1.5 text-blue-400 font-mono text-[11px] uppercase tracking-wider mb-0.5">
-          <span>Private / Internal Information Guidance</span>
-        </div>
-        <p class="text-slate-300 text-[12px] sm:text-[12.5px]">
-          Share internal details known privately that are not available publicly: unpublicized trustee arrangements, secret donor covenants, internal board disputes, curatorial censorship behind closed doors, or leaked budget and labor memos.
-        </p>
-      </div>
-
-      <!-- Interactive Suggestion Pills for Private Internal Intel -->
-      <div class="px-3 py-2 bg-[#161618] border-b border-[#222225] flex items-center gap-1.5 overflow-x-auto custom-scrollbar shrink-0 text-[12px]">
-        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I have internal info about an unpublicized trustee arrangement or off-the-books donor deal at: ">
+      <!-- Suggestion Pills -->
+      <div class="px-3 py-2 bg-[#161618] border-b border-[#222225] flex items-center gap-2 overflow-x-auto custom-scrollbar shrink-0 text-[12px]">
+        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I have internal info about an unpublicized trustee arrangement or off-the-books donor deal at: ">
           Unpublicized Trustee Deal
         </button>
-        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I want to report an internal board dispute or closed-door curatorial censorship at: ">
+        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I want to report an internal board dispute or closed-door curatorial censorship at: ">
           Board Dispute / Censorship
         </button>
-        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I have non-public info about corporate underwriting, weapons, or fossil fuel links involving: ">
+        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I have non-public info about corporate underwriting, weapons, or fossil fuel links involving: ">
           Hidden Corporate Underwriting
         </button>
-        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I have internal details regarding staff labor disputes, NDAs, or leaked budget memos at: ">
+        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I have internal details regarding staff labor disputes, NDAs, or leaked budget memos at: ">
           Leaked Memo / Labor Dispute
         </button>
-        <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I want to submit an unlisted independent artist-run space with clean public governance: ">
+        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I want to submit an unlisted independent artist-run space with clean public governance: ">
           Unlisted Clean Space
         </button>
       </div>
@@ -22274,32 +22260,13 @@ FORMATTING & INTERACTION RULES:
       // Respond conversationally as an investigative intelligence researcher
       setTimeout(() => {{
         let respHtml = `
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between border-b border-emerald-900/50 pb-1.5 flex-wrap gap-1">
-              <span class="text-emerald-400 font-mono text-[11px] uppercase tracking-wider font-bold">Cryptographic Receipt #${{entry.id}}</span>
-              <span class="text-[10px] font-mono text-zinc-400">${{escapeHtml(entry.pseudonym)}}</span>
-            </div>
-
-            <div class="p-2.5 rounded-xl bg-[#081f14] border border-emerald-600/50 space-y-1 text-xs">
-              <div class="flex items-center justify-between">
-                <span class="font-mono text-emerald-300 font-bold">${{escapeHtml(entry.receiptCode)}}</span>
-                <span class="text-[10px] font-mono text-emerald-400/80">SHA-256 VERIFIED</span>
-              </div>
-              <p class="text-[10.5px] font-mono text-zinc-300 truncate">Fingerprint: ${{escapeHtml(entry.sha256Hash)}}</p>
-            </div>
-
-            <p class="text-white text-xs leading-relaxed">
-              Your confidential intelligence lead has been hashed and queued in your local browser sandbox.
+          <div class="space-y-2 text-slate-200">
+            <p class="text-white text-[14px]">
+              Your disclosure has been recorded.
             </p>
-
-            <div class="p-2.5 rounded-xl bg-[#121622] border border-blue-900/50 text-[11.5px] text-slate-300 space-y-1">
-              <p class="text-sky-300 font-mono font-bold uppercase text-[10.5px]">OpSec &amp; Whistleblower Precautions:</p>
-              <ul class="list-disc pl-4 space-y-0.5 text-slate-300">
-                <li>Ensure any uploaded documents or screenshots have EXIF/PDF metadata stripped.</li>
-                <li>Do not access this intake vault from an institutional employer network or VPN.</li>
-                <li>Keep your receipt code (<strong>${{escapeHtml(entry.receiptCode)}}</strong>) to verify future investigative releases.</li>
-              </ul>
-            </div>
+            <p class="text-slate-400 text-[12px]">
+              Receipt code: <code class="text-slate-200 font-mono">${{escapeHtml(entry.receiptCode)}}</code>
+            </p>
           </div>
         `;
         appendConfidentialMessage('curator', respHtml);
@@ -22315,69 +22282,34 @@ FORMATTING & INTERACTION RULES:
       if (suggestions) suggestions.classList.add('hidden');
 
       appendCuratorMessage(`
-        <div class="border border-emerald-500/50 bg-[#091a13] p-4 sm:p-4.5 rounded-2xl space-y-3 shadow-lg">
-          <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2.5 flex-wrap gap-2">
-            <div class="flex items-center gap-2">
-              
-              <div>
-                <h4 class="font-semibold text-white text-[15px] flex items-center gap-2">
-                  Confidential Field Intel &amp; Whistleblower Pipeline
-                  <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950 border border-emerald-700/80 px-2 py-0.5 rounded-full font-normal">In-Chat Intake</span>
-                </h4>
-                <p class="text-[11.5px] font-mono text-emerald-300">Zero-Knowledge · Client-Side SHA-256 Hashing · No Server IP Logs</p>
-              </div>
-            </div>
-          </div>
-
-          <p class="text-slate-100 text-[13.5px] leading-relaxed">
-            <strong>What you can submit:</strong> Share non-public documents, unverified fossil fuel / defense sponsorships, trustee board interlocks, confidential donor agreements, executive compensation disclosures, or unlisted independent spaces.
+        <div class="space-y-3 text-slate-200">
+          <p class="text-white text-[14px] leading-relaxed">
+            Share non-public documents, unverified corporate sponsorships, board conflicts, or suggest unlisted independent art spaces directly in the chat below.
           </p>
 
-          <div class="p-3 rounded-xl bg-[#0e271d] border border-emerald-800/60 space-y-2 text-[12.5px] text-slate-200">
-            <div class="font-medium text-emerald-300 flex items-center gap-1.5 text-[13px]">
-              <span>How to submit right here:</span>
-            </div>
-            <ol class="list-decimal list-inside space-y-1 text-slate-300">
-              <li><strong>Type or paste your information</strong> directly into the chat input below.</li>
-              <li><strong>Include key details</strong>: Museum or institution name, trustee names, approximate dates, contract amounts, or document excerpts.</li>
-              <li><strong>Cryptographic Receipt</strong>: Culture Atlas computes a native SHA-256 integrity hash locally in your browser and assigns an ephemeral pseudonym (e.g. <code>Archival-Insider-8492</code>).</li>
-            </ol>
-          </div>
-
-          <div class="space-y-1.5 pt-1">
-            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Quick prompts to start your report:</div>
-            <div class="flex flex-wrap gap-1.5">
-              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Board Conflict: Undisclosed defense contractor or private equity trustee sitting on the board of [Institution Name]">
-                Report Trustee Conflict
-              </button>
-              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Sponsorship Leak: Non-public gift agreement with fossil fuel or defense conglomerate at [Institution Name]">
-                Submit Sponsorship Leak
-              </button>
-              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Schedule L Disclosure: Museum conducting commercial business with interested trustee without recusal at [Institution Name]">
-                Report Schedule L Transaction
-              </button>
-              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Labor / Wage Dispute: Curatorial staff unionization or wage suppression memo at [Institution Name]">
-                Report Labor / Wage Dispute
-              </button>
-              <button type="button" class="contribute-quick-pill px-2.5 py-1 rounded-xl bg-[#133829] hover:bg-[#1a4a37] border border-emerald-600/60 text-emerald-200 hover:text-white text-[12px] font-mono transition cursor-pointer" data-fill="Unlisted Independent Space: Suggest verified grassroots art space with clean public/cooperative funding: [Space Name, City]">
-                Suggest Independent Space
-              </button>
-            </div>
-          </div>
-
-          <div class="pt-2 border-t border-emerald-900/50 flex items-center justify-between gap-2 flex-wrap text-[11.5px] font-mono text-slate-400">
-            <span class="flex items-center gap-1.5 text-emerald-400">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              Input active below · Submit anytime via Enter or Send
-            </span>
-            <span class="text-zinc-500">OpSec Tip: Use Tor or Brave for high-risk leaks</span>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Board Conflict: Undisclosed defense contractor or private equity trustee sitting on the board of [Institution Name]">
+              Report Trustee Conflict
+            </button>
+            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Sponsorship Leak: Non-public gift agreement with fossil fuel or defense conglomerate at [Institution Name]">
+              Submit Sponsorship Leak
+            </button>
+            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Schedule L Disclosure: Museum conducting commercial business with interested trustee without recusal at [Institution Name]">
+              Report Schedule L Transaction
+            </button>
+            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Labor / Wage Dispute: Curatorial staff unionization or wage suppression memo at [Institution Name]">
+              Report Labor Dispute
+            </button>
+            <button type="button" class="contribute-quick-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[12px] sm:text-[13px] transition cursor-pointer" data-fill="Unlisted Independent Space: Suggest verified grassroots art space with clean public/cooperative funding: [Space Name, City]">
+              Suggest Independent Space
+            </button>
           </div>
         </div>
       `);
 
       const workInput = document.getElementById('workInput');
       if (workInput) {{
-        workInput.placeholder = '[Confidential Vault] Enter confidential intel or paste document leak here...';
+        workInput.placeholder = 'Share confidential intel or paste document leak...';
         if (defaultTopic) {{
           workInput.value = defaultTopic;
         }}
@@ -22428,49 +22360,13 @@ FORMATTING & INTERACTION RULES:
       }}
 
       appendCuratorMessage(`
-        <div class="border border-emerald-500/60 bg-[#081a13] p-4 rounded-2xl space-y-3 text-slate-200">
-          <div class="flex items-center justify-between border-b border-emerald-500/30 pb-2.5 flex-wrap gap-2">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span class="font-semibold text-white text-[15px]">Cryptographic Whistleblower Receipt Issued</span>
-            </div>
-            <span class="text-[12px] font-mono text-emerald-300 bg-emerald-950 px-2.5 py-0.5 rounded-full border border-emerald-700">
-              ID: ${{cryptoReceipt.receipt}}
-            </span>
-          </div>
-
-          <div class="p-3 bg-[#0c241b] rounded-xl border border-emerald-800/60 space-y-2 text-xs font-mono">
-            <div class="flex justify-between items-center text-slate-300">
-              <span>Ephemeral Pseudonym:</span>
-              <strong class="text-emerald-400 font-bold">${{pseudonym}}</strong>
-            </div>
-            <div class="flex justify-between items-center text-slate-300">
-              <span>Routing Classification:</span>
-              <span class="text-teal-300">${{cat}}</span>
-            </div>
-            <div class="flex flex-col gap-1 pt-1 border-t border-emerald-900/60">
-              <div class="flex items-center justify-between">
-                <span class="text-emerald-400 font-bold">SHA-256 VERIFIED INTEGRITY HASH:</span>
-                <span class="text-[10px] text-zinc-400">Zero-Knowledge</span>
-              </div>
-              <code class="text-[11px] text-emerald-300 break-all select-all bg-[#06140e] p-2 rounded-lg border border-emerald-950">
-                ${{cryptoReceipt.hash}}
-              </code>
-            </div>
-          </div>
-
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Your disclosure has been queued for verification by the Culture Atlas research collective. Retain your receipt code (<code>${{cryptoReceipt.receipt}}</code>) to track verification status or provide supplementary evidence.
+        <div class="space-y-2 text-slate-200">
+          <p class="text-white text-[14px]">
+            Your submission has been received and queued for review.
           </p>
-
-          <div class="p-2.5 rounded-xl bg-[#091510] border border-emerald-900/40 text-[11px] text-slate-400 space-y-1">
-            <div class="text-emerald-400 font-semibold font-mono uppercase tracking-wider">OpSec &amp; Whistleblower Precautions:</div>
-            <ul class="list-disc list-inside space-y-0.5">
-              <li>Never access this atlas from an employer-owned workstation or corporate network.</li>
-              <li>Ensure document metadata (author names, EXIF, printer steganography) has been scrubbed.</li>
-              <li>For high-risk disclosures, always submit via Tor Browser or an air-gapped personal device.</li>
-            </ul>
-          </div>
+          <p class="text-slate-400 text-[12.5px]">
+            Receipt: <code class="text-slate-200 font-mono">${{escapeHtml(cryptoReceipt.receipt)}}</code>
+          </p>
         </div>
       `);
 
