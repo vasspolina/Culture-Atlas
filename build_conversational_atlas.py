@@ -1431,12 +1431,14 @@ def build():
           <!-- 💶 BUDGET & MONEY SECTION -->
           <div id="floatingCardBudgetSection" class="mt-2 pt-2 border-t border-[#2e2e2e]/80 space-y-1.5">
             <!-- Operating Budget Scale Banner & Tier -->
-            <div class="flex items-center justify-between gap-1.5 flex-wrap">
-              <div id="floatingCardBudget" class="text-[13px] font-mono text-slate-100 flex items-center gap-1.5">
+            <div class="flex flex-col gap-1">
+              <div id="floatingCardBudget" class="text-[13px] font-mono text-slate-100 flex items-center gap-1.5 flex-wrap">
                 <span class="text-amber-400 font-bold">Budget:</span>
                 <strong id="floatingCardBudgetAmount" class="font-semibold text-white"></strong>
               </div>
-              <span id="floatingCardBudgetTier" class="text-[11px] font-mono px-2 py-0.5 rounded border border-sky-800/60 bg-sky-950/40 text-sky-300"></span>
+              <div>
+                <span id="floatingCardBudgetTier" class="text-[11px] font-mono px-2 py-0.5 rounded border border-sky-800/60 bg-sky-950/40 text-sky-300 inline-block"></span>
+              </div>
             </div>
 
             <!-- Money Flow & Revenue Mix Badges -->
@@ -1667,9 +1669,9 @@ def build():
         <!-- Collapsible Content Wrapper -->
         <div id="bfiContentWrap" class="flex flex-col gap-2">
           <!-- Building Metrics Bar -->
-          <div id="bfiMetricsBar" class="flex items-center justify-between text-[10.5px] font-mono text-slate-300 py-1 px-2 rounded-lg bg-[#142036] border border-[#233552]">
+          <div id="bfiMetricsBar" class="flex flex-col gap-1 text-[11px] font-mono text-slate-300 py-1.5 px-2 rounded-lg bg-[#142036] border border-[#233552]">
             <span id="bfiMetricsFloors" class="text-[#7dd3fc]">3 Floors · 3,800 m²</span>
-            <span id="bfiMetricsBudget" class="text-amber-400 font-bold truncate max-w-[140px]">Budget Scale</span>
+            <span id="bfiMetricsBudget" class="text-amber-400 font-bold">Budget Scale</span>
           </div>
 
           <!-- Zoom Depth Action Controls -->
@@ -9988,8 +9990,8 @@ def build():
         const mastEl = document.createElement('div');
       mastEl.className = 'building-3d-mast-plate pointer-events-auto select-none';
       mastEl.style.cssText = isMobileScreen
-        ? 'width:calc(100vw - 24px); max-width:280px; min-width:0; box-sizing:border-box; padding:8px 10px; border-radius:14px; background:rgba(12,19,34,0.97); border:1px solid rgba(56,189,248,0.7); box-shadow:0 12px 28px rgba(0,0,0,0.8); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:12px; z-index:30;'
-        : 'min-width:240px; max-width:280px; padding:9px 12px; border-radius:14px; background:rgba(12,19,34,0.96); border:1px solid rgba(56,189,248,0.7); box-shadow:0 14px 30px rgba(0,0,0,0.7), 0 0 16px rgba(56,189,248,0.2); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:12px; z-index:30;';
+        ? 'width:calc(100vw - 24px); max-width:310px; min-width:0; box-sizing:border-box; padding:9px 11px; border-radius:14px; background:rgba(12,19,34,0.97); border:1px solid rgba(56,189,248,0.7); box-shadow:0 12px 28px rgba(0,0,0,0.8); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:12px; z-index:30;'
+        : 'min-width:250px; max-width:310px; padding:10px 13px; border-radius:14px; background:rgba(12,19,34,0.96); border:1px solid rgba(56,189,248,0.7); box-shadow:0 14px 30px rgba(0,0,0,0.7), 0 0 16px rgba(56,189,248,0.2); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:12px; z-index:30;';
 
       const webUrl = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || '');
       const fin = inst.financial_data || {{}};
@@ -9998,39 +10000,39 @@ def build():
       let floorSelectorBarHtml = '';
       if (floors.length) {{
         floorSelectorBarHtml = '<div class="sm:hidden" style="margin-top:7px; padding-top:6px; border-top:1px solid #1e2c42; display:flex; align-items:center; gap:5px; overflow-x:auto;">' +
-          '<span style="font-size:14px; font-family:monospace; color:#38bdf8; text-transform:uppercase; font-weight:bold; flex-shrink:0;">Floors:</span>' +
+          '<span style="font-size:13px; font-family:monospace; color:#38bdf8; text-transform:uppercase; font-weight:bold; flex-shrink:0;">Floors:</span>' +
           floors.map((fl, idx) => {{
             const isAct = (idx === currentBfiFloorIndex);
             const code = fl.level_code || ('L' + (fl.level != null ? fl.level : idx));
-            return '<button type="button" onclick="window.selectBfiFloor(' + idx + ')" style="padding:2px 7px; font-size:14px; font-family:monospace; font-weight:bold; border-radius:6px; border:1px solid ' + (isAct ? '#38bdf8' : '#2b3e5e') + '; background:' + (isAct ? '#0284c7' : '#162238') + '; color:#fff; cursor:pointer; flex-shrink:0;">' + code + '</button>';
+            return '<button type="button" onclick="window.selectBfiFloor(' + idx + ')" style="padding:2px 7px; font-size:13px; font-family:monospace; font-weight:bold; border-radius:6px; border:1px solid ' + (isAct ? '#38bdf8' : '#2b3e5e') + '; background:' + (isAct ? '#0284c7' : '#162238') + '; color:#fff; cursor:pointer; flex-shrink:0;">' + code + '</button>';
           }}).join('') +
         '</div>';
       }}
 
       mastEl.innerHTML = 
-        '<div style="display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid #1e2c42; padding-bottom:7px;">' +
-          '<div style="min-width:0; flex:1;">' +
-            '<div style="display:flex; align-items:center; gap:6px;">' +
-              '<span style="font-size:16px; font-weight:700; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + escapeHtml(inst.name) + '</span>' +
-            '</div>' +
-            '<div style="font-size:14px; font-family:monospace; color:#94a3b8; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
-              escapeHtml(inst.city) + (inst.country ? (', ' + escapeHtml(inst.country)) : '') + ' · ' + escapeHtml(bArch.architectural_style || 'Curatorial Pavilion') +
-            '</div>' +
-          '</div>' +
-          '<div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">' +
-            '<div>' + brandBadge + '</div>' +
-            '<button type="button" class="building-mast-close-btn" onclick="event.stopPropagation(); window.closeBuildingMast();" title="Close Building Card" aria-label="Close" style="width:28px; height:20px;">' +
+        '<div style="border-bottom:1px solid #1e2c42; padding-bottom:7px; display:flex; flex-direction:column; gap:4px;">' +
+          '<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:6px;">' +
+            '<span style="font-size:15px; font-weight:700; color:#ffffff; line-height:1.25; word-break:break-word;">' + escapeHtml(inst.name) + '</span>' +
+            '<button type="button" class="building-mast-close-btn" onclick="event.stopPropagation(); window.closeBuildingMast();" title="Close Building Card" aria-label="Close" style="width:26px; height:20px; flex-shrink:0;">' +
               '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
             '</button>' +
           '</div>' +
+          '<div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">' +
+            brandBadge +
+          '</div>' +
+          '<div style="font-size:12px; font-family:monospace; color:#94a3b8; line-height:1.35; word-break:break-word;">' +
+            escapeHtml(inst.city) + (inst.country ? (', ' + escapeHtml(inst.country)) : '') + ' · ' + escapeHtml(bArch.architectural_style || 'Curatorial Pavilion') +
+          '</div>' +
         '</div>' +
 
-        '<div style="margin-top:7px; font-size:14px; font-family:monospace; color:#cbd5e1; display:flex; flex-direction:column; gap:3px;">' +
-          '<div style="display:flex; align-items:center; justify-content:space-between; color:#7dd3fc;">' +
+        '<div style="margin-top:7px; font-size:13px; font-family:monospace; color:#cbd5e1; display:flex; flex-direction:column; gap:3px;">' +
+          '<div style="color:#7dd3fc; line-height:1.35;">' +
             '<span>' + floors.length + ' Floors · ' + (bArch.footprint_sqm || 2400).toLocaleString() + ' m²</span>' +
-            '<span style="color:#f59e0b;">' + escapeHtml(budgetStr) + '</span>' +
           '</div>' +
-          '<div style="color:#94a3b8;">' +
+          '<div style="color:#f59e0b; font-weight:bold; line-height:1.35;">' +
+            '<span>' + escapeHtml(budgetStr) + '</span>' +
+          '</div>' +
+          '<div style="color:#94a3b8; line-height:1.35;">' +
             escapeHtml(inst.hours || 'Wed–Sun 11:00–19:00') + ' · ' + escapeHtml(inst.admission || 'Free Admission') +
           '</div>' +
         '</div>' +
@@ -28020,6 +28022,13 @@ FORMATTING & INTERACTION RULES:
         const matched = ALL_INSTITUTIONS.find(i => i.name.toLowerCase().includes(targetInst.toLowerCase()));
         if (matched) {{
           selectInstitution(matched, true);
+          if (params.get('building') === '1' || params.get('3d') === '1') {{
+            setTimeout(() => {{
+              if (typeof openBuildingFloorInspector === 'function') {{
+                openBuildingFloorInspector(matched);
+              }}
+            }}, 400);
+          }}
           if (targetGossip === '1' || targetGossip === 'true' || targetMode === 'gossip') {{
             setCardMode('gossip');
           }}
