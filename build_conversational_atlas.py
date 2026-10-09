@@ -900,10 +900,21 @@ def build():
       visibility: hidden !important;
       pointer-events: none !important;
     }}
-    /* When viewing 3D building architectural perspective, hide 2D pins and floating labels so they do not obstruct 3D floors */
+    /* When viewing 3D building architectural perspective, hide 2D pins, popups, and floating overlays so they do not obstruct 3D floors */
     #cityMapContainer.building-view-active .custom-inst-pin,
     #cityMapContainer.building-view-active .inst-pin-label,
-    #cityMapContainer.building-view-active .maplibregl-popup {{
+    #cityMapContainer.building-view-active .maplibregl-popup,
+    body.building-view-active .maplibregl-popup,
+    body:has(#buildingFloorInspectorHud:not(.hidden)) .maplibregl-popup,
+    #cityMapContainer.building-view-active:not(.show-onmap-callouts) .building-3d-mast-plate,
+    #cityMapContainer.building-view-active:not(.show-onmap-callouts) .building-3d-facade-stack,
+    #cityMapContainer.building-view-active:not(.show-onmap-callouts) .building-3d-room-badge,
+    body.building-view-active:not(.show-onmap-callouts) .building-3d-mast-plate,
+    body.building-view-active:not(.show-onmap-callouts) .building-3d-facade-stack,
+    body.building-view-active:not(.show-onmap-callouts) .building-3d-room-badge,
+    body:has(#buildingFloorInspectorHud:not(.hidden)):not(.show-onmap-callouts) .building-3d-mast-plate,
+    body:has(#buildingFloorInspectorHud:not(.hidden)):not(.show-onmap-callouts) .building-3d-facade-stack,
+    body:has(#buildingFloorInspectorHud:not(.hidden)):not(.show-onmap-callouts) .building-3d-room-badge {{
       opacity: 0 !important;
       visibility: hidden !important;
       pointer-events: none !important;
@@ -1751,9 +1762,9 @@ def build():
           <div class="flex items-center justify-between gap-1 pt-0.5 border-t border-[#1e2f4a]">
             <span class="text-[10px] font-mono uppercase text-slate-400">MAP CALLOUTS:</span>
             <div class="flex items-center gap-1">
-              <button id="bfiToggleOverlaysBtn" type="button" class="py-0.5 px-2 rounded-lg bg-[#142036] hover:bg-[#1d2f4d] border border-[#2b3e5e] text-[10px] font-mono text-sky-300 transition cursor-pointer flex items-center gap-1" title="Toggle on-map room badges and mast plate to clean view">
-                <span id="bfiToggleOverlaysIcon">👁️</span>
-                <span id="bfiToggleOverlaysText">Hide Badges</span>
+              <button id="bfiToggleOverlaysBtn" type="button" class="py-0.5 px-2 rounded-lg bg-[#142036] hover:bg-[#1d2f4d] border border-[#2b3e5e] text-[10px] font-mono text-sky-300 transition cursor-pointer flex items-center gap-1" title="Toggle on-map room badges and mast plate">
+                <span id="bfiToggleOverlaysIcon">🕶️</span>
+                <span id="bfiToggleOverlaysText">Show Badges</span>
               </button>
               <button id="bfiAskCuratorBtn" type="button" class="py-0.5 px-2 rounded-lg bg-indigo-950/80 hover:bg-indigo-900 border border-indigo-700/50 text-[10px] font-mono text-indigo-300 transition cursor-pointer flex items-center gap-1" title="Ask curator about this building in chat">
                 <span>💬 Curator</span>
@@ -9329,20 +9340,23 @@ def build():
         mapEl.classList.remove('map-zoomed-out');
 
         const currentZoom = cityVectorMap.getZoom();
-        if (currentZoom >= 16.0) {{
-          // At building architectural zoom, close 2D marker popups and hide 2D pins so they don't block the 3D model
+        if (currentZoom >= 15.5) {{
+          // At building architectural zoom, close 2D marker popups, suppress redundant floating overlays, and hide 2D pins so they don't block the 3D model
           document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+          if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
           document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {{
             pin.style.opacity = '0';
             pin.style.pointerEvents = 'none';
           }});
           mapEl.classList.add('building-view-active');
+          document.body.classList.add('building-view-active');
         }} else {{
           document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {{
             pin.style.opacity = '1';
             pin.style.pointerEvents = 'auto';
           }});
           mapEl.classList.remove('building-view-active');
+          document.body.classList.remove('building-view-active');
           if (currentZoom < 15.2) {{
             if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(false);
             if (typeof isBuildingMastDismissed !== 'undefined') isBuildingMastDismissed = false;
@@ -9662,6 +9676,7 @@ def build():
               try {{ e.originalEvent.stopPropagation(); }} catch (err) {{}}
             }}
             document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+            if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
             if (e.features && e.features.length) {{
               const p = e.features[0].properties;
               if (p && p.floorIndex !== undefined && Number(p.floorIndex) >= 0) {{
@@ -10017,10 +10032,21 @@ def build():
     // =========================================================================
     function updateBuilding3DInfoMarkers(inst, options = {{}}) {{
       const isFloorChange = Boolean(options && options.isFloorChange);
+      const forceShow = Boolean(options && options.forceShow);
       if (!cityVectorMap || !inst || !isCityStreetViewActive || typeof maplibregl === 'undefined') return;
 
       // Close any open 2D marker popups so they do not overlap 3D building callouts
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+
+      // When Building Floor Inspector HUD is open or when zoomed in (zoom >= 15.5), do NOT create floating on-map overlays (mast, room badges, facade stack)
+      // unless explicitly requested by the user. All detailed floor metrics, shows, archives, and action controls are cleanly presented in the docked HUD without covering the 3D model!
+      const bfiHud = document.getElementById('buildingFloorInspectorHud');
+      const isHudActive = bfiHud && !bfiHud.classList.contains('hidden');
+      const curZ = cityVectorMap ? cityVectorMap.getZoom() : 0;
+      if (!forceShow && (isHudActive || curZ >= 15.5 || isMapCalloutsHidden)) {{
+        clearBuilding3DInfoMarkers(true);
+        return;
+      }}
 
       if (isFloorChange) {{
         // On floor navigation, only refresh the room badges for the newly selected level
@@ -10600,13 +10626,15 @@ def build():
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) floatingCard.classList.add('hidden');
 
-      // Close all 2D marker popups so they do not overlap 3D building callouts
+      // Close all 2D marker popups and clear on-map 3D overlays so they do not overlap 3D building
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+      if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
 
       // Reset dismissed state for the newly focused building
       isBuildingMastDismissed = false;
       isBuildingFacadeDismissed = false;
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+      if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
 
       const mapEl = document.getElementById('cityMapContainer');
       if (mapEl) {{
@@ -10614,6 +10642,7 @@ def build():
         mapEl.classList.add('map-zoomed-in');
         mapEl.classList.add('building-view-active');
       }}
+      document.body.classList.add('building-view-active');
 
       // Switch to vector street map if not active
       if (!isCityStreetViewActive) {{
@@ -10664,6 +10693,7 @@ def build():
       const inst = selectedInstitution || currentHighlightedBuildingInst;
       if (!inst || !cityVectorMap) return;
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+      if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
       cityVectorMap.flyTo({{
         center: [inst.lon, inst.lat],
         zoom: targetZoom,
@@ -10679,13 +10709,17 @@ def build():
 
     // 🏢 3D Building Floor Inspector HUD Controller
     let currentBfiFloorIndex = 0;
-    let isMapCalloutsHidden = false;
+    let isMapCalloutsHidden = true;
 
     function showBuildingFloorInspectorHud(inst) {{
       if (!inst) inst = selectedInstitution || currentHighlightedBuildingInst;
       if (!inst) return;
       const hud = document.getElementById('buildingFloorInspectorHud');
       if (!hud) return;
+
+      // Close all 2D popups and suppress floating 3D on-map plates/badges to keep screen clean and focused
+      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+      if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
 
       const nameEl = document.getElementById('bfiBuildingName');
       const metaEl = document.getElementById('bfiBuildingMeta');
@@ -10835,12 +10869,19 @@ def build():
           isMapCalloutsHidden = !isMapCalloutsHidden;
           const txt = document.getElementById('bfiToggleOverlaysText');
           const icon = document.getElementById('bfiToggleOverlaysIcon');
-          const badges = document.querySelectorAll('.building-3d-room-badge, .building-3d-mast-plate');
-          badges.forEach(b => {{
-            b.style.display = isMapCalloutsHidden ? 'none' : '';
-          }});
+          const mapEl = document.getElementById('cityMapContainer');
+          if (mapEl) mapEl.classList.toggle('show-onmap-callouts', !isMapCalloutsHidden);
+          document.body.classList.toggle('show-onmap-callouts', !isMapCalloutsHidden);
           if (txt) txt.textContent = isMapCalloutsHidden ? 'Show Badges' : 'Hide Badges';
           if (icon) icon.textContent = isMapCalloutsHidden ? '🕶️' : '👁️';
+          if (!isMapCalloutsHidden) {{
+            const inst = selectedInstitution || currentHighlightedBuildingInst;
+            if (inst && typeof updateBuilding3DInfoMarkers === 'function') {{
+              updateBuilding3DInfoMarkers(inst, {{ forceShow: true }});
+            }}
+          }} else {{
+            clearBuilding3DInfoMarkers(true);
+          }}
         }};
       }}
       const askCurBtn = document.getElementById('bfiAskCuratorBtn');
@@ -11437,6 +11478,13 @@ def build():
         }}).setHTML(popupContent);
 
         popup.on('open', () => {{
+          const curZ = cityVectorMap ? cityVectorMap.getZoom() : 0;
+          const bfiHud = document.getElementById('buildingFloorInspectorHud');
+          const isHudOpen = bfiHud && !bfiHud.classList.contains('hidden');
+          if (curZ >= 15.5 || isHudOpen) {{
+            try {{ popup.remove(); }} catch (e) {{}}
+            return;
+          }}
           pinEl.classList.add('popup-active');
         }});
         popup.on('close', () => {{
@@ -11449,14 +11497,20 @@ def build():
           .addTo(cityVectorMap);
 
         pinEl.addEventListener('click', (e) => {{
-          e.stopPropagation();
           const curZ = cityVectorMap ? cityVectorMap.getZoom() : 0;
-          if (curZ >= 16.0) {{
+          const bfiHud = document.getElementById('buildingFloorInspectorHud');
+          const isHudOpen = bfiHud && !bfiHud.classList.contains('hidden');
+          if (curZ >= 15.5 || isHudOpen) {{
+            e.stopImmediatePropagation();
+            e.preventDefault();
             document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+            if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
+            selectedInstitution = inst;
             highlightBuildingFootprint(inst, {{ isFloorChange: true }});
             showBuildingFloorInspectorHud(inst);
             return;
           }}
+          e.stopPropagation();
           marker.togglePopup();
           selectedInstitution = inst;
           if (typeof curatorContext !== 'undefined' && inst) {{
@@ -11468,7 +11522,7 @@ def build():
             c.classList.toggle('active', isTarget);
             if (isTarget) c.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
           }});
-        }});
+        }}, true);
 
         cityVectorMarkers.push(marker);
       }});
@@ -28089,8 +28143,10 @@ FORMATTING & INTERACTION RULES:
           selectInstitution(matched, true);
           if (params.get('building') === '1' || params.get('3d') === '1') {{
             setTimeout(() => {{
-              if (typeof openBuildingFloorInspector === 'function') {{
-                openBuildingFloorInspector(matched);
+              if (typeof zoomToBuilding === 'function') {{
+                zoomToBuilding(matched);
+              }} else if (typeof showBuildingFloorInspectorHud === 'function') {{
+                showBuildingFloorInspectorHud(matched);
               }}
             }}, 400);
           }}
