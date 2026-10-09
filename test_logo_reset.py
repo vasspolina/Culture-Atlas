@@ -35,8 +35,8 @@ def run_tests():
         const logoBtn = document.getElementById('topBrandLogoBtn');
         assert('topBrandLogoBtn exists in DOM', !!logoBtn);
         assert('topBrandLogoBtn has title attribute', logoBtn && logoBtn.getAttribute('title') === 'Reset Globe View');
-        assert('topBrandLogoBtn contains CULTURE ATLAS', logoBtn && logoBtn.textContent.includes('CULTURE ATLAS'));
-        assert('topBrandLogoBtn contains clean spaces badge', logoBtn && logoBtn.textContent.includes('CLEAN SPACES'));
+        assert('topBrandLogoBtn contains CULTURE ATLAS', logoBtn && logoBtn.textContent.toUpperCase().includes('CULTURE ATLAS'));
+        assert('topBrandLogoBtn contains clean spaces badge', logoBtn && logoBtn.textContent.toUpperCase().includes('CLEAN SPACES'));
         assert('resetGlobeView function is globally defined', typeof window.resetGlobeView === 'function');
 
         // 2. Test resetting when in City Street View
@@ -112,8 +112,7 @@ def run_tests():
         "--headless=new",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=6000",
-        f"file://{temp_file}"
+                f"file://{temp_file}"
     ]
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=75)
     marker = 'id="test-results-output" data-results="'

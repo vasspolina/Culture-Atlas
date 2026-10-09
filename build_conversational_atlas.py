@@ -108,7 +108,7 @@ def build():
     archives_count = sum(1 for i in all_raw_institutions if i.get('archives_and_collections'))
     visual_critique_count = sum(1 for i in all_raw_institutions if i.get('visual_critiques'))
     institutions_count = clean_count
-    spaces_count_str = f"{clean_count} CLEAN SPACES"
+    spaces_count_str = f"{clean_count} Clean spaces"
 
     KNOWN_CITY_COORDINATES = {
         "London": (51.5074, -0.1278),
@@ -750,8 +750,10 @@ def build():
     }}
     .brand-city-dot-container {{
       position: relative;
-      width: 18px;
-      height: 18px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(92, 78, 120, 0.48);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -759,44 +761,43 @@ def build():
     }}
     .brand-city-dot-aura {{
       position: absolute;
-      width: 22px;
-      height: 22px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: rgba(16, 185, 129, 0.35);
-      animation: pinPulse 2.4s infinite ease-in-out;
+      background: transparent;
       pointer-events: none;
-      transition: background-color 0.3s ease;
     }}
     .brand-city-dot-ping {{
       position: absolute;
-      width: 12px;
-      height: 12px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      border: 1.5px solid rgba(52, 211, 153, 0.85);
+      border: 1.5px solid rgba(52, 211, 153, 0.7);
       animation: cityRadarPing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
       pointer-events: none;
       transition: border-color 0.3s ease;
     }}
     .brand-city-dot-core {{
       position: relative;
-      width: 10px;
-      height: 10px;
+      width: 29px;
+      height: 29px;
       border-radius: 50%;
       background: #10b981;
-      border: 2px solid #ffffff;
-      box-shadow: 0 0 10px #10b981, 0 0 18px rgba(16, 185, 129, 0.7);
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 0 12px 2px rgba(16, 185, 129, 0.85), 0 0 22px 5px rgba(16, 185, 129, 0.4);
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.3s ease;
+      box-sizing: border-box;
     }}
     #topBrandLogoBtn:hover .brand-city-dot-core {{
-      transform: scale(1.2);
-      box-shadow: 0 0 14px #34d399, 0 0 24px rgba(52, 211, 153, 0.9);
+      transform: scale(1.08);
+      box-shadow: 0 0 18px 4px rgba(52, 211, 153, 0.95), 0 0 32px 10px rgba(52, 211, 153, 0.7);
     }}
 
     /* Brand Logo & Clean Spaces Pill Badge (Matches Figma Spec) */
     .brand-logo-btn {{
       display: inline-flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       text-align: left;
       background: transparent;
       border: 0;
@@ -813,56 +814,56 @@ def build():
     .brand-logo-title {{
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 200 !important;
-      font-size: 34px;
-      line-height: 21.6px;
-      letter-spacing: 2px;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.2px;
       color: #ffffff;
       white-space: nowrap;
-      text-transform: uppercase;
+      text-transform: none !important;
       display: inline-block;
       transition: color 0.2s ease;
     }}
     @media (max-width: 480px) {{
       .brand-logo-title {{
-        font-size: 13.5px;
+        font-size: 14px;
         line-height: 16px;
         letter-spacing: 0.2px;
       }}
     }}
     @media (min-width: 481px) and (max-width: 640px) {{
       .brand-logo-title {{
-        font-size: 15px;
+        font-size: 16px;
         line-height: 18px;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
       }}
     }}
     @media (min-width: 641px) and (max-width: 1024px) {{
       .brand-logo-title {{
-        font-size: 22px;
-        line-height: 20px;
-        letter-spacing: 1px;
+        font-size: 24px;
+        line-height: 24px;
+        letter-spacing: 0px;
       }}
     }}
     .brand-clean-spaces-badge {{
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 26px;
-      padding: 0 14px;
+      height: 25px;
+      padding: 0 12px;
       border-radius: 9999px;
-      background: rgba(7, 53, 39, 0.75);
-      border: 1px solid rgba(47, 187, 136, 0.40);
+      background: rgba(11, 31, 22, 0.9);
+      border: 1px solid rgba(47, 187, 136, 0.45);
       color: #2fbb88;
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 200 !important;
-      font-size: 16px;
-      letter-spacing: 0.5px;
+      font-size: 14px;
+      letter-spacing: 0.2px;
       line-height: 1;
       white-space: nowrap;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }}
     .brand-logo-btn:hover .brand-clean-spaces-badge {{
-      background: rgba(9, 68, 50, 0.95);
+      background: rgba(13, 44, 31, 0.95);
       border-color: rgba(52, 211, 153, 0.7);
       color: #6ee7b7;
       box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
@@ -1483,12 +1484,12 @@ def build():
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
     <button id="topBrandLogoBtn" class="brand-logo-btn group focus:outline-none shrink-0" title="Reset Globe View" aria-label="Reset Globe View">
-      <div class="brand-city-dot-container hidden" style="display:none;" aria-hidden="true">
+      <div class="brand-city-dot-container hidden sm:flex">
         <div class="brand-city-dot-aura"></div>
         <div class="brand-city-dot-ping"></div>
         <div class="brand-city-dot-core"></div>
       </div>
-      <span class="brand-logo-title">CULTURE ATLAS</span>
+      <span class="brand-logo-title">Culture Atlas</span>
       <span id="topSpacesBadge" class="brand-clean-spaces-badge hidden sm:inline-flex">{spaces_count_str}</span>
     </button>
 

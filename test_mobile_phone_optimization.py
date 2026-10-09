@@ -48,7 +48,7 @@ def run_tests():
         const modeSwitchStyle = window.getComputedStyle(modeSwitch);
         assert("Mobile Mode Switcher is visible on mobile", modeSwitchStyle.display !== 'none', `display: ${modeSwitchStyle.display}`);
 
-        assert("Logo exists and has CULTURE ATLAS text", logoBtn && logoBtn.textContent.includes('CULTURE ATLAS'));
+        assert("Logo exists and has CULTURE ATLAS text", logoBtn && logoBtn.textContent.toUpperCase().includes('CULTURE ATLAS'));
         assert("Mobile Mode Switcher exists in header", !!modeSwitch);
 
         // Test physical containment when viewport is restricted to 375px (iPhone standard)
@@ -131,8 +131,7 @@ def run_tests():
         "--headless=new",
         "--dump-dom",
         "--window-size=375,667",
-        "--virtual-time-budget=3000",
-        f"file://{temp_file}"
+                f"file://{temp_file}"
     ]
     proc = subprocess.run(cmd_mobile, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
     marker = 'id="test-results-output" data-results="'
