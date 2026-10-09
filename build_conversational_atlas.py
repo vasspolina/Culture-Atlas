@@ -13348,8 +13348,15 @@ def build():
 
     function getMinRadius() {{ return baseRadius * 0.75; }}
     function getMaxRadius() {{ 
-      return baseRadius * 450.0; 
+      return baseRadius * 25.0; 
     }}
+    window.getTargetRadius = () => targetRadius;
+    window.setTargetRadius = (val) => {{ targetRadius = val; }};
+    window.getBaseRadius = () => baseRadius;
+    window.getIsCityStreetViewActive = () => isCityStreetViewActive;
+    window.getSelectedInstitution = () => selectedInstitution;
+    window.getMaxRadius = getMaxRadius;
+    window.getMinRadius = getMinRadius;
     let startRadius = baseRadius;
 
     // Slower Cinematic Motion Physics
@@ -13732,25 +13739,6 @@ def build():
       const r = currentRadius;
       const isVisualCritiqueOnly = typeof selectedTierFilter !== 'undefined' && selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
 
-      // Dynamic City Detection for Free Zooming & Explicit City Selection
-      let activeCity = selectedCityFilter !== 'all' ? selectedCityFilter : null;
-      if (!activeCity && r > baseRadius * 12.0) {{
-        let closestDist = Infinity;
-        let closestCity = null;
-        for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {{
-          const c = ALL_CITIES_REGISTRY[i];
-          const dDeg = Math.hypot(c.lon - rotLon, c.lat - rotLat);
-          if (dDeg < closestDist) {{
-            closestDist = dDeg;
-            closestCity = c;
-          }}
-        }}
-        if (closestCity && closestDist < 2.5) {{
-          activeCity = closestCity.name;
-        }}
-      }}
-      const isCityZoom = !!activeCity && r > baseRadius * 12.0;
-
       // Update Unified Navigation Banner (Country View + City Street View + World View)
       const cityBanner = document.getElementById('cityViewControlBanner');
       const cityTitleEl = document.getElementById('cityViewTitleText');
@@ -13759,16 +13747,15 @@ def build():
       const badgeIcon = document.getElementById('cityViewBadgeIcon');
 
       if (cityBanner) {{
-        if (isCityStreetViewActive) {{
+        if (isCityStreetViewActive || selectedCityFilter !== 'all') {{
           cityBanner.classList.remove('hidden');
-        }} else if (isCityZoom && activeCity) {{
-          cityBanner.classList.remove('hidden');
-          const cityMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, activeCity));
-          const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, activeCity));
+          const targetCity = selectedCityFilter !== 'all' ? selectedCityFilter : (typeof curatorContext !== 'undefined' && curatorContext.lastCity ? curatorContext.lastCity : '');
+          const cityMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, targetCity));
+          const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, targetCity));
           const cityCountry = cityMeta ? cityMeta.country : lastSelectedCountry;
           if (badgeIcon) badgeIcon.textContent = '';
           if (cityTitleEl) {{
-            cityTitleEl.textContent = `${{activeCity.toUpperCase()}} · ${{cityMatches.length}} CULTURAL SPACES`;
+            cityTitleEl.textContent = `${{targetCity.toUpperCase()}} · ${{cityMatches.length}} CULTURAL SPACES`;
           }}
           if (backCountryBtn && cityCountry) {{
             backCountryBtn.classList.remove('hidden');
@@ -13790,10 +13777,9 @@ def build():
         }}
       }}
 
-      if (!isCityZoom) {{
-        // =======================================================
-        // 🌍 GLOBAL & REGIONAL 3D SPHERE VIEW
-        // =======================================================
+      // =======================================================
+      // 🌍 GLOBAL & REGIONAL 3D SPHERE VIEW
+      // =======================================================
 
         // 0. Cinematic Distant Starfield (Fades out smoothly as camera approaches Earth)
         if (r < baseRadius * 3.2) {{
@@ -14704,483 +14690,10 @@ def build():
           isHoveringCityExploreLink = false;
         }}
 
-      }} else {{
-        // =======================================================
-        // =======================================================
-        // 🗺️ DEEP ZOOM CITY VIEW: PRISTINE ARCHITECTURAL CARTOGRAPHY
-        // =======================================================
-        const cityData = getCityStreetData(activeCity);
 
-        // 1. Regional Ocean & Water Surface Background
-        ctx.fillStyle = '#050a14';
-        ctx.fillRect(0, 0, width, height);
-
-        // 2. Base Landmass Backdrop for Focused City
-        ctx.fillStyle = '#070f1e';
-        ctx.fillRect(0, 0, width, height);
-
-        // 3. Subtle Ambient City Focus Spotlight
-        const cityCenter = cityData && cityData.center ? cityData.center : [rotLon, rotLat];
-        const cProj = project(cityCenter[0], cityCenter[1], r, cx, cy);
-        if (cProj.front) {{
-          const grad = ctx.createRadialGradient(cProj.x, cProj.y, 15, cProj.x, cProj.y, Math.max(width, height) * 0.65);
-          grad.addColorStop(0, 'rgba(15, 30, 54, 0.40)');
-          grad.addColorStop(0.5, 'rgba(10, 20, 36, 0.18)');
-          grad.addColorStop(1, 'rgba(5, 10, 20, 0)');
-          ctx.fillStyle = grad;
-          ctx.fillRect(0, 0, width, height);
-        }}
-
-        // 4. Subtle City Watermark in Background
-        if (activeCity) {{
-          ctx.save();
-          ctx.font = '200 27px "PP Telegraf", "PP Telegraph", sans-serif';
-          ctx.fillStyle = 'rgba(148, 163, 184, 0.06)';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(activeCity.toUpperCase(), width / 2, Math.max(65, height * 0.16));
-          ctx.restore();
-        }}
-
-        // 5. Curated Waterways (Only for real curated networks, zero text clutter)
-        if (cityData && cityData.waterways && cityData.waterways.length > 0) {{
-          ctx.save();
-          cityData.waterways.forEach(w => {{
-            if (!w.pts || w.pts.length < 2) return;
-            ctx.beginPath();
-            let started = false;
-            w.pts.forEach(pt => {{
-              const p = project(pt[0], pt[1], r, cx, cy);
-              if (p.front) {{
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
-            }});
-            if (started) {{
-              ctx.lineCap = 'round';
-              ctx.lineJoin = 'round';
-              ctx.strokeStyle = '#081729';
-              ctx.lineWidth = (w.width || 18) + 6;
-              ctx.stroke();
-              ctx.strokeStyle = '#0e2947';
-              ctx.lineWidth = (w.width || 18);
-              ctx.stroke();
-            }}
-          }});
-          ctx.restore();
-        }}
-
-        // 6. Curated Parks (Only for real curated networks)
-        if (cityData && cityData.parks && cityData.parks.length > 0) {{
-          ctx.save();
-          cityData.parks.forEach(park => {{
-            if (!park.pts || park.pts.length < 3) return;
-            ctx.beginPath();
-            let started = false;
-            park.pts.forEach(pt => {{
-              const p = project(pt[0], pt[1], r, cx, cy);
-              if (p.front) {{
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
-            }});
-            if (started) {{
-              ctx.closePath();
-              ctx.fillStyle = '#0a1d15';
-              ctx.fill();
-              ctx.strokeStyle = '#143d26';
-              ctx.lineWidth = 1;
-              ctx.stroke();
-            }}
-          }});
-          ctx.restore();
-        }}
-
-        // 6.5 Secondary Streets & Cadastral Block Grid
-        if (cityData && cityData.secondary_streets && cityData.secondary_streets.length > 0) {{
-          ctx.save();
-          ctx.strokeStyle = '#0f1b2d';
-          ctx.lineWidth = 1.0;
-          ctx.lineCap = 'round';
-          cityData.secondary_streets.forEach(s => {{
-            if (!s.pts || s.pts.length < 2) return;
-            ctx.beginPath();
-            let started = false;
-            s.pts.forEach(pt => {{
-              const p = project(pt[0], pt[1], r, cx, cy);
-              if (p.front) {{
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
-            }});
-            if (started) ctx.stroke();
-          }});
-          ctx.restore();
-        }}
-
-        // 7. Curated Major Arterial Streets & Boulevards
-        if (cityData && cityData.major_streets && cityData.major_streets.length > 0) {{
-          ctx.save();
-          ctx.strokeStyle = '#1d314d';
-          ctx.lineWidth = 2.0;
-          ctx.lineCap = 'round';
-          cityData.major_streets.forEach(s => {{
-            if (!s.pts || s.pts.length < 2) return;
-            ctx.beginPath();
-            let started = false;
-            s.pts.forEach(pt => {{
-              const p = project(pt[0], pt[1], r, cx, cy);
-              if (p.front) {{
-                if (!started) {{ ctx.moveTo(p.x, p.y); started = true; }}
-                else ctx.lineTo(p.x, p.y);
-              }}
-            }});
-            if (started) ctx.stroke();
-          }});
-          ctx.restore();
-        }}
-
-        // 8. Render City Cultural Institutions (Exact Pins & Anti-Collision Badges)
-        cityMuseumHitboxes = [];
-        const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, activeCity));
-
-        const projectedInsts = [];
-        cityInsts.forEach(inst => {{
-          const pt = project(inst.lon, inst.lat, r, cx, cy);
-          if (pt.front) {{
-            projectedInsts.push({{ inst, pt }});
-          }}
-        }});
-
-        // First pass: render crisp pins & haloes
-        projectedInsts.forEach(({{ inst, pt }}) => {{
-          const isSel = selectedInstitution && selectedInstitution.name === inst.name;
-          const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
-          const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#be95ff' : '#08bdba';
-
-          ctx.save();
-          // Pulsing radar ring on active institution
-          if (isSel) {{
-            const pTime = (Date.now() % 2200) / 2200;
-            const pRadius = 12 + pTime * 28;
-            const pAlpha = (1 - pTime) * 0.70;
-            ctx.beginPath();
-            ctx.arc(pt.x, pt.y, pRadius, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(96, 165, 250, ${{pAlpha}})`;
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
-          }}
-
-          // Halo
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, isSel ? 16 : isHov ? 12 : 8, 0, Math.PI * 2);
-          ctx.fillStyle = isSel ? 'rgba(96, 165, 250, 0.25)' : inst.tier === 'A' ? 'rgba(16, 185, 129, 0.22)' : inst.tier === 'B' ? 'rgba(190, 149, 255, 0.25)' : 'rgba(8, 189, 186, 0.20)';
-          ctx.fill();
-
-          // Stroke ring
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, isSel ? 10 : isHov ? 8 : 6, 0, Math.PI * 2);
-          ctx.strokeStyle = isSel ? '#ffffff' : tierColor;
-          ctx.lineWidth = isSel ? 2 : 1.2;
-          ctx.stroke();
-
-          // Center solid dot
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, isSel ? 5 : isHov ? 4.5 : 3.5, 0, Math.PI * 2);
-          ctx.fillStyle = tierColor;
-          ctx.fill();
-          ctx.restore();
-        }});
-
-        // Curator Thinking City Glowing Dot on 3D Globe (Mode-Aware Colors)
-        if (typeof isCuratorThinkingActive !== 'undefined' && isCuratorThinkingActive && typeof curatorThinkingTargetCoord !== 'undefined' && curatorThinkingTargetCoord) {{
-          const cPt = project([curatorThinkingTargetCoord.lon, curatorThinkingTargetCoord.lat]);
-          if (cPt && cPt.visible) {{
-            ctx.save();
-            const mode = (typeof currentThinkingPlan !== 'undefined' && currentThinkingPlan && currentThinkingPlan.mode) ? currentThinkingPlan.mode : (typeof getChatModeConfig === 'function' ? getChatModeConfig('') : {{ color: '#60a5fa', rgb: '96, 165, 250' }});
-            const colorRgb = mode.rgb || '96, 165, 250';
-            const pTime = (Date.now() % 1600) / 1600;
-            const pRadius = 12 + pTime * 38;
-            const pAlpha = (1 - pTime) * 0.85;
-
-            // Concentric radar beacon wave 1
-            ctx.beginPath();
-            ctx.arc(cPt.x, cPt.y, pRadius, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(${{colorRgb}}, ${{pAlpha}})`;
-            ctx.lineWidth = 2.2;
-            ctx.stroke();
-
-            // Concentric radar beacon wave 2
-            const pTime2 = ((Date.now() + 800) % 1600) / 1600;
-            const pRadius2 = 12 + pTime2 * 38;
-            const pAlpha2 = (1 - pTime2) * 0.85;
-            ctx.beginPath();
-            ctx.arc(cPt.x, cPt.y, pRadius2, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(${{colorRgb}}, ${{pAlpha2}})`;
-            ctx.lineWidth = 1.6;
-            ctx.stroke();
-
-            // Glowing atmospheric city halo
-            ctx.beginPath();
-            ctx.arc(cPt.x, cPt.y, 20, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${{colorRgb}}, 0.32)`;
-            ctx.fill();
-
-            // Solid inner ring
-            ctx.beginPath();
-            ctx.arc(cPt.x, cPt.y, 8, 0, Math.PI * 2);
-            ctx.strokeStyle = '#ffffff';
-            ctx.lineWidth = 2.2;
-            ctx.stroke();
-
-            // Central solid glowing city dot
-            ctx.beginPath();
-            ctx.arc(cPt.x, cPt.y, 5, 0, Math.PI * 2);
-            ctx.fillStyle = mode.color;
-            ctx.fill();
-
-            // Curator City Node Pill Badge
-            const labelText = `Curator · ${{curatorThinkingTargetCoord.name || 'City Node'}}`;
-            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
-            const tw = ctx.measureText(labelText).width;
-            const lx = cPt.x - tw / 2 - 8;
-            const ly = cPt.y - 32;
-            ctx.fillStyle = 'rgba(15, 17, 23, 0.90)';
-            ctx.strokeStyle = `rgba(${{colorRgb}}, 0.85)`;
-            ctx.lineWidth = 1.2;
-            ctx.beginPath();
-            if (ctx.roundRect) ctx.roundRect(lx, ly, tw + 16, 24, 12);
-            else ctx.rect(lx, ly, tw + 16, 24);
-            ctx.fill();
-            ctx.stroke();
-
-            ctx.fillStyle = '#ffffff';
-            ctx.fillText(labelText, lx + 8, ly + 16);
-            ctx.restore();
-          }}
-        }}
-
-        // Second pass: position and render non-colliding callout badges
-        // Clear global city hitboxes to prevent phantom clicks
-        cityBadgeHitboxes = [];
-
-        // In dense cities (> 6 institutions), prioritize selected, hovered, and top 5 institutions
-        let displayList = [...projectedInsts];
-        if (projectedInsts.length > 6) {{
-          displayList.sort((a, b) => {{
-            const aSel = selectedInstitution && selectedInstitution.name === a.inst.name;
-            const bSel = selectedInstitution && selectedInstitution.name === b.inst.name;
-            if (aSel) return -1;
-            if (bSel) return 1;
-            const aHov = hoveredInstitution && hoveredInstitution.name === a.inst.name;
-            const bHov = hoveredInstitution && hoveredInstitution.name === b.inst.name;
-            if (aHov) return -1;
-            if (bHov) return 1;
-            return b.inst.lat - a.inst.lat;
-          }});
-          // Cap at 6 expanded badges to guarantee zero screen overcrowding
-          displayList = displayList.slice(0, 6);
-        }} else {{
-          displayList.sort((a, b) => b.inst.lat - a.inst.lat);
-        }}
-
-        const placedBoxes = [];
-        const bh = 42;
-
-        displayList.forEach(({{ inst, pt }}) => {{
-          const isSel = selectedInstitution && selectedInstitution.name === inst.name;
-          const isHov = hoveredInstitution && hoveredInstitution.name === inst.name;
-          const tierColor = inst.tier === 'A' ? '#10b981' : inst.tier === 'B' ? '#be95ff' : '#08bdba';
-
-          const webUrl = getValidWebUrl(inst);
-          const domain = getDisplayDomain(webUrl) || 'website';
-
-          ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
-          const nameTxt = inst.name;
-          const nw = ctx.measureText(nameTxt).width;
-
-          const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Independent' : (inst.tier === 'B' ? 'Flagged Underwriting' : 'Unverified Space'));
-          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
-          const sw = ctx.measureText(subTxt).width;
-
-          const bw = Math.min(320, Math.max(170, Math.max(nw, sw) + 28 + (webUrl ? 26 : 0)));
-
-          // Candidates to test
-          const candidateOffsets = [
-            {{ dx: 24, dy: -bh / 2 }},
-            {{ dx: 24, dy: -bh - 10 }},
-            {{ dx: 24, dy: 10 }},
-            {{ dx: -bw - 24, dy: -bh / 2 }},
-            {{ dx: -bw - 24, dy: -bh - 10 }},
-            {{ dx: -bw - 24, dy: 10 }},
-            {{ dx: -bw / 2, dy: -bh - 28 }},
-            {{ dx: -bw / 2, dy: 28 }}
-          ];
-
-          let bestX = pt.x + 24;
-          let bestY = pt.y - bh / 2;
-          let foundClean = false;
-
-          for (const slot of candidateOffsets) {{
-            let candX = Math.max(16, Math.min(width - bw - 16, pt.x + slot.dx));
-            let candY = Math.max(48, Math.min(height - bh - 48, pt.y + slot.dy));
-
-            const collides = placedBoxes.some(box => {{
-              return !(candX + bw + 12 < box.x || candX > box.x + box.w + 12 ||
-                       candY + bh + 12 < box.y || candY > box.y + box.h + 12);
-            }});
-
-            if (!collides) {{
-              bestX = candX;
-              bestY = candY;
-              foundClean = true;
-              break;
-            }}
-          }}
-
-          if (!foundClean) {{
-            if (!isSel && !isHov) {{
-              return;
-            }}
-            bestX = Math.max(16, Math.min(width - bw - 16, pt.x + 24));
-            bestY = Math.max(48, Math.min(height - bh - 48, pt.y - bh / 2));
-          }}
-
-          placedBoxes.push({{ x: bestX, y: bestY, w: bw, h: bh }});
-
-          // Leader line from pin to badge
-          let attachX = bestX > pt.x ? bestX : bestX + bw;
-          let attachY = bestY + bh / 2;
-
-          ctx.save();
-          ctx.beginPath();
-          ctx.moveTo(pt.x, pt.y);
-          ctx.lineTo(attachX, attachY);
-          ctx.strokeStyle = isSel ? '#60a5fa' : isHov ? '#38bdf8' : 'rgba(56, 189, 248, 0.40)';
-          ctx.lineWidth = isSel ? 1.5 : 1;
-          ctx.stroke();
-          ctx.restore();
-
-          // Card Background
-          ctx.save();
-          ctx.fillStyle = isSel ? 'rgba(15, 23, 42, 0.97)' : isHov ? 'rgba(15, 23, 42, 0.94)' : 'rgba(10, 16, 28, 0.92)';
-          ctx.beginPath();
-          ctx.roundRect ? ctx.roundRect(bestX, bestY, bw, bh, 6) : ctx.rect(bestX, bestY, bw, bh);
-          ctx.fill();
-
-          ctx.strokeStyle = isSel ? '#60a5fa' : isHov ? '#38bdf8' : (inst.tier === 'A' ? 'rgba(16, 185, 129, 0.45)' : 'rgba(56, 189, 248, 0.35)');
-          ctx.lineWidth = isSel ? 1.5 : 1;
-          ctx.stroke();
-
-          // Left tier accent bar
-          ctx.fillStyle = tierColor;
-          ctx.beginPath();
-          ctx.roundRect ? ctx.roundRect(bestX, bestY, 3.5, bh, [6, 0, 0, 6]) : ctx.rect(bestX, bestY, 3.5, bh);
-          ctx.fill();
-
-          // Institution Name
-          ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
-          ctx.fillStyle = isSel ? '#ffffff' : '#f8fafc';
-          ctx.textAlign = 'left';
-          ctx.textBaseline = 'top';
-          ctx.fillText(nameTxt, bestX + 10, bestY + 5);
-
-          // Subtitle
-          ctx.beginPath();
-          ctx.arc(bestX + 12, bestY + 28, 2, 0, Math.PI * 2);
-          ctx.fillStyle = tierColor;
-          ctx.fill();
-
-          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
-          ctx.fillStyle = '#94a3b8';
-          ctx.fillText(subTxt, bestX + 18, bestY + 23);
-
-          // Direct Web Link Button on Badge
-          let webBtnData = null;
-          if (webUrl) {{
-            const webBtnW = 22;
-            const webBtnH = 22;
-            const webBtnX = bestX + bw - webBtnW - 6;
-            const webBtnY = bestY + 10;
-
-            ctx.fillStyle = isHov ? 'rgba(37, 99, 235, 0.45)' : 'rgba(37, 99, 235, 0.25)';
-            ctx.strokeStyle = 'rgba(96, 165, 250, 0.75)';
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.roundRect ? ctx.roundRect(webBtnX, webBtnY, webBtnW, webBtnH, 4) : ctx.rect(webBtnX, webBtnY, webBtnW, webBtnH);
-            ctx.fill();
-            ctx.stroke();
-
-            ctx.font = '200 14px "PP Telegraf", sans-serif';
-            ctx.fillStyle = '#93c5fd';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            
-
-            webBtnData = {{ x: webBtnX, y: webBtnY, w: webBtnW, h: webBtnH, url: webUrl }};
-          }}
-          ctx.restore();
-
-          cityMuseumHitboxes.push({{
-            inst: inst,
-            x: bestX,
-            y: bestY,
-            w: bw,
-            h: bh,
-            pinX: pt.x,
-            pinY: pt.y,
-            webBtn: webBtnData
-          }});
-        }});
-
-        // Register hitboxes and floating labels for remaining pins so EVERY space is labeled on all points of view
-        projectedInsts.forEach(({{ inst, pt }}) => {{
-          const already = cityMuseumHitboxes.some(h => h.inst.name === inst.name);
-          if (!already) {{
-            cityMuseumHitboxes.push({{
-              inst: inst,
-              x: pt.x - 14,
-              y: pt.y - 14,
-              w: 28,
-              h: 28,
-              pinX: pt.x,
-              pinY: pt.y
-            }});
-
-            // Floating name label on top of dot
-            ctx.save();
-            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'bottom';
-            const nameTxt = inst.name.length > 25 ? inst.name.substring(0, 23) + '…' : inst.name;
-            const tw = ctx.measureText(nameTxt).width;
-            const bx = pt.x - tw / 2 - 6;
-            const by = pt.y - 22;
-            ctx.fillStyle = 'rgba(18, 20, 26, 0.94)';
-            if (ctx.roundRect) ctx.roundRect(bx, by, tw + 12, 20, 4);
-            else ctx.rect(bx, by, tw + 12, 20);
-            ctx.fill();
-            ctx.strokeStyle = inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : 'rgba(56, 189, 248, 0.65)';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-            ctx.fillStyle = '#f8fafc';
-            ctx.fillText(nameTxt, pt.x, pt.y - 6);
-            ctx.restore();
-          }}
-        }});
-
-        // Tooltip for non-card pins when hovered
-        if (hoveredInstitution) {{
-          const hPin = cityMuseumHitboxes.find(h => h.inst.name === hoveredInstitution.name);
-          const isCardExpanded = displayList.some(d => d.inst.name === hoveredInstitution.name);
-          if (hPin && !isCardExpanded) {{
-            drawInstitutionMicroCard(ctx, hPin.inst, hPin.pinX, hPin.pinY, width, height);
-          }}
-        }}
-      }}
 
       // Live Cartographic HUD (Scale Bar, Coordinates, Interactive Compass Rose)
-      if (r > baseRadius * 1.3 || isCityZoom) {{
+      if (r > baseRadius * 1.3) {{
         ctx.save();
         const actualKmPerPx = 6371 / r;
         const targetPx = 90;
@@ -15340,13 +14853,11 @@ def build():
             floatingCard.style.left = `${{clampedX}}px`;
           }}
 
-          if (!isCityZoom) {{
-            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
-            ctx.fillStyle = '#ffffff';
-            ctx.textAlign = 'left';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(selectedInstitution.name, pt.x + 12, pt.y);
-          }}
+          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.fillStyle = '#ffffff';
+          ctx.textAlign = 'left';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(selectedInstitution.name, pt.x + 12, pt.y);
         }} else {{
           floatingCard.classList.add('hidden');
         }}
@@ -27086,7 +26597,7 @@ FORMATTING & INTERACTION RULES:
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
       const clickedInst = findInstitutionAt(mx, my);
       if (clickedInst) {{
-        selectInstitution(clickedInst, true);
+        selectInstitution(clickedInst, false);
         return;
       }}
 
@@ -27408,14 +26919,23 @@ FORMATTING & INTERACTION RULES:
       }}
       if (e.key === '+' || e.key === '=') {{
         e.preventDefault();
-        isAutoSpinning = false;
-        targetRadius = Math.min(getMaxRadius(), targetRadius * 1.30);
+        if (isCityStreetViewActive && cityVectorMap) {{
+          cityVectorMap.zoomIn();
+        }} else {{
+          isAutoSpinning = false;
+          targetRadius = Math.min(getMaxRadius(), targetRadius * 1.35);
+        }}
       }} else if (e.key === '-' || e.key === '_') {{
         e.preventDefault();
-        targetRadius = Math.max(getMinRadius(), targetRadius * 0.77);
-        if (targetRadius < baseRadius * 3.5 && selectedCityFilter !== 'all') {{
-          selectedCityFilter = 'all';
-          applyFilters();
+        if (isCityStreetViewActive && cityVectorMap) {{
+          cityVectorMap.zoomOut();
+        }} else {{
+          targetRadius = Math.max(getMinRadius(), targetRadius * 0.74);
+          if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {{
+            selectedCountryFilter = 'all';
+            applyFilters();
+            renderGlobeBarDefault();
+          }}
         }}
       }} else if (e.key === 'ArrowLeft') {{
         e.preventDefault();
@@ -27593,64 +27113,18 @@ FORMATTING & INTERACTION RULES:
       document.getElementById('detailDrawer').classList.add('hidden');
     }});
 
-    // Smooth, Gradual Exponential Wheel & Trackpad Zoom with Cursor Targeting
+    // Smooth, Gradual Exponential Wheel & Trackpad Zoom (Predictable & Stable)
     canvas.addEventListener('wheel', e => {{
       e.preventDefault();
       isAutoSpinning = false;
-
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      const cx = width / 2;
-      const cy = height / 2;
 
       const delta = e.deltaY * (e.deltaMode === 1 ? 18 : e.deltaMode === 2 ? 260 : 1);
       // Gentle exponential scaling factor bounded per event (approx 1% - 6% gradual change)
       const factor = Math.exp(-delta * 0.0016);
       const clampedFactor = Math.max(0.91, Math.min(1.09, factor));
 
-      // Calculate geographic point under mouse cursor before zooming
-      const geoBefore = unproject(mx, my, currentRadius, cx, cy);
-
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius * clampedFactor));
 
-      // If zooming in and cursor is over the globe, gently bias rotation towards cursor
-      if (clampedFactor > 1.0 && geoBefore && isFinite(geoBefore.lon) && isFinite(geoBefore.lat)) {{
-        let dLon = (geoBefore.lon - rotLon) % 360;
-        if (dLon > 180) dLon -= 360;
-        if (dLon < -180) dLon += 360;
-        const dLat = geoBefore.lat - rotLat;
-        const nudge = Math.min(0.20, (clampedFactor - 1.0) * 1.4);
-        rotLon = (rotLon + dLon * nudge) % 360;
-        rotLat = Math.max(-80, Math.min(80, rotLat + dLat * nudge));
-      }}
-
-      // When zooming deep into the globe, seamlessly transition into interactive city street view
-      if (targetRadius > baseRadius * 8.0 && !isCityStreetViewActive) {{
-        let closestDist = Infinity;
-        let closestCity = null;
-        for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {{
-          const c = ALL_CITIES_REGISTRY[i];
-          const dDeg = Math.hypot(c.lon - rotLon, c.lat - rotLat);
-          if (dDeg < closestDist) {{
-            closestDist = dDeg;
-            closestCity = c;
-          }}
-        }}
-        if (closestCity && closestDist < 3.5) {{
-          filterByCity(closestCity.name, true, false);
-        }}
-      }}
-
-      if (targetRadius < baseRadius * 3.5 && selectedCityFilter !== 'all') {{
-        selectedCityFilter = 'all';
-        applyFilters();
-        if (selectedCountryFilter !== 'all') {{
-          updateGlobeBarForCountry(selectedCountryFilter);
-        }} else {{
-          renderGlobeBarDefault();
-        }}
-      }}
       if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {{
         selectedCountryFilter = 'all';
         applyFilters();
@@ -27724,24 +27198,23 @@ FORMATTING & INTERACTION RULES:
     }});
 
     document.getElementById('zoomInBtn')?.addEventListener('click', () => {{
-      isAutoSpinning = false;
-      targetRadius = Math.min(getMaxRadius(), targetRadius * 1.30);
+      if (isCityStreetViewActive && cityVectorMap) {{
+        cityVectorMap.zoomIn();
+      }} else {{
+        isAutoSpinning = false;
+        targetRadius = Math.min(getMaxRadius(), targetRadius * 1.35);
+      }}
     }});
     document.getElementById('zoomOutBtn')?.addEventListener('click', () => {{
-      targetRadius = Math.max(getMinRadius(), targetRadius * 0.77);
-      if (targetRadius < baseRadius * 3.5 && selectedCityFilter !== 'all') {{
-        selectedCityFilter = 'all';
-        applyFilters();
-        if (selectedCountryFilter !== 'all') {{
-          updateGlobeBarForCountry(selectedCountryFilter);
-        }} else {{
+      if (isCityStreetViewActive && cityVectorMap) {{
+        cityVectorMap.zoomOut();
+      }} else {{
+        targetRadius = Math.max(getMinRadius(), targetRadius * 0.74);
+        if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {{
+          selectedCountryFilter = 'all';
+          applyFilters();
           renderGlobeBarDefault();
         }}
-      }}
-      if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {{
-        selectedCountryFilter = 'all';
-        applyFilters();
-        renderGlobeBarDefault();
       }}
     }});
     document.getElementById('exitStreetViewBtn')?.addEventListener('click', (e) => {{
