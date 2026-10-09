@@ -1381,7 +1381,7 @@ def build():
         <button id="topGovernanceBtn" class="flex items-center gap-1.5 px-5 py-2 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] hover:border-[#3b5585] text-slate-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Governance & Funding Transparency Methodology Legend">
           <span>Methodology</span>
         </button>
-        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#271206] hover:bg-[#381a09] border border-orange-900/60 hover:border-orange-700/80 text-orange-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
+        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#271206] hover:bg-[#381a09] border border-orange-900/60 hover:border-orange-700/80 text-orange-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
           <span>Gossip Mode</span>
         </button>
         <button id="topContributeBtn" class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#09261b] via-[#0d3425] to-[#082218] hover:from-[#0e3b2a] hover:to-[#114733] border border-emerald-500/70 hover:border-emerald-400 text-emerald-200 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-medium shadow-md shadow-emerald-950/60 active:scale-95" title="Contribute confidential insider intelligence or unlisted independent spaces">
@@ -1407,7 +1407,7 @@ def build():
         </svg>
       </button>
 
-      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-3 py-1 bg-[#271206] hover:bg-[#381a09] border border-orange-700/80 text-orange-300 rounded-full text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
+      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-3 py-1 bg-[#271206] hover:bg-[#381a09] border border-orange-700/80 text-orange-300 rounded-full text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
         <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
         <span>Gossip</span>
       </button>
@@ -10426,7 +10426,7 @@ def build():
           mobileBtn.innerHTML = '<span>Gossip ACTIVE</span>';
         }}
         if (typeof appendBotMessage === 'function') {{
-          appendBotMessage("**Gossip & Whispers Mode Activated**: Atmospheric backchannel layer mapping institutions via Reddit debates (r/contemporaryart, r/museums), curatorial Twitter/X discourse, and insider whispers. High-rumor spaces radiate in secondary warm amber-orange. Click any institution to view unvarnished rumors and curatorial dossiers.");
+          appendBotMessage("**Gossip & Whispers Mode Activated**: Atmospheric backchannel layer mapping institutions via curatorial whispers, verified insider reports, and independent discourse. High-rumor spaces radiate in secondary warm amber-orange. Click any institution to view unvarnished rumors and curatorial dossiers.");
         }}
       }} else {{
         document.body.classList.remove('gossip-mode-active');
