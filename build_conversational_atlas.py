@@ -13353,35 +13353,75 @@ def build():
           }}
         }});
 
-        // 7. Country Centroid Names (Strict Non-Overlapping & Enhanced Contrast)
-        if (r > baseRadius * 0.8 && r < baseRadius * 2.8) {{
-          const fadeAlpha = r > baseRadius * 1.8 ? Math.max(0, 1 - (r - baseRadius * 1.8) / (baseRadius * 1.0)) : 1.0;
+        // 7. Country Centroid Names (Ultra High Contrast, Protective Backing Plate & Non-Overlapping)
+        if (r > baseRadius * 0.65 && r < baseRadius * 4.2) {{
+          const fadeAlpha = r > baseRadius * 3.2 
+            ? Math.max(0, 1 - (r - baseRadius * 3.2) / (baseRadius * 0.9)) 
+            : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '13px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '13.5px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
+          const drawnCountryBoxes = [];
+
           COUNTRY_CENTROIDS.forEach(c => {{
             const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
+            const isHov = hoveredCountry && matchC(c.name, hoveredCountry);
             if (selectedCountryFilter === 'all' || isSel) {{
               const pt = project(c.lon, c.lat, r, cx, cy);
-              if (pt.front && pt.depth > 0.12) {{
+              if (pt.front && pt.depth > 0.08) {{
                 const ctw = ctx.measureText(c.name).width;
-                const cBox = {{ x: pt.x - ctw / 2 - 8, y: pt.y - 10, w: ctw + 16, h: 20 }};
+                const bw = ctw + 14;
+                const bh = 22;
+                const bx = pt.x - bw / 2;
+                const by = pt.y - bh / 2;
+                const cBox = {{ x: bx, y: by, w: bw, h: bh }};
 
-                // Strictly check collision against ALL drawn city badge boxes (with 12px padding)
+                // Strictly check collision against ALL drawn city badge boxes AND other country boxes
                 const collidesWithCity = drawnCityBoxes.some(box => {{
-                  return !(cBox.x + cBox.w + 12 < box.x || cBox.x > box.x + box.w + 12 || cBox.y + cBox.h + 10 < box.y || cBox.y > box.y + box.h + 10);
+                  return !(cBox.x + cBox.w + 10 < box.x || cBox.x > box.x + box.w + 10 || cBox.y + cBox.h + 8 < box.y || cBox.y > box.y + box.h + 8);
+                }});
+                const collidesWithCountry = drawnCountryBoxes.some(box => {{
+                  return !(cBox.x + cBox.w + 8 < box.x || cBox.x > box.x + box.w + 8 || cBox.y + cBox.h + 6 < box.y || cBox.y > box.y + box.h + 6);
                 }});
 
-                // Avoid overlapping city pills, ensure clean high contrast
-                if (!collidesWithCity || isSel) {{
-                  ctx.fillStyle = isSel ? '#38bdf8' : (isGossipModeActive ? '#fde047' : '#94a3b8');
-                  ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
-                  ctx.shadowBlur = 6;
-                  ctx.fillText(c.name, pt.x, pt.y);
-                  ctx.shadowBlur = 0;
+                // Avoid overlapping city pills and other country pills, ensure maximum contrast
+                if ((!collidesWithCity && !collidesWithCountry) || isSel || isHov) {{
+                  drawnCountryBoxes.push(cBox);
+
+                  // High-contrast protective dark backing plate
+                  ctx.fillStyle = isSel 
+                    ? 'rgba(12, 38, 70, 0.92)' 
+                    : isHov
+                    ? 'rgba(20, 30, 50, 0.92)'
+                    : (isGossipModeActive ? 'rgba(28, 22, 6, 0.90)' : 'rgba(5, 9, 18, 0.88)');
+                  ctx.beginPath();
+                  ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 5) : ctx.rect(bx, by, bw, bh);
+                  ctx.fill();
+
+                  ctx.strokeStyle = isSel 
+                    ? '#38bdf8' 
+                    : isHov
+                    ? '#60a5fa'
+                    : (isGossipModeActive ? 'rgba(250, 204, 21, 0.6)' : 'rgba(255, 255, 255, 0.3)');
+                  ctx.lineWidth = isSel || isHov ? 1.5 : 1.0;
+                  ctx.stroke();
+
+                  // Crisp solid dark outline halo around text for 100% razor-sharp edge definition
+                  ctx.strokeStyle = 'rgba(0, 0, 0, 0.95)';
+                  ctx.lineWidth = 3.0;
+                  ctx.lineJoin = 'round';
+                  ctx.strokeText(c.name, pt.x, pt.y + 0.5);
+
+                  // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
+                  ctx.fillStyle = isSel 
+                    ? '#38bdf8' 
+                    : isHov
+                    ? '#ffffff'
+                    : (isGossipModeActive ? '#fef08a' : '#ffffff');
+                  ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }}
               }}
             }}
