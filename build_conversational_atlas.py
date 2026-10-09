@@ -903,7 +903,10 @@ def build():
       <!-- Desktop Center New Chat Button, Archives Directory, Governance Legend & Separate Contribute Button -->
       <div class="hidden md:flex items-center gap-2">
         <button id="topNewChatBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-full text-[14px] transition shadow-sm cursor-pointer" title="Start a new chat exploration">
-          <span class="text-emerald-400 font-bold">+</span>
+          <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
           <span>New Chat</span>
         </button>
         <button id="topArchivesBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] hover:border-[#3b5585] text-[#93c5fd] hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Explore the Global Archives & Special Collections Directory">
@@ -933,8 +936,11 @@ def build():
       </div>
 
       <!-- Mobile + New Chat Icon Button, Mobile Archives & Mobile Intel Button -->
-      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-emerald-400 hover:text-white rounded-full text-[15px] sm:text-[16px] font-bold transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
-        +
+      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-emerald-400 hover:text-white rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
       </button>
 
       <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
@@ -1312,8 +1318,17 @@ def build():
           <span id="hudExpandText">Expand</span>
         </button>
         <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5 shrink-0"></div>
-        <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition text-[14px] sm:text-[15px] cursor-pointer shrink-0" title="Zoom In">+</button>
-        <button id="zoomOutBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition text-[14px] sm:text-[15px] cursor-pointer shrink-0" title="Zoom Out">−</button>
+        <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition cursor-pointer shrink-0" title="Zoom In">
+          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+        <button id="zoomOutBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition cursor-pointer shrink-0" title="Zoom Out">
+          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
       </div>
 
     </div>
@@ -1462,8 +1477,11 @@ def build():
             <div class="flex items-center justify-between pt-1">
               <!-- Left: Plus action button and Contribute Intel button -->
               <div class="flex items-center gap-1.5 sm:gap-2">
-                <button id="workPlusBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center text-[16px] sm:text-[18px] transition active:scale-95 cursor-pointer font-normal shrink-0" title="Quick filters">
-                  +
+                <button id="workPlusBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0" title="Quick filters">
+                  <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
                 </button>
                 <button id="chatContributeBtn" type="button" class="text-[12px] sm:text-[13px] bg-gradient-to-r from-emerald-950/90 to-[#0e3b2a] hover:from-emerald-900 hover:to-[#134e38] text-emerald-300 hover:text-white border border-emerald-500/60 hover:border-emerald-400 flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full transition cursor-pointer font-medium shrink-0 shadow-sm" title="Contribute confidential intel, donor agreements, or whistleblower leaks (in-chat)">
                   <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -2623,8 +2641,17 @@ def build():
 
         <!-- Graph View Zoom & Reset Actions -->
         <div class="flex items-center gap-1.5 shrink-0">
-          <button id="trusteeZoomInBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 font-mono text-sm flex items-center justify-center transition cursor-pointer" title="Zoom In">+</button>
-          <button id="trusteeZoomOutBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 font-mono text-sm flex items-center justify-center transition cursor-pointer" title="Zoom Out">−</button>
+          <button id="trusteeZoomInBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 flex items-center justify-center transition cursor-pointer" title="Zoom In">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <button id="trusteeZoomOutBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 flex items-center justify-center transition cursor-pointer" title="Zoom Out">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
           <button id="trusteeResetGraphBtn" class="px-2.5 py-1 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 text-xs font-mono transition cursor-pointer flex items-center gap-1" title="Reset Force Simulation and Zoom">
             <span>Reset</span>
           </button>
