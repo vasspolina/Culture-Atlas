@@ -1478,7 +1478,7 @@ def build():
 
       <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
       <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[10%] pt-4 pb-2 w-full bg-transparent" style="padding-left: 10%; padding-right: 10%;">
-        <div class="w-full max-w-3xl flex flex-col items-center">
+        <div id="curatorScrollContent" class="w-full max-w-3xl flex flex-col items-center">
           
           <!-- Active Conversation Stream (Messages injected dynamically in work chat) -->
           <div id="curatorMessages" class="w-full space-y-4 mb-3">
@@ -1488,13 +1488,12 @@ def build():
           <!-- Typing & Live Web Scraper Indicator -->
           <div id="curatorTyping" class="hidden w-full px-2 py-1 text-[14px] text-[#8e8e8e] flex items-center justify-between gap-2 mb-2 flex-wrap">
             <div class="flex items-center gap-2">
-              <div class="w-6 h-6 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0">CA</div>
-              <span class="inline-flex gap-1.5 items-center pl-1">
+              <span class="inline-flex gap-1.5 items-center">
                 <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
                 <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
                 <span class="w-2 h-2 rounded-full bg-[#a1a1aa] typing-dot"></span>
               </span>
-              <span class="text-[14px] text-[#a1a1aa]">Curator is researching...</span>
+              <span class="text-[13.5px] text-[#a1a1aa]">Curator is researching...</span>
             </div>
             <div id="curatorScrapingBadge" class="hidden flex items-center gap-1.5 text-[11px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full shadow-sm">
               
@@ -17157,11 +17156,25 @@ FORMATTING & INTERACTION RULES:
     function initCuratorConversation() {{
       if (!curatorMessages) return;
       curatorMessages.innerHTML = '';
-      appendCuratorMessage(`
-        <p class="text-[#ececec]">
-          How can I help you explore verified independent museums and ethical cultural spaces today?
-        </p>
-      `, ['Curated City Itineraries', 'Repurposed Architecture', 'Where to find museum budgets', 'Dutch Research: BAK']);
+      const contentWrap = document.getElementById('curatorScrollContent');
+      if (contentWrap) contentWrap.classList.add('my-auto');
+
+      const div = document.createElement('div');
+      div.id = 'curatorHeroGreeting';
+      div.className = 'curator-message-wrap w-full flex flex-col items-center justify-center text-center pt-8 pb-3 select-text';
+      div.innerHTML = `
+        <h1 class="text-[26px] sm:text-[32px] font-normal text-white tracking-tight text-center mb-2 select-none">
+          What should we work on?
+        </h1>
+        <div class="flex items-center justify-center gap-2 mt-1 select-none">
+          <button class="curator-speak-btn px-2.5 py-1 rounded-full bg-[#1e1e1e] hover:bg-[#2a2a2a] text-[12px] text-[#a1a1aa] hover:text-white transition flex items-center gap-1.5 cursor-pointer shadow-sm" title="Listen to audio briefing">
+            <span class="speak-icon text-[11px]">🔊</span><span class="speak-label">Listen</span>
+          </button>
+        </div>
+      `;
+      curatorMessages.appendChild(div);
+      const suggestions = document.getElementById('workSuggestionsSection');
+      if (suggestions) suggestions.classList.remove('hidden');
     }}
 
     function resetToNewChat() {{
@@ -17176,6 +17189,10 @@ FORMATTING & INTERACTION RULES:
 
     function appendUserMessage(text) {{
       if (!curatorMessages) return;
+      const hero = document.getElementById('curatorHeroGreeting');
+      if (hero) hero.remove();
+      const contentWrap = document.getElementById('curatorScrollContent');
+      if (contentWrap) contentWrap.classList.remove('my-auto');
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.add('hidden');
       const div = document.createElement('div');
@@ -17191,10 +17208,14 @@ FORMATTING & INTERACTION RULES:
 
     function appendCuratorMessage(htmlContent, followUps = [], webIntel = null) {{
       if (!curatorMessages) return;
+      const hero = document.getElementById('curatorHeroGreeting');
+      if (hero) hero.remove();
+      const contentWrap = document.getElementById('curatorScrollContent');
+      if (contentWrap) contentWrap.classList.remove('my-auto');
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.add('hidden');
       const div = document.createElement('div');
-      div.className = 'curator-message-wrap flex items-start gap-3 my-2.5 select-text w-full';
+      div.className = 'curator-message-wrap my-3 select-text w-full';
 
       let effectiveWebIntel = webIntel || curatorContext.lastWebIntel || null;
       let webIntelHtml = '';
@@ -17217,19 +17238,15 @@ FORMATTING & INTERACTION RULES:
       }}
 
       div.innerHTML = `
-        <div class="w-7 h-7 rounded-full bg-[#262626] border border-[#383838] flex items-center justify-center text-[10px] font-mono text-[#a1a1aa] shrink-0 mt-0.5 select-none" title="Culture Atlas Curator" data-exclude-speech="true">
-          CA
-        </div>
-        <div class="flex-1 text-[#ececec] text-[14px] leading-relaxed space-y-2">
-          <div class="flex items-center justify-between gap-2 mb-0.5 select-none">
-            <span class="text-[12px] font-mono text-[#71717a]">Culture Atlas Curator</span>
-            <button class="curator-speak-btn px-2 py-0.5 rounded-lg bg-[#222] hover:bg-[#333] border border-[#383838] text-[12px] text-[#a1a1aa] hover:text-white transition flex items-center gap-1.5 cursor-pointer" title="Listen to audio briefing">
-              <span class="speak-icon text-[11px]">🔊</span><span class="speak-label">Listen</span>
-            </button>
-          </div>
+        <div class="text-[#ececec] text-[14.5px] leading-relaxed space-y-2.5">
           ${{htmlContent}}
           ${{webIntelHtml}}
           ${{followUpHtml}}
+          <div class="flex items-center gap-2 pt-1 select-none">
+            <button class="curator-speak-btn px-2.5 py-1 rounded-full bg-[#212121] hover:bg-[#2e2e2e] text-[12px] text-[#a1a1aa] hover:text-white transition flex items-center gap-1.5 cursor-pointer shadow-sm" title="Listen to audio briefing">
+              <span class="speak-icon text-[11px]">🔊</span><span class="speak-label">Listen</span>
+            </button>
+          </div>
         </div>
       `;
       curatorMessages.appendChild(div);

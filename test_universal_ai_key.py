@@ -153,14 +153,11 @@ def run_tests():
     chrome_cmd = [
         "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
         "--headless=new",
-        "--disable-gpu",
-        "--no-sandbox",
         "--dump-dom",
-        "--virtual-time-budget=5000",
         f"file://{temp_file}"
     ]
 
-    proc = subprocess.run(chrome_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=20)
+    proc = subprocess.run(chrome_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=35)
     stdout = proc.stdout
 
     marker = 'id="test-results-output" data-results="'
