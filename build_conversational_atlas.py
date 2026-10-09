@@ -1401,25 +1401,25 @@ def build():
             <span>Asia</span>
           </button>
           <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5"></div>
-          <button id="hudFiscalBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0f2438] text-[#38bdf8] border border-[#0284c7]/50 hover:bg-[#163654] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Open Institutional Fiscal Analytics Dashboard">
+          <button id="hudFiscalBtn" type="button" onclick="window.openFiscalAnalyticsHUD(); if (event) event.stopPropagation();" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0f2438] text-[#38bdf8] border border-[#0284c7]/50 hover:bg-[#163654] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Open Institutional Fiscal Analytics Dashboard">
             <span>Fiscal</span>
           </button>
-          <button id="hudTimelineBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#211116] text-rose-300 border border-rose-500/50 hover:bg-[#341822] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Interactive Timeline of Cultural Boycotts & Divestment Victories">
+          <button id="hudTimelineBtn" type="button" onclick="window.openResistanceTimelineModal(); if (event) event.stopPropagation();" class="px-2 h-7 sm:h-8 rounded-xl bg-[#211116] text-rose-300 border border-rose-500/50 hover:bg-[#341822] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Interactive Timeline of Cultural Boycotts & Divestment Victories">
             <span>Victories</span>
           </button>
-          <button id="hudFilingsBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0c1a29] text-sky-300 border border-sky-500/50 hover:bg-[#14293f] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Statutory IRS Form 990 & Charity Accounts Explorer">
+          <button id="hudFilingsBtn" type="button" onclick="window.openStatutoryFilingsModal(); if (event) event.stopPropagation();" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0c1a29] text-sky-300 border border-sky-500/50 hover:bg-[#14293f] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Statutory IRS Form 990 & Charity Accounts Explorer">
             <span>990s</span>
           </button>
-          <button id="hudTrusteesBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1a1329] text-purple-300 border border-purple-500/50 hover:bg-[#281b3f] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Interactive Institutional Trustee & Board Conflict Network">
+          <button id="hudTrusteesBtn" type="button" onclick="window.openTrusteeConflictNetworkModal(); if (event) event.stopPropagation();" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1a1329] text-purple-300 border border-purple-500/50 hover:bg-[#281b3f] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Interactive Institutional Trustee & Board Conflict Network">
             <span>Boards</span>
           </button>
-          <button id="hudRouteBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#09261b] text-emerald-300 border border-emerald-500/50 hover:bg-[#0e3b2a] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Curatorial Itinerary & Art Crawl Generator">
+          <button id="hudRouteBtn" type="button" onclick="window.openCuratorialItineraryModal(); if (event) event.stopPropagation();" class="px-2 h-7 sm:h-8 rounded-xl bg-[#09261b] text-emerald-300 border border-emerald-500/50 hover:bg-[#0e3b2a] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Curatorial Itinerary & Art Crawl Generator">
             <span>Crawls</span>
           </button>
-          <button id="hudRailToggle" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1e2e42] text-[#38bdf8] border border-[#0284c7]/40 hover:bg-[#0369a1]/30 text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Toggle Clean Transit Corridors">
+          <button id="hudRailToggle" type="button" onclick="window.toggleRailCorridors(event);" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1e2e42] text-[#38bdf8] border border-[#0284c7]/40 hover:bg-[#0369a1]/30 text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Toggle Clean Transit Corridors">
             <span>Rail</span>
           </button>
-          <button id="hudContributeBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-gradient-to-r from-[#0c261e] to-[#0f3429] hover:from-[#11382c] hover:to-[#144738] text-emerald-300 hover:text-white border border-emerald-500/60 text-[12px] font-medium transition flex items-center gap-1 cursor-pointer shadow-sm shrink-0" title="Contribute confidential insider intelligence or private info">
+          <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2 h-7 sm:h-8 rounded-xl bg-gradient-to-r from-[#0c261e] to-[#0f3429] hover:from-[#11382c] hover:to-[#144738] text-emerald-300 hover:text-white border border-emerald-500/60 text-[12px] font-medium transition flex items-center gap-1 cursor-pointer shadow-sm shrink-0" title="Contribute confidential insider intelligence or private info">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>Intel</span>
           </button>
@@ -22420,11 +22420,15 @@ FORMATTING & INTERACTION RULES:
     document.getElementById('topContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
     document.getElementById('mobileContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
     document.getElementById('mapFloatingContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
-    document.getElementById('hudContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('hudContributeBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      triggerInChatContributeFlow();
+    }});
     document.getElementById('closeConfidentialChatBtn')?.addEventListener('click', closeConfidentialIntakeModal);
 
     // Curatorial Itinerary HUD & Modal event listeners
-    document.getElementById('hudRouteBtn')?.addEventListener('click', () => {{
+    document.getElementById('hudRouteBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
       openCuratorialItineraryModal();
     }});
     document.getElementById('closeActiveRouteBtn')?.addEventListener('click', clearCuratorialRoute);
@@ -22458,7 +22462,8 @@ FORMATTING & INTERACTION RULES:
     }});
 
     // Trustee & Board Conflict Network Modal Event Listeners
-    document.getElementById('hudTrusteesBtn')?.addEventListener('click', () => {{
+    document.getElementById('hudTrusteesBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
       openTrusteeConflictNetworkModal();
     }});
     document.getElementById('closeTrusteeModalBtn')?.addEventListener('click', closeTrusteeConflictNetworkModal);
@@ -22508,7 +22513,10 @@ FORMATTING & INTERACTION RULES:
     }});
 
     // Resistance Timeline Event Listeners
-    document.getElementById('hudTimelineBtn')?.addEventListener('click', openResistanceTimelineModal);
+    document.getElementById('hudTimelineBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      openResistanceTimelineModal();
+    }});
     document.getElementById('closeTimelineModalBtn')?.addEventListener('click', closeResistanceTimelineModal);
     document.getElementById('closeTimelineModalFooterBtn')?.addEventListener('click', closeResistanceTimelineModal);
     const timelineModal = document.getElementById('resistanceTimelineModal');
@@ -22535,7 +22543,10 @@ FORMATTING & INTERACTION RULES:
     }});
 
     // Statutory Filings Modal Event Listeners
-    document.getElementById('hudFilingsBtn')?.addEventListener('click', () => openStatutoryFilingsModal());
+    document.getElementById('hudFilingsBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      openStatutoryFilingsModal();
+    }});
     document.getElementById('closeFilingsModalBtn')?.addEventListener('click', closeStatutoryFilingsModal);
     document.getElementById('closeFilingsModalFooterBtn')?.addEventListener('click', closeStatutoryFilingsModal);
     const filingsModal = document.getElementById('statutoryFilingsModal');
@@ -23034,11 +23045,36 @@ FORMATTING & INTERACTION RULES:
 
     // 📊 Institutional Finance & Fiscal Operating Analytics Modal Handlers
     const fiscalModal = document.getElementById('fiscalAnalyticsModal');
-    document.getElementById('hudFiscalBtn')?.addEventListener('click', () => openFiscalAnalyticsHUD());
+    document.getElementById('hudFiscalBtn')?.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      openFiscalAnalyticsHUD();
+    }});
     document.getElementById('activeMapFilterAnalyticsBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
       openFiscalAnalyticsHUD();
     }});
+
+    // 🛡️ Bulletproof Capture-Phase Event Delegation for Map HUD Quick Buttons (Fiscal, Victories, 990s, Boards, Crawls, Rail, Intel)
+    document.addEventListener('click', (e) => {{
+      const btn = e.target && e.target.closest ? e.target.closest('#hudFiscalBtn, #hudTimelineBtn, #hudFilingsBtn, #hudTrusteesBtn, #hudRouteBtn, #hudRailToggle, #hudContributeBtn') : null;
+      if (!btn) return;
+      e.stopPropagation();
+      if (btn.id === 'hudFiscalBtn') {{
+        if (typeof window.openFiscalAnalyticsHUD === 'function') window.openFiscalAnalyticsHUD();
+      }} else if (btn.id === 'hudTimelineBtn') {{
+        if (typeof window.openResistanceTimelineModal === 'function') window.openResistanceTimelineModal();
+      }} else if (btn.id === 'hudFilingsBtn') {{
+        if (typeof window.openStatutoryFilingsModal === 'function') window.openStatutoryFilingsModal();
+      }} else if (btn.id === 'hudTrusteesBtn') {{
+        if (typeof window.openTrusteeConflictNetworkModal === 'function') window.openTrusteeConflictNetworkModal();
+      }} else if (btn.id === 'hudRouteBtn') {{
+        if (typeof window.openCuratorialItineraryModal === 'function') window.openCuratorialItineraryModal();
+      }} else if (btn.id === 'hudRailToggle') {{
+        if (typeof window.toggleRailCorridors === 'function') window.toggleRailCorridors(e);
+      }} else if (btn.id === 'hudContributeBtn') {{
+        if (typeof window.triggerInChatContributeFlow === 'function') window.triggerInChatContributeFlow();
+      }}
+    }}, true);
     document.getElementById('closeFiscalModalBtn')?.addEventListener('click', closeFiscalAnalyticsHUD);
     document.getElementById('closeFiscalModalFooterBtn')?.addEventListener('click', closeFiscalAnalyticsHUD);
     fiscalModal?.addEventListener('click', (e) => {{
@@ -25683,8 +25719,11 @@ FORMATTING & INTERACTION RULES:
       flyTo(137.5, 36.5, baseRadius * 3.6);
     }});
 
-    document.getElementById('hudRailToggle')?.addEventListener('click', (e) => {{
-      e.stopPropagation();
+    function toggleRailCorridors(e) {{
+      if (e) {{
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+      }}
       isRailVisible = !isRailVisible;
       const btn = document.getElementById('hudRailToggle');
       if (btn) {{
@@ -25695,7 +25734,12 @@ FORMATTING & INTERACTION RULES:
         btn.classList.toggle('bg-[#242424]', !isRailVisible);
         btn.classList.toggle('border-transparent', !isRailVisible);
       }}
-    }});
+      if (typeof render === 'function') {{
+        requestAnimationFrame(render);
+      }}
+    }}
+    window.toggleRailCorridors = toggleRailCorridors;
+    document.getElementById('hudRailToggle')?.addEventListener('click', toggleRailCorridors);
 
     document.getElementById('hudSpinBtn')?.addEventListener('click', (e) => {{
       e.stopPropagation();
