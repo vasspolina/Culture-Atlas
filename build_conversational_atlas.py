@@ -18190,6 +18190,7 @@ FORMATTING & INTERACTION RULES:
       const div = document.createElement('div');
       div.id = 'curatorHeroGreeting';
       div.className = 'curator-message-wrap w-full flex flex-col items-center justify-center text-center pt-8 pb-3 select-text';
+      div.setAttribute('data-speech', 'Welcome to Culture Atlas. We investigate independent arts spaces, audit statutory Form 990 filings, map board governance interlocks, and trace artist-led visual critiques across 444 clean cultural institutions worldwide. Tell me a city, an institution, or an ethical governance question to begin our inquiry.');
       div.innerHTML = `
         <h1 class="text-[27px] sm:text-[27px] font-normal text-white tracking-tight text-center mb-2 select-none">
           What should we work on?
@@ -24607,6 +24608,13 @@ FORMATTING & INTERACTION RULES:
     }}
 
     function extractSpokenTextFromElement(container) {{
+      if (container && container.getAttribute('data-speech')) {{
+        return container.getAttribute('data-speech');
+      }}
+      const speechEl = container ? container.querySelector('[data-speech]') : null;
+      if (speechEl && speechEl.getAttribute('data-speech')) {{
+        return speechEl.getAttribute('data-speech');
+      }}
       const clone = container.cloneNode(true);
       // Remove all interactive action buttons, pills, headers, badges, external links
       const selectorsToRemove = [
