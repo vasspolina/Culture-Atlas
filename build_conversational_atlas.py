@@ -12354,6 +12354,22 @@ def build():
       return (prefix + cleaned.join(' ')).trim();
     }}
 
+    function sanitizeAuditStatus(grade, isClean, isFlagged, isCommunity) {{
+      if (isCommunity) return 'Pending Statutory Audit';
+      let s = (grade || '').trim();
+      if (!s || ['A', 'A+', 'B', 'B+', 'C', 'D', 'F', 'U', 'COM'].includes(s.toUpperCase())) {{
+        return isClean ? 'Verified Independent Space' : (isFlagged ? 'Monitored Corporate Sponsorship' : 'Under Review');
+      }}
+      const matchParen = s.match(/\(([^)]+)\)/);
+      if (matchParen && matchParen[1] && matchParen[1].trim()) {{
+        const inside = matchParen[1].trim();
+        if (inside === 'Roster Unverified') return 'Pending Statutory Audit';
+        return inside;
+      }}
+      s = s.replace(/^Tier\s+[A-Za-z0-9\+]+\s*[:–-]?\s*/i, '').trim();
+      return s || (isClean ? 'Verified Independent Space' : (isFlagged ? 'Monitored Corporate Sponsorship' : 'Under Review'));
+    }}
+
     function matchC(a, b) {{
       if (!a || !b) return false;
       const s1 = a.toLowerCase().trim();
@@ -14199,53 +14215,26 @@ def build():
 
       const cleanAlts = (!isClean && !isCommunity) ? ALL_INSTITUTIONS.filter(i => i.tier === 'A' && matchC(i.city, inst.city)) : [];
 
-      const rawGrade = isCommunity
-        ? 'Community Input (Pending Audit)'
-        : (inst.transparency_grade || 'Clean Statutory Audit');
-      let letterBadge = isCommunity ? 'COM' : 'A+';
-      if (!isCommunity) {{
-        if (rawGrade.includes('A+')) letterBadge = 'A+';
-        else if (rawGrade.includes('A')) letterBadge = 'A';
-        else if (rawGrade.includes('B+')) letterBadge = 'B+';
-        else if (rawGrade.includes('B')) letterBadge = 'B';
-        else if (rawGrade.includes('C')) letterBadge = 'C';
-        else if (rawGrade.includes('D')) letterBadge = 'D';
-        else if (rawGrade.includes('F')) letterBadge = 'F';
-      }}
-
-      let auditAuthority = isCommunity ? 'Community Field Pipeline' : 'Statutory Public Filing';
-      const matchParen = rawGrade.match(/\(([^)]+)\)/);
-      if (matchParen) {{
-        auditAuthority = matchParen[1];
-      }} else if (rawGrade.length > 4) {{
-        auditAuthority = rawGrade;
-      }}
+      const cleanStatusTitle = sanitizeAuditStatus(inst.transparency_grade, isClean, isFlagged, isCommunity);
+      const statusCategory = isCommunity ? 'Community Pipeline' : 'Audit Classification';
 
       const bannerBg = isCommunity
-        ? 'bg-[#092329] border-2 border-[#08bdba] shadow-cyan-950/40'
+        ? 'bg-[#092329] border border-[#08bdba]/70 shadow-cyan-950/40'
         : isClean 
-        ? 'bg-[#0c1f15] border-2 border-[#42be65] shadow-emerald-950/40' 
+        ? 'bg-[#0c1f15] border border-[#42be65]/70 shadow-emerald-950/40' 
         : isFlagged 
-        ? 'bg-[#1b122c] border-2 border-[#8a3ffc] shadow-purple-950/40' 
-        : 'bg-[#091a26] border-2 border-[#0072c3] shadow-cyan-950/40';
-
-      const badgeBoxStyle = isCommunity
-        ? 'bg-[#08bdba]/25 border border-[#08bdba] text-[#08bdba]'
-        : isClean 
-        ? 'bg-[#42be65]/25 border border-[#42be65] text-[#42be65]' 
-        : isFlagged 
-        ? 'bg-[#8a3ffc]/25 border border-[#8a3ffc] text-[#be95ff]' 
-        : 'bg-[#0072c3]/25 border border-[#0072c3] text-[#33b1ff]';
+        ? 'bg-[#1b122c] border border-[#8a3ffc]/70 shadow-purple-950/40' 
+        : 'bg-[#091a26] border border-[#0072c3]/70 shadow-cyan-950/40';
 
       const gradeTitleCol = isCommunity ? 'text-[#08bdba]' : (isClean ? 'text-[#42be65]' : isFlagged ? 'text-[#be95ff]' : 'text-[#33b1ff]');
       const pulseDotCol = isCommunity ? 'bg-[#08bdba]' : (isClean ? 'bg-[#42be65]' : isFlagged ? 'bg-[#be95ff]' : 'bg-[#33b1ff]');
       const auditTagHtml = isCommunity
-        ? '<span class="text-[11px] font-mono text-[#08bdba] bg-[#08bdba]/20 border border-[#08bdba]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">User Input</span><span class="text-[11px] text-teal-300 font-mono mt-1">Pending Audit</span>'
+        ? '<span class="text-[11px] font-mono text-[#08bdba] bg-[#08bdba]/20 border border-[#08bdba]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">User Input</span><span class="text-[11px] text-teal-300 font-mono mt-0.5 block">Pending Audit</span>'
         : isClean 
-        ? '<span class="text-[11px] font-mono text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Clean</span><span class="text-[11px] text-slate-400 font-mono mt-1">100% Verified</span>' 
+        ? '<span class="text-[11px] font-mono text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Clean</span><span class="text-[11px] text-slate-400 font-mono mt-0.5 block">100% Verified</span>' 
         : isFlagged 
-        ? '<span class="text-[11px] font-mono text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Flags</span><span class="text-[11px] text-slate-400 font-mono mt-1">Documented</span>' 
-        : '<span class="text-[11px] font-mono text-[#33b1ff] bg-[#0072c3]/20 border border-[#0072c3]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Unverified</span><span class="text-[11px] text-slate-400 font-mono mt-1">Pending Audit</span>';
+        ? '<span class="text-[11px] font-mono text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Flags</span><span class="text-[11px] text-slate-400 font-mono mt-0.5 block">Documented</span>' 
+        : '<span class="text-[11px] font-mono text-[#33b1ff] bg-[#0072c3]/20 border border-[#0072c3]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Unverified</span><span class="text-[11px] text-slate-400 font-mono mt-0.5 block">Pending Audit</span>';
 
       body.innerHTML = `
         <div class="space-y-3">
@@ -14260,26 +14249,20 @@ def build():
             <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${{escapeHtml(inst.location || inst.city)}} · ${{inst.size || 'Audited Space'}}</p>
           </div>
 
-          <!-- EMPHASIZED CIVIC TRANSPARENCY GRADE (Carbon High-Contrast Audit Banner) -->
-          <div class="py-3 px-3.5 rounded-xl border-2 flex items-center justify-between shadow-lg ${{bannerBg}}">
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 shrink-0 rounded-lg flex items-center justify-center font-mono font-bold text-[22px] shadow-inner ${{badgeBoxStyle}}">
-                ${{escapeHtml(letterBadge)}}
-              </div>
-              <div>
-                <div class="text-[11px] font-mono uppercase tracking-widest font-bold flex items-center gap-1.5 ${{gradeTitleCol}}">
-                  <span class="inline-block w-2 h-2 rounded-full animate-pulse ${{pulseDotCol}}"></span>
-                  Civic Transparency Grade
+          <!-- SIMPLIFIED AUDIT CLASSIFICATION BANNER -->
+          <div class="py-2.5 px-3.5 rounded-xl border flex items-center justify-between shadow-md ${{bannerBg}}">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="inline-block w-2.5 h-2.5 rounded-full shrink-0 animate-pulse ${{pulseDotCol}}"></span>
+              <div class="min-w-0">
+                <div class="text-[11px] font-mono uppercase tracking-wider font-bold ${{gradeTitleCol}}">
+                  ${{statusCategory}}
                 </div>
-                <div class="text-[14px] font-semibold text-white font-mono mt-0.5">
-                  ${{escapeHtml(rawGrade)}}
-                </div>
-                <div class="text-[12px] text-slate-300 font-mono mt-0.5">
-                  ${{escapeHtml(auditAuthority)}} · Statutory Accountability
+                <div class="text-[13px] sm:text-[14px] font-semibold text-white font-mono mt-0.5 truncate">
+                  ${{escapeHtml(cleanStatusTitle)}}
                 </div>
               </div>
             </div>
-            <div class="hidden sm:flex flex-col items-end shrink-0 pl-2">
+            <div class="flex flex-col items-end shrink-0 pl-2">
               ${{auditTagHtml}}
             </div>
           </div>
@@ -19530,7 +19513,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Governance Model:</strong> ${{inst.governance_type}}<br>
               - <strong>Funding Architecture:</strong> ${{inst.funding}}<br>
               - <strong>Safeguard:</strong> ${{inst.ethical_safeguard}}<br>
-              - <strong>Transparency Grade:</strong> <span class="text-emerald-400 font-mono font-bold">${{inst.transparency_grade || 'Statutory Public Audit'}}</span>
+              - <strong>Audit Status:</strong> <span class="text-emerald-400 font-mono font-bold">${{sanitizeAuditStatus(inst.transparency_grade, inst.tier === 'A', inst.tier === 'B', false)}}</span>
             </p>
           `, ['Admission Policy', 'How to Get There', 'Highlight Art']);
           selectInstitution(inst, true);
@@ -20248,7 +20231,7 @@ FORMATTING & INTERACTION RULES:
                 - <strong>Ethical Safeguard:</strong> ${{targetInst.ethical_safeguard}}<br>
                 - <strong>Curatorial Focus:</strong> ${{targetInst.curatorial_focus}}<br>
                 - <strong>Signature Art / Milestone:</strong> <span class="text-amber-300 font-normal">${{targetInst.highlight}}</span><br>
-                - <strong>Transparency Status:</strong> <span class="text-emerald-400 font-mono font-bold">${{targetInst.transparency_grade || 'Statutory Public Audit'}}</span>
+                - <strong>Audit Status:</strong> <span class="text-emerald-400 font-mono font-bold">${{sanitizeAuditStatus(targetInst.transparency_grade, targetInst.tier === 'A', targetInst.tier === 'B', false)}}</span>
               </p>
               <p class="text-slate-300">
                 ${{targetInst.watch ? `<strong>Watch Notes:</strong> ${{targetInst.watch}}<br>` : ''}}
