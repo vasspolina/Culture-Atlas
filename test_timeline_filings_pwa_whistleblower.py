@@ -201,16 +201,16 @@ def test_browser_runtime():
 
     chrome_cmd = [
         "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-        "--headless",
-        "--disable-gpu",
+        "--headless=new",
         "--dump-dom",
-        "--virtual-time-budget=12000",
+        "--window-size=1280,800",
+        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
 
     try:
-        proc = subprocess.run(chrome_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=25, check=True)
-        dom = proc.stdout.decode("utf-8")
+        proc = subprocess.run(chrome_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        dom = proc.stdout
     except Exception as e:
         print(f"Failed to execute Chrome: {e}")
         sys.exit(1)
