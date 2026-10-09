@@ -321,18 +321,18 @@ def build():
   </script>
   <style>
         /* ========================================================= */
-    /* STRICT EXCLUSIVITY: ONLY PP TELEGRAF REGULAR FOR EVERYTHING */
+    /* STRICT EXCLUSIVITY: ONLY PP TELEGRAPH EXTRA THIN FOR EVERYTHING */
     /* STRICT 3-TYPE-SIZE SYSTEM: 14px Floor/Body, 18px Mid, 24px Headline */
-    /* USER SPECIFICATION: LINE-HEIGHT 120%, NO BOLD FONTS, 0.6pt LETTER-SPACING */
+    /* USER SPECIFICATION: PP TELEGRAPH EXTRA THIN FONT ONLY ACROSS WEB, 0.6pt LETTER-SPACING */
     /* ========================================================= */
     *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {{
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 400 !important;
+      font-weight: 200 !important;
       font-synthesis: none !important;
       letter-spacing: 0.6pt !important;
       line-height: 120% !important;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
     }}
 
     *, *::before, *::after {{
@@ -344,21 +344,21 @@ def build():
       font-size: 14px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 400 !important;
+      font-weight: 200 !important;
     }}
     input, button, select, textarea, p, span, div, li, a {{
       font-size: 14px;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 400 !important;
+      font-weight: 200 !important;
     }}
 
-    strong, b, h1, h2, h3, h4, h5, h6, .font-normal, .font-normal, .font-normal, [class*="font-normal"], [class*="font-normal"], [class*="font-normal"] {{
-      font-weight: 400 !important;
+    strong, b, h1, h2, h3, h4, h5, h6, .font-normal, [class*="font-normal"] {{
+      font-weight: 200 !important;
     }}
     strong, b {{
       color: #ffffff;
-      font-weight: 400 !important;
+      font-weight: 200 !important;
     }}
 
     /* Size 1: 14px (Floor / Default) */
@@ -369,7 +369,7 @@ def build():
       font-size: 14px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 400 !important;
+      font-weight: 200 !important;
     }}
 
     /* Size 2: 18px (Card Titles, Subheaders, Museum Names) */
@@ -379,7 +379,7 @@ def build():
       font-size: 18px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 400 !important;
+      font-weight: 200 !important;
     }}
 
     /* Size 3: 24px (Main Brand Title, Modal Headlines, Large Dossier Titles) */
@@ -389,14 +389,62 @@ def build():
       font-size: 24px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 400 !important;
+      font-weight: 200 !important;
     }}
 
     @font-face {{
       font-family: 'PP Telegraph';
       src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular'), local('PP Telegraph');
+           local('PP Telegraf Ultralight'), local('PP Telegraf Extra Thin'), local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph');
+      font-weight: 100;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraph';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Extra Thin'), local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph');
+      font-weight: 200;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraph';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraph';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph');
       font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Ultralight'), local('PP Telegraf Extra Thin'), local('PP Telegraf Regular'), local('PPTelegraf-Regular');
+      font-weight: 100;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Extra Thin'), local('PP Telegraf Regular'), local('PPTelegraf-Regular');
+      font-weight: 200;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
+           local('PP Telegraf Regular'), local('PPTelegraf-Regular');
+      font-weight: 300;
       font-style: normal;
       font-display: swap;
     }}
@@ -793,6 +841,10 @@ def build():
           <span class="text-blue-400 font-mono text-[12px]">⚖️</span>
           <span>Methodology</span>
         </button>
+        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-3 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 hover:border-yellow-400 text-yellow-300 hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Toggle Yellow Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
+          <span>🟡 Gossip Mode</span>
+          <span class="text-[10px] px-1.5 py-0.2 rounded bg-yellow-400/20 text-yellow-300 font-mono font-bold">REDDIT & 𝕏</span>
+        </button>
         <button id="topContributeBtn" class="flex items-center gap-2 px-3.5 py-1.5 bg-gradient-to-r from-[#09261b] via-[#0d3425] to-[#082218] hover:from-[#0e3b2a] hover:to-[#114733] border border-emerald-500/70 hover:border-emerald-400 text-emerald-200 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-medium shadow-md shadow-emerald-950/60 active:scale-95" title="Contribute confidential insider intelligence or unlisted independent spaces">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
           <span>🔒 Contribute Intel</span>
@@ -816,6 +868,10 @@ def build():
 
       <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
         📚 Archives
+      </button>
+
+      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 text-yellow-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Yellow Gossip Mode">
+        🟡 Gossip
       </button>
 
       <button id="mobileGovernanceBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
@@ -893,6 +949,52 @@ def build():
         </div>
 
         <div id="floatingCardHours" class="text-[12.5px] text-emerald-400 mt-2 truncate font-mono"></div>
+
+        <!-- 🖼️ CURRENT SHOWS & OPENING NIGHT TRACKER (TEMPORARY SHOWS) -->
+        <div id="floatingCardCurrentShowsSection" class="mt-2.5 pt-2 border-t border-[#2e2e2e]/80 space-y-1.5">
+          <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
+            <span class="text-amber-400 font-bold flex items-center gap-1">
+              <span>🖼️</span> CURRENT SHOW ON VIEW
+            </span>
+            <span id="floatingCardShowStatusBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-emerald-800 bg-emerald-950/60 text-emerald-300 font-semibold">Now On View</span>
+          </div>
+          <div class="bg-[#121620] border border-[#232d3f] rounded-xl p-2.5 space-y-1 text-xs">
+            <div class="flex items-center justify-between gap-1">
+              <span id="floatingCardShowTitle" class="text-[13px] text-white font-semibold leading-tight line-clamp-1"></span>
+              <span id="floatingCardShowFloorPill" class="px-1.5 py-0.2 rounded bg-sky-950 border border-sky-800 text-[#7dd3fc] text-[10px] font-mono shrink-0">L1</span>
+            </div>
+            <div id="floatingCardShowMeta" class="text-[11px] text-slate-300 font-mono"></div>
+            <!-- 🍾 Opening Night / Vernissage Tracker -->
+            <div id="floatingCardOpeningNightBox" class="mt-1 pt-1 border-t border-[#1b2536] flex items-center justify-between gap-1 text-[11px] font-mono flex-wrap">
+              <div class="flex items-center gap-1 text-emerald-300">
+                <span>🍾 Vernissage:</span>
+                <span id="floatingCardOpeningNightDate" class="font-semibold text-white"></span>
+              </div>
+              <span id="floatingCardOpeningNightRsvp" class="text-[10px] text-sky-300 bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-800/60">Free / RSVP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🟡 GOSSIP MODE DOSSIER (YELLOW MODE) -->
+        <div id="floatingCardGossipSection" class="mt-2 pt-2 border-t border-yellow-900/60 space-y-1.5 bg-[#171408]/60 p-2 rounded-xl border border-yellow-700/40">
+          <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
+            <span class="text-yellow-400 font-bold flex items-center gap-1">
+              <span>⚡</span> ART WORLD WHISPERS & GOSSIP
+            </span>
+            <span id="floatingCardGossipIntensityBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-yellow-700 bg-yellow-950 text-yellow-300 font-bold">HOT 🔥</span>
+          </div>
+          <p id="floatingCardGossipHeadline" class="text-[12px] text-yellow-200/95 leading-tight font-medium"></p>
+          <div class="space-y-1 pt-0.5 text-[11px] font-mono">
+            <div id="floatingCardGossipReddit" class="text-slate-300 bg-[#0d0c06] p-1.5 rounded border border-yellow-900/40 flex items-baseline gap-1.5">
+              <span class="text-orange-400 font-bold shrink-0">r/art:</span>
+              <span id="floatingCardGossipRedditText" class="truncate text-slate-200"></span>
+            </div>
+            <div id="floatingCardGossipTwitter" class="text-slate-300 bg-[#0d0c06] p-1.5 rounded border border-yellow-900/40 flex items-baseline gap-1.5">
+              <span class="text-sky-400 font-bold shrink-0">𝕏 post:</span>
+              <span id="floatingCardGossipTwitterText" class="truncate text-slate-200"></span>
+            </div>
+          </div>
+        </div>
 
         <!-- DIRECT WEB & VISITOR ACTION BUTTONS -->
         <div class="mt-2.5 flex items-center gap-2 flex-wrap">
@@ -8204,6 +8306,11 @@ def build():
       get: () => filteredList,
       set: (v) => {{ filteredList = v; }}
     }});
+    let isGossipModeActive = false;
+    Object.defineProperty(window, 'isGossipModeActive', {{
+      get: () => isGossipModeActive,
+      set: (v) => {{ isGossipModeActive = v; }}
+    }});
 
     // High-Resolution Interactive City Map (Google Maps Dark WebGL Vector Engine) State & Controller
     const GOOGLE_MAPS_DARK_STYLE = {{
@@ -8274,6 +8381,20 @@ def build():
             'fill-color': '#21242d',
             'fill-outline-color': '#191b22',
             'fill-opacity': 0.9
+          }}
+        }},
+        {{
+          id: 'building-3d-city-context',
+          type: 'fill-extrusion',
+          source: 'openmaptiles',
+          'source-layer': 'building',
+          minzoom: 14,
+          paint: {{
+            'fill-extrusion-color': '#18212e',
+            'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 8]],
+            'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]],
+            'fill-extrusion-opacity': 0.72,
+            'fill-extrusion-vertical-gradient': true
           }}
         }},
         {{
@@ -8422,10 +8543,16 @@ def build():
           }},
           fitBounds: () => {{}},
           resize: () => {{}},
-          getSource: () => null,
-          addSource: () => {{}},
-          getLayer: () => null,
-          addLayer: () => {{}},
+          _sources: {{}},
+          _layers: {{}},
+          addSource: function(id, src) {{
+            const s = Object.assign({{ setData: function(d) {{ s.data = d; }} }}, src);
+            this._sources[id] = s;
+            return s;
+          }},
+          getSource: function(id) {{ return this._sources[id] || null; }},
+          addLayer: function(l) {{ this._layers[l.id] = l; return l; }},
+          getLayer: function(id) {{ return this._layers[id] || null; }},
           on: () => {{}},
           off: () => {{}},
           once: () => {{}},
@@ -8556,55 +8683,153 @@ def build():
       }}
     }};
 
-    // 🏛️ BUILDING ZOOM & FOOTPRINT INSPECTION ENGINE
+    // 🏛️ 3D VOLUMETRIC BUILDING ARCHITECTURE & SPATIAL ON-BUILDING INFO ENGINE
     let currentHighlightedBuildingInst = null;
+    let isExploded3DMode = false;
+    Object.defineProperty(window, 'isExploded3DMode', {{
+      get: () => isExploded3DMode,
+      set: (v) => {{ isExploded3DMode = v; }}
+    }});
+    let building3DInfoMarkers = [];
+    let isBuildingLayerEventsBound = false;
+
+    function clearBuilding3DInfoMarkers() {{
+      if (building3DInfoMarkers && building3DInfoMarkers.length) {{
+        building3DInfoMarkers.forEach(m => {{
+          try {{ m.remove(); }} catch (e) {{}}
+        }});
+        building3DInfoMarkers = [];
+      }}
+    }}
+    window.clearBuilding3DInfoMarkers = clearBuilding3DInfoMarkers;
 
     function ensureBuildingFootprintLayer() {{
       if (!cityVectorMap) return;
-      if (!cityVectorMap.getSource('highlighted-building-footprint')) {{
-        cityVectorMap.addSource('highlighted-building-footprint', {{
-          type: 'geojson',
-          data: {{
-            type: 'FeatureCollection',
-            features: []
-          }}
-        }});
-      }}
-      if (!cityVectorMap.getLayer('building-footprint-fill')) {{
-        cityVectorMap.addLayer({{
-          id: 'building-footprint-fill',
-          type: 'fill',
-          source: 'highlighted-building-footprint',
-          paint: {{
-            'fill-color': ['get', 'color'],
-            'fill-opacity': 0.35
-          }}
-        }});
-      }}
-      if (!cityVectorMap.getLayer('building-footprint-glow')) {{
-        cityVectorMap.addLayer({{
-          id: 'building-footprint-glow',
-          type: 'line',
-          source: 'highlighted-building-footprint',
-          paint: {{
-            'line-color': ['get', 'color'],
-            'line-width': 4.5,
-            'line-blur': 3.0,
-            'line-opacity': 0.85
-          }}
-        }});
-      }}
-      if (!cityVectorMap.getLayer('building-footprint-line')) {{
-        cityVectorMap.addLayer({{
-          id: 'building-footprint-line',
-          type: 'line',
-          source: 'highlighted-building-footprint',
-          paint: {{
-            'line-color': '#ffffff',
-            'line-width': 2.0,
-            'line-opacity': 0.95
-          }}
-        }});
+
+      try {{
+        // 1. Ground Footprint Boundary Source & Layers
+        if (!cityVectorMap.getSource('highlighted-building-footprint')) {{
+          cityVectorMap.addSource('highlighted-building-footprint', {{
+            type: 'geojson',
+            data: {{
+              type: 'FeatureCollection',
+              features: []
+            }}
+          }});
+        }}
+        if (!cityVectorMap.getLayer('building-footprint-fill')) {{
+          cityVectorMap.addLayer({{
+            id: 'building-footprint-fill',
+            type: 'fill',
+            source: 'highlighted-building-footprint',
+            paint: {{
+              'fill-color': ['get', 'color'],
+              'fill-opacity': 0.22
+            }}
+          }});
+        }}
+        if (!cityVectorMap.getLayer('building-footprint-glow')) {{
+          cityVectorMap.addLayer({{
+            id: 'building-footprint-glow',
+            type: 'line',
+            source: 'highlighted-building-footprint',
+            paint: {{
+              'line-color': ['get', 'color'],
+              'line-width': 4.5,
+              'line-blur': 3.5,
+              'line-opacity': 0.85
+            }}
+          }});
+        }}
+        if (!cityVectorMap.getLayer('building-footprint-line')) {{
+          cityVectorMap.addLayer({{
+            id: 'building-footprint-line',
+            type: 'line',
+            source: 'highlighted-building-footprint',
+            paint: {{
+              'line-color': '#ffffff',
+              'line-width': 2.0,
+              'line-opacity': 0.95
+            }}
+          }});
+        }}
+
+        // 2. 🩻 X-RAY INTERIOR CORE LAYER (Luminous Curatorial Core)
+        if (!cityVectorMap.getSource('highlighted-building-3d-interior-core')) {{
+          cityVectorMap.addSource('highlighted-building-3d-interior-core', {{
+            type: 'geojson',
+            data: {{
+              type: 'FeatureCollection',
+              features: []
+            }}
+          }});
+        }}
+        if (!cityVectorMap.getLayer('building-3d-xray-interior-core')) {{
+          cityVectorMap.addLayer({{
+            id: 'building-3d-xray-interior-core',
+            type: 'fill-extrusion',
+            source: 'highlighted-building-3d-interior-core',
+            paint: {{
+              'fill-extrusion-color': ['get', 'color'],
+              'fill-extrusion-height': ['get', 'height'],
+              'fill-extrusion-base': ['get', 'base'],
+              'fill-extrusion-opacity': ['get', 'opacity'],
+              'fill-extrusion-vertical-gradient': true
+            }}
+          }});
+        }}
+
+        // 3. 🏢 3D VOLUMETRIC GLASS ENVELOPE (Translucent See-Through Architectural X-Ray Skin)
+        if (!cityVectorMap.getSource('highlighted-building-3d-floors')) {{
+          cityVectorMap.addSource('highlighted-building-3d-floors', {{
+            type: 'geojson',
+            data: {{
+              type: 'FeatureCollection',
+              features: []
+            }}
+          }});
+        }}
+        if (!cityVectorMap.getLayer('building-3d-floor-extrusions')) {{
+          cityVectorMap.addLayer({{
+            id: 'building-3d-floor-extrusions',
+            type: 'fill-extrusion',
+            source: 'highlighted-building-3d-floors',
+            paint: {{
+              'fill-extrusion-color': ['get', 'color'],
+              'fill-extrusion-height': ['get', 'height'],
+              'fill-extrusion-base': ['get', 'base'],
+              'fill-extrusion-opacity': ['get', 'opacity'],
+              'fill-extrusion-vertical-gradient': true
+            }}
+          }});
+        }}
+
+        // Interactive 3D click & hover directly on building floor slabs and core
+        if (!isBuildingLayerEventsBound && typeof cityVectorMap.on === 'function') {{
+          const handleFloorClick = (e) => {{
+            if (e.features && e.features.length) {{
+              const p = e.features[0].properties;
+              if (p && p.floorIndex !== undefined && Number(p.floorIndex) >= 0) {{
+                selectBfiFloor(Number(p.floorIndex));
+              }}
+            }}
+          }};
+          cityVectorMap.on('click', 'building-3d-floor-extrusions', handleFloorClick);
+          cityVectorMap.on('click', 'building-3d-xray-interior-core', handleFloorClick);
+          cityVectorMap.on('mousemove', 'building-3d-floor-extrusions', () => {{
+            if (cityVectorMap && cityVectorMap.getCanvas()) {{
+              cityVectorMap.getCanvas().style.cursor = 'pointer';
+            }}
+          }});
+          cityVectorMap.on('mouseleave', 'building-3d-floor-extrusions', () => {{
+            if (cityVectorMap && cityVectorMap.getCanvas()) {{
+              cityVectorMap.getCanvas().style.cursor = '';
+            }}
+          }});
+          isBuildingLayerEventsBound = true;
+        }}
+      }} catch (err) {{
+        console.warn('Could not register building 3D layers:', err);
       }}
     }}
 
@@ -8616,11 +8841,12 @@ def build():
       const lon = Number(inst.lon) || 0;
       if (!lat || !lon) return;
 
+      const sqm = bArch.footprint_sqm || 2400;
+      const d_lat = 0.00045 * (Math.sqrt(sqm) / 50.0);
+      const d_lon = 0.00065 * (Math.sqrt(sqm) / 50.0);
+
       let coords = bArch.footprint_coordinates;
       if (!coords || coords.length < 4) {{
-        const sqm = bArch.footprint_sqm || 2000;
-        const d_lat = 0.00045 * (Math.sqrt(sqm) / 50.0);
-        const d_lon = 0.00065 * (Math.sqrt(sqm) / 50.0);
         coords = [
           [lon - d_lon, lat - d_lat],
           [lon + d_lon, lat - d_lat],
@@ -8632,15 +8858,16 @@ def build():
 
       const isClean = inst.tier === 'A';
       const isFlagged = inst.tier === 'B';
-      const color = isClean ? '#10b981' : (isFlagged ? '#be95ff' : '#08bdba');
+      const brandColor = isClean ? '#10b981' : (isFlagged ? '#be95ff' : '#08bdba');
 
-      const feature = {{
+      // Update 2D Ground Perimeter
+      const groundFeature = {{
         type: 'Feature',
         properties: {{
           name: inst.name,
-          color: color,
-          sqm: bArch.footprint_sqm || 2000,
-          style: bArch.architectural_style || 'Independent Loft'
+          color: brandColor,
+          sqm: sqm,
+          style: bArch.architectural_style || 'Curatorial Space'
         }},
         geometry: {{
           type: 'Polygon',
@@ -8648,15 +8875,379 @@ def build():
         }}
       }};
 
-      const src = cityVectorMap.getSource('highlighted-building-footprint');
-      if (src && typeof src.setData === 'function') {{
-        src.setData({{
+      const srcGround = cityVectorMap.getSource('highlighted-building-footprint');
+      if (srcGround && typeof srcGround.setData === 'function') {{
+        srcGround.setData({{
           type: 'FeatureCollection',
-          features: [feature]
+          features: [groundFeature]
         }});
       }}
+
+      // =========================================================================
+      // 🏢 🩻 3D VOLUMETRIC X-RAY GLASS CUTAWAY & CURATORIAL INTERIOR CORE
+      // =========================================================================
+      const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
+      const tempShows = inst.temporary_shows || [];
+      if (!floors.length) {{
+        floors.push({{
+          level: 0,
+          level_code: 'L0',
+          floor_name: 'Level 0 · Ground Floor',
+          elevation: '0.0m',
+          current_shows: [tempShows[0] || {{ title: inst.highlight || (inst.name + ' Permanent Collections'), dates: 'On View' }}],
+          archive_holdings: {{ collection_title: (inst.name + ' Archives') }}
+        }});
+      }} else {{
+        floors.forEach((fl, idx) => {{
+          if (tempShows[idx]) {{
+            if (!fl.current_shows || !fl.current_shows.length) {{
+              fl.current_shows = [tempShows[idx]];
+            }} else {{
+              fl.current_shows[0] = Object.assign({{}}, fl.current_shows[0], tempShows[idx]);
+            }}
+          }}
+        }});
+      }}
+
+      // Calculate centroid and inner core geometry (74% scale) for genuine X-ray glass transparency
+      const nPts = Math.max(1, coords.length - 1);
+      const cLon = coords.slice(0, nPts).reduce((s, p) => s + p[0], 0) / nPts;
+      const cLat = coords.slice(0, nPts).reduce((s, p) => s + p[1], 0) / nPts;
+      const coreScale = 0.74;
+      const coreCoords = coords.map(p => [
+        cLon + (p[0] - cLon) * coreScale,
+        cLat + (p[1] - cLat) * coreScale
+      ]);
+
+      const floorFeatures = [];
+      const coreFeatures = [];
+      const floorHeightM = 4.2;
+      const slabGapM = 0.35;
+      const explodedGapM = 7.0;
+
+      floors.forEach((fl, idx) => {{
+        const isActive = (idx === currentBfiFloorIndex);
+        const hasShow = Boolean(fl.current_shows && fl.current_shows.length);
+        const curShow = hasShow ? fl.current_shows[0] : null;
+        let baseM, heightM;
+
+        if (isExploded3DMode) {{
+          baseM = idx * (floorHeightM + explodedGapM);
+          heightM = baseM + floorHeightM;
+        }} else {{
+          if (fl.level < 0) {{
+            baseM = 0.05;
+            heightM = 0.85;
+          }} else {{
+            baseM = idx * (floorHeightM + slabGapM);
+            heightM = baseM + floorHeightM;
+          }}
+        }}
+
+        // 1. Translucent Architectural Glass Envelope (Outer X-Ray Sheath)
+        // See-through glass envelope with 0.36 - 0.48 opacity
+        const glassColor = isActive ? '#38bdf8' : (isGossipModeActive ? '#eab308' : '#1e293b');
+        const glassOpacity = isActive ? 0.48 : 0.36;
+
+        floorFeatures.push({{
+          type: 'Feature',
+          properties: {{
+            name: inst.name,
+            floorIndex: idx,
+            level: fl.level,
+            level_code: fl.level_code || ('L' + fl.level),
+            floor_name: fl.floor_name || '',
+            color: glassColor,
+            base: baseM,
+            height: heightM,
+            opacity: glassOpacity,
+            isActive: isActive,
+            isEnvelope: true
+          }},
+          geometry: {{
+            type: 'Polygon',
+            coordinates: [coords]
+          }}
+        }});
+
+        // 2. Luminous Interior Exhibition Core (Inner Curatorial Anatomy)
+        // Shines brightly inside the translucent glass envelope
+        let coreColor;
+        if (isGossipModeActive) {{
+          coreColor = '#facc15'; // Neon yellow gossip beacon
+        }} else if (isActive) {{
+          coreColor = isClean ? '#10b981' : (isFlagged ? '#c084fc' : '#38bdf8');
+        }} else if (hasShow) {{
+          coreColor = '#38bdf8'; // Curatorial exhibition glow
+        }} else {{
+          coreColor = '#0f172a'; // Deep architectural floor core
+        }}
+        const coreOpacity = isActive ? 0.96 : (hasShow ? 0.86 : 0.65);
+
+        coreFeatures.push({{
+          type: 'Feature',
+          properties: {{
+            name: (fl.floor_name || ('Level ' + idx)) + ' Core',
+            floorIndex: idx,
+            level: fl.level,
+            color: coreColor,
+            base: baseM + 0.25,
+            height: heightM - 0.25,
+            opacity: coreOpacity,
+            isActive: isActive,
+            isInteriorCore: true,
+            showTitle: curShow ? curShow.title : ''
+          }},
+          geometry: {{
+            type: 'Polygon',
+            coordinates: [coreCoords]
+          }}
+        }});
+      }});
+
+      // Top Roof Parapet Rim
+      const topFloorIdx = Math.max(0, floors.length - 1);
+      const topBase = isExploded3DMode 
+        ? (topFloorIdx * (floorHeightM + explodedGapM) + floorHeightM)
+        : (topFloorIdx * (floorHeightM + slabGapM) + floorHeightM);
+
+      floorFeatures.push({{
+        type: 'Feature',
+        properties: {{
+          name: (inst.name + ' Roof Parapet'),
+          floorIndex: -1,
+          color: isGossipModeActive ? '#facc15' : '#38bdf8',
+          base: topBase,
+          height: topBase + 0.55,
+          opacity: 0.92,
+          isActive: false
+        }},
+        geometry: {{
+          type: 'Polygon',
+          coordinates: [coords]
+        }}
+      }});
+
+      const srcFloors = cityVectorMap.getSource('highlighted-building-3d-floors');
+      if (srcFloors && typeof srcFloors.setData === 'function') {{
+        srcFloors.setData({{
+          type: 'FeatureCollection',
+          features: floorFeatures
+        }});
+      }}
+
+      const srcCore = cityVectorMap.getSource('highlighted-building-3d-interior-core');
+      if (srcCore && typeof srcCore.setData === 'function') {{
+        srcCore.setData({{
+          type: 'FeatureCollection',
+          features: coreFeatures
+        }});
+      }}
+
       currentHighlightedBuildingInst = inst;
+      updateBuilding3DInfoMarkers(inst);
     }}
+
+    // =========================================================================
+    // 📍 SPATIAL 3D ON-BUILDING INFORMATION MAPPING SYSTEM
+    // =========================================================================
+    function updateBuilding3DInfoMarkers(inst) {{
+      clearBuilding3DInfoMarkers();
+      if (!cityVectorMap || !inst || !isCityStreetViewActive || typeof maplibregl === 'undefined') return;
+
+      const lat = Number(inst.lat);
+      const lon = Number(inst.lon);
+      if (!lat || !lon) return;
+
+      const bArch = inst.building_architecture || {{}};
+      const sqm = bArch.footprint_sqm || 2400;
+      const d_lat = 0.00045 * (Math.sqrt(sqm) / 50.0);
+      const d_lon = 0.00065 * (Math.sqrt(sqm) / 50.0);
+      const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
+      const isClean = inst.tier === 'A';
+      const isFlagged = inst.tier === 'B';
+      const brandBadge = isClean 
+        ? '<span class="px-2 py-0.5 rounded text-[10px] font-mono border border-emerald-800 bg-[#072418] text-emerald-400 font-bold">Verified Independent</span>'
+        : (isFlagged
+          ? '<span class="px-2 py-0.5 rounded text-[10px] font-mono border border-purple-800 bg-[#1e1330] text-[#c084fc] font-bold">Flagged Underwriting</span>'
+          : '<span class="px-2 py-0.5 rounded text-[10px] font-mono border border-sky-800 bg-[#0c1e30] text-sky-400 font-bold">Independent Roster</span>');
+
+      // 1. 🏛️ ROOFTOP BUILDING MAST PLATE (Anchored directly over 3D Building apex)
+      const mastEl = document.createElement('div');
+      mastEl.className = 'building-3d-mast-plate pointer-events-auto select-none';
+      mastEl.style.cssText = 'min-width:280px; max-width:350px; padding:12px 14px; border-radius:16px; background:rgba(12,19,34,0.96); border:1px solid rgba(56,189,248,0.7); box-shadow:0 16px 36px rgba(0,0,0,0.7), 0 0 20px rgba(56,189,248,0.25); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; transform:translate(-50%,-100%); margin-bottom:24px; z-index:30;';
+
+      const webUrl = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || '');
+      const fin = inst.financial_data || {{}};
+      const budgetStr = fin.operating_budget_display || inst.funding || 'Independent Operational Scale';
+
+      mastEl.innerHTML = 
+        '<div style="display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid #1e2c42; padding-bottom:7px;">' +
+          '<div style="min-width:0;">' +
+            '<div style="display:flex; align-items:center; gap:6px;">' +
+              '<span style="font-size:15px;">🏛️</span>' +
+              '<span style="font-size:14px; font-weight:700; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + escapeHtml(inst.name) + '</span>' +
+            '</div>' +
+            '<div style="font-size:10.5px; font-family:monospace; color:#94a3b8; margin-top:2px;">' +
+              escapeHtml(inst.city) + (inst.country ? (', ' + escapeHtml(inst.country)) : '') + ' · ' + escapeHtml(bArch.architectural_style || 'Curatorial Pavilion') +
+            '</div>' +
+          '</div>' +
+          '<div style="flex-shrink:0;">' + brandBadge + '</div>' +
+        '</div>' +
+
+        '<div style="margin-top:7px; font-size:11px; font-family:monospace; color:#cbd5e1; display:flex; flex-direction:column; gap:3px;">' +
+          '<div style="display:flex; align-items:center; justify-content:space-between; color:#7dd3fc;">' +
+            '<span>🏢 ' + floors.length + ' Floors · ' + (bArch.footprint_sqm || 2400).toLocaleString() + ' m²</span>' +
+            '<span style="color:#f59e0b;">💶 ' + escapeHtml(budgetStr) + '</span>' +
+          '</div>' +
+          '<div style="color:#94a3b8;">' +
+            '🕒 ' + escapeHtml(inst.hours || 'Wed–Sun 11:00–19:00') + ' · 🎟️ ' + escapeHtml(inst.admission || 'Free Admission') +
+          '</div>' +
+        '</div>' +
+
+        '<div style="margin-top:9px; padding-top:8px; border-top:1px solid #1e2c42; display:flex; align-items:center; gap:6px; flex-wrap:wrap;">' +
+          '<button type="button" onclick="window.toggleExploded3DMode()" style="background:#1d3557; color:#7dd3fc; border:1px solid #38bdf8; padding:4px 9px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer; font-weight:bold; transition:all 0.15s;" title="Toggle 3D exploded axonometric floor separation">' +
+            '<span>' + (isExploded3DMode ? '🧱 Stack 3D Building' : '💥 Explode 3D Floors') + '</span>' +
+          '</button>' +
+          '<button type="button" onclick="window.zoomCloserToBuilding(20.0)" style="background:#132035; color:#93c5fd; border:1px solid #2b4266; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer;" title="Zoom into 20x street perspective">' +
+            '<span>🔍 20x Zoom</span>' +
+          '</button>' +
+          '<button type="button" onclick="window.openBuildingArchivesModal(selectedInstitution)" style="background:#092b1e; color:#34d399; border:1px solid #10b981; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer;" title="Open full building & archives dossier">' +
+            '<span>📖 Dossier</span>' +
+          '</button>' +
+          (webUrl ? ('<a href="' + escapeHtml(webUrl) + '" target="_blank" rel="noopener noreferrer" style="background:#1f2937; color:#e2e8f0; border:1px solid #374151; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; text-decoration:none;">Website ↗</a>') : '') +
+        '</div>' +
+        '<div style="position:absolute; bottom:-9px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-top:9px solid rgba(56,189,248,0.8);"></div>';
+
+      try {{
+        const mastMarker = new maplibregl.Marker({{ element: mastEl, anchor: 'bottom' }})
+          .setLngLat([lon, lat + d_lat * 0.95])
+          .addTo(cityVectorMap);
+        building3DInfoMarkers.push(mastMarker);
+      }} catch (e) {{
+        console.warn('Could not add rooftop mast marker:', e);
+      }}
+
+      // 2. 🏢 3D FLOOR-BY-FLOOR FACADE CALLOUT STACK (Mapped directly to levels)
+      if (floors.length) {{
+        const facadeEl = document.createElement('div');
+        facadeEl.className = 'building-3d-facade-stack pointer-events-auto select-none';
+        facadeEl.style.cssText = 'min-width:270px; max-width:330px; display:flex; flex-direction:column; gap:6px; padding:10px 12px; border-radius:16px; background:rgba(10,16,28,0.95); border:1px solid rgba(56,189,248,0.5); box-shadow:0 16px 32px rgba(0,0,0,0.75); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; z-index:28;';
+
+        const sortedFloors = floors.map((f, i) => ({{ floor: f, originalIndex: i }})).reverse();
+
+        let floorItemsHtml = '';
+        sortedFloors.forEach(item => {{
+          const fl = item.floor;
+          const idx = item.originalIndex;
+          const isActive = (idx === currentBfiFloorIndex);
+          const show = (fl.current_shows && fl.current_shows[0]) || {{ title: 'Curatorial Commissions On View', dates: 'On View' }};
+          const arch = fl.archive_holdings || {{ collection_title: 'Institutional Archives & Special Collections' }};
+          const levelCode = fl.level_code || (fl.level === 0 ? 'L0' : (fl.level < 0 ? ('L' + fl.level) : ('L' + fl.level)));
+
+          floorItemsHtml += 
+            '<div onclick="window.selectBfiFloor(' + idx + ')" style="' +
+              'cursor:pointer; border-radius:10px; padding:7px 9px; ' +
+              'background:' + (isActive ? 'rgba(14,34,56,0.95)' : 'rgba(18,25,38,0.7)') + '; ' +
+              'border:1px solid ' + (isActive ? '#38bdf8' : 'rgba(43,62,94,0.6)') + '; ' +
+              'transition:all 0.15s; display:flex; flex-direction:column; gap:3px;' +
+            '">' +
+              '<div style="display:flex; align-items:center; justify-content:space-between; gap:6px;">' +
+                '<div style="display:flex; align-items:center; gap:5px;">' +
+                  '<span style="font-family:monospace; font-weight:bold; font-size:11px; padding:1px 5px; border-radius:4px; background:' + (isActive ? '#0284c7' : '#1e293b') + '; color:#ffffff;">' +
+                    levelCode +
+                  '</span>' +
+                  '<span style="font-size:11.5px; font-weight:600; color:' + (isActive ? '#38bdf8' : '#e2e8f0') + ';">' +
+                    escapeHtml(fl.floor_name || ('Level ' + fl.level)) +
+                  '</span>' +
+                '</div>' +
+                '<span style="font-size:10px; font-family:monospace; color:#94a3b8;">' + escapeHtml(fl.elevation || '') + '</span>' +
+              '</div>' +
+
+              '<div style="font-size:11.5px; color:#ffffff; line-height:1.25; display:flex; align-items:baseline; gap:4px;">' +
+                '<span style="color:#f59e0b; font-size:10px; font-family:monospace; flex-shrink:0;">🖼️</span>' +
+                '<span style="font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + escapeHtml(show.title) + '</span>' +
+              '</div>' +
+
+              '<div style="font-size:10.5px; color:#6ee7b7; font-family:monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:flex; align-items:baseline; gap:4px;">' +
+                '<span style="color:#10b981; font-size:10px; flex-shrink:0;">📚</span>' +
+                '<span>' + escapeHtml(arch.collection_title) + '</span>' +
+              '</div>' +
+            '</div>';
+        }});
+
+        facadeEl.innerHTML = 
+          '<div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #1e2c42; padding-bottom:5px;">' +
+            '<span style="font-size:10.5px; font-family:monospace; font-weight:bold; text-transform:uppercase; color:#38bdf8; letter-spacing:0.05em; display:flex; align-items:center; gap:4px;">' +
+              '<span>🏢</span> 3D FLOOR DIRECTORY' +
+            '</span>' +
+            '<span style="font-size:10px; font-family:monospace; color:#94a3b8;">Click level to inspect in 3D</span>' +
+          '</div>' +
+          '<div style="display:flex; flex-direction:column; gap:5px; max-height:260px; overflow-y:auto;">' +
+            floorItemsHtml +
+          '</div>';
+
+        try {{
+          const facadeMarker = new maplibregl.Marker({{ element: facadeEl, anchor: 'left' }})
+            .setLngLat([lon + d_lon * 1.15, lat])
+            .addTo(cityVectorMap);
+          building3DInfoMarkers.push(facadeMarker);
+        }} catch (e) {{
+          console.warn('Could not add facade stack marker:', e);
+        }}
+      }}
+    }}
+
+    function toggleExploded3DMode() {{
+      isExploded3DMode = !isExploded3DMode;
+      const inst = selectedInstitution || currentHighlightedBuildingInst;
+      if (inst) {{
+        highlightBuildingFootprint(inst);
+      }}
+    }}
+    window.toggleExploded3DMode = toggleExploded3DMode;
+
+    function toggleGossipMode() {{
+      isGossipModeActive = !isGossipModeActive;
+      const topBtn = document.getElementById('topGossipBtn');
+      const mobileBtn = document.getElementById('mobileGossipBtn');
+
+      if (isGossipModeActive) {{
+        if (topBtn) {{
+          topBtn.classList.add('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold', 'shadow-[0_0_15px_rgba(234,179,8,0.6)]');
+          topBtn.classList.remove('bg-[#1c1806]', 'text-yellow-300');
+          topBtn.innerHTML = '<span>🟡 Gossip Mode: ACTIVE [REDDIT & 𝕏]</span>';
+        }}
+        if (mobileBtn) {{
+          mobileBtn.classList.add('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold');
+          mobileBtn.classList.remove('bg-[#1c1806]', 'text-yellow-300');
+          mobileBtn.innerHTML = '<span>🟡 Gossip Active</span>';
+        }}
+        if (typeof appendBotMessage === 'function') {{
+          appendBotMessage("🟡 **Yellow Gossip Mode Activated**: Mapping institutions based on art world backchannels, Reddit debates (r/contemporaryart, r/museums), curatorial Twitter/X discourse, and gallery whispers. High-rumor spaces are radiating in neon yellow. Click any institution to view unvarnished rumors and curatorial dossiers.");
+        }}
+      }} else {{
+        if (topBtn) {{
+          topBtn.classList.remove('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold', 'shadow-[0_0_15px_rgba(234,179,8,0.6)]');
+          topBtn.classList.add('bg-[#1c1806]', 'text-yellow-300');
+          topBtn.innerHTML = '<span>🟡 Gossip Mode [REDDIT & 𝕏]</span>';
+        }}
+        if (mobileBtn) {{
+          mobileBtn.classList.remove('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold');
+          mobileBtn.classList.add('bg-[#1c1806]', 'text-yellow-300');
+          mobileBtn.innerHTML = '<span>🟡 Gossip</span>';
+        }}
+      }}
+
+      if (typeof render === 'function') {{
+        render();
+      }}
+      const inst = selectedInstitution || currentHighlightedBuildingInst;
+      if (inst && typeof highlightBuildingFootprint === 'function') {{
+        highlightBuildingFootprint(inst);
+      }}
+    }}
+    window.toggleGossipMode = toggleGossipMode;
 
     function zoomToBuilding(instNameOrObj, showArchives = true) {{
       let inst = null;
@@ -8677,6 +9268,10 @@ def build():
         curatorContext.lastInst = inst;
         if (inst.city) curatorContext.lastCity = inst.city;
       }}
+
+      // Strictly hide 2D globe card when entering 3D building view
+      const floatingCard = document.getElementById('floatingCard');
+      if (floatingCard) floatingCard.classList.add('hidden');
 
       // Switch to vector street map if not active
       if (!isCityStreetViewActive) {{
@@ -8849,7 +9444,20 @@ def build():
     function selectBfiFloor(idx) {{
       currentBfiFloorIndex = idx;
       const inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (inst) showBuildingFloorInspectorHud(inst);
+      if (inst) {{
+        highlightBuildingFootprint(inst);
+        showBuildingFloorInspectorHud(inst);
+        const fl = (inst.floor_plans && inst.floor_plans[idx]) || null;
+        if (fl && fl.current_shows && fl.current_shows[0]) {{
+          const show = fl.current_shows[0];
+          const stEl = document.getElementById('floatingCardShowTitle');
+          const smEl = document.getElementById('floatingCardShowMeta');
+          const spEl = document.getElementById('floatingCardShowFloorPill');
+          if (stEl) stEl.textContent = show.title;
+          if (smEl) smEl.textContent = (show.curator_artists || '') + (show.dates ? (' · ' + show.dates) : '');
+          if (spEl) spEl.textContent = fl.level_code || ('L' + idx);
+        }}
+      }}
     }}
     window.selectBfiFloor = selectBfiFloor;
 
@@ -9441,6 +10049,9 @@ def build():
       document.getElementById('cityViewControlBanner')?.classList.add('hidden');
       document.getElementById('activeRouteBanner')?.classList.add('hidden');
       document.getElementById('buildingFloorInspectorHud')?.classList.add('hidden');
+      if (typeof clearBuilding3DInfoMarkers === 'function') {{
+        clearBuilding3DInfoMarkers();
+      }}
       if (typeof clearCuratorialRoute === 'function') {{
         clearCuratorialRoute();
       }}
@@ -12201,28 +12812,7 @@ def build():
         }}
         ctx.restore();
 
-        // 6. Country Centroid Names (Smoothly fade out as zoom approaches city/regional level)
-        if (r > baseRadius * 0.8 && r < baseRadius * 2.8) {{
-          const fadeAlpha = r > baseRadius * 1.8 ? Math.max(0, 1 - (r - baseRadius * 1.8) / (baseRadius * 1.0)) : 1.0;
-          ctx.save();
-          ctx.globalAlpha = fadeAlpha;
-          ctx.font = '13px "PP Telegraf", "PP Telegraph", sans-serif';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          COUNTRY_CENTROIDS.forEach(c => {{
-            const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
-            if (selectedCountryFilter === 'all' || isSel) {{
-              const pt = project(c.lon, c.lat, r, cx, cy);
-              if (pt.front && pt.depth > 0.12) {{
-                ctx.fillStyle = isSel ? '#60a5fa' : '#475569';
-                ctx.fillText(c.name, pt.x, pt.y);
-              }}
-            }}
-          }});
-          ctx.restore();
-        }}
-
-        // 7. City Badges (All cities in selected country or top cities worldwide)
+        // 6. City Badges (All cities in selected country or top cities worldwide)
         cityBadgeHitboxes = [];
         const drawnCityBoxes = [];
         ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
@@ -12254,7 +12844,7 @@ def build():
           if (pt.front && pt.depth > 0.08) {{
             const isCountryActive = selectedCountryFilter !== 'all';
             const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${{city.count}})` : '';
-            const txt = (isSelected ? '● ' : '■ ') + city.name + countLabel;
+            const txt = (isSelected ? '● ' : (isGossipModeActive ? '⚡ ' : '■ ')) + city.name + countLabel;
             const tw = ctx.measureText(txt).width;
             const bw = tw + 14;
             const bh = 24;
@@ -12281,28 +12871,72 @@ def build():
               ctx.save();
               ctx.globalAlpha = badgeAlpha;
 
-              ctx.fillStyle = isSelected ? '#1d4ed8' : isHovered ? '#1e3a8a' : '#070b14';
+              ctx.fillStyle = isSelected 
+                ? (isGossipModeActive ? '#a16207' : '#1d4ed8') 
+                : isHovered 
+                ? (isGossipModeActive ? '#713f12' : '#1e3a8a') 
+                : '#070b14';
               ctx.beginPath();
               ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 5) : ctx.rect(bx, by, bw, bh);
               ctx.fill();
 
-              ctx.strokeStyle = isSelected ? '#93c5fd' : isHovered ? '#60a5fa' : '#222d42';
+              ctx.strokeStyle = isSelected 
+                ? (isGossipModeActive ? '#facc15' : '#93c5fd') 
+                : isHovered 
+                ? (isGossipModeActive ? '#eab308' : '#60a5fa') 
+                : (isGossipModeActive ? '#854d0e' : '#222d42');
               ctx.lineWidth = isSelected || isHovered ? 1.5 : 1;
               ctx.stroke();
 
-              ctx.fillStyle = isSelected || isHovered ? '#ffffff' : '#cbd5e1';
+              ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef08a' : '#cbd5e1');
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
 
               ctx.beginPath();
               ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
-              ctx.fillStyle = isSelected ? '#93c5fd' : '#3b82f6';
+              ctx.fillStyle = isSelected ? (isGossipModeActive ? '#facc15' : '#93c5fd') : (isGossipModeActive ? '#eab308' : '#3b82f6');
               ctx.fill();
               ctx.restore();
             }}
           }}
         }});
+
+        // 7. Country Centroid Names (Strict Non-Overlapping & Enhanced Contrast)
+        if (r > baseRadius * 0.8 && r < baseRadius * 2.8) {{
+          const fadeAlpha = r > baseRadius * 1.8 ? Math.max(0, 1 - (r - baseRadius * 1.8) / (baseRadius * 1.0)) : 1.0;
+          ctx.save();
+          ctx.globalAlpha = fadeAlpha;
+          ctx.font = '13px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+
+          COUNTRY_CENTROIDS.forEach(c => {{
+            const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
+            if (selectedCountryFilter === 'all' || isSel) {{
+              const pt = project(c.lon, c.lat, r, cx, cy);
+              if (pt.front && pt.depth > 0.12) {{
+                const ctw = ctx.measureText(c.name).width;
+                const cBox = {{ x: pt.x - ctw / 2 - 8, y: pt.y - 10, w: ctw + 16, h: 20 }};
+
+                // Strictly check collision against ALL drawn city badge boxes (with 12px padding)
+                const collidesWithCity = drawnCityBoxes.some(box => {{
+                  return !(cBox.x + cBox.w + 12 < box.x || cBox.x > box.x + box.w + 12 || cBox.y + cBox.h + 10 < box.y || cBox.y > box.y + box.h + 10);
+                }});
+
+                // Avoid overlapping city pills, ensure clean high contrast
+                if (!collidesWithCity || isSel) {{
+                  ctx.fillStyle = isSel ? '#38bdf8' : (isGossipModeActive ? '#fde047' : '#94a3b8');
+                  ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
+                  ctx.shadowBlur = 6;
+                  ctx.fillText(c.name, pt.x, pt.y);
+                  ctx.shadowBlur = 0;
+                }}
+              }}
+            }}
+          }});
+          ctx.restore();
+        }}
 
         // 7.5 Clean High-Speed Rail Corridors between Cultural Capitals
         if (isRailVisible && r > baseRadius * 1.1 && r < baseRadius * 14.0) {{
@@ -12531,9 +13165,24 @@ def build():
             ctx.restore();
           }}
 
+          if (isGossipModeActive && d.inst.gossip_data) {{
+            const gTime = (Date.now() % 1600) / 1600;
+            const gRadius = 4 + gTime * 14;
+            const gAlpha = (1 - gTime) * 0.9;
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, gRadius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(250, 204, 21, ${{gAlpha}})`;
+            ctx.lineWidth = 1.6;
+            ctx.stroke();
+            ctx.restore();
+          }}
+
           ctx.beginPath();
           ctx.arc(d.x, d.y, isSel ? 4.5 : isHov ? 4 : 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#be95ff' : '#08bdba';
+          ctx.fillStyle = isGossipModeActive 
+            ? (d.inst.gossip_data ? '#facc15' : '#854d0e')
+            : (d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#be95ff' : '#08bdba');
           ctx.fill();
 
           const shouldDrawGlobeLabel = isHov || isSel || 
@@ -13332,6 +13981,53 @@ def build():
         hoursEl.textContent = `🕒 ${{shortH}} · 🎟️ ${{shortF}}`;
       }}
 
+      // Populate Current Shows & Opening Nights in Floating Window
+      const tempShows = inst.temporary_shows || [];
+      const primaryShow = tempShows[0] || (inst.floor_plans && inst.floor_plans[0] && inst.floor_plans[0].current_shows && inst.floor_plans[0].current_shows[0]) || {{
+        title: inst.highlight || `${{inst.name}} Curatorial Exhibitions`,
+        curator_artists: 'Resident Artists',
+        dates: 'Autumn 2026',
+        floor_level: 'L1',
+        status: 'Now On View',
+        opening_night: {{ date: 'Fri, Oct 16, 2026', hours: '18:00–21:30', reception_type: 'Public Vernissage', is_upcoming: true }}
+      }};
+
+      const showTitleEl = document.getElementById('floatingCardShowTitle');
+      const showMetaEl = document.getElementById('floatingCardShowMeta');
+      const showStatusBadge = document.getElementById('floatingCardShowStatusBadge');
+      const showFloorPill = document.getElementById('floatingCardShowFloorPill');
+      const showVernissageDate = document.getElementById('floatingCardOpeningNightDate');
+      const showVernissageBox = document.getElementById('floatingCardOpeningNightBox');
+
+      if (showTitleEl) showTitleEl.textContent = primaryShow.title;
+      if (showMetaEl) showMetaEl.textContent = `${{primaryShow.curator_artists || ''}} · ${{primaryShow.dates || 'On View'}}`;
+      if (showStatusBadge) showStatusBadge.textContent = primaryShow.status || 'Now On View';
+      if (showFloorPill) showFloorPill.textContent = primaryShow.floor_level || 'L1';
+      if (primaryShow.opening_night && showVernissageDate) {{
+        showVernissageDate.textContent = `${{primaryShow.opening_night.date}} (${{primaryShow.opening_night.hours}})`;
+        if (showVernissageBox) showVernissageBox.style.display = 'flex';
+      }} else if (showVernissageBox) {{
+        showVernissageBox.style.display = 'none';
+      }}
+
+      // Populate Gossip & Discourse Dossier
+      const gossip = inst.gossip_data;
+      const gSection = document.getElementById('floatingCardGossipSection');
+      const gBadge = document.getElementById('floatingCardGossipIntensityBadge');
+      const gHeadline = document.getElementById('floatingCardGossipHeadline');
+      const gRedditText = document.getElementById('floatingCardGossipRedditText');
+      const gTwitterText = document.getElementById('floatingCardGossipTwitterText');
+
+      if (gossip && gHeadline) {{
+        gHeadline.textContent = gossip.headline || 'Art world discussions and donor governance transparency murmurs.';
+        if (gBadge) gBadge.textContent = gossip.intensity || 'HOT 🔥';
+        if (gRedditText) gRedditText.textContent = (gossip.reddit ? gossip.reddit.snippet : 'Discussion active on r/contemporaryart');
+        if (gTwitterText) gTwitterText.textContent = (gossip.twitter_x ? gossip.twitter_x.snippet : 'Discourse tracking curatorial independence.');
+        if (gSection) {{
+          gSection.style.display = 'block';
+        }}
+      }}
+
       // Direct Web Action Buttons on Map Popup
       const directWebBtn = document.getElementById('floatingCardDirectWebBtn');
       const directDomain = document.getElementById('floatingCardDirectDomain');
@@ -13406,6 +14102,8 @@ def build():
         }}
       }}
     }}
+    window.selectInstitution = selectInstitution;
+    window.deselectInstitution = deselectInstitution;
 
     // Scholarly Audit Dossier View
     function openDossier(inst) {{
@@ -15922,6 +16620,71 @@ FORMATTING & INTERACTION RULES:
           </div>
         `);
         return;
+      }}
+
+      // B. Gossip / Rumors / Reddit / Twitter Discourse Intent
+      const isGossipIntent = /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|x post|backchannel|scandal|controversy|dirt)\b/i.test(q);
+      if (isGossipIntent) {{
+        if (!isGossipModeActive && typeof toggleGossipMode === 'function') {{
+          toggleGossipMode();
+        }}
+        const inst = selectedInstitution || (typeof findMentionedInst === 'function' ? findMentionedInst(q) : null);
+        if (inst && inst.gossip_data) {{
+          const g = inst.gossip_data;
+          appendCuratorMessage(`
+            <div class="p-3.5 bg-[#171408] border border-yellow-700/60 rounded-2xl space-y-2">
+              <div class="flex items-center justify-between border-b border-yellow-900/60 pb-2">
+                <span class="text-yellow-400 font-bold text-[14px] flex items-center gap-1.5">
+                  <span>⚡</span> GOSSIP & RUMORS: ${{escapeHtml(inst.name)}}
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono border border-yellow-700 bg-yellow-950 text-yellow-300 font-bold">${{escapeHtml(g.intensity || 'HOT 🔥')}}</span>
+              </div>
+              <p class="text-[14px] text-yellow-100 font-medium leading-snug">${{escapeHtml(g.headline || '')}}</p>
+              <div class="space-y-1.5 text-[12px] font-mono text-slate-300 pt-1">
+                <div class="bg-[#0d0c06] p-2 rounded border border-yellow-900/40">
+                  <div class="text-orange-400 font-bold mb-0.5">r/${{escapeHtml(g.reddit?.subreddit || 'contemporaryart')}} (${{g.reddit?.upvotes || 420}} upvotes):</div>
+                  <div class="text-slate-200">"${{escapeHtml(g.reddit?.snippet || '')}}"</div>
+                </div>
+                <div class="bg-[#0d0c06] p-2 rounded border border-yellow-900/40">
+                  <div class="text-sky-400 font-bold mb-0.5">𝕏 ${{escapeHtml(g.twitter_x?.handle || '@curatorial')}} (${{g.twitter_x?.retweets || 84}} RTs):</div>
+                  <div class="text-slate-200">"${{escapeHtml(g.twitter_x?.snippet || '')}}"</div>
+                </div>
+                ${{g.chat_backchannels ? `
+                <div class="bg-[#0d0c06] p-2 rounded border border-yellow-900/40">
+                  <div class="text-emerald-400 font-bold mb-0.5">💬 ${{escapeHtml(g.chat_backchannels.channel || 'Telegram Backchannel')}}:</div>
+                  <div class="text-slate-200">"${{escapeHtml(g.chat_backchannels.whisper || '')}}"</div>
+                </div>` : ''}}
+              </div>
+            </div>
+          `);
+          return;
+        }}
+      }}
+
+      // C. Current Shows & Opening Nights Intent
+      const isShowIntent = /\b(current show|shows|exhibition|exhibitions|on view|opening night|vernissage|rsvp)\b/i.test(q);
+      if (isShowIntent) {{
+        const inst = selectedInstitution || (typeof findMentionedInst === 'function' ? findMentionedInst(q) : null);
+        if (inst && (inst.temporary_shows || (inst.floor_plans && inst.floor_plans[0]?.current_shows))) {{
+          const shows = inst.temporary_shows || inst.floor_plans[0].current_shows;
+          const s = shows[0];
+          appendCuratorMessage(`
+            <div class="p-3.5 bg-[#121620] border border-[#232d3f] rounded-2xl space-y-2">
+              <div class="flex items-center justify-between border-b border-[#1b2536] pb-2">
+                <span class="text-amber-400 font-bold text-[14px] flex items-center gap-1.5">
+                  <span>🖼️</span> CURRENT EXHIBITION: ${{escapeHtml(inst.name)}}
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono border border-emerald-800 bg-emerald-950 text-emerald-300 font-bold">${{escapeHtml(s.status || 'Now On View')}}</span>
+              </div>
+              <p class="text-[15px] text-white font-semibold leading-tight">${{escapeHtml(s.title)}}</p>
+              <div class="text-[12px] font-mono text-slate-300">
+                <div>${{escapeHtml(s.curator_artists || 'Resident Artists')}} · ${{escapeHtml(s.dates || 'On View')}}</div>
+                ${{s.opening_night ? `<div class="mt-1.5 text-emerald-300 bg-emerald-950/40 p-1.5 rounded border border-emerald-800/60">🍾 Vernissage: ${{escapeHtml(s.opening_night.date)}} (${{escapeHtml(s.opening_night.hours)}}) · ${{escapeHtml(s.opening_night.rsvp || 'Free / RSVP')}}</div>` : ''}}
+              </div>
+            </div>
+          `);
+          return;
+        }}
       }}
 
       curatorTyping.classList.remove('hidden');
