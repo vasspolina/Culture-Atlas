@@ -13263,14 +13263,14 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v8') caches.delete(k);
+          if (k !== 'culture-atlas-v9') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=8').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=9').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
@@ -13691,6 +13691,7 @@ def build():
       const cx = width / 2;
       const cy = height / 2;
       const r = currentRadius;
+      const isVisualCritiqueOnly = typeof selectedTierFilter !== 'undefined' && selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
 
       // Dynamic City Detection for Free Zooming & Explicit City Selection
       let activeCity = selectedCityFilter !== 'all' ? selectedCityFilter : null;
@@ -14302,9 +14303,9 @@ def build():
           }}
         }});
 
-        // 8.1 Spatial Blossom / Anti-Overlap Spidering for Co-located Institutions
-        // When zoomed in onto a country or region, ensure adjacent institutions (e.g. 3 in Rome, 4 in Milan)
-        // blossom into separate, non-overlapping clickable spots with generous hitboxes
+        // 8.1 Spatial Blossom / Anti-Overlap for Co-located Institutions in Same City
+        // When zoomed in onto a country or region, ensure adjacent institutions in the same city (e.g. 3 in Rome, 4 in Milan)
+        // separate into non-overlapping clickable spots with generous hitboxes
         const proximityGroups = [];
         const visitedDots = new Set();
         for (let i = 0; i < visibleDots.length; i++) {{
@@ -14313,7 +14314,8 @@ def build():
           visitedDots.add(i);
           for (let j = i + 1; j < visibleDots.length; j++) {{
             if (visitedDots.has(j)) continue;
-            if (Math.hypot(visibleDots[i].origX - visibleDots[j].origX, visibleDots[i].origY - visibleDots[j].origY) < 26) {{
+            const sameCity = visibleDots[i].inst && visibleDots[j].inst && matchC(visibleDots[i].inst.city, visibleDots[j].inst.city);
+            if (sameCity && Math.hypot(visibleDots[i].origX - visibleDots[j].origX, visibleDots[i].origY - visibleDots[j].origY) < 26) {{
               group.push(visibleDots[j]);
               visitedDots.add(j);
             }}
@@ -14327,13 +14329,11 @@ def build():
           const N = grp.length;
           const cX = grp.reduce((acc, d) => acc + d.origX, 0) / N;
           const cY = grp.reduce((acc, d) => acc + d.origY, 0) / N;
-          const spreadR = Math.max(26, 18 + N * 5);
+          const spreadR = Math.min(24, Math.max(16, 12 + N * 3));
           grp.forEach((d, idx) => {{
             const angle = (2 * Math.PI * idx) / N - Math.PI / 2;
             d.x = Math.round(cX + spreadR * Math.cos(angle));
             d.y = Math.round(cY + spreadR * Math.sin(angle));
-            d.spiderAnchorX = cX;
-            d.spiderAnchorY = cY;
           }});
         }});
 
@@ -14404,25 +14404,6 @@ def build():
             }}
           }});
         }}
-
-        // Draw delicate spider lines connecting blossomed institutions to their geographic centroid
-        visibleDots.forEach(d => {{
-          if (d.spiderAnchorX !== undefined) {{
-            ctx.save();
-            ctx.beginPath();
-            ctx.moveTo(d.spiderAnchorX, d.spiderAnchorY);
-            ctx.lineTo(d.x, d.y);
-            ctx.strokeStyle = isGossipModeActive ? 'rgba(249, 115, 22, 0.40)' : 'rgba(56, 189, 248, 0.40)';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.arc(d.spiderAnchorX, d.spiderAnchorY, 2.5, 0, Math.PI * 2);
-            ctx.fillStyle = isGossipModeActive ? '#fb923c' : '#38bdf8';
-            ctx.fill();
-            ctx.restore();
-          }}
-        }});
 
         visibleDots.forEach(d => {{
           const isSel = selectedInstitution && selectedInstitution.name === d.inst.name;
