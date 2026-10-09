@@ -814,7 +814,7 @@ def build():
       font-weight: 200 !important;
       font-size: 30px;
       line-height: 1;
-      letter-spacing: -0.2px;
+      letter-spacing: 0.7px !important;
       color: #ffffff;
       white-space: nowrap;
       text-transform: none !important;
@@ -825,21 +825,21 @@ def build():
       .brand-logo-title {{
         font-size: 14px;
         line-height: 16px;
-        letter-spacing: 0.2px;
+        letter-spacing: 0.7px !important;
       }}
     }}
     @media (min-width: 481px) and (max-width: 640px) {{
       .brand-logo-title {{
         font-size: 16px;
         line-height: 18px;
-        letter-spacing: 0.3px;
+        letter-spacing: 0.7px !important;
       }}
     }}
     @media (min-width: 641px) and (max-width: 1024px) {{
       .brand-logo-title {{
         font-size: 24px;
         line-height: 24px;
-        letter-spacing: 0px;
+        letter-spacing: 0.7px !important;
       }}
     }}
     .brand-clean-spaces-badge {{
@@ -855,7 +855,7 @@ def build():
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 200 !important;
       font-size: 14px;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.7px;
       line-height: 1;
       white-space: nowrap;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
