@@ -449,7 +449,7 @@ def build():
 
     .font-mono, monospace, code, pre, .font-bold, .font-semibold, .font-medium, strong, b {{
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 250 !important;
+      font-weight: 200 !important;
     }}
 
     body {{
@@ -1239,6 +1239,40 @@ def build():
     }}
   .speak-icon {{ display: none !important; }}
 #curatorVoiceToggleIcon {{ display: none !important; }}
+
+    /* Mobile-Optimized Fixed Bottom Sheet for Floating Card & Gossip Pane */
+    @media (max-width: 767px) {{
+      #floatingCard {{
+        position: fixed !important;
+        left: 8px !important;
+        right: 8px !important;
+        bottom: 8px !important;
+        top: auto !important;
+        transform: none !important;
+        width: auto !important;
+        max-width: calc(100% - 16px) !important;
+        max-height: 72vh !important;
+        z-index: 60 !important;
+        overflow-y: auto !important;
+        border-radius: 20px !important;
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.95), 0 0 24px rgba(249, 115, 22, 0.35) !important;
+      }}
+      body.gossip-mode-active #floatingCard {{
+        border-color: rgba(249, 115, 22, 0.8) !important;
+        background: #140904 !important;
+      }}
+      #detailDrawer {{
+        width: 100% !important;
+        max-width: 100% !important;
+      }}
+      .no-scrollbar::-webkit-scrollbar {{
+        display: none;
+      }}
+      .no-scrollbar {{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }}
+    }}
 </style>
   <script>
 {maplibre_js}
@@ -1301,43 +1335,44 @@ def build():
     </div>
 
     <!-- Right: View Controls (Desktop) & Status / Reset (Compact Mobile) -->
-    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+    <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar max-w-[64vw] md:max-w-none shrink-0 py-1">
       <!-- Desktop View Controls: Retained hidden stubs for DOM safety -->
       <div class="hidden" style="display:none;" aria-hidden="true">
         <button id="topViewMinimizeBtn"></button>
         <button id="topViewExpandBtn"></button>
       </div>
 
-      <!-- Mobile + New Chat Icon Button, Mobile Archives & Mobile Intel Button -->
-      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-10 sm:w-11 h-8 sm:h-9 bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
-        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Mobile + New Chat Icon Button & Prioritized Mobile Gossip Button -->
+      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-8 h-8 bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
           <line x1="12" y1="5" x2="12" y2="19"></line>
           <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
       </button>
 
-      <button id="mobileCatalogBtn" class="flex md:hidden items-center justify-center px-3.5 py-2 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Browse All Findings">
+      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-3 py-1 bg-[#271206] hover:bg-[#381a09] border border-orange-700/80 text-orange-300 rounded-full text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
+        <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+        <span>Gossip</span>
+      </button>
+
+      <button id="mobileCatalogBtn" class="flex md:hidden items-center justify-center px-3 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Browse All Findings">
         Findings
       </button>
 
-      <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-4 py-2 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
+      <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-3 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
         Archives
       </button>
 
-      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center justify-center px-4 py-2 bg-[#271206] hover:bg-[#381a09] border border-orange-900/60 text-orange-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Toggle Gossip Mode">
-        Gossip
-      </button>
-
-      <button id="mobileGovernanceBtn" class="flex md:hidden items-center justify-center px-4 py-2 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
+      <button id="mobileGovernanceBtn" class="flex md:hidden items-center justify-center px-3 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
         Legend
       </button>
 
-      <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-5 py-2 bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/70 text-emerald-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Contribute confidential intelligence">
+      <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-3.5 py-1 bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/70 text-emerald-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Contribute confidential intelligence">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span> Intel
       </button>
 
-      <button id="topSettingsBtn" class="flex items-center gap-1 px-1.5 sm:px-3 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[12px] sm:text-[14px] transition cursor-pointer shrink-0" title="AI Intelligence & API Key Settings">
-        <span id="topStatusDot" class="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-amber-400 shrink-0"></span>
+      <button id="topSettingsBtn" class="flex items-center gap-1 px-2 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[12px] transition cursor-pointer shrink-0" title="AI Intelligence & API Key Settings">
+        <span id="topStatusDot" class="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
         <span id="topStatusLabel" class="font-normal text-amber-300 flex items-center gap-1"><span class="hidden sm:inline">Add API Key</span></span>
       </button>
       <button id="topResetBtn" class="hidden sm:flex bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white px-2 sm:px-2.5 py-1 rounded-xl text-[12px] sm:text-[14px] transition items-center gap-1 cursor-pointer shrink-0" title="Reset Globe View">
@@ -1525,10 +1560,16 @@ def build():
                 <p id="floatingCardGossipReviewSummary" class="text-[12px] text-slate-200 leading-snug font-sans line-clamp-2"></p>
               </div>
             </div>
-            <button type="button" onclick="event.stopPropagation(); window.toggleGossipMode();" 
-                    class="w-full mt-1.5 py-1.5 px-2.5 rounded-lg bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-semibold text-[11.5px] font-mono flex items-center justify-center gap-1.5 transition shadow cursor-pointer">
-              <span>Radiate Rumor Beacons on Map</span>
-            </button>
+            <div class="flex items-center gap-1.5 mt-1.5">
+              <button type="button" onclick="event.stopPropagation(); window.openGossipDossier(selectedInstitution);" 
+                      class="flex-1 py-1.5 px-2 rounded-lg bg-orange-950/80 hover:bg-orange-900 border border-orange-700/80 text-orange-200 font-semibold text-[11px] font-mono flex items-center justify-center gap-1 transition cursor-pointer">
+                <span>Full Dossier &amp; Leaks →</span>
+              </button>
+              <button type="button" onclick="event.stopPropagation(); window.toggleGossipMode();" 
+                      class="flex-1 py-1.5 px-2 rounded-lg bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-semibold text-[11px] font-mono flex items-center justify-center gap-1 transition shadow cursor-pointer">
+                <span>Radiate Beacons</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -2036,6 +2077,7 @@ def build():
               <button class="globe-filter-pill atlas-suggestion-pill" data-type="academic">Academic Studies ({academic_count})</button>
               <button class="globe-filter-pill atlas-suggestion-pill" data-type="archives">Archives Directory ({archives_count})</button>
               <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
               <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
               <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
               <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
@@ -10356,8 +10398,23 @@ def build():
       }}
 
       // Synchronize floating card mode with active gossip state
-      if (typeof window.setCardMode === 'function') {{
-        window.setCardMode(isGossipModeActive ? 'gossip' : 'info', false);
+      if (isGossipModeActive) {{
+        if (window.innerWidth < 768 && typeof setMobileViewMode === 'function' && typeof currentMobileMode !== 'undefined' && currentMobileMode === 'chat') {{
+          setMobileViewMode('split');
+        }}
+        if (!selectedInstitution && typeof ALL_INSTITUTIONS !== 'undefined') {{
+          const gossipSample = ALL_INSTITUTIONS.find(i => i.gossip_data && (i.name.includes('Guggenheim') || i.name.includes('British'))) ||
+                               ALL_INSTITUTIONS.find(i => i.gossip_data);
+          if (gossipSample && typeof selectInstitution === 'function') {{
+            selectInstitution(gossipSample, false);
+          }}
+        }} else if (selectedInstitution && typeof setCardMode === 'function') {{
+          setCardMode('gossip', false);
+        }}
+      }} else {{
+        if (typeof window.setCardMode === 'function') {{
+          window.setCardMode('info', false);
+        }}
       }}
 
       if (typeof render === 'function') {{
@@ -13697,10 +13754,10 @@ def build():
 
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ' · ' + inst.curatorial_focus : (inst.neighborhood ? ' · ' + inst.neighborhood : ''));
-      ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
       const subW = ctx.measureText(subText).width;
 
-      ctx.font = '14px "PP Telegraf", monospace';
+      ctx.font = '200 14px "PP Telegraf", monospace';
       const webW = ctx.measureText(domain).width;
 
       const cardW = Math.max(240, Math.min(360, Math.max(nameW, subW, webW + 36) + 28));
@@ -13743,7 +13800,7 @@ def build():
       }}
       ctx.fillText(displayName, cardX + 12, cardY + 20);
 
-      ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
       ctx.fillStyle = '#94a3b8';
       let displaySub = subText;
       if (ctx.measureText(displaySub).width > cardW - 24) {{
@@ -13768,13 +13825,13 @@ def build():
         ctx.fill();
         ctx.stroke();
 
-        ctx.font = '14px "PP Telegraf", monospace';
+        ctx.font = '200 14px "PP Telegraf", monospace';
         ctx.fillStyle = '#93c5fd';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
         ctx.fillText(domain, btnX + 8, btnY + 2);
 
-        ctx.font = '14px "PP Telegraf", sans-serif';
+        ctx.font = '200 14px "PP Telegraf", sans-serif';
         ctx.fillStyle = '#64748b';
         ctx.fillText('Click to open website', btnX + btnW + 8, btnY + 3);
 
@@ -14017,7 +14074,7 @@ def build():
 
         // Graticule Degree Annotations
         if (r > baseRadius * 0.9) {{
-          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.fillStyle = isGossipModeActive ? '#ea580c' : '#263a55';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -14155,7 +14212,7 @@ def build():
         // 6. City Badges (All cities in selected country or top cities worldwide)
         cityBadgeHitboxes = [];
         const drawnCityBoxes = [];
-        ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
         
         let candidateCities = [];
         if (selectedCountryFilter !== 'all') {{
@@ -14253,7 +14310,7 @@ def build():
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -14388,7 +14445,7 @@ def build():
             const tipSub = `${{corr.from}} - ${{corr.to}} · ${{corr.travel_time || 'Eco-Transit'}} · ${{corr.emission_saving || 'Low Carbon'}}`;
             ctx.font = '200 14px "PP Telegraf", monospace';
             const hw = ctx.measureText(tipHeader).width;
-            ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
             const sw = ctx.measureText(tipSub).width;
             const rw = Math.max(hw, sw) + 22;
             const rh = 40;
@@ -14411,7 +14468,7 @@ def build():
             ctx.textBaseline = 'top';
             ctx.fillText(tipHeader, rx + 10, ry + 6);
 
-            ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
             ctx.fillStyle = '#ffffff';
             ctx.fillText(tipSub, rx + 10, ry + 20);
             ctx.restore();
@@ -14715,7 +14772,7 @@ def build():
               ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
               const twCity = ctx.measureText(cityTxt).width;
 
-              ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
               const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
               const twCount = ctx.measureText(countTxt).width;
 
@@ -14773,14 +14830,14 @@ def build():
 
               // Line 2: Country Name (if available, 14px, muted slate, own line, no dot)
               if (countryTxt) {{
-                ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+                ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
                 ctx.fillStyle = isGossipModeActive ? '#fdba74' : '#94a3b8';
                 ctx.fillText(countryTxt, cardX + 14, currentY);
                 currentY += 22;
               }}
 
               // Line 3: Verified Cultural Spaces Count (14px, crisp light slate, own line, no dot)
-              ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
               ctx.fillStyle = isGossipModeActive ? '#ffedd5' : '#f1f5f9';
               ctx.fillText(countTxt, cardX + 14, currentY);
               currentY += 22;
@@ -15130,7 +15187,7 @@ def build():
           const nw = ctx.measureText(nameTxt).width;
 
           const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Independent' : (inst.tier === 'B' ? 'Flagged Underwriting' : 'Unverified Space'));
-          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
           const sw = ctx.measureText(subTxt).width;
 
           const bw = Math.min(320, Math.max(170, Math.max(nw, sw) + 28 + (webUrl ? 26 : 0)));
@@ -15221,7 +15278,7 @@ def build():
           ctx.fillStyle = tierColor;
           ctx.fill();
 
-          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.fillStyle = '#94a3b8';
           ctx.fillText(subTxt, bestX + 18, bestY + 23);
 
@@ -15241,7 +15298,7 @@ def build():
             ctx.fill();
             ctx.stroke();
 
-            ctx.font = '14px sans-serif';
+            ctx.font = '200 14px "PP Telegraf", sans-serif';
             ctx.fillStyle = '#93c5fd';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -15372,7 +15429,7 @@ def build():
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -15426,7 +15483,7 @@ def build():
         ctx.closePath();
         ctx.fill();
 
-        ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -15438,7 +15495,7 @@ def build():
       const floatingCard = document.getElementById('floatingCard');
       if (selectedInstitution && !isCityStreetViewActive) {{
         const pt = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
-        const isMobileViewport = window.innerWidth < 640;
+        const isMobileViewport = window.innerWidth < 768;
         if (isMobileViewport || (pt.front && pt.depth > 0.05)) {{
           floatingCard.classList.remove('hidden');
           if (isMobileViewport) {{
@@ -15471,7 +15528,7 @@ def build():
           }}
 
           if (!isCityZoom) {{
-            ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
             ctx.fillStyle = '#ffffff';
             ctx.textAlign = 'left';
             ctx.textBaseline = 'middle';
@@ -15522,6 +15579,10 @@ def build():
         return;
       }}
       selectedInstitution = inst;
+      const floatingCard = document.getElementById('floatingCard');
+      if (floatingCard) {{
+        floatingCard.classList.remove('hidden');
+      }}
       if (typeof curatorContext !== 'undefined' && inst) {{
         curatorContext.lastInst = inst;
         if (inst.city) curatorContext.lastCity = inst.city;
@@ -15860,11 +15921,47 @@ def build():
           flyTo(inst.lon, inst.lat);
         }}
       }}
+      if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && typeof setCardMode === 'function') {{
+        setCardMode('gossip', false);
+      }}
+      if (window.innerWidth < 768 && typeof currentMobileMode !== 'undefined' && currentMobileMode === 'chat' && typeof setMobileViewMode === 'function') {{
+        setMobileViewMode('split');
+      }}
     }}
     window.selectInstitution = selectInstitution;
     window.deselectInstitution = deselectInstitution;
 
     // Scholarly Audit Dossier View
+    
+    function openGossipDossier(instNameOrObj) {{
+      let inst = null;
+      if (typeof instNameOrObj === 'string') {{
+        inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) ||
+               (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) : null) ||
+               (typeof findMentionedInst === 'function' ? findMentionedInst(instNameOrObj) : null);
+      }} else if (instNameOrObj && typeof instNameOrObj === 'object') {{
+        inst = instNameOrObj;
+      }}
+      if (!inst) {{
+        inst = selectedInstitution;
+      }}
+      if (!inst && typeof ALL_INSTITUTIONS !== 'undefined') {{
+        inst = ALL_INSTITUTIONS.find(i => i.gossip_data && (i.name.includes('Guggenheim') || i.name.includes('British'))) ||
+               ALL_INSTITUTIONS.find(i => i.gossip_data);
+      }}
+      if (!inst) return;
+      selectedInstitution = inst;
+      openDossier(inst);
+      if (typeof setDrawerMode === 'function') {{
+        setDrawerMode('gossip');
+      }}
+      const detailBody = document.getElementById('detailBody');
+      if (detailBody) {{
+        detailBody.scrollTop = 0;
+      }}
+    }}
+    window.openGossipDossier = openGossipDossier;
+
     function openDossier(inst) {{
       if (!inst) return;
       const drawer = document.getElementById('detailDrawer');
@@ -26103,7 +26200,8 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="academic">Academic Studies ({academic_count})</button>
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="archives">Archives Directory ({archives_count})</button>
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
-          <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
+          <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
+              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
           <button class="globe-filter-pill hidden" data-type="contribute_intel" id="globeContributeIntelBtn" style="display:none;" aria-hidden="true"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
           <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
           <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
@@ -26694,6 +26792,16 @@ FORMATTING & INTERACTION RULES:
                   <div class="text-white font-bold truncate">${{escapeHtml(inst.visual_critiques[0].artist_designer || inst.visual_critiques[0].artist)}}</div>
                   <div class="text-zinc-300 truncate text-[10.5px]">"${{escapeHtml(inst.visual_critiques[0].artwork_title || inst.visual_critiques[0].artwork || '')}}"</div>
                 </div>
+              </div>
+            ` : ''}}
+
+            ${{inst.gossip_data ? `
+              <div class="mt-2.5 p-2 rounded-xl bg-[#241208] border border-orange-700/60 flex items-center justify-between gap-2 cursor-pointer hover:bg-[#32170b] transition" onclick="event.stopPropagation(); window.openGossipDossier('${{inst.name.replace(/'/g, "\\'")}}');" title="Open Gossip & Whispers Dossier">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
+                  <span class="text-orange-200 text-[12px] font-normal truncate">${{escapeHtml(inst.gossip_data.headline)}}</span>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10.5px] font-mono bg-orange-950 text-orange-300 border border-orange-600 shrink-0 font-bold">Gossip Dossier →</span>
               </div>
             ` : ''}}
 
@@ -27895,6 +28003,34 @@ FORMATTING & INTERACTION RULES:
     applyFilters();
     if (selectedInstitution) {{
       selectInstitution(selectedInstitution);
+    }}
+
+    // Deep link and URL parameter handler (Gossip mode, Direct Institution, Mobile Dossier)
+    try {{
+      const params = new URLSearchParams(window.location.search);
+      const targetInst = params.get('inst');
+      const targetGossip = params.get('gossip');
+      const targetMode = params.get('mode');
+
+      if (targetGossip === '1' || targetGossip === 'true' || targetMode === 'gossip') {{
+        toggleGossipMode(true);
+      }}
+
+      if (targetInst) {{
+        const matched = ALL_INSTITUTIONS.find(i => i.name.toLowerCase().includes(targetInst.toLowerCase()));
+        if (matched) {{
+          selectInstitution(matched, true);
+          if (targetGossip === '1' || targetGossip === 'true' || targetMode === 'gossip') {{
+            setCardMode('gossip');
+          }}
+        }}
+      }}
+
+      if (params.get('dossier') === 'gossip' || params.get('gossip_dossier') === '1') {{
+        openGossipDossier(targetInst || selectedInstitution);
+      }}
+    }} catch (e) {{
+      console.warn('URL param init error:', e);
     }}
   </script>
 </body>
