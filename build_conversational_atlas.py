@@ -1594,13 +1594,9 @@ def build():
                   
                 </button>
 
-                <button id="curatorVoiceToggleBtn" class="text-[12px] sm:text-[13px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Auto-Voice: Speaks responses aloud">
-                  <span id="curatorVoiceToggleIcon" style="display:none!important;">🔊</span>
-                  <span id="curatorVoiceToggleLabel" class="hidden sm:inline">Voice: ON</span>
-                </button>
-
-                <button id="workMicBtn" class="px-2.5 py-1 rounded-full hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white flex items-center justify-center transition cursor-pointer shrink-0 text-[12px] font-mono border border-[#333]" title="Voice">
-                  Voice
+                <button id="curatorVoiceToggleBtn" class="text-[12px] sm:text-[13px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Auto-Voice: Speaks responses aloud (Click to toggle)">
+                  <span id="curatorVoiceToggleIcon" class="text-[11px] leading-none">🔊</span>
+                  <span id="curatorVoiceToggleLabel" class="font-mono text-[11px] sm:text-[12px]">Voice: ON</span>
                 </button>
 
                 <button id="workSendBtn" class="px-3 py-1 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[12px] font-mono font-medium" title="Send message">
