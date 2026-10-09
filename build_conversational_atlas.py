@@ -8600,6 +8600,7 @@ def build():
           once: () => {{}},
           fire: () => {{}},
           loaded: () => true,
+          isStyleLoaded: () => true,
           areTilesLoaded: () => true,
           _getUIString: (k) => k || '',
           getCanvasContainer: () => document.getElementById('cityMapContainer') || document.body,
@@ -8664,6 +8665,13 @@ def build():
         updateCityZoomClasses();
         if (typeof ensureCuratorialRouteLayer === 'function') {{
           ensureCuratorialRouteLayer();
+        }}
+        if (typeof ensureBuildingFootprintLayer === 'function') {{
+          ensureBuildingFootprintLayer();
+        }}
+        const instToHighlight = selectedInstitution || currentHighlightedBuildingInst;
+        if (instToHighlight && typeof highlightBuildingFootprint === 'function') {{
+          highlightBuildingFootprint(instToHighlight);
         }}
       }});
 
@@ -8749,6 +8757,16 @@ def build():
       if (!cityVectorMap) return;
 
       try {{
+        // If map style is not yet fully loaded, defer to 'load'
+        if (typeof cityVectorMap.isStyleLoaded === 'function' && !cityVectorMap.isStyleLoaded()) {{
+          cityVectorMap.once('load', () => {{
+            ensureBuildingFootprintLayer();
+            const instToHighlight = selectedInstitution || currentHighlightedBuildingInst;
+            if (instToHighlight) highlightBuildingFootprint(instToHighlight);
+          }});
+          return;
+        }}
+
         // 1. Ground Footprint Boundary Source & Layers
         if (!cityVectorMap.getSource('highlighted-building-footprint')) {{
           cityVectorMap.addSource('highlighted-building-footprint', {{
@@ -8796,7 +8814,32 @@ def build():
           }});
         }}
 
-        // 2. 🩻 X-RAY INTERIOR CORE LAYER (Luminous Curatorial Core)
+        // 2. 🏢 3D STRUCTURAL FLOOR SLABS (Solid Architectural Floor Plates separating storeys)
+        if (!cityVectorMap.getSource('highlighted-building-3d-slabs')) {{
+          cityVectorMap.addSource('highlighted-building-3d-slabs', {{
+            type: 'geojson',
+            data: {{
+              type: 'FeatureCollection',
+              features: []
+            }}
+          }});
+        }}
+        if (!cityVectorMap.getLayer('building-3d-floor-slabs')) {{
+          cityVectorMap.addLayer({{
+            id: 'building-3d-floor-slabs',
+            type: 'fill-extrusion',
+            source: 'highlighted-building-3d-slabs',
+            paint: {{
+              'fill-extrusion-color': ['get', 'color'],
+              'fill-extrusion-height': ['get', 'height'],
+              'fill-extrusion-base': ['get', 'base'],
+              'fill-extrusion-opacity': 0.94,
+              'fill-extrusion-vertical-gradient': true
+            }}
+          }});
+        }}
+
+        // 3. 🩻 X-RAY INTERIOR ROOMS & CORE LAYER (Luminous Curatorial Galleries, Archives & Atriums)
         if (!cityVectorMap.getSource('highlighted-building-3d-interior-core')) {{
           cityVectorMap.addSource('highlighted-building-3d-interior-core', {{
             type: 'geojson',
@@ -8815,13 +8858,13 @@ def build():
               'fill-extrusion-color': ['get', 'color'],
               'fill-extrusion-height': ['get', 'height'],
               'fill-extrusion-base': ['get', 'base'],
-              'fill-extrusion-opacity': ['get', 'opacity'],
+              'fill-extrusion-opacity': 0.88,
               'fill-extrusion-vertical-gradient': true
             }}
           }});
         }}
 
-        // 3. 🏢 3D VOLUMETRIC GLASS ENVELOPE (Translucent See-Through Architectural X-Ray Skin)
+        // 4. 🏢 3D VOLUMETRIC GLASS ENVELOPE (Translucent See-Through Architectural X-Ray Skin)
         if (!cityVectorMap.getSource('highlighted-building-3d-floors')) {{
           cityVectorMap.addSource('highlighted-building-3d-floors', {{
             type: 'geojson',
@@ -8840,13 +8883,13 @@ def build():
               'fill-extrusion-color': ['get', 'color'],
               'fill-extrusion-height': ['get', 'height'],
               'fill-extrusion-base': ['get', 'base'],
-              'fill-extrusion-opacity': ['get', 'opacity'],
+              'fill-extrusion-opacity': 0.32,
               'fill-extrusion-vertical-gradient': true
             }}
           }});
         }}
 
-        // Interactive 3D click & hover directly on building floor slabs and core
+        // Interactive 3D click & hover directly on building floor slabs, rooms and core
         if (!isBuildingLayerEventsBound && typeof cityVectorMap.on === 'function') {{
           const handleFloorClick = (e) => {{
             if (e.features && e.features.length) {{
@@ -8858,6 +8901,7 @@ def build():
           }};
           cityVectorMap.on('click', 'building-3d-floor-extrusions', handleFloorClick);
           cityVectorMap.on('click', 'building-3d-xray-interior-core', handleFloorClick);
+          cityVectorMap.on('click', 'building-3d-floor-slabs', handleFloorClick);
           cityVectorMap.on('mousemove', 'building-3d-floor-extrusions', () => {{
             if (cityVectorMap && cityVectorMap.getCanvas()) {{
               cityVectorMap.getCanvas().style.cursor = 'pointer';
@@ -8926,7 +8970,7 @@ def build():
       }}
 
       // =========================================================================
-      // 🏢 🩻 3D VOLUMETRIC X-RAY GLASS CUTAWAY & CURATORIAL INTERIOR CORE
+      // 🏢 🩻 3D VOLUMETRIC X-RAY GLASS CUTAWAY WITH MULTI-ROOM INTERIOR BLUEPRINT
       // =========================================================================
       const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
       const tempShows = inst.temporary_shows || [];
@@ -8934,10 +8978,10 @@ def build():
         floors.push({{
           level: 0,
           level_code: 'L0',
-          floor_name: 'Level 0 · Ground Floor',
+          floor_name: 'Level 0 · Ground Floor (Public Forum & Main Galleries)',
           elevation: '0.0m',
           current_shows: [tempShows[0] || {{ title: inst.highlight || (inst.name + ' Permanent Collections'), dates: 'On View' }}],
-          archive_holdings: {{ collection_title: (inst.name + ' Archives') }}
+          archive_holdings: {{ collection_title: (inst.name + ' Archives & Records') }}
         }});
       }} else {{
         floors.forEach((fl, idx) => {{
@@ -8951,46 +8995,66 @@ def build():
         }});
       }}
 
-      // Calculate centroid and inner core geometry (74% scale) for genuine X-ray glass transparency
-      const nPts = Math.max(1, coords.length - 1);
-      const cLon = coords.slice(0, nPts).reduce((s, p) => s + p[0], 0) / nPts;
-      const cLat = coords.slice(0, nPts).reduce((s, p) => s + p[1], 0) / nPts;
-      const coreScale = 0.74;
-      const coreCoords = coords.map(p => [
-        cLon + (p[0] - cLon) * coreScale,
-        cLat + (p[1] - cLat) * coreScale
-      ]);
+      // Compute footprint bounding box and center
+      const lons = coords.map(p => p[0]);
+      const lats = coords.map(p => p[1]);
+      const minLon = Math.min(...lons);
+      const maxLon = Math.max(...lons);
+      const minLat = Math.min(...lats);
+      const maxLat = Math.max(...lats);
+      const cLon = (minLon + maxLon) / 2;
+      const cLat = (minLat + maxLat) / 2;
+      const w = maxLon - minLon;
+      const h = maxLat - minLat;
 
+      const slabFeatures = [];
       const floorFeatures = [];
       const coreFeatures = [];
-      const floorHeightM = 4.2;
-      const slabGapM = 0.35;
-      const explodedGapM = 7.0;
+      const floorHeightM = 5.2;
+      const slabThicknessM = 0.40;
+      const explodedGapM = 8.5;
 
       floors.forEach((fl, idx) => {{
         const isActive = (idx === currentBfiFloorIndex);
         const hasShow = Boolean(fl.current_shows && fl.current_shows.length);
         const curShow = hasShow ? fl.current_shows[0] : null;
-        let baseM, heightM;
+        const curArch = fl.archive_holdings || {{}};
 
+        let baseM, topM;
         if (isExploded3DMode) {{
           baseM = idx * (floorHeightM + explodedGapM);
-          heightM = baseM + floorHeightM;
+          topM = baseM + floorHeightM;
         }} else {{
           if (fl.level < 0) {{
             baseM = 0.05;
-            heightM = 0.85;
+            topM = 1.1;
           }} else {{
-            baseM = idx * (floorHeightM + slabGapM);
-            heightM = baseM + floorHeightM;
+            baseM = idx * (floorHeightM + slabThicknessM);
+            topM = baseM + floorHeightM;
           }}
         }}
 
-        // 1. Translucent Architectural Glass Envelope (Outer X-Ray Sheath)
-        // See-through glass envelope with 0.36 - 0.48 opacity
-        const glassColor = isActive ? '#38bdf8' : (isGossipModeActive ? '#eab308' : '#1e293b');
-        const glassOpacity = isActive ? 0.48 : 0.36;
+        // 1. Structural Floor Slab (Solid Steel / Concrete Slab Base)
+        slabFeatures.push({{
+          type: 'Feature',
+          properties: {{
+            name: (inst.name + ' ' + (fl.level_code || ('Level ' + idx)) + ' Slab'),
+            floorIndex: idx,
+            level: fl.level,
+            color: isActive ? '#0284c7' : '#1e293b',
+            base: baseM,
+            height: baseM + slabThicknessM,
+            isActive: isActive
+          }},
+          geometry: {{
+            type: 'Polygon',
+            coordinates: [coords]
+          }}
+        }});
 
+        // 2. Translucent Architectural Glass Envelope (Outer X-Ray Sheath)
+        // See-through glass envelope with 0.32 opacity in MapLibre
+        const glassColor = isActive ? '#38bdf8' : (isGossipModeActive ? '#eab308' : '#0369a1');
         floorFeatures.push({{
           type: 'Feature',
           properties: {{
@@ -9000,9 +9064,8 @@ def build():
             level_code: fl.level_code || ('L' + fl.level),
             floor_name: fl.floor_name || '',
             color: glassColor,
-            base: baseM,
-            height: heightM,
-            opacity: glassOpacity,
+            base: baseM + slabThicknessM,
+            height: topM,
             isActive: isActive,
             isEnvelope: true
           }},
@@ -9012,56 +9075,137 @@ def build():
           }}
         }});
 
-        // 2. Luminous Interior Exhibition Core (Inner Curatorial Anatomy)
-        // Shines brightly inside the translucent glass envelope
-        let coreColor;
+        // 3. Multi-Room Architectural Interior Blueprint (Rendered inside the X-Ray Glass Sheath)
+        const roomBaseM = baseM + slabThicknessM + 0.12;
+        const roomHeightM = topM - 0.22;
+
+        // Room A: Primary Curatorial Exhibition Gallery (North / Upper Wing - ~52% of floor area)
+        let galleryColor;
         if (isGossipModeActive) {{
-          coreColor = '#facc15'; // Neon yellow gossip beacon
+          galleryColor = '#facc15'; // Neon yellow gossip beacon
         }} else if (isActive) {{
-          coreColor = isClean ? '#10b981' : (isFlagged ? '#c084fc' : '#38bdf8');
+          galleryColor = isClean ? '#10b981' : (isFlagged ? '#c084fc' : '#38bdf8');
         }} else if (hasShow) {{
-          coreColor = '#38bdf8'; // Curatorial exhibition glow
+          galleryColor = '#0284c7'; // Curatorial exhibition glow
         }} else {{
-          coreColor = '#0f172a'; // Deep architectural floor core
+          galleryColor = '#0f172a';
         }}
-        const coreOpacity = isActive ? 0.96 : (hasShow ? 0.86 : 0.65);
+
+        const galleryRoomName = (curShow && curShow.room) || (fl.wing_name ? fl.wing_name.split('&')[0].trim() : 'Curatorial Exhibition Gallery');
+        const galleryPoly = [
+          [minLon + 0.04 * w, cLat + 0.015 * h],
+          [maxLon - 0.04 * w, cLat + 0.015 * h],
+          [maxLon - 0.04 * w, maxLat - 0.04 * h],
+          [minLon + 0.04 * w, maxLat - 0.04 * h],
+          [minLon + 0.04 * w, cLat + 0.015 * h]
+        ];
 
         coreFeatures.push({{
           type: 'Feature',
           properties: {{
-            name: (fl.floor_name || ('Level ' + idx)) + ' Core',
+            name: galleryRoomName,
+            room_type: 'gallery',
             floorIndex: idx,
             level: fl.level,
-            color: coreColor,
-            base: baseM + 0.25,
-            height: heightM - 0.25,
-            opacity: coreOpacity,
+            color: galleryColor,
+            base: roomBaseM,
+            height: roomHeightM,
             isActive: isActive,
             isInteriorCore: true,
-            showTitle: curShow ? curShow.title : ''
+            showTitle: curShow ? curShow.title : (inst.name + ' Collections'),
+            curator: curShow ? (curShow.curator_artists || '') : '',
+            dates: curShow ? (curShow.dates || '') : ''
           }},
           geometry: {{
             type: 'Polygon',
-            coordinates: [coreCoords]
+            coordinates: [galleryPoly]
+          }}
+        }});
+
+        // Room B: Archives & Special Collections Study Room (South-West Wing - ~24% of floor area)
+        const archiveRoomName = curArch.collection_title 
+          ? (curArch.collection_title.length > 40 ? curArch.collection_title.slice(0, 38) + '...' : curArch.collection_title)
+          : 'Archives & Curatorial Study Room';
+        const archiveColor = isGossipModeActive ? '#eab308' : (isActive ? '#f59e0b' : '#b45309');
+        const archivePoly = [
+          [minLon + 0.04 * w, minLat + 0.04 * h],
+          [cLon - 0.015 * w, minLat + 0.04 * h],
+          [cLon - 0.015 * w, cLat - 0.015 * h],
+          [minLon + 0.04 * w, cLat - 0.015 * h],
+          [minLon + 0.04 * w, minLat + 0.04 * h]
+        ];
+
+        coreFeatures.push({{
+          type: 'Feature',
+          properties: {{
+            name: archiveRoomName,
+            room_type: 'archive',
+            floorIndex: idx,
+            level: fl.level,
+            color: archiveColor,
+            base: roomBaseM,
+            height: roomHeightM,
+            isActive: isActive,
+            isInteriorCore: true,
+            archiveTitle: curArch.collection_title || '',
+            itemsCount: curArch.items_count || '',
+            readingRoomPolicy: curArch.reading_room_policy || 'Open study access'
+          }},
+          geometry: {{
+            type: 'Polygon',
+            coordinates: [archivePoly]
+          }}
+        }});
+
+        // Room C: Public Atrium, Orientation & Facilities Forum (South-East Wing - ~24% of floor area)
+        const atriumRoomName = (fl.facilities && fl.facilities[0]) 
+          ? (fl.facilities[0] + ' & Public Forum') 
+          : ((fl.wing_name && fl.wing_name.includes('Atrium')) ? fl.wing_name : 'Public Forum & Information Lounge');
+        const atriumColor = isGossipModeActive ? '#ca8a04' : (isActive ? '#6366f1' : '#3730a3');
+        const atriumPoly = [
+          [cLon + 0.015 * w, minLat + 0.04 * h],
+          [maxLon - 0.04 * w, minLat + 0.04 * h],
+          [maxLon - 0.04 * w, cLat - 0.015 * h],
+          [cLon + 0.015 * w, cLat - 0.015 * h],
+          [cLon + 0.015 * w, minLat + 0.04 * h]
+        ];
+
+        coreFeatures.push({{
+          type: 'Feature',
+          properties: {{
+            name: atriumRoomName,
+            room_type: 'atrium',
+            floorIndex: idx,
+            level: fl.level,
+            color: atriumColor,
+            base: roomBaseM,
+            height: roomHeightM,
+            isActive: isActive,
+            isInteriorCore: true,
+            facilities: (fl.facilities && fl.facilities.join(', ')) || 'Universal Step-Free Public Access',
+            accessPolicy: fl.access_policy || 'Universal Free Public Walk-in Access'
+          }},
+          geometry: {{
+            type: 'Polygon',
+            coordinates: [atriumPoly]
           }}
         }});
       }});
 
-      // Top Roof Parapet Rim
+      // Top Roof Parapet Rim & Architectural Roof Deck
       const topFloorIdx = Math.max(0, floors.length - 1);
       const topBase = isExploded3DMode 
         ? (topFloorIdx * (floorHeightM + explodedGapM) + floorHeightM)
-        : (topFloorIdx * (floorHeightM + slabGapM) + floorHeightM);
+        : (topFloorIdx * (floorHeightM + slabThicknessM) + floorHeightM);
 
-      floorFeatures.push({{
+      slabFeatures.push({{
         type: 'Feature',
         properties: {{
-          name: (inst.name + ' Roof Parapet'),
+          name: (inst.name + ' Roof Parapet Deck'),
           floorIndex: -1,
           color: isGossipModeActive ? '#facc15' : '#38bdf8',
           base: topBase,
-          height: topBase + 0.55,
-          opacity: 0.92,
+          height: topBase + 0.65,
           isActive: false
         }},
         geometry: {{
@@ -9069,6 +9213,14 @@ def build():
           coordinates: [coords]
         }}
       }});
+
+      const srcSlabs = cityVectorMap.getSource('highlighted-building-3d-slabs');
+      if (srcSlabs && typeof srcSlabs.setData === 'function') {{
+        srcSlabs.setData({{
+          type: 'FeatureCollection',
+          features: slabFeatures
+        }});
+      }}
 
       const srcFloors = cityVectorMap.getSource('highlighted-building-3d-floors');
       if (srcFloors && typeof srcFloors.setData === 'function') {{
@@ -9091,7 +9243,7 @@ def build():
     }}
 
     // =========================================================================
-    // 📍 SPATIAL 3D ON-BUILDING INFORMATION MAPPING SYSTEM
+    // 📍 SPATIAL 3D ON-BUILDING INFORMATION & INTERIOR ROOM MAPPING SYSTEM
     // =========================================================================
     function updateBuilding3DInfoMarkers(inst) {{
       clearBuilding3DInfoMarkers();
@@ -9127,7 +9279,6 @@ def build():
         '<div style="display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid #1e2c42; padding-bottom:7px;">' +
           '<div style="min-width:0;">' +
             '<div style="display:flex; align-items:center; gap:6px;">' +
-              '' +
               '<span style="font-size:14px; font-weight:700; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + escapeHtml(inst.name) + '</span>' +
             '</div>' +
             '<div style="font-size:10.5px; font-family:monospace; color:#94a3b8; margin-top:2px;">' +
@@ -9207,12 +9358,10 @@ def build():
               '</div>' +
 
               '<div style="font-size:11.5px; color:#ffffff; line-height:1.25; display:flex; align-items:baseline; gap:4px;">' +
-                '' +
                 '<span style="font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + escapeHtml(show.title) + '</span>' +
               '</div>' +
 
               '<div style="font-size:10.5px; color:#6ee7b7; font-family:monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:flex; align-items:baseline; gap:4px;">' +
-                '' +
                 '<span>' + escapeHtml(arch.collection_title) + '</span>' +
               '</div>' +
             '</div>';
@@ -9237,6 +9386,97 @@ def build():
         }} catch (e) {{
           console.warn('Could not add facade stack marker:', e);
         }}
+
+        // 3. 🩻 SPATIAL IN-BUILDING 3D ROOM BLUEPRINT CALLOUTS (Active Level X-Ray Badges)
+        const activeFl = floors[currentBfiFloorIndex] || floors[0];
+        const curShow = (activeFl.current_shows && activeFl.current_shows[0]) || null;
+        const curArch = activeFl.archive_holdings || null;
+        const curLevelCode = activeFl.level_code || ('L' + (activeFl.level || 0));
+
+        // Curatorial Gallery Room Badge
+        const galName = (curShow && curShow.room) || (activeFl.wing_name ? activeFl.wing_name.split('&')[0].trim() : 'Curatorial Main Gallery');
+        const galTitle = curShow ? curShow.title : (inst.name + ' Commissions');
+        const galEl = document.createElement('div');
+        galEl.className = 'building-3d-room-badge pointer-events-auto select-none';
+        galEl.style.cssText = 'max-width:240px; padding:6px 9px; border-radius:10px; background:rgba(6,19,34,0.94); border:1px solid #10b981; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(16,185,129,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; transform:translate(-50%,-100%); margin-bottom:10px; z-index:26;';
+        galEl.onclick = () => selectBfiFloor(currentBfiFloorIndex);
+        galEl.innerHTML = 
+          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">' +
+            '<span style="font-family:monospace; font-size:9px; font-weight:bold; padding:1px 4px; border-radius:3px; background:#047857; color:#a7f3d0; text-transform:uppercase;">EXHIBITION GALLERY</span>' +
+            '<span style="font-size:9.5px; font-family:monospace; color:#6ee7b7;">' + escapeHtml(curLevelCode) + '</span>' +
+          '</div>' +
+          '<div style="font-size:11px; font-weight:600; color:#ffffff; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
+            escapeHtml(galName) +
+          '</div>' +
+          '<div style="font-size:10px; color:#38bdf8; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:1px;">' +
+            'On View: ' + escapeHtml(galTitle) +
+          '</div>' +
+          '<div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #10b981;"></div>';
+
+        try {{
+          const galMarker = new maplibregl.Marker({{ element: galEl, anchor: 'bottom' }})
+            .setLngLat([lon, lat + d_lat * 0.45])
+            .addTo(cityVectorMap);
+          building3DInfoMarkers.push(galMarker);
+        }} catch (e) {{}}
+
+        // Archives Room Badge
+        const archName = (curArch && curArch.collection_title) 
+          ? (curArch.collection_title.length > 26 ? curArch.collection_title.slice(0, 24) + '...' : curArch.collection_title)
+          : 'Archives & Study Room';
+        const archItems = (curArch && curArch.items_count) ? curArch.items_count : 'Primary Curatorial Records';
+        const archEl = document.createElement('div');
+        archEl.className = 'building-3d-room-badge pointer-events-auto select-none';
+        archEl.style.cssText = 'max-width:220px; padding:6px 9px; border-radius:10px; background:rgba(28,19,8,0.94); border:1px solid #f59e0b; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(245,158,11,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; transform:translate(-50%,-100%); margin-bottom:10px; z-index:25;';
+        archEl.onclick = () => selectBfiFloor(currentBfiFloorIndex);
+        archEl.innerHTML = 
+          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">' +
+            '<span style="font-family:monospace; font-size:9px; font-weight:bold; padding:1px 4px; border-radius:3px; background:#b45309; color:#fde68a; text-transform:uppercase;">ARCHIVES & STUDY</span>' +
+            '<span style="font-size:9.5px; font-family:monospace; color:#fcd34d;">' + escapeHtml(curLevelCode) + '</span>' +
+          '</div>' +
+          '<div style="font-size:11px; font-weight:600; color:#fef3c7; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
+            escapeHtml(archName) +
+          '</div>' +
+          '<div style="font-size:10px; color:#fbbf24; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:1px;">' +
+            escapeHtml(archItems) +
+          '</div>' +
+          '<div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #f59e0b;"></div>';
+
+        try {{
+          const archMarker = new maplibregl.Marker({{ element: archEl, anchor: 'bottom' }})
+            .setLngLat([lon - d_lon * 0.45, lat - d_lat * 0.45])
+            .addTo(cityVectorMap);
+          building3DInfoMarkers.push(archMarker);
+        }} catch (e) {{}}
+
+        // Public Atrium Badge
+        const atName = (activeFl.facilities && activeFl.facilities[0])
+          ? (activeFl.facilities[0] + ' & Forum')
+          : 'Public Forum & Atrium';
+        const atAccess = activeFl.access_policy || 'Universal Free Public Access';
+        const atEl = document.createElement('div');
+        atEl.className = 'building-3d-room-badge pointer-events-auto select-none';
+        atEl.style.cssText = 'max-width:220px; padding:6px 9px; border-radius:10px; background:rgba(15,15,35,0.94); border:1px solid #6366f1; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(99,102,241,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; transform:translate(-50%,-100%); margin-bottom:10px; z-index:25;';
+        atEl.onclick = () => selectBfiFloor(currentBfiFloorIndex);
+        atEl.innerHTML = 
+          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">' +
+            '<span style="font-family:monospace; font-size:9px; font-weight:bold; padding:1px 4px; border-radius:3px; background:#4338ca; color:#c7d2fe; text-transform:uppercase;">PUBLIC FORUM</span>' +
+            '<span style="font-size:9.5px; font-family:monospace; color:#a5b4fc;">' + escapeHtml(curLevelCode) + '</span>' +
+          '</div>' +
+          '<div style="font-size:11px; font-weight:600; color:#e0e7ff; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
+            escapeHtml(atName) +
+          '</div>' +
+          '<div style="font-size:10px; color:#c7d2fe; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:1px;">' +
+            escapeHtml(atAccess) +
+          '</div>' +
+          '<div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #6366f1;"></div>';
+
+        try {{
+          const atMarker = new maplibregl.Marker({{ element: atEl, anchor: 'bottom' }})
+            .setLngLat([lon + d_lon * 0.45, lat - d_lat * 0.45])
+            .addTo(cityVectorMap);
+          building3DInfoMarkers.push(atMarker);
+        }} catch (e) {{}}
       }}
     }}
 
@@ -9312,7 +9552,7 @@ def build():
     }}
     window.toggleGossipMode = toggleGossipMode;
 
-    function zoomToBuilding(instNameOrObj, showArchives = true) {{
+    function zoomToBuilding(instNameOrObj, showArchives = false) {{
       let inst = null;
       if (typeof instNameOrObj === 'string') {{
         inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) || 
@@ -9351,15 +9591,20 @@ def build():
       if (cityVectorMap) {{
         cityVectorMap.flyTo({{
           center: [inst.lon, inst.lat],
-          zoom: 18.5,
-          pitch: 58,
+          zoom: 18.6,
+          pitch: 62,
           bearing: 28,
           speed: 1.4,
           curve: 1.3,
           essential: true
         }});
 
+        ensureBuildingFootprintLayer();
+        highlightBuildingFootprint(inst);
+        showBuildingFloorInspectorHud(inst);
+
         setTimeout(() => {{
+          ensureBuildingFootprintLayer();
           highlightBuildingFootprint(inst);
           showBuildingFloorInspectorHud(inst);
         }}, 350);
@@ -10021,7 +10266,7 @@ def build():
             </div>
 
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:8px;">
-              <button onclick="window.zoomToBuilding('${{safeName}}', true)" 
+              <button onclick="window.zoomToBuilding('${{safeName}}', false)" 
                       style="display:inline-flex; align-items:center; gap:5px; padding:5.5px 11px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:12px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.35); border:none; cursor:pointer;"
                       onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1.0'">
                 
@@ -14409,7 +14654,7 @@ def build():
 
           <div class="space-y-2">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
+              <button onclick="window.zoomToBuilding(selectedInstitution, false)" 
                       class="inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[13px] rounded-xl transition shadow-sm cursor-pointer">
                 <span>Zoom to 3D Building</span>
               </button>
@@ -14441,7 +14686,7 @@ def build():
               <span class="text-[12px] font-mono uppercase tracking-wider text-[#34d399] font-bold flex items-center gap-1.5">
                 Archives & Collections in Depth
               </span>
-              <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
+              <button onclick="window.zoomToBuilding(selectedInstitution, false)" 
                       class="text-[11px] font-mono text-[#38bdf8] hover:underline flex items-center gap-1 cursor-pointer">
                 <span>Inspect 3D Footprint</span>
               </button>
@@ -14483,7 +14728,7 @@ def build():
               <div class="flex items-center justify-between pb-1.5 mb-1 border-b border-[#393939]">
                 <span class="text-[13px] font-normal text-white uppercase tracking-wider font-mono">Plan Your Visit</span>
                 <div class="flex items-center gap-2">
-                  <button type="button" onclick="window.zoomToBuilding(selectedInstitution, true)" class="text-[12px] text-emerald-400 hover:underline font-mono cursor-pointer flex items-center gap-1">
+                  <button type="button" onclick="window.zoomToBuilding(selectedInstitution, false)" class="text-[12px] text-emerald-400 hover:underline font-mono cursor-pointer flex items-center gap-1">
                     <span>Zoom to Building</span>
                   </button>
                   <span class="text-[#555] text-[11px]">|</span>
@@ -18692,7 +18937,7 @@ FORMATTING & INTERACTION RULES:
                 ${{floorsHtml}}
               </div>
               <div class="pt-2 border-t border-[#333] flex items-center gap-2 flex-wrap">
-                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', true)" 
+                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false)" 
                         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[12px] shadow transition cursor-pointer">
                   <span>Zoom to 3D Building & Inspect Archives</span>
                 </button>
@@ -23635,7 +23880,7 @@ FORMATTING & INTERACTION RULES:
             e.stopPropagation();
             const zName = zBtn.getAttribute('data-name');
             const target = filteredList.find(i => i.name === zName) || ALL_INSTITUTIONS.find(i => i.name === zName);
-            if (target) zoomToBuilding(target, true);
+            if (target) zoomToBuilding(target, false);
           }});
         }});
 
