@@ -1462,7 +1462,7 @@ def build():
         <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#271206] hover:bg-[#381a09] border border-orange-900/60 hover:border-orange-700/80 text-orange-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
           <span>Gossip Mode</span>
         </button>
-        <button id="topContributeBtn" class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#09261b] via-[#0d3425] to-[#082218] hover:from-[#0e3b2a] hover:to-[#114733] border border-emerald-500/70 hover:border-emerald-400 text-emerald-200 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-medium shadow-md shadow-emerald-950/60 active:scale-95" title="Contribute confidential insider intelligence or unlisted independent spaces">
+        <button id="topContributeBtn" class="hidden" style="display:none;" aria-hidden="true" title="Contribute confidential insider intelligence or unlisted independent spaces">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
           <span>Contribute Intel</span>
         </button>
@@ -1502,11 +1502,11 @@ def build():
         Legend
       </button>
 
-      <button id="mobileContributeBtn" class="hidden sm:flex md:hidden items-center justify-center px-3.5 py-1 bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/70 text-emerald-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Contribute confidential intelligence">
+      <button id="mobileContributeBtn" class="hidden" style="display:none;" aria-hidden="true" title="Contribute confidential intelligence">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span> Intel
       </button>
 
-      <button id="topSettingsBtn" class="flex items-center gap-1 px-1.5 sm:px-2 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[11px] sm:text-[12px] transition cursor-pointer shrink-0" title="AI Intelligence & API Key Settings">
+      <button id="topSettingsBtn" class="hidden" style="display:none;" aria-hidden="true" title="AI Intelligence & API Key Settings">
         <span id="topStatusDot" class="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
         <span id="topStatusLabel" class="font-normal text-amber-300 flex items-center gap-1"><span class="hidden sm:inline">Add API Key</span></span>
       </button>
@@ -13263,14 +13263,14 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v5') caches.delete(k);
+          if (k !== 'culture-atlas-v6') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=5').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=6').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
