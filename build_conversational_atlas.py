@@ -1567,10 +1567,10 @@ def build():
         <div class="w-full max-w-3xl flex flex-col items-center">
           
           <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas) -->
-          <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 shadow-xl transition relative">
-            <textarea id="workInput" rows="1" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[13px] sm:text-[14px] focus:outline-none resize-none font-normal leading-[120%] max-h-32"></textarea>
+          <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-2xl sm:rounded-3xl py-3.5 sm:py-4.5 px-3.5 sm:px-4.5 shadow-xl transition relative">
+            <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[13.5px] sm:text-[14.5px] focus:outline-none resize-none font-normal leading-[140%] min-h-[34px] sm:min-h-[42px] max-h-36 mb-1.5"></textarea>
             
-            <div class="flex items-center justify-between pt-1">
+            <div class="flex items-center justify-between pt-1.5">
               <!-- Left: Plus action button and Contribute Intel button -->
               <div class="flex items-center gap-2 sm:gap-2.5">
                 <button id="workPlusBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0" title="Quick filters">
