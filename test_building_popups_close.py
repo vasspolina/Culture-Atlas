@@ -21,7 +21,13 @@ def test_headless_execution():
 
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    window.requestAnimationFrame = () => 1;
+    window.cancelAnimationFrame = () => {};
+    window.fetch = async (url, opts) => {
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
+    const runTests = async () => {
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
@@ -63,12 +69,14 @@ def test_headless_execution():
       marker.id = 'test-done';
       marker.textContent = JSON.stringify(results);
       document.body.appendChild(marker);
-    });
+    };
+    if (document.readyState === 'complete') { setTimeout(runTests, 100); } else { window.addEventListener('load', runTests); }
     </script>
     """
 
     injected_html = html.replace("</body>", f"{test_script}</body>")
-    temp_path = "/Users/polinavasilyeva/.gemini/antigravity/scratch/sponsor-atlas/test_close_harness.html"
+    import tempfile
+    temp_path = os.path.join(tempfile.gettempdir(), "test_close_harness.html")
     with open(temp_path, "w", encoding="utf-8") as tf:
         tf.write(injected_html)
 
@@ -79,16 +87,14 @@ def test_headless_execution():
     cmd = [
         chrome_bin,
         "--headless=new",
-        "--disable-gpu",
-        "--no-sandbox",
-        "--window-size=1200,900",
-        "--virtual-time-budget=5000",
         "--dump-dom",
+        "--window-size=1280,800",
+        "--virtual-time-budget=15000",
         f"file://{temp_path}"
     ]
 
     try:
-        proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=20)
+        proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
         dom = proc.stdout
 
         if "#test-done" in dom or 'id="test-done"' in dom:

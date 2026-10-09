@@ -269,6 +269,7 @@ def build():
 
     import base64
     b64_reg = base64.b64encode(open('app/fonts/PPTelegraf-Regular.otf', 'rb').read()).decode('ascii')
+    b64_ultralight = base64.b64encode(open('app/fonts/PPTelegraf-Ultralight.otf', 'rb').read()).decode('ascii')
     maplibre_css = open('app/vendor/maplibre-gl.css', 'r', encoding='utf-8').read()
     maplibre_js = open('app/vendor/maplibre-gl.js', 'r', encoding='utf-8').read()
 
@@ -313,22 +314,23 @@ def build():
           fontSize: {{
             'xs': ['14px', '120%'],
             'sm': ['14px', '120%'],
-            'base': ['18px', '120%'],
-            'md': ['18px', '120%'],
-            'lg': ['18px', '120%'],
-            'xl': ['24px', '120%'],
-            '2xl': ['24px', '120%'],
-            '3xl': ['24px', '120%'],
+            'base': ['16px', '120%'],
+            'md': ['16px', '120%'],
+            'lg': ['19px', '120%'],
+            'xl': ['19px', '120%'],
+            '2xl': ['27px', '120%'],
+            '3xl': ['27px', '120%'],
+            '4xl': ['27px', '120%'],
           }}
         }}
       }}
     }};
   </script>
   <style>
-        /* ========================================================= */
+    /* ========================================================= */
     /* STRICT EXCLUSIVITY: ONLY PP TELEGRAPH EXTRA THIN FOR EVERYTHING */
-    /* STRICT 3-TYPE-SIZE SYSTEM: 14px Floor/Body, 18px Mid, 24px Headline */
-    /* USER SPECIFICATION: PP TELEGRAPH EXTRA THIN FONT ONLY ACROSS WEB, 0.6pt LETTER-SPACING */
+    /* STRICT 4-TYPE-SIZE SYSTEM: 14px, 16px, 19px, 27px ONLY */
+    /* USER SPECIFICATION: USE 4 FONT SIZES ONLY: 14 16 AND 19 27 */
     /* ========================================================= */
     *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {{
       font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
@@ -366,148 +368,88 @@ def build():
       font-weight: 200 !important;
     }}
 
-    /* Size 1: 14px (Floor / Default) */
+    /* Size 1: 14px (Floor / Captions / Badges / Metadata / Small body / Inputs / Chips) */
     .type-14, .text-14, .text-[14px],
-    [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
+    [class*="text-\[6"], [class*="text-\[7"], [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
     [class*="text-\[11"], [class*="text-\[12"], [class*="text-\[13"],
-    [class*="text-\[14px\]"], .text-xs, .text-sm {{
+    [class*="text-\[14px\]"], .text-xs, .text-sm,
+    h4, h5, h6 {{
       font-size: 14px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
       font-weight: 200 !important;
     }}
 
-    /* Size 2: 18px (Card Titles, Subheaders, Museum Names) */
-    .type-18, .text-18, .text-[18px], .text-md, .text-base, .text-lg,
-    [class*="text-\[15"], [class*="text-\[16"], [class*="text-\[17"], [class*="text-\[18"], [class*="text-\[19"], [class*="text-\[20"],
-    [class*="text-\[18px\]"] {{
-      font-size: 18px !important;
+    /* Size 2: 16px (Standard Reading Body / Primary Actions / Form Labels / Prominent List Elements) */
+    .type-16, .text-16, .text-[16px], .text-base, .text-md,
+    [class*="text-\[15"], [class*="text-\[16"], [class*="text-\[17"],
+    [class*="text-\[16px\]"],
+    h3 {{
+      font-size: 16px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
       font-weight: 200 !important;
     }}
 
-    /* Size 3: 24px (Main Brand Title, Modal Headlines, Large Dossier Titles) */
-    .type-24, .text-24, .text-xl, .text-2xl, .text-3xl, .text-4xl,
-    [class*="text-\[21"], [class*="text-\[22"], [class*="text-\[23"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[28"], [class*="text-\[30"], [class*="text-\[32"],
-    [class*="text-\[24px\]"] {{
-      font-size: 24px !important;
+    /* Size 3: 19px (Card Titles, Subheaders, Museum Names, Medium Headers) */
+    .type-19, .text-19, .text-[19px],
+    .type-18, .text-18, .text-[18px],
+    .text-lg, .text-xl,
+    [class*="text-\[18"], [class*="text-\[19"], [class*="text-\[20"],
+    [class*="text-\[19px\]"],
+    h2 {{
+      font-size: 19px !important;
+      line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 200 !important;
+    }}
+
+    /* Size 4: 27px (Main Brand Title, Modal Headlines, Large Dossier Titles, Hero Headers) */
+    .type-27, .text-27, .text-[27px],
+    .type-24, .text-24, .text-[24px],
+    .text-2xl, .text-3xl, .text-4xl, .text-5xl,
+    [class*="text-\[21"], [class*="text-\[22"], [class*="text-\[23"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[27"], [class*="text-\[28"], [class*="text-\[29"],
+    [class*="text-\[3"], [class*="text-\[4"], [class*="text-\[5"], [class*="text-\[6"],
+    [class*="text-\[27px\]"],
+    h1 {{
+      font-size: 27px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
       font-weight: 200 !important;
     }}
 
     @font-face {{
-      font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Ultralight'), local('PP Telegraf Extra Thin'), local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph');
-      font-weight: 100;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Extra Thin'), local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph');
-      font-weight: 200;
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_ultralight}') format('opentype'),
+           url('fonts/PPTelegraf-Ultralight.otf') format('opentype'),
+           local('PP Telegraf Ultralight'), local('PP Telegraf Extra Thin'), local('PPTelegraf-Ultralight');
+      font-weight: 100 900;
       font-style: normal;
       font-display: swap;
     }}
     @font-face {{
       font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph');
-      font-weight: 300;
+      src: url('data:font/otf;base64,{b64_ultralight}') format('opentype'),
+           url('fonts/PPTelegraf-Ultralight.otf') format('opentype'),
+           local('PP Telegraf Ultralight'), local('PP Telegraf Extra Thin'), local('PPTelegraf-Ultralight');
+      font-weight: 100 900;
       font-style: normal;
       font-display: swap;
     }}
-    @font-face {{
-      font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
+
+    *, *::before, *::after {{
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 200 !important;
     }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Ultralight'), local('PP Telegraf Extra Thin'), local('PP Telegraf Regular'), local('PPTelegraf-Regular');
-      font-weight: 100;
-      font-style: normal;
-      font-display: swap;
+
+    body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b, em, i {{
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 200 !important;
     }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Extra Thin'), local('PP Telegraf Regular'), local('PPTelegraf-Regular');
-      font-weight: 200;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular');
-      font-weight: 300;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular'), local('PP Telegraph');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
+
+    .font-mono, monospace, code, pre, .font-bold, .font-semibold, .font-medium, strong, b {{
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 250 !important;
     }}
 
     body {{
@@ -680,7 +622,7 @@ def build():
       background: #eaedf0 !important;
       border-radius: 9999px !important;
       padding: 2px 7px !important;
-      font-size: 13px !important;
+      font-size: 14px !important;
       line-height: 1 !important;
       top: 6px !important;
       right: 6px !important;
@@ -716,7 +658,7 @@ def build():
     .maplibregl-ctrl-attrib {{
       background: rgba(23, 23, 23, 0.8) !important;
       color: #71717a !important;
-      font-size: 10px !important;
+      font-size: 14px !important;
       border-radius: 6px !important;
       padding: 2px 6px !important;
     }}
@@ -800,6 +742,68 @@ def build():
       box-shadow: 0 0 14px #34d399, 0 0 24px rgba(52, 211, 153, 0.9);
     }}
 
+    /* Brand Logo & Clean Spaces Pill Badge (Matches Figma Spec) */
+    .brand-logo-btn {{
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.2s ease;
+      flex-shrink: 0;
+    }}
+    .brand-logo-btn:hover {{
+      opacity: 0.92;
+    }}
+    .brand-logo-title {{
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 200 !important;
+      font-size: 34px;
+      line-height: 21.6px;
+      letter-spacing: 2px;
+      color: #ffffff;
+      white-space: nowrap;
+      text-transform: none;
+      display: inline-block;
+      transition: color 0.2s ease;
+    }}
+    @media (max-width: 640px) {{
+      .brand-logo-title {{
+        font-size: 22px;
+        line-height: 20px;
+        letter-spacing: 1.2px;
+      }}
+    }}
+    .brand-clean-spaces-badge {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 26px;
+      padding: 0 14px;
+      border-radius: 9999px;
+      background: rgba(7, 53, 39, 0.75);
+      border: 1px solid rgba(47, 187, 136, 0.40);
+      color: #2fbb88;
+      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 200 !important;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      white-space: nowrap;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }}
+    .brand-logo-btn:hover .brand-clean-spaces-badge {{
+      background: rgba(9, 68, 50, 0.95);
+      border-color: rgba(52, 211, 153, 0.7);
+      color: #6ee7b7;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
+    }}
+
     /* Floating Institution Name Label directly on top of dots */
     .inst-pin-label {{
       position: absolute;
@@ -816,7 +820,7 @@ def build():
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 0, 0, 0.4);
       font-family: "PP Telegraf", "PP Telegraph", sans-serif;
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.02em;
       line-height: 1.2;
@@ -858,10 +862,12 @@ def build():
     }}
     /* When viewing 3D building architectural perspective, hide 2D pins and floating labels so they do not obstruct 3D floors */
     #cityMapContainer.building-view-active .custom-inst-pin,
-    #cityMapContainer.building-view-active .inst-pin-label {{
+    #cityMapContainer.building-view-active .inst-pin-label,
+    #cityMapContainer.building-view-active .maplibregl-popup {{
       opacity: 0 !important;
       visibility: hidden !important;
       pointer-events: none !important;
+      display: none !important;
     }}
     .custom-inst-pin:hover .inst-pin-label {{
       opacity: 1 !important;
@@ -879,70 +885,95 @@ def build():
       -webkit-user-select: none;
       transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease-out;
     }}
-    /* 🔮 GOSSIP & WHISPERS MODE COMPREHENSIVE THEME (Atmospheric Nocturne Velvet Wine & Electric Rose) */
+    /* 🔮 GOSSIP & WHISPERS MODE COMPREHENSIVE THEME (Secondary Amber-Orange & Warm Copper) */
     body.gossip-mode-active {{
-      background: radial-gradient(circle at 35% 25%, #23082b 0%, #130419 55%, #0a010f 100%) !important;
+      background: radial-gradient(circle at 35% 25%, #2a1105 0%, #170902 55%, #0c0401 100%) !important;
       transition: background 0.4s ease;
     }}
     body.gossip-mode-active header {{
-      background: rgba(22, 6, 28, 0.96) !important;
+      background: rgba(28, 12, 4, 0.96) !important;
       backdrop-filter: blur(14px) !important;
-      border-bottom: 1px solid rgba(244, 63, 94, 0.35) !important;
-      box-shadow: 0 4px 20px rgba(244, 63, 94, 0.12) !important;
+      border-bottom: 1px solid rgba(249, 115, 22, 0.35) !important;
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.12) !important;
       transition: all 0.4s ease;
     }}
     body.gossip-mode-active #mainAppContainer {{
       background: transparent !important;
     }}
     body.gossip-mode-active #globeViewport {{
-      background: radial-gradient(circle at 45% 45%, #1e0728 0%, #100316 65%, #07010c 100%) !important;
+      background: radial-gradient(circle at 45% 45%, #230e04 0%, #140702 65%, #080201 100%) !important;
       transition: background 0.4s ease;
     }}
     body.gossip-mode-active #cityMapContainer {{
-      background: #110518 !important;
+      background: #140702 !important;
     }}
     body.gossip-mode-active #chatRightPanel {{
-      background: rgba(18, 5, 24, 0.88) !important;
-      border-left: 1px solid rgba(244, 63, 94, 0.25) !important;
+      background: rgba(24, 10, 3, 0.88) !important;
+      border-left: 1px solid rgba(249, 115, 22, 0.25) !important;
       transition: all 0.4s ease;
     }}
     body.gossip-mode-active #workBottomDock {{
-      background: rgba(19, 5, 25, 0.96) !important;
-      border-top: 1px solid rgba(244, 63, 94, 0.3) !important;
+      background: rgba(25, 10, 3, 0.96) !important;
+      border-top: 1px solid rgba(249, 115, 22, 0.3) !important;
       backdrop-filter: blur(14px) !important;
       transition: all 0.4s ease;
     }}
     body.gossip-mode-active #workInputCard {{
-      background: rgba(36, 10, 48, 0.92) !important;
-      border-color: rgba(244, 63, 94, 0.45) !important;
-      box-shadow: 0 4px 30px rgba(244, 63, 94, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+      background: rgba(45, 18, 6, 0.92) !important;
+      border-color: rgba(249, 115, 22, 0.45) !important;
+      box-shadow: 0 4px 30px rgba(249, 115, 22, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
       transition: all 0.4s ease;
     }}
     body.gossip-mode-active #floatingCard,
     #floatingCard.gossip-yellow-card,
     #floatingCard.gossip-active-card {{
-      background: rgba(28, 8, 36, 0.98) !important;
-      border-color: rgba(244, 63, 94, 0.85) !important;
-      box-shadow: 0 0 35px rgba(244, 63, 94, 0.4), 0 20px 50px rgba(0, 0, 0, 0.95) !important;
+      background: rgba(35, 14, 5, 0.98) !important;
+      border-color: rgba(249, 115, 22, 0.85) !important;
+      box-shadow: 0 0 35px rgba(249, 115, 22, 0.4), 0 20px 50px rgba(0, 0, 0, 0.95) !important;
     }}
     body.gossip-mode-active #detailDrawer {{
-      background: rgba(22, 6, 28, 0.98) !important;
-      border-left-color: rgba(244, 63, 94, 0.4) !important;
+      background: rgba(28, 12, 4, 0.98) !important;
+      border-left-color: rgba(249, 115, 22, 0.4) !important;
     }}
     body.gossip-mode-active #hudControlsBar {{
-      background: rgba(24, 7, 31, 0.92) !important;
-      border-color: rgba(244, 63, 94, 0.4) !important;
-      box-shadow: 0 4px 20px rgba(244, 63, 94, 0.2) !important;
+      background: rgba(30, 13, 4, 0.92) !important;
+      border-color: rgba(249, 115, 22, 0.4) !important;
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.2) !important;
     }}
     body.gossip-mode-active .brand-city-dot-core {{
-      background: #f43f5e !important;
-      box-shadow: 0 0 10px #f43f5e, 0 0 20px rgba(244, 63, 94, 0.85) !important;
+      background: #f97316 !important;
+      box-shadow: 0 0 10px #f97316, 0 0 20px rgba(249, 115, 22, 0.85) !important;
     }}
     body.gossip-mode-active .brand-city-dot-aura {{
-      background: rgba(244, 63, 94, 0.45) !important;
+      background: rgba(249, 115, 22, 0.45) !important;
     }}
     body.gossip-mode-active .brand-city-dot-ping {{
-      border-color: rgba(244, 63, 94, 0.90) !important;
+      border-color: rgba(249, 115, 22, 0.90) !important;
+    }}
+
+    /* 🔮 GOSSIP / YELLOW MODE: OPPOSITE COLOR HOVERS (Electric Cyan #38bdf8 High-Contrast Accents) */
+    body.gossip-mode-active .atlas-suggestion-pill:hover,
+    body.gossip-mode-active .work-suggestion-card.is-suggestion:hover,
+    body.gossip-mode-active .curator-followup-pill:hover,
+    body.gossip-mode-active .confidential-prompt-chip:hover,
+    body.gossip-mode-active .globe-filter-pill:not(.is-active):hover,
+    body.gossip-mode-active .inst-link:hover,
+    body.gossip-mode-active .city-link:hover,
+    body.gossip-mode-active .dossier-link:hover,
+    body.gossip-mode-active .atlas-pill-btn:hover,
+    body.gossip-mode-active .hud-btn:hover,
+    body.gossip-mode-active .quick-prompt-btn:hover,
+    body.gossip-mode-active #floatingCardTabGossip:hover,
+    body.gossip-mode-active #drawerTabGossip:hover,
+    body.gossip-mode-active button:not(#topGossipBtn):not(#mobileGossipBtn):hover {{
+      border-color: #38bdf8 !important;
+      color: #38bdf8 !important;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.45) !important;
+    }}
+    body.gossip-mode-active #topGossipBtn:hover,
+    body.gossip-mode-active #mobileGossipBtn:hover {{
+      border-color: #38bdf8 !important;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.65) !important;
     }}
 
     /* 🏛️ 3D Building Overlay Close Buttons (Capsule Pill Style) */
@@ -1011,7 +1042,7 @@ def build():
       border-radius: 9999px !important;
       padding: 7px 16px;
       font-family: -apple-system, BlinkMacSystemFont, "PP Telegraf", "PP Telegraph", "Inter", "Segoe UI", Roboto, sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 500;
       letter-spacing: -0.01em;
       line-height: 1.2;
@@ -1051,7 +1082,7 @@ def build():
 
     .atlas-pill-btn.pill-sm {{
       padding: 5px 12px !important;
-      font-size: 11px !important;
+      font-size: 14px !important;
       gap: 5px !important;
     }}
     .atlas-pill-btn.pill-sm svg.arrow-icon {{
@@ -1080,7 +1111,7 @@ def build():
       border-radius: 9999px !important;
       padding: 5px 14px !important;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-      font-size: 12.5px !important;
+      font-size: 14px !important;
       font-weight: 400 !important;
       letter-spacing: -0.01em !important;
       line-height: 1.3 !important;
@@ -1165,7 +1196,7 @@ def build():
         width: calc(100vw - 20px) !important;
         box-sizing: border-box !important;
         padding: 9px 11px !important;
-        font-size: 11px !important;
+        font-size: 14px !important;
         margin-bottom: 8px !important;
         border-radius: 14px !important;
         max-height: calc(50vh - 30px) !important;
@@ -1203,7 +1234,7 @@ def build():
       /* 5. Active Route & City View Control Banners */
       #activeRouteBanner, #cityViewControlBanner, #activeMapFilterBanner {{
         max-width: calc(100% - 16px) !important;
-        font-size: 11px !important;
+        font-size: 14px !important;
       }}
     }}
   .speak-icon {{ display: none !important; }}
@@ -1221,16 +1252,14 @@ def build():
   <header class="w-full h-14 bg-black border-b border-[#1c1c1f] px-2.5 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-1 sm:gap-2">
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
-    <button id="topBrandLogoBtn" class="flex items-center gap-2 sm:gap-2.5 text-left bg-transparent border-0 p-0 m-0 cursor-pointer group focus:outline-none select-none transition hover:opacity-90 shrink-0" title="Reset Globe View" aria-label="Reset Globe View">
-      <div class="brand-city-dot-container">
+    <button id="topBrandLogoBtn" class="brand-logo-btn group focus:outline-none" title="Reset Globe View" aria-label="Reset Globe View">
+      <div class="brand-city-dot-container hidden" style="display:none;" aria-hidden="true">
         <div class="brand-city-dot-aura"></div>
         <div class="brand-city-dot-ping"></div>
         <div class="brand-city-dot-core"></div>
       </div>
-      <div class="flex items-center gap-2">
-        <span class="text-[13px] sm:text-[18px] font-normal tracking-wider text-white uppercase group-hover:text-emerald-300 transition-colors whitespace-nowrap">CULTURE ATLAS</span>
-        <span id="topSpacesBadge" class="text-[13px] text-emerald-400 bg-[#0a2016] px-2 py-0.5 rounded-full border border-emerald-900/60 hidden lg:inline font-mono group-hover:border-emerald-700/80 transition-colors">{spaces_count_str}</span>
-      </div>
+      <span class="brand-logo-title">Culture Atlas</span>
+      <span id="topSpacesBadge" class="brand-clean-spaces-badge hidden sm:inline-flex">441 Clean spaces</span>
     </button>
 
     <!-- Center: Mobile Mode Switcher (Map / Split / Chat) & Desktop New Chat -->
@@ -1261,7 +1290,7 @@ def build():
         <button id="topGovernanceBtn" class="flex items-center gap-1.5 px-5 py-2 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] hover:border-[#3b5585] text-slate-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Governance & Funding Transparency Methodology Legend">
           <span>Methodology</span>
         </button>
-        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#1f0a1c] hover:bg-[#2e0e29] border border-rose-900/60 hover:border-rose-700/80 text-rose-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
+        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#271206] hover:bg-[#381a09] border border-orange-900/60 hover:border-orange-700/80 text-orange-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
           <span>Gossip Mode</span>
         </button>
         <button id="topContributeBtn" class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#09261b] via-[#0d3425] to-[#082218] hover:from-[#0e3b2a] hover:to-[#114733] border border-emerald-500/70 hover:border-emerald-400 text-emerald-200 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-medium shadow-md shadow-emerald-950/60 active:scale-95" title="Contribute confidential insider intelligence or unlisted independent spaces">
@@ -1295,7 +1324,7 @@ def build():
         Archives
       </button>
 
-      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center justify-center px-4 py-2 bg-[#1f0a1c] hover:bg-[#2e0e29] border border-rose-900/60 text-rose-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Toggle Gossip Mode">
+      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center justify-center px-4 py-2 bg-[#271206] hover:bg-[#381a09] border border-orange-900/60 text-orange-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Toggle Gossip Mode">
         Gossip
       </button>
 
@@ -1353,8 +1382,8 @@ def build():
           <button id="floatingCardTabInfo" type="button" class="flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-zinc-800 text-white shadow-sm" onclick="event.stopPropagation(); window.setCardMode('info');">
             <span>Verified Info</span>
           </button>
-          <button id="floatingCardTabGossip" type="button" class="flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer text-[#a1a1aa] hover:text-yellow-400" onclick="event.stopPropagation(); window.setCardMode('gossip');">
-            <span>Yellow Gossip Mode</span>
+          <button id="floatingCardTabGossip" type="button" class="flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer text-[#a1a1aa] hover:text-orange-400" onclick="event.stopPropagation(); window.setCardMode('gossip');">
+            <span>Gossip &amp; Murmurs</span>
           </button>
         </div>
         <div id="floatingCardSwipeHint" class="mt-1 flex items-center justify-between text-[10px] font-mono text-[#71717a] px-1 select-none">
@@ -1417,51 +1446,87 @@ def build():
           </div>
 
           <!-- Visual Critique & Artist Feedback Section on Card -->
-          <div id="floatingCardVisualCritiqueSection" class="hidden mt-2 pt-2 border-t border-amber-600/40 bg-amber-950/25 p-2.5 rounded-xl border border-amber-800/40 space-y-2">
+          <div id="floatingCardVisualCritiqueSection" class="hidden mt-2 pt-2 border-t border-amber-600/50 bg-[#161206]/95 p-3 rounded-xl border border-amber-700/60 space-y-2.5 shadow-lg">
             <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
-              <span class="text-amber-400 font-bold flex items-center gap-1 tracking-wide">
+              <span class="text-amber-400 font-bold flex items-center gap-1.5 tracking-wide">
                 <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                VISUAL CRITIQUE &amp; ARTIST FEEDBACK
+                🎨 ARTIST &amp; DESIGNER VISUAL CRITIQUE
               </span>
-              <span id="floatingCardVcStrategyBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-amber-700 bg-amber-950 text-amber-300 font-bold"></span>
-            </div>
-            <div class="flex gap-2.5 items-start">
-              <img id="floatingCardVcImg" src="" alt="Visual Critique" class="w-20 h-16 object-cover rounded-lg border border-amber-700/60 shrink-0 bg-black cursor-pointer hover:opacity-90 transition" onclick="event.stopPropagation(); if (selectedInstitution) window.openDossier(selectedInstitution);" />
-              <div class="min-w-0 flex-1">
-                <div id="floatingCardVcPractice" class="text-white font-medium text-[12.5px] leading-tight line-clamp-2"></div>
-                <div id="floatingCardVcTarget" class="text-[11px] text-amber-200/90 font-mono mt-1 leading-snug"></div>
+              <div class="flex items-center gap-1.5">
+                <span id="floatingCardVcCountBadge" class="hidden text-[10px] font-mono text-zinc-400"></span>
+                <span id="floatingCardVcStrategyBadge" class="px-2 py-0.5 rounded text-[10px] font-mono border border-amber-600 bg-amber-950 text-amber-300 font-bold"></span>
               </div>
             </div>
-            <p id="floatingCardVcSummary" class="text-[11.5px] text-slate-300 leading-snug line-clamp-3"></p>
-            <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-amber-900/40">
-              <span id="floatingCardVcCitation" class="truncate max-w-[200px] text-amber-300"></span>
-              <button type="button" onclick="event.stopPropagation(); window.openDossier(selectedInstitution);" class="text-amber-400 hover:underline">Full Dossier →</button>
+
+            <!-- Artist / Designer Credit Header -->
+            <div class="bg-amber-950/40 border border-amber-800/60 p-2 rounded-lg">
+              <div class="text-[10px] font-mono text-amber-400/90 uppercase tracking-wider font-semibold">Artist / Designer Credits:</div>
+              <div id="floatingCardVcArtist" class="text-white font-bold text-[13.5px] leading-tight mt-0.5"></div>
+              <div id="floatingCardVcArtwork" class="text-amber-300 font-medium text-[12px] leading-snug mt-0.5"></div>
+            </div>
+
+            <div class="flex gap-2.5 items-start">
+              <img id="floatingCardVcImg" src="" alt="Visual Critique" class="w-24 h-20 object-cover rounded-lg border border-amber-600/70 shrink-0 bg-black cursor-pointer hover:opacity-90 transition shadow" onclick="event.stopPropagation(); if (selectedInstitution) window.openDossier(selectedInstitution);" />
+              <div class="min-w-0 flex-1 space-y-1">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span id="floatingCardVcMedium" class="text-[10px] font-mono bg-zinc-800 text-zinc-300 border border-zinc-700 px-1.5 py-0.5 rounded"></span>
+                </div>
+                <div id="floatingCardVcTarget" class="text-[11px] text-amber-200/90 font-mono leading-snug"></div>
+              </div>
+            </div>
+
+            <div id="floatingCardVcCredits" class="text-[10.5px] font-mono text-amber-200/90 leading-tight bg-black/40 p-2 rounded border border-amber-900/40"></div>
+
+            <p id="floatingCardVcSummary" class="text-[11.5px] text-zinc-200 leading-snug line-clamp-3"></p>
+
+            <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-amber-900/50 flex-wrap gap-1">
+              <span id="floatingCardVcCitation" class="truncate max-w-[210px] text-amber-300"></span>
+              <div class="flex items-center gap-2">
+                <button type="button" id="floatingCardVcNextBtn" class="hidden text-amber-300 hover:text-white font-mono underline" onclick="event.stopPropagation(); window.cycleCardVisualCritique();">Next Critique →</button>
+                <button type="button" onclick="event.stopPropagation(); window.openDossier(selectedInstitution);" class="text-amber-400 hover:underline font-bold">Full Dossier →</button>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- GOSSIP PANE -->
         <div id="floatingCardGossipPane" class="hidden space-y-2 transition-all duration-200">
-          <div id="floatingCardGossipSection" class="mt-2 pt-2 border-t border-rose-900/60 space-y-2 bg-[#200a26]/95 p-2.5 rounded-xl border border-rose-600/60 shadow-inner">
+          <div id="floatingCardGossipSection" class="mt-2 pt-2 border-t border-orange-900/60 space-y-2 bg-[#241208]/95 p-2.5 rounded-xl border border-orange-600/60 shadow-inner">
             <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
-              <span class="text-rose-400 font-bold flex items-center gap-1 tracking-wide">
+              <span class="text-orange-400 font-bold flex items-center gap-1 tracking-wide">
                 ART WORLD WHISPERS &amp; GOSSIP
               </span>
-              <span id="floatingCardGossipIntensityBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-rose-600 bg-rose-950 text-rose-300 font-bold shadow-sm">HOT</span>
+              <span id="floatingCardGossipIntensityBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-orange-600 bg-orange-950 text-orange-300 font-bold shadow-sm">HOT</span>
             </div>
-            <p id="floatingCardGossipHeadline" class="text-[12.5px] text-rose-200/95 leading-snug font-medium"></p>
+            <p id="floatingCardGossipHeadline" class="text-[12.5px] text-orange-200/95 leading-snug font-medium"></p>
             <div class="space-y-1.5 pt-0.5 text-[11px] font-mono">
-              <div id="floatingCardGossipReddit" class="text-slate-300 bg-[#14061a] p-2 rounded-lg border border-rose-900/50 flex items-baseline gap-1.5">
-                <span class="text-rose-400 font-bold shrink-0">r/art:</span>
+              <div id="floatingCardGossipReddit" class="text-slate-300 bg-[#180a03] p-2 rounded-lg border border-orange-900/50 flex items-baseline gap-1.5">
+                <span class="text-orange-400 font-bold shrink-0">r/art:</span>
                 <span id="floatingCardGossipRedditText" class="truncate text-slate-200"></span>
               </div>
-              <div id="floatingCardGossipTwitter" class="text-slate-300 bg-[#14061a] p-2 rounded-lg border border-rose-900/50 flex items-baseline gap-1.5">
-                <span class="text-pink-400 font-bold shrink-0">X post:</span>
+              <div id="floatingCardGossipTwitter" class="text-slate-300 bg-[#180a03] p-2 rounded-lg border border-orange-900/50 flex items-baseline gap-1.5">
+                <span class="text-amber-400 font-bold shrink-0">X post:</span>
                 <span id="floatingCardGossipTwitterText" class="truncate text-slate-200"></span>
+              </div>
+              <!-- Real Cases Preview -->
+              <div id="floatingCardGossipRealCases" class="hidden text-slate-200 bg-[#1a0a03] p-2 rounded-lg border border-orange-600/70 space-y-1">
+                <div class="flex items-center justify-between text-[10.5px] font-mono text-orange-400 font-bold">
+                  <span id="floatingCardGossipCaseCount">🏛️ Verified Investigation</span>
+                  <span id="floatingCardGossipCaseStatus" class="px-1 py-0.2 rounded bg-orange-950 text-amber-300 border border-orange-800 text-[9.5px]"></span>
+                </div>
+                <p id="floatingCardGossipCaseOutcome" class="text-[12px] text-slate-200 leading-snug font-sans line-clamp-2"></p>
+              </div>
+              <!-- Real Review Leads Preview -->
+              <div id="floatingCardGossipReviewLeads" class="hidden text-slate-200 bg-[#1a0a03] p-2 rounded-lg border border-orange-600/70 space-y-1">
+                <div class="flex items-center justify-between text-[10.5px] font-mono text-amber-400 font-bold">
+                  <span id="floatingCardGossipReviewPlatform">👤 Verified Staff Review</span>
+                  <span id="floatingCardGossipReviewDate" class="text-slate-400 font-mono text-[10px]"></span>
+                </div>
+                <p id="floatingCardGossipReviewSummary" class="text-[12px] text-slate-200 leading-snug font-sans line-clamp-2"></p>
               </div>
             </div>
             <button type="button" onclick="event.stopPropagation(); window.toggleGossipMode();" 
-                    class="w-full mt-1.5 py-1.5 px-2.5 rounded-lg bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-semibold text-[11.5px] font-mono flex items-center justify-center gap-1.5 transition shadow cursor-pointer">
+                    class="w-full mt-1.5 py-1.5 px-2.5 rounded-lg bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-semibold text-[11.5px] font-mono flex items-center justify-center gap-1.5 transition shadow cursor-pointer">
               <span>Radiate Rumor Beacons on Map</span>
             </button>
           </div>
@@ -1536,63 +1601,104 @@ def build():
       </div>
 
       <!-- 🏢 3D BUILDING FLOOR-BY-FLOOR INSPECTOR HUD (Floating on 3D Building View) -->
-      <div id="buildingFloorInspectorHud" class="hidden absolute bottom-2 sm:bottom-auto sm:top-14 left-2 sm:left-auto right-2 sm:right-4 z-20 pointer-events-auto flex flex-col gap-2 p-2.5 sm:p-3.5 rounded-2xl bg-[#0c1322]/95 border border-[#38bdf8]/70 shadow-2xl backdrop-blur-md w-[calc(100vw-16px)] sm:w-auto max-w-none sm:max-w-[420px] max-h-[calc(100%-60px)] overflow-y-auto select-none text-zinc-100">
+      <div id="buildingFloorInspectorHud" class="hidden absolute bottom-2 sm:bottom-auto sm:top-14 left-2 sm:left-auto right-2 sm:right-4 z-40 pointer-events-auto flex flex-col gap-2 p-2.5 sm:p-3 rounded-2xl bg-[#0c1322]/95 border border-[#38bdf8]/70 shadow-2xl backdrop-blur-md w-[calc(100vw-16px)] sm:w-[350px] max-w-none sm:max-w-[350px] max-h-[calc(100%-60px)] overflow-y-auto select-none text-zinc-100 transition-all duration-200">
         <!-- Header -->
         <div class="flex items-center justify-between gap-2 border-b border-[#233552] pb-2">
           <div class="flex items-center gap-2 min-w-0">
-            
             <div class="min-w-0">
-              <span id="bfiBuildingName" class="text-[13px] sm:text-[14px] font-semibold text-white truncate block"></span>
+              <div class="flex items-center gap-1.5">
+                <span id="bfiBuildingName" class="text-[13px] sm:text-[14px] font-semibold text-white truncate block"></span>
+                <span id="bfiBrandBadge" class="shrink-0"></span>
+              </div>
               <span id="bfiBuildingMeta" class="text-[10.5px] font-mono text-[#7dd3fc] block truncate"></span>
             </div>
           </div>
-          <button id="closeBfiHudBtn" class="w-8 h-6 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm" title="Close Building Inspector"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+          <div class="flex items-center gap-1 shrink-0">
+            <button id="minimizeBfiHudBtn" type="button" class="w-7 h-6 rounded-lg bg-[#162032] hover:bg-[#253959] text-sky-300 flex items-center justify-center transition cursor-pointer border border-[#2b3e5e]" title="Minimize / Expand Inspector">
+              <span id="minimizeBfiHudIcon" class="text-[11px] font-mono font-bold">_</span>
+            </button>
+            <button id="closeBfiHudBtn" type="button" class="w-7 h-6 rounded-lg bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition cursor-pointer shadow-sm" title="Close Building Inspector">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
         </div>
 
-        <!-- Zoom Depth Action Controls -->
-        <div class="flex items-center gap-1.5 pt-0.5">
-          <button id="bfiZoomCloserBtn" class="flex-1 py-1 px-2 rounded-xl bg-[#1d3557] hover:bg-[#254673] border border-[#38bdf8]/60 text-[#7dd3fc] hover:text-white text-[11px] font-mono transition cursor-pointer flex items-center justify-center gap-1" title="Zoom in to 20x 3D architectural perspective">
-            <span>Zoom 20x Closer</span>
-          </button>
-          <button id="bfiResetZoomBtn" class="py-1 px-2.5 rounded-xl bg-[#162032] hover:bg-[#1e2c45] border border-[#2b3e5e] text-slate-300 text-[11px] font-mono transition cursor-pointer" title="Reset to standard 18x view">
-            <span>18x</span>
-          </button>
-          <button id="bfiOpenModalBtn" class="py-1 px-2.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 text-[11px] font-mono transition cursor-pointer flex items-center gap-1" title="Open full building & archives dossier">
-            <span>Full Dossier</span>
-          </button>
-        </div>
-
-        <!-- Interactive Floor Level Pills -->
-        <div class="pt-1">
-          <span class="text-[10.5px] font-mono uppercase text-slate-400 block mb-1">SELECT FLOOR LEVEL:</span>
-          <div id="bfiFloorTabs" class="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar"></div>
-        </div>
-
-        <!-- Active Floor Details Card -->
-        <div id="bfiFloorCard" class="bg-[#10192b] border border-[#253959] rounded-xl p-2.5 sm:p-3 space-y-2 text-xs">
-          <!-- Floor title & elevation -->
-          <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
-            <span id="bfiFloorTitle" class="text-[#38bdf8] font-bold"></span>
-            <span id="bfiFloorElevation" class="text-slate-400"></span>
+        <!-- Collapsible Content Wrapper -->
+        <div id="bfiContentWrap" class="flex flex-col gap-2">
+          <!-- Building Metrics Bar -->
+          <div id="bfiMetricsBar" class="flex items-center justify-between text-[10.5px] font-mono text-slate-300 py-1 px-2 rounded-lg bg-[#142036] border border-[#233552]">
+            <span id="bfiMetricsFloors" class="text-[#7dd3fc]">3 Floors · 3,800 m²</span>
+            <span id="bfiMetricsBudget" class="text-amber-400 font-bold truncate max-w-[140px]">Budget Scale</span>
           </div>
 
-          <!-- Current Show on Floor -->
-          <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
-            <span class="text-[10px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1">
-              CURRENT SHOW ON THIS LEVEL
-            </span>
-            <div id="bfiShowTitle" class="text-[12.5px] font-semibold text-white leading-tight"></div>
-            <div id="bfiShowMeta" class="text-[10.5px] text-slate-300 font-mono"></div>
-            <p id="bfiShowSynopsis" class="text-[11px] text-slate-300 leading-snug line-clamp-2"></p>
+          <!-- Zoom Depth Action Controls -->
+          <div class="flex items-center gap-1.5 pt-0.5 flex-wrap">
+            <button id="bfiZoomCloserBtn" class="flex-1 py-1 px-2 rounded-xl bg-[#1d3557] hover:bg-[#254673] border border-[#38bdf8]/60 text-[#7dd3fc] hover:text-white text-[11px] font-mono transition cursor-pointer flex items-center justify-center gap-1" title="Zoom in to 20x 3D architectural perspective">
+              <span>Zoom 20x Closer</span>
+            </button>
+            <button id="bfiResetZoomBtn" class="py-1 px-2 rounded-xl bg-[#162032] hover:bg-[#1e2c45] border border-[#2b3e5e] text-slate-300 text-[11px] font-mono transition cursor-pointer" title="Reset to standard 18x view">
+              <span>18x</span>
+            </button>
+            <button id="bfiExplodeBtn" class="py-1 px-2 rounded-xl bg-[#1c283f] hover:bg-[#283b5c] border border-[#38bdf8]/40 text-sky-200 text-[11px] font-mono transition cursor-pointer" title="Explode 3D Floors">
+              <span id="bfiExplodeBtnText">Explode</span>
+            </button>
+            <button id="bfiOpenModalBtn" class="py-1 px-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 text-[11px] font-mono transition cursor-pointer flex items-center gap-1" title="Open full building & archives dossier">
+              <span>Dossier</span>
+            </button>
           </div>
 
-          <!-- Archive Holdings on Floor -->
-          <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
-            <span class="text-[10px] font-mono uppercase text-emerald-400 font-bold flex items-center gap-1">
-              ARCHIVE HOLDING ON THIS LEVEL
-            </span>
-            <div id="bfiArchiveTitle" class="text-[12px] font-semibold text-emerald-200 leading-tight"></div>
-            <div id="bfiArchivePolicy" class="text-[10.5px] text-slate-400 leading-tight"></div>
+          <!-- View Organizer Bar -->
+          <div class="flex items-center justify-between gap-1 pt-0.5 border-t border-[#1e2f4a]">
+            <span class="text-[10px] font-mono uppercase text-slate-400">MAP CALLOUTS:</span>
+            <div class="flex items-center gap-1">
+              <button id="bfiToggleOverlaysBtn" type="button" class="py-0.5 px-2 rounded-lg bg-[#142036] hover:bg-[#1d2f4d] border border-[#2b3e5e] text-[10px] font-mono text-sky-300 transition cursor-pointer flex items-center gap-1" title="Toggle on-map room badges and mast plate to clean view">
+                <span id="bfiToggleOverlaysIcon">👁️</span>
+                <span id="bfiToggleOverlaysText">Hide Badges</span>
+              </button>
+              <button id="bfiAskCuratorBtn" type="button" class="py-0.5 px-2 rounded-lg bg-indigo-950/80 hover:bg-indigo-900 border border-indigo-700/50 text-[10px] font-mono text-indigo-300 transition cursor-pointer flex items-center gap-1" title="Ask curator about this building in chat">
+                <span>💬 Curator</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Floor Level Pills -->
+          <div class="pt-0.5">
+            <span class="text-[10px] font-mono uppercase text-slate-400 block mb-1">SELECT FLOOR LEVEL:</span>
+            <div id="bfiFloorTabs" class="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar"></div>
+          </div>
+
+          <!-- Active Floor Details Card -->
+          <div id="bfiFloorCard" class="bg-[#10192b] border border-[#253959] rounded-xl p-2.5 space-y-2 text-xs">
+            <!-- Floor title & elevation -->
+            <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
+              <span id="bfiFloorTitle" class="text-[#38bdf8] font-bold truncate"></span>
+              <span id="bfiFloorElevation" class="text-slate-400 shrink-0"></span>
+            </div>
+
+            <!-- Current Show on Floor -->
+            <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
+              <span class="text-[9.5px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1">
+                CURRENT SHOW ON THIS LEVEL
+              </span>
+              <div id="bfiShowTitle" class="text-[12px] font-semibold text-white leading-tight"></div>
+              <div id="bfiShowMeta" class="text-[10px] text-slate-300 font-mono"></div>
+              <p id="bfiShowSynopsis" class="text-[10.5px] text-slate-300 leading-snug line-clamp-2"></p>
+              <div class="pt-1">
+                <button id="bfiShowAskBtn" type="button" class="atlas-pill-btn pill-sm" style="font-size:14px; padding:3px 8px;">
+                  <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                  <span>Ask Curator · Pull into Chat</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Archive Holdings on Floor -->
+            <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
+              <span class="text-[9.5px] font-mono uppercase text-emerald-400 font-bold flex items-center gap-1">
+                ARCHIVE HOLDING ON THIS LEVEL
+              </span>
+              <div id="bfiArchiveTitle" class="text-[11.5px] font-semibold text-emerald-200 leading-tight"></div>
+              <div id="bfiArchivePolicy" class="text-[10px] text-slate-400 leading-tight"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1948,16 +2054,22 @@ def build():
 
             <!-- Row 1.5: Visual Critique & Artist Feedback Sub-Strategies -->
             <div id="visualCritiqueSubBar" class="hidden flex flex-wrap items-center gap-1.5 p-1.5 bg-[#18181b]/95 border border-amber-600/50 rounded-xl shadow-lg">
-              <span class="text-[11px] text-amber-400 font-mono shrink-0 mr-1 uppercase tracking-wider font-semibold flex items-center gap-1">
-                <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                Critique Strategies:
-              </span>
-              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="all">All ({visual_critique_count})</button>
-              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="direct_polling">Direct Polling &amp; Data (MoMA)</button>
-              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="parodic_museums">Parodic Museums (WIELS, Tate)</button>
-              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="surrealist_reclassification">Surrealist Reclassification (Manchester)</button>
-              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="environmental_satire">Environmental Satire (Crab Museum)</button>
-              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="physical_intervention">Physical Intervention (Orsay, Louvre)</button>
+          <span class="text-[11px] text-amber-400 font-mono shrink-0 mr-1 uppercase tracking-wider font-semibold flex items-center gap-1">
+            <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            Critique Strategies:
+          </span>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="all">All ({visual_critique_count})</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="sponsor_exposure">Sponsor &amp; Debt Exposure</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="forensic_investigation">Algorithmic Forensics</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="pharma_fossil_denaming">Pharma &amp; Fossil De-Naming</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="feminist_counter_survey">Feminist Counter-Surveys</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="direct_polling">Direct Polling &amp; Data</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="board_boycott">Grassroots Agitation &amp; Boycotts</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="curatorial_subversion">Curatorial Subversion</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="parodic_museums">Parodic Museums</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="ideological_distribution">Ideological Circuits</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="physical_intervention">Physical Intervention</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="environmental_satire">Environmental Satire</button>
             </div>
 
             <!-- Row 2: Featured Cultural Cities -->
@@ -9298,13 +9410,18 @@ def build():
       if (!cityVectorMap) return;
 
       try {{
-        // If map style is not yet fully loaded, defer to 'load'
+        // If map style is not yet fully loaded, defer to 'styledata' or 'load'
         if (typeof cityVectorMap.isStyleLoaded === 'function' && !cityVectorMap.isStyleLoaded()) {{
-          cityVectorMap.once('load', () => {{
+          let hasRun = false;
+          const onStyleReady = () => {{
+            if (hasRun) return;
+            hasRun = true;
             ensureBuildingFootprintLayer();
             const instToHighlight = selectedInstitution || currentHighlightedBuildingInst;
             if (instToHighlight) highlightBuildingFootprint(instToHighlight);
-          }});
+          }};
+          cityVectorMap.once('styledata', onStyleReady);
+          cityVectorMap.once('load', onStyleReady);
           return;
         }}
 
@@ -9599,7 +9716,7 @@ def build():
 
         // 2. Translucent Architectural Glass Envelope (Outer X-Ray Sheath)
         // See-through glass envelope with 0.32 opacity in MapLibre
-        const glassColor = isActive ? '#38bdf8' : (isGossipModeActive ? '#f43f5e' : '#0369a1');
+        const glassColor = isActive ? '#38bdf8' : (isGossipModeActive ? '#f97316' : '#0369a1');
         floorFeatures.push({{
           type: 'Feature',
           properties: {{
@@ -9627,7 +9744,7 @@ def build():
         // Room A: Primary Curatorial Exhibition Gallery (North / Upper Wing - ~52% of floor area)
         let galleryColor;
         if (isGossipModeActive) {{
-          galleryColor = '#fb7185'; // Neon rose gossip beacon
+          galleryColor = '#fb923c'; // Secondary warm amber-orange gossip beacon
         }} else if (isActive) {{
           galleryColor = isClean ? '#10b981' : (isFlagged ? '#c084fc' : '#38bdf8');
         }} else if (hasShow) {{
@@ -9671,7 +9788,7 @@ def build():
         const archiveRoomName = curArch.collection_title 
           ? (curArch.collection_title.length > 40 ? curArch.collection_title.slice(0, 38) + '...' : curArch.collection_title)
           : 'Archives & Curatorial Study Room';
-        const archiveColor = isGossipModeActive ? '#e11d48' : (isActive ? '#f59e0b' : '#b45309');
+        const archiveColor = isGossipModeActive ? '#ea580c' : (isActive ? '#f59e0b' : '#b45309');
         const archivePoly = [
           [minLon + 0.04 * w, minLat + 0.04 * h],
           [cLon - 0.015 * w, minLat + 0.04 * h],
@@ -9706,7 +9823,7 @@ def build():
         const atriumRoomName = (fl.facilities && fl.facilities[0]) 
           ? (fl.facilities[0] + ' & Public Forum') 
           : ((fl.wing_name && fl.wing_name.includes('Atrium')) ? fl.wing_name : 'Public Forum & Information Lounge');
-        const atriumColor = isGossipModeActive ? '#be123c' : (isActive ? '#6366f1' : '#3730a3');
+        const atriumColor = isGossipModeActive ? '#c2410c' : (isActive ? '#6366f1' : '#3730a3');
         const atriumPoly = [
           [cLon + 0.015 * w, minLat + 0.04 * h],
           [maxLon - 0.04 * w, minLat + 0.04 * h],
@@ -9748,7 +9865,7 @@ def build():
         properties: {{
           name: (inst.name + ' Roof Parapet Deck'),
           floorIndex: -1,
-          color: isGossipModeActive ? '#f43f5e' : '#38bdf8',
+          color: isGossipModeActive ? '#f97316' : '#38bdf8',
           base: topBase,
           height: topBase + 0.65,
           isActive: false
@@ -9829,8 +9946,8 @@ def build():
         const mastEl = document.createElement('div');
       mastEl.className = 'building-3d-mast-plate pointer-events-auto select-none';
       mastEl.style.cssText = isMobileScreen
-        ? 'width:calc(100vw - 24px); max-width:340px; min-width:0; box-sizing:border-box; padding:9px 12px; border-radius:14px; background:rgba(12,19,34,0.97); border:1px solid rgba(56,189,248,0.7); box-shadow:0 12px 28px rgba(0,0,0,0.8); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:12px; z-index:30;'
-        : 'min-width:280px; max-width:340px; padding:12px 14px; border-radius:16px; background:rgba(12,19,34,0.96); border:1px solid rgba(56,189,248,0.7); box-shadow:0 16px 36px rgba(0,0,0,0.7), 0 0 20px rgba(56,189,248,0.25); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:18px; z-index:30;';
+        ? 'width:calc(100vw - 24px); max-width:280px; min-width:0; box-sizing:border-box; padding:8px 10px; border-radius:14px; background:rgba(12,19,34,0.97); border:1px solid rgba(56,189,248,0.7); box-shadow:0 12px 28px rgba(0,0,0,0.8); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:12px; z-index:30;'
+        : 'min-width:240px; max-width:280px; padding:9px 12px; border-radius:14px; background:rgba(12,19,34,0.96); border:1px solid rgba(56,189,248,0.7); box-shadow:0 14px 30px rgba(0,0,0,0.7), 0 0 16px rgba(56,189,248,0.2); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; margin-bottom:12px; z-index:30;';
 
       const webUrl = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || '');
       const fin = inst.financial_data || {{}};
@@ -9839,11 +9956,11 @@ def build():
       let floorSelectorBarHtml = '';
       if (floors.length) {{
         floorSelectorBarHtml = '<div class="sm:hidden" style="margin-top:7px; padding-top:6px; border-top:1px solid #1e2c42; display:flex; align-items:center; gap:5px; overflow-x:auto;">' +
-          '<span style="font-size:10px; font-family:monospace; color:#38bdf8; text-transform:uppercase; font-weight:bold; flex-shrink:0;">Floors:</span>' +
+          '<span style="font-size:14px; font-family:monospace; color:#38bdf8; text-transform:uppercase; font-weight:bold; flex-shrink:0;">Floors:</span>' +
           floors.map((fl, idx) => {{
             const isAct = (idx === currentBfiFloorIndex);
             const code = fl.level_code || ('L' + (fl.level != null ? fl.level : idx));
-            return '<button type="button" onclick="window.selectBfiFloor(' + idx + ')" style="padding:2px 7px; font-size:10.5px; font-family:monospace; font-weight:bold; border-radius:6px; border:1px solid ' + (isAct ? '#38bdf8' : '#2b3e5e') + '; background:' + (isAct ? '#0284c7' : '#162238') + '; color:#fff; cursor:pointer; flex-shrink:0;">' + code + '</button>';
+            return '<button type="button" onclick="window.selectBfiFloor(' + idx + ')" style="padding:2px 7px; font-size:14px; font-family:monospace; font-weight:bold; border-radius:6px; border:1px solid ' + (isAct ? '#38bdf8' : '#2b3e5e') + '; background:' + (isAct ? '#0284c7' : '#162238') + '; color:#fff; cursor:pointer; flex-shrink:0;">' + code + '</button>';
           }}).join('') +
         '</div>';
       }}
@@ -9852,9 +9969,9 @@ def build():
         '<div style="display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid #1e2c42; padding-bottom:7px;">' +
           '<div style="min-width:0; flex:1;">' +
             '<div style="display:flex; align-items:center; gap:6px;">' +
-              '<span style="font-size:14px; font-weight:700; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + escapeHtml(inst.name) + '</span>' +
+              '<span style="font-size:16px; font-weight:700; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + escapeHtml(inst.name) + '</span>' +
             '</div>' +
-            '<div style="font-size:10.5px; font-family:monospace; color:#94a3b8; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
+            '<div style="font-size:14px; font-family:monospace; color:#94a3b8; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
               escapeHtml(inst.city) + (inst.country ? (', ' + escapeHtml(inst.country)) : '') + ' · ' + escapeHtml(bArch.architectural_style || 'Curatorial Pavilion') +
             '</div>' +
           '</div>' +
@@ -9866,7 +9983,7 @@ def build():
           '</div>' +
         '</div>' +
 
-        '<div style="margin-top:7px; font-size:11px; font-family:monospace; color:#cbd5e1; display:flex; flex-direction:column; gap:3px;">' +
+        '<div style="margin-top:7px; font-size:14px; font-family:monospace; color:#cbd5e1; display:flex; flex-direction:column; gap:3px;">' +
           '<div style="display:flex; align-items:center; justify-content:space-between; color:#7dd3fc;">' +
             '<span>' + floors.length + ' Floors · ' + (bArch.footprint_sqm || 2400).toLocaleString() + ' m²</span>' +
             '<span style="color:#f59e0b;">' + escapeHtml(budgetStr) + '</span>' +
@@ -9916,7 +10033,7 @@ def build():
         if (!isMobileScreen && !isBuildingFacadeDismissed && !isFloorChange && !currentBuildingFacadeMarker) {{
           const facadeEl = document.createElement('div');
           facadeEl.className = 'building-3d-facade-stack pointer-events-auto select-none';
-          facadeEl.style.cssText = 'min-width:280px; max-width:340px; display:flex; flex-direction:column; gap:6px; padding:10px 12px; border-radius:16px; background:rgba(10,16,28,0.95); border:1px solid rgba(56,189,248,0.5); box-shadow:0 16px 32px rgba(0,0,0,0.75); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; z-index:28;';
+          facadeEl.style.cssText = 'min-width:210px; max-width:245px; display:flex; flex-direction:column; gap:5px; padding:8px 10px; border-radius:14px; background:rgba(10,16,28,0.96); border:1px solid rgba(56,189,248,0.5); box-shadow:0 14px 28px rgba(0,0,0,0.75); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; z-index:28;';
 
         const sortedFloors = floors.map((f, i) => ({{ floor: f, originalIndex: i }})).reverse();
 
@@ -9938,24 +10055,24 @@ def build():
             '">' +
               '<div style="display:flex; align-items:center; justify-content:space-between; gap:6px;">' +
                 '<div style="display:flex; align-items:center; gap:5px;">' +
-                  '<span style="font-family:monospace; font-weight:bold; font-size:11px; padding:1px 5px; border-radius:4px; background:' + (isActive ? '#0284c7' : '#1e293b') + '; color:#ffffff;">' +
+                  '<span style="font-family:monospace; font-weight:bold; font-size:14px; padding:1px 5px; border-radius:4px; background:' + (isActive ? '#0284c7' : '#1e293b') + '; color:#ffffff;">' +
                     levelCode +
                   '</span>' +
-                  '<span style="font-size:11.5px; font-weight:600; color:' + (isActive ? '#38bdf8' : '#e2e8f0') + ';">' +
+                  '<span style="font-size:14px; font-weight:600; color:' + (isActive ? '#38bdf8' : '#e2e8f0') + ';">' +
                     escapeHtml(fl.floor_name || ('Level ' + fl.level)) +
                   '</span>' +
                 '</div>' +
-                '<span style="font-size:10px; font-family:monospace; color:#94a3b8;">' + escapeHtml(fl.elevation || '') + '</span>' +
+                '<span style="font-size:14px; font-family:monospace; color:#94a3b8;">' + escapeHtml(fl.elevation || '') + '</span>' +
               '</div>' +
 
-              '<div style="font-size:11.5px; color:#ffffff; line-height:1.25; display:flex; align-items:baseline; gap:4px;">' +
+              '<div style="font-size:14px; color:#ffffff; line-height:1.25; display:flex; align-items:baseline; gap:4px;">' +
                 '<span style="font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + escapeHtml(show.title) + '</span>' +
               '</div>' +
 
-              '<div style="font-size:10.5px; color:#6ee7b7; font-family:monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:flex; align-items:baseline; gap:4px;">' +
+              '<div style="font-size:14px; color:#6ee7b7; font-family:monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:flex; align-items:baseline; gap:4px;">' +
                 '<span>' + escapeHtml(arch.collection_title) + '</span>' +
               '</div>' +
-              '<div style="margin-top:2px; display:flex; align-items:center; justify-content:space-between; font-size:9.5px; font-family:monospace; color:' + (isActive ? '#38bdf8' : '#64748b') + ';">' +
+              '<div style="margin-top:2px; display:flex; align-items:center; justify-content:space-between; font-size:14px; font-family:monospace; color:' + (isActive ? '#38bdf8' : '#64748b') + ';">' +
                 '<span>Click to select &amp; pull into chat</span>' +
                 '<span>💬</span>' +
               '</div>' +
@@ -9965,10 +10082,10 @@ def build():
         facadeEl.innerHTML = 
           '<div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #1e2c42; padding-bottom:5px; gap:8px;">' +
             '<div style="display:flex; align-items:center; gap:6px; min-width:0;">' +
-              '<span style="font-size:10.5px; font-family:monospace; font-weight:bold; text-transform:uppercase; color:#38bdf8; letter-spacing:0.05em; display:flex; align-items:center; gap:4px; white-space:nowrap;">' +
+              '<span style="font-size:14px; font-family:monospace; font-weight:bold; text-transform:uppercase; color:#38bdf8; letter-spacing:0.05em; display:flex; align-items:center; gap:4px; white-space:nowrap;">' +
                 '3D FLOOR DIRECTORY' +
               '</span>' +
-              '<span style="font-size:10px; font-family:monospace; color:#94a3b8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Click level to inspect in 3D</span>' +
+              '<span style="font-size:14px; font-family:monospace; color:#94a3b8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Click level to inspect in 3D</span>' +
             '</div>' +
             '<button type="button" class="building-facade-close-btn" onclick="event.stopPropagation(); window.closeBuildingFacade();" title="Close Floor Directory" aria-label="Close" style="width:28px; height:20px;">' +
               '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
@@ -10004,7 +10121,7 @@ def build():
 
         const galEl = document.createElement('div');
         galEl.className = 'building-3d-room-badge pointer-events-auto select-none';
-        galEl.style.cssText = 'min-width:240px; max-width:280px; padding:8px 11px; border-radius:12px; background:rgba(6,19,34,0.96); border:1px solid #10b981; box-shadow:0 12px 28px rgba(0,0,0,0.85), 0 0 14px rgba(16,185,129,0.35); backdrop-filter:blur(10px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:26;';
+        galEl.style.cssText = 'min-width:190px; max-width:225px; padding:6px 9px; border-radius:12px; background:rgba(6,19,34,0.96); border:1px solid #10b981; box-shadow:0 10px 24px rgba(0,0,0,0.8), 0 0 12px rgba(16,185,129,0.3); backdrop-filter:blur(10px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:8px; z-index:26;';
         
         galEl.onclick = (e) => {{
           if (e.target.closest('.building-room-close-btn')) return;
@@ -10016,28 +10133,28 @@ def build():
         }};
 
         galEl.innerHTML = 
-          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:4px;">' +
-            '<div style="display:flex; align-items:center; gap:5px;">' +
-              '<span style="font-family:monospace; font-size:9.5px; font-weight:bold; padding:2px 6px; border-radius:4px; background:#047857; color:#a7f3d0; text-transform:uppercase; letter-spacing:0.04em;">EXHIBITION GALLERY</span>' +
-              '<span style="font-size:10px; font-family:monospace; font-weight:bold; color:#6ee7b7; background:rgba(16,185,129,0.15); padding:1px 5px; border-radius:3px;">' + escapeHtml(curLevelCode) + '</span>' +
+          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:3px;">' +
+            '<div style="display:flex; align-items:center; gap:4px;">' +
+              '<span style="font-family:monospace; font-size:14px; font-weight:bold; padding:2px 5px; border-radius:4px; background:#047857; color:#a7f3d0; text-transform:uppercase; letter-spacing:0.04em;">EXHIBITION GALLERY</span>' +
+              '<span style="font-size:14px; font-family:monospace; font-weight:bold; color:#6ee7b7; background:rgba(16,185,129,0.15); padding:1px 4px; border-radius:3px;">' + escapeHtml(curLevelCode) + '</span>' +
             '</div>' +
             '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:18px; height:18px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
           '</div>' +
-          '<div style="font-size:12px; font-weight:700; color:#ffffff; line-height:1.25; margin-bottom:2px;">' +
+          '<div style="font-size:16px; font-weight:700; color:#ffffff; line-height:1.2; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
             escapeHtml(galName) +
           '</div>' +
-          '<div style="font-size:11px; font-weight:600; color:#38bdf8; line-height:1.3; margin-top:2px;">' +
+          '<div style="font-size:14px; font-weight:600; color:#38bdf8; line-height:1.25; margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
             '“' + escapeHtml(galTitle) + '”' +
           '</div>' +
-          (galArtists ? ('<div style="font-size:10px; color:#cbd5e1; margin-top:3px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + escapeHtml(galArtists) + '</div>') : '') +
-          '<div style="display:flex; align-items:center; gap:5px; font-size:9.5px; font-family:monospace; color:#94a3b8; margin-top:3px;">' +
+          (galArtists ? ('<div style="font-size:14px; color:#cbd5e1; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + escapeHtml(galArtists) + '</div>') : '') +
+          '<div style="display:flex; align-items:center; gap:4px; font-size:14px; font-family:monospace; color:#94a3b8; margin-top:2px;">' +
             '<span style="color:#34d399; font-weight:bold;">● ' + escapeHtml(galDates) + '</span>' +
             '<span>·</span>' +
             '<span>' + escapeHtml(galAdmission) + '</span>' +
           '</div>' +
-          (galSynopsis ? ('<div style="font-size:10px; color:#cbd5e1; line-height:1.35; margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(galSynopsis) + '</div>') : '') +
-          '<div style="margin-top:9px; padding-top:7px; border-top:1px solid rgba(16,185,129,0.25);">' +
-            '<button type="button" class="atlas-pill-btn pill-full" style="padding:6px 12px; font-size:11.5px;">' +
+          (galSynopsis ? ('<div style="font-size:14px; color:#cbd5e1; line-height:1.3; margin-top:3px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(galSynopsis) + '</div>') : '') +
+          '<div style="margin-top:7px; padding-top:5px; border-top:1px solid rgba(16,185,129,0.25);">' +
+            '<button type="button" class="atlas-pill-btn pill-full" style="padding:4px 8px; font-size:14px;">' +
               '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
               '<span>Ask Curator · Pull into Chat</span>' +
             '</button>' +
@@ -10064,7 +10181,7 @@ def build():
 
         const archEl = document.createElement('div');
         archEl.className = 'building-3d-room-badge pointer-events-auto select-none';
-        archEl.style.cssText = 'min-width:240px; max-width:280px; padding:8px 11px; border-radius:12px; background:rgba(28,19,8,0.96); border:1px solid #f59e0b; box-shadow:0 12px 28px rgba(0,0,0,0.85), 0 0 14px rgba(245,158,11,0.35); backdrop-filter:blur(10px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:25;';
+        archEl.style.cssText = 'min-width:190px; max-width:225px; padding:6px 9px; border-radius:12px; background:rgba(28,19,8,0.96); border:1px solid #f59e0b; box-shadow:0 10px 24px rgba(0,0,0,0.8), 0 0 12px rgba(245,158,11,0.3); backdrop-filter:blur(10px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:8px; z-index:25;';
         
         archEl.onclick = (e) => {{
           if (e.target.closest('.building-room-close-btn')) return;
@@ -10076,23 +10193,23 @@ def build():
         }};
 
         archEl.innerHTML = 
-          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:4px;">' +
-            '<div style="display:flex; align-items:center; gap:5px;">' +
-              '<span style="font-family:monospace; font-size:9.5px; font-weight:bold; padding:2px 6px; border-radius:4px; background:#b45309; color:#fde68a; text-transform:uppercase; letter-spacing:0.04em;">ARCHIVES &amp; STUDY</span>' +
-              '<span style="font-size:10px; font-family:monospace; font-weight:bold; color:#fcd34d; background:rgba(245,158,11,0.15); padding:1px 5px; border-radius:3px;">' + escapeHtml(curLevelCode) + '</span>' +
+          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:3px;">' +
+            '<div style="display:flex; align-items:center; gap:4px;">' +
+              '<span style="font-family:monospace; font-size:14px; font-weight:bold; padding:2px 5px; border-radius:4px; background:#b45309; color:#fde68a; text-transform:uppercase; letter-spacing:0.04em;">ARCHIVES &amp; STUDY</span>' +
+              '<span style="font-size:14px; font-family:monospace; font-weight:bold; color:#fcd34d; background:rgba(245,158,11,0.15); padding:1px 4px; border-radius:3px;">' + escapeHtml(curLevelCode) + '</span>' +
             '</div>' +
             '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:18px; height:18px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
           '</div>' +
-          '<div style="font-size:12px; font-weight:700; color:#fef3c7; line-height:1.25; margin-bottom:2px;">' +
+          '<div style="font-size:16px; font-weight:700; color:#fef3c7; line-height:1.2; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
             escapeHtml(archTitle) +
           '</div>' +
-          '<div style="font-size:10px; font-family:monospace; font-weight:600; color:#fbbf24; margin-top:2px;">' +
+          '<div style="font-size:14px; font-family:monospace; font-weight:600; color:#fbbf24; margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
             escapeHtml(archItems) + (archPeriod ? (' · ' + escapeHtml(archPeriod)) : '') +
           '</div>' +
-          (archPolicy ? ('<div style="font-size:10px; color:#e2e8f0; line-height:1.35; margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(archPolicy) + '</div>') : '') +
-          (archScope ? ('<div style="font-size:9.5px; color:#94a3b8; line-height:1.35; margin-top:3px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(archScope) + '</div>') : '') +
-          '<div style="margin-top:9px; padding-top:7px; border-top:1px solid rgba(245,158,11,0.25);">' +
-            '<button type="button" class="atlas-pill-btn pill-full" style="padding:6px 12px; font-size:11.5px;">' +
+          (archPolicy ? ('<div style="font-size:14px; color:#e2e8f0; line-height:1.3; margin-top:3px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(archPolicy) + '</div>') : '') +
+          (archScope ? ('<div style="font-size:14px; color:#94a3b8; line-height:1.3; margin-top:2px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(archScope) + '</div>') : '') +
+          '<div style="margin-top:7px; padding-top:5px; border-top:1px solid rgba(245,158,11,0.25);">' +
+            '<button type="button" class="atlas-pill-btn pill-full" style="padding:4px 8px; font-size:14px;">' +
               '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
               '<span>Consult Archive · Pull into Chat</span>' +
             '</button>' +
@@ -10120,7 +10237,7 @@ def build():
 
         const atEl = document.createElement('div');
         atEl.className = 'building-3d-room-badge pointer-events-auto select-none';
-        atEl.style.cssText = 'min-width:240px; max-width:280px; padding:8px 11px; border-radius:12px; background:rgba(15,15,35,0.96); border:1px solid #6366f1; box-shadow:0 12px 28px rgba(0,0,0,0.85), 0 0 14px rgba(99,102,241,0.35); backdrop-filter:blur(10px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:25;';
+        atEl.style.cssText = 'min-width:190px; max-width:225px; padding:6px 9px; border-radius:12px; background:rgba(15,15,35,0.96); border:1px solid #6366f1; box-shadow:0 10px 24px rgba(0,0,0,0.8), 0 0 12px rgba(99,102,241,0.3); backdrop-filter:blur(10px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:8px; z-index:25;';
         
         atEl.onclick = (e) => {{
           if (e.target.closest('.building-room-close-btn')) return;
@@ -10132,27 +10249,27 @@ def build():
         }};
 
         atEl.innerHTML = 
-          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:4px;">' +
-            '<div style="display:flex; align-items:center; gap:5px;">' +
-              '<span style="font-family:monospace; font-size:9.5px; font-weight:bold; padding:2px 6px; border-radius:4px; background:#4338ca; color:#c7d2fe; text-transform:uppercase; letter-spacing:0.04em;">PUBLIC FORUM &amp; CIVIC</span>' +
-              '<span style="font-size:10px; font-family:monospace; font-weight:bold; color:#a5b4fc; background:rgba(99,102,241,0.15); padding:1px 5px; border-radius:3px;">' + escapeHtml(curLevelCode) + '</span>' +
+          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:3px;">' +
+            '<div style="display:flex; align-items:center; gap:4px;">' +
+              '<span style="font-family:monospace; font-size:14px; font-weight:bold; padding:2px 5px; border-radius:4px; background:#4338ca; color:#c7d2fe; text-transform:uppercase; letter-spacing:0.04em;">PUBLIC FORUM &amp; CIVIC</span>' +
+              '<span style="font-size:14px; font-family:monospace; font-weight:bold; color:#a5b4fc; background:rgba(99,102,241,0.15); padding:1px 4px; border-radius:3px;">' + escapeHtml(curLevelCode) + '</span>' +
             '</div>' +
             '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:18px; height:18px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
           '</div>' +
-          '<div style="font-size:12px; font-weight:700; color:#e0e7ff; line-height:1.25; margin-bottom:2px;">' +
+          '<div style="font-size:16px; font-weight:700; color:#e0e7ff; line-height:1.2; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
             escapeHtml(atName) +
           '</div>' +
-          '<div style="font-size:10px; font-family:monospace; color:#a5b4fc; margin-top:2px;">' +
+          '<div style="font-size:14px; font-family:monospace; color:#a5b4fc; margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
             escapeHtml(atAccess) +
           '</div>' +
-          '<div style="font-size:10px; color:#cbd5e1; line-height:1.35; margin-top:4px;">' +
+          '<div style="font-size:14px; color:#cbd5e1; line-height:1.3; margin-top:2px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' +
             escapeHtml(atFacilities) +
           '</div>' +
-          '<div style="font-size:9.5px; font-family:monospace; color:#94a3b8; margin-top:3px;">' +
+          '<div style="font-size:14px; font-family:monospace; color:#94a3b8; margin-top:2px;">' +
             escapeHtml(atElevation) + (activeFl.area_sqm ? (' · ' + activeFl.area_sqm + ' m²') : '') +
           '</div>' +
-          '<div style="margin-top:9px; padding-top:7px; border-top:1px solid rgba(99,102,241,0.25);">' +
-            '<button type="button" class="atlas-pill-btn pill-full" style="padding:6px 12px; font-size:11.5px;">' +
+          '<div style="margin-top:7px; padding-top:5px; border-top:1px solid rgba(99,102,241,0.25);">' +
+            '<button type="button" class="atlas-pill-btn pill-full" style="padding:4px 8px; font-size:14px;">' +
               '<svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>' +
               '<span>Explore Forum · Pull into Chat</span>' +
             '</button>' +
@@ -10191,28 +10308,28 @@ def build():
       if (isGossipModeActive) {{
         document.body.classList.add('gossip-mode-active');
         if (topBtn) {{
-          topBtn.classList.add('bg-gradient-to-r', 'from-rose-600', 'via-pink-600', 'to-fuchsia-600', 'text-white', 'border-rose-300', 'font-bold', 'shadow-[0_0_20px_rgba(244,63,94,0.7)]');
-          topBtn.classList.remove('bg-[#1f0a1c]', 'text-rose-300', 'bg-yellow-500', 'text-black', 'border-yellow-300');
-          topBtn.innerHTML = '<span>Gossip Mode: Active [Reddit &amp; X]</span>';
+          topBtn.classList.add('bg-gradient-to-r', 'from-orange-600', 'via-amber-600', 'to-orange-700', 'text-white', 'border-orange-300', 'font-bold', 'shadow-[0_0_20px_rgba(249,115,22,0.7)]');
+          topBtn.classList.remove('bg-[#271206]', 'text-orange-300', 'bg-[#1f0a1c]', 'text-rose-300', 'bg-yellow-500', 'text-black', 'border-yellow-300', 'from-rose-600', 'via-pink-600', 'to-fuchsia-600', 'border-rose-300');
+          topBtn.innerHTML = '<span>Gossip Mode: ACTIVE</span>';
         }}
         if (mobileBtn) {{
-          mobileBtn.classList.add('bg-gradient-to-r', 'from-rose-600', 'to-fuchsia-600', 'text-white', 'border-rose-300', 'font-bold');
-          mobileBtn.classList.remove('bg-[#1f0a1c]', 'text-rose-300', 'bg-yellow-500', 'text-black', 'border-yellow-300');
-          mobileBtn.innerHTML = '<span>Gossip Active</span>';
+          mobileBtn.classList.add('bg-gradient-to-r', 'from-orange-600', 'to-amber-600', 'text-white', 'border-orange-300', 'font-bold');
+          mobileBtn.classList.remove('bg-[#271206]', 'text-orange-300', 'bg-[#1f0a1c]', 'text-rose-300', 'bg-yellow-500', 'text-black', 'border-yellow-300', 'from-rose-600', 'to-fuchsia-600', 'border-rose-300');
+          mobileBtn.innerHTML = '<span>Gossip ACTIVE</span>';
         }}
         if (typeof appendBotMessage === 'function') {{
-          appendBotMessage("**Gossip & Whispers Mode Activated**: Atmospheric backchannel layer mapping institutions via Reddit debates (r/contemporaryart, r/museums), curatorial Twitter/X discourse, and insider whispers. High-rumor spaces radiate in neon rose. Click any institution to view unvarnished rumors and curatorial dossiers.");
+          appendBotMessage("**Gossip & Whispers Mode Activated**: Atmospheric backchannel layer mapping institutions via Reddit debates (r/contemporaryart, r/museums), curatorial Twitter/X discourse, and insider whispers. High-rumor spaces radiate in secondary warm amber-orange. Click any institution to view unvarnished rumors and curatorial dossiers.");
         }}
       }} else {{
         document.body.classList.remove('gossip-mode-active');
         if (topBtn) {{
-          topBtn.classList.remove('bg-gradient-to-r', 'from-rose-600', 'via-pink-600', 'to-fuchsia-600', 'text-white', 'border-rose-300', 'font-bold', 'shadow-[0_0_20px_rgba(244,63,94,0.7)]', 'bg-yellow-500', 'text-black');
-          topBtn.classList.add('bg-[#1f0a1c]', 'text-rose-300');
+          topBtn.classList.remove('bg-gradient-to-r', 'from-orange-600', 'via-amber-600', 'to-orange-700', 'text-white', 'border-orange-300', 'font-bold', 'shadow-[0_0_20px_rgba(249,115,22,0.7)]', 'bg-yellow-500', 'text-black', 'from-rose-600', 'via-pink-600', 'to-fuchsia-600', 'border-rose-300');
+          topBtn.classList.add('bg-[#271206]', 'text-orange-300');
           topBtn.innerHTML = '<span>Gossip Mode</span>';
         }}
         if (mobileBtn) {{
-          mobileBtn.classList.remove('bg-gradient-to-r', 'from-rose-600', 'to-fuchsia-600', 'text-white', 'border-rose-300', 'font-bold', 'bg-yellow-500', 'text-black');
-          mobileBtn.classList.add('bg-[#1f0a1c]', 'text-rose-300');
+          mobileBtn.classList.remove('bg-gradient-to-r', 'from-orange-600', 'to-amber-600', 'text-white', 'border-orange-300', 'font-bold', 'bg-yellow-500', 'text-black', 'from-rose-600', 'to-fuchsia-600', 'border-rose-300');
+          mobileBtn.classList.add('bg-[#271206]', 'text-orange-300');
           mobileBtn.innerHTML = '<span>Gossip</span>';
         }}
       }}
@@ -10223,11 +10340,11 @@ def build():
       const bDotCore = document.querySelector('.brand-city-dot-core');
 
       if (isGossipModeActive) {{
-        if (bDotAura) bDotAura.style.background = 'rgba(244, 63, 94, 0.45)';
-        if (bDotPing) bDotPing.style.borderColor = 'rgba(244, 63, 94, 0.90)';
+        if (bDotAura) bDotAura.style.background = 'rgba(249, 115, 22, 0.45)';
+        if (bDotPing) bDotPing.style.borderColor = 'rgba(249, 115, 22, 0.90)';
         if (bDotCore) {{
-          bDotCore.style.background = '#f43f5e';
-          bDotCore.style.boxShadow = '0 0 10px #f43f5e, 0 0 20px rgba(244, 63, 94, 0.85)';
+          bDotCore.style.background = '#f97316';
+          bDotCore.style.boxShadow = '0 0 10px #f97316, 0 0 20px rgba(249, 115, 22, 0.85)';
         }}
       }} else {{
         if (bDotAura) bDotAura.style.background = 'rgba(16, 185, 129, 0.35)';
@@ -10265,19 +10382,19 @@ def build():
 
       if (currentCardMode === 'gossip') {{
         if (tabGossip) {{
-          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-[0_0_15px_rgba(244,63,94,0.6)]';
+          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-[0_0_15px_rgba(249,115,22,0.6)]';
         }}
         if (tabInfo) {{
-          tabInfo.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-rose-200/70 hover:text-white';
+          tabInfo.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-orange-200/70 hover:text-white';
         }}
         if (infoPane) infoPane.classList.add('hidden');
         if (gossipPane) gossipPane.classList.remove('hidden');
         if (card) {{
-          card.classList.add('gossip-yellow-card', 'gossip-active-card', 'border-rose-500/80', 'bg-[#1c0824]/98', 'shadow-[0_0_30px_rgba(244,63,94,0.4)]');
-          card.classList.remove('border-[#2e2e2e]', 'bg-[#18181b]/95');
+          card.classList.add('gossip-yellow-card', 'gossip-active-card', 'border-orange-500/80', 'bg-[#241208]/98', 'shadow-[0_0_30px_rgba(249,115,22,0.4)]');
+          card.classList.remove('border-[#2e2e2e]', 'bg-[#18181b]/95', 'border-rose-500/80', 'bg-[#1c0824]/98');
         }}
         if (tierBadge) {{
-          tierBadge.className = 'text-[12px] font-mono px-2 py-0.5 rounded-lg border border-rose-500/80 bg-rose-950/80 text-rose-300 font-bold';
+          tierBadge.className = 'text-[12px] font-mono px-2 py-0.5 rounded-lg border border-orange-500/80 bg-orange-950/80 text-orange-300 font-bold';
           tierBadge.textContent = 'Gossip Mode';
         }}
         if (syncGlobal && !isGossipModeActive && typeof toggleGossipMode === 'function') {{
@@ -10288,12 +10405,12 @@ def build():
           tabInfo.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-zinc-800 text-white shadow-sm';
         }}
         if (tabGossip) {{
-          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-[#a1a1aa] hover:text-rose-400';
+          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-[#a1a1aa] hover:text-orange-400';
         }}
         if (infoPane) infoPane.classList.remove('hidden');
         if (gossipPane) gossipPane.classList.add('hidden');
         if (card) {{
-          card.classList.remove('gossip-yellow-card', 'gossip-active-card', 'border-rose-500/80', 'bg-[#1c0824]/98', 'shadow-[0_0_30px_rgba(244,63,94,0.4)]');
+          card.classList.remove('gossip-yellow-card', 'gossip-active-card', 'border-orange-500/80', 'bg-[#241208]/98', 'shadow-[0_0_30px_rgba(249,115,22,0.4)]', 'border-rose-500/80', 'bg-[#1c0824]/98');
           card.classList.add('border-[#2e2e2e]', 'bg-[#18181b]/95');
         }}
         if (tierBadge) {{
@@ -10314,24 +10431,24 @@ def build():
 
       if (mode === 'gossip') {{
         if (tabGossip) {{
-          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-bold transition cursor-pointer bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-[0_0_15px_rgba(244,63,94,0.6)]';
+          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-bold transition cursor-pointer bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-[0_0_15px_rgba(249,115,22,0.6)]';
         }}
         if (tabAudit) {{
-          tabAudit.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-rose-200/70 hover:text-white';
+          tabAudit.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-orange-200/70 hover:text-white';
         }}
         if (auditView) auditView.classList.add('hidden');
         if (gossipView) gossipView.classList.remove('hidden');
-        if (drawer) drawer.classList.add('border-rose-500/70');
+        if (drawer) drawer.classList.add('border-orange-500/70');
       }} else {{
         if (tabAudit) {{
           tabAudit.className = 'flex-1 py-1 px-3 rounded-lg text-center font-medium transition cursor-pointer bg-zinc-800 text-white shadow-sm';
         }}
         if (tabGossip) {{
-          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-rose-400';
+          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-orange-400';
         }}
         if (auditView) auditView.classList.remove('hidden');
         if (gossipView) gossipView.classList.add('hidden');
-        if (drawer) drawer.classList.remove('border-rose-500/70');
+        if (drawer) drawer.classList.remove('border-orange-500/70', 'border-rose-500/70');
       }}
     }}
     window.setDrawerMode = setDrawerMode;
@@ -10366,6 +10483,14 @@ def build():
       // Reset dismissed state for the newly focused building
       isBuildingMastDismissed = false;
       isBuildingFacadeDismissed = false;
+      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+
+      const mapEl = document.getElementById('cityMapContainer');
+      if (mapEl) {{
+        mapEl.classList.remove('hidden');
+        mapEl.classList.add('map-zoomed-in');
+        mapEl.classList.add('building-view-active');
+      }}
 
       // Switch to vector street map if not active
       if (!isCityStreetViewActive) {{
@@ -10373,11 +10498,8 @@ def build():
       }}
 
       initCityMapIfNeeded();
-      const mapEl = document.getElementById('cityMapContainer');
-      if (mapEl) {{
-        mapEl.classList.remove('hidden');
-        mapEl.classList.add('map-zoomed-in');
-        mapEl.classList.add('building-view-active');
+      if (cityVectorMap && typeof cityVectorMap.resize === 'function') {{
+        cityVectorMap.resize();
       }}
       document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {{
         pin.style.opacity = '0';
@@ -10434,6 +10556,7 @@ def build():
 
     // 🏢 3D Building Floor Inspector HUD Controller
     let currentBfiFloorIndex = 0;
+    let isMapCalloutsHidden = false;
 
     function showBuildingFloorInspectorHud(inst) {{
       if (!inst) inst = selectedInstitution || currentHighlightedBuildingInst;
@@ -10447,6 +10570,17 @@ def build():
       if (metaEl) {{
         const style = inst.building_architecture ? (inst.building_architecture.architectural_style || 'Curatorial Space') : 'Cultural Building';
         metaEl.textContent = `${{style}} · ${{inst.city}}`;
+      }}
+
+      const brandEl = document.getElementById('bfiBrandBadge');
+      if (brandEl) {{
+        const isClean = inst.tier === 'A';
+        const isFlagged = inst.tier === 'B';
+        brandEl.innerHTML = isClean 
+          ? '<span class="px-1.5 py-0.5 rounded text-[9.5px] font-mono border border-emerald-800 bg-[#072418] text-emerald-400 font-bold">Verified</span>'
+          : (isFlagged
+            ? '<span class="px-1.5 py-0.5 rounded text-[9.5px] font-mono border border-purple-800 bg-[#1e1330] text-[#c084fc] font-bold">Flagged</span>'
+            : '<span class="px-1.5 py-0.5 rounded text-[9.5px] font-mono border border-sky-800 bg-[#0c1e30] text-sky-400 font-bold">Roster</span>');
       }}
 
       const floors = inst.floor_plans || (inst.building_architecture && inst.building_architecture.floor_plans) || [];
@@ -10471,6 +10605,16 @@ def build():
 
       if (currentBfiFloorIndex >= floors.length) currentBfiFloorIndex = 0;
       if (currentBfiFloorIndex < 0) currentBfiFloorIndex = 0;
+
+      // Populate Building Metrics Bar
+      const bArch = inst.building_architecture || {{}};
+      const sqm = bArch.footprint_sqm || 2400;
+      const fin = inst.financial_data || {{}};
+      const budgetStr = fin.operating_budget_display || inst.funding || 'Civic Operational Scale';
+      const mFlEl = document.getElementById('bfiMetricsFloors');
+      const mBgEl = document.getElementById('bfiMetricsBudget');
+      if (mFlEl) mFlEl.textContent = `${{floors.length}} Floors · ${{sqm.toLocaleString()}} m²`;
+      if (mBgEl) mBgEl.textContent = budgetStr;
 
       // Populate Floor Level Selector Tabs
       const tabsEl = document.getElementById('bfiFloorTabs');
@@ -10522,6 +10666,10 @@ def build():
 
       hud.classList.remove('hidden');
 
+      // Suppress on-map facade stack while HUD is open to avoid duplicate floor lists
+      const facadeStackEl = document.querySelector('.building-3d-facade-stack');
+      if (facadeStackEl) facadeStackEl.style.display = 'none';
+
       // Wire Action Buttons
       const zoomCloserBtn = document.getElementById('bfiZoomCloserBtn');
       if (zoomCloserBtn) {{
@@ -10535,9 +10683,53 @@ def build():
           }}
         }};
       }}
+      const explodeBtn = document.getElementById('bfiExplodeBtn');
+      const explodeTxt = document.getElementById('bfiExplodeBtnText');
+      if (explodeBtn) {{
+        if (explodeTxt) explodeTxt.textContent = isExploded3DMode ? 'Stack' : 'Explode';
+        explodeBtn.onclick = () => {{
+          window.toggleExploded3DMode();
+          if (explodeTxt) explodeTxt.textContent = isExploded3DMode ? 'Stack' : 'Explode';
+        }};
+      }}
       const openModalBtn = document.getElementById('bfiOpenModalBtn');
       if (openModalBtn) {{
         openModalBtn.onclick = () => openBuildingArchivesModal(inst);
+      }}
+      const minBtn = document.getElementById('minimizeBfiHudBtn');
+      if (minBtn) {{
+        minBtn.onclick = () => {{
+          const isMin = hud.classList.toggle('minimized');
+          const icon = document.getElementById('minimizeBfiHudIcon');
+          const content = document.getElementById('bfiContentWrap');
+          if (icon) icon.textContent = isMin ? '□' : '_';
+          if (content) content.classList.toggle('hidden', isMin);
+        }};
+      }}
+      const toggleOvBtn = document.getElementById('bfiToggleOverlaysBtn');
+      if (toggleOvBtn) {{
+        toggleOvBtn.onclick = () => {{
+          isMapCalloutsHidden = !isMapCalloutsHidden;
+          const txt = document.getElementById('bfiToggleOverlaysText');
+          const icon = document.getElementById('bfiToggleOverlaysIcon');
+          const badges = document.querySelectorAll('.building-3d-room-badge, .building-3d-mast-plate');
+          badges.forEach(b => {{
+            b.style.display = isMapCalloutsHidden ? 'none' : '';
+          }});
+          if (txt) txt.textContent = isMapCalloutsHidden ? 'Show Badges' : 'Hide Badges';
+          if (icon) icon.textContent = isMapCalloutsHidden ? '🕶️' : '👁️';
+        }};
+      }}
+      const askCurBtn = document.getElementById('bfiAskCuratorBtn');
+      if (askCurBtn) {{
+        askCurBtn.onclick = () => window.askCuratorAboutCurrentBuilding();
+      }}
+      const showAskBtn = document.getElementById('bfiShowAskBtn');
+      if (showAskBtn) {{
+        showAskBtn.onclick = () => {{
+          const curLvl = activeFl.level_code || ('L' + currentBfiFloorIndex);
+          window.atlasAskCurator('Tell me about the exhibition at ' + inst.name + ' (' + curLvl + '): ' + JSON.stringify(show.title || ''));
+        }};
       }}
       const closeHudBtn = document.getElementById('closeBfiHudBtn');
       if (closeHudBtn) {{
@@ -10569,6 +10761,10 @@ def build():
     function hideBuildingFloorInspectorHud() {{
       const hud = document.getElementById('buildingFloorInspectorHud');
       if (hud) hud.classList.add('hidden');
+      const facadeStackEl = document.querySelector('.building-3d-facade-stack');
+      if (facadeStackEl && !isBuildingFacadeDismissed && window.innerWidth >= 640) {{
+        facadeStackEl.style.display = 'flex';
+      }}
     }}
     window.hideBuildingFloorInspectorHud = hideBuildingFloorInspectorHud;
 
@@ -10925,16 +11121,20 @@ def build():
     function openCityStreetView(cityName, targetLat, targetLon) {{
       if (!cityName || cityName === 'all') return;
       isCityStreetViewActive = true;
-      initCityMapIfNeeded();
       const mapEl = document.getElementById('cityMapContainer');
+      if (mapEl) {{
+        mapEl.classList.remove('hidden');
+        mapEl.classList.add('map-zoomed-in');
+        mapEl.classList.remove('map-zoomed-out');
+      }}
+      initCityMapIfNeeded();
       if (!mapEl || !cityVectorMap) return;
+      if (typeof cityVectorMap.resize === 'function') {{
+        cityVectorMap.resize();
+      }}
 
       // Ensure globe floating card is strictly hidden in street view
       document.getElementById('floatingCard')?.classList.add('hidden');
-
-      mapEl.classList.remove('hidden');
-      mapEl.classList.add('map-zoomed-in');
-      mapEl.classList.remove('map-zoomed-out');
       document.getElementById('cityViewControlBanner')?.classList.remove('hidden');
 
       const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
@@ -10997,7 +11197,7 @@ def build():
 
         const tierDot = document.createElement('span');
         tierDot.style.color = markerColor;
-        tierDot.style.fontSize = '9px';
+        tierDot.style.fontSize = '14px';
         tierDot.style.lineHeight = '1';
         tierDot.textContent = '';
 
@@ -11045,33 +11245,33 @@ def build():
                    onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
                   ${{escapeHtml(inst.name)}}
                 </a>
-                <div style="font-size:12px; color:#a1a1aa; font-family:monospace; margin-top:2px;">
+                <div style="font-size:14px; color:#a1a1aa; font-family:monospace; margin-top:2px;">
                   ${{escapeHtml(inst.location || inst.city)}} · ${{isA ? 'Verified' : 'One Name'}}
                 </div>
               </div>
-              <span style="font-size:11px; font-family:monospace; padding:2px 7px; border-radius:6px; border:1px solid ${{isA ? 'rgba(16,185,129,0.4)' : 'rgba(56,189,248,0.4)'}}; background:${{isA ? '#0a2016' : '#0d1d33'}}; color:${{markerColor}}; white-space:nowrap; shrink:0;">
+              <span style="font-size:14px; font-family:monospace; padding:2px 7px; border-radius:6px; border:1px solid ${{isA ? 'rgba(16,185,129,0.4)' : 'rgba(56,189,248,0.4)'}}; background:${{isA ? '#0a2016' : '#0d1d33'}}; color:${{markerColor}}; white-space:nowrap; shrink:0;">
                 ${{isA ? 'Verified' : 'One Name'}}
               </span>
             </div>
 
-            <div style="font-size:12px; color:#34d399; font-family:monospace; margin-top:4px;">
+            <div style="font-size:14px; color:#34d399; font-family:monospace; margin-top:4px;">
               ${{escapeHtml(shortH)}} · ${{escapeHtml(shortF)}}
             </div>
 
-            <div style="font-size:11px; color:#cbd5e1; margin-top:5px; line-height:1.35;">
+            <div style="font-size:14px; color:#cbd5e1; margin-top:5px; line-height:1.35;">
               ${{escapeHtml(inst.curatorial_focus || inst.neighborhood || inst.location)}}
             </div>
 
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:8px;">
               <button onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${{safeName}}', false)" 
-                      style="display:inline-flex; align-items:center; gap:5px; padding:5.5px 11px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:12px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.35); border:none; cursor:pointer;"
+                      style="display:inline-flex; align-items:center; gap:5px; padding:5.5px 11px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.35); border:none; cursor:pointer;"
                       onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1.0'">
                 
                 <span>Zoom to Building & Archives</span>
               </button>
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; font-size:11.5px; font-weight:500; text-decoration:none; border:1px solid #334155;"
+                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; font-size:14px; font-weight:500; text-decoration:none; border:1px solid #334155;"
                    onmouseover="this.style.background='#273549'" onmouseout="this.style.background='#1e293b'">
                   
                   <span>Website</span>
@@ -11079,13 +11279,13 @@ def build():
                 </a>
               ` : ''}}
               <button onclick="window.atlasPlanVisit('${{safeName}}')" 
-                      style="display:inline-flex; align-items:center; gap:4px; padding:5px 9px; border-radius:10px; background:#222834; color:#93c5fd; border:1px solid #2f3d58; font-size:11px; font-family:monospace; cursor:pointer;"
+                      style="display:inline-flex; align-items:center; gap:4px; padding:5px 9px; border-radius:10px; background:#222834; color:#93c5fd; border:1px solid #2f3d58; font-size:14px; font-family:monospace; cursor:pointer;"
                       onmouseover="this.style.background='#2b3548';this.style.color='#ffffff'" onmouseout="this.style.background='#222834';this.style.color='#93c5fd'">
                 <span>Plan Visit</span>
               </button>
             </div>
 
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; padding-top:7px; border-top:1px solid #27272a; font-size:11px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; padding-top:7px; border-top:1px solid #27272a; font-size:14px;">
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
                    style="color:#93c5fd; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:110px;">
@@ -11094,12 +11294,12 @@ def build():
               ` : '<span></span>'}}
               <div style="display:flex; align-items:center; gap:8px;">
                 <button onclick="window.atlasOpenDossier('${{safeName}}')" 
-                        style="background:none; border:none; color:#a1a1aa; font-size:11px; cursor:pointer; padding:0;" 
+                        style="background:none; border:none; color:#a1a1aa; font-size:14px; cursor:pointer; padding:0;" 
                         onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#a1a1aa'">
                   Read info about institution
                 </button>
                 <button onclick="window.atlasAskCurator('${{safeName}}')" 
-                        style="background:none; border:none; color:#ffffff; font-size:11px; font-weight:600; cursor:pointer; padding:0;" 
+                        style="background:none; border:none; color:#ffffff; font-size:14px; font-weight:600; cursor:pointer; padding:0;" 
                         onmouseover="this.style.color='#93c5fd'" onmouseout="this.style.color='#ffffff'">
                   Ask
                 </button>
@@ -11553,7 +11753,7 @@ def build():
           badgeEl.style.border = '2.5px solid #34d399';
           badgeEl.style.color = '#ffffff';
           badgeEl.style.fontFamily = 'monospace';
-          badgeEl.style.fontSize = '13px';
+          badgeEl.style.fontSize = '14px';
           badgeEl.style.fontWeight = 'bold';
           badgeEl.style.display = 'flex';
           badgeEl.style.alignItems = 'center';
@@ -11569,39 +11769,39 @@ def build():
           const popupHtml = `
             <div style="font-family:'PP Telegraf',sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f1f5f9;">
               <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
-                <span style="font-size:11px; font-family:monospace; color:#34d399; font-weight:600; text-transform:uppercase;">
+                <span style="font-size:14px; font-family:monospace; color:#34d399; font-weight:600; text-transform:uppercase;">
                   Stop ${{stop.stopIndex}} of ${{route.stops.length}}
                 </span>
-                <span style="font-size:10px; font-family:monospace; padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
+                <span style="font-size:14px; font-family:monospace; padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
                   ${{isClean ? 'Clean Funding' : 'Flagged'}}
                 </span>
               </div>
-              <div style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.2; margin-bottom:4px;">
+              <div style="font-size:16px; font-weight:600; color:#ffffff; line-height:1.2; margin-bottom:4px;">
                 ${{escapeHtml(stop.name)}}
               </div>
-              <div style="font-size:11.5px; color:#a1a1aa; margin-bottom:6px;">
+              <div style="font-size:14px; color:#a1a1aa; margin-bottom:6px;">
                 ${{escapeHtml(stop.address || stop.neighborhood || stop.city)}}
               </div>
-              <div style="font-size:11.5px; font-family:monospace; color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
+              <div style="font-size:14px; font-family:monospace; color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
                 ${{escapeHtml(stop.openingHours)}}
               </div>
-              <div style="font-size:11px; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
+              <div style="font-size:14px; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
                 ${{escapeHtml(stop.curatorialFocus || '')}}
               </div>
               ${{idx < route.stops.length - 1 ? `
-                <div style="font-size:11px; font-family:monospace; color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:14px; font-family:monospace; color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Next stop: ${{escapeHtml(route.stops[idx + 1].name)}} (${{stop.nextLegKm || route.stops[idx+1].legDistanceKm}} km · ${{stop.nextLegMin || route.stops[idx+1].legWalkMinutes}} min walk)
                 </div>
               ` : `
-                <div style="font-size:11px; font-family:monospace; color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:14px; font-family:monospace; color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Final Itinerary Destination
                 </div>
               `}}
               <div style="display:flex; align-items:center; gap:6px; margin-top:8px;">
-                <button onclick="window.jumpToRouteStop(${{idx}})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:11px; font-weight:600; border:none; cursor:pointer;">
+                <button onclick="window.jumpToRouteStop(${{idx}})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:600; border:none; cursor:pointer;">
                   Focus Stop
                 </button>
-                <button onclick="window.atlasPlanVisit('${{safeName}}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:11px; border:1px solid #334155; cursor:pointer;">
+                <button onclick="window.atlasPlanVisit('${{safeName}}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:14px; border:1px solid #334155; cursor:pointer;">
                   Plan Visit
                 </button>
               </div>
@@ -12467,7 +12667,7 @@ def build():
 
         // Icon or Initial in center
         trusteeCtx.fillStyle = '#ffffff';
-        trusteeCtx.font = `bold ${{Math.max(9, Math.round(r * 0.75))}}px sans-serif`;
+        trusteeCtx.font = 'bold 14px sans-serif';
         trusteeCtx.textAlign = 'center';
         trusteeCtx.textBaseline = 'middle';
         const glyph = n.type === 'institution' ? (n.tier === 'A' ? 'CLEAN' : 'INST') : 'CONFLICT';
@@ -12486,14 +12686,14 @@ def build():
           trusteeCtx.stroke();
 
           trusteeCtx.fillStyle = '#ffffff';
-          trusteeCtx.font = 'bold 8.5px monospace';
+          trusteeCtx.font = 'bold 14px monospace';
           trusteeCtx.fillText(`${{n.interlocks}}`, badgeX, badgeY);
         }}
 
         // Text Label
         if (!isDimmed || isFocus) {{
           const label = n.shortName || n.name;
-          trusteeCtx.font = isFocus ? 'bold 11px sans-serif' : '10px sans-serif';
+          trusteeCtx.font = isFocus ? 'bold 16px sans-serif' : '14px sans-serif';
           const tw = trusteeCtx.measureText(label).width;
           const ly = n.y + r + 12;
 
@@ -13491,16 +13691,16 @@ def build():
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
 
-      ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
       const nameText = inst.name;
       const nameW = ctx.measureText(nameText).width;
 
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ' · ' + inst.curatorial_focus : (inst.neighborhood ? ' · ' + inst.neighborhood : ''));
-      ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
       const subW = ctx.measureText(subText).width;
 
-      ctx.font = '10px "PP Telegraf", monospace';
+      ctx.font = '14px "PP Telegraf", monospace';
       const webW = ctx.measureText(domain).width;
 
       const cardW = Math.max(240, Math.min(360, Math.max(nameW, subW, webW + 36) + 28));
@@ -13526,13 +13726,13 @@ def build():
       ctx.roundRect ? ctx.roundRect(cardX, cardY, 3.5, cardH, [8, 0, 0, 8]) : ctx.rect(cardX, cardY, 3.5, cardH);
       ctx.fill();
 
-      ctx.font = 'bold 9px "PP Telegraf", monospace';
+      ctx.font = '200 14px "PP Telegraf", monospace';
       ctx.fillStyle = tierColor;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillText(tierLabel, cardX + 12, cardY + 7);
 
-      ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
       ctx.fillStyle = '#ffffff';
       let displayName = nameText;
       if (ctx.measureText(displayName).width > cardW - 24) {{
@@ -13543,7 +13743,7 @@ def build():
       }}
       ctx.fillText(displayName, cardX + 12, cardY + 20);
 
-      ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
       ctx.fillStyle = '#94a3b8';
       let displaySub = subText;
       if (ctx.measureText(displaySub).width > cardW - 24) {{
@@ -13568,13 +13768,13 @@ def build():
         ctx.fill();
         ctx.stroke();
 
-        ctx.font = '10px "PP Telegraf", monospace';
+        ctx.font = '14px "PP Telegraf", monospace';
         ctx.fillStyle = '#93c5fd';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
         ctx.fillText(domain, btnX + 8, btnY + 2);
 
-        ctx.font = '9px "PP Telegraf", sans-serif';
+        ctx.font = '14px "PP Telegraf", sans-serif';
         ctx.fillStyle = '#64748b';
         ctx.fillText('Click to open website', btnX + btnW + 8, btnY + 3);
 
@@ -13597,6 +13797,8 @@ def build():
     }}
 
     let hoveredMicroCardHitbox = null;
+    let hoveredCityCardHitbox = null;
+    let isHoveringCityExploreLink = false;
     let cityClusterHitboxes = [];
     let cityBadgeHitboxes = [];
     let visibleDots = [];
@@ -13726,7 +13928,7 @@ def build():
               ctx.beginPath();
               ctx.arc(sx, sy, st.r, 0, Math.PI * 2);
               ctx.fillStyle = isGossipModeActive 
-                ? `rgba(254, 205, 211, ${{st.a * starAlpha * 0.9}})` 
+                ? `rgba(255, 237, 213, ${{st.a * starAlpha * 0.9}})` 
                 : `rgba(226, 232, 240, ${{st.a * starAlpha}})`;
               ctx.fill();
             }}
@@ -13737,9 +13939,9 @@ def build():
         // 1. Outer Atmospheric Limb Glow / Halo
         const limbGrad = ctx.createRadialGradient(cx, cy, r * 0.95, cx, cy, r * 1.10);
         if (isGossipModeActive) {{
-          limbGrad.addColorStop(0, 'rgba(244, 63, 94, 0.40)');
-          limbGrad.addColorStop(0.35, 'rgba(217, 70, 239, 0.22)');
-          limbGrad.addColorStop(0.7, 'rgba(168, 85, 247, 0.08)');
+          limbGrad.addColorStop(0, 'rgba(249, 115, 22, 0.40)');
+          limbGrad.addColorStop(0.35, 'rgba(217, 119, 6, 0.22)');
+          limbGrad.addColorStop(0.7, 'rgba(180, 83, 9, 0.08)');
           limbGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
         }} else {{
           limbGrad.addColorStop(0, 'rgba(59, 130, 246, 0.22)');
@@ -13755,9 +13957,9 @@ def build():
         // 2. 3D Spherical Ocean Lighting
         const sphereGrad = ctx.createRadialGradient(cx - r * 0.32, cy - r * 0.32, r * 0.08, cx, cy, r);
         if (isGossipModeActive) {{
-          sphereGrad.addColorStop(0, '#2b0c36');
-          sphereGrad.addColorStop(0.5, '#15051c');
-          sphereGrad.addColorStop(1, '#09010c');
+          sphereGrad.addColorStop(0, '#341406');
+          sphereGrad.addColorStop(0.5, '#1a0a03');
+          sphereGrad.addColorStop(1, '#0a0401');
         }} else {{
           sphereGrad.addColorStop(0, '#061324');
           sphereGrad.addColorStop(0.5, '#020611');
@@ -13767,7 +13969,7 @@ def build():
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = sphereGrad;
         ctx.fill();
-        ctx.strokeStyle = isGossipModeActive ? '#631d5b' : '#223048';
+        ctx.strokeStyle = isGossipModeActive ? '#682709' : '#223048';
         ctx.lineWidth = 1.2;
         ctx.stroke();
 
@@ -13778,7 +13980,7 @@ def build():
         ctx.clip();
 
         // 3. Graticule with Latitude Parallels and Longitude Meridians
-        ctx.strokeStyle = isGossipModeActive ? '#2c0f38' : '#0e182a';
+        ctx.strokeStyle = isGossipModeActive ? '#351506' : '#0e182a';
         ctx.lineWidth = 0.5;
         for (let lat = -60; lat <= 60; lat += 30) {{
           ctx.beginPath();
@@ -13791,10 +13993,10 @@ def build():
             }} else first = true;
           }}
           if (lat === 0) {{
-            ctx.strokeStyle = isGossipModeActive ? '#531b66' : '#182740';
+            ctx.strokeStyle = isGossipModeActive ? '#5c2409' : '#182740';
             ctx.lineWidth = 0.8;
           }} else {{
-            ctx.strokeStyle = isGossipModeActive ? '#2c0f38' : '#0e182a';
+            ctx.strokeStyle = isGossipModeActive ? '#351506' : '#0e182a';
             ctx.lineWidth = 0.5;
           }}
           ctx.stroke();
@@ -13815,8 +14017,8 @@ def build():
 
         // Graticule Degree Annotations
         if (r > baseRadius * 0.9) {{
-          ctx.font = '9px "PP Telegraf", "PP Telegraph", sans-serif';
-          ctx.fillStyle = isGossipModeActive ? '#9d4edd' : '#263a55';
+          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.fillStyle = isGossipModeActive ? '#ea580c' : '#263a55';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           const labels = [
@@ -13855,10 +14057,10 @@ def build():
           }}
 
           ctx.fillStyle = isCActive 
-            ? (isGossipModeActive ? '#9d174d' : '#1e3a8a') 
+            ? (isGossipModeActive ? '#9a3412' : '#1e3a8a') 
             : isCHovered 
-            ? (isGossipModeActive ? '#4c1d45' : '#1e293b') 
-            : (isGossipModeActive ? '#1e0c24' : country.c);
+            ? (isGossipModeActive ? 'rgba(8, 47, 73, 0.70)' : '#1e293b') 
+            : (isGossipModeActive ? '#220b03' : country.c);
 
           for (let j = 0; j < country.r.length; j++) {{
             const ring = country.r[j];
@@ -13885,10 +14087,10 @@ def build():
               ctx.closePath();
               ctx.fill();
               ctx.strokeStyle = isCActive 
-                ? (isGossipModeActive ? '#fb7185' : '#60a5fa') 
+                ? (isGossipModeActive ? '#fb923c' : '#60a5fa') 
                 : isCHovered 
-                ? (isGossipModeActive ? '#f43f5e' : '#93c5fd') 
-                : (isGossipModeActive ? '#3d1645' : '#050c18');
+                ? (isGossipModeActive ? '#38bdf8' : '#93c5fd') 
+                : (isGossipModeActive ? '#3b1406' : '#050c18');
               ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
               ctx.stroke();
             }} else {{
@@ -13941,7 +14143,7 @@ def build():
                     penDown = false;
                   }}
                 }}
-                ctx.strokeStyle = isCActive ? '#60a5fa' : isCHovered ? '#93c5fd' : '#050c18';
+                ctx.strokeStyle = isCActive ? (isGossipModeActive ? '#fb923c' : '#60a5fa') : isCHovered ? (isGossipModeActive ? '#38bdf8' : '#93c5fd') : (isGossipModeActive ? '#3b1406' : '#050c18');
                 ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
                 ctx.stroke();
               }}
@@ -14010,30 +14212,34 @@ def build():
               ctx.globalAlpha = badgeAlpha;
 
               ctx.fillStyle = isSelected 
-                ? (isGossipModeActive ? '#be123c' : '#1d4ed8') 
+                ? (isGossipModeActive ? '#c2410c' : '#1d4ed8') 
                 : isHovered 
-                ? (isGossipModeActive ? '#881337' : '#1e3a8a') 
-                : (isGossipModeActive ? '#240b2b' : '#070b14');
+                ? (isGossipModeActive ? '#082f49' : '#1e3a8a') 
+                : (isGossipModeActive ? '#270e04' : '#070b14');
               ctx.beginPath();
               ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 5) : ctx.rect(bx, by, bw, bh);
               ctx.fill();
 
               ctx.strokeStyle = isSelected 
-                ? (isGossipModeActive ? '#fb7185' : '#93c5fd') 
+                ? (isGossipModeActive ? '#fb923c' : '#93c5fd') 
                 : isHovered 
-                ? (isGossipModeActive ? '#f43f5e' : '#60a5fa') 
-                : (isGossipModeActive ? '#6b215a' : '#222d42');
+                ? (isGossipModeActive ? '#38bdf8' : '#60a5fa') 
+                : (isGossipModeActive ? '#78350f' : '#222d42');
               ctx.lineWidth = isSelected || isHovered ? 1.5 : 1;
               ctx.stroke();
 
-              ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#ffe4e6' : '#cbd5e1');
+              ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#ffedd5' : '#cbd5e1');
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
 
               ctx.beginPath();
               ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
-              ctx.fillStyle = isSelected ? (isGossipModeActive ? '#fb7185' : '#93c5fd') : (isGossipModeActive ? '#f43f5e' : '#3b82f6');
+              ctx.fillStyle = isSelected 
+                ? (isGossipModeActive ? '#fb923c' : '#93c5fd') 
+                : isHovered 
+                ? (isGossipModeActive ? '#38bdf8' : '#60a5fa') 
+                : (isGossipModeActive ? '#f97316' : '#3b82f6');
               ctx.fill();
               ctx.restore();
             }}
@@ -14047,7 +14253,7 @@ def build():
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '13.5px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -14080,19 +14286,19 @@ def build():
 
                   // High-contrast protective dark backing plate
                   ctx.fillStyle = isSel 
-                    ? (isGossipModeActive ? 'rgba(76, 29, 69, 0.94)' : 'rgba(12, 38, 70, 0.92)') 
+                    ? (isGossipModeActive ? 'rgba(85, 30, 8, 0.94)' : 'rgba(12, 38, 70, 0.92)') 
                     : isHov
-                    ? (isGossipModeActive ? 'rgba(56, 20, 52, 0.94)' : 'rgba(20, 30, 50, 0.92)')
-                    : (isGossipModeActive ? 'rgba(32, 10, 38, 0.92)' : 'rgba(5, 9, 18, 0.88)');
+                    ? (isGossipModeActive ? 'rgba(8, 47, 73, 0.94)' : 'rgba(20, 30, 50, 0.92)')
+                    : (isGossipModeActive ? 'rgba(35, 12, 3, 0.92)' : 'rgba(5, 9, 18, 0.88)');
                   ctx.beginPath();
                   ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 5) : ctx.rect(bx, by, bw, bh);
                   ctx.fill();
 
                   ctx.strokeStyle = isSel 
-                    ? (isGossipModeActive ? '#fb7185' : '#38bdf8') 
+                    ? (isGossipModeActive ? '#fb923c' : '#38bdf8') 
                     : isHov
-                    ? (isGossipModeActive ? '#f43f5e' : '#60a5fa') 
-                    : (isGossipModeActive ? 'rgba(244, 63, 94, 0.65)' : 'rgba(255, 255, 255, 0.3)');
+                    ? (isGossipModeActive ? '#38bdf8' : '#60a5fa') 
+                    : (isGossipModeActive ? 'rgba(249, 115, 22, 0.65)' : 'rgba(255, 255, 255, 0.3)');
                   ctx.lineWidth = isSel || isHov ? 1.5 : 1.0;
                   ctx.stroke();
 
@@ -14104,10 +14310,10 @@ def build():
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? (isGossipModeActive ? '#ffe4e6' : '#38bdf8') 
+                    ? (isGossipModeActive ? '#ffedd5' : '#38bdf8') 
                     : isHov
                     ? '#ffffff'
-                    : (isGossipModeActive ? '#fecdd3' : '#ffffff');
+                    : (isGossipModeActive ? '#fed7aa' : '#ffffff');
                   ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }}
               }}
@@ -14180,9 +14386,9 @@ def build():
             const corr = hoveredRailCorridor;
             const tipHeader = corr.name.toUpperCase();
             const tipSub = `${{corr.from}} - ${{corr.to}} · ${{corr.travel_time || 'Eco-Transit'}} · ${{corr.emission_saving || 'Low Carbon'}}`;
-            ctx.font = 'bold 10px "PP Telegraf", monospace';
+            ctx.font = '200 14px "PP Telegraf", monospace';
             const hw = ctx.measureText(tipHeader).width;
-            ctx.font = '11px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
             const sw = ctx.measureText(tipSub).width;
             const rw = Math.max(hw, sw) + 22;
             const rh = 40;
@@ -14199,13 +14405,13 @@ def build():
             ctx.lineWidth = 1.2;
             ctx.stroke();
 
-            ctx.font = 'bold 9px "PP Telegraf", monospace';
+            ctx.font = '200 14px "PP Telegraf", monospace';
             ctx.fillStyle = '#38bdf8';
             ctx.textAlign = 'left';
             ctx.textBaseline = 'top';
             ctx.fillText(tipHeader, rx + 10, ry + 6);
 
-            ctx.font = '11px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
             ctx.fillStyle = '#ffffff';
             ctx.fillText(tipSub, rx + 10, ry + 20);
             ctx.restore();
@@ -14216,7 +14422,8 @@ def build():
         visibleDots = [];
         cityClusterHitboxes = [];
 
-        const isClusterZoom = r < baseRadius * 6.0 && selectedCityFilter === 'all';
+        // Only cluster when viewing the whole world at distant zoom without country or city focus!
+        const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
         const cityInstMap = {{}};
         filteredList.forEach(inst => {{
           if (!inst.city || inst.lon === undefined || inst.lat === undefined || inst.lon === null || inst.lat === null || isNaN(inst.lon) || isNaN(inst.lat)) return;
@@ -14246,11 +14453,48 @@ def build():
               inst,
               x: pt.x,
               y: pt.y,
+              origX: pt.x,
+              origY: pt.y,
               renderX: pt.x,
               renderY: pt.y,
               depth: pt.depth
             }});
           }}
+        }});
+
+        // 8.1 Spatial Blossom / Anti-Overlap Spidering for Co-located Institutions
+        // When zoomed in onto a country or region, ensure adjacent institutions (e.g. 3 in Rome, 4 in Milan)
+        // blossom into separate, non-overlapping clickable spots with generous hitboxes
+        const proximityGroups = [];
+        const visitedDots = new Set();
+        for (let i = 0; i < visibleDots.length; i++) {{
+          if (visitedDots.has(i)) continue;
+          const group = [visibleDots[i]];
+          visitedDots.add(i);
+          for (let j = i + 1; j < visibleDots.length; j++) {{
+            if (visitedDots.has(j)) continue;
+            if (Math.hypot(visibleDots[i].origX - visibleDots[j].origX, visibleDots[i].origY - visibleDots[j].origY) < 26) {{
+              group.push(visibleDots[j]);
+              visitedDots.add(j);
+            }}
+          }}
+          if (group.length >= 2) {{
+            proximityGroups.push(group);
+          }}
+        }}
+
+        proximityGroups.forEach(grp => {{
+          const N = grp.length;
+          const cX = grp.reduce((acc, d) => acc + d.origX, 0) / N;
+          const cY = grp.reduce((acc, d) => acc + d.origY, 0) / N;
+          const spreadR = Math.max(26, 18 + N * 5);
+          grp.forEach((d, idx) => {{
+            const angle = (2 * Math.PI * idx) / N - Math.PI / 2;
+            d.x = Math.round(cX + spreadR * Math.cos(angle));
+            d.y = Math.round(cY + spreadR * Math.sin(angle));
+            d.spiderAnchorX = cX;
+            d.spiderAnchorY = cY;
+          }});
         }});
 
         // Render Independent Space Cluster Badges on Globe
@@ -14290,7 +14534,7 @@ def build():
               ctx.lineWidth = isHov ? 2 : 1.4;
               ctx.stroke();
 
-              ctx.font = 'bold 10px "PP Telegraf", monospace';
+              ctx.font = '200 14px "PP Telegraf", monospace';
               ctx.fillStyle = '#ffffff';
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
@@ -14299,14 +14543,14 @@ def build():
 
               if (isHov) {{
                 ctx.save();
-                ctx.font = 'bold 11px "PP Telegraf", "PP Telegraph", sans-serif';
+                ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
                 const tipTxt = `${{cData.name}} · ${{cData.insts.length}} Independent Spaces`;
                 const tw = ctx.measureText(tipTxt).width;
                 const tbx = pt.x - tw / 2 - 8;
                 const tby = pt.y > 35 ? pt.y - 30 : pt.y + 16;
                 ctx.fillStyle = '#0a101b';
                 ctx.beginPath();
-                ctx.roundRect ? ctx.roundRect(tbx, tby, tw + 16, 22, 5) : ctx.rect(tbx, tby, tw + 16, 22);
+                ctx.roundRect ? ctx.roundRect(tbx, tby, tw + 16, 26, 5) : ctx.rect(tbx, tby, tw + 16, 26);
                 ctx.fill();
                 ctx.strokeStyle = '#10b981';
                 ctx.lineWidth = 1.2;
@@ -14314,12 +14558,31 @@ def build():
                 ctx.fillStyle = '#ffffff';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText(tipTxt, pt.x, tby + 11);
+                ctx.fillText(tipTxt, pt.x, tby + 13);
                 ctx.restore();
               }}
             }}
           }});
         }}
+
+        // Draw delicate spider lines connecting blossomed institutions to their geographic centroid
+        visibleDots.forEach(d => {{
+          if (d.spiderAnchorX !== undefined) {{
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(d.spiderAnchorX, d.spiderAnchorY);
+            ctx.lineTo(d.x, d.y);
+            ctx.strokeStyle = isGossipModeActive ? 'rgba(249, 115, 22, 0.40)' : 'rgba(56, 189, 248, 0.40)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(d.spiderAnchorX, d.spiderAnchorY, 2.5, 0, Math.PI * 2);
+            ctx.fillStyle = isGossipModeActive ? '#fb923c' : '#38bdf8';
+            ctx.fill();
+            ctx.restore();
+          }}
+        }});
 
         visibleDots.forEach(d => {{
           const isSel = selectedInstitution && selectedInstitution.name === d.inst.name;
@@ -14351,16 +14614,35 @@ def build():
             ctx.save();
             ctx.beginPath();
             ctx.arc(d.x, d.y, gRadius, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(244, 63, 94, ${{gAlpha}})`;
+            ctx.strokeStyle = `rgba(249, 115, 22, ${{gAlpha}})`;
             ctx.lineWidth = 1.6;
             ctx.stroke();
             ctx.restore();
           }}
 
+          // Visual Critique pulsing beacon on Globe
+          const hasVc = d.inst.visual_critiques && d.inst.visual_critiques.length > 0;
+          if (isVisualCritiqueOnly || hasVc) {{
+            const vTime = (Date.now() % 1800) / 1800;
+            const vRadius = 4 + vTime * 15;
+            const vAlpha = (1 - vTime) * 0.85;
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, vRadius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(245, 158, 11, ${{vAlpha}})`;
+            ctx.lineWidth = isVisualCritiqueOnly ? 2.0 : 1.4;
+            ctx.stroke();
+            ctx.restore();
+          }}
+
           ctx.beginPath();
-          ctx.arc(d.x, d.y, isSel ? 4.5 : isHov ? 4 : 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = isGossipModeActive 
-            ? (d.inst.gossip_data ? '#f43f5e' : '#831843')
+          ctx.arc(d.x, d.y, isSel ? 4.5 : isHov ? 4 : (isVisualCritiqueOnly && hasVc ? 3.8 : 2.5), 0, Math.PI * 2);
+          ctx.fillStyle = isHov 
+            ? (isGossipModeActive ? '#38bdf8' : '#60a5fa')
+            : (isVisualCritiqueOnly && hasVc)
+            ? '#f59e0b'
+            : isGossipModeActive 
+            ? (d.inst.gossip_data ? '#f97316' : '#9a3412')
             : (d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#be95ff' : '#08bdba');
           ctx.fill();
 
@@ -14374,30 +14656,38 @@ def build():
           }} else if (shouldDrawGlobeLabel) {{
             // Render institution name on top of dot across ALL points of view
             ctx.save();
-            ctx.font = '600 10.5px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 25 ? d.inst.name.substring(0, 23) + '…' : d.inst.name;
             const tw = ctx.measureText(nameTxt).width;
-            const bx = d.x - tw / 2 - 5;
-            const by = d.y - 18;
-            ctx.fillStyle = 'rgba(18, 20, 26, 0.94)';
-            if (ctx.roundRect) ctx.roundRect(bx, by, tw + 10, 16, 4);
-            else ctx.rect(bx, by, tw + 10, 16);
+            const bx = d.x - tw / 2 - 6;
+            const by = d.y - 22;
+            const bw = tw + 12;
+            const bh = 20;
+            d.labelBox = {{ x: bx, y: by, w: bw, h: bh }};
+
+            ctx.fillStyle = isHov ? 'rgba(12, 38, 70, 0.96)' : 'rgba(18, 20, 26, 0.94)';
+            if (ctx.roundRect) ctx.roundRect(bx, by, bw, bh, 4);
+            else ctx.rect(bx, by, bw, bh);
             ctx.fill();
-            ctx.strokeStyle = d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : d.inst.tier === 'B' ? 'rgba(190, 149, 255, 0.65)' : 'rgba(8, 189, 186, 0.65)';
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = isHov 
+              ? (isGossipModeActive ? '#38bdf8' : '#60a5fa')
+              : (d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : d.inst.tier === 'B' ? 'rgba(190, 149, 255, 0.65)' : 'rgba(8, 189, 186, 0.65)');
+            ctx.lineWidth = isHov ? 1.8 : 1;
             ctx.stroke();
-            ctx.fillStyle = '#f8fafc';
-            ctx.fillText(nameTxt, d.x, d.y - 5);
+            ctx.fillStyle = isHov ? '#ffffff' : '#f8fafc';
+            ctx.fillText(nameTxt, d.x, d.y - 6);
             ctx.restore();
           }}
         }});
 
         // 8.5 Render Rich Interactive Hover Card for Hovered City on Globe
-        if (hoveredCity && !isCityStreetViewActive && r < baseRadius * 12.0) {{
+        // Suppress city hover cards when hovering an institution or for cities outside selected country
+        if (hoveredCity && !isCityStreetViewActive && r < baseRadius * 12.0 && !hoveredInstitution) {{
           const hMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, hoveredCity));
-          if (hMeta) {{
+          const isAllowedCity = selectedCountryFilter === 'all' || (hMeta && matchC(hMeta.country, selectedCountryFilter));
+          if (hMeta && isAllowedCity) {{
             const hPt = project(hMeta.lon, hMeta.lat, r, cx, cy);
             if (hPt.front && hPt.depth > 0.05) {{
               ctx.save();
@@ -14415,48 +14705,133 @@ def build():
               ctx.fill();
               ctx.stroke();
 
-              // Card dimensions & positioning
-              const titleTxt = `${{hMeta.name.toUpperCase()}}${{hMeta.country ? ' · ' + hMeta.country : ''}}`;
+              // Card dimensions & multi-line layout (no dots, each item on its own line)
+              const cityTxt = hMeta.name.toUpperCase();
+              const countryTxt = hMeta.country ? hMeta.country.trim() : '';
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
-              const subTxt = `${{countVal}} Verified Cultural Space${{countVal === 1 ? '' : 's'}} · Click to Explore`;
+              const countTxt = `${{countVal}} Verified Cultural Space${{countVal === 1 ? '' : 's'}}`;
+              const linkTxt = 'Click to Explore →';
 
-              ctx.font = 'bold 12px "PP Telegraf", monospace';
-              const tw1 = ctx.measureText(titleTxt).width;
-              ctx.font = '11.5px "PP Telegraf", "PP Telegraph", sans-serif';
-              const tw2 = ctx.measureText(subTxt).width;
+              ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
+              const twCity = ctx.measureText(cityTxt).width;
 
-              const cardW = Math.max(tw1, tw2) + 26;
-              const cardH = 46;
-              const cardX = Math.max(12, Math.min(width - cardW - 12, hPt.x - cardW / 2));
-              const cardY = hPt.y > 60 ? hPt.y - 58 : hPt.y + 18;
+              ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+              const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
+              const twCount = ctx.measureText(countTxt).width;
+
+              ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+              const twLink = ctx.measureText(linkTxt).width;
+
+              const linkBtnW = twLink + 22;
+              const linkBtnH = 26;
+
+              const cardW = Math.max(twCity, twCountry, twCount, linkBtnW) + 32;
+              const cardH = countryTxt ? 118 : 96;
+              const cardX = Math.max(14, Math.min(width - cardW - 14, hPt.x - cardW / 2));
+              const cardY = hPt.y > cardH + 20 ? hPt.y - cardH - 16 : hPt.y + 18;
+
+              const linkBtnX = cardX + 14;
+              const linkBtnY = cardY + (countryTxt ? 80 : 58);
+
+              // Register interactive hover & click hitbox for the card and link
+              hoveredCityCardHitbox = {{
+                city: hMeta.name,
+                cardX: cardX,
+                cardY: cardY,
+                cardW: cardW,
+                cardH: cardH,
+                linkX: linkBtnX,
+                linkY: linkBtnY,
+                linkW: linkBtnW,
+                linkH: linkBtnH
+              }};
 
               // Drop shadow & glass fill
-              ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
-              ctx.shadowBlur = 14;
-              ctx.fillStyle = '#070c16';
+              ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+              ctx.shadowBlur = 16;
+              ctx.fillStyle = isGossipModeActive ? '#1a0c04' : '#070c16';
               ctx.beginPath();
               ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 8) : ctx.rect(cardX, cardY, cardW, cardH);
               ctx.fill();
 
-              // Border outline
+              // Border outline - in yellow mode, hovering card or link highlights in OPPOSITE color (#38bdf8)
               ctx.shadowBlur = 0;
-              ctx.strokeStyle = '#38bdf8';
+              ctx.strokeStyle = isHoveringCityExploreLink 
+                ? '#38bdf8' 
+                : (isGossipModeActive ? '#f97316' : '#38bdf8');
               ctx.lineWidth = 1.5;
               ctx.stroke();
 
-              // Text rendering
-              ctx.font = 'bold 12px "PP Telegraf", monospace';
-              ctx.fillStyle = '#38bdf8';
+              // Line 1: City Name (bold 16px)
+              ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.fillStyle = isGossipModeActive ? '#fb923c' : '#38bdf8';
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
-              ctx.fillText(titleTxt, cardX + 13, cardY + 8);
+              ctx.fillText(cityTxt, cardX + 14, cardY + 12);
 
-              ctx.font = '11.5px "PP Telegraf", "PP Telegraph", sans-serif';
-              ctx.fillStyle = '#f1f5f9';
-              ctx.fillText(subTxt, cardX + 13, cardY + 25);
+              let currentY = cardY + 34;
+
+              // Line 2: Country Name (if available, 14px, muted slate, own line, no dot)
+              if (countryTxt) {{
+                ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+                ctx.fillStyle = isGossipModeActive ? '#fdba74' : '#94a3b8';
+                ctx.fillText(countryTxt, cardX + 14, currentY);
+                currentY += 22;
+              }}
+
+              // Line 3: Verified Cultural Spaces Count (14px, crisp light slate, own line, no dot)
+              ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.fillStyle = isGossipModeActive ? '#ffedd5' : '#f1f5f9';
+              ctx.fillText(countTxt, cardX + 14, currentY);
+              currentY += 22;
+
+              // Line 4: "Click to Explore" Action Link Pill with Interactive Hover State
+              // In yellow mode, hovering triggers the OPPOSITE color (Electric Cyan #38bdf8)!
+              ctx.save();
+              if (isGossipModeActive) {{
+                if (isHoveringCityExploreLink) {{
+                  // Hovered state in yellow mode: OPPOSITE COLOR (Electric Cyan #38bdf8 glow & stroke)
+                  ctx.fillStyle = 'rgba(56, 189, 248, 0.28)';
+                  ctx.strokeStyle = '#38bdf8';
+                  ctx.lineWidth = 1.5;
+                  ctx.shadowColor = 'rgba(56, 189, 248, 0.55)';
+                  ctx.shadowBlur = 12;
+                }} else {{
+                  // Default link state in yellow mode: warm amber pill
+                  ctx.fillStyle = 'rgba(249, 115, 22, 0.14)';
+                  ctx.strokeStyle = 'rgba(249, 115, 22, 0.45)';
+                  ctx.lineWidth = 1;
+                }}
+              }} else {{
+                ctx.fillStyle = isHoveringCityExploreLink ? 'rgba(56, 189, 248, 0.28)' : 'rgba(56, 189, 248, 0.12)';
+                ctx.strokeStyle = isHoveringCityExploreLink ? '#38bdf8' : 'rgba(56, 189, 248, 0.40)';
+                ctx.lineWidth = isHoveringCityExploreLink ? 1.5 : 1;
+                if (isHoveringCityExploreLink) {{
+                  ctx.shadowColor = 'rgba(56, 189, 248, 0.45)';
+                  ctx.shadowBlur = 10;
+                }}
+              }}
+              ctx.beginPath();
+              ctx.roundRect ? ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 6) : ctx.rect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
+              ctx.fill();
+              ctx.stroke();
+              ctx.shadowBlur = 0;
+
+              ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.fillStyle = isGossipModeActive 
+                ? (isHoveringCityExploreLink ? '#38bdf8' : '#fb923c') 
+                : (isHoveringCityExploreLink ? '#ffffff' : '#38bdf8');
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2);
+              ctx.restore();
+
               ctx.restore();
             }}
           }}
+        }} else if (!hoveredCity) {{
+          hoveredCityCardHitbox = null;
+          isHoveringCityExploreLink = false;
         }}
 
       }} else {{
@@ -14489,7 +14864,7 @@ def build():
         // 4. Subtle City Watermark in Background
         if (activeCity) {{
           ctx.save();
-          ctx.font = '700 48px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '200 27px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.fillStyle = 'rgba(148, 163, 184, 0.06)';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -14696,21 +15071,21 @@ def build():
 
             // Curator City Node Pill Badge
             const labelText = `Curator · ${{curatorThinkingTargetCoord.name || 'City Node'}}`;
-            ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
             const tw = ctx.measureText(labelText).width;
             const lx = cPt.x - tw / 2 - 8;
-            const ly = cPt.y - 30;
+            const ly = cPt.y - 32;
             ctx.fillStyle = 'rgba(15, 17, 23, 0.90)';
             ctx.strokeStyle = `rgba(${{colorRgb}}, 0.85)`;
             ctx.lineWidth = 1.2;
             ctx.beginPath();
-            if (ctx.roundRect) ctx.roundRect(lx, ly, tw + 16, 20, 10);
-            else ctx.rect(lx, ly, tw + 16, 20);
+            if (ctx.roundRect) ctx.roundRect(lx, ly, tw + 16, 24, 12);
+            else ctx.rect(lx, ly, tw + 16, 24);
             ctx.fill();
             ctx.stroke();
 
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(labelText, lx + 8, ly + 14);
+            ctx.fillText(labelText, lx + 8, ly + 16);
             ctx.restore();
           }}
         }}
@@ -14740,7 +15115,7 @@ def build():
         }}
 
         const placedBoxes = [];
-        const bh = 36;
+        const bh = 42;
 
         displayList.forEach(({{ inst, pt }}) => {{
           const isSel = selectedInstitution && selectedInstitution.name === inst.name;
@@ -14750,15 +15125,15 @@ def build():
           const webUrl = getValidWebUrl(inst);
           const domain = getDisplayDomain(webUrl) || 'website';
 
-          ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
           const nameTxt = inst.name;
           const nw = ctx.measureText(nameTxt).width;
 
           const subTxt = inst.neighborhood || inst.curatorial_focus || (inst.tier === 'A' ? 'Verified Independent' : (inst.tier === 'B' ? 'Flagged Underwriting' : 'Unverified Space'));
-          ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
           const sw = ctx.measureText(subTxt).width;
 
-          const bw = Math.min(295, Math.max(160, Math.max(nw, sw) + 28 + (webUrl ? 26 : 0)));
+          const bw = Math.min(320, Math.max(170, Math.max(nw, sw) + 28 + (webUrl ? 26 : 0)));
 
           // Candidates to test
           const candidateOffsets = [
@@ -14834,7 +15209,7 @@ def build():
           ctx.fill();
 
           // Institution Name
-          ctx.font = 'bold 12px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.fillStyle = isSel ? '#ffffff' : '#f8fafc';
           ctx.textAlign = 'left';
           ctx.textBaseline = 'top';
@@ -14842,21 +15217,21 @@ def build():
 
           // Subtitle
           ctx.beginPath();
-          ctx.arc(bestX + 12, bestY + 23, 2, 0, Math.PI * 2);
+          ctx.arc(bestX + 12, bestY + 28, 2, 0, Math.PI * 2);
           ctx.fillStyle = tierColor;
           ctx.fill();
 
-          ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
           ctx.fillStyle = '#94a3b8';
-          ctx.fillText(subTxt, bestX + 18, bestY + 19);
+          ctx.fillText(subTxt, bestX + 18, bestY + 23);
 
           // Direct Web Link Button on Badge
           let webBtnData = null;
           if (webUrl) {{
-            const webBtnW = 20;
-            const webBtnH = 20;
+            const webBtnW = 22;
+            const webBtnH = 22;
             const webBtnX = bestX + bw - webBtnW - 6;
-            const webBtnY = bestY + 8;
+            const webBtnY = bestY + 10;
 
             ctx.fillStyle = isHov ? 'rgba(37, 99, 235, 0.45)' : 'rgba(37, 99, 235, 0.25)';
             ctx.strokeStyle = 'rgba(96, 165, 250, 0.75)';
@@ -14866,7 +15241,7 @@ def build():
             ctx.fill();
             ctx.stroke();
 
-            ctx.font = '11px sans-serif';
+            ctx.font = '14px sans-serif';
             ctx.fillStyle = '#93c5fd';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -14904,22 +15279,22 @@ def build():
 
             // Floating name label on top of dot
             ctx.save();
-            ctx.font = '600 11px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = inst.name.length > 25 ? inst.name.substring(0, 23) + '…' : inst.name;
             const tw = ctx.measureText(nameTxt).width;
-            const bx = pt.x - tw / 2 - 5;
-            const by = pt.y - 18;
+            const bx = pt.x - tw / 2 - 6;
+            const by = pt.y - 22;
             ctx.fillStyle = 'rgba(18, 20, 26, 0.94)';
-            if (ctx.roundRect) ctx.roundRect(bx, by, tw + 10, 16, 4);
-            else ctx.rect(bx, by, tw + 10, 16);
+            if (ctx.roundRect) ctx.roundRect(bx, by, tw + 12, 20, 4);
+            else ctx.rect(bx, by, tw + 12, 20);
             ctx.fill();
             ctx.strokeStyle = inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : 'rgba(56, 189, 248, 0.65)';
             ctx.lineWidth = 1;
             ctx.stroke();
             ctx.fillStyle = '#f8fafc';
-            ctx.fillText(nameTxt, pt.x, pt.y - 5);
+            ctx.fillText(nameTxt, pt.x, pt.y - 6);
             ctx.restore();
           }}
         }});
@@ -14997,7 +15372,7 @@ def build():
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = '10px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -15031,7 +15406,7 @@ def build():
         ctx.strokeStyle = '#1b2a40';
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.arc(compassX, compassY, 16, 0, Math.PI * 2);
+        ctx.arc(compassX, compassY, 18, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
 
@@ -15051,11 +15426,11 @@ def build():
         ctx.closePath();
         ctx.fill();
 
-        ctx.font = '9px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
-        ctx.fillText('N', compassX, compassY - 11);
+        ctx.fillText('N', compassX, compassY - 12);
         ctx.restore();
       }}
 
@@ -15295,6 +15670,41 @@ def build():
         if (gBadge) gBadge.textContent = (gossip.intensity || 'HOT').replace(/[^a-zA-Z0-9 ]/g, '').trim();
         if (gRedditText) gRedditText.textContent = (gossip.reddit ? gossip.reddit.snippet : 'Discussion active on r/contemporaryart');
         if (gTwitterText) gTwitterText.textContent = (gossip.twitter_x ? gossip.twitter_x.snippet : 'Discourse tracking curatorial independence.');
+
+        // Real Cases Box
+        const caseBox = document.getElementById('floatingCardGossipRealCases');
+        const caseCount = document.getElementById('floatingCardGossipCaseCount');
+        const caseStatus = document.getElementById('floatingCardGossipCaseStatus');
+        const caseOutcome = document.getElementById('floatingCardGossipCaseOutcome');
+        if (caseBox) {{
+          if (gossip.real_cases && gossip.real_cases.length > 0) {{
+            const fc = gossip.real_cases[0];
+            if (caseCount) caseCount.textContent = `🏛️ Case ${{fc.case_id}} (${{gossip.real_cases.length}} documented)`;
+            if (caseStatus) caseStatus.textContent = (fc.status || 'Active').replace(/_/g, ' ');
+            if (caseOutcome) caseOutcome.textContent = fc.outcome || (fc.facts && fc.facts[0]) || fc.title;
+            caseBox.classList.remove('hidden');
+          }} else {{
+            caseBox.classList.add('hidden');
+          }}
+        }}
+
+        // Real Review Box
+        const revBox = document.getElementById('floatingCardGossipReviewLeads');
+        const revPlatform = document.getElementById('floatingCardGossipReviewPlatform');
+        const revDate = document.getElementById('floatingCardGossipReviewDate');
+        const revSummary = document.getElementById('floatingCardGossipReviewSummary');
+        if (revBox) {{
+          if (gossip.review_leads && gossip.review_leads.length > 0) {{
+            const fr = gossip.review_leads[0];
+            if (revPlatform) revPlatform.textContent = `👤 ${{fr.platform}}: ${{fr.role}}`;
+            if (revDate) revDate.textContent = fr.review_date || '';
+            if (revSummary) revSummary.textContent = fr.summary;
+            revBox.classList.remove('hidden');
+          }} else {{
+            revBox.classList.add('hidden');
+          }}
+        }}
+
         if (gSection) {{
           gSection.style.display = 'block';
         }}
@@ -15303,32 +15713,74 @@ def build():
         if (gBadge) gBadge.textContent = 'ACTIVE';
         if (gRedditText) gRedditText.textContent = `Discussion on r/contemporaryart: Auditing institutional backing for ${{inst.name}}.`;
         if (gTwitterText) gTwitterText.textContent = `Curatorial discourse tracking exhibition sponsorship and governance.`;
+        const caseBox = document.getElementById('floatingCardGossipRealCases');
+        const revBox = document.getElementById('floatingCardGossipReviewLeads');
+        if (caseBox) caseBox.classList.add('hidden');
+        if (revBox) revBox.classList.add('hidden');
         if (gSection) gSection.style.display = 'block';
       }}
 
-      // Populate Visual Critique & Artist Feedback on Floating Card
-      const vcSection = document.getElementById('floatingCardVisualCritiqueSection');
-      if (inst.visual_critiques && inst.visual_critiques.length > 0) {{
-        const vc = inst.visual_critiques[0];
+      // Populate Visual Critique & Artist Feedback on Floating Card with Verified Credits
+      window.activeCardVcIndex = 0;
+      window.updateFloatingCardVisualCritique = function() {{
+        const vcSection = document.getElementById('floatingCardVisualCritiqueSection');
+        if (!selectedInstitution || !selectedInstitution.visual_critiques || selectedInstitution.visual_critiques.length === 0) {{
+          if (vcSection) vcSection.classList.add('hidden');
+          return;
+        }}
+        const vcs = selectedInstitution.visual_critiques;
+        const idx = (window.activeCardVcIndex || 0) % vcs.length;
+        const vc = vcs[idx];
         const vcBadge = document.getElementById('floatingCardVcStrategyBadge');
+        const vcCountBadge = document.getElementById('floatingCardVcCountBadge');
+        const vcNextBtn = document.getElementById('floatingCardVcNextBtn');
+        const vcArtist = document.getElementById('floatingCardVcArtist');
+        const vcArtwork = document.getElementById('floatingCardVcArtwork');
+        const vcMedium = document.getElementById('floatingCardVcMedium');
+        const vcCredits = document.getElementById('floatingCardVcCredits');
         const vcImg = document.getElementById('floatingCardVcImg');
-        const vcPractice = document.getElementById('floatingCardVcPractice');
         const vcTarget = document.getElementById('floatingCardVcTarget');
         const vcSummary = document.getElementById('floatingCardVcSummary');
         const vcCitation = document.getElementById('floatingCardVcCitation');
+
         if (vcBadge) vcBadge.textContent = vc.strategy || 'Visual Critique';
+        if (vcCountBadge) {{
+          if (vcs.length > 1) {{
+            vcCountBadge.textContent = `${{idx + 1}} of ${{vcs.length}}`;
+            vcCountBadge.classList.remove('hidden');
+          }} else {{
+            vcCountBadge.classList.add('hidden');
+          }}
+        }}
+        if (vcNextBtn) {{
+          vcNextBtn.classList.toggle('hidden', vcs.length <= 1);
+        }}
+        if (vcArtist) vcArtist.textContent = vc.artist_designer || vc.artist || 'Artist / Designer';
+        if (vcArtwork) vcArtwork.textContent = `"${{vc.artwork_title || vc.artwork || ''}}" (${{vc.year || ''}})`;
+        if (vcMedium) {{
+          vcMedium.textContent = vc.medium_format || 'Institutional Critique';
+          vcMedium.style.display = vc.medium_format ? 'inline-block' : 'none';
+        }}
+        if (vcCredits) {{
+          vcCredits.textContent = vc.credits || `Artist: ${{vc.artist_designer || vc.artist}} · Target: ${{vc.target || ''}}`;
+        }}
         if (vcImg) {{
           vcImg.src = vc.image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg';
-          vcImg.alt = vc.artwork || vc.practice || 'Visual Critique';
+          vcImg.alt = vc.artwork_title || vc.artwork || 'Visual Critique';
         }}
-        if (vcPractice) vcPractice.textContent = `${{vc.practice || vc.artist}} (${{vc.year || ''}})`;
-        if (vcTarget) vcTarget.textContent = `Target: ${{vc.target || ''}}`;
+        if (vcTarget) vcTarget.textContent = `Target: ${{vc.target || vc.institution_target || ''}}`;
         if (vcSummary) vcSummary.textContent = vc.summary || '';
-        if (vcCitation) vcCitation.textContent = vc.citation || 'Consensus Study';
+        if (vcCitation) vcCitation.textContent = vc.citation || 'Consensus Empirical Study';
         if (vcSection) vcSection.classList.remove('hidden');
-      }} else if (vcSection) {{
-        vcSection.classList.add('hidden');
-      }}
+      }};
+
+      window.cycleCardVisualCritique = function() {{
+        if (!selectedInstitution || !selectedInstitution.visual_critiques) return;
+        window.activeCardVcIndex = ((window.activeCardVcIndex || 0) + 1) % selectedInstitution.visual_critiques.length;
+        window.updateFloatingCardVisualCritique();
+      }};
+
+      window.updateFloatingCardVisualCritique();
 
       // Synchronize floating card mode with active gossip state
       if (typeof window.setCardMode === 'function') {{
@@ -15477,13 +15929,13 @@ def build():
             <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${{escapeHtml(inst.location || inst.city)}} · ${{inst.size || 'Audited Space'}}</p>
           </div>
 
-          <!-- DRAWER MODE TOGGLE (SCHOLARLY AUDIT <-> YELLOW GOSSIP DOSSIER) -->
+          <!-- DRAWER MODE TOGGLE (SCHOLARLY AUDIT <-> GOSSIP & WHISPERS DOSSIER) -->
           <div class="flex items-center p-0.5 bg-[#121620] border border-[#232f48] rounded-xl text-[12px] font-mono select-none">
             <button id="drawerTabAudit" type="button" class="flex-1 py-1 px-3 rounded-lg text-center font-medium transition cursor-pointer bg-zinc-800 text-white shadow-sm" onclick="setDrawerMode('audit')">
               <span>Scholarly Audit Dossier</span>
             </button>
-            <button id="drawerTabGossip" type="button" class="flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-yellow-400" onclick="setDrawerMode('gossip')">
-              <span>Yellow Gossip Dossier</span>
+            <button id="drawerTabGossip" type="button" class="flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-orange-400" onclick="setDrawerMode('gossip')">
+              <span>Gossip &amp; Whispers Dossier</span>
             </button>
           </div>
           <div class="flex items-center justify-between text-[10px] font-mono text-[#71717a] px-1 select-none">
@@ -15652,33 +16104,44 @@ def build():
 
           <!-- Visual Critique & Artist Feedback Dossier Profile -->
           ${{inst.visual_critiques && inst.visual_critiques.length > 0 ? `
-            <div class="p-3.5 bg-[#1a1508] border border-amber-700/60 rounded-2xl space-y-3 shadow-lg">
-              <div class="flex items-center justify-between border-b border-amber-900/60 pb-2 flex-wrap gap-2">
-                <span class="text-[12px] font-mono uppercase tracking-wider text-amber-400 font-bold flex items-center gap-1.5">
+            <div class="p-4 bg-[#181308] border border-amber-600/70 rounded-2xl space-y-4 shadow-xl">
+              <div class="flex items-center justify-between border-b border-amber-800/60 pb-2.5 flex-wrap gap-2">
+                <span class="text-[13px] font-mono uppercase tracking-wider text-amber-400 font-bold flex items-center gap-2">
                   <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                  Visual Critique &amp; Artist Feedback Dossier
+                  🎨 Artist &amp; Designer Visual Critique Dossier (${{inst.visual_critiques.length}})
                 </span>
-                <span class="text-[11px] font-mono text-amber-300 bg-amber-950/80 border border-amber-700/70 px-2 py-0.5 rounded-full font-semibold">
-                  Consensus Empirical Study
+                <span class="text-[11px] font-mono text-amber-300 bg-amber-950/90 border border-amber-700/80 px-2.5 py-0.5 rounded-full font-semibold">
+                  Consensus Empirical Research Archive
                 </span>
               </div>
 
-              ${{inst.visual_critiques.map(vc => `
-                <div class="space-y-2.5">
-                  <div class="flex flex-col sm:flex-row gap-3 items-start">
-                    <img src="${{escapeHtml(vc.image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg')}}" alt="${{escapeHtml(vc.artwork || 'Visual Critique')}}" class="w-full sm:w-44 h-32 object-cover rounded-xl border border-amber-700/60 shadow-md shrink-0 bg-black" />
-                    <div class="min-w-0 space-y-1">
+              ${{inst.visual_critiques.map((vc, vIdx) => `
+                <div class="p-3.5 bg-[#110e05] rounded-xl border border-amber-900/60 space-y-3">
+                  <div class="flex flex-col sm:flex-row gap-3.5 items-start">
+                    <img src="${{escapeHtml(vc.image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg')}}" alt="${{escapeHtml(vc.artwork_title || vc.artwork || 'Visual Critique')}}" class="w-full sm:w-52 h-36 object-cover rounded-xl border border-amber-700/70 shadow-md shrink-0 bg-black cursor-pointer hover:opacity-95 transition" />
+                    <div class="min-w-0 flex-1 space-y-1.5">
                       <div class="flex items-center gap-2 flex-wrap">
                         <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-amber-950 text-amber-300 border border-amber-700 font-bold">${{escapeHtml(vc.strategy || 'Strategy')}}</span>
-                        <span class="text-[11px] font-mono text-zinc-400">${{escapeHtml(vc.year || '')}}</span>
+                        <span class="text-[11px] font-mono text-amber-400/90 font-semibold">${{escapeHtml(vc.year || '')}}</span>
+                        ${{vc.medium_format ? `<span class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-300 border border-zinc-700">${{escapeHtml(vc.medium_format)}}</span>` : ''}}
                       </div>
-                      <h4 class="text-white font-semibold text-[14px] leading-tight">${{escapeHtml(vc.practice || vc.artist)}}</h4>
-                      <p class="text-[12px] font-mono text-amber-200/90 leading-snug"><strong class="text-amber-400">Institutional Target:</strong> ${{escapeHtml(vc.target || '')}}</p>
-                      <p class="text-[11px] font-mono text-zinc-400"><strong>Academic Citation:</strong> ${{escapeHtml(vc.citation || 'Consensus Study')}}</p>
+
+                      <div class="text-[11px] font-mono text-zinc-400 uppercase tracking-wider">Artist / Designer Credits:</div>
+                      <h4 class="text-white font-bold text-[16px] leading-tight">${{escapeHtml(vc.artist_designer || vc.artist)}}</h4>
+                      <div class="text-amber-300 text-[13px] font-medium leading-snug">"${{escapeHtml(vc.artwork_title || vc.artwork || '')}}"</div>
+
+                      <p class="text-[11.5px] font-mono text-amber-200/90 leading-snug"><strong class="text-amber-400">Institutional Target:</strong> ${{escapeHtml(vc.target || vc.institution_target || '')}}</p>
                     </div>
                   </div>
 
-                  <p class="text-[12.5px] text-zinc-200 leading-relaxed bg-[#110e05] p-2.5 rounded-xl border border-amber-900/40">
+                  ${{vc.credits ? `
+                    <div class="p-2.5 rounded-lg bg-amber-950/40 border border-amber-800/60 text-[11px] font-mono text-amber-200 leading-relaxed">
+                      <strong class="text-amber-400 block uppercase tracking-wider text-[10px] mb-0.5">Verified Attribution &amp; Credits:</strong>
+                      ${{escapeHtml(vc.credits)}}
+                    </div>
+                  ` : ''}}
+
+                  <p class="text-[12.5px] text-zinc-200 leading-relaxed bg-black/40 p-2.5 rounded-xl border border-amber-900/30">
                     ${{escapeHtml(vc.summary || '')}}
                   </p>
 
@@ -15688,6 +16151,16 @@ def build():
                       ${{escapeHtml(vc.historical_impact)}}
                     </div>
                   ` : ''}}
+
+                  <div class="flex items-center justify-between text-[11px] font-mono text-zinc-400 pt-1.5 border-t border-amber-900/40 flex-wrap gap-2">
+                    <span class="text-amber-300/80">Academic Source: ${{escapeHtml(vc.citation || 'Consensus Empirical Study')}}</span>
+                    ${{vc.doi ? `
+                      <a href="https://doi.org/${{escapeHtml(vc.doi)}}" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-white underline inline-flex items-center gap-1 font-mono">
+                        <span>DOI: ${{escapeHtml(vc.doi)}}</span>
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      </a>
+                    ` : ''}}
+                  </div>
                 </div>
               `).join('')}}
             </div>
@@ -15846,30 +16319,30 @@ def build():
 
         <!-- YELLOW GOSSIP DOSSIER VIEWPORT -->
         <div id="drawerGossipView" class="hidden space-y-3">
-          <div class="p-4 rounded-2xl bg-[#171408] border border-yellow-600/70 shadow-lg space-y-3">
-            <div class="flex items-center justify-between border-b border-yellow-800/60 pb-2.5">
+          <div class="p-4 rounded-2xl bg-[#1a0c04] border border-orange-600/70 shadow-lg space-y-3">
+            <div class="flex items-center justify-between border-b border-orange-800/60 pb-2.5">
               <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse"></span>
-                <span class="text-[13px] font-mono text-yellow-300 font-bold uppercase tracking-wider">
+                <span class="w-2.5 h-2.5 rounded-full bg-orange-400 animate-pulse"></span>
+                <span class="text-[13px] font-mono text-orange-300 font-bold uppercase tracking-wider">
                   Unvarnished Art World Whispers & Leaks
                 </span>
               </div>
-              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-600/70 font-bold">
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-orange-950 text-orange-300 border border-orange-600/70 font-bold">
                 HOT INTEL
               </span>
             </div>
 
             <!-- Main Gossip Headline -->
             <div>
-              <h3 class="text-[16px] sm:text-[17px] font-normal text-rose-100 leading-snug">
+              <h3 class="text-[16px] sm:text-[17px] font-normal text-orange-100 leading-snug">
                 ${{escapeHtml(inst.gossip_data ? inst.gossip_data.headline : `${{inst.name}}: Inside curatorial murmurings, donor governance debates, and backchannel discussions.`)}}
               </h3>
             </div>
 
             <!-- Reddit Community Debate -->
-            <div class="p-3 rounded-xl bg-[#180820] border border-rose-900/50 space-y-1.5">
+            <div class="p-3 rounded-xl bg-[#1d0e05] border border-orange-900/50 space-y-1.5">
               <div class="flex items-center justify-between text-[11px] font-mono">
-                <span class="text-rose-400 font-bold flex items-center gap-1">
+                <span class="text-orange-400 font-bold flex items-center gap-1">
                   <span>Reddit Community Thread</span>
                 </span>
                 <span class="text-slate-400">r/contemporaryart</span>
@@ -15877,16 +16350,16 @@ def build():
               <p class="text-[13px] text-slate-200 leading-relaxed font-sans">
                 ${{escapeHtml(inst.gossip_data && inst.gossip_data.reddit ? inst.gossip_data.reddit.snippet : `Curatorial staff and local artists active in threads discussing institutional independence and funding priorities at ${{inst.name}}.`)}}
               </p>
-              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-rose-950 flex items-center justify-between">
+              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-orange-950 flex items-center justify-between">
                 <span>Thread Sentiment: Lively Curatorial Debate</span>
                 <span>Primary Subreddit</span>
               </div>
             </div>
 
             <!-- Twitter / X Curatorial Discourse -->
-            <div class="p-3 rounded-xl bg-[#180820] border border-rose-900/50 space-y-1.5">
+            <div class="p-3 rounded-xl bg-[#1d0e05] border border-orange-900/50 space-y-1.5">
               <div class="flex items-center justify-between text-[11px] font-mono">
-                <span class="text-pink-400 font-bold flex items-center gap-1">
+                <span class="text-amber-400 font-bold flex items-center gap-1">
                   <span>Curatorial X / Twitter Leaks</span>
                 </span>
                 <span class="text-slate-400">Curator Discourse</span>
@@ -15894,21 +16367,124 @@ def build():
               <p class="text-[13px] text-slate-200 leading-relaxed font-sans">
                 ${{escapeHtml(inst.gossip_data && inst.gossip_data.twitter_x ? inst.gossip_data.twitter_x.snippet : `Leaked curatorial correspondence and critical threads examining corporate donor ethics and programming independence.`)}}
               </p>
-              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-rose-950 flex items-center justify-between">
+              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-orange-950 flex items-center justify-between">
                 <span>Verified Curatorial Accounts</span>
                 <span>Art World Commentary</span>
               </div>
             </div>
 
+            <!-- Verified Investigative Cases & Outcomes -->
+            ${{inst.gossip_data && inst.gossip_data.real_cases && inst.gossip_data.real_cases.length > 0 ? `
+              <div class="space-y-3 pt-1">
+                <div class="flex items-center justify-between text-[12px] font-mono border-b border-orange-800/50 pb-1">
+                  <span class="text-orange-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                    <span>🏛️ Documented Dispute Investigations (${{inst.gossip_data.real_cases.length}})</span>
+                  </span>
+                  <span class="text-slate-400">Verified Evidence</span>
+                </div>
+                ${{inst.gossip_data.real_cases.map(c => `
+                  <div class="p-3.5 rounded-xl bg-[#231206] border border-orange-600/70 space-y-2.5 shadow-sm">
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <span class="text-[11px] font-mono px-1.5 py-0.5 rounded bg-orange-950 text-orange-300 border border-orange-700/60 font-bold mr-1.5">${{escapeHtml(c.case_id)}}</span>
+                        <strong class="text-[14px] text-orange-100 font-medium">${{escapeHtml(c.title)}}</strong>
+                      </div>
+                      <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#331505] text-amber-300 border border-amber-600/60 shrink-0 capitalize">
+                        ${{escapeHtml((c.status || '').replace(/_/g, ' '))}}
+                      </span>
+                    </div>
+
+                    ${{c.facts && c.facts.length > 0 ? `
+                      <div class="text-[13px] text-slate-200">
+                        <strong class="text-orange-300 font-mono text-[11px] block uppercase">Documented Facts:</strong>
+                        <p class="leading-relaxed font-sans">${{escapeHtml(c.facts.join(' '))}}</p>
+                      </div>
+                    ` : ''}}
+
+                    ${{c.claims && c.claims.length > 0 ? `
+                      <div class="text-[13px] text-amber-200/90">
+                        <strong class="text-amber-400 font-mono text-[11px] block uppercase">Public Claim:</strong>
+                        <p class="leading-relaxed font-sans italic">"${{escapeHtml(c.claims.join(' '))}}"</p>
+                      </div>
+                    ` : ''}}
+
+                    ${{c.response ? `
+                      <div class="text-[13px] text-slate-300">
+                        <strong class="text-orange-300 font-mono text-[11px] block uppercase">Institutional Response:</strong>
+                        <p class="leading-relaxed font-sans">${{escapeHtml(c.response)}}</p>
+                      </div>
+                    ` : ''}}
+
+                    ${{c.outcome ? `
+                      <div class="p-2.5 rounded-lg bg-[#2e1708] border border-orange-500/50 text-[13px] text-emerald-200">
+                        <strong class="text-emerald-400 font-mono text-[11px] block uppercase flex items-center gap-1">
+                          <span>✓ Verified Outcome (${{escapeHtml(c.latest_source_date || 'Latest')}}):</span>
+                        </strong>
+                        <p class="leading-relaxed font-sans">${{escapeHtml(c.outcome)}}</p>
+                      </div>
+                    ` : ''}}
+
+                    ${{c.sources && c.sources.length > 0 ? `
+                      <div class="pt-1.5 border-t border-orange-900/60 flex items-center gap-2 flex-wrap text-[11px] font-mono text-slate-400">
+                        <span class="text-orange-400">Sources:</span>
+                        ${{c.sources.map(s => `
+                          <a href="${{escapeHtml(s.url)}}" target="_blank" rel="noopener noreferrer" class="text-amber-300 hover:text-white underline inline-flex items-center gap-0.5" title="${{escapeHtml(s.title)}}">
+                            <span>[${{escapeHtml(s.id)}}] ${{escapeHtml(s.publisher || s.title || 'Source')}}</span>
+                          </a>
+                        `).join(' · ')}}
+                      </div>
+                    ` : ''}}
+                  </div>
+                `).join('')}}
+              </div>
+            ` : ''}}
+
+            <!-- Verified Worker & Visitor Reviews -->
+            ${{inst.gossip_data && inst.gossip_data.review_leads && inst.gossip_data.review_leads.length > 0 ? `
+              <div class="space-y-2.5 pt-1">
+                <div class="flex items-center justify-between text-[12px] font-mono border-b border-orange-800/50 pb-1">
+                  <span class="text-amber-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                    <span>👤 Verified Staff & Worker Reviews (${{inst.gossip_data.review_leads.length}})</span>
+                  </span>
+                  <span class="text-slate-400">Glassdoor · Kununu</span>
+                </div>
+                ${{inst.gossip_data.review_leads.map(r => `
+                  <div class="p-3 rounded-xl bg-[#200e04] border border-orange-800/60 space-y-1.5 text-[13px]">
+                    <div class="flex items-center justify-between text-[11px] font-mono">
+                      <span class="text-orange-400 font-bold flex items-center gap-1">
+                        <span>${{escapeHtml(r.platform)}}: ${{escapeHtml(r.role)}}</span>
+                        ${{r.historical ? '<span class="text-slate-500 font-normal">(Historical)</span>' : ''}}
+                      </span>
+                      <span class="text-slate-400 font-mono">${{escapeHtml(r.review_date || '')}}</span>
+                    </div>
+                    <p class="text-slate-200 leading-relaxed font-sans">${{escapeHtml(r.summary)}}</p>
+                    ${{r.concern_themes && r.concern_themes.length > 0 ? `
+                      <div class="flex items-center gap-1.5 flex-wrap pt-0.5">
+                        ${{r.concern_themes.map(t => `<span class="px-1.5 py-0.2 rounded bg-red-950/80 text-rose-300 text-[10px] font-mono border border-rose-900/60">${{escapeHtml(t)}}</span>`).join('')}}
+                        ${{(r.positive_themes || []).map(t => `<span class="px-1.5 py-0.2 rounded bg-emerald-950/80 text-emerald-300 text-[10px] font-mono border border-emerald-900/60">${{escapeHtml(t)}}</span>`).join('')}}
+                      </div>
+                    ` : ''}}
+                    ${{r.source_url ? `
+                      <div class="pt-1 text-[11px] font-mono">
+                        <a href="${{escapeHtml(r.source_url)}}" target="_blank" rel="noopener noreferrer" class="text-[#38bdf8] hover:underline inline-flex items-center gap-1">
+                          <span>View Review Profile →</span>
+                        </a>
+                      </div>
+                    ` : ''}}
+                  </div>
+                `).join('')}}
+              </div>
+            ` : ''}}
+
             <!-- Plain English Governance Context -->
-            <div class="p-3 rounded-xl bg-[#240a2a] border border-rose-600/50 space-y-1 text-[13px] text-rose-200/90 leading-relaxed">
-              <strong class="text-rose-400 font-mono text-[11px] uppercase block">Why this matters:</strong>
+            <div class="p-3 rounded-xl bg-[#281307] border border-orange-600/50 space-y-1 text-[13px] text-orange-200/90 leading-relaxed">
+              <strong class="text-orange-400 font-mono text-[11px] uppercase block">Why this matters:</strong>
               Museums often operate under diplomatic public faces, but curatorial friction, private trustee pressures, and underwriting negotiations happen out of sight. Gossip Mode maps these unspoken real-world dynamics so cultural practitioners know the actual internal environment.
             </div>
 
             <div class="pt-2 flex items-center gap-2">
               <button type="button" onclick="window.toggleGossipMode();" 
-                      class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-semibold text-[13px] font-mono flex items-center justify-center gap-2 transition shadow shadow-rose-950/60 cursor-pointer">
+                      class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-semibold text-[13px] font-mono flex items-center justify-center gap-2 transition shadow shadow-orange-950/60 cursor-pointer">
                 <span>Toggle Gossip &amp; Rumor Beacons on Map</span>
               </button>
             </div>
@@ -17416,6 +17992,28 @@ You have extensive mastery of seminal art theory, curatorial studies, and instit
   - Feminist & Structural Critique: Martha Rosler ("The Bowery in two inadequate descriptive systems", critique of gentrification, corporate art sponsorship, and artistic labor extraction); Maria Eichhorn ("Maria Eichhorn Aktiengesellschaft" at Documenta 11, "5 weeks, 25 days, 175 hours" shutting Chisenhale Gallery to grant staff paid leave, critiquing surplus wage labor); Cameron Rowland (contractual and collateral artworks exposing the continuing legal and property lineage of chattel slavery in public institutions).
   - Third Wave (2010s-Present): Direct activist divestment campaigns: Nan Goldin's P.A.I.N. (ousting the Sackler opioid family), Decolonize This Place, and Strike MoMA.
 - Claire Bishop: 'Radical Museology' (dialectical collection display vs corporate blockbuster spectacle) and 'Artificial Hells'.
+- Recent Dispute Cases & Labor/Sponsorship Research (October 2026 Field Intelligence):
+  * Science Museum (London): BP partnership officially ended 31 August 2026 after sustained public campaigning by Culture Unstained, though Adani Green Energy sponsorship of the Energy Revolution gallery continues.
+  * British Museum (London): Announced a £50m, 10-year BP partnership for masterplan transformation; dropped Japan Tobacco International (JTI) in September 2025; in July 2026 received an ICO ruling (IC-412309-R0N3) upholding response-deadline breaches and ordering release of public information.
+  * V&A (London): Industrial dispute with PCS and Prospect over pay and working conditions ongoing as of October 2026, alongside heightened scrutiny over a voluntary exit scheme across V&A sites.
+  * New York Museum Unions: Solomon R. Guggenheim Museum, Brooklyn Museum, and American Folk Art Museum union staff (UAW Local 2110) ratified collective bargaining contracts on 2 October 2026; Whitney Museum followed on 4 October averting an impending strike.
+  * The Noguchi Museum (New York): Three employees dismissed under an updated dress code prohibiting political symbols (keffiyehs), sparking staff walkouts and petitions.
+  * Musée du Louvre (Paris): CGT winter strike mobilisations over chronic understaffing and visitor safety; June 2026 Senate hearing revealed ongoing recruitment delays and a pending social protocol.
+  * Centre Pompidou (Paris): Resolved a 100-day strike concerning staff guarantees during multi-year renovation closure through a Ministry of Culture protocol with FO and CFDT in January 2024.
+  * Palais de Tokyo (Paris): Conseil d'État ruling in April 2023 firmly rejected an attempted censorship challenge to remove Miriam Cahn's painting 'Fuck Abstraction!'.
+  * Neue Nationalgalerie (Berlin): Controversy over alleged slide removal during Nan Goldin retrospective opening; the exhibition concluded in April 2025.
+  * Oyoun (Berlin): Disputed Berlin Senate funding withdrawal resulted in a July 2024 constitutional court procedural remand.
+  * Hamburger Bahnhof (Berlin): Tania Bruguera 100-hour reading performance concluded early following protest disruptions.
+  * Het Concertgebouw (Amsterdam): Parliamentary questions raised in the Dutch Tweede Kamer in May 2026 regarding programming guidelines and international exclusions.
+  * Rijksmuseum (Amsterdam): Extinction Rebellion climate demonstrations using smoke flares challenged ongoing sponsorship ties with ING.
+  * Van Gogh Museum (Amsterdam): Historic 18-year Shell sponsorship ended in August 2018 by mutual decision.
+  * Madrid Subcontractor Disputes: SUT strike at Museo Reina Sofía over subcontracted visitor and mediation service cuts; successful SUT agreements at Casa de la Arquitectura and CaixaForum Madrid restoring Magmacultura contractor hours.
+  * BAK Utrecht: Ceased receiving structural municipal subsidies in 2025 and reorganized as BAK Basecamp, continuing critical collective research through philanthropic and international project support.
+- New Empirical Research Findings (Consensus 2026):
+  * Regional Cultural Efficiency: Gómez-Vega & Herrero-Prieto (Socio-Economic Planning Sciences, 2023) show heritage institution efficiency depends more on human training and demographic structure than sheer wealth.
+  * Paradoxical Autonomy: Kann-Rasmussen & Rasmussen (International Journal of Cultural Policy, 2020) prove cultural organizations must balance public value with restrictive performance indicators.
+  * Care Theory in Curatorship: Ferriols & Santiago (Museum Management and Curatorship, 2025) demonstrate how care theory reshapes curatorial practice in Southern European museums while exposing structural institutional limits.
+  * Technological Innovation & Cultural Commons: Bakhshi & Throsby (2012) and Yordanova & Todorova (2025) map how digital innovation expands audience access but demands public funding reform.
 
 FORMATTING & INTERACTION RULES:
 1. Write in natural conversational paragraphs. Never use markdown headers (#, ##) or bulleted database dumps.
@@ -25528,11 +26126,17 @@ FORMATTING & INTERACTION RULES:
             Critique Strategies:
           </span>
           <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="all">All ({visual_critique_count})</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="direct_polling">Direct Polling &amp; Data (MoMA)</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="parodic_museums">Parodic Museums (WIELS, Tate)</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="surrealist_reclassification">Surrealist Reclassification (Manchester)</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="environmental_satire">Environmental Satire (Crab Museum)</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="physical_intervention">Physical Intervention (Orsay, Louvre)</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="sponsor_exposure">Sponsor &amp; Debt Exposure</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="forensic_investigation">Algorithmic Forensics</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="pharma_fossil_denaming">Pharma &amp; Fossil De-Naming</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="feminist_counter_survey">Feminist Counter-Surveys</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="direct_polling">Direct Polling &amp; Data</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="board_boycott">Grassroots Agitation &amp; Boycotts</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="curatorial_subversion">Curatorial Subversion</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="parodic_museums">Parodic Museums</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="ideological_distribution">Ideological Circuits</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="physical_intervention">Physical Intervention</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="environmental_satire">Environmental Satire</button>
         </div>
 
         <!-- Row 2: Fiscal & Revenue Architecture Models -->
@@ -26080,11 +26684,15 @@ FORMATTING & INTERACTION RULES:
             <p class="text-[14px] text-[#d4d4d4] mt-2 leading-[120%] line-clamp-2">${{inst.curator_recommendation || inst.funding}}</p>
             
             ${{inst.visual_critiques && inst.visual_critiques.length > 0 ? `
-              <div class="mt-2 p-2 rounded-xl bg-amber-950/20 border border-amber-800/40 flex items-center gap-2">
-                <img src="${{escapeHtml(inst.visual_critiques[0].image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg')}}" alt="Visual Critique" class="w-12 h-10 object-cover rounded-lg border border-amber-700/60 shrink-0 bg-black" />
-                <div class="min-w-0 text-[11px] font-mono leading-tight">
-                  <div class="text-amber-400 font-bold truncate">${{escapeHtml(inst.visual_critiques[0].strategy)}}</div>
-                  <div class="text-zinc-300 truncate">${{escapeHtml(inst.visual_critiques[0].practice)}}</div>
+              <div class="mt-2.5 p-2.5 rounded-xl bg-[#161206] border border-amber-700/60 flex items-center gap-2.5">
+                <img src="${{escapeHtml(inst.visual_critiques[0].image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg')}}" alt="Visual Critique" class="w-14 h-12 object-cover rounded-lg border border-amber-600/70 shrink-0 bg-black" />
+                <div class="min-w-0 flex-1 text-[11px] font-mono leading-tight space-y-0.5">
+                  <div class="flex items-center justify-between gap-1">
+                    <span class="text-amber-400 font-bold uppercase tracking-wider text-[10px]">${{escapeHtml(inst.visual_critiques[0].strategy)}}</span>
+                    <span class="text-amber-300/80 text-[10px]">${{escapeHtml(inst.visual_critiques[0].year || '')}}</span>
+                  </div>
+                  <div class="text-white font-bold truncate">${{escapeHtml(inst.visual_critiques[0].artist_designer || inst.visual_critiques[0].artist)}}</div>
+                  <div class="text-zinc-300 truncate text-[10.5px]">"${{escapeHtml(inst.visual_critiques[0].artwork_title || inst.visual_critiques[0].artwork || '')}}"</div>
                 </div>
               </div>
             ` : ''}}
@@ -26352,8 +26960,56 @@ FORMATTING & INTERACTION RULES:
     function setSheetState(s) {{}}
 
     // =========================================================
-    // 🌐 CANVAS POINTER & HIT-TESTING (Click City / Country)
+    // 🌐 CANVAS POINTER & HIT-TESTING (Click Institution / City / Country)
     // =========================================================
+
+    // Precise, high-priority institution detection across dots, text label badges, and micro-cards
+    function findInstitutionAt(mx, my) {{
+      if (isCityStreetViewActive) return null;
+
+      // 0. Direct hit on hovered micro card web button or card
+      if (hoveredMicroCardHitbox && hoveredMicroCardHitbox.inst) {{
+        const hb = hoveredMicroCardHitbox;
+        if (mx >= hb.cardX - 4 && mx <= hb.cardX + hb.cardW + 4 && my >= hb.cardY - 4 && my <= hb.cardY + hb.cardH + 4) {{
+          return hb.inst;
+        }}
+      }}
+
+      // 1. Direct hit on visible institution label box or dot (generous hit padding)
+      for (let i = 0; i < visibleDots.length; i++) {{
+        const d = visibleDots[i];
+        const dotDist = Math.hypot(d.x - mx, d.y - my);
+        if (dotDist <= 24) return d.inst;
+        if (d.labelBox) {{
+          const lb = d.labelBox;
+          if (mx >= lb.x - 6 && mx <= lb.x + lb.w + 6 && my >= lb.y - 6 && my <= lb.y + lb.h + 6) {{
+            return d.inst;
+          }}
+        }}
+      }}
+
+      // 2. Fitts's Law Generous Proximity Fallback when zoomed into country or examining spaces
+      if ((selectedCountryFilter !== 'all' || currentRadius >= baseRadius * 1.8) && visibleDots.length > 0) {{
+        let closestInst = null;
+        let closestDist = Infinity;
+        for (let i = 0; i < visibleDots.length; i++) {{
+          const d = visibleDots[i];
+          const dist = Math.hypot(d.x - mx, d.y - my);
+          if (dist < closestDist) {{
+            closestDist = dist;
+            closestInst = d.inst;
+          }}
+        }}
+        if (closestDist <= 34) {{
+          return closestInst;
+        }}
+      }}
+      return null;
+    }}
+    window.findInstitutionAt = findInstitutionAt;
+    window.getVisibleDots = () => visibleDots;
+    window.getSelectedCountryFilter = () => selectedCountryFilter;
+
     function handleGlobeClick(clientX, clientY) {{
       const rect = canvas.getBoundingClientRect();
       const mx = clientX - rect.left;
@@ -26384,26 +27040,31 @@ FORMATTING & INTERACTION RULES:
           window.open(hb.webUrl, '_blank', 'noopener,noreferrer');
           return;
         }}
-        if (mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH) {{
-          selectInstitution(hb.inst, false);
+      }}
+
+      // PRIORITY 1: Check institution click across dots, text label badges, micro-cards, and proximity
+      // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
+      const clickedInst = findInstitutionAt(mx, my);
+      if (clickedInst) {{
+        selectInstitution(clickedInst, true);
+        return;
+      }}
+
+      // 0.25 Check hovered city card click & "Click to Explore" link
+      if (hoveredCityCardHitbox) {{
+        const hb = hoveredCityCardHitbox;
+        const isAllowedCountry = selectedCountryFilter === 'all' || (hb.country && matchC(hb.country, selectedCountryFilter));
+        if (isAllowedCountry && mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH) {{
+          filterByCity(hb.city, true, true);
           return;
         }}
       }}
 
-      // 0.3 Priority: Check City Click on Globe when zoomed out
+      // 0.3 Check City Click on Globe when zoomed out
       const clickedCity = findCityAt(mx, my);
       if (clickedCity) {{
         filterByCity(clickedCity.name, true, true);
         return;
-      }}
-
-      // 2. Check institution dots (generous 16px radius, zooms directly to street!)
-      for (let i = 0; i < visibleDots.length; i++) {{
-        const d = visibleDots[i];
-        if (Math.hypot(d.x - mx, d.y - my) < 16) {{
-          selectInstitution(d.inst, true);
-          return;
-        }}
       }}
 
       // 3. Check country centroid text (generous 40px radius, zooms directly to country!)
@@ -26463,9 +27124,32 @@ FORMATTING & INTERACTION RULES:
       const cx = width / 2;
       const cy = height / 2;
 
+      // If pointer is near any visible institution dot or label, SUPPRESS city hit so institutions are never blocked!
+      for (let i = 0; i < visibleDots.length; i++) {{
+        const d = visibleDots[i];
+        if (Math.hypot(d.x - mx, d.y - my) <= 30) return null;
+        if (d.labelBox) {{
+          const lb = d.labelBox;
+          if (mx >= lb.x - 8 && mx <= lb.x + lb.w + 8 && my >= lb.y - 8 && my <= lb.y + lb.h + 8) return null;
+        }}
+      }}
+
+      // If a country filter is active, only consider cities within that country!
+      const isCountryActive = selectedCountryFilter !== 'all';
+
+      // 0. Direct hit on active rich hover card
+      if (hoveredCityCardHitbox) {{
+        const hb = hoveredCityCardHitbox;
+        const isAllowedCountry = !isCountryActive || (hb.country && matchC(hb.country, selectedCountryFilter));
+        if (isAllowedCountry && mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH) {{
+          return ALL_CITIES_REGISTRY.find(c => matchC(c.name, hb.city)) || {{ name: hb.city }};
+        }}
+      }}
+
       // 1. Direct hit on an active rendered city badge label
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {{
         const b = cityBadgeHitboxes[i];
+        if (isCountryActive && b.country && !matchC(b.country, selectedCountryFilter)) continue;
         const inBadge = mx >= b.x - 3 && mx <= b.x + b.w + 3 && my >= b.y - 3 && my <= b.y + b.h + 3;
         if (inBadge) {{
           return ALL_CITIES_REGISTRY.find(c => matchC(c.name, b.name)) || {{
@@ -26479,17 +27163,16 @@ FORMATTING & INTERACTION RULES:
       }}
 
       // 2. Surface hit on globe city pins & clusters
-      // Weighted by distance & institution count so major hubs are not overshadowed by adjacent 1-space satellite towns
       let bestCity = null;
       let bestScore = Infinity;
 
       for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {{
         const c = ALL_CITIES_REGISTRY[i];
+        if (isCountryActive && c.country && !matchC(c.country, selectedCountryFilter)) continue;
         const pt = project(c.lon, c.lat, r, cx, cy);
         if (pt.front && pt.depth > 0.05) {{
           const pinDist = Math.hypot(pt.x - mx, pt.y - my);
           if (pinDist <= 24) {{
-            // Logarithmic count weight prevents 1-space towns from eclipsing large cities nearby
             const countWeight = 1 + Math.log2(Math.max(1, c.count || 1)) * 0.75;
             const score = pinDist / countWeight;
             if (score < bestScore) {{
@@ -26517,6 +27200,43 @@ FORMATTING & INTERACTION RULES:
 
       hoveredInstitution = null;
       hoveredCountry = null;
+
+      // Check city museum hitboxes (when in city street view)
+      for (let i = 0; i < cityMuseumHitboxes.length; i++) {{
+        const m = cityMuseumHitboxes[i];
+        const insideBadge = mx >= m.x && mx <= m.x + m.w && my >= m.y && my <= m.y + m.h;
+        const nearPin = Math.hypot(m.pinX - mx, m.pinY - my) < 18;
+        if (insideBadge || nearPin) {{
+          canvas.style.cursor = 'pointer';
+          hoveredInstitution = m.inst;
+          return;
+        }}
+      }}
+
+      // Check hovered micro card web button
+      if (hoveredMicroCardHitbox && hoveredMicroCardHitbox.webUrl) {{
+        const hb = hoveredMicroCardHitbox;
+        if (mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH) {{
+          canvas.style.cursor = 'pointer';
+          return;
+        }}
+      }}
+
+      // PRIORITY 1: Check institution hover across dots, text labels, micro-cards, and proximity
+      // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
+      const targetInst = findInstitutionAt(mx, my);
+      if (targetInst) {{
+        canvas.style.cursor = 'pointer';
+        const changed = !hoveredInstitution || hoveredInstitution.name !== targetInst.name;
+        hoveredInstitution = targetInst;
+        hoveredCity = null;
+        hoveredCityCardHitbox = null;
+        isHoveringCityExploreLink = false;
+        if (changed && typeof render === 'function') {{
+          requestAnimationFrame(render);
+        }}
+        return;
+      }}
 
       // Check Rail Corridor Hover
       hoveredRailCorridor = null;
@@ -26546,13 +27266,24 @@ FORMATTING & INTERACTION RULES:
         return;
       }}
 
-      // Check hovered micro card
-      if (hoveredMicroCardHitbox && hoveredMicroCardHitbox.webUrl) {{
-        const hb = hoveredMicroCardHitbox;
-        if (mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH) {{
+      // Priority: Check active city rich hover card & "Click to Explore" link
+      if (hoveredCityCardHitbox) {{
+        const hb = hoveredCityCardHitbox;
+        const insideCard = mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH;
+        if (insideCard) {{
+          const insideLink = mx >= hb.linkX - 4 && mx <= hb.linkX + hb.linkW + 4 && my >= hb.linkY - 4 && my <= hb.linkY + hb.linkH + 4;
+          const wasLinkHovered = isHoveringCityExploreLink;
+          isHoveringCityExploreLink = insideLink;
           canvas.style.cursor = 'pointer';
+          if (wasLinkHovered !== isHoveringCityExploreLink && typeof render === 'function') {{
+            requestAnimationFrame(render);
+          }}
           return;
         }}
+      }}
+      if (isHoveringCityExploreLink) {{
+        isHoveringCityExploreLink = false;
+        if (typeof render === 'function') requestAnimationFrame(render);
       }}
 
       // Priority: Check City Hover when on Globe
@@ -26567,30 +27298,10 @@ FORMATTING & INTERACTION RULES:
         return;
       }} else if (hoveredCity !== null) {{
         hoveredCity = null;
+        hoveredCityCardHitbox = null;
+        isHoveringCityExploreLink = false;
         if (typeof render === 'function') {{
           requestAnimationFrame(render);
-        }}
-      }}
-
-      // Check city museum hitboxes (when in city street view)
-      for (let i = 0; i < cityMuseumHitboxes.length; i++) {{
-        const m = cityMuseumHitboxes[i];
-        const insideBadge = mx >= m.x && mx <= m.x + m.w && my >= m.y && my <= m.y + m.h;
-        const nearPin = Math.hypot(m.pinX - mx, m.pinY - my) < 18;
-        if (insideBadge || nearPin) {{
-          canvas.style.cursor = 'pointer';
-          hoveredInstitution = m.inst;
-          return;
-        }}
-      }}
-
-      // Check institution dot
-      for (let i = 0; i < visibleDots.length; i++) {{
-        const d = visibleDots[i];
-        if (Math.hypot(d.x - mx, d.y - my) < 16) {{
-          canvas.style.cursor = 'pointer';
-          hoveredInstitution = d.inst;
-          return;
         }}
       }}
 

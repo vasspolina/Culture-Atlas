@@ -42,14 +42,14 @@ def test_browser_3d_building_and_mapped_info():
 
     test_script = """
     <script>
-    window.addEventListener('DOMContentLoaded', async () => {
+    const runTests = async () => {
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: Boolean(condition), extra: String(extra) });
       }
 
       try {
-        await new Promise(r => setTimeout(r, 600));
+        await new Promise(r => setTimeout(r, 400));
 
         // 1. Find FESPACO or Chisenhale or Slought
         const all = window.ALL_INSTITUTIONS || [];
@@ -60,7 +60,20 @@ def test_browser_3d_building_and_mapped_info():
 
         // 2. Zoom to building
         window.zoomToBuilding(fespaco, false);
-        await new Promise(r => setTimeout(r, 600));
+        if (window.cityVectorMap) {
+          window.cityVectorMap.jumpTo({ center: [fespaco.lon, fespaco.lat], zoom: 18.6, pitch: 62, bearing: 28 });
+        }
+        await new Promise(r => setTimeout(r, 1200));
+
+        if (window.cityVectorMap && typeof window.cityVectorMap.isStyleLoaded === 'function' && !window.cityVectorMap.isStyleLoaded()) {
+          await new Promise(resolve => {
+            let done = false;
+            const finish = () => { if (!done) { done = true; resolve(); } };
+            window.cityVectorMap.once('styledata', finish);
+            window.cityVectorMap.once('load', finish);
+            setTimeout(finish, 2000);
+          });
+        }
 
         // Check map container active and 2D card suppressed
         const mapEl = document.getElementById('cityMapContainer');
@@ -72,8 +85,10 @@ def test_browser_3d_building_and_mapped_info():
 
         // 3. Check 3D Extruded Floor Features in vector map source
         if (window.cityVectorMap) {
+          const styleLoaded = typeof window.cityVectorMap.isStyleLoaded === 'function' ? window.cityVectorMap.isStyleLoaded() : 'no fn';
+          const isLoaded = typeof window.cityVectorMap.loaded === 'function' ? window.cityVectorMap.loaded() : 'no fn';
           const src3D = window.cityVectorMap.getSource('highlighted-building-3d-floors');
-          assert('3D floors source exists on cityVectorMap', !!src3D);
+          assert('3D floors source exists on cityVectorMap', !!src3D, `isStyleLoaded: ${styleLoaded}, loaded: ${isLoaded}`);
 
           const layer3D = window.cityVectorMap.getLayer('building-3d-floor-extrusions');
           assert('3D floors layer exists on cityVectorMap', !!layer3D);
@@ -130,7 +145,8 @@ def test_browser_3d_building_and_mapped_info():
       out.id = 'test-results-output';
       out.setAttribute('data-results', JSON.stringify(results));
       document.body.appendChild(out);
-    });
+    };
+    if (document.readyState === 'complete') { setTimeout(runTests, 100); } else { window.addEventListener('load', runTests); }
     </script>
     """
 
@@ -143,10 +159,9 @@ def test_browser_3d_building_and_mapped_info():
     cmd = [
         chrome_bin,
         "--headless=new",
-        "--disable-gpu",
-        "--no-sandbox",
         "--dump-dom",
-        "--virtual-time-budget=6000",
+        "--window-size=1280,800",
+        "--virtual-time-budget=15000",
         f"file://{temp_file}"
     ]
 

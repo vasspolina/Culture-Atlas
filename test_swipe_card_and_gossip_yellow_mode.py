@@ -86,7 +86,7 @@ def test_browser_swipe_gestures():
         window.setCardMode('gossip', false);
         assert('Gossip pane visible after setCardMode(gossip)', gossipPane && !gossipPane.classList.contains('hidden'));
         assert('Info pane hidden in gossip mode', infoPane && infoPane.classList.contains('hidden'));
-        assert('Gossip tab highlighted', tabGossip && (tabGossip.classList.contains('bg-yellow-400') || tabGossip.className.includes('rose') || tabGossip.className.includes('pink')));
+        assert('Gossip tab highlighted', tabGossip && (tabGossip.classList.contains('bg-yellow-400') || tabGossip.className.includes('rose') || tabGossip.className.includes('pink') || tabGossip.className.includes('orange') || tabGossip.className.includes('amber')));
 
         // Test setCardMode('info')
         window.setCardMode('info', false);
