@@ -865,6 +865,28 @@ def build():
       box-shadow: 0 0 30px rgba(234, 179, 8, 0.35), 0 20px 40px rgba(0, 0, 0, 0.9) !important;
     }}
 
+    /* 🏛️ 3D Building Overlay Close Buttons */
+    .building-mast-close-btn,
+    .building-facade-close-btn {{
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background: rgba(30, 41, 59, 0.7);
+      color: #94a3b8;
+      transition: all 0.15s ease;
+      padding: 0;
+      flex-shrink: 0;
+    }}
+    .building-mast-close-btn:hover,
+    .building-facade-close-btn:hover {{
+      color: #ffffff !important;
+      background: #334155 !important;
+      border-color: #475569 !important;
+    }}
+
     /* ========================================================= */
     /* 📱 MOBILE POPUP & MODAL CUT-OFF PREVENTION SYSTEM */
     /* ========================================================= */
@@ -8877,6 +8899,8 @@ def build():
       set: (v) => {{ isExploded3DMode = v; }}
     }});
     let building3DInfoMarkers = [];
+    let currentBuildingMastMarker = null;
+    let currentBuildingFacadeMarker = null;
     let isBuildingLayerEventsBound = false;
 
     function clearBuilding3DInfoMarkers() {{
@@ -8886,8 +8910,34 @@ def build():
         }});
         building3DInfoMarkers = [];
       }}
+      currentBuildingMastMarker = null;
+      currentBuildingFacadeMarker = null;
+      const plates = document.querySelectorAll('.building-3d-mast-plate, .building-3d-facade-stack');
+      plates.forEach(p => {{ try {{ p.remove(); }} catch (e) {{}} }});
     }}
     window.clearBuilding3DInfoMarkers = clearBuilding3DInfoMarkers;
+
+    function closeBuildingMast() {{
+      if (currentBuildingMastMarker) {{
+        try {{ currentBuildingMastMarker.remove(); }} catch (e) {{}}
+        building3DInfoMarkers = building3DInfoMarkers.filter(m => m !== currentBuildingMastMarker);
+        currentBuildingMastMarker = null;
+      }}
+      const plates = document.querySelectorAll('.building-3d-mast-plate');
+      plates.forEach(p => {{ try {{ p.remove(); }} catch (e) {{}} }});
+    }}
+    window.closeBuildingMast = closeBuildingMast;
+
+    function closeBuildingFacade() {{
+      if (currentBuildingFacadeMarker) {{
+        try {{ currentBuildingFacadeMarker.remove(); }} catch (e) {{}}
+        building3DInfoMarkers = building3DInfoMarkers.filter(m => m !== currentBuildingFacadeMarker);
+        currentBuildingFacadeMarker = null;
+      }}
+      const stacks = document.querySelectorAll('.building-3d-facade-stack');
+      stacks.forEach(s => {{ try {{ s.remove(); }} catch (e) {{}} }});
+    }}
+    window.closeBuildingFacade = closeBuildingFacade;
 
     function ensureBuildingFootprintLayer() {{
       if (!cityVectorMap) return;
@@ -9428,15 +9478,20 @@ def build():
 
       mastEl.innerHTML = 
         '<div style="display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid #1e2c42; padding-bottom:7px;">' +
-          '<div style="min-width:0;">' +
+          '<div style="min-width:0; flex:1;">' +
             '<div style="display:flex; align-items:center; gap:6px;">' +
               '<span style="font-size:14px; font-weight:700; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + escapeHtml(inst.name) + '</span>' +
             '</div>' +
-            '<div style="font-size:10.5px; font-family:monospace; color:#94a3b8; margin-top:2px;">' +
+            '<div style="font-size:10.5px; font-family:monospace; color:#94a3b8; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' +
               escapeHtml(inst.city) + (inst.country ? (', ' + escapeHtml(inst.country)) : '') + ' · ' + escapeHtml(bArch.architectural_style || 'Curatorial Pavilion') +
             '</div>' +
           '</div>' +
-          '<div style="flex-shrink:0;">' + brandBadge + '</div>' +
+          '<div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">' +
+            '<div>' + brandBadge + '</div>' +
+            '<button type="button" class="building-mast-close-btn" onclick="event.stopPropagation(); window.closeBuildingMast();" title="Close Building Card" aria-label="Close" style="width:22px; height:22px;">' +
+              '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
+            '</button>' +
+          '</div>' +
         '</div>' +
 
         '<div style="margin-top:7px; font-size:11px; font-family:monospace; color:#cbd5e1; display:flex; flex-direction:column; gap:3px;">' +
@@ -9469,6 +9524,7 @@ def build():
           .setLngLat([lon, lat + d_lat * (isMobileScreen ? 0.75 : 0.95)])
           .addTo(cityVectorMap);
         building3DInfoMarkers.push(mastMarker);
+        currentBuildingMastMarker = mastMarker;
       }} catch (e) {{
         console.warn('Could not add rooftop mast marker:', e);
       }}
@@ -9521,11 +9577,16 @@ def build():
         }});
 
         facadeEl.innerHTML = 
-          '<div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #1e2c42; padding-bottom:5px;">' +
-            '<span style="font-size:10.5px; font-family:monospace; font-weight:bold; text-transform:uppercase; color:#38bdf8; letter-spacing:0.05em; display:flex; align-items:center; gap:4px;">' +
-              '3D FLOOR DIRECTORY' +
-            '</span>' +
-            '<span style="font-size:10px; font-family:monospace; color:#94a3b8;">Click level to inspect in 3D</span>' +
+          '<div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #1e2c42; padding-bottom:5px; gap:8px;">' +
+            '<div style="display:flex; align-items:center; gap:6px; min-width:0;">' +
+              '<span style="font-size:10.5px; font-family:monospace; font-weight:bold; text-transform:uppercase; color:#38bdf8; letter-spacing:0.05em; display:flex; align-items:center; gap:4px; white-space:nowrap;">' +
+                '3D FLOOR DIRECTORY' +
+              '</span>' +
+              '<span style="font-size:10px; font-family:monospace; color:#94a3b8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Click level to inspect in 3D</span>' +
+            '</div>' +
+            '<button type="button" class="building-facade-close-btn" onclick="event.stopPropagation(); window.closeBuildingFacade();" title="Close Floor Directory" aria-label="Close" style="width:20px; height:20px;">' +
+              '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
+            '</button>' +
           '</div>' +
           '<div style="display:flex; flex-direction:column; gap:5px; max-height:260px; overflow-y:auto;">' +
             floorItemsHtml +
@@ -9536,6 +9597,7 @@ def build():
             .setLngLat([lon + d_lon * 1.85, lat])
             .addTo(cityVectorMap);
           building3DInfoMarkers.push(facadeMarker);
+          currentBuildingFacadeMarker = facadeMarker;
         }} catch (e) {{
           console.warn('Could not add facade stack marker:', e);
         }}
