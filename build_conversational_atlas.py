@@ -1064,6 +1064,75 @@ def build():
       justify-content: center !important;
     }}
 
+    /* 🏷️ Suggestion & Secondary Filter Outline Pills (Matching Minimalist Monospace Spec) */
+    .atlas-suggestion-pill,
+    .work-suggestion-card.is-suggestion,
+    .curator-followup-pill,
+    .confidential-prompt-chip,
+    .globe-filter-pill:not(.is-active) {{
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      background-color: transparent !important;
+      color: #e4e4e7 !important;
+      border: 1px solid rgba(255, 255, 255, 0.35) !important;
+      border-radius: 9999px !important;
+      padding: 5px 14px !important;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+      font-size: 12.5px !important;
+      font-weight: 400 !important;
+      letter-spacing: -0.01em !important;
+      line-height: 1.3 !important;
+      text-decoration: none !important;
+      box-shadow: none !important;
+      transition: all 0.16s ease-in-out !important;
+      cursor: pointer !important;
+      user-select: none !important;
+      white-space: nowrap !important;
+      position: relative !important;
+    }}
+    .atlas-suggestion-pill:hover,
+    .work-suggestion-card.is-suggestion:hover,
+    .curator-followup-pill:hover,
+    .confidential-prompt-chip:hover,
+    .globe-filter-pill:not(.is-active):hover {{
+      background-color: rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(255, 255, 255, 0.85) !important;
+      color: #ffffff !important;
+      transform: translateY(-1px) !important;
+    }}
+    .atlas-suggestion-pill:active,
+    .work-suggestion-card.is-suggestion:active,
+    .curator-followup-pill:active,
+    .confidential-prompt-chip:active,
+    .globe-filter-pill:not(.is-active):active {{
+      transform: translateY(0) scale(0.98) !important;
+      background-color: rgba(255, 255, 255, 0.15) !important;
+    }}
+
+    /* Strikethrough / crossed-out diagonal slash style for disabled/unavailable suggestion filters */
+    .atlas-suggestion-pill.is-disabled,
+    .atlas-suggestion-pill.is-crossed-out {{
+      opacity: 0.55 !important;
+      border-color: rgba(255, 255, 255, 0.25) !important;
+      color: #a1a1aa !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    }}
+    .atlas-suggestion-pill.is-disabled::after,
+    .atlas-suggestion-pill.is-crossed-out::after {{
+      content: "";
+      position: absolute;
+      left: 6px;
+      right: 6px;
+      top: 50%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.45);
+      transform: rotate(-4deg);
+      pointer-events: none;
+    }}
+
     /* ========================================================= */
     /* 📱 MOBILE POPUP & MODAL CUT-OFF PREVENTION SYSTEM */
     /* ========================================================= */
@@ -1275,7 +1344,7 @@ def build():
           </div>
           <div class="flex items-center gap-1 shrink-0">
             <span id="floatingCardTier" class="text-[12px] font-mono px-2 py-0.5 rounded-lg border border-emerald-900/60 bg-[#0a2016] text-emerald-400">Verified</span>
-            <button id="closeFloatingCardBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition text-[12px] sm:text-[13px] leading-none ml-0.5 cursor-pointer shrink-0 font-medium shadow-sm flex items-center justify-center gap-1" title="Close"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+            <button id="closeFloatingCardBtn" class="atlas-pill-btn pill-sm" title="Close"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
           </div>
         </div>
 
@@ -1732,31 +1801,32 @@ def build():
 
             <!-- Suggestions Arranged as Sleek Capsule Pills (Matching Reference Image) -->
             <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full">
-              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-black text-white border border-zinc-700 hover:border-zinc-400 transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Find independent art spaces near me">
-                Find independent art spaces near me
+              <button class="work-suggestion-card atlas-pill-btn pill-sm shrink-0" data-query="Find independent art spaces near me">
+                <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
+                <span>Find independent art spaces near me</span>
               </button>
-              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Who funds this museum?">
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Who funds this museum?">
                 Who funds this museum?
               </button>
-              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">
                 Curated 1-day city itineraries
               </button>
-              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">
                 Repurposed architecture &amp; factories
               </button>
-              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">
                 Outdoor sculpture parks &amp; land art
               </button>
-              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Which museums and galleries are free to enter?">
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Which museums and galleries are free to enter?">
                 Free admission spaces
               </button>
-              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Which museums are open on Mondays?">
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Which museums are open on Mondays?">
                 Monday openings
               </button>
-              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="What is the difference between a Kunsthalle and a traditional museum?">
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="What is the difference between a Kunsthalle and a traditional museum?">
                 Kunsthalle vs traditional museum
               </button>
-              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">
                 W.A.G.E., fair pay &amp; unionization
               </button>
             </div>
@@ -1853,27 +1923,27 @@ def build():
             <!-- Row 1: Scope, Clean / Flagged Tiers, Academic Research & Categories -->
             <div class="flex flex-wrap items-center gap-2">
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
               <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="governance">Governance Legend</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies ({academic_count})</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="archives">Archives Directory ({archives_count})</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="governance">Governance Legend</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="academic">Academic Studies ({academic_count})</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="archives">Archives Directory ({archives_count})</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
+              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
+              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
+              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
+              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
+              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
               <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="europe">Europe</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="americas">Americas</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="mena_africa">MidEast & Africa</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="region" data-value="europe">Europe</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="region" data-value="americas">Americas</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="region" data-value="asiapacific">Asia-Pacific</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="region" data-value="mena_africa">MidEast & Africa</button>
               <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="free">Free Entry</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="artist_run">Artist-Run</button>
             </div>
 
             <!-- Row 1.5: Visual Critique & Artist Feedback Sub-Strategies -->
@@ -1893,29 +1963,29 @@ def build():
             <!-- Row 2: Featured Cultural Cities -->
             <div class="flex flex-wrap items-center gap-2">
               <span class="text-[11px] text-[#71717a] font-mono shrink-0 mr-0.5 uppercase tracking-wider">Cities:</span>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="London">London (18)</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="New York">New York (16)</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Paris">Paris (12)</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Berlin">Berlin (10)</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Amsterdam">Amsterdam (7)</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Madrid">Madrid (4)</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Tokyo">Tokyo (3)</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Basel">Basel (2)</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Bilbao">Bilbao (2)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="London">London (18)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="New York">New York (16)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="Paris">Paris (12)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="Berlin">Berlin (10)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="Amsterdam">Amsterdam (7)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="Madrid">Madrid (4)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="Tokyo">Tokyo (3)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="Basel">Basel (2)</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="Bilbao">Bilbao (2)</button>
             </div>
 
             <!-- Row 3: Featured Countries -->
             <div class="flex flex-wrap items-center gap-2">
               <span class="text-[11px] text-[#71717a] font-mono shrink-0 mr-0.5 uppercase tracking-wider">Countries:</span>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="United Kingdom">United Kingdom</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="United States">United States</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Germany">Germany</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="France">France</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Netherlands">Netherlands</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Spain">Spain</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Switzerland">Switzerland</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Italy">Italy</button>
-              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Japan">Japan</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="United Kingdom">United Kingdom</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="United States">United States</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="Germany">Germany</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="France">France</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="Netherlands">Netherlands</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="Spain">Spain</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="Switzerland">Switzerland</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="Italy">Italy</button>
+              <button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="Japan">Japan</button>
             </div>
           </div>
 
@@ -1934,16 +2004,16 @@ def build():
           <span class="text-[14px] font-normal text-white">All Findings &amp; Cultural Space Catalog</span>
           <span id="listTotalBadge" class="text-[11.5px] font-mono px-2 py-0.5 rounded bg-[#242424] text-[#93c5fd] border border-[#333]">{total_findings_count} findings</span>
         </div>
-        <button id="closeCatalogModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeCatalogModalBtn" class="atlas-pill-btn pill-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Quick Category / Scope Filter Tabs inside Catalog -->
       <div class="p-2 px-3 border-b border-[#262626] bg-[#191919] flex items-center gap-1.5 overflow-x-auto custom-scrollbar select-none text-[12px]">
-        <button id="catFilterAllBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-black text-white border border-zinc-600 font-medium shrink-0 cursor-pointer">All Findings ({total_findings_count})</button>
-        <button id="catFilterCleanBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer">Clean Spaces ({clean_count})</button>
-        <button id="catFilterFlaggedBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer">Flagged ({flagged_count})</button>
-        <button id="catFilterAcademicBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#38bdf8] border border-[#233852] shrink-0 cursor-pointer">Academic Studies ({academic_count})</button>
-        <button id="catFilterVisualCritiqueBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-amber-400 border border-amber-900/60 shrink-0 cursor-pointer">Visual Critique ({visual_critique_count})</button>
+        <button id="catFilterAllBtn" class="cat-modal-chip atlas-pill-btn pill-sm font-medium shrink-0 cursor-pointer">All Findings ({total_findings_count})</button>
+        <button id="catFilterCleanBtn" class="cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer">Clean Spaces ({clean_count})</button>
+        <button id="catFilterFlaggedBtn" class="cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer">Flagged ({flagged_count})</button>
+        <button id="catFilterAcademicBtn" class="cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer">Academic Studies ({academic_count})</button>
+        <button id="catFilterVisualCritiqueBtn" class="cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer">Visual Critique ({visual_critique_count})</button>
       </div>
 
       <div class="p-3 border-b border-[#262626] bg-[#171717] flex flex-col gap-2">
@@ -1968,7 +2038,7 @@ def build():
   <!-- ========================================================= -->
   <div id="detailDrawer" class="hidden fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-[#0a0d15]/98 backdrop-blur-2xl border-l border-[#1c212a] shadow-2xl flex flex-col">
     <div class="p-3.5 px-4 border-b border-[#1c212a] flex items-center justify-end bg-[#0e121c]">
-      <button id="closeDetailBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+      <button id="closeDetailBtn" class="atlas-pill-btn pill-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
     </div>
     <div id="detailBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-[14px]">
       <!-- Injected dynamically -->
@@ -1990,7 +2060,7 @@ def build():
             <p class="text-[14px] font-mono text-amber-300/80">Museum of Modern Art (New York) · Institutional Scrutiny</p>
           </div>
         </div>
-        <button id="closeMomaModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeMomaModalBtn" class="atlas-pill-btn pill-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Modal Body -->
@@ -2072,7 +2142,7 @@ def build():
             <p class="text-[14px] text-[#a1a1aa]">Power conversational reasoning with live AI or use the built-in critical engine</p>
           </div>
         </div>
-        <button id="closeSettingsModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeSettingsModalBtn" class="atlas-pill-btn pill-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Provider Tabs -->
@@ -2174,24 +2244,24 @@ def build():
             <h3 class="text-[15px] sm:text-[16px] font-medium text-white leading-tight">Confidential Field Intelligence Intake</h3>
           </div>
         </div>
-        <button id="closeConfidentialChatBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close Intake Window"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeConfidentialChatBtn" class="atlas-pill-btn pill-sm" title="Close Intake Window"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Suggestion Pills -->
       <div class="px-3 py-2 bg-[#161618] border-b border-[#222225] flex items-center gap-2 overflow-x-auto custom-scrollbar shrink-0 text-[12px]">
-        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I have internal info about an unpublicized trustee arrangement or off-the-books donor deal at: ">
+        <button class="confidential-prompt-chip atlas-suggestion-pill whitespace-nowrap" data-prompt="I have internal info about an unpublicized trustee arrangement or off-the-books donor deal at: ">
           Unpublicized Trustee Deal
         </button>
-        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I want to report an internal board dispute or closed-door curatorial censorship at: ">
+        <button class="confidential-prompt-chip atlas-suggestion-pill whitespace-nowrap" data-prompt="I want to report an internal board dispute or closed-door curatorial censorship at: ">
           Board Dispute / Censorship
         </button>
-        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I have non-public info about corporate underwriting, weapons, or fossil fuel links involving: ">
+        <button class="confidential-prompt-chip atlas-suggestion-pill whitespace-nowrap" data-prompt="I have non-public info about corporate underwriting, weapons, or fossil fuel links involving: ">
           Hidden Corporate Underwriting
         </button>
-        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I have internal details regarding staff labor disputes, NDAs, or leaked budget memos at: ">
+        <button class="confidential-prompt-chip atlas-suggestion-pill whitespace-nowrap" data-prompt="I have internal details regarding staff labor disputes, NDAs, or leaked budget memos at: ">
           Leaked Memo / Labor Dispute
         </button>
-        <button class="confidential-prompt-chip whitespace-nowrap px-3.5 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer" data-prompt="I want to submit an unlisted independent artist-run space with clean public governance: ">
+        <button class="confidential-prompt-chip atlas-suggestion-pill whitespace-nowrap" data-prompt="I want to submit an unlisted independent artist-run space with clean public governance: ">
           Unlisted Clean Space
         </button>
       </div>
@@ -2234,7 +2304,7 @@ def build():
             <p class="text-[12px] text-[#a1a1aa] font-mono">Community Peer-Review Pipeline · Form 990 / Civic Audits</p>
           </div>
         </div>
-        <button id="closeFeedbackModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeFeedbackModalBtn" class="atlas-pill-btn pill-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Explanatory note -->
@@ -2317,7 +2387,7 @@ def build():
             <p class="text-[12px] text-[#33b1ff] font-mono">Consensus Peer-Reviewed Corpus · {academic_count} Empirical Studies & Financial Analyses</p>
           </div>
         </div>
-        <button id="closeAcademicModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeAcademicModalBtn" class="atlas-pill-btn pill-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Layer Tabs: Peer-Reviewed Studies vs Community Research Notes (User Input Layer) -->
@@ -2412,7 +2482,7 @@ def build():
             <p id="bamLocation" class="text-[12px] text-[#78a9ff] font-mono">Location & Address · Footprint Mapped</p>
           </div>
         </div>
-        <button id="closeBuildingArchivesBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeBuildingArchivesBtn" class="atlas-pill-btn pill-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Scrollable Inspector Body -->
@@ -2456,7 +2526,7 @@ def build():
             <p class="text-[12px] text-[#78a9ff] font-mono">Exhibition Master Dossiers · Artists' Ephemera & Zines · Audio-Visual Master Tapes · Permanent Study Collections</p>
           </div>
         </div>
-        <button id="closeArchivesModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close Archives Directory"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeArchivesModalBtn" class="atlas-pill-btn pill-sm" title="Close Archives Directory"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Search, City Filter & Category Filter Chips -->
@@ -2477,12 +2547,12 @@ def build():
         <!-- Filter Chips Row -->
         <div class="flex flex-wrap items-center gap-2 text-[12px]" id="archivesFilterChips">
           <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm text-[12px] sm:text-[13px]" data-filter="all">All Archives ({archives_count})</button>
-          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="independent">Verified Independent Spaces ({clean_count})</button>
-          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="ephemera">Artists' Ephemera & Zines</button>
-          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="av">Oral Histories & AV Masters</button>
-          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="dossiers">Exhibition Dossiers & Correspondence</button>
-          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="study">Permanent Study Collections</button>
-          <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm" data-filter="high_digitization">High Digitization (70%+)</button>
+          <button class="archives-filter-chip atlas-suggestion-pill" data-filter="independent">Verified Independent Spaces ({clean_count})</button>
+          <button class="archives-filter-chip atlas-suggestion-pill" data-filter="ephemera">Artists' Ephemera & Zines</button>
+          <button class="archives-filter-chip atlas-suggestion-pill" data-filter="av">Oral Histories & AV Masters</button>
+          <button class="archives-filter-chip atlas-suggestion-pill" data-filter="dossiers">Exhibition Dossiers & Correspondence</button>
+          <button class="archives-filter-chip atlas-suggestion-pill" data-filter="study">Permanent Study Collections</button>
+          <button class="archives-filter-chip atlas-suggestion-pill" data-filter="high_digitization">High Digitization (70%+)</button>
         </div>
 
         <!-- Result count bar -->
@@ -2532,7 +2602,7 @@ def build():
             </p>
           </div>
         </div>
-        <button id="closeGovernanceModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeGovernanceModalBtn" class="atlas-pill-btn pill-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Scrollable Modal Body -->
@@ -2743,7 +2813,7 @@ def build():
             </p>
           </div>
         </div>
-        <button id="closeFiscalModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeFiscalModalBtn" class="atlas-pill-btn pill-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Scrollable Analytics Body -->
@@ -2880,7 +2950,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-emerald-200/70 truncate">Multi-space walking &amp; clean-transit itineraries with synchronized street route lines, opening hours verification, and admission policies.</p>
           </div>
         </div>
-        <button id="closeItineraryModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer shrink-0 flex items-center justify-center gap-1 shadow-sm" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeItineraryModalBtn" class="atlas-pill-btn pill-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Navigation & Mode Tabs -->
@@ -2932,7 +3002,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-purple-200/70 truncate">Forensic mapping of corporate board interlocks, predatory private equity, weapons contractors, opioid dynasties, and fossil fuel underwriters.</p>
           </div>
         </div>
-        <button id="closeTrusteeModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeTrusteeModalBtn" class="atlas-pill-btn pill-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Controls & Filter Toolbar -->
@@ -3057,7 +3127,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-rose-200/70 truncate">Documenting five decades of artist-led resistance, museum occupations, die-ins, and institutional ruptures.</p>
           </div>
         </div>
-        <button id="closeTimelineModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer shrink-0 flex items-center justify-center gap-1 shadow-sm" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeTimelineModalBtn" class="atlas-pill-btn pill-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Controls & Filter Toolbar -->
@@ -3117,7 +3187,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-sky-200/70 truncate">Forensic extraction of interested person transactions, board loans, executive compensation, and program expense ratios.</p>
           </div>
         </div>
-        <button id="closeFilingsModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer shrink-0 flex items-center justify-center gap-1 shadow-sm" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
+        <button id="closeFilingsModalBtn" class="atlas-pill-btn pill-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Controls & Selection Toolbar -->
@@ -16670,7 +16740,7 @@ def build():
         if (f === currentArchivesCategory) {{
           ch.className = 'archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm text-[12px] sm:text-[13px]';
         }} else {{
-          ch.className = 'archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black cursor-pointer transition font-normal text-[12px] sm:text-[13px] shadow-sm';
+          ch.className = 'archives-filter-chip atlas-suggestion-pill';
         }}
       }});
     }}
@@ -18166,7 +18236,7 @@ FORMATTING & INTERACTION RULES:
         followUpHtml = `
           <div class="flex flex-wrap gap-1.5 mt-2.5 pt-2 border-t border-[#2a2a2a]">
             ${{followUps.map(f => `
-              <button class="curator-followup-pill px-2.5 py-1 rounded-xl bg-[#242424] hover:bg-[#303030] border border-[#383838] hover:border-[#60a5fa] text-[13px] text-[#93c5fd] hover:text-white transition cursor-pointer font-normal" data-query="${{escapeHtml(f)}}">
+              <button class="curator-followup-pill atlas-suggestion-pill" data-query="${{escapeHtml(f)}}">
                 <span>${{escapeHtml(f)}}</span>
               </button>
             `).join('')}}
@@ -18471,7 +18541,7 @@ FORMATTING & INTERACTION RULES:
         (q.includes('trustee') && (q.includes('conflict') || q.includes('board') || q.includes('network') || q.includes('investigate') || q.includes('who') || q.includes('resigned') || q.includes('ousted'))));
       const isItineraryQuery = /(plan\s*(a\s*)?(day|visit|tour|itinerary|route|crawl)|art\s*(crawl|walk|tour|circuit|route|itinerary)|curatorial\s*(itinerary|route|tour|circuit|walk)|visit\s*itinerary|curated\s*(route|crawl|walk)|gallery\s*crawl|museum\s*crawl|walking\s*route)/i.test(q) ||
         (q.includes('itinerary') || q.includes('art crawl') || (q.includes('crawl') && (q.includes('art') || q.includes('museum') || q.includes('gallery'))) || (q.includes('plan') && (q.includes('route') || q.includes('day') || q.includes('tour') || q.includes('crawl'))));
-      const isVisualCritiqueQuery = /(visual\s*critique|artist\s*(critique|feedback|intervention|action|resistance)|hans\s*haacke|moma\s*poll|marcel\s*broodthaers|ilya\s*kabakov|mark\s*dion|deborah\s*de\s*robertis|crab\s*museum|l'origine\s*du\s*monde|parodic\s*museum|environmental\s*satire|surrealist\s*reclassification|physical\s*intervention|direct\s*polling|consensus\s*study|connections\s*among\s*cultural\s*sponsors)/i.test(q) ||
+      const isVisualCritiqueQuery = /(visual\s*critique|artist\s*(critique|feedback|intervention|action|resistance)|hans\s*haacke|moma\s*poll|marcel\s*broodthaers|ilya\s*kabakov|mark\s*dion|deborah\s*de\s*robertis|crab\s*museum|l'origine\s*du\s*monde|parodic\s*museum|environmental\s*satire|surrealist\s*reclassification|physical\s*intervention|direct\s*polling|consensus\s*study)/i.test(q) ||
         (q.includes('visual') && (q.includes('critique') || q.includes('feedback') || q.includes('artist'))) ||
         (q.includes('artist') && (q.includes('feedback') || q.includes('critique') || q.includes('intervention')));
       const isContributeQuery = /(how\s+to\s+)?(contribute|submit)\s*(intel|tip|leak|research|data)|whistleblow|report\s*(a\s*)?(leak|conflict|covenant|violation)|confidential\s*(intake|pipeline|submission)/i.test(q) ||
@@ -25298,33 +25368,33 @@ FORMATTING & INTERACTION RULES:
         if (type === 'tier') {{
           if (val === 'A') {{
             if (isCleanOnly) {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40';
+              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40';
             }} else {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
+              pill.className = 'globe-filter-pill atlas-suggestion-pill';
             }}
           }} else if (val === 'B') {{
             if (isFlaggedOnly) {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#6929c4] text-white border border-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-purple-950/40';
+              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#6929c4] text-white border border-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-purple-950/40';
             }} else {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
+              pill.className = 'globe-filter-pill atlas-suggestion-pill';
             }}
           }} else if (val === 'COMMUNITY') {{
             if (isCommunityOnly) {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0072c3] text-white border border-[#33b1ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-cyan-950/40';
+              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0072c3] text-white border border-[#33b1ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-cyan-950/40';
             }} else {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
+              pill.className = 'globe-filter-pill atlas-suggestion-pill';
             }}
           }} else if (val === 'VISUAL_CRITIQUE') {{
             if (isVisualCritiqueOnly) {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-amber-600 text-white border border-amber-400 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-amber-950/40 flex items-center gap-1.5';
+              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-amber-600 text-white border border-amber-400 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-amber-950/40 flex items-center gap-1.5';
             }} else {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5';
+              pill.className = 'globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5';
             }}
           }} else if (val === 'all') {{
             if (isAllTiers) {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+              pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
             }} else {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
+              pill.className = 'globe-filter-pill atlas-suggestion-pill';
             }}
           }}
           return;
@@ -25332,9 +25402,9 @@ FORMATTING & INTERACTION RULES:
 
         if (type === 'academic') {{
           if (isAcademicOnly) {{
-            pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0369a1] text-white border border-[#38bdf8] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40';
+            pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0369a1] text-white border border-[#38bdf8] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40';
           }} else {{
-            pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
+            pill.className = 'globe-filter-pill atlas-suggestion-pill';
           }}
           return;
         }}
@@ -25346,9 +25416,9 @@ FORMATTING & INTERACTION RULES:
         else if (type === 'category' && selectedCategoryFilter === val) isAct = true;
 
         if (isAct) {{
-          pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+          pill.className = 'globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
         }} else {{
-          pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
+          pill.className = 'globe-filter-pill atlas-suggestion-pill';
         }}
       }});
     }}
@@ -25366,11 +25436,11 @@ FORMATTING & INTERACTION RULES:
       const academicBtn = document.getElementById('catFilterAcademicBtn');
       const vcBtn = document.getElementById('catFilterVisualCritiqueBtn');
 
-      if (allBtn) allBtn.className = isAll ? 'cat-modal-chip px-3 py-1 rounded-full bg-black text-white border border-zinc-600 font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer';
-      if (cleanBtn) cleanBtn.className = isCleanOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#059669] text-white border border-[#10b981] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer';
-      if (flaggedBtn) flaggedBtn.className = isFlaggedOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#6929c4] text-white border border-[#be95ff] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer';
-      if (academicBtn) academicBtn.className = isAcademicOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#0369a1] text-white border border-[#38bdf8] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#38bdf8] border border-[#233852] shrink-0 cursor-pointer';
-      if (vcBtn) vcBtn.className = isVisualCritiqueOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-amber-600 text-white border border-amber-400 font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-amber-400 border border-amber-900/60 shrink-0 cursor-pointer';
+      if (allBtn) allBtn.className = isAll ? 'cat-modal-chip atlas-pill-btn pill-sm font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
+      if (cleanBtn) cleanBtn.className = isCleanOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#059669] text-white border border-[#10b981] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
+      if (flaggedBtn) flaggedBtn.className = isFlaggedOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#6929c4] text-white border border-[#be95ff] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
+      if (academicBtn) academicBtn.className = isAcademicOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#0369a1] text-white border border-[#38bdf8] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
+      if (vcBtn) vcBtn.className = isVisualCritiqueOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-amber-600 text-white border border-amber-400 font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
     }}
     window.updateCatalogChipsUI = updateCatalogChipsUI;
 
@@ -25384,22 +25454,22 @@ FORMATTING & INTERACTION RULES:
 
       let html = `
         <div class="flex flex-wrap items-center gap-2">
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="all">All Spaces</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="all">All Spaces</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
+          <button class="globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged</button>
+          <button class="globe-filter-pill is-active px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="B">Flagged</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="free">Free Entry</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="artist_run">Artist-Run</button>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
           <span class="text-[11px] text-[#38bdf8] font-mono shrink-0 mr-0.5 uppercase tracking-wider font-semibold">Fiscal Models:</span>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_endowed">Endowed (≥30%)</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="finance_endowed">Endowed (≥30%)</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
@@ -25407,7 +25477,7 @@ FORMATTING & INTERACTION RULES:
       `;
 
       countryCities.forEach(city => {{
-        html += `<button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="${{escapeHtml(city.name)}}">${{escapeHtml(city.name)}} <span class="text-[#2563eb] font-mono text-[11px]">(${{city.count}})</span></button>`;
+        html += `<button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="${{escapeHtml(city.name)}}">${{escapeHtml(city.name)}} <span class="text-[#2563eb] font-mono text-[11px]">(${{city.count}})</span></button>`;
       }});
 
       html += `</div>`;
@@ -25428,27 +25498,27 @@ FORMATTING & INTERACTION RULES:
         <!-- Row 1: Global Scope, Tiers, Academic Research & Categories -->
         <div class="flex flex-wrap items-center gap-2">
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="all">All Findings ({total_findings_count})</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="fiscal_analytics" id="globeFiscalAnalyticsBtn">Fiscal Analytics</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies ({academic_count})</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="archives">Archives Directory ({archives_count})</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="fiscal_analytics" id="globeFiscalAnalyticsBtn">Fiscal Analytics</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="academic">Academic Studies ({academic_count})</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="archives">Archives Directory ({archives_count})</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
+          <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
           <button class="globe-filter-pill hidden" data-type="contribute_intel" id="globeContributeIntelBtn" style="display:none;" aria-hidden="true"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
+          <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
+          <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
+          <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
+          <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="europe">Europe</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="americas">Americas</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="region" data-value="mena_africa">MidEast & Africa</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="region" data-value="europe">Europe</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="region" data-value="americas">Americas</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="region" data-value="asiapacific">Asia-Pacific</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="region" data-value="mena_africa">MidEast & Africa</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="free">Free Entry</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="artist_run">Artist-Run</button>
         </div>
 
         <!-- Row 1.5: Visual Critique & Artist Feedback Sub-Strategies -->
@@ -25468,12 +25538,12 @@ FORMATTING & INTERACTION RULES:
         <!-- Row 2: Fiscal & Revenue Architecture Models -->
         <div class="flex flex-wrap items-center gap-2">
           <span class="text-[11px] text-[#38bdf8] font-mono shrink-0 mr-0.5 uppercase tracking-wider font-semibold">Fiscal Models:</span>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_endowed">Endowed / Philanthropy (≥30%)</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_earned">Earned Revenue (≥35%)</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_artist_run">Lean Artist-Run</button>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_major">Major Metropolitan</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="finance_endowed">Endowed / Philanthropy (≥30%)</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="finance_earned">Earned Revenue (≥35%)</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="finance_artist_run">Lean Artist-Run</button>
+          <button class="globe-filter-pill atlas-suggestion-pill" data-type="category" data-value="finance_major">Major Metropolitan</button>
         </div>
 
         <!-- Row 3: Featured Cultural Cities -->
@@ -25484,7 +25554,7 @@ FORMATTING & INTERACTION RULES:
       featuredCities.forEach(cityName => {{
         const cMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
         const count = cMeta ? ` (${{cMeta.count}})` : '';
-        html += `<button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="city" data-value="${{cityName}}">${{cityName}}${{count}}</button>`;
+        html += `<button class="globe-filter-pill atlas-suggestion-pill" data-type="city" data-value="${{cityName}}">${{cityName}}${{count}}</button>`;
       }});
 
       html += `
@@ -25496,7 +25566,7 @@ FORMATTING & INTERACTION RULES:
       `;
 
       featuredCountries.forEach(countryName => {{
-        html += `<button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="country" data-value="${{countryName}}">${{countryName}}</button>`;
+        html += `<button class="globe-filter-pill atlas-suggestion-pill" data-type="country" data-value="${{countryName}}">${{countryName}}</button>`;
       }});
 
       html += `</div>`;

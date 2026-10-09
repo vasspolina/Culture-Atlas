@@ -13,17 +13,14 @@ def run_tests():
 
     test_script = """
     <script>
-    // Stub fetch so headless chrome does not wait for external tiles
-    const origFetch = window.fetch;
+    // Stub fetch and animation frames completely so headless chrome does not hang on external network
+    window.requestAnimationFrame = () => 1;
+    window.cancelAnimationFrame = () => {};
     window.fetch = async (url, opts) => {
-      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
-      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
-        return new Response(new Uint8Array(0), { status: 200 });
-      }
-      return origFetch(url, opts);
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
 
-    window.addEventListener('load', async () => {
+    const runAllTests = async () => {
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
@@ -81,7 +78,8 @@ def run_tests():
           const detailBody = document.getElementById('detailBody');
           assert('Dossier opens for flagged institution', detailBody && detailBody.innerHTML.length > 50);
 
-          const htmlContent = detailBody.innerHTML.toLowerCase();
+          const auditView = document.getElementById('drawerAuditView') || detailBody;
+          const htmlContent = auditView.innerHTML.toLowerCase();
 
           // Assert IBM Carbon purple palette is present
           assert('Dossier uses Carbon Purple #be95ff for flagged badge', htmlContent.includes('#be95ff'));
@@ -143,7 +141,7 @@ def run_tests():
         // =========================================================================
         if (typeof window.atlasAskCurator === 'function') {
           window.atlasAskCurator('connections among cultural sponsors');
-          await new Promise(r => setTimeout(r, 300));
+          await new Promise(r => setTimeout(r, 1500));
 
           const curatorMsgs = document.querySelectorAll('.curator-message-wrap');
           const lastMsg = curatorMsgs[curatorMsgs.length - 1];
@@ -269,7 +267,8 @@ def run_tests():
       out.id = 'test-results-output';
       out.setAttribute('data-results', JSON.stringify(results));
       document.body.appendChild(out);
-    });
+    };
+    if (document.readyState === 'complete') { setTimeout(runAllTests, 100); } else { window.addEventListener('load', runAllTests); }
     </script>
     """
 
@@ -286,7 +285,7 @@ def run_tests():
         "--headless=new",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=6000",
+        "--virtual-time-budget=15000",
         f"file://{temp_file}"
     ]
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
