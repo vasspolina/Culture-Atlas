@@ -968,6 +968,38 @@ def build():
       transform: scale(1.05);
     }}
 
+    /* 🩻 3D Building Room Badges Interaction & Typography */
+    .building-3d-room-badge {{
+      transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1), filter 0.18s ease;
+      cursor: pointer;
+    }}
+    .building-3d-room-badge:hover {{
+      transform: translateY(-3px) scale(1.02);
+      filter: brightness(1.08);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9), 0 0 22px rgba(56, 189, 248, 0.35) !important;
+    }}
+    .building-3d-room-badge:active {{
+      transform: translateY(0) scale(0.99);
+    }}
+    .building-room-close-btn {{
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px !important;
+      border: none !important;
+      background: rgba(255, 255, 255, 0.20) !important;
+      color: #ffffff !important;
+      transition: all 0.15s ease;
+      padding: 0 !important;
+      flex-shrink: 0;
+    }}
+    .building-room-close-btn:hover {{
+      background: #ffffff !important;
+      color: #000000 !important;
+      transform: scale(1.15);
+    }}
+
     /* ========================================================= */
     /* 📱 MOBILE POPUP & MODAL CUT-OFF PREVENTION SYSTEM */
     /* ========================================================= */
@@ -9101,6 +9133,30 @@ def build():
     }}
     window.dismissBuildingRoomBadge = dismissBuildingRoomBadge;
 
+    function handleFacadeFloorClick(idx) {{
+      selectBfiFloor(idx);
+      const inst = selectedInstitution || currentHighlightedBuildingInst;
+      if (!inst) return;
+      const bArch = inst.building_architecture || {{}};
+      const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
+      const fl = floors[idx];
+      if (!fl) return;
+      const show = (fl.current_shows && fl.current_shows[0]) || {{ title: inst.name + ' Contemporary Commissions' }};
+      const levelCode = fl.level_code || ('L' + fl.level);
+      if (typeof window.atlasAskCurator === 'function') {{
+        window.atlasAskCurator('Tell me about the exhibition at ' + inst.name + ' (' + levelCode + '): ' + JSON.stringify(show.title || ''));
+      }}
+    }}
+    window.handleFacadeFloorClick = handleFacadeFloorClick;
+
+    function askCuratorAboutCurrentBuilding() {{
+      const inst = selectedInstitution || currentHighlightedBuildingInst;
+      if (inst && typeof window.atlasAskCurator === 'function') {{
+        window.atlasAskCurator('Tell me about ' + inst.name);
+      }}
+    }}
+    window.askCuratorAboutCurrentBuilding = askCuratorAboutCurrentBuilding;
+
     function ensureBuildingFootprintLayer() {{
       if (!cityVectorMap) return;
 
@@ -9685,6 +9741,9 @@ def build():
         floorSelectorBarHtml +
 
         '<div style="margin-top:9px; padding-top:8px; border-top:1px solid #1e2c42; display:flex; align-items:center; gap:6px; flex-wrap:wrap;">' +
+          '<button type="button" onclick="window.askCuratorAboutCurrentBuilding()" style="background:#0284c7; color:#ffffff; border:1px solid #38bdf8; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer; font-weight:bold;" title="Ask curator about this space in chat">' +
+            '<span>Ask Curator 💬</span>' +
+          '</button>' +
           '<button type="button" onclick="window.toggleExploded3DMode()" style="background:#1d3557; color:#7dd3fc; border:1px solid #38bdf8; padding:4px 9px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer; font-weight:bold; transition:all 0.15s;" title="Toggle 3D exploded axonometric floor separation">' +
             '<span>' + (isExploded3DMode ? 'Stack 3D Building' : 'Explode 3D Floors') + '</span>' +
           '</button>' +
@@ -9716,7 +9775,7 @@ def build():
         if (!isMobileScreen && !isBuildingFacadeDismissed && !isFloorChange && !currentBuildingFacadeMarker) {{
           const facadeEl = document.createElement('div');
           facadeEl.className = 'building-3d-facade-stack pointer-events-auto select-none';
-          facadeEl.style.cssText = 'min-width:270px; max-width:330px; display:flex; flex-direction:column; gap:6px; padding:10px 12px; border-radius:16px; background:rgba(10,16,28,0.95); border:1px solid rgba(56,189,248,0.5); box-shadow:0 16px 32px rgba(0,0,0,0.75); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; z-index:28;';
+          facadeEl.style.cssText = 'min-width:280px; max-width:340px; display:flex; flex-direction:column; gap:6px; padding:10px 12px; border-radius:16px; background:rgba(10,16,28,0.95); border:1px solid rgba(56,189,248,0.5); box-shadow:0 16px 32px rgba(0,0,0,0.75); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; z-index:28;';
 
         const sortedFloors = floors.map((f, i) => ({{ floor: f, originalIndex: i }})).reverse();
 
@@ -9730,7 +9789,7 @@ def build():
           const levelCode = fl.level_code || (fl.level === 0 ? 'L0' : (fl.level < 0 ? ('L' + fl.level) : ('L' + fl.level)));
 
           floorItemsHtml += 
-            '<div onclick="window.selectBfiFloor(' + idx + ')" style="' +
+            '<div onclick="window.handleFacadeFloorClick(' + idx + ')" style="' +
               'cursor:pointer; border-radius:10px; padding:7px 9px; ' +
               'background:' + (isActive ? 'rgba(14,34,56,0.95)' : 'rgba(18,25,38,0.7)') + '; ' +
               'border:1px solid ' + (isActive ? '#38bdf8' : 'rgba(43,62,94,0.6)') + '; ' +
@@ -9754,6 +9813,10 @@ def build():
 
               '<div style="font-size:10.5px; color:#6ee7b7; font-family:monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:flex; align-items:baseline; gap:4px;">' +
                 '<span>' + escapeHtml(arch.collection_title) + '</span>' +
+              '</div>' +
+              '<div style="margin-top:2px; display:flex; align-items:center; justify-content:space-between; font-size:9.5px; font-family:monospace; color:' + (isActive ? '#38bdf8' : '#64748b') + ';">' +
+                '<span>Click to select &amp; pull into chat</span>' +
+                '<span>💬</span>' +
               '</div>' +
             '</div>';
         }});
@@ -9793,25 +9856,50 @@ def build():
         // Curatorial Gallery Room Badge (North-East quadrant)
         const galName = (curShow && curShow.room) || (activeFl.wing_name ? activeFl.wing_name.split('&')[0].trim() : 'Curatorial Main Gallery');
         const galTitle = curShow ? curShow.title : (inst.name + ' Commissions');
+        const galArtists = (curShow && curShow.curator_artists) ? curShow.curator_artists : '';
+        const galDates = (curShow && curShow.dates) ? curShow.dates : 'On View';
+        const galAdmission = (curShow && curShow.admission) || activeFl.access_policy || 'Free Public Access';
+        const galSynopsis = (curShow && curShow.synopsis) ? curShow.synopsis : '';
+
         const galEl = document.createElement('div');
         galEl.className = 'building-3d-room-badge pointer-events-auto select-none';
-        galEl.style.cssText = 'max-width:240px; padding:6px 9px; border-radius:10px; background:rgba(6,19,34,0.94); border:1px solid #10b981; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(16,185,129,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:26;';
-        galEl.onclick = () => selectBfiFloor(currentBfiFloorIndex);
+        galEl.style.cssText = 'min-width:240px; max-width:280px; padding:8px 11px; border-radius:12px; background:rgba(6,19,34,0.96); border:1px solid #10b981; box-shadow:0 12px 28px rgba(0,0,0,0.85), 0 0 14px rgba(16,185,129,0.35); backdrop-filter:blur(10px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:26;';
+        
+        galEl.onclick = (e) => {{
+          if (e.target.closest('.building-room-close-btn')) return;
+          selectBfiFloor(currentBfiFloorIndex);
+          const q = 'Tell me about the exhibition at ' + inst.name + ' (' + curLevelCode + '): ' + JSON.stringify(galTitle);
+          if (typeof window.atlasAskCurator === 'function') {{
+            window.atlasAskCurator(q);
+          }}
+        }};
+
         galEl.innerHTML = 
-          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">' +
-            '<span style="font-family:monospace; font-size:9px; font-weight:bold; padding:1px 4px; border-radius:3px; background:#047857; color:#a7f3d0; text-transform:uppercase;">EXHIBITION GALLERY</span>' +
-            '<div style="display:flex; align-items:center; gap:4px;">' +
-              '<span style="font-size:9.5px; font-family:monospace; color:#6ee7b7;">' + escapeHtml(curLevelCode) + '</span>' +
-              '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:16px; height:16px; border:none; background:rgba(255,255,255,0.15); color:#fff; border-radius:3px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; padding:0;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
+          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:4px;">' +
+            '<div style="display:flex; align-items:center; gap:5px;">' +
+              '<span style="font-family:monospace; font-size:9.5px; font-weight:bold; padding:2px 6px; border-radius:4px; background:#047857; color:#a7f3d0; text-transform:uppercase; letter-spacing:0.04em;">EXHIBITION GALLERY</span>' +
+              '<span style="font-size:10px; font-family:monospace; font-weight:bold; color:#6ee7b7; background:rgba(16,185,129,0.15); padding:1px 5px; border-radius:3px;">' + escapeHtml(curLevelCode) + '</span>' +
             '</div>' +
+            '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:18px; height:18px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
           '</div>' +
-          '<div style="font-size:11px; font-weight:600; color:#ffffff; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
+          '<div style="font-size:12px; font-weight:700; color:#ffffff; line-height:1.25; margin-bottom:2px;">' +
             escapeHtml(galName) +
           '</div>' +
-          '<div style="font-size:10px; color:#38bdf8; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:1px;">' +
-            'On View: ' + escapeHtml(galTitle) +
+          '<div style="font-size:11px; font-weight:600; color:#38bdf8; line-height:1.3; margin-top:2px;">' +
+            '“' + escapeHtml(galTitle) + '”' +
           '</div>' +
-          '<div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #10b981;"></div>';
+          (galArtists ? ('<div style="font-size:10px; color:#cbd5e1; margin-top:3px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + escapeHtml(galArtists) + '</div>') : '') +
+          '<div style="display:flex; align-items:center; gap:5px; font-size:9.5px; font-family:monospace; color:#94a3b8; margin-top:3px;">' +
+            '<span style="color:#34d399; font-weight:bold;">● ' + escapeHtml(galDates) + '</span>' +
+            '<span>·</span>' +
+            '<span>' + escapeHtml(galAdmission) + '</span>' +
+          '</div>' +
+          (galSynopsis ? ('<div style="font-size:10px; color:#cbd5e1; line-height:1.35; margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(galSynopsis) + '</div>') : '') +
+          '<div style="margin-top:7px; padding-top:6px; border-top:1px solid rgba(16,185,129,0.25); display:flex; align-items:center; justify-content:space-between; font-size:10px; font-family:monospace; color:#6ee7b7;">' +
+            '<span style="display:flex; align-items:center; gap:4px;">✦ Ask Curator · Pull into Chat</span>' +
+            '<span style="font-size:11px;">💬</span>' +
+          '</div>' +
+          '<div style="position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid #10b981;"></div>';
 
         try {{
           const galLon = isMobileScreen ? lon : (lon + d_lon * 0.70);
@@ -9823,29 +9911,48 @@ def build():
         }} catch (e) {{}}
 
         // Archives Room Badge (South-West quadrant)
-        const archName = (curArch && curArch.collection_title) 
-          ? (curArch.collection_title.length > 26 ? curArch.collection_title.slice(0, 24) + '...' : curArch.collection_title)
-          : 'Archives & Study Room';
+        const archTitle = (curArch && curArch.collection_title) 
+          ? curArch.collection_title 
+          : (inst.name + ' Archives & Study Room');
         const archItems = (curArch && curArch.items_count) ? curArch.items_count : 'Primary Curatorial Records';
+        const archPeriod = (curArch && curArch.period) ? curArch.period : '';
+        const archPolicy = (curArch && curArch.reading_room_policy) ? curArch.reading_room_policy : 'Open study consultation and public research carrels.';
+        const archScope = (curArch && curArch.scope) ? curArch.scope : '';
+
         const archEl = document.createElement('div');
         archEl.className = 'building-3d-room-badge pointer-events-auto select-none';
-        archEl.style.cssText = 'max-width:220px; padding:6px 9px; border-radius:10px; background:rgba(28,19,8,0.94); border:1px solid #f59e0b; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(245,158,11,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:25;';
-        archEl.onclick = () => selectBfiFloor(currentBfiFloorIndex);
+        archEl.style.cssText = 'min-width:240px; max-width:280px; padding:8px 11px; border-radius:12px; background:rgba(28,19,8,0.96); border:1px solid #f59e0b; box-shadow:0 12px 28px rgba(0,0,0,0.85), 0 0 14px rgba(245,158,11,0.35); backdrop-filter:blur(10px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:25;';
+        
+        archEl.onclick = (e) => {{
+          if (e.target.closest('.building-room-close-btn')) return;
+          selectBfiFloor(currentBfiFloorIndex);
+          const q = 'Tell me about the archives at ' + inst.name + ' (' + curLevelCode + '): ' + archTitle;
+          if (typeof window.atlasAskCurator === 'function') {{
+            window.atlasAskCurator(q);
+          }}
+        }};
+
         archEl.innerHTML = 
-          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">' +
-            '<span style="font-family:monospace; font-size:9px; font-weight:bold; padding:1px 4px; border-radius:3px; background:#b45309; color:#fde68a; text-transform:uppercase;">ARCHIVES & STUDY</span>' +
-            '<div style="display:flex; align-items:center; gap:4px;">' +
-              '<span style="font-size:9.5px; font-family:monospace; color:#fcd34d;">' + escapeHtml(curLevelCode) + '</span>' +
-              '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:16px; height:16px; border:none; background:rgba(255,255,255,0.15); color:#fff; border-radius:3px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; padding:0;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
+          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:4px;">' +
+            '<div style="display:flex; align-items:center; gap:5px;">' +
+              '<span style="font-family:monospace; font-size:9.5px; font-weight:bold; padding:2px 6px; border-radius:4px; background:#b45309; color:#fde68a; text-transform:uppercase; letter-spacing:0.04em;">ARCHIVES &amp; STUDY</span>' +
+              '<span style="font-size:10px; font-family:monospace; font-weight:bold; color:#fcd34d; background:rgba(245,158,11,0.15); padding:1px 5px; border-radius:3px;">' + escapeHtml(curLevelCode) + '</span>' +
             '</div>' +
+            '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:18px; height:18px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
           '</div>' +
-          '<div style="font-size:11px; font-weight:600; color:#fef3c7; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
-            escapeHtml(archName) +
+          '<div style="font-size:12px; font-weight:700; color:#fef3c7; line-height:1.25; margin-bottom:2px;">' +
+            escapeHtml(archTitle) +
           '</div>' +
-          '<div style="font-size:10px; color:#fbbf24; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:1px;">' +
-            escapeHtml(archItems) +
+          '<div style="font-size:10px; font-family:monospace; font-weight:600; color:#fbbf24; margin-top:2px;">' +
+            escapeHtml(archItems) + (archPeriod ? (' · ' + escapeHtml(archPeriod)) : '') +
           '</div>' +
-          '<div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #f59e0b;"></div>';
+          (archPolicy ? ('<div style="font-size:10px; color:#e2e8f0; line-height:1.35; margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(archPolicy) + '</div>') : '') +
+          (archScope ? ('<div style="font-size:9.5px; color:#94a3b8; line-height:1.35; margin-top:3px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">' + escapeHtml(archScope) + '</div>') : '') +
+          '<div style="margin-top:7px; padding-top:6px; border-top:1px solid rgba(245,158,11,0.25); display:flex; align-items:center; justify-content:space-between; font-size:10px; font-family:monospace; color:#fde68a;">' +
+            '<span style="display:flex; align-items:center; gap:4px;">✦ Consult Archive · Pull into Chat</span>' +
+            '<span style="font-size:11px;">📜</span>' +
+          '</div>' +
+          '<div style="position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid #f59e0b;"></div>';
 
         try {{
           const archLon = lon - d_lon * 0.70;
@@ -9858,28 +9965,52 @@ def build():
 
         // Public Atrium Badge (South-East quadrant)
         const atName = (activeFl.facilities && activeFl.facilities[0])
-          ? (activeFl.facilities[0] + ' & Forum')
-          : 'Public Forum & Atrium';
-        const atAccess = activeFl.access_policy || 'Universal Free Public Access';
+          ? (activeFl.facilities[0] + ' & Public Forum')
+          : (activeFl.wing_name || 'Public Forum & Atrium');
+        const atAccess = activeFl.access_policy || 'Universal Free Public Walk-in Access';
+        const atFacilities = (activeFl.facilities && activeFl.facilities.length)
+          ? activeFl.facilities.slice(0, 3).join(' · ')
+          : 'Step-Free Access · Community Carrels · Bookshop';
+        const atElevation = activeFl.elevation || 'Ground Level (0.0m)';
+
         const atEl = document.createElement('div');
         atEl.className = 'building-3d-room-badge pointer-events-auto select-none';
-        atEl.style.cssText = 'max-width:220px; padding:6px 9px; border-radius:10px; background:rgba(15,15,35,0.94); border:1px solid #6366f1; box-shadow:0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(99,102,241,0.3); backdrop-filter:blur(8px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:25;';
-        atEl.onclick = () => selectBfiFloor(currentBfiFloorIndex);
+        atEl.style.cssText = 'min-width:240px; max-width:280px; padding:8px 11px; border-radius:12px; background:rgba(15,15,35,0.96); border:1px solid #6366f1; box-shadow:0 12px 28px rgba(0,0,0,0.85), 0 0 14px rgba(99,102,241,0.35); backdrop-filter:blur(10px); color:#ffffff; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; cursor:pointer; margin-bottom:10px; z-index:25;';
+        
+        atEl.onclick = (e) => {{
+          if (e.target.closest('.building-room-close-btn')) return;
+          selectBfiFloor(currentBfiFloorIndex);
+          const q = 'Tell me about the public space and amenities at ' + inst.name + ' (' + curLevelCode + '): ' + atName;
+          if (typeof window.atlasAskCurator === 'function') {{
+            window.atlasAskCurator(q);
+          }}
+        }};
+
         atEl.innerHTML = 
-          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">' +
-            '<span style="font-family:monospace; font-size:9px; font-weight:bold; padding:1px 4px; border-radius:3px; background:#4338ca; color:#c7d2fe; text-transform:uppercase;">PUBLIC FORUM</span>' +
-            '<div style="display:flex; align-items:center; gap:4px;">' +
-              '<span style="font-size:9.5px; font-family:monospace; color:#a5b4fc;">' + escapeHtml(curLevelCode) + '</span>' +
-              '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:16px; height:16px; border:none; background:rgba(255,255,255,0.15); color:#fff; border-radius:3px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; padding:0;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
+          '<div style="display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:4px;">' +
+            '<div style="display:flex; align-items:center; gap:5px;">' +
+              '<span style="font-family:monospace; font-size:9.5px; font-weight:bold; padding:2px 6px; border-radius:4px; background:#4338ca; color:#c7d2fe; text-transform:uppercase; letter-spacing:0.04em;">PUBLIC FORUM &amp; CIVIC</span>' +
+              '<span style="font-size:10px; font-family:monospace; font-weight:bold; color:#a5b4fc; background:rgba(99,102,241,0.15); padding:1px 5px; border-radius:3px;">' + escapeHtml(curLevelCode) + '</span>' +
             '</div>' +
+            '<button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);" title="Dismiss Badge" aria-label="Close" style="width:18px; height:18px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
           '</div>' +
-          '<div style="font-size:11px; font-weight:600; color:#e0e7ff; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
+          '<div style="font-size:12px; font-weight:700; color:#e0e7ff; line-height:1.25; margin-bottom:2px;">' +
             escapeHtml(atName) +
           '</div>' +
-          '<div style="font-size:10px; color:#c7d2fe; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:1px;">' +
+          '<div style="font-size:10px; font-family:monospace; color:#a5b4fc; margin-top:2px;">' +
             escapeHtml(atAccess) +
           '</div>' +
-          '<div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #6366f1;"></div>';
+          '<div style="font-size:10px; color:#cbd5e1; line-height:1.35; margin-top:4px;">' +
+            escapeHtml(atFacilities) +
+          '</div>' +
+          '<div style="font-size:9.5px; font-family:monospace; color:#94a3b8; margin-top:3px;">' +
+            escapeHtml(atElevation) + (activeFl.area_sqm ? (' · ' + activeFl.area_sqm + ' m²') : '') +
+          '</div>' +
+          '<div style="margin-top:7px; padding-top:6px; border-top:1px solid rgba(99,102,241,0.25); display:flex; align-items:center; justify-content:space-between; font-size:10px; font-family:monospace; color:#c7d2fe;">' +
+            '<span style="display:flex; align-items:center; gap:4px;">✦ Explore Forum · Pull into Chat</span>' +
+            '<span style="font-size:11px;">🏛️</span>' +
+          '</div>' +
+          '<div style="position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid #6366f1;"></div>';
 
         try {{
           const atLon = lon + d_lon * 0.70;
@@ -18029,7 +18160,7 @@ FORMATTING & INTERACTION RULES:
       }}
 
       // Check for conversational intent to add/configure API key
-      const isApiKeyIntent = /^(add|set|configure|enter|use|where\s+to\s+add|how\s+to\s+add|provide)?\s*(api\s*key|ai\s*key|api\s*token|keys?|model\s*settings|ai\s*settings)\b/i.test(q) || q === '/key' || q === '/settings' || q === 'add api key' || q === 'api key';
+      const isApiKeyIntent = /^(add|set|configure|enter|use|where\s+to\s+add|how\s+to\s+add|provide)?\s*(api\s*key|ai\s*key|api\s*token|keys?|model\s*settings|ai\s*settings)\\b/i.test(q) || q === '/key' || q === '/settings' || q === 'add api key' || q === 'api key';
 
       if (isApiKeyIntent) {{
         openSettingsModal();
@@ -18069,7 +18200,7 @@ FORMATTING & INTERACTION RULES:
       }}
 
       // B. Gossip / Rumors / Reddit / Twitter Discourse Intent
-      const isGossipIntent = /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|x post|backchannel|scandal|controversy|dirt)\b/i.test(q);
+      const isGossipIntent = /\\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|x post|backchannel|scandal|controversy|dirt)\\b/i.test(q);
       if (isGossipIntent) {{
         if (!isGossipModeActive && typeof toggleGossipMode === 'function') {{
           toggleGossipMode();
@@ -18111,28 +18242,106 @@ FORMATTING & INTERACTION RULES:
       }}
 
       // C. Current Shows & Opening Nights Intent
-      const isShowIntent = /\b(current show|shows|exhibition|exhibitions|on view|opening night|vernissage|rsvp)\b/i.test(q);
+      const isShowIntent = /\\b(current show|shows|exhibition|exhibitions|on view|opening night|vernissage|rsvp)\\b/i.test(q);
       if (isShowIntent) {{
         const inst = selectedInstitution || (typeof findMentionedInst === 'function' ? findMentionedInst(q) : null);
-        if (inst && (inst.temporary_shows || (inst.floor_plans && inst.floor_plans[0]?.current_shows))) {{
-          const shows = inst.temporary_shows || inst.floor_plans[0].current_shows;
-          const s = shows[0];
+        if (inst) {{
+          curatorContext.lastInst = inst;
+          curatorContext.lastCity = inst.city;
+          const bArch = inst.building_architecture || {{}};
+          const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
+
+          // Detect if a specific level or show title was requested
+          const levelMatch = q.match(/\\b(l-?[0-9]+|level\s*-?[0-9]+|ground\s*floor|mezzanine|basement)\\b/i);
+          let targetFloor = null;
+          let targetFloorIdx = 0;
+
+          if (levelMatch) {{
+            const norm = levelMatch[1].toUpperCase().replace(/\s+/g, '');
+            floors.forEach((fl, idx) => {{
+              const code = (fl.level_code || ('L' + fl.level)).toUpperCase();
+              if (code === norm || ('LEVEL' + fl.level) === norm) {{
+                targetFloor = fl;
+                targetFloorIdx = idx;
+              }}
+            }});
+          }}
+
+          if (!targetFloor && floors.length) {{
+            floors.forEach((fl, idx) => {{
+              const s = fl.current_shows && fl.current_shows[0];
+              if (s && s.title && q.includes(s.title.toLowerCase().slice(0, 16))) {{
+                targetFloor = fl;
+                targetFloorIdx = idx;
+              }}
+            }});
+          }}
+
+          const activeFloor = targetFloor || floors[0] || null;
+          const s = (activeFloor && activeFloor.current_shows && activeFloor.current_shows[0]) 
+            || (inst.temporary_shows && inst.temporary_shows[0]) 
+            || {{ title: inst.name + ' Contemporary Commissions', dates: 'On View' }};
+          const curLevelCode = activeFloor ? (activeFloor.level_code || ('L' + activeFloor.level)) : 'L0';
+
           appendCuratorMessage(`
-            <div class="p-3.5 bg-[#121620] border border-[#232d3f] rounded-2xl space-y-2">
-              <div class="flex items-center justify-between border-b border-[#1b2536] pb-2">
-                <span class="text-amber-400 font-bold text-[14px] flex items-center gap-1.5">
-                  ON VIEW: ${{escapeHtml(inst.name)}}
-                </span>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono border border-emerald-800 bg-emerald-950 text-emerald-300 font-bold">${{escapeHtml(s.status || 'Now On View')}}</span>
+            <div class="border border-emerald-500/30 bg-[#071912] p-4 rounded-2xl space-y-3 shadow-lg">
+              <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-950 text-emerald-300 border border-emerald-500/40">
+                    ${{curLevelCode}} · EXHIBITION DOSSIER
+                  </span>
+                </div>
+                <span class="text-[11px] font-mono text-emerald-400 font-semibold">${{escapeHtml(s.dates || s.status || 'Active Rotation')}}</span>
               </div>
-              <p class="text-[13px] text-slate-300">Fresh off the plinth—here is what's currently commanding spatial real estate:</p>
-              <p class="text-[15px] text-white font-semibold leading-tight">${{escapeHtml(s.title)}}</p>
-              <div class="text-[12px] font-mono text-slate-300">
-                <div>${{escapeHtml(s.curator_artists || 'Resident Artists')}} · ${{escapeHtml(s.dates || 'On View')}}</div>
-                ${{s.opening_night ? `<div class="mt-1.5 text-emerald-300 bg-emerald-950/40 p-1.5 rounded border border-emerald-800/60">Vernissage / Private View: ${{escapeHtml(s.opening_night.date)}} (${{escapeHtml(s.opening_night.hours)}}) · ${{escapeHtml(s.opening_night.rsvp || 'Free / RSVP')}}</div>` : ''}}
+              <div>
+                <h4 class="text-white font-bold text-[16px] leading-snug">“${{escapeHtml(s.title)}}”</h4>
+                <div class="text-[12px] text-slate-300 mt-1 flex items-center gap-2 flex-wrap font-mono">
+                  <span class="text-emerald-300">Room: ${{escapeHtml(s.room || (activeFloor && activeFloor.floor_name) || 'Main Gallery')}}</span>
+                  ${{s.curator_artists ? `<span>· Curated by: ${{escapeHtml(s.curator_artists)}}</span>` : ''}}
+                </div>
+              </div>
+              ${{s.synopsis ? `
+                <p class="text-slate-200 text-[13px] leading-relaxed border-t border-emerald-950 pt-2">
+                  ${{escapeHtml(s.synopsis)}}
+                </p>
+              ` : ''}}
+              ${{s.opening_night ? `
+                <div class="text-[12px] text-emerald-300 bg-emerald-950/40 p-2 rounded-xl border border-emerald-800/60 font-mono">
+                  Vernissage / Private View: ${{escapeHtml(s.opening_night.date)}} (${{escapeHtml(s.opening_night.hours)}}) · ${{escapeHtml(s.opening_night.rsvp || 'Free / RSVP')}}
+                </div>
+              ` : ''}}
+              <div class="grid grid-cols-2 gap-2 text-[11px] font-mono bg-black/40 p-2.5 rounded-xl border border-emerald-900/40">
+                <div>
+                  <span class="text-slate-400 block text-[10px] uppercase">Admission &amp; Access</span>
+                  <span class="text-emerald-200 font-semibold">${{escapeHtml(s.admission || (activeFloor && activeFloor.access_policy) || 'Universal Free Access')}}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px] uppercase">Elevation &amp; Floor Area</span>
+                  <span class="text-slate-200">${{escapeHtml((activeFloor && activeFloor.elevation) || '0.0m')}} · ${{(activeFloor && activeFloor.area_sqm) || bArch.footprint_sqm || 500}} m²</span>
+                </div>
+              </div>
+              ${{(activeFloor && activeFloor.archive_holdings) ? `
+                <div class="text-[12px] text-amber-200/90 bg-amber-950/30 border border-amber-500/20 p-2.5 rounded-xl">
+                  <span class="font-mono text-[10.5px] uppercase text-amber-400 font-bold block">Archival Holding on this Level:</span>
+                  <strong>${{escapeHtml(activeFloor.archive_holdings.collection_title || '')}}</strong>
+                  <div class="text-[11px] text-amber-100/70 mt-0.5">${{escapeHtml(activeFloor.archive_holdings.items_count || '')}}</div>
+                </div>
+              ` : ''}}
+              <div class="flex items-center gap-2 pt-2 border-t border-emerald-500/20 flex-wrap">
+                <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-[11px] font-medium transition cursor-pointer">
+                  Inspect Level in 3D Cutaway
+                </button>
+                <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#182334] hover:bg-[#203046] text-sky-300 font-mono text-[11px] border border-sky-500/30 transition cursor-pointer">
+                  Plan Visit
+                </button>
+                <button type="button" onclick="window.atlasAskCurator('Audit funding for ${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#25182e] hover:bg-[#34223f] text-pink-300 font-mono text-[11px] border border-pink-500/30 transition cursor-pointer">
+                  Audit Sponsor Integrity
+                </button>
               </div>
             </div>
-          `);
+          `, ['Plan Visit', 'Consult Archive on this Level', 'Opening Hours', `More in ${{inst.city}}`]);
+          if (typeof zoomToBuilding === 'function') zoomToBuilding(inst, false);
+          if (typeof selectBfiFloor === 'function') selectBfiFloor(targetFloorIdx);
           return;
         }}
       }}
@@ -20148,7 +20357,7 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 🏛️ IN-DEPTH ARCHIVES, COLLECTIONS & BUILDING INSPECTION INTENT
         // =========================================================================
-        const isArchiveQuery = (q.includes('archive') || q.includes('collection') || q.includes('holding') || q.includes('reading room') || q.includes('special collection') || q.includes('footprint') || q.includes('building layout') || q.includes('architecture of') || q.includes('zoom to building') || q.includes('floor') || q.includes('current show') || q.includes('shows') || q.includes('exhibition') || q.includes('on view')) && (findMentionedInst(query) || curatorContext.lastInst || selectedInstitution);
+        const isArchiveQuery = (q.includes('archive') || q.includes('collection') || q.includes('holding') || q.includes('reading room') || q.includes('special collection') || q.includes('footprint') || q.includes('building layout') || q.includes('architecture of') || q.includes('zoom to building') || q.includes('floor') || q.includes('current show') || q.includes('shows') || q.includes('exhibition') || q.includes('on view') || q.includes('forum') || q.includes('public space') || q.includes('amenities')) && (findMentionedInst(query) || curatorContext.lastInst || selectedInstitution);
         if (isArchiveQuery) {{
           const inst = findMentionedInst(query) || curatorContext.lastInst || selectedInstitution;
           if (inst) {{
@@ -20157,11 +20366,200 @@ FORMATTING & INTERACTION RULES:
             const bArch = inst.building_architecture || {{}};
             const arch = inst.archives_and_collections || {{}};
             const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
+
+            // Detect if this is a query targeting a specific level or feature
+            const levelMatch = q.match(/\\b(l-?[0-9]+|level\s*-?[0-9]+|ground\s*floor|mezzanine|basement)\\b/i);
+            let targetFloor = null;
+            let targetFloorIdx = 0;
+
+            if (levelMatch) {{
+              const norm = levelMatch[1].toUpperCase().replace(/\s+/g, '');
+              floors.forEach((fl, idx) => {{
+                const code = (fl.level_code || ('L' + fl.level)).toUpperCase();
+                if (code === norm || ('LEVEL' + fl.level) === norm) {{
+                  targetFloor = fl;
+                  targetFloorIdx = idx;
+                }}
+              }});
+            }}
+
+            if (!targetFloor && floors.length) {{
+              // Try matching against show title or archive collection title
+              floors.forEach((fl, idx) => {{
+                const s = fl.current_shows && fl.current_shows[0];
+                const a = fl.archive_holdings;
+                if (s && s.title && q.includes(s.title.toLowerCase().slice(0, 16))) {{
+                  targetFloor = fl;
+                  targetFloorIdx = idx;
+                }} else if (a && a.collection_title && q.includes(a.collection_title.toLowerCase().slice(0, 16))) {{
+                  targetFloor = fl;
+                  targetFloorIdx = idx;
+                }}
+              }});
+            }}
+
+            const isSpecificExhibition = (q.includes('exhibition') || q.includes('show') || q.includes('on view')) && targetFloor;
+            const isSpecificArchive = (q.includes('archive') || q.includes('collection') || q.includes('holding') || q.includes('reading room') || q.includes('study room')) && targetFloor;
+            const isSpecificForum = (q.includes('forum') || q.includes('amenities') || q.includes('public space') || q.includes('atrium') || q.includes('facilities')) && targetFloor;
+
+            if (isSpecificExhibition) {{
+              const curShow = (targetFloor.current_shows && targetFloor.current_shows[0]) || {{ title: inst.name + ' Contemporary Commissions', dates: 'On View' }};
+              const curLevelCode = targetFloor.level_code || ('L' + targetFloor.level);
+              appendCuratorMessage(`
+                <div class="border border-emerald-500/30 bg-[#071912] p-4 rounded-2xl space-y-3 shadow-lg">
+                  <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2">
+                    <div class="flex items-center gap-2">
+                      <span class="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-950 text-emerald-300 border border-emerald-500/40">
+                        ${{curLevelCode}} · EXHIBITION DOSSIER
+                      </span>
+                    </div>
+                    <span class="text-[11px] font-mono text-emerald-400 font-semibold">${{escapeHtml(curShow.dates || 'Active Rotation')}}</span>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-bold text-[16px] leading-snug">“${{escapeHtml(curShow.title)}}”</h4>
+                    <div class="text-[12px] text-slate-300 mt-1 flex items-center gap-2 flex-wrap font-mono">
+                      <span class="text-emerald-300">Room: ${{escapeHtml(curShow.room || targetFloor.floor_name || 'Main Gallery')}}</span>
+                      ${{curShow.curator_artists ? `<span>· Curated by: ${{escapeHtml(curShow.curator_artists)}}</span>` : ''}}
+                    </div>
+                  </div>
+                  ${{curShow.synopsis ? `
+                    <p class="text-slate-200 text-[13px] leading-relaxed border-t border-emerald-950 pt-2">
+                      ${{escapeHtml(curShow.synopsis)}}
+                    </p>
+                  ` : ''}}
+                  <div class="grid grid-cols-2 gap-2 text-[11px] font-mono bg-black/40 p-2.5 rounded-xl border border-emerald-900/40">
+                    <div>
+                      <span class="text-slate-400 block text-[10px] uppercase">Admission &amp; Access</span>
+                      <span class="text-emerald-200 font-semibold">${{escapeHtml(curShow.admission || targetFloor.access_policy || 'Universal Free Access')}}</span>
+                    </div>
+                    <div>
+                      <span class="text-slate-400 block text-[10px] uppercase">Elevation &amp; Floor Area</span>
+                      <span class="text-slate-200">${{escapeHtml(targetFloor.elevation || '0.0m')}} · ${{targetFloor.area_sqm || bArch.footprint_sqm || 500}} m²</span>
+                    </div>
+                  </div>
+                  ${{targetFloor.archive_holdings ? `
+                    <div class="text-[12px] text-amber-200/90 bg-amber-950/30 border border-amber-500/20 p-2.5 rounded-xl">
+                      <span class="font-mono text-[10.5px] uppercase text-amber-400 font-bold block">Archival Holding on this Level:</span>
+                      <strong>${{escapeHtml(targetFloor.archive_holdings.collection_title || '')}}</strong>
+                      <div class="text-[11px] text-amber-100/70 mt-0.5">${{escapeHtml(targetFloor.archive_holdings.items_count || '')}}</div>
+                    </div>
+                  ` : ''}}
+                  <div class="flex items-center gap-2 pt-2 border-t border-emerald-500/20 flex-wrap">
+                    <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-[11px] font-medium transition cursor-pointer">
+                      Inspect Level in 3D Cutaway
+                    </button>
+                    <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#182334] hover:bg-[#203046] text-sky-300 font-mono text-[11px] border border-sky-500/30 transition cursor-pointer">
+                      Plan Visit
+                    </button>
+                    <button type="button" onclick="window.atlasAskCurator('Audit funding for ${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#25182e] hover:bg-[#34223f] text-pink-300 font-mono text-[11px] border border-pink-500/30 transition cursor-pointer">
+                      Audit Sponsor Integrity
+                    </button>
+                  </div>
+                </div>
+              `, ['Plan Visit', 'Consult Archive on this Level', 'Opening Hours', `More in ${{inst.city}}`]);
+              zoomToBuilding(inst, false);
+              selectBfiFloor(targetFloorIdx);
+              return;
+            }}
+
+            if (isSpecificArchive) {{
+              const curArch = targetFloor.archive_holdings || {{ collection_title: inst.name + ' Archives & Records' }};
+              const curLevelCode = targetFloor.level_code || ('L' + targetFloor.level);
+              appendCuratorMessage(`
+                <div class="border border-amber-500/30 bg-[#1a1205] p-4 rounded-2xl space-y-3 shadow-lg">
+                  <div class="flex items-center justify-between border-b border-amber-500/20 pb-2">
+                    <div class="flex items-center gap-2">
+                      <span class="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber-950 text-amber-300 border border-amber-500/40">
+                        ${{curLevelCode}} · ARCHIVAL REPOSITORY
+                      </span>
+                    </div>
+                    <span class="text-[11px] font-mono text-amber-400 font-semibold">${{escapeHtml(curArch.period || 'Permanent Archive')}}</span>
+                  </div>
+                  <div>
+                    <h4 class="text-[#fef3c7] font-bold text-[16px] leading-snug">${{escapeHtml(curArch.collection_title)}}</h4>
+                    <div class="text-[12px] text-amber-300/80 mt-1 font-mono">
+                      <span>Volume: ${{escapeHtml(curArch.items_count || 'Complete Primary Holdings')}}</span>
+                    </div>
+                  </div>
+                  ${{curArch.scope ? `
+                    <div class="border-t border-amber-950 pt-2 space-y-1">
+                      <span class="text-amber-400 font-mono text-[10.5px] uppercase font-bold block">Scope &amp; Provenance</span>
+                      <p class="text-slate-200 text-[13px] leading-relaxed">${{escapeHtml(curArch.scope)}}</p>
+                    </div>
+                  ` : ''}}
+                  <div class="bg-black/40 p-2.5 rounded-xl border border-amber-900/40 space-y-1.5 text-[12px]">
+                    <div class="text-amber-300 font-mono text-[10.5px] uppercase font-bold">Public Study Room &amp; Access Policy</div>
+                    <p class="text-slate-300 leading-snug">${{escapeHtml(curArch.reading_room_policy || targetFloor.access_policy || 'Free open consultation for independent researchers during gallery hours.')}}</p>
+                  </div>
+                  ${{targetFloor.facilities && targetFloor.facilities.length ? `
+                    <div class="text-[11px] font-mono text-slate-300 flex items-center gap-2 flex-wrap pt-1">
+                      <span class="text-amber-400 uppercase text-[10px]">Room Amenities:</span>
+                      ${{targetFloor.facilities.map(f => `<span class="bg-amber-950/60 border border-amber-700/40 px-2 py-0.5 rounded text-amber-200">${{escapeHtml(f)}}</span>`).join('')}}
+                    </div>
+                  ` : ''}}
+                  <div class="flex items-center gap-2 pt-2 border-t border-amber-500/20 flex-wrap">
+                    <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-mono text-[11px] font-medium transition cursor-pointer">
+                      Inspect Study Room in 3D
+                    </button>
+                    <button type="button" onclick="window.openBuildingArchivesModal(selectedInstitution || curatorContext.lastInst)" class="px-3 py-1.5 rounded-lg bg-[#271d0b] hover:bg-[#3d2d11] text-amber-200 font-mono text-[11px] border border-amber-500/40 transition cursor-pointer">
+                      Open Full Archives Dossier
+                    </button>
+                    <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#182334] hover:bg-[#203046] text-sky-300 font-mono text-[11px] border border-sky-500/30 transition cursor-pointer">
+                      Plan Visit
+                    </button>
+                  </div>
+                </div>
+              `, ['Exhibition on this Level', 'Full Building Blueprint', 'Plan Visit', `More in ${{inst.city}}`]);
+              zoomToBuilding(inst, false);
+              selectBfiFloor(targetFloorIdx);
+              return;
+            }}
+
+            if (isSpecificForum) {{
+              const forumName = (targetFloor.facilities && targetFloor.facilities[0]) ? (targetFloor.facilities[0] + ' & Public Forum') : (targetFloor.wing_name || 'Public Forum & Atrium');
+              const curLevelCode = targetFloor.level_code || ('L' + targetFloor.level);
+              appendCuratorMessage(`
+                <div class="border border-indigo-500/30 bg-[#0e0e24] p-4 rounded-2xl space-y-3 shadow-lg">
+                  <div class="flex items-center justify-between border-b border-indigo-500/20 pb-2">
+                    <div class="flex items-center gap-2">
+                      <span class="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-indigo-950 text-indigo-300 border border-indigo-500/40">
+                        ${{curLevelCode}} · PUBLIC FORUM &amp; CIVIC AMENITIES
+                      </span>
+                    </div>
+                    <span class="text-[11px] font-mono text-indigo-300">${{escapeHtml(targetFloor.elevation || 'Ground Level')}}</span>
+                  </div>
+                  <div>
+                    <h4 class="text-[#e0e7ff] font-bold text-[16px] leading-snug">${{escapeHtml(forumName)}}</h4>
+                    <div class="text-[12px] text-indigo-300/80 mt-1 font-mono">
+                      <span>Charter: ${{escapeHtml(targetFloor.access_policy || 'Universal Free Public Walk-in Access')}}</span>
+                    </div>
+                  </div>
+                  <div class="bg-black/40 p-2.5 rounded-xl border border-indigo-900/40 space-y-1.5 text-[12px]">
+                    <div class="text-indigo-300 font-mono text-[10.5px] uppercase font-bold">Public Amenities &amp; Facilities</div>
+                    <div class="flex items-center gap-1.5 flex-wrap pt-0.5">
+                      ${{(targetFloor.facilities || ['Universal Step-Free Access', 'Public Reading Commons', 'Restroom']).map(f => `<span class="bg-indigo-950/80 border border-indigo-700/50 px-2 py-0.5 rounded text-indigo-200 font-mono text-[11px]">${{escapeHtml(f)}}</span>`).join('')}}
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2 pt-2 border-t border-indigo-500/20 flex-wrap">
+                    <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false); window.selectBfiFloor(${{targetFloorIdx}});" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-[11px] font-medium transition cursor-pointer">
+                      Inspect Floor in 3D Cutaway
+                    </button>
+                    <button type="button" onclick="window.atlasPlanVisit('${{escapeHtml(inst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#182334] hover:bg-[#203046] text-sky-300 font-mono text-[11px] border border-sky-500/30 transition cursor-pointer">
+                      Plan Visit
+                    </button>
+                  </div>
+                </div>
+              `, ['Exhibition on this Level', 'Archives on this Level', 'Plan Visit', `More in ${{inst.city}}`]);
+              zoomToBuilding(inst, false);
+              selectBfiFloor(targetFloorIdx);
+              return;
+            }}
+
             let floorsHtml = '';
             if (floors && floors.length) {{
               floorsHtml = `
                 <div class="pt-2 border-t border-[#333] space-y-2">
-                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">Floor-by-Floor Current Shows & Archival Holdings:</strong>
+                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">Floor-by-Floor Current Shows &amp; Archival Holdings:</strong>
               ` + floors.map(fl => {{
                 const show = (fl.current_shows && fl.current_shows[0]) || {{ title: 'Curatorial Commissions', dates: 'On View' }};
                 const archHold = fl.archive_holdings || {{ collection_title: 'Special Collections' }};
@@ -20184,19 +20582,19 @@ FORMATTING & INTERACTION RULES:
 
             appendCuratorMessage(`
               <p class="text-white font-medium text-[15px]">
-                <strong>${{formatInstLink(inst)}}</strong>: Architectural Profile & Archival Repository
+                <strong>${{formatInstLink(inst)}}</strong>: Architectural Profile &amp; Archival Repository
               </p>
               <div class="py-2.5 border-t border-[#333] space-y-2 text-slate-300 text-[13px] leading-[135%]">
                 <div>
-                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">Building Profile & Footprint</strong>
+                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">Building Profile &amp; Footprint</strong>
                   ${{bArch.architectural_style || 'Independent Loft'}} · ${{bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() : '1,800'}} m² built area (${{bArch.floors || 2}} Floors, step-free access).
                 </div>
                 <div class="pt-1 border-t border-[#262626]">
-                  <strong class="text-[#34d399] font-mono uppercase text-[11px] tracking-wider block">Archival Repository & Scope</strong>
+                  <strong class="text-[#34d399] font-mono uppercase text-[11px] tracking-wider block">Archival Repository &amp; Scope</strong>
                   ${{arch.summary || inst.curatorial_focus || 'Historic primary source files, artist portfolios, and curatorial correspondence.'}}
                 </div>
                 <div class="pt-1 border-t border-[#262626]">
-                  <strong class="text-[#fcd34d] font-mono uppercase text-[11px] tracking-wider block">Public Study Room & Access Charter</strong>
+                  <strong class="text-[#fcd34d] font-mono uppercase text-[11px] tracking-wider block">Public Study Room &amp; Access Charter</strong>
                   ${{arch.reading_room_policy || 'Free public study room and curatorial library open during exhibition hours.'}}
                 </div>
                 ${{floorsHtml}}
@@ -20204,7 +20602,7 @@ FORMATTING & INTERACTION RULES:
               <div class="pt-2 border-t border-[#333] flex items-center gap-2 flex-wrap">
                 <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', false)" 
                         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[12px] shadow transition cursor-pointer">
-                  <span>Zoom to 3D Building & Inspect Archives</span>
+                  <span>Zoom to 3D Building &amp; Inspect Archives</span>
                 </button>
                 <button type="button" onclick="window.zoomCloserToBuilding(20.0)" 
                         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white font-medium text-[12px] shadow transition cursor-pointer">
@@ -20876,7 +21274,7 @@ FORMATTING & INTERACTION RULES:
         // =========================================================================
         // 💼 W.A.G.E. CERTIFICATION, FAIR PAY & MUSEUM LABOR UNIONS
         // =========================================================================
-        if (q.includes('wage') || q.includes('fair pay') || q.includes('union') || q.includes('local 2110') || /\blabor\b/i.test(q) || q.includes('strike moma') || q.includes('museum workers') || q.includes('minimum fee')) {{
+        if (q.includes('wage') || q.includes('fair pay') || q.includes('union') || q.includes('local 2110') || /\\blabor\\b/i.test(q) || q.includes('strike moma') || q.includes('museum workers') || q.includes('minimum fee')) {{
           appendCuratorMessage(`
             <p class="text-slate-200">
               Ethical cultural stewardship is inseparable from <strong>fair artist remuneration and museum worker labor rights</strong>:
@@ -21420,7 +21818,7 @@ FORMATTING & INTERACTION RULES:
         if (
           q.includes('utrecht bac') || q.includes('bac utrecht') || q.includes('bak utrecht') || q.includes('utrecht bak') ||
           q.includes('basis voor actuele kunst') || q.includes('maria hlavajova') || q.includes('former west') ||
-          ((/\b(bak|bac)\b/i.test(q)) && (q.includes('utrecht') || q.includes('art') || q.includes('research') || q.includes('space') || q.includes('museum') || q.includes('theory') || q.includes('curat') || q.includes('learn')))
+          ((/\\b(bak|bac)\\b/i.test(q)) && (q.includes('utrecht') || q.includes('art') || q.includes('research') || q.includes('space') || q.includes('museum') || q.includes('theory') || q.includes('curat') || q.includes('learn')))
         ) {{
           const bak = ALL_INSTITUTIONS.find(i => i.id === 'bak-utrecht' || i.name.includes('BAK'));
           appendCuratorMessage(`
