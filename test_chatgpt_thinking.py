@@ -21,6 +21,9 @@ def test_chatgpt_thinking():
         assert 'curatorThinkingThought' in content, f"Missing curatorThinkingThought in {p}"
         assert 'curatorThinkingStep' in content, f"Missing curatorThinkingStep in {p}"
         assert 'curatorThinkingStepLabel' in content, f"Missing curatorThinkingStepLabel in {p}"
+        assert 'curatorCityDotWrap' in content, f"Missing curatorCityDotWrap in {p}"
+        assert 'curatorCityDotCore' in content, f"Missing curatorCityDotCore in {p}"
+        assert 'curatorThinkingModeBadge' in content, f"Missing curatorThinkingModeBadge in {p}"
         assert 'curator-thought-accordion' in content, f"Missing curator-thought-accordion in {p}"
         assert 'Working for' in content, f"Missing 'Working for' in {p}"
         assert 'Thought for' in content, f"Missing 'Thought for' in {p}"
@@ -45,36 +48,64 @@ def test_chatgpt_thinking():
         assert("generateThinkingPlan is a function", typeof generateThinkingPlan === 'function');
         assert("startCuratorThinking is a function", typeof startCuratorThinking === 'function');
         assert("stopCuratorThinking is a function", typeof stopCuratorThinking === 'function');
+        assert("getChatModeConfig is a function", typeof getChatModeConfig === 'function');
 
-        // 2. Test generateThinkingPlan produces ChatGPT-like plans
-        const defaultPlan = generateThinkingPlan("general inquiry");
-        assert("Default plan has exact inspection sentence", defaultPlan.thought.includes("inspect the prepare job and workflow context, then propose the smallest reversible fix for review"), defaultPlan.thought);
-        assert("Default plan has terminal scan step", defaultPlan.step.includes("Scanning Repository Configuration Files"), defaultPlan.step);
+        // 2. Test chat modes and dynamic colors
+        const cleanMode = getChatModeConfig("hello clean museum");
+        assert("Clean mode returns blue color", cleanMode.id === 'clean' && cleanMode.color === '#60a5fa', cleanMode.color);
 
-        const instPlan = generateThinkingPlan("Chisenhale Gallery");
-        assert("Institution plan mentions governance / filings", instPlan.thought.includes("governance records"), instPlan.thought);
-        assert("Institution step audits Form 990", instPlan.step.includes("Auditing Form 990"), instPlan.step);
+        const gossipMode = getChatModeConfig("art world gossip and scandals");
+        assert("Gossip mode returns yellow color", gossipMode.id === 'gossip' && gossipMode.color === '#facc15', gossipMode.color);
 
-        // 3. Test startCuratorThinking activates live UI
+        const sparringMode = getChatModeConfig("train it to talk back and debate me");
+        assert("Sparring mode returns purple color", sparringMode.id === 'sparring' && sparringMode.color === '#c084fc', sparringMode.color);
+
+        const forensicMode = getChatModeConfig("show museum budget and form 990 filings");
+        assert("Forensic mode returns cyan color", forensicMode.id === 'forensic' && forensicMode.color === '#22d3ee', forensicMode.color);
+
+        const itineraryMode = getChatModeConfig("plan a curatorial itinerary walking crawl");
+        assert("Itinerary mode returns emerald color", itineraryMode.id === 'itinerary' && itineraryMode.color === '#34d399', itineraryMode.color);
+
+        const resistanceMode = getChatModeConfig("boycott victories and direct action protest timeline");
+        assert("Resistance mode returns rose color", resistanceMode.id === 'resistance' && resistanceMode.color === '#fb7185', resistanceMode.color);
+
+        // 3. Test startCuratorThinking with city detection and dynamic color updates
         startCuratorThinking("Find independent art spaces in London");
         const typingEl = document.getElementById('curatorTyping');
         const timerEl = document.getElementById('curatorThinkingTimer');
         const thoughtEl = document.getElementById('curatorThinkingThought');
         const stepEl = document.getElementById('curatorThinkingStep');
         const stepLabelEl = document.getElementById('curatorThinkingStepLabel');
+        const dotWrap = document.getElementById('curatorCityDotWrap');
+        const dotCore = document.getElementById('curatorCityDotCore');
+        const dotPing = document.getElementById('curatorCityDotPing');
+        const modeBadge = document.getElementById('curatorThinkingModeBadge');
 
         assert("curatorTyping is visible while thinking", typingEl && !typingEl.classList.contains('hidden'));
+        assert("City glowing dot wrap exists", !!dotWrap);
+        assert("City dot core has color style", dotCore && !!dotCore.style.backgroundColor);
         assert("curatorThinkingTimer is initialized", timerEl && timerEl.textContent === '1');
         assert("curatorThinkingThought has inspection text", thoughtEl && thoughtEl.textContent.length > 10);
         assert("curatorThinkingStep has terminal icon", stepEl && !!stepEl.querySelector('svg'));
         assert("curatorThinkingStepLabel has step text", stepLabelEl && stepLabelEl.textContent.length > 5);
+        assert("isCuratorThinkingActive is set on window", isCuratorThinkingActive === true);
+        assert("curatorThinkingTargetCoord detects London", curatorThinkingTargetCoord && curatorThinkingTargetCoord.name.includes('London'), curatorThinkingTargetCoord?.name);
 
-        // 4. Test stopCuratorThinking returns thinking data and hides UI
+        // 4. Test mode change updates city glowing dot color in real time
+        window.isGossipModeActive = true;
+        startCuratorThinking("latest whispers");
+        assert("Gossip mode updates dot core to yellow", dotCore.style.backgroundColor.includes('250') || dotCore.style.backgroundColor === '#facc15' || dotCore.style.backgroundColor.includes('204'), dotCore.style.backgroundColor);
+        assert("Gossip mode updates mode badge text", modeBadge && modeBadge.textContent.includes('Gossip'), modeBadge?.textContent);
+        window.isGossipModeActive = false;
+
+        // 5. Test stopCuratorThinking returns thinking data and resets active thinking
         const thinkingData = stopCuratorThinking();
         assert("stopCuratorThinking returns thinkingData object", !!thinkingData && typeof thinkingData.duration === 'number');
+        assert("isCuratorThinkingActive is reset to false", isCuratorThinkingActive === false);
+        assert("curatorThinkingTargetCoord is reset to null", curatorThinkingTargetCoord === null);
         assert("curatorTyping is hidden after stopCuratorThinking", typingEl.classList.contains('hidden'));
 
-        // 5. Test appendCuratorMessage renders ChatGPT-style Thought accordion
+        // 6. Test appendCuratorMessage renders ChatGPT-style Thought accordion with glowing dot
         appendCuratorMessage("<p>Verified findings on London cultural spaces.</p>", [], null, thinkingData);
         const msgWraps = document.querySelectorAll('.curator-message-wrap');
         const lastMsg = msgWraps[msgWraps.length - 1];
@@ -86,21 +117,22 @@ def test_chatgpt_thinking():
         assert("Thought accordion rendered in message", !!accordion);
         assert("Accordion has data-exclude-speech for docent safety", accordion && accordion.getAttribute('data-exclude-speech') === 'true');
         assert("Toggle button shows 'Thought for Xs'", toggleBtn && toggleBtn.textContent.includes('Thought for'));
+        assert("Toggle button includes mode glowing dot indicator", !!toggleBtn.querySelector('.rounded-full'));
         assert("Thought content is initially collapsed (hidden)", thoughtContent && thoughtContent.classList.contains('hidden'));
         assert("Thought content has inspection sentence", thoughtContent && thoughtContent.textContent.includes(thinkingData.thought));
         assert("Thought content has terminal tool step", thoughtContent && thoughtContent.textContent.includes(thinkingData.step));
 
-        // 6. Test clicking toggle expands accordion
+        // 7. Test clicking toggle expands accordion
         toggleBtn.click();
         assert("Clicking toggle unhides thought content", !thoughtContent.classList.contains('hidden'));
         assert("Clicking toggle rotates chevron", chevron && chevron.classList.contains('rotate-180'));
 
-        // 7. Test clicking toggle collapses accordion
+        // 8. Test clicking toggle collapses accordion
         toggleBtn.click();
         assert("Clicking toggle collapses thought content back to hidden", thoughtContent.classList.contains('hidden'));
         assert("Clicking toggle removes rotate-180 from chevron", !chevron.classList.contains('rotate-180'));
 
-        // 8. Test cleanTextForSpeech ignores thought accordion
+        // 9. Test cleanTextForSpeech ignores thought accordion
         const cleaned = window.cleanTextForSpeech(lastMsg);
         assert("cleanTextForSpeech excludes Thought text", !cleaned.includes('Thought for') && !cleaned.includes('Scanning Repository') && !cleaned.includes('inspect the prepare job'), cleaned);
         assert("cleanTextForSpeech includes actual narrative", cleaned.includes('Verified findings on London cultural spaces.'), cleaned);
@@ -130,7 +162,7 @@ def test_chatgpt_thinking():
         f"file://{temp_file}"
     ]
 
-    print("\n--- RUNNING CHATGPT THINKING MODEL HEADLESS SUITE ---")
+    print("\n--- RUNNING CHATGPT THINKING & CITY GLOWING DOT SUITE ---")
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
     out = proc.stdout
 
@@ -152,7 +184,7 @@ def test_chatgpt_thinking():
         print(f"[{status}] {r['name']}{extra}")
 
     if all_passed:
-        print("\n🎉 ALL CHATGPT THINKING MODEL CHECKS PASSED PERFECTLY!")
+        print("\n🎉 ALL CHATGPT THINKING & CITY GLOWING DOT CHECKS PASSED PERFECTLY!")
     return all_passed
 
 if __name__ == "__main__":

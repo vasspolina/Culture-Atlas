@@ -1485,12 +1485,23 @@ def build():
             <!-- User queries and curator responses flow seamlessly here -->
           </div>
 
-          <!-- ChatGPT-Style Reasoning / Thinking Indicator ("Working for Xs") -->
+          <!-- ChatGPT-Style Reasoning / Thinking Indicator with Mode-Aware City Glowing Dot -->
           <div id="curatorTyping" class="hidden w-full pt-1 pb-3 select-text">
-            <div class="text-[13px] font-normal text-[#8e8e8e] border-b border-[#303030] pb-2 mb-2.5 flex items-center justify-between">
-              <span class="flex items-center gap-1.5">
-                <span>Working for <span id="curatorThinkingTimer">1</span>s</span>
-              </span>
+            <div class="text-[13px] font-normal text-[#8e8e8e] border-b border-[#303030] pb-2.5 mb-2.5 flex items-center justify-between flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <!-- City Glowing Dot (Changes color depending on chat mode) -->
+                <div id="curatorCityDotWrap" class="relative flex items-center justify-center w-5 h-5 shrink-0 select-none" title="Curator City Node">
+                  <span id="curatorCityDotPing" class="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping bg-blue-500"></span>
+                  <span id="curatorCityDotHalo" class="absolute inline-flex h-4 w-4 rounded-full opacity-40 blur-[1px] bg-blue-500"></span>
+                  <span id="curatorCityDotCore" class="relative inline-flex rounded-full h-2.5 w-2.5 shadow-md bg-blue-400" style="box-shadow: 0 0 10px #60a5fa;"></span>
+                </div>
+                <span class="flex items-center gap-1.5 text-white font-medium">
+                  <span>Working for <span id="curatorThinkingTimer">1</span>s</span>
+                </span>
+                <span id="curatorThinkingModeBadge" class="text-[11px] font-mono px-2 py-0.5 rounded-full border shadow-sm bg-blue-950/70 border-blue-800/80 text-blue-300">
+                  Clean Sanctuary
+                </span>
+              </div>
               <div id="curatorScrapingBadge" class="hidden flex items-center gap-1.5 text-[11px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full shadow-sm">
                 <span id="curatorScrapingText">Scraping web intelligence...</span>
               </div>
@@ -14111,6 +14122,74 @@ def build():
           ctx.restore();
         }});
 
+        // Curator Thinking City Glowing Dot on 3D Globe (Mode-Aware Colors)
+        if (typeof isCuratorThinkingActive !== 'undefined' && isCuratorThinkingActive && typeof curatorThinkingTargetCoord !== 'undefined' && curatorThinkingTargetCoord) {{
+          const cPt = project([curatorThinkingTargetCoord.lon, curatorThinkingTargetCoord.lat]);
+          if (cPt && cPt.visible) {{
+            ctx.save();
+            const mode = (typeof currentThinkingPlan !== 'undefined' && currentThinkingPlan && currentThinkingPlan.mode) ? currentThinkingPlan.mode : (typeof getChatModeConfig === 'function' ? getChatModeConfig('') : {{ color: '#60a5fa', rgb: '96, 165, 250' }});
+            const colorRgb = mode.rgb || '96, 165, 250';
+            const pTime = (Date.now() % 1600) / 1600;
+            const pRadius = 12 + pTime * 38;
+            const pAlpha = (1 - pTime) * 0.85;
+
+            // Concentric radar beacon wave 1
+            ctx.beginPath();
+            ctx.arc(cPt.x, cPt.y, pRadius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(${{colorRgb}}, ${{pAlpha}})`;
+            ctx.lineWidth = 2.2;
+            ctx.stroke();
+
+            // Concentric radar beacon wave 2
+            const pTime2 = ((Date.now() + 800) % 1600) / 1600;
+            const pRadius2 = 12 + pTime2 * 38;
+            const pAlpha2 = (1 - pTime2) * 0.85;
+            ctx.beginPath();
+            ctx.arc(cPt.x, cPt.y, pRadius2, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(${{colorRgb}}, ${{pAlpha2}})`;
+            ctx.lineWidth = 1.6;
+            ctx.stroke();
+
+            // Glowing atmospheric city halo
+            ctx.beginPath();
+            ctx.arc(cPt.x, cPt.y, 20, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${{colorRgb}}, 0.32)`;
+            ctx.fill();
+
+            // Solid inner ring
+            ctx.beginPath();
+            ctx.arc(cPt.x, cPt.y, 8, 0, Math.PI * 2);
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2.2;
+            ctx.stroke();
+
+            // Central solid glowing city dot
+            ctx.beginPath();
+            ctx.arc(cPt.x, cPt.y, 5, 0, Math.PI * 2);
+            ctx.fillStyle = mode.color;
+            ctx.fill();
+
+            // Curator City Node Pill Badge
+            const labelText = `Curator · ${{curatorThinkingTargetCoord.name || 'City Node'}}`;
+            ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            const tw = ctx.measureText(labelText).width;
+            const lx = cPt.x - tw / 2 - 8;
+            const ly = cPt.y - 30;
+            ctx.fillStyle = 'rgba(15, 17, 23, 0.90)';
+            ctx.strokeStyle = `rgba(${{colorRgb}}, 0.85)`;
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            if (ctx.roundRect) ctx.roundRect(lx, ly, tw + 16, 20, 10);
+            else ctx.rect(lx, ly, tw + 16, 20);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText(labelText, lx + 8, ly + 14);
+            ctx.restore();
+          }}
+        }}
+
         // Second pass: position and render non-colliding callout badges
         // Clear global city hitboxes to prevent phantom clicks
         cityBadgeHitboxes = [];
@@ -17167,14 +17246,111 @@ FORMATTING & INTERACTION RULES:
     let currentThinkingPlan = null;
     let thinkingTimerInterval = null;
     let thinkingStartTimestamp = 0;
+    let isCuratorThinkingActive = false;
+    let curatorThinkingTargetCoord = null;
 
-    function generateThinkingPlan(query) {{
+    function getChatModeConfig(query) {{
       const q = (query || '').toLowerCase().trim();
+
+      // 1. Gossip Mode (yellow glow dot)
+      if ((typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || /gossip|rumor|whisper|backchannel|reddit|twitter|scandal|drama/i.test(q)) {{
+        return {{
+          id: 'gossip',
+          name: 'Gossip Mode',
+          color: '#facc15',
+          rgb: '250, 204, 21',
+          bgClass: 'bg-yellow-400',
+          haloClass: 'bg-yellow-500',
+          badgeClasses: 'bg-yellow-950/80 border-yellow-700/80 text-yellow-300'
+        }};
+      }}
+
+      // 2. Critical Sparring Mode (purple glow dot)
+      if (/talk\s*back|train\s*(it|you)?\s*(to\s*)?talk\s*back|sparring|push\s*back|argue|debate|critique\s*me/i.test(q)) {{
+        return {{
+          id: 'sparring',
+          name: 'Sparring Mode',
+          color: '#c084fc',
+          rgb: '192, 132, 252',
+          bgClass: 'bg-purple-400',
+          haloClass: 'bg-purple-500',
+          badgeClasses: 'bg-purple-950/80 border-purple-700/80 text-purple-300'
+        }};
+      }}
+
+      // 3. Forensic Audit & Statutory Filings Mode (cyan glow dot)
+      if (/budget|financ|form\s*990|filing|schedule\s*[lo]|interested\s*person|executive\s*comp|endow/i.test(q)) {{
+        return {{
+          id: 'forensic',
+          name: 'Forensic Audit',
+          color: '#22d3ee',
+          rgb: '34, 211, 238',
+          bgClass: 'bg-cyan-400',
+          haloClass: 'bg-cyan-500',
+          badgeClasses: 'bg-cyan-950/80 border-cyan-700/80 text-cyan-300'
+        }};
+      }}
+
+      // 4. Activist Resistance & Direct Action Mode (rose glow dot)
+      if (/timeline|boycott|protest|direct\s*action|resistance|p\.?a\.?i\.?n\.?|nan\s*goldin|strike\s*moma|decolonize/i.test(q)) {{
+        return {{
+          id: 'resistance',
+          name: 'Resistance Mode',
+          color: '#fb7185',
+          rgb: '251, 113, 133',
+          bgClass: 'bg-rose-400',
+          haloClass: 'bg-rose-500',
+          badgeClasses: 'bg-rose-950/80 border-rose-700/80 text-rose-300'
+        }};
+      }}
+
+      // 5. Curatorial Itinerary Mode (emerald glow dot)
+      if (/itinerary|crawl|tour|visit|route|walk|day\s*trip/i.test(q)) {{
+        return {{
+          id: 'itinerary',
+          name: 'Itinerary Mode',
+          color: '#34d399',
+          rgb: '52, 211, 153',
+          bgClass: 'bg-emerald-400',
+          haloClass: 'bg-emerald-500',
+          badgeClasses: 'bg-emerald-950/80 border-emerald-700/80 text-emerald-300'
+        }};
+      }}
+
+      // 6. Board & Trustee Interlocks Mode (orange glow dot)
+      if (/trustee|board\s*(member|seat|interlock|conflict)|directorate|corporate\s*(board|underwriter)/i.test(q)) {{
+        return {{
+          id: 'board',
+          name: 'Trustee Network',
+          color: '#fb923c',
+          rgb: '251, 146, 60',
+          bgClass: 'bg-orange-400',
+          haloClass: 'bg-orange-500',
+          badgeClasses: 'bg-orange-950/80 border-orange-700/80 text-orange-300'
+        }};
+      }}
+
+      // 7. Verified Clean Sanctuary Mode (default azure glow dot)
+      return {{
+        id: 'clean',
+        name: 'Clean Sanctuary',
+        color: '#60a5fa',
+        rgb: '96, 165, 250',
+        bgClass: 'bg-blue-400',
+        haloClass: 'bg-blue-500',
+        badgeClasses: 'bg-blue-950/80 border-blue-700/80 text-blue-300'
+      }};
+    }}
+
+    function generateThinkingPlan(query, mode = null) {{
+      const q = (query || '').toLowerCase().trim();
+      const effMode = mode || getChatModeConfig(query);
       const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
       const city = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
 
       if (inst) {{
         return {{
+          mode: effMode,
           thought: `I’ll inspect the prepare context and governance records for ${{inst.name}}, then propose the verified findings for review.`,
           step: `Auditing Form 990 & Trustee Interlocks for ${{inst.name}}`
         }};
@@ -17182,6 +17358,7 @@ FORMATTING & INTERACTION RULES:
 
       if (city) {{
         return {{
+          mode: effMode,
           thought: `I’ll inspect verified independent kunsthalles and artist-run spaces in ${{city}}, then propose the smallest curated selection for review.`,
           step: `Scanning Independent Arts Corpus for ${{city}}`
         }};
@@ -17189,6 +17366,7 @@ FORMATTING & INTERACTION RULES:
 
       if (/itinerary|crawl|tour|visit|route/i.test(q)) {{
         return {{
+          mode: effMode,
           thought: `I’ll inspect the transit nodes and independent exhibition venues, then propose the optimal pedestrian circuit for review.`,
           step: `Synthesizing Curatorial Itinerary & Transit Nodes`
         }};
@@ -17196,6 +17374,7 @@ FORMATTING & INTERACTION RULES:
 
       if (/budget|financ|form\s*990|filing|schedule\s*l|endow/i.test(q)) {{
         return {{
+          mode: effMode,
           thought: `I’ll inspect IRS Form 990 statutory disclosures and program expense ratios, then propose the financial breakdown for review.`,
           step: `Extracting Statutory Filings & Executive Compensation Records`
         }};
@@ -17203,6 +17382,7 @@ FORMATTING & INTERACTION RULES:
 
       if (/trustee|board|interlock|conflict|director/i.test(q)) {{
         return {{
+          mode: effMode,
           thought: `I’ll inspect corporate board interlocks, private equity affiliations, and conflict matrices for review.`,
           step: `Traversing Institutional Directorate Network`
         }};
@@ -17210,6 +17390,7 @@ FORMATTING & INTERACTION RULES:
 
       if (/material|research|online|unethical|whistleblower/i.test(q)) {{
         return {{
+          mode: effMode,
           thought: `I’ll inspect the investigative audit methodology and cross-reference public records, then propose the forensic analysis for review.`,
           step: `Cross-Referencing Statutory Filing Disclosures & FOI Leaks`
         }};
@@ -17217,35 +17398,75 @@ FORMATTING & INTERACTION RULES:
 
       if (/timeline|boycott|protest|resistance|sackler/i.test(q)) {{
         return {{
+          mode: effMode,
           thought: `I’ll inspect landmark direct actions and museum divestment records, then propose the chronological overview for review.`,
           step: `Querying Cultural Resistance & Divestment Timeline`
         }};
       }}
 
       return {{
+        mode: effMode,
         thought: `I’ll inspect the prepare job and workflow context, then propose the smallest reversible fix for review.`,
         step: `Scanning Repository Configuration Files`
       }};
     }}
 
     function startCuratorThinking(query) {{
-      currentThinkingPlan = generateThinkingPlan(query);
+      const mode = getChatModeConfig(query);
+      currentThinkingPlan = generateThinkingPlan(query, mode);
       thinkingStartTimestamp = Date.now();
+      isCuratorThinkingActive = true;
+
+      // Detect city or institution coordinate for glowing city beacon on 3D globe
+      const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
+      const city = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
+      if (inst && inst.lat && inst.lon) {{
+        curatorThinkingTargetCoord = {{ name: inst.name, lat: Number(inst.lat), lon: Number(inst.lon) }};
+      }} else if (city && typeof ALL_CITIES_REGISTRY !== 'undefined') {{
+        const cMeta = ALL_CITIES_REGISTRY.find(c => (c.name || '').toLowerCase() === city.toLowerCase());
+        if (cMeta) {{
+          curatorThinkingTargetCoord = {{ name: cMeta.name, lat: Number(cMeta.lat), lon: Number(cMeta.lon) }};
+        }}
+      }} else if (typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.lat) {{
+        curatorThinkingTargetCoord = {{ name: selectedInstitution.name, lat: Number(selectedInstitution.lat), lon: Number(selectedInstitution.lon) }};
+      }} else {{
+        curatorThinkingTargetCoord = {{ name: 'Global Network', lat: (typeof rotLat !== 'undefined' ? rotLat : 25), lon: (typeof rotLon !== 'undefined' ? rotLon : 10) }};
+      }}
 
       const typingEl = document.getElementById('curatorTyping');
       const timerEl = document.getElementById('curatorThinkingTimer');
       const thoughtEl = document.getElementById('curatorThinkingThought');
       const stepLabelEl = document.getElementById('curatorThinkingStepLabel');
+      const modeBadge = document.getElementById('curatorThinkingModeBadge');
+
+      const dotPing = document.getElementById('curatorCityDotPing');
+      const dotHalo = document.getElementById('curatorCityDotHalo');
+      const dotCore = document.getElementById('curatorCityDotCore');
+
+      if (dotPing) dotPing.style.backgroundColor = mode.color;
+      if (dotHalo) dotHalo.style.backgroundColor = mode.color;
+      if (dotCore) {{
+        dotCore.style.backgroundColor = mode.color;
+        dotCore.style.boxShadow = `0 0 12px ${{mode.color}}`;
+      }}
+
+      if (modeBadge) {{
+        modeBadge.textContent = mode.name;
+        modeBadge.className = `text-[11px] font-mono px-2 py-0.5 rounded-full border shadow-sm ${{mode.badgeClasses}}`;
+      }}
 
       if (timerEl) timerEl.textContent = '1';
       if (thoughtEl) thoughtEl.textContent = currentThinkingPlan.thought;
       if (stepLabelEl) stepLabelEl.textContent = currentThinkingPlan.step;
       if (typingEl) typingEl.classList.remove('hidden');
 
+      if (typeof render === 'function') render();
+
       if (thinkingTimerInterval) clearInterval(thinkingTimerInterval);
       thinkingTimerInterval = setInterval(() => {{
         const elapsed = Math.max(1, Math.floor((Date.now() - thinkingStartTimestamp) / 1000));
         if (timerEl) timerEl.textContent = elapsed;
+        if (typeof render === 'function') render();
       }}, 1000);
     }}
 
@@ -17254,6 +17475,10 @@ FORMATTING & INTERACTION RULES:
         clearInterval(thinkingTimerInterval);
         thinkingTimerInterval = null;
       }}
+      isCuratorThinkingActive = false;
+      curatorThinkingTargetCoord = null;
+      if (typeof render === 'function') render();
+
       const typingEl = document.getElementById('curatorTyping');
       if (typingEl) typingEl.classList.add('hidden');
 
@@ -17261,7 +17486,7 @@ FORMATTING & INTERACTION RULES:
       const elapsed = Math.max(1, Math.round((Date.now() - thinkingStartTimestamp) / 1000));
       thinkingStartTimestamp = 0;
       return {{
-        ...(currentThinkingPlan || generateThinkingPlan('')),
+        ...(currentThinkingPlan || generateThinkingPlan('', getChatModeConfig(''))),
         duration: elapsed
       }};
     }}
@@ -17335,10 +17560,16 @@ FORMATTING & INTERACTION RULES:
       let thinkingHtml = '';
       if (effectiveThinking && effectiveThinking.thought) {{
         const sec = effectiveThinking.duration || 2;
+        const mode = effectiveThinking.mode || getChatModeConfig('');
         thinkingHtml = `
           <div class="curator-thought-accordion mb-3 select-text" data-exclude-speech="true">
-            <button type="button" class="curator-thought-toggle flex items-center gap-1.5 text-[13px] font-normal text-[#8e8e8e] hover:text-[#d4d4d8] transition cursor-pointer select-none py-0.5" onclick="const c = this.nextElementSibling; if (c) c.classList.toggle('hidden'); const ic = this.querySelector('.curator-thought-chevron'); if (ic) ic.classList.toggle('rotate-180');">
+            <button type="button" class="curator-thought-toggle flex items-center gap-2 text-[13px] font-normal text-[#8e8e8e] hover:text-[#d4d4d8] transition cursor-pointer select-none py-0.5" onclick="const c = this.nextElementSibling; if (c) c.classList.toggle('hidden'); const ic = this.querySelector('.curator-thought-chevron'); if (ic) ic.classList.toggle('rotate-180');">
+              <span class="relative flex items-center justify-center w-3 h-3 shrink-0">
+                <span class="absolute inline-flex h-3 w-3 rounded-full opacity-40" style="background-color: ${{mode.color}};"></span>
+                <span class="relative inline-flex rounded-full h-1.5 w-1.5 shadow-sm" style="background-color: ${{mode.color}}; box-shadow: 0 0 6px ${{mode.color}};"></span>
+              </span>
               <span>Thought for ${{sec}}s</span>
+              <span class="text-[10.5px] font-mono px-1.5 py-0.2 rounded border ${{mode.badgeClasses}}">${{mode.name}}</span>
               <svg class="w-3.5 h-3.5 transition-transform duration-200 curator-thought-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
