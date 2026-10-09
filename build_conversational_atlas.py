@@ -671,12 +671,20 @@ def build():
       border-bottom-color: #18181b !important;
     }}
     .atlas-dark-popup .maplibregl-popup-close-button {{
-      color: #a1a1aa !important;
-      padding: 6px 8px !important;
-      font-size: 16px !important;
+      color: #212121 !important;
+      background: #eaedf0 !important;
+      border-radius: 9999px !important;
+      padding: 2px 7px !important;
+      font-size: 13px !important;
+      line-height: 1 !important;
+      top: 6px !important;
+      right: 6px !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+      transition: all 0.15s ease !important;
     }}
     .atlas-dark-popup .maplibregl-popup-close-button:hover {{
-      color: #ffffff !important;
+      color: #000000 !important;
+      background: #ffffff !important;
     }}
     .maplibregl-ctrl-group {{
       background: #212121 !important;
@@ -865,26 +873,27 @@ def build():
       box-shadow: 0 0 30px rgba(234, 179, 8, 0.35), 0 20px 40px rgba(0, 0, 0, 0.9) !important;
     }}
 
-    /* 🏛️ 3D Building Overlay Close Buttons */
+    /* 🏛️ 3D Building Overlay Close Buttons (Capsule Pill Style) */
     .building-mast-close-btn,
     .building-facade-close-btn {{
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 6px;
-      border: 1px solid #334155;
-      background: rgba(30, 41, 59, 0.7);
-      color: #94a3b8;
+      border-radius: 9999px !important;
+      border: none !important;
+      background: #eaedf0 !important;
+      color: #212121 !important;
       transition: all 0.15s ease;
-      padding: 0;
+      padding: 2px 7px !important;
       flex-shrink: 0;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     }}
     .building-mast-close-btn:hover,
     .building-facade-close-btn:hover {{
-      color: #ffffff !important;
-      background: #334155 !important;
-      border-color: #475569 !important;
+      color: #000000 !important;
+      background: #ffffff !important;
+      transform: scale(1.05);
     }}
 
     /* ========================================================= */
@@ -998,8 +1007,8 @@ def build():
 
       <!-- Desktop Center New Chat Button, Archives Directory, Governance Legend & Separate Contribute Button -->
       <div class="hidden md:flex items-center gap-2">
-        <button id="topNewChatBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-full text-[14px] transition shadow-sm cursor-pointer" title="Start a new chat exploration">
-          <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="topNewChatBtn" class="flex items-center gap-1.5 px-3 py-1 bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black rounded-full text-[13px] font-medium transition shadow-sm cursor-pointer" title="Start a new chat exploration">
+          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
@@ -1032,8 +1041,8 @@ def build():
       </div>
 
       <!-- Mobile + New Chat Icon Button, Mobile Archives & Mobile Intel Button -->
-      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-9 h-9 sm:w-10 sm:h-10 bg-[#212121] hover:bg-[#282828] border border-[#2e2e2e] text-emerald-400 hover:text-white rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
-        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-10 sm:w-11 h-8 sm:h-9 bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
           <line x1="12" y1="5" x2="12" y2="19"></line>
           <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
@@ -1092,7 +1101,7 @@ def build():
           </div>
           <div class="flex items-center gap-1 shrink-0">
             <span id="floatingCardTier" class="text-[12px] font-mono px-2 py-0.5 rounded-lg border border-emerald-900/60 bg-[#0a2016] text-emerald-400">Verified</span>
-            <button id="closeFloatingCardBtn" class="text-[#a1a1aa] hover:text-white px-2.5 py-1 sm:p-1 rounded-lg hover:bg-[#262626] bg-[#222226]/80 sm:bg-transparent border border-[#383838] sm:border-transparent transition text-[13px] sm:text-[14px] leading-none ml-0.5 cursor-pointer shrink-0 font-medium" title="Close">Close</button>
+            <button id="closeFloatingCardBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition text-[12px] sm:text-[13px] leading-none ml-0.5 cursor-pointer shrink-0 font-medium shadow-sm flex items-center justify-center gap-1" title="Close"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
           </div>
         </div>
 
@@ -1268,7 +1277,7 @@ def build():
               <span id="bfiBuildingMeta" class="text-[10.5px] font-mono text-[#7dd3fc] block truncate"></span>
             </div>
           </div>
-          <button id="closeBfiHudBtn" class="text-zinc-400 hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[13px] cursor-pointer shrink-0" title="Close Building Inspector">Close</button>
+          <button id="closeBfiHudBtn" class="w-8 h-6 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm" title="Close Building Inspector"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
         </div>
 
         <!-- Zoom Depth Action Controls -->
@@ -1329,7 +1338,7 @@ def build():
               <span id="activeRouteStats" class="text-[10.5px] font-mono text-emerald-400/80 block">4 Stops · ~3.2 km · 45 min walk</span>
             </div>
           </div>
-          <button id="closeActiveRouteBtn" class="text-zinc-400 hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[13px] cursor-pointer shrink-0" title="Exit active route">Close</button>
+          <button id="closeActiveRouteBtn" class="w-8 h-6 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm" title="Exit active route"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
         </div>
 
         <!-- Current Stop Details Card -->
@@ -1414,14 +1423,14 @@ def build():
           <span id="hudExpandText">Expand</span>
         </button>
         <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5 shrink-0"></div>
-        <button id="zoomInBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition cursor-pointer shrink-0" title="Zoom In">
-          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="zoomInBtn" class="w-8 h-7 sm:w-9 sm:h-7.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm" title="Zoom In">
+          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
         </button>
-        <button id="zoomOutBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#d4d4d4] hover:text-white flex items-center justify-center transition cursor-pointer shrink-0" title="Zoom Out">
-          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="zoomOutBtn" class="w-8 h-7 sm:w-9 sm:h-7.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm" title="Zoom Out">
+          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
         </button>
@@ -1553,7 +1562,7 @@ def build():
             <div class="flex items-center justify-between pt-1.5">
               <!-- Left: Plus action button and Contribute Intel button -->
               <div class="flex items-center gap-2 sm:gap-2.5">
-                <button id="workPlusBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#2a2a2a] hover:bg-[#333] text-[#d4d4d4] hover:text-white flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0" title="Quick filters">
+                <button id="workPlusBtn" class="w-10 sm:w-11 h-8 sm:h-9 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0 shadow-sm" title="Quick filters">
                   <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1686,7 +1695,7 @@ def build():
         <div class="flex items-center gap-2">
           <span class="text-[14px] font-normal text-white">Full Catalog of Verified Spaces</span>
         </div>
-        <button id="closeCatalogModalBtn" class="text-slate-400 hover:text-white p-1 text-[14px]">Close</button>
+        <button id="closeCatalogModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
       <div class="p-3 border-b border-[#262626] bg-[#171717] flex flex-col gap-2">
         <input type="text" id="searchInput" placeholder="Search museum, city, or focus..." class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white placeholder-[#71717a] px-3.5 py-2 rounded-xl focus:outline-none" />
@@ -1710,7 +1719,7 @@ def build():
   <!-- ========================================================= -->
   <div id="detailDrawer" class="hidden fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-[#0a0d15]/98 backdrop-blur-2xl border-l border-[#1c212a] shadow-2xl flex flex-col">
     <div class="p-3.5 px-4 border-b border-[#1c212a] flex items-center justify-end bg-[#0e121c]">
-      <button id="closeDetailBtn" class="text-slate-400 hover:text-white p-1 rounded hover:bg-[#1a2234] transition text-[18px]" title="Close">Close</button>
+      <button id="closeDetailBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
     </div>
     <div id="detailBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-[14px]">
       <!-- Injected dynamically -->
@@ -1732,7 +1741,7 @@ def build():
             <p class="text-[14px] font-mono text-amber-300/80">Museum of Modern Art (New York) · Institutional Scrutiny</p>
           </div>
         </div>
-        <button id="closeMomaModalBtn" class="w-7 h-7 rounded-lg bg-[#20180a] hover:bg-[#33250f] border border-[#523d14] text-slate-300 hover:text-white flex items-center justify-center text-[14px] transition">Close</button>
+        <button id="closeMomaModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Modal Body -->
@@ -1814,7 +1823,7 @@ def build():
             <p class="text-[14px] text-[#a1a1aa]">Power conversational reasoning with live AI or use the built-in critical engine</p>
           </div>
         </div>
-        <button id="closeSettingsModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition">Close</button>
+        <button id="closeSettingsModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Provider Tabs -->
@@ -1916,7 +1925,7 @@ def build():
             <h3 class="text-[15px] sm:text-[16px] font-medium text-white leading-tight">Confidential Field Intelligence Intake</h3>
           </div>
         </div>
-        <button id="closeConfidentialChatBtn" class="text-[#a1a1aa] hover:text-white text-[13px] px-3 py-1 hover:bg-[#27272a] rounded-full transition cursor-pointer" title="Close Intake Window">Close</button>
+        <button id="closeConfidentialChatBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close Intake Window"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Suggestion Pills -->
@@ -1976,7 +1985,7 @@ def build():
             <p class="text-[12px] text-[#a1a1aa] font-mono">Community Peer-Review Pipeline · Form 990 / Civic Audits</p>
           </div>
         </div>
-        <button id="closeFeedbackModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">Close</button>
+        <button id="closeFeedbackModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Explanatory note -->
@@ -2059,7 +2068,7 @@ def build():
             <p class="text-[12px] text-[#33b1ff] font-mono">Consensus Peer-Reviewed Corpus · {academic_count} Empirical Studies & Financial Analyses</p>
           </div>
         </div>
-        <button id="closeAcademicModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">Close</button>
+        <button id="closeAcademicModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Layer Tabs: Peer-Reviewed Studies vs Community Research Notes (User Input Layer) -->
@@ -2153,7 +2162,7 @@ def build():
             <p id="bamLocation" class="text-[12px] text-[#78a9ff] font-mono">Location & Address · Footprint Mapped</p>
           </div>
         </div>
-        <button id="closeBuildingArchivesBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#1f293d] rounded-xl transition cursor-pointer">Close</button>
+        <button id="closeBuildingArchivesBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Scrollable Inspector Body -->
@@ -2197,7 +2206,7 @@ def build():
             <p class="text-[12px] text-[#78a9ff] font-mono">Exhibition Master Dossiers · Artists' Ephemera & Zines · Audio-Visual Master Tapes · Permanent Study Collections</p>
           </div>
         </div>
-        <button id="closeArchivesModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#1e293d] rounded-xl transition cursor-pointer" title="Close Archives Directory">Close</button>
+        <button id="closeArchivesModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm" title="Close Archives Directory"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Search, City Filter & Category Filter Chips -->
@@ -2273,7 +2282,7 @@ def build():
             </p>
           </div>
         </div>
-        <button id="closeGovernanceModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-[#1a2333] transition cursor-pointer text-xl font-mono leading-none shrink-0" title="Close Modal">Close</button>
+        <button id="closeGovernanceModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Scrollable Modal Body -->
@@ -2484,7 +2493,7 @@ def build():
             </p>
           </div>
         </div>
-        <button id="closeFiscalModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#15233a] rounded-xl transition cursor-pointer" title="Close Modal">Close</button>
+        <button id="closeFiscalModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Scrollable Analytics Body -->
@@ -2621,7 +2630,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-emerald-200/70 truncate">Multi-space walking &amp; clean-transit itineraries with synchronized street route lines, opening hours verification, and admission policies.</p>
           </div>
         </div>
-        <button id="closeItineraryModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#133024] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">Close</button>
+        <button id="closeItineraryModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer shrink-0 flex items-center justify-center gap-1 shadow-sm" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Navigation & Mode Tabs -->
@@ -2673,7 +2682,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-purple-200/70 truncate">Forensic mapping of corporate board interlocks, predatory private equity, weapons contractors, opioid dynasties, and fossil fuel underwriters.</p>
           </div>
         </div>
-        <button id="closeTrusteeModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#251542] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">Close</button>
+        <button id="closeTrusteeModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer flex items-center justify-center gap-1 shadow-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Controls & Filter Toolbar -->
@@ -2693,13 +2702,13 @@ def build():
 
         <!-- Graph View Zoom & Reset Actions -->
         <div class="flex items-center gap-1.5 shrink-0">
-          <button id="trusteeZoomInBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 flex items-center justify-center transition cursor-pointer" title="Zoom In">
+          <button id="trusteeZoomInBtn" class="w-8 h-6 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition cursor-pointer shadow-sm" title="Zoom In">
             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
           </button>
-          <button id="trusteeZoomOutBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 flex items-center justify-center transition cursor-pointer" title="Zoom Out">
+          <button id="trusteeZoomOutBtn" class="w-8 h-6 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition cursor-pointer shadow-sm" title="Zoom Out">
             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
@@ -2798,7 +2807,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-rose-200/70 truncate">Documenting five decades of artist-led resistance, museum occupations, die-ins, and institutional ruptures.</p>
           </div>
         </div>
-        <button id="closeTimelineModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#341322] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">Close</button>
+        <button id="closeTimelineModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer shrink-0 flex items-center justify-center gap-1 shadow-sm" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Controls & Filter Toolbar -->
@@ -2858,7 +2867,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-sky-200/70 truncate">Forensic extraction of interested person transactions, board loans, executive compensation, and program expense ratios.</p>
           </div>
         </div>
-        <button id="closeFilingsModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#16304d] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">Close</button>
+        <button id="closeFilingsModalBtn" class="px-2.5 py-1 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black text-[13px] font-medium transition cursor-pointer shrink-0 flex items-center justify-center gap-1 shadow-sm" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
       </div>
 
       <!-- Controls & Selection Toolbar -->
@@ -9444,8 +9453,8 @@ def build():
           '</div>' +
           '<div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">' +
             '<div>' + brandBadge + '</div>' +
-            '<button type="button" class="building-mast-close-btn" onclick="event.stopPropagation(); window.closeBuildingMast();" title="Close Building Card" aria-label="Close" style="width:22px; height:22px;">' +
-              '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
+            '<button type="button" class="building-mast-close-btn" onclick="event.stopPropagation(); window.closeBuildingMast();" title="Close Building Card" aria-label="Close" style="width:28px; height:20px;">' +
+              '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
             '</button>' +
           '</div>' +
         '</div>' +
@@ -9540,8 +9549,8 @@ def build():
               '</span>' +
               '<span style="font-size:10px; font-family:monospace; color:#94a3b8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Click level to inspect in 3D</span>' +
             '</div>' +
-            '<button type="button" class="building-facade-close-btn" onclick="event.stopPropagation(); window.closeBuildingFacade();" title="Close Floor Directory" aria-label="Close" style="width:20px; height:20px;">' +
-              '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
+            '<button type="button" class="building-facade-close-btn" onclick="event.stopPropagation(); window.closeBuildingFacade();" title="Close Floor Directory" aria-label="Close" style="width:28px; height:20px;">' +
+              '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
             '</button>' +
           '</div>' +
           '<div style="display:flex; flex-direction:column; gap:5px; max-height:260px; overflow-y:auto;">' +
