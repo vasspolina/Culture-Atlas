@@ -13212,11 +13212,19 @@ def build():
     }}
     window.generateWhistleblowerReceipt = generateWhistleblowerReceipt;
 
-    // Service Worker Registration for PWA Offline Functionality
+    // Service Worker & Cache-Bust Protocol
+    if ('caches' in window) {{
+      caches.keys().then((keys) => {{
+        keys.forEach((k) => {{
+          if (k !== 'culture-atlas-v4') caches.delete(k);
+        }});
+      }}).catch(() => {{}});
+    }}
+
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js').then(() => {{
-          console.log('Culture Atlas Service Worker Registered for Offline Usage.');
+        navigator.serviceWorker.register('sw.js').then((reg) => {{
+          reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
         }});
