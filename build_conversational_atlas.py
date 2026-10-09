@@ -797,7 +797,9 @@ def build():
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8), 0 0 12px rgba(16, 185, 129, 0.35) !important;
       z-index: 9999 !important;
     }}
-  </style>
+  .speak-icon {{ display: none !important; }}
+#curatorVoiceToggleIcon {{ display: none !important; }}
+</style>
   <script>
 {maplibre_js}
   </script>
@@ -834,20 +836,18 @@ def build():
           <span>New Chat</span>
         </button>
         <button id="topArchivesBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] hover:border-[#3b5585] text-[#93c5fd] hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Explore the Global Archives & Special Collections Directory">
-          <span class="text-cyan-400 font-mono text-[12px]">📚</span>
           <span>Archives Directory</span>
         </button>
         <button id="topGovernanceBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] hover:border-[#3b5585] text-slate-300 hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Governance & Funding Transparency Methodology Legend">
-          <span class="text-blue-400 font-mono text-[12px]">⚖️</span>
           <span>Methodology</span>
         </button>
         <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-3 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 hover:border-yellow-400 text-yellow-300 hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Toggle Yellow Gossip Mode: Art World Whispers, Reddit Debates & Twitter/X Discourse">
-          <span>🟡 Gossip Mode</span>
-          <span class="text-[10px] px-1.5 py-0.2 rounded bg-yellow-400/20 text-yellow-300 font-mono font-bold">REDDIT & 𝕏</span>
+          <span>Gossip Mode</span>
+          <span class="text-[10px] px-1.5 py-0.2 rounded bg-yellow-400/20 text-yellow-300 font-mono font-bold">REDDIT & X</span>
         </button>
         <button id="topContributeBtn" class="flex items-center gap-2 px-3.5 py-1.5 bg-gradient-to-r from-[#09261b] via-[#0d3425] to-[#082218] hover:from-[#0e3b2a] hover:to-[#114733] border border-emerald-500/70 hover:border-emerald-400 text-emerald-200 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-medium shadow-md shadow-emerald-950/60 active:scale-95" title="Contribute confidential insider intelligence or unlisted independent spaces">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-          <span>🔒 Contribute Intel</span>
+          <span>Contribute Intel</span>
         </button>
       </div>
     </div>
@@ -867,24 +867,24 @@ def build():
       </button>
 
       <button id="mobileArchivesBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
-        📚 Archives
+        Archives
       </button>
 
       <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 text-yellow-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Yellow Gossip Mode">
-        🟡 Gossip
+        Gossip
       </button>
 
       <button id="mobileGovernanceBtn" class="flex md:hidden items-center justify-center px-2 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
-        ⚖️ Legend
+        Legend
       </button>
 
       <button id="mobileContributeBtn" class="flex md:hidden items-center justify-center px-2.5 py-1 bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/70 text-emerald-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Contribute confidential intelligence">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span> 🔒 Intel
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span> Intel
       </button>
 
       <button id="topSettingsBtn" class="flex items-center gap-1 px-1.5 sm:px-3 py-1 bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white rounded-xl text-[12px] sm:text-[14px] transition cursor-pointer shrink-0" title="AI Intelligence & API Key Settings">
         <span id="topStatusDot" class="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-amber-400 shrink-0"></span>
-        <span id="topStatusLabel" class="font-normal text-amber-300 flex items-center gap-1"><span>🔑</span><span class="hidden sm:inline"> Add API Key</span></span>
+        <span id="topStatusLabel" class="font-normal text-amber-300 flex items-center gap-1"><span class="hidden sm:inline">Add API Key</span></span>
       </button>
       <button id="topResetBtn" class="hidden sm:flex bg-[#212121] hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white px-2 sm:px-2.5 py-1 rounded-xl text-[12px] sm:text-[14px] transition items-center gap-1 cursor-pointer shrink-0" title="Reset Globe View">
         <span>Reset</span>
@@ -919,7 +919,7 @@ def build():
           </div>
           <div class="flex items-center gap-1 shrink-0">
             <span id="floatingCardTier" class="text-[12px] font-mono px-2 py-0.5 rounded-lg border border-emerald-900/60 bg-[#0a2016] text-emerald-400">Verified</span>
-            <button id="closeFloatingCardBtn" class="text-[#a1a1aa] hover:text-white p-1 rounded-md hover:bg-[#262626] transition text-[14px] leading-none ml-0.5 cursor-pointer" title="Close">✕</button>
+            <button id="closeFloatingCardBtn" class="text-[#a1a1aa] hover:text-white p-1 rounded-md hover:bg-[#262626] transition text-[14px] leading-none ml-0.5 cursor-pointer" title="Close">Close</button>
           </div>
         </div>
 
@@ -928,7 +928,7 @@ def build():
           <!-- Operating Budget Scale Banner & Tier -->
           <div class="flex items-center justify-between gap-1.5 flex-wrap">
             <div id="floatingCardBudget" class="text-[13px] font-mono text-slate-100 flex items-center gap-1.5">
-              <span class="text-amber-400 font-bold">💶 Budget:</span>
+              <span class="text-amber-400 font-bold">Budget:</span>
               <strong id="floatingCardBudgetAmount" class="font-semibold text-white"></strong>
             </div>
             <span id="floatingCardBudgetTier" class="text-[11px] font-mono px-2 py-0.5 rounded border border-sky-800/60 bg-sky-950/40 text-sky-300"></span>
@@ -954,7 +954,7 @@ def build():
         <div id="floatingCardCurrentShowsSection" class="mt-2.5 pt-2 border-t border-[#2e2e2e]/80 space-y-1.5">
           <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
             <span class="text-amber-400 font-bold flex items-center gap-1">
-              <span>🖼️</span> CURRENT SHOW ON VIEW
+              CURRENT SHOW ON VIEW
             </span>
             <span id="floatingCardShowStatusBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-emerald-800 bg-emerald-950/60 text-emerald-300 font-semibold">Now On View</span>
           </div>
@@ -967,7 +967,7 @@ def build():
             <!-- 🍾 Opening Night / Vernissage Tracker -->
             <div id="floatingCardOpeningNightBox" class="mt-1 pt-1 border-t border-[#1b2536] flex items-center justify-between gap-1 text-[11px] font-mono flex-wrap">
               <div class="flex items-center gap-1 text-emerald-300">
-                <span>🍾 Vernissage:</span>
+                <span>Vernissage:</span>
                 <span id="floatingCardOpeningNightDate" class="font-semibold text-white"></span>
               </div>
               <span id="floatingCardOpeningNightRsvp" class="text-[10px] text-sky-300 bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-800/60">Free / RSVP</span>
@@ -979,9 +979,9 @@ def build():
         <div id="floatingCardGossipSection" class="mt-2 pt-2 border-t border-yellow-900/60 space-y-1.5 bg-[#171408]/60 p-2 rounded-xl border border-yellow-700/40">
           <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
             <span class="text-yellow-400 font-bold flex items-center gap-1">
-              <span>⚡</span> ART WORLD WHISPERS & GOSSIP
+              ART WORLD WHISPERS & GOSSIP
             </span>
-            <span id="floatingCardGossipIntensityBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-yellow-700 bg-yellow-950 text-yellow-300 font-bold">HOT 🔥</span>
+            <span id="floatingCardGossipIntensityBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-yellow-700 bg-yellow-950 text-yellow-300 font-bold">HOT</span>
           </div>
           <p id="floatingCardGossipHeadline" class="text-[12px] text-yellow-200/95 leading-tight font-medium"></p>
           <div class="space-y-1 pt-0.5 text-[11px] font-mono">
@@ -990,7 +990,7 @@ def build():
               <span id="floatingCardGossipRedditText" class="truncate text-slate-200"></span>
             </div>
             <div id="floatingCardGossipTwitter" class="text-slate-300 bg-[#0d0c06] p-1.5 rounded border border-yellow-900/40 flex items-baseline gap-1.5">
-              <span class="text-sky-400 font-bold shrink-0">𝕏 post:</span>
+              <span class="text-sky-400 font-bold shrink-0">X post:</span>
               <span id="floatingCardGossipTwitterText" class="truncate text-slate-200"></span>
             </div>
           </div>
@@ -1001,20 +1001,20 @@ def build():
           <a id="floatingCardDirectWebBtn" href="#" target="_blank" rel="noopener noreferrer" 
              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-normal text-[13px] shadow transition active:scale-95 cursor-pointer"
              onclick="event.stopPropagation()">
-            <span class="text-[13px]">🌐</span>
+            
             <span>Visit Website</span>
             <span id="floatingCardDirectDomain" class="text-[11px] opacity-80 font-mono"></span>
-            <span class="text-[12px]">↗</span>
+            
           </a>
           <a id="floatingCardDirectAuditBtn" href="#" target="_blank" rel="noopener noreferrer" 
              class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#141d2c] hover:bg-[#1e2a3f] text-sky-300 hover:text-white border border-[#273a58] font-mono text-[12px] transition active:scale-95 cursor-pointer"
              onclick="event.stopPropagation()">
-            <span>📋 Audit Dossier ↗</span>
+            <span>Audit Dossier</span>
           </a>
           <button id="floatingCardDirectPlanBtn" type="button" 
              class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#222834] hover:bg-[#2b3548] text-[#93c5fd] hover:text-white border border-[#2f3d58] font-mono text-[12px] transition active:scale-95 cursor-pointer"
              onclick="event.stopPropagation(); if (typeof window.atlasPlanVisit === 'function') window.atlasPlanVisit(selectedInstitution);">
-            <span>Plan Visit in Chat 💬</span>
+            <span>Plan Visit in Chat</span>
           </button>
         </div>
 
@@ -1022,11 +1022,11 @@ def build():
           <a id="floatingCardWebLink" href="#" target="_blank" rel="noopener noreferrer" 
              class="inline-flex items-center gap-1 text-[#93c5fd] hover:text-white transition cursor-pointer"
              onclick="event.stopPropagation()">
-            <span id="floatingCardDomain" class="truncate max-w-[120px]">website</span> <span class="text-[12px]">↗</span>
+            <span id="floatingCardDomain" class="truncate max-w-[120px]">website</span> 
           </a>
           <div class="flex items-center gap-2">
             <button id="floatingCardDossierBtn" class="text-[#a1a1aa] hover:text-white transition text-[13px] cursor-pointer whitespace-nowrap" onclick="event.stopPropagation()">
-              Read info about institution →
+              Read info about institution
             </button>
             <button id="floatingCardAskCurator" class="inline-flex items-center gap-1 text-white hover:text-[#93c5fd] font-normal transition text-[13px] cursor-pointer" onclick="event.stopPropagation()">
               <span>Ask</span>
@@ -1040,21 +1040,21 @@ def build():
       <div id="activeMapFilterBanner" class="hidden absolute top-2.5 sm:top-3 left-1/2 -translate-x-1/2 z-20 pointer-events-auto flex items-center gap-2 bg-[#0c1a2e]/95 border border-[#38bdf8]/70 text-white px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-xl text-[14px]">
         <span id="activeMapFilterText" class="font-normal tracking-wide text-white text-[14px]">24 MONDAY OPENINGS ON MAP</span>
         <button id="activeMapFilterAnalyticsBtn" class="px-2 py-0.5 rounded-lg bg-sky-600/70 hover:bg-sky-500 text-white text-[11px] font-mono transition cursor-pointer flex items-center gap-1 shadow-sm" title="Open Cohort Fiscal Analytics">
-          <span>📊 Analytics</span>
+          <span>Analytics</span>
         </button>
-        <button id="clearMapFilterBtn" class="ml-1 text-[#93c5fd] hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[14px]" title="Clear filter">✕</button>
+        <button id="clearMapFilterBtn" class="ml-1 text-[#93c5fd] hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[14px]" title="Clear filter">Clear</button>
       </div>
 
       <!-- City & Country Navigation Banner -->
       <div id="cityViewControlBanner" class="hidden absolute top-2 sm:top-3 left-2 sm:left-4 z-20 pointer-events-auto flex items-center gap-1.5 sm:gap-2 max-w-[calc(100%-16px)] overflow-x-auto select-none">
         <button id="exitStreetViewBtn" class="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-[#1e293b]/95 hover:bg-[#334155] border border-[#38bdf8]/40 hover:border-[#38bdf8] text-[#38bdf8] hover:text-white text-[12px] sm:text-[13px] flex items-center gap-1 shadow-lg backdrop-blur transition cursor-pointer active:scale-95 shrink-0" title="Exit street view to 3D Globe">
-          <span>🌍 Exit</span>
+          <span>Exit</span>
         </button>
         <button id="backToWorldBtn" class="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[12px] sm:text-[13px] flex items-center gap-1 shadow-lg backdrop-blur transition cursor-pointer active:scale-95 shrink-0" title="Reset to global world view">
           <span class="font-normal">World</span>
         </button>
         <button id="backToCountryBtn" class="hidden px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-[#212121]/95 hover:bg-[#2a2a2a] border border-[#383838] hover:border-[#60a5fa] text-white text-[12px] sm:text-[13px] flex items-center gap-1 shadow-lg backdrop-blur transition cursor-pointer active:scale-95 shrink-0" title="Return to country overview">
-          <span>←</span> <span id="backToCountryText" class="font-normal">Country</span>
+          <span id="backToCountryText" class="font-normal">Country</span>
         </button>
         <div id="cityViewTitleBadge" class="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-[#0c1626]/95 border border-[#1e2e4a] text-[#93c5fd] text-[11px] sm:text-[13px] font-mono flex items-center gap-1 shadow-lg backdrop-blur shrink-0 truncate max-w-[190px] sm:max-w-none">
           <span id="cityViewTitleText">LONDON · STREET VIEW</span>
@@ -1066,25 +1066,25 @@ def build():
         <!-- Header -->
         <div class="flex items-center justify-between gap-2 border-b border-[#233552] pb-2">
           <div class="flex items-center gap-2 min-w-0">
-            <span class="text-[16px] shrink-0">🏛️</span>
+            
             <div class="min-w-0">
               <span id="bfiBuildingName" class="text-[13px] sm:text-[14px] font-semibold text-white truncate block"></span>
               <span id="bfiBuildingMeta" class="text-[10.5px] font-mono text-[#7dd3fc] block truncate"></span>
             </div>
           </div>
-          <button id="closeBfiHudBtn" class="text-zinc-400 hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[13px] cursor-pointer shrink-0" title="Close Building Inspector">✕</button>
+          <button id="closeBfiHudBtn" class="text-zinc-400 hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[13px] cursor-pointer shrink-0" title="Close Building Inspector">Close</button>
         </div>
 
         <!-- Zoom Depth Action Controls -->
         <div class="flex items-center gap-1.5 pt-0.5">
           <button id="bfiZoomCloserBtn" class="flex-1 py-1 px-2 rounded-xl bg-[#1d3557] hover:bg-[#254673] border border-[#38bdf8]/60 text-[#7dd3fc] hover:text-white text-[11px] font-mono transition cursor-pointer flex items-center justify-center gap-1" title="Zoom in to 20x 3D architectural perspective">
-            <span>🔍 Zoom 20x Closer</span>
+            <span>Zoom 20x Closer</span>
           </button>
           <button id="bfiResetZoomBtn" class="py-1 px-2.5 rounded-xl bg-[#162032] hover:bg-[#1e2c45] border border-[#2b3e5e] text-slate-300 text-[11px] font-mono transition cursor-pointer" title="Reset to standard 18x view">
-            <span>📐 18x</span>
+            <span>18x</span>
           </button>
           <button id="bfiOpenModalBtn" class="py-1 px-2.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 text-[11px] font-mono transition cursor-pointer flex items-center gap-1" title="Open full building & archives dossier">
-            <span>📖 Full Dossier</span>
+            <span>Full Dossier</span>
           </button>
         </div>
 
@@ -1105,7 +1105,7 @@ def build():
           <!-- Current Show on Floor -->
           <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
             <span class="text-[10px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1">
-              <span>🖼️</span> CURRENT SHOW ON THIS LEVEL
+              CURRENT SHOW ON THIS LEVEL
             </span>
             <div id="bfiShowTitle" class="text-[12.5px] font-semibold text-white leading-tight"></div>
             <div id="bfiShowMeta" class="text-[10.5px] text-slate-300 font-mono"></div>
@@ -1115,7 +1115,7 @@ def build():
           <!-- Archive Holdings on Floor -->
           <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
             <span class="text-[10px] font-mono uppercase text-emerald-400 font-bold flex items-center gap-1">
-              <span>📚</span> ARCHIVE HOLDING ON THIS LEVEL
+              ARCHIVE HOLDING ON THIS LEVEL
             </span>
             <div id="bfiArchiveTitle" class="text-[12px] font-semibold text-emerald-200 leading-tight"></div>
             <div id="bfiArchivePolicy" class="text-[10.5px] text-slate-400 leading-tight"></div>
@@ -1133,31 +1133,31 @@ def build():
               <span id="activeRouteStats" class="text-[10.5px] font-mono text-emerald-400/80 block">4 Stops · ~3.2 km · 45 min walk</span>
             </div>
           </div>
-          <button id="closeActiveRouteBtn" class="text-zinc-400 hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[13px] cursor-pointer shrink-0" title="Exit active route">✕</button>
+          <button id="closeActiveRouteBtn" class="text-zinc-400 hover:text-white hover:bg-white/10 rounded-full w-5 h-5 flex items-center justify-center transition text-[13px] cursor-pointer shrink-0" title="Exit active route">Close</button>
         </div>
 
         <!-- Current Stop Details Card -->
         <div id="activeRouteStopCard" class="bg-[#0c241b] border border-emerald-500/30 rounded-xl p-2 sm:p-2.5 space-y-1 text-xs">
           <div class="flex items-center justify-between gap-1 text-[10.5px] font-mono text-emerald-300">
             <span id="activeRouteStopBadge">STOP 1 OF 4</span>
-            <span id="activeRouteStopTier" class="px-1.5 py-0.2 rounded bg-emerald-950 border border-emerald-700/60 text-emerald-300 font-bold">✓ CLEAN</span>
+            <span id="activeRouteStopTier" class="px-1.5 py-0.2 rounded bg-emerald-950 border border-emerald-700/60 text-emerald-300 font-bold">CLEAN</span>
           </div>
           <div id="activeRouteStopName" class="text-[13px] sm:text-[14px] font-semibold text-white leading-tight">Whitechapel Gallery</div>
-          <div id="activeRouteStopHours" class="text-[11px] font-mono text-emerald-300/90">🕒 Wed–Sun 11:00–18:00</div>
-          <div id="activeRouteStopFee" class="text-[11px] text-zinc-300">🎟️ Free Public Admission</div>
+          <div id="activeRouteStopHours" class="text-[11px] font-mono text-emerald-300/90">Wed–Sun 11:00–18:00</div>
+          <div id="activeRouteStopFee" class="text-[11px] text-zinc-300">Free Public Admission</div>
           <div id="activeRouteStopFocus" class="text-[11px] text-zinc-400 line-clamp-2 leading-snug">Historic pioneering community gallery...</div>
         </div>
 
         <!-- Stop Controls Navigation -->
         <div class="flex items-center gap-1.5 pt-0.5">
           <button id="routePrevStopBtn" class="flex-1 py-1 sm:py-1.5 px-2 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 text-[11.5px] font-medium transition cursor-pointer flex items-center justify-center gap-1 disabled:opacity-40 disabled:cursor-not-allowed" disabled>
-            <span>← Prev</span>
+            <span>Prev</span>
           </button>
           <button id="routeNextStopBtn" class="flex-1 py-1 sm:py-1.5 px-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-[11.5px] font-semibold transition cursor-pointer flex items-center justify-center gap-1 shadow-sm">
-            <span>Next Stop →</span>
+            <span>Next Stop</span>
           </button>
           <button id="routeOverviewBtn" class="py-1 sm:py-1.5 px-2.5 rounded-xl bg-[#132c23] hover:bg-[#1c3e32] border border-emerald-600/50 text-emerald-300 text-[11.5px] transition cursor-pointer shrink-0" title="Fit all route stops on map">
-            <span>Fit 🔍</span>
+            <span>Fit</span>
           </button>
         </div>
       </div>
@@ -1167,7 +1167,7 @@ def build():
       <div class="absolute bottom-2 left-2 sm:left-4 z-10 select-none">
         <button id="mapFloatingContributeBtn" class="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r from-[#071f15]/95 via-[#0c2b1e]/95 to-[#082318]/95 hover:from-[#0d3626] hover:to-[#0e3b2a] border border-emerald-500/70 hover:border-emerald-400 text-emerald-300 hover:text-white rounded-2xl text-[12px] sm:text-[13px] font-medium shadow-xl shadow-black/80 backdrop-blur-md transition-all duration-200 cursor-pointer active:scale-95 group" title="Contribute confidential insider intelligence, whistleblower leaks, or unlisted independent spaces">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-          <span class="font-medium text-emerald-200 group-hover:text-white">🔒 Contribute Intel</span>
+          <span class="font-medium text-emerald-200 group-hover:text-white">Contribute Intel</span>
           <span class="hidden lg:inline text-[10px] font-mono uppercase bg-emerald-950/90 text-emerald-400 border border-emerald-800/80 px-1.5 py-0.5 rounded">Whistleblower Vault</span>
         </button>
       </div>
@@ -1189,26 +1189,26 @@ def build():
           </button>
           <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5"></div>
           <button id="hudFiscalBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0f2438] text-[#38bdf8] border border-[#0284c7]/50 hover:bg-[#163654] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Open Institutional Fiscal Analytics Dashboard">
-            <span>📊 Fiscal</span>
+            <span>Fiscal</span>
           </button>
           <button id="hudTimelineBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#211116] text-rose-300 border border-rose-500/50 hover:bg-[#341822] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Interactive Timeline of Cultural Boycotts & Divestment Victories">
-            <span>✊ Victories</span>
+            <span>Victories</span>
           </button>
           <button id="hudFilingsBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#0c1a29] text-sky-300 border border-sky-500/50 hover:bg-[#14293f] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Statutory IRS Form 990 & Charity Accounts Explorer">
-            <span>📑 990s</span>
+            <span>990s</span>
           </button>
           <button id="hudTrusteesBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1a1329] text-purple-300 border border-purple-500/50 hover:bg-[#281b3f] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Interactive Institutional Trustee & Board Conflict Network">
-            <span>🕸️ Boards</span>
+            <span>Boards</span>
           </button>
           <button id="hudRouteBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-[#09261b] text-emerald-300 border border-emerald-500/50 hover:bg-[#0e3b2a] hover:text-white text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Curatorial Itinerary & Art Crawl Generator">
-            <span>📍 Crawls</span>
+            <span>Crawls</span>
           </button>
           <button id="hudRailToggle" class="px-2 h-7 sm:h-8 rounded-xl bg-[#1e2e42] text-[#38bdf8] border border-[#0284c7]/40 hover:bg-[#0369a1]/30 text-[12px] font-normal transition flex items-center gap-1 cursor-pointer" title="Toggle Clean Transit Corridors">
             <span>Rail</span>
           </button>
           <button id="hudContributeBtn" class="px-2 h-7 sm:h-8 rounded-xl bg-gradient-to-r from-[#0c261e] to-[#0f3429] hover:from-[#11382c] hover:to-[#144738] text-emerald-300 hover:text-white border border-emerald-500/60 text-[12px] font-medium transition flex items-center gap-1 cursor-pointer shadow-sm shrink-0" title="Contribute confidential insider intelligence or private info">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>🔒 Intel</span>
+            <span>Intel</span>
           </button>
         </div>
         <button id="hudSpinBtn" class="px-2 sm:px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[11px] sm:text-[12px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Toggle Auto-Spin">
@@ -1283,7 +1283,7 @@ def build():
               <span class="text-[14px] text-[#a1a1aa]">Curator is researching...</span>
             </div>
             <div id="curatorScrapingBadge" class="hidden flex items-center gap-1.5 text-[11px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full shadow-sm">
-              <span class="animate-spin text-[10px]">🌐</span>
+              
               <span id="curatorScrapingText">Scraping web intelligence...</span>
             </div>
           </div>
@@ -1373,41 +1373,35 @@ def build():
                 </button>
                 <button id="chatContributeBtn" type="button" class="text-[12px] sm:text-[13px] bg-gradient-to-r from-emerald-950/90 to-[#0e3b2a] hover:from-emerald-900 hover:to-[#134e38] text-emerald-300 hover:text-white border border-emerald-500/60 hover:border-emerald-400 flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full transition cursor-pointer font-medium shrink-0 shadow-sm" title="Contribute confidential intel, donor agreements, or whistleblower leaks (in-chat)">
                   <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span class="hidden xs:inline">🔒 Contribute</span>
-                  <span class="xs:hidden">🔒</span>
+                  <span class="hidden xs:inline">Contribute</span>
+                  <span class="xs:hidden">Contribute</span>
                 </button>
               </div>
 
               <!-- Right: Model, mic, and blue circular waveform/send button -->
               <div class="flex items-center gap-1.5 sm:gap-2">
                 <button id="chatAddKeyBtn" class="text-[12px] sm:text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Configure AI API Key">
-                  <span id="chatAddKeyIcon">🔑</span>
+                  <span id="chatAddKeyIcon" class="hidden"></span>
                   <span id="chatAddKeyLabel" class="hidden sm:inline">Add API Key</span>
                 </button>
 
                 <button id="workModelBtn" class="text-[12px] sm:text-[14px] text-[#a1a1aa] hover:text-white flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:bg-[#2a2a2a] transition cursor-pointer font-normal" title="AI Model Status & Settings">
                   <span id="workModelLabel" class="hidden sm:inline">Culture Atlas 4.0 Critical Engine</span>
                   <span class="inline sm:hidden text-[11px] text-[#8e8e8e]">Engine 4.0</span>
-                  <svg class="w-3.5 h-3.5 text-[#71717a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                  
                 </button>
 
                 <button id="curatorVoiceToggleBtn" class="text-[12px] sm:text-[13px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition cursor-pointer font-normal shrink-0" title="Auto-Voice: Speaks responses aloud">
-                  <span id="curatorVoiceToggleIcon">🔊</span>
+                  <span id="curatorVoiceToggleIcon" style="display:none!important;">🔊</span>
                   <span id="curatorVoiceToggleLabel" class="hidden sm:inline">Voice: ON</span>
                 </button>
 
-                <button id="workMicBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white flex items-center justify-center transition cursor-pointer shrink-0" title="Voice">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                    <line x1="12" y1="19" x2="12" y2="22" />
-                  </svg>
+                <button id="workMicBtn" class="px-2.5 py-1 rounded-full hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white flex items-center justify-center transition cursor-pointer shrink-0 text-[12px] font-mono border border-[#333]" title="Voice">
+                  Voice
                 </button>
 
-                <button id="workSendBtn" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer shrink-0" title="Send message">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 3v18M8 6v12M4 9v6M16 6v12M20 9v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
-                  </svg>
+                <button id="workSendBtn" class="px-3 py-1 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[12px] font-mono font-medium" title="Send message">
+                  Send
                 </button>
               </div>
             </div>
@@ -1415,15 +1409,15 @@ def build():
             <!-- Quick Dropdown Menu for Plus button -->
             <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-80 text-[14px]">
               <button id="workMenuArchivesBtn" class="text-left px-3 py-2 bg-[#162030] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
-                <span class="flex items-center gap-1.5"><span>📚</span><span>Global Archives Directory</span></span>
+                <span class="flex items-center gap-1.5"><span>Global Archives Directory</span></span>
                 <span class="text-[11px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">{archives_count}</span>
               </button>
               <button id="workMenuGovernanceBtn" class="text-left px-3 py-2 bg-[#182030] hover:bg-[#222e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
-                <span class="flex items-center gap-1.5"><span>⚖️</span><span>Governance Methodology Legend</span></span>
+                <span class="flex items-center gap-1.5"><span>Governance Methodology Legend</span></span>
                 <span class="text-[11px] font-mono text-blue-400 bg-blue-950/70 border border-blue-800/80 px-1.5 py-0.5 rounded">Audit</span>
               </button>
               <button id="workMenuFeedbackBtn" class="text-left px-3 py-2 bg-[#1b263b] hover:bg-[#233554] text-[#78a9ff] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2f4975]">
-                <span class="flex items-center gap-1.5"><span>✍️</span><span>Contribute Research / Tip</span></span>
+                <span class="flex items-center gap-1.5"><span>Contribute Research / Tip</span></span>
                 <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded">Verify</span>
               </button>
               <div class="h-px bg-[#383838] my-0.5"></div>
@@ -1448,19 +1442,19 @@ def build():
           <div id="globeCityBar" class="w-full mt-2 sm:mt-2.5 flex flex-col gap-1.5 select-none py-0.5 shrink-0 max-h-[58px] md:max-h-none overflow-y-auto md:overflow-visible custom-scrollbar">
             <!-- Row 1: Scope, Clean / Flagged Tiers, Academic Research & Categories -->
             <div class="flex flex-wrap items-center gap-1.5">
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">✓ Clean Funding ({clean_count})</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces ({total_count})</button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/60 text-[#60a5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="governance">⚖️ Governance Legend</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e46] border border-[#3b82f6]/60 text-[#60a5fa] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="governance">Governance Legend</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">📚 Archives Directory ({archives_count})</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>📍 Curatorial Itineraries</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>🕸️ Board Conflicts</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>✊ Resistance &amp; Victories</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>📑 Statutory 990s</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">Archives Directory ({archives_count})</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Contribute Intel</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
               <span class="text-[#444] text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
               <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -1514,7 +1508,7 @@ def build():
         <div class="flex items-center gap-2">
           <span class="text-[14px] font-normal text-white">Full Catalog of Verified Spaces</span>
         </div>
-        <button id="closeCatalogModalBtn" class="text-slate-400 hover:text-white p-1 text-[14px]">✕</button>
+        <button id="closeCatalogModalBtn" class="text-slate-400 hover:text-white p-1 text-[14px]">Close</button>
       </div>
       <div class="p-3 border-b border-[#262626] bg-[#171717] flex flex-col gap-2">
         <input type="text" id="searchInput" placeholder="Search museum, city, or focus..." class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white placeholder-[#71717a] px-3.5 py-2 rounded-xl focus:outline-none" />
@@ -1538,7 +1532,7 @@ def build():
   <!-- ========================================================= -->
   <div id="detailDrawer" class="hidden fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-[#0a0d15]/98 backdrop-blur-2xl border-l border-[#1c212a] shadow-2xl flex flex-col">
     <div class="p-3.5 px-4 border-b border-[#1c212a] flex items-center justify-end bg-[#0e121c]">
-      <button id="closeDetailBtn" class="text-slate-400 hover:text-white p-1 rounded hover:bg-[#1a2234] transition text-[18px]" title="Close">✕</button>
+      <button id="closeDetailBtn" class="text-slate-400 hover:text-white p-1 rounded hover:bg-[#1a2234] transition text-[18px]" title="Close">Close</button>
     </div>
     <div id="detailBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-[14px]">
       <!-- Injected dynamically -->
@@ -1560,7 +1554,7 @@ def build():
             <p class="text-[14px] font-mono text-amber-300/80">Museum of Modern Art (New York) · Institutional Scrutiny</p>
           </div>
         </div>
-        <button id="closeMomaModalBtn" class="w-7 h-7 rounded-lg bg-[#20180a] hover:bg-[#33250f] border border-[#523d14] text-slate-300 hover:text-white flex items-center justify-center text-[14px] transition">✕</button>
+        <button id="closeMomaModalBtn" class="w-7 h-7 rounded-lg bg-[#20180a] hover:bg-[#33250f] border border-[#523d14] text-slate-300 hover:text-white flex items-center justify-center text-[14px] transition">Close</button>
       </div>
 
       <!-- Modal Body -->
@@ -1642,7 +1636,7 @@ def build():
             <p class="text-[14px] text-[#a1a1aa]">Power conversational reasoning with live AI or use the built-in critical engine</p>
           </div>
         </div>
-        <button id="closeSettingsModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition">✕</button>
+        <button id="closeSettingsModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition">Close</button>
       </div>
 
       <!-- Provider Tabs -->
@@ -1664,7 +1658,7 @@ def build():
             Recommended: <strong>Anthropic</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.
           </div>
           <a id="providerGetKeyLink" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[#93c5fd] hover:underline font-mono text-[12px] flex items-center gap-1">
-            Get Key ↗
+            Get Key
           </a>
         </div>
       </div>
@@ -1685,7 +1679,7 @@ def build():
           <button id="toggleKeyVisibilityBtn" class="absolute right-3 text-[#71717a] hover:text-white text-[12px] p-1 font-mono uppercase" title="Toggle visibility">Show</button>
         </div>
         <div class="text-[13px] text-[#71717a] flex items-center justify-between">
-          <span>✨ System Anthropic intelligence is active for all visitors out-of-the-box.</span>
+          <span>System Anthropic intelligence is active for all visitors out-of-the-box.</span>
         </div>
       </div>
 
@@ -1739,9 +1733,7 @@ def build():
       <!-- Intake Window Header -->
       <div class="px-4 py-3 bg-[#18181b] border-b border-[#27272a] flex items-center justify-between shrink-0">
         <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-full bg-[#1a2333] border border-[#2f4368] flex items-center justify-center text-[15px] text-[#78a9ff] shrink-0">
-            🔒
-          </div>
+          <div class="hidden"></div>
           <div>
             <div class="flex items-center gap-2">
               <h3 class="text-[15px] sm:text-[16px] font-medium text-white leading-tight">Confidential Field Intelligence Intake</h3>
@@ -1750,13 +1742,13 @@ def build():
             <p class="text-[11.5px] sm:text-[12px] text-[#a1a1aa] font-mono">Private & Non-Public Intelligence · Source-Protected Statutory Cross-Examination</p>
           </div>
         </div>
-        <button id="closeConfidentialChatBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#27272a] rounded-xl transition cursor-pointer" title="Close Intake Window">✕</button>
+        <button id="closeConfidentialChatBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#27272a] rounded-xl transition cursor-pointer" title="Close Intake Window">Close</button>
       </div>
 
       <!-- Private Intel Suggestion Banner -->
       <div class="px-4 py-2.5 bg-[#0f172a] border-b border-[#1e293b] text-[12.5px] text-slate-300 leading-[135%] shrink-0">
         <div class="flex items-center gap-1.5 text-blue-400 font-mono text-[11px] uppercase tracking-wider mb-0.5">
-          <span>🛡️ Private / Internal Information Guidance</span>
+          <span>Private / Internal Information Guidance</span>
         </div>
         <p class="text-slate-300 text-[12px] sm:text-[12.5px]">
           Share internal details known privately that are not available publicly: unpublicized trustee arrangements, secret donor covenants, internal board disputes, curatorial censorship behind closed doors, or leaked budget and labor memos.
@@ -1766,19 +1758,19 @@ def build():
       <!-- Interactive Suggestion Pills for Private Internal Intel -->
       <div class="px-3 py-2 bg-[#161618] border-b border-[#222225] flex items-center gap-1.5 overflow-x-auto custom-scrollbar shrink-0 text-[12px]">
         <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I have internal info about an unpublicized trustee arrangement or off-the-books donor deal at: ">
-          🤫 Unpublicized Trustee Deal
+          Unpublicized Trustee Deal
         </button>
         <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I want to report an internal board dispute or closed-door curatorial censorship at: ">
-          ⚠️ Board Dispute / Censorship
+          Board Dispute / Censorship
         </button>
         <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I have non-public info about corporate underwriting, weapons, or fossil fuel links involving: ">
-          💼 Hidden Corporate Underwriting
+          Hidden Corporate Underwriting
         </button>
         <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I have internal details regarding staff labor disputes, NDAs, or leaked budget memos at: ">
-          📄 Leaked Memo / Labor Dispute
+          Leaked Memo / Labor Dispute
         </button>
         <button class="confidential-prompt-chip whitespace-nowrap px-2.5 py-1 rounded-lg bg-[#1f1f23] hover:bg-[#27272a] border border-[#333338] text-slate-300 hover:text-white transition cursor-pointer" data-prompt="I want to submit an unlisted independent artist-run space with clean public governance: ">
-          🏛️ Unlisted Clean Space
+          Unlisted Clean Space
         </button>
       </div>
 
@@ -1794,11 +1786,10 @@ def build():
             <textarea id="confidentialChatInput" rows="2" placeholder="Write internal or private information known to you (space, trustees, decisions, off-the-record agreements)..." class="w-full bg-transparent text-white placeholder-[#71717a] text-[13px] sm:text-[14px] focus:outline-none resize-none font-sans leading-[130%] max-h-32"></textarea>
             <div class="flex items-center justify-between pt-1">
               <span class="text-[11px] font-mono text-emerald-400/90 flex items-center gap-1">
-                <span>🛡️</span> <span>Local Encrypted Queue</span>
+                <span>Local Encrypted Queue</span>
               </span>
               <button type="submit" id="confidentialSendBtn" class="px-3.5 py-1.5 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-[13px] font-medium flex items-center gap-1.5 transition active:scale-95 cursor-pointer shadow-md">
                 <span>Submit Lead</span>
-                <span>↗</span>
               </button>
             </div>
           </div>
@@ -1815,13 +1806,13 @@ def build():
       <!-- Modal Header -->
       <div class="flex items-center justify-between border-b border-[#2e2e2e] pb-3">
         <div class="flex items-center gap-2.5">
-          <span class="text-[20px]">✍️</span>
+          
           <div>
             <h3 class="text-[17px] font-normal text-white">Contribute Research & Verification</h3>
             <p class="text-[12px] text-[#a1a1aa] font-mono">Community Peer-Review Pipeline · Form 990 / Civic Audits</p>
           </div>
         </div>
-        <button id="closeFeedbackModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">✕</button>
+        <button id="closeFeedbackModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">Close</button>
       </div>
 
       <!-- Explanatory note -->
@@ -1885,7 +1876,7 @@ def build():
               Cancel
             </button>
             <button type="submit" id="submitFeedbackBtn" class="px-4 py-1.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-[13px] font-medium rounded-xl transition shadow-sm cursor-pointer">
-              Submit to Research Pipeline ↗
+              Submit to Research Pipeline
             </button>
           </div>
         </div>
@@ -1898,22 +1889,22 @@ def build():
       <!-- Modal Header -->
       <div class="flex items-center justify-between border-b border-[#2e2e2e] pb-3 shrink-0">
         <div class="flex items-center gap-2.5">
-          <span class="text-[20px]">🔬</span>
+          
           <div>
             <h3 class="text-[17px] font-normal text-white">Academic Research Library: Museum Finance, Funding & Ethics</h3>
             <p class="text-[12px] text-[#33b1ff] font-mono">Consensus Peer-Reviewed Corpus · {academic_count} Empirical Studies & Financial Analyses</p>
           </div>
         </div>
-        <button id="closeAcademicModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">✕</button>
+        <button id="closeAcademicModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#262626] rounded-xl transition cursor-pointer">Close</button>
       </div>
 
       <!-- Layer Tabs: Peer-Reviewed Studies vs Community Research Notes (User Input Layer) -->
       <div class="flex items-center gap-2 border-b border-[#2e2e2e] pb-2 shrink-0">
         <button id="arTabStudies" class="px-3 py-1.5 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm">
-          <span>🔬</span> Peer-Reviewed Studies ({academic_count})
+          Peer-Reviewed Studies ({academic_count})
         </button>
         <button id="arTabCommunity" class="px-3 py-1.5 rounded-xl bg-[#212121] text-[#a1a1aa] hover:text-white hover:bg-[#282828] border border-[#333] text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5">
-          <span>✍️</span> Community Research Notes (User Input Layer)
+          Community Research Notes (User Input Layer)
         </button>
       </div>
 
@@ -1966,7 +1957,7 @@ def build():
         <div class="pt-1 shrink-0 flex items-center justify-between">
           <span class="text-[12px] text-slate-400 font-mono">Notice a missing space or updated board tie?</span>
           <button id="arOpenContribModalBtn" class="px-3 py-1.5 rounded-xl bg-[#122b3b] hover:bg-[#1a3d54] text-[#08bdba] border border-[#08bdba]/60 hover:text-white text-[12px] font-medium transition cursor-pointer flex items-center gap-1.5">
-            <span>✍️</span> Submit Field Observation
+            Submit Field Observation
           </button>
         </div>
       </div>
@@ -1987,9 +1978,7 @@ def build():
       <!-- Modal Header -->
       <div class="flex items-start justify-between border-b border-[#232b3b] pb-3 shrink-0">
         <div class="flex items-start gap-3">
-          <div class="w-10 h-10 rounded-xl bg-[#1a2333] border border-[#2b3a55] flex items-center justify-center text-[22px] shrink-0 mt-0.5">
-            🏛️
-          </div>
+          <div class="hidden"></div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
               <span id="bamTierBadge" class="text-[11px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase">Verified Independent Space</span>
@@ -2000,7 +1989,7 @@ def build():
             <p id="bamLocation" class="text-[12px] text-[#78a9ff] font-mono">Location & Address · Footprint Mapped</p>
           </div>
         </div>
-        <button id="closeBuildingArchivesBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#1f293d] rounded-xl transition cursor-pointer">✕</button>
+        <button id="closeBuildingArchivesBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#1f293d] rounded-xl transition cursor-pointer">Close</button>
       </div>
 
       <!-- Scrollable Inspector Body -->
@@ -2012,10 +2001,10 @@ def build():
       <div class="shrink-0 flex items-center justify-between pt-3 border-t border-[#232b3b] text-[12px] font-mono">
         <div class="flex items-center gap-2">
           <button id="bamPlanVisitBtn" class="px-3.5 py-1.5 rounded-xl bg-[#1d283a] hover:bg-[#25354d] text-[#93c5fd] hover:text-white border border-[#334666] transition cursor-pointer flex items-center gap-1.5">
-            <span>💬 Plan Visit</span>
+            <span>Plan Visit</span>
           </button>
           <a id="bamWebLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#131d2c] text-slate-300 hover:text-white border border-[#22334c] transition">
-            <span>Official Site ↗</span>
+            <span>Official Site</span>
           </a>
         </div>
         <button id="bamCloseFooterBtn" class="px-4 py-1.5 bg-[#1f2937] hover:bg-[#2e3e53] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
@@ -2033,9 +2022,7 @@ def build():
       <!-- Modal Header -->
       <div class="flex items-start justify-between border-b border-[#232f48] pb-3 shrink-0">
         <div class="flex items-start gap-3">
-          <div class="w-10 h-10 rounded-xl bg-[#1a2538] border border-[#2d4166] flex items-center justify-center text-[22px] shrink-0 mt-0.5 shadow-sm">
-            📚
-          </div>
+          <div class="hidden"></div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
               <span class="text-[11px] font-mono px-2 py-0.5 rounded border border-cyan-500/60 bg-cyan-950/40 text-cyan-300 font-bold uppercase">Archival Corpus</span>
@@ -2046,7 +2033,7 @@ def build():
             <p class="text-[12px] text-[#78a9ff] font-mono">Exhibition Master Dossiers · Artists' Ephemera & Zines · Audio-Visual Master Tapes · Permanent Study Collections</p>
           </div>
         </div>
-        <button id="closeArchivesModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#1e293d] rounded-xl transition cursor-pointer" title="Close Archives Directory">✕</button>
+        <button id="closeArchivesModalBtn" class="text-[#a1a1aa] hover:text-white text-[18px] p-1.5 hover:bg-[#1e293d] rounded-xl transition cursor-pointer" title="Close Archives Directory">Close</button>
       </div>
 
       <!-- Search, City Filter & Category Filter Chips -->
@@ -2055,11 +2042,11 @@ def build():
         <div class="flex flex-col sm:flex-row gap-2">
           <div class="relative flex-1">
             <input type="text" id="archivesSearchInput" placeholder="Search {archives_count} archives by artist, movement, zines, sound art, dossier topic, city..." class="w-full bg-[#182030] border border-[#2d3d5a] rounded-xl px-3.5 py-2 text-[13px] text-white placeholder-slate-400 focus:outline-none focus:border-[#38bdf8] font-sans transition">
-            <button id="clearArchivesSearchBtn" class="hidden absolute right-3 top-2.5 text-slate-400 hover:text-white text-[12px] font-mono">✕</button>
+            <button id="clearArchivesSearchBtn" class="hidden absolute right-3 top-2.5 text-slate-400 hover:text-white text-[12px] font-mono">Clear</button>
           </div>
           <div class="flex items-center gap-2 shrink-0">
             <select id="archivesCityFilter" class="bg-[#182030] border border-[#2d3d5a] text-slate-200 hover:text-white rounded-xl px-3 py-2 text-[12.5px] focus:outline-none focus:border-[#38bdf8] transition cursor-pointer">
-              <option value="all">🌍 All Cultural Cities ({archives_count})</option>
+              <option value="all">All Cultural Cities ({archives_count})</option>
             </select>
           </div>
         </div>
@@ -2067,12 +2054,12 @@ def build():
         <!-- Filter Chips Row -->
         <div class="flex flex-wrap items-center gap-1.5 text-[12px]" id="archivesFilterChips">
           <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm" data-filter="all">All Archives ({archives_count})</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="independent">✓ Verified Independent Spaces ({clean_count})</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="ephemera">📰 Artists' Ephemera & Zines</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="av">🎙️ Oral Histories & AV Masters</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="dossiers">📁 Exhibition Dossiers & Correspondence</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="study">🖼️ Permanent Study Collections</button>
-          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="high_digitization">⚡ High Digitization (70%+)</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="independent">Verified Independent Spaces ({clean_count})</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="ephemera">Artists' Ephemera & Zines</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="av">Oral Histories & AV Masters</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="dossiers">Exhibition Dossiers & Correspondence</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="study">Permanent Study Collections</button>
+          <button class="archives-filter-chip px-2.5 py-1 rounded-xl bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-[#d4d4d4] cursor-pointer transition" data-filter="high_digitization">High Digitization (70%+)</button>
         </div>
 
         <!-- Result count bar -->
@@ -2090,7 +2077,7 @@ def build():
       <!-- Modal Footer -->
       <div class="shrink-0 flex items-center justify-between pt-2.5 border-t border-[#232f48] text-[12px] font-mono text-slate-400">
         <div class="flex items-center gap-2">
-          <span>🏛️ Primary sources directly grounded in institutional archives</span>
+          <span>Primary sources directly grounded in institutional archives</span>
         </div>
         <button id="closeArchivesModalFooterBtn" class="px-4 py-1.5 bg-[#1e2638] hover:bg-[#2b374e] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
           Close Directory
@@ -2107,9 +2094,7 @@ def build():
       <!-- Modal Header -->
       <div class="flex items-start justify-between border-b border-[#232f48] pb-3 shrink-0">
         <div class="flex items-start gap-3">
-          <div class="w-10 h-10 rounded-xl bg-[#182030] border border-[#2d3d5a] flex items-center justify-center text-[22px] shrink-0 mt-0.5 shadow-sm">
-            ⚖️
-          </div>
+          <div class="hidden"></div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
               <span class="text-[11px] font-mono px-2 py-0.5 rounded border border-blue-500/60 bg-blue-950/40 text-blue-300 font-bold uppercase">Auditing Standard</span>
@@ -2124,7 +2109,7 @@ def build():
             </p>
           </div>
         </div>
-        <button id="closeGovernanceModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-[#1a2333] transition cursor-pointer text-xl font-mono leading-none shrink-0" title="Close Modal">✕</button>
+        <button id="closeGovernanceModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-[#1a2333] transition cursor-pointer text-xl font-mono leading-none shrink-0" title="Close Modal">Close</button>
       </div>
 
       <!-- Scrollable Modal Body -->
@@ -2133,7 +2118,7 @@ def build():
         <!-- Summary Callout -->
         <div class="p-3.5 rounded-2xl bg-gradient-to-r from-[#141d2e] to-[#121927] border border-blue-900/50 space-y-2">
           <div class="flex items-center gap-2 text-blue-400 font-mono text-[12px] font-semibold uppercase tracking-wider">
-            <span>🔬 Material Investigation Over Corporate PR</span>
+            <span>Material Investigation Over Corporate PR</span>
           </div>
           <p class="text-slate-200 text-[13.5px]">
             No predatory corporation or compromising trustee ever documents their conflicts on institutional PR websites. Culture Atlas tracks the <strong>material flow of capital, contracts, and board seats</strong> by auditing statutory filings submitted under penalty of perjury alongside open-source investigative dossiers.
@@ -2143,7 +2128,7 @@ def build():
         <!-- 3 Core Classifications Grid -->
         <div>
           <h4 class="text-[14px] font-semibold text-white mb-2.5 flex items-center gap-2">
-            <span>🏛️ Institutional Governance Classifications</span>
+            <span>Institutional Governance Classifications</span>
           </h4>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
             
@@ -2210,7 +2195,7 @@ def build():
         <!-- 7 Standardized Legal Governance Taxonomies -->
         <div class="space-y-2 pt-2 border-t border-[#232f48]">
           <h4 class="text-[14px] font-semibold text-white flex items-center gap-2">
-            <span>🏛️ Standardized Legal Governance Taxonomy (7 Models)</span>
+            <span>Standardized Legal Governance Taxonomy (7 Models)</span>
           </h4>
           <p class="text-[12.5px] text-slate-300">
             Every cultural space on Culture Atlas is mapped to one of seven standardized legal and organizational structures, defining board accountability, capital flows, and statutory oversight:
@@ -2250,7 +2235,7 @@ def build():
         <!-- Four Auditing Dossier Pillars -->
         <div class="space-y-2 pt-2 border-t border-[#232f48]">
           <h4 class="text-[14px] font-semibold text-white flex items-center gap-2">
-            <span>📋 Statutory Filing Sources & Audit Records</span>
+            <span>Statutory Filing Sources & Audit Records</span>
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[12.5px]">
             <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] text-slate-300 space-y-1">
@@ -2275,22 +2260,22 @@ def build():
         <!-- Museum Budgets & Fiscal Year Disclosure Timing -->
         <div class="space-y-2 pt-2 border-t border-[#232f48]">
           <h4 class="text-[14px] font-semibold text-white flex items-center gap-2">
-            <span>📊 Museum Budgets & Fiscal Year Disclosure Timing (2026 Notice)</span>
+            <span>Museum Budgets & Fiscal Year Disclosure Timing (2026 Notice)</span>
           </h4>
           <p class="text-[12.5px] text-slate-300 leading-relaxed">
             I don't have access to 2026 budget data for any museums. Those budgets haven't been published yet, and most institutions only release their annual financial statements after they close their fiscal year—typically in the spring or summer following the year in question.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-[12px]">
             <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
-              <strong class="text-amber-300 block font-mono">📁 Where to find real budget info</strong>
+              <strong class="text-amber-300 block font-mono">Where to find real budget info</strong>
               <span class="text-slate-300">In the US, check IRS Form 990 (Schedule O contains narrative budget plans). In the UK, search the Charity Commission register for audited accounts. In Europe, national cultural ministries publish statutory reports.</span>
             </div>
             <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
-              <strong class="text-amber-300 block font-mono">🔍 What those documents show</strong>
+              <strong class="text-amber-300 block font-mono">What those documents show</strong>
               <span class="text-slate-300">Trustee names, executive salary expenses, restricted vs unrestricted gifts, and whether money flows toward the actual mission or gets stuck in endowment. Red flags: 40% fundraising overhead or trustee consulting fees.</span>
             </div>
             <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] space-y-1">
-              <strong class="text-amber-300 block font-mono">⚖️ What you should look for</strong>
+              <strong class="text-amber-300 block font-mono">What you should look for</strong>
               <span class="text-slate-300">Program expenses (actual art and curatorial work), administrative overhead, fundraising costs, and donor restrictions that lock money into donor-named wings rather than flexible operations.</span>
             </div>
           </div>
@@ -2302,10 +2287,10 @@ def build():
       <div class="shrink-0 flex items-center justify-between pt-2.5 border-t border-[#232f48] text-[12px] font-mono text-slate-400 flex-wrap gap-2">
         <div class="flex items-center gap-2">
           <button id="govModalFilterCleanBtn" class="px-3 py-1.5 bg-[#059669] hover:bg-[#047857] text-white rounded-xl transition cursor-pointer font-medium flex items-center gap-1.5">
-            <span>✓ Show Independent ({clean_count})</span>
+            <span>Show Independent ({clean_count})</span>
           </button>
           <button id="govModalFilterFlaggedBtn" class="px-3 py-1.5 bg-[#5b21b6] hover:bg-[#4c1d95] text-purple-200 hover:text-white rounded-xl transition cursor-pointer font-medium flex items-center gap-1.5">
-            <span>⚠ Show Flagged ({flagged_count})</span>
+            <span>Show Flagged ({flagged_count})</span>
           </button>
         </div>
         <button id="closeGovernanceModalFooterBtn" class="px-4 py-1.5 bg-[#1e2638] hover:bg-[#2b374e] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
@@ -2323,9 +2308,7 @@ def build():
       <!-- Modal Header -->
       <div class="flex items-start justify-between border-b border-[#1e2e4a] pb-3 shrink-0">
         <div class="flex items-start gap-3">
-          <div class="w-10 h-10 rounded-xl bg-[#0f1d30] border border-[#233b5c] flex items-center justify-center text-[22px] shrink-0 mt-0.5 shadow-sm text-sky-400">
-            📊
-          </div>
+          <div class="hidden"></div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
               <span class="text-[11px] font-mono px-2 py-0.5 rounded border border-sky-500/60 bg-sky-950/40 text-sky-300 font-bold uppercase">Empirical Fiscal Intelligence</span>
@@ -2337,7 +2320,7 @@ def build():
             </p>
           </div>
         </div>
-        <button id="closeFiscalModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#15233a] rounded-xl transition cursor-pointer" title="Close Modal">✕</button>
+        <button id="closeFiscalModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#15233a] rounded-xl transition cursor-pointer" title="Close Modal">Close</button>
       </div>
 
       <!-- Scrollable Analytics Body -->
@@ -2371,7 +2354,7 @@ def build():
         <div class="p-3.5 rounded-2xl bg-[#0d1624] border border-[#1a2b42] space-y-2.5">
           <div class="flex items-center justify-between flex-wrap gap-2">
             <div class="flex items-center gap-2">
-              <span class="text-[14px]">🏛️</span>
+              
               <span class="text-white font-medium text-[13.5px]">Aggregated Revenue Architecture Breakdown</span>
             </div>
             <span class="text-[11.5px] text-slate-400 font-mono">Calabrese &amp; Bowman (2024) / Bille et al. (2024)</span>
@@ -2409,7 +2392,7 @@ def build():
         <div class="space-y-2">
           <div class="flex items-center justify-between">
             <h4 class="text-[13.5px] font-semibold text-white flex items-center gap-1.5">
-              <span>🏷️</span> Operating Budget Models &amp; Governance Typologies
+              Operating Budget Models &amp; Governance Typologies
             </h4>
             <span class="text-[11px] text-sky-400 font-mono">Click any model to filter map</span>
           </div>
@@ -2422,7 +2405,7 @@ def build():
         <div class="space-y-2 pt-2 border-t border-[#1e2e4a]">
           <div class="flex items-center justify-between">
             <h4 class="text-[13.5px] font-semibold text-white flex items-center gap-1.5">
-              <span>⚡</span> Curatorial Mission Efficiency Leaders (Top Program Spend Ratios)
+              Curatorial Mission Efficiency Leaders (Top Program Spend Ratios)
             </h4>
             <span class="text-[11px] text-emerald-400 font-mono">≥80% Program Services Ratio</span>
           </div>
@@ -2437,13 +2420,13 @@ def build():
       <div class="shrink-0 flex items-center justify-between pt-2.5 border-t border-[#1e2e4a] text-[12px] font-mono text-slate-400 flex-wrap gap-2">
         <div class="flex items-center gap-2 flex-wrap">
           <button id="faFilterCivicBtn" class="px-3 py-1.5 bg-[#0369a1] hover:bg-[#0284c7] text-white rounded-xl transition cursor-pointer font-medium flex items-center gap-1.5">
-            <span>🏛️ Filter Public Subsidized (≥50%)</span>
+            <span>Filter Public Subsidized (≥50%)</span>
           </button>
           <button id="faFilterHighProgBtn" class="px-3 py-1.5 bg-[#059669] hover:bg-[#047857] text-white rounded-xl transition cursor-pointer font-medium flex items-center gap-1.5">
-            <span>⚡ Filter High Program Spend (≥80%)</span>
+            <span>Filter High Program Spend (≥80%)</span>
           </button>
           <button onclick="openAcademicResearchModal('finance')" class="px-3 py-1.5 bg-[#152338] hover:bg-[#1e3250] border border-[#2b446c] text-sky-300 hover:text-white rounded-xl transition cursor-pointer flex items-center gap-1.5">
-            <span>🔬 40+ Finance Studies</span>
+            <span>40+ Finance Studies</span>
           </button>
         </div>
         <button id="closeFiscalModalFooterBtn" class="px-4 py-1.5 bg-[#172235] hover:bg-[#233452] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
@@ -2464,7 +2447,7 @@ def build():
       <div class="p-3.5 sm:p-5 border-b border-[#1b3328] bg-gradient-to-r from-[#071912] via-[#0d281d] to-[#071912] flex items-center justify-between gap-3 shrink-0">
         <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
           <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-950/90 border border-emerald-500/60 flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm">
-            <span>📍</span>
+            
           </div>
           <div class="min-w-0">
             <div class="flex items-center gap-2 flex-wrap">
@@ -2474,16 +2457,16 @@ def build():
             <p class="text-xs sm:text-[13px] text-emerald-200/70 truncate">Multi-space walking &amp; clean-transit itineraries with synchronized street route lines, opening hours verification, and admission policies.</p>
           </div>
         </div>
-        <button id="closeItineraryModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#133024] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">✕</button>
+        <button id="closeItineraryModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#133024] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">Close</button>
       </div>
 
       <!-- Navigation & Mode Tabs -->
       <div class="flex items-center gap-2 px-3.5 sm:px-5 py-2.5 bg-[#0a1b14] border-b border-[#173024] text-xs font-mono shrink-0 overflow-x-auto">
         <button id="itineraryTabSignature" class="itinerary-tab-btn active px-3.5 py-1.5 rounded-xl bg-emerald-900/70 border border-emerald-500/80 text-emerald-200 font-medium transition cursor-pointer flex items-center gap-1.5">
-          <span>⭐ Signature Curated Crawls (6)</span>
+          <span>Signature Curated Crawls (6)</span>
         </button>
         <button id="itineraryTabCustom" class="itinerary-tab-btn px-3.5 py-1.5 rounded-xl bg-[#11241c] hover:bg-[#18362a] border border-[#234b39] text-zinc-300 hover:text-white transition cursor-pointer flex items-center gap-1.5">
-          <span>⚙️ Custom City Crawl Builder</span>
+          <span>Custom City Crawl Builder</span>
         </button>
       </div>
 
@@ -2516,7 +2499,7 @@ def build():
       <div class="p-3.5 sm:p-4 border-b border-purple-900/60 bg-gradient-to-r from-[#120921] via-[#1b0d33] to-[#120921] flex items-center justify-between gap-3 shrink-0">
         <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
           <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-purple-950/90 border border-purple-500/60 flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm">
-            <span>🕸️</span>
+            
           </div>
           <div class="min-w-0">
             <div class="flex items-center gap-2 flex-wrap">
@@ -2526,7 +2509,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-purple-200/70 truncate">Forensic mapping of corporate board interlocks, predatory private equity, weapons contractors, opioid dynasties, and fossil fuel underwriters.</p>
           </div>
         </div>
-        <button id="closeTrusteeModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#251542] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">✕</button>
+        <button id="closeTrusteeModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#251542] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">Close</button>
       </div>
 
       <!-- Controls & Filter Toolbar -->
@@ -2534,7 +2517,7 @@ def build():
         <!-- Search & Filter Controls -->
         <div class="flex items-center gap-2 flex-1 min-w-[240px]">
           <div class="relative flex-1 max-w-xs">
-            <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-zinc-400 text-xs">🔍</span>
+            
             <input id="trusteeSearchInput" type="text" placeholder="Search trustee, museum, or firm..." class="w-full bg-[#181028] border border-purple-900/70 rounded-xl pl-7 pr-3 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400">
           </div>
 
@@ -2549,7 +2532,7 @@ def build():
           <button id="trusteeZoomInBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 font-mono text-sm flex items-center justify-center transition cursor-pointer" title="Zoom In">+</button>
           <button id="trusteeZoomOutBtn" class="w-7 h-7 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 font-mono text-sm flex items-center justify-center transition cursor-pointer" title="Zoom Out">−</button>
           <button id="trusteeResetGraphBtn" class="px-2.5 py-1 rounded-xl bg-[#1c1230] hover:bg-[#2b1b4a] border border-purple-800/60 text-purple-200 text-xs font-mono transition cursor-pointer flex items-center gap-1" title="Reset Force Simulation and Zoom">
-            <span>↺ Reset</span>
+            <span>Reset</span>
           </button>
         </div>
       </div>
@@ -2558,12 +2541,12 @@ def build():
       <div class="px-3.5 sm:px-4 py-2 bg-[#0d0717] border-b border-purple-950/80 flex items-center gap-1.5 overflow-x-auto text-xs shrink-0 select-none custom-scrollbar">
         <span class="text-[11px] font-mono text-zinc-400 uppercase tracking-wider mr-1 shrink-0">Sectors:</span>
         <button class="trustee-sector-pill active px-2.5 py-1 rounded-xl bg-purple-700 text-white border border-purple-500 text-[11.5px] font-medium transition cursor-pointer shrink-0" data-sector="all">All Sectors (33)</button>
-        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="defense">⚔️ Defense &amp; Weapons</button>
-        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="fossil">🛢️ Fossil Fuels</button>
-        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="private_equity">📈 Private Equity &amp; Debt</button>
-        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="pharma">💊 Big Pharma / Opioids</button>
-        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="banking">🏦 Mega-Banks &amp; Finance</button>
-        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="artwashing">👑 Authoritarian Artwashing</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="defense">Defense &amp; Weapons</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="fossil">Fossil Fuels</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="private_equity">Private Equity &amp; Debt</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="pharma">Big Pharma / Opioids</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="banking">Mega-Banks &amp; Finance</button>
+        <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[11.5px] transition cursor-pointer shrink-0" data-sector="artwashing">Authoritarian Artwashing</button>
       </div>
 
       <!-- Main Graph Simulation + Inspector Grid -->
@@ -2632,7 +2615,7 @@ def build():
       <div class="p-3.5 sm:p-4 border-b border-rose-900/60 bg-gradient-to-r from-[#1c0b13] via-[#290e1a] to-[#1c0b13] flex items-center justify-between gap-3 shrink-0">
         <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
           <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-rose-950/90 border border-rose-500/60 flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm">
-            <span>✊</span>
+            
           </div>
           <div class="min-w-0">
             <div class="flex items-center gap-2 flex-wrap">
@@ -2642,24 +2625,24 @@ def build():
             <p class="text-xs sm:text-[13px] text-rose-200/70 truncate">Documenting five decades of artist-led resistance, museum occupations, die-ins, and institutional ruptures.</p>
           </div>
         </div>
-        <button id="closeTimelineModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#341322] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">✕</button>
+        <button id="closeTimelineModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#341322] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">Close</button>
       </div>
 
       <!-- Controls & Filter Toolbar -->
       <div class="px-3.5 sm:px-4 py-2.5 bg-[#140a14] border-b border-rose-950/80 flex flex-wrap items-center justify-between gap-2 text-xs shrink-0">
         <div class="relative flex-1 max-w-xs">
-          <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-zinc-400 text-xs">🔍</span>
+          
           <input id="timelineSearchInput" type="text" placeholder="Search campaign, artist, museum, or target..." class="w-full bg-[#1e0e1e] border border-rose-900/70 rounded-xl pl-7 pr-3 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-rose-400">
         </div>
 
         <div class="flex items-center gap-1.5 overflow-x-auto text-xs shrink-0 select-none custom-scrollbar">
           <span class="text-[11px] font-mono text-zinc-400 uppercase tracking-wider mr-1 shrink-0">Movement:</span>
           <button class="timeline-mov-pill active px-2.5 py-1 rounded-xl bg-rose-700 text-white border border-rose-500 text-[11px] font-medium transition cursor-pointer shrink-0" data-movement="all">All (32)</button>
-          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="climate">🛢️ Fossil Free</button>
-          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="anti_opiate">💊 P.A.I.N. / Sackler</button>
-          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="demilitarization">⚔️ Demilitarization</button>
-          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="labor">✊ Labor Unions</button>
-          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="restitution">🌍 Restitution</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="climate">Fossil Free</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="anti_opiate">P.A.I.N. / Sackler</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="demilitarization">Demilitarization</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="labor">Labor Unions</button>
+          <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[11px] transition cursor-pointer shrink-0" data-movement="restitution">Restitution</button>
         </div>
       </div>
 
@@ -2692,7 +2675,7 @@ def build():
       <div class="p-3.5 sm:p-4 border-b border-sky-900/60 bg-gradient-to-r from-[#0b1b2d] via-[#10243d] to-[#0b1b2d] flex items-center justify-between gap-3 shrink-0">
         <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
           <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-sky-950/90 border border-sky-500/60 flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm">
-            <span>📑</span>
+            
           </div>
           <div class="min-w-0">
             <div class="flex items-center gap-2 flex-wrap">
@@ -2702,7 +2685,7 @@ def build():
             <p class="text-xs sm:text-[13px] text-sky-200/70 truncate">Forensic extraction of interested person transactions, board loans, executive compensation, and program expense ratios.</p>
           </div>
         </div>
-        <button id="closeFilingsModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#16304d] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">✕</button>
+        <button id="closeFilingsModalBtn" class="text-slate-400 hover:text-white text-[19px] p-1.5 hover:bg-[#16304d] rounded-xl transition cursor-pointer shrink-0" title="Close Modal">Close</button>
       </div>
 
       <!-- Controls & Selection Toolbar -->
@@ -2716,8 +2699,8 @@ def build():
 
         <div class="flex items-center gap-1.5 text-xs font-mono">
           <button id="filingTabOverview" class="filing-tab-btn active px-3 py-1 rounded-xl bg-sky-700 text-white border border-sky-500 font-medium cursor-pointer">Overview &amp; Ratios</button>
-          <button id="filingTabScheduleL" class="filing-tab-btn px-3 py-1 rounded-xl bg-[#122238] hover:bg-[#1b3252] border border-sky-900/60 text-zinc-300 hover:text-white cursor-pointer">⚠️ Schedule L Conflicts</button>
-          <button id="filingTabExecComp" class="filing-tab-btn px-3 py-1 rounded-xl bg-[#122238] hover:bg-[#1b3252] border border-sky-900/60 text-zinc-300 hover:text-white cursor-pointer">💼 Executive Compensation</button>
+          <button id="filingTabScheduleL" class="filing-tab-btn px-3 py-1 rounded-xl bg-[#122238] hover:bg-[#1b3252] border border-sky-900/60 text-zinc-300 hover:text-white cursor-pointer">Schedule L Conflicts</button>
+          <button id="filingTabExecComp" class="filing-tab-btn px-3 py-1 rounded-xl bg-[#122238] hover:bg-[#1b3252] border border-sky-900/60 text-zinc-300 hover:text-white cursor-pointer">Executive Compensation</button>
         </div>
       </div>
 
@@ -9085,7 +9068,7 @@ def build():
         '<div style="display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid #1e2c42; padding-bottom:7px;">' +
           '<div style="min-width:0;">' +
             '<div style="display:flex; align-items:center; gap:6px;">' +
-              '<span style="font-size:15px;">🏛️</span>' +
+              '' +
               '<span style="font-size:14px; font-weight:700; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + escapeHtml(inst.name) + '</span>' +
             '</div>' +
             '<div style="font-size:10.5px; font-family:monospace; color:#94a3b8; margin-top:2px;">' +
@@ -9097,25 +9080,25 @@ def build():
 
         '<div style="margin-top:7px; font-size:11px; font-family:monospace; color:#cbd5e1; display:flex; flex-direction:column; gap:3px;">' +
           '<div style="display:flex; align-items:center; justify-content:space-between; color:#7dd3fc;">' +
-            '<span>🏢 ' + floors.length + ' Floors · ' + (bArch.footprint_sqm || 2400).toLocaleString() + ' m²</span>' +
-            '<span style="color:#f59e0b;">💶 ' + escapeHtml(budgetStr) + '</span>' +
+            '<span>' + floors.length + ' Floors · ' + (bArch.footprint_sqm || 2400).toLocaleString() + ' m²</span>' +
+            '<span style="color:#f59e0b;">' + escapeHtml(budgetStr) + '</span>' +
           '</div>' +
           '<div style="color:#94a3b8;">' +
-            '🕒 ' + escapeHtml(inst.hours || 'Wed–Sun 11:00–19:00') + ' · 🎟️ ' + escapeHtml(inst.admission || 'Free Admission') +
+            escapeHtml(inst.hours || 'Wed–Sun 11:00–19:00') + ' · ' + escapeHtml(inst.admission || 'Free Admission') +
           '</div>' +
         '</div>' +
 
         '<div style="margin-top:9px; padding-top:8px; border-top:1px solid #1e2c42; display:flex; align-items:center; gap:6px; flex-wrap:wrap;">' +
           '<button type="button" onclick="window.toggleExploded3DMode()" style="background:#1d3557; color:#7dd3fc; border:1px solid #38bdf8; padding:4px 9px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer; font-weight:bold; transition:all 0.15s;" title="Toggle 3D exploded axonometric floor separation">' +
-            '<span>' + (isExploded3DMode ? '🧱 Stack 3D Building' : '💥 Explode 3D Floors') + '</span>' +
+            '<span>' + (isExploded3DMode ? 'Stack 3D Building' : 'Explode 3D Floors') + '</span>' +
           '</button>' +
           '<button type="button" onclick="window.zoomCloserToBuilding(20.0)" style="background:#132035; color:#93c5fd; border:1px solid #2b4266; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer;" title="Zoom into 20x street perspective">' +
-            '<span>🔍 20x Zoom</span>' +
+            '<span>20x Zoom</span>' +
           '</button>' +
           '<button type="button" onclick="window.openBuildingArchivesModal(selectedInstitution)" style="background:#092b1e; color:#34d399; border:1px solid #10b981; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer;" title="Open full building & archives dossier">' +
-            '<span>📖 Dossier</span>' +
+            '<span>Dossier</span>' +
           '</button>' +
-          (webUrl ? ('<a href="' + escapeHtml(webUrl) + '" target="_blank" rel="noopener noreferrer" style="background:#1f2937; color:#e2e8f0; border:1px solid #374151; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; text-decoration:none;">Website ↗</a>') : '') +
+          (webUrl ? ('<a href="' + escapeHtml(webUrl) + '" target="_blank" rel="noopener noreferrer" style="background:#1f2937; color:#e2e8f0; border:1px solid #374151; padding:4px 8px; border-radius:8px; font-size:10.5px; font-family:monospace; text-decoration:none;">Website</a>') : '') +
         '</div>' +
         '<div style="position:absolute; bottom:-9px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-top:9px solid rgba(56,189,248,0.8);"></div>';
 
@@ -9165,12 +9148,12 @@ def build():
               '</div>' +
 
               '<div style="font-size:11.5px; color:#ffffff; line-height:1.25; display:flex; align-items:baseline; gap:4px;">' +
-                '<span style="color:#f59e0b; font-size:10px; font-family:monospace; flex-shrink:0;">🖼️</span>' +
+                '' +
                 '<span style="font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + escapeHtml(show.title) + '</span>' +
               '</div>' +
 
               '<div style="font-size:10.5px; color:#6ee7b7; font-family:monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:flex; align-items:baseline; gap:4px;">' +
-                '<span style="color:#10b981; font-size:10px; flex-shrink:0;">📚</span>' +
+                '' +
                 '<span>' + escapeHtml(arch.collection_title) + '</span>' +
               '</div>' +
             '</div>';
@@ -9179,7 +9162,7 @@ def build():
         facadeEl.innerHTML = 
           '<div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #1e2c42; padding-bottom:5px;">' +
             '<span style="font-size:10.5px; font-family:monospace; font-weight:bold; text-transform:uppercase; color:#38bdf8; letter-spacing:0.05em; display:flex; align-items:center; gap:4px;">' +
-              '<span>🏢</span> 3D FLOOR DIRECTORY' +
+              '3D FLOOR DIRECTORY' +
             '</span>' +
             '<span style="font-size:10px; font-family:monospace; color:#94a3b8;">Click level to inspect in 3D</span>' +
           '</div>' +
@@ -9216,26 +9199,26 @@ def build():
         if (topBtn) {{
           topBtn.classList.add('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold', 'shadow-[0_0_15px_rgba(234,179,8,0.6)]');
           topBtn.classList.remove('bg-[#1c1806]', 'text-yellow-300');
-          topBtn.innerHTML = '<span>🟡 Gossip Mode: ACTIVE [REDDIT & 𝕏]</span>';
+          topBtn.innerHTML = '<span>Gossip Mode: ACTIVE [REDDIT & X]</span>';
         }}
         if (mobileBtn) {{
           mobileBtn.classList.add('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold');
           mobileBtn.classList.remove('bg-[#1c1806]', 'text-yellow-300');
-          mobileBtn.innerHTML = '<span>🟡 Gossip Active</span>';
+          mobileBtn.innerHTML = '<span>Gossip Active</span>';
         }}
         if (typeof appendBotMessage === 'function') {{
-          appendBotMessage("🟡 **Yellow Gossip Mode Activated**: Mapping institutions based on art world backchannels, Reddit debates (r/contemporaryart, r/museums), curatorial Twitter/X discourse, and gallery whispers. High-rumor spaces are radiating in neon yellow. Click any institution to view unvarnished rumors and curatorial dossiers.");
+          appendBotMessage("**Yellow Gossip Mode Activated**: Mapping institutions based on art world backchannels, Reddit debates (r/contemporaryart, r/museums), curatorial Twitter/X discourse, and gallery whispers. High-rumor spaces are radiating in neon yellow. Click any institution to view unvarnished rumors and curatorial dossiers.");
         }}
       }} else {{
         if (topBtn) {{
           topBtn.classList.remove('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold', 'shadow-[0_0_15px_rgba(234,179,8,0.6)]');
           topBtn.classList.add('bg-[#1c1806]', 'text-yellow-300');
-          topBtn.innerHTML = '<span>🟡 Gossip Mode [REDDIT & 𝕏]</span>';
+          topBtn.innerHTML = '<span>Gossip Mode [REDDIT & X]</span>';
         }}
         if (mobileBtn) {{
           mobileBtn.classList.remove('bg-yellow-500', 'text-black', 'border-yellow-300', 'font-bold');
           mobileBtn.classList.add('bg-[#1c1806]', 'text-yellow-300');
-          mobileBtn.innerHTML = '<span>🟡 Gossip</span>';
+          mobileBtn.innerHTML = '<span>Gossip</span>';
         }}
       }}
 
@@ -9578,7 +9561,7 @@ def build():
         <div class="bg-[#161c27] border border-[#26354d] rounded-2xl p-4 space-y-3">
           <div class="flex items-center justify-between border-b border-[#23334d] pb-2">
             <span class="text-[12px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
-              <span>🏛️</span> Architectural Footprint & Building Layout
+              Architectural Footprint & Building Layout
             </span>
             <span class="text-[11px] font-mono text-slate-400 bg-[#0e1622] px-2 py-0.5 rounded border border-[#213045]">
               ${{bArchSqm.toLocaleString()}} m² Built Area
@@ -9611,7 +9594,7 @@ def build():
               ${{bArchWings.map(w => `
                 <div class="p-2 rounded-xl bg-[#0e141f] border border-[#1f2b3e] flex items-center justify-between gap-2">
                   <div class="flex items-center gap-2">
-                    <span class="text-[14px]">${{w.type === 'galleries' ? '🖼️' : (w.type === 'archives' ? '📚' : (w.type === 'study' ? '🔬' : '🔒'))}}</span>
+                    <span class="text-[10.5px] font-mono text-zinc-400 uppercase">[${{w.type}}]</span>
                     <div>
                       <div class="text-[12.5px] font-medium text-slate-100 leading-tight">${{escapeHtml(w.name)}}</div>
                       <div class="text-[10.5px] font-mono text-slate-400 capitalize">${{w.type}} wing</div>
@@ -9630,7 +9613,7 @@ def build():
         <div class="bg-[#121926] border border-[#233550] rounded-2xl p-4 space-y-3">
           <div class="flex items-center justify-between border-b border-[#1f2f47] pb-2 flex-wrap gap-2">
             <span class="text-[12px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
-              <span>🏢</span> Floor-by-Floor Directory: Current Shows & Archival Holdings
+              Floor-by-Floor Directory: Current Shows & Archival Holdings
             </span>
             <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-800">
               Active Cultural Program
@@ -9663,7 +9646,7 @@ def build():
                 <!-- Current Shows on Floor -->
                 <div class="space-y-1.5">
                   <span class="text-[10.5px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1">
-                    <span>🖼️</span> CURRENT SHOW ON THIS LEVEL
+                    CURRENT SHOW ON THIS LEVEL
                   </span>
                   ${{(fl.current_shows || []).map(show => `
                     <div class="p-2.5 rounded-lg bg-[#141b26] border border-[#2b3a4f] space-y-1">
@@ -9684,7 +9667,7 @@ def build():
                 <!-- Archival Holdings on Floor -->
                 <div class="space-y-1 pt-1 border-t border-[#1b293e]">
                   <span class="text-[10.5px] font-mono uppercase text-emerald-400 font-bold flex items-center gap-1">
-                    <span>📚</span> ARCHIVE HOLDING ON THIS LEVEL
+                    ARCHIVE HOLDING ON THIS LEVEL
                   </span>
                   <div class="p-2.5 rounded-lg bg-[#0b1b16] border border-[#1b3d32] space-y-1 text-[12px]">
                     <div class="flex items-center justify-between gap-2 flex-wrap">
@@ -9716,7 +9699,7 @@ def build():
         <div class="bg-[#141b24] border border-[#26374f] rounded-2xl p-4 space-y-3.5">
           <div class="flex items-center justify-between border-b border-[#213045] pb-2">
             <span class="text-[12px] font-mono uppercase tracking-wider text-[#34d399] font-bold flex items-center gap-1.5">
-              <span>📚</span> ${{escapeHtml(archiveName)}}
+              ${{escapeHtml(archiveName)}}
             </span>
             <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-800">
               Primary Research Holdings
@@ -9753,7 +9736,7 @@ def build():
           ${{treasures && treasures.length > 0 ? `
             <div class="pt-2 border-t border-[#213045] space-y-1.5">
               <span class="text-[11px] font-mono uppercase text-[#fcd34d] block font-bold flex items-center gap-1">
-                <span>⭐</span> Archival Treasures & Historic Artifacts
+                Archival Treasures & Historic Artifacts
               </span>
               <ul class="space-y-1 text-[12.5px] text-slate-200 list-disc list-inside">
                 ${{treasures.map(t => `<li>${{escapeHtml(t)}}</li>`).join('')}}
@@ -9772,7 +9755,7 @@ def build():
               <p class="text-slate-200 text-[12px] leading-snug">${{escapeHtml(digitizationStatus)}}</p>
               ${{findingAidsUrl ? `
                 <a href="${{escapeHtml(findingAidsUrl)}}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[11px] font-mono text-[#60a5fa] hover:underline pt-0.5">
-                  Browse Online Finding Aids ↗
+                  Browse Online Finding Aids
                 </a>
               ` : ''}}
             </div>
@@ -9894,7 +9877,7 @@ def build():
         tierDot.style.color = markerColor;
         tierDot.style.fontSize = '9px';
         tierDot.style.lineHeight = '1';
-        tierDot.textContent = '●';
+        tierDot.textContent = '';
 
         const nameSpan = document.createElement('span');
         nameSpan.className = 'inst-pin-label-name';
@@ -9961,22 +9944,22 @@ def build():
               <button onclick="window.zoomToBuilding('${{safeName}}', true)" 
                       style="display:inline-flex; align-items:center; gap:5px; padding:5.5px 11px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:12px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.35); border:none; cursor:pointer;"
                       onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1.0'">
-                <span>🏛️</span>
+                
                 <span>Zoom to Building & Archives</span>
               </button>
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
                    style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; font-size:11.5px; font-weight:500; text-decoration:none; border:1px solid #334155;"
                    onmouseover="this.style.background='#273549'" onmouseout="this.style.background='#1e293b'">
-                  <span>🌐</span>
+                  
                   <span>Website</span>
-                  <span>↗</span>
+                  
                 </a>
               ` : ''}}
               <button onclick="window.atlasPlanVisit('${{safeName}}')" 
                       style="display:inline-flex; align-items:center; gap:4px; padding:5px 9px; border-radius:10px; background:#222834; color:#93c5fd; border:1px solid #2f3d58; font-size:11px; font-family:monospace; cursor:pointer;"
                       onmouseover="this.style.background='#2b3548';this.style.color='#ffffff'" onmouseout="this.style.background='#222834';this.style.color='#93c5fd'">
-                <span>Plan Visit 💬</span>
+                <span>Plan Visit</span>
               </button>
             </div>
 
@@ -9984,14 +9967,14 @@ def build():
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
                    style="color:#93c5fd; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:110px;">
-                   ${{escapeHtml(domain)}} ↗
+                   ${{escapeHtml(domain)}}
                 </a>
               ` : '<span></span>'}}
               <div style="display:flex; align-items:center; gap:8px;">
                 <button onclick="window.atlasOpenDossier('${{safeName}}')" 
                         style="background:none; border:none; color:#a1a1aa; font-size:11px; cursor:pointer; padding:0;" 
                         onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#a1a1aa'">
-                  Read info about institution →
+                  Read info about institution
                 </button>
                 <button onclick="window.atlasAskCurator('${{safeName}}')" 
                         style="background:none; border:none; color:#ffffff; font-size:11px; font-weight:600; cursor:pointer; padding:0;" 
@@ -10262,10 +10245,10 @@ def build():
 
         const rawH = inst.opening_hours || 'Wednesday–Sunday 11:00–18:00';
         let advisory = '';
-        if (rawH.toLowerCase().includes('closed mo')) advisory += '⚠️ Closed Mon · ';
-        if (rawH.toLowerCase().includes('closed tu')) advisory += '⚠️ Closed Tue · ';
-        if (rawH.toLowerCase().includes('midnight') || rawH.toLowerCase().includes('22:00') || rawH.toLowerCase().includes('21:00')) advisory += '🌙 Open Late · ';
-        if (inst.admission_fee && inst.admission_fee.toLowerCase().includes('free')) advisory += '🎟️ Free Admission';
+        if (rawH.toLowerCase().includes('closed mo')) advisory += 'Closed Mon · ';
+        if (rawH.toLowerCase().includes('closed tu')) advisory += 'Closed Tue · ';
+        if (rawH.toLowerCase().includes('midnight') || rawH.toLowerCase().includes('22:00') || rawH.toLowerCase().includes('21:00')) advisory += 'Open Late · ';
+        if (inst.admission_fee && inst.admission_fee.toLowerCase().includes('free')) advisory += 'Free Admission';
 
         stops.push({{
           stopIndex: i + 1,
@@ -10461,7 +10444,7 @@ def build():
                   Stop ${{stop.stopIndex}} of ${{route.stops.length}}
                 </span>
                 <span style="font-size:10px; font-family:monospace; padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
-                  ${{isClean ? '✓ Clean Funding' : 'Flagged'}}
+                  ${{isClean ? 'Clean Funding' : 'Flagged'}}
                 </span>
               </div>
               <div style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.2; margin-bottom:4px;">
@@ -10471,18 +10454,18 @@ def build():
                 ${{escapeHtml(stop.address || stop.neighborhood || stop.city)}}
               </div>
               <div style="font-size:11.5px; font-family:monospace; color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
-                🕒 ${{escapeHtml(stop.openingHours)}}
+                ${{escapeHtml(stop.openingHours)}}
               </div>
               <div style="font-size:11px; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
                 ${{escapeHtml(stop.curatorialFocus || '')}}
               </div>
               ${{idx < route.stops.length - 1 ? `
                 <div style="font-size:11px; font-family:monospace; color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
-                  → Next stop: ${{escapeHtml(route.stops[idx + 1].name)}} (${{stop.nextLegKm || route.stops[idx+1].legDistanceKm}} km · ${{stop.nextLegMin || route.stops[idx+1].legWalkMinutes}} min walk)
+                  Next stop: ${{escapeHtml(route.stops[idx + 1].name)}} (${{stop.nextLegKm || route.stops[idx+1].legDistanceKm}} km · ${{stop.nextLegMin || route.stops[idx+1].legWalkMinutes}} min walk)
                 </div>
               ` : `
                 <div style="font-size:11px; font-family:monospace; color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
-                  🏁 Final Itinerary Destination
+                  Final Itinerary Destination
                 </div>
               `}}
               <div style="display:flex; align-items:center; gap:6px; margin-top:8px;">
@@ -10490,7 +10473,7 @@ def build():
                   Focus Stop
                 </button>
                 <button onclick="window.atlasPlanVisit('${{safeName}}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:11px; border:1px solid #334155; cursor:pointer;">
-                  Plan Visit 💬
+                  Plan Visit
                 </button>
               </div>
             </div>
@@ -10594,7 +10577,7 @@ def build():
       const tierEl = document.getElementById('activeRouteStopTier');
       if (tierEl) {{
         const isClean = stop.tier === 'A';
-        tierEl.textContent = isClean ? '✓ CLEAN' : 'FLAGGED';
+        tierEl.textContent = isClean ? 'CLEAN' : 'FLAGGED';
         tierEl.className = isClean 
           ? 'px-1.5 py-0.2 rounded bg-emerald-950 border border-emerald-700/60 text-emerald-300 font-bold'
           : 'px-1.5 py-0.2 rounded bg-purple-950 border border-purple-700/60 text-purple-300 font-bold';
@@ -10604,10 +10587,10 @@ def build():
       if (nameEl) nameEl.textContent = stop.name;
 
       const hoursEl = document.getElementById('activeRouteStopHours');
-      if (hoursEl) hoursEl.textContent = `🕒 ${{stop.openingHours}}`;
+      if (hoursEl) hoursEl.textContent = `${{stop.openingHours}}`;
 
       const feeEl = document.getElementById('activeRouteStopFee');
-      if (feeEl) feeEl.textContent = `🎟️ ${{stop.admissionFee}}`;
+      if (feeEl) feeEl.textContent = `${{stop.admissionFee}}`;
 
       const focusEl = document.getElementById('activeRouteStopFocus');
       if (focusEl) focusEl.textContent = stop.curatorialFocus || stop.address || '';
@@ -10620,9 +10603,9 @@ def build():
       const nextBtn = document.getElementById('routeNextStopBtn');
       if (nextBtn) {{
         if (idx === activeCuratorialRoute.stops.length - 1) {{
-          nextBtn.innerHTML = '<span>🏁 Loop to Start</span>';
+          nextBtn.innerHTML = '<span>Loop to Start</span>';
         }} else {{
-          nextBtn.innerHTML = '<span>Next Stop →</span>';
+          nextBtn.innerHTML = '<span>Next Stop</span>';
         }}
       }}
     }}
@@ -10723,10 +10706,10 @@ def build():
 
                     <div class="flex items-center gap-2 pt-2 border-t border-emerald-900/50">
                       <button type="button" onclick="window.launchCuratorialRoute('${{sig.id}}')" class="flex-1 py-1.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs transition cursor-pointer flex items-center justify-center gap-1.5 shadow-md">
-                        <span>🗺️ Launch on Map</span>
+                        <span>Launch on Map</span>
                       </button>
                       <button type="button" onclick="window.switchItineraryTab('custom'); window.openCuratorialItineraryModal('${{sig.city}}');" class="py-1.5 px-2.5 rounded-xl bg-[#122c22] hover:bg-[#1a3d30] border border-emerald-700/60 text-emerald-300 text-xs transition cursor-pointer" title="Customize this city crawl">
-                        <span>⚙️ Customize</span>
+                        <span>Customize</span>
                       </button>
                     </div>
                   </div>
@@ -10779,7 +10762,7 @@ def build():
               <div class="pt-2 border-t border-emerald-900/60 flex items-center justify-between gap-2 flex-wrap">
                 <span class="text-[11px] text-zinc-400 font-mono">Algorithms minimize transit zigzagging via Haversine distance matrix.</span>
                 <button type="button" id="customCrawlGenerateBtn" class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs transition cursor-pointer shadow-md flex items-center gap-1.5">
-                  <span>Generate Itinerary 🚀</span>
+                  <span>Generate Itinerary</span>
                 </button>
               </div>
             </div>
@@ -10828,7 +10811,7 @@ def build():
                   <p class="text-[11.5px] font-mono text-emerald-300/90">${{route.stops.length}} Stops · ~${{route.totalKm}} km walking · ${{route.totalWalkMinutes}} min walk · Est. ${{route.estimatedTotalHours}} hrs total</p>
                 </div>
                 <button type="button" onclick="window.launchCuratorialRoute(window.currentModalCuratorialRoute)" class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs shadow-md transition cursor-pointer flex items-center gap-1.5">
-                  <span>🗺️ Launch on Vector Map</span>
+                  <span>Launch on Vector Map</span>
                 </button>
               </div>
 
@@ -10840,12 +10823,12 @@ def build():
                         <span class="w-5 h-5 rounded-full bg-emerald-700 text-white font-mono text-[11px] font-bold flex items-center justify-center">${{s.stopIndex}}</span>
                         <strong class="text-white text-xs sm:text-[13px]">${{escapeHtml(s.name)}}</strong>
                       </div>
-                      <span class="text-[10px] font-mono px-1.5 py-0.2 rounded ${{s.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950 text-purple-300 border border-purple-700/60'}}">${{s.tier === 'A' ? '✓ Clean' : 'Flagged'}}</span>
+                      <span class="text-[10px] font-mono px-1.5 py-0.2 rounded ${{s.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950 text-purple-300 border border-purple-700/60'}}">${{s.tier === 'A' ? 'Clean' : 'Flagged'}}</span>
                     </div>
                     <div class="flex items-center gap-2 text-[11px] font-mono text-emerald-300 flex-wrap">
-                      <span>🕒 ${{escapeHtml(s.openingHours)}}</span>
+                      <span>${{escapeHtml(s.openingHours)}}</span>
                       <span>·</span>
-                      <span class="text-zinc-300">🎟️ ${{escapeHtml(s.admissionFee)}}</span>
+                      <span class="text-zinc-300">${{escapeHtml(s.admissionFee)}}</span>
                       ${{s.advisoryNote ? `<span class="text-amber-400">· ${{escapeHtml(s.advisoryNote)}}</span>` : ''}}
                     </div>
                     <div class="text-[11px] text-zinc-400 leading-snug">
@@ -10853,7 +10836,7 @@ def build():
                     </div>
                     ${{idx < route.stops.length - 1 ? `
                       <div class="text-[10.5px] font-mono text-sky-400 pt-0.5">
-                        ↓ ~${{s.nextLegKm || route.stops[idx+1].legDistanceKm}} km (${{s.nextLegMin || route.stops[idx+1].legWalkMinutes}} min walk) to Stop ${{s.stopIndex + 1}}
+                        ~${{s.nextLegKm || route.stops[idx+1].legDistanceKm}} km (${{s.nextLegMin || route.stops[idx+1].legWalkMinutes}} min walk) to Stop ${{s.stopIndex + 1}}
                       </div>
                     ` : ''}}
                   </div>
@@ -11358,7 +11341,7 @@ def build():
         trusteeCtx.font = `bold ${{Math.max(9, Math.round(r * 0.75))}}px sans-serif`;
         trusteeCtx.textAlign = 'center';
         trusteeCtx.textBaseline = 'middle';
-        const glyph = n.type === 'institution' ? (n.tier === 'A' ? '✓' : '🏛️') : '⚠️';
+        const glyph = n.type === 'institution' ? (n.tier === 'A' ? 'CLEAN' : 'INST') : 'CONFLICT';
         trusteeCtx.fillText(glyph, n.x, n.y);
 
         // Interlock Count Badge for prominent nodes (>= 2 interlocks)
@@ -11464,8 +11447,8 @@ def build():
               tooltip.style.top = `${{Math.min(window.innerHeight - 80, sy + 15)}}px`;
               document.getElementById('trusteeTooltipTitle').textContent = hit.name;
               document.getElementById('trusteeTooltipSub').textContent = hit.type === 'institution'
-                ? `🏛️ ${{hit.city}} · ${{hit.interlocks}} documented interlocks`
-                : `⚠️ ${{hit.org || hit.category}} · ${{hit.interlocks}} board interlocks`;
+                ? `${{hit.city}} · ${{hit.interlocks}} documented interlocks`
+                : `${{hit.org || hit.category}} · ${{hit.interlocks}} board interlocks`;
             }} else if (tooltip) {{
               tooltip.classList.add('hidden');
             }}
@@ -11535,7 +11518,7 @@ def build():
           <div class="space-y-4">
             <div class="p-3.5 rounded-2xl bg-[#170e28] border border-purple-800/60 space-y-2">
               <div class="flex items-center gap-2">
-                <span class="text-xl">🕸️</span>
+                
                 <div>
                   <h4 class="font-semibold text-white text-[14px]">Interlocking Board Forensics</h4>
                   <p class="text-[11px] font-mono text-purple-300">Click any node in the graph to inspect board seats</p>
@@ -11554,41 +11537,41 @@ def build():
                     <span class="font-medium text-white text-xs group-hover:text-purple-300 block">Sackler Dynasty (Purdue Pharma)</span>
                     <span class="text-[10.5px] text-zinc-400 font-mono">6 Interlocked Museums · OxyContin Epidemic</span>
                   </div>
-                  <span class="text-xs text-purple-400">Inspect →</span>
+                  <span class="text-xs text-purple-400">Inspect</span>
                 </button>
                 <button type="button" onclick="selectTrusteeGraphNode('leon_black')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
                   <div>
                     <span class="font-medium text-white text-xs group-hover:text-purple-300 block">Leon Black (Apollo Global)</span>
                     <span class="text-[10.5px] text-zinc-400 font-mono">MoMA & The Met · Epstein Financial Disclosures</span>
                   </div>
-                  <span class="text-xs text-purple-400">Inspect →</span>
+                  <span class="text-xs text-purple-400">Inspect</span>
                 </button>
                 <button type="button" onclick="selectTrusteeGraphNode('warren_kanders')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
                   <div>
                     <span class="font-medium text-white text-xs group-hover:text-purple-300 block">Warren Kanders (Safariland)</span>
                     <span class="text-[10.5px] text-zinc-400 font-mono">Whitney Museum · Border Tear Gas Deployment</span>
                   </div>
-                  <span class="text-xs text-purple-400">Inspect →</span>
+                  <span class="text-xs text-purple-400">Inspect</span>
                 </button>
                 <button type="button" onclick="selectTrusteeGraphNode('bp')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
                   <div>
                     <span class="font-medium text-white text-xs group-hover:text-purple-300 block">BP (British Petroleum)</span>
                     <span class="text-[10.5px] text-zinc-400 font-mono">British Museum, Tate, NPG · Fossil Social Licensing</span>
                   </div>
-                  <span class="text-xs text-purple-400">Inspect →</span>
+                  <span class="text-xs text-purple-400">Inspect</span>
                 </button>
                 <button type="button" onclick="selectTrusteeGraphNode('larry_fink')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
                   <div>
                     <span class="font-medium text-white text-xs group-hover:text-purple-300 block">Larry Fink (BlackRock)</span>
                     <span class="text-[10.5px] text-zinc-400 font-mono">MoMA Trustee · $10 Trillion Extractive Asset Manager</span>
                   </div>
-                  <span class="text-xs text-purple-400">Inspect →</span>
+                  <span class="text-xs text-purple-400">Inspect</span>
                 </button>
               </div>
             </div>
 
             <div class="p-3 rounded-xl bg-[#0f071c] border border-purple-950 text-[11px] text-zinc-400 leading-normal">
-              💡 <em>Tip: Use the sector filter pills above to isolate Defense contractors, Fossil fuel underwriters, or Private equity interlocks.</em>
+              <em>Tip: Use the sector filter pills above to isolate Defense contractors, Fossil fuel underwriters, or Private equity interlocks.</em>
             </div>
           </div>
         `;
@@ -11612,7 +11595,7 @@ def build():
                   ? (node.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-blue-950 text-blue-300 border border-blue-700/60')
                   : 'bg-red-950 text-red-300 border border-red-700/60'
               }}">
-                ${{isInst ? (node.tier === 'A' ? '✓ Clean Cultural Institution' : 'Flagged Cultural Institution') : `⚠️ Corporate Trustee · ${{node.category.toUpperCase()}}`}}
+                ${{isInst ? (node.tier === 'A' ? 'Clean Cultural Institution' : 'Flagged Cultural Institution') : `Corporate Trustee · ${{node.category.toUpperCase()}}`}}
               </span>
               <span class="text-[10.5px] font-mono text-purple-300">${{connectedEdges.length}} Connected Interlocks</span>
             </div>
@@ -11631,7 +11614,7 @@ def build():
           ${{node.harms ? `
             <div class="p-3 rounded-xl bg-[#200d16] border border-red-900/60 space-y-1.5">
               <div class="flex items-center gap-1.5 text-xs font-mono font-bold text-red-300 uppercase">
-                <span>⚠️</span>
+                
                 <span>Documented Harm &amp; Conflicts:</span>
               </div>
               <ul class="space-y-1.5 text-xs text-red-100/90 list-disc list-inside">
@@ -11649,13 +11632,13 @@ def build():
           ${{node.campaigns && node.campaigns.length > 0 ? `
             <div class="p-3 rounded-xl bg-[#091f16] border border-emerald-900/60 space-y-1.5">
               <div class="flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-300 uppercase">
-                <span>✊</span>
+                
                 <span>Activist Divestment &amp; Boycott Campaigns:</span>
               </div>
               <div class="space-y-1">
                 ${{node.campaigns.map(c => `
                   <div class="text-xs text-emerald-100 flex items-start gap-1.5">
-                    <span class="text-emerald-400">✓</span>
+                    
                     <span>${{escapeHtml(c)}}</span>
                   </div>
                 `).join('')}}
@@ -11692,7 +11675,7 @@ def build():
                       </div>
                       <div class="text-[10.5px] text-zinc-400 font-mono truncate">${{escapeHtml(e.role)}} · ${{escapeHtml(e.years)}}</div>
                     </div>
-                    <span class="text-xs text-purple-400 shrink-0">Focus →</span>
+                    <span class="text-xs text-purple-400 shrink-0">Focus</span>
                   </div>
                 `;
               }}).join('')}}
@@ -11702,10 +11685,10 @@ def build():
           <!-- Atlas Integration Actions -->
           <div class="pt-2 border-t border-purple-950 flex flex-col gap-2">
             <button type="button" onclick="highlightConnectedInstitutionsOnMap('${{node.id}}')" class="w-full py-2 px-3 rounded-xl bg-purple-700 hover:bg-purple-600 text-white font-medium text-xs transition cursor-pointer flex items-center justify-center gap-1.5 shadow-md">
-              <span>🗺️ Focus Connected Spaces on Atlas Map</span>
+              <span>Focus Connected Spaces on Atlas Map</span>
             </button>
             <button type="button" onclick="askCuratorAboutTrustee('${{escapeHtml(node.name)}}')" class="w-full py-1.5 px-3 rounded-xl bg-[#1e1333] hover:bg-[#2a1a47] border border-purple-700/60 text-purple-200 text-xs transition cursor-pointer flex items-center justify-center gap-1">
-              <span>💬 Ask Curator Dossier</span>
+              <span>Ask Curator Dossier</span>
             </button>
           </div>
         </div>
@@ -11847,7 +11830,7 @@ def build():
       if (filtered.length === 0) {{
         container.innerHTML = `
           <div class="text-center py-12 text-zinc-400 space-y-2">
-            <span class="text-3xl">🔍</span>
+            
             <p class="text-sm">No divestment milestones found matching your criteria.</p>
             <button onclick="activeTimelineMovement='all'; timelineSearchQuery=''; renderResistanceTimelineUI();" class="text-xs text-rose-400 underline cursor-pointer">Reset filters</button>
           </div>
@@ -11905,11 +11888,11 @@ def build():
                   <div class="pt-1.5 flex items-center justify-between gap-2 flex-wrap text-xs border-t border-rose-950/80">
                     <div class="flex items-center gap-2">
                       <button type="button" onclick="window.openTrusteeConflictNetworkModal(); closeResistanceTimelineModal();" class="text-purple-400 hover:text-purple-300 underline font-mono text-[11px] cursor-pointer">
-                        🕸️ Inspect in Board Network →
+                        Inspect in Board Network
                       </button>
                     </div>
                     <button type="button" onclick="closeResistanceTimelineModal(); handleCuratorQuery('Tell me more about the divestment campaign: ${{escapeHtml(ev.title)}}');" class="px-2.5 py-1 rounded-lg bg-[#2b1227] hover:bg-[#3b1736] text-rose-200 text-xs transition cursor-pointer">
-                      💬 Inquire in Chat
+                      Inquire in Chat
                     </button>
                   </div>
                 </div>
@@ -11986,7 +11969,7 @@ def build():
             <div class="flex items-center justify-between gap-2 flex-wrap">
               <div class="flex items-center gap-2">
                 <span class="px-2 py-0.5 rounded-md text-[10.5px] font-mono font-bold uppercase ${{isClean ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-amber-950 text-amber-300 border border-amber-700/60'}}">
-                  ${{isClean ? '✓ Clean Governance (0 Schedule L Conflicts)' : `⚠️ ${{filing.scheduleLCount}} Schedule L Interested Person Disclosures`}}
+                  ${{isClean ? 'Clean Governance (0 Schedule L Conflicts)' : `${{filing.scheduleLCount}} Schedule L Interested Person Disclosures`}}
                 </span>
                 <span class="text-[11px] font-mono text-sky-400">${{filing.ein}}</span>
               </div>
@@ -12010,7 +11993,7 @@ def build():
             <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
               <span class="text-[10px] font-mono uppercase text-emerald-400 block">Program Spend</span>
               <strong class="text-emerald-300 text-base">${{filing.programSpendRatio}}%</strong>
-              <span class="text-[10px] font-mono text-zinc-400 block mt-0.5">${{filing.programSpendRatio >= 80 ? '✓ High Program Ratio' : 'Target: ≥ 80%'}}</span>
+              <span class="text-[10px] font-mono text-zinc-400 block mt-0.5">${{filing.programSpendRatio >= 80 ? 'High Program Ratio' : 'Target: ≥ 80%'}}</span>
             </div>
 
             <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
@@ -12036,7 +12019,7 @@ def build():
               <ul class="space-y-2 text-xs">
                 ${{filing.scheduleLConflicts.map(item => `
                   <li class="p-2.5 rounded-xl bg-[#0a1728] border border-sky-900/40 text-slate-200 flex items-start gap-2">
-                    <span class="text-amber-400 mt-0.5">⚠️</span>
+                    
                     <span>${{escapeHtml(item)}}</span>
                   </li>
                 `).join('')}}
@@ -12087,10 +12070,10 @@ def build():
           <!-- Integration Actions -->
           <div class="pt-2 flex items-center justify-between gap-2 flex-wrap border-t border-sky-950">
             <button type="button" onclick="window.openTrusteeConflictNetworkModal('${{filing.id}}'); closeStatutoryFilingsModal();" class="py-1.5 px-3 rounded-xl bg-[#1a3150] hover:bg-[#254570] text-sky-200 text-xs transition cursor-pointer flex items-center gap-1">
-              <span>🕸️ Map Board Interlocks</span>
+              <span>Map Board Interlocks</span>
             </button>
             <button type="button" onclick="closeStatutoryFilingsModal(); handleCuratorQuery('What do the financial filings of ${{escapeHtml(filing.name)}} reveal?');" class="py-1.5 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs transition cursor-pointer font-medium">
-              <span>💬 Ask Curator Financial Analysis</span>
+              <span>Ask Curator Financial Analysis</span>
             </button>
           </div>
         </div>
@@ -12371,7 +12354,7 @@ def build():
       const isB = inst.tier === 'B';
       const isCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
       const tierColor = isA ? '#10b981' : (isB ? '#be95ff' : (isCommunity ? '#08bdba' : '#33b1ff'));
-      const tierLabel = isA ? '● VERIFIED INDEPENDENT' : (isB ? '● FLAGGED UNDERWRITING' : (isCommunity ? '● COMMUNITY · USER INPUT' : '● UNVERIFIED SPACE'));
+      const tierLabel = isA ? 'VERIFIED INDEPENDENT' : (isB ? 'FLAGGED UNDERWRITING' : (isCommunity ? 'COMMUNITY · USER INPUT' : 'UNVERIFIED SPACE'));
 
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
@@ -12386,7 +12369,7 @@ def build():
       const subW = ctx.measureText(subText).width;
 
       ctx.font = '10px "PP Telegraf", monospace';
-      const webW = ctx.measureText('🌐 ' + domain + ' ↗').width;
+      const webW = ctx.measureText(domain).width;
 
       const cardW = Math.max(240, Math.min(360, Math.max(nameW, subW, webW + 36) + 28));
       const cardH = webUrl ? 74 : 54;
@@ -12457,7 +12440,7 @@ def build():
         ctx.fillStyle = '#93c5fd';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
-        ctx.fillText('🌐 ' + domain + ' ↗', btnX + 8, btnY + 2);
+        ctx.fillText(domain, btnX + 8, btnY + 2);
 
         ctx.font = '9px "PP Telegraf", sans-serif';
         ctx.fillStyle = '#64748b';
@@ -12844,7 +12827,7 @@ def build():
           if (pt.front && pt.depth > 0.08) {{
             const isCountryActive = selectedCountryFilter !== 'all';
             const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${{city.count}})` : '';
-            const txt = (isSelected ? '● ' : (isGossipModeActive ? '⚡ ' : '■ ')) + city.name + countLabel;
+            const txt = city.name + countLabel;
             const tw = ctx.measureText(txt).width;
             const bw = tw + 14;
             const bh = 24;
@@ -13000,8 +12983,8 @@ def build():
           if (hoveredRailCorridor && hoveredRailPoint) {{
             ctx.save();
             const corr = hoveredRailCorridor;
-            const tipHeader = `🚆 ${{corr.name.toUpperCase()}}`;
-            const tipSub = `${{corr.from}} ⇄ ${{corr.to}} · ${{corr.travel_time || 'Eco-Transit'}} · ${{corr.emission_saving || 'Low Carbon'}}`;
+            const tipHeader = corr.name.toUpperCase();
+            const tipSub = `${{corr.from}} - ${{corr.to}} · ${{corr.travel_time || 'Eco-Transit'}} · ${{corr.emission_saving || 'Low Carbon'}}`;
             ctx.font = 'bold 10px "PP Telegraf", monospace';
             const hw = ctx.measureText(tipHeader).width;
             ctx.font = '11px "PP Telegraf", "PP Telegraph", sans-serif';
@@ -13237,9 +13220,9 @@ def build():
               ctx.stroke();
 
               // Card dimensions & positioning
-              const titleTxt = `🏙️ ${{hMeta.name.toUpperCase()}}${{hMeta.country ? ' · ' + hMeta.country : ''}}`;
+              const titleTxt = `${{hMeta.name.toUpperCase()}}${{hMeta.country ? ' · ' + hMeta.country : ''}}`;
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
-              const subTxt = `${{countVal}} Verified Cultural Space${{countVal === 1 ? '' : 's'}} · Click to Explore →`;
+              const subTxt = `${{countVal}} Verified Cultural Space${{countVal === 1 ? '' : 's'}} · Click to Explore`;
 
               ctx.font = 'bold 12px "PP Telegraf", monospace';
               const tw1 = ctx.measureText(titleTxt).width;
@@ -13623,7 +13606,7 @@ def build():
             ctx.fillStyle = '#93c5fd';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText('↗', webBtnX + webBtnW / 2, webBtnY + webBtnH / 2);
+            
 
             webBtnData = {{ x: webBtnX, y: webBtnY, w: webBtnW, h: webBtnH, url: webUrl }};
           }}
@@ -13931,7 +13914,7 @@ def build():
       // Badges for Money Flow / Revenue Architecture
       if (fPub) {{
         if (fin.public_subsidies_pct != null) {{
-          fPub.textContent = `🏛️ ${{fin.public_subsidies_pct}}% Public`;
+          fPub.textContent = `${{fin.public_subsidies_pct}}% Public`;
           fPub.style.display = 'inline-block';
         }} else {{
           fPub.style.display = 'none';
@@ -13939,7 +13922,7 @@ def build():
       }}
       if (fPhil) {{
         if (fin.philanthropy_endowment_pct != null) {{
-          fPhil.textContent = `🤝 ${{fin.philanthropy_endowment_pct}}% Grants/Endow`;
+          fPhil.textContent = `${{fin.philanthropy_endowment_pct}}% Grants/Endow`;
           fPhil.style.display = 'inline-block';
         }} else {{
           fPhil.style.display = 'none';
@@ -13947,7 +13930,7 @@ def build():
       }}
       if (fEarn) {{
         if (fin.earned_revenue_pct != null) {{
-          fEarn.textContent = `🎟️ ${{fin.earned_revenue_pct}}% Earned`;
+          fEarn.textContent = `${{fin.earned_revenue_pct}}% Earned`;
           fEarn.style.display = 'inline-block';
         }} else {{
           fEarn.style.display = 'none';
@@ -13955,7 +13938,7 @@ def build():
       }}
       if (fProg) {{
         if (fin.program_expense_ratio_pct != null) {{
-          fProg.textContent = `🎯 ${{fin.program_expense_ratio_pct}}% Program Ratio`;
+          fProg.textContent = `${{fin.program_expense_ratio_pct}}% Program Ratio`;
           fProg.style.display = 'inline-block';
         }} else {{
           fProg.style.display = 'none';
@@ -13978,7 +13961,7 @@ def build():
       if (hoursEl) {{
         const shortH = inst.opening_hours ? inst.opening_hours.split(',')[0] : 'Open Weekly';
         const shortF = inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : (inst.admission_policy ? inst.admission_policy.split(' ')[0] : 'Free Admission');
-        hoursEl.textContent = `🕒 ${{shortH}} · 🎟️ ${{shortF}}`;
+        hoursEl.textContent = `${{shortH}} · ${{shortF}}`;
       }}
 
       // Populate Current Shows & Opening Nights in Floating Window
@@ -14020,7 +14003,7 @@ def build():
 
       if (gossip && gHeadline) {{
         gHeadline.textContent = gossip.headline || 'Art world discussions and donor governance transparency murmurs.';
-        if (gBadge) gBadge.textContent = gossip.intensity || 'HOT 🔥';
+        if (gBadge) gBadge.textContent = (gossip.intensity || 'HOT').replace(/[^a-zA-Z0-9 ]/g, '').trim();
         if (gRedditText) gRedditText.textContent = (gossip.reddit ? gossip.reddit.snippet : 'Discussion active on r/contemporaryart');
         if (gTwitterText) gTwitterText.textContent = (gossip.twitter_x ? gossip.twitter_x.snippet : 'Discourse tracking curatorial independence.');
         if (gSection) {{
@@ -14232,7 +14215,7 @@ def build():
               </p>
               <div class="text-[12px] text-teal-200/90 font-mono flex items-center justify-between pt-1">
                 <span>Contributor: ${{escapeHtml(inst.contributor || 'Field Contributor')}}</span>
-                ${{inst.sourceUrl ? `<a href="${{escapeHtml(inst.sourceUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[#33b1ff] hover:underline flex items-center gap-1">Source Link ↗</a>` : ''}}
+                ${{inst.sourceUrl ? `<a href="${{escapeHtml(inst.sourceUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[#33b1ff] hover:underline flex items-center gap-1">Source Link</a>` : ''}}
               </div>
             </div>
           ` : ''}}
@@ -14301,7 +14284,7 @@ def build():
           <div class="p-3.5 bg-[#0b131f] border border-[#1b2b40] rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-[#1b2b40] pb-2">
               <span class="text-[12px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
-                <span>📊</span> Financial &amp; Operating Research Profile
+                Financial &amp; Operating Research Profile
               </span>
               <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 rounded-full">
                 ${{escapeHtml(inst.financial_data ? inst.financial_data.budget_tier : 'Audited Budget')}}
@@ -14318,7 +14301,7 @@ def build():
               </div>
               <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
                  class="text-[11.5px] font-mono text-sky-400 hover:text-white hover:underline transition flex items-center gap-1">
-                <span>Form 990 / Audit ↗</span>
+                <span>Form 990 / Audit</span>
               </a>
             </div>
 
@@ -14364,20 +14347,20 @@ def build():
           <div class="flex flex-col gap-2">
             <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
                     class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-[13px] rounded-xl transition shadow-md active:scale-[0.99] cursor-pointer">
-              <span>🏛️</span> <span>Zoom to 3D Building Footprint</span>
+              <span>Zoom to 3D Building Footprint</span>
             </button>
             <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
                class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#141d2c] hover:bg-[#1f2b40] text-sky-300 hover:text-white border border-[#233550] font-mono text-[13px] rounded-xl transition shadow-sm active:scale-[0.99] cursor-pointer">
-              <span>📋</span> <span>Statutory Audit Dossier ↗</span>
+              <span>Statutory Audit Dossier</span>
             </a>
             ${{webUrl ? `
               <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
                  class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[13px] rounded-xl transition shadow-sm active:scale-[0.99]">
-                <span>🌐</span> <span>Official Website (${{escapeHtml(domain)}}) ↗</span>
+                <span>Official Website (${{escapeHtml(domain)}})</span>
               </a>
             ` : `
               <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#1e2638] hover:bg-[#2a364e] text-slate-200 font-normal text-[13px] rounded-xl transition shadow-sm cursor-pointer">
-                <span>💬</span> <span>Plan Visit in Chat</span>
+                <span>Plan Visit in Chat</span>
               </button>
             `}}
           </div>
@@ -14386,11 +14369,11 @@ def build():
           <div class="p-3.5 bg-[#0e1622] border border-[#213247] rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-[#1f2d40] pb-2">
               <span class="text-[12px] font-mono uppercase tracking-wider text-[#34d399] font-bold flex items-center gap-1.5">
-                <span>📚</span> Archives & Collections in Depth
+                Archives & Collections in Depth
               </span>
               <button onclick="window.zoomToBuilding(selectedInstitution, true)" 
                       class="text-[11px] font-mono text-[#38bdf8] hover:underline flex items-center gap-1 cursor-pointer">
-                <span>Inspect 3D Footprint ↗</span>
+                <span>Inspect 3D Footprint</span>
               </button>
             </div>
 
@@ -14431,15 +14414,15 @@ def build():
                 <span class="text-[13px] font-normal text-white uppercase tracking-wider font-mono">Plan Your Visit</span>
                 <div class="flex items-center gap-2">
                   <button type="button" onclick="window.zoomToBuilding(selectedInstitution, true)" class="text-[12px] text-emerald-400 hover:underline font-mono cursor-pointer flex items-center gap-1">
-                    <span>🔍 Zoom to Building</span>
+                    <span>Zoom to Building</span>
                   </button>
                   <span class="text-[#555] text-[11px]">|</span>
                   <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="text-[12px] text-[#78a9ff] hover:underline font-mono cursor-pointer flex items-center gap-1">
-                    <span>Plan in Chat 💬</span>
+                    <span>Plan in Chat</span>
                   </button>
                   ${{(inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) || webUrl ? `
                     <span class="text-[#555] text-[11px]">|</span>
-                    <a href="${{escapeHtml((inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[12px] text-[#78a9ff] hover:underline font-mono">Official site ↗</a>
+                    <a href="${{escapeHtml((inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[12px] text-[#78a9ff] hover:underline font-mono">Official site</a>
                   ` : ''}}
                 </div>
               </div>
@@ -14499,20 +14482,20 @@ def build():
             <div class="flex items-center justify-between mb-2">
               <span class="text-[12px] font-normal text-slate-400 uppercase tracking-wider font-mono">Audited Sources, Reports & Filings</span>
               <button type="button" onclick="openResearchFeedbackModal('${{escapeHtml(inst.name)}}', '${{escapeHtml(inst.city)}}')" class="text-[12px] font-mono text-[#78a9ff] hover:underline cursor-pointer flex items-center gap-1">
-                <span>Suggest Update ✍️</span>
+                <span>Suggest Update</span>
               </button>
             </div>
             <div class="p-2.5 rounded-xl bg-[#101726] border border-[#1e2c45] mb-2 flex items-center justify-between gap-2">
               <div class="truncate">
                 <div class="text-[12px] font-mono text-sky-400 font-bold flex items-center gap-1.5">
-                  <span>📋</span> <span>Statutory Regulatory Filing Dossier</span>
+                  <span>Statutory Regulatory Filing Dossier</span>
                 </div>
                 <div class="text-[11.5px] text-slate-300 mt-0.5 truncate">
                   Audited statutory records: Charity Commission / Form 990 / Bundesanzeiger / Official Register
                 </div>
               </div>
               <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded bg-sky-950/80 hover:bg-sky-900 border border-sky-700/60 text-sky-300 hover:text-white text-[11.5px] font-mono shrink-0 transition">
-                Inspect Filing ↗
+                Inspect Filing
               </a>
             </div>
             <div class="flex flex-col gap-1.5 font-mono">
@@ -14522,7 +14505,7 @@ def build():
                   const srcDomain = getDisplayDomain(u);
                   return `
                     <a href="${{escapeHtml(u)}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:text-white hover:underline text-[13px] flex items-center gap-1.5 py-0.5 truncate transition">
-                      <span class="text-blue-400 text-[14px]">↗</span> <span class="truncate">${{escapeHtml(u)}}</span> <span class="text-slate-500 text-[11px] shrink-0 font-mono">(${{srcDomain}})</span>
+                       <span class="truncate">${{escapeHtml(u)}}</span> <span class="text-slate-500 text-[11px] shrink-0 font-mono">(${{srcDomain}})</span>
                     </a>
                   `;
                 }} else {{
@@ -14533,7 +14516,7 @@ def build():
                         <span class="truncate">${{escapeHtml(u)}}</span>
                       </span>
                       <a href="https://www.google.com/search?q=${{encodeURIComponent(u + ' ' + (inst.name || ''))}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:text-white hover:underline text-[12px] font-mono shrink-0 ml-1">
-                        Search ↗
+                        Search
                       </a>
                     </div>
                   `;
@@ -14555,7 +14538,7 @@ def build():
       const badge = isEx ? ' <span class="text-[11px] font-mono px-1 py-0.2 rounded bg-[#1f1433] text-[#be95ff] border border-[#8a3ffc] shrink-0">Flagged</span>' : '';
       const nameLink = `<a href="#" class="${{nameClass}}" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>${{badge}}`;
       const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
-      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[13px] text-[#60a5fa] hover:underline" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[13px] text-[#93c5fd] hover:text-white hover:underline transition">${{domain}} ↗</a>` : ''}})`;
+      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[13px] text-[#60a5fa] hover:underline" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[13px] text-[#93c5fd] hover:text-white hover:underline transition">${{domain}}</a>` : ''}})`;
       
       return `${{nameLink}}${{cityPart}}${{dossierPart}}`;
     }}
@@ -14649,19 +14632,19 @@ def build():
         if (providerTip) providerTip.innerHTML = 'Recommended: <strong>Anthropic</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.';
         if (providerGetKeyLink) {{
           providerGetKeyLink.href = 'https://console.anthropic.com/settings/keys';
-          providerGetKeyLink.textContent = 'Get Anthropic Key ↗';
+          providerGetKeyLink.textContent = 'Get Anthropic Key';
         }}
       }} else if (prov === 'openai') {{
         if (providerTip) providerTip.innerHTML = 'OpenAI <strong>GPT-4o / GPT-4o-mini</strong> provides fast conversational guidance across all 403 mapped spaces.';
         if (providerGetKeyLink) {{
           providerGetKeyLink.href = 'https://platform.openai.com/api-keys';
-          providerGetKeyLink.textContent = 'Get OpenAI Key ↗';
+          providerGetKeyLink.textContent = 'Get OpenAI Key';
         }}
       }} else {{
         if (providerTip) providerTip.innerHTML = 'Google <strong>Gemini 2.5 Flash</strong> provides responsive real-time multimodal reasoning with a generous free tier.';
         if (providerGetKeyLink) {{
           providerGetKeyLink.href = 'https://aistudio.google.com/app/apikey';
-          providerGetKeyLink.textContent = 'Get Gemini Key (Free) ↗';
+          providerGetKeyLink.textContent = 'Get Gemini Key (Free)';
         }}
       }}
     }}
@@ -14741,7 +14724,7 @@ def build():
         if (topDot) topDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0';
         if (topLabel) {{
           topLabel.className = 'font-mono text-[13px] sm:text-[14px] text-emerald-400 flex items-center gap-1.5';
-          topLabel.innerHTML = `<span>⚙️</span><span class="hidden sm:inline">${{pName}} Live</span>`;
+          topLabel.innerHTML = `<span class="hidden sm:inline">${{pName}} Live</span>`;
         }}
         if (chatKeyBtn) {{
           chatKeyBtn.className = 'text-[13px] bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:border-emerald-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal';
@@ -14761,7 +14744,7 @@ def build():
         if (topDot) topDot.className = 'w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-amber-400 shrink-0';
         if (topLabel) {{
           topLabel.className = 'font-normal text-[13px] sm:text-[14px] text-amber-300 flex items-center gap-1';
-          topLabel.innerHTML = `<span>🔑</span><span class="hidden sm:inline"> Add API Key</span>`;
+          topLabel.innerHTML = `<span class="hidden sm:inline">Add API Key</span>`;
         }}
         if (chatKeyBtn) {{
           chatKeyBtn.className = 'text-[13px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-500/50 flex items-center gap-1.5 px-2.5 py-1 rounded-full transition cursor-pointer font-normal';
@@ -14769,7 +14752,7 @@ def build():
         }}
         if (chatKeyIcon) {{
           chatKeyIcon.className = '';
-          chatKeyIcon.textContent = '🔑';
+          chatKeyIcon.textContent = '';
         }}
         if (chatKeyLabel) {{
           chatKeyLabel.textContent = 'Add API Key';
@@ -14943,7 +14926,7 @@ def build():
           <p class="text-slate-200 text-[13px] leading-relaxed">${{escapeHtml(sub.details || 'Community observation note.')}}</p>
           <div class="flex items-center justify-between pt-1 border-t border-[#1e3b3e] text-[11px] font-mono text-slate-400">
             <span>By: ${{escapeHtml(sub.contributor || 'Field Contributor')}}</span>
-            ${{sub.sourceUrl ? `<a href="${{escapeHtml(sub.sourceUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[#33b1ff] hover:underline">View Source ↗</a>` : '<span class="text-teal-400/80">User Submission Layer</span>'}}
+            ${{sub.sourceUrl ? `<a href="${{escapeHtml(sub.sourceUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[#33b1ff] hover:underline">View Source</a>` : '<span class="text-teal-400/80">User Submission Layer</span>'}}
           </div>
         </div>
       `).join('');
@@ -15057,8 +15040,8 @@ def build():
           <div class="flex items-center justify-between pt-1 border-t border-[#2a2a2a] text-[11px] font-mono">
             ${{p.doi ? `<span class="text-slate-400 truncate max-w-[200px]">DOI: ${{escapeHtml(p.doi)}}</span>` : '<span class="text-slate-400">Peer-Reviewed Study</span>'}}
             <div class="flex items-center gap-2">
-              ${{p.link ? `<a href="${{escapeHtml(p.link)}}" target="_blank" rel="noopener noreferrer" class="text-[#78a9ff] hover:underline">Consensus Link ↗</a>` : ''}}
-              ${{p.doi ? `<a href="https://doi.org/${{escapeHtml(p.doi)}}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">Read Study ↗</a>` : ''}}
+              ${{p.link ? `<a href="${{escapeHtml(p.link)}}" target="_blank" rel="noopener noreferrer" class="text-[#78a9ff] hover:underline">Consensus Link</a>` : ''}}
+              ${{p.doi ? `<a href="https://doi.org/${{escapeHtml(p.doi)}}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">Read Study</a>` : ''}}
             </div>
           </div>
         </div>
@@ -15130,12 +15113,12 @@ def build():
       let leanCount = 0;
 
       const typologyMeta = [
-        {{ key: 'finance_civic', label: 'Municipal & National Civic Trusts', icon: '🏛️', count: 0, desc: '≥50% Civic Subsidies, high wage stability' }},
-        {{ key: 'finance_endowed', label: 'Independent Philanthropic Trusts', icon: '💎', count: 0, desc: '≥30% Endowments & Donor Grants' }},
-        {{ key: 'finance_earned', label: 'Earned Revenue Market Leaders', icon: '🎟️', count: 0, desc: '≥35% Admissions, Bookshops & Concessions' }},
-        {{ key: 'finance_artist_run', label: 'Lean Artist-Run Non-Profits', icon: '🌱', count: 0, desc: 'Artist-governed boards, zero corporate trustees' }},
-        {{ key: 'finance_major', label: 'Major Metropolitan Flagships', icon: '🏢', count: 0, desc: 'Large institutional scale & collections' }},
-        {{ key: 'finance_high_program', label: 'High Program Spend Efficiency', icon: '⚡', count: 0, desc: '≥80% direct curatorial allocation ratio' }}
+        {{ key: 'finance_civic', label: 'Municipal & National Civic Trusts', icon: '', count: 0, desc: '≥50% Civic Subsidies, high wage stability' }},
+        {{ key: 'finance_endowed', label: 'Independent Philanthropic Trusts', icon: '', count: 0, desc: '≥30% Endowments & Donor Grants' }},
+        {{ key: 'finance_earned', label: 'Earned Revenue Market Leaders', icon: '', count: 0, desc: '≥35% Admissions, Bookshops & Concessions' }},
+        {{ key: 'finance_artist_run', label: 'Lean Artist-Run Non-Profits', icon: '', count: 0, desc: 'Artist-governed boards, zero corporate trustees' }},
+        {{ key: 'finance_major', label: 'Major Metropolitan Flagships', icon: '', count: 0, desc: 'Large institutional scale & collections' }},
+        {{ key: 'finance_high_program', label: 'High Program Spend Efficiency', icon: '', count: 0, desc: '≥80% direct curatorial allocation ratio' }}
       ];
 
       cohort.forEach(i => {{
@@ -15225,7 +15208,7 @@ def build():
             </div>
             <div class="mt-2 text-[10.5px] text-sky-400 font-mono flex items-center justify-between">
               <span>${{((t.count / totalCount) * 100).toFixed(0)}}% of cohort</span>
-              <span class="group-hover:translate-x-0.5 transition">Filter Map →</span>
+              <span class="group-hover:translate-x-0.5 transition">Filter Map</span>
             </div>
           </button>
         `).join('');
@@ -15257,7 +15240,7 @@ def build():
                   <span class="text-white">${{escapeHtml(fd.operating_budget_display || inst.funding)}}</span>
                 </div>
                 <button type="button" data-inst-name="${{escapeHtml(inst.name)}}" class="fa-focus-inst-btn px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[11.5px] font-mono transition cursor-pointer shrink-0">
-                  Focus ↗
+                  Focus
                 </button>
               </div>
             </div>
@@ -15345,7 +15328,7 @@ def build():
         }}
       }});
       const sorted = Object.keys(cityCounts).sort((a, b) => cityCounts[b] - cityCounts[a]);
-      let html = `<option value="all">🌍 All Cultural Cities (${{ALL_INSTITUTIONS.length}})</option>`;
+      let html = `<option value="all">All Cultural Cities (${{ALL_INSTITUTIONS.length}})</option>`;
       sorted.forEach(c => {{
         html += `<option value="${{escapeHtml(c)}}">${{escapeHtml(c)}} (${{cityCounts[c]}})</option>`;
       }});
@@ -15435,7 +15418,7 @@ def build():
       if (filtered.length === 0) {{
         list.innerHTML = `
           <div class="p-8 text-center bg-[#151a26] border border-[#222d42] rounded-2xl text-slate-400">
-            <span class="text-3xl block mb-2">🔍</span>
+            
             <p class="font-medium text-white mb-1">No archives match your search criteria</p>
             <p class="text-[12px] text-slate-400">Try adjusting your keywords or clearing the category/city filters.</p>
           </div>
@@ -15467,14 +15450,14 @@ def build():
 
         const treasuresList = (arch.highlight_treasures || []).map(t => `
           <li class="flex items-start gap-1.5">
-            <span class="text-amber-400 shrink-0 text-[11px] mt-0.5">✦</span>
+            
             <span>${{escapeHtml(t)}}</span>
           </li>
         `).join('');
 
         const findingAidBtn = arch.finding_aids_url ? `
           <a href="${{escapeHtml(arch.finding_aids_url)}}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-xl bg-[#172233] hover:bg-[#203047] border border-[#2c3d5a] text-slate-300 hover:text-white text-[11.5px] font-mono transition inline-flex items-center gap-1">
-            <span>Finding Aid ↗</span>
+            <span>Finding Aid</span>
           </a>
         ` : '';
 
@@ -15493,11 +15476,11 @@ def build():
               </div>
               <div class="flex items-center gap-1.5 shrink-0 flex-wrap">
                 <button type="button" onclick="window.zoomToBuildingFromArchive('${{escapeHtml(inst.name)}}')" class="px-2.5 py-1 rounded-xl bg-[#1d293d] hover:bg-[#283852] border border-[#334666] text-[#93c5fd] hover:text-white text-[11.5px] font-mono transition flex items-center gap-1 cursor-pointer" title="Zoom to 3D footprint and open building inspector">
-                  <span>🏛️</span><span>Inspect 3D</span>
+                  <span>Inspect 3D</span>
                 </button>
                 ${{findingAidBtn}}
                 <button type="button" onclick="window.askCuratorAboutArchive('${{escapeHtml(inst.name)}}')" class="px-2.5 py-1 rounded-xl bg-[#142634] hover:bg-[#1c374b] border border-[#08bdba]/50 text-[#08bdba] hover:text-white text-[11.5px] font-mono transition flex items-center gap-1 cursor-pointer" title="Ask Curator in chat">
-                  <span>💬 Inquire</span>
+                  <span>Inquire</span>
                 </button>
               </div>
             </div>
@@ -15514,12 +15497,12 @@ def build():
             <div class="bg-[#111622] border border-[#1f293d] rounded-xl p-3 flex flex-col gap-2 text-[12px]">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1.5 border-b border-[#1f293d]">
                 <div class="text-slate-300">
-                  <strong class="text-cyan-400 font-mono text-[11px] uppercase tracking-wider block sm:inline mr-1">📖 Reading Room Policy:</strong>
+                  <strong class="text-cyan-400 font-mono text-[11px] uppercase tracking-wider block sm:inline mr-1">Reading Room Policy:</strong>
                   <span>${{escapeHtml(arch.reading_room_policy)}}</span>
                 </div>
                 <div class="shrink-0 text-right">
                   <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">
-                    ⚡ ${{escapeHtml(arch.digitization_status)}}
+                    ${{escapeHtml(arch.digitization_status)}}
                   </span>
                 </div>
               </div>
@@ -15535,7 +15518,7 @@ def build():
 
               ${{arch.provenance_integrity ? `
                 <div class="text-[11px] font-mono text-[#94a3b8] pt-1 border-t border-[#1f293d] flex items-center gap-1.5">
-                  <span class="text-cyan-400">⚖️ Provenance Integrity:</span>
+                  <span class="text-cyan-400">Provenance Integrity:</span>
                   <span>${{escapeHtml(arch.provenance_integrity)}}</span>
                 </div>
               ` : ''}}
@@ -15733,7 +15716,7 @@ def build():
           <span class="text-slate-400">Trusted Web Sources:</span>
           ${{webIntel.trustedLinks.slice(0, 3).map(l => `
             <a href="${{escapeHtml(l.url)}}" target="_blank" rel="noopener noreferrer" class="text-[#38bdf8] hover:text-white underline inline-flex items-center gap-1">
-              <span>${{escapeHtml(l.title)}} ↗</span>
+              <span>${{escapeHtml(l.title)}}</span>
             </a>
           `).join(' · ')}}
         </div>
@@ -15744,7 +15727,7 @@ def build():
           <div class="flex items-center justify-between border-b border-[#1e2f47] pb-1.5 flex-wrap gap-1">
             <div class="flex items-center gap-2 text-cyan-400 font-mono text-[11px] uppercase tracking-wider">
               <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              <span>🌐 Live Web Intelligence (Scraped)</span>
+              <span>Live Web Intelligence (Scraped)</span>
             </div>
             <span class="text-[11px] font-mono text-[#94a3b8]">Live Web Verification</span>
           </div>
@@ -16591,7 +16574,7 @@ FORMATTING & INTERACTION RULES:
           <div class="p-3.5 bg-[#212121] border border-[#383838] rounded-2xl space-y-2.5">
             <div class="flex items-center justify-between border-b border-[#333] pb-2">
               <div class="flex items-center gap-2">
-                <span class="text-[16px]">🔑</span>
+                
                 <span class="font-normal text-white text-[15px]">Connect AI Intelligence</span>
               </div>
               <span class="text-[12px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-2 py-0.5 rounded-full">100% Client-Side</span>
@@ -16601,21 +16584,21 @@ FORMATTING & INTERACTION RULES:
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
               <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
-                <div class="text-[13px] font-normal text-white group-hover:text-purple-300">Anthropic ↗</div>
+                <div class="text-[13px] font-normal text-white group-hover:text-purple-300">Anthropic</div>
                 <div class="text-[12px] text-[#a1a1aa]">Recommended: deep art history & critical theory</div>
               </a>
               <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
-                <div class="text-[13px] font-normal text-white group-hover:text-emerald-300">OpenAI (GPT-4o) ↗</div>
+                <div class="text-[13px] font-normal text-white group-hover:text-emerald-300">OpenAI (GPT-4o)</div>
                 <div class="text-[12px] text-[#a1a1aa]">Fast reasoning & visitor guides</div>
               </a>
               <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="p-2.5 bg-[#1a1a1e] hover:bg-[#25252b] border border-[#2e2e38] rounded-xl text-left transition block cursor-pointer group">
-                <div class="text-[13px] font-normal text-white group-hover:text-blue-300">Google Gemini ↗</div>
+                <div class="text-[13px] font-normal text-white group-hover:text-blue-300">Google Gemini</div>
                 <div class="text-[12px] text-[#a1a1aa]">Free plan with high rate limits</div>
               </a>
             </div>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-[#2e2e2e] text-[13px] text-[#a1a1aa]">
               <span>Or simply paste your <code class="text-white font-mono text-[12px]">sk-ant-...</code>, <code class="text-white font-mono text-[12px]">sk-...</code>, or <code class="text-white font-mono text-[12px]">AIza...</code> key right here!</span>
-              <button onclick="openSettingsModal()" class="px-3 py-1 bg-white hover:bg-neutral-200 text-black rounded-lg text-[13px] font-normal transition cursor-pointer shrink-0">Open Settings ⚙️</button>
+              <button onclick="openSettingsModal()" class="px-3 py-1 bg-white hover:bg-neutral-200 text-black rounded-lg text-[13px] font-normal transition cursor-pointer shrink-0">Open Settings</button>
             </div>
           </div>
         `);
@@ -16635,9 +16618,9 @@ FORMATTING & INTERACTION RULES:
             <div class="p-3.5 bg-[#171408] border border-yellow-700/60 rounded-2xl space-y-2">
               <div class="flex items-center justify-between border-b border-yellow-900/60 pb-2">
                 <span class="text-yellow-400 font-bold text-[14px] flex items-center gap-1.5">
-                  <span>⚡</span> GOSSIP & RUMORS: ${{escapeHtml(inst.name)}}
+                  GOSSIP & RUMORS: ${{escapeHtml(inst.name)}}
                 </span>
-                <span class="px-2 py-0.5 rounded text-[10px] font-mono border border-yellow-700 bg-yellow-950 text-yellow-300 font-bold">${{escapeHtml(g.intensity || 'HOT 🔥')}}</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono border border-yellow-700 bg-yellow-950 text-yellow-300 font-bold">${{escapeHtml((g.intensity || 'HOT').replace(/[^a-zA-Z0-9 ]/g, '').trim())}}</span>
               </div>
               <p class="text-[14px] text-yellow-100 font-medium leading-snug">${{escapeHtml(g.headline || '')}}</p>
               <div class="space-y-1.5 text-[12px] font-mono text-slate-300 pt-1">
@@ -16646,12 +16629,12 @@ FORMATTING & INTERACTION RULES:
                   <div class="text-slate-200">"${{escapeHtml(g.reddit?.snippet || '')}}"</div>
                 </div>
                 <div class="bg-[#0d0c06] p-2 rounded border border-yellow-900/40">
-                  <div class="text-sky-400 font-bold mb-0.5">𝕏 ${{escapeHtml(g.twitter_x?.handle || '@curatorial')}} (${{g.twitter_x?.retweets || 84}} RTs):</div>
+                  <div class="text-sky-400 font-bold mb-0.5">X ${{escapeHtml(g.twitter_x?.handle || '@curatorial')}} (${{g.twitter_x?.retweets || 84}} RTs):</div>
                   <div class="text-slate-200">"${{escapeHtml(g.twitter_x?.snippet || '')}}"</div>
                 </div>
                 ${{g.chat_backchannels ? `
                 <div class="bg-[#0d0c06] p-2 rounded border border-yellow-900/40">
-                  <div class="text-emerald-400 font-bold mb-0.5">💬 ${{escapeHtml(g.chat_backchannels.channel || 'Telegram Backchannel')}}:</div>
+                  <div class="text-emerald-400 font-bold mb-0.5">${{escapeHtml(g.chat_backchannels.channel || 'Telegram Backchannel')}}:</div>
                   <div class="text-slate-200">"${{escapeHtml(g.chat_backchannels.whisper || '')}}"</div>
                 </div>` : ''}}
               </div>
@@ -16672,14 +16655,14 @@ FORMATTING & INTERACTION RULES:
             <div class="p-3.5 bg-[#121620] border border-[#232d3f] rounded-2xl space-y-2">
               <div class="flex items-center justify-between border-b border-[#1b2536] pb-2">
                 <span class="text-amber-400 font-bold text-[14px] flex items-center gap-1.5">
-                  <span>🖼️</span> CURRENT EXHIBITION: ${{escapeHtml(inst.name)}}
+                  CURRENT EXHIBITION: ${{escapeHtml(inst.name)}}
                 </span>
                 <span class="px-2 py-0.5 rounded text-[10px] font-mono border border-emerald-800 bg-emerald-950 text-emerald-300 font-bold">${{escapeHtml(s.status || 'Now On View')}}</span>
               </div>
               <p class="text-[15px] text-white font-semibold leading-tight">${{escapeHtml(s.title)}}</p>
               <div class="text-[12px] font-mono text-slate-300">
                 <div>${{escapeHtml(s.curator_artists || 'Resident Artists')}} · ${{escapeHtml(s.dates || 'On View')}}</div>
-                ${{s.opening_night ? `<div class="mt-1.5 text-emerald-300 bg-emerald-950/40 p-1.5 rounded border border-emerald-800/60">🍾 Vernissage: ${{escapeHtml(s.opening_night.date)}} (${{escapeHtml(s.opening_night.hours)}}) · ${{escapeHtml(s.opening_night.rsvp || 'Free / RSVP')}}</div>` : ''}}
+                ${{s.opening_night ? `<div class="mt-1.5 text-emerald-300 bg-emerald-950/40 p-1.5 rounded border border-emerald-800/60">Vernissage: ${{escapeHtml(s.opening_night.date)}} (${{escapeHtml(s.opening_night.hours)}}) · ${{escapeHtml(s.opening_night.rsvp || 'Free / RSVP')}}</div>` : ''}}
               </div>
             </div>
           `);
@@ -16772,7 +16755,7 @@ FORMATTING & INTERACTION RULES:
           <div class="border border-sky-500/40 bg-[#081827] p-3.5 sm:p-4 rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-sky-500/20 pb-2 flex-wrap gap-2">
               <div class="flex items-center gap-2">
-                <span class="text-xl">📰</span>
+                
                 <div>
                   <h4 class="font-semibold text-white text-[15px]">The Guardian Investigative Cultural Dossier</h4>
                   <p class="text-[11.5px] font-mono text-sky-300">Journalistic Revelations &amp; Whistleblower Disclosures</p>
@@ -16780,10 +16763,10 @@ FORMATTING & INTERACTION RULES:
               </div>
               <div class="flex items-center gap-1.5">
                 <button type="button" onclick="window.openResistanceTimelineModal()" class="px-2.5 py-1 bg-amber-600/80 hover:bg-amber-500 text-white rounded-lg text-xs font-mono transition cursor-pointer">
-                  Timeline ✊
+                  Timeline
                 </button>
                 <button type="button" onclick="window.openTrusteeConflictNetworkModal('science_museum')" class="px-2.5 py-1 bg-purple-600/80 hover:bg-purple-500 text-white rounded-lg text-xs font-mono transition cursor-pointer">
-                  Network 🕸️
+                  Network
                 </button>
               </div>
             </div>
@@ -16830,10 +16813,10 @@ FORMATTING & INTERACTION RULES:
               <span class="text-zinc-400 text-[11.5px]">Open investigative data sources:</span>
               <div class="flex items-center gap-1.5">
                 <button type="button" onclick="window.openStatutoryFilingsModal('science_museum')" class="px-2.5 py-1 bg-sky-700 hover:bg-sky-600 text-white rounded-lg text-xs font-medium transition cursor-pointer">
-                  Science Museum Filings 📑
+                  Science Museum Filings
                 </button>
                 <button type="button" onclick="window.openResistanceTimelineModal()" class="px-2.5 py-1 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
-                  Divestment Timeline ✊
+                  Divestment Timeline
                 </button>
               </div>
             </div>
@@ -16855,11 +16838,11 @@ FORMATTING & INTERACTION RULES:
           <div class="border border-sky-500/30 bg-[#0c1626] p-3.5 rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
               <div class="flex items-center gap-2">
-                <span class="text-[17px]">📊</span>
+                
                 <span class="font-medium text-white text-[15px]">Institutional Fiscal Analytics Dashboard</span>
               </div>
               <button type="button" onclick="openFiscalAnalyticsHUD()" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[11.5px] font-mono transition cursor-pointer">
-                Expand HUD ↗
+                Expand HUD
               </button>
             </div>
 
@@ -16890,10 +16873,10 @@ FORMATTING & INTERACTION RULES:
               <span class="text-slate-300">Filter map by fiscal model:</span>
               <div class="flex items-center gap-1.5">
                 <button type="button" onclick="setCategoryFilter('finance_civic', true)" class="px-2.5 py-1 bg-[#152a42] hover:bg-[#1e3c5e] text-sky-300 rounded-lg text-[11.5px] transition cursor-pointer">
-                  🏛️ Public Subsidies (≥50%)
+                  Public Subsidies (≥50%)
                 </button>
                 <button type="button" onclick="setCategoryFilter('finance_high_program', true)" class="px-2.5 py-1 bg-[#102b20] hover:bg-[#184231] text-emerald-300 rounded-lg text-[11.5px] transition cursor-pointer">
-                  ⚡ High Program Spend (≥80%)
+                  High Program Spend (≥80%)
                 </button>
               </div>
             </div>
@@ -16902,7 +16885,7 @@ FORMATTING & INTERACTION RULES:
           'Filter Public Subsidized',
           'Filter High Program Spend',
           'Where to find museum budgets',
-          'Explore Finance Papers 🔬'
+          'Explore Finance Papers'
         ]);
         return;
       }}
@@ -16934,14 +16917,14 @@ FORMATTING & INTERACTION RULES:
           <div class="border border-purple-500/40 bg-[#11091f] p-3.5 sm:p-4 rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-purple-500/20 pb-2 flex-wrap gap-2">
               <div class="flex items-center gap-2">
-                <span class="text-xl">🕸️</span>
+                
                 <div>
                   <h4 class="font-semibold text-white text-[15px]">${{headerTitle}}</h4>
                   <p class="text-[11.5px] font-mono text-purple-300">Force-Directed Relational Graph · 38 Documented Interlocks</p>
                 </div>
               </div>
               <button type="button" onclick="window.openTrusteeConflictNetworkModal('${{instId || ''}}')" class="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
-                <span>🕸️ Launch Network Graph</span>
+                <span>Launch Network Graph</span>
               </button>
             </div>
 
@@ -16986,7 +16969,7 @@ FORMATTING & INTERACTION RULES:
             <div class="flex items-center justify-between gap-2 pt-2 border-t border-purple-900/50 flex-wrap text-xs">
               <span class="text-zinc-400 text-[11.5px]">Open interactive force-directed canvas with IRS 990 filings:</span>
               <button type="button" onclick="window.openTrusteeConflictNetworkModal('${{instId || ''}}')" class="px-3 py-1 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
-                Explore Relational Graph 🕸️
+                Explore Relational Graph
               </button>
             </div>
           </div>
@@ -17014,14 +16997,14 @@ FORMATTING & INTERACTION RULES:
               <div class="border border-emerald-500/40 bg-[#081a14] p-3.5 sm:p-4 rounded-2xl space-y-3">
                 <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2 flex-wrap gap-2">
                   <div class="flex items-center gap-2">
-                    <span class="text-xl">📍</span>
+                    
                     <div>
                       <h4 class="font-semibold text-white text-[15px]">${{escapeHtml(route.title)}}</h4>
                       <p class="text-[11.5px] font-mono text-emerald-300">${{route.stops.length}} Stops · ~${{route.totalKm}} km · ${{route.totalWalkMinutes}} min walk · Est. ${{route.estimatedTotalHours}} hrs</p>
                     </div>
                   </div>
                   <button type="button" onclick="window.launchCuratorialRoute('${{escapeHtml(route.id || route.city)}}')" class="px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
-                    <span>🗺️ Launch on Map</span>
+                    <span>Launch on Map</span>
                   </button>
                 </div>
 
@@ -17039,12 +17022,12 @@ FORMATTING & INTERACTION RULES:
                           <span class="w-5 h-5 rounded-full bg-emerald-700 text-white font-mono text-[11px] font-bold flex items-center justify-center shrink-0">${{s.stopIndex}}</span>
                           <span class="font-medium text-white text-xs sm:text-[13px]">${{escapeHtml(s.name)}}</span>
                         </div>
-                        <span class="text-[10px] font-mono px-1.5 py-0.2 rounded ${{s.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950 text-purple-300 border border-purple-700/60'}} shrink-0">${{s.tier === 'A' ? '✓ Clean' : 'Flagged'}}</span>
+                        <span class="text-[10px] font-mono px-1.5 py-0.2 rounded ${{s.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950 text-purple-300 border border-purple-700/60'}} shrink-0">${{s.tier === 'A' ? 'Clean' : 'Flagged'}}</span>
                       </div>
                       <div class="flex items-center gap-2 text-[11px] font-mono text-emerald-300 flex-wrap">
-                        <span>🕒 ${{escapeHtml(s.openingHours)}}</span>
+                        <span>${{escapeHtml(s.openingHours)}}</span>
                         <span>·</span>
-                        <span class="text-zinc-300">🎟️ ${{escapeHtml(s.admissionFee)}}</span>
+                        <span class="text-zinc-300">${{escapeHtml(s.admissionFee)}}</span>
                         ${{s.advisoryNote ? `<span class="text-amber-400">· ${{escapeHtml(s.advisoryNote)}}</span>` : ''}}
                       </div>
                       <div class="text-[11px] text-zinc-400 leading-snug">
@@ -17052,7 +17035,7 @@ FORMATTING & INTERACTION RULES:
                       </div>
                       ${{idx < route.stops.length - 1 ? `
                         <div class="text-[10.5px] font-mono text-sky-400 pt-0.5">
-                          ↓ ~${{s.nextLegKm || route.stops[idx+1].legDistanceKm}} km walk (${{s.nextLegMin || route.stops[idx+1].legWalkMinutes}} min) to Stop ${{s.stopIndex + 1}}
+                          ~${{s.nextLegKm || route.stops[idx+1].legDistanceKm}} km walk (${{s.nextLegMin || route.stops[idx+1].legWalkMinutes}} min) to Stop ${{s.stopIndex + 1}}
                         </div>
                       ` : ''}}
                     </div>
@@ -17063,16 +17046,16 @@ FORMATTING & INTERACTION RULES:
                   <span class="text-zinc-400 text-[11.5px]">Open street map with live dashed route corridor:</span>
                   <div class="flex items-center gap-1.5">
                     <button type="button" onclick="window.launchCuratorialRoute('${{escapeHtml(route.id || route.city)}}')" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
-                      Launch Route 🗺️
+                      Launch Route
                     </button>
                     <button type="button" onclick="window.openCuratorialItineraryModal('${{escapeHtml(route.city)}}')" class="px-2.5 py-1 bg-[#152e24] hover:bg-[#1e4234] border border-emerald-700/60 text-emerald-300 rounded-lg text-xs transition cursor-pointer">
-                      Builder ⚙️
+                      Builder
                     </button>
                   </div>
                 </div>
               </div>
             `, [
-              `Launch ${{route.city}} route 🗺️`,
+              `Launch ${{route.city}} route`,
               'Art crawl in Berlin',
               'Art crawl in Paris',
               'Art crawl in New York'
@@ -17086,14 +17069,14 @@ FORMATTING & INTERACTION RULES:
           <div class="border border-emerald-500/40 bg-[#081a14] p-3.5 sm:p-4 rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2">
               <div class="flex items-center gap-2">
-                <span class="text-xl">📍</span>
+                
                 <div>
                   <h4 class="font-semibold text-white text-[15px]">Curatorial Itineraries &amp; Art Crawls</h4>
                   <p class="text-[11.5px] font-mono text-emerald-300">Synchronized Street Routes · Verified Hours · Walking Corridors</p>
                 </div>
               </div>
               <button type="button" onclick="window.openCuratorialItineraryModal()" class="px-2.5 py-1 bg-emerald-700/70 hover:bg-emerald-600 text-white rounded-lg text-xs font-mono transition cursor-pointer">
-                All Crawls ↗
+                All Crawls
               </button>
             </div>
 
@@ -17107,7 +17090,7 @@ FORMATTING & INTERACTION RULES:
                   <span class="font-semibold text-white group-hover:text-emerald-300">London: East Vanguard</span>
                   <span class="text-[10px] font-mono text-emerald-400">5 Stops · 4.9 km</span>
                 </div>
-                <p class="text-[11px] text-zinc-300 mt-0.5">Whitechapel Gallery → Raven Row → Autograph → Iniva → Chisenhale</p>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Whitechapel Gallery - Raven Row - Autograph - Iniva - Chisenhale</p>
               </div>
 
               <div onclick="window.launchCuratorialRoute('berlin-mitte-kreuzberg')" class="p-2.5 rounded-xl bg-[#0b261d] hover:bg-[#0f3427] border border-emerald-800/60 transition cursor-pointer group">
@@ -17115,7 +17098,7 @@ FORMATTING & INTERACTION RULES:
                   <span class="font-semibold text-white group-hover:text-emerald-300">Berlin: Mitte to Kreuzberg</span>
                   <span class="text-[10px] font-mono text-emerald-400">5 Stops · 6.7 km</span>
                 </div>
-                <p class="text-[11px] text-zinc-300 mt-0.5">KW Institute → n.b.k. → daadgalerie → Gropius Bau → Bethanien</p>
+                <p class="text-[11px] text-zinc-300 mt-0.5">KW Institute - n.b.k. - daadgalerie - Gropius Bau - Bethanien</p>
               </div>
 
               <div onclick="window.launchCuratorialRoute('ny-downtown-vanguard')" class="p-2.5 rounded-xl bg-[#0b261d] hover:bg-[#0f3427] border border-emerald-800/60 transition cursor-pointer group">
@@ -17123,7 +17106,7 @@ FORMATTING & INTERACTION RULES:
                   <span class="font-semibold text-white group-hover:text-emerald-300">New York: Lower Manhattan</span>
                   <span class="text-[10px] font-mono text-emerald-400">4 Stops · 1.4 km</span>
                 </div>
-                <p class="text-[11px] text-zinc-300 mt-0.5">Apexart → Artists Space → Storefront for Art → Swiss Institute</p>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Apexart - Artists Space - Storefront for Art - Swiss Institute</p>
               </div>
 
               <div onclick="window.launchCuratorialRoute('paris-contemporary-seine')" class="p-2.5 rounded-xl bg-[#0b261d] hover:bg-[#0f3427] border border-emerald-800/60 transition cursor-pointer group">
@@ -17131,14 +17114,14 @@ FORMATTING & INTERACTION RULES:
                   <span class="font-semibold text-white group-hover:text-emerald-300">Paris: Marais to Seine</span>
                   <span class="text-[10px] font-mono text-emerald-400">4 Stops · 4.8 km</span>
                 </div>
-                <p class="text-[11px] text-zinc-300 mt-0.5">Chasse &amp; Nature → Bourse de Commerce → Jeu de Paume → Palais de Tokyo</p>
+                <p class="text-[11px] text-zinc-300 mt-0.5">Chasse &amp; Nature - Bourse de Commerce - Jeu de Paume - Palais de Tokyo</p>
               </div>
             </div>
 
             <div class="flex items-center justify-between gap-2 pt-2 border-t border-emerald-900/50 flex-wrap text-xs">
               <span class="text-zinc-400 text-[11.5px]">Or pick any city to generate an algorithmic crawl:</span>
               <button type="button" onclick="window.openCuratorialItineraryModal()" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
-                Open Crawl Generator 🚀
+                Open Crawl Generator
               </button>
             </div>
           </div>
@@ -17158,14 +17141,14 @@ FORMATTING & INTERACTION RULES:
           <div class="border border-amber-500/40 bg-[#1a1208] p-3.5 sm:p-4 rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-amber-500/20 pb-2 flex-wrap gap-2">
               <div class="flex items-center gap-2">
-                <span class="text-xl">✊</span>
+                
                 <div>
                   <h4 class="font-semibold text-white text-[15px]">Timeline of Cultural Boycotts &amp; Divestment Victories</h4>
                   <p class="text-[11.5px] font-mono text-amber-300">22 Landmark Direct Actions · 1971–2026 Archive</p>
                 </div>
               </div>
               <button type="button" onclick="window.openResistanceTimelineModal()" class="px-3 py-1.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
-                <span>✊ Launch Interactive Timeline</span>
+                <span>Launch Interactive Timeline</span>
               </button>
             </div>
 
@@ -17210,7 +17193,7 @@ FORMATTING & INTERACTION RULES:
             <div class="flex items-center justify-between gap-2 pt-2 border-t border-amber-900/50 flex-wrap text-xs">
               <span class="text-zinc-400 text-[11.5px]">Filter by movement: Anti-War, Climate, Labor, Big Pharma:</span>
               <button type="button" onclick="window.openResistanceTimelineModal()" class="px-3 py-1 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
-                Explore Full Archive ✊
+                Explore Full Archive
               </button>
             </div>
           </div>
@@ -17244,14 +17227,14 @@ FORMATTING & INTERACTION RULES:
           <div class="border border-cyan-500/40 bg-[#081820] p-3.5 sm:p-4 rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2 flex-wrap gap-2">
               <div class="flex items-center gap-2">
-                <span class="text-xl">📑</span>
+                
                 <div>
                   <h4 class="font-semibold text-white text-[15px]">Statutory Filings &amp; IRS Form 990 Explorer</h4>
                   <p class="text-[11.5px] font-mono text-cyan-300">Schedule L Transactions · Director Compensation · Operating Budgets</p>
                 </div>
               </div>
               <button type="button" onclick="window.openStatutoryFilingsModal('${{instId}}')" class="px-3 py-1.5 bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-500 hover:to-teal-500 text-white rounded-xl text-xs font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
-                <span>📑 Open Statutory Filings</span>
+                <span>Open Statutory Filings</span>
               </button>
             </div>
 
@@ -17288,7 +17271,7 @@ FORMATTING & INTERACTION RULES:
             <div class="flex items-center justify-between gap-2 pt-2 border-t border-cyan-900/50 flex-wrap text-xs">
               <span class="text-zinc-400 text-[11.5px]">Auditing UK Charity Commission &amp; US IRS archives across 9 institutions:</span>
               <button type="button" onclick="window.openStatutoryFilingsModal('${{instId}}')" class="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-medium transition cursor-pointer">
-                Examine Disclosures 📑
+                Examine Disclosures
               </button>
             </div>
           </div>
@@ -17296,7 +17279,7 @@ FORMATTING & INTERACTION RULES:
           'MoMA Form 990 breakdown',
           'What is Schedule L interested persons?',
           'Executive salaries at The Met',
-          'Explore Museum Fiscal Models 📊'
+          'Explore Museum Fiscal Models'
         ]);
         return;
       }}
@@ -17308,11 +17291,11 @@ FORMATTING & INTERACTION RULES:
           <div class="border border-sky-500/30 bg-[#0d1624] p-3.5 rounded-2xl space-y-3">
             <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
               <div class="flex items-center gap-2">
-                <span class="text-[17px]">🔬</span>
+                
                 <span class="font-medium text-white text-[15px]">Academic Research: Museum Finance & Fiscal Economics</span>
               </div>
               <button type="button" onclick="openAcademicResearchModal('finance')" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[11.5px] font-mono transition cursor-pointer">
-                Open Research Library ↗
+                Open Research Library
               </button>
             </div>
 
@@ -17322,19 +17305,19 @@ FORMATTING & INTERACTION RULES:
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px]">
               <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                <strong class="text-sky-300 block font-mono text-[11.5px]">📊 Form 990 Program Ratios</strong>
+                <strong class="text-sky-300 block font-mono text-[11.5px]">Form 990 Program Ratios</strong>
                 <p class="text-slate-300">Empirical studies (Calabrese & Bowman, 2024) show healthy independent spaces allocate <strong>75%–85%</strong> directly to curatorial and artistic programs, while corporate-heavy boards average over 35% in administrative and fundraising overhead.</p>
               </div>
               <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                <strong class="text-sky-300 block font-mono text-[11.5px]">🏛️ The Expansion Debt Trap</strong>
+                <strong class="text-sky-300 block font-mono text-[11.5px]">The Expansion Debt Trap</strong>
                 <p class="text-slate-300">Research on museum architectural expansions (Lindqvist & Frey, 2023) demonstrates that mega-scale bond financing creates fixed debt service that cannibalizes operating and exhibition budgets in 73% of institutions.</p>
               </div>
               <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                <strong class="text-sky-300 block font-mono text-[11.5px]">🔒 Restricted Endowments</strong>
+                <strong class="text-sky-300 block font-mono text-[11.5px]">Restricted Endowments</strong>
                 <p class="text-slate-300">Analysis of endowment liquidity (Oster & Hansmann, 2023) reveals that donor-restricted covenants lock capital into named wings, preventing emergency liquidity during downturns and accelerating curatorial labor vulnerability.</p>
               </div>
               <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                <strong class="text-sky-300 block font-mono text-[11.5px]">⚖️ Public vs Private Resilience</strong>
+                <strong class="text-sky-300 block font-mono text-[11.5px]">Public vs Private Resilience</strong>
                 <p class="text-slate-300">Comparative economic analyses (Bille et al., 2024) demonstrate that statutory European civic subsidies protect public access and fair wages far more effectively than volatile philanthropic gift cycles.</p>
               </div>
             </div>
@@ -17342,7 +17325,7 @@ FORMATTING & INTERACTION RULES:
             <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[12px] font-mono">
               <span class="text-slate-300">112 peer-reviewed studies cataloged across the corpus.</span>
               <button type="button" onclick="openAcademicResearchModal('finance')" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[12px] font-medium transition cursor-pointer">
-                Explore Financial Economics Papers 📚
+                Explore Financial Economics Papers
               </button>
             </div>
           </div>
@@ -17350,7 +17333,7 @@ FORMATTING & INTERACTION RULES:
           'Audit MoMA Form 990',
           'Where to find museum budgets',
           'Check Kunstmuseum Bern',
-          'Open Governance Legend ⚖️'
+          'Open Governance Legend'
         ]);
         return;
       }}
@@ -17379,7 +17362,7 @@ FORMATTING & INTERACTION RULES:
             <div class="border border-purple-500/30 bg-[#161022] p-3.5 rounded-2xl space-y-3">
               <div class="flex items-center justify-between border-b border-purple-500/20 pb-2">
                 <div class="flex items-center gap-2">
-                  <span class="text-[17px]">⚡</span>
+                  
                   <span class="font-medium text-white text-[15px]">Curator Critical Sparring Mode Active</span>
                 </div>
                 <span class="text-[12px] font-mono text-purple-400 bg-purple-950/80 border border-purple-700/60 px-2 py-0.5 rounded-full">Trained to Talk Back</span>
@@ -17443,7 +17426,7 @@ FORMATTING & INTERACTION RULES:
               <div class="space-y-3 text-slate-200">
                 <div class="flex items-center justify-between border-b border-[#2e2e38] pb-2">
                   <div class="flex items-center gap-2">
-                    <span class="text-[17px]">${{isClean ? '✓' : '⚠'}}</span>
+                    <span class="text-[13px] font-mono">${{isClean ? 'CLEAN' : 'FLAGGED'}}</span>
                     <span class="font-medium text-white text-[15px]">Institutional Audit: ${{formatInstLink(targetInst)}}</span>
                   </div>
                   <span class="text-[11px] font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'}}">
@@ -17457,19 +17440,19 @@ FORMATTING & INTERACTION RULES:
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px]" data-exclude-speech="true">
                   <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
-                    <strong class="text-sky-300 block">🏛️ Governance & Ethical Safeguards</strong>
+                    <strong class="text-sky-300 block">Governance & Ethical Safeguards</strong>
                     <span>${{escapeHtml(targetInst.governance_details || targetInst.ethical_safeguard || 'Statutory audited civic entity with public council charter.')}}</span>
                   </div>
                   <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
-                    <strong class="text-sky-300 block">🎟️ Admission & Opening Schedule</strong>
+                    <strong class="text-sky-300 block">Admission & Opening Schedule</strong>
                     <span><strong>${{escapeHtml(targetInst.admission_policy)}}</strong>: ${{escapeHtml(targetInst.admission_details || targetInst.admission_fee)}}. Hours: ${{escapeHtml(targetInst.opening_hours)}}.</span>
                   </div>
                   <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
-                    <strong class="text-sky-300 block">📐 Architectural Footprint</strong>
+                    <strong class="text-sky-300 block">Architectural Footprint</strong>
                     <span>Style: ${{escapeHtml(bArch.style || 'Civic architecture')}}, ${{bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() + ' sqm' : 'Custom layout'}}. Wings: ${{escapeHtml((bArch.wings || []).map(w => w.name).join(', ') || 'Exhibition galleries')}}.</span>
                   </div>
                   <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
-                    <strong class="text-sky-300 block">📚 Archives & Reading Room</strong>
+                    <strong class="text-sky-300 block">Archives & Reading Room</strong>
                     <span>${{escapeHtml(arch.primary_holdings || 'Curatorial correspondence & exhibition dossiers')}}. Access: ${{escapeHtml(arch.reading_room_policy || 'Public study access')}}.</span>
                   </div>
                 </div>
@@ -17483,13 +17466,13 @@ FORMATTING & INTERACTION RULES:
                   <span class="text-slate-400">Want deeper inspection?</span>
                   <div class="flex items-center gap-2 flex-wrap">
                     <a href="${{escapeHtml(targetInst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-[#141b2a] hover:bg-[#1f2b42] text-sky-300 hover:text-white border border-[#233552] font-mono transition inline-flex items-center gap-1 cursor-pointer">
-                      📋 Audit Dossier ↗
+                      Audit Dossier
                     </a>
                     <button type="button" onclick="openBuildingArchivesModal('${{escapeHtml(targetInst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#1e293b] hover:bg-[#2b3a52] text-slate-200 hover:text-white border border-slate-700 font-mono transition cursor-pointer">
-                      🏛️ 3D Building & Archives
+                      3D Building & Archives
                     </button>
                     <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition cursor-pointer">
-                      ⚖️ Governance Legend
+                      Governance Legend
                     </button>
                   </div>
                 </div>
@@ -17506,7 +17489,7 @@ FORMATTING & INTERACTION RULES:
             appendCuratorMessage(`
               <div class="space-y-3 text-slate-200">
                 <div class="flex items-center gap-2 border-b border-[#2e2e38] pb-2 text-white font-medium text-[15px]">
-                  <span>🔍</span>
+                  
                   <span>Which cultural space would you like me to check?</span>
                 </div>
                 <p class="text-[13.5px] text-slate-300 leading-relaxed">
@@ -17514,19 +17497,19 @@ FORMATTING & INTERACTION RULES:
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px] pt-1">
                   <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
-                    <strong class="text-emerald-400 block mb-0.5">✓ Chisenhale Gallery (London)</strong>
+                    <strong class="text-emerald-400 block mb-0.5">Chisenhale Gallery (London)</strong>
                     Verified Independent artist-run space in a 1930s veneer factory with zero corporate conflicts.
                   </div>
                   <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
-                    <strong class="text-emerald-400 block mb-0.5">✓ Kunstmuseum Bern (Bern)</strong>
+                    <strong class="text-emerald-400 block mb-0.5">Kunstmuseum Bern (Bern)</strong>
                     Civic foundation housing Adolf Wölfli's Outsider art cosmos and the Gurlitt provenance audit.
                   </div>
                   <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
-                    <strong class="text-emerald-400 block mb-0.5">✓ De La Warr Pavilion (Bexhill)</strong>
+                    <strong class="text-emerald-400 block mb-0.5">De La Warr Pavilion (Bexhill)</strong>
                     Modernist steel-and-glass seaside pavilion by Mendelsohn & Chermayeff with universal free entry.
                   </div>
                   <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
-                    <strong class="text-purple-400 block mb-0.5">⚠ MoMA (New York)</strong>
+                    <strong class="text-purple-400 block mb-0.5">MoMA (New York)</strong>
                     Flagged for private equity and defense contractor board seats on IRS Form 990 Schedule L.
                   </div>
                 </div>
@@ -17566,15 +17549,15 @@ FORMATTING & INTERACTION RULES:
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1" data-exclude-speech="true">
                 <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
-                  <strong class="text-white block mb-0.5">🏛️ 403 Independent Spaces</strong>
+                  <strong class="text-white block mb-0.5">403 Independent Spaces</strong>
                   Strict verification against arms & oil funding
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
-                  <strong class="text-white block mb-0.5">🎙️ Audio Docent</strong>
+                  <strong class="text-white block mb-0.5">Audio Docent</strong>
                   Articulate spoken briefings on every response
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[12px] text-slate-300">
-                  <strong class="text-white block mb-0.5">🌍 50 Cities</strong>
+                  <strong class="text-white block mb-0.5">50 Cities</strong>
                   From London and Paris to Tokyo and Buenos Aires
                 </div>
               </div>
@@ -17591,7 +17574,7 @@ FORMATTING & INTERACTION RULES:
             <div class="border border-sky-500/30 bg-[#10141d] p-3.5 rounded-2xl space-y-3">
               <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
                 <div class="flex items-center gap-2">
-                  <span class="text-[17px]">🔬</span>
+                  
                   <span class="font-medium text-white text-[15px]">Material Research vs. Corporate Artwashing</span>
                 </div>
                 <span class="text-[12px] font-mono text-sky-400 bg-sky-950/80 border border-sky-700/60 px-2 py-0.5 rounded-full">Forensic Methodology</span>
@@ -17612,28 +17595,28 @@ FORMATTING & INTERACTION RULES:
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" data-exclude-speech="true">
                 <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[13px] text-slate-300 space-y-1">
                   <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
-                    <span>📋 1. Regulatory Filings Under Perjury</span>
+                    <span>1. Regulatory Filings Under Perjury</span>
                   </strong>
                   <span>We inspect mandatory statutory disclosures: <strong>IRS Form 990</strong> (Schedule I for grants and Schedule L for trustee financial conflicts), <strong>UK Charity Commission</strong> annual returns, Dutch <strong>ANBI</strong> registries, and French <strong>DRAC</strong> audits. Omissions in these legal filings carry criminal and regulatory penalties.</span>
                 </div>
 
                 <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[13px] text-slate-300 space-y-1">
                   <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
-                    <span>🔗 2. Trustee Corporate Cross-Referencing</span>
+                    <span>2. Trustee Corporate Cross-Referencing</span>
                   </strong>
                   <span>We cross-reference museum board trustees against SEC 10-K filings, Companies House registries, and Bloomberg portfolios—tracking directorships in weapons manufacturing (e.g. Warren Kanders / Safariland), fossil gas extraction (Leonid Mikhelson / Novatek), private equity, and predatory pharma (Sackler / Purdue).</span>
                 </div>
 
                 <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[13px] text-slate-300 space-y-1">
                   <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
-                    <span>✊ 3. Activist Direct Action & FOI Leaks</span>
+                    <span>3. Activist Direct Action & FOI Leaks</span>
                   </strong>
                   <span>We incorporate evidence from frontline coalitions: Nan Goldin's <strong>P.A.I.N.</strong> (uncovering internal Sackler opioid memos on court dockets), <strong>Decolonize This Place</strong> & Forensic Architecture at the Whitney, <strong>Liberate Tate</strong> (using Freedom of Information releases to expose BP sponsorship), and <strong>Gulf Labor</strong> on Saadiyat Island.</span>
                 </div>
 
                 <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[13px] text-slate-300 space-y-1">
                   <strong class="text-sky-300 block text-[13px] flex items-center gap-1.5">
-                    <span>🌾 4. Material Structural Autonomy</span>
+                    <span>4. Material Structural Autonomy</span>
                   </strong>
                   <span>The 403 mapped spaces are verified by their legal and economic architecture: artist-run non-profits, cooperative commons (<em>lumbung</em> models like Gudskul Jakarta, Casco Utrecht), non-collecting kunsthalles, and civic institutions with structural firewalls protecting curators from private capture.</span>
                 </div>
@@ -17642,7 +17625,7 @@ FORMATTING & INTERACTION RULES:
               <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[13px]">
                 <span class="text-sky-200/90">Culture Atlas traces the material flow of capital, contracts, and board influence.</span>
                 <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm text-[12.5px]">
-                  <span>⚖️ Open Governance Legend ({total_count})</span>
+                  <span>Open Governance Legend ({total_count})</span>
                 </button>
               </div>
             </div>
@@ -17664,11 +17647,11 @@ FORMATTING & INTERACTION RULES:
             <div class="border border-sky-500/30 bg-[#0c1626] p-3.5 rounded-2xl space-y-3">
               <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
                 <div class="flex items-center gap-2">
-                  <span class="text-[17px]">📊</span>
+                  
                   <span class="font-medium text-white text-[15px]">Institutional Fiscal Analytics Dashboard</span>
                 </div>
                 <button type="button" onclick="openFiscalAnalyticsHUD()" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[11.5px] font-mono transition cursor-pointer">
-                  Expand HUD ↗
+                  Expand HUD
                 </button>
               </div>
 
@@ -17699,10 +17682,10 @@ FORMATTING & INTERACTION RULES:
                 <span class="text-slate-300">Filter map by fiscal model:</span>
                 <div class="flex items-center gap-1.5">
                   <button type="button" onclick="setCategoryFilter('finance_civic', true)" class="px-2.5 py-1 bg-[#152a42] hover:bg-[#1e3c5e] text-sky-300 rounded-lg text-[11.5px] transition cursor-pointer">
-                    🏛️ Public Subsidies (≥50%)
+                    Public Subsidies (≥50%)
                   </button>
                   <button type="button" onclick="setCategoryFilter('finance_high_program', true)" class="px-2.5 py-1 bg-[#102b20] hover:bg-[#184231] text-emerald-300 rounded-lg text-[11.5px] transition cursor-pointer">
-                    ⚡ High Program Spend (≥80%)
+                    High Program Spend (≥80%)
                   </button>
                 </div>
               </div>
@@ -17711,7 +17694,7 @@ FORMATTING & INTERACTION RULES:
             'Filter Public Subsidized',
             'Filter High Program Spend',
             'Where to find museum budgets',
-            'Explore Finance Papers 🔬'
+            'Explore Finance Papers'
           ]);
           return;
         }}
@@ -17724,11 +17707,11 @@ FORMATTING & INTERACTION RULES:
             <div class="border border-sky-500/30 bg-[#0d1624] p-3.5 rounded-2xl space-y-3">
               <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
                 <div class="flex items-center gap-2">
-                  <span class="text-[17px]">🔬</span>
+                  
                   <span class="font-medium text-white text-[15px]">Academic Research: Museum Finance & Fiscal Economics</span>
                 </div>
                 <button type="button" onclick="openAcademicResearchModal('finance')" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[11.5px] font-mono transition cursor-pointer">
-                  Open Research Library ↗
+                  Open Research Library
                 </button>
               </div>
 
@@ -17738,19 +17721,19 @@ FORMATTING & INTERACTION RULES:
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px]">
                 <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                  <strong class="text-sky-300 block font-mono text-[11.5px]">📊 Form 990 Program Ratios</strong>
+                  <strong class="text-sky-300 block font-mono text-[11.5px]">Form 990 Program Ratios</strong>
                   <p class="text-slate-300">Empirical studies (Calabrese & Bowman, 2024) show healthy independent spaces allocate <strong>75%–85%</strong> directly to curatorial and artistic programs, while corporate-heavy boards average over 35% in administrative and fundraising overhead.</p>
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                  <strong class="text-sky-300 block font-mono text-[11.5px]">🏛️ The Expansion Debt Trap</strong>
+                  <strong class="text-sky-300 block font-mono text-[11.5px]">The Expansion Debt Trap</strong>
                   <p class="text-slate-300">Research on museum architectural expansions (Lindqvist & Frey, 2023) demonstrates that mega-scale bond financing creates fixed debt service that cannibalizes operating and exhibition budgets in 73% of institutions.</p>
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                  <strong class="text-sky-300 block font-mono text-[11.5px]">🔒 Restricted Endowments</strong>
+                  <strong class="text-sky-300 block font-mono text-[11.5px]">Restricted Endowments</strong>
                   <p class="text-slate-300">Analysis of endowment liquidity (Oster & Hansmann, 2023) reveals that donor-restricted covenants lock capital into named wings, preventing emergency liquidity during downturns and accelerating curatorial labor vulnerability.</p>
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                  <strong class="text-sky-300 block font-mono text-[11.5px]">⚖️ Public vs Private Resilience</strong>
+                  <strong class="text-sky-300 block font-mono text-[11.5px]">Public vs Private Resilience</strong>
                   <p class="text-slate-300">Comparative economic analyses (Bille et al., 2024) demonstrate that statutory European civic subsidies protect public access and fair wages far more effectively than volatile philanthropic gift cycles.</p>
                 </div>
               </div>
@@ -17758,7 +17741,7 @@ FORMATTING & INTERACTION RULES:
               <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[12px] font-mono">
                 <span class="text-slate-300">112 peer-reviewed studies cataloged across the corpus.</span>
                 <button type="button" onclick="openAcademicResearchModal('finance')" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[12px] font-medium transition cursor-pointer">
-                  Explore Financial Economics Papers 📚
+                  Explore Financial Economics Papers
                 </button>
               </div>
             </div>
@@ -17766,7 +17749,7 @@ FORMATTING & INTERACTION RULES:
             'Audit MoMA Form 990',
             'Where to find museum budgets',
             'Check Kunstmuseum Bern',
-            'Open Governance Legend ⚖️'
+            'Open Governance Legend'
           ]);
           return;
         }}
@@ -17783,7 +17766,7 @@ FORMATTING & INTERACTION RULES:
               <div class="border border-sky-500/30 bg-[#0d1522] p-3.5 rounded-2xl space-y-3">
                 <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
                   <div class="flex items-center gap-2">
-                    <span class="text-[17px]">📊</span>
+                    
                     <span class="font-medium text-white text-[15px]">${{escapeHtml(specificInst.name)}} · Financial Diagnostic</span>
                   </div>
                   <span class="text-[12px] font-mono text-emerald-400 bg-emerald-950/80 border border-emerald-700/60 px-2 py-0.5 rounded-full">${{escapeHtml(fd.budget_tier || 'Audited Scale')}}</span>
@@ -17826,10 +17809,10 @@ FORMATTING & INTERACTION RULES:
                   <span class="text-slate-400">Admin Overhead: <strong class="text-slate-200">${{fd.administrative_overhead_pct || 15}}%</strong> (incl. ${{fd.fundraising_cost_pct || 7}}% fundraising)</span>
                   <div class="flex items-center gap-1.5">
                     <a href="${{escapeHtml(specificInst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg transition text-[11.5px]">
-                      Inspect Form 990 / Audit ↗
+                      Inspect Form 990 / Audit
                     </a>
                     <button type="button" onclick="openAcademicResearchModal('finance')" class="px-2.5 py-1 bg-[#1a293e] hover:bg-[#253a58] border border-sky-700/60 text-sky-300 rounded-lg transition text-[11.5px] cursor-pointer">
-                      Academic Studies 🔬
+                      Academic Studies
                     </button>
                   </div>
                 </div>
@@ -17837,8 +17820,8 @@ FORMATTING & INTERACTION RULES:
             `, [
               `Check ${{specificInst.name}} Hours`,
               'Where to find Form 990',
-              'Open Governance Legend ⚖️',
-              'Browse Finance Studies 🔬'
+              'Open Governance Legend',
+              'Browse Finance Studies'
             ]);
             return;
           }}
@@ -17847,7 +17830,7 @@ FORMATTING & INTERACTION RULES:
             <div class="border border-amber-500/30 bg-[#16120b] p-3.5 rounded-2xl space-y-3">
               <div class="flex items-center justify-between border-b border-amber-500/20 pb-2">
                 <div class="flex items-center gap-2">
-                  <span class="text-[17px]">📊</span>
+                  
                   <span class="font-medium text-white text-[15px]">Museum Budgets & Financial Disclosures</span>
                 </div>
                 <span class="text-[12px] font-mono text-amber-400 bg-amber-950/80 border border-amber-700/60 px-2 py-0.5 rounded-full">Audited Filings</span>
@@ -17862,7 +17845,7 @@ FORMATTING & INTERACTION RULES:
               </p>
 
               <div class="p-3 rounded-xl bg-[#20180d] border border-amber-900/40 space-y-1.5">
-                <strong class="text-amber-300 block text-[13px] font-mono">📁 Where to find real budget information:</strong>
+                <strong class="text-amber-300 block text-[13px] font-mono">Where to find real budget information:</strong>
                 <p class="text-slate-200 text-[13px] leading-relaxed">
                   If you're researching a specific museum's finances, look for their most recent audited financial statements:
                 </p>
@@ -17874,14 +17857,14 @@ FORMATTING & INTERACTION RULES:
               </div>
 
               <div class="p-3 rounded-xl bg-[#20180d] border border-amber-900/40 space-y-1.5">
-                <strong class="text-amber-300 block text-[13px] font-mono">🔍 What those documents actually show:</strong>
+                <strong class="text-amber-300 block text-[13px] font-mono">What those documents actually show:</strong>
                 <p class="text-slate-200 text-[13px] leading-relaxed">
                   The Form 990 and Charity Commission accounts reveal trustee names, salary expenses, restricted vs unrestricted gifts, and whether money flows toward the actual mission or gets stuck in endowment. This is where you'll spot red flags—like a museum spending 40% on fundraising overhead, or a trustee siphoning consulting fees to their own firm.
                 </p>
               </div>
 
               <div class="p-3 rounded-xl bg-[#20180d] border border-amber-900/40 space-y-1.5">
-                <strong class="text-amber-300 block text-[13px] font-mono">⚖️ What you should look for:</strong>
+                <strong class="text-amber-300 block text-[13px] font-mono">What you should look for:</strong>
                 <p class="text-slate-200 text-[13px] leading-relaxed">
                   Program expenses (the actual art and curatorial work), administrative overhead, fundraising costs, and donor restrictions that lock money into donor-named wings rather than flexible operations. Museums with transparent web reporting of these numbers tend to have better governance.
                 </p>
@@ -17891,10 +17874,10 @@ FORMATTING & INTERACTION RULES:
                 <span>If you're researching a specific institution's financial health or donor ties, I can help you interpret what those public filings actually mean. <strong>Which museum are you looking into?</strong></span>
                 <div class="flex items-center gap-2">
                   <button type="button" onclick="openAcademicResearchModal('finance')" class="px-2.5 py-1 bg-sky-950/80 border border-sky-700/60 text-sky-300 hover:text-white rounded-lg text-[12px] font-mono transition cursor-pointer">
-                    Finance Studies 🔬
+                    Finance Studies
                   </button>
                   <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3 py-1 bg-amber-500 hover:bg-amber-400 text-black rounded-lg text-[12px] font-medium transition cursor-pointer">
-                    Open Governance Legend ⚖️
+                    Open Governance Legend
                   </button>
                 </div>
               </div>
@@ -17903,7 +17886,7 @@ FORMATTING & INTERACTION RULES:
             'Audit MoMA Form 990',
             'Where to find Form 990',
             'Check Kunstmuseum Bern',
-            'Browse Finance Studies 🔬'
+            'Browse Finance Studies'
           ]);
           return;
         }}
@@ -17916,12 +17899,12 @@ FORMATTING & INTERACTION RULES:
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2">
                 <div class="flex items-center gap-2 text-cyan-400 font-mono text-[12px] uppercase tracking-wider">
-                  <span>📚 Dedicated Archives Directory</span>
+                  <span>Dedicated Archives Directory</span>
                   <span>·</span>
                   <span>{archives_count} Cataloged Repositories</span>
                 </div>
                 <button type="button" onclick="openArchivesDirectoryModal('all')" class="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-700/60 text-cyan-300 hover:text-white text-[11px] font-mono transition cursor-pointer">
-                  Browse Directory ↗
+                  Browse Directory
                 </button>
               </div>
 
@@ -17933,19 +17916,19 @@ FORMATTING & INTERACTION RULES:
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px] pt-1" data-exclude-speech="true">
                 <div class="p-2.5 rounded-xl bg-[#141b29] border border-cyan-900/40 text-slate-300">
-                  <strong class="text-cyan-300 block mb-0.5">📁 Exhibition Dossiers & Curatorial Files</strong>
+                  <strong class="text-cyan-300 block mb-0.5">Exhibition Dossiers & Curatorial Files</strong>
                   Unedited production binders, architectural blueprints, installation schematics, and artist correspondence documenting landmark exhibitions since institutional founding.
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#141b29] border border-cyan-900/40 text-slate-300">
-                  <strong class="text-cyan-300 block mb-0.5">📰 Artists' Ephemera, Zines & Manifestos</strong>
+                  <strong class="text-cyan-300 block mb-0.5">Artists' Ephemera, Zines & Manifestos</strong>
                   Counter-culture publications, rare artist editions, self-published pamphlets, screenprints, and theoretical treatises from grassroots movements.
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#141b29] border border-cyan-900/40 text-slate-300">
-                  <strong class="text-cyan-300 block mb-0.5">🎙️ Oral Histories & AV Master Tapes</strong>
+                  <strong class="text-cyan-300 block mb-0.5">Oral Histories & AV Master Tapes</strong>
                   Preserved reel-to-reel audio, cassette masters, video art documentation, artist symposia, and candid interviews with cultural organizers.
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#141b29] border border-cyan-900/40 text-slate-300">
-                  <strong class="text-cyan-300 block mb-0.5">🖼️ Permanent Study Collections</strong>
+                  <strong class="text-cyan-300 block mb-0.5">Permanent Study Collections</strong>
                   Non-exhibited artist proofs, working models, maquettes, and contextual materials accessible for in-person scholarly research.
                 </div>
               </div>
@@ -17953,7 +17936,7 @@ FORMATTING & INTERACTION RULES:
               <div class="pt-2 border-t border-cyan-900/40 flex items-center justify-between gap-2 flex-wrap text-[12px]">
                 <span class="text-slate-400">Search by city, artist, zines, or keyword:</span>
                 <button type="button" onclick="openArchivesDirectoryModal('all')" class="px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm">
-                  <span>📚 Open Dedicated Archives Directory ({archives_count})</span>
+                  <span>Open Dedicated Archives Directory ({archives_count})</span>
                 </button>
               </div>
             </div>
@@ -17976,12 +17959,12 @@ FORMATTING & INTERACTION RULES:
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
                 <div class="flex items-center gap-2 text-sky-400 font-mono text-[12px] uppercase tracking-wider">
-                  <span>🔬 Peer-Reviewed Academic Corpus</span>
+                  <span>Peer-Reviewed Academic Corpus</span>
                   <span>·</span>
                   <span>{academic_count} Empirical Studies</span>
                 </div>
                 <button type="button" onclick="openAcademicResearchModal('all')" class="px-2 py-0.5 rounded bg-sky-950/80 border border-sky-700/60 text-sky-300 hover:text-white text-[11px] font-mono transition cursor-pointer">
-                  Browse Studies Library ↗
+                  Browse Studies Library
                 </button>
               </div>
 
@@ -17993,19 +17976,19 @@ FORMATTING & INTERACTION RULES:
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px] pt-1" data-exclude-speech="true">
                 <div class="p-2.5 rounded-xl bg-[#161c28] border border-sky-900/40 text-slate-300">
-                  <strong class="text-sky-300 block mb-0.5">🔗 Sponsor Networks & Self-Censorship</strong>
+                  <strong class="text-sky-300 block mb-0.5">Sponsor Networks & Self-Censorship</strong>
                   Davidsson & Sørensen (2010), Mateos Rusillo (2019), and Zheng & Ni (2023) show how corporate funding triggers anticipatory self-censorship and blockbuster favoritism without explicit editorial orders.
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#161c28] border border-sky-900/40 text-slate-300">
-                  <strong class="text-sky-300 block mb-0.5">🏺 Antiquities Reputation Laundering</strong>
+                  <strong class="text-sky-300 block mb-0.5">Antiquities Reputation Laundering</strong>
                   Yates & Graham (2023) deploy machine learning to prove bad actors donate low-value antiquities over decades to construct institutional credibility before committing financial fraud.
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#161c28] border border-sky-900/40 text-slate-300">
-                  <strong class="text-sky-300 block mb-0.5">🏛️ Private Museum Fragility (&lt; 10 Yrs)</strong>
+                  <strong class="text-sky-300 block mb-0.5">Private Museum Fragility (&lt; 10 Yrs)</strong>
                   Velthuis & Gera (2024) prove private art museums are inherently fragile organizations with a median lifespan of less than 10 years due to financial strain and founder over-reliance.
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#161c28] border border-sky-900/40 text-slate-300">
-                  <strong class="text-sky-300 block mb-0.5">📋 Mandatory vs Voluntary Disclosure</strong>
+                  <strong class="text-sky-300 block mb-0.5">Mandatory vs Voluntary Disclosure</strong>
                   Barber et al. (2020), Kugel & Mercado (2026), and Harris et al. (2023) prove voluntary disclosure is inadequate, whereas mandatory Form 990 / Charity Commission audits drive public accountability.
                 </div>
               </div>
@@ -18013,7 +17996,7 @@ FORMATTING & INTERACTION RULES:
               <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[12px]">
                 <span class="text-slate-400">Examine specific authors, datasets, and DOIs:</span>
                 <button type="button" onclick="openAcademicResearchModal('all')" class="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition cursor-pointer">
-                  🔬 Open Full Academic Studies Modal ({academic_count})
+                  Open Full Academic Studies Modal ({academic_count})
                 </button>
               </div>
             </div>
@@ -18031,7 +18014,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-purple-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Academic Study Profile</span>
+                <span>Academic Study Profile</span>
                 <span>·</span>
                 <span>Yates & Graham (2023)</span>
               </div>
@@ -18052,7 +18035,7 @@ FORMATTING & INTERACTION RULES:
               </div>
               <div class="pt-1 flex items-center gap-2">
                 <button type="button" onclick="openAcademicResearchModal('reputation')" class="px-2.5 py-1 rounded bg-[#2a1b42] hover:bg-[#39245a] text-purple-300 border border-purple-700/60 text-[12px] font-mono transition cursor-pointer">
-                  View in Academic Library ↗
+                  View in Academic Library
                 </button>
               </div>
             </div>
@@ -18065,7 +18048,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-amber-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Historical Case Study</span>
+                <span>Historical Case Study</span>
                 <span>·</span>
                 <span>C. Sharp (2022)</span>
               </div>
@@ -18094,7 +18077,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-rose-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Empirical Demography</span>
+                <span>Empirical Demography</span>
                 <span>·</span>
                 <span>Velthuis & Gera (2024)</span>
               </div>
@@ -18126,7 +18109,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Behavioral Economics</span>
+                <span>Behavioral Economics</span>
                 <span>·</span>
                 <span>Chen & Gao (2021)</span>
               </div>
@@ -18155,7 +18138,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-cyan-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Governance & Audit Science</span>
+                <span>Governance & Audit Science</span>
                 <span>·</span>
                 <span>Kugel & Mercado (2026) / Harris et al. (2023)</span>
               </div>
@@ -18184,7 +18167,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-yellow-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Cultural Policy & Inequality</span>
+                <span>Cultural Policy & Inequality</span>
                 <span>·</span>
                 <span>Sara de Andrade Silva (2025)</span>
               </div>
@@ -18213,7 +18196,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-blue-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Public Trust & Collector Pacts</span>
+                <span>Public Trust & Collector Pacts</span>
                 <span>·</span>
                 <span>Berg & Larsen (2024) / Berg (2024)</span>
               </div>
@@ -18242,7 +18225,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-indigo-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Semiotics & Actor-Network Theory</span>
+                <span>Semiotics & Actor-Network Theory</span>
                 <span>·</span>
                 <span>Park & Kim (2025)</span>
               </div>
@@ -18271,7 +18254,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-teal-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Transition Economies & Ethics</span>
+                <span>Transition Economies & Ethics</span>
                 <span>·</span>
                 <span>Prokůpek & Divíšková (2022)</span>
               </div>
@@ -18297,7 +18280,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-violet-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Empirical Cultural Economics</span>
+                <span>Empirical Cultural Economics</span>
                 <span>·</span>
                 <span>Cavalieri et al. (2025)</span>
               </div>
@@ -18326,7 +18309,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-blue-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Nonprofit Accountability & Stakeholder Theory</span>
+                <span>Nonprofit Accountability & Stakeholder Theory</span>
                 <span>·</span>
                 <span>Dainelli, Manetti & Sibilio (2012)</span>
               </div>
@@ -18355,7 +18338,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-amber-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Public Benefit & Arts Administration</span>
+                <span>Public Benefit & Arts Administration</span>
                 <span>·</span>
                 <span>Keeney, Jung, Marschall & Hawk (2025)</span>
               </div>
@@ -18384,7 +18367,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-rose-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Board Governance & Gender Diversity</span>
+                <span>Board Governance & Gender Diversity</span>
                 <span>·</span>
                 <span>Benito-Esteban et al. (2023)</span>
               </div>
@@ -18413,7 +18396,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Forensic Accounting & Volunteer Signaling</span>
+                <span>Forensic Accounting & Volunteer Signaling</span>
                 <span>·</span>
                 <span>Beck, Garven & Yetman (2024)</span>
               </div>
@@ -18442,7 +18425,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-cyan-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Financial Transparency & Donor Psychology</span>
+                <span>Financial Transparency & Donor Psychology</span>
                 <span>·</span>
                 <span>Ghoorah et al. (2021, 2025)</span>
               </div>
@@ -18471,7 +18454,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-fuchsia-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Institutional Logics & Reporting</span>
+                <span>Institutional Logics & Reporting</span>
                 <span>·</span>
                 <span>G. Goncharenko (2020)</span>
               </div>
@@ -18500,7 +18483,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-lime-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Arts Management & Board Governance</span>
+                <span>Arts Management & Board Governance</span>
                 <span>·</span>
                 <span>D. Betzler (2012, 2015)</span>
               </div>
@@ -18529,7 +18512,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-indigo-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Strategic Management & Nonprofits</span>
+                <span>Strategic Management & Nonprofits</span>
                 <span>·</span>
                 <span>Blevins, Ragozzino & Eckardt (2020)</span>
               </div>
@@ -18558,7 +18541,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-amber-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Comparative Cultural Governance</span>
+                <span>Comparative Cultural Governance</span>
                 <span>·</span>
                 <span>Dong Qin (2021)</span>
               </div>
@@ -18598,7 +18581,7 @@ FORMATTING & INTERACTION RULES:
             if (floors && floors.length) {{
               floorsHtml = `
                 <div class="pt-2 border-t border-[#333] space-y-2">
-                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">🏢 Floor-by-Floor Current Shows & Archival Holdings:</strong>
+                  <strong class="text-[#38bdf8] font-mono uppercase text-[11px] tracking-wider block">Floor-by-Floor Current Shows & Archival Holdings:</strong>
               ` + floors.map(fl => {{
                 const show = (fl.current_shows && fl.current_shows[0]) || {{ title: 'Curatorial Commissions', dates: 'On View' }};
                 const archHold = fl.archive_holdings || {{ collection_title: 'Special Collections' }};
@@ -18609,10 +18592,10 @@ FORMATTING & INTERACTION RULES:
                       <span class="text-slate-400">${{fl.elevation || ''}}</span>
                     </div>
                     <div class="text-[12px] text-white">
-                      <span class="text-amber-400 font-mono text-[10.5px]">🖼️ Show:</span> <strong>${{escapeHtml(show.title)}}</strong> <span class="text-[10px] text-slate-300 font-mono">(${{escapeHtml(show.dates || 'Active')}})</span>
+                      <span class="text-amber-400 font-mono text-[10.5px]">Show:</span> <strong>${{escapeHtml(show.title)}}</strong> <span class="text-[10px] text-slate-300 font-mono">(${{escapeHtml(show.dates || 'Active')}})</span>
                     </div>
                     <div class="text-[11.5px] text-emerald-300">
-                      <span class="text-emerald-400 font-mono text-[10.5px]">📚 Archive:</span> ${{escapeHtml(archHold.collection_title)}}
+                      <span class="text-emerald-400 font-mono text-[10.5px]">Archive:</span> ${{escapeHtml(archHold.collection_title)}}
                     </div>
                   </div>
                 `;
@@ -18621,7 +18604,7 @@ FORMATTING & INTERACTION RULES:
 
             appendCuratorMessage(`
               <p class="text-white font-medium text-[15px]">
-                🏛️ <strong>${{formatInstLink(inst)}}</strong>: Architectural Profile & Archival Repository
+                <strong>${{formatInstLink(inst)}}</strong>: Architectural Profile & Archival Repository
               </p>
               <div class="py-2.5 border-t border-[#333] space-y-2 text-slate-300 text-[13px] leading-[135%]">
                 <div>
@@ -18641,11 +18624,11 @@ FORMATTING & INTERACTION RULES:
               <div class="pt-2 border-t border-[#333] flex items-center gap-2 flex-wrap">
                 <button type="button" onclick="window.zoomToBuilding('${{escapeHtml(inst.name)}}', true)" 
                         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[12px] shadow transition cursor-pointer">
-                  <span>🏛️ Zoom to 3D Building & Inspect Archives</span>
+                  <span>Zoom to 3D Building & Inspect Archives</span>
                 </button>
                 <button type="button" onclick="window.zoomCloserToBuilding(20.0)" 
                         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white font-medium text-[12px] shadow transition cursor-pointer">
-                  <span>🔍 Zoom 20x Closer</span>
+                  <span>Zoom 20x Closer</span>
                 </button>
               </div>
             `, ['Plan Visit', 'Opening Hours', 'Ethical Governance Audit', `More in ${{inst.city}}`]);
@@ -19195,11 +19178,11 @@ FORMATTING & INTERACTION RULES:
               Culture Atlas provides curated cultural itineraries across major world capitals featuring 100% verified independent, non-profit spaces:
             </p>
             <p class="text-slate-300">
-              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="London">London 1-Day Route:</a> Chisenhale Gallery → Whitechapel Gallery → Gasworks → Camden Art Centre.<br>
-              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Berlin">Berlin Contemporary Trail:</a> KW Institute → Gropius Bau → Haus der Kulturen der Welt (HKW).<br>
-              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Paris">Paris Circuit:</a> Bétonsalon research centre → Palais de Tokyo (open till midnight).<br>
-              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="New York">New York Non-Profit Loop:</a> Artists Space → Swiss Institute → The Kitchen → SculptureCenter.<br>
-              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Utrecht">Dutch Research Corridor:</a> BAK Utrecht → Casco → Kunstinstituut Melly → De Appel.
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="London">London 1-Day Route:</a> Chisenhale Gallery - Whitechapel Gallery - Gasworks - Camden Art Centre.<br>
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Berlin">Berlin Contemporary Trail:</a> KW Institute - Gropius Bau - Haus der Kulturen der Welt (HKW).<br>
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Paris">Paris Circuit:</a> Bétonsalon research centre - Palais de Tokyo (open till midnight).<br>
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="New York">New York Non-Profit Loop:</a> Artists Space - Swiss Institute - The Kitchen - SculptureCenter.<br>
+              - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Utrecht">Dutch Research Corridor:</a> BAK Utrecht - Casco - Kunstinstituut Melly - De Appel.
             </p>
             <p class="text-slate-300">
               Ask about any specific city (e.g. <em>"London itinerary"</em> or <em>"Berlin art route"</em>) for complete transit and timing directions.
@@ -19374,7 +19357,7 @@ FORMATTING & INTERACTION RULES:
               <div class="pt-2 border-t border-[#333] flex items-center gap-2">
                 <a href="${{escapeHtml(visitUrl)}}" target="_blank" rel="noopener noreferrer" 
                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-normal text-[12px] shadow transition">
-                  <span>Open Official Visitor / Ticket Page ↗</span>
+                  <span>Open Official Visitor / Ticket Page</span>
                 </a>
               </div>
             ` : ''}}
@@ -19694,7 +19677,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-rose-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>⚡ Critical Philosophy & Ideology Critique</span>
+                <span>Critical Philosophy & Ideology Critique</span>
                 <span>·</span>
                 <span>Slavoj Žižek</span>
               </div>
@@ -19723,7 +19706,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-amber-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>⚡ Curatorial Theory & Soviet Avant-Garde</span>
+                <span>Curatorial Theory & Soviet Avant-Garde</span>
                 <span>·</span>
                 <span>Boris Groys</span>
               </div>
@@ -19752,7 +19735,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-cyan-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>⚡ Political Economy & Technofeudalism</span>
+                <span>Political Economy & Technofeudalism</span>
                 <span>·</span>
                 <span>Yanis Varoufakis</span>
               </div>
@@ -19781,7 +19764,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-violet-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>⚡ Media Theory & Institutional Critique</span>
+                <span>Media Theory & Institutional Critique</span>
                 <span>·</span>
                 <span>Hito Steyerl</span>
               </div>
@@ -19810,7 +19793,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
-                <span>⚡ Artists Confronting the Institution</span>
+                <span>Artists Confronting the Institution</span>
                 <span>·</span>
                 <span>Rosler · Eichhorn · Rowland</span>
               </div>
@@ -20349,7 +20332,7 @@ FORMATTING & INTERACTION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center gap-2 text-[#be95ff] font-mono text-[12px] uppercase tracking-wider">
-                <span>🔬 Empirical Research Synthesis</span>
+                <span>Empirical Research Synthesis</span>
                 <span>·</span>
                 <span>Consensus Academic Graph</span>
               </div>
@@ -21057,7 +21040,7 @@ FORMATTING & INTERACTION RULES:
                 ${{altText}}
                 <div class="mt-2" data-exclude-speech="true">
                   <button class="curator-dossier-btn px-2.5 py-1 rounded bg-[#1f1433] hover:bg-[#2d1e48] text-[#be95ff] border border-[#8a3ffc] text-[13px] font-mono cursor-pointer transition" data-name="${{escapeHtml(inst.name)}}">
-                    Open Full Audit Dossier ↗
+                    Open Full Audit Dossier
                   </button>
                 </div>
               </div>
@@ -21459,7 +21442,7 @@ FORMATTING & INTERACTION RULES:
       body.innerHTML = `
         <div class="space-y-3 p-4 rounded-2xl bg-[#181920] border border-[#2b2f3d]">
           <div class="flex items-center gap-2 text-emerald-400 font-mono text-[12px] uppercase tracking-wider">
-            <span>🔒 Confidential Intelligence Desk</span>
+            <span>Confidential Intelligence Desk</span>
             <span>·</span>
             <span>Investigative Intake</span>
           </div>
@@ -21468,7 +21451,7 @@ FORMATTING & INTERACTION RULES:
             If you possess <strong>private or internal information</strong> that is <strong>not publicly available</strong>—such as unpublicized trustee arrangements, off-the-books donor covenants, internal museum board disputes, curatorial censorship behind closed doors, or undisclosed defense/fossil fuel contracts—you can submit it here in strict confidence.
           </p>
           <div class="p-3 rounded-xl bg-[#0f1422] border border-blue-900/50 text-[12.5px] text-slate-300 space-y-1.5 leading-relaxed">
-            <p><strong>🛡️ Source Protection Protocol:</strong> Your submission is stored directly in your browser's private local vault. When our curators cross-examine details against IRS Form 990, UK Charity Commission filings, and DRAC audits, non-public sources remain strictly confidential.</p>
+            <p><strong>Source Protection Protocol:</strong> Your submission is stored directly in your browser's private local vault. When our curators cross-examine details against IRS Form 990, UK Charity Commission filings, and DRAC audits, non-public sources remain strictly confidential.</p>
             <p><strong>What to share:</strong> Mention names, dates, private meeting decisions, internal budget allocations, or institutional agreements that public PR has kept hidden.</p>
           </div>
           <p class="text-slate-300 text-[13px]">
@@ -21552,7 +21535,7 @@ FORMATTING & INTERACTION RULES:
         let respHtml = `
           <div class="space-y-2.5">
             <div class="flex items-center justify-between border-b border-emerald-900/50 pb-1.5 flex-wrap gap-1">
-              <span class="text-emerald-400 font-mono text-[11px] uppercase tracking-wider font-bold">🔒 Cryptographic Receipt #${{entry.id}}</span>
+              <span class="text-emerald-400 font-mono text-[11px] uppercase tracking-wider font-bold">Cryptographic Receipt #${{entry.id}}</span>
               <span class="text-[10px] font-mono text-zinc-400">${{escapeHtml(entry.pseudonym)}}</span>
             </div>
 
@@ -21594,7 +21577,7 @@ FORMATTING & INTERACTION RULES:
         <div class="border border-emerald-500/50 bg-[#091a13] p-4 sm:p-4.5 rounded-2xl space-y-3 shadow-lg">
           <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2.5 flex-wrap gap-2">
             <div class="flex items-center gap-2">
-              <span class="text-xl">🔒</span>
+              
               <div>
                 <h4 class="font-semibold text-white text-[15px] flex items-center gap-2">
                   Confidential Field Intel &amp; Whistleblower Pipeline
@@ -21611,7 +21594,7 @@ FORMATTING & INTERACTION RULES:
 
           <div class="p-3 rounded-xl bg-[#0e271d] border border-emerald-800/60 space-y-2 text-[12.5px] text-slate-200">
             <div class="font-medium text-emerald-300 flex items-center gap-1.5 text-[13px]">
-              <span>📋</span><span>How to submit right here:</span>
+              <span>How to submit right here:</span>
             </div>
             <ol class="list-decimal list-inside space-y-1 text-slate-300">
               <li><strong>Type or paste your information</strong> directly into the chat input below.</li>
@@ -21653,7 +21636,7 @@ FORMATTING & INTERACTION RULES:
 
       const workInput = document.getElementById('workInput');
       if (workInput) {{
-        workInput.placeholder = '🔒 Enter confidential intel or paste document leak here...';
+        workInput.placeholder = '[Confidential Vault] Enter confidential intel or paste document leak here...';
         if (defaultTopic) {{
           workInput.value = defaultTopic;
         }}
@@ -21830,14 +21813,14 @@ FORMATTING & INTERACTION RULES:
 
       appendCuratorMessage(`
         <p class="text-white font-normal text-[15px]">
-          ✅ <strong>Research Contribution Queued for Verification</strong>
+          <strong>Research Contribution Queued for Verification</strong>
         </p>
         <div class="py-2.5 border-t border-[#333] space-y-1.5 text-slate-300 text-[13px] leading-[135%]">
           <div><strong class="text-[#78a9ff] font-mono uppercase text-[11px] tracking-wider block">Audit Ticket</strong> <span class="font-mono text-emerald-400 font-bold">#${{entry.id}}</span> · <span class="text-slate-400 text-[12px] font-mono">Curatorial Verification Queue</span></div>
           <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono uppercase text-[11px] tracking-wider block">Submission Category</strong> ${{escapeHtml(cat.replace(/_/g, ' ').toUpperCase())}}</div>
           ${{name ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono uppercase text-[11px] tracking-wider block">Space & Location</strong> <span class="text-white font-medium">${{escapeHtml(name)}}</span> ${{city ? `(${{escapeHtml(city)}})` : ''}}</div>` : ''}}
           <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono uppercase text-[11px] tracking-wider block">Research Findings</strong> ${{escapeHtml(details)}}</div>
-          ${{sourceUrl ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono uppercase text-[11px] tracking-wider block">Statutory Source Filing</strong> <a href="${{escapeHtml(sourceUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:underline font-mono text-[12px] break-all">${{escapeHtml(sourceUrl)}} ↗</a></div>` : ''}}
+          ${{sourceUrl ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono uppercase text-[11px] tracking-wider block">Statutory Source Filing</strong> <a href="${{escapeHtml(sourceUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:underline font-mono text-[12px] break-all">${{escapeHtml(sourceUrl)}}</a></div>` : ''}}
           <div class="pt-1.5 border-t border-[#262626] text-[12px] text-slate-400 font-mono">
             Status: <span class="text-emerald-400 font-bold">Active in Session</span> · Queued for cross-examination against regulatory registers (IRS 990 / Charity Commission / DRAC).
           </div>
@@ -22003,7 +21986,7 @@ FORMATTING & INTERACTION RULES:
     async function handleWorkSend() {{
       const text = (workInput?.value || '').trim();
       if (!text) return;
-      const isContributeActive = workInput.placeholder && workInput.placeholder.includes('🔒');
+      const isContributeActive = workInput.placeholder && (workInput.placeholder.includes('Confidential') || workInput.placeholder.includes('🔒'));
       workInput.value = '';
       if (window.innerWidth < 768 && currentMobileMode === 'map') {{
         setMobileViewMode('split');
@@ -22961,12 +22944,12 @@ FORMATTING & INTERACTION RULES:
       if (res.success) {{
         connectionTestBox.classList.remove('border-[#3e3e3e]', 'bg-[#27272a]', 'text-[#d4d4d4]');
         connectionTestBox.classList.add('border-emerald-500/30', 'bg-emerald-500/10', 'text-emerald-400');
-        if (testStatusIcon) testStatusIcon.textContent = '✓ ';
+        if (testStatusIcon) testStatusIcon.textContent = 'OK ';
         if (testStatusMsg) testStatusMsg.textContent = res.message;
       }} else {{
         connectionTestBox.classList.remove('border-[#3e3e3e]', 'bg-[#27272a]', 'text-[#d4d4d4]');
         connectionTestBox.classList.add('border-rose-500/30', 'bg-rose-500/10', 'text-rose-400');
-        if (testStatusIcon) testStatusIcon.textContent = '✕ ';
+        if (testStatusIcon) testStatusIcon.textContent = 'ERR ';
         if (testStatusMsg) testStatusMsg.textContent = res.error;
       }}
     }});
@@ -23095,24 +23078,24 @@ FORMATTING & INTERACTION RULES:
 
       let html = `
         <div class="flex flex-wrap items-center gap-1.5">
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="all">← All Spaces</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="all">All Spaces</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">✓ Clean</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="fiscal_analytics">📊 Fiscal Analytics</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="fiscal_analytics">Fiscal Analytics</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="free">Free Entry</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="artist_run">Artist-Run</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Contribute Intel</span></button>
         </div>
 
         <div class="flex flex-wrap items-center gap-1.5">
           <span class="text-[11px] text-[#38bdf8] font-mono shrink-0 mr-0.5 uppercase tracking-wider font-semibold">Fiscal Models:</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_civic">🏛️ Public Subsidies (≥50%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_endowed">💎 Endowed (≥30%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_high_program">⚡ High Program Spend (≥80%)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_endowed">Endowed (≥30%)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
         </div>
 
         <div class="flex flex-wrap items-center gap-1.5">
@@ -23140,19 +23123,19 @@ FORMATTING & INTERACTION RULES:
       let html = `
         <!-- Row 1: Global Scope, Tiers, Academic Research & Categories -->
         <div class="flex flex-wrap items-center gap-1.5">
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">✓ Clean Funding ({clean_count})</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding ({clean_count})</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1f1433] hover:bg-[#2c1d48] border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged ({flagged_count})</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="tier" data-value="all">All Spaces ({total_count})</button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40" data-type="fiscal_analytics" id="globeFiscalAnalyticsBtn">📊 Fiscal Analytics</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40" data-type="fiscal_analytics" id="globeFiscalAnalyticsBtn">Fiscal Analytics</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0d1e2e] hover:bg-[#152e47] border border-[#33b1ff]/70 text-[#78a9ff] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="academic">Academic Studies ({academic_count})</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">📚 Archives Directory ({archives_count})</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">✍️ Community Layer (User Input)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>🔒 Contribute Intel</span></button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>📍 Curatorial Itineraries</span></button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>🕸️ Board Conflicts</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>✊ Resistance &amp; Victories</span></button>
-              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>📑 Statutory 990s</span></button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#162030] hover:bg-[#202e46] border border-[#38bdf8]/60 text-[#38bdf8] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="archives">Archives Directory ({archives_count})</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#122336] hover:bg-[#18314d] border border-[#08bdba]/70 text-[#08bdba] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-gradient-to-r from-[#09261b] to-[#0d3425] hover:bg-[#0e3b2a] border border-emerald-500/80 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Contribute Intel</span></button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#092b20] hover:bg-[#114031] border border-emerald-400/70 text-emerald-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#1a1329] hover:bg-[#281b3f] border border-purple-500/80 text-purple-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#231219] hover:bg-[#361725] border border-rose-500/80 text-rose-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
+              <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#0c1a29] hover:bg-[#14293f] border border-sky-500/80 text-sky-300 hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm flex items-center gap-1" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
           <span class="text-[#444] text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="europe">Europe</button>
           <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="region" data-value="americas">Americas</button>
@@ -23166,12 +23149,12 @@ FORMATTING & INTERACTION RULES:
         <!-- Row 2: Fiscal & Revenue Architecture Models -->
         <div class="flex flex-wrap items-center gap-1.5">
           <span class="text-[11px] text-[#38bdf8] font-mono shrink-0 mr-0.5 uppercase tracking-wider font-semibold">Fiscal Models:</span>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_civic">🏛️ Public Subsidies (≥50%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_endowed">💎 Endowed / Philanthropy (≥30%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_earned">🎟️ Earned Revenue (≥35%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_high_program">⚡ High Program Spend (≥80%)</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_artist_run">🌱 Lean Artist-Run</button>
-          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_major">🏢 Major Metropolitan</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_endowed">Endowed / Philanthropy (≥30%)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_earned">Earned Revenue (≥35%)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_artist_run">Lean Artist-Run</button>
+          <button class="globe-filter-pill px-2.5 py-1 rounded-xl bg-[#212121]/90 hover:bg-[#2a2a2a] border border-[#2e2e2e] text-[#d4d4d4] hover:text-white transition cursor-pointer text-[12px] sm:text-[13px] shrink-0" data-type="category" data-value="finance_major">Major Metropolitan</button>
         </div>
 
         <!-- Row 3: Featured Cultural Cities -->
@@ -23411,7 +23394,7 @@ FORMATTING & INTERACTION RULES:
       if (activeMapBanner && activeMapText) {{
         if (isCommunityOnly) {{
           activeMapBanner.classList.remove('hidden');
-          if (activeMapIcon) activeMapIcon.textContent = '✍️';
+          if (activeMapIcon) activeMapIcon.textContent = '';
           activeMapText.textContent = `COMMUNITY RESEARCH LAYER · ${{filteredList.length}} USER CONTRIBUTIONS (SEGREGATED FROM VERIFIED)`;
         }} else if (selectedCategoryFilter !== 'all') {{
           activeMapBanner.classList.remove('hidden');
@@ -23476,7 +23459,7 @@ FORMATTING & INTERACTION RULES:
                       </div>
                       <p class="text-[#e8daff] text-[12px] mt-0.5">${{escapeHtml(deduplicateNoticeText(m.watch || m.why_flagged || m.funding || 'Corporate underwriting conflict'))}}</p>
                       <button class="curator-dossier-btn text-[#be95ff] hover:underline text-[12px] font-mono mt-1 cursor-pointer" data-name="${{escapeHtml(m.name)}}">
-                        Open Audit Dossier ↗
+                        Open Audit Dossier
                       </button>
                     </div>
                   `).join('')}}
@@ -23557,7 +23540,7 @@ FORMATTING & INTERACTION RULES:
             <div class="mt-2.5 pt-2 border-t border-[#2e2e2e] flex items-center justify-between gap-1.5 flex-wrap">
               <div class="flex items-center gap-1.5">
                 <button class="card-zoom-building px-2 py-0.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 hover:text-white text-[12px] font-mono transition flex items-center gap-1 cursor-pointer" data-name="${{inst.name.replace(/"/g, '&quot;')}}" title="Zoom to 3D Building & View In-Depth Archives">
-                  <span>🏛️</span>
+                  
                   <span>Zoom to Building</span>
                 </button>
                 ${{webUrl ? `
@@ -23565,11 +23548,11 @@ FORMATTING & INTERACTION RULES:
                      class="website-pill inline-flex items-center gap-1 text-[12px] font-mono text-[#93c5fd] hover:text-white bg-[#2a2a2a] hover:bg-[#333] border border-[#383838] px-2 py-0.5 rounded-lg transition"
                      onclick="event.stopPropagation()">
                     <span class="truncate max-w-[90px]">${{escapeHtml(displayDomain)}}</span>
-                    <span class="text-[12px]">↗</span>
+                    
                   </a>
                 ` : ''}}
               </div>
-              <span class="text-[12px] text-[#71717a] hover:text-white font-mono transition">View on Map →</span>
+              <span class="text-[12px] text-[#71717a] hover:text-white font-mono transition">View on Map</span>
             </div>
           </div>
         `;

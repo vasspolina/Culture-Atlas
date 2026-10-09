@@ -43,7 +43,7 @@ def run_tests():
 
         assert('Clicking chatContributeBtn does NOT open pop up window', modal && modal.classList.contains('hidden'));
         assert('Chat row above explains what you need to do', curatorMessages && curatorMessages.innerHTML.includes('Confidential Field Intel') && curatorMessages.innerHTML.includes('How to submit right here'));
-        assert('Chat input placeholder indicates confidential input active', workInput && workInput.placeholder.includes('🔒'));
+        assert('Chat input placeholder indicates confidential input active', workInput && (workInput.placeholder.includes('🔒') || workInput.placeholder.includes('Confidential')));
 
         // 3. Verify Top Header Contribute button uses small chat window with NO popup window
         const topBtn = document.getElementById('topContributeBtn');
