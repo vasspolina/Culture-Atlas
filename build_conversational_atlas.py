@@ -1507,55 +1507,35 @@ def build():
               </div>
             </div>
 
-            <!-- Suggestions Arranged in 3 Rows (No Icons, Pure Typography) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 w-full">
-              <!-- Row 1 -->
-              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Find independent art spaces near me">
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Find independent art spaces near me</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Locate verified artist-run galleries and non-profits in your area.</div>
-              </div>
-
-              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Who funds this museum?">
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Who funds this museum?</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Audit Form 990 filings, public subsidies, and board conflict records.</div>
-              </div>
-
-              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Curated 1-day city itineraries</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Explore 100% clean gallery walks in London, Berlin, Paris, and New York.</div>
-              </div>
-
-              <!-- Row 2 -->
-              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Repurposed architecture & factories</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Former industrial plants, breweries, and warehouses turned into art spaces.</div>
-              </div>
-
-              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Outdoor sculpture parks & land art</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Open-air sculpture centers, forest trails, and pastoral landscapes.</div>
-              </div>
-
-              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Which museums and galleries are free to enter?">
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Free admission spaces</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Discover verified spaces that offer 100% free public admission.</div>
-              </div>
-
-              <!-- Row 3 -->
-              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Which museums are open on Mondays?">
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Monday openings</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Art spaces welcoming visitors on Mondays when major institutions close.</div>
-              </div>
-
-              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="What is the difference between a Kunsthalle and a traditional museum?">
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">Kunsthalle vs traditional museum</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">The structural distinction between non-collecting spaces and museums.</div>
-              </div>
-
-              <div class="work-suggestion-card bg-[#212121] hover:bg-[#262626] border border-[#2f2f2f] hover:border-[#3f3f3f] rounded-2xl p-3.5 transition flex flex-col justify-between cursor-pointer group shadow-sm" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">
-                <div class="font-normal text-[14px] text-white mb-1 leading-[120%]">W.A.G.E., fair pay & unionization</div>
-                <div class="text-[12px] text-[#a1a1aa] leading-[130%]">Artist compensation standards, institutional labor, and union contracts.</div>
-              </div>
+            <!-- Suggestions Arranged as Sleek Capsule Pills (Matching Reference Image) -->
+            <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full">
+              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-black text-white border border-zinc-700 hover:border-zinc-400 transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Find independent art spaces near me">
+                Find independent art spaces near me
+              </button>
+              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Who funds this museum?">
+                Who funds this museum?
+              </button>
+              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">
+                Curated 1-day city itineraries
+              </button>
+              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">
+                Repurposed architecture &amp; factories
+              </button>
+              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">
+                Outdoor sculpture parks &amp; land art
+              </button>
+              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Which museums and galleries are free to enter?">
+                Free admission spaces
+              </button>
+              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Which museums are open on Mondays?">
+                Monday openings
+              </button>
+              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="What is the difference between a Kunsthalle and a traditional museum?">
+                Kunsthalle vs traditional museum
+              </button>
+              <button class="work-suggestion-card px-4 sm:px-4.5 py-2 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[13px] sm:text-[13.5px] font-normal shrink-0 shadow-sm" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">
+                W.A.G.E., fair pay &amp; unionization
+              </button>
             </div>
           </div>
 
@@ -23683,7 +23663,7 @@ FORMATTING & INTERACTION RULES:
             }}
           }} else if (val === 'all') {{
             if (isAllTiers) {{
-              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
             }} else {{
               pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
             }}
@@ -23698,7 +23678,7 @@ FORMATTING & INTERACTION RULES:
         else if (type === 'category' && selectedCategoryFilter === val) isAct = true;
 
         if (isAct) {{
-          pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
+          pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm';
         }} else {{
           pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
         }}
@@ -23717,7 +23697,7 @@ FORMATTING & INTERACTION RULES:
         <div class="flex flex-wrap items-center gap-2">
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="all">All Spaces</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
-          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-black text-white border border-zinc-600 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${{escapeHtml(countryName)}}">${{escapeHtml(countryName)}} (${{totalSpaces}})</button>
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged</button>
