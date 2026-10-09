@@ -16117,9 +16117,6 @@ def build():
                   <span class="font-bold text-[#be95ff]">Additional Research Findings:</span> ${{escapeHtml(inst.other_findings)}}
                 </div>
               ` : ''}}
-              <p class="text-slate-400 text-[12px]">
-                <strong>Policy:</strong> Culture Atlas maps strictly verified independent spaces that operate free of fossil fuels, weapons manufacturing, private prisons, and predatory corporate underwriting.
-              </p>
             </div>
 
             ${{cleanAlts.length > 0 ? `
@@ -22235,7 +22232,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Address:</strong> ${{inst.address || inst.location}} (${{inst.neighborhood || inst.city}})<br>
               - <strong>Estimated Visit Duration:</strong> About ${{inst.visit_duration || '1.5 – 2 hours'}}.
             </p>
-          `, ['Opening Hours', 'Admission Policy', `More in ${{inst.city}}`]);
+          `, ['Opening Hours', 'Admission Pricing', `More in ${{inst.city}}`]);
           selectInstitution(inst, true);
           return;
         }}
@@ -22263,7 +22260,7 @@ FORMATTING & INTERACTION RULES:
               <strong>Admission at ${{formatInstLink(inst)}}:</strong>
             </p>
             <p class="text-slate-300">
-              - <strong>Policy:</strong> ${{inst.admission_policy}}<br>
+              - <strong>Admission Model:</strong> ${{inst.admission_policy}}<br>
               - <strong>Details & Pricing:</strong> ${{inst.admission_details || inst.admission_fee || 'Subsidized entry'}}.<br>
               - <strong>Accessibility:</strong> Free admission for assistants/companions.
             </p>
@@ -22285,7 +22282,7 @@ FORMATTING & INTERACTION RULES:
               - <strong>Safeguard:</strong> ${{inst.ethical_safeguard}}<br>
               - <strong>Audit Status:</strong> <span class="text-emerald-400 font-mono font-bold">${{sanitizeAuditStatus(inst.transparency_grade, inst.tier === 'A', inst.tier === 'B', false)}}</span>
             </p>
-          `, ['Admission Policy', 'How to Get There', 'Highlight Art']);
+          `, ['Admission Pricing', 'How to Get There', 'Highlight Art']);
           selectInstitution(inst, true);
           return;
         }}
@@ -23866,9 +23863,6 @@ FORMATTING & INTERACTION RULES:
                   ${{escapeHtml(inst.name)}} is excluded from the Culture Atlas clean roster under ${{inst.tier === 'B' ? 'flagged status for corporate sponsor conflict' : 'unverified status'}}.
                   ${{inst.watch ? ` Audit conflict: ${{escapeHtml(inst.watch)}}.` : ''}}
                   Governance & funding profile: ${{escapeHtml(inst.funding || 'Commercial or conflicted corporate sponsorship')}}.
-                </p>
-                <p class="text-slate-300 text-[13px] leading-relaxed">
-                  Culture Atlas strictly maps verified clean cultural spaces operating free of fossil fuels, weapons manufacturers, private prisons, and predatory corporate underwriting.
                 </p>
                 ${{altText}}
                 <div class="mt-2" data-exclude-speech="true">
