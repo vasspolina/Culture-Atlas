@@ -106,6 +106,7 @@ def build():
     academic_count = len(academic_papers)
     total_findings_count = total_count + academic_count
     archives_count = sum(1 for i in all_raw_institutions if i.get('archives_and_collections'))
+    visual_critique_count = sum(1 for i in all_raw_institutions if i.get('visual_critiques'))
     institutions_count = clean_count
     spaces_count_str = f"{clean_count} CLEAN SPACES"
 
@@ -113,6 +114,9 @@ def build():
         "London": (51.5074, -0.1278),
         "Paris": (48.8566, 2.3522),
         "New York": (40.7128, -74.0060),
+        "Manchester": (53.4808, -2.2426),
+        "Margate": (51.3894, 1.3862),
+        "Brussels": (50.8503, 4.3517),
         "Amsterdam": (52.3676, 4.9041),
         "The Hague": (52.0705, 4.3007),
         "Edinburgh": (55.9533, -3.1883),
@@ -1179,6 +1183,29 @@ def build():
               </div>
             </div>
           </div>
+
+          <!-- Visual Critique & Artist Feedback Section on Card -->
+          <div id="floatingCardVisualCritiqueSection" class="hidden mt-2 pt-2 border-t border-amber-600/40 bg-amber-950/25 p-2.5 rounded-xl border border-amber-800/40 space-y-2">
+            <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
+              <span class="text-amber-400 font-bold flex items-center gap-1 tracking-wide">
+                <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                VISUAL CRITIQUE &amp; ARTIST FEEDBACK
+              </span>
+              <span id="floatingCardVcStrategyBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-amber-700 bg-amber-950 text-amber-300 font-bold"></span>
+            </div>
+            <div class="flex gap-2.5 items-start">
+              <img id="floatingCardVcImg" src="" alt="Visual Critique" class="w-20 h-16 object-cover rounded-lg border border-amber-700/60 shrink-0 bg-black cursor-pointer hover:opacity-90 transition" onclick="event.stopPropagation(); if (selectedInstitution) window.openDossier(selectedInstitution);" />
+              <div class="min-w-0 flex-1">
+                <div id="floatingCardVcPractice" class="text-white font-medium text-[12.5px] leading-tight line-clamp-2"></div>
+                <div id="floatingCardVcTarget" class="text-[11px] text-amber-200/90 font-mono mt-1 leading-snug"></div>
+              </div>
+            </div>
+            <p id="floatingCardVcSummary" class="text-[11.5px] text-slate-300 leading-snug line-clamp-3"></p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-amber-900/40">
+              <span id="floatingCardVcCitation" class="truncate max-w-[200px] text-amber-300"></span>
+              <button type="button" onclick="event.stopPropagation(); window.openDossier(selectedInstitution);" class="text-amber-400 hover:underline">Full Dossier →</button>
+            </div>
+          </div>
         </div>
 
         <!-- 🟡 YELLOW GOSSIP PANE -->
@@ -1667,6 +1694,7 @@ def build():
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies ({academic_count})</button>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="archives">Archives Directory ({archives_count})</button>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
+              <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
@@ -1680,6 +1708,20 @@ def build():
               <span class="text-zinc-500 text-[11px] shrink-0">|</span>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
               <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
+            </div>
+
+            <!-- Row 1.5: Visual Critique & Artist Feedback Sub-Strategies -->
+            <div id="visualCritiqueSubBar" class="hidden flex flex-wrap items-center gap-1.5 p-1.5 bg-[#18181b]/95 border border-amber-600/50 rounded-xl shadow-lg">
+              <span class="text-[11px] text-amber-400 font-mono shrink-0 mr-1 uppercase tracking-wider font-semibold flex items-center gap-1">
+                <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                Critique Strategies:
+              </span>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="all">All ({visual_critique_count})</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="direct_polling">Direct Polling &amp; Data (MoMA)</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="parodic_museums">Parodic Museums (WIELS, Tate)</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="surrealist_reclassification">Surrealist Reclassification (Manchester)</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="environmental_satire">Environmental Satire (Crab Museum)</button>
+              <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="physical_intervention">Physical Intervention (Orsay, Louvre)</button>
             </div>
 
             <!-- Row 2: Featured Cultural Cities -->
@@ -1735,6 +1777,7 @@ def build():
         <button id="catFilterCleanBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer">Clean Spaces ({clean_count})</button>
         <button id="catFilterFlaggedBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer">Flagged ({flagged_count})</button>
         <button id="catFilterAcademicBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#38bdf8] border border-[#233852] shrink-0 cursor-pointer">Academic Studies ({academic_count})</button>
+        <button id="catFilterVisualCritiqueBtn" class="cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-amber-400 border border-amber-900/60 shrink-0 cursor-pointer">Visual Critique ({visual_critique_count})</button>
       </div>
 
       <div class="p-3 border-b border-[#262626] bg-[#171717] flex flex-col gap-2">
@@ -2139,6 +2182,7 @@ def build():
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="reputation">Reputation & Provenance</button>
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="fragility">Private Museum Fragility</button>
             <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="policy">Tax Policy & Inequality</button>
+            <button class="ar-topic-chip px-2.5 py-1 rounded-xl bg-[#212121] hover:bg-[#282828] border border-[#333] text-[#d4d4d4] cursor-pointer" data-topic="visual_critique">Visual Critique &amp; Artist Feedback</button>
           </div>
         </div>
 
@@ -8495,6 +8539,7 @@ def build():
     // State Variables
     let filteredList = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
     let selectedTierFilter = new Set(['A']);
+    let selectedVisualCritiqueStrategy = 'all';
     let selectedCountryFilter = 'all';
     let selectedCityFilter = 'all';
     let searchQuery = '';
@@ -8506,6 +8551,10 @@ def build():
     Object.defineProperty(window, 'selectedTierFilter', {{
       get: () => selectedTierFilter,
       set: (v) => {{ selectedTierFilter = v; }}
+    }});
+    Object.defineProperty(window, 'selectedVisualCritiqueStrategy', {{
+      get: () => selectedVisualCritiqueStrategy,
+      set: (v) => {{ selectedVisualCritiqueStrategy = v; }}
     }});
     Object.defineProperty(window, 'filteredList', {{
       get: () => filteredList,
@@ -14791,6 +14840,30 @@ def build():
         if (gSection) gSection.style.display = 'block';
       }}
 
+      // Populate Visual Critique & Artist Feedback on Floating Card
+      const vcSection = document.getElementById('floatingCardVisualCritiqueSection');
+      if (inst.visual_critiques && inst.visual_critiques.length > 0) {{
+        const vc = inst.visual_critiques[0];
+        const vcBadge = document.getElementById('floatingCardVcStrategyBadge');
+        const vcImg = document.getElementById('floatingCardVcImg');
+        const vcPractice = document.getElementById('floatingCardVcPractice');
+        const vcTarget = document.getElementById('floatingCardVcTarget');
+        const vcSummary = document.getElementById('floatingCardVcSummary');
+        const vcCitation = document.getElementById('floatingCardVcCitation');
+        if (vcBadge) vcBadge.textContent = vc.strategy || 'Visual Critique';
+        if (vcImg) {{
+          vcImg.src = vc.image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg';
+          vcImg.alt = vc.artwork || vc.practice || 'Visual Critique';
+        }}
+        if (vcPractice) vcPractice.textContent = `${{vc.practice || vc.artist}} (${{vc.year || ''}})`;
+        if (vcTarget) vcTarget.textContent = `Target: ${{vc.target || ''}}`;
+        if (vcSummary) vcSummary.textContent = vc.summary || '';
+        if (vcCitation) vcCitation.textContent = vc.citation || 'Consensus Study';
+        if (vcSection) vcSection.classList.remove('hidden');
+      }} else if (vcSection) {{
+        vcSection.classList.add('hidden');
+      }}
+
       // Synchronize floating card mode with active gossip state
       if (typeof window.setCardMode === 'function') {{
         window.setCardMode(isGossipModeActive ? 'gossip' : 'info', false);
@@ -15110,6 +15183,49 @@ def build():
               <span class="text-[11px] text-slate-400 shrink-0 ml-2">Inspect Filing</span>
             </a>
           </div>
+
+          <!-- Visual Critique & Artist Feedback Dossier Profile -->
+          ${{inst.visual_critiques && inst.visual_critiques.length > 0 ? `
+            <div class="p-3.5 bg-[#1a1508] border border-amber-700/60 rounded-2xl space-y-3 shadow-lg">
+              <div class="flex items-center justify-between border-b border-amber-900/60 pb-2 flex-wrap gap-2">
+                <span class="text-[12px] font-mono uppercase tracking-wider text-amber-400 font-bold flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  Visual Critique &amp; Artist Feedback Dossier
+                </span>
+                <span class="text-[11px] font-mono text-amber-300 bg-amber-950/80 border border-amber-700/70 px-2 py-0.5 rounded-full font-semibold">
+                  Consensus Empirical Study
+                </span>
+              </div>
+
+              ${{inst.visual_critiques.map(vc => `
+                <div class="space-y-2.5">
+                  <div class="flex flex-col sm:flex-row gap-3 items-start">
+                    <img src="${{escapeHtml(vc.image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg')}}" alt="${{escapeHtml(vc.artwork || 'Visual Critique')}}" class="w-full sm:w-44 h-32 object-cover rounded-xl border border-amber-700/60 shadow-md shrink-0 bg-black" />
+                    <div class="min-w-0 space-y-1">
+                      <div class="flex items-center gap-2 flex-wrap">
+                        <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-amber-950 text-amber-300 border border-amber-700 font-bold">${{escapeHtml(vc.strategy || 'Strategy')}}</span>
+                        <span class="text-[11px] font-mono text-zinc-400">${{escapeHtml(vc.year || '')}}</span>
+                      </div>
+                      <h4 class="text-white font-semibold text-[14px] leading-tight">${{escapeHtml(vc.practice || vc.artist)}}</h4>
+                      <p class="text-[12px] font-mono text-amber-200/90 leading-snug"><strong class="text-amber-400">Institutional Target:</strong> ${{escapeHtml(vc.target || '')}}</p>
+                      <p class="text-[11px] font-mono text-zinc-400"><strong>Academic Citation:</strong> ${{escapeHtml(vc.citation || 'Consensus Study')}}</p>
+                    </div>
+                  </div>
+
+                  <p class="text-[12.5px] text-zinc-200 leading-relaxed bg-[#110e05] p-2.5 rounded-xl border border-amber-900/40">
+                    ${{escapeHtml(vc.summary || '')}}
+                  </p>
+
+                  ${{vc.historical_impact ? `
+                    <div class="p-2.5 rounded-xl bg-amber-950/30 border border-amber-800/50 text-[12px] text-amber-200 leading-relaxed font-mono">
+                      <strong class="text-amber-300 block text-[11px] uppercase tracking-wider mb-0.5">Historical &amp; Policy Impact:</strong>
+                      ${{escapeHtml(vc.historical_impact)}}
+                    </div>
+                  ` : ''}}
+                </div>
+              `).join('')}}
+            </div>
+          ` : ''}}
 
           <!-- Archives, Collections & Building Profile (Plain Text in Simple Language) -->
           <div class="p-3.5 bg-[#0e1622] border border-[#213247] rounded-2xl space-y-2.5">
@@ -15842,6 +15958,7 @@ def build():
           if (topic === 'reputation' && !tText.includes('reputation') && !tText.includes('provenance') && !tText.includes('antiquit') && !tText.includes('laundering') && !tText.includes('crime')) return false;
           if (topic === 'fragility' && !tText.includes('fragil') && !tText.includes('close') && !tText.includes('mortality') && !tText.includes('private art museum') && !tText.includes('years open')) return false;
           if (topic === 'policy' && !tText.includes('policy') && !tText.includes('tax') && !tText.includes('incentive') && !tText.includes('inequalit') && !tText.includes('rouanet')) return false;
+          if (topic === 'visual_critique' && p.topic !== 'visual_critique' && !tText.includes('critique') && !tText.includes('haacke') && !tText.includes('broodthaers') && !tText.includes('kabakov') && !tText.includes('dion') && !tText.includes('crab museum') && !tText.includes('de robertis') && !tText.includes('subversion') && !tText.includes('parod')) return false;
         }}
         if (q) {{
           const allText = ((p.title || '') + ' ' + (p.authors || '') + ' ' + (p.journal || '') + ' ' + (p.takeaway || '') + ' ' + (p.abstract || '')).toLowerCase();
@@ -17877,13 +17994,16 @@ FORMATTING & INTERACTION RULES:
         (q.includes('trustee') && (q.includes('conflict') || q.includes('board') || q.includes('network') || q.includes('investigate') || q.includes('who') || q.includes('resigned') || q.includes('ousted'))));
       const isItineraryQuery = /(plan\s*(a\s*)?(day|visit|tour|itinerary|route|crawl)|art\s*(crawl|walk|tour|circuit|route|itinerary)|curatorial\s*(itinerary|route|tour|circuit|walk)|visit\s*itinerary|curated\s*(route|crawl|walk)|gallery\s*crawl|museum\s*crawl|walking\s*route)/i.test(q) ||
         (q.includes('itinerary') || q.includes('art crawl') || (q.includes('crawl') && (q.includes('art') || q.includes('museum') || q.includes('gallery'))) || (q.includes('plan') && (q.includes('route') || q.includes('day') || q.includes('tour') || q.includes('crawl'))));
+      const isVisualCritiqueQuery = /(visual\s*critique|artist\s*(critique|feedback|intervention|action|resistance)|hans\s*haacke|moma\s*poll|marcel\s*broodthaers|ilya\s*kabakov|mark\s*dion|deborah\s*de\s*robertis|crab\s*museum|l'origine\s*du\s*monde|parodic\s*museum|environmental\s*satire|surrealist\s*reclassification|physical\s*intervention|direct\s*polling|consensus\s*study|connections\s*among\s*cultural\s*sponsors)/i.test(q) ||
+        (q.includes('visual') && (q.includes('critique') || q.includes('feedback') || q.includes('artist'))) ||
+        (q.includes('artist') && (q.includes('feedback') || q.includes('critique') || q.includes('intervention')));
       const isContributeQuery = /(how\s+to\s+)?(contribute|submit)\s*(intel|tip|leak|research|data)|whistleblow|report\s*(a\s*)?(leak|conflict|covenant|violation)|confidential\s*(intake|pipeline|submission)/i.test(q) ||
         (q.includes('contribute') && (q.includes('intel') || q.includes('leak') || q.includes('tip') || q.includes('whistleblow')));
       const isGuardianQuery = /(guardian|the\s*guardian|george\s*osborne|adani|baillie\s*gifford|zabludowicz|arts\s*council\s*england\s*censorship|ace\s*u-?turn|hannah\s*fry|clause\s*11|gagging\s*clause)/i.test(q) ||
         (q.includes('guardian') && (q.includes('report') || q.includes('investigat') || q.includes('article') || q.includes('museum') || q.includes('sponsor')));
       const isDirectWhistleblowerSubmission = /^(leak|whistleblow|confidential|board\s*conflict|sponsorship\s*leak|schedule\s*l\s*disclosure|labor\s*\/\s*wage|unlisted\s*independent|internal\s*memo):/i.test(rawTrimmed) ||
         /(non-public|internal\s*memo|donor\s*agreement|whistleblower\s*leak)/i.test(rawTrimmed);
-      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery || isBoardConflictQuery || isTimelineQuery || isFilingQuery || isGuardianQuery || isContributeQuery || isDirectWhistleblowerSubmission;
+      const isMetaInquiry = isGreeting || isWhoAreYou || isVoiceTest || isTalkBackIntent || isMethodologyQuery || isBudgetQuery || isAcademicFinanceQuery || isFiscalAnalyticsQuery || isItineraryQuery || isBoardConflictQuery || isTimelineQuery || isFilingQuery || isGuardianQuery || isContributeQuery || isVisualCritiqueQuery || isDirectWhistleblowerSubmission;
 
       // Proactively zoom into any mentioned location or city immediately (skip for meta/methodology queries)
       if (!isMetaInquiry) {{
@@ -17907,6 +18027,116 @@ FORMATTING & INTERACTION RULES:
       if (isContributeQuery) {{
         curatorTyping.classList.add('hidden');
         triggerInChatContributeFlow();
+        return;
+      }}
+
+      // Direct interactive UI commands: Visual Critique & Artist Feedback Dossier
+      if (isVisualCritiqueQuery) {{
+        curatorTyping.classList.add('hidden');
+        selectedTierFilter = new Set(['VISUAL_CRITIQUE']);
+        selectedVisualCritiqueStrategy = 'all';
+        applyFilters();
+        updateGlobePillsUI();
+        updateCatalogChipsUI();
+
+        appendCuratorMessage(`
+          <div class="border border-amber-500/50 bg-[#161208] p-3.5 sm:p-4 rounded-2xl space-y-3 shadow-xl select-text font-sans">
+            <div class="flex items-center justify-between border-b border-amber-500/20 pb-2.5 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white text-[15px]">Visual Critique &amp; Artist Feedback Corpus</h4>
+                  <p class="text-[11.5px] font-mono text-amber-300">Consensus Study: Connections Among Cultural Sponsors &amp; Institutional Interventions</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <a href="https://consensus.app/search/connections-among-cultural-sponsors/XLE_eoqtQDuDSIOdzcIn_w/?utm_source=share&utm_medium=clipboard" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 bg-amber-600/80 hover:bg-amber-500 text-white rounded-lg text-xs font-mono transition cursor-pointer">
+                  Consensus Study ↗
+                </a>
+              </div>
+            </div>
+
+            <p class="text-zinc-200 text-xs sm:text-[13px] leading-relaxed">
+              We have integrated the empirical Consensus study on <strong>Cultural Sponsors &amp; Institutional Counter-Strategies</strong> directly into the Culture Atlas model. Rather than passive compliance, artists deploy five distinct visual critique strategies across mapped museums:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <!-- Strategy 1 -->
+              <div onclick="selectInstitutionByName('MoMA (The Museum of Modern Art)', true)" class="p-2.5 rounded-xl bg-[#211a0c] hover:bg-[#2c220f] border border-amber-800/60 transition cursor-pointer group flex gap-2">
+                <img src="assets/visual_critique/haacke_moma_poll_thumb.jpg" alt="MoMA Poll" class="w-16 h-14 object-cover rounded-lg border border-amber-700/60 shrink-0 bg-black" />
+                <div class="min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="font-semibold text-white group-hover:text-amber-300">Direct Polling &amp; Data</span>
+                    <span class="text-[10px] font-mono text-amber-400">MoMA</span>
+                  </div>
+                  <div class="text-[11px] text-zinc-300 font-medium">Hans Haacke (MoMA Poll, 1970)</div>
+                  <div class="text-[10px] text-amber-200/80 font-mono mt-0.5">Target: Corporate trustees, Indochina war ties</div>
+                </div>
+              </div>
+
+              <!-- Strategy 2 -->
+              <div onclick="selectInstitutionByName('WIELS', true)" class="p-2.5 rounded-xl bg-[#211a0c] hover:bg-[#2c220f] border border-amber-800/60 transition cursor-pointer group flex gap-2">
+                <img src="assets/visual_critique/broodthaers_museum_thumb.jpg" alt="Parodic Museums" class="w-16 h-14 object-cover rounded-lg border border-amber-700/60 shrink-0 bg-black" />
+                <div class="min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="font-semibold text-white group-hover:text-amber-300">Parodic Museums</span>
+                    <span class="text-[10px] font-mono text-amber-400">WIELS / Tate</span>
+                  </div>
+                  <div class="text-[11px] text-zinc-300 font-medium">Marcel Broodthaers &amp; Ilya Kabakov</div>
+                  <div class="text-[10px] text-amber-200/80 font-mono mt-0.5">Target: Authoritarian taxonomies &amp; display conventions</div>
+                </div>
+              </div>
+
+              <!-- Strategy 3 -->
+              <div onclick="selectInstitutionByName('Manchester Museum', true)" class="p-2.5 rounded-xl bg-[#211a0c] hover:bg-[#2c220f] border border-amber-800/60 transition cursor-pointer group flex gap-2">
+                <img src="assets/visual_critique/mark_dion_manchester_thumb.jpg" alt="Surrealist Reclassification" class="w-16 h-14 object-cover rounded-lg border border-amber-700/60 shrink-0 bg-black" />
+                <div class="min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="font-semibold text-white group-hover:text-amber-300">Surrealist Reclassification</span>
+                    <span class="text-[10px] font-mono text-amber-400">Manchester</span>
+                  </div>
+                  <div class="text-[11px] text-zinc-300 font-medium">Mark Dion (Wunderkammer Bureau, 2005)</div>
+                  <div class="text-[10px] text-amber-200/80 font-mono mt-0.5">Target: Enlightenment classification &amp; colonial hierarchies</div>
+                </div>
+              </div>
+
+              <!-- Strategy 4 -->
+              <div onclick="selectInstitutionByName('The Crab Museum', true)" class="p-2.5 rounded-xl bg-[#211a0c] hover:bg-[#2c220f] border border-amber-800/60 transition cursor-pointer group flex gap-2">
+                <img src="assets/visual_critique/crab_museum_margate_thumb.jpg" alt="Environmental Satire" class="w-16 h-14 object-cover rounded-lg border border-amber-700/60 shrink-0 bg-black" />
+                <div class="min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="font-semibold text-white group-hover:text-amber-300">Environmental Satire</span>
+                    <span class="text-[10px] font-mono text-amber-400">Margate</span>
+                  </div>
+                  <div class="text-[11px] text-zinc-300 font-medium">The Crab Museum &amp; Turner Contemporary</div>
+                  <div class="text-[10px] text-amber-200/80 font-mono mt-0.5">Target: Science exhibition greenwashing &amp; pedagogy</div>
+                </div>
+              </div>
+
+              <!-- Strategy 5 -->
+              <div onclick="selectInstitutionByName('Musée d\'Orsay', true)" class="p-2.5 rounded-xl bg-[#211a0c] hover:bg-[#2c220f] border border-amber-800/60 transition cursor-pointer group flex gap-2 sm:col-span-2">
+                <img src="assets/visual_critique/de_robertis_orsay_thumb.jpg" alt="Physical Intervention" class="w-16 h-14 object-cover rounded-lg border border-amber-700/60 shrink-0 bg-black" />
+                <div class="min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="font-semibold text-white group-hover:text-amber-300">Physical Intervention &amp; Somatic Subversion</span>
+                    <span class="text-[10px] font-mono text-amber-400">Musée d'Orsay / Louvre</span>
+                  </div>
+                  <div class="text-[11px] text-zinc-300 font-medium">Deborah De Robertis (L'Origine du monde, 2014–2025)</div>
+                  <div class="text-[10px] text-amber-200/80 font-mono mt-0.5">Target: Sacred museum decorum, bodily policing, and canonical patriarchy</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-amber-900/60 flex items-center justify-between text-xs font-mono text-zinc-400 flex-wrap gap-2">
+              <span>Map filtered to <strong>Visual Critique</strong> (${{filteredList.length}} institutions)</span>
+              <button type="button" onclick="openAcademicResearchModal('visual_critique')" class="text-amber-400 hover:underline">
+                Read Peer-Reviewed Studies in Library →
+              </button>
+            </div>
+          </div>
+        `);
         return;
       }}
 
@@ -24367,7 +24597,25 @@ FORMATTING & INTERACTION RULES:
       const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
       const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
       const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
-      const isAllTiers = !isCleanOnly && !isFlaggedOnly && !isAcademicOnly && !isCommunityOnly;
+      const isVisualCritiqueOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
+      const isAllTiers = !isCleanOnly && !isFlaggedOnly && !isAcademicOnly && !isCommunityOnly && !isVisualCritiqueOnly;
+
+      const vcSubBar = document.getElementById('visualCritiqueSubBar');
+      if (vcSubBar) {{
+        if (isVisualCritiqueOnly) {{
+          vcSubBar.classList.remove('hidden');
+          document.querySelectorAll('.vc-strat-pill').forEach(sp => {{
+            const strat = sp.getAttribute('data-strategy');
+            if (strat === selectedVisualCritiqueStrategy) {{
+              sp.className = 'vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm';
+            }} else {{
+              sp.className = 'vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer';
+            }}
+          }});
+        }} else {{
+          vcSubBar.classList.add('hidden');
+        }}
+      }}
 
       document.querySelectorAll('.globe-filter-pill').forEach(pill => {{
         const type = pill.getAttribute('data-type');
@@ -24391,6 +24639,12 @@ FORMATTING & INTERACTION RULES:
               pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0072c3] text-white border border-[#33b1ff] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-cyan-950/40';
             }} else {{
               pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm';
+            }}
+          }} else if (val === 'VISUAL_CRITIQUE') {{
+            if (isVisualCritiqueOnly) {{
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-amber-600 text-white border border-amber-400 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-amber-950/40 flex items-center gap-1.5';
+            }} else {{
+              pill.className = 'globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5';
             }}
           }} else if (val === 'all') {{
             if (isAllTiers) {{
@@ -24429,17 +24683,20 @@ FORMATTING & INTERACTION RULES:
       const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
       const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
       const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
-      const isAll = !isCleanOnly && !isFlaggedOnly && !isAcademicOnly;
+      const isVisualCritiqueOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
+      const isAll = !isCleanOnly && !isFlaggedOnly && !isAcademicOnly && !isVisualCritiqueOnly;
 
       const allBtn = document.getElementById('catFilterAllBtn');
       const cleanBtn = document.getElementById('catFilterCleanBtn');
       const flaggedBtn = document.getElementById('catFilterFlaggedBtn');
       const academicBtn = document.getElementById('catFilterAcademicBtn');
+      const vcBtn = document.getElementById('catFilterVisualCritiqueBtn');
 
       if (allBtn) allBtn.className = isAll ? 'cat-modal-chip px-3 py-1 rounded-full bg-black text-white border border-zinc-600 font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer';
       if (cleanBtn) cleanBtn.className = isCleanOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#059669] text-white border border-[#10b981] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer';
       if (flaggedBtn) flaggedBtn.className = isFlaggedOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#6929c4] text-white border border-[#be95ff] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#d4d4d4] border border-[#333] shrink-0 cursor-pointer';
       if (academicBtn) academicBtn.className = isAcademicOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-[#0369a1] text-white border border-[#38bdf8] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-[#38bdf8] border border-[#233852] shrink-0 cursor-pointer';
+      if (vcBtn) vcBtn.className = isVisualCritiqueOnly ? 'cat-modal-chip px-3 py-1 rounded-full bg-amber-600 text-white border border-amber-400 font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip px-3 py-1 rounded-full bg-[#212121] hover:bg-[#282828] text-amber-400 border border-amber-900/60 shrink-0 cursor-pointer';
     }}
     window.updateCatalogChipsUI = updateCatalogChipsUI;
 
@@ -24504,6 +24761,7 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies ({academic_count})</button>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="archives">Archives Directory ({archives_count})</button>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
+          <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
           <button class="globe-filter-pill hidden" data-type="contribute_intel" id="globeContributeIntelBtn" style="display:none;" aria-hidden="true"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm flex items-center gap-1" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
@@ -24517,6 +24775,20 @@ FORMATTING & INTERACTION RULES:
           <span class="text-zinc-500 text-[11px] shrink-0">|</span>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
           <button class="globe-filter-pill px-3.5 sm:px-4 py-1.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
+        </div>
+
+        <!-- Row 1.5: Visual Critique & Artist Feedback Sub-Strategies -->
+        <div id="visualCritiqueSubBar" class="hidden flex flex-wrap items-center gap-1.5 p-1.5 bg-[#18181b]/95 border border-amber-600/50 rounded-xl shadow-lg">
+          <span class="text-[11px] text-amber-400 font-mono shrink-0 mr-1 uppercase tracking-wider font-semibold flex items-center gap-1">
+            <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            Critique Strategies:
+          </span>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-amber-600 text-white border border-amber-400 text-[11px] sm:text-[12px] font-medium transition cursor-pointer shadow-sm" data-strategy="all">All ({visual_critique_count})</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="direct_polling">Direct Polling &amp; Data (MoMA)</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="parodic_museums">Parodic Museums (WIELS, Tate)</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="surrealist_reclassification">Surrealist Reclassification (Manchester)</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="environmental_satire">Environmental Satire (Crab Museum)</button>
+          <button class="vc-strat-pill px-2.5 py-1 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] text-[11px] sm:text-[12px] font-normal transition cursor-pointer" data-strategy="physical_intervention">Physical Intervention (Orsay, Louvre)</button>
         </div>
 
         <!-- Row 2: Fiscal & Revenue Architecture Models -->
@@ -24561,6 +24833,26 @@ FORMATTING & INTERACTION RULES:
     }}
 
     function wireGlobePillListeners() {{
+      // Strategy sub-pills for visual critique
+      document.querySelectorAll('.vc-strat-pill').forEach(sp => {{
+        sp.addEventListener('click', () => {{
+          selectedVisualCritiqueStrategy = sp.getAttribute('data-strategy') || 'all';
+          applyFilters();
+          updateGlobePillsUI();
+        }});
+      }});
+
+      const catVcBtn = document.getElementById('catFilterVisualCritiqueBtn');
+      if (catVcBtn) {{
+        catVcBtn.addEventListener('click', () => {{
+          selectedTierFilter = new Set(['VISUAL_CRITIQUE']);
+          selectedVisualCritiqueStrategy = 'all';
+          applyFilters();
+          updateGlobePillsUI();
+          updateCatalogChipsUI();
+        }});
+      }}
+
       document.querySelectorAll('#globeCityBar .globe-filter-pill').forEach(pill => {{
         pill.addEventListener('click', () => {{
           const type = pill.getAttribute('data-type');
@@ -24572,6 +24864,9 @@ FORMATTING & INTERACTION RULES:
               selectedTierFilter = new Set(['B']);
             }} else if (val === 'COMMUNITY') {{
               selectedTierFilter = new Set(['COMMUNITY']);
+            }} else if (val === 'VISUAL_CRITIQUE') {{
+              selectedTierFilter = new Set(['VISUAL_CRITIQUE']);
+              selectedVisualCritiqueStrategy = 'all';
             }} else if (val === 'all') {{
               selectedTierFilter = new Set(['A', 'B', 'U', 'ACADEMIC']);
             }}
@@ -24681,6 +24976,7 @@ FORMATTING & INTERACTION RULES:
     function applyFilters() {{
       const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
       const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
+      const isVisualCritiqueOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
       const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
       const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
 
@@ -24689,6 +24985,14 @@ FORMATTING & INTERACTION RULES:
         baseSource = getCommunityAsInstitutions();
       }} else if (isAcademicOnly) {{
         baseSource = getAcademicResearchAsFindings();
+      }} else if (isVisualCritiqueOnly) {{
+        baseSource = ALL_INSTITUTIONS.filter(i => {{
+          if (!i.visual_critiques || i.visual_critiques.length === 0) return false;
+          if (selectedVisualCritiqueStrategy && selectedVisualCritiqueStrategy !== 'all') {{
+            return i.visual_critiques.some(v => v.strategy_id === selectedVisualCritiqueStrategy || v.strategy === selectedVisualCritiqueStrategy);
+          }}
+          return true;
+        }});
       }} else if (isCleanOnly) {{
         baseSource = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
       }} else if (isFlaggedOnly) {{
@@ -24723,7 +25027,7 @@ FORMATTING & INTERACTION RULES:
           return true;
         }}
 
-        if (!isCommunityOnly) {{
+        if (!isCommunityOnly && !isVisualCritiqueOnly) {{
           if (!selectedTierFilter.has(inst.tier) && !selectedTierFilter.has('all')) return false;
           if (inst.isCommunityLayer || inst.tier === 'COMMUNITY') return false; // Strictly filtered out of actual research results
         }}
@@ -24830,6 +25134,11 @@ FORMATTING & INTERACTION RULES:
           activeMapBanner.classList.remove('hidden');
           if (activeMapIcon) activeMapIcon.textContent = '';
           activeMapText.textContent = `ACADEMIC RESEARCH CORPUS · ${{filteredList.length}} EMPIRICAL STUDIES (FILTERED BY USER)`;
+        }} else if (isVisualCritiqueOnly) {{
+          activeMapBanner.classList.remove('hidden');
+          if (activeMapIcon) activeMapIcon.textContent = '';
+          const stratLabel = selectedVisualCritiqueStrategy !== 'all' ? ` (${{selectedVisualCritiqueStrategy.replace(/_/g, ' ').toUpperCase()}})` : '';
+          activeMapText.textContent = `VISUAL CRITIQUE & ARTIST FEEDBACK${{stratLabel}} · ${{filteredList.length}} INSTITUTIONAL INTERVENTIONS`;
         }} else if (selectedCategoryFilter !== 'all') {{
           activeMapBanner.classList.remove('hidden');
           const meta = FILTER_META[selectedCategoryFilter] || {{ label: selectedCategoryFilter.toUpperCase() }};
@@ -24852,6 +25161,10 @@ FORMATTING & INTERACTION RULES:
         }} else if (isAcademicOnly) {{
           activeFilterBanner.classList.remove('hidden');
           if (filterLabel) filterLabel.textContent = 'ACADEMIC STUDIES (EMPIRICAL LITERATURE)';
+          if (filterCount) filterCount.textContent = `(${{filteredList.length}})`;
+        }} else if (isVisualCritiqueOnly) {{
+          activeFilterBanner.classList.remove('hidden');
+          if (filterLabel) filterLabel.textContent = 'VISUAL CRITIQUE & ARTIST FEEDBACK';
           if (filterCount) filterCount.textContent = `(${{filteredList.length}})`;
         }} else if (selectedCityFilter !== 'all' || selectedCountryFilter !== 'all' || selectedCategoryFilter !== 'all') {{
           activeFilterBanner.classList.remove('hidden');
@@ -25022,6 +25335,16 @@ FORMATTING & INTERACTION RULES:
 
             <p class="text-[14px] text-[#d4d4d4] mt-2 leading-[120%] line-clamp-2">${{inst.curator_recommendation || inst.funding}}</p>
             
+            ${{inst.visual_critiques && inst.visual_critiques.length > 0 ? `
+              <div class="mt-2 p-2 rounded-xl bg-amber-950/20 border border-amber-800/40 flex items-center gap-2">
+                <img src="${{escapeHtml(inst.visual_critiques[0].image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg')}}" alt="Visual Critique" class="w-12 h-10 object-cover rounded-lg border border-amber-700/60 shrink-0 bg-black" />
+                <div class="min-w-0 text-[11px] font-mono leading-tight">
+                  <div class="text-amber-400 font-bold truncate">${{escapeHtml(inst.visual_critiques[0].strategy)}}</div>
+                  <div class="text-zinc-300 truncate">${{escapeHtml(inst.visual_critiques[0].practice)}}</div>
+                </div>
+              </div>
+            ` : ''}}
+
             ${{inst.watch ? `
               <div class="mt-2 pt-1.5 border-t border-[#2e2e2e] text-[14px] text-amber-300/80 truncate flex items-center gap-1 font-mono">
                 <span>${{inst.watch}}</span>
