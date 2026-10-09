@@ -993,70 +993,80 @@ def build():
       -webkit-user-select: none;
       transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease-out;
     }}
-    /* 🔮 GOSSIP & WHISPERS MODE COMPREHENSIVE THEME (Secondary Amber-Orange & Warm Copper) */
+    @keyframes gossipYellowPulse {{
+      0%, 100% {{
+        box-shadow: 0 0 15px rgba(234, 179, 8, 0.45), 0 0 30px rgba(250, 204, 21, 0.25);
+        border-color: rgba(250, 204, 21, 0.85);
+      }}
+      50% {{
+        box-shadow: 0 0 30px rgba(234, 179, 8, 0.85), 0 0 50px rgba(250, 204, 21, 0.50);
+        border-color: rgba(254, 240, 138, 1);
+      }}
+    }}
+    /* 🔮 GOSSIP & WHISPERS MODE COMPREHENSIVE THEME (Canary & Radiant Gold Yellow) */
     body.gossip-mode-active {{
-      background: radial-gradient(circle at 35% 25%, #2a1105 0%, #170902 55%, #0c0401 100%) !important;
+      background: radial-gradient(circle at 35% 25%, #221b04 0%, #141002 55%, #080601 100%) !important;
       transition: background 0.4s ease;
     }}
     body.gossip-mode-active header {{
-      background: rgba(28, 12, 4, 0.96) !important;
+      background: rgba(24, 19, 3, 0.96) !important;
       backdrop-filter: blur(14px) !important;
-      border-bottom: 1px solid rgba(249, 115, 22, 0.35) !important;
-      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.12) !important;
+      border-bottom: 1px solid rgba(234, 179, 8, 0.4) !important;
+      box-shadow: 0 4px 25px rgba(234, 179, 8, 0.15) !important;
       transition: all 0.4s ease;
     }}
     body.gossip-mode-active #mainAppContainer {{
       background: transparent !important;
     }}
     body.gossip-mode-active #globeViewport {{
-      background: radial-gradient(circle at 45% 45%, #230e04 0%, #140702 65%, #080201 100%) !important;
+      background: radial-gradient(circle at 45% 45%, #1e1603 0%, #120d02 65%, #070501 100%) !important;
       transition: background 0.4s ease;
     }}
     body.gossip-mode-active #cityMapContainer {{
-      background: #140702 !important;
+      background: #120d02 !important;
     }}
     body.gossip-mode-active #chatRightPanel {{
-      background: rgba(24, 10, 3, 0.88) !important;
-      border-left: 1px solid rgba(249, 115, 22, 0.25) !important;
+      background: rgba(20, 16, 2, 0.90) !important;
+      border-left: 1px solid rgba(234, 179, 8, 0.3) !important;
       transition: all 0.4s ease;
     }}
     body.gossip-mode-active #workBottomDock {{
-      background: rgba(25, 10, 3, 0.96) !important;
-      border-top: 1px solid rgba(249, 115, 22, 0.3) !important;
+      background: rgba(20, 16, 2, 0.96) !important;
+      border-top: 1px solid rgba(234, 179, 8, 0.35) !important;
       backdrop-filter: blur(14px) !important;
       transition: all 0.4s ease;
     }}
     body.gossip-mode-active #workInputCard {{
-      background: rgba(45, 18, 6, 0.92) !important;
-      border-color: rgba(249, 115, 22, 0.45) !important;
-      box-shadow: 0 4px 30px rgba(249, 115, 22, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+      background: rgba(35, 27, 4, 0.94) !important;
+      border-color: rgba(234, 179, 8, 0.5) !important;
+      box-shadow: 0 4px 30px rgba(234, 179, 8, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
       transition: all 0.4s ease;
     }}
     body.gossip-mode-active #floatingCard,
     #floatingCard.gossip-yellow-card,
     #floatingCard.gossip-active-card {{
-      background: rgba(35, 14, 5, 0.98) !important;
-      border-color: rgba(249, 115, 22, 0.85) !important;
-      box-shadow: 0 0 35px rgba(249, 115, 22, 0.4), 0 20px 50px rgba(0, 0, 0, 0.95) !important;
+      background: rgba(24, 20, 4, 0.98) !important;
+      border-color: rgba(234, 179, 8, 0.9) !important;
+      box-shadow: 0 0 35px rgba(234, 179, 8, 0.45), 0 20px 50px rgba(0, 0, 0, 0.95) !important;
     }}
     body.gossip-mode-active #detailDrawer {{
-      background: rgba(28, 12, 4, 0.98) !important;
-      border-left-color: rgba(249, 115, 22, 0.4) !important;
+      background: rgba(22, 17, 3, 0.98) !important;
+      border-left-color: rgba(234, 179, 8, 0.45) !important;
     }}
     body.gossip-mode-active #hudControlsBar {{
-      background: rgba(30, 13, 4, 0.92) !important;
-      border-color: rgba(249, 115, 22, 0.4) !important;
-      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.2) !important;
+      background: rgba(24, 19, 3, 0.92) !important;
+      border-color: rgba(234, 179, 8, 0.4) !important;
+      box-shadow: 0 4px 20px rgba(234, 179, 8, 0.2) !important;
     }}
     body.gossip-mode-active .brand-city-dot-core {{
-      background: #f97316 !important;
-      box-shadow: 0 0 10px #f97316, 0 0 20px rgba(249, 115, 22, 0.85) !important;
+      background: #facc15 !important;
+      box-shadow: 0 0 10px #facc15, 0 0 20px rgba(250, 204, 21, 0.85) !important;
     }}
     body.gossip-mode-active .brand-city-dot-aura {{
-      background: rgba(249, 115, 22, 0.45) !important;
+      background: rgba(250, 204, 21, 0.45) !important;
     }}
     body.gossip-mode-active .brand-city-dot-ping {{
-      border-color: rgba(249, 115, 22, 0.90) !important;
+      border-color: rgba(250, 204, 21, 0.90) !important;
     }}
 
     /* 🔮 GOSSIP / YELLOW MODE: OPPOSITE COLOR HOVERS (Electric Cyan #38bdf8 High-Contrast Accents) */
@@ -1463,7 +1473,8 @@ def build():
         <button id="topGovernanceBtn" class="hidden" style="display:none;" aria-hidden="true" title="Governance & Funding Transparency Methodology Legend">
           <span>Methodology</span>
         </button>
-        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#271206] hover:bg-[#381a09] border border-orange-900/60 hover:border-orange-700/80 text-orange-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
+        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 hover:border-yellow-400 text-yellow-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Yellow Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
+          <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
           <span>Gossip Mode</span>
         </button>
         <button id="topContributeBtn" class="hidden" style="display:none;" aria-hidden="true" title="Contribute confidential insider intelligence or unlisted independent spaces">
@@ -1489,8 +1500,8 @@ def build():
         </svg>
       </button>
 
-      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-2 sm:px-3 py-1 bg-[#271206] hover:bg-[#381a09] border border-orange-700/80 text-orange-300 rounded-full text-[11px] sm:text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
-        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-orange-500 animate-pulse"></span>
+      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-2 sm:px-3 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 text-yellow-300 rounded-full text-[11px] sm:text-[12px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Toggle Yellow Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
+        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-yellow-400 animate-pulse"></span>
         <span>Gossip</span>
       </button>
 
@@ -1556,8 +1567,8 @@ def build():
           <button id="floatingCardTabInfo" type="button" class="flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-zinc-800 text-white shadow-sm" onclick="event.stopPropagation(); window.setCardMode('info');">
             <span>Verified Info</span>
           </button>
-          <button id="floatingCardTabGossip" type="button" class="flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer text-[#a1a1aa] hover:text-orange-400" onclick="event.stopPropagation(); window.setCardMode('gossip');">
-            <span>Gossip &amp; Murmurs</span>
+          <button id="floatingCardTabGossip" type="button" class="flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer text-[#a1a1aa] hover:text-yellow-400" onclick="event.stopPropagation(); window.setCardMode('gossip');">
+            <span>Yellow Gossip Mode</span>
           </button>
         </div>
         <div id="floatingCardSwipeHint" class="mt-1 flex items-center justify-between text-[10px] font-mono text-[#71717a] px-1 select-none">
@@ -1667,34 +1678,34 @@ def build():
 
         <!-- GOSSIP PANE -->
         <div id="floatingCardGossipPane" class="hidden space-y-2 transition-all duration-200">
-          <div id="floatingCardGossipSection" class="mt-2 pt-2 border-t border-orange-900/60 space-y-2 bg-[#241208]/95 p-2.5 rounded-xl border border-orange-600/60 shadow-inner">
+          <div id="floatingCardGossipSection" class="mt-2 pt-2 border-t border-yellow-900/60 space-y-2 bg-[#171408]/95 p-2.5 rounded-xl border border-yellow-600/60 shadow-inner">
             <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
-              <span class="text-orange-400 font-bold flex items-center gap-1 tracking-wide">
+              <span class="text-yellow-400 font-bold flex items-center gap-1 tracking-wide">
                 ART WORLD WHISPERS &amp; GOSSIP
               </span>
-              <span id="floatingCardGossipIntensityBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-orange-600 bg-orange-950 text-orange-300 font-bold shadow-sm">HOT</span>
+              <span id="floatingCardGossipIntensityBadge" class="px-1.5 py-0.5 rounded text-[10px] font-mono border border-yellow-500 bg-yellow-950 text-yellow-300 font-bold shadow-sm">HOT</span>
             </div>
-            <p id="floatingCardGossipHeadline" class="text-[12.5px] text-orange-200/95 leading-snug font-medium"></p>
+            <p id="floatingCardGossipHeadline" class="text-[12.5px] text-yellow-200/95 leading-snug font-medium"></p>
             <div class="space-y-1.5 pt-0.5 text-[11px] font-mono">
-              <div id="floatingCardGossipReddit" class="text-slate-300 bg-[#180a03] p-2 rounded-lg border border-orange-900/50 flex items-baseline gap-1.5">
-                <span class="text-orange-400 font-bold shrink-0">r/art:</span>
+              <div id="floatingCardGossipReddit" class="text-slate-300 bg-[#0e0c03] p-2 rounded-lg border border-yellow-900/50 flex items-baseline gap-1.5">
+                <span class="text-yellow-400 font-bold shrink-0">r/art:</span>
                 <span id="floatingCardGossipRedditText" class="truncate text-slate-200"></span>
               </div>
-              <div id="floatingCardGossipTwitter" class="text-slate-300 bg-[#180a03] p-2 rounded-lg border border-orange-900/50 flex items-baseline gap-1.5">
-                <span class="text-amber-400 font-bold shrink-0">X post:</span>
+              <div id="floatingCardGossipTwitter" class="text-slate-300 bg-[#0e0c03] p-2 rounded-lg border border-yellow-900/50 flex items-baseline gap-1.5">
+                <span class="text-yellow-300 font-bold shrink-0">X post:</span>
                 <span id="floatingCardGossipTwitterText" class="truncate text-slate-200"></span>
               </div>
               <!-- Real Cases Preview -->
-              <div id="floatingCardGossipRealCases" class="hidden text-slate-200 bg-[#1a0a03] p-2 rounded-lg border border-orange-600/70 space-y-1">
-                <div class="flex items-center justify-between text-[10.5px] font-mono text-orange-400 font-bold">
+              <div id="floatingCardGossipRealCases" class="hidden text-slate-200 bg-[#141004] p-2 rounded-lg border border-yellow-600/70 space-y-1">
+                <div class="flex items-center justify-between text-[10.5px] font-mono text-yellow-400 font-bold">
                   <span id="floatingCardGossipCaseCount">🏛️ Verified Investigation</span>
-                  <span id="floatingCardGossipCaseStatus" class="px-1 py-0.2 rounded bg-orange-950 text-amber-300 border border-orange-800 text-[9.5px]"></span>
+                  <span id="floatingCardGossipCaseStatus" class="px-1 py-0.2 rounded bg-yellow-950 text-yellow-300 border border-yellow-800 text-[9.5px]"></span>
                 </div>
                 <p id="floatingCardGossipCaseOutcome" class="text-[12px] text-slate-200 leading-snug font-sans line-clamp-2"></p>
               </div>
               <!-- Real Review Leads Preview -->
-              <div id="floatingCardGossipReviewLeads" class="hidden text-slate-200 bg-[#1a0a03] p-2 rounded-lg border border-orange-600/70 space-y-1">
-                <div class="flex items-center justify-between text-[10.5px] font-mono text-amber-400 font-bold">
+              <div id="floatingCardGossipReviewLeads" class="hidden text-slate-200 bg-[#141004] p-2 rounded-lg border border-yellow-600/70 space-y-1">
+                <div class="flex items-center justify-between text-[10.5px] font-mono text-yellow-400 font-bold">
                   <span id="floatingCardGossipReviewPlatform">👤 Verified Staff Review</span>
                   <span id="floatingCardGossipReviewDate" class="text-slate-400 font-mono text-[10px]"></span>
                 </div>
@@ -1703,11 +1714,11 @@ def build():
             </div>
             <div class="flex items-center gap-1.5 mt-1.5">
               <button type="button" onclick="event.stopPropagation(); window.openGossipDossier(selectedInstitution);" 
-                      class="flex-1 py-1.5 px-2 rounded-lg bg-orange-950/80 hover:bg-orange-900 border border-orange-700/80 text-orange-200 font-semibold text-[11px] font-mono flex items-center justify-center gap-1 transition cursor-pointer">
+                      class="flex-1 py-1.5 px-2 rounded-lg bg-yellow-950/80 hover:bg-yellow-900 border border-yellow-600/80 text-yellow-200 font-semibold text-[11px] font-mono flex items-center justify-center gap-1 transition cursor-pointer">
                 <span>Full Dossier &amp; Leaks →</span>
               </button>
               <button type="button" onclick="event.stopPropagation(); window.toggleGossipMode();" 
-                      class="flex-1 py-1.5 px-2 rounded-lg bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-semibold text-[11px] font-mono flex items-center justify-center gap-1 transition shadow cursor-pointer">
+                      class="flex-1 py-1.5 px-2 rounded-lg bg-yellow-500 hover:bg-yellow-400 text-black font-semibold text-[11px] font-mono flex items-center justify-center gap-1 transition shadow cursor-pointer">
                 <span>Radiate Beacons</span>
               </button>
             </div>
@@ -2217,7 +2228,7 @@ def build():
               <button class="globe-filter-pill atlas-suggestion-pill" data-type="academic">Academic Studies ({academic_count})</button>
               <button class="globe-filter-pill atlas-suggestion-pill" data-type="archives">Archives Directory ({archives_count})</button>
               <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
-              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
+              <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
               <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
               <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
               <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
@@ -9933,7 +9944,7 @@ def build():
         // Room A: Primary Curatorial Exhibition Gallery (North / Upper Wing - ~52% of floor area)
         let galleryColor;
         if (isGossipModeActive) {{
-          galleryColor = '#fb923c'; // Secondary warm amber-orange gossip beacon
+          galleryColor = '#facc15'; // Glowing canary yellow gossip beacon
         }} else if (isActive) {{
           galleryColor = isClean ? '#10b981' : (isFlagged ? '#c084fc' : '#38bdf8');
         }} else if (hasShow) {{
@@ -10124,29 +10135,29 @@ def build():
       if (isGossipModeActive) {{
         document.body.classList.add('gossip-mode-active');
         if (topBtn) {{
-          topBtn.classList.add('bg-gradient-to-r', 'from-orange-600', 'via-amber-600', 'to-orange-700', 'text-white', 'border-orange-300', 'font-bold', 'shadow-[0_0_20px_rgba(249,115,22,0.7)]');
-          topBtn.classList.remove('bg-[#271206]', 'text-orange-300', 'bg-[#1f0a1c]', 'text-rose-300', 'bg-yellow-500', 'text-black', 'border-yellow-300', 'from-rose-600', 'via-pink-600', 'to-fuchsia-600', 'border-rose-300');
-          topBtn.innerHTML = '<span>Gossip Mode: ACTIVE</span>';
+          topBtn.classList.add('bg-yellow-500', 'text-black', 'border-yellow-200', 'font-bold', 'shadow-[0_0_25px_rgba(234,179,8,0.9)]');
+          topBtn.classList.remove('bg-[#1c1806]', 'text-yellow-300', 'bg-[#271206]', 'text-orange-300', 'bg-[#1f0a1c]', 'text-rose-300', 'from-orange-600', 'via-amber-600', 'to-orange-700', 'border-orange-300');
+          topBtn.innerHTML = '<span class="w-2 h-2 rounded-full bg-black animate-ping"></span><span>Gossip Mode: ACTIVE</span>';
         }}
         if (mobileBtn) {{
-          mobileBtn.classList.add('bg-gradient-to-r', 'from-orange-600', 'to-amber-600', 'text-white', 'border-orange-300', 'font-bold');
-          mobileBtn.classList.remove('bg-[#271206]', 'text-orange-300', 'bg-[#1f0a1c]', 'text-rose-300', 'bg-yellow-500', 'text-black', 'border-yellow-300', 'from-rose-600', 'to-fuchsia-600', 'border-rose-300');
-          mobileBtn.innerHTML = '<span>Gossip ACTIVE</span>';
+          mobileBtn.classList.add('bg-yellow-500', 'text-black', 'border-yellow-200', 'font-bold', 'shadow-[0_0_15px_rgba(234,179,8,0.8)]');
+          mobileBtn.classList.remove('bg-[#1c1806]', 'text-yellow-300', 'bg-[#271206]', 'text-orange-300', 'bg-[#1f0a1c]', 'text-rose-300', 'from-orange-600', 'to-amber-600', 'border-orange-300');
+          mobileBtn.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-black animate-ping"></span><span>Gossip ACTIVE</span>';
         }}
         if (typeof appendBotMessage === 'function') {{
-          appendBotMessage("**Gossip & Whispers Mode Activated**: Atmospheric backchannel layer mapping institutions via curatorial whispers, verified insider reports, and independent discourse. High-rumor spaces radiate in secondary warm amber-orange. Click any institution to view unvarnished rumors and curatorial dossiers.");
+          appendBotMessage("**Yellow Gossip & Whispers Mode Activated**: Atmospheric curatorial backchannel mapping institutions via curatorial whispers, verified insider reports, and independent discourse. High-rumor spaces radiate in vibrant pulsating canary yellow. Click any institution to view unvarnished rumors and curatorial dossiers.");
         }}
       }} else {{
         document.body.classList.remove('gossip-mode-active');
         if (topBtn) {{
-          topBtn.classList.remove('bg-gradient-to-r', 'from-orange-600', 'via-amber-600', 'to-orange-700', 'text-white', 'border-orange-300', 'font-bold', 'shadow-[0_0_20px_rgba(249,115,22,0.7)]', 'bg-yellow-500', 'text-black', 'from-rose-600', 'via-pink-600', 'to-fuchsia-600', 'border-rose-300');
-          topBtn.classList.add('bg-[#271206]', 'text-orange-300');
-          topBtn.innerHTML = '<span>Gossip Mode</span>';
+          topBtn.classList.remove('bg-yellow-500', 'text-black', 'border-yellow-200', 'font-bold', 'shadow-[0_0_25px_rgba(234,179,8,0.9)]', 'from-orange-600', 'via-amber-600', 'to-orange-700', 'border-orange-300');
+          topBtn.classList.add('bg-[#1c1806]', 'text-yellow-300');
+          topBtn.innerHTML = '<span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip Mode</span>';
         }}
         if (mobileBtn) {{
-          mobileBtn.classList.remove('bg-gradient-to-r', 'from-orange-600', 'to-amber-600', 'text-white', 'border-orange-300', 'font-bold', 'bg-yellow-500', 'text-black', 'from-rose-600', 'to-fuchsia-600', 'border-rose-300');
-          mobileBtn.classList.add('bg-[#271206]', 'text-orange-300');
-          mobileBtn.innerHTML = '<span>Gossip</span>';
+          mobileBtn.classList.remove('bg-yellow-500', 'text-black', 'border-yellow-200', 'font-bold', 'shadow-[0_0_15px_rgba(234,179,8,0.8)]', 'from-orange-600', 'to-amber-600', 'border-orange-300');
+          mobileBtn.classList.add('bg-[#1c1806]', 'text-yellow-300');
+          mobileBtn.innerHTML = '<span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip</span>';
         }}
       }}
 
@@ -10156,11 +10167,11 @@ def build():
       const bDotCore = document.querySelector('.brand-city-dot-core');
 
       if (isGossipModeActive) {{
-        if (bDotAura) bDotAura.style.background = 'rgba(249, 115, 22, 0.45)';
-        if (bDotPing) bDotPing.style.borderColor = 'rgba(249, 115, 22, 0.90)';
+        if (bDotAura) bDotAura.style.background = 'rgba(250, 204, 21, 0.45)';
+        if (bDotPing) bDotPing.style.borderColor = 'rgba(250, 204, 21, 0.90)';
         if (bDotCore) {{
-          bDotCore.style.background = '#f97316';
-          bDotCore.style.boxShadow = '0 0 10px #f97316, 0 0 20px rgba(249, 115, 22, 0.85)';
+          bDotCore.style.background = '#facc15';
+          bDotCore.style.boxShadow = '0 0 10px #facc15, 0 0 20px rgba(250, 204, 21, 0.85)';
         }}
       }} else {{
         if (bDotAura) bDotAura.style.background = 'rgba(16, 185, 129, 0.35)';
@@ -10191,6 +10202,10 @@ def build():
         }}
       }}
 
+      if (typeof updateGlobePillsUI === 'function') {{
+        updateGlobePillsUI();
+      }}
+
       if (typeof render === 'function') {{
         render();
       }}
@@ -10213,19 +10228,19 @@ def build():
 
       if (currentCardMode === 'gossip') {{
         if (tabGossip) {{
-          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-[0_0_15px_rgba(249,115,22,0.6)]';
+          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-yellow-400 text-black shadow-[0_0_15px_rgba(250,204,21,0.7)]';
         }}
         if (tabInfo) {{
-          tabInfo.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-orange-200/70 hover:text-white';
+          tabInfo.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-yellow-200/70 hover:text-white';
         }}
         if (infoPane) infoPane.classList.add('hidden');
         if (gossipPane) gossipPane.classList.remove('hidden');
         if (card) {{
-          card.classList.add('gossip-yellow-card', 'gossip-active-card', 'border-orange-500/80', 'bg-[#241208]/98', 'shadow-[0_0_30px_rgba(249,115,22,0.4)]');
-          card.classList.remove('border-[#2e2e2e]', 'bg-[#18181b]/95', 'border-rose-500/80', 'bg-[#1c0824]/98');
+          card.classList.add('gossip-yellow-card', 'gossip-active-card', 'border-yellow-500/90', 'bg-[#181404]/98', 'shadow-[0_0_35px_rgba(234,179,8,0.45)]');
+          card.classList.remove('border-[#2e2e2e]', 'bg-[#18181b]/95', 'border-orange-500/80', 'bg-[#241208]/98', 'border-rose-500/80', 'bg-[#1c0824]/98');
         }}
         if (tierBadge) {{
-          tierBadge.className = 'text-[12px] font-mono px-2 py-0.5 rounded-lg border border-orange-500/80 bg-orange-950/80 text-orange-300 font-bold';
+          tierBadge.className = 'text-[12px] font-mono px-2 py-0.5 rounded-lg border border-yellow-500/80 bg-yellow-950/80 text-yellow-300 font-bold';
           tierBadge.textContent = 'Gossip Mode';
         }}
         if (syncGlobal && !isGossipModeActive && typeof toggleGossipMode === 'function') {{
@@ -10236,12 +10251,12 @@ def build():
           tabInfo.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-semibold cursor-pointer bg-zinc-800 text-white shadow-sm';
         }}
         if (tabGossip) {{
-          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-[#a1a1aa] hover:text-orange-400';
+          tabGossip.className = 'flex-1 py-1 px-2 rounded-lg text-center transition font-normal cursor-pointer text-[#a1a1aa] hover:text-yellow-400';
         }}
         if (infoPane) infoPane.classList.remove('hidden');
         if (gossipPane) gossipPane.classList.add('hidden');
         if (card) {{
-          card.classList.remove('gossip-yellow-card', 'gossip-active-card', 'border-orange-500/80', 'bg-[#241208]/98', 'shadow-[0_0_30px_rgba(249,115,22,0.4)]', 'border-rose-500/80', 'bg-[#1c0824]/98');
+          card.classList.remove('gossip-yellow-card', 'gossip-active-card', 'border-yellow-500/90', 'bg-[#181404]/98', 'border-orange-500/80', 'bg-[#241208]/98', 'shadow-[0_0_35px_rgba(234,179,8,0.45)]', 'border-rose-500/80', 'bg-[#1c0824]/98');
           card.classList.add('border-[#2e2e2e]', 'bg-[#18181b]/95');
         }}
         if (tierBadge) {{
@@ -10262,24 +10277,24 @@ def build():
 
       if (mode === 'gossip') {{
         if (tabGossip) {{
-          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-bold transition cursor-pointer bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-[0_0_15px_rgba(249,115,22,0.6)]';
+          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-bold transition cursor-pointer bg-yellow-400 text-black shadow-[0_0_15px_rgba(250,204,21,0.7)]';
         }}
         if (tabAudit) {{
-          tabAudit.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-orange-200/70 hover:text-white';
+          tabAudit.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-yellow-200/70 hover:text-white';
         }}
         if (auditView) auditView.classList.add('hidden');
         if (gossipView) gossipView.classList.remove('hidden');
-        if (drawer) drawer.classList.add('border-orange-500/70');
+        if (drawer) drawer.classList.add('border-yellow-500/70');
       }} else {{
         if (tabAudit) {{
           tabAudit.className = 'flex-1 py-1 px-3 rounded-lg text-center font-medium transition cursor-pointer bg-zinc-800 text-white shadow-sm';
         }}
         if (tabGossip) {{
-          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-orange-400';
+          tabGossip.className = 'flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-yellow-400';
         }}
         if (auditView) auditView.classList.remove('hidden');
         if (gossipView) gossipView.classList.add('hidden');
-        if (drawer) drawer.classList.remove('border-orange-500/70', 'border-rose-500/70');
+        if (drawer) drawer.classList.remove('border-yellow-500/70', 'border-orange-500/70', 'border-rose-500/70');
       }}
     }}
     window.setDrawerMode = setDrawerMode;
@@ -13267,14 +13282,14 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v10') caches.delete(k);
+          if (k !== 'culture-atlas-v12') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=11').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=12').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
@@ -13784,9 +13799,9 @@ def build():
         // 1. Outer Atmospheric Limb Glow / Halo
         const limbGrad = ctx.createRadialGradient(cx, cy, r * 0.95, cx, cy, r * 1.10);
         if (isGossipModeActive) {{
-          limbGrad.addColorStop(0, 'rgba(249, 115, 22, 0.40)');
-          limbGrad.addColorStop(0.35, 'rgba(217, 119, 6, 0.22)');
-          limbGrad.addColorStop(0.7, 'rgba(180, 83, 9, 0.08)');
+          limbGrad.addColorStop(0, 'rgba(234, 179, 8, 0.40)');
+          limbGrad.addColorStop(0.35, 'rgba(202, 138, 4, 0.22)');
+          limbGrad.addColorStop(0.7, 'rgba(161, 98, 7, 0.08)');
           limbGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
         }} else {{
           limbGrad.addColorStop(0, 'rgba(59, 130, 246, 0.22)');
@@ -13802,9 +13817,9 @@ def build():
         // 2. 3D Spherical Ocean Lighting
         const sphereGrad = ctx.createRadialGradient(cx - r * 0.32, cy - r * 0.32, r * 0.08, cx, cy, r);
         if (isGossipModeActive) {{
-          sphereGrad.addColorStop(0, '#341406');
-          sphereGrad.addColorStop(0.5, '#1a0a03');
-          sphereGrad.addColorStop(1, '#0a0401');
+          sphereGrad.addColorStop(0, '#221903');
+          sphereGrad.addColorStop(0.5, '#120d02');
+          sphereGrad.addColorStop(1, '#060401');
         }} else {{
           sphereGrad.addColorStop(0, '#061324');
           sphereGrad.addColorStop(0.5, '#020611');
@@ -13814,7 +13829,7 @@ def build():
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = sphereGrad;
         ctx.fill();
-        ctx.strokeStyle = isGossipModeActive ? '#682709' : '#223048';
+        ctx.strokeStyle = isGossipModeActive ? '#854d0e' : '#223048';
         ctx.lineWidth = 1.2;
         ctx.stroke();
 
@@ -13825,7 +13840,7 @@ def build():
         ctx.clip();
 
         // 3. Graticule with Latitude Parallels and Longitude Meridians
-        ctx.strokeStyle = isGossipModeActive ? '#351506' : '#0e182a';
+        ctx.strokeStyle = isGossipModeActive ? '#2c2105' : '#0e182a';
         ctx.lineWidth = 0.5;
         for (let lat = -60; lat <= 60; lat += 30) {{
           ctx.beginPath();
@@ -13838,10 +13853,10 @@ def build():
             }} else first = true;
           }}
           if (lat === 0) {{
-            ctx.strokeStyle = isGossipModeActive ? '#5c2409' : '#182740';
+            ctx.strokeStyle = isGossipModeActive ? '#634709' : '#182740';
             ctx.lineWidth = 0.8;
           }} else {{
-            ctx.strokeStyle = isGossipModeActive ? '#351506' : '#0e182a';
+            ctx.strokeStyle = isGossipModeActive ? '#2c2105' : '#0e182a';
             ctx.lineWidth = 0.5;
           }}
           ctx.stroke();
@@ -13863,7 +13878,7 @@ def build():
         // Graticule Degree Annotations
         if (r > baseRadius * 0.9) {{
           ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
-          ctx.fillStyle = isGossipModeActive ? '#ea580c' : '#263a55';
+          ctx.fillStyle = isGossipModeActive ? '#eab308' : '#263a55';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           const labels = [
@@ -13932,10 +13947,10 @@ def build():
               ctx.closePath();
               ctx.fill();
               ctx.strokeStyle = isCActive 
-                ? (isGossipModeActive ? '#fb923c' : '#60a5fa') 
+                ? (isGossipModeActive ? '#facc15' : '#60a5fa') 
                 : isCHovered 
-                ? (isGossipModeActive ? '#38bdf8' : '#93c5fd') 
-                : (isGossipModeActive ? '#3b1406' : '#050c18');
+                ? (isGossipModeActive ? '#fde047' : '#93c5fd') 
+                : (isGossipModeActive ? '#2e2205' : '#050c18');
               ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
               ctx.stroke();
             }} else {{
@@ -13988,7 +14003,7 @@ def build():
                     penDown = false;
                   }}
                 }}
-                ctx.strokeStyle = isCActive ? (isGossipModeActive ? '#fb923c' : '#60a5fa') : isCHovered ? (isGossipModeActive ? '#38bdf8' : '#93c5fd') : (isGossipModeActive ? '#3b1406' : '#050c18');
+                ctx.strokeStyle = isCActive ? (isGossipModeActive ? '#facc15' : '#60a5fa') : isCHovered ? (isGossipModeActive ? '#fde047' : '#93c5fd') : (isGossipModeActive ? '#2e2205' : '#050c18');
                 ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
                 ctx.stroke();
               }}
@@ -14057,23 +14072,23 @@ def build():
               ctx.globalAlpha = badgeAlpha;
 
               ctx.fillStyle = isSelected 
-                ? (isGossipModeActive ? '#c2410c' : '#1d4ed8') 
+                ? (isGossipModeActive ? '#a16207' : '#1d4ed8') 
                 : isHovered 
-                ? (isGossipModeActive ? '#082f49' : '#1e3a8a') 
-                : (isGossipModeActive ? '#270e04' : '#070b14');
+                ? (isGossipModeActive ? '#713f12' : '#1e3a8a') 
+                : (isGossipModeActive ? '#1e1805' : '#070b14');
               ctx.beginPath();
               ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 5) : ctx.rect(bx, by, bw, bh);
               ctx.fill();
 
               ctx.strokeStyle = isSelected 
-                ? (isGossipModeActive ? '#fb923c' : '#93c5fd') 
+                ? (isGossipModeActive ? '#facc15' : '#93c5fd') 
                 : isHovered 
-                ? (isGossipModeActive ? '#38bdf8' : '#60a5fa') 
-                : (isGossipModeActive ? '#78350f' : '#222d42');
+                ? (isGossipModeActive ? '#fde047' : '#60a5fa') 
+                : (isGossipModeActive ? '#854d0e' : '#222d42');
               ctx.lineWidth = isSelected || isHovered ? 1.5 : 1;
               ctx.stroke();
 
-              ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#ffedd5' : '#cbd5e1');
+              ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#cbd5e1');
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
@@ -14081,10 +14096,10 @@ def build():
               ctx.beginPath();
               ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
               ctx.fillStyle = isSelected 
-                ? (isGossipModeActive ? '#fb923c' : '#93c5fd') 
+                ? (isGossipModeActive ? '#facc15' : '#93c5fd') 
                 : isHovered 
-                ? (isGossipModeActive ? '#38bdf8' : '#60a5fa') 
-                : (isGossipModeActive ? '#f97316' : '#3b82f6');
+                ? (isGossipModeActive ? '#fde047' : '#60a5fa') 
+                : (isGossipModeActive ? '#eab308' : '#3b82f6');
               ctx.fill();
               ctx.restore();
             }}
@@ -14131,19 +14146,19 @@ def build():
 
                   // High-contrast protective dark backing plate
                   ctx.fillStyle = isSel 
-                    ? (isGossipModeActive ? 'rgba(85, 30, 8, 0.94)' : 'rgba(12, 38, 70, 0.92)') 
+                    ? (isGossipModeActive ? 'rgba(50, 40, 6, 0.94)' : 'rgba(12, 38, 70, 0.92)') 
                     : isHov
-                    ? (isGossipModeActive ? 'rgba(8, 47, 73, 0.94)' : 'rgba(20, 30, 50, 0.92)')
-                    : (isGossipModeActive ? 'rgba(35, 12, 3, 0.92)' : 'rgba(5, 9, 18, 0.88)');
+                    ? (isGossipModeActive ? 'rgba(40, 32, 5, 0.94)' : 'rgba(20, 30, 50, 0.92)')
+                    : (isGossipModeActive ? 'rgba(28, 22, 4, 0.92)' : 'rgba(5, 9, 18, 0.88)');
                   ctx.beginPath();
                   ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 5) : ctx.rect(bx, by, bw, bh);
                   ctx.fill();
 
                   ctx.strokeStyle = isSel 
-                    ? (isGossipModeActive ? '#fb923c' : '#38bdf8') 
+                    ? (isGossipModeActive ? '#facc15' : '#38bdf8') 
                     : isHov
-                    ? (isGossipModeActive ? '#38bdf8' : '#60a5fa') 
-                    : (isGossipModeActive ? 'rgba(249, 115, 22, 0.65)' : 'rgba(255, 255, 255, 0.3)');
+                    ? (isGossipModeActive ? '#fde047' : '#60a5fa') 
+                    : (isGossipModeActive ? 'rgba(234, 179, 8, 0.65)' : 'rgba(255, 255, 255, 0.3)');
                   ctx.lineWidth = isSel || isHov ? 1.5 : 1.0;
                   ctx.stroke();
 
@@ -14155,10 +14170,10 @@ def build():
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? (isGossipModeActive ? '#ffedd5' : '#38bdf8') 
+                    ? (isGossipModeActive ? '#fef9c3' : '#38bdf8') 
                     : isHov
                     ? '#ffffff'
-                    : (isGossipModeActive ? '#fed7aa' : '#ffffff');
+                    : (isGossipModeActive ? '#fef08a' : '#ffffff');
                   ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }}
               }}
@@ -14433,14 +14448,24 @@ def build():
           }}
 
           if (isGossipModeActive && d.inst.gossip_data) {{
-            const gTime = (Date.now() % 1600) / 1600;
-            const gRadius = 4 + gTime * 14;
-            const gAlpha = (1 - gTime) * 0.9;
+            const gTime1 = (Date.now() % 1600) / 1600;
+            const gRadius1 = 4 + gTime1 * 18;
+            const gAlpha1 = (1 - gTime1) * 0.95;
             ctx.save();
             ctx.beginPath();
-            ctx.arc(d.x, d.y, gRadius, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(249, 115, 22, ${{gAlpha}})`;
-            ctx.lineWidth = 1.6;
+            ctx.arc(d.x, d.y, gRadius1, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(250, 204, 21, ${{gAlpha1}})`;
+            ctx.lineWidth = 1.8;
+            ctx.stroke();
+
+            // High energy secondary concentric pulse ring for rich animation
+            const gTime2 = ((Date.now() + 800) % 1600) / 1600;
+            const gRadius2 = 4 + gTime2 * 18;
+            const gAlpha2 = (1 - gTime2) * 0.75;
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, gRadius2, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(234, 179, 8, ${{gAlpha2}})`;
+            ctx.lineWidth = 1.3;
             ctx.stroke();
             ctx.restore();
           }}
@@ -14463,11 +14488,11 @@ def build():
           ctx.beginPath();
           ctx.arc(d.x, d.y, isSel ? 4.5 : isHov ? 4 : (isVisualCritiqueOnly && hasVc ? 3.8 : 2.5), 0, Math.PI * 2);
           ctx.fillStyle = isHov 
-            ? (isGossipModeActive ? '#38bdf8' : '#60a5fa')
+            ? (isGossipModeActive ? '#fef08a' : '#60a5fa')
             : (isVisualCritiqueOnly && hasVc)
             ? '#f59e0b'
             : isGossipModeActive 
-            ? (d.inst.gossip_data ? '#f97316' : '#9a3412')
+            ? (d.inst.gossip_data ? '#facc15' : '#713f12')
             : (d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#be95ff' : '#08bdba');
           ctx.fill();
 
@@ -14574,7 +14599,7 @@ def build():
               // Drop shadow & glass fill
               ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
               ctx.shadowBlur = 16;
-              ctx.fillStyle = isGossipModeActive ? '#1a0c04' : '#070c16';
+              ctx.fillStyle = isGossipModeActive ? '#151103' : '#070c16';
               ctx.beginPath();
               ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 8) : ctx.rect(cardX, cardY, cardW, cardH);
               ctx.fill();
@@ -14583,13 +14608,13 @@ def build():
               ctx.shadowBlur = 0;
               ctx.strokeStyle = isHoveringCityExploreLink 
                 ? '#38bdf8' 
-                : (isGossipModeActive ? '#f97316' : '#38bdf8');
+                : (isGossipModeActive ? '#facc15' : '#38bdf8');
               ctx.lineWidth = 1.5;
               ctx.stroke();
 
               // Line 1: City Name (bold 16px)
               ctx.font = '200 16px "PP Telegraf", "PP Telegraph", sans-serif';
-              ctx.fillStyle = isGossipModeActive ? '#fb923c' : '#38bdf8';
+              ctx.fillStyle = isGossipModeActive ? '#facc15' : '#38bdf8';
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
               ctx.fillText(cityTxt, cardX + 14, cardY + 12);
@@ -14599,14 +14624,14 @@ def build():
               // Line 2: Country Name (if available, 14px, muted slate, own line, no dot)
               if (countryTxt) {{
                 ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
-                ctx.fillStyle = isGossipModeActive ? '#fdba74' : '#94a3b8';
+                ctx.fillStyle = isGossipModeActive ? '#fde047' : '#94a3b8';
                 ctx.fillText(countryTxt, cardX + 14, currentY);
                 currentY += 22;
               }}
 
               // Line 3: Verified Cultural Spaces Count (14px, crisp light slate, own line, no dot)
               ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
-              ctx.fillStyle = isGossipModeActive ? '#ffedd5' : '#f1f5f9';
+              ctx.fillStyle = isGossipModeActive ? '#fef9c3' : '#f1f5f9';
               ctx.fillText(countTxt, cardX + 14, currentY);
               currentY += 22;
 
@@ -14622,9 +14647,9 @@ def build():
                   ctx.shadowColor = 'rgba(56, 189, 248, 0.55)';
                   ctx.shadowBlur = 12;
                 }} else {{
-                  // Default link state in yellow mode: warm amber pill
-                  ctx.fillStyle = 'rgba(249, 115, 22, 0.14)';
-                  ctx.strokeStyle = 'rgba(249, 115, 22, 0.45)';
+                  // Default link state in yellow mode: warm golden yellow pill
+                  ctx.fillStyle = 'rgba(234, 179, 8, 0.16)';
+                  ctx.strokeStyle = 'rgba(234, 179, 8, 0.60)';
                   ctx.lineWidth = 1;
                 }}
               }} else {{
@@ -14644,7 +14669,7 @@ def build():
 
               ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
               ctx.fillStyle = isGossipModeActive 
-                ? (isHoveringCityExploreLink ? '#38bdf8' : '#fb923c') 
+                ? (isHoveringCityExploreLink ? '#38bdf8' : '#facc15') 
                 : (isHoveringCityExploreLink ? '#ffffff' : '#38bdf8');
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
@@ -15799,7 +15824,7 @@ def build():
             <button id="drawerTabAudit" type="button" class="flex-1 py-1 px-3 rounded-lg text-center font-medium transition cursor-pointer bg-zinc-800 text-white shadow-sm" onclick="setDrawerMode('audit')">
               <span>Scholarly Audit Dossier</span>
             </button>
-            <button id="drawerTabGossip" type="button" class="flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-orange-400" onclick="setDrawerMode('gossip')">
+            <button id="drawerTabGossip" type="button" class="flex-1 py-1 px-3 rounded-lg text-center font-normal transition cursor-pointer text-[#a1a1aa] hover:text-yellow-400" onclick="setDrawerMode('gossip')">
               <span>Gossip &amp; Whispers Dossier</span>
             </button>
           </div>
@@ -16196,15 +16221,15 @@ def build():
 
             <!-- Main Gossip Headline -->
             <div>
-              <h3 class="text-[16px] sm:text-[17px] font-normal text-orange-100 leading-snug">
+              <h3 class="text-[16px] sm:text-[17px] font-normal text-yellow-100 leading-snug">
                 ${{escapeHtml(inst.gossip_data ? inst.gossip_data.headline : `${{inst.name}}: Inside curatorial murmurings, donor governance debates, and backchannel discussions.`)}}
               </h3>
             </div>
 
             <!-- Reddit Community Debate -->
-            <div class="p-3 rounded-xl bg-[#1d0e05] border border-orange-900/50 space-y-1.5">
+            <div class="p-3 rounded-xl bg-[#141004] border border-yellow-900/50 space-y-1.5">
               <div class="flex items-center justify-between text-[11px] font-mono">
-                <span class="text-orange-400 font-bold flex items-center gap-1">
+                <span class="text-yellow-400 font-bold flex items-center gap-1">
                   <span>Reddit Community Thread</span>
                 </span>
                 <span class="text-slate-400">r/contemporaryart</span>
@@ -16212,16 +16237,16 @@ def build():
               <p class="text-[13px] text-slate-200 leading-relaxed font-sans">
                 ${{escapeHtml(inst.gossip_data && inst.gossip_data.reddit ? inst.gossip_data.reddit.snippet : `Curatorial staff and local artists active in threads discussing institutional independence and funding priorities at ${{inst.name}}.`)}}
               </p>
-              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-orange-950 flex items-center justify-between">
+              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-yellow-950 flex items-center justify-between">
                 <span>Thread Sentiment: Lively Curatorial Debate</span>
                 <span>Primary Subreddit</span>
               </div>
             </div>
 
             <!-- Twitter / X Curatorial Discourse -->
-            <div class="p-3 rounded-xl bg-[#1d0e05] border border-orange-900/50 space-y-1.5">
+            <div class="p-3 rounded-xl bg-[#141004] border border-yellow-900/50 space-y-1.5">
               <div class="flex items-center justify-between text-[11px] font-mono">
-                <span class="text-amber-400 font-bold flex items-center gap-1">
+                <span class="text-yellow-400 font-bold flex items-center gap-1">
                   <span>Curatorial X / Twitter Leaks</span>
                 </span>
                 <span class="text-slate-400">Curator Discourse</span>
@@ -16229,7 +16254,7 @@ def build():
               <p class="text-[13px] text-slate-200 leading-relaxed font-sans">
                 ${{escapeHtml(inst.gossip_data && inst.gossip_data.twitter_x ? inst.gossip_data.twitter_x.snippet : `Leaked curatorial correspondence and critical threads examining corporate donor ethics and programming independence.`)}}
               </p>
-              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-orange-950 flex items-center justify-between">
+              <div class="text-[11px] font-mono text-slate-400 pt-1 border-t border-yellow-950 flex items-center justify-between">
                 <span>Verified Curatorial Accounts</span>
                 <span>Art World Commentary</span>
               </div>
@@ -16238,47 +16263,47 @@ def build():
             <!-- Verified Investigative Cases & Outcomes -->
             ${{inst.gossip_data && inst.gossip_data.real_cases && inst.gossip_data.real_cases.length > 0 ? `
               <div class="space-y-3 pt-1">
-                <div class="flex items-center justify-between text-[12px] font-mono border-b border-orange-800/50 pb-1">
-                  <span class="text-orange-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <div class="flex items-center justify-between text-[12px] font-mono border-b border-yellow-800/50 pb-1">
+                  <span class="text-yellow-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
                     <span>🏛️ Documented Dispute Investigations (${{inst.gossip_data.real_cases.length}})</span>
                   </span>
                   <span class="text-slate-400">Verified Evidence</span>
                 </div>
                 ${{inst.gossip_data.real_cases.map(c => `
-                  <div class="p-3.5 rounded-xl bg-[#231206] border border-orange-600/70 space-y-2.5 shadow-sm">
+                  <div class="p-3.5 rounded-xl bg-[#1c1505] border border-yellow-600/70 space-y-2.5 shadow-sm">
                     <div class="flex items-start justify-between gap-2">
                       <div>
-                        <span class="text-[11px] font-mono px-1.5 py-0.5 rounded bg-orange-950 text-orange-300 border border-orange-700/60 font-bold mr-1.5">${{escapeHtml(c.case_id)}}</span>
-                        <strong class="text-[14px] text-orange-100 font-medium">${{escapeHtml(c.title)}}</strong>
+                        <span class="text-[11px] font-mono px-1.5 py-0.5 rounded bg-yellow-950 text-yellow-300 border border-yellow-700/60 font-bold mr-1.5">${{escapeHtml(c.case_id)}}</span>
+                        <strong class="text-[14px] text-yellow-100 font-medium">${{escapeHtml(c.title)}}</strong>
                       </div>
-                      <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#331505] text-amber-300 border border-amber-600/60 shrink-0 capitalize">
+                      <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#2a1f06] text-yellow-300 border border-yellow-600/60 shrink-0 capitalize">
                         ${{escapeHtml((c.status || '').replace(/_/g, ' '))}}
                       </span>
                     </div>
 
                     ${{c.facts && c.facts.length > 0 ? `
                       <div class="text-[13px] text-slate-200">
-                        <strong class="text-orange-300 font-mono text-[11px] block uppercase">Documented Facts:</strong>
+                        <strong class="text-yellow-300 font-mono text-[11px] block uppercase">Documented Facts:</strong>
                         <p class="leading-relaxed font-sans">${{escapeHtml(c.facts.join(' '))}}</p>
                       </div>
                     ` : ''}}
 
                     ${{c.claims && c.claims.length > 0 ? `
-                      <div class="text-[13px] text-amber-200/90">
-                        <strong class="text-amber-400 font-mono text-[11px] block uppercase">Public Claim:</strong>
+                      <div class="text-[13px] text-yellow-200/90">
+                        <strong class="text-yellow-400 font-mono text-[11px] block uppercase">Public Claim:</strong>
                         <p class="leading-relaxed font-sans italic">"${{escapeHtml(c.claims.join(' '))}}"</p>
                       </div>
                     ` : ''}}
 
                     ${{c.response ? `
                       <div class="text-[13px] text-slate-300">
-                        <strong class="text-orange-300 font-mono text-[11px] block uppercase">Institutional Response:</strong>
+                        <strong class="text-yellow-300 font-mono text-[11px] block uppercase">Institutional Response:</strong>
                         <p class="leading-relaxed font-sans">${{escapeHtml(c.response)}}</p>
                       </div>
                     ` : ''}}
 
                     ${{c.outcome ? `
-                      <div class="p-2.5 rounded-lg bg-[#2e1708] border border-orange-500/50 text-[13px] text-emerald-200">
+                      <div class="p-2.5 rounded-lg bg-[#241b07] border border-yellow-500/50 text-[13px] text-emerald-200">
                         <strong class="text-emerald-400 font-mono text-[11px] block uppercase flex items-center gap-1">
                           <span>✓ Verified Outcome (${{escapeHtml(c.latest_source_date || 'Latest')}}):</span>
                         </strong>
@@ -16287,10 +16312,10 @@ def build():
                     ` : ''}}
 
                     ${{c.sources && c.sources.length > 0 ? `
-                      <div class="pt-1.5 border-t border-orange-900/60 flex items-center gap-2 flex-wrap text-[11px] font-mono text-slate-400">
-                        <span class="text-orange-400">Sources:</span>
+                      <div class="pt-1.5 border-t border-yellow-900/60 flex items-center gap-2 flex-wrap text-[11px] font-mono text-slate-400">
+                        <span class="text-yellow-400">Sources:</span>
                         ${{c.sources.map(s => `
-                          <a href="${{escapeHtml(s.url)}}" target="_blank" rel="noopener noreferrer" class="text-amber-300 hover:text-white underline inline-flex items-center gap-0.5" title="${{escapeHtml(s.title)}}">
+                          <a href="${{escapeHtml(s.url)}}" target="_blank" rel="noopener noreferrer" class="text-yellow-300 hover:text-white underline inline-flex items-center gap-0.5" title="${{escapeHtml(s.title)}}">
                             <span>[${{escapeHtml(s.id)}}] ${{escapeHtml(s.publisher || s.title || 'Source')}}</span>
                           </a>
                         `).join(' · ')}}
@@ -16304,16 +16329,16 @@ def build():
             <!-- Verified Worker & Visitor Reviews -->
             ${{inst.gossip_data && inst.gossip_data.review_leads && inst.gossip_data.review_leads.length > 0 ? `
               <div class="space-y-2.5 pt-1">
-                <div class="flex items-center justify-between text-[12px] font-mono border-b border-orange-800/50 pb-1">
-                  <span class="text-amber-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <div class="flex items-center justify-between text-[12px] font-mono border-b border-yellow-800/50 pb-1">
+                  <span class="text-yellow-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
                     <span>👤 Verified Staff & Worker Reviews (${{inst.gossip_data.review_leads.length}})</span>
                   </span>
                   <span class="text-slate-400">Glassdoor · Kununu</span>
                 </div>
                 ${{inst.gossip_data.review_leads.map(r => `
-                  <div class="p-3 rounded-xl bg-[#200e04] border border-orange-800/60 space-y-1.5 text-[13px]">
+                  <div class="p-3 rounded-xl bg-[#161204] border border-yellow-800/60 space-y-1.5 text-[13px]">
                     <div class="flex items-center justify-between text-[11px] font-mono">
-                      <span class="text-orange-400 font-bold flex items-center gap-1">
+                      <span class="text-yellow-400 font-bold flex items-center gap-1">
                         <span>${{escapeHtml(r.platform)}}: ${{escapeHtml(r.role)}}</span>
                         ${{r.historical ? '<span class="text-slate-500 font-normal">(Historical)</span>' : ''}}
                       </span>
@@ -25896,6 +25921,17 @@ FORMATTING & INTERACTION RULES:
           return;
         }}
 
+        if (type === 'gossip_mode') {{
+          if (isGossipModeActive) {{
+            pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-yellow-500 text-black border border-yellow-200 transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-bold shadow-sm shadow-yellow-950/40 flex items-center gap-1.5 animate-pulse';
+            pill.innerHTML = '<span class="w-2 h-2 rounded-full bg-black animate-ping"></span><span>Gossip &amp; Whispers: ACTIVE</span>';
+          }} else {{
+            pill.className = 'globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5';
+            pill.innerHTML = '<span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip &amp; Whispers</span>';
+          }}
+          return;
+        }}
+
         if (type === 'academic') {{
           if (isAcademicOnly) {{
             pill.className = 'globe-filter-pill is-active px-2.5 py-[2px] rounded-full bg-[#0369a1] text-white border border-[#38bdf8] transition cursor-pointer text-[12px] sm:text-[13px] shrink-0 font-medium shadow-sm shadow-sky-950/40';
@@ -26001,7 +26037,7 @@ FORMATTING & INTERACTION RULES:
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="academic">Academic Studies ({academic_count})</button>
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="archives">Archives Directory ({archives_count})</button>
           <button class="globe-filter-pill atlas-suggestion-pill" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
-          <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
+          <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
               <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1.5" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
           <button class="globe-filter-pill hidden" data-type="contribute_intel" id="globeContributeIntelBtn" style="display:none;" aria-hidden="true"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Contribute Intel</span></button>
           <button class="globe-filter-pill atlas-suggestion-pill flex items-center gap-1" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
