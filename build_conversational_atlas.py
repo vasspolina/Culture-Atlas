@@ -864,6 +864,80 @@ def build():
       border-color: rgba(234, 179, 8, 0.85) !important;
       box-shadow: 0 0 30px rgba(234, 179, 8, 0.35), 0 20px 40px rgba(0, 0, 0, 0.9) !important;
     }}
+
+    /* ========================================================= */
+    /* 📱 MOBILE POPUP & MODAL CUT-OFF PREVENTION SYSTEM */
+    /* ========================================================= */
+    @media (max-width: 639px) {{
+      /* 1. Globe Floating Card: Dock cleanly at bottom of globe viewport on mobile */
+      #floatingCard {{
+        position: absolute !important;
+        left: 8px !important;
+        right: 8px !important;
+        bottom: 8px !important;
+        top: auto !important;
+        transform: none !important;
+        margin: 0 !important;
+        width: auto !important;
+        max-width: calc(100% - 16px) !important;
+        max-height: calc(100% - 16px) !important;
+        overflow-y: auto !important;
+        padding: 10px 12px !important;
+        border-radius: 16px !important;
+        z-index: 35 !important;
+      }}
+      #floatingCard .floating-card-arrow {{
+        display: none !important;
+      }}
+      
+      /* 2. MapLibre 3D Building Rooftop Plate: Clamp cleanly within screen on mobile */
+      .building-3d-mast-plate {{
+        min-width: 0 !important;
+        max-width: calc(100vw - 20px) !important;
+        width: calc(100vw - 20px) !important;
+        box-sizing: border-box !important;
+        padding: 9px 11px !important;
+        font-size: 11px !important;
+        margin-bottom: 8px !important;
+        border-radius: 14px !important;
+        max-height: calc(50vh - 30px) !important;
+        overflow-y: auto !important;
+      }}
+      /* Prevent the 3D floor facade stack from overlapping the mast plate on small screens */
+      .building-3d-facade-stack {{
+        display: none !important;
+      }}
+
+      /* 3. Building Floor Inspector HUD on Mobile: Dock at bottom, never overflow */
+      #buildingFloorInspectorHud {{
+        top: auto !important;
+        bottom: 8px !important;
+        left: 8px !important;
+        right: 8px !important;
+        width: auto !important;
+        max-width: calc(100% - 16px) !important;
+        max-height: calc(100% - 50px) !important;
+        overflow-y: auto !important;
+        padding: 10px 12px !important;
+        z-index: 35 !important;
+      }}
+
+      /* 4. Chat Plus Dropdown Menu on Mobile: Clamp height and scroll */
+      #workPlusMenu {{
+        left: 8px !important;
+        right: 8px !important;
+        width: auto !important;
+        max-width: calc(100vw - 16px) !important;
+        max-height: min(340px, calc(100dvh - 140px)) !important;
+        overflow-y: auto !important;
+      }}
+
+      /* 5. Active Route & City View Control Banners */
+      #activeRouteBanner, #cityViewControlBanner, #activeMapFilterBanner {{
+        max-width: calc(100% - 16px) !important;
+        font-size: 11px !important;
+      }}
+    }}
   .speak-icon {{ display: none !important; }}
 #curatorVoiceToggleIcon {{ display: none !important; }}
 </style>
@@ -996,7 +1070,7 @@ def build():
           </div>
           <div class="flex items-center gap-1 shrink-0">
             <span id="floatingCardTier" class="text-[12px] font-mono px-2 py-0.5 rounded-lg border border-emerald-900/60 bg-[#0a2016] text-emerald-400">Verified</span>
-            <button id="closeFloatingCardBtn" class="text-[#a1a1aa] hover:text-white p-1 rounded-md hover:bg-[#262626] transition text-[14px] leading-none ml-0.5 cursor-pointer" title="Close">Close</button>
+            <button id="closeFloatingCardBtn" class="text-[#a1a1aa] hover:text-white px-2.5 py-1 sm:p-1 rounded-lg hover:bg-[#262626] bg-[#222226]/80 sm:bg-transparent border border-[#383838] sm:border-transparent transition text-[13px] sm:text-[14px] leading-none ml-0.5 cursor-pointer shrink-0 font-medium" title="Close">Close</button>
           </div>
         </div>
 
@@ -1133,7 +1207,7 @@ def build():
             </button>
           </div>
         </div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[6px] border-x-transparent border-t-[6px] border-t-[#18181b]"></div>
+        <div class="floating-card-arrow absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-x-[6px] border-x-transparent border-t-[6px] border-t-[#18181b]"></div>
       </div>
 
       <!-- Floating Active Map Filter Pill Banner -->
@@ -1162,7 +1236,7 @@ def build():
       </div>
 
       <!-- 🏢 3D BUILDING FLOOR-BY-FLOOR INSPECTOR HUD (Floating on 3D Building View) -->
-      <div id="buildingFloorInspectorHud" class="hidden absolute top-12 sm:top-14 right-2 sm:right-4 z-20 pointer-events-auto flex flex-col gap-2 p-3 sm:p-3.5 rounded-2xl bg-[#0c1322]/95 border border-[#38bdf8]/70 shadow-2xl backdrop-blur-md max-w-[340px] sm:max-w-[420px] select-none text-zinc-100">
+      <div id="buildingFloorInspectorHud" class="hidden absolute bottom-2 sm:bottom-auto sm:top-14 left-2 sm:left-auto right-2 sm:right-4 z-20 pointer-events-auto flex flex-col gap-2 p-2.5 sm:p-3.5 rounded-2xl bg-[#0c1322]/95 border border-[#38bdf8]/70 shadow-2xl backdrop-blur-md w-[calc(100vw-16px)] sm:w-auto max-w-none sm:max-w-[420px] max-h-[calc(100%-60px)] overflow-y-auto select-none text-zinc-100">
         <!-- Header -->
         <div class="flex items-center justify-between gap-2 border-b border-[#233552] pb-2">
           <div class="flex items-center gap-2 min-w-0">
@@ -1519,7 +1593,7 @@ def build():
             </div>
 
             <!-- Quick Dropdown Menu for Plus button -->
-            <div id="workPlusMenu" class="hidden absolute left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-80 text-[14px]">
+            <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14px]">
               <button id="workMenuArchivesBtn" class="text-left px-3 py-2 bg-[#162030] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
                 <span class="flex items-center gap-1.5"><span>Global Archives Directory</span></span>
                 <span class="text-[11px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">{archives_count}</span>
@@ -9329,13 +9403,28 @@ def build():
           : '<span class="px-2 py-0.5 rounded text-[10px] font-mono border border-sky-800 bg-[#0c1e30] text-sky-400 font-bold">Independent Roster</span>');
 
       // 1. 🏛️ ROOFTOP BUILDING MAST PLATE (Anchored directly over 3D Building apex)
+      const isMobileScreen = window.innerWidth < 640;
       const mastEl = document.createElement('div');
       mastEl.className = 'building-3d-mast-plate pointer-events-auto select-none';
-      mastEl.style.cssText = 'min-width:280px; max-width:350px; padding:12px 14px; border-radius:16px; background:rgba(12,19,34,0.96); border:1px solid rgba(56,189,248,0.7); box-shadow:0 16px 36px rgba(0,0,0,0.7), 0 0 20px rgba(56,189,248,0.25); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; transform:translate(-50%,-100%); margin-bottom:24px; z-index:30;';
+      mastEl.style.cssText = isMobileScreen
+        ? 'width:calc(100vw - 24px); max-width:340px; min-width:0; box-sizing:border-box; padding:9px 12px; border-radius:14px; background:rgba(12,19,34,0.97); border:1px solid rgba(56,189,248,0.7); box-shadow:0 12px 28px rgba(0,0,0,0.8); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; transform:translate(-50%,-100%); margin-bottom:12px; z-index:30;'
+        : 'min-width:280px; max-width:350px; padding:12px 14px; border-radius:16px; background:rgba(12,19,34,0.96); border:1px solid rgba(56,189,248,0.7); box-shadow:0 16px 36px rgba(0,0,0,0.7), 0 0 20px rgba(56,189,248,0.25); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; transform:translate(-50%,-100%); margin-bottom:20px; z-index:30;';
 
       const webUrl = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || '');
       const fin = inst.financial_data || {{}};
       const budgetStr = fin.operating_budget_display || inst.funding || 'Independent Operational Scale';
+
+      let floorSelectorBarHtml = '';
+      if (floors.length) {{
+        floorSelectorBarHtml = '<div class="sm:hidden" style="margin-top:7px; padding-top:6px; border-top:1px solid #1e2c42; display:flex; align-items:center; gap:5px; overflow-x:auto;">' +
+          '<span style="font-size:10px; font-family:monospace; color:#38bdf8; text-transform:uppercase; font-weight:bold; flex-shrink:0;">Floors:</span>' +
+          floors.map((fl, idx) => {{
+            const isAct = (idx === currentBfiFloorIndex);
+            const code = fl.level_code || ('L' + (fl.level != null ? fl.level : idx));
+            return '<button type="button" onclick="window.selectBfiFloor(' + idx + ')" style="padding:2px 7px; font-size:10.5px; font-family:monospace; font-weight:bold; border-radius:6px; border:1px solid ' + (isAct ? '#38bdf8' : '#2b3e5e') + '; background:' + (isAct ? '#0284c7' : '#162238') + '; color:#fff; cursor:pointer; flex-shrink:0;">' + code + '</button>';
+          }}).join('') +
+        '</div>';
+      }}
 
       mastEl.innerHTML = 
         '<div style="display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid #1e2c42; padding-bottom:7px;">' +
@@ -9359,6 +9448,7 @@ def build():
             escapeHtml(inst.hours || 'Wed–Sun 11:00–19:00') + ' · ' + escapeHtml(inst.admission || 'Free Admission') +
           '</div>' +
         '</div>' +
+        floorSelectorBarHtml +
 
         '<div style="margin-top:9px; padding-top:8px; border-top:1px solid #1e2c42; display:flex; align-items:center; gap:6px; flex-wrap:wrap;">' +
           '<button type="button" onclick="window.toggleExploded3DMode()" style="background:#1d3557; color:#7dd3fc; border:1px solid #38bdf8; padding:4px 9px; border-radius:8px; font-size:10.5px; font-family:monospace; cursor:pointer; font-weight:bold; transition:all 0.15s;" title="Toggle 3D exploded axonometric floor separation">' +
@@ -9376,18 +9466,19 @@ def build():
 
       try {{
         const mastMarker = new maplibregl.Marker({{ element: mastEl, anchor: 'bottom' }})
-          .setLngLat([lon, lat + d_lat * 0.95])
+          .setLngLat([lon, lat + d_lat * (isMobileScreen ? 0.75 : 0.95)])
           .addTo(cityVectorMap);
         building3DInfoMarkers.push(mastMarker);
       }} catch (e) {{
         console.warn('Could not add rooftop mast marker:', e);
       }}
 
-      // 2. 🏢 3D FLOOR-BY-FLOOR FACADE CALLOUT STACK (Mapped directly to levels)
+      // 2. 🏢 3D FLOOR-BY-FLOOR FACADE CALLOUT STACK (Only on Desktop >= 640px to prevent mobile overlap)
       if (floors.length) {{
-        const facadeEl = document.createElement('div');
-        facadeEl.className = 'building-3d-facade-stack pointer-events-auto select-none';
-        facadeEl.style.cssText = 'min-width:270px; max-width:330px; display:flex; flex-direction:column; gap:6px; padding:10px 12px; border-radius:16px; background:rgba(10,16,28,0.95); border:1px solid rgba(56,189,248,0.5); box-shadow:0 16px 32px rgba(0,0,0,0.75); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; z-index:28;';
+        if (!isMobileScreen) {{
+          const facadeEl = document.createElement('div');
+          facadeEl.className = 'building-3d-facade-stack pointer-events-auto select-none';
+          facadeEl.style.cssText = 'min-width:270px; max-width:330px; display:flex; flex-direction:column; gap:6px; padding:10px 12px; border-radius:16px; background:rgba(10,16,28,0.95); border:1px solid rgba(56,189,248,0.5); box-shadow:0 16px 32px rgba(0,0,0,0.75); backdrop-filter:blur(12px); color:#f1f5f9; font-family:"PP Telegraf","PP Telegraph",-apple-system,sans-serif; z-index:28;';
 
         const sortedFloors = floors.map((f, i) => ({{ floor: f, originalIndex: i }})).reverse();
 
@@ -9442,13 +9533,13 @@ def build():
 
         try {{
           const facadeMarker = new maplibregl.Marker({{ element: facadeEl, anchor: 'left' }})
-            .setLngLat([lon + d_lon * 1.15, lat])
+            .setLngLat([lon + d_lon * 1.85, lat])
             .addTo(cityVectorMap);
           building3DInfoMarkers.push(facadeMarker);
         }} catch (e) {{
           console.warn('Could not add facade stack marker:', e);
         }}
-
+      }}
         // 3. 🩻 SPATIAL IN-BUILDING 3D ROOM BLUEPRINT CALLOUTS (Active Level X-Ray Badges)
         const activeFl = floors[currentBfiFloorIndex] || floors[0];
         const curShow = (activeFl.current_shows && activeFl.current_shows[0]) || null;
@@ -14334,12 +14425,37 @@ def build():
       const floatingCard = document.getElementById('floatingCard');
       if (selectedInstitution && !isCityStreetViewActive) {{
         const pt = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
-        if (pt.front && pt.depth > 0.05) {{
+        const isMobileViewport = window.innerWidth < 640;
+        if (isMobileViewport || (pt.front && pt.depth > 0.05)) {{
           floatingCard.classList.remove('hidden');
-          const clampedX = Math.max(160, Math.min(width - 160, pt.x));
-          const clampedY = Math.max(110, Math.min(height - 20, pt.y));
-          floatingCard.style.left = `${{clampedX}}px`;
-          floatingCard.style.top = `${{clampedY}}px`;
+          if (isMobileViewport) {{
+            floatingCard.style.left = '8px';
+            floatingCard.style.right = '8px';
+            floatingCard.style.bottom = '8px';
+            floatingCard.style.top = 'auto';
+            floatingCard.style.transform = 'none';
+            floatingCard.style.maxWidth = 'calc(100% - 16px)';
+            floatingCard.style.width = 'auto';
+            floatingCard.style.maxHeight = `${{Math.max(160, height - 16)}}px`;
+            floatingCard.style.overflowY = 'auto';
+          }} else {{
+            floatingCard.style.right = 'auto';
+            floatingCard.style.bottom = 'auto';
+            floatingCard.style.maxWidth = '420px';
+            floatingCard.style.width = 'max-content';
+            const cardW = floatingCard.offsetWidth || 340;
+            const cardH = floatingCard.offsetHeight || 280;
+            const halfW = cardW / 2;
+            const clampedX = Math.max(halfW + 12, Math.min(width - halfW - 12, pt.x));
+            if (pt.y < cardH + 24) {{
+              floatingCard.style.transform = 'translate(-50%, 14px)';
+              floatingCard.style.top = `${{Math.max(10, Math.min(height - cardH - 10, pt.y))}}px`;
+            }} else {{
+              floatingCard.style.transform = 'translate(-50%, -100%)';
+              floatingCard.style.top = `${{Math.max(cardH + 10, Math.min(height - 10, pt.y - 12))}}px`;
+            }}
+            floatingCard.style.left = `${{clampedX}}px`;
+          }}
 
           if (!isCityZoom) {{
             ctx.font = '14px "PP Telegraf", "PP Telegraph", sans-serif';
