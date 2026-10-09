@@ -1449,14 +1449,14 @@ def build():
           </svg>
           <span>New Chat</span>
         </button>
-        <button id="topCatalogBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] hover:border-[#3b5585] text-[#93c5fd] hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Browse all cultural spaces and academic research findings">
+        <button id="topCatalogBtn" class="hidden" style="display:none;" aria-hidden="true" title="Browse all cultural spaces and academic research findings">
           <span>All Findings</span>
           <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.2 rounded">{total_findings_count}</span>
         </button>
-        <button id="topArchivesBtn" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] hover:border-[#3b5585] text-[#93c5fd] hover:text-white rounded-full text-[13px] transition cursor-pointer font-normal shadow-sm" title="Explore the Global Archives & Special Collections Directory">
+        <button id="topArchivesBtn" class="hidden" style="display:none;" aria-hidden="true" title="Explore the Global Archives & Special Collections Directory">
           <span>Archives Directory</span>
         </button>
-        <button id="topGovernanceBtn" class="flex items-center gap-1.5 px-5 py-2 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] hover:border-[#3b5585] text-slate-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Governance & Funding Transparency Methodology Legend">
+        <button id="topGovernanceBtn" class="hidden" style="display:none;" aria-hidden="true" title="Governance & Funding Transparency Methodology Legend">
           <span>Methodology</span>
         </button>
         <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-5 py-2 bg-[#271206] hover:bg-[#381a09] border border-orange-900/60 hover:border-orange-700/80 text-orange-300 hover:text-white rounded-full text-[13px] sm:text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
@@ -1490,15 +1490,15 @@ def build():
         <span>Gossip</span>
       </button>
 
-      <button id="mobileCatalogBtn" class="hidden sm:flex md:hidden items-center justify-center px-3 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Browse All Findings">
+      <button id="mobileCatalogBtn" class="hidden" style="display:none;" aria-hidden="true" title="Browse All Findings">
         Findings
       </button>
 
-      <button id="mobileArchivesBtn" class="hidden sm:flex md:hidden items-center justify-center px-3 py-1 bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-[#93c5fd] rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Archives Directory">
+      <button id="mobileArchivesBtn" class="hidden" style="display:none;" aria-hidden="true" title="Archives Directory">
         Archives
       </button>
 
-      <button id="mobileGovernanceBtn" class="hidden sm:flex md:hidden items-center justify-center px-3 py-1 bg-[#182030] hover:bg-[#222e44] border border-[#2d3d5a] text-slate-300 rounded-xl text-[12px] font-medium transition cursor-pointer shrink-0" title="Governance Methodology">
+      <button id="mobileGovernanceBtn" class="hidden" style="display:none;" aria-hidden="true" title="Governance Methodology">
         Legend
       </button>
 
@@ -13263,14 +13263,14 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v9') caches.delete(k);
+          if (k !== 'culture-atlas-v10') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=9').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=10').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
