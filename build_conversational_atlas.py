@@ -611,6 +611,8 @@ def build():
       min-height: 0;
       overflow-y: auto;
       width: 100%;
+      padding-bottom: min(350px, 45vh) !important;
+      scroll-padding-bottom: min(350px, 45vh) !important;
     }}
     #curatorMessages:empty {{
       display: none;
@@ -2139,6 +2141,23 @@ def build():
           </button>
         </div>
         <div class="flex items-center gap-1.5 sm:gap-2">
+          <!-- Integrated Header Mode Switcher (Zero clutter at the bottom!) -->
+          <div class="inline-flex p-0.5 rounded-xl bg-[#070a12] border border-[#1e293b] text-[14px] font-mono select-none">
+            <button id="modeTabGeneralChat" type="button" onclick="window.exitChatInputMode()" class="px-2.5 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1 cursor-pointer bg-[#1e293b] text-white shadow-sm" title="General Chat Mode">
+              <span>💬</span>
+              <span class="hidden md:inline">General Chat</span>
+            </button>
+            <button id="modeTabWhistleblower" type="button" onclick="window.enterChatInputMode()" class="px-2.5 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1 cursor-pointer text-slate-400 hover:text-emerald-400" title="Secure Whistleblower & Intel Intake Mode">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span class="hidden md:inline">Whistleblower Intake</span>
+            </button>
+          </div>
+
+          <div id="modeSwitchOpSecIndicator" class="hidden text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-2 py-0.5 rounded-full items-center gap-1 shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="hidden lg:inline">Zero-Knowledge</span>
+          </div>
+
           <div id="workspaceSelectedInstPill" class="hidden items-center gap-1.5 text-[14px] font-mono text-slate-300 bg-[#141b2a] border border-[#1e293b] px-2.5 py-0.5 rounded-lg truncate max-w-[200px]">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
             <span id="workspaceSelectedInstName" class="truncate font-medium"></span>
@@ -2166,8 +2185,8 @@ def build():
       <!-- 1. CHAT WORKSPACE VIEW (Active on Tab 1) -->
       <div id="workspaceChatView" class="relative z-10 flex-1 min-h-0 flex flex-col w-full overflow-hidden">
         <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
-      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[16px] sm:px-[20px] pt-4 pb-2 w-full bg-transparent">
-        <div id="curatorScrollContent" class="w-full flex flex-col items-center">
+      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[16px] sm:px-[20px] pt-4 pb-96 w-full bg-transparent">
+        <div id="curatorScrollContent" class="w-full flex flex-col items-center pb-24 sm:pb-36">
           
           <!-- Dedicated Input Mode Header: Clean Minimalist SaaS Bar -->
           <div id="chatInputModeHeader" class="hidden w-full mb-3 py-2 px-3.5 rounded-xl bg-[#0f172a] border border-[#1e293b] flex items-center justify-between gap-3 text-slate-300 select-none">
@@ -2262,6 +2281,9 @@ def build():
               </button>
             </div>
           </div>
+
+          <!-- Generous Scroll Buffer Spacer: Ensures chat text can scroll completely above the input dock -->
+          <div id="chatScrollBufferSpacer" class="w-full h-48 sm:h-72 shrink-0 pointer-events-none" aria-hidden="true"></div>
 
         </div>
       </div>
@@ -2417,30 +2439,8 @@ def build():
       <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-[16px] sm:px-[20px] pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-black border-t border-[#1c1c1f]">
         <div class="w-full flex flex-col items-center">
           
-          <!-- Explicit Segmented Mode Switcher above prompt area -->
-          <div id="chatModeSegmentedSwitch" class="w-full flex items-center justify-between gap-2 mb-2 select-none">
-            <div class="inline-flex p-1 rounded-xl bg-[#18181b] border border-[#27272a] shadow-inner gap-1">
-              <button id="modeTabGeneralChat" type="button" onclick="window.exitChatInputMode()" class="px-3 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1.5 cursor-pointer bg-[#27272a] text-white shadow-sm" title="General conversational chat & art inquiry">
-                <span>💬</span>
-                <span>General Chat</span>
-              </button>
-              <button id="modeTabWhistleblower" type="button" onclick="window.enterChatInputMode()" class="px-3 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1.5 cursor-pointer text-slate-400 hover:text-slate-200" title="Secure Whistleblower & Intel Intake Mode">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span>🔒 Whistleblower Intake</span>
-              </button>
-            </div>
-            
-            <div class="flex items-center gap-2">
-              <div id="modeSwitchOpSecIndicator" class="hidden text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-2.5 py-1 rounded-full items-center gap-1.5 shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Zero-Knowledge Hashing</span>
-              </div>
-              <button id="chatContributeBtn" type="button" onclick="window.triggerInChatContributeFlow()" class="px-3 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1.5 cursor-pointer bg-[#14231a] hover:bg-[#1a3024] text-emerald-300 border border-emerald-700/60 shadow-sm" title="Contribute confidential intel (in-chat)">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-                <span>Contribute Intel</span>
-              </button>
-            </div>
-          </div>
+          <!-- Hidden preservation stub for legacy mode switch callers -->
+          <div id="chatModeSegmentedSwitch" class="hidden" aria-hidden="true"></div>
 
           <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas / Whistleblower Container) -->
           <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-2xl sm:rounded-3xl py-3.5 sm:py-4.5 px-3.5 sm:px-4.5 shadow-xl transition relative">
@@ -2463,13 +2463,16 @@ def build():
             <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] sm:text-[14px] focus:outline-none resize-none font-normal leading-[140%] min-h-[34px] sm:min-h-[42px] max-h-36 mb-1.5"></textarea>
             
             <div class="flex items-center justify-between pt-1.5">
-              <!-- Left: Action buttons (normal chat plus menu, whistleblower attach/cancel) -->
+              <!-- Left: Action buttons (normal chat plus menu, quick mode toggle, whistleblower attach/cancel) -->
               <div class="flex items-center gap-2 sm:gap-2.5">
                 <button id="workPlusBtn" class="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0 shadow-sm" title="Quick filters">
                   <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                   </svg>
+                </button>
+                <button id="inputModeToggleBtn" type="button" onclick="window.isChatInputMode ? window.exitChatInputMode() : window.enterChatInputMode()" class="px-2.5 py-1 rounded-full bg-[#18181b] hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#333] text-[14px] font-mono flex items-center gap-1.5 cursor-pointer transition shadow-sm" title="Toggle Whistleblower Intake mode">
+                  <span>🔒 Intake</span>
                 </button>
                 <button id="inputModeAttachBtn" type="button" onclick="window.handleAttachClick()" class="hidden px-3 py-1.5 rounded-xl bg-[#14261d] hover:bg-[#1e382b] text-emerald-300 hover:text-white border border-emerald-700/60 text-[14px] font-normal transition cursor-pointer flex items-center gap-1.5 shrink-0" title="Attach confidential document or memo">
                   <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
@@ -2484,8 +2487,13 @@ def build():
                 </div>
               </div>
 
-              <!-- Right: Primary Send Action (Clean, uncrowded, and focused) -->
-              <div class="flex items-center gap-1.5 sm:gap-2">
+              <!-- Right: Primary Send Action & In-Chat Contribute Intel -->
+              <div class="flex items-center gap-2">
+                <button id="chatContributeBtn" type="button" onclick="window.triggerInChatContributeFlow()" class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#14231a] hover:bg-[#1a3024] text-emerald-300 border border-emerald-700/60 transition flex items-center gap-1.5 cursor-pointer text-[14px] font-mono shadow-sm" title="Contribute confidential intel (in-chat)">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                  <span class="hidden sm:inline">Contribute Intel</span>
+                  <span class="sm:hidden">Contribute</span>
+                </button>
                 <button id="workSendBtn" class="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center gap-1.5 sm:gap-2 transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[14px] font-medium" title="Send message">
                   <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -2532,19 +2540,20 @@ def build():
           </div>
 
           <!-- Bottom Zone: Collapsible Map Filters & Layers Drawer Trigger matching Wireframe -->
-          <div id="workSubActionBar" class="w-full flex items-center justify-between gap-2 select-none mt-2.5">
+          <div id="workSubActionBar" class="w-full flex items-center justify-between gap-2 select-none mt-2">
             <button id="filterViewToggleBtn" type="button" onclick="window.toggleFilterDrawer()" class="w-full py-2 px-3.5 rounded-xl bg-[#141416] hover:bg-[#1f1f23] border border-[#27272a] hover:border-emerald-500/50 text-slate-200 hover:text-white transition duration-150 flex items-center justify-between cursor-pointer shadow-sm text-[14px]" title="Toggle Map Layers & Filters">
               <div class="flex items-center gap-2 min-w-0">
                 <svg id="filterChevronIcon" class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
-                <span class="font-medium truncate">Filter Map Layers &amp; Categories</span>
+                <span class="font-medium truncate">Filters &amp; Layers</span>
                 <span id="activeFilterBadge" class="px-2 py-0.2 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800 text-[14px] font-mono shrink-0">{clean_count}</span>
               </div>
               <div class="flex items-center gap-2 shrink-0">
                 <span id="quickFilterLabel" class="hidden sm:inline text-[14px] text-slate-400 font-mono">Clean Funding ({clean_count})</span>
               </div>
             </button>
+          </div>
 
             <!-- Hidden alias stub for fullWidthInputModeBtn to preserve any DOM references -->
             <button id="fullWidthInputModeBtn" type="button" onclick="window.toggleChatInputMode()" class="hidden" style="display:none;" aria-hidden="true">
@@ -24653,16 +24662,28 @@ FORMATTING & INTERACTION RULES:
       // 2. Update Segmented Switcher tabs
       const tabGeneral = document.getElementById('modeTabGeneralChat');
       if (tabGeneral) {{
-        tabGeneral.className = 'px-3 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1.5 cursor-pointer text-slate-400 hover:text-slate-200';
+        tabGeneral.className = 'px-2.5 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1 cursor-pointer text-slate-400 hover:text-slate-200';
       }}
       const tabWhistleblower = document.getElementById('modeTabWhistleblower');
       if (tabWhistleblower) {{
-        tabWhistleblower.className = 'px-3 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1.5 cursor-pointer bg-[#092619] text-emerald-300 border border-emerald-500/60 shadow-sm';
+        tabWhistleblower.className = 'px-2.5 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1 cursor-pointer bg-[#092619] text-emerald-300 border border-emerald-500/60 shadow-sm';
       }}
       const opsecInd = document.getElementById('modeSwitchOpSecIndicator');
       if (opsecInd) {{
         opsecInd.classList.remove('hidden');
         opsecInd.classList.add('flex');
+      }}
+
+      // Update Input Card Mode Toggle Button
+      const modeToggleBtn = document.getElementById('inputModeToggleBtn');
+      if (modeToggleBtn) {{
+        modeToggleBtn.innerHTML = '<span>💬 Return to Chat</span>';
+        modeToggleBtn.className = 'px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-600/70 text-[14px] font-mono flex items-center gap-1.5 cursor-pointer hover:bg-emerald-900 transition shadow-sm';
+        modeToggleBtn.title = 'Switch back to General Chat mode';
+      }}
+      const chatContributeBtn = document.getElementById('chatContributeBtn');
+      if (chatContributeBtn) {{
+        chatContributeBtn.classList.add('hidden');
       }}
 
       // 3. Show Attached Secure Mode Banner inside/above container
@@ -24770,16 +24791,28 @@ FORMATTING & INTERACTION RULES:
       // 2. Update Segmented Switcher tabs
       const tabGeneral = document.getElementById('modeTabGeneralChat');
       if (tabGeneral) {{
-        tabGeneral.className = 'px-3 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1.5 cursor-pointer bg-[#27272a] text-white shadow-sm';
+        tabGeneral.className = 'px-2.5 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1 cursor-pointer bg-[#1e293b] text-white shadow-sm';
       }}
       const tabWhistleblower = document.getElementById('modeTabWhistleblower');
       if (tabWhistleblower) {{
-        tabWhistleblower.className = 'px-3 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1.5 cursor-pointer text-slate-400 hover:text-slate-200';
+        tabWhistleblower.className = 'px-2.5 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1 cursor-pointer text-slate-400 hover:text-emerald-400';
       }}
       const opsecInd = document.getElementById('modeSwitchOpSecIndicator');
       if (opsecInd) {{
         opsecInd.classList.remove('flex');
         opsecInd.classList.add('hidden');
+      }}
+
+      // Restore Input Card Mode Toggle Button & Contribute Intel
+      const modeToggleBtn = document.getElementById('inputModeToggleBtn');
+      if (modeToggleBtn) {{
+        modeToggleBtn.innerHTML = '<span>🔒 Intake</span>';
+        modeToggleBtn.className = 'px-2.5 py-1 rounded-full bg-[#18181b] hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#333] text-[14px] font-mono flex items-center gap-1.5 cursor-pointer transition shadow-sm';
+        modeToggleBtn.title = 'Switch to Whistleblower Intake mode';
+      }}
+      const chatContributeBtn = document.getElementById('chatContributeBtn');
+      if (chatContributeBtn) {{
+        chatContributeBtn.classList.remove('hidden');
       }}
 
       // 3. Hide Attached Secure Mode Banner
@@ -28411,6 +28444,14 @@ bar.innerHTML = html;
 
       if (targetGossip === '1' || targetGossip === 'true' || targetMode === 'gossip') {{
         toggleGossipMode(true);
+      }}
+
+      if (targetMode === 'whistleblower' || params.get('whistleblower') === '1' || params.get('intake') === '1') {{
+        enterChatInputMode();
+      }}
+
+      if (params.get('filters') === '1' || params.get('drawer') === '1') {{
+        toggleFilterDrawer(true);
       }}
 
       if (targetInst) {{

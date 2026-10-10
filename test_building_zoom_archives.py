@@ -13,7 +13,9 @@ def run_tests():
 
     test_script = """
     <script>
-    // Stub fetch so headless chrome does not hang on external network
+    // Stub fetch and animation frames so headless chrome does not hang on external network or loops
+    window.requestAnimationFrame = () => 1;
+    window.cancelAnimationFrame = () => {};
     window.fetch = async (url, opts) => {
       return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
