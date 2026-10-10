@@ -2103,7 +2103,33 @@ def build():
         </svg>
       </div>
 
-      <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
+      <!-- 📑 WORKSPACE UNIFIED TAB BAR (Clean Map on Left, Context & Intelligence on Right) -->
+      <div id="workspaceTabBar" class="shrink-0 flex items-center justify-between border-b border-[#1e293b] bg-[#0c101a] px-3.5 py-2 select-none z-20">
+        <div class="flex items-center gap-1.5 p-0.5 bg-[#070a12] border border-[#1e293b] rounded-xl text-[14px]">
+          <button id="workspaceTabChat" type="button" class="py-1 px-3.5 rounded-lg text-center font-medium transition cursor-pointer bg-[#1e293b] text-white shadow-sm flex items-center gap-2" onclick="window.setWorkspaceTab('chat');">
+            <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Chat / AI Assistant</span>
+          </button>
+          <button id="workspaceTabDossier" type="button" class="py-1 px-3.5 rounded-lg text-center font-normal transition cursor-pointer text-slate-400 hover:text-white flex items-center gap-2" onclick="window.setWorkspaceTab('dossier');">
+            <svg class="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span id="workspaceTabDossierLabel">Dossier / Intelligence</span>
+            <span id="workspaceTabDossierBadge" class="hidden text-[14px] font-mono px-1.5 py-0.2 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800/80">Active</span>
+          </button>
+        </div>
+        <div class="flex items-center gap-2">
+          <div id="workspaceSelectedInstPill" class="hidden items-center gap-1.5 text-[14px] font-mono text-slate-300 bg-[#141b2a] border border-[#1e293b] px-2.5 py-0.5 rounded-lg truncate max-w-[200px]">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+            <span id="workspaceSelectedInstName" class="truncate font-medium"></span>
+          </div>
+          <button id="workspaceNewChatBtn" type="button" class="px-2.5 py-1 rounded-lg text-[14px] bg-[#141b2a] hover:bg-[#1e293b] text-slate-300 hover:text-white border border-[#1e293b] transition flex items-center gap-1 cursor-pointer font-medium" onclick="window.resetToNewChat(); window.setWorkspaceTab('chat');">
+            <span>+ New Chat</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 1. CHAT WORKSPACE VIEW (Active on Tab 1) -->
+      <div id="workspaceChatView" class="relative z-10 flex-1 min-h-0 flex flex-col w-full overflow-hidden">
+        <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
       <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[16px] sm:px-[20px] pt-4 pb-2 w-full bg-transparent">
         <div id="curatorScrollContent" class="w-full flex flex-col items-center">
           
@@ -2466,7 +2492,34 @@ def build():
           </div>
         </div>
       </div>
+      </div>
+      <!-- /workspaceChatView -->
 
+      <!-- 2. 📄 DOSSIER & INTELLIGENCE INSPECTOR (Tab 2: Native Right-Hand Panel, Zero Map Overlays) -->
+      <div id="detailDrawer" class="hidden relative z-10 flex-1 min-h-0 w-full h-full bg-[#0a0d15] flex flex-col overflow-hidden select-text">
+        <!-- Inspector Sub-Header Bar -->
+        <div class="p-3 px-4 border-b border-[#1e293b] flex items-center justify-between bg-[#0e121c] shrink-0">
+          <div class="flex items-center gap-2 min-w-0">
+            <button type="button" onclick="window.setWorkspaceTab('chat');" class="px-2.5 py-1 rounded-lg text-[14px] font-medium bg-[#1e293b]/70 hover:bg-[#334155] text-slate-300 hover:text-white border border-[#334155]/60 transition flex items-center gap-1.5 cursor-pointer shrink-0">
+              <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <span>Back to Chat</span>
+            </button>
+            <span class="text-slate-500 font-mono text-[14px] hidden sm:inline">|</span>
+            <span class="text-[14px] font-mono text-slate-400 uppercase tracking-wider hidden sm:inline">Entity Inspector</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="closeDetailBtn" type="button" class="p-1.5 rounded-lg bg-[#1e293b]/60 hover:bg-[#334155] text-slate-400 hover:text-white transition cursor-pointer" title="Close Dossier">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Inspector Scrollable Dossier Content -->
+        <div id="detailBody" class="flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-5 space-y-4 text-[14px]">
+          <!-- Populated dynamically by openDossier() or renderEmptyDossierState() -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ========================================================= -->
@@ -2509,17 +2562,6 @@ def build():
   </div>
 
   <!-- ========================================================= -->
-  <!-- 📄 SCHOLARLY INSTITUTION AUDIT DOSSIER DRAWER -->
-  <!-- ========================================================= -->
-  <div id="detailDrawer" class="hidden fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-[#0a0d15]/98 backdrop-blur-2xl border-l border-[#1c212a] shadow-2xl flex flex-col">
-    <div class="p-3.5 px-4 border-b border-[#1c212a] flex items-center justify-end bg-[#0e121c]">
-      <button id="closeDetailBtn" class="atlas-pill-btn pill-sm" title="Close"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
-    </div>
-    <div id="detailBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-[14px]">
-      <!-- Injected dynamically -->
-    </div>
-  </div>
-
   <!-- ========================================================= -->
   <!-- ========================================================= -->
   <!-- ⚠️ MoMA EXCLUSION AUDIT MODAL -->
@@ -10754,6 +10796,89 @@ def build():
     }}
     window.setDrawerMode = setDrawerMode;
 
+    let currentWorkspaceTab = 'chat';
+    function setWorkspaceTab(tab) {{
+      currentWorkspaceTab = tab === 'dossier' ? 'dossier' : 'chat';
+      const tabChat = document.getElementById('workspaceTabChat');
+      const tabDossier = document.getElementById('workspaceTabDossier');
+      const chatView = document.getElementById('workspaceChatView');
+      const dossierView = document.getElementById('detailDrawer');
+
+      if (currentWorkspaceTab === 'dossier') {{
+        if (chatView) chatView.classList.add('hidden');
+        if (dossierView) dossierView.classList.remove('hidden');
+        if (tabChat) {{
+          tabChat.className = 'py-1 px-3.5 rounded-lg text-center font-normal transition cursor-pointer text-slate-400 hover:text-white flex items-center gap-2';
+        }}
+        if (tabDossier) {{
+          tabDossier.className = 'py-1 px-3.5 rounded-lg text-center font-medium transition cursor-pointer bg-[#1e293b] text-white shadow-sm flex items-center gap-2';
+        }}
+        if (!selectedInstitution && typeof renderEmptyDossierState === 'function') {{
+          renderEmptyDossierState();
+        }}
+      }} else {{
+        if (chatView) chatView.classList.remove('hidden');
+        if (dossierView) dossierView.classList.add('hidden');
+        if (tabChat) {{
+          tabChat.className = 'py-1 px-3.5 rounded-lg text-center font-medium transition cursor-pointer bg-[#1e293b] text-white shadow-sm flex items-center gap-2';
+        }}
+        if (tabDossier) {{
+          tabDossier.className = 'py-1 px-3.5 rounded-lg text-center font-normal transition cursor-pointer text-slate-400 hover:text-white flex items-center gap-2';
+        }}
+      }}
+    }}
+    window.setWorkspaceTab = setWorkspaceTab;
+
+    function renderEmptyDossierState() {{
+      const body = document.getElementById('detailBody');
+      if (!body) return;
+      body.innerHTML = `
+        <div class="h-full flex flex-col items-center justify-center text-center p-6 space-y-4 my-auto select-none">
+          <div class="w-14 h-14 rounded-2xl bg-[#0f172a] border border-[#1e293b] flex items-center justify-center text-sky-400 shadow-lg">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+          </div>
+          <div class="space-y-1.5 max-w-sm">
+            <h3 class="text-[18px] font-medium text-white">Entity Inspector Ready</h3>
+            <p class="text-[14px] text-slate-400 leading-relaxed font-normal">
+              Click any museum or art space on the 3D globe to inspect its governance structure, financial architecture, and curatorial intelligence.
+            </p>
+          </div>
+          <div class="pt-2 flex flex-col items-center gap-2">
+            <span class="text-[14px] font-mono text-slate-500 uppercase tracking-wider">Explore Featured Spaces</span>
+            <div class="flex items-center justify-center gap-2 flex-wrap">
+              <button type="button" onclick="atlasSelectInst('Tate Modern');" class="px-3 py-1.5 rounded-xl bg-[#141b2a] hover:bg-[#1e293b] text-slate-200 hover:text-white border border-[#1e293b] text-[14px] font-medium transition cursor-pointer">
+                Tate Modern
+              </button>
+              <button type="button" onclick="atlasSelectInst('Slought');" class="px-3 py-1.5 rounded-xl bg-[#141b2a] hover:bg-[#1e293b] text-slate-200 hover:text-white border border-[#1e293b] text-[14px] font-medium transition cursor-pointer">
+                Slought
+              </button>
+              <button type="button" onclick="atlasSelectInst('Solomon R. Guggenheim Museum');" class="px-3 py-1.5 rounded-xl bg-[#141b2a] hover:bg-[#1e293b] text-slate-200 hover:text-white border border-[#1e293b] text-[14px] font-medium transition cursor-pointer">
+                Guggenheim
+              </button>
+              <button type="button" onclick="atlasSelectInst('Stedelijk Museum Amsterdam');" class="px-3 py-1.5 rounded-xl bg-[#141b2a] hover:bg-[#1e293b] text-slate-200 hover:text-white border border-[#1e293b] text-[14px] font-medium transition cursor-pointer">
+                Stedelijk
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }}
+    window.renderEmptyDossierState = renderEmptyDossierState;
+
+    function askCuratorAboutInst(inst) {{
+      if (!inst) return;
+      setWorkspaceTab('chat');
+      const input = document.getElementById('workInput');
+      if (input) {{
+        input.value = `Tell me about the funding architecture and curatorial independence of ${{inst.name}}.`;
+        input.focus();
+      }}
+    }}
+    window.askCuratorAboutInst = askCuratorAboutInst;
+
     function zoomToBuilding(instNameOrObj, showArchives = false) {{
       let inst = null;
       if (typeof instNameOrObj === 'string') {{
@@ -15293,17 +15418,11 @@ def build():
             floatingCard.style.width = 'auto';
             floatingCard.style.maxHeight = `${{Math.max(160, height - 16)}}px`;
             floatingCard.style.overflowY = 'auto';
+            floatingCard.classList.remove('hidden');
           }} else {{
-            // Desktop: Slide-over drawer docked on the left edge of globe viewport
-            floatingCard.style.left = '16px';
-            floatingCard.style.right = 'auto';
-            floatingCard.style.top = '16px';
-            floatingCard.style.bottom = '16px';
-            floatingCard.style.transform = 'none';
-            floatingCard.style.width = '380px';
-            floatingCard.style.maxWidth = `${{Math.min(380, width - 32)}}px`;
-            floatingCard.style.maxHeight = `${{height - 32}}px`;
-            floatingCard.style.overflowY = 'auto';
+            // Desktop: Pure Clean Globe! No floating left card over the 3D globe.
+            // All context and intelligence smoothly lives in the Right-Hand Inspector Tab.
+            floatingCard.classList.add('hidden');
           }}
 
           ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
@@ -15348,6 +15467,14 @@ def build():
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) floatingCard.classList.add('hidden');
       document.querySelectorAll('.inst-card').forEach(c => c.classList.remove('active'));
+      const badgeWrap = document.getElementById('workspaceSelectedInstPill');
+      if (badgeWrap) {{
+        badgeWrap.classList.add('hidden');
+        badgeWrap.classList.remove('flex');
+      }}
+      if (typeof setWorkspaceTab === 'function') {{
+        setWorkspaceTab('chat');
+      }}
     }}
 
     function selectInstitution(inst, shouldSwitchToGlobe = false) {{
@@ -15356,9 +15483,25 @@ def build():
         return;
       }}
       selectedInstitution = inst;
+      const isMobile = window.innerWidth < 768;
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) {{
-        floatingCard.classList.remove('hidden');
+        if (isMobile) {{
+          floatingCard.classList.remove('hidden');
+        }} else {{
+          floatingCard.classList.add('hidden');
+        }}
+      }}
+      const badgeWrap = document.getElementById('workspaceSelectedInstPill');
+      const badgeName = document.getElementById('workspaceSelectedInstName');
+      if (badgeWrap && badgeName) {{
+        badgeName.textContent = inst.name;
+        badgeWrap.classList.remove('hidden');
+        badgeWrap.classList.add('flex');
+      }}
+      const tabDossierLabel = document.getElementById('workspaceTabDossierLabel');
+      if (tabDossierLabel) {{
+        tabDossierLabel.textContent = 'Dossier / Intelligence';
       }}
       if (typeof curatorContext !== 'undefined' && inst) {{
         curatorContext.lastInst = inst;
@@ -15712,6 +15855,14 @@ def build():
       if (window.innerWidth < 768 && typeof currentMobileMode !== 'undefined' && currentMobileMode === 'chat' && typeof setMobileViewMode === 'function') {{
         setMobileViewMode('split');
       }}
+
+      // Unified Inspector Pattern: Automatically transition right-hand panel into Dossier Tab
+      if (typeof openDossier === 'function') {{
+        openDossier(inst);
+      }}
+      if (typeof setWorkspaceTab === 'function') {{
+        setWorkspaceTab('dossier');
+      }}
     }}
     window.selectInstitution = selectInstitution;
     window.deselectInstitution = deselectInstitution;
@@ -15780,6 +15931,13 @@ def build():
       const cleanStatusTitle = sanitizeAuditStatus(inst.transparency_grade, isClean, isFlagged, isCommunity);
       const statusCategory = isCommunity ? 'Community Pipeline' : 'Audit Classification';
 
+      const fin = inst.financial_data || {{}};
+      const bDisplay = fin.operating_budget_display || inst.funding || 'Independent Operational Scale';
+      const pubPct = fin.public_subsidies_pct != null ? `${{fin.public_subsidies_pct}}%` : 'N/A';
+      const philPct = fin.philanthropy_endowment_pct != null ? `${{fin.philanthropy_endowment_pct}}%` : 'N/A';
+      const earnPct = fin.earned_revenue_pct != null ? `${{fin.earned_revenue_pct}}%` : 'N/A';
+      const progPct = fin.program_spend_ratio_pct != null ? `${{fin.program_spend_ratio_pct}}%` : (fin.program_expense_ratio ? `${{(fin.program_expense_ratio * 100).toFixed(0)}}%` : 'N/A');
+
       const bannerBg = isCommunity
         ? 'bg-[#092329] border border-[#08bdba]/70 shadow-cyan-950/40'
         : isClean 
@@ -15811,6 +15969,28 @@ def build():
             <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${{escapeHtml(inst.location || inst.city)}} · ${{inst.size || 'Audited Space'}}</p>
           </div>
 
+          <!-- Clean Action Toolbar (Direct Chat Inquiry & Spatial Verification) -->
+          <div class="flex items-center gap-2 flex-wrap pt-0.5">
+            <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="py-1.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[14px] flex items-center gap-1.5 transition cursor-pointer shadow-sm">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Ask Curator in Chat</span>
+            </button>
+            ${{webUrl ? `
+              <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" class="py-1.5 px-3 rounded-xl bg-[#141b2a] hover:bg-[#1e293b] text-slate-200 hover:text-white border border-[#1e293b] text-[14px] flex items-center gap-1.5 transition">
+                <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>Website</span>
+              </a>
+            ` : ''}}
+            <a href="${{`https://www.google.com/maps/search/${{encodeURIComponent(inst.name + ' ' + (inst.city || ''))}}`}}" target="_blank" rel="noopener noreferrer" class="py-1.5 px-3 rounded-xl bg-[#141b2a] hover:bg-[#1e293b] text-slate-200 hover:text-white border border-[#1e293b] text-[14px] flex items-center gap-1.5 transition" title="Open Google Maps 3D Satellite">
+              <svg class="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Google 3D</span>
+            </a>
+            <a href="${{`https://www.google.com/search?tbm=isch&q=${{encodeURIComponent(inst.name + ' ' + (inst.city || ''))}}`}}" target="_blank" rel="noopener noreferrer" class="py-1.5 px-3 rounded-xl bg-[#141b2a] hover:bg-[#1e293b] text-slate-200 hover:text-white border border-[#1e293b] text-[14px] flex items-center gap-1.5 transition" title="Explore actual space photos on Google Images">
+              <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Photos</span>
+            </a>
+          </div>
+
           <!-- DRAWER MODE TOGGLE (SCHOLARLY AUDIT <-> GOSSIP & WHISPERS DOSSIER) -->
           <div class="flex items-center p-0.5 bg-[#121620] border border-[#232f48] rounded-xl text-[14px] font-mono select-none">
             <button id="drawerTabAudit" type="button" class="flex-1 py-1 px-3 rounded-lg text-center font-medium transition cursor-pointer bg-zinc-800 text-white shadow-sm" onclick="setDrawerMode('audit')">
@@ -15827,6 +16007,32 @@ def build():
 
           <!-- SCHOLARLY AUDIT VIEWPORT -->
           <div id="drawerAuditView" class="space-y-3">
+          <!-- CLEAN OSINT FINANCIAL METRIC STRIP -->
+          <div class="p-3 rounded-xl bg-[#0e131f] border border-[#1e293b] select-text">
+            <div class="flex items-center justify-between text-[14px] font-mono text-slate-400 mb-2">
+              <span class="uppercase tracking-wider font-semibold text-slate-300">Operational &amp; Financial Scope</span>
+              <span class="text-white font-medium">${{escapeHtml(bDisplay)}}</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[14px] font-mono">
+              <div class="p-2 rounded-lg bg-[#080c14] border border-[#1e293b]/70">
+                <div class="text-slate-400 text-[14px]">Public Subsidy</div>
+                <div class="text-white text-[18px] font-medium mt-0.5">${{pubPct}}</div>
+              </div>
+              <div class="p-2 rounded-lg bg-[#080c14] border border-[#1e293b]/70">
+                <div class="text-slate-400 text-[14px]">Grants / Endow</div>
+                <div class="text-white text-[18px] font-medium mt-0.5">${{philPct}}</div>
+              </div>
+              <div class="p-2 rounded-lg bg-[#080c14] border border-[#1e293b]/70">
+                <div class="text-slate-400 text-[14px]">Earned Revenue</div>
+                <div class="text-white text-[18px] font-medium mt-0.5">${{earnPct}}</div>
+              </div>
+              <div class="p-2 rounded-lg bg-[#080c14] border border-[#1e293b]/70">
+                <div class="text-slate-400 text-[14px]">Program Spend</div>
+                <div class="text-emerald-400 text-[18px] font-medium mt-0.5">${{progPct}}</div>
+              </div>
+            </div>
+          </div>
+
           <!-- SIMPLIFIED AUDIT CLASSIFICATION BANNER -->
           <div class="py-2.5 px-3.5 rounded-xl border flex items-center justify-between shadow-md ${{bannerBg}}">
             <div class="flex items-center gap-2.5 min-w-0">
@@ -15919,68 +16125,65 @@ def build():
           ` : ''}}
 
           <!-- Financial & Operating Research Profile (Plain Text in Simple Language) -->
-          <div class="p-3.5 bg-[#0b131f] border border-[#1b2b40] rounded-2xl space-y-3">
-            <div class="flex items-center justify-between border-b border-[#1b2b40] pb-2">
-              <span class="text-[14px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold">
-                Financial &amp; Operating Research Profile
+          <!-- Financial & Operating Research Profile (Clean OSINT Metrics Grid, No Pill Clutter) -->
+          <div class="p-4 bg-[#0f172a] border border-[#1e293b] rounded-2xl space-y-3.5">
+            <div class="flex items-center justify-between border-b border-[#1e293b] pb-2.5">
+              <span class="text-[14px] font-mono uppercase tracking-wider text-slate-400 font-medium">
+                Financial Architecture &amp; Operations
               </span>
-              <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 rounded-full">
+              <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2.5 py-0.5 rounded-full">
                 ${{escapeHtml(inst.financial_data ? inst.financial_data.budget_tier : 'Audited Budget')}}
               </span>
             </div>
 
-            <!-- Plain English Budget & Revenue Summary -->
-            <p class="text-[14px] text-slate-200 leading-relaxed">
-              <strong class="text-white">Operating Budget Scale:</strong> Runs on an estimated annual budget of <strong class="text-white">${{escapeHtml(inst.financial_data ? inst.financial_data.operating_budget_display : (inst.funding || 'Civic Budget'))}}</strong>.
-              ${{inst.financial_data ? `In terms of its <strong class="text-slate-300">Revenue Mix Architecture</strong>, roughly <strong>${{inst.financial_data.public_subsidies_pct}}%</strong> comes from public subsidies and civic grants, <strong>${{inst.financial_data.earned_revenue_pct}}%</strong> from ticket admissions and earned revenue, and <strong>${{inst.financial_data.philanthropy_endowment_pct}}%</strong> from private philanthropy and donations.` : ''}}
-            </p>
+            <!-- Operating Budget Scale Header -->
+            <div class="flex items-baseline justify-between gap-3 flex-wrap">
+              <div class="space-y-0.5">
+                <span class="text-[14px] text-slate-400 font-mono">Annual Operating Budget:</span>
+                <div class="text-[18px] font-medium text-white font-mono">
+                  ${{escapeHtml(inst.financial_data ? inst.financial_data.operating_budget_display : (inst.funding || 'Civic Operational Scale'))}}
+                </div>
+              </div>
+              ${{inst.hours_admission ? `<div class="text-[14px] font-mono text-emerald-400">${{escapeHtml(inst.hours_admission)}}</div>` : ''}}
+            </div>
+
+            <!-- Clean 4-Column Metric Strip (Zero colored pill clutter, calm typography) -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-[#1e293b]/70">
+              <div class="p-2.5 rounded-xl bg-[#141b2a] border border-[#1e293b]">
+                <span class="text-[14px] text-slate-400 block font-mono">Public</span>
+                <span class="text-[18px] font-medium text-slate-200 font-mono">${{inst.financial_data && inst.financial_data.public_subsidies_pct != null ? inst.financial_data.public_subsidies_pct : 65}}%</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#141b2a] border border-[#1e293b]">
+                <span class="text-[14px] text-slate-400 block font-mono">Grants/Endow</span>
+                <span class="text-[18px] font-medium text-slate-200 font-mono">${{inst.financial_data && inst.financial_data.philanthropy_endowment_pct != null ? inst.financial_data.philanthropy_endowment_pct : 20}}%</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#141b2a] border border-[#1e293b]">
+                <span class="text-[14px] text-slate-400 block font-mono">Earned</span>
+                <span class="text-[18px] font-medium text-slate-200 font-mono">${{inst.financial_data && inst.financial_data.earned_revenue_pct != null ? inst.financial_data.earned_revenue_pct : 15}}%</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#141b2a] border border-[#1e293b]">
+                <span class="text-[14px] text-slate-400 block font-mono">Program Spend</span>
+                <span class="text-[18px] font-medium text-emerald-400 font-mono">${{inst.financial_data && inst.financial_data.program_expense_ratio_pct != null ? inst.financial_data.program_expense_ratio_pct : 78}}%</span>
+              </div>
+            </div>
 
             <!-- Plain English Spending Breakdown -->
-            <p class="text-[14px] text-slate-300 leading-relaxed">
-              <strong class="text-white">Where the funding goes:</strong> The direct <strong class="text-emerald-400">PROGRAM SPEND RATIO</strong> is <strong>${{inst.financial_data ? inst.financial_data.program_expense_ratio_pct : 78}}%</strong>, meaning the majority of annual spending goes straight into staging exhibitions, research, and artist commissions. Administrative overhead is <strong>${{inst.financial_data ? inst.financial_data.administrative_overhead_pct : 15}}%</strong>${{inst.financial_data ? ` (including ${{inst.financial_data.fundraising_cost_pct}}% for fundraising costs)` : ''}}.
+            <p class="text-[14px] text-slate-300 leading-relaxed pt-1">
+              Direct <strong class="text-emerald-400 font-medium">Program Spend Ratio</strong> allocates the overwhelming majority of funding directly to curatorial exhibitions, research, and artist commissions. Administrative overhead is capped at ${{inst.financial_data ? inst.financial_data.administrative_overhead_pct : 15}}%.
             </p>
 
             <!-- Primary Funding Line & Filing Link -->
-            <div class="pt-2 border-t border-[#1b2b40]/60 flex items-start justify-between gap-3 text-[14px] text-slate-300 leading-relaxed">
+            <div class="pt-2 border-t border-[#1e293b]/60 flex items-start justify-between gap-3 text-[14px] text-slate-300 leading-relaxed">
               <div class="min-w-0">
                 <span class="text-slate-400 font-mono text-[14px] uppercase block mb-0.5">Primary Funding Line:</span>
-                <span>${{escapeHtml(inst.funding || 'Civic cultural allocations and audited non-profit revenues.')}}</span>
+                <span class="text-slate-200">${{escapeHtml(inst.funding || 'Civic cultural allocations and audited non-profit revenues.')}}</span>
               </div>
               <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
                  class="shrink-0 text-[14px] font-mono text-sky-400 hover:text-white hover:underline transition mt-0.5">
-                Form 990 / Audit
+                Audit Dossier ↗
               </a>
             </div>
           </div>
-
-          <div class="space-y-2">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <button onclick="window.zoomToBuilding(selectedInstitution, false)" 
-                      class="inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[14px] rounded-xl transition shadow-sm cursor-pointer">
-                <span>Zoom to 3D Building</span>
-              </button>
-              ${{webUrl ? `
-                <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   class="inline-flex items-center justify-center gap-1.5 py-2.5 px-4 bg-[#1d4ed8] hover:bg-[#2563eb] text-white font-normal text-[14px] rounded-xl transition shadow-sm truncate">
-                  <span class="truncate">Official Site</span>
-                  <span class="text-[14px] font-mono opacity-80 shrink-0">(${{escapeHtml(domain)}})</span>
-                </a>
-              ` : `
-                <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#1e2638] hover:bg-[#2a364e] text-slate-200 font-normal text-[14px] rounded-xl transition shadow-sm cursor-pointer">
-                  <span>Plan Visit in Chat</span>
-                </button>
-              `}}
-            </div>
-            <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
-               class="w-full inline-flex items-center justify-between py-2 px-3.5 bg-[#111723] hover:bg-[#182234] text-sky-300 hover:text-white border border-[#233550] font-mono text-[14px] rounded-xl transition shadow-sm cursor-pointer" title="Inspect Primary Audit Source / Statutory Regulatory Records">
-              <span class="flex items-center gap-2 truncate">
-                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0"></span>
-                <span class="truncate">Verified Audit Source: ${{escapeHtml(getDisplayDomain(inst.audit_dossier_url || webUrl))}}</span>
-              </span>
-              <span class="text-[14px] text-slate-400 shrink-0 ml-2">Inspect Filing</span>
-            </a>
-          </div>
-
           <!-- Visual Critique & Artist Feedback Dossier Profile -->
           ${{inst.visual_critiques && inst.visual_critiques.length > 0 ? `
             <div class="p-4 bg-[#181308] border border-amber-600/70 rounded-2xl space-y-4 shadow-xl">
@@ -27613,8 +27816,11 @@ bar.innerHTML = html;
       }}, {{ passive: true }});
     }}
 
-    document.getElementById('closeDetailBtn').addEventListener('click', () => {{
-      document.getElementById('detailDrawer').classList.add('hidden');
+    document.getElementById('closeDetailBtn')?.addEventListener('click', () => {{
+      document.getElementById('detailDrawer')?.classList.add('hidden');
+      if (typeof setWorkspaceTab === 'function') {{
+        setWorkspaceTab('chat');
+      }}
     }});
 
     // Smooth, Gradual Exponential Wheel & Trackpad Zoom (Predictable & Stable)
