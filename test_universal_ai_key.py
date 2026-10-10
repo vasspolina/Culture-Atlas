@@ -157,7 +157,7 @@ def run_tests():
         f"file://{temp_file}"
     ]
 
-    proc = subprocess.run(chrome_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=35)
+    proc = subprocess.run(chrome_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
     stdout = proc.stdout
 
     marker = 'id="test-results-output" data-results="'

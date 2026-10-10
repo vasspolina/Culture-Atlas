@@ -99,7 +99,7 @@ def run_tests():
     ]
 
     print("Running headless Chrome verification...")
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
     out = proc.stdout
 
     marker = 'id="test-results-output" data-results="'

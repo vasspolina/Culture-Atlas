@@ -2119,11 +2119,25 @@ def build():
             <span id="workspaceTabDossierBadge" class="hidden text-[14px] font-mono px-1.5 py-0.2 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800/80">Active</span>
           </button>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1.5 sm:gap-2">
           <div id="workspaceSelectedInstPill" class="hidden items-center gap-1.5 text-[14px] font-mono text-slate-300 bg-[#141b2a] border border-[#1e293b] px-2.5 py-0.5 rounded-lg truncate max-w-[200px]">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
             <span id="workspaceSelectedInstName" class="truncate font-medium"></span>
           </div>
+
+          <!-- Subtle Top-Right AI Status Indicator & Settings Trigger -->
+          <button id="workModelBtn" type="button" class="text-[14px] bg-[#141b2a] hover:bg-[#1e293b] text-slate-300 hover:text-white border border-[#1e293b] hover:border-slate-700 flex items-center gap-1.5 px-2.5 py-1 rounded-lg transition cursor-pointer font-normal shrink-0 shadow-sm" title="AI Model Status & Settings">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="workModelLabel" class="hidden sm:inline">Anthropic · Live</span>
+            <span class="inline sm:hidden text-[14px]">AI Live</span>
+          </button>
+
+          <!-- Subtle Top-Right Voice Toggle -->
+          <button id="curatorVoiceToggleBtn" type="button" class="text-[14px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1.5 px-2.5 py-1 rounded-lg transition cursor-pointer font-normal shrink-0 shadow-sm" title="Auto-Voice: Speaks responses aloud (Click to mute)">
+            <span id="curatorVoiceToggleIcon" class="text-[14px] leading-none">🔊</span>
+            <span id="curatorVoiceToggleLabel" class="hidden sm:inline text-[14px]">Voice: ON</span>
+          </button>
+
           <button id="workspaceNewChatBtn" type="button" class="px-2.5 py-1 rounded-lg text-[14px] bg-[#141b2a] hover:bg-[#1e293b] text-slate-300 hover:text-white border border-[#1e293b] transition flex items-center gap-1 cursor-pointer font-medium" onclick="window.resetToNewChat(); window.setWorkspaceTab('chat');">
             <span>+ New Chat</span>
           </button>
@@ -2451,20 +2465,9 @@ def build():
                 </div>
               </div>
 
-              <!-- Right: Model, mic, and send button -->
-              <div class="flex items-center gap-1.5 sm:gap-2.5">
-                <button id="workModelBtn" class="text-[14px] sm:text-[14px] bg-black hover:bg-[#1c1c1c] text-[#d4d4d8] hover:text-white border border-white/20 hover:border-white/40 flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition cursor-pointer font-normal shrink-0 shadow-sm" title="AI Model Status & Settings">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  <span id="workModelLabel" class="hidden sm:inline">Engine 4.0 Critical</span>
-                  <span class="inline sm:hidden text-[14px]">Engine 4.0</span>
-                </button>
-
-                <button id="curatorVoiceToggleBtn" class="text-[14px] sm:text-[14px] bg-black hover:bg-[#1c1c1c] text-[#d4d4d8] hover:text-white border border-white/20 hover:border-white/40 flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition cursor-pointer font-normal shrink-0 shadow-sm" title="Auto-Voice: Speaks responses aloud (Click to toggle)">
-                  <span id="curatorVoiceToggleIcon" class="text-[14px] leading-none">🔊</span>
-                  <span id="curatorVoiceToggleLabel" class="text-[14px] sm:text-[14px]"><span class="hidden sm:inline">Voice: </span>ON</span>
-                </button>
-
-                <button id="workSendBtn" class="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center gap-1.5 sm:gap-2 transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[14px] sm:text-[14px] font-medium" title="Send message">
+              <!-- Right: Primary Send Action (Clean, uncrowded, and focused) -->
+              <div class="flex items-center gap-1.5 sm:gap-2">
+                <button id="workSendBtn" class="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center gap-1.5 sm:gap-2 transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[14px] font-medium" title="Send message">
                   <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                   </svg>
@@ -2509,11 +2512,8 @@ def build():
             </div>
           </div>
 
-          <!-- Subtle Card Divider separating Chat/Search Actions from Data-Layer Filtering -->
-          <div class="w-full h-[1px] bg-[#27272a] mt-3 mb-2.5"></div>
-
           <!-- Bottom Zone: Collapsible Map Filters & Layers Drawer Trigger matching Wireframe -->
-          <div id="workSubActionBar" class="w-full flex items-center justify-between gap-2 select-none">
+          <div id="workSubActionBar" class="w-full flex items-center justify-between gap-2 select-none mt-2.5">
             <button id="filterViewToggleBtn" type="button" onclick="window.toggleFilterDrawer()" class="w-full py-2 px-3.5 rounded-xl bg-[#141416] hover:bg-[#1f1f23] border border-[#27272a] hover:border-emerald-500/50 text-slate-200 hover:text-white transition duration-150 flex items-center justify-between cursor-pointer shadow-sm text-[14px]" title="Toggle Map Layers & Filters">
               <div class="flex items-center gap-2 min-w-0">
                 <svg id="filterChevronIcon" class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -24561,12 +24561,6 @@ FORMATTING & INTERACTION RULES:
         inputBadge.classList.add('flex');
       }}
 
-      const modelBtn = document.getElementById('workModelBtn');
-      if (modelBtn) modelBtn.classList.add('hidden');
-
-      const voiceToggleBtn = document.getElementById('curatorVoiceToggleBtn');
-      if (voiceToggleBtn) voiceToggleBtn.classList.add('hidden');
-
       // 9. Style primary CTA: clean emerald button as sole accent
       const sendBtn = document.getElementById('workSendBtn');
       if (sendBtn) {{
@@ -24657,13 +24651,6 @@ FORMATTING & INTERACTION RULES:
         inputBadge.classList.add('hidden');
         inputBadge.classList.remove('flex');
       }}
-
-      // 6. Restore AI controls
-      const modelBtn = document.getElementById('workModelBtn');
-      if (modelBtn) modelBtn.classList.remove('hidden');
-
-      const voiceToggleBtn = document.getElementById('curatorVoiceToggleBtn');
-      if (voiceToggleBtn) voiceToggleBtn.classList.remove('hidden');
 
       // 7. Restore Send button
       const sendBtn = document.getElementById('workSendBtn');
@@ -25207,12 +25194,12 @@ FORMATTING & INTERACTION RULES:
       if (curatorAutoVoiceEnabled) {{
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '🔊';
         if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: ON';
-        curatorVoiceToggleBtn.className = 'text-[14px] sm:text-[14px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1.5 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition cursor-pointer font-normal shrink-0';
+        curatorVoiceToggleBtn.className = 'text-[14px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1.5 px-2.5 py-1 rounded-lg transition cursor-pointer font-normal shrink-0 shadow-sm';
         curatorVoiceToggleBtn.title = 'Auto-Voice: Speaks responses aloud (Click to mute)';
       }} else {{
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '🔇';
         if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: OFF';
-        curatorVoiceToggleBtn.className = 'text-[14px] sm:text-[14px] bg-[#212121] hover:bg-[#2a2a2a] text-[#a1a1aa] hover:text-white border border-[#333] flex items-center gap-1.5 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition cursor-pointer font-normal shrink-0';
+        curatorVoiceToggleBtn.className = 'text-[14px] bg-[#141b2a] hover:bg-[#1e293b] text-[#a1a1aa] hover:text-white border border-[#1e293b] flex items-center gap-1.5 px-2.5 py-1 rounded-lg transition cursor-pointer font-normal shrink-0 shadow-sm';
         curatorVoiceToggleBtn.title = 'Auto-Voice: Muted (Click to turn ON)';
       }}
     }}
