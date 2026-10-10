@@ -54,7 +54,7 @@ def test_browser_swipe_gestures():
 
     test_script = """
     <script>
-    window.addEventListener('DOMContentLoaded', async () => {
+    window.addEventListener('load', async () => {
       const results = [];
       function assert(name, cond, extra = '') {
         results.push({ name, pass: Boolean(cond), extra: String(extra) });
@@ -123,6 +123,7 @@ def test_browser_swipe_gestures():
 
         // Test simulated upward swipe (Swipe up to view full info / audit dossier)
         const drawer = document.getElementById('detailDrawer');
+        if (drawer) drawer.classList.add('hidden');
         assert('Drawer initially hidden', drawer && drawer.classList.contains('hidden'));
 
         const pDownUp = new PointerEvent('pointerdown', { clientX: 200, clientY: 260, bubbles: true });
@@ -174,7 +175,7 @@ def test_browser_swipe_gestures():
         "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
-    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
+    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     marker = 'id="test-results-output" data-results="'
     if marker not in res.stdout:

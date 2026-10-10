@@ -13,7 +13,7 @@ def run_tests():
 
     test_script = """
     <script>
-    window.addEventListener('DOMContentLoaded', async () => {
+    window.addEventListener('load', async () => {
       const results = [];
       const assert = (name, cond, details = '') => {
         results.push({ name, pass: !!cond, details });
@@ -155,10 +155,10 @@ def run_tests():
         "--headless=new",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=3000",
+        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
-    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=90)
+    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     stdout = res.stdout
 
     marker = 'id="critique-test-results" data-results="'

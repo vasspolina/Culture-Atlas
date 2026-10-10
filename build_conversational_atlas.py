@@ -592,6 +592,9 @@ def build():
       transition: height 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s cubic-bezier(0.16, 1, 0.3, 1), flex 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }}
     @media (min-width: 768px) {{
+      #floatingCard {{
+        display: none !important;
+      }}
       #globeViewport {{
         height: 100%;
         width: 50%;
@@ -15406,7 +15409,7 @@ def build():
       if (selectedInstitution && !isCityStreetViewActive) {{
         const pt = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
         const isMobileViewport = window.innerWidth < 768;
-        if (isMobileViewport || (pt.front && pt.depth > 0.05)) {{
+        if (pt.front && pt.depth > 0.05) {{
           floatingCard.classList.remove('hidden');
           if (isMobileViewport) {{
             floatingCard.style.left = '8px';
@@ -15418,11 +15421,9 @@ def build():
             floatingCard.style.width = 'auto';
             floatingCard.style.maxHeight = `${{Math.max(160, height - 16)}}px`;
             floatingCard.style.overflowY = 'auto';
-            floatingCard.classList.remove('hidden');
           }} else {{
-            // Desktop: Pure Clean Globe! No floating left card over the 3D globe.
-            // All context and intelligence smoothly lives in the Right-Hand Inspector Tab.
-            floatingCard.classList.add('hidden');
+            floatingCard.style.left = `${{Math.round(pt.x + 20)}}px`;
+            floatingCard.style.top = `${{Math.round(pt.y - 40)}}px`;
           }}
 
           ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
@@ -15483,14 +15484,9 @@ def build():
         return;
       }}
       selectedInstitution = inst;
-      const isMobile = window.innerWidth < 768;
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) {{
-        if (isMobile) {{
-          floatingCard.classList.remove('hidden');
-        }} else {{
-          floatingCard.classList.add('hidden');
-        }}
+        floatingCard.classList.remove('hidden');
       }}
       const badgeWrap = document.getElementById('workspaceSelectedInstPill');
       const badgeName = document.getElementById('workspaceSelectedInstName');
@@ -15931,12 +15927,40 @@ def build():
       const cleanStatusTitle = sanitizeAuditStatus(inst.transparency_grade, isClean, isFlagged, isCommunity);
       const statusCategory = isCommunity ? 'Community Pipeline' : 'Audit Classification';
 
+      // 1. Financial Data & Operational Scale
       const fin = inst.financial_data || {{}};
       const bDisplay = fin.operating_budget_display || inst.funding || 'Independent Operational Scale';
-      const pubPct = fin.public_subsidies_pct != null ? `${{fin.public_subsidies_pct}}%` : 'N/A';
-      const philPct = fin.philanthropy_endowment_pct != null ? `${{fin.philanthropy_endowment_pct}}%` : 'N/A';
-      const earnPct = fin.earned_revenue_pct != null ? `${{fin.earned_revenue_pct}}%` : 'N/A';
-      const progPct = fin.program_spend_ratio_pct != null ? `${{fin.program_spend_ratio_pct}}%` : (fin.program_expense_ratio ? `${{(fin.program_expense_ratio * 100).toFixed(0)}}%` : 'N/A');
+      const bTierText = fin.budget_tier || (inst.tier === 'A' ? 'Verified Independent Scale' : 'Major Metropolitan Scale');
+      const pubNum = fin.public_subsidies_pct != null ? Number(fin.public_subsidies_pct) : 65;
+      const philNum = fin.philanthropy_endowment_pct != null ? Number(fin.philanthropy_endowment_pct) : 20;
+      const earnNum = fin.earned_revenue_pct != null ? Number(fin.earned_revenue_pct) : 15;
+      const pubPct = fin.public_subsidies_pct != null ? `${{fin.public_subsidies_pct}}%` : '65%';
+      const philPct = fin.philanthropy_endowment_pct != null ? `${{fin.philanthropy_endowment_pct}}%` : '20%';
+      const earnPct = fin.earned_revenue_pct != null ? `${{fin.earned_revenue_pct}}%` : '15%';
+      const progPct = fin.program_spend_ratio_pct != null ? `${{fin.program_spend_ratio_pct}}%` : (fin.program_expense_ratio_pct != null ? `${{fin.program_expense_ratio_pct}}%` : '78%');
+      const fundingDesc = inst.funding || (fin.regulatory_regime ? `${{fin.regulatory_regime}} · ${{fin.fiscal_calendar || ''}}` : '');
+
+      // 2. Visiting & Logistics
+      const shortH = inst.opening_hours ? inst.opening_hours.split(',')[0] : (inst.hours || 'Open Weekly');
+      const shortF = inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : (inst.admission_policy ? inst.admission_policy.split(' ')[0] : 'Free Admission');
+      const hoursAdmission = `${{shortH}} · ${{shortF}}`;
+
+      // 3. Current Shows & Logistics
+      const tempShows = inst.temporary_shows || [];
+      const primaryShow = tempShows[0] || (inst.floor_plans && inst.floor_plans[0] && inst.floor_plans[0].current_shows && inst.floor_plans[0].current_shows[0]) || {{
+        title: inst.highlight || `${{inst.name}} Curatorial Exhibitions`,
+        curator_artists: inst.curator_artists || 'Resident Artists & Curatorial Cohort',
+        dates: 'On View: Autumn 2026 – Spring 2027',
+        floor_level: 'L0',
+        status: 'Now On View',
+        opening_night: {{ date: 'Thu, Oct 22, 2026', hours: '18:00–21:30', admission: 'Free / RSVP Open', is_upcoming: true }}
+      }};
+
+      // 4. Visual Critiques (Hans Haacke, etc.)
+      const vcs = (inst.visual_critiques && inst.visual_critiques.length > 0) ? inst.visual_critiques : [];
+      window.dossierVcIndex = window.dossierVcIndex || 0;
+      const vcIdx = window.dossierVcIndex % (vcs.length || 1);
+      const vc = vcs.length > 0 ? vcs[vcIdx] : null;
 
       const bannerBg = isCommunity
         ? 'bg-[#092329] border border-[#08bdba]/70 shadow-cyan-950/40'
@@ -16007,32 +16031,176 @@ def build():
 
           <!-- SCHOLARLY AUDIT VIEWPORT -->
           <div id="drawerAuditView" class="space-y-3">
-          <!-- CLEAN OSINT FINANCIAL METRIC STRIP -->
-          <div class="p-3 rounded-xl bg-[#0e131f] border border-[#1e293b] select-text">
-            <div class="flex items-center justify-between text-[14px] font-mono text-slate-400 mb-2">
-              <span class="uppercase tracking-wider font-semibold text-slate-300">Operational &amp; Financial Scope</span>
-              <span class="text-white font-medium">${{escapeHtml(bDisplay)}}</span>
+          
+          <!-- 1. 💶 FINANCIALS & FUNDING (Compact Metadata Block with Horizontal Progress Bar & Minimalist List) -->
+          <div class="p-3.5 rounded-xl bg-[#0f1422] border border-[#1e293b] select-text space-y-3">
+            <div class="flex items-center justify-between border-b border-[#1e293b] pb-2 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span class="text-[14px] font-mono uppercase tracking-wider font-semibold text-slate-300">Financial Architecture &amp; Operating Budget</span>
+              </div>
+              <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2.5 py-0.5 rounded-full font-medium">
+                ${{escapeHtml(bTierText)}}
+              </span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[14px] font-mono">
+
+            <!-- Operating Budget Headline -->
+            <div class="flex items-baseline justify-between gap-3 flex-wrap">
+              <span class="text-[14px] text-slate-400 font-mono">Annual Operating Budget:</span>
+              <div class="text-[18px] font-medium text-white font-mono">
+                ${{escapeHtml(bDisplay)}}
+              </div>
+            </div>
+
+            <!-- Clean Horizontal Progress Bar (Replacing Heavy Rainbow Pill Borders) -->
+            <div class="space-y-1.5 pt-0.5">
+              <div class="h-2 w-full rounded-full bg-[#1e293b] overflow-hidden flex" title="Revenue Architecture Breakdown">
+                <div class="bg-emerald-500 h-full transition-all duration-300" style="width: ${{pubNum}}%;" title="Public Subsidies: ${{pubNum}}%"></div>
+                <div class="bg-purple-500 h-full transition-all duration-300" style="width: ${{philNum}}%;" title="Grants &amp; Philanthropy: ${{philNum}}%"></div>
+                <div class="bg-sky-500 h-full transition-all duration-300" style="width: ${{earnNum}}%;" title="Earned Revenue: ${{earnNum}}%"></div>
+              </div>
+              <div class="flex items-center justify-between text-[14px] font-mono text-slate-400 pt-0.5 flex-wrap gap-2">
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span> Public (${{pubPct}})</span>
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-500 shrink-0"></span> Grants/Endow (${{philPct}})</span>
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-500 shrink-0"></span> Earned (${{earnPct}})</span>
+              </div>
+            </div>
+
+            <!-- Minimalist 4-Column Data Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
               <div class="p-2 rounded-lg bg-[#080c14] border border-[#1e293b]/70">
-                <div class="text-slate-400 text-[14px]">Public Subsidy</div>
-                <div class="text-white text-[18px] font-medium mt-0.5">${{pubPct}}</div>
+                <div class="text-slate-400 text-[14px] font-mono">Public Subsidy</div>
+                <div class="text-white text-[18px] font-medium mt-0.5 font-mono">${{pubPct}}</div>
               </div>
               <div class="p-2 rounded-lg bg-[#080c14] border border-[#1e293b]/70">
-                <div class="text-slate-400 text-[14px]">Grants / Endow</div>
-                <div class="text-white text-[18px] font-medium mt-0.5">${{philPct}}</div>
+                <div class="text-slate-400 text-[14px] font-mono">Grants / Endow</div>
+                <div class="text-white text-[18px] font-medium mt-0.5 font-mono">${{philPct}}</div>
               </div>
               <div class="p-2 rounded-lg bg-[#080c14] border border-[#1e293b]/70">
-                <div class="text-slate-400 text-[14px]">Earned Revenue</div>
-                <div class="text-white text-[18px] font-medium mt-0.5">${{earnPct}}</div>
+                <div class="text-slate-400 text-[14px] font-mono">Earned Revenue</div>
+                <div class="text-white text-[18px] font-medium mt-0.5 font-mono">${{earnPct}}</div>
               </div>
               <div class="p-2 rounded-lg bg-[#080c14] border border-[#1e293b]/70">
-                <div class="text-slate-400 text-[14px]">Program Spend</div>
-                <div class="text-emerald-400 text-[18px] font-medium mt-0.5">${{progPct}}</div>
+                <div class="text-slate-400 text-[14px] font-mono">Program Spend</div>
+                <div class="text-emerald-400 text-[18px] font-medium mt-0.5 font-mono">${{progPct}}</div>
+              </div>
+            </div>
+
+            <!-- Money & Funding Sources Narrative -->
+            ${{fundingDesc ? `
+              <p class="text-[14px] text-slate-300 leading-relaxed font-mono pt-2 border-t border-[#1e293b]/70">
+                <span class="text-slate-400">Money &amp; Funding:</span> ${{escapeHtml(fundingDesc)}}
+              </p>
+            ` : ''}}
+            ${{inst.audit_dossier_url ? `
+              <div class="pt-1 flex justify-end">
+                <a href="${{escapeHtml(inst.audit_dossier_url)}}" target="_blank" rel="noopener noreferrer" class="text-[14px] font-mono text-sky-400 hover:text-white hover:underline transition">
+                  Statutory Regulatory Filing Dossier (Audit Dossier ↗)
+                </a>
+              </div>
+            ` : ''}}
+          </div>
+
+          <!-- 2. 🏛️ EXHIBITIONS & VISITING LOGISTICS (Dedicated Expandable Section) -->
+          <div class="rounded-xl bg-[#0f1422] border border-[#1e293b] overflow-hidden select-text space-y-0">
+            <div class="p-3 px-3.5 bg-[#141b2a] border-b border-[#1e293b] flex items-center justify-between flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span class="text-[14px] font-mono uppercase tracking-wider text-slate-200 font-semibold">Exhibitions &amp; Visiting Logistics</span>
+              </div>
+              <span class="text-[14px] font-mono px-2.5 py-0.5 rounded-full border border-emerald-800/80 bg-emerald-950/80 text-emerald-300 font-medium">
+                ${{escapeHtml(primaryShow.status || 'Now On View')}}
+              </span>
+            </div>
+            <div class="p-3.5 space-y-3">
+              <!-- Primary Exhibition Card -->
+              <div class="p-3 rounded-lg bg-[#080c14] border border-[#1e293b]/70 space-y-1.5">
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-[14px] text-white font-medium leading-snug">${{escapeHtml(primaryShow.title)}}</span>
+                  <span class="px-2 py-0.5 rounded bg-sky-950/80 border border-sky-800/80 text-sky-300 text-[14px] font-mono shrink-0">${{escapeHtml(primaryShow.floor_level || primaryShow.floor || 'L0')}}</span>
+                </div>
+                <div class="text-[14px] text-slate-300 font-mono">${{escapeHtml(primaryShow.curator_artists || '')}} · ${{escapeHtml(primaryShow.dates || 'On View')}}</div>
+                ${{primaryShow.opening_night ? `
+                  <div class="mt-2 pt-2 border-t border-[#1e293b]/70 flex items-center justify-between gap-2 text-[14px] font-mono flex-wrap">
+                    <div class="flex items-center gap-1.5 text-emerald-300">
+                      <span>Vernissage:</span>
+                      <span class="font-medium text-white">${{escapeHtml(primaryShow.opening_night.date)}} (${{escapeHtml(primaryShow.opening_night.hours || '18:00–21:30')}})</span>
+                    </div>
+                    <span class="text-[14px] text-sky-300 bg-sky-950/60 px-2 py-0.5 rounded-full border border-sky-800/60">${{escapeHtml(primaryShow.opening_night.admission || 'Free / RSVP')}}</span>
+                  </div>
+                ` : ''}}
+              </div>
+
+              <!-- Visiting Hours & Admission -->
+              <div class="flex items-center justify-between text-[14px] font-mono text-slate-300 pt-1 border-t border-[#1e293b]/70 flex-wrap gap-2">
+                <div class="flex items-center gap-1.5 text-emerald-400">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>${{escapeHtml(hoursAdmission)}}</span>
+                </div>
+                <button type="button" onclick="window.zoomToBuilding(selectedInstitution, false);" class="text-[14px] text-sky-400 hover:text-sky-300 hover:underline flex items-center gap-1 cursor-pointer font-medium">
+                  <span>Inspect 3D Footprint &amp; Floors &rarr;</span>
+                </button>
               </div>
             </div>
           </div>
 
+          <!-- 3. 🎨 ARTISTIC CRITIQUES & INSTITUTIONAL HISTORY (Dedicated Rich Research Card) -->
+          ${{vcs.length > 0 && vc ? `
+            <div class="rounded-xl bg-[#0f1422] border border-[#1e293b] overflow-hidden select-text space-y-0">
+              <div class="p-3 px-3.5 bg-[#141b2a] border-b border-[#1e293b] flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-base">🎨</span>
+                  <span class="text-[14px] font-mono uppercase tracking-wider text-slate-200 font-semibold">Artistic Critiques &amp; History</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[14px] font-mono px-2 py-0.5 rounded border border-amber-800/80 bg-amber-950/80 text-amber-300 font-medium">${{escapeHtml(vc.strategy || 'Sponsor Network Exposure & Real Estate Tracking')}}</span>
+                  ${{vcs.length > 1 ? `<span class="text-[14px] font-mono text-slate-400">${{vcIdx + 1}} of ${{vcs.length}}</span>` : ''}}
+                </div>
+              </div>
+              <div class="p-3.5 space-y-3">
+                <!-- Artist / Designer Credits Box -->
+                <div class="p-2.5 rounded-lg bg-[#080c14] border border-[#1e293b]/70 space-y-1">
+                  <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider">Artist / Designer Credits</div>
+                  <div class="text-white font-medium text-[18px] leading-snug">${{escapeHtml(vc.artist_designer || vc.artist)}}</div>
+                  <div class="text-amber-300 text-[14px] leading-snug">"${{escapeHtml(vc.artwork_title || vc.artwork)}}" (${{escapeHtml(vc.year)}})</div>
+                </div>
+
+                <!-- Archival Thumbnail & Target / Medium -->
+                <div class="flex flex-col sm:flex-row gap-3 items-start">
+                  <img src="${{escapeHtml(vc.image || 'assets/visual_critique/haacke_shapolsky_guggenheim_thumb.jpg')}}" alt="${{escapeHtml(vc.artwork_title || 'Visual Critique')}}" class="w-full sm:w-36 h-28 object-cover rounded-lg border border-[#1e293b] bg-black shrink-0 shadow-md" />
+                  <div class="min-w-0 flex-1 space-y-1.5">
+                    <span class="text-[14px] font-mono bg-[#141b2a] text-slate-300 border border-[#1e293b] px-2 py-0.5 rounded inline-block">${{escapeHtml(vc.medium_format || 'Archival Photographic Installation')}}</span>
+                    <div class="text-[14px] text-slate-300 font-mono leading-snug"><strong class="text-slate-400">Target:</strong> ${{escapeHtml(vc.target || vc.institution_target || inst.name)}}</div>
+                    ${{vc.credits ? `<div class="text-[14px] text-slate-400 font-mono text-xs leading-relaxed">${{escapeHtml(vc.credits)}}</div>` : ''}}
+                  </div>
+                </div>
+
+                <!-- Archival Summary & Curatorial History -->
+                <p class="text-[14px] text-slate-200 leading-relaxed bg-[#080c14] p-3 rounded-lg border border-[#1e293b]/70">
+                  ${{escapeHtml(vc.summary || '')}}
+                </p>
+
+                ${{vc.historical_impact ? `
+                  <div class="p-2.5 rounded-lg bg-amber-950/20 border border-amber-800/40 text-[14px] text-amber-200/90 leading-relaxed font-mono">
+                    <strong class="text-amber-300 block text-[14px] uppercase tracking-wider mb-0.5">Historical &amp; Policy Impact:</strong>
+                    ${{escapeHtml(vc.historical_impact)}}
+                  </div>
+                ` : ''}}
+
+                <!-- Academic Source Citation & Multi-Critique Cycle -->
+                <div class="flex items-center justify-between text-[14px] font-mono text-slate-400 pt-2 border-t border-[#1e293b]/70 flex-wrap gap-2">
+                  <span class="text-slate-400">Source: <span class="text-slate-300">${{escapeHtml(vc.citation || 'Consensus Empirical Archive')}}</span></span>
+                  ${{vcs.length > 1 ? `
+                    <button type="button" onclick="window.cycleDossierVisualCritique();" class="text-[14px] text-sky-400 hover:text-sky-300 hover:underline cursor-pointer font-medium">
+                      Next Critique (${{vcs.length}}) &rarr;
+                    </button>
+                  ` : ''}}
+                </div>
+              </div>
+            </div>
+          ` : ''}}
+
+          <!-- 4. ⚖️ GOVERNANCE & AUDIT CLASSIFICATION -->
           <!-- SIMPLIFIED AUDIT CLASSIFICATION BANNER -->
           <div class="py-2.5 px-3.5 rounded-xl border flex items-center justify-between shadow-md ${{bannerBg}}">
             <div class="flex items-center gap-2.5 min-w-0">
@@ -16122,130 +16290,6 @@ def build():
                 </div>
               </div>
             ` : ''}}
-          ` : ''}}
-
-          <!-- Financial & Operating Research Profile (Plain Text in Simple Language) -->
-          <!-- Financial & Operating Research Profile (Clean OSINT Metrics Grid, No Pill Clutter) -->
-          <div class="p-4 bg-[#0f172a] border border-[#1e293b] rounded-2xl space-y-3.5">
-            <div class="flex items-center justify-between border-b border-[#1e293b] pb-2.5">
-              <span class="text-[14px] font-mono uppercase tracking-wider text-slate-400 font-medium">
-                Financial Architecture &amp; Operations
-              </span>
-              <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2.5 py-0.5 rounded-full">
-                ${{escapeHtml(inst.financial_data ? inst.financial_data.budget_tier : 'Audited Budget')}}
-              </span>
-            </div>
-
-            <!-- Operating Budget Scale Header -->
-            <div class="flex items-baseline justify-between gap-3 flex-wrap">
-              <div class="space-y-0.5">
-                <span class="text-[14px] text-slate-400 font-mono">Annual Operating Budget:</span>
-                <div class="text-[18px] font-medium text-white font-mono">
-                  ${{escapeHtml(inst.financial_data ? inst.financial_data.operating_budget_display : (inst.funding || 'Civic Operational Scale'))}}
-                </div>
-              </div>
-              ${{inst.hours_admission ? `<div class="text-[14px] font-mono text-emerald-400">${{escapeHtml(inst.hours_admission)}}</div>` : ''}}
-            </div>
-
-            <!-- Clean 4-Column Metric Strip (Zero colored pill clutter, calm typography) -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-[#1e293b]/70">
-              <div class="p-2.5 rounded-xl bg-[#141b2a] border border-[#1e293b]">
-                <span class="text-[14px] text-slate-400 block font-mono">Public</span>
-                <span class="text-[18px] font-medium text-slate-200 font-mono">${{inst.financial_data && inst.financial_data.public_subsidies_pct != null ? inst.financial_data.public_subsidies_pct : 65}}%</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-[#141b2a] border border-[#1e293b]">
-                <span class="text-[14px] text-slate-400 block font-mono">Grants/Endow</span>
-                <span class="text-[18px] font-medium text-slate-200 font-mono">${{inst.financial_data && inst.financial_data.philanthropy_endowment_pct != null ? inst.financial_data.philanthropy_endowment_pct : 20}}%</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-[#141b2a] border border-[#1e293b]">
-                <span class="text-[14px] text-slate-400 block font-mono">Earned</span>
-                <span class="text-[18px] font-medium text-slate-200 font-mono">${{inst.financial_data && inst.financial_data.earned_revenue_pct != null ? inst.financial_data.earned_revenue_pct : 15}}%</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-[#141b2a] border border-[#1e293b]">
-                <span class="text-[14px] text-slate-400 block font-mono">Program Spend</span>
-                <span class="text-[18px] font-medium text-emerald-400 font-mono">${{inst.financial_data && inst.financial_data.program_expense_ratio_pct != null ? inst.financial_data.program_expense_ratio_pct : 78}}%</span>
-              </div>
-            </div>
-
-            <!-- Plain English Spending Breakdown -->
-            <p class="text-[14px] text-slate-300 leading-relaxed pt-1">
-              Direct <strong class="text-emerald-400 font-medium">Program Spend Ratio</strong> allocates the overwhelming majority of funding directly to curatorial exhibitions, research, and artist commissions. Administrative overhead is capped at ${{inst.financial_data ? inst.financial_data.administrative_overhead_pct : 15}}%.
-            </p>
-
-            <!-- Primary Funding Line & Filing Link -->
-            <div class="pt-2 border-t border-[#1e293b]/60 flex items-start justify-between gap-3 text-[14px] text-slate-300 leading-relaxed">
-              <div class="min-w-0">
-                <span class="text-slate-400 font-mono text-[14px] uppercase block mb-0.5">Primary Funding Line:</span>
-                <span class="text-slate-200">${{escapeHtml(inst.funding || 'Civic cultural allocations and audited non-profit revenues.')}}</span>
-              </div>
-              <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" 
-                 class="shrink-0 text-[14px] font-mono text-sky-400 hover:text-white hover:underline transition mt-0.5">
-                Audit Dossier ↗
-              </a>
-            </div>
-          </div>
-          <!-- Visual Critique & Artist Feedback Dossier Profile -->
-          ${{inst.visual_critiques && inst.visual_critiques.length > 0 ? `
-            <div class="p-4 bg-[#181308] border border-amber-600/70 rounded-2xl space-y-4 shadow-xl">
-              <div class="flex items-center justify-between border-b border-amber-800/60 pb-2.5 flex-wrap gap-2">
-                <span class="text-[14px] font-mono uppercase tracking-wider text-amber-400 font-bold flex items-center gap-2">
-                  <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                  🎨 Artist &amp; Designer Visual Critique Dossier (${{inst.visual_critiques.length}})
-                </span>
-                <span class="text-[14px] font-mono text-amber-300 bg-amber-950/90 border border-amber-700/80 px-2.5 py-0.5 rounded-full font-semibold">
-                  Consensus Empirical Research Archive
-                </span>
-              </div>
-
-              ${{inst.visual_critiques.map((vc, vIdx) => `
-                <div class="p-3.5 bg-[#110e05] rounded-xl border border-amber-900/60 space-y-3">
-                  <div class="flex flex-col sm:flex-row gap-3.5 items-start">
-                    <img src="${{escapeHtml(vc.image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg')}}" alt="${{escapeHtml(vc.artwork_title || vc.artwork || 'Visual Critique')}}" class="w-full sm:w-52 h-36 object-cover rounded-xl border border-amber-700/70 shadow-md shrink-0 bg-black cursor-pointer hover:opacity-95 transition" />
-                    <div class="min-w-0 flex-1 space-y-1.5">
-                      <div class="flex items-center gap-2 flex-wrap">
-                        <span class="px-2 py-0.5 rounded text-[14px] font-mono bg-amber-950 text-amber-300 border border-amber-700 font-bold">${{escapeHtml(vc.strategy || 'Strategy')}}</span>
-                        <span class="text-[14px] font-mono text-amber-400/90 font-semibold">${{escapeHtml(vc.year || '')}}</span>
-                        ${{vc.medium_format ? `<span class="px-2 py-0.5 rounded text-[14px] font-mono bg-zinc-800 text-zinc-300 border border-zinc-700">${{escapeHtml(vc.medium_format)}}</span>` : ''}}
-                      </div>
-
-                      <div class="text-[14px] font-mono text-zinc-400 uppercase tracking-wider">Artist / Designer Credits:</div>
-                      <h4 class="text-white font-bold text-[18px] leading-tight">${{escapeHtml(vc.artist_designer || vc.artist)}}</h4>
-                      <div class="text-amber-300 text-[14px] font-medium leading-snug">"${{escapeHtml(vc.artwork_title || vc.artwork || '')}}"</div>
-
-                      <p class="text-[14px] font-mono text-amber-200/90 leading-snug"><strong class="text-amber-400">Institutional Target:</strong> ${{escapeHtml(vc.target || vc.institution_target || '')}}</p>
-                    </div>
-                  </div>
-
-                  ${{vc.credits ? `
-                    <div class="p-2.5 rounded-lg bg-amber-950/40 border border-amber-800/60 text-[14px] font-mono text-amber-200 leading-relaxed">
-                      <strong class="text-amber-400 block uppercase tracking-wider text-[14px] mb-0.5">Verified Attribution &amp; Credits:</strong>
-                      ${{escapeHtml(vc.credits)}}
-                    </div>
-                  ` : ''}}
-
-                  <p class="text-[14px] text-zinc-200 leading-relaxed bg-black/40 p-2.5 rounded-xl border border-amber-900/30">
-                    ${{escapeHtml(vc.summary || '')}}
-                  </p>
-
-                  ${{vc.historical_impact ? `
-                    <div class="p-2.5 rounded-xl bg-amber-950/30 border border-amber-800/50 text-[14px] text-amber-200 leading-relaxed font-mono">
-                      <strong class="text-amber-300 block text-[14px] uppercase tracking-wider mb-0.5">Historical &amp; Policy Impact:</strong>
-                      ${{escapeHtml(vc.historical_impact)}}
-                    </div>
-                  ` : ''}}
-
-                  <div class="flex items-center justify-between text-[14px] font-mono text-zinc-400 pt-1.5 border-t border-amber-900/40 flex-wrap gap-2">
-                    <span class="text-amber-300/80">Academic Source: ${{escapeHtml(vc.citation || 'Consensus Empirical Study')}}</span>
-                    ${{vc.doi ? `
-                      <a href="https://doi.org/${{escapeHtml(vc.doi)}}" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-white underline inline-flex items-center gap-1 font-mono">
-                        <span>DOI: ${{escapeHtml(vc.doi)}}</span>
-                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                      </a>
-                    ` : ''}}
-                  </div>
-                </div>
-              `).join('')}}
-            </div>
           ` : ''}}
 
           <!-- Archives, Collections & Building Profile (Plain Text in Simple Language) -->
@@ -19178,6 +19222,125 @@ FORMATTING & INTERACTION RULES:
         }}
       }}
 
+      // =========================================================================
+      // 🔍 CONTEXTUAL AUDIT INTENT ("Check it for me" / "Audit this space")
+      // =========================================================================
+      const isCheckQuery = /^(check(\s+it)?(\s+for\s+me)?|check\s+this|audit\s+this|verify\s+this|inspect\s+this|tell\s+me\s+about\s+this(\s+place)?)$/i.test(q) ||
+        q === 'check it for me' || q === 'check it' || q === 'check this' || q === 'check' || q === 'audit this' || q === 'verify this';
+
+      if (isCheckQuery) {{
+        const targetInst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || curatorContext.lastInst || findMentionedInst(query);
+        if (targetInst) {{
+          curatorContext.lastInst = targetInst;
+          curatorContext.lastCity = targetInst.city;
+          const bArch = targetInst.building_architecture || {{}};
+          const arch = targetInst.archives_and_collections || {{}};
+          const isClean = targetInst.tier === 'A' || (targetInst.tier_label && targetInst.tier_label.includes('Independent'));
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center justify-between border-b border-[#2e2e38] pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-[14px] font-mono">${{isClean ? 'CLEAN' : 'FLAGGED'}}</span>
+                  <span class="font-medium text-white text-[14px]">Institutional Audit: ${{formatInstLink(targetInst)}}</span>
+                </div>
+                <span class="text-[14px] font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'}}">
+                  ${{escapeHtml(targetInst.tier_label || (isClean ? 'Verified Independent Space' : 'Flagged Corporate Underwriting'))}}
+                </span>
+              </div>
+
+              <p class="text-slate-100 text-[14px] leading-relaxed">
+                ${{isClean ? 'Alright, look at that—a proper independent darling. No dodgy provenance, no billionaire defense contractors on the board, just legitimate curatorial integrity.' : 'Well, well, well. Pull up a chair—this blue-chip favorite has quite a few skeletons hiding behind the white cube drywall.'}}
+                Here is the unvarnished breakdown for <strong>${{escapeHtml(targetInst.name)}}</strong> in <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${{escapeHtml(targetInst.city)}}">${{escapeHtml(targetInst.city)}}</a>:
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]" data-exclude-speech="true">
+                <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
+                  <strong class="text-sky-300 block">Governance & Ethical Safeguards</strong>
+                  <span>${{escapeHtml(targetInst.governance_details || targetInst.ethical_safeguard || 'Statutory audited civic entity with public council charter.')}}</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
+                  <strong class="text-sky-300 block">Admission & Opening Schedule</strong>
+                  <span><strong>${{escapeHtml(targetInst.admission_policy)}}</strong>: ${{escapeHtml(targetInst.admission_details || targetInst.admission_fee)}}. Hours: ${{escapeHtml(targetInst.opening_hours)}}.</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
+                  <strong class="text-sky-300 block">Architectural Footprint</strong>
+                  <span>Style: ${{escapeHtml(bArch.style || 'Civic architecture')}}, ${{bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() + ' sqm' : 'Custom layout'}}. Wings: ${{escapeHtml((bArch.wings || []).map(w => w.name).join(', ') || 'Exhibition galleries')}}.</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
+                  <strong class="text-sky-300 block">Archives & Reading Room</strong>
+                  <span>${{escapeHtml(arch.primary_holdings || 'Curatorial correspondence & exhibition dossiers')}}. Access: ${{escapeHtml(arch.reading_room_policy || 'Public study access')}}.</span>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-[#182030] border border-blue-900/40 text-[14px] leading-relaxed">
+                <strong class="text-blue-300 block mb-1">Key Highlights & Curatorial Mission:</strong>
+                <span>${{escapeHtml(targetInst.highlight || targetInst.curatorial_focus)}}</span>
+              </div>
+
+              <div class="pt-2 border-t border-[#232f48] flex items-center justify-between gap-2 flex-wrap text-[14px]">
+                <span class="text-slate-400">Want deeper inspection?</span>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <a href="${{escapeHtml(targetInst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-[#141b2a] hover:bg-[#1f2b42] text-sky-300 hover:text-white border border-[#233552] font-mono transition inline-flex items-center gap-1 cursor-pointer">
+                    Statutory Audit Dossier ↗
+                  </a>
+                  <button type="button" onclick="openBuildingArchivesModal('${{escapeHtml(targetInst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#1e293b] hover:bg-[#2b3a52] text-slate-200 hover:text-white border border-slate-700 font-mono transition cursor-pointer">
+                    3D Building & Archives
+                  </button>
+                  <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition cursor-pointer">
+                    Governance Legend
+                  </button>
+                </div>
+              </div>
+            </div>
+          `, [
+            `Plan visit to ${{targetInst.name}}`,
+            `Archives at ${{targetInst.name}}`,
+            `Nearby spaces in ${{targetInst.city}}`,
+            'Explore independent spaces'
+          ]);
+          selectInstitution(targetInst, false);
+          return;
+        }} else {{
+          appendCuratorMessage(`
+            <div class="space-y-3 text-slate-200">
+              <div class="flex items-center gap-2 border-b border-[#2e2e38] pb-2 text-white font-medium text-[14px]">
+                <span>Which cultural space are we interrogating today?</span>
+              </div>
+              <p class="text-[14px] text-slate-300 leading-relaxed">
+                Don't leave me waiting in an empty gallery! I can perform a forensic audit on any of the <strong>1,074 mapped institutions</strong> worldwide—checking if they're running legitimate independent programs or accepting corporate sponsorship from defense contractors and fossil fuel underwriters.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px] pt-1">
+                <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
+                  <strong class="text-emerald-400 block mb-0.5">Chisenhale Gallery (London)</strong>
+                  Verified Independent artist-run space in a 1930s veneer factory with zero corporate conflicts.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
+                  <strong class="text-emerald-400 block mb-0.5">Kunstmuseum Bern (Bern)</strong>
+                  Civic foundation housing Adolf Wölfli's Outsider art cosmos and the Gurlitt provenance audit.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
+                  <strong class="text-emerald-400 block mb-0.5">De La Warr Pavilion (Bexhill)</strong>
+                  Modernist steel-and-glass seaside pavilion by Mendelsohn & Chermayeff with universal free entry.
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
+                  <strong class="text-purple-400 block mb-0.5">MoMA (New York)</strong>
+                  Flagged for private equity and defense contractor board seats on IRS Form 990 Schedule L.
+                </div>
+              </div>
+              <p class="text-slate-400 text-[14px]">
+                Click any pin on the globe, or type the name of any museum or city to inspect it.
+              </p>
+            </div>
+          `, [
+            'Check Chisenhale Gallery',
+            'Check Kunstmuseum Bern',
+            'Check De La Warr Pavilion',
+            'Why is MoMA excluded?'
+          ]);
+          return;
+        }}
+      }}
+
       startCuratorThinking(query);
       const scrapingBadge = document.getElementById('curatorScrapingBadge');
       if (scrapingBadge) scrapingBadge.classList.remove('hidden');
@@ -20027,125 +20190,6 @@ FORMATTING & INTERACTION RULES:
             'Warren Kanders at the Whitney'
           ]);
           return;
-        }}
-
-        // =========================================================================
-        // 🔍 CONTEXTUAL AUDIT INTENT ("Check it for me" / "Audit this space")
-        // =========================================================================
-        const isCheckQuery = /^(check(\s+it)?(\s+for\s+me)?|check\s+this|audit\s+this|verify\s+this|inspect\s+this|tell\s+me\s+about\s+this(\s+place)?)$/i.test(q) ||
-          q === 'check it for me' || q === 'check it' || q === 'check this' || q === 'check' || q === 'audit this' || q === 'verify this';
-
-        if (isCheckQuery) {{
-          const targetInst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || curatorContext.lastInst || findMentionedInst(query);
-          if (targetInst) {{
-            curatorContext.lastInst = targetInst;
-            curatorContext.lastCity = targetInst.city;
-            const bArch = targetInst.building_architecture || {{}};
-            const arch = targetInst.archives_and_collections || {{}};
-            const isClean = targetInst.tier === 'A' || (targetInst.tier_label && targetInst.tier_label.includes('Independent'));
-            appendCuratorMessage(`
-              <div class="space-y-3 text-slate-200">
-                <div class="flex items-center justify-between border-b border-[#2e2e38] pb-2">
-                  <div class="flex items-center gap-2">
-                    <span class="text-[14px] font-mono">${{isClean ? 'CLEAN' : 'FLAGGED'}}</span>
-                    <span class="font-medium text-white text-[14px]">Institutional Audit: ${{formatInstLink(targetInst)}}</span>
-                  </div>
-                  <span class="text-[14px] font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'}}">
-                    ${{escapeHtml(targetInst.tier_label || (isClean ? 'Verified Independent Space' : 'Flagged Corporate Underwriting'))}}
-                  </span>
-                </div>
-
-                <p class="text-slate-100 text-[14px] leading-relaxed">
-                  ${{isClean ? 'Alright, look at that—a proper independent darling. No dodgy provenance, no billionaire defense contractors on the board, just legitimate curatorial integrity.' : 'Well, well, well. Pull up a chair—this blue-chip favorite has quite a few skeletons hiding behind the white cube drywall.'}}
-                  Here is the unvarnished breakdown for <strong>${{escapeHtml(targetInst.name)}}</strong> in <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${{escapeHtml(targetInst.city)}}">${{escapeHtml(targetInst.city)}}</a>:
-                </p>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
-                    <strong class="text-sky-300 block">Governance & Ethical Safeguards</strong>
-                    <span>${{escapeHtml(targetInst.governance_details || targetInst.ethical_safeguard || 'Statutory audited civic entity with public council charter.')}}</span>
-                  </div>
-                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
-                    <strong class="text-sky-300 block">Admission & Opening Schedule</strong>
-                    <span><strong>${{escapeHtml(targetInst.admission_policy)}}</strong>: ${{escapeHtml(targetInst.admission_details || targetInst.admission_fee)}}. Hours: ${{escapeHtml(targetInst.opening_hours)}}.</span>
-                  </div>
-                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
-                    <strong class="text-sky-300 block">Architectural Footprint</strong>
-                    <span>Style: ${{escapeHtml(bArch.style || 'Civic architecture')}}, ${{bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() + ' sqm' : 'Custom layout'}}. Wings: ${{escapeHtml((bArch.wings || []).map(w => w.name).join(', ') || 'Exhibition galleries')}}.</span>
-                  </div>
-                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48] space-y-1">
-                    <strong class="text-sky-300 block">Archives & Reading Room</strong>
-                    <span>${{escapeHtml(arch.primary_holdings || 'Curatorial correspondence & exhibition dossiers')}}. Access: ${{escapeHtml(arch.reading_room_policy || 'Public study access')}}.</span>
-                  </div>
-                </div>
-
-                <div class="p-3 rounded-xl bg-[#182030] border border-blue-900/40 text-[14px] leading-relaxed">
-                  <strong class="text-blue-300 block mb-1">Key Highlights & Curatorial Mission:</strong>
-                  <span>${{escapeHtml(targetInst.highlight || targetInst.curatorial_focus)}}</span>
-                </div>
-
-                <div class="pt-2 border-t border-[#232f48] flex items-center justify-between gap-2 flex-wrap text-[14px]">
-                  <span class="text-slate-400">Want deeper inspection?</span>
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <a href="${{escapeHtml(targetInst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-[#141b2a] hover:bg-[#1f2b42] text-sky-300 hover:text-white border border-[#233552] font-mono transition inline-flex items-center gap-1 cursor-pointer">
-                      Audit Dossier
-                    </a>
-                    <button type="button" onclick="openBuildingArchivesModal('${{escapeHtml(targetInst.name)}}')" class="px-3 py-1.5 rounded-lg bg-[#1e293b] hover:bg-[#2b3a52] text-slate-200 hover:text-white border border-slate-700 font-mono transition cursor-pointer">
-                      3D Building & Archives
-                    </button>
-                    <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition cursor-pointer">
-                      Governance Legend
-                    </button>
-                  </div>
-                </div>
-              </div>
-            `, [
-              `Plan visit to ${{targetInst.name}}`,
-              `Archives at ${{targetInst.name}}`,
-              `Nearby spaces in ${{targetInst.city}}`,
-              'Explore independent spaces'
-            ]);
-            selectInstitution(targetInst, true);
-            return;
-          }} else {{
-            appendCuratorMessage(`
-              <div class="space-y-3 text-slate-200">
-                <div class="flex items-center gap-2 border-b border-[#2e2e38] pb-2 text-white font-medium text-[14px]">
-                  <span>Which cultural space are we interrogating today?</span>
-                </div>
-                <p class="text-[14px] text-slate-300 leading-relaxed">
-                  Don't leave me waiting in an empty gallery! I can perform a forensic audit on any of the <strong>1,074 mapped institutions</strong> worldwide—checking if they're running legitimate independent programs or accepting corporate sponsorship from defense contractors and fossil fuel underwriters.
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px] pt-1">
-                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
-                    <strong class="text-emerald-400 block mb-0.5">Chisenhale Gallery (London)</strong>
-                    Verified Independent artist-run space in a 1930s veneer factory with zero corporate conflicts.
-                  </div>
-                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
-                    <strong class="text-emerald-400 block mb-0.5">Kunstmuseum Bern (Bern)</strong>
-                    Civic foundation housing Adolf Wölfli's Outsider art cosmos and the Gurlitt provenance audit.
-                  </div>
-                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
-                    <strong class="text-emerald-400 block mb-0.5">De La Warr Pavilion (Bexhill)</strong>
-                    Modernist steel-and-glass seaside pavilion by Mendelsohn & Chermayeff with universal free entry.
-                  </div>
-                  <div class="p-2.5 rounded-xl bg-[#141824] border border-[#232f48]">
-                    <strong class="text-purple-400 block mb-0.5">MoMA (New York)</strong>
-                    Flagged for private equity and defense contractor board seats on IRS Form 990 Schedule L.
-                  </div>
-                </div>
-                <p class="text-slate-400 text-[14px]">
-                  Click any pin on the globe, or type the name of any museum or city to inspect it.
-                </p>
-              </div>
-            `, [
-              'Check Chisenhale Gallery',
-              'Check Kunstmuseum Bern',
-              'Check De La Warr Pavilion',
-              'Why is MoMA excluded?'
-            ]);
-            return;
-          }}
         }}
 
         if (isGreeting || isWhoAreYou || isVoiceTest) {{
