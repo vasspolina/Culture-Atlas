@@ -11724,11 +11724,12 @@ def build():
         const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : '';
 
         const popupContent = `
-          <div style="font-family:'PP Telegraf',sans-serif; min-width:250px; max-width:340px; padding:3px 4px; color:#f1f5f9;">
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:4px;">
-              <div style="padding-right:8px;">
+          <div style="font-family:'PP Telegraf',sans-serif; min-width:280px; max-width:350px; padding:6px 6px 4px 6px; color:#f1f5f9; box-sizing:border-box;">
+            <!-- Header Section -->
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:4px;">
+              <div style="padding-right:14px; min-width:0;">
                 <a href="${{escapeHtml(webUrl || '#')}}" target="_blank" rel="noopener noreferrer" 
-                   style="font-size:18px; font-weight:600; color:#ffffff; line-height:1.2; text-decoration:none; display:block;"
+                   style="font-size:18px; font-weight:600; color:#ffffff; line-height:1.25; text-decoration:none; display:block;"
                    onmouseover="this.style.color='#93c5fd';this.style.textDecoration='underline'" 
                    onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
                   ${{escapeHtml(inst.name)}}
@@ -11742,53 +11743,61 @@ def build():
               </span>
             </div>
 
-            <div style="font-size:14px; color:#34d399; font-family:monospace; margin-top:4px;">
+            <!-- Hours & Admission Tier -->
+            <div style="font-size:14px; color:#34d399; font-family:monospace; margin-top:5px;">
               ${{escapeHtml(shortH)}} · ${{escapeHtml(shortF)}}
             </div>
 
-            <div style="font-size:14px; color:#cbd5e1; margin-top:5px; line-height:1.35;">
+            <!-- Curatorial Focus & Info Link -->
+            <div style="font-size:14px; color:#cbd5e1; margin-top:5px; line-height:1.4;">
               ${{escapeHtml(inst.curatorial_focus || inst.neighborhood || inst.location)}}
+              <div style="margin-top:2px;">
+                <button type="button" onclick="window.atlasOpenDossier('${{safeName}}')" 
+                        style="background:none; border:none; outline:none; color:#94a3b8; font-size:14px; cursor:pointer; padding:0; text-decoration:underline; font-family:inherit;" 
+                        onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='#94a3b8'">
+                  Read info about institution →
+                </button>
+              </div>
             </div>
 
-            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:8px;">
-              <button onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${{safeName}}', false)" 
-                      style="display:inline-flex; align-items:center; gap:5px; padding:5.5px 11px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.35); border:none; outline:none; cursor:pointer;"
-                      onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1.0'">
-                <span>Zoom to Building & Archives</span>
+            <!-- Streamlined Horizontal Action Buttons Grid -->
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:10px;">
+              <button type="button" onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${{safeName}}', false)" 
+                      style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#f1f5f9; border:1px solid #334155; font-size:14px; font-weight:500; text-decoration:none; cursor:pointer; transition:background 0.15s;"
+                      onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+                <span>Zoom to Building</span>
               </button>
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; font-size:14px; font-weight:500; text-decoration:none; border:1px solid #334155; outline:none;"
-                   onmouseover="this.style.background='#273549'" onmouseout="this.style.background='#1e293b'">
-                  <span>Website</span>
+                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; border:1px solid #334155; font-size:14px; font-weight:500; text-decoration:none; transition:background 0.15s;"
+                   onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+                  <span>Visit Website</span>
                 </a>
               ` : ''}}
-              <button onclick="window.atlasPlanVisit('${{safeName}}')" 
-                      style="display:inline-flex; align-items:center; gap:4px; padding:5px 9px; border-radius:10px; background:#222834; color:#93c5fd; border:1px solid #2f3d58; font-size:14px; font-family:monospace; outline:none; cursor:pointer;"
-                      onmouseover="this.style.background='#2b3548';this.style.color='#ffffff'" onmouseout="this.style.background='#222834';this.style.color='#93c5fd'">
+              <button type="button" onclick="window.atlasPlanVisit('${{safeName}}')" 
+                      style="display:inline-flex; align-items:center; gap:4px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#cbd5e1; border:1px solid #334155; font-size:14px; font-weight:500; cursor:pointer; transition:background 0.15s;"
+                      onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
                 <span>Plan Visit</span>
               </button>
             </div>
 
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; padding-top:7px; border-top:1px solid #27272a; font-size:14px;">
+            <!-- Standard Card Footer: Separated by clean border with zero overlapping text -->
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px; padding-top:9px; border-top:1px solid #27272a; font-size:14px; box-sizing:border-box;">
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="color:#93c5fd; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:110px; outline:none;">
+                   style="color:#93c5fd; font-family:monospace; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:160px; outline:none; display:inline-block;"
+                   onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"
+                   title="${{escapeHtml(webUrl)}}">
                    ${{escapeHtml(domain)}}
                 </a>
-              ` : '<span></span>'}}
-              <div style="display:flex; align-items:center; gap:8px;">
-                <button onclick="window.atlasOpenDossier('${{safeName}}')" 
-                        style="background:none; border:none; outline:none; box-shadow:none; color:#a1a1aa; font-size:14px; cursor:pointer; padding:0;" 
-                        onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#a1a1aa'">
-                  Read info about institution
-                </button>
-                <button onclick="window.atlasAskCurator('${{safeName}}')" 
-                        style="background:none; border:none; outline:none; box-shadow:none; color:#ffffff; font-size:14px; font-weight:600; cursor:pointer; padding:0;" 
-                        onmouseover="this.style.color='#93c5fd'" onmouseout="this.style.color='#ffffff'">
-                  Ask
-                </button>
-              </div>
+              ` : '<span style="color:#64748b; font-family:monospace; font-size:14px;">Independent Space</span>'}}
+              
+              <button type="button" onclick="window.atlasAskCurator('${{safeName}}')" 
+                      style="display:inline-flex; align-items:center; gap:5px; padding:5px 12px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.3); border:none; outline:none; cursor:pointer; white-space:nowrap; shrink:0;" 
+                      onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1.0'"
+                      title="Ask Curator about ${{escapeHtml(inst.name)}}">
+                <span>Ask in Chat →</span>
+              </button>
             </div>
           </div>
         `;

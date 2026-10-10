@@ -11,7 +11,17 @@ def test_show_only_on_click():
 
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    // Stub fetch for vector tiles and fonts so headless chrome doesn't wait for network
+    const origFetch = window.fetch;
+    window.fetch = async (url, opts) => {
+      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('demotiles')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return origFetch(url, opts);
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra: String(extra) });
@@ -20,7 +30,6 @@ def test_show_only_on_click():
       try {
         // Step 1: Open city street view for Bilbao
         filterByCity('Bilbao', true, false);
-        await new Promise(r => setTimeout(r, 600));
 
         const cityContainer = document.getElementById('cityMapContainer');
         assert('cityMapContainer is visible for Bilbao', cityContainer && !cityContainer.classList.contains('hidden'));
@@ -38,8 +47,7 @@ def test_show_only_on_click():
         assert('Pin element exists in DOM', !!pin);
 
         // Click the pin
-        pin.click();
-        await new Promise(r => setTimeout(r, 400));
+        if (pin) pin.click();
 
         // Verify exactly ONE popup opens on explicit click
         popups = document.querySelectorAll('.maplibregl-popup');
@@ -61,7 +69,6 @@ def test_show_only_on_click():
         assert('Close button exists on popup', !!closeBtn);
         if (closeBtn) {
           closeBtn.click();
-          await new Promise(r => setTimeout(r, 300));
           popups = document.querySelectorAll('.maplibregl-popup');
           assert('Popup is dismissed after clicking close button', popups.length === 0, `found: ${popups.length}`);
         }
@@ -71,14 +78,12 @@ def test_show_only_on_click():
         assert('inst-pin-label exists', !!label);
         if (label) {
           label.click();
-          await new Promise(r => setTimeout(r, 400));
           popups = document.querySelectorAll('.maplibregl-popup');
           assert('Popup opens on clicking institution name label', popups.length === 1, `found: ${popups.length}`);
         }
 
         // Step 5: Exit street view back to globe
         exitCityStreetView();
-        await new Promise(r => setTimeout(r, 400));
         assert('isCityStreetViewActive is false after exit', isCityStreetViewActive === false);
         assert('cityMapContainer is hidden', cityContainer.classList.contains('hidden'));
         assert('floatingCard is hidden after exit', floatingCard.classList.contains('hidden'));
@@ -106,11 +111,10 @@ def test_show_only_on_click():
         "--headless=new",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
 
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=80)
     marker = 'id="test-results-output" data-results="'
     assert marker in proc.stdout, f"Marker not found in stdout: {proc.stdout[:400]}"
 
