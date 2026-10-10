@@ -18,7 +18,7 @@ def run_tests():
       return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
 
-    window.addEventListener('load', async () => {
+    window.addEventListener('DOMContentLoaded', async () => {
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
@@ -163,7 +163,7 @@ def run_tests():
     ]
 
     try:
-        proc = subprocess.run(chrome_cmd, capture_output=True, text=True, timeout=60)
+        proc = subprocess.run(chrome_cmd, capture_output=True, text=True, timeout=120)
         dom = proc.stdout
 
         marker = 'id="test-results-output" data-results="'

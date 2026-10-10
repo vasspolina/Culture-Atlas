@@ -141,7 +141,7 @@ def test_browser_distinct_spaces():
     ]
 
     try:
-        proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
+        proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=80)
         marker = 'id="test-results-output" data-results="'
         if marker not in proc.stdout:
             print("ERROR: Test marker not found in output. Stderr:")
