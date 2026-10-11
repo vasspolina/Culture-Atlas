@@ -1466,12 +1466,23 @@ def build():
         max-width: 100% !important;
       }}
       .no-scrollbar::-webkit-scrollbar {{
-        display: none;
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
       }}
       .no-scrollbar {{
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
       }}
+    }}
+    .no-scrollbar::-webkit-scrollbar {{
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }}
+    .no-scrollbar {{
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
     }}
 </style>
   <script>
@@ -2029,7 +2040,7 @@ def build():
       </div>
 
       <!-- Subtle Globe Zoom & Map Controls -->
-      <div class="absolute bottom-2 right-2 sm:right-4 z-10 flex items-center gap-1 sm:gap-1.5 bg-[#18181b]/90 backdrop-blur-md p-1 rounded-2xl border border-[#2e2e2e] shadow-lg max-w-[calc(100%-16px)] overflow-x-auto select-none">
+      <div id="hudControlsBar" class="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-10 flex items-center gap-1 sm:gap-1.5 bg-[#18181b]/90 backdrop-blur-md p-1 rounded-2xl border border-[#2e2e2e] shadow-lg max-w-[calc(100%-16px)] sm:max-w-[calc(100%-32px)] overflow-x-auto overflow-y-hidden no-scrollbar select-none">
         <button id="hudWorldBtn" class="px-2 sm:px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[14px] sm:text-[14px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Reset World View">
           <span>World</span>
         </button>
@@ -2215,7 +2226,7 @@ def build():
       </div>
 
       <!-- 📑 WORKSPACE UNIFIED TAB BAR (Clean Map on Left, Context & Intelligence on Right) -->
-      <div id="workspaceTabBar" class="shrink-0 flex items-center justify-between border-b border-[#1e293b] bg-[#0c101a] px-3.5 py-2 select-none z-20">
+      <div id="workspaceTabBar" class="shrink-0 hidden md:flex items-center justify-between border-b border-[#1e293b] bg-[#0c101a] px-3.5 py-2 select-none z-20">
         <div class="flex items-center gap-1.5 p-0.5 bg-[#070a12] border border-[#1e293b] rounded-xl text-[14px]">
           <button id="workspaceTabChat" type="button" class="py-1 px-3.5 rounded-lg text-center font-medium transition cursor-pointer bg-[#1e293b] text-white shadow-sm flex items-center gap-2" onclick="window.setWorkspaceTab('chat');">
             <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -2376,7 +2387,7 @@ def build():
       </div>
 
 <!-- 2. COLLAPSIBLE FILTER DRAWER PANEL: Soft Ghost Buttons, Categorized Navigation -->
-      <div id="filterDrawerPanel" class="hidden absolute inset-x-0 bottom-[68px] sm:bottom-[74px] max-h-[72vh] z-40 bg-[#0f172a]/95 backdrop-blur-xl border-t border-[#334155] rounded-t-2xl shadow-2xl p-4 sm:p-5 flex flex-col gap-3.5 overflow-y-auto custom-scrollbar transition-all duration-200">
+      <div id="filterDrawerPanel" class="hidden absolute inset-x-0 bottom-0 max-h-[85vh] sm:max-h-[90vh] z-40 bg-[#0f172a]/95 backdrop-blur-xl border-t border-[#334155] rounded-t-2xl shadow-2xl p-4 sm:p-5 flex flex-col gap-3.5 overflow-y-auto custom-scrollbar transition-all duration-200">
         <div class="flex items-center justify-between pb-2.5 border-b border-[#1e293b]">
           <div class="flex items-center gap-2">
             <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2518,6 +2529,14 @@ def build():
               <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Italy">Italy</button>
               <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Japan">Japan</button>
             </div>
+          </div>
+
+          <!-- Dedicated Bottom Action Bar: Done & Close button -->
+          <div class="pt-3 pb-1 border-t border-[#1e293b] flex items-center justify-between mt-auto shrink-0 select-none">
+            <span class="text-[14px] text-slate-400 font-mono">Select filters to update map layers</span>
+            <button type="button" onclick="window.toggleFilterDrawer(false)" class="px-4 py-2 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-white border border-[#334155] text-[14px] font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm" title="Done and close filter drawer">
+              <span>Done &amp; Close</span>
+            </button>
           </div>
         </div>
       </div>
@@ -25195,7 +25214,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         if (anchoredBar) {{
           anchoredBar.style.display = 'none';
         }}
-        if (summaryStrip) summaryStrip.classList.remove('hidden');
+        if (summaryStrip) summaryStrip.classList.add('hidden');
         if (inputRow) inputRow.classList.add('hidden');
         if (chevronIcon) chevronIcon.style.transform = 'rotate(0deg)';
         scrollChatToBottom(false);
@@ -25226,7 +25245,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
           anchoredBar.style.display = 'none';
         }}
         if (summaryStrip) summaryStrip.classList.remove('hidden');
-        if (inputRow) inputRow.classList.remove('hidden');
+        if (inputRow) inputRow.classList.add('hidden');
         if (chevronIcon) chevronIcon.style.transform = 'rotate(0deg)';
         resizeCanvas();
         if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
@@ -27470,14 +27489,20 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
     function toggleFilterDrawer(forceState) {{
       const drawer = document.getElementById('filterDrawerPanel');
       const chevron = document.getElementById('filterChevronIcon');
+      const bottomDock = document.getElementById('workBottomDock');
+      const subActionBar = document.getElementById('workSubActionBar');
       if (!drawer) return;
       const willOpen = (typeof forceState === 'boolean') ? forceState : drawer.classList.contains('hidden');
       if (willOpen) {{
         drawer.classList.remove('hidden');
         if (chevron) chevron.classList.add('rotate-180');
+        if (bottomDock) bottomDock.classList.add('hidden');
+        if (subActionBar) subActionBar.classList.add('hidden');
       }} else {{
         drawer.classList.add('hidden');
         if (chevron) chevron.classList.remove('rotate-180');
+        if (bottomDock) bottomDock.classList.remove('hidden');
+        if (subActionBar) subActionBar.classList.remove('hidden');
       }}
     }}
     window.toggleFilterDrawer = toggleFilterDrawer;

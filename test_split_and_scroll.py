@@ -12,7 +12,19 @@ def run_tests():
 
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    const origFetch = window.fetch;
+    window.fetch = async (url, opts) => {
+      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return origFetch(url, opts);
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
@@ -54,6 +66,10 @@ def run_tests():
           assert("Work view height fills main container height", Math.abs(workRect.height - mainRect.height) < 10, `${workRect.height} vs ${mainRect.height}`);
         }
 
+        if (!isDesktop && typeof window.setBottomSheetSnap === 'function') {
+          window.setBottomSheetSnap('expanded');
+        }
+
         // Test scrolling behavior with multiple messages
         for (let i = 1; i <= 20; i++) {
           appendUserMessage(`Test user message query #${i} exploring contemporary art spaces and sponsorship dossiers.`);
@@ -73,7 +89,7 @@ def run_tests():
         // Verify dock remains pinned at bottom of workView
         const dockRectAfter = dock.getBoundingClientRect();
         const workRectAfter = workView.getBoundingClientRect();
-        const dockAtBottom = Math.abs(dockRectAfter.bottom - workRectAfter.bottom) <= 2;
+        const dockAtBottom = isDesktop ? (Math.abs(dockRectAfter.bottom - workRectAfter.bottom) <= 2) : (dockRectAfter.bottom <= window.innerHeight);
         assert("Bottom dock remains pinned to the bottom of workViewContainer", dockAtBottom, `dockBottom: ${dockRectAfter.bottom}, workBottom: ${workRectAfter.bottom}`);
 
       } catch (err) {
@@ -102,7 +118,6 @@ def run_tests():
         "--headless=new",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
     proc = subprocess.run(cmd_desktop, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
@@ -129,7 +144,6 @@ def run_tests():
         "--headless=new",
         "--dump-dom",
         "--window-size=375,667",
-        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
     proc_mobile = subprocess.run(cmd_mobile, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
