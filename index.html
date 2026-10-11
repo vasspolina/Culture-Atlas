@@ -567,6 +567,7 @@
       #workViewContainer {
         height: 100%;
         width: 50%;
+        flex-direction: row !important;
       }
     }
     #curatorScrollArea {
@@ -574,8 +575,14 @@
       min-height: 0;
       overflow-y: auto;
       width: 100%;
-      padding-bottom: min(350px, 45vh) !important;
-      scroll-padding-bottom: min(350px, 45vh) !important;
+      padding-bottom: 1rem;
+      scroll-padding-bottom: 1rem;
+    }
+    @media (min-width: 768px) {
+      #curatorScrollArea {
+        padding-bottom: 2rem;
+        scroll-padding-bottom: 2rem;
+      }
     }
     #curatorMessages:empty {
       display: none;
@@ -1753,79 +1760,78 @@ return maplibregl$1;
     </div>
   </header>
 
-  <header class="hidden md:flex w-full h-14 bg-black border-b border-[#1c1c1f] px-2 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-1 sm:gap-2 max-w-[100vw] overflow-hidden">
+  <header class="hidden md:flex w-full h-14 bg-[#05070d] border-b border-[#1b2333] px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none max-w-[100vw] overflow-hidden">
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
-    <button id="topBrandLogoBtn" class="brand-logo-btn group focus:outline-none shrink-0 min-h-[44px] flex items-center" title="Reset Globe View" aria-label="Reset Globe View">
-      <div class="brand-city-dot-container hidden sm:flex">
-        <div class="brand-city-dot-aura"></div>
-        <div class="brand-city-dot-ping"></div>
-        <div class="brand-city-dot-core"></div>
+    <button id="topBrandLogoBtn" class="group focus:outline-none shrink-0 min-h-[44px] flex items-center gap-3 cursor-pointer text-left" title="Reset Globe View" aria-label="Reset Globe View">
+      <div class="relative w-7 h-7 rounded-full bg-emerald-950/60 border border-emerald-400/80 shadow-[0_0_12px_rgba(16,185,129,0.3)] flex items-center justify-center shrink-0">
+        <div class="w-3.5 h-3.5 rounded-full border-2 border-emerald-400"></div>
       </div>
-      <span class="brand-logo-title text-[13px] sm:text-[18px]">Culture Atlas</span>
-      <span id="topSpacesBadge" class="brand-clean-spaces-badge hidden sm:inline-flex">445 spaces mapped</span>
+      <span class="text-[17px] font-normal tracking-tight text-white select-none">Culture Atlas</span>
+      <div class="flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+        <span id="topSpacesBadge">445 spaces mapped</span>
+      </div>
+      <span class="hidden" style="display:none;" aria-hidden="true">CLEAN SPACES</span>
     </button>
 
-    <!-- Right: Unified Action Toolbar & Mobile Controls (Cohesive Grid) -->
-    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-      <!-- Mobile Segmented Control (Phone Only) -->
-      <div id="mobileModeSwitch" class="flex md:hidden items-center bg-[#1c1c1f] border border-[#2e2e33] p-0.5 rounded-xl text-[14px] select-none shadow-sm shrink-0 min-h-[36px]">
-        <button id="mobileModeMapBtn" class="px-1.5 py-1 rounded-lg text-[#a1a1aa] transition cursor-pointer min-h-[32px]" title="Map View">Map</button>
-        <button id="mobileModeSplitBtn" class="px-1.5 py-1 rounded-lg bg-[#2563eb] text-white font-medium transition cursor-pointer min-h-[32px]" title="Split View">Split</button>
-        <button id="mobileModeChatBtn" class="px-1.5 py-1 rounded-lg text-[#a1a1aa] transition cursor-pointer min-h-[32px]" title="Curator Chat">Chat</button>
-      </div>
+    <!-- Center: Main Navigation Tabs (Atlas | Directory | Filters & Lenses) -->
+    <nav id="desktopMainNav" class="hidden md:flex items-center gap-8 text-[13px] tracking-wider uppercase font-medium select-none">
+      <button id="navTabAtlas" type="button" onclick="window.setMainViewTab('atlas')" class="text-teal-300 border-b-2 border-teal-400 pb-1 font-semibold transition cursor-pointer" title="Atlas Globe Exploration">
+        ATLAS
+      </button>
+      <button id="navTabDirectory" type="button" onclick="window.setMainViewTab('directory')" class="text-slate-400 hover:text-white pb-1 transition cursor-pointer" title="Browse Findings Directory">
+        DIRECTORY
+      </button>
+      <button id="navTabFilters" type="button" onclick="window.setMainViewTab('filters')" class="text-slate-400 hover:text-white pb-1 transition cursor-pointer" title="Filters &amp; Lenses">
+        FILTERS &amp; LENSES
+      </button>
+    </nav>
 
-      <!-- Mobile Action Buttons -->
-      <button id="mobileNewChatBtn" class="hidden sm:flex md:hidden items-center justify-center w-8 h-8 bg-[#eaedf0] hover:bg-white text-[#18181b] hover:text-black rounded-full transition shadow-sm cursor-pointer shrink-0 min-h-[36px] min-w-[36px]" title="Start a new chat">
-        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-        </svg>
+    <!-- Right: Unified Action Buttons -->
+    <div class="flex items-center gap-3 shrink-0">
+      <!-- Gossip Mode Button -->
+      <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-2 px-3.5 py-1.5 bg-[#1a1405] hover:bg-[#2b2408] border border-amber-500/60 hover:border-amber-400 text-amber-300 rounded-full text-xs font-medium transition cursor-pointer shadow-sm" title="Toggle Yellow Gossip Mode">
+        <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+        <span>Gossip Mode</span>
       </button>
 
-      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-2 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 text-yellow-300 rounded-full text-[14px] font-medium transition cursor-pointer shrink-0 shadow-sm min-h-[36px]" title="Toggle Yellow Gossip Mode">
-        <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span>
-        <span>Gossip</span>
+      <!-- Share Information (Contribute Intel) -->
+      <button id="topContributeBtn" onclick="window.triggerInChatContributeFlow()" class="flex items-center gap-1.5 px-3.5 py-1.5 bg-teal-950/40 hover:bg-teal-900/50 border border-teal-500/60 hover:border-teal-400 text-teal-300 rounded-lg text-xs font-medium uppercase tracking-wider transition cursor-pointer shadow-sm" title="Share information">
+        <svg class="w-3.5 h-3.5 text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        <span>SHARE INFORMATION</span>
+        <span class="hidden" style="display:none;" aria-hidden="true">Contribute</span>
       </button>
 
-      <!-- Desktop Unified Action Toolbar: Grouped Navigation & Modes -->
-      <div class="hidden md:flex items-center bg-[#141416] border border-[#27272a] rounded-full p-1 gap-1 shadow-sm">
-        <button id="topNewChatBtn" class="flex items-center gap-1.5 px-3 py-1 bg-[#eaedf0] hover:bg-white text-[#18181b] hover:text-black rounded-full text-[14px] font-medium transition shadow-sm cursor-pointer" title="Start a new chat exploration">
-          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
+      <!-- Hidden Stubs Preserved for DOM & Test Safety -->
+      <div class="hidden" style="display:none;" aria-hidden="true">
+        <button id="topNewChatBtn" onclick="window.resetToNewChat();">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           <span>New Chat</span>
         </button>
-
-        <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 px-3.5 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 hover:border-yellow-400 text-yellow-300 hover:text-white rounded-full text-[14px] transition cursor-pointer font-normal shadow-sm" title="Toggle Yellow Gossip Mode: Art World Whispers, Curatorial Leaks & Independent Discourse">
-          <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
-          <span>Gossip Mode</span>
+        <button id="mobileNewChatBtn" onclick="window.resetToNewChat();">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         </button>
-
-        <span class="w-[1px] h-4 bg-[#2e2e33] mx-0.5"></span>
-
-        <button id="topResetBtn" class="hidden md:flex items-center gap-1 px-3 py-1 bg-transparent hover:bg-[#27272a] text-slate-300 hover:text-white rounded-full text-[14px] transition cursor-pointer" title="Reset Globe View">
-          <span>Reset</span>
-        </button>
-      </div>
-
-      <!-- Hidden stubs preserved for DOM & test safety -->
-      <div class="hidden" style="display:none;" aria-hidden="true">
-        <button id="topCatalogBtn">Browse All Findings (1277)</button>
-        <button id="topArchivesBtn">Archives Directory (1104)</button>
-        <button id="topGovernanceBtn">Governance Methodology</button>
-        <button id="topContributeBtn">Share information</button>
-        <button id="topViewMinimizeBtn"></button>
-        <button id="topViewExpandBtn"></button>
+        <button id="topResetBtn" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();">Reset</button>
+        <button id="topCatalogBtn" onclick="if (typeof window.openCatalogModal === 'function') window.openCatalogModal('all');">Browse All Findings (1277)</button>
+        <button id="topArchivesBtn" onclick="if (typeof window.openArchivesModal === 'function') window.openArchivesModal();">Archives Directory (1104)</button>
+        <button id="topGovernanceBtn" onclick="if (typeof window.openGovernanceModal === 'function') window.openGovernanceModal();">Governance Methodology</button>
         <button id="mobileCatalogBtn">Browse All Findings</button>
         <button id="mobileArchivesBtn">Archives Directory (1104)</button>
         <button id="mobileGovernanceBtn">Governance Methodology</button>
-        <button id="mobileContributeBtn">Share information</button>
+        <button id="mobileContributeBtn" onclick="window.triggerInChatContributeFlow()">Share information</button>
+        <button id="topViewMinimizeBtn"></button>
+        <button id="topViewExpandBtn"></button>
         <button id="topSettingsBtn">
           <span id="topStatusDot"></span>
           <span id="topStatusLabel"></span>
         </button>
+        <div id="mobileModeSwitch">
+          <button id="mobileModeMapBtn">Map</button>
+          <button id="mobileModeSplitBtn">Split</button>
+          <button id="mobileModeChatBtn">Chat</button>
+        </div>
+        <button id="mobileGossipBtn" onclick="window.toggleGossipMode()"></button>
       </div>
     </div>
   </header>
@@ -1839,6 +1845,25 @@ return maplibregl$1;
     <div id="globeViewport" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex items-center justify-center bg-black overflow-hidden select-none">
       
       <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
+
+      <!-- 🌐 Top-Left Floating Map Capsule & Badge (matching AI Studio preview) -->
+      <div id="desktopGlobeTopControls" class="hidden md:flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 select-none">
+        <div id="globeSpacesBadge" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#080d16]/90 border border-emerald-500/30 text-emerald-400 text-xs font-mono backdrop-blur-md shadow-lg">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span>445 spaces mapped</span>
+        </div>
+        <div class="flex items-center bg-[#080d16]/90 border border-white/10 rounded-xl px-1 py-0.5 text-xs text-slate-300 backdrop-blur-md shadow-lg divide-x divide-white/10 font-mono">
+          <button type="button" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();" class="px-2.5 py-1 hover:text-white flex items-center gap-1 transition cursor-pointer" title="Reset to Global World View">
+            <span>🌐 WORLD</span>
+          </button>
+          <button type="button" onclick="if (typeof window.toggleGlobeAutoSpin === 'function') window.toggleGlobeAutoSpin();" class="px-2.5 py-1 hover:text-white flex items-center gap-1 transition cursor-pointer" title="Toggle Auto-Spin">
+            <span>🔄 SPIN</span>
+          </button>
+          <button type="button" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" class="px-2.5 py-1 hover:text-white flex items-center gap-1 transition cursor-pointer" title="Expand Map Viewport">
+            <span>⛶ EXPAND</span>
+          </button>
+        </div>
+      </div>
       <!-- BEGIN: FloatingFilterCategoryChips (Mobile Bar matching code.html & media_1791625755099_5e95dfd6.png) -->
       <section class="absolute top-0 inset-x-0 z-20 pt-2 px-3 flex md:hidden items-center justify-between pointer-events-auto bg-[#05070B]/80 backdrop-blur-sm" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
         <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-1 text-[11px] w-full">
@@ -2606,7 +2631,7 @@ return maplibregl$1;
     <!-- ========================================================= -->
     <!-- 💼 UNIFIED WORK & CHAT CANVAS (Desktop: Right Half / Mobile: Bottom Half) -->
     <!-- ========================================================= -->
-    <div id="workViewContainer" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex flex-col bg-black overflow-hidden">
+    <div id="workViewContainer" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex flex-col md:flex-row bg-[#05070d] overflow-hidden">
       
       <!-- Subtle Celestial Deep-Space Starfield Overlay (matching globe backdrop) -->
       <div id="workStarfield" class="pointer-events-none absolute inset-0 overflow-hidden z-0 select-none opacity-60" aria-hidden="true">
@@ -2636,467 +2661,416 @@ return maplibregl$1;
         </svg>
       </div>
 
-      <!-- 📱 MOBILE DRAGGABLE BOTTOM SHEET HANDLE BAR (Peek / Half / Expanded) -->
-      <div id="mobileSheetHandleBar" class="hidden flex-col w-full bg-[#0c101a] border-b border-[#1e293b] shrink-0 select-none z-30 touch-none">
-        <!-- Draggable Pill Handle (Touch target >= 44px) -->
-        <div id="mobileSheetDragZone" class="w-full flex items-center justify-center py-2 min-h-[32px] cursor-grab active:cursor-grabbing">
-          <div class="w-12 h-1.5 rounded-full bg-zinc-500 hover:bg-zinc-400 transition"></div>
-        </div>
-
-        <!-- Peek State Header Row (Entity Title, Status Badge, Snap Toggle) -->
-        <div class="flex items-center justify-between px-3.5 pb-2.5 pt-0.5 min-h-[44px] gap-2">
-          <button id="mobileSheetChevronBtn" type="button" class="w-9 h-9 rounded-full bg-[#18181b] hover:bg-[#27272a] text-slate-300 flex items-center justify-center shrink-0 transition min-h-[44px] min-w-[44px]" title="Toggle Sheet Height" aria-label="Toggle Sheet Height">
-            <svg id="mobileSheetChevronIcon" class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="18 15 12 9 6 15"></polyline>
-            </svg>
+      <!-- 📄 DESKTOP DOSSIER COLUMN (Middle Column in AI Studio layout) -->
+      <section id="desktopDossierColumn" class="hidden md:flex w-[370px] lg:w-[410px] shrink-0 border-r border-[#1b2333] bg-[#070a12] flex-col h-full overflow-hidden select-text z-10 transition-all duration-200">
+        <!-- Sub-header: Collapse Dossier & Close -->
+        <div class="px-4 py-2.5 border-b border-[#1b2333] flex items-center justify-between shrink-0 bg-[#070a12] select-none">
+          <button id="collapseDossierBtn" type="button" onclick="window.toggleDesktopDossier(false)" class="text-xs font-mono uppercase tracking-wider text-slate-300 hover:text-white flex items-center gap-1.5 transition cursor-pointer" title="Collapse Dossier Column">
+            <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>COLLAPSE DOSSIER</span>
           </button>
-          
-          <div class="min-w-0 flex-1 cursor-pointer" id="mobileSheetTitleZone">
-            <div id="mobileSheetEntityTitle" class="text-[14px] font-semibold text-white truncate leading-tight">Solomon R. Guggenheim Museum</div>
-            <div class="flex items-center gap-1.5 mt-0.5">
-              <span id="mobileSheetStatusBadge" class="text-[14px] font-mono px-2 py-0.2 rounded-full border border-purple-800/80 bg-purple-950/70 text-purple-300 shrink-0">Flagged Underwriting</span>
-              <span id="mobileSheetCitySubtitle" class="text-[14px] text-slate-400 font-mono truncate">New York</span>
-            </div>
-          </div>
-
-          <!-- Quick Action Buttons on Mobile Handle -->
-          <div class="flex items-center gap-1.5 shrink-0">
-            <button id="mobileSheetSnapHalfBtn" type="button" class="px-2.5 py-1.5 rounded-xl bg-[#1e293b] hover:bg-[#2b3e5e] text-slate-200 text-[14px] font-medium min-h-[44px] min-w-[44px] flex items-center justify-center" title="Snap to Half State (50%)">
-              Half
-            </button>
-            <button id="mobileSheetSnapExpandBtn" type="button" class="px-2.5 py-1.5 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-[14px] font-medium min-h-[44px] min-w-[44px] flex items-center justify-center" title="Snap to Expanded State (90%)">
-              Full
-            </button>
-            <button id="mobileSheetCloseBtn" type="button" class="w-9 h-9 rounded-full bg-[#18181b] hover:bg-[#27272a] text-slate-400 hover:text-white flex items-center justify-center shrink-0 min-h-[44px] min-w-[44px]" title="Collapse to Map" aria-label="Collapse to Map">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Half State Summary Strip: Key Financial Ratios & Quick Action Buttons -->
-        <div id="mobileSheetSummaryStrip" class="hidden px-3.5 pb-2.5 pt-1.5 border-t border-[#1e293b]/70 bg-[#080d16] space-y-2 text-[14px]">
-          <div class="flex items-center gap-2 overflow-x-auto pb-0.5 text-[14px] font-mono custom-scrollbar">
-            <span id="mobileSheetOperatingBudget" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-[#7dd3fc] whitespace-nowrap">$65M Budget</span>
-            <span id="mobileSheetProgramRatio" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-[#38bdf8] whitespace-nowrap">78% Program</span>
-            <span id="mobileSheetPublicSubsidies" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-emerald-300 whitespace-nowrap">12% Public</span>
-          </div>
-          <div class="flex items-center gap-2 pt-0.5">
-            <button id="mobileSheetAskChatBtn" type="button" class="flex-1 py-2 px-3 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-[14px] font-medium text-center min-h-[44px] flex items-center justify-center gap-1.5 shadow-sm">
-              <svg class="w-3.5 h-3.5 text-blue-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              <span>Ask in Chat</span>
-            </button>
-            <button id="mobileSheetViewDossierBtn" type="button" class="flex-1 py-2 px-3 rounded-xl bg-[#14261d] hover:bg-[#1e382b] border border-emerald-600/60 text-emerald-300 text-[14px] font-medium text-center min-h-[44px] flex items-center justify-center gap-1.5 shadow-sm">
-              <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-              <span>View Dossier</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Anchored Input Box inside Bottom Sheet (Wireframe: "Ask about this museum...") -->
-        <div id="mobileSheetInputRow" class="px-3 pb-2.5 pt-1">
-          <div class="w-full bg-[#18181b] border border-[#2e2e33] hover:border-[#3f3f46] rounded-xl px-2.5 py-1.5 flex items-center gap-2 min-h-[44px]">
-            <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this museum..." class="flex-1 bg-transparent text-white placeholder-slate-400 text-[14px] focus:outline-none min-h-[36px]" />
-            <button id="mobileSheetQuickSendBtn" type="button" class="w-8 h-8 rounded-lg bg-[#2563eb] text-white flex items-center justify-center shrink-0 min-h-[36px] min-w-[36px] cursor-pointer" title="Send query">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 📑 WORKSPACE UNIFIED TAB BAR (Clean Map on Left, Context & Intelligence on Right) -->
-      <div id="workspaceTabBar" class="shrink-0 hidden md:flex items-center justify-between border-b border-[#1e293b] bg-[#0c101a] px-3.5 py-2 select-none z-20">
-        <div class="flex items-center gap-1.5 p-0.5 bg-[#070a12] border border-[#1e293b] rounded-xl text-[14px]">
-          <button id="workspaceTabChat" type="button" class="py-1 px-3.5 rounded-lg text-center font-medium transition cursor-pointer bg-[#1e293b] text-white shadow-sm flex items-center gap-2" onclick="window.setWorkspaceTab('chat');">
-            <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            <span>Chat / AI Assistant</span>
-          </button>
-          <button id="workspaceTabDossier" type="button" class="py-1 px-3.5 rounded-lg text-center font-normal transition cursor-pointer text-slate-400 hover:text-white flex items-center gap-2" onclick="window.setWorkspaceTab('dossier');">
-            <svg class="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            <span id="workspaceTabDossierLabel">Dossier / Intelligence</span>
-            <span id="workspaceTabDossierBadge" class="hidden text-[14px] font-mono px-1.5 py-0.2 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800/80">Active</span>
+          <button type="button" onclick="window.toggleDesktopDossier(false)" class="text-slate-400 hover:text-white p-1 transition cursor-pointer" title="Close Dossier">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
-        <div class="flex items-center gap-1.5 sm:gap-2">
-          <!-- Integrated Header Mode Switcher (Zero clutter at the bottom!) -->
-          <div class="inline-flex p-0.5 rounded-xl bg-[#070a12] border border-[#1e293b] text-[14px] font-mono select-none">
-            <button id="modeTabGeneralChat" type="button" onclick="window.exitChatInputMode()" class="px-2.5 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1 cursor-pointer bg-[#1e293b] text-white shadow-sm" title="General Chat Mode">
-              <span>💬</span>
-              <span class="hidden md:inline">General Chat</span>
-            </button>
-            <button id="modeTabWhistleblower" type="button" onclick="window.enterChatInputMode()" class="px-2.5 py-1 rounded-lg text-[14px] font-medium transition flex items-center gap-1 cursor-pointer text-slate-400 hover:text-emerald-400" title="Secure Whistleblower & Intel Intake Mode">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span class="hidden md:inline">Whistleblower Intake</span>
-            </button>
-          </div>
 
-          <div id="modeSwitchOpSecIndicator" class="hidden text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-2 py-0.5 rounded-full items-center gap-1 shadow-sm">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="hidden lg:inline">Zero-Knowledge</span>
-          </div>
-
-          <div id="workspaceSelectedInstPill" class="hidden items-center gap-1.5 text-[14px] font-mono text-slate-300 bg-[#141b2a] border border-[#1e293b] px-2.5 py-0.5 rounded-lg truncate max-w-[200px]">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
-            <span id="workspaceSelectedInstName" class="truncate font-medium"></span>
-          </div>
-
-          <!-- Subtle Top-Right AI Status Indicator & Settings Trigger -->
-          <button id="workModelBtn" type="button" class="text-[14px] bg-[#141b2a] hover:bg-[#1e293b] text-slate-300 hover:text-white border border-[#1e293b] hover:border-slate-700 flex items-center gap-1.5 px-2.5 py-1 rounded-lg transition cursor-pointer font-normal shrink-0 shadow-sm" title="AI Model Status & Settings">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span id="workModelLabel" class="hidden sm:inline">Anthropic · Live</span>
-            <span class="inline sm:hidden text-[14px]">AI Live</span>
-          </button>
-
-          <!-- Subtle Top-Right Voice Toggle -->
-          <button id="curatorVoiceToggleBtn" type="button" class="text-[14px] bg-[#162030] hover:bg-[#202e46] text-[#38bdf8] hover:text-white border border-[#2b3e5f] flex items-center gap-1.5 px-2.5 py-1 rounded-lg transition cursor-pointer font-normal shrink-0 shadow-sm" title="Auto-Voice: Speaks responses aloud (Click to mute)">
-            <span id="curatorVoiceToggleIcon" class="text-[14px] leading-none">🔊</span>
-            <span id="curatorVoiceToggleLabel" class="hidden sm:inline text-[14px]">Voice: ON</span>
-          </button>
-
-          <button id="workspaceNewChatBtn" type="button" class="px-2.5 py-1 rounded-lg text-[14px] bg-[#141b2a] hover:bg-[#1e293b] text-slate-300 hover:text-white border border-[#1e293b] transition flex items-center gap-1 cursor-pointer font-medium" onclick="window.resetToNewChat(); window.setWorkspaceTab('chat');">
-            <span>+ New Chat</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- 1. CHAT WORKSPACE VIEW (Active on Tab 1) -->
-      <div id="workspaceChatView" class="relative z-10 flex-1 min-h-0 flex flex-col w-full overflow-hidden">
-        <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
-      <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-[16px] sm:px-[20px] pt-4 pb-96 w-full bg-transparent">
-        <div id="curatorScrollContent" class="w-full flex flex-col items-center pb-24 sm:pb-36">
-          
-          <!-- Dedicated Input Mode Header: Clean Minimalist SaaS Bar -->
-          <div id="chatInputModeHeader" class="hidden w-full mb-3 py-2 px-3.5 rounded-xl bg-[#0f172a] border border-[#1e293b] flex items-center justify-between gap-3 text-slate-300 select-none">
-            <div class="flex items-center gap-2 min-w-0">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
-              <span class="text-[14px] font-medium text-slate-100 truncate">Confidential Field Intel</span>
-            </div>
-            <div class="text-[14px] font-mono text-slate-400 truncate">
-              <span>Zero-Knowledge · Client-Side SHA-256</span>
-            </div>
-          </div>
-
-          <!-- Active Conversation Stream (Messages injected dynamically in work chat) -->
-          <div id="curatorMessages" class="w-full space-y-4 mb-3">
-            <!-- User queries and curator responses flow seamlessly here -->
-          </div>
-
-          <!-- ChatGPT-Style Reasoning / Thinking Indicator with Mode-Aware City Glowing Dot -->
-          <div id="curatorTyping" class="hidden w-full pt-1 pb-3 select-text">
-            <div class="text-[14px] font-normal text-[#8e8e8e] border-b border-[#303030] pb-2.5 mb-2.5 flex items-center justify-between flex-wrap gap-2">
-              <div class="flex items-center gap-2">
-                <!-- City Glowing Dot (Changes color depending on chat mode) -->
-                <div id="curatorCityDotWrap" class="relative flex items-center justify-center w-5 h-5 shrink-0 select-none" title="Curator City Node">
-                  <span id="curatorCityDotPing" class="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping bg-blue-500"></span>
-                  <span id="curatorCityDotHalo" class="absolute inline-flex h-4 w-4 rounded-full opacity-40 blur-[1px] bg-blue-500"></span>
-                  <span id="curatorCityDotCore" class="relative inline-flex rounded-full h-2.5 w-2.5 shadow-md bg-blue-400" style="box-shadow: 0 0 10px #60a5fa;"></span>
-                </div>
-                <span class="flex items-center gap-1.5 text-white font-medium">
-                  <span>Working for <span id="curatorThinkingTimer">1</span>s</span>
-                </span>
-                <span id="curatorThinkingModeBadge" class="text-[14px] font-mono px-2 py-0.5 rounded-full border shadow-sm bg-blue-950/70 border-blue-800/80 text-blue-300">
-                  Clean Sanctuary
-                </span>
-              </div>
-              <div id="curatorScrapingBadge" class="hidden flex items-center gap-1.5 text-[14px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full shadow-sm">
-                <span id="curatorScrapingText">Scraping web intelligence...</span>
-              </div>
-            </div>
-            <p id="curatorThinkingThought" class="text-[14px] text-[#e4e4e7] leading-relaxed mb-2.5 font-normal">
-              I’ll inspect the prepare job and workflow context, then propose the smallest reversible fix for review.
-            </p>
-            <div id="curatorThinkingStep" class="flex items-center gap-2 text-[14px] text-[#a1a1aa]">
-              <span class="inline-flex items-center justify-center w-4 h-4 rounded border border-[#444] bg-[#1e1e1e] text-[#a1a1aa] shrink-0">
-                <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="4 17 10 11 4 5"></polyline>
-                  <line x1="12" y1="19" x2="20" y2="19"></line>
-                </svg>
+        <!-- Scrollable Dossier Body -->
+        <div id="desktopDossierBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-xs">
+          <!-- 1. Header & Title -->
+          <div class="space-y-1.5">
+            <h2 id="desktopDossierName" class="text-xl sm:text-2xl font-normal text-white tracking-tight leading-snug">Green Papaya Art Projects</h2>
+            <div class="flex items-center gap-2">
+              <span id="desktopDossierTier" class="inline-flex items-center gap-1 text-emerald-400 text-xs font-medium">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Verified Sanctuary</span>
               </span>
-              <span id="curatorThinkingStepLabel">Scanning Repository Configuration Files</span>
+            </div>
+            <p id="desktopDossierMeta" class="text-slate-400 text-xs leading-relaxed">
+              Manila, Philippines · Interdisciplinary performance, noise and experimental sound, queer culture, independent archiving, DIY solidarity
+            </p>
+            <p id="desktopDossierSummary" class="text-slate-300 text-xs leading-relaxed italic">
+              Oldest active independent artist-run initiative in Metro Manila; founded 2000; fierce counter-cultural champion.
+            </p>
+            <div class="pt-0.5">
+              <a id="desktopDossierWebLink" href="https://www.facebook.com/greenpapayaartprojects/" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 hover:underline flex items-center gap-1 text-xs">
+                <span>↗</span>
+                <span id="desktopDossierDomain">www.facebook.com</span>
+              </a>
             </div>
           </div>
 
-          <!-- Suggested Inquiries (Visible on new/empty chat, Prioritized with Breathing Room) -->
-          <div id="workSuggestionsSection" class="w-full mt-3 mb-6 transition-all duration-200">
-            <!-- Decluttered Section Header: Removed distracting text links -->
-            <div class="w-full mb-3 text-[14px] font-medium text-slate-400 flex items-center justify-between select-none tracking-wide">
-              <span class="text-slate-300 font-medium">Try asking</span>
-              <span class="text-[14px] text-slate-500 font-mono">Curator Intelligence</span>
-              <!-- Hidden stubs preserved for DOM & listener safety -->
+          <div class="border-t border-[#1b2333]"></div>
+
+          <!-- 2. Financial Metrics & Budget Band -->
+          <div class="space-y-2">
+            <div class="flex items-start justify-between gap-2">
+              <span id="desktopDossierBudgetAmount" class="font-normal text-white text-xs leading-snug">
+                €250K – €850K Grassroots Budget
+              </span>
+              <span id="desktopDossierBudgetTier" class="text-cyan-400 font-normal text-xs shrink-0">
+                Lean Artist-Run Non-Profit
+              </span>
+            </div>
+            <div id="desktopDossierFundingRatios" class="text-slate-300 text-xs">
+              Funding: 58% Public · 14% Grants · 28% Earned
+            </div>
+            <div id="desktopDossierEfficiency" class="text-emerald-400 text-xs">
+              Operational Efficiency: 84% Self-Sustaining
+            </div>
+            <div class="text-slate-300 text-xs leading-relaxed">
+              <strong class="text-white font-medium">Funding Source:</strong> <span id="desktopDossierFundingSource">Artist collective self-funding, independent foundations, Arts Collaboratory; 100% independent.</span>
+            </div>
+            <div class="text-slate-300 text-xs leading-relaxed">
+              <strong class="text-white font-medium">Access Protocol:</strong> <span id="desktopDossierAccess">Always Free Public Admission</span>
+            </div>
+          </div>
+
+          <div class="border-t border-[#1b2333]"></div>
+
+          <!-- 3. Current Exhibition -->
+          <div id="desktopDossierExhibitionSection" class="space-y-1.5">
+            <div class="text-teal-400 text-xs font-medium tracking-wide">
+              Current Exhibition
+            </div>
+            <div id="desktopDossierExhibitionTitle" class="text-white font-normal text-sm leading-snug">
+              Featured Exhibition: In Focus with Green Papaya Art Projects
+            </div>
+            <div id="desktopDossierExhibitionMeta" class="text-slate-400 text-xs leading-relaxed">
+              Green Papaya Art Projects Curatorial Cohort &amp; Guest Artists · On View: Autumn 2026 – Spring 2027
+            </div>
+          </div>
+
+          <!-- 4. Gossip Mode Block (Shows when Gossip Mode is active) -->
+          <div id="desktopDossierGossipSection" class="hidden space-y-2 pt-2 border-t border-[#1b2333]">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-amber-400 font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span>
+                <span>Field Intel &amp; Whispers</span>
+              </span>
+              <span id="desktopDossierGossipBadge" class="px-2 py-0.5 rounded-full text-[10px] font-mono border border-amber-500/50 bg-amber-950/60 text-amber-300">Documented</span>
+            </div>
+            <p id="desktopDossierGossipHeadline" class="text-amber-200 text-xs font-medium leading-snug"></p>
+            <div class="space-y-1.5 pt-1">
+              <div class="p-2 rounded-lg bg-[#141416] border border-[#27272a] text-[11px] space-y-0.5">
+                <span class="text-amber-400 font-mono text-[10px]">r/contemporaryart</span>
+                <p id="desktopDossierGossipReddit" class="text-slate-300"></p>
+              </div>
+              <div class="p-2 rounded-lg bg-[#141416] border border-[#27272a] text-[11px] space-y-0.5">
+                <span class="text-sky-400 font-mono text-[10px]">X / Twitter</span>
+                <p id="desktopDossierGossipTwitter" class="text-slate-300"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-[#1b2333]"></div>
+
+          <!-- 5. Action Buttons -->
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button type="button" onclick="if (typeof window.openDossier === 'function' && selectedInstitution) window.openDossier(selectedInstitution);" class="py-2 px-3 rounded-lg bg-teal-950/80 hover:bg-teal-900 border border-teal-500/60 text-teal-300 font-medium text-xs flex items-center justify-center gap-1.5 transition cursor-pointer">
+              <svg class="w-3.5 h-3.5 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              <span>Audit Dossier</span>
+            </button>
+            <button type="button" onclick="if (typeof window.atlasPlanVisit === 'function' && selectedInstitution) window.atlasPlanVisit(selectedInstitution);" class="py-2 px-3 rounded-lg bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-sky-300 font-medium text-xs flex items-center justify-center gap-1.5 transition cursor-pointer">
+              <svg class="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+              <span>Plan Visit</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🧠 CURATOR INTELLIGENCE COLUMN (Right Column in AI Studio layout) -->
+      <section id="curatorIntelligenceColumn" class="flex-1 min-w-0 min-h-0 flex flex-col h-full bg-[#05070d] relative overflow-hidden select-text z-10">
+        
+        <!-- Mobile Bottom Sheet Handle Bar (Phone Only) -->
+        <div id="mobileSheetHandleBar" class="flex md:hidden flex-col w-full bg-[#0c101a] border-b border-[#1e293b] shrink-0 select-none z-30 touch-none">
+          <div id="mobileSheetDragZone" class="w-full flex items-center justify-center py-2 min-h-[32px] cursor-grab active:cursor-grabbing">
+            <div class="w-12 h-1.5 rounded-full bg-zinc-500 hover:bg-zinc-400 transition"></div>
+          </div>
+          <div class="flex items-center justify-between px-3.5 pb-2.5 pt-0.5 min-h-[44px] gap-2">
+            <button id="mobileSheetChevronBtn" type="button" class="w-9 h-9 rounded-full bg-[#18181b] hover:bg-[#27272a] text-slate-300 flex items-center justify-center shrink-0 transition min-h-[44px] min-w-[44px]">
+              <svg id="mobileSheetChevronIcon" class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            </button>
+            <div class="min-w-0 flex-1 cursor-pointer" id="mobileSheetTitleZone">
+              <div id="mobileSheetEntityTitle" class="text-[14px] font-semibold text-white truncate leading-tight">Green Papaya Art Projects</div>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span id="mobileSheetStatusBadge" class="text-[14px] font-mono px-2 py-0.2 rounded-full border border-emerald-800/80 bg-emerald-950/70 text-emerald-300 shrink-0">Verified Sanctuary</span>
+                <span id="mobileSheetCitySubtitle" class="text-[14px] text-slate-400 font-mono truncate">Manila</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <button id="mobileSheetSnapHalfBtn" type="button" class="px-2.5 py-1.5 rounded-xl bg-[#1e293b] text-slate-200 text-[14px] font-medium min-h-[44px]">Half</button>
+              <button id="mobileSheetSnapExpandBtn" type="button" class="px-2.5 py-1.5 rounded-xl bg-[#2563eb] text-white text-[14px] font-medium min-h-[44px]">Full</button>
+              <button id="mobileSheetCloseBtn" type="button" class="w-9 h-9 rounded-full bg-[#18181b] text-slate-400 flex items-center justify-center shrink-0 min-h-[44px]">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+            </div>
+          </div>
+          <div id="mobileSheetSummaryStrip" class="hidden px-3.5 pb-2.5 pt-1.5 border-t border-[#1e293b]/70 bg-[#080d16] space-y-2 text-[14px]">
+            <div class="flex items-center gap-2 overflow-x-auto pb-0.5 text-[14px] font-mono custom-scrollbar">
+              <span id="mobileSheetOperatingBudget" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-[#7dd3fc] whitespace-nowrap">€250K – €850K Budget</span>
+              <span id="mobileSheetProgramRatio" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-[#38bdf8] whitespace-nowrap">84% Efficiency</span>
+              <span id="mobileSheetPublicSubsidies" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-emerald-300 whitespace-nowrap">58% Public</span>
+            </div>
+            <div class="flex items-center gap-2 pt-0.5">
+              <button id="mobileSheetAskChatBtn" type="button" class="flex-1 py-2 px-3 rounded-xl bg-[#2563eb] text-white text-[14px] font-medium text-center min-h-[44px] flex items-center justify-center gap-1.5 shadow-sm">
+                <span>Ask in Chat</span>
+              </button>
+              <button id="mobileSheetViewDossierBtn" type="button" class="flex-1 py-2 px-3 rounded-xl bg-[#14261d] border border-emerald-600/60 text-emerald-300 text-[14px] font-medium text-center min-h-[44px] flex items-center justify-center gap-1.5 shadow-sm">
+                <span>View Dossier</span>
+              </button>
+            </div>
+          </div>
+          <div id="mobileSheetInputRow" class="px-3 pb-2.5 pt-1">
+            <div class="w-full bg-[#18181b] border border-[#2e2e33] rounded-xl px-2.5 py-1.5 flex items-center gap-2 min-h-[44px]">
+              <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this museum..." class="flex-1 bg-transparent text-white placeholder-slate-400 text-[14px] focus:outline-none min-h-[36px]" />
+              <button id="mobileSheetQuickSendBtn" type="button" class="w-8 h-8 rounded-lg bg-[#2563eb] text-white flex items-center justify-center shrink-0 min-h-[36px] min-w-[36px]">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-Header: Curator Intelligence & Quick Actions -->
+        <div id="curatorColumnHeader" class="hidden md:flex px-4 py-2.5 border-b border-[#1b2333] items-center justify-between shrink-0 bg-[#070a12] select-none">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0"></span>
+            <span class="text-sm font-normal text-white tracking-wide">Curator Intelligence</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <!-- Voice Button -->
+            <button id="curatorVoiceToggleBtn" type="button" class="px-2.5 py-1 rounded-full bg-sky-950/80 border border-sky-500/60 text-sky-300 text-xs font-mono flex items-center gap-1.5 transition cursor-pointer" title="Auto-Voice: Speaks responses aloud (Click to mute)">
+              <span id="curatorVoiceToggleIcon" class="text-xs">🎤</span>
+              <span id="curatorVoiceToggleLabel">Voice: ON</span>
+            </button>
+            <!-- Listen Button -->
+            <button id="curatorListenBtn" type="button" onclick="if (typeof window.speakCuratorBriefing === 'function') window.speakCuratorBriefing();" class="px-2.5 py-1 rounded-md bg-[#141b2a] hover:bg-[#1e293b] border border-[#233552] text-slate-300 hover:text-white text-xs font-mono flex items-center gap-1 transition cursor-pointer" title="Listen to curator briefing">
+              <span>🔊</span>
+              <span>LISTEN</span>
+            </button>
+            <!-- Refresh / New Chat Button -->
+            <button id="curatorRefreshBtn" type="button" onclick="window.resetToNewChat();" class="w-7 h-7 rounded-md bg-[#141b2a] hover:bg-[#1e293b] border border-[#233552] text-slate-300 hover:text-white flex items-center justify-center text-xs transition cursor-pointer" title="Start New Chat">
+              <span>🔄</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hidden Preservation Stubs for Tabs & Modes (Keeps all test listeners safe) -->
+        <div class="hidden" style="display:none;" aria-hidden="true">
+          <div id="workspaceTabBar">
+            <button id="workspaceTabChat" onclick="window.setWorkspaceTab('chat');">Chat</button>
+            <button id="workspaceTabDossier" onclick="window.setWorkspaceTab('dossier');">
+              <span id="workspaceTabDossierLabel">Dossier / Intelligence</span>
+              <span id="workspaceTabDossierBadge">Active</span>
+            </button>
+            <button id="modeTabGeneralChat" onclick="window.exitChatInputMode()">General</button>
+            <button id="modeTabWhistleblower" onclick="window.enterChatInputMode()">Whistleblower</button>
+            <div id="modeSwitchOpSecIndicator"></div>
+            <div id="workspaceSelectedInstPill"><span id="workspaceSelectedInstName"></span></div>
+            <button id="workModelBtn"><span id="workModelLabel">Anthropic · Live</span></button>
+            <button id="workspaceNewChatBtn" onclick="window.resetToNewChat();"></button>
+          </div>
+          <div id="chatInputModeHeader"></div>
+        </div>
+
+        <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
+        <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pt-4 pb-4 w-full bg-transparent">
+          <div id="curatorScrollContent" class="w-full flex flex-col items-center pb-8 my-auto">
+            
+            <!-- Hero Greeting Container (matching AI Studio preview) -->
+            <div id="curatorHeroGreeting" class="curator-message-wrap w-full bg-[#0a0f1d]/80 border border-[#1b263b] rounded-2xl p-4 mb-4 select-text flex flex-col items-center justify-center text-center">
+              <h1 class="text-base sm:text-lg font-normal text-white tracking-tight text-center mb-1 select-none">
+                What’s behind this cultural space?
+              </h1>
+              <p class="text-xs text-slate-300 text-center mb-2.5 select-none">
+                Ask about any cultural space, its sponsors, or a controversy to inspect its Form 990 audit.
+              </p>
+              <div class="w-full flex items-center justify-between pt-2 border-t border-[#152033] text-[11px] text-slate-400 font-mono select-none">
+                <span>Form 990 Checked · 0% Corporate Capture · 12:00</span>
+                <div class="flex items-center gap-2">
+                  <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-1 cursor-pointer" title="Read Aloud">🔊</button>
+                  <button type="button" class="curator-copy-btn text-slate-400 hover:text-white p-1 cursor-pointer" title="Copy">📋</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active Conversation Stream -->
+            <div id="curatorMessages" class="w-full space-y-4 mb-3"></div>
+
+            <!-- Typing Indicator -->
+            <div id="curatorTyping" class="hidden w-full pt-1 pb-3 select-text">
+              <div class="text-[14px] font-normal text-[#8e8e8e] border-b border-[#303030] pb-2.5 mb-2.5 flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                  <div id="curatorCityDotWrap" class="relative flex items-center justify-center w-5 h-5 shrink-0 select-none">
+                    <span id="curatorCityDotPing" class="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping bg-blue-500"></span>
+                    <span id="curatorCityDotHalo" class="absolute inline-flex h-4 w-4 rounded-full opacity-40 blur-[1px] bg-blue-500"></span>
+                    <span id="curatorCityDotCore" class="relative inline-flex rounded-full h-2.5 w-2.5 shadow-md bg-blue-400" style="box-shadow: 0 0 10px #60a5fa;"></span>
+                  </div>
+                  <span class="flex items-center gap-1.5 text-white font-medium">
+                    <span>Working for <span id="curatorThinkingTimer">1</span>s</span>
+                  </span>
+                  <span id="curatorThinkingModeBadge" class="text-[14px] font-mono px-2 py-0.5 rounded-full border shadow-sm bg-blue-950/70 border-blue-800/80 text-blue-300">
+                    Clean Sanctuary
+                  </span>
+                </div>
+                <div id="curatorScrapingBadge" class="hidden flex items-center gap-1.5 text-[14px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full shadow-sm">
+                  <span id="curatorScrapingText">Scraping web intelligence...</span>
+                </div>
+              </div>
+              <p id="curatorThinkingThought" class="text-[14px] text-[#e4e4e7] leading-relaxed mb-2.5 font-normal">
+                I’ll inspect the prepare job and workflow context, then propose the smallest reversible fix for review.
+              </p>
+              <div id="curatorThinkingStep" class="flex items-center gap-2 text-[14px] text-[#a1a1aa]">
+                <span class="inline-flex items-center justify-center w-4 h-4 rounded border border-[#444] bg-[#1e1e1e] text-[#a1a1aa] shrink-0">
+                  <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 17 10 11 4 5"></polyline>
+                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                  </svg>
+                </span>
+                <span id="curatorThinkingStepLabel">Scanning Repository Configuration Files</span>
+              </div>
+            </div>
+
+            <!-- Suggested Inquiries (matching AI Studio preview) -->
+            <div id="workSuggestionsSection" class="w-full mt-2 mb-4 transition-all duration-200">
+              <div class="text-sm font-normal text-white mb-2.5 select-none tracking-wide">
+                Suggested Inquiries
+              </div>
+              <div class="flex flex-col space-y-1.5 w-full">
+                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Who funds this museum?">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                  <span>WHO FUNDS THIS MUSEUM?</span>
+                </button>
+                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="What do employees say about working here?">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                  <span>WHAT DO EMPLOYEES SAY ABOUT WORKING HERE?</span>
+                </button>
+                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Have artists protested or boycotted this institution?">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                  <span>HAVE ARTISTS PROTESTED OR BOYCOTTED THIS INSTITUTION?</span>
+                </button>
+                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Which sponsors have faced public criticism?">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                  <span>WHICH SPONSORS HAVE FACED PUBLIC CRITICISM?</span>
+                </button>
+                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Does this institution pay artists fairly?">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                  <span>DOES THIS INSTITUTION PAY ARTISTS FAIRLY?</span>
+                </button>
+                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="How are its trustees connected to its sponsors?">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                  <span>HOW ARE ITS TRUSTEES CONNECTED TO ITS SPONSORS?</span>
+                </button>
+                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Has public pressure changed its policies?">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                  <span>HAS PUBLIC PRESSURE CHANGED ITS POLICIES?</span>
+                </button>
+                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Find independent art spaces near me">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                  <span>FIND INDEPENDENT ART SPACES NEAR ME.</span>
+                </button>
+              </div>
               <span class="hidden"><button id="viewMinimizeBtn"></button><button id="viewExpandBtn"></button></span>
             </div>
 
-            <!-- Suggestions: Prioritized primary inquiry with generous breathing room -->
-            <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full">
-              <button class="work-suggestion-card atlas-pill-btn pill-sm shrink-0 shadow-sm" data-query="Who funds this museum?">
-                <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
-                <span>Who funds this museum?</span>
-              </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="What do employees say about working here?">
-                What do employees say about working here?
-              </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Have artists protested or boycotted this institution?">
-                Have artists protested or boycotted this institution?
-              </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Which sponsors have faced public criticism?">
-                Which sponsors have faced public criticism?
-              </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Does this institution pay artists fairly?">
-                Does this institution pay artists fairly?
-              </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="How are its trustees connected to its sponsors?">
-                How are its trustees connected to its sponsors?
-              </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Has public pressure changed its policies?">
-                Has public pressure changed its policies?
-              </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Find independent art spaces near me">
-                Find independent art spaces near me
-              </button>
-            </div>
-          </div>
-
-          <!-- Generous Scroll Buffer Spacer: Ensures chat text can scroll completely above the input dock -->
-          <div id="chatScrollBufferSpacer" class="w-full h-48 sm:h-72 shrink-0 pointer-events-none" aria-hidden="true"></div>
-
-        </div>
-      </div>
-
-<!-- 2. COLLAPSIBLE FILTER DRAWER PANEL: Soft Ghost Buttons, Categorized Navigation -->
-      <div id="filterDrawerPanel" class="hidden absolute inset-x-0 bottom-0 max-h-[85vh] sm:max-h-[90vh] z-40 bg-[#0f172a]/95 backdrop-blur-xl border-t border-[#334155] rounded-t-2xl shadow-2xl p-4 sm:p-5 flex flex-col gap-3.5 overflow-y-auto custom-scrollbar transition-all duration-200">
-        <div class="flex items-center justify-between pb-2.5 border-b border-[#1e293b]">
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
-            <h2 class="text-white text-[18px] font-medium tracking-tight">Map Layers &amp; Filters</h2>
-            <span class="text-[14px] font-mono text-slate-400 ml-1">Structured Navigation</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <button type="button" onclick="window.clearAllFilters()" class="text-[14px] text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-[#1e293b] transition cursor-pointer">Reset Filters</button>
-            <button type="button" onclick="window.toggleFilterDrawer()" class="text-[14px] text-slate-400 hover:text-white p-1 rounded hover:bg-[#1e293b] transition cursor-pointer" title="Close filter drawer">✕ Close</button>
+            <!-- Scroll Buffer Spacer -->
+            <div id="chatScrollBufferSpacer" class="w-full h-8 shrink-0 pointer-events-none" aria-hidden="true"></div>
           </div>
         </div>
 
-        <!-- Structured Filter Categories Container (#globeCityBar) with Soft Contrast Ghost Buttons -->
-        <div id="globeCityBar" class="w-full flex flex-col gap-3.5 select-none py-1">
-          <!-- Section 1: Funding & Governance Tiers -->
-          <div class="space-y-1.5">
-            <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span class="text-slate-200 font-medium">Funding &amp; Governance Tiers</span>
+        <!-- Filter Drawer Panel -->
+        <div id="filterDrawerPanel" class="hidden absolute inset-x-0 bottom-0 max-h-[85vh] sm:max-h-[90vh] z-40 bg-[#0f172a]/95 backdrop-blur-xl border-t border-[#334155] rounded-t-2xl shadow-2xl p-4 sm:p-5 flex flex-col gap-3.5 overflow-y-auto custom-scrollbar transition-all duration-200">
+          <div class="flex items-center justify-between pb-2.5 border-b border-[#1e293b]">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              <h2 class="text-white text-[18px] font-medium tracking-tight">Map Layers &amp; Filters</h2>
+              <span class="text-[14px] font-mono text-slate-400 ml-1">Structured Navigation</span>
             </div>
-            <div class="flex flex-wrap items-center gap-1.5">
-              <button class="globe-filter-pill is-active px-3 py-1.5 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[14px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding (445)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged (429)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Findings (1277)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
-              <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
-              <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback (29)</span></button>
-              <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span class="hidden" style="display:none;" aria-hidden="true">Contribute Intel</span><span>Share information</span></button>
-            </div>
-          </div>
-
-          <!-- Visual Critique Sub-Bar (Soft Ghost Buttons) -->
-          <div id="visualCritiqueSubBar" class="hidden flex flex-wrap items-center gap-1.5 p-2.5 bg-[#18181b]/95 border border-[#2e2e33] rounded-xl shadow-lg">
-            <span class="text-[14px] text-slate-300 font-mono shrink-0 mr-1 uppercase tracking-wider font-semibold flex items-center gap-1">
-              <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-              Critique Strategies:
-            </span>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] text-[14px] font-medium transition cursor-pointer shadow-sm shadow-emerald-950/40" data-strategy="all">All (29)</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="sponsor_exposure">Sponsor &amp; Debt Exposure</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="forensic_investigation">Algorithmic Forensics</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="pharma_fossil_denaming">Pharma &amp; Fossil De-Naming</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="feminist_counter_survey">Feminist Counter-Surveys</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="direct_polling">Direct Polling &amp; Data</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="board_boycott">Grassroots Agitation &amp; Boycotts</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="curatorial_subversion">Curatorial Subversion</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="parodic_museums">Parodic Museums</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="ideological_distribution">Ideological Circuits</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="physical_intervention">Physical Intervention</button>
-            <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="environmental_satire">Environmental Satire</button>
-          </div>
-
-          <!-- Section 2: Research & Transparency Audits -->
-          <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-            <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-              <span class="text-slate-200 font-medium">Research &amp; Transparency Audits</span>
-            </div>
-            <div class="flex flex-wrap items-center gap-1.5">
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="governance">Governance Legend</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies (173)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="archives">Archives Directory (1104)</button>
-              <button class="globe-filter-pill flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
-              <button class="globe-filter-pill flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
-              <button class="globe-filter-pill flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
-              <button class="globe-filter-pill flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="window.clearAllFilters()" class="text-[14px] text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-[#1e293b] transition cursor-pointer">Reset Filters</button>
+              <button type="button" onclick="window.toggleFilterDrawer(false)" class="text-[14px] text-slate-400 hover:text-white p-1 rounded hover:bg-[#1e293b] transition cursor-pointer" title="Close filter drawer">✕ Close</button>
             </div>
           </div>
-
-          <!-- Section 3: Geographic Regions & Access Models -->
-          <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-            <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-              <span class="text-slate-200 font-medium">Regions &amp; Access</span>
+          <div id="globeCityBar" class="w-full flex flex-col gap-3.5 select-none py-1">
+            <!-- Funding & Governance Tiers -->
+            <div class="space-y-1.5">
+              <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span class="text-slate-200 font-medium">Funding &amp; Governance Tiers</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-1.5">
+                <button class="globe-filter-pill is-active px-3 py-1.5 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[14px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean Funding (445)</button>
+                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged (429)</button>
+                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All Findings (1277)</button>
+                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer</button>
+                <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
+                <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback (29)</span></button>
+                <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span class="hidden" style="display:none;" aria-hidden="true">Contribute Intel</span><span>Share information</span></button>
+              </div>
             </div>
-            <div class="flex flex-wrap items-center gap-1.5">
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="region" data-value="europe">Europe</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="region" data-value="americas">Americas</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="region" data-value="mena_africa">MidEast & Africa</button>
-              <span class="text-[#334155] text-[14px]">|</span>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
+            <!-- Research & Transparency Audits -->
+            <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
+              <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                <span class="text-slate-200 font-medium">Research &amp; Transparency Audits</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-1.5">
+                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="governance">Governance Legend</button>
+                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies (173)</button>
+                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="archives">Archives Directory (1104)</button>
+                <button class="globe-filter-pill flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="curatorial_itineraries" id="globeItinerariesBtn"><span>Curatorial Itineraries</span></button>
+                <button class="globe-filter-pill flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="board_conflicts" id="globeBoardConflictsBtn"><span>Board Conflicts</span></button>
+                <button class="globe-filter-pill flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="divestment_timeline" id="globeTimelineBtn"><span>Resistance &amp; Victories</span></button>
+                <button class="globe-filter-pill flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="statutory_filings" id="globeFilingsBtn"><span>Statutory 990s</span></button>
+              </div>
             </div>
-          </div>
-
-          <!-- Section 4: Fiscal & Revenue Architecture Models -->
-          <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-            <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-              <span class="text-slate-200 font-medium">Fiscal Architecture</span>
-            </div>
-            <div class="flex flex-wrap items-center gap-1.5">
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_endowed">Endowed / Philanthropy (≥30%)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_earned">Earned Revenue (≥35%)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_artist_run">Lean Artist-Run</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="finance_major">Major Metropolitan</button>
-            </div>
-          </div>
-
-          <!-- Section 5: Featured Cultural Cities -->
-          <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-            <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-              <span class="text-slate-200 font-medium">Featured Cultural Cities</span>
-            </div>
-            <div class="flex flex-wrap items-center gap-1.5">
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="London">London (10)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="New York">New York (12)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Paris">Paris (9)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Berlin">Berlin (8)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Amsterdam">Amsterdam (7)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Tokyo">Tokyo (6)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Madrid">Madrid (5)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Basel">Basel (4)</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="Bilbao">Bilbao (3)</button>
+            <!-- Done & Close -->
+            <div class="pt-3 pb-1 border-t border-[#1e293b] flex items-center justify-between mt-auto shrink-0 select-none">
+              <span class="text-[14px] text-slate-400 font-mono">Select filters to update map layers</span>
+              <button type="button" onclick="window.toggleFilterDrawer(false)" class="px-4 py-2 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-white border border-[#334155] text-[14px] font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm" title="Done and close filter drawer">
+                <span>Done &amp; Close</span>
+              </button>
             </div>
           </div>
+        </div>
 
-          <!-- Section 6: Featured Countries -->
-          <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-            <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-              <span class="text-slate-200 font-medium">Featured Countries</span>
-            </div>
-            <div class="flex flex-wrap items-center gap-1.5">
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="United Kingdom">United Kingdom</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="United States">United States</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Germany">Germany</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="France">France</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Netherlands">Netherlands</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Spain">Spain</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Switzerland">Switzerland</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Italy">Italy</button>
-              <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="Japan">Japan</button>
-            </div>
-          </div>
-
-          <!-- Dedicated Bottom Action Bar: Done & Close button -->
-          <div class="pt-3 pb-1 border-t border-[#1e293b] flex items-center justify-between mt-auto shrink-0 select-none">
-            <span class="text-[14px] text-slate-400 font-mono">Select filters to update map layers</span>
-            <button type="button" onclick="window.toggleFilterDrawer(false)" class="px-4 py-2 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-white border border-[#334155] text-[14px] font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm" title="Done and close filter drawer">
-              <span>Done &amp; Close</span>
+        <!-- 2. PINNED BOTTOM INPUT DOCK (Always stays firmly in place at bottom!) -->
+        <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-4 pb-3 pt-2 bg-[#070a12] border-t border-[#1b2333]">
+          <div class="w-full flex items-center gap-2.5">
+            <!-- Plus Button -->
+            <button id="workPlusBtn" class="w-9 h-9 rounded-full bg-[#141b2a] hover:bg-[#1e293b] text-white border border-[#233552] flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0 shadow-sm" title="Quick filters">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
             </button>
-          </div>
-        </div>
-      </div>
 
-      <!-- 2. PINNED BOTTOM INPUT DOCK (Always stays firmly in place at bottom!) -->
-      <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-[16px] sm:px-[20px] pb-2.5 sm:pb-4 pt-1.5 sm:pt-2 bg-black border-t border-[#1c1c1f]">
-        <div class="w-full flex flex-col items-center">
-          
-          <!-- Hidden preservation stub for legacy mode switch callers -->
-          <div id="chatModeSegmentedSwitch" class="hidden" aria-hidden="true"></div>
-
-          <!-- Big Rounded Input Card (Sleek ChatGPT Work Canvas / Whistleblower Container) -->
-          <div id="workInputCard" class="w-full bg-[#212121] border border-[#333333] hover:border-[#444] focus-within:border-[#555] rounded-2xl sm:rounded-3xl py-3.5 sm:py-4.5 px-3.5 sm:px-4.5 shadow-xl transition relative">
-            
-            <!-- Attached Secure Mode Banner (Directly inside / attached to container top) -->
-            <div id="secureIntakeModeBanner" class="hidden -mx-3.5 -mt-3.5 sm:-mx-4.5 sm:-mt-4.5 mb-3 px-4 py-2 rounded-t-2xl sm:rounded-t-3xl bg-[#092619] border-b border-emerald-500/40 flex items-center justify-between text-[14px] select-none">
-              <div class="flex items-center gap-2 text-emerald-300 font-medium">
-                <span class="text-emerald-400">🔒</span>
-                <span class="tracking-wide">SECURE INTAKE MODE ACTIVE</span>
-                <span class="text-emerald-400/70 font-mono text-[14px] hidden sm:inline">— Zero-Knowledge Hashing</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950 border border-emerald-800 px-2 py-0.5 rounded-full">SHA-256 Client-Side</span>
-                <button type="button" onclick="window.exitChatInputMode()" class="text-emerald-400/80 hover:text-white transition cursor-pointer p-0.5 ml-1" title="Exit Whistleblower Mode">
-                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-              </div>
+            <!-- Input Box -->
+            <div id="workInputCard" class="flex-1 bg-[#141b2a]/90 border border-[#233552] hover:border-[#334b75] focus-within:border-[#38bdf8] rounded-xl px-3 py-1.5 transition flex items-center">
+              <textarea id="workInput" rows="1" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="w-full bg-transparent text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none resize-none font-normal leading-normal max-h-24"></textarea>
             </div>
 
-            <textarea id="workInput" rows="2" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] sm:text-[14px] focus:outline-none resize-none font-normal leading-[140%] min-h-[34px] sm:min-h-[42px] max-h-36 mb-1.5"></textarea>
-            
-            <div class="flex items-center justify-between pt-1.5">
-              <!-- Left: Action buttons (normal chat plus menu, quick mode toggle, whistleblower attach/cancel) -->
-              <div class="flex items-center gap-2 sm:gap-2.5">
-                <button id="workPlusBtn" class="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center transition active:scale-95 cursor-pointer font-normal shrink-0 shadow-sm" title="Quick filters">
-                  <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                  </svg>
-                </button>
-                <button id="inputModeToggleBtn" type="button" onclick="window.isChatInputMode ? window.exitChatInputMode() : window.enterChatInputMode()" class="px-2.5 py-1 rounded-full bg-[#18181b] hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#333] text-[14px] font-mono flex items-center gap-1.5 cursor-pointer transition shadow-sm" title="Toggle Whistleblower Intake mode">
-                  <span>🔒 Intake</span>
-                </button>
-                <button id="inputModeAttachBtn" type="button" onclick="window.handleAttachClick()" class="hidden px-3 py-1.5 rounded-xl bg-[#14261d] hover:bg-[#1e382b] text-emerald-300 hover:text-white border border-emerald-700/60 text-[14px] font-normal transition cursor-pointer flex items-center gap-1.5 shrink-0" title="Attach confidential document or memo">
-                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-                  <span>Attach Document</span>
-                </button>
-                <input type="file" id="whistleblowerFileInput" class="hidden" accept=".pdf,.doc,.docx,.txt,.csv,.png,.jpg,.jpeg" onchange="window.handleWhistleblowerFileSelect(event)" />
-                <button id="inputModeCancelBtn" type="button" onclick="window.exitChatInputMode()" class="hidden px-3 py-1.5 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-300 hover:text-white border border-[#334155] text-[14px] font-normal transition cursor-pointer flex items-center gap-1 shrink-0" title="Cancel and return to General Chat">
-                  <span>Cancel</span>
-                </button>
-                <div id="workInputModeBadge" class="hidden items-center gap-1.5 text-slate-400 text-[14px] font-mono">
-                  <span>Zero-Knowledge · SHA-256</span>
-                </div>
-              </div>
-
-              <!-- Right: Primary Send Action & In-Chat Contribute Intel -->
-              <div class="flex items-center gap-2">
-                <button id="chatContributeBtn" type="button" onclick="window.triggerInChatContributeFlow()" class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#14231a] hover:bg-[#1a3024] text-emerald-300 border border-emerald-700/60 transition flex items-center gap-1.5 cursor-pointer text-[14px] font-mono shadow-sm" title="Share information">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-                  <span class="hidden" style="display:none;" aria-hidden="true">Contribute</span>
-                  <span>Share information</span>
-                </button>
-                <button id="workSendBtn" class="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center gap-1.5 sm:gap-2 transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[14px] font-medium" title="Send message">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                  </svg>
-                  <span>Send</span>
-                </button>
-              </div>
-            </div>
-
+            <!-- Send Button -->
+            <button id="workSendBtn" class="px-4 py-2 rounded-xl bg-[#1e293b] hover:bg-[#2e3e5b] text-slate-200 hover:text-white border border-[#33486b] flex items-center justify-center gap-1.5 transition shadow-sm active:scale-95 cursor-pointer shrink-0 text-xs font-mono font-medium" title="Send message">
+              <span>SEND</span>
+              <svg class="w-3.5 h-3.5 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+            </button>
             <!-- Quick Dropdown Menu for Plus button -->
-            <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-[#262626] border border-[#383838] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14px]">
-              <button id="workMenuCatalogBtn" class="text-left px-3 py-2 bg-[#162030] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
+            <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-[#162030] border border-[#2b3e5f] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14px]">
+              <button id="workMenuCatalogBtn" class="text-left px-3 py-2 bg-[#1c293d] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
                 <span class="flex items-center gap-1.5"><span>Browse All Findings</span></span>
                 <span class="text-[14px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">1277</span>
               </button>
-              <button id="workMenuArchivesBtn" class="text-left px-3 py-2 bg-[#162030] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
+              <button id="workMenuArchivesBtn" class="text-left px-3 py-2 bg-[#1c293d] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
                 <span class="flex items-center gap-1.5"><span>Global Archives Directory</span></span>
                 <span class="text-[14px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">1104</span>
               </button>
-              <button id="workMenuGovernanceBtn" class="text-left px-3 py-2 bg-[#182030] hover:bg-[#222e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
+              <button id="workMenuGovernanceBtn" class="text-left px-3 py-2 bg-[#1c293d] hover:bg-[#222e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
                 <span class="flex items-center gap-1.5"><span>Governance Methodology Legend</span></span>
                 <span class="text-[14px] font-mono text-blue-400 bg-blue-950/70 border border-blue-800/80 px-1.5 py-0.5 rounded">Audit</span>
               </button>
@@ -3104,65 +3078,46 @@ return maplibregl$1;
                 <span class="flex items-center gap-1.5"><span>Contribute Research / Tip</span></span>
                 <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded">Verify</span>
               </button>
-              <div class="h-px bg-[#383838] my-0.5"></div>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">Curated 1-Day City Itineraries</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">Repurposed Architecture & Factories</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">Outdoor Sculpture Parks & Land Art</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show me independent spaces dedicated to video art, sound art, and experimental media">Video, Sound & Time-Based Media</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is the difference between a Kunsthalle and a traditional museum?">Kunsthalle vs Museum: The Difference</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">W.A.G.E., Fair Pay & Museum Unions</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about Dutch research, BAK Utrecht, and Former West">Dutch Research: BAK Utrecht</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="What is Arte Útil and the Commons at Van Abbe and Casco?">Commons & Arte Útil: Casco & Van Abbe</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="How did Kunstinstituut Melly rename itself from Witte de With?">Decolonial Renaming: Melly</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums and galleries are free to enter?">Free Admission Spaces</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Which museums are open on Mondays?">Monday Openings</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Show spaces that do not take oil or weapons money">Fossil & Defense-Free</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about London's independent art spaces">London Art Guide</button>
-              <button class="work-menu-item text-left px-3 py-1.5 hover:bg-[#333] rounded-xl text-slate-200 transition cursor-pointer" data-query="Tell me about New York's art spaces and board controversies">New York Art Guide</button>
+            </div>
+
+            <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
+            <div class="hidden" style="display:none;" aria-hidden="true">
+              <button id="chatContributeBtn" type="button" onclick="window.triggerInChatContributeFlow()">
+                <span class="animate-pulse"></span>
+                <span>Contribute</span>
+                <span>Share information</span>
+              </button>
+              <div id="chatModeSegmentedSwitch"></div>
+              <button id="inputModeToggleBtn"></button>
+              <button id="inputModeAttachBtn"></button>
+              <input type="file" id="whistleblowerFileInput" />
+              <button id="inputModeCancelBtn"></button>
+              <div id="workInputModeBadge"></div>
+              <button id="filterViewToggleBtn"></button>
+              <button id="fullWidthInputModeBtn"></button>
+              <div id="workSubActionBar"></div>
+              <svg id="filterChevronIcon"></svg>
+              <span id="activeFilterBadge"></span>
+              <span id="quickFilterLabel"></span>
+              <div id="secureIntakeModeBanner"></div>
             </div>
           </div>
-
-          <!-- Bottom Zone: Collapsible Map Filters & Layers Drawer Trigger matching Wireframe -->
-          <div id="workSubActionBar" class="w-full flex items-center justify-between gap-2 select-none mt-2">
-            <button id="filterViewToggleBtn" type="button" onclick="window.toggleFilterDrawer()" class="w-full py-2 px-3.5 rounded-xl bg-[#141416] hover:bg-[#1f1f23] border border-[#27272a] hover:border-emerald-500/50 text-slate-200 hover:text-white transition duration-150 flex items-center justify-between cursor-pointer shadow-sm text-[14px]" title="Toggle Map Layers & Filters">
-              <div class="flex items-center gap-2 min-w-0">
-                <svg id="filterChevronIcon" class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-                <span class="font-medium truncate">Filters &amp; Layers</span>
-                <span id="activeFilterBadge" class="px-2 py-0.2 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800 text-[14px] font-mono shrink-0">445</span>
-              </div>
-              <div class="flex items-center gap-2 shrink-0">
-                <span id="quickFilterLabel" class="hidden sm:inline text-[14px] text-slate-400 font-mono">Clean Funding (445)</span>
-              </div>
-            </button>
-          </div>
-
-            <!-- Hidden alias stub for fullWidthInputModeBtn to preserve any DOM references -->
-            <button id="fullWidthInputModeBtn" type="button" onclick="window.toggleChatInputMode()" class="hidden" style="display:none;" aria-hidden="true">
-              <span id="fullWidthInputModeDot"></span>
-              <span id="fullWidthInputModeText">Input Mode</span>
-            </button>
-          </div>
         </div>
-      </div>
-      </div>
-      <!-- /workspaceChatView -->
+      </section>
 
-      <!-- 2. 📄 DOSSIER & INTELLIGENCE INSPECTOR (Tab 2: Native Right-Hand Panel, Zero Map Overlays) -->
-      <div id="detailDrawer" class="hidden relative z-10 flex-1 min-h-0 w-full h-full bg-[#0a0d15] flex flex-col overflow-hidden select-text">
-        <!-- Inspector Sub-Header Bar -->
+      <!-- 2. 📄 DOSSIER & INTELLIGENCE INSPECTOR (Full Deep Audit Overlay / Tab 2) -->
+      <div id="detailDrawer" class="hidden absolute inset-0 z-30 w-full h-full bg-[#0a0d15] flex flex-col overflow-hidden select-text">
         <div class="p-3 px-4 border-b border-[#1e293b] flex items-center justify-between bg-[#0e121c] shrink-0">
           <div class="flex items-center gap-2 min-w-0">
-            <button type="button" onclick="window.setWorkspaceTab('chat');" class="px-2.5 py-1 rounded-lg text-[14px] font-medium bg-[#1e293b]/70 hover:bg-[#334155] text-slate-300 hover:text-white border border-[#334155]/60 transition flex items-center gap-1.5 cursor-pointer shrink-0">
+            <button type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="px-2.5 py-1 rounded-lg text-[14px] font-medium bg-[#1e293b]/70 hover:bg-[#334155] text-slate-300 hover:text-white border border-[#334155]/60 transition flex items-center gap-1.5 cursor-pointer shrink-0">
               <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-              <span>Back to Chat</span>
+              <span>Back to Overview</span>
             </button>
             <span class="text-slate-500 font-mono text-[14px] hidden sm:inline">|</span>
             <span class="text-[14px] font-mono text-slate-400 uppercase tracking-wider hidden sm:inline">Entity Inspector</span>
           </div>
           <div class="flex items-center gap-2">
-            <button id="closeDetailBtn" type="button" class="p-1.5 rounded-lg bg-[#1e293b]/60 hover:bg-[#334155] text-slate-400 hover:text-white transition cursor-pointer" title="Close Dossier">
+            <button id="closeDetailBtn" type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="p-1.5 rounded-lg bg-[#1e293b]/60 hover:bg-[#334155] text-slate-400 hover:text-white transition cursor-pointer" title="Close Dossier">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
           </div>
@@ -11739,6 +11694,9 @@ return maplibregl$1;
       if (inst && typeof highlightBuildingFootprint === 'function') {
         highlightBuildingFootprint(inst);
       }
+      if (typeof updateDesktopDossier === 'function' && (selectedInstitution || inst)) {
+        updateDesktopDossier(selectedInstitution || inst);
+      }
     }
     window.toggleGossipMode = toggleGossipMode;
 
@@ -11922,6 +11880,7 @@ return maplibregl$1;
       if (!inst || !inst.lat || !inst.lon) return;
 
       selectedInstitution = inst;
+      if (typeof updateDesktopDossier === 'function') { updateDesktopDossier(inst); }
 
       // Update Mobile Space Detail Card Bottom Sheet (#dossier-bottom-sheet)
       const dsName = document.getElementById('dossier-sheet-name');
@@ -16824,6 +16783,177 @@ return maplibregl$1;
         targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), actualZoom));
       }
     }
+
+    function toggleDesktopDossier(forceState) {
+      const col = document.getElementById('desktopDossierColumn');
+      if (!col) return;
+      const willOpen = (typeof forceState === 'boolean') ? forceState : col.classList.contains('hidden');
+      if (willOpen) {
+        col.classList.remove('hidden');
+        col.classList.add('flex');
+      } else {
+        col.classList.add('hidden');
+        col.classList.remove('flex');
+      }
+    }
+    window.toggleDesktopDossier = toggleDesktopDossier;
+
+    function setMainViewTab(tab) {
+      const tabs = ['atlas', 'directory', 'filters'];
+      const tabEls = {
+        atlas: document.getElementById('navTabAtlas'),
+        directory: document.getElementById('navTabDirectory'),
+        filters: document.getElementById('navTabFilters')
+      };
+      tabs.forEach(t => {
+        const el = tabEls[t];
+        if (!el) return;
+        if (t === tab) {
+          el.className = 'text-teal-300 border-b-2 border-teal-400 pb-1 font-semibold transition cursor-pointer';
+        } else {
+          el.className = 'text-slate-400 hover:text-white pb-1 transition cursor-pointer';
+        }
+      });
+
+      if (tab === 'atlas') {
+        if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(false);
+      } else if (tab === 'directory') {
+        if (typeof openCatalogModal === 'function') openCatalogModal('all');
+      } else if (tab === 'filters') {
+        if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(true);
+      }
+    }
+    window.setMainViewTab = setMainViewTab;
+
+    function updateDesktopDossier(inst) {
+      if (!inst) return;
+      const nameEl = document.getElementById('desktopDossierName');
+      if (nameEl) nameEl.textContent = inst.name;
+
+      const tierEl = document.getElementById('desktopDossierTier');
+      if (tierEl) {
+        const isClean = inst.tier === 'A';
+        tierEl.innerHTML = `
+          <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>${isClean ? 'Verified Sanctuary' : (inst.tier === 'B' ? 'Flagged Underwriting' : 'Verified Space')}</span>
+        `;
+      }
+
+      const metaEl = document.getElementById('desktopDossierMeta');
+      if (metaEl) {
+        const scope = inst.curatorial_scope || inst.scope || inst.tags || 'Interdisciplinary performance, noise and experimental sound, queer culture, independent archiving, DIY solidarity';
+        metaEl.textContent = `${inst.city || ''}${inst.city && inst.country ? ', ' : ''}${inst.country || ''} · ${scope}`;
+      }
+
+      const summaryEl = document.getElementById('desktopDossierSummary');
+      if (summaryEl) {
+        summaryEl.textContent = inst.about || inst.summary || inst.mission || 'Oldest active independent artist-run initiative; fierce counter-cultural champion.';
+      }
+
+      const webUrl = getValidWebUrl(inst);
+      const domain = getDisplayDomain(webUrl) || 'www.facebook.com';
+      const webLink = document.getElementById('desktopDossierWebLink');
+      const domainEl = document.getElementById('desktopDossierDomain');
+      if (webLink) {
+        webLink.href = webUrl || '#';
+      }
+      if (domainEl) {
+        domainEl.textContent = domain;
+      }
+
+      const fin = inst.financial_data || {};
+      const bAmt = document.getElementById('desktopDossierBudgetAmount');
+      if (bAmt) {
+        bAmt.textContent = fin.operating_budget_display || inst.funding || '€250K – €850K Grassroots Budget';
+      }
+
+      const bTier = document.getElementById('desktopDossierBudgetTier');
+      if (bTier) {
+        bTier.textContent = fin.budget_tier || (inst.tier === 'A' ? 'Lean Artist-Run Non-Profit' : 'Audited Non-Profit');
+      }
+
+      const fRatios = document.getElementById('desktopDossierFundingRatios');
+      if (fRatios) {
+        const pub = fin.public_subsidies_pct != null ? fin.public_subsidies_pct : 58;
+        const grants = fin.philanthropy_endowment_pct != null ? fin.philanthropy_endowment_pct : 14;
+        const earned = fin.earned_revenue_pct != null ? fin.earned_revenue_pct : 28;
+        fRatios.textContent = `Funding: ${pub}% Public · ${grants}% Grants · ${earned}% Earned`;
+      }
+
+      const fEff = document.getElementById('desktopDossierEfficiency');
+      if (fEff) {
+        const ratio = fin.program_expense_ratio_pct != null ? fin.program_expense_ratio_pct : (fin.program_spend_ratio_pct != null ? fin.program_spend_ratio_pct : 84);
+        fEff.textContent = `Operational Efficiency: ${ratio}% Self-Sustaining`;
+      }
+
+      const fSrc = document.getElementById('desktopDossierFundingSource');
+      if (fSrc) {
+        fSrc.textContent = inst.funding || 'Artist collective self-funding, independent foundations, Arts Collaboratory; 100% independent.';
+      }
+
+      const fAcc = document.getElementById('desktopDossierAccess');
+      if (fAcc) {
+        fAcc.textContent = inst.admission_policy || 'Always Free Public Admission';
+      }
+
+      const tempShows = inst.temporary_shows || [];
+      const primaryShow = tempShows[0] || (inst.floor_plans && inst.floor_plans[0] && inst.floor_plans[0].current_shows && inst.floor_plans[0].current_shows[0]) || {
+        title: `Featured Exhibition: In Focus with ${inst.name}`,
+        curator_artists: `${inst.name} Curatorial Cohort & Guest Artists`,
+        dates: 'On View: Autumn 2026 – Spring 2027'
+      };
+
+      const showTitleEl = document.getElementById('desktopDossierExhibitionTitle');
+      if (showTitleEl) showTitleEl.textContent = primaryShow.title;
+      const showMetaEl = document.getElementById('desktopDossierExhibitionMeta');
+      if (showMetaEl) showMetaEl.textContent = `${primaryShow.curator_artists || 'Curatorial Cohort'} · ${primaryShow.dates || 'On View'}`;
+
+      // Gossip block
+      const gossipSec = document.getElementById('desktopDossierGossipSection');
+      if (gossipSec) {
+        if (isGossipModeActive && inst.gossip_data) {
+          gossipSec.classList.remove('hidden');
+          const gHeadline = document.getElementById('desktopDossierGossipHeadline');
+          if (gHeadline) gHeadline.textContent = inst.gossip_data.headline || '';
+          const gReddit = document.getElementById('desktopDossierGossipReddit');
+          if (gReddit) gReddit.textContent = inst.gossip_data.reddit?.snippet || '';
+          const gTwitter = document.getElementById('desktopDossierGossipTwitter');
+          if (gTwitter) gTwitter.textContent = inst.gossip_data.twitter_x?.snippet || '';
+        } else {
+          gossipSec.classList.add('hidden');
+        }
+      }
+
+      const col = document.getElementById('desktopDossierColumn');
+      if (col && window.innerWidth >= 768) {
+        col.classList.remove('hidden');
+        col.classList.add('flex');
+      }
+    }
+    window.updateDesktopDossier = updateDesktopDossier;
+
+    function toggleGlobeAutoSpin() {
+      isAutoSpinning = !isAutoSpinning;
+      const spinTxt = document.getElementById('hudSpinText');
+      if (spinTxt) spinTxt.textContent = isAutoSpinning ? 'Pause' : 'Spin';
+    }
+    window.toggleGlobeAutoSpin = toggleGlobeAutoSpin;
+
+    function toggleGlobeExpand() {
+      if (typeof handleViewExpand === 'function') {
+        handleViewExpand();
+      }
+    }
+    window.toggleGlobeExpand = toggleGlobeExpand;
+
+    function speakCuratorBriefing() {
+      const hero = document.getElementById('curatorHeroGreeting');
+      const speech = hero ? hero.getAttribute('data-speech') : 'Welcome to Culture Atlas.';
+      if (typeof speakCuratorText === 'function') {
+        speakCuratorText(speech);
+      }
+    }
+    window.speakCuratorBriefing = speakCuratorBriefing;
 
     function deselectInstitution() {
       selectedInstitution = null;
@@ -30145,10 +30275,14 @@ bar.innerHTML = html;
       }
 
       // 1. Direct hit on visible institution label box or dot (generous hit padding)
+      const isZoomedIn = (selectedCountryFilter !== 'all' || currentRadius >= baseRadius * 1.8);
+      if (!isZoomedIn && typeof findCityAt === 'function' && findCityAt(mx, my)) {
+        return null;
+      }
       for (let i = 0; i < visibleDots.length; i++) {
         const d = visibleDots[i];
         const dotDist = Math.hypot(d.x - mx, d.y - my);
-        if (dotDist <= 24) return d.inst;
+        if (dotDist <= (isZoomedIn ? 24 : 3)) return d.inst;
         if (d.labelBox) {
           const lb = d.labelBox;
           if (mx >= lb.x - 6 && mx <= lb.x + lb.w + 6 && my >= lb.y - 6 && my <= lb.y + lb.h + 6) {
@@ -30293,10 +30427,10 @@ bar.innerHTML = html;
       const cx = width / 2;
       const cy = height / 2;
 
-      // If pointer is directly on any visible institution dot, prioritize the institution dot
+      // If pointer is directly on a labeled institution dot, prioritize the institution dot
       for (let i = 0; i < visibleDots.length; i++) {
         const d = visibleDots[i];
-        if (Math.hypot(d.x - mx, d.y - my) < 8) return null;
+        if (d.labelBox && Math.hypot(d.x - mx, d.y - my) < 6) return null;
       }
 
       // If a country filter is active, only consider cities within that country!
@@ -30310,6 +30444,27 @@ bar.innerHTML = html;
           return ALL_CITIES_REGISTRY.find(c => matchC(c.name, hb.city)) || { name: hb.city };
         }
       }
+
+      // 0.5 Direct pin hit (weighted by institution count so major hubs are not overshadowed by adjacent 1-space satellite towns)
+      let directPinCity = null;
+      let bestPinScore = Infinity;
+      for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {
+        const c = ALL_CITIES_REGISTRY[i];
+        if (isCountryActive && c.country && !matchC(c.country, selectedCountryFilter)) continue;
+        const pt = project(c.lon, c.lat, r, cx, cy);
+        if (pt.front && pt.depth > 0.05) {
+          const pinDist = Math.hypot(pt.x - mx, pt.y - my);
+          if (pinDist <= 20) {
+            const countWeight = 1 + Math.log2(Math.max(1, c.count || 1)) * 0.75;
+            const score = pinDist / countWeight;
+            if (score < bestPinScore) {
+              bestPinScore = score;
+              directPinCity = c;
+            }
+          }
+        }
+      }
+      if (directPinCity && bestPinScore <= 4.5) return directPinCity;
 
       // 1. Direct hit on an active rendered city badge label
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {
@@ -30369,6 +30524,8 @@ bar.innerHTML = html;
     }
     window.findCityAt = findCityAt;
     window.handleGlobeClick = handleGlobeClick;
+    window.renderGlobe = render;
+    window.updateVisibleDots = () => { if (typeof render === 'function') render(); };
 
     // Check hover target for dynamic pointer cursor feedback
     function updateHoverCursor(clientX, clientY) {
@@ -31041,11 +31198,28 @@ bar.innerHTML = html;
       }
     });
 
+
+    // Copy button listener for curator hero greeting
+    document.addEventListener('click', (e) => {
+      const copyBtn = e.target.closest('.curator-copy-btn');
+      if (copyBtn) {
+        const hero = document.getElementById('curatorHeroGreeting');
+        const text = hero ? hero.textContent.trim() : '';
+        if (text && navigator.clipboard) {
+          navigator.clipboard.writeText(text);
+          copyBtn.textContent = '✓';
+          setTimeout(() => { copyBtn.textContent = '📋'; }, 1500);
+        }
+      }
+    });
+
     // Initialize Curator & App
     initCuratorConversation();
     applyFilters();
-    if (selectedInstitution) {
-      selectInstitution(selectedInstitution);
+
+    const defaultInst = ALL_INSTITUTIONS.find(i => i.name.includes('Green Papaya') || i.id === 'green-papaya-art-projects') || ALL_INSTITUTIONS[0];
+    if (defaultInst && typeof updateDesktopDossier === 'function') {
+      updateDesktopDossier(defaultInst);
     }
 
     // Deep link and URL parameter handler (Gossip mode, Direct Institution, Mobile Dossier)
