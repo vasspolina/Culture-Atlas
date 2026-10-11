@@ -269,11 +269,13 @@ def build():
 
     import base64
     b64_museum_light = base64.b64encode(open('app/fonts/PPMuseum-Light.otf', 'rb').read()).decode('ascii')
-    b64_museum_lightitalic = base64.b64encode(open('app/fonts/PPMuseum-LightItalic.otf', 'rb').read()).decode('ascii')
     b64_museum_reg = base64.b64encode(open('app/fonts/PPMuseum-Regular.otf', 'rb').read()).decode('ascii')
-    b64_museum_regitalic = base64.b64encode(open('app/fonts/PPMuseum-RegularItalic.otf', 'rb').read()).decode('ascii')
-    b64_museum_ultrabold = base64.b64encode(open('app/fonts/PPMuseum-Ultrabold.otf', 'rb').read()).decode('ascii')
-    b64_museum_ultrabolditalic = base64.b64encode(open('app/fonts/PPMuseum-UltraboldItalic.otf', 'rb').read()).decode('ascii')
+    # Strictly map all bold and italic font requests to upright Regular and Light cuts:
+    # "dont use bould and cursive versions of font"
+    b64_museum_lightitalic = b64_museum_light
+    b64_museum_regitalic = b64_museum_reg
+    b64_museum_ultrabold = b64_museum_reg
+    b64_museum_ultrabolditalic = b64_museum_reg
     b64_reg = b64_museum_reg
     b64_ultralight = b64_museum_light
     maplibre_css = open('app/vendor/maplibre-gl.css', 'r', encoding='utf-8').read()
@@ -355,98 +357,66 @@ def build():
   <style>
     /* ========================================================= */
     /* STRICT EXCLUSIVITY: ONLY PP MUSEUM (PANGRAM PANGRAM) FOR EVERYTHING */
-    /* STRICT 4-TYPE-SIZE SYSTEM: 14px, 16px, 19px, 27px ONLY */
-    /* USER SPECIFICATION: USE PP MUSEUM FONTS ONLY: LIGHT, REGULAR, ULTRABOLD + ITALICS */
+    /* ========================================================= */
+    /* PP MUSEUM EXCLUSIVE TYPOGRAPHY (CLEAN REGULAR & LIGHT ONLY - NO BOLD, NO CURSIVE) */
     /* ========================================================= */
     *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-synthesis: none !important;
-      letter-spacing: 0.6pt !important;
-      line-height: 120% !important;
       -webkit-font-smoothing: antialiased !important;
       -moz-osx-font-smoothing: grayscale !important;
     }}
 
-    *, *::before, *::after {{
-      font-size: 14px;
-      letter-spacing: 0.6pt !important;
-      line-height: 120% !important;
-    }}
     html, body {{
-      font-size: 14px !important;
-      line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
+      font-size: 14px;
+      line-height: 120%;
       font-weight: 400;
     }}
-    input, button, select, textarea, p, span, div, li, a {{
-      font-size: 14px;
-      line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
-    }}
 
-    strong, b, h1, h2, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"] {{
-      font-weight: 800 !important;
+    strong, b, h1, h2, h3, h4, h5, h6, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"] {{
+      font-weight: 500 !important;
+      font-style: normal !important;
     }}
     strong, b {{
       color: #ffffff;
     }}
     em, i, .italic, [class*="italic"] {{
-      font-style: italic !important;
+      font-style: normal !important;
+      font-weight: normal !important;
     }}
-    .font-light, .font-thin, .font-extralight, .text-light, .type-light, [class*="font-thin"], [class*="font-extralight"] {{
+    .font-light, .text-light, .type-light {{
+      font-weight: 300 !important;
+      font-style: normal !important;
+    }}
+    .font-thin, .font-extralight, .text-extralight, .type-extralight, [class*="font-thin"], [class*="font-extralight"] {{
       font-weight: 200 !important;
+      font-style: normal !important;
     }}
 
-    /* Size 1: 14px (Floor / Captions / Badges / Metadata / Small body / Inputs / Chips) */
-    .type-14, .text-14, .text-[14px],
-    [class*="text-\[6"], [class*="text-\[7"], [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
-    [class*="text-\[11"], [class*="text-\[12"], [class*="text-\[13"],
-    [class*="text-\[14px\]"], .text-[14px], .text-[14px],
-    h4, h5, h6 {{
+    /* Core type sizes without destroying mobile micro-badges */
+    .type-14, .text-14 {{
       font-size: 14px !important;
       line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
     }}
-
-    /* Size 2: 16px (Standard Reading Body / Primary Actions / Form Labels / Prominent List Elements) */
-    .type-16, .text-16, .text-[18px], .text-[14px], .text-md,
-    [class*="text-\[15"], [class*="text-\[16"], [class*="text-\[17"],
-    [class*="text-\[16px\]"],
-    h3 {{
+    .type-16, .text-16 {{
+      font-size: 16px !important;
+      line-height: 120% !important;
+    }}
+    .type-18, .text-18, .type-19, .text-19 {{
       font-size: 18px !important;
       line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
+      font-weight: 500 !important;
+      font-style: normal !important;
     }}
-
-    /* Size 3: 19px (Card Titles, Subheaders, Museum Names, Medium Headers) */
-    .type-19, .text-19, .text-[18px],
-    .type-18, .text-18, .text-[18px],
-    .text-[18px], .text-[18px],
-    [class*="text-\[18"], [class*="text-\[19"], [class*="text-\[20"],
-    [class*="text-\[19px\]"],
-    h2 {{
-      font-size: 18px !important;
-      line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
-      font-weight: 800 !important;
-    }}
-
-    /* Size 4: 27px (Main Brand Title, Modal Headlines, Large Dossier Titles, Hero Headers) */
-    .type-27, .text-27, .text-[27px],
-    .type-24, .text-24, .text-[27px],
-    .text-[18px], .text-[27px], .text-[27px], .text-[27px],
-    [class*="text-\[21"], [class*="text-\[22"], [class*="text-\[23"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[27"], [class*="text-\[28"], [class*="text-\[29"],
-    [class*="text-\[3"], [class*="text-\[4"], [class*="text-\[5"], [class*="text-\[6"],
-    [class*="text-\[27px\]"],
-    h1 {{
+    .type-27, .text-27 {{
       font-size: 27px !important;
       line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
-      font-weight: 800 !important;
+      font-weight: 500 !important;
+      font-style: normal !important;
     }}
 
     /* ========================================================= */
-    /* PP MUSEUM EMBEDDED TYPOGRAPHY (LIGHT, REGULAR, ULTRABOLD + ITALICS) */
+    /* PP MUSEUM EMBEDDED TYPOGRAPHY (CLEAN REGULAR & LIGHT ONLY - NO BOLD, NO CURSIVE) */
     /* ========================================================= */
     @font-face {{
       font-family: 'PP Museum';
@@ -459,46 +429,20 @@ def build():
     }}
     @font-face {{
       font-family: 'PP Museum';
-      src: url('data:font/otf;base64,{b64_museum_lightitalic}') format('opentype'),
-           url('fonts/PPMuseum-LightItalic.otf') format('opentype'),
-           local('PP Museum Light Italic'), local('PPMuseum-LightItalic');
-      font-weight: 100 350;
-      font-style: italic;
+      src: url('data:font/otf;base64,{b64_museum_reg}') format('opentype'),
+           url('fonts/PPMuseum-Regular.otf') format('opentype'),
+           local('PP Museum Regular'), local('PP Museum'), local('PPMuseum-Regular');
+      font-weight: 351 900;
+      font-style: normal;
       font-display: swap;
     }}
+    /* Map all italic/cursive styles to upright PPMuseum-Regular so cursive is never rendered */
     @font-face {{
       font-family: 'PP Museum';
       src: url('data:font/otf;base64,{b64_museum_reg}') format('opentype'),
            url('fonts/PPMuseum-Regular.otf') format('opentype'),
-           local('PP Museum Regular'), local('PP Museum'), local('PPMuseum-Regular');
-      font-weight: 351 600;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Museum';
-      src: url('data:font/otf;base64,{b64_museum_regitalic}') format('opentype'),
-           url('fonts/PPMuseum-RegularItalic.otf') format('opentype'),
-           local('PP Museum Regular Italic'), local('PPMuseum-RegularItalic');
-      font-weight: 351 600;
-      font-style: italic;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Museum';
-      src: url('data:font/otf;base64,{b64_museum_ultrabold}') format('opentype'),
-           url('fonts/PPMuseum-Ultrabold.otf') format('opentype'),
-           local('PP Museum Ultrabold'), local('PPMuseum-Ultrabold');
-      font-weight: 601 900;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Museum';
-      src: url('data:font/otf;base64,{b64_museum_ultrabolditalic}') format('opentype'),
-           url('fonts/PPMuseum-UltraboldItalic.otf') format('opentype'),
-           local('PP Museum Ultrabold Italic'), local('PPMuseum-UltraboldItalic');
-      font-weight: 601 900;
+           local('PP Museum Regular'), local('PP Museum');
+      font-weight: 100 900;
       font-style: italic;
       font-display: swap;
     }}
@@ -518,16 +462,7 @@ def build():
       src: url('data:font/otf;base64,{b64_museum_reg}') format('opentype'),
            url('fonts/PPMuseum-Regular.otf') format('opentype'),
            local('PP Museum Regular'), local('PPMuseum-Regular');
-      font-weight: 351 600;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_museum_ultrabold}') format('opentype'),
-           url('fonts/PPMuseum-Ultrabold.otf') format('opentype'),
-           local('PP Museum Ultrabold'), local('PPMuseum-Ultrabold');
-      font-weight: 601 900;
+      font-weight: 351 900;
       font-style: normal;
       font-display: swap;
     }}
@@ -545,22 +480,14 @@ def build():
       src: url('data:font/otf;base64,{b64_museum_reg}') format('opentype'),
            url('fonts/PPMuseum-Regular.otf') format('opentype'),
            local('PP Museum Regular'), local('PPMuseum-Regular');
-      font-weight: 351 600;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_museum_ultrabold}') format('opentype'),
-           url('fonts/PPMuseum-Ultrabold.otf') format('opentype'),
-           local('PP Museum Ultrabold'), local('PPMuseum-Ultrabold');
-      font-weight: 601 900;
+      font-weight: 351 900;
       font-style: normal;
       font-display: swap;
     }}
 
     *, *::before, *::after {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-style: normal !important;
       -webkit-tap-highlight-color: transparent !important;
     }}
 
@@ -590,21 +517,31 @@ def build():
 
     body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b, em, i {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-style: normal !important;
     }}
 
-    strong, b, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"] {{
+    strong, b, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"] {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 800 !important;
+      font-weight: 500 !important;
+      font-style: normal !important;
     }}
 
     em, i, .italic, [class*="italic"] {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-style: italic !important;
+      font-style: normal !important;
+      font-weight: normal !important;
     }}
 
-    .font-light, .font-thin, .font-extralight, .text-light, .type-light, [class*="font-thin"], [class*="font-extralight"] {{
+    .font-light, .text-light, .type-light {{
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 300 !important;
+      font-style: normal !important;
+    }}
+
+    .font-thin, .font-extralight, [class*="font-thin"], [class*="font-extralight"] {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 200 !important;
+      font-style: normal !important;
     }}
 
     .font-mono, monospace, code, pre {{
@@ -617,9 +554,8 @@ def build():
       color: #f8fafc;
       margin: 0;
       padding: 0;
-      font-size: 14px !important;
-      line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
+      font-size: 14px;
+      line-height: 120%;
       overflow-x: hidden !important;
       overflow-y: hidden;
       width: 100% !important;
@@ -1902,7 +1838,7 @@ def build():
         </span>
         <span class="inline-flex items-center mt-1 text-[10px] font-medium text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded-full border border-emerald-800/60 leading-none">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span>
-          444 Clean spaces
+          {clean_count} Clean spaces
         </span>
       </div>
     </button>
@@ -3353,7 +3289,7 @@ def build():
       </span>
       <div class="flex items-center space-x-2">
         <span id="mobileStickyVoiceBtn" class="text-slate-400 bg-slate-900 px-2 py-0.5 rounded-full border border-slate-800 cursor-pointer">Voice: ON</span>
-        <span class="text-emerald-400">● Clean Funding (444)</span>
+        <span class="text-emerald-400">● Clean Funding ({clean_count})</span>
       </div>
     </div>
   </div>
