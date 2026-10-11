@@ -21,15 +21,24 @@ def test_integration():
 
     test_script = """
     <script>
+    window.fetch = async (url, opts) => {
+      const urlStr = String(url && url.url ? url.url : url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
     window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, cond, extra = '') {
         results.push({ name, pass: Boolean(cond), extra: String(extra) });
       }
 
       try {
-        await new Promise(r => setTimeout(r, 500));
-        
         // 1. Verify Academic Papers
         const papers = window.ACADEMIC_RESEARCH || [];
         assert('Academic papers loaded in app', papers.length >= 135, 'count: ' + papers.length);
@@ -59,7 +68,6 @@ def test_integration():
         // 3. Test selection and Gossip Card rendering
         if (bm && window.selectInstitution) {
           window.selectInstitution(bm, false);
-          await new Promise(r => setTimeout(r, 100));
 
           // Switch card to gossip mode
           if (window.setCardMode) window.setCardMode('gossip', false);
@@ -76,7 +84,6 @@ def test_integration():
           // 4. Test Drawer Gossip Viewport
           if (window.openDossier) {
             window.openDossier(bm);
-            await new Promise(r => setTimeout(r, 100));
             if (window.setDrawerMode) window.setDrawerMode('gossip');
 
             const drawerGossip = document.getElementById('drawerGossipView');
@@ -110,9 +117,10 @@ def test_integration():
     cmd = [
         chrome_bin,
         "--headless=new",
+        "--disable-gpu",
+        "--no-sandbox",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
     res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)

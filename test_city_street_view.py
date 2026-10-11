@@ -13,17 +13,19 @@ def run_tests():
 
     test_script = """
     <script>
-    // Stub fetch for vector tiles and fonts so headless chrome doesn't wait for network
-    const origFetch = window.fetch;
+    // Stub fetch for vector tiles, raster tiles, and remote network calls
     window.fetch = async (url, opts) => {
-      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
-      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
+      const urlStr = String(url && url.url ? url.url : url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
         return new Response(new Uint8Array(0), { status: 200 });
       }
-      return origFetch(url, opts);
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
 
-    window.addEventListener('load', async () => {
+    window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
@@ -102,9 +104,10 @@ def run_tests():
     cmd = [
         chrome_bin,
         "--headless=new",
+        "--disable-gpu",
+        "--no-sandbox",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=3000",
         f"file://{temp_file}"
     ]
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=45)

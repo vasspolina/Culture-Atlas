@@ -49,15 +49,25 @@ def test_browser_xray_and_gossip_mode():
 
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    // Stub fetch so headless chrome does not wait for external tiles or network calls
+    window.fetch = async (url, opts) => {
+      const urlStr = String(url && url.url ? url.url : url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: Boolean(condition), extra: String(extra) });
       }
 
       try {
-        await new Promise(r => setTimeout(r, 400));
-
         const all = window.ALL_INSTITUTIONS || [];
         assert('Institutions loaded', all.length >= 1000, all.length);
 
@@ -98,7 +108,9 @@ def test_browser_xray_and_gossip_mode():
 
         // 3. Test 3D X-Ray Building Model
         window.zoomToBuilding(testInst, false);
-        await new Promise(r => setTimeout(r, 400));
+        if (window.cityVectorMap) {
+          window.cityVectorMap.jumpTo({ center: [testInst.lon, testInst.lat], zoom: 18.6, pitch: 62, bearing: 28 });
+        }
 
         if (window.cityVectorMap) {
           const srcEnvelope = window.cityVectorMap.getSource('highlighted-building-3d-floors');
@@ -149,29 +161,32 @@ def test_browser_xray_and_gossip_mode():
         "--no-sandbox",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
-    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
-    
-    marker = 'id="test-results-output" data-results="'
-    if marker not in res.stdout:
-        print("ERROR: Test marker not found in output. Stderr:")
-        print(res.stderr[:1000])
-        sys.exit(1)
+    try:
+        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
+        
+        marker = 'id="test-results-output" data-results="'
+        if marker not in res.stdout:
+            print("ERROR: Test marker not found in output. Stderr:")
+            print(res.stderr[:1000])
+            sys.exit(1)
 
-    results = json.loads(html_lib.unescape(res.stdout.split(marker)[1].split('"')[0]))
-    print("\n--- RUNNING X-RAY, GOSSIP & SHOWS TEST SUITE ---")
-    all_passed = True
-    for r in results:
-        status = "[PASS]" if r["pass"] else "[FAIL]"
-        extra = f" ({r['extra']})" if r.get("extra") else ""
-        print(f"{status} {r['name']}{extra}")
-        if not r["pass"]:
-            all_passed = False
+        results = json.loads(html_lib.unescape(res.stdout.split(marker)[1].split('"')[0]))
+        print("\\n--- RUNNING X-RAY, GOSSIP & SHOWS TEST SUITE ---")
+        all_passed = True
+        for r in results:
+            status = "[PASS]" if r["pass"] else "[FAIL]"
+            extra = f" ({r['extra']})" if r.get("extra") else ""
+            print(f"{status} {r['name']}{extra}")
+            if not r["pass"]:
+                all_passed = False
 
-    assert all_passed, "Some tests failed!"
-    print(f"\n🎉 ALL X-RAY, GOSSIP & SHOWS TESTS PASSED ({len(results)}/{len(results)})!")
+        assert all_passed, "Some tests failed!"
+        print(f"\\n🎉 ALL X-RAY, GOSSIP & SHOWS TESTS PASSED ({len(results)}/{len(results)})!")
+    finally:
+        if os.path.exists(temp_file):
+            os.remove(temp_file)
 
 if __name__ == '__main__':
     test_static_html_requirements()

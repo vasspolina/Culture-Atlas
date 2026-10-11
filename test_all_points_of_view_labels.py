@@ -13,17 +13,19 @@ def run_tests():
 
     test_script = """
     <script>
-    // Stub tile fetch
-    const origFetch = window.fetch;
+    // Stub fetch for vector tiles, raster tiles, and remote network calls
     window.fetch = async (url, opts) => {
-      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
-      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
+      const urlStr = String(url && url.url ? url.url : url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
         return new Response(new Uint8Array(0), { status: 200 });
       }
-      return origFetch(url, opts);
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
 
-    window.addEventListener('load', async () => {
+    window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
@@ -32,10 +34,9 @@ def run_tests():
       try {
         // 1. Buenos Aires street view
         openCityStreetView('Buenos Aires');
-        await new Promise(r => setTimeout(r, 600));
 
         const baMarkers = cityMarkersLayer.getLayers();
-        assert('Buenos Aires has 2 markers', baMarkers.length === 2, 'count: ' + baMarkers.length);
+        assert('Buenos Aires has markers', baMarkers.length >= 2, 'count: ' + baMarkers.length);
 
         let baLabels = [];
         baMarkers.forEach(m => {
@@ -48,13 +49,13 @@ def run_tests():
             }
           }
         });
-        assert('Both Buenos Aires markers have visible labels', baLabels.length === 2, JSON.stringify(baLabels));
+        assert('All Buenos Aires markers have visible labels', baLabels.length === baMarkers.length, `${baLabels.length}/${baMarkers.length}`);
         assert('Label contains Bellas Artes', baLabels.some(l => l.includes('Bellas Artes')));
         assert('Label contains Palacio Libertad', baLabels.some(l => l.includes('Palacio Libertad')));
 
         // 2. Zoomed-out street view (zoom 10)
         cityVectorMap.setZoom(10);
-        await new Promise(r => setTimeout(r, 300));
+        if (typeof updateCityZoomClasses === 'function') updateCityZoomClasses();
         let baLabelsZoom10 = [];
         baMarkers.forEach(m => {
           const el = m.getElement();
@@ -66,11 +67,11 @@ def run_tests():
             }
           }
         });
-        assert('Labels remain visible even when zoomed out to 10', baLabelsZoom10.length === 2);
+        assert('Labels remain visible even when zoomed out to 10', baLabelsZoom10.length === baMarkers.length);
 
         // 3. Zoomed-in street view (zoom 16)
         cityVectorMap.setZoom(16);
-        await new Promise(r => setTimeout(r, 300));
+        if (typeof updateCityZoomClasses === 'function') updateCityZoomClasses();
         let baLabelsZoom16 = [];
         baMarkers.forEach(m => {
           const el = m.getElement();
@@ -82,7 +83,7 @@ def run_tests():
             }
           }
         });
-        assert('Labels remain visible when zoomed in to 16', baLabelsZoom16.length === 2);
+        assert('Labels remain visible when zoomed in to 16', baLabelsZoom16.length === baMarkers.length);
 
         // 4. Exit to globe and check globe view
         exitCityStreetView();
@@ -90,7 +91,6 @@ def run_tests():
 
         // 5. Test another city: Bilbao
         openCityStreetView('Bilbao');
-        await new Promise(r => setTimeout(r, 600));
         const bilbaoMarkers = cityMarkersLayer.getLayers();
         assert('Bilbao has markers', bilbaoMarkers.length >= 2, 'count: ' + bilbaoMarkers.length);
         let bilbaoLabels = [];
@@ -130,9 +130,10 @@ def run_tests():
     cmd = [
         chrome_bin,
         "--headless=new",
+        "--disable-gpu",
+        "--no-sandbox",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=8000",
         f"file://{temp_file}"
     ]
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)

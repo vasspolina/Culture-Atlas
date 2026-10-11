@@ -12,7 +12,19 @@ def test_zoomed_out_city_interaction():
 
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    // Stub fetch so headless chrome does not wait for external tiles or network calls
+    window.fetch = async (url, opts) => {
+      const urlStr = String(url && url.url ? url.url : url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, cond, extra = '') {
         results.push({ name, pass: !!cond, extra });
@@ -22,10 +34,17 @@ def test_zoomed_out_city_interaction():
         // 1. Verify findCityAt is exposed on window
         assert('findCityAt is exposed on window', typeof window.findCityAt === 'function');
 
-        // 2. Fly to Europe (London centered) on zoomed-out globe
-        flyTo(-0.1276, 51.5072, baseRadius);
+        // 2. Center Europe (London centered) on zoomed-out globe
+        rotLon = -0.1276;
+        rotLat = 51.5072;
+        targetRotLon = rotLon;
+        targetRotLat = rotLat;
+        isFlying = false;
         isAutoSpinning = false;
-        await new Promise(r => setTimeout(r, 600));
+        currentRadius = baseRadius;
+        targetRadius = baseRadius;
+        if (typeof updateVisibleDots === 'function') updateVisibleDots();
+        if (typeof renderGlobe === 'function') renderGlobe();
 
         // 3. Project London on current globe
         const london = ALL_CITIES_REGISTRY.find(c => c.name.toLowerCase() === 'london');
@@ -41,7 +60,7 @@ def test_zoomed_out_city_interaction():
         const cityFound = window.findCityAt(pt.x, pt.y);
         assert('findCityAt at exact pin finds London', cityFound && cityFound.name.toLowerCase() === 'london', JSON.stringify(cityFound));
 
-        // 5. Test findCityAt with 5px offset (mouse jitter within city pin)
+        // 5. Test findCityAt with 4px offset (mouse jitter within city pin)
         const cityOffset = window.findCityAt(pt.x + 4, pt.y + 4);
         assert('findCityAt with 5px offset finds London', cityOffset && cityOffset.name.toLowerCase() === 'london', JSON.stringify(cityOffset));
 
@@ -55,23 +74,24 @@ def test_zoomed_out_city_interaction():
 
         // 7. Test clicking London when zoomed out zooms into city street view
         window.handleGlobeClick(rect.left + pt.x, rect.top + pt.y);
-        await new Promise(r => setTimeout(r, 500));
 
         assert('Clicking London activates isCityStreetViewActive', isCityStreetViewActive === true);
         assert('selectedCityFilter is London', selectedCityFilter.toLowerCase() === 'london', selectedCityFilter);
 
         // 8. Exit city view and test Paris
         exitCityStreetView();
-        await new Promise(r => setTimeout(r, 300));
         assert('After exit, isCityStreetViewActive is false', isCityStreetViewActive === false);
 
-        flyTo(2.3522, 48.8566, baseRadius);
-        targetRotX = -(48.8566 * Math.PI / 180);
-        rotX = targetRotX;
-        targetRotY = (2.3522 * Math.PI / 180);
-        rotY = targetRotY;
+        rotLon = 2.3522;
+        rotLat = 48.8566;
+        targetRotLon = rotLon;
+        targetRotLat = rotLat;
+        isFlying = false;
         isAutoSpinning = false;
-        await new Promise(r => setTimeout(r, 600));
+        currentRadius = baseRadius;
+        targetRadius = baseRadius;
+        if (typeof updateVisibleDots === 'function') updateVisibleDots();
+        if (typeof renderGlobe === 'function') renderGlobe();
 
         const paris = ALL_CITIES_REGISTRY.find(c => c.name.toLowerCase() === 'paris');
         const ptParis = project(paris.lon, paris.lat, currentRadius, width / 2, height / 2);
@@ -101,33 +121,38 @@ def test_zoomed_out_city_interaction():
     cmd = [
         chrome_bin,
         "--headless=new",
+        "--disable-gpu",
+        "--no-sandbox",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
-    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
-    
-    import html as html_lib
-    import sys
-    marker = 'id="test-results-output" data-results="'
-    if marker not in res.stdout:
-        print("ERROR: Test marker not found in output. Stderr:")
-        print(res.stderr[:1000])
-        sys.exit(1)
+    try:
+        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
+        
+        import html as html_lib
+        import sys
+        marker = 'id="test-results-output" data-results="'
+        if marker not in res.stdout:
+            print("ERROR: Test marker not found in output. Stderr:")
+            print(res.stderr[:1000])
+            sys.exit(1)
 
-    results = json.loads(html_lib.unescape(res.stdout.split(marker)[1].split('"')[0]))
-    print("\n--- ZOOMED OUT CITY HOVER & CLICK TEST RESULTS ---")
-    all_passed = True
-    for r in results:
-        status = "[PASS]" if r["pass"] else "[FAIL]"
-        extra = f" ({r['extra']})" if r.get("extra") else ""
-        print(f"{status} {r['name']}{extra}")
-        if not r["pass"]:
-            all_passed = False
+        results = json.loads(html_lib.unescape(res.stdout.split(marker)[1].split('"')[0]))
+        print("\n--- ZOOMED OUT CITY HOVER & CLICK TEST RESULTS ---")
+        all_passed = True
+        for r in results:
+            status = "[PASS]" if r["pass"] else "[FAIL]"
+            extra = f" ({r['extra']})" if r.get("extra") else ""
+            print(f"{status} {r['name']}{extra}")
+            if not r["pass"]:
+                all_passed = False
 
-    assert all_passed, "Some tests failed!"
-    print(f"\n🎉 ALL ZOOMED OUT CITY INTERACTION TESTS PASSED ({len(results)}/{len(results)})!")
+        assert all_passed, "Some tests failed!"
+        print(f"\n🎉 ALL ZOOMED OUT CITY INTERACTION TESTS PASSED ({len(results)}/{len(results)})!")
+    finally:
+        if os.path.exists(temp_file):
+            os.remove(temp_file)
 
 if __name__ == "__main__":
     test_zoomed_out_city_interaction()

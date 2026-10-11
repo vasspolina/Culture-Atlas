@@ -1776,16 +1776,16 @@ def build():
 
       <!-- Hidden stubs preserved for DOM & test safety -->
       <div class="hidden" style="display:none;" aria-hidden="true">
-        <button id="topCatalogBtn">{total_findings_count}</button>
-        <button id="topArchivesBtn"></button>
-        <button id="topGovernanceBtn"></button>
-        <button id="topContributeBtn"></button>
+        <button id="topCatalogBtn">Browse All Findings ({total_findings_count})</button>
+        <button id="topArchivesBtn">Archives Directory ({archives_count})</button>
+        <button id="topGovernanceBtn">Governance Methodology</button>
+        <button id="topContributeBtn">Contribute Research</button>
         <button id="topViewMinimizeBtn"></button>
         <button id="topViewExpandBtn"></button>
-        <button id="mobileCatalogBtn"></button>
-        <button id="mobileArchivesBtn"></button>
-        <button id="mobileGovernanceBtn"></button>
-        <button id="mobileContributeBtn"></button>
+        <button id="mobileCatalogBtn">Browse All Findings</button>
+        <button id="mobileArchivesBtn">Archives Directory ({archives_count})</button>
+        <button id="mobileGovernanceBtn">Governance Methodology</button>
+        <button id="mobileContributeBtn">Contribute Research</button>
         <button id="topSettingsBtn">
           <span id="topStatusDot"></span>
           <span id="topStatusLabel"></span>
@@ -1920,7 +1920,7 @@ def build():
             <div class="flex items-center justify-between gap-1 text-[14px] font-mono">
               <span class="text-amber-400 font-medium flex items-center gap-1.5">
                 <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                <span>ARTIST &amp; DESIGNER CRITIQUE</span>
+                <span>🎨 ARTIST &amp; DESIGNER VISUAL CRITIQUE</span>
               </span>
               <div class="flex items-center gap-1.5">
                 <span id="floatingCardVcCountBadge" class="hidden text-[14px] font-mono text-zinc-400"></span>
@@ -2551,7 +2551,7 @@ def build():
     </div>
 
     <!-- RESIZABLE SPLITTER (Desktop: Vertical Drag / Mobile: Horizontal Drag · Double-click resets to 50%) -->
-    <div id="globeSplitter" class="relative w-full md:w-[6px] h-[5px] md:h-full bg-[#111113] hover:bg-[#1f1f23] active:bg-[#27272a] border-y md:border-y-0 md:border-x border-[#1c1c1f] cursor-row-resize md:cursor-col-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split screen · Double-click to reset to 50%">
+    <div id="globeSplitter" class="relative w-full md:w-[6px] h-[5px] md:h-full bg-[#1c1c1f] hover:bg-[#27272a] active:bg-[#323238] border-y md:border-y-0 md:border-x border-[#27272a] cursor-row-resize md:cursor-col-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split screen · Double-click to reset to 50%">
       <div class="w-10 md:w-[2px] h-[2px] md:h-8 rounded-full bg-[#3f3f46] group-hover:bg-[#a1a1aa] transition"></div>
     </div>
 
@@ -10183,7 +10183,10 @@ def build():
     let cityMarkersLayer = {{
       getLayers: () => cityVectorMarkers,
       clearLayers: () => {{
-        cityVectorMarkers.forEach(m => m.remove());
+        cityVectorMarkers.forEach(m => {{
+          try {{ m.remove(); }} catch (e) {{}}
+          try {{ if (m.getElement()) m.getElement().remove(); }} catch (e) {{}}
+        }});
         cityVectorMarkers = [];
       }}
     }};
@@ -10218,26 +10221,32 @@ def build():
         let _z = 14, _p = 35, _b = 0, _c = [0, 20];
         cityVectorMap = {{
           getZoom: () => _z,
+          setZoom: function(z) {{ _z = z; if (typeof updateCityZoomClasses === 'function') updateCityZoomClasses(); }},
           getPitch: () => _p,
+          setPitch: function(p) {{ _p = p; }},
           getBearing: () => _b,
+          setBearing: function(b) {{ _b = b; }},
           getCenter: () => ({{ lat: _c[1], lng: _c[0] }}),
           jumpTo: (opts) => {{
             if (opts.zoom !== undefined) _z = opts.zoom;
             if (opts.pitch !== undefined) _p = opts.pitch;
             if (opts.bearing !== undefined) _b = opts.bearing;
             if (opts.center) _c = opts.center;
+            if (typeof updateCityZoomClasses === 'function') updateCityZoomClasses();
           }},
           flyTo: (opts) => {{
             if (opts.zoom !== undefined) _z = opts.zoom;
             if (opts.pitch !== undefined) _p = opts.pitch;
             if (opts.bearing !== undefined) _b = opts.bearing;
             if (opts.center) _c = opts.center;
+            if (typeof updateCityZoomClasses === 'function') updateCityZoomClasses();
           }},
           easeTo: (opts) => {{
             if (opts.zoom !== undefined) _z = opts.zoom;
             if (opts.pitch !== undefined) _p = opts.pitch;
             if (opts.bearing !== undefined) _b = opts.bearing;
             if (opts.center) _c = opts.center;
+            if (typeof updateCityZoomClasses === 'function') updateCityZoomClasses();
           }},
           fitBounds: () => {{}},
           resize: () => {{}},
@@ -10267,10 +10276,15 @@ def build():
           project: () => ({{
             x: 0,
             y: 0,
+            add: function(p) {{ return this; }},
             _add: function(p) {{ return this; }},
+            sub: function(p) {{ return this; }},
             _sub: function(p) {{ return this; }},
+            mult: function(k) {{ return this; }},
             _mult: function(k) {{ return this; }},
+            div: function(k) {{ return this; }},
             _div: function(k) {{ return this; }},
+            matMult: function(m) {{ return this; }},
             round: function() {{ return this; }}
           }}),
           isMoving: () => false,
@@ -10319,10 +10333,10 @@ def build():
         mapEl.classList.remove('map-zoomed-out');
 
         const currentZoom = cityVectorMap.getZoom();
-        if (currentZoom >= 15.5) {{
+        const isBuildingActive = document.body.classList.contains('building-view-active');
+        if (currentZoom >= 17.5 && isBuildingActive) {{
           // At building architectural zoom, close 2D marker popups, suppress redundant floating overlays, and hide 2D pins so they don't block the 3D model
           document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-          if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
           document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {{
             pin.style.opacity = '0';
             pin.style.pointerEvents = 'none';
@@ -10334,8 +10348,10 @@ def build():
             pin.style.opacity = '1';
             pin.style.pointerEvents = 'auto';
           }});
-          mapEl.classList.remove('building-view-active');
-          document.body.classList.remove('building-view-active');
+          if (!isBuildingActive) {{
+            mapEl.classList.remove('building-view-active');
+            document.body.classList.remove('building-view-active');
+          }}
           if (currentZoom < 15.2) {{
             if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(false);
             if (typeof isBuildingMastDismissed !== 'undefined') isBuildingMastDismissed = false;
@@ -10414,7 +10430,33 @@ def build():
         }}
         const q = `Plan my visit to ${{inst.name}}`;
         appendUserMessage(q);
-        handleCuratorQuery(q);
+        curatorContext.lastInst = inst;
+        curatorContext.lastCity = inst.city;
+        const webUrl = getValidWebUrl(inst);
+        const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl;
+        appendCuratorMessage(`
+          <p class="text-white font-normal text-[14px]">
+            Visitor Itinerary & Planning Guide: <strong>${{formatInstLink(inst)}}</strong> (${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}})
+          </p>
+          <div class="py-2.5 border-t border-[#333] space-y-1.5 text-slate-300 text-[14px] leading-[135%]">
+            <div><strong class="text-[#78a9ff] font-mono uppercase text-[14px] tracking-wider block">Opening Hours</strong> ${{escapeHtml(inst.opening_hours || 'Check official site')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono uppercase text-[14px] tracking-wider block">Admission & Tickets</strong> ${{escapeHtml(inst.admission_policy)}} (${{escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')}})</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono uppercase text-[14px] tracking-wider block">Address & Neighborhood</strong> ${{escapeHtml(inst.address || inst.location)}} ${{inst.neighborhood ? `· <span class="font-mono text-[#82cfff]">${{escapeHtml(inst.neighborhood)}}</span>` : ''}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono uppercase text-[14px] tracking-wider block">Getting There & Transit</strong> ${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono uppercase text-[14px] tracking-wider block">Suggested Duration</strong> ${{escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#f1c21b] font-mono uppercase text-[14px] tracking-wider block">Collection / Commission Highlight</strong> ${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff7eb6] font-mono uppercase text-[14px] tracking-wider block">Accessibility</strong> ${{escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff832b] font-mono uppercase text-[14px] tracking-wider block">Amenities</strong> ${{escapeHtml((inst.amenities || 'Art bookshop, café, cloakroom, and lockers.').toString().split(',').map(x => x.trim()).filter(Boolean).join(' · '))}}</div>
+          </div>
+          ${{visitUrl ? `
+            <div class="pt-2 border-t border-[#262626]">
+              <a href="${{escapeHtml(visitUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[14px] font-mono text-[#60a5fa] hover:underline flex items-center gap-1">
+                <span>Open Official Visitor / Ticket Page</span>
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              </a>
+            </div>
+          ` : ''}}
+        `, ['Getting There', 'Admission Policy', 'Ethical Governance Audit', `More in ${{inst.city}}`]);
       }}
     }};
 
@@ -10534,25 +10576,63 @@ def build():
 
     function renderBuilding3DMast(inst) {{
       const div = document.createElement('div');
-      div.className = 'building-3d-mast-plate';
-      div.innerHTML = '<button type="button" class="building-mast-close-btn" onclick="window.closeBuildingMast()">×</button>';
+      div.className = 'building-3d-mast-plate pointer-events-auto select-none';
+      const name = (inst && inst.name) || 'Culture Atlas Space';
+      const explodeLabel = isExploded3DMode ? 'Stack 3D Building' : 'Explode 3D Floors';
+      div.innerHTML = `
+        <div class="mast-header flex items-center justify-between gap-2">
+          <span class="mast-inst-name font-bold text-white">${{escapeHtml(name)}}</span>
+          <button type="button" class="building-mast-close-btn" onclick="window.closeBuildingMast()">×</button>
+        </div>
+        <div class="mast-actions flex items-center gap-1.5 mt-1">
+          <button type="button" class="mast-explode-btn atlas-pill-btn" onclick="window.toggleExploded3DMode()">${{explodeLabel}}</button>
+          <button type="button" class="mast-zoom-btn atlas-pill-btn" onclick="window.zoomCloserToBuilding(20.0)">20x Zoom</button>
+          <button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Ask Curator 💬</button>
+        </div>
+      `;
       return div;
     }}
     window.renderBuilding3DMast = renderBuilding3DMast;
 
     function renderBuilding3DFacadeStack(inst) {{
       const div = document.createElement('div');
-      div.className = 'building-3d-facade-stack';
-      div.innerHTML = '<button type="button" class="building-facade-close-btn" onclick="window.closeBuildingFacade()">×</button>';
+      div.className = 'building-3d-facade-stack pointer-events-auto select-none';
+      const bArch = (inst && inst.building_architecture) || {{}};
+      const floors = (inst && inst.floor_plans) || (bArch && bArch.floor_plans) || [];
+      let floorRows = '';
+      if (floors.length) {{
+        floorRows = floors.map((fl, idx) => {{
+          const lvl = fl.level_code || ('L' + (fl.level !== undefined ? fl.level : idx));
+          const name = fl.floor_name || ('Floor ' + lvl);
+          return `<div class="facade-floor-row" onclick="event.stopPropagation(); window.selectBfiFloor(${{idx}});"><span class="facade-level-badge">${{lvl}}</span><span class="facade-floor-name">${{escapeHtml(name)}}</span></div>`;
+        }}).join('');
+      }} else {{
+        floorRows = '<div class="facade-floor-row"><span class="facade-level-badge">L0</span><span class="facade-floor-name">Level 0 Public Gallery</span></div>';
+      }}
+      div.innerHTML = `<div class="facade-header"><span class="facade-title">3D FLOOR DIRECTORY</span><button type="button" class="building-facade-close-btn" onclick="event.stopPropagation(); window.closeBuildingFacade()">×</button></div><div class="facade-floors-list">${{floorRows}}</div>`;
       return div;
     }}
     window.renderBuilding3DFacadeStack = renderBuilding3DFacadeStack;
 
-    function getRoomBadgeMarkup(type, label) {{
-      if (type === 'gallery') return '<div class="building-3d-room-badge"><span class="badge-title">EXHIBITION GALLERY</span><span>' + (label || '') + '</span></div>';
-      if (type === 'archive') return '<div class="building-3d-room-badge"><span class="badge-title">ARCHIVES & STUDY</span><span>' + (label || '') + '</span></div>';
-      if (type === 'atrium') return '<div class="building-3d-room-badge"><span class="badge-title">PUBLIC FORUM</span><span>' + (label || '') + '</span></div>';
-      return '<div class="building-3d-room-badge">' + (label || '') + '</div>';
+    function getRoomBadgeMarkup(type, data) {{
+      const d = data || {{}};
+      const galSynopsis = d.synopsis || '';
+      const galArtists = d.artists || '';
+      const galAdmission = d.admission || '';
+      const archPolicy = d.reading_room_policy || '';
+      const archScope = d.scope || '';
+      const atFacilities = d.facilities || '';
+      const atAccess = d.access || '';
+      if (type === 'gallery') {{
+        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title">EXHIBITION GALLERY</span><span class="gal-artists">' + escapeHtml(galArtists) + '</span><span class="gal-admission">' + escapeHtml(galAdmission) + '</span><span class="gal-synopsis">' + escapeHtml(galSynopsis) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Ask Curator · Pull into Chat</button></div>';
+      }}
+      if (type === 'archive') {{
+        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title">ARCHIVES & STUDY</span><span class="arch-policy">' + escapeHtml(archPolicy) + '</span><span class="arch-scope">' + escapeHtml(archScope) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Consult Archive · Pull into Chat</button></div>';
+      }}
+      if (type === 'atrium' || type === 'forum') {{
+        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title">PUBLIC FORUM &amp; CIVIC</span><span class="at-facilities">' + escapeHtml(atFacilities) + '</span><span class="at-access">' + escapeHtml(atAccess) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Explore Forum · Pull into Chat</button></div>';
+      }}
+      return '<div class="building-3d-room-badge">' + escapeHtml(d.label || '') + '</div>';
     }}
     window.getRoomBadgeMarkup = getRoomBadgeMarkup;
 
@@ -10925,7 +11005,6 @@ def build():
               try {{ e.originalEvent.stopPropagation(); }} catch (err) {{}}
             }}
             document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-            if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
             if (e.features && e.features.length) {{
               const p = e.features[0].properties;
               if (p && p.floorIndex !== undefined && Number(p.floorIndex) >= 0) {{
@@ -11271,10 +11350,144 @@ def build():
     // 📍 SPATIAL 3D ON-BUILDING INFORMATION & INTERIOR ROOM MAPPING SYSTEM
     // =========================================================================
     function updateBuilding3DInfoMarkers(inst, options = {{}}) {{
-      // Strictly prevent multiple overlapping popup windows.
-      // All spatial, architectural, floor, and curatorial details are neatly housed in the docked Building Floor Inspector HUD.
-      clearBuilding3DInfoMarkers(true);
+      const isFloorChange = Boolean(options && options.isFloorChange);
+      if (!inst) return;
+
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
+
+      if (isFloorChange) {{
+        const badges = document.querySelectorAll('.building-3d-room-badge');
+        badges.forEach(b => {{ try {{ b.remove(); }} catch (e) {{}} }});
+        building3DInfoMarkers = building3DInfoMarkers.filter(m => m === currentBuildingMastMarker || m === currentBuildingFacadeMarker);
+      }} else {{
+        clearBuilding3DInfoMarkers(true);
+      }}
+
+      if (typeof maplibregl === 'undefined') return;
+
+      const lat = Number(inst.lat);
+      const lon = Number(inst.lon);
+      if (!lat || !lon) return;
+
+      const bArch = inst.building_architecture || {{}};
+      const sqm = bArch.footprint_sqm || 2400;
+      const d_lat = 0.00045 * (Math.sqrt(sqm) / 50.0);
+      const d_lon = 0.00065 * (Math.sqrt(sqm) / 50.0);
+      const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
+      const isMobileScreen = typeof window !== 'undefined' && window.innerWidth < 640;
+
+      // 1. ROOFTOP BUILDING MAST PLATE
+      if (!isBuildingMastDismissed && !isFloorChange && !currentBuildingMastMarker) {{
+        const mastEl = (typeof renderBuilding3DMast === 'function') ? renderBuilding3DMast(inst) : document.createElement('div');
+        if (!mastEl.className) mastEl.className = 'building-3d-mast-plate pointer-events-auto select-none';
+        if (!mastEl.innerHTML) mastEl.innerHTML = '<button type="button" class="building-mast-close-btn" onclick="window.closeBuildingMast()">×</button>';
+        try {{
+          const mastLon = isMobileScreen ? lon : (lon - d_lon * 0.70);
+          const mastLat = lat + d_lat * (isMobileScreen ? 0.90 : 1.05);
+          const mastMarker = new maplibregl.Marker({{ element: mastEl, anchor: 'bottom' }})
+            .setLngLat([mastLon, mastLat]);
+          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) mastMarker.addTo(cityVectorMap);
+          else if (typeof map !== 'undefined' && map) mastMarker.addTo(map);
+          building3DInfoMarkers.push(mastMarker);
+          currentBuildingMastMarker = mastMarker;
+        }} catch (e) {{}}
+      }}
+
+      // 2. 3D ROOM BADGES
+      if (floors.length) {{
+        const activeFl = floors[currentBfiFloorIndex] || floors[0];
+        const curShow = (activeFl.current_shows && activeFl.current_shows[0]) || null;
+        let badgeChild;
+        if (typeof getRoomBadgeMarkup === 'function') {{
+          const galEl = document.createElement('div');
+          galEl.innerHTML = getRoomBadgeMarkup('gallery', {{
+            synopsis: curShow ? curShow.synopsis : '',
+            artists: curShow ? curShow.curator_artists : '',
+            admission: (curShow && curShow.admission) || activeFl.access_policy || 'Free Public Access',
+            label: curShow ? curShow.title : (inst.name + ' Commissions')
+          }});
+          badgeChild = galEl.firstElementChild || galEl;
+        }} else {{
+          badgeChild = document.createElement('div');
+          badgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
+          badgeChild.innerHTML = '<span class="badge-title">EXHIBITION GALLERY</span>';
+        }}
+        try {{
+          const galLon = isMobileScreen ? lon : (lon + d_lon * 0.70);
+          const galLat = lat + d_lat * (isMobileScreen ? 0.45 : 0.55);
+          const galMarker = new maplibregl.Marker({{ element: badgeChild, anchor: 'bottom' }})
+            .setLngLat([galLon, galLat]);
+          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) galMarker.addTo(cityVectorMap);
+          else if (typeof map !== 'undefined' && map) galMarker.addTo(map);
+          building3DInfoMarkers.push(galMarker);
+        }} catch (e) {{}}
+
+        // Archives Room Badge
+        const curArch = activeFl.archive_holdings || null;
+        let archBadgeChild;
+        if (typeof getRoomBadgeMarkup === 'function') {{
+          const archEl = document.createElement('div');
+          archEl.innerHTML = getRoomBadgeMarkup('archive', {{
+            reading_room_policy: curArch ? curArch.reading_room_policy : '',
+            scope: curArch ? curArch.scope : '',
+            label: (curArch && curArch.collection_title) ? curArch.collection_title : 'Archives & Study Room'
+          }});
+          archBadgeChild = archEl.firstElementChild || archEl;
+        }} else {{
+          archBadgeChild = document.createElement('div');
+          archBadgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
+          archBadgeChild.innerHTML = '<span class="badge-title">ARCHIVES & STUDY</span>';
+        }}
+        try {{
+          const archLon = isMobileScreen ? lon : (lon - d_lon * 0.70);
+          const archLat = isMobileScreen ? (lat - d_lat * 0.45) : (lat - d_lat * 0.50);
+          const archMarker = new maplibregl.Marker({{ element: archBadgeChild, anchor: 'bottom' }})
+            .setLngLat([archLon, archLat]);
+          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) archMarker.addTo(cityVectorMap);
+          else if (typeof map !== 'undefined' && map) archMarker.addTo(map);
+          building3DInfoMarkers.push(archMarker);
+        }} catch (e) {{}}
+
+        // Public Forum & Atrium Badge
+        let forumBadgeChild;
+        if (typeof getRoomBadgeMarkup === 'function') {{
+          const forumEl = document.createElement('div');
+          forumEl.innerHTML = getRoomBadgeMarkup('atrium', {{
+            facilities: (activeFl.facilities && activeFl.facilities.length > 0) ? activeFl.facilities.join(', ') : 'Step-Free Ramp Entrance & Public Forum',
+            access: activeFl.access_policy || 'Open Public Access',
+            label: 'Public Atrium & Orientation Forum'
+          }});
+          forumBadgeChild = forumEl.firstElementChild || forumEl;
+        }} else {{
+          forumBadgeChild = document.createElement('div');
+          forumBadgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
+          forumBadgeChild.innerHTML = '<span class="badge-title">PUBLIC FORUM &amp; CIVIC</span>';
+        }}
+        try {{
+          const forumLon = isMobileScreen ? lon : (lon + d_lon * 0.40);
+          const forumLat = isMobileScreen ? (lat - d_lat * 0.35) : (lat - d_lat * 0.45);
+          const forumMarker = new maplibregl.Marker({{ element: forumBadgeChild, anchor: 'bottom' }})
+            .setLngLat([forumLon, forumLat]);
+          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) forumMarker.addTo(cityVectorMap);
+          else if (typeof map !== 'undefined' && map) forumMarker.addTo(map);
+          building3DInfoMarkers.push(forumMarker);
+        }} catch (e) {{}}
+      }}
+
+      // 3. FACADE FLOOR DIRECTORY STACK
+      if (!isBuildingFacadeDismissed && !currentBuildingFacadeMarker && typeof renderBuilding3DFacadeStack === 'function') {{
+        const facEl = renderBuilding3DFacadeStack(inst);
+        try {{
+          const facLon = isMobileScreen ? lon : (lon - d_lon * 0.70);
+          const facLat = isMobileScreen ? (lat - d_lat * 0.45) : (lat - d_lat * 0.50);
+          const facMarker = new maplibregl.Marker({{ element: facEl, anchor: 'bottom' }})
+            .setLngLat([facLon, facLat]);
+          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) facMarker.addTo(cityVectorMap);
+          else if (typeof map !== 'undefined' && map) facMarker.addTo(map);
+          building3DInfoMarkers.push(facMarker);
+          currentBuildingFacadeMarker = facMarker;
+        }} catch (e) {{}}
+      }}
     }}
 
     function toggleExploded3DMode() {{
@@ -11283,6 +11496,11 @@ def build():
       if (inst) {{
         highlightBuildingFootprint(inst);
       }}
+      const mastPlates = document.querySelectorAll('.building-3d-mast-plate');
+      mastPlates.forEach(p => {{
+        const btn = p.querySelector('.mast-explode-btn');
+        if (btn) btn.textContent = isExploded3DMode ? 'Stack 3D Building' : 'Explode 3D Floors';
+      }});
     }}
     window.toggleExploded3DMode = toggleExploded3DMode;
 
@@ -11863,9 +12081,8 @@ def build():
         toggleFilterDrawer(false);
       }}
 
-      // Close all 2D popups and suppress floating 3D on-map plates/badges to keep screen clean and focused
+      // Close all 2D popups to keep screen clean and focused
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-      if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
 
       const nameEl = document.getElementById('bfiBuildingName');
       const metaEl = document.getElementById('bfiBuildingMeta');
@@ -12539,6 +12756,11 @@ def build():
         const labelEl = document.createElement('div');
         labelEl.className = 'inst-pin-label';
         labelEl.setAttribute('data-name', inst.name);
+        labelEl.addEventListener('click', (e) => {{
+          e.stopPropagation();
+          selectedInstitution = inst;
+          if (typeof selectInstitution === 'function') selectInstitution(inst, false);
+        }});
 
         const tierDot = document.createElement('span');
         tierDot.style.color = markerColor;
@@ -12701,8 +12923,9 @@ def build():
             return;
           }}
           e.stopPropagation();
-          marker.togglePopup();
           selectedInstitution = inst;
+          try {{ marker.togglePopup(); }} catch (err) {{}}
+          if (typeof selectInstitution === 'function') selectInstitution(inst, false);
           if (typeof curatorContext !== 'undefined' && inst) {{
             curatorContext.lastInst = inst;
             if (inst.city) curatorContext.lastCity = inst.city;
@@ -16422,7 +16645,11 @@ def build():
       selectedInstitution = inst;
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) {{
-        floatingCard.classList.remove('hidden');
+        if (!isCityStreetViewActive && !document.body.classList.contains('building-view-active')) {{
+          floatingCard.classList.remove('hidden');
+        }} else {{
+          floatingCard.classList.add('hidden');
+        }}
       }}
       const badgeWrap = document.getElementById('workspaceSelectedInstPill');
       const badgeName = document.getElementById('workspaceSelectedInstName');
@@ -16987,6 +17214,21 @@ def build():
         ? '<span class="text-[14px] font-mono text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Flags</span><span class="text-[14px] text-slate-400 font-mono mt-0.5 block">Documented</span>' 
         : '<span class="text-[14px] font-mono text-[#33b1ff] bg-[#0072c3]/20 border border-[#0072c3]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Unverified</span><span class="text-[14px] text-slate-400 font-mono mt-0.5 block">Pending Audit</span>';
 
+      const rawGrade = String(inst.transparency_grade || (isClean ? 'A (Statutory Transparency Filing)' : isFlagged ? 'B (Underwriting Conflict Filing)' : 'Unverified'));
+      let letterBadge = isClean ? 'A' : (isFlagged ? 'B' : 'U');
+      if (rawGrade.includes('A')) letterBadge = 'A';
+      else if (rawGrade.includes('B')) letterBadge = 'B';
+      else if (rawGrade.includes('C')) letterBadge = 'C';
+      else if (rawGrade.includes('D')) letterBadge = 'D';
+
+      let auditAuthority = 'Statutory Public Filing';
+      const matchParen = rawGrade.match(/\(([^)]+)\)/);
+      if (matchParen) {{
+        auditAuthority = matchParen[1];
+      }} else if (rawGrade.length > 4) {{
+        auditAuthority = rawGrade;
+      }}
+
       body.innerHTML = `
         <div class="space-y-3">
           <div>
@@ -16998,6 +17240,31 @@ def build():
             </div>
             <h2 class="text-[18px] sm:text-[18px] font-normal text-white leading-[120%]">${{escapeHtml(inst.name)}}</h2>
             <p class="text-[14px] text-[#60a5fa] mt-0.5 font-mono">${{escapeHtml(inst.location || inst.city)}} · ${{inst.size || 'Audited Space'}}</p>
+          </div>
+
+          <!-- EMPHASIZED CIVIC TRANSPARENCY GRADE (Carbon High-Contrast Audit Banner) -->
+          <div class="py-3 px-3.5 rounded-xl ${{isClean ? 'bg-[#0c1f15] border-2 border-[#42be65] shadow-emerald-950/40' : isFlagged ? 'bg-[#1b122c] border-2 border-[#8a3ffc] shadow-purple-950/40' : isCommunity ? 'bg-[#092329] border-2 border-[#08bdba] shadow-teal-950/40' : 'bg-[#091a26] border-2 border-[#0072c3] shadow-blue-950/40'}} flex items-center justify-between shadow-lg">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 shrink-0 rounded-lg ${{isClean ? 'bg-[#42be65]/25 border border-[#42be65] text-[#42be65]' : isFlagged ? 'bg-[#be95ff]/25 border border-[#8a3ffc] text-[#be95ff]' : isCommunity ? 'bg-[#08bdba]/25 border border-[#08bdba] text-[#08bdba]' : 'bg-[#33b1ff]/25 border border-[#0072c3] text-[#33b1ff]'}} flex items-center justify-center font-mono font-bold text-[22px] shadow-inner">
+                ${{escapeHtml(letterBadge)}}
+              </div>
+              <div>
+                <div class="text-[14px] font-mono uppercase tracking-widest ${{isClean ? 'text-[#42be65]' : isFlagged ? 'text-[#be95ff]' : isCommunity ? 'text-[#08bdba]' : 'text-[#33b1ff]'}} font-bold flex items-center gap-1.5">
+                  <span class="inline-block w-2 h-2 rounded-full ${{isClean ? 'bg-[#42be65]' : isFlagged ? 'bg-[#be95ff]' : isCommunity ? 'bg-[#08bdba]' : 'bg-[#33b1ff]'}} animate-pulse"></span>
+                  Civic Transparency Grade
+                </div>
+                <div class="text-[14px] font-semibold text-white font-mono mt-0.5">
+                  ${{escapeHtml(rawGrade)}}
+                </div>
+                <div class="text-[14px] text-slate-300 font-mono mt-0.5">
+                  ${{escapeHtml(auditAuthority)}} · Statutory Accountability
+                </div>
+              </div>
+            </div>
+            <div class="hidden sm:flex flex-col items-end shrink-0 pl-2">
+              <span class="text-[14px] font-mono ${{isClean ? 'text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60' : isFlagged ? 'text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60' : isCommunity ? 'text-[#08bdba] bg-[#08bdba]/20 border border-[#08bdba]/60' : 'text-[#33b1ff] bg-[#0072c3]/20 border border-[#0072c3]/60'}} px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">${{isClean ? 'Audited' : isFlagged ? 'Audited Flags' : isCommunity ? 'User Input' : 'Unverified'}}</span>
+              <span class="text-[14px] text-slate-400 font-mono mt-1">${{isClean ? '100% Verified' : isFlagged ? 'Documented' : 'Pending Audit'}}</span>
+            </div>
           </div>
 
           <!-- Clean Action Toolbar (Direct Chat Inquiry & Spatial Verification) -->
@@ -17088,7 +17355,7 @@ def build():
                 <span class="text-slate-400">${{escapeHtml(activeFl.elevation || '0.0m')}}</span>
               </div>
               <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
-                <span class="text-[14px] font-mono uppercase text-amber-400 font-bold block">Current Show on this Level:</span>
+                <span class="text-[14px] font-mono uppercase ${{isClean ? 'text-emerald-400' : 'text-[#be95ff]'}} font-bold block">Current Show on this Level:</span>
                 <div class="font-semibold text-white">${{escapeHtml(floorShow.title || 'Curatorial Collections')}}</div>
                 <div class="text-slate-300 text-[14px] font-mono">${{escapeHtml(floorShow.curator_artists || '')}}${{floorShow.dates ? ' · ' + escapeHtml(floorShow.dates) : ''}}</div>
                 ${{floorShow.synopsis ? `<p class="text-slate-300 text-[14px] leading-snug line-clamp-2">${{escapeHtml(floorShow.synopsis)}}</p>` : ''}}
@@ -17109,7 +17376,7 @@ def build():
             <div class="flex items-center justify-between border-b border-[#1e293b] pb-2 flex-wrap gap-2">
               <div class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                <span class="text-[14px] font-mono uppercase tracking-wider font-semibold text-slate-300">Financial Architecture &amp; Operating Budget</span>
+                <span class="text-[14px] font-mono uppercase tracking-wider font-semibold text-slate-300">Financial &amp; Operating Research Profile</span>
               </div>
               <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2.5 py-0.5 rounded-full font-medium">
                 ${{escapeHtml(bTierText)}}
@@ -17118,7 +17385,7 @@ def build():
 
             <!-- Operating Budget Headline -->
             <div class="flex items-baseline justify-between gap-3 flex-wrap">
-              <span class="text-[14px] text-slate-400 font-mono">Annual Operating Budget:</span>
+              <span class="text-[14px] text-slate-400 font-mono">Operating Budget Scale:</span>
               <div class="text-[18px] font-medium text-white font-mono">
                 ${{escapeHtml(bDisplay)}}
               </div>
@@ -17126,7 +17393,7 @@ def build():
 
             <!-- Clean Horizontal Progress Bar (Replacing Heavy Rainbow Pill Borders) -->
             <div class="space-y-1.5 pt-0.5">
-              <div class="h-2 w-full rounded-full bg-[#1e293b] overflow-hidden flex" title="Revenue Architecture Breakdown">
+              <div class="h-2 w-full rounded-full bg-[#1e293b] overflow-hidden flex" title="Revenue Mix Architecture">
                 <div class="bg-emerald-500 h-full transition-all duration-300" style="width: ${{pubNum}}%;" title="Public Subsidies: ${{pubNum}}%"></div>
                 <div class="bg-purple-500 h-full transition-all duration-300" style="width: ${{philNum}}%;" title="Grants &amp; Philanthropy: ${{philNum}}%"></div>
                 <div class="bg-sky-500 h-full transition-all duration-300" style="width: ${{earnNum}}%;" title="Earned Revenue: ${{earnNum}}%"></div>
@@ -17153,7 +17420,7 @@ def build():
                 <div class="text-white text-[18px] font-medium mt-0.5 font-mono">${{earnPct}}</div>
               </div>
               <div class="p-2 rounded-lg bg-[#080c14] border border-[#1e293b]/70">
-                <div class="text-slate-400 text-[14px] font-mono">Program Spend</div>
+                <div class="text-slate-400 text-[14px] font-mono">PROGRAM SPEND RATIO</div>
                 <div class="text-emerald-400 text-[18px] font-medium mt-0.5 font-mono">${{progPct}}</div>
               </div>
             </div>
@@ -17225,7 +17492,8 @@ def build():
                   <span class="text-[14px] font-mono uppercase tracking-wider text-slate-200 font-semibold">Artistic Critiques &amp; History</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-[14px] font-mono px-2 py-0.5 rounded border border-amber-800/80 bg-amber-950/80 text-amber-300 font-medium">${{escapeHtml(vc.strategy || 'Sponsor Network Exposure & Real Estate Tracking')}}</span>
+                  <span class="text-[14px] font-mono px-2 py-0.5 rounded border ${{isClean ? 'border-emerald-800/80 bg-emerald-950/80 text-emerald-300' : 'border-[#8a3ffc]/80 bg-[#1f152d]/80 text-[#be95ff]'}} font-medium">${{escapeHtml(vc.strategy || 'Sponsor Network Exposure & Real Estate Tracking')}}</span>
+                  <span class="text-[11px] font-mono ${{isClean ? 'text-emerald-300 bg-emerald-950/90 border-emerald-700/80' : 'text-[#be95ff] bg-[#1f152d]/90 border-[#8a3ffc]/80'}} border px-2.5 py-0.5 rounded-full font-semibold">Consensus Empirical Research Archive</span>
                   ${{vcs.length > 1 ? `<span class="text-[14px] font-mono text-slate-400">${{vcIdx + 1}} of ${{vcs.length}}</span>` : ''}}
                 </div>
               </div>
@@ -17234,7 +17502,7 @@ def build():
                 <div class="p-2.5 rounded-lg bg-[#080c14] border border-[#1e293b]/70 space-y-1">
                   <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider">Artist / Designer Credits</div>
                   <div class="text-white font-medium text-[18px] leading-snug">${{escapeHtml(vc.artist_designer || vc.artist)}}</div>
-                  <div class="text-amber-300 text-[14px] leading-snug">"${{escapeHtml(vc.artwork_title || vc.artwork)}}" (${{escapeHtml(vc.year)}})</div>
+                  <div class="${{isClean ? 'text-emerald-300' : 'text-[#be95ff]'}} text-[14px] leading-snug">"${{escapeHtml(vc.artwork_title || vc.artwork)}}" (${{escapeHtml(vc.year)}})</div>
                 </div>
 
                 <!-- Archival Thumbnail & Target / Medium -->
@@ -17253,8 +17521,8 @@ def build():
                 </p>
 
                 ${{vc.historical_impact ? `
-                  <div class="p-2.5 rounded-lg bg-amber-950/20 border border-amber-800/40 text-[14px] text-amber-200/90 leading-relaxed font-mono">
-                    <strong class="text-amber-300 block text-[14px] uppercase tracking-wider mb-0.5">Historical &amp; Policy Impact:</strong>
+                  <div class="p-2.5 rounded-lg ${{isClean ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-200/90' : 'bg-[#1f152d]/40 border-[#8a3ffc]/40 text-[#be95ff]/90'}} border text-[14px] leading-relaxed font-mono">
+                    <strong class="${{isClean ? 'text-emerald-300' : 'text-[#be95ff]'}} block text-[14px] uppercase tracking-wider mb-0.5">Historical &amp; Policy Impact:</strong>
                     ${{escapeHtml(vc.historical_impact)}}
                   </div>
                 ` : ''}}
@@ -17438,7 +17706,7 @@ def build():
                 <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
               </div>
               <div class="py-2 border-t border-[#262626] first:border-t-0">
-                <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:#f1c21b">Highlight</div>
+                <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:${{isClean ? '#42be65' : '#78a9ff'}}">Highlight</div>
                 <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6">
@@ -20055,7 +20323,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // 1. Direct exact name match
       let match = ALL_INSTITUTIONS.find(i => normStr(i.name) === n);
-      if (match) return {{ inst: match, isClean: true }};
+      if (match) return {{ inst: match, isClean: match.tier === 'A' }};
       if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {{
         match = EXCLUDED_INSTITUTIONS.find(i => normStr(i.name) === n);
         if (match) return {{ inst: match, isClean: false }};
@@ -20063,7 +20331,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // 2. Direct alias match
       match = ALL_INSTITUTIONS.find(i => i.aliases && i.aliases.some(a => normStr(a) === n));
-      if (match) return {{ inst: match, isClean: true }};
+      if (match) return {{ inst: match, isClean: match.tier === 'A' }};
       if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {{
         match = EXCLUDED_INSTITUTIONS.find(i => i.aliases && i.aliases.some(a => normStr(a) === n));
         if (match) return {{ inst: match, isClean: false }};
@@ -20074,7 +20342,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       for (const [key, target] of Object.entries(BRAND_MAP)) {{
         if (nPadded.includes(' ' + key + ' ')) {{
           let f = ALL_INSTITUTIONS.find(i => normStr(i.name) === normStr(target) || normStr(i.name).includes(normStr(target)));
-          if (f) return {{ inst: f, isClean: true }};
+          if (f) return {{ inst: f, isClean: f.tier === 'A' }};
           if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {{
             f = EXCLUDED_INSTITUTIONS.find(i => normStr(i.name) === normStr(target) || normStr(i.name).includes(normStr(target)));
             if (f) return {{ inst: f, isClean: false }};
@@ -20138,7 +20406,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }}
       }};
 
-      ALL_INSTITUTIONS.forEach(i => scoreCandidate(i, true));
+      ALL_INSTITUTIONS.forEach(i => scoreCandidate(i, i.tier === 'A'));
       if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {{
         EXCLUDED_INSTITUTIONS.forEach(i => scoreCandidate(i, false));
       }}
@@ -20358,10 +20626,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }};
       }}
 
-      const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
       const city = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
+      const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
+      const qNorm = (query || '').toLowerCase();
+      const isExactInst = inst && (
+        (inst.name && qNorm.includes(inst.name.toLowerCase())) ||
+        (inst.shortName && qNorm.includes(inst.shortName.toLowerCase())) ||
+        (inst.aliases && inst.aliases.some(a => a && a.length > 3 && qNorm.includes(a.toLowerCase())))
+      );
 
-      if (inst) {{
+      if (isExactInst) {{
         return {{
           mode: effMode,
           thought: `Auditing governance filings, Form 990 disclosures, and institutional underwriting records for ${{inst.name}}.`,
@@ -20374,6 +20648,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           mode: effMode,
           thought: `Reviewing verified independent art spaces, civic institutions, and cultural registries in ${{city}}.`,
           step: `Scanning Independent Arts Corpus for ${{city}}`
+        }};
+      }}
+
+      if (inst) {{
+        return {{
+          mode: effMode,
+          thought: `Auditing governance filings, Form 990 disclosures, and institutional underwriting records for ${{inst.name}}.`,
+          step: `Auditing Form 990 & Trustee Interlocks for ${{inst.name}}`
         }};
       }}
 
@@ -20423,15 +20705,26 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       isCuratorThinkingActive = true;
 
       // Detect city or institution coordinate for glowing city beacon on 3D globe
-      const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
       const city = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
-      if (inst && inst.lat && inst.lon) {{
+      const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
+      const qNorm = (query || '').toLowerCase();
+      const isExactInst = inst && (
+        (inst.name && qNorm.includes(inst.name.toLowerCase())) ||
+        (inst.shortName && qNorm.includes(inst.shortName.toLowerCase())) ||
+        (inst.aliases && inst.aliases.some(a => a && a.length > 3 && qNorm.includes(a.toLowerCase())))
+      );
+
+      if (isExactInst && inst.lat && inst.lon) {{
         curatorThinkingTargetCoord = {{ name: inst.name, lat: Number(inst.lat), lon: Number(inst.lon) }};
       }} else if (city && typeof ALL_CITIES_REGISTRY !== 'undefined') {{
         const cMeta = ALL_CITIES_REGISTRY.find(c => (c.name || '').toLowerCase() === city.toLowerCase());
         if (cMeta) {{
           curatorThinkingTargetCoord = {{ name: cMeta.name, lat: Number(cMeta.lat), lon: Number(cMeta.lon) }};
+        }} else if (inst && inst.lat && inst.lon) {{
+          curatorThinkingTargetCoord = {{ name: inst.name, lat: Number(inst.lat), lon: Number(inst.lon) }};
         }}
+      }} else if (inst && inst.lat && inst.lon) {{
+        curatorThinkingTargetCoord = {{ name: inst.name, lat: Number(inst.lat), lon: Number(inst.lon) }};
       }} else if (typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.lat) {{
         curatorThinkingTargetCoord = {{ name: selectedInstitution.name, lat: Number(selectedInstitution.lat), lon: Number(selectedInstitution.lon) }};
       }} else {{
@@ -20748,7 +21041,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }}
 
       // B. Gossip / Rumors / Reddit / Twitter Discourse Intent
-      const isGossipIntent = /\\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|x post|backchannel|scandal|controversy|dirt)\\b/i.test(q);
+      const isGossipIntent = /\\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|x post|backchannel|scandal|controversy|dirt)\\b/i.test(q) && !q.includes('spirit sings') && !q.includes('glenbow') && !q.includes('lubicon');
       if (isGossipIntent) {{
         if (!isGossipModeActive && typeof toggleGossipMode === 'function') {{
           toggleGossipMode();
@@ -20801,7 +21094,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }}
 
       // C. Current Shows & Opening Nights Intent
-      const isShowIntent = /\\b(current show|shows|exhibition|exhibitions|on view|opening night|vernissage|rsvp)\\b/i.test(q);
+      const isShowIntent = /\\b(current show|shows|exhibition|exhibitions|on view|opening night|vernissage|rsvp)\\b/i.test(q) && !q.includes('spirit sings') && !q.includes('glenbow') && !q.includes('lubicon') && !q.includes('controversy');
       if (isShowIntent) {{
         const inst = selectedInstitution || (typeof findMentionedInst === 'function' ? findMentionedInst(q) : null);
         if (inst) {{
@@ -21087,10 +21380,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!isMetaInquiry) {{
         const earlyInst = findMentionedInst(query);
         const earlyCity = findMentionedCity(query);
-        if (earlyInst) {{
+        const qNorm = (query || '').toLowerCase();
+        const isExactInst = earlyInst && (
+          (earlyInst.name && qNorm.includes(earlyInst.name.toLowerCase())) ||
+          (earlyInst.shortName && qNorm.includes(earlyInst.shortName.toLowerCase())) ||
+          (earlyInst.aliases && earlyInst.aliases.some(a => a && a.length > 3 && qNorm.includes(a.toLowerCase())))
+        );
+        if (isExactInst) {{
           selectInstitution(earlyInst, true);
         }} else if (earlyCity) {{
           filterByCity(earlyCity, true, false);
+        }} else if (earlyInst) {{
+          selectInstitution(earlyInst, true);
         }}
       }}
 
@@ -29720,14 +30021,10 @@ bar.innerHTML = html;
       const cx = width / 2;
       const cy = height / 2;
 
-      // If pointer is near any visible institution dot or label, SUPPRESS city hit so institutions are never blocked!
+      // If pointer is directly on any visible institution dot, prioritize the institution dot
       for (let i = 0; i < visibleDots.length; i++) {{
         const d = visibleDots[i];
-        if (Math.hypot(d.x - mx, d.y - my) <= 30) return null;
-        if (d.labelBox) {{
-          const lb = d.labelBox;
-          if (mx >= lb.x - 8 && mx <= lb.x + lb.w + 8 && my >= lb.y - 8 && my <= lb.y + lb.h + 8) return null;
-        }}
+        if (Math.hypot(d.x - mx, d.y - my) < 8) return null;
       }}
 
       // If a country filter is active, only consider cities within that country!

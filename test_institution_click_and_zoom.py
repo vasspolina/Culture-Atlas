@@ -23,19 +23,30 @@ def test_institution_zoom_and_clicks():
 
     test_script = """
     <script>
+    window.fetch = async (url, opts) => {
+      const urlStr = String(url && url.url ? url.url : url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
     window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, cond, extra = '') {
         results.push({ name, pass: Boolean(cond), extra: String(extra) });
       }
 
       try {
-        await new Promise(r => setTimeout(r, 500));
         assert('App initialized', typeof window.filterByCountry === 'function');
         
         // 1. Filter by country Italy
-        window.filterByCountry('Italy');
-        await new Promise(r => setTimeout(r, 600));
+        window.filterByCountry('Italy', false);
+        if (typeof window.updateVisibleDots === 'function') window.updateVisibleDots();
+        if (typeof window.renderGlobe === 'function') window.renderGlobe();
 
         const currentCountry = typeof window.getSelectedCountryFilter === 'function' ? window.getSelectedCountryFilter() : window.selectedCountryFilter;
         assert('Country filter set to Italy', currentCountry === 'Italy', currentCountry);
@@ -95,7 +106,6 @@ def test_institution_zoom_and_clicks():
           // Dispatch pointerdown then click (full real pointer sequence)
           canvas.dispatchEvent(new PointerEvent('pointerdown', { clientX: targetClientX, clientY: targetClientY, bubbles: true }));
           canvas.dispatchEvent(new MouseEvent('click', { clientX: targetClientX, clientY: targetClientY, bubbles: true }));
-          await new Promise(r => setTimeout(r, 100));
 
           assert('Pointer click on label badge triggers selectInstitution', selectedInstName === sampleDot.inst.name, 'selected: ' + selectedInstName);
           window.selectInstitution = origSelect;
@@ -145,9 +155,10 @@ def test_institution_zoom_and_clicks():
     cmd = [
         chrome_bin,
         "--headless=new",
+        "--disable-gpu",
+        "--no-sandbox",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
     res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)

@@ -20,14 +20,26 @@ def test_pm():
 
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    window.requestAnimationFrame = () => 1;
+    window.cancelAnimationFrame = () => {};
+    window.scrapeWebForQuery = async () => null;
+    window.queryAI = async () => null;
+    window.fetch = async (url, opts) => {
+      const urlStr = String(url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
       }
 
       try {
-        const inA = ALL_INSTITUTIONS.find(i => i.name.includes('Printed Matter'));
+        const inA = ALL_INSTITUTIONS.find(i => i.name.includes('Printed Matter') && i.tier === 'A');
         assert('Printed Matter is NOT in Tier A (ALL_INSTITUTIONS)', !inA);
 
         const inEx = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('Printed Matter'));

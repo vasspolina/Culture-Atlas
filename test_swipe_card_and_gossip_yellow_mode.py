@@ -54,7 +54,17 @@ def test_browser_swipe_gestures():
 
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    window.requestAnimationFrame = () => 1;
+    window.cancelAnimationFrame = () => {};
+    window.fetch = async (url, opts) => {
+      const urlStr = String(url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
       const results = [];
       function assert(name, cond, extra = '') {
         results.push({ name, pass: Boolean(cond), extra: String(extra) });

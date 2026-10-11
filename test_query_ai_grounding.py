@@ -13,7 +13,22 @@ def run_tests():
 
     test_script = """
     <script>
+    window.fetch = async (url, opts) => {
+      const urlStr = String(url && url.url ? url.url : url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
     window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
+
+      window.scrapeWebForQuery = async () => null;
+      window.queryAI = async () => null;
+
       const results = [];
       const assert = (name, cond, details = '') => {
         results.push({ name, pass: !!cond, details });
@@ -26,8 +41,7 @@ def run_tests():
         window.selectedInstitution = null;
         if (typeof window.curatorContext !== 'undefined') window.curatorContext.lastInst = null;
         
-        window.handleCuratorQuery('check it for me');
-        await new Promise(r => setTimeout(r, 600));
+        await window.handleCuratorQuery('check it for me');
 
         let msgs = document.querySelectorAll('.curator-message-wrap');
         let lastMsg = msgs[msgs.length - 1];
@@ -49,13 +63,8 @@ def run_tests():
           window.curatorContext.lastCity = bern.city;
         }
 
-        const prevCount = document.querySelectorAll('.curator-message-wrap').length;
-        window.handleCuratorQuery('check it for me');
-        for (let i = 0; i < 20; i++) {
-          await new Promise(r => setTimeout(r, 100));
-          msgs = document.querySelectorAll('.curator-message-wrap');
-          if (msgs.length > prevCount) break;
-        }
+        await window.handleCuratorQuery('check it for me');
+        msgs = document.querySelectorAll('.curator-message-wrap');
 
         lastMsg = msgs[msgs.length - 1];
         text = lastMsg ? lastMsg.innerText : '';
@@ -94,12 +103,13 @@ def run_tests():
     cmd = [
         chrome_bin,
         "--headless=new",
+        "--disable-gpu",
+        "--no-sandbox",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=5000",
         f"file://{temp_file}"
     ]
-    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
+    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
     stdout = res.stdout
 
     marker = 'id="anti-hallucination-results" data-results="'

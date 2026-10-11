@@ -1,4 +1,5 @@
 import os
+import sys
 import subprocess
 import json
 import tempfile
@@ -13,17 +14,19 @@ def run_tests():
 
     test_script = """
     <script>
-    // Stub fetch so headless chrome does not wait for external tiles
-    const origFetch = window.fetch;
+    // Stub fetch for vector tiles, raster tiles, and remote network calls
     window.fetch = async (url, opts) => {
-      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
-      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
+      const urlStr = String(url && url.url ? url.url : url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
         return new Response(new Uint8Array(0), { status: 200 });
       }
-      return origFetch(url, opts);
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
 
-    window.addEventListener('load', async () => {
+    window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
@@ -35,7 +38,7 @@ def run_tests():
         
         const mapContainer = document.getElementById('cityMapContainer');
         assert('cityMapContainer is visible', mapContainer && !mapContainer.classList.contains('hidden'));
-        assert('cityMapContainer has map-zoomed-in class', mapContainer.classList.contains('map-zoomed-in'));
+        assert('cityMapContainer has map-zoomed-in class', mapContainer && mapContainer.classList.contains('map-zoomed-in'));
 
         // 2. Check that markers have inst-pin-label on top of dots
         const markers = cityMarkersLayer.getLayers();
@@ -97,34 +100,39 @@ def run_tests():
     cmd = [
         chrome_bin,
         "--headless=new",
+        "--disable-gpu",
+        "--no-sandbox",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=6000",
         f"file://{temp_file}"
     ]
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=75)
-    marker = 'id="test-results-output" data-results="'
-    if marker not in proc.stdout:
-        print("ERROR: Test marker not found in output. Stderr:")
-        print(proc.stderr[:1000])
-        return False
+    try:
+        proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
+        marker = 'id="test-results-output" data-results="'
+        if marker not in proc.stdout:
+            print("ERROR: Test marker not found in output. Stderr:")
+            print(proc.stderr[:1000])
+            return False
 
-    results = json.loads(html_lib.unescape(proc.stdout.split(marker)[1].split('"')[0]))
-    all_passed = True
-    for r in results:
-        status = "PASS" if r['pass'] else "FAIL"
-        if not r['pass']:
-            all_passed = False
-        extra = f" ({r['extra']})" if r.get('extra') else ""
-        print(f"[{status}] {r['name']}{extra}")
+        results = json.loads(html_lib.unescape(proc.stdout.split(marker)[1].split('"')[0]))
+        all_passed = True
+        for r in results:
+            status = "PASS" if r['pass'] else "FAIL"
+            if not r['pass']:
+                all_passed = False
+            extra = f" ({r['extra']})" if r.get('extra') else ""
+            print(f"[{status}] {r['name']}{extra}")
 
-    if all_passed:
-        print(f"\nALL ZOOMED PIN LABEL TESTS PASSED ({len(results)}/{len(results)})!")
-    else:
-        print("\nSOME TESTS FAILED!")
-        sys.exit(1)
+        if all_passed:
+            print(f"\\nALL ZOOMED PIN LABEL TESTS PASSED ({len(results)}/{len(results)})!")
+        else:
+            print("\\nSOME TESTS FAILED!")
+            sys.exit(1)
 
-    return all_passed
+        return all_passed
+    finally:
+        if os.path.exists(temp_file):
+            os.remove(temp_file)
 
 if __name__ == '__main__':
     run_tests()

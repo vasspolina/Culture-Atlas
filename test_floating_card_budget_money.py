@@ -13,7 +13,18 @@ def test_floating_card_budget_money():
 
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    window.fetch = async (url, opts) => {
+      const urlStr = String(url && url.url ? url.url : url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, cond, extra = '') {
         results.push({ name, pass: !!cond, extra });
@@ -28,7 +39,6 @@ def test_floating_card_budget_money():
         assert('Slought exists in registry', !!slought);
 
         selectInstitution(slought);
-        await new Promise(r => setTimeout(r, 200));
 
         const bSec = document.getElementById('floatingCardBudgetSection');
         assert('floatingCardBudgetSection is visible for Slought', bSec && !bSec.classList.contains('hidden'));
@@ -62,7 +72,6 @@ def test_floating_card_budget_money():
         assert('Stedelijk exists in registry', !!stedelijk);
 
         selectInstitution(stedelijk);
-        await new Promise(r => setTimeout(r, 200));
 
         assert('Stedelijk budget displays €37.5M', bAmt && bAmt.textContent.includes('37.5M'), bAmt ? bAmt.textContent : 'none');
         assert('Stedelijk public subsidies displays 62%', fPub && fPub.textContent.includes('62%'), fPub ? fPub.textContent : 'none');
@@ -89,8 +98,10 @@ def test_floating_card_budget_money():
     cmd = [
         chrome_bin,
         "--headless=new",
+        "--disable-gpu",
+        "--no-sandbox",
         "--dump-dom",
-        "--virtual-time-budget=6000",
+        "--window-size=1280,800",
         f"file://{temp_file}"
     ]
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)

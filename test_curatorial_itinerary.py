@@ -77,6 +77,15 @@ def test_browser_runtime():
             // Mock network calls to avoid virtual time budget deadlocks
             window.scrapeWebForQuery = async () => null;
             window.queryAI = async () => null;
+            window.requestAnimationFrame = () => 1;
+            window.cancelAnimationFrame = () => {};
+            window.fetch = async (url, opts) => {
+              const urlStr = String(url);
+              if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('style.json')) {
+                return new Response(new Uint8Array(0), { status: 200 });
+              }
+              return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+            };
 
             // 1. Signature itineraries
             assert('SIGNATURE_ITINERARIES is an array', Array.isArray(window.SIGNATURE_ITINERARIES));

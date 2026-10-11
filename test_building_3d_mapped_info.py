@@ -42,15 +42,25 @@ def test_browser_3d_building_and_mapped_info():
 
     test_script = """
     <script>
-    const runTests = async () => {
+    const origFetch = window.fetch;
+    window.fetch = async (url, opts) => {
+      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('google.com') || urlStr.includes('gstatic') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return origFetch(url, opts);
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const style = document.createElement('style');
+      style.innerHTML = '* { transition: none !important; animation: none !important; }';
+      document.head.appendChild(style);
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: Boolean(condition), extra: String(extra) });
       }
 
       try {
-        await new Promise(r => setTimeout(r, 400));
-
         // 1. Find FESPACO or Chisenhale or Slought
         const all = window.ALL_INSTITUTIONS || [];
         assert('Total institutions loaded', all.length >= 1000, all.length);
@@ -62,17 +72,6 @@ def test_browser_3d_building_and_mapped_info():
         window.zoomToBuilding(fespaco, false);
         if (window.cityVectorMap) {
           window.cityVectorMap.jumpTo({ center: [fespaco.lon, fespaco.lat], zoom: 18.6, pitch: 62, bearing: 28 });
-        }
-        await new Promise(r => setTimeout(r, 1200));
-
-        if (window.cityVectorMap && typeof window.cityVectorMap.isStyleLoaded === 'function' && !window.cityVectorMap.isStyleLoaded()) {
-          await new Promise(resolve => {
-            let done = false;
-            const finish = () => { if (!done) { done = true; resolve(); } };
-            window.cityVectorMap.once('styledata', finish);
-            window.cityVectorMap.once('load', finish);
-            setTimeout(finish, 2000);
-          });
         }
 
         // Check map container active and 2D card suppressed
@@ -145,8 +144,7 @@ def test_browser_3d_building_and_mapped_info():
       out.id = 'test-results-output';
       out.setAttribute('data-results', JSON.stringify(results));
       document.body.appendChild(out);
-    };
-    if (document.readyState === 'complete') { setTimeout(runTests, 100); } else { window.addEventListener('load', runTests); }
+    });
     </script>
     """
 
@@ -159,9 +157,10 @@ def test_browser_3d_building_and_mapped_info():
     cmd = [
         chrome_bin,
         "--headless=new",
+        "--disable-gpu",
+        "--no-sandbox",
         "--dump-dom",
         "--window-size=1280,800",
-        "--virtual-time-budget=15000",
         f"file://{temp_file}"
     ]
 

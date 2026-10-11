@@ -13,14 +13,14 @@ def run_tests():
 
     test_script = """
     <script>
-    // Stub fetch so headless chrome does not wait for external tiles
-    const origFetch = window.fetch;
+    window.requestAnimationFrame = () => 1;
+    window.cancelAnimationFrame = () => {};
     window.fetch = async (url, opts) => {
-      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
-      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
+      const urlStr = String(url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('style.json')) {
         return new Response(new Uint8Array(0), { status: 200 });
       }
-      return origFetch(url, opts);
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
 
     window.addEventListener('load', async () => {

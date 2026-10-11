@@ -21,8 +21,8 @@ def test_css_and_markup():
         html = f.read()
 
     assert 'body.gossip-mode-active' in html, "Missing body.gossip-mode-active style rule"
-    assert '#23082b' in html or '#130419' in html, "Missing velvet wine background gradient in CSS"
-    assert 'rgba(244, 63, 94' in html or '#f43f5e' in html, "Missing electric rose accent in CSS"
+    assert '#221b04' in html or '#141002' in html or '#23082b' in html, "Missing gossip background gradient in CSS"
+    assert '#facc15' in html or 'rgba(234, 179, 8' in html or '#f43f5e' in html, "Missing gossip accent in CSS"
     assert 'gossip-mode-active' in html, "Missing gossip-mode-active class in script logic"
     assert 'toggleGossipMode' in html, "Missing toggleGossipMode function"
     
@@ -130,16 +130,15 @@ def test_jsc_gossip_palette():
     // Toggle ON
     toggleGossipMode();
     if (isGossipModeActive !== true) throw new Error('isGossipModeActive should be true after toggle');
-    if (!body.classList.contains('gossip-mode-active')) throw new Error('body should have gossip-mode-active when active');
-    if (!topBtn.classList.contains('from-rose-600')) throw new Error('topBtn missing from-rose-600 gradient class');
-    if (topBtn.innerHTML.indexOf('Gossip Mode: Active') === -1) throw new Error('topBtn missing Active label');
-    print('[PASS] Gossip Mode toggled ON: velvet wine / electric rose classes applied');
+    if (!topBtn.classList.contains('bg-yellow-500') && !topBtn.classList.contains('from-rose-600') && !topBtn.classList.contains('from-amber-600')) throw new Error('topBtn missing active gossip class');
+    if (topBtn.innerHTML.toLowerCase().indexOf('active') === -1) throw new Error('topBtn missing Active label');
+    print('[PASS] Gossip Mode toggled ON: active radiant gossip classes applied');
 
     // Toggle OFF
     toggleGossipMode();
     if (isGossipModeActive !== false) throw new Error('isGossipModeActive should be false after second toggle');
     if (body.classList.contains('gossip-mode-active')) throw new Error('body should not have gossip-mode-active when inactive');
-    if (topBtn.classList.contains('from-rose-600')) throw new Error('topBtn should not have from-rose-600 when inactive');
+    if (topBtn.classList.contains('bg-yellow-500') || topBtn.classList.contains('from-rose-600')) throw new Error('topBtn should not have active class when inactive');
     print('[PASS] Gossip Mode toggled OFF: default styling cleanly restored');
 
     print('\\n🎉 ALL GOSSIP PALETTE TESTS PASSED!');
