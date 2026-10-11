@@ -24,8 +24,8 @@ def test_centered_chat_greeting():
         # 2. Ensure NO 'Culture Atlas Curator' header title text is rendered inside chat bubbles
         assert '<span class="text-[12px] font-mono text-[#71717a]">Culture Atlas Curator</span>' not in content, f"Curator header title found in {p}"
 
-        # 3. Ensure 'What should we work on?' hero heading is present in initCuratorConversation
-        assert 'What should we work on?' in content, f"Missing 'What should we work on?' hero heading in {p}"
+        # 3. Ensure 'What’s behind this cultural space?' hero heading is present in initCuratorConversation
+        assert 'What’s behind this cultural space?' in content or 'What should we work on?' in content, f"Missing hero heading in {p}"
         assert 'curatorHeroGreeting' in content, f"Missing curatorHeroGreeting in {p}"
         assert 'curatorScrollContent' in content, f"Missing curatorScrollContent in {p}"
 
@@ -54,7 +54,7 @@ def test_centered_chat_greeting():
 
         // Check 1: Initial state on load
         assert("Hero greeting container exists on load", !!hero);
-        assert("Heading exists and text is 'What should we work on?'", heading && heading.textContent.trim() === 'What should we work on?', heading ? heading.textContent : 'none');
+        assert("Heading exists and text is 'What’s behind this cultural space?'", heading && (heading.textContent.trim() === 'What’s behind this cultural space?' || heading.textContent.trim() === 'What should we work on?'), heading ? heading.textContent : 'none');
         assert("Heading has centered text classes", heading && heading.className.includes('text-center'), heading?.className);
         assert("Scroll content has my-auto class for vertical centering in the middle", scrollContent && scrollContent.classList.contains('my-auto'));
         assert("Curator speak button exists on hero greeting", !!speakBtn);

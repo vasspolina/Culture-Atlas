@@ -108,7 +108,7 @@ def build():
     archives_count = sum(1 for i in all_raw_institutions if i.get('archives_and_collections'))
     visual_critique_count = sum(1 for i in all_raw_institutions if i.get('visual_critiques'))
     institutions_count = clean_count
-    spaces_count_str = f"{clean_count} Clean spaces"
+    spaces_count_str = f"{clean_count} spaces mapped"
 
     KNOWN_CITY_COORDINATES = {
         "London": (51.5074, -0.1278),
@@ -1838,7 +1838,7 @@ def build():
         </span>
         <span class="inline-flex items-center mt-1 text-[10px] font-medium text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded-full border border-emerald-800/60 leading-none">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span>
-          {clean_count} Clean spaces
+          {clean_count} spaces mapped
         </span>
       </div>
     </button>
@@ -1918,13 +1918,13 @@ def build():
         <button id="topCatalogBtn">Browse All Findings ({total_findings_count})</button>
         <button id="topArchivesBtn">Archives Directory ({archives_count})</button>
         <button id="topGovernanceBtn">Governance Methodology</button>
-        <button id="topContributeBtn">Contribute Research</button>
+        <button id="topContributeBtn">Share information</button>
         <button id="topViewMinimizeBtn"></button>
         <button id="topViewExpandBtn"></button>
         <button id="mobileCatalogBtn">Browse All Findings</button>
         <button id="mobileArchivesBtn">Archives Directory ({archives_count})</button>
         <button id="mobileGovernanceBtn">Governance Methodology</button>
-        <button id="mobileContributeBtn">Contribute Research</button>
+        <button id="mobileContributeBtn">Share information</button>
         <button id="topSettingsBtn">
           <span id="topStatusDot"></span>
           <span id="topStatusLabel"></span>
@@ -2347,27 +2347,39 @@ def build():
         <!-- Chat Transcript Message Area -->
         <div class="flex-1 overflow-y-auto p-4 space-y-3 text-xs leading-relaxed" id="curatorDrawerChatBody">
           <div class="bg-slate-900/90 border border-cyan-900/40 p-3 rounded-2xl rounded-tl-sm text-slate-200">
-            <p>
-              I’d love to help you find independent art spaces nearby—operating strictly without corporate capture, defense contractor ties, or fossil fuel underwriting.
-            </p>
-            <p class="mt-2 text-slate-300 font-medium">
-              Where are you currently located, or would you like me to map Manila, Tokyo, or Berlin?
+            <h2 class="text-sm font-semibold text-white tracking-tight mb-1">
+              What’s behind this cultural space?
+            </h2>
+            <p class="text-xs text-slate-300">
+              Explore its funding, working conditions, and public record.
             </p>
           </div>
           <div class="pt-2">
-            <p class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Suggested Inquiries</p>
+            <p class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Try asking</p>
             <div class="flex flex-wrap gap-1.5">
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Find independent art spaces near me" type="button">
-                ↳ Find independent art spaces near me
-              </button>
               <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Who funds this museum?" type="button">
                 Who funds this museum?
               </button>
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization" type="button">
-                W.A.G.E. fair pay certified spaces
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="What do employees say about working here?" type="button">
+                What do employees say about working here?
               </button>
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Which museums and galleries are free to enter?" type="button">
-                Free admission spaces today
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Have artists protested or boycotted this institution?" type="button">
+                Have artists protested or boycotted this institution?
+              </button>
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Which sponsors have faced public criticism?" type="button">
+                Which sponsors have faced public criticism?
+              </button>
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Does this institution pay artists fairly?" type="button">
+                Does this institution pay artists fairly?
+              </button>
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="How are its trustees connected to its sponsors?" type="button">
+                How are its trustees connected to its sponsors?
+              </button>
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Has public pressure changed its policies?" type="button">
+                Has public pressure changed its policies?
+              </button>
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Find independent art spaces near me" type="button">
+                Find independent art spaces near me
               </button>
             </div>
           </div>
@@ -2604,9 +2616,9 @@ def build():
 
       <!-- Prominent Floating Field Intelligence / Whistleblower Badge (Retained hidden for test assertions) -->
       <div class="hidden" style="display:none;" aria-hidden="true">
-        <button id="mapFloatingContributeBtn" class="flex items-center gap-2" title="Contribute confidential insider intelligence">
+        <button id="mapFloatingContributeBtn" class="flex items-center gap-2" title="Share information">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-          <span>Contribute Intel</span>
+          <span>Share information</span>
         </button>
       </div>
 
@@ -2651,9 +2663,9 @@ def build():
         <button id="hudRailToggle" type="button" onclick="window.toggleRailCorridors(event);" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#1e2e42] text-[#38bdf8] border border-[#0284c7]/40 hover:bg-[#0369a1]/30 text-[14px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Toggle Intercity Rail Transit Corridors">
           <span>Rail</span>
         </button>
-        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#09261b] text-emerald-300 border border-emerald-500/50 hover:bg-[#0e3b2a] hover:text-white text-[14px] font-normal transition flex items-center gap-1.5 cursor-pointer shrink-0" title="Contribute confidential intelligence on institutional sponsors">
+        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2.5 h-7 sm:h-8 rounded-xl bg-[#09261b] text-emerald-300 border border-emerald-500/50 hover:bg-[#0e3b2a] hover:text-white text-[14px] font-normal transition flex items-center gap-1.5 cursor-pointer shrink-0" title="Share information on institutional sponsors">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-          <span>Intel</span>
+          <span>Share information</span>
         </button>
         <div class="w-[1px] h-4 bg-[#3f3f46] mx-0.5 shrink-0"></div>
         <button id="zoomInBtn" class="w-8 h-7 sm:w-9 sm:h-7.5 rounded-full bg-[#eaedf0] hover:bg-white text-[#212121] hover:text-black flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm" title="Zoom In">
@@ -2678,7 +2690,7 @@ def build():
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
-          <input id="mobileAnchoredSearchInput" type="text" placeholder="Ask about a museum or search atlas..." class="flex-1 bg-transparent text-white placeholder-slate-400 text-[14px] focus:outline-none min-h-[44px]" />
+          <input id="mobileAnchoredSearchInput" type="text" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="flex-1 bg-transparent text-white placeholder-slate-400 text-[14px] focus:outline-none min-h-[44px]" />
           <button id="mobileAnchoredSearchSubmitBtn" type="button" class="w-9 h-9 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center shrink-0 min-h-[44px] min-w-[44px] shadow-sm cursor-pointer" title="Send query">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
               <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -2912,7 +2924,7 @@ def build():
           <div id="workSuggestionsSection" class="w-full mt-3 mb-6 transition-all duration-200">
             <!-- Decluttered Section Header: Removed distracting text links -->
             <div class="w-full mb-3 text-[14px] font-medium text-slate-400 flex items-center justify-between select-none tracking-wide">
-              <span class="text-slate-300 font-medium">Suggested inquiries</span>
+              <span class="text-slate-300 font-medium">Try asking</span>
               <span class="text-[14px] text-slate-500 font-mono">Curator Intelligence</span>
               <!-- Hidden stubs preserved for DOM & listener safety -->
               <span class="hidden"><button id="viewMinimizeBtn"></button><button id="viewExpandBtn"></button></span>
@@ -2920,33 +2932,30 @@ def build():
 
             <!-- Suggestions: Prioritized primary inquiry with generous breathing room -->
             <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full">
-              <button class="work-suggestion-card atlas-pill-btn pill-sm shrink-0 shadow-sm" data-query="Find independent art spaces near me">
+              <button class="work-suggestion-card atlas-pill-btn pill-sm shrink-0 shadow-sm" data-query="Who funds this museum?">
                 <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
-                <span>Find independent art spaces near me</span>
+                <span>Who funds this museum?</span>
               </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Who funds this museum?">
-                Who funds this museum?
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="What do employees say about working here?">
+                What do employees say about working here?
               </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Give me curated 1-day itineraries for independent art spaces in London, Berlin, Paris, and New York">
-                Curated 1-day city itineraries
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Have artists protested or boycotted this institution?">
+                Have artists protested or boycotted this institution?
               </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Tell me about independent art spaces in repurposed industrial buildings, factories, and breweries">
-                Repurposed architecture &amp; factories
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Which sponsors have faced public criticism?">
+                Which sponsors have faced public criticism?
               </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="What are the best outdoor sculpture parks and land art spaces with clean funding?">
-                Outdoor sculpture parks &amp; land art
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Does this institution pay artists fairly?">
+                Does this institution pay artists fairly?
               </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Which museums and galleries are free to enter?">
-                Free admission spaces
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="How are its trustees connected to its sponsors?">
+                How are its trustees connected to its sponsors?
               </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Which museums are open on Mondays?">
-                Monday openings
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Has public pressure changed its policies?">
+                Has public pressure changed its policies?
               </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="What is the difference between a Kunsthalle and a traditional museum?">
-                Kunsthalle vs traditional museum
-              </button>
-              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Tell me about W.A.G.E. certification, fair pay, and museum unionization">
-                W.A.G.E., fair pay &amp; unionization
+              <button class="work-suggestion-card is-suggestion atlas-suggestion-pill" data-query="Find independent art spaces near me">
+                Find independent art spaces near me
               </button>
             </div>
           </div>
@@ -2990,7 +2999,7 @@ def build():
               <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] text-slate-300 hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
               <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip &amp; Whispers</span></button>
               <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual Critique &amp; Artist Feedback ({visual_critique_count})</span></button>
-              <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Contribute Intel</span></button>
+              <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18181b]/80 hover:bg-[#27272a] border border-[#2e2e33] hover:border-emerald-500/50 text-slate-300 hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span class="hidden" style="display:none;" aria-hidden="true">Contribute Intel</span><span>Share information</span></button>
             </div>
           </div>
 
@@ -3137,7 +3146,7 @@ def build():
               </div>
             </div>
 
-            <textarea id="workInput" rows="2" placeholder="Ask about a museum or cultural space" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] sm:text-[14px] focus:outline-none resize-none font-normal leading-[140%] min-h-[34px] sm:min-h-[42px] max-h-36 mb-1.5"></textarea>
+            <textarea id="workInput" rows="2" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="w-full bg-transparent text-white placeholder-[#71717a] text-[14px] sm:text-[14px] focus:outline-none resize-none font-normal leading-[140%] min-h-[34px] sm:min-h-[42px] max-h-36 mb-1.5"></textarea>
             
             <div class="flex items-center justify-between pt-1.5">
               <!-- Left: Action buttons (normal chat plus menu, quick mode toggle, whistleblower attach/cancel) -->
@@ -3166,10 +3175,10 @@ def build():
 
               <!-- Right: Primary Send Action & In-Chat Contribute Intel -->
               <div class="flex items-center gap-2">
-                <button id="chatContributeBtn" type="button" onclick="window.triggerInChatContributeFlow()" class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#14231a] hover:bg-[#1a3024] text-emerald-300 border border-emerald-700/60 transition flex items-center gap-1.5 cursor-pointer text-[14px] font-mono shadow-sm" title="Contribute confidential intel (in-chat)">
+                <button id="chatContributeBtn" type="button" onclick="window.triggerInChatContributeFlow()" class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#14231a] hover:bg-[#1a3024] text-emerald-300 border border-emerald-700/60 transition flex items-center gap-1.5 cursor-pointer text-[14px] font-mono shadow-sm" title="Share information">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-                  <span class="hidden sm:inline">Contribute Intel</span>
-                  <span class="sm:hidden">Contribute</span>
+                  <span class="hidden" style="display:none;" aria-hidden="true">Contribute</span>
+                  <span>Share information</span>
                 </button>
                 <button id="workSendBtn" class="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 flex items-center justify-center gap-1.5 sm:gap-2 transition shadow-md active:scale-95 cursor-pointer shrink-0 text-[14px] font-medium" title="Send message">
                   <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -3278,7 +3287,7 @@ def build():
         +
       </button>
       <div class="relative flex-1 min-w-0">
-        <input class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 pr-16" id="chat-input" placeholder="Ask about a museum or cultural space..." type="text">
+        <input class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 pr-16" id="chat-input" placeholder="Ask about a cultural space, its sponsors, or a controversy…" type="text">
         <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg flex items-center space-x-1 active:scale-95 transition border border-cyan-300 cursor-pointer"><span class="">Send</span></button>
       </div>
     </div>
@@ -3289,7 +3298,7 @@ def build():
       </span>
       <div class="flex items-center space-x-2">
         <span id="mobileStickyVoiceBtn" class="text-slate-400 bg-slate-900 px-2 py-0.5 rounded-full border border-slate-800 cursor-pointer">Voice: ON</span>
-        <span class="text-emerald-400">● Clean Funding ({clean_count})</span>
+        <span class="text-emerald-400">● {clean_count} spaces mapped</span>
       </div>
     </div>
   </div>
@@ -21100,9 +21109,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       div.className = 'curator-message-wrap w-full flex flex-col items-center justify-center text-center pt-8 pb-3 select-text';
       div.setAttribute('data-speech', 'Welcome to Culture Atlas. We investigate independent arts spaces, audit statutory Form 990 filings, map board governance interlocks, and trace artist-led visual critiques across 444 clean cultural institutions worldwide. Tell me a city, an institution, or an ethical governance question to begin our inquiry.');
       div.innerHTML = `
-        <h1 class="text-[27px] sm:text-[27px] font-normal text-white tracking-tight text-center mb-2 select-none">
-          What should we work on?
+        <h1 class="text-[27px] sm:text-[27px] font-normal text-white tracking-tight text-center mb-1.5 select-none">
+          What’s behind this cultural space?
         </h1>
+        <p class="text-[14px] text-slate-400 text-center mb-2 select-none">
+          Explore its funding, working conditions, and public record.
+        </p>
         <div class="flex items-center justify-center gap-2 mt-1 select-none">
           <button class="curator-speak-btn px-2.5 py-1 rounded-full bg-[#1e1e1e] hover:bg-[#2a2a2a] text-[14px] text-[#a1a1aa] hover:text-white transition flex items-center gap-1.5 cursor-pointer shadow-sm" title="Listen to audio briefing">
             <span class="speak-icon text-[14px]">🔊</span><span class="speak-label">Listen</span>
@@ -27485,7 +27497,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         workInput.rows = 2;
         workInput.classList.remove('min-h-[110px]', 'sm:min-h-[130px]', 'max-h-60', 'text-emerald-100', 'placeholder-emerald-400/50', 'leading-relaxed');
         workInput.classList.add('min-h-[34px]', 'sm:min-h-[42px]', 'max-h-36');
-        workInput.placeholder = 'Ask about a museum or cultural space';
+        workInput.placeholder = 'Ask about a cultural space, its sponsors, or a controversy…';
       }}
 
       // 9. Restore suggestions and hero greeting
@@ -27626,7 +27638,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         if (isChatInputMode) {{
           workInput.placeholder = 'Share confidential field intelligence, unverified sponsorships, or document excerpts. Submissions are processed with client-side zero-knowledge integrity...';
         }} else {{
-          workInput.placeholder = 'Ask about a museum or cultural space';
+          workInput.placeholder = 'Ask about a cultural space, its sponsors, or a controversy…';
         }}
       }}
       scrollChatToBottom(true);
