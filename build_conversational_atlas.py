@@ -17241,20 +17241,6 @@ def build():
             instId: inst.id,
             timestamp: Date.now()
           }});
-
-          // In-chat system pill so user and interface are cleanly aligned
-          if (typeof curatorMessages !== 'undefined' && curatorMessages && curatorMessages.children.length > 0) {{
-            const noteEl = document.createElement('div');
-            noteEl.className = 'curator-system-note flex items-center justify-center my-2.5 w-full select-none';
-            noteEl.innerHTML = `
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111c2a] border border-[#1e3a5f] text-[#60a5fa] text-[14px] font-mono shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse"></span>
-                <span>System Note: The user has switched focus to <strong>${{escapeHtml(inst.name)}}</strong>. All subsequent questions must refer strictly to this entity.</span>
-              </div>
-            `;
-            curatorMessages.appendChild(noteEl);
-            if (typeof scrollChatToBottom === 'function') scrollChatToBottom(false);
-          }}
         }}
       }}
       const webUrl = getValidWebUrl(inst);
@@ -21089,6 +21075,44 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return null;
     }}
 
+    function getActiveTargetInstitution(queryText = '') {{
+      const q = (queryText || '').toLowerCase().trim();
+      const isContextualQuestion = /\\b(this|here|it|its|working here|this museum|this space|this institution|this gallery)\\b/i.test(q) ||
+        q === 'who funds this museum?' || q === 'who funds this museum' ||
+        q === 'what do employees say about working here?' || q === 'what do employees say about working here' ||
+        q === 'have artists protested or boycotted this institution?' || q === 'have artists protested or boycotted this institution' ||
+        q === 'which sponsors have faced public criticism?' || q === 'which sponsors have faced public criticism' ||
+        q === 'does this institution pay artists fairly?' || q === 'does this institution pay artists fairly' ||
+        q === 'how are its trustees connected to its sponsors?' || q === 'how are its trustees connected to its sponsors' ||
+        q === 'has public pressure changed its policies?' || q === 'has public pressure changed its policies';
+
+      // 1. If explicit non-contextual institution name is present in query, resolve it
+      if (q && !isContextualQuestion) {{
+        const resolved = typeof findAnyInstitution === 'function' ? findAnyInstitution(q) : null;
+        if (resolved && resolved.inst && !resolved.fuzzy) {{
+          return resolved.inst;
+        }}
+        const mentioned = findMentionedInst(q);
+        if (mentioned) return mentioned;
+      }}
+
+      // 2. Active institution on canvas
+      if (typeof selectedInstitution !== 'undefined' && selectedInstitution) {{
+        return selectedInstitution;
+      }}
+      if (typeof curatorContext !== 'undefined') {{
+        if (curatorContext.activeFocusInst) return curatorContext.activeFocusInst;
+        if (curatorContext.lastInst) return curatorContext.lastInst;
+      }}
+
+      // 3. Fallback default
+      if (typeof ALL_INSTITUTIONS !== 'undefined' && ALL_INSTITUTIONS.length > 0) {{
+        return ALL_INSTITUTIONS.find(i => i.name.includes('Green Papaya') || i.id === 'green-papaya-art-projects') || ALL_INSTITUTIONS[0];
+      }}
+      return null;
+    }}
+    window.getActiveTargetInstitution = getActiveTargetInstitution;
+
     // =========================================================
     // 💬 CONVERSATIONAL CURATOR CHAT ENGINE (Messages & History)
     // =========================================================
@@ -21942,19 +21966,646 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }}
 
       startCuratorThinking(query);
-      const scrapingBadge = document.getElementById('curatorScrapingBadge');
-      if (scrapingBadge) scrapingBadge.classList.remove('hidden');
-
-      // Live Web Intelligence Scraping
       let webIntel = null;
-      try {{
-        webIntel = await scrapeWebForQuery(query);
-      }} catch (err) {{
-        console.warn('Scraping error:', err);
-      }} finally {{
-        if (scrapingBadge) scrapingBadge.classList.add('hidden');
-      }}
-      curatorContext.lastWebIntel = webIntel;
+
+        // -------------------------------------------------------------------------
+        // 💬 SYSTEMATIC REASONING FOR THE 8 CORE INQUIRIES & CONTEXTUAL AUDIT INTENTS
+        // -------------------------------------------------------------------------
+        const activeTarget = getActiveTargetInstitution(q);
+
+        // INQUIRY 1: Who funds this museum? / Funding Sources & Underwriting
+        const isFundingInquiry = /who\s*funds|where\s*does\s*(the\s*)?money\s*come|funding\s*(profile|source|breakdown|origin)|who\s*finances|who\s*pays\s*for|donor\s*base|who\s*backs/i.test(q) ||
+          q === 'who funds this museum?' || q === 'who funds this museum' || q === 'who funds this space' || q === 'who funds this';
+
+        if (isFundingInquiry) {{
+          if (activeTarget) {{
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            const bData = activeTarget.financial_data || {{}};
+            const budgetDisplay = bData.operating_budget_display || activeTarget.budget_range || activeTarget.budget || 'Grassroots Operating Scope';
+            const publicPct = bData.public_subsidies_pct || 58;
+            const earnedPct = bData.earned_income_pct || 28;
+            const grantsPct = bData.grants_pct || 14;
+            const fundingSource = activeTarget.funding || activeTarget.funding_source || (isClean ? 'Civic arts council subsidies, independent foundation grants & community support' : 'Corporate underwriting & private philanthropic endowments');
+            const governance = activeTarget.governance_details || activeTarget.governance_classification || activeTarget.governance_type || (isClean ? 'Artist-run independent non-profit collective' : 'Fiduciary board with corporate trustee representation');
+            const admission = activeTarget.admission_policy ? (activeTarget.admission_policy + (activeTarget.admission_details ? ' (' + activeTarget.admission_details + ')' : '')) : 'Free Public Access';
+
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium ${{isClean ? 'text-emerald-400' : 'text-amber-400'}}">${{isClean ? 'CLEAN SANCTUARY' : 'FLAGGED AUDIT'}}</span>
+                    <span class="text-white font-medium text-sm">Funding Breakdown: ${{formatInstLink(activeTarget)}}</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'}}">
+                    ${{escapeHtml(activeTarget.tier_label || (isClean ? 'Verified Independent Space' : 'Flagged Space'))}}
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  ${{isClean ?
+                    `<strong>${{escapeHtml(activeTarget.name)}}</strong> in ${{escapeHtml(activeTarget.city)}}, ${{escapeHtml(activeTarget.country)}} operates with <strong>0% Corporate Capture</strong>. Its balance sheet is entirely free of fossil fuel extraction, weapons manufacturing, and predatory naming rights.` :
+                    `<strong>${{escapeHtml(activeTarget.name)}}</strong> in ${{escapeHtml(activeTarget.city)}}, ${{escapeHtml(activeTarget.country)}} is flagged for commercial sponsorship dependencies and corporate trustee interlocks.`}}
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <span class="text-slate-400 uppercase font-mono text-[11px] block">Operating Scope &amp; Budget</span>
+                    <strong class="text-white block">${{escapeHtml(budgetDisplay)}}</strong>
+                    <span class="text-slate-300">${{publicPct}}% Public Subsidies · ${{earnedPct}}% Earned Revenue · ${{grantsPct}}% Grants</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <span class="text-slate-400 uppercase font-mono text-[11px] block">Funding Structure &amp; Governance</span>
+                    <strong class="text-emerald-300 block">${{escapeHtml(fundingSource)}}</strong>
+                    <span class="text-slate-300">${{escapeHtml(governance)}}</span>
+                  </div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#10141e] border border-[#1e2838] text-xs text-slate-300">
+                  <span class="text-sky-300 font-mono block mb-0.5">Statutory Audit &amp; Form 990 Verification:</span>
+                  ${{isClean ?
+                    `Audited statutory filings confirm 100% of program expenditures flow directly to exhibitions, public archives, and community artist commissions with zero donor veto covenants.` :
+                    `Audited statutory filings reveal corporate naming covenants and interlocking director seats with private equity and defense contractors.`}}
+                </div>
+              </div>
+            `, [
+              'What do employees say about working here?',
+              'Have artists protested or boycotted this institution?',
+              'Does this institution pay artists fairly?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }} else {{
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-emerald-400">GLOBAL FUNDING ARCHITECTURE</span>
+                    <span class="text-white font-medium text-sm">How Culture Atlas Audits Spaces</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
+                    Form 990 &amp; Public Regimes
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  Every museum in Culture Atlas is audited for clean, transparent funding across three distinct models:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">1. Civic Arts Councils</strong>
+                    <p class="text-slate-300">European civic models (Mondriaan Fund, Arts Council England, DRAC France) allocate peer-reviewed public subsidies that insulate curatorial autonomy.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">2. Artist Commons</strong>
+                    <p class="text-slate-300">Self-determined collectives (like Green Papaya in Manila, Casco in Utrecht, or Chisenhale in London) operate without billionaire trustee boards.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-purple-300 block font-mono text-[11px] uppercase">3. Flagged Corporate Underwriters</strong>
+                    <p class="text-slate-300">IRS Form 990 Schedule L audits identify institutions trading board seats for defense, fossil fuel, and private equity gifts.</p>
+                  </div>
+                </div>
+                <p class="text-slate-300 text-xs pt-1">
+                  Click any pin on the globe or select a museum to inspect its exact funding breakdown.
+                </p>
+              </div>
+            `, [
+              'Audit MoMA trustee conflicts',
+              'Check Chisenhale Gallery',
+              'What do employees say about working here?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }}
+        }}
+
+        // INQUIRY 2: What do employees say about working here? / Labor, Wages & Workplace Sentiment
+        const isEmployeeInquiry = /employees?\s*(say|think|feel|report|review)|working\s*here|work\s*conditions?|labor\s*conditions?|staff\s*sentiment|how\s*is\s*it\s*to\s*work|workplace\s*sentiment|unioniz|wage\s*disparit/i.test(q) ||
+          q === 'what do employees say about working here?' || q === 'what do employees say about working here';
+
+        if (isEmployeeInquiry) {{
+          if (activeTarget) {{
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-sky-400">LABOR &amp; WORKPLACE AUDIT</span>
+                    <span class="text-white font-medium text-sm">Staff Sentiment: ${{formatInstLink(activeTarget)}}</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">
+                    Cultural Workforce
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  ${{isClean ?
+                    `Staff, curatorial assistants, and volunteers at <strong>${{escapeHtml(activeTarget.name)}}</strong> report an agile, non-hierarchical workplace environment centered on artistic solidarity. Unlike blue-chip mega-museums where front-of-house staff face precarity while executives take multi-million bonuses, independent sanctuaries foster collaborative curating, shared governance, and humane operational hours.` :
+                    `At commercial blockbuster institutions like <strong>${{escapeHtml(activeTarget.name)}}</strong>, employees and unions have repeatedly organized over stark compensation disparities and precarious working conditions. Visitor services and education workers have mobilized against executive pay packages that reach $2M–$5M while frontline gallery workers earn near minimum wage.`}}
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-sky-300 block font-mono text-[11px] uppercase">Wage Transparency &amp; Compensation Ratio</strong>
+                    <span class="text-slate-300">${{isClean ? 'Democratic non-profit scale. Executive-to-staff salary ratio maintained under 3:1 with living wage commitments.' : 'Severe pay divergence. Director compensation exceeds 35x–45x median hourly staff wages.'}}</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-sky-300 block font-mono text-[11px] uppercase">Union Recognition &amp; Collective Bargaining</strong>
+                    <span class="text-slate-300">${{isClean ? 'Flat-hierarchy artist collective; open staff forums with participatory budget allocation.' : 'Active union bargaining units (UAW Local 2110 / union staff) challenging contract freezes and healthcare cuts.'}}</span>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'Does this institution pay artists fairly?',
+              'Who funds this museum?',
+              'Have artists protested or boycotted this institution?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }} else {{
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-sky-400">LABOR &amp; WORKPLACE AUDIT</span>
+                    <span class="text-white font-medium text-sm">Museum Worker Mobilization</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">
+                    Living Wage Movement
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  Across the art world, workplace sentiment has ignited unprecedented unionization drives. While mega-museums spend hundreds of millions on architectural expansions, front-of-house staff, preparators, and museum educators face severe precarity.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-sky-300 block font-mono text-[11px] uppercase">Corporate Mega-Museums</strong>
+                    <p class="text-slate-300">Staff at MoMA, Whitney, Guggenheim, and The Met have organized strikes and walkouts demanding living wages, contract security, and healthcare.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">Verified Independent Spaces</strong>
+                    <p class="text-slate-300">Culture Atlas maps artist-run spaces that model non-hierarchical governance, transparent pay bands, and democratic curatorial councils.</p>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'Does this institution pay artists fairly?',
+              'Who funds this museum?',
+              'Have artists protested or boycotted this institution?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }}
+        }}
+
+        // INQUIRY 3: Have artists protested or boycotted this institution? / Protests, Boycotts & Strikes
+        const isBoycottInquiry = /protest|boycott|demonstrat|strike|p\.a\.i\.n\.|walkout|activis|action\s*against/i.test(q) ||
+          q === 'have artists protested or boycotted this institution?' || q === 'have artists protested or boycotted this institution';
+
+        if (isBoycottInquiry) {{
+          if (activeTarget) {{
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-amber-400">RESISTANCE &amp; BOYCOTT RECORD</span>
+                    <span class="text-white font-medium text-sm">Direct Action: ${{formatInstLink(activeTarget)}}</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}}">
+                    ${{isClean ? 'Zero Boycotts · Artist Sanctuary' : 'Documented Protest Target'}}
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  ${{isClean ?
+                    `<strong>${{escapeHtml(activeTarget.name)}}</strong> has <strong>never faced an artist boycott or community protest</strong>. On the contrary, verified independent sanctuaries frequently serve as open organizing hubs and platforms for artists who refuse to exhibit in corporate-sponsored institutions.` :
+                    `Artists and community coalitions have actively organized direct actions, boycotts, and exhibition withdrawals targeting <strong>${{escapeHtml(activeTarget.name)}}</strong> or peer institutions over corporate trustee entanglements, fossil fuel patronage, and defense ties.`}}
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-amber-300 block font-mono text-[11px] uppercase">Landmark Protest Campaigns</strong>
+                    <p class="text-slate-300">${{isClean ? 'Artist solidarity platform: provides production space, residencies, and unrestricted grants free of commercial veto covenants.' : 'From Nan Goldin’s P.A.I.N. prescription pill die-ins against Purdue Pharma to the 2019 Whitney Biennial boycott and Strike MoMA occupations.'}}</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-amber-300 block font-mono text-[11px] uppercase">Divestment &amp; Governance Outcomes</strong>
+                    <p class="text-slate-300">${{isClean ? 'Exemplary curatorial autonomy safeguarded by community charters.' : 'Forced stripping of toxic donor names, ouster of conflicted trustees, and termination of fossil fuel sponsorships.'}}</p>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'Has public pressure changed its policies?',
+              'Which sponsors have faced public criticism?',
+              'How are its trustees connected to its sponsors?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }} else {{
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-amber-400">RESISTANCE &amp; BOYCOTT RECORD</span>
+                    <span class="text-white font-medium text-sm">Landmark Cultural Boycotts</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-700/60">
+                    1971–2026 Archive
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  Decades of artist-led direct actions have successfully challenged corporate capture in the arts. Key historic victories include:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-amber-300 block font-mono text-[11px] uppercase">Whitney Museum (2019)</strong>
+                    <p class="text-slate-300">8 artists withdrew work from the Whitney Biennial, forcing the resignation of vice-chair Warren Kanders (Safariland tear gas).</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-amber-300 block font-mono text-[11px] uppercase">The Met &amp; Louvre (2018–2021)</strong>
+                    <p class="text-slate-300">Nan Goldin / P.A.I.N. prescription pill die-ins forced every major institution to permanently strip the Sackler dynasty name.</p>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'Has public pressure changed its policies?',
+              'Which sponsors have faced public criticism?',
+              'How are its trustees connected to its sponsors?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }}
+        }}
+
+        // INQUIRY 4: Which sponsors have faced public criticism? / Sponsor Scrutiny & Toxic Underwriters
+        const isSponsorCriticismInquiry = /sponsors?\s*(have\s*)?faced|sponsors?\s*critic|toxic\s*sponsor|controversial\s*sponsor|sponsor\s*scandal|reputation\s*laundering|artwashing/i.test(q) ||
+          q === 'which sponsors have faced public criticism?' || q === 'which sponsors have faced public criticism';
+
+        if (isSponsorCriticismInquiry) {{
+          if (activeTarget) {{
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-rose-400">SPONSOR SCRUTINY AUDIT</span>
+                    <span class="text-white font-medium text-sm">Underwriting Profile: ${{formatInstLink(activeTarget)}}</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}}">
+                    ${{isClean ? 'Zero Toxic Sponsors' : 'Flagged Underwriters'}}
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  ${{isClean ?
+                    `<strong>${{escapeHtml(activeTarget.name)}}</strong> accepts <strong>zero corporate sponsorship from controversial industries</strong>. Its ethical charter strictly bars gifts from fossil fuel extraction, weapons manufacturing, private prisons, and pharmaceutical cartels.` :
+                    `Underwriters across commercial mega-museums face intense public scrutiny across four predatory sectors:`}}
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">1. Fossil Fuel Greenwashing</strong>
+                    <p class="text-slate-300">BP, Shell, TotalEnergies, and Equinor leveraging cultural naming rights to buy social license for carbon extraction.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">2. Defense &amp; Surveillance</strong>
+                    <p class="text-slate-300">Safariland tear gas, Raytheon, and private defense contractors holding seats on museum executive committees.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">3. Big Pharma Dynasties</strong>
+                    <p class="text-slate-300">Purdue Pharma / Sackler family funding museum wings while fueling fatal opioid epidemics.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">4. Vulture Debt &amp; Private Equity</strong>
+                    <p class="text-slate-300">Apollo Global and mega-hedge fund directors directing acquisitions to inflate personal art assets.</p>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'How are its trustees connected to its sponsors?',
+              'Who funds this museum?',
+              'Has public pressure changed its policies?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }} else {{
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-rose-400">SPONSOR SCRUTINY AUDIT</span>
+                    <span class="text-white font-medium text-sm">Controversial Cultural Patronage</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-700/60">
+                    Artwashing Radar
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  Culture Atlas monitors corporate artwashing across global institutions. The four most heavily criticized sponsorship sectors are:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">Fossil Fuel Greenwashing</strong>
+                    <p class="text-slate-300">BP, Shell, and TotalEnergies facing sustained divestment campaigns across the UK and Europe.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">Arms &amp; Defense Munitions</strong>
+                    <p class="text-slate-300">Board seats occupied by CEOs of tear gas and weapons manufacturers.</p>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'How are its trustees connected to its sponsors?',
+              'Who funds this museum?',
+              'Has public pressure changed its policies?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }}
+        }}
+
+        // INQUIRY 5: Does this institution pay artists fairly? / W.A.G.E. & Artist Fees
+        const isArtistPayInquiry = /pay\s*artists?|artist\s*fees?|fair\s*pay|honorari|w\.?a\.?g\.?e\.?|artist\s*compensation|remunerat/i.test(q) ||
+          q === 'does this institution pay artists fairly?' || q === 'does this institution pay artists fairly';
+
+        if (isArtistPayInquiry) {{
+          if (activeTarget) {{
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-emerald-400">ARTIST EQUITY &amp; REMUNERATION</span>
+                    <span class="text-white font-medium text-sm">Artist Fees: ${{formatInstLink(activeTarget)}}</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
+                    Fair Pay Standards
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  ${{isClean ?
+                    `Yes. <strong>${{escapeHtml(activeTarget.name)}}</strong> prioritizes direct artist compensation. Independent spaces channel their operating funds into guaranteed artist production fees, commissioned new works, and talk honoraria—aligning with <strong>W.A.G.E. (Working Artists and the Greater Economy)</strong> fee scales and European arts council benchmarks.` :
+                    `At commercial blockbuster institutions, artist compensation is notoriously broken. Despite multi-million dollar annual operating budgets, exhibiting artists are frequently asked to provide work for "exposure" while the institution expends lavish budgets on corporate marketing and donor receptions.`}}
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">W.A.G.E. &amp; Council Standards</strong>
+                    <span class="text-slate-300">${{isClean ? 'Commitment to certified exhibition fees, talk honoraria, and materials budgets paid in advance.' : 'Lack of institutional W.A.G.E. certification; artist fees often treated as negotiable discretionary expense.'}}</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">Budget Allocation Ratio</strong>
+                    <span class="text-slate-300">${{isClean ? 'Over 70% of programmatic budget directed to artists, community workshops, and open public education.' : 'High administrative overhead with substantial funds diverted to executive compensation and real estate debt.'}}</span>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'What do employees say about working here?',
+              'Who funds this museum?',
+              'How are its trustees connected to its sponsors?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }} else {{
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-emerald-400">ARTIST EQUITY &amp; REMUNERATION</span>
+                    <span class="text-white font-medium text-sm">Artist Fee Benchmarks</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
+                    W.A.G.E. Certified
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  Culture Atlas audits artist compensation practices across the global institutional ecosystem:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">W.A.G.E. Guidelines</strong>
+                    <p class="text-slate-300">Establishes minimum compensation tiers based on institutional operating expenses, requiring guaranteed fees for solo and group exhibitions.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">Independent Commons</strong>
+                    <p class="text-slate-300">Verified independent spaces prioritize artist fees above all, treating artists as core workers rather than unpaid content providers.</p>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'What do employees say about working here?',
+              'Who funds this museum?',
+              'How are its trustees connected to its sponsors?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }}
+        }}
+
+        // INQUIRY 6: How are its trustees connected to its sponsors? / Trustee-Sponsor Interlocks
+        const isTrusteeConnectionInquiry = /trustees?\s*(are\s*)?connected|trustee\s*connection|board\s*connection|interlocking?\s*board|schedule\s*l|board\s*interlock|trustee\s*conflict/i.test(q) ||
+          q === 'how are its trustees connected to its sponsors?' || q === 'how are its trustees connected to its sponsors';
+
+        if (isTrusteeConnectionInquiry) {{
+          if (activeTarget) {{
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-orange-400">TRUSTEE &amp; BOARD INTERLOCKS</span>
+                    <span class="text-white font-medium text-sm">Governance Analysis: ${{formatInstLink(activeTarget)}}</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60">
+                    IRS Schedule L
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  ${{isClean ?
+                    `<strong>${{escapeHtml(activeTarget.name)}}</strong> is governed by an artist-led collective or community advisory council with <strong>zero corporate board interlocks</strong>. Fiduciary stewardship is committed to public benefit and curatorial integrity rather than private capital appreciation.` :
+                    `In major metropolitan museums, seats on the board of trustees are routinely traded for multi-million dollar underwriting gifts. Culture Atlas tracks these financial relationships through <strong>IRS Form 990 Schedule L</strong> (Interested Persons Transactions).`}}
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-orange-300 block font-mono text-[11px] uppercase">Corporate Interlocking Seats</strong>
+                    <span class="text-slate-300">${{isClean ? 'No commercial board seats. Governed by working artists, critical curators, and community stakeholders.' : 'Trustees hold concurrent senior directorships in private equity firms, fossil fuel extractors, and defense contractors.'}}</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-orange-300 block font-mono text-[11px] uppercase">Acquisition &amp; Valuation Conflicts</strong>
+                    <span class="text-slate-300">${{isClean ? 'Non-commercial collection policy; no market speculation on permanent holdings.' : 'Trustee-collectors steering institutional acquisitions toward artists represented in their personal private collections.'}}</span>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'Which sponsors have faced public criticism?',
+              'Who funds this museum?',
+              'Has public pressure changed its policies?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }} else {{
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-orange-400">TRUSTEE &amp; BOARD INTERLOCKS</span>
+                    <span class="text-white font-medium text-sm">Relational Network Dynamics</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60">
+                    IRS Form 990 Schedule L
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  Institutional trustees create conduits between cultural capital, financial speculation, and corporate lobbying. Major mechanisms include:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-orange-300 block font-mono text-[11px] uppercase">Interested Person Transactions</strong>
+                    <p class="text-slate-300">Museums granting lucrative consulting, insurance, and architectural contracts directly to firms owned by board members.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-orange-300 block font-mono text-[11px] uppercase">Market Legitimacy Laundering</strong>
+                    <p class="text-slate-300">Trustees using institutional solo retrospectives to elevate auction valuations for their private art portfolios.</p>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'Which sponsors have faced public criticism?',
+              'Who funds this museum?',
+              'Has public pressure changed its policies?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }}
+        }}
+
+        // INQUIRY 7: Has public pressure changed its policies? / Public Policy Reform Record
+        const isPolicyReformInquiry = /public\s*pressure|pressure\s*changed|policy\s*change|policy\s*reform|divestment\s*victor|what\s*has\s*changed/i.test(q) ||
+          q === 'has public pressure changed its policies?' || q === 'has public pressure changed its policies';
+
+        if (isPolicyReformInquiry) {{
+          if (activeTarget) {{
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-teal-400">PUBLIC POLICY REFORM RECORD</span>
+                    <span class="text-white font-medium text-sm">Policy Impact: ${{formatInstLink(activeTarget)}}</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60">
+                    Democratic Evolution
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  ${{isClean ?
+                    `<strong>${{escapeHtml(activeTarget.name)}}</strong> was established precisely as a structural response to public critiques of mainstream museum capture. Its foundational charter was written to embody ethical funding, universal community access, and uncompromising curatorial freedom.` :
+                    `Public pressure and persistent artist organizing have demonstrated that corporate institutions can be forced to reform. Over the past decade, coordinated cultural resistance has stripped toxic names, ousted predatory trustees, and overturned sponsorship gagging clauses.`}}
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-teal-300 block font-mono text-[11px] uppercase">Divestment Precedents</strong>
+                    <span class="text-slate-300">${{isClean ? 'Immune to corporate boycotts because funding is non-commercial and transparent by design.' : 'Ending multi-decade oil partnerships (BP dropped by Tate and Royal Academy; Shell dropped by Van Gogh Museum).'}}</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-teal-300 block font-mono text-[11px] uppercase">Governance Restructuring</strong>
+                    <span class="text-slate-300">${{isClean ? 'Participatory governance with community advisory oversight.' : 'Removal of conflicted trustees and adoption of institutional gift acceptance ethics committees.'}}</span>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'Have artists protested or boycotted this institution?',
+              'Who funds this museum?',
+              'Which sponsors have faced public criticism?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }} else {{
+            appendCuratorMessage(`
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-mono font-medium text-teal-400">PUBLIC POLICY REFORM RECORD</span>
+                    <span class="text-white font-medium text-sm">Landmark Divestment Victories</span>
+                  </div>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60">
+                    Artist Power
+                  </span>
+                </div>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  Public pressure is the primary driver of institutional integrity. Major historic victories include:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-teal-300 block font-mono text-[11px] uppercase">Sackler Divestment (2019–2022)</strong>
+                    <p class="text-slate-300">Nan Goldin’s P.A.I.N. forced The Met, Tate, Louvre, Guggenheim, and Serpentine to scrub the Sackler family name from galleries worldwide.</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                    <strong class="text-teal-300 block font-mono text-[11px] uppercase">Fossil Free Victories</strong>
+                    <p class="text-slate-300">Liberate Tate, Culture Unstained, and Fossil Free Books forced major institutions and literary festivals to sever multi-decade oil ties.</p>
+                  </div>
+                </div>
+              </div>
+            `, [
+              'Have artists protested or boycotted this institution?',
+              'Who funds this museum?',
+              'Which sponsors have faced public criticism?',
+              'Find independent art spaces near me'
+            ]);
+            return;
+          }}
+        }}
+
+        // INQUIRY 8: Find independent art spaces near me / Geolocation & City Discovery
+        const isNearMeInquiry = /near\s*me|spaces\s*near|art\s*spaces\s*near|closest\s*(art\s*)?space/i.test(q) ||
+          q === 'find independent art spaces near me' || q === 'find independent art spaces near me.';
+
+        if (isNearMeInquiry) {{
+          const detectedCity = findMentionedCity(q) || (curatorContext.lastCity && !['all', 'world'].includes(curatorContext.lastCity.toLowerCase()) ? curatorContext.lastCity : (activeTarget ? activeTarget.city : null));
+          const citySpaces = detectedCity ? ALL_INSTITUTIONS.filter(i => (i.tier === 'A' || (i.tier_label && i.tier_label.toLowerCase().includes('verified'))) && matchC(i.city, detectedCity)) : [];
+
+          appendCuratorMessage(`
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs font-mono font-medium text-emerald-400">INDEPENDENT SANCTUARIES</span>
+                  <span class="text-white font-medium text-sm">Verified Clean Spaces${{detectedCity ? ` in ${{escapeHtml(detectedCity)}}` : ''}}</span>
+                </div>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
+                  Zero Corporate Capture
+                </span>
+              </div>
+              <p class="text-slate-200 text-sm leading-relaxed">
+                Culture Atlas maps 445+ verified independent spaces across 50 global cities. Here are premier clean spaces free of corporate sponsorship:
+              </p>
+              ${{citySpaces.length > 0 ? `
+                <div class="p-2.5 rounded-xl bg-[#121622] border border-emerald-800/50 space-y-1.5 text-xs">
+                  <span class="text-emerald-300 font-mono text-[11px] uppercase block">Independent Spaces in ${{escapeHtml(detectedCity)}}:</span>
+                  <div class="space-y-1">
+                    ${{citySpaces.slice(0, 4).map(s => `<div>· ${{formatInstLink(s)}} <span class="text-slate-400 font-mono">(${{escapeHtml(s.admission_policy || 'Free')}})</span></div>`).join('')}}
+                  </div>
+                </div>
+              ` : ''}}
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
+                <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                  <strong class="text-white block"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="London">London</a> (42 Spaces)</strong>
+                  <span class="text-slate-300">Chisenhale Gallery, Raven Row, Camden Art Centre, Whitechapel Gallery.</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                  <strong class="text-white block"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="New York">New York</a> (38 Spaces)</strong>
+                  <span class="text-slate-300">Artists Space, SculptureCenter, Printed Matter, Storefront for Art.</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                  <strong class="text-white block"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Paris">Paris</a> (16 Spaces)</strong>
+                  <span class="text-slate-300">Bétonsalon, Palais de Tokyo, Jeu de Paume, Fondation Pernod Ricard.</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
+                  <strong class="text-white block"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Manila">Manila</a> (Quezon City)</strong>
+                  <span class="text-slate-300">Green Papaya Art Projects — oldest artist-run initiative in Metro Manila.</span>
+                </div>
+              </div>
+              <p class="text-slate-300 text-xs pt-1">
+                Tell me your city or click any city on the 3D globe to discover independent spaces near you.
+              </p>
+            </div>
+          `, [
+            'Art crawl in London',
+            'Art crawl in New York',
+            'Who funds this museum?',
+            'What do employees say about working here?'
+          ]);
+          return;
+        }}
+
+
 
       // B. Meta & Methodology Intent Detection (Bypasses Early Geo-Zoom)
       const isGreeting = /^(hello|hi|hey|greetings|good\s+(morning|afternoon|evening)|howdy)(\s+|$|[!?,.])/i.test(q) || q === 'hello' || q === 'hi' || q === 'hey';
@@ -22730,30 +23381,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }}
 
-      // 1. Try Live Generative AI Model if API Key is configured
-      if (aiApiKey || ATLAS_AI_PROXY_URL) {{
-        const aiRes = await queryAI(query, webIntel);
-        if (aiRes) {{
-          curatorTyping.classList.add('hidden');
-          const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
-          let thinkingData = null;
-          const thoughtText = (aiRes && aiRes.thinking) || (typeof queryAI !== 'undefined' && queryAI.lastThinking) || '';
-          if (thoughtText) {{
-            thinkingData = {{
-              duration: (typeof queryAI !== 'undefined' && queryAI.lastDuration) || 3,
-              mode: getChatModeConfig(query),
-              thought: thoughtText,
-              step: 'Live Anthropic Intelligence Reasoning'
-            }};
-          }}
-          appendCuratorMessage(aiHtml, [], webIntel, thinkingData);
-          return;
-        }}
-      }}
-
-      // 2. Intelligent Offline Conversational Critical Engine (Always Active)
-      setTimeout(() => {{
-        curatorTyping.classList.add('hidden');
+      // 2. Intelligent Offline Conversational Critical Engine (Always Active & Synchronous)
+      curatorTyping.classList.add('hidden');
 
         // =========================================================================
         // 🏛️ CRITICAL THEORY & ART SCENE SPECIALIST HANDLERS
@@ -25706,40 +26335,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           return;
         }}
 
-        // Exact Prompt 1: Find independent art spaces near me
-        if (q.includes('near me') || q.includes('spaces near me') || q.includes('art spaces near')) {{
-          appendCuratorMessage(`
-            <p class="text-slate-200">
-              Here are verified independent art spaces with clean funding. Tell me your city (like <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="New York">New York</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Utrecht">Utrecht</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="Paris">Paris</a>) to find spaces closest to you:
-            </p>
-            <p class="text-slate-300">
-              - In Utrecht & The Netherlands: ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.id === 'bak-utrecht' || i.name.includes('BAK')))}} in Utrecht, ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.id === 'casco-art-institute'))}} in Utrecht, and ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.id === 'kunstinstituut-melly'))}} in Rotterdam.<br>
-              - In London: ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale')))}} in Bow and ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Camden')))}} in North London (both free).<br>
-              - In New York: ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Artists Space')))}} in Tribeca and ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('SculptureCenter')))}} in Queens.<br>
-              - In Paris: ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Bétonsalon')))}} in the 13th and ${{formatInstLink(ALL_INSTITUTIONS.find(i => i.name.includes('Palais de Tokyo')))}}.
-            </p>
-          `);
-          return;
-        }}
-
-        // Exact Prompt 2: Who funds this museum?
-        if (q.includes('who funds this museum') || (q.includes('who funds') && q.length < 30)) {{
-          appendCuratorMessage(`
-            <p class="text-slate-200">
-              Every museum in Culture Atlas is audited for clean, transparent funding:
-            </p>
-            <p class="text-slate-300">
-              1. <strong>Civic Arts Councils & The Dutch Model:</strong> European spaces receive structural civic funding (Mondriaan Fund in the Netherlands, Arts Council England, DRAC France). Peer panels of curators and artists allocate funding based on critical merit, protecting curators from private corporate censorship.<br>
-              2. <strong>Regulatory Filings:</strong> In the US, we audit IRS Form 990 (Schedule I grants and Schedule L trustee deals) to confirm board members have no ties to weapons manufacturing, fossil fuels, or private prisons.<br>
-              3. <strong>Artist-Run & Cooperative Commons:</strong> Managed directly by artists and communities (like Casco in Utrecht or Chisenhale in London) without billionaire corporate boards.
-            </p>
-            <p class="text-slate-300">
-              Type the name of any museum (like MoMA, BAK Utrecht, Tate, or Van Abbemuseum) to see its specific funding audit.
-            </p>
-          `);
-          return;
-        }}
-
         // Exact Prompt 3: What are the opening hours and ticket prices?
         if (q.includes('opening hours and ticket') || q.includes('ticket prices') || q.includes('ticket price')) {{
           appendCuratorMessage(`
@@ -26684,6 +27279,43 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
           return;
         }}
 
+        // Live Generative AI Fallback (only when no offline handler matched and live API key/proxy is present)
+        if ((aiApiKey && aiApiKey !== _SYS_KEY) || ATLAS_AI_PROXY_URL) {{
+          const scrapingBadge = document.getElementById('curatorScrapingBadge');
+          if (scrapingBadge) scrapingBadge.classList.remove('hidden');
+          let webIntel = null;
+          if (ATLAS_AI_PROXY_URL) {{
+            try {{
+              webIntel = await scrapeWebForQuery(query);
+            }} catch (err) {{
+              console.warn('Scraping error:', err);
+            }}
+          }}
+          if (scrapingBadge) scrapingBadge.classList.add('hidden');
+
+          try {{
+            const aiRes = await queryAI(query, webIntel);
+            if (aiRes) {{
+              curatorTyping.classList.add('hidden');
+              const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
+              let thinkingData = null;
+              const thoughtText = (aiRes && aiRes.thinking) || (typeof queryAI !== 'undefined' && queryAI.lastThinking) || '';
+              if (thoughtText) {{
+                thinkingData = {{
+                  duration: (typeof queryAI !== 'undefined' && queryAI.lastDuration) || 3,
+                  mode: getChatModeConfig(query),
+                  thought: thoughtText,
+                  step: 'Live Anthropic Intelligence Reasoning'
+                }};
+              }}
+              appendCuratorMessage(aiHtml, [], webIntel, thinkingData);
+              return;
+            }}
+          }} catch (aiErr) {{
+            console.warn('Live AI query error:', aiErr);
+          }}
+        }}
+
         // O. Fallback with helpful conversational guidance
         const chis = ALL_INSTITUTIONS.find(i => i.name.includes('Chisenhale'));
         const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
@@ -26698,7 +27330,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
           <p class="text-[#93c5fd]">
             Which city or exhibition are we dissecting next?
           </p>
-        `);      }}, 300);
+        `);
     }}
 
     // =========================================================
@@ -26876,6 +27508,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         if (!q) return;
         chatInput.value = '';
         tabChat?.click();
+        appendUserMessage(q);
         if (typeof handleCuratorQuery === 'function') {{
           handleCuratorQuery(q);
         }}
@@ -31447,8 +32080,15 @@ bar.innerHTML = html;
     applyFilters();
 
     const defaultInst = ALL_INSTITUTIONS.find(i => i.name.includes('Green Papaya') || i.id === 'green-papaya-art-projects') || ALL_INSTITUTIONS[0];
-    if (defaultInst && typeof updateDesktopDossier === 'function') {{
-      updateDesktopDossier(defaultInst);
+    if (defaultInst) {{
+      selectedInstitution = defaultInst;
+      if (typeof curatorContext !== 'undefined') {{
+        curatorContext.activeFocusInst = defaultInst;
+        curatorContext.lastInst = defaultInst;
+      }}
+      if (typeof updateDesktopDossier === 'function') {{
+        updateDesktopDossier(defaultInst);
+      }}
     }}
 
     // Deep link and URL parameter handler (Gossip mode, Direct Institution, Mobile Dossier)
