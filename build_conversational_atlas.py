@@ -268,8 +268,14 @@ def build():
     excluded_json = json.dumps(excluded_data, separators=(',', ':'))
 
     import base64
-    b64_reg = base64.b64encode(open('app/fonts/PPTelegraf-Regular.otf', 'rb').read()).decode('ascii')
-    b64_ultralight = base64.b64encode(open('app/fonts/PPTelegraf-Ultralight.otf', 'rb').read()).decode('ascii')
+    b64_museum_light = base64.b64encode(open('app/fonts/PPMuseum-Light.otf', 'rb').read()).decode('ascii')
+    b64_museum_lightitalic = base64.b64encode(open('app/fonts/PPMuseum-LightItalic.otf', 'rb').read()).decode('ascii')
+    b64_museum_reg = base64.b64encode(open('app/fonts/PPMuseum-Regular.otf', 'rb').read()).decode('ascii')
+    b64_museum_regitalic = base64.b64encode(open('app/fonts/PPMuseum-RegularItalic.otf', 'rb').read()).decode('ascii')
+    b64_museum_ultrabold = base64.b64encode(open('app/fonts/PPMuseum-Ultrabold.otf', 'rb').read()).decode('ascii')
+    b64_museum_ultrabolditalic = base64.b64encode(open('app/fonts/PPMuseum-UltraboldItalic.otf', 'rb').read()).decode('ascii')
+    b64_reg = b64_museum_reg
+    b64_ultralight = b64_museum_light
     maplibre_css = open('app/vendor/maplibre-gl.css', 'r', encoding='utf-8').read()
     maplibre_js = open('app/vendor/maplibre-gl.js', 'r', encoding='utf-8').read()
 
@@ -290,8 +296,9 @@ def build():
       theme: {{
         extend: {{
           fontFamily: {{
-            sans: ['"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
-            mono: ['"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            sans: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            mono: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            serif: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
           }},
           letterSpacing: {{
             DEFAULT: '0.6pt',
@@ -328,13 +335,12 @@ def build():
   </script>
   <style>
     /* ========================================================= */
-    /* STRICT EXCLUSIVITY: ONLY PP TELEGRAPH EXTRA THIN FOR EVERYTHING */
+    /* STRICT EXCLUSIVITY: ONLY PP MUSEUM (PANGRAM PANGRAM) FOR EVERYTHING */
     /* STRICT 4-TYPE-SIZE SYSTEM: 14px, 16px, 19px, 27px ONLY */
-    /* USER SPECIFICATION: USE 4 FONT SIZES ONLY: 14 16 AND 19 27 */
+    /* USER SPECIFICATION: USE PP MUSEUM FONTS ONLY: LIGHT, REGULAR, ULTRABOLD + ITALICS */
     /* ========================================================= */
     *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {{
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 200 !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-synthesis: none !important;
       letter-spacing: 0.6pt !important;
       line-height: 120% !important;
@@ -351,20 +357,24 @@ def build():
       font-size: 14px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 200 !important;
+      font-weight: 400;
     }}
     input, button, select, textarea, p, span, div, li, a {{
       font-size: 14px;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 200 !important;
     }}
 
-    strong, b, h1, h2, h3, h4, h5, h6, .font-normal, [class*="font-normal"] {{
-      font-weight: 200 !important;
+    strong, b, h1, h2, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"] {{
+      font-weight: 800 !important;
     }}
     strong, b {{
       color: #ffffff;
+    }}
+    em, i, .italic, [class*="italic"] {{
+      font-style: italic !important;
+    }}
+    .font-light, .font-thin, .font-extralight, .text-light, .type-light, [class*="font-thin"], [class*="font-extralight"] {{
       font-weight: 200 !important;
     }}
 
@@ -377,7 +387,6 @@ def build():
       font-size: 14px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 200 !important;
     }}
 
     /* Size 2: 16px (Standard Reading Body / Primary Actions / Form Labels / Prominent List Elements) */
@@ -388,7 +397,6 @@ def build():
       font-size: 18px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 200 !important;
     }}
 
     /* Size 3: 19px (Card Titles, Subheaders, Museum Names, Medium Headers) */
@@ -401,7 +409,7 @@ def build():
       font-size: 18px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 200 !important;
+      font-weight: 800 !important;
     }}
 
     /* Size 4: 27px (Main Brand Title, Modal Headlines, Large Dossier Titles, Hero Headers) */
@@ -415,31 +423,125 @@ def build():
       font-size: 27px !important;
       line-height: 120% !important;
       letter-spacing: 0.6pt !important;
-      font-weight: 200 !important;
+      font-weight: 800 !important;
     }}
 
+    /* ========================================================= */
+    /* PP MUSEUM EMBEDDED TYPOGRAPHY (LIGHT, REGULAR, ULTRABOLD + ITALICS) */
+    /* ========================================================= */
+    @font-face {{
+      font-family: 'PP Museum';
+      src: url('data:font/otf;base64,{b64_museum_light}') format('opentype'),
+           url('fonts/PPMuseum-Light.otf') format('opentype'),
+           local('PP Museum Light'), local('PPMuseum-Light');
+      font-weight: 100 350;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Museum';
+      src: url('data:font/otf;base64,{b64_museum_lightitalic}') format('opentype'),
+           url('fonts/PPMuseum-LightItalic.otf') format('opentype'),
+           local('PP Museum Light Italic'), local('PPMuseum-LightItalic');
+      font-weight: 100 350;
+      font-style: italic;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Museum';
+      src: url('data:font/otf;base64,{b64_museum_reg}') format('opentype'),
+           url('fonts/PPMuseum-Regular.otf') format('opentype'),
+           local('PP Museum Regular'), local('PP Museum'), local('PPMuseum-Regular');
+      font-weight: 351 600;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Museum';
+      src: url('data:font/otf;base64,{b64_museum_regitalic}') format('opentype'),
+           url('fonts/PPMuseum-RegularItalic.otf') format('opentype'),
+           local('PP Museum Regular Italic'), local('PPMuseum-RegularItalic');
+      font-weight: 351 600;
+      font-style: italic;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Museum';
+      src: url('data:font/otf;base64,{b64_museum_ultrabold}') format('opentype'),
+           url('fonts/PPMuseum-Ultrabold.otf') format('opentype'),
+           local('PP Museum Ultrabold'), local('PPMuseum-Ultrabold');
+      font-weight: 601 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Museum';
+      src: url('data:font/otf;base64,{b64_museum_ultrabolditalic}') format('opentype'),
+           url('fonts/PPMuseum-UltraboldItalic.otf') format('opentype'),
+           local('PP Museum Ultrabold Italic'), local('PPMuseum-UltraboldItalic');
+      font-weight: 601 900;
+      font-style: italic;
+      font-display: swap;
+    }}
+
+    /* Compatibility aliases: PP Telegraf & PP Telegraph */
     @font-face {{
       font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_ultralight}') format('opentype'),
-           url('fonts/PPTelegraf-Ultralight.otf') format('opentype'),
-           local('PP Telegraf Ultralight'), local('PP Telegraf Extra Thin'), local('PPTelegraf-Ultralight');
-      font-weight: 100 900;
+      src: url('data:font/otf;base64,{b64_museum_light}') format('opentype'),
+           url('fonts/PPMuseum-Light.otf') format('opentype'),
+           local('PP Museum Light'), local('PPMuseum-Light');
+      font-weight: 100 350;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_museum_reg}') format('opentype'),
+           url('fonts/PPMuseum-Regular.otf') format('opentype'),
+           local('PP Museum Regular'), local('PPMuseum-Regular');
+      font-weight: 351 600;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraf';
+      src: url('data:font/otf;base64,{b64_museum_ultrabold}') format('opentype'),
+           url('fonts/PPMuseum-Ultrabold.otf') format('opentype'),
+           local('PP Museum Ultrabold'), local('PPMuseum-Ultrabold');
+      font-weight: 601 900;
       font-style: normal;
       font-display: swap;
     }}
     @font-face {{
       font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_ultralight}') format('opentype'),
-           url('fonts/PPTelegraf-Ultralight.otf') format('opentype'),
-           local('PP Telegraf Ultralight'), local('PP Telegraf Extra Thin'), local('PPTelegraf-Ultralight');
-      font-weight: 100 900;
+      src: url('data:font/otf;base64,{b64_museum_light}') format('opentype'),
+           url('fonts/PPMuseum-Light.otf') format('opentype'),
+           local('PP Museum Light'), local('PPMuseum-Light');
+      font-weight: 100 350;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraph';
+      src: url('data:font/otf;base64,{b64_museum_reg}') format('opentype'),
+           url('fonts/PPMuseum-Regular.otf') format('opentype'),
+           local('PP Museum Regular'), local('PPMuseum-Regular');
+      font-weight: 351 600;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PP Telegraph';
+      src: url('data:font/otf;base64,{b64_museum_ultrabold}') format('opentype'),
+           url('fonts/PPMuseum-Ultrabold.otf') format('opentype'),
+           local('PP Museum Ultrabold'), local('PPMuseum-Ultrabold');
+      font-weight: 601 900;
       font-style: normal;
       font-display: swap;
     }}
 
     *, *::before, *::after {{
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 200 !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       -webkit-tap-highlight-color: transparent !important;
     }}
 
@@ -468,21 +570,37 @@ def build():
     }}
 
     body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b, em, i {{
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+    }}
+
+    strong, b, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"] {{
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 800 !important;
+    }}
+
+    em, i, .italic, [class*="italic"] {{
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-style: italic !important;
+    }}
+
+    .font-light, .font-thin, .font-extralight, .text-light, .type-light, [class*="font-thin"], [class*="font-extralight"] {{
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 200 !important;
     }}
 
-    .font-mono, monospace, code, pre, .font-bold, .font-semibold, .font-medium, strong, b {{
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 200 !important;
+    .font-mono, monospace, code, pre {{
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
     }}
 
     html, body {{
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       background-color: #000000;
       color: #f8fafc;
       margin: 0;
       padding: 0;
+      font-size: 14px !important;
+      line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
       overflow-x: hidden !important;
       overflow-y: hidden;
       width: 100% !important;
@@ -498,7 +616,7 @@ def build():
       box-sizing: border-box !important;
     }}
     .font-mono {{
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       letter-spacing: -0.01em;
     }}
     #globeCanvas {{
@@ -815,7 +933,7 @@ def build():
       opacity: 0.92;
     }}
     .brand-logo-title {{
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 200 !important;
       font-size: 27px;
       line-height: 1;
@@ -857,7 +975,7 @@ def build():
       background: rgba(11, 31, 22, 0.9);
       border: 1px solid rgba(47, 187, 136, 0.45);
       color: #2fbb88;
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 200 !important;
       font-size: 14px;
       letter-spacing: 0.7px;
@@ -887,7 +1005,7 @@ def build():
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 0, 0, 0.4);
-      font-family: "PP Telegraf", "PP Telegraph", sans-serif;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif;
       font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.02em;
@@ -959,11 +1077,11 @@ def build():
     }}
     /* 🔒 SECURE WHISTLEBLOWER & INTEL INTAKE MODE STYLING */
     #chatModeSegmentedSwitch button {{
-      font-family: "PP Telegraf", "PP Telegraph", -apple-system, sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       letter-spacing: 0.7px !important;
     }}
     #secureIntakeModeBanner {{
-      font-family: "PP Telegraf", "PP Telegraph", -apple-system, sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       letter-spacing: 0.7px !important;
     }}
     body.chat-input-mode-active #workInputCard {{
@@ -1163,7 +1281,7 @@ def build():
       color: #ffffff !important;
       border-radius: 9999px !important;
       padding: 7px 16px;
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-size: 14px;
       font-weight: 200 !important;
       letter-spacing: 0.02em;
@@ -1235,7 +1353,7 @@ def build():
       border: 1px solid rgba(255, 255, 255, 0.35) !important;
       border-radius: 9999px !important;
       padding: 2px 8px !important;
-      font-family: 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-size: 14px !important;
       font-weight: 200 !important;
       letter-spacing: 0.02em !important;
@@ -1255,7 +1373,7 @@ def build():
       gap: 5px !important;
       border-radius: 0.75rem !important;
       padding: 3px 10px !important;
-      font-family: 'PP Telegraf', 'PP Telegraph', -apple-system, sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-size: 14px !important;
       font-weight: 400 !important;
       letter-spacing: 0.01em !important;
@@ -1287,7 +1405,7 @@ def build():
       gap: 5px !important;
       border-radius: 0.75rem !important;
       padding: 3px 10px !important;
-      font-family: 'PP Telegraf', 'PP Telegraph', -apple-system, sans-serif !important;
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-size: 14px !important;
       font-weight: 400 !important;
       letter-spacing: 0.01em !important;
@@ -12048,7 +12166,7 @@ def build():
         const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : '';
 
         const popupContent = `
-          <div style="font-family:'PP Telegraf',sans-serif; min-width:280px; max-width:350px; padding:6px 6px 4px 6px; color:#f1f5f9; box-sizing:border-box;">
+          <div style="font-family:'PP Museum',sans-serif; min-width:280px; max-width:350px; padding:6px 6px 4px 6px; color:#f1f5f9; box-sizing:border-box;">
             <!-- Header Section -->
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:4px;">
               <div style="padding-right:14px; min-width:0;">
@@ -12058,17 +12176,17 @@ def build():
                    onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
                   ${{escapeHtml(inst.name)}}
                 </a>
-                <div style="font-size:14px; color:#a1a1aa; font-family:monospace; margin-top:2px;">
+                <div style="font-size:14px; color:#a1a1aa;  margin-top:2px;">
                   ${{escapeHtml(inst.location || inst.city)}} · ${{isA ? 'Verified' : 'One Name'}}
                 </div>
               </div>
-              <span style="font-size:14px; font-family:monospace; padding:2px 7px; border-radius:6px; border:1px solid ${{isA ? 'rgba(16,185,129,0.4)' : 'rgba(56,189,248,0.4)'}}; background:${{isA ? '#0a2016' : '#0d1d33'}}; color:${{markerColor}}; white-space:nowrap; shrink:0;">
+              <span style="font-size:14px;  padding:2px 7px; border-radius:6px; border:1px solid ${{isA ? 'rgba(16,185,129,0.4)' : 'rgba(56,189,248,0.4)'}}; background:${{isA ? '#0a2016' : '#0d1d33'}}; color:${{markerColor}}; white-space:nowrap; shrink:0;">
                 ${{isA ? 'Verified' : 'One Name'}}
               </span>
             </div>
 
             <!-- Hours & Admission Tier -->
-            <div style="font-size:14px; color:#34d399; font-family:monospace; margin-top:5px;">
+            <div style="font-size:14px; color:#34d399;  margin-top:5px;">
               ${{escapeHtml(shortH)}} · ${{escapeHtml(shortF)}}
             </div>
 
@@ -12109,12 +12227,12 @@ def build():
             <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px; padding-top:9px; border-top:1px solid #27272a; font-size:14px; box-sizing:border-box;">
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="color:#93c5fd; font-family:monospace; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:160px; outline:none; display:inline-block;"
+                   style="color:#93c5fd;  text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:160px; outline:none; display:inline-block;"
                    onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"
                    title="${{escapeHtml(webUrl)}}">
                    ${{escapeHtml(domain)}}
                 </a>
-              ` : '<span style="color:#64748b; font-family:monospace; font-size:14px;">Independent Space</span>'}}
+              ` : '<span style="color:#64748b;  font-size:14px;">Independent Space</span>'}}
               
               <button type="button" onclick="window.atlasAskCurator('${{safeName}}')" 
                       style="display:inline-flex; align-items:center; gap:5px; padding:5px 12px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.3); border:none; outline:none; cursor:pointer; white-space:nowrap; shrink:0;" 
@@ -12584,7 +12702,7 @@ def build():
           badgeEl.style.background = 'linear-gradient(135deg, #064e3b 0%, #022c22 100%)';
           badgeEl.style.border = '2.5px solid #34d399';
           badgeEl.style.color = '#ffffff';
-          badgeEl.style.fontFamily = 'monospace';
+          badgeEl.style.fontFamily = '"PP Museum", "PP Telegraf", sans-serif';
           badgeEl.style.fontSize = '14px';
           badgeEl.style.fontWeight = 'bold';
           badgeEl.style.display = 'flex';
@@ -12599,12 +12717,12 @@ def build():
           const safeName = escapeHtml(stop.name).replace(/'/g, "\\'");
           const isClean = stop.tier === 'A';
           const popupHtml = `
-            <div style="font-family:'PP Telegraf',sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f1f5f9;">
+            <div style="font-family:'PP Museum',sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f1f5f9;">
               <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
-                <span style="font-size:14px; font-family:monospace; color:#34d399; font-weight:600; text-transform:uppercase;">
+                <span style="font-size:14px;  color:#34d399; font-weight:600; text-transform:uppercase;">
                   Stop ${{stop.stopIndex}} of ${{route.stops.length}}
                 </span>
-                <span style="font-size:14px; font-family:monospace; padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
+                <span style="font-size:14px;  padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
                   ${{isClean ? 'Clean Funding' : 'Flagged'}}
                 </span>
               </div>
@@ -12614,18 +12732,18 @@ def build():
               <div style="font-size:14px; color:#a1a1aa; margin-bottom:6px;">
                 ${{escapeHtml(stop.address || stop.neighborhood || stop.city)}}
               </div>
-              <div style="font-size:14px; font-family:monospace; color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
+              <div style="font-size:14px;  color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
                 ${{escapeHtml(stop.openingHours)}}
               </div>
               <div style="font-size:14px; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
                 ${{escapeHtml(stop.curatorialFocus || '')}}
               </div>
               ${{idx < route.stops.length - 1 ? `
-                <div style="font-size:14px; font-family:monospace; color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:14px;  color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Next stop: ${{escapeHtml(route.stops[idx + 1].name)}} (${{stop.nextLegKm || route.stops[idx+1].legDistanceKm}} km · ${{stop.nextLegMin || route.stops[idx+1].legWalkMinutes}} min walk)
                 </div>
               ` : `
-                <div style="font-size:14px; font-family:monospace; color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:14px;  color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Final Itinerary Destination
                 </div>
               `}}
@@ -13499,7 +13617,7 @@ def build():
 
         // Icon or Initial in center
         trusteeCtx.fillStyle = '#ffffff';
-        trusteeCtx.font = 'bold 14px sans-serif';
+        trusteeCtx.font = '800 14px "PP Museum", "PP Telegraf", sans-serif';
         trusteeCtx.textAlign = 'center';
         trusteeCtx.textBaseline = 'middle';
         const glyph = n.type === 'institution' ? (n.tier === 'A' ? 'CLEAN' : 'INST') : 'CONFLICT';
@@ -13518,14 +13636,14 @@ def build():
           trusteeCtx.stroke();
 
           trusteeCtx.fillStyle = '#ffffff';
-          trusteeCtx.font = 'bold 14px monospace';
+          trusteeCtx.font = '800 14px "PP Museum", "PP Telegraf", sans-serif';
           trusteeCtx.fillText(`${{n.interlocks}}`, badgeX, badgeY);
         }}
 
         // Text Label
         if (!isDimmed || isFocus) {{
           const label = n.shortName || n.name;
-          trusteeCtx.font = isFocus ? 'bold 16px sans-serif' : '14px sans-serif';
+          trusteeCtx.font = isFocus ? '800 16px "PP Museum", "PP Telegraf", sans-serif' : '14px "PP Museum", "PP Telegraf", sans-serif';
           const tw = trusteeCtx.measureText(label).width;
           const ly = n.y + r + 12;
 
@@ -14559,16 +14677,16 @@ def build():
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
 
-      ctx.font = '200 18px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '800 18px "PP Museum", "PP Telegraf", sans-serif';
       const nameText = inst.name;
       const nameW = ctx.measureText(nameText).width;
 
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ' · ' + inst.curatorial_focus : (inst.neighborhood ? ' · ' + inst.neighborhood : ''));
-      ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
       const subW = ctx.measureText(subText).width;
 
-      ctx.font = '200 14px "PP Telegraf", monospace';
+      ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
       const webW = ctx.measureText(domain).width;
 
       const cardW = Math.max(240, Math.min(360, Math.max(nameW, subW, webW + 36) + 28));
@@ -14594,13 +14712,13 @@ def build():
       ctx.roundRect ? ctx.roundRect(cardX, cardY, 3.5, cardH, [8, 0, 0, 8]) : ctx.rect(cardX, cardY, 3.5, cardH);
       ctx.fill();
 
-      ctx.font = '200 14px "PP Telegraf", monospace';
+      ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = tierColor;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillText(tierLabel, cardX + 12, cardY + 7);
 
-      ctx.font = '200 18px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '800 18px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#ffffff';
       let displayName = nameText;
       if (ctx.measureText(displayName).width > cardW - 24) {{
@@ -14611,7 +14729,7 @@ def build():
       }}
       ctx.fillText(displayName, cardX + 12, cardY + 20);
 
-      ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+      ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#94a3b8';
       let displaySub = subText;
       if (ctx.measureText(displaySub).width > cardW - 24) {{
@@ -14636,13 +14754,13 @@ def build():
         ctx.fill();
         ctx.stroke();
 
-        ctx.font = '200 14px "PP Telegraf", monospace';
+        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#93c5fd';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
         ctx.fillText(domain, btnX + 8, btnY + 2);
 
-        ctx.font = '200 14px "PP Telegraf", sans-serif';
+        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#64748b';
         ctx.fillText('Click to open website', btnX + btnW + 8, btnY + 3);
 
@@ -14865,7 +14983,7 @@ def build():
 
         // Graticule Degree Annotations
         if (r > baseRadius * 0.9) {{
-          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
           ctx.fillStyle = isGossipModeActive ? '#eab308' : '#263a55';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -15003,7 +15121,7 @@ def build():
         // 6. City Badges (All cities in selected country or top cities worldwide)
         cityBadgeHitboxes = [];
         const drawnCityBoxes = [];
-        ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
         
         let candidateCities = [];
         if (selectedCountryFilter !== 'all') {{
@@ -15101,7 +15219,7 @@ def build():
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -15234,9 +15352,9 @@ def build():
             const corr = hoveredRailCorridor;
             const tipHeader = corr.name.toUpperCase();
             const tipSub = `${{corr.from}} - ${{corr.to}} · ${{corr.travel_time || 'Eco-Transit'}} · ${{corr.emission_saving || 'Low Carbon'}}`;
-            ctx.font = '200 14px "PP Telegraf", monospace';
+            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
             const hw = ctx.measureText(tipHeader).width;
-            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
             const sw = ctx.measureText(tipSub).width;
             const rw = Math.max(hw, sw) + 22;
             const rh = 40;
@@ -15253,13 +15371,13 @@ def build():
             ctx.lineWidth = 1.2;
             ctx.stroke();
 
-            ctx.font = '200 14px "PP Telegraf", monospace';
+            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
             ctx.fillStyle = '#38bdf8';
             ctx.textAlign = 'left';
             ctx.textBaseline = 'top';
             ctx.fillText(tipHeader, rx + 10, ry + 6);
 
-            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
             ctx.fillStyle = '#ffffff';
             ctx.fillText(tipSub, rx + 10, ry + 20);
             ctx.restore();
@@ -15381,7 +15499,7 @@ def build():
               ctx.lineWidth = isHov ? 2 : 1.4;
               ctx.stroke();
 
-              ctx.font = '200 14px "PP Telegraf", monospace';
+              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = '#ffffff';
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
@@ -15390,7 +15508,7 @@ def build():
 
               if (isHov) {{
                 ctx.save();
-                ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+                ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
                 const tipTxt = `${{cData.name}} · ${{cData.insts.length}} Independent Spaces`;
                 const tw = ctx.measureText(tipTxt).width;
                 const tbx = pt.x - tw / 2 - 8;
@@ -15494,7 +15612,7 @@ def build():
           }} else if (shouldDrawGlobeLabel) {{
             // Render institution name on top of dot across ALL points of view
             ctx.save();
-            ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 25 ? d.inst.name.substring(0, 23) + '…' : d.inst.name;
@@ -15550,14 +15668,14 @@ def build():
               const countTxt = `${{countVal}} Verified Cultural Space${{countVal === 1 ? '' : 's'}}`;
               const linkTxt = 'Click to Explore →';
 
-              ctx.font = '200 18px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.font = '800 18px "PP Museum", "PP Telegraf", sans-serif';
               const twCity = ctx.measureText(cityTxt).width;
 
-              ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
               const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
               const twCount = ctx.measureText(countTxt).width;
 
-              ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
               const twLink = ctx.measureText(linkTxt).width;
 
               const linkBtnW = twLink + 22;
@@ -15601,7 +15719,7 @@ def build():
               ctx.stroke();
 
               // Line 1: City Name (bold 16px)
-              ctx.font = '200 18px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.font = '800 18px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive ? '#facc15' : '#38bdf8';
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
@@ -15611,14 +15729,14 @@ def build():
 
               // Line 2: Country Name (if available, 14px, muted slate, own line, no dot)
               if (countryTxt) {{
-                ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+                ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
                 ctx.fillStyle = isGossipModeActive ? '#fde047' : '#94a3b8';
                 ctx.fillText(countryTxt, cardX + 14, currentY);
                 currentY += 22;
               }}
 
               // Line 3: Verified Cultural Spaces Count (14px, crisp light slate, own line, no dot)
-              ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive ? '#fef9c3' : '#f1f5f9';
               ctx.fillText(countTxt, cardX + 14, currentY);
               currentY += 22;
@@ -15655,7 +15773,7 @@ def build():
               ctx.stroke();
               ctx.shadowBlur = 0;
 
-              ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive 
                 ? (isHoveringCityExploreLink ? '#38bdf8' : '#facc15') 
                 : (isHoveringCityExploreLink ? '#ffffff' : '#38bdf8');
@@ -15737,7 +15855,7 @@ def build():
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -15791,7 +15909,7 @@ def build():
         ctx.closePath();
         ctx.fill();
 
-        ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -15821,7 +15939,7 @@ def build():
             floatingCard.style.top = `${{Math.round(pt.y - 40)}}px`;
           }}
 
-          ctx.font = '200 14px "PP Telegraf", "PP Telegraph", sans-serif';
+          ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
           ctx.fillStyle = '#ffffff';
           ctx.textAlign = 'left';
           ctx.textBaseline = 'middle';

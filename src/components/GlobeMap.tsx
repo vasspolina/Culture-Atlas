@@ -269,7 +269,7 @@ export const GlobeMap: React.FC<GlobeMapProps> = ({
         .attr('class', 'country-lbl')
         .attr('x', (d) => d.p[0])
         .attr('y', (d) => d.p[1])
-        .style('font-family', '"PP Telegraf", "Telegraf", "Inter", sans-serif')
+        .style('font-family', '"PP Museum", "PP Telegraf", "Telegraf", sans-serif')
         .style('font-weight', '300')
         .style('fill', '#ffffff')
         .style('stroke', 'none')

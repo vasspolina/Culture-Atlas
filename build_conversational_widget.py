@@ -76,7 +76,7 @@ def update_widget():
     institutions_json = open('institutions.json', 'r', encoding='utf-8').read().strip()
 
     import base64
-    b64_reg = base64.b64encode(open('app/fonts/PPTelegraf-Regular.otf', 'rb').read()).decode('ascii')
+    b64_reg = base64.b64encode(open('app/fonts/PPMuseum-Regular.otf', 'rb').read()).decode('ascii')
 
     widget_html = f"""<!DOCTYPE html>
 <html>
@@ -89,8 +89,9 @@ def update_widget():
       theme: {{
         extend: {{
           fontFamily: {{
-            sans: ['"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
-            mono: ['"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            sans: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            mono: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            serif: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
           }},
           letterSpacing: {{
             DEFAULT: '0.6pt',
@@ -198,9 +199,9 @@ def update_widget():
     }}
 
     @font-face {{
-      font-family: 'PP Telegraph';
+      font-family: 'PP Museum';
       src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular'), local('PP Telegraph');
+           local('PP Museum Regular'), local('PP Museum'), local('PPMuseum-Regular');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -208,56 +209,24 @@ def update_widget():
     @font-face {{
       font-family: 'PP Telegraph';
       src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular'), local('PP Telegraph');
+           local('PP Museum Regular'), local('PP Museum'), local('PPMuseum-Regular');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
     }}
     @font-face {{
-      font-family: 'PP Telegraf';
+      font-family: 'PP Museum';
       src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 500;
+           local('PP Museum Regular'), local('PP Museum'), local('PPMuseum-Regular');
+      font-weight: 500 900;
       font-style: normal;
       font-display: swap;
     }}
     @font-face {{
       font-family: 'PP Telegraf';
       src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }}
-    @font-face {{
-      font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_reg}') format('opentype'),
-           local('PP Telegraf Regular'), local('PPTelegraf-Regular'), local('PP Telegraph Regular');
-      font-weight: 700;
+           local('PP Museum Regular'), local('PP Museum'), local('PPMuseum-Regular');
+      font-weight: 400 900;
       font-style: normal;
       font-display: swap;
     }}
