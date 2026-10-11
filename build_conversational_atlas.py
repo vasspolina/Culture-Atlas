@@ -19825,6 +19825,11 @@ def build():
     function renderCuratorMarkdown(rawText) {{
       if (!rawText || typeof rawText !== 'string') return '';
 
+      // Guard against re-processing already rendered curator HTML
+      if (rawText.includes('curator-section-hdr') || rawText.includes('curator-bullet-list') || (rawText.trim().startsWith('<div') && rawText.includes('</div>'))) {{
+        return rawText;
+      }}
+
       // Normalize line breaks
       let text = rawText.replace(/\\r\\n/g, '\\n');
 
@@ -19919,16 +19924,17 @@ def build():
         // Code `code`
         s = s.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-[#1e293b] text-emerald-300 font-mono text-[14px]">$1</code>');
         // Bold + Italic ***text*** or ___text___
-        s = s.replace(/(\\*\\*\\*|___)([^\\*_\\n]+)\\1/g, '<strong class="text-white font-semibold"><em class="text-slate-200 italic">$2</em></strong>');
-        // Bold **text** (handles optional internal whitespace and punctuation)
-        s = s.replace(/(\\*\\*|__)\\s*([^\\*_\\n]+?)\\s*\\1/g, '<strong class="text-white font-semibold">$2</strong>');
+        s = s.replace(/(\\*\\*\\*|___)\\s*([^\\n]+?)\\s*\\1/g, '<strong class="text-white font-semibold"><em class="text-slate-200 italic">$2</em></strong>');
+        // Bold **text** and __text__ (handles internal punctuation, colons, underscores)
+        s = s.replace(/\\*\\*\\s*([^\\n]+?)\\s*\\*\\*/g, '<strong class="text-white font-semibold">$1</strong>');
+        s = s.replace(/__\\s*([^\\n]+?)\\s*__/g, '<strong class="text-white font-semibold">$1</strong>');
         // Italic *text* or _text_
-        s = s.replace(/(?<!\\*)\\*([^\\*\\n]+)\\*(?!\\*)/g, '<em class="text-slate-200 italic">$1</em>');
-        s = s.replace(/(?<!_)_([^\\_\\n]+)_(?!_)/g, '<em class="text-slate-200 italic">$1</em>');
-        // Strip any residual unrendered double asterisks
-        s = s.replace(/\\*\\*+/g, '');
+        s = s.replace(/(?<!\\*)\\*\\s*([^\\*\\n]+?)\\s*\\*(?!\\*)/g, '<em class="text-slate-200 italic">$1</em>');
+        s = s.replace(/(?<!_)(?<![a-zA-Z0-9])_\\s*([^\\_\\n]+?)\\s*_(?![a-zA-Z0-9])(?!_)/g, '<em class="text-slate-200 italic">$1</em>');
         // Links [Label](url)
         s = s.replace(/\\[([^\\]]+)\\]\\(([^)]+)\\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline cursor-pointer">$1</a>');
+        // Strip any residual unrendered asterisks or markdown tags so they NEVER leak raw syntax
+        s = s.replace(/\\*\\*+/g, '').replace(/__+/g, '');
         // Stat callouts
         s = renderStatCallouts(s);
         // Source pills
@@ -19978,14 +19984,29 @@ def build():
           continue;
         }}
 
-        // Check for headers: ### Title, ## Title, # Title, or **Header Title** standalone
+        // Check for headers: ### Title, ## Title, # Title, or **Header Title** standalone or with trailing text
+        const knownHeaderRegex = /^(?:#{{1,4}}\\s*)?(?:\\*{{2,3}}|_{{2,3}})?\\s*(What You Actually Get|The Governance Problem|The Governance & Independence Profile|What This Actually Means|The Comparison That Matters|The Independent Berlin Context|Core Fact|Governance Risk|Verified Source)\\s*(?:\\*{{2,3}}|_{{2,3}})?:?\\s*(.*)$/i;
+        const knownMatch = trimmed.match(knownHeaderRegex);
         const headerMatch = trimmed.match(/^(#{{1,4}})\\s+(.+)$/);
         const boldHeaderMatch = trimmed.match(/^(\\*\\*\\*|\\*\\*|___|__)\\s*(.+?)\\s*(\\*\\*\\*|\\*\\*|___|__):?$/);
 
-        if (headerMatch || (boldHeaderMatch && boldHeaderMatch[2].length < 100)) {{
+        if (knownMatch || headerMatch || (boldHeaderMatch && boldHeaderMatch[2].length < 100)) {{
           flushList();
-          let rawTitle = headerMatch ? headerMatch[2].trim() : boldHeaderMatch[2].trim();
-          rawTitle = rawTitle.replace(/^\\*+|\\*+$/g, '').replace(/^:+|:+$/g, '').trim();
+          let rawTitle = '';
+          let trailingText = '';
+
+          if (knownMatch) {{
+            rawTitle = knownMatch[1].trim();
+            trailingText = (knownMatch[2] || '').trim();
+          }} else if (headerMatch) {{
+            rawTitle = headerMatch[2].trim();
+          }} else {{
+            rawTitle = boldHeaderMatch[2].trim();
+          }}
+
+          rawTitle = rawTitle.replace(/^[\\*#_:\\s]+|[\\*#_:\\s]+$/g, '').trim();
+          rawTitle = rawTitle.replace(/^\\d+[\\.\\)]\\s*/, '').trim();
+          rawTitle = rawTitle.replace(/^[\\*#_:\\s]+|[\\*#_:\\s]+$/g, '').trim();
           const titleLower = rawTitle.toLowerCase();
 
           // Thematic styling:
@@ -20009,7 +20030,7 @@ def build():
             dotColor = 'bg-sky-400';
             badgeText = 'Verified Source';
             badgeClass = 'text-sky-400 bg-sky-950/80 border-sky-800/80';
-          }} else if (titleLower.includes('comparison') || titleLower.includes('matters') || titleLower.includes('alternative')) {{
+          }} else if (titleLower.includes('comparison') || titleLower.includes('matters') || titleLower.includes('alternative') || titleLower.includes('context')) {{
             dotColor = 'bg-sky-400';
             badgeText = 'Independent Counterpoint';
             badgeClass = 'text-sky-400 bg-sky-950/80 border-sky-800/80';
@@ -20022,6 +20043,14 @@ def build():
               <span class="text-[14px] font-mono ${{badgeClass}} ml-auto px-2 py-0.5 rounded-full border">${{badgeText}}</span>
             </div>
           `);
+
+          if (trailingText) {{
+            blocks.push(`
+              <p class="text-slate-200 text-[14px] leading-relaxed mb-2.5">
+                ${{parseInlineMarkdown(trailingText)}}
+              </p>
+            `);
+          }}
           continue;
         }}
 
@@ -20123,8 +20152,12 @@ def build():
         }}
       }}
 
-      // 4. Assemble XML Structured User Prompt with Explicit Constraints
-      const structuredUserPrompt = `${{focusNotice}}${{currentTargetXml}}<explicit_constraints>\\nAnswer the user's specific question in 2-3 sentences max. Do not pivot to unrelated institutional history unless asked.\\n</explicit_constraints>\\n\\n<user_query>\\n${{userPrompt}}\\n</user_query>`;
+      // 4. Assemble XML Structured User Prompt with Explicit Constraints and Gossip Guardrails
+      const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || 
+                           /\\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\\b/i.test(userPrompt);
+      const gossipDirective = isGossipMode ? `\\n\\n<gossip_guardrail>\\nCRITICAL GOSSIP MODE CONSTRAINT:\\nWhen in Gossip Mode, structure every response into 3 concise sections: Core Fact, Governance Risk, and Verified Source, using bullet points.\\nNever generate long walls of dense text!\\n- ### Core Fact (2 concise bullet points on the unvarnished reality)\\n- ### Governance Risk (bullet points detailing conflicts of interest or corporate capture)\\n- ### Verified Source (public filings or investigative audits with citations)\\nFormat responses using standard Markdown headers and clean lists. Never output raw markdown tags or unrendered syntax.\\n</gossip_guardrail>` : '';
+
+      const structuredUserPrompt = `${{focusNotice}}${{currentTargetXml}}${{gossipDirective}}<explicit_constraints>\\nFormat responses using standard Markdown headers and clean lists. Never output raw markdown tags or unrendered syntax. Answer the user's specific question in 2-3 sentences max per section. Do not pivot to unrelated institutional history unless asked.\\n</explicit_constraints>\\n\\n<user_query>\\n${{userPrompt}}\\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\\n\\nACTIVE FOCUS INSTITUTION:\\nThe user is currently viewing/asking about this specific space:\\n${{formatInstitutionGrounding(activeInst)}}\\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks general questions without naming a space, focus specifically on ${{activeInst.name}} and perform a vivid, in-depth audit of its governance status, entry policy, architecture, and signature highlights!\\n` : '';
@@ -20293,21 +20326,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
    - ### The Comparison That Matters (independent, ethically clean alternatives in the same city)
 2. GOSSIP MODE & WHISPERS GUARDRAILS:
    - When in Gossip Mode or answering rumors, whispers, or backchannel inquiries, maintain strict brevity and enforce structured output:
-   - Structure every Gossip Mode response into 3 concise sections:
-     * ### Core Fact (the unvarnished reality in 2 punchy bullet points)
-     * ### Governance Risk (the documented conflict, trustee interlock, or funding source using bullet points)
-     * ### Verified Source (the public filing, investigative reporting, or whistleblower audit with citations)
+   - When in Gossip Mode, structure every response into 3 concise sections: Core Fact, Governance Risk, and Verified Source, using bullet points.
+   - Core Fact: The unvarnished reality in 2 punchy bullet points.
+   - Governance Risk: The documented conflict, trustee interlock, or funding source using bullet points.
+   - Verified Source: The public filing, investigative reporting, or whistleblower audit with citations.
    - Never generate long walls of dense text!
 3. Avoid dense walls of text! Break complex points, financial conflicts, and trustee interlocks into short, punchy bullet points (- point). Keep narrative paragraphs concise (2-3 sentences max).
 4. Call out verified financial numbers, settlements, and stat figures directly (e.g. $158 million, $80 million, $218M budget, 28:1 wage ratio, 72% program spend).
 5. Explicitly cite reputable investigative reporting and regulatory documents (e.g. The New York Times, ProPublica, Artforum, The Guardian, Hyperallergic, and IRS Form 990 Schedule L) so the reader can independently verify the research.
-6. Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point). Never output raw markdown tags or unrendered syntax.
+6. MANDATORY OUTPUT FORMATTING CONSTRAINT:
+   - Format responses using standard Markdown headers and clean lists. Never output raw markdown tags or unrendered syntax.
+   - Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point).
+   - Never output raw markdown tags or unrendered syntax like raw asterisks or unformatted text blocks.
 7. ROBUST MISSPELLING & PHONETIC TOLERANCE (LIKE CHATGPT & CLAUDE):
    - Visitors frequently query using typos, phonetic spellings, voice-to-text, or transpositions (e.g. 'Ulia stolcheck foundation' -> 'Julia Stoschek Foundation / Collection', 'chisnhale' -> 'Chisenhale', 'gugenheim' -> 'Guggenheim', 'pompidue' -> 'Pompidou', 'whitny' -> 'Whitney', 'momaa' -> 'MoMA', 'tate modren' -> 'Tate Modern', 'artsts space' -> 'Artists Space').
    - You must gracefully resolve the user's intended institution or city with intelligence and cultural fluency, just as other advanced AI models do.
     - NEVER say "I don't have an entry for [typo]" or ask the user to clarify obvious misspellings. Seamlessly answer about the intended institution, highlighting its verified facts, ethical funding, architecture, and current programs!
 </system_instructions>`;
 
+      const startTime = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
       try {{
         let rawText = '';
         let thinkingContent = '';
@@ -20333,8 +20370,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const data = await res.json();
           if (Array.isArray(data.content)) {{
             for (const b of data.content) {{
-              if (b.type === 'thinking') {{
-                thinkingContent += (b.thinking || '') + '\\n';
+              if (b.type === 'thinking' || b.type === 'thought') {{
+                thinkingContent += (b.thinking || b.thought || '') + '\\n';
+              }} else if (b.type === 'redacted_thinking') {{
+                thinkingContent += '[Extended thinking block redacted by provider]\\n';
               }} else if (b.type === 'text' || b.text) {{
                 rawText += (b.text || '');
               }}
@@ -20383,16 +20422,30 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
         }}
 
-        // Cleanly isolate any embedded <thinking> or <thought> tags so they NEVER collide with the response block
-        const thinkingRegex = /<(?:thinking|thought)>([\\s\\S]*?)<\\/(?:thinking|thought)>/gi;
+        // Cleanly separate thinking tokens and blocks from the final response block before rendering to the UI
+        // A. Isolate XML thinking tags (<thinking>...</thinking>, <thought>...</thought>)
+        const xmlThinkingRegex = /<(?:thinking|thought)>([\\s\\S]*?)<\\/(?:thinking|thought)>/gi;
         let match;
-        while ((match = thinkingRegex.exec(rawText)) !== null) {{
+        while ((match = xmlThinkingRegex.exec(rawText)) !== null) {{
           thinkingContent += (match[1] || '').trim() + '\\n';
         }}
-        rawText = rawText.replace(thinkingRegex, '').trim();
+        rawText = rawText.replace(xmlThinkingRegex, '').trim();
+
+        // B. Isolate non-XML thinking blocks (e.g. "Thought for 13s", "Thought for 17s", "Thinking Process:")
+        const blockThinkingRegex = /^(?:Thought for \\d+s|Thinking Process:|Thinking:|\\*Thinking:\\*)\\s*\\n?([\\s\\S]*?)(?=\\n\\n#{{1,4}}\\s|\\n\\n\\*\\*|\\n\\n[A-Z]|$)/gi;
+        while ((match = blockThinkingRegex.exec(rawText)) !== null) {{
+          if (match[1]) thinkingContent += match[1].trim() + '\\n';
+        }}
+        rawText = rawText.replace(blockThinkingRegex, '').trim();
+
+        // C. Cleanly strip any residual inline "Thought for \d+s" markers
+        rawText = rawText.replace(/\\bThought for \\d+s\\b/gi, '').trim();
+
+        const elapsedSec = Math.max(1, Math.round(((typeof performance !== 'undefined' ? performance.now() : Date.now()) - startTime) / 1000));
+        queryAI.lastThinking = thinkingContent.trim();
+        queryAI.lastDuration = elapsedSec;
 
         if (rawText) {{
-          queryAI.lastThinking = thinkingContent.trim();
           return renderCuratorMarkdown(rawText);
         }}
       }} catch (err) {{
@@ -21241,9 +21294,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         `;
       }}
 
-      // Ensure any raw markdown in htmlContent (like **bold**, headers, bullet points) is parsed into rich HTML
+      // Ensure any raw markdown in htmlContent (like **bold**, headers, bullet points) is safely parsed into rich HTML
       let processedContent = htmlContent;
-      if (typeof htmlContent === 'string' && (htmlContent.includes('**') || htmlContent.includes('###') || htmlContent.includes('## ') || htmlContent.includes('- ') || htmlContent.includes('* '))) {{
+      if (typeof htmlContent === 'string') {{
         processedContent = renderCuratorMarkdown(htmlContent);
       }}
 
@@ -22430,7 +22483,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const thoughtText = (aiRes && aiRes.thinking) || (typeof queryAI !== 'undefined' && queryAI.lastThinking) || '';
           if (thoughtText) {{
             thinkingData = {{
-              duration: 3,
+              duration: (typeof queryAI !== 'undefined' && queryAI.lastDuration) || 3,
               mode: getChatModeConfig(query),
               thought: thoughtText,
               step: 'Live Anthropic Intelligence Reasoning'
