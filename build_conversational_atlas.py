@@ -323,9 +323,11 @@ def build():
             'glow-teal': '0 0 25px -3px rgba(20, 184, 166, 0.4)',
             'glow-node': '0 0 12px 2px rgba(45, 212, 191, 0.65)',
             'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.6)'
-          
-            
+          }},
+          fontFamily: {{
+            sans: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
             serif: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            display: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif']
           }},
           letterSpacing: {{
             DEFAULT: '0.6pt',
@@ -15682,98 +15684,112 @@ def build():
       const isA = inst.tier === 'A';
       const isB = inst.tier === 'B';
       const isCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
-      const tierColor = isA ? '#10b981' : (isB ? '#be95ff' : (isCommunity ? '#08bdba' : '#33b1ff'));
+      const tierColor = isA ? '#10b981' : (isB ? '#be95ff' : (isCommunity ? '#08bdba' : '#38bdf8'));
       const tierLabel = isA ? 'VERIFIED INDEPENDENT' : (isB ? 'FLAGGED UNDERWRITING' : (isCommunity ? 'COMMUNITY · USER INPUT' : 'UNVERIFIED SPACE'));
 
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
+      const domainPillText = `🌐  ${{domain}}  ↗`;
 
-      ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '500 17px "PP Museum", "PP Telegraf", sans-serif';
       const nameText = inst.name;
       const nameW = ctx.measureText(nameText).width;
 
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ' · ' + inst.curatorial_focus : (inst.neighborhood ? ' · ' + inst.neighborhood : ''));
-      ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
       const subW = ctx.measureText(subText).width;
 
-      ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
-      const webW = ctx.measureText(domain).width;
+      ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+      const webW = ctx.measureText(domainPillText).width;
 
-      const cardW = Math.max(240, Math.min(360, Math.max(nameW, subW, webW + 36) + 28));
-      const cardH = webUrl ? 74 : 54;
+      const cardW = Math.max(260, Math.min(380, Math.max(nameW, subW, webW + 28) + 32));
+      const cardH = webUrl ? 116 : 82;
 
       let cardX = px - cardW / 2;
-      cardX = Math.max(12, Math.min(width - cardW - 12, cardX));
+      cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
 
-      let cardY = py - cardH - 12;
-      if (cardY < 12) cardY = py + 16;
+      let cardY = py - cardH - 16;
+      if (cardY < 14) cardY = py + 20;
 
-      ctx.fillStyle = 'rgba(10, 16, 28, 0.96)';
+      // Deep, soft drop shadow
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+      ctx.shadowBlur = 20;
+      ctx.shadowOffsetY = 4;
+
+      // Dark frosted glass background (solid 100% opacity to prevent bleed-through)
+      ctx.fillStyle = '#080c16';
       ctx.beginPath();
-      ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 8) : ctx.rect(cardX, cardY, cardW, cardH);
+      if (ctx.roundRect) ctx.roundRect(cardX, cardY, cardW, cardH, 10);
+      else ctx.rect(cardX, cardY, cardW, cardH);
       ctx.fill();
 
-      ctx.strokeStyle = tierColor;
+      // Subtle border with tier accent
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.strokeStyle = isA ? 'rgba(16, 185, 129, 0.50)' : isB ? 'rgba(190, 149, 255, 0.50)' : 'rgba(56, 189, 248, 0.50)';
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
-      ctx.fillStyle = tierColor;
+      // Row 1: Status indicator dot & Tier label
       ctx.beginPath();
-      ctx.roundRect ? ctx.roundRect(cardX, cardY, 3.5, cardH, [8, 0, 0, 8]) : ctx.rect(cardX, cardY, 3.5, cardH);
+      ctx.arc(cardX + 16, cardY + 18, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = tierColor;
       ctx.fill();
 
-      ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '11px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = tierColor;
       ctx.textAlign = 'left';
-      ctx.textBaseline = 'top';
-      ctx.fillText(tierLabel, cardX + 12, cardY + 7);
+      ctx.textBaseline = 'middle';
+      ctx.fillText(tierLabel, cardX + 26, cardY + 18);
 
-      ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
+      // Row 2: Institution Name (Upright PP Museum 500)
+      ctx.font = '500 17px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#ffffff';
+      ctx.textBaseline = 'top';
       let displayName = nameText;
-      if (ctx.measureText(displayName).width > cardW - 24) {{
-        while (displayName.length > 5 && ctx.measureText(displayName + '…').width > cardW - 24) {{
+      const maxTextW = cardW - 32;
+      if (ctx.measureText(displayName).width > maxTextW) {{
+        while (displayName.length > 5 && ctx.measureText(displayName + '…').width > maxTextW) {{
           displayName = displayName.slice(0, -1);
         }}
         displayName += '…';
       }}
-      ctx.fillText(displayName, cardX + 12, cardY + 20);
+      ctx.fillText(displayName, cardX + 16, cardY + 34);
 
-      ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+      // Row 3: Location and Curatorial Focus
+      ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#94a3b8';
       let displaySub = subText;
-      if (ctx.measureText(displaySub).width > cardW - 24) {{
-        while (displaySub.length > 5 && ctx.measureText(displaySub + '…').width > cardW - 24) {{
+      if (ctx.measureText(displaySub).width > maxTextW) {{
+        while (displaySub.length > 5 && ctx.measureText(displaySub + '…').width > maxTextW) {{
           displaySub = displaySub.slice(0, -1);
         }}
         displaySub += '…';
       }}
-      ctx.fillText(displaySub, cardX + 12, cardY + 36);
+      ctx.fillText(displaySub, cardX + 16, cardY + 58);
 
+      // Row 4: Unified Action Link Pill (if webUrl exists)
       if (webUrl) {{
-        const btnX = cardX + 12;
-        const btnY = cardY + 52;
-        const btnW = webW + 16;
-        const btnH = 16;
+        const btnX = cardX + 16;
+        const btnY = cardY + 80;
+        const btnW = Math.min(maxTextW, webW + 24);
+        const btnH = 26;
 
-        ctx.fillStyle = 'rgba(37, 99, 235, 0.25)';
-        ctx.strokeStyle = 'rgba(96, 165, 250, 0.70)';
-        ctx.lineWidth = 0.8;
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.40)';
+        ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.roundRect ? ctx.roundRect(btnX, btnY, btnW, btnH, 4) : ctx.rect(btnX, btnY, btnW, btnH);
+        if (ctx.roundRect) ctx.roundRect(btnX, btnY, btnW, btnH, 5);
+        else ctx.rect(btnX, btnY, btnW, btnH);
         ctx.fill();
         ctx.stroke();
 
-        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
-        ctx.fillStyle = '#93c5fd';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'top';
-        ctx.fillText(domain, btnX + 8, btnY + 2);
-
-        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
-        ctx.fillStyle = '#64748b';
-        ctx.fillText('Click to open website', btnX + btnW + 8, btnY + 3);
+        ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+        ctx.fillStyle = '#38bdf8';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(domainPillText, btnX + btnW / 2, btnY + btnH / 2);
 
         hoveredMicroCardHitbox = {{
           inst: inst,
@@ -15782,6 +15798,20 @@ def build():
           btnY: btnY,
           btnW: btnW,
           btnH: btnH,
+          cardX: cardX,
+          cardY: cardY,
+          cardW: cardW,
+          cardH: cardH
+        }};
+        window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
+      }} else {{
+        hoveredMicroCardHitbox = {{
+          inst: inst,
+          webUrl: null,
+          btnX: 0,
+          btnY: 0,
+          btnW: 0,
+          btnH: 0,
           cardX: cardX,
           cardY: cardY,
           cardW: cardW,
@@ -16131,7 +16161,9 @@ def build():
 
         // 6. City Badges (All cities in selected country or top cities worldwide)
         cityBadgeHitboxes = [];
+        cityClusterHitboxes = [];
         const drawnCityBoxes = [];
+        const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
         ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
         
         let candidateCities = [];
@@ -16160,11 +16192,26 @@ def build():
           const pt = project(city.lon, city.lat, r, cx, cy);
           if (pt.front && pt.depth > 0.08) {{
             const isCountryActive = selectedCountryFilter !== 'all';
-            const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${{city.count}})` : '';
-            const txt = city.name + countLabel;
-            const tw = ctx.measureText(txt).width;
-            const bw = tw + 14;
-            const bh = 24;
+            const isClustered = isClusterZoom && (city.count >= 2);
+
+            let bw, bh = 24, txt = city.name, countTxt = '';
+            let countPillW = 0, countPillH = 16;
+            ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+
+            if (isClustered) {{
+              countTxt = String(city.count);
+              const twName = ctx.measureText(city.name).width;
+              ctx.font = '11px "PP Museum", "PP Telegraf", sans-serif';
+              const twCount = ctx.measureText(countTxt).width;
+              countPillW = Math.max(16, twCount + 8);
+              bw = twName + countPillW + 18;
+            }} else {{
+              const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${{city.count}})` : '';
+              txt = city.name + countLabel;
+              const tw = ctx.measureText(txt).width;
+              bw = tw + 14;
+            }}
+
             const bx = pt.x - bw / 2;
             const by = pt.y - 28;
 
@@ -16184,6 +16231,15 @@ def build():
                 count: city.count
               }});
 
+              if (isClustered) {{
+                cityClusterHitboxes.push({{
+                  cityName: city.name,
+                  x: bx, y: by, w: bw, h: bh,
+                  cx: pt.x, cy: pt.y,
+                  count: city.count
+                }});
+              }}
+
               const badgeAlpha = isSelected ? 1.0 : (r > baseRadius * 10.0 ? Math.max(0, 1 - (r - baseRadius * 10.0) / (baseRadius * 4.0)) : 1.0);
               ctx.save();
               ctx.globalAlpha = badgeAlpha;
@@ -16191,8 +16247,8 @@ def build():
               ctx.fillStyle = isSelected 
                 ? (isGossipModeActive ? '#a16207' : '#1d4ed8') 
                 : isHovered 
-                ? (isGossipModeActive ? '#713f12' : '#1e3a8a') 
-                : (isGossipModeActive ? '#1e1805' : '#070b14');
+                ? (isGossipModeActive ? '#713f12' : '#0f172a') 
+                : (isGossipModeActive ? '#1e1805' : 'rgba(8, 14, 24, 0.94)');
               ctx.beginPath();
               ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 5) : ctx.rect(bx, by, bw, bh);
               ctx.fill();
@@ -16200,24 +16256,65 @@ def build():
               ctx.strokeStyle = isSelected 
                 ? (isGossipModeActive ? '#facc15' : '#93c5fd') 
                 : isHovered 
-                ? (isGossipModeActive ? '#fde047' : '#60a5fa') 
-                : (isGossipModeActive ? '#854d0e' : '#222d42');
+                ? (isGossipModeActive ? '#fde047' : '#34d399') 
+                : (isGossipModeActive ? '#854d0e' : (isClustered ? 'rgba(16, 185, 129, 0.50)' : '#222d42'));
               ctx.lineWidth = isSelected || isHovered ? 1.5 : 1;
               ctx.stroke();
 
-              ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#cbd5e1');
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'middle';
-              ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
+              if (isClustered) {{
+                // Render City Name on left
+                ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#e2e8f0');
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(city.name, bx + 7, by + bh / 2 + 0.5);
 
-              ctx.beginPath();
-              ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
-              ctx.fillStyle = isSelected 
-                ? (isGossipModeActive ? '#facc15' : '#93c5fd') 
-                : isHovered 
-                ? (isGossipModeActive ? '#fde047' : '#60a5fa') 
-                : (isGossipModeActive ? '#eab308' : '#3b82f6');
-              ctx.fill();
+                // Render Emerald Count Capsule on right
+                const cPx = bx + bw - countPillW - 5;
+                const cPy = by + (bh - countPillH) / 2;
+                ctx.fillStyle = isHovered ? '#047857' : 'rgba(16, 185, 129, 0.25)';
+                ctx.beginPath();
+                ctx.roundRect ? ctx.roundRect(cPx, cPy, countPillW, countPillH, 4) : ctx.rect(cPx, cPy, countPillW, countPillH);
+                ctx.fill();
+                ctx.strokeStyle = isHovered ? '#6ee7b7' : '#10b981';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                ctx.font = '11px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(countTxt, cPx + countPillW / 2, cPy + countPillH / 2 + 0.5);
+
+                // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
+                ctx.beginPath();
+                ctx.moveTo(pt.x, by + bh);
+                ctx.lineTo(pt.x, pt.y);
+                ctx.strokeStyle = isHovered ? 'rgba(52, 211, 153, 0.60)' : 'rgba(16, 185, 129, 0.35)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(pt.x, pt.y, isHovered ? 4.5 : 3.0, 0, Math.PI * 2);
+                ctx.fillStyle = isHovered ? '#34d399' : '#10b981';
+                ctx.fill();
+              }} else {{
+                ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#cbd5e1');
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(txt, pt.x, by + bh / 2 + 0.5);
+
+                ctx.beginPath();
+                ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
+                ctx.fillStyle = isSelected 
+                  ? (isGossipModeActive ? '#facc15' : '#93c5fd') 
+                  : isHovered 
+                  ? (isGossipModeActive ? '#fde047' : '#60a5fa') 
+                  : (isGossipModeActive ? '#eab308' : '#3b82f6');
+                ctx.fill();
+              }}
+
               ctx.restore();
             }}
           }}
@@ -16397,10 +16494,8 @@ def build():
 
         // 8. Render Institution Dots & Independent Space Clusters on Global Sphere
         visibleDots = [];
-        cityClusterHitboxes = [];
 
         // Only cluster when viewing the whole world at distant zoom without country or city focus!
-        const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
         const cityInstMap = {{}};
         filteredList.forEach(inst => {{
           if (!inst.city || inst.lon === undefined || inst.lat === undefined || inst.lon === null || inst.lat === null || isNaN(inst.lon) || isNaN(inst.lat)) return;
@@ -16473,77 +16568,16 @@ def build():
           }});
         }});
 
-        // Render Independent Space Cluster Badges on Globe
-        if (isClusterZoom) {{
-          clusteredCityKeys.forEach(k => {{
-            const cData = cityInstMap[k];
-            const avgLon = cData.insts.reduce((sum, i) => sum + i.lon, 0) / cData.insts.length;
-            const avgLat = cData.insts.reduce((sum, i) => sum + i.lat, 0) / cData.insts.length;
-            const pt = project(avgLon, avgLat, r, cx, cy);
-            if (pt.front && pt.depth > 0.08) {{
-              const isHov = hoveredCity && hoveredCity.toLowerCase() === cData.name.toLowerCase();
-              const badgeR = isHov ? 13 : 11;
-              const countTxt = String(cData.insts.length);
-
-              cityClusterHitboxes.push({{
-                cityName: cData.name,
-                x: pt.x - badgeR,
-                y: pt.y - badgeR,
-                w: badgeR * 2,
-                h: badgeR * 2,
-                cx: pt.x,
-                cy: pt.y,
-                count: cData.insts.length
-              }});
-
-              ctx.save();
-              ctx.beginPath();
-              ctx.arc(pt.x, pt.y, badgeR + 3, 0, Math.PI * 2);
-              ctx.fillStyle = isHov ? 'rgba(52, 211, 153, 0.35)' : 'rgba(16, 185, 129, 0.20)';
-              ctx.fill();
-
-              ctx.beginPath();
-              ctx.arc(pt.x, pt.y, badgeR, 0, Math.PI * 2);
-              ctx.fillStyle = isHov ? '#047857' : '#064e3b';
-              ctx.fill();
-              ctx.strokeStyle = isHov ? '#6ee7b7' : '#10b981';
-              ctx.lineWidth = isHov ? 2 : 1.4;
-              ctx.stroke();
-
-              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
-              ctx.fillStyle = '#ffffff';
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'middle';
-              ctx.fillText(countTxt, pt.x, pt.y + 0.5);
-              ctx.restore();
-
-              if (isHov) {{
-                ctx.save();
-                ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
-                const tipTxt = `${{cData.name}} · ${{cData.insts.length}} Independent Spaces`;
-                const tw = ctx.measureText(tipTxt).width;
-                const tbx = pt.x - tw / 2 - 8;
-                const tby = pt.y > 35 ? pt.y - 30 : pt.y + 16;
-                ctx.fillStyle = '#0a101b';
-                ctx.beginPath();
-                ctx.roundRect ? ctx.roundRect(tbx, tby, tw + 16, 26, 5) : ctx.rect(tbx, tby, tw + 16, 26);
-                ctx.fill();
-                ctx.strokeStyle = '#10b981';
-                ctx.lineWidth = 1.2;
-                ctx.stroke();
-                ctx.fillStyle = '#ffffff';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(tipTxt, pt.x, tby + 13);
-                ctx.restore();
-              }}
-            }}
-          }});
-        }}
+        let activeMicroDot = null;
+        const drawnInstLabelBoxes = [];
 
         visibleDots.forEach(d => {{
           const isSel = selectedInstitution && selectedInstitution.name === d.inst.name;
           const isHov = hoveredInstitution && hoveredInstitution.name === d.inst.name;
+
+          if (isHov || (selectedCountryFilter !== 'all' && isSel)) {{
+            activeMicroDot = d;
+          }}
 
           if (isSel) {{
             const pTime = (Date.now() % 2200) / 2200;
@@ -16613,38 +16647,52 @@ def build():
             : (d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#be95ff' : '#08bdba');
           ctx.fill();
 
-          const shouldDrawGlobeLabel = isHov || isSel || 
-            selectedCountryFilter !== 'all' || 
-            selectedCityFilter !== 'all' || 
-            currentRadius >= baseRadius * 1.35;
+          // Institution label on 3D globe
+          // Only show labels when:
+          // 1. Institution is selected (isSel)
+          // 2. OR Country or City filter is active (focused context)
+          // 3. OR Deep zoom (r >= baseRadius * 2.8) with strict anti-collision check
+          const isFilteredContext = selectedCountryFilter !== 'all' || selectedCityFilter !== 'all';
+          const isDeepZoom = currentRadius >= baseRadius * 2.8;
+          const shouldDrawGlobeLabel = isSel || isFilteredContext || isDeepZoom;
 
-          if (isHov || (selectedCountryFilter !== 'all' && isSel)) {{
-            drawInstitutionMicroCard(ctx, d.inst, d.x, d.y, width, height);
-          }} else if (shouldDrawGlobeLabel) {{
-            // Render institution name on top of dot across ALL points of view
+          if (shouldDrawGlobeLabel && !isHov) {{
             ctx.save();
-            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
-            const nameTxt = d.inst.name.length > 25 ? d.inst.name.substring(0, 23) + '…' : d.inst.name;
+            const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
             const tw = ctx.measureText(nameTxt).width;
-            const bx = d.x - tw / 2 - 6;
-            const by = d.y - 22;
             const bw = tw + 12;
             const bh = 20;
-            d.labelBox = {{ x: bx, y: by, w: bw, h: bh }};
+            const bx = d.x - bw / 2;
+            const by = d.y - 18;
 
-            ctx.fillStyle = isHov ? 'rgba(12, 38, 70, 0.96)' : 'rgba(18, 20, 26, 0.94)';
-            if (ctx.roundRect) ctx.roundRect(bx, by, bw, bh, 4);
-            else ctx.rect(bx, by, bw, bh);
-            ctx.fill();
-            ctx.strokeStyle = isHov 
-              ? (isGossipModeActive ? '#38bdf8' : '#60a5fa')
-              : (d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : d.inst.tier === 'B' ? 'rgba(190, 149, 255, 0.65)' : 'rgba(8, 189, 186, 0.65)');
-            ctx.lineWidth = isHov ? 1.8 : 1;
-            ctx.stroke();
-            ctx.fillStyle = isHov ? '#ffffff' : '#f8fafc';
-            ctx.fillText(nameTxt, d.x, d.y - 6);
+            const collidesWithOtherLabel = drawnInstLabelBoxes.some(box => {{
+              return !(bx + bw + 6 < box.x || bx > box.x + box.w + 6 || by + bh + 4 < box.y || by > box.y + box.h + 4);
+            }});
+            const collidesWithCity = drawnCityBoxes.some(box => {{
+              return !(bx + bw + 6 < box.x || bx > box.x + box.w + 6 || by + bh + 4 < box.y || by > box.y + box.h + 4);
+            }});
+
+            if ((!collidesWithOtherLabel && !collidesWithCity) || isSel || isFilteredContext) {{
+              drawnInstLabelBoxes.push({{ x: bx, y: by, w: bw, h: bh }});
+              d.labelBox = {{ x: bx, y: by, w: bw, h: bh }};
+
+              ctx.fillStyle = isSel ? 'rgba(12, 38, 70, 0.96)' : 'rgba(12, 16, 26, 0.92)';
+              if (ctx.roundRect) ctx.roundRect(bx, by, bw, bh, 4);
+              else ctx.rect(bx, by, bw, bh);
+              ctx.fill();
+
+              ctx.strokeStyle = isSel 
+                ? (isGossipModeActive ? '#38bdf8' : '#60a5fa') 
+                : (d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : d.inst.tier === 'B' ? 'rgba(190, 149, 255, 0.65)' : 'rgba(8, 189, 186, 0.65)');
+              ctx.lineWidth = isSel ? 1.5 : 1;
+              ctx.stroke();
+
+              ctx.fillStyle = isSel ? '#ffffff' : '#f1f5f9';
+              ctx.fillText(nameTxt, d.x, by + bh - 4);
+            }}
             ctx.restore();
           }}
         }});
@@ -16799,6 +16847,13 @@ def build():
         }} else if (!hoveredCity) {{
           hoveredCityCardHitbox = null;
           isHoveringCityExploreLink = false;
+        }}
+
+        // 8.6 Render Active Institution Micro Card at top layer of 3D globe (above all dots, labels, and city cards)
+        if (activeMicroDot) {{
+          drawInstitutionMicroCard(ctx, activeMicroDot.inst, activeMicroDot.x, activeMicroDot.y, width, height);
+        }} else if (!hoveredInstitution) {{
+          hoveredMicroCardHitbox = null;
         }}
 
 
@@ -30496,6 +30551,23 @@ bar.innerHTML = html;
         }}
       }}
 
+      // 1.5 Direct hit on rendered city cluster badge or anchor pin
+      for (let i = 0; i < cityClusterHitboxes.length; i++) {{
+        const cb = cityClusterHitboxes[i];
+        if (isCountryActive && cb.country && !matchC(cb.country, selectedCountryFilter)) continue;
+        const inCluster = mx >= cb.x - 4 && mx <= cb.x + cb.w + 4 && my >= cb.y - 4 && my <= cb.y + cb.h + 4;
+        const nearAnchor = Math.hypot(cb.cx - mx, cb.cy - my) < 16;
+        if (inCluster || nearAnchor) {{
+          return ALL_CITIES_REGISTRY.find(c => matchC(c.name, cb.cityName)) || {{
+            name: cb.cityName,
+            country: cb.country || '',
+            count: cb.count || 1,
+            lon: cb.cx,
+            lat: cb.cy
+          }};
+        }}
+      }}
+
       // 2. Surface hit on globe city pins & clusters
       let bestCity = null;
       let bestScore = Infinity;
@@ -30547,11 +30619,15 @@ bar.innerHTML = html;
         }}
       }}
 
-      // Check hovered micro card web button
-      if (hoveredMicroCardHitbox && hoveredMicroCardHitbox.webUrl) {{
+      // Check hovered micro card
+      if (hoveredMicroCardHitbox && hoveredMicroCardHitbox.inst) {{
         const hb = hoveredMicroCardHitbox;
-        if (mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH) {{
+        if (mx >= hb.cardX - 4 && mx <= hb.cardX + hb.cardW + 4 && my >= hb.cardY - 4 && my <= hb.cardY + hb.cardH + 4) {{
           canvas.style.cursor = 'pointer';
+          hoveredInstitution = hb.inst;
+          hoveredCity = null;
+          hoveredCityCardHitbox = null;
+          isHoveringCityExploreLink = false;
           return;
         }}
       }}
