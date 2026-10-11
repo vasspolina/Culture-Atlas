@@ -1806,6 +1806,10 @@ def build():
       <!-- BEGIN: FloatingFilterCategoryChips (Mobile Bar matching code.html & media_1791625755099_5e95dfd6.png) -->
       <section class="absolute top-0 inset-x-0 z-20 pt-2 px-3 flex md:hidden items-center justify-between pointer-events-auto bg-[#05070B]/80 backdrop-blur-sm" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
         <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-1 text-[11px] w-full">
+          <button type="button" id="mobileQuick3DBtn" onclick="window.toggle3DBuildingView();" class="px-2.5 py-1 rounded-full font-medium bg-sky-950/90 text-sky-300 border border-sky-500/70 whitespace-nowrap shadow-sm cursor-pointer flex items-center space-x-1" title="Toggle 3D Buildings View on Map">
+            <svg class="w-3 h-3 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            <span>3D Map</span>
+          </button>
           <button type="button" onclick="window.openFiscalAnalyticsHUD();" class="px-2.5 py-1 rounded-full font-medium bg-teal-950/90 text-teal-300 border border-teal-500/60 whitespace-nowrap shadow-sm cursor-pointer">Fiscal</button>
           <button type="button" onclick="window.openResistanceTimelineModal();" class="px-2.5 py-1 rounded-full font-medium bg-purple-950/70 text-purple-300 border border-purple-800/60 whitespace-nowrap cursor-pointer">Victories</button>
           <button type="button" onclick="window.openStatutoryFilingsModal();" class="px-2.5 py-1 rounded-full font-medium bg-cyan-950/70 text-cyan-300 border border-cyan-500/50 whitespace-nowrap cursor-pointer">990s</button>
@@ -2139,8 +2143,9 @@ def build():
               <a id="dossier-sheet-link-web" class="hover:text-cyan-300 flex items-center space-x-1 cursor-pointer" href="#" target="_blank" rel="noopener noreferrer">
                 <span>🌐 website</span>
               </a>
-              <button id="dossier-sheet-link-3d" type="button" class="hover:text-cyan-300 flex items-center space-x-1 cursor-pointer bg-transparent border-0 text-slate-400 p-0 text-[11px]">
-                <span>📍 Google 3D</span>
+              <button id="dossier-sheet-link-3d" type="button" class="hover:text-cyan-300 flex items-center space-x-1 cursor-pointer bg-transparent border-0 text-slate-400 p-0 text-[11px]" title="Explore 3D Architectural Model on Built-in Map">
+                <svg class="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                <span>3D Building</span>
               </button>
               <button id="dossier-sheet-link-photos" type="button" class="hover:text-cyan-300 flex items-center space-x-1 cursor-pointer bg-transparent border-0 text-slate-400 p-0 text-[11px]">
                 <span>🖼️ Archive Photos</span>
@@ -2171,6 +2176,18 @@ def build():
         </div>
       </section>
       <!-- END: SpaceDetailCardBottomSheet -->
+
+      <!-- Floating Mobile 3D Active Indicator Banner -->
+      <div id="mobile3DActiveIndicator" class="hidden absolute bottom-16 inset-x-3 z-30 pointer-events-auto flex md:hidden items-center justify-between px-3.5 py-2 rounded-xl bg-slate-950/95 border border-cyan-400/80 shadow-2xl backdrop-blur-xl text-xs text-white">
+        <div class="flex items-center space-x-2 truncate mr-2">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0"></span>
+          <span class="font-mono text-cyan-300 text-[11px] uppercase tracking-wider shrink-0">3D Building Active</span>
+          <span class="text-slate-300 truncate" id="mobile3DActiveName">Space</span>
+        </div>
+        <button id="mobile3DBackToDossierBtn" type="button" class="px-2.5 py-1 rounded-lg bg-cyan-950 hover:bg-cyan-900 border border-cyan-500/70 text-cyan-200 text-[11px] font-medium whitespace-nowrap transition cursor-pointer flex items-center space-x-1 shrink-0">
+          <span>Dossier Details ↑</span>
+        </button>
+      </div>
 
       <!-- BEGIN: CuratorChatDrawer (Mobile Collapsible AI Chat Panel Matching code.html) -->
       <section class="hidden absolute inset-0 z-30 flex-1 bg-slate-950/95 flex md:hidden flex-col overflow-hidden border-t border-cyan-900/50 backdrop-blur-2xl" data-purpose="ai-curator-chat" id="curator-chat-drawer">
@@ -3117,12 +3134,14 @@ def build():
   <!-- 📌 STICKY CURATOR INPUT BAR (Mobile Matching code.html & media_1791625755099_5e95dfd6.png) -->
   <!-- ========================================================= -->
   <div class="z-40 bg-slate-950/95 border-t border-slate-800/80 px-3 py-2 flex md:hidden flex-col gap-1.5 backdrop-blur-lg shrink-0" data-purpose="ai-chat-input-bar" id="mobileStickyInputBar">
-    <div class="relative flex items-center">
-      <button id="mobileStickyPlusBtn" type="button" class="w-8 h-8 rounded-full bg-slate-800/90 hover:bg-slate-700 text-slate-200 flex items-center justify-center text-sm font-bold border border-slate-700 mr-2 shrink-0 cursor-pointer">
+    <div class="flex items-center gap-2">
+      <button id="mobileStickyPlusBtn" type="button" class="w-8 h-8 rounded-full bg-slate-800/90 hover:bg-slate-700 text-slate-200 flex items-center justify-center text-sm font-bold border border-slate-700 shrink-0 cursor-pointer">
         +
       </button>
-      <input class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 pr-16" id="chat-input" placeholder="Ask about a museum or cultural space..." type="text">
-      <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg flex items-center space-x-1 active:scale-95 transition border border-cyan-300 cursor-pointer"><span class="">Send</span></button>
+      <div class="relative flex-1 min-w-0">
+        <input class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 pr-16" id="chat-input" placeholder="Ask about a museum or cultural space..." type="text">
+        <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg flex items-center space-x-1 active:scale-95 transition border border-cyan-300 cursor-pointer"><span class="">Send</span></button>
+      </div>
     </div>
     <div class="flex items-center justify-between text-[10px] text-slate-400 px-1">
       <span class="flex items-center space-x-1">
@@ -11786,6 +11805,13 @@ def build():
     window.stop3DOrbit = stop3DOrbit;
 
     function toggle3DBuildingView() {{
+      if (!cityVectorMap || !isCityStreetViewActive) {{
+        const inst = selectedInstitution || (typeof ALL_INSTITUTIONS !== 'undefined' ? ALL_INSTITUTIONS[0] : null);
+        if (inst && typeof zoomToBuilding === 'function') {{
+          zoomToBuilding(inst);
+          return;
+        }}
+      }}
       if (!cityVectorMap) return;
       stop3DOrbit();
       const curPitch = cityVectorMap.getPitch();
@@ -12700,6 +12726,7 @@ def build():
       document.getElementById('cityViewControlBanner')?.classList.add('hidden');
       document.getElementById('activeRouteBanner')?.classList.add('hidden');
       document.getElementById('buildingFloorInspectorHud')?.classList.add('hidden');
+      document.getElementById('mobile3DActiveIndicator')?.classList.add('hidden');
       if (typeof clearBuilding3DInfoMarkers === 'function') {{
         clearBuilding3DInfoMarkers();
       }}
@@ -25882,6 +25909,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         setActiveMobileTab(tabDossier);
         chatDrawer?.classList.add('hidden');
         bottomSheet?.classList.remove('hidden');
+        document.getElementById('mobile3DActiveIndicator')?.classList.add('hidden');
         if (stickyDock) stickyDock.classList.remove('hidden');
       }});
 
@@ -25962,31 +25990,63 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
       // Audit Dossier & Plan Visit buttons on Mobile Sheet
       document.getElementById('dossier-sheet-audit-btn')?.addEventListener('click', () => {{
-        if (selectedInstitution && typeof openDossier === 'function') {{
-          openDossier(selectedInstitution);
+        const inst = selectedInstitution || (typeof ALL_INSTITUTIONS !== 'undefined' ? (ALL_INSTITUTIONS.find(i => i.name.toLowerCase().includes('green papaya')) || ALL_INSTITUTIONS[0]) : null);
+        if (inst && typeof openDossier === 'function') {{
+          openDossier(inst);
         }}
       }});
       document.getElementById('dossier-sheet-plan-btn')?.addEventListener('click', () => {{
-        if (selectedInstitution && typeof atlasPlanVisit === 'function') {{
-          atlasPlanVisit(selectedInstitution);
+        const inst = selectedInstitution || (typeof ALL_INSTITUTIONS !== 'undefined' ? (ALL_INSTITUTIONS.find(i => i.name.toLowerCase().includes('green papaya')) || ALL_INSTITUTIONS[0]) : null);
+        if (inst && typeof atlasPlanVisit === 'function') {{
+          atlasPlanVisit(inst);
           tabChat?.click();
         }}
       }});
       document.getElementById('dossier-sheet-full-gossip-btn')?.addEventListener('click', () => {{
-        if (selectedInstitution && typeof openGossipDossier === 'function') {{
-          openGossipDossier(selectedInstitution);
+        const inst = selectedInstitution || (typeof ALL_INSTITUTIONS !== 'undefined' ? (ALL_INSTITUTIONS.find(i => i.name.toLowerCase().includes('green papaya')) || ALL_INSTITUTIONS[0]) : null);
+        if (inst && typeof openGossipDossier === 'function') {{
+          openGossipDossier(inst);
         }}
       }});
       document.getElementById('dossier-sheet-link-3d')?.addEventListener('click', () => {{
-        if (selectedInstitution && typeof zoomToBuilding === 'function') {{
-          zoomToBuilding(selectedInstitution);
+        const inst = selectedInstitution || (typeof ALL_INSTITUTIONS !== 'undefined' ? (ALL_INSTITUTIONS.find(i => i.name.toLowerCase().includes('green papaya')) || ALL_INSTITUTIONS[0]) : null);
+        if (inst && typeof zoomToBuilding === 'function') {{
+          zoomToBuilding(inst);
+          if (window.innerWidth < 768) {{
+            const sheet = document.getElementById('dossier-bottom-sheet');
+            if (sheet) sheet.classList.add('hidden');
+            const ind = document.getElementById('mobile3DActiveIndicator');
+            if (ind) {{
+              const nameEl = document.getElementById('mobile3DActiveName');
+              if (nameEl) nameEl.textContent = inst.name;
+              ind.classList.remove('hidden');
+            }}
+          }}
         }}
+      }});
+      document.getElementById('mobile3DBackToDossierBtn')?.addEventListener('click', () => {{
+        const ind = document.getElementById('mobile3DActiveIndicator');
+        if (ind) ind.classList.add('hidden');
+        const sheet = document.getElementById('dossier-bottom-sheet');
+        if (sheet) sheet.classList.remove('hidden');
+      }});
+      document.getElementById('mobile3DActiveIndicator')?.addEventListener('click', (e) => {{
+        if (e.target && e.target.closest('#mobile3DBackToDossierBtn')) return;
+        const ind = document.getElementById('mobile3DActiveIndicator');
+        if (ind) ind.classList.add('hidden');
+        const sheet = document.getElementById('dossier-bottom-sheet');
+        if (sheet) sheet.classList.remove('hidden');
       }});
       document.getElementById('dossier-sheet-link-photos')?.addEventListener('click', () => {{
         if (selectedInstitution && typeof openArchiveHoldingsModal === 'function') {{
           openArchiveHoldingsModal(selectedInstitution);
         }}
       }});
+    }}
+    if (document.readyState === 'loading') {{
+      document.addEventListener('DOMContentLoaded', initMobileCodeDesign);
+    }} else {{
+      initMobileCodeDesign();
     }}
     
 
