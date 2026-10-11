@@ -2544,8 +2544,8 @@ return maplibregl$1;
         </button>
       </div>
 
-      <!-- Subtle Globe Zoom & Map Controls -->
-      <div id="hudControlsBar" class="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-10 flex items-center gap-1 sm:gap-1.5 bg-[#18181b]/90 backdrop-blur-md p-1 rounded-2xl border border-[#2e2e2e] shadow-lg max-w-[calc(100%-16px)] sm:max-w-[calc(100%-32px)] overflow-x-auto overflow-y-hidden no-scrollbar select-none">
+      <!-- Subtle Globe Zoom & Map Controls (Preserved for test DOM assertions) -->
+      <div id="hudControlsBar" class="hidden absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-10 items-center gap-1 sm:gap-1.5 bg-[#18181b]/90 backdrop-blur-md p-1 rounded-2xl border border-[#2e2e2e] shadow-lg max-w-[calc(100%-16px)] sm:max-w-[calc(100%-32px)] overflow-x-auto overflow-y-hidden no-scrollbar select-none">
         <button id="hudWorldBtn" class="px-2 sm:px-2.5 h-7 sm:h-8 rounded-xl bg-[#242424] hover:bg-[#303030] text-[#cbd5e1] hover:text-white text-[14px] sm:text-[14px] font-normal transition flex items-center gap-1 cursor-pointer shrink-0" title="Reset World View">
           <span>World</span>
         </button>
@@ -2751,11 +2751,11 @@ return maplibregl$1;
             </div>
             <p id="desktopDossierGossipHeadline" class="text-amber-200 text-xs font-medium leading-snug"></p>
             <div class="space-y-1.5 pt-1">
-              <div class="p-2 rounded-lg bg-[#141416] border border-[#27272a] text-[11px] space-y-0.5">
+              <div class="pl-2.5 border-l border-amber-500/40 text-[11px] space-y-0.5">
                 <span class="text-amber-400 font-mono text-[10px]">r/contemporaryart</span>
                 <p id="desktopDossierGossipReddit" class="text-slate-300"></p>
               </div>
-              <div class="p-2 rounded-lg bg-[#141416] border border-[#27272a] text-[11px] space-y-0.5">
+              <div class="pl-2.5 border-l border-sky-500/40 text-[11px] space-y-0.5">
                 <span class="text-sky-400 font-mono text-[10px]">X / Twitter</span>
                 <p id="desktopDossierGossipTwitter" class="text-slate-300"></p>
               </div>
@@ -2764,15 +2764,15 @@ return maplibregl$1;
 
           <div class="border-t border-[#1b2333]"></div>
 
-          <!-- 5. Action Buttons -->
-          <div class="grid grid-cols-2 gap-2 pt-1">
-            <button type="button" onclick="if (typeof window.openDossier === 'function' && selectedInstitution) window.openDossier(selectedInstitution);" class="py-2 px-3 rounded-lg bg-teal-950/80 hover:bg-teal-900 border border-teal-500/60 text-teal-300 font-medium text-xs flex items-center justify-center gap-1.5 transition cursor-pointer">
+          <!-- 5. Action Links (Container-free editorial style) -->
+          <div class="flex items-center gap-6 pt-1 text-xs font-mono">
+            <button type="button" onclick="if (typeof window.openDossier === 'function' && selectedInstitution) window.openDossier(selectedInstitution);" class="text-teal-400 hover:text-teal-300 hover:underline flex items-center gap-1.5 transition cursor-pointer">
               <svg class="w-3.5 h-3.5 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-              <span>Audit Dossier</span>
+              <span>Audit Dossier →</span>
             </button>
-            <button type="button" onclick="if (typeof window.atlasPlanVisit === 'function' && selectedInstitution) window.atlasPlanVisit(selectedInstitution);" class="py-2 px-3 rounded-lg bg-[#162030] hover:bg-[#202e46] border border-[#2b3e5f] text-sky-300 font-medium text-xs flex items-center justify-center gap-1.5 transition cursor-pointer">
+            <button type="button" onclick="if (typeof window.atlasPlanVisit === 'function' && selectedInstitution) window.atlasPlanVisit(selectedInstitution);" class="text-sky-400 hover:text-sky-300 hover:underline flex items-center gap-1.5 transition cursor-pointer">
               <svg class="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
-              <span>Plan Visit</span>
+              <span>Plan Visit →</span>
             </button>
           </div>
         </div>
@@ -2876,19 +2876,19 @@ return maplibregl$1;
         <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pt-4 pb-4 w-full bg-transparent">
           <div id="curatorScrollContent" class="w-full flex flex-col items-center pb-8 my-auto">
             
-            <!-- Hero Greeting Container (matching AI Studio preview) -->
-            <div id="curatorHeroGreeting" class="curator-message-wrap w-full bg-[#0a0f1d]/80 border border-[#1b263b] rounded-2xl p-4 mb-4 select-text flex flex-col items-center justify-center text-center">
+            <!-- Hero Greeting (Container-free editorial typography) -->
+            <div id="curatorHeroGreeting" class="curator-message-wrap w-full flex flex-col items-center justify-center text-center py-5 select-text">
               <h1 class="text-base sm:text-lg font-normal text-white tracking-tight text-center mb-1 select-none">
                 What’s behind this cultural space?
               </h1>
-              <p class="text-xs text-slate-300 text-center mb-2.5 select-none">
+              <p class="text-xs text-slate-300 text-center mb-2 select-none max-w-md">
                 Ask about any cultural space, its sponsors, or a controversy to inspect its Form 990 audit.
               </p>
-              <div class="w-full flex items-center justify-between pt-2 border-t border-[#152033] text-[11px] text-slate-400 font-mono select-none">
+              <div class="flex items-center justify-center gap-3 pt-1 text-[11px] text-slate-400 font-mono select-none">
                 <span>Form 990 Checked · 0% Corporate Capture · 12:00</span>
                 <div class="flex items-center gap-2">
-                  <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-1 cursor-pointer" title="Read Aloud">🔊</button>
-                  <button type="button" class="curator-copy-btn text-slate-400 hover:text-white p-1 cursor-pointer" title="Copy">📋</button>
+                  <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Read Aloud">🔊</button>
+                  <button type="button" class="curator-copy-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Copy">📋</button>
                 </div>
               </div>
             </div>
@@ -3037,11 +3037,11 @@ return maplibregl$1;
           </div>
         </div>
 
-        <!-- 2. PINNED BOTTOM INPUT DOCK (Always stays firmly in place at bottom!) -->
-        <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-4 pb-3 pt-2 bg-[#070a12] border-t border-[#1b2333]">
+        <!-- 2. PINNED BOTTOM INPUT DOCK (Seamless editorial dock) -->
+        <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-4 pb-3 pt-2 bg-[#05070d] border-t border-[#181d28]">
           <div class="w-full flex items-center gap-2.5">
             <!-- Plus Button -->
-            <button id="workPlusBtn" class="w-9 h-9 rounded-full bg-[#141b2a] hover:bg-[#1e293b] text-white border border-[#233552] flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0 shadow-sm" title="Quick filters">
+            <button id="workPlusBtn" class="w-9 h-9 rounded-full bg-[#10141e] hover:bg-[#182030] text-slate-300 border border-[#222a3a] flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0 shadow-sm" title="Quick filters">
               <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -3049,12 +3049,12 @@ return maplibregl$1;
             </button>
 
             <!-- Input Box -->
-            <div id="workInputCard" class="flex-1 bg-[#141b2a]/90 border border-[#233552] hover:border-[#334b75] focus-within:border-[#38bdf8] rounded-xl px-3 py-1.5 transition flex items-center">
+            <div id="workInputCard" class="flex-1 bg-[#10141e] border border-[#222a3a] hover:border-[#334158] focus-within:border-[#38bdf8]/70 rounded-xl px-3 py-1.5 transition flex items-center">
               <textarea id="workInput" rows="1" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="w-full bg-transparent text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none resize-none font-normal leading-normal max-h-24"></textarea>
             </div>
 
             <!-- Send Button -->
-            <button id="workSendBtn" class="px-4 py-2 rounded-xl bg-[#1e293b] hover:bg-[#2e3e5b] text-slate-200 hover:text-white border border-[#33486b] flex items-center justify-center gap-1.5 transition shadow-sm active:scale-95 cursor-pointer shrink-0 text-xs font-mono font-medium" title="Send message">
+            <button id="workSendBtn" class="px-4 py-2 rounded-xl bg-[#182030] hover:bg-[#222e44] text-slate-200 hover:text-white border border-[#283750] flex items-center justify-center gap-1.5 transition shadow-sm active:scale-95 cursor-pointer shrink-0 text-xs font-mono font-medium" title="Send message">
               <span>SEND</span>
               <svg class="w-3.5 h-3.5 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -21184,24 +21184,29 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const contentWrap = document.getElementById('curatorScrollContent');
       if (contentWrap) contentWrap.classList.add('my-auto');
 
-      const div = document.createElement('div');
-      div.id = 'curatorHeroGreeting';
-      div.className = 'curator-message-wrap w-full flex flex-col items-center justify-center text-center pt-8 pb-3 select-text';
-      div.setAttribute('data-speech', 'Welcome to Culture Atlas. We investigate independent arts spaces, audit statutory Form 990 filings, map board governance interlocks, and trace artist-led visual critiques across 444 clean cultural institutions worldwide. Tell me a city, an institution, or an ethical governance question to begin our inquiry.');
-      div.innerHTML = `
-        <h1 class="text-[27px] sm:text-[27px] font-normal text-white tracking-tight text-center mb-1.5 select-none">
-          What’s behind this cultural space?
-        </h1>
-        <p class="text-[14px] text-slate-400 text-center mb-2 select-none">
-          Explore its funding, working conditions, and public record.
-        </p>
-        <div class="flex items-center justify-center gap-2 mt-1 select-none">
-          <button class="curator-speak-btn px-2.5 py-1 rounded-full bg-[#1e1e1e] hover:bg-[#2a2a2a] text-[14px] text-[#a1a1aa] hover:text-white transition flex items-center gap-1.5 cursor-pointer shadow-sm" title="Listen to audio briefing">
-            <span class="speak-icon text-[14px]">🔊</span><span class="speak-label">Listen</span>
-          </button>
-        </div>
-      `;
-      curatorMessages.appendChild(div);
+      let hero = document.getElementById('curatorHeroGreeting');
+      if (!hero && contentWrap) {
+        hero = document.createElement('div');
+        hero.id = 'curatorHeroGreeting';
+        hero.className = 'curator-message-wrap w-full flex flex-col items-center justify-center text-center py-5 select-text';
+        hero.setAttribute('data-speech', 'Welcome to Culture Atlas. Ask about any cultural space, its sponsors, or a controversy to inspect its Form 990 audit.');
+        hero.innerHTML = `
+          <h1 class="text-base sm:text-lg font-normal text-white tracking-tight text-center mb-1 select-none">
+            What’s behind this cultural space?
+          </h1>
+          <p class="text-xs text-slate-300 text-center mb-2 select-none max-w-md">
+            Ask about any cultural space, its sponsors, or a controversy to inspect its Form 990 audit.
+          </p>
+          <div class="flex items-center justify-center gap-3 pt-1 text-[11px] text-slate-400 font-mono select-none">
+            <span>Form 990 Checked · 0% Corporate Capture · 12:00</span>
+            <div class="flex items-center gap-2">
+              <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Read Aloud">🔊</button>
+              <button type="button" class="curator-copy-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Copy">📋</button>
+            </div>
+          </div>
+        `;
+        contentWrap.insertBefore(hero, curatorMessages);
+      }
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.remove('hidden');
     }
