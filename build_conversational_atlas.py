@@ -286,10 +286,16 @@ def build():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#05070B" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#05070B" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#05070B" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2305070B' stroke='%2310b981' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%2334d399' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%2310b981'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%2305070B'/%3E%3Ccircle cx='90' cy='90' r='70' fill='none' stroke='%2310b981' stroke-width='10'/%3E%3Ccircle cx='90' cy='90' r='38' fill='none' stroke='%2334d399' stroke-width='8'/%3E%3Ccircle cx='90' cy='90' r='14' fill='%2310b981'/%3E%3C/svg%3E">
   <link rel="manifest" href="manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Culture Atlas" />
+  <meta name="format-detection" content="telephone=no" />
   <title>Culture Atlas — Ethically funded cultural institutions across the world</title>
   <meta name="description" content="Culture Atlas — Ethically funded cultural institutions across the world" />
 <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
@@ -641,12 +647,134 @@ def build():
     }}
 
     
-    /* iOS notch padding support */
-    .pb-safe {{
-      padding-bottom: env(safe-area-inset-bottom, 16px);
+    /* ========================================================= */
+    /* 🌐 GOOGLE CHROME & APPLE SAFARI CROSS-BROWSER STYLING */
+    /* ========================================================= */
+    /* Dynamic Viewport & iOS Safari / Chrome Viewport Height */
+    :root {{
+      --sat: env(safe-area-inset-top, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+      --sal: env(safe-area-inset-left, 0px);
+      --sar: env(safe-area-inset-right, 0px);
     }}
+
+    html {{
+      height: 100%;
+      height: -webkit-fill-available;
+      height: 100dvh;
+      background-color: #05070B;
+      color: #f1f5f9;
+      -webkit-text-size-adjust: 100%;
+    }}
+
+    body {{
+      height: 100%;
+      height: -webkit-fill-available;
+      height: 100dvh;
+      min-height: 100dvh;
+      max-height: 100dvh;
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
+    }}
+
+    /* Safe Area Notch, Island & Home Bar Paddings */
     .pt-safe {{
-      padding-top: env(safe-area-inset-top, 44px);
+      padding-top: max(10px, env(safe-area-inset-top, 0px));
+    }}
+    .pb-safe {{
+      padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    }}
+    .pl-safe {{
+      padding-left: max(12px, env(safe-area-inset-left, 0px));
+    }}
+    .pr-safe {{
+      padding-right: max(12px, env(safe-area-inset-right, 0px));
+    }}
+
+    @supports (-webkit-touch-callout: none) {{
+      /* iOS Safari specific safe area padding */
+      .pt-safe {{
+        padding-top: max(12px, env(safe-area-inset-top, 44px));
+      }}
+      .pb-safe {{
+        padding-bottom: max(10px, env(safe-area-inset-bottom, 16px));
+      }}
+    }}
+
+    /* Universal WebKit & Blink Backdrop Blur Glassmorphism for Chrome and Safari */
+    .backdrop-blur-sm, [class*="backdrop-blur-sm"] {{
+      -webkit-backdrop-filter: blur(4px) !important;
+      backdrop-filter: blur(4px) !important;
+    }}
+    .backdrop-blur, [class*="backdrop-blur"] {{
+      -webkit-backdrop-filter: blur(8px) !important;
+      backdrop-filter: blur(8px) !important;
+    }}
+    .backdrop-blur-md, [class*="backdrop-blur-md"] {{
+      -webkit-backdrop-filter: blur(12px) !important;
+      backdrop-filter: blur(12px) !important;
+    }}
+    .backdrop-blur-lg, [class*="backdrop-blur-lg"] {{
+      -webkit-backdrop-filter: blur(16px) !important;
+      backdrop-filter: blur(16px) !important;
+    }}
+    .backdrop-blur-xl, [class*="backdrop-blur-xl"] {{
+      -webkit-backdrop-filter: blur(24px) !important;
+      backdrop-filter: blur(24px) !important;
+    }}
+    .backdrop-blur-2xl, [class*="backdrop-blur-2xl"] {{
+      -webkit-backdrop-filter: blur(40px) !important;
+      backdrop-filter: blur(40px) !important;
+    }}
+
+    /* Universal Sleek Scrollbars across Google Chrome and Safari (WebKit + Standards) */
+    *::-webkit-scrollbar {{
+      width: 5px;
+      height: 5px;
+    }}
+    *::-webkit-scrollbar-track {{
+      background: transparent;
+    }}
+    *::-webkit-scrollbar-thumb {{
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 9999px;
+    }}
+    *::-webkit-scrollbar-thumb:hover {{
+      background: rgba(255, 255, 255, 0.30);
+    }}
+    * {{
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+    }}
+
+    /* Hide scrollbars completely where intended (.no-scrollbar) */
+    .no-scrollbar::-webkit-scrollbar {{
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }}
+    .no-scrollbar {{
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+    }}
+
+    /* iOS Safari Input Auto-Zoom Prevention (16px on mobile viewports) */
+    @media screen and (max-width: 768px) {{
+      input[type="text"],
+      input[type="search"],
+      textarea,
+      select {{
+        font-size: 16px !important;
+      }}
+    }}
+
+    /* Momentum Touch Scrolling for Safari */
+    .overflow-y-auto, .overflow-x-auto, #curatorScrollArea, #curatorDrawerChatBody, #dossier-sheet-scrollable-body {{
+      -webkit-overflow-scrolling: touch;
     }}
 
     /* Subtle Starfield & Globe Glow */
@@ -662,15 +790,6 @@ def build():
         radial-gradient(circle at 50% 38%, rgba(13, 148, 136, 0.15) 0%, rgba(5, 7, 11, 0.95) 75%);
       background-repeat: repeat;
       background-size: 350px 350px, 400px 400px, 300px 300px, 450px 450px, 280px 280px, 320px 320px, 100% 100%;
-    }}
-
-    /* Hide scrollbars for pill bars */
-    .no-scrollbar::-webkit-scrollbar {{
-      display: none;
-    }}
-    .no-scrollbar {{
-      -ms-overflow-style: none;
-      scrollbar-width: none;
     }}
 
     /* Globe Pulse Rings */
@@ -15569,7 +15688,7 @@ def build():
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
 
-      ctx.font = '800 18px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
       const nameText = inst.name;
       const nameW = ctx.measureText(nameText).width;
 
@@ -15610,7 +15729,7 @@ def build():
       ctx.textBaseline = 'top';
       ctx.fillText(tierLabel, cardX + 12, cardY + 7);
 
-      ctx.font = '800 18px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#ffffff';
       let displayName = nameText;
       if (ctx.measureText(displayName).width > cardW - 24) {{
@@ -16560,7 +16679,7 @@ def build():
               const countTxt = `${{countVal}} Verified Cultural Space${{countVal === 1 ? '' : 's'}}`;
               const linkTxt = 'Click to Explore →';
 
-              ctx.font = '800 18px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
               const twCity = ctx.measureText(cityTxt).width;
 
               ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
@@ -16610,8 +16729,8 @@ def build():
               ctx.lineWidth = 1.5;
               ctx.stroke();
 
-              // Line 1: City Name (bold 16px)
-              ctx.font = '800 18px "PP Museum", "PP Telegraf", sans-serif';
+              // Line 1: City Name (500 18px)
+              ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive ? '#facc15' : '#38bdf8';
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
