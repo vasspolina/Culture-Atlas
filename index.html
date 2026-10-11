@@ -865,6 +865,209 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8), 0 0 12px rgba(16, 185, 129, 0.35) !important;
       z-index: 9999 !important;
     }
+    /* 3D Building Spatial On-Map Callout & Mast Headroom Architecture */
+    .building-3d-mast-plate {
+      position: relative;
+      min-width: 290px;
+      max-width: 410px;
+      padding: 10px 14px;
+      background: rgba(18, 20, 26, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 14px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.5), 0 0 18px rgba(16, 185, 129, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif;
+      color: #ffffff;
+      z-index: 25;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: auto;
+    }
+    .building-3d-mast-plate::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 28px;
+      border-width: 6px 6px 0 6px;
+      border-style: solid;
+      border-color: rgba(18, 20, 26, 0.96) transparent transparent transparent;
+    }
+    .building-mast-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #94a3b8;
+      font-size: 13px;
+      line-height: 1;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .building-mast-close-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+    }
+    .mast-inst-name {
+      font-family: 'PP Museum', 'PP Telegraf', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      max-width: 260px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .mast-headroom-pill {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      cursor: pointer;
+      font-family: monospace;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .mast-headroom-pill:hover {
+      background: rgba(56, 189, 248, 0.28);
+      border-color: rgba(56, 189, 248, 0.65);
+      color: #ffffff;
+    }
+    /* 3D Floor Directory Facade Stack */
+    .building-3d-facade-stack {
+      position: relative;
+      min-width: 240px;
+      max-width: 320px;
+      padding: 9px 12px;
+      background: rgba(18, 20, 26, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-family: 'PP Museum', 'PP Telegraf', sans-serif;
+      color: #f1f5f9;
+      z-index: 24;
+      pointer-events: auto;
+    }
+    .facade-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 6px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .facade-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #34d399;
+    }
+    .building-facade-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #94a3b8;
+      font-size: 11px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .building-facade-close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+    .facade-floor-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 3px 6px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .facade-floor-row:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .facade-level-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      font-family: monospace;
+    }
+    .facade-floor-name {
+      font-size: 12px;
+      color: #e2e8f0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    /* 3D Spatial Room Badges */
+    .building-3d-room-badge {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 7px 11px;
+      min-width: 180px;
+      max-width: 250px;
+      background: rgba(18, 20, 26, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      font-family: 'PP Museum', 'PP Telegraf', sans-serif;
+      color: #ffffff;
+      z-index: 22;
+      pointer-events: auto;
+    }
+    .building-room-close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94a3b8;
+      font-size: 10px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .building-room-close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+    .building-3d-room-badge .badge-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #10b981;
+      text-transform: uppercase;
+      padding-right: 14px;
+    }
     /* 🔒 SECURE WHISTLEBLOWER & INTEL INTAKE MODE STYLING */
     #chatModeSegmentedSwitch button {
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
@@ -3158,6 +3361,29 @@ return maplibregl$1;
       <div id="connectionTestBox" class="hidden p-3 rounded-xl text-[14px] border flex items-center gap-2">
         <span id="testStatusIcon"></span>
         <span id="testStatusMsg" class="font-mono">Testing connection...</span>
+      </div>
+
+      <!-- 3D Architectural Camera Headroom Settings -->
+      <div class="space-y-2 pt-2 border-t border-[#2e2e2e]">
+        <div class="flex items-center justify-between">
+          <label class="block text-[14px] text-white font-normal">3D Building Camera Headroom</label>
+          <span class="text-[12px] font-mono text-emerald-400" id="currentHeadroomBadge">Comfortable (120px)</span>
+        </div>
+        <p class="text-[13px] text-[#a1a1aa] leading-tight">Controls top vertical clearance above 3D building models so rooftop mast plates and floor directories never collide with the header.</p>
+        <div class="grid grid-cols-3 gap-2 pt-1">
+          <button type="button" data-headroom="compact" class="headroom-setting-btn py-2 px-2.5 rounded-xl border border-[#27272a] bg-[#1f1f23] text-[#a1a1aa] hover:text-white text-[13px] font-normal flex flex-col items-center justify-center text-center transition cursor-pointer">
+            <span class="font-medium text-white">Compact</span>
+            <span class="text-[11px] text-[#71717a]">70px margin</span>
+          </button>
+          <button type="button" data-headroom="comfortable" class="headroom-setting-btn py-2 px-2.5 rounded-xl border border-emerald-500/60 bg-emerald-950/40 text-emerald-200 text-[13px] font-normal flex flex-col items-center justify-center text-center transition cursor-pointer shadow-sm">
+            <span class="font-medium text-white">Comfortable</span>
+            <span class="text-[11px] text-emerald-300">120px (Default)</span>
+          </button>
+          <button type="button" data-headroom="spacious" class="headroom-setting-btn py-2 px-2.5 rounded-xl border border-[#27272a] bg-[#1f1f23] text-[#a1a1aa] hover:text-white text-[13px] font-normal flex flex-col items-center justify-center text-center transition cursor-pointer">
+            <span class="font-medium text-white">Spacious</span>
+            <span class="text-[11px] text-[#71717a]">160px sky space</span>
+          </button>
+        </div>
       </div>
 
       <!-- Privacy Assurance -->
@@ -10352,15 +10578,92 @@ return maplibregl$1;
     }
     window.toggleSatelliteMode = toggleSatelliteMode;
 
+    // =========================================================================
+    // 📐 3D ARCHITECTURAL CAMERA HEADROOM & MAST SPACING ARCHITECTURE
+    // =========================================================================
+    const HEADROOM_PRESETS = {
+      compact: { desktopTop: 70, mobileTop: 65, desktopBottom: 50, mobileBottom: 100, label: 'Compact (70px)', shortLabel: '70px Headroom' },
+      comfortable: { desktopTop: 120, mobileTop: 96, desktopBottom: 60, mobileBottom: 120, label: 'Comfortable (120px)', shortLabel: '120px Headroom' },
+      spacious: { desktopTop: 160, mobileTop: 130, desktopBottom: 70, mobileBottom: 130, label: 'Spacious (160px)', shortLabel: '160px Headroom' }
+    };
+    let currentHeadroomSetting = (typeof localStorage !== 'undefined' && localStorage.getItem('atlas_3d_headroom')) || 'comfortable';
+    if (!HEADROOM_PRESETS[currentHeadroomSetting]) currentHeadroomSetting = 'comfortable';
+
+    function getBuilding3DHeadroomLabel() {
+      const preset = HEADROOM_PRESETS[currentHeadroomSetting] || HEADROOM_PRESETS.comfortable;
+      return preset.shortLabel || '120px Headroom';
+    }
+    window.getBuilding3DHeadroomLabel = getBuilding3DHeadroomLabel;
+
+    function getBuildingCameraPadding() {
+      const preset = HEADROOM_PRESETS[currentHeadroomSetting] || HEADROOM_PRESETS.comfortable;
+      const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 640;
+      return {
+        left: isDesktop ? 330 : 0,
+        top: isDesktop ? preset.desktopTop : preset.mobileTop,
+        bottom: isDesktop ? preset.desktopBottom : preset.mobileBottom,
+        right: isDesktop ? 30 : 15
+      };
+    }
+    window.getBuildingCameraPadding = getBuildingCameraPadding;
+
+    function setBuilding3DHeadroom(mode, reapply = true) {
+      if (!HEADROOM_PRESETS[mode]) mode = 'comfortable';
+      currentHeadroomSetting = mode;
+      try { if (typeof localStorage !== 'undefined') localStorage.setItem('atlas_3d_headroom', mode); } catch (e) {}
+
+      // Update Settings Modal Badge & Buttons
+      const badge = document.getElementById('currentHeadroomBadge');
+      if (badge) badge.textContent = HEADROOM_PRESETS[mode].label;
+      document.querySelectorAll('.headroom-setting-btn').forEach(btn => {
+        const isMatch = btn.getAttribute('data-headroom') === mode;
+        btn.classList.toggle('border-emerald-500/60', isMatch);
+        btn.classList.toggle('bg-emerald-950/40', isMatch);
+        btn.classList.toggle('text-emerald-200', isMatch);
+        btn.classList.toggle('border-[#27272a]', !isMatch);
+        btn.classList.toggle('bg-[#1f1f23]', !isMatch);
+        btn.classList.toggle('text-[#a1a1aa]', !isMatch);
+      });
+
+      // Update Mast Plate pill if rendered
+      document.querySelectorAll('.mast-headroom-pill').forEach(pill => {
+        pill.textContent = HEADROOM_PRESETS[mode].shortLabel;
+      });
+
+      // Smoothly re-frame active 3D building camera if in building view
+      if (reapply && cityVectorMap && typeof cityVectorMap.easeTo === 'function') {
+        const inst = selectedInstitution || currentHighlightedBuildingInst;
+        if (inst && (document.body.classList.contains('building-view-active') || isCityStreetViewActive)) {
+          cityVectorMap.easeTo({
+            center: [inst.lon, inst.lat],
+            padding: getBuildingCameraPadding(),
+            duration: 500
+          });
+        }
+      }
+    }
+    window.setBuilding3DHeadroom = setBuilding3DHeadroom;
+
+    function cycleBuilding3DHeadroom() {
+      const modes = ['compact', 'comfortable', 'spacious'];
+      const nextIdx = (modes.indexOf(currentHeadroomSetting) + 1) % modes.length;
+      setBuilding3DHeadroom(modes[nextIdx], true);
+    }
+    window.cycleBuilding3DHeadroom = cycleBuilding3DHeadroom;
+
     function renderBuilding3DMast(inst) {
       const div = document.createElement('div');
       div.className = 'building-3d-mast-plate pointer-events-auto select-none';
       const name = (inst && inst.name) || 'Culture Atlas Space';
       const explodeLabel = isExploded3DMode ? 'Stack 3D Building' : 'Explode 3D Floors';
+      const hdLabel = getBuilding3DHeadroomLabel();
       div.innerHTML = `
         <div class="mast-header flex items-center justify-between gap-2">
           <span class="mast-inst-name font-bold text-white">${escapeHtml(name)}</span>
-          <button type="button" class="building-mast-close-btn" onclick="window.closeBuildingMast()">×</button>
+          <div class="flex items-center gap-1.5">
+            <button type="button" class="mast-headroom-pill" onclick="event.stopPropagation(); window.cycleBuilding3DHeadroom()" title="Cycle camera headroom above building">${hdLabel}</button>
+            <button type="button" class="building-mast-close-btn" onclick="window.closeBuildingMast()">×</button>
+          </div>
         </div>
         <div class="mast-actions flex items-center gap-1.5 mt-1">
           <button type="button" class="mast-explode-btn atlas-pill-btn" onclick="window.toggleExploded3DMode()">${explodeLabel}</button>
@@ -11646,12 +11949,13 @@ return maplibregl$1;
       });
 
       if (cityVectorMap) {
+        const bPad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : { left: (window.innerWidth >= 640 ? 330 : 0), top: 120, bottom: 60, right: 30 };
         cityVectorMap.flyTo({
           center: [inst.lon, inst.lat],
           zoom: 18.5,
           pitch: 62,
           bearing: 28,
-          padding: { left: (window.innerWidth >= 640 ? 330 : 0), top: 40, bottom: 40, right: 30 },
+          padding: bPad,
           speed: 1.4,
           curve: 1.3,
           essential: true
@@ -11687,12 +11991,13 @@ return maplibregl$1;
       if (!inst || !cityVectorMap) return;
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
       if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
+      const basePad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : { left: (window.innerWidth >= 640 ? 330 : 0), top: 120, bottom: 60, right: 30 };
       cityVectorMap.flyTo({
         center: [inst.lon, inst.lat],
         zoom: targetZoom,
         pitch: 65,
         bearing: 35,
-        padding: { left: (window.innerWidth >= 640 ? 330 : 0), top: 40, bottom: 40, right: 30 },
+        padding: { ...basePad, top: basePad.top + 15 },
         speed: 1.2,
         curve: 1.2,
         essential: true
@@ -11711,6 +12016,7 @@ return maplibregl$1;
       const inst = selectedInstitution || currentHighlightedBuildingInst;
       const center = inst ? [inst.lon, inst.lat] : [cityVectorMap.getCenter().lng, cityVectorMap.getCenter().lat];
       const padLeft = (window.innerWidth >= 640 ? 330 : 0);
+      const bPad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : { left: padLeft, top: 120, bottom: 60, right: 30 };
 
       if (mode === 'perspective') {
         cityVectorMap.easeTo({
@@ -11718,7 +12024,7 @@ return maplibregl$1;
           pitch: 62,
           bearing: 30,
           zoom: 18.5,
-          padding: { left: padLeft, top: 40, bottom: 40, right: 30 },
+          padding: bPad,
           duration: 900
         });
       } else if (mode === 'isometric') {
@@ -11727,7 +12033,7 @@ return maplibregl$1;
           pitch: 45,
           bearing: 45,
           zoom: 18.3,
-          padding: { left: padLeft, top: 40, bottom: 40, right: 30 },
+          padding: bPad,
           duration: 900
         });
       } else if (mode === 'plan') {
@@ -11736,7 +12042,7 @@ return maplibregl$1;
           pitch: 0,
           bearing: 0,
           zoom: 18.0,
-          padding: { left: padLeft, top: 40, bottom: 40, right: 30 },
+          padding: { ...bPad, top: Math.round(bPad.top * 0.75) },
           duration: 900
         });
       }
@@ -11762,11 +12068,12 @@ return maplibregl$1;
       if (orbitText) orbitText.textContent = 'Stop Orbit';
 
       const padLeft = (window.innerWidth >= 640 ? 330 : 0);
+      const bPad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : { left: padLeft, top: 120, bottom: 60, right: 30 };
       cityVectorMap.easeTo({
         center: [inst.lon, inst.lat],
         pitch: 64,
         zoom: 18.6,
-        padding: { left: padLeft, top: 40, bottom: 40, right: 30 },
+        padding: bPad,
         duration: 800
       });
 
@@ -11829,10 +12136,11 @@ return maplibregl$1;
 
       const inst = selectedInstitution || currentHighlightedBuildingInst;
       const padLeft = (inst && window.innerWidth >= 640) ? 330 : 0;
+      const bPad = inst && typeof getBuildingCameraPadding === 'function' ? getBuildingCameraPadding() : { left: padLeft, top: 40, bottom: 40, right: 30 };
       cityVectorMap.easeTo({
         pitch: targetPitch,
         bearing: targetBearing,
-        padding: { left: padLeft, top: 40, bottom: 40, right: 30 },
+        padding: bPad,
         duration: 1000
       });
 
@@ -17953,6 +18261,9 @@ return maplibregl$1;
         setTimeout(() => input.focus(), 60);
       }
       updateProviderUI(getEffectiveProvider());
+      if (typeof setBuilding3DHeadroom === 'function') {
+        setBuilding3DHeadroom(currentHeadroomSetting, false);
+      }
       const testBox = document.getElementById('connectionTestBox');
       if (testBox) testBox.classList.add('hidden');
     }
@@ -28450,6 +28761,16 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
     // Initialize UI Status on startup
     updateAIStatusUI();
+    if (typeof setBuilding3DHeadroom === 'function') {
+      setBuilding3DHeadroom(currentHeadroomSetting, false);
+    }
+
+    document.querySelectorAll('.headroom-setting-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-headroom');
+        if (typeof setBuilding3DHeadroom === 'function') setBuilding3DHeadroom(mode, true);
+      });
+    });
 
     // =========================================================
     // 📋 CATALOG LIST & FILTERING ENGINE
