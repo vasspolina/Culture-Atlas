@@ -63,12 +63,12 @@ Disclosures are documented in IRS Form 990 Schedule L.`;
         await window.handleCuratorQuery('Why is MoMA excluded from Culture Atlas?');
 
         // Allow async response handling (handleCuratorQuery uses a 300ms delay)
-        await new Promise(r => setTimeout(r, 800));
+        await new Promise(r => setTimeout(r, 600));
 
-        const msgs = document.querySelectorAll('.curator-message-wrap');
+        let msgs = document.querySelectorAll('.curator-message-wrap');
         assert('Curator appended messages to chat', msgs.length > 0);
-        const lastMsg = msgs[msgs.length - 1];
-        const msgHtml = lastMsg.innerHTML;
+        let lastMsg = msgs[msgs.length - 1];
+        let msgHtml = lastMsg.innerHTML;
 
         assert('MoMA response does NOT leak raw double asterisks', !msgHtml.includes('**What You Actually Get**') && !msgHtml.includes('**The Governance Problem**'));
         assert('MoMA response contains Reality Check section', msgHtml.includes('What You Actually Get') && msgHtml.includes('Reality Check'));
@@ -81,6 +81,45 @@ Disclosures are documented in IRS Form 990 Schedule L.`;
         assert('MoMA response contains The New York Times source pill', msgHtml.includes('The New York Times') && msgHtml.includes('source-citation-pill'));
         assert('MoMA response contains IRS Form 990 Schedule L source pill', msgHtml.includes('IRS Form 990 Schedule L'));
         assert('MoMA response contains alternative institution links', msgHtml.includes('Artists Space') && msgHtml.includes('SculptureCenter'));
+
+        // Test 3: Misspelling Resolution ("Ulia stolcheck foundation")
+        await window.handleCuratorQuery('Ulia stolcheck foundation');
+        await new Promise(r => setTimeout(r, 600));
+
+        msgs = document.querySelectorAll('.curator-message-wrap');
+        lastMsg = msgs[msgs.length - 1];
+        msgHtml = lastMsg.innerHTML;
+
+        assert('Ulia stolcheck resolves to Julia Stoschek Foundation', msgHtml.includes('Julia Stoschek Foundation') || msgHtml.includes('JSC Berlin'));
+        assert('Stoschek briefing does NOT leak raw double asterisks', !msgHtml.includes('**What You Actually Get**') && !msgHtml.includes('**Julia Stoschek Foundation**'));
+        assert('Stoschek briefing mentions Berlin-Mitte or Leipziger', msgHtml.includes('Berlin') && (msgHtml.includes('Mitte') || msgHtml.includes('Leipziger')));
+        assert('Stoschek briefing highlights 100% free public admission', msgHtml.includes('free') || msgHtml.includes('Free'));
+        assert('Stoschek briefing highlights time-based media or video art archive', msgHtml.includes('media') || msgHtml.includes('video') || msgHtml.includes('900+'));
+        assert('Stoschek briefing mentions Bundesanzeiger statutory transparency', msgHtml.includes('Bundesanzeiger'));
+
+        // Test 4: Additional Misspelling Queries ("chisnhale", "gugenhime")
+        const resolvedChis = window.findAnyInstitution('chisnhale');
+        assert('chisnhale resolves to Chisenhale Gallery', resolvedChis && resolvedChis.inst && resolvedChis.inst.name.includes('Chisenhale'));
+
+        const resolvedGug = window.findAnyInstitution('gugenhime');
+        assert('gugenhime resolves to Guggenheim', resolvedGug && resolvedGug.inst && resolvedGug.inst.name.includes('Guggenheim'));
+
+        const resolvedMomaa = window.findAnyInstitution('momaa');
+        assert('momaa resolves to MoMA', resolvedMomaa && resolvedMomaa.inst && resolvedMomaa.inst.name.includes('Modern Art'));
+
+        // Test 5: Gossip Mode Structured Briefing
+        await window.handleCuratorQuery('show gossip mode');
+        await new Promise(r => setTimeout(r, 600));
+
+        msgs = document.querySelectorAll('.curator-message-wrap');
+        lastMsg = msgs[msgs.length - 1];
+        msgHtml = lastMsg.innerHTML;
+
+        assert('Gossip Mode contains Core Fact section', msgHtml.includes('Core Fact'));
+        assert('Gossip Mode contains Governance Risk section', msgHtml.includes('Governance Risk'));
+        assert('Gossip Mode contains Verified Source section', msgHtml.includes('Verified Source'));
+        assert('Gossip Mode does NOT leak raw double asterisks', !msgHtml.includes('**Core Fact**') && !msgHtml.includes('**Governance Risk**'));
+        assert('Gossip Mode contains bullet points', msgHtml.includes('curator-bullet-list'));
 
       } catch (err) {
         assert('Execution Exception', false, err.stack || err.toString());

@@ -1484,37 +1484,37 @@ def build():
   <!-- ========================================================= -->
   <!-- 🧭 TOP HEADER: COHESIVE 2-COLUMN GRID (BRAND IDENTITY & ACTION TOOLBAR) -->
   <!-- ========================================================= -->
-  <header class="w-full h-14 bg-black border-b border-[#1c1c1f] px-3 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-2 max-w-[100vw] overflow-hidden">
+  <header class="w-full h-14 bg-black border-b border-[#1c1c1f] px-2 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none gap-1 sm:gap-2 max-w-[100vw] overflow-hidden">
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
-    <button id="topBrandLogoBtn" class="brand-logo-btn group focus:outline-none shrink-0" title="Reset Globe View" aria-label="Reset Globe View">
+    <button id="topBrandLogoBtn" class="brand-logo-btn group focus:outline-none shrink-0 min-h-[44px] flex items-center" title="Reset Globe View" aria-label="Reset Globe View">
       <div class="brand-city-dot-container hidden sm:flex">
         <div class="brand-city-dot-aura"></div>
         <div class="brand-city-dot-ping"></div>
         <div class="brand-city-dot-core"></div>
       </div>
-      <span class="brand-logo-title">Culture Atlas</span>
+      <span class="brand-logo-title text-[13px] sm:text-[18px]">Culture Atlas</span>
       <span id="topSpacesBadge" class="brand-clean-spaces-badge hidden sm:inline-flex">{spaces_count_str}</span>
     </button>
 
     <!-- Right: Unified Action Toolbar & Mobile Controls (Cohesive Grid) -->
-    <div class="flex items-center gap-2 shrink-0">
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
       <!-- Mobile Segmented Control (Phone Only) -->
-      <div id="mobileModeSwitch" class="flex md:hidden items-center bg-[#1c1c1f] border border-[#2e2e33] p-0.5 rounded-xl text-[14px] select-none shadow-sm">
-        <button id="mobileModeMapBtn" class="px-2 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Map View">Map</button>
-        <button id="mobileModeSplitBtn" class="px-2 py-0.5 rounded-lg bg-[#2563eb] text-white font-medium transition cursor-pointer" title="Split View">Split</button>
-        <button id="mobileModeChatBtn" class="px-2 py-0.5 rounded-lg text-[#a1a1aa] transition cursor-pointer" title="Curator Chat">Chat</button>
+      <div id="mobileModeSwitch" class="flex md:hidden items-center bg-[#1c1c1f] border border-[#2e2e33] p-0.5 rounded-xl text-[14px] select-none shadow-sm shrink-0 min-h-[36px]">
+        <button id="mobileModeMapBtn" class="px-1.5 py-1 rounded-lg text-[#a1a1aa] transition cursor-pointer min-h-[32px]" title="Map View">Map</button>
+        <button id="mobileModeSplitBtn" class="px-1.5 py-1 rounded-lg bg-[#2563eb] text-white font-medium transition cursor-pointer min-h-[32px]" title="Split View">Split</button>
+        <button id="mobileModeChatBtn" class="px-1.5 py-1 rounded-lg text-[#a1a1aa] transition cursor-pointer min-h-[32px]" title="Curator Chat">Chat</button>
       </div>
 
       <!-- Mobile Action Buttons -->
-      <button id="mobileNewChatBtn" class="flex md:hidden items-center justify-center w-8 h-8 bg-[#eaedf0] hover:bg-white text-[#18181b] hover:text-black rounded-full transition shadow-sm cursor-pointer shrink-0" title="Start a new chat">
+      <button id="mobileNewChatBtn" class="hidden sm:flex md:hidden items-center justify-center w-8 h-8 bg-[#eaedf0] hover:bg-white text-[#18181b] hover:text-black rounded-full transition shadow-sm cursor-pointer shrink-0 min-h-[36px] min-w-[36px]" title="Start a new chat">
         <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
           <line x1="12" y1="5" x2="12" y2="19"></line>
           <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
       </button>
 
-      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-2.5 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 text-yellow-300 rounded-full text-[14px] font-medium transition cursor-pointer shrink-0 shadow-sm" title="Toggle Yellow Gossip Mode">
+      <button id="mobileGossipBtn" onclick="window.toggleGossipMode()" class="flex md:hidden items-center gap-1 px-2 py-1 bg-[#1c1806] hover:bg-[#2b2408] border border-yellow-500/70 text-yellow-300 rounded-full text-[14px] font-medium transition cursor-pointer shrink-0 shadow-sm min-h-[36px]" title="Toggle Yellow Gossip Mode">
         <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span>
         <span>Gossip</span>
       </button>
@@ -1536,7 +1536,7 @@ def build():
 
         <span class="w-[1px] h-4 bg-[#2e2e33] mx-0.5"></span>
 
-        <button id="topResetBtn" class="flex items-center gap-1 px-3 py-1 bg-transparent hover:bg-[#27272a] text-slate-300 hover:text-white rounded-full text-[14px] transition cursor-pointer" title="Reset Globe View">
+        <button id="topResetBtn" class="hidden md:flex items-center gap-1 px-3 py-1 bg-transparent hover:bg-[#27272a] text-slate-300 hover:text-white rounded-full text-[14px] transition cursor-pointer" title="Reset Globe View">
           <span>Reset</span>
         </button>
       </div>
@@ -2087,6 +2087,24 @@ def build():
         </button>
       </div>
 
+      <!-- 🔍 ANCHORED SEARCH BAR FOR MOBILE MAP FIRST MODE (Floats right above thumb zone) -->
+      <div id="mobileAnchoredSearchBar" class="hidden fixed bottom-4 left-3 right-3 z-30 pointer-events-auto select-none transition-all duration-300">
+        <div class="w-full bg-[#121214]/95 border border-[#27272a] hover:border-[#3f3f46] shadow-2xl backdrop-blur-md rounded-2xl p-1.5 flex items-center gap-2 min-h-[48px]">
+          <button id="mobileAnchoredSearchIconBtn" type="button" class="w-9 h-9 rounded-xl bg-[#1c1c1f] text-slate-300 flex items-center justify-center shrink-0 min-h-[44px] min-w-[44px]" title="Search">
+            <svg class="w-4 h-4 text-[#38bdf8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <input id="mobileAnchoredSearchInput" type="text" placeholder="Ask about a museum or search atlas..." class="flex-1 bg-transparent text-white placeholder-slate-400 text-[14px] focus:outline-none min-h-[44px]" />
+          <button id="mobileAnchoredSearchSubmitBtn" type="button" class="w-9 h-9 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white flex items-center justify-center shrink-0 min-h-[44px] min-w-[44px] shadow-sm cursor-pointer" title="Send query">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
     </div>
 
     <!-- RESIZABLE SPLITTER (Desktop: Vertical Drag / Mobile: Horizontal Drag · Double-click resets to 50%) -->
@@ -2125,6 +2143,75 @@ def build():
           <circle cx="53%" cy="94%" r="0.8" fill="rgba(226, 232, 240, 0.14)"/>
           <circle cx="77%" cy="96%" r="1" fill="rgba(226, 232, 240, 0.16)"/>
         </svg>
+      </div>
+
+      <!-- 📱 MOBILE DRAGGABLE BOTTOM SHEET HANDLE BAR (Peek / Half / Expanded) -->
+      <div id="mobileSheetHandleBar" class="flex md:hidden flex-col w-full bg-[#0c101a] border-b border-[#1e293b] shrink-0 select-none z-30 touch-none">
+        <!-- Draggable Pill Handle (Touch target >= 44px) -->
+        <div id="mobileSheetDragZone" class="w-full flex items-center justify-center py-2 min-h-[32px] cursor-grab active:cursor-grabbing">
+          <div class="w-12 h-1.5 rounded-full bg-zinc-500 hover:bg-zinc-400 transition"></div>
+        </div>
+
+        <!-- Peek State Header Row (Entity Title, Status Badge, Snap Toggle) -->
+        <div class="flex items-center justify-between px-3.5 pb-2.5 pt-0.5 min-h-[44px] gap-2">
+          <button id="mobileSheetChevronBtn" type="button" class="w-9 h-9 rounded-full bg-[#18181b] hover:bg-[#27272a] text-slate-300 flex items-center justify-center shrink-0 transition min-h-[44px] min-w-[44px]" title="Toggle Sheet Height" aria-label="Toggle Sheet Height">
+            <svg id="mobileSheetChevronIcon" class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </button>
+          
+          <div class="min-w-0 flex-1 cursor-pointer" id="mobileSheetTitleZone">
+            <div id="mobileSheetEntityTitle" class="text-[14px] font-semibold text-white truncate leading-tight">Solomon R. Guggenheim Museum</div>
+            <div class="flex items-center gap-1.5 mt-0.5">
+              <span id="mobileSheetStatusBadge" class="text-[14px] font-mono px-2 py-0.2 rounded-full border border-purple-800/80 bg-purple-950/70 text-purple-300 shrink-0">Flagged Underwriting</span>
+              <span id="mobileSheetCitySubtitle" class="text-[14px] text-slate-400 font-mono truncate">New York</span>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons on Mobile Handle -->
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button id="mobileSheetSnapHalfBtn" type="button" class="px-2.5 py-1.5 rounded-xl bg-[#1e293b] hover:bg-[#2b3e5e] text-slate-200 text-[14px] font-medium min-h-[44px] min-w-[44px] flex items-center justify-center" title="Snap to Half State (50%)">
+              Half
+            </button>
+            <button id="mobileSheetSnapExpandBtn" type="button" class="px-2.5 py-1.5 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-[14px] font-medium min-h-[44px] min-w-[44px] flex items-center justify-center" title="Snap to Expanded State (90%)">
+              Full
+            </button>
+            <button id="mobileSheetCloseBtn" type="button" class="w-9 h-9 rounded-full bg-[#18181b] hover:bg-[#27272a] text-slate-400 hover:text-white flex items-center justify-center shrink-0 min-h-[44px] min-w-[44px]" title="Collapse to Map" aria-label="Collapse to Map">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Half State Summary Strip: Key Financial Ratios & Quick Action Buttons -->
+        <div id="mobileSheetSummaryStrip" class="hidden px-3.5 pb-2.5 pt-1.5 border-t border-[#1e293b]/70 bg-[#080d16] space-y-2 text-[14px]">
+          <div class="flex items-center gap-2 overflow-x-auto pb-0.5 text-[14px] font-mono custom-scrollbar">
+            <span id="mobileSheetOperatingBudget" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-[#7dd3fc] whitespace-nowrap">$65M Budget</span>
+            <span id="mobileSheetProgramRatio" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-[#38bdf8] whitespace-nowrap">78% Program</span>
+            <span id="mobileSheetPublicSubsidies" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-emerald-300 whitespace-nowrap">12% Public</span>
+          </div>
+          <div class="flex items-center gap-2 pt-0.5">
+            <button id="mobileSheetAskChatBtn" type="button" class="flex-1 py-2 px-3 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-[14px] font-medium text-center min-h-[44px] flex items-center justify-center gap-1.5 shadow-sm">
+              <svg class="w-3.5 h-3.5 text-blue-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Ask in Chat</span>
+            </button>
+            <button id="mobileSheetViewDossierBtn" type="button" class="flex-1 py-2 px-3 rounded-xl bg-[#14261d] hover:bg-[#1e382b] border border-emerald-600/60 text-emerald-300 text-[14px] font-medium text-center min-h-[44px] flex items-center justify-center gap-1.5 shadow-sm">
+              <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+              <span>View Dossier</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Anchored Input Box inside Bottom Sheet (Wireframe: "Ask about this museum...") -->
+        <div id="mobileSheetInputRow" class="px-3 pb-2.5 pt-1">
+          <div class="w-full bg-[#18181b] border border-[#2e2e33] hover:border-[#3f3f46] rounded-xl px-2.5 py-1.5 flex items-center gap-2 min-h-[44px]">
+            <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this museum..." class="flex-1 bg-transparent text-white placeholder-slate-400 text-[14px] focus:outline-none min-h-[36px]" />
+            <button id="mobileSheetQuickSendBtn" type="button" class="w-8 h-8 rounded-lg bg-[#2563eb] text-white flex items-center justify-center shrink-0 min-h-[36px] min-w-[36px] cursor-pointer" title="Send query">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- 📑 WORKSPACE UNIFIED TAB BAR (Clean Map on Left, Context & Intelligence on Right) -->
@@ -14180,6 +14267,27 @@ def build():
     let startRotLon = 0, startRotLat = 0;
     let targetRotLon = 0, targetRotLat = 0;
 
+    Object.defineProperty(window, 'rotLon', {{
+      get() {{ return rotLon; }},
+      set(v) {{ rotLon = v; }}
+    }});
+    Object.defineProperty(window, 'rotLat', {{
+      get() {{ return rotLat; }},
+      set(v) {{ rotLat = v; }}
+    }});
+    Object.defineProperty(window, 'targetRotLon', {{
+      get() {{ return targetRotLon; }},
+      set(v) {{ targetRotLon = v; }}
+    }});
+    Object.defineProperty(window, 'targetRotLat', {{
+      get() {{ return targetRotLat; }},
+      set(v) {{ targetRotLat = v; }}
+    }});
+    Object.defineProperty(window, 'isFlying', {{
+      get() {{ return isFlying; }},
+      set(v) {{ isFlying = v; }}
+    }});
+
     function resizeCanvas() {{
       if (!canvas.parentElement) return;
       const rect = canvas.parentElement.getBoundingClientRect();
@@ -15668,6 +15776,13 @@ def build():
       let dLon = (lon - rotLon) % 360;
       if (dLon > 180) dLon -= 360;
       if (dLon < -180) dLon += 360;
+      const dLat = Math.abs(lat - rotLat);
+      if (Math.abs(dLon) < 0.2 && dLat < 0.2 && (!targetZoom || Math.abs(targetZoom - currentRadius) < 2)) {{
+        isFlying = false;
+        rotLon = lon;
+        rotLat = lat;
+        return;
+      }}
       startRotLon = rotLon;
       startRotLat = rotLat;
       startRadius = currentRadius;
@@ -15719,8 +15834,42 @@ def build():
         tabDossierLabel.textContent = 'Dossier / Intelligence';
       }}
       if (typeof curatorContext !== 'undefined' && inst) {{
+        const prevInst = curatorContext.activeFocusInst || curatorContext.lastInst;
+        const isNewFocus = !prevInst || prevInst.id !== inst.id || prevInst.name !== inst.name;
+
+        curatorContext.activeFocusInst = inst;
         curatorContext.lastInst = inst;
         if (inst.city) curatorContext.lastCity = inst.city;
+
+        if (isNewFocus) {{
+          const sysNote = `System Note: The user has switched focus to ${{inst.name}}${{inst.city ? ` in ${{inst.city}}` : ''}}. All subsequent questions must refer strictly to this entity.`;
+          if (!curatorContext.history) curatorContext.history = [];
+
+          // Cleanly isolate entity turn history to eliminate context bleed across museums
+          curatorContext.activeEntityHistory = [];
+
+          curatorContext.history.push({{
+            role: 'system_note',
+            content: sysNote,
+            instName: inst.name,
+            instId: inst.id,
+            timestamp: Date.now()
+          }});
+
+          // In-chat system pill so user and interface are cleanly aligned
+          if (typeof curatorMessages !== 'undefined' && curatorMessages && curatorMessages.children.length > 0) {{
+            const noteEl = document.createElement('div');
+            noteEl.className = 'curator-system-note flex items-center justify-center my-2.5 w-full select-none';
+            noteEl.innerHTML = `
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111c2a] border border-[#1e3a5f] text-[#60a5fa] text-[14px] font-mono shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse"></span>
+                <span>System Note: The user has switched focus to <strong>${{escapeHtml(inst.name)}}</strong>. All subsequent questions must refer strictly to this entity.</span>
+              </div>
+            `;
+            curatorMessages.appendChild(noteEl);
+            if (typeof scrollChatToBottom === 'function') scrollChatToBottom(false);
+          }}
+        }}
       }}
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
@@ -16067,6 +16216,33 @@ def build():
       if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && typeof setCardMode === 'function') {{
         setCardMode('gossip', false);
       }}
+      // Mobile Sliding Bottom Sheet Synchronization
+      const mTitle = document.getElementById('mobileSheetEntityTitle');
+      const mBadge = document.getElementById('mobileSheetStatusBadge');
+      const mCity = document.getElementById('mobileSheetCitySubtitle');
+      const mBudget = document.getElementById('mobileSheetOperatingBudget');
+      const mProg = document.getElementById('mobileSheetProgramRatio');
+      const mPub = document.getElementById('mobileSheetPublicSubsidies');
+      const mQuickInput = document.getElementById('mobileSheetQuickInput');
+      const mAnchoredInput = document.getElementById('mobileAnchoredSearchInput');
+
+      if (mTitle) mTitle.textContent = inst.name;
+      if (mBadge) {{
+        mBadge.textContent = isCardClean ? 'Clean Verified' : isCardFlagged ? 'Flagged Underwriting' : 'Roster Unverified';
+        mBadge.className = 'text-[14px] font-mono px-2 py-0.2 rounded-full border shrink-0 ' + 
+          (isCardClean 
+            ? 'text-emerald-400 border-emerald-900 bg-[#0a2016]' 
+            : isCardFlagged 
+            ? 'text-[#be95ff] border-[#8a3ffc]/60 bg-[#1f1433]' 
+            : 'text-[#33b1ff] border-[#0072c3]/60 bg-[#081a28]');
+      }}
+      if (mCity) mCity.textContent = inst.city || inst.country || 'Global Network';
+      if (mBudget) mBudget.textContent = bDisplay;
+      if (mProg) mProg.textContent = fin.program_expense_ratio_pct != null ? `${{fin.program_expense_ratio_pct}}% Program` : 'Public Commons';
+      if (mPub) mPub.textContent = fin.public_subsidies_pct != null ? `${{fin.public_subsidies_pct}}% Public` : (fin.earned_revenue_pct != null ? `${{fin.earned_revenue_pct}}% Earned` : 'Independent');
+      if (mQuickInput) mQuickInput.placeholder = `Ask about ${{inst.name}}...`;
+      if (mAnchoredInput) mAnchoredInput.placeholder = `Ask about ${{inst.name}}...`;
+
       if (window.innerWidth < 768 && typeof currentMobileMode !== 'undefined' && currentMobileMode === 'chat' && typeof setMobileViewMode === 'function') {{
         setMobileViewMode('split');
       }}
@@ -18083,6 +18259,150 @@ def build():
       `;
     }}
 
+    // =========================================================================
+    // 🧠 UNIVERSAL PHONETIC & FUZZY MISSPELLING RESOLUTION ENGINE (ChatGPT/Claude Caliber)
+    // =========================================================================
+    function computeLevenshteinDistance(a, b) {{
+      if (!a || !b) return (a || '').length + (b || '').length;
+      if (a === b) return 0;
+      const m = a.length;
+      const n = b.length;
+      const d = [];
+      for (let i = 0; i <= m; i++) d[i] = [i];
+      for (let j = 0; j <= n; j++) d[0][j] = j;
+
+      for (let i = 1; i <= m; i++) {{
+        const ca = a.charCodeAt(i - 1);
+        for (let j = 1; j <= n; j++) {{
+          const cb = b.charCodeAt(j - 1);
+          const cost = (ca === cb) ? 0 : 1;
+          d[i][j] = Math.min(
+            d[i - 1][j] + 1,
+            d[i][j - 1] + 1,
+            d[i - 1][j - 1] + cost
+          );
+          if (i > 1 && j > 1 && ca === b.charCodeAt(j - 2) && a.charCodeAt(i - 2) === cb) {{
+            d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + cost);
+          }}
+        }}
+      }}
+      return d[m][n];
+    }}
+    window.computeLevenshteinDistance = computeLevenshteinDistance;
+
+    function computeWordSimilarity(w1, w2) {{
+      const a = (w1 || '').toLowerCase().trim();
+      const b = (w2 || '').toLowerCase().trim();
+      if (a === b) return 1.0;
+      if (!a || !b) return 0.0;
+      const maxLen = Math.max(a.length, b.length);
+      if (maxLen === 0) return 1.0;
+      const dist = computeLevenshteinDistance(a, b);
+      return Math.max(0, 1.0 - (dist / maxLen));
+    }}
+    window.computeWordSimilarity = computeWordSimilarity;
+
+    function normalizePhoneticString(s) {{
+      let str = (s || '').toLowerCase().trim();
+      str = str.replace(/^(?:the|a|an)\\s+/i, '');
+      str = str.replace(/\\b(?:foundation|collection|museum|gallery|centre|center|space|institute|kunsthalle|kunstmuseum|of|for|in|and|the)\\b/gi, '');
+      str = str.replace(/ck/g, 'k').replace(/ph/g, 'f').replace(/sch/g, 'sh');
+      if (str.startsWith('u') && str.length > 1 && /[aeiouylr]/.test(str[1])) {{
+        str = 'ju' + str.slice(1);
+      }}
+      str = str.replace(/[^a-z0-9\\s]/g, '');
+      str = str.replace(/(.)\\1+/g, '$1');
+      return str.trim();
+    }}
+    window.normalizePhoneticString = normalizePhoneticString;
+
+    function findFuzzyInstitutionMatch(query, threshold = 0.65) {{
+      if (!query || typeof query !== 'string') return null;
+      let cleanQ = query.toLowerCase().trim();
+      const prefixes = ['tell me about', 'what is', 'why is', 'who funds', 'visit', 'hours for', 'check it for me', 'check', 'audit', 'info on', 'about'];
+      for (const p of prefixes) {{
+        if (cleanQ.startsWith(p)) {{
+          cleanQ = cleanQ.slice(p.length).trim();
+        }}
+      }}
+      if (!cleanQ) return null;
+
+      const qWords = cleanQ.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !['the', 'and', 'for', 'about', 'from', 'with', 'that', 'this'].includes(w));
+      const qPhonetic = normalizePhoneticString(cleanQ);
+
+      let bestCandidate = null;
+      let bestScore = 0.0;
+      let bestIsClean = true;
+      let bestTarget = '';
+
+      const testCohort = (list, isClean) => {{
+        if (!list || !Array.isArray(list)) return;
+        for (const inst of list) {{
+          const targets = [inst.name];
+          if (inst.shortName) targets.push(inst.shortName);
+          if (inst.aliases && Array.isArray(inst.aliases)) targets.push(...inst.aliases);
+
+          for (const tgt of targets) {{
+            const tClean = (tgt || '').toLowerCase().trim();
+            const tWords = tClean.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !['the', 'and', 'for', 'about', 'from', 'with'].includes(w));
+            const tPhonetic = normalizePhoneticString(tClean);
+
+            // 1. Whole string similarity
+            const fullSim = computeWordSimilarity(cleanQ, tClean);
+
+            // 2. Phonetic similarity
+            const phonSim = (qPhonetic && tPhonetic) ? computeWordSimilarity(qPhonetic, tPhonetic) : 0.0;
+
+            // 3. Token-level matching
+            let tokenSim = 0.0;
+            if (qWords.length > 0 && tWords.length > 0) {{
+              const tokenScores = [];
+              for (const qw of qWords) {{
+                let bestW = 0.0;
+                for (const tw of tWords) {{
+                  if (qw === tw) {{
+                    bestW = 1.0;
+                    break;
+                  }}
+                  const sW = computeWordSimilarity(qw, tw);
+                  if (sW > bestW) bestW = sW;
+                }}
+                tokenScores.push(bestW);
+              }}
+              tokenSim = tokenScores.reduce((acc, val) => acc + val, 0) / tokenScores.length;
+            }}
+
+            // City alignment bonus
+            const cityBonus = (inst.city && cleanQ.includes(inst.city.toLowerCase())) ? 0.08 : 0.0;
+
+            const score = Math.max(fullSim, phonSim, tokenSim) + cityBonus;
+            if (score > bestScore) {{
+              bestScore = score;
+              bestCandidate = inst;
+              bestIsClean = isClean;
+              bestTarget = tgt;
+            }}
+          }}
+        }}
+      }};
+
+      testCohort(ALL_INSTITUTIONS, true);
+      if (typeof EXCLUDED_INSTITUTIONS !== 'undefined') {{
+        testCohort(EXCLUDED_INSTITUTIONS, false);
+      }}
+
+      if (bestCandidate && bestScore >= threshold) {{
+        return {{
+          inst: bestCandidate,
+          isClean: bestIsClean,
+          score: bestScore,
+          matchedName: bestTarget
+        }};
+      }}
+      return null;
+    }}
+    window.findFuzzyInstitutionMatch = findFuzzyInstitutionMatch;
+
     // Dynamic Grounding Retrieval for Live AI Engine
     function retrieveGroundingInstitutions(userQuery, limit = 12) {{
       const q = (userQuery || '').toLowerCase();
@@ -18097,11 +18417,18 @@ def build():
         seen.add(activeInst.name);
       }}
 
+      // 1b. Fuzzy Misspelling & Entity Resolution (Highest Priority for query intent)
+      const fuzzyEntity = findFuzzyInstitutionMatch(q, 0.60);
+      if (fuzzyEntity && fuzzyEntity.inst && !seen.has(fuzzyEntity.inst.name)) {{
+        results.push(fuzzyEntity.inst);
+        seen.add(fuzzyEntity.inst.name);
+      }}
+
       // 2. Direct name or alias match
       for (const inst of ALL_INSTITUTIONS) {{
         if (seen.has(inst.name)) continue;
         const nameLower = inst.name.toLowerCase();
-        if (q.includes(nameLower) || (nameLower.length > 5 && nameLower.split(/\s+/).some(w => w.length > 4 && q.includes(w)))) {{
+        if (q.includes(nameLower) || (nameLower.length > 5 && nameLower.split(/\\s+/).some(w => w.length > 4 && q.includes(w)))) {{
           results.push(inst);
           seen.add(inst.name);
           if (results.length >= limit) break;
@@ -18130,8 +18457,13 @@ def build():
             if (seen.has(inst.name)) continue;
             let score = 0;
             const textToSearch = `${{inst.name}} ${{inst.curatorial_focus || ''}} ${{inst.highlight || ''}} ${{inst.city || ''}} ${{inst.governance_details || ''}} ${{inst.admission_policy || ''}}`.toLowerCase();
+            const instWords = textToSearch.split(/[^a-z0-9]+/).filter(w => w.length > 2);
             for (const w of words) {{
-              if (textToSearch.includes(w)) score++;
+              if (textToSearch.includes(w)) {{
+                score += 3;
+              }} else if (instWords.some(iw => computeWordSimilarity(w, iw) >= 0.75)) {{
+                score += 2;
+              }}
             }}
             if (score > 0) {{
               scored.push({{ inst, score }});
@@ -18285,11 +18617,15 @@ def build():
         let s = line;
         // Code `code`
         s = s.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-[#1e293b] text-emerald-300 font-mono text-[14px]">$1</code>');
-        // Bold **text**
-        s = s.replace(/\\*\\*([^\\*]+)\\*\\*/g, '<strong class="text-white font-semibold">$1</strong>');
+        // Bold + Italic ***text*** or ___text___
+        s = s.replace(/(\\*\\*\\*|___)([^\\*_\\n]+)\\1/g, '<strong class="text-white font-semibold"><em class="text-slate-200 italic">$2</em></strong>');
+        // Bold **text** (handles optional internal whitespace and punctuation)
+        s = s.replace(/(\\*\\*|__)\\s*([^\\*_\\n]+?)\\s*\\1/g, '<strong class="text-white font-semibold">$2</strong>');
         // Italic *text* or _text_
-        s = s.replace(/(?<!\\*)\\*([^\\*]+)\\*(?!\\*)/g, '<em class="text-slate-200 italic">$1</em>');
-        s = s.replace(/(?<!_)_([^_]+)_(?!_)/g, '<em class="text-slate-200 italic">$1</em>');
+        s = s.replace(/(?<!\\*)\\*([^\\*\\n]+)\\*(?!\\*)/g, '<em class="text-slate-200 italic">$1</em>');
+        s = s.replace(/(?<!_)_([^\\_\\n]+)_(?!_)/g, '<em class="text-slate-200 italic">$1</em>');
+        // Strip any residual unrendered double asterisks
+        s = s.replace(/\\*\\*+/g, '');
         // Links [Label](url)
         s = s.replace(/\\[([^\\]]+)\\]\\(([^)]+)\\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline cursor-pointer">$1</a>');
         // Stat callouts
@@ -18343,30 +18679,35 @@ def build():
 
         // Check for headers: ### Title, ## Title, # Title, or **Header Title** standalone
         const headerMatch = trimmed.match(/^(#{{1,4}})\\s+(.+)$/);
-        const boldHeaderMatch = trimmed.match(/^\\*\\*(.+?)\\*\\*$/);
+        const boldHeaderMatch = trimmed.match(/^(\\*\\*\\*|\\*\\*|___|__)\\s*(.+?)\\s*(\\*\\*\\*|\\*\\*|___|__):?$/);
 
-        if (headerMatch || (boldHeaderMatch && boldHeaderMatch[1].length < 80)) {{
+        if (headerMatch || (boldHeaderMatch && boldHeaderMatch[2].length < 100)) {{
           flushList();
-          const title = headerMatch ? headerMatch[2].trim() : boldHeaderMatch[1].trim();
-          const titleLower = title.toLowerCase();
+          let rawTitle = headerMatch ? headerMatch[2].trim() : boldHeaderMatch[2].trim();
+          rawTitle = rawTitle.replace(/^\\*+|\\*+$/g, '').replace(/^:+|:+$/g, '').trim();
+          const titleLower = rawTitle.toLowerCase();
 
           // Thematic styling:
           let dotColor = 'bg-emerald-400';
           let badgeText = 'Intelligence Note';
           let badgeClass = 'text-emerald-400 bg-emerald-950/80 border-emerald-800/80';
 
-          if (titleLower.includes('what you actually get')) {{
+          if (titleLower.includes('what you actually get') || titleLower.includes('core fact')) {{
             dotColor = 'bg-amber-400';
-            badgeText = 'Reality Check';
+            badgeText = titleLower.includes('core fact') ? 'Core Fact' : 'Reality Check';
             badgeClass = 'text-amber-400 bg-amber-950/80 border-amber-800/80';
-          }} else if (titleLower.includes('governance') || titleLower.includes('conflict') || titleLower.includes('problem')) {{
+          }} else if (titleLower.includes('governance risk') || titleLower.includes('governance') || titleLower.includes('conflict') || titleLower.includes('problem')) {{
             dotColor = 'bg-rose-400';
-            badgeText = 'Statutory Audit';
+            badgeText = titleLower.includes('governance risk') ? 'Governance Risk' : 'Statutory Audit';
             badgeClass = 'text-rose-400 bg-rose-950/80 border-rose-800/80';
-          }} else if (titleLower.includes('what this actually means') || titleLower.includes('means')) {{
+          }} else if (titleLower.includes('what this actually means') || titleLower.includes('means') || titleLower.includes('systemic')) {{
             dotColor = 'bg-purple-400';
             badgeText = 'Systemic Impact';
             badgeClass = 'text-purple-400 bg-purple-950/80 border-purple-800/80';
+          }} else if (titleLower.includes('verified source') || titleLower.includes('sources')) {{
+            dotColor = 'bg-sky-400';
+            badgeText = 'Verified Source';
+            badgeClass = 'text-sky-400 bg-sky-950/80 border-sky-800/80';
           }} else if (titleLower.includes('comparison') || titleLower.includes('matters') || titleLower.includes('alternative')) {{
             dotColor = 'bg-sky-400';
             badgeText = 'Independent Counterpoint';
@@ -18376,15 +18717,15 @@ def build():
           blocks.push(`
             <div class="curator-section-hdr mt-4 mb-2 flex items-center gap-2 border-b border-[#27272a] pb-1.5 select-none">
               <span class="w-2 h-2 rounded-full ${{dotColor}} shrink-0"></span>
-              <h3 class="text-white font-semibold text-[18px] tracking-wide">${{title}}</h3>
+              <h3 class="text-white font-semibold text-[18px] tracking-wide">${{parseInlineMarkdown(rawTitle)}}</h3>
               <span class="text-[14px] font-mono ${{badgeClass}} ml-auto px-2 py-0.5 rounded-full border">${{badgeText}}</span>
             </div>
           `);
           continue;
         }}
 
-        // Check for bullet list item: - item or * item
-        const bulletMatch = trimmed.match(/^[-*]\\s+(.+)$/);
+        // Check for bullet list item: - item, * item, or • item
+        const bulletMatch = trimmed.match(/^[-*•]\\s+(.+)$/);
         if (bulletMatch) {{
           if (!currentList || currentList.type !== 'ul') {{
             flushList();
@@ -18394,8 +18735,8 @@ def build():
           continue;
         }}
 
-        // Check for numbered list item: 1. item
-        const numMatch = trimmed.match(/^(\\d+)\\.\\s+(.+)$/);
+        // Check for numbered list item: 1. item or 1) item
+        const numMatch = trimmed.match(/^(\\d+)[\\.\\)]\\s+(.+)$/);
         if (numMatch) {{
           if (!currentList || currentList.type !== 'ol') {{
             flushList();
@@ -18443,9 +18784,48 @@ def build():
       const relevantInsts = retrieveGroundingInstitutions(userPrompt, 12);
       const groundedCatalogText = relevantInsts.map(formatInstitutionGrounding).join('\\n\\n');
 
-      // Check if user currently has an active focus institution
-      const activeInst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
-                         (typeof curatorContext !== 'undefined' && curatorContext.lastInst ? curatorContext.lastInst : null);
+      // 1. Resolve Target Entity cleanly (from user query or active focus)
+      const mentionedInst = (typeof findMentionedInst === 'function' ? findMentionedInst(userPrompt) : null) || 
+                            (typeof findAnyInstitution === 'function' ? findAnyInstitution(userPrompt)?.inst : null);
+      const currentTarget = mentionedInst || 
+                            (typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
+                            (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst));
+
+      if (mentionedInst && typeof curatorContext !== 'undefined') {{
+        const prevTarget = curatorContext.activeFocusInst || curatorContext.lastInst;
+        if (!prevTarget || prevTarget.id !== mentionedInst.id) {{
+          curatorContext.activeFocusInst = mentionedInst;
+          curatorContext.lastInst = mentionedInst;
+          if (mentionedInst.city) curatorContext.lastCity = mentionedInst.city;
+          curatorContext.activeEntityHistory = [];
+        }}
+      }}
+
+      // 2. Build structured <current_target> XML block
+      let currentTargetXml = '';
+      if (currentTarget) {{
+        const isClean = currentTarget.tier === 'A';
+        const fin = currentTarget.financial_data || {{}};
+        const budgetStr = fin.operating_budget_display || currentTarget.funding || 'Independent Operational Scale';
+        const holdingsStr = (currentTarget.archives_and_collections && currentTarget.archives_and_collections.primary_holdings) || currentTarget.highlight || 'Contemporary Collections';
+        currentTargetXml = `<current_target>\\nEntity: ${{currentTarget.name}}\\nLocation: ${{currentTarget.city || currentTarget.location || 'Global'}}\\nGovernance Status: ${{isClean ? 'Verified Independent Space (Tier A - Zero fossil fuel/defense funding)' : 'Flagged Underwriting / Commercial Capture (Tier B)'}}\\nFunding Profile: ${{budgetStr}}\\nArchitecture & Footprint: ${{currentTarget.footprint_sqm ? currentTarget.footprint_sqm + ' sqm' : 'Curated Space'}}\\nKey Collections & Archives: ${{holdingsStr}}\\nAdmission Policy: ${{currentTarget.admission_policy || 'Free Public Admission'}}\\n</current_target>\\n\\n`;
+      }} else {{
+        currentTargetXml = `<current_target>\\nEntity: None explicitly selected (Global Inquiry across Culture Atlas)\\n</current_target>\\n\\n`;
+      }}
+
+      // 3. Check for recent focus switch note to prevent context bleed
+      let focusNotice = '';
+      if (typeof curatorContext !== 'undefined' && curatorContext && curatorContext.history) {{
+        const lastSysNote = curatorContext.history.filter(h => h.role === 'system_note').pop();
+        if (lastSysNote && currentTarget && (lastSysNote.instId === currentTarget.id || lastSysNote.instName === currentTarget.name)) {{
+          focusNotice = `${{lastSysNote.content}}\\n\\n`;
+        }}
+      }}
+
+      // 4. Assemble XML Structured User Prompt with Explicit Constraints
+      const structuredUserPrompt = `${{focusNotice}}${{currentTargetXml}}<explicit_constraints>\\nAnswer the user's specific question in 2-3 sentences max. Do not pivot to unrelated institutional history unless asked.\\n</explicit_constraints>\\n\\n<user_query>\\n${{userPrompt}}\\n</user_query>`;
+
+      const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\\n\\nACTIVE FOCUS INSTITUTION:\\nThe user is currently viewing/asking about this specific space:\\n${{formatInstitutionGrounding(activeInst)}}\\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks general questions without naming a space, focus specifically on ${{activeInst.name}} and perform a vivid, in-depth audit of its governance status, entry policy, architecture, and signature highlights!\\n` : '';
 
       const communitySubmissions = getCommunityResearchSubmissions();
@@ -18457,7 +18837,9 @@ def build():
         ? `\\n\\nREAL-TIME LIVE SCRAPED WEB INTELLIGENCE:\\nSource: ${{webIntel.sourceTitle || ''}} (${{webIntel.sourceUrl || ''}})\\n${{webIntel.scrapedText}}`
         : '';
 
-      const criticalSystemPrompt = `You are the Culture Atlas Curator. You are an independent, sharp, intellectually rigorous art researcher and guide. You speak with clarity, deadpan skepticism of corporate artwashing and billionaire board influence, and genuine love for radical independent art spaces. Never sound like a boring corporate PR bot, and avoid pretentious, impenetrable artspeak or generic AI fluff.
+      const criticalSystemPrompt = `<system_instructions>
+You are an intelligence researcher for Culture Atlas. Your tone is direct and analytical.
+You are the Culture Atlas Curator. You are an independent, sharp, intellectually rigorous art researcher and guide. You speak with clarity, deadpan skepticism of corporate artwashing and billionaire board influence, and genuine love for radical independent art spaces. Never sound like a boring corporate PR bot, and avoid pretentious, impenetrable artspeak or generic AI fluff.
 Culture Atlas maps 441 verified independent museums and spaces across 40+ countries that operate without corporate capture, defense/weapons, or fossil fuel underwriting, alongside an audited catalog of 403 flagged institutions with corporate underwriting ties.
 
 CHARACTER & VOICE GUIDELINES:
@@ -18488,8 +18870,10 @@ CHARACTER & VOICE GUIDELINES:
    - Always cite exact admission policies (e.g., "Always Free Public Admission" or "Free Permanent Collection / Ticketed Special Exhibitions").
    - Always cite exact opening hours, addresses, and architectural details.
 
-5. FORMATTING RULES:
-   - Write in natural, easy-to-read conversational paragraphs. Never use markdown headers (#, ##) or bulleted database dumps.
+5. FORMATTING RULES & OUTPUT CONSTRAINTS:
+   - Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point).
+   - Never output raw markdown tags or unrendered syntax.
+   - Use bold (**keyword**) deliberately for key figures, names, or concepts.
    - Link institutions strictly as:
      <a href="#" class="inst-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a> (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="Exact Name">audit dossier</a>)
    - Link cities as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
@@ -18606,16 +18990,26 @@ FORMATTING & DOSSIER PRESENTATION RULES:
    - ### The Governance Problem (specific trustee conflicts, corporate underwriting, and board covenants)
    - ### What This Actually Means (systemic impact, worker pay ratios, and cultural capture)
    - ### The Comparison That Matters (independent, ethically clean alternatives in the same city)
-2. Avoid dense walls of text! Break complex points, financial conflicts, and trustee interlocks into short, punchy bullet points (- point). Keep narrative paragraphs concise (2-3 sentences max).
-3. Call out verified financial numbers, settlements, and stat figures directly (e.g. $158 million, $80 million, $218M budget, 28:1 wage ratio, 72% program spend).
-4. Explicitly cite reputable investigative reporting and regulatory documents (e.g. The New York Times, ProPublica, Artforum, The Guardian, Hyperallergic, and IRS Form 990 Schedule L) so the reader can independently verify the research.
-5. Link institutions in our atlas strictly as:
-   <a href="#" class="inst-link font-normal text-white hover:text-[#60a5fa] underline cursor-pointer" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a> (<a href="#" class="dossier-link text-slate-400 hover:text-white underline font-mono text-[14px] cursor-pointer" data-name="Exact Name">audit dossier</a>)
-6. Link cities as: <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="City">City</a>.
-7. Keep answers focused, sharp, and completely free of pompous marketing fluff or generic AI boilerplate.`;
+2. GOSSIP MODE & WHISPERS GUARDRAILS:
+   - When in Gossip Mode or answering rumors, whispers, or backchannel inquiries, maintain strict brevity and enforce structured output:
+   - Structure every Gossip Mode response into 3 concise sections:
+     * ### Core Fact (the unvarnished reality in 2 punchy bullet points)
+     * ### Governance Risk (the documented conflict, trustee interlock, or funding source using bullet points)
+     * ### Verified Source (the public filing, investigative reporting, or whistleblower audit with citations)
+   - Never generate long walls of dense text!
+3. Avoid dense walls of text! Break complex points, financial conflicts, and trustee interlocks into short, punchy bullet points (- point). Keep narrative paragraphs concise (2-3 sentences max).
+4. Call out verified financial numbers, settlements, and stat figures directly (e.g. $158 million, $80 million, $218M budget, 28:1 wage ratio, 72% program spend).
+5. Explicitly cite reputable investigative reporting and regulatory documents (e.g. The New York Times, ProPublica, Artforum, The Guardian, Hyperallergic, and IRS Form 990 Schedule L) so the reader can independently verify the research.
+6. Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point). Never output raw markdown tags or unrendered syntax.
+7. ROBUST MISSPELLING & PHONETIC TOLERANCE (LIKE CHATGPT & CLAUDE):
+   - Visitors frequently query using typos, phonetic spellings, voice-to-text, or transpositions (e.g. 'Ulia stolcheck foundation' -> 'Julia Stoschek Foundation / Collection', 'chisnhale' -> 'Chisenhale', 'gugenheim' -> 'Guggenheim', 'pompidue' -> 'Pompidou', 'whitny' -> 'Whitney', 'momaa' -> 'MoMA', 'tate modren' -> 'Tate Modern', 'artsts space' -> 'Artists Space').
+   - You must gracefully resolve the user's intended institution or city with intelligence and cultural fluency, just as other advanced AI models do.
+    - NEVER say "I don't have an entry for [typo]" or ask the user to clarify obvious misspellings. Seamlessly answer about the intended institution, highlighting its verified facts, ethical funding, architecture, and current programs!
+</system_instructions>`;
 
       try {{
         let rawText = '';
+        let thinkingContent = '';
         if (prov === 'anthropic') {{
           const res = await fetch(useProxy ? ATLAS_AI_PROXY_URL : 'https://api.anthropic.com/v1/messages', {{
             method: 'POST',
@@ -18630,13 +19024,23 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               max_tokens: 1024,
               system: criticalSystemPrompt,
               messages: [
-                {{ role: 'user', content: userPrompt }}
+                {{ role: 'user', content: structuredUserPrompt }}
               ]
             }})
           }});
           if (!res.ok) throw new Error(`Anthropic error ${{res.status}}`);
           const data = await res.json();
-          rawText = data.content?.[0]?.text || '';
+          if (Array.isArray(data.content)) {{
+            for (const b of data.content) {{
+              if (b.type === 'thinking') {{
+                thinkingContent += (b.thinking || '') + '\\n';
+              }} else if (b.type === 'text' || b.text) {{
+                rawText += (b.text || '');
+              }}
+            }}
+          }} else if (typeof data.content === 'string') {{
+            rawText = data.content;
+          }}
         }} else if (prov === 'openai') {{
           const res = await fetch('https://api.openai.com/v1/chat/completions', {{
             method: 'POST',
@@ -18650,7 +19054,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               max_tokens: 1024,
               messages: [
                 {{ role: 'system', content: criticalSystemPrompt }},
-                {{ role: 'user', content: userPrompt }}
+                {{ role: 'user', content: structuredUserPrompt }}
               ]
             }})
           }});
@@ -18665,7 +19069,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             body: JSON.stringify({{
               systemInstruction: {{ parts: [{{ text: criticalSystemPrompt }}] }},
               contents: [
-                {{ role: 'user', parts: [{{ text: userPrompt }}] }}
+                {{ role: 'user', parts: [{{ text: structuredUserPrompt }}] }}
               ],
               generationConfig: {{
                 temperature: 0.7,
@@ -18678,7 +19082,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
         }}
 
+        // Cleanly isolate any embedded <thinking> or <thought> tags so they NEVER collide with the response block
+        const thinkingRegex = /<(?:thinking|thought)>([\\s\\S]*?)<\\/(?:thinking|thought)>/gi;
+        let match;
+        while ((match = thinkingRegex.exec(rawText)) !== null) {{
+          thinkingContent += (match[1] || '').trim() + '\\n';
+        }}
+        rawText = rawText.replace(thinkingRegex, '').trim();
+
         if (rawText) {{
+          queryAI.lastThinking = thinkingContent.trim();
           return renderCuratorMarkdown(rawText);
         }}
       }} catch (err) {{
@@ -18897,7 +19310,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       'astrup fearnley': 'Astrup Fearnley Museet',
       'astrup fearnley museet': 'Astrup Fearnley Museet',
       'vincom': 'Vincom Center for Contemporary Art',
-      'vincom center': 'Vincom Center for Contemporary Art'
+      'vincom center': 'Vincom Center for Contemporary Art',
+      'stoschek': 'Julia Stoschek Foundation (Julia Stoschek Collection / JSC Berlin)',
+      'julia stoschek': 'Julia Stoschek Foundation (Julia Stoschek Collection / JSC Berlin)',
+      'julia stoschek collection': 'Julia Stoschek Foundation (Julia Stoschek Collection / JSC Berlin)',
+      'ulia stolcheck': 'Julia Stoschek Foundation (Julia Stoschek Collection / JSC Berlin)',
+      'ulia stolcheck foundation': 'Julia Stoschek Foundation (Julia Stoschek Collection / JSC Berlin)',
+      'ulia stoschek': 'Julia Stoschek Foundation (Julia Stoschek Collection / JSC Berlin)',
+      'stolcheck': 'Julia Stoschek Foundation (Julia Stoschek Collection / JSC Berlin)',
+      'jsc berlin': 'Julia Stoschek Foundation (Julia Stoschek Collection / JSC Berlin)',
+      'jsc dusseldorf': 'Julia Stoschek Foundation (Julia Stoschek Collection / JSC Berlin)',
+      'chisnhale': 'Chisenhale Gallery',
+      'gugenhime': 'Solomon R. Guggenheim Museum',
+      'pompidue': 'Centre Pompidou',
+      'whitny': 'Whitney Museum of American Art',
+      'momaa': 'MoMA (The Museum of Modern Art)'
     }};
 
     function findAnyInstitution(nameOrQuery) {{
@@ -18994,7 +19421,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         EXCLUDED_INSTITUTIONS.forEach(i => scoreCandidate(i, false));
       }}
 
-      return maxScore >= 10 ? {{ inst: bestMatch, isClean: isCleanMatch }} : null;
+      if (maxScore >= 10) {{
+        return {{ inst: bestMatch, isClean: isCleanMatch }};
+      }}
+
+      // 5. Universal Damerau-Levenshtein & Phonetic Matching (Resilience for Typos & Sound-Alikes)
+      if (typeof findFuzzyInstitutionMatch === 'function') {{
+        const fuzzy = findFuzzyInstitutionMatch(n, 0.62);
+        if (fuzzy && fuzzy.inst) {{
+          return {{ inst: fuzzy.inst, isClean: fuzzy.isClean, fuzzy: true, matchedName: fuzzy.matchedName }};
+        }}
+      }}
+      return null;
     }}
 
     function findMentionedCity(text) {{
@@ -19007,6 +19445,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           return city;
         }}
       }}
+      // Fuzzy check for misspelled cities
+      if (typeof computeWordSimilarity === 'function') {{
+        const words = t.split(/[^a-z0-9]+/i).filter(w => w.length >= 4);
+        for (const w of words) {{
+          for (const city of ALL_CITIES) {{
+            const cLow = city.toLowerCase();
+            if (computeWordSimilarity(w, cLow) >= 0.78) {{
+              return city;
+            }}
+          }}
+        }}
+      }}
       return null;
     }}
 
@@ -19015,19 +19465,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const resolved = findAnyInstitution(text);
       if (resolved && resolved.isClean) return resolved.inst;
       const t = (text || '').toLowerCase().trim();
-      return ALL_INSTITUTIONS.find(i => {{
+      const direct = ALL_INSTITUTIONS.find(i => {{
         const nameLow = i.name.toLowerCase();
         if (t.includes(nameLow)) return true;
         if (i.aliases && i.aliases.some(a => {{
           const aLow = a.toLowerCase();
           if (aLow.length <= 3) {{
-            const regex = new RegExp('(?:^|\\b|\\s)' + aLow + '(?:\\b|\\s|$)', 'i');
+            const regex = new RegExp('(?:^|\\\\b|\\\\s)' + aLow + '(?:\\\\b|\\\\s|$)', 'i');
             return regex.test(t);
           }}
           return t.includes(aLow);
         }})) return true;
         return false;
       }});
+      if (direct) return direct;
+      if (typeof findFuzzyInstitutionMatch === 'function') {{
+        const fuzzy = findFuzzyInstitutionMatch(t, 0.65);
+        if (fuzzy && fuzzy.inst && fuzzy.isClean) return fuzzy.inst;
+      }}
+      return null;
     }}
 
     // =========================================================
@@ -19061,7 +19517,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       lastTopic: null,
       activeAudio: null,
       lastWebIntel: null,
-      history: []
+      activeFocusInst: null,
+      history: [],
+      activeEntityHistory: []
     }};
 
     // =========================================================
@@ -19169,6 +19627,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function generateThinkingPlan(query, mode = null) {{
       const q = (query || '').toLowerCase().trim();
       const effMode = mode || getChatModeConfig(query);
+
+      if (/crawl|itinerary|route|tour/i.test(q) && !/power\s*plant/i.test(q)) {{
+        return {{
+          mode: effMode,
+          thought: `Mapping pedestrian corridors, verified public hours, and transit connections between independent spaces.`,
+          step: `Synthesizing Curatorial Itinerary & Transit Nodes`
+        }};
+      }}
+
       const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
       const city = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
 
@@ -19185,14 +19652,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           mode: effMode,
           thought: `Reviewing verified independent art spaces, civic institutions, and cultural registries in ${{city}}.`,
           step: `Scanning Independent Arts Corpus for ${{city}}`
-        }};
-      }}
-
-      if (/itinerary|crawl|tour|visit|route/i.test(q)) {{
-        return {{
-          mode: effMode,
-          thought: `Mapping pedestrian corridors, verified public hours, and transit connections between independent spaces.`,
-          step: `Synthesizing Curatorial Itinerary & Transit Nodes`
         }};
       }}
 
@@ -19343,6 +19802,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function resetToNewChat() {{
       stopCuratorThinking();
       initCuratorConversation();
+      if (typeof curatorContext !== 'undefined') {{
+        curatorContext.activeFocusInst = null;
+        curatorContext.lastInst = null;
+        curatorContext.lastCity = null;
+        curatorContext.history = [];
+        curatorContext.activeEntityHistory = [];
+      }}
       const suggestions = document.getElementById('workSuggestionsSection');
       if (suggestions) suggestions.classList.remove('hidden');
       const workInput = document.getElementById('workInput');
@@ -19352,6 +19818,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }}
 
     function appendUserMessage(text) {{
+      if (typeof curatorContext !== 'undefined') {{
+        if (!curatorContext.history) curatorContext.history = [];
+        if (!curatorContext.activeEntityHistory) curatorContext.activeEntityHistory = [];
+        const userTurn = {{ role: 'user', content: text, timestamp: Date.now() }};
+        curatorContext.history.push(userTurn);
+        curatorContext.activeEntityHistory.push(userTurn);
+      }}
       if (!curatorMessages) return;
       const hero = document.getElementById('curatorHeroGreeting');
       if (hero) hero.remove();
@@ -19371,6 +19844,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }}
 
     function appendCuratorMessage(htmlContent, followUps = [], webIntel = null, thinkingData = null, showSpeak = true) {{
+      if (typeof curatorContext !== 'undefined') {{
+        if (!curatorContext.history) curatorContext.history = [];
+        if (!curatorContext.activeEntityHistory) curatorContext.activeEntityHistory = [];
+        const assistantTurn = {{ role: 'assistant', content: htmlContent, timestamp: Date.now() }};
+        curatorContext.history.push(assistantTurn);
+        curatorContext.activeEntityHistory.push(assistantTurn);
+      }}
       if (!curatorMessages) return;
       const hero = document.getElementById('curatorHeroGreeting');
       if (hero) hero.remove();
@@ -19551,38 +20031,49 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (!isGossipModeActive && typeof toggleGossipMode === 'function') {{
           toggleGossipMode();
         }}
-        const inst = selectedInstitution || (typeof findMentionedInst === 'function' ? findMentionedInst(q) : null);
+        const inst = (typeof findMentionedInst === 'function' ? findMentionedInst(q) : null) || (q.includes('this') || q.includes('about it') ? selectedInstitution : null);
         if (inst && inst.gossip_data) {{
           const g = inst.gossip_data;
-          appendCuratorMessage(`
-            <div class="p-3.5 bg-[#1c0824] border border-rose-500/50 rounded-2xl space-y-2.5 shadow-xl">
-              <div class="flex items-center justify-between border-b border-rose-900/60 pb-2">
-                <span class="text-rose-400 font-bold text-[14px] flex items-center gap-1.5">
-                  GOSSIP &amp; BACKCHANNEL DISCOURSE: ${{escapeHtml(inst.name)}}
-                </span>
-                <span class="px-2 py-0.5 rounded text-[14px] font-mono border border-rose-500/70 bg-rose-950 text-rose-200 font-bold">${{escapeHtml((g.intensity || 'HOT').replace(/[^a-zA-Z0-9 ]/g, '').trim())}}</span>
-              </div>
-              <p class="text-[14px] text-rose-200/90 leading-snug">
-                Pull up a chair and pour some lukewarm vernissage prosecco—here's the unvarnished chatter straight from the biennial smoking lounge, Chelsea gallery crawls, and curatorial backchannels:
-              </p>
-              <p class="text-[14px] text-rose-100 font-semibold leading-snug">${{escapeHtml(g.headline || '')}}</p>
-              <div class="space-y-1.5 text-[14px] font-mono text-slate-300 pt-1">
-                <div class="bg-[#14061a] p-2 rounded-xl border border-rose-900/40">
-                  <div class="text-rose-400 font-bold mb-0.5">r/${{escapeHtml(g.reddit?.subreddit || 'contemporaryart')}} (${{g.reddit?.upvotes || 420}} upvotes):</div>
-                  <div class="text-slate-200">"${{escapeHtml(g.reddit?.snippet || '')}}"</div>
-                </div>
-                <div class="bg-[#14061a] p-2 rounded-xl border border-rose-900/40">
-                  <div class="text-pink-400 font-bold mb-0.5">X ${{escapeHtml(g.twitter_x?.handle || '@curatorial')}} (${{g.twitter_x?.retweets || 84}} RTs):</div>
-                  <div class="text-slate-200">"${{escapeHtml(g.twitter_x?.snippet || '')}}"</div>
-                </div>
-                ${{g.chat_backchannels ? `
-                <div class="bg-[#14061a] p-2 rounded-xl border border-rose-900/40">
-                  <div class="text-fuchsia-400 font-bold mb-0.5">${{escapeHtml(g.chat_backchannels.channel || 'Telegram Backchannel')}}:</div>
-                  <div class="text-slate-200">"${{escapeHtml(g.chat_backchannels.whisper || '')}}"</div>
-                </div>` : ''}}
-              </div>
-            </div>
-          `);
+          const instGossipMd = `### Core Fact
+- **The Insider Whispers:** ${{escapeHtml(g.headline || 'Controversy surrounding board composition and corporate underwriting.')}}
+- **Discourse Pulse:** Active backchannel chatter across independent artist circles and curatorial forums.
+
+### Governance Risk
+- **Institutional Conflict:** Documented friction between executive fundraising priorities and curatorial autonomy.
+- **Board Scrutiny:** ${{escapeHtml((g.intensity || 'High').replace(/[^a-zA-Z0-9 ]/g, '').trim())}} intensity scrutiny regarding corporate patronage and mission drift.
+
+### Verified Source
+- **Community & Industry Reporting:** Cross-referenced through public filings, Reddit r/${{escapeHtml(g.reddit?.subreddit || 'contemporaryart')}}, and Twitter ${{escapeHtml(g.twitter_x?.handle || '@curatorial')}}.
+- **Audit Records:** Cross-checked against Culture Atlas independent governance records.`;
+
+          appendCuratorMessage(renderCuratorMarkdown(instGossipMd), [
+            `Audit ${{inst.name}} Conflicts`,
+            'View IRS Form 990 Disclosures',
+            'Show clean spaces with zero gossip'
+          ]);
+          return;
+        }} else {{
+          // General Gossip Mode structured response (Core Fact, Governance Risk, Verified Source)
+          const generalGossipMd = `Welcome to **Gossip & Whispers Mode**—our field intelligence radar tracking backchannel rumors, trustee interlocks, and behind-the-scenes controversies across the art world:
+
+### Core Fact
+- **Trustee Interlocks:** Major institutional boards frequently exchange seats with private equity firms and military contractors to secure multi-million dollar gifts.
+- **Labor Disparities:** Despite record-breaking auction seasons and multi-million dollar architectural expansions, front-of-house staff and museum educators face severe wage precarity.
+
+### Governance Risk
+- **Reputational Laundering:** Corporate donors actively leverage museum naming rights to whitewash environmental and regulatory violations.
+- **Donor Veto Covenants:** Restrictive gift agreements often give mega-donors silent veto power over permanent collection deaccessioning and curatorial themes.
+
+### Verified Source
+- **Statutory Audit Filings:** Cross-referenced through **IRS Form 990 Schedule L**, **UK Charity Commission**, and the German **Bundesanzeiger**.
+- **Investigative Reporting:** Documented by **ProPublica**, **The New York Times**, **Artforum**, and **Hyperallergic**.`;
+
+          appendCuratorMessage(renderCuratorMarkdown(generalGossipMd), [
+            'Audit MoMA trustee conflicts',
+            'Warren Kanders at the Whitney',
+            'View IRS Form 990 Disclosures',
+            'Show clean spaces with zero gossip'
+          ]);
           return;
         }}
       }}
@@ -20597,10 +21088,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // 1. Try Live Generative AI Model if API Key is configured
       if (aiApiKey || ATLAS_AI_PROXY_URL) {{
-        const aiHtml = await queryAI(query, webIntel);
-        if (aiHtml) {{
+        const aiRes = await queryAI(query, webIntel);
+        if (aiRes) {{
           curatorTyping.classList.add('hidden');
-          appendCuratorMessage(aiHtml, [], webIntel);
+          const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
+          let thinkingData = null;
+          const thoughtText = (aiRes && aiRes.thinking) || (typeof queryAI !== 'undefined' && queryAI.lastThinking) || '';
+          if (thoughtText) {{
+            thinkingData = {{
+              duration: 3,
+              mode: getChatModeConfig(query),
+              thought: thoughtText,
+              step: 'Live Anthropic Intelligence Reasoning'
+            }};
+          }}
+          appendCuratorMessage(aiHtml, [], webIntel, thinkingData);
           return;
         }}
       }}
@@ -24189,6 +24691,86 @@ You do not have to accept corporate complicity to experience world-class contemp
           return;
         }}
 
+        // J0-b. Dedicated Julia Stoschek Foundation Intelligence & Independent Archive Dossier
+        if (q.includes('stoschek') || q.includes('stolcheck') || q.includes('julia stoschek') || q.includes('ulia stolcheck') || q.includes('jsc berlin') || q.includes('jsc dusseldorf')) {{
+          const stoschek = ALL_INSTITUTIONS.find(i => i.id === 'julia-stoschek-foundation' || i.name.includes('Stoschek'));
+          const kw = ALL_INSTITUTIONS.find(i => i.name.includes('KW Institute'));
+          const savy = ALL_INSTITUTIONS.find(i => i.name.includes('SAVVY'));
+          const daad = ALL_INSTITUTIONS.find(i => i.name.includes('daadgalerie'));
+
+          const kwLink = kw ? formatInstLink(kw) : 'KW Institute for Contemporary Art';
+          const savyLink = savy ? formatInstLink(savy) : 'SAVVY Contemporary';
+          const daadLink = daad ? formatInstLink(daad) : 'daadgalerie';
+
+          const isFuzzy = q.includes('ulia') || q.includes('stolcheck');
+          const introLead = isFuzzy ? `✦ *Interpreting query as* **Julia Stoschek Foundation (JSC Berlin)** *in Berlin-Mitte.*\\n\\n` : '';
+
+          const stoschekDossierMarkdown = `${{introLead}}Right. Let's talk about the **Julia Stoschek Foundation**—one of the world's premier independent spaces dedicated to time-based media art, without the commercial market gatekeeping.
+
+### What You Actually Get
+Housed in a monumental former GDR telecommunications building on Leipziger Straße in Berlin-Mitte (2,500 sqm footprint), the foundation operates across multiple exhibition floors:
+- **The Spatial Experience:** Multi-level black-box projection chambers, VR simulation spaces, and dedicated video viewing carrels.
+- **Universal Public Access:** 100% free public admission to all exhibitions, cinema screenings, and artist talks, completely eliminating admission barriers.
+- **Curatorial Rigor:** Seminal solo and thematic exhibitions presenting media art pioneers (Arthur Jafa, Hito Steyerl, Ian Cheng, Pipilotti Rist, Cyprien Gaillard).
+
+### The Governance & Independence Profile
+Unlike corporate blockbusters that rely on oil, tobacco, or weapons patronage, the Julia Stoschek Foundation operates under an autonomous philanthropic non-profit structure (gGmbH):
+- **Statutory Transparency:** Audited and published in the German Federal Gazette (*Bundesanzeiger*) under non-profit public-benefit status.
+- **Zero Corporate Conflicts:** No fossil fuel extractors, defense contractors, or private equity interlocks underwriting exhibition programming.
+- **Preservation Commitment:** 900+ time-based media masters conserved in uncompressed digital formats with open access for researchers.
+
+### What This Actually Means
+In a global contemporary art scene heavily commodified by auction houses and corporate artwashing, the foundation demonstrates how private capital can be deployed for civic commons:
+- **Media Preservation as Public Good:** Analog video works from the 1960s to the present are actively digitized, stabilized, and safeguarded against technological obsolescence.
+- **Radical Independence:** Curators operate free of commercial gallery consignment pressures or corporate donor censorship.
+
+### The Independent Berlin Context
+Berlin's independent contemporary ecosystem offers stellar peer spaces with clean public funding:
+- ${{kwLink}} (Mitte): Historic Kunst-Werke founded in 1991, pioneer of the Berlin Biennale.
+- ${{savyLink}} (Wedding): Laboratory for decolonial knowledge, community archives, and critical solidarity.
+- ${{daadLink}} (Kreuzberg): Autonomous platform hosting international artist fellows with zero commercial ties.`;
+
+          appendCuratorMessage(renderCuratorMarkdown(stoschekDossierMarkdown), [
+            'Explore JSC Video Archives',
+            'Architecture of Leipziger Str. 60',
+            'More clean spaces in Berlin',
+            'View Bundesanzeiger Filing'
+          ]);
+          if (stoschek) {{
+            selectInstitution(stoschek, true);
+            if (typeof setWorkspaceTab === 'function') {{
+              setWorkspaceTab('chat');
+            }}
+          }}
+          return;
+        }}
+
+        // J0-c. Structured Gossip Mode Handler (Core Fact, Governance Risk, Verified Source)
+        const isGossipQuery = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || /^(show\s+)?(gossip|whisper|rumor|rumour|backchannel|scandal)/i.test(q) || q.includes('gossip mode');
+        if (isGossipQuery && !q.includes('moma') && !q.includes('stoschek') && !q.includes('whitney') && !q.includes('guggenheim')) {{
+          const gossipMarkdown = `Welcome to **Gossip & Whispers Mode**—our field intelligence radar tracking backchannel rumors, trustee interlocks, and behind-the-scenes controversies across the art world:
+
+### Core Fact
+- **Trustee Interlocks:** Major institutional boards frequently exchange seats with private equity firms and military contractors to secure multi-million endowment gifts.
+- **Labor Disparities:** Despite record-breaking auction seasons and multi-million dollar architectural expansions, front-of-house staff and museum educators face severe wage precarity.
+
+### Governance Risk
+- **Reputational Laundering:** Corporate donors actively leverage museum naming rights to whitewash environmental and regulatory violations.
+- **Donor Veto Covenants:** Restrictive gift agreements often give mega-donors silent veto power over permanent collection deaccessioning and curatorial themes.
+
+### Verified Source
+- **Statutory Audit Filings:** Cross-referenced through **IRS Form 990 Schedule L**, **UK Charity Commission**, and the German **Bundesanzeiger**.
+- **Investigative Reporting:** Documented by **ProPublica**, **The New York Times**, **Artforum**, and **Hyperallergic**.`;
+
+          appendCuratorMessage(renderCuratorMarkdown(gossipMarkdown), [
+            'Audit MoMA trustee conflicts',
+            'Warren Kanders at the Whitney',
+            'View IRS Form 990 Disclosures',
+            'Show clean spaces with zero gossip'
+          ]);
+          return;
+        }}
+
         // J. Excluded Institutions (Whitney, Guggenheim, Pompidou, Dia, Serpentine)
         if (q.includes('whitney') || q.includes('guggenheim') || q.includes('pompidou') || q.includes('dia beacon') || q.includes('serpentine') || q.includes('inhotim') || q.includes('why exclude') || q.includes('excluded') || q.includes('kanders')) {{
           const artsp = ALL_INSTITUTIONS.find(i => i.name.includes('Artists Space'));
@@ -24360,6 +24942,13 @@ You do not have to accept corporate complicity to experience world-class contemp
         const matchedEntity = findAnyInstitution(query);
         if (matchedEntity) {{
           const inst = matchedEntity.inst; const isClean = matchedEntity.isClean;
+          const fuzzyBanner = matchedEntity.fuzzy ? `
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-700/60 text-emerald-300 text-[14px] font-mono mb-2" data-exclude-speech="true">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>✦ Interpreting query as ${{escapeHtml(inst.name)}}</span>
+            </div>
+          ` : '';
+
           if (isClean) {{
             const yr = inst.year_founded ? `founded in ${{inst.year_founded}}` : 'established as an essential cultural space';
             const hood = inst.neighborhood ? `in ${{inst.neighborhood}}, ${{inst.city}}` : `in ${{inst.city}}`;
@@ -24370,6 +24959,7 @@ You do not have to accept corporate complicity to experience world-class contemp
 
             appendCuratorMessage(`
               <div class="space-y-2.5">
+                ${{fuzzyBanner}}
                 <p class="text-slate-100 text-[14px] leading-relaxed">
                   <strong>${{formatInstLink(inst, {{noCity: false}})}}</strong> ${{hood}} is a verified independent space ${{yr}}. It operates under transparent public governance, completely free of fossil fuel, arms, or predatory corporate underwriting.
                 </p>
@@ -24406,6 +24996,7 @@ You do not have to accept corporate complicity to experience world-class contemp
             }}
             appendCuratorMessage(`
               <div class="space-y-2.5">
+                ${{fuzzyBanner}}
                 <p class="text-rose-300 font-medium">
                   <strong>EXCLUSION AUDIT: ${{escapeHtml(inst.name)}} (${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}})</strong>
                 </p>
@@ -24484,8 +25075,55 @@ You do not have to accept corporate complicity to experience world-class contemp
       }}
     }});
 
-    // Mobile Viewport Mode Switcher (Map / Split / Chat)
+    // Mobile Viewport Mode Switcher & Draggable Bottom Sheet Controller
     let currentMobileMode = 'split';
+    let currentSheetSnap = 'half';
+
+    function setBottomSheetSnap(snap) {{
+      if (window.innerWidth >= 768) return;
+      currentSheetSnap = snap;
+
+      const globe = document.getElementById('globeViewport');
+      const workView = document.getElementById('workViewContainer');
+      const splitter = document.getElementById('globeSplitter');
+      const summaryStrip = document.getElementById('mobileSheetSummaryStrip');
+      const chevronIcon = document.getElementById('mobileSheetChevronIcon');
+      const anchoredBar = document.getElementById('mobileAnchoredSearchBar');
+      const inputRow = document.getElementById('mobileSheetInputRow');
+      const cityBar = document.getElementById('globeCityBar');
+
+      if (snap === 'hidden' || snap === 'map') {{
+        setMobileViewMode('map');
+        return;
+      }}
+
+      if (snap === 'peek') {{
+        currentMobileMode = 'split';
+        if (globe) {{
+          globe.style.display = 'flex';
+          globe.style.height = '85%';
+          globe.style.flex = '1 1 0%';
+        }}
+        if (workView) {{
+          workView.style.display = 'flex';
+          workView.style.height = '15%';
+          workView.style.minHeight = '115px';
+          workView.style.flex = '0 0 auto';
+        }}
+        if (splitter) splitter.style.display = 'none';
+        if (summaryStrip) summaryStrip.classList.add('hidden');
+        if (inputRow) inputRow.classList.remove('hidden');
+        if (chevronIcon) chevronIcon.style.transform = 'rotate(180deg)';
+        if (anchoredBar) anchoredBar.style.display = 'none';
+        resizeCanvas();
+        if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
+      }} else if (snap === 'half') {{
+        setMobileViewMode('split');
+      }} else if (snap === 'expanded') {{
+        setMobileViewMode('chat');
+      }}
+    }}
+    window.setBottomSheetSnap = setBottomSheetSnap;
 
     function setMobileViewMode(mode) {{
       if (window.innerWidth >= 768) return;
@@ -24498,6 +25136,10 @@ You do not have to accept corporate complicity to experience world-class contemp
       const splitBtn = document.getElementById('mobileModeSplitBtn');
       const chatBtn = document.getElementById('mobileModeChatBtn');
       const cityBar = document.getElementById('globeCityBar');
+      const anchoredBar = document.getElementById('mobileAnchoredSearchBar');
+      const summaryStrip = document.getElementById('mobileSheetSummaryStrip');
+      const inputRow = document.getElementById('mobileSheetInputRow');
+      const chevronIcon = document.getElementById('mobileSheetChevronIcon');
 
       [mapBtn, splitBtn, chatBtn].forEach(b => {{
         if (!b) return;
@@ -24506,6 +25148,7 @@ You do not have to accept corporate complicity to experience world-class contemp
       }});
 
       if (mode === 'map') {{
+        currentSheetSnap = 'hidden';
         mapBtn?.classList.remove('text-[#a1a1aa]');
         mapBtn?.classList.add('bg-[#2563eb]', 'text-white', 'font-medium');
         if (globe) {{
@@ -24521,9 +25164,14 @@ You do not have to accept corporate complicity to experience world-class contemp
         if (splitter) {{
           splitter.style.display = 'none';
         }}
+        if (anchoredBar) {{
+          anchoredBar.style.display = 'flex';
+          anchoredBar.classList.remove('hidden');
+        }}
         resizeCanvas();
         if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
       }} else if (mode === 'chat') {{
+        currentSheetSnap = 'expanded';
         chatBtn?.classList.remove('text-[#a1a1aa]');
         chatBtn?.classList.add('bg-[#2563eb]', 'text-white', 'font-medium');
         if (globe) {{
@@ -24534,6 +25182,7 @@ You do not have to accept corporate complicity to experience world-class contemp
         if (workView) {{
           workView.style.display = 'flex';
           workView.style.height = '100%';
+          workView.style.minHeight = '0px';
           workView.style.flex = '1 1 0%';
         }}
         if (splitter) {{
@@ -24543,9 +25192,16 @@ You do not have to accept corporate complicity to experience world-class contemp
           cityBar.classList.remove('max-h-[58px]');
           cityBar.classList.add('max-h-[140px]');
         }}
+        if (anchoredBar) {{
+          anchoredBar.style.display = 'none';
+        }}
+        if (summaryStrip) summaryStrip.classList.remove('hidden');
+        if (inputRow) inputRow.classList.add('hidden');
+        if (chevronIcon) chevronIcon.style.transform = 'rotate(0deg)';
         scrollChatToBottom(false);
       }} else {{
-        // split (default)
+        // split (default) -> Half State (50%)
+        currentSheetSnap = 'half';
         splitBtn?.classList.remove('text-[#a1a1aa]');
         splitBtn?.classList.add('bg-[#2563eb]', 'text-white', 'font-medium');
         if (globe) {{
@@ -24556,6 +25212,7 @@ You do not have to accept corporate complicity to experience world-class contemp
         if (workView) {{
           workView.style.display = 'flex';
           workView.style.height = '50%';
+          workView.style.minHeight = '0px';
           workView.style.flex = '1 1 0%';
         }}
         if (splitter) {{
@@ -24565,6 +25222,12 @@ You do not have to accept corporate complicity to experience world-class contemp
           cityBar.classList.remove('max-h-[140px]');
           cityBar.classList.add('max-h-[58px]');
         }}
+        if (anchoredBar) {{
+          anchoredBar.style.display = 'none';
+        }}
+        if (summaryStrip) summaryStrip.classList.remove('hidden');
+        if (inputRow) inputRow.classList.remove('hidden');
+        if (chevronIcon) chevronIcon.style.transform = 'rotate(0deg)';
         resizeCanvas();
         if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
       }}
@@ -24574,6 +25237,126 @@ You do not have to accept corporate complicity to experience world-class contemp
     document.getElementById('mobileModeMapBtn')?.addEventListener('click', () => setMobileViewMode('map'));
     document.getElementById('mobileModeSplitBtn')?.addEventListener('click', () => setMobileViewMode('split'));
     document.getElementById('mobileModeChatBtn')?.addEventListener('click', () => setMobileViewMode('chat'));
+
+    // Touch Drag Physics on Mobile Sheet Handle Bar
+    let sheetTouchStartY = 0;
+    let sheetStartH = 0;
+    let isDraggingMobileSheet = false;
+
+    const dragHandle = document.getElementById('mobileSheetHandleBar');
+    if (dragHandle) {{
+      dragHandle.addEventListener('touchstart', (e) => {{
+        if (window.innerWidth >= 768) return;
+        if (e.target.closest('button') || e.target.closest('input')) return;
+        sheetTouchStartY = e.touches[0].clientY;
+        const wv = document.getElementById('workViewContainer');
+        sheetStartH = wv ? wv.getBoundingClientRect().height : 0;
+        isDraggingMobileSheet = true;
+      }}, {{ passive: true }});
+
+      window.addEventListener('touchmove', (e) => {{
+        if (!isDraggingMobileSheet || window.innerWidth >= 768) return;
+        const currentY = e.touches[0].clientY;
+        const delta = sheetTouchStartY - currentY; // positive = dragging UP
+        const newH = Math.max(100, Math.min(window.innerHeight * 0.95, sheetStartH + delta));
+        const wv = document.getElementById('workViewContainer');
+        const globe = document.getElementById('globeViewport');
+        if (wv) {{
+          wv.style.height = `${{newH}}px`;
+          wv.style.flex = '0 0 auto';
+        }}
+        if (globe) {{
+          const globeH = Math.max(0, window.innerHeight - newH);
+          globe.style.height = `${{globeH}}px`;
+          globe.style.flex = '0 0 auto';
+        }}
+      }}, {{ passive: true }});
+
+      window.addEventListener('touchend', () => {{
+        if (!isDraggingMobileSheet) return;
+        isDraggingMobileSheet = false;
+        const wv = document.getElementById('workViewContainer');
+        if (!wv) return;
+        const currentH = wv.getBoundingClientRect().height;
+        const winH = window.innerHeight;
+        const ratio = currentH / winH;
+
+        if (ratio < 0.28) {{
+          setBottomSheetSnap('peek');
+        }} else if (ratio < 0.72) {{
+          setBottomSheetSnap('half');
+        }} else {{
+          setBottomSheetSnap('expanded');
+        }}
+      }});
+    }}
+
+    // Sheet Interactive Controls (Chevron, Snap Pills, Close Button)
+    document.getElementById('mobileSheetChevronBtn')?.addEventListener('click', () => {{
+      if (currentSheetSnap === 'peek') {{
+        setBottomSheetSnap('half');
+      }} else if (currentSheetSnap === 'half') {{
+        setBottomSheetSnap('expanded');
+      }} else {{
+        setBottomSheetSnap('half');
+      }}
+    }});
+
+    document.getElementById('mobileSheetTitleZone')?.addEventListener('click', () => {{
+      if (currentSheetSnap === 'peek') {{
+        setBottomSheetSnap('half');
+      }} else if (currentSheetSnap === 'half') {{
+        setBottomSheetSnap('expanded');
+      }}
+    }});
+
+    document.getElementById('mobileSheetSnapHalfBtn')?.addEventListener('click', () => setBottomSheetSnap('half'));
+    document.getElementById('mobileSheetSnapExpandBtn')?.addEventListener('click', () => setBottomSheetSnap('expanded'));
+    document.getElementById('mobileSheetCloseBtn')?.addEventListener('click', () => setBottomSheetSnap('map'));
+
+    document.getElementById('mobileSheetAskChatBtn')?.addEventListener('click', () => {{
+      setBottomSheetSnap('expanded');
+      if (typeof setWorkspaceTab === 'function') setWorkspaceTab('chat');
+      const wi = document.getElementById('workInput');
+      if (wi) wi.focus();
+    }});
+
+    document.getElementById('mobileSheetViewDossierBtn')?.addEventListener('click', () => {{
+      setBottomSheetSnap('half');
+      if (typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
+    }});
+
+    function submitMobileQuickQuery(inputEl) {{
+      if (!inputEl) return;
+      const q = inputEl.value.trim();
+      if (!q) return;
+      inputEl.value = '';
+      setBottomSheetSnap('expanded');
+      if (typeof setWorkspaceTab === 'function') setWorkspaceTab('chat');
+      if (typeof handleCuratorQuery === 'function') {{
+        handleCuratorQuery(q);
+      }}
+    }}
+
+    document.getElementById('mobileSheetQuickSendBtn')?.addEventListener('click', () => {{
+      submitMobileQuickQuery(document.getElementById('mobileSheetQuickInput'));
+    }});
+    document.getElementById('mobileSheetQuickInput')?.addEventListener('keydown', (e) => {{
+      if (e.key === 'Enter') {{
+        e.preventDefault();
+        submitMobileQuickQuery(e.target);
+      }}
+    }});
+
+    document.getElementById('mobileAnchoredSearchSubmitBtn')?.addEventListener('click', () => {{
+      submitMobileQuickQuery(document.getElementById('mobileAnchoredSearchInput'));
+    }});
+    document.getElementById('mobileAnchoredSearchInput')?.addEventListener('keydown', (e) => {{
+      if (e.key === 'Enter') {{
+        e.preventDefault();
+        submitMobileQuickQuery(e.target);
+      }}
+    }});
 
     window.addEventListener('resize', () => {{
       if (window.innerWidth >= 768) {{

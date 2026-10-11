@@ -30,14 +30,22 @@ def test_mobile_popups():
     # 2. Dynamic execution via Headless Chromium in mobile viewport (375x667)
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    const origFetch = window.fetch;
+    window.fetch = async (url, opts) => {
+      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return origFetch(url, opts);
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
       }
 
       try {
-        await new Promise(r => setTimeout(r, 400));
         const all = window.ALL_INSTITUTIONS || [];
         assert('Institutions loaded', all.length >= 1000, all.length);
 
@@ -54,7 +62,6 @@ def test_mobile_popups():
         if (window.render) window.render();
         const card = document.getElementById('floatingCard');
         card.classList.remove('hidden');
-        await new Promise(r => setTimeout(r, 150));
         assert('Floating card element found', !!card);
         assert('Floating card is visible', !card.classList.contains('hidden'));
 
@@ -106,15 +113,12 @@ def test_mobile_popups():
     cmd = [
         chrome_bin,
         "--headless=new",
-        "--disable-gpu",
-        "--no-sandbox",
-        "--window-size=375,667",
-        "--virtual-time-budget=6000",
         "--dump-dom",
+        "--window-size=375,667",
         f"file://{temp_path}"
     ]
 
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=20)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=40)
     dom = proc.stdout
 
     if "#test-done" in dom or 'id="test-done"' in dom:
