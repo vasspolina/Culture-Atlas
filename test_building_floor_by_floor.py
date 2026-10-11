@@ -69,7 +69,7 @@ def test_index_html_floor_inspector_hud():
 
     # Verify Curator Chat integration
     assert "q.includes('floor')" in html, "Missing floor query check in curator chat"
-    assert "Floor-by-Floor Current Shows & Archival Holdings" in html, "Missing floor breakdown in curator response"
+    assert "Floor-by-Floor Current Shows & Archival Holdings" in html or "Floor-by-Floor Current Shows &amp; Archival Holdings" in html, "Missing floor breakdown in curator response"
 
     print("✅ Verified HTML markup, HUD inspector, Modal floor directory, and Curator chat in index.html.")
 

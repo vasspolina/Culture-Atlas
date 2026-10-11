@@ -1841,7 +1841,7 @@ def build():
       </div>
 
       <!-- 🏢 3D BUILDING FLOOR-BY-FLOOR INSPECTOR HUD (Floating on 3D Building View) -->
-      <div id="buildingFloorInspectorHud" class="hidden absolute bottom-2 sm:bottom-4 left-2 sm:left-4 z-40 pointer-events-auto flex flex-col gap-2 p-2.5 sm:p-3 rounded-2xl bg-[#0c1322]/95 border border-[#38bdf8]/70 shadow-2xl backdrop-blur-md w-[calc(100vw-16px)] sm:w-[320px] max-w-none sm:max-w-[320px] max-h-[calc(100%-70px)] overflow-y-auto select-none text-zinc-100 transition-all duration-200">
+      <div id="buildingFloorInspectorHud" class="hidden absolute bottom-2 sm:bottom-4 left-2 sm:left-4 z-40 pointer-events-auto flex flex-col gap-2 p-2.5 sm:p-3 rounded-2xl bg-[#0c1322]/95 border border-[#38bdf8]/70 shadow-2xl backdrop-blur-md w-[calc(100vw-16px)] sm:w-[290px] max-w-none sm:max-w-[290px] max-h-[calc(100%-70px)] overflow-y-auto select-none text-zinc-100 transition-all duration-200">
         <!-- Header -->
         <div class="flex items-center justify-between gap-2 border-b border-[#233552] pb-2">
           <div class="flex items-center gap-2 min-w-0">
@@ -1854,6 +1854,9 @@ def build():
             </div>
           </div>
           <div class="flex items-center gap-1 shrink-0">
+            <button id="dockBfiToWorkspaceBtn" type="button" onclick="window.dockBuildingInspectorToWorkspace()" class="px-2 h-6 rounded-lg bg-[#162032] hover:bg-[#253959] text-sky-300 flex items-center gap-1 transition cursor-pointer border border-[#2b3e5e] text-[14px] font-mono" title="Dock Inspector to Right Workspace (Keeps 3D Map completely clean)">
+              <span>Dock ↗</span>
+            </button>
             <button id="minimizeBfiHudBtn" type="button" class="w-7 h-6 rounded-lg bg-[#162032] hover:bg-[#253959] text-sky-300 flex items-center justify-center transition cursor-pointer border border-[#2b3e5e]" title="Minimize / Expand Inspector">
               <span id="minimizeBfiHudIcon" class="text-[14px] font-mono font-bold">_</span>
             </button>
@@ -11103,6 +11106,10 @@ def build():
       document.body.classList.add('building-view-active');
 
       // Switch to vector street map if not active
+      selectedInstitution = inst;
+      if (typeof toggleFilterDrawer === 'function') {{
+        toggleFilterDrawer(false);
+      }}
       if (!isCityStreetViewActive) {{
         openCityStreetView(inst.city, inst.lat, inst.lon);
       }}
@@ -11135,7 +11142,12 @@ def build():
         setTimeout(() => {{
           ensureBuildingFootprintLayer();
           highlightBuildingFootprint(inst);
-          showBuildingFloorInspectorHud(inst);
+          const hud = document.getElementById('buildingFloorInspectorHud');
+          const drawer = document.getElementById('filterDrawerPanel');
+          const isDrawerOpen = drawer && !drawer.classList.contains('hidden');
+          if (hud && !hud.classList.contains('hidden') && !isDrawerOpen) {{
+            showBuildingFloorInspectorHud(inst);
+          }}
         }}, 350);
       }}
 
@@ -11309,8 +11321,14 @@ def build():
     function showBuildingFloorInspectorHud(inst) {{
       if (!inst) inst = selectedInstitution || currentHighlightedBuildingInst;
       if (!inst) return;
+      selectedInstitution = inst;
       const hud = document.getElementById('buildingFloorInspectorHud');
       if (!hud) return;
+
+      // 🛡️ MUTUAL EXCLUSIVITY: Automatically collapse/close the right-hand filter drawer!
+      if (typeof toggleFilterDrawer === 'function') {{
+        toggleFilterDrawer(false);
+      }}
 
       // Close all 2D popups and suppress floating 3D on-map plates/badges to keep screen clean and focused
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
@@ -11494,6 +11512,10 @@ def build():
           window.atlasAskCurator('Tell me about the exhibition at ' + inst.name + ' (' + curLvl + '): ' + JSON.stringify(show.title || ''));
         }};
       }}
+      const dockBtn = document.getElementById('dockBfiToWorkspaceBtn');
+      if (dockBtn) {{
+        dockBtn.onclick = () => window.dockBuildingInspectorToWorkspace(inst);
+      }}
       const closeHudBtn = document.getElementById('closeBfiHudBtn');
       if (closeHudBtn) {{
         closeHudBtn.onclick = hideBuildingFloorInspectorHud;
@@ -11501,8 +11523,35 @@ def build():
     }}
     window.showBuildingFloorInspectorHud = showBuildingFloorInspectorHud;
 
+    function dockBuildingInspectorToWorkspace(inst) {{
+      if (!inst) inst = selectedInstitution || currentHighlightedBuildingInst;
+      if (!inst) return;
+      selectedInstitution = inst;
+      hideBuildingFloorInspectorHud();
+      if (typeof toggleFilterDrawer === 'function') {{
+        toggleFilterDrawer(false);
+      }}
+      if (typeof openDossier === 'function') {{
+        openDossier(inst);
+      }}
+      if (typeof setWorkspaceTab === 'function') {{
+        setWorkspaceTab('dossier');
+      }}
+      if (cityVectorMap && inst.lon && inst.lat) {{
+        cityVectorMap.easeTo({{
+          center: [inst.lon, inst.lat],
+          padding: {{ left: 0, top: 40, bottom: 40, right: 0 }},
+          duration: 500
+        }});
+      }}
+    }}
+    window.dockBuildingInspectorToWorkspace = dockBuildingInspectorToWorkspace;
+
     function selectBfiFloor(idx) {{
       currentBfiFloorIndex = idx;
+      if (typeof window.updateDossierFloorSelection === 'function') {{
+        window.updateDossierFloorSelection(idx);
+      }}
       const inst = selectedInstitution || currentHighlightedBuildingInst;
       if (inst) {{
         highlightBuildingFootprint(inst, {{ isFloorChange: true }});
@@ -16310,6 +16359,10 @@ def build():
 
     function openDossier(inst) {{
       if (!inst) return;
+      // 🛡️ MUTUAL EXCLUSIVITY: Automatically collapse/close filter drawer!
+      if (typeof toggleFilterDrawer === 'function') {{
+        toggleFilterDrawer(false);
+      }}
       const drawer = document.getElementById('detailDrawer');
       const body = document.getElementById('detailBody');
       drawer.classList.remove('hidden');
@@ -16369,6 +16422,11 @@ def build():
         status: 'Now On View',
         opening_night: {{ date: 'Thu, Oct 22, 2026', hours: '18:00–21:30', admission: 'Free / RSVP Open', is_upcoming: true }}
       }};
+
+      const bArch = inst.building_architecture || {{}};
+      const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
+      const activeFl = floors[currentBfiFloorIndex] || floors[0] || {{}};
+      const floorShow = (activeFl.current_shows && activeFl.current_shows[0]) || primaryShow;
 
       // 4. Visual Critiques (Hans Haacke, etc.)
       const vcs = (inst.visual_critiques && inst.visual_critiques.length > 0) ? inst.visual_critiques : [];
@@ -16441,6 +16499,75 @@ def build():
 
           <!-- SCHOLARLY AUDIT VIEWPORT -->
           <div id="drawerAuditView" class="space-y-3">
+
+          <!-- 🏢 3D BUILDING & ARCHITECTURAL FLOOR WORKSPACE INSPECTOR -->
+          ${{floors.length > 0 ? `
+          <div class="p-3.5 rounded-xl bg-[#0c1424] border border-[#233854] select-text space-y-3">
+            <div class="flex items-center justify-between border-b border-[#1e2f4a] pb-2 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                <span class="text-[14px] font-mono uppercase tracking-wider font-semibold text-sky-200">3D Building &amp; Architectural Floors</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[14px] font-mono text-sky-300 bg-sky-950/70 border border-sky-800/60 px-2.5 py-0.5 rounded-full font-medium">
+                  ${{floors.length}} Storeys · ${{bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() : '1,800'}} m²
+                </span>
+                <button type="button" onclick="window.showBuildingFloorInspectorHud(selectedInstitution)" class="px-2 py-0.5 rounded-lg bg-[#142036] hover:bg-[#1e2f4d] border border-[#2b3e5e] text-sky-300 text-[14px] font-mono transition cursor-pointer" title="Float HUD directly on 3D map">
+                  <span>Float HUD ↙</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- In-Map 3D Camera Controls -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 pt-0.5">
+              <button type="button" onclick="window.set3DCameraAngle('perspective')" class="px-2 py-1.5 rounded-lg bg-[#142036] hover:bg-[#1e2f4d] border border-[#2b3e5e] text-sky-200 text-[14px] font-mono flex items-center justify-center gap-1 transition cursor-pointer" title="Perspective 3D View">
+                <span>Perspective 3D</span>
+              </button>
+              <button type="button" onclick="window.toggle3DOrbit()" class="px-2 py-1.5 rounded-lg bg-[#142036] hover:bg-[#1e2f4d] border border-[#2b3e5e] text-emerald-300 text-[14px] font-mono flex items-center justify-center gap-1 transition cursor-pointer" title="Orbit 360°">
+                <span>Orbit 360°</span>
+              </button>
+              <button type="button" onclick="window.set3DCameraAngle('isometric')" class="px-2 py-1.5 rounded-lg bg-[#111a2c] hover:bg-[#192742] border border-[#233552] text-slate-300 text-[14px] font-mono flex items-center justify-center gap-1 transition cursor-pointer" title="Isometric 45°">
+                <span>Isometric 45°</span>
+              </button>
+              <button type="button" onclick="window.set3DCameraAngle('plan')" class="px-2 py-1.5 rounded-lg bg-[#111a2c] hover:bg-[#192742] border border-[#233552] text-slate-300 text-[14px] font-mono flex items-center justify-center gap-1 transition cursor-pointer" title="Floor Plan 0°">
+                <span>Floor Plan 0°</span>
+              </button>
+            </div>
+
+            <!-- Interactive Floor Level Pills -->
+            <div class="space-y-1.5 pt-1">
+              <span class="text-[14px] font-mono uppercase text-slate-400 block">Select Floor Level (Highlights 3D Map):</span>
+              <div class="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar">
+                ${{floors.map((fl, idx) => `
+                  <button type="button" onclick="window.selectBfiFloor(${{idx}}); window.updateDossierFloorSelection(${{idx}});" class="dossier-floor-tab px-3 py-1 rounded-xl text-[14px] font-mono border transition cursor-pointer shrink-0 ${{idx === currentBfiFloorIndex ? 'bg-sky-600 text-white font-bold border-sky-400 shadow-sm' : 'bg-[#142036] text-slate-300 border-[#2b3e5e] hover:border-sky-400'}}" data-floor-idx="${{idx}}">
+                    ${{fl.level_code || ('L' + idx)}}: ${{escapeHtml(fl.floor_name || ('Level ' + idx))}}
+                  </button>
+                `).join('')}}
+              </div>
+            </div>
+
+            <!-- Active Floor Card -->
+            <div id="dossierActiveFloorCard" class="bg-[#0b121e] border border-[#1e324d] rounded-xl p-3 space-y-2 text-[14px]">
+              <div class="flex items-center justify-between text-[14px] font-mono text-sky-300">
+                <span class="font-bold">${{escapeHtml(activeFl.floor_name || 'Main Level')}}</span>
+                <span class="text-slate-400">${{escapeHtml(activeFl.elevation || '0.0m')}}</span>
+              </div>
+              <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
+                <span class="text-[14px] font-mono uppercase text-amber-400 font-bold block">Current Show on this Level:</span>
+                <div class="font-semibold text-white">${{escapeHtml(floorShow.title || 'Curatorial Collections')}}</div>
+                <div class="text-slate-300 text-[14px] font-mono">${{escapeHtml(floorShow.curator_artists || '')}}${{floorShow.dates ? ' · ' + escapeHtml(floorShow.dates) : ''}}</div>
+                ${{floorShow.synopsis ? `<p class="text-slate-300 text-[14px] leading-snug line-clamp-2">${{escapeHtml(floorShow.synopsis)}}</p>` : ''}}
+              </div>
+              ${{activeFl.archive_holdings ? `
+                <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
+                  <span class="text-[14px] font-mono uppercase text-emerald-400 font-bold block">Archival Holding on this Level:</span>
+                  <div class="font-semibold text-emerald-200">${{escapeHtml(activeFl.archive_holdings.collection_title || '')}}</div>
+                  <div class="text-slate-400 text-[14px]">${{escapeHtml(activeFl.archive_holdings.reading_room_policy || 'Public study access')}}</div>
+                </div>
+              ` : ''}}
+            </div>
+          </div>
+          ` : ''}}
           
           <!-- 1. 💶 FINANCIALS & FUNDING (Compact Metadata Block with Horizontal Progress Bar & Minimalist List) -->
           <div class="p-3.5 rounded-xl bg-[#0f1422] border border-[#1e293b] select-text space-y-3">
@@ -17033,6 +17160,47 @@ def build():
         window.setDrawerMode(isGossipModeActive ? 'gossip' : 'audit');
       }}
     }}
+    window.openDossier = openDossier;
+
+    function updateDossierFloorSelection(idx) {{
+      document.querySelectorAll('.dossier-floor-tab').forEach(t => {{
+        const tIdx = Number(t.getAttribute('data-floor-idx'));
+        if (tIdx === idx) {{
+          t.className = 'dossier-floor-tab px-3 py-1 rounded-xl text-[14px] font-mono border transition cursor-pointer shrink-0 bg-sky-600 text-white font-bold border-sky-400 shadow-sm';
+        }} else {{
+          t.className = 'dossier-floor-tab px-3 py-1 rounded-xl text-[14px] font-mono border transition cursor-pointer shrink-0 bg-[#142036] text-slate-300 border-[#2b3e5e] hover:border-sky-400';
+        }}
+      }});
+      const inst = selectedInstitution || currentHighlightedBuildingInst;
+      if (!inst) return;
+      const floors = inst.floor_plans || (inst.building_architecture && inst.building_architecture.floor_plans) || [];
+      const fl = floors[idx];
+      const card = document.getElementById('dossierActiveFloorCard');
+      if (card && fl) {{
+        const show = (fl.current_shows && fl.current_shows[0]) || {{ title: 'Curatorial Collections', curator_artists: '' }};
+        const arch = fl.archive_holdings || {{ collection_title: 'Institutional Archives', reading_room_policy: 'Open access' }};
+        card.innerHTML = `
+          <div class="flex items-center justify-between text-[14px] font-mono text-sky-300">
+            <span class="font-bold">${{escapeHtml(fl.floor_name || ('Level ' + idx))}}</span>
+            <span class="text-slate-400">${{escapeHtml(fl.elevation || '0.0m')}}</span>
+          </div>
+          <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
+            <span class="text-[14px] font-mono uppercase text-amber-400 font-bold block">Current Show on this Level:</span>
+            <div class="font-semibold text-white">${{escapeHtml(show.title || 'Curatorial Collections')}}</div>
+            <div class="text-slate-300 text-[14px] font-mono">${{escapeHtml(show.curator_artists || '')}}${{show.dates ? ' · ' + escapeHtml(show.dates) : ''}}</div>
+            ${{show.synopsis ? `<p class="text-slate-300 text-[14px] leading-snug line-clamp-2">${{escapeHtml(show.synopsis)}}</p>` : ''}}
+          </div>
+          ${{arch ? `
+            <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
+              <span class="text-[14px] font-mono uppercase text-emerald-400 font-bold block">Archival Holding on this Level:</span>
+              <div class="font-semibold text-emerald-200">${{escapeHtml(arch.collection_title || '')}}</div>
+              <div class="text-slate-400 text-[14px]">${{escapeHtml(arch.reading_room_policy || 'Public study access')}}</div>
+            </div>
+          ` : ''}}
+        `;
+      }}
+    }}
+    window.updateDossierFloorSelection = updateDossierFloorSelection;
 
     function formatInstLink(inst, opts = {{}}) {{
       if (!inst) return '';
@@ -27498,6 +27666,10 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         if (chevron) chevron.classList.add('rotate-180');
         if (bottomDock) bottomDock.classList.add('hidden');
         if (subActionBar) subActionBar.classList.add('hidden');
+        // 🛡️ MUTUAL EXCLUSIVITY: Automatically collapse/hide building inspector HUD so panels never collide!
+        if (typeof hideBuildingFloorInspectorHud === 'function') {{
+          hideBuildingFloorInspectorHud();
+        }}
       }} else {{
         drawer.classList.add('hidden');
         if (chevron) chevron.classList.remove('rotate-180');
