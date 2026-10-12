@@ -18989,16 +18989,11 @@ def build():
         <!-- YELLOW GOSSIP DOSSIER VIEWPORT (Uncontained Editorial Stream) -->
         <div id="drawerGossipView" class="hidden space-y-3">
           <div class="py-3 space-y-3">
-            <div class="flex flex-col gap-0.5 pb-2 border-b border-[#262626]">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-orange-400"></span>
-                <span class="text-[14px] font-mono text-orange-300 font-normal tracking-wide">
-                  Documented Institutional Governance &amp; Labor Notes
-                </span>
-              </div>
-              <div class="text-[14px] font-mono text-orange-300">
-                <span class="sr-only">HOT INTEL</span>Field Intel
-              </div>
+            <div class="flex items-center gap-2 pb-2 border-b border-[#262626]">
+              <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+              <span class="text-[14px] font-mono text-orange-300 font-normal tracking-wide">
+                Documented Institutional Governance &amp; Labor Notes
+              </span>
             </div>
 
             <!-- Main Governance Note -->
