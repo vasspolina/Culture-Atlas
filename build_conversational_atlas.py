@@ -2482,9 +2482,6 @@ def build():
           <div class="flex items-center space-x-2">
             <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
             <span class="text-[11px] text-slate-300 font-mono">Thought for 3s</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-950 text-teal-300 border border-teal-700/60">
-              Clean Sanctuary
-            </span>
           </div>
           <div class="flex items-center space-x-2">
             <button id="curatorDrawerListenBtn" type="button" class="text-[11px] text-slate-400 hover:text-white px-2 py-0.5 rounded border border-slate-700 cursor-pointer">Listen</button>
@@ -3121,9 +3118,7 @@ def build():
                   <span class="flex items-center gap-1.5 text-white font-medium">
                     <span>Working for <span id="curatorThinkingTimer">1</span>s</span>
                   </span>
-                  <span id="curatorThinkingModeBadge" class="text-[14px] font-mono px-2 py-0.5 rounded-full border shadow-sm bg-blue-950/70 border-blue-800/80 text-blue-300">
-                    Clean Sanctuary
-                  </span>
+                  <span id="curatorThinkingModeBadge" class="hidden" style="display:none;" aria-hidden="true">Clean Sanctuary</span>
                 </div>
                 <div id="curatorScrapingBadge" class="hidden flex items-center gap-1.5 text-[14px] font-mono text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full shadow-sm">
                   <span id="curatorScrapingText">Scraping web intelligence...</span>
@@ -21532,7 +21527,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       if (modeBadge) {{
         modeBadge.textContent = mode.name;
-        modeBadge.className = `text-[14px] font-mono px-2 py-0.5 rounded-full border shadow-sm ${{mode.badgeClasses}}`;
+        modeBadge.className = 'hidden';
+        modeBadge.style.display = 'none';
       }}
 
       if (timerEl) timerEl.textContent = '1';
@@ -21693,7 +21689,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <span class="relative inline-flex rounded-full h-1.5 w-1.5 shadow-sm" style="background-color: ${{mode.color}}; box-shadow: 0 0 6px ${{mode.color}};"></span>
               </span>
               <span>Thought for ${{sec}}s</span>
-              <span class="text-[14px] font-mono px-1.5 py-0.2 rounded border ${{mode.badgeClasses}}">${{mode.name}}</span>
               <svg class="w-3.5 h-3.5 transition-transform duration-200 curator-thought-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
