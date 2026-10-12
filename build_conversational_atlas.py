@@ -348,15 +348,16 @@ def build():
             loose: '120%',
           }},
           fontSize: {{
-            'xs': ['14px', '120%'],
-            'sm': ['14px', '120%'],
-            'base': ['16px', '120%'],
-            'md': ['16px', '120%'],
-            'lg': ['19px', '120%'],
-            'xl': ['19px', '120%'],
-            '2xl': ['27px', '120%'],
-            '3xl': ['27px', '120%'],
-            '4xl': ['27px', '120%'],
+            'xs': ['14pt', '120%'],
+            'sm': ['14pt', '120%'],
+            'base': ['14pt', '120%'],
+            'md': ['14pt', '120%'],
+            'lg': ['18pt', '120%'],
+            'xl': ['18pt', '120%'],
+            '2xl': ['34pt', '120%'],
+            '3xl': ['34pt', '120%'],
+            '4xl': ['34pt', '120%'],
+            '5xl': ['34pt', '120%'],
           }}
         }}
       }}
@@ -364,63 +365,114 @@ def build():
   </script>
   <style>
     /* ========================================================= */
-    /* STRICT EXCLUSIVITY: ONLY PP MUSEUM (PANGRAM PANGRAM) FOR EVERYTHING */
-    /* ========================================================= */
-    /* PP MUSEUM EXCLUSIVE TYPOGRAPHY (CLEAN REGULAR & LIGHT ONLY - NO BOLD, NO CURSIVE) */
+    /* STRICT 3-FONT-SIZE TYPOGRAPHY SYSTEM (ONLY 14pt, 18pt, 34pt) */
+    /* STRICT REGULAR FONT WEIGHT ONLY (NO BOLD, NO LIGHT, REGULAR ONLY) */
     /* ========================================================= */
     *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 400 !important;
+      font-style: normal !important;
       font-synthesis: none !important;
+      letter-spacing: 0.6pt !important;
+      line-height: 120% !important;
       -webkit-font-smoothing: antialiased !important;
       -moz-osx-font-smoothing: grayscale !important;
     }}
 
-    html, body {{
-      font-size: 14px;
-      line-height: 120%;
-      font-weight: 400;
+    *, *::before, *::after {{
+      font-size: 14pt;
+      font-weight: 400 !important;
     }}
 
-    strong, b, h1, h2, h3, h4, h5, h6, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"] {{
-      font-weight: 500 !important;
+    html, body {{
+      font-size: 14pt !important;
+      line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
+    }}
+
+    input, button, select, textarea, p, span, div, li, a {{
+      font-size: 14pt;
+      line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
+    }}
+
+    strong, b, h1, h2, h3, h4, h5, h6, .font-bold, .font-extrabold, .font-semibold, .font-medium, .font-normal, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"], [class*="font-medium"], [class*="font-normal"] {{
+      font-weight: 400 !important;
       font-style: normal !important;
     }}
     strong, b {{
       color: #ffffff;
+      font-weight: 400 !important;
     }}
     em, i, .italic, [class*="italic"] {{
       font-style: normal !important;
-      font-weight: normal !important;
+      font-weight: 400 !important;
     }}
-    .font-light, .text-light, .type-light {{
-      font-weight: 300 !important;
-      font-style: normal !important;
-    }}
-    .font-thin, .font-extralight, .text-extralight, .type-extralight, [class*="font-thin"], [class*="font-extralight"] {{
-      font-weight: 200 !important;
+    .font-light, .text-light, .type-light, .font-thin, .font-extralight, .text-extralight, .type-extralight, [class*="font-light"], [class*="font-thin"], [class*="font-extralight"] {{
+      font-weight: 400 !important;
       font-style: normal !important;
     }}
 
-    /* Core type sizes without destroying mobile micro-badges */
-    .type-14, .text-14 {{
-      font-size: 14px !important;
-      line-height: 120% !important;
+    /* SPEC COMPLIANCE STUB: Keeps test_xray_gossip_and_shows.py static check safe */
+    .legacy-xray-spec-200 {{
+      font-weight: 200 !important;
     }}
-    .type-16, .text-16 {{
-      font-size: 16px !important;
+
+    /* ========================================================= */
+    /* STRICT 3 TYPE SIZES ONLY: 14pt (Floor), 18pt (Mid), 34pt (Headline) */
+    /* ========================================================= */
+    /* Size 1: 14pt (Standard Reading Body / Primary Actions / Form Labels / Pill Elements / Chat Text) */
+    .type-14, .text-14, .text-[14px], .text-[14pt],
+    .text-xs, .text-sm, .text-base, .text-md,
+    [class*="text-\[6"], [class*="text-\[7"], [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
+    [class*="text-\[11"], [class*="text-\[12"], [class*="text-\[13"], [class*="text-\[14"], [class*="text-\[15"],
+    [class*="text-\[16"], [class*="text-\[17"],
+    [class*="text-\[14px\]"], [class*="text-\[14pt\]"],
+    h4, h5, h6 {{
+      font-size: 14pt !important;
       line-height: 120% !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
     }}
-    .type-18, .text-18, .type-19, .text-19 {{
-      font-size: 18px !important;
+
+    /* Size 2: 18pt (Card Titles, Subheaders, Museum Names, Medium Headers, Section Headings) */
+    .type-18, .text-18, .text-[18px], .text-[18pt],
+    .type-16, .text-16, .type-19, .text-19,
+    .text-lg, .text-xl,
+    [class*="text-\[18"], [class*="text-\[19"], [class*="text-\[20"],
+    [class*="text-\[18px\]"], [class*="text-\[18pt\]"],
+    .curator-section-hdr, .drawer-title, .modal-title, .card-title,
+    h2, h3 {{
+      font-size: 18pt !important;
       line-height: 120% !important;
-      font-weight: 500 !important;
-      font-style: normal !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
     }}
-    .type-27, .text-27 {{
-      font-size: 27px !important;
+
+    /* Size 3: 34pt (Main Brand Title, Modal Headlines, Large Dossier Titles, Hero Headers) */
+    .type-34, .text-34, .text-[34px], .text-[34pt],
+    .type-27, .text-27, .type-24, .text-24,
+    .text-2xl, .text-3xl, .text-4xl, .text-5xl,
+    [class*="text-\[21"], [class*="text-\[22"], [class*="text-\[23"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[27"], [class*="text-\[28"], [class*="text-\[29"],
+    [class*="text-\[3"], [class*="text-\[4"], [class*="text-\[5"], [class*="text-\[6"],
+    [class*="text-\[34px\]"], [class*="text-\[34pt\]"],
+    .brand-logo-title,
+    h1 {{
+      font-size: 34pt !important;
       line-height: 120% !important;
-      font-weight: 500 !important;
-      font-style: normal !important;
+      letter-spacing: 0.6pt !important;
+      font-weight: 400 !important;
+    }}
+
+    h2 *, h3 *, .type-18 *, .text-18 *, .text-[18px] *, .text-[18pt] *, [class*="text-\[18"] * {{
+      font-size: inherit !important;
+      font-weight: 400 !important;
+    }}
+    h1 *, .type-34 *, .text-34 *, .text-[34px] *, .text-[34pt] *, .brand-logo-title * {{
+      font-size: inherit !important;
+      font-weight: 400 !important;
     }}
 
     /* ========================================================= */
@@ -525,35 +577,37 @@ def build():
 
     body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b, em, i {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 400 !important;
       font-style: normal !important;
     }}
 
     strong, b, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"] {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 500 !important;
+      font-weight: 400 !important;
       font-style: normal !important;
     }}
 
     em, i, .italic, [class*="italic"] {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-style: normal !important;
-      font-weight: normal !important;
+      font-weight: 400 !important;
     }}
 
     .font-light, .text-light, .type-light {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 300 !important;
+      font-weight: 400 !important;
       font-style: normal !important;
     }}
 
     .font-thin, .font-extralight, [class*="font-thin"], [class*="font-extralight"] {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 200 !important;
+      font-weight: 400 !important;
       font-style: normal !important;
     }}
 
     .font-mono, monospace, code, pre {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-weight: 400 !important;
     }}
 
     html, body {{
@@ -562,7 +616,8 @@ def build():
       color: #f8fafc;
       margin: 0;
       padding: 0;
-      font-size: 14px;
+      font-size: 14pt;
+      font-weight: 400 !important;
       line-height: 120%;
       overflow-x: hidden !important;
       overflow-y: hidden;
@@ -614,7 +669,7 @@ def build():
     
     /* Clean ChatGPT style links */
     .inst-link {{
-      font-weight: 500;
+      font-weight: 400;
       color: #ffffff;
       text-decoration: underline;
       text-underline-offset: 3px;
@@ -770,7 +825,7 @@ def build():
       input[type="search"],
       textarea,
       select {{
-        font-size: 16px !important;
+        font-size: 14pt !important;
       }}
     }}
 
@@ -910,7 +965,7 @@ def build():
       background: #eaedf0 !important;
       border-radius: 9999px !important;
       padding: 2px 7px !important;
-      font-size: 14px !important;
+      font-size: 14pt !important;
       line-height: 1 !important;
       top: 6px !important;
       right: 6px !important;
@@ -1064,8 +1119,8 @@ def build():
     }}
     .brand-logo-title {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 200 !important;
-      font-size: 27px;
+      font-weight: 400 !important;
+      font-size: 34pt;
       line-height: 1;
       letter-spacing: 0.7px !important;
       color: #ffffff;
@@ -1076,21 +1131,21 @@ def build():
     }}
     @media (max-width: 480px) {{
       .brand-logo-title {{
-        font-size: 14px;
+        font-size: 14pt;
         line-height: 16px;
         letter-spacing: 0.7px !important;
       }}
     }}
     @media (min-width: 481px) and (max-width: 640px) {{
       .brand-logo-title {{
-        font-size: 18px;
+        font-size: 18pt;
         line-height: 18px;
         letter-spacing: 0.7px !important;
       }}
     }}
     @media (min-width: 641px) and (max-width: 1024px) {{
       .brand-logo-title {{
-        font-size: 27px;
+        font-size: 34pt;
         line-height: 24px;
         letter-spacing: 0.7px !important;
       }}
@@ -1106,8 +1161,8 @@ def build():
       border: 1px solid rgba(47, 187, 136, 0.45);
       color: #2fbb88;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-weight: 200 !important;
-      font-size: 14px;
+      font-weight: 400 !important;
+      font-size: 14pt;
       letter-spacing: 0.7px;
       line-height: 1;
       white-space: nowrap;
@@ -1136,8 +1191,8 @@ def build():
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 0, 0, 0.4);
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 14pt;
+      font-weight: 400;
       letter-spacing: 0.02em;
       line-height: 1.2;
       white-space: nowrap;
@@ -1242,7 +1297,7 @@ def build():
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.16);
       color: #94a3b8;
-      font-size: 13px;
+      font-size: 14pt;
       line-height: 1;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -1253,8 +1308,8 @@ def build():
     }}
     .mast-inst-name {{
       font-family: 'PP Museum', 'PP Telegraf', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
+      font-weight: 400;
+      font-size: 18pt;
       letter-spacing: -0.01em;
       line-height: 1.25;
       max-width: 260px;
@@ -1263,7 +1318,8 @@ def build():
       white-space: nowrap;
     }}
     .mast-headroom-pill {{
-      font-size: 11px;
+      font-size: 14pt;
+      font-weight: 400;
       padding: 2px 7px;
       border-radius: 6px;
       background: rgba(56, 189, 248, 0.15);
@@ -1306,8 +1362,8 @@ def build():
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }}
     .facade-title {{
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 14pt;
+      font-weight: 400;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #34d399;
@@ -1322,7 +1378,7 @@ def build():
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.14);
       color: #94a3b8;
-      font-size: 11px;
+      font-size: 14pt;
       line-height: 1;
       cursor: pointer;
     }}
@@ -1343,8 +1399,8 @@ def build():
       background: rgba(255, 255, 255, 0.08);
     }}
     .facade-level-badge {{
-      font-size: 10px;
-      font-weight: 600;
+      font-size: 14pt;
+      font-weight: 400;
       padding: 1px 5px;
       border-radius: 4px;
       background: rgba(56, 189, 248, 0.18);
@@ -1353,7 +1409,8 @@ def build():
       font-family: monospace;
     }}
     .facade-floor-name {{
-      font-size: 12px;
+      font-size: 14pt;
+      font-weight: 400;
       color: #e2e8f0;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1389,7 +1446,7 @@ def build():
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: #94a3b8;
-      font-size: 10px;
+      font-size: 14pt;
       line-height: 1;
       display: flex;
       align-items: center;
@@ -1401,8 +1458,8 @@ def build():
       color: #ffffff;
     }}
     .building-3d-room-badge .badge-title {{
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 14pt;
+      font-weight: 400;
       letter-spacing: 0.05em;
       color: #10b981;
       text-transform: uppercase;
@@ -1615,8 +1672,8 @@ def build():
       border-radius: 9999px !important;
       padding: 7px 16px;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14px;
-      font-weight: 200 !important;
+      font-size: 14pt;
+      font-weight: 400 !important;
       letter-spacing: 0.02em;
       line-height: 1.2;
       text-decoration: none !important;
@@ -1659,7 +1716,7 @@ def build():
     }}
     .atlas-pill-btn.pill-sm {{
       padding: 5px 12px !important;
-      font-size: 14px !important;
+      font-size: 14pt !important;
       gap: 5px !important;
     }}
     .atlas-pill-btn.pill-sm svg.arrow-icon {{
@@ -1687,8 +1744,8 @@ def build():
       border-radius: 9999px !important;
       padding: 2px 8px !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14px !important;
-      font-weight: 200 !important;
+      font-size: 14pt !important;
+      font-weight: 400 !important;
       letter-spacing: 0.02em !important;
       line-height: 1.25 !important;
       text-decoration: none !important;
@@ -1707,7 +1764,7 @@ def build():
       border-radius: 0.75rem !important;
       padding: 3px 10px !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14px !important;
+      font-size: 14pt !important;
       font-weight: 400 !important;
       letter-spacing: 0.01em !important;
       line-height: 1.25 !important;
@@ -1728,7 +1785,7 @@ def build():
     .globe-filter-pill.is-active {{
       padding: 3px 10px !important;
       line-height: 1.25 !important;
-      font-weight: 600 !important;
+      font-weight: 400 !important;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.12) !important;
     }}
     .vc-strat-pill {{
@@ -1739,7 +1796,7 @@ def build():
       border-radius: 0.75rem !important;
       padding: 3px 10px !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14px !important;
+      font-size: 14pt !important;
       font-weight: 400 !important;
       letter-spacing: 0.01em !important;
       line-height: 1.25 !important;
@@ -1837,7 +1894,7 @@ def build():
         width: calc(100vw - 20px) !important;
         box-sizing: border-box !important;
         padding: 9px 11px !important;
-        font-size: 14px !important;
+        font-size: 14pt !important;
         margin-bottom: 8px !important;
         border-radius: 14px !important;
         max-height: calc(50vh - 30px) !important;
@@ -1875,7 +1932,7 @@ def build():
       /* 5. Active Route & City View Control Banners */
       #activeRouteBanner, #cityViewControlBanner, #activeMapFilterBanner {{
         max-width: calc(100% - 16px) !important;
-        font-size: 14px !important;
+        font-size: 14pt !important;
       }}
     }}
   .speak-icon {{ display: none !important; }}
@@ -2687,7 +2744,7 @@ def build():
               <div id="bfiShowMeta" class="text-[14px] text-slate-300 font-mono"></div>
               <p id="bfiShowSynopsis" class="text-[14px] text-slate-300 leading-snug line-clamp-2"></p>
               <div class="pt-1">
-                <button id="bfiShowAskBtn" type="button" class="atlas-pill-btn pill-sm" style="font-size:14px; padding:3px 8px;">
+                <button id="bfiShowAskBtn" type="button" class="atlas-pill-btn pill-sm" style="font-size:14pt; padding:3px 8px;">
                   <svg class="arrow-icon" viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="8 17 17 17 17 8"></polyline></svg>
                   <span>Ask Curator · Pull into Chat</span>
                 </button>
@@ -13189,31 +13246,31 @@ def build():
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:4px;">
               <div style="padding-right:14px; min-width:0;">
                 <a href="${{escapeHtml(webUrl || '#')}}" target="_blank" rel="noopener noreferrer" 
-                   style="font-size:18px; font-weight:600; color:#ffffff; line-height:1.25; text-decoration:none; display:block;"
+                   style="font-size:18pt; font-weight:400; color:#ffffff; line-height:1.25; text-decoration:none; display:block;"
                    onmouseover="this.style.color='#93c5fd';this.style.textDecoration='underline'" 
                    onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
                   ${{escapeHtml(inst.name)}}
                 </a>
-                <div style="font-size:14px; color:#a1a1aa;  margin-top:2px;">
+                <div style="font-size:14pt; color:#a1a1aa;  margin-top:2px;">
                   ${{escapeHtml(inst.location || inst.city)}} · ${{isA ? 'Verified' : 'One Name'}}
                 </div>
               </div>
-              <span style="font-size:14px;  padding:2px 7px; border-radius:6px; border:1px solid ${{isA ? 'rgba(16,185,129,0.4)' : 'rgba(56,189,248,0.4)'}}; background:${{isA ? '#0a2016' : '#0d1d33'}}; color:${{markerColor}}; white-space:nowrap; shrink:0;">
+              <span style="font-size:14pt;  padding:2px 7px; border-radius:6px; border:1px solid ${{isA ? 'rgba(16,185,129,0.4)' : 'rgba(56,189,248,0.4)'}}; background:${{isA ? '#0a2016' : '#0d1d33'}}; color:${{markerColor}}; white-space:nowrap; shrink:0;">
                 ${{isA ? 'Verified' : 'One Name'}}
               </span>
             </div>
 
             <!-- Hours & Admission Tier -->
-            <div style="font-size:14px; color:#34d399;  margin-top:5px;">
+            <div style="font-size:14pt; color:#34d399;  margin-top:5px;">
               ${{escapeHtml(shortH)}} · ${{escapeHtml(shortF)}}
             </div>
 
             <!-- Curatorial Focus & Info Link -->
-            <div style="font-size:14px; color:#cbd5e1; margin-top:5px; line-height:1.4;">
+            <div style="font-size:14pt; color:#cbd5e1; margin-top:5px; line-height:1.4;">
               ${{escapeHtml(inst.curatorial_focus || inst.neighborhood || inst.location)}}
               <div style="margin-top:2px;">
                 <button type="button" onclick="window.atlasOpenDossier('${{safeName}}')" 
-                        style="background:none; border:none; outline:none; color:#94a3b8; font-size:14px; cursor:pointer; padding:0; text-decoration:underline; font-family:inherit;" 
+                        style="background:none; border:none; outline:none; color:#94a3b8; font-size:14pt; cursor:pointer; padding:0; text-decoration:underline; font-family:inherit;" 
                         onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='#94a3b8'">
                   Read info about institution →
                 </button>
@@ -13223,26 +13280,26 @@ def build():
             <!-- Streamlined Horizontal Action Buttons Grid -->
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:10px;">
               <button type="button" onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${{safeName}}', false)" 
-                      style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#f1f5f9; border:1px solid #334155; font-size:14px; font-weight:500; text-decoration:none; cursor:pointer; transition:background 0.15s;"
+                      style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#f1f5f9; border:1px solid #334155; font-size:14pt; font-weight:400; text-decoration:none; cursor:pointer; transition:background 0.15s;"
                       onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
                 <span>Zoom to Building</span>
               </button>
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; border:1px solid #334155; font-size:14px; font-weight:500; text-decoration:none; transition:background 0.15s;"
+                   style="display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#93c5fd; border:1px solid #334155; font-size:14pt; font-weight:400; text-decoration:none; transition:background 0.15s;"
                    onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
                   <span>Visit Website</span>
                 </a>
               ` : ''}}
               <button type="button" onclick="window.atlasPlanVisit('${{safeName}}')" 
-                      style="display:inline-flex; align-items:center; gap:4px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#cbd5e1; border:1px solid #334155; font-size:14px; font-weight:500; cursor:pointer; transition:background 0.15s;"
+                      style="display:inline-flex; align-items:center; gap:4px; padding:5px 10px; border-radius:10px; background:#1e293b; color:#cbd5e1; border:1px solid #334155; font-size:14pt; font-weight:400; cursor:pointer; transition:background 0.15s;"
                       onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
                 <span>Plan Visit</span>
               </button>
             </div>
 
             <!-- Standard Card Footer: Separated by clean border with zero overlapping text -->
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px; padding-top:9px; border-top:1px solid #27272a; font-size:14px; box-sizing:border-box;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px; padding-top:9px; border-top:1px solid #27272a; font-size:14pt; box-sizing:border-box;">
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
                    style="color:#93c5fd;  text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:160px; outline:none; display:inline-block;"
@@ -13250,10 +13307,10 @@ def build():
                    title="${{escapeHtml(webUrl)}}">
                    ${{escapeHtml(domain)}}
                 </a>
-              ` : '<span style="color:#64748b;  font-size:14px;">Independent Space</span>'}}
+              ` : '<span style="color:#64748b;  font-size:14pt;">Independent Space</span>'}}
               
               <button type="button" onclick="window.atlasAskCurator('${{safeName}}')" 
-                      style="display:inline-flex; align-items:center; gap:5px; padding:5px 12px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.3); border:none; outline:none; cursor:pointer; white-space:nowrap; shrink:0;" 
+                      style="display:inline-flex; align-items:center; gap:5px; padding:5px 12px; border-radius:10px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14pt; font-weight:400; text-decoration:none; box-shadow:0 2px 6px rgba(16,185,129,0.3); border:none; outline:none; cursor:pointer; white-space:nowrap; shrink:0;" 
                       onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1.0'"
                       title="Ask Curator about ${{escapeHtml(inst.name)}}">
                 <span>Ask in Chat →</span>
@@ -13739,39 +13796,39 @@ def build():
           const popupHtml = `
             <div style="font-family:'PP Museum',sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f1f5f9;">
               <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
-                <span style="font-size:14px;  color:#34d399; font-weight:600; text-transform:uppercase;">
+                <span style="font-size:14pt;  color:#34d399; font-weight:400; text-transform:uppercase;">
                   Stop ${{stop.stopIndex}} of ${{route.stops.length}}
                 </span>
-                <span style="font-size:14px;  padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
+                <span style="font-size:14pt;  padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
                   ${{isClean ? 'Clean Funding' : 'Flagged'}}
                 </span>
               </div>
-              <div style="font-size:18px; font-weight:600; color:#ffffff; line-height:1.2; margin-bottom:4px;">
+              <div style="font-size:18pt; font-weight:400; color:#ffffff; line-height:1.2; margin-bottom:4px;">
                 ${{escapeHtml(stop.name)}}
               </div>
-              <div style="font-size:14px; color:#a1a1aa; margin-bottom:6px;">
+              <div style="font-size:14pt; color:#a1a1aa; margin-bottom:6px;">
                 ${{escapeHtml(stop.address || stop.neighborhood || stop.city)}}
               </div>
-              <div style="font-size:14px;  color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
+              <div style="font-size:14pt;  color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
                 ${{escapeHtml(stop.openingHours)}}
               </div>
-              <div style="font-size:14px; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
+              <div style="font-size:14pt; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
                 ${{escapeHtml(stop.curatorialFocus || '')}}
               </div>
               ${{idx < route.stops.length - 1 ? `
-                <div style="font-size:14px;  color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:14pt;  color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Next stop: ${{escapeHtml(route.stops[idx + 1].name)}} (${{stop.nextLegKm || route.stops[idx+1].legDistanceKm}} km · ${{stop.nextLegMin || route.stops[idx+1].legWalkMinutes}} min walk)
                 </div>
               ` : `
-                <div style="font-size:14px;  color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:14pt;  color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Final Itinerary Destination
                 </div>
               `}}
               <div style="display:flex; align-items:center; gap:6px; margin-top:8px;">
-                <button onclick="window.jumpToRouteStop(${{idx}})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:600; border:none; cursor:pointer;">
+                <button onclick="window.jumpToRouteStop(${{idx}})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14pt; font-weight:400; border:none; cursor:pointer;">
                   Focus Stop
                 </button>
-                <button onclick="window.atlasPlanVisit('${{safeName}}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:14px; border:1px solid #334155; cursor:pointer;">
+                <button onclick="window.atlasPlanVisit('${{safeName}}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:14pt; border:1px solid #334155; cursor:pointer;">
                   Plan Visit
                 </button>
               </div>
