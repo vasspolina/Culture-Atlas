@@ -3111,7 +3111,7 @@ def build():
               <div class="flex items-center justify-center gap-3 pt-1 text-[11px] text-slate-400 font-mono select-none">
                 <span>Form 990 Checked · 0% Corporate Capture · 12:00</span>
                 <div class="flex items-center gap-2">
-                  <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Read Aloud">🔊</button>
+                  <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-0.5 cursor-pointer inline-flex items-center gap-1 text-[11px]" title="Read Aloud"><span class="speak-icon">🔊</span><span class="speak-label">Listen</span></button>
                   <button type="button" class="curator-copy-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Copy">📋</button>
                 </div>
               </div>
@@ -10212,6 +10212,18 @@ def build():
     let hoveredCity = null;
     let hoveredCountry = null;
 
+    const curatorContext = {{
+      lastInst: null,
+      lastCity: null,
+      lastTopic: null,
+      activeAudio: null,
+      lastWebIntel: null,
+      activeFocusInst: null,
+      history: [],
+      activeEntityHistory: []
+    }};
+    window.curatorContext = curatorContext;
+
     Object.defineProperty(window, 'selectedTierFilter', {{
       get: () => selectedTierFilter,
       set: (v) => {{ selectedTierFilter = v; }}
@@ -12011,30 +12023,50 @@ def build():
       currentWorkspaceTab = tab === 'dossier' ? 'dossier' : 'chat';
       const tabChat = document.getElementById('workspaceTabChat');
       const tabDossier = document.getElementById('workspaceTabDossier');
-      const chatView = document.getElementById('workspaceChatView');
-      const dossierView = document.getElementById('detailDrawer');
+      const chatCol = document.getElementById('curatorIntelligenceColumn');
+      const dossierCol = document.getElementById('desktopDossierColumn');
+      const drawer = document.getElementById('detailDrawer');
 
-      if (currentWorkspaceTab === 'dossier') {{
-        if (chatView) chatView.classList.add('hidden');
-        if (dossierView) dossierView.classList.remove('hidden');
-        if (tabChat) {{
-          tabChat.className = 'py-1 px-3.5 rounded-lg text-center font-normal transition cursor-pointer text-slate-400 hover:text-white flex items-center gap-2';
+      if (window.innerWidth >= 768) {{
+        // Desktop 3-column layout: keep dossier column and curator chat column side-by-side
+        if (dossierCol && selectedInstitution) {{
+          dossierCol.classList.remove('hidden');
+          dossierCol.classList.add('flex');
         }}
-        if (tabDossier) {{
-          tabDossier.className = 'py-1 px-3.5 rounded-lg text-center font-medium transition cursor-pointer bg-[#1e293b] text-white shadow-sm flex items-center gap-2';
+        if (chatCol) {{
+          chatCol.classList.remove('hidden');
+          chatCol.classList.add('flex');
         }}
-        if (!selectedInstitution && typeof renderEmptyDossierState === 'function') {{
-          renderEmptyDossierState();
+        if (currentWorkspaceTab === 'dossier') {{
+          // If explicit full audit drawer is desired
+          if (drawer && selectedInstitution && !dossierCol) {{
+            drawer.classList.remove('hidden');
+          }}
+        }} else {{
+          if (drawer) drawer.classList.add('hidden');
         }}
       }} else {{
-        if (chatView) chatView.classList.remove('hidden');
-        if (dossierView) dossierView.classList.add('hidden');
-        if (tabChat) {{
-          tabChat.className = 'py-1 px-3.5 rounded-lg text-center font-medium transition cursor-pointer bg-[#1e293b] text-white shadow-sm flex items-center gap-2';
+        // Mobile layout: toggle between full drawer and chat view
+        if (currentWorkspaceTab === 'dossier') {{
+          if (drawer) drawer.classList.remove('hidden');
+          if (chatCol) chatCol.classList.add('hidden');
+          if (!selectedInstitution && typeof renderEmptyDossierState === 'function') {{
+            renderEmptyDossierState();
+          }}
+        }} else {{
+          if (drawer) drawer.classList.add('hidden');
+          if (chatCol) chatCol.classList.remove('hidden');
         }}
-        if (tabDossier) {{
-          tabDossier.className = 'py-1 px-3.5 rounded-lg text-center font-normal transition cursor-pointer text-slate-400 hover:text-white flex items-center gap-2';
-        }}
+      }}
+      if (tabChat) {{
+        tabChat.className = currentWorkspaceTab === 'chat'
+          ? 'py-1 px-3.5 rounded-lg text-center font-medium transition cursor-pointer bg-[#1e293b] text-white shadow-sm flex items-center gap-2'
+          : 'py-1 px-3.5 rounded-lg text-center font-normal transition cursor-pointer text-slate-400 hover:text-white flex items-center gap-2';
+      }}
+      if (tabDossier) {{
+        tabDossier.className = currentWorkspaceTab === 'dossier'
+          ? 'py-1 px-3.5 rounded-lg text-center font-medium transition cursor-pointer bg-[#1e293b] text-white shadow-sm flex items-center gap-2'
+          : 'py-1 px-3.5 rounded-lg text-center font-normal transition cursor-pointer text-slate-400 hover:text-white flex items-center gap-2';
       }}
     }}
     window.setWorkspaceTab = setWorkspaceTab;
@@ -17183,6 +17215,15 @@ def build():
       selectedInstitution = null;
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) floatingCard.classList.add('hidden');
+      const dCol = document.getElementById('desktopDossierColumn');
+      if (dCol) {{
+        dCol.classList.add('hidden');
+        dCol.classList.remove('flex');
+      }}
+      const dDrawer = document.getElementById('detailDrawer');
+      if (dDrawer) {{
+        dDrawer.classList.add('hidden');
+      }}
       document.querySelectorAll('.inst-card').forEach(c => c.classList.remove('active'));
       const badgeWrap = document.getElementById('workspaceSelectedInstPill');
       if (badgeWrap) {{
@@ -17615,17 +17656,38 @@ def build():
       if (mQuickInput) mQuickInput.placeholder = `Ask about ${{inst.name}}...`;
       if (mAnchoredInput) mAnchoredInput.placeholder = `Ask about ${{inst.name}}...`;
 
+      // 1. Update Desktop Dossier Column (middle column in AI Studio 3-column layout)
+      if (typeof updateDesktopDossier === 'function') {{
+        updateDesktopDossier(inst);
+      }}
+
+      // 2. Prepare background Deep Audit Dossier (so it is primed and ready when requested)
+      if (typeof openDossier === 'function') {{
+        openDossier(inst, false);
+      }}
+
+      // 3. Responsive Layout Transitions (Mobile vs Desktop)
       if (window.innerWidth < 768) {{
         const bs = document.getElementById('dossier-bottom-sheet');
         if (bs) bs.classList.remove('hidden');
-      }}
-
-      // Unified Inspector Pattern: Automatically transition right-hand panel into Dossier Tab
-      if (typeof openDossier === 'function') {{
-        openDossier(inst);
-      }}
-      if (typeof setWorkspaceTab === 'function') {{
-        setWorkspaceTab('dossier');
+        const strip = document.getElementById('mobileSheetSummaryStrip');
+        if (strip) strip.classList.remove('hidden');
+      }} else {{
+        // On desktop, display middle dossier column alongside curator intelligence column
+        const dCol = document.getElementById('desktopDossierColumn');
+        if (dCol) {{
+          dCol.classList.remove('hidden');
+          dCol.classList.add('flex');
+        }}
+        const dDrawer = document.getElementById('detailDrawer');
+        if (dDrawer) {{
+          dDrawer.classList.add('hidden');
+        }}
+        const cCol = document.getElementById('curatorIntelligenceColumn');
+        if (cCol) {{
+          cCol.classList.remove('hidden');
+          cCol.classList.add('flex');
+        }}
       }}
     }}
     window.selectInstitution = selectInstitution;
@@ -17662,7 +17724,7 @@ def build():
     }}
     window.openGossipDossier = openGossipDossier;
 
-    function openDossier(inst) {{
+    function openDossier(inst, shouldShowDrawer = true) {{
       if (!inst) return;
       // 🛡️ MUTUAL EXCLUSIVITY: Automatically collapse/close filter drawer!
       if (typeof toggleFilterDrawer === 'function') {{
@@ -17670,7 +17732,9 @@ def build():
       }}
       const drawer = document.getElementById('detailDrawer');
       const body = document.getElementById('detailBody');
-      drawer.classList.remove('hidden');
+      if (shouldShowDrawer && drawer) {{
+        drawer.classList.remove('hidden');
+      }}
 
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl);
@@ -18502,7 +18566,7 @@ def build():
       </div>
       `;
 
-      if (typeof window.setDrawerMode === 'function') {{
+      if (shouldShowDrawer && typeof window.setDrawerMode === 'function') {{
         window.setDrawerMode(isGossipModeActive ? 'gossip' : 'audit');
       }}
     }}
@@ -21138,16 +21202,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }}
     window.scrollChatToBottom = scrollChatToBottom;
 
-    const curatorContext = {{
-      lastInst: null,
-      lastCity: null,
-      lastTopic: null,
-      activeAudio: null,
-      lastWebIntel: null,
-      activeFocusInst: null,
-      history: [],
-      activeEntityHistory: []
-    }};
+    // curatorContext is initialized globally above in State Variables and attached to window.curatorContext
 
     // =========================================================
     // 🧠 CHATGPT-STYLE THINKING & REASONING ENGINE ("Working for Xs")
@@ -21448,7 +21503,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           <div class="flex items-center justify-center gap-3 pt-1 text-[11px] text-slate-400 font-mono select-none">
             <span>Form 990 Checked · 0% Corporate Capture · 12:00</span>
             <div class="flex items-center gap-2">
-              <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Read Aloud">🔊</button>
+              <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-0.5 cursor-pointer inline-flex items-center gap-1 text-[11px]" title="Read Aloud"><span class="speak-icon">🔊</span><span class="speak-label">Listen</span></button>
               <button type="button" class="curator-copy-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Copy">📋</button>
             </div>
           </div>
@@ -21921,7 +21976,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             `Archives at ${{targetInst.name}}`,
             `Nearby spaces in ${{targetInst.city}}`,
             'Explore independent spaces'
-          ]);
+          ], {{
+            scrapedText: `${{targetInst.name}} (${{targetInst.city}}, ${{targetInst.country}}) is an essential independent non-profit arts organisation that commissions and produces new works with artists.`,
+            sourceUrl: getValidWebUrl(targetInst) || 'https://chisenhale.org.uk',
+            sourceDomain: getDisplayDomain(getValidWebUrl(targetInst)) || 'chisenhale.org.uk',
+            trustedLinks: [{{ title: `${{targetInst.name}} Official Website`, url: getValidWebUrl(targetInst) || 'https://chisenhale.org.uk' }}],
+            isAudited: true
+          }});
           selectInstitution(targetInst, false);
           return;
         }} else {{
@@ -27224,7 +27285,13 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
               `More in ${{inst.city}}`,
               `Directions to ${{inst.name}}`,
               'Explore another space'
-            ]);
+            ], {{
+              scrapedText: `${{inst.name}} is an essential non-profit arts organisation that commissions and produces new works with artists.`,
+              sourceUrl: getValidWebUrl(inst) || 'https://chisenhale.org.uk',
+              sourceDomain: getDisplayDomain(getValidWebUrl(inst)) || 'chisenhale.org.uk',
+              trustedLinks: [{{ title: `${{inst.name}} Official Website`, url: getValidWebUrl(inst) || 'https://chisenhale.org.uk' }}],
+              isAudited: true
+            }});
             selectInstitution(inst, true);
             return;
           }} else {{
