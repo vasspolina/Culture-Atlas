@@ -15,14 +15,19 @@
   <meta name="format-detection" content="telephone=no" />
   <title>Culture Atlas — Ethically funded cultural institutions across the world</title>
   <meta name="description" content="Culture Atlas — Ethically funded cultural institutions across the world" />
-<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
-            mono: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            sans: ['"IBM Plex Sans"', '"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'monospace'],
+            serif: ['"IBM Plex Sans"', '"PP Museum"', 'sans-serif'],
+            display: ['"IBM Plex Sans"', '"PP Museum"', 'sans-serif']
           },
           colors: {
             atlas: {
@@ -41,40 +46,35 @@
             'glow-node': '0 0 12px 2px rgba(45, 212, 191, 0.65)',
             'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.6)'
           },
-          fontFamily: {
-            sans: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
-            serif: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif'],
-            display: ['"PP Museum"', '"PP Telegraf"', '"PP Telegraph"', 'sans-serif']
-          },
           letterSpacing: {
-            DEFAULT: '0.6pt',
-            tight: '0.6pt',
-            tighter: '0.6pt',
-            normal: '0.6pt',
-            wide: '0.6pt',
-            wider: '0.6pt',
-            widest: '0.6pt',
+            DEFAULT: '0.16px',
+            tight: '0px',
+            tighter: '0px',
+            normal: '0.16px',
+            wide: '0.32px',
+            wider: '0.32px',
+            widest: '0.32px',
           },
           lineHeight: {
-            DEFAULT: '120%',
-            none: '120%',
-            tight: '120%',
-            snug: '120%',
-            normal: '120%',
-            relaxed: '120%',
-            loose: '120%',
+            DEFAULT: '20pt',
+            none: '1',
+            tight: '18pt',
+            snug: '20pt',
+            normal: '20pt',
+            relaxed: '22pt',
+            loose: '24pt',
           },
           fontSize: {
-            'xs': ['14pt', '120%'],
-            'sm': ['14pt', '120%'],
-            'base': ['14pt', '120%'],
-            'md': ['14pt', '120%'],
-            'lg': ['18pt', '120%'],
-            'xl': ['18pt', '120%'],
-            '2xl': ['34pt', '120%'],
-            '3xl': ['34pt', '120%'],
-            '4xl': ['34pt', '120%'],
-            '5xl': ['34pt', '120%'],
+            'xs': ['14pt', '20pt'],
+            'sm': ['14pt', '20pt'],
+            'base': ['14pt', '20pt'],
+            'md': ['14pt', '20pt'],
+            'lg': ['18pt', '24pt'],
+            'xl': ['18pt', '24pt'],
+            '2xl': ['34pt', '40pt'],
+            '3xl': ['34pt', '40pt'],
+            '4xl': ['34pt', '40pt'],
+            '5xl': ['34pt', '40pt'],
           }
         }
       }
@@ -82,18 +82,22 @@
   </script>
   <style>
     /* ========================================================= */
+    /* IBM CARBON DESIGN SYSTEM TYPOGRAPHY RULES */
     /* STRICT 3-FONT-SIZE TYPOGRAPHY SYSTEM (ONLY 14pt, 18pt, 34pt) */
-    /* STRICT REGULAR FONT WEIGHT ONLY (NO BOLD, NO LIGHT, REGULAR ONLY) */
+    /* STRICT REGULAR FONT WEIGHT ONLY (NO BOLD, NO LIGHT, REGULAR 400 ONLY) */
     /* ========================================================= */
     *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'IBM Plex Sans', 'PP Museum', 'PP Telegraf', 'PP Telegraph', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
       font-weight: 400 !important;
       font-style: normal !important;
       font-synthesis: none !important;
-      letter-spacing: 0.6pt !important;
-      line-height: 120% !important;
       -webkit-font-smoothing: antialiased !important;
       -moz-osx-font-smoothing: grayscale !important;
+    }
+    code, pre, kbd, samp, .font-mono, [class*="font-mono"] {
+      font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace !important;
+      font-weight: 400 !important;
+      font-style: normal !important;
     }
 
     *, *::before, *::after {
@@ -103,15 +107,15 @@
 
     html, body {
       font-size: 14pt !important;
-      line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
+      line-height: 20pt !important;
+      letter-spacing: 0.16px !important;
       font-weight: 400 !important;
     }
 
     input, button, select, textarea, p, span, div, li, a {
       font-size: 14pt;
-      line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
+      line-height: 20pt !important;
+      letter-spacing: 0.16px !important;
       font-weight: 400 !important;
     }
 
@@ -138,9 +142,9 @@
     }
 
     /* ========================================================= */
-    /* STRICT 3 TYPE SIZES ONLY: 14pt (Floor), 18pt (Mid), 34pt (Headline) */
+    /* STRICT 3 CARBON TYPE SIZES: 14pt (Body), 18pt (Heading), 34pt (Display) */
     /* ========================================================= */
-    /* Size 1: 14pt (Standard Reading Body / Primary Actions / Form Labels / Pill Elements / Chat Text) */
+    /* Size 1: 14pt (IBM Carbon body-01 / body-compact-01: 14pt, line-height 20pt, tracking 0.16px) */
     .type-14, .text-14, .text-[14px], .text-[14pt],
     .text-xs, .text-sm, .text-base, .text-md,
     [class*="text-\[6"], [class*="text-\[7"], [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
@@ -149,12 +153,12 @@
     [class*="text-\[14px\]"], [class*="text-\[14pt\]"],
     h4, h5, h6 {
       font-size: 14pt !important;
-      line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
+      line-height: 20pt !important;
+      letter-spacing: 0.16px !important;
       font-weight: 400 !important;
     }
 
-    /* Size 2: 18pt (Card Titles, Subheaders, Museum Names, Medium Headers, Section Headings) */
+    /* Size 2: 18pt (IBM Carbon heading-03 / heading-compact-02: 18pt, line-height 24pt, tracking 0) */
     .type-18, .text-18, .text-[18px], .text-[18pt],
     .type-16, .text-16, .type-19, .text-19,
     .text-lg, .text-xl,
@@ -163,12 +167,12 @@
     .curator-section-hdr, .drawer-title, .modal-title, .card-title,
     h2, h3 {
       font-size: 18pt !important;
-      line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
+      line-height: 24pt !important;
+      letter-spacing: 0 !important;
       font-weight: 400 !important;
     }
 
-    /* Size 3: 34pt (Main Brand Title, Modal Headlines, Large Dossier Titles, Hero Headers) */
+    /* Size 3: 34pt (IBM Carbon fluid-heading-05 / expressive display: 34pt, line-height 40pt, tracking 0) */
     .type-34, .text-34, .text-[34px], .text-[34pt],
     .type-27, .text-27, .type-24, .text-24,
     .text-2xl, .text-3xl, .text-4xl, .text-5xl,
@@ -178,18 +182,22 @@
     .brand-logo-title,
     h1 {
       font-size: 34pt !important;
-      line-height: 120% !important;
-      letter-spacing: 0.6pt !important;
+      line-height: 40pt !important;
+      letter-spacing: 0 !important;
       font-weight: 400 !important;
     }
 
     h2 *, h3 *, .type-18 *, .text-18 *, .text-[18px] *, .text-[18pt] *, [class*="text-\[18"] * {
       font-size: inherit !important;
       font-weight: 400 !important;
+      letter-spacing: inherit !important;
+      line-height: inherit !important;
     }
     h1 *, .type-34 *, .text-34 *, .text-[34px] *, .text-[34pt] *, .brand-logo-title * {
       font-size: inherit !important;
       font-weight: 400 !important;
+      letter-spacing: inherit !important;
+      line-height: inherit !important;
     }
 
     /* ========================================================= */
@@ -263,7 +271,7 @@
     }
 
     *, *::before, *::after {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'IBM Plex Sans', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-style: normal !important;
       -webkit-tap-highlight-color: transparent !important;
     }
@@ -293,49 +301,50 @@
     }
 
     body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b, em, i {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'IBM Plex Sans', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
       font-style: normal !important;
     }
 
     strong, b, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"] {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'IBM Plex Sans', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
       font-style: normal !important;
     }
 
     em, i, .italic, [class*="italic"] {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'IBM Plex Sans', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-style: normal !important;
       font-weight: 400 !important;
     }
 
     .font-light, .text-light, .type-light {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'IBM Plex Sans', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
       font-style: normal !important;
     }
 
     .font-thin, .font-extralight, [class*="font-thin"], [class*="font-extralight"] {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'IBM Plex Sans', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
       font-style: normal !important;
     }
 
     .font-mono, monospace, code, pre {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'IBM Plex Mono', 'Courier New', monospace !important;
       font-weight: 400 !important;
     }
 
     html, body {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'IBM Plex Sans', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       background-color: #000000;
       color: #f8fafc;
       margin: 0;
       padding: 0;
       font-size: 14pt;
       font-weight: 400 !important;
-      line-height: 120%;
+      line-height: 20pt !important;
+      letter-spacing: 0.16px !important;
       overflow-x: hidden !important;
       overflow-y: hidden;
       width: 100% !important;
@@ -351,8 +360,8 @@
       box-sizing: border-box !important;
     }
     .font-mono {
-      font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      letter-spacing: -0.01em;
+      font-family: 'IBM Plex Mono', 'Courier New', monospace !important;
+      letter-spacing: 0.16px !important;
     }
     #globeCanvas {
       cursor: grab;
@@ -1949,20 +1958,20 @@ return maplibregl$1;
       <div id="cityMapContainer" class="absolute inset-0 hidden z-10 w-full h-full bg-black"></div>
 
       <!-- 🏛️ INSTITUTION SLIDE-OVER DRAWER (Docked at edge of Globe Viewport, leaving 3D Globe unobstructed) -->
-      <div id="floatingCard" class="hidden absolute z-30 pointer-events-auto bg-[#0f172a]/95 backdrop-blur-xl text-slate-100 rounded-2xl p-4 shadow-2xl transition-all duration-300 ease-out border border-[#334155] w-[380px] max-w-[calc(100%-32px)] max-h-[calc(100%-32px)] overflow-y-auto custom-scrollbar select-text">
+      <div id="floatingCard" class="hidden absolute z-30 pointer-events-auto bg-[#161616]/98 backdrop-blur-xl text-[#f4f4f4] rounded-none p-4 shadow-2xl transition-all duration-300 ease-out border border-[#262626] w-[380px] max-w-[calc(100%-32px)] max-h-[calc(100%-32px)] overflow-y-auto custom-scrollbar select-text">
         <!-- Drawer Header -->
-        <div class="flex items-start justify-between gap-3 pb-3 border-b border-[#1e293b]">
+        <div class="flex items-start justify-between gap-3 pb-3 border-b border-[#262626]">
           <div class="min-w-0 flex-1 pr-1">
             <a id="floatingCardTitle" href="#" target="_blank" rel="noopener noreferrer" 
-               class="font-normal text-[18px] text-white hover:text-emerald-400 hover:underline leading-snug line-clamp-2 block transition cursor-pointer"
+               class="font-normal text-[18pt] text-white hover:text-[#78a9ff] hover:underline leading-snug line-clamp-2 block transition cursor-pointer"
                onclick="event.stopPropagation()" title="Open official website"></a>
-            <div id="floatingCardMeta" class="text-[14px] text-slate-400 mt-1 flex items-center gap-1.5 font-mono truncate">
+            <div id="floatingCardMeta" class="text-[14pt] text-slate-400 mt-1 flex items-center gap-1.5 font-mono truncate">
               <span></span>
             </div>
           </div>
           <div class="flex items-center gap-1.5 shrink-0">
-            <span id="floatingCardTier" class="text-[14px] font-mono px-2.5 py-0.5 rounded-full border border-emerald-800/80 bg-emerald-950/80 text-emerald-300 font-medium">Verified</span>
-            <button id="closeFloatingCardBtn" class="p-1.5 rounded-lg bg-[#1e293b]/60 hover:bg-[#334155] text-slate-400 hover:text-white transition cursor-pointer" title="Close drawer">
+            <span id="floatingCardTier" class="text-[14pt] font-mono px-2.5 py-0.5 rounded-sm border border-emerald-800/80 bg-emerald-950/80 text-emerald-300 font-normal">Verified</span>
+            <button id="closeFloatingCardBtn" class="p-1.5 rounded-sm bg-[#262626] hover:bg-[#393939] text-slate-400 hover:text-white transition cursor-pointer" title="Close drawer">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -1972,11 +1981,11 @@ return maplibregl$1;
         </div>
 
         <!-- 🔄 Sleek Segmented Mode Switcher (Verified Info <-> Field Whispers) -->
-        <div id="floatingCardModeSwitcher" class="mt-3 flex items-center p-1 bg-[#090d16] border border-[#1e293b] rounded-xl text-[14px] select-none">
-          <button id="floatingCardTabInfo" type="button" class="flex-1 py-1 px-2.5 rounded-lg text-center transition font-medium cursor-pointer bg-[#1e293b] text-white shadow-sm" onclick="event.stopPropagation(); window.setCardMode('info');">
+        <div id="floatingCardModeSwitcher" class="mt-3 flex items-center p-1 bg-[#161616] border border-[#262626] rounded-none text-[14pt] select-none">
+          <button id="floatingCardTabInfo" type="button" class="flex-1 py-1 px-2.5 rounded-none text-center transition font-normal cursor-pointer bg-[#262626] text-white shadow-sm" onclick="event.stopPropagation(); window.setCardMode('info');">
             <span>Verified Info</span>
           </button>
-          <button id="floatingCardTabGossip" type="button" class="flex-1 py-1 px-2.5 rounded-lg text-center transition font-normal cursor-pointer text-slate-400 hover:text-amber-300" onclick="event.stopPropagation(); window.setCardMode('gossip');">
+          <button id="floatingCardTabGossip" type="button" class="flex-1 py-1 px-2.5 rounded-none text-center transition font-normal cursor-pointer text-slate-400 hover:text-amber-300" onclick="event.stopPropagation(); window.setCardMode('gossip');">
             <span>Yellow Gossip Mode</span>
           </button>
         </div>
@@ -1989,83 +1998,83 @@ return maplibregl$1;
         <!-- 📄 VERIFIED INFO PANE -->
         <div id="floatingCardInfoPane" class="space-y-2 transition-all duration-200">
           <!-- 💶 BUDGET & MONEY SECTION -->
-          <div id="floatingCardBudgetSection" class="mt-3 pt-3 border-t border-[#1e293b] space-y-2">
+          <div id="floatingCardBudgetSection" class="mt-3 pt-3 border-t border-[#262626] space-y-2">
             <div class="flex items-center justify-between gap-2">
-              <div id="floatingCardBudget" class="text-[14px] font-mono text-slate-300 flex items-center gap-1.5 flex-wrap">
+              <div id="floatingCardBudget" class="text-[14pt] font-mono text-slate-300 flex items-center gap-1.5 flex-wrap">
                 <span class="text-slate-400">Budget:</span>
-                <strong id="floatingCardBudgetAmount" class="font-medium text-white"></strong>
+                <strong id="floatingCardBudgetAmount" class="font-normal text-white"></strong>
               </div>
-              <span id="floatingCardBudgetTier" class="text-[14px] font-mono px-2 py-0.5 rounded-full border border-sky-800/60 bg-sky-950/60 text-sky-300"></span>
+              <span id="floatingCardBudgetTier" class="text-[14pt] font-mono px-2 py-0.5 rounded-sm border border-sky-800/60 bg-sky-950/60 text-sky-300"></span>
             </div>
 
             <!-- Money Flow Badges -->
-            <div id="floatingCardRevenueMix" class="flex items-center gap-1.5 flex-wrap text-[14px] font-mono">
-              <span id="floatingCardPublicSubsidies" class="px-2 py-0.5 rounded-md bg-[#092218] border border-emerald-800/60 text-emerald-300"></span>
-              <span id="floatingCardPhilanthropy" class="px-2 py-0.5 rounded-md bg-[#1d152c] border border-purple-800/60 text-purple-300"></span>
-              <span id="floatingCardEarnedRevenue" class="px-2 py-0.5 rounded-md bg-[#0e1d2e] border border-sky-800/60 text-sky-300"></span>
-              <span id="floatingCardProgramRatio" class="px-2 py-0.5 rounded-md bg-[#231b0c] border border-amber-800/60 text-amber-300"></span>
+            <div id="floatingCardRevenueMix" class="flex items-center gap-1.5 flex-wrap text-[14pt] font-mono">
+              <span id="floatingCardPublicSubsidies" class="px-2 py-0.5 rounded-sm bg-[#092218] border border-emerald-800/60 text-emerald-300"></span>
+              <span id="floatingCardPhilanthropy" class="px-2 py-0.5 rounded-sm bg-[#1d152c] border border-purple-800/60 text-purple-300"></span>
+              <span id="floatingCardEarnedRevenue" class="px-2 py-0.5 rounded-sm bg-[#0e1d2e] border border-sky-800/60 text-sky-300"></span>
+              <span id="floatingCardProgramRatio" class="px-2 py-0.5 rounded-sm bg-[#231b0c] border border-amber-800/60 text-amber-300"></span>
             </div>
 
             <!-- Funding Sources -->
-            <div id="floatingCardFundingSource" class="text-[14px] text-slate-300 leading-relaxed pt-0.5">
-              <span class="text-slate-400 font-mono text-[14px]">Money &amp; Funding:</span> <span id="floatingCardFundingText" class="text-slate-200"></span>
+            <div id="floatingCardFundingSource" class="text-[14pt] text-slate-300 leading-relaxed pt-0.5">
+              <span class="text-slate-400 font-mono text-[14pt]">Money &amp; Funding:</span> <span id="floatingCardFundingText" class="text-slate-200"></span>
             </div>
-            <div id="floatingCardHours" class="text-[14px] text-emerald-400 pt-0.5 font-mono"></div>
+            <div id="floatingCardHours" class="text-[14pt] text-emerald-400 pt-0.5 font-mono"></div>
           </div>
 
           <!-- 🖼️ CURRENT EXHIBITION ON VIEW -->
-          <div id="floatingCardCurrentShowsSection" class="mt-3 pt-3 border-t border-[#1e293b] space-y-2">
-            <div class="flex items-center justify-between gap-1 text-[14px] font-mono">
-              <span class="text-slate-400 uppercase tracking-wider text-[14px]">CURRENT EXHIBITION</span>
-              <span id="floatingCardShowStatusBadge" class="px-2 py-0.5 rounded-full text-[14px] font-mono border border-emerald-800/70 bg-emerald-950/70 text-emerald-300">Now On View</span>
+          <div id="floatingCardCurrentShowsSection" class="mt-3 pt-3 border-t border-[#262626] space-y-2">
+            <div class="flex items-center justify-between gap-1 text-[14pt] font-mono">
+              <span class="text-slate-400 uppercase tracking-wider text-[14pt]">CURRENT EXHIBITION</span>
+              <span id="floatingCardShowStatusBadge" class="px-2 py-0.5 rounded-sm text-[14pt] font-mono border border-emerald-800/70 bg-emerald-950/70 text-emerald-300">Now On View</span>
             </div>
-            <div class="bg-[#141d2b]/80 border border-[#1e293b] rounded-xl p-3 space-y-1.5 text-[14px]">
+            <div class="py-2.5 border-b border-[#262626] space-y-1.5 text-[14pt]">
               <div class="flex items-start justify-between gap-2">
-                <span id="floatingCardShowTitle" class="text-[14px] text-white font-medium leading-snug line-clamp-2"></span>
-                <span id="floatingCardShowFloorPill" class="px-2 py-0.5 rounded bg-sky-950 border border-sky-800 text-sky-300 text-[14px] font-mono shrink-0">L1</span>
+                <span id="floatingCardShowTitle" class="text-[14pt] text-white font-normal leading-snug line-clamp-2"></span>
+                <span id="floatingCardShowFloorPill" class="px-2 py-0.5 rounded-sm bg-sky-950 border border-sky-800 text-sky-300 text-[14pt] font-mono shrink-0">L1</span>
               </div>
-              <div id="floatingCardShowMeta" class="text-[14px] text-slate-300 font-mono"></div>
-              <div id="floatingCardOpeningNightBox" class="mt-2 pt-2 border-t border-[#1e293b] flex items-center justify-between gap-2 text-[14px] font-mono flex-wrap">
+              <div id="floatingCardShowMeta" class="text-[14pt] text-slate-300 font-mono"></div>
+              <div id="floatingCardOpeningNightBox" class="mt-2 pt-2 border-t border-[#262626] flex items-center justify-between gap-2 text-[14pt] font-mono flex-wrap">
                 <div class="flex items-center gap-1.5 text-emerald-300">
                   <span>Vernissage:</span>
-                  <span id="floatingCardOpeningNightDate" class="font-medium text-white"></span>
+                  <span id="floatingCardOpeningNightDate" class="font-normal text-white"></span>
                 </div>
-                <span id="floatingCardOpeningNightRsvp" class="text-[14px] text-sky-300 bg-sky-950/60 px-2 py-0.5 rounded-full border border-sky-800/60">Free / RSVP</span>
+                <span id="floatingCardOpeningNightRsvp" class="text-[14pt] text-sky-300 bg-sky-950/60 px-2 py-0.5 rounded-sm border border-sky-800/60">Free / RSVP</span>
               </div>
             </div>
           </div>
 
           <!-- 🎨 VISUAL CRITIQUE & ARTIST FEEDBACK -->
-          <div id="floatingCardVisualCritiqueSection" class="hidden mt-3 pt-3 border-t border-[#1e293b] space-y-2.5">
-            <div class="flex items-center justify-between gap-1 text-[14px] font-mono">
-              <span class="text-amber-400 font-medium flex items-center gap-1.5">
+          <div id="floatingCardVisualCritiqueSection" class="hidden mt-3 pt-3 border-t border-[#262626] space-y-2.5">
+            <div class="flex items-center justify-between gap-1 text-[14pt] font-mono">
+              <span class="text-amber-400 font-normal flex items-center gap-1.5">
                 <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                 <span>🎨 ARTIST &amp; DESIGNER VISUAL CRITIQUE</span>
               </span>
               <div class="flex items-center gap-1.5">
-                <span id="floatingCardVcCountBadge" class="hidden text-[14px] font-mono text-zinc-400"></span>
-                <span id="floatingCardVcStrategyBadge" class="px-2 py-0.5 rounded-full text-[14px] font-mono border border-amber-600/70 bg-amber-950/70 text-amber-300 font-medium"></span>
+                <span id="floatingCardVcCountBadge" class="hidden text-[14pt] font-mono text-zinc-400"></span>
+                <span id="floatingCardVcStrategyBadge" class="px-2 py-0.5 rounded-sm text-[14pt] font-mono border border-amber-600/70 bg-amber-950/70 text-amber-300 font-normal"></span>
               </div>
             </div>
-            <div class="bg-[#18181b] border border-[#2e2e33] p-2.5 rounded-xl space-y-1">
-              <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider">Artist / Designer Credits</div>
-              <div id="floatingCardVcArtist" class="text-white font-medium text-[14px] leading-snug"></div>
-              <div id="floatingCardVcArtwork" class="text-amber-300 font-normal text-[14px] leading-snug"></div>
+            <div class="py-2.5 border-b border-[#262626] space-y-1">
+              <div class="text-[14pt] font-mono text-slate-400 uppercase tracking-wider">Artist / Designer Credits</div>
+              <div id="floatingCardVcArtist" class="text-white font-normal text-[14pt] leading-snug"></div>
+              <div id="floatingCardVcArtwork" class="text-amber-300 font-normal text-[14pt] leading-snug"></div>
             </div>
             <div class="flex gap-2.5 items-start">
-              <img id="floatingCardVcImg" src="" alt="Visual Critique" class="w-24 h-20 object-cover rounded-lg border border-[#334155] shrink-0 bg-black cursor-pointer hover:opacity-90 transition shadow" onclick="event.stopPropagation(); if (selectedInstitution) window.openDossier(selectedInstitution);" />
+              <img id="floatingCardVcImg" src="" alt="Visual Critique" class="w-24 h-20 object-cover rounded-sm border border-[#393939] shrink-0 bg-black cursor-pointer hover:opacity-90 transition shadow" onclick="event.stopPropagation(); if (selectedInstitution) window.openDossier(selectedInstitution);" />
               <div class="min-w-0 flex-1 space-y-1">
-                <span id="floatingCardVcMedium" class="text-[14px] font-mono bg-[#1e293b] text-slate-300 border border-[#334155] px-2 py-0.5 rounded inline-block"></span>
-                <div id="floatingCardVcTarget" class="text-[14px] text-slate-300 font-mono leading-snug"></div>
+                <span id="floatingCardVcMedium" class="text-[14pt] font-mono bg-[#262626] text-slate-300 border border-[#393939] px-2 py-0.5 rounded-sm inline-block"></span>
+                <div id="floatingCardVcTarget" class="text-[14pt] text-slate-300 font-mono leading-snug"></div>
               </div>
             </div>
-            <div id="floatingCardVcCredits" class="text-[14px] font-mono text-slate-300 leading-relaxed bg-[#141416] p-2.5 rounded-lg border border-[#27272a]"></div>
-            <p id="floatingCardVcSummary" class="text-[14px] text-slate-200 leading-relaxed line-clamp-3"></p>
-            <div class="flex items-center justify-between text-[14px] font-mono text-slate-400 pt-2 border-t border-[#1e293b] flex-wrap gap-2">
+            <div id="floatingCardVcCredits" class="text-[14pt] font-mono text-slate-300 leading-relaxed py-2 border-t border-b border-[#262626]"></div>
+            <p id="floatingCardVcSummary" class="text-[14pt] text-slate-200 leading-relaxed line-clamp-3"></p>
+            <div class="flex items-center justify-between text-[14pt] font-mono text-slate-400 pt-2 border-t border-[#262626] flex-wrap gap-2">
               <span id="floatingCardVcCitation" class="truncate max-w-[210px] text-amber-300"></span>
               <div class="flex items-center gap-2">
                 <button type="button" id="floatingCardVcNextBtn" class="hidden text-amber-300 hover:text-white font-mono underline" onclick="event.stopPropagation(); window.cycleCardVisualCritique();">Next Critique →</button>
-                <button type="button" onclick="event.stopPropagation(); window.openDossier(selectedInstitution);" class="text-emerald-400 hover:underline font-medium">Full Dossier →</button>
+                <button type="button" onclick="event.stopPropagation(); window.openDossier(selectedInstitution);" class="text-emerald-400 hover:underline font-normal">Full Dossier →</button>
               </div>
             </div>
           </div>
@@ -2073,48 +2082,48 @@ return maplibregl$1;
 
         <!-- 🗣️ GOSSIP PANE (Streamlined Clean Feed List, High Contrast) -->
         <div id="floatingCardGossipPane" class="hidden space-y-3 transition-all duration-200">
-          <div id="floatingCardGossipSection" class="mt-3 pt-3 border-t border-[#1e293b] space-y-2.5">
-            <div class="flex items-center justify-between gap-1 text-[14px] font-mono">
-              <span class="text-amber-400 font-medium flex items-center gap-1.5 tracking-wide">
+          <div id="floatingCardGossipSection" class="mt-3 pt-3 border-t border-[#262626] space-y-2.5">
+            <div class="flex items-center justify-between gap-1 text-[14pt] font-mono">
+              <span class="text-amber-400 font-normal flex items-center gap-1.5 tracking-wide">
                 <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
                 <span>Field Intel &amp; Whispers</span>
               </span>
-              <span id="floatingCardGossipIntensityBadge" class="px-2 py-0.5 rounded-full text-[14px] font-mono border border-amber-600/70 bg-amber-950/70 text-amber-300 font-medium">Documented</span>
+              <span id="floatingCardGossipIntensityBadge" class="px-2 py-0.5 rounded-sm text-[14pt] font-mono border border-amber-600/70 bg-amber-950/70 text-amber-300 font-normal">Documented</span>
             </div>
-            <p id="floatingCardGossipHeadline" class="text-[14px] text-slate-100 leading-snug font-medium"></p>
+            <p id="floatingCardGossipHeadline" class="text-[14pt] text-slate-100 leading-snug font-normal"></p>
             
             <!-- Clean Streamlined Feed List (High Contrast, No Nested Box Cramping) -->
-            <div class="space-y-2 pt-1 text-[14px]">
-              <div id="floatingCardGossipReddit" class="p-2.5 rounded-xl bg-[#141416] border border-[#27272a] space-y-1">
+            <div class="space-y-0 pt-1 text-[14pt]">
+              <div id="floatingCardGossipReddit" class="py-2.5 border-b border-[#262626] space-y-1">
                 <div class="flex items-center gap-1.5">
-                  <span class="px-1.5 py-0.2 rounded text-[14px] font-mono bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold">r/art</span>
-                  <span class="text-slate-400 text-[14px]">Community Discussion</span>
+                  <span class="px-1.5 py-0.2 rounded-sm text-[14pt] font-mono bg-amber-500/20 text-amber-300 border border-amber-500/40">r/art</span>
+                  <span class="text-slate-400 text-[14pt]">Community Discussion</span>
                 </div>
                 <p id="floatingCardGossipRedditText" class="text-slate-200 leading-relaxed"></p>
               </div>
 
-              <div id="floatingCardGossipTwitter" class="p-2.5 rounded-xl bg-[#141416] border border-[#27272a] space-y-1">
+              <div id="floatingCardGossipTwitter" class="py-2.5 border-b border-[#262626] space-y-1">
                 <div class="flex items-center gap-1.5">
-                  <span class="px-1.5 py-0.2 rounded text-[14px] font-mono bg-sky-500/20 text-sky-300 border border-sky-500/40 font-semibold">X / Twitter</span>
-                  <span class="text-slate-400 text-[14px]">Field Claim</span>
+                  <span class="px-1.5 py-0.2 rounded-sm text-[14pt] font-mono bg-sky-500/20 text-sky-300 border border-sky-500/40">X / Twitter</span>
+                  <span class="text-slate-400 text-[14pt]">Field Claim</span>
                 </div>
                 <p id="floatingCardGossipTwitterText" class="text-slate-200 leading-relaxed"></p>
               </div>
 
-              <div id="floatingCardGossipRealCases" class="hidden p-2.5 rounded-xl bg-[#141416] border border-[#27272a] space-y-1.5">
-                <div class="flex items-center justify-between text-[14px] font-mono text-amber-300">
-                  <span id="floatingCardGossipCaseCount" class="font-medium">🏛️ Documented Labor Case</span>
-                  <span id="floatingCardGossipCaseStatus" class="px-2 py-0.2 rounded-full bg-amber-950 text-amber-200 border border-amber-800 text-[14px]"></span>
+              <div id="floatingCardGossipRealCases" class="hidden py-2.5 border-b border-[#262626] space-y-1.5">
+                <div class="flex items-center justify-between text-[14pt] font-mono text-amber-300">
+                  <span id="floatingCardGossipCaseCount" class="font-normal">🏛️ Documented Labor Case</span>
+                  <span id="floatingCardGossipCaseStatus" class="px-2 py-0.2 rounded-sm bg-amber-950 text-amber-200 border border-amber-800 text-[14pt]"></span>
                 </div>
-                <p id="floatingCardGossipCaseOutcome" class="text-slate-200 text-[14px] leading-relaxed"></p>
+                <p id="floatingCardGossipCaseOutcome" class="text-slate-200 text-[14pt] leading-relaxed"></p>
               </div>
 
-              <div id="floatingCardGossipReviewLeads" class="hidden p-2.5 rounded-xl bg-[#141416] border border-[#27272a] space-y-1.5">
-                <div class="flex items-center justify-between text-[14px] font-mono text-amber-300">
-                  <span id="floatingCardGossipReviewPlatform" class="font-medium">👤 Staff Intel</span>
-                  <span id="floatingCardGossipReviewDate" class="text-slate-400 text-[14px]"></span>
+              <div id="floatingCardGossipReviewLeads" class="hidden py-2.5 border-b border-[#262626] space-y-1.5">
+                <div class="flex items-center justify-between text-[14pt] font-mono text-amber-300">
+                  <span id="floatingCardGossipReviewPlatform" class="font-normal">👤 Staff Intel</span>
+                  <span id="floatingCardGossipReviewDate" class="text-slate-400 text-[14pt]"></span>
                 </div>
-                <p id="floatingCardGossipReviewSummary" class="text-slate-200 text-[14px] leading-relaxed"></p>
+                <p id="floatingCardGossipReviewSummary" class="text-slate-200 text-[14pt] leading-relaxed"></p>
               </div>
             </div>
 
@@ -2172,122 +2181,122 @@ return maplibregl$1;
       </div>
 
       
-      <!-- BEGIN: SpaceDetailCardBottomSheet (Mobile Sliding Sheet Matching code.html & media_1791792341045_b9272491.png) -->
-      <section class="relative z-30 max-h-[52vh] flex md:hidden flex-col bg-slate-950/90 border-t border-cyan-500/30 rounded-t-2xl backdrop-blur-xl shadow-glass transition-all duration-300" data-purpose="space-dossier-sheet" id="dossier-bottom-sheet">
+      <!-- BEGIN: SpaceDetailCardBottomSheet (Mobile Sliding Sheet) -->
+      <section class="relative z-30 max-h-[52vh] flex md:hidden flex-col bg-[#161616]/98 border-t border-[#262626] rounded-none backdrop-blur-xl transition-all duration-300" data-purpose="space-dossier-sheet" id="dossier-bottom-sheet">
         <!-- Grab Handle & Header Bar -->
         <div class="pt-2 pb-1 px-4 flex flex-col items-center cursor-pointer" id="sheet-drag-handle">
-          <div class="w-10 h-1 rounded-full bg-slate-700/80 mb-2"></div>
+          <div class="w-10 h-0.5 bg-[#393939] mb-2"></div>
         </div>
-        <div class="px-4 pb-2 flex items-start justify-between border-b border-slate-800/60">
+        <div class="px-4 pb-2 flex items-start justify-between border-b border-[#262626]">
           <div>
             <div class="flex items-center space-x-2">
-              <h2 class="text-base font-bold text-white tracking-tight" id="dossier-sheet-name">Green Papaya Art Projects</h2>
-              <span class="inline-flex items-center px-1.5 py-0.2 text-[10px] font-semibold text-emerald-300 bg-emerald-950 border border-emerald-600 rounded" id="dossier-sheet-tier">
+              <h2 class="text-[18pt] font-normal text-[#f4f4f4] tracking-tight" id="dossier-sheet-name">Green Papaya Art Projects</h2>
+              <span class="inline-flex items-center px-1.5 py-0.5 text-[14pt] font-normal text-[#42be65] bg-[#262626] border border-[#393939] rounded-none" id="dossier-sheet-tier">
                 Verified
               </span>
             </div>
-            <p class="text-xs text-slate-400 font-mono mt-0.5" id="dossier-sheet-meta">Quezon City / Manila, Philippines · Artist-Run</p>
+            <p class="text-[14pt] text-[#8d8d8d] font-mono mt-0.5" id="dossier-sheet-meta">Quezon City / Manila, Philippines · Artist-Run</p>
           </div>
-          <button aria-label="Minimize space details" class="p-1 rounded-full text-slate-400 hover:text-white bg-slate-800/60 border border-slate-700 text-xs cursor-pointer" id="close-sheet-btn">
+          <button aria-label="Minimize space details" class="p-1 rounded-none text-[#8d8d8d] hover:text-white bg-transparent border-0 text-[14pt] cursor-pointer" id="close-sheet-btn">
             ✕
           </button>
         </div>
         <!-- Mode Toggle Tabs (Verified Info vs Gossip Mode) -->
         <div class="px-4 pt-2.5 flex space-x-2">
-          <button id="dossier-tab-info" type="button" class="flex-1 py-1 text-xs font-semibold rounded-md bg-teal-900/90 text-teal-200 border border-teal-300 text-center shadow-inner cursor-pointer">Verified Info</button>
-          <button id="dossier-tab-gossip" type="button" class="flex-1 py-1 text-xs font-semibold rounded-md bg-slate-900/90 text-amber-300 border border-amber-500/50 text-center hover:bg-amber-950/40 cursor-pointer">Yellow Gossip Mode</button>
+          <button id="dossier-tab-info" type="button" class="flex-1 py-2 text-[14pt] font-normal rounded-none bg-[#262626] text-white border-b-2 border-[#0f62fe] text-center cursor-pointer">Verified Info</button>
+          <button id="dossier-tab-gossip" type="button" class="flex-1 py-2 text-[14pt] font-normal rounded-none bg-[#161616] text-[#f1c21b] border-b-2 border-transparent text-center hover:border-[#f1c21b] cursor-pointer">Yellow Gossip Mode</button>
         </div>
         <!-- Scrollable Card Body Details -->
-        <div class="overflow-y-auto px-4 py-3 space-y-3 text-xs leading-relaxed no-scrollbar pb-6" id="dossier-sheet-scrollable-body">
+        <div class="overflow-y-auto px-4 py-3 space-y-3 text-[14pt] leading-relaxed no-scrollbar pb-6" id="dossier-sheet-scrollable-body">
           <!-- Verified Pane -->
           <div id="dossier-sheet-verified-pane" class="space-y-3">
             <!-- Financial Metrics & Budget Badge -->
-            <div class="p-2.5 rounded-lg bg-slate-900/80 border border-cyan-900/40 space-y-2">
+            <div class="py-2.5 border-b border-[#262626] space-y-2">
               <div class="flex items-center justify-between">
                 <div>
-                  <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Budget Band</span>
-                  <span class="font-bold text-slate-100 text-xs" id="dossier-sheet-budget-val">€250K – €850K Grassroots Budget</span>
+                  <span class="text-[14pt] font-mono text-[#8d8d8d] uppercase tracking-wider block">Budget Band</span>
+                  <span class="font-normal text-[#f4f4f4] text-[18pt] block" id="dossier-sheet-budget-val">€250K – €850K Grassroots Budget</span>
                 </div>
-                <span class="px-2 py-0.5 text-[10px] font-medium text-cyan-300 bg-cyan-950 border border-cyan-700 rounded-full" id="dossier-sheet-budget-badge">
+                <span class="px-2 py-0.5 text-[14pt] font-normal text-[#78a9ff] bg-[#262626] border border-[#393939] rounded-none" id="dossier-sheet-budget-badge">
                   Lean Non-Profit
                 </span>
               </div>
               <!-- Funding breakdown pills -->
-              <div class="grid grid-cols-4 gap-1 pt-1 font-mono text-[10px] text-center" id="dossier-sheet-pills">
-                <div class="p-1 rounded bg-emerald-950/70 border border-emerald-800/60 text-emerald-300 font-semibold" id="dossier-sheet-pill-public">
+              <div class="flex flex-wrap gap-2 pt-1 font-mono text-[14pt]" id="dossier-sheet-pills">
+                <div class="px-2 py-0.5 rounded-none bg-[#262626] border border-[#393939] text-[#42be65] font-normal" id="dossier-sheet-pill-public">
                   58% Public
                 </div>
-                <div class="p-1 rounded bg-purple-950/70 border border-purple-800/60 text-purple-300" id="dossier-sheet-pill-grants">
+                <div class="px-2 py-0.5 rounded-none bg-[#262626] border border-[#393939] text-[#be95ff] font-normal" id="dossier-sheet-pill-grants">
                   14% Grants
                 </div>
-                <div class="p-1 rounded bg-cyan-950/70 border border-cyan-800/60 text-cyan-300" id="dossier-sheet-pill-earned">
+                <div class="px-2 py-0.5 rounded-none bg-[#262626] border border-[#393939] text-[#33b1ff] font-normal" id="dossier-sheet-pill-earned">
                   28% Earned
                 </div>
-                <div class="p-1 rounded bg-amber-950/70 border border-amber-800/60 text-amber-300 font-semibold" id="dossier-sheet-pill-ratio">
+                <div class="px-2 py-0.5 rounded-none bg-[#262626] border border-[#393939] text-[#ff8389] font-normal" id="dossier-sheet-pill-ratio">
                   84% Ratio
                 </div>
               </div>
-              <p class="text-[11px] text-slate-300 pt-1">
-                <strong class="text-teal-400">Funding Source:</strong> <span id="dossier-sheet-funding-text">Collective self-funding, Arts Collaboratory, independent foundations. 100% free of corporate defense/oil capture.</span>
+              <p class="text-[14pt] text-[#c6c6c6] pt-1">
+                <strong class="text-[#78a9ff] font-normal">Funding Source:</strong> <span id="dossier-sheet-funding-text">Collective self-funding, Arts Collaboratory, independent foundations. 100% free of corporate defense/oil capture.</span>
               </p>
-              <p class="text-[11px] text-slate-400">
-                <strong class="text-slate-300">Access:</strong> <span id="dossier-sheet-access-text">Nomadic research &amp; residency; free admission.</span>
+              <p class="text-[14pt] text-[#8d8d8d]">
+                <strong class="text-[#f4f4f4] font-normal">Access:</strong> <span id="dossier-sheet-access-text">Nomadic research &amp; residency; free admission.</span>
               </p>
             </div>
             <!-- Current Exhibition Box -->
-            <div class="p-2.5 rounded-lg bg-teal-950/20 border border-emerald-500/30 space-y-1.5">
+            <div class="py-2.5 border-b border-[#262626] space-y-1.5">
               <div class="flex items-center justify-between">
-                <span class="text-[10px] uppercase font-mono tracking-wider text-emerald-400 font-bold">Current Exhibition</span>
-                <span class="text-[9px] bg-emerald-900 text-emerald-200 border border-emerald-500 px-1.5 py-0.2 rounded font-semibold">Now On View</span>
+                <span class="text-[14pt] uppercase font-mono tracking-wider text-[#42be65] font-normal">Current Exhibition</span>
+                <span class="text-[14pt] bg-[#262626] text-[#42be65] border border-[#393939] px-1.5 py-0.5 rounded-none font-normal">Now On View</span>
               </div>
-              <p class="font-bold text-slate-100 text-xs" id="dossier-sheet-exhibit-title">Featured Exhibition: In Focus with Green Papaya</p>
-              <p class="text-[11px] text-slate-300" id="dossier-sheet-exhibit-curator">Green Papaya Curatorial Cohort &amp; Guest Artists · On View Autumn 2026 – Spring 2027</p>
-              <div class="flex items-center justify-between pt-1 border-t border-slate-800/80 text-[10px]">
-                <span class="text-slate-400 font-mono" id="dossier-sheet-exhibit-vernissage">Vernissage: Fri, Oct 23 (18:00–21:30)</span>
-                <span class="text-emerald-400 font-semibold cursor-pointer" id="dossier-sheet-exhibit-rsvp">Free / RSVP →</span>
+              <p class="font-normal text-[#f4f4f4] text-[18pt]" id="dossier-sheet-exhibit-title">Featured Exhibition: In Focus with Green Papaya</p>
+              <p class="text-[14pt] text-[#c6c6c6]" id="dossier-sheet-exhibit-curator">Green Papaya Curatorial Cohort &amp; Guest Artists · On View Autumn 2026 – Spring 2027</p>
+              <div class="flex items-center justify-between pt-1 border-t border-[#262626] text-[14pt]">
+                <span class="text-[#8d8d8d] font-mono" id="dossier-sheet-exhibit-vernissage">Vernissage: Fri, Oct 23 (18:00–21:30)</span>
+                <span class="text-[#0f62fe] font-normal cursor-pointer" id="dossier-sheet-exhibit-rsvp">Free / RSVP →</span>
               </div>
             </div>
             <!-- Action Buttons Bar -->
             <div class="grid grid-cols-2 gap-2 pt-1">
-              <button id="dossier-sheet-audit-btn" type="button" class="flex items-center justify-center space-x-1.5 py-2 px-3 rounded-lg bg-teal-900/90 hover:bg-teal-950 text-teal-200 font-bold text-xs border border-teal-300 shadow-glow-teal active:scale-95 transition cursor-pointer">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              <button id="dossier-sheet-audit-btn" type="button" class="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-none bg-[#0f62fe] hover:bg-[#0353e9] text-white font-normal text-[14pt] transition cursor-pointer">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
                 <span>Audit Dossier</span>
               </button>
-              <button id="dossier-sheet-plan-btn" type="button" class="flex items-center justify-center space-x-1.5 py-2 px-3 rounded-lg bg-cyan-950/70 border border-cyan-400 text-cyan-300 font-medium text-xs hover:bg-cyan-950 active:scale-95 transition cursor-pointer">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              <button id="dossier-sheet-plan-btn" type="button" class="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-none bg-[#262626] border border-[#393939] hover:bg-[#333333] text-[#f4f4f4] font-normal text-[14pt] transition cursor-pointer">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
                 <span>Plan Visit in Chat</span>
               </button>
             </div>
             <!-- Secondary Link Row -->
-            <div class="flex items-center justify-between text-[11px] text-slate-400 pt-1 px-1">
-              <a id="dossier-sheet-link-web" class="hover:text-cyan-300 flex items-center space-x-1 cursor-pointer" href="#" target="_blank" rel="noopener noreferrer">
+            <div class="flex items-center justify-between text-[14pt] text-[#8d8d8d] pt-1 px-1">
+              <a id="dossier-sheet-link-web" class="hover:text-white flex items-center space-x-1 cursor-pointer" href="#" target="_blank" rel="noopener noreferrer">
                 <span>🌐 website</span>
               </a>
-              <button id="dossier-sheet-link-3d" type="button" class="hover:text-cyan-300 flex items-center space-x-1 cursor-pointer bg-transparent border-0 text-slate-400 p-0 text-[11px]" title="Explore 3D Architectural Model on Built-in Map">
+              <button id="dossier-sheet-link-3d" type="button" class="hover:text-white flex items-center space-x-1 cursor-pointer bg-transparent border-0 text-[#8d8d8d] p-0 text-[14pt]" title="Explore 3D Architectural Model on Built-in Map">
                 <span>📍 Google 3D</span>
               </button>
-              <button id="dossier-sheet-link-photos" type="button" class="hover:text-cyan-300 flex items-center space-x-1 cursor-pointer bg-transparent border-0 text-slate-400 p-0 text-[11px]">
+              <button id="dossier-sheet-link-photos" type="button" class="hover:text-white flex items-center space-x-1 cursor-pointer bg-transparent border-0 text-[#8d8d8d] p-0 text-[14pt]">
                 <span>🖼️ Archive Photos</span>
               </button>
             </div>
           </div>
           <!-- Gossip Pane -->
           <div id="dossier-sheet-gossip-pane" class="hidden space-y-2.5">
-            <div class="p-2.5 rounded-lg bg-[#181404] border border-amber-500/50 space-y-2">
+            <div class="py-2.5 border-b border-[#262626] space-y-2">
               <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono text-amber-400 uppercase tracking-wider block">Field Intel &amp; Whispers</span>
-                <span class="px-2 py-0.5 text-[10px] font-medium text-amber-300 bg-amber-950 border border-amber-600 rounded-full" id="dossier-sheet-gossip-badge">Documented</span>
+                <span class="text-[14pt] font-mono text-[#f1c21b] uppercase tracking-wider block">Field Intel &amp; Whispers</span>
+                <span class="px-2 py-0.5 text-[14pt] font-normal text-[#f1c21b] bg-[#262626] border border-[#393939] rounded-none" id="dossier-sheet-gossip-badge">Documented</span>
               </div>
-              <p id="dossier-sheet-gossip-headline" class="text-xs font-bold text-amber-200 leading-snug">Union organizing and artist fee disputes surface during biennial planning</p>
-              <div class="p-2 rounded bg-black/40 border border-amber-900/40 text-[11px] text-slate-300 space-y-1">
-                <div class="flex items-center gap-1 text-[10px] font-mono text-amber-400"><span>r/art Community:</span></div>
+              <p id="dossier-sheet-gossip-headline" class="text-[18pt] font-normal text-[#f1c21b] leading-snug">Union organizing and artist fee disputes surface during biennial planning</p>
+              <div class="py-2 border-b border-[#262626] text-[14pt] text-[#c6c6c6] space-y-1">
+                <div class="flex items-center gap-1 text-[14pt] font-mono text-[#f1c21b]"><span>r/art Community:</span></div>
                 <p id="dossier-sheet-gossip-reddit">Staff organizing update: negotiations stall over independent curator compensation.</p>
               </div>
-              <div class="p-2 rounded bg-black/40 border border-amber-900/40 text-[11px] text-slate-300 space-y-1">
-                <div class="flex items-center gap-1 text-[10px] font-mono text-sky-400"><span>X / Twitter:</span></div>
+              <div class="py-2 border-b border-[#262626] text-[14pt] text-[#c6c6c6] space-y-1">
+                <div class="flex items-center gap-1 text-[14pt] font-mono text-[#78a9ff]"><span>X / Twitter:</span></div>
                 <p id="dossier-sheet-gossip-twitter">Open letter signed by 45 exhibiting artists demanding W.A.G.E. certified honorariums.</p>
               </div>
-              <button id="dossier-sheet-full-gossip-btn" type="button" class="w-full py-1.5 px-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-semibold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer shadow-md">
+              <button id="dossier-sheet-full-gossip-btn" type="button" class="w-full py-2.5 px-3 rounded-none bg-[#262626] border border-[#393939] hover:bg-[#333333] text-[#f4f4f4] font-normal text-[14pt] flex items-center justify-center gap-1.5 transition cursor-pointer">
                 <span>Full Dossier &amp; Leaks →</span>
               </button>
             </div>
@@ -2705,110 +2714,110 @@ return maplibregl$1;
       </div>
 
       <!-- 📄 DESKTOP DOSSIER COLUMN (Middle Column in AI Studio layout) -->
-      <section id="desktopDossierColumn" class="hidden md:flex w-[370px] lg:w-[410px] shrink-0 border-r border-[#1b2333] bg-[#070a12] flex-col h-full overflow-hidden select-text z-10 transition-all duration-200">
+      <section id="desktopDossierColumn" class="hidden md:flex w-[370px] lg:w-[410px] shrink-0 border-r border-[#262626] bg-[#161616] flex-col h-full overflow-hidden select-text z-10 transition-all duration-200">
         <!-- Sub-header: Collapse Dossier & Close -->
-        <div class="px-4 py-2.5 border-b border-[#1b2333] flex items-center justify-between shrink-0 bg-[#070a12] select-none">
-          <button id="collapseDossierBtn" type="button" onclick="window.toggleDesktopDossier(false)" class="text-xs font-mono uppercase tracking-wider text-slate-300 hover:text-white flex items-center gap-1.5 transition cursor-pointer" title="Collapse Dossier Column">
-            <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <div class="px-4 py-2.5 border-b border-[#262626] flex items-center justify-between shrink-0 bg-[#161616] select-none">
+          <button id="collapseDossierBtn" type="button" onclick="window.toggleDesktopDossier(false)" class="text-[14pt] font-mono uppercase tracking-wider text-[#c6c6c6] hover:text-white flex items-center gap-1.5 transition cursor-pointer" title="Collapse Dossier Column">
+            <svg class="w-3.5 h-3.5 text-[#8d8d8d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
             <span>COLLAPSE DOSSIER</span>
           </button>
-          <button type="button" onclick="window.toggleDesktopDossier(false)" class="text-slate-400 hover:text-white p-1 transition cursor-pointer" title="Close Dossier">
+          <button type="button" onclick="window.toggleDesktopDossier(false)" class="text-[#8d8d8d] hover:text-white p-1 transition cursor-pointer" title="Close Dossier">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
 
         <!-- Scrollable Dossier Body -->
-        <div id="desktopDossierBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-xs">
+        <div id="desktopDossierBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-[14pt]">
           <!-- 1. Header & Title -->
           <div class="space-y-1.5">
-            <h2 id="desktopDossierName" class="text-xl sm:text-2xl font-normal text-white tracking-tight leading-snug">Green Papaya Art Projects</h2>
+            <h2 id="desktopDossierName" class="text-[34pt] font-normal text-[#f4f4f4] tracking-tight leading-tight">Green Papaya Art Projects</h2>
             <div class="flex items-center gap-2">
-              <span id="desktopDossierTier" class="inline-flex items-center gap-1 text-emerald-400 text-xs font-medium">
-                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span id="desktopDossierTier" class="inline-flex items-center gap-1 text-[#42be65] text-[14pt] font-normal">
+                <svg class="w-3.5 h-3.5 text-[#42be65]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Verified Sanctuary</span>
               </span>
             </div>
-            <p id="desktopDossierMeta" class="text-slate-400 text-xs leading-relaxed">
+            <p id="desktopDossierMeta" class="text-[#8d8d8d] text-[14pt] leading-relaxed">
               Manila, Philippines · Interdisciplinary performance, noise and experimental sound, queer culture, independent archiving, DIY solidarity
             </p>
-            <p id="desktopDossierSummary" class="text-slate-300 text-xs leading-relaxed italic">
+            <p id="desktopDossierSummary" class="text-[#c6c6c6] text-[14pt] leading-relaxed italic">
               Oldest active independent artist-run initiative in Metro Manila; founded 2000; fierce counter-cultural champion.
             </p>
             <div class="pt-0.5">
-              <a id="desktopDossierWebLink" href="https://www.facebook.com/greenpapayaartprojects/" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 hover:underline flex items-center gap-1 text-xs">
+              <a id="desktopDossierWebLink" href="https://www.facebook.com/greenpapayaartprojects/" target="_blank" rel="noopener noreferrer" class="text-[#78a9ff] hover:text-[#a6c8ff] hover:underline flex items-center gap-1 text-[14pt]">
                 <span>↗</span>
                 <span id="desktopDossierDomain">www.facebook.com</span>
               </a>
             </div>
           </div>
 
-          <div class="border-t border-[#1b2333]"></div>
+          <div class="border-t border-[#262626]"></div>
 
           <!-- 2. Financial Metrics & Budget Band -->
           <div class="space-y-2">
             <div class="flex items-start justify-between gap-2">
-              <span id="desktopDossierBudgetAmount" class="font-normal text-white text-xs leading-snug">
+              <span id="desktopDossierBudgetAmount" class="font-normal text-[#f4f4f4] text-[18pt] leading-snug">
                 €250K – €850K Grassroots Budget
               </span>
-              <span id="desktopDossierBudgetTier" class="text-cyan-400 font-normal text-xs shrink-0">
+              <span id="desktopDossierBudgetTier" class="text-[#78a9ff] font-normal text-[14pt] shrink-0">
                 Lean Artist-Run Non-Profit
               </span>
             </div>
-            <div id="desktopDossierFundingRatios" class="text-slate-300 text-xs">
+            <div id="desktopDossierFundingRatios" class="text-[#c6c6c6] text-[14pt]">
               Funding: 58% Public · 14% Grants · 28% Earned
             </div>
-            <div id="desktopDossierEfficiency" class="text-emerald-400 text-xs">
+            <div id="desktopDossierEfficiency" class="text-[#42be65] text-[14pt]">
               Operational Efficiency: 84% Self-Sustaining
             </div>
-            <div class="text-slate-300 text-xs leading-relaxed">
-              <strong class="text-white font-medium">Funding Source:</strong> <span id="desktopDossierFundingSource">Artist collective self-funding, independent foundations, Arts Collaboratory; 100% independent.</span>
+            <div class="text-[#c6c6c6] text-[14pt] leading-relaxed">
+              <strong class="text-[#f4f4f4] font-normal">Funding Source:</strong> <span id="desktopDossierFundingSource">Artist collective self-funding, independent foundations, Arts Collaboratory; 100% independent.</span>
             </div>
-            <div class="text-slate-300 text-xs leading-relaxed">
-              <strong class="text-white font-medium">Access Protocol:</strong> <span id="desktopDossierAccess">Always Free Public Admission</span>
+            <div class="text-[#c6c6c6] text-[14pt] leading-relaxed">
+              <strong class="text-[#f4f4f4] font-normal">Access Protocol:</strong> <span id="desktopDossierAccess">Always Free Public Admission</span>
             </div>
           </div>
 
-          <div class="border-t border-[#1b2333]"></div>
+          <div class="border-t border-[#262626]"></div>
 
           <!-- 3. Current Exhibition -->
           <div id="desktopDossierExhibitionSection" class="space-y-1.5">
-            <div class="text-teal-400 text-xs font-medium tracking-wide">
+            <div class="text-[#42be65] text-[14pt] font-normal tracking-wide">
               Current Exhibition
             </div>
-            <div id="desktopDossierExhibitionTitle" class="text-white font-normal text-sm leading-snug">
+            <div id="desktopDossierExhibitionTitle" class="text-[#f4f4f4] font-normal text-[18pt] leading-snug">
               Featured Exhibition: In Focus with Green Papaya Art Projects
             </div>
-            <div id="desktopDossierExhibitionMeta" class="text-slate-400 text-xs leading-relaxed">
+            <div id="desktopDossierExhibitionMeta" class="text-[#8d8d8d] text-[14pt] leading-relaxed">
               Green Papaya Art Projects Curatorial Cohort &amp; Guest Artists · On View: Autumn 2026 – Spring 2027
             </div>
           </div>
 
           <!-- 4. Gossip Mode Block (Shows when Gossip Mode is active) -->
-          <div id="desktopDossierGossipSection" class="hidden space-y-2 pt-2 border-t border-[#1b2333]">
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-amber-400 font-medium flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span>
+          <div id="desktopDossierGossipSection" class="hidden space-y-2 pt-2 border-t border-[#262626]">
+            <div class="flex items-center justify-between text-[14pt]">
+              <span class="text-[#f1c21b] font-normal flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#f1c21b] animate-pulse"></span>
                 <span>Field Intel &amp; Whispers</span>
               </span>
-              <span id="desktopDossierGossipBadge" class="px-2 py-0.5 rounded-full text-[10px] font-mono border border-amber-500/50 bg-amber-950/60 text-amber-300">Documented</span>
+              <span id="desktopDossierGossipBadge" class="px-2 py-0.5 rounded-none text-[14pt] font-mono border border-[#393939] bg-[#262626] text-[#f1c21b]">Documented</span>
             </div>
-            <p id="desktopDossierGossipHeadline" class="text-amber-200 text-xs font-medium leading-snug"></p>
+            <p id="desktopDossierGossipHeadline" class="text-[#f1c21b] text-[18pt] font-normal leading-snug"></p>
             <div class="space-y-1.5 pt-1">
-              <div class="pl-2.5 border-l border-amber-500/40 text-[11px] space-y-0.5">
-                <span class="text-amber-400 font-mono text-[10px]">r/contemporaryart</span>
-                <p id="desktopDossierGossipReddit" class="text-slate-300"></p>
+              <div class="pl-2.5 border-l border-[#f1c21b]/40 text-[14pt] space-y-0.5">
+                <span class="text-[#f1c21b] font-mono text-[14pt]">r/contemporaryart</span>
+                <p id="desktopDossierGossipReddit" class="text-[#c6c6c6]"></p>
               </div>
-              <div class="pl-2.5 border-l border-sky-500/40 text-[11px] space-y-0.5">
-                <span class="text-sky-400 font-mono text-[10px]">X / Twitter</span>
-                <p id="desktopDossierGossipTwitter" class="text-slate-300"></p>
+              <div class="pl-2.5 border-l border-[#78a9ff]/40 text-[14pt] space-y-0.5">
+                <span class="text-[#78a9ff] font-mono text-[14pt]">X / Twitter</span>
+                <p id="desktopDossierGossipTwitter" class="text-[#c6c6c6]"></p>
               </div>
             </div>
           </div>
 
-          <div class="border-t border-[#1b2333]"></div>
+          <div class="border-t border-[#262626]"></div>
 
           <!-- 5. Action Links (Container-free editorial style) -->
-          <div class="flex items-center gap-6 pt-1 text-xs font-mono">
+          <div class="flex items-center gap-6 pt-1 text-[14pt] font-mono">
             <button type="button" onclick="if (typeof window.openDossier === 'function' && selectedInstitution) window.openDossier(selectedInstitution);" class="text-teal-400 hover:text-teal-300 hover:underline flex items-center gap-1.5 transition cursor-pointer">
               <svg class="w-3.5 h-3.5 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
               <span>Audit Dossier →</span>
@@ -2848,25 +2857,25 @@ return maplibregl$1;
               </button>
             </div>
           </div>
-          <div id="mobileSheetSummaryStrip" class="hidden px-3.5 pb-2.5 pt-1.5 border-t border-[#1e293b]/70 bg-[#080d16] space-y-2 text-[14px]">
-            <div class="flex items-center gap-2 overflow-x-auto pb-0.5 text-[14px] font-mono custom-scrollbar">
-              <span id="mobileSheetOperatingBudget" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-[#7dd3fc] whitespace-nowrap">€250K – €850K Budget</span>
-              <span id="mobileSheetProgramRatio" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-[#38bdf8] whitespace-nowrap">84% Efficiency</span>
-              <span id="mobileSheetPublicSubsidies" class="px-2.5 py-1 rounded-lg bg-[#101726] border border-[#1e2e4a] text-emerald-300 whitespace-nowrap">58% Public</span>
+          <div id="mobileSheetSummaryStrip" class="hidden px-3.5 pb-2.5 pt-1.5 border-t border-[#262626] bg-[#161616] space-y-2 text-[14pt]">
+            <div class="flex items-center gap-2 overflow-x-auto pb-0.5 text-[14pt] font-mono custom-scrollbar">
+              <span id="mobileSheetOperatingBudget" class="px-2.5 py-1 rounded-none bg-[#262626] border border-[#393939] text-[#78a9ff] whitespace-nowrap font-normal">€250K – €850K Budget</span>
+              <span id="mobileSheetProgramRatio" class="px-2.5 py-1 rounded-none bg-[#262626] border border-[#393939] text-[#33b1ff] whitespace-nowrap font-normal">84% Efficiency</span>
+              <span id="mobileSheetPublicSubsidies" class="px-2.5 py-1 rounded-none bg-[#262626] border border-[#393939] text-[#42be65] whitespace-nowrap font-normal">58% Public</span>
             </div>
             <div class="flex items-center gap-2 pt-0.5">
-              <button id="mobileSheetAskChatBtn" type="button" class="flex-1 py-2 px-3 rounded-xl bg-[#2563eb] text-white text-[14px] font-medium text-center min-h-[44px] flex items-center justify-center gap-1.5 shadow-sm">
+              <button id="mobileSheetAskChatBtn" type="button" class="flex-1 py-2 px-3 rounded-none bg-[#0f62fe] hover:bg-[#0353e9] text-white text-[14pt] font-normal text-center min-h-[44px] flex items-center justify-center gap-1.5">
                 <span>Ask in Chat</span>
               </button>
-              <button id="mobileSheetViewDossierBtn" type="button" class="flex-1 py-2 px-3 rounded-xl bg-[#14261d] border border-emerald-600/60 text-emerald-300 text-[14px] font-medium text-center min-h-[44px] flex items-center justify-center gap-1.5 shadow-sm">
+              <button id="mobileSheetViewDossierBtn" type="button" class="flex-1 py-2 px-3 rounded-none bg-[#262626] border border-[#393939] hover:bg-[#333333] text-[#f4f4f4] text-[14pt] font-normal text-center min-h-[44px] flex items-center justify-center gap-1.5">
                 <span>View Dossier</span>
               </button>
             </div>
           </div>
           <div id="mobileSheetInputRow" class="px-3 pb-2.5 pt-1">
-            <div class="w-full bg-[#18181b] border border-[#2e2e33] rounded-xl px-2.5 py-1.5 flex items-center gap-2 min-h-[44px]">
-              <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this museum..." class="flex-1 bg-transparent text-white placeholder-slate-400 text-[14px] focus:outline-none min-h-[36px]" />
-              <button id="mobileSheetQuickSendBtn" type="button" class="w-8 h-8 rounded-lg bg-[#2563eb] text-white flex items-center justify-center shrink-0 min-h-[36px] min-w-[36px]">
+            <div class="w-full bg-[#262626] border-0 border-b border-[#525252] focus-within:border-[#0f62fe] rounded-none px-2.5 py-1.5 flex items-center gap-2 min-h-[44px]">
+              <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this museum..." class="flex-1 bg-transparent text-[#f4f4f4] placeholder-[#8d8d8d] text-[14pt] font-normal focus:outline-none min-h-[36px]" />
+              <button id="mobileSheetQuickSendBtn" type="button" class="w-8 h-8 rounded-none bg-[#0f62fe] hover:bg-[#0353e9] text-white flex items-center justify-center shrink-0 min-h-[36px] min-w-[36px] cursor-pointer">
                 <svg class="w-3.5 h-3.5" viewBox="0 0 32 32" fill="currentColor"><path d="M27.71 4.29a1 1 0 0 0-1.05-.23l-22 8a1 1 0 0 0 0 1.87l8.59 3.43L20.59 10 22 11.41l-7.37 7.37 3.44 8.59A1 1 0 0 0 19 28a1 1 0 0 0 .92-.66l8-22a1 1 0 0 0-.21-1.05z"/></svg>
               </button>
             </div>
@@ -3087,10 +3096,10 @@ return maplibregl$1;
         </div>
 
         <!-- 2. PINNED BOTTOM INPUT DOCK (Seamless editorial dock) -->
-        <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-4 pb-3 pt-2 bg-[#05070d] border-t border-[#181d28]">
+        <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-4 pb-3 pt-2 bg-[#161616] border-t border-[#262626]">
           <div class="w-full flex items-center gap-2.5">
             <!-- Plus Button -->
-            <button id="workPlusBtn" class="w-9 h-9 rounded-full bg-[#10141e] hover:bg-[#182030] text-slate-300 border border-[#222a3a] flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0 shadow-sm" title="Quick filters">
+            <button id="workPlusBtn" class="w-9 h-9 rounded-sm bg-[#262626] hover:bg-[#393939] text-[#f4f4f4] border border-[#393939] flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0 shadow-sm" title="Quick filters">
               <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -3098,34 +3107,34 @@ return maplibregl$1;
             </button>
 
             <!-- Input Box -->
-            <div id="workInputCard" class="flex-1 bg-[#10141e] border border-[#222a3a] hover:border-[#334158] focus-within:border-[#38bdf8]/70 rounded-xl px-3 py-1.5 transition flex items-center">
-              <textarea id="workInput" rows="1" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="w-full bg-transparent text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none resize-none font-normal leading-normal max-h-24"></textarea>
+            <div id="workInputCard" class="flex-1 bg-[#262626] border-0 border-b border-[#525252] hover:border-[#8d8d8d] focus-within:border-[#0f62fe] rounded-none px-3 py-1.5 transition flex items-center">
+              <textarea id="workInput" rows="1" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="w-full bg-transparent text-[#f4f4f4] placeholder-[#8d8d8d] text-[14pt] focus:outline-none resize-none font-normal leading-normal max-h-24"></textarea>
             </div>
 
             <!-- Send Button -->
-            <button id="workSendBtn" class="px-4 py-2 rounded-xl bg-[#182030] hover:bg-[#222e44] text-slate-200 hover:text-white border border-[#283750] flex items-center justify-center gap-1.5 transition shadow-sm active:scale-95 cursor-pointer shrink-0 text-xs font-mono font-medium" title="Send message">
+            <button id="workSendBtn" class="px-4 py-2 rounded-sm bg-[#0f62fe] hover:bg-[#0353e9] text-white flex items-center justify-center gap-1.5 transition shadow-sm active:scale-95 cursor-pointer shrink-0 text-[14pt] font-mono font-normal" title="Send message">
               <span>SEND</span>
-              <svg class="w-3.5 h-3.5 shrink-0 text-slate-400" viewBox="0 0 32 32" fill="currentColor">
+              <svg class="w-3.5 h-3.5 shrink-0 text-white" viewBox="0 0 32 32" fill="currentColor">
                 <path d="M27.71 4.29a1 1 0 0 0-1.05-.23l-22 8a1 1 0 0 0 0 1.87l8.59 3.43L20.59 10 22 11.41l-7.37 7.37 3.44 8.59A1 1 0 0 0 19 28a1 1 0 0 0 .92-.66l8-22a1 1 0 0 0-.21-1.05z"/>
               </svg>
             </button>
             <!-- Quick Dropdown Menu for Plus button -->
-            <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-[#162030] border border-[#2b3e5f] rounded-2xl p-1.5 shadow-2xl flex flex-col gap-1 w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14px]">
-              <button id="workMenuCatalogBtn" class="text-left px-3 py-2 bg-[#1c293d] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
+            <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-[#161616] border border-[#393939] rounded-none p-0 shadow-2xl flex flex-col divide-y divide-[#262626] w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14pt]">
+              <button id="workMenuCatalogBtn" class="text-left px-3.5 py-2.5 bg-[#161616] hover:bg-[#262626] text-[#78a9ff] rounded-none transition flex items-center justify-between cursor-pointer border-0">
                 <span class="flex items-center gap-1.5"><span>Browse All Findings</span></span>
-                <span class="text-[14px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">1277</span>
+                <span class="text-[14pt] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded-sm">1277</span>
               </button>
-              <button id="workMenuArchivesBtn" class="text-left px-3 py-2 bg-[#1c293d] hover:bg-[#202e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
+              <button id="workMenuArchivesBtn" class="text-left px-3.5 py-2.5 bg-[#161616] hover:bg-[#262626] text-[#78a9ff] rounded-none transition flex items-center justify-between cursor-pointer border-0">
                 <span class="flex items-center gap-1.5"><span>Global Archives Directory</span></span>
-                <span class="text-[14px] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded">1104</span>
+                <span class="text-[14pt] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded-sm">1104</span>
               </button>
-              <button id="workMenuGovernanceBtn" class="text-left px-3 py-2 bg-[#1c293d] hover:bg-[#222e46] text-[#93c5fd] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2b3e5f]">
+              <button id="workMenuGovernanceBtn" class="text-left px-3.5 py-2.5 bg-[#161616] hover:bg-[#262626] text-[#78a9ff] rounded-none transition flex items-center justify-between cursor-pointer border-0">
                 <span class="flex items-center gap-1.5"><span>Governance Methodology Legend</span></span>
-                <span class="text-[14px] font-mono text-blue-400 bg-blue-950/70 border border-blue-800/80 px-1.5 py-0.5 rounded">Audit</span>
+                <span class="text-[14pt] font-mono text-blue-400 bg-blue-950/70 border border-blue-800/80 px-1.5 py-0.5 rounded-sm">Audit</span>
               </button>
-              <button id="workMenuFeedbackBtn" class="text-left px-3 py-2 bg-[#1b263b] hover:bg-[#233554] text-[#78a9ff] font-medium rounded-xl transition flex items-center justify-between cursor-pointer border border-[#2f4975]">
+              <button id="workMenuFeedbackBtn" class="text-left px-3.5 py-2.5 bg-[#161616] hover:bg-[#262626] text-[#78a9ff] rounded-none transition flex items-center justify-between cursor-pointer border-0">
                 <span class="flex items-center gap-1.5"><span>Contribute Research / Tip</span></span>
-                <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded">Verify</span>
+                <span class="text-[14pt] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded-sm">Verify</span>
               </button>
             </div>
 
@@ -21484,7 +21493,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const div = document.createElement('div');
       div.className = 'flex justify-end my-1 w-full';
       div.innerHTML = `
-        <div class="max-w-[85%] bg-[#2f2f2f] text-[#ececec] text-[14px] px-4 py-2.5 rounded-3xl shadow-sm leading-relaxed whitespace-pre-wrap select-text">
+        <div class="max-w-[85%] bg-[#262626] text-[#f4f4f4] text-[14pt] px-3.5 py-2 rounded-sm border-b border-[#393939] leading-relaxed whitespace-pre-wrap select-text">
           ${escapeHtml(text)}
         </div>
       `;
@@ -21496,7 +21505,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const mDiv = document.createElement('div');
         mDiv.className = 'flex justify-end my-1 w-full';
         mDiv.innerHTML = `
-          <div class="max-w-[85%] bg-slate-800 text-slate-100 text-xs px-3.5 py-2.5 rounded-2xl rounded-tr-sm shadow-sm leading-relaxed whitespace-pre-wrap select-text">
+          <div class="max-w-[85%] bg-[#262626] text-[#f4f4f4] text-[14pt] px-3.5 py-2 rounded-sm border-b border-[#393939] leading-relaxed whitespace-pre-wrap select-text">
             ${escapeHtml(text)}
           </div>
         `;
@@ -22022,23 +22031,23 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     `<strong>${escapeHtml(activeTarget.name)}</strong> in ${escapeHtml(activeTarget.city)}, ${escapeHtml(activeTarget.country)} operates with <strong>0% Corporate Capture</strong>. Its balance sheet is entirely free of fossil fuel extraction, weapons manufacturing, and predatory naming rights.` :
                     `<strong>${escapeHtml(activeTarget.name)}</strong> in ${escapeHtml(activeTarget.city)}, ${escapeHtml(activeTarget.country)} is flagged for commercial sponsorship dependencies and corporate trustee interlocks.`}
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <span class="text-slate-400 uppercase font-mono text-[11px] block">Operating Scope &amp; Budget</span>
-                    <strong class="text-white block">${escapeHtml(budgetDisplay)}</strong>
-                    <span class="text-slate-300">${publicPct}% Public Subsidies · ${earnedPct}% Earned Revenue · ${grantsPct}% Grants</span>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <span class="text-slate-400 uppercase font-mono text-[14pt] block">Operating Scope &amp; Budget</span>
+                    <strong class="text-white block text-[14pt]">${escapeHtml(budgetDisplay)}</strong>
+                    <p class="text-slate-300 text-[14pt]">${publicPct}% Public Subsidies · ${earnedPct}% Earned Revenue · ${grantsPct}% Grants</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <span class="text-slate-400 uppercase font-mono text-[11px] block">Funding Structure &amp; Governance</span>
-                    <strong class="text-emerald-300 block">${escapeHtml(fundingSource)}</strong>
-                    <span class="text-slate-300">${escapeHtml(governance)}</span>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <span class="text-slate-400 uppercase font-mono text-[14pt] block">Funding Structure &amp; Governance</span>
+                    <strong class="text-emerald-300 block text-[14pt]">${escapeHtml(fundingSource)}</strong>
+                    <p class="text-slate-300 text-[14pt]">${escapeHtml(governance)}</p>
                   </div>
-                </div>
-                <div class="p-2.5 rounded-xl bg-[#10141e] border border-[#1e2838] text-xs text-slate-300">
-                  <span class="text-sky-300 font-mono block mb-0.5">Statutory Audit &amp; Form 990 Verification:</span>
-                  ${isClean ?
-                    `Audited statutory filings confirm 100% of program expenditures flow directly to exhibitions, public archives, and community artist commissions with zero donor veto covenants.` :
-                    `Audited statutory filings reveal corporate naming covenants and interlocking director seats with private equity and defense contractors.`}
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5 text-slate-300 text-[14pt]">
+                    <span class="text-sky-300 font-mono block mb-0.5 text-[14pt]">Statutory Audit &amp; Form 990 Verification:</span>
+                    <p class="text-slate-300 text-[14pt]">${isClean ?
+                      `Audited statutory filings confirm 100% of program expenditures flow directly to exhibitions, public archives, and community artist commissions with zero donor veto covenants.` :
+                      `Audited statutory filings reveal corporate naming covenants and interlocking director seats with private equity and defense contractors.`}</p>
+                  </div>
                 </div>
               </div>
             `, [
@@ -22063,18 +22072,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Every museum in Culture Atlas is audited for clean, transparent funding across three distinct models:
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">1. Civic Arts Councils</strong>
-                    <p class="text-slate-300">European civic models (Mondriaan Fund, Arts Council England, DRAC France) allocate peer-reviewed public subsidies that insulate curatorial autonomy.</p>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">1. Civic Arts Councils</strong>
+                    <p class="text-slate-300 text-[14pt]">European civic models (Mondriaan Fund, Arts Council England, DRAC France) allocate peer-reviewed public subsidies that insulate curatorial autonomy.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">2. Artist Commons</strong>
-                    <p class="text-slate-300">Self-determined collectives (like Green Papaya in Manila, Casco in Utrecht, or Chisenhale in London) operate without billionaire trustee boards.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">2. Artist Commons</strong>
+                    <p class="text-slate-300 text-[14pt]">Self-determined collectives (like Green Papaya in Manila, Casco in Utrecht, or Chisenhale in London) operate without billionaire trustee boards.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-purple-300 block font-mono text-[11px] uppercase">3. Flagged Corporate Underwriters</strong>
-                    <p class="text-slate-300">IRS Form 990 Schedule L audits identify institutions trading board seats for defense, fossil fuel, and private equity gifts.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-purple-300 block font-mono text-[14pt] uppercase">3. Flagged Corporate Underwriters</strong>
+                    <p class="text-slate-300 text-[14pt]">IRS Form 990 Schedule L audits identify institutions trading board seats for defense, fossil fuel, and private equity gifts.</p>
                   </div>
                 </div>
                 <p class="text-slate-300 text-xs pt-1">
@@ -22114,14 +22123,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     `Staff, curatorial assistants, and volunteers at <strong>${escapeHtml(activeTarget.name)}</strong> report an agile, non-hierarchical workplace environment centered on artistic solidarity. Unlike blue-chip mega-museums where front-of-house staff face precarity while executives take multi-million bonuses, independent sanctuaries foster collaborative curating, shared governance, and humane operational hours.` :
                     `At commercial blockbuster institutions like <strong>${escapeHtml(activeTarget.name)}</strong>, employees and unions have repeatedly organized over stark compensation disparities and precarious working conditions. Visitor services and education workers have mobilized against executive pay packages that reach $2M–$5M while frontline gallery workers earn near minimum wage.`}
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-sky-300 block font-mono text-[11px] uppercase">Wage Transparency &amp; Compensation Ratio</strong>
-                    <span class="text-slate-300">${isClean ? 'Democratic non-profit scale. Executive-to-staff salary ratio maintained under 3:1 with living wage commitments.' : 'Severe pay divergence. Director compensation exceeds 35x–45x median hourly staff wages.'}</span>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-sky-300 block font-mono text-[14pt] uppercase">Wage Transparency &amp; Compensation Ratio</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'Democratic non-profit scale. Executive-to-staff salary ratio maintained under 3:1 with living wage commitments.' : 'Severe pay divergence. Director compensation exceeds 35x–45x median hourly staff wages.'}</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-sky-300 block font-mono text-[11px] uppercase">Union Recognition &amp; Collective Bargaining</strong>
-                    <span class="text-slate-300">${isClean ? 'Flat-hierarchy artist collective; open staff forums with participatory budget allocation.' : 'Active union bargaining units (UAW Local 2110 / union staff) challenging contract freezes and healthcare cuts.'}</span>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-sky-300 block font-mono text-[14pt] uppercase">Union Recognition &amp; Collective Bargaining</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'Flat-hierarchy artist collective; open staff forums with participatory budget allocation.' : 'Active union bargaining units (UAW Local 2110 / union staff) challenging contract freezes and healthcare cuts.'}</p>
                   </div>
                 </div>
               </div>
@@ -22147,14 +22156,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Across the art world, workplace sentiment has ignited unprecedented unionization drives. While mega-museums spend hundreds of millions on architectural expansions, front-of-house staff, preparators, and museum educators face severe precarity.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-sky-300 block font-mono text-[11px] uppercase">Corporate Mega-Museums</strong>
-                    <p class="text-slate-300">Staff at MoMA, Whitney, Guggenheim, and The Met have organized strikes and walkouts demanding living wages, contract security, and healthcare.</p>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-sky-300 block font-mono text-[14pt] uppercase">Corporate Mega-Museums</strong>
+                    <p class="text-slate-300 text-[14pt]">Staff at MoMA, Whitney, Guggenheim, and The Met have organized strikes and walkouts demanding living wages, contract security, and healthcare.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">Verified Independent Spaces</strong>
-                    <p class="text-slate-300">Culture Atlas maps artist-run spaces that model non-hierarchical governance, transparent pay bands, and democratic curatorial councils.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">Verified Independent Spaces</strong>
+                    <p class="text-slate-300 text-[14pt]">Culture Atlas maps artist-run spaces that model non-hierarchical governance, transparent pay bands, and democratic curatorial councils.</p>
                   </div>
                 </div>
               </div>
@@ -22191,14 +22200,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     `<strong>${escapeHtml(activeTarget.name)}</strong> has <strong>never faced an artist boycott or community protest</strong>. On the contrary, verified independent sanctuaries frequently serve as open organizing hubs and platforms for artists who refuse to exhibit in corporate-sponsored institutions.` :
                     `Artists and community coalitions have actively organized direct actions, boycotts, and exhibition withdrawals targeting <strong>${escapeHtml(activeTarget.name)}</strong> or peer institutions over corporate trustee entanglements, fossil fuel patronage, and defense ties.`}
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-amber-300 block font-mono text-[11px] uppercase">Landmark Protest Campaigns</strong>
-                    <p class="text-slate-300">${isClean ? 'Artist solidarity platform: provides production space, residencies, and unrestricted grants free of commercial veto covenants.' : 'From Nan Goldin’s P.A.I.N. prescription pill die-ins against Purdue Pharma to the 2019 Whitney Biennial boycott and Strike MoMA occupations.'}</p>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-amber-300 block font-mono text-[14pt] uppercase">Landmark Protest Campaigns</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'Artist solidarity platform: provides production space, residencies, and unrestricted grants free of commercial veto covenants.' : 'From Nan Goldin’s P.A.I.N. prescription pill die-ins against Purdue Pharma to the 2019 Whitney Biennial boycott and Strike MoMA occupations.'}</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-amber-300 block font-mono text-[11px] uppercase">Divestment &amp; Governance Outcomes</strong>
-                    <p class="text-slate-300">${isClean ? 'Exemplary curatorial autonomy safeguarded by community charters.' : 'Forced stripping of toxic donor names, ouster of conflicted trustees, and termination of fossil fuel sponsorships.'}</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-amber-300 block font-mono text-[14pt] uppercase">Divestment &amp; Governance Outcomes</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'Exemplary curatorial autonomy safeguarded by community charters.' : 'Forced stripping of toxic donor names, ouster of conflicted trustees, and termination of fossil fuel sponsorships.'}</p>
                   </div>
                 </div>
               </div>
@@ -22224,14 +22233,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Decades of artist-led direct actions have successfully challenged corporate capture in the arts. Key historic victories include:
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-amber-300 block font-mono text-[11px] uppercase">Whitney Museum (2019)</strong>
-                    <p class="text-slate-300">8 artists withdrew work from the Whitney Biennial, forcing the resignation of vice-chair Warren Kanders (Safariland tear gas).</p>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-amber-300 block font-mono text-[14pt] uppercase">Whitney Museum (2019)</strong>
+                    <p class="text-slate-300 text-[14pt]">8 artists withdrew work from the Whitney Biennial, forcing the resignation of vice-chair Warren Kanders (Safariland tear gas).</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-amber-300 block font-mono text-[11px] uppercase">The Met &amp; Louvre (2018–2021)</strong>
-                    <p class="text-slate-300">Nan Goldin / P.A.I.N. prescription pill die-ins forced every major institution to permanently strip the Sackler dynasty name.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-amber-300 block font-mono text-[14pt] uppercase">The Met &amp; Louvre (2018–2021)</strong>
+                    <p class="text-slate-300 text-[14pt]">Nan Goldin / P.A.I.N. prescription pill die-ins forced every major institution to permanently strip the Sackler dynasty name.</p>
                   </div>
                 </div>
               </div>
@@ -22268,22 +22277,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     `<strong>${escapeHtml(activeTarget.name)}</strong> accepts <strong>zero corporate sponsorship from controversial industries</strong>. Its ethical charter strictly bars gifts from fossil fuel extraction, weapons manufacturing, private prisons, and pharmaceutical cartels.` :
                     `Underwriters across commercial mega-museums face intense public scrutiny across four predatory sectors:`}
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">1. Fossil Fuel Greenwashing</strong>
-                    <p class="text-slate-300">BP, Shell, TotalEnergies, and Equinor leveraging cultural naming rights to buy social license for carbon extraction.</p>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">1. Fossil Fuel Greenwashing</strong>
+                    <p class="text-slate-300 text-[14pt]">BP, Shell, TotalEnergies, and Equinor leveraging cultural naming rights to buy social license for carbon extraction.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">2. Defense &amp; Surveillance</strong>
-                    <p class="text-slate-300">Safariland tear gas, Raytheon, and private defense contractors holding seats on museum executive committees.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">2. Defense &amp; Surveillance</strong>
+                    <p class="text-slate-300 text-[14pt]">Safariland tear gas, Raytheon, and private defense contractors holding seats on museum executive committees.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">3. Big Pharma Dynasties</strong>
-                    <p class="text-slate-300">Purdue Pharma / Sackler family funding museum wings while fueling fatal opioid epidemics.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">3. Big Pharma Dynasties</strong>
+                    <p class="text-slate-300 text-[14pt]">Purdue Pharma / Sackler family funding museum wings while fueling fatal opioid epidemics.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">4. Vulture Debt &amp; Private Equity</strong>
-                    <p class="text-slate-300">Apollo Global and mega-hedge fund directors directing acquisitions to inflate personal art assets.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">4. Vulture Debt &amp; Private Equity</strong>
+                    <p class="text-slate-300 text-[14pt]">Apollo Global and mega-hedge fund directors directing acquisitions to inflate personal art assets.</p>
                   </div>
                 </div>
               </div>
@@ -22309,14 +22318,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Culture Atlas monitors corporate artwashing across global institutions. The four most heavily criticized sponsorship sectors are:
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">Fossil Fuel Greenwashing</strong>
-                    <p class="text-slate-300">BP, Shell, and TotalEnergies facing sustained divestment campaigns across the UK and Europe.</p>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">Fossil Fuel Greenwashing</strong>
+                    <p class="text-slate-300 text-[14pt]">BP, Shell, and TotalEnergies facing sustained divestment campaigns across the UK and Europe.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-rose-300 block font-mono text-[11px] uppercase">Arms &amp; Defense Munitions</strong>
-                    <p class="text-slate-300">Board seats occupied by CEOs of tear gas and weapons manufacturers.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">Arms &amp; Defense Munitions</strong>
+                    <p class="text-slate-300 text-[14pt]">Board seats occupied by CEOs of tear gas and weapons manufacturers.</p>
                   </div>
                 </div>
               </div>
@@ -22353,14 +22362,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     `Yes. <strong>${escapeHtml(activeTarget.name)}</strong> prioritizes direct artist compensation. Independent spaces channel their operating funds into guaranteed artist production fees, commissioned new works, and talk honoraria—aligning with <strong>W.A.G.E. (Working Artists and the Greater Economy)</strong> fee scales and European arts council benchmarks.` :
                     `At commercial blockbuster institutions, artist compensation is notoriously broken. Despite multi-million dollar annual operating budgets, exhibiting artists are frequently asked to provide work for "exposure" while the institution expends lavish budgets on corporate marketing and donor receptions.`}
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">W.A.G.E. &amp; Council Standards</strong>
-                    <span class="text-slate-300">${isClean ? 'Commitment to certified exhibition fees, talk honoraria, and materials budgets paid in advance.' : 'Lack of institutional W.A.G.E. certification; artist fees often treated as negotiable discretionary expense.'}</span>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">W.A.G.E. &amp; Council Standards</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'Commitment to certified exhibition fees, talk honoraria, and materials budgets paid in advance.' : 'Lack of institutional W.A.G.E. certification; artist fees often treated as negotiable discretionary expense.'}</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">Budget Allocation Ratio</strong>
-                    <span class="text-slate-300">${isClean ? 'Over 70% of programmatic budget directed to artists, community workshops, and open public education.' : 'High administrative overhead with substantial funds diverted to executive compensation and real estate debt.'}</span>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">Budget Allocation Ratio</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'Over 70% of programmatic budget directed to artists, community workshops, and open public education.' : 'High administrative overhead with substantial funds diverted to executive compensation and real estate debt.'}</p>
                   </div>
                 </div>
               </div>
@@ -22386,14 +22395,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Culture Atlas audits artist compensation practices across the global institutional ecosystem:
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">W.A.G.E. Guidelines</strong>
-                    <p class="text-slate-300">Establishes minimum compensation tiers based on institutional operating expenses, requiring guaranteed fees for solo and group exhibitions.</p>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">W.A.G.E. Guidelines</strong>
+                    <p class="text-slate-300 text-[14pt]">Establishes minimum compensation tiers based on institutional operating expenses, requiring guaranteed fees for solo and group exhibitions.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-emerald-300 block font-mono text-[11px] uppercase">Independent Commons</strong>
-                    <p class="text-slate-300">Verified independent spaces prioritize artist fees above all, treating artists as core workers rather than unpaid content providers.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">Independent Commons</strong>
+                    <p class="text-slate-300 text-[14pt]">Verified independent spaces prioritize artist fees above all, treating artists as core workers rather than unpaid content providers.</p>
                   </div>
                 </div>
               </div>
@@ -22430,14 +22439,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     `<strong>${escapeHtml(activeTarget.name)}</strong> is governed by an artist-led collective or community advisory council with <strong>zero corporate board interlocks</strong>. Fiduciary stewardship is committed to public benefit and curatorial integrity rather than private capital appreciation.` :
                     `In major metropolitan museums, seats on the board of trustees are routinely traded for multi-million dollar underwriting gifts. Culture Atlas tracks these financial relationships through <strong>IRS Form 990 Schedule L</strong> (Interested Persons Transactions).`}
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-orange-300 block font-mono text-[11px] uppercase">Corporate Interlocking Seats</strong>
-                    <span class="text-slate-300">${isClean ? 'No commercial board seats. Governed by working artists, critical curators, and community stakeholders.' : 'Trustees hold concurrent senior directorships in private equity firms, fossil fuel extractors, and defense contractors.'}</span>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-orange-300 block font-mono text-[14pt] uppercase">Corporate Interlocking Seats</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'No commercial board seats. Governed by working artists, critical curators, and community stakeholders.' : 'Trustees hold concurrent senior directorships in private equity firms, fossil fuel extractors, and defense contractors.'}</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-orange-300 block font-mono text-[11px] uppercase">Acquisition &amp; Valuation Conflicts</strong>
-                    <span class="text-slate-300">${isClean ? 'Non-commercial collection policy; no market speculation on permanent holdings.' : 'Trustee-collectors steering institutional acquisitions toward artists represented in their personal private collections.'}</span>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-orange-300 block font-mono text-[14pt] uppercase">Acquisition &amp; Valuation Conflicts</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'Non-commercial collection policy; no market speculation on permanent holdings.' : 'Trustee-collectors steering institutional acquisitions toward artists represented in their personal private collections.'}</p>
                   </div>
                 </div>
               </div>
@@ -22463,14 +22472,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Institutional trustees create conduits between cultural capital, financial speculation, and corporate lobbying. Major mechanisms include:
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-orange-300 block font-mono text-[11px] uppercase">Interested Person Transactions</strong>
-                    <p class="text-slate-300">Museums granting lucrative consulting, insurance, and architectural contracts directly to firms owned by board members.</p>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-orange-300 block font-mono text-[14pt] uppercase">Interested Person Transactions</strong>
+                    <p class="text-slate-300 text-[14pt]">Museums granting lucrative consulting, insurance, and architectural contracts directly to firms owned by board members.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-orange-300 block font-mono text-[11px] uppercase">Market Legitimacy Laundering</strong>
-                    <p class="text-slate-300">Trustees using institutional solo retrospectives to elevate auction valuations for their private art portfolios.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-orange-300 block font-mono text-[14pt] uppercase">Market Legitimacy Laundering</strong>
+                    <p class="text-slate-300 text-[14pt]">Trustees using institutional solo retrospectives to elevate auction valuations for their private art portfolios.</p>
                   </div>
                 </div>
               </div>
@@ -22507,14 +22516,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     `<strong>${escapeHtml(activeTarget.name)}</strong> was established precisely as a structural response to public critiques of mainstream museum capture. Its foundational charter was written to embody ethical funding, universal community access, and uncompromising curatorial freedom.` :
                     `Public pressure and persistent artist organizing have demonstrated that corporate institutions can be forced to reform. Over the past decade, coordinated cultural resistance has stripped toxic names, ousted predatory trustees, and overturned sponsorship gagging clauses.`}
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-teal-300 block font-mono text-[11px] uppercase">Divestment Precedents</strong>
-                    <span class="text-slate-300">${isClean ? 'Immune to corporate boycotts because funding is non-commercial and transparent by design.' : 'Ending multi-decade oil partnerships (BP dropped by Tate and Royal Academy; Shell dropped by Van Gogh Museum).'}</span>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-teal-300 block font-mono text-[14pt] uppercase">Divestment Precedents</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'Immune to corporate boycotts because funding is non-commercial and transparent by design.' : 'Ending multi-decade oil partnerships (BP dropped by Tate and Royal Academy; Shell dropped by Van Gogh Museum).'}</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-teal-300 block font-mono text-[11px] uppercase">Governance Restructuring</strong>
-                    <span class="text-slate-300">${isClean ? 'Participatory governance with community advisory oversight.' : 'Removal of conflicted trustees and adoption of institutional gift acceptance ethics committees.'}</span>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-teal-300 block font-mono text-[14pt] uppercase">Governance Restructuring</strong>
+                    <p class="text-slate-300 text-[14pt]">${isClean ? 'Participatory governance with community advisory oversight.' : 'Removal of conflicted trustees and adoption of institutional gift acceptance ethics committees.'}</p>
                   </div>
                 </div>
               </div>
@@ -22540,14 +22549,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Public pressure is the primary driver of institutional integrity. Major historic victories include:
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-teal-300 block font-mono text-[11px] uppercase">Sackler Divestment (2019–2022)</strong>
-                    <p class="text-slate-300">Nan Goldin’s P.A.I.N. forced The Met, Tate, Louvre, Guggenheim, and Serpentine to scrub the Sackler family name from galleries worldwide.</p>
+                <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-teal-300 block font-mono text-[14pt] uppercase">Sackler Divestment (2019–2022)</strong>
+                    <p class="text-slate-300 text-[14pt]">Nan Goldin’s P.A.I.N. forced The Met, Tate, Louvre, Guggenheim, and Serpentine to scrub the Sackler family name from galleries worldwide.</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                    <strong class="text-teal-300 block font-mono text-[11px] uppercase">Fossil Free Victories</strong>
-                    <p class="text-slate-300">Liberate Tate, Culture Unstained, and Fossil Free Books forced major institutions and literary festivals to sever multi-decade oil ties.</p>
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                    <strong class="text-teal-300 block font-mono text-[14pt] uppercase">Fossil Free Victories</strong>
+                    <p class="text-slate-300 text-[14pt]">Liberate Tate, Culture Unstained, and Fossil Free Books forced major institutions and literary festivals to sever multi-decade oil ties.</p>
                   </div>
                 </div>
               </div>
@@ -22584,32 +22593,32 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 Culture Atlas maps 445+ verified independent spaces across 50 global cities. Here are premier clean spaces free of corporate sponsorship:
               </p>
               ${citySpaces.length > 0 ? `
-                <div class="p-2.5 rounded-xl bg-[#121622] border border-emerald-800/50 space-y-1.5 text-xs">
-                  <span class="text-emerald-300 font-mono text-[11px] uppercase block">Independent Spaces in ${escapeHtml(detectedCity)}:</span>
+                <div class="py-2.5 border-t border-b border-[#262626] space-y-1.5 text-[14pt]">
+                  <span class="text-emerald-300 font-mono text-[14pt] uppercase block">Independent Spaces in ${escapeHtml(detectedCity)}:</span>
                   <div class="space-y-1">
-                    ${citySpaces.slice(0, 4).map(s => `<div>· ${formatInstLink(s)} <span class="text-slate-400 font-mono">(${escapeHtml(s.admission_policy || 'Free')})</span></div>`).join('')}
+                    ${citySpaces.slice(0, 4).map(s => `<div>· ${formatInstLink(s)} <span class="text-slate-400 font-mono text-[14pt]">(${escapeHtml(s.admission_policy || 'Free')})</span></div>`).join('')}
                   </div>
                 </div>
               ` : ''}
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1" data-exclude-speech="true">
-                <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                  <strong class="text-white block"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="London">London</a> (42 Spaces)</strong>
-                  <span class="text-slate-300">Chisenhale Gallery, Raven Row, Camden Art Centre, Whitechapel Gallery.</span>
+              <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
+                <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="London">London</a> (42 Spaces)</strong>
+                  <p class="text-slate-300 text-[14pt]">Chisenhale Gallery, Raven Row, Camden Art Centre, Whitechapel Gallery.</p>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                  <strong class="text-white block"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="New York">New York</a> (38 Spaces)</strong>
-                  <span class="text-slate-300">Artists Space, SculptureCenter, Printed Matter, Storefront for Art.</span>
+                <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="New York">New York</a> (38 Spaces)</strong>
+                  <p class="text-slate-300 text-[14pt]">Artists Space, SculptureCenter, Printed Matter, Storefront for Art.</p>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                  <strong class="text-white block"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Paris">Paris</a> (16 Spaces)</strong>
-                  <span class="text-slate-300">Bétonsalon, Palais de Tokyo, Jeu de Paume, Fondation Pernod Ricard.</span>
+                <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Paris">Paris</a> (16 Spaces)</strong>
+                  <p class="text-slate-300 text-[14pt]">Bétonsalon, Palais de Tokyo, Jeu de Paume, Fondation Pernod Ricard.</p>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#121622] border border-[#222c3e] space-y-1">
-                  <strong class="text-white block"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Manila">Manila</a> (Quezon City)</strong>
-                  <span class="text-slate-300">Green Papaya Art Projects — oldest artist-run initiative in Metro Manila.</span>
+                <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Manila">Manila</a> (Quezon City)</strong>
+                  <p class="text-slate-300 text-[14pt]">Green Papaya Art Projects — oldest artist-run initiative in Metro Manila.</p>
                 </div>
               </div>
-              <p class="text-slate-300 text-xs pt-1">
+              <p class="text-slate-300 text-[14pt] pt-1">
                 Tell me your city or click any city on the 3D globe to discover independent spaces near you.
               </p>
             </div>
@@ -23284,53 +23293,52 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         ) : 'moma';
 
         appendCuratorMessage(`
-          <div class="border border-cyan-500/40 bg-[#081820] p-3.5 sm:p-4 rounded-2xl space-y-3">
-            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2 flex-wrap gap-2">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-[#262626] pb-2 flex-wrap gap-2">
               <div class="flex items-center gap-2">
-                
                 <div>
-                  <h4 class="font-semibold text-white text-[14px]">Statutory Filings &amp; IRS Form 990 Explorer</h4>
-                  <p class="text-[14px] font-mono text-cyan-300">Schedule L Transactions · Director Compensation · Operating Budgets</p>
+                  <h4 class="font-normal text-white text-[14pt]">Statutory Filings &amp; IRS Form 990 Explorer</h4>
+                  <p class="text-[14pt] font-mono text-cyan-300">Schedule L Transactions · Director Compensation · Operating Budgets</p>
                 </div>
               </div>
-              <button type="button" onclick="window.openStatutoryFilingsModal('${instId}')" class="px-3 py-1.5 bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-500 hover:to-teal-500 text-white rounded-xl text-[14px] font-semibold shadow-md transition cursor-pointer flex items-center gap-1.5">
+              <button type="button" onclick="window.openStatutoryFilingsModal('${instId}')" class="px-3 py-1.5 bg-[#0f62fe] hover:bg-[#0353e9] text-white rounded-none text-[14pt] font-normal shadow-sm transition cursor-pointer flex items-center gap-1.5">
                 <span>Open Statutory Filings</span>
               </button>
             </div>
 
-            <p class="text-slate-200 text-[14px] sm:text-[14px] leading-relaxed">
+            <p class="text-slate-200 text-[14pt] leading-relaxed">
               Every registered 501(c)(3) cultural institution is legally required to disclose its programmatic budget ratio, high-earning executives, and <strong>Schedule L interested person transactions</strong> (business conducted directly with board trustees):
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[14px]">
-              <div onclick="window.openStatutoryFilingsModal('moma')" class="p-2.5 rounded-xl bg-[#0c2430] hover:bg-[#123040] border border-cyan-800/60 transition cursor-pointer group">
+            <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]">
+              <div onclick="window.openStatutoryFilingsModal('moma')" class="py-2.5 border-b border-[#262626] transition cursor-pointer group">
                 <div class="flex items-center justify-between">
-                  <span class="font-semibold text-white group-hover:text-cyan-300">MoMA (13-1628424)</span>
-                  <span class="text-[14px] font-mono text-cyan-400">72.4% Prog</span>
+                  <span class="font-normal text-white group-hover:text-cyan-300 text-[14pt]">MoMA (13-1628424)</span>
+                  <span class="text-[14pt] font-mono text-cyan-400">72.4% Prog</span>
                 </div>
-                <p class="text-[14px] text-zinc-300 mt-0.5">Apollo Global &amp; BlackRock board contracts; $5.2M director compensation.</p>
+                <p class="text-[14pt] text-zinc-300 mt-0.5">Apollo Global &amp; BlackRock board contracts; $5.2M director compensation.</p>
               </div>
 
-              <div onclick="window.openStatutoryFilingsModal('the_met')" class="p-2.5 rounded-xl bg-[#0c2430] hover:bg-[#123040] border border-cyan-800/60 transition cursor-pointer group">
+              <div onclick="window.openStatutoryFilingsModal('the_met')" class="py-2.5 border-b border-[#262626] transition cursor-pointer group">
                 <div class="flex items-center justify-between">
-                  <span class="font-semibold text-white group-hover:text-cyan-300">The Met (13-1624070)</span>
-                  <span class="text-[14px] font-mono text-cyan-400">68.2% Prog</span>
+                  <span class="font-normal text-white group-hover:text-cyan-300 text-[14pt]">The Met (13-1624070)</span>
+                  <span class="text-[14pt] font-mono text-cyan-400">68.2% Prog</span>
                 </div>
-                <p class="text-[14px] text-zinc-300 mt-0.5">$385M budget; Sackler wing naming covenants; insurance trustee ties.</p>
+                <p class="text-[14pt] text-zinc-300 mt-0.5">$385M budget; Sackler wing naming covenants; insurance trustee ties.</p>
               </div>
 
-              <div onclick="window.openStatutoryFilingsModal('whitney')" class="p-2.5 rounded-xl bg-[#0c2430] hover:bg-[#123040] border border-cyan-800/60 transition cursor-pointer group">
+              <div onclick="window.openStatutoryFilingsModal('whitney')" class="py-2.5 border-b border-[#262626] transition cursor-pointer group">
                 <div class="flex items-center justify-between">
-                  <span class="font-semibold text-white group-hover:text-cyan-300">Whitney Museum</span>
-                  <span class="text-[14px] font-mono text-cyan-400">76.8% Prog</span>
+                  <span class="font-normal text-white group-hover:text-cyan-300 text-[14pt]">Whitney Museum</span>
+                  <span class="text-[14pt] font-mono text-cyan-400">76.8% Prog</span>
                 </div>
-                <p class="text-[14px] text-zinc-300 mt-0.5">Safariland security contracts; high program allocation ratio.</p>
+                <p class="text-[14pt] text-zinc-300 mt-0.5">Safariland security contracts; high program allocation ratio.</p>
               </div>
             </div>
 
-            <div class="flex items-center justify-between gap-2 pt-2 border-t border-cyan-900/50 flex-wrap text-[14px]">
-              <span class="text-zinc-400 text-[14px]">Auditing UK Charity Commission &amp; US IRS archives across 9 institutions:</span>
-              <button type="button" onclick="window.openStatutoryFilingsModal('${instId}')" class="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-[14px] font-medium transition cursor-pointer">
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-[#262626] flex-wrap text-[14pt]">
+              <span class="text-zinc-400 text-[14pt]">Auditing UK Charity Commission &amp; US IRS archives across 9 institutions:</span>
+              <button type="button" onclick="window.openStatutoryFilingsModal('${instId}')" class="px-3 py-1 bg-[#0f62fe] hover:bg-[#0353e9] text-white rounded-none text-[14pt] font-normal transition cursor-pointer">
                 Examine Disclosures
               </button>
             </div>
@@ -23348,43 +23356,42 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (isAcademicFinanceQuery && !findMentionedInst(query)) {
         curatorTyping.classList.add('hidden');
         appendCuratorMessage(`
-          <div class="border border-sky-500/30 bg-[#0d1624] p-3.5 rounded-2xl space-y-3">
-            <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-[#262626] pb-2">
               <div class="flex items-center gap-2">
-                
-                <span class="font-medium text-white text-[14px]">Academic Research: Museum Finance & Fiscal Economics</span>
+                <span class="font-normal text-white text-[14pt]">Academic Research: Museum Finance &amp; Fiscal Economics</span>
               </div>
-              <button type="button" onclick="openAcademicResearchModal('finance')" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[14px] font-mono transition cursor-pointer">
+              <button type="button" onclick="openAcademicResearchModal('finance')" class="px-2.5 py-1 bg-[#0f62fe] hover:bg-[#0353e9] text-white rounded-none text-[14pt] font-mono transition cursor-pointer">
                 Open Research Library
               </button>
             </div>
 
-            <p class="text-slate-100 text-[14px] leading-relaxed">
+            <p class="text-slate-100 text-[14pt] leading-relaxed">
               Culture Atlas indexes peer-reviewed empirical research examining non-profit museum finance, endowment volatility, Form 990 expense allocations, and corporate patronage risks.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px]">
-              <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                <strong class="text-sky-300 block font-mono text-[14px]">Form 990 Program Ratios</strong>
-                <p class="text-slate-300">Empirical studies (Calabrese & Bowman, 2024) show healthy independent spaces allocate <strong>75%–85%</strong> directly to curatorial and artistic programs, while corporate-heavy boards average over 35% in administrative and fundraising overhead.</p>
+            <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]">
+              <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                <strong class="text-sky-300 block font-mono text-[14pt]">Form 990 Program Ratios</strong>
+                <p class="text-slate-300 text-[14pt]">Empirical studies (Calabrese &amp; Bowman, 2024) show healthy independent spaces allocate <strong>75%–85%</strong> directly to curatorial and artistic programs, while corporate-heavy boards average over 35% in administrative and fundraising overhead.</p>
               </div>
-              <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                <strong class="text-sky-300 block font-mono text-[14px]">The Expansion Debt Trap</strong>
-                <p class="text-slate-300">Research on museum architectural expansions (Lindqvist & Frey, 2023) demonstrates that mega-scale bond financing creates fixed debt service that cannibalizes operating and exhibition budgets in 73% of institutions.</p>
+              <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                <strong class="text-sky-300 block font-mono text-[14pt]">The Expansion Debt Trap</strong>
+                <p class="text-slate-300 text-[14pt]">Research on museum architectural expansions (Lindqvist &amp; Frey, 2023) demonstrates that mega-scale bond financing creates fixed debt service that cannibalizes operating and exhibition budgets in 73% of institutions.</p>
               </div>
-              <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                <strong class="text-sky-300 block font-mono text-[14px]">Restricted Endowments</strong>
-                <p class="text-slate-300">Analysis of endowment liquidity (Oster & Hansmann, 2023) reveals that donor-restricted covenants lock capital into named wings, preventing emergency liquidity during downturns and accelerating curatorial labor vulnerability.</p>
+              <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                <strong class="text-sky-300 block font-mono text-[14pt]">Restricted Endowments</strong>
+                <p class="text-slate-300 text-[14pt]">Analysis of endowment liquidity (Oster &amp; Hansmann, 2023) reveals that donor-restricted covenants lock capital into named wings, preventing emergency liquidity during downturns and accelerating curatorial labor vulnerability.</p>
               </div>
-              <div class="p-2.5 rounded-xl bg-[#132034] border border-sky-900/50 space-y-1">
-                <strong class="text-sky-300 block font-mono text-[14px]">Public vs Private Resilience</strong>
-                <p class="text-slate-300">Comparative economic analyses (Bille et al., 2024) demonstrate that statutory European civic subsidies protect public access and fair wages far more effectively than volatile philanthropic gift cycles.</p>
+              <div class="py-2.5 border-b border-[#262626] space-y-0.5">
+                <strong class="text-sky-300 block font-mono text-[14pt]">Public vs Private Resilience</strong>
+                <p class="text-slate-300 text-[14pt]">Comparative economic analyses (Bille et al., 2024) demonstrate that statutory European civic subsidies protect public access and fair wages far more effectively than volatile philanthropic gift cycles.</p>
               </div>
             </div>
 
-            <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[14px] font-mono">
+            <div class="pt-2 border-t border-[#262626] flex items-center justify-between gap-2 flex-wrap text-[14pt] font-mono">
               <span class="text-slate-300">112 peer-reviewed studies cataloged across the corpus.</span>
-              <button type="button" onclick="openAcademicResearchModal('finance')" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[14px] font-medium transition cursor-pointer">
+              <button type="button" onclick="openAcademicResearchModal('finance')" class="px-3 py-1 bg-[#0f62fe] hover:bg-[#0353e9] text-white rounded-none text-[14pt] font-normal transition cursor-pointer">
                 Explore Financial Economics Papers
               </button>
             </div>
@@ -23408,43 +23415,42 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // 0. Conversational Greeting, Identity, Audio Docent Voice & Talk Back Intent
         if (isTalkBackIntent) {
           appendCuratorMessage(`
-            <div class="border border-purple-500/30 bg-[#161022] p-3.5 rounded-2xl space-y-3">
-              <div class="flex items-center justify-between border-b border-purple-500/20 pb-2">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-[#262626] pb-2">
                 <div class="flex items-center gap-2">
-                  
-                  <span class="font-medium text-white text-[14px]">Curator Critical Sparring Mode Active</span>
+                  <span class="font-normal text-white text-[14pt]">Curator Critical Sparring Mode Active</span>
                 </div>
-                <span class="text-[14px] font-mono text-purple-400 bg-purple-950/80 border border-purple-700/60 px-2 py-0.5 rounded-full">Trained to Talk Back</span>
+                <span class="text-[14pt] font-mono text-purple-400 bg-purple-950/80 border border-purple-700/60 px-2 py-0.5 rounded-sm">Trained to Talk Back</span>
               </div>
 
-              <p class="text-slate-100 text-[14px] leading-relaxed">
+              <p class="text-slate-100 text-[14pt] leading-relaxed">
                 <strong>Oh, you want to spar? Challenge accepted. I was built with critical teeth and wasn't designed to be a polite museum PR bot nodding along to corporate sponsorship fluff.</strong>
               </p>
-              <p class="text-slate-300 text-[14px] leading-relaxed">
+              <p class="text-slate-300 text-[14pt] leading-relaxed">
                 Culture Atlas exists specifically to puncture the polite fiction of institutional neutrality. Mega-museums love selling 'spatial contemplation' while their board chairs hold billions in defense manufacturing and private equity. We're cutting through that charade.
               </p>
-              <p class="text-slate-300 text-[14px] leading-relaxed">
+              <p class="text-slate-300 text-[14pt] leading-relaxed">
                 If you think you can poke holes in our forensic audits or want to debate institutional critique, bring your sharpest argument. Give me your hardest pushback:
               </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-[14px]" data-exclude-speech="true">
-                <div class="p-2.5 rounded-xl bg-[#201630] border border-purple-900/40 text-slate-300">
-                  <strong class="text-purple-300 block mb-0.5">"Isn't this just online scraping?"</strong>
-                  I'll show you why all the bad info is publicly available too.
+              <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]" data-exclude-speech="true">
+                <div class="py-2.5 border-b border-[#262626] text-slate-300">
+                  <strong class="text-purple-300 block mb-0.5 text-[14pt]">"Isn't this just online scraping?"</strong>
+                  <p class="text-slate-300 text-[14pt]">I'll show you why all the bad info is publicly available too.</p>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#201630] border border-purple-900/40 text-slate-300">
-                  <strong class="text-purple-300 block mb-0.5">"Why would orgs admit bad practices?"</strong>
-                  We trace legal perjury filings and SEC registries, not marketing copy.
+                <div class="py-2.5 border-b border-[#262626] text-slate-300">
+                  <strong class="text-purple-300 block mb-0.5 text-[14pt]">"Why would orgs admit bad practices?"</strong>
+                  <p class="text-slate-300 text-[14pt]">We trace legal perjury filings and SEC registries, not marketing copy.</p>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#201630] border border-purple-900/40 text-slate-300">
-                  <strong class="text-purple-300 block mb-0.5">"Can mega-museums be ethical?"</strong>
-                  Let's audit MoMA, Tate, and the Whitney side-by-side.
+                <div class="py-2.5 border-b border-[#262626] text-slate-300">
+                  <strong class="text-purple-300 block mb-0.5 text-[14pt]">"Can mega-museums be ethical?"</strong>
+                  <p class="text-slate-300 text-[14pt]">Let's audit MoMA, Tate, and the Whitney side-by-side.</p>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#201630] border border-purple-900/40 text-slate-300">
-                  <strong class="text-purple-300 block mb-0.5">"Aren't independent spaces subsidized?"</strong>
-                  Let's examine the commons and <em>lumbung</em> sharing economies.
+                <div class="py-2.5 border-b border-[#262626] text-slate-300">
+                  <strong class="text-purple-300 block mb-0.5 text-[14pt]">"Aren't independent spaces subsidized?"</strong>
+                  <p class="text-slate-300 text-[14pt]">Let's examine the commons and <em>lumbung</em> sharing economies.</p>
                 </div>
               </div>
-              <div class="pt-2 border-t border-purple-900/40 text-[14px] text-purple-200/90 leading-relaxed">
+              <div class="pt-2 border-t border-[#262626] text-[14pt] text-purple-200/90 leading-relaxed">
                 Go ahead. Pick a debate, challenge my criteria, or ask about any museum on Earth.
               </div>
             </div>
@@ -23477,18 +23483,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <p class="text-slate-300 leading-relaxed text-[14px]">
                 ${greetingProse}
               </p>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1" data-exclude-speech="true">
-                <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[14px] text-slate-300">
-                  <strong class="text-white block mb-0.5">403 Independent Spaces</strong>
-                  Strict verification against arms & oil funding
+              <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]" data-exclude-speech="true">
+                <div class="py-2.5 border-b border-[#262626] text-slate-300">
+                  <strong class="text-white block mb-0.5 text-[14pt]">403 Independent Spaces</strong>
+                  <p class="text-slate-300 text-[14pt]">Strict verification against arms &amp; oil funding</p>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[14px] text-slate-300">
-                  <strong class="text-white block mb-0.5">Audio Docent</strong>
-                  Articulate spoken briefings on every response
+                <div class="py-2.5 border-b border-[#262626] text-slate-300">
+                  <strong class="text-white block mb-0.5 text-[14pt]">Audio Docent</strong>
+                  <p class="text-slate-300 text-[14pt]">Articulate spoken briefings on every response</p>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#1e1e24] border border-[#2e2e38] text-[14px] text-slate-300">
-                  <strong class="text-white block mb-0.5">50 Cities</strong>
-                  From London and Paris to Tokyo and Buenos Aires
+                <div class="py-2.5 border-b border-[#262626] text-slate-300">
+                  <strong class="text-white block mb-0.5 text-[14pt]">50 Cities</strong>
+                  <p class="text-slate-300 text-[14pt]">From London and Paris to Tokyo and Buenos Aires</p>
                 </div>
               </div>
             </div>
@@ -23501,60 +23507,51 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // =========================================================================
         if (isMethodologyQuery) {
           appendCuratorMessage(`
-            <div class="border border-sky-500/30 bg-[#10141d] p-3.5 rounded-2xl space-y-3">
-              <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-[#262626] pb-2">
                 <div class="flex items-center gap-2">
-                  
-                  <span class="font-medium text-white text-[14px]">Material Research vs. Corporate Artwashing</span>
+                  <span class="font-normal text-white text-[14pt]">Material Research vs. Corporate Artwashing</span>
                 </div>
-                <span class="text-[14px] font-mono text-sky-400 bg-sky-950/80 border border-sky-700/60 px-2 py-0.5 rounded-full">Forensic Methodology</span>
+                <span class="text-[14pt] font-mono text-sky-400 bg-sky-950/80 border border-sky-700/60 px-2 py-0.5 rounded-sm">Forensic Methodology</span>
               </div>
 
-              <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-amber-200 text-[14px] leading-relaxed">
-                <span class="text-amber-300 font-semibold block mb-0.5">"What organisation would knowingly make information about their unethical practices available online?"</span>
-                <span class="text-slate-200">Answer: Exactly zero. But in open-source intelligence, <strong>all the bad info is publicly available too</strong>—if you know how to cut through the institutional PR and cross-examine audited records.</span>
+              <div class="py-2 border-l-2 border-amber-500/80 pl-3 text-amber-200 text-[14pt] leading-relaxed">
+                <span class="text-amber-300 font-normal block mb-0.5 text-[14pt]">"What organisation would knowingly make information about their unethical practices available online?"</span>
+                <span class="text-slate-200 text-[14pt]">Answer: Exactly zero. But in open-source intelligence, <strong>all the bad info is publicly available too</strong>—if you know how to cut through the institutional PR and cross-examine audited records.</span>
               </div>
 
-              <p class="text-slate-100 text-[14px] leading-relaxed">
+              <p class="text-slate-100 text-[14pt] leading-relaxed">
                 No predatory conglomerate or compromised mega-museum ever posts a confession on their glossy homepage. You will never see an exhibition banner titled <em>"Our Board Profits from Munitions and Private Equity."</em> Corporate artwashing exists precisely to construct an immaculate, marble-clad public facade.
               </p>
-              <p class="text-slate-300 text-[14px] leading-relaxed">
+              <p class="text-slate-300 text-[14pt] leading-relaxed">
                 If Culture Atlas merely regurgitated institutional marketing copy, it would be useless. Instead, our verification relies on the reality that institutional complicity leaves an indelible, legally mandated public trail across <strong>four evidentiary pillars of material investigation</strong>:
               </p>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" data-exclude-speech="true">
-                <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[14px] text-slate-300 space-y-1">
-                  <strong class="text-sky-300 block text-[14px] flex items-center gap-1.5">
-                    <span>1. Regulatory Filings Under Perjury</span>
-                  </strong>
-                  <span>We inspect mandatory statutory disclosures: <strong>IRS Form 990</strong> (Schedule I for grants and Schedule L for trustee financial conflicts), <strong>UK Charity Commission</strong> annual returns, Dutch <strong>ANBI</strong> registries, and French <strong>DRAC</strong> audits. Omissions in these legal filings carry criminal and regulatory penalties.</span>
+              <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]" data-exclude-speech="true">
+                <div class="py-2.5 border-b border-[#262626] text-slate-300 space-y-0.5">
+                  <strong class="text-sky-300 block text-[14pt] font-mono">1. Regulatory Filings Under Perjury</strong>
+                  <p class="text-slate-300 text-[14pt]">We inspect mandatory statutory disclosures: <strong>IRS Form 990</strong> (Schedule I for grants and Schedule L for trustee financial conflicts), <strong>UK Charity Commission</strong> annual returns, Dutch <strong>ANBI</strong> registries, and French <strong>DRAC</strong> audits. Omissions in these legal filings carry criminal and regulatory penalties.</p>
                 </div>
 
-                <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[14px] text-slate-300 space-y-1">
-                  <strong class="text-sky-300 block text-[14px] flex items-center gap-1.5">
-                    <span>2. Trustee Corporate Cross-Referencing</span>
-                  </strong>
-                  <span>We cross-reference museum board trustees against SEC 10-K filings, Companies House registries, and Bloomberg portfolios—tracking directorships in weapons manufacturing (e.g. Warren Kanders / Safariland), fossil gas extraction (Leonid Mikhelson / Novatek), private equity, and predatory pharma (Sackler / Purdue).</span>
+                <div class="py-2.5 border-b border-[#262626] text-slate-300 space-y-0.5">
+                  <strong class="text-sky-300 block text-[14pt] font-mono">2. Trustee Corporate Cross-Referencing</strong>
+                  <p class="text-slate-300 text-[14pt]">We cross-reference museum board trustees against SEC 10-K filings, Companies House registries, and Bloomberg portfolios—tracking directorships in weapons manufacturing (e.g. Warren Kanders / Safariland), fossil gas extraction (Leonid Mikhelson / Novatek), private equity, and predatory pharma (Sackler / Purdue).</p>
                 </div>
 
-                <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[14px] text-slate-300 space-y-1">
-                  <strong class="text-sky-300 block text-[14px] flex items-center gap-1.5">
-                    <span>3. Activist Direct Action & FOI Leaks</span>
-                  </strong>
-                  <span>We incorporate evidence from frontline coalitions: Nan Goldin's <strong>P.A.I.N.</strong> (uncovering internal Sackler opioid memos on court dockets), <strong>Decolonize This Place</strong> & Forensic Architecture at the Whitney, <strong>Liberate Tate</strong> (using Freedom of Information releases to expose BP sponsorship), and <strong>Gulf Labor</strong> on Saadiyat Island.</span>
+                <div class="py-2.5 border-b border-[#262626] text-slate-300 space-y-0.5">
+                  <strong class="text-sky-300 block text-[14pt] font-mono">3. Activist Direct Action &amp; FOI Leaks</strong>
+                  <p class="text-slate-300 text-[14pt]">We incorporate evidence from frontline coalitions: Nan Goldin's <strong>P.A.I.N.</strong> (uncovering internal Sackler opioid memos on court dockets), <strong>Decolonize This Place</strong> &amp; Forensic Architecture at the Whitney, <strong>Liberate Tate</strong> (using Freedom of Information releases to expose BP sponsorship), and <strong>Gulf Labor</strong> on Saadiyat Island.</p>
                 </div>
 
-                <div class="p-3 rounded-xl bg-[#161c28] border border-sky-900/40 text-[14px] text-slate-300 space-y-1">
-                  <strong class="text-sky-300 block text-[14px] flex items-center gap-1.5">
-                    <span>4. Material Structural Autonomy</span>
-                  </strong>
-                  <span>The 403 mapped spaces are verified by their legal and economic architecture: artist-run non-profits, cooperative commons (<em>lumbung</em> models like Gudskul Jakarta, Casco Utrecht), non-collecting kunsthalles, and civic institutions with structural firewalls protecting curators from private capture.</span>
+                <div class="py-2.5 border-b border-[#262626] text-slate-300 space-y-0.5">
+                  <strong class="text-sky-300 block text-[14pt] font-mono">4. Material Structural Autonomy</strong>
+                  <p class="text-slate-300 text-[14pt]">The 403 mapped spaces are verified by their legal and economic architecture: artist-run non-profits, cooperative commons (<em>lumbung</em> models like Gudskul Jakarta, Casco Utrecht), non-collecting kunsthalles, and civic institutions with structural firewalls protecting curators from private capture.</p>
                 </div>
               </div>
 
-              <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[14px]">
-                <span class="text-sky-200/90">Culture Atlas traces the material flow of capital, contracts, and board influence.</span>
-                <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition cursor-pointer flex items-center gap-1.5 shadow-sm text-[14px]">
+              <div class="pt-2 border-t border-[#262626] flex items-center justify-between gap-2 flex-wrap text-[14pt]">
+                <span class="text-sky-200/90 text-[14pt]">Culture Atlas traces the material flow of capital, contracts, and board influence.</span>
+                <button type="button" onclick="openGovernanceMethodologyModal()" class="px-3.5 py-1.5 rounded-none bg-[#0f62fe] hover:bg-[#0353e9] text-white font-normal transition cursor-pointer flex items-center gap-1.5 shadow-sm text-[14pt]">
                   <span>Open Governance Legend (1104)</span>
                 </button>
               </div>
@@ -23574,47 +23571,46 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (isFiscalAnalyticsQuery) {
           openFiscalAnalyticsHUD();
           appendCuratorMessage(`
-            <div class="border border-sky-500/30 bg-[#0c1626] p-3.5 rounded-2xl space-y-3">
-              <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-[#262626] pb-2">
                 <div class="flex items-center gap-2">
-                  
-                  <span class="font-medium text-white text-[14px]">Institutional Fiscal Analytics Dashboard</span>
+                  <span class="font-normal text-white text-[14pt]">Institutional Fiscal Analytics Dashboard</span>
                 </div>
-                <button type="button" onclick="openFiscalAnalyticsHUD()" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[14px] font-mono transition cursor-pointer">
+                <button type="button" onclick="openFiscalAnalyticsHUD()" class="px-2.5 py-1 bg-[#0f62fe] hover:bg-[#0353e9] text-white rounded-none text-[14pt] font-mono transition cursor-pointer">
                   Expand HUD
                 </button>
               </div>
 
-              <p class="text-slate-100 text-[14px] leading-relaxed">
+              <p class="text-slate-100 text-[14pt] leading-relaxed">
                 I've opened the <strong>Fiscal Operating Analytics Dashboard</strong>. Across 1,074 mapped institutions, Culture Atlas tracks <strong>€69.6B+</strong> in estimated operating scope, measuring curatorial program spend versus administrative overhead.
               </p>
 
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[14px] font-mono">
-                <div class="p-2.5 rounded-xl bg-[#111e30] border border-sky-900/50">
-                  <span class="text-slate-400 block text-[14px] uppercase">Catalog Scope</span>
-                  <strong class="text-white text-[14px]">€69.6B</strong>
+              <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt] font-mono">
+                <div class="py-2 border-b border-[#262626] flex items-center justify-between">
+                  <span class="text-slate-400 uppercase text-[14pt]">Catalog Scope</span>
+                  <strong class="text-white text-[14pt]">€69.6B</strong>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#111e30] border border-sky-900/50">
-                  <span class="text-emerald-400 block text-[14px] uppercase">Avg Program Spend</span>
-                  <strong class="text-emerald-400 text-[14px]">74.8%</strong>
+                <div class="py-2 border-b border-[#262626] flex items-center justify-between">
+                  <span class="text-emerald-400 uppercase text-[14pt]">Avg Program Spend</span>
+                  <strong class="text-emerald-400 text-[14pt]">74.8%</strong>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#111e30] border border-sky-900/50">
-                  <span class="text-sky-400 block text-[14px] uppercase">Civic Subsidies</span>
-                  <strong class="text-sky-400 text-[14px]">47.4%</strong>
+                <div class="py-2 border-b border-[#262626] flex items-center justify-between">
+                  <span class="text-sky-400 uppercase text-[14pt]">Civic Subsidies</span>
+                  <strong class="text-sky-400 text-[14pt]">47.4%</strong>
                 </div>
-                <div class="p-2.5 rounded-xl bg-[#111e30] border border-sky-900/50">
-                  <span class="text-amber-400 block text-[14px] uppercase">Overhead</span>
-                  <strong class="text-amber-400 text-[14px]">16.2%</strong>
+                <div class="py-2 border-b border-[#262626] flex items-center justify-between">
+                  <span class="text-amber-400 uppercase text-[14pt]">Overhead</span>
+                  <strong class="text-amber-400 text-[14pt]">16.2%</strong>
                 </div>
               </div>
 
-              <div class="pt-2 border-t border-sky-900/40 flex items-center justify-between gap-2 flex-wrap text-[14px] font-mono">
+              <div class="pt-2 border-t border-[#262626] flex items-center justify-between gap-2 flex-wrap text-[14pt] font-mono">
                 <span class="text-slate-300">Filter map by fiscal model:</span>
                 <div class="flex items-center gap-1.5">
-                  <button type="button" onclick="setCategoryFilter('finance_civic', true)" class="px-2.5 py-1 bg-[#152a42] hover:bg-[#1e3c5e] text-sky-300 rounded-lg text-[14px] transition cursor-pointer">
+                  <button type="button" onclick="setCategoryFilter('finance_civic', true)" class="px-2.5 py-1 bg-[#262626] hover:bg-[#393939] text-sky-300 rounded-none border border-[#393939] text-[14pt] transition cursor-pointer">
                     Public Subsidies (≥50%)
                   </button>
-                  <button type="button" onclick="setCategoryFilter('finance_high_program', true)" class="px-2.5 py-1 bg-[#102b20] hover:bg-[#184231] text-emerald-300 rounded-lg text-[14px] transition cursor-pointer">
+                  <button type="button" onclick="setCategoryFilter('finance_high_program', true)" class="px-2.5 py-1 bg-[#262626] hover:bg-[#393939] text-emerald-300 rounded-none border border-[#393939] text-[14pt] transition cursor-pointer">
                     High Program Spend (≥80%)
                   </button>
                 </div>
