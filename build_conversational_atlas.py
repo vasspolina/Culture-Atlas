@@ -813,43 +813,38 @@ def build():
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6) !important;
     }}
     
-    /* Unified Split-Screen Architecture: Desktop Vertical Half-and-Half / Mobile Stacked */
+    /* Viewport Architecture: Mobile Full-Viewport / Desktop AI Studio Columns */
     #globeViewport {{
-      height: 50%;
+      height: 100%;
       width: 100%;
       min-height: 0;
-      flex: 1 1 50%;
+      flex: 1 1 100%;
       display: flex;
       background: #000000;
-      border-bottom: 1px solid #1c1c1f;
-      border-right: none;
+      border: none;
       transition: height 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s cubic-bezier(0.16, 1, 0.3, 1), flex 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }}
     #workViewContainer {{
-      display: flex;
-      height: 50%;
-      width: 100%;
+      display: none;
+      height: 0;
+      width: 0;
       min-height: 0;
-      flex: 1 1 50%;
-      flex-direction: column;
       background: #000000;
       overflow: hidden;
-      padding-top: 0;
-      transition: height 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s cubic-bezier(0.16, 1, 0.3, 1), flex 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }}
     @media (min-width: 768px) {{
-      #floatingCard {{
-        display: none !important;
-      }}
       #globeViewport {{
         height: 100%;
         width: 50%;
+        flex: 1 1 50%;
         border-bottom: none;
         border-right: none;
       }}
       #workViewContainer {{
-        height: 100%;
-        width: 50%;
+        display: flex !important;
+        height: 100% !important;
+        width: 50% !important;
+        flex: 1 1 50% !important;
         flex-direction: row !important;
       }}
     }}
@@ -1954,7 +1949,7 @@ def build():
     <!-- ========================================================= -->
   <!-- 📱 MOBILE TOP BAR (Matches code.html & media_1791625755099_5e95dfd6.png) -->
   <!-- ========================================================= -->
-  <header class="pt-safe px-3.5 pb-2.5 z-40 bg-[#05070B]/80 backdrop-blur-md border-b border-cyan-950/40 flex md:hidden items-center justify-between gap-2 shrink-0 select-none">
+  <header class="pt-safe px-3.5 pb-2.5 z-40 bg-[#05070B]/80 backdrop-blur-md border-b border-cyan-950/40 flex md:hidden items-center justify-between gap-2 shrink-0 select-none" id="mobileTopBar">
     <!-- Left: Logo & Space Count Pill -->
     <button id="mobileTopBrandBtn" type="button" class="flex items-center space-x-2 text-left bg-transparent border-0 p-0 cursor-pointer focus:outline-none" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();" title="Reset Globe View">
       <div class="relative flex items-center justify-center w-7 h-7 rounded-full bg-emerald-950/60 border border-emerald-400/80 shadow-glow-teal shrink-0">
@@ -1966,7 +1961,7 @@ def build():
         </span>
         <span class="inline-flex items-center mt-1 text-[10px] font-medium text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded-full border border-emerald-800/60 leading-none">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span>
-          {clean_count} spaces mapped
+          {clean_count} Clean spaces
         </span>
       </div>
     </button>
@@ -2036,7 +2031,7 @@ def build():
         <button id="mobileNewChatBtn" onclick="window.resetToNewChat();">
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         </button>
-        <button id="topResetBtn" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();">Reset</button>
+        <button id="topResetBtn" class="hidden md:inline-flex" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();">Reset</button>
         <button id="topCatalogBtn" onclick="if (typeof window.openCatalogModal === 'function') window.openCatalogModal('all');">Browse All Findings ({total_findings_count})</button>
         <button id="topArchivesBtn" onclick="if (typeof window.openArchivesModal === 'function') window.openArchivesModal();">Archives Directory ({archives_count})</button>
         <button id="topGovernanceBtn" onclick="if (typeof window.openGovernanceModal === 'function') window.openGovernanceModal();">Governance Methodology</button>
@@ -2065,10 +2060,10 @@ def build():
   <!-- ========================================================= -->
   <div id="mainAppContainer" class="relative w-full flex-1 min-h-0 flex flex-col md:flex-row bg-black overflow-hidden">
 
-    <!-- 🌍 3D GLOBE VIEWPORT (Desktop: Left Half / Mobile: Top Half) -->
-    <div id="globeViewport" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex items-center justify-center bg-black overflow-hidden select-none">
+    <!-- 🌍 3D GLOBE VIEWPORT (Desktop: Left Half / Mobile: Full Viewport) -->
+    <div id="globeViewport" class="relative w-full md:w-1/2 h-full flex-1 min-h-0 flex flex-col justify-between bg-black overflow-hidden select-none">
       
-      <canvas id="globeCanvas" class="w-full h-full block cursor-grab"></canvas>
+      <canvas id="globeCanvas" class="absolute inset-0 w-full h-full block cursor-grab"></canvas>
 
       <!-- 🌐 Top-Left Floating Map Capsule & Badge (matching AI Studio preview) -->
       <div id="desktopGlobeTopControls" class="hidden md:flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 select-none">
@@ -2088,13 +2083,10 @@ def build():
           </button>
         </div>
       </div>
-      <!-- BEGIN: FloatingFilterCategoryChips (Mobile Bar matching code.html & media_1791625755099_5e95dfd6.png) -->
-      <section class="absolute top-0 inset-x-0 z-20 pt-2 px-3 flex md:hidden items-center justify-between pointer-events-auto bg-[#05070B]/80 backdrop-blur-sm" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
+
+      <!-- BEGIN: FloatingFilterCategoryChips (Mobile Bar matching code.html & media_1791792341045_b9272491.png) -->
+      <section class="relative z-20 pt-2 px-3 flex md:hidden items-center justify-between pointer-events-auto" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
         <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-1 text-[11px] w-full">
-          <button type="button" id="mobileQuick3DBtn" onclick="window.toggle3DBuildingView();" class="px-2.5 py-1 rounded-full font-medium bg-sky-950/90 text-sky-300 border border-sky-500/70 whitespace-nowrap shadow-sm cursor-pointer flex items-center space-x-1" title="Toggle 3D Buildings View on Map">
-            <svg class="w-3 h-3 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-            <span>3D Map</span>
-          </button>
           <button type="button" onclick="window.openFiscalAnalyticsHUD();" class="px-2.5 py-1 rounded-full font-medium bg-teal-950/90 text-teal-300 border border-teal-500/60 whitespace-nowrap shadow-sm cursor-pointer">Fiscal</button>
           <button type="button" onclick="window.openResistanceTimelineModal();" class="px-2.5 py-1 rounded-full font-medium bg-purple-950/70 text-purple-300 border border-purple-800/60 whitespace-nowrap cursor-pointer">Victories</button>
           <button type="button" onclick="window.openStatutoryFilingsModal();" class="px-2.5 py-1 rounded-full font-medium bg-cyan-950/70 text-cyan-300 border border-cyan-500/50 whitespace-nowrap cursor-pointer">990s</button>
@@ -2105,9 +2097,19 @@ def build():
       </section>
       <!-- END: FloatingFilterCategoryChips -->
 
+      <!-- Floating Quick Viewport Tools (Top Left of Globe on mobile matching code.html) -->
+      <div class="absolute top-12 left-3 flex flex-wrap gap-1 z-20 md:hidden">
+        <button type="button" class="px-2 py-0.5 rounded text-[10px] bg-slate-900/80 text-cyan-300 border border-cyan-800/50 backdrop-blur-sm cursor-pointer" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();">World</button>
+        <button type="button" class="px-2 py-0.5 rounded text-[10px] bg-slate-900/80 text-slate-300 border border-slate-700/60 backdrop-blur-sm cursor-pointer" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();">Spin</button>
+        <button type="button" class="px-2 py-0.5 rounded text-[10px] bg-slate-900/80 text-slate-300 border border-slate-700/60 backdrop-blur-sm cursor-pointer" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();">Expand</button>
+      </div>
+
       <!-- Outer Celestial Orbit Lines (Mobile Matching code.html) -->
       <div class="absolute w-[330px] h-[330px] rounded-full border border-cyan-500/10 globe-ring pointer-events-none md:hidden"></div>
       <div class="absolute w-[300px] h-[300px] rounded-full border border-teal-500/20 pointer-events-none md:hidden"></div>
+
+      <!-- Space Buffer to let globe remain interactive in background -->
+      <div class="flex-1 pointer-events-none"></div>
 
 
       <!-- 🗺️ HIGH-RESOLUTION INTERACTIVE CITY STREET MAP (Leaflet) -->
@@ -2337,8 +2339,8 @@ def build():
       </div>
 
       
-      <!-- BEGIN: SpaceDetailCardBottomSheet (Mobile Sliding Sheet Matching code.html & media_1791625755099_5e95dfd6.png) -->
-      <section class="absolute bottom-0 inset-x-0 z-30 max-h-[52vh] flex md:hidden flex-col bg-slate-950/90 border-t border-cyan-500/30 rounded-t-2xl backdrop-blur-xl shadow-glass transition-all duration-300" data-purpose="space-dossier-sheet" id="dossier-bottom-sheet">
+      <!-- BEGIN: SpaceDetailCardBottomSheet (Mobile Sliding Sheet Matching code.html & media_1791792341045_b9272491.png) -->
+      <section class="relative z-30 max-h-[52vh] flex md:hidden flex-col bg-slate-950/90 border-t border-cyan-500/30 rounded-t-2xl backdrop-blur-xl shadow-glass transition-all duration-300" data-purpose="space-dossier-sheet" id="dossier-bottom-sheet">
         <!-- Grab Handle & Header Bar -->
         <div class="pt-2 pb-1 px-4 flex flex-col items-center cursor-pointer" id="sheet-drag-handle">
           <div class="w-10 h-1 rounded-full bg-slate-700/80 mb-2"></div>
@@ -2429,8 +2431,7 @@ def build():
                 <span>🌐 website</span>
               </a>
               <button id="dossier-sheet-link-3d" type="button" class="hover:text-cyan-300 flex items-center space-x-1 cursor-pointer bg-transparent border-0 text-slate-400 p-0 text-[11px]" title="Explore 3D Architectural Model on Built-in Map">
-                <svg class="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                <span>3D Building</span>
+                <span>📍 Google 3D</span>
               </button>
               <button id="dossier-sheet-link-photos" type="button" class="hover:text-cyan-300 flex items-center space-x-1 cursor-pointer bg-transparent border-0 text-slate-400 p-0 text-[11px]">
                 <span>🖼️ Archive Photos</span>
@@ -2492,40 +2493,28 @@ def build():
         </div>
         <!-- Chat Transcript Message Area -->
         <div class="flex-1 overflow-y-auto p-4 space-y-3 text-xs leading-relaxed" id="curatorDrawerChatBody">
-          <div class="bg-slate-900/90 border border-cyan-900/40 p-3 rounded-2xl rounded-tl-sm text-slate-200">
-            <h2 class="text-sm font-semibold text-white tracking-tight mb-1">
-              What’s behind this cultural space?
-            </h2>
-            <p class="text-xs text-slate-300">
-              Explore its funding, working conditions, and public record.
+          <div class="bg-slate-900/90 border border-cyan-900/40 p-3 rounded-2xl rounded-tl-sm text-slate-200" id="curatorDrawerGreeting">
+            <p>
+              I’d love to help you find independent art spaces nearby—operating strictly without corporate capture, defense contractor ties, or fossil fuel underwriting.
+            </p>
+            <p class="mt-2 text-slate-300 font-medium">
+              Where are you currently located, or would you like me to map Manila, Tokyo, or Berlin?
             </p>
           </div>
           <div class="pt-2">
-            <p class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Try asking</p>
+            <p class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Suggested Inquiries</p>
             <div class="flex flex-wrap gap-1.5">
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Find independent art spaces near me" type="button">
+                ↳ Find independent art spaces near me
+              </button>
               <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Who funds this museum?" type="button">
                 Who funds this museum?
               </button>
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="What do employees say about working here?" type="button">
-                What do employees say about working here?
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="W.A.G.E. fair pay certified spaces" type="button">
+                W.A.G.E. fair pay certified spaces
               </button>
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Have artists protested or boycotted this institution?" type="button">
-                Have artists protested or boycotted this institution?
-              </button>
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Which sponsors have faced public criticism?" type="button">
-                Which sponsors have faced public criticism?
-              </button>
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Does this institution pay artists fairly?" type="button">
-                Does this institution pay artists fairly?
-              </button>
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="How are its trustees connected to its sponsors?" type="button">
-                How are its trustees connected to its sponsors?
-              </button>
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Has public pressure changed its policies?" type="button">
-                Has public pressure changed its policies?
-              </button>
-              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Find independent art spaces near me" type="button">
-                Find independent art spaces near me
+              <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Free admission spaces today" type="button">
+                Free admission spaces today
               </button>
             </div>
           </div>
@@ -2828,7 +2817,7 @@ def build():
       </div>
 
       <!-- 🔍 ANCHORED SEARCH BAR FOR MOBILE MAP FIRST MODE (Floats right above thumb zone) -->
-      <div id="mobileAnchoredSearchBar" class="hidden fixed bottom-4 left-3 right-3 z-30 pointer-events-auto select-none transition-all duration-300">
+      <div id="mobileAnchoredSearchBar" class="hidden fixed bottom-4 left-3 right-3 z-30 pointer-events-auto select-none transition-all duration-300" style="display:none !important;" aria-hidden="true">
         <div class="w-full bg-[#121214]/95 border border-[#27272a] hover:border-[#3f3f46] shadow-2xl backdrop-blur-md rounded-2xl p-1.5 flex items-center gap-2 min-h-[48px]">
           <button id="mobileAnchoredSearchIconBtn" type="button" class="w-9 h-9 rounded-xl bg-[#1c1c1f] text-slate-300 flex items-center justify-center shrink-0 min-h-[44px] min-w-[44px]" title="Search">
             <svg class="w-4 h-4 text-[#38bdf8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -2847,15 +2836,15 @@ def build():
 
     </div>
 
-    <!-- RESIZABLE SPLITTER (Desktop: Vertical Drag / Mobile: Horizontal Drag · Double-click resets to 50%) -->
-    <div id="globeSplitter" class="relative w-full md:w-[6px] h-[5px] md:h-full bg-[#1c1c1f] hover:bg-[#27272a] active:bg-[#323238] border-y md:border-y-0 md:border-x border-[#27272a] cursor-row-resize md:cursor-col-resize transition flex items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split screen · Double-click to reset to 50%">
+    <!-- RESIZABLE SPLITTER (Desktop: Vertical Drag / Mobile: Hidden) -->
+    <div id="globeSplitter" class="hidden md:flex relative md:w-[6px] md:h-full bg-[#1c1c1f] hover:bg-[#27272a] active:bg-[#323238] border-x border-[#27272a] md:cursor-col-resize transition items-center justify-center z-20 shrink-0 group select-none" title="Drag to adjust split screen · Double-click to reset to 50%">
       <div class="w-10 md:w-[2px] h-[2px] md:h-8 rounded-full bg-[#3f3f46] group-hover:bg-[#a1a1aa] transition"></div>
     </div>
 
     <!-- ========================================================= -->
-    <!-- 💼 UNIFIED WORK & CHAT CANVAS (Desktop: Right Half / Mobile: Bottom Half) -->
+    <!-- 💼 UNIFIED WORK & CHAT CANVAS (Desktop: Right Half / Mobile: Hidden) -->
     <!-- ========================================================= -->
-    <div id="workViewContainer" class="relative w-full md:w-1/2 h-1/2 md:h-full flex-1 min-h-0 flex flex-col md:flex-row bg-[#05070d] overflow-hidden">
+    <div id="workViewContainer" class="hidden md:flex relative flex-1 min-h-0 flex-row bg-[#05070d] overflow-hidden">
       
       <!-- Subtle Celestial Deep-Space Starfield Overlay (matching globe backdrop) -->
       <div id="workStarfield" class="pointer-events-none absolute inset-0 overflow-hidden z-0 select-none opacity-60" aria-hidden="true">
@@ -3006,7 +2995,7 @@ def build():
       <section id="curatorIntelligenceColumn" class="flex-1 min-w-0 min-h-0 flex flex-col h-full bg-[#05070d] relative overflow-hidden select-text z-10">
         
         <!-- Mobile Bottom Sheet Handle Bar (Phone Only) -->
-        <div id="mobileSheetHandleBar" class="flex md:hidden flex-col w-full bg-[#0c101a] border-b border-[#1e293b] shrink-0 select-none z-30 touch-none">
+        <div id="mobileSheetHandleBar" class="hidden md:hidden flex-col w-full bg-[#0c101a] border-b border-[#1e293b] shrink-0 select-none z-30 touch-none" style="display:none !important;" aria-hidden="true">
           <div id="mobileSheetDragZone" class="w-full flex items-center justify-center py-2 min-h-[32px] cursor-grab active:cursor-grabbing">
             <div class="w-12 h-1.5 rounded-full bg-zinc-500 hover:bg-zinc-400 transition"></div>
           </div>
@@ -3358,23 +3347,25 @@ def build():
   <!-- 📌 STICKY CURATOR INPUT BAR (Mobile Matching code.html & media_1791625755099_5e95dfd6.png) -->
   <!-- ========================================================= -->
   <div class="z-40 bg-slate-950/95 border-t border-slate-800/80 px-3 py-2 flex md:hidden flex-col gap-1.5 backdrop-blur-lg shrink-0" data-purpose="ai-chat-input-bar" id="mobileStickyInputBar">
-    <div class="flex items-center gap-2">
-      <button id="mobileStickyPlusBtn" type="button" class="w-8 h-8 rounded-full bg-slate-800/90 hover:bg-slate-700 text-slate-200 flex items-center justify-center text-sm font-bold border border-slate-700 shrink-0 cursor-pointer">
+    <div class="relative flex items-center">
+      <!-- Plus Button -->
+      <button id="mobileStickyPlusBtn" type="button" class="w-8 h-8 rounded-full bg-slate-800/90 hover:bg-slate-700 text-slate-200 flex items-center justify-center text-sm font-bold border border-slate-700 mr-2 shrink-0 cursor-pointer" onclick="if (typeof window.toggleFilterDrawer === 'function') window.toggleFilterDrawer(true);" title="Filters &amp; Options">
         +
       </button>
-      <div class="relative flex-1 min-w-0">
-        <input class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 pr-16" id="chat-input" placeholder="Ask about a cultural space, its sponsors, or a controversy…" type="text">
-        <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg flex items-center space-x-1 active:scale-95 transition border border-cyan-300 cursor-pointer"><span class="">Send</span></button>
-      </div>
+      <!-- Input Field -->
+      <input class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 pr-16" id="chat-input" placeholder="Ask about a museum or cultural space..." type="text">
+      <!-- Send Pill Button -->
+      <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg flex items-center space-x-1 active:scale-95 transition border border-cyan-300 cursor-pointer"><span class="">Send</span></button>
     </div>
+    <!-- Micro Badges: Anthropic Live + Voice Mode -->
     <div class="flex items-center justify-between text-[10px] text-slate-400 px-1">
       <span class="flex items-center space-x-1">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
         <span>Anthropic · Live</span>
       </span>
       <div class="flex items-center space-x-2">
-        <span id="mobileStickyVoiceBtn" class="text-slate-400 bg-slate-900 px-2 py-0.5 rounded-full border border-slate-800 cursor-pointer">Voice: ON</span>
-        <span class="text-emerald-400">● {clean_count} spaces mapped</span>
+        <button id="mobileStickyVoiceBtn" type="button" onclick="if (typeof window.toggleCuratorVoice === 'function') window.toggleCuratorVoice();" class="text-slate-400 bg-slate-900 px-2 py-0.5 rounded-full border border-slate-800 cursor-pointer">Voice: ON</button>
+        <span class="text-emerald-400" id="mobileCleanFundingCount">● Clean Funding ({clean_count})</span>
       </div>
     </div>
   </div>
@@ -11848,6 +11839,9 @@ def build():
       }}
       const topBtn = document.getElementById('topGossipBtn');
       const mobileBtn = document.getElementById('mobileGossipBtn');
+      const gossipBtn = document.getElementById('gossip-mode-btn');
+      const tabGossip = document.getElementById('dossier-tab-gossip');
+      const tabInfo = document.getElementById('dossier-tab-info');
 
       if (isGossipModeActive) {{
         document.body.classList.add('gossip-mode-active');
@@ -11861,6 +11855,12 @@ def build():
           mobileBtn.classList.remove('bg-[#1c1806]', 'text-yellow-300', 'bg-[#271206]', 'text-orange-300', 'bg-[#1f0a1c]', 'text-rose-300', 'from-orange-600', 'to-amber-600', 'border-orange-300');
           mobileBtn.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-black animate-ping"></span><span>Gossip ACTIVE</span>';
         }}
+        if (gossipBtn) {{
+          gossipBtn.classList.add('bg-amber-500', 'text-black', 'border-amber-300', 'font-bold', 'shadow-[0_0_15px_rgba(245,158,11,0.7)]');
+          gossipBtn.classList.remove('bg-amber-950/30', 'text-amber-300', 'border-amber-500/50');
+          gossipBtn.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-black animate-ping"></span><span>Gossip ACTIVE</span>';
+        }}
+        if (tabGossip) tabGossip.click();
         if (typeof appendBotMessage === 'function') {{
           appendBotMessage("**Yellow Gossip & Whispers Mode Activated**: Atmospheric curatorial backchannel mapping institutions via curatorial whispers, verified insider reports, and independent discourse. High-rumor spaces radiate in vibrant pulsating canary yellow. Click any institution to view unvarnished rumors and curatorial dossiers.");
         }}
@@ -11876,6 +11876,12 @@ def build():
           mobileBtn.classList.add('bg-[#1c1806]', 'text-yellow-300');
           mobileBtn.innerHTML = '<span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-yellow-400 animate-pulse"></span><span>Gossip</span>';
         }}
+        if (gossipBtn) {{
+          gossipBtn.classList.remove('bg-amber-500', 'text-black', 'border-amber-300', 'font-bold', 'shadow-[0_0_15px_rgba(245,158,11,0.7)]');
+          gossipBtn.classList.add('bg-amber-950/30', 'text-amber-300', 'border-amber-500/50');
+          gossipBtn.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span><span>Gossip</span>';
+        }}
+        if (tabInfo) tabInfo.click();
       }}
 
       // Synchronize Brand City Dot Glow with Atlas Mode
@@ -16980,7 +16986,6 @@ def build():
         const pt = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
         const isMobileViewport = window.innerWidth < 768;
         if (pt.front && pt.depth > 0.05) {{
-          floatingCard.classList.remove('hidden');
           if (isMobileViewport) {{
             floatingCard.style.left = '8px';
             floatingCard.style.right = '8px';
@@ -16991,9 +16996,16 @@ def build():
             floatingCard.style.width = 'auto';
             floatingCard.style.maxHeight = `${{Math.max(160, height - 16)}}px`;
             floatingCard.style.overflowY = 'auto';
+            const dossierSheet = document.getElementById('dossier-bottom-sheet');
+            if (dossierSheet && !dossierSheet.classList.contains('hidden')) {{
+              floatingCard.classList.add('hidden');
+            }}
           }} else {{
+            floatingCard.classList.remove('hidden');
             floatingCard.style.left = `${{Math.round(pt.x + 20)}}px`;
             floatingCard.style.top = `${{Math.round(pt.y - 40)}}px`;
+            floatingCard.style.right = 'auto';
+            floatingCard.style.bottom = 'auto';
           }}
 
           ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
@@ -17188,12 +17200,69 @@ def build():
     }}
     window.updateDesktopDossier = updateDesktopDossier;
 
+    function updateMobileDossier(inst) {{
+      if (!inst) return;
+      const dsName = document.getElementById('dossier-sheet-name');
+      const dsTier = document.getElementById('dossier-sheet-tier');
+      const dsMeta = document.getElementById('dossier-sheet-meta');
+      const dsBudgetVal = document.getElementById('dossier-sheet-budget-val');
+      const dsBudgetBadge = document.getElementById('dossier-sheet-budget-badge');
+      const dsPillPublic = document.getElementById('dossier-sheet-pill-public');
+      const dsPillGrants = document.getElementById('dossier-sheet-pill-grants');
+      const dsPillEarned = document.getElementById('dossier-sheet-pill-earned');
+      const dsPillRatio = document.getElementById('dossier-sheet-pill-ratio');
+      const dsFundingText = document.getElementById('dossier-sheet-funding-text');
+      const dsAccessText = document.getElementById('dossier-sheet-access-text');
+      const dsExTitle = document.getElementById('dossier-sheet-exhibit-title');
+      const dsExCurator = document.getElementById('dossier-sheet-exhibit-curator');
+      const dsExVernissage = document.getElementById('dossier-sheet-exhibit-vernissage');
+      const dsWebLink = document.getElementById('dossier-sheet-link-web');
+      const dsGossipHeadline = document.getElementById('dossier-sheet-gossip-headline');
+      const dsGossipReddit = document.getElementById('dossier-sheet-gossip-reddit');
+      const dsGossipTwitter = document.getElementById('dossier-sheet-gossip-twitter');
+
+      const isClean = inst.tier === 'A' || inst.clean_sanctuary;
+      const isFlagged = inst.tier === 'B' || inst.flagged;
+
+      if (dsName) dsName.textContent = inst.name || 'Green Papaya Art Projects';
+      if (dsTier) {{
+        dsTier.textContent = isClean ? 'Verified' : (isFlagged ? 'Flagged' : 'Audit Pending');
+        dsTier.className = 'inline-flex items-center px-1.5 py-0.2 text-[10px] font-semibold rounded ' + 
+          (isClean ? 'text-emerald-300 bg-emerald-950 border border-emerald-600' : 'text-amber-300 bg-amber-950 border border-amber-600');
+      }}
+      if (dsMeta) dsMeta.textContent = `${{inst.city || 'Quezon City / Manila'}}, ${{inst.country || 'Philippines'}} · ${{inst.governance_classification || 'Artist-Run'}}`;
+
+      const fin = inst.financial_data || {{}};
+      if (dsBudgetVal) dsBudgetVal.textContent = fin.operating_budget_display || '€250K – €850K Grassroots Budget';
+      if (dsBudgetBadge) dsBudgetBadge.textContent = fin.budget_tier || 'Lean Non-Profit';
+      if (dsPillPublic) dsPillPublic.textContent = `${{fin.public_subsidies_pct != null ? fin.public_subsidies_pct : 58}}% Public`;
+      if (dsPillGrants) dsPillGrants.textContent = `${{fin.philanthropy_endowment_pct != null ? fin.philanthropy_endowment_pct : 14}}% Grants`;
+      if (dsPillEarned) dsPillEarned.textContent = `${{fin.earned_revenue_pct != null ? fin.earned_revenue_pct : 28}}% Earned`;
+      if (dsPillRatio) dsPillRatio.textContent = `${{fin.program_expense_ratio_pct != null ? fin.program_expense_ratio_pct : 84}}% Ratio`;
+      if (dsFundingText) dsFundingText.textContent = inst.governance_details || inst.funding || 'Collective self-funding, Arts Collaboratory, independent foundations. 100% free of corporate defense/oil capture.';
+      if (dsAccessText) dsAccessText.textContent = (inst.floor_plans && inst.floor_plans[0] && inst.floor_plans[0].access_policy) || inst.admission_policy || 'Nomadic research & residency; free admission.';
+
+      const curShow = (inst.temporary_shows && inst.temporary_shows[0]) || (inst.floor_plans && inst.floor_plans[0] && inst.floor_plans[0].current_shows && inst.floor_plans[0].current_shows[0]);
+      if (dsExTitle) dsExTitle.textContent = curShow?.title || `Featured Exhibition: In Focus with ${{inst.name}}`;
+      if (dsExCurator) dsExCurator.textContent = `${{curShow?.curator_artists || 'Curatorial Cohort & Guest Artists'}} · ${{curShow?.dates || 'On View Autumn 2026 – Spring 2027'}}`;
+      if (dsExVernissage) dsExVernissage.textContent = curShow?.opening_night ? `Vernissage: ${{curShow.opening_night.date}} (${{curShow.opening_night.hours}})` : 'Vernissage: Fri, Oct 23 (18:00–21:30)';
+      if (dsWebLink) dsWebLink.href = getValidWebUrl(inst);
+
+      if (inst.gossip_data && dsGossipHeadline) {{
+        dsGossipHeadline.textContent = inst.gossip_data.headline || 'Field Intel & Whispers documented';
+        if (dsGossipReddit) dsGossipReddit.textContent = inst.gossip_data.reddit?.snippet || 'Community Discussion documented on r/contemporaryart.';
+        if (dsGossipTwitter) dsGossipTwitter.textContent = inst.gossip_data.twitter_x?.snippet || 'Field claim logged on X / Twitter.';
+      }}
+    }}
+    window.updateMobileDossier = updateMobileDossier;
+
     function toggleGlobeAutoSpin() {{
       isAutoSpinning = !isAutoSpinning;
       const spinTxt = document.getElementById('hudSpinText');
       if (spinTxt) spinTxt.textContent = isAutoSpinning ? 'Pause' : 'Spin';
     }}
     window.toggleGlobeAutoSpin = toggleGlobeAutoSpin;
+    window.toggleGlobeSpin = toggleGlobeAutoSpin;
 
     function toggleGlobeExpand() {{
       if (typeof handleViewExpand === 'function') {{
@@ -17213,6 +17282,17 @@ def build():
 
     function deselectInstitution() {{
       selectedInstitution = null;
+      if (typeof curatorContext !== 'undefined') {{
+        curatorContext.activeFocusInst = null;
+      }}
+      const badgeWrap = document.getElementById('workspaceSelectedInstPill');
+      const badgeName = document.getElementById('workspaceSelectedInstName');
+      if (badgeWrap) {{
+        badgeWrap.classList.add('hidden');
+        badgeWrap.classList.remove('flex');
+      }}
+      if (badgeName) badgeName.textContent = '';
+
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) floatingCard.classList.add('hidden');
       const dCol = document.getElementById('desktopDossierColumn');
@@ -17224,12 +17304,15 @@ def build():
       if (dDrawer) {{
         dDrawer.classList.add('hidden');
       }}
-      document.querySelectorAll('.inst-card').forEach(c => c.classList.remove('active'));
-      const badgeWrap = document.getElementById('workspaceSelectedInstPill');
-      if (badgeWrap) {{
-        badgeWrap.classList.add('hidden');
-        badgeWrap.classList.remove('flex');
+      const mSheet = document.getElementById('dossier-bottom-sheet');
+      if (mSheet) {{
+        mSheet.classList.add('hidden');
       }}
+      if (typeof setActiveMobileTab === 'function') {{
+        const tAtlas = document.getElementById('tab-atlas');
+        if (tAtlas) setActiveMobileTab(tAtlas);
+      }}
+      document.querySelectorAll('.inst-card').forEach(c => c.classList.remove('active'));
       if (typeof setWorkspaceTab === 'function') {{
         setWorkspaceTab('chat');
       }}
@@ -17243,7 +17326,7 @@ def build():
       selectedInstitution = inst;
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) {{
-        if (!isCityStreetViewActive && !document.body.classList.contains('building-view-active')) {{
+        if (!isCityStreetViewActive && !document.body.classList.contains('building-view-active') && window.innerWidth >= 768) {{
           floatingCard.classList.remove('hidden');
         }} else {{
           floatingCard.classList.add('hidden');
@@ -17661,17 +17744,24 @@ def build():
         updateDesktopDossier(inst);
       }}
 
-      // 2. Prepare background Deep Audit Dossier (so it is primed and ready when requested)
+      // 2. Update Mobile Dossier Sheet (#dossier-bottom-sheet)
+      if (typeof updateMobileDossier === 'function') {{
+        updateMobileDossier(inst);
+      }}
+
+      // 3. Prepare background Deep Audit Dossier (so it is primed and ready when requested)
       if (typeof openDossier === 'function') {{
         openDossier(inst, false);
       }}
 
-      // 3. Responsive Layout Transitions (Mobile vs Desktop)
+      // 4. Responsive Layout Transitions (Mobile vs Desktop)
       if (window.innerWidth < 768) {{
         const bs = document.getElementById('dossier-bottom-sheet');
         if (bs) bs.classList.remove('hidden');
-        const strip = document.getElementById('mobileSheetSummaryStrip');
-        if (strip) strip.classList.remove('hidden');
+        if (typeof setActiveMobileTab === 'function') {{
+          const tDossier = document.getElementById('tab-dossier');
+          if (tDossier) setActiveMobileTab(tDossier);
+        }}
       }} else {{
         // On desktop, display middle dossier column alongside curator intelligence column
         const dCol = document.getElementById('desktopDossierColumn');
@@ -21556,6 +21646,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       `;
       curatorMessages.appendChild(div);
       scrollChatToBottom(true);
+
+      const drawerLive = document.getElementById('curatorDrawerLiveStream');
+      if (drawerLive) {{
+        const mDiv = document.createElement('div');
+        mDiv.className = 'flex justify-end my-1 w-full';
+        mDiv.innerHTML = `
+          <div class="max-w-[85%] bg-slate-800 text-slate-100 text-xs px-3.5 py-2.5 rounded-2xl rounded-tr-sm shadow-sm leading-relaxed whitespace-pre-wrap select-text">
+            ${{escapeHtml(text)}}
+          </div>
+        `;
+        drawerLive.appendChild(mDiv);
+        const drawerBody = document.getElementById('curatorDrawerChatBody');
+        if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight;
+      }}
     }}
 
     function appendCuratorMessage(htmlContent, followUps = [], webIntel = null, thinkingData = null, showSpeak = true) {{
@@ -21653,6 +21757,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       `;
       curatorMessages.appendChild(div);
       scrollChatToBottom(true);
+
+      const drawerLive = document.getElementById('curatorDrawerLiveStream');
+      if (drawerLive) {{
+        const mBot = document.createElement('div');
+        mBot.className = 'bg-slate-900/90 border border-cyan-900/40 p-3 rounded-2xl rounded-tl-sm text-slate-200 text-xs leading-relaxed space-y-2 select-text';
+        mBot.innerHTML = processedContent;
+        drawerLive.appendChild(mBot);
+        const drawerBody = document.getElementById('curatorDrawerChatBody');
+        if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight;
+      }}
 
       const speakBtn = div.querySelector('.curator-speak-btn');
       if (autoSpeakNextCuratorResponse && speakBtn) {{
@@ -27538,11 +27652,21 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         setActiveMobileTab(tabChat);
         bottomSheet?.classList.add('hidden');
         chatDrawer?.classList.remove('hidden');
-        if (typeof setBottomSheetSnap === 'function') setBottomSheetSnap('expanded');
-        if (typeof setMobileViewMode === 'function') setMobileViewMode('chat');
-        // When in expanded chat mode, workBottomDock handles input
-        if (stickyDock && window.innerWidth < 768) stickyDock.classList.add('hidden');
+        if (stickyDock) stickyDock.classList.remove('hidden');
       }});
+
+      // Listen button inside mobile drawer header
+      document.getElementById('curatorDrawerListenBtn')?.addEventListener('click', () => {{
+        if (typeof toggleCuratorVoice === 'function') toggleCuratorVoice();
+      }});
+
+      // Pre-initialize default space in mobile bottom sheet
+      if (typeof ALL_INSTITUTIONS !== 'undefined' && ALL_INSTITUTIONS.length > 0) {{
+        const defaultInst = ALL_INSTITUTIONS.find(i => i.name && i.name.toLowerCase().includes('green papaya')) || ALL_INSTITUTIONS[0];
+        if (defaultInst && typeof updateMobileDossier === 'function') {{
+          updateMobileDossier(defaultInst);
+        }}
+      }}
 
       tabFilters?.addEventListener('click', () => {{
         setActiveMobileTab(tabFilters);
@@ -27712,8 +27836,8 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
           splitter.style.display = 'none';
         }}
         if (anchoredBar) {{
-          anchoredBar.style.display = 'flex';
-          anchoredBar.classList.remove('hidden');
+          anchoredBar.style.display = 'none';
+          anchoredBar.classList.add('hidden');
         }}
         resizeCanvas();
         if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
@@ -32001,6 +32125,7 @@ bar.innerHTML = html;
       }}
     }}
     window.resetGlobeView = resetGlobeView;
+    window.resetGlobeZoom = resetGlobeView;
 
     // Both the Header Brand Logo and the Top Reset Button reset the globe view
     document.getElementById('topBrandLogoBtn')?.addEventListener('click', (e) => {{

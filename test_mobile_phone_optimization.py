@@ -61,6 +61,7 @@ def run_tests():
 
         // 2. Default Split Mode
         assert("setMobileViewMode function is available", typeof window.setMobileViewMode === 'function');
+        window.setMobileViewMode('split');
         assert("Globe is visible in split mode", window.getComputedStyle(globe).display === 'flex');
         assert("Work view is visible in split mode", window.getComputedStyle(workView).display === 'flex');
         assert("Splitter is visible in split mode", window.getComputedStyle(splitter).display !== 'none');
