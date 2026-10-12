@@ -2017,7 +2017,7 @@ def build():
 
       <!-- Share Information (Contribute Intel) -->
       <button id="topContributeBtn" onclick="window.triggerInChatContributeFlow()" class="flex items-center gap-1.5 px-3.5 py-1.5 bg-teal-950/40 hover:bg-teal-900/50 border border-teal-500/60 hover:border-teal-400 text-teal-300 rounded-lg text-xs font-medium uppercase tracking-wider transition cursor-pointer shadow-sm" title="Share information">
-        <svg class="w-3.5 h-3.5 text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        <svg class="w-3.5 h-3.5 text-teal-400 shrink-0" viewBox="0 0 32 32" fill="currentColor"><path d="M24,14H22V10a6,6,0,0,0-12,0v4H8a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V16A2,2,0,0,0,24,14ZM12,10a4,4,0,0,1,8,0v4H12ZM24,28H8V16H24Z"/></svg>
         <span>SHARE INFORMATION</span>
         <span class="hidden" style="display:none;" aria-hidden="true">Contribute</span>
       </button>
@@ -3034,7 +3034,7 @@ def build():
             <div class="w-full bg-[#18181b] border border-[#2e2e33] rounded-xl px-2.5 py-1.5 flex items-center gap-2 min-h-[44px]">
               <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this museum..." class="flex-1 bg-transparent text-white placeholder-slate-400 text-[14px] focus:outline-none min-h-[36px]" />
               <button id="mobileSheetQuickSendBtn" type="button" class="w-8 h-8 rounded-lg bg-[#2563eb] text-white flex items-center justify-center shrink-0 min-h-[36px] min-w-[36px]">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                <svg class="w-3.5 h-3.5" viewBox="0 0 32 32" fill="currentColor"><path d="M27.71 4.29a1 1 0 0 0-1.05-.23l-22 8a1 1 0 0 0 0 1.87l8.59 3.43L20.59 10 22 11.41l-7.37 7.37 3.44 8.59A1 1 0 0 0 19 28a1 1 0 0 0 .92-.66l8-22a1 1 0 0 0-.21-1.05z"/></svg>
               </button>
             </div>
           </div>
@@ -3049,17 +3049,26 @@ def build():
           <div class="flex items-center gap-2">
             <!-- Voice Button -->
             <button id="curatorVoiceToggleBtn" type="button" class="px-2.5 py-1 rounded-full bg-sky-950/80 border border-sky-500/60 text-sky-300 text-xs font-mono flex items-center gap-1.5 transition cursor-pointer" title="Auto-Voice: Speaks responses aloud (Click to mute)">
-              <span id="curatorVoiceToggleIcon" class="text-xs">🎤</span>
+              <svg class="w-3 h-3 text-sky-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M16,23a6.0066,6.0066,0,0,1-6-6V9a6,6,0,0,1,12,0v8A6.0066,6.0066,0,0,1,16,23ZM16,5a4.0045,4.0045,0,0,0-4,4v8a4,4,0,0,0,8,0V9A4.0045,4.0045,0,0,0,16,5Z"/>
+                <path d="M25,17a1,1,0,0,0-2,0,7,7,0,0,1-14,0,1,1,0,0,0-2,0,9.01,9.01,0,0,0,8,8.9448V28H12a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2H17V25.9448A9.01,9.01,0,0,0,25,17Z"/>
+              </svg>
+              <span id="curatorVoiceToggleIcon" class="hidden">🎤</span>
               <span id="curatorVoiceToggleLabel">Voice: ON</span>
             </button>
             <!-- Listen Button -->
-            <button id="curatorListenBtn" type="button" onclick="if (typeof window.speakCuratorBriefing === 'function') window.speakCuratorBriefing();" class="px-2.5 py-1 rounded-md bg-[#141b2a] hover:bg-[#1e293b] border border-[#233552] text-slate-300 hover:text-white text-xs font-mono flex items-center gap-1 transition cursor-pointer" title="Listen to curator briefing">
-              <span>🔊</span>
+            <button id="curatorListenBtn" type="button" onclick="if (typeof window.speakCuratorBriefing === 'function') window.speakCuratorBriefing();" class="px-2.5 py-1 rounded-md bg-[#141b2a] hover:bg-[#1e293b] border border-[#233552] text-slate-300 hover:text-white text-xs font-mono flex items-center gap-1.5 transition cursor-pointer" title="Listen to curator briefing">
+              <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M13,6.34,6.83,12H2v8H6.83L13,25.66ZM4,14H7.17l5,4.55V13.45l-5,4.55H4ZM19,10.18V8.1A10,10,0,0,1,26,16a10,10,0,0,1-7,7.9V21.82A8,8,0,0,0,24,16,8,8,0,0,0,19,10.18ZM17,13.25V11.17A5,5,0,0,1,20.5,16,5,5,0,0,1,17,20.83V18.75a3,3,0,0,0,0-5.5Z"/>
+              </svg>
               <span>LISTEN</span>
             </button>
             <!-- Refresh / New Chat Button -->
             <button id="curatorRefreshBtn" type="button" onclick="window.resetToNewChat();" class="w-7 h-7 rounded-md bg-[#141b2a] hover:bg-[#1e293b] border border-[#233552] text-slate-300 hover:text-white flex items-center justify-center text-xs transition cursor-pointer" title="Start New Chat">
-              <span>🔄</span>
+              <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M12,10H6.78A11,11,0,0,1,27,16h2A13,13,0,0,0,6,7.68V4H4v8h8Z"/>
+                <path d="M20,22h5.22A11,11,0,0,1,5,16H3a13,13,0,0,0,23,8.32V28h2V20H20Z"/>
+              </svg>
             </button>
           </div>
         </div>
@@ -3129,9 +3138,8 @@ def build():
               </p>
               <div id="curatorThinkingStep" class="flex items-center gap-2 text-[14px] text-[#a1a1aa]">
                 <span class="inline-flex items-center justify-center w-4 h-4 rounded border border-[#444] bg-[#1e1e1e] text-[#a1a1aa] shrink-0">
-                  <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="4 17 10 11 4 5"></polyline>
-                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                  <svg class="w-2.5 h-2.5" viewBox="0 0 32 32" fill="currentColor">
+                    <path d="M26 4H6a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 22H6V6h20zm-8-3h6v2h-6zm-8.59-3.59L13.83 15l-4.42-4.41L10.83 9.17l5.83 5.83-5.83 5.83z"/>
                   </svg>
                 </span>
                 <span id="curatorThinkingStepLabel">Scanning Repository Configuration Files</span>
@@ -3264,8 +3272,8 @@ def build():
             <!-- Send Button -->
             <button id="workSendBtn" class="px-4 py-2 rounded-xl bg-[#182030] hover:bg-[#222e44] text-slate-200 hover:text-white border border-[#283750] flex items-center justify-center gap-1.5 transition shadow-sm active:scale-95 cursor-pointer shrink-0 text-xs font-mono font-medium" title="Send message">
               <span>SEND</span>
-              <svg class="w-3.5 h-3.5 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              <svg class="w-3.5 h-3.5 shrink-0 text-slate-400" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M27.71 4.29a1 1 0 0 0-1.05-.23l-22 8a1 1 0 0 0 0 1.87l8.59 3.43L20.59 10 22 11.41l-7.37 7.37 3.44 8.59A1 1 0 0 0 19 28a1 1 0 0 0 .92-.66l8-22a1 1 0 0 0-.21-1.05z"/>
               </svg>
             </button>
             <!-- Quick Dropdown Menu for Plus button -->
@@ -3345,12 +3353,19 @@ def build():
     <div class="relative flex items-center">
       <!-- Plus Button -->
       <button id="mobileStickyPlusBtn" type="button" class="w-8 h-8 rounded-full bg-slate-800/90 hover:bg-slate-700 text-slate-200 flex items-center justify-center text-sm font-bold border border-slate-700 mr-2 shrink-0 cursor-pointer" onclick="if (typeof window.toggleFilterDrawer === 'function') window.toggleFilterDrawer(true);" title="Filters &amp; Options">
-        +
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z"/>
+        </svg>
       </button>
       <!-- Input Field -->
       <input class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 pr-16" id="chat-input" placeholder="Ask about a museum or cultural space..." type="text">
       <!-- Send Pill Button -->
-      <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg flex items-center space-x-1 active:scale-95 transition border border-cyan-300 cursor-pointer"><span class="">Send</span></button>
+      <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg flex items-center space-x-1.5 active:scale-95 transition border border-cyan-300 cursor-pointer">
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M27.71 4.29a1 1 0 0 0-1.05-.23l-22 8a1 1 0 0 0 0 1.87l8.59 3.43L20.59 10 22 11.41l-7.37 7.37 3.44 8.59A1 1 0 0 0 19 28a1 1 0 0 0 .92-.66l8-22a1 1 0 0 0-.21-1.05z"/>
+        </svg>
+        <span>Send</span>
+      </button>
     </div>
     <!-- Micro Badges: Curator Live + Voice Mode -->
     <div class="flex items-center justify-between text-[10px] text-slate-400 px-1">
@@ -3371,23 +3386,23 @@ def build():
   <nav class="z-40 pb-safe bg-slate-950 border-t border-slate-800 px-4 pt-2 flex md:hidden items-center justify-around shrink-0 select-none" data-purpose="mobile-tab-bar" id="mobileBottomNav">
     <!-- Nav Item: Atlas Globe -->
     <button class="flex flex-col items-center space-y-1 text-cyan-400 focus:outline-none cursor-pointer" id="tab-atlas" type="button">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+      <svg class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2zm9.93 13h-4.01a21.41 21.41 0 0 0-1.74-7.55A12.02 12.02 0 0 1 25.93 15zM16 4.07c1.37 2.08 2.45 5.56 2.87 8.93H13.13C13.55 9.63 14.63 6.15 16 4.07zM6.07 15A12.02 12.02 0 0 1 11.82 7.45 21.41 21.41 0 0 0 10.08 15zm0 2h4.01a21.41 21.41 0 0 0 1.74 7.55A12.02 12.02 0 0 1 6.07 17zm9.93 10.93c-1.37-2.08-2.45-5.56-2.87-8.93h5.74c-.42 3.37-1.5 6.85-2.87 8.93zm4.18-3.38A21.41 21.41 0 0 0 21.92 17h4.01a12.02 12.02 0 0 1-5.75 7.55z"/></svg>
       <span class="text-[10px] font-medium tracking-tight">Atlas</span>
     </button>
     <!-- Nav Item: Dossier -->
     <button class="flex flex-col items-center space-y-1 text-slate-400 hover:text-slate-200 focus:outline-none cursor-pointer" id="tab-dossier" type="button">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+      <svg class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor"><path d="M25.7 9.3l-7-7A.9.9 0 0 0 18 2H8a2 2 0 0 0-2 2v24a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V10a.9.9 0 0 0-.3-.7zM18 4.4l5.6 5.6H18zM24 28H8V4h8v7a1 1 0 0 0 1 1h7z"/><path d="M12 16H20V18H12zM12 22H20V24H12z"/></svg>
       <span class="text-[10px] font-medium tracking-tight">Dossier</span>
     </button>
     <!-- Nav Item: Curator AI -->
     <button class="flex flex-col items-center space-y-1 text-slate-400 hover:text-slate-200 focus:outline-none relative cursor-pointer" id="tab-chat" type="button">
       <span class="absolute -top-1 right-2 w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+      <svg class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor"><path d="M17.74 30L16 29l4-7h6a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9v2H6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-4.84z"/><path d="M8 8H24V10H8zM8 13H18V15H8z"/></svg>
       <span class="text-[10px] font-medium tracking-tight">Curator</span>
     </button>
     <!-- Nav Item: Layers / Filters -->
     <button class="flex flex-col items-center space-y-1 text-slate-400 hover:text-slate-200 focus:outline-none cursor-pointer" id="tab-filters" type="button">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+      <svg class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2L2 9l14 7 14-7-14-7zm0 3.73L24.53 9 16 13.27 7.47 9 16 5.73zM2 16l14 7 14-7-2.45-1.23L16 20.39l-11.55-5.62L2 16zm0 7l14 7 14-7-2.45-1.23L16 27.39l-11.55-5.62L2 23z"/></svg>
       <span class="text-[10px] font-medium tracking-tight">Filters</span>
     </button>
   </nav>
@@ -3692,8 +3707,8 @@ def build():
                 <span>Local Encrypted Queue</span>
               </span>
               <button type="submit" id="confidentialSendBtn" class="px-4 py-1.5 rounded-full bg-black hover:bg-[#1c1c1c] text-white border border-white/20 hover:border-white/40 text-[14px] font-medium flex items-center gap-1.5 transition active:scale-95 cursor-pointer shadow-md">
-                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 32 32" fill="currentColor">
+                  <path d="M24,14H22V10a6,6,0,0,0-12,0v4H8a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V16A2,2,0,0,0,24,14ZM12,10a4,4,0,0,1,8,0v4H12ZM24,28H8V16H24Z"/>
                 </svg>
                 <span>Submit Lead</span>
               </button>
@@ -21689,17 +21704,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <span class="relative inline-flex rounded-full h-1.5 w-1.5 shadow-sm" style="background-color: ${{mode.color}}; box-shadow: 0 0 6px ${{mode.color}};"></span>
               </span>
               <span>Thought for ${{sec}}s</span>
-              <svg class="w-3.5 h-3.5 transition-transform duration-200 curator-thought-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 curator-thought-chevron" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M16 22L6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z"/>
               </svg>
             </button>
             <div class="curator-thought-content hidden mt-2.5 pl-3 border-l border-[#383838] space-y-2 text-[14px]">
               <p class="text-[#d4d4d8] leading-relaxed font-normal">${{escapeHtml(effectiveThinking.thought)}}</p>
               <div class="flex items-center gap-2 text-[14px] text-[#a1a1aa]">
                 <span class="inline-flex items-center justify-center w-4 h-4 rounded border border-[#444] bg-[#1e1e1e] text-[#a1a1aa] shrink-0">
-                  <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="4 17 10 11 4 5"></polyline>
-                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                  <svg class="w-2.5 h-2.5" viewBox="0 0 32 32" fill="currentColor">
+                    <path d="M26 4H6a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 22H6V6h20zm-8-3h6v2h-6zm-8.59-3.59L13.83 15l-4.42-4.41L10.83 9.17l5.83 5.83-5.83 5.83z"/>
                   </svg>
                 </span>
                 <span>${{escapeHtml(effectiveThinking.step)}}</span>
@@ -28508,8 +28522,8 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         sendBtn.classList.remove('bg-black', 'hover:bg-[#1c1c1c]', 'border-white/20', 'rounded-full');
         sendBtn.classList.add('bg-emerald-600', 'hover:bg-emerald-500', 'text-white', 'rounded-xl', 'px-4', 'py-2', 'shadow-sm');
         sendBtn.innerHTML = `
-          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 32 32" fill="currentColor">
+            <path d="M24,14H22V10a6,6,0,0,0-12,0v4H8a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V16A2,2,0,0,0,24,14ZM12,10a4,4,0,0,1,8,0v4H12ZM24,28H8V16H24Z"/>
           </svg>
           <span>Submit Securely</span>
         `;
@@ -28611,8 +28625,8 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         sendBtn.classList.remove('bg-emerald-600', 'hover:bg-emerald-500', 'text-white', 'rounded-xl', 'px-4', 'py-2');
         sendBtn.classList.add('bg-black', 'hover:bg-[#1c1c1c]', 'border-white/20', 'rounded-full');
         sendBtn.innerHTML = `
-          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 32 32" fill="currentColor">
+            <path d="M27.71 4.29a1 1 0 0 0-1.05-.23l-22 8a1 1 0 0 0 0 1.87l8.59 3.43L20.59 10 22 11.41l-7.37 7.37 3.44 8.59A1 1 0 0 0 19 28a1 1 0 0 0 .92-.66l8-22a1 1 0 0 0-.21-1.05z"/>
           </svg>
           <span>Send</span>
         `;
