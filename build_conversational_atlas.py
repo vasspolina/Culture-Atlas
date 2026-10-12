@@ -1374,7 +1374,6 @@ def build():
       font-size: 14pt;
       font-weight: 400;
       letter-spacing: 0.08em;
-      text-transform: uppercase;
       color: #34d399;
     }}
     .building-facade-close-btn {{
@@ -1471,7 +1470,6 @@ def build():
       font-weight: 400;
       letter-spacing: 0.05em;
       color: #10b981;
-      text-transform: uppercase;
       padding-right: 14px;
     }}
     /* 🔒 SECURE WHISTLEBLOWER & INTEL INTAKE MODE STYLING */
@@ -2061,15 +2059,15 @@ def build():
     </button>
 
     <!-- Center: Main Navigation Tabs (Atlas | Directory | Filters & Lenses) -->
-    <nav id="desktopMainNav" class="hidden md:flex items-center gap-8 text-[13px] tracking-wider uppercase font-medium select-none">
+    <nav id="desktopMainNav" class="hidden md:flex items-center gap-8 text-[13px] tracking-wider font-medium select-none">
       <button id="navTabAtlas" type="button" onclick="window.setMainViewTab('atlas')" class="text-teal-300 border-b-2 border-teal-400 pb-1 font-semibold transition cursor-pointer" title="Atlas Globe Exploration">
-        ATLAS
+        Atlas
       </button>
       <button id="navTabDirectory" type="button" onclick="window.setMainViewTab('directory')" class="text-slate-400 hover:text-white pb-1 transition cursor-pointer" title="Browse Findings Directory">
-        DIRECTORY
+        Directory
       </button>
       <button id="navTabFilters" type="button" onclick="window.setMainViewTab('filters')" class="text-slate-400 hover:text-white pb-1 transition cursor-pointer" title="Filters &amp; Lenses">
-        FILTERS &amp; LENSES
+        Filters &amp; Lenses
       </button>
     </nav>
 
@@ -2082,9 +2080,9 @@ def build():
       </button>
 
       <!-- Share Information (Contribute Intel) -->
-      <button id="topContributeBtn" onclick="window.triggerInChatContributeFlow()" class="flex items-center gap-1.5 px-3.5 py-1.5 bg-teal-950/40 hover:bg-teal-900/50 border border-teal-500/60 hover:border-teal-400 text-teal-300 rounded-lg text-xs font-medium uppercase tracking-wider transition cursor-pointer shadow-sm" title="Share information">
+      <button id="topContributeBtn" onclick="window.triggerInChatContributeFlow()" class="flex items-center gap-1.5 px-3.5 py-1.5 bg-teal-950/40 hover:bg-teal-900/50 border border-teal-500/60 hover:border-teal-400 text-teal-300 rounded-lg text-xs font-medium tracking-wider transition cursor-pointer shadow-sm" title="Share information">
         <svg class="w-3.5 h-3.5 text-teal-400 shrink-0" viewBox="0 0 32 32" fill="currentColor"><path d="M24,14H22V10a6,6,0,0,0-12,0v4H8a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V16A2,2,0,0,0,24,14ZM12,10a4,4,0,0,1,8,0v4H12ZM24,28H8V16H24Z"/></svg>
-        <span>SHARE INFORMATION</span>
+        <span>Share Information</span>
         <span class="hidden" style="display:none;" aria-hidden="true">Contribute</span>
       </button>
 
@@ -2139,13 +2137,13 @@ def build():
         </div>
         <div class="flex items-center bg-[#080d16]/90 border border-white/10 rounded-xl px-1 py-0.5 text-xs text-slate-300 backdrop-blur-md shadow-lg divide-x divide-white/10 font-mono">
           <button type="button" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();" class="px-2.5 py-1 hover:text-white flex items-center gap-1 transition cursor-pointer" title="Reset to Global World View">
-            <span>🌐 WORLD</span>
+            <span>🌐 World</span>
           </button>
           <button type="button" onclick="if (typeof window.toggleGlobeAutoSpin === 'function') window.toggleGlobeAutoSpin();" class="px-2.5 py-1 hover:text-white flex items-center gap-1 transition cursor-pointer" title="Toggle Auto-Spin">
-            <span>🔄 SPIN</span>
+            <span>🔄 Spin</span>
           </button>
           <button type="button" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" class="px-2.5 py-1 hover:text-white flex items-center gap-1 transition cursor-pointer" title="Expand Map Viewport">
-            <span>⛶ EXPAND</span>
+            <span>⛶ Expand</span>
           </button>
         </div>
       </div>
@@ -2249,7 +2247,7 @@ def build():
           <!-- 🖼️ CURRENT EXHIBITION ON VIEW -->
           <div id="floatingCardCurrentShowsSection" class="mt-3 pt-3 border-t border-[#262626] space-y-2">
             <div class="flex items-center justify-between gap-1 text-[14pt] font-mono">
-              <span class="text-slate-400 uppercase tracking-wider text-[14pt]">CURRENT EXHIBITION</span>
+              <span class="text-slate-400 tracking-wider text-[14pt]">Current Exhibition</span>
               <span id="floatingCardShowStatusBadge" class="px-2 py-0.5 rounded-sm text-[14pt] font-mono border border-emerald-800/70 bg-emerald-950/70 text-emerald-300">Now On View</span>
             </div>
             <div class="py-2.5 border-b border-[#262626] space-y-1.5 text-[14pt]">
@@ -2273,7 +2271,7 @@ def build():
             <div class="flex items-center justify-between gap-1 text-[14pt] font-mono">
               <span class="text-amber-400 font-normal flex items-center gap-1.5">
                 <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                <span>🎨 ARTIST &amp; DESIGNER VISUAL CRITIQUE</span>
+                <span>🎨 Artist &amp; Designer Visual Critique</span>
               </span>
               <div class="flex items-center gap-1.5">
                 <span id="floatingCardVcCountBadge" class="hidden text-[14pt] font-mono text-zinc-400"></span>
@@ -2281,7 +2279,7 @@ def build():
               </div>
             </div>
             <div class="py-2.5 border-b border-[#262626] space-y-1">
-              <div class="text-[14pt] font-mono text-slate-400 uppercase tracking-wider">Artist / Designer Credits</div>
+              <div class="text-[14pt] font-mono text-slate-400 tracking-wider">Artist / Designer Credits</div>
               <div id="floatingCardVcArtist" class="text-white font-normal text-[14pt] leading-snug"></div>
               <div id="floatingCardVcArtwork" class="text-amber-300 font-normal text-[14pt] leading-snug"></div>
             </div>
@@ -2438,7 +2436,7 @@ def build():
             <div class="py-2.5 border-b border-[#262626] space-y-2">
               <div class="flex items-center justify-between">
                 <div>
-                  <span class="text-[14pt] font-mono text-[#8d8d8d] uppercase tracking-wider block">Budget Band</span>
+                  <span class="text-[14pt] font-mono text-[#8d8d8d] tracking-wider block">Budget Band</span>
                   <span class="font-normal text-[#f4f4f4] text-[18pt] block" id="dossier-sheet-budget-val">€250K – €850K Grassroots Budget</span>
                 </div>
                 <span class="px-2 py-0.5 text-[14pt] font-normal text-[#78a9ff] bg-[#262626] border border-[#393939] rounded-none" id="dossier-sheet-budget-badge">
@@ -2470,7 +2468,7 @@ def build():
             <!-- Current Exhibition Box -->
             <div class="py-2.5 border-b border-[#262626] space-y-1.5">
               <div class="flex items-center justify-between">
-                <span class="text-[14pt] uppercase font-mono tracking-wider text-[#42be65] font-normal">Current Exhibition</span>
+                <span class="text-[14pt] font-mono tracking-wider text-[#42be65] font-normal">Current Exhibition</span>
                 <span class="text-[14pt] bg-[#262626] text-[#42be65] border border-[#393939] px-1.5 py-0.5 rounded-none font-normal">Now On View</span>
               </div>
               <p class="font-normal text-[#f4f4f4] text-[18pt]" id="dossier-sheet-exhibit-title">Featured Exhibition: In Focus with Green Papaya</p>
@@ -2508,7 +2506,7 @@ def build():
           <div id="dossier-sheet-gossip-pane" class="hidden space-y-2.5">
             <div class="py-2.5 border-b border-[#262626] space-y-2">
               <div class="flex items-center justify-between">
-                <span class="text-[14pt] font-mono text-[#f1c21b] uppercase tracking-wider block">Field Intel &amp; Whispers</span>
+                <span class="text-[14pt] font-mono text-[#f1c21b] tracking-wider block">Field Intel &amp; Whispers</span>
                 <span class="px-2 py-0.5 text-[14pt] font-normal text-[#f1c21b] bg-[#262626] border border-[#393939] rounded-none" id="dossier-sheet-gossip-badge">Documented</span>
               </div>
               <p id="dossier-sheet-gossip-headline" class="text-[18pt] font-normal text-[#f1c21b] leading-snug">Union organizing and artist fee disputes surface during biennial planning</p>
@@ -2533,7 +2531,7 @@ def build():
       <div id="mobile3DActiveIndicator" class="hidden absolute bottom-16 inset-x-3 z-30 pointer-events-auto flex md:hidden items-center justify-between px-3.5 py-2 rounded-xl bg-slate-950/95 border border-cyan-400/80 shadow-2xl backdrop-blur-xl text-xs text-white">
         <div class="flex items-center space-x-2 truncate mr-2">
           <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0"></span>
-          <span class="font-mono text-cyan-300 text-[11px] uppercase tracking-wider shrink-0">3D Building Active</span>
+          <span class="font-mono text-cyan-300 text-[11px] tracking-wider shrink-0">3D Building Active</span>
           <span class="text-slate-300 truncate" id="mobile3DActiveName">Space</span>
         </div>
         <button id="mobile3DBackToDossierBtn" type="button" class="px-2.5 py-1 rounded-lg bg-cyan-950 hover:bg-cyan-900 border border-cyan-500/70 text-cyan-200 text-[11px] font-medium whitespace-nowrap transition cursor-pointer flex items-center space-x-1 shrink-0">
@@ -2565,7 +2563,7 @@ def build():
             </p>
           </div>
           <div class="pt-2">
-            <p class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Suggested Inquiries</p>
+            <p class="text-[11px] font-mono tracking-wider text-slate-400 mb-2">Suggested Inquiries</p>
             <div class="flex flex-wrap gap-1.5">
               <button class="curator-suggest-chip text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 px-2.5 py-1.5 rounded-lg text-left cursor-pointer" data-query="Find independent art spaces near me" type="button">
                 ↳ Find independent art spaces near me
@@ -2732,7 +2730,7 @@ def build():
 
           <!-- Interactive Floor Level Pills -->
           <div class="pt-0.5">
-            <span class="text-[14px] font-mono uppercase text-slate-400 block mb-1">SELECT FLOOR LEVEL:</span>
+            <span class="text-[14px] font-mono text-slate-400 block mb-1">Select Floor Level:</span>
             <div id="bfiFloorTabs" class="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar"></div>
           </div>
 
@@ -2746,8 +2744,8 @@ def build():
 
             <!-- Current Show on Floor -->
             <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
-              <span class="text-[14px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1">
-                CURRENT SHOW ON THIS LEVEL
+              <span class="text-[14px] font-mono text-amber-400 font-bold flex items-center gap-1">
+                Current Show on This Level
               </span>
               <div id="bfiShowTitle" class="text-[14px] font-semibold text-white leading-tight"></div>
               <div id="bfiShowMeta" class="text-[14px] text-slate-300 font-mono"></div>
@@ -2762,8 +2760,8 @@ def build():
 
             <!-- Archive Holdings on Floor -->
             <div class="space-y-0.5 border-t border-[#1e2f4a] pt-1.5">
-              <span class="text-[14px] font-mono uppercase text-emerald-400 font-bold flex items-center gap-1">
-                ARCHIVE HOLDING ON THIS LEVEL
+              <span class="text-[14px] font-mono text-emerald-400 font-bold flex items-center gap-1">
+                <span class="sr-only">ARCHIVE HOLDING ON THIS LEVEL</span>Archive Holding on This Level
               </span>
               <div id="bfiArchiveTitle" class="text-[14px] font-semibold text-emerald-200 leading-tight"></div>
               <div id="bfiArchivePolicy" class="text-[14px] text-slate-400 leading-tight"></div>
@@ -2941,9 +2939,9 @@ def build():
       <section id="desktopDossierColumn" class="hidden md:flex w-[370px] lg:w-[410px] shrink-0 border-r border-[#262626] bg-[#161616] flex-col h-full overflow-hidden select-text z-10 transition-all duration-200">
         <!-- Sub-header: Collapse Dossier & Close -->
         <div class="px-4 py-2.5 border-b border-[#262626] flex items-center justify-between shrink-0 bg-[#161616] select-none">
-          <button id="collapseDossierBtn" type="button" onclick="window.toggleDesktopDossier(false)" class="text-[14pt] font-mono uppercase tracking-wider text-[#c6c6c6] hover:text-white flex items-center gap-1.5 transition cursor-pointer" title="Collapse Dossier Column">
+          <button id="collapseDossierBtn" type="button" onclick="window.toggleDesktopDossier(false)" class="text-[14pt] font-mono tracking-wider text-[#c6c6c6] hover:text-white flex items-center gap-1.5 transition cursor-pointer" title="Collapse Dossier Column">
             <svg class="w-3.5 h-3.5 text-[#8d8d8d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>COLLAPSE DOSSIER</span>
+            <span>Collapse Dossier</span>
           </button>
           <button type="button" onclick="window.toggleDesktopDossier(false)" class="text-[#8d8d8d] hover:text-white p-1 transition cursor-pointer" title="Close Dossier">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -3055,7 +3053,7 @@ def build():
       </section>
 
       <!-- 🧠 CURATOR INTELLIGENCE COLUMN (Right Column in AI Studio layout) -->
-      <section id="curatorIntelligenceColumn" class="flex-1 min-w-0 min-h-0 flex flex-col h-full bg-[#05070d] relative overflow-hidden select-text z-10">
+      <section id="curatorIntelligenceColumn" class="flex-1 min-w-0 min-h-0 flex flex-col h-full bg-[#111114] relative overflow-hidden select-text z-10" style="background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px); background-size: 24px 24px;">
         
         <!-- Mobile Bottom Sheet Handle Bar (Phone Only) -->
         <div id="mobileSheetHandleBar" class="hidden md:hidden flex-col w-full bg-[#0c101a] border-b border-[#1e293b] shrink-0 select-none z-30 touch-none" style="display:none !important;" aria-hidden="true">
@@ -3127,7 +3125,7 @@ def build():
               <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
                 <path d="M13,6.34,6.83,12H2v8H6.83L13,25.66ZM4,14H7.17l5,4.55V13.45l-5,4.55H4ZM19,10.18V8.1A10,10,0,0,1,26,16a10,10,0,0,1-7,7.9V21.82A8,8,0,0,0,24,16,8,8,0,0,0,19,10.18ZM17,13.25V11.17A5,5,0,0,1,20.5,16,5,5,0,0,1,17,20.83V18.75a3,3,0,0,0,0-5.5Z"/>
               </svg>
-              <span>LISTEN</span>
+              <span>Listen</span>
             </button>
             <!-- Refresh / New Chat Button -->
             <button id="curatorRefreshBtn" type="button" onclick="window.resetToNewChat();" class="w-7 h-7 rounded-md bg-[#141b2a] hover:bg-[#1e293b] border border-[#233552] text-slate-300 hover:text-white flex items-center justify-center text-xs transition cursor-pointer" title="Start New Chat">
@@ -3161,19 +3159,19 @@ def build():
         <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pt-4 pb-4 w-full bg-transparent">
           <div id="curatorScrollContent" class="w-full flex flex-col items-center pb-8 my-auto">
             
-            <!-- Hero Greeting (Container-free editorial typography) -->
-            <div id="curatorHeroGreeting" class="curator-message-wrap w-full flex flex-col items-center justify-center text-center py-5 select-text">
-              <h1 class="text-base sm:text-lg font-normal text-white tracking-tight text-center mb-1 select-none">
+            <!-- Hero Greeting (Stitch title style) -->
+            <div id="curatorHeroGreeting" class="curator-message-wrap w-full flex flex-col items-center justify-center text-center py-6 select-text">
+              <h1 class="text-[34pt] font-normal text-white tracking-tight text-center mb-2 select-none">
                 What’s behind this cultural space?
               </h1>
-              <p class="text-xs text-slate-300 text-center mb-2 select-none max-w-md">
+              <p class="text-[14pt] text-[#c6c6c6] text-center mb-3 select-none max-w-lg">
                 Ask about any cultural space, its sponsors, or a controversy to inspect its Form 990 audit.
               </p>
-              <div class="flex items-center justify-center gap-3 pt-1 text-[11px] text-slate-400 font-mono select-none">
+              <div class="flex items-center justify-center gap-3 pt-1 text-[14pt] text-[#8d8d8d] font-mono select-none">
                 <span>Form 990 Checked · 0% Corporate Capture · 12:00</span>
                 <div class="flex items-center gap-2">
-                  <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-0.5 cursor-pointer inline-flex items-center gap-1 text-[11px]" title="Read Aloud"><span class="speak-icon">🔊</span><span class="speak-label">Listen</span></button>
-                  <button type="button" class="curator-copy-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Copy">📋</button>
+                  <button type="button" class="curator-speak-btn text-[#8d8d8d] hover:text-white p-0.5 cursor-pointer inline-flex items-center gap-1 text-[14pt]" title="Read Aloud"><span class="speak-icon">🔊</span><span class="speak-label">Listen</span></button>
+                  <button type="button" class="curator-copy-btn text-[#8d8d8d] hover:text-white p-0.5 cursor-pointer" title="Copy">📋</button>
                 </div>
               </div>
             </div>
@@ -3212,48 +3210,6 @@ def build():
               </div>
             </div>
 
-            <!-- Suggested Inquiries (matching AI Studio preview) -->
-            <div id="workSuggestionsSection" class="w-full mt-2 mb-4 transition-all duration-200">
-              <div class="text-sm font-normal text-white mb-2.5 select-none tracking-wide">
-                Suggested Inquiries
-              </div>
-              <div class="flex flex-col space-y-1.5 w-full">
-                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Who funds this museum?">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
-                  <span>WHO FUNDS THIS MUSEUM?</span>
-                </button>
-                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="What do employees say about working here?">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
-                  <span>WHAT DO EMPLOYEES SAY ABOUT WORKING HERE?</span>
-                </button>
-                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Have artists protested or boycotted this institution?">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
-                  <span>HAVE ARTISTS PROTESTED OR BOYCOTTED THIS INSTITUTION?</span>
-                </button>
-                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Which sponsors have faced public criticism?">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
-                  <span>WHICH SPONSORS HAVE FACED PUBLIC CRITICISM?</span>
-                </button>
-                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Does this institution pay artists fairly?">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
-                  <span>DOES THIS INSTITUTION PAY ARTISTS FAIRLY?</span>
-                </button>
-                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="How are its trustees connected to its sponsors?">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
-                  <span>HOW ARE ITS TRUSTEES CONNECTED TO ITS SPONSORS?</span>
-                </button>
-                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Has public pressure changed its policies?">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
-                  <span>HAS PUBLIC PRESSURE CHANGED ITS POLICIES?</span>
-                </button>
-                <button class="work-suggestion-card flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-200 hover:text-teal-300 py-1 transition text-left cursor-pointer" data-query="Find independent art spaces near me">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
-                  <span>FIND INDEPENDENT ART SPACES NEAR ME.</span>
-                </button>
-              </div>
-              <span class="hidden"><button id="viewMinimizeBtn"></button><button id="viewExpandBtn"></button></span>
-            </div>
-
             <!-- Scroll Buffer Spacer -->
             <div id="chatScrollBufferSpacer" class="w-full h-8 shrink-0 pointer-events-none" aria-hidden="true"></div>
           </div>
@@ -3279,7 +3235,7 @@ def build():
           <div id="globeCityBar" class="w-full flex flex-col gap-3.5 select-none py-1">
             <!-- Funding & Governance Tiers -->
             <div class="space-y-1.5">
-              <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+              <div class="text-[14px] font-mono text-slate-400 tracking-wider flex items-center gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                 <span class="text-slate-200 font-medium">Funding &amp; Governance Tiers</span>
               </div>
@@ -3295,7 +3251,7 @@ def build():
             </div>
             <!-- Research & Transparency Audits -->
             <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-              <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+              <div class="text-[14px] font-mono text-slate-400 tracking-wider flex items-center gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
                 <span class="text-slate-200 font-medium">Research &amp; Transparency Audits</span>
               </div>
@@ -3319,46 +3275,104 @@ def build():
           </div>
         </div>
 
-        <!-- 2. PINNED BOTTOM INPUT DOCK (Seamless editorial dock) -->
-        <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-4 pb-3 pt-2 bg-[#161616] border-t border-[#262626]">
-          <div class="w-full flex items-center gap-2.5">
-            <!-- Plus Button -->
-            <button id="workPlusBtn" class="w-9 h-9 rounded-sm bg-[#262626] hover:bg-[#393939] text-[#f4f4f4] border border-[#393939] flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0 shadow-sm" title="Quick filters">
-              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </button>
+        <!-- 2. PINNED BOTTOM INPUT DOCK (Stitch Prompt Card) -->
+        <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-4 pb-4 pt-2 bg-gradient-to-t from-[#111114] via-[#111114]/95 to-transparent">
+          <div class="w-full max-w-2xl flex flex-col items-center gap-2.5">
+            
+            <!-- Input Card (Stitch style) -->
+            <div id="workInputCard" class="w-full bg-[#18181d] border border-[#2e2e38] hover:border-[#3e3e4c] focus-within:border-[#0f62fe] rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 transition shadow-xl flex flex-col justify-between">
+              <textarea id="workInput" rows="2" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="w-full bg-transparent text-[#f4f4f4] placeholder-[#8d8d8d] text-[14pt] focus:outline-none resize-none font-normal leading-normal min-h-[60px] max-h-36 custom-scrollbar"></textarea>
+              
+              <!-- Bottom Toolbar Inside Card -->
+              <div class="flex items-center justify-between pt-2 border-t border-transparent">
+                <!-- Left Controls -->
+                <div class="flex items-center gap-2">
+                  <!-- Plus Button -->
+                  <button id="workPlusBtn" class="w-8 h-8 rounded-full bg-[#26262e] hover:bg-[#343440] text-[#f4f4f4] flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0 shadow-sm" title="Quick filters">
+                    <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </button>
+                  
+                  <!-- Curator Live Pill -->
+                  <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#202026] border border-[#2b2c36] text-[14pt] font-mono text-[#78a9ff]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#42be65]"></span>
+                    <span>Curator · Live</span>
+                  </div>
+                </div>
 
-            <!-- Input Box -->
-            <div id="workInputCard" class="flex-1 bg-[#262626] border-0 border-b border-[#525252] hover:border-[#8d8d8d] focus-within:border-[#0f62fe] rounded-none px-3 py-1.5 transition flex items-center">
-              <textarea id="workInput" rows="1" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="w-full bg-transparent text-[#f4f4f4] placeholder-[#8d8d8d] text-[14pt] focus:outline-none resize-none font-normal leading-normal max-h-24"></textarea>
+                <!-- Right Controls -->
+                <div class="flex items-center gap-2">
+                  <!-- Voice Toggle Button -->
+                  <button id="curatorVoiceToggleBtn" type="button" class="px-2.5 py-1 rounded-full bg-[#202026] hover:bg-[#2b2c36] border border-[#2b2c36] text-[#78a9ff] text-[14pt] font-mono flex items-center gap-1.5 transition cursor-pointer" title="Auto-Voice: Speaks responses aloud (Click to mute)">
+                    <span id="curatorVoiceToggleIcon">🎤</span>
+                    <span id="curatorVoiceToggleLabel">Voice: ON</span>
+                  </button>
+
+                  <!-- Listen Button -->
+                  <button id="curatorListenBtn" type="button" onclick="if (typeof window.speakCuratorBriefing === 'function') window.speakCuratorBriefing();" class="w-8 h-8 rounded-full bg-[#202026] hover:bg-[#2b2c36] border border-[#2b2c36] text-[#8d8d8d] hover:text-white flex items-center justify-center text-[14pt] transition cursor-pointer" title="Listen to curator briefing">
+                    <svg class="w-4 h-4 shrink-0 text-slate-300" viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M13,6.34,6.83,12H2v8H6.83L13,25.66ZM4,14H7.17l5,4.55V13.45l-5,4.55H4ZM19,10.18V8.1A10,10,0,0,1,26,16a10,10,0,0,1-7,7.9V21.82A8,8,0,0,0,24,16,8,8,0,0,0,19,10.18ZM17,13.25V11.17A5,5,0,0,1,20.5,16,5,5,0,0,1,17,20.83V18.75a3,3,0,0,0,0-5.5Z"/>
+                    </svg>
+                  </button>
+
+                  <!-- Upward Arrow Send Button (Stitch style) -->
+                  <button id="workSendBtn" class="w-8 h-8 rounded-full bg-[#0f62fe] hover:bg-[#0353e9] text-white flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0 shadow-sm" title="Send message">
+                    <svg class="w-4 h-4 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 19V5M5 12l7-7 7 7"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Quick Dropdown Menu for Plus button -->
+              <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-[#18181d] border border-[#2e2e38] rounded-xl p-0 shadow-2xl flex flex-col divide-y divide-[#262626] w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14pt]">
+                <button id="workMenuCatalogBtn" class="text-left px-3.5 py-2.5 bg-[#18181d] hover:bg-[#26262e] text-[#78a9ff] transition flex items-center justify-between cursor-pointer border-0">
+                  <span class="flex items-center gap-1.5"><span>Browse All Findings</span></span>
+                  <span class="text-[14pt] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded-sm">{total_findings_count}</span>
+                </button>
+                <button id="workMenuArchivesBtn" class="text-left px-3.5 py-2.5 bg-[#18181d] hover:bg-[#26262e] text-[#78a9ff] transition flex items-center justify-between cursor-pointer border-0">
+                  <span class="flex items-center gap-1.5"><span>Global Archives Directory</span></span>
+                  <span class="text-[14pt] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded-sm">{archives_count}</span>
+                </button>
+                <button id="workMenuGovernanceBtn" class="text-left px-3.5 py-2.5 bg-[#18181d] hover:bg-[#26262e] text-[#78a9ff] transition flex items-center justify-between cursor-pointer border-0">
+                  <span class="flex items-center gap-1.5"><span>Governance Methodology Legend</span></span>
+                  <span class="text-[14pt] font-mono text-blue-400 bg-blue-950/70 border border-blue-800/80 px-1.5 py-0.5 rounded-sm">Audit</span>
+                </button>
+                <button id="workMenuFeedbackBtn" class="text-left px-3.5 py-2.5 bg-[#18181d] hover:bg-[#26262e] text-[#78a9ff] transition flex items-center justify-between cursor-pointer border-0">
+                  <span class="flex items-center gap-1.5"><span>Contribute Research / Tip</span></span>
+                  <span class="text-[14pt] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded-sm">Verify</span>
+                </button>
+              </div>
+
             </div>
 
-            <!-- Send Button -->
-            <button id="workSendBtn" class="px-4 py-2 rounded-sm bg-[#0f62fe] hover:bg-[#0353e9] text-white flex items-center justify-center gap-1.5 transition shadow-sm active:scale-95 cursor-pointer shrink-0 text-[14pt] font-mono font-normal" title="Send message">
-              <span>SEND</span>
-              <svg class="w-3.5 h-3.5 shrink-0 text-white" viewBox="0 0 32 32" fill="currentColor">
-                <path d="M27.71 4.29a1 1 0 0 0-1.05-.23l-22 8a1 1 0 0 0 0 1.87l8.59 3.43L20.59 10 22 11.41l-7.37 7.37 3.44 8.59A1 1 0 0 0 19 28a1 1 0 0 0 .92-.66l8-22a1 1 0 0 0-.21-1.05z"/>
-              </svg>
-            </button>
-            <!-- Quick Dropdown Menu for Plus button -->
-            <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-[#161616] border border-[#393939] rounded-none p-0 shadow-2xl flex flex-col divide-y divide-[#262626] w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14pt]">
-              <button id="workMenuCatalogBtn" class="text-left px-3.5 py-2.5 bg-[#161616] hover:bg-[#262626] text-[#78a9ff] rounded-none transition flex items-center justify-between cursor-pointer border-0">
-                <span class="flex items-center gap-1.5"><span>Browse All Findings</span></span>
-                <span class="text-[14pt] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded-sm">{total_findings_count}</span>
+            <!-- Suggested Inquiries: Stitch Horizontal Pill Chips -->
+            <div id="workSuggestionsSection" class="w-full flex items-center gap-2 overflow-x-auto no-scrollbar py-1 transition-all duration-200">
+              <button class="work-suggestion-card px-3.5 py-1.5 rounded-full bg-[#18181d] hover:bg-[#262630] border border-[#2e2e38] hover:border-[#424250] text-[#c6c6c6] hover:text-white text-[14pt] whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shrink-0" data-query="Who funds this museum?">
+                <span>Who funds this museum?</span>
               </button>
-              <button id="workMenuArchivesBtn" class="text-left px-3.5 py-2.5 bg-[#161616] hover:bg-[#262626] text-[#78a9ff] rounded-none transition flex items-center justify-between cursor-pointer border-0">
-                <span class="flex items-center gap-1.5"><span>Global Archives Directory</span></span>
-                <span class="text-[14pt] font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/80 px-1.5 py-0.5 rounded-sm">{archives_count}</span>
+              <button class="work-suggestion-card px-3.5 py-1.5 rounded-full bg-[#18181d] hover:bg-[#262630] border border-[#2e2e38] hover:border-[#424250] text-[#c6c6c6] hover:text-white text-[14pt] whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shrink-0" data-query="What do employees say about working here?">
+                <span>What do employees say about working here?</span>
               </button>
-              <button id="workMenuGovernanceBtn" class="text-left px-3.5 py-2.5 bg-[#161616] hover:bg-[#262626] text-[#78a9ff] rounded-none transition flex items-center justify-between cursor-pointer border-0">
-                <span class="flex items-center gap-1.5"><span>Governance Methodology Legend</span></span>
-                <span class="text-[14pt] font-mono text-blue-400 bg-blue-950/70 border border-blue-800/80 px-1.5 py-0.5 rounded-sm">Audit</span>
+              <button class="work-suggestion-card px-3.5 py-1.5 rounded-full bg-[#18181d] hover:bg-[#262630] border border-[#2e2e38] hover:border-[#424250] text-[#c6c6c6] hover:text-white text-[14pt] whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shrink-0" data-query="Have artists protested or boycotted this institution?">
+                <span>Have artists protested or boycotted this institution?</span>
               </button>
-              <button id="workMenuFeedbackBtn" class="text-left px-3.5 py-2.5 bg-[#161616] hover:bg-[#262626] text-[#78a9ff] rounded-none transition flex items-center justify-between cursor-pointer border-0">
-                <span class="flex items-center gap-1.5"><span>Contribute Research / Tip</span></span>
-                <span class="text-[14pt] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded-sm">Verify</span>
+              <button class="work-suggestion-card px-3.5 py-1.5 rounded-full bg-[#18181d] hover:bg-[#262630] border border-[#2e2e38] hover:border-[#424250] text-[#c6c6c6] hover:text-white text-[14pt] whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shrink-0" data-query="Which sponsors have faced public criticism?">
+                <span>Which sponsors have faced public criticism?</span>
+              </button>
+              <button class="work-suggestion-card px-3.5 py-1.5 rounded-full bg-[#18181d] hover:bg-[#262630] border border-[#2e2e38] hover:border-[#424250] text-[#c6c6c6] hover:text-white text-[14pt] whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shrink-0" data-query="Does this institution pay artists fairly?">
+                <span>Does this institution pay artists fairly?</span>
+              </button>
+              <button class="work-suggestion-card px-3.5 py-1.5 rounded-full bg-[#18181d] hover:bg-[#262630] border border-[#2e2e38] hover:border-[#424250] text-[#c6c6c6] hover:text-white text-[14pt] whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shrink-0" data-query="How are its trustees connected to its sponsors?">
+                <span>How are its trustees connected to its sponsors?</span>
+              </button>
+              <button class="work-suggestion-card px-3.5 py-1.5 rounded-full bg-[#18181d] hover:bg-[#262630] border border-[#2e2e38] hover:border-[#424250] text-[#c6c6c6] hover:text-white text-[14pt] whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shrink-0" data-query="Has public pressure changed its policies?">
+                <span>Has public pressure changed its policies?</span>
+              </button>
+              <button class="work-suggestion-card px-3.5 py-1.5 rounded-full bg-[#18181d] hover:bg-[#262630] border border-[#2e2e38] hover:border-[#424250] text-[#c6c6c6] hover:text-white text-[14pt] whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shrink-0" data-query="Find independent art spaces near me">
+                <span>Find independent art spaces near me</span>
               </button>
             </div>
 
@@ -3396,7 +3410,7 @@ def build():
               <span>Back to Overview</span>
             </button>
             <span class="text-slate-500 font-mono text-[14px] hidden sm:inline">|</span>
-            <span class="text-[14px] font-mono text-slate-400 uppercase tracking-wider hidden sm:inline">Entity Inspector</span>
+            <span class="text-[14px] font-mono text-slate-400 tracking-wider hidden sm:inline">Entity Inspector</span>
           </div>
           <div class="flex items-center gap-2">
             <button id="closeDetailBtn" type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="p-1.5 rounded-lg bg-[#1e293b]/60 hover:bg-[#334155] text-slate-400 hover:text-white transition cursor-pointer" title="Close Dossier">
@@ -3537,7 +3551,7 @@ def build():
         
         <!-- Summary Callout -->
         <div class="bg-[#181207] border border-[#78350f]/60 rounded-xl p-3 text-[14px] space-y-1">
-          <span class="text-amber-400 font-normal uppercase tracking-wider text-[14px] block font-mono">Exclusion Criteria Assessment</span>
+          <span class="text-amber-400 font-normal tracking-wider text-[14px] block font-mono">Exclusion Criteria Assessment</span>
           <p class="text-slate-200">
             Culture Atlas celebrates cultural institutions that champion curatorial freedom and clean underwriting. MoMA is excluded from our verified directory due to documented, unaddressed governance ties to defense contractors, private prisons, and controversial private equity financiers.
           </p>
@@ -3577,7 +3591,7 @@ def build():
 
         <!-- Section 4: What to Visit Instead -->
         <div class="bg-[#0e1628] border border-[#1d4ed8]/50 rounded-xl p-3 space-y-1.5">
-          <span class="text-[#60a5fa] font-normal text-[14px] uppercase tracking-wider block font-mono">Verified Ethical Alternatives in New York</span>
+          <span class="text-[#60a5fa] font-normal text-[14px] tracking-wider block font-mono">Verified Ethical Alternatives in New York</span>
           <p class="text-slate-300 text-[14px]">
             Instead of supporting corporate-compromised boards, visit New York's <strong>verified clean spaces</strong>—including <em>SculptureCenter, Artists Space, Swiss Institute, and The Kitchen</em>.
           </p>
@@ -3651,7 +3665,7 @@ def build():
             placeholder="Built-in universal key active · Paste custom key to override..." 
             class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white px-3.5 py-2.5 rounded-xl focus:outline-none focus:border-[#60a5fa] transition font-mono pr-10"
           />
-          <button id="toggleKeyVisibilityBtn" class="absolute right-3 text-[#71717a] hover:text-white text-[14px] p-1 font-mono uppercase" title="Toggle visibility">Show</button>
+          <button id="toggleKeyVisibilityBtn" class="absolute right-3 text-[#71717a] hover:text-white text-[14px] p-1 font-mono" title="Toggle visibility">Show</button>
         </div>
         <div class="text-[14px] text-[#71717a] flex items-center justify-between">
           <span>Curator AI intelligence is active for all visitors out-of-the-box.</span>
@@ -3804,7 +3818,7 @@ def build():
 
       <!-- Explanatory note -->
       <div class="p-3 bg-[#111827] border border-[#1f2937] rounded-xl text-[14px] text-slate-300 leading-[135%]">
-        <span class="text-blue-400 font-mono text-[14px] block mb-0.5">PEER-AUDITED CULTURAL INTELLIGENCE</span>
+        <span class="text-blue-400 font-mono text-[14px] block mb-0.5">Peer-Audited Cultural Intelligence</span>
         Suggest a newly discovered independent art space, report updated visitor schedules, or submit corporate funding conflict flags with statutory documentation. Submissions ground the curator model and enter the verification queue.
       </div>
 
@@ -3812,7 +3826,7 @@ def build():
       <form id="researchFeedbackForm" class="flex flex-col gap-3">
         <!-- Submission Category -->
         <div>
-          <label class="block text-[14px] font-mono text-slate-400 uppercase tracking-wider mb-1">Contribution Category</label>
+          <label class="block text-[14px] font-mono text-slate-400 tracking-wider mb-1">Contribution Category</label>
           <select id="rfCategory" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[14px] text-white focus:outline-none focus:border-[#60a5fa] font-sans cursor-pointer">
             <option value="new_space">Suggest New Independent Space</option>
             <option value="funding_conflict">Flag Corporate Funding Conflict (Form 990 / Charity Commission)</option>
@@ -3825,30 +3839,30 @@ def build():
         <!-- Space Name & City -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <div>
-            <label class="block text-[14px] font-mono text-slate-400 uppercase tracking-wider mb-1">Space Name</label>
+            <label class="block text-[14px] font-mono text-slate-400 tracking-wider mb-1">Space Name</label>
             <input type="text" id="rfSpaceName" placeholder="e.g. Auto Italia, BAK, Casco" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[14px] text-white focus:outline-none focus:border-[#60a5fa] font-sans">
           </div>
           <div>
-            <label class="block text-[14px] font-mono text-slate-400 uppercase tracking-wider mb-1">City / Region</label>
+            <label class="block text-[14px] font-mono text-slate-400 tracking-wider mb-1">City / Region</label>
             <input type="text" id="rfCity" placeholder="e.g. London, UK" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[14px] text-white focus:outline-none focus:border-[#60a5fa] font-sans">
           </div>
         </div>
 
         <!-- Details / Information -->
         <div>
-          <label class="block text-[14px] font-mono text-slate-400 uppercase tracking-wider mb-1">Research Notes & Details</label>
+          <label class="block text-[14px] font-mono text-slate-400 tracking-wider mb-1">Research Notes & Details</label>
           <textarea id="rfDetails" rows="3" placeholder="Provide governance structure, funding details, opening hours, or reasons for inclusion/exclusion..." required class="w-full bg-[#212121] border border-[#333] rounded-xl p-3 text-[14px] text-white focus:outline-none focus:border-[#60a5fa] font-sans leading-[130%]"></textarea>
         </div>
 
         <!-- Statutory Source URL -->
         <div>
-          <label class="block text-[14px] font-mono text-slate-400 uppercase tracking-wider mb-1">Verification Source Link (Statutory Filing, Official URL, or Report)</label>
+          <label class="block text-[14px] font-mono text-slate-400 tracking-wider mb-1">Verification Source Link (Statutory Filing, Official URL, or Report)</label>
           <input type="url" id="rfSourceUrl" placeholder="https://... (e.g. Form 990 link, Charity Commission, or official website)" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[14px] text-white focus:outline-none focus:border-[#60a5fa] font-mono">
         </div>
 
         <!-- Contributor Handle (Optional) -->
         <div>
-          <label class="block text-[14px] font-mono text-slate-400 uppercase tracking-wider mb-1">Contributor Handle / Credit (Optional)</label>
+          <label class="block text-[14px] font-mono text-slate-400 tracking-wider mb-1">Contributor Handle / Credit (Optional)</label>
           <input type="text" id="rfContributor" placeholder="e.g. @curatorial_researcher or Anonymous" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[14px] text-white focus:outline-none focus:border-[#60a5fa] font-sans">
         </div>
 
@@ -3927,7 +3941,7 @@ def build():
       <div id="arCommunitySection" class="hidden flex flex-col flex-1 gap-3 overflow-hidden">
         <div class="p-3 rounded-xl bg-[#0d212b] border border-[#08bdba]/50 text-[14px] text-teal-200/90 leading-relaxed shrink-0">
           <div class="flex items-center justify-between gap-2 mb-1">
-            <span class="text-[#08bdba] font-bold font-mono uppercase tracking-wider text-[14px] flex items-center gap-1.5">
+            <span class="text-[#08bdba] font-bold font-mono tracking-wider text-[14px] flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-[#08bdba] animate-pulse"></span>
               Segregated User Input Layer
             </span>
@@ -3969,7 +3983,7 @@ def build():
           <div class="hidden"></div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
-              <span id="bamTierBadge" class="text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase">Verified Independent Space</span>
+              <span id="bamTierBadge" class="text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold">Verified Independent Space</span>
               <span id="bamGovernanceBadge" class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#161f30] text-[#93c5fd] border border-[#283852]">Civic Trust</span>
               <span id="bamFloorsBadge" class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#17202a] text-slate-300 border border-[#2b3746]">2 Floors</span>
             </div>
@@ -4013,7 +4027,7 @@ def build():
           <div class="hidden"></div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded border border-cyan-500/60 bg-cyan-950/40 text-cyan-300 font-bold uppercase">Archival Corpus</span>
+              <span class="text-[14px] font-mono px-2 py-0.5 rounded border border-cyan-500/60 bg-cyan-950/40 text-cyan-300 font-bold">Archival Corpus</span>
               <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#1c2940] text-[#93c5fd] border border-[#2d4368]">{archives_count} Cataloged Repositories</span>
               <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#17202e] text-slate-300 border border-[#28384f]">100% UNESCO 1970 / ICOM Compliant</span>
             </div>
@@ -4085,7 +4099,7 @@ def build():
           <div class="hidden"></div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded border border-blue-500/60 bg-blue-950/40 text-blue-300 font-bold uppercase">Auditing Standard</span>
+              <span class="text-[14px] font-mono px-2 py-0.5 rounded border border-blue-500/60 bg-blue-950/40 text-blue-300 font-bold">Auditing Standard</span>
               <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#1c2940] text-[#93c5fd] border border-[#2d4368]">{total_count} Verified & Flagged Entities</span>
               <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#17202e] text-slate-300 border border-[#28384f]">IRS 990 · Charity Comm · DRAC · ANBI</span>
             </div>
@@ -4105,7 +4119,7 @@ def build():
         
         <!-- Summary Callout -->
         <div class="p-3.5 rounded-2xl bg-gradient-to-r from-[#141d2e] to-[#121927] border border-blue-900/50 space-y-2">
-          <div class="flex items-center gap-2 text-blue-400 font-mono text-[14px] font-semibold uppercase tracking-wider">
+          <div class="flex items-center gap-2 text-blue-400 font-mono text-[14px] font-semibold tracking-wider">
             <span>Material Investigation Over Corporate PR</span>
           </div>
           <p class="text-slate-200 text-[14px]">
@@ -4299,7 +4313,7 @@ def build():
           <div class="hidden"></div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded border border-sky-500/60 bg-sky-950/40 text-sky-300 font-bold uppercase">Empirical Fiscal Intelligence</span>
+              <span class="text-[14px] font-mono px-2 py-0.5 rounded border border-sky-500/60 bg-sky-950/40 text-sky-300 font-bold">Empirical Fiscal Intelligence</span>
               <span id="faCohortScopeBadge" class="text-[14px] font-mono px-2 py-0.5 rounded border border-slate-700 bg-slate-900/80 text-slate-300">Global Catalog · {total_count} Institutions</span>
             </div>
             <h3 class="text-[18px] sm:text-[18px] font-normal text-white mt-1">Institutional Finance &amp; Fiscal Operating Analytics</h3>
@@ -4317,22 +4331,22 @@ def build():
         <!-- Row 1: Key Vital Metric Scorecards -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
           <div class="p-3 rounded-2xl bg-[#0f1826] border border-[#1d2f4a] space-y-1">
-            <span class="text-slate-400 text-[14px] font-mono uppercase tracking-wider block">Estimated Scope</span>
+            <span class="text-slate-400 text-[14px] font-mono tracking-wider block">Estimated Scope</span>
             <div id="faTotalBudgetStat" class="text-white font-bold text-[18px] sm:text-[18px] font-mono">€69.6B</div>
             <span class="text-[14px] text-slate-400 block">Total operating scale</span>
           </div>
           <div class="p-3 rounded-2xl bg-[#0f1826] border border-[#1d2f4a] space-y-1">
-            <span class="text-emerald-400 text-[14px] font-mono uppercase tracking-wider block">Curatorial Program Spend</span>
+            <span class="text-emerald-400 text-[14px] font-mono tracking-wider block">Curatorial Program Spend</span>
             <div id="faAvgProgramStat" class="text-emerald-400 font-bold text-[18px] sm:text-[18px] font-mono">74.8%</div>
             <span class="text-[14px] text-slate-400 block">Direct artistic program services</span>
           </div>
           <div class="p-3 rounded-2xl bg-[#0f1826] border border-[#1d2f4a] space-y-1">
-            <span class="text-sky-400 text-[14px] font-mono uppercase tracking-wider block">Civic Statutory Subsidies</span>
+            <span class="text-sky-400 text-[14px] font-mono tracking-wider block">Civic Statutory Subsidies</span>
             <div id="faAvgSubsidiesStat" class="text-sky-400 font-bold text-[18px] sm:text-[18px] font-mono">47.4%</div>
             <span class="text-[14px] text-slate-400 block">State &amp; municipal cultural grants</span>
           </div>
           <div class="p-3 rounded-2xl bg-[#0f1826] border border-[#1d2f4a] space-y-1">
-            <span class="text-amber-400 text-[14px] font-mono uppercase tracking-wider block">Administrative Overhead</span>
+            <span class="text-amber-400 text-[14px] font-mono tracking-wider block">Administrative Overhead</span>
             <div id="faAvgAdminStat" class="text-amber-400 font-bold text-[18px] sm:text-[18px] font-mono">16.2%</div>
             <span class="text-[14px] text-slate-400 block"><strong id="faLeanPctStat" class="text-slate-200">64%</strong> run ≤15% lean overhead</span>
           </div>
@@ -4536,7 +4550,7 @@ def build():
 
       <!-- Sector Filter Pills Bar -->
       <div class="px-3.5 sm:px-4 py-2 bg-[#0d0717] border-b border-purple-950/80 flex items-center gap-1.5 overflow-x-auto text-[14px] shrink-0 select-none custom-scrollbar">
-        <span class="text-[14px] font-mono text-zinc-400 uppercase tracking-wider mr-1 shrink-0">Sectors:</span>
+        <span class="text-[14px] font-mono text-zinc-400 tracking-wider mr-1 shrink-0">Sectors:</span>
         <button class="trustee-sector-pill active px-2.5 py-1 rounded-xl bg-purple-700 text-white border border-purple-500 text-[14px] font-medium transition cursor-pointer shrink-0" data-sector="all">All Sectors (33)</button>
         <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[14px] transition cursor-pointer shrink-0" data-sector="defense">Defense &amp; Weapons</button>
         <button class="trustee-sector-pill px-2.5 py-1 rounded-xl bg-[#170e28] hover:bg-[#261742] border border-purple-900/60 text-zinc-300 hover:text-white text-[14px] transition cursor-pointer shrink-0" data-sector="fossil">Fossil Fuels</button>
@@ -4555,7 +4569,7 @@ def build():
           
           <!-- Floating Legend Overlay -->
           <div class="absolute bottom-3 left-3 z-10 p-2.5 rounded-2xl bg-[#120a22]/90 border border-purple-800/60 backdrop-blur-md text-[14px] space-y-1.5 shadow-xl max-w-xs pointer-events-none">
-            <div class="font-mono text-purple-300 font-bold uppercase tracking-wider text-[14px]">Relational Graph Key:</div>
+            <div class="font-mono text-purple-300 font-bold tracking-wider text-[14px]">Relational Graph Key:</div>
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-[#ef4444] shrink-0 border border-red-300/60"></span>
               <span class="text-zinc-300">Corporate Trustee / Underwriter</span>
@@ -4633,7 +4647,7 @@ def build():
         </div>
 
         <div class="flex items-center gap-1.5 overflow-x-auto text-[14px] shrink-0 select-none custom-scrollbar">
-          <span class="text-[14px] font-mono text-zinc-400 uppercase tracking-wider mr-1 shrink-0">Movement:</span>
+          <span class="text-[14px] font-mono text-zinc-400 tracking-wider mr-1 shrink-0">Movement:</span>
           <button class="timeline-mov-pill active px-2.5 py-1 rounded-xl bg-rose-700 text-white border border-rose-500 text-[14px] font-medium transition cursor-pointer shrink-0" data-movement="all">All (32)</button>
           <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[14px] transition cursor-pointer shrink-0" data-movement="climate">Fossil Free</button>
           <button class="timeline-mov-pill px-2.5 py-1 rounded-xl bg-[#200f1c] hover:bg-[#2f1429] border border-rose-900/60 text-zinc-300 hover:text-white text-[14px] transition cursor-pointer shrink-0" data-movement="anti_opiate">P.A.I.N. / Sackler</button>
@@ -10489,7 +10503,7 @@ def build():
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Noto Sans Regular'],
             'text-size': ['interpolate', ['linear'], ['zoom'], 8, 10, 14, 13],
-            'text-transform': 'uppercase',
+            'text-transform': 'none',
             'text-letter-spacing': 0.08
           }},
           paint: {{
@@ -10765,14 +10779,14 @@ def build():
             Visitor Itinerary & Planning Guide: <strong>${{formatInstLink(inst)}}</strong> (${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}})
           </p>
           <div class="py-2.5 border-t border-[#333] space-y-1.5 text-slate-300 text-[14px] leading-[135%]">
-            <div><strong class="text-[#78a9ff] font-mono uppercase text-[14px] tracking-wider block">Opening Hours</strong> ${{escapeHtml(inst.opening_hours || 'Check official site')}}</div>
-            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono uppercase text-[14px] tracking-wider block">Admission & Tickets</strong> ${{escapeHtml(inst.admission_policy)}} (${{escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')}})</div>
-            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono uppercase text-[14px] tracking-wider block">Address & Neighborhood</strong> ${{escapeHtml(inst.address || inst.location)}} ${{inst.neighborhood ? `· <span class="font-mono text-[#82cfff]">${{escapeHtml(inst.neighborhood)}}</span>` : ''}}</div>
-            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono uppercase text-[14px] tracking-wider block">Getting There & Transit</strong> ${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
-            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono uppercase text-[14px] tracking-wider block">Suggested Duration</strong> ${{escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}}</div>
-            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#f1c21b] font-mono uppercase text-[14px] tracking-wider block">Collection / Commission Highlight</strong> ${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
-            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff7eb6] font-mono uppercase text-[14px] tracking-wider block">Accessibility</strong> ${{escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}}</div>
-            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff832b] font-mono uppercase text-[14px] tracking-wider block">Amenities</strong> ${{escapeHtml((inst.amenities || 'Art bookshop, café, cloakroom, and lockers.').toString().split(',').map(x => x.trim()).filter(Boolean).join(' · '))}}</div>
+            <div><strong class="text-[#78a9ff] font-mono text-[14px] tracking-wider block">Opening Hours</strong> ${{escapeHtml(inst.opening_hours || 'Check official site')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono text-[14px] tracking-wider block">Admission & Tickets</strong> ${{escapeHtml(inst.admission_policy)}} (${{escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')}})</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono text-[14px] tracking-wider block">Address & Neighborhood</strong> ${{escapeHtml(inst.address || inst.location)}} ${{inst.neighborhood ? `· <span class="font-mono text-[#82cfff]">${{escapeHtml(inst.neighborhood)}}</span>` : ''}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono text-[14px] tracking-wider block">Getting There & Transit</strong> ${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono text-[14px] tracking-wider block">Suggested Duration</strong> ${{escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#f1c21b] font-mono text-[14px] tracking-wider block">Collection / Commission Highlight</strong> ${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff7eb6] font-mono text-[14px] tracking-wider block">Accessibility</strong> ${{escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}}</div>
+            <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff832b] font-mono text-[14px] tracking-wider block">Amenities</strong> ${{escapeHtml((inst.amenities || 'Art bookshop, café, cloakroom, and lockers.').toString().split(',').map(x => x.trim()).filter(Boolean).join(' · '))}}</div>
           </div>
           ${{visitUrl ? `
             <div class="pt-2 border-t border-[#262626]">
@@ -11027,13 +11041,13 @@ def build():
       const atFacilities = d.facilities || '';
       const atAccess = d.access || '';
       if (type === 'gallery') {{
-        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title">EXHIBITION GALLERY</span><span class="gal-artists">' + escapeHtml(galArtists) + '</span><span class="gal-admission">' + escapeHtml(galAdmission) + '</span><span class="gal-synopsis">' + escapeHtml(galSynopsis) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Ask Curator · Pull into Chat</button></div>';
+        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">EXHIBITION GALLERY</span>Exhibition Gallery</span><span class="gal-artists">' + escapeHtml(galArtists) + '</span><span class="gal-admission">' + escapeHtml(galAdmission) + '</span><span class="gal-synopsis">' + escapeHtml(galSynopsis) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Ask Curator · Pull into Chat</button></div>';
       }}
       if (type === 'archive') {{
-        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title">ARCHIVES & STUDY</span><span class="arch-policy">' + escapeHtml(archPolicy) + '</span><span class="arch-scope">' + escapeHtml(archScope) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Consult Archive · Pull into Chat</button></div>';
+        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">ARCHIVES &amp; STUDY</span>Archives &amp; Study</span><span class="arch-policy">' + escapeHtml(archPolicy) + '</span><span class="arch-scope">' + escapeHtml(archScope) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Consult Archive · Pull into Chat</button></div>';
       }}
       if (type === 'atrium' || type === 'forum') {{
-        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title">PUBLIC FORUM &amp; CIVIC</span><span class="at-facilities">' + escapeHtml(atFacilities) + '</span><span class="at-access">' + escapeHtml(atAccess) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Explore Forum · Pull into Chat</button></div>';
+        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">PUBLIC FORUM &amp; CIVIC</span>Public Forum &amp; Civic</span><span class="at-facilities">' + escapeHtml(atFacilities) + '</span><span class="at-access">' + escapeHtml(atAccess) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Explore Forum · Pull into Chat</button></div>';
       }}
       return '<div class="building-3d-room-badge">' + escapeHtml(d.label || '') + '</div>';
     }}
@@ -11813,7 +11827,7 @@ def build():
         }} else {{
           badgeChild = document.createElement('div');
           badgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
-          badgeChild.innerHTML = '<span class="badge-title">EXHIBITION GALLERY</span>';
+          badgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">EXHIBITION GALLERY</span>Exhibition Gallery</span>';
         }}
         try {{
           const galLon = isMobileScreen ? lon : (lon + d_lon * 0.70);
@@ -11839,7 +11853,7 @@ def build():
         }} else {{
           archBadgeChild = document.createElement('div');
           archBadgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
-          archBadgeChild.innerHTML = '<span class="badge-title">ARCHIVES & STUDY</span>';
+          archBadgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">ARCHIVES &amp; STUDY</span>Archives &amp; Study</span>';
         }}
         try {{
           const archLon = isMobileScreen ? lon : (lon - d_lon * 0.70);
@@ -11864,7 +11878,7 @@ def build():
         }} else {{
           forumBadgeChild = document.createElement('div');
           forumBadgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
-          forumBadgeChild.innerHTML = '<span class="badge-title">PUBLIC FORUM &amp; CIVIC</span>';
+          forumBadgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">PUBLIC FORUM &amp; CIVIC</span>Public Forum &amp; Civic</span>';
         }}
         try {{
           const forumLon = isMobileScreen ? lon : (lon + d_lon * 0.40);
@@ -12171,7 +12185,7 @@ def build():
             </p>
           </div>
           <div class="pt-2 flex flex-col items-center gap-2">
-            <span class="text-[14px] font-mono text-slate-500 uppercase tracking-wider">Explore Featured Spaces</span>
+            <span class="text-[14px] font-mono text-slate-500 tracking-wider">Explore Featured Spaces</span>
             <div class="flex items-center justify-center gap-2 flex-wrap">
               <button type="button" onclick="atlasSelectInst('Tate Modern');" class="px-3 py-1.5 rounded-xl bg-[#141b2a] hover:bg-[#1e293b] text-slate-200 hover:text-white border border-[#1e293b] text-[14px] font-medium transition cursor-pointer">
                 Tate Modern
@@ -12799,9 +12813,9 @@ def build():
       if (tierBadge) {{
         tierBadge.textContent = isClean ? 'Verified Independent Space' : (isFlagged ? 'Flagged Corporate Conflicts' : 'User Input Layer');
         tierBadge.className = isClean 
-          ? 'text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase'
-          : (isFlagged ? 'text-[14px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-[#1f1433] text-[#be95ff] font-bold uppercase'
-                       : 'text-[14px] font-mono px-2 py-0.5 rounded border border-[#08bdba]/60 bg-[#0c2826] text-[#08bdba] font-bold uppercase');
+          ? 'text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold'
+          : (isFlagged ? 'text-[14px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-[#1f1433] text-[#be95ff] font-bold'
+                       : 'text-[14px] font-mono px-2 py-0.5 rounded border border-[#08bdba]/60 bg-[#0c2826] text-[#08bdba] font-bold');
       }}
 
       const govBadge = document.getElementById('bamGovernanceBadge');
@@ -12887,7 +12901,7 @@ def build():
         <!-- Architectural Profile Card -->
         <div class="bg-[#161c27] border border-[#26354d] rounded-2xl p-4 space-y-3">
           <div class="flex items-center justify-between border-b border-[#23334d] pb-2">
-            <span class="text-[14px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
+            <span class="text-[14px] font-mono tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
               Architectural Footprint & Building Layout
             </span>
             <span class="text-[14px] font-mono text-slate-400 bg-[#0e1622] px-2 py-0.5 rounded border border-[#213045]">
@@ -12916,12 +12930,12 @@ def build():
 
           <!-- Building Wings & Public Functional Zones -->
           <div class="pt-2 border-t border-[#23334d]">
-            <span class="text-[14px] font-mono uppercase text-slate-400 block mb-2">Building Wings & Internal Facility Layout:</span>
+            <span class="text-[14px] font-mono text-slate-400 block mb-2">Building Wings & Internal Facility Layout:</span>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
               ${{bArchWings.map(w => `
                 <div class="p-2 rounded-xl bg-[#0e141f] border border-[#1f2b3e] flex items-center justify-between gap-2">
                   <div class="flex items-center gap-2">
-                    <span class="text-[14px] font-mono text-zinc-400 uppercase">[${{w.type}}]</span>
+                    <span class="text-[14px] font-mono text-zinc-400">[${{w.type}}]</span>
                     <div>
                       <div class="text-[14px] font-medium text-slate-100 leading-tight">${{escapeHtml(w.name)}}</div>
                       <div class="text-[14px] font-mono text-slate-400 capitalize">${{w.type}} wing</div>
@@ -12939,7 +12953,7 @@ def build():
         <!-- 🏢 FLOOR-BY-FLOOR ARCHITECTURAL DIRECTORY: CURRENT SHOWS & ARCHIVAL HOLDINGS -->
         <div class="bg-[#121926] border border-[#233550] rounded-2xl p-4 space-y-3">
           <div class="flex items-center justify-between border-b border-[#1f2f47] pb-2 flex-wrap gap-2">
-            <span class="text-[14px] font-mono uppercase tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
+            <span class="text-[14px] font-mono tracking-wider text-[#38bdf8] font-bold flex items-center gap-1.5">
               Floor-by-Floor Directory: Current Shows & Archival Holdings
             </span>
             <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-800">
@@ -12972,7 +12986,7 @@ def build():
 
                 <!-- Current Shows on Floor -->
                 <div class="space-y-1.5">
-                  <span class="text-[14px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1">
+                  <span class="text-[14px] font-mono text-amber-400 font-bold flex items-center gap-1">
                     CURRENT SHOW ON THIS LEVEL
                   </span>
                   ${{(fl.current_shows || []).map(show => `
@@ -12993,7 +13007,7 @@ def build():
 
                 <!-- Archival Holdings on Floor -->
                 <div class="space-y-1 pt-1 border-t border-[#1b293e]">
-                  <span class="text-[14px] font-mono uppercase text-emerald-400 font-bold flex items-center gap-1">
+                  <span class="text-[14px] font-mono text-emerald-400 font-bold flex items-center gap-1">
                     ARCHIVE HOLDING ON THIS LEVEL
                   </span>
                   <div class="p-2.5 rounded-lg bg-[#0b1b16] border border-[#1b3d32] space-y-1 text-[14px]">
@@ -13025,7 +13039,7 @@ def build():
         <!-- In-Depth Archives & Permanent Collections Card -->
         <div class="bg-[#141b24] border border-[#26374f] rounded-2xl p-4 space-y-3.5">
           <div class="flex items-center justify-between border-b border-[#213045] pb-2">
-            <span class="text-[14px] font-mono uppercase tracking-wider text-[#34d399] font-bold flex items-center gap-1.5">
+            <span class="text-[14px] font-mono tracking-wider text-[#34d399] font-bold flex items-center gap-1.5">
               ${{escapeHtml(archiveName)}}
             </span>
             <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-800">
@@ -13039,7 +13053,7 @@ def build():
 
           <!-- Primary Collections Breakdown -->
           <div class="space-y-2 pt-1">
-            <span class="text-[14px] font-mono uppercase text-slate-400 block">Cataloged Special Collections & Primary Series:</span>
+            <span class="text-[14px] font-mono text-slate-400 block">Cataloged Special Collections & Primary Series:</span>
             ${{primaryHoldings.map((h, idx) => `
               <div class="p-3 rounded-xl bg-[#0e1520] border border-[#212f42] space-y-1">
                 <div class="flex items-center justify-between gap-2 flex-wrap">
@@ -13062,7 +13076,7 @@ def build():
           <!-- Highlight Archival Treasures -->
           ${{treasures && treasures.length > 0 ? `
             <div class="pt-2 border-t border-[#213045] space-y-1.5">
-              <span class="text-[14px] font-mono uppercase text-[#fcd34d] block font-bold flex items-center gap-1">
+              <span class="text-[14px] font-mono text-[#fcd34d] block font-bold flex items-center gap-1">
                 Archival Treasures & Historic Artifacts
               </span>
               <ul class="space-y-1 text-[14px] text-slate-200 list-disc list-inside">
@@ -13074,11 +13088,11 @@ def build():
           <!-- Reading Room Policy & Public Access Charter -->
           <div class="pt-2 border-t border-[#213045] grid grid-cols-1 sm:grid-cols-2 gap-3 text-[14px]">
             <div class="p-2.5 rounded-xl bg-[#0d141e] border border-[#1e2a3c] space-y-1">
-              <span class="text-blue-300 font-mono text-[14px] uppercase block font-medium">Public Reading Room Policy</span>
+              <span class="text-blue-300 font-mono text-[14px] block font-medium">Public Reading Room Policy</span>
               <p class="text-slate-200 text-[14px] leading-snug">${{escapeHtml(readingPolicy)}}</p>
             </div>
             <div class="p-2.5 rounded-xl bg-[#0d141e] border border-[#1e2a3c] space-y-1">
-              <span class="text-teal-300 font-mono text-[14px] uppercase block font-medium">Digitization & Finding Aids</span>
+              <span class="text-teal-300 font-mono text-[14px] block font-medium">Digitization & Finding Aids</span>
               <p class="text-slate-200 text-[14px] leading-snug">${{escapeHtml(digitizationStatus)}}</p>
               ${{findingAidsUrl ? `
                 <a href="${{escapeHtml(findingAidsUrl)}}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[14px] font-mono text-[#60a5fa] hover:underline pt-0.5">
@@ -13090,7 +13104,7 @@ def build():
 
           <!-- Ethical Provenance & Acquisition Charter -->
           <div class="p-2.5 rounded-xl bg-[#0c1817] border border-[#153e38] text-[14px] space-y-1">
-            <span class="text-[#34d399] font-mono text-[14px] uppercase block font-bold">Ethical Provenance & Deaccession Integrity</span>
+            <span class="text-[#34d399] font-mono text-[14px] block font-bold">Ethical Provenance & Deaccession Integrity</span>
             <p class="text-teal-100/90 leading-snug">${{escapeHtml(provenanceIntegrity)}}</p>
           </div>
         </div>
@@ -13171,7 +13185,7 @@ def build():
 
       const titleEl = document.getElementById('cityViewTitleText');
       if (titleEl) {{
-        titleEl.textContent = `${{cityName.toUpperCase()}} · ${{cityInsts.length}} CULTURAL SPACES`;
+        titleEl.innerHTML = `${{escapeHtml(cityName)}} <span class="sr-only">${{escapeHtml(cityName.toUpperCase())}}</span> · ${{cityInsts.length}} Cultural Spaces`;
       }}
       const backCountryBtn = document.getElementById('backToCountryBtn');
       const backCountryText = document.getElementById('backToCountryText');
@@ -13805,7 +13819,7 @@ def build():
           const popupHtml = `
             <div style="font-family:'PP Museum',sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f1f5f9;">
               <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
-                <span style="font-size:14pt;  color:#34d399; font-weight:400; text-transform:uppercase;">
+                <span style="font-size:14pt;  color:#34d399; font-weight:400;">
                   Stop ${{stop.stopIndex}} of ${{route.stops.length}}
                 </span>
                 <span style="font-size:14pt;  padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
@@ -14052,7 +14066,7 @@ def build():
                   <div class="p-3.5 sm:p-4 rounded-2xl bg-[#0b2118] border border-emerald-700/50 hover:border-emerald-500 flex flex-col justify-between gap-3 transition group">
                     <div class="space-y-1.5">
                       <div class="flex items-center justify-between gap-2">
-                        <span class="text-[14px] font-mono uppercase bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-700/80 font-bold">${{escapeHtml(sig.city)}}</span>
+                        <span class="text-[14px] font-mono bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-700/80 font-bold">${{escapeHtml(sig.city)}}</span>
                         <span class="text-[14px] font-mono text-emerald-400 font-semibold">${{r ? r.stops.length : 4}} Stops · ~${{r ? r.totalKm : '3.5'}} km</span>
                       </div>
                       <h3 class="text-[14px] sm:text-[14px] font-bold text-white group-hover:text-emerald-300 transition">${{escapeHtml(sig.title)}}</h3>
@@ -14094,7 +14108,7 @@ def build():
             <div class="p-3.5 sm:p-4 rounded-2xl bg-[#091f16] border border-emerald-800/60 space-y-3">
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div class="space-y-1">
-                  <label class="text-[14px] font-mono uppercase text-emerald-400 font-semibold block">Select Cultural City</label>
+                  <label class="text-[14px] font-mono text-emerald-400 font-semibold block">Select Cultural City</label>
                   <select id="customCrawlCitySelect" class="w-full bg-[#0c2b1f] border border-emerald-600/60 text-white rounded-xl px-2.5 py-1.5 text-[14px] font-medium focus:outline-none focus:border-emerald-400">
                     ${{availableCities.map(c => `
                       <option value="${{escapeHtml(c.name)}}" ${{matchC(c.name, defaultCity) ? 'selected' : ''}}>${{escapeHtml(c.name)}} (${{c.count}} spaces)</option>
@@ -14102,7 +14116,7 @@ def build():
                   </select>
                 </div>
                 <div class="space-y-1">
-                  <label class="text-[14px] font-mono uppercase text-emerald-400 font-semibold block">Crawl Pace & Scope</label>
+                  <label class="text-[14px] font-mono text-emerald-400 font-semibold block">Crawl Pace & Scope</label>
                   <select id="customCrawlPaceSelect" class="w-full bg-[#0c2b1f] border border-emerald-600/60 text-white rounded-xl px-2.5 py-1.5 text-[14px] font-medium focus:outline-none focus:border-emerald-400">
                     <option value="half">Half-Day (2-3 stops · ~2.5 hrs)</option>
                     <option value="full" selected>Full-Day (4-5 stops · ~4.5 hrs)</option>
@@ -14110,7 +14124,7 @@ def build():
                   </select>
                 </div>
                 <div class="space-y-1">
-                  <label class="text-[14px] font-mono uppercase text-emerald-400 font-semibold block">Ethical & Admission Filters</label>
+                  <label class="text-[14px] font-mono text-emerald-400 font-semibold block">Ethical & Admission Filters</label>
                   <div class="flex items-center gap-3 pt-1">
                     <label class="inline-flex items-center gap-1.5 text-[14px] text-zinc-300 cursor-pointer">
                       <input type="checkbox" id="customCrawlCleanOnly" class="rounded accent-emerald-500" checked>
@@ -14171,7 +14185,7 @@ def build():
                 <div>
                   <div class="flex items-center gap-2">
                     <h3 class="text-[14px] font-bold text-white">${{escapeHtml(route.title)}}</h3>
-                    <span class="text-[14px] font-mono uppercase bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-700/80 font-bold">${{escapeHtml(route.city)}}</span>
+                    <span class="text-[14px] font-mono bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-700/80 font-bold">${{escapeHtml(route.city)}}</span>
                   </div>
                   <p class="text-[14px] font-mono text-emerald-300/90">${{route.stops.length}} Stops · ~${{route.totalKm}} km walking · ${{route.totalWalkMinutes}} min walk · Est. ${{route.estimatedTotalHours}} hrs total</p>
                 </div>
@@ -14895,7 +14909,7 @@ def build():
             </div>
 
             <div class="space-y-2">
-              <div class="text-[14px] font-mono text-purple-300 uppercase tracking-wider font-semibold">Priority Interlock Dossiers:</div>
+              <div class="text-[14px] font-mono text-purple-300 tracking-wider font-semibold">Priority Interlock Dossiers:</div>
               <div class="space-y-1.5">
                 <button type="button" onclick="selectTrusteeGraphNode('sackler_family')" class="w-full text-left p-2.5 rounded-xl bg-[#140b24] hover:bg-[#22133d] border border-purple-900/50 hover:border-purple-600 transition cursor-pointer flex items-center justify-between group">
                   <div>
@@ -14955,7 +14969,7 @@ def build():
           <!-- Dossier Header -->
           <div class="p-3.5 rounded-2xl bg-[#170e28] border border-purple-800/80 space-y-2">
             <div class="flex items-center justify-between gap-2 flex-wrap">
-              <span class="px-2 py-0.5 rounded-md text-[14px] font-mono font-semibold uppercase ${{
+              <span class="px-2 py-0.5 rounded-md text-[14px] font-mono font-semibold ${{
                 isInst
                   ? (node.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-blue-950 text-blue-300 border border-blue-700/60')
                   : 'bg-red-950 text-red-300 border border-red-700/60'
@@ -14978,7 +14992,7 @@ def build():
           <!-- Harm / Controversy Breakdown -->
           ${{node.harms ? `
             <div class="p-3 rounded-xl bg-[#200d16] border border-red-900/60 space-y-1.5">
-              <div class="flex items-center gap-1.5 text-[14px] font-mono font-bold text-red-300 uppercase">
+              <div class="flex items-center gap-1.5 text-[14px] font-mono font-bold text-red-300">
                 
                 <span>Documented Harm &amp; Conflicts:</span>
               </div>
@@ -14988,7 +15002,7 @@ def build():
             </div>
           ` : (node.harmsSummary ? `
             <div class="p-3 rounded-xl bg-[#1b1229] border border-purple-900/60 space-y-1">
-              <div class="text-[14px] font-mono font-semibold text-purple-300 uppercase">Governance Risk Assessment:</div>
+              <div class="text-[14px] font-mono font-semibold text-purple-300">Governance Risk Assessment:</div>
               <p class="text-[14px] text-zinc-200 leading-relaxed">${{escapeHtml(node.harmsSummary)}}</p>
             </div>
           ` : '')}}
@@ -14996,7 +15010,7 @@ def build():
           <!-- Activist Resistance & Direct Actions -->
           ${{node.campaigns && node.campaigns.length > 0 ? `
             <div class="p-3 rounded-xl bg-[#091f16] border border-emerald-900/60 space-y-1.5">
-              <div class="flex items-center gap-1.5 text-[14px] font-mono font-bold text-emerald-300 uppercase">
+              <div class="flex items-center gap-1.5 text-[14px] font-mono font-bold text-emerald-300">
                 
                 <span>Activist Divestment &amp; Boycott Campaigns:</span>
               </div>
@@ -15014,14 +15028,14 @@ def build():
           <!-- Statutory Disclosures & Filings -->
           ${{node.filings ? `
             <div class="p-2.5 rounded-xl bg-[#0d1624] border border-sky-900/50 space-y-1">
-              <div class="text-[14px] font-mono font-semibold text-sky-400 uppercase">Statutory Records &amp; 990 Disclosures:</div>
+              <div class="text-[14px] font-mono font-semibold text-sky-400">Statutory Records &amp; 990 Disclosures:</div>
               <p class="text-[14px] font-mono text-slate-300 leading-relaxed">${{escapeHtml(node.filings)}}</p>
             </div>
           ` : ''}}
 
           <!-- Interlocked Board Seats Roster -->
           <div class="space-y-2 pt-1 border-t border-purple-950">
-            <div class="text-[14px] font-mono text-purple-300 uppercase font-semibold">
+            <div class="text-[14px] font-mono text-purple-300 font-semibold">
               ${{isInst ? 'Flagged Board Members & Sponsors:' : 'Interlocked Cultural Institutions:'}}
             </div>
 
@@ -15227,8 +15241,8 @@ def build():
                   <div class="flex items-center justify-between gap-2 flex-wrap">
                     <div class="flex items-center gap-2 flex-wrap">
                       <span class="px-2 py-0.5 rounded-md bg-rose-950 text-rose-300 border border-rose-800/70 font-mono text-[14px] font-bold">${{ev.date}}</span>
-                      <span class="px-2 py-0.5 rounded-md font-mono text-[14px] uppercase border ${{MOV_COLORS[ev.movement] || 'bg-zinc-900 text-zinc-300'}}">${{ev.movement.replace('_', ' ')}}</span>
-                      <span class="px-2 py-0.5 rounded-md text-[14px] font-mono font-semibold uppercase ${{isVictory ? 'bg-emerald-950 text-emerald-300 border border-emerald-800/60' : 'bg-purple-950 text-purple-300 border border-purple-800/60'}}">${{isVictory ? 'VICTORY' : 'DIRECT ACTION'}}</span>
+                      <span class="px-2 py-0.5 rounded-md font-mono text-[14px] border ${{MOV_COLORS[ev.movement] || 'bg-zinc-900 text-zinc-300'}}">${{ev.movement.replace('_', ' ')}}</span>
+                      <span class="px-2 py-0.5 rounded-md text-[14px] font-mono font-semibold ${{isVictory ? 'bg-emerald-950 text-emerald-300 border border-emerald-800/60' : 'bg-purple-950 text-purple-300 border border-purple-800/60'}}">${{isVictory ? 'VICTORY' : 'DIRECT ACTION'}}</span>
                     </div>
                     <span class="text-[14px] font-mono text-zinc-400">${{escapeHtml(ev.institution)}}</span>
                   </div>
@@ -15244,7 +15258,7 @@ def build():
                   </p>
 
                   <div class="p-2.5 rounded-xl bg-[#230f21] border border-rose-900/40 text-[14px] text-rose-100/90 space-y-1">
-                    <div class="font-mono text-[14px] text-rose-300 uppercase font-bold">Outcome & Policy Rupture:</div>
+                    <div class="font-mono text-[14px] text-rose-300 font-bold">Outcome & Policy Rupture:</div>
                     <div>${{escapeHtml(ev.outcomeSummary)}}</div>
                     ${{ev.statutoryImpact ? `<div class="text-[14px] font-mono text-zinc-400 pt-0.5">Statutory Filing Impact: ${{escapeHtml(ev.statutoryImpact)}}</div>` : ''}}
                   </div>
@@ -15333,7 +15347,7 @@ def build():
           <div class="p-3.5 sm:p-4 rounded-2xl bg-[#0c1a2c] border border-sky-800/60 space-y-2">
             <div class="flex items-center justify-between gap-2 flex-wrap">
               <div class="flex items-center gap-2">
-                <span class="px-2 py-0.5 rounded-md text-[14px] font-mono font-bold uppercase ${{isClean ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-amber-950 text-amber-300 border border-amber-700/60'}}">
+                <span class="px-2 py-0.5 rounded-md text-[14px] font-mono font-bold ${{isClean ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-amber-950 text-amber-300 border border-amber-700/60'}}">
                   ${{isClean ? 'Clean Governance (0 Schedule L Conflicts)' : `${{filing.scheduleLCount}} Schedule L Interested Person Disclosures`}}
                 </span>
                 <span class="text-[14px] font-mono text-sky-400">${{filing.ein}}</span>
@@ -15350,25 +15364,25 @@ def build():
           <!-- Key Metrics Grid -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[14px]">
             <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
-              <span class="text-[14px] font-mono uppercase text-zinc-400 block">Annual Budget</span>
+              <span class="text-[14px] font-mono text-zinc-400 block">Annual Budget</span>
               <strong class="text-white text-[14px]">${{filing.totalBudget}}</strong>
               <span class="text-[14px] font-mono text-sky-400 block mt-0.5">Endowment: ${{filing.totalEndowment}}</span>
             </div>
 
             <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
-              <span class="text-[14px] font-mono uppercase text-emerald-400 block">Program Spend</span>
+              <span class="text-[14px] font-mono text-emerald-400 block">Program Spend</span>
               <strong class="text-emerald-300 text-[14px]">${{filing.programSpendRatio}}%</strong>
               <span class="text-[14px] font-mono text-zinc-400 block mt-0.5">${{filing.programSpendRatio >= 80 ? 'High Program Ratio' : 'Target: ≥ 80%'}}</span>
             </div>
 
             <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
-              <span class="text-[14px] font-mono uppercase text-amber-400 block">Admin Overhead</span>
+              <span class="text-[14px] font-mono text-amber-400 block">Admin Overhead</span>
               <strong class="text-amber-300 text-[14px]">${{filing.adminOverheadRatio}}%</strong>
               <span class="text-[14px] font-mono text-zinc-400 block mt-0.5">Fundraising: ${{filing.fundraisingRatio}}%</span>
             </div>
 
             <div class="p-3 rounded-xl bg-[#0f2138] border border-sky-900/60">
-              <span class="text-[14px] font-mono uppercase text-purple-400 block">Exec Wage Ratio</span>
+              <span class="text-[14px] font-mono text-purple-400 block">Exec Wage Ratio</span>
               <strong class="text-purple-300 text-[14px]">${{filing.keyStaffRatio}}</strong>
               <span class="text-[14px] font-mono text-zinc-400 block mt-0.5">CEO / Floor Staff</span>
             </div>
@@ -15398,7 +15412,7 @@ def build():
               </div>
               <div class="space-y-2 text-[14px]">
                 <div class="p-3 rounded-xl bg-[#0a1728] border border-sky-900/40 text-slate-200 space-y-1">
-                  <span class="text-[14px] font-mono text-sky-400 uppercase">Top Institutional Executive:</span>
+                  <span class="text-[14px] font-mono text-sky-400">Top Institutional Executive:</span>
                   <p class="font-bold text-white text-[14px]">${{escapeHtml(filing.directorComp)}}</p>
                   <p class="text-[14px] text-zinc-400">Reported under Form 990 Part VII Section A Column (D) Reportable Compensation from the Organization.</p>
                 </div>
@@ -15969,7 +15983,7 @@ def build():
           const cityCountry = cityMeta ? cityMeta.country : lastSelectedCountry;
           if (badgeIcon) badgeIcon.textContent = '';
           if (cityTitleEl) {{
-            cityTitleEl.textContent = `${{targetCity.toUpperCase()}} · ${{cityMatches.length}} CULTURAL SPACES`;
+            cityTitleEl.innerHTML = `${{escapeHtml(targetCity)}} <span class="sr-only">${{escapeHtml(targetCity.toUpperCase())}}</span> · ${{cityMatches.length}} Cultural Spaces`;
           }}
           if (backCountryBtn && cityCountry) {{
             backCountryBtn.classList.remove('hidden');
@@ -15983,7 +15997,7 @@ def build():
           const countryCities = ALL_CITIES_REGISTRY.filter(c => matchC(c.country, selectedCountryFilter));
           if (badgeIcon) badgeIcon.textContent = '';
           if (cityTitleEl) {{
-            cityTitleEl.textContent = `${{selectedCountryFilter.toUpperCase()}} · ${{countryMatches.length}} CLEAN SPACES IN ${{countryCities.length}} CITIES`;
+            cityTitleEl.textContent = `${{selectedCountryFilter}} · ${{countryMatches.length}} Clean Spaces in ${{countryCities.length}} Cities`;
           }}
           if (backCountryBtn) backCountryBtn.classList.add('hidden');
         }} else {{
@@ -17980,12 +17994,12 @@ def build():
       const gradeTitleCol = isCommunity ? 'text-[#08bdba]' : (isClean ? 'text-[#42be65]' : isFlagged ? 'text-[#be95ff]' : 'text-[#33b1ff]');
       const pulseDotCol = isCommunity ? 'bg-[#08bdba]' : (isClean ? 'bg-[#42be65]' : isFlagged ? 'bg-[#be95ff]' : 'bg-[#33b1ff]');
       const auditTagHtml = isCommunity
-        ? '<span class="text-[14px] font-mono text-[#08bdba] bg-[#08bdba]/20 border border-[#08bdba]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">User Input</span><span class="text-[14px] text-teal-300 font-mono mt-0.5 block">Pending Audit</span>'
+        ? '<span class="text-[14px] font-mono text-[#08bdba] bg-[#08bdba]/20 border border-[#08bdba]/60 px-2.5 py-1 rounded-full font-bold tracking-wider">User Input</span><span class="text-[14px] text-teal-300 font-mono mt-0.5 block">Pending Audit</span>'
         : isClean 
-        ? '<span class="text-[14px] font-mono text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Clean</span><span class="text-[14px] text-slate-400 font-mono mt-0.5 block">100% Verified</span>' 
+        ? '<span class="text-[14px] font-mono text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60 px-2.5 py-1 rounded-full font-bold tracking-wider">Audited Clean</span><span class="text-[14px] text-slate-400 font-mono mt-0.5 block">100% Verified</span>' 
         : isFlagged 
-        ? '<span class="text-[14px] font-mono text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Audited Flags</span><span class="text-[14px] text-slate-400 font-mono mt-0.5 block">Documented</span>' 
-        : '<span class="text-[14px] font-mono text-[#33b1ff] bg-[#0072c3]/20 border border-[#0072c3]/60 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">Unverified</span><span class="text-[14px] text-slate-400 font-mono mt-0.5 block">Pending Audit</span>';
+        ? '<span class="text-[14px] font-mono text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60 px-2.5 py-1 rounded-full font-bold tracking-wider">Audited Flags</span><span class="text-[14px] text-slate-400 font-mono mt-0.5 block">Documented</span>' 
+        : '<span class="text-[14px] font-mono text-[#33b1ff] bg-[#0072c3]/20 border border-[#0072c3]/60 px-2.5 py-1 rounded-full font-bold tracking-wider">Unverified</span><span class="text-[14px] text-slate-400 font-mono mt-0.5 block">Pending Audit</span>';
 
       const rawGrade = String(inst.transparency_grade || (isClean ? 'A (Statutory Transparency Filing)' : isFlagged ? 'B (Underwriting Conflict Filing)' : 'Unverified'));
       let letterBadge = isClean ? 'A' : (isFlagged ? 'B' : 'U');
@@ -18022,7 +18036,7 @@ def build():
                 ${{escapeHtml(letterBadge)}}
               </div>
               <div>
-                <div class="text-[14px] font-mono uppercase tracking-widest ${{isClean ? 'text-[#42be65]' : isFlagged ? 'text-[#be95ff]' : isCommunity ? 'text-[#08bdba]' : 'text-[#33b1ff]'}} font-bold flex items-center gap-1.5">
+                <div class="text-[14px] font-mono tracking-widest ${{isClean ? 'text-[#42be65]' : isFlagged ? 'text-[#be95ff]' : isCommunity ? 'text-[#08bdba]' : 'text-[#33b1ff]'}} font-bold flex items-center gap-1.5">
                   <span class="inline-block w-2 h-2 rounded-full ${{isClean ? 'bg-[#42be65]' : isFlagged ? 'bg-[#be95ff]' : isCommunity ? 'bg-[#08bdba]' : 'bg-[#33b1ff]'}} animate-pulse"></span>
                   Civic Transparency Grade
                 </div>
@@ -18035,7 +18049,7 @@ def build():
               </div>
             </div>
             <div class="hidden sm:flex flex-col items-end shrink-0 pl-2">
-              <span class="text-[14px] font-mono ${{isClean ? 'text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60' : isFlagged ? 'text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60' : isCommunity ? 'text-[#08bdba] bg-[#08bdba]/20 border border-[#08bdba]/60' : 'text-[#33b1ff] bg-[#0072c3]/20 border border-[#0072c3]/60'}} px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">${{isClean ? 'Audited' : isFlagged ? 'Audited Flags' : isCommunity ? 'User Input' : 'Unverified'}}</span>
+              <span class="text-[14px] font-mono ${{isClean ? 'text-[#42be65] bg-[#42be65]/20 border border-[#42be65]/60' : isFlagged ? 'text-[#be95ff] bg-[#8a3ffc]/20 border border-[#8a3ffc]/60' : isCommunity ? 'text-[#08bdba] bg-[#08bdba]/20 border border-[#08bdba]/60' : 'text-[#33b1ff] bg-[#0072c3]/20 border border-[#0072c3]/60'}} px-2.5 py-1 rounded-full font-bold tracking-wider">${{isClean ? 'Audited' : isFlagged ? 'Audited Flags' : isCommunity ? 'User Input' : 'Unverified'}}</span>
               <span class="text-[14px] text-slate-400 font-mono mt-1">${{isClean ? '100% Verified' : isFlagged ? 'Documented' : 'Pending Audit'}}</span>
             </div>
           </div>
@@ -18081,7 +18095,7 @@ def build():
             <div class="flex items-center justify-between border-b border-[#1e2f4a] pb-2 flex-wrap gap-2">
               <div class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                <span class="text-[14px] font-mono uppercase tracking-wider font-semibold text-sky-200">3D Building &amp; Architectural Floors</span>
+                <span class="text-[14px] font-mono tracking-wider font-semibold text-sky-200">3D Building &amp; Architectural Floors</span>
               </div>
               <div class="flex items-center gap-1.5">
                 <span class="text-[14px] font-mono text-sky-300 bg-sky-950/70 border border-sky-800/60 px-2.5 py-0.5 rounded-full font-medium">
@@ -18111,7 +18125,7 @@ def build():
 
             <!-- Interactive Floor Level Pills -->
             <div class="space-y-1.5 pt-1">
-              <span class="text-[14px] font-mono uppercase text-slate-400 block">Select Floor Level (Highlights 3D Map):</span>
+              <span class="text-[14px] font-mono text-slate-400 block">Select Floor Level (Highlights 3D Map):</span>
               <div class="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar">
                 ${{floors.map((fl, idx) => `
                   <button type="button" onclick="window.selectBfiFloor(${{idx}}); window.updateDossierFloorSelection(${{idx}});" class="dossier-floor-tab px-3 py-1 rounded-xl text-[14px] font-mono border transition cursor-pointer shrink-0 ${{idx === currentBfiFloorIndex ? 'bg-sky-600 text-white font-bold border-sky-400 shadow-sm' : 'bg-[#142036] text-slate-300 border-[#2b3e5e] hover:border-sky-400'}}" data-floor-idx="${{idx}}">
@@ -18128,14 +18142,14 @@ def build():
                 <span class="text-slate-400">${{escapeHtml(activeFl.elevation || '0.0m')}}</span>
               </div>
               <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
-                <span class="text-[14px] font-mono uppercase ${{isClean ? 'text-emerald-400' : 'text-[#be95ff]'}} font-bold block">Current Show on this Level:</span>
+                <span class="text-[14px] font-mono ${{isClean ? 'text-emerald-400' : 'text-[#be95ff]'}} font-bold block">Current Show on this Level:</span>
                 <div class="font-semibold text-white">${{escapeHtml(floorShow.title || 'Curatorial Collections')}}</div>
                 <div class="text-slate-300 text-[14px] font-mono">${{escapeHtml(floorShow.curator_artists || '')}}${{floorShow.dates ? ' · ' + escapeHtml(floorShow.dates) : ''}}</div>
                 ${{floorShow.synopsis ? `<p class="text-slate-300 text-[14px] leading-snug line-clamp-2">${{escapeHtml(floorShow.synopsis)}}</p>` : ''}}
               </div>
               ${{activeFl.archive_holdings ? `
                 <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
-                  <span class="text-[14px] font-mono uppercase text-emerald-400 font-bold block">Archival Holding on this Level:</span>
+                  <span class="text-[14px] font-mono text-emerald-400 font-bold block">Archival Holding on this Level:</span>
                   <div class="font-semibold text-emerald-200">${{escapeHtml(activeFl.archive_holdings.collection_title || '')}}</div>
                   <div class="text-slate-400 text-[14px]">${{escapeHtml(activeFl.archive_holdings.reading_room_policy || 'Public study access')}}</div>
                 </div>
@@ -18149,7 +18163,7 @@ def build():
             <div class="flex items-center justify-between border-b border-[#1e293b] pb-2 flex-wrap gap-2">
               <div class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                <span class="text-[14px] font-mono uppercase tracking-wider font-semibold text-slate-300">Financial &amp; Operating Research Profile</span>
+                <span class="text-[14px] font-mono tracking-wider font-semibold text-slate-300">Financial &amp; Operating Research Profile</span>
               </div>
               <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2.5 py-0.5 rounded-full font-medium">
                 ${{escapeHtml(bTierText)}}
@@ -18218,7 +18232,7 @@ def build():
             <div class="p-3 px-3.5 bg-[#141b2a] border-b border-[#1e293b] flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <span class="text-[14px] font-mono uppercase tracking-wider text-slate-200 font-semibold">Exhibitions &amp; Visiting Logistics</span>
+                <span class="text-[14px] font-mono tracking-wider text-slate-200 font-semibold &amp; Visiting Logistics</span>
               </div>
               <span class="text-[14px] font-mono px-2.5 py-0.5 rounded-full border border-emerald-800/80 bg-emerald-950/80 text-emerald-300 font-medium">
                 ${{escapeHtml(primaryShow.status || 'Now On View')}}
@@ -18262,7 +18276,7 @@ def build():
               <div class="p-3 px-3.5 bg-[#141b2a] border-b border-[#1e293b] flex items-center justify-between flex-wrap gap-2">
                 <div class="flex items-center gap-2">
                   <span class="text-base">🎨</span>
-                  <span class="text-[14px] font-mono uppercase tracking-wider text-slate-200 font-semibold">Artistic Critiques &amp; History</span>
+                  <span class="text-[14px] font-mono tracking-wider text-slate-200 font-semibold Critiques &amp; History</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="text-[14px] font-mono px-2 py-0.5 rounded border ${{isClean ? 'border-emerald-800/80 bg-emerald-950/80 text-emerald-300' : 'border-[#8a3ffc]/80 bg-[#1f152d]/80 text-[#be95ff]'}} font-medium">${{escapeHtml(vc.strategy || 'Sponsor Network Exposure & Real Estate Tracking')}}</span>
@@ -18273,7 +18287,7 @@ def build():
               <div class="p-3.5 space-y-3">
                 <!-- Artist / Designer Credits Box -->
                 <div class="p-2.5 rounded-lg bg-[#080c14] border border-[#1e293b]/70 space-y-1">
-                  <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider">Artist / Designer Credits</div>
+                  <div class="text-[14px] font-mono text-slate-400 tracking-wider">Artist / Designer Credits</div>
                   <div class="text-white font-medium text-[18px] leading-snug">${{escapeHtml(vc.artist_designer || vc.artist)}}</div>
                   <div class="${{isClean ? 'text-emerald-300' : 'text-[#be95ff]'}} text-[14px] leading-snug">"${{escapeHtml(vc.artwork_title || vc.artwork)}}" (${{escapeHtml(vc.year)}})</div>
                 </div>
@@ -18295,7 +18309,7 @@ def build():
 
                 ${{vc.historical_impact ? `
                   <div class="p-2.5 rounded-lg ${{isClean ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-200/90' : 'bg-[#1f152d]/40 border-[#8a3ffc]/40 text-[#be95ff]/90'}} border text-[14px] leading-relaxed font-mono">
-                    <strong class="${{isClean ? 'text-emerald-300' : 'text-[#be95ff]'}} block text-[14px] uppercase tracking-wider mb-0.5">Historical &amp; Policy Impact:</strong>
+                    <strong class="${{isClean ? 'text-emerald-300' : 'text-[#be95ff]'}} block text-[14px] tracking-wider mb-0.5">Historical &amp; Policy Impact:</strong>
                     ${{escapeHtml(vc.historical_impact)}}
                   </div>
                 ` : ''}}
@@ -18319,7 +18333,7 @@ def build():
             <div class="flex items-center gap-2.5 min-w-0">
               <span class="inline-block w-2.5 h-2.5 rounded-full shrink-0 animate-pulse ${{pulseDotCol}}"></span>
               <div class="min-w-0">
-                <div class="text-[14px] font-mono uppercase tracking-wider font-bold ${{gradeTitleCol}}">
+                <div class="text-[14px] font-mono tracking-wider font-bold ${{gradeTitleCol}}">
                   ${{statusCategory}}
                 </div>
                 <div class="text-[14px] sm:text-[14px] font-semibold text-white font-mono mt-0.5 truncate">
@@ -18335,7 +18349,7 @@ def build():
           ${{isCommunity ? `
             <div class="py-2.5 border-t border-[#1b3d39] space-y-2 bg-[#0c2423]/70 p-3 rounded-xl border border-[#08bdba]/40">
               <div class="flex items-center justify-between">
-                <span class="text-[#08bdba] font-mono text-[14px] uppercase tracking-wider block font-bold">Community Research Submission</span>
+                <span class="text-[#08bdba] font-mono text-[14px] tracking-wider block font-bold">Community Research Submission</span>
                 <span class="text-[14px] font-mono text-[#25c4b5] bg-[#08bdba]/20 px-2 py-0.5 rounded border border-[#08bdba]/50">Status: Pending Statutory Audit</span>
               </div>
               <p class="text-slate-200 text-[14px] leading-relaxed">
@@ -18350,7 +18364,7 @@ def build():
 
           ${{!isCommunity && !isClean ? `
             <div class="py-2.5 border-t border-[#393939] space-y-2">
-              <span class="text-[#be95ff] font-mono text-[14px] uppercase tracking-wider block font-bold">Audited Corporate Underwriting Notice</span>
+              <span class="text-[#be95ff] font-mono text-[14px] tracking-wider block font-bold">Audited Corporate Underwriting Notice</span>
               <p class="text-[#e8daff] text-[14px] leading-relaxed">
                 <strong>Underwriting Conflict:</strong> ${{escapeHtml(deduplicateNoticeText(inst.why_flagged || inst.watch || 'Corporate underwriting conflict / ethical audit flag.'))}}
               </p>
@@ -18361,7 +18375,7 @@ def build():
               ` : ''}}
               ${{inst.epstein_records && inst.epstein_records.length > 0 ? `
                 <div class="pt-2 border-t border-[#392d52] space-y-1.5">
-                  <span class="text-[14px] font-mono text-[#ff7eb6] uppercase tracking-wider block font-bold">Epstein Network Link Audit</span>
+                  <span class="text-[14px] font-mono text-[#ff7eb6] tracking-wider block font-bold">Epstein Network Link Audit</span>
                   ${{inst.epstein_records.map(ep => `
                     <div class="text-[14px] text-slate-300 bg-[#231435] p-2.5 rounded-xl border border-[#8a3ffc]/30">
                       <div class="font-bold text-[#e8daff]">${{escapeHtml(ep.person || 'Trustee')}} <span class="text-[#ff7eb6] font-mono font-normal">(${{escapeHtml(ep.link || 'Affiliation')}})</span></div>
@@ -18373,7 +18387,7 @@ def build():
               ` : ''}}
               ${{inst.wikileaks_records && inst.wikileaks_records.length > 0 ? `
                 <div class="pt-2 border-t border-[#392d52] space-y-1.5">
-                  <span class="text-[14px] font-mono text-[#08bdba] uppercase tracking-wider block font-bold">WikiLeaks Cable Record</span>
+                  <span class="text-[14px] font-mono text-[#08bdba] tracking-wider block font-bold">WikiLeaks Cable Record</span>
                   ${{inst.wikileaks_records.map(wl => `
                     <div class="text-[14px] text-slate-300 bg-[#16212b] p-2.5 rounded-xl border border-[#0072c3]/30">
                       <div class="font-bold text-[#82cfff]">${{escapeHtml(wl.date || 'Cable')}} <span class="text-[#08bdba] font-mono font-normal">[${{escapeHtml(wl.doc_id || 'DOC')}}]</span></div>
@@ -18391,7 +18405,7 @@ def build():
 
             ${{cleanAlts.length > 0 ? `
               <div class="py-2.5 border-t border-[#393939] space-y-2">
-                <span class="text-blue-300 font-mono text-[14px] uppercase tracking-wider block font-bold">Verified Independent Spaces in ${{escapeHtml(inst.city)}}</span>
+                <span class="text-blue-300 font-mono text-[14px] tracking-wider block font-bold">Verified Independent Spaces in ${{escapeHtml(inst.city)}}</span>
                 <p class="text-slate-300 text-[14px]">Instead of supporting compromised boards, explore these verified independent spaces:</p>
                 <div class="space-y-1">
                   ${{cleanAlts.slice(0, 4).map(a => `
@@ -18408,7 +18422,7 @@ def build():
           <!-- Archives, Collections & Building Profile (Plain Text in Simple Language) -->
           <div class="p-3.5 bg-[#0e1622] border border-[#213247] rounded-2xl space-y-2.5">
             <div class="flex items-center justify-between border-b border-[#1f2d40] pb-2">
-              <span class="text-[14px] font-mono uppercase tracking-wider text-[#34d399] font-bold">
+              <span class="text-[14px] font-mono tracking-wider text-[#34d399] font-bold">
                 Archives &amp; Collections in Depth
               </span>
               <button onclick="window.zoomToBuilding(selectedInstitution, false)" 
@@ -18433,14 +18447,14 @@ def build():
           </div>
 
           <div class="py-2.5 border-t border-[#262626]">
-            <span class="text-[14px] font-mono uppercase tracking-wider block mb-1 text-[#33b1ff]">Curator Assessment</span>
+            <span class="text-[14px] font-mono tracking-wider block mb-1 text-[#33b1ff]">Curator Assessment</span>
             <p class="text-[14px] text-slate-200 leading-[130%]">${{escapeHtml(inst.curator_recommendation || 'Evaluated under Culture Atlas research framework.')}}</p>
           </div>
 
           ${{isClean ? `
             <div class="pt-1">
               <div class="flex items-center justify-between pb-1.5 mb-1 border-b border-[#393939]">
-                <span class="text-[14px] font-normal text-white uppercase tracking-wider font-mono">Plan Your Visit</span>
+                <span class="text-[14px] font-normal text-white tracking-wider font-mono">Plan Your Visit</span>
                 <div class="flex items-center gap-2">
                   <button type="button" onclick="window.zoomToBuilding(selectedInstitution, false)" class="text-[14px] text-emerald-400 hover:underline font-mono cursor-pointer flex items-center gap-1">
                     <span>Zoom to Building</span>
@@ -18457,38 +18471,38 @@ def build():
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6">
                 <div class="py-2 border-t border-[#262626] first:border-t-0">
-                  <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:#78a9ff">Hours</div>
+                  <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#78a9ff">Hours</div>
                   <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.opening_hours || 'Check official site')}}</div>
                 </div>
                 <div class="py-2 border-t border-[#262626] first:border-t-0">
-                  <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:#42be65">Admission</div>
+                  <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#42be65">Admission</div>
                   <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.admission_fee || 'Subsidized Admission')}}</div>
                 </div>
                 <div class="py-2 border-t border-[#262626] first:border-t-0">
-                  <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:#33b1ff">Address</div>
+                  <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#33b1ff">Address</div>
                   <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.address || inst.location)}}</div>
                   ${{inst.neighborhood ? `<div class="text-[14px] text-[#82cfff] font-mono mt-0.5">${{escapeHtml(inst.neighborhood)}}</div>` : ''}}
                 </div>
                 <div class="py-2 border-t border-[#262626] first:border-t-0">
-                  <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:#be95ff">Suggested Duration</div>
+                  <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#be95ff">Suggested Duration</div>
                   <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}}</div>
                 </div>
               </div>
               <div class="py-2 border-t border-[#262626] first:border-t-0">
-                <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:#3ddbd9">Getting There</div>
+                <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#3ddbd9">Getting There</div>
                 <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
               </div>
               <div class="py-2 border-t border-[#262626] first:border-t-0">
-                <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:${{isClean ? '#42be65' : '#78a9ff'}}">Highlight</div>
+                <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:${{isClean ? '#42be65' : '#78a9ff'}}">Highlight</div>
                 <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6">
                 <div class="py-2 border-t border-[#262626] first:border-t-0">
-                  <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:#ff7eb6">Accessibility</div>
+                  <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#ff7eb6">Accessibility</div>
                   <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}}</div>
                 </div>
                 <div class="py-2 border-t border-[#262626] first:border-t-0">
-                  <div class="text-[14px] font-mono uppercase tracking-wider mb-0.5" style="color:#ff832b">Amenities</div>
+                  <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#ff832b">Amenities</div>
                   <div class="text-[14px] text-[#e0e0e0] leading-[130%]">${{escapeHtml((inst.amenities || 'Art bookshop, café, cloakroom, and lockers.').toString().split(',').map(x => x.trim()).filter(Boolean).join(' · '))}}</div>
                 </div>
               </div>
@@ -18496,20 +18510,20 @@ def build():
           ` : ''}}
 
           <div class="py-2.5 border-t border-[#262626]">
-            <span class="text-[14px] font-mono uppercase tracking-wider block mb-1 text-[#be95ff]">Ethical Safeguards & Autonomy Charter</span>
+            <span class="text-[14px] font-mono tracking-wider block mb-1 text-[#be95ff]">Ethical Safeguards & Autonomy Charter</span>
             <p class="text-[14px] text-slate-200 leading-[130%]">${{escapeHtml(inst.ethical_safeguard || 'Verified under Culture Atlas criteria')}}</p>
           </div>
 
           ${{isClean && inst.watch ? `
             <div class="py-2.5 border-t border-[#262626]">
-              <span class="text-[14px] font-mono uppercase tracking-wider block mb-1 text-[#f1c21b]">Curator Audit Notes</span>
+              <span class="text-[14px] font-mono tracking-wider block mb-1 text-[#f1c21b]">Curator Audit Notes</span>
               <p class="text-[14px] text-slate-200 leading-[130%]">${{escapeHtml(inst.watch)}}</p>
             </div>
           ` : ''}}
 
           <div class="pt-2 border-t border-[#1c212a]">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-[14px] font-normal text-slate-400 uppercase tracking-wider font-mono">Audited Sources, Reports & Filings</span>
+              <span class="text-[14px] font-normal text-slate-400 tracking-wider font-mono">Audited Sources, Reports & Filings</span>
               <button type="button" onclick="openResearchFeedbackModal('${{escapeHtml(inst.name)}}', '${{escapeHtml(inst.city)}}')" class="text-[14px] font-mono text-[#78a9ff] hover:underline cursor-pointer flex items-center gap-1">
                 <span>Suggest Update</span>
               </button>
@@ -18562,7 +18576,7 @@ def build():
             <div class="flex items-center justify-between border-b border-orange-800/60 pb-2.5">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-orange-400 animate-pulse"></span>
-                <span class="text-[14px] font-mono text-orange-300 font-bold uppercase tracking-wider">
+                <span class="text-[14px] font-mono text-orange-300 font-bold tracking-wider">
                   Unvarnished Art World Whispers & Leaks
                 </span>
               </div>
@@ -18616,7 +18630,7 @@ def build():
             ${{inst.gossip_data && inst.gossip_data.real_cases && inst.gossip_data.real_cases.length > 0 ? `
               <div class="space-y-3 pt-1">
                 <div class="flex items-center justify-between text-[14px] font-mono border-b border-yellow-800/50 pb-1">
-                  <span class="text-yellow-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span class="text-yellow-300 font-bold tracking-wider flex items-center gap-1.5">
                     <span>🏛️ Documented Dispute Investigations (${{inst.gossip_data.real_cases.length}})</span>
                   </span>
                   <span class="text-slate-400">Verified Evidence</span>
@@ -18635,28 +18649,28 @@ def build():
 
                     ${{c.facts && c.facts.length > 0 ? `
                       <div class="text-[14px] text-slate-200">
-                        <strong class="text-yellow-300 font-mono text-[14px] block uppercase">Documented Facts:</strong>
+                        <strong class="text-yellow-300 font-mono text-[14px] block">Documented Facts:</strong>
                         <p class="leading-relaxed font-sans">${{escapeHtml(c.facts.join(' '))}}</p>
                       </div>
                     ` : ''}}
 
                     ${{c.claims && c.claims.length > 0 ? `
                       <div class="text-[14px] text-yellow-200/90">
-                        <strong class="text-yellow-400 font-mono text-[14px] block uppercase">Public Claim:</strong>
+                        <strong class="text-yellow-400 font-mono text-[14px] block">Public Claim:</strong>
                         <p class="leading-relaxed font-sans italic">"${{escapeHtml(c.claims.join(' '))}}"</p>
                       </div>
                     ` : ''}}
 
                     ${{c.response ? `
                       <div class="text-[14px] text-slate-300">
-                        <strong class="text-yellow-300 font-mono text-[14px] block uppercase">Institutional Response:</strong>
+                        <strong class="text-yellow-300 font-mono text-[14px] block">Institutional Response:</strong>
                         <p class="leading-relaxed font-sans">${{escapeHtml(c.response)}}</p>
                       </div>
                     ` : ''}}
 
                     ${{c.outcome ? `
                       <div class="p-2.5 rounded-lg bg-[#241b07] border border-yellow-500/50 text-[14px] text-emerald-200">
-                        <strong class="text-emerald-400 font-mono text-[14px] block uppercase flex items-center gap-1">
+                        <strong class="text-emerald-400 font-mono text-[14px] block flex items-center gap-1">
                           <span>✓ Verified Outcome (${{escapeHtml(c.latest_source_date || 'Latest')}}):</span>
                         </strong>
                         <p class="leading-relaxed font-sans">${{escapeHtml(c.outcome)}}</p>
@@ -18682,7 +18696,7 @@ def build():
             ${{inst.gossip_data && inst.gossip_data.review_leads && inst.gossip_data.review_leads.length > 0 ? `
               <div class="space-y-2.5 pt-1">
                 <div class="flex items-center justify-between text-[14px] font-mono border-b border-yellow-800/50 pb-1">
-                  <span class="text-yellow-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span class="text-yellow-300 font-bold tracking-wider flex items-center gap-1.5">
                     <span>👤 Verified Staff & Worker Reviews (${{inst.gossip_data.review_leads.length}})</span>
                   </span>
                   <span class="text-slate-400">Glassdoor · Kununu</span>
@@ -18717,7 +18731,7 @@ def build():
 
             <!-- Plain English Governance Context -->
             <div class="p-3 rounded-xl bg-[#281307] border border-orange-600/50 space-y-1 text-[14px] text-orange-200/90 leading-relaxed">
-              <strong class="text-orange-400 font-mono text-[14px] uppercase block">Why this matters:</strong>
+              <strong class="text-orange-400 font-mono text-[14px] block">Why this matters:</strong>
               Museums often operate under diplomatic public faces, but curatorial friction, private trustee pressures, and underwriting negotiations happen out of sight. Gossip Mode maps these unspoken real-world dynamics so cultural practitioners know the actual internal environment.
             </div>
 
@@ -18761,14 +18775,14 @@ def build():
             <span class="text-slate-400">${{escapeHtml(fl.elevation || '0.0m')}}</span>
           </div>
           <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
-            <span class="text-[14px] font-mono uppercase text-amber-400 font-bold block">Current Show on this Level:</span>
+            <span class="text-[14px] font-mono text-amber-400 font-bold block">Current Show on this Level:</span>
             <div class="font-semibold text-white">${{escapeHtml(show.title || 'Curatorial Collections')}}</div>
             <div class="text-slate-300 text-[14px] font-mono">${{escapeHtml(show.curator_artists || '')}}${{show.dates ? ' · ' + escapeHtml(show.dates) : ''}}</div>
             ${{show.synopsis ? `<p class="text-slate-300 text-[14px] leading-snug line-clamp-2">${{escapeHtml(show.synopsis)}}</p>` : ''}}
           </div>
           ${{arch ? `
             <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
-              <span class="text-[14px] font-mono uppercase text-emerald-400 font-bold block">Archival Holding on this Level:</span>
+              <span class="text-[14px] font-mono text-emerald-400 font-bold block">Archival Holding on this Level:</span>
               <div class="font-semibold text-emerald-200">${{escapeHtml(arch.collection_title || '')}}</div>
               <div class="text-slate-400 text-[14px]">${{escapeHtml(arch.reading_room_policy || 'Public study access')}}</div>
             </div>
@@ -19203,7 +19217,7 @@ def build():
             <div>
               <div class="flex items-center gap-2">
                 <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#0a3136] text-[#08bdba] border border-[#08bdba]/60 font-bold">${{escapeHtml(sub.id || 'RES')}}</span>
-                <span class="text-[14px] font-mono text-teal-300 uppercase">${{escapeHtml((sub.category || 'FIELD NOTE').replace(/_/g, ' '))}}</span>
+                <span class="text-[14px] font-mono text-teal-300">${{escapeHtml((sub.category || 'FIELD NOTE').replace(/_/g, ' '))}}</span>
               </div>
               <h4 class="font-medium text-white text-[14px] leading-snug mt-1">${{escapeHtml(sub.spaceName || 'Community Research Space')}}</h4>
               <p class="text-[14px] text-[#33b1ff] font-mono">${{escapeHtml(sub.city || '')}}${{sub.country ? ', ' + escapeHtml(sub.country) : ''}}</p>
@@ -19313,14 +19327,14 @@ def build():
 
           ${{p.takeaway ? `
             <div class="p-2.5 rounded-lg bg-[#0d212b] border border-[#08bdba]/40 text-[#a6f0eb] text-[14px] leading-relaxed">
-              <strong class="text-[#08bdba] block text-[14px] uppercase tracking-wider font-mono mb-0.5">Key Empirical Finding:</strong>
+              <strong class="text-[#08bdba] block text-[14px] tracking-wider font-mono mb-0.5">Key Empirical Finding:</strong>
               ${{escapeHtml(p.takeaway)}}
             </div>
           ` : ''}}
 
           ${{p.abstract ? `
             <details class="text-[14px] text-slate-300">
-              <summary class="cursor-pointer text-[#78a9ff] hover:underline font-mono text-[14px] uppercase tracking-wider py-1">View Abstract & Methodology</summary>
+              <summary class="cursor-pointer text-[#78a9ff] hover:underline font-mono text-[14px] tracking-wider py-1">View Abstract & Methodology</summary>
               <p class="mt-1.5 p-2.5 rounded bg-[#171717] border border-[#2a2a2a] text-slate-300 leading-relaxed">${{escapeHtml(p.abstract)}}</p>
             </details>
           ` : ''}}
@@ -19520,11 +19534,11 @@ def build():
               </div>
               <div class="flex items-center gap-3">
                 <div class="text-right font-mono text-[14px]">
-                  <span class="text-slate-400 block text-[14px] uppercase">Program Spend</span>
+                  <span class="text-slate-400 block text-[14px]">Program Spend</span>
                   <span class="text-emerald-400 font-bold text-[14px]">${{fd.program_expense_ratio_pct}}%</span>
                 </div>
                 <div class="text-right font-mono text-[14px] hidden sm:block">
-                  <span class="text-slate-400 block text-[14px] uppercase">Budget Scale</span>
+                  <span class="text-slate-400 block text-[14px]">Budget Scale</span>
                   <span class="text-white">${{escapeHtml(fd.operating_budget_display || inst.funding)}}</span>
                 </div>
                 <button type="button" data-inst-name="${{escapeHtml(inst.name)}}" class="fa-focus-inst-btn px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[14px] font-mono transition cursor-pointer shrink-0">
@@ -19720,10 +19734,10 @@ def build():
         const isClean = inst.tier === 'A';
         const isFlagged = inst.tier === 'B';
         const tierBadgeHtml = isClean 
-          ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold uppercase">Verified Independent Space</span>`
+          ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold">Verified Independent Space</span>`
           : (isFlagged 
-            ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-[#1f1433] text-[#be95ff] font-bold uppercase">Flagged Corporate Conflict</span>`
-            : `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#38bdf8]/60 bg-[#102436] text-[#38bdf8] font-bold uppercase">Statutory Public Audit</span>`);
+            ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-[#1f1433] text-[#be95ff] font-bold">Flagged Corporate Conflict</span>`
+            : `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#38bdf8]/60 bg-[#102436] text-[#38bdf8] font-bold">Statutory Public Audit</span>`);
 
         const holdingsGrid = (arch.primary_holdings || []).map(h => `
           <div class="bg-[#121724] border border-[#202b3f] rounded-xl p-2.5 flex flex-col gap-1">
@@ -19785,7 +19799,7 @@ def build():
             <div class="bg-[#111622] border border-[#1f293d] rounded-xl p-3 flex flex-col gap-2 text-[14px]">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1.5 border-b border-[#1f293d]">
                 <div class="text-slate-300">
-                  <strong class="text-cyan-400 font-mono text-[14px] uppercase tracking-wider block sm:inline mr-1">Reading Room Policy:</strong>
+                  <strong class="text-cyan-400 font-mono text-[14px] tracking-wider block sm:inline mr-1">Reading Room Policy:</strong>
                   <span>${{escapeHtml(arch.reading_room_policy)}}</span>
                 </div>
                 <div class="shrink-0 text-right">
@@ -19797,7 +19811,7 @@ def build():
 
               ${{treasuresList ? `
                 <div class="text-slate-300">
-                  <strong class="text-amber-400 font-mono text-[14px] uppercase tracking-wider block mb-1">Highlight Archival Treasures:</strong>
+                  <strong class="text-amber-400 font-mono text-[14px] tracking-wider block mb-1">Highlight Archival Treasures:</strong>
                   <ul class="space-y-1 text-[14px] text-slate-300 leading-snug">
                     ${{treasuresList}}
                   </ul>
@@ -20013,7 +20027,7 @@ def build():
       return `
         <div class="mt-3 p-3 rounded-2xl bg-[#0f172a] border border-[#1e3a5f] text-[14px] space-y-2 select-text shadow-sm" data-exclude-speech="false">
           <div class="flex items-center justify-between border-b border-[#1e2f47] pb-1.5 flex-wrap gap-1">
-            <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] uppercase tracking-wider">
+            <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] tracking-wider">
               <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
               <span>Live Web Intelligence (Scraped)</span>
             </div>
@@ -21658,20 +21672,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!hero && contentWrap) {{
         hero = document.createElement('div');
         hero.id = 'curatorHeroGreeting';
-        hero.className = 'curator-message-wrap w-full flex flex-col items-center justify-center text-center py-5 select-text';
+        hero.className = 'curator-message-wrap w-full flex flex-col items-center justify-center text-center py-6 select-text';
         hero.setAttribute('data-speech', 'Welcome to Culture Atlas. Ask about any cultural space, its sponsors, or a controversy to inspect its Form 990 audit.');
         hero.innerHTML = `
-          <h1 class="text-base sm:text-lg font-normal text-white tracking-tight text-center mb-1 select-none">
+          <h1 class="text-[34pt] font-normal text-white tracking-tight text-center mb-2 select-none">
             What’s behind this cultural space?
           </h1>
-          <p class="text-xs text-slate-300 text-center mb-2 select-none max-w-md">
+          <p class="text-[14pt] text-[#c6c6c6] text-center mb-3 select-none max-w-lg">
             Ask about any cultural space, its sponsors, or a controversy to inspect its Form 990 audit.
           </p>
-          <div class="flex items-center justify-center gap-3 pt-1 text-[11px] text-slate-400 font-mono select-none">
+          <div class="flex items-center justify-center gap-3 pt-1 text-[14pt] text-[#8d8d8d] font-mono select-none">
             <span>Form 990 Checked · 0% Corporate Capture · 12:00</span>
             <div class="flex items-center gap-2">
-              <button type="button" class="curator-speak-btn text-slate-400 hover:text-white p-0.5 cursor-pointer inline-flex items-center gap-1 text-[11px]" title="Read Aloud"><span class="speak-icon">🔊</span><span class="speak-label">Listen</span></button>
-              <button type="button" class="curator-copy-btn text-slate-400 hover:text-white p-0.5 cursor-pointer" title="Copy">📋</button>
+              <button type="button" class="curator-speak-btn text-[#8d8d8d] hover:text-white p-0.5 cursor-pointer inline-flex items-center gap-1 text-[14pt]" title="Read Aloud"><span class="speak-icon">🔊</span><span class="speak-label">Listen</span></button>
+              <button type="button" class="curator-copy-btn text-[#8d8d8d] hover:text-white p-0.5 cursor-pointer" title="Copy">📋</button>
             </div>
           </div>
         `;
@@ -22053,17 +22067,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               ` : ''}}
               <div class="grid grid-cols-2 gap-2 text-[14px] font-mono bg-black/40 p-2.5 rounded-xl border border-emerald-900/40">
                 <div>
-                  <span class="text-slate-400 block text-[14px] uppercase">Admission &amp; Access</span>
+                  <span class="text-slate-400 block text-[14px]">Admission &amp; Access</span>
                   <span class="text-emerald-200 font-semibold">${{escapeHtml(s.admission || (activeFloor && activeFloor.access_policy) || 'Universal Free Access')}}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[14px] uppercase">Elevation &amp; Floor Area</span>
+                  <span class="text-slate-400 block text-[14px]">Elevation &amp; Floor Area</span>
                   <span class="text-slate-200">${{escapeHtml((activeFloor && activeFloor.elevation) || '0.0m')}} · ${{(activeFloor && activeFloor.area_sqm) || bArch.footprint_sqm || 500}} m²</span>
                 </div>
               </div>
               ${{(activeFloor && activeFloor.archive_holdings) ? `
                 <div class="text-[14px] text-amber-200/90 bg-amber-950/30 border border-amber-500/20 p-2.5 rounded-xl">
-                  <span class="font-mono text-[14px] uppercase text-amber-400 font-bold block">Archival Holding on this Level:</span>
+                  <span class="font-mono text-[14px] text-amber-400 font-bold block">Archival Holding on this Level:</span>
                   <strong>${{escapeHtml(activeFloor.archive_holdings.collection_title || '')}}</strong>
                   <div class="text-[14px] text-amber-100/70 mt-0.5">${{escapeHtml(activeFloor.archive_holdings.items_count || '')}}</div>
                 </div>
@@ -22257,12 +22271,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <span class="text-slate-400 uppercase font-mono text-[14pt] block">Operating Scope &amp; Budget</span>
+                    <span class="text-slate-400 font-mono text-[14pt] block">Operating Scope &amp; Budget</span>
                     <strong class="text-white block text-[14pt]">${{escapeHtml(budgetDisplay)}}</strong>
                     <p class="text-slate-300 text-[14pt]">${{publicPct}}% Public Subsidies · ${{earnedPct}}% Earned Revenue · ${{grantsPct}}% Grants</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <span class="text-slate-400 uppercase font-mono text-[14pt] block">Funding Structure &amp; Governance</span>
+                    <span class="text-slate-400 font-mono text-[14pt] block">Funding Structure &amp; Governance</span>
                     <strong class="text-emerald-300 block text-[14pt]">${{escapeHtml(fundingSource)}}</strong>
                     <p class="text-slate-300 text-[14pt]">${{escapeHtml(governance)}}</p>
                   </div>
@@ -22286,7 +22300,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-emerald-400">GLOBAL FUNDING ARCHITECTURE</span>
+                    <span class="text-xs font-mono font-medium text-emerald-400">Global Funding Architecture</span>
                     <span class="text-white font-medium text-sm">How Culture Atlas Audits Spaces</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
@@ -22298,15 +22312,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">1. Civic Arts Councils</strong>
+                    <strong class="text-emerald-300 block font-mono text-[14pt]">1. Civic Arts Councils</strong>
                     <p class="text-slate-300 text-[14pt]">European civic models (Mondriaan Fund, Arts Council England, DRAC France) allocate peer-reviewed public subsidies that insulate curatorial autonomy.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">2. Artist Commons</strong>
+                    <strong class="text-emerald-300 block font-mono text-[14pt]">2. Artist Commons</strong>
                     <p class="text-slate-300 text-[14pt]">Self-determined collectives (like Green Papaya in Manila, Casco in Utrecht, or Chisenhale in London) operate without billionaire trustee boards.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-purple-300 block font-mono text-[14pt] uppercase">3. Flagged Corporate Underwriters</strong>
+                    <strong class="text-purple-300 block font-mono text-[14pt]">3. Flagged Corporate Underwriters</strong>
                     <p class="text-slate-300 text-[14pt]">IRS Form 990 Schedule L audits identify institutions trading board seats for defense, fossil fuel, and private equity gifts.</p>
                   </div>
                 </div>
@@ -22335,7 +22349,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-sky-400">LABOR &amp; WORKPLACE AUDIT</span>
+                    <span class="text-xs font-mono font-medium text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
                     <span class="text-white font-medium text-sm">Staff Sentiment: ${{formatInstLink(activeTarget)}}</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">
@@ -22349,11 +22363,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-sky-300 block font-mono text-[14pt] uppercase">Wage Transparency &amp; Compensation Ratio</strong>
+                    <strong class="text-sky-300 block font-mono text-[14pt]">Wage Transparency &amp; Compensation Ratio</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'Democratic non-profit scale. Executive-to-staff salary ratio maintained under 3:1 with living wage commitments.' : 'Severe pay divergence. Director compensation exceeds 35x–45x median hourly staff wages.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-sky-300 block font-mono text-[14pt] uppercase">Union Recognition &amp; Collective Bargaining</strong>
+                    <strong class="text-sky-300 block font-mono text-[14pt]">Union Recognition &amp; Collective Bargaining</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'Flat-hierarchy artist collective; open staff forums with participatory budget allocation.' : 'Active union bargaining units (UAW Local 2110 / union staff) challenging contract freezes and healthcare cuts.'}}</p>
                   </div>
                 </div>
@@ -22370,7 +22384,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-sky-400">LABOR &amp; WORKPLACE AUDIT</span>
+                    <span class="text-xs font-mono font-medium text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
                     <span class="text-white font-medium text-sm">Museum Worker Mobilization</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">
@@ -22382,11 +22396,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-sky-300 block font-mono text-[14pt] uppercase">Corporate Mega-Museums</strong>
+                    <strong class="text-sky-300 block font-mono text-[14pt]">Corporate Mega-Museums</strong>
                     <p class="text-slate-300 text-[14pt]">Staff at MoMA, Whitney, Guggenheim, and The Met have organized strikes and walkouts demanding living wages, contract security, and healthcare.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">Verified Independent Spaces</strong>
+                    <strong class="text-emerald-300 block font-mono text-[14pt]">Verified Independent Spaces</strong>
                     <p class="text-slate-300 text-[14pt]">Culture Atlas maps artist-run spaces that model non-hierarchical governance, transparent pay bands, and democratic curatorial councils.</p>
                   </div>
                 </div>
@@ -22412,7 +22426,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-amber-400">RESISTANCE &amp; BOYCOTT RECORD</span>
+                    <span class="text-xs font-mono font-medium text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
                     <span class="text-white font-medium text-sm">Direct Action: ${{formatInstLink(activeTarget)}}</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}}">
@@ -22426,11 +22440,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt] uppercase">Landmark Protest Campaigns</strong>
+                    <strong class="text-amber-300 block font-mono text-[14pt]">Landmark Protest Campaigns</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'Artist solidarity platform: provides production space, residencies, and unrestricted grants free of commercial veto covenants.' : 'From Nan Goldin’s P.A.I.N. prescription pill die-ins against Purdue Pharma to the 2019 Whitney Biennial boycott and Strike MoMA occupations.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt] uppercase">Divestment &amp; Governance Outcomes</strong>
+                    <strong class="text-amber-300 block font-mono text-[14pt]">Divestment &amp; Governance Outcomes</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'Exemplary curatorial autonomy safeguarded by community charters.' : 'Forced stripping of toxic donor names, ouster of conflicted trustees, and termination of fossil fuel sponsorships.'}}</p>
                   </div>
                 </div>
@@ -22447,7 +22461,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-amber-400">RESISTANCE &amp; BOYCOTT RECORD</span>
+                    <span class="text-xs font-mono font-medium text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
                     <span class="text-white font-medium text-sm">Landmark Cultural Boycotts</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-700/60">
@@ -22459,11 +22473,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt] uppercase">Whitney Museum (2019)</strong>
+                    <strong class="text-amber-300 block font-mono text-[14pt]">Whitney Museum (2019)</strong>
                     <p class="text-slate-300 text-[14pt]">8 artists withdrew work from the Whitney Biennial, forcing the resignation of vice-chair Warren Kanders (Safariland tear gas).</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt] uppercase">The Met &amp; Louvre (2018–2021)</strong>
+                    <strong class="text-amber-300 block font-mono text-[14pt]">The Met &amp; Louvre (2018–2021)</strong>
                     <p class="text-slate-300 text-[14pt]">Nan Goldin / P.A.I.N. prescription pill die-ins forced every major institution to permanently strip the Sackler dynasty name.</p>
                   </div>
                 </div>
@@ -22489,7 +22503,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-rose-400">SPONSOR SCRUTINY AUDIT</span>
+                    <span class="text-xs font-mono font-medium text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
                     <span class="text-white font-medium text-sm">Underwriting Profile: ${{formatInstLink(activeTarget)}}</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}}">
@@ -22503,19 +22517,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">1. Fossil Fuel Greenwashing</strong>
+                    <strong class="text-rose-300 block font-mono text-[14pt]">1. Fossil Fuel Greenwashing</strong>
                     <p class="text-slate-300 text-[14pt]">BP, Shell, TotalEnergies, and Equinor leveraging cultural naming rights to buy social license for carbon extraction.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">2. Defense &amp; Surveillance</strong>
+                    <strong class="text-rose-300 block font-mono text-[14pt]">2. Defense &amp; Surveillance</strong>
                     <p class="text-slate-300 text-[14pt]">Safariland tear gas, Raytheon, and private defense contractors holding seats on museum executive committees.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">3. Big Pharma Dynasties</strong>
+                    <strong class="text-rose-300 block font-mono text-[14pt]">3. Big Pharma Dynasties</strong>
                     <p class="text-slate-300 text-[14pt]">Purdue Pharma / Sackler family funding museum wings while fueling fatal opioid epidemics.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">4. Vulture Debt &amp; Private Equity</strong>
+                    <strong class="text-rose-300 block font-mono text-[14pt]">4. Vulture Debt &amp; Private Equity</strong>
                     <p class="text-slate-300 text-[14pt]">Apollo Global and mega-hedge fund directors directing acquisitions to inflate personal art assets.</p>
                   </div>
                 </div>
@@ -22532,7 +22546,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-rose-400">SPONSOR SCRUTINY AUDIT</span>
+                    <span class="text-xs font-mono font-medium text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
                     <span class="text-white font-medium text-sm">Controversial Cultural Patronage</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-700/60">
@@ -22544,11 +22558,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">Fossil Fuel Greenwashing</strong>
+                    <strong class="text-rose-300 block font-mono text-[14pt]">Fossil Fuel Greenwashing</strong>
                     <p class="text-slate-300 text-[14pt]">BP, Shell, and TotalEnergies facing sustained divestment campaigns across the UK and Europe.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt] uppercase">Arms &amp; Defense Munitions</strong>
+                    <strong class="text-rose-300 block font-mono text-[14pt]">Arms &amp; Defense Munitions</strong>
                     <p class="text-slate-300 text-[14pt]">Board seats occupied by CEOs of tear gas and weapons manufacturers.</p>
                   </div>
                 </div>
@@ -22574,7 +22588,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-emerald-400">ARTIST EQUITY &amp; REMUNERATION</span>
+                    <span class="text-xs font-mono font-medium text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
                     <span class="text-white font-medium text-sm">Artist Fees: ${{formatInstLink(activeTarget)}}</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
@@ -22588,11 +22602,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">W.A.G.E. &amp; Council Standards</strong>
+                    <strong class="text-emerald-300 block font-mono text-[14pt]">W.A.G.E. &amp; Council Standards</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'Commitment to certified exhibition fees, talk honoraria, and materials budgets paid in advance.' : 'Lack of institutional W.A.G.E. certification; artist fees often treated as negotiable discretionary expense.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">Budget Allocation Ratio</strong>
+                    <strong class="text-emerald-300 block font-mono text-[14pt]">Budget Allocation Ratio</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'Over 70% of programmatic budget directed to artists, community workshops, and open public education.' : 'High administrative overhead with substantial funds diverted to executive compensation and real estate debt.'}}</p>
                   </div>
                 </div>
@@ -22609,7 +22623,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-emerald-400">ARTIST EQUITY &amp; REMUNERATION</span>
+                    <span class="text-xs font-mono font-medium text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
                     <span class="text-white font-medium text-sm">Artist Fee Benchmarks</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
@@ -22621,11 +22635,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">W.A.G.E. Guidelines</strong>
+                    <strong class="text-emerald-300 block font-mono text-[14pt]">W.A.G.E. Guidelines</strong>
                     <p class="text-slate-300 text-[14pt]">Establishes minimum compensation tiers based on institutional operating expenses, requiring guaranteed fees for solo and group exhibitions.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt] uppercase">Independent Commons</strong>
+                    <strong class="text-emerald-300 block font-mono text-[14pt]">Independent Commons</strong>
                     <p class="text-slate-300 text-[14pt]">Verified independent spaces prioritize artist fees above all, treating artists as core workers rather than unpaid content providers.</p>
                   </div>
                 </div>
@@ -22651,7 +22665,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-orange-400">TRUSTEE &amp; BOARD INTERLOCKS</span>
+                    <span class="text-xs font-mono font-medium text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
                     <span class="text-white font-medium text-sm">Governance Analysis: ${{formatInstLink(activeTarget)}}</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60">
@@ -22665,11 +22679,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt] uppercase">Corporate Interlocking Seats</strong>
+                    <strong class="text-orange-300 block font-mono text-[14pt]">Corporate Interlocking Seats</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'No commercial board seats. Governed by working artists, critical curators, and community stakeholders.' : 'Trustees hold concurrent senior directorships in private equity firms, fossil fuel extractors, and defense contractors.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt] uppercase">Acquisition &amp; Valuation Conflicts</strong>
+                    <strong class="text-orange-300 block font-mono text-[14pt]">Acquisition &amp; Valuation Conflicts</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'Non-commercial collection policy; no market speculation on permanent holdings.' : 'Trustee-collectors steering institutional acquisitions toward artists represented in their personal private collections.'}}</p>
                   </div>
                 </div>
@@ -22686,7 +22700,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-orange-400">TRUSTEE &amp; BOARD INTERLOCKS</span>
+                    <span class="text-xs font-mono font-medium text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
                     <span class="text-white font-medium text-sm">Relational Network Dynamics</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60">
@@ -22698,11 +22712,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt] uppercase">Interested Person Transactions</strong>
+                    <strong class="text-orange-300 block font-mono text-[14pt]">Interested Person Transactions</strong>
                     <p class="text-slate-300 text-[14pt]">Museums granting lucrative consulting, insurance, and architectural contracts directly to firms owned by board members.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt] uppercase">Market Legitimacy Laundering</strong>
+                    <strong class="text-orange-300 block font-mono text-[14pt]">Market Legitimacy Laundering</strong>
                     <p class="text-slate-300 text-[14pt]">Trustees using institutional solo retrospectives to elevate auction valuations for their private art portfolios.</p>
                   </div>
                 </div>
@@ -22728,7 +22742,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-teal-400">PUBLIC POLICY REFORM RECORD</span>
+                    <span class="text-xs font-mono font-medium text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
                     <span class="text-white font-medium text-sm">Policy Impact: ${{formatInstLink(activeTarget)}}</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60">
@@ -22742,11 +22756,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt] uppercase">Divestment Precedents</strong>
+                    <strong class="text-teal-300 block font-mono text-[14pt]">Divestment Precedents</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'Immune to corporate boycotts because funding is non-commercial and transparent by design.' : 'Ending multi-decade oil partnerships (BP dropped by Tate and Royal Academy; Shell dropped by Van Gogh Museum).'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt] uppercase">Governance Restructuring</strong>
+                    <strong class="text-teal-300 block font-mono text-[14pt]">Governance Restructuring</strong>
                     <p class="text-slate-300 text-[14pt]">${{isClean ? 'Participatory governance with community advisory oversight.' : 'Removal of conflicted trustees and adoption of institutional gift acceptance ethics committees.'}}</p>
                   </div>
                 </div>
@@ -22763,7 +22777,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-teal-400">PUBLIC POLICY REFORM RECORD</span>
+                    <span class="text-xs font-mono font-medium text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
                     <span class="text-white font-medium text-sm">Landmark Divestment Victories</span>
                   </div>
                   <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60">
@@ -22775,11 +22789,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt] uppercase">Sackler Divestment (2019–2022)</strong>
+                    <strong class="text-teal-300 block font-mono text-[14pt]">Sackler Divestment (2019–2022)</strong>
                     <p class="text-slate-300 text-[14pt]">Nan Goldin’s P.A.I.N. forced The Met, Tate, Louvre, Guggenheim, and Serpentine to scrub the Sackler family name from galleries worldwide.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt] uppercase">Fossil Free Victories</strong>
+                    <strong class="text-teal-300 block font-mono text-[14pt]">Fossil Free Victories</strong>
                     <p class="text-slate-300 text-[14pt]">Liberate Tate, Culture Unstained, and Fossil Free Books forced major institutions and literary festivals to sever multi-decade oil ties.</p>
                   </div>
                 </div>
@@ -22806,7 +22820,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             <div class="space-y-2.5">
               <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
                 <div class="flex items-center gap-1.5">
-                  <span class="text-xs font-mono font-medium text-emerald-400">INDEPENDENT SANCTUARIES</span>
+                  <span class="text-xs font-mono font-medium text-emerald-400"><span class="sr-only">INDEPENDENT SANCTUARIES</span>Independent Sanctuaries</span>
                   <span class="text-white font-medium text-sm">Verified Clean Spaces${{detectedCity ? ` in ${{escapeHtml(detectedCity)}}` : ''}}</span>
                 </div>
                 <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
@@ -22818,7 +22832,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               </p>
               ${{citySpaces.length > 0 ? `
                 <div class="py-2.5 border-t border-b border-[#262626] space-y-1.5 text-[14pt]">
-                  <span class="text-emerald-300 font-mono text-[14pt] uppercase block">Independent Spaces in ${{escapeHtml(detectedCity)}}:</span>
+                  <span class="text-emerald-300 font-mono text-[14pt] block">Independent Spaces in ${{escapeHtml(detectedCity)}}:</span>
                   <div class="space-y-1">
                     ${{citySpaces.slice(0, 4).map(s => `<div>· ${{formatInstLink(s)}} <span class="text-slate-400 font-mono text-[14pt]">(${{escapeHtml(s.admission_policy || 'Free')}})</span></div>`).join('')}}
                   </div>
@@ -23145,19 +23159,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[14px] font-mono">
               <div class="p-2.5 rounded-xl bg-[#111e30] border border-sky-900/50">
-                <span class="text-slate-400 block text-[14px] uppercase">Catalog Scope</span>
+                <span class="text-slate-400 block text-[14px]">Catalog Scope</span>
                 <strong class="text-white text-[14px]">€69.6B</strong>
               </div>
               <div class="p-2.5 rounded-xl bg-[#111e30] border border-sky-900/50">
-                <span class="text-emerald-400 block text-[14px] uppercase">Avg Program Spend</span>
+                <span class="text-emerald-400 block text-[14px]">Avg Program Spend</span>
                 <strong class="text-emerald-400 text-[14px]">74.8%</strong>
               </div>
               <div class="p-2.5 rounded-xl bg-[#111e30] border border-sky-900/50">
-                <span class="text-sky-400 block text-[14px] uppercase">Civic Subsidies</span>
+                <span class="text-sky-400 block text-[14px]">Civic Subsidies</span>
                 <strong class="text-sky-400 text-[14px]">47.4%</strong>
               </div>
               <div class="p-2.5 rounded-xl bg-[#111e30] border border-sky-900/50">
-                <span class="text-amber-400 block text-[14px] uppercase">Overhead</span>
+                <span class="text-amber-400 block text-[14px]">Overhead</span>
                 <strong class="text-amber-400 text-[14px]">16.2%</strong>
               </div>
             </div>
@@ -23307,7 +23321,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
                 <!-- Stops Timeline -->
                 <div class="space-y-2 pt-1 border-t border-emerald-900/40">
-                  <div class="text-[14px] font-mono uppercase text-emerald-400 font-bold">Route Timeline & Operating Hours:</div>
+                  <div class="text-[14px] font-mono text-emerald-400 font-bold">Route Timeline & Operating Hours:</div>
                   ${{route.stops.map((s, idx) => `
                     <div class="p-2 sm:p-2.5 rounded-xl bg-[#0b261d] border border-emerald-800/40 space-y-1">
                       <div class="flex items-center justify-between gap-1.5">
@@ -23811,19 +23825,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
               <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt] font-mono">
                 <div class="py-2 border-b border-[#262626] flex items-center justify-between">
-                  <span class="text-slate-400 uppercase text-[14pt]">Catalog Scope</span>
+                  <span class="text-slate-400 text-[14pt]">Catalog Scope</span>
                   <strong class="text-white text-[14pt]">€69.6B</strong>
                 </div>
                 <div class="py-2 border-b border-[#262626] flex items-center justify-between">
-                  <span class="text-emerald-400 uppercase text-[14pt]">Avg Program Spend</span>
+                  <span class="text-emerald-400 text-[14pt]">Avg Program Spend</span>
                   <strong class="text-emerald-400 text-[14pt]">74.8%</strong>
                 </div>
                 <div class="py-2 border-b border-[#262626] flex items-center justify-between">
-                  <span class="text-sky-400 uppercase text-[14pt]">Civic Subsidies</span>
+                  <span class="text-sky-400 text-[14pt]">Civic Subsidies</span>
                   <strong class="text-sky-400 text-[14pt]">47.4%</strong>
                 </div>
                 <div class="py-2 border-b border-[#262626] flex items-center justify-between">
-                  <span class="text-amber-400 uppercase text-[14pt]">Overhead</span>
+                  <span class="text-amber-400 text-[14pt]">Overhead</span>
                   <strong class="text-amber-400 text-[14pt]">16.2%</strong>
                 </div>
               </div>
@@ -23924,18 +23938,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[14px] font-mono">
                   <div class="p-2.5 rounded-xl bg-[#080d16] border border-[#162234]">
-                    <span class="text-slate-400 block text-[14px] uppercase">Operating Budget Scale</span>
+                    <span class="text-slate-400 block text-[14px]">Operating Budget Scale</span>
                     <span class="text-white font-bold text-[14px]">${{escapeHtml(fd.operating_budget_display || specificInst.funding)}}</span>
                   </div>
                   <div class="p-2.5 rounded-xl bg-[#080d16] border border-[#162234]">
-                    <span class="text-slate-400 block text-[14px] uppercase">Program Mission Spend</span>
+                    <span class="text-slate-400 block text-[14px]">Program Mission Spend</span>
                     <span class="text-emerald-400 font-bold text-[14px]">${{fd.program_expense_ratio_pct || 78}}% Program Services</span>
                   </div>
                 </div>
 
                 <div class="p-2.5 rounded-xl bg-[#080d16] border border-[#162234] space-y-1.5 text-[14px] font-mono">
                   <div class="flex justify-between text-slate-300">
-                    <span class="text-slate-400 uppercase text-[14px]">Revenue Mix Breakdown</span>
+                    <span class="text-slate-400 text-[14px]">Revenue Mix Breakdown</span>
                     <span class="text-sky-300">${{fd.public_subsidies_pct || 60}}% Public Subsidies</span>
                   </div>
                   <div class="w-full h-2 rounded-full bg-[#162234] overflow-hidden flex">
@@ -23951,7 +23965,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </div>
 
                 <div class="p-2.5 rounded-xl bg-[#111c2e] border border-sky-800/40 text-[14px] text-slate-200 leading-relaxed">
-                  <strong class="text-sky-300 block font-mono text-[14px] uppercase mb-0.5">Primary Funding Architecture:</strong>
+                  <strong class="text-sky-300 block font-mono text-[14px] mb-0.5">Primary Funding Architecture:</strong>
                   ${{escapeHtml(specificInst.funding || 'Civic cultural allocations.')}}
                 </div>
 
@@ -24048,7 +24062,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2">
-                <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] uppercase tracking-wider">
+                <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] tracking-wider">
                   <span>Dedicated Archives Directory</span>
                   <span>·</span>
                   <span>{archives_count} Cataloged Repositories</span>
@@ -24108,7 +24122,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
               <div class="flex items-center justify-between border-b border-sky-500/20 pb-2">
-                <div class="flex items-center gap-2 text-sky-400 font-mono text-[14px] uppercase tracking-wider">
+                <div class="flex items-center gap-2 text-sky-400 font-mono text-[14px] tracking-wider">
                   <span>Peer-Reviewed Academic Corpus</span>
                   <span>·</span>
                   <span>{academic_count} Empirical Studies</span>
@@ -24163,7 +24177,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('reputation laundering') || q.includes('yates') || q.includes('shawn graham') || q.includes('antiquities fraud') || q.includes('hidden crime in provenance') || q.includes('provenance machine learning')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-purple-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-purple-400 font-mono text-[14px] tracking-wider">
                 <span>Academic Study Profile</span>
                 <span>·</span>
                 <span>Yates & Graham (2023)</span>
@@ -24197,7 +24211,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('spirit sings') || q.includes('the spirit sings') || (q.includes('sharp') && (q.includes('oil') || q.includes('glenbow') || q.includes('spirit'))) || q.includes('glenbow') || q.includes('lubicon')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-amber-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-[14px] tracking-wider">
                 <span>Historical Case Study</span>
                 <span>·</span>
                 <span>C. Sharp (2022)</span>
@@ -24226,7 +24240,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('why private museums close') || q.includes('fragility of cultural philanthropy') || q.includes('fragility of private') || q.includes('velthuis') || q.includes('marton gera') || q.includes('private museums close') || q.includes('years open before closing') || (q.includes('private') && q.includes('museum') && (q.includes('close') || q.includes('fragil')))) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-rose-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-rose-400 font-mono text-[14px] tracking-wider">
                 <span>Empirical Demography</span>
                 <span>·</span>
                 <span>Velthuis & Gera (2024)</span>
@@ -24258,7 +24272,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('identified donor effect') || (q.includes('chen') && q.includes('gao') && (q.includes('donor') || q.includes('effect'))) || q.includes('disclosing the donor') || q.includes('donor name shapes recipient')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-emerald-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-emerald-400 font-mono text-[14px] tracking-wider">
                 <span>Behavioral Economics</span>
                 <span>·</span>
                 <span>Chen & Gao (2021)</span>
@@ -24287,7 +24301,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('nonprofit fraud') || q.includes('voluntary fraud disclosure') || q.includes('kugel') || q.includes('mercado') || q.includes('donor backlash') || q.includes('spreading the news') || q.includes('asset diversion') || (q.includes('harris') && q.includes('petrovits'))) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] tracking-wider">
                 <span>Governance & Audit Science</span>
                 <span>·</span>
                 <span>Kugel & Mercado (2026) / Harris et al. (2023)</span>
@@ -24316,7 +24330,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('brazilian contemporary art') || q.includes('tax incentives in brazilian') || q.includes('silva 2025') || (q.includes('silva') && q.includes('brazil')) || q.includes('corporate sponsorship as cultural policy') || q.includes('rouanet law') || q.includes('rouanet')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-yellow-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-yellow-400 font-mono text-[14px] tracking-wider">
                 <span>Cultural Policy & Inequality</span>
                 <span>·</span>
                 <span>Sara de Andrade Silva (2025)</span>
@@ -24345,7 +24359,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('fredriksen') || q.includes('national museum in norway') || q.includes('berg & larsen') || (q.includes('berg') && q.includes('norway')) || q.includes('norwegian art museum') || q.includes('egalitarian values and high tax moral')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-blue-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-blue-400 font-mono text-[14px] tracking-wider">
                 <span>Public Trust & Collector Pacts</span>
                 <span>·</span>
                 <span>Berg & Larsen (2024) / Berg (2024)</span>
@@ -24374,7 +24388,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('donation of the century') || q.includes('samsung collection') || (q.includes('park') && q.includes('kim') && (q.includes('semiotica') || q.includes('actor-network') || q.includes('donation'))) || q.includes('actor-network theory in south korea')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-indigo-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-indigo-400 font-mono text-[14px] tracking-wider">
                 <span>Semiotics & Actor-Network Theory</span>
                 <span>·</span>
                 <span>Park & Kim (2025)</span>
@@ -24403,7 +24417,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('czech republic') || q.includes('prokůpek') || q.includes('prokupek') || q.includes('divíšková') || q.includes('diviskova') || q.includes('ethics in museum fundraising')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-teal-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-teal-400 font-mono text-[14px] tracking-wider">
                 <span>Transition Economies & Ethics</span>
                 <span>·</span>
                 <span>Prokůpek & Divíšková (2022)</span>
@@ -24429,7 +24443,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('cavalieri') || (q.includes('special autonomy') && (q.includes('museum') || q.includes('funding'))) || q.includes('competitive funding in italian') || (q.includes('governance features shape museum') || q.includes('gallea') || q.includes('martorana'))) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-violet-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-violet-400 font-mono text-[14px] tracking-wider">
                 <span>Empirical Cultural Economics</span>
                 <span>·</span>
                 <span>Cavalieri et al. (2025)</span>
@@ -24458,7 +24472,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('dainelli') || q.includes('manetti') || q.includes('sibilio') || (q.includes('national museum') && (q.includes('accountability') || q.includes('stakeholder theory'))) || q.includes('stakeholder theory in museums')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-blue-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-blue-400 font-mono text-[14px] tracking-wider">
                 <span>Nonprofit Accountability & Stakeholder Theory</span>
                 <span>·</span>
                 <span>Dainelli, Manetti & Sibilio (2012)</span>
@@ -24487,7 +24501,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('public benefit or private gain') || (q.includes('keeney') && (q.includes('jung') || q.includes('marschall') || q.includes('hawk') || q.includes('museum'))) || q.includes('cultural data profile') || q.includes('culturally specific missions')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-amber-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-[14px] tracking-wider">
                 <span>Public Benefit & Arts Administration</span>
                 <span>·</span>
                 <span>Keeney, Jung, Marschall & Hawk (2025)</span>
@@ -24516,7 +24530,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('benito-esteban') || (q.includes('female') && (q.includes('board') || q.includes('director')) && (q.includes('transparency') || q.includes('web'))) || q.includes('elvira-lorilla') || q.includes('romero-merino') || q.includes('board and web transparency')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-rose-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-rose-400 font-mono text-[14px] tracking-wider">
                 <span>Board Governance & Gender Diversity</span>
                 <span>·</span>
                 <span>Benito-Esteban et al. (2023)</span>
@@ -24545,7 +24559,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('volunteer commitment') || (q.includes('beck') && q.includes('garven')) || (q.includes('yetman') && q.includes('volunteer')) || q.includes('donors value volunteer commitment') || q.includes('volunteers as insiders')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-emerald-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-emerald-400 font-mono text-[14px] tracking-wider">
                 <span>Forensic Accounting & Volunteer Signaling</span>
                 <span>·</span>
                 <span>Beck, Garven & Yetman (2024)</span>
@@ -24574,7 +24588,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('ghoorah') || q.includes('decision-useful financial disclosures') || q.includes('mariyani-squire') || (q.includes('financial transparency') && q.includes('trust') && q.includes('donor')) || q.includes('talukder') || q.includes('khan')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] tracking-wider">
                 <span>Financial Transparency & Donor Psychology</span>
                 <span>·</span>
                 <span>Ghoorah et al. (2021, 2025)</span>
@@ -24603,7 +24617,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('goncharenko') || q.includes('multiplicity of logics') || q.includes('donor-imposed reporting') || (q.includes('donor') && q.includes('reporting') && q.includes('identity')) || q.includes('imposed accountability')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-fuchsia-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-fuchsia-400 font-mono text-[14px] tracking-wider">
                 <span>Institutional Logics & Reporting</span>
                 <span>·</span>
                 <span>G. Goncharenko (2020)</span>
@@ -24632,7 +24646,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('betzler') || (q.includes('swiss museum') && (q.includes('fundraising') || q.includes('governance'))) || q.includes('gmür') || q.includes('gmur') || q.includes('fundraising governance levels')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-lime-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-lime-400 font-mono text-[14px] tracking-wider">
                 <span>Arts Management & Board Governance</span>
                 <span>·</span>
                 <span>D. Betzler (2012, 2015)</span>
@@ -24661,7 +24675,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('blevins') || (q.includes('corporate governance') && (q.includes('nonprofit') || q.includes('charity') || q.includes('mission allocation'))) || q.includes('ragozzino') || q.includes('eckardt')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-indigo-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-indigo-400 font-mono text-[14px] tracking-wider">
                 <span>Strategic Management & Nonprofits</span>
                 <span>·</span>
                 <span>Blevins, Ragozzino & Eckardt (2020)</span>
@@ -24690,7 +24704,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('dong qin') || (q.includes('chinese museum') && (q.includes('board') || q.includes('trustee'))) || q.includes('government management to board governance') || (q.includes('museum boards in china') && q.includes('us')) || (q.includes('china') && q.includes('us') && (q.includes('board') || q.includes('trustee')))) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-amber-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-[14px] tracking-wider">
                 <span>Comparative Cultural Governance</span>
                 <span>·</span>
                 <span>Dong Qin (2021)</span>
@@ -24790,17 +24804,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   ` : ''}}
                   <div class="grid grid-cols-2 gap-2 text-[14px] font-mono bg-black/40 p-2.5 rounded-xl border border-emerald-900/40">
                     <div>
-                      <span class="text-slate-400 block text-[14px] uppercase">Admission &amp; Access</span>
+                      <span class="text-slate-400 block text-[14px]">Admission &amp; Access</span>
                       <span class="text-emerald-200 font-semibold">${{escapeHtml(curShow.admission || targetFloor.access_policy || 'Universal Free Access')}}</span>
                     </div>
                     <div>
-                      <span class="text-slate-400 block text-[14px] uppercase">Elevation &amp; Floor Area</span>
+                      <span class="text-slate-400 block text-[14px]">Elevation &amp; Floor Area</span>
                       <span class="text-slate-200">${{escapeHtml(targetFloor.elevation || '0.0m')}} · ${{targetFloor.area_sqm || bArch.footprint_sqm || 500}} m²</span>
                     </div>
                   </div>
                   ${{targetFloor.archive_holdings ? `
                     <div class="text-[14px] text-amber-200/90 bg-amber-950/30 border border-amber-500/20 p-2.5 rounded-xl">
-                      <span class="font-mono text-[14px] uppercase text-amber-400 font-bold block">Archival Holding on this Level:</span>
+                      <span class="font-mono text-[14px] text-amber-400 font-bold block">Archival Holding on this Level:</span>
                       <strong>${{escapeHtml(targetFloor.archive_holdings.collection_title || '')}}</strong>
                       <div class="text-[14px] text-amber-100/70 mt-0.5">${{escapeHtml(targetFloor.archive_holdings.items_count || '')}}</div>
                     </div>
@@ -24847,17 +24861,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   </div>
                   ${{curArch.scope ? `
                     <div class="border-t border-amber-950 pt-2 space-y-1">
-                      <span class="text-amber-400 font-mono text-[14px] uppercase font-bold block">Scope &amp; Provenance</span>
+                      <span class="text-amber-400 font-mono text-[14px] font-bold block">Scope &amp; Provenance</span>
                       <p class="text-slate-200 text-[14px] leading-relaxed">${{escapeHtml(curArch.scope)}}</p>
                     </div>
                   ` : ''}}
                   <div class="bg-black/40 p-2.5 rounded-xl border border-amber-900/40 space-y-1.5 text-[14px]">
-                    <div class="text-amber-300 font-mono text-[14px] uppercase font-bold">Public Study Room &amp; Access Policy</div>
+                    <div class="text-amber-300 font-mono text-[14px] font-bold">Public Study Room &amp; Access Policy</div>
                     <p class="text-slate-300 leading-snug">${{escapeHtml(curArch.reading_room_policy || targetFloor.access_policy || 'Free open consultation for independent researchers during gallery hours.')}}</p>
                   </div>
                   ${{targetFloor.facilities && targetFloor.facilities.length ? `
                     <div class="text-[14px] font-mono text-slate-300 flex items-center gap-2 flex-wrap pt-1">
-                      <span class="text-amber-400 uppercase text-[14px]">Room Amenities:</span>
+                      <span class="text-amber-400 text-[14px]">Room Amenities:</span>
                       ${{targetFloor.facilities.map(f => `<span class="bg-amber-950/60 border border-amber-700/40 px-2 py-0.5 rounded text-amber-200">${{escapeHtml(f)}}</span>`).join('')}}
                     </div>
                   ` : ''}}
@@ -24902,7 +24916,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     </div>
                   </div>
                   <div class="bg-black/40 p-2.5 rounded-xl border border-indigo-900/40 space-y-1.5 text-[14px]">
-                    <div class="text-indigo-300 font-mono text-[14px] uppercase font-bold">Public Amenities &amp; Facilities</div>
+                    <div class="text-indigo-300 font-mono text-[14px] font-bold">Public Amenities &amp; Facilities</div>
                     <div class="flex items-center gap-1.5 flex-wrap pt-0.5">
                       ${{(targetFloor.facilities || ['Universal Step-Free Access', 'Public Reading Commons', 'Restroom']).map(f => `<span class="bg-indigo-950/80 border border-indigo-700/50 px-2 py-0.5 rounded text-indigo-200 font-mono text-[14px]">${{escapeHtml(f)}}</span>`).join('')}}
                     </div>
@@ -24928,7 +24942,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             if (floors && floors.length) {{
               floorsHtml = `
                 <div class="pt-2 border-t border-[#333] space-y-2">
-                  <strong class="text-[#38bdf8] font-mono uppercase text-[14px] tracking-wider block">Floor-by-Floor Current Shows &amp; Archival Holdings:</strong>
+                  <strong class="text-[#38bdf8] font-mono text-[14px] tracking-wider block">Floor-by-Floor Current Shows &amp; Archival Holdings:</strong>
               ` + floors.map(fl => {{
                 const show = (fl.current_shows && fl.current_shows[0]) || {{ title: 'Curatorial Commissions', dates: 'On View' }};
                 const archHold = fl.archive_holdings || {{ collection_title: 'Special Collections' }};
@@ -24955,15 +24969,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               </p>
               <div class="py-2.5 border-t border-[#333] space-y-2 text-slate-300 text-[14px] leading-[135%]">
                 <div>
-                  <strong class="text-[#38bdf8] font-mono uppercase text-[14px] tracking-wider block">Building Profile &amp; Footprint</strong>
+                  <strong class="text-[#38bdf8] font-mono text-[14px] tracking-wider block">Building Profile &amp; Footprint</strong>
                   ${{bArch.architectural_style || 'Independent Loft'}} · ${{bArch.footprint_sqm ? bArch.footprint_sqm.toLocaleString() : '1,800'}} m² built area (${{bArch.floors || 2}} Floors, step-free access).
                 </div>
                 <div class="pt-1 border-t border-[#262626]">
-                  <strong class="text-[#34d399] font-mono uppercase text-[14px] tracking-wider block">Archival Repository &amp; Scope</strong>
+                  <strong class="text-[#34d399] font-mono text-[14px] tracking-wider block">Archival Repository &amp; Scope</strong>
                   ${{arch.summary || inst.curatorial_focus || 'Historic primary source files, artist portfolios, and curatorial correspondence.'}}
                 </div>
                 <div class="pt-1 border-t border-[#262626]">
-                  <strong class="text-[#fcd34d] font-mono uppercase text-[14px] tracking-wider block">Public Study Room &amp; Access Charter</strong>
+                  <strong class="text-[#fcd34d] font-mono text-[14px] tracking-wider block">Public Study Room &amp; Access Charter</strong>
                   ${{arch.reading_room_policy || 'Free public study room and curatorial library open during exhibition hours.'}}
                 </div>
                 ${{floorsHtml}}
@@ -25019,7 +25033,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           appendCuratorMessage(`
             <div class="border border-[#8a3ffc]/60 bg-[#1f1433] p-3 rounded-xl space-y-2">
               <div class="flex items-center justify-between border-b border-[#8a3ffc]/40 pb-1.5">
-                <span class="text-[#be95ff] font-mono text-[14px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <span class="text-[#be95ff] font-mono text-[14px] font-bold tracking-wider flex items-center gap-1.5">
                   <span>Forensic Sponsor Audit: ${{escapeHtml(s.label)}}</span>
                 </span>
                 <span class="text-[#be95ff] font-mono text-[14px] px-2 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">Flagged Corporate Conflict</span>
@@ -25691,14 +25705,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               Visitor Itinerary & Planning Guide: <strong>${{formatInstLink(inst)}}</strong> (${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}})
             </p>
             <div class="py-2.5 border-t border-[#333] space-y-1.5 text-slate-300 text-[14px] leading-[135%]">
-              <div><strong class="text-[#78a9ff] font-mono uppercase text-[14px] tracking-wider block">Opening Hours</strong> ${{escapeHtml(inst.opening_hours || 'Check official site')}}</div>
-              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono uppercase text-[14px] tracking-wider block">Admission & Tickets</strong> ${{escapeHtml(inst.admission_policy)}} (${{escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')}})</div>
-              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono uppercase text-[14px] tracking-wider block">Address & Neighborhood</strong> ${{escapeHtml(inst.address || inst.location)}} ${{inst.neighborhood ? `· <span class="font-mono text-[#82cfff]">${{escapeHtml(inst.neighborhood)}}</span>` : ''}}</div>
-              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono uppercase text-[14px] tracking-wider block">Getting There & Transit</strong> ${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
-              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono uppercase text-[14px] tracking-wider block">Suggested Duration</strong> ${{escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}}</div>
-              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#f1c21b] font-mono uppercase text-[14px] tracking-wider block">Collection / Commission Highlight</strong> ${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
-              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff7eb6] font-mono uppercase text-[14px] tracking-wider block">Accessibility</strong> ${{escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}}</div>
-              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff832b] font-mono uppercase text-[14px] tracking-wider block">Amenities</strong> ${{escapeHtml((inst.amenities || 'Art bookshop, café, cloakroom, and lockers.').toString().split(',').map(x => x.trim()).filter(Boolean).join(' · '))}}</div>
+              <div><strong class="text-[#78a9ff] font-mono text-[14px] tracking-wider block">Opening Hours</strong> ${{escapeHtml(inst.opening_hours || 'Check official site')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono text-[14px] tracking-wider block">Admission & Tickets</strong> ${{escapeHtml(inst.admission_policy)}} (${{escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')}})</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono text-[14px] tracking-wider block">Address & Neighborhood</strong> ${{escapeHtml(inst.address || inst.location)}} ${{inst.neighborhood ? `· <span class="font-mono text-[#82cfff]">${{escapeHtml(inst.neighborhood)}}</span>` : ''}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono text-[14px] tracking-wider block">Getting There & Transit</strong> ${{escapeHtml(inst.transit_tips || 'Accessible via central public transit network.')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono text-[14px] tracking-wider block">Suggested Duration</strong> ${{escapeHtml(inst.visit_duration || '1.5 – 2.5 hours')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#f1c21b] font-mono text-[14px] tracking-wider block">Collection / Commission Highlight</strong> ${{escapeHtml(inst.highlight || 'Celebrated collection and contemporary commissions.')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff7eb6] font-mono text-[14px] tracking-wider block">Accessibility</strong> ${{escapeHtml(inst.accessibility || 'Step-free access, elevators, accessible restrooms.')}}</div>
+              <div class="pt-1 border-t border-[#262626]"><strong class="text-[#ff832b] font-mono text-[14px] tracking-wider block">Amenities</strong> ${{escapeHtml((inst.amenities || 'Art bookshop, café, cloakroom, and lockers.').toString().split(',').map(x => x.trim()).filter(Boolean).join(' · '))}}</div>
             </div>
             ${{visitUrl ? `
               <div class="pt-2 border-t border-[#333] flex items-center gap-2">
@@ -26023,7 +26037,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('zizek') || q.includes('žižek') || (q.includes('cultural capitalism') && !q.includes('bourdieu')) || q.includes('ideological alibi') || q.includes('first as tragedy') || q.includes('charity as an alibi')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-rose-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-rose-400 font-mono text-[14px] tracking-wider">
                 <span>Critical Philosophy & Ideology Critique</span>
                 <span>·</span>
                 <span>Slavoj Žižek</span>
@@ -26052,7 +26066,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('boris groys') || (q.includes('groys') && (q.includes('art') || q.includes('museum') || q.includes('power') || q.includes('flow'))) || q.includes('art power') || q.includes('going public') || q.includes('museum as a secular archive')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-amber-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-[14px] tracking-wider">
                 <span>Curatorial Theory & Soviet Avant-Garde</span>
                 <span>·</span>
                 <span>Boris Groys</span>
@@ -26081,7 +26095,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('varoufakis') || q.includes('varufakis') || (q.includes('technofeudalism') && (q.includes('art') || q.includes('culture') || q.includes('museum') || q.includes('cloud'))) || q.includes('cloud capital') || q.includes('rentier art')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-cyan-400 font-mono text-[14px] tracking-wider">
                 <span>Political Economy & Technofeudalism</span>
                 <span>·</span>
                 <span>Yanis Varoufakis</span>
@@ -26110,7 +26124,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('hito steyerl') || q.includes('hito sterl') || (q.includes('steyerl') && (q.includes('art') || q.includes('museum') || q.includes('duty free') || q.includes('freeport') || q.includes('factory'))) || q.includes('duty free art') || q.includes('is a museum a factory') || (q.includes('freeport') && (q.includes('art') || q.includes('tax'))) || q.includes('warren kanders') || q.includes('safariland')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-violet-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-violet-400 font-mono text-[14px] tracking-wider">
                 <span>Media Theory & Institutional Critique</span>
                 <span>·</span>
                 <span>Hito Steyerl</span>
@@ -26139,7 +26153,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('martha rosler') || q.includes('maria eichhorn') || q.includes('cameron rowland') || q.includes('artists who criticize institutions') || q.includes('artists criticizing institutions')) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-emerald-400 font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-emerald-400 font-mono text-[14px] tracking-wider">
                 <span>Artists Confronting the Institution</span>
                 <span>·</span>
                 <span>Rosler · Eichhorn · Rowland</span>
@@ -26644,7 +26658,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (q.includes('connections among') || q.includes('connections between') || q.includes('sponsor network') || q.includes('sponsor networks') || q.includes('interlocking') || (q.includes('guardian') && (q.includes('democracy now') || q.includes('e-flux')))) {{
           appendCuratorMessage(`
             <div class="space-y-3 text-slate-200">
-              <div class="flex items-center gap-2 text-[#be95ff] font-mono text-[14px] uppercase tracking-wider">
+              <div class="flex items-center gap-2 text-[#be95ff] font-mono text-[14px] tracking-wider">
                 <span>Empirical Research Synthesis</span>
                 <span>·</span>
                 <span>Consensus Academic Graph</span>
@@ -27444,15 +27458,15 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
                 </p>
                 <div class="grid grid-cols-2 gap-2 pt-1 text-[14px]" data-exclude-speech="true">
                   <div class="p-2 rounded-lg bg-[#1e1e24] border border-[#2e2e38]">
-                    <span class="text-[#71717a] block text-[14px] uppercase tracking-wider font-mono">Admission</span>
+                    <span class="text-[#71717a] block text-[14px] tracking-wider font-mono">Admission</span>
                     <span class="text-emerald-400 font-medium">${{admission}}</span>
                   </div>
                   <div class="p-2 rounded-lg bg-[#1e1e24] border border-[#2e2e38]">
-                    <span class="text-[#71717a] block text-[14px] uppercase tracking-wider font-mono">Hours</span>
+                    <span class="text-[#71717a] block text-[14px] tracking-wider font-mono">Hours</span>
                     <span class="text-slate-200">${{hours}}</span>
                   </div>
                   <div class="p-2 rounded-lg bg-[#1e1e24] border border-[#2e2e38] col-span-2">
-                    <span class="text-[#71717a] block text-[14px] uppercase tracking-wider font-mono">Governance & Safeguard</span>
+                    <span class="text-[#71717a] block text-[14px] tracking-wider font-mono">Governance & Safeguard</span>
                     <span class="text-slate-300">${{inst.governance_type}} · ${{inst.ethical_safeguard}}</span>
                   </div>
                 </div>
@@ -27474,7 +27488,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
             const cleanAlternatives = ALL_INSTITUTIONS.filter(i => matchC(i.city, inst.city) || matchC(i.country, inst.country));
             let altText = '';
             if (cleanAlternatives.length > 0) {{
-              altText = `<div class="pt-2 border-t border-[#331c22]"><span class="text-[14px] font-mono text-[#a1a1aa] uppercase tracking-wider block mb-1">Verified Independent Spaces in ${{escapeHtml(inst.city)}}:</span><div class="space-y-1">` + cleanAlternatives.slice(0, 3).map(a => `<div>· ${{formatInstLink(a)}}</div>`).join('') + `</div></div>`;
+              altText = `<div class="pt-2 border-t border-[#331c22]"><span class="text-[14px] font-mono text-[#a1a1aa] tracking-wider block mb-1">Verified Independent Spaces in ${{escapeHtml(inst.city)}}:</span><div class="space-y-1">` + cleanAlternatives.slice(0, 3).map(a => `<div>· ${{formatInstLink(a)}}</div>`).join('') + `</div></div>`;
             }}
             appendCuratorMessage(`
               <div class="space-y-2.5">
@@ -28347,7 +28361,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
       body.innerHTML = `
         <div class="space-y-3 p-4 rounded-2xl bg-[#181920] border border-[#2b2f3d]">
-          <div class="flex items-center gap-2 text-emerald-400 font-mono text-[14px] uppercase tracking-wider">
+          <div class="flex items-center gap-2 text-emerald-400 font-mono text-[14px] tracking-wider">
             <span>Confidential Intelligence Desk</span>
             <span>·</span>
             <span>Investigative Intake</span>
@@ -28452,7 +28466,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
               <div class="text-slate-400 truncate">SHA-256 Digest: <span class="text-emerald-400">${{escapeHtml(entry.sha256Hash)}}</span></div>
             </div>
             <div class="pt-1 border-t border-emerald-500/20 text-[14px] text-slate-300 leading-relaxed">
-              <strong class="text-emerald-400 block mb-0.5 font-mono uppercase text-[14px]">OpSec &amp; Whistleblower Precautions:</strong>
+              <strong class="text-emerald-400 block mb-0.5 font-mono text-[14px]">OpSec &amp; Whistleblower Precautions:</strong>
               Your lead is cryptographically hashed. Retain your receipt code.
             </div>
           </div>
@@ -28814,7 +28828,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
             <div class="text-slate-400 truncate">SHA-256 Digest: <span class="text-slate-300">${{escapeHtml(cryptoReceipt.hash)}}</span></div>
           </div>
           <div class="pt-1.5 border-t border-[#1e293b] text-[14px] text-slate-300 leading-relaxed">
-            <strong class="text-slate-200 block mb-0.5 font-mono uppercase text-[14px]">OpSec &amp; Whistleblower Precautions:</strong>
+            <strong class="text-slate-200 block mb-0.5 font-mono text-[14px]">OpSec &amp; Whistleblower Precautions:</strong>
             Lead logged under pseudonym ${{escapeHtml(pseudonym)}}. Retain your cryptographic receipt code.
           </div>
           <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between gap-2 flex-wrap">
@@ -28915,11 +28929,11 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
           <strong>Research Contribution Queued for Verification</strong>
         </p>
         <div class="py-2.5 border-t border-[#333] space-y-1.5 text-slate-300 text-[14px] leading-[135%]">
-          <div><strong class="text-[#78a9ff] font-mono uppercase text-[14px] tracking-wider block">Audit Ticket</strong> <span class="font-mono text-emerald-400 font-bold">#${{entry.id}}</span> · <span class="text-slate-400 text-[14px] font-mono">Curatorial Verification Queue</span></div>
-          <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono uppercase text-[14px] tracking-wider block">Submission Category</strong> ${{escapeHtml(cat.replace(/_/g, ' ').toUpperCase())}}</div>
-          ${{name ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono uppercase text-[14px] tracking-wider block">Space & Location</strong> <span class="text-white font-medium">${{escapeHtml(name)}}</span> ${{city ? `(${{escapeHtml(city)}})` : ''}}</div>` : ''}}
-          <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono uppercase text-[14px] tracking-wider block">Research Findings</strong> ${{escapeHtml(details)}}</div>
-          ${{sourceUrl ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono uppercase text-[14px] tracking-wider block">Statutory Source Filing</strong> <a href="${{escapeHtml(sourceUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:underline font-mono text-[14px] break-all">${{escapeHtml(sourceUrl)}}</a></div>` : ''}}
+          <div><strong class="text-[#78a9ff] font-mono text-[14px] tracking-wider block">Audit Ticket</strong> <span class="font-mono text-emerald-400 font-bold">#${{entry.id}}</span> · <span class="text-slate-400 text-[14px] font-mono">Curatorial Verification Queue</span></div>
+          <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono text-[14px] tracking-wider block">Submission Category</strong> ${{escapeHtml(cat.replace(/_/g, ' ').toUpperCase())}}</div>
+          ${{name ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono text-[14px] tracking-wider block">Space & Location</strong> <span class="text-white font-medium">${{escapeHtml(name)}}</span> ${{city ? `(${{escapeHtml(city)}})` : ''}}</div>` : ''}}
+          <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono text-[14px] tracking-wider block">Research Findings</strong> ${{escapeHtml(details)}}</div>
+          ${{sourceUrl ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono text-[14px] tracking-wider block">Statutory Source Filing</strong> <a href="${{escapeHtml(sourceUrl)}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:underline font-mono text-[14px] break-all">${{escapeHtml(sourceUrl)}}</a></div>` : ''}}
           <div class="pt-1.5 border-t border-[#262626] text-[14px] text-slate-400 font-mono">
             Status: <span class="text-emerald-400 font-bold">Active in Session</span> · Queued for cross-examination against regulatory registers (IRS 990 / Charity Commission / DRAC).
           </div>
@@ -30427,14 +30441,14 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         </div>
 
         <div class="flex flex-wrap items-center gap-1.5">
-          <span class="text-[14px] text-[#38bdf8] font-mono shrink-0 mr-0.5 uppercase tracking-wider font-semibold">Fiscal Models:</span>
+          <span class="text-[14px] text-[#38bdf8] font-mono shrink-0 mr-0.5 tracking-wider font-semibold">Fiscal Models:</span>
           <button class="globe-filter-pill px-2.5 py-[2px] rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium shadow-sm shadow-sky-950/40" data-type="category" data-value="finance_civic">Public Subsidies (≥50%)</button>
           <button class="globe-filter-pill px-2.5 py-[2px] rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium shadow-sm shadow-sky-950/40" data-type="category" data-value="finance_endowed">Endowed (≥30%)</button>
           <button class="globe-filter-pill px-2.5 py-[2px] rounded-xl bg-[#0f2438] hover:bg-[#163654] border border-[#38bdf8] text-[#38bdf8] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium shadow-sm shadow-sky-950/40" data-type="category" data-value="finance_high_program">High Program Spend (≥80%)</button>
         </div>
 
         <div class="flex flex-wrap items-center gap-1.5">
-          <span class="text-[14px] text-[#71717a] font-mono shrink-0 mr-0.5 uppercase tracking-wider">Cities:</span>
+          <span class="text-[14px] text-[#71717a] font-mono shrink-0 mr-0.5 tracking-wider">Cities:</span>
       `;
 
       countryCities.forEach(city => {{
@@ -30458,7 +30472,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       let html = `
         <!-- Section 1: Funding & Governance Tiers -->
         <div class="space-y-1.5">
-          <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <div class="text-[14px] font-mono text-slate-400 tracking-wider flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
             <span class="text-slate-200 font-medium">Funding &amp; Governance Tiers</span>
           </div>
@@ -30475,7 +30489,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
         <!-- Visual Critique Sub-Bar (Soft Ghost Buttons) -->
         <div id="visualCritiqueSubBar" class="hidden flex flex-wrap items-center gap-1.5 p-2.5 bg-[#18181b]/95 border border-[#2e2e33] rounded-xl shadow-lg">
-          <span class="text-[14px] text-slate-300 font-mono shrink-0 mr-1 uppercase tracking-wider font-semibold flex items-center gap-1">
+          <span class="text-[14px] text-slate-300 font-mono shrink-0 mr-1 tracking-wider font-semibold flex items-center gap-1">
             <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
             Critique Strategies:
           </span>
@@ -30495,7 +30509,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
         <!-- Section 2: Research & Transparency Audits -->
         <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <div class="text-[14px] font-mono text-slate-400 tracking-wider flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
             <span class="text-slate-200 font-medium">Research &amp; Transparency Audits</span>
           </div>
@@ -30512,7 +30526,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
         <!-- Section 3: Geographic Regions & Access Models -->
         <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <div class="text-[14px] font-mono text-slate-400 tracking-wider flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
             <span class="text-slate-200 font-medium">Regions &amp; Access</span>
           </div>
@@ -30529,7 +30543,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
         <!-- Section 4: Fiscal & Revenue Architecture Models -->
         <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <div class="text-[14px] font-mono text-slate-400 tracking-wider flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
             <span class="text-slate-200 font-medium">Fiscal Architecture</span>
           </div>
@@ -30545,7 +30559,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
         <!-- Section 5: Featured Cultural Cities -->
         <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <div class="text-[14px] font-mono text-slate-400 tracking-wider flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
             <span class="text-slate-200 font-medium">Featured Cultural Cities</span>
           </div>
@@ -30564,7 +30578,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
         <!-- Section 6: Featured Countries -->
         <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <div class="text-[14px] font-mono text-slate-400 tracking-wider flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
             <span class="text-slate-200 font-medium">Featured Countries</span>
           </div>
@@ -30948,7 +30962,7 @@ bar.innerHTML = html;
           if (matches.length > 0) {{
             exHtml = `
               <div class="mt-4 p-3.5 rounded-xl bg-[#191024] border border-[#8a3ffc]/80 text-left space-y-2">
-                <div class="flex items-center gap-1.5 text-[#be95ff] font-mono text-[14px] uppercase">
+                <div class="flex items-center gap-1.5 text-[#be95ff] font-mono text-[14px]">
                   <span>Audited Corporate Underwriting Notice (${{matches.length}} Flagged)</span>
                 </div>
                 <p class="text-slate-300 text-[14px] leading-relaxed">
@@ -31003,14 +31017,14 @@ bar.innerHTML = html;
 
               ${{inst.takeaway ? `
                 <div class="mt-2.5 p-2.5 rounded-xl bg-[#0b2438] border border-[#0284c7]/40 text-[#bae6fd] text-[14px] leading-relaxed">
-                  <strong class="text-[#38bdf8] block text-[14px] uppercase tracking-wider font-mono mb-0.5">Key Empirical Finding:</strong>
+                  <strong class="text-[#38bdf8] block text-[14px] tracking-wider font-mono mb-0.5">Key Empirical Finding:</strong>
                   ${{escapeHtml(inst.takeaway)}}
                 </div>
               ` : ''}}
 
               ${{inst.abstract ? `
                 <details class="mt-2 text-[14px] text-slate-300">
-                  <summary class="cursor-pointer text-[#7dd3fc] hover:underline font-mono text-[14px] uppercase tracking-wider py-0.5">View Abstract &amp; Methodology</summary>
+                  <summary class="cursor-pointer text-[#7dd3fc] hover:underline font-mono text-[14px] tracking-wider py-0.5">View Abstract &amp; Methodology</summary>
                   <p class="mt-1.5 p-2.5 rounded-xl bg-[#111927] border border-[#1e293b] text-slate-300 leading-relaxed text-[14px]">${{escapeHtml(inst.abstract)}}</p>
                 </details>
               ` : ''}}
@@ -31092,7 +31106,7 @@ bar.innerHTML = html;
                 <img src="${{escapeHtml(inst.visual_critiques[0].image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg')}}" alt="Visual Critique" class="w-14 h-12 object-cover rounded-lg border border-amber-600/70 shrink-0 bg-black" />
                 <div class="min-w-0 flex-1 text-[14px] font-mono leading-tight space-y-0.5">
                   <div class="flex items-center justify-between gap-1">
-                    <span class="text-amber-400 font-bold uppercase tracking-wider text-[14px]">${{escapeHtml(inst.visual_critiques[0].strategy)}}</span>
+                    <span class="text-amber-400 font-bold tracking-wider text-[14px]">${{escapeHtml(inst.visual_critiques[0].strategy)}}</span>
                     <span class="text-amber-300/80 text-[14px]">${{escapeHtml(inst.visual_critiques[0].year || '')}}</span>
                   </div>
                   <div class="text-white font-bold truncate">${{escapeHtml(inst.visual_critiques[0].artist_designer || inst.visual_critiques[0].artist)}}</div>
