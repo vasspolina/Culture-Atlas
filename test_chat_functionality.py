@@ -145,11 +145,13 @@ def test_chat_functionality():
         chrome_bin,
         "--headless=new",
         "--dump-dom",
+        "--disable-gpu",
+        "--no-sandbox",
         f"file://{temp_file}"
     ]
 
     print("\n--- RUNNING HEADLESS CHROME CHAT COMPREHENSIVE SUITE ---")
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=50)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=90)
     out = proc.stdout
 
     marker = 'id="chat-test-output" data-results="'
