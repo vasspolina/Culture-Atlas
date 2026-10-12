@@ -3076,7 +3076,7 @@ def build():
             <button id="modeTabWhistleblower" onclick="window.enterChatInputMode()">Whistleblower</button>
             <div id="modeSwitchOpSecIndicator"></div>
             <div id="workspaceSelectedInstPill"><span id="workspaceSelectedInstName"></span></div>
-            <button id="workModelBtn"><span id="workModelLabel">Anthropic · Live</span></button>
+            <button id="workModelBtn"><span id="workModelLabel">Curator · Live</span></button>
             <button id="workspaceNewChatBtn" onclick="window.resetToNewChat();"></button>
           </div>
           <div id="chatInputModeHeader"></div>
@@ -3352,11 +3352,11 @@ def build():
       <!-- Send Pill Button -->
       <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg flex items-center space-x-1 active:scale-95 transition border border-cyan-300 cursor-pointer"><span class="">Send</span></button>
     </div>
-    <!-- Micro Badges: Anthropic Live + Voice Mode -->
+    <!-- Micro Badges: Curator Live + Voice Mode -->
     <div class="flex items-center justify-between text-[10px] text-slate-400 px-1">
       <span class="flex items-center space-x-1">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-        <span>Anthropic · Live</span>
+        <span>Curator · Live</span>
       </span>
       <div class="flex items-center space-x-2">
         <button id="mobileStickyVoiceBtn" type="button" onclick="if (typeof window.toggleCuratorVoice === 'function') window.toggleCuratorVoice();" class="text-slate-400 bg-slate-900 px-2 py-0.5 rounded-full border border-slate-800 cursor-pointer">Voice: ON</button>
@@ -3567,13 +3567,13 @@ def build():
           <input 
             type="password" 
             id="aiApiKeyInput" 
-            placeholder="Built-in Anthropic key active · Paste custom key to override..." 
+            placeholder="Built-in universal key active · Paste custom key to override..." 
             class="w-full bg-[#212121] border border-[#333333] text-[14px] text-white px-3.5 py-2.5 rounded-xl focus:outline-none focus:border-[#60a5fa] transition font-mono pr-10"
           />
           <button id="toggleKeyVisibilityBtn" class="absolute right-3 text-[#71717a] hover:text-white text-[14px] p-1 font-mono uppercase" title="Toggle visibility">Show</button>
         </div>
         <div class="text-[14px] text-[#71717a] flex items-center justify-between">
-          <span>System Anthropic intelligence is active for all visitors out-of-the-box.</span>
+          <span>Curator AI intelligence is active for all visitors out-of-the-box.</span>
         </div>
       </div>
 
@@ -18823,7 +18823,7 @@ def build():
       if (!badge) return;
       const k = (val || '').trim();
       if (!k) {{
-        badge.textContent = 'Built-in Anthropic System Key Active (Universal)';
+        badge.textContent = 'Built-in Universal System Key Active';
         badge.className = 'text-[14px] font-mono text-emerald-400';
         updateProviderUI('anthropic');
         return;
@@ -18859,7 +18859,7 @@ def build():
         }} else {{
           const badge = document.getElementById('keyDetectBadge');
           if (badge) {{
-            badge.textContent = 'Built-in Anthropic key active for all visitors';
+            badge.textContent = 'Built-in universal key active for all visitors';
             badge.className = 'text-[14px] font-mono text-emerald-400';
           }}
           updateProviderUI('anthropic');
@@ -18889,7 +18889,7 @@ def build():
       const workLabel = document.getElementById('workModelLabel');
 
       const prov = getEffectiveProvider();
-      const pName = prov === 'anthropic' ? 'Anthropic' : (prov === 'openai' ? 'OpenAI' : 'Gemini');
+      const pName = prov === 'anthropic' ? 'Curator' : (prov === 'openai' ? 'OpenAI' : 'Gemini');
       const effModel = getEffectiveModel();
 
       if (aiApiKey) {{
@@ -21787,7 +21787,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (isKeyDirectInput) {{
         const key = rawTrimmed.replace(/^\/key\s*/, '').trim();
         const prov = detectProvider(key);
-        const pName = prov === 'anthropic' ? 'Anthropic' : (prov === 'openai' ? 'OpenAI' : 'Google Gemini');
+        const pName = prov === 'anthropic' ? 'Curator' : (prov === 'openai' ? 'OpenAI' : 'Google Gemini');
         aiApiKey = key;
         aiProvider = prov;
         aiModel = getEffectiveModel();
@@ -27481,7 +27481,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
                   duration: (typeof queryAI !== 'undefined' && queryAI.lastDuration) || 3,
                   mode: getChatModeConfig(query),
                   thought: thoughtText,
-                  step: 'Live Anthropic Intelligence Reasoning'
+                  step: 'Live Curator Intelligence Reasoning'
                 }};
               }}
               appendCuratorMessage(aiHtml, [], webIntel, thinkingData);

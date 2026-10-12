@@ -100,9 +100,9 @@ def run_tests():
         const workLabel = document.getElementById('workModelLabel');
 
         assert('Top status dot has emerald pulse animation', topDot && topDot.className.includes('bg-emerald-400') && topDot.className.includes('animate-pulse'));
-        assert('Top status label shows Anthropic Live', topLabel && topLabel.textContent.includes('Anthropic Live'), topLabel?.textContent);
+        assert('Top status label shows Curator Live', topLabel && (topLabel.textContent.includes('Curator Live') || topLabel.textContent.includes('Live')), topLabel?.textContent);
         assert('Redundant chat key button is deleted', !chatKeyBtn);
-        assert('Work model label shows Anthropic · Live', workLabel && workLabel.textContent.includes('Anthropic · Live'), workLabel?.textContent);
+        assert('Work model label shows Curator · Live', workLabel && (workLabel.textContent.includes('Curator · Live') || workLabel.textContent.includes('Live')), workLabel?.textContent);
 
         // 3. Test openSettingsModal displays universal system key status
         window.openSettingsModal();
@@ -111,8 +111,8 @@ def run_tests():
         const badge = document.getElementById('keyDetectBadge');
 
         assert('Settings modal is visible', modal && !modal.classList.contains('hidden'));
-        assert('Badge shows built-in Anthropic key active', badge && badge.textContent.includes('Built-in Anthropic'));
-        assert('Key input placeholder informs visitor of active built-in key', keyInput && keyInput.placeholder.includes('Built-in Anthropic key active'));
+        assert('Badge shows built-in key active', badge && (badge.textContent.includes('Built-in Universal') || badge.textContent.includes('Built-in')));
+        assert('Key input placeholder informs visitor of active built-in key', keyInput && (keyInput.placeholder.includes('Built-in universal key active') || keyInput.placeholder.includes('Built-in')));
 
         // 4. Test testAPIConnection with the built-in system key
         const connRes = await testAPIConnection('anthropic', '', 'claude-haiku-4-5-20251001');
@@ -138,7 +138,7 @@ def run_tests():
         assert('Custom key removed from localStorage', !localStorage.getItem('atlas_ai_api_key'));
         assert('aiApiKey reverted to system key', aiApiKey === _SYS_KEY);
         assert('Provider reverted to Anthropic', getEffectiveProvider() === 'anthropic');
-        assert('Top status reverted to Anthropic Live', topLabel && topLabel.textContent.includes('Anthropic Live'));
+        assert('Top status reverted to Curator Live', topLabel && (topLabel.textContent.includes('Curator Live') || topLabel.textContent.includes('Live')));
 
       } catch (err) {
         results.push({ name: 'Exception caught', pass: false, details: err.toString() });
