@@ -10478,6 +10478,18 @@ return maplibregl$1;
         }
       }
       cityVectorMap.on('zoom', updateCityZoomClasses);
+      cityVectorMap.on('zoom', () => {
+        if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
+      });
+      cityVectorMap.on('move', () => {
+        if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
+      });
+      cityVectorMap.on('rotate', () => {
+        if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
+      });
+      cityVectorMap.on('pitch', () => {
+        if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
+      });
       cityVectorMap.on('load', () => {
         updateCityZoomClasses();
         if (typeof ensureCuratorialRouteLayer === 'function') {
@@ -10820,7 +10832,7 @@ return maplibregl$1;
         return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">EXHIBITION GALLERY</span>Exhibition Gallery</span><span class="gal-artists">' + escapeHtml(galArtists) + '</span><span class="gal-admission">' + escapeHtml(galAdmission) + '</span><span class="gal-synopsis">' + escapeHtml(galSynopsis) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Ask Curator · Pull into Chat</button></div>';
       }
       if (type === 'archive') {
-        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">ARCHIVES &amp; STUDY</span>Archives &amp; Study</span><span class="arch-policy">' + escapeHtml(archPolicy) + '</span><span class="arch-scope">' + escapeHtml(archScope) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Consult Archive · Pull into Chat</button></div>';
+        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">ARCHIVES & STUDY</span>Archives &amp; Study</span><span class="arch-policy">' + escapeHtml(archPolicy) + '</span><span class="arch-scope">' + escapeHtml(archScope) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Consult Archive · Pull into Chat</button></div>';
       }
       if (type === 'atrium' || type === 'forum') {
         return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">PUBLIC FORUM &amp; CIVIC</span>Public Forum &amp; Civic</span><span class="at-facilities">' + escapeHtml(atFacilities) + '</span><span class="at-access">' + escapeHtml(atAccess) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Explore Forum · Pull into Chat</button></div>';
@@ -11564,18 +11576,19 @@ return maplibregl$1;
 
       const bArch = inst.building_architecture || {};
       const sqm = bArch.footprint_sqm || 2400;
+      const cosLat = Math.max(0.25, Math.cos((lat * Math.PI) / 180));
       const d_lat = 0.00045 * (Math.sqrt(sqm) / 50.0);
-      const d_lon = 0.00065 * (Math.sqrt(sqm) / 50.0);
+      const d_lon = (0.00065 * (Math.sqrt(sqm) / 50.0)) / cosLat;
       const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
       const isMobileScreen = typeof window !== 'undefined' && window.innerWidth < 640;
 
-      // 1. ROOFTOP BUILDING MAST PLATE
+      // 1. ROOFTOP BUILDING MAST PLATE (North-West Quadrant, elevated above building)
       if (!isBuildingMastDismissed && !isFloorChange && !currentBuildingMastMarker) {
         const mastEl = (typeof renderBuilding3DMast === 'function') ? renderBuilding3DMast(inst) : document.createElement('div');
         if (!mastEl.className) mastEl.className = 'building-3d-mast-plate pointer-events-auto select-none';
         if (!mastEl.innerHTML) mastEl.innerHTML = '<button type="button" class="building-mast-close-btn" onclick="window.closeBuildingMast()">×</button>';
         try {
-          const mastLon = isMobileScreen ? lon : (lon - d_lon * 0.70);
+          const mastLon = isMobileScreen ? (lon - d_lon * 0.45) : (lon - d_lon * 0.70);
           const mastLat = lat + d_lat * (isMobileScreen ? 0.90 : 1.05);
           const mastMarker = new maplibregl.Marker({ element: mastEl, anchor: 'bottom' })
             .setLngLat([mastLon, mastLat]);
@@ -11586,7 +11599,7 @@ return maplibregl$1;
         } catch (e) {}
       }
 
-      // 2. 3D ROOM BADGES
+      // 2. 3D ROOM BADGES (Dispersed across East, West, South to guarantee zero overlap)
       if (floors.length) {
         const activeFl = floors[currentBfiFloorIndex] || floors[0];
         const curShow = (activeFl.current_shows && activeFl.current_shows[0]) || null;
@@ -11606,16 +11619,17 @@ return maplibregl$1;
           badgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">EXHIBITION GALLERY</span>Exhibition Gallery</span>';
         }
         try {
-          const galLon = isMobileScreen ? lon : (lon + d_lon * 0.70);
+          // North-East / East quadrant (anchor left to grow eastward away from building and mast plate)
+          const galLon = isMobileScreen ? (lon + d_lon * 0.45) : (lon + d_lon * 0.70);
           const galLat = lat + d_lat * (isMobileScreen ? 0.45 : 0.55);
-          const galMarker = new maplibregl.Marker({ element: badgeChild, anchor: 'bottom' })
+          const galMarker = new maplibregl.Marker({ element: badgeChild, anchor: isMobileScreen ? 'bottom' : 'left' })
             .setLngLat([galLon, galLat]);
           if (typeof cityVectorMap !== 'undefined' && cityVectorMap) galMarker.addTo(cityVectorMap);
           else if (typeof map !== 'undefined' && map) galMarker.addTo(map);
           building3DInfoMarkers.push(galMarker);
         } catch (e) {}
 
-        // Archives Room Badge
+        // Archives Room Badge (South-West / West quadrant, anchor right to grow westward away from building)
         const curArch = activeFl.archive_holdings || null;
         let archBadgeChild;
         if (typeof getRoomBadgeMarkup === 'function') {
@@ -11629,19 +11643,19 @@ return maplibregl$1;
         } else {
           archBadgeChild = document.createElement('div');
           archBadgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
-          archBadgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">ARCHIVES &amp; STUDY</span>Archives &amp; Study</span>';
+          archBadgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">ARCHIVES & STUDY</span>Archives &amp; Study</span>';
         }
         try {
-          const archLon = isMobileScreen ? lon : (lon - d_lon * 0.70);
+          const archLon = lon - d_lon * 0.70;
           const archLat = isMobileScreen ? (lat - d_lat * 0.45) : (lat - d_lat * 0.50);
-          const archMarker = new maplibregl.Marker({ element: archBadgeChild, anchor: 'bottom' })
+          const archMarker = new maplibregl.Marker({ element: archBadgeChild, anchor: isMobileScreen ? 'top' : 'right' })
             .setLngLat([archLon, archLat]);
           if (typeof cityVectorMap !== 'undefined' && cityVectorMap) archMarker.addTo(cityVectorMap);
           else if (typeof map !== 'undefined' && map) archMarker.addTo(map);
           building3DInfoMarkers.push(archMarker);
         } catch (e) {}
 
-        // Public Forum & Atrium Badge
+        // Public Forum & Atrium Badge (South-East / South quadrant, anchor top to grow downward away from building)
         let forumBadgeChild;
         if (typeof getRoomBadgeMarkup === 'function') {
           const forumEl = document.createElement('div');
@@ -11657,9 +11671,9 @@ return maplibregl$1;
           forumBadgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">PUBLIC FORUM &amp; CIVIC</span>Public Forum &amp; Civic</span>';
         }
         try {
-          const forumLon = isMobileScreen ? lon : (lon + d_lon * 0.40);
+          const forumLon = isMobileScreen ? (lon + d_lon * 0.40) : (lon + d_lon * 0.40);
           const forumLat = isMobileScreen ? (lat - d_lat * 0.35) : (lat - d_lat * 0.45);
-          const forumMarker = new maplibregl.Marker({ element: forumBadgeChild, anchor: 'bottom' })
+          const forumMarker = new maplibregl.Marker({ element: forumBadgeChild, anchor: 'top' })
             .setLngLat([forumLon, forumLat]);
           if (typeof cityVectorMap !== 'undefined' && cityVectorMap) forumMarker.addTo(cityVectorMap);
           else if (typeof map !== 'undefined' && map) forumMarker.addTo(map);
@@ -11669,19 +11683,126 @@ return maplibregl$1;
 
       // 3. FACADE FLOOR DIRECTORY STACK
       if (!isBuildingFacadeDismissed && !currentBuildingFacadeMarker && typeof renderBuilding3DFacadeStack === 'function') {
-        const facEl = renderBuilding3DFacadeStack(inst);
-        try {
-          const facLon = isMobileScreen ? lon : (lon - d_lon * 0.70);
-          const facLat = isMobileScreen ? (lat - d_lat * 0.45) : (lat - d_lat * 0.50);
-          const facMarker = new maplibregl.Marker({ element: facEl, anchor: 'bottom' })
-            .setLngLat([facLon, facLat]);
-          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) facMarker.addTo(cityVectorMap);
-          else if (typeof map !== 'undefined' && map) facMarker.addTo(map);
-          building3DInfoMarkers.push(facMarker);
-          currentBuildingFacadeMarker = facMarker;
-        } catch (e) {}
+        const hudEl = document.getElementById('buildingFloorInspectorHud');
+        const isHudOpen = hudEl && !hudEl.classList.contains('hidden');
+        if (!isHudOpen) {
+          const facEl = renderBuilding3DFacadeStack(inst);
+          try {
+            const facLon = isMobileScreen ? (lon - d_lon * 0.70) : (lon - d_lon * 0.70);
+            const facLat = isMobileScreen ? (lat - d_lat * 0.45) : (lat - d_lat * 0.50);
+            const facMarker = new maplibregl.Marker({ element: facEl, anchor: 'right' })
+              .setLngLat([facLon, facLat]);
+            if (typeof cityVectorMap !== 'undefined' && cityVectorMap) facMarker.addTo(cityVectorMap);
+            else if (typeof map !== 'undefined' && map) facMarker.addTo(map);
+            building3DInfoMarkers.push(facMarker);
+            currentBuildingFacadeMarker = facMarker;
+          } catch (e) {}
+        }
+      }
+
+      // 4. ACTIVE ANTI-OVERLAP COLLISION SOLVER
+      if (typeof resolveBuildingOverlaysCollisions === 'function') {
+        setTimeout(resolveBuildingOverlaysCollisions, 30);
+        setTimeout(resolveBuildingOverlaysCollisions, 250);
       }
     }
+
+    function resolveBuildingOverlaysCollisions() {
+      if (typeof document === 'undefined') return;
+      const mast = document.querySelector('.building-3d-mast-plate');
+      const badges = Array.from(document.querySelectorAll('.building-3d-room-badge'));
+      const facade = document.querySelector('.building-3d-facade-stack');
+
+      const cards = [];
+      if (mast && mast.offsetParent !== null && typeof mast.getBoundingClientRect === 'function') {
+        cards.push({ el: mast, isMast: true, priority: 1 });
+      }
+      if (facade && facade.offsetParent !== null && typeof facade.getBoundingClientRect === 'function') {
+        cards.push({ el: facade, isFacade: true, priority: 2 });
+      }
+      badges.forEach((b, idx) => {
+        if (b && b.offsetParent !== null && typeof b.getBoundingClientRect === 'function') {
+          cards.push({ el: b, isBadge: true, priority: 10 + idx });
+        }
+      });
+
+      if (cards.length <= 1) return;
+
+      cards.forEach(c => {
+        c.shiftX = 0;
+        c.shiftY = 0;
+        c.el.style.transform = '';
+      });
+
+      const BUFFER = 16;
+      const rects = cards.map(c => {
+        const r = c.el.getBoundingClientRect();
+        return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, width: r.width, height: r.height };
+      });
+
+      for (let pass = 0; pass < 3; pass++) {
+        let hadCollision = false;
+        for (let i = 0; i < cards.length; i++) {
+          for (let j = i + 1; j < cards.length; j++) {
+            const r1 = rects[i];
+            const r2 = rects[j];
+
+            const overlapX = !(r1.right + BUFFER <= r2.left || r1.left >= r2.right + BUFFER);
+            const overlapY = !(r1.bottom + BUFFER <= r2.top || r1.top >= r2.bottom + BUFFER);
+
+            if (overlapX && overlapY) {
+              hadCollision = true;
+              const c1MidX = (r1.left + r1.right) / 2;
+              const c2MidX = (r2.left + r2.right) / 2;
+
+              let dX = 0;
+              let dY = 0;
+
+              if (cards[i].isMast && cards[j].isBadge) {
+                if (c2MidX >= c1MidX) {
+                  dX = (r1.right + BUFFER) - r2.left;
+                } else {
+                  dX = (r1.left - BUFFER) - r2.right;
+                }
+                if (Math.abs(dX) > 280) {
+                  dX = 0;
+                  dY = (r1.bottom + BUFFER) - r2.top;
+                }
+              } else {
+                const penRight = (r1.right + BUFFER) - r2.left;
+                const penLeft = (r1.left - BUFFER) - r2.right;
+                const penDown = (r1.bottom + BUFFER) - r2.top;
+                const penUp = (r1.top - BUFFER) - r2.bottom;
+
+                const absX = Math.min(Math.abs(penRight), Math.abs(penLeft));
+                const absY = Math.min(Math.abs(penDown), Math.abs(penUp));
+
+                if (absX < absY) {
+                  dX = (Math.abs(penRight) < Math.abs(penLeft)) ? penRight : penLeft;
+                } else {
+                  dY = (Math.abs(penDown) < Math.abs(penUp)) ? penDown : penUp;
+                }
+              }
+
+              cards[j].shiftX += dX;
+              cards[j].shiftY += dY;
+              rects[j].left += dX;
+              rects[j].right += dX;
+              rects[j].top += dY;
+              rects[j].bottom += dY;
+            }
+          }
+        }
+        if (!hadCollision) break;
+      }
+
+      cards.forEach(c => {
+        if (c.shiftX !== 0 || c.shiftY !== 0) {
+          c.el.style.transform = `translate(${Math.round(c.shiftX)}px, ${Math.round(c.shiftY)}px)`;
+        }
+      });
+    }
+    window.resolveBuildingOverlaysCollisions = resolveBuildingOverlaysCollisions;
 
     function toggleExploded3DMode() {
       isExploded3DMode = !isExploded3DMode;
