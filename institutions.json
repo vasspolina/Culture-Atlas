@@ -848,7 +848,25 @@
     ],
     "visit_url": "https://www.dlwp.com/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=De%20La%20Warr%20Pavilion",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=De%20La%20Warr%20Pavilion"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=De%20La%20Warr%20Pavilion",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.dlwp.com/about-us/our-heritage/",
+          "https://www.dlwp.com/about-us/"
+        ],
+        "basis": "opened to the public (the pavilion opened in December 1935; the official opening is given as 12 December 1935)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.dlwp.com/visit-us/how-to-get-here/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1935,
+    "address": "De La Warr Pavilion, Marina, Bexhill, East Sussex, TN40 1DP"
   },
   {
     "name": "Eastside Projects",
@@ -928,7 +946,16 @@
     "highlight": "Eliel Saarinen's landmark Arts and Crafts campus exhibiting mid-century modern design, Eames prototypes, and experimental craft.",
     "visit_url": "https://cranbrookartmuseum.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Cranbrook%20Art%20Museum",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Cranbrook%20Art%20Museum"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Cranbrook%20Art%20Museum",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://cranbrookartmuseum.org/?p=22484"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "address": "39221 Woodward Avenue, Bloomfield Hills, MI 48303"
   },
   {
     "name": "CAPC Mus\u00e9e d Art Contemporain",
@@ -1041,7 +1068,27 @@
     ],
     "visit_url": "https://ima.org.au/visit",
     "audit_dossier_url": "https://www.acnc.gov.au/charity/charities?search=Institute%20of%20Modern%20Art",
-    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=Institute%20of%20Modern%20Art"
+    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=Institute%20of%20Modern%20Art",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.ima.org.au/about/",
+          "https://www.ima.org.au/history/",
+          "https://en.wikipedia.org/wiki/Institute_of_Modern_Art"
+        ],
+        "basis": "founded",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.ima.org.au/?p=22",
+          "https://www.ima.org.au/visit-us/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1975,
+    "address": "Ground Floor, Judith Wright Arts Centre, 420 Brunswick Street, Fortitude Valley, Brisbane QLD 4006"
   },
   {
     "name": "Arnolfini",
@@ -1250,7 +1297,26 @@
     "highlight": "Brutalist concrete landmark on Lake Burley Griffin housing the Aboriginal Memorial of 200 hollow log coffins and Jackson Pollock's Blue Poles.",
     "visit_url": "https://nga.gov.au/visit",
     "audit_dossier_url": "https://www.acnc.gov.au/charity/charities?search=National%20Gallery%20of%20Australia",
-    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=National%20Gallery%20of%20Australia"
+    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=National%20Gallery%20of%20Australia",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/National_Gallery_of_Australia"
+        ],
+        "basis": "established by the federal government (the gallery's building opened in 1982)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://nga.gov.au/address/",
+          "https://nga.gov.au/about-us/contacts/",
+          "https://digital.nga.gov.au/archive/exhibition/williams/default.cfm%3fmnuid=8.html"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1967,
+    "address": "Parkes Place, Parkes, Canberra ACT 2600"
   },
   {
     "name": "Norval Foundation",
@@ -1333,7 +1399,25 @@
     ],
     "visit_url": "https://www.chapter.org/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Chapter",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Chapter"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Chapter",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://chapter.org/",
+          "https://en.wikipedia.org/wiki/Chapter_Arts_Centre"
+        ],
+        "basis": "founded / established / opened in Canton (Wikipedia: opened in 1971; National Library of Wales archive: established in 1971)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://chapter.org/visit/getting-here"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1971,
+    "address": "Chapter Arts Centre, Market Road, Canton, Cardiff CF5 1QE"
   },
   {
     "name": "VISUAL",
@@ -1655,7 +1739,16 @@
       "crawford art gallery cork"
     ],
     "highlight": "Historic former Cork custom house holding the 1818 Canova Casts from the Vatican and contemporary Irish painting.",
-    "visit_url": "https://crawfordartgallery.ie/visit"
+    "visit_url": "https://crawfordartgallery.ie/visit",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://crawfordartgallery.ie/contact/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "address": "Emmett Place, Cork, T12 TNE6, Ireland"
   },
   {
     "name": "Nasher Sculpture Center",
@@ -1761,7 +1854,17 @@
       "jameel arts centre dubai"
     ],
     "highlight": "Converted white-cube colonnade on Jaddaf Waterfront with open-air sculpture courtyards and MENASA regional research library.",
-    "visit_url": "https://jameelartscentre.org/visit"
+    "visit_url": "https://jameelartscentre.org/visit",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://jameelartscentre.org/about/"
+        ],
+        "basis": "opened to the public (November 2018)",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2018
   },
   {
     "name": "Temple Bar Gallery + Studios",
@@ -1948,7 +2051,27 @@
     "highlight": "Randall Stout zinc-and-stainless steel ribbon building celebrating Indigenous, circumpolar, and Canadian prairie visual culture.",
     "visit_url": "https://www.youraga.ca/visit",
     "audit_dossier_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Art%20Gallery%20of%20Alberta",
-    "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Art%20Gallery%20of%20Alberta"
+    "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Art%20Gallery%20of%20Alberta",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://youraga.ca/whats-on/past-exhibitions/1924-edmonton-and-the-beginnings-of-the-art-gallery-of-alberta",
+          "https://100.youraga.ca/aga-history/",
+          "https://en.wikipedia.org/wiki/Art_Gallery_of_Alberta"
+        ],
+        "basis": "founded (as the Edmonton Museum of Arts, the body that is now the Art Gallery of Alberta)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.youraga.ca/visit",
+          "https://www.youraga.ca/about/contact-us"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1924,
+    "address": "2 Sir Winston Churchill Square Edmonton, Alberta Canada, T5J 2C1"
   },
   {
     "name": "Van Abbemuseum",
@@ -2005,7 +2128,16 @@
     "highlight": "Giorgio Vasari's 1560 U-shaped administrative loggia housing Botticelli's Birth of Venus, Leonardo, and the Medici Renaissance collection.",
     "visit_url": "https://www.uffizi.it/visit",
     "audit_dossier_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Uffizi",
-    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Uffizi"
+    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Uffizi",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.uffizi.it/en/contacts"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "address": "Piazzale degli Uffizi 6, 50122 Florence, Italy"
   },
   {
     "name": "Amon Carter Museum",
@@ -2136,7 +2268,27 @@
       "amos rex helsinki"
     ],
     "highlight": "JKMM subterranean domed gallery beneath Lasipalatsi's 1930s functionalist cinema and pulsing public roof skylights.",
-    "visit_url": "https://amosrex.fi/visit"
+    "visit_url": "https://amosrex.fi/visit",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://amosrex.fi/en/about/",
+          "https://amosrex.fi/en/about-us/about-amos-rex/",
+          "https://en.wikipedia.org/wiki/Amos_Rex"
+        ],
+        "basis": "opened (the Amos Anderson Art Museum, which reopened as Amos Rex in 2018, opened at Yrj\u00f6nkatu 27 in 1965)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://amosrex.fi/en/visit-us/",
+          "https://amosrex.fi/en/about-us/contact/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1965,
+    "address": "Mannerheimintie 22\u201324, 00100 Helsinki"
   },
   {
     "name": "Kiasma Museum of Contemporary Art",
@@ -2241,7 +2393,25 @@
     "highlight": "Gunnar Birkerts stainless steel parallelogram presenting non-collecting, free-admission regional and international art.",
     "visit_url": "https://camh.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Contemporary%20Arts%20Museum%20Houston",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Contemporary%20Arts%20Museum%20Houston"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Contemporary%20Arts%20Museum%20Houston",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://camh.org/about/history-mission/",
+          "https://en.wikipedia.org/wiki/Contemporary_Arts_Museum_Houston"
+        ],
+        "basis": "founded (charter signed by a group of Houston citizens)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://camh.org/visit/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1948,
+    "address": "5216 Montrose Boulevard, Houston, TX 77006"
   },
   {
     "name": "Henia Onstad Kunstsenter",
@@ -3067,7 +3237,25 @@
     "highlight": "Diller Scofidio + Renfro 'veil-and-vault' honeycomb housing Eli and Edythe Broad's 2,000-work post-war Pop and contemporary collection.",
     "visit_url": "https://www.thebroad.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=The%20Broad",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=The%20Broad"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=The%20Broad",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.thebroad.org/about/eli-and-edythe-broad"
+        ],
+        "basis": "opened (the museum opened on September 20, 2015)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.thebroad.org/visit",
+          "https://www.thebroad.org/visit/know-you-go-faq"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2015,
+    "address": "221 S. Grand Avenue, Los Angeles, CA 90012"
   },
   {
     "name": "Bonnefanten",
@@ -3094,7 +3282,26 @@
     "highlight": "Aldo Rossi's rocket-like zinc cupola on the Meuse river pairing early Netherlandish masters with post-minimalist contemporary art.",
     "visit_url": "https://www.bonnefanten.nl/visit",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Bonnefanten",
-    "statutory_filings_url": "https://openkvk.nl/zoeken?q=Bonnefanten"
+    "statutory_filings_url": "https://openkvk.nl/zoeken?q=Bonnefanten",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Bonnefantenmuseum"
+        ],
+        "basis": "founded, as the historical and archaeological museum for the province of Limburg",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.bonnefanten.nl/en/see-and-do/practical-information/prices-address-and-route",
+          "https://www.bonnefanten.nl/en/see-and-do/practical-information/contact",
+          "https://www.bonnefanten.nl/en/education/m2live"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1884,
+    "address": "Avenue C\u00e9ramique 250, 6221 KX Maastricht"
   },
   {
     "name": "Museo del Prado",
@@ -3359,7 +3566,26 @@
           ]
         }
       ]
-    }
+    },
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://museoreinasofia.es/en/prensa/nota-de-prensa/reina-sofia-turns-40",
+          "https://recursos.museoreinasofia.es/descargas/Documento/NP%2040%20ANIVERSARIO%20MUSEO%20REINA%20SOFI%CC%81A%20ENG.pdf",
+          "https://www.museoreinasofia.es/en/museo/history/"
+        ],
+        "basis": "the Centro de Arte Reina Sofia, forerunner of today's museum, first opened its doors to the public (28 May 1986)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://static4.museoreinasofia.es/en/museum/contact"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1986,
+    "address": "Calle Santa Isabel, 52, 28012 Madrid"
   },
   {
     "name": "The Whitworth",
@@ -3478,7 +3704,24 @@
     "highlight": "1927 dancehall in the Chihuahuan Desert producing site-specific performance, film, and Prada Marfa architectural installations.",
     "visit_url": "https://ballroommarfa.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Ballroom%20Marfa",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Ballroom%20Marfa"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Ballroom%20Marfa",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://ballroommarfa.org/about/"
+        ],
+        "basis": "opened (founded by Virginia Lebermann and Fairfax Dorn as a cultural arts space)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.ballroommarfa.org/visit/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2003,
+    "address": "108 E. San Antonio St., Marfa, TX 79843"
   },
   {
     "name": "Chinati Foundation",
@@ -3712,7 +3955,28 @@
     "highlight": "Aranguren & Gallegos perforated metal geometric facade in the Design District offering free permanent admission to progressive art.",
     "visit_url": "https://icamiami.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=ICA%20Miami",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=ICA%20Miami"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=ICA%20Miami",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Institute_of_Contemporary_Art_(Miami)",
+          "https://www.artrabbit.com/organisations/ica-miami",
+          "https://www.wlrn.org/culture/2017-12-01/the-institute-of-contemporary-art-miami-is-now-open-in-new-home"
+        ],
+        "basis": "founded (formed in 2014 when former Museum of Contemporary Art North Miami board members broke away; began operating in the Moore Building in December 2014)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://icamiami.org/terms",
+          "https://icamiami.org/visit/",
+          "https://icamiami.org/about/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2014,
+    "address": "61 NE 41st Street, Miami, FL 33137"
   },
   {
     "name": "MIMA",
@@ -4423,7 +4687,26 @@
     "highlight": "Converted bag factory in Omaha's Old Market offering live-work artist residencies and underground sound art performance.",
     "visit_url": "https://www.bemiscenter.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Bemis%20Center",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Bemis%20Center"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Bemis%20Center",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.bemiscenter.org/about",
+          "https://en.wikipedia.org/wiki/Bemis_Center_for_Contemporary_Arts"
+        ],
+        "basis": "founded (by artists Jun Kaneko, Tony Hepburn, Lorne Falk and Ree Schonlau, originally the Alternative Worksite program, later The Bemis Foundation, and the Bemis Center for Contemporary Arts from 1995)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.bemiscenter.org/art/",
+          "https://Bemiscenter.org/visit"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1981,
+    "address": "724 S. 12th Street, Omaha, NE 68102"
   },
   {
     "name": "Astrup Fearnley Museet",
@@ -4922,7 +5205,26 @@
     "highlight": "Mitchell and Emily Rales' 300-acre Potomac landscape with Thomas Phifer Pavilions integrating monumental post-war art into nature.",
     "visit_url": "https://www.glenstone.org/visit/",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Glenstone",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Glenstone"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Glenstone",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.glenstone.org/press/the-new-glenstone-museum-opens-to-the-public",
+          "https://en.wikipedia.org/wiki/Mitchell_Rales"
+        ],
+        "basis": "the museum opened in 2006, established by the not-for-profit Glenstone Foundation",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.glenstone.org/about/contact",
+          "https://www.glenstone.org/visit/guides/getting-here"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2006,
+    "address": "12100 Glen Road, Potomac, Maryland 20854"
   },
   {
     "name": "MacKenzie Art Gallery",
@@ -5258,7 +5560,26 @@
       "art sonje center seoul"
     ],
     "highlight": "Independent contemporary art center in Samcheong-dong producing non-commercial Korean and East Asian experimental installations.",
-    "visit_url": "https://artsonje.org/visit"
+    "visit_url": "https://artsonje.org/visit",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://artsonje.org/en/asjasjc-enc/founder/",
+          "https://artsonje.org/en/asjasjc-enc/about/",
+          "https://en.wikipedia.org/wiki/Art_Sonje_Center"
+        ],
+        "basis": "established (Art Sonje Center, per the official site: established 1998; its 1995 'Sprout' exhibition program is described as its roots)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://artsonje.org/en/visit-en/contact"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1998,
+    "address": "87 Yulgok-ro 3-gil, Jongno-gu, Seoul"
   },
   {
     "name": "National Museum of Modern and Contemporary Art (MMCA)",
@@ -5779,7 +6100,26 @@
       "albertina vienna"
     ],
     "highlight": "Habsburg residential palace housing one of the world's greatest graphic collections: D\u00fcrer's Young Hare, Rubens, and modern master prints.",
-    "visit_url": "https://www.albertina.at/visit"
+    "visit_url": "https://www.albertina.at/visit",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.albertina.at/en/research/drawing-print/history",
+          "https://albertina.at/en/research/drawing-print/history/",
+          "https://www.albertina.at/en/exhibitions/250-years-albertina/"
+        ],
+        "basis": "founded (Duke Albert of Saxe-Teschen began the collection in 1776; the Albertina marks its 250th anniversary in 2026)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://albertina.at/en/contact-us/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1776,
+    "address": "Albertinaplatz 1, 1010 Vienna, Austria"
   },
   {
     "name": "Kunsthalle Wien",
@@ -5829,7 +6169,27 @@
       "leopold museum vienna"
     ],
     "highlight": "Rudolf and Elisabeth Leopold's white shell-limestone cube holding the largest Egon Schiele collection in the world and Gustav Klimt.",
-    "visit_url": "https://www.leopoldmuseum.org/visit"
+    "visit_url": "https://www.leopoldmuseum.org/visit",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.leopoldmuseum.org/25-jahre/en",
+          "https://www.leopoldmuseum.org/en/museum/museum-history/rudolf-leopold",
+          "https://en.wikipedia.org/wiki/Leopold_Museum"
+        ],
+        "basis": "opened to the public in the MuseumsQuartier (Wikipedia: founded in 2001 by Rudolf Leopold)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.leopoldmuseum.org/en/contact/",
+          "https://www.leopoldmuseum.org/en/museum/contacts"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2001,
+    "address": "Museumsplatz 1, 1070 Wien"
   },
   {
     "name": "mumok",
@@ -17361,7 +17721,17 @@
     "aliases": [
       "Taipei Fine Arts Museum"
     ],
-    "visit_url": "https://www.tfam.museum/index.aspx?ddlLang=en-us"
+    "visit_url": "https://www.tfam.museum/index.aspx?ddlLang=en-us",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Taipei_Fine_Arts_Museum"
+        ],
+        "basis": "opened in 1983 as Taiwan's first museum dedicated to modern and contemporary art",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1983
   },
   {
     "name": "Palais de Lom\u00e9",
@@ -23614,7 +23984,18 @@
     "aliases": [
       "Sesc S\u00e3o Paulo"
     ],
-    "visit_url": "https://www.sescsp.org.br"
+    "visit_url": "https://www.sescsp.org.br",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.sescsp.org.br/?p=749326",
+          "https://www.sescsp.org.br/?p=749508"
+        ],
+        "basis": "founded in 1946 by businesspeople in commerce, services and tourism",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1946
   },
   {
     "name": "doual'art",
@@ -32292,7 +32673,18 @@
     "highlight": "Major university museum collection with landmark Egyptology, archaeology, and indigenous repatriation initiatives.",
     "admission_details": "Free universal public admission for all visitors; donations encouraged for special educational workshops.",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/500000",
-    "opening_hours": "Tue-Sun 10:00-17:00, Wed until 21:00"
+    "opening_hours": "Tue-Sun 10:00-17:00, Wed until 21:00",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.museum.manchester.ac.uk/plan-your-visit/",
+          "https://www.museum.manchester.ac.uk/",
+          "https://www.museum.manchester.ac.uk/visit-us/maps/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "address": "Oxford Road, Manchester M13 9PL"
   },
   {
     "name": "London Museum",
