@@ -1,0 +1,40 @@
+# Publishes the site to the gh-pages branch on every push to main, so the live
+# site can never fall behind main. Pages keeps serving gh-pages as before.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble the files the site loads at runtime
+        run: |
+          mkdir _site
+          cp index.html sw.js manifest.json _site/
+          cp -r assets fonts _site/
+          touch _site/.nojekyll
+          test -s _site/index.html
+
+      - name: Push _site to gh-pages
+        run: |
+          SUBJECT="$(git log -1 --format=%s)"
+          cd _site
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy ${GITHUB_SHA::7}: ${SUBJECT}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages

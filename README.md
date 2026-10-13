@@ -98,26 +98,27 @@ npx serve . -p 8080
 
 ---
 
+## 🚢 Deploying
+
+`main` is the source of truth. Every push to `main` runs
+`.github/workflows/deploy.yml`, which copies `index.html`, `sw.js`,
+`manifest.json`, `assets/` and `fonts/` to the `gh-pages` branch that GitHub
+Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
+check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
+
 ## 📁 Project Structure
 
 ```
-sponsor-atlas/
-├── app/
-│   ├── index.html              # Main application entry point
-│   ├── manifest.json           # Web app manifest for PWA installation
-│   ├── icon.svg                # Vector app icon
-│   ├── sw.js                   # Service worker for offline caching (v2)
-│   ├── world-topo.json         # TopoJSON world geometry for the globe
-│   ├── institutions.json       # Clean JSON dataset of all 197 institutions
-│   ├── serve.py                # Standalone Python local web server
-│   └── assets/
-│       ├── index-Crf6FBR0.js   # Compiled React + D3 Geo application bundle
-│       ├── index-i96-xYS5.css  # Cyberpunk/dark theme stylesheet
-│       ├── chat.js             # AI Concierge engine (Offline + Gemini API + Map bridge)
-│       └── chat.css            # Translucent neon chat UI styling
-├── institutions.json           # Root dataset copy for easy access
-├── parse_to_json.py           # Script that parses raw data into JSON
-└── README.md                   # This documentation
+Culture-Atlas/
+├── index.html          # The whole app (generated, ~32 MB). The only HTML copy.
+├── sw.js               # Service worker (network-first)
+├── manifest.json       # PWA manifest
+├── assets/ fonts/      # Images and typefaces the page loads
+├── institutions.json   # Dataset
+├── src/                # Vite/React sources
+├── app/                # Older Vite build output and local server (serve.py)
+├── *.py                # Data pipeline (enrich_*, process_*, ...) and tests
+└── .github/workflows/  # Deploy to gh-pages on push to main
 ```
 
 ---
