@@ -1074,44 +1074,25 @@ def build():
       transform: scale(1.12);
       z-index: 9999 !important;
     }}
-    @keyframes pinPulse {{
-      0% {{ transform: scale(0.95); opacity: 0.8; }}
-      50% {{ transform: scale(1.4); opacity: 0.2; }}
-      100% {{ transform: scale(0.95); opacity: 0.8; }}
-    }}
     .pin-pulse-aura {{
-      animation: pinPulse 2.4s infinite ease-in-out;
+      display: none !important;
+      animation: none !important;
     }}
 
-    /* Header Brand Logo Glowing City Dot (Matches Map City Dot) */
-    @keyframes cityRadarPing {{
-      0% {{
-        transform: scale(0.9);
-        opacity: 0.85;
-      }}
-      75%, 100% {{
-        transform: scale(2.4);
-        opacity: 0;
-      }}
-    }}
+    /* Header Brand Logo City Dot (Matches Map City Dot) */
     .brand-city-dot-container {{
       position: relative;
-      width: 52px;
-      height: 52px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: rgba(92, 78, 120, 0.48);
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }}
     .brand-city-dot-aura {{
-      position: absolute;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: transparent;
-      pointer-events: none;
+      display: none !important;
     }}
     .brand-city-dot-ping {{
       display: none !important;
@@ -11643,9 +11624,9 @@ def build():
             source: 'highlighted-building-footprint',
             paint: {{
               'line-color': ['get', 'color'],
-              'line-width': 4.5,
-              'line-blur': 2,
-              'line-opacity': 0.95
+              'line-width': 0,
+              'line-blur': 0,
+              'line-opacity': 0
             }}
           }});
         }}
@@ -12405,20 +12386,20 @@ def build():
         if (tabInfo) tabInfo.click();
       }}
 
-      // Synchronize Brand City Dot Glow with Atlas Mode
+      // Synchronize Brand City Dot with Atlas Mode
       const bDotAura = document.querySelector('.brand-city-dot-aura');
       const bDotPing = document.querySelector('.brand-city-dot-ping');
       const bDotCore = document.querySelector('.brand-city-dot-core');
 
       if (isGossipModeActive) {{
-        if (bDotAura) bDotAura.style.background = 'rgba(250, 204, 21, 0.45)';
+        if (bDotAura) bDotAura.style.background = 'transparent';
         if (bDotPing) bDotPing.style.borderColor = 'rgba(250, 204, 21, 0.90)';
         if (bDotCore) {{
           bDotCore.style.background = '#facc15';
           bDotCore.style.boxShadow = 'none';
         }}
       }} else {{
-        if (bDotAura) bDotAura.style.background = 'rgba(16, 185, 129, 0.35)';
+        if (bDotAura) bDotAura.style.background = 'transparent';
         if (bDotPing) bDotPing.style.borderColor = 'rgba(52, 211, 153, 0.85)';
         if (bDotCore) {{
           bDotCore.style.background = '#10b981';
@@ -13707,11 +13688,8 @@ def build():
 
         const auraEl = document.createElement('div');
         auraEl.className = 'pin-pulse-aura';
-        auraEl.style.position = 'absolute';
-        auraEl.style.width = '28px';
-        auraEl.style.height = '28px';
-        auraEl.style.borderRadius = '50%';
-        auraEl.style.background = isA ? 'rgba(16,185,129,0.30)' : (isB ? 'rgba(190,149,255,0.30)' : 'rgba(8,189,186,0.25)');
+        auraEl.style.display = 'none';
+        auraEl.style.background = 'transparent';
 
         const dotEl = document.createElement('div');
         dotEl.style.position = 'relative';
@@ -14238,12 +14216,8 @@ def build():
           pinEl.style.zIndex = '35';
 
           const auraEl = document.createElement('div');
-          auraEl.style.position = 'absolute';
-          auraEl.style.width = '34px';
-          auraEl.style.height = '34px';
-          auraEl.style.borderRadius = '50%';
-          auraEl.style.background = 'rgba(16, 185, 129, 0.4)';
-          auraEl.style.animation = 'pulse 2s infinite';
+          auraEl.style.display = 'none';
+          auraEl.style.background = 'transparent';
 
           const badgeEl = document.createElement('div');
           badgeEl.className = 'route-stop-badge';
@@ -15093,7 +15067,6 @@ def build():
         if (isConnectedToFocus) {{
           trusteeCtx.lineWidth = 3.0;
           trusteeCtx.strokeStyle = '#c084fc';
-          trusteeCtx.shadowColor = '#c084fc';
           trusteeCtx.shadowBlur = 0;
         }} else if (isDimmed) {{
           trusteeCtx.lineWidth = 0.8;
@@ -16924,12 +16897,7 @@ def build():
             ctx.setLineDash(isHov ? [] : [4, 4]);
             ctx.strokeStyle = isHov ? '#38bdf8' : 'rgba(56, 189, 248, 0.45)';
             ctx.lineWidth = isHov ? 2.5 : 1.3;
-            if (isHov) {{
-              ctx.shadowColor = '#38bdf8';
-              ctx.shadowBlur = 0;
-            }} else {{
-              ctx.shadowBlur = 0;
-            }}
+            ctx.shadowBlur = 0;
             for (let k = 0; k < projectedPts.length; k++) {{
               const p = projectedPts[k];
               if (p.front) {{
@@ -17266,7 +17234,6 @@ def build():
                   ctx.fillStyle = 'rgba(56, 189, 248, 0.28)';
                   ctx.strokeStyle = '#38bdf8';
                   ctx.lineWidth = 1.5;
-                  ctx.shadowColor = 'rgba(56, 189, 248, 0.55)';
                   ctx.shadowBlur = 0;
                 }} else {{
                   // Default link state in yellow mode: warm golden yellow pill
@@ -17278,10 +17245,7 @@ def build():
                 ctx.fillStyle = isHoveringCityExploreLink ? 'rgba(56, 189, 248, 0.28)' : 'rgba(56, 189, 248, 0.12)';
                 ctx.strokeStyle = isHoveringCityExploreLink ? '#38bdf8' : 'rgba(56, 189, 248, 0.40)';
                 ctx.lineWidth = isHoveringCityExploreLink ? 1.5 : 1;
-                if (isHoveringCityExploreLink) {{
-                  ctx.shadowColor = 'rgba(56, 189, 248, 0.45)';
-                  ctx.shadowBlur = 0;
-                }}
+                ctx.shadowBlur = 0;
               }}
               ctx.beginPath();
               ctx.roundRect ? ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 6) : ctx.rect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
