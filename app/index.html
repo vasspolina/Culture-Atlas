@@ -137,6 +137,9 @@
     /* ========================================================= */
     /* STRICT 3 CARBON TYPE SIZES: 14pt (Body), 18pt (Heading), 34pt (Display) */
     /* ========================================================= */
+    /* STRICT 3 CARBON TYPE SIZES: 14pt (Body), 18pt (Heading), 26pt (Display) */
+    /* Fluid downscaling on compact laptop, tablet, and mobile viewports */
+    /* ========================================================= */
     /* Size 1: 14pt (IBM Carbon body-01 / body-compact-01: 14pt, line-height 20pt, tracking 0.16px) */
     .type-14, .text-14, .text-[14px], .text-[14pt],
     .text-xs, .text-sm, .text-base, .text-md,
@@ -145,8 +148,8 @@
     [class*="text-\[16"], [class*="text-\[17"],
     [class*="text-\[14px\]"], [class*="text-\[14pt\]"],
     h4, h5, h6 {
-      font-size: 14pt !important;
-      line-height: 20pt !important;
+      font-size: clamp(11pt, 0.5vw + 11.5pt, 14pt) !important;
+      line-height: 1.4 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
     }
@@ -159,7 +162,7 @@
     [class*="text-\[18px\]"], [class*="text-\[18pt\]"],
     .curator-section-hdr, .drawer-title, .modal-title, .card-title,
     h2, h3 {
-      font-size: 18pt !important;
+      font-size: clamp(14pt, 0.8vw + 13pt, 18pt) !important;
       line-height: 1.35 !important;
       letter-spacing: 0 !important;
       font-weight: 400 !important;
@@ -181,10 +184,19 @@
     [class*="text-\[34px\]"], [class*="text-\[34pt\]"], [class*="text-\[26px\]"], [class*="text-\[26pt\]"],
     .brand-logo-title,
     h1 {
-      font-size: 26pt !important;
-      line-height: 32pt !important;
+      font-size: clamp(18pt, 1.2vw + 16pt, 26pt) !important;
+      line-height: 1.3 !important;
       letter-spacing: 0 !important;
       font-weight: 400 !important;
+    }
+
+    /* Fluid container queries and viewport constraints for curator hero title */
+    #curatorHeroGreeting h1 {
+      font-size: clamp(18pt, 1.5vw + 14pt, 26pt) !important;
+      line-height: 1.25 !important;
+      max-width: 90% !important;
+      word-break: normal !important;
+      overflow-wrap: break-word !important;
     }
 
     h2 *, h3 *, .type-18 *, .text-18 *, .text-[18px] *, .text-[18pt] *, [class*="text-\[18"] * {
@@ -607,19 +619,35 @@
       background: #000000;
       overflow: hidden;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (max-width: 1199px) {
       #globeViewport {
         height: 100%;
-        width: 55%;
-        flex: 0 0 55%;
+        width: 48%;
+        flex: 0 0 48%;
         border-bottom: none;
         border-right: none;
       }
       #workViewContainer {
         display: flex !important;
         height: 100% !important;
-        width: 45% !important;
-        flex: 0 0 45% !important;
+        width: 52% !important;
+        flex: 0 0 52% !important;
+        flex-direction: column !important;
+      }
+    }
+    @media (min-width: 1200px) {
+      #globeViewport {
+        height: 100%;
+        width: 52%;
+        flex: 0 0 52%;
+        border-bottom: none;
+        border-right: none;
+      }
+      #workViewContainer {
+        display: flex !important;
+        height: 100% !important;
+        width: 48% !important;
+        flex: 0 0 48% !important;
         flex-direction: column !important;
       }
     }
@@ -1917,15 +1945,15 @@ return maplibregl$1;
     </div>
   </header>
 
-  <header class="hidden md:flex w-full h-14 bg-[#05070d] border-b border-[#1b2333] px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none max-w-[100vw] overflow-hidden">
+  <header class="hidden md:flex w-full h-14 bg-[#05070d] border-b border-[#1b2333] px-3 sm:px-4 lg:px-6 flex items-center justify-between shrink-0 z-30 select-none max-w-[100vw] overflow-hidden gap-2">
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
-    <button id="topBrandLogoBtn" class="group focus:outline-none shrink-0 min-h-[44px] flex items-center gap-3 cursor-pointer text-left" title="Reset Globe View" aria-label="Reset Globe View">
+    <button id="topBrandLogoBtn" class="group focus:outline-none shrink-0 min-h-[44px] flex items-center gap-2 sm:gap-3 cursor-pointer text-left" title="Reset Globe View" aria-label="Reset Globe View">
       <div class="relative w-7 h-7 rounded-full bg-emerald-950/60 border border-emerald-400/80 flex items-center justify-center shrink-0">
         <div class="w-3.5 h-3.5 rounded-full border-2 border-emerald-400"></div>
       </div>
-      <span class="text-[17px] font-normal tracking-tight text-white select-none">Culture Atlas</span>
-      <div class="flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
+      <span class="text-[15px] lg:text-[17px] font-normal tracking-tight text-white select-none whitespace-nowrap">Culture Atlas</span>
+      <div class="hidden sm:flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
         <span id="topSpacesBadge">445 spaces mapped</span>
       </div>
@@ -1933,22 +1961,22 @@ return maplibregl$1;
     </button>
 
     <!-- Center: Main Navigation Tabs (Atlas | Directory | Filters & Lenses) -->
-    <nav id="desktopMainNav" class="hidden md:flex items-center gap-8 text-[13px] tracking-wider font-medium select-none">
-      <button id="navTabAtlas" type="button" onclick="window.setMainViewTab('atlas')" class="text-teal-300 border-b-2 border-teal-400 pb-1 font-semibold transition cursor-pointer" title="Atlas Globe Exploration">
+    <nav id="desktopMainNav" class="hidden md:flex items-center gap-3 sm:gap-5 lg:gap-8 text-[12px] lg:text-[13px] tracking-wider font-medium select-none shrink-0">
+      <button id="navTabAtlas" type="button" onclick="window.setMainViewTab('atlas')" class="text-teal-300 border-b-2 border-teal-400 pb-1 font-semibold transition cursor-pointer whitespace-nowrap" title="Atlas Globe Exploration">
         Atlas
       </button>
-      <button id="navTabDirectory" type="button" onclick="window.setMainViewTab('directory')" class="text-slate-400 hover:text-white pb-1 transition cursor-pointer" title="Browse Findings Directory">
+      <button id="navTabDirectory" type="button" onclick="window.setMainViewTab('directory')" class="text-slate-400 hover:text-white pb-1 transition cursor-pointer whitespace-nowrap" title="Browse Findings Directory">
         Directory
       </button>
-      <button id="navTabFilters" type="button" onclick="window.setMainViewTab('filters')" class="text-slate-400 hover:text-white pb-1 transition cursor-pointer" title="Filters &amp; Lenses">
+      <button id="navTabFilters" type="button" onclick="window.setMainViewTab('filters')" class="text-slate-400 hover:text-white pb-1 transition cursor-pointer whitespace-nowrap" title="Filters &amp; Lenses">
         Filters &amp; Lenses
       </button>
     </nav>
 
     <!-- Right: Unified Action Buttons -->
-    <div class="flex items-center gap-4 shrink-0">
+    <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
       <!-- Gossip Mode Button -->
-      <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 text-amber-300 hover:text-white hover:underline text-xs font-medium transition cursor-pointer focus:outline-none" title="Toggle Yellow Gossip Mode">
+      <button id="topGossipBtn" onclick="window.toggleGossipMode()" class="flex items-center gap-1.5 text-amber-300 hover:text-white hover:underline text-xs font-medium transition cursor-pointer focus:outline-none whitespace-nowrap" title="Toggle Yellow Gossip Mode">
         <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
         <span>Gossip Mode</span>
       </button>
@@ -2004,12 +2032,12 @@ return maplibregl$1;
       <canvas id="globeCanvas" class="absolute inset-0 w-full h-full block cursor-grab"></canvas>
 
       <!-- Top-Left Floating Map Controls (Uncontained) -->
-      <div id="desktopGlobeTopControls" class="hidden md:flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-3 select-none text-xs font-mono text-[#c6c6c6]">
-        <div id="globeSpacesBadge" class="flex items-center gap-1.5 text-emerald-400">
+      <div id="desktopGlobeTopControls" class="hidden md:flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 lg:gap-3 select-none text-xs font-mono text-[#c6c6c6] flex-wrap max-w-[calc(100%-24px)]">
+        <div id="globeSpacesBadge" class="flex items-center gap-1.5 text-emerald-400 whitespace-nowrap">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
           <span>445 spaces mapped</span>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1.5 lg:gap-2 whitespace-nowrap">
           <button type="button" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();" class="hover:text-white hover:underline flex items-center gap-1 transition cursor-pointer" title="Reset to Global World View">
             <svg class="w-3.5 h-3.5 shrink-0 text-[#c6c6c6]" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2zm10.87 13h-4.94a19.78 19.78 0 0 0-1.83-7.51A12.05 12.05 0 0 1 26.87 15zm-6.96 0h-7.82a17.82 17.82 0 0 1 1.76-7.06 12.18 12.18 0 0 1 4.3 0A17.82 17.82 0 0 1 19.91 15zM16 4.09c.67.62 1.3 1.34 1.88 2.14a14.28 14.28 0 0 0-3.76 0A13.8 13.8 0 0 1 16 4.09zM5.13 15A12.05 12.05 0 0 1 11.9 7.49 19.78 19.78 0 0 0 10.07 15zm0 2h4.94a19.78 19.78 0 0 0 1.83 7.51A12.05 12.05 0 0 1 5.13 17zm6.96 0h7.82a17.82 17.82 0 0 1-1.76 7.06 12.18 12.18 0 0 1-4.3 0A17.82 17.82 0 0 1 12.09 17zm3.91 10.91c-.67-.62-1.3-1.34-1.88-2.14a14.28 14.28 0 0 0 3.76 0c-.58.8-1.21 1.52-1.88 2.14zm10.87-10.91a12.05 12.05 0 0 1-6.77 7.51 19.78 19.78 0 0 0 1.83-7.51z"/></svg>
             <span>World</span>
@@ -30030,7 +30058,8 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       if (globeVp) {
         if (isDesktop) {
           if (!globeVp.style.width || globeVp.style.width.endsWith('%')) {
-            globeVp.style.width = '50%';
+            const defaultGlobePct = window.innerWidth >= 1200 ? '52%' : '48%';
+            globeVp.style.width = defaultGlobePct;
             globeVp.style.height = '100%';
           }
         } else {
@@ -30041,6 +30070,9 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         }
       }
       resizeCanvas();
+      if (typeof cityVectorMap !== 'undefined' && cityVectorMap && isCityStreetViewActive) {
+        cityVectorMap.resize();
+      }
     });
 
     function updateFilterChipsUI() {
