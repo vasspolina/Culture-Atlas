@@ -2899,7 +2899,7 @@ return maplibregl$1;
               Manila, Philippines · Interdisciplinary performance, noise and experimental sound, queer culture, independent archiving, DIY solidarity
             </p>
             <p id="desktopDossierSummary" class="text-[#c6c6c6] text-[14pt] leading-relaxed italic">
-              Oldest active independent artist-run initiative in Metro Manila; founded 2000; fierce counter-cultural champion.
+              Oldest active artist-run non-profit initiative in Metro Manila (est. 2000), governed by an autonomous artist collective supporting interdisciplinary performance and counter-cultural archiving with zero corporate underwriting.
             </p>
             <div class="pt-0.5">
               <a id="desktopDossierWebLink" href="https://www.facebook.com/greenpapayaartprojects/" target="_blank" rel="noopener noreferrer" class="text-[#78a9ff] hover:text-[#a6c8ff] hover:underline flex items-center gap-1 text-[14pt]">
@@ -17326,7 +17326,7 @@ return maplibregl$1;
 
       const summaryEl = document.getElementById('desktopDossierSummary');
       if (summaryEl) {
-        summaryEl.textContent = inst.about || inst.summary || inst.mission || 'Oldest active independent artist-run initiative; fierce counter-cultural champion.';
+        summaryEl.textContent = inst.about || inst.summary || inst.mission || inst.watch || (inst.governance_details ? `${inst.name} is an autonomous non-profit curatorial space.` : 'Autonomous independent art space and curatorial archive.');
       }
 
       const webUrl = getValidWebUrl(inst);
