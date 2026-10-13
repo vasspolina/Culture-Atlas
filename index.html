@@ -1338,7 +1338,6 @@
     #floatingCardModeSwitcher,
     #floatingCardTabInfo,
     #floatingCardTabGossip,
-    #floatingCardTier,
     #floatingCardBudgetTier,
     #floatingCardPublicSubsidies,
     #floatingCardPhilanthropy,
@@ -1356,7 +1355,6 @@
     #floatingCardDirectPlanBtn,
     #floatingCardDirectWebBtn,
     #floatingCard3DBuildingBtn,
-    #dossier-sheet-tier,
     #dossier-sheet-budget-badge,
     #dossier-sheet-pill-public,
     #dossier-sheet-pill-grants,
@@ -1373,7 +1371,6 @@
       border-left: none !important;
       border-right: none !important;
     }
-    #floatingCardTier,
     #floatingCardBudgetTier,
     #floatingCardPublicSubsidies,
     #floatingCardPhilanthropy,
@@ -1386,7 +1383,6 @@
     #floatingCardVcMedium,
     #floatingCardGossipIntensityBadge,
     #floatingCardGossipCaseStatus,
-    #dossier-sheet-tier,
     #dossier-sheet-budget-badge,
     #dossier-sheet-pill-public,
     #dossier-sheet-pill-grants,
@@ -2138,8 +2134,7 @@ return maplibregl$1;
         <!-- Drawer Header -->
         <!-- Drawer Header -->
         <div class="space-y-2 pb-3 border-b border-[#262626]">
-          <div class="flex items-start justify-between gap-2">
-            <span id="floatingCardTier" class="text-[14px] font-mono text-[#42be65] font-normal inline-block"></span>
+          <div class="flex items-start justify-end gap-2">
             <button id="closeFloatingCardBtn" class="p-1.5 rounded-sm bg-[#262626] hover:bg-[#393939] text-[#a6c8ff] hover:text-white transition cursor-pointer" title="Close drawer">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -2254,9 +2249,7 @@ return maplibregl$1;
           <div class="w-10 h-0.5 bg-[#393939] mb-2"></div>
         </div>
         <div class="px-4 pb-2 flex flex-col items-start gap-1 border-b border-[#262626]">
-          <div class="w-full flex items-center justify-between">
-            <span class="inline-flex items-center text-[14px] font-normal text-[#42be65]" id="dossier-sheet-tier">
-            </span>
+          <div class="w-full flex items-center justify-end">
             <button aria-label="Minimize space details" class="p-1 rounded-none text-[#a6c8ff] hover:text-white bg-transparent border-0 text-[14px] cursor-pointer" id="close-sheet-btn">
               Close
             </button>
@@ -2388,7 +2381,6 @@ return maplibregl$1;
             <div class="min-w-0">
               <div class="flex items-center gap-1.5">
                 <span id="bfiBuildingName" class="text-[14px] sm:text-[14px] font-semibold text-white truncate block"></span>
-                <span id="bfiBrandBadge" class="shrink-0"></span>
               </div>
               <span id="bfiBuildingMeta" class="text-[14px] font-mono text-[#7dd3fc] block truncate"></span>
             </div>
@@ -2640,7 +2632,6 @@ return maplibregl$1;
           <!-- Header -->
           <div class="space-y-1.5 min-w-0">
             <h2 id="desktopDossierName" class="text-[24px] font-normal text-[#f4f4f4] break-words dossier-main-heading"></h2>
-            <p id="desktopDossierTier" class="no-indent text-[#42be65] text-[14px] font-normal"></p>
             <p id="desktopDossierMeta" class="no-indent text-[#a6c8ff] text-[14px]"></p>
             <p id="desktopDossierSummary" class="callout text-[#a6c8ff]"></p>
             <a id="desktopDossierWebLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-[#7dd3fc] hover:text-[#ffffff] underline underline-offset-2 text-[14px]"><span id="desktopDossierDomain"></span></a>
@@ -2689,7 +2680,6 @@ return maplibregl$1;
             <div class="min-w-0 flex-1 cursor-pointer" id="mobileSheetTitleZone">
               <div id="mobileSheetEntityTitle" class="text-[14px] font-semibold text-white truncate leading-tight">Green Papaya Art Projects</div>
               <div class="flex items-center gap-1.5 mt-0.5">
-                <span id="mobileSheetStatusBadge" class="text-[14px] font-mono text-[#42be65] shrink-0">Clean, source cited</span>
                 <span id="mobileSheetCitySubtitle" class="text-[14px] text-[#a6c8ff] font-mono truncate">Manila</span>
               </div>
             </div>
@@ -10898,7 +10888,6 @@ return maplibregl$1;
       const tabGossip = document.getElementById('floatingCardTabGossip');
       const infoPane = document.getElementById('floatingCardInfoPane');
       const gossipPane = document.getElementById('floatingCardGossipPane');
-      const tierBadge = document.getElementById('floatingCardTier');
 
       if (currentCardMode === 'gossip') {
         if (tabGossip) {
@@ -10911,10 +10900,6 @@ return maplibregl$1;
         if (gossipPane) gossipPane.classList.remove('hidden');
         if (card) {
           card.classList.add('gossip-yellow-card');
-        }
-        if (tierBadge) {
-          tierBadge.className = 'text-[14px] font-mono text-amber-300 font-medium';
-          tierBadge.textContent = 'Field Whispers';
         }
         if (syncGlobal && typeof toggleGossipMode === 'function' && !isGossipModeActive) {
           toggleGossipMode(true);
@@ -10930,13 +10915,6 @@ return maplibregl$1;
         if (gossipPane) gossipPane.classList.add('hidden');
         if (card) {
           card.classList.remove('gossip-yellow-card');
-        }
-        if (tierBadge && selectedInstitution) {
-          const isClean = selectedInstitution.tier === 'A';
-          tierBadge.className = isClean
-            ? 'text-[14px] font-mono text-emerald-300 font-medium'
-            : 'text-[14px] font-mono text-purple-300 font-medium';
-          tierBadge.textContent = tierName(selectedInstitution);
         }
       }
     }
@@ -11398,11 +11376,6 @@ return maplibregl$1;
       if (nameEl) nameEl.textContent = inst.name;
       if (metaEl) {
         metaEl.textContent = inst.city || '';
-      }
-
-      const brandEl = document.getElementById('bfiBrandBadge');
-      if (brandEl) {
-        brandEl.textContent = tierName(inst);
       }
 
       // Populate Space Visuals & Google Exploration Showcase
@@ -12028,8 +12001,6 @@ return maplibregl$1;
         const domain = getDisplayDomain(webUrl) || 'website';
         const visitLine = [inst.opening_hours ? inst.opening_hours.split(',')[0] : '', inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : ''].filter(Boolean).join(', ');
         const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : '';
-
-        const tierLabel = tierName(inst);
         const popupContent = `
           <div data-entity-id="${safeId}" style="font-family:'PP Mori', sans-serif; min-width:280px; max-width:350px; padding:4px 0; color:#f4f4f4; box-sizing:border-box;">
             <!-- Header Section -->
@@ -12045,9 +12016,6 @@ return maplibregl$1;
                   ${escapeHtml(inst.location || inst.city)}
                 </div>
               </div>
-              <span style="font-size:14px; font-family: 'PP Mori', sans-serif; color:${markerColor}; white-space:nowrap; shrink:0;">
-                ${tierLabel}
-              </span>
             </div>
 
             <!-- Hours & Admission Tier -->
@@ -14181,22 +14149,6 @@ return maplibregl$1;
       return (prefix + cleaned.join(' ')).trim();
     }
 
-    function sanitizeAuditStatus(grade, isClean, isFlagged, isCommunity) {
-      if (isCommunity) return 'Pending Statutory Audit';
-      let s = (grade || '').trim();
-      if (!s || ['A', 'A+', 'B', 'B+', 'C', 'D', 'F', 'U', 'COM'].includes(s.toUpperCase())) {
-        return isClean ? 'Clean, source cited' : (isFlagged ? 'Flagged' : 'Under Review');
-      }
-      const matchParen = s.match(/\(([^)]+)\)/);
-      if (matchParen && matchParen[1] && matchParen[1].trim()) {
-        const inside = matchParen[1].trim();
-        if (inside === 'Unverified') return 'Pending Statutory Audit';
-        return inside;
-      }
-      s = s.replace(/^Tier\s+[A-Za-z0-9\+]+\s*[:–-]?\s*/i, '').trim();
-      return s || (isClean ? 'Clean, source cited' : (isFlagged ? 'Flagged' : 'Under Review'));
-    }
-
     function matchC(a, b) {
       if (!a || !b) return false;
       const s1 = a.toLowerCase().trim();
@@ -15663,11 +15615,6 @@ return maplibregl$1;
       const toggle = (id, on) => document.getElementById(id)?.classList.toggle('hidden', !on);
 
       text('desktopDossierName', inst.name);
-      const tierEl = document.getElementById('desktopDossierTier');
-      if (tierEl) {
-        tierEl.textContent = tierName(inst);
-        tierEl.style.color = inst.tier === 'A' ? '#42be65' : inst.tier === 'B' ? '#be95ff' : '#33b1ff';
-      }
       text('desktopDossierMeta', [[inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(', '));
       text('desktopDossierSummary', inst.watch);
 
@@ -15710,11 +15657,6 @@ return maplibregl$1;
       const toggle = (id, on) => document.getElementById(id)?.classList.toggle('hidden', !on);
 
       text('dossier-sheet-name', inst.name);
-      const tierEl = document.getElementById('dossier-sheet-tier');
-      if (tierEl) {
-        tierEl.textContent = tierName(inst);
-        tierEl.style.color = inst.tier === 'A' ? '#42be65' : inst.tier === 'B' ? '#be95ff' : '#33b1ff';
-      }
       text('dossier-sheet-meta', [[inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(', '));
       text('dossier-sheet-summary', inst.watch);
       text('dossier-sheet-funding-text', inst.funding);
@@ -15874,20 +15816,7 @@ return maplibregl$1;
         if (gSatBtn) gSatBtn.href = spaceVisuals.googleMaps3dUrl;
       }
 
-      const isCardClean = inst.tier === 'A';
-      const isCardFlagged = inst.tier === 'B';
-      document.getElementById('floatingCardMeta').textContent = `${inst.location}, ${tierName(inst)}`;
-      
-      const tierBadge = document.getElementById('floatingCardTier');
-      if (tierBadge) {
-        tierBadge.textContent = tierName(inst);
-        tierBadge.className = 'text-[14px] font-mono shrink-0 ' + 
-          (isCardClean 
-            ? 'text-emerald-400' 
-            : isCardFlagged 
-            ? 'text-[#be95ff]' 
-            : 'text-[#33b1ff]');
-      }
+      document.getElementById('floatingCardMeta').textContent = inst.location || '';
       
       const fundingBox = document.getElementById('floatingCardFundingSource');
       const fundingText = document.getElementById('floatingCardFundingText');
@@ -16046,21 +15975,11 @@ return maplibregl$1;
       }
       // Mobile Sliding Bottom Sheet Synchronization
       const mTitle = document.getElementById('mobileSheetEntityTitle');
-      const mBadge = document.getElementById('mobileSheetStatusBadge');
       const mCity = document.getElementById('mobileSheetCitySubtitle');
       const mQuickInput = document.getElementById('mobileSheetQuickInput');
       const mAnchoredInput = document.getElementById('mobileAnchoredSearchInput');
 
       if (mTitle) mTitle.textContent = inst.name;
-      if (mBadge) {
-        mBadge.textContent = tierName(inst);
-        mBadge.className = 'text-[14px] font-mono px-2 py-0.2 rounded-full border shrink-0 ' + 
-          (isCardClean 
-            ? 'text-emerald-400 border-emerald-900 bg-[#0a2016]' 
-            : isCardFlagged 
-            ? 'text-[#be95ff] border-[#8a3ffc]/60 bg-[#1f1433]' 
-            : 'text-[#33b1ff] border-[#0072c3]/60 bg-[#081a28]');
-      }
       if (mCity) mCity.textContent = inst.city || inst.country || 'Global Network';
       if (mQuickInput) mQuickInput.placeholder = `Ask about ${inst.name}...`;
       if (mAnchoredInput) mAnchoredInput.placeholder = `Ask about ${inst.name}...`;
@@ -16185,24 +16104,10 @@ return maplibregl$1;
       const isFlagged = !isCommunity && inst.tier === 'B';
       const isUnverified = !isCommunity && inst.tier === 'U';
 
-      const tierBadgeClass = isCommunity
-        ? 'text-[#08bdba]'
-        : isClean 
-        ? 'text-emerald-400' 
-        : isFlagged 
-        ? 'text-[#be95ff]' 
-        : 'text-[#33b1ff]';
 
-      const tierLabel = isCommunity
-        ? `Community Layer, Audit Ticket #${inst.communityId || 'RES-CONTRIB'}`
-        : isClean 
-        ? 'Clean, source cited' 
-        : (isFlagged ? 'Flagged' : 'Unverified Space');
 
       const cleanAlts = (!isClean && !isCommunity) ? ALL_INSTITUTIONS.filter(i => i.tier === 'A' && matchC(i.city, inst.city)) : [];
 
-      const cleanStatusTitle = sanitizeAuditStatus(inst.transparency_grade, isClean, isFlagged, isCommunity);
-      const statusCategory = isCommunity ? 'Community Pipeline' : 'Audit Classification';
 
       const fundingDesc = inst.funding || '';
 
@@ -16214,22 +16119,13 @@ return maplibregl$1;
 
       const bannerBg = '';
 
-      const gradeTitleCol = isCommunity ? 'text-[#08bdba]' : (isClean ? 'text-[#42be65]' : isFlagged ? 'text-[#be95ff]' : 'text-[#33b1ff]');
       const pulseDotCol = isCommunity ? 'bg-[#08bdba]' : (isClean ? 'bg-[#42be65]' : isFlagged ? 'bg-[#be95ff]' : 'bg-[#33b1ff]');
-      const auditTagHtml = isCommunity
-        ? '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#08bdba] font-bold tracking-wider">User Input</span><span class="text-[14px] text-teal-300 font-mono block">Pending Audit</span></div>'
-        : isClean 
-        ? '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#42be65] font-bold tracking-wider">Clean, source cited</span></div>' 
-        : isFlagged 
-        ? '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#be95ff] font-bold tracking-wider">Flagged</span><span class="text-[14px] text-[#a6c8ff] font-mono block">Documented</span></div>' 
-        : '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#33b1ff] font-bold tracking-wider">Unverified</span><span class="text-[14px] text-[#a6c8ff] font-mono block">Pending Audit</span></div>';
 
 
       body.innerHTML = `
         <div class="space-y-3">
           <div class="pb-2 border-b border-[#262626]">
             <div class="space-y-1 mb-2 text-[14px] font-mono">
-              <div class="${tierBadgeClass}">${tierLabel}</div>
               ${inst.curatorial_focus ? `<div class="text-[#6ee7b7]">${escapeHtml(inst.curatorial_focus)}</div>` : ''}
               ${inst.year_founded ? `<div class="text-[#78a9ff]">Est. ${inst.year_founded}</div>` : ''}
             </div>
@@ -16321,20 +16217,6 @@ return maplibregl$1;
               </div>
             </div>
           ` : ''}
-
-          <!-- 4.  GOVERNANCE & AUDIT CLASSIFICATION (Uncontained Section) -->
-          <div class="py-3 border-b border-[#262626] flex flex-col gap-1">
-            <div class="flex items-center gap-2">
-
-              <span class="text-[14px] font-mono tracking-wider font-bold ${gradeTitleCol}">${statusCategory}</span>
-            </div>
-            <div class="text-[14px] font-semibold text-white font-mono">
-              ${escapeHtml(cleanStatusTitle)}
-            </div>
-            <div class="pt-0.5">
-              ${auditTagHtml}
-            </div>
-          </div>
 
           ${isCommunity ? `
             <div class="py-2.5 border-t border-[#262626] space-y-2">
