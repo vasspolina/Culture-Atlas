@@ -17,7 +17,15 @@ def run_tests():
 
     test_script = """
     <script>
-    window.addEventListener('load', async () => {
+    window.fetch = async (url, opts) => {
+      const urlStr = String(url);
+      if (urlStr.includes('.pbf') || urlStr.includes('openfreemap') || urlStr.includes('tile') || urlStr.includes('style.json')) {
+        return new Response(new Uint8Array(0), { status: 200 });
+      }
+      return new Response("{}", { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
       const results = [];
       function assert(name, condition, extra = '') {
         results.push({ name, pass: !!condition, extra });
@@ -94,7 +102,7 @@ def run_tests():
         chrome_bin,
         "--headless=new",
         "--dump-dom",
-        "--virtual-time-budget=6000",
+        "--window-size=1280,800",
         f"file://{temp_file}"
     ]
 

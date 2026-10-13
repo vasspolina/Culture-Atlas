@@ -1350,7 +1350,9 @@ def build():
       text-overflow: ellipsis;
       white-space: nowrap;
     }}
-    .mast-headroom-pill {{
+    .mast-headroom-pill,
+    .debug-pill,
+    [data-debug*="headroom"] {{
       display: none !important;
       font-size: 14pt;
       font-weight: 400;
@@ -3079,7 +3081,7 @@ def build():
           </button>
           <button id="workspaceTabChat" type="button" onclick="window.setWorkspaceTab('chat');" class="py-1 px-3 rounded text-[13px] font-medium transition cursor-pointer flex items-center gap-1.5 bg-[#262626] text-white shadow-sm">
             <svg class="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            <span>Curator AI Chat</span>
+            <span>AI Chat</span>
           </button>
         </div>
         <div class="flex items-center gap-3">
@@ -3391,11 +3393,11 @@ def build():
           </div>
         </div>
 
-        <!-- Sub-Header: Curator Intelligence & Quick Actions -->
+        <!-- Sub-Header: Research Assistant & Quick Actions -->
         <div id="curatorColumnHeader" class="hidden md:flex px-4 py-2.5 border-b border-[#262626] items-center justify-between shrink-0 bg-[#111114] select-none">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0"></span>
-            <span class="text-sm font-normal text-white tracking-wide">Curator Intelligence</span>
+            <span class="text-sm font-normal text-white tracking-wide">Research &amp; Analysis</span>
           </div>
           <div class="flex items-center gap-3">
             <!-- Voice Button -->
@@ -3575,10 +3577,10 @@ def build():
                     </svg>
                   </button>
                   
-                  <!-- Curator Live Indicator -->
+                  <!-- Live Status Indicator -->
                   <div class="flex items-center gap-1.5 text-[14pt] font-mono text-[#78a9ff]">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#42be65]"></span>
-                    <span>Curator · Live</span>
+                    <span>Online</span>
                   </div>
                 </div>
 
@@ -3738,11 +3740,11 @@ def build():
         <span>Send</span>
       </button>
     </div>
-    <!-- Micro Badges: Curator Live + Voice Mode -->
+    <!-- Micro Badges: Live Status + Voice Mode -->
     <div class="flex items-center justify-between text-[10px] text-slate-400 px-1">
       <span class="flex items-center space-x-1">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-        <span>Curator · Live</span>
+        <span>Online</span>
       </span>
       <div class="flex items-center space-x-2">
         <button id="mobileStickyVoiceBtn" type="button" onclick="if (typeof window.toggleCuratorVoice === 'function') window.toggleCuratorVoice();" class="text-slate-400 bg-slate-900 px-2 py-0.5 rounded-full border border-slate-800 cursor-pointer">Voice: On</button>
@@ -3903,7 +3905,7 @@ def build():
     </div>
   </div>
 
-  <!-- CURATOR INTELLIGENCE SETTINGS MODAL (Multi-Provider API Support) -->
+  <!-- AI MODEL & API SETTINGS MODAL (Multi-Provider Support) -->
   <!-- ========================================================================= -->
   <div id="curatorSettingsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#18181b] border border-[#2e2e2e] rounded-3xl max-w-lg w-full p-6 shadow-2xl flex flex-col gap-4 max-h-[92vh] overflow-y-auto custom-scrollbar">
@@ -3912,7 +3914,7 @@ def build():
       <div class="flex items-center justify-between border-b border-[#2e2e2e] pb-3 shrink-0">
         <div class="flex items-center gap-2.5">
           <div>
-            <h3 class="font-normal text-white text-[18px]">Curator Intelligence Settings</h3>
+            <h3 class="font-normal text-white text-[18px]">AI Model Settings</h3>
             <p class="text-[14px] text-[#a1a1aa]">Power conversational reasoning with live AI or use the built-in critical engine</p>
           </div>
         </div>
@@ -11025,44 +11027,62 @@ def build():
       }});
     }}
 
-    window.atlasSelectInst = function(instName) {{
-      const inst = (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name === instName) : null) || 
-                   ALL_INSTITUTIONS.find(i => i.name === instName) || 
-                   (typeof getCommunityAsInstitutions === 'function' ? getCommunityAsInstitutions().find(i => i.name === instName) : null);
+    function resolveInstitutionByIdOrName(queryOrObj) {{
+      if (!queryOrObj) return null;
+      if (typeof queryOrObj === 'object') return queryOrObj;
+      const q = String(queryOrObj).trim();
+      const qLower = q.toLowerCase();
+      // 1. Direct ID match (highest priority, avoids string ambiguity)
+      const byId = ALL_INSTITUTIONS.find(i => i.id === q || (i.id && i.id.toLowerCase() === qLower));
+      if (byId) return byId;
+      // 2. Direct Name match
+      const byName = ALL_INSTITUTIONS.find(i => i.name === q || i.name.toLowerCase() === qLower) ||
+                     (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name === q || i.name.toLowerCase() === qLower) : null);
+      if (byName) return byName;
+      // 3. Community match
+      if (typeof getCommunityAsInstitutions === 'function') {{
+        const byComm = getCommunityAsInstitutions().find(i => i.id === q || i.name === q || i.name.toLowerCase() === qLower);
+        if (byComm) return byComm;
+      }}
+      // 4. Mentioned search
+      if (typeof findMentionedInst === 'function') {{
+        const byMention = findMentionedInst(q);
+        if (byMention) return byMention;
+      }}
+      return null;
+    }}
+    window.resolveInstitutionByIdOrName = resolveInstitutionByIdOrName;
+
+    window.atlasSelectInst = function(instNameOrId) {{
+      const inst = resolveInstitutionByIdOrName(instNameOrId);
       if (inst) {{
         selectInstitution(inst, false);
         openDossier(inst);
       }}
     }};
 
-    window.atlasOpenDossier = function(instName) {{
-      const inst = (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name === instName) : null) || 
-                   ALL_INSTITUTIONS.find(i => i.name === instName) || 
-                   (typeof getCommunityAsInstitutions === 'function' ? getCommunityAsInstitutions().find(i => i.name === instName) : null);
+    window.atlasOpenDossier = function(instNameOrId) {{
+      const inst = resolveInstitutionByIdOrName(instNameOrId);
       if (inst) openDossier(inst);
     }};
 
-    window.atlasAskCurator = function(queryOrInstName) {{
+    window.atlasAskCurator = function(queryOrInst) {{
       if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {{
         setMobileViewMode('chat');
       }}
-      const inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === (queryOrInstName || '').toLowerCase());
+      const inst = resolveInstitutionByIdOrName(queryOrInst);
       if (inst) {{
         appendUserMessage(`Tell me about ${{inst.name}}`);
         handleCuratorQuery(inst.name);
-      }} else if (queryOrInstName) {{
-        appendUserMessage(queryOrInstName);
-        handleCuratorQuery(queryOrInstName);
+      }} else if (queryOrInst) {{
+        const text = typeof queryOrInst === 'string' ? queryOrInst : (queryOrInst.name || '');
+        appendUserMessage(text);
+        handleCuratorQuery(text);
       }}
     }};
 
     window.atlasPlanVisit = function(instNameOrObj) {{
-      let inst = null;
-      if (typeof instNameOrObj === 'string') {{
-        inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) || (typeof findMentionedInst === 'function' ? findMentionedInst(instNameOrObj) : null);
-      }} else if (instNameOrObj && typeof instNameOrObj === 'object') {{
-        inst = instNameOrObj;
-      }}
+      let inst = resolveInstitutionByIdOrName(instNameOrObj);
       if (!inst) {{
         inst = selectedInstitution || (typeof curatorContext !== 'undefined' ? curatorContext.lastInst : null);
       }}
@@ -12653,14 +12673,9 @@ def build():
     window.askCuratorAboutInst = askCuratorAboutInst;
 
     function zoomToBuilding(instNameOrObj, showArchives = false) {{
-      let inst = null;
-      if (typeof instNameOrObj === 'string') {{
-        inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) || 
-               (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) : null) ||
-               (typeof findMentionedInst === 'function' ? findMentionedInst(instNameOrObj) : null);
-      }} else if (instNameOrObj && typeof instNameOrObj === 'object') {{
-        inst = instNameOrObj;
-      }}
+      let inst = (typeof resolveInstitutionByIdOrName === 'function') 
+        ? resolveInstitutionByIdOrName(instNameOrObj) 
+        : (typeof instNameOrObj === 'object' ? instNameOrObj : ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === String(instNameOrObj).toLowerCase()));
       if (!inst) {{
         inst = selectedInstitution || (typeof curatorContext !== 'undefined' ? curatorContext.lastInst : null);
       }}
@@ -13640,6 +13655,14 @@ def build():
 
       cityMarkersLayer.clearLayers();
 
+      // State Synchronization: Automatically align active entity state and dossier to target city
+      if (cityInsts.length > 0) {{
+        const isCurrentInCity = selectedInstitution && matchC(selectedInstitution.city, cityName);
+        if (!isCurrentInCity) {{
+          selectInstitution(cityInsts[0], false);
+        }}
+      }}
+
       cityInsts.forEach(inst => {{
         const isA = inst.tier === 'A';
         const isB = inst.tier === 'B';
@@ -13648,6 +13671,8 @@ def build():
 
         const pinEl = document.createElement('div');
         pinEl.className = 'custom-inst-pin';
+        pinEl.setAttribute('data-entity-id', inst.id || inst.name);
+        pinEl.setAttribute('data-name', inst.name);
         pinEl.style.position = 'relative';
         pinEl.style.width = '32px';
         pinEl.style.height = '32px';
@@ -13659,6 +13684,7 @@ def build():
         // Floating Institution Name Label directly on top of the dot
         const labelEl = document.createElement('div');
         labelEl.className = 'inst-pin-label';
+        labelEl.setAttribute('data-entity-id', inst.id || inst.name);
         labelEl.setAttribute('data-name', inst.name);
         labelEl.addEventListener('click', (e) => {{
           e.stopPropagation();
@@ -13700,6 +13726,7 @@ def build():
         pinEl.appendChild(auraEl);
         pinEl.appendChild(dotEl);
 
+        const safeId = escapeHtml(inst.id || inst.name).replace(/'/g, "\\'");
         const safeName = escapeHtml(inst.name).replace(/'/g, "\\'");
         const domain = getDisplayDomain(webUrl) || 'website';
         const shortH = inst.opening_hours ? inst.opening_hours.split(',')[0] : 'Open Weekly';
@@ -13708,7 +13735,7 @@ def build():
 
         const tierLabel = isA ? 'Verified Sanctuary' : (isB ? 'Corporate Flagged' : 'Under Review');
         const popupContent = `
-          <div style="font-family:'PP Museum',sans-serif; min-width:280px; max-width:350px; padding:4px 0; color:#f1f5f9; box-sizing:border-box;">
+          <div data-entity-id="${{safeId}}" style="font-family:'PP Museum',sans-serif; min-width:280px; max-width:350px; padding:4px 0; color:#f1f5f9; box-sizing:border-box;">
             <!-- Header Section -->
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:4px;">
               <div style="padding-right:10px; min-width:0;">
@@ -13736,7 +13763,7 @@ def build():
             <div style="font-size:14pt; color:#cbd5e1; margin-top:4px; line-height:1.4;">
               ${{escapeHtml(inst.curatorial_focus || inst.neighborhood || '')}}
               <div style="margin-top:4px;">
-                <button type="button" onclick="window.atlasOpenDossier('${{safeName}}')" 
+                <button type="button" onclick="window.atlasOpenDossier('${{safeId}}')" 
                         style="background:none; border:none; outline:none; color:#38bdf8; font-size:14pt; cursor:pointer; padding:0; text-decoration:underline; font-family:inherit;">
                   Audit Dossier →
                 </button>
@@ -13745,7 +13772,7 @@ def build():
 
             <!-- Streamlined Single-Column Actions -->
             <div style="display:flex; flex-direction:column; gap:4px; margin-top:8px; padding-top:6px; border-top:1px solid #262626;">
-              <button type="button" onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${{safeName}}', false)" 
+              <button type="button" onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${{safeId}}', false)" 
                       style="background:none; border:none; text-align:left; color:#f1f5f9; font-size:14pt; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
                 Zoom to Building →
               </button>
@@ -13755,11 +13782,11 @@ def build():
                   Official Website (↗ ${{escapeHtml(domain)}})
                 </a>
               ` : ''}}
-              <button type="button" onclick="window.atlasPlanVisit('${{safeName}}')" 
+              <button type="button" onclick="window.atlasPlanVisit('${{safeId}}')" 
                       style="background:none; border:none; text-align:left; color:#cbd5e1; font-size:14pt; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
                 Plan Visit →
               </button>
-              <button type="button" onclick="window.atlasAskCurator('${{safeName}}')" 
+              <button type="button" onclick="window.atlasAskCurator('${{safeId}}')" 
                       style="background:none; border:none; text-align:left; color:#42be65; font-size:14pt; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;" 
                       title="Ask Curator about ${{escapeHtml(inst.name)}}">
                 Ask in Chat →
@@ -17833,7 +17860,10 @@ def build():
       }}
     }}
 
-    function selectInstitution(inst, shouldSwitchToGlobe = false) {{
+    function selectInstitution(instOrId, shouldSwitchToGlobe = false) {{
+      const inst = (typeof resolveInstitutionByIdOrName === 'function')
+        ? resolveInstitutionByIdOrName(instOrId)
+        : (typeof instOrId === 'object' ? instOrId : ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === String(instOrId).toLowerCase()));
       if (!inst) {{
         deselectInstitution();
         return;
@@ -18300,14 +18330,9 @@ def build():
     // Scholarly Audit Dossier View
     
     function openGossipDossier(instNameOrObj) {{
-      let inst = null;
-      if (typeof instNameOrObj === 'string') {{
-        inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) ||
-               (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) : null) ||
-               (typeof findMentionedInst === 'function' ? findMentionedInst(instNameOrObj) : null);
-      }} else if (instNameOrObj && typeof instNameOrObj === 'object') {{
-        inst = instNameOrObj;
-      }}
+      let inst = (typeof resolveInstitutionByIdOrName === 'function') 
+        ? resolveInstitutionByIdOrName(instNameOrObj) 
+        : (typeof instNameOrObj === 'object' ? instNameOrObj : ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === String(instNameOrObj).toLowerCase()));
       if (!inst) {{
         inst = selectedInstitution;
       }}
@@ -19407,7 +19432,7 @@ def build():
       const workLabel = document.getElementById('workModelLabel');
 
       const prov = getEffectiveProvider();
-      const pName = prov === 'anthropic' ? 'Curator' : (prov === 'openai' ? 'OpenAI' : 'Gemini');
+      const pName = prov === 'anthropic' ? 'Anthropic' : (prov === 'openai' ? 'OpenAI' : 'Gemini');
       const effModel = getEffectiveModel();
 
       if (aiApiKey) {{
@@ -22321,7 +22346,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (isKeyDirectInput) {{
         const key = rawTrimmed.replace(/^\/key\s*/, '').trim();
         const prov = detectProvider(key);
-        const pName = prov === 'anthropic' ? 'Curator' : (prov === 'openai' ? 'OpenAI' : 'Google Gemini');
+        const pName = prov === 'anthropic' ? 'Anthropic' : (prov === 'openai' ? 'OpenAI' : 'Google Gemini');
         aiApiKey = key;
         aiProvider = prov;
         aiModel = getEffectiveModel();
@@ -23585,7 +23610,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <span class="font-medium text-white text-[14px]">Institutional Fiscal Analytics Dashboard</span>
               </div>
               <button type="button" onclick="openFiscalAnalyticsHUD()" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-[14px] font-mono transition cursor-pointer">
-                Expand HUD
+                Expand Dashboard
               </button>
             </div>
 
@@ -24092,7 +24117,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             <div class="space-y-3">
               <div class="flex items-center justify-between border-b border-[#262626] pb-2">
                 <div class="flex items-center gap-2">
-                  <span class="font-normal text-white text-[14pt]">Curator Critical Sparring Mode Active</span>
+                  <span class="font-normal text-white text-[14pt]">Critical Sparring Mode Active</span>
                 </div>
                 <span class="text-[14pt] font-mono text-purple-400 bg-purple-950/80 border border-purple-700/60 px-2 py-0.5 rounded-sm">Trained to Talk Back</span>
               </div>
@@ -24251,7 +24276,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   <span class="font-normal text-white text-[14pt]">Institutional Fiscal Analytics Dashboard</span>
                 </div>
                 <button type="button" onclick="openFiscalAnalyticsHUD()" class="px-2.5 py-1 bg-[#0f62fe] hover:bg-[#0353e9] text-white rounded-none text-[14pt] font-mono transition cursor-pointer">
-                  Expand HUD
+                  Expand Dashboard
                 </button>
               </div>
 
@@ -27987,7 +28012,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
                   duration: (typeof queryAI !== 'undefined' && queryAI.lastDuration) || 3,
                   mode: getChatModeConfig(query),
                   thought: thoughtText,
-                  step: 'Live Curator Intelligence Reasoning'
+                  step: 'Live AI Reasoning'
                 }};
               }}
               appendCuratorMessage(aiHtml, [], webIntel, thinkingData);
@@ -29155,7 +29180,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
       appendCuratorMessage(`
         <div class="text-[14px] text-zinc-400 py-1.5 flex items-center justify-between border-y border-zinc-800">
-          <span>Returned to Curator Chat. How can I help you explore cultural spaces?</span>
+          <span>Returned to Chat. How can I help you explore cultural spaces?</span>
           <button type="button" onclick="window.enterChatInputMode()" class="text-emerald-400 hover:underline cursor-pointer font-mono text-[14px]">Re-open Intel Vault</button>
         </div>
       `, [], null, null, false);
