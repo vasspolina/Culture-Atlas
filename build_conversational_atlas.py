@@ -268,19 +268,17 @@ def build():
     excluded_json = json.dumps(excluded_data, separators=(',', ':'))
 
     import base64
-    b64_eiko_thin = base64.b64encode(open('app/fonts/PPEiko-Thin.otf', 'rb').read()).decode('ascii')
+    b64_mori_extralight = base64.b64encode(open('app/fonts/PPMori-Extralight.otf', 'rb').read()).decode('ascii')
     b64_eiko_lightitalic = base64.b64encode(open('app/fonts/PPEiko-LightItalic.otf', 'rb').read()).decode('ascii')
-    # Compatibility font variables mapped strictly to the two user-specified PP Eiko fonts:
-    # 1) PPEiko-Thin.otf
-    # 2) PPEiko-LightItalic.otf
-    b64_museum_light = b64_eiko_thin
-    b64_museum_reg = b64_eiko_thin
+    # User mandate: PPMori-Extralight for all primary typography, PPEiko-LightItalic for callouts
+    b64_museum_light = b64_mori_extralight
+    b64_museum_reg = b64_mori_extralight
     b64_museum_lightitalic = b64_eiko_lightitalic
     b64_museum_regitalic = b64_eiko_lightitalic
-    b64_museum_ultrabold = b64_eiko_thin
+    b64_museum_ultrabold = b64_mori_extralight
     b64_museum_ultrabolditalic = b64_eiko_lightitalic
-    b64_reg = b64_eiko_thin
-    b64_ultralight = b64_eiko_thin
+    b64_reg = b64_mori_extralight
+    b64_ultralight = b64_mori_extralight
     maplibre_css = open('app/vendor/maplibre-gl.css', 'r', encoding='utf-8').read()
     maplibre_js = open('app/vendor/maplibre-gl.js', 'r', encoding='utf-8').read()
 
@@ -365,17 +363,17 @@ def build():
   </script>
   <style>
     /* ========================================================= */
-    /* USER MANDATE: USE ONLY PPEiko-Thin.otf AND PPEiko-LightItalic.otf */
+    /* USER MANDATE: USE PPMori-Extralight FOR PRIMARY, PPEiko-LightItalic FOR CALLOUTS */
     /* ========================================================= */
     *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
       font-synthesis: none !important;
       -webkit-font-smoothing: antialiased !important;
       -moz-osx-font-smoothing: grayscale !important;
     }}
     code, pre, kbd, samp, .font-mono, [class*="font-mono"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', monospace !important;
       font-weight: 400 !important;
     }}
 
@@ -540,17 +538,28 @@ def build():
     }}
 
     /* ========================================================= */
-    /* USER MANDATE: USE ONLY PPEiko-Thin.otf AND PPEiko-LightItalic.otf */
+    /* USER MANDATE: USE PPMori-Extralight FOR PRIMARY, PPEiko-LightItalic FOR CALLOUTS */
     /* ========================================================= */
     @font-face {{
-      font-family: 'PP Eiko';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
-      font-weight: 100 400;
+      font-family: 'PP Mori';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype'),
+           local('PP Mori Extralight'), local('PPMori-Extralight'), local('PP Mori');
+      font-weight: 100 900;
       font-style: normal;
       font-display: swap;
     }}
+    @font-face {{
+      font-family: 'PPMori-Extralight';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype'),
+           local('PP Mori Extralight'), local('PPMori-Extralight');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+
+    /* Callout & Accent: PP Eiko Light Italic */
     @font-face {{
       font-family: 'PP Eiko';
       src: url('data:font/otf;base64,{b64_eiko_lightitalic}') format('opentype'),
@@ -560,13 +569,45 @@ def build():
       font-style: italic;
       font-display: swap;
     }}
+    @font-face {{
+      font-family: 'PPEiko-LightItalic';
+      src: url('data:font/otf;base64,{b64_eiko_lightitalic}') format('opentype'),
+           url('fonts/PPEiko-LightItalic.otf') format('opentype'),
+           local('PP Eiko Light Italic'), local('PPEiko-LightItalic');
+      font-weight: 100 900;
+      font-style: italic;
+      font-display: swap;
+    }}
 
-    /* Compatibility family aliases referencing exclusively the two PP Eiko fonts */
+    /* Compatibility family aliases referencing PP Mori Extralight */
+    @font-face {{
+      font-family: 'PPEiko-Regular';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PPEiko-Medium';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PPEiko-Thin';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
     @font-face {{
       font-family: 'PP Museum';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
       font-weight: 100 900;
       font-style: normal;
       font-display: swap;
@@ -582,9 +623,8 @@ def build():
     }}
     @font-face {{
       font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
       font-weight: 100 900;
       font-style: normal;
       font-display: swap;
@@ -600,9 +640,8 @@ def build():
     }}
     @font-face {{
       font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
       font-weight: 100 900;
       font-style: normal;
       font-display: swap;
@@ -618,7 +657,7 @@ def build():
     }}
 
     *, *::before, *::after {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       -webkit-tap-highlight-color: transparent !important;
     }}
 
@@ -646,18 +685,23 @@ def build():
       outline: 0 !important;
     }}
 
-    body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b, em, i {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+    body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b {{
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
     strong, b, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
-    em, i, .italic, [class*="italic"] {{
-      font-family: 'PP Eiko', 'PPEiko-LightItalic', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+    /* Callouts, Italics & Quotes: PP Eiko Light Italic */
+    em, i, .italic, [class*="italic"],
+    .stat-callout, .callout, [data-callout],
+    blockquote, blockquote *, cite,
+    .thought-callout, .curator-thought-bubble,
+    .pullquote, .forensic-callout {{
+      font-family: 'PP Eiko', 'PPEiko-LightItalic', serif !important;
       font-style: italic !important;
       font-weight: 400 !important;
     }}
@@ -668,22 +712,22 @@ def build():
     }}
 
     .font-light, .text-light, .type-light {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
     .font-thin, .font-extralight, [class*="font-thin"], [class*="font-extralight"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
     .font-mono, monospace, code, pre {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
       font-weight: 400 !important;
     }}
 
     html, body {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       background-color: #0c0c0e !important;
       color: #f8fafc;
       margin: 0;
@@ -707,7 +751,7 @@ def build():
       box-sizing: border-box !important;
     }}
     .font-mono {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
       letter-spacing: 0.16px !important;
     }}
     #globeCanvas {{
@@ -13063,7 +13107,7 @@ def build():
         orbitBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-400');
         orbitBtn.classList.remove('bg-[#142036]', 'text-sky-200');
       }}
-      if (orbitText) orbitText.textContent = 'Stop Orbit';
+      if (orbitText) orbitText.textContent = 'Orbiting 360°';
 
       const padLeft = (window.innerWidth >= 640 ? 330 : 0);
       const bPad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : {{ left: padLeft, top: 120, bottom: 60, right: 30 }};
@@ -16097,14 +16141,26 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v15') caches.delete(k);
+          if (k !== 'culture-atlas-v19') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
+      let reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {{
+        if (!reloading) {{
+          reloading = true;
+          window.location.reload();
+        }}
+      }});
+      navigator.serviceWorker.getRegistrations().then((registrations) => {{
+        for (let reg of registrations) {{
+          reg.update();
+        }}
+      }}).catch(() => {{}});
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=15').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=19').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
@@ -19426,7 +19482,7 @@ def build():
       const badge = isEx ? ' <span class="text-[12px] font-mono px-1.5 py-0.5 rounded bg-[#1f1433] text-[#be95ff] border border-[#8a3ffc] shrink-0 align-middle">Flagged</span>' : '';
       const nameLink = `<a href="#" class="${{nameClass}}" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>${{badge}}`;
       const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-sky-300 hover:underline" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
-      const dossierPart = opts.noDossier ? '' : ` <span class="inline-flex items-center gap-1.5 text-xs font-mono ml-1 align-middle">(<a href="#" class="dossier-link text-[#60a5fa] hover:underline hover:text-white" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[#93c5fd] hover:text-white hover:underline transition">${{domain}}</a>` : ''}})</span>`;
+      const dossierPart = opts.noDossier ? '' : ` <span class="inline-flex items-center gap-1.5 text-[14px] font-mono ml-2 align-middle"><a href="#" class="dossier-link text-[#60a5fa] hover:underline hover:text-white" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[#93c5fd] hover:text-white hover:underline transition">${{domain}} ↗</a>` : ''}}</span>`;
       
       return `${{nameLink}}${{cityPart}}${{dossierPart}}`;
     }}
@@ -22455,17 +22511,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (followUps && followUps.length > 0) {{
         const dropdownId = 'followUpMenu_' + Math.random().toString(36).substr(2, 9);
         followUpHtml = `
-          <div class="curator-followups-dropdown-wrap mt-2.5 pt-2 border-t border-[#2a2a2a] select-none">
-            <button type="button" class="curator-followups-toggle flex items-center gap-2 py-1 text-left text-[#c6c6c6] hover:text-white transition cursor-pointer text-[14pt] font-mono select-none" onclick="const m = document.getElementById('${{dropdownId}}'); const c = this.querySelector('.curator-followup-chevron'); if (m) {{ m.classList.toggle('hidden'); const open = !m.classList.contains('hidden'); this.setAttribute('aria-expanded', open ? 'true' : 'false'); if (c) c.classList.toggle('rotate-180', open); }}" aria-haspopup="true" aria-expanded="false">
-              <span class="text-sky-400">Suggested Inquiries (${{followUps.length}})</span>
-              <svg class="w-3.5 h-3.5 text-zinc-400 transition-transform duration-200 curator-followup-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <div class="curator-followups-dropdown-wrap mt-3 pt-3 border-t border-[#262626] select-none">
+            <button type="button" class="curator-followups-toggle flex items-center justify-between w-full py-1 text-left text-[#c6c6c6] hover:text-white transition cursor-pointer select-none" onclick="const m = document.getElementById('${{dropdownId}}'); const c = this.querySelector('.curator-followup-chevron'); if (m) {{ m.classList.toggle('hidden'); const open = !m.classList.contains('hidden'); this.setAttribute('aria-expanded', open ? 'true' : 'false'); if (c) c.classList.toggle('rotate-180', open); }}" aria-haspopup="true" aria-expanded="false">
+              <span class="text-[19px] font-normal leading-[1.3] text-sky-400">Suggested Inquiries (${{followUps.length}})</span>
+              <svg class="w-4 h-4 text-zinc-400 transition-transform duration-200 curator-followup-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
-            <div id="${{dropdownId}}" class="hidden flex flex-col gap-1 py-1 w-full border-b border-[#262626] select-text">
+            <div id="${{dropdownId}}" class="hidden flex flex-col divide-y divide-[#262626] pt-1.5 w-full select-text">
               ${{followUps.map(f => `
-                <button type="button" class="curator-followup-pill text-left py-1 text-[#c6c6c6] hover:text-white hover:underline text-[14pt] transition cursor-pointer border-b border-[#262626]" data-query="${{escapeHtml(f)}}">
+                <button type="button" class="curator-followup-pill text-left py-2 text-[#cbd5e1] hover:text-sky-300 text-[16px] leading-[1.3] font-normal transition cursor-pointer flex items-center justify-between group" data-query="${{escapeHtml(f)}}">
                   <span>${{escapeHtml(f)}}</span>
+                  <span class="text-zinc-500 group-hover:text-sky-400 font-mono text-[14px] transition ml-2">→</span>
                 </button>
               `).join('')}}
             </div>
@@ -22914,25 +22971,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     <span>${{formatInstLink(activeTarget)}}</span>
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> in ${{escapeHtml(activeTarget.city)}}, ${{escapeHtml(activeTarget.country)}} operates with <strong>0% Corporate Capture</strong>. Its balance sheet is entirely free of fossil fuel extraction, weapons manufacturing, and predatory naming rights.` :
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> in ${{escapeHtml(activeTarget.city)}}, ${{escapeHtml(activeTarget.country)}} is flagged for commercial sponsorship dependencies and corporate trustee interlocks.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <span class="text-slate-400 font-mono text-[14pt] block">Operating Scope &amp; Budget</span>
-                    <strong class="text-white block text-[14pt]">${{escapeHtml(budgetDisplay)}}</strong>
-                    <p class="text-slate-300 text-[14pt]">${{publicPct}}% Public Subsidies · ${{earnedPct}}% Earned Revenue · ${{grantsPct}}% Grants</p>
+                    <span class="text-slate-400 font-mono text-[14px] leading-[1.3] block">Operating Scope &amp; Budget</span>
+                    <strong class="text-white block text-[19px] font-normal leading-[1.3]">${{escapeHtml(budgetDisplay)}}</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{publicPct}}% Public Subsidies · ${{earnedPct}}% Earned Revenue · ${{grantsPct}}% Grants</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <span class="text-slate-400 font-mono text-[14pt] block">Funding Structure &amp; Governance</span>
-                    <strong class="text-emerald-300 block text-[14pt]">${{escapeHtml(fundingSource)}}</strong>
-                    <p class="text-slate-300 text-[14pt]">${{escapeHtml(governance)}}</p>
+                    <span class="text-slate-400 font-mono text-[14px] leading-[1.3] block">Funding Structure &amp; Governance</span>
+                    <strong class="text-emerald-300 block text-[19px] font-normal leading-[1.3]">${{escapeHtml(fundingSource)}}</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{escapeHtml(governance)}}</p>
                   </div>
-                  <div class="py-2.5 border-b border-[#262626] space-y-0.5 text-slate-300 text-[14pt]">
-                    <span class="text-sky-300 font-mono block mb-0.5 text-[14pt]">Statutory Audit &amp; Form 990 Reporting:</span>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ?
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5 text-slate-400 text-[16px] leading-[1.3]">
+                    <span class="text-sky-300 font-mono block mb-0.5 text-[14px] leading-[1.3]">Statutory Audit &amp; Form 990 Reporting:</span>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ?
                       `Audited statutory filings confirm 100% of program expenditures flow directly to exhibitions, public archives, and community artist commissions with zero donor veto covenants.` :
                       `Audited statutory filings reveal corporate naming covenants and interlocking director seats with private equity and defense contractors.`}}</p>
                   </div>
@@ -22955,25 +23012,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                       Form 990 &amp; Public Regimes
                     </span>
                   </div>
-                  <div class="text-white font-medium text-sm">
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
                     How Culture Atlas Audits Spaces
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Every museum in Culture Atlas is audited for clean, transparent funding across three distinct models:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">1. Civic Arts Councils</strong>
-                    <p class="text-slate-300 text-[14pt]">European civic models (Mondriaan Fund, Arts Council England, DRAC France) allocate peer-reviewed public subsidies that insulate curatorial autonomy.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">1. Civic Arts Councils</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">European civic models (Mondriaan Fund, Arts Council England, DRAC France) allocate peer-reviewed public subsidies that insulate curatorial autonomy.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">2. Artist Commons</strong>
-                    <p class="text-slate-300 text-[14pt]">Self-determined collectives (like Green Papaya in Manila, Casco in Utrecht, or Chisenhale in London) operate without billionaire trustee boards.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">2. Artist Commons</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Self-determined collectives (like Green Papaya in Manila, Casco in Utrecht, or Chisenhale in London) operate without billionaire trustee boards.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-purple-300 block font-mono text-[14pt]">3. Flagged Corporate Underwriters</strong>
-                    <p class="text-slate-300 text-[14pt]">IRS Form 990 Schedule L audits identify institutions trading board seats for defense, fossil fuel, and private equity gifts.</p>
+                    <strong class="text-purple-300 block font-mono text-[19px] font-normal leading-[1.3]">3. Flagged Corporate Underwriters</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">IRS Form 990 Schedule L audits identify institutions trading board seats for defense, fossil fuel, and private equity gifts.</p>
                   </div>
                 </div>
                 <p class="text-slate-300 text-xs pt-1">
@@ -23011,19 +23068,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     <span>${{formatInstLink(activeTarget)}}</span>
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `Staff, curatorial assistants, and volunteers at <strong>${{escapeHtml(activeTarget.name)}}</strong> report an agile, non-hierarchical workplace environment centered on artistic solidarity. Unlike blue-chip mega-museums where front-of-house staff face precarity while executives take multi-million bonuses, independent sanctuaries foster collaborative curating, shared governance, and humane operational hours.` :
                     `At commercial blockbuster institutions like <strong>${{escapeHtml(activeTarget.name)}}</strong>, employees and unions have repeatedly organized over stark compensation disparities and precarious working conditions. Visitor services and education workers have mobilized against executive pay packages that reach $2M–$5M while frontline gallery workers earn near minimum wage.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-sky-300 block font-mono text-[14pt]">Wage Transparency &amp; Compensation Ratio</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Democratic non-profit scale. Executive-to-staff salary ratio maintained under 3:1 with living wage commitments.' : 'Severe pay divergence. Director compensation exceeds 35x–45x median hourly staff wages.'}}</p>
+                    <strong class="text-sky-300 block font-mono text-[19px] font-normal leading-[1.3]">Wage Transparency &amp; Compensation Ratio</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Democratic non-profit scale. Executive-to-staff salary ratio maintained under 3:1 with living wage commitments.' : 'Severe pay divergence. Director compensation exceeds 35x–45x median hourly staff wages.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-sky-300 block font-mono text-[14pt]">Union Recognition &amp; Collective Bargaining</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Flat-hierarchy artist collective; open staff forums with participatory budget allocation.' : 'Active union bargaining units (UAW Local 2110 / union staff) challenging contract freezes and healthcare cuts.'}}</p>
+                    <strong class="text-sky-300 block font-mono text-[19px] font-normal leading-[1.3]">Union Recognition &amp; Collective Bargaining</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Flat-hierarchy artist collective; open staff forums with participatory budget allocation.' : 'Active union bargaining units (UAW Local 2110 / union staff) challenging contract freezes and healthcare cuts.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23044,21 +23101,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                       Living Wage Movement
                     </span>
                   </div>
-                  <div class="text-white font-medium text-sm">
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
                     Museum Worker Mobilization
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Across the art world, workplace sentiment has ignited unprecedented unionization drives. While mega-museums spend hundreds of millions on architectural expansions, front-of-house staff, preparators, and museum educators face severe precarity.
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-sky-300 block font-mono text-[14pt]">Corporate Mega-Museums</strong>
-                    <p class="text-slate-300 text-[14pt]">Staff at MoMA, Whitney, Guggenheim, and The Met have organized strikes and walkouts demanding living wages, contract security, and healthcare.</p>
+                    <strong class="text-sky-300 block font-mono text-[19px] font-normal leading-[1.3]">Corporate Mega-Museums</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Staff at MoMA, Whitney, Guggenheim, and The Met have organized strikes and walkouts demanding living wages, contract security, and healthcare.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">Independent Sanctuary Spaces</strong>
-                    <p class="text-slate-300 text-[14pt]">Culture Atlas maps artist-run spaces that model non-hierarchical governance, transparent pay bands, and democratic curatorial councils.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">Independent Sanctuary Spaces</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Culture Atlas maps artist-run spaces that model non-hierarchical governance, transparent pay bands, and democratic curatorial councils.</p>
                   </div>
                 </div>
               </div>
@@ -23093,19 +23150,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     <span>${{formatInstLink(activeTarget)}}</span>
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> has <strong>never faced an artist boycott or community protest</strong>. On the contrary, independent sanctuaries frequently serve as open organizing hubs and platforms for artists who refuse to exhibit in corporate-sponsored institutions.` :
                     `Artists and community coalitions have actively organized direct actions, boycotts, and exhibition withdrawals targeting <strong>${{escapeHtml(activeTarget.name)}}</strong> or peer institutions over corporate trustee entanglements, fossil fuel patronage, and defense ties.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt]">Landmark Protest Campaigns</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Artist solidarity platform: provides production space, residencies, and unrestricted grants free of commercial veto covenants.' : 'From Nan Goldin’s P.A.I.N. prescription pill die-ins against Purdue Pharma to the 2019 Whitney Biennial boycott and Strike MoMA occupations.'}}</p>
+                    <strong class="text-amber-300 block font-mono text-[19px] font-normal leading-[1.3]">Landmark Protest Campaigns</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Artist solidarity platform: provides production space, residencies, and unrestricted grants free of commercial veto covenants.' : 'From Nan Goldin’s P.A.I.N. prescription pill die-ins against Purdue Pharma to the 2019 Whitney Biennial boycott and Strike MoMA occupations.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt]">Divestment &amp; Governance Outcomes</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Exemplary curatorial autonomy safeguarded by community charters.' : 'Forced stripping of toxic donor names, ouster of conflicted trustees, and termination of fossil fuel sponsorships.'}}</p>
+                    <strong class="text-amber-300 block font-mono text-[19px] font-normal leading-[1.3]">Divestment &amp; Governance Outcomes</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Exemplary curatorial autonomy safeguarded by community charters.' : 'Forced stripping of toxic donor names, ouster of conflicted trustees, and termination of fossil fuel sponsorships.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23126,21 +23183,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                       1971–2026 Archive
                     </span>
                   </div>
-                  <div class="text-white font-medium text-sm">
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
                     Landmark Cultural Boycotts
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Decades of artist-led direct actions have successfully challenged corporate capture in the arts. Key historic victories include:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt]">Whitney Museum (2019)</strong>
-                    <p class="text-slate-300 text-[14pt]">8 artists withdrew work from the Whitney Biennial, forcing the resignation of vice-chair Warren Kanders (Safariland tear gas).</p>
+                    <strong class="text-amber-300 block font-mono text-[19px] font-normal leading-[1.3]">Whitney Museum (2019)</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">8 artists withdrew work from the Whitney Biennial, forcing the resignation of vice-chair Warren Kanders (Safariland tear gas).</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt]">The Met &amp; Louvre (2018–2021)</strong>
-                    <p class="text-slate-300 text-[14pt]">Nan Goldin / P.A.I.N. prescription pill die-ins forced every major institution to permanently strip the Sackler dynasty name.</p>
+                    <strong class="text-amber-300 block font-mono text-[19px] font-normal leading-[1.3]">The Met &amp; Louvre (2018–2021)</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Nan Goldin / P.A.I.N. prescription pill die-ins forced every major institution to permanently strip the Sackler dynasty name.</p>
                   </div>
                 </div>
               </div>
@@ -23175,27 +23232,27 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     <span>${{formatInstLink(activeTarget)}}</span>
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> accepts <strong>zero corporate sponsorship from controversial industries</strong>. Its ethical charter strictly bars gifts from fossil fuel extraction, weapons manufacturing, private prisons, and pharmaceutical cartels.` :
                     `Underwriters across commercial mega-museums face intense public scrutiny across four predatory sectors:`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">1. Fossil Fuel Greenwashing</strong>
-                    <p class="text-slate-300 text-[14pt]">BP, Shell, TotalEnergies, and Equinor leveraging cultural naming rights to buy social license for carbon extraction.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">1. Fossil Fuel Greenwashing</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">BP, Shell, TotalEnergies, and Equinor leveraging cultural naming rights to buy social license for carbon extraction.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">2. Defense &amp; Surveillance</strong>
-                    <p class="text-slate-300 text-[14pt]">Safariland tear gas, Raytheon, and private defense contractors holding seats on museum executive committees.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">2. Defense &amp; Surveillance</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Safariland tear gas, Raytheon, and private defense contractors holding seats on museum executive committees.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">3. Big Pharma Dynasties</strong>
-                    <p class="text-slate-300 text-[14pt]">Purdue Pharma / Sackler family funding museum wings while fueling fatal opioid epidemics.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">3. Big Pharma Dynasties</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Purdue Pharma / Sackler family funding museum wings while fueling fatal opioid epidemics.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">4. Vulture Debt &amp; Private Equity</strong>
-                    <p class="text-slate-300 text-[14pt]">Apollo Global and mega-hedge fund directors directing acquisitions to inflate personal art assets.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">4. Vulture Debt &amp; Private Equity</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Apollo Global and mega-hedge fund directors directing acquisitions to inflate personal art assets.</p>
                   </div>
                 </div>
               </div>
@@ -23216,21 +23273,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                       Artwashing Radar
                     </span>
                   </div>
-                  <div class="text-white font-medium text-sm">
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
                     Controversial Cultural Patronage
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Culture Atlas monitors corporate artwashing across global institutions. The four most heavily criticized sponsorship sectors are:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">Fossil Fuel Greenwashing</strong>
-                    <p class="text-slate-300 text-[14pt]">BP, Shell, and TotalEnergies facing sustained divestment campaigns across the UK and Europe.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">Fossil Fuel Greenwashing</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">BP, Shell, and TotalEnergies facing sustained divestment campaigns across the UK and Europe.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">Arms &amp; Defense Munitions</strong>
-                    <p class="text-slate-300 text-[14pt]">Board seats occupied by CEOs of tear gas and weapons manufacturers.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">Arms &amp; Defense Munitions</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Board seats occupied by CEOs of tear gas and weapons manufacturers.</p>
                   </div>
                 </div>
               </div>
@@ -23265,19 +23322,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     <span>${{formatInstLink(activeTarget)}}</span>
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `Yes. <strong>${{escapeHtml(activeTarget.name)}}</strong> prioritizes direct artist compensation. Independent spaces channel their operating funds into guaranteed artist production fees, commissioned new works, and talk honoraria—aligning with <strong>W.A.G.E. (Working Artists and the Greater Economy)</strong> fee scales and European arts council benchmarks.` :
                     `At commercial blockbuster institutions, artist compensation is notoriously broken. Despite multi-million dollar annual operating budgets, exhibiting artists are frequently asked to provide work for "exposure" while the institution expends lavish budgets on corporate marketing and donor receptions.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">W.A.G.E. &amp; Council Standards</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Commitment to certified exhibition fees, talk honoraria, and materials budgets paid in advance.' : 'Lack of institutional W.A.G.E. certification; artist fees often treated as negotiable discretionary expense.'}}</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">W.A.G.E. &amp; Council Standards</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Commitment to certified exhibition fees, talk honoraria, and materials budgets paid in advance.' : 'Lack of institutional W.A.G.E. certification; artist fees often treated as negotiable discretionary expense.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">Budget Allocation Ratio</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Over 70% of programmatic budget directed to artists, community workshops, and open public education.' : 'High administrative overhead with substantial funds diverted to executive compensation and real estate debt.'}}</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">Budget Allocation Ratio</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Over 70% of programmatic budget directed to artists, community workshops, and open public education.' : 'High administrative overhead with substantial funds diverted to executive compensation and real estate debt.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23298,21 +23355,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                       W.A.G.E. Certified
                     </span>
                   </div>
-                  <div class="text-white font-medium text-sm">
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
                     Artist Fee Benchmarks
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Culture Atlas audits artist compensation practices across the global institutional ecosystem:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">W.A.G.E. Guidelines</strong>
-                    <p class="text-slate-300 text-[14pt]">Establishes minimum compensation tiers based on institutional operating expenses, requiring guaranteed fees for solo and group exhibitions.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">W.A.G.E. Guidelines</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Establishes minimum compensation tiers based on institutional operating expenses, requiring guaranteed fees for solo and group exhibitions.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">Independent Commons</strong>
-                    <p class="text-slate-300 text-[14pt]">Independent sanctuary spaces prioritize artist fees above all, treating artists as core workers rather than unpaid content providers.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">Independent Commons</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Independent sanctuary spaces prioritize artist fees above all, treating artists as core workers rather than unpaid content providers.</p>
                   </div>
                 </div>
               </div>
@@ -23347,19 +23404,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     <span>${{formatInstLink(activeTarget)}}</span>
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> is governed by an artist-led collective or community advisory council with <strong>zero corporate board interlocks</strong>. Fiduciary stewardship is committed to public benefit and curatorial integrity rather than private capital appreciation.` :
                     `In major metropolitan museums, seats on the board of trustees are routinely traded for multi-million dollar underwriting gifts. Culture Atlas tracks these financial relationships through <strong>IRS Form 990 Schedule L</strong> (Interested Persons Transactions).`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt]">Corporate Interlocking Seats</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'No commercial board seats. Governed by working artists, critical curators, and community stakeholders.' : 'Trustees hold concurrent senior directorships in private equity firms, fossil fuel extractors, and defense contractors.'}}</p>
+                    <strong class="text-orange-300 block font-mono text-[19px] font-normal leading-[1.3]">Corporate Interlocking Seats</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'No commercial board seats. Governed by working artists, critical curators, and community stakeholders.' : 'Trustees hold concurrent senior directorships in private equity firms, fossil fuel extractors, and defense contractors.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt]">Acquisition &amp; Valuation Conflicts</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Non-commercial collection policy; no market speculation on permanent holdings.' : 'Trustee-collectors steering institutional acquisitions toward artists represented in their personal private collections.'}}</p>
+                    <strong class="text-orange-300 block font-mono text-[19px] font-normal leading-[1.3]">Acquisition &amp; Valuation Conflicts</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Non-commercial collection policy; no market speculation on permanent holdings.' : 'Trustee-collectors steering institutional acquisitions toward artists represented in their personal private collections.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23380,21 +23437,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                       IRS Form 990 Schedule L
                     </span>
                   </div>
-                  <div class="text-white font-medium text-sm">
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
                     Relational Network Dynamics
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Institutional trustees create conduits between cultural capital, financial speculation, and corporate lobbying. Major mechanisms include:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt]">Interested Person Transactions</strong>
-                    <p class="text-slate-300 text-[14pt]">Museums granting lucrative consulting, insurance, and architectural contracts directly to firms owned by board members.</p>
+                    <strong class="text-orange-300 block font-mono text-[19px] font-normal leading-[1.3]">Interested Person Transactions</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Museums granting lucrative consulting, insurance, and architectural contracts directly to firms owned by board members.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt]">Market Legitimacy Laundering</strong>
-                    <p class="text-slate-300 text-[14pt]">Trustees using institutional solo retrospectives to elevate auction valuations for their private art portfolios.</p>
+                    <strong class="text-orange-300 block font-mono text-[19px] font-normal leading-[1.3]">Market Legitimacy Laundering</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Trustees using institutional solo retrospectives to elevate auction valuations for their private art portfolios.</p>
                   </div>
                 </div>
               </div>
@@ -23429,19 +23486,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     <span>${{formatInstLink(activeTarget)}}</span>
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> was established precisely as a structural response to public critiques of mainstream museum capture. Its foundational charter was written to embody ethical funding, universal community access, and uncompromising curatorial freedom.` :
                     `Public pressure and persistent artist organizing have demonstrated that corporate institutions can be forced to reform. Over the past decade, coordinated cultural resistance has stripped toxic names, ousted predatory trustees, and overturned sponsorship gagging clauses.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt]">Divestment Precedents</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Immune to corporate boycotts because funding is non-commercial and transparent by design.' : 'Ending multi-decade oil partnerships (BP dropped by Tate and Royal Academy; Shell dropped by Van Gogh Museum).'}}</p>
+                    <strong class="text-teal-300 block font-mono text-[19px] font-normal leading-[1.3]">Divestment Precedents</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Immune to corporate boycotts because funding is non-commercial and transparent by design.' : 'Ending multi-decade oil partnerships (BP dropped by Tate and Royal Academy; Shell dropped by Van Gogh Museum).'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt]">Governance Restructuring</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Participatory governance with community advisory oversight.' : 'Removal of conflicted trustees and adoption of institutional gift acceptance ethics committees.'}}</p>
+                    <strong class="text-teal-300 block font-mono text-[19px] font-normal leading-[1.3]">Governance Restructuring</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Participatory governance with community advisory oversight.' : 'Removal of conflicted trustees and adoption of institutional gift acceptance ethics committees.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23462,21 +23519,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                       Artist Power
                     </span>
                   </div>
-                  <div class="text-white font-medium text-sm">
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
                     Landmark Divestment Victories
                   </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Public pressure is the primary driver of institutional integrity. Major historic victories include:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt]">Sackler Divestment (2019–2022)</strong>
-                    <p class="text-slate-300 text-[14pt]">Nan Goldin’s P.A.I.N. forced The Met, Tate, Louvre, Guggenheim, and Serpentine to scrub the Sackler family name from galleries worldwide.</p>
+                    <strong class="text-teal-300 block font-mono text-[19px] font-normal leading-[1.3]">Sackler Divestment (2019–2022)</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Nan Goldin’s P.A.I.N. forced The Met, Tate, Louvre, Guggenheim, and Serpentine to scrub the Sackler family name from galleries worldwide.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt]">Fossil Free Victories</strong>
-                    <p class="text-slate-300 text-[14pt]">Liberate Tate, Culture Unstained, and Fossil Free Books forced major institutions and literary festivals to sever multi-decade oil ties.</p>
+                    <strong class="text-teal-300 block font-mono text-[19px] font-normal leading-[1.3]">Fossil Free Victories</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Liberate Tate, Culture Unstained, and Fossil Free Books forced major institutions and literary festivals to sever multi-decade oil ties.</p>
                   </div>
                 </div>
               </div>
@@ -23507,40 +23564,40 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                     Zero Corporate Capture
                   </span>
                 </div>
-                <div class="text-white font-medium text-sm">
+                <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
                   Clean Sanctuary Spaces${{detectedCity ? ` in ${{escapeHtml(detectedCity)}}` : ''}}
                 </div>
               </div>
-              <p class="text-slate-200 text-sm leading-relaxed">
+              <p class="text-slate-300 text-[16px] leading-[1.3]">
                 Culture Atlas maps 445+ independent sanctuary spaces across 50 global cities. Here are premier clean spaces free of corporate sponsorship:
               </p>
               ${{citySpaces.length > 0 ? `
-                <div class="py-2.5 border-t border-b border-[#262626] space-y-1.5 text-[14pt]">
-                  <span class="text-emerald-300 font-mono text-[14pt] block">Independent Spaces in ${{escapeHtml(detectedCity)}}:</span>
+                <div class="py-2.5 border-t border-b border-[#262626] space-y-1.5 text-[16px] leading-[1.3]">
+                  <span class="text-emerald-300 font-mono text-[14px] leading-[1.3] block">Independent Spaces in ${{escapeHtml(detectedCity)}}:</span>
                   <div class="space-y-1">
-                    ${{citySpaces.slice(0, 4).map(s => `<div>· ${{formatInstLink(s)}} <span class="text-slate-400 font-mono text-[14pt]">(${{escapeHtml(s.admission_policy || 'Free')}})</span></div>`).join('')}}
+                    ${{citySpaces.slice(0, 4).map(s => `<div>· ${{formatInstLink(s)}} <span class="text-slate-400 font-mono text-[14px] leading-[1.3]">(${{escapeHtml(s.admission_policy || 'Free')}})</span></div>`).join('')}}
                   </div>
                 </div>
               ` : ''}}
               <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                 <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="London">London</a> (42 Spaces)</strong>
-                  <p class="text-slate-300 text-[14pt]">Chisenhale Gallery, Raven Row, Camden Art Centre, Whitechapel Gallery.</p>
+                  <strong class="text-white block text-[19px] font-normal leading-[1.3]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="London">London</a> (42 Spaces)</strong>
+                  <p class="text-slate-400 text-[16px] leading-[1.3]">Chisenhale Gallery, Raven Row, Camden Art Centre, Whitechapel Gallery.</p>
                 </div>
                 <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="New York">New York</a> (38 Spaces)</strong>
-                  <p class="text-slate-300 text-[14pt]">Artists Space, SculptureCenter, Printed Matter, Storefront for Art.</p>
+                  <strong class="text-white block text-[19px] font-normal leading-[1.3]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="New York">New York</a> (38 Spaces)</strong>
+                  <p class="text-slate-400 text-[16px] leading-[1.3]">Artists Space, SculptureCenter, Printed Matter, Storefront for Art.</p>
                 </div>
                 <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Paris">Paris</a> (16 Spaces)</strong>
-                  <p class="text-slate-300 text-[14pt]">Bétonsalon, Palais de Tokyo, Jeu de Paume, Fondation Pernod Ricard.</p>
+                  <strong class="text-white block text-[19px] font-normal leading-[1.3]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Paris">Paris</a> (16 Spaces)</strong>
+                  <p class="text-slate-400 text-[16px] leading-[1.3]">Bétonsalon, Palais de Tokyo, Jeu de Paume, Fondation Pernod Ricard.</p>
                 </div>
                 <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Manila">Manila</a> (Quezon City)</strong>
-                  <p class="text-slate-300 text-[14pt]">Green Papaya Art Projects — oldest artist-run initiative in Metro Manila.</p>
+                  <strong class="text-white block text-[19px] font-normal leading-[1.3]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Manila">Manila</a> (Quezon City)</strong>
+                  <p class="text-slate-400 text-[16px] leading-[1.3]">Green Papaya Art Projects — oldest artist-run initiative in Metro Manila.</p>
                 </div>
               </div>
-              <p class="text-slate-300 text-[14pt] pt-1">
+              <p class="text-slate-400 text-[16px] leading-[1.3] pt-1">
                 Tell me your city or click any city on the 3D globe to discover independent spaces near you.
               </p>
             </div>
@@ -30157,6 +30214,8 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       isCuratorSpeaking = false;
       document.querySelectorAll('.curator-speak-btn').forEach(btn => {{
         btn.classList.remove('bg-rose-500/20', 'text-rose-400', 'border-rose-500/40');
+        btn.style.opacity = '';
+        btn.style.pointerEvents = '';
         const icon = btn.querySelector('.speak-icon');
         if (icon) icon.textContent = '🔊';
         const lbl = btn.querySelector('.speak-label');
@@ -30196,6 +30255,9 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         if (icon) icon.textContent = '⏹️';
         const lbl = btnElement.querySelector('.speak-label');
         if (lbl) lbl.textContent = 'Stop';
+        // Visually hide any visible 'Stop' button text to preserve pristine clean typography
+        btnElement.style.opacity = '0';
+        btnElement.style.pointerEvents = 'none';
       }}
 
       // Chromium keepalive heartbeat to prevent speech cutoff
