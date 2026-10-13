@@ -24,7 +24,8 @@ TEXT = ['watch', 'funding', 'opening_hours', 'admission_fee', 'admission_policy'
 # Invented or unsourced: generated figures and stories, and classification labels that assert verification.
 DROP = ['financial_data', 'temporary_shows', 'floor_plans', 'archives_and_collections', 'building_architecture',
         'tier_label', 'transparency_grade', 'governance_classification', 'governance_type',
-        'governance_details', 'ethical_safeguard']   # assertions with no source, one of them the same sentence on 36 records
+        'governance_details', 'ethical_safeguard',   # assertions with no source, one of them the same sentence on 36 records
+        'curator_recommendation']   # written by the model, never shown
 AGGREGATORS = {'propublica.org', 'findthatcharity.uk', 'charitycommission.gov.uk', 'web.archive.org', 'e-flux.com',
                'facebook.com', 'instagram.com', 'linkedin.com', 'twitter.com', 'x.com', 'wikipedia.org'}
 
@@ -231,6 +232,14 @@ def clean(records, report=None):
             if r.get(f) and starts[' '.join(norm(r[f], r).split()[:4])] >= 4:
                 del r[f]
                 bump('shared_opening_' + f)
+    # "Consensus Study" is the name of the search tool the citation came through, not a citation
+    for r in records:
+        for v in r.get('visual_critiques') or []:
+            if v.get('citation'):
+                cleaned = re.sub(r'\s*[/;.,]?\s*Consensus Study\.?\s*$', '', v['citation']).strip()
+                if cleaned != v['citation']:
+                    v['citation'] = cleaned
+                    bump('citation_tool_name')
     for r in records:
         for field, text in (corrections.get(r['id']) or {}).items():
             r[field] = text

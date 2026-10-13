@@ -1,6 +1,8 @@
-// Culture Atlas Service Worker (Network-First HTML, Zero Stale-Lock)
-const CACHE_NAME = 'culture-atlas-v48';
+// Culture Atlas Service Worker (network-first for the page, same-origin cache only)
+const CACHE_NAME = 'culture-atlas-v49';
 const ASSETS_TO_CACHE = [
+  './',
+  './index.html',
   './manifest.json'
 ];
 
@@ -17,7 +19,7 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
-        keys.map((key) => caches.delete(key))
+        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
       );
     })
   );
@@ -29,14 +31,17 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
-  const isNavigation = event.request.mode === 'navigate' ||
-                       event.request.destination === 'document' ||
-                       (event.request.headers && event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'));
+  // Other sites answer for themselves: nothing from them is cached here, so lookups are never served stale.
+  let url;
+  try { url = new URL(event.request.url); } catch (e) { return; }
+  if (url.origin !== self.location.origin) return;
 
-  // NETWORK-FIRST FOR HTML DOCUMENTS: Always fetch fresh content from server!
+  const isNavigation = event.request.mode === 'navigate' || event.request.destination === 'document';
+
+  // NETWORK-FIRST FOR THE PAGE: always the server's current copy; the cached copy only when the network fails.
   if (isNavigation) {
     event.respondWith(
-      fetch(event.request).then((networkResponse) => {
+      fetch(event.request, { cache: 'no-cache' }).then((networkResponse) => {
         if (networkResponse && networkResponse.status === 200) {
           const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
@@ -45,16 +50,15 @@ self.addEventListener('fetch', (event) => {
         }
         return networkResponse;
       }).catch(() => {
-        return caches.match(event.request).then((res) => res || caches.match('./index.html'));
+        return caches.match(event.request, { ignoreSearch: true })
+          .then((res) => res || caches.match('./index.html'))
+          .then((res) => res || caches.match('./'));
       })
     );
     return;
   }
 
-  // Other sites answer for themselves: nothing from them is cached here, so lookups are never served stale.
-  if (new URL(event.request.url).origin !== self.location.origin) return;
-
-  // Network-first with cache fallback
+  // Network-first with cache fallback for the page's own files
   event.respondWith(
     fetch(event.request).then((networkResponse) => {
       if (networkResponse && networkResponse.status === 200) {

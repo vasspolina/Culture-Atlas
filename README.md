@@ -68,14 +68,13 @@ check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 is rewritten by `tools/clean_data.py` then `tools/embed_data.py`, and everything
 else is changed in the file itself.
 
-`build_conversational_atlas.py`, `build_mobile_experience.py`,
-`build_reference_design.py` and `build_split_screen_atlas.py` used to generate
-the page. They are stale (the page has been edited directly since) and refuse to
-run, because running one would overwrite `index.html` with older text and
-fonts, or recreate the `app/index.html` copies that were removed. The patch
-scripts that edit `build_conversational_atlas.py` itself
-(`integrate_visitor_atlas.py`, `fix_moma_audit.py`, `create_intelligent_atlas.py`,
-`apply_dutch_research_enhancement.py`) change only that stale file.
+The design tool's generator, patch and test scripts that used to sit in the
+repository root were removed on 13 October 2026: the page had been edited
+directly for a long time, and the generators would have overwritten it with
+older text and fonts. The research they ingested is kept under `data/inputs/`
+(the Consensus library export, the user research tables and the incoming
+research notes). One of the removed scripts carried a working Anthropic API
+key in base64 pieces; it is still in the git history and must be revoked.
 
 ## What the page may show
 
@@ -84,7 +83,7 @@ The page shows what a record states and where it comes from, and says plainly th
 - A field appears only if a record states it. Figures, hours, prices, exhibitions, architects and "chatter" are not generated to fill a gap. A text value shared by five or more records (after masking the name and city) is filler and is left out. Sentences that assert the absence of ties ("zero fossil fuel", "strict ethical charter") are left out.
 - **Clean, source cited** needs at least one source outside the museum's own site. **Flagged** needs a recorded reason. Otherwise a space is **Unverified**.
 - Anything reported about a space, such as a sponsor tie, an Epstein-related item, a WikiLeaks cable or a case file, is shown with its own source links under "Reported, not independently verified".
-- Anonymous staff reviews, the board network, the timeline, the filings registry, the itineraries and the 3D building outlines are not shown: they had no source, or were invented or generated.
+- Anonymous staff reviews, the board network, the timeline, the filings registry, the itineraries and the generated 3D building interiors are not shown: they had no source, or were invented or generated. The building view draws only the outline OpenStreetMap holds for the building, through the map tiles, with the record's own material stacked inside it, and says where any Wikidata fact came from.
 
 Rules live in `tools/clean_data.py`. To check records against their sources, run `tools/verify_claims.py` somewhere with network access, then `tools/apply_verification.py` and `tools/embed_data.py`. Wording corrected after checking is in `data/corrections.json`; the pilot of the three-check protocol is in `data/verification_pilot.json`.
 
@@ -92,14 +91,14 @@ Rules live in `tools/clean_data.py`. To check records against their sources, run
 
 ```
 Culture-Atlas/
-├── index.html          # The whole app, edited in place (~32 MB). The only HTML copy.
-├── sw.js               # Service worker (network-first)
+├── index.html          # The whole app, edited in place. The only HTML copy.
+├── sw.js               # Service worker (network-first for the page, same-origin cache only)
 ├── manifest.json       # PWA manifest
 ├── assets/ fonts/      # Images and typefaces the page loads
 ├── institutions.json   # Dataset
-├── src/                # Vite/React sources
-├── app/                # Older Vite build output and local server (serve.py)
-├── *.py                # Data pipeline (enrich_*, process_*, ...) and tests
+├── data/               # Research sources, papers, corrections and the inputs behind the dataset
+├── tools/              # Data pipeline: clean_data, embed_data, the importers and verify_claims
+├── src/ app/ public/   # Older Vite/React sources and build output, not used by the page
 └── .github/workflows/  # Deploy to gh-pages on push to main
 ```
 
