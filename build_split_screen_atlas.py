@@ -1822,4 +1822,6 @@ def build_widget(institutions_json, countries_json):
     print("Updated concierge_widget.html with left list & city/country click filtering!")
 
 if __name__ == "__main__":
-    build()
+    raise SystemExit(
+        "This page generator is stale and is switched off. index.html has been edited directly since it was last in step with this script, so running it would overwrite the live page with older text and fonts. Edit index.html (and, for data, tools/clean_data.py then tools/embed_data.py). See README: Editing the page."
+    )

@@ -60,6 +60,21 @@ Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a f
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
+## Editing the page
+
+`index.html` is edited directly. No script regenerates it: the data inside it
+is rewritten by `tools/clean_data.py` then `tools/embed_data.py`, and everything
+else is changed in the file itself.
+
+`build_conversational_atlas.py`, `build_mobile_experience.py`,
+`build_reference_design.py` and `build_split_screen_atlas.py` used to generate
+the page. They are stale (the page has been edited directly since) and refuse to
+run, because running one would overwrite `index.html` with older text and
+fonts, or recreate the `app/index.html` copies that were removed. The patch
+scripts that edit `build_conversational_atlas.py` itself
+(`integrate_visitor_atlas.py`, `fix_moma_audit.py`, `create_intelligent_atlas.py`,
+`apply_dutch_research_enhancement.py`) change only that stale file.
+
 ## What the page may show
 
 The page shows what a record states and where it comes from, and says plainly that none of it has been independently verified.
@@ -75,7 +90,7 @@ Rules live in `tools/clean_data.py`. To check records against their sources, run
 
 ```
 Culture-Atlas/
-├── index.html          # The whole app (generated, ~32 MB). The only HTML copy.
+├── index.html          # The whole app, edited in place (~32 MB). The only HTML copy.
 ├── sw.js               # Service worker (network-first)
 ├── manifest.json       # PWA manifest
 ├── assets/ fonts/      # Images and typefaces the page loads
