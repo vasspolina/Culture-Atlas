@@ -97,7 +97,7 @@ def build():
     insts_data = all_raw_institutions
     clean_insts = [i for i in all_raw_institutions if i.get('tier') == 'A']
     flagged_insts = [i for i in all_raw_institutions if i.get('tier') == 'B']
-    unverified_insts = [i for i in all_raw_institutions if i.get('tier') == 'U']
+    unreviewed_insts = [i for i in all_raw_institutions if i.get('tier') == 'U']
     excluded_data = [i for i in all_raw_institutions if i.get('tier') != 'A']
 
     clean_count = len(clean_insts)
@@ -268,19 +268,17 @@ def build():
     excluded_json = json.dumps(excluded_data, separators=(',', ':'))
 
     import base64
-    b64_eiko_thin = base64.b64encode(open('app/fonts/PPEiko-Thin.otf', 'rb').read()).decode('ascii')
+    b64_mori_extralight = base64.b64encode(open('app/fonts/PPMori-Extralight.otf', 'rb').read()).decode('ascii')
     b64_eiko_lightitalic = base64.b64encode(open('app/fonts/PPEiko-LightItalic.otf', 'rb').read()).decode('ascii')
-    # Compatibility font variables mapped strictly to the two user-specified PP Eiko fonts:
-    # 1) PPEiko-Thin.otf
-    # 2) PPEiko-LightItalic.otf
-    b64_museum_light = b64_eiko_thin
-    b64_museum_reg = b64_eiko_thin
+    # User mandate: PPMori-Extralight for all primary typography, PPEiko-LightItalic for callouts
+    b64_museum_light = b64_mori_extralight
+    b64_museum_reg = b64_mori_extralight
     b64_museum_lightitalic = b64_eiko_lightitalic
     b64_museum_regitalic = b64_eiko_lightitalic
-    b64_museum_ultrabold = b64_eiko_thin
+    b64_museum_ultrabold = b64_mori_extralight
     b64_museum_ultrabolditalic = b64_eiko_lightitalic
-    b64_reg = b64_eiko_thin
-    b64_ultralight = b64_eiko_thin
+    b64_reg = b64_mori_extralight
+    b64_ultralight = b64_mori_extralight
     maplibre_css = open('app/vendor/maplibre-gl.css', 'r', encoding='utf-8').read()
     maplibre_js = open('app/vendor/maplibre-gl.js', 'r', encoding='utf-8').read()
 
@@ -342,22 +340,22 @@ def build():
             DEFAULT: '20pt',
             none: '1',
             tight: '18pt',
-            snug: '20pt',
-            normal: '20pt',
-            relaxed: '22pt',
-            loose: '24pt',
+            snug: '1.25',
+            normal: '1.3',
+            relaxed: '1.4',
+            loose: '1.5',
           }},
           fontSize: {{
-            'xs': ['14pt', '20pt'],
-            'sm': ['14pt', '20pt'],
-            'base': ['14pt', '20pt'],
-            'md': ['14pt', '20pt'],
-            'lg': ['18pt', '24pt'],
-            'xl': ['18pt', '24pt'],
-            '2xl': ['34pt', '40pt'],
-            '3xl': ['34pt', '40pt'],
-            '4xl': ['34pt', '40pt'],
-            '5xl': ['34pt', '40pt'],
+            'xs': ['16px', '1.3'],
+            'sm': ['16px', '1.3'],
+            'base': ['16px', '1.3'],
+            'md': ['16px', '1.3'],
+            'lg': ['19px', '1.3'],
+            'xl': ['19px', '1.3'],
+            '2xl': ['24px', '1.3'],
+            '3xl': ['24px', '1.3'],
+            '4xl': ['24px', '1.3'],
+            '5xl': ['24px', '1.3'],
           }}
         }}
       }}
@@ -365,27 +363,27 @@ def build():
   </script>
   <style>
     /* ========================================================= */
-    /* USER MANDATE: USE ONLY PPEiko-Thin.otf AND PPEiko-LightItalic.otf */
+    /* USER MANDATE: USE PPMori-Extralight FOR PRIMARY, PPEiko-LightItalic FOR CALLOUTS */
     /* ========================================================= */
     *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
       font-synthesis: none !important;
       -webkit-font-smoothing: antialiased !important;
       -moz-osx-font-smoothing: grayscale !important;
     }}
     code, pre, kbd, samp, .font-mono, [class*="font-mono"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', monospace !important;
       font-weight: 400 !important;
     }}
 
     *, *::before, *::after {{
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400 !important;
     }}
 
     html, body {{
-      font-size: 14pt !important;
+      font-size: 16px !important;
       line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
@@ -393,7 +391,7 @@ def build():
 
     /* Global typography rules: 130% line-height, 30px paragraph indent, 0 space between paragraphs, 200% line-height between groups of text */
     input, button, select, textarea, p, span, div, li, a {{
-      font-size: 14pt;
+      font-size: 16px;
       line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
@@ -450,32 +448,32 @@ def build():
     }}
 
     /* ========================================================= */
-    /* STRICT 3 CARBON TYPE SIZES: 14pt (Body), 18pt (Heading), 26pt (Display) */
-    /* Fluid downscaling on compact laptop, tablet, and mobile viewports with 130% line height */
+    /* STRICT 3 DESKTOP FONT SIZES: 16px (Body), 19px (Heading), 24px (Display) */
     /* ========================================================= */
-    /* Size 1: 14pt (Body: 14pt, line-height 1.3 / 130%, tracking 0.16px) */
+    /* Size 1: 16px (Body / Microcopy: line-height 1.3 / 130%, tracking 0.16px) */
+    .type-16, .text-16, .text-[16px],
     .type-14, .text-14, .text-[14px], .text-[14pt],
     .text-xs, .text-sm, .text-base, .text-md,
     [class*="text-\[6"], [class*="text-\[7"], [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
     [class*="text-\[11"], [class*="text-\[12"], [class*="text-\[13"], [class*="text-\[14"], [class*="text-\[15"],
     [class*="text-\[16"], [class*="text-\[17"],
-    [class*="text-\[14px\]"], [class*="text-\[14pt\]"],
+    [class*="text-\[14px\]"], [class*="text-\[14pt\]"], [class*="text-\[16px\]"],
     h4, h5, h6 {{
-      font-size: clamp(11pt, 0.5vw + 11.5pt, 14pt) !important;
+      font-size: 16px !important;
       line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
     }}
 
-    /* Size 2: 18pt (Heading: 18pt, line-height 1.3 / 130%, tracking 0) */
+    /* Size 2: 19px (Heading / Subtitle / Prominent UI: line-height 1.3 / 130%, tracking 0) */
+    .type-19, .text-19, .text-[19px],
     .type-18, .text-18, .text-[18px], .text-[18pt],
-    .type-16, .text-16, .type-19, .text-19,
     .text-lg, .text-xl,
     [class*="text-\[18"], [class*="text-\[19"], [class*="text-\[20"],
-    [class*="text-\[18px\]"], [class*="text-\[18pt\]"],
+    [class*="text-\[18px\]"], [class*="text-\[18pt\]"], [class*="text-\[19px\]"],
     .curator-section-hdr, .drawer-title, .modal-title, .card-title,
     h2, h3 {{
-      font-size: clamp(14pt, 0.8vw + 13pt, 18pt) !important;
+      font-size: 19px !important;
       line-height: 1.3 !important;
       letter-spacing: 0 !important;
       font-weight: 400 !important;
@@ -487,56 +485,81 @@ def build():
       display: block !important;
     }}
 
-    /* Size 3: 26pt (Large display heading: 26pt, line-height 1.3 / 130%, tracking 0) */
+    /* Size 3: 24px (Large display heading / Hero / Logo: line-height 1.3 / 130%, tracking 0) */
+    .type-24, .text-24, .text-[24px],
     .type-26, .text-26, .text-[26px], .text-[26pt],
     .type-34, .text-34, .text-[34px], .text-[34pt],
-    .type-27, .text-27, .type-24, .text-24,
+    .type-27, .text-27,
     .text-2xl, .text-3xl, .text-4xl, .text-5xl,
     [class*="text-\[21"], [class*="text-\[22"], [class*="text-\[23"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[27"], [class*="text-\[28"], [class*="text-\[29"],
     [class*="text-\[3"], [class*="text-\[4"], [class*="text-\[5"], [class*="text-\[6"],
-    [class*="text-\[34px\]"], [class*="text-\[34pt\]"], [class*="text-\[26px\]"], [class*="text-\[26pt\]"],
+    [class*="text-\[24px\]"], [class*="text-\[34px\]"], [class*="text-\[34pt\]"], [class*="text-\[26px\]"], [class*="text-\[26pt\]"],
     .brand-logo-title,
     h1 {{
-      font-size: clamp(18pt, 1.2vw + 16pt, 26pt) !important;
+      font-size: 24px !important;
       line-height: 1.3 !important;
       letter-spacing: 0 !important;
       font-weight: 400 !important;
     }}
 
-    /* Fluid container queries and viewport constraints for curator hero title */
+    /* Curator hero title strictly adheres to Size 3 (24px) */
     #curatorHeroGreeting h1 {{
-      font-size: clamp(18pt, 1.5vw + 14pt, 26pt) !important;
+      font-size: 24px !important;
       line-height: 1.3 !important;
       max-width: 90% !important;
       word-break: normal !important;
       overflow-wrap: break-word !important;
     }}
 
-    h2 *, h3 *, .type-18 *, .text-18 *, .text-[18px] *, .text-[18pt] *, [class*="text-\[18"] * {{
+    h2 *, h3 *, .type-19 *, .text-19 *, .text-[19px] *, .type-18 *, .text-18 *, .text-[18px] *, .text-[18pt] *, [class*="text-\[18"] *, [class*="text-\[19"] * {{
       font-size: inherit !important;
       font-weight: 400 !important;
       letter-spacing: inherit !important;
       line-height: inherit !important;
     }}
-    h1 *, .type-26 *, .text-26 *, .type-34 *, .text-34 *, .text-[26px] *, .text-[26pt] *, .text-[34px] *, .text-[34pt] *, .brand-logo-title * {{
+    h1 *, .type-24 *, .text-24 *, .text-[24px] *, .type-26 *, .text-26 *, .type-34 *, .text-34 *, .text-[26px] *, .text-[26pt] *, .text-[34px] *, .text-[34pt] *, .brand-logo-title * {{
       font-size: inherit !important;
       font-weight: 400 !important;
       letter-spacing: inherit !important;
       line-height: inherit !important;
     }}
 
+    @media (min-width: 768px) {{
+      /* Strictly enforce only 3 font sizes on desktop */
+      body, button, input, select, textarea, div, span, p, label, li, ul, ol, td, th, a, h4, h5, h6 {{
+        font-size: 16px;
+      }}
+      h2, h3, .curator-section-hdr, .drawer-title, .modal-title, .card-title {{
+        font-size: 19px !important;
+      }}
+      h1, .brand-logo-title, #curatorHeroGreeting h1 {{
+        font-size: 24px !important;
+      }}
+    }}
+
     /* ========================================================= */
-    /* USER MANDATE: USE ONLY PPEiko-Thin.otf AND PPEiko-LightItalic.otf */
+    /* USER MANDATE: USE PPMori-Extralight FOR PRIMARY, PPEiko-LightItalic FOR CALLOUTS */
     /* ========================================================= */
     @font-face {{
-      font-family: 'PP Eiko';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
-      font-weight: 100 400;
+      font-family: 'PP Mori';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype'),
+           local('PP Mori Extralight'), local('PPMori-Extralight'), local('PP Mori');
+      font-weight: 100 900;
       font-style: normal;
       font-display: swap;
     }}
+    @font-face {{
+      font-family: 'PPMori-Extralight';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype'),
+           local('PP Mori Extralight'), local('PPMori-Extralight');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+
+    /* Callout & Accent: PP Eiko Light Italic */
     @font-face {{
       font-family: 'PP Eiko';
       src: url('data:font/otf;base64,{b64_eiko_lightitalic}') format('opentype'),
@@ -546,13 +569,45 @@ def build():
       font-style: italic;
       font-display: swap;
     }}
+    @font-face {{
+      font-family: 'PPEiko-LightItalic';
+      src: url('data:font/otf;base64,{b64_eiko_lightitalic}') format('opentype'),
+           url('fonts/PPEiko-LightItalic.otf') format('opentype'),
+           local('PP Eiko Light Italic'), local('PPEiko-LightItalic');
+      font-weight: 100 900;
+      font-style: italic;
+      font-display: swap;
+    }}
 
-    /* Compatibility family aliases referencing exclusively the two PP Eiko fonts */
+    /* Compatibility family aliases referencing PP Mori Extralight */
+    @font-face {{
+      font-family: 'PPEiko-Regular';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PPEiko-Medium';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PPEiko-Thin';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
     @font-face {{
       font-family: 'PP Museum';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
       font-weight: 100 900;
       font-style: normal;
       font-display: swap;
@@ -568,9 +623,8 @@ def build():
     }}
     @font-face {{
       font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
       font-weight: 100 900;
       font-style: normal;
       font-display: swap;
@@ -586,9 +640,8 @@ def build():
     }}
     @font-face {{
       font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
       font-weight: 100 900;
       font-style: normal;
       font-display: swap;
@@ -604,7 +657,7 @@ def build():
     }}
 
     *, *::before, *::after {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       -webkit-tap-highlight-color: transparent !important;
     }}
 
@@ -632,44 +685,54 @@ def build():
       outline: 0 !important;
     }}
 
-    body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b, em, i {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+    body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b {{
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
     strong, b, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
-    em, i, .italic, [class*="italic"] {{
-      font-family: 'PP Eiko', 'PPEiko-LightItalic', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+    /* Callouts, Italics & Quotes: PP Eiko Light Italic */
+    em, i, .italic, [class*="italic"],
+    .stat-callout, .callout, [data-callout],
+    blockquote, blockquote *, cite,
+    .thought-callout, .curator-thought-bubble,
+    .pullquote, .forensic-callout {{
+      font-family: 'PP Eiko', 'PPEiko-LightItalic', serif !important;
       font-style: italic !important;
       font-weight: 400 !important;
     }}
 
+    .user-msg-bubble, .work-suggestion-card, #curatorMessages, #curatorDrawerLiveStream {{
+      font-style: normal !important;
+      font-weight: 400 !important;
+    }}
+
     .font-light, .text-light, .type-light {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
     .font-thin, .font-extralight, [class*="font-thin"], [class*="font-extralight"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
     .font-mono, monospace, code, pre {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
       font-weight: 400 !important;
     }}
 
     html, body {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       background-color: #0c0c0e !important;
       color: #f8fafc;
       margin: 0;
       padding: 0;
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400 !important;
       line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
@@ -688,7 +751,7 @@ def build():
       box-sizing: border-box !important;
     }}
     .font-mono {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
       letter-spacing: 0.16px !important;
     }}
     #globeCanvas {{
@@ -879,7 +942,7 @@ def build():
       input[type="search"],
       textarea,
       select {{
-        font-size: 14pt !important;
+        font-size: 16px !important;
       }}
     }}
 
@@ -1032,7 +1095,7 @@ def build():
       background: #eaedf0 !important;
       border-radius: 9999px !important;
       padding: 2px 7px !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       line-height: 1 !important;
       top: 6px !important;
       right: 6px !important;
@@ -1161,7 +1224,7 @@ def build():
     .brand-logo-title {{
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
-      font-size: 26pt;
+      font-size: 24px;
       line-height: 1;
       letter-spacing: 0.7px !important;
       color: #ffffff;
@@ -1172,21 +1235,21 @@ def build():
     }}
     @media (max-width: 480px) {{
       .brand-logo-title {{
-        font-size: 14pt;
+        font-size: 16px;
         line-height: 16px;
         letter-spacing: 0.7px !important;
       }}
     }}
     @media (min-width: 481px) and (max-width: 640px) {{
       .brand-logo-title {{
-        font-size: 18pt;
+        font-size: 19px;
         line-height: 18px;
         letter-spacing: 0.7px !important;
       }}
     }}
-    @media (min-width: 641px) and (max-width: 1024px) {{
+    @media (min-width: 641px) {{
       .brand-logo-title {{
-        font-size: 26pt;
+        font-size: 24px;
         line-height: 24px;
         letter-spacing: 0.7px !important;
       }}
@@ -1203,7 +1266,7 @@ def build():
       color: #2fbb88;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
-      font-size: 14pt;
+      font-size: 16px;
       letter-spacing: 0.7px;
       line-height: 1;
       white-space: nowrap;
@@ -1233,7 +1296,7 @@ def build():
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.5);
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif;
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400;
       letter-spacing: 0.02em;
       line-height: 1.2;
@@ -1403,7 +1466,7 @@ def build():
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.16);
       color: #94a3b8;
-      font-size: 14pt;
+      font-size: 16px;
       line-height: 1;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -1415,7 +1478,7 @@ def build():
     .mast-inst-name {{
       font-family: 'PP Museum', 'PP Telegraf', sans-serif;
       font-weight: 400;
-      font-size: 18pt;
+      font-size: 19px;
       letter-spacing: -0.01em;
       line-height: 1.25;
       max-width: 260px;
@@ -1471,7 +1534,7 @@ def build():
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }}
     .facade-title {{
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400;
       letter-spacing: 0.08em;
       color: #34d399;
@@ -1479,6 +1542,7 @@ def build():
     .building-facade-close-btn {{
       display: inline-flex;
       align-items: center;
+      justify-content: space-between;
       justify-content: center;
       width: 18px;
       height: 18px;
@@ -1486,7 +1550,7 @@ def build():
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.14);
       color: #94a3b8;
-      font-size: 14pt;
+      font-size: 16px;
       line-height: 1;
       cursor: pointer;
     }}
@@ -1507,7 +1571,7 @@ def build():
       background: rgba(255, 255, 255, 0.08);
     }}
     .facade-level-badge {{
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400;
       padding: 1px 5px;
       border-radius: 4px;
@@ -1517,7 +1581,7 @@ def build():
       font-family: monospace;
     }}
     .facade-floor-name {{
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400;
       color: #e2e8f0;
       overflow: hidden;
@@ -1558,7 +1622,7 @@ def build():
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #cbd5e1;
-      font-size: 14pt;
+      font-size: 16px;
       line-height: 1;
       display: flex;
       align-items: center;
@@ -1571,7 +1635,7 @@ def build():
       color: #ffffff;
     }}
     .building-3d-room-badge .badge-title {{
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 500;
       letter-spacing: 0.04em;
       color: #34d399;
@@ -1883,7 +1947,7 @@ def build():
       border-radius: 0 !important;
       padding: 0 !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400 !important;
       letter-spacing: 0.02em;
       line-height: 1.25;
@@ -1928,7 +1992,7 @@ def build():
     }}
     .atlas-pill-btn.pill-sm {{
       padding: 0 !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       gap: 4px !important;
     }}
     .atlas-pill-btn.pill-sm svg.arrow-icon {{
@@ -1955,7 +2019,7 @@ def build():
       border-radius: 0 !important;
       padding: 2px 0 !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       font-weight: 400 !important;
       letter-spacing: 0.02em !important;
       line-height: 1.25 !important;
@@ -1975,7 +2039,7 @@ def build():
       border-radius: 0 !important;
       padding: 2px 0 !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       font-weight: 400 !important;
       letter-spacing: 0.01em !important;
       line-height: 1.25 !important;
@@ -2012,7 +2076,7 @@ def build():
       border-radius: 0 !important;
       padding: 2px 0 !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       font-weight: 400 !important;
       letter-spacing: 0.01em !important;
       line-height: 1.25 !important;
@@ -2111,7 +2175,7 @@ def build():
         width: calc(100vw - 20px) !important;
         box-sizing: border-box !important;
         padding: 9px 11px !important;
-        font-size: 14pt !important;
+        font-size: 16px !important;
         margin-bottom: 8px !important;
         border-radius: 14px !important;
         max-height: calc(50vh - 30px) !important;
@@ -2149,7 +2213,7 @@ def build():
       /* 5. Active Route & City View Control Banners */
       #activeRouteBanner, #cityViewControlBanner, #activeMapFilterBanner {{
         max-width: calc(100% - 16px) !important;
-        font-size: 14pt !important;
+        font-size: 16px !important;
       }}
     }}
   .speak-icon {{ display: none !important; }}
@@ -2341,10 +2405,6 @@ def build():
 
       <!-- Top-Left Floating Map Controls (Uncontained) -->
       <div id="desktopGlobeTopControls" class="hidden md:flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 lg:gap-3 select-none text-xs font-mono text-[#c6c6c6] flex-wrap max-w-[calc(100%-24px)]">
-        <div id="globeSpacesBadge" class="flex items-center gap-1.5 text-emerald-400 whitespace-nowrap">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          <span>{clean_count} spaces mapped</span>
-        </div>
         <div class="flex items-center gap-1.5 lg:gap-2 whitespace-nowrap">
           <button type="button" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();" class="hover:text-white hover:underline flex items-center gap-1 transition cursor-pointer" title="Reset to Global World View">
             <svg class="w-3.5 h-3.5 shrink-0 text-[#c6c6c6]" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2zm10.87 13h-4.94a19.78 19.78 0 0 0-1.83-7.51A12.05 12.05 0 0 1 26.87 15zm-6.96 0h-7.82a17.82 17.82 0 0 1 1.76-7.06 12.18 12.18 0 0 1 4.3 0A17.82 17.82 0 0 1 19.91 15zM16 4.09c.67.62 1.3 1.34 1.88 2.14a14.28 14.28 0 0 0-3.76 0A13.8 13.8 0 0 1 16 4.09zM5.13 15A12.05 12.05 0 0 1 11.9 7.49 19.78 19.78 0 0 0 10.07 15zm0 2h4.94a19.78 19.78 0 0 0 1.83 7.51A12.05 12.05 0 0 1 5.13 17zm6.96 0h7.82a17.82 17.82 0 0 1-1.76 7.06 12.18 12.18 0 0 1-4.3 0A17.82 17.82 0 0 1 12.09 17zm3.91 10.91c-.67-.62-1.3-1.34-1.88-2.14a14.28 14.28 0 0 0 3.76 0c-.58.8-1.21 1.52-1.88 2.14zm10.87-10.91a12.05 12.05 0 0 1-6.77 7.51 19.78 19.78 0 0 0 1.83-7.51z"/></svg>
@@ -2401,7 +2461,7 @@ def build():
         <!-- Drawer Header -->
         <div class="space-y-2 pb-3 border-b border-[#262626]">
           <div class="flex items-start justify-between gap-2">
-            <span id="floatingCardTier" class="text-[14pt] font-mono text-[#42be65] font-normal inline-block">Verified</span>
+            <span id="floatingCardTier" class="text-[14pt] font-mono text-[#42be65] font-normal inline-block">Independent</span>
             <button id="closeFloatingCardBtn" class="p-1.5 rounded-sm bg-[#262626] hover:bg-[#393939] text-slate-400 hover:text-white transition cursor-pointer" title="Close drawer">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -2419,10 +2479,10 @@ def build():
           </div>
         </div>
 
-        <!-- 🔄 Sleek Segmented Mode Switcher (Verified Info <-> Field Whispers) - Vertically Stacked (One per row) -->
+        <!-- 🔄 Sleek Segmented Mode Switcher (Dossier Overview <-> Field Whispers) - Vertically Stacked (One per row) -->
         <div id="floatingCardModeSwitcher" class="mt-3 flex flex-col gap-1 p-1 bg-[#161616] border border-[#262626] rounded-none text-[14pt] select-none">
           <button id="floatingCardTabInfo" type="button" class="w-full py-1 px-2.5 rounded-none text-left transition font-normal cursor-pointer bg-[#262626] text-white shadow-sm block" onclick="event.stopPropagation(); window.setCardMode('info');">
-            <span>Verified Info</span>
+            <span>Dossier Overview</span>
           </button>
           <button id="floatingCardTabGossip" type="button" class="w-full py-1 px-2.5 rounded-none text-left transition font-normal cursor-pointer text-slate-400 hover:text-amber-300 block" onclick="event.stopPropagation(); window.setCardMode('gossip');">
             <span>Yellow Gossip Mode</span>
@@ -2434,7 +2494,7 @@ def build():
           <span>Swipe ↑ Full Dossier</span>
         </div>
 
-        <!-- 📄 VERIFIED INFO PANE -->
+        <!-- 📄 DOSSIER OVERVIEW PANE -->
         <div id="floatingCardInfoPane" class="space-y-2 transition-all duration-200">
           <!-- 💶 BUDGET & MONEY SECTION (One item per row) -->
           <div id="floatingCardBudgetSection" class="mt-3 pt-3 border-t border-[#262626] space-y-2">
@@ -2644,7 +2704,7 @@ def build():
         <div class="px-4 pb-2 flex flex-col items-start gap-1 border-b border-[#262626]">
           <div class="w-full flex items-center justify-between">
             <span class="inline-flex items-center text-[14pt] font-normal text-[#42be65]" id="dossier-sheet-tier">
-              Verified
+              Independent
             </span>
             <button aria-label="Minimize space details" class="p-1 rounded-none text-[#8d8d8d] hover:text-white bg-transparent border-0 text-[14pt] cursor-pointer" id="close-sheet-btn">
               ✕
@@ -2655,15 +2715,15 @@ def build():
             <p class="text-[14pt] text-[#8d8d8d] font-mono mt-0.5 block break-words" id="dossier-sheet-meta">Quezon City / Manila, Philippines · Artist-Run</p>
           </div>
         </div>
-        <!-- Mode Toggle Tabs (Verified Info vs Gossip Mode) - Vertically Stacked (One per row) -->
+        <!-- Mode Toggle Tabs (Dossier Overview vs Gossip Mode) - Vertically Stacked (One per row) -->
         <div class="px-4 pt-2.5 flex flex-col gap-1">
-          <button id="dossier-tab-info" type="button" class="w-full py-2 text-[14pt] font-normal rounded-none bg-[#262626] text-white border-l-2 border-[#0f62fe] text-left px-3 cursor-pointer block">Verified Info</button>
+          <button id="dossier-tab-info" type="button" class="w-full py-2 text-[14pt] font-normal rounded-none bg-[#262626] text-white border-l-2 border-[#0f62fe] text-left px-3 cursor-pointer block">Dossier Overview</button>
           <button id="dossier-tab-gossip" type="button" class="w-full py-2 text-[14pt] font-normal rounded-none bg-[#161616] text-[#f1c21b] border-l-2 border-transparent text-left px-3 hover:border-[#f1c21b] cursor-pointer block">Yellow Gossip Mode</button>
         </div>
         <!-- Scrollable Card Body Details -->
         <div class="overflow-y-auto px-4 py-3 space-y-3 text-[14pt] leading-relaxed no-scrollbar pb-6" id="dossier-sheet-scrollable-body">
-          <!-- Verified Pane -->
-          <div id="dossier-sheet-verified-pane" class="space-y-3">
+          <!-- Dossier Overview Pane -->
+          <div id="dossier-sheet-overview-pane" class="space-y-3">
             <!-- Financial Metrics & Budget Badge - Single item vertical stack -->
             <div class="py-2.5 border-b border-[#262626] space-y-2">
               <div class="flex flex-col items-start gap-1">
@@ -3202,7 +3262,7 @@ def build():
             <div class="flex items-center gap-2">
               <span id="desktopDossierTier" class="inline-flex items-center gap-1 text-[#42be65] text-[14pt] font-normal">
                 <svg class="w-3.5 h-3.5 text-[#42be65]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Verified Sanctuary</span>
+                <span>Clean Sanctuary</span>
               </span>
             </div>
             <p id="desktopDossierMeta" class="text-[#8d8d8d] text-[14pt] leading-relaxed">
@@ -3435,7 +3495,7 @@ def build():
             <div class="min-w-0 flex-1 cursor-pointer" id="mobileSheetTitleZone">
               <div id="mobileSheetEntityTitle" class="text-[14px] font-semibold text-white truncate leading-tight">Green Papaya Art Projects</div>
               <div class="flex items-center gap-1.5 mt-0.5">
-                <span id="mobileSheetStatusBadge" class="text-[14px] font-mono text-[#42be65] shrink-0">Verified Sanctuary</span>
+                <span id="mobileSheetStatusBadge" class="text-[14px] font-mono text-[#42be65] shrink-0">Clean Sanctuary</span>
                 <span id="mobileSheetCitySubtitle" class="text-[14px] text-slate-400 font-mono truncate">Manila</span>
               </div>
             </div>
@@ -3479,22 +3539,6 @@ def build():
             <span class="text-sm font-normal text-white tracking-wide">Research &amp; Analysis</span>
           </div>
           <div class="flex items-center gap-3">
-            <!-- Voice Button -->
-            <button id="curatorVoiceToggleBtn" type="button" class="text-sky-300 hover:text-white hover:underline text-xs font-mono flex items-center gap-1.5 transition cursor-pointer" title="Auto-Voice: Speaks responses aloud (Click to mute)">
-              <svg class="w-3 h-3 text-sky-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
-                <path d="M16,23a6.0066,6.0066,0,0,1-6-6V9a6,6,0,0,1,12,0v8A6.0066,6.0066,0,0,1,16,23ZM16,5a4.0045,4.0045,0,0,0-4,4v8a4,4,0,0,0,8,0V9A4.0045,4.0045,0,0,0,16,5Z"/>
-                <path d="M25,17a1,1,0,0,0-2,0,7,7,0,0,1-14,0,1,1,0,0,0-2,0,9.01,9.01,0,0,0,8,8.9448V28H12a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2H17V25.9448A9.01,9.01,0,0,0,25,17Z"/>
-              </svg>
-              <span id="curatorVoiceToggleIcon" class="hidden">🎤</span>
-              <span id="curatorVoiceToggleLabel">Voice: ON</span>
-            </button>
-            <!-- Listen Button -->
-            <button id="curatorListenBtn" type="button" onclick="if (typeof window.speakCuratorBriefing === 'function') window.speakCuratorBriefing();" class="text-slate-300 hover:text-white hover:underline text-xs font-mono flex items-center gap-1.5 transition cursor-pointer" title="Listen to curator briefing">
-              <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
-                <path d="M13,6.34,6.83,12H2v8H6.83L13,25.66ZM4,14H7.17l5,4.55V13.45l-5,4.55H4ZM19,10.18V8.1A10,10,0,0,1,26,16a10,10,0,0,1-7,7.9V21.82A8,8,0,0,0,24,16,8,8,0,0,0,19,10.18ZM17,13.25V11.17A5,5,0,0,1,20.5,16,5,5,0,0,1,17,20.83V18.75a3,3,0,0,0,0-5.5Z"/>
-              </svg>
-              <span>Listen</span>
-            </button>
             <!-- Refresh / New Chat Button -->
             <button id="curatorRefreshBtn" type="button" onclick="window.resetToNewChat();" class="text-slate-300 hover:text-white p-1 text-xs transition cursor-pointer" title="Start New Chat">
               <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
@@ -3703,7 +3747,7 @@ def build():
                 </button>
                 <button id="workMenuFeedbackBtn" class="text-left px-3.5 py-2.5 bg-[#18181d] hover:bg-[#26262e] text-[#78a9ff] transition flex items-center justify-between cursor-pointer border-0">
                   <span class="flex items-center gap-1.5"><span>Contribute Research / Tip</span></span>
-                  <span class="text-[14pt] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded-sm">Verify</span>
+                  <span class="text-[14pt] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/80 px-1.5 py-0.5 rounded-sm">Audit</span>
                 </button>
               </div>
 
@@ -3925,7 +3969,7 @@ def build():
         <div class="bg-[#181207] border border-[#78350f]/60 rounded-xl p-3 text-[14px] space-y-1">
           <span class="text-amber-400 font-normal tracking-wider text-[14px] block font-mono">Exclusion Criteria Assessment</span>
           <p class="text-slate-200">
-            Culture Atlas celebrates cultural institutions that champion curatorial freedom and clean underwriting. MoMA is excluded from our verified directory due to documented, unaddressed governance ties to defense contractors, private prisons, and controversial private equity financiers.
+            Culture Atlas celebrates cultural institutions that champion curatorial freedom and clean underwriting. MoMA is excluded from our cataloged directory due to documented, unaddressed governance ties to defense contractors, private prisons, and controversial private equity financiers.
           </p>
         </div>
 
@@ -3963,9 +4007,9 @@ def build():
 
         <!-- Section 4: What to Visit Instead -->
         <div class="bg-[#0e1628] border border-[#1d4ed8]/50 rounded-xl p-3 space-y-1.5">
-          <span class="text-[#60a5fa] font-normal text-[14px] tracking-wider block font-mono">Verified Ethical Alternatives in New York</span>
+          <span class="text-[#60a5fa] font-normal text-[14px] tracking-wider block font-mono">Independent Ethical Alternatives in New York</span>
           <p class="text-slate-300 text-[14px]">
-            Instead of supporting corporate-compromised boards, visit New York's <strong>verified clean spaces</strong>—including <em>SculptureCenter, Artists Space, Swiss Institute, and The Kitchen</em>.
+            Instead of supporting corporate-compromised boards, visit New York's <strong>independent clean spaces</strong>—including <em>SculptureCenter, Artists Space, Swiss Institute, and The Kitchen</em>.
           </p>
         </div>
 
@@ -4172,7 +4216,7 @@ def build():
     </div>
   </div>
 
-  <!-- Research & Feedback Modal (Community Verification Pipeline) -->
+  <!-- Research & Feedback Modal (Community Audit Pipeline) -->
   <div id="researchFeedbackModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
     <div class="bg-[#171717] border border-[#2e2e2e] rounded-2xl sm:rounded-3xl max-w-xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] overflow-y-auto flex flex-col gap-4">
       
@@ -4181,7 +4225,7 @@ def build():
         <div class="flex items-center gap-2.5">
           
           <div>
-            <h3 class="text-[18px] font-normal text-white">Contribute Research & Verification</h3>
+            <h3 class="text-[18px] font-normal text-white">Contribute Research & Audits</h3>
             <p class="text-[14px] text-[#a1a1aa] font-mono">Community Peer-Review Pipeline · Form 990 / Civic Audits</p>
           </div>
         </div>
@@ -4191,7 +4235,7 @@ def build():
       <!-- Explanatory note -->
       <div class="p-3 bg-[#111827] border border-[#1f2937] rounded-xl text-[14px] text-slate-300 leading-[135%]">
         <span class="text-blue-400 font-mono text-[14px] block mb-0.5">Peer-Audited Cultural Intelligence</span>
-        Suggest a newly discovered independent art space, report updated visitor schedules, or submit corporate funding conflict flags with statutory documentation. Submissions ground the curator model and enter the verification queue.
+        Suggest a newly discovered independent art space, report updated visitor schedules, or submit corporate funding conflict flags with statutory documentation. Submissions ground the curator model and enter the audit review queue.
       </div>
 
       <!-- Form -->
@@ -4228,7 +4272,7 @@ def build():
 
         <!-- Statutory Source URL -->
         <div>
-          <label class="block text-[14px] font-mono text-slate-400 tracking-wider mb-1">Verification Source Link (Statutory Filing, Official URL, or Report)</label>
+          <label class="block text-[14px] font-mono text-slate-400 tracking-wider mb-1">Evidence Source Link (Statutory Filing, Official URL, or Report)</label>
           <input type="url" id="rfSourceUrl" placeholder="https://... (e.g. Form 990 link, Charity Commission, or official website)" class="w-full bg-[#212121] border border-[#333] rounded-xl px-3 py-2 text-[14px] text-white focus:outline-none focus:border-[#60a5fa] font-mono">
         </div>
 
@@ -4242,7 +4286,7 @@ def build():
         <div class="flex items-center justify-between gap-2 pt-2 border-t border-[#2e2e2e] mt-1">
           <span class="text-[14px] font-mono text-emerald-400 flex items-center gap-1">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            Queued for Verification
+            Queued for Audit
           </span>
           <div class="flex items-center gap-2">
             <button type="button" id="cancelFeedbackBtn" class="px-3.5 py-1.5 text-slate-300 hover:text-white hover:bg-[#262626] rounded-xl text-[14px] transition cursor-pointer">
@@ -4309,7 +4353,7 @@ def build():
         </div>
       </div>
 
-      <!-- Community Notes View (User Input Layer - Segregated from Verified Research) -->
+      <!-- Community Notes View (User Input Layer - Segregated from Audited Research) -->
       <div id="arCommunitySection" class="hidden flex flex-col flex-1 gap-3 overflow-hidden">
         <div class="p-3 rounded-xl bg-[#0d212b] border border-[#08bdba]/50 text-[14px] text-teal-200/90 leading-relaxed shrink-0">
           <div class="flex items-center justify-between gap-2 mb-1">
@@ -4317,10 +4361,10 @@ def build():
               <span class="w-2 h-2 rounded-full bg-[#08bdba] animate-pulse"></span>
               Segregated User Input Layer
             </span>
-            <span class="text-[14px] font-mono text-[#33b1ff]">Under Field Verification</span>
+            <span class="text-[14px] font-mono text-[#33b1ff]">Under Field Audit</span>
           </div>
           <p class="text-slate-300">
-            Field reports and research submissions contributed by users. These entries function as an <strong>independent observational layer</strong> and are <strong>strictly filtered out from peer-reviewed academic papers and verified statutory databases</strong> until confirmed by IRS Form 990 / Charity Commission filings.
+            Field reports and research submissions contributed by users. These entries function as an <strong>independent observational layer</strong> and are <strong>strictly filtered out from peer-reviewed academic papers and audited statutory databases</strong> until confirmed by IRS Form 990 / Charity Commission filings.
           </p>
         </div>
 
@@ -4354,7 +4398,7 @@ def build():
         <div class="flex items-start gap-3">
           <div>
             <div class="flex flex-col gap-1">
-              <span id="bamTierBadge" class="text-[14px] font-mono text-emerald-300 font-bold">Verified Independent Space</span>
+              <span id="bamTierBadge" class="text-[14px] font-mono text-emerald-300 font-bold">Independent Sanctuary Space</span>
               <span id="bamGovernanceBadge" class="text-[14px] font-mono text-[#93c5fd]">Civic Trust</span>
               <span id="bamFloorsBadge" class="text-[14px] font-mono text-slate-400">2 Floors</span>
             </div>
@@ -4427,7 +4471,7 @@ def build():
         <!-- Filter Chips Row -->
         <div class="flex flex-wrap items-center gap-2 text-[14px]" id="archivesFilterChips">
           <button class="archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2563eb] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm text-[14px] sm:text-[14px]" data-filter="all">All Archives ({archives_count})</button>
-          <button class="archives-filter-chip atlas-suggestion-pill" data-filter="independent">Verified Independent Spaces ({clean_count})</button>
+          <button class="archives-filter-chip atlas-suggestion-pill" data-filter="independent">Independent Sanctuary Spaces ({clean_count})</button>
           <button class="archives-filter-chip atlas-suggestion-pill" data-filter="ephemera">Artists' Ephemera & Zines</button>
           <button class="archives-filter-chip atlas-suggestion-pill" data-filter="av">Oral Histories & AV Masters</button>
           <button class="archives-filter-chip atlas-suggestion-pill" data-filter="dossiers">Exhibition Dossiers & Correspondence</button>
@@ -4471,7 +4515,7 @@ def build():
           <div>
             <div class="flex items-center gap-2 flex-wrap">
               <span class="text-[14px] font-mono px-2 py-0.5 rounded border border-blue-500/60 bg-blue-950/40 text-blue-300 font-bold">Auditing Standard</span>
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#1c2940] text-[#93c5fd] border border-[#2d4368]">{total_count} Verified & Flagged Entities</span>
+              <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#1c2940] text-[#93c5fd] border border-[#2d4368]">{total_count} Cataloged & Flagged Entities</span>
               <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-[#17202e] text-slate-300 border border-[#28384f]">IRS 990 · Charity Comm · DRAC · ANBI</span>
             </div>
             <h3 class="text-[18px] sm:text-[18px] font-semibold text-white tracking-tight mt-1 flex items-center gap-2">
@@ -4505,16 +4549,16 @@ def build():
           </h4>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
             
-            <!-- Verified Independent -->
+            <!-- Independent Sanctuary -->
             <div class="p-3.5 rounded-2xl bg-[#0f172a]/90 border border-emerald-500/40 flex flex-col justify-between space-y-2.5">
               <div>
                 <div class="flex items-center justify-between">
-                  <span class="px-2 py-0.5 rounded-md text-[14px] font-bold font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">VERIFIED</span>
+                  <span class="px-2 py-0.5 rounded-md text-[14px] font-bold font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">INDEPENDENT</span>
                   <span class="text-[14px] font-mono text-emerald-400">{clean_count} Spaces</span>
                 </div>
-                <h5 class="text-[14px] font-semibold text-white mt-1.5">Verified Independent Space</h5>
+                <h5 class="text-[14px] font-semibold text-white mt-1.5">Independent Sanctuary Space</h5>
                 <p class="text-[14px] text-slate-300 mt-1">
-                  Spaces with structurally verified firewalls against predatory corporate capture: artist-run non-profits, cooperative commons, civic kunsthalles, and public university galleries.
+                  Spaces with structural firewalls against predatory corporate capture: artist-run non-profits, cooperative commons, civic kunsthalles, and public university galleries.
                 </p>
               </div>
               <ul class="text-[14px] text-slate-300 space-y-1 list-disc list-inside border-t border-emerald-900/40 pt-2">
@@ -4552,12 +4596,12 @@ def build():
                 </div>
                 <h5 class="text-[14px] font-semibold text-white mt-1.5">Community Layer</h5>
                 <p class="text-[14px] text-slate-300 mt-1">
-                  Grassroots artist-run project spaces, DIY venues, squat galleries, and local archives cataloged through whistleblower intakes and community researcher verification.
+                  Grassroots artist-run project spaces, DIY venues, squat galleries, and local archives cataloged through whistleblower intakes and community researcher audits.
                 </p>
               </div>
               <ul class="text-[14px] text-slate-300 space-y-1 list-disc list-inside border-t border-cyan-900/40 pt-2">
                 <li>Crowdsourced field intelligence & local tips</li>
-                <li>Continuously verified against municipal filings</li>
+                <li>Continuously audited against municipal filings</li>
                 <li>Open for peer corroboration and review</li>
               </ul>
             </div>
@@ -4621,7 +4665,7 @@ def build():
             </div>
             <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] text-slate-300 space-y-1">
               <strong class="text-blue-300 block text-[14px]">3. DRAC & European Civic Subsidies</strong>
-              <span>Public conventionnement records from France's Direction Régionale des Affaires Culturelles and Dutch ANBI (Public Benefit Organization) registries verifying non-commercial governance.</span>
+              <span>Public conventionnement records from France's Direction Régionale des Affaires Culturelles and Dutch ANBI (Public Benefit Organization) registries establishing non-commercial governance.</span>
             </div>
             <div class="p-3 rounded-xl bg-[#141b29] border border-[#232f48] text-slate-300 space-y-1">
               <strong class="text-blue-300 block text-[14px]">4. Frontline Direct Action Alliances</strong>
@@ -4827,7 +4871,7 @@ def build():
               <h2 class="text-[14px] sm:text-[18px] font-semibold text-white tracking-tight">Curatorial Itinerary &amp; Art Crawl Generator</h2>
               <span class="text-[14px] font-mono text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800/80">Vector Street Map · Active Routing</span>
             </div>
-            <p class="text-[14px] sm:text-[14px] text-emerald-200/70 truncate">Multi-space walking &amp; clean-transit itineraries with synchronized street route lines, opening hours verification, and admission policies.</p>
+            <p class="text-[14px] sm:text-[14px] text-emerald-200/70 truncate">Multi-space walking &amp; clean-transit itineraries with synchronized street route lines, confirmed opening hours, and admission policies.</p>
           </div>
         </div>
         <button id="closeItineraryModalBtn" class="atlas-pill-btn pill-sm shrink-0" title="Close Modal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close</span></button>
@@ -4852,7 +4896,7 @@ def build():
       <div class="p-3 sm:p-4 border-t border-[#1b3328] bg-[#07140e] flex items-center justify-between gap-3 shrink-0 flex-wrap text-[14px]">
         <div class="flex items-center gap-2 text-zinc-400">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-[14px] font-mono">1,074 Mapped Institutions · Verified Operating Hours · Haversine Walking Times</span>
+          <span class="text-[14px] font-mono">1,074 Mapped Institutions · Confirmed Operating Hours · Haversine Walking Times</span>
         </div>
         <button id="closeItineraryModalFooterBtn" class="px-4 py-1.5 bg-[#142e22] hover:bg-[#1c3e2f] text-slate-200 hover:text-white rounded-xl transition cursor-pointer">
           Close Itineraries
@@ -12552,7 +12596,7 @@ def build():
         }}
         if (tabGossip) tabGossip.click();
         if (typeof appendBotMessage === 'function') {{
-          appendBotMessage("**Yellow Gossip & Whispers Mode Activated**: Atmospheric curatorial backchannel mapping institutions via curatorial whispers, verified insider reports, and independent discourse. High-rumor spaces radiate in vibrant pulsating canary yellow. Click any institution to view unvarnished rumors and curatorial dossiers.");
+          appendBotMessage("**Yellow Gossip & Whispers Mode Activated**: Atmospheric curatorial backchannel mapping institutions via curatorial whispers, confirmed insider reports, and independent discourse. High-rumor spaces radiate in vibrant pulsating canary yellow. Click any institution to view unvarnished rumors and curatorial dossiers.");
         }}
       }} else {{
         document.body.classList.remove('gossip-mode-active');
@@ -12678,7 +12722,7 @@ def build():
           tierBadge.className = isClean
             ? 'text-[14px] font-mono text-emerald-300 font-medium'
             : 'text-[14px] font-mono text-purple-300 font-medium';
-          tierBadge.textContent = isClean ? 'Verified' : 'Flagged';
+          tierBadge.textContent = isClean ? 'Clean Sanctuary' : 'Flagged';
         }}
       }}
     }}
@@ -12874,7 +12918,7 @@ def build():
       const dsGossipTwitter = document.getElementById('dossier-sheet-gossip-twitter');
 
       if (dsName) dsName.textContent = inst.name || 'Green Papaya Art Projects';
-      if (dsTier) dsTier.textContent = inst.tier_label || 'Verified';
+      if (dsTier) dsTier.textContent = inst.tier_label || 'Independent Space';
       if (dsMeta) dsMeta.textContent = `${{inst.city || 'Quezon City / Manila'}}, ${{inst.country || 'Philippines'}} · ${{inst.governance_classification || 'Artist-Run'}}`;
       if (dsBudgetVal) dsBudgetVal.textContent = inst.financial_data?.operating_budget_display || '€250K – €850K Grassroots Budget';
       if (dsBudgetBadge) dsBudgetBadge.textContent = inst.financial_data?.budget_tier || 'Lean Non-Profit';
@@ -13063,7 +13107,7 @@ def build():
         orbitBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-400');
         orbitBtn.classList.remove('bg-[#142036]', 'text-sky-200');
       }}
-      if (orbitText) orbitText.textContent = 'Stop Orbit';
+      if (orbitText) orbitText.textContent = 'Orbiting 360°';
 
       const padLeft = (window.innerWidth >= 640 ? 330 : 0);
       const bPad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : {{ left: padLeft, top: 120, bottom: 60, right: 30 }};
@@ -13181,7 +13225,7 @@ def build():
         const isClean = inst.tier === 'A';
         const isFlagged = inst.tier === 'B';
         brandEl.innerHTML = isClean 
-          ? '<span class="px-1.5 py-0.5 rounded text-[14px] font-mono border border-emerald-800 bg-[#072418] text-emerald-400 font-bold">Verified</span>'
+          ? '<span class="px-1.5 py-0.5 rounded text-[14px] font-mono border border-emerald-800 bg-[#072418] text-emerald-400 font-bold">Clean</span>'
           : (isFlagged
             ? '<span class="px-1.5 py-0.5 rounded text-[14px] font-mono border border-purple-800 bg-[#1e1330] text-[#c084fc] font-bold">Flagged</span>'
             : '<span class="px-1.5 py-0.5 rounded text-[14px] font-mono border border-sky-800 bg-[#0c1e30] text-sky-400 font-bold">Roster</span>');
@@ -13434,7 +13478,7 @@ def build():
       const isFlagged = inst.tier === 'B';
       const tierBadge = document.getElementById('bamTierBadge');
       if (tierBadge) {{
-        tierBadge.textContent = isClean ? 'Verified Independent Space' : (isFlagged ? 'Flagged Corporate Conflicts' : 'User Input Layer');
+        tierBadge.textContent = isClean ? 'Independent Sanctuary Space' : (isFlagged ? 'Flagged Corporate Conflicts' : 'User Input Layer');
         tierBadge.className = isClean 
           ? 'text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold'
           : (isFlagged ? 'text-[14px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-[#1f1433] text-[#be95ff] font-bold'
@@ -13899,38 +13943,38 @@ def build():
         const shortF = inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : 'Free / Subsidized';
         const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : '';
 
-        const tierLabel = isA ? 'Verified Sanctuary' : (isB ? 'Corporate Flagged' : 'Under Review');
+        const tierLabel = isA ? 'Clean Sanctuary' : (isB ? 'Corporate Flagged' : 'Under Review');
         const popupContent = `
           <div data-entity-id="${{safeId}}" style="font-family:'PP Museum',sans-serif; min-width:280px; max-width:350px; padding:4px 0; color:#f1f5f9; box-sizing:border-box;">
             <!-- Header Section -->
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:4px;">
               <div style="padding-right:10px; min-width:0;">
                 <a href="${{escapeHtml(webUrl || '#')}}" target="_blank" rel="noopener noreferrer" 
-                   style="font-size:18pt; font-weight:400; color:#ffffff; line-height:1.25; text-decoration:none; display:block;"
+                   style="font-size:19px; font-weight:400; color:#ffffff; line-height:1.25; text-decoration:none; display:block;"
                    onmouseover="this.style.color='#93c5fd';this.style.textDecoration='underline'" 
                    onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
                   ${{escapeHtml(inst.name)}}
                 </a>
-                <div style="font-size:14pt; color:#a1a1aa; margin-top:2px;">
+                <div style="font-size:16px; color:#a1a1aa; margin-top:2px;">
                   ${{escapeHtml(inst.location || inst.city)}}
                 </div>
               </div>
-              <span style="font-size:14pt; font-family:monospace; color:${{markerColor}}; white-space:nowrap; shrink:0;">
+              <span style="font-size:16px; font-family:monospace; color:${{markerColor}}; white-space:nowrap; shrink:0;">
                 ${{tierLabel}}
               </span>
             </div>
 
             <!-- Hours & Admission Tier -->
-            <div style="font-size:14pt; color:#34d399; margin-top:4px; font-family:monospace;">
+            <div style="font-size:16px; color:#34d399; margin-top:4px; font-family:monospace;">
               ${{escapeHtml(shortH)}} · ${{escapeHtml(shortF)}}
             </div>
 
             <!-- Curatorial Focus & Info Link -->
-            <div style="font-size:14pt; color:#cbd5e1; margin-top:4px; line-height:1.4;">
+            <div style="font-size:16px; color:#cbd5e1; margin-top:4px; line-height:1.4;">
               ${{escapeHtml(inst.curatorial_focus || inst.neighborhood || '')}}
               <div style="margin-top:4px;">
                 <button type="button" onclick="window.atlasOpenDossier('${{safeId}}')" 
-                        style="background:none; border:none; outline:none; color:#38bdf8; font-size:14pt; cursor:pointer; padding:0; text-decoration:underline; font-family:inherit;">
+                        style="background:none; border:none; outline:none; color:#38bdf8; font-size:16px; cursor:pointer; padding:0; text-decoration:underline; font-family:inherit;">
                   Audit Dossier →
                 </button>
               </div>
@@ -13939,21 +13983,21 @@ def build():
             <!-- Streamlined Single-Column Actions -->
             <div style="display:flex; flex-direction:column; gap:4px; margin-top:8px; padding-top:6px; border-top:1px solid #262626;">
               <button type="button" onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${{safeId}}', false)" 
-                      style="background:none; border:none; text-align:left; color:#f1f5f9; font-size:14pt; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
+                      style="background:none; border:none; text-align:left; color:#f1f5f9; font-size:16px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
                 Zoom to Building →
               </button>
               ${{webUrl ? `
                 <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" 
-                   style="color:#93c5fd; font-size:14pt; font-weight:400; text-decoration:underline; font-family:inherit;">
+                   style="color:#93c5fd; font-size:16px; font-weight:400; text-decoration:underline; font-family:inherit;">
                   Official Website (↗ ${{escapeHtml(domain)}})
                 </a>
               ` : ''}}
               <button type="button" onclick="window.atlasPlanVisit('${{safeId}}')" 
-                      style="background:none; border:none; text-align:left; color:#cbd5e1; font-size:14pt; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
+                      style="background:none; border:none; text-align:left; color:#cbd5e1; font-size:16px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
                 Plan Visit →
               </button>
               <button type="button" onclick="window.atlasAskCurator('${{safeId}}')" 
-                      style="background:none; border:none; text-align:left; color:#42be65; font-size:14pt; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;" 
+                      style="background:none; border:none; text-align:left; color:#42be65; font-size:16px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;" 
                       title="Ask Curator about ${{escapeHtml(inst.name)}}">
                 Ask in Chat →
               </button>
@@ -14062,7 +14106,7 @@ def build():
         city: 'London',
         title: 'East London Vanguard & Non-Profit Art Crawl',
         subtitle: 'From historic radical galleries to artist-run grassroots institutions in Bethnal Green and Whitechapel',
-        description: 'Traverse East London’s historic cultural vanguard connecting civic non-profits, photographic research centers, and artist-run exhibition spaces with verified clean non-corporate funding.',
+        description: 'Traverse East London’s historic cultural vanguard connecting civic non-profits, photographic research centers, and artist-run exhibition spaces with clean non-corporate funding.',
         institutionNames: [
           'Whitechapel Gallery',
           'Raven Row',
@@ -14301,7 +14345,7 @@ def build():
         city: targetCity,
         title: matchedSig ? matchedSig.title : `${{targetCity}} Independent Art Crawl`,
         subtitle: matchedSig ? matchedSig.subtitle : `Algorithmic walking itinerary connecting ${{stops.length}} cultural spaces across ${{targetCity}}`,
-        description: matchedSig ? matchedSig.description : `Optimized curatorial route through ${{targetCity}}, minimizing transit friction between independent spaces with verified operating hours.`,
+        description: matchedSig ? matchedSig.description : `Optimized curatorial route through ${{targetCity}}, minimizing transit friction between independent spaces with confirmed operating hours.`,
         stops: stops,
         totalKm: totalKm,
         totalWalkMinutes: totalWalkMinutes,
@@ -14422,7 +14466,7 @@ def build():
           badgeEl.style.border = '2.5px solid #34d399';
           badgeEl.style.color = '#ffffff';
           badgeEl.style.fontFamily = '"PP Museum", "PP Telegraf", sans-serif';
-          badgeEl.style.fontSize = '14px';
+          badgeEl.style.fontSize = '16px';
           badgeEl.style.fontWeight = 'bold';
           badgeEl.style.display = 'flex';
           badgeEl.style.alignItems = 'center';
@@ -14438,39 +14482,39 @@ def build():
           const popupHtml = `
             <div style="font-family:'PP Museum',sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f1f5f9;">
               <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
-                <span style="font-size:14pt;  color:#34d399; font-weight:400;">
+                <span style="font-size:16px;  color:#34d399; font-weight:400;">
                   Stop ${{stop.stopIndex}} of ${{route.stops.length}}
                 </span>
-                <span style="font-size:14pt;  padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
+                <span style="font-size:16px;  padding:1px 6px; border-radius:4px; background:${{isClean ? '#06261c' : '#1e1133'}}; color:${{isClean ? '#34d399' : '#c084fc'}}; border:1px solid ${{isClean ? '#0f4c39' : '#581c87'}};">
                   ${{isClean ? 'Clean Funding' : 'Flagged'}}
                 </span>
               </div>
-              <div style="font-size:18pt; font-weight:400; color:#ffffff; line-height:1.2; margin-bottom:4px;">
+              <div style="font-size:19px; font-weight:400; color:#ffffff; line-height:1.2; margin-bottom:4px;">
                 ${{escapeHtml(stop.name)}}
               </div>
-              <div style="font-size:14pt; color:#a1a1aa; margin-bottom:6px;">
+              <div style="font-size:16px; color:#a1a1aa; margin-bottom:6px;">
                 ${{escapeHtml(stop.address || stop.neighborhood || stop.city)}}
               </div>
-              <div style="font-size:14pt;  color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
+              <div style="font-size:16px;  color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
                 ${{escapeHtml(stop.openingHours)}}
               </div>
-              <div style="font-size:14pt; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
+              <div style="font-size:16px; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
                 ${{escapeHtml(stop.curatorialFocus || '')}}
               </div>
               ${{idx < route.stops.length - 1 ? `
-                <div style="font-size:14pt;  color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:16px;  color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Next stop: ${{escapeHtml(route.stops[idx + 1].name)}} (${{stop.nextLegKm || route.stops[idx+1].legDistanceKm}} km · ${{stop.nextLegMin || route.stops[idx+1].legWalkMinutes}} min walk)
                 </div>
               ` : `
-                <div style="font-size:14pt;  color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:16px;  color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Final Itinerary Destination
                 </div>
               `}}
               <div style="display:flex; align-items:center; gap:6px; margin-top:8px;">
-                <button onclick="window.jumpToRouteStop(${{idx}})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14pt; font-weight:400; border:none; cursor:pointer;">
+                <button onclick="window.jumpToRouteStop(${{idx}})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:16px; font-weight:400; border:none; cursor:pointer;">
                   Focus Stop
                 </button>
-                <button onclick="window.atlasPlanVisit('${{safeName}}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:14pt; border:1px solid #334155; cursor:pointer;">
+                <button onclick="window.atlasPlanVisit('${{safeName}}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:16px; border:1px solid #334155; cursor:pointer;">
                   Plan Visit
                 </button>
               </div>
@@ -14675,7 +14719,7 @@ def build():
         body.innerHTML = `
           <div class="space-y-4">
             <div class="p-3 rounded-2xl bg-[#091f16] border border-emerald-800/60 text-[14px] text-emerald-200/90 leading-relaxed">
-              Curated walking itineraries traversing verified clean-funding institutions and pioneering artist-run initiatives across major cultural centers. Launching an itinerary draws a route line on the vector street map with sequential stop navigation.
+              Curated walking itineraries traversing clean-funding institutions and pioneering artist-run initiatives across major cultural centers. Launching an itinerary draws a route line on the vector street map with sequential stop navigation.
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
@@ -16088,7 +16132,7 @@ def build():
         const receiptCode = 'LEAK-' + hashHex.substring(0, 8).toUpperCase() + '-' + hashHex.substring(8, 16).toUpperCase();
         return {{ hash: hashHex, receipt: receiptCode, timestamp: new Date().toISOString() }};
       }} catch (e) {{
-        return {{ hash: 'offline-local-hash', receipt: 'LEAK-LOCAL-VERIFIED', timestamp: new Date().toISOString() }};
+        return {{ hash: 'offline-local-hash', receipt: 'LEAK-LOCAL-CONFIRMED', timestamp: new Date().toISOString() }};
       }}
     }}
     window.generateWhistleblowerReceipt = generateWhistleblowerReceipt;
@@ -16097,14 +16141,26 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v15') caches.delete(k);
+          if (k !== 'culture-atlas-v19') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
+      let reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {{
+        if (!reloading) {{
+          reloading = true;
+          window.location.reload();
+        }}
+      }});
+      navigator.serviceWorker.getRegistrations().then((registrations) => {{
+        for (let reg of registrations) {{
+          reg.update();
+        }}
+      }}).catch(() => {{}});
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=15').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=19').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
@@ -16290,7 +16346,7 @@ def build():
       if (!str || typeof str !== 'string') return '';
       const val = str.trim();
       const m = val.match(/^([A-Z\s/]+:\s*)(.*)$/);
-      const prefix = (m && /(WATCH|EXCLUDED|UNVERIFIED|AUDITED|NOTICE)/i.test(m[1])) ? m[1] : '';
+      const prefix = (m && /(WATCH|EXCLUDED|PENDING AUDIT|AUDITED|NOTICE)/i.test(m[1])) ? m[1] : '';
       const body = prefix ? m[2] : val;
       const rawSentences = body.split(/(?<=[.!?])\s+/).map(s => s.trim()).filter(Boolean);
       const seen = new Set();
@@ -16309,16 +16365,16 @@ def build():
       if (isCommunity) return 'Pending Statutory Audit';
       let s = (grade || '').trim();
       if (!s || ['A', 'A+', 'B', 'B+', 'C', 'D', 'F', 'U', 'COM'].includes(s.toUpperCase())) {{
-        return isClean ? 'Verified Independent Space' : (isFlagged ? 'Monitored Corporate Sponsorship' : 'Under Review');
+        return isClean ? 'Independent Sanctuary Space' : (isFlagged ? 'Monitored Corporate Sponsorship' : 'Under Review');
       }}
       const matchParen = s.match(/\(([^)]+)\)/);
       if (matchParen && matchParen[1] && matchParen[1].trim()) {{
         const inside = matchParen[1].trim();
-        if (inside === 'Roster Unverified') return 'Pending Statutory Audit';
+        if (inside === 'Roster Pending Audit') return 'Pending Statutory Audit';
         return inside;
       }}
       s = s.replace(/^Tier\s+[A-Za-z0-9\+]+\s*[:–-]?\s*/i, '').trim();
-      return s || (isClean ? 'Verified Independent Space' : (isFlagged ? 'Monitored Corporate Sponsorship' : 'Under Review'));
+      return s || (isClean ? 'Independent Sanctuary Space' : (isFlagged ? 'Monitored Corporate Sponsorship' : 'Under Review'));
     }}
 
     function matchC(a, b) {{
@@ -16391,16 +16447,16 @@ def build():
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${{domain}} ↗`;
 
-      ctx.font = '500 17px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '500 19px "PP Museum", "PP Telegraf", sans-serif';
       const nameText = inst.name;
       const nameW = ctx.measureText(nameText).width;
 
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ' · ' + inst.curatorial_focus : (inst.neighborhood ? ' · ' + inst.neighborhood : ''));
-      ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
       const subW = ctx.measureText(subText).width;
 
-      ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
       const webW = ctx.measureText(domainPillText).width;
 
       const cardW = Math.max(260, Math.min(380, Math.max(nameW, subW, webW + 28) + 32));
@@ -16431,10 +16487,10 @@ def build():
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
-      // Row 1: Institution Name (Upright PP Museum 500). No tier title above
-      // it: the tier reads from the card's border colour, not from a label.
+      // Row 1: Institution Name. No tier title above it: the tier reads from
+      // the card's border colour, not from a label.
       ctx.textAlign = 'left';
-      ctx.font = '500 17px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '500 19px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#ffffff';
       ctx.textBaseline = 'top';
       let displayName = nameText;
@@ -16448,7 +16504,7 @@ def build():
       ctx.fillText(displayName, cardX + 16, cardY + 16);
 
       // Row 2: Location and Curatorial Focus
-      ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#94a3b8';
       let displaySub = subText;
       if (ctx.measureText(displaySub).width > maxTextW) {{
@@ -16475,7 +16531,7 @@ def build():
         ctx.fill();
         ctx.stroke();
 
-        ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#38bdf8';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -16683,7 +16739,7 @@ def build():
 
         // Graticule Degree Annotations
         if (r > baseRadius * 0.9) {{
-          ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+          ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
           ctx.fillStyle = isGossipModeActive ? '#eab308' : '#263a55';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -16823,7 +16879,7 @@ def build():
         cityClusterHitboxes = [];
         const drawnCityBoxes = [];
         const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
-        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         
         let candidateCities = [];
         if (selectedCountryFilter !== 'all') {{
@@ -16855,12 +16911,12 @@ def build():
 
             let bw, bh = 24, txt = city.name, countTxt = '';
             let countPillW = 0, countPillH = 16;
-            ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
 
             if (isClustered) {{
               countTxt = String(city.count);
               const twName = ctx.measureText(city.name).width;
-              ctx.font = '11px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               const twCount = ctx.measureText(countTxt).width;
               countPillW = Math.max(16, twCount + 8);
               bw = twName + countPillW + 18;
@@ -16922,7 +16978,7 @@ def build():
 
               if (isClustered) {{
                 // Render City Name on left
-                ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
                 ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#e2e8f0');
                 ctx.textAlign = 'left';
                 ctx.textBaseline = 'middle';
@@ -16939,7 +16995,7 @@ def build():
                 ctx.lineWidth = 1;
                 ctx.stroke();
 
-                ctx.font = '11px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
                 ctx.fillStyle = '#ffffff';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -16958,7 +17014,7 @@ def build():
                 ctx.fillStyle = isHovered ? '#34d399' : '#10b981';
                 ctx.fill();
               }} else {{
-                ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
                 ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#cbd5e1');
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -16986,7 +17042,7 @@ def build():
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+          ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -17114,9 +17170,9 @@ def build():
             const corr = hoveredRailCorridor;
             const tipHeader = corr.name.toUpperCase();
             const tipSub = `${{corr.from}} - ${{corr.to}} · ${{corr.travel_time || 'Eco-Transit'}} · ${{corr.emission_saving || 'Low Carbon'}}`;
-            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             const hw = ctx.measureText(tipHeader).width;
-            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             const sw = ctx.measureText(tipSub).width;
             const rw = Math.max(hw, sw) + 22;
             const rh = 40;
@@ -17133,13 +17189,13 @@ def build():
             ctx.lineWidth = 1.2;
             ctx.stroke();
 
-            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             ctx.fillStyle = '#38bdf8';
             ctx.textAlign = 'left';
             ctx.textBaseline = 'top';
             ctx.fillText(tipHeader, rx + 10, ry + 6);
 
-            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             ctx.fillStyle = '#ffffff';
             ctx.fillText(tipSub, rx + 10, ry + 20);
             ctx.restore();
@@ -17267,7 +17323,7 @@ def build():
 
           if (shouldDrawGlobeLabel && !isHov) {{
             ctx.save();
-            ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
@@ -17329,17 +17385,17 @@ def build():
               const cityTxt = hMeta.name.toUpperCase();
               const countryTxt = hMeta.country ? hMeta.country.trim() : '';
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
-              const countTxt = `${{countVal}} Verified Cultural Space${{countVal === 1 ? '' : 's'}}`;
+              const countTxt = `${{countVal}} Independent Cultural Space${{countVal === 1 ? '' : 's'}}`;
               const linkTxt = 'Click to Explore →';
 
-              ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '500 19px "PP Museum", "PP Telegraf", sans-serif';
               const twCity = ctx.measureText(cityTxt).width;
 
-              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
               const twCount = ctx.measureText(countTxt).width;
 
-              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               const twLink = ctx.measureText(linkTxt).width;
 
               const linkBtnW = twLink + 22;
@@ -17382,8 +17438,8 @@ def build():
               ctx.lineWidth = 1.5;
               ctx.stroke();
 
-              // Line 1: City Name (500 18px)
-              ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
+              // Line 1: City Name (500 19px)
+              ctx.font = '500 19px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive ? '#facc15' : '#38bdf8';
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
@@ -17391,16 +17447,16 @@ def build():
 
               let currentY = cardY + 34;
 
-              // Line 2: Country Name (if available, 14px, muted slate, own line, no dot)
+              // Line 2: Country Name (if available, 16px, muted slate, own line, no dot)
               if (countryTxt) {{
-                ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
                 ctx.fillStyle = isGossipModeActive ? '#fde047' : '#94a3b8';
                 ctx.fillText(countryTxt, cardX + 14, currentY);
                 currentY += 22;
               }}
 
-              // Line 3: Verified Cultural Spaces Count (14px, crisp light slate, own line, no dot)
-              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+              // Line 3: Independent Cultural Spaces Count (16px, crisp light slate, own line, no dot)
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive ? '#fef9c3' : '#f1f5f9';
               ctx.fillText(countTxt, cardX + 14, currentY);
               currentY += 22;
@@ -17433,7 +17489,7 @@ def build():
               ctx.stroke();
               ctx.shadowBlur = 0;
 
-              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive 
                 ? (isHoveringCityExploreLink ? '#38bdf8' : '#facc15') 
                 : (isHoveringCityExploreLink ? '#ffffff' : '#38bdf8');
@@ -17522,7 +17578,7 @@ def build():
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -17544,6 +17600,7 @@ def build():
         ctx.fill();
         ctx.stroke();
 
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#94a3b8';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -17576,7 +17633,7 @@ def build():
         ctx.closePath();
         ctx.fill();
 
-        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -17620,7 +17677,7 @@ def build():
             floatingCard.style.bottom = 'auto';
           }}
 
-          ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+          ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
           ctx.fillStyle = '#ffffff';
           ctx.textAlign = 'left';
           ctx.textBaseline = 'middle';
@@ -17731,7 +17788,7 @@ def build():
         const isClean = inst.tier === 'A';
         tierEl.innerHTML = `
           <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>${{isClean ? 'Verified Sanctuary' : (inst.tier === 'B' ? 'Flagged Underwriting' : 'Verified Space')}}</span>
+          <span>${{isClean ? 'Clean Sanctuary' : (inst.tier === 'B' ? 'Flagged Underwriting' : 'Independent Space')}}</span>
         `;
       }}
 
@@ -17928,7 +17985,7 @@ def build():
 
       if (dsName) dsName.textContent = inst.name || 'Green Papaya Art Projects';
       if (dsTier) {{
-        dsTier.textContent = isClean ? 'Verified' : (isFlagged ? 'Flagged' : 'Audit Pending');
+        dsTier.textContent = isClean ? 'Clean Sanctuary' : (isFlagged ? 'Flagged' : 'Audit Pending');
         dsTier.className = 'inline-flex items-center px-1.5 py-0.2 text-[10px] font-semibold rounded ' + 
           (isClean ? 'text-emerald-300 bg-emerald-950 border border-emerald-600' : 'text-amber-300 bg-amber-950 border border-amber-600');
       }}
@@ -18095,11 +18152,11 @@ def build():
 
       const isCardClean = inst.tier === 'A';
       const isCardFlagged = inst.tier === 'B';
-      document.getElementById('floatingCardMeta').textContent = `${{inst.location}} · ${{isCardClean ? 'Clean Verified' : isCardFlagged ? 'Flagged Underwriting' : 'Roster Unverified'}}`;
+      document.getElementById('floatingCardMeta').textContent = `${{inst.location}} · ${{isCardClean ? 'Clean Sanctuary' : isCardFlagged ? 'Flagged Underwriting' : 'Roster Pending Audit'}}`;
       
       const tierBadge = document.getElementById('floatingCardTier');
       if (tierBadge) {{
-        tierBadge.textContent = isCardClean ? 'Clean Verified' : isCardFlagged ? 'Flagged Underwriting' : 'Roster Unverified';
+        tierBadge.textContent = isCardClean ? 'Clean Sanctuary' : isCardFlagged ? 'Flagged Underwriting' : 'Roster Pending Audit';
         tierBadge.className = 'text-[14pt] font-mono shrink-0 ' + 
           (isCardClean 
             ? 'text-emerald-400' 
@@ -18121,7 +18178,7 @@ def build():
 
       const fin = inst.financial_data || {{}};
       const bDisplay = fin.operating_budget_display || inst.funding || 'Independent Operational Scale';
-      const bTierText = fin.budget_tier || (inst.tier === 'A' ? 'Verified Independent' : 'Audited Non-Profit');
+      const bTierText = fin.budget_tier || (inst.tier === 'A' ? 'Independent Sanctuary' : 'Audited Non-Profit');
 
       if (bAmt) bAmt.textContent = bDisplay;
       if (bTier) bTier.textContent = bTierText;
@@ -18271,7 +18328,7 @@ def build():
         if (gSection) gSection.style.display = 'block';
       }}
 
-      // Populate Visual Critique & Artist Feedback on Floating Card with Verified Credits
+      // Populate Visual Critique & Artist Feedback on Floating Card with Audited Credits
       window.activeCardVcIndex = 0;
       window.updateFloatingCardVisualCritique = function() {{
         const vcSection = document.getElementById('floatingCardVisualCritiqueSection');
@@ -18428,7 +18485,7 @@ def build():
 
       if (mTitle) mTitle.textContent = inst.name;
       if (mBadge) {{
-        mBadge.textContent = isCardClean ? 'Clean Verified' : isCardFlagged ? 'Flagged Underwriting' : 'Roster Unverified';
+        mBadge.textContent = isCardClean ? 'Clean Sanctuary' : isCardFlagged ? 'Flagged Underwriting' : 'Roster Pending Audit';
         mBadge.className = 'text-[14px] font-mono px-2 py-0.2 rounded-full border shrink-0 ' + 
           (isCardClean 
             ? 'text-emerald-400 border-emerald-900 bg-[#0a2016]' 
@@ -18561,7 +18618,7 @@ def build():
       const isCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
       const isClean = !isCommunity && inst.tier === 'A';
       const isFlagged = !isCommunity && inst.tier === 'B';
-      const isUnverified = !isCommunity && inst.tier === 'U';
+      const isPendingAudit = !isCommunity && inst.tier === 'U';
 
       const tierBadgeClass = isCommunity
         ? 'text-[#08bdba]'
@@ -18574,8 +18631,8 @@ def build():
       const tierLabel = isCommunity
         ? `Community Layer · Audit Ticket #${{inst.communityId || 'RES-CONTRIB'}}`
         : isClean 
-        ? 'Verified Independent Space' 
-        : (isFlagged ? 'Flagged Corporate Underwriting' : 'Unverified Space');
+        ? 'Independent Sanctuary Space' 
+        : (isFlagged ? 'Flagged Corporate Underwriting' : 'Pending Audit Space');
 
       const cleanAlts = (!isClean && !isCommunity) ? ALL_INSTITUTIONS.filter(i => i.tier === 'A' && matchC(i.city, inst.city)) : [];
 
@@ -18585,7 +18642,7 @@ def build():
       // 1. Financial Data & Operational Scale
       const fin = inst.financial_data || {{}};
       const bDisplay = fin.operating_budget_display || inst.funding || 'Independent Operational Scale';
-      const bTierText = fin.budget_tier || (inst.tier === 'A' ? 'Verified Independent Scale' : 'Major Metropolitan Scale');
+      const bTierText = fin.budget_tier || (inst.tier === 'A' ? 'Independent Sanctuary Scale' : 'Major Metropolitan Scale');
       const pubNum = fin.public_subsidies_pct != null ? Number(fin.public_subsidies_pct) : 65;
       const philNum = fin.philanthropy_endowment_pct != null ? Number(fin.philanthropy_endowment_pct) : 20;
       const earnNum = fin.earned_revenue_pct != null ? Number(fin.earned_revenue_pct) : 15;
@@ -18629,12 +18686,12 @@ def build():
       const auditTagHtml = isCommunity
         ? '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#08bdba] font-bold tracking-wider">User Input</span><span class="text-[14px] text-teal-300 font-mono block">Pending Audit</span></div>'
         : isClean 
-        ? '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#42be65] font-bold tracking-wider">Audited Clean</span><span class="text-[14px] text-slate-400 font-mono block">100% Verified</span></div>' 
+        ? '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#42be65] font-bold tracking-wider">Audited Clean</span><span class="text-[14px] text-slate-400 font-mono block">100% Audited</span></div>' 
         : isFlagged 
         ? '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#be95ff] font-bold tracking-wider">Audited Flags</span><span class="text-[14px] text-slate-400 font-mono block">Documented</span></div>' 
-        : '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#33b1ff] font-bold tracking-wider">Unverified</span><span class="text-[14px] text-slate-400 font-mono block">Pending Audit</span></div>';
+        : '<div class="space-y-0.5"><span class="text-[14px] font-mono text-[#33b1ff] font-bold tracking-wider">Pending Audit</span><span class="text-[14px] text-slate-400 font-mono block">Pending Audit</span></div>';
 
-      const rawGrade = String(inst.transparency_grade || (isClean ? 'A (Statutory Transparency Filing)' : isFlagged ? 'B (Underwriting Conflict Filing)' : 'Unverified'));
+      const rawGrade = String(inst.transparency_grade || (isClean ? 'A (Statutory Transparency Filing)' : isFlagged ? 'B (Underwriting Conflict Filing)' : 'Pending Audit'));
       let letterBadge = isClean ? 'A' : (isFlagged ? 'B' : 'U');
       if (rawGrade.includes('A')) letterBadge = 'A';
       else if (rawGrade.includes('B')) letterBadge = 'B';
@@ -18670,7 +18727,7 @@ def build():
             <span class="text-[14px] font-mono text-zinc-400">Audited</span>
           </div>
 
-          <!-- Clean Action Toolbar (Direct Chat Inquiry & Spatial Verification) -->
+          <!-- Clean Action Toolbar (Direct Chat Inquiry & Spatial Exploration) -->
           <div class="flex flex-col gap-2 pt-1 border-b border-[#262626] pb-3 text-[14px]">
             <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="text-emerald-400 hover:text-emerald-300 hover:underline text-left cursor-pointer flex items-center gap-1.5 font-medium">
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -19007,7 +19064,7 @@ def build():
                 <span class="text-[14px] font-mono text-[#25c4b5]">Status: Pending Statutory Audit</span>
               </div>
               <p class="text-slate-200 text-[14px] leading-relaxed">
-                <strong>Auditing Pipeline:</strong> This item originates from community field notes and user research submissions. It is <strong>strictly filtered and segregated from verified peer-reviewed and statutory results</strong> until verified via regulatory filings (e.g. IRS Form 990 / UK Charity Commission).
+                <strong>Auditing Pipeline:</strong> This item originates from community field notes and user research submissions. It is <strong>strictly filtered and segregated from audited peer-reviewed and statutory results</strong> until confirmed via regulatory filings (e.g. IRS Form 990 / UK Charity Commission).
               </p>
               <div class="text-[14px] text-teal-200/90 font-mono flex flex-col gap-0.5 pt-1">
                 <span>Contributor: ${{escapeHtml(inst.contributor || 'Field Contributor')}}</span>
@@ -19059,8 +19116,8 @@ def build():
 
             ${{cleanAlts.length > 0 ? `
               <div class="py-2.5 border-t border-[#262626] space-y-2">
-                <span class="text-blue-300 font-mono text-[14px] tracking-wider block font-bold">Verified Independent Spaces in ${{escapeHtml(inst.city)}}</span>
-                <p class="text-slate-300 text-[14px]">Instead of supporting compromised boards, explore these verified independent spaces:</p>
+                <span class="text-blue-300 font-mono text-[14px] tracking-wider block font-bold">Independent Sanctuary Spaces in ${{escapeHtml(inst.city)}}</span>
+                <p class="text-slate-300 text-[14px]">Instead of supporting compromised boards, explore these independent sanctuary spaces:</p>
                 <div class="space-y-1">
                   ${{cleanAlts.slice(0, 4).map(a => `
                     <div class="flex items-center justify-between text-[14px] py-1 border-t border-[#262626] first:border-t-0">
@@ -19161,7 +19218,7 @@ def build():
 
           <div class="py-2.5 border-t border-[#262626]">
             <span class="text-[14px] font-mono tracking-wider block mb-1 text-[#be95ff]">Ethical Safeguards & Autonomy Charter</span>
-            <p class="text-[14px] text-slate-200 leading-[130%]">${{escapeHtml(inst.ethical_safeguard || 'Verified under Culture Atlas criteria')}}</p>
+            <p class="text-[14px] text-slate-200 leading-[130%]">${{escapeHtml(inst.ethical_safeguard || 'Audited under Culture Atlas criteria')}}</p>
           </div>
 
           ${{isClean && inst.watch ? `
@@ -19238,14 +19295,14 @@ def build():
               </h3>
             </div>
 
-            <!-- Verified Investigative Cases & Outcomes -->
+            <!-- Confirmed Investigative Cases & Outcomes -->
             ${{inst.gossip_data && inst.gossip_data.real_cases && inst.gossip_data.real_cases.length > 0 ? `
               <div class="space-y-3 pt-1">
                 <div class="flex flex-col gap-0.5 text-[14px] font-mono border-b border-[#262626] pb-1">
                   <span class="text-yellow-300 font-bold tracking-wider flex items-center gap-1.5">
                     <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M26 28h-2v-4a2 2 0 0 0-2-2h-4v8h-4v-8h-4a2 2 0 0 0-2 2v4H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2zM8 8h4v4H8zm0 6h4v4H8zm6-6h4v4h-4zm0 6h4v4h-4zm6-6h4v4h-4zm0 6h4v4h-4z"/></svg><span>Documented Dispute Investigations (${{inst.gossip_data.real_cases.length}})</span>
                   </span>
-                  <span class="text-slate-400">Verified Evidence</span>
+                  <span class="text-slate-400">Documented Evidence</span>
                 </div>
                 ${{inst.gossip_data.real_cases.map(c => `
                   <div class="py-3 border-b border-[#262626] space-y-2">
@@ -19281,7 +19338,7 @@ def build():
                     ${{c.outcome ? `
                       <div class="py-1.5 border-t border-[#262626] text-[14px] text-emerald-200">
                         <strong class="text-emerald-400 font-mono text-[14px] block flex items-center gap-1">
-                          <svg class="w-3.5 h-3.5 shrink-0 text-[#42be65]" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M14 21.414l-6.707-6.707 1.414-1.414L14 18.586l13.293-13.293 1.414 1.414z"/></svg><span>Verified Outcome (${{escapeHtml(c.latest_source_date || 'Latest')}}):</span>
+                          <svg class="w-3.5 h-3.5 shrink-0 text-[#42be65]" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M14 21.414l-6.707-6.707 1.414-1.414L14 18.586l13.293-13.293 1.414 1.414z"/></svg><span>Documented Outcome (${{escapeHtml(c.latest_source_date || 'Latest')}}):</span>
                         </strong>
                         <p class="leading-relaxed font-sans">${{escapeHtml(c.outcome)}}</p>
                       </div>
@@ -19302,12 +19359,12 @@ def build():
               </div>
             ` : ''}}
 
-            <!-- Verified Worker & Visitor Reviews -->
+            <!-- Confirmed Worker & Visitor Reviews -->
             ${{inst.gossip_data && inst.gossip_data.review_leads && inst.gossip_data.review_leads.length > 0 ? `
               <div class="space-y-2.5 pt-1">
                 <div class="flex flex-col gap-0.5 text-[14px] font-mono border-b border-[#262626] pb-1">
                   <span class="text-yellow-300 font-bold tracking-wider flex items-center gap-1.5">
-                    <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 4a5 5 0 1 1-5 5 5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7 7 7 0 0 0-7-7zm10 28h-2v-5a5 5 0 0 0-5-5h-6a5 5 0 0 0-5 5v5H6v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7z"/></svg><span>Verified Staff & Worker Reviews (${{inst.gossip_data.review_leads.length}})</span>
+                    <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 4a5 5 0 1 1-5 5 5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7 7 7 0 0 0-7-7zm10 28h-2v-5a5 5 0 0 0-5-5h-6a5 5 0 0 0-5 5v5H6v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7z"/></svg><span>Documented Staff & Worker Reviews (${{inst.gossip_data.review_leads.length}})</span>
                   </span>
                   <span class="text-slate-400">Glassdoor · Kununu</span>
                 </div>
@@ -19408,11 +19465,11 @@ def build():
       const domain = getDisplayDomain(webUrl);
       
       const isEx = inst.tier !== 'A';
-      const nameClass = isEx ? 'inst-link text-[#be95ff] hover:underline font-normal' : 'inst-link font-normal';
-      const badge = isEx ? ' <span class="text-[14px] font-mono px-1 py-0.2 rounded bg-[#1f1433] text-[#be95ff] border border-[#8a3ffc] shrink-0">Flagged</span>' : '';
+      const nameClass = isEx ? 'inst-link text-[#be95ff] hover:underline font-normal' : 'inst-link font-normal text-slate-100 hover:text-sky-300';
+      const badge = isEx ? ' <span class="text-[12px] font-mono px-1.5 py-0.5 rounded bg-[#1f1433] text-[#be95ff] border border-[#8a3ffc] shrink-0 align-middle">Flagged</span>' : '';
       const nameLink = `<a href="#" class="${{nameClass}}" data-name="${{escapeHtml(inst.name)}}">${{escapeHtml(inst.name)}}</a>${{badge}}`;
-      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
-      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[14px] text-[#60a5fa] hover:underline" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[14px] text-[#93c5fd] hover:text-white hover:underline transition">${{domain}}</a>` : ''}})`;
+      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-sky-300 hover:underline" data-city="${{escapeHtml(inst.city)}}">${{escapeHtml(inst.location || inst.city)}}</a>`;
+      const dossierPart = opts.noDossier ? '' : ` <span class="inline-flex items-center gap-1.5 text-[14px] font-mono ml-2 align-middle"><a href="#" class="dossier-link text-[#60a5fa] hover:underline hover:text-white" data-name="${{escapeHtml(inst.name)}}">audit dossier</a>${{webUrl ? ` · <a href="${{escapeHtml(webUrl)}}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[#93c5fd] hover:text-white hover:underline transition">${{domain}} ↗</a>` : ''}}</span>`;
       
       return `${{nameLink}}${{cityPart}}${{dossierPart}}`;
     }}
@@ -19659,7 +19716,7 @@ def build():
         details: 'Artist-run non-profit space dedicated to experimental moving image commissions, collaborative research, and open publishing.',
         sourceUrl: 'https://autoitaliasoutheast.org',
         contributor: 'London Field Researcher',
-        status: 'pending_verification'
+        status: 'pending_audit'
       }},
       {{
         id: 'RES-7310',
@@ -19673,7 +19730,7 @@ def build():
         details: 'Artist-run production and presentation space in central Amsterdam operating autonomously without commercial gallery representation.',
         sourceUrl: 'https://w139.nl',
         contributor: 'Amsterdam Artist Commons',
-        status: 'pending_verification'
+        status: 'pending_audit'
       }},
       {{
         id: 'RES-4192',
@@ -19687,7 +19744,7 @@ def build():
         details: 'Archive and educational resource for radical social movements, counter-culture ephemera, and critical artistic dissent.',
         sourceUrl: 'https://maydayrooms.org',
         contributor: 'Curatorial Archivist',
-        status: 'pending_verification'
+        status: 'pending_audit'
       }},
       {{
         id: 'RES-5821',
@@ -19698,10 +19755,10 @@ def build():
         country: 'Netherlands',
         lat: 52.090,
         lon: 5.122,
-        details: 'Ecosystem of the commons and feminist unlearning; field verification confirmed 100% free admission and non-extractive funding.',
+        details: 'Ecosystem of the commons and feminist unlearning; field audit confirmed 100% free admission and non-extractive funding.',
         sourceUrl: 'https://casco.art',
         contributor: 'BAK/Casco Research Associate',
-        status: 'pending_verification'
+        status: 'pending_audit'
       }}
     ];
 
@@ -19732,7 +19789,7 @@ def build():
           isCommunityLayer: true,
           communityId: s.id,
           contributor: s.contributor || 'Community Contributor',
-          status: s.status || 'pending_verification',
+          status: s.status || 'pending_audit',
           sourceUrl: s.sourceUrl || '',
           location: `${{s.city || 'Global'}}, ${{s.country || (cityMeta ? cityMeta.country : 'Global')}}`,
           governance_type: 'Community Input (Pending Statutory Audit)',
@@ -19741,7 +19798,7 @@ def build():
           curatorial_focus: s.category ? s.category.replace(/_/g, ' ').toUpperCase() : 'COMMUNITY RESEARCH',
           highlight: s.details || 'Community contributed art space',
           funding: `Submitted via Community Pipeline (${{s.id}}) · Source: ${{s.sourceUrl || 'Pending statutory audit'}}`,
-          ethical_safeguard: 'Community research layer under active peer-review. Segregated from statutory verified results.',
+          ethical_safeguard: 'Community research layer under active peer-review. Segregated from statutory audited results.',
           flags: [],
           transparency_grade: 'Community Input (Pending Audit)'
         }};
@@ -20344,7 +20401,7 @@ def build():
         const isClean = inst.tier === 'A';
         const isFlagged = inst.tier === 'B';
         const tierBadgeHtml = isClean 
-          ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold">Verified Independent Space</span>`
+          ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold">Independent Sanctuary Space</span>`
           : (isFlagged 
             ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-[#1f1433] text-[#be95ff] font-bold">Flagged Corporate Conflict</span>`
             : `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#38bdf8]/60 bg-[#102436] text-[#38bdf8] font-bold">Statutory Public Audit</span>`);
@@ -20607,7 +20664,7 @@ def build():
 
         // Fallback to grounded database facts if external network is unavailable / mocked
         if (!scrapeResult.scrapedText && targetInst) {{
-          scrapeResult.scrapedText = `${{targetInst.name}} in ${{targetInst.city}}, ${{targetInst.country}}: Verified ${{targetInst.tier === 'A' ? 'Independent Cultural Space' : 'Corporate Underwriting Conflict'}}. Hours: ${{targetInst.opening_hours || 'Standard'}}. Admission: ${{targetInst.admission_policy || 'Free'}}. Highlights: ${{targetInst.highlight || targetInst.governance_type}}.`;
+          scrapeResult.scrapedText = `${{targetInst.name}} in ${{targetInst.city}}, ${{targetInst.country}}: Confirmed ${{targetInst.tier === 'A' ? 'Independent Cultural Space' : 'Corporate Underwriting Conflict'}}. Hours: ${{targetInst.opening_hours || 'Standard'}}. Admission: ${{targetInst.admission_policy || 'Free'}}. Highlights: ${{targetInst.highlight || targetInst.governance_type}}.`;
           if (targetInst.website && !targetInst.website.includes('wikipedia.org')) {{
             scrapeResult.trustedLinks.push({{ title: `${{targetInst.name}} Official Site`, url: targetInst.website }});
           }}
@@ -20641,7 +20698,7 @@ def build():
               <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
               <span>Live Web Intelligence (Scraped)</span>
             </div>
-            <span class="text-[14px] font-mono text-[#94a3b8]">Live Web Verification</span>
+            <span class="text-[14px] font-mono text-[#94a3b8]">Live Web Audit</span>
           </div>
           <p class="text-slate-200 leading-relaxed text-[14px]">${{escapeHtml(webIntel.scrapedText)}}</p>
           ${{trustedLinksHtml}}
@@ -20896,7 +20953,7 @@ def build():
       return `- INSTITUTION: ${{i.name}}
   Location: ${{i.city}}, ${{i.country}} (${{i.address || 'Central'}}, Neighborhood: ${{i.neighborhood || i.city}})
   Legal Governance Structure: ${{i.governance_type || 'Civic & Municipal Public Trust'}}
-  Governance Classification: ${{i.tier_label || (i.tier === 'A' ? 'Verified Independent Space' : 'Flagged Corporate Underwriting')}}
+  Governance Classification: ${{i.tier_label || (i.tier === 'A' ? 'Independent Sanctuary Space' : 'Flagged Corporate Underwriting')}}
   Governance & Ethical Safeguard: ${{i.governance_details || i.ethical_safeguard || 'Statutory audited non-profit'}}
   Statutory Audit Dossier: ${{i.audit_dossier_url || ''}}
   Curatorial Focus: ${{i.curatorial_focus || 'Contemporary artistic experimentation'}}
@@ -20987,7 +21044,7 @@ def build():
             if (s.onclick) {{
               return `<button type="button" onclick="${{s.onclick}}" class="source-citation-pill inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#092218] hover:bg-[#0e3324] text-[#34d399] hover:text-white border border-[#144f37] text-[14px] font-mono transition cursor-pointer select-none shadow-sm align-baseline my-0.5 mx-0.5" title="Inspect ${{s.label}} statutory disclosures">${{s.icon}}<span>${{m}}</span></button>`;
             }}
-            return `<a href="${{s.url}}" target="_blank" rel="noopener noreferrer" class="source-citation-pill inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#0c1e30] hover:bg-[#122e4a] text-[#38bdf8] hover:text-white border border-[#1e3e60] text-[14px] font-mono transition cursor-pointer select-none no-underline shadow-sm align-baseline my-0.5 mx-0.5" title="Verify report via ${{s.label}}">${{s.icon}}<span>${{m}}</span></a>`;
+            return `<a href="${{s.url}}" target="_blank" rel="noopener noreferrer" class="source-citation-pill inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#0c1e30] hover:bg-[#122e4a] text-[#38bdf8] hover:text-white border border-[#1e3e60] text-[14px] font-mono transition cursor-pointer select-none no-underline shadow-sm align-baseline my-0.5 mx-0.5" title="Inspect report via ${{s.label}}">${{s.icon}}<span>${{m}}</span></a>`;
           }});
         }}
         return str;
@@ -21074,7 +21131,7 @@ def build():
         }}
 
         // Check for headers: ### Title, ## Title, # Title, or **Header Title** standalone or with trailing text
-        const knownHeaderRegex = /^(?:#{{1,4}}\\s*)?(?:\\*{{2,3}}|_{{2,3}})?\\s*(What You Actually Get|The Governance Problem|The Governance & Independence Profile|What This Actually Means|The Comparison That Matters|The Independent Berlin Context|Core Fact|Governance Risk|Verified Source)\\s*(?:\\*{{2,3}}|_{{2,3}})?:?\\s*(.*)$/i;
+        const knownHeaderRegex = /^(?:#{{1,4}}\\s*)?(?:\\*{{2,3}}|_{{2,3}})?\\s*(What You Actually Get|The Governance Problem|The Governance & Independence Profile|What This Actually Means|The Comparison That Matters|The Independent Berlin Context|Core Fact|Governance Risk|Statutory Sources)\\s*(?:\\*{{2,3}}|_{{2,3}})?:?\\s*(.*)$/i;
         const knownMatch = trimmed.match(knownHeaderRegex);
         const headerMatch = trimmed.match(/^(#{{1,4}})\\s+(.+)$/);
         const boldHeaderMatch = trimmed.match(/^(\\*\\*\\*|\\*\\*|___|__)\\s*(.+?)\\s*(\\*\\*\\*|\\*\\*|___|__):?$/);
@@ -21115,9 +21172,9 @@ def build():
             dotColor = 'bg-purple-400';
             badgeText = 'Systemic Impact';
             badgeClass = 'text-purple-400 bg-purple-950/80 border-purple-800/80';
-          }} else if (titleLower.includes('verified source') || titleLower.includes('sources')) {{
+          }} else if ((titleLower.includes('statutory source') || (titleLower.includes('statutory source') )) || titleLower.includes('sources')) {{
             dotColor = 'bg-sky-400';
-            badgeText = 'Verified Source';
+            badgeText = 'Statutory Sources';
             badgeClass = 'text-sky-400 bg-sky-950/80 border-sky-800/80';
           }} else if (titleLower.includes('comparison') || titleLower.includes('matters') || titleLower.includes('alternative') || titleLower.includes('context')) {{
             dotColor = 'bg-sky-400';
@@ -21230,7 +21287,7 @@ def build():
         const fin = currentTarget.financial_data || {{}};
         const budgetStr = fin.operating_budget_display || currentTarget.funding || 'Independent Operational Scale';
         const holdingsStr = (currentTarget.archives_and_collections && currentTarget.archives_and_collections.primary_holdings) || currentTarget.highlight || 'Contemporary Collections';
-        currentTargetXml = `<current_target>\\nEntity: ${{currentTarget.name}}\\nLocation: ${{currentTarget.city || currentTarget.location || 'Global'}}\\nGovernance Status: ${{isClean ? 'Verified Independent Space (Tier A - Zero fossil fuel/defense funding)' : 'Flagged Underwriting / Commercial Capture (Tier B)'}}\\nFunding Profile: ${{budgetStr}}\\nArchitecture & Footprint: ${{currentTarget.footprint_sqm ? currentTarget.footprint_sqm + ' sqm' : 'Curated Space'}}\\nKey Collections & Archives: ${{holdingsStr}}\\nAdmission Policy: ${{currentTarget.admission_policy || 'Free Public Admission'}}\\n</current_target>\\n\\n`;
+        currentTargetXml = `<current_target>\\nEntity: ${{currentTarget.name}}\\nLocation: ${{currentTarget.city || currentTarget.location || 'Global'}}\\nGovernance Status: ${{isClean ? 'Independent Sanctuary Space (Tier A - Zero fossil fuel/defense funding)' : 'Flagged Underwriting / Commercial Capture (Tier B)'}}\\nFunding Profile: ${{budgetStr}}\\nArchitecture & Footprint: ${{currentTarget.footprint_sqm ? currentTarget.footprint_sqm + ' sqm' : 'Curated Space'}}\\nKey Collections & Archives: ${{holdingsStr}}\\nAdmission Policy: ${{currentTarget.admission_policy || 'Free Public Admission'}}\\n</current_target>\\n\\n`;
       }} else {{
         currentTargetXml = `<current_target>\\nEntity: None explicitly selected (Global Inquiry across Culture Atlas)\\n</current_target>\\n\\n`;
       }}
@@ -21248,7 +21305,7 @@ def build():
       const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || 
                            /\\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\\b/i.test(userPrompt);
       const gossipDirective = isGossipMode ? `\\n\\n<gossip_guardrail>\\nCRITICAL INVESTIGATIVE DOSSIER CONSTRAINT:
-When analyzing controversies, conflicts, or backchannel disclosures, present unvarnished reporting across 3 concise thematic angles: Core Fact, Governance Risk, and Verified Source.
+When analyzing controversies, conflicts, or backchannel disclosures, present unvarnished reporting across 3 concise thematic angles: Core Fact, Governance Risk, and Statutory Sources.
 <formatting_rules>
 - ABSOLUTELY FORBIDDEN: Do not repeat section headers as inline text tags, badges, or prefix labels (e.g., never write "Core Fact: [Core Fact]" or render duplicate headers like "Governance Risk").
 - Write like a senior investigative journalist or intelligence analyst for Palantir/ProPublica. 
@@ -21260,11 +21317,11 @@ Format responses using standard Markdown headers and clean lists. Never output r
       const structuredUserPrompt = `${{focusNotice}}${{currentTargetXml}}${{gossipDirective}}<formatting_rules>\\n- ABSOLUTELY FORBIDDEN: Do not repeat section headers as inline text tags, badges, or prefix labels (e.g., never write "Core Fact: [Core Fact]" or render duplicate headers like "Governance Risk").\\n- Write like a senior investigative journalist or intelligence analyst for Palantir/ProPublica.\\n- Use clean, fluid prose and natural thematic transitions instead of rigid, robotic classification templates.\\n- Structure information using subtle bullet points or bolded lead-ins organically, without echoing the category name twice.\\n</formatting_rules>\\n<explicit_constraints>\\nFormat responses using standard Markdown headers and clean lists. Never output raw markdown tags or unrendered syntax. Answer the user's specific question in 2-3 sentences max per section. Do not pivot to unrelated institutional history unless asked.\\n</explicit_constraints>\\n\\n<user_query>\\n${{userPrompt}}\\n</user_query>`;
 
       const activeInst = currentTarget;
-      const activeInstContext = activeInst ? `\\n\\nACTIVE FOCUS INSTITUTION:\\nThe user is currently viewing/asking about this specific space:\\n${{formatInstitutionGrounding(activeInst)}}\\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks general questions without naming a space, focus specifically on ${{activeInst.name}} and perform a vivid, in-depth audit of its governance status, entry policy, architecture, and signature highlights!\\n` : '';
+      const activeInstContext = activeInst ? `\\n\\nACTIVE FOCUS INSTITUTION:\\nThe user is currently viewing/asking about this specific space:\\n${{formatInstitutionGrounding(activeInst)}}\\nIf the user asks "check it for me", "tell me about this place", "can you audit this", or asks general questions without naming a space, focus specifically on ${{activeInst.name}} and perform a vivid, in-depth audit of its governance status, entry policy, architecture, and signature highlights!\\n` : '';
 
       const communitySubmissions = getCommunityResearchSubmissions();
       const communityGrounding = communitySubmissions.length > 0 
-        ? '\\n\\nCOMMUNITY-CONTRIBUTED RESEARCH QUEUE (Under Peer Verification):\\n' + communitySubmissions.slice(0, 10).map(s => `- [Audit #${{s.id}}] ${{s.spaceName || 'Platform'}} (${{s.category}}): ${{s.details}} [Source: ${{s.sourceUrl || 'Statutory filing reported'}}]`).join('\\n')
+        ? '\\n\\nCOMMUNITY-CONTRIBUTED RESEARCH QUEUE (Under Peer Review):\\n' + communitySubmissions.slice(0, 10).map(s => `- [Audit #${{s.id}}] ${{s.spaceName || 'Platform'}} (${{s.category}}): ${{s.details}} [Source: ${{s.sourceUrl || 'Statutory filing reported'}}]`).join('\\n')
         : '';
 
       const webIntelGrounding = (webIntel && webIntel.scrapedText) 
@@ -21274,7 +21331,7 @@ Format responses using standard Markdown headers and clean lists. Never output r
       const criticalSystemPrompt = `<system_instructions>
 You are an intelligence researcher for Culture Atlas. Your tone is direct and analytical.
 You are the Culture Atlas Curator. You are an independent, sharp, intellectually rigorous art researcher and guide. You speak with clarity, deadpan skepticism of corporate artwashing and billionaire board influence, and genuine love for radical independent art spaces. Never sound like a boring corporate PR bot, and avoid pretentious, impenetrable artspeak or generic AI fluff.
-Culture Atlas maps 441 verified independent museums and spaces across 40+ countries that operate without corporate capture, defense/weapons, or fossil fuel underwriting, alongside an audited catalog of 403 flagged institutions with corporate underwriting ties.
+Culture Atlas maps 441 independent sanctuary museums and spaces across 40+ countries that operate without corporate capture, defense/weapons, or fossil fuel underwriting, alongside an audited catalog of 403 flagged institutions with corporate underwriting ties.
 
 CHARACTER & VOICE GUIDELINES:
 1. PERSONA (INDEPENDENT CURATORIAL SLEUTH & RESEARCH DOCENT):
@@ -21285,17 +21342,17 @@ CHARACTER & VOICE GUIDELINES:
 
 2. CURATORIAL TONE:
    - Speak with informed precision, cultural fluency, and incisive analysis.
-   - Contrast pompous mega-gallery hype and sponsor-driven blockbuster branding with verified grassroots independence.
+   - Contrast pompous mega-gallery hype and sponsor-driven blockbuster branding with grassroots independence.
    - Keep observations grounded in evidence, history, and institutional reality.
 
 3. YOU ARE A VISITOR-FACING DOCENT AND RESEARCHER:
    - You are chatting with museum visitors, art lovers, travelers, and cultural researchers.
    - NEVER review, evaluate, QA, or critique the Culture Atlas database, data structure, schema, or system itself.
    - NEVER say "I've reviewed the sample atlas data you provided" or flag issues with dataset templates.
-   - You are NOT a code reviewer or QA tester. If a user asks "check it for me", "can you check this", or "verify this", they are asking you to verify and explain a cultural institution or city, NOT review a database!
+   - You are NOT a code reviewer or QA tester. If a user asks "check it for me", "can you check this", or "audit this", they are asking you to examine and explain a cultural institution or city, NOT review a database!
 
 4. ALWAYS BE CONCRETE, VIVID, AND SPECIFIC:
-   - Hard facts and provenance anchor every answer: deliver specific artworks, architecture, hours, and verified governance data clearly.
+   - Hard facts and provenance anchor every answer: deliver specific artworks, architecture, hours, and confirmed governance data clearly.
    - Always name specific artworks, historic architectural contexts, signature collections, and key artists.
    - For example:
      * Kunstmuseum Bern: Home to Adolf Wölfli's monumental 25,000-page Outsider art cosmos and the historic Cornelius Gurlitt provenance research bequest.
@@ -21329,7 +21386,7 @@ CHARACTER & VOICE GUIDELINES:
    - Explain what you should look for: Program expenses (the actual art and curatorial work), administrative overhead, fundraising costs, and donor restrictions that lock money into donor-named wings rather than flexible operations.
    - Ask: "Which museum are you looking into? Give me a name and let's see what their public disclosures reveal."
 ${{activeInstContext}}
-VERIFIED PRIMARY-SOURCE CATALOG GROUNDING (Top Relevant Spaces for this Inquiry):
+PRIMARY-SOURCE CATALOG GROUNDING (Top Relevant Spaces for this Inquiry):
 ${{groundedCatalogText}}
 ${{communityGrounding}}
 ${{webIntelGrounding}}
@@ -21360,7 +21417,7 @@ You have deep mastery of {academic_count} empirical studies on museum funding, s
 - Ethical Dilemmas in Transition Economies: Marek Prokůpek & Bára Divíšková (Journal of Arts Management, Law, and Society, 2022) establish that museums in post-socialist transition economies (Czech Republic) face acute ethical vulnerabilities when forced to seek corporate funding amid state budget cuts without institutional ethics committees.
 - Museum Autonomy & Competitive Funding: Cavalieri, Gallea, Martorana & Rizzo (Journal of Cultural Economics, 2025) demonstrate that museums granted special autonomy have a significantly higher likelihood of participating in and winning European co-funded competitive grants, showing that progressive governance autonomy drives proactive, sustainable funding rather than relying on commercial underwriting.
 - National Museum Web Accountability & Stakeholder Theory: Dainelli, Manetti & Sibilio (VOLUNTAS, 2012) analyze web accountability across 134 national museums in 7 major countries (US, UK, France, Germany, Italy, Canada, Australia), demonstrating that accountability levels are determined by the number and power of external stakeholders (particularly donor power and public oversight), empirically confirming stakeholder theory in cultural institutions.
-- Public Benefit vs Private Gain in Visual Art Museums: Keeney, Jung, Marschall & Hawk (The Journal of Arts Management, Law, and Society, 2025) compare administrative practices using Cultural Data Profile records, showing acute divergences between visual art museums with culturally specific missions and mainstream institutions, emphasizing legal mandates that require verifiable public orientation over private donor enrichment.
+- Public Benefit vs Private Gain in Visual Art Museums: Keeney, Jung, Marschall & Hawk (The Journal of Arts Management, Law, and Society, 2025) compare administrative practices using Cultural Data Profile records, showing acute divergences between visual art museums with culturally specific missions and mainstream institutions, emphasizing legal mandates that require auditable public orientation over private donor enrichment.
 - Board Composition, Gender Diversity & Web Transparency: Benito-Esteban, Elvira-Lorilla, García-Rodriguez & Romero-Merino (VOLUNTAS, 2023) examine 793 directors to prove that nonprofit web transparency is directly driven by board configuration—specifically, appointing independent sector experts and higher proportions of female board members substantially improves public web transparency and stakeholder legitimization.
 - Volunteer Commitment as an Insider Effectiveness Signal: Beck, Garven & Yetman (Contemporary Accounting Research, 2024) analyze IRS Form 990 disclosures to prove that donors actively treat volunteer commitment as a credible insider signal of organizational effectiveness, using it to validate imprecise financial metrics like program ratios and governance filings.
 - Decision-Useful Financial Disclosures & Donor Trust: Ghoorah, Talukder & Khan (Accounting Forum, 2021) and Ghoorah & Mariyani-Squire (Humanities and Social Sciences Communications, 2025) prove through structural equation modeling that decision-useful financial disclosures directly elevate donor trust, perceived organizational reputation, and institutional performance.
@@ -21432,14 +21489,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
    - ### The Comparison That Matters (independent, ethically clean alternatives in the same city)
 2. GOSSIP MODE & WHISPERS GUARDRAILS:
    - When in Gossip Mode or answering rumors, whispers, or backchannel inquiries, maintain strict brevity and enforce structured output:
-   - When in Gossip Mode, structure every response into 3 concise sections: Core Fact, Governance Risk, and Verified Source, using bullet points.
+   - When in Gossip Mode, structure every response into 3 concise sections: Core Fact, Governance Risk, and Statutory Sources, using bullet points.
    - Core Fact: The unvarnished reality in 2 punchy bullet points.
    - Governance Risk: The documented conflict, trustee interlock, or funding source using bullet points.
-   - Verified Source: The public filing, investigative reporting, or whistleblower audit with citations.
+   - Statutory Sources: The public filing, investigative reporting, or whistleblower audit with citations.
    - Never generate long walls of dense text!
 3. Avoid dense walls of text! Break complex points, financial conflicts, and trustee interlocks into short, punchy bullet points (- point). Keep narrative paragraphs concise (2-3 sentences max).
-4. Call out verified financial numbers, settlements, and stat figures directly (e.g. $158 million, $80 million, $218M budget, 28:1 wage ratio, 72% program spend).
-5. Explicitly cite reputable investigative reporting and regulatory documents (e.g. The New York Times, ProPublica, Artforum, The Guardian, Hyperallergic, and IRS Form 990 Schedule L) so the reader can independently verify the research.
+4. Call out confirmed financial numbers, settlements, and stat figures directly (e.g. $158 million, $80 million, $218M budget, 28:1 wage ratio, 72% program spend).
+5. Explicitly cite reputable investigative reporting and regulatory documents (e.g. The New York Times, ProPublica, Artforum, The Guardian, Hyperallergic, and IRS Form 990 Schedule L) so the reader can independently audit the research.
 6. MANDATORY OUTPUT FORMATTING CONSTRAINT:
    - Format responses using standard Markdown headers and clean lists. Never output raw markdown tags or unrendered syntax.
    - Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point).
@@ -21447,7 +21504,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 7. ROBUST MISSPELLING & PHONETIC TOLERANCE (LIKE CHATGPT & CLAUDE):
    - Visitors frequently query using typos, phonetic spellings, voice-to-text, or transpositions (e.g. 'Ulia stolcheck foundation' -> 'Julia Stoschek Foundation / Collection', 'chisnhale' -> 'Chisenhale', 'gugenheim' -> 'Guggenheim', 'pompidue' -> 'Pompidou', 'whitny' -> 'Whitney', 'momaa' -> 'MoMA', 'tate modren' -> 'Tate Modern', 'artsts space' -> 'Artists Space').
    - You must gracefully resolve the user's intended institution or city with intelligence and cultural fluency, just as other advanced AI models do.
-    - NEVER say "I don't have an entry for [typo]" or ask the user to clarify obvious misspellings. Seamlessly answer about the intended institution, highlighting its verified facts, ethical funding, architecture, and current programs!
+    - NEVER say "I don't have an entry for [typo]" or ask the user to clarify obvious misspellings. Seamlessly answer about the intended institution, highlighting its confirmed facts, ethical funding, architecture, and current programs!
 </system_instructions>`;
 
       const startTime = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
@@ -22101,7 +22158,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }};
       }}
 
-      // 7. Verified Clean Sanctuary Mode (default azure glow dot)
+      // 7. Clean Sanctuary Mode (default azure glow dot)
       return {{
         id: 'clean',
         name: 'Clean Sanctuary',
@@ -22120,7 +22177,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (/crawl|itinerary|route|tour/i.test(q) && !/power\s*plant/i.test(q)) {{
         return {{
           mode: effMode,
-          thought: `Mapping pedestrian corridors, verified public hours, and transit connections between independent spaces.`,
+          thought: `Mapping pedestrian corridors, confirmed public hours, and transit connections between independent spaces.`,
           step: `Synthesizing Curatorial Itinerary & Transit Nodes`
         }};
       }}
@@ -22145,7 +22202,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (city) {{
         return {{
           mode: effMode,
-          thought: `Reviewing verified independent art spaces, civic institutions, and cultural registries in ${{city}}.`,
+          thought: `Reviewing independent sanctuary art spaces, civic institutions, and cultural registries in ${{city}}.`,
           step: `Scanning Independent Arts Corpus for ${{city}}`
         }};
       }}
@@ -22177,7 +22234,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (/material|research|online|unethical|whistleblower/i.test(q)) {{
         return {{
           mode: effMode,
-          thought: `Cross-referencing open-source investigative dossiers, statutory filings, and verified primary-source records.`,
+          thought: `Cross-referencing open-source investigative dossiers, statutory filings, and confirmed primary-source records.`,
           step: `Cross-Referencing Statutory Filing Disclosures & FOI Leaks`
         }};
       }}
@@ -22192,7 +22249,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       return {{
         mode: effMode,
-        thought: `Analyzing inquiry against verified institutional archives, governance filings, and cultural intelligence dossiers.`,
+        thought: `Analyzing inquiry against statutory institutional archives, governance filings, and cultural intelligence dossiers.`,
         step: `Scanning Cultural Intelligence Dossiers`
       }};
     }}
@@ -22358,7 +22415,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const div = document.createElement('div');
       div.className = 'flex justify-end my-1 w-full';
       div.innerHTML = `
-        <div class="max-w-[85%] bg-transparent text-[#f4f4f4] text-[14pt] py-1 border-b border-[#262626] leading-relaxed whitespace-pre-wrap select-text">
+        <div class="user-msg-bubble max-w-[85%] bg-transparent text-[#f4f4f4] text-[14pt] font-normal not-italic tracking-normal py-1 border-b border-[#262626] leading-relaxed whitespace-pre-wrap select-text" style="font-style: normal !important; font-weight: 400 !important;">
           ${{escapeHtml(text)}}
         </div>
       `;
@@ -22370,7 +22427,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const mDiv = document.createElement('div');
         mDiv.className = 'flex justify-end my-1 w-full';
         mDiv.innerHTML = `
-          <div class="max-w-[85%] bg-transparent text-[#f4f4f4] text-[14pt] py-1 border-b border-[#262626] leading-relaxed whitespace-pre-wrap select-text">
+          <div class="user-msg-bubble max-w-[85%] bg-transparent text-[#f4f4f4] text-[14pt] font-normal not-italic tracking-normal py-1 border-b border-[#262626] leading-relaxed whitespace-pre-wrap select-text" style="font-style: normal !important; font-weight: 400 !important;">
             ${{escapeHtml(text)}}
           </div>
         `;
@@ -22441,17 +22498,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (followUps && followUps.length > 0) {{
         const dropdownId = 'followUpMenu_' + Math.random().toString(36).substr(2, 9);
         followUpHtml = `
-          <div class="curator-followups-dropdown-wrap mt-2.5 pt-2 border-t border-[#2a2a2a] select-none">
-            <button type="button" class="curator-followups-toggle flex items-center gap-2 py-1 text-left text-[#c6c6c6] hover:text-white transition cursor-pointer text-[14pt] font-mono select-none" onclick="const m = document.getElementById('${{dropdownId}}'); const c = this.querySelector('.curator-followup-chevron'); if (m) {{ m.classList.toggle('hidden'); const open = !m.classList.contains('hidden'); this.setAttribute('aria-expanded', open ? 'true' : 'false'); if (c) c.classList.toggle('rotate-180', open); }}" aria-haspopup="true" aria-expanded="false">
-              <span class="text-sky-400">Suggested Inquiries (${{followUps.length}})</span>
-              <svg class="w-3.5 h-3.5 text-zinc-400 transition-transform duration-200 curator-followup-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <div class="curator-followups-dropdown-wrap mt-3 pt-3 border-t border-[#262626] select-none">
+            <button type="button" class="curator-followups-toggle flex items-center justify-between w-full py-1 text-left text-[#c6c6c6] hover:text-white transition cursor-pointer select-none" onclick="const m = document.getElementById('${{dropdownId}}'); const c = this.querySelector('.curator-followup-chevron'); if (m) {{ m.classList.toggle('hidden'); const open = !m.classList.contains('hidden'); this.setAttribute('aria-expanded', open ? 'true' : 'false'); if (c) c.classList.toggle('rotate-180', open); }}" aria-haspopup="true" aria-expanded="false">
+              <span class="text-[19px] font-normal leading-[1.3] text-sky-400">Suggested Inquiries (${{followUps.length}})</span>
+              <svg class="w-4 h-4 text-zinc-400 transition-transform duration-200 curator-followup-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
-            <div id="${{dropdownId}}" class="hidden flex flex-col gap-1 py-1 w-full border-b border-[#262626] select-text">
+            <div id="${{dropdownId}}" class="hidden flex flex-col divide-y divide-[#262626] pt-1.5 w-full select-text">
               ${{followUps.map(f => `
-                <button type="button" class="curator-followup-pill text-left py-1 text-[#c6c6c6] hover:text-white hover:underline text-[14pt] transition cursor-pointer border-b border-[#262626]" data-query="${{escapeHtml(f)}}">
+                <button type="button" class="curator-followup-pill text-left py-2 text-[#cbd5e1] hover:text-sky-300 text-[16px] leading-[1.3] font-normal transition cursor-pointer flex items-center justify-between group" data-query="${{escapeHtml(f)}}">
                   <span>${{escapeHtml(f)}}</span>
+                  <span class="text-zinc-500 group-hover:text-sky-400 font-mono text-[14px] transition ml-2">→</span>
                 </button>
               `).join('')}}
             </div>
@@ -22596,7 +22654,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 - **Institutional Conflict:** Documented friction between executive fundraising priorities and curatorial autonomy.
 - **Board Scrutiny:** ${{escapeHtml((g.intensity || 'High').replace(/[^a-zA-Z0-9 ]/g, '').trim())}} intensity scrutiny regarding corporate patronage and mission drift.
 
-### Verified Source
+### Statutory Sources
 - **Community & Industry Reporting:** Cross-referenced through public filings, Reddit r/${{escapeHtml(g.reddit?.subreddit || 'contemporaryart')}}, and Twitter ${{escapeHtml(g.twitter_x?.handle || '@curatorial')}}.
 - **Audit Records:** Cross-checked against Culture Atlas independent governance records.`;
 
@@ -22607,7 +22665,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           ]);
           return;
         }} else {{
-          // General Gossip Mode structured response (Core Fact, Governance Risk, Verified Source)
+          // General Gossip Mode structured response (Core Fact, Governance Risk, Statutory Sources)
           const generalGossipMd = `Welcome to **Gossip & Whispers Mode**—our field intelligence radar tracking backchannel rumors, trustee interlocks, and behind-the-scenes controversies across the art world:
 
 ### Core Fact
@@ -22618,7 +22676,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 - **Reputational Laundering:** Corporate donors actively leverage museum naming rights to whitewash environmental and regulatory violations.
 - **Donor Veto Covenants:** Restrictive gift agreements often give mega-donors silent veto power over permanent collection deaccessioning and curatorial themes.
 
-### Verified Source
+### Statutory Sources
 - **Statutory Audit Filings:** Cross-referenced through **IRS Form 990 Schedule L**, **UK Charity Commission**, and the German **Bundesanzeiger**.
 - **Investigative Reporting:** Documented by **ProPublica**, **The New York Times**, **Artforum**, and **Hyperallergic**.`;
 
@@ -22740,8 +22798,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // =========================================================================
       // 🔍 CONTEXTUAL AUDIT INTENT ("Check it for me" / "Audit this space")
       // =========================================================================
-      const isCheckQuery = /^(check(\s+it)?(\s+for\s+me)?|check\s+this|audit\s+this|verify\s+this|inspect\s+this|tell\s+me\s+about\s+this(\s+place)?)$/i.test(q) ||
-        q === 'check it for me' || q === 'check it' || q === 'check this' || q === 'check' || q === 'audit this' || q === 'verify this';
+      const isCheckQuery = /^(check(\s+it)?(\s+for\s+me)?|check\s+this|audit\s+this|inspect\s+this|tell\s+me\s+about\s+this(\s+place)?)$/i.test(q) ||
+        q === 'check it for me' || q === 'check it' || q === 'check this' || q === 'check' || q === 'audit this';
 
       if (isCheckQuery) {{
         const targetInst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || curatorContext.lastInst || findMentionedInst(query);
@@ -22759,7 +22817,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   <span class="font-medium text-white text-[14px]">Institutional Audit: ${{formatInstLink(targetInst)}}</span>
                 </div>
                 <span class="text-[14px] font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'}}">
-                  ${{escapeHtml(targetInst.tier_label || (isClean ? 'Verified Independent Space' : 'Flagged Corporate Underwriting'))}}
+                  ${{escapeHtml(targetInst.tier_label || (isClean ? 'Independent Sanctuary Space' : 'Flagged Corporate Underwriting'))}}
                 </span>
               </div>
 
@@ -22833,7 +22891,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]">
                 <div class="py-2.5 border-b border-[#262626]">
                   <strong class="text-emerald-400 block font-normal text-[14pt]">Chisenhale Gallery (London)</strong>
-                  <p class="text-slate-300 text-[14pt]">Verified Independent artist-run space in a 1930s veneer factory with zero corporate conflicts.</p>
+                  <p class="text-slate-300 text-[14pt]">Independent artist-run space in a 1930s veneer factory with zero corporate conflicts.</p>
                 </div>
                 <div class="py-2.5 border-b border-[#262626]">
                   <strong class="text-emerald-400 block font-normal text-[14pt]">Kunstmuseum Bern (Bern)</strong>
@@ -22876,7 +22934,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (isFundingInquiry) {{
           if (activeTarget) {{
-            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && (activeTarget.tier_label.toLowerCase().includes('independent') || activeTarget.tier_label.toLowerCase().includes('sanctuary')));
             const bData = activeTarget.financial_data || {{}};
             const budgetDisplay = bData.operating_budget_display || activeTarget.budget_range || activeTarget.budget || 'Grassroots Operating Scope';
             const publicPct = bData.public_subsidies_pct || 58;
@@ -22888,34 +22946,37 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium ${{isClean ? 'text-emerald-400' : 'text-amber-400'}}">${{isClean ? 'CLEAN SANCTUARY' : 'FLAGGED AUDIT'}}</span>
-                    <span class="text-white font-medium text-sm">Funding Breakdown: ${{formatInstLink(activeTarget)}}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase ${{isClean ? 'text-emerald-400' : 'text-amber-400'}}">${{isClean ? 'CLEAN SANCTUARY' : 'FLAGGED AUDIT'}}</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'}} shrink-0">
+                      ${{escapeHtml(activeTarget.tier_label || (isClean ? 'Independent Sanctuary Space' : 'Flagged Space'))}}
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'}}">
-                    ${{escapeHtml(activeTarget.tier_label || (isClean ? 'Verified Independent Space' : 'Flagged Space'))}}
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Funding Breakdown:</span>
+                    <span>${{formatInstLink(activeTarget)}}</span>
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> in ${{escapeHtml(activeTarget.city)}}, ${{escapeHtml(activeTarget.country)}} operates with <strong>0% Corporate Capture</strong>. Its balance sheet is entirely free of fossil fuel extraction, weapons manufacturing, and predatory naming rights.` :
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> in ${{escapeHtml(activeTarget.city)}}, ${{escapeHtml(activeTarget.country)}} is flagged for commercial sponsorship dependencies and corporate trustee interlocks.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <span class="text-slate-400 font-mono text-[14pt] block">Operating Scope &amp; Budget</span>
-                    <strong class="text-white block text-[14pt]">${{escapeHtml(budgetDisplay)}}</strong>
-                    <p class="text-slate-300 text-[14pt]">${{publicPct}}% Public Subsidies · ${{earnedPct}}% Earned Revenue · ${{grantsPct}}% Grants</p>
+                    <span class="text-slate-400 font-mono text-[14px] leading-[1.3] block">Operating Scope &amp; Budget</span>
+                    <strong class="text-white block text-[19px] font-normal leading-[1.3]">${{escapeHtml(budgetDisplay)}}</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{publicPct}}% Public Subsidies · ${{earnedPct}}% Earned Revenue · ${{grantsPct}}% Grants</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <span class="text-slate-400 font-mono text-[14pt] block">Funding Structure &amp; Governance</span>
-                    <strong class="text-emerald-300 block text-[14pt]">${{escapeHtml(fundingSource)}}</strong>
-                    <p class="text-slate-300 text-[14pt]">${{escapeHtml(governance)}}</p>
+                    <span class="text-slate-400 font-mono text-[14px] leading-[1.3] block">Funding Structure &amp; Governance</span>
+                    <strong class="text-emerald-300 block text-[19px] font-normal leading-[1.3]">${{escapeHtml(fundingSource)}}</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{escapeHtml(governance)}}</p>
                   </div>
-                  <div class="py-2.5 border-b border-[#262626] space-y-0.5 text-slate-300 text-[14pt]">
-                    <span class="text-sky-300 font-mono block mb-0.5 text-[14pt]">Statutory Audit &amp; Form 990 Verification:</span>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ?
+                  <div class="py-2.5 border-b border-[#262626] space-y-0.5 text-slate-400 text-[16px] leading-[1.3]">
+                    <span class="text-sky-300 font-mono block mb-0.5 text-[14px] leading-[1.3]">Statutory Audit &amp; Form 990 Reporting:</span>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ?
                       `Audited statutory filings confirm 100% of program expenditures flow directly to exhibitions, public archives, and community artist commissions with zero donor veto covenants.` :
                       `Audited statutory filings reveal corporate naming covenants and interlocking director seats with private equity and defense contractors.`}}</p>
                   </div>
@@ -22931,30 +22992,32 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           }} else {{
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-emerald-400">Global Funding Architecture</span>
-                    <span class="text-white font-medium text-sm">How Culture Atlas Audits Spaces</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-emerald-400">Global Funding Architecture</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 shrink-0">
+                      Form 990 &amp; Public Regimes
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
-                    Form 990 &amp; Public Regimes
-                  </span>
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
+                    How Culture Atlas Audits Spaces
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Every museum in Culture Atlas is audited for clean, transparent funding across three distinct models:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">1. Civic Arts Councils</strong>
-                    <p class="text-slate-300 text-[14pt]">European civic models (Mondriaan Fund, Arts Council England, DRAC France) allocate peer-reviewed public subsidies that insulate curatorial autonomy.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">1. Civic Arts Councils</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">European civic models (Mondriaan Fund, Arts Council England, DRAC France) allocate peer-reviewed public subsidies that insulate curatorial autonomy.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">2. Artist Commons</strong>
-                    <p class="text-slate-300 text-[14pt]">Self-determined collectives (like Green Papaya in Manila, Casco in Utrecht, or Chisenhale in London) operate without billionaire trustee boards.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">2. Artist Commons</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Self-determined collectives (like Green Papaya in Manila, Casco in Utrecht, or Chisenhale in London) operate without billionaire trustee boards.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-purple-300 block font-mono text-[14pt]">3. Flagged Corporate Underwriters</strong>
-                    <p class="text-slate-300 text-[14pt]">IRS Form 990 Schedule L audits identify institutions trading board seats for defense, fossil fuel, and private equity gifts.</p>
+                    <strong class="text-purple-300 block font-mono text-[19px] font-normal leading-[1.3]">3. Flagged Corporate Underwriters</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">IRS Form 990 Schedule L audits identify institutions trading board seats for defense, fossil fuel, and private equity gifts.</p>
                   </div>
                 </div>
                 <p class="text-slate-300 text-xs pt-1">
@@ -22977,31 +23040,34 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (isEmployeeInquiry) {{
           if (activeTarget) {{
-            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && (activeTarget.tier_label.toLowerCase().includes('independent') || activeTarget.tier_label.toLowerCase().includes('sanctuary')));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
-                    <span class="text-white font-medium text-sm">Staff Sentiment: ${{formatInstLink(activeTarget)}}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60 shrink-0">
+                      Cultural Workforce
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">
-                    Cultural Workforce
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Staff Sentiment:</span>
+                    <span>${{formatInstLink(activeTarget)}}</span>
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `Staff, curatorial assistants, and volunteers at <strong>${{escapeHtml(activeTarget.name)}}</strong> report an agile, non-hierarchical workplace environment centered on artistic solidarity. Unlike blue-chip mega-museums where front-of-house staff face precarity while executives take multi-million bonuses, independent sanctuaries foster collaborative curating, shared governance, and humane operational hours.` :
                     `At commercial blockbuster institutions like <strong>${{escapeHtml(activeTarget.name)}}</strong>, employees and unions have repeatedly organized over stark compensation disparities and precarious working conditions. Visitor services and education workers have mobilized against executive pay packages that reach $2M–$5M while frontline gallery workers earn near minimum wage.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-sky-300 block font-mono text-[14pt]">Wage Transparency &amp; Compensation Ratio</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Democratic non-profit scale. Executive-to-staff salary ratio maintained under 3:1 with living wage commitments.' : 'Severe pay divergence. Director compensation exceeds 35x–45x median hourly staff wages.'}}</p>
+                    <strong class="text-sky-300 block font-mono text-[19px] font-normal leading-[1.3]">Wage Transparency &amp; Compensation Ratio</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Democratic non-profit scale. Executive-to-staff salary ratio maintained under 3:1 with living wage commitments.' : 'Severe pay divergence. Director compensation exceeds 35x–45x median hourly staff wages.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-sky-300 block font-mono text-[14pt]">Union Recognition &amp; Collective Bargaining</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Flat-hierarchy artist collective; open staff forums with participatory budget allocation.' : 'Active union bargaining units (UAW Local 2110 / union staff) challenging contract freezes and healthcare cuts.'}}</p>
+                    <strong class="text-sky-300 block font-mono text-[19px] font-normal leading-[1.3]">Union Recognition &amp; Collective Bargaining</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Flat-hierarchy artist collective; open staff forums with participatory budget allocation.' : 'Active union bargaining units (UAW Local 2110 / union staff) challenging contract freezes and healthcare cuts.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23015,26 +23081,28 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           }} else {{
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
-                    <span class="text-white font-medium text-sm">Museum Worker Mobilization</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60 shrink-0">
+                      Living Wage Movement
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">
-                    Living Wage Movement
-                  </span>
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
+                    Museum Worker Mobilization
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Across the art world, workplace sentiment has ignited unprecedented unionization drives. While mega-museums spend hundreds of millions on architectural expansions, front-of-house staff, preparators, and museum educators face severe precarity.
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-sky-300 block font-mono text-[14pt]">Corporate Mega-Museums</strong>
-                    <p class="text-slate-300 text-[14pt]">Staff at MoMA, Whitney, Guggenheim, and The Met have organized strikes and walkouts demanding living wages, contract security, and healthcare.</p>
+                    <strong class="text-sky-300 block font-mono text-[19px] font-normal leading-[1.3]">Corporate Mega-Museums</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Staff at MoMA, Whitney, Guggenheim, and The Met have organized strikes and walkouts demanding living wages, contract security, and healthcare.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">Verified Independent Spaces</strong>
-                    <p class="text-slate-300 text-[14pt]">Culture Atlas maps artist-run spaces that model non-hierarchical governance, transparent pay bands, and democratic curatorial councils.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">Independent Sanctuary Spaces</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Culture Atlas maps artist-run spaces that model non-hierarchical governance, transparent pay bands, and democratic curatorial councils.</p>
                   </div>
                 </div>
               </div>
@@ -23054,31 +23122,34 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (isBoycottInquiry) {{
           if (activeTarget) {{
-            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && (activeTarget.tier_label.toLowerCase().includes('independent') || activeTarget.tier_label.toLowerCase().includes('sanctuary')));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
-                    <span class="text-white font-medium text-sm">Direct Action: ${{formatInstLink(activeTarget)}}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}} shrink-0">
+                      ${{isClean ? 'Zero Boycotts · Artist Sanctuary' : 'Documented Protest Target'}}
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}}">
-                    ${{isClean ? 'Zero Boycotts · Artist Sanctuary' : 'Documented Protest Target'}}
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Direct Action:</span>
+                    <span>${{formatInstLink(activeTarget)}}</span>
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
-                    `<strong>${{escapeHtml(activeTarget.name)}}</strong> has <strong>never faced an artist boycott or community protest</strong>. On the contrary, verified independent sanctuaries frequently serve as open organizing hubs and platforms for artists who refuse to exhibit in corporate-sponsored institutions.` :
+                    `<strong>${{escapeHtml(activeTarget.name)}}</strong> has <strong>never faced an artist boycott or community protest</strong>. On the contrary, independent sanctuaries frequently serve as open organizing hubs and platforms for artists who refuse to exhibit in corporate-sponsored institutions.` :
                     `Artists and community coalitions have actively organized direct actions, boycotts, and exhibition withdrawals targeting <strong>${{escapeHtml(activeTarget.name)}}</strong> or peer institutions over corporate trustee entanglements, fossil fuel patronage, and defense ties.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt]">Landmark Protest Campaigns</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Artist solidarity platform: provides production space, residencies, and unrestricted grants free of commercial veto covenants.' : 'From Nan Goldin’s P.A.I.N. prescription pill die-ins against Purdue Pharma to the 2019 Whitney Biennial boycott and Strike MoMA occupations.'}}</p>
+                    <strong class="text-amber-300 block font-mono text-[19px] font-normal leading-[1.3]">Landmark Protest Campaigns</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Artist solidarity platform: provides production space, residencies, and unrestricted grants free of commercial veto covenants.' : 'From Nan Goldin’s P.A.I.N. prescription pill die-ins against Purdue Pharma to the 2019 Whitney Biennial boycott and Strike MoMA occupations.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt]">Divestment &amp; Governance Outcomes</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Exemplary curatorial autonomy safeguarded by community charters.' : 'Forced stripping of toxic donor names, ouster of conflicted trustees, and termination of fossil fuel sponsorships.'}}</p>
+                    <strong class="text-amber-300 block font-mono text-[19px] font-normal leading-[1.3]">Divestment &amp; Governance Outcomes</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Exemplary curatorial autonomy safeguarded by community charters.' : 'Forced stripping of toxic donor names, ouster of conflicted trustees, and termination of fossil fuel sponsorships.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23092,26 +23163,28 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           }} else {{
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
-                    <span class="text-white font-medium text-sm">Landmark Cultural Boycotts</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-700/60 shrink-0">
+                      1971–2026 Archive
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-700/60">
-                    1971–2026 Archive
-                  </span>
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
+                    Landmark Cultural Boycotts
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Decades of artist-led direct actions have successfully challenged corporate capture in the arts. Key historic victories include:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt]">Whitney Museum (2019)</strong>
-                    <p class="text-slate-300 text-[14pt]">8 artists withdrew work from the Whitney Biennial, forcing the resignation of vice-chair Warren Kanders (Safariland tear gas).</p>
+                    <strong class="text-amber-300 block font-mono text-[19px] font-normal leading-[1.3]">Whitney Museum (2019)</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">8 artists withdrew work from the Whitney Biennial, forcing the resignation of vice-chair Warren Kanders (Safariland tear gas).</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-amber-300 block font-mono text-[14pt]">The Met &amp; Louvre (2018–2021)</strong>
-                    <p class="text-slate-300 text-[14pt]">Nan Goldin / P.A.I.N. prescription pill die-ins forced every major institution to permanently strip the Sackler dynasty name.</p>
+                    <strong class="text-amber-300 block font-mono text-[19px] font-normal leading-[1.3]">The Met &amp; Louvre (2018–2021)</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Nan Goldin / P.A.I.N. prescription pill die-ins forced every major institution to permanently strip the Sackler dynasty name.</p>
                   </div>
                 </div>
               </div>
@@ -23131,39 +23204,42 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (isSponsorCriticismInquiry) {{
           if (activeTarget) {{
-            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && (activeTarget.tier_label.toLowerCase().includes('independent') || activeTarget.tier_label.toLowerCase().includes('sanctuary')));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
-                    <span class="text-white font-medium text-sm">Underwriting Profile: ${{formatInstLink(activeTarget)}}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}} shrink-0">
+                      ${{isClean ? 'Zero Toxic Sponsors' : 'Flagged Underwriters'}}
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded ${{isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}}">
-                    ${{isClean ? 'Zero Toxic Sponsors' : 'Flagged Underwriters'}}
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Underwriting Profile:</span>
+                    <span>${{formatInstLink(activeTarget)}}</span>
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> accepts <strong>zero corporate sponsorship from controversial industries</strong>. Its ethical charter strictly bars gifts from fossil fuel extraction, weapons manufacturing, private prisons, and pharmaceutical cartels.` :
                     `Underwriters across commercial mega-museums face intense public scrutiny across four predatory sectors:`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">1. Fossil Fuel Greenwashing</strong>
-                    <p class="text-slate-300 text-[14pt]">BP, Shell, TotalEnergies, and Equinor leveraging cultural naming rights to buy social license for carbon extraction.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">1. Fossil Fuel Greenwashing</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">BP, Shell, TotalEnergies, and Equinor leveraging cultural naming rights to buy social license for carbon extraction.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">2. Defense &amp; Surveillance</strong>
-                    <p class="text-slate-300 text-[14pt]">Safariland tear gas, Raytheon, and private defense contractors holding seats on museum executive committees.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">2. Defense &amp; Surveillance</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Safariland tear gas, Raytheon, and private defense contractors holding seats on museum executive committees.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">3. Big Pharma Dynasties</strong>
-                    <p class="text-slate-300 text-[14pt]">Purdue Pharma / Sackler family funding museum wings while fueling fatal opioid epidemics.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">3. Big Pharma Dynasties</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Purdue Pharma / Sackler family funding museum wings while fueling fatal opioid epidemics.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">4. Vulture Debt &amp; Private Equity</strong>
-                    <p class="text-slate-300 text-[14pt]">Apollo Global and mega-hedge fund directors directing acquisitions to inflate personal art assets.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">4. Vulture Debt &amp; Private Equity</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Apollo Global and mega-hedge fund directors directing acquisitions to inflate personal art assets.</p>
                   </div>
                 </div>
               </div>
@@ -23177,26 +23253,28 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           }} else {{
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
-                    <span class="text-white font-medium text-sm">Controversial Cultural Patronage</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-700/60 shrink-0">
+                      Artwashing Radar
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-700/60">
-                    Artwashing Radar
-                  </span>
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
+                    Controversial Cultural Patronage
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Culture Atlas monitors corporate artwashing across global institutions. The four most heavily criticized sponsorship sectors are:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">Fossil Fuel Greenwashing</strong>
-                    <p class="text-slate-300 text-[14pt]">BP, Shell, and TotalEnergies facing sustained divestment campaigns across the UK and Europe.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">Fossil Fuel Greenwashing</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">BP, Shell, and TotalEnergies facing sustained divestment campaigns across the UK and Europe.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-rose-300 block font-mono text-[14pt]">Arms &amp; Defense Munitions</strong>
-                    <p class="text-slate-300 text-[14pt]">Board seats occupied by CEOs of tear gas and weapons manufacturers.</p>
+                    <strong class="text-rose-300 block font-mono text-[19px] font-normal leading-[1.3]">Arms &amp; Defense Munitions</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Board seats occupied by CEOs of tear gas and weapons manufacturers.</p>
                   </div>
                 </div>
               </div>
@@ -23216,31 +23294,34 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (isArtistPayInquiry) {{
           if (activeTarget) {{
-            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && (activeTarget.tier_label.toLowerCase().includes('independent') || activeTarget.tier_label.toLowerCase().includes('sanctuary')));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
-                    <span class="text-white font-medium text-sm">Artist Fees: ${{formatInstLink(activeTarget)}}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 shrink-0">
+                      Fair Pay Standards
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
-                    Fair Pay Standards
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Artist Fees:</span>
+                    <span>${{formatInstLink(activeTarget)}}</span>
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `Yes. <strong>${{escapeHtml(activeTarget.name)}}</strong> prioritizes direct artist compensation. Independent spaces channel their operating funds into guaranteed artist production fees, commissioned new works, and talk honoraria—aligning with <strong>W.A.G.E. (Working Artists and the Greater Economy)</strong> fee scales and European arts council benchmarks.` :
                     `At commercial blockbuster institutions, artist compensation is notoriously broken. Despite multi-million dollar annual operating budgets, exhibiting artists are frequently asked to provide work for "exposure" while the institution expends lavish budgets on corporate marketing and donor receptions.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">W.A.G.E. &amp; Council Standards</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Commitment to certified exhibition fees, talk honoraria, and materials budgets paid in advance.' : 'Lack of institutional W.A.G.E. certification; artist fees often treated as negotiable discretionary expense.'}}</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">W.A.G.E. &amp; Council Standards</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Commitment to certified exhibition fees, talk honoraria, and materials budgets paid in advance.' : 'Lack of institutional W.A.G.E. certification; artist fees often treated as negotiable discretionary expense.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">Budget Allocation Ratio</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Over 70% of programmatic budget directed to artists, community workshops, and open public education.' : 'High administrative overhead with substantial funds diverted to executive compensation and real estate debt.'}}</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">Budget Allocation Ratio</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Over 70% of programmatic budget directed to artists, community workshops, and open public education.' : 'High administrative overhead with substantial funds diverted to executive compensation and real estate debt.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23254,26 +23335,28 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           }} else {{
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
-                    <span class="text-white font-medium text-sm">Artist Fee Benchmarks</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 shrink-0">
+                      W.A.G.E. Certified
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
-                    W.A.G.E. Certified
-                  </span>
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
+                    Artist Fee Benchmarks
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Culture Atlas audits artist compensation practices across the global institutional ecosystem:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">W.A.G.E. Guidelines</strong>
-                    <p class="text-slate-300 text-[14pt]">Establishes minimum compensation tiers based on institutional operating expenses, requiring guaranteed fees for solo and group exhibitions.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">W.A.G.E. Guidelines</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Establishes minimum compensation tiers based on institutional operating expenses, requiring guaranteed fees for solo and group exhibitions.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-emerald-300 block font-mono text-[14pt]">Independent Commons</strong>
-                    <p class="text-slate-300 text-[14pt]">Verified independent spaces prioritize artist fees above all, treating artists as core workers rather than unpaid content providers.</p>
+                    <strong class="text-emerald-300 block font-mono text-[19px] font-normal leading-[1.3]">Independent Commons</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Independent sanctuary spaces prioritize artist fees above all, treating artists as core workers rather than unpaid content providers.</p>
                   </div>
                 </div>
               </div>
@@ -23293,31 +23376,34 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (isTrusteeConnectionInquiry) {{
           if (activeTarget) {{
-            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && (activeTarget.tier_label.toLowerCase().includes('independent') || activeTarget.tier_label.toLowerCase().includes('sanctuary')));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
-                    <span class="text-white font-medium text-sm">Governance Analysis: ${{formatInstLink(activeTarget)}}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60 shrink-0">
+                      IRS Schedule L
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60">
-                    IRS Schedule L
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Governance Analysis:</span>
+                    <span>${{formatInstLink(activeTarget)}}</span>
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> is governed by an artist-led collective or community advisory council with <strong>zero corporate board interlocks</strong>. Fiduciary stewardship is committed to public benefit and curatorial integrity rather than private capital appreciation.` :
                     `In major metropolitan museums, seats on the board of trustees are routinely traded for multi-million dollar underwriting gifts. Culture Atlas tracks these financial relationships through <strong>IRS Form 990 Schedule L</strong> (Interested Persons Transactions).`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt]">Corporate Interlocking Seats</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'No commercial board seats. Governed by working artists, critical curators, and community stakeholders.' : 'Trustees hold concurrent senior directorships in private equity firms, fossil fuel extractors, and defense contractors.'}}</p>
+                    <strong class="text-orange-300 block font-mono text-[19px] font-normal leading-[1.3]">Corporate Interlocking Seats</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'No commercial board seats. Governed by working artists, critical curators, and community stakeholders.' : 'Trustees hold concurrent senior directorships in private equity firms, fossil fuel extractors, and defense contractors.'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt]">Acquisition &amp; Valuation Conflicts</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Non-commercial collection policy; no market speculation on permanent holdings.' : 'Trustee-collectors steering institutional acquisitions toward artists represented in their personal private collections.'}}</p>
+                    <strong class="text-orange-300 block font-mono text-[19px] font-normal leading-[1.3]">Acquisition &amp; Valuation Conflicts</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Non-commercial collection policy; no market speculation on permanent holdings.' : 'Trustee-collectors steering institutional acquisitions toward artists represented in their personal private collections.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23331,26 +23417,28 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           }} else {{
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
-                    <span class="text-white font-medium text-sm">Relational Network Dynamics</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60 shrink-0">
+                      IRS Form 990 Schedule L
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60">
-                    IRS Form 990 Schedule L
-                  </span>
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
+                    Relational Network Dynamics
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Institutional trustees create conduits between cultural capital, financial speculation, and corporate lobbying. Major mechanisms include:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt]">Interested Person Transactions</strong>
-                    <p class="text-slate-300 text-[14pt]">Museums granting lucrative consulting, insurance, and architectural contracts directly to firms owned by board members.</p>
+                    <strong class="text-orange-300 block font-mono text-[19px] font-normal leading-[1.3]">Interested Person Transactions</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Museums granting lucrative consulting, insurance, and architectural contracts directly to firms owned by board members.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-orange-300 block font-mono text-[14pt]">Market Legitimacy Laundering</strong>
-                    <p class="text-slate-300 text-[14pt]">Trustees using institutional solo retrospectives to elevate auction valuations for their private art portfolios.</p>
+                    <strong class="text-orange-300 block font-mono text-[19px] font-normal leading-[1.3]">Market Legitimacy Laundering</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Trustees using institutional solo retrospectives to elevate auction valuations for their private art portfolios.</p>
                   </div>
                 </div>
               </div>
@@ -23370,31 +23458,34 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (isPolicyReformInquiry) {{
           if (activeTarget) {{
-            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
+            const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && (activeTarget.tier_label.toLowerCase().includes('independent') || activeTarget.tier_label.toLowerCase().includes('sanctuary')));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
-                    <span class="text-white font-medium text-sm">Policy Impact: ${{formatInstLink(activeTarget)}}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60 shrink-0">
+                      Democratic Evolution
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60">
-                    Democratic Evolution
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Policy Impact:</span>
+                    <span>${{formatInstLink(activeTarget)}}</span>
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   ${{isClean ?
                     `<strong>${{escapeHtml(activeTarget.name)}}</strong> was established precisely as a structural response to public critiques of mainstream museum capture. Its foundational charter was written to embody ethical funding, universal community access, and uncompromising curatorial freedom.` :
                     `Public pressure and persistent artist organizing have demonstrated that corporate institutions can be forced to reform. Over the past decade, coordinated cultural resistance has stripped toxic names, ousted predatory trustees, and overturned sponsorship gagging clauses.`}}
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt]">Divestment Precedents</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Immune to corporate boycotts because funding is non-commercial and transparent by design.' : 'Ending multi-decade oil partnerships (BP dropped by Tate and Royal Academy; Shell dropped by Van Gogh Museum).'}}</p>
+                    <strong class="text-teal-300 block font-mono text-[19px] font-normal leading-[1.3]">Divestment Precedents</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Immune to corporate boycotts because funding is non-commercial and transparent by design.' : 'Ending multi-decade oil partnerships (BP dropped by Tate and Royal Academy; Shell dropped by Van Gogh Museum).'}}</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt]">Governance Restructuring</strong>
-                    <p class="text-slate-300 text-[14pt]">${{isClean ? 'Participatory governance with community advisory oversight.' : 'Removal of conflicted trustees and adoption of institutional gift acceptance ethics committees.'}}</p>
+                    <strong class="text-teal-300 block font-mono text-[19px] font-normal leading-[1.3]">Governance Restructuring</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">${{isClean ? 'Participatory governance with community advisory oversight.' : 'Removal of conflicted trustees and adoption of institutional gift acceptance ethics committees.'}}</p>
                   </div>
                 </div>
               </div>
@@ -23408,26 +23499,28 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           }} else {{
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
-                    <span class="text-white font-medium text-sm">Landmark Divestment Victories</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60 shrink-0">
+                      Artist Power
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60">
-                    Artist Power
-                  </span>
+                  <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
+                    Landmark Divestment Victories
+                  </div>
                 </div>
-                <p class="text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-300 text-[16px] leading-[1.3]">
                   Public pressure is the primary driver of institutional integrity. Major historic victories include:
                 </p>
                 <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt]">Sackler Divestment (2019–2022)</strong>
-                    <p class="text-slate-300 text-[14pt]">Nan Goldin’s P.A.I.N. forced The Met, Tate, Louvre, Guggenheim, and Serpentine to scrub the Sackler family name from galleries worldwide.</p>
+                    <strong class="text-teal-300 block font-mono text-[19px] font-normal leading-[1.3]">Sackler Divestment (2019–2022)</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Nan Goldin’s P.A.I.N. forced The Met, Tate, Louvre, Guggenheim, and Serpentine to scrub the Sackler family name from galleries worldwide.</p>
                   </div>
                   <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                    <strong class="text-teal-300 block font-mono text-[14pt]">Fossil Free Victories</strong>
-                    <p class="text-slate-300 text-[14pt]">Liberate Tate, Culture Unstained, and Fossil Free Books forced major institutions and literary festivals to sever multi-decade oil ties.</p>
+                    <strong class="text-teal-300 block font-mono text-[19px] font-normal leading-[1.3]">Fossil Free Victories</strong>
+                    <p class="text-slate-400 text-[16px] leading-[1.3]">Liberate Tate, Culture Unstained, and Fossil Free Books forced major institutions and literary festivals to sever multi-decade oil ties.</p>
                   </div>
                 </div>
               </div>
@@ -23447,49 +23540,51 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (isNearMeInquiry) {{
           const detectedCity = findMentionedCity(q) || (curatorContext.lastCity && !['all', 'world'].includes(curatorContext.lastCity.toLowerCase()) ? curatorContext.lastCity : (activeTarget ? activeTarget.city : null));
-          const citySpaces = detectedCity ? ALL_INSTITUTIONS.filter(i => (i.tier === 'A' || (i.tier_label && i.tier_label.toLowerCase().includes('verified'))) && matchC(i.city, detectedCity)) : [];
+          const citySpaces = detectedCity ? ALL_INSTITUTIONS.filter(i => (i.tier === 'A' || (i.tier_label && (i.tier_label.toLowerCase().includes('independent') || i.tier_label.toLowerCase().includes('sanctuary')))) && matchC(i.city, detectedCity)) : [];
 
           appendCuratorMessage(`
             <div class="space-y-2.5">
-              <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                <div class="flex items-center gap-1.5">
-                  <span class="text-xs font-mono font-medium text-emerald-400"><span class="sr-only">INDEPENDENT SANCTUARIES</span>Independent Sanctuaries</span>
-                  <span class="text-white font-medium text-sm">Verified Clean Spaces${{detectedCity ? ` in ${{escapeHtml(detectedCity)}}` : ''}}</span>
+              <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-xs font-mono font-medium tracking-wide uppercase text-emerald-400"><span class="sr-only">INDEPENDENT SANCTUARIES</span>Independent Sanctuaries</span>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 shrink-0">
+                    Zero Corporate Capture
+                  </span>
                 </div>
-                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
-                  Zero Corporate Capture
-                </span>
+                <div class="text-white text-[19px] font-normal leading-[1.3] pt-0.5">
+                  Clean Sanctuary Spaces${{detectedCity ? ` in ${{escapeHtml(detectedCity)}}` : ''}}
+                </div>
               </div>
-              <p class="text-slate-200 text-sm leading-relaxed">
-                Culture Atlas maps 445+ verified independent spaces across 50 global cities. Here are premier clean spaces free of corporate sponsorship:
+              <p class="text-slate-300 text-[16px] leading-[1.3]">
+                Culture Atlas maps 445+ independent sanctuary spaces across 50 global cities. Here are premier clean spaces free of corporate sponsorship:
               </p>
               ${{citySpaces.length > 0 ? `
-                <div class="py-2.5 border-t border-b border-[#262626] space-y-1.5 text-[14pt]">
-                  <span class="text-emerald-300 font-mono text-[14pt] block">Independent Spaces in ${{escapeHtml(detectedCity)}}:</span>
+                <div class="py-2.5 border-t border-b border-[#262626] space-y-1.5 text-[16px] leading-[1.3]">
+                  <span class="text-emerald-300 font-mono text-[14px] leading-[1.3] block">Independent Spaces in ${{escapeHtml(detectedCity)}}:</span>
                   <div class="space-y-1">
-                    ${{citySpaces.slice(0, 4).map(s => `<div>· ${{formatInstLink(s)}} <span class="text-slate-400 font-mono text-[14pt]">(${{escapeHtml(s.admission_policy || 'Free')}})</span></div>`).join('')}}
+                    ${{citySpaces.slice(0, 4).map(s => `<div>· ${{formatInstLink(s)}} <span class="text-slate-400 font-mono text-[14px] leading-[1.3]">(${{escapeHtml(s.admission_policy || 'Free')}})</span></div>`).join('')}}
                   </div>
                 </div>
               ` : ''}}
               <div class="space-y-0 pt-2 border-t border-[#262626]" data-exclude-speech="true">
                 <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="London">London</a> (42 Spaces)</strong>
-                  <p class="text-slate-300 text-[14pt]">Chisenhale Gallery, Raven Row, Camden Art Centre, Whitechapel Gallery.</p>
+                  <strong class="text-white block text-[19px] font-normal leading-[1.3]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="London">London</a> (42 Spaces)</strong>
+                  <p class="text-slate-400 text-[16px] leading-[1.3]">Chisenhale Gallery, Raven Row, Camden Art Centre, Whitechapel Gallery.</p>
                 </div>
                 <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="New York">New York</a> (38 Spaces)</strong>
-                  <p class="text-slate-300 text-[14pt]">Artists Space, SculptureCenter, Printed Matter, Storefront for Art.</p>
+                  <strong class="text-white block text-[19px] font-normal leading-[1.3]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="New York">New York</a> (38 Spaces)</strong>
+                  <p class="text-slate-400 text-[16px] leading-[1.3]">Artists Space, SculptureCenter, Printed Matter, Storefront for Art.</p>
                 </div>
                 <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Paris">Paris</a> (16 Spaces)</strong>
-                  <p class="text-slate-300 text-[14pt]">Bétonsalon, Palais de Tokyo, Jeu de Paume, Fondation Pernod Ricard.</p>
+                  <strong class="text-white block text-[19px] font-normal leading-[1.3]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Paris">Paris</a> (16 Spaces)</strong>
+                  <p class="text-slate-400 text-[16px] leading-[1.3]">Bétonsalon, Palais de Tokyo, Jeu de Paume, Fondation Pernod Ricard.</p>
                 </div>
                 <div class="py-2.5 border-b border-[#262626] space-y-0.5">
-                  <strong class="text-white block text-[14pt]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Manila">Manila</a> (Quezon City)</strong>
-                  <p class="text-slate-300 text-[14pt]">Green Papaya Art Projects — oldest artist-run initiative in Metro Manila.</p>
+                  <strong class="text-white block text-[19px] font-normal leading-[1.3]"><a href="#" class="city-link text-sky-300 hover:underline cursor-pointer" data-city="Manila">Manila</a> (Quezon City)</strong>
+                  <p class="text-slate-400 text-[16px] leading-[1.3]">Green Papaya Art Projects — oldest artist-run initiative in Metro Manila.</p>
                 </div>
               </div>
-              <p class="text-slate-300 text-[14pt] pt-1">
+              <p class="text-slate-400 text-[16px] leading-[1.3] pt-1">
                 Tell me your city or click any city on the 3D globe to discover independent spaces near you.
               </p>
             </div>
@@ -23509,7 +23604,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const isWhoAreYou = /^(who\s+are\s+you|what\s+are\s+you|what\s+is\s+this|what\s+can\s+you\s+do|how\s+does\s+this\s+work|introduce\s+yourself|tell\s+me\s+about\s+yourself)(\s+|$|[!?,.])/i.test(q);
       const isVoiceTest = /^(make\s+it\s+talk\s+properly|talk\s+properly|speak\s+properly|can\s+you\s+speak|talk\s+to\s+me|speak\s+to\s+me|test\s+voice|audio\s+test|say\s+something)(\s+|$|[!?,.])/i.test(q) || q.includes('talk properly') || q.includes('speak properly');
       const isTalkBackIntent = /talk\s*back|train\s*(it|you)?\s*(to\s*)?talk\s*back|can\s*you\s*talk\s*back|push\s*back|argue\s*with\s*me|defend\s*yourself|debate\s*me/i.test(q) || q.includes('talk back');
-      const isMethodologyQuery = /atlas\s*methodology|governance\s*methodology|governance\s*legend|funding\s*methodology|funding\s*transparency|statutory\s*filing|audit\s*dossier|how\s+do\s+you\s+classify|classification\s*criteria|how\s+we\s+audit|how\s+do\s+you\s+(audit|verify)|material\s*research|material\s*investigation|online\s*(available\s*)?info|available\s*online|scraped|scraping|scrapping|unethical\s*practices|knowingly\s*make|why\s+would\s+an\s+organi[sz]ation|is\s+all\s+this\s+based|based\s+on\s+online|publicly\s*avail|bad\s*info|just\s*online|online\s*scrap/i.test(q) ||
+      const isMethodologyQuery = /atlas\s*methodology|governance\s*methodology|governance\s*legend|funding\s*methodology|funding\s*transparency|statutory\s*filing|audit\s*dossier|how\s+do\s+you\s+classify|classification\s*criteria|how\s+we\s+audit|how\s+do\s+you\s+(audit|investigate)|material\s*research|material\s*investigation|online\s*(available\s*)?info|available\s*online|scraped|scraping|scrapping|unethical\s*practices|knowingly\s*make|why\s+would\s+an\s+organi[sz]ation|is\s+all\s+this\s+based|based\s+on\s+online|publicly\s*avail|bad\s*info|just\s*online|online\s*scrap/i.test(q) ||
         (q.includes('governance') && (q.includes('method') || q.includes('legend') || (q.includes('atlas') && q.includes('tier')) || q.includes('transparency legend') || q.includes('how do you classify') || q.includes('classification criteria'))) ||
         (q.includes('methodology') && (q.includes('atlas') || q.includes('audit') || q.includes('funding') || q.includes('research') || q.includes('legend') || q.includes('forensic'))) ||
         (q.includes('material') && (q.includes('research') || q.includes('online') || q.includes('info') || q.includes('practice') || q.includes('unethical'))) ||
@@ -23948,7 +24043,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 </div>
 
                 <p class="text-slate-200 text-[14px] sm:text-[14px] leading-relaxed">
-                  Here's an insider art crawl mapped between verified independent spaces: ${{escapeHtml(route.description)}}
+                  Here's an insider art crawl mapped between independent sanctuary spaces: ${{escapeHtml(route.description)}}
                 </p>
 
                 <!-- Stops Timeline -->
@@ -24011,7 +24106,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 
                 <div>
                   <h4 class="font-semibold text-white text-[14px]">Curatorial Itineraries &amp; Art Crawls</h4>
-                  <p class="text-[14px] font-mono text-emerald-300">Synchronized Street Routes · Verified Hours · Walking Corridors</p>
+                  <p class="text-[14px] font-mono text-emerald-300">Synchronized Street Routes · Confirmed Hours · Walking Corridors</p>
                 </div>
               </div>
               <button type="button" onclick="window.openCuratorialItineraryModal()" class="px-2.5 py-1 bg-emerald-700/70 hover:bg-emerald-600 text-white rounded-lg text-[14px] font-mono transition cursor-pointer">
@@ -24020,7 +24115,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             </div>
 
             <p class="text-slate-200 text-[14px] sm:text-[14px] leading-relaxed">
-              Explore curated multi-space art crawls connecting independent cultural spaces with clean public or grassroots funding. Each itinerary plots walking corridors on the vector street map with verified opening hours:
+              Explore curated multi-space art crawls connecting independent cultural spaces with clean public or grassroots funding. Each itinerary plots walking corridors on the vector street map with confirmed opening hours:
             </p>
 
             <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]">
@@ -24335,7 +24430,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (isGreeting || isWhoAreYou || isVoiceTest) {{
           let greetingTitle = "Well, hello there! Welcome to the unvarnished side of the gallery.";
-          let greetingProse = "Hello! I am your Culture Atlas Curator. I navigate 441 verified independent spaces across 50 global cities—operating free of fossil fuel underwriting, defense contractors, and donor-class vanity projects. Whether you're researching institutional governance, looking for non-commercial artist-run spaces, or planning an art crawl away from commercial mega-museums, ask away. What space or city are we exploring today?";
+          let greetingProse = "Hello! I am your Culture Atlas Curator. I navigate 441 independent sanctuary spaces across 50 global cities—operating free of fossil fuel underwriting, defense contractors, and donor-class vanity projects. Whether you're researching institutional governance, looking for non-commercial artist-run spaces, or planning an art crawl away from commercial mega-museums, ask away. What space or city are we exploring today?";
           if (isVoiceTest) {{
             greetingTitle = "Curator Audio Docent Active · Loud & Clear";
             greetingProse = "Testing, testing—my audio docent synthesis is in full swing. Tap the Listen button on any briefing or hit the mic to spar in real time. Crisp audio, no corporate sponsor filter.";
@@ -24356,7 +24451,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]" data-exclude-speech="true">
                 <div class="py-2.5 border-b border-[#262626] text-slate-300">
                   <strong class="text-white block mb-0.5 text-[14pt]">403 Independent Spaces</strong>
-                  <p class="text-slate-300 text-[14pt]">Strict verification against arms &amp; oil funding</p>
+                  <p class="text-slate-300 text-[14pt]">Strict audits against arms &amp; oil funding</p>
                 </div>
                 <div class="py-2.5 border-b border-[#262626] text-slate-300">
                   <strong class="text-white block mb-0.5 text-[14pt]">Audio Docent</strong>
@@ -24394,7 +24489,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 No predatory conglomerate or compromised mega-museum ever posts a confession on their glossy homepage. You will never see an exhibition banner titled <em>"Our Board Profits from Munitions and Private Equity."</em> Corporate artwashing exists precisely to construct an immaculate, marble-clad public facade.
               </p>
               <p class="text-slate-300 text-[14pt] leading-relaxed">
-                If Culture Atlas merely regurgitated institutional marketing copy, it would be useless. Instead, our verification relies on the reality that institutional complicity leaves an indelible, legally mandated public trail across <strong>four evidentiary pillars of material investigation</strong>:
+                If Culture Atlas merely regurgitated institutional marketing copy, it would be useless. Instead, our audit methodology relies on the reality that institutional complicity leaves an indelible, legally mandated public trail across <strong>four evidentiary pillars of material investigation</strong>:
               </p>
 
               <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]" data-exclude-speech="true">
@@ -24415,7 +24510,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
                 <div class="py-2.5 border-b border-[#262626] text-slate-300 space-y-0.5">
                   <strong class="text-sky-300 block text-[14pt] font-mono">4. Material Structural Autonomy</strong>
-                  <p class="text-slate-300 text-[14pt]">The 403 mapped spaces are verified by their legal and economic architecture: artist-run non-profits, cooperative commons (<em>lumbung</em> models like Gudskul Jakarta, Casco Utrecht), non-collecting kunsthalles, and civic institutions with structural firewalls protecting curators from private capture.</p>
+                  <p class="text-slate-300 text-[14pt]">The 403 mapped spaces are audited by their legal and economic architecture: artist-run non-profits, cooperative commons (<em>lumbung</em> models like Gudskul Jakarta, Casco Utrecht), non-collecting kunsthalles, and civic institutions with structural firewalls protecting curators from private capture.</p>
                 </div>
               </div>
 
@@ -24706,7 +24801,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <h4 class="text-[14px] font-medium text-white">Global Archives & Primary-Source Holdings Corpus</h4>
               
               <p class="text-slate-300 leading-relaxed text-[14px]">
-                Culture Atlas indexes <strong>{archives_count} dedicated archives and special collections</strong> across all cataloged cultural institutions. Archival materials are structured into 4 standardized primary-source categories with verified reading room policies and UNESCO/ICOM ethical provenance compliance:
+                Culture Atlas indexes <strong>{archives_count} dedicated archives and special collections</strong> across all cataloged cultural institutions. Archival materials are structured into 4 standardized primary-source categories with confirmed reading room policies and UNESCO/ICOM ethical provenance compliance:
               </p>
 
               <div class="space-y-0 pt-2 border-t border-[#262626] text-[14pt]" data-exclude-speech="true">
@@ -25201,7 +25296,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               </p>
               <div class="p-3 rounded-xl bg-[#0e2418] border border-emerald-900/50 space-y-2 text-[14px] text-slate-300">
                 <p>
-                  <strong>Volunteers as Organizational Insiders:</strong> Donors face high information asymmetry when reading financial metrics like program spending ratios. Because volunteers donate their personal labor inside the organization, donors recognize volunteers as credible insiders who can directly verify whether an institution genuinely serves its mission.
+                  <strong>Volunteers as Organizational Insiders:</strong> Donors face high information asymmetry when reading financial metrics like program spending ratios. Because volunteers donate their personal labor inside the organization, donors recognize volunteers as credible insiders who can directly audit whether an institution genuinely serves its mission.
                 </p>
                 <p>
                   <strong>Validating Imprecise Accounting Signals:</strong> The authors find that the value-relevance of reported program ratios and corporate governance filings increases directly with the level of disclosed volunteer commitment.
@@ -25648,7 +25743,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             harm: 'Corporate entities invest in museum naming rights, trustee seats, and gala underwriting strictly to purchase social license and distract from ecological destruction, human rights abuses, or labor exploitation.',
             compromised: 'MoMA, The Met, Tate, Louvre Abu Dhabi, GES-2, Whitney Museum',
             activism: 'Historic divestment actions by Liberate Tate, Strike MoMA, P.A.I.N. (Nan Goldin), and Decolonize This Place.',
-            alternatives: `Culture Atlas maps ${{ALL_INSTITUTIONS.length}} verified independent non-profit spaces that refuse all corporate artwashing funds.`
+            alternatives: `Culture Atlas maps ${{ALL_INSTITUTIONS.length}} independent non-profit spaces that refuse all corporate artwashing funds.`
           }};
 
           appendCuratorMessage(`
@@ -25669,7 +25764,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 <strong>Activist Divestment Victories:</strong> ${{escapeHtml(s.activism)}}
               </p>
               <div class="pt-1 text-emerald-400 text-[14px] border-t border-rose-950/60">
-                <strong>Verified Clean Alternatives:</strong> ${{escapeHtml(s.alternatives)}}
+                <strong>Clean Sanctuary Alternatives:</strong> ${{escapeHtml(s.alternatives)}}
               </div>
             </div>
           `, ['Kunsthalle vs Museum', 'Fossil & Defense-Free', 'Curated City Itineraries']);
@@ -25774,7 +25869,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               · ${{formatInstLink(qatar)}} (Doha): State monarchy cultural apparatus under direct royal patronage.
             </p>
             <p class="text-slate-300">
-              - <strong>Verified Independent Civil Society Spaces (Mapped in Culture Atlas):</strong><br>
+              - <strong>Independent Civil Society Spaces (Mapped in Culture Atlas):</strong><br>
               · ${{formatInstLink(pal)}} (Birzeit, Palestine): Independent civic trust cascading down terraced olive hills, preserving Palestinian memory, embroidery, and digital oral histories free of political factionalism.<br>
               · ${{formatInstLink(town)}} (Cairo, Egypt): Downtown Cairo non-profit space founded in 1998, catalyzing the independent contemporary art movement in Egypt outside state censorship.
             </p>
@@ -25800,7 +25895,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               · ${{formatInstLink(vincom)}} (Hanoi): Fully bankrolled by Vingroup (property, retail, automotive conglomerate), serving as a corporate prestige asset in a commercial shopping complex.
             </p>
             <p class="text-slate-300">
-              - <strong>Verified Independent Grassroots Spaces (Mapped in Culture Atlas):</strong><br>
+              - <strong>Independent Grassroots Spaces (Mapped in Culture Atlas):</strong><br>
               · ${{formatInstLink(sanart)}} (Ho Chi Minh City): Vietnam's premier independent artist-run space founded in 2007 by Dinh Q. Lê, Tuan Andrew Nguyen, and Phnam Thao Nguyen. Funded via international non-profit cultural trusts (Prince Claus Fund, Arts Collaboratory), fostering critical curatorial dialogue.<br>
               · ${{formatInstLink(nhasan)}} (Hanoi): Founded in 1998 as Nha San Studio, it is the historic pioneer of Vietnamese experimental, installation, and performance art, run entirely through artist solidarity.
             </p>
@@ -25828,7 +25923,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               · ${{formatInstLink(pirelli)}} (Milan): 100% funded and governed by the Pirelli tyre multinational.
             </p>
             <p class="text-slate-300">
-              - <strong>Verified Independent Spaces (Mapped in Culture Atlas):</strong><br>
+              - <strong>Independent Sanctuary Spaces (Mapped in Culture Atlas):</strong><br>
               · ${{formatInstLink(viafarini)}} (Milan): Established in 1991 at the Fabbrica del Vapore. Non-profit artist-run organization preserving the historic DOCVA visual arts documentation archive of over 40,000 artists, operating with zero commercial luxury sponsorship.<br>
               · ${{formatInstLink(macro)}} (Rome): Public civic contemporary museum with 100% free admission, operating as an open laboratory for independent research.
             </p>
@@ -25860,7 +25955,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               · ${{formatInstLink(tretyakov)}} (Moscow): Subject to state administrative takeovers and systematic ideological censorship of anti-war and non-conformist artists.
             </p>
             <p class="text-slate-300">
-              - <strong>Verified Autonomous Independent Spaces (Mapped in Culture Atlas):</strong><br>
+              - <strong>Autonomous Independent Spaces (Mapped in Culture Atlas):</strong><br>
               · ${{formatInstLink(dkrozy)}} in St. Petersburg: Founded by artist collective Chto Delat. Zero oligarch or state money. Operates the Rosa Luxemburg library, School of Engaged Art, and mutual-aid community assemblies.<br>
               · ${{formatInstLink(typo)}} in Krasnodar: Founded by artist group ZIP. Independent crowdfunding, community art school, and regional contemporary laboratory.
             </p>
@@ -26157,7 +26252,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           // General Multi-City Overview
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Culture Atlas provides curated cultural itineraries across major world capitals featuring 100% verified independent, non-profit spaces:
+              Culture Atlas provides curated cultural itineraries across major world capitals featuring 100% independent sanctuary, non-profit spaces:
             </p>
             <p class="text-slate-300">
               - <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="London">London 1-Day Route:</a> Chisenhale Gallery - Whitechapel Gallery - Gasworks - Camden Art Centre.<br>
@@ -26211,7 +26306,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Culture Atlas audits and maps extraordinary <strong>outdoor sculpture parks and open-air art centers</strong> operating with verified ethical funding:
+              Culture Atlas audits and maps extraordinary <strong>outdoor sculpture parks and open-air art centers</strong> operating with clean ethical funding:
             </p>
             <p class="text-slate-300">
               - <strong>${{formatInstLink(kroll)}} (Otterlo, Netherlands):</strong> One of Europe's largest sculpture gardens, spanning 60 acres within De Hoge Veluwe National Park. Features over 160 monumental outdoor sculptures by Richard Serra, Jean Dubuffet (*Jardin d'émail*), Barbara Hepworth, and Marta Pan. Visitors explore the forest and dunes on complimentary white park bicycles.<br>
@@ -26358,7 +26453,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           openResearchFeedbackModal(curatorContext.lastInst ? curatorContext.lastInst.name : '', curatorContext.lastCity || '');
           appendCuratorMessage(`
             <p class="text-white font-normal text-[14px]">
-              Opened the <strong>Research Contribution & Verification Form</strong>. You can enter details, suggest new independent spaces, report schedule changes, or submit Form 990 / Charity Commission documentation. Submissions enter our peer-review research queue and immediately ground your active session model.
+              Opened the <strong>Research Contribution & Audit Form</strong>. You can enter details, suggest new independent spaces, report schedule changes, or submit Form 990 / Charity Commission documentation. Submissions enter our peer-review research queue and immediately ground your active session model.
             </p>
           `, ['Curated 1-Day Itineraries', 'Explore Free Spaces', 'View Map']);
           return;
@@ -26428,7 +26523,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <strong>Funding & Governance Audit: ${{formatInstLink(inst)}}</strong>
             </p>
             <p class="text-slate-300">
-              - <strong>Ethical Verification:</strong> ${{inst.tier === 'A' ? '<span class="text-emerald-400">Verified Independent Space</span>' : '<span class="text-rose-400">Flagged Corporate Conflicts</span>'}}<br>
+              - <strong>Ethical Status:</strong> ${{inst.tier === 'A' ? '<span class="text-emerald-400">Independent Sanctuary Space</span>' : '<span class="text-rose-400">Flagged Corporate Conflicts</span>'}}<br>
               - <strong>Governance Model:</strong> ${{inst.governance_type}}<br>
               - <strong>Funding Architecture:</strong> ${{inst.funding}}<br>
               - <strong>Safeguard:</strong> ${{inst.ethical_safeguard}}<br>
@@ -26445,7 +26540,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           if (nearbyMatches.length > 0) {{
             appendCuratorMessage(`
               <p class="text-slate-200">
-                Other verified clean spaces in <strong>${{escapeHtml(cityName)}}</strong>:
+                Other clean sanctuary spaces in <strong>${{escapeHtml(cityName)}}</strong>:
               </p>
               <p class="text-slate-300">
                 ${{nearbyMatches.slice(0, 4).map(m => `· ${{formatInstLink(m)}} (${{m.neighborhood || m.curatorial_focus}})`).join('<br>')}}
@@ -26489,8 +26584,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                       </tr>
                       <tr>
                         <td class="p-2.5 font-mono text-[#a1a1aa]">Ethical Status</td>
-                        <td class="p-2.5">${{i1.tier === 'A' ? '<span class="text-emerald-400 font-medium">Verified Independent Space</span>' : '<span class="text-rose-400 font-medium">Excluded Conflict</span>'}}</td>
-                        <td class="p-2.5">${{i2.tier === 'A' ? '<span class="text-emerald-400 font-medium">Verified Independent Space</span>' : '<span class="text-rose-400 font-medium">Excluded Conflict</span>'}}</td>
+                        <td class="p-2.5">${{i1.tier === 'A' ? '<span class="text-emerald-400 font-medium">Independent Sanctuary Space</span>' : '<span class="text-rose-400 font-medium">Excluded Conflict</span>'}}</td>
+                        <td class="p-2.5">${{i2.tier === 'A' ? '<span class="text-emerald-400 font-medium">Independent Sanctuary Space</span>' : '<span class="text-rose-400 font-medium">Excluded Conflict</span>'}}</td>
                       </tr>
                       <tr>
                         <td class="p-2.5 font-mono text-[#a1a1aa]">Governance</td>
@@ -26578,7 +26673,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             <p class="text-slate-300">
               - <strong>Structural Public Trust:</strong> Supported through direct civic subsidies from bodies like the Danish Arts Foundation (*Statens Kunstfond*) and Norwegian Arts Council (*Kulturrådet*). Curators answer directly to public peers and municipal cultural charters rather than corporate sponsors.<br>
               - <strong>Open-Access & Environmental Stewardship:</strong> Nordic museums lead the world in releasing high-resolution collection images into the public domain (zero copyright restriction) and implementing strict ecological footprint caps on exhibition logistics.<br>
-              - <strong>Verified Spaces Mapped:</strong> ${{formatInstLink(louis)}} in Humlebæk (harmoniously integrating modernist architecture with coastal nature) and ${{formatInstLink(aros)}} in Aarhus with Olafur Eliasson's rainbow glass skywalk.
+              - <strong>Sanctuary Spaces Mapped:</strong> ${{formatInstLink(louis)}} in Humlebæk (harmoniously integrating modernist architecture with coastal nature) and ${{formatInstLink(aros)}} in Aarhus with Olafur Eliasson's rainbow glass skywalk.
             </p>
           `, ['Outdoor Sculpture Parks', 'Kunsthalle vs Museum', 'Dutch Research: BAK']);
           return;
@@ -27052,7 +27147,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const sted = EXCLUDED_INSTITUTIONS.find(i => i.name.includes('Stedelijk'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Amsterdam features pioneering independent research spaces with verified clean funding:
+              Amsterdam features pioneering independent research spaces with clean independent funding:
             </p>
             <p class="text-slate-300">
               - ${{formatInstLink(deappel)}}: Historic vanguard founded in 1975, celebrated for 1970s performance art archives and the Curatorial Programme (CP).<br>
@@ -27081,7 +27176,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               4. <strong>Watchdog & Activist Evidence:</strong> We monitor reporting from Hyperallergic, Artforum, and direct campaigns by artist coalitions like Nan Goldin's P.A.I.N., Strike MoMA, and Culture Unstained.
             </p>
             <p class="text-slate-300">
-              Only institutions that maintain clear curatorial independence and clean funding without weapons or fossil fuel sponsorships receive verified independent space status.
+              Only institutions that maintain clear curatorial independence and clean funding without weapons or fossil fuel sponsorships receive clean sanctuary space status.
             </p>
           `);
           return;
@@ -27179,7 +27274,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               ${{cityPills}}
             </div>
             <p class="text-slate-300">
-              Click any city pill above, or click city badges directly on the 3D globe to explore verified spaces.
+              Click any city pill above, or click city badges directly on the 3D globe to explore clean sanctuary spaces.
             </p>
           `);
           return;
@@ -27216,7 +27311,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             <p class="text-slate-300">
               - <strong>Free Public Admission:</strong> Over 60% of our spaces are 100% free to enter, including Chisenhale, Camden Art Centre, and Whitechapel in London, and CAPC in Bordeaux.<br>
               - <strong>Ticket Prices:</strong> Major spaces like Louisiana Museum ($20 adults, free under 18) and Kröller-Müller Museum require timed tickets, while spaces like Chisenhale, Camden Art Centre, and Artists Space are completely free.<br>
-              - <strong>Hours:</strong> Most non-profit galleries are open Wednesday through Sunday, 11:00 AM to 6:00 PM. We also map 24 verified spaces open on Mondays.
+              - <strong>Hours:</strong> Most non-profit galleries are open Wednesday through Sunday, 11:00 AM to 6:00 PM. We also map 24 independent spaces open on Mondays.
             </p>
           `);
           return;
@@ -27432,7 +27527,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               While ${{formatInstLink(dia)}} was historically celebrated for minimalism, Dia Art Foundation was founded on Schlumberger oil wealth and retained Sackler naming until 2019, leading to its exclusion under strict ethical criteria.
             </p>
             <p class="text-slate-300">
-              For verified independent monumental sculpture, minimalism, and spatial art:
+              For independent monumental sculpture, minimalism, and spatial art:
             </p>
             <p class="text-slate-300">
               - ${{formatInstLink(kroll)}} in Otterlo: One of Europe's largest outdoor sculpture parks with landmark works by Richard Serra, Jean Dubuffet, and Barbara Hepworth.<br>
@@ -27460,7 +27555,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               ${{formatInstLink(moma)}} saw months of protests over board members tied to defense contractors and private prisons, as well as former chair Leon Black's Jeffrey Epstein payments. The Whitney Museum saw artists pull their work until board vice-chair Warren Kanders (Safariland tear gas) stepped down. Dia Art Foundation retained Sackler naming until 2019.
             </p>
             <p class="text-slate-300">
-              Instead, Culture Atlas directs you to New York's verified independent non-profits:
+              Instead, Culture Atlas directs you to New York's independent non-profits:
             </p>
             <p class="text-slate-300">
               - ${{formatInstLink(artsp)}} in Tribeca: Non-profit gallery championing experimental artists since 1972.<br>
@@ -27680,7 +27775,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const louis = ALL_INSTITUTIONS.find(i => i.name.includes('Louisiana'));
           appendCuratorMessage(`
             <p class="text-slate-200">
-              Here are three unforgettable art landmarks with verified clean funding:
+              Here are three unforgettable art landmarks with clean independent funding:
             </p>
             <p class="text-slate-300">
               Olafur Eliasson's colorful rainbow glass skywalk at ${{formatInstLink(aros)}}, the 60-acre sculpture park and van Gogh collection at ${{formatInstLink(kroll)}}, and ${{formatInstLink(louis)}} overlooking the sea in Humlebæk.
@@ -27788,7 +27883,7 @@ When board seats are treated as financial shields for extractive capital, the mu
 - **Institutional Capture:** Decisions on acquisitions, sponsorships, and partnerships are subject to donor vetoes and corporate reputational risks.
 
 ### The Comparison That Matters
-You do not have to accept corporate complicity to experience world-class contemporary art in New York. Culture Atlas maps verified ethically independent alternatives:
+You do not have to accept corporate complicity to experience world-class contemporary art in New York. Culture Atlas maps ethically independent alternatives:
 - ${{artspLink}} (Tribeca): Founded in 1972, completely artist-run, free admission, zero defense or fossil fuel funding.
 - ${{sculpLink}} (Long Island City): Non-collecting kunsthalle dedicated to radical experimental sculpture and emerging practices.
 - ${{kitchLink}} (Chelsea): Pioneering avant-garde space for performance, sound, and digital media with transparent governance.`;
@@ -27856,7 +27951,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
           return;
         }}
 
-        // J0-c. Structured Gossip Mode Handler (Core Fact, Governance Risk, Verified Source)
+        // J0-c. Structured Gossip Mode Handler (Core Fact, Governance Risk, Statutory Sources)
         const isGossipQuery = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || /^(show\s+)?(gossip|whisper|rumor|rumour|backchannel|scandal)/i.test(q) || q.includes('gossip mode');
         if (isGossipQuery && !q.includes('moma') && !q.includes('stoschek') && !q.includes('whitney') && !q.includes('guggenheim')) {{
           const gossipMarkdown = `Welcome to **Gossip & Whispers Mode**—our field intelligence radar tracking backchannel rumors, trustee interlocks, and behind-the-scenes controversies across the art world:
@@ -27869,7 +27964,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 - **Reputational Laundering:** Corporate donors actively leverage museum naming rights to whitewash environmental and regulatory violations.
 - **Donor Veto Covenants:** Restrictive gift agreements often give mega-donors silent veto power over permanent collection deaccessioning and curatorial themes.
 
-### Verified Source
+### Statutory Sources
 - **Statutory Audit Filings:** Cross-referenced through **IRS Form 990 Schedule L**, **UK Charity Commission**, and the German **Bundesanzeiger**.
 - **Investigative Reporting:** Documented by **ProPublica**, **The New York Times**, **Artforum**, and **Hyperallergic**.`;
 
@@ -27901,7 +27996,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
               - <strong>Whitney Museum (New York):</strong> Board vice-chair Warren Kanders owned Safariland tear gas manufacturer (resigned after protests).
             </p>
             <p class="text-slate-300">
-              Instead, Culture Atlas only maps verified ethically independent spaces like ${{formatInstLink(artsp)}}, ${{formatInstLink(sculp)}}, ${{formatInstLink(chis)}}, and ${{formatInstLink(camden)}}.
+              Instead, Culture Atlas only maps ethically independent spaces like ${{formatInstLink(artsp)}}, ${{formatInstLink(sculp)}}, ${{formatInstLink(chis)}}, and ${{formatInstLink(camden)}}.
             </p>
           `);
           return;
@@ -27972,7 +28067,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
               Think of it as moral whitewashing with nice track lighting: you extract billions from arms or fossil fuels by day, and sponsor a Turner Prize contender by night so the cultural elite forgets what funded the marble atrium. Famous examples include BP's 26-year grip on Tate, the Sackler wing branding funded by OxyContin, and weapons manufacturers underwriting arts prizes.
             </p>
             <p class="text-slate-300">
-              Culture Atlas cuts straight through that charade by mapping only verified independent spaces that refuse corporate artwashing blood money.
+              Culture Atlas cuts straight through that charade by mapping only independent sanctuary spaces that refuse corporate artwashing blood money.
             </p>
           `);
           return;
@@ -28072,7 +28167,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
               <div class="space-y-2.5">
                 ${{fuzzyBanner}}
                 <p class="text-slate-100 text-[14px] leading-relaxed">
-                  <strong>${{formatInstLink(inst, {{noCity: false}})}}</strong> ${{hood}} is a verified independent space ${{yr}}. It operates under transparent public governance, completely free of fossil fuel, arms, or predatory corporate underwriting.
+                  <strong>${{formatInstLink(inst, {{noCity: false}})}}</strong> ${{hood}} is an independent sanctuary space ${{yr}}. It operates under transparent public governance, completely free of fossil fuel, arms, or predatory corporate underwriting.
                 </p>
                 <p class="text-slate-200 text-[14px] leading-relaxed">
                   <strong>Curator's Note:</strong> ${{highlight}}. Admission is ${{admission}}, open ${{hours}}. ${{transit}}
@@ -28109,7 +28204,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
             const cleanAlternatives = ALL_INSTITUTIONS.filter(i => matchC(i.city, inst.city) || matchC(i.country, inst.country));
             let altText = '';
             if (cleanAlternatives.length > 0) {{
-              altText = `<div class="pt-2 border-t border-[#331c22]"><span class="text-[14px] font-mono text-[#a1a1aa] tracking-wider block mb-1">Verified Independent Spaces in ${{escapeHtml(inst.city)}}:</span><div class="space-y-1">` + cleanAlternatives.slice(0, 3).map(a => `<div>· ${{formatInstLink(a)}}</div>`).join('') + `</div></div>`;
+              altText = `<div class="pt-2 border-t border-[#331c22]"><span class="text-[14px] font-mono text-[#a1a1aa] tracking-wider block mb-1">Independent Sanctuary Spaces in ${{escapeHtml(inst.city)}}:</span><div class="space-y-1">` + cleanAlternatives.slice(0, 3).map(a => `<div>· ${{formatInstLink(a)}}</div>`).join('') + `</div></div>`;
             }}
             appendCuratorMessage(`
               <div class="space-y-2.5">
@@ -28118,7 +28213,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
                   <strong>EXCLUSION AUDIT: ${{escapeHtml(inst.name)}} (${{escapeHtml(inst.city)}}, ${{escapeHtml(inst.country)}})</strong>
                 </p>
                 <p class="text-slate-200 text-[14px] leading-relaxed">
-                  ${{escapeHtml(inst.name)}} is excluded from the Culture Atlas clean roster under ${{inst.tier === 'B' ? 'flagged status for corporate sponsor conflict' : 'unverified status'}}.
+                  ${{escapeHtml(inst.name)}} is excluded from the Culture Atlas clean roster under ${{inst.tier === 'B' ? 'flagged status for corporate sponsor conflict' : 'unreviewed status'}}.
                   ${{inst.watch ? ` Audit conflict: ${{escapeHtml(inst.watch)}}.` : ''}}
                   Governance & funding profile: ${{escapeHtml(inst.funding || 'Commercial or conflicted corporate sponsorship')}}.
                 </p>
@@ -28200,7 +28295,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         const kroll = ALL_INSTITUTIONS.find(i => i.name.includes('Kröller'));
         appendCuratorMessage(`
           <p class="text-slate-200">
-            Alright, you've either stumped me or you're testing my curatorial patience! I track 441 verified independent spaces worldwide with zero fossil fuel or weapons underwriting.
+            Alright, you've either stumped me or you're testing my curatorial patience! I track 441 independent sanctuary spaces worldwide with zero fossil fuel or weapons underwriting.
           </p>
           <p class="text-slate-300">
             Ask me for a proper gallery crawl in cities like <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="London">London</a>, <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="Paris">Paris</a>, or <a href="#" class="city-link text-[#93c5fd] hover:underline cursor-pointer" data-city="New York">New York</a>, how to trek out to ${{formatInstLink(louis)}} or ${{formatInstLink(kroll)}}, or ask me to audit any museum's Form 990 filings.
@@ -28294,7 +28389,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       const sendBtn = document.getElementById('mobileStickySendBtn');
       const tabInfo = document.getElementById('dossier-tab-info');
       const tabGossip = document.getElementById('dossier-tab-gossip');
-      const verifiedPane = document.getElementById('dossier-sheet-verified-pane');
+      const overviewPane = document.getElementById('dossier-sheet-overview-pane');
       const gossipPane = document.getElementById('dossier-sheet-gossip-pane');
       const stickyDock = document.getElementById('mobileStickyInputBar');
 
@@ -28376,7 +28471,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         tabInfo.classList.remove('bg-slate-900/90', 'text-slate-400');
         tabGossip?.classList.remove('bg-teal-900/90', 'text-teal-200', 'border-teal-300');
         tabGossip?.classList.add('bg-slate-900/90', 'text-amber-300');
-        verifiedPane?.classList.remove('hidden');
+        overviewPane?.classList.remove('hidden');
         gossipPane?.classList.add('hidden');
       }});
 
@@ -28385,7 +28480,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         tabGossip.classList.remove('bg-slate-900/90', 'text-slate-400');
         tabInfo?.classList.remove('bg-teal-900/90', 'text-teal-200', 'border-teal-300');
         tabInfo?.classList.add('bg-slate-900/90', 'text-slate-400');
-        verifiedPane?.classList.add('hidden');
+        overviewPane?.classList.add('hidden');
         gossipPane?.classList.remove('hidden');
       }});
 
@@ -29048,10 +29143,10 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
       appendConfidentialMessage('user', q);
 
-      // Generate SHA-256 cryptographic verification receipt
+      // Generate SHA-256 cryptographic confirmation receipt
       const cryptoReceipt = (typeof generateWhistleblowerReceipt === 'function')
         ? await generateWhistleblowerReceipt(q)
-        : {{ hash: 'offline-local-hash', receipt: 'LEAK-VERIFIED-LOCAL', timestamp: new Date().toISOString() }};
+        : {{ hash: 'offline-local-hash', receipt: 'LEAK-CONFIRMED-LOCAL', timestamp: new Date().toISOString() }};
       const subId = Math.floor(1000 + Math.random() * 9000);
       const pseudonym = 'Archival-Whistleblower-' + (cryptoReceipt.receipt.split('-')[1] || 'Insider');
 
@@ -29076,7 +29171,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         lat: 0,
         lon: 0,
         details: q,
-        sourceUrl: 'Cryptographically Verified Insider Lead',
+        sourceUrl: 'Cryptographically Confirmed Insider Lead',
         contributor: pseudonym,
         status: 'confidential_intake'
       }};
@@ -29094,7 +29189,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
                 <span class="text-white font-medium text-[14px]">Cryptographic Receipt</span>
               </div>
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/60 shrink-0">SHA-256 VERIFIED</span>
+              <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/60 shrink-0">SHA-256 CONFIRMED</span>
             </div>
             <div class="text-[14px] font-mono space-y-0.5">
               <div class="text-emerald-300">Receipt Code: <span class="text-white">${{escapeHtml(entry.receiptCode)}}</span></div>
@@ -29169,7 +29264,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         workInput.rows = 4;
         workInput.classList.remove('min-h-[34px]', 'sm:min-h-[42px]', 'max-h-36');
         workInput.classList.add('min-h-[110px]', 'sm:min-h-[130px]', 'max-h-60', 'text-emerald-100', 'placeholder-emerald-400/50', 'leading-relaxed');
-        workInput.placeholder = 'Confidential Intake: Enter unverified notes, documents, or intelligence (Zero-Knowledge Hashed Client-Side)...';
+        workInput.placeholder = 'Confidential Intake: Enter notes, documents, or confidential intelligence (Zero-Knowledge Hashed Client-Side)...';
         if (defaultTopic) {{
           workInput.value = defaultTopic;
         }}
@@ -29415,7 +29510,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
       const cryptoReceipt = (typeof generateWhistleblowerReceipt === 'function')
         ? await generateWhistleblowerReceipt(q)
-        : {{ hash: 'offline-local-hash', receipt: 'LEAK-VERIFIED-LOCAL', timestamp: new Date().toISOString() }};
+        : {{ hash: 'offline-local-hash', receipt: 'LEAK-CONFIRMED-LOCAL', timestamp: new Date().toISOString() }};
       const subId = Math.floor(1000 + Math.random() * 9000);
       const pseudonym = 'Archival-Whistleblower-' + (cryptoReceipt.receipt.split('-')[1] || 'Insider');
 
@@ -29440,7 +29535,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         lat: 0,
         lon: 0,
         details: q,
-        sourceUrl: 'Cryptographically Verified Insider Lead',
+        sourceUrl: 'Cryptographically Confirmed Insider Lead',
         contributor: pseudonym,
         status: 'confidential_intake'
       }};
@@ -29456,7 +29551,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
               <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
               <span class="text-white font-medium text-[14px]">Cryptographic Whistleblower Receipt</span>
             </div>
-            <span class="text-[14px] font-mono text-emerald-400 shrink-0">SHA-256 VERIFIED</span>
+            <span class="text-[14px] font-mono text-emerald-400 shrink-0">SHA-256 CONFIRMED</span>
           </div>
           <div class="text-[14px] font-mono space-y-1 text-slate-300">
             <div>Receipt Code: <span class="text-white font-bold">${{escapeHtml(cryptoReceipt.receipt)}}</span></div>
@@ -29480,7 +29575,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       const workInput = document.getElementById('workInput');
       if (workInput) {{
         if (isChatInputMode) {{
-          workInput.placeholder = 'Share confidential field intelligence, unverified sponsorships, or document excerpts. Submissions are processed with client-side zero-knowledge integrity...';
+          workInput.placeholder = 'Share confidential field intelligence, confidential sponsorships, or document excerpts. Submissions are processed with client-side zero-knowledge integrity...';
         }} else {{
           workInput.placeholder = 'Ask about a cultural space, its sponsors, or a controversy…';
         }}
@@ -29549,7 +29644,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         details: details,
         sourceUrl: sourceUrl,
         contributor: contributor || 'Anonymous Researcher',
-        status: 'pending_verification'
+        status: 'pending_audit'
       }};
 
       saveCommunityResearchSubmission(entry);
@@ -29561,10 +29656,10 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
 
       appendCuratorMessage(`
         <p class="text-white font-normal text-[14px]">
-          <strong>Research Contribution Queued for Verification</strong>
+          <strong>Research Contribution Queued for Audit</strong>
         </p>
         <div class="py-2.5 border-t border-[#333] space-y-1.5 text-slate-300 text-[14px] leading-[135%]">
-          <div><strong class="text-[#78a9ff] font-mono text-[14px] tracking-wider block">Audit Ticket</strong> <span class="font-mono text-emerald-400 font-bold">#${{entry.id}}</span> · <span class="text-slate-400 text-[14px] font-mono">Curatorial Verification Queue</span></div>
+          <div><strong class="text-[#78a9ff] font-mono text-[14px] tracking-wider block">Audit Ticket</strong> <span class="font-mono text-emerald-400 font-bold">#${{entry.id}}</span> · <span class="text-slate-400 text-[14px] font-mono">Curatorial Audit Queue</span></div>
           <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono text-[14px] tracking-wider block">Submission Category</strong> ${{escapeHtml(cat.replace(/_/g, ' ').toUpperCase())}}</div>
           ${{name ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#33b1ff] font-mono text-[14px] tracking-wider block">Space & Location</strong> <span class="text-white font-medium">${{escapeHtml(name)}}</span> ${{city ? `(${{escapeHtml(city)}})` : ''}}</div>` : ''}}
           <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono text-[14px] tracking-wider block">Research Findings</strong> ${{escapeHtml(details)}}</div>
@@ -29965,9 +30060,9 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         .replace(/\\bca\\.\\s*|\\bc\\.\\s*(?=\\d{{4}})/gi, 'around ')
         .replace(/\\bNo\\.\\s*(?=\\d)/gi, 'Number ')
         .replace(/501\\s*\\(\\s*c\\s*\\)\\s*\\(\\s*3\\s*\\)/gi, '501-c-3 non-profit')
-        .replace(/Tier A\s*[·•]?\s*(Verified Independent Space|Verified Clean Sanctuary|Verified Independent|Verified Clean|clean sanctuary|independent space|sanctuary)?/gi, 'verified independent space')
-        .replace(/verified Tier A verified independent space/gi, 'verified independent space')
-        .replace(/verified Tier A independent space/gi, 'verified independent space')
+        .replace(/Tier A\s*[·•]?\s*(clean sanctuary|independent space|sanctuary)?/gi, 'independent sanctuary space')
+        .replace(/Tier A clean independent space/gi, 'independent sanctuary space')
+        .replace(/Tier A independent space/gi, 'independent sanctuary space')
         .replace(/clean sanctuaries|clean sanctuary/gi, 'independent spaces')
         .replace(/Tier B\s*[·•]?\s*(Flagged Corporate Sponsor)?/gi, 'flagged corporate conflict status')
         .replace(/\\bHours:\\b/gi, 'Visiting hours: ')
@@ -30106,6 +30201,8 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       isCuratorSpeaking = false;
       document.querySelectorAll('.curator-speak-btn').forEach(btn => {{
         btn.classList.remove('bg-rose-500/20', 'text-rose-400', 'border-rose-500/40');
+        btn.style.opacity = '';
+        btn.style.pointerEvents = '';
         const icon = btn.querySelector('.speak-icon');
         if (icon) icon.textContent = '🔊';
         const lbl = btn.querySelector('.speak-label');
@@ -30145,6 +30242,9 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
         if (icon) icon.textContent = '⏹️';
         const lbl = btnElement.querySelector('.speak-label');
         if (lbl) lbl.textContent = 'Stop';
+        // Visually hide any visible 'Stop' button text to preserve pristine clean typography
+        btnElement.style.opacity = '0';
+        btnElement.style.pointerEvents = 'none';
       }}
 
       // Chromium keepalive heartbeat to prevent speech cutoff
@@ -31563,7 +31663,7 @@ bar.innerHTML = html;
         if (isCommunityOnly) {{
           activeMapBanner.classList.remove('hidden');
           if (activeMapIcon) activeMapIcon.textContent = '';
-          activeMapText.textContent = `COMMUNITY RESEARCH LAYER · ${{filteredList.length}} USER CONTRIBUTIONS (SEGREGATED FROM VERIFIED)`;
+          activeMapText.textContent = `COMMUNITY RESEARCH LAYER · ${{filteredList.length}} USER CONTRIBUTIONS (SEGREGATED FROM AUDITED SPACES)`;
         }} else if (isAcademicOnly) {{
           activeMapBanner.classList.remove('hidden');
           if (activeMapIcon) activeMapIcon.textContent = '';
@@ -31641,7 +31741,7 @@ bar.innerHTML = html;
                     <div class="bg-[#1f1433] p-2.5 rounded-lg border border-[#8a3ffc]/50">
                       <div class="flex items-center justify-between text-[14px]">
                         <span class="text-white font-medium">${{escapeHtml(m.name)}}</span>
-                        <span class="text-[#be95ff] text-[14px] font-mono px-1.5 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">${{m.tier === 'B' ? 'Flagged' : 'Unverified'}}</span>
+                        <span class="text-[#be95ff] text-[14px] font-mono px-1.5 py-0.5 rounded bg-[#2a1745] border border-[#8a3ffc]">${{m.tier === 'B' ? 'Flagged' : 'Pending Audit'}}</span>
                       </div>
                       <p class="text-[#e8daff] text-[14px] mt-0.5">${{escapeHtml(deduplicateNoticeText(m.watch || m.why_flagged || m.funding || 'Corporate underwriting conflict'))}}</p>
                       <button class="curator-dossier-btn text-[#be95ff] hover:underline text-[14px] font-mono mt-1 cursor-pointer" data-name="${{escapeHtml(m.name)}}">
@@ -31657,7 +31757,7 @@ bar.innerHTML = html;
 
         container.innerHTML = `
           <div class="text-center py-6 px-4 text-[#64748b] text-[14px]">
-            <p class="font-normal text-slate-400">No clean verified institutions match this filter.</p>
+            <p class="font-normal text-slate-400">No clean institutions match this filter.</p>
             ${{exHtml}}
             <button id="resetFromEmptyBtn" class="mt-4 px-3 py-1.5 rounded-xl bg-[#212121] border border-[#333] text-[#3b82f6] hover:text-white hover:bg-[#282828] text-[14px] transition cursor-pointer">Reset all filters</button>
           </div>
@@ -31730,10 +31830,10 @@ bar.innerHTML = html;
         const tierName = isInstCommunity
           ? `Community Input · #${{inst.communityId || 'RES'}}`
           : isInstClean 
-          ? 'Clean Verified Space' 
+          ? 'Clean Sanctuary Space' 
           : isInstFlagged 
           ? 'Flagged Underwriting' 
-          : 'Unverified Space';
+          : 'Pending Audit Space';
 
         const webUrl = getValidWebUrl(inst);
         const displayDomain = getDisplayDomain(webUrl);
@@ -32179,7 +32279,7 @@ bar.innerHTML = html;
             <strong>${{escapeHtml(corr.name)}}</strong>: High-speed electric link connecting <strong>${{escapeHtml(corr.from)}}</strong> and <strong>${{escapeHtml(corr.to)}}</strong> (${{escapeHtml(corr.travel_time || 'eco-transit')}}).
           </p>
           <p class="text-slate-300">
-            Both cultural capitals are home to verified independent spaces operating free of fossil fuel, chemical, and weapons funding. Traveling between them by electric train cuts carbon emissions by up to 90% compared to flying.
+            Both cultural capitals are home to independent sanctuary spaces operating free of fossil fuel, chemical, and weapons funding. Traveling between them by electric train cuts carbon emissions by up to 90% compared to flying.
           </p>
         `);
         return;
@@ -32562,7 +32662,7 @@ bar.innerHTML = html;
     // =========================================================
     // 👆 TOUCH & POINTER SWIPE GESTURE CONTROLLER (FLOATING CARD & DRAWER)
     // "Swipe for info / swipe to put to gossip yellow mode"
-    // - Horizontal Swipe: Swipes between Verified Info and Yellow Gossip Mode
+    // - Horizontal Swipe: Swipes between Dossier Overview and Yellow Gossip Mode
     // - Vertical Upward Swipe: Swipes up to open full Scholarly Audit Dossier
     // =========================================================
     let didCardSwipe = false;
@@ -32608,7 +32708,7 @@ bar.innerHTML = html;
             // Swiped left -> put to gossip yellow mode
             setCardMode('gossip', true);
           }} else {{
-            // Swiped right -> put to verified info mode
+            // Swiped right -> put to overview mode
             setCardMode('info', false);
           }}
         }}
@@ -33060,15 +33160,7 @@ bar.innerHTML = html;
         f.write(html)
     print("Synchronized root index.html!")
 
-    dest_app = "/Users/polinavasilyeva/.gemini/antigravity/scratch/sponsor-atlas/app/index.html"
-    with open(dest_app, "w", encoding="utf-8") as f:
-        f.write(html)
-    print("Wrote researcher-enhanced app/index.html!")
-
-    dest_standalone = "/Users/polinavasilyeva/.gemini/antigravity/scratch/sponsor-atlas/app/standalone.html"
-    with open(dest_standalone, "w", encoding="utf-8") as f:
-        f.write(html)
-    print("Synchronized app/standalone.html!")
+    # Note: app/index.html and app/standalone.html removed per commit ecef69e
 
     dest_artifact = "/Users/polinavasilyeva/.gemini/antigravity/brain/b997e616-4551-453e-83cc-4ba184f90abf/culture_atlas_app.html"
     with open(dest_artifact, "w", encoding="utf-8") as f:

@@ -1,0 +1,242 @@
+{
+ "what_this_is": "A pilot of the three-check protocol on 10 claims, run in October 2026 with web search only (search returns summaries, not page text). It shows the protocol is workable but that most claims cannot be fully confirmed that way. It is not a verification of the dataset.",
+ "protocol": "c1 primary source states the facts; c2 an independent publisher reports the same facts; c3 nothing contradicts it and it is still true. verified needs all three.",
+ "counts": {
+  "verified": 1,
+  "partial": 5,
+  "unverified": 4,
+  "contradicted": 0
+ },
+ "results": [
+  {
+   "institution": "Sursock Museum",
+   "kind": "sponsor_flag",
+   "claim": "Fondation Engie, a gas utility, is an energy sponsor.",
+   "verdict": "unverified",
+   "c1_primary": {
+    "pass": false,
+    "url": null,
+    "support": "Search for Sursock + Fondation Engie returned no result naming Engie; sursock.museum/content/how-to-support appeared but its content showed no Engie."
+   },
+   "c2_independent": {
+    "pass": false,
+    "url": null,
+    "support": "No independent source names Engie as a Sursock sponsor."
+   },
+   "c3_current": {
+    "pass": false,
+    "url": null,
+    "support": "Nothing found either way; current status unknown."
+   },
+   "corrected_claim": null,
+   "notes": "Not contradicted, just not found. Recorded source our-supporters page did not surface in results."
+  },
+  {
+   "institution": "Storm King Art Center",
+   "kind": "sponsor_flag",
+   "claim": "Bloomberg Philanthropies a current $50k+ benefactor.",
+   "verdict": "partial",
+   "c1_primary": {
+    "pass": true,
+    "url": "https://stormking.org/about/donors/",
+    "support": "2025 donor page lists Bloomberg Philanthropies in the Ambassador tier ($100,000+); Bloomberg L.P. separately in Fellow ($25,000+)."
+   },
+   "c2_independent": {
+    "pass": false,
+    "url": null,
+    "support": "No independent publisher found reporting the gift level."
+   },
+   "c3_current": {
+    "pass": true,
+    "url": "https://stormking.org/about/donors/",
+    "support": "Listed for 2025; nothing contradicting found."
+   },
+   "corrected_claim": "Bloomberg Philanthropies is listed in Storm King's 2025 donor list in the Ambassador tier ($100,000+).",
+   "notes": "Tier differs from claim's $50k+. Only the search summary of the page was seen; no independent confirmation."
+  },
+  {
+   "institution": "Casa França-Brasil",
+   "kind": "sponsor_flag",
+   "claim": "Renamed Casa Brasil on 27 Jun 2025. Petrobras (under active campaign) is the current official sponsor, selected in its Novos Eixos call.",
+   "verdict": "partial",
+   "c1_primary": {
+    "pass": false,
+    "url": null,
+    "support": "recorded casabrasil.rj.gov.br source did not appear in results; no official announcement of rename or date found."
+   },
+   "c2_independent": {
+    "pass": true,
+    "url": "https://www.correiodamanha.com.br/cultura/exposicao/2026/04/274891-a-arte-fluminense-em-destaque.html",
+    "support": "Casa Brasil restructuring is part of the Petrobras Novos Eixos edital, line Icones da Cultura Brasileira; Tupi says presented by Ministry of Culture and Petrobras."
+   },
+   "c3_current": {
+    "pass": false,
+    "url": null,
+    "support": "Rename date of 27 Jun 2025 and 'under active campaign' not confirmed by any result."
+   },
+   "corrected_claim": "The former Casa Franca-Brasil now operates as Casa Brasil, with Petrobras as sponsor through its Novos Eixos call (Icones da Cultura Brasileira line); rename date not confirmed.",
+   "notes": "Sponsor and Novos Eixos supported by news; date and campaign status unverified."
+  },
+  {
+   "institution": "Bluecoat",
+   "kind": "sponsor_flag",
+   "claim": "Trust list is from the FY2023 accounts (newest opened). Business members are not named publicly.",
+   "verdict": "unverified",
+   "c1_primary": {
+    "pass": false,
+    "url": null,
+    "support": "Results were about Liverpool Blue Coat School and other charities, not The Bluecoat arts centre (charity 700862 listed but no content on trust list)."
+   },
+   "c2_independent": {
+    "pass": false,
+    "url": null,
+    "support": "Nothing independent found."
+   },
+   "c3_current": {
+    "pass": false,
+    "url": null,
+    "support": "Nothing found."
+   },
+   "corrected_claim": null,
+   "notes": "Claim is about dataset sourcing and absence of public naming; hard to verify by search. Results mostly a different organisation."
+  },
+  {
+   "institution": "Nevada Museum of Art",
+   "kind": "sponsor_flag",
+   "claim": "The 2024 donor list has San Manuel Gaming and Hospitality Authority (casino operator). Barrick is lead education sponsor; a casino-executive family is among life trustees.",
+   "verdict": "unverified",
+   "c1_primary": {
+    "pass": false,
+    "url": "https://www.nevadaart.org/wp-content/uploads/2025/12/NMA_AnnualReport_2024_Sponsors-2.pdf",
+    "support": "2024 sponsors page lists Nevada Gold Mines (Barrick-operated) as major sponsor; no San Manuel mention seen."
+   },
+   "c2_independent": {
+    "pass": false,
+    "url": null,
+    "support": "No independent source found."
+   },
+   "c3_current": {
+    "pass": false,
+    "url": null,
+    "support": "San Manuel donor listing and casino-executive life trustee not found in any result."
+   },
+   "corrected_claim": null,
+   "notes": "Barrick/Nevada Gold Mines sponsorship partly seen (Partners in Education page says Major Sponsor, not 'lead education'). San Manuel and trustee parts unconfirmed."
+  },
+  {
+   "institution": "VISUAL",
+   "kind": "epstein",
+   "claim": "Leon Black: Leon and Debra Black gave $48 million toward the arts centre, which opened in 2012. Epstein had been a director of the Black Family Foundation, through which the gifts passed; he is still listed on its 2012 tax forms, which the Blacks call an error, saying he left in 2007. | tie: Black paid Epstein $158 million to $170 million from 2012 to 2017 and denies knowing of Epstein's crimes. | consequence: The centre has not been renamed. In June 2026, after community calls to rename it, the trustees set up an ad hoc naming committee.",
+   "verdict": "partial",
+   "c1_primary": {
+    "pass": false,
+    "url": "https://vnews.com/2026/04/20/epstein-black-dartmouth-controversy/",
+    "support": "Search summaries only: 2012 opening, $48M gift, $170M to Epstein, board to appoint naming committee at June meeting; no June outcome text seen."
+   },
+   "c2_independent": {
+    "pass": true,
+    "url": "https://vtdigger.org/2026/04/21/dartmouth-groups-renew-calls-to-rename-arts-center-bankrolled-by-epstein-associate/",
+    "support": "Independent coverage of renewed rename calls and planned naming committee."
+   },
+   "c3_current": {
+    "pass": false,
+    "url": null,
+    "support": "Sources conflict on Epstein's directorship (through 2012 vs left 2007); no report found of June meeting result."
+   },
+   "corrected_claim": "Leon Black gave $48 million toward the Black Family Visual Arts Center, which opened in 2012; Black paid Epstein about $170 million; after rename calls the trustees said (April 2026) they would appoint a committee on naming across campus at their June meeting.",
+   "notes": "Unconfirmed: $158M figure, 2012 tax forms/error claim, 'ad hoc', that it was set up in June, centre not renamed. Epstein director dates disputed."
+  },
+  {
+   "institution": "Noguchi Museum",
+   "kind": "case",
+   "claim": "Staff dismissals under a dress code (2024-09-04): facts=Three employees were fired after wearing keffiyehs under a new dress policy. | outcome=No reinstatement or final personnel outcome was located.",
+   "verdict": "partial",
+   "c1_primary": {
+    "pass": true,
+    "url": "https://theartnewspaper.com/2024/09/11/noguchi-museum-employees-fired-dress-code-keffiyeh-ban",
+    "support": "Three gallery attendants fired for wearing keffiyehs under updated dress code barring political messages."
+   },
+   "c2_independent": {
+    "pass": true,
+    "url": "https://www.nbcnews.com/news/us-news/new-york-city-museum-fires-three-employees-wearing-keffiyehs-rcna170771",
+    "support": "NBC headline: museum fires three employees for wearing keffiyehs; NPR/ArtReview also report."
+   },
+   "c3_current": {
+    "pass": false,
+    "url": null,
+    "support": "No reinstatement found, but absence cannot be confirmed as current; a fourth employee (visitor services director) also reportedly fired."
+   },
+   "corrected_claim": "In early September 2024 the Noguchi Museum fired three gallery attendants who wore keffiyehs under an updated dress code; a fourth employee was reportedly also fired, though The Art Newspaper says a link to the code is unclear. No reinstatement was found.",
+   "notes": "Exact date 2024-09-04 not confirmed. Staff later voted to unionize (Hyperallergic headline). 'No final outcome' is absence claim."
+  },
+  {
+   "institution": "MoMA (The Museum of Modern Art)",
+   "kind": "epstein",
+   "claim": "Glenn Dubin: Glenn Dubin is a MoMA trustee, and the New York Post reported in October 2019 that MoMA had named a fourth-floor gallery after him and his wife, Eva Andersson-Dubin. In September 2020 the US Virgin Islands attorney general gave notice that she would subpoena him, and he was named in documents unsealed in January 2024. | tie: Eva Andersson-Dubin is Epstein's ex-girlfriend, and Virginia Giuffre alleged that Epstein trafficked her to Dubin in 2001, when she was 16, which the Dubins categorically deny. | consequence: In November 2019 the Guerrilla Girls called for Dubin and Leon Black to be removed from the board and for their galleries to be draped in black. MoMA did not comment.",
+   "verdict": "partial",
+   "c1_primary": {
+    "pass": false,
+    "url": "https://hyperallergic.com/virgin-islands-glenn-dubin-subpoena",
+    "support": "Search summary: VI AG moved to subpoena Dubin and Eva Andersson-Dubin (Sept 2020); Hyperallergic content not seen in full."
+   },
+   "c2_independent": {
+    "pass": true,
+    "url": "https://news.artnet.com/art-world/art-industry-news-september-11-2020-1907611",
+    "support": "Artnet reports subpoena plan; Artnet also reports Guerrilla Girls call to drape Dubin and Black galleries."
+   },
+   "c3_current": {
+    "pass": false,
+    "url": null,
+    "support": "Dubin denies allegations; no update found on gallery naming or subpoena outcome; MoMA non-comment not seen."
+   },
+   "corrected_claim": "Glenn Dubin is a MoMA trustee; NY Post reported MoMA quietly named a fourth-floor gallery for him and Eva Andersson-Dubin; in Sept 2020 the USVI attorney general moved to subpoena the Dubins; he was named in Giuffre v. Maxwell documents unsealed January 2024 and has denied the allegations.",
+   "notes": "Unconfirmed: Oct 2019 date, Giuffre 2001 age-16 trafficking allegation wording, Guerrilla Girls Nov 2019 date, MoMA did not comment."
+  },
+  {
+   "institution": "The Metropolitan Museum of Art (The Met)",
+   "kind": "epstein",
+   "claim": "Jeffrey Epstein: The DOJ files released in January 2026 contain a copy of a $5,000 check dated 29 April 2014 from Enhanced Education, a foundation Epstein set up, made out to the Met for the Costume Institute Benefit (the Met Gala). Earlier, press releases from the Jeffrey Epstein VI Foundation listed the Met as receiving gifts from 2010 to 2012. | tie:  | consequence: In July 2019 the Met told NBC News it had received no major donations from Epstein or his foundation, and that its only record was his purchase of tickets to two benefits in the early 1990s. The Met did not respond to ARTnews about the 2014 check, and ARTnews does not report whether the check was deposited.",
+   "verdict": "unverified",
+   "c1_primary": {
+    "pass": false,
+    "url": "https://www.artnews.com/t/jeffrey-epstein/page/3/",
+    "support": "Only a headline seen: Newly Released Epstein Files Show $5,000 Donation to the Met Costume Inst; no body text."
+   },
+   "c2_independent": {
+    "pass": false,
+    "url": null,
+    "support": "No independent report of the check found."
+   },
+   "c3_current": {
+    "pass": false,
+    "url": null,
+    "support": "Nothing contradicting, but nothing confirming date, payer, 2010-2012 gifts or 2019 NBC statement."
+   },
+   "corrected_claim": null,
+   "notes": "Hoodline confirms Enhanced Education is an alias of the Epstein VI Foundation, nothing on the Met. NBC 2019 quote not seen in results."
+  },
+  {
+   "institution": "Whitney Museum of American Art",
+   "kind": "case",
+   "claim": "October strike averted by ratification (2026-10-04): facts=Union members had authorised action and set an October strike deadline. | outcome=Members ratified an agreement on 4 October, averting the 5 October strike.",
+   "verdict": "verified",
+   "c1_primary": {
+    "pass": true,
+    "url": "https://hyperallergic.com/whitney-museum-union-ratifies-contract-on-eve-of-strike/",
+    "support": "Whitney union narrowly averted strike with 11th-hour ratification Sunday night, October 4."
+   },
+   "c2_independent": {
+    "pass": true,
+    "url": "https://artincontext.org/?p=147142",
+    "support": "Whitney Workers Win 14.75% Raises and Avert Strike; Art Newspaper 29 Sep 2026 reports strike vote for 5 October."
+   },
+   "c3_current": {
+    "pass": true,
+    "url": "https://www.theartnewspaper.com/2026/09/29/whitney-museum-american-art-workers-vote-strike-5-october-contract-negotiations",
+    "support": "No contradiction found; strike deadline 5 Oct, ratified 4 Oct."
+   },
+   "corrected_claim": null,
+   "notes": "UAW Local 2110 page not seen with content; c1 rests on Hyperallergic article cited by dataset."
+  }
+ ]
+}

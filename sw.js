@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (Network-First HTML, Zero Stale-Lock)
-const CACHE_NAME = 'culture-atlas-v15';
+const CACHE_NAME = 'culture-atlas-v24';
 const ASSETS_TO_CACHE = [
   './manifest.json'
 ];
@@ -22,6 +22,8 @@ self.addEventListener('activate', (event) => {
     })
   );
   self.clients.claim();
+  // Pages open from an older release reload once, onto the network copy.
+  event.waitUntil(self.clients.matchAll({ type: 'window' }).then((windows) => windows.forEach((w) => w.navigate(w.url).catch(() => {}))));
 });
 
 self.addEventListener('fetch', (event) => {

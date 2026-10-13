@@ -1,59 +1,21 @@
 # Culture Atlas
 
-> **Ethically funded cultural institutions across the world**
+A globe, a catalog and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Culture%20Atlas-1d4ed8?style=for-the-badge&logo=github)](https://vasspolina.github.io/Culture-Atlas/)
-[![Sanctuaries](https://img.shields.io/badge/Sanctuaries-203%20Institutions-10b981?style=for-the-badge)](https://vasspolina.github.io/Culture-Atlas/)
-[![Countries](https://img.shields.io/badge/Coverage-35%20Countries-60a5fa?style=for-the-badge)](https://vasspolina.github.io/Culture-Atlas/)
+## What it does
 
-An interactive 3D geospatial globe, catalog, and conversational curator mapping cultural institutions globally based on ethical funding transparency and artistic autonomy. Every institution is evaluated against corporate underwriting records, annual reports, partner pages, and public disclosures to champion spaces that reject funding from fossil fuels, defense/weapons manufacturing, and private prisons.
+- **Chat.** Answers from the records only. It names the record and its source, and says when a record does not say. An optional API key in settings turns on open-ended replies.
+- **Globe and map.** Click a space to see its record. City and country filters.
+- **Catalog.** Search and filter by tier, country and city.
+- **Offline.** Installable as an app; the service worker caches the page.
 
-🌐 **Live Application**: [https://vasspolina.github.io/Culture-Atlas/](https://vasspolina.github.io/Culture-Atlas/)
+Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below.
 
----
-
-## 🌟 Key Features
-
-- **💬 Conversational Atlas Curator (Inline Research Guide)**:
-  - **Fluid Conversational Dialogue**: An articulate, scholarly curator answering questions on institutional ethics, schedules, public transit connections, accessibility, museum cafes, and site-specific landmarks.
-  - **Strictly Inline Interactive Links**: Institutions and cities are woven directly into prose sentences—clicking any institution smoothly zooms the 3D globe to that venue, clicking a city flies to that city, and clicking an audit dossier opens its full governance review.
-  - **Live Gemini 2.5 Flash Integration (Optional / BYOK)**: Connect a Google AI Studio API key in settings (⚙️) to activate generative multi-turn reasoning with strictly formatted inline citations.
-  - **Instant Offline Knowledge Engine**: Robust built-in research engine covering all 203 institutions with zero latency or external dependencies.
-
-- **🌍 Interactive 3D D3 Globe**:
-  - Crisp canvas rendering with anti-aliasing and subpixel scaling.
-  - Physics-based rotation with inertial momentum deceleration and auto-spin toggle.
-  - Kinetic flight transitions (`flyTo`) and 2.5× scale zoom targeting.
-  - Dark obsidian floating cards with direct website, transit, and dossier links.
-  - Country polygon boundaries rendered from TopoJSON with hover highlights.
-
-- **🏛️ 203 Cultural Sanctuaries Mapped across 35 Countries**:
-  - **Tier A (🟢 Verified - 131 institutions)**: Fully verified clean funding roster, municipal/endowment backing, strict ethical gift-acceptance policies.
-  - **Tier B (🔵 One name to know - 55 institutions)**: Flagged for a specific corporate sponsor to note (e.g., fossil finance, corporate surveillance).
-  - **Tier U (⚪ Roster unverified - 17 institutions)**: Pending updated disclosures.
-
-- **🎨 Strict Typography & Design System**:
-  - Exclusively set in **PP Telegraf Regular** with anti-aliased font rendering.
-  - Strict 3-size hierarchical type system (14px body/details, 18px subheaders/cards, 24px title).
-  - Responsive half-sheet/full-sheet mobile controller.
-
-- **🔍 Search & Filtering**:
-  - Real-time instant search across institutions, cities, and countries.
-  - Filter by funding tier and institution size (Large: >$20M budget / >500k visitors vs. Small & Mid).
-  - One-click geographic filtering by city or country.
-
-- **📊 Dual View Modes**:
-  - **Globe View**: 3D interactive spatial globe visualization with a live detail inspection drawer.
-  - **City List / Table View**: Comprehensive tabular breakdown with budgets, watch notes, and direct links to official annual reports and disclosures.
-
-- **📱 Progressive Web App (PWA)**:
-  - Installable on desktop, iOS, and Android.
-  - Service worker caching for 100% offline capability.
-  - Standalone fullscreen display mode.
+Type is PP Eiko at 14, 18 and 24px; body text is 18px and labels 14px.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Option 1: Python HTTP Server (Zero Dependencies)
 
@@ -84,21 +46,13 @@ npx serve . -p 8080
 
 ---
 
-## 🤖 Using the Atlas Concierge
+## Using the chat
 
-1. Click the glowing **Atlas Concierge** orb in the lower right corner, or press `Cmd+K` / `Ctrl+K`.
-2. Try asking:
-   - *"What ethically funded museums are in Tokyo?"*
-   - *"Why is Te Papa categorized as Tier B?"*
-   - *"Show me large Tier A verified institutions"*
-   - *"How is funding transparency evaluated?"*
-   - *"Recommend a hidden gem in Scandinavia"*
-3. Click any returned action chip (`[📍 View on Globe]`, `[🏛️ Inspect Dossier]`) to fly the 3D globe to that destination.
-4. *(Optional)* Click the gear icon (⚙️) in the concierge header to enter your **Google Gemini API Key** for open-ended conversational reasoning.
+Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a funder, for example "Which spaces in Tokyo are Clean?" or "What does the record for Te Papa say about funding?". An optional API key can be added under settings.
 
 ---
 
-## 🚢 Deploying
+## Deploying
 
 `main` is the source of truth. Every push to `main` runs
 `.github/workflows/deploy.yml`, which copies `index.html`, `sw.js`,
@@ -106,7 +60,18 @@ npx serve . -p 8080
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
-## 📁 Project Structure
+## What the page may show
+
+The page shows what a record states and where it comes from, and says plainly that none of it has been independently verified.
+
+- A field appears only if a record states it. Figures, hours, prices, exhibitions, architects and "chatter" are not generated to fill a gap. A text value shared by five or more records (after masking the name and city) is filler and is left out. Sentences that assert the absence of ties ("zero fossil fuel", "strict ethical charter") are left out.
+- **Clean, source cited** needs at least one source outside the museum's own site. **Flagged** needs a recorded reason. Otherwise a space is **Unverified**.
+- Anything reported about a space, such as a sponsor tie, an Epstein-related item, a WikiLeaks cable or a case file, is shown with its own source links under "Reported, not independently verified".
+- Anonymous staff reviews, the board network, the timeline, the filings registry, the itineraries and the 3D building outlines are not shown: they had no source, or were invented or generated.
+
+Rules live in `tools/clean_data.py`. To check records against their sources, run `tools/verify_claims.py` somewhere with network access, then `tools/apply_verification.py` and `tools/embed_data.py`. Wording corrected after checking is in `data/corrections.json`; the pilot of the three-check protocol is in `data/verification_pilot.json`.
+
+## Project Structure
 
 ```
 Culture-Atlas/
@@ -123,7 +88,7 @@ Culture-Atlas/
 
 ---
 
-## 📊 Dataset Schema
+## Dataset Schema
 
 Each entry in `institutions.json` has the following fields:
 
@@ -146,7 +111,7 @@ Each entry in `institutions.json` has the following fields:
 
 ---
 
-## 🛠️ Verification & Methodology
+## Verification & Methodology
 
 - **Clean Status (Tier A)**: Institutions with no current fossil fuel, weapons/defense, opioid, tobacco, gambling, or sanctioned state sponsorship.
 - **Data Cutoff**: Verified against annual reports, partner listings, and public disclosures up to late September 2026.

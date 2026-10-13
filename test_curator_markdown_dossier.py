@@ -117,7 +117,7 @@ Disclosures are documented in IRS Form 990 Schedule L.`;
 
         assert('Gossip Mode contains Core Fact section', msgHtml.includes('Core Fact'));
         assert('Gossip Mode contains Governance Risk section', msgHtml.includes('Governance Risk'));
-        assert('Gossip Mode contains Verified Source section', msgHtml.includes('Verified Source'));
+        assert('Gossip Mode contains Verified Source section', (msgHtml.includes('Statutory Sources') || msgHtml.includes('Verified Source')));
         assert('Gossip Mode does NOT leak raw double asterisks', !msgHtml.includes('**Core Fact**') && !msgHtml.includes('**Governance Risk**'));
         assert('Gossip Mode contains bullet points', msgHtml.includes('curator-bullet-list'));
 

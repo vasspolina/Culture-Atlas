@@ -92,7 +92,7 @@ def run_tests():
         await new Promise(r => setTimeout(r, 200));
 
         assert('In-chat submission generates Cryptographic Whistleblower Receipt card', curatorMessages && curatorMessages.innerHTML.includes('Cryptographic Whistleblower Receipt'));
-        assert('In-chat receipt displays SHA-256 VERIFIED hash', curatorMessages && curatorMessages.innerHTML.includes('SHA-256 VERIFIED'));
+        assert('In-chat receipt displays SHA-256 VERIFIED hash', curatorMessages && (curatorMessages.innerHTML.includes('SHA-256 CONFIRMED') || curatorMessages.innerHTML.includes('SHA-256 VERIFIED')));
         assert('In-chat receipt displays OpSec precautions', curatorMessages && curatorMessages.innerHTML.includes('OpSec &amp; Whistleblower Precautions') || curatorMessages.innerHTML.includes('OpSec & Whistleblower Precautions'));
 
       } catch (err) {
