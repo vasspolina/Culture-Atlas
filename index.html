@@ -9536,6 +9536,7 @@ return maplibregl$1;
       }
       if (!inst || !inst.lat || !inst.lon) return;
 
+      if (XRAY.inst && XRAY.inst !== inst) hideBuildingXray();
       selectedInstitution = inst;
       if (typeof updateDesktopDossier === 'function') { updateDesktopDossier(inst); }
 
@@ -9554,11 +9555,17 @@ return maplibregl$1;
       document.getElementById('detailDrawer')?.classList.add('hidden');
       document.getElementById('catalogModal')?.classList.add('hidden');
       if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') setMobileViewMode('map');
-      if (!isCityStreetViewActive || !matchC(selectedCityFilter, inst.city)) {
+      if (inst.city) {
+        selectedCityFilter = inst.city;
+        const cityMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, inst.city));
+        if (cityMeta && cityMeta.country) lastSelectedCountry = cityMeta.country;
+      }
+      if (!isCityStreetViewActive || !matchC(cityStreetViewCity, inst.city)) {
         openCityStreetView(inst.city, inst.lat, inst.lon);
       }
+      if (xrayMapIsMock()) { showBuildingXray(inst); return; }
       if (cityVectorMap && typeof cityVectorMap.flyTo === 'function') {
-        cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: 17.2, pitch: 55, duration: 900, essential: true });
+        cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: 17.2, pitch: 55, duration: 900, essential: true, offset: xrayFlyOffset() });
         xrayWhenSettled(inst);
       }
     }
@@ -9569,43 +9576,86 @@ return maplibregl$1;
     //  translucent shell, with one slab inside for each kind of material the record actually holds. No outline means no shell;
     //  every label is a count of what the record has; facts from Wikidata say so and how they were matched.
     // =========================================================================
-    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, dimmed: false };
-    const XRAY_COLOURS = { funding: '#08bdba', reported: '#ff7eb6', accounts: '#be95ff', sources: '#42be65', visiting: '#f1c21b', studies: '#009d9a', facts: '#ff832b' };
+    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, dimmed: false, waiting: false };
+    const XRAY_COLOURS = { flag: '#fa4d56', funding: '#08bdba', reported: '#ff7eb6', accounts: '#be95ff', sources: '#42be65', visiting: '#f1c21b', studies: '#009d9a', facts: '#ff832b' };
     const WIKIDATA_SPARQL = 'https://query.wikidata.org/sparql';
+    const WIKIDATA_CANDIDATES = 60;
+    let cityStreetViewCity = '';
 
     function xrayHost(u) { try { return new URL(u).hostname.replace(/^www\./, '').toLowerCase(); } catch (e) { return ''; } }
+    // The part of a host that names the organisation: a leading www or a two-letter language label is dropped.
+    function xrayDomain(u) { return xrayHost(u).replace(/^(?:[a-z]{2}|www)\./, ''); }
+    function xraySameDomain(a, b) { return !!a && !!b && (a === b || a.endsWith('.' + b) || b.endsWith('.' + a)); }
     function xrayNorm(t) { return String(t || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
+    // The record's own site: the same address is matched against Wikidata and linked in the panel.
+    function xraySite(inst) { return [inst.website, inst.visit_url].find(u => /^https?:\/\//.test(String(u || '').trim())) || ''; }
+    function xrayMapIsMock() { return !!cityVectorMap && typeof cityVectorMap.queryRenderedFeatures !== 'function'; }
+    // The panel sits bottom-left (phones: full width, bottom), so the building is flown to the part of the map it leaves clear.
+    function xrayMapSize() { const el = document.getElementById('cityMapContainer'); return { w: el ? el.clientWidth : window.innerWidth, h: el ? el.clientHeight : window.innerHeight }; }
+    function xrayNarrow() { return xrayMapSize().w < 720; }
+    function xrayFlyOffset() {
+      const { w, h } = xrayMapSize();
+      return xrayNarrow() ? [0, -Math.round(h * 0.22)] : [Math.min(260, Math.round(w * 0.3)), 0];
+    }
+
+    // Reported items, each with what the record says it is. Never a bare name.
+    function xrayReportedLines(inst) {
+      const g = inst.gossip_data || {}, lines = [];
+      (inst.epstein_records || []).forEach(r => lines.push(`${r.person || 'Unnamed person'}: Epstein-related record${r.link ? ', ' + r.link : ''}.`));
+      (inst.wikileaks_records || []).forEach(w => lines.push(`${w.doc_id || 'WikiLeaks document'}${w.date ? ', ' + w.date : ''}: WikiLeaks cable.`));
+      (g.real_cases || []).forEach(c => lines.push(`${c.title || c.case_id || 'Case'}${c.event_date ? ', ' + c.event_date : ''}: case file${c.status ? ', ' + String(c.status).replace(/_/g, ' ') : ''}.`));
+      return lines;
+    }
+    // Individual accounts, counted by where each one was retained from (its own fields and source addresses).
+    function xrayAccountsLine(inst) {
+      const accs = ((inst.gossip_data || {}).accounts || []);
+      let reddit = 0, platform = 0;
+      accs.forEach(a => {
+        const text = JSON.stringify([a.fields || [], (a.sources || []).map(s => s && s.url)]).toLowerCase();
+        if (text.includes('reddit')) reddit++; else platform++;
+      });
+      const parts = [reddit ? `${reddit} Reddit ${reddit === 1 ? 'thread' : 'threads'}` : '', platform ? `${platform} employee-platform ${platform === 1 ? 'account' : 'accounts'}` : ''].filter(Boolean);
+      return `${parts.join(', ')}, as retained by the research. Not verified findings.`;
+    }
 
     // What the record holds, as the slabs inside the shell. Only categories with material are listed.
     function xrayCategories(inst) {
       const cats = [];
       const g = inst.gossip_data || {};
-      const reportedTitles = [].concat(inst.why_flagged ? ['Why it is flagged'] : [], (inst.epstein_records || []).map(e => e.person || 'Epstein-related record'),
-        (inst.wikileaks_records || []).map(w => w.doc_id || 'WikiLeaks document'), (g.real_cases || []).map(c => c.title || c.case_id || 'Case'));
+      const reported = xrayReportedLines(inst);
       const accounts = (g.accounts || []).length;
       const sources = (inst.sources || []).filter(u => /^https?:\/\//.test(u));
       const visiting = [inst.opening_hours ? 'Opening hours: ' + inst.opening_hours : '', (inst.admission_fee || inst.admission_policy) ? 'Admission: ' + (inst.admission_fee || inst.admission_policy) : '', inst.address ? 'Address: ' + inst.address : ''].filter(Boolean);
       const studies = typeof studiesNaming === 'function' ? studiesNaming(inst) : [];
+      if (inst.why_flagged) cats.push({ key: 'flag', label: 'Why it is flagged', lines: [inst.why_flagged] });
       if (inst.funding) cats.push({ key: 'funding', label: 'Funding', lines: [inst.funding] });
-      if (reportedTitles.length) cats.push({ key: 'reported', label: `Reported items (${reportedTitles.length})`, lines: reportedTitles });
-      if (accounts) cats.push({ key: 'accounts', label: `Individual accounts (${accounts})`, lines: [`${accounts} from employee-review sites and Reddit, as retained by the research. Not verified findings.`] });
+      if (reported.length) cats.push({ key: 'reported', label: `Reported, not independently verified (${reported.length})`, lines: reported });
+      if (accounts) cats.push({ key: 'accounts', label: `Individual accounts (${accounts})`, lines: [xrayAccountsLine(inst)] });
       if (sources.length) cats.push({ key: 'sources', label: `Sources (${sources.length})`, lines: sources.map(xrayHost).filter(Boolean) });
       if (visiting.length) cats.push({ key: 'visiting', label: 'Visiting', lines: visiting });
       if (studies.length) cats.push({ key: 'studies', label: `Studies naming this space (${studies.length})`, lines: studies.map(p => p.title) });
       const wd = XRAY.wikidata[inst.id || inst.name];
-      if (wd && wd.status === 'matched') cats.push({ key: 'facts', label: 'Facts from Wikidata', lines: xrayWikidataLines(wd) });
+      if (wd && wd.status === 'matched') {
+        const lines = xrayWikidataLines(wd);
+        if (lines.length) cats.push({ key: 'facts', label: 'Facts from Wikidata', lines: ['Wikidata item: ' + (wd.label || wd.item)].concat(lines) });
+      }
       return cats;
     }
 
-    // The building under the record's point, from the tiles already on screen. Tests replace this.
+    // The building under the record's point, from the tiles already on screen: the footprint layer first, the extrusion only as
+    // a fallback, so a taller neighbour leaning over the point at this pitch is not taken for it. Tests replace this.
     function xrayFindBuilding(lon, lat) {
       if (!cityVectorMap || typeof cityVectorMap.project !== 'function' || typeof cityVectorMap.queryRenderedFeatures !== 'function') return null;
-      let feats = [];
+      let f = null;
       try {
         const pt = cityVectorMap.project([lon, lat]);
-        feats = cityVectorMap.queryRenderedFeatures([pt.x, pt.y], { layers: ['building-3d-city-context', 'building'] }) || [];
-      } catch (e) { feats = []; }
-      const f = feats.find(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
+        for (const layer of ['building', 'building-3d-city-context']) {
+          if (!cityVectorMap.getLayer || !cityVectorMap.getLayer(layer)) continue;
+          const feats = cityVectorMap.queryRenderedFeatures([pt.x, pt.y], { layers: [layer] }) || [];
+          f = feats.find(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
+          if (f) break;
+        }
+      } catch (e) { f = null; }
       if (!f) return null;
       const pr = f.properties || {};
       const tagged = pr.render_height != null || pr.height != null;
@@ -9637,10 +9687,23 @@ return maplibregl$1;
     }
     window.xrayWhenSettled = xrayWhenSettled;
 
+    function xrayClearDrawing() {
+      XRAY.building = null;
+      XRAY.markers.forEach(m => m.remove()); XRAY.markers = [];
+      if (!cityVectorMap || typeof cityVectorMap.getSource !== 'function') return;
+      try {
+        cityVectorMap.getSource('xray-shell')?.setData({ type: 'FeatureCollection', features: [] });
+        cityVectorMap.getSource('xray-slabs')?.setData({ type: 'FeatureCollection', features: [] });
+      } catch (e) { /* style not ready */ }
+    }
+
     function showBuildingXray(inst) {
       if (!inst || !cityVectorMap || !isCityStreetViewActive) return;
+      if (XRAY.inst && XRAY.inst !== inst) xrayClearDrawing();
       XRAY.inst = inst;
-      if (!xrayLayersReady()) { xrayWhenSettled(inst); renderBuildingInsidePanel(inst); return; }
+      if (xrayMapIsMock()) { XRAY.waiting = false; XRAY.building = null; renderBuildingInsidePanel(inst); return; }
+      if (!xrayLayersReady()) { XRAY.waiting = true; xrayClearDrawing(); xrayWhenSettled(inst); renderBuildingInsidePanel(inst); return; }
+      XRAY.waiting = false;
       XRAY.building = xrayFindBuilding(inst.lon, inst.lat);
       xrayDraw(inst);
       renderBuildingInsidePanel(inst);
@@ -9669,20 +9732,21 @@ return maplibregl$1;
     }
 
     function hideBuildingXray() {
-      XRAY.inst = null; XRAY.building = null;
-      XRAY.markers.forEach(m => m.remove()); XRAY.markers = [];
+      XRAY.inst = null; XRAY.waiting = false;
+      xrayClearDrawing();
       document.getElementById('buildingInsidePanel')?.classList.add('hidden');
-      if (!cityVectorMap || typeof cityVectorMap.getSource !== 'function') return;
+      if (!cityVectorMap || typeof cityVectorMap.getLayer !== 'function') { XRAY.dimmed = false; return; }
       try {
-        cityVectorMap.getSource('xray-shell')?.setData({ type: 'FeatureCollection', features: [] });
-        cityVectorMap.getSource('xray-slabs')?.setData({ type: 'FeatureCollection', features: [] });
         if (XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 0.72);
       } catch (e) { /* style not ready */ }
       XRAY.dimmed = false;
     }
     window.hideBuildingXray = hideBuildingXray;
 
-    // Wikidata: items with coordinates within 250 m of the record's point; a match needs the record's website host or its name.
+    // Wikidata, in two steps. First the items with coordinates within 250 m of the record's point, nearest first, one row per
+    // item; a match needs the record's website domain or its name (or an alias of two or more words), and more than one
+    // candidate meeting the test is reported as ambiguous rather than guessed. Then the facts of that one item, with the
+    // precision of each date, so a decade is never shown as a year.
     function xrayWikidataLines(wd) {
       const l = [];
       if (wd.inception) l.push('Opened or founded: ' + wd.inception);
@@ -9691,85 +9755,144 @@ return maplibregl$1;
       if (wd.archivesAt.length) l.push('Archives at: ' + wd.archivesAt.join(', '));
       return l;
     }
-    async function fetchWikidataFacts(inst) {
-      const key = inst.id || inst.name;
-      if (XRAY.wikidata[key] && XRAY.wikidata[key].status !== 'pending') return XRAY.wikidata[key];
-      if (!inst.lat || !inst.lon) return (XRAY.wikidata[key] = { status: 'none' });
-      XRAY.wikidata[key] = { status: 'pending' };
-      const q = `SELECT ?item ?itemLabel ?site ?architectLabel ?inception ?collection ?archivesAtLabel ?article WHERE {
-  SERVICE wikibase:around { ?item wdt:P625 ?loc . bd:serviceParam wikibase:center "Point(${Number(inst.lon)} ${Number(inst.lat)})"^^geo:wktLiteral ; wikibase:radius "0.25" . }
-  OPTIONAL { ?item wdt:P856 ?site . } OPTIONAL { ?item wdt:P84 ?architect . } OPTIONAL { ?item wdt:P571 ?inception . }
-  OPTIONAL { ?item wdt:P1436 ?collection . } OPTIONAL { ?item wdt:P485 ?archivesAt . }
-  OPTIONAL { ?article schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> . }
+    async function xrayWikidataQuery(q, ctrl) {
+      const res = await fetch(WIKIDATA_SPARQL + '?format=json&query=' + encodeURIComponent(q), { headers: { 'Accept': 'application/sparql-results+json' }, signal: ctrl ? ctrl.signal : undefined });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const json = await res.json();
+      return (json.results && json.results.bindings) || [];
+    }
+    function xrayCandidatesQuery(inst) {
+      return `SELECT ?item ?itemLabel ?dist (GROUP_CONCAT(DISTINCT ?site; separator=" ") AS ?sites) (GROUP_CONCAT(DISTINCT ?alt; separator="|") AS ?alts) WHERE {
+  SERVICE wikibase:around { ?item wdt:P625 ?loc . bd:serviceParam wikibase:center "Point(${Number(inst.lon)} ${Number(inst.lat)})"^^geo:wktLiteral ; wikibase:radius "0.25" ; wikibase:distance ?dist . }
+  OPTIONAL { ?item wdt:P856 ?site . }
+  OPTIONAL { ?item skos:altLabel ?alt . FILTER(LANG(?alt) = "en") }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,mul" . }
-} LIMIT 80`;
+} GROUP BY ?item ?itemLabel ?dist ORDER BY ?dist LIMIT ${WIKIDATA_CANDIDATES}`;
+    }
+    function xrayFactsQuery(itemUri) {
+      const id = String(itemUri).replace(/^.*\//, '');
+      return `SELECT ?architectLabel ?inception ?prec ?collection ?archivesAtLabel ?article WHERE {
+  OPTIONAL { wd:${id} wdt:P84 ?architect . }
+  OPTIONAL { wd:${id} p:P571/psv:P571 ?t . ?t wikibase:timeValue ?inception ; wikibase:timePrecision ?prec . }
+  OPTIONAL { wd:${id} wdt:P1436 ?collection . }
+  OPTIONAL { wd:${id} wdt:P485 ?archivesAt . }
+  OPTIONAL { ?article schema:about wd:${id} ; schema:isPartOf <https://en.wikipedia.org/> . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,mul" . }
+} LIMIT 200`;
+    }
+    function fetchWikidataFacts(inst) {
+      const key = inst.id || inst.name;
+      const have = XRAY.wikidata[key];
+      if (have && have.status === 'pending') return have.promise;
+      if (have && (have.status === 'matched' || have.status === 'none' || have.status === 'ambiguous' || have.status === 'no-coordinates')) return Promise.resolve(have);
+      if (!inst.lat || !inst.lon) return Promise.resolve(XRAY.wikidata[key] = { status: 'no-coordinates' });
       const ctrl = typeof AbortController === 'function' ? new AbortController() : null;
       const timer = ctrl ? setTimeout(() => ctrl.abort(), 9000) : null;
-      let out;
-      try {
-        const res = await fetch(WIKIDATA_SPARQL + '?format=json&query=' + encodeURIComponent(q), { headers: { 'Accept': 'application/sparql-results+json' }, signal: ctrl ? ctrl.signal : undefined });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const json = await res.json();
-        out = xrayPickWikidata(inst, (json.results && json.results.bindings) || []);
-      } catch (e) { out = { status: 'unreachable' }; }
-      if (timer) clearTimeout(timer);
-      XRAY.wikidata[key] = out;
-      return out;
+      const run = (async () => {
+        let out;
+        try {
+          const rows = await xrayWikidataQuery(xrayCandidatesQuery(inst), ctrl);
+          out = xrayPickWikidata(inst, rows);
+          if (out.status === 'matched') xrayApplyFacts(out, await xrayWikidataQuery(xrayFactsQuery(out.item), ctrl));
+        } catch (e) {
+          out = { status: (e && e.name === 'AbortError') ? 'timeout' : 'unreachable' };
+        }
+        if (timer) clearTimeout(timer);
+        // A failure is not kept: the next opening of the building asks again.
+        if (out.status === 'timeout' || out.status === 'unreachable') delete XRAY.wikidata[key]; else XRAY.wikidata[key] = out;
+        XRAY.lastFailure = (out.status === 'timeout' || out.status === 'unreachable') ? { key, status: out.status } : null;
+        return out;
+      })();
+      XRAY.wikidata[key] = { status: 'pending', promise: run };
+      return run;
     }
     function xrayPickWikidata(inst, rows) {
-      const items = {};
+      const site = xraySite(inst), domain = xrayDomain(site);
+      const names = [xrayNorm(inst.name)].filter(Boolean);
+      const aliases = (inst.aliases || []).map(xrayNorm).filter(a => a && a.split(' ').length >= 2);
+      const cands = rows.map(r => ({
+        item: r.item && r.item.value, label: r.itemLabel ? r.itemLabel.value : '',
+        domains: (r.sites && r.sites.value ? r.sites.value.split(' ') : []).map(xrayDomain).filter(Boolean),
+        alts: (r.alts && r.alts.value ? r.alts.value.split('|') : []).map(xrayNorm).filter(Boolean)
+      })).filter(c => c.item);
+      const byHost = domain ? cands.filter(c => c.domains.some(d => xraySameDomain(d, domain))) : [];
+      const nameOf = c => [xrayNorm(c.label)].concat(c.alts);
+      const byName = cands.filter(c => nameOf(c).some(n => names.includes(n)));
+      const byAlias = cands.filter(c => nameOf(c).some(n => aliases.includes(n)));
+      const result = (pick, how) => ({ status: 'matched', how, item: pick.item, label: pick.label, architects: [], inception: '', collection: '', archivesAt: [], article: '', checked: cands.length });
+      if (byHost.length === 1) return result(byHost[0], byName.includes(byHost[0]) ? 'website and name' : 'website');
+      if (byHost.length > 1) {
+        const both = byHost.filter(c => byName.includes(c));
+        if (both.length === 1) return result(both[0], 'website and name');
+        return { status: 'ambiguous', checked: cands.length, count: byHost.length };
+      }
+      if (byName.length === 1) return result(byName[0], 'name and location');
+      if (byName.length > 1) return { status: 'ambiguous', checked: cands.length, count: byName.length };
+      if (byAlias.length === 1) return result(byAlias[0], 'alias and location');
+      if (byAlias.length > 1) return { status: 'ambiguous', checked: cands.length, count: byAlias.length };
+      return { status: 'none', checked: cands.length };
+    }
+    function xrayApplyFacts(out, rows) {
+      const architects = new Set(), archivesAt = new Set(), years = new Set(), collections = new Set();
+      let coarse = false;
       rows.forEach(r => {
-        const id = r.item && r.item.value; if (!id) return;
-        const it = items[id] || (items[id] = { item: id, label: r.itemLabel ? r.itemLabel.value : '', sites: new Set(), architects: new Set(), inception: '', collection: '', archivesAt: new Set(), article: '' });
-        if (r.site) it.sites.add(xrayHost(r.site.value));
-        if (r.architectLabel) it.architects.add(r.architectLabel.value);
-        if (r.inception && !it.inception) it.inception = String(r.inception.value).slice(0, 4);
-        if (r.collection && !it.collection) it.collection = r.collection.value;
-        if (r.archivesAtLabel) it.archivesAt.add(r.archivesAtLabel.value);
-        if (r.article && !it.article) it.article = r.article.value;
+        if (r.architectLabel) architects.add(r.architectLabel.value);
+        if (r.archivesAtLabel) archivesAt.add(r.archivesAtLabel.value);
+        if (r.collection) collections.add(r.collection.value);
+        if (r.inception) { const p = r.prec ? Number(r.prec.value) : 0; if (p >= 9) years.add(String(r.inception.value).replace(/^\+/, '').slice(0, 4)); else coarse = true; }
+        if (r.article && !out.article) out.article = r.article.value;
       });
-      const host = xrayHost(inst.website || inst.visit_url || '');
-      const names = [inst.name].concat(inst.aliases || []).map(xrayNorm).filter(Boolean);
-      let how = '', pick = null;
-      const list = Object.values(items);
-      if (host) { pick = list.find(it => it.sites.has(host)); if (pick) how = 'website'; }
-      if (!pick) { pick = list.find(it => names.includes(xrayNorm(it.label))); if (pick) how = 'name and location'; }
-      if (!pick) return { status: 'none' };
-      return { status: 'matched', how, item: pick.item, label: pick.label, architects: [...pick.architects], inception: pick.inception, collection: pick.collection, archivesAt: [...pick.archivesAt], article: pick.article };
+      out.architects = [...architects];
+      out.archivesAt = [...archivesAt];
+      // One value only: several dates or several sizes on Wikidata are left out rather than picked between.
+      out.inception = (years.size === 1 && !coarse) ? [...years][0] : '';
+      out.collection = collections.size === 1 ? [...collections][0] : '';
     }
 
     function renderBuildingInsidePanel(inst) {
       const panel = document.getElementById('buildingInsidePanel');
       if (!panel || !inst) return;
       const e = escapeHtml, b = XRAY.building, cats = xrayCategories(inst), wd = XRAY.wikidata[inst.id || inst.name];
-      const site = inst.visit_url || inst.website;
-      const outline = !b ? 'No building outline in the map data at this point, so nothing is drawn.'
-        : b.hasHeight ? 'Outline and height from OpenStreetMap, through the map tiles.' : 'Outline from OpenStreetMap, through the map tiles. The map has no height for this building, so the shell uses the map default.';
+      const site = xraySite(inst);
+      const outline = xrayMapIsMock() ? 'The map could not start in this browser, so no outline is drawn.'
+        : XRAY.waiting ? 'Waiting for the map tiles.'
+        : !b ? 'No building outline in the map data at this point, so nothing is drawn.'
+        : b.hasHeight ? 'Outline from OpenStreetMap, through the map tiles. Height as the tiles render it, which can be an estimate from the number of levels or a default.'
+        : 'Outline from OpenStreetMap, through the map tiles. The tiles carry no height for this building, so the shell uses the map default.';
+      const failed = XRAY.lastFailure && XRAY.lastFailure.key === (inst.id || inst.name) ? XRAY.lastFailure.status : '';
       let wdHtml = '';
-      if (!wd || wd.status === 'pending') wdHtml = '<p class="no-indent">Looking up Wikidata.</p>';
-      else if (wd.status === 'unreachable') wdHtml = '<p class="no-indent">Wikidata could not be reached.</p>';
-      else if (wd.status === 'none') wdHtml = '<p class="no-indent">No Wikidata item within 250 m matched this website or name.</p>';
-      else wdHtml = `<p class="no-indent">From Wikidata, matched by ${e(wd.how)}, fetched now. Not independently verified. <a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}.</p>`;
+      if (xrayMapIsMock() && !wd) wdHtml = '';
+      else if (!wd && failed === 'timeout') wdHtml = '<p class="no-indent">Wikidata did not answer in time.</p>';
+      else if (!wd && failed === 'unreachable') wdHtml = '<p class="no-indent">Wikidata could not be reached.</p>';
+      else if (!wd || wd.status === 'pending') wdHtml = '<p class="no-indent">Looking up Wikidata.</p>';
+      else if (wd.status === 'no-coordinates') wdHtml = '<p class="no-indent">The record has no coordinates, so Wikidata was not asked.</p>';
+      else if (wd.status === 'none') wdHtml = `<p class="no-indent">No Wikidata item within 250 m matched this website or name${wd.checked >= WIKIDATA_CANDIDATES ? ` among the nearest ${WIKIDATA_CANDIDATES}` : ''}.</p>`;
+      else if (wd.status === 'ambiguous') wdHtml = `<p class="no-indent">${wd.count} Wikidata items within 250 m share this website or name, so none is shown.</p>`;
+      else wdHtml = `<p class="no-indent">From Wikidata, matched by ${e(wd.how)}, fetched this session. Not independently verified. <a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}.</p>`;
       panel.innerHTML = `
         <div class="flex items-start justify-between gap-3">
           <h3 class="!mt-0 text-white">${e(inst.name)}</h3>
-          <button type="button" class="text-[#f4f4f4] hover:underline cursor-pointer shrink-0" onclick="window.hideBuildingXray()">Close</button>
+          <button type="button" class="xray-pill shrink-0" onclick="window.hideBuildingXray()">Close</button>
         </div>
         <p class="no-indent text-[#f4f4f4]">${outline}</p>
-        ${cats.length ? `<p class="no-indent text-[#08bdba]">Inside, from the record:</p>${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1.5 border-t border-[#f4f4f4]"><div class="no-indent" style="color:${XRAY_COLOURS[c.key]}">${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent text-[#f4f4f4]">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent text-[#f4f4f4]">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent text-[#f4f4f4]">The record holds nothing beyond its name and place.</p>'}
+        ${cats.length ? `<p class="no-indent text-[#08bdba]">Inside, from the record:</p>${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1.5 border-t border-[#f4f4f4]"><div class="no-indent" style="color:${XRAY_COLOURS[c.key]}">${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent text-[#f4f4f4]">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent text-[#f4f4f4]">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent text-[#f4f4f4]">None of the categories shown here is in the record.</p>'}
         <div class="py-1.5 border-t border-[#f4f4f4]">
-          <p class="no-indent text-[#f4f4f4]">Current shows: not in the records. ${site ? `The museum's own page: <a href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a>.` : 'No website is recorded.'}</p>
+          <p class="no-indent text-[#f4f4f4]">Current shows: not in the records. ${site ? `Website: <a href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a>.` : 'No website is recorded.'}</p>
           <p class="no-indent text-[#f4f4f4]">Archives: ${wd && wd.status === 'matched' && wd.archivesAt.length ? 'held at ' + e(wd.archivesAt.join(', ')) + ', according to Wikidata.' : 'not in the records.'}</p>
           ${wdHtml}
         </div>
-        <div class="flex gap-2 pt-1"><button type="button" class="xray-pill" onclick="window.openDossier(selectedInstitution)">Full record</button></div>`;
+        <div class="flex gap-2 pt-1"><button type="button" class="xray-pill" data-xray-full-record>Full record</button></div>`;
+      panel.querySelector('[data-xray-full-record]')?.addEventListener('click', () => { if (typeof openDossier === 'function') openDossier(inst); });
+      // A narrow map column takes the phone layout: full width along the bottom, under the building.
+      panel.style.width = xrayNarrow() ? 'calc(100% - 16px)' : '380px';
+      panel.style.maxHeight = xrayNarrow() ? '45%' : '60%';
       panel.classList.remove('hidden');
     }
-
 
     function openCityStreetView(cityName, targetLat, targetLon) {
       if (!cityName || cityName === 'all') return;
       isCityStreetViewActive = true;
+      cityStreetViewCity = cityName;
       const mapEl = document.getElementById('cityMapContainer');
       if (mapEl) {
         mapEl.classList.remove('hidden');
@@ -13545,6 +13668,7 @@ return maplibregl$1;
 
     function deselectInstitution() {
       selectedInstitution = null;
+      if (typeof hideBuildingXray === 'function') hideBuildingXray();
       if (typeof curatorContext !== 'undefined') {
         curatorContext.activeFocusInst = null;
       }
@@ -13589,6 +13713,7 @@ return maplibregl$1;
         deselectInstitution();
         return;
       }
+      if (typeof XRAY !== 'undefined' && XRAY.inst && XRAY.inst !== inst && typeof hideBuildingXray === 'function') hideBuildingXray();
       selectedInstitution = inst;
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) {
@@ -13792,7 +13917,7 @@ return maplibregl$1;
           if (inst.city && !matchC(selectedCityFilter, inst.city)) {
             openCityStreetView(inst.city, inst.lat, inst.lon);
           } else if (cityVectorMap && inst.lon && inst.lat) {
-            cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: Math.max(cityVectorMap.getZoom() || 14, 17.2), pitch: 55, duration: 700 });
+            cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: Math.max(cityVectorMap.getZoom() || 14, 17.2), pitch: 55, duration: 700, offset: (typeof xrayFlyOffset === 'function') ? xrayFlyOffset() : [0, 0] });
             if (typeof xrayWhenSettled === 'function') xrayWhenSettled(inst);
           }
         } else {
@@ -13969,7 +14094,7 @@ return maplibregl$1;
             <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="text-emerald-400 hover:text-emerald-300 hover:underline text-left cursor-pointer flex items-center gap-1.5 font-medium">
               <span>Ask Curator in Chat</span>
             </button>
-            <button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="text-left text-[14px] text-[#f4f4f4] hover:underline cursor-pointer"><span>Building view</span></button>
+            ${(inst.lat && inst.lon) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="xray-pill self-start cursor-pointer">Building view</button>` : `<p class="no-indent text-[14px] text-[#f4f4f4]">No coordinates in the record, so there is no building view.</p>`}
             ${webUrl ? `
               <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:text-white hover:underline flex items-center gap-1.5">
                 <span>Website</span>
