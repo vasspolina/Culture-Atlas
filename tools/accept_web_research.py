@@ -50,6 +50,8 @@ def keep_urls(urls, site):
         h = host(u)
         if h in ('wikipedia.org', 'wikipedia.com'):  # portal hosts with no language
             continue
+        if h.split('.')[0] in ('dev', 'staging', 'test', 'stage'):  # a development copy of a site is not a source to send people to
+            continue
         out.append(u)
     def rank(u):
         h = host(u)
@@ -91,7 +93,13 @@ for r in rows:
     if r.get('address') and (r['id'], 'address') not in EXCLUDE:
         c['address'], urls = pick_address(r)
         c['address_urls'] = keep_urls(urls, site)
-    if (c.get('year_founded') and c['year_urls']) or (c.get('address') and c['address_urls']):
+    if c.get('year_founded') and not c['year_urls']:
+        for k in ('year_founded', 'year_basis', 'year_urls'):
+            c.pop(k)
+    if c.get('address') and not c['address_urls']:
+        for k in ('address', 'address_urls'):
+            c.pop(k)
+    if c.get('year_founded') or c.get('address'):
         claims.append(c)
 json.dump(claims, open(sys.argv[3], 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
 print(len(claims), 'claims,', sum(1 for c in claims if 'year_founded' in c), 'years,', sum(1 for c in claims if 'address' in c), 'addresses')

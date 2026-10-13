@@ -16,13 +16,16 @@ ROOT = Path(__file__).resolve().parent.parent
 claims = json.load(open(sys.argv[1], encoding='utf-8'))
 path = ROOT / 'institutions.json'
 records = json.load(open(path, encoding='utf-8'))
-by_id = {r['id']: r for r in records}
+by_id = {}
+for r in records:
+    by_id.setdefault(r['id'], []).append(r)
 wrote = {'year_founded': 0, 'address': 0}
 for c in claims:
-    r = by_id.get(c['id'])
-    if r is None:
-        print('unknown id', c['id'])
+    matches = by_id.get(c['id'], [])
+    if len(matches) != 1:  # several records share a few ids; never guess which one a claim is about
+        print('skipped', c['id'], 'matches', len(matches), 'records')
         continue
+    r = matches[0]
     fs = r.setdefault('field_sources', {})
     y = c.get('year_founded')
     if y and not r.get('year_founded') and isinstance(y, int) and 1000 <= y <= 2026 and c.get('year_urls'):
