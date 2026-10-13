@@ -357,6 +357,12 @@
     
     html body #mobileTopBrandBtn, html body #topBrandLogoBtn, html body #mobileTopBrandBtn *, html body #topBrandLogoBtn * { text-transform: none !important; color: inherit; }
     html body #topBrandLogoBtn > span:first-child, html body #mobileTopBrandBtn .text-white { color: #ffffff !important; }
+    /* Building x-ray: labels on the slabs and the inside panel. */
+    .xray-label { background: #000000; color: #f4f4f4; border: 1px solid var(--xray-colour, #f4f4f4); border-radius: 9999px; padding: 2px 10px; font-size: 14px; white-space: nowrap; cursor: pointer; text-transform: none; }
+    #buildingInsidePanel { border: 1px solid #f4f4f4; border-radius: 6px; font-size: 14px; line-height: 1.3; }
+    #buildingInsidePanel h3 { font-size: 18px; }
+    #buildingInsidePanel p { font-size: 14px; }
+    .xray-pill { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; font-size: 14px !important; }
     /* Compatibility family aliases referencing exclusively the two PP Eiko fonts */
     *, *::before, *::after {
       font-family: 'PP Mori', sans-serif !important;
@@ -2298,16 +2304,7 @@ return maplibregl$1;
       <!-- END: SpaceDetailCardBottomSheet -->
 
       <!-- Floating Mobile 3D Active Indicator Banner -->
-      <div id="mobile3DActiveIndicator" class="hidden absolute bottom-16 inset-x-3 z-30 pointer-events-auto flex md:hidden items-center justify-between px-3.5 py-2 rounded-xl bg-black/95 border border-cyan-400/80 shadow-2xl  text-xs text-white">
-        <div class="flex items-center space-x-2 truncate mr-2">
-
-          <span class="font-mono text-[#f4f4f4] text-[14px] tracking-wider shrink-0">3D Building Active</span>
-          <span class="text-[#f4f4f4] truncate" id="mobile3DActiveName">Space</span>
-        </div>
-        <button id="mobile3DBackToDossierBtn" type="button" class="px-2.5 py-1 rounded-lg bg-cyan-950 hover:bg-cyan-900 border border-cyan-500/70 text-[#f4f4f4] text-[14px] font-medium whitespace-nowrap transition cursor-pointer flex items-center space-x-1 shrink-0">
-          <span>Dossier Details ↑</span>
-        </button>
-      </div>
+      
 
       <!-- BEGIN: CuratorChatDrawer (Mobile Collapsible AI Chat Panel Matching code.html) -->
       <section class="hidden absolute inset-0 z-30 flex-1 bg-black flex md:hidden flex-col overflow-hidden border-t border-cyan-900/50" data-purpose="ai-curator-chat" id="curator-chat-drawer">
@@ -2374,103 +2371,8 @@ return maplibregl$1;
         </div>
       </div>
 
-      <!--  3D BUILDING FLOOR-BY-FLOOR INSPECTOR HUD (Floating on 3D Building View) -->
-      <!--  3D BUILDING FLOOR INSPECTOR (Floating Clean Editorial HUD) -->
-      <div id="buildingFloorInspectorHud" class="hidden absolute bottom-2 sm:bottom-4 left-2 sm:left-4 z-40 pointer-events-auto flex flex-col gap-2 p-3 bg-black/95 border-b border-[#262626] w-[calc(100vw-16px)] sm:w-[290px] max-w-none sm:max-w-[290px] max-h-[calc(100%-70px)] overflow-y-auto select-none text-[#f4f4f4] transition-all duration-200">
-        <!-- Header -->
-        <div class="flex items-center justify-between gap-2 border-b border-[#262626] pb-2">
-          <div class="flex items-center gap-2 min-w-0">
-            <div class="min-w-0">
-              <div class="flex items-center gap-1.5">
-                <span id="bfiBuildingName" class="text-[14px] sm:text-[14px] font-semibold text-white truncate block"></span>
-              </div>
-              <span id="bfiBuildingMeta" class="text-[14px] font-mono text-[#f4f4f4] block truncate"></span>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 shrink-0">
-            <button id="dockBfiToWorkspaceBtn" type="button" onclick="window.dockBuildingInspectorToWorkspace()" class="text-[#f4f4f4] hover:text-white hover:underline flex items-center gap-1 transition cursor-pointer text-[14px] font-mono" title="Dock Inspector to Right Workspace">
-              <span>Dock</span>
-            </button>
-            <button id="minimizeBfiHudBtn" type="button" class="text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] font-mono font-bold" title="Minimize / Expand Inspector">
-              <span id="minimizeBfiHudIcon">_</span>
-            </button>
-            <button id="closeBfiHudBtn" type="button" class="text-[#f4f4f4] hover:text-white transition cursor-pointer p-0.5" title="Close Building Inspector">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Collapsible Content Wrapper -->
-        <div id="bfiContentWrap" class="flex flex-col gap-2">
-          <!--  3D Building In-Map Architecture Viewer -->
-          <div id="bfiSpaceShowcase" class="space-y-2 text-[14px] py-1 border-b border-[#262626]">
-            <div class="flex items-center justify-between gap-1 text-[14px] font-mono">
-              <span class="text-[#f4f4f4] font-bold flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 text-[#f4f4f4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                3D BUILDING MAP VIEW
-              </span>
-              <span id="bfiSpaceTypologyBadge" class="text-[#f4f4f4] text-[14px] font-mono truncate max-w-[150px]"></span>
-            </div>
-
-            <!-- Two-photo preview grid: Space Architecture Photo & Aerial Footprint View -->
-            <div class="grid grid-cols-2 gap-2">
-              <div class="relative group overflow-hidden bg-black aspect-[4/3]">
-                <img id="bfiSpacePhotoImg" src="" alt="Space Architecture" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                <span class="absolute bottom-1 left-1 text-[14px] font-mono text-[#f4f4f4]">Photo</span>
-              </div>
-              <div class="relative group overflow-hidden bg-black aspect-[4/3]">
-                <img id="bfiSatelliteAerialImg" src="" alt="Aerial Footprint View" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                <span class="absolute bottom-1 left-1 text-[14px] font-mono text-emerald-300">Aerial</span>
-              </div>
-            </div>
-
-            <!-- In-Map 3D Camera & Orbit Controls -->
-            <div class="flex flex-col gap-1 pt-0.5 text-[14px] font-mono">
-              <button id="bfiPerspectiveBtn" type="button" onclick="window.set3DCameraAngle('perspective')" 
-                      class="text-left text-[#f4f4f4] hover:text-white hover:underline transition cursor-pointer"
-                      title="Set 3D Perspective Camera Angle (Pitch 62°)">
-                <span>Perspective 3D</span>
-              </button>
-              <button id="bfiOrbitBtn" type="button" onclick="window.toggle3DOrbit()" 
-                      class="text-left text-emerald-300 hover:text-white hover:underline transition cursor-pointer"
-                      title="Continuous 360° Orbit Flyaround on Culture Atlas Map">
-                <span id="bfiOrbitBtnText">Orbit 360°</span>
-              </button>
-              <button id="bfiIsometricBtn" type="button" onclick="window.set3DCameraAngle('isometric')" 
-                      class="text-left text-[#f4f4f4] hover:text-white hover:underline transition cursor-pointer"
-                      title="Axonometric 45° Angle">
-                <span>Isometric 45°</span>
-              </button>
-              <button id="bfiTopDownBtn" type="button" onclick="window.set3DCameraAngle('plan')" 
-                      class="text-left text-[#f4f4f4] hover:text-white hover:underline transition cursor-pointer"
-                      title="Top-Down Architectural Floor Plan View">
-                <span>Floor Plan 0°</span>
-              </button>
-            </div>
-
-            <!-- Retained hidden elements for DOM compatibility and test pass guarantees -->
-            <div class="hidden" style="display:none;" aria-hidden="true">
-              <a id="bfiGoogleImagesBtn" href="#"></a>
-              <a id="bfiGoogleSatelliteBtn" href="#"></a>
-              <a id="bfiStreetViewBtn" href="#"></a>
-            </div>
-          </div>
-
-          <!-- Zoom Depth Action Controls -->
-          <div class="flex flex-col gap-1 pt-0.5 text-[14px] font-mono border-b border-[#262626] pb-2">
-            <button id="bfiZoomCloserBtn" class="text-left text-[#f4f4f4] hover:text-white hover:underline transition cursor-pointer" title="Zoom in to 20x 3D architectural perspective">
-              <span>Zoom 20x</span>
-            </button>
-            <button id="bfiResetZoomBtn" class="text-left text-[#f4f4f4] hover:text-white hover:underline transition cursor-pointer" title="Reset to standard 18x view">
-              <span>Standard 18x View</span>
-            </button>
-            <button id="bfiAskCuratorBtn" type="button" class="text-left text-[#f4f4f4] hover:text-white hover:underline transition cursor-pointer flex items-center gap-1" title="Ask curator about this building in chat">
-              <span>Ask Curator in Chat</span>
-            </button>
-          </div>
-
-        </div>
-      </div>
+      <!-- Inside the building: what the record holds, beside the outline the map data has for it. Nothing here is drawn from a guess. -->
+      <div id="buildingInsidePanel" class="hidden absolute bottom-2 sm:bottom-4 left-2 sm:left-4 z-40 pointer-events-auto flex flex-col gap-2 p-4 bg-black w-[calc(100vw-16px)] sm:w-[380px] max-h-[60%] overflow-y-auto custom-scrollbar select-text"></div>
 
       <!-- Active Curatorial Route HUD Card (Floating on Street View) -->
       <div id="activeRouteBanner" class="hidden absolute top-12 sm:top-14 left-2 sm:left-4 z-20 pointer-events-auto flex flex-col gap-2 p-3 bg-black/95 border-b border-[#262626] max-w-[320px] sm:max-w-[390px] select-none text-[#f4f4f4]">
@@ -3141,29 +3043,6 @@ return maplibregl$1;
       <div id="connectionTestBox" class="hidden p-3 rounded-xl text-[14px] border flex items-center gap-2">
         <span id="testStatusIcon"></span>
         <span id="testStatusMsg" class="font-mono">Testing connection...</span>
-      </div>
-
-      <!-- 3D Architectural Camera Headroom Settings -->
-      <div class="space-y-2 pt-2 border-t border-[#2e2e2e]">
-        <div class="flex items-center justify-between">
-          <label class="block text-[14px] text-white font-normal">3D Building Camera Headroom</label>
-          <span class="text-[14px] font-mono text-emerald-400" id="currentHeadroomBadge">Comfortable (120px)</span>
-        </div>
-        <p class="text-[14px] text-[#f4f4f4] leading-tight">Controls top vertical clearance above 3D building models so rooftop mast plates and floor directories never collide with the header.</p>
-        <div class="grid grid-cols-3 gap-2 pt-1">
-          <button type="button" data-headroom="compact" class="headroom-setting-btn py-2 px-2.5 rounded-xl border border-[#27272a] bg-black text-[#f4f4f4] hover:text-white text-[14px] font-normal flex flex-col items-center justify-center text-center transition cursor-pointer">
-            <span class="font-medium text-white">Compact</span>
-            <span class="text-[14px] text-[#f4f4f4]">70px margin</span>
-          </button>
-          <button type="button" data-headroom="comfortable" class="headroom-setting-btn py-2 px-2.5 rounded-xl border border-emerald-500/60 bg-emerald-950/40 text-emerald-200 text-[14px] font-normal flex flex-col items-center justify-center text-center transition cursor-pointer shadow-sm">
-            <span class="font-medium text-white">Comfortable</span>
-            <span class="text-[14px] text-emerald-300">120px (Default)</span>
-          </button>
-          <button type="button" data-headroom="spacious" class="headroom-setting-btn py-2 px-2.5 rounded-xl border border-[#27272a] bg-black text-[#f4f4f4] hover:text-white text-[14px] font-normal flex flex-col items-center justify-center text-center transition cursor-pointer">
-            <span class="font-medium text-white">Spacious</span>
-            <span class="text-[14px] text-[#f4f4f4]">160px sky space</span>
-          </button>
-        </div>
       </div>
 
       <!-- Privacy Assurance -->
@@ -8857,7 +8736,7 @@ return maplibregl$1;
         {
           id: 'background',
           type: 'background',
-          paint: { 'background-color': '#17171a' }
+          paint: { 'background-color': '#000000' }
         },
         {
           id: 'landcover_grass',
@@ -8923,8 +8802,8 @@ return maplibregl$1;
           'source-layer': 'building',
           minzoom: 13,
           paint: {
-            'fill-color': '#21242d',
-            'fill-outline-color': '#191b22',
+            'fill-color': '#022b30',
+            'fill-outline-color': '#004144',
             'fill-opacity': 0.9
           }
         },
@@ -8935,7 +8814,7 @@ return maplibregl$1;
           'source-layer': 'building',
           minzoom: 14,
           paint: {
-            'fill-extrusion-color': '#18212e',
+            'fill-extrusion-color': '#004144',
             'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 8]],
             'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]],
             'fill-extrusion-opacity': 0.72,
@@ -9013,7 +8892,7 @@ return maplibregl$1;
             'text-letter-spacing': 0.08
           },
           paint: {
-            'text-color': '#94a3b8',
+            'text-color': '#f4f4f4',
             'text-halo-color': '#111215',
             'text-halo-width': 1.5
           }
@@ -9174,38 +9053,9 @@ return maplibregl$1;
       function updateCityZoomClasses() {
         const mapEl = document.getElementById('cityMapContainer');
         if (!mapEl || !cityVectorMap) return;
-        // Keep names of spaces visible across street view zoom levels
         mapEl.classList.add('map-zoomed-in');
         mapEl.classList.remove('map-zoomed-out');
-
-        const currentZoom = cityVectorMap.getZoom();
-        const isBuildingActive = document.body.classList.contains('building-view-active');
-        if (currentZoom >= 17.5 && isBuildingActive) {
-          // At building architectural zoom, close 2D marker popups, suppress redundant floating overlays, and hide 2D pins so they don't block the 3D model
-          document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-          document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {
-            pin.style.opacity = '0';
-            pin.style.pointerEvents = 'none';
-          });
-          mapEl.classList.add('building-view-active');
-          document.body.classList.add('building-view-active');
-        } else {
-          document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {
-            pin.style.opacity = '1';
-            pin.style.pointerEvents = 'auto';
-          });
-          if (!isBuildingActive) {
-            mapEl.classList.remove('building-view-active');
-            document.body.classList.remove('building-view-active');
-          }
-          if (currentZoom < 15.2) {
-            if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(false);
-            if (typeof isBuildingMastDismissed !== 'undefined') isBuildingMastDismissed = false;
-            if (typeof isBuildingFacadeDismissed !== 'undefined') isBuildingFacadeDismissed = false;
-            const bfiHud = document.getElementById('buildingFloorInspectorHud');
-            if (bfiHud && !bfiHud.classList.contains('hidden')) bfiHud.classList.add('hidden');
-          }
-        }
+        if (cityVectorMap.getZoom() < 15.2 && typeof hideBuildingXray === 'function') hideBuildingXray();
       }
       function resolveCityMarkerCollisions() {
         if (typeof document === 'undefined') return;
@@ -9314,13 +9164,6 @@ return maplibregl$1;
         }
         if (typeof ensureCuratorialRouteLayer === 'function') {
           ensureCuratorialRouteLayer();
-        }
-        if (typeof ensureBuildingFootprintLayer === 'function') {
-          ensureBuildingFootprintLayer();
-        }
-        const instToHighlight = selectedInstitution || currentHighlightedBuildingInst;
-        if (instToHighlight && typeof highlightBuildingFootprint === 'function') {
-          highlightBuildingFootprint(instToHighlight);
         }
       });
 
@@ -9440,23 +9283,6 @@ return maplibregl$1;
     let isBuildingMastDismissed = false;
     let isBuildingFacadeDismissed = false;
 
-    function clearBuilding3DInfoMarkers(preserveDismissed = true) {
-      if (building3DInfoMarkers && building3DInfoMarkers.length) {
-        building3DInfoMarkers.forEach(m => {
-          try { m.remove(); } catch (e) {}
-        });
-        building3DInfoMarkers = [];
-      }
-      currentBuildingMastMarker = null;
-      currentBuildingFacadeMarker = null;
-      const plates = document.querySelectorAll('.building-3d-mast-plate, .building-3d-facade-stack, .building-3d-room-badge');
-      plates.forEach(p => { try { p.remove(); } catch (e) {} });
-      if (!preserveDismissed) {
-        isBuildingMastDismissed = false;
-        isBuildingFacadeDismissed = false;
-      }
-    }
-    window.clearBuilding3DInfoMarkers = clearBuilding3DInfoMarkers;
 
     function closeBuildingMast() {
       isBuildingMastDismissed = true;
@@ -9482,23 +9308,8 @@ return maplibregl$1;
     }
     window.closeBuildingFacade = closeBuildingFacade;
 
-    function dismissBuildingRoomBadge(btn) {
-      if (!btn) return;
-      try {
-        const badge = btn.closest('.building-3d-room-badge');
-        if (badge) badge.remove();
-      } catch (e) {}
-    }
-    window.dismissBuildingRoomBadge = dismissBuildingRoomBadge;
 
 
-    function askCuratorAboutCurrentBuilding() {
-      const inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (inst && typeof window.atlasAskCurator === 'function') {
-        window.atlasAskCurator('Tell me about ' + inst.name);
-      }
-    }
-    window.askCuratorAboutCurrentBuilding = askCuratorAboutCurrentBuilding;
 
 
     // =========================================================================
@@ -9528,1120 +9339,23 @@ return maplibregl$1;
     // =========================================================================
     //  3D ARCHITECTURAL CAMERA HEADROOM & MAST SPACING ARCHITECTURE
     // =========================================================================
-    const HEADROOM_PRESETS = {
-      compact: { desktopTop: 70, mobileTop: 65, desktopBottom: 50, mobileBottom: 100, label: 'Compact (70px)', shortLabel: '70px Headroom' },
-      comfortable: { desktopTop: 120, mobileTop: 96, desktopBottom: 60, mobileBottom: 120, label: 'Comfortable (120px)', shortLabel: '120px Headroom' },
-      spacious: { desktopTop: 160, mobileTop: 130, desktopBottom: 70, mobileBottom: 130, label: 'Spacious (160px)', shortLabel: '160px Headroom' }
-    };
-    let currentHeadroomSetting = (typeof localStorage !== 'undefined' && localStorage.getItem('atlas_3d_headroom')) || 'comfortable';
-    if (!HEADROOM_PRESETS[currentHeadroomSetting]) currentHeadroomSetting = 'comfortable';
 
-    function getBuilding3DHeadroomLabel() {
-      const preset = HEADROOM_PRESETS[currentHeadroomSetting] || HEADROOM_PRESETS.comfortable;
-      return preset.shortLabel || '120px Headroom';
-    }
-    window.getBuilding3DHeadroomLabel = getBuilding3DHeadroomLabel;
 
-    function getBuildingCameraPadding() {
-      const preset = HEADROOM_PRESETS[currentHeadroomSetting] || HEADROOM_PRESETS.comfortable;
-      const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 640;
-      return {
-        left: isDesktop ? 40 : 0,
-        top: isDesktop ? preset.desktopTop : preset.mobileTop,
-        bottom: isDesktop ? preset.desktopBottom : preset.mobileBottom,
-        right: isDesktop ? 40 : 15
-      };
-    }
-    window.getBuildingCameraPadding = getBuildingCameraPadding;
 
-    function setBuilding3DHeadroom(mode, reapply = true) {
-      if (!HEADROOM_PRESETS[mode]) mode = 'comfortable';
-      currentHeadroomSetting = mode;
-      try { if (typeof localStorage !== 'undefined') localStorage.setItem('atlas_3d_headroom', mode); } catch (e) {}
 
-      // Update Settings Modal Badge & Buttons
-      const badge = document.getElementById('currentHeadroomBadge');
-      if (badge) badge.textContent = HEADROOM_PRESETS[mode].label;
-      document.querySelectorAll('.headroom-setting-btn').forEach(btn => {
-        const isMatch = btn.getAttribute('data-headroom') === mode;
-        btn.classList.toggle('border-emerald-500/60', isMatch);
-        btn.classList.toggle('bg-emerald-950/40', isMatch);
-        btn.classList.toggle('text-emerald-200', isMatch);
-        btn.classList.toggle('border-[#27272a]', !isMatch);
-        btn.classList.toggle('bg-black', !isMatch);
-        btn.classList.toggle('text-[#f4f4f4]', !isMatch);
-      });
 
-      // Update Mast Plate pill if rendered
-      document.querySelectorAll('.mast-headroom-pill').forEach(pill => {
-        pill.textContent = HEADROOM_PRESETS[mode].shortLabel;
-      });
 
-      // Smoothly re-frame active 3D building camera if in building view
-      if (reapply && cityVectorMap && typeof cityVectorMap.easeTo === 'function') {
-        const inst = selectedInstitution || currentHighlightedBuildingInst;
-        if (inst && (document.body.classList.contains('building-view-active') || isCityStreetViewActive)) {
-          cityVectorMap.easeTo({
-            center: [inst.lon, inst.lat],
-            padding: getBuildingCameraPadding(),
-            duration: 500
-          });
-        }
-      }
-    }
-    window.setBuilding3DHeadroom = setBuilding3DHeadroom;
 
-    function cycleBuilding3DHeadroom() {
-      const modes = ['compact', 'comfortable', 'spacious'];
-      const nextIdx = (modes.indexOf(currentHeadroomSetting) + 1) % modes.length;
-      setBuilding3DHeadroom(modes[nextIdx], true);
-    }
-    window.cycleBuilding3DHeadroom = cycleBuilding3DHeadroom;
 
-    function renderBuilding3DMast(inst) {
-      const div = document.createElement('div');
-      div.className = 'building-3d-mast-plate pointer-events-auto select-none';
-      const name = (inst && inst.name) || 'Culture Atlas Space';
-      const explodeLabel = isExploded3DMode ? 'Stack 3D Building' : 'Explode 3D Floors';
-      const hdLabel = getBuilding3DHeadroomLabel();
-      div.innerHTML = `
-        <div class="mast-header flex items-center justify-between gap-2">
-          <span class="mast-inst-name font-bold text-white">${escapeHtml(name)}</span>
-          <div class="flex items-center gap-1.5">
-            <button type="button" class="mast-headroom-pill" onclick="event.stopPropagation(); window.cycleBuilding3DHeadroom()" title="Cycle camera headroom above building">${hdLabel}</button>
-            <button type="button" class="building-mast-close-btn" onclick="window.closeBuildingMast()">×</button>
-          </div>
-        </div>
-        <div class="mast-actions flex items-center gap-1.5 mt-1">
-          <button type="button" class="mast-explode-btn atlas-pill-btn" onclick="window.toggleExploded3DMode()">${explodeLabel}</button>
-          <button type="button" class="atlas-pill-btn" onclick="window.zoomCloserToBuilding(20.0)">20x Zoom</button>
-          <button type="button" class="atlas-pill-btn flex items-center gap-1.5" onclick="window.askCuratorAboutCurrentBuilding()"><span>Ask Curator</span></button>
-        </div>
-      `;
-      return div;
-    }
-    window.renderBuilding3DMast = renderBuilding3DMast;
 
-    function renderBuilding3DFacadeStack(inst) {
-      const div = document.createElement('div');
-      div.className = 'building-3d-facade-stack pointer-events-auto select-none';
-      const bArch = (inst && inst.building_architecture) || {};
-      const floors = (inst && inst.floor_plans) || (bArch && bArch.floor_plans) || [];
-      let floorRows = '';
-      if (floors.length) {
-        floorRows = floors.map((fl, idx) => {
-          const lvl = fl.level_code || ('L' + (fl.level !== undefined ? fl.level : idx));
-          const name = fl.floor_name || ('Floor ' + lvl);
-          return `<div class="facade-floor-row" onclick="event.stopPropagation(); window.selectBfiFloor(${idx});"><span class="facade-level-badge">${lvl}</span><span class="facade-floor-name">${escapeHtml(name)}</span></div>`;
-        }).join('');
-      } else {
-        floorRows = '<div class="facade-floor-row"><span class="facade-level-badge">L0</span><span class="facade-floor-name">Level 0 Public Gallery</span></div>';
-      }
-      div.innerHTML = `<div class="facade-header"><span class="facade-title">3D FLOOR DIRECTORY</span><button type="button" class="building-facade-close-btn" onclick="event.stopPropagation(); window.closeBuildingFacade()">×</button></div><div class="facade-floors-list">${floorRows}</div>`;
-      return div;
-    }
-    window.renderBuilding3DFacadeStack = renderBuilding3DFacadeStack;
 
-    function getRoomBadgeMarkup(type, data) {
-      const d = data || {};
-      const galSynopsis = d.synopsis || '';
-      const galArtists = d.artists || '';
-      const galAdmission = d.admission || '';
-      const archPolicy = d.reading_room_policy || '';
-      const archScope = d.scope || '';
-      const atFacilities = d.facilities || '';
-      const atAccess = d.access || '';
-      if (type === 'gallery') {
-        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">EXHIBITION GALLERY</span>Exhibition Gallery</span><span class="gal-artists">' + escapeHtml(galArtists) + '</span><span class="gal-admission">' + escapeHtml(galAdmission) + '</span><span class="gal-synopsis">' + escapeHtml(galSynopsis) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Ask Curator, Pull into Chat</button></div>';
-      }
-      if (type === 'archive') {
-        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">ARCHIVES & STUDY</span>Archives &amp; Study</span><span class="arch-policy">' + escapeHtml(archPolicy) + '</span><span class="arch-scope">' + escapeHtml(archScope) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Consult Archive, Pull into Chat</button></div>';
-      }
-      if (type === 'atrium' || type === 'forum') {
-        return '<div class="building-3d-room-badge"><button type="button" class="building-room-close-btn" onclick="event.stopPropagation(); window.dismissBuildingRoomBadge(this);">×</button><span class="badge-title"><span class="sr-only">PUBLIC FORUM &amp; CIVIC</span>Public Forum &amp; Civic</span><span class="at-facilities">' + escapeHtml(atFacilities) + '</span><span class="at-access">' + escapeHtml(atAccess) + '</span><button type="button" class="atlas-pill-btn" onclick="window.askCuratorAboutCurrentBuilding()">Explore Forum, Pull into Chat</button></div>';
-      }
-      return '<div class="building-3d-room-badge">' + escapeHtml(d.label || '') + '</div>';
-    }
-    window.getRoomBadgeMarkup = getRoomBadgeMarkup;
 
-    function generateDistinctFootprint(inst, lat, lon, bArch = {}) {
-      const sqm = Number(bArch.footprint_sqm) || 3200;
-      const latRad = (lat * Math.PI) / 180.0;
-      const metersPerDegLat = 111320;
-      const metersPerDegLon = 111320 * Math.max(0.15, Math.cos(latRad));
-
-      const baseDimM = Math.max(38, Math.min(180, Math.sqrt(sqm) * 1.05));
-      const halfM = baseDimM / 2;
-
-      const style = (bArch.architectural_style || '').toLowerCase();
-      const name = (inst.name || '').toLowerCase();
-
-      let seed = 0;
-      const seedStr = (inst.id || inst.name || 'atlas');
-      for (let i = 0; i < seedStr.length; i++) {
-        seed = (seed * 31 + seedStr.charCodeAt(i)) & 0xffffffff;
-      }
-      const prng = (offset = 0) => {
-        const s = Math.abs(seed + offset * 1337);
-        return ((s ^ (s >> 15)) * 0x45d9f3b & 0x7fffffff) / 0x7fffffff;
-      };
-
-      let typology = 'courtyard';
-      if (name.includes('louvre') || name.includes('palace') || name.includes('british museum') || name.includes('uffizi') || name.includes('prado') || name.includes('rijksmuseum') || name.includes('hermitage') || style.includes('courtyard') || style.includes('quadrangle') || style.includes('renaissance') || style.includes('neoclassical')) {
-        typology = 'courtyard';
-      } else if (name.includes('guggenheim') || name.includes('rotunda') || name.includes('roundhouse') || style.includes('rotunda') || style.includes('circular') || style.includes('dome') || style.includes('spiral')) {
-        typology = 'rotunda';
-      } else if (name.includes('tate modern') || name.includes('wiels') || name.includes('power station') || name.includes('turbine') || name.includes('shed') || name.includes('hangar') || style.includes('industrial') || style.includes('warehouse') || style.includes('carriage') || style.includes('factory')) {
-        typology = 'industrial_nave';
-      } else if (name.includes('whitney') || name.includes('breuer') || name.includes('pompidou') || name.includes('barbican') || style.includes('cantilever') || style.includes('stepped') || style.includes('postmodern')) {
-        typology = 'stepped_cantilever';
-      } else if (name.includes('kunsthalle') || name.includes('contemporary') || style.includes('modernist') || style.includes('brutalist') || style.includes('deconstructivist') || style.includes('bauhaus') || style.includes('pavilion')) {
-        typology = 'l_shaped_wing';
-      } else {
-        const typologies = ['courtyard', 'l_shaped_wing', 'industrial_nave', 'stepped_cantilever', 'rotunda', 'h_campus'];
-        typology = typologies[Math.abs(seed) % typologies.length];
-      }
-
-      let localPts = [];
-
-      if (typology === 'courtyard') {
-        const notchW = 0.44;
-        const notchH = 0.52;
-        localPts = [
-          [-1.0, -0.9],
-          [ 1.0, -0.9],
-          [ 1.0,  0.9],
-          [ notchW, 0.9],
-          [ notchW, 0.9 - notchH],
-          [-notchW, 0.9 - notchH],
-          [-notchW, 0.9],
-          [-1.0,  0.9],
-          [-1.0, -0.9]
-        ];
-      } else if (typology === 'l_shaped_wing') {
-        localPts = [
-          [-1.0, -1.0],
-          [ 1.0, -1.0],
-          [ 1.0, -0.15],
-          [-0.15, -0.15],
-          [-0.15,  1.0],
-          [-1.0,  1.0],
-          [-1.0, -1.0]
-        ];
-      } else if (typology === 'industrial_nave') {
-        localPts = [
-          [-0.45, -1.1],
-          [ 0.45, -1.1],
-          [ 0.45, -0.55],
-          [ 0.72, -0.55],
-          [ 0.72,  0.55],
-          [ 0.45,  0.55],
-          [ 0.45,  1.1],
-          [-0.45,  1.1],
-          [-0.45,  0.55],
-          [-0.72,  0.55],
-          [-0.72, -0.55],
-          [-0.45, -0.55],
-          [-0.45, -1.1]
-        ];
-      } else if (typology === 'stepped_cantilever') {
-        localPts = [
-          [-1.0, -0.85],
-          [ 0.65, -0.85],
-          [ 0.65, -0.35],
-          [ 1.0,  -0.35],
-          [ 1.0,   0.85],
-          [-0.45,  0.85],
-          [-0.45,  0.45],
-          [-1.0,   0.45],
-          [-1.0,  -0.85]
-        ];
-      } else if (typology === 'rotunda') {
-        const sides = 12;
-        const r = 0.85;
-        for (let i = 0; i < sides; i++) {
-          const theta = (i * 2 * Math.PI) / sides;
-          localPts.push([Math.cos(theta) * r, Math.sin(theta) * r]);
-        }
-        localPts.push([0.35, -1.05]);
-        localPts.push([-0.35, -1.05]);
-        localPts.push(localPts[0]);
-      } else {
-        localPts = [
-          [-1.0, -1.0],
-          [-0.4, -1.0],
-          [-0.4, -0.25],
-          [ 0.4, -0.25],
-          [ 0.4, -1.0],
-          [ 1.0, -1.0],
-          [ 1.0,  1.0],
-          [ 0.4,  1.0],
-          [ 0.4,  0.25],
-          [-0.4,  0.25],
-          [-0.4,  1.0],
-          [-1.0,  1.0],
-          [-1.0, -1.0]
-        ];
-      }
-
-      const angleDeg = ((prng(2) * 50) - 25);
-      const angleRad = (angleDeg * Math.PI) / 180.0;
-      const cosA = Math.cos(angleRad);
-      const sinA = Math.sin(angleRad);
-
-      const coords = localPts.map(pt => {
-        const xM = pt[0] * halfM;
-        const yM = pt[1] * halfM;
-        const rotX = xM * cosA - yM * sinA;
-        const rotY = xM * sinA + yM * cosA;
-        const pLon = lon + rotX / metersPerDegLon;
-        const pLat = lat + rotY / metersPerDegLat;
-        return [Number(pLon.toFixed(7)), Number(pLat.toFixed(7))];
-      });
-
-      return { coords, typology, angleDeg, sqm };
-    }
-    window.generateDistinctFootprint = generateDistinctFootprint;
-
-    function getInstitutionSpaceVisuals(inst) {
-      if (!inst) return null;
-      const name = inst.name || 'Institution';
-      const city = inst.city || '';
-      const lat = Number(inst.lat) || 0;
-      const lon = Number(inst.lon) || 0;
-      const bArch = inst.building_architecture || {};
-      const style = bArch.architectural_style || 'Curatorial Space';
-
-      let satelliteTileUrl = '';
-      if (lat && lon) {
-        const zoom = 17;
-        const n = Math.pow(2, zoom);
-        const x = Math.floor(((lon + 180) / 360) * n);
-        const latRad = (lat * Math.PI) / 180;
-        const y = Math.floor(((1 - Math.asinh(Math.tan(latRad)) / Math.PI) / 2) * n);
-        satelliteTileUrl = `https://mt1.google.com/vt/lyrs=s&x=${x}&y=${y}&z=${zoom}`;
-      }
-
-      const PHOTO_REGISTRY = {
-        'tate modern': 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=800&q=80',
-        'musée du louvre': 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=800&q=80',
-        'louvre': 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=800&q=80',
-        'centre pompidou': 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80',
-        'moma': 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80',
-        'stedelijk': 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=800&q=80',
-        'british museum': 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=800&q=80',
-        'whitechapel': 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=800&q=80',
-        'chisenhale': 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80',
-        'guggenheim': 'https://images.unsplash.com/photo-1580136579312-94651dfd596d?auto=format&fit=crop&w=800&q=80',
-        'hayward': 'https://images.unsplash.com/photo-1554907984-15263bfd63bd?auto=format&fit=crop&w=800&q=80',
-        'macba': 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80',
-        'palais de tokyo': 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80',
-        'wiels': 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=800&q=80',
-        'casco': 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80'
-      };
-
-      const normName = name.toLowerCase();
-      let photoUrl = '';
-      for (const [key, val] of Object.entries(PHOTO_REGISTRY)) {
-        if (normName.includes(key)) {
-          photoUrl = val;
-          break;
-        }
-      }
-      if (!photoUrl) {
-        const TYPOLOGY_PHOTOS = {
-          industrial: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80',
-          modernist: 'https://images.unsplash.com/photo-1554907984-15263bfd63bd?auto=format&fit=crop&w=800&q=80',
-          courtyard: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=800&q=80',
-          rotunda: 'https://images.unsplash.com/photo-1580136579312-94651dfd596d?auto=format&fit=crop&w=800&q=80',
-          contemporary: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80'
-        };
-        const sLower = style.toLowerCase();
-        if (sLower.includes('industrial') || sLower.includes('warehouse') || sLower.includes('carriage')) {
-          photoUrl = TYPOLOGY_PHOTOS.industrial;
-        } else if (sLower.includes('modernist') || sLower.includes('brutalist')) {
-          photoUrl = TYPOLOGY_PHOTOS.modernist;
-        } else if (sLower.includes('rotunda') || sLower.includes('circular')) {
-          photoUrl = TYPOLOGY_PHOTOS.rotunda;
-        } else if (sLower.includes('courtyard') || sLower.includes('palace') || sLower.includes('estate') || sLower.includes('renaissance')) {
-          photoUrl = TYPOLOGY_PHOTOS.courtyard;
-        } else {
-          photoUrl = TYPOLOGY_PHOTOS.contemporary;
-        }
-      }
-
-      const googleImagesUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(name + ' ' + city + ' museum architecture interior')}`;
-      const googleMaps3dUrl = `https://www.google.com/maps/@${lat},${lon},160m/data=!3m1!1e3`;
-      const googleStreetViewUrl = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lon}`;
-
-      return {
-        photoUrl,
-        satelliteTileUrl,
-        googleImagesUrl,
-        googleMaps3dUrl,
-        googleStreetViewUrl,
-        typology: bArch.architectural_style || 'Curatorial Space'
-      };
-    }
-    window.getInstitutionSpaceVisuals = getInstitutionSpaceVisuals;
-
-    function ensureBuildingFootprintLayer() {
-      if (!cityVectorMap) return;
-
-      try {
-        // If map style is not yet fully loaded, defer to 'styledata' or 'load'
-        if (typeof cityVectorMap.isStyleLoaded === 'function' && !cityVectorMap.isStyleLoaded()) {
-          let hasRun = false;
-          const onStyleReady = () => {
-            if (hasRun) return;
-            hasRun = true;
-            ensureBuildingFootprintLayer();
-            const instToHighlight = selectedInstitution || currentHighlightedBuildingInst;
-            if (instToHighlight) highlightBuildingFootprint(instToHighlight);
-          };
-          cityVectorMap.once('styledata', onStyleReady);
-          cityVectorMap.once('load', onStyleReady);
-          return;
-        }
-
-        // 1. Ground Footprint Boundary Source & Layers
-        if (!cityVectorMap.getSource('highlighted-building-footprint')) {
-          cityVectorMap.addSource('highlighted-building-footprint', {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: []
-            }
-          });
-        }
-        if (!cityVectorMap.getLayer('building-footprint-fill')) {
-          cityVectorMap.addLayer({
-            id: 'building-footprint-fill',
-            type: 'fill',
-            source: 'highlighted-building-footprint',
-            paint: {
-              'fill-color': ['get', 'color'],
-              'fill-opacity': 0.22
-            }
-          });
-        }
-        if (!cityVectorMap.getLayer('building-footprint-glow')) {
-          cityVectorMap.addLayer({
-            id: 'building-footprint-glow',
-            type: 'line',
-            source: 'highlighted-building-footprint',
-            paint: {
-              'line-color': ['get', 'color'],
-              'line-width': 0,
-              'line-blur': 0,
-              'line-opacity': 0
-            }
-          });
-        }
-        if (!cityVectorMap.getLayer('building-footprint-line')) {
-          cityVectorMap.addLayer({
-            id: 'building-footprint-line',
-            type: 'line',
-            source: 'highlighted-building-footprint',
-            paint: {
-              'line-color': '#ffffff',
-              'line-width': 3.0,
-              'line-opacity': 1.0
-            }
-          });
-        }
-
-        // 2.  3D STRUCTURAL FLOOR SLABS (Solid Architectural Floor Plates separating storeys)
-        if (!cityVectorMap.getSource('highlighted-building-3d-slabs')) {
-          cityVectorMap.addSource('highlighted-building-3d-slabs', {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: []
-            }
-          });
-        }
-        if (!cityVectorMap.getLayer('building-3d-floor-slabs')) {
-          cityVectorMap.addLayer({
-            id: 'building-3d-floor-slabs',
-            type: 'fill-extrusion',
-            source: 'highlighted-building-3d-slabs',
-            paint: {
-              'fill-extrusion-color': ['get', 'color'],
-              'fill-extrusion-height': ['get', 'height'],
-              'fill-extrusion-base': ['get', 'base'],
-              'fill-extrusion-opacity': 0.94,
-              'fill-extrusion-vertical-gradient': true
-            }
-          });
-        }
-
-        // 3.  X-RAY INTERIOR ROOMS & CORE LAYER (Luminous Curatorial Galleries, Archives & Atriums)
-        if (!cityVectorMap.getSource('highlighted-building-3d-interior-core')) {
-          cityVectorMap.addSource('highlighted-building-3d-interior-core', {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: []
-            }
-          });
-        }
-        if (!cityVectorMap.getLayer('building-3d-xray-interior-core')) {
-          cityVectorMap.addLayer({
-            id: 'building-3d-xray-interior-core',
-            type: 'fill-extrusion',
-            source: 'highlighted-building-3d-interior-core',
-            paint: {
-              'fill-extrusion-color': ['get', 'color'],
-              'fill-extrusion-height': ['get', 'height'],
-              'fill-extrusion-base': ['get', 'base'],
-              'fill-extrusion-opacity': 0.88,
-              'fill-extrusion-vertical-gradient': true
-            }
-          });
-        }
-
-        // 4.  3D VOLUMETRIC GLASS ENVELOPE (Translucent See-Through Architectural X-Ray Skin)
-        if (!cityVectorMap.getSource('highlighted-building-3d-floors')) {
-          cityVectorMap.addSource('highlighted-building-3d-floors', {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: []
-            }
-          });
-        }
-        if (!cityVectorMap.getLayer('building-3d-floor-extrusions')) {
-          cityVectorMap.addLayer({
-            id: 'building-3d-floor-extrusions',
-            type: 'fill-extrusion',
-            source: 'highlighted-building-3d-floors',
-            paint: {
-              'fill-extrusion-color': ['get', 'color'],
-              'fill-extrusion-height': ['get', 'height'],
-              'fill-extrusion-base': ['get', 'base'],
-              'fill-extrusion-opacity': 0.32,
-              'fill-extrusion-vertical-gradient': true
-            }
-          });
-        }
-
-        // Interactive 3D click & hover directly on building floor slabs, rooms and core
-        if (!isBuildingLayerEventsBound && typeof cityVectorMap.on === 'function') {
-          const handleFloorClick = (e) => {
-            if (e.originalEvent) {
-              try { e.originalEvent.stopPropagation(); } catch (err) {}
-            }
-            document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-            if (e.features && e.features.length) {
-              const p = e.features[0].properties;
-              if (p && p.floorIndex !== undefined && Number(p.floorIndex) >= 0) {
-                selectBfiFloor(Number(p.floorIndex));
-              }
-            }
-          };
-          cityVectorMap.on('click', 'building-3d-floor-extrusions', handleFloorClick);
-          cityVectorMap.on('click', 'building-3d-xray-interior-core', handleFloorClick);
-          cityVectorMap.on('click', 'building-3d-floor-slabs', handleFloorClick);
-          cityVectorMap.on('mousemove', 'building-3d-floor-extrusions', () => {
-            if (cityVectorMap && cityVectorMap.getCanvas()) {
-              cityVectorMap.getCanvas().style.cursor = 'pointer';
-            }
-          });
-          cityVectorMap.on('mouseleave', 'building-3d-floor-extrusions', () => {
-            if (cityVectorMap && cityVectorMap.getCanvas()) {
-              cityVectorMap.getCanvas().style.cursor = '';
-            }
-          });
-          isBuildingLayerEventsBound = true;
-        }
-      } catch (err) {
-        console.warn('Could not register building 3D layers:', err);
-      }
-    }
-
-    function highlightBuildingFootprint(inst, options = {}) {
-      return; // generated outlines were removed: they were drawn from coordinates, not from real buildings
-      if (!cityVectorMap || !inst) return;
-      ensureBuildingFootprintLayer();
-      const bArch = inst.building_architecture || {};
-      const lat = Number(inst.lat) || 0;
-      const lon = Number(inst.lon) || 0;
-      if (!lat || !lon) return;
-
-      const distinctFootprint = generateDistinctFootprint(inst, lat, lon, bArch);
-      let coords = (bArch.footprint_coordinates && bArch.footprint_coordinates.length > 5)
-        ? bArch.footprint_coordinates
-        : distinctFootprint.coords;
-      const sqm = distinctFootprint.sqm;
-
-      const isClean = inst.tier === 'A';
-      const isFlagged = inst.tier === 'B';
-      const brandColor = isClean ? '#10b981' : (isFlagged ? '#be95ff' : '#08bdba');
-
-      // Update 2D Ground Perimeter
-      const groundFeature = {
-        type: 'Feature',
-        properties: {
-          name: inst.name,
-          color: brandColor,
-          sqm: sqm,
-          style: bArch.architectural_style || 'Curatorial Space'
-        },
-        geometry: {
-          type: 'Polygon',
-          coordinates: [coords]
-        }
-      };
-
-      const srcGround = cityVectorMap.getSource('highlighted-building-footprint');
-      if (srcGround && typeof srcGround.setData === 'function') {
-        srcGround.setData({
-          type: 'FeatureCollection',
-          features: [groundFeature]
-        });
-      }
-
-      // =========================================================================
-      //   3D VOLUMETRIC X-RAY GLASS CUTAWAY WITH MULTI-ROOM INTERIOR BLUEPRINT
-      // =========================================================================
-      const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
-      const tempShows = inst.temporary_shows || [];
-      if (!floors.length) {
-        floors.push({
-          level: 0,
-          level_code: 'L0',
-          floor_name: 'Level 0, Ground Floor (Public Forum & Main Galleries)',
-          elevation: '0.0m',
-          current_shows: [tempShows[0] || { title: inst.highlight || (inst.name + ' Permanent Collections'), dates: 'On View' }],
-          archive_holdings: { collection_title: (inst.name + ' Archives & Records') }
-        });
-      } else {
-        floors.forEach((fl, idx) => {
-          if (tempShows[idx]) {
-            if (!fl.current_shows || !fl.current_shows.length) {
-              fl.current_shows = [tempShows[idx]];
-            } else {
-              fl.current_shows[0] = Object.assign({}, fl.current_shows[0], tempShows[idx]);
-            }
-          }
-        });
-      }
-
-      // Compute footprint bounding box and center
-      const lons = coords.map(p => p[0]);
-      const lats = coords.map(p => p[1]);
-      const minLon = Math.min(...lons);
-      const maxLon = Math.max(...lons);
-      const minLat = Math.min(...lats);
-      const maxLat = Math.max(...lats);
-      const cLon = (minLon + maxLon) / 2;
-      const cLat = (minLat + maxLat) / 2;
-      const w = maxLon - minLon;
-      const h = maxLat - minLat;
-
-      const slabFeatures = [];
-      const floorFeatures = [];
-      const coreFeatures = [];
-      const floorHeightM = 5.2;
-      const slabThicknessM = 0.40;
-      const explodedGapM = 8.5;
-
-      floors.forEach((fl, idx) => {
-        const isActive = (idx === currentBfiFloorIndex);
-        const hasShow = Boolean(fl.current_shows && fl.current_shows.length);
-        const curShow = hasShow ? fl.current_shows[0] : null;
-        const curArch = fl.archive_holdings || {};
-
-        let baseM, topM;
-        if (isExploded3DMode) {
-          baseM = idx * (floorHeightM + explodedGapM);
-          topM = baseM + floorHeightM;
-        } else {
-          if (fl.level < 0) {
-            baseM = 0.05;
-            topM = 1.1;
-          } else {
-            baseM = idx * (floorHeightM + slabThicknessM);
-            topM = baseM + floorHeightM;
-          }
-        }
-
-        // 1. Structural Floor Slab (Solid Steel / Concrete Slab Base)
-        slabFeatures.push({
-          type: 'Feature',
-          properties: {
-            name: (inst.name + ' ' + (fl.level_code || ('Level ' + idx)) + ' Slab'),
-            floorIndex: idx,
-            level: fl.level,
-            color: isActive ? '#0284c7' : '#1e293b',
-            base: baseM,
-            height: baseM + slabThicknessM,
-            isActive: isActive
-          },
-          geometry: {
-            type: 'Polygon',
-            coordinates: [coords]
-          }
-        });
-
-        // 2. Translucent Architectural Glass Envelope (Outer X-Ray Sheath)
-        // See-through glass envelope with 0.32 opacity in MapLibre
-        const glassColor = isActive ? '#38bdf8' : (isGossipModeActive ? '#f97316' : '#0369a1');
-        floorFeatures.push({
-          type: 'Feature',
-          properties: {
-            name: inst.name,
-            floorIndex: idx,
-            level: fl.level,
-            level_code: fl.level_code || ('L' + fl.level),
-            floor_name: fl.floor_name || '',
-            color: glassColor,
-            base: baseM + slabThicknessM,
-            height: topM,
-            isActive: isActive,
-            isEnvelope: true
-          },
-          geometry: {
-            type: 'Polygon',
-            coordinates: [coords]
-          }
-        });
-
-        // 3. Multi-Room Architectural Interior Blueprint (Rendered inside the X-Ray Glass Sheath)
-        const roomBaseM = baseM + slabThicknessM + 0.12;
-        const roomHeightM = topM - 0.22;
-
-        // Room A: Primary Curatorial Exhibition Gallery (North / Upper Wing - ~52% of floor area)
-        let galleryColor;
-        if (isGossipModeActive) {
-          galleryColor = '#facc15'; // Canary yellow gossip beacon
-        } else if (isActive) {
-          galleryColor = isClean ? '#10b981' : (isFlagged ? '#c084fc' : '#38bdf8');
-        } else if (hasShow) {
-          galleryColor = '#0284c7'; // Curatorial exhibition glow
-        } else {
-          galleryColor = '#0f172a';
-        }
-
-        const galleryRoomName = (curShow && curShow.room) || (fl.wing_name ? fl.wing_name.split('&')[0].trim() : 'Curatorial Exhibition Gallery');
-        const galleryPoly = [
-          [minLon + 0.04 * w, cLat + 0.015 * h],
-          [maxLon - 0.04 * w, cLat + 0.015 * h],
-          [maxLon - 0.04 * w, maxLat - 0.04 * h],
-          [minLon + 0.04 * w, maxLat - 0.04 * h],
-          [minLon + 0.04 * w, cLat + 0.015 * h]
-        ];
-
-        coreFeatures.push({
-          type: 'Feature',
-          properties: {
-            name: galleryRoomName,
-            room_type: 'gallery',
-            floorIndex: idx,
-            level: fl.level,
-            color: galleryColor,
-            base: roomBaseM,
-            height: roomHeightM,
-            isActive: isActive,
-            isInteriorCore: true,
-            showTitle: curShow ? curShow.title : (inst.name + ' Collections'),
-            curator: curShow ? (curShow.curator_artists || '') : '',
-            dates: curShow ? (curShow.dates || '') : ''
-          },
-          geometry: {
-            type: 'Polygon',
-            coordinates: [galleryPoly]
-          }
-        });
-
-        // Room B: Archives & Special Collections Study Room (South-West Wing - ~24% of floor area)
-        const archiveRoomName = curArch.collection_title 
-          ? (curArch.collection_title.length > 40 ? curArch.collection_title.slice(0, 38) + '...' : curArch.collection_title)
-          : 'Archives & Curatorial Study Room';
-        const archiveColor = isGossipModeActive ? '#ea580c' : (isActive ? '#f59e0b' : '#b45309');
-        const archivePoly = [
-          [minLon + 0.04 * w, minLat + 0.04 * h],
-          [cLon - 0.015 * w, minLat + 0.04 * h],
-          [cLon - 0.015 * w, cLat - 0.015 * h],
-          [minLon + 0.04 * w, cLat - 0.015 * h],
-          [minLon + 0.04 * w, minLat + 0.04 * h]
-        ];
-
-        coreFeatures.push({
-          type: 'Feature',
-          properties: {
-            name: archiveRoomName,
-            room_type: 'archive',
-            floorIndex: idx,
-            level: fl.level,
-            color: archiveColor,
-            base: roomBaseM,
-            height: roomHeightM,
-            isActive: isActive,
-            isInteriorCore: true,
-            archiveTitle: curArch.collection_title || '',
-            itemsCount: curArch.items_count || '',
-            readingRoomPolicy: curArch.reading_room_policy || 'Open study access'
-          },
-          geometry: {
-            type: 'Polygon',
-            coordinates: [archivePoly]
-          }
-        });
-
-        // Room C: Public Atrium, Orientation & Facilities Forum (South-East Wing - ~24% of floor area)
-        const atriumRoomName = (fl.facilities && fl.facilities[0]) 
-          ? (fl.facilities[0] + ' & Public Forum') 
-          : ((fl.wing_name && fl.wing_name.includes('Atrium')) ? fl.wing_name : 'Public Forum & Information Lounge');
-        const atriumColor = isGossipModeActive ? '#c2410c' : (isActive ? '#6366f1' : '#3730a3');
-        const atriumPoly = [
-          [cLon + 0.015 * w, minLat + 0.04 * h],
-          [maxLon - 0.04 * w, minLat + 0.04 * h],
-          [maxLon - 0.04 * w, cLat - 0.015 * h],
-          [cLon + 0.015 * w, cLat - 0.015 * h],
-          [cLon + 0.015 * w, minLat + 0.04 * h]
-        ];
-
-        coreFeatures.push({
-          type: 'Feature',
-          properties: {
-            name: atriumRoomName,
-            room_type: 'atrium',
-            floorIndex: idx,
-            level: fl.level,
-            color: atriumColor,
-            base: roomBaseM,
-            height: roomHeightM,
-            isActive: isActive,
-            isInteriorCore: true,
-            facilities: (fl.facilities && fl.facilities.join(', ')) || 'Universal Step-Free Public Access',
-            accessPolicy: fl.access_policy || 'Universal Free Public Walk-in Access'
-          },
-          geometry: {
-            type: 'Polygon',
-            coordinates: [atriumPoly]
-          }
-        });
-      });
-
-      // Top Roof Parapet Rim & Architectural Roof Deck
-      const topFloorIdx = Math.max(0, floors.length - 1);
-      const topBase = isExploded3DMode 
-        ? (topFloorIdx * (floorHeightM + explodedGapM) + floorHeightM)
-        : (topFloorIdx * (floorHeightM + slabThicknessM) + floorHeightM);
-
-      slabFeatures.push({
-        type: 'Feature',
-        properties: {
-          name: (inst.name + ' Roof Parapet Deck'),
-          floorIndex: -1,
-          color: isGossipModeActive ? '#f97316' : '#38bdf8',
-          base: topBase,
-          height: topBase + 0.65,
-          isActive: false
-        },
-        geometry: {
-          type: 'Polygon',
-          coordinates: [coords]
-        }
-      });
-
-      const srcSlabs = cityVectorMap.getSource('highlighted-building-3d-slabs');
-      if (srcSlabs && typeof srcSlabs.setData === 'function') {
-        srcSlabs.setData({
-          type: 'FeatureCollection',
-          features: slabFeatures
-        });
-      }
-
-      const srcFloors = cityVectorMap.getSource('highlighted-building-3d-floors');
-      if (srcFloors && typeof srcFloors.setData === 'function') {
-        srcFloors.setData({
-          type: 'FeatureCollection',
-          features: floorFeatures
-        });
-      }
-
-      const srcCore = cityVectorMap.getSource('highlighted-building-3d-interior-core');
-      if (srcCore && typeof srcCore.setData === 'function') {
-        srcCore.setData({
-          type: 'FeatureCollection',
-          features: coreFeatures
-        });
-      }
-
-      currentHighlightedBuildingInst = inst;
-      updateBuilding3DInfoMarkers(inst, options);
-    }
 
     // =========================================================================
     //  SPATIAL 3D ON-BUILDING INFORMATION & INTERIOR ROOM MAPPING SYSTEM
     // =========================================================================
-    function updateBuilding3DInfoMarkers(inst, options = {}) {
-      return; // generated outlines were removed: they were drawn from coordinates, not from real buildings
-      const isFloorChange = Boolean(options && options.isFloorChange);
-      if (!inst) return;
 
-      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
 
-      if (isFloorChange) {
-        const badges = document.querySelectorAll('.building-3d-room-badge');
-        badges.forEach(b => { try { b.remove(); } catch (e) {} });
-        building3DInfoMarkers = building3DInfoMarkers.filter(m => m === currentBuildingMastMarker || m === currentBuildingFacadeMarker);
-      } else {
-        clearBuilding3DInfoMarkers(true);
-      }
-
-      if (typeof maplibregl === 'undefined') return;
-
-      const lat = Number(inst.lat);
-      const lon = Number(inst.lon);
-      if (!lat || !lon) return;
-
-      const bArch = inst.building_architecture || {};
-      const sqm = bArch.footprint_sqm || 2400;
-      const cosLat = Math.max(0.25, Math.cos((lat * Math.PI) / 180));
-      const d_lat = 0.00045 * (Math.sqrt(sqm) / 50.0);
-      const d_lon = (0.00065 * (Math.sqrt(sqm) / 50.0)) / cosLat;
-      const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
-      const isMobileScreen = typeof window !== 'undefined' && window.innerWidth < 640;
-
-      // 1. ROOFTOP BUILDING MAST PLATE (North-West Quadrant, elevated above building)
-      if (!isBuildingMastDismissed && !isFloorChange && !currentBuildingMastMarker) {
-        const mastEl = (typeof renderBuilding3DMast === 'function') ? renderBuilding3DMast(inst) : document.createElement('div');
-        if (!mastEl.className) mastEl.className = 'building-3d-mast-plate pointer-events-auto select-none';
-        if (!mastEl.innerHTML) mastEl.innerHTML = '<button type="button" class="building-mast-close-btn" onclick="window.closeBuildingMast()">×</button>';
-        try {
-          const mastLon = isMobileScreen ? (lon - d_lon * 0.45) : (lon - d_lon * 0.70);
-          const mastLat = lat + d_lat * (isMobileScreen ? 0.90 : 1.05);
-          const mastMarker = new maplibregl.Marker({ element: mastEl, anchor: 'bottom' })
-            .setLngLat([mastLon, mastLat]);
-          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) mastMarker.addTo(cityVectorMap);
-          else if (typeof map !== 'undefined' && map) mastMarker.addTo(map);
-          building3DInfoMarkers.push(mastMarker);
-          currentBuildingMastMarker = mastMarker;
-        } catch (e) {}
-      }
-
-      // 2. 3D ROOM BADGES (Dispersed across East, West, South to guarantee zero overlap)
-      if (floors.length) {
-        const activeFl = floors[currentBfiFloorIndex] || floors[0];
-        const curShow = (activeFl.current_shows && activeFl.current_shows[0]) || null;
-        let badgeChild;
-        if (typeof getRoomBadgeMarkup === 'function') {
-          const galEl = document.createElement('div');
-          galEl.innerHTML = getRoomBadgeMarkup('gallery', {
-            synopsis: curShow ? curShow.synopsis : '',
-            artists: curShow ? curShow.curator_artists : '',
-            admission: (curShow && curShow.admission) || activeFl.access_policy || 'Free Public Access',
-            label: curShow ? curShow.title : (inst.name + ' Commissions')
-          });
-          badgeChild = galEl.firstElementChild || galEl;
-        } else {
-          badgeChild = document.createElement('div');
-          badgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
-          badgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">EXHIBITION GALLERY</span>Exhibition Gallery</span>';
-        }
-        try {
-          // North-East / East quadrant (anchor left to grow eastward away from building and mast plate)
-          const galLon = isMobileScreen ? (lon + d_lon * 0.45) : (lon + d_lon * 0.70);
-          const galLat = lat + d_lat * (isMobileScreen ? 0.45 : 0.55);
-          const galMarker = new maplibregl.Marker({ element: badgeChild, anchor: isMobileScreen ? 'bottom' : 'left' })
-            .setLngLat([galLon, galLat]);
-          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) galMarker.addTo(cityVectorMap);
-          else if (typeof map !== 'undefined' && map) galMarker.addTo(map);
-          building3DInfoMarkers.push(galMarker);
-        } catch (e) {}
-
-        // Archives Room Badge (South-West / West quadrant, anchor right to grow westward away from building)
-        const curArch = activeFl.archive_holdings || null;
-        let archBadgeChild;
-        if (typeof getRoomBadgeMarkup === 'function') {
-          const archEl = document.createElement('div');
-          archEl.innerHTML = getRoomBadgeMarkup('archive', {
-            reading_room_policy: curArch ? curArch.reading_room_policy : '',
-            scope: curArch ? curArch.scope : '',
-            label: (curArch && curArch.collection_title) ? curArch.collection_title : 'Archives & Study Room'
-          });
-          archBadgeChild = archEl.firstElementChild || archEl;
-        } else {
-          archBadgeChild = document.createElement('div');
-          archBadgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
-          archBadgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">ARCHIVES & STUDY</span>Archives &amp; Study</span>';
-        }
-        try {
-          const archLon = lon - d_lon * 0.70;
-          const archLat = isMobileScreen ? (lat - d_lat * 0.45) : (lat - d_lat * 0.50);
-          const archMarker = new maplibregl.Marker({ element: archBadgeChild, anchor: isMobileScreen ? 'top' : 'right' })
-            .setLngLat([archLon, archLat]);
-          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) archMarker.addTo(cityVectorMap);
-          else if (typeof map !== 'undefined' && map) archMarker.addTo(map);
-          building3DInfoMarkers.push(archMarker);
-        } catch (e) {}
-
-        // Public Forum & Atrium Badge (South-East / South quadrant, anchor top to grow downward away from building)
-        let forumBadgeChild;
-        if (typeof getRoomBadgeMarkup === 'function') {
-          const forumEl = document.createElement('div');
-          forumEl.innerHTML = getRoomBadgeMarkup('atrium', {
-            facilities: (activeFl.facilities && activeFl.facilities.length > 0) ? activeFl.facilities.join(', ') : 'Step-Free Ramp Entrance & Public Forum',
-            access: activeFl.access_policy || 'Open Public Access',
-            label: 'Public Atrium & Orientation Forum'
-          });
-          forumBadgeChild = forumEl.firstElementChild || forumEl;
-        } else {
-          forumBadgeChild = document.createElement('div');
-          forumBadgeChild.className = 'building-3d-room-badge pointer-events-auto select-none';
-          forumBadgeChild.innerHTML = '<span class="badge-title"><span class="sr-only">PUBLIC FORUM &amp; CIVIC</span>Public Forum &amp; Civic</span>';
-        }
-        try {
-          const forumLon = isMobileScreen ? (lon + d_lon * 0.40) : (lon + d_lon * 0.40);
-          const forumLat = isMobileScreen ? (lat - d_lat * 0.35) : (lat - d_lat * 0.45);
-          const forumMarker = new maplibregl.Marker({ element: forumBadgeChild, anchor: 'top' })
-            .setLngLat([forumLon, forumLat]);
-          if (typeof cityVectorMap !== 'undefined' && cityVectorMap) forumMarker.addTo(cityVectorMap);
-          else if (typeof map !== 'undefined' && map) forumMarker.addTo(map);
-          building3DInfoMarkers.push(forumMarker);
-        } catch (e) {}
-      }
-
-      // 3. FACADE FLOOR DIRECTORY STACK
-      if (!isBuildingFacadeDismissed && !currentBuildingFacadeMarker && typeof renderBuilding3DFacadeStack === 'function') {
-        const hudEl = document.getElementById('buildingFloorInspectorHud');
-        const isHudOpen = hudEl && !hudEl.classList.contains('hidden');
-        if (!isHudOpen) {
-          const facEl = renderBuilding3DFacadeStack(inst);
-          try {
-            const facLon = isMobileScreen ? (lon - d_lon * 0.70) : (lon - d_lon * 0.70);
-            const facLat = isMobileScreen ? (lat - d_lat * 0.45) : (lat - d_lat * 0.50);
-            const facMarker = new maplibregl.Marker({ element: facEl, anchor: 'right' })
-              .setLngLat([facLon, facLat]);
-            if (typeof cityVectorMap !== 'undefined' && cityVectorMap) facMarker.addTo(cityVectorMap);
-            else if (typeof map !== 'undefined' && map) facMarker.addTo(map);
-            building3DInfoMarkers.push(facMarker);
-            currentBuildingFacadeMarker = facMarker;
-          } catch (e) {}
-        }
-      }
-
-      // 4. ACTIVE ANTI-OVERLAP COLLISION SOLVER
-      if (typeof resolveBuildingOverlaysCollisions === 'function') {
-        setTimeout(resolveBuildingOverlaysCollisions, 30);
-        setTimeout(resolveBuildingOverlaysCollisions, 250);
-      }
-    }
-
-    function resolveBuildingOverlaysCollisions() {
-      if (typeof document === 'undefined') return;
-      const mast = document.querySelector('.building-3d-mast-plate');
-      const badges = Array.from(document.querySelectorAll('.building-3d-room-badge'));
-      const facade = document.querySelector('.building-3d-facade-stack');
-
-      const cards = [];
-      if (mast && mast.offsetParent !== null && typeof mast.getBoundingClientRect === 'function') {
-        cards.push({ el: mast, isMast: true, priority: 1 });
-      }
-      if (facade && facade.offsetParent !== null && typeof facade.getBoundingClientRect === 'function') {
-        cards.push({ el: facade, isFacade: true, priority: 2 });
-      }
-      badges.forEach((b, idx) => {
-        if (b && b.offsetParent !== null && typeof b.getBoundingClientRect === 'function') {
-          cards.push({ el: b, isBadge: true, priority: 10 + idx });
-        }
-      });
-
-      if (cards.length <= 1) return;
-
-      cards.forEach(c => {
-        c.shiftX = 0;
-        c.shiftY = 0;
-        c.el.style.transform = '';
-      });
-
-      const BUFFER = 16;
-      const rects = cards.map(c => {
-        const r = c.el.getBoundingClientRect();
-        return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, width: r.width, height: r.height };
-      });
-
-      for (let pass = 0; pass < 3; pass++) {
-        let hadCollision = false;
-        for (let i = 0; i < cards.length; i++) {
-          for (let j = i + 1; j < cards.length; j++) {
-            const r1 = rects[i];
-            const r2 = rects[j];
-
-            const overlapX = !(r1.right + BUFFER <= r2.left || r1.left >= r2.right + BUFFER);
-            const overlapY = !(r1.bottom + BUFFER <= r2.top || r1.top >= r2.bottom + BUFFER);
-
-            if (overlapX && overlapY) {
-              hadCollision = true;
-              const c1MidX = (r1.left + r1.right) / 2;
-              const c2MidX = (r2.left + r2.right) / 2;
-
-              let dX = 0;
-              let dY = 0;
-
-              if (cards[i].isMast && cards[j].isBadge) {
-                if (c2MidX >= c1MidX) {
-                  dX = (r1.right + BUFFER) - r2.left;
-                } else {
-                  dX = (r1.left - BUFFER) - r2.right;
-                }
-                if (Math.abs(dX) > 280) {
-                  dX = 0;
-                  dY = (r1.bottom + BUFFER) - r2.top;
-                }
-              } else {
-                const penRight = (r1.right + BUFFER) - r2.left;
-                const penLeft = (r1.left - BUFFER) - r2.right;
-                const penDown = (r1.bottom + BUFFER) - r2.top;
-                const penUp = (r1.top - BUFFER) - r2.bottom;
-
-                const absX = Math.min(Math.abs(penRight), Math.abs(penLeft));
-                const absY = Math.min(Math.abs(penDown), Math.abs(penUp));
-
-                if (absX < absY) {
-                  dX = (Math.abs(penRight) < Math.abs(penLeft)) ? penRight : penLeft;
-                } else {
-                  dY = (Math.abs(penDown) < Math.abs(penUp)) ? penDown : penUp;
-                }
-              }
-
-              cards[j].shiftX += dX;
-              cards[j].shiftY += dY;
-              rects[j].left += dX;
-              rects[j].right += dX;
-              rects[j].top += dY;
-              rects[j].bottom += dY;
-            }
-          }
-        }
-        if (!hadCollision) break;
-      }
-
-      cards.forEach(c => {
-        if (c.shiftX !== 0 || c.shiftY !== 0) {
-          c.el.style.transform = `translate(${Math.round(c.shiftX)}px, ${Math.round(c.shiftY)}px)`;
-        }
-      });
-    }
-    window.resolveBuildingOverlaysCollisions = resolveBuildingOverlaysCollisions;
-
-    function toggleExploded3DMode() {
-      isExploded3DMode = !isExploded3DMode;
-      const inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (inst) {
-        highlightBuildingFootprint(inst);
-      }
-      const mastPlates = document.querySelectorAll('.building-3d-mast-plate');
-      mastPlates.forEach(p => {
-        const btn = p.querySelector('.mast-explode-btn');
-        if (btn) btn.textContent = isExploded3DMode ? 'Stack 3D Building' : 'Explode 3D Floors';
-      });
-    }
-    window.toggleExploded3DMode = toggleExploded3DMode;
 
     function toggleGossipMode(forceState) {
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
@@ -10876,732 +9590,225 @@ return maplibregl$1;
         if (inst.city) curatorContext.lastCity = inst.city;
       }
 
-      // The 3D building view drew floors, wings and archives that no record contains. It is gone: this only shows the place on the map.
+      // Building view: the city map on this place, then its outline from the map data with the record's contents inside.
       document.getElementById('floatingCard')?.classList.add('hidden');
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
       if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(false);
-      if (!isCityStreetViewActive) openCityStreetView(inst.city, inst.lat, inst.lon);
-      return;
-
-      // Strictly hide 2D globe card when entering 3D building view
-      const floatingCard = document.getElementById('floatingCard');
-      if (floatingCard) floatingCard.classList.add('hidden');
-
-      // Close all 2D marker popups and clear on-map 3D overlays so they do not overlap 3D building
-      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-      if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
-
-      // Reset dismissed state for the newly focused building
-      isBuildingMastDismissed = false;
-      isBuildingFacadeDismissed = false;
-      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-      if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
-
-      const mapEl = document.getElementById('cityMapContainer');
-      if (mapEl) {
-        mapEl.classList.remove('hidden');
-        mapEl.classList.add('map-zoomed-in');
-        mapEl.classList.add('building-view-active');
-        mapEl.classList.add('show-onmap-callouts');
-      }
-      document.body.classList.add('building-view-active');
-      document.body.classList.add('show-onmap-callouts');
-      const activeDrawer = document.getElementById('detailDrawer');
-      if (activeDrawer) activeDrawer.classList.add('hidden');
-
-      // Switch to vector street map if not active
-      selectedInstitution = inst;
-      if (typeof toggleFilterDrawer === 'function') {
-        toggleFilterDrawer(false);
-      }
-      if (!isCityStreetViewActive) {
+      document.getElementById('detailDrawer')?.classList.add('hidden');
+      document.getElementById('catalogModal')?.classList.add('hidden');
+      if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') setMobileViewMode('map');
+      if (!isCityStreetViewActive || !matchC(selectedCityFilter, inst.city)) {
         openCityStreetView(inst.city, inst.lat, inst.lon);
       }
-
-      initCityMapIfNeeded();
-      if (cityVectorMap && typeof cityVectorMap.resize === 'function') {
-        cityVectorMap.resize();
-      }
-      document.querySelectorAll('.custom-inst-pin, .city-marker-pin').forEach(pin => {
-        pin.style.opacity = '0';
-        pin.style.pointerEvents = 'none';
-      });
-
-      if (cityVectorMap) {
-        const bPad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : { left: (window.innerWidth >= 640 ? 330 : 0), top: 120, bottom: 60, right: 30 };
-        cityVectorMap.flyTo({
-          center: [inst.lon, inst.lat],
-          zoom: 18.5,
-          pitch: 62,
-          bearing: 28,
-          padding: bPad,
-          speed: 1.4,
-          curve: 1.3,
-          essential: true
-        });
-
-        ensureBuildingFootprintLayer();
-        highlightBuildingFootprint(inst);
-        showBuildingFloorInspectorHud(inst);
-
-        setTimeout(() => {
-          ensureBuildingFootprintLayer();
-          highlightBuildingFootprint(inst);
-          const hud = document.getElementById('buildingFloorInspectorHud');
-          const drawer = document.getElementById('filterDrawerPanel');
-          const isDrawerOpen = drawer && !drawer.classList.contains('hidden');
-          if (hud && !hud.classList.contains('hidden') && !isDrawerOpen) {
-            showBuildingFloorInspectorHud(inst);
-          }
-        }, 350);
-      }
-
-      if (showArchives) {
-        setTimeout(() => {
-          openBuildingArchivesModal(inst);
-        }, 600);
+      if (cityVectorMap && typeof cityVectorMap.flyTo === 'function') {
+        cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: 17.2, pitch: 55, duration: 900, essential: true });
+        xrayWhenSettled(inst);
       }
     }
     window.zoomToBuilding = zoomToBuilding;
 
-    //  Ultra-close 20x building zoom
-    function zoomCloserToBuilding(targetZoom = 20.0) {
-      const inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (!inst || !cityVectorMap) return;
-      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-      if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
-      const basePad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : { left: (window.innerWidth >= 640 ? 330 : 0), top: 120, bottom: 60, right: 30 };
-      cityVectorMap.flyTo({
-        center: [inst.lon, inst.lat],
-        zoom: targetZoom,
-        pitch: 65,
-        bearing: 35,
-        padding: { ...basePad, top: basePad.top + 15 },
-        speed: 1.2,
-        curve: 1.2,
-        essential: true
+    // =========================================================================
+    //  BUILDING X-RAY. The selected building's own outline from the map data (OpenStreetMap via the vector tiles), drawn as a
+    //  translucent shell, with one slab inside for each kind of material the record actually holds. No outline means no shell;
+    //  every label is a count of what the record has; facts from Wikidata say so and how they were matched.
+    // =========================================================================
+    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, dimmed: false };
+    const XRAY_COLOURS = { funding: '#08bdba', reported: '#ff7eb6', accounts: '#be95ff', sources: '#42be65', visiting: '#f1c21b', studies: '#009d9a', facts: '#ff832b' };
+    const WIKIDATA_SPARQL = 'https://query.wikidata.org/sparql';
+
+    function xrayHost(u) { try { return new URL(u).hostname.replace(/^www\./, '').toLowerCase(); } catch (e) { return ''; } }
+    function xrayNorm(t) { return String(t || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
+
+    // What the record holds, as the slabs inside the shell. Only categories with material are listed.
+    function xrayCategories(inst) {
+      const cats = [];
+      const g = inst.gossip_data || {};
+      const reportedTitles = [].concat(inst.why_flagged ? ['Why it is flagged'] : [], (inst.epstein_records || []).map(e => e.person || 'Epstein-related record'),
+        (inst.wikileaks_records || []).map(w => w.doc_id || 'WikiLeaks document'), (g.real_cases || []).map(c => c.title || c.case_id || 'Case'));
+      const accounts = (g.accounts || []).length;
+      const sources = (inst.sources || []).filter(u => /^https?:\/\//.test(u));
+      const visiting = [inst.opening_hours ? 'Opening hours: ' + inst.opening_hours : '', (inst.admission_fee || inst.admission_policy) ? 'Admission: ' + (inst.admission_fee || inst.admission_policy) : '', inst.address ? 'Address: ' + inst.address : ''].filter(Boolean);
+      const studies = typeof studiesNaming === 'function' ? studiesNaming(inst) : [];
+      if (inst.funding) cats.push({ key: 'funding', label: 'Funding', lines: [inst.funding] });
+      if (reportedTitles.length) cats.push({ key: 'reported', label: `Reported items (${reportedTitles.length})`, lines: reportedTitles });
+      if (accounts) cats.push({ key: 'accounts', label: `Individual accounts (${accounts})`, lines: [`${accounts} from employee-review sites and Reddit, as retained by the research. Not verified findings.`] });
+      if (sources.length) cats.push({ key: 'sources', label: `Sources (${sources.length})`, lines: sources.map(xrayHost).filter(Boolean) });
+      if (visiting.length) cats.push({ key: 'visiting', label: 'Visiting', lines: visiting });
+      if (studies.length) cats.push({ key: 'studies', label: `Studies naming this space (${studies.length})`, lines: studies.map(p => p.title) });
+      const wd = XRAY.wikidata[inst.id || inst.name];
+      if (wd && wd.status === 'matched') cats.push({ key: 'facts', label: 'Facts from Wikidata', lines: xrayWikidataLines(wd) });
+      return cats;
+    }
+
+    // The building under the record's point, from the tiles already on screen. Tests replace this.
+    function xrayFindBuilding(lon, lat) {
+      if (!cityVectorMap || typeof cityVectorMap.project !== 'function' || typeof cityVectorMap.queryRenderedFeatures !== 'function') return null;
+      let feats = [];
+      try {
+        const pt = cityVectorMap.project([lon, lat]);
+        feats = cityVectorMap.queryRenderedFeatures([pt.x, pt.y], { layers: ['building-3d-city-context', 'building'] }) || [];
+      } catch (e) { feats = []; }
+      const f = feats.find(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
+      if (!f) return null;
+      const pr = f.properties || {};
+      const tagged = pr.render_height != null || pr.height != null;
+      return { geometry: f.geometry, height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged };
+    }
+    window.xrayFindBuilding = xrayFindBuilding;
+
+    function xrayRing(geom) { return geom.type === 'Polygon' ? geom.coordinates[0] : geom.coordinates[0][0]; }
+    function xrayCentroid(geom) { const r = xrayRing(geom); const c = r.reduce((a, p) => [a[0] + p[0], a[1] + p[1]], [0, 0]); return [c[0] / r.length, c[1] / r.length]; }
+    function xrayShrink(geom, k) {
+      const inner = ring => { const c = ring.reduce((a, p) => [a[0] + p[0], a[1] + p[1]], [0, 0]).map(v => v / ring.length); return ring.map(p => [c[0] + (p[0] - c[0]) * k, c[1] + (p[1] - c[1]) * k]); };
+      return geom.type === 'Polygon' ? { type: 'Polygon', coordinates: [inner(geom.coordinates[0])] } : { type: 'MultiPolygon', coordinates: geom.coordinates.map(poly => [inner(poly[0])]) };
+    }
+
+    function xrayLayersReady() {
+      if (!cityVectorMap || typeof cityVectorMap.getSource !== 'function' || typeof cityVectorMap.isStyleLoaded !== 'function' || !cityVectorMap.isStyleLoaded()) return false;
+      const empty = () => ({ type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+      if (!cityVectorMap.getSource('xray-shell')) cityVectorMap.addSource('xray-shell', empty());
+      if (!cityVectorMap.getSource('xray-slabs')) cityVectorMap.addSource('xray-slabs', empty());
+      if (!cityVectorMap.getLayer('xray-slabs')) cityVectorMap.addLayer({ id: 'xray-slabs', type: 'fill-extrusion', source: 'xray-slabs', paint: { 'fill-extrusion-color': ['get', 'color'], 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.92 } });
+      if (!cityVectorMap.getLayer('xray-shell')) cityVectorMap.addLayer({ id: 'xray-shell', type: 'fill-extrusion', source: 'xray-shell', paint: { 'fill-extrusion-color': '#08bdba', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.22 } });
+      if (!cityVectorMap.getLayer('xray-outline')) cityVectorMap.addLayer({ id: 'xray-outline', type: 'line', source: 'xray-shell', paint: { 'line-color': '#f4f4f4', 'line-width': 1 } });
+      return true;
+    }
+
+    function xrayWhenSettled(inst) {
+      if (!cityVectorMap || typeof cityVectorMap.once !== 'function') return;
+      cityVectorMap.once('idle', () => { if (selectedInstitution === inst && isCityStreetViewActive) showBuildingXray(inst); });
+    }
+    window.xrayWhenSettled = xrayWhenSettled;
+
+    function showBuildingXray(inst) {
+      if (!inst || !cityVectorMap || !isCityStreetViewActive) return;
+      XRAY.inst = inst;
+      if (!xrayLayersReady()) { xrayWhenSettled(inst); renderBuildingInsidePanel(inst); return; }
+      XRAY.building = xrayFindBuilding(inst.lon, inst.lat);
+      xrayDraw(inst);
+      renderBuildingInsidePanel(inst);
+      fetchWikidataFacts(inst).then(() => { if (XRAY.inst === inst) { xrayDraw(inst); renderBuildingInsidePanel(inst); } });
+    }
+    window.showBuildingXray = showBuildingXray;
+
+    function xrayDraw(inst) {
+      const b = XRAY.building;
+      XRAY.markers.forEach(m => m.remove()); XRAY.markers = [];
+      const shell = cityVectorMap.getSource('xray-shell'), slabs = cityVectorMap.getSource('xray-slabs');
+      if (!shell || !slabs) return;
+      if (!b) { shell.setData({ type: 'FeatureCollection', features: [] }); slabs.setData({ type: 'FeatureCollection', features: [] }); return; }
+      const cats = xrayCategories(inst), n = cats.length, h = Math.max(b.height, b.base + 3);
+      shell.setData({ type: 'FeatureCollection', features: [{ type: 'Feature', geometry: b.geometry, properties: { height: h, base: b.base } }] });
+      const inner = xrayShrink(b.geometry, 0.7), span = h - b.base;
+      slabs.setData({ type: 'FeatureCollection', features: cats.map((c, i) => ({ type: 'Feature', geometry: inner, properties: { color: XRAY_COLOURS[c.key], base: b.base + span * i / n, height: b.base + span * i / n + span / n * 0.5 } })) });
+      if (!XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) { cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 0.3); XRAY.dimmed = true; }
+      const c = xrayCentroid(b.geometry);
+      cats.forEach((cat, i) => {
+        const el = document.createElement('button');
+        el.type = 'button'; el.className = 'xray-label'; el.textContent = cat.label; el.style.setProperty('--xray-colour', XRAY_COLOURS[cat.key]);
+        el.addEventListener('click', (ev) => { ev.stopPropagation(); const sec = document.getElementById('xray-cat-' + cat.key); if (sec) sec.scrollIntoView({ block: 'nearest' }); });
+        XRAY.markers.push(new maplibregl.Marker({ element: el, anchor: 'bottom', offset: [0, -(8 + i * 26)] }).setLngLat(c).addTo(cityVectorMap));
       });
-      showBuildingFloorInspectorHud(inst);
     }
-    window.zoomCloserToBuilding = zoomCloserToBuilding;
 
-    //  3D Camera Controls & Orbit Engine (In-Map Culture Atlas 3D Experience)
-    let is3DOrbiting = false;
-    let orbitAnimFrame = null;
-
-    function set3DCameraAngle(mode) {
-      if (!cityVectorMap) return;
-      stop3DOrbit();
-      const inst = selectedInstitution || currentHighlightedBuildingInst;
-      const center = inst ? [inst.lon, inst.lat] : [cityVectorMap.getCenter().lng, cityVectorMap.getCenter().lat];
-      const padLeft = (window.innerWidth >= 640 ? 330 : 0);
-      const bPad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : { left: padLeft, top: 120, bottom: 60, right: 30 };
-
-      if (mode === 'perspective') {
-        cityVectorMap.easeTo({
-          center: center,
-          pitch: 62,
-          bearing: 30,
-          zoom: 18.5,
-          padding: bPad,
-          duration: 900
-        });
-      } else if (mode === 'isometric') {
-        cityVectorMap.easeTo({
-          center: center,
-          pitch: 45,
-          bearing: 45,
-          zoom: 18.3,
-          padding: bPad,
-          duration: 900
-        });
-      } else if (mode === 'plan') {
-        cityVectorMap.easeTo({
-          center: center,
-          pitch: 0,
-          bearing: 0,
-          zoom: 18.0,
-          padding: { ...bPad, top: Math.round(bPad.top * 0.75) },
-          duration: 900
-        });
-      }
+    function hideBuildingXray() {
+      XRAY.inst = null; XRAY.building = null;
+      XRAY.markers.forEach(m => m.remove()); XRAY.markers = [];
+      document.getElementById('buildingInsidePanel')?.classList.add('hidden');
+      if (!cityVectorMap || typeof cityVectorMap.getSource !== 'function') return;
+      try {
+        cityVectorMap.getSource('xray-shell')?.setData({ type: 'FeatureCollection', features: [] });
+        cityVectorMap.getSource('xray-slabs')?.setData({ type: 'FeatureCollection', features: [] });
+        if (XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 0.72);
+      } catch (e) { /* style not ready */ }
+      XRAY.dimmed = false;
     }
-    window.set3DCameraAngle = set3DCameraAngle;
+    window.hideBuildingXray = hideBuildingXray;
 
-    function toggle3DOrbit() {
-      if (is3DOrbiting) {
-        stop3DOrbit();
-        return;
-      }
-      if (!cityVectorMap) return;
-      const inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (!inst) return;
-
-      is3DOrbiting = true;
-      const orbitBtn = document.getElementById('bfiOrbitBtn');
-      const orbitText = document.getElementById('bfiOrbitBtnText');
-      if (orbitBtn) {
-        orbitBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-400');
-        orbitBtn.classList.remove('bg-black', 'text-[#f4f4f4]');
-      }
-      if (orbitText) orbitText.textContent = 'Stop Orbit';
-
-      const padLeft = (window.innerWidth >= 640 ? 330 : 0);
-      const bPad = (typeof getBuildingCameraPadding === 'function') ? getBuildingCameraPadding() : { left: padLeft, top: 120, bottom: 60, right: 30 };
-      cityVectorMap.easeTo({
-        center: [inst.lon, inst.lat],
-        pitch: 64,
-        zoom: 18.6,
-        padding: bPad,
-        duration: 800
+    // Wikidata: items with coordinates within 250 m of the record's point; a match needs the record's website host or its name.
+    function xrayWikidataLines(wd) {
+      const l = [];
+      if (wd.inception) l.push('Opened or founded: ' + wd.inception);
+      if (wd.architects.length) l.push('Architect: ' + wd.architects.join(', '));
+      if (wd.collection) l.push('Collection size: ' + wd.collection);
+      if (wd.archivesAt.length) l.push('Archives at: ' + wd.archivesAt.join(', '));
+      return l;
+    }
+    async function fetchWikidataFacts(inst) {
+      const key = inst.id || inst.name;
+      if (XRAY.wikidata[key] && XRAY.wikidata[key].status !== 'pending') return XRAY.wikidata[key];
+      if (!inst.lat || !inst.lon) return (XRAY.wikidata[key] = { status: 'none' });
+      XRAY.wikidata[key] = { status: 'pending' };
+      const q = `SELECT ?item ?itemLabel ?site ?architectLabel ?inception ?collection ?archivesAtLabel ?article WHERE {
+  SERVICE wikibase:around { ?item wdt:P625 ?loc . bd:serviceParam wikibase:center "Point(${Number(inst.lon)} ${Number(inst.lat)})"^^geo:wktLiteral ; wikibase:radius "0.25" . }
+  OPTIONAL { ?item wdt:P856 ?site . } OPTIONAL { ?item wdt:P84 ?architect . } OPTIONAL { ?item wdt:P571 ?inception . }
+  OPTIONAL { ?item wdt:P1436 ?collection . } OPTIONAL { ?item wdt:P485 ?archivesAt . }
+  OPTIONAL { ?article schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,mul" . }
+} LIMIT 80`;
+      const ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+      const timer = ctrl ? setTimeout(() => ctrl.abort(), 9000) : null;
+      let out;
+      try {
+        const res = await fetch(WIKIDATA_SPARQL + '?format=json&query=' + encodeURIComponent(q), { headers: { 'Accept': 'application/sparql-results+json' }, signal: ctrl ? ctrl.signal : undefined });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        out = xrayPickWikidata(inst, (json.results && json.results.bindings) || []);
+      } catch (e) { out = { status: 'unreachable' }; }
+      if (timer) clearTimeout(timer);
+      XRAY.wikidata[key] = out;
+      return out;
+    }
+    function xrayPickWikidata(inst, rows) {
+      const items = {};
+      rows.forEach(r => {
+        const id = r.item && r.item.value; if (!id) return;
+        const it = items[id] || (items[id] = { item: id, label: r.itemLabel ? r.itemLabel.value : '', sites: new Set(), architects: new Set(), inception: '', collection: '', archivesAt: new Set(), article: '' });
+        if (r.site) it.sites.add(xrayHost(r.site.value));
+        if (r.architectLabel) it.architects.add(r.architectLabel.value);
+        if (r.inception && !it.inception) it.inception = String(r.inception.value).slice(0, 4);
+        if (r.collection && !it.collection) it.collection = r.collection.value;
+        if (r.archivesAtLabel) it.archivesAt.add(r.archivesAtLabel.value);
+        if (r.article && !it.article) it.article = r.article.value;
       });
-
-      let lastTime = performance.now();
-      function stepOrbit(now) {
-        if (!is3DOrbiting || !cityVectorMap) return;
-        const delta = Math.min(50, now - lastTime);
-        lastTime = now;
-        const curBearing = cityVectorMap.getBearing();
-        cityVectorMap.setBearing((curBearing + (delta * 0.025)) % 360);
-        orbitAnimFrame = requestAnimationFrame(stepOrbit);
-      }
-      orbitAnimFrame = requestAnimationFrame(stepOrbit);
+      const host = xrayHost(inst.website || inst.visit_url || '');
+      const names = [inst.name].concat(inst.aliases || []).map(xrayNorm).filter(Boolean);
+      let how = '', pick = null;
+      const list = Object.values(items);
+      if (host) { pick = list.find(it => it.sites.has(host)); if (pick) how = 'website'; }
+      if (!pick) { pick = list.find(it => names.includes(xrayNorm(it.label))); if (pick) how = 'name and location'; }
+      if (!pick) return { status: 'none' };
+      return { status: 'matched', how, item: pick.item, label: pick.label, architects: [...pick.architects], inception: pick.inception, collection: pick.collection, archivesAt: [...pick.archivesAt], article: pick.article };
     }
-    window.toggle3DOrbit = toggle3DOrbit;
 
-    function stop3DOrbit() {
-      if (!is3DOrbiting) return;
-      is3DOrbiting = false;
-      if (orbitAnimFrame) {
-        cancelAnimationFrame(orbitAnimFrame);
-        orbitAnimFrame = null;
-      }
-      const orbitBtn = document.getElementById('bfiOrbitBtn');
-      const orbitText = document.getElementById('bfiOrbitBtnText');
-      if (orbitBtn) {
-        orbitBtn.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-400');
-        orbitBtn.classList.add('bg-black', 'text-[#f4f4f4]');
-      }
-      if (orbitText) orbitText.textContent = 'Orbit 360°';
-    }
-    window.stop3DOrbit = stop3DOrbit;
-
-
-    //  3D Building Floor Inspector HUD Controller
-    let currentBfiFloorIndex = 0;
-
-    function showBuildingFloorInspectorHud(inst) {
-      return; // generated outlines were removed: they were drawn from coordinates, not from real buildings
-      if (!inst) inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (!inst) return;
-      selectedInstitution = inst;
-      const hud = document.getElementById('buildingFloorInspectorHud');
-      if (!hud) return;
-
-      //  MUTUAL EXCLUSIVITY: Automatically collapse/close the right-hand filter drawer!
-      if (typeof toggleFilterDrawer === 'function') {
-        toggleFilterDrawer(false);
-      }
-
-      // Close all 2D popups to keep screen clean and focused
-      document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-
-      const nameEl = document.getElementById('bfiBuildingName');
-      const metaEl = document.getElementById('bfiBuildingMeta');
-      if (nameEl) nameEl.textContent = inst.name;
-      if (metaEl) {
-        metaEl.textContent = inst.city || '';
-      }
-
-      // Populate Space Visuals & Google Exploration Showcase
-      const spaceVisuals = getInstitutionSpaceVisuals(inst);
-      if (spaceVisuals) {
-        const photoEl = document.getElementById('bfiSpacePhotoImg');
-        const satEl = document.getElementById('bfiSatelliteAerialImg');
-        const gImgBtn = document.getElementById('bfiGoogleImagesBtn');
-        const gSatBtn = document.getElementById('bfiGoogleSatelliteBtn');
-        const gStBtn = document.getElementById('bfiStreetViewBtn');
-        const badgeEl = document.getElementById('bfiSpaceTypologyBadge');
-
-        if (photoEl) {
-          photoEl.src = spaceVisuals.photoUrl;
-          photoEl.alt = `${inst.name} space photography`;
-        }
-        if (satEl) {
-          satEl.src = spaceVisuals.satelliteTileUrl;
-          satEl.alt = `${inst.name} Google Satellite aerial view`;
-        }
-        if (gImgBtn) gImgBtn.href = spaceVisuals.googleImagesUrl;
-        if (gSatBtn) gSatBtn.href = spaceVisuals.googleMaps3dUrl;
-        if (gStBtn) gStBtn.href = spaceVisuals.googleStreetViewUrl;
-        if (badgeEl) badgeEl.textContent = spaceVisuals.typology;
-      }
-
-      hud.classList.remove('hidden');
-
-      // Suppress on-map facade stack while HUD is open to avoid duplicate floor lists
-      const facadeStackEl = document.querySelector('.building-3d-facade-stack');
-      if (facadeStackEl) facadeStackEl.style.display = 'none';
-
-      // Wire Action Buttons
-      const zoomCloserBtn = document.getElementById('bfiZoomCloserBtn');
-      if (zoomCloserBtn) {
-        zoomCloserBtn.onclick = () => zoomCloserToBuilding(20.0);
-      }
-      const resetZoomBtn = document.getElementById('bfiResetZoomBtn');
-      if (resetZoomBtn) {
-        resetZoomBtn.onclick = () => {
-          if (cityVectorMap && inst.lon && inst.lat) {
-            cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: 18.0, pitch: 58, bearing: 28 });
-          }
-        };
-      }
-      const explodeBtn = document.getElementById('bfiExplodeBtn');
-      const explodeTxt = document.getElementById('bfiExplodeBtnText');
-      if (explodeBtn) {
-        if (explodeTxt) explodeTxt.textContent = isExploded3DMode ? 'Stack' : 'Explode';
-        explodeBtn.onclick = () => {
-          window.toggleExploded3DMode();
-          if (explodeTxt) explodeTxt.textContent = isExploded3DMode ? 'Stack' : 'Explode';
-        };
-      }
-      const openModalBtn = document.getElementById('bfiOpenModalBtn');
-      if (openModalBtn) {
-        openModalBtn.onclick = () => openBuildingArchivesModal(inst);
-      }
-      const minBtn = document.getElementById('minimizeBfiHudBtn');
-      if (minBtn) {
-        minBtn.onclick = () => {
-          const isMin = hud.classList.toggle('minimized');
-          const icon = document.getElementById('minimizeBfiHudIcon');
-          const content = document.getElementById('bfiContentWrap');
-          if (icon) icon.textContent = isMin ? '□' : '_';
-          if (content) content.classList.toggle('hidden', isMin);
-        };
-      }
-
-      const askCurBtn = document.getElementById('bfiAskCuratorBtn');
-      if (askCurBtn) {
-        askCurBtn.onclick = () => window.askCuratorAboutCurrentBuilding();
-      }
-      const dockBtn = document.getElementById('dockBfiToWorkspaceBtn');
-      if (dockBtn) {
-        dockBtn.onclick = () => window.dockBuildingInspectorToWorkspace(inst);
-      }
-      const closeHudBtn = document.getElementById('closeBfiHudBtn');
-      if (closeHudBtn) {
-        closeHudBtn.onclick = hideBuildingFloorInspectorHud;
-      }
-    }
-    window.showBuildingFloorInspectorHud = showBuildingFloorInspectorHud;
-
-    function dockBuildingInspectorToWorkspace(inst) {
-      if (!inst) inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (!inst) return;
-      selectedInstitution = inst;
-      hideBuildingFloorInspectorHud();
-      if (typeof toggleFilterDrawer === 'function') {
-        toggleFilterDrawer(false);
-      }
-      if (typeof openDossier === 'function') {
-        openDossier(inst);
-      }
-      if (typeof setWorkspaceTab === 'function') {
-        setWorkspaceTab('dossier');
-      }
-      if (cityVectorMap && inst.lon && inst.lat) {
-        cityVectorMap.easeTo({
-          center: [inst.lon, inst.lat],
-          padding: { left: 0, top: 40, bottom: 40, right: 0 },
-          duration: 500
-        });
-      }
-    }
-    window.dockBuildingInspectorToWorkspace = dockBuildingInspectorToWorkspace;
-
-    function selectBfiFloor(idx) {
-      currentBfiFloorIndex = idx;
-      if (typeof window.updateDossierFloorSelection === 'function') {
-        window.updateDossierFloorSelection(idx);
-      }
-      const inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (inst) {
-        highlightBuildingFootprint(inst, { isFloorChange: true });
-        showBuildingFloorInspectorHud(inst);
-        const fl = (inst.floor_plans && inst.floor_plans[idx]) || null;
-        if (fl && fl.current_shows && fl.current_shows[0]) {
-          const show = fl.current_shows[0];
-          const stEl = document.getElementById('floatingCardShowTitle');
-          const smEl = document.getElementById('floatingCardShowMeta');
-          const spEl = document.getElementById('floatingCardShowFloorPill');
-          if (stEl) stEl.textContent = show.title;
-          if (smEl) smEl.textContent = (show.curator_artists || '') + (show.dates ? (', ' + show.dates) : '');
-          if (spEl) spEl.textContent = fl.level_code || ('L' + idx);
-        }
-      }
-    }
-    window.selectBfiFloor = selectBfiFloor;
-
-    function hideBuildingFloorInspectorHud() {
-      const hud = document.getElementById('buildingFloorInspectorHud');
-      if (hud) hud.classList.add('hidden');
-      const facadeStackEl = document.querySelector('.building-3d-facade-stack');
-      if (facadeStackEl && !isBuildingFacadeDismissed && window.innerWidth >= 640) {
-        facadeStackEl.style.display = 'flex';
-      }
-    }
-    window.hideBuildingFloorInspectorHud = hideBuildingFloorInspectorHud;
-
-    //  IN-DEPTH BUILDING ARCHITECTURE & ARCHIVES MODAL RENDERER
-    function openBuildingArchivesModal(instNameOrObj) {
-      return; // no record has archive holdings, so this modal only ever showed invented ones
-      let inst = null;
-      if (typeof instNameOrObj === 'string') {
-        inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) || 
-               (typeof filteredList !== 'undefined' ? filteredList.find(i => i.name.toLowerCase() === instNameOrObj.toLowerCase()) : null);
-      } else if (instNameOrObj && typeof instNameOrObj === 'object') {
-        inst = instNameOrObj;
-      }
-      if (!inst) inst = selectedInstitution;
-      if (!inst) return;
-
-      const modal = document.getElementById('buildingArchivesModal');
-      const body = document.getElementById('bamBody');
-      if (!modal || !body) return;
-
-      const isClean = inst.tier === 'A';
-      const isFlagged = inst.tier === 'B';
-      const tierBadge = document.getElementById('bamTierBadge');
-      if (tierBadge) {
-        tierBadge.textContent = isClean ? 'Clean, source cited' : (isFlagged ? 'Flaggeds' : 'User Input Layer');
-        tierBadge.className = isClean 
-          ? 'text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold'
-          : (isFlagged ? 'text-[14px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-black text-[#be95ff] font-bold'
-                       : 'text-[14px] font-mono px-2 py-0.5 rounded border border-[#08bdba]/60 bg-black text-[#08bdba] font-bold');
-      }
-
-      const govBadge = document.getElementById('bamGovernanceBadge');
-      if (govBadge) govBadge.textContent = inst.governance_type || 'Civic Non-Profit';
-
-      const bArch = inst.building_architecture || {};
-      const bArchStyle = bArch.architectural_style || 'Independent Loft & Curatorial Space';
-      const bArchHeritage = bArch.heritage_status || 'Civic Heritage Registry';
-      const bArchSqm = bArch.footprint_sqm || 1800;
-      const bArchFloors = bArch.floors || 2;
-      const bArchWings = bArch.wings || [
-        { name: 'Main Curatorial Galleries', type: 'galleries', access: 'public' },
-        { name: 'Permanent Collection & Research Wing', type: 'archives', access: 'study_room' },
-        { name: 'Public Reading Room & Artist Library', type: 'study', access: 'public' },
-        { name: 'Preservation Vault & Ephemera Storage', type: 'vault', access: 'secure_storage' }
-      ];
-
-      const floorsBadge = document.getElementById('bamFloorsBadge');
-      if (floorsBadge) floorsBadge.textContent = `${bArchFloors} Floors, ${bArchSqm.toLocaleString()} m²`;
-
-      const titleEl = document.getElementById('bamTitle');
-      if (titleEl) titleEl.textContent = inst.name;
-
-      const locEl = document.getElementById('bamLocation');
-      if (locEl) locEl.textContent = `${inst.address || inst.location}, ${inst.neighborhood || inst.city}, ${inst.country}`;
-
-      const webLink = document.getElementById('bamWebLink');
-      const webUrl = getValidWebUrl(inst);
-      if (webLink) {
-        if (webUrl) {
-          webLink.href = webUrl;
-          webLink.classList.remove('hidden');
-        } else {
-          webLink.classList.add('hidden');
-        }
-      }
-
-      const planBtn = document.getElementById('bamPlanVisitBtn');
-      if (planBtn) {
-        planBtn.onclick = () => {
-          closeBuildingArchivesModal();
-          window.atlasPlanVisit(inst);
-        };
-      }
-
-      const archives = inst.archives_and_collections || {};
-      const archiveName = archives.archive_name || `${inst.name} Institutional Archives & Permanent Collection`;
-      const archiveSummary = archives.summary || (inst.curatorial_focus ? `Comprehensive archival repository documenting ${inst.curatorial_focus} alongside civic commission histories and exhibition dossiers.` : 'Primary repository holding complete exhibition histories, artist correspondence, audiovisual recordings, and institutional records.');
-      const primaryHoldings = archives.primary_holdings || [
-        {
-          category: 'Exhibition Master Records & Curatorial Ephemera',
-          period: `${inst.year_founded || '1970'}–Present`,
-          scope: 'Official curatorial correspondence, installation floor plans, and photographic documentation of landmark exhibitions.',
-          items: 'Over 12,000 cataloged files'
-        },
-        {
-          category: 'Artist Files & Unaffiliated Registry Dossiers',
-          period: 'Historic to Contemporary',
-          scope: 'Rare artist portfolios, annotated manifestos, slides, and correspondence with international avant-garde collectives.',
-          items: '5,000+ dossiers'
-        },
-        {
-          category: 'Audiovisual Master Tapes & Performance Documentation',
-          period: '1975–Present',
-          scope: 'Magnetic tape master reels, digitized video documentation, and sound recordings of historic readings and symposia.',
-          items: '1,400 recorded hours'
-        }
-      ];
-
-      const readingPolicy = archives.reading_room_policy || 'Free public study room; walk-in access during exhibition hours or reserved research appointments for physical rare folders.';
-      const digitizationStatus = archives.digitization_status || 'Selected holdings digitised with online finding aids and freely accessible digital scans.';
-      const findingAidsUrl = archives.finding_aids_url || webUrl;
-      const provenanceIntegrity = archives.provenance_integrity || 'Direct civic stewardship; strictly non-speculative acquisition covenant under municipal non-profit charter.';
-      const treasures = archives.highlight_treasures || [
-        'Complete founding constitution and artist assembly records',
-        'Historic screenprinted posters and underground exhibition mailers',
-        'Signed artist correspondence, installation sketches, and photo reels'
-      ];
-
-      const instFloors = inst.floor_plans || (inst.building_architecture && inst.building_architecture.floor_plans) || [];
-
-      body.innerHTML = `
-        <!-- Architectural Profile Section (Uncontained Editorial Stream) -->
-        <div class="space-y-2 pb-3 border-b border-[#262626]">
-          <div class="flex items-center justify-between border-b border-[#262626] pb-1.5">
-            <span class="text-[14px] font-mono tracking-wider text-[#f4f4f4] font-bold flex items-center gap-1.5">
-              Architectural Footprint &amp; Building Layout
-            </span>
-            <span class="text-[14px] font-mono text-[#f4f4f4]">
-              ${bArchSqm.toLocaleString()} m² Built Area
-            </span>
-          </div>
-
-          <div class="flex flex-col gap-1.5 text-[14px]">
-            <div>
-              <span class="text-[#f4f4f4] font-mono block text-[14px]"><span class="sr-only">ARCHITECT / BUILDING HISTORY</span>Architect / Building History</span>
-              <span class="text-[#f4f4f4] font-medium">${escapeHtml(bArch.architect || 'Historic Adaptive Reuse Structure')}</span>
-            </div>
-            <div>
-              <span class="text-[#f4f4f4] font-mono block text-[14px]"><span class="sr-only">ARCHITECTURAL STYLE</span>Architectural Style</span>
-              <span class="text-[#f4f4f4] font-medium">${escapeHtml(bArchStyle)}</span>
-            </div>
-            <div>
-              <span class="text-[#f4f4f4] font-mono block text-[14px]"><span class="sr-only">HERITAGE CONSERVATION STATUS</span>Heritage Conservation Status</span>
-              <span class="text-[#f4f4f4] font-medium">${escapeHtml(bArchHeritage)}</span>
-            </div>
-            <div>
-              <span class="text-[#f4f4f4] font-mono block text-[14px]"><span class="sr-only">VERTICAL LEVELS & PUBLIC FLOORS</span>Vertical Levels &amp; Public Floors</span>
-              <span class="text-[#f4f4f4] font-medium">${bArchFloors} Floors (Step-Free Elevator Accessible)</span>
-            </div>
-          </div>
-
-          <!-- Building Wings & Public Functional Zones -->
-          <div class="pt-2 border-t border-[#262626]">
-            <span class="text-[14px] font-mono text-[#f4f4f4] block mb-1">Building Wings &amp; Internal Facility Layout:</span>
-            <div class="flex flex-col gap-1.5">
-              ${bArchWings.map(w => `
-                <div class="py-1 border-b border-[#262626] last:border-b-0 flex items-center justify-between gap-2">
-                  <div class="flex items-center gap-2">
-                    <span class="text-[14px] font-mono text-[#f4f4f4]">[${w.type}]</span>
-                    <div>
-                      <div class="text-[14px] font-medium text-[#f4f4f4] leading-tight">${escapeHtml(w.name)}</div>
-                      <div class="text-[14px] font-mono text-[#f4f4f4] capitalize">${w.type} wing</div>
-                    </div>
-                  </div>
-                  <span class="text-[14px] font-mono ${w.access === 'public' ? 'text-emerald-300' : (w.access === 'study_room' ? 'text-[#f4f4f4]' : 'text-[#f4f4f4]')} shrink-0">
-                    ${w.access === 'public' ? 'Walk-in' : (w.access === 'study_room' ? 'By Appt / Walk-in' : 'Secured')}
-                  </span>
-                </div>
-              `).join('')}
-            </div>
-          </div>
+    function renderBuildingInsidePanel(inst) {
+      const panel = document.getElementById('buildingInsidePanel');
+      if (!panel || !inst) return;
+      const e = escapeHtml, b = XRAY.building, cats = xrayCategories(inst), wd = XRAY.wikidata[inst.id || inst.name];
+      const site = inst.visit_url || inst.website;
+      const outline = !b ? 'No building outline in the map data at this point, so nothing is drawn.'
+        : b.hasHeight ? 'Outline and height from OpenStreetMap, through the map tiles.' : 'Outline from OpenStreetMap, through the map tiles. The map has no height for this building, so the shell uses the map default.';
+      let wdHtml = '';
+      if (!wd || wd.status === 'pending') wdHtml = '<p class="no-indent">Looking up Wikidata.</p>';
+      else if (wd.status === 'unreachable') wdHtml = '<p class="no-indent">Wikidata could not be reached.</p>';
+      else if (wd.status === 'none') wdHtml = '<p class="no-indent">No Wikidata item within 250 m matched this website or name.</p>';
+      else wdHtml = `<p class="no-indent">From Wikidata, matched by ${e(wd.how)}, fetched now. Not independently verified. <a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}.</p>`;
+      panel.innerHTML = `
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="!mt-0 text-white">${e(inst.name)}</h3>
+          <button type="button" class="text-[#f4f4f4] hover:underline cursor-pointer shrink-0" onclick="window.hideBuildingXray()">Close</button>
         </div>
-
-        <!--  FLOOR-BY-FLOOR ARCHITECTURAL DIRECTORY: CURRENT SHOWS & ARCHIVAL HOLDINGS -->
-        <div class="space-y-2 py-3 border-b border-[#262626]">
-          <div class="flex items-center justify-between border-b border-[#262626] pb-1.5 flex-wrap gap-2">
-            <span class="text-[14px] font-mono tracking-wider text-[#f4f4f4] font-bold flex items-center gap-1.5">
-              Floor-by-Floor Directory: Current Shows &amp; Archival Holdings
-            </span>
-            <span class="text-[14px] font-mono text-emerald-400">
-              Active Cultural Program
-            </span>
-          </div>
-
-          <!-- Floor Level Tabs (Uncontained Links) -->
-          <div class="flex flex-col gap-1" id="bamFloorFilterTabs">
-            <button class="text-left text-[#f4f4f4] font-bold underline text-[14px] font-mono transition cursor-pointer" onclick="filterBamFloorLevel('all')">All Floors</button>
-            ${instFloors.map(fl => `
-              <button class="text-left text-[#f4f4f4] hover:text-white text-[14px] font-mono transition cursor-pointer" onclick="filterBamFloorLevel('${fl.level}')">
-                Level ${fl.level}: ${escapeHtml(fl.floor_name || '')}
-              </button>
-            `).join('')}
-          </div>
-
-          <!-- Floor Cards Container (Uncontained Editorial Stream) -->
-          <div class="space-y-3 pt-1" id="bamFloorCardsContainer">
-            ${instFloors.map(fl => `
-              <div class="py-2 border-b border-[#262626] last:border-b-0 space-y-1.5 bam-floor-card" data-floor-level="${fl.level}">
-                <!-- Level Header -->
-                <div class="flex items-center justify-between gap-2 border-b border-[#262626] pb-1 flex-wrap">
-                  <div class="flex items-center gap-2">
-                    <span class="text-[#f4f4f4] font-mono font-bold text-[14px]">${fl.level_code || ('L' + fl.level)}</span>
-                    <span class="text-white font-semibold text-[14px]">${escapeHtml(fl.floor_name || ('Level ' + fl.level))}</span>
-                  </div>
-                  <span class="text-[14px] font-mono text-[#f4f4f4]">${fl.elevation || ''}, ${fl.area_sqm ? fl.area_sqm + ' m²' : ''}</span>
-                </div>
-
-                <!-- Current Shows on Floor -->
-                <div class="space-y-1">
-                  <span class="text-[14px] font-mono text-amber-400 font-bold flex items-center gap-1">
-                    CURRENT SHOW ON THIS LEVEL
-                  </span>
-                  ${(fl.current_shows || []).map(show => `
-                    <div class="space-y-0.5 py-1">
-                      <div class="flex items-center justify-between gap-2 flex-wrap">
-                        <span class="text-[14px] font-semibold text-white">${escapeHtml(show.title)}</span>
-                        <span class="text-[14px] font-mono text-emerald-400">${escapeHtml(show.admission || 'Free Admission')}</span>
-                      </div>
-                      <div class="text-[14px] font-mono text-[#f4f4f4]">
-                        ${escapeHtml(show.curator_artists || '')}, <span class="text-amber-300">${escapeHtml(show.dates || 'On View')}</span>
-                      </div>
-                      <p class="text-[14px] text-[#f4f4f4] leading-snug pt-0.5">
-                        ${escapeHtml(show.synopsis || '')}
-                      </p>
-                    </div>
-                  `).join('')}
-                </div>
-
-                <!-- Archival Holdings on Floor -->
-                <div class="space-y-1 pt-1 border-t border-[#262626]">
-                  <span class="text-[14px] font-mono text-emerald-400 font-bold flex items-center gap-1">
-                    ARCHIVE HOLDING ON THIS LEVEL
-                  </span>
-                  <div class="space-y-0.5 text-[14px]">
-                    <div class="flex items-center justify-between gap-2 flex-wrap">
-                      <span class="font-semibold text-emerald-200 text-[14px]">${escapeHtml(fl.archive_holdings ? fl.archive_holdings.collection_title : 'Special Collections')}</span>
-                      <span class="text-[14px] font-mono text-emerald-300">${escapeHtml(fl.archive_holdings ? fl.archive_holdings.period || 'Cataloged' : '')}</span>
-                    </div>
-                    <p class="text-[14px] text-[#f4f4f4] leading-snug">
-                      ${escapeHtml(fl.archive_holdings ? fl.archive_holdings.scope || '' : '')}
-                    </p>
-                    <div class="text-[14px] font-mono text-[#f4f4f4] pt-0.5">
-                      <span class="text-emerald-400">Access:</span> ${escapeHtml(fl.archive_holdings ? fl.archive_holdings.reading_room_policy || 'Open consultation' : '')}
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Facilities -->
-                ${fl.facilities && fl.facilities.length ? `
-                  <div class="flex items-center gap-1.5 flex-wrap pt-0.5 text-[14px] font-mono text-[#f4f4f4]">
-                    <span class="text-[#f4f4f4]">Facilities:</span>
-                    ${fl.facilities.map(fac => `<span class="text-[#f4f4f4]">${escapeHtml(fac)}</span>`).join(', ')}
-                  </div>
-                ` : ''}
-              </div>
-            `).join('')}
-          </div>
+        <p class="no-indent text-[#f4f4f4]">${outline}</p>
+        ${cats.length ? `<p class="no-indent text-[#08bdba]">Inside, from the record:</p>${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1.5 border-t border-[#f4f4f4]"><div class="no-indent" style="color:${XRAY_COLOURS[c.key]}">${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent text-[#f4f4f4]">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent text-[#f4f4f4]">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent text-[#f4f4f4]">The record holds nothing beyond its name and place.</p>'}
+        <div class="py-1.5 border-t border-[#f4f4f4]">
+          <p class="no-indent text-[#f4f4f4]">Current shows: not in the records. ${site ? `The museum's own page: <a href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a>.` : 'No website is recorded.'}</p>
+          <p class="no-indent text-[#f4f4f4]">Archives: ${wd && wd.status === 'matched' && wd.archivesAt.length ? 'held at ' + e(wd.archivesAt.join(', ')) + ', according to Wikidata.' : 'not in the records.'}</p>
+          ${wdHtml}
         </div>
-
-        <!-- In-Depth Archives & Permanent Collections Section (Uncontained) -->
-        <div class="space-y-2 py-3">
-          <div class="flex items-center justify-between border-b border-[#262626] pb-1.5">
-            <span class="text-[14px] font-mono tracking-wider text-[#34d399] font-bold flex items-center gap-1.5">
-              ${escapeHtml(archiveName)}
-            </span>
-            <span class="text-[14px] font-mono text-emerald-400">
-              Primary Research Holdings
-            </span>
-          </div>
-
-          <p class="text-[#f4f4f4] text-[14px] leading-relaxed">
-            ${escapeHtml(archiveSummary)}
-          </p>
-
-          <!-- Primary Collections Breakdown -->
-          <div class="space-y-2 pt-1">
-            <span class="text-[14px] font-mono text-[#f4f4f4] block">Cataloged Special Collections &amp; Primary Series:</span>
-            ${primaryHoldings.map((h, idx) => `
-              <div class="py-1.5 border-b border-[#262626] last:border-b-0 space-y-0.5">
-                <div class="flex items-center justify-between gap-2 flex-wrap">
-                  <span class="font-medium text-white text-[14px] flex items-center gap-1.5">
-                    <span class="text-[14px] font-mono text-[#f4f4f4]">#0${idx + 1}</span>
-                    ${escapeHtml(h.category)}
-                  </span>
-                  <div class="flex items-center gap-2">
-                    <span class="text-[14px] font-mono text-[#f4f4f4]">${escapeHtml(h.period)}</span>
-                    ${h.items ? `<span class="text-[14px] font-mono text-emerald-400">${escapeHtml(h.items)}</span>` : ''}
-                  </div>
-                </div>
-                <p class="text-[#f4f4f4] text-[14px] leading-normal pt-0.5">
-                  ${escapeHtml(h.scope)}
-                </p>
-              </div>
-            `).join('')}
-          </div>
-
-          <!-- Highlight Archival Treasures -->
-          ${treasures && treasures.length > 0 ? `
-            <div class="pt-2 border-t border-[#262626] space-y-1">
-              <span class="text-[14px] font-mono text-[#fcd34d] block font-bold flex items-center gap-1">
-                Archival Treasures &amp; Historic Artifacts
-              </span>
-              <ul class="space-y-1 text-[14px] text-[#f4f4f4] list-disc list-inside">
-                ${treasures.map(t => `<li>${escapeHtml(t)}</li>`).join('')}
-              </ul>
-            </div>
-          ` : ''}
-
-          <!-- Reading Room Policy & Public Access Charter -->
-          <div class="pt-2 border-t border-[#262626] flex flex-col gap-2 text-[14px]">
-            <div>
-              <span class="text-[#f4f4f4] font-mono text-[14px] block font-medium">Public Reading Room Policy</span>
-              <p class="text-[#f4f4f4] text-[14px] leading-snug">${escapeHtml(readingPolicy)}</p>
-            </div>
-            <div>
-              <span class="text-teal-300 font-mono text-[14px] block font-medium">Digitization &amp; Finding Aids</span>
-              <p class="text-[#f4f4f4] text-[14px] leading-snug">${escapeHtml(digitizationStatus)}</p>
-              ${findingAidsUrl ? `
-                <a href="${escapeHtml(findingAidsUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[14px] font-mono text-[#f4f4f4] hover:underline pt-0.5">
-                  Browse Online Finding Aids
-                </a>
-              ` : ''}
-            </div>
-          </div>
-
-          <!-- Ethical Provenance & Acquisition Charter -->
-          <div class="pt-2 border-t border-[#262626] text-[14px] space-y-1">
-            <span class="text-[#34d399] font-mono text-[14px] block font-bold">Ethical Provenance &amp; Deaccession Integrity</span>
-            <p class="text-teal-100/90 leading-snug">${escapeHtml(provenanceIntegrity)}</p>
-          </div>
-        </div>
-      `;
-
-      modal.classList.remove('hidden');
+        <div class="flex gap-2 pt-1"><button type="button" class="xray-pill" onclick="window.openDossier(selectedInstitution)">Full record</button></div>`;
+      panel.classList.remove('hidden');
     }
-    window.openBuildingArchivesModal = openBuildingArchivesModal;
 
-    function filterBamFloorLevel(levelStr) {
-      const cards = document.querySelectorAll('.bam-floor-card');
-      cards.forEach(card => {
-        if (levelStr === 'all' || card.getAttribute('data-floor-level') === String(levelStr)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-      const tabs = document.querySelectorAll('#bamFloorFilterTabs button');
-      tabs.forEach(t => {
-        const isSelected = (levelStr === 'all' && t.textContent.includes('All Floors')) || (levelStr !== 'all' && t.textContent.includes(`Level ${levelStr}`));
-        if (isSelected) {
-          t.className = 'text-left text-[#f4f4f4] font-bold underline text-[14px] font-mono transition cursor-pointer';
-        } else {
-          t.className = 'text-left text-[#f4f4f4] hover:text-white text-[14px] font-mono transition cursor-pointer';
-        }
-      });
-    }
-    window.filterBamFloorLevel = filterBamFloorLevel;
-
-    function closeBuildingArchivesModal() {
-      const modal = document.getElementById('buildingArchivesModal');
-      if (modal) modal.classList.add('hidden');
-    }
-    window.closeBuildingArchivesModal = closeBuildingArchivesModal;
 
     function openCityStreetView(cityName, targetLat, targetLon) {
       if (!cityName || cityName === 'all') return;
@@ -11743,7 +9950,7 @@ return maplibregl$1;
               <div style="padding-right:10px; min-width:0;">
                 <a href="${escapeHtml(webUrl || '#')}" target="_blank" rel="noopener noreferrer" 
                    style="font-size:18px; font-weight:400; color:#ffffff; line-height:1.3; text-decoration:none; display:block;"
-                   onmouseover="this.style.color='#93c5fd';this.style.textDecoration='underline'" 
+                   onmouseover="this.style.color='#f4f4f4';this.style.textDecoration='underline'" 
                    onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
                   ${escapeHtml(inst.name)}
                 </a>
@@ -11794,12 +10001,6 @@ return maplibregl$1;
         }).setHTML(popupContent);
 
         popup.on('open', () => {
-          const bfiHud = document.getElementById('buildingFloorInspectorHud');
-          const isHudOpen = bfiHud && !bfiHud.classList.contains('hidden');
-          if (isHudOpen) {
-            try { popup.remove(); } catch (e) {}
-            return;
-          }
           pinEl.classList.add('popup-active');
         });
         popup.on('close', () => {
@@ -11813,18 +10014,6 @@ return maplibregl$1;
 
         pinEl.addEventListener('click', (e) => {
           const curZ = cityVectorMap ? cityVectorMap.getZoom() : 0;
-          const bfiHud = document.getElementById('buildingFloorInspectorHud');
-          const isHudOpen = bfiHud && !bfiHud.classList.contains('hidden');
-          if (isHudOpen) {
-            e.stopImmediatePropagation();
-            e.preventDefault();
-            document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-            if (typeof clearBuilding3DInfoMarkers === 'function') clearBuilding3DInfoMarkers(true);
-            selectedInstitution = inst;
-            highlightBuildingFootprint(inst, { isFloorChange: true });
-            showBuildingFloorInspectorHud(inst);
-            return;
-          }
           e.stopPropagation();
           selectedInstitution = inst;
           try { marker.togglePopup(); } catch (err) {}
@@ -11856,11 +10045,7 @@ return maplibregl$1;
       if (mapEl) mapEl.classList.add('hidden');
       document.getElementById('cityViewControlBanner')?.classList.add('hidden');
       document.getElementById('activeRouteBanner')?.classList.add('hidden');
-      document.getElementById('buildingFloorInspectorHud')?.classList.add('hidden');
-      document.getElementById('mobile3DActiveIndicator')?.classList.add('hidden');
-      if (typeof clearBuilding3DInfoMarkers === 'function') {
-        clearBuilding3DInfoMarkers();
-      }
+      if (typeof hideBuildingXray === 'function') hideBuildingXray();
       if (typeof clearCuratorialRoute === 'function') {
         clearCuratorialRoute();
       }
@@ -12973,7 +11158,7 @@ return maplibregl$1;
           trusteeCtx.roundRect(n.x - tw / 2 - 4, ly - 7, tw + 8, 14, 4);
           trusteeCtx.fill();
 
-          trusteeCtx.fillStyle = isFocus ? '#f3e8ff' : (isDimmed ? '#94a3b8' : '#e2e8f0');
+          trusteeCtx.fillStyle = isFocus ? '#f3e8ff' : (isDimmed ? '#f4f4f4' : '#e2e8f0');
           trusteeCtx.textAlign = 'center';
           trusteeCtx.textBaseline = 'middle';
           trusteeCtx.fillText(label, n.x, ly);
@@ -14290,7 +12475,7 @@ return maplibregl$1;
               ctx.strokeStyle = isCActive 
                 ? (isGossipModeActive ? '#facc15' : '#60a5fa') 
                 : isCHovered 
-                ? (isGossipModeActive ? '#fde047' : '#93c5fd') 
+                ? (isGossipModeActive ? '#fde047' : '#f4f4f4') 
                 : (isGossipModeActive ? '#2e2205' : '#050c18');
               ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
               ctx.stroke();
@@ -14344,7 +12529,7 @@ return maplibregl$1;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = isCActive ? (isGossipModeActive ? '#facc15' : '#60a5fa') : isCHovered ? (isGossipModeActive ? '#fde047' : '#93c5fd') : (isGossipModeActive ? '#2e2205' : '#050c18');
+                ctx.strokeStyle = isCActive ? (isGossipModeActive ? '#facc15' : '#60a5fa') : isCHovered ? (isGossipModeActive ? '#fde047' : '#f4f4f4') : (isGossipModeActive ? '#2e2205' : '#050c18');
                 ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
                 ctx.stroke();
               }
@@ -14450,7 +12635,7 @@ return maplibregl$1;
               ctx.fill();
 
               ctx.strokeStyle = isSelected 
-                ? (isGossipModeActive ? '#facc15' : '#93c5fd') 
+                ? (isGossipModeActive ? '#facc15' : '#f4f4f4') 
                 : isHovered 
                 ? (isGossipModeActive ? '#fde047' : '#34d399') 
                 : (isGossipModeActive ? '#854d0e' : (isClustered ? 'rgba(16, 185, 129, 0.50)' : '#222d42'));
@@ -14504,7 +12689,7 @@ return maplibregl$1;
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
                 ctx.fillStyle = isSelected 
-                  ? (isGossipModeActive ? '#facc15' : '#93c5fd') 
+                  ? (isGossipModeActive ? '#facc15' : '#f4f4f4') 
                   : isHovered 
                   ? (isGossipModeActive ? '#fde047' : '#60a5fa') 
                   : (isGossipModeActive ? '#eab308' : '#3b82f6');
@@ -14931,7 +13116,7 @@ return maplibregl$1;
               // Line 2: Country Name (if available, 14px, muted slate, own line, no dot)
               if (countryTxt) {
                 ctx.font = '14px "PP Mori", sans-serif';
-                ctx.fillStyle = isGossipModeActive ? '#fde047' : '#94a3b8';
+                ctx.fillStyle = isGossipModeActive ? '#fde047' : '#f4f4f4';
                 ctx.fillText(countryTxt, cardX + 14, currentY);
                 currentY += 22;
               }
@@ -15046,7 +13231,7 @@ return maplibregl$1;
         ctx.stroke();
 
         // Scale bar line & ticks
-        ctx.strokeStyle = '#94a3b8';
+        ctx.strokeStyle = '#f4f4f4';
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(hudX, hudY - 4);
@@ -15081,7 +13266,7 @@ return maplibregl$1;
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = '#94a3b8';
+        ctx.fillStyle = '#f4f4f4';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(coordTxt, coordX + coordW / 2, hudY - 6);
@@ -15299,8 +13484,8 @@ return maplibregl$1;
     }
     // Papers in the research library whose title, abstract or takeaway name this space, matched on the exact name.
     const studiesNamingCache = {};
-    function studiesNamingHtml(inst) {
-      if (!inst || !inst.name || typeof ACADEMIC_RESEARCH === 'undefined') return '';
+    function studiesNaming(inst) {
+      if (!inst || !inst.name || typeof ACADEMIC_RESEARCH === 'undefined') return [];
       const key = inst.id || inst.name;
       if (!(key in studiesNamingCache)) {
         const n = inst.name.trim();
@@ -15308,7 +13493,10 @@ return maplibregl$1;
         const rx = new RegExp('(?<![\\w])' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\w])');
         studiesNamingCache[key] = specific ? ACADEMIC_RESEARCH.filter(p => rx.test([p.title, p.abstract, p.takeaway].filter(Boolean).join(' '))) : [];
       }
-      const hits = studiesNamingCache[key];
+      return studiesNamingCache[key];
+    }
+    function studiesNamingHtml(inst) {
+      const hits = studiesNaming(inst);
       if (!hits.length) return '';
       return `<p class="no-indent text-[14px] text-[#f4f4f4]">Studies in the library that name this space: ${hits.map(p =>
         `<a href="#" class="study-link text-[#f4f4f4] hover:underline" data-q="${escapeHtml(p.title)}">${escapeHtml(p.title)}${p.year ? ' (' + escapeHtml(p.year) + ')' : ''}</a>`).join(', ')}.</p>`;
@@ -15579,14 +13767,6 @@ return maplibregl$1;
         }
       }
 
-      const spaceVisuals = getInstitutionSpaceVisuals(inst);
-      if (spaceVisuals) {
-        const gImgBtn = document.getElementById('floatingCardGoogleImagesBtn');
-        const gSatBtn = document.getElementById('floatingCardGoogleMaps3dBtn');
-        if (gImgBtn) gImgBtn.href = spaceVisuals.googleImagesUrl;
-        if (gSatBtn) gSatBtn.href = spaceVisuals.googleMaps3dUrl;
-      }
-
       document.getElementById('floatingCardMeta').textContent = inst.location || '';
       
       const fundingBox = document.getElementById('floatingCardFundingSource');
@@ -15733,7 +13913,8 @@ return maplibregl$1;
           if (inst.city && !matchC(selectedCityFilter, inst.city)) {
             openCityStreetView(inst.city, inst.lat, inst.lon);
           } else if (cityVectorMap && inst.lon && inst.lat) {
-            cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: Math.max(cityVectorMap.getZoom() || 14, 16.5), duration: 700 });
+            cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: Math.max(cityVectorMap.getZoom() || 14, 17.2), pitch: 55, duration: 700 });
+            if (typeof xrayWhenSettled === 'function') xrayWhenSettled(inst);
           }
         } else {
           const zoomTarget = Math.min(getMaxRadius(), Math.max(currentRadius * 1.35, baseRadius * 3.8));
@@ -15909,6 +14090,7 @@ return maplibregl$1;
             <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="text-emerald-400 hover:text-emerald-300 hover:underline text-left cursor-pointer flex items-center gap-1.5 font-medium">
               <span>Ask Curator in Chat</span>
             </button>
+            <button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="text-left text-[14px] text-[#f4f4f4] hover:underline cursor-pointer"><span>Building view</span></button>
             ${webUrl ? `
               <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:text-white hover:underline flex items-center gap-1.5">
                 <span>Website</span>
@@ -16312,7 +14494,6 @@ return maplibregl$1;
       }
       updateProviderUI(getEffectiveProvider());
       if (typeof setBuilding3DHeadroom === 'function') {
-        setBuilding3DHeadroom(currentHeadroomSetting, false);
       }
       const testBox = document.getElementById('connectionTestBox');
       if (testBox) testBox.classList.add('hidden');
@@ -17094,8 +15275,8 @@ return maplibregl$1;
                 <div class="text-[14px] text-[#f4f4f4] font-mono font-medium">${escapeHtml(arch.archive_name)}</div>
               </div>
               <div class="flex items-center gap-1.5 shrink-0 flex-wrap">
-                <button type="button" onclick="window.zoomToBuildingFromArchive('${escapeHtml(inst.name)}')" class="px-2.5 py-1 rounded-xl bg-black hover:bg-black border border-[#334666] text-[#f4f4f4] hover:text-white text-[14px] font-mono transition flex items-center gap-1 cursor-pointer" title="Zoom to 3D footprint and open building inspector">
-                  <span>Inspect 3D</span>
+                <button type="button" onclick="window.zoomToBuildingFromArchive('${escapeHtml(inst.name)}')" class="px-2.5 py-1 rounded-xl bg-black hover:bg-black border border-[#334666] text-[#f4f4f4] hover:text-white text-[14px] font-mono transition flex items-center gap-1 cursor-pointer" title="Show this building on the map">
+                  <span>Building view</span>
                 </button>
                 ${findingAidBtn}
                 <button type="button" onclick="window.askCuratorAboutArchive('${escapeHtml(inst.name)}')" class="px-2.5 py-1 rounded-xl bg-black hover:bg-black border border-[#08bdba]/50 text-[#08bdba] hover:text-white text-[14px] font-mono transition flex items-center gap-1 cursor-pointer" title="Ask Curator in chat">
@@ -19511,14 +17692,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       [mapBtn, splitBtn, chatBtn].forEach(b => {
         if (!b) return;
-        b.classList.remove('bg-black border border-[#f4f4f4]', 'text-white', 'font-medium');
+        b.classList.remove('bg-black', 'border', 'border-[#f4f4f4]', 'text-white', 'font-medium');
         b.classList.add('text-[#f4f4f4]');
       });
 
       if (mode === 'map') {
         currentSheetSnap = 'hidden';
         mapBtn?.classList.remove('text-[#f4f4f4]');
-        mapBtn?.classList.add('bg-black border border-[#f4f4f4]', 'text-white', 'font-medium');
+        mapBtn?.classList.add('bg-black', 'border', 'border-[#f4f4f4]', 'text-white', 'font-medium');
         if (globe) {
           globe.style.display = 'flex';
           globe.style.height = '100%';
@@ -19541,7 +17722,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       } else if (mode === 'chat') {
         currentSheetSnap = 'expanded';
         chatBtn?.classList.remove('text-[#f4f4f4]');
-        chatBtn?.classList.add('bg-black border border-[#f4f4f4]', 'text-white', 'font-medium');
+        chatBtn?.classList.add('bg-black', 'border', 'border-[#f4f4f4]', 'text-white', 'font-medium');
         if (globe) {
           globe.style.display = 'none';
           globe.style.height = '0%';
@@ -19573,7 +17754,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // split (default) -> Half State (50%)
         currentSheetSnap = 'half';
         splitBtn?.classList.remove('text-[#f4f4f4]');
-        splitBtn?.classList.add('bg-black border border-[#f4f4f4]', 'text-white', 'font-medium');
+        splitBtn?.classList.add('bg-black', 'border', 'border-[#f4f4f4]', 'text-white', 'font-medium');
         if (globe) {
           globe.style.display = 'flex';
           globe.style.height = '50%';
@@ -20357,14 +18538,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('arOpenContribModalBtn')?.addEventListener('click', () => {
       closeAcademicResearchModal();
       openResearchFeedbackModal();
-    });
-
-    // Building Architecture & Archives Inspector Modal Handlers
-    const buildingArchivesModal = document.getElementById('buildingArchivesModal');
-    document.getElementById('closeBuildingArchivesBtn')?.addEventListener('click', closeBuildingArchivesModal);
-    document.getElementById('bamCloseFooterBtn')?.addEventListener('click', closeBuildingArchivesModal);
-    buildingArchivesModal?.addEventListener('click', (e) => {
-      if (e.target === buildingArchivesModal) closeBuildingArchivesModal();
     });
 
     //  Dedicated Archives & Special Collections Directory Modal Handlers
@@ -21583,7 +19756,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Initialize UI Status on startup
     updateAIStatusUI();
     if (typeof setBuilding3DHeadroom === 'function') {
-      setBuilding3DHeadroom(currentHeadroomSetting, false);
     }
 
     document.querySelectorAll('.headroom-setting-btn').forEach(btn => {
@@ -23650,11 +21822,7 @@ bar.innerHTML = html;
           selectInstitution(matched, true);
           if (params.get('building') === '1' || params.get('3d') === '1') {
             setTimeout(() => {
-              if (typeof zoomToBuilding === 'function') {
-                zoomToBuilding(matched);
-              } else if (typeof showBuildingFloorInspectorHud === 'function') {
-                showBuildingFloorInspectorHud(matched);
-              }
+              if (typeof zoomToBuilding === 'function') zoomToBuilding(matched);
             }, 400);
           }
           if (targetGossip === '1' || targetGossip === 'true' || targetMode === 'gossip') {
