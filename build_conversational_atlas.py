@@ -16097,14 +16097,26 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v15') caches.delete(k);
+          if (k !== 'culture-atlas-v17') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
 
     if ('serviceWorker' in navigator) {{
+      let reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {{
+        if (!reloading) {{
+          reloading = true;
+          window.location.reload();
+        }}
+      }});
+      navigator.serviceWorker.getRegistrations().then((registrations) => {{
+        for (let reg of registrations) {{
+          reg.update();
+        }}
+      }}).catch(() => {{}});
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=16').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=17').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
