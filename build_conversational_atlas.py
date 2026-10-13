@@ -3091,7 +3091,7 @@ def build():
             <svg class="w-3.5 h-3.5 text-[#8d8d8d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
             <span>Collapse Dossier</span>
           </button>
-          <button type="button" onclick="window.toggleDesktopDossier(false)" class="text-[#8d8d8d] hover:text-white p-1 transition cursor-pointer" title="Close Dossier">
+          <button id="closeDesktopDossierBtn" type="button" onclick="window.toggleDesktopDossier(false)" class="text-[#8d8d8d] hover:text-white p-1 transition cursor-pointer" title="Close Dossier">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
@@ -17491,9 +17491,25 @@ def build():
       if (willOpen) {{
         col.classList.remove('hidden');
         col.classList.add('flex');
+        col.style.display = 'flex';
+        col.style.width = '100%';
+        if (typeof setWorkspaceTab === 'function') {{
+          setWorkspaceTab('dossier');
+        }}
       }} else {{
         col.classList.add('hidden');
         col.classList.remove('flex');
+        col.style.display = 'none';
+        if (typeof setWorkspaceTab === 'function') {{
+          setWorkspaceTab('chat');
+        }}
+        const chatCol = document.getElementById('curatorIntelligenceColumn');
+        if (chatCol) {{
+          chatCol.classList.remove('hidden');
+          chatCol.classList.add('flex');
+          chatCol.style.display = 'flex';
+          chatCol.style.width = '100%';
+        }}
       }}
     }}
     window.toggleDesktopDossier = toggleDesktopDossier;
@@ -18276,6 +18292,7 @@ def build():
         if (dCol) {{
           dCol.classList.remove('hidden');
           dCol.classList.add('flex');
+          dCol.style.display = 'flex';
         }}
         const dDrawer = document.getElementById('detailDrawer');
         if (dDrawer) {{
@@ -18285,6 +18302,7 @@ def build():
         if (cCol) {{
           cCol.classList.remove('hidden');
           cCol.classList.add('flex');
+          cCol.style.display = 'flex';
         }}
       }}
     }}
@@ -28276,6 +28294,20 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       document.getElementById('dossier-sheet-link-photos')?.addEventListener('click', () => {{
         if (selectedInstitution && typeof openArchiveHoldingsModal === 'function') {{
           openArchiveHoldingsModal(selectedInstitution);
+        }}
+      }});
+      document.getElementById('collapseDossierBtn')?.addEventListener('click', (e) => {{
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof window.toggleDesktopDossier === 'function') {{
+          window.toggleDesktopDossier(false);
+        }}
+      }});
+      document.getElementById('closeDesktopDossierBtn')?.addEventListener('click', (e) => {{
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof window.toggleDesktopDossier === 'function') {{
+          window.toggleDesktopDossier(false);
         }}
       }});
     }}
