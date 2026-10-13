@@ -1917,6 +1917,8 @@ return maplibregl$1;
   .maplibregl-ctrl-top-right { margin-top: 64px; }
   #dossier-sheet-name { margin: 0 !important; }
 }
+.curator-followup-pill { white-space: normal !important; text-align: left !important; }
+#mobileTopBar button, #mobileTopBar span, #mobileBottomNav button, #mobileStickyInputBar button, #mobileFilterChipsSection button, #cityViewControlBanner button { white-space: nowrap; }
 /* Chat: one 720px reading column. Answers are plain text, your messages sit in a soft bubble. */
 #curatorMessages, #curatorDrawerLiveStream, #curatorDrawerGreeting { max-width: 720px; margin-left: auto; margin-right: auto; }
 .curator-message-wrap { margin: 28px 0 !important; }
@@ -2287,9 +2289,9 @@ return maplibregl$1;
       </div>
 
       <!-- BEGIN: CuratorChatDrawer (Mobile Collapsible AI Chat Panel Matching code.html) -->
-      <section class="hidden absolute inset-0 z-30 flex-1 bg-slate-950/95 flex md:hidden flex-col overflow-hidden border-t border-cyan-900/50 backdrop-blur-2xl" data-purpose="ai-curator-chat" id="curator-chat-drawer">
+      <section class="hidden absolute inset-0 z-30 flex-1 bg-slate-950 flex md:hidden flex-col overflow-hidden border-t border-cyan-900/50" data-purpose="ai-curator-chat" id="curator-chat-drawer">
         <!-- AI Thinking / Status Header -->
-        <div class="px-4 py-2 border-b border-slate-800/80 flex items-center justify-between bg-slate-900/60 shrink-0">
+        <div class="px-4 py-2 border-b border-slate-800/80 flex items-center justify-between bg-slate-900 shrink-0">
           <div></div>
           <div class="flex items-center space-x-2">
             <button id="curatorDrawerListenBtn" type="button" class="text-[14px] text-slate-400 hover:text-white px-2 py-0.5 rounded border border-slate-700 cursor-pointer">Listen</button>
@@ -20790,22 +20792,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       let followUpHtml = '';
       if (followUps && followUps.length > 0) {
-        const dropdownId = 'followUpMenu_' + Math.random().toString(36).substr(2, 9);
         followUpHtml = `
-          <div class="curator-followups-dropdown-wrap mt-2.5 pt-2 border-t border-[#2a2a2a] select-none">
-            <button type="button" class="curator-followups-toggle flex items-center gap-2 py-1 text-left text-[#c6c6c6] hover:text-white transition cursor-pointer text-[14px] font-mono select-none" onclick="const m = document.getElementById('${dropdownId}'); const c = this.querySelector('.curator-followup-chevron'); if (m) { m.classList.toggle('hidden'); const open = !m.classList.contains('hidden'); this.setAttribute('aria-expanded', open ? 'true' : 'false'); if (c) c.classList.toggle('rotate-180', open); }" aria-haspopup="true" aria-expanded="false">
-              <span class="text-sky-400">Suggested Inquiries (${followUps.length})</span>
-              <svg class="w-3.5 h-3.5 text-zinc-400 transition-transform duration-200 curator-followup-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div id="${dropdownId}" class="hidden flex flex-col gap-1 py-1 w-full border-b border-[#262626] select-text">
-              ${followUps.map(f => `
-                <button type="button" class="curator-followup-pill text-left py-1 text-[#c6c6c6] hover:text-white hover:underline text-[14px] transition cursor-pointer border-b border-[#262626]" data-query="${escapeHtml(f)}">
-                  <span>${escapeHtml(f)}</span>
-                </button>
-              `).join('')}
-            </div>
+          <div class="curator-followups mt-3 flex flex-col items-start gap-1 select-none">
+            ${followUps.map(f => `<button type="button" class="curator-followup-pill text-left py-1 text-[14px] hover:underline cursor-pointer" data-query="${escapeHtml(f)}">${escapeHtml(f)}</button>`).join('')}
           </div>
         `;
       }
@@ -20838,7 +20827,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (drawerLive) {
         const mBot = document.createElement('div');
         mBot.className = 'curator-message-wrap select-text';
-        mBot.innerHTML = processedContent;
+        mBot.innerHTML = processedContent + followUpHtml;
         drawerLive.appendChild(mBot);
         const drawerBody = document.getElementById('curatorDrawerChatBody');
         if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight;
@@ -28801,7 +28790,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
     });
 
     // Delegated click listener in chat messages for inline links, cards, & city mentions
-    curatorMessages.addEventListener('click', (e) => {
+    const onCuratorMessagesClick = (e) => {
       // Explicitly allow external website links to open in a new tab without interference
       const extLink = e.target.closest('a[target="_blank"], a.ext-web-link, a[href^="http://"], a[href^="https://"]');
       if (extLink && !extLink.classList.contains('inst-link') && !extLink.classList.contains('city-link') && !extLink.classList.contains('country-link') && !extLink.classList.contains('dossier-link') && !extLink.classList.contains('prompt-link')) {
@@ -28949,7 +28938,9 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
           filterByCity(matchedCityClick, true, false);
         }
       }
-    });
+    };
+    curatorMessages.addEventListener('click', onCuratorMessagesClick);
+    document.getElementById('curatorDrawerLiveStream')?.addEventListener('click', onCuratorMessagesClick);
 
     // Tab Switching: Curator Guide vs Catalog
     const tabCuratorBtn = document.getElementById('tabCuratorBtn');
