@@ -268,19 +268,17 @@ def build():
     excluded_json = json.dumps(excluded_data, separators=(',', ':'))
 
     import base64
-    b64_eiko_thin = base64.b64encode(open('app/fonts/PPEiko-Thin.otf', 'rb').read()).decode('ascii')
+    b64_mori_extralight = base64.b64encode(open('app/fonts/PPMori-Extralight.otf', 'rb').read()).decode('ascii')
     b64_eiko_lightitalic = base64.b64encode(open('app/fonts/PPEiko-LightItalic.otf', 'rb').read()).decode('ascii')
-    # Compatibility font variables mapped strictly to the two user-specified PP Eiko fonts:
-    # 1) PPEiko-Thin.otf
-    # 2) PPEiko-LightItalic.otf
-    b64_museum_light = b64_eiko_thin
-    b64_museum_reg = b64_eiko_thin
+    # User mandate: PPMori-Extralight for all primary typography, PPEiko-LightItalic for callouts
+    b64_museum_light = b64_mori_extralight
+    b64_museum_reg = b64_mori_extralight
     b64_museum_lightitalic = b64_eiko_lightitalic
     b64_museum_regitalic = b64_eiko_lightitalic
-    b64_museum_ultrabold = b64_eiko_thin
+    b64_museum_ultrabold = b64_mori_extralight
     b64_museum_ultrabolditalic = b64_eiko_lightitalic
-    b64_reg = b64_eiko_thin
-    b64_ultralight = b64_eiko_thin
+    b64_reg = b64_mori_extralight
+    b64_ultralight = b64_mori_extralight
     maplibre_css = open('app/vendor/maplibre-gl.css', 'r', encoding='utf-8').read()
     maplibre_js = open('app/vendor/maplibre-gl.js', 'r', encoding='utf-8').read()
 
@@ -365,17 +363,17 @@ def build():
   </script>
   <style>
     /* ========================================================= */
-    /* USER MANDATE: USE ONLY PPEiko-Thin.otf AND PPEiko-LightItalic.otf */
+    /* USER MANDATE: USE PPMori-Extralight FOR PRIMARY, PPEiko-LightItalic FOR CALLOUTS */
     /* ========================================================= */
     *, *::before, *::after, html, body, input, button, select, textarea, p, span, div, li, a, h1, h2, h3, h4, h5, h6, strong, b, code, pre, kbd, samp, .font-mono, [class*="font-mono"], [class*="font-"], [class*="leading-"], [class*="tracking-"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
       font-synthesis: none !important;
       -webkit-font-smoothing: antialiased !important;
       -moz-osx-font-smoothing: grayscale !important;
     }}
     code, pre, kbd, samp, .font-mono, [class*="font-mono"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', monospace !important;
       font-weight: 400 !important;
     }}
 
@@ -540,17 +538,28 @@ def build():
     }}
 
     /* ========================================================= */
-    /* USER MANDATE: USE ONLY PPEiko-Thin.otf AND PPEiko-LightItalic.otf */
+    /* USER MANDATE: USE PPMori-Extralight FOR PRIMARY, PPEiko-LightItalic FOR CALLOUTS */
     /* ========================================================= */
     @font-face {{
-      font-family: 'PP Eiko';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
-      font-weight: 100 400;
+      font-family: 'PP Mori';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype'),
+           local('PP Mori Extralight'), local('PPMori-Extralight'), local('PP Mori');
+      font-weight: 100 900;
       font-style: normal;
       font-display: swap;
     }}
+    @font-face {{
+      font-family: 'PPMori-Extralight';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype'),
+           local('PP Mori Extralight'), local('PPMori-Extralight');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+
+    /* Callout & Accent: PP Eiko Light Italic */
     @font-face {{
       font-family: 'PP Eiko';
       src: url('data:font/otf;base64,{b64_eiko_lightitalic}') format('opentype'),
@@ -560,13 +569,45 @@ def build():
       font-style: italic;
       font-display: swap;
     }}
+    @font-face {{
+      font-family: 'PPEiko-LightItalic';
+      src: url('data:font/otf;base64,{b64_eiko_lightitalic}') format('opentype'),
+           url('fonts/PPEiko-LightItalic.otf') format('opentype'),
+           local('PP Eiko Light Italic'), local('PPEiko-LightItalic');
+      font-weight: 100 900;
+      font-style: italic;
+      font-display: swap;
+    }}
 
-    /* Compatibility family aliases referencing exclusively the two PP Eiko fonts */
+    /* Compatibility family aliases referencing PP Mori Extralight */
+    @font-face {{
+      font-family: 'PPEiko-Regular';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PPEiko-Medium';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'PPEiko-Thin';
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }}
     @font-face {{
       font-family: 'PP Museum';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
       font-weight: 100 900;
       font-style: normal;
       font-display: swap;
@@ -582,9 +623,8 @@ def build():
     }}
     @font-face {{
       font-family: 'PP Telegraf';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
       font-weight: 100 900;
       font-style: normal;
       font-display: swap;
@@ -600,9 +640,8 @@ def build():
     }}
     @font-face {{
       font-family: 'PP Telegraph';
-      src: url('data:font/otf;base64,{b64_eiko_thin}') format('opentype'),
-           url('fonts/PPEiko-Thin.otf') format('opentype'),
-           local('PP Eiko Thin'), local('PPEiko-Thin');
+      src: url('data:font/otf;base64,{b64_mori_extralight}') format('opentype'),
+           url('fonts/PPMori-Extralight.otf') format('opentype');
       font-weight: 100 900;
       font-style: normal;
       font-display: swap;
@@ -618,7 +657,7 @@ def build():
     }}
 
     *, *::before, *::after {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       -webkit-tap-highlight-color: transparent !important;
     }}
 
@@ -646,18 +685,23 @@ def build():
       outline: 0 !important;
     }}
 
-    body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b, em, i {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+    body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, a, label, li, ul, ol, td, th, strong, b {{
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
     strong, b, .font-bold, .font-extrabold, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
-    em, i, .italic, [class*="italic"] {{
-      font-family: 'PP Eiko', 'PPEiko-LightItalic', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+    /* Callouts, Italics & Quotes: PP Eiko Light Italic */
+    em, i, .italic, [class*="italic"],
+    .stat-callout, .callout, [data-callout],
+    blockquote, blockquote *, cite,
+    .thought-callout, .curator-thought-bubble,
+    .pullquote, .forensic-callout {{
+      font-family: 'PP Eiko', 'PPEiko-LightItalic', serif !important;
       font-style: italic !important;
       font-weight: 400 !important;
     }}
@@ -668,22 +712,22 @@ def build():
     }}
 
     .font-light, .text-light, .type-light {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
     .font-thin, .font-extralight, [class*="font-thin"], [class*="font-extralight"] {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
     }}
 
     .font-mono, monospace, code, pre {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
       font-weight: 400 !important;
     }}
 
     html, body {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       background-color: #0c0c0e !important;
       color: #f8fafc;
       margin: 0;
@@ -707,7 +751,7 @@ def build():
       box-sizing: border-box !important;
     }}
     .font-mono {{
-      font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
+      font-family: 'PP Mori', 'PPMori-Extralight', 'PP Museum', 'PP Telegraf', 'PP Telegraph', monospace !important;
       letter-spacing: 0.16px !important;
     }}
     #globeCanvas {{
@@ -16097,7 +16141,7 @@ def build():
     if ('caches' in window) {{
       caches.keys().then((keys) => {{
         keys.forEach((k) => {{
-          if (k !== 'culture-atlas-v17') caches.delete(k);
+          if (k !== 'culture-atlas-v19') caches.delete(k);
         }});
       }}).catch(() => {{}});
     }}
@@ -16116,7 +16160,7 @@ def build():
         }}
       }}).catch(() => {{}});
       window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js?v=17').then((reg) => {{
+        navigator.serviceWorker.register('sw.js?v=19').then((reg) => {{
           reg.update();
         }}).catch((err) => {{
           console.warn('SW registration bypassed:', err);
