@@ -335,7 +335,7 @@
     html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
     html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
     html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabDirectory, html body #navTabFilters,
-    html body #mobileStickySendBtn, html body #workSendBtn, html body #mobileTopBar button:not(#mobileTopBrandBtn), html body #mobileStickyPlusBtn { color: #f4f4f4 !important; background: #022b30 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; }
+    html body #mobileStickySendBtn, html body #workSendBtn, html body #mobileTopBar button:not(#mobileTopBrandBtn), html body #mobileStickyPlusBtn, html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn { color: #f4f4f4 !important; background: #022b30 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; }
     html body #mobileStickyPlusBtn { padding: 0 !important; width: 36px !important; height: 36px !important; }
     html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #closeAcademicModalBtn, #closeAcademicModalFooterBtn, #arTabStudies, #arTabCommunity, #arTabCases, #desktopDossierBody > div > button, #inputModeCancelBtn, #navTabAtlas, #navTabDirectory, #navTabFilters, #mobileStickySendBtn, #mobileStickyPlusBtn):hover { background: #004144 !important; color: #f4f4f4 !important; }
     html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases, #navTabAtlas, #navTabDirectory, #navTabFilters) { background: #f4f4f4 !important; color: #000000 !important; }
@@ -370,6 +370,8 @@
     html body #catalogModal .inst-card h3::after { content: ' \2192'; }
     html body #catalogModal .inst-card .kicker { font-size: 14px !important; }
     html body #detailDrawer h2 { font-size: 26px !important; line-height: 1.1 !important; }
+    html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn { width: auto !important; }
+    html body #dossier-bottom-sheet h2.lede { font-size: 26px !important; line-height: 1.1 !important; }
     /* Compatibility family aliases referencing exclusively the two PP Eiko fonts */
     *, *::before, *::after {
       font-family: 'PP Mori', sans-serif !important;
@@ -2263,35 +2265,34 @@ return maplibregl$1;
         <div class="pt-2 pb-1 px-4 flex flex-col items-center cursor-pointer" id="sheet-drag-handle">
           <div class="w-10 h-0.5 bg-black mb-2"></div>
         </div>
-        <div class="px-4 pb-2 flex flex-col items-start gap-1 border-b border-[#262626]">
+        <div class="px-4 pb-2 flex flex-col items-start gap-1 border-b border-[#262626] shrink-0 bg-black">
           <div class="w-full flex items-center justify-end">
             <button aria-label="Minimize space details" class="p-1 rounded-none text-[#f4f4f4] hover:text-white bg-transparent border-0 text-[14px] cursor-pointer" id="close-sheet-btn">
               Close
             </button>
           </div>
           <div class="w-full min-w-0">
-            <h2 class="text-lg sm:text-[18px] font-normal text-[#f4f4f4] tracking-normal leading-snug break-words hyphens-auto block" id="dossier-sheet-name"></h2>
-            <p class="no-indent text-[14px] text-[#f4f4f4] font-mono mt-0.5 block break-words" id="dossier-sheet-meta"></p>
+            <h2 class="lede font-normal text-[#f4f4f4] tracking-normal break-words hyphens-auto block" id="dossier-sheet-name"></h2>
+            <p class="kicker no-indent text-[14px] text-[#f4f4f4] font-mono mt-0.5 block break-words" id="dossier-sheet-meta"></p>
           </div>
         </div>
         <!-- Scrollable Card Body Details -->
-        <div class="overflow-y-auto px-4 py-3 space-y-3 text-[14px] leading-relaxed no-scrollbar pb-6" id="dossier-sheet-scrollable-body">
+        <div class="flex-1 min-h-0 overflow-y-auto px-4 py-3 space-y-3 text-[14px] leading-relaxed no-scrollbar pb-6" id="dossier-sheet-scrollable-body">
           <!-- Verified Pane -->
           <div id="dossier-sheet-verified-pane" class="space-y-3">
             <p class="text-[#f4f4f4]" id="dossier-sheet-summary"></p>
             <div id="dossier-sheet-funding" class="hidden py-2.5 border-b border-[#262626] space-y-1">
-              <span class="text-[14px] text-[#f4f4f4] block">Funding</span>
+              <span class="kicker text-[14px] text-[#f4f4f4] block">Funding</span>
               <p class="text-[18px] text-[#f4f4f4]" id="dossier-sheet-funding-text"></p>
             </div>
             <div id="dossier-sheet-visit" class="hidden py-2.5 border-b border-[#262626] space-y-1">
-              <span class="text-[14px] text-[#f4f4f4] block">Visiting</span>
+              <span class="kicker text-[14px] text-[#f4f4f4] block">Visiting</span>
               <p class="text-[18px] text-[#f4f4f4]" id="dossier-sheet-hours"></p>
               <p class="text-[18px] text-[#f4f4f4]" id="dossier-sheet-access-text"></p>
             </div>
             <div id="dossier-sheet-record" class="hidden"></div>
             <div id="dossier-sheet-sources"></div>
-            <!-- Action Buttons Bar - Stacked Vertically, One per row -->
-            <div class="flex flex-col gap-2 pt-1">
+            <div class="flex flex-row flex-wrap gap-2 pt-1">
               <button id="dossier-sheet-audit-btn" type="button" class="w-full flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-none bg-black border border-[#f4f4f4] hover:bg-black border border-[#f4f4f4] text-white font-normal text-[14px] transition cursor-pointer block">
                 <span>Full record</span>
               </button>
@@ -2299,9 +2300,8 @@ return maplibregl$1;
                 <span>Plan Visit in Chat</span>
               </button>
             </div>
-            <!-- Secondary Link Row - Stacked Vertically, One per row -->
-            <div class="flex flex-col gap-2 text-[14px] text-[#f4f4f4] pt-1 px-1">
-              <a id="dossier-sheet-link-web" class="w-full py-1.5 px-2 bg-black border border-[#262626] hover:text-white flex items-center gap-1.5 cursor-pointer block" href="#" target="_blank" rel="noopener noreferrer">
+            <div class="flex flex-col gap-2 text-[14px] text-[#f4f4f4] pt-1">
+              <a id="dossier-sheet-link-web" class="hover:underline cursor-pointer inline-flex items-center gap-1.5" href="#" target="_blank" rel="noopener noreferrer">
                 <span>Website</span>
               </a>
             </div>
