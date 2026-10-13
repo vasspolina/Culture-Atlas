@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (Network-First HTML, Zero Stale-Lock)
-const CACHE_NAME = 'culture-atlas-v41';
+const CACHE_NAME = 'culture-atlas-v47';
 const ASSETS_TO_CACHE = [
   './manifest.json'
 ];
@@ -50,6 +50,9 @@ self.addEventListener('fetch', (event) => {
     );
     return;
   }
+
+  // Other sites answer for themselves: nothing from them is cached here, so lookups are never served stale.
+  if (new URL(event.request.url).origin !== self.location.origin) return;
 
   // Network-first with cache fallback
   event.respondWith(
