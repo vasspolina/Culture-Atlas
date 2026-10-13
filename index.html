@@ -11563,19 +11563,6 @@ return maplibregl$1;
       `;
     }
 
-    // =========================================================================
-    //  CRYPTOGRAPHIC WHISTLEBLOWER RECEIPT GENERATOR ENGINE
-    // =========================================================================
-
-    // Service Worker & Cache-Bust Protocol
-    if ('caches' in window) {
-      caches.keys().then((keys) => {
-        keys.forEach((k) => {
-          if (k !== 'culture-atlas-v15') caches.delete(k);
-        });
-      }).catch(() => {});
-    }
-
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js?v=15').then((reg) => {
