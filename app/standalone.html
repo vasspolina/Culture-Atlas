@@ -22032,13 +22032,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       let followUpHtml = '';
       if (followUps && followUps.length > 0) {
+        const dropdownId = 'followUpMenu_' + Math.random().toString(36).substr(2, 9);
         followUpHtml = `
-          <div class="flex flex-wrap gap-1.5 mt-2.5 pt-2 border-t border-[#2a2a2a]">
-            ${followUps.map(f => `
-              <button class="curator-followup-pill atlas-suggestion-pill" data-query="${escapeHtml(f)}">
-                <span>${escapeHtml(f)}</span>
-              </button>
-            `).join('')}
+          <div class="curator-followups-dropdown-wrap mt-2.5 pt-2 border-t border-[#2a2a2a] select-none">
+            <button type="button" class="curator-followups-toggle flex items-center gap-2 py-1 text-left text-[#c6c6c6] hover:text-white transition cursor-pointer text-[14pt] font-mono select-none" onclick="const m = document.getElementById('${dropdownId}'); const c = this.querySelector('.curator-followup-chevron'); if (m) { m.classList.toggle('hidden'); const open = !m.classList.contains('hidden'); this.setAttribute('aria-expanded', open ? 'true' : 'false'); if (c) c.classList.toggle('rotate-180', open); }" aria-haspopup="true" aria-expanded="false">
+              <span class="text-sky-400">Suggested Inquiries (${followUps.length})</span>
+              <svg class="w-3.5 h-3.5 text-zinc-400 transition-transform duration-200 curator-followup-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="${dropdownId}" class="hidden flex flex-col gap-1 py-1 w-full border-b border-[#262626] select-text">
+              ${followUps.map(f => `
+                <button type="button" class="curator-followup-pill text-left py-1 text-[#c6c6c6] hover:text-white hover:underline text-[14pt] transition cursor-pointer border-b border-[#262626]" data-query="${escapeHtml(f)}">
+                  <span>${escapeHtml(f)}</span>
+                </button>
+              `).join('')}
+            </div>
           </div>
         `;
       }
