@@ -43,12 +43,22 @@ ASSERTION = re.compile(
     r"|\bethical (sponsorship|review|fundraising|record|trading|giving|scrutiny|guidelines|policy|standards)"
     r"|\btransparent (donor|supporter|ledger|disclosure|roster)|\bvetted\b"
     r"|\b(sanctuary|beacon|bastion|heroic|indispensable|vanguard|cradle|cornerstone|iconic|world-famous|acclaimed|exemplary|unforgettable)\b", re.I)
-ASSERTION_FIELDS = ['watch', 'funding', 'curator_recommendation']
+ASSERTION_FIELDS = ['watch', 'funding', 'curator_recommendation', 'highlight']
+PUFF = re.compile(r"\b(beating heart|extraordinary|daring|fearless|legendary|renowned|celebrated|world-class|cultural anchor|cultural destination|"
+                  r"dramatic|breathtaking|stunning|vibrant|dynamic|progressive voices|landmark holdings|sublime|iconic|epicenter|epicentre|"
+                  r"marvel|paradise|nestled|pioneer|pioneering|radical|powerhouse|gem|jewel|must-see|world-renowned|globally renowned)\b", re.I)
+# Templates the generator stamped on many records, and internal triage text.
+DROP_PREFIX = {'curator_recommendation': ['Excluded from Culture Atlas'],
+               'highlight': ['Audited institution', 'Founded in Independent', 'Founded in Established',
+                             'Specialist research repository', 'Open-air cultural destination'],
+               'accessibility': ['Check venue site', 'Step-free accessible'],
+               'transit_tips': ['Centrally']}
+STRIP_PREFIX = ['Flagged institution: ']
 
 
 def drop_assertions(text):
     parts = [x for x in re.split(r'(?<=\.)\s+', text.strip()) if x]   # whole sentences only, so no fragment is left behind
-    kept = [x for x in parts if not ASSERTION.search(x)]
+    kept = [x for x in parts if not ASSERTION.search(x) and not PUFF.search(x)]
     out = ' '.join(kept).strip().rstrip(';,').strip()
     return out if len(out) >= 12 else ''
 
@@ -160,7 +170,7 @@ def clean(records, report=None):
             bump('watch_summarising_staff_reviews')
         for f in ASSERTION_FIELDS:
             v = r.get(f)
-            if isinstance(v, str) and ASSERTION.search(v):
+            if isinstance(v, str) and (ASSERTION.search(v) or PUFF.search(v)):
                 v2 = drop_assertions(v)
                 bump('unchecked_assertion_in_' + f)
                 if v2:
@@ -192,6 +202,27 @@ def clean(records, report=None):
         if r.get('year_founded') and years[str(r['year_founded'])] >= 25:
             del r['year_founded']
             bump('year_founded')
+    for r in records:
+        for f, prefixes in DROP_PREFIX.items():
+            if r.get(f) and any(r[f].startswith(x) for x in prefixes):
+                del r[f]
+                bump('template_' + f)
+        for pre in STRIP_PREFIX:
+            if (r.get('curator_recommendation') or '').startswith(pre):
+                r['curator_recommendation'] = r['curator_recommendation'][len(pre):]
+        if r.get('size') not in ('S', 'M', 'L'):
+            m = {'Small': 'S', 'Medium': 'M', 'Large': 'L'}.get(r.get('size'))
+            if m:
+                r['size'] = m
+            else:
+                r.pop('size', None)
+                bump('size')
+    for f in ('highlight', 'curator_recommendation', 'curatorial_focus'):
+        starts = collections.Counter(' '.join(norm(r[f], r).split()[:4]) for r in records if r.get(f))
+        for r in records:
+            if r.get(f) and starts[' '.join(norm(r[f], r).split()[:4])] >= 4:
+                del r[f]
+                bump('shared_opening_' + f)
     for r in records:
         for field, text in (corrections.get(r['id']) or {}).items():
             r[field] = text
