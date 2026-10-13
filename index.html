@@ -1951,8 +1951,8 @@ return maplibregl$1;
 #workInput { font-size: 18px !important; }
 #workSendBtn { width: 32px; height: 32px; border-radius: 50%; background: #ececec; color: #111; justify-content: center; }
 #workSendBtn svg { color: #111; }
-#chat-input { font-size: 18px !important; border-radius: 22px !important; padding: 10px 16px !important; }
-#mobileStickySendBtn { background: #ececec !important; color: #111 !important; border: 0 !important; font-size: 14px !important; }
+#chat-input { font-size: 18px !important; border-radius: 22px !important; padding: 10px 88px 10px 16px !important; text-overflow: ellipsis; }
+#mobileStickySendBtn { background: #000 !important; color: #fff !important; border: 1pt solid #f4f4f4 !important; font-size: 14px !important; }
 #mobileStickyVoiceBtn { background: transparent !important; border: 0 !important; }
 .curator-message-wrap a { font-size: inherit !important; }
 .curator-message-wrap button span { color: inherit !important; }
@@ -2966,7 +2966,7 @@ return maplibregl$1;
       <!-- Input Field -->
       <input class="w-full bg-black/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 pr-16" id="chat-input" placeholder="Ask about a museum or cultural space..." type="text">
       <!-- Send Pill Button -->
-      <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg flex items-center space-x-1.5 active:scale-95 transition border border-cyan-300 cursor-pointer">
+      <button id="mobileStickySendBtn" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-black hover:bg-black text-white text-xs rounded-lg flex items-center space-x-1.5 active:scale-95 transition border border-[#f4f4f4] cursor-pointer">
         <span>Send</span>
       </button>
     </div>
@@ -14411,7 +14411,9 @@ return maplibregl$1;
             });
 
             // Selected city or hovered city always draws; other cities only draw if they do NOT collide
-            if (!collides || isSelected || isHovered) {
+            // A label cut by the screen edge reads as broken text: draw it only when it fits.
+            const clipped = bx < 2 || bx + bw > width - 2;
+            if ((!collides && !clipped) || isSelected || isHovered) {
               drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
               cityBadgeHitboxes.push({
                 name: city.name,
@@ -14546,7 +14548,7 @@ return maplibregl$1;
                 });
 
                 // Avoid overlapping city pills and other country pills, ensure maximum contrast
-                if ((!collidesWithCity && !collidesWithCountry) || isSel || isHov) {
+                if ((!collidesWithCity && !collidesWithCountry && cBox.x >= 2 && cBox.x + cBox.w <= width - 2) || isSel || isHov) {
                   drawnCountryBoxes.push(cBox);
 
                   // High-contrast protective dark backing plate
@@ -14816,7 +14818,7 @@ return maplibregl$1;
               return !(bx + bw + 6 < box.x || bx > box.x + box.w + 6 || by + bh + 4 < box.y || by > box.y + box.h + 4);
             });
 
-            if ((!collidesWithOtherLabel && !collidesWithCity) || isSel || isFilteredContext) {
+            if ((!collidesWithOtherLabel && !collidesWithCity && bx >= 2 && bx + bw <= width - 2) || isSel || isFilteredContext) {
               drawnInstLabelBoxes.push({ x: bx, y: by, w: bw, h: bh });
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 

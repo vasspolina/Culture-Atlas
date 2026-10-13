@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (Network-First HTML, Zero Stale-Lock)
-const CACHE_NAME = 'culture-atlas-v34';
+const CACHE_NAME = 'culture-atlas-v35';
 const ASSETS_TO_CACHE = [
   './manifest.json'
 ];
