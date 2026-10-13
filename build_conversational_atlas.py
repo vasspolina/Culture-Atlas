@@ -18936,27 +18936,31 @@ def build():
 
           ${{isClean && inst.watch ? `
             <div class="py-2.5 border-t border-[#262626]">
-              <span class="text-[14px] font-mono tracking-wider block mb-1 text-[#f1c21b]">Curator Audit Notes</span>
-              <p class="text-[14px] text-slate-200 leading-[130%]">${{escapeHtml(inst.watch)}}</p>
+              <span class="text-[14px] font-mono tracking-wider block mb-1 text-[#f1c21b]">Governance &amp; Curatorial Field Notes</span>
+              <p class="text-[14px] text-slate-200 leading-[140%]">${{escapeHtml(inst.watch)}}</p>
             </div>
           ` : ''}}
 
           <div class="pt-2 border-t border-[#262626]">
             <div class="flex flex-col gap-1 mb-2">
-              <span class="text-[14px] font-normal text-slate-400 tracking-wider font-mono">Audited Sources, Reports & Filings</span>
+              <span class="text-[14px] font-normal text-slate-400 tracking-wider font-mono">Audited Sources &amp; Public Records</span>
               <button type="button" onclick="openResearchFeedbackModal('${{escapeHtml(inst.name)}}', '${{escapeHtml(inst.city)}}')" class="text-left text-[14px] font-mono text-[#78a9ff] hover:underline cursor-pointer">
                 <span>Suggest Update</span>
               </button>
             </div>
-            <div class="py-2 border-b border-[#262626] mb-2 space-y-1">
-              <div class="text-[14px] font-mono text-sky-400 font-bold">Statutory Regulatory Filing Dossier</div>
-              <div class="text-[14px] text-slate-300">Audited statutory records: Charity Commission / Form 990 / Bundesanzeiger / Official Register</div>
-              <div>
-                <a href="${{escapeHtml(inst.audit_dossier_url || '#')}}" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:text-white hover:underline text-[14px] font-mono inline-block">
-                  Inspect Filing &rarr;
-                </a>
+            ${{inst.audit_dossier_url ? `
+              <div class="py-2 border-b border-[#262626] mb-2 space-y-1">
+                <div class="text-[14px] font-mono text-sky-400 font-bold">Statutory Regulatory Filing Dossier</div>
+                <div class="text-[14px] text-slate-300">
+                  ${{inst.financial_data && inst.financial_data.regulatory_regime ? `${{escapeHtml(inst.financial_data.regulatory_regime)}} · ${{escapeHtml(inst.governance_type || 'Audited Non-Profit Entity')}}` : `${{escapeHtml(inst.governance_type || 'Audited Non-Profit Entity')}} · Official Statutory Filings`}}
+                </div>
+                <div>
+                  <a href="${{escapeHtml(inst.audit_dossier_url)}}" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:text-white hover:underline text-[14px] font-mono inline-block">
+                    Inspect Statutory Record &rarr;
+                  </a>
+                </div>
               </div>
-            </div>
+            ` : ''}}
             <div class="flex flex-col gap-1.5 font-mono">
               ${{(inst.sources || []).filter(u => typeof u !== 'string' || (!u.toLowerCase().includes('wikipedia.org') && !u.toLowerCase().includes('wikimedia.org'))).map(u => {{
                 const isUrl = typeof u === 'string' && (u.startsWith('http://') || u.startsWith('https://'));
@@ -18968,14 +18972,15 @@ def build():
                     </a>
                   `;
                 }} else {{
+                  const targetQuery = encodeURIComponent(`${{u}} "${{inst.name}}"`);
                   return `
-                    <div class="text-slate-300 text-[14px] flex items-center justify-between gap-2 font-sans py-0.5">
-                      <span class="flex items-center gap-1.5 truncate text-slate-300">
-                        <span class="text-slate-500 font-mono text-[14px]">DOC</span>
+                    <div class="text-slate-300 text-[14px] flex items-center justify-between gap-2 font-sans py-0.5 border-b border-[#1c1c1c] last:border-b-0">
+                      <span class="flex items-center gap-1.5 truncate text-slate-200">
+                        <span class="text-slate-400 font-mono text-[12px] px-1 py-0.5 bg-[#262626] rounded">ARCHIVE</span>
                         <span class="truncate">${{escapeHtml(u)}}</span>
                       </span>
-                      <a href="https://www.google.com/search?q=${{encodeURIComponent(u + ' ' + (inst.name || ''))}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:text-white hover:underline text-[14px] font-mono shrink-0 ml-1">
-                        Search
+                      <a href="https://www.google.com/search?q=${{targetQuery}}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:text-white hover:underline text-[14px] font-mono shrink-0 ml-1">
+                        Inspect Record &rarr;
                       </a>
                     </div>
                   `;
