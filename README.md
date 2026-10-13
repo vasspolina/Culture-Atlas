@@ -13,6 +13,8 @@ Tiers describe how well a record is sourced, not a verdict on the museum: Clean 
 
 Type is PP Mori Extralight at 14, 18 and 26px; body text is 18px, labels 14px, titles 26px. PP Eiko Light Italic is used only for links and call-outs.
 
+Buttons are off-white pills with black text and no outline; a pressed one inverts. Lines are single rules, never boxes around content; nothing is grey and nothing is set in capitals. On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+
 ---
 
 ## Quick Start
