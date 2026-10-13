@@ -24177,7 +24177,27 @@
       "4A Centre for Contemporary Asian Art"
     ],
     "audit_dossier_url": "https://www.acnc.gov.au/charity/charities?search=4A%20Centre%20for%20Contemporary%20Asian%20Art",
-    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=4A%20Centre%20for%20Contemporary%20Asian%20Art"
+    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=4A%20Centre%20for%20Contemporary%20Asian%20Art",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/4A_Centre_for_Contemporary_Asian_Art",
+          "https://4a.com.au/about/"
+        ],
+        "basis": "founded (Asian Australian Artists Association Inc., 4A's founding body, formed/incorporated in 1996)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://4a.com.au/visit-us/",
+          "https://4a.com.au/whats-on/",
+          "https://archive.4a.com.au/home/contact-us/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1996,
+    "address": "181-187 Hay Street, Haymarket Warrane/Sydney NSW 2000 Australia"
   },
   {
     "name": "Kunstraum Dornbirn",
@@ -25056,7 +25076,25 @@
       "Kunsthaus Hamburg"
     ],
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthaus%20Hamburg",
-    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthaus%20Hamburg"
+    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthaus%20Hamburg",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://kunsthaushamburg.de/en/events/exkurs-zur-geschichte-gegenwart-des-kunsthauses-19845/",
+          "https://kunsthaushamburg.de/en/about/"
+        ],
+        "basis": "founded (opened to the public the following year, 1963)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://kunsthaushamburg.de/en/contact-2"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1962,
+    "address": "Klosterwall 15, 20095 Hamburg"
   },
   {
     "name": "E-WERK Luckenwalde",
@@ -27069,7 +27107,18 @@
       "Bangkok Art Biennale"
     ],
     "audit_dossier_url": "https://www.e-flux.com/directory/439828/bangkok-art-biennale/about",
-    "statutory_filings_url": "https://www.e-flux.com/directory/439828/bangkok-art-biennale/about"
+    "statutory_filings_url": "https://www.e-flux.com/directory/439828/bangkok-art-biennale/about",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.bkkartbiennale.com/about",
+          "https://biennialfoundation.org/biennials/bangkok-art-biennale/"
+        ],
+        "basis": "founded (organisers say the Bangkok Art Biennale was founded in 2017; the first edition opened in 2018)",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2017
   },
   {
     "name": "Thailand Biennale",
@@ -28896,7 +28945,26 @@
     "lat": 49.61,
     "lon": 6.128,
     "audit_dossier_url": "https://casino-luxembourg.lu/en/about",
-    "statutory_filings_url": "https://casino-luxembourg.lu/en/about"
+    "statutory_filings_url": "https://casino-luxembourg.lu/en/about",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.casino-luxembourg.lu/en/History",
+          "https://en.paperjam.lu/guide/organisation/01311013057/casino-luxembourg-forum-art-contemporain",
+          "https://casino-luxembourg.lu/sites/default/files/2021-11/The%20history.pdf"
+        ],
+        "basis": "became a contemporary art venue (Casino Luxembourg - Forum d'art contemporain) in March 1996; the 1882 date belongs to the building (Casino Bourgeois), not to this institution",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://casino-luxembourg.lu/en/practical-info/contact-access"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1996,
+    "address": "41, rue Notre-Dame, L-2240 Luxembourg"
   },
   {
     "id": "le-18-marrakech",
@@ -28968,7 +29036,25 @@
     "lat": 52.088,
     "lon": 5.123,
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Casco%20Art%20Institute",
-    "statutory_filings_url": "https://openkvk.nl/zoeken?q=Casco%20Art%20Institute"
+    "statutory_filings_url": "https://openkvk.nl/zoeken?q=Casco%20Art%20Institute",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Casco_(Utrecht)",
+          "https://future.eastsideprojects.org/artists/casco-office-for-art-design-and-theory"
+        ],
+        "basis": "founded (as Casco, in Utrecht, an experimental art space; renamed Casco Art Institute: Working for the Commons later)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://casco.art/visit/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1990,
+    "address": "Lange Nieuwstraat 7, 3512 PA Utrecht"
   },
   {
     "id": "auckland-art-gallery-auckland",
@@ -29004,7 +29090,28 @@
     "lat": 6.5,
     "lon": 3.378,
     "audit_dossier_url": "https://ccalagos.org/about/",
-    "statutory_filings_url": "https://ccalagos.org/about/"
+    "statutory_filings_url": "https://ccalagos.org/about/",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Bisi_Silva",
+          "https://ccalagos.org/about",
+          "https://ccalagos.org/support-the-cca-lagos-library-initiative/"
+        ],
+        "basis": "founded (by Bisi Silva); the centre opened in December 2007",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://ccalagos.org/about",
+          "https://www.e-flux.com/announcements/37239/on-independence-and-the-ambivalence-of-promise/",
+          "https://www.idref.fr/229508901"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2007,
+    "address": "9 McEwen Street, Sabo, Yaba, Lagos"
   },
   {
     "id": "muzeum-sztuki-d",
@@ -29303,7 +29410,17 @@
     "lat": 46.803,
     "lon": 7.158,
     "audit_dossier_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
-    "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html"
+    "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://friart.ch/en/visit",
+          "https://www.myswitzerland.com/en/experiences/kunsthalle-friart-fribourg-1/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "address": "Petites-Rames 22, CP 294, CH-1701 Fribourg"
   },
   {
     "id": "taipei-contemporary-art-center-taipei",
@@ -29321,7 +29438,19 @@
     "lat": 25.054,
     "lon": 121.519,
     "audit_dossier_url": "https://www.e-flux.com/directory/166722/taipei-contemporary-art-center/",
-    "statutory_filings_url": "https://www.e-flux.com/directory/166722/taipei-contemporary-art-center/"
+    "statutory_filings_url": "https://www.e-flux.com/directory/166722/taipei-contemporary-art-center/",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.artforum.com/columns/manray-hsu-and-jun-yang-discuss-the-taipei-contemporary-art-center-193999/",
+          "https://tcac.tw/?p=26",
+          "https://artres.moc.gov.tw/en/database/content/7d30fe5d55dd4c3f8ab267b99413e266"
+        ],
+        "basis": "opened its doors to the public (February 2010, as an artist-led nonprofit association)",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2010
   },
   {
     "id": "salt-istanbul",
@@ -29374,7 +29503,27 @@
     "lat": 41.789,
     "lon": -87.598,
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Renaissance%20Society",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Renaissance%20Society"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Renaissance%20Society",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Renaissance_Society",
+          "https://renaissancesociety.org/about/",
+          "https://renaissancesociety.org/news/1/the-ren-is-100-today/"
+        ],
+        "basis": "founded (by University of Chicago faculty)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://renaissancesociety.org/about/",
+          "https://renaissancesociety.org/visit/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1915,
+    "address": "5811 South Ellis Avenue, Cobb Hall, 4th floor, Chicago, Illinois 60637"
   },
   {
     "id": "museo-de-arte-de-el-salvador-marte-san-salvador",
@@ -29975,7 +30124,28 @@
     "lat": 64.177,
     "lon": -51.739,
     "audit_dossier_url": "https://katuaq.gl/dk/om-katuaq/sponsorer",
-    "statutory_filings_url": "https://katuaq.gl/dk/om-katuaq/sponsorer"
+    "statutory_filings_url": "https://katuaq.gl/dk/om-katuaq/sponsorer",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Katuaq",
+          "https://en.wikipedia.com/wiki/Katuaq",
+          "https://www.dezeen.com/2017/02/21/schmidt-hammer-lassen-katuaq-cultural-centre-greenland-nuuk-20th-anniversary-architecture-photography/"
+        ],
+        "basis": "opened; inauguration on 15 February 1997 (construction 1994 to 1997)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Katuaq",
+          "https://traveltrade.visitgreenland.com/providers/katuaq/",
+          "https://sceneweb.no/en/organisation/27287/Katuaq"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1997,
+    "address": "Imaneq 21, 3900 Nuuk, Greenland"
   },
   {
     "id": "tjibaou-cultural-centre-adck-noum-a",
@@ -30104,7 +30274,28 @@
     "lat": 49.899,
     "lon": -97.14,
     "audit_dossier_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Urban%20Shaman%20Contemporary%20Aboriginal%20Art",
-    "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Urban%20Shaman%20Contemporary%20Aboriginal%20Art"
+    "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Urban%20Shaman%20Contemporary%20Aboriginal%20Art",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://urbanshaman.org/?p=6990",
+          "https://www.cbc.ca/lite/story/1.3566337",
+          "https://directory.arca.art/node/205"
+        ],
+        "basis": "established (as an Aboriginal artist-run centre; founded 1996)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.urbanshaman.org/contact/",
+          "https://directory.arca.art/node/205",
+          "https://urbanshaman.org/?p=6990"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1996,
+    "address": "203-290 McDermot Avenue, Winnipeg, MB R3B 0T2"
   },
   {
     "id": "buku-larrnggay-mulka-centre-yirrkala",
@@ -30122,7 +30313,18 @@
     "lat": -12.255,
     "lon": 136.891,
     "audit_dossier_url": "https://www.acnc.gov.au/charity/charities?search=Buku-Larrnggay%20Mulka%20Centre",
-    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=Buku-Larrnggay%20Mulka%20Centre"
+    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=Buku-Larrnggay%20Mulka%20Centre",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://yirrkala.com/buku-larrnggay-mulka/",
+          "https://communityfoundation.org.au/organisation/buku-larrnggay-muka-incorporated/"
+        ],
+        "basis": "formally established by Yol\u014bu artists as Buku-Larr\u014bgay Arts (the art centre; the township's 1935 mission founding is a different event and is not used)",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1976
   },
   {
     "id": "blak-dot-gallery-melbourne",
@@ -30139,7 +30341,27 @@
     "lat": -37.767,
     "lon": 144.97,
     "audit_dossier_url": "https://www.acnc.gov.au/charity/charities?search=Blak%20Dot%20Gallery",
-    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=Blak%20Dot%20Gallery"
+    "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=Blak%20Dot%20Gallery",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://blakdot.com.au/about",
+          "https://blakdot.com.au/current-exhibitions/2021/12/2/10-its-our-birthday"
+        ],
+        "basis": "founded (as a First Nations artist-run space in Melbourne)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://blakdot.com.au/contact",
+          "https://vivienandersongallery.com/maree-clarke-in-exchange-exhibition-at-re-opened-blak-dot-gallery/",
+          "https://blakdot.com.au/support-us"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2011,
+    "address": "33 Saxon St, Brunswick VIC 3056 (Balam Balam Place, entry via Dawson St)"
   },
   {
     "id": "s-mi-center-for-contemporary-art-s-mi-d-iddaguovdd-karasjok",
@@ -30804,7 +31026,17 @@
     "lat": 68.906,
     "lon": 27.028,
     "audit_dossier_url": "https://siida.fi/en/the-sami-museum/",
-    "statutory_filings_url": "https://siida.fi/en/the-sami-museum/"
+    "statutory_filings_url": "https://siida.fi/en/the-sami-museum/",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://siida.fi/?p=12519",
+          "https://siida.fi/en/visitors/arriving-at-siida/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "address": "Inarintie 46, 99870 Inari, Finland"
   },
   {
     "id": "riddoduottarmuseat-karasjok",
@@ -30915,7 +31147,27 @@
     "lat": 47.533,
     "lon": 7.611,
     "audit_dossier_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
-    "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html"
+    "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/House_of_Electronic_Arts",
+          "https://www.bs.ch/api/government-resolutions/document/6aa97b05bfb9400ab59c83b2fda1cc2e-332/3/Dokument"
+        ],
+        "basis": "founding in 2011 (Basel-Stadt government resolution); Wikipedia lists the opening year as 2011",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/House_of_Electronic_Arts",
+          "https://www.myswitzerland.com/en/experiences/hek-house-of-electronic-arts/",
+          "https://traveltrade.basel.com/en/attractions/hek-haus-der-elektronischen-kuenste-6032d21be6"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2011,
+    "address": "Freilager-Platz 9, 4142 M\u00fcnchenstein / Basel"
   },
   {
     "id": "imal-brussels",
@@ -30969,7 +31221,28 @@
     "lat": 35.684,
     "lon": 139.687,
     "audit_dossier_url": "https://www.ntticc.or.jp/en/about/",
-    "statutory_filings_url": "https://www.ntticc.or.jp/en/about/"
+    "statutory_filings_url": "https://www.ntticc.or.jp/en/about/",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/NTT_InterCommunication_Center",
+          "https://id.ndl.go.jp/auth/ndlna/00870106",
+          "https://en.japantravel.com/tokyo/icc-open-space/4675"
+        ],
+        "basis": "opened on April 19, 1997 (established on April 19, 1997)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/NTT_InterCommunication_Center",
+          "https://gltjp.com/en/directory/item/13412",
+          "https://tokyoartbeat.com/en/venues/-/08BF3F48"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1997,
+    "address": "Tokyo Opera City Tower 4F, 3-20-2 Nishishinjuku, Shinjuku, Tokyo 163-1404 Japan"
   },
   {
     "id": "transmediale-berlin",
@@ -35740,7 +36013,28 @@
     "lon": 36.768,
     "id": "circle-art-gallery",
     "funding": "Limited company owned by art collectors including Samit Gehlot (Intex Foundation), Tony Wainaina and Robert Devereux. It sells at international fairs and runs an annual East African art auction.",
-    "watch": "Founded in 2012 under director Danda Jaroljmek. Built its first white-cube gallery in 2015 and joined Cromwell Place, London, in 2020."
+    "watch": "Founded in 2012 under director Danda Jaroljmek. Built its first white-cube gallery in 2015 and joined Cromwell Place, London, in 2020.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://circleartagency.com/about",
+          "https://contemporaryand.com/en/events/group-exhibition-concerning-the-internal-opening-of-the-new-circle-art-gallery-in-kenya",
+          "https://circleartagency.com/about/"
+        ],
+        "basis": "founded (Circle established in Nairobi in 2012, first as a consultancy; the gallery space itself opened to the public on 26 March 2015)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://circleartagency.com/contact/",
+          "https://circleartagency.com/artworks/4627-donald-wasswa-kyomuhendo-2025/",
+          "https://south-south.art/portfolio-item/circle-art-gallery/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2012,
+    "address": "Victoria Square, Riara Road, Lavington, Nairobi, Kenya"
   },
   {
     "name": "Colecci\u00f3n de Arte Amalia Lacroze de Fortabat",
@@ -35774,7 +36068,18 @@
     "lon": -56.165,
     "id": "museo-nacional-de-artes-visuales",
     "funding": "Uruguayan state museum, a division of the Direcci\u00f3n Nacional de Cultura in the Ministry of Education and Culture.",
-    "watch": "Created by law in 1911 as the Museo de Bellas Artes. Holds more than 7,000 works, mostly by Uruguayan artists."
+    "watch": "Created by law in 1911 as the Museo de Bellas Artes. Holds more than 7,000 works, mostly by Uruguayan artists.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/National_Museum_of_Visual_Arts_(Uruguay)",
+          "https://www.museos.gub.uy/index.php/museos/museos-por-localidad/montevideo/item/download/31_599d18ab5e7b5f0d7eeb140247eee646"
+        ],
+        "basis": "created (se crea) in 1911; Wikipedia gives the establishment date as 10 December 1911",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1911
   },
   {
     "name": "Gallery 1957",
@@ -35932,7 +36237,17 @@
     "lon": -70.668,
     "id": "museo-de-la-solidaridad-salvador-allende",
     "funding": "Servicio Nacional del Patrimonio Cultural grant of CLP 660M in 2025. Project money from Fondart, the Senate, Henry Moore Foundation and Centro Cultural de Espa\u00f1a. Metro is a media partner.",
-    "watch": "In 2023 pressure from Allende's grandson over Tania Bruguera's show delayed its opening; it opened in modified form. In-person visitors in 2025: 10,337."
+    "watch": "In 2023 pressure from Allende's grandson over Tania Bruguera's show delayed its opening; it opened in modified form. In-person visitors in 2025: 10,337.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.mssa.cl/wp-content/uploads/2012/03/Plan-gestion-MSSA-2018.pdf",
+          "https://www.e-flux.com/directory/150207/museo-de-la-solidaridad-salvador-allende/"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "address": "Rep\u00fablica 475, Santiago"
   },
   {
     "name": "Museo de Arte de Puerto Rico",
@@ -36101,7 +36416,18 @@
     "lon": 121.164,
     "id": "pinto-art-museum",
     "funding": "Private museum founded in 2010 to show the collection of physician and patron Dr. Joven Cuanang. Run by the non-profit Silangan Foundation; entry is ticketed.",
-    "watch": "Housed in a complex by artist Antonio Lea\u00f1o inside a two-hectare botanical garden. The collection centres on Salingpusa and other Filipino contemporary artists."
+    "watch": "Housed in a complex by artist Antonio Lea\u00f1o inside a two-hectare botanical garden. The collection centres on Salingpusa and other Filipino contemporary artists.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Pint%C3%B4_Art_Museum",
+          "https://business.inquirer.net/173765/pinto-museums-art-management-philosophy"
+        ],
+        "basis": "founded / established as the Pinto Art Museum (Wikipedia: established 2010)",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2010
   },
   {
     "name": "MOCA Bangkok",
@@ -36119,7 +36445,26 @@
     "lon": 100.562,
     "id": "moca-bangkok",
     "funding": "Privately owned by DTAC telecom founder Boonchai Bencharongkul, who built it in 2012 for his collection of over 1,000 works. His son Kanachai runs it; tickets cost THB 250.",
-    "watch": "Also runs a Four Seasons art space and a Suvarnabhumi airport display."
+    "watch": "Also runs a Four Seasons art space and a Suvarnabhumi airport display.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art_(Bangkok)"
+        ],
+        "basis": "opened in 2012 (Wikipedia lists the established date as 23 March 2012)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art_(Bangkok)",
+          "https://www.timeout.com/bangkok/art/moca",
+          "https://afar.com/places/moca-bangkok-bangkok"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2012,
+    "address": "499 Kamphaeng Phet 6 Road, Chatuchak (Lat Yao), Bangkok 10900"
   },
   {
     "name": "Galeri Petronas",
@@ -36157,7 +36502,17 @@
     "lon": 120.206,
     "id": "tainan-art-museum",
     "funding": "Administrative corporation. 2025 revenue NT$201M: Tainan City subsidy NT$89.7M, Ministry of Culture and others NT$25M, tickets and parking NT$57M, donations NT$3.7M.",
-    "watch": "Opened 27 January 2019. In 2025 the Ministry of Culture set up a preparatory office for a planned Tainan National Art Museum."
+    "watch": "Opened 27 January 2019. In 2025 the Ministry of Culture set up a preparatory office for a planned Tainan National Art Museum.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Tainan_Art_Museum"
+        ],
+        "basis": "opened to the public (museum opened to the public 27 January 2019)",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2019
   },
   {
     "name": "Red Brick Art Museum",
@@ -36175,7 +36530,18 @@
     "lon": 116.494,
     "id": "red-brick-art-museum",
     "funding": "Private museum built by collectors Yan Shijie and Cao Mei, who invested nearly RMB 400 million over eight years.",
-    "watch": "The 20,000 sq m site was designed by Dong Yugan of Peking University. Its founder is described only as a collector and entrepreneur."
+    "watch": "The 20,000 sq m site was designed by Dong Yugan of Peking University. Its founder is described only as a collector and entrepreneur.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://ocula.com/institutions/red-brick-art-museum-beijing/",
+          "https://app.cafa.com.cn/en/news/details/8322906"
+        ],
+        "basis": "opened on May 23, 2014 (founded by collectors Yan Shijie and Cao Mei)",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2014
   },
   {
     "name": "Galeri Nasional Indonesia",
@@ -36337,7 +36703,19 @@
     "lon": 121.459,
     "id": "tank-shanghai",
     "funding": "Founded by collector and karaoke-club owner Qiao Zhibing, who told The Art Newspaper he paid for it. The state-owned West Bund Group invited him and built the surrounding park.",
-    "watch": "Opened 23 March 2019 in five former aviation fuel tanks. Time Out says Qiao invested with West Bund Group; no budget was found."
+    "watch": "Opened 23 March 2019 in five former aviation fuel tanks. Time Out says Qiao invested with West Bund Group; no budget was found.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://www.theartnewspaper.com/news/delayed-tank-shanghai-finally-opens",
+          "https://www.scmp.com/culture/article/3003292/tank-shanghai-art-centre-disused-oil-tanks-opens-west-bund-we-take-look",
+          "http://tankshanghai.com/about/about-us/"
+        ],
+        "basis": "opened to the public on March 23, 2019",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2019
   },
   {
     "name": "Istanbul Modern",
@@ -36425,7 +36803,27 @@
     "lon": 29.057,
     "id": "borusan-contemporary",
     "funding": "Corporate museum of Borusan Holding, run by the Borusan Kocab\u0131y\u0131k Foundation in the holding's headquarters. Group units: EnBW wind power, steel pipe, Caterpillar dealing, car sales.",
-    "watch": "Opened in 2011 during the 12th Istanbul Biennial. Borusan EnBW Enerji runs 725 MW of renewable plants."
+    "watch": "Opened in 2011 during the 12th Istanbul Biennial. Borusan EnBW Enerji runs 725 MW of renewable plants.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Perili_K%C3%B6%C5%9Fk",
+          "https://www.borusan.com/en/news/borusan-contemporary-en"
+        ],
+        "basis": "opened as Borusan Contemporary, Turkey's first office museum in the contemporary art field (opened 17 September, alongside the 12th Istanbul Biennial, 2011)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Perili_K%C3%B6%C5%9Fk",
+          "https://www.timeout.com/istanbul/art/borusan-contemporary",
+          "https://myartguides.com/artspaces/museums/istanbul/borusan-contemporary"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2011,
+    "address": "Baltaliman\u0131 Hisar Cad. Perili K\u00f6\u015fk No:5 Rumelihisar\u0131/Sariyer, 34470 Istanbul, Turkey"
   },
   {
     "name": "Serendipity Arts Festival",
@@ -36465,7 +36863,18 @@
     "lon": 72.835,
     "id": "dr-bhau-daji-lad-mumbai-city-museum",
     "funding": "Public-private partnership of the Municipal Corporation of Greater Mumbai, the Jamnalal Bajaj Foundation and INTACH. The Corporation paid INR 2.8 crore for the 2025 reopening repairs.",
-    "watch": "Mumbai's oldest museum, reopened in January 2025. Its expansion plan includes a Mumbai Modern Gallery."
+    "watch": "Mumbai's oldest museum, reopened in January 2025. Its expansion plan includes a Mumbai Modern Gallery.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://shop.museumsofindia.org/node/319",
+          "https://www.timeout.com/mumbai/museums/dr-bhau-daji-lad-museum",
+          "https://culture.pl/en/place/dr-bhau-daji-lad-mumbai-city-museum"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "address": "91/A, Dr. Babasaheb Ambedkar Road, Byculla East, Mumbai 400027"
   },
   {
     "name": "Museum of Art & Photography (MAP)",
@@ -36522,7 +36931,26 @@
     "lon": 67.032,
     "id": "vasl-artists-association",
     "funding": "Non-profit company limited by guarantee. Its 2026 disclosure lists COMO Museum of Art, Khurram Kasim Art Foundation, HUM TV, HBL Art Committee, Kadist, AFIELD and private collectors.",
-    "watch": "Runs residencies and exhibitions in Karachi; over 500 artists have taken part in 25 years."
+    "watch": "Runs residencies and exhibitions in Karachi; over 500 artists have taken part in 25 years.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://vaslart.org/about-us",
+          "https://culture360.asef.org/resources/vasl-artists-association/",
+          "https://vaslart.org/about-us/"
+        ],
+        "basis": "founded",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://vaslart.org/wp-content/uploads/2026/05/Vasl-Artists-Association-Corporate-Compliances-2026.pdf"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 2001,
+    "address": "D-53/1, 1st Street, Block 4, Clifton, Karachi, Sindh 75600, Pakistan"
   },
   {
     "name": "Lalit Kala Akademi",
@@ -36538,7 +36966,27 @@
     "lon": 77.231,
     "id": "lalit-kala-akademi",
     "funding": "Autonomous body funded by the Union Ministry of Culture, founded in 1954. It runs the National Exhibition, the Triennale-India and seven regional centres.",
-    "watch": "The government took over its management in April 2015, citing irregularities. A 2017 court petition alleged misappropriation of funds."
+    "watch": "The government took over its management in April 2015, citing irregularities. A 2017 court petition alleged misappropriation of funds.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Lalit_Kala_Akademi",
+          "https://lalitkala.gov.in/about"
+        ],
+        "basis": "founded / inaugurated 5 August 1954 in New Delhi by Maulana Abul Kalam Azad (registered under the Societies Registration Act on 11 March 1957)",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Lalit_Kala_Akademi",
+          "https://indianculture.gov.in/MoCorganization/lalit-kala-akademi",
+          "https://nvli.in/MoCorganization/lalit-kala-akademi"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1954,
+    "address": "35, Ferozeshah Road, Rabindra Bhawan, New Delhi-110001"
   },
   {
     "name": "Anadolu K\u00fclt\u00fcr (Depo and Diyarbak\u0131r Arts Center)",
@@ -36573,7 +37021,19 @@
     "lon": 67.033,
     "id": "mohatta-palace-museum",
     "funding": "The Government of Sindh owns the palace, bought by the federal government after 1980. A board of trustees oversees it, and entry costs Rs 30.",
-    "watch": "Opened in September 1999 with Treasures of the Talpurs; it has since held over 20 exhibitions."
+    "watch": "Opened in September 1999 with Treasures of the Talpurs; it has since held over 20 exhibitions.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Mohatta_Palace",
+          "https://www.dawn.com/news/amp/1580894",
+          "https://vaslart.org/?p=5698"
+        ],
+        "basis": "opened to the public as a museum on 15 September 1999 (the palace building dates from 1927 and is not the founding event)",
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1999
   },
   {
     "name": "Bangladesh Shilpakala Academy",
@@ -36647,6 +37107,26 @@
     "lon": 77.234,
     "id": "national-gallery-of-modern-art-ngma",
     "funding": "Government of India. A subordinate office of the Ministry of Culture, founded in 1954, with branches in Mumbai and Bengaluru.",
-    "watch": "At a February 2019 Mumbai opening, NGMA staff cut off Amol Palekar as he criticised the ministry over its advisory committees."
+    "watch": "At a February 2019 Mumbai opening, NGMA staff cut off Amol Palekar as he criticised the ministry over its advisory committees.",
+    "field_sources": {
+      "year_founded": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/National_Gallery_of_Modern_Art",
+          "https://www.manoramayearbook.in/current-affairs/india/2023/01/19/national-gallery-of-modern-art.html"
+        ],
+        "basis": "formally inaugurated (opened) on March 29, 1954",
+        "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://indianculture.gov.in/MoCorganization/national-gallery-modern-art",
+          "https://ic.nvli.in/MoCorganization/national-gallery-modern-art",
+          "https://nvli.in/MoCorganization/national-gallery-modern-art"
+        ],
+        "retrieved": "2026-10-13"
+      }
+    },
+    "year_founded": 1954,
+    "address": "Jaipur House, India Gate, New Delhi - 110003"
   }
 ]
