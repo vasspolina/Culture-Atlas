@@ -139,7 +139,7 @@ def clean(records, report=None):
                 bump(k)
         g = r.get('gossip_data')
         if g is not None:                      # keep sourced case files only
-            keep = {k: g[k] for k in ('real_cases',) if g.get(k)}
+            keep = {k: g[k] for k in ('real_cases', 'accounts') if g.get(k)}
             if keep:
                 r['gossip_data'] = keep
             else:
