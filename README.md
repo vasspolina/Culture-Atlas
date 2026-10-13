@@ -108,7 +108,14 @@ check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
 ## 🧾 What the page may show
 
-A field appears only if the record states it. Figures, hours, prices, exhibitions, architects and "chatter" are not generated to fill a gap. A text value that is identical (after masking the name and city) across five or more records is treated as filler and left out. Case files and staff reviews appear only with their sources and limits. If a record has nothing to say about funding or visiting, the section is not rendered.
+The page shows what a record states and where it comes from, and says plainly that none of it has been independently verified.
+
+- A field appears only if a record states it. Figures, hours, prices, exhibitions, architects and "chatter" are not generated to fill a gap. A text value shared by five or more records (after masking the name and city) is filler and is left out. Sentences that assert the absence of ties ("zero fossil fuel", "strict ethical charter") are left out.
+- **Clean, source cited** needs at least one source outside the museum's own site. **Flagged** needs a recorded reason. Otherwise a space is **Unverified**.
+- Anything reported about a space, such as a sponsor tie, an Epstein-related item, a WikiLeaks cable or a case file, is shown with its own source links under "Reported, not independently verified".
+- Anonymous staff reviews, the board network, the timeline, the filings registry, the itineraries and the 3D building outlines are not shown: they had no source, or were invented or generated.
+
+Rules live in `tools/clean_data.py`. To check records against their sources, run `tools/verify_claims.py` somewhere with network access, then `tools/apply_verification.py` and `tools/embed_data.py`. Wording corrected after checking is in `data/corrections.json`; the pilot of the three-check protocol is in `data/verification_pilot.json`.
 
 ## 📁 Project Structure
 
