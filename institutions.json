@@ -62,7 +62,79 @@
     "visit_url": "https://www.stedelijk.nl/en/visit",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Stedelijk%20Museum%20Amsterdam",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=Stedelijk%20Museum%20Amsterdam",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD31",
+          "scope": "Stedelijk Museum",
+          "fields": [
+            [
+              "Original post date",
+              "2025-03-06"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/Amsterdam \u00b7 Claimed contributor account"
+            ],
+            [
+              "What was retained",
+              "A poster claiming a contribution to Now You See Me Moria asks visitors for exhibition photographs because they cannot attend; replies offer help."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S265"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S265",
+              "url": "https://www.reddit.com/r/Amsterdam/comments/1j4ww1e"
+            }
+          ]
+        },
+        {
+          "id": "R71",
+          "scope": "Stedelijk Museum Amsterdam",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-07-22 \u00b7 Producer"
+            ],
+            [
+              "Account in brief",
+              "Praises the work environment and team; notes working only on a contract basis."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S115",
+              "url": "https://www.glassdoor.nl/Reviews/Werknemer-review-Stedelijk-Museum-Amsterdam-E1075873-RVW98857962.htm"
+            }
+          ]
+        },
+        {
+          "id": "R72",
+          "scope": "Stedelijk Museum Amsterdam",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2016-05-30 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Praises art, colleagues, learning, and openness; criticises missing processes and unclear decision authority. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S116",
+              "url": "https://www.glassdoor.nl/Reviews/Werknemer-review-Stedelijk-Museum-Amsterdam-E1075873-RVW10770553.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Fondation Vincent van Gogh Arles",
@@ -508,7 +580,39 @@
     "visit_url": "https://www.hkw.de/en/visit",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Haus%20der%20Kulturen%20der%20Welt%20%28HKW%29",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Haus%20der%20Kulturen%20der%20Welt%20%28HKW%29",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD36",
+          "scope": "Haus der Kulturen der Welt",
+          "fields": [
+            [
+              "Original post date",
+              "2025-10-06"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/berlinsocialclub \u00b7 Selected visitor comments"
+            ],
+            [
+              "What was retained",
+              "A reply claiming attendance finds the exhibition lacking novelty and questions perceived value. Other replies express opinion; the original poster is asking whether to visit."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S270"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S270",
+              "url": "https://www.reddit.com/r/berlinsocialclub/comments/1nze4vk"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "KW Institute for Contemporary Art",
@@ -541,7 +645,107 @@
     "highlight": "Historic former margarine factory that birthed the Berlin Biennale, curating discourse-defining contemporary commissions.",
     "visit_url": "https://www.kw-berlin.de/en/visit/",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=KW%20Institute%20for%20Contemporary%20Art",
-    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=KW%20Institute%20for%20Contemporary%20Art"
+    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=KW%20Institute%20for%20Contemporary%20Art",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD34",
+          "scope": "KW Institute for Contemporary Art",
+          "fields": [
+            [
+              "Original post date",
+              "2024-02-21"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/berlin \u00b7 Claimed visitor account"
+            ],
+            [
+              "What was retained",
+              "A claimed KW visitor cannot find several exhibition-related books seen in the shop in its online catalogue; another person offers to check the stock."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S268"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S268",
+              "url": "https://www.reddit.com/r/berlin/comments/1aw6bl4"
+            }
+          ]
+        },
+        {
+          "id": "RD35",
+          "scope": "Neue Nationalgalerie; KW Institute for Contemporary Art",
+          "fields": [
+            [
+              "Original post date",
+              "2026-09-13"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/WriteStreakGerman \u00b7 Claimed visitor account"
+            ],
+            [
+              "What was retained",
+              "A visitor praises a Neue Nationalgalerie exhibition and performance but finds KW less interesting after a long queue, while remaining glad to have attended both."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S269"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S269",
+              "url": "https://www.reddit.com/r/WriteStreakGerman/comments/1wf3no5/streak_854_art_week_2/"
+            }
+          ]
+        },
+        {
+          "id": "R67",
+          "scope": "KW Institute for Contemporary Art \u2013 KUNST-WERKE BERLIN e. V.",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-02 \u00b7 PR / communications employee"
+            ],
+            [
+              "Account in brief",
+              "A broadly critical title is visible; no issue-specific narrative was readable. Context: Historical; employment ended in 2022. Title only."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S113",
+              "url": "https://www.kununu.com/de/kw-institute-for-contemporary-art-kunst-werke-berlin-e-v/kommentare"
+            }
+          ]
+        },
+        {
+          "id": "R68",
+          "scope": "KW Institute for Contemporary Art \u2013 KUNST-WERKE BERLIN e. V.",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-09 \u00b7 Administration employee"
+            ],
+            [
+              "Account in brief",
+              "Title presents the workplace positively for art enthusiasts; no detailed narrative was readable. Context: Historical. Title only."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S113",
+              "url": "https://www.kununu.com/de/kw-institute-for-contemporary-art-kunst-werke-berlin-e-v/kommentare"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Staatliche Museen zu Berlin",
@@ -569,7 +773,31 @@
     "highlight": "Prussian cultural heritage complex uniting the Neue Nationalgalerie (Mies van der Rohe glass temple) and Hamburger Bahnhof contemporary railway depot.",
     "visit_url": "https://www.smb.museum/en/plan-your-visit/",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Staatliche%20Museen%20zu%20Berlin",
-    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Staatliche%20Museen%20zu%20Berlin"
+    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Staatliche%20Museen%20zu%20Berlin",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R37",
+          "scope": "Staatliche Museen zu Berlin / Preu\u00dfischer Kulturbesitz",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-05 \u00b7 Curatorial trainee"
+            ],
+            [
+              "Account in brief",
+              "Values autonomy during training; criticises a lack of guidance. Timing / scope: Training completed in 2008; umbrella employer."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S84",
+              "url": "https://www.kununu.com/de/staatliche-museen-zu-berlin-preussischer-kulturbesitz/kommentare"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Kunstmuseum Bern",
@@ -2545,7 +2773,111 @@
         "citation": "Rectanus, M. W. (2002). Culture Incorporated: Museums, Artists, and Corporate Sponsorships. Consensus Study.",
         "doi": "10.2307/1433407"
       }
-    ]
+    ],
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD26",
+          "scope": "Tate Modern; Tate Britain",
+          "fields": [
+            [
+              "Original post date",
+              "2025-12-05"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/london \u00b7 Claimed visitor account"
+            ],
+            [
+              "What was retained",
+              "A claimed Tate member questions renewal because of a crowded members' bar, perceived prices and limited personal use; replies express different priorities for membership benefits."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt; S260"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S260",
+              "url": "https://www.reddit.com/r/london/comments/1pf8tg9/which_annual_memberships_to_london/"
+            }
+          ]
+        },
+        {
+          "id": "RD27",
+          "scope": "Hyundai Tate Research Centre: Transnational; work location varies",
+          "fields": [
+            [
+              "Original post date",
+              "2019-07-09"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/academia \u00b7 Recruitment debate"
+            ],
+            [
+              "What was retained",
+              "A 2019 thread criticises adjunct-curator remuneration; replies dispute part-time versus full-time assumptions. A contemporary recruitment-notice copy lists a freelance annual fee but no verified hours."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S261, S286"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S261",
+              "url": "https://www.reddit.com/r/academia/comments/cb4ftz"
+            },
+            {
+              "id": "S286",
+              "url": "https://www.contemporaryand.com/ptbr/opportunities/tate-is-seeking-3-adjunct-curators"
+            }
+          ]
+        },
+        {
+          "id": "R38",
+          "scope": "Tate",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-08-12 \u00b7 Retail assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises the working environment and perks; reports difficulty arranging holidays. Context: Reviewed venue unspecified."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S85",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Tate-E138935-RVW105158636.htm"
+            }
+          ]
+        },
+        {
+          "id": "R39",
+          "scope": "Tate",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-01-15 \u00b7 Curator"
+            ],
+            [
+              "Account in brief",
+              "Praises projects and colleagues; describes pay as unsustainable in London. Context: Historical. Reviewed venue unspecified."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S86",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Tate-E138935-RVW83383881.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Wellcome Collection",
@@ -2603,7 +2935,59 @@
     "amenities": "Townsend restaurant & caf\u00e9, renowned independent Koenig art bookshop, historic reading room & archive.",
     "visit_url": "https://www.whitechapelgallery.org/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Whitechapel%20Gallery",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Whitechapel%20Gallery"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Whitechapel%20Gallery",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R85",
+          "scope": "Whitechapel Gallery",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-03 \u00b7 Archivist"
+            ],
+            [
+              "Account in brief",
+              "Praises the team and stimulating work; reports limited staffing and budget."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S134",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Whitechapel-Gallery-E509985-RVW104644013.htm"
+            },
+            {
+              "id": "S135",
+              "url": "https://www.glassdoor.com/Reviews/Whitechapel-Gallery-Reviews-E509985.htm"
+            }
+          ]
+        },
+        {
+          "id": "R86",
+          "scope": "Whitechapel Gallery",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-05-26 \u00b7 Gallery assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises perks and flexible scheduling; says a gallery break was unpaid."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S136",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Whitechapel-Gallery-E509985-RVW97609970.htm"
+            },
+            {
+              "id": "S135",
+              "url": "https://www.glassdoor.com/Reviews/Whitechapel-Gallery-Reviews-E509985.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Hammer Museum",
@@ -2737,7 +3121,123 @@
     "visit_url": "https://www.museodelprado.es/visit",
     "audit_dossier_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=Museo%20del%20Prado",
     "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=Museo%20del%20Prado",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD45",
+          "scope": "Museo del Prado",
+          "fields": [
+            [
+              "Original post date",
+              "2025-09-16"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/MadridTravelGuide \u00b7 Selected visitor comments"
+            ],
+            [
+              "What was retained",
+              "A reply describes gaining free entry after a wait, while the original poster worries about losing limited visit time. Later replies offer unverified ticket-registration advice."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S279"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S279",
+              "url": "https://www.reddit.com/r/MadridTravelGuide/comments/1nieuz0"
+            }
+          ]
+        },
+        {
+          "id": "RD20",
+          "scope": "Museo del Prado",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/Madrid \u00b7 2022-06-20"
+            ],
+            [
+              "Evidence type",
+              "Visitor comments"
+            ],
+            [
+              "What the excerpt supports",
+              "Replies to a planning question praise free admission but disagree about crowding and describe queues or missed entry. The experiences are historical and mixed."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt. S253"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S253",
+              "url": "https://www.reddit.com/r/Madrid/comments/vgstpz"
+            }
+          ]
+        },
+        {
+          "id": "RD21",
+          "scope": "Museo del Prado; Museo Reina Sof\u00eda; Museo Nacional Thyssen-Bornemisza",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/MadridTravelGuide \u00b7 2024-12-07"
+            ],
+            [
+              "Evidence type",
+              "Visitor comments"
+            ],
+            [
+              "What the excerpt supports",
+              "A commenter describes needing the original pass-confirmation PDF to obtain separate Prado and Reina Sof\u00eda tickets, after a wallet download and poor connectivity caused confusion."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt. S254"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S254",
+              "url": "https://www.reddit.com/r/MadridTravelGuide/comments/1h8v2yj/madrid_paseo_del_arte_pass/"
+            }
+          ]
+        },
+        {
+          "id": "RD22",
+          "scope": "Museo del Prado",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/MadridTravelGuide \u00b7 2024-12-28"
+            ],
+            [
+              "Evidence type",
+              "Ticket question / replies"
+            ],
+            [
+              "What the excerpt supports",
+              "A prospective visitor questions expensive skip-the-line offers; selected replies favour direct purchase and claim straightforward QR admission. The thread exposes uncertainty about ticket options."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt. S255"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S255",
+              "url": "https://www.reddit.com/r/MadridTravelGuide/comments/1hntbwe"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Museo Reina Sof\u00eda",
@@ -2805,6 +3305,56 @@
               "url": "https://www.eldiario.es/cultura/arte/servicio-externo-informacion-museo-reina-sofia-cumple-13-dias-huelga-reduccion-puestos-trabajo_1_13332102.html",
               "publisher": "elDiario.es",
               "published": "2026-06-25"
+            }
+          ]
+        }
+      ],
+      "accounts": [
+        {
+          "id": "RD21",
+          "scope": "Museo del Prado; Museo Reina Sof\u00eda; Museo Nacional Thyssen-Bornemisza",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/MadridTravelGuide \u00b7 2024-12-07"
+            ],
+            [
+              "Evidence type",
+              "Visitor comments"
+            ],
+            [
+              "What the excerpt supports",
+              "A commenter describes needing the original pass-confirmation PDF to obtain separate Prado and Reina Sof\u00eda tickets, after a wallet download and poor connectivity caused confusion."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt. S254"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S254",
+              "url": "https://www.reddit.com/r/MadridTravelGuide/comments/1h8v2yj/madrid_paseo_del_arte_pass/"
+            }
+          ]
+        },
+        {
+          "id": "R25",
+          "scope": "Museo Reina Sof\u00eda",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-09-25 \u00b7 General services assistant"
+            ],
+            [
+              "Account in brief",
+              "Values fixed and rotating shifts for work-life balance; reports too few weekly hours. Timing / scope: Related excerpt on the 2020 host page; contractor unknown."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S75",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Museo-Nacional-Centro-de-Arte-Reina-Sof%C3%ADa-E3191614-RVW37522933.htm"
             }
           ]
         }
@@ -3573,6 +4123,76 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD13",
+          "scope": "Noguchi Museum",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/astoria \u00b7 Post date unknown"
+            ],
+            [
+              "Evidence type",
+              "News repost / reaction"
+            ],
+            [
+              "What the excerpt supports",
+              "A thread links reporting on a staff walkout and asks how religious dress and politically associated clothing fit the policy. The question is not a first-person staff account."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt. S246"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S246",
+              "url": "https://www.reddit.com/r/astoria/comments/1eyyn73"
+            }
+          ]
+        },
+        {
+          "id": "R12",
+          "scope": "The Noguchi Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-02-10 \u00b7 Educator"
+            ],
+            [
+              "Account in brief",
+              "Values the exhibitions; criticises workplace culture and pay."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S62",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Noguchi-Museum-E922788-RVW102776098.htm"
+            }
+          ]
+        },
+        {
+          "id": "R13",
+          "scope": "The Noguchi Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-04-21 \u00b7 Museum attendant"
+            ],
+            [
+              "Account in brief",
+              "Describes a kind, understanding team and reports no drawbacks."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S63",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Noguchi-Museum-E922788-RVW103658275.htm"
+            }
+          ]
+        }
       ]
     }
   },
@@ -3918,7 +4538,75 @@
     "visit_url": "https://www.fondationcartier.com/visit",
     "audit_dossier_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Fondation%20Cartier",
     "statutory_filings_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Fondation%20Cartier",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R93",
+          "scope": "Fondation Cartier pour l'art contemporain",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-02-17 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Values the setting and collections; criticises hierarchy and lack of transparency."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S144",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Fondation-Cartier-E531750-RVW102854606.htm"
+            }
+          ]
+        },
+        {
+          "id": "R94",
+          "scope": "Fondation Cartier pour l'art contemporain",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-07-30 \u00b7 Manager"
+            ],
+            [
+              "Account in brief",
+              "Values the institution; alleges verbal aggression, inadequate support and poor separation of work from personal time."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S145",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Fondation-Cartier-E531750-RVW99053521.htm"
+            }
+          ]
+        },
+        {
+          "id": "R95",
+          "scope": "Fondation Cartier pour l'art contemporain",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2022-07-27 \u00b7 Digital communications assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises the communications team, knowledge-sharing, varied work and supportive managers; reports no drawbacks. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S146",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Fondation-Cartier-E531750-RVW67206319.htm"
+            },
+            {
+              "id": "S147",
+              "url": "https://www.glassdoor.fr/Pr%C3%A9sentation/Travailler-chez-Fondation-Cartier-EI_IE531750.16%2C33.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Mus\u00e9e de la Chasse et de la Nature",
@@ -4035,6 +4723,56 @@
               "url": "https://www.ccomptes.fr/system/files/2023-02/20230214-S2022-2182-1-SASU-Palais-de-Tokyo_rep-President-Palais-de-Tokyo.pdf",
               "publisher": "Palais de Tokyo",
               "published": null
+            }
+          ]
+        }
+      ],
+      "accounts": [
+        {
+          "id": "RD42",
+          "scope": "Palais de Tokyo; Mus\u00e9e d'Art Moderne de Paris",
+          "fields": [
+            [
+              "Original post date",
+              "2023-01-30"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/ParisTravelGuide \u00b7 Institution-name question"
+            ],
+            [
+              "What was retained",
+              "A visitor planning a trip confuses Palais de Tokyo with the neighbouring modern-art museum after searching names and images; a reply describes them as separate institutions."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S276"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S276",
+              "url": "https://www.reddit.com/r/ParisTravelGuide/comments/10oxmxa"
+            }
+          ]
+        },
+        {
+          "id": "R20",
+          "scope": "Palais de Tokyo",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-09-25 \u00b7 Development manager"
+            ],
+            [
+              "Account in brief",
+              "Praises strong values, intellectual rigour, and a welcoming culture; criticises pay and lack of advancement. Timing / scope: Related excerpt on the 2024 host page."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S70",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Palais-de-Tokyo-E1053058-RVW89269156.htm"
             }
           ]
         }
@@ -5648,7 +6386,83 @@
         "citation": "Rectanus, M. W. (2002). Culture Incorporated: Museums, Artists, and Corporate Sponsorships. Consensus Study.",
         "doi": "10.2307/1433407"
       }
-    ]
+    ],
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD14",
+          "scope": "Metropolitan Museum of Art",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/union \u00b7 Post date unknown"
+            ],
+            [
+              "Evidence type",
+              "News repost / reaction"
+            ],
+            [
+              "What the excerpt supports",
+              "An indexed unionisation repost led to a dated UAW Region 9A statement reporting that Met staff voted to join Local 2110 in January 2026."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt. S247; S256"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S247",
+              "url": "https://www.reddit.com/r/union/comments/1qlkx34/metropolitan_museum_of_art_staff_in_new_york_city/"
+            },
+            {
+              "id": "S256",
+              "url": "https://region9a.uaw.org/news/MetMuseumVote"
+            }
+          ]
+        },
+        {
+          "id": "R52",
+          "scope": "Metropolitan Museum of Art",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-27 \u00b7 Security officer"
+            ],
+            [
+              "Account in brief",
+              "Praises health insurance; alleges racism, poor treatment of security staff, restricted departmental moves, and unequal pay increases."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S99",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Metropolitan-Museum-of-Art-E238657-RVW104950093.htm"
+            }
+          ]
+        },
+        {
+          "id": "R53",
+          "scope": "Metropolitan Museum of Art",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-06-18 \u00b7 Visitor services associate"
+            ],
+            [
+              "Account in brief",
+              "Describes an enjoyable role and supportive managers; reports difficulty implementing change and progressing."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S100",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Metropolitan-Museum-of-Art-E238657-RVW104450994.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Whitney Museum of American Art",
@@ -5780,6 +6594,48 @@
               "url": "https://www.theartnewspaper.com/2019/07/25/whitney-museum-vice-chairman-warren-kanders-steps-down-after-months-of-protests",
               "publisher": "The Art Newspaper",
               "published": "2019-07-25"
+            }
+          ]
+        }
+      ],
+      "accounts": [
+        {
+          "id": "R10",
+          "scope": "Whitney Museum of American Art",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-09-16 \u00b7 Employee experience intern"
+            ],
+            [
+              "Account in brief",
+              "Describes a good workplace culture; criticises low pay."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S60",
+              "url": "https://api.glassdoor.com/Reviews/Employee-Review-Whitney-Museum-E5424-RVW105608036.htm"
+            }
+          ]
+        },
+        {
+          "id": "R11",
+          "scope": "Whitney Museum of American Art",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-01-27 \u00b7 Production supervisor"
+            ],
+            [
+              "Account in brief",
+              "Praises a supportive supervisor; raises concerns about part-time hiring and benefit access."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S61",
+              "url": "https://api.glassdoor.com/Reviews/Employee-Review-Whitney-Museum-E5424-RVW102514204.htm"
             }
           ]
         }
@@ -5927,6 +6783,84 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD32",
+          "scope": "Solomon R. Guggenheim Museum",
+          "fields": [
+            [
+              "Original post date",
+              "2024-01-09"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/AskNYC \u00b7 Ticket question/replies"
+            ],
+            [
+              "What was retained",
+              "Replies disagree about the Guggenheim's value, contrasting exhibition breadth with architectural appeal; another reply corrects a broad claim about the Met's pay-what-you-wish eligibility."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S266"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S266",
+              "url": "https://www.reddit.com/r/AskNYC/comments/192lghh"
+            }
+          ]
+        },
+        {
+          "id": "RD33",
+          "scope": "Solomon R. Guggenheim Museum",
+          "fields": [
+            [
+              "Original post date",
+              "2026-04-22"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/architecture \u00b7 Opinion"
+            ],
+            [
+              "What was retained",
+              "An architecture thread includes praise for the exhibition space and a brief complaint about bathrooms, alongside aesthetic comparisons. Speaker attendance and photograph timing are unverified."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt; S267"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S267",
+              "url": "https://www.reddit.com/r/architecture/comments/1ssfjmu/the_solomon_r_guggenheim_museum_upper_east_side/"
+            }
+          ]
+        },
+        {
+          "id": "R08",
+          "scope": "Solomon R. Guggenheim Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-05-01 \u00b7 Visitor experience assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises leave, breaks, and colleagues; alleges understaffing after layoffs and last-minute scheduling."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S58",
+              "url": "https://api.glassdoor.com/Reviews/Employee-Review-Guggenheim-Museum-E137747-RVW103800182.htm"
+            }
+          ]
+        }
       ]
     },
     "visual_critiques": [
@@ -6035,6 +6969,92 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD40",
+          "scope": "Centre Pompidou",
+          "fields": [
+            [
+              "Original post date",
+              "2026-06-17"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/ArtHistory \u00b7 Programme-access question"
+            ],
+            [
+              "What was retained",
+              "A prospective visitor struggles to discover which Pompidou works can be seen elsewhere during renovation. Official information confirms the building closure and describes off-site programming."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S274, S283"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S274",
+              "url": "https://www.reddit.com/r/ArtHistory/comments/1u8fs5t/temporarily_closed_museums/"
+            },
+            {
+              "id": "S283",
+              "url": "https://www.centrepompidou.fr/en/le-centre-pompidou/adherents/faq-adhesion"
+            }
+          ]
+        },
+        {
+          "id": "RD41",
+          "scope": "Centre Pompidou",
+          "fields": [
+            [
+              "Original post date",
+              "2025-04-27"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/ParisTravelGuide \u00b7 Selected visitor comments"
+            ],
+            [
+              "What was retained",
+              "Replies praise temporary exhibitions during the phased closure, including a claimed same-day Suzanne Valadon visit. This distinguishes historical partial access from the later building closure."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S275, S283"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S275",
+              "url": "https://www.reddit.com/r/ParisTravelGuide/comments/1k94olr"
+            },
+            {
+              "id": "S283",
+              "url": "https://www.centrepompidou.fr/en/le-centre-pompidou/adherents/faq-adhesion"
+            }
+          ]
+        },
+        {
+          "id": "R19",
+          "scope": "Centre Pompidou",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-04-27 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Values cultural-access benefits; criticises workload, micromanagement, bureaucracy, and pay."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S69",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Le-Centre-Pompidou-E846875-RVW103733630.htm"
+            }
+          ]
+        }
       ]
     }
   },
@@ -6072,7 +7092,83 @@
     "visit_url": "https://www.serpentinegalleries.org/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Serpentine%20Galleries",
     "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Serpentine%20Galleries",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD28",
+          "scope": "Serpentine South",
+          "fields": [
+            [
+              "Original post date",
+              "2025-12-04"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/SoundSystem \u00b7 Opinion"
+            ],
+            [
+              "What was retained",
+              "A post appreciates a Peter Doig exhibition with vintage sound systems. The official page places House of Music at Serpentine South from October 2025 to February 2026."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S262, S285"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S262",
+              "url": "https://www.reddit.com/r/SoundSystem/comments/1peajqn/serpentine_gallery_london/"
+            },
+            {
+              "id": "S285",
+              "url": "https://www.serpentinegalleries.org/whats-on/peter-doig-house-of-music/"
+            }
+          ]
+        },
+        {
+          "id": "R44",
+          "scope": "Serpentine Galleries",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-11-29 \u00b7 Gallery host"
+            ],
+            [
+              "Account in brief",
+              "Praises diverse colleagues, a caring manager, and relaxed atmosphere; reports limited development."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S91",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Serpentine-Galleries-E1980117-RVW101553035.htm"
+            }
+          ]
+        },
+        {
+          "id": "R45",
+          "scope": "Serpentine Galleries",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-10-07 \u00b7 Intern"
+            ],
+            [
+              "Account in brief",
+              "Values the team and useful experience; criticises stress, high expectations, and benefits."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S92",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Serpentine-Galleries-E1980117-RVW100487521.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Fundaci\u00f3 Joan Mir\u00f3",
@@ -6343,7 +7439,51 @@
     "visit_url": "https://www.southbankcentre.co.uk/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Hayward%20Gallery%20%28Southbank%20Centre%29",
     "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Hayward%20Gallery%20%28Southbank%20Centre%29",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R78",
+          "scope": "Southbank Centre",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-25 \u00b7 Visitor experience assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues, events and culture; reports overlooked frontline feedback and late-night or weekend shifts."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S127",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Southbank-Centre-E841823-RVW104930579.htm"
+            }
+          ]
+        },
+        {
+          "id": "R79",
+          "scope": "Southbank Centre",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-14 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Praises talented colleagues and union support; alleges restructuring targets outspoken staff and replaces experienced workers with junior hires."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S128",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Southbank-Centre-E841823-RVW104776050.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "BAK, basis voor actuele kunst",
@@ -16815,7 +17955,51 @@
     "visit_url": "https://www.somersethouse.org.uk/support-us/current-supporters",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Somerset%20House",
     "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Somerset%20House",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R83",
+          "scope": "Somerset House",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-06-01 \u00b7 Visitor experience assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises creative, supportive colleagues; notes long periods of standing."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S132",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Somerset-House-E662506-RVW104208260.htm"
+            }
+          ]
+        },
+        {
+          "id": "R84",
+          "scope": "Somerset House",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-02-17 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Values perks and colleagues; alleges excessive hierarchy, poor progression, bullying and inadequate HR responses."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S133",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Somerset-House-E662506-RVW102857046.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "HOME",
@@ -17694,7 +18878,6 @@
       "Protest or boycott"
     ],
     "why_flagged": "Boeing (arms) and Bloomberg Philanthropies are current institutional partners; Honeywell also listed. No protest found at SAM itself.",
-    "governance_details": "Documented corporate funding conflict: audited statutory filings (IRS Form 990 Schedule L / Charity Commission) disclose trustee board ties to defense contractor board interlocks and commercial naming covenants.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Seattle%20Art%20Museum",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Seattle%20Art%20Museum"
   },
@@ -18713,6 +19896,56 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD15",
+          "scope": "Louvre",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/ParisTravelGuide \u00b7 Post date unknown"
+            ],
+            [
+              "Evidence type",
+              "Community advisory"
+            ],
+            [
+              "What the excerpt supports",
+              "A community megathread describes uncertainty around strike-related opening and tickets; selected visitors report queues and restricted access. The post explicitly disclaims insider or advance information."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt. S248"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S248",
+              "url": "https://www.reddit.com/r/ParisTravelGuide/comments/1r8xacv/ongoing_louvre_strikes_megathread/"
+            }
+          ]
+        },
+        {
+          "id": "R18",
+          "scope": "Mus\u00e9e du Louvre",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-06-08 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Values stimulating projects and flexible working; criticises management and slow processes."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S68",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Mus%C3%A9e-du-Louvre-E681218-RVW104299056.htm"
+            }
+          ]
+        }
       ]
     },
     "visual_critiques": [
@@ -18818,7 +20051,107 @@
         "citation": "Sharp, C., & Summers, S. (2025). Museum funding as critical practice. Museums & Social Issues / Consensus Study.",
         "doi": "10.1080/15596893.2025.2465592"
       }
-    ]
+    ],
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD38",
+          "scope": "Mus\u00e9e d'Orsay",
+          "fields": [
+            [
+              "Original post date",
+              "2025-07-06"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/ParisTravelGuide \u00b7 Claimed visitor account"
+            ],
+            [
+              "What was retained",
+              "A claimed visitor enjoys Orsay's art and describes it as less crowded than the Louvre, praising food and terrace options. These are judgments from one claimed visit."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt; S272"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S272",
+              "url": "https://www.reddit.com/r/ParisTravelGuide/comments/1ltbey8/musee_dorsay_must_see/"
+            }
+          ]
+        },
+        {
+          "id": "RD39",
+          "scope": "Mus\u00e9e d'Orsay; Mus\u00e9e de l'Orangerie",
+          "fields": [
+            [
+              "Original post date",
+              "2025-07-23"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/ParisTravelGuide \u00b7 Claimed visitor account"
+            ],
+            [
+              "What was retained",
+              "A poster uncertain about free-entry booking later reports no Orsay queue and a short Orangerie wait; a reply describes a busier bank-holiday visit."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S273"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S273",
+              "url": "https://www.reddit.com/r/ParisTravelGuide/comments/1m76r21"
+            }
+          ]
+        },
+        {
+          "id": "R58",
+          "scope": "Mus\u00e9e d'Orsay",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-10-23 \u00b7 Coordinator"
+            ],
+            [
+              "Account in brief",
+              "Values multicultural work, meaningful projects, and human connections; reports occasional understaffing."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S105",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Mus%C3%A9e-d-Orsay-E845832-RVW100842161.htm"
+            }
+          ]
+        },
+        {
+          "id": "R59",
+          "scope": "Mus\u00e9e d'Orsay",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-10-06 \u00b7 Anonymous employee; apprenticeship account"
+            ],
+            [
+              "Account in brief",
+              "Praises apprentice integration, projects, and potential permanent employment; reports limited apprentice benefits."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S106",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Mus%C3%A9e-d-Orsay-E845832-RVW100461230.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Kunsthalle Bielefeld",
@@ -19170,6 +20503,56 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD10",
+          "scope": "Rijksmuseum",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/Amsterdam \u00b7 Post date unknown"
+            ],
+            [
+              "Evidence type",
+              "News repost / reaction"
+            ],
+            [
+              "What the excerpt supports",
+              "A thread about a reported Museum Night closure debates ING sponsorship and protest tactics. Comments express disagreement rather than independently establishing the closure or campaign outcome."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt. S243"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S243",
+              "url": "https://www.reddit.com/r/Amsterdam/comments/1gh0i5o"
+            }
+          ]
+        },
+        {
+          "id": "R23",
+          "scope": "Rijksmuseum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2023-07-18 \u00b7 Account manager assistant"
+            ],
+            [
+              "Account in brief",
+              "Describes an inspiring environment and diverse team; reports no drawbacks. Timing / scope: Historical account."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S73",
+              "url": "https://www.glassdoor.co.uk/Reviews/Rijksmuseum-Reviews-E3086926.htm"
+            }
+          ]
+        }
       ]
     }
   },
@@ -19229,6 +20612,76 @@
               "url": "https://www.theartnewspaper.com/2018/08/29/shell-sponsorship-deal-with-amsterdams-van-gogh-museum-ends",
               "publisher": "The Art Newspaper",
               "published": "2018-08-29"
+            }
+          ]
+        }
+      ],
+      "accounts": [
+        {
+          "id": "RD46",
+          "scope": "Van Gogh Museum",
+          "fields": [
+            [
+              "Original post date",
+              "2026-02-27"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/JustEngaged \u00b7 Claimed visitor account"
+            ],
+            [
+              "What was retained",
+              "A claimed Amsterdam visitor praises the artwork, building and sequence of rooms, describing a strong impression on encountering Sunflowers. Unrelated private-life details are omitted."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S280"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S280",
+              "url": "https://www.reddit.com/r/JustEngaged/comments/1rghmrq/van_gogh_museum_amsterdam_unexpected_engagement/"
+            }
+          ]
+        },
+        {
+          "id": "R21",
+          "scope": "Van Gogh Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-11-03 \u00b7 Museum shop employee"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues and an inspiring setting; describes busy days as hectic."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S71",
+              "url": "https://www.glassdoor.nl/Reviews/Werknemer-review-Van-Gogh-Museum-E1076148-RVW101042372.htm"
+            }
+          ]
+        },
+        {
+          "id": "R22",
+          "scope": "Van Gogh Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-08-26 \u00b7 All-round employee"
+            ],
+            [
+              "Account in brief",
+              "Praises a diverse team, organisation, and facilities; reports no drawbacks."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S72",
+              "url": "https://www.glassdoor.nl/Reviews/Werknemer-review-Van-Gogh-Museum-E1076148-RVW99599588.htm"
             }
           ]
         }
@@ -19563,7 +21016,6 @@
       "Arms and defence"
     ],
     "why_flagged": "B\u00fchrle arms fortune and Nazi-era provenance, in litigation.",
-    "governance_details": "Documented corporate funding conflict: audited statutory filings (IRS Form 990 Schedule L / Charity Commission) disclose trustee board ties to defense contractor board interlocks and commercial naming covenants.",
     "audit_dossier_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
     "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html"
   },
@@ -19858,6 +21310,76 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD11",
+          "scope": "British Museum",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/ukpolitics \u00b7 2023-12-19"
+            ],
+            [
+              "Evidence type",
+              "News repost / reaction"
+            ],
+            [
+              "What the excerpt supports",
+              "A news-sharing thread attracts critical and pragmatic reactions to BP sponsorship, including the availability of replacement donors. It records public opinion around a reported deal."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt. S244"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S244",
+              "url": "https://www.reddit.com/r/ukpolitics/comments/18masi1"
+            }
+          ]
+        },
+        {
+          "id": "R04",
+          "scope": "British Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-06-26 \u00b7 Events assistant"
+            ],
+            [
+              "Account in brief",
+              "Values staff access and networking; criticises low pay, unstable hours, and divisions between front-of-house and other teams."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S54",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-British-Museum-E36638-RVW104547155.htm"
+            }
+          ]
+        },
+        {
+          "id": "R05",
+          "scope": "British Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-06-29 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Describes a friendly, supportive team; mentions an age gap among colleagues."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S55",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-British-Museum-E36638-RVW104572930.htm"
+            }
+          ]
+        }
       ]
     },
     "visual_critiques": [
@@ -19905,9 +21427,72 @@
       "Campaigned name"
     ],
     "why_flagged": "2018 artist withdrawals over an arms-firm reception; Deutsche Bank funder.",
-    "governance_details": "Documented corporate funding conflict: audited statutory filings (IRS Form 990 Schedule L / Charity Commission) disclose trustee board ties to defense contractor board interlocks and commercial naming covenants.",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Design%20Museum",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Design%20Museum"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Design%20Museum",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R80",
+          "scope": "Design Museum London",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-02-03 \u00b7 Assistant buyer"
+            ],
+            [
+              "Account in brief",
+              "Praises a sociable workplace and visible leadership; criticises workload, manual retail systems and pay."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S129",
+              "url": "https://www.glassdoor.co.uk/Reviews/Employee-Review-Design-Museum-London-E1088218-RVW102650460.htm"
+            }
+          ]
+        },
+        {
+          "id": "R81",
+          "scope": "Design Museum London",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-10-25 \u00b7 Events assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises culture and work-life balance; reports limited progression within a small workforce."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S130",
+              "url": "https://www.glassdoor.co.uk/Reviews/Employee-Review-Design-Museum-London-E1088218-RVW100872525.htm"
+            }
+          ]
+        },
+        {
+          "id": "R82",
+          "scope": "Design Museum London",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-10-09 \u00b7 Assistant curatorial researcher"
+            ],
+            [
+              "Account in brief",
+              "Values colleagues and exhibition exposure; reports an unpaid internship and inadequate expense reimbursement. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S131",
+              "url": "https://www.glassdoor.co.uk/Reviews/Employee-Review-Design-Museum-London-E1088218-RVW91784951.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Dulwich Picture Gallery",
@@ -19985,7 +21570,51 @@
     ],
     "why_flagged": "Dropped Shell 2018; banks on roster.",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=National%20Gallery",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=National%20Gallery"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=National%20Gallery",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R40",
+          "scope": "The National Gallery",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-25 \u00b7 Security officer"
+            ],
+            [
+              "Account in brief",
+              "Praises some friendly colleagues; alleges favouritism and a draining workplace atmosphere."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S87",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-The-National-Gallery-E36639-RVW104932359.htm"
+            }
+          ]
+        },
+        {
+          "id": "R41",
+          "scope": "The National Gallery",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-20 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Praises benefits, colleagues, hybrid working, and being heard; criticises pay, slow change, and limited progression."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S88",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-The-National-Gallery-E36639-RVW104857576.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Royal Ballet and Opera",
@@ -20129,6 +21758,28 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "R15",
+          "scope": "Science Museum Group",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-17 \u00b7 Visitor experience assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues; criticises casual contracts and unreliable hours. Timing / scope: Site unspecified; group account."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S65",
+              "url": "https://www.glassdoor.co.uk/Reviews/Employee-Review-Science-Museum-Group-E37271-RVW104825936.htm"
+            }
+          ]
+        }
       ]
     }
   },
@@ -20204,6 +21855,48 @@
               "url": "https://www.museumsassociation.org/museums-journal/news/2026/10/concerns-raised-about-vas-voluntary-exit-scheme-as-industrial-dispute-continues/",
               "publisher": "Museums Association",
               "published": "2026-10-06"
+            }
+          ]
+        }
+      ],
+      "accounts": [
+        {
+          "id": "R06",
+          "scope": "V&A",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-08-22 \u00b7 Visitor assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues and the collection; criticises pay and feeling undervalued."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S56",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Victoria-and-Albert-Museum-E654572-RVW105290808.htm"
+            }
+          ]
+        },
+        {
+          "id": "R07",
+          "scope": "V&A",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-09-05 \u00b7 Assistant curator"
+            ],
+            [
+              "Account in brief",
+              "Describes an inclusive, diverse, supportive team; says benefits could improve."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S57",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Victoria-and-Albert-Museum-E654572-RVW105469428.htm"
             }
           ]
         }
@@ -20757,6 +22450,56 @@
               "url": "https://www.dc37.net/take-action/media-center/news-release/2025/dc-37-local-1502-uaw-local-2110-protest-imminent-layoffs-at-brooklyn-museum/",
               "publisher": "DC37",
               "published": "2025-03-07"
+            }
+          ]
+        }
+      ],
+      "accounts": [
+        {
+          "id": "RD12",
+          "scope": "Brooklyn Museum",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/nyc \u00b7 Post date unknown"
+            ],
+            [
+              "Evidence type",
+              "News repost / reaction"
+            ],
+            [
+              "What the excerpt supports",
+              "A newspaper-linked thread discusses reported staffing and exhibition cuts. Comments debate programming and leadership priorities, but speculative motives are not treated as employee evidence."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt. S245"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S245",
+              "url": "https://www.reddit.com/r/nyc/comments/1ijyi0u/brooklyn_museum_will_lay_off_employees_and_scale/"
+            }
+          ]
+        },
+        {
+          "id": "R09",
+          "scope": "Brooklyn Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-31 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Praises mission-focused staff; criticises organisational priorities, support, and pay."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S59",
+              "url": "https://api.glassdoor.com/Reviews/Employee-Review-Brooklyn-Museum-E23520-RVW105012358.htm"
             }
           ]
         }
@@ -21605,7 +23348,59 @@
     ],
     "why_flagged": "Refused Sackler \u00a31M in 2019; BP award ended 2022.",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=National%20Portrait%20Gallery",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=National%20Portrait%20Gallery"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=National%20Portrait%20Gallery",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R135",
+          "scope": "National Portrait Gallery",
+          "fields": [
+            [
+              "Posting date and claimed role",
+              "2025-12-28 \u00b7 Learning coordinator"
+            ],
+            [
+              "Retained narrative",
+              "Values colleagues, the building and collection; reports limited promotion, little development and high pressure. S226"
+            ],
+            [
+              "Time and scope",
+              "Experience dates unavailable."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S226",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-National-Portrait-Gallery-E1179117-RVW101989585.htm"
+            }
+          ]
+        },
+        {
+          "id": "R136",
+          "scope": "National Portrait Gallery",
+          "fields": [
+            [
+              "Posting date and claimed role",
+              "2025-03-17 \u00b7 Visitor-experience assistant"
+            ],
+            [
+              "Retained narrative",
+              "Praises supportive duty managers, team spirit and opportunities to develop talks; reports no substantial negatives. S227"
+            ],
+            [
+              "Time and scope",
+              "Experience dates unavailable."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S227",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-National-Portrait-Gallery-E1179117-RVW95888599.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "national-theatre-london",
@@ -26757,7 +28552,6 @@
     ],
     "lat": 46.803,
     "lon": 7.158,
-    "governance_details": "Artist-run non-profit founded in Independent Space; governed by an independent artist collective with zero corporate trustees; 100% financed by Arts Council/civic cultural grants and community memberships.",
     "audit_dossier_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
     "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html"
   },
@@ -26829,7 +28623,6 @@
     ],
     "lat": 41.789,
     "lon": -87.598,
-    "governance_details": "Artist-run non-profit founded in Independent Space; governed by an independent artist collective with zero corporate trustees; 100% financed by Arts Council/civic cultural grants and community memberships.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Renaissance%20Society",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Renaissance%20Society"
   },
@@ -27648,7 +29441,31 @@
     "lat": 52.364,
     "lon": 4.893,
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Foam%20Fotografiemuseum%20Amsterdam",
-    "statutory_filings_url": "https://openkvk.nl/zoeken?q=Foam%20Fotografiemuseum%20Amsterdam"
+    "statutory_filings_url": "https://openkvk.nl/zoeken?q=Foam%20Fotografiemuseum%20Amsterdam",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R107",
+          "scope": "Foam Fotografiemuseum Amsterdam",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-11-15 \u00b7 Digital marketing manager"
+            ],
+            [
+              "Account in brief",
+              "Praises knowledgeable colleagues and inspiration; describes occasional unprofessionalism in a small organisation. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S157",
+              "url": "https://www.glassdoor.co.uk/Reviews/Employee-Review-Foam-Fotografiemuseum-Amsterdam-E2908688-RVW92879296.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "fotomuseum-winterthur-winterthur",
@@ -27719,6 +29536,28 @@
               "url": "https://www.ccomptes.fr/sites/default/files/2025-11/20251126-S2025-1555-Jeu-de-Paume-rep-commune-pdt-dir-dir-adjoint-Assoc-Jeu-de-Paume.pdf",
               "publisher": "Association Jeu de Paume",
               "published": null
+            }
+          ]
+        }
+      ],
+      "accounts": [
+        {
+          "id": "R98",
+          "scope": "Jeu de Paume",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-07-12 \u00b7 Digital communications officer"
+            ],
+            [
+              "Account in brief",
+              "Praises autonomy, work-life balance, overtime recovery and disconnection; notes limited advancement and negotiated salary increases."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S151",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Jeu-de-Paume-E1132235-RVW98643395.htm"
             }
           ]
         }
@@ -29260,7 +31099,51 @@
         "citation": "Casado-Molina, A.-M., et al. (2023). Building mutual rewarding sponsor relationships between museums and corporations. Consensus Study.",
         "doi": "10.1080/09548963.2023.2255836"
       }
-    ]
+    ],
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R50",
+          "scope": "Museum of Modern Art (MoMA)",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-08-17 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Praises union benefits and colleagues; criticises pay, departmental silos, and workplace politics."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S97",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Moma-E5415-RVW105218116.htm"
+            }
+          ]
+        },
+        {
+          "id": "R51",
+          "scope": "Museum of Modern Art (MoMA)",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-14 \u00b7 Selling specialist"
+            ],
+            [
+              "Account in brief",
+              "Praises union protection, salary, benefits, and exhibitions; criticises understaffing, turnover, communication, management, and HR handling."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S98",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Moma-E5415-RVW104779293.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "the-met-new-york",
@@ -29842,7 +31725,51 @@
     "lon": -73.958,
     "curator_recommendation": "Annual Report of Gifts for 1 Oct 2023-30 Sep 2024 lists Bloomberg Philanthropies at $25,000-49,999, so an excluded funder is current. Separately, Feb 2020: director Caroline Baumann was pushed out and six trustees resigned; 2025: a lobby group urged the White House to cancel the Patterns of Life exhibit.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Cooper%20Hewitt%2C%20Smithsonian%20Design%20Museum",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Cooper%20Hewitt%2C%20Smithsonian%20Design%20Museum"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Cooper%20Hewitt%2C%20Smithsonian%20Design%20Museum",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R89",
+          "scope": "Cooper Hewitt, Smithsonian Design Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-02-23 \u00b7 Project associate"
+            ],
+            [
+              "Account in brief",
+              "Values the work; says compensation does not support a liveable wage. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S139",
+              "url": "https://www.glassdoor.co.uk/Reviews/Employee-Review-Cooper-Hewitt-National-Design-Museum-E416276-RVW84680223.htm"
+            }
+          ]
+        },
+        {
+          "id": "R90",
+          "scope": "Cooper Hewitt, Smithsonian Design Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2023-03-04 \u00b7 Marketing director"
+            ],
+            [
+              "Account in brief",
+              "Praises design projects, benefits and stability; describes underfunding and bureaucracy. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S140",
+              "url": "https://www.glassdoor.co.uk/Reviews/Employee-Review-Cooper-Hewitt-National-Design-Museum-E416276-RVW74192555.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "designmuseum-danmark-copenhagen",
@@ -29863,7 +31790,6 @@
     "lat": 55.688,
     "lon": 12.593,
     "curator_recommendation": "The 2023 annual report thanks Augustinus Fonden (a Scandinavian Tobacco Group holder, an excluded funder) for the building transformation and as one of three funders that in 2023 financed the new Videnshus (knowledge house) planned toward 2026; it also backed Dansk Design Nu (2015-16). Other funders: A.P. Moller Fonden, Villum, C.L. Davids, Ny Carlsbergfondet, Statens Kunstfond, Tips- og Lottomidlerne. Visitors in 2023: 426,705.",
-    "governance_details": "Documented corporate funding conflict: audited statutory filings (IRS Form 990 Schedule L / Charity Commission) disclose trustee board ties to private equity and predatory financial interlocks and commercial naming covenants.",
     "audit_dossier_url": "https://designmuseum.dk/wp-content/uploads/2024/06/Aarsrapport_2023_spread_WEB.pdf",
     "statutory_filings_url": "https://designmuseum.dk/wp-content/uploads/2024/06/Aarsrapport_2023_spread_WEB.pdf"
   },
@@ -30553,8 +32479,6 @@
     "id": "the-crab-museum",
     "highlight": "World's only museum dedicated to decapod crustaceans and biological satire in Margate.",
     "admission_details": "Always free public admission; donations and community shop purchases support scientific outreach.",
-    "governance_details": "Artist-run community collective operating with independent non-profit status and transparent civic donation reporting.",
-    "ethical_safeguard": "Complete independence from corporate seafood or agribusiness lobbying; zero fossil fuel sponsorship.",
     "audit_dossier_url": "https://find-and-update.company-information.service.gov.uk/company/13019318",
     "opening_hours": "Sat-Sun 11:00-17:00, Thu-Fri 12:00-16:00"
   },
@@ -30619,8 +32543,6 @@
     "id": "manchester-museum",
     "highlight": "Major university museum collection with landmark Egyptology, archaeology, and indigenous repatriation initiatives.",
     "admission_details": "Free universal public admission for all visitors; donations encouraged for special educational workshops.",
-    "governance_details": "University and civic public trust operating under statutory higher education governance and public council review.",
-    "ethical_safeguard": "Comprehensive repatriation policy and ethical provenance review for all ethnographic and colonial collections.",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/500000",
     "opening_hours": "Tue-Sun 10:00-17:00, Wed until 21:00"
   },
@@ -30639,7 +32561,6 @@
     "sources": [],
     "curatorial_focus": "Social history of London, archaeology, contemporary urban culture",
     "admission_details": "Always free universal admission to permanent galleries; select temporary special programs may require timed tickets.",
-    "ethical_safeguard": "Public scrutiny under Freedom of Information Act and independent ethical oversight committee.",
     "year_founded": 1976,
     "curator_recommendation": "Historic chronicle of London's civic transformation from Roman times to the present.",
     "id": "london-museum",
@@ -30718,10 +32639,51 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "R16",
+          "scope": "London Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-04-23 \u00b7 Project assistant"
+            ],
+            [
+              "Account in brief",
+              "Values gaining museum experience; criticises limited development and hierarchical management. Timing / scope: Before April 2026 pay agreement."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S66",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Museum-of-London-E36637-RVW96876730.htm"
+            }
+          ]
+        },
+        {
+          "id": "R17",
+          "scope": "London Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-01-24 \u00b7 Learning facilitator"
+            ],
+            [
+              "Account in brief",
+              "Praises a friendly, creative team and flexibility; describes sporadic casual work and limited progression. Timing / scope: Docklands; before April 2026 pay agreement."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S67",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Museum-of-London-E36637-RVW94582873.htm"
+            }
+          ]
+        }
       ]
     },
-    "highlight": "Social history of London from prehistoric origins to modern metropolitan subcultures.",
-    "governance_details": "Civic and municipal public trust co-funded by the City of London Corporation and Greater London Authority."
+    "highlight": "Social history of London from prehistoric origins to modern metropolitan subcultures."
   },
   {
     "name": "American Folk Art Museum",
@@ -30738,7 +32700,6 @@
     "sources": [],
     "curatorial_focus": "Self-taught art, vernacular craft, historical and contemporary folk art",
     "admission_details": "Free admission always for all visitors; voluntary contributions directly support emerging self-taught artist programs.",
-    "ethical_safeguard": "Strict conflict-of-interest policy for board trustees and transparent donor reporting.",
     "year_founded": 1961,
     "curator_recommendation": "Crucial institution celebrating idiosyncratic self-taught creators and vernacular artistry.",
     "id": "american-folk-art-museum",
@@ -30785,10 +32746,31 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "R14",
+          "scope": "American Folk Art Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-03-10 \u00b7 Personal assistant"
+            ],
+            [
+              "Account in brief",
+              "Values learning opportunities; identifies the office's remoteness as a drawback."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S64",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-American-Folk-Art-Museum-E278241-RVW95694636.htm"
+            }
+          ]
+        }
       ]
     },
     "highlight": "Premier collection celebrating self-taught, visionary, and folk artists across four centuries.",
-    "governance_details": "Endowed independent non-profit foundation chartered in 1961 with transparent 990 statutory disclosures.",
     "opening_hours": "Wed-Sun 11:30-18:00"
   },
   {
@@ -30806,7 +32788,6 @@
     "sources": [],
     "curatorial_focus": "20th-century classical modernism, Mies van der Rohe architecture, modern sculpture",
     "admission_details": "Subsidized civic admission \u20ac10 / concessions \u20ac5 / Free admission for children and youth under 18.",
-    "ethical_safeguard": "Federal transparency covenants and rigorous public committee oversight against commercial lobbying.",
     "year_founded": 1968,
     "id": "neue-nationalgalerie-berlin",
     "audit_dossier_url": "https://www.preussischer-kulturbesitz.de/en/financial-reporting.html",
@@ -30860,10 +32841,71 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD35",
+          "scope": "Neue Nationalgalerie; KW Institute for Contemporary Art",
+          "fields": [
+            [
+              "Original post date",
+              "2026-09-13"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/WriteStreakGerman \u00b7 Claimed visitor account"
+            ],
+            [
+              "What was retained",
+              "A visitor praises a Neue Nationalgalerie exhibition and performance but finds KW less interesting after a long queue, while remaining glad to have attended both."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S269"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S269",
+              "url": "https://www.reddit.com/r/WriteStreakGerman/comments/1wf3no5/streak_854_art_week_2/"
+            }
+          ]
+        },
+        {
+          "id": "RD37",
+          "scope": "Neue Nationalgalerie",
+          "fields": [
+            [
+              "Original post date",
+              "2026-01-23"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/berlin \u00b7 Selected visitor comments"
+            ],
+            [
+              "What was retained",
+              "Replies appreciate portable museum seating and describe crowding at The Clock. A reply corrects a mistaken museum name; an official release confirms Neue Nationalgalerie as the venue."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt; S271, S284"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S271",
+              "url": "https://www.reddit.com/r/berlin/comments/1qkxwl1/something_new_in_berlins_main_museums_worth_it/"
+            },
+            {
+              "id": "S284",
+              "url": "https://www.smb.museum/fileadmin/website/Presse/Pressematerial/2026/01/NNG_Marclay_Finale/NNG_260115_Marclay_Finale_PR_en.pdf"
+            }
+          ]
+        }
       ]
     },
     "highlight": "Mies van der Rohe's landmark glass-and-steel temple housing 20th-century classical modernism.",
-    "governance_details": "National and state cultural institution governed by the Prussian Cultural Heritage Foundation public charter.",
     "opening_hours": "Tue-Sun 10:00-18:00, Thu 10:00-20:00"
   },
   {
@@ -30881,7 +32923,6 @@
     "sources": [],
     "curatorial_focus": "Contemporary art from 1960 to the present, Joseph Beuys archive, site-specific installations",
     "admission_details": "Subsidized admission \u20ac10 / concessions \u20ac5; completely free admission for visitors under 18.",
-    "ethical_safeguard": "Public sector ethics code with open audit reports published annually under federal regulations.",
     "year_founded": 1996,
     "curator_recommendation": "Vast neo-Renaissance railway terminus converted into Berlin's premier museum for cutting-edge contemporary art.",
     "id": "hamburger-bahnhof-berlin",
@@ -30924,7 +32965,6 @@
       ]
     },
     "highlight": "Former railway terminus hosting monumental contemporary installations, Joseph Beuys archives, and media art.",
-    "governance_details": "Federal public institution under the statutory charter of the Staatliche Museen zu Berlin.",
     "opening_hours": "Tue-Fri 10:00-18:00, Thu until 20:00, Sat-Sun 11:00-18:00"
   },
   {
@@ -30942,7 +32982,6 @@
     "sources": [],
     "curatorial_focus": "Decolonial, queer, diasporic, and intersectional contemporary arts and community programming",
     "admission_details": "Pay-what-you-wish sliding scale \u20ac0\u2013\u20ac10; no one turned away for lack of funds at any public programs.",
-    "ethical_safeguard": "Strict anti-censorship mandate and grassroots democratic accountability to cultural communities.",
     "year_founded": 2020,
     "curator_recommendation": "Independent anti-disciplinary cultural hub championing decolonial artistic inquiry.",
     "id": "oyoun-berlin",
@@ -30990,10 +33029,39 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD19",
+          "scope": "Oyoun",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/berlin \u00b7 2022-05-25"
+            ],
+            [
+              "Evidence type",
+              "Community recommendation"
+            ],
+            [
+              "What the excerpt supports",
+              "A comment recommends Oyoun as somewhere to spend time and meet people within a Berlin community discussion. It records a positive historical recommendation."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt. S252"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S252",
+              "url": "https://www.reddit.com/r/berlin/comments/uxbfrg"
+            }
+          ]
+        }
       ]
     },
     "highlight": "Intersectional, anti-colonial cultural center fostering queer, diasporic, and migrant artistic practices in Neuk\u00f6lln.",
-    "governance_details": "Artist-run community collective operating with independent non-profit status and cooperative decision-making.",
     "opening_hours": "Wed-Sun 14:00-21:00",
     "tier_note": "No source outside the museum is recorded."
   },
@@ -31012,7 +33080,6 @@
     "sources": [],
     "curatorial_focus": "Symphonic acoustics, classical music, recitals, and contemporary orchestral works",
     "admission_details": "Ticketed concert and tour programs \u20ac12\u2013\u20ac18 with civic youth discounts and free public lunch concerts.",
-    "ethical_safeguard": "Statutory Dutch cultural governance code (Governance Code Cultuur) compliance audited yearly.",
     "year_founded": 1888,
     "id": "het-concertgebouw-amsterdam",
     "statutory_filings_url": "https://www.google.com/search?q=Het+Concertgebouw+annual+report",
@@ -31051,9 +33118,30 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "R24",
+          "scope": "Het Concertgebouw",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2021-11-29 \u00b7 Hospitality worker"
+            ],
+            [
+              "Account in brief",
+              "Values music access, colleagues, and student-friendly hours; says the work fits poorly alongside another full-time job. Timing / scope: Historical account; venue employer."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S74",
+              "url": "https://www.glassdoor.nl/Reviews/Het-Concertgebouw-Reviews-E2454692.htm"
+            }
+          ]
+        }
       ]
-    },
-    "governance_details": "Public-civic co-governance trust balancing statutory municipal subsidies with transparent donor stewardship."
+    }
   },
   {
     "name": "Casa de la Arquitectura",
@@ -31070,7 +33158,6 @@
     "sources": [],
     "curatorial_focus": "Contemporary Spanish architecture, urbanism, landscape, and spatial design",
     "admission_details": "Always free public admission to all exhibitions, lectures, and public architecture workshops.",
-    "ethical_safeguard": "100% publicly funded with democratic civil service administration and open public contracts portal.",
     "year_founded": 2023,
     "curator_recommendation": "Spain's dedicated national institution highlighting sustainable spatial design and architectural history.",
     "id": "casa-de-la-arquitectura-madrid",
@@ -31121,7 +33208,6 @@
       ]
     },
     "highlight": "National Spanish forum in Nuevos Ministerios exploring civic urbanism, housing justice, and public infrastructure.",
-    "governance_details": "National state cultural institution operating directly under the Ministry of Housing and Urban Agenda.",
     "opening_hours": "Tue-Sat 11:00-20:00, Sun 11:00-15:00"
   },
   {
@@ -31139,7 +33225,6 @@
     "sources": [],
     "curatorial_focus": "International museum loans, ancient civilizations, photography, modern art, Herzog & de Meuron vertical garden",
     "admission_details": "Subsidized civic admission \u20ac6 / free for under-16s and registered civic partner associations.",
-    "ethical_safeguard": "Audited philanthropy charter with strict exclusion of speculative and controversial financial underwriting.",
     "year_founded": 2008,
     "curator_recommendation": "Spectacular Herzog & de Meuron converted power station featuring Patrick Blanc's lush vertical garden.",
     "id": "caixaforum-madrid",
@@ -31180,9 +33265,38 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD43",
+          "scope": "CaixaForum Madrid",
+          "fields": [
+            [
+              "Original post date",
+              "2026-09-29"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/Madrid \u00b7 Selected visitor comments"
+            ],
+            [
+              "What was retained",
+              "Comments appreciate the vertical garden and a commenter says they encountered it while walking; others ask about maintenance. Technical explanations are not verified."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S277"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S277",
+              "url": "https://www.reddit.com/r/Madrid/comments/1wt9xgn/vertical_garden_wall_patrick_blanc_in_madrid_spain/"
+            }
+          ]
+        }
       ]
-    },
-    "governance_details": "Endowed independent foundation operating under statutory Spanish foundation charter with public oversight."
+    }
   },
   {
     "name": "Museo Nacional del Prado",
@@ -31198,15 +33312,37 @@
     "sources": [],
     "curatorial_focus": "Spanish Royal Collection, Vel\u00e1zquez, Goya, El Greco, Hieronymus Bosch, Italian and Flemish masters",
     "admission_details": "Free admission daily from 18:00 to 20:00 (Sun 17:00-19:00); regular ticketed exhibition access \u20ac15.",
-    "ethical_safeguard": "Statutory civil service transparency and national public audit board oversight.",
     "year_founded": 1819,
     "curator_recommendation": "Unrivalled royal collection housing Las Meninas and The Garden of Earthly Delights.",
     "id": "museo-nacional-del-prado",
     "statutory_filings_url": "https://www.google.com/search?q=Museo+Nacional+del+Prado+annual+report",
     "highlight": "Spanish royal and national collection holding the world's greatest works by Vel\u00e1zquez, Goya, and Hieronymus Bosch.",
-    "governance_details": "National state cultural institution governed under specific statutory parliamentary public law 46/2003.",
     "opening_hours": "Mon-Sat 10:00-20:00, Sun 10:00-19:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R73",
+          "scope": "Museo Nacional del Prado",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-02-08 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Values working among art and a good department; cites competitive examinations as a barrier to securing a museum post."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S117",
+              "url": "https://www.glassdoor.es/Opiniones/Opini%C3%B3n-empleado-Museo-Nacional-del-Prado-E3191604-RVW102736415.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Museo Nacional Thyssen-Bornemisza",
@@ -31222,15 +33358,85 @@
     "sources": [],
     "curatorial_focus": "Eight centuries of European painting, Impressionism, German Expressionism, Russian Constructivism",
     "admission_details": "Free open access Mondays from 12:00 to 16:00; regular exhibition tickets \u20ac13 with generous student concessions.",
-    "ethical_safeguard": "State patron board representation and transparent public accounting subject to Tribunal de Cuentas.",
     "year_founded": 1992,
     "curator_recommendation": "Fabulous survey spanning eight centuries of Western painting bridging the Prado and Reina Sof\u00eda.",
     "id": "museo-thyssen-bornemisza",
     "statutory_filings_url": "https://www.google.com/search?q=Museo+Nacional+Thyssen-Bornemisza+annual+report",
     "highlight": "Chronological survey of eight centuries of Western painting from Duccio to modern avant-garde movements.",
-    "governance_details": "Public-civic co-governance trust co-founded by the Spanish State with parliamentary oversight.",
     "opening_hours": "Tue-Sun 10:00-19:00, Mon 12:00-16:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD21",
+          "scope": "Museo del Prado; Museo Reina Sof\u00eda; Museo Nacional Thyssen-Bornemisza",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/MadridTravelGuide \u00b7 2024-12-07"
+            ],
+            [
+              "Evidence type",
+              "Visitor comments"
+            ],
+            [
+              "What the excerpt supports",
+              "A commenter describes needing the original pass-confirmation PDF to obtain separate Prado and Reina Sof\u00eda tickets, after a wallet download and poor connectivity caused confusion."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt. S254"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S254",
+              "url": "https://www.reddit.com/r/MadridTravelGuide/comments/1h8v2yj/madrid_paseo_del_arte_pass/"
+            }
+          ]
+        },
+        {
+          "id": "R74",
+          "scope": "Museo Nacional Thyssen-Bornemisza",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-11-18 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues; alleges misuse of freelance contracts and unpaid internships, and criticises pay, hierarchy, communication, and progression."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S118",
+              "url": "https://www.glassdoor.es/Opiniones/Opini%C3%B3n-empleado-Thyssen-Bornemisza-Museo-Nacional-E2916948-RVW101345179.htm"
+            }
+          ]
+        },
+        {
+          "id": "R75",
+          "scope": "Museo Nacional Thyssen-Bornemisza",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-11-07 \u00b7 General services assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues, cultural work, and flexible hours; criticises pay, limited progression, and turnover. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S119",
+              "url": "https://www.glassdoor.es/Opiniones/Opini%C3%B3n-empleado-Thyssen-Bornemisza-Museo-Nacional-E2916948-RVW92630317.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Teatro Real",
@@ -31246,14 +33452,56 @@
     "sources": [],
     "curatorial_focus": "Grand opera, international co-productions, classical ballet, symphony concerts",
     "admission_details": "Ticketed architectural tours and daytime exhibitions \u20ac14 / generous student and youth discounts.",
-    "ethical_safeguard": "Audited compliance with state ethics requirements and transparent donor disclosure registers.",
     "year_founded": 1850,
     "curator_recommendation": "Spain's premier lyric theatre facing the Palacio Real.",
     "id": "teatro-real-madrid",
     "statutory_filings_url": "https://www.google.com/search?q=Teatro+Real+annual+report",
     "highlight": "Spain's historic opera house staging major civic commissions, operatic productions, and youth music initiatives.",
-    "governance_details": "Public-civic co-governance trust co-funded by Ministry of Culture, Madrid Community, and City of Madrid.",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R76",
+          "scope": "Teatro Real",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-09-08 \u00b7 Technician"
+            ],
+            [
+              "Account in brief",
+              "Values occasional ticket access; alleges poor work-life balance, favouritism, and unclear contracting or duties. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S120",
+              "url": "https://www.glassdoor.es/Opiniones/Opini%C3%B3n-empleado-Teatro-Real-E7190623-RVW90827175.htm"
+            }
+          ]
+        },
+        {
+          "id": "R77",
+          "scope": "Teatro Real",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-10-09 \u00b7 Anonymous finance / accounting intern"
+            ],
+            [
+              "Account in brief",
+              "Praises the atmosphere and productive relationships across departments; says the internship was unpaid and some processes outdated."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S121",
+              "url": "https://www.glassdoor.es/Opiniones/Opini%C3%B3n-empleado-Teatro-Real-E7190623-RVW100549556.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Barbican Centre",
@@ -31269,11 +33517,9 @@
     "sources": [],
     "curatorial_focus": "Brutalist architecture, contemporary art gallery, London Symphony Orchestra home, international cinema",
     "admission_details": "Foyers, conservatory, and public library always free; curated art gallery exhibitions ticketed \u20ac14\u2013\u20ac16.",
-    "ethical_safeguard": "City public audit committee scrutiny and transparent ethics review for commercial partnerships.",
     "year_founded": 1982,
     "id": "barbican-centre-london",
     "statutory_filings_url": "https://www.google.com/search?q=Barbican+Centre+annual+report",
-    "governance_details": "Civic and municipal public trust funded by the City of London Corporation as part of its public cultural mandate.",
     "opening_hours": "Mon-Sat 09:30-23:00, Sun 11:00-23:00",
     "tier_note": "No reason for the flag is recorded.",
     "gossip_data": {
@@ -31335,6 +33581,140 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "RD23",
+          "scope": "Barbican Centre",
+          "fields": [
+            [
+              "Original post date",
+              "2026-09-30"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/london \u00b7 Claimed visitor account"
+            ],
+            [
+              "What was retained",
+              "A claimed repeat visitor reports getting lost while finding the Barbican entrance; replies describe route-dependent confusion. Humorous replies are not treated as literal long-term experiences."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt; S257"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S257",
+              "url": "https://www.reddit.com/r/london/comments/1wu4vqz/barbican_centre/"
+            }
+          ]
+        },
+        {
+          "id": "RD24",
+          "scope": "Barbican Centre",
+          "fields": [
+            [
+              "Original post date",
+              "2026-05-25"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/london \u00b7 Claimed visitor account"
+            ],
+            [
+              "What was retained",
+              "A poster says they booked a Barbican tour and recommends it; selected replies appreciate the architecture, with a contrasting aesthetic opinion also visible."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt; S258"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S258",
+              "url": "https://www.reddit.com/r/london/comments/1tn4rh1/photos_from_the_barbican_tour/"
+            }
+          ]
+        },
+        {
+          "id": "RD25",
+          "scope": "Barbican Centre",
+          "fields": [
+            [
+              "Original post date",
+              "2025-12-11"
+            ],
+            [
+              "Subreddit / evidence role",
+              "r/london \u00b7 News reaction"
+            ],
+            [
+              "What was retained",
+              "A news thread discusses a future renovation pause. Official pages separately describe a June 2028\u2013June 2029 programme pause and the wider renewal project."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt; S259, S281, S288"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S259",
+              "url": "https://www.reddit.com/r/london/comments/1pk6fs2/barbican_to_close_its_doors_for_a_year_for/"
+            },
+            {
+              "id": "S281",
+              "url": "https://www.barbican.org.uk/our-story/press-room/green-light-for-landmark-barbican-transformation-plan"
+            },
+            {
+              "id": "S288",
+              "url": "https://www.barbican.org.uk/renewal"
+            }
+          ]
+        },
+        {
+          "id": "R42",
+          "scope": "Barbican Centre",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-04-23 \u00b7 Intern"
+            ],
+            [
+              "Account in brief",
+              "Values learning through live projects; describes difficult management experiences."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S89",
+              "url": "https://www.glassdoor.co.uk/Reviews/Employee-Review-Barbican-Centre-E765205-RVW103692173.htm"
+            }
+          ]
+        },
+        {
+          "id": "R43",
+          "scope": "Barbican Centre",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-11-18 \u00b7 Ticket sales advisor"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues, cultural access, and flexible hours; finds work repetitive and pay insufficient for London living costs."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S90",
+              "url": "https://www.glassdoor.co.uk/Reviews/Employee-Review-Barbican-Centre-E765205-RVW101356097.htm"
+            }
+          ]
+        }
       ]
     }
   },
@@ -31351,16 +33731,58 @@
     "sources": [],
     "curatorial_focus": "Artist-led academy exhibitions, Summer Exhibition, RA Schools, architectural forums",
     "admission_details": "Free universal access to public courtyard, collection gallery, and RA Schools; temporary exhibitions ticketed.",
-    "ethical_safeguard": "Registered charity subject to UK Charity Commission ethical standards and public donor reporting.",
     "year_founded": 1768,
     "curator_recommendation": "Britain's historic artist-run academy housed in magnificent Burlington House.",
     "id": "royal-academy-of-arts-london",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1125341",
     "statutory_filings_url": "https://www.google.com/search?q=Royal+Academy+of+Arts+annual+report",
     "highlight": "Artist-led institution founded in 1768 championing contemporary practice, annual Summer Exhibition, and free schools.",
-    "governance_details": "Endowed independent foundation managed by practicing artist Royal Academicians with charitable trust status.",
     "opening_hours": "Tue-Sun 10:00-18:00, Fri until 21:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R46",
+          "scope": "Royal Academy of Arts",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-02-15 \u00b7 Administrative assistant"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues, benefits, and feeling supported within the team; reports no drawbacks."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S93",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Royal-Academy-of-Arts-E1160171-RVW102835984.htm"
+            }
+          ]
+        },
+        {
+          "id": "R47",
+          "scope": "Royal Academy of Arts",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-01-06 \u00b7 Content editor"
+            ],
+            [
+              "Account in brief",
+              "Praises staff talent; alleges wage suppression, financial mismanagement, redundancies, and reliance on employees' passion rather than adequate pay."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S94",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Royal-Academy-of-Arts-E1160171-RVW102094306.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Institute of Contemporary Arts (ICA)",
@@ -31377,15 +33799,57 @@
     "sources": [],
     "curatorial_focus": "Radical contemporary art, avant-garde cinema, experimental music, performance, political forums",
     "admission_details": "Day memberships and sliding-scale civic entry \u20ac0\u2013\u20ac5; completely free community admission Tuesdays.",
-    "ethical_safeguard": "Strict curatorial autonomy with complete refusal of arms, fossil fuel, and predatory corporate backing.",
     "year_founded": 1946,
     "curator_recommendation": "The historic crucible of British post-war avant-garde culture located on The Mall.",
     "id": "ica-london",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/236818",
     "statutory_filings_url": "https://www.google.com/search?q=Institute+of+Contemporary+Arts+(ICA)+annual+report",
-    "governance_details": "Artist-run collective and non-profit kunsthalle with registered UK charitable trust status.",
     "opening_hours": "Tue-Sun 12:00-21:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R48",
+          "scope": "Institute of Contemporary Arts",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-04-02 \u00b7 Manager"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues, programming, and cinema access; criticises disorganised management and pay."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S95",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Institute-of-Contemporary-Arts-E669772-RVW103417928.htm"
+            }
+          ]
+        },
+        {
+          "id": "R49",
+          "scope": "Institute of Contemporary Arts",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-03-13 \u00b7 Public advisor"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues, cultural events, and a relaxed workplace; notes an ageing building that can be cold."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S96",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Institute-of-Contemporary-Arts-E669772-RVW103157264.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "New Museum of Contemporary Art",
@@ -31401,13 +33865,11 @@
     "sources": [],
     "curatorial_focus": "Living contemporary artists, Triennial, global digital art, SANAA architecture on the Bowery",
     "admission_details": "Pay-what-you-wish admission every Thursday evening 19:00-21:00; regular exhibition tickets  with student discounts.",
-    "ethical_safeguard": "Form 990 statutory disclosures and independent museum staff union ethical guidelines.",
     "year_founded": 1977,
     "id": "new-museum-new-york",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/organizations/132918804",
     "statutory_filings_url": "https://www.google.com/search?q=New+Museum+of+Contemporary+Art+annual+report",
     "highlight": "Only dedicated contemporary art museum in Manhattan with landmark SANAA stacked architecture on the Bowery.",
-    "governance_details": "Endowed independent foundation established in 1977 with 501(c)(3) statutory public reporting.",
     "opening_hours": "Tue-Sun 11:00-18:00, Thu until 21:00",
     "tier_note": "No reason for the flag is recorded.",
     "gossip_data": {
@@ -31437,6 +33899,48 @@
             }
           ]
         }
+      ],
+      "accounts": [
+        {
+          "id": "R54",
+          "scope": "New Museum of Contemporary Art",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-08-16 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Values the location and some exhibitions; alleges a rigid hierarchy and poor staff treatment."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S101",
+              "url": "https://api.glassdoor.com/Reviews/Employee-Review-New-Museum-of-Contemporary-Art-E269928-RVW105206368.htm"
+            }
+          ]
+        },
+        {
+          "id": "R55",
+          "scope": "New Museum of Contemporary Art",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-07-14 \u00b7 Social media manager"
+            ],
+            [
+              "Account in brief",
+              "Values the organisation's cultural importance; reports tight budgets and insufficient resources."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S102",
+              "url": "https://api.glassdoor.com/Reviews/Employee-Review-New-Museum-of-Contemporary-Art-E269928-RVW104779872.htm"
+            }
+          ]
+        }
       ]
     }
   },
@@ -31454,14 +33958,56 @@
     "sources": [],
     "curatorial_focus": "Next Wave Festival, avant-garde performing arts, independent cinema, opera, dance",
     "admission_details": "Sliding scale and free community cinema tickets; ticketed mainstage performing arts from .",
-    "ethical_safeguard": "Public municipal reporting compliance and transparent donor integrity covenants.",
     "year_founded": 1861,
     "curator_recommendation": "America's oldest continuously operating performing arts center, home to the Next Wave Festival.",
     "id": "bam-new-york",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/organizations/111630790",
     "statutory_filings_url": "https://www.google.com/search?q=Brooklyn+Academy+of+Music+(BAM)+annual+report",
-    "governance_details": "Civic and municipal public trust co-supported by NYC Department of Cultural Affairs and private charity.",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R56",
+          "scope": "Brooklyn Academy of Music",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-08-06 \u00b7 Usher"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues and the organisation; reports no drawbacks. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S103",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Brooklyn-Academy-of-Music-E5420-RVW89852564.htm"
+            }
+          ]
+        },
+        {
+          "id": "R57",
+          "scope": "Brooklyn Academy of Music",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-07-19 \u00b7 Graphic designer"
+            ],
+            [
+              "Account in brief",
+              "Praises colleagues' skills; criticises management support for progression and living standards. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S104",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Brooklyn-Academy-of-Music-E5420-RVW89311887.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Berlinische Galerie",
@@ -31478,15 +34024,57 @@
     "sources": [],
     "curatorial_focus": "Berlin art from 1870 to the present, Berlin Dada, Eastern European avant-garde, architecture, photography",
     "admission_details": "Subsidized entry \u20ac10 / concessions \u20ac6 / Completely free on first Sunday of every month (Museumssonntag).",
-    "ethical_safeguard": "Public foundation law governance with full parliamentary oversight and open public budget audits.",
     "year_founded": 1975,
     "curator_recommendation": "Essential museum documenting Berlin's turbulent artistic transformations from Dada to post-wall subculture.",
     "id": "berlinische-galerie",
     "statutory_filings_url": "https://www.google.com/search?q=Berlinische+Galerie+annual+report",
     "highlight": "State museum for modern art, photography, and architecture created in Berlin from 1870 to the present day.",
-    "governance_details": "National state cultural institution operating under the public foundation charter of Berlin State.",
     "opening_hours": "Wed-Mon 10:00-18:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R65",
+          "scope": "Berlinische Galerie",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-02 \u00b7 Design freelancer"
+            ],
+            [
+              "Account in brief",
+              "Praises teamwork, communication, pay, and inclusion; no negative narrative located."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S112",
+              "url": "https://www.kununu.com/de/berlinische-galerie-landesmuseum-fuer-moderne-kunst-fotografie-und-architektur-oeffentlichen-rechts/kommentare"
+            }
+          ]
+        },
+        {
+          "id": "R66",
+          "scope": "Berlinische Galerie",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-03 \u00b7 Production freelancer"
+            ],
+            [
+              "Account in brief",
+              "Values trust; reports fifteen years without a permanent post and unavailable freelancer training. Context: Historical."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S112",
+              "url": "https://www.kununu.com/de/berlinische-galerie-landesmuseum-fuer-moderne-kunst-fotografie-und-architektur-oeffentlichen-rechts/kommentare"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Museum f\u00fcr Naturkunde",
@@ -31503,13 +34091,55 @@
     "sources": [],
     "curatorial_focus": "Evolutionary research, biodiversity, palaeontology, Tristan Otto T-rex, wet collections",
     "admission_details": "Subsidized admission \u20ac8 / concessions \u20ac5 / family concessions and free school group programs.",
-    "ethical_safeguard": "Statutory scientific integrity code and peer-reviewed ethical review for all research expeditions.",
     "year_founded": 1810,
     "id": "museum-fuer-naturkunde-berlin",
     "statutory_filings_url": "https://www.google.com/search?q=Museum+f\u00fcr+Naturkunde+annual+report",
-    "governance_details": "University and academic research institute member of the Leibniz Association with state charter.",
     "opening_hours": "Tue-Fri 09:30-18:00, Sat-Sun 10:00-18:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R01",
+          "scope": "Museum f\u00fcr Naturkunde",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-12 \u00b7 Employee"
+            ],
+            [
+              "Account in brief",
+              "A self-described employee reported structural and communication problems in a December 2025 Kununu review."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S47",
+              "url": "https://www.kununu.com/de/museum-fuer-naturkunde/kommentare"
+            }
+          ]
+        },
+        {
+          "id": "R27",
+          "scope": "Museum f\u00fcr Naturkunde",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2023-11-14 \u00b7 Research assistant"
+            ],
+            [
+              "Account in brief",
+              "Values the setting and work-life balance; criticises administrative overload, paperwork, and management. Timing / scope: Historical former-contractor account."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S77",
+              "url": "https://www.glassdoor.com/Reviews/Employee-Review-Museum-f%C3%BCr-Naturkunde-Berlin-E1118371-RVW81800627.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "J\u00fcdisches Museum Berlin",
@@ -31525,14 +34155,36 @@
     "sources": [],
     "curatorial_focus": "Jewish-German history, Holocaust memorialisation, Daniel Libeskind architecture, contemporary diaspora",
     "admission_details": "Permanent historical exhibition is always free for all visitors; select temporary exhibitions \u20ac8.",
-    "ethical_safeguard": "Federal parliamentary accountability and independent scientific advisory board review.",
     "year_founded": 2001,
     "curator_recommendation": "Daniel Libeskind's masterpiece of deconstructivist architecture presenting two millennia of German-Jewish history.",
     "id": "juedisches-museum-berlin",
     "statutory_filings_url": "https://www.google.com/search?q=J\u00fcdisches+Museum+Berlin+annual+report",
     "highlight": "Daniel Libeskind's deconstructivist masterpiece presenting two millennia of German-Jewish history and cultural dialogue.",
-    "governance_details": "National state cultural institution established under federal German statutory public foundation law.",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R28",
+          "scope": "J\u00fcdisches Museum Berlin",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-07 \u00b7 Administration employee"
+            ],
+            [
+              "Account in brief",
+              "Praises flexible and mobile working, friendly colleagues, and HR support; no negative narrative was located in the excerpt."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S78",
+              "url": "https://www.kununu.com/de/juedisches-museum-berlin/kommentare"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Humboldt Forum",
@@ -31549,15 +34201,141 @@
     "sources": [],
     "curatorial_focus": "Ethnological collections, Asian art, world cultures, Franco Stella architecture",
     "admission_details": "Always free public admission to permanent ethnological and Asian art collections; temporary exhibits \u20ac12.",
-    "ethical_safeguard": "Federal government transparency mandate and international provenance research partnerships.",
     "year_founded": 2020,
     "curator_recommendation": "Monumental cultural complex uniting Berlin's global collections inside the reconstructed Baroque palace.",
     "id": "humboldt-forum-berlin",
     "statutory_filings_url": "https://www.google.com/search?q=Humboldt+Forum+annual+report",
     "highlight": "Reconstructed Berlin Palace housing world cultures, scientific laboratories, and critical colonial history dialogues.",
-    "governance_details": "National state cultural institution operating under federal foundation charter (Stiftung Humboldt Forum).",
     "opening_hours": "Wed-Mon 10:30-18:30",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "RD16",
+          "scope": "Humboldt Forum",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/berlin \u00b7 2025-03-02"
+            ],
+            [
+              "Evidence type",
+              "Claimed visitor account"
+            ],
+            [
+              "What the excerpt supports",
+              "A claimed visitor describes confusion among exhibitions, services and facilities at Humboldt Forum, criticising navigation and explanatory signage during a visit with a family member."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt. S249"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S249",
+              "url": "https://www.reddit.com/r/berlin/comments/1j1zqhp"
+            }
+          ]
+        },
+        {
+          "id": "RD17",
+          "scope": "Humboldt Forum",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/architecture \u00b7 2026-02-18"
+            ],
+            [
+              "Evidence type",
+              "Opinion"
+            ],
+            [
+              "What the excerpt supports",
+              "An architecture thread offers competing views about the reconstructed facade and modern addition, connecting aesthetic judgments with heritage and political interpretations."
+            ],
+            [
+              "Access / sources",
+              "Public excerpt. S250"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S250",
+              "url": "https://www.reddit.com/r/architecture/comments/1r81kc8/humboldt_forum_berlin_blending_the_old_fancy_with/"
+            }
+          ]
+        },
+        {
+          "id": "RD18",
+          "scope": "Humboldt Forum",
+          "fields": [
+            [
+              "Subreddit / post date",
+              "r/berlin \u00b7 2026-04-20"
+            ],
+            [
+              "Evidence type",
+              "News repost / reaction"
+            ],
+            [
+              "What the excerpt supports",
+              "A shared-news thread discusses the supporting association's contract and cites older staff-letter reporting. It raises funding and reputational questions for a primary-document follow-up."
+            ],
+            [
+              "Access / sources",
+              "Indexed excerpt. S251"
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S251",
+              "url": "https://www.reddit.com/r/berlin/comments/1sqmq2e/humboldt_forum_berlin_vertrag_mit_f%C3%B6rderverein/"
+            }
+          ]
+        },
+        {
+          "id": "R34",
+          "scope": "Humboldt Forum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-03 \u00b7 Freelancer"
+            ],
+            [
+              "Account in brief",
+              "Values the content; alleges months-long payment delays and excessive bureaucracy. Timing / scope: Repeat-review account, not independent corroboration."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S82",
+              "url": "https://www.kununu.com/de/humboldt-forum/kommentare"
+            }
+          ]
+        },
+        {
+          "id": "R35",
+          "scope": "Humboldt Forum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-02 \u00b7 Manager"
+            ],
+            [
+              "Account in brief",
+              "Praises work-life balance and pay; says team communication and training could improve."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S82",
+              "url": "https://www.kununu.com/de/humboldt-forum/kommentare"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Deutsches Historisches Museum",
@@ -31574,15 +34352,57 @@
     "sources": [],
     "curatorial_focus": "German history in European context, Zeughaus baroque armoury, I.M. Pei exhibition hall",
     "admission_details": "Subsidized admission \u20ac7 / concessions \u20ac3.50; always completely free for youth under 18.",
-    "ethical_safeguard": "Parliamentary board of trustees and public civil service governance standards.",
     "year_founded": 1987,
     "curator_recommendation": "Germany's national historical museum housed in Berlin's oldest preserved Baroque structure and I.M. Pei's luminous wing.",
     "id": "deutsches-historisches-museum-berlin",
     "statutory_filings_url": "https://www.google.com/search?q=Deutsches+Historisches+Museum+annual+report",
     "highlight": "Germany's national history museum in the Zeughaus on Unter den Linden, featuring I.M. Pei's modern exhibition hall.",
-    "governance_details": "National state cultural institution founded by the Federal Republic of Germany with public charter.",
     "opening_hours": "Fri-Wed 10:00-18:00, Thu 10:00-20:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R31",
+          "scope": "Deutsches Historisches Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-06 \u00b7 Research employee"
+            ],
+            [
+              "Account in brief",
+              "Praises engaged colleagues; criticises hierarchy, decision transparency, and infrastructure."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S80",
+              "url": "https://www.kununu.com/de/deutsches-historisches-museum/kommentare"
+            }
+          ]
+        },
+        {
+          "id": "R32",
+          "scope": "Deutsches Historisches Museum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2025-01 \u00b7 Employee"
+            ],
+            [
+              "Account in brief",
+              "Praises the team, stimulating content, and atmosphere; wants more training."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S80",
+              "url": "https://www.kununu.com/de/deutsches-historisches-museum/kommentare"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Bourse de Commerce \u2013 Pinault Collection",
@@ -31598,14 +34418,36 @@
     "sources": [],
     "curatorial_focus": "Contemporary Pinault Collection, Tadao Ando concrete cylinder, rotunda dome, post-war sculpture",
     "admission_details": "Ticketed exhibition program \u20ac14 / free on the first Saturday evening of every month from 17:00 to 21:00.",
-    "ethical_safeguard": "Statutory French corporate foundation oversight and regular public civic consultation.",
     "year_founded": 2021,
     "id": "bourse-de-commerce-paris",
     "statutory_filings_url": "https://www.google.com/search?q=Bourse+de+Commerce+\u2013+Pinault+Collection+annual+report",
     "highlight": "Tadao Ando's concrete cylinder intervention within the historic Paris grain exchange, showcasing modern masterpieces.",
-    "governance_details": "Private commercial and corporate foundation operating with municipal long-term lease oversight.",
     "opening_hours": "Wed-Mon 11:00-19:00, Fri until 21:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R64",
+          "scope": "Bourse de Commerce \u2013 Pinault Collection",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-05-07 \u00b7 Junior graphic designer (role field); reception worker (review title)"
+            ],
+            [
+              "Account in brief",
+              "Praises benefits, flexible hours, and possible progression; describes initial insecurity and frequent colleague turnover. Context: Historical. Role/title mismatch."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S111",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Bourse-de-Commerce-Pinault-Collection-E9318638-RVW87051900.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Grand Palais (Rmn\u2013Grand Palais)",
@@ -31621,15 +34463,57 @@
     "sources": [],
     "curatorial_focus": "Universal exhibition palace, monumental nave, contemporary international art fairs (Art Basel Paris), historical retrospectives",
     "admission_details": "Ticketed national exhibition program \u20ac16 / concessions \u20ac12 / free for youth and national cultural pass holders.",
-    "ethical_safeguard": "French state public accounting oversight (Cour des Comptes) and transparent public tender audits.",
     "year_founded": 1900,
     "curator_recommendation": "Beaux-Arts glass and iron exhibition palace featuring Europe's largest historic glass roof.",
     "id": "grand-palais-paris",
     "statutory_filings_url": "https://www.google.com/search?q=Grand+Palais+(Rmn\u2013Grand+Palais)+annual+report",
     "highlight": "Historic 1900 Beaux-Arts glass-vaulted monument newly restored for monumental cultural and sporting biennials.",
-    "governance_details": "National state cultural institution operating as a public cultural establishment (EPIC) under Ministry of Culture.",
     "opening_hours": "Wed-Mon 10:00-20:00, Fri until 22:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R60",
+          "scope": "Rmn\u2013Grand Palais (profile name)",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-05-07 \u00b7 Communications officer"
+            ],
+            [
+              "Account in brief",
+              "Values conditional remote working, hours, and cafeteria access; criticises outdated management and processes. Context: Reviewed venue unspecified."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S107",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Rmn-Grand-Palais-E1135521-RVW103864686.htm"
+            }
+          ]
+        },
+        {
+          "id": "R61",
+          "scope": "Rmn\u2013Grand Palais (profile name)",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-02-09 \u00b7 Reception worker"
+            ],
+            [
+              "Account in brief",
+              "Praises pay, recruitment, and working conditions; wants more guidance. Context: Reviewed venue unspecified."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S108",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Rmn-Grand-Palais-E1135521-RVW102748936.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Deutsches Spionagemuseum",
@@ -31644,14 +34528,56 @@
     "sources": [],
     "curatorial_focus": "History of espionage, Cold War Berlin surveillance, cryptography, Enigma machines, interactive laser maze",
     "admission_details": "Standard timed exhibition ticket \u20ac14 / student and concession tickets \u20ac10.",
-    "ethical_safeguard": "Audited consumer protection compliance and independent historical advisory council.",
     "year_founded": 2015,
     "curator_recommendation": "High-tech interactive museum of global espionage and Cold War covert operations on Leipziger Platz.",
     "id": "deutsches-spionagemuseum-berlin",
     "statutory_filings_url": "https://www.google.com/search?q=Deutsches+Spionagemuseum+annual+report",
     "highlight": "Interactive multimedia intelligence museum on Leipziger Platz exploring the history of espionage and surveillance.",
-    "governance_details": "Private commercial and corporate foundation operating with independent curatorial board review.",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R29",
+          "scope": "Deutsches Spionagemuseum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-11 \u00b7 Tourism and leisure apprentice"
+            ],
+            [
+              "Account in brief",
+              "Praises approachable management, respectful colleagues, and varied training; reports no drawbacks. Timing / scope: Historical account."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S79",
+              "url": "https://www.kununu.com/de/deutsches-spionage-museum-dsm/kommentare"
+            }
+          ]
+        },
+        {
+          "id": "R30",
+          "scope": "Deutsches Spionagemuseum",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2024-05 \u00b7 Employee"
+            ],
+            [
+              "Account in brief",
+              "Praises an engaged manager and colleagues; requests fixed hours, higher guide pay, and better communication. Timing / scope: Historical account."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S79",
+              "url": "https://www.kununu.com/de/deutsches-spionage-museum-dsm/kommentare"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Stiftung Stadtmuseum Berlin",
@@ -31667,15 +34593,37 @@
     "sources": [],
     "curatorial_focus": "Berlin culture, urban history, M\u00e4rkisches Museum collections, Nikolaiviertel architecture",
     "admission_details": "Subsidized entry \u20ac8 / concessions \u20ac4 / always completely free on Museum Sunday (first Sunday of month).",
-    "ethical_safeguard": "Public foundation accounting and statutory transparency compliance with Berlin Freedom of Info Law.",
     "year_founded": 1995,
     "curator_recommendation": "State foundation preserving Berlin's rich material culture, architecture, and civic memory.",
     "id": "stiftung-stadtmuseum-berlin",
     "statutory_filings_url": "https://www.google.com/search?q=Stiftung+Stadtmuseum+Berlin+annual+report",
     "highlight": "Network of historic city museums documenting the urban evolution, craft, and civic history of Berlin.",
-    "governance_details": "Civic and municipal public trust governed under public foundation law with Berlin Senate oversight.",
     "opening_hours": "Tue-Sun 10:00-18:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R33",
+          "scope": "Stiftung Stadtmuseum Berlin",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-06 \u00b7 Administration employee"
+            ],
+            [
+              "Account in brief",
+              "Values the location and working hours; criticises management and progression."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S81",
+              "url": "https://www.kununu.com/de/stiftung-stadtmuseum-berlin/kommentare"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "DDR Museum Berlin",
@@ -31691,14 +34639,36 @@
     "sources": [],
     "curatorial_focus": "Everyday life in East Germany, Stasi surveillance, Trabant driving simulator, Plattenbau apartment",
     "admission_details": "Standard exhibition admission \u20ac12.50 / student & youth concession ticket \u20ac7.",
-    "ethical_safeguard": "Audited compliance with educational standards and transparent historical documentation integrity.",
     "year_founded": 2006,
     "curator_recommendation": "Hands-on interactive immersion into daily life, domestic culture, and surveillance in former East Germany.",
     "id": "ddr-museum-berlin",
     "statutory_filings_url": "https://www.google.com/search?q=DDR+Museum+Berlin+annual+report",
     "highlight": "Hands-on experiential museum across from the Berlin Cathedral exploring everyday life behind the Iron Curtain.",
-    "governance_details": "Private commercial and corporate foundation operating with independent historical research council.",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R36",
+          "scope": "DDR Museum Berlin",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-05 \u00b7 Research employee"
+            ],
+            [
+              "Account in brief",
+              "Praises some colleagues; raises concerns about management, support, and safety. Timing / scope: Employment ended in 2024."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S83",
+              "url": "https://www.kununu.com/de/ddr-museum-berlin/kommentare"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Paris Mus\u00e9es (R\u00e9seau des Mus\u00e9es de la Ville de Paris)",
@@ -31714,14 +34684,56 @@
     "sources": [],
     "curatorial_focus": "Municipal collections of the City of Paris, modern art, Parisian history, literary houses, catacombs",
     "admission_details": "Permanent collections in all 14 municipal museums are always 100% free for all public visitors.",
-    "ethical_safeguard": "Democratic municipal council oversight and statutory transparency under French public information laws.",
     "year_founded": 2013,
     "id": "paris-musees-reseau",
     "statutory_filings_url": "https://www.google.com/search?q=Paris+Mus\u00e9es+(R\u00e9seau+des+Mus\u00e9es+de+la+Ville+de+Paris)+annual+report",
     "highlight": "Civic network of 14 municipal museums preserving Paris's public municipal heritage, sculpture, and literature.",
-    "governance_details": "Civic and municipal public trust established as a public establishment of the City of Paris.",
     "opening_hours": "Tue-Sun 10:00-18:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "accounts": [
+        {
+          "id": "R62",
+          "scope": "Paris Mus\u00e9es",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-08-06 \u00b7 Anonymous employee"
+            ],
+            [
+              "Account in brief",
+              "Values the setting and subject matter; alleges poor management, excessive workload, a harmful atmosphere, and high turnover. Context: Reviewed venue unspecified."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S109",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Paris-Mus%C3%A9es-E1360703-RVW105085943.htm"
+            }
+          ]
+        },
+        {
+          "id": "R63",
+          "scope": "Paris Mus\u00e9es",
+          "fields": [
+            [
+              "Posted \u00b7 self-described role",
+              "2026-03-04 \u00b7 Head of service"
+            ],
+            [
+              "Account in brief",
+              "Values the setting; reports organisational disorder and feeling undervalued. Context: Reviewed venue unspecified."
+            ]
+          ],
+          "sources": [
+            {
+              "id": "S110",
+              "url": "https://www.glassdoor.fr/Avis/avis-employ%C3%A9-Paris-Mus%C3%A9es-E1360703-RVW103045775.htm"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "julia-stoschek-foundation",
@@ -31744,7 +34756,6 @@
     "website": "https://www.js-foundation.art",
     "curatorial_focus": "Pioneering time-based media art, multi-channel video installations, performance documentation, VR, and moving-image computer simulations.",
     "admission_details": "100% free public admission to all gallery exhibitions, cinema screenings, and public lectures.",
-    "ethical_safeguard": "Philanthropic non-profit charter dedicated to open public access and cultural preservation; zero fossil fuel or military-industrial connections.",
     "year_founded": 2007,
     "curator_recommendation": "Essential visit for anyone interested in video art and time-based media. Housed in a striking former GDR telecommunications building in Berlin-Mitte, offering free entry to groundbreaking immersive installations.",
     "aliases": [
@@ -31767,7 +34778,6 @@
     "amenities": "Media reading lounge, cinema auditorium, artist video viewing carrels, bookstore.",
     "highlight": "Over 900 seminal video and media artworks by 300+ artists including Hito Steyerl, Arthur Jafa, Pipilotti Rist, Marina Abramovi\u0107, and Douglas Gordon.",
     "visit_url": "https://www.js-foundation.art/visit",
-    "governance_details": "Autonomous non-profit foundation (Julia Stoschek Foundation gGmbH). Transparent statutory filings with 100% free public access and zero corporate defense/weapons or fossil fuel entanglements.",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Julia%20Stoschek%20Foundation",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Julia%20Stoschek%20Foundation"
   },

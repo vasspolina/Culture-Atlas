@@ -23,7 +23,8 @@ TEXT = ['watch', 'funding', 'opening_hours', 'admission_fee', 'admission_policy'
         'ethical_safeguard', 'governance_details', 'curatorial_focus', 'address', 'neighborhood']
 # Invented or unsourced: generated figures and stories, and classification labels that assert verification.
 DROP = ['financial_data', 'temporary_shows', 'floor_plans', 'archives_and_collections', 'building_architecture',
-        'tier_label', 'transparency_grade', 'governance_classification', 'governance_type']
+        'tier_label', 'transparency_grade', 'governance_classification', 'governance_type',
+        'governance_details', 'ethical_safeguard']   # assertions with no source, one of them the same sentence on 36 records
 AGGREGATORS = {'propublica.org', 'findthatcharity.uk', 'charitycommission.gov.uk', 'web.archive.org', 'e-flux.com',
                'facebook.com', 'instagram.com', 'linkedin.com', 'twitter.com', 'x.com', 'wikipedia.org'}
 
@@ -139,7 +140,7 @@ def clean(records, report=None):
                 bump(k)
         g = r.get('gossip_data')
         if g is not None:                      # keep sourced case files only
-            keep = {k: g[k] for k in ('real_cases',) if g.get(k)}
+            keep = {k: g[k] for k in ('real_cases', 'accounts') if g.get(k)}
             if keep:
                 r['gossip_data'] = keep
             else:
