@@ -16386,9 +16386,6 @@ def build():
       ctx.save();
       const isA = inst.tier === 'A';
       const isB = inst.tier === 'B';
-      const isCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
-      const tierColor = isA ? '#10b981' : (isB ? '#be95ff' : (isCommunity ? '#08bdba' : '#38bdf8'));
-      const tierLabel = isA ? 'VERIFIED INDEPENDENT' : (isB ? 'FLAGGED UNDERWRITING' : (isCommunity ? 'COMMUNITY · USER INPUT' : 'UNVERIFIED SPACE'));
 
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
@@ -16407,7 +16404,7 @@ def build():
       const webW = ctx.measureText(domainPillText).width;
 
       const cardW = Math.max(260, Math.min(380, Math.max(nameW, subW, webW + 28) + 32));
-      const cardH = webUrl ? 116 : 82;
+      const cardH = webUrl ? 98 : 64;
 
       let cardX = px - cardW / 2;
       cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
@@ -16434,19 +16431,9 @@ def build():
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
-      // Row 1: Status indicator dot & Tier label
-      ctx.beginPath();
-      ctx.arc(cardX + 16, cardY + 18, 3.5, 0, Math.PI * 2);
-      ctx.fillStyle = tierColor;
-      ctx.fill();
-
-      ctx.font = '11px "PP Museum", "PP Telegraf", sans-serif';
-      ctx.fillStyle = tierColor;
+      // Row 1: Institution Name (Upright PP Museum 500). No tier title above
+      // it: the tier reads from the card's border colour, not from a label.
       ctx.textAlign = 'left';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(tierLabel, cardX + 26, cardY + 18);
-
-      // Row 2: Institution Name (Upright PP Museum 500)
       ctx.font = '500 17px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#ffffff';
       ctx.textBaseline = 'top';
@@ -16458,9 +16445,9 @@ def build():
         }}
         displayName += '…';
       }}
-      ctx.fillText(displayName, cardX + 16, cardY + 34);
+      ctx.fillText(displayName, cardX + 16, cardY + 16);
 
-      // Row 3: Location and Curatorial Focus
+      // Row 2: Location and Curatorial Focus
       ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#94a3b8';
       let displaySub = subText;
@@ -16470,12 +16457,12 @@ def build():
         }}
         displaySub += '…';
       }}
-      ctx.fillText(displaySub, cardX + 16, cardY + 58);
+      ctx.fillText(displaySub, cardX + 16, cardY + 40);
 
-      // Row 4: Unified Action Link Pill (if webUrl exists)
+      // Row 3: Unified Action Link Pill (if webUrl exists)
       if (webUrl) {{
         const btnX = cardX + 16;
-        const btnY = cardY + 80;
+        const btnY = cardY + 62;
         const btnW = Math.min(maxTextW, webW + 24);
         const btnH = 26;
 
