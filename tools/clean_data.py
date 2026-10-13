@@ -196,6 +196,13 @@ def clean(records, report=None):
             r['tier_note'] = 'No reason for the flag is recorded.'
             bump('tier_B_to_unverified')
     corrections = json.load(open(CORRECTIONS, encoding='utf-8')) if CORRECTIONS.exists() else {}
+    # a search page is not a source
+    for r in records:
+        if r.get('sources'):
+            kept = [u for u in r['sources'] if not re.search(r'(^|//)(www\.)?(search\.brave\.com|duckduckgo\.com|bing\.com/search|google\.[a-z.]+/search)|[?&/]search\b', u)]
+            if len(kept) != len(r['sources']):
+                bump('search_page_sources', len(r['sources']) - len(kept))
+                r['sources'] = kept
     # a founding year shared by dozens of unrelated museums is a default, not a fact
     years = collections.Counter(str(r['year_founded']) for r in records if r.get('year_founded'))
     for r in records:
