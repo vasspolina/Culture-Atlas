@@ -138,10 +138,6 @@
       font-style: normal !important;
     }
 
-    /* SPEC COMPLIANCE STUB: Keeps test_xray_gossip_and_shows.py static check safe */
-    .legacy-xray-spec-200 {
-      font-weight: 200 !important;
-    }
 
     /* ========================================================= */
     /* STRICT 3 CARBON TYPE SIZES: 14px (Body), 18px (Heading), 24px (Display) */
@@ -2362,9 +2358,6 @@ return maplibregl$1;
         </button>
         <button id="backToCountryBtn" class="hidden text-white hover:text-[#f4f4f4] hover:underline text-[14px] flex items-center gap-1 transition cursor-pointer shrink-0" title="Return to country overview">
           <span id="backToCountryText" class="font-normal">Country</span>
-        </button>
-        <button id="toggleSatelliteMapBtn" type="button" onclick="window.toggleSatelliteMode()" class="text-emerald-300 hover:text-white hover:underline text-[14px] flex items-center gap-1 transition cursor-pointer shrink-0" title="Toggle Google Maps Satellite layer">
-          <span>Satellite</span>
         </button>
         <div id="cityViewTitleBadge" class="text-[#f4f4f4] text-[14px] font-mono flex items-center gap-1 shrink-0 truncate max-w-[190px] sm:max-w-none">
           <span id="cityViewTitleText">LONDON, STREET VIEW</span>
@@ -8716,19 +8709,9 @@ return maplibregl$1;
         openmaptiles: {
           type: 'vector',
           tiles: ['https://tiles.openfreemap.org/planet/latest/{z}/{x}/{y}.pbf'],
+          attribution: '<a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a> <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a> <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>',
           minzoom: 0,
           maxzoom: 14
-        },
-        'google-satellite': {
-          type: 'raster',
-          tiles: [
-            'https://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-            'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-            'https://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-            'https://mt3.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
-          ],
-          tileSize: 256,
-          maxzoom: 20
         }
       },
       glyphs: 'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf',
@@ -8776,23 +8759,6 @@ return maplibregl$1;
           paint: {
             'line-color': '#0f1724',
             'line-width': ['interpolate', ['exponential', 1.3], ['zoom'], 8, 1, 14, 4]
-          }
-        },
-        {
-          id: 'google-satellite-layer',
-          type: 'raster',
-          source: 'google-satellite',
-          minzoom: 12,
-          paint: {
-            'raster-opacity': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              12, 0.0,
-              14, 0.55,
-              16, 0.90,
-              18, 0.95
-            ]
           }
         },
         {
@@ -8930,7 +8896,7 @@ return maplibregl$1;
           zoom: 14,
           pitch: 35,
           bearing: 0,
-          attributionControl: false
+          attributionControl: { compact: true }
         });
 
         cityVectorMap.addControl(new maplibregl.NavigationControl({
@@ -9315,26 +9281,6 @@ return maplibregl$1;
     // =========================================================================
     //  GOOGLE MAPS SATELLITE & REAL SPACE VISUALS ENGINE
     // =========================================================================
-    let isSatelliteModeActive = true;
-    function toggleSatelliteMode() {
-      if (!cityVectorMap) return;
-      isSatelliteModeActive = !isSatelliteModeActive;
-      if (typeof cityVectorMap.setLayoutProperty === 'function' && cityVectorMap.getLayer('google-satellite-layer')) {
-        cityVectorMap.setLayoutProperty(
-          'google-satellite-layer',
-          'visibility',
-          isSatelliteModeActive ? 'visible' : 'none'
-        );
-      }
-      const btn = document.getElementById('toggleSatelliteMapBtn');
-      if (btn) {
-        btn.classList.toggle('text-emerald-300', isSatelliteModeActive);
-        btn.classList.toggle('border-emerald-500/60', isSatelliteModeActive);
-        btn.classList.toggle('text-[#f4f4f4]', !isSatelliteModeActive);
-        btn.classList.toggle('border-[#383838]', !isSatelliteModeActive);
-      }
-    }
-    window.toggleSatelliteMode = toggleSatelliteMode;
 
     // =========================================================================
     //  3D ARCHITECTURAL CAMERA HEADROOM & MAST SPACING ARCHITECTURE
@@ -11105,7 +11051,7 @@ return maplibregl$1;
             strokeColor = '#34d399';
           } else {
             fillColor = isDimmed ? 'rgba(59, 130, 246, 0.25)' : '#2563eb';
-            strokeColor = '#60a5fa';
+            strokeColor = '#f4f4f4';
           }
         } else {
           // Trustee / Corporation
@@ -11158,7 +11104,7 @@ return maplibregl$1;
           trusteeCtx.roundRect(n.x - tw / 2 - 4, ly - 7, tw + 8, 14, 4);
           trusteeCtx.fill();
 
-          trusteeCtx.fillStyle = isFocus ? '#f3e8ff' : (isDimmed ? '#f4f4f4' : '#e2e8f0');
+          trusteeCtx.fillStyle = isFocus ? '#f3e8ff' : (isDimmed ? '#f4f4f4' : '#f4f4f4');
           trusteeCtx.textAlign = 'center';
           trusteeCtx.textBaseline = 'middle';
           trusteeCtx.fillText(label, n.x, ly);
@@ -12473,7 +12419,7 @@ return maplibregl$1;
               ctx.closePath();
               ctx.fill();
               ctx.strokeStyle = isCActive 
-                ? (isGossipModeActive ? '#facc15' : '#60a5fa') 
+                ? (isGossipModeActive ? '#facc15' : '#f4f4f4') 
                 : isCHovered 
                 ? (isGossipModeActive ? '#fde047' : '#f4f4f4') 
                 : (isGossipModeActive ? '#2e2205' : '#050c18');
@@ -12529,7 +12475,7 @@ return maplibregl$1;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = isCActive ? (isGossipModeActive ? '#facc15' : '#60a5fa') : isCHovered ? (isGossipModeActive ? '#fde047' : '#f4f4f4') : (isGossipModeActive ? '#2e2205' : '#050c18');
+                ctx.strokeStyle = isCActive ? (isGossipModeActive ? '#facc15' : '#f4f4f4') : isCHovered ? (isGossipModeActive ? '#fde047' : '#f4f4f4') : (isGossipModeActive ? '#2e2205' : '#050c18');
                 ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
                 ctx.stroke();
               }
@@ -12645,7 +12591,7 @@ return maplibregl$1;
               if (isClustered) {
                 // Render City Name on left
                 ctx.font = '14px "PP Mori", sans-serif';
-                ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#e2e8f0');
+                ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#f4f4f4');
                 ctx.textAlign = 'left';
                 ctx.textBaseline = 'middle';
                 ctx.fillText(city.name, bx + 7, by + bh / 2 + 0.5);
@@ -12691,7 +12637,7 @@ return maplibregl$1;
                 ctx.fillStyle = isSelected 
                   ? (isGossipModeActive ? '#facc15' : '#f4f4f4') 
                   : isHovered 
-                  ? (isGossipModeActive ? '#fde047' : '#60a5fa') 
+                  ? (isGossipModeActive ? '#fde047' : '#f4f4f4') 
                   : (isGossipModeActive ? '#eab308' : '#3b82f6');
                 ctx.fill();
               }
@@ -12752,7 +12698,7 @@ return maplibregl$1;
                   ctx.strokeStyle = isSel 
                     ? (isGossipModeActive ? '#facc15' : '#38bdf8') 
                     : isHov
-                    ? (isGossipModeActive ? '#fde047' : '#60a5fa') 
+                    ? (isGossipModeActive ? '#fde047' : '#f4f4f4') 
                     : (isGossipModeActive ? 'rgba(234, 179, 8, 0.65)' : 'rgba(255, 255, 255, 0.3)');
                   ctx.lineWidth = 1;
                   ctx.stroke();
@@ -12970,7 +12916,7 @@ return maplibregl$1;
           ctx.beginPath();
           ctx.arc(d.x, d.y, isSel ? 4.5 : isHov ? 4 : (isVisualCritiqueOnly && hasVc ? 3.8 : 2.5), 0, Math.PI * 2);
           ctx.fillStyle = isHov 
-            ? (isGossipModeActive ? '#fef08a' : '#60a5fa')
+            ? (isGossipModeActive ? '#fef08a' : '#f4f4f4')
             : (isVisualCritiqueOnly && hasVc)
             ? '#f59e0b'
             : isGossipModeActive 
@@ -13016,7 +12962,7 @@ return maplibregl$1;
               ctx.fill();
 
               ctx.strokeStyle = isSel 
-                ? (isGossipModeActive ? '#38bdf8' : '#60a5fa') 
+                ? (isGossipModeActive ? '#38bdf8' : '#f4f4f4') 
                 : (d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : d.inst.tier === 'B' ? 'rgba(190, 149, 255, 0.65)' : 'rgba(8, 189, 186, 0.65)');
               ctx.lineWidth = 1;
               ctx.stroke();
@@ -14341,13 +14287,7 @@ return maplibregl$1;
     // =========================================================
     //  UNIFIED MULTI-PROVIDER AI & CURATOR ENGINE STATE
     // =========================================================
-    const _SYS_KEY = (function() {
-      try {
-        return atob(['c2stYW50LWFwaTAzLV9reGN3TG5MM2NUMkky', 'UmZJYkxGaG5LTTlJQnowWS1LM0NOcExmZWhm', 'UUxIa2VkZEZ1Ym5BMU9LeUdrajM3TjRRNXJl', 'U25yd19iWlVYSjhBeHhVV2VRLWJMODF2Z0FB'].join(''));
-      } catch (e) {
-        return '';
-      }
-    })();
+    const _SYS_KEY = '';   // no key ships in the page; a visitor's own key is stored in their browser only
 
     let aiApiKey = localStorage.getItem('atlas_ai_api_key') || localStorage.getItem('atlas_gemini_api_key') || _SYS_KEY;
     let aiProvider = localStorage.getItem('atlas_ai_provider') || 'anthropic';
@@ -16910,7 +16850,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return {
         id: 'clean',
         name: 'Records',
-        color: '#60a5fa',
+        color: '#f4f4f4',
         rgb: '96, 165, 250',
         bgClass: 'bg-blue-400',
         haloClass: 'bg-blue-500',
