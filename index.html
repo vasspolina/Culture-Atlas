@@ -18602,8 +18602,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const typed = (text || '').toLowerCase().trim();
       const exact = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === typed);
       if (exact) return exact;
-      const resolved = findAnyInstitution(text);
-      if (resolved && resolved.isClean) return resolved.inst;
+      // "this museum", "here": the question is about the open record, so no guessed match from the words around it.
+      const contextual = /\b(this|here|its?)\b/.test(typed);
+      const resolved = contextual ? null : findAnyInstitution(text);
+      if (resolved && resolved.isClean && !resolved.fuzzy) return resolved.inst;
       const t = typed;
       const direct = ALL_INSTITUTIONS.find(i => {
         const nameLow = i.name.toLowerCase();
@@ -18619,7 +18621,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return false;
       });
       if (direct) return direct;
-      if (typeof findFuzzyInstitutionMatch === 'function') {
+      if (!contextual && typeof findFuzzyInstitutionMatch === 'function') {
         const fuzzy = findFuzzyInstitutionMatch(t, 0.65);
         if (fuzzy && fuzzy.inst && fuzzy.isClean) return fuzzy.inst;
       }
