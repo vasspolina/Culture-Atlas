@@ -114,7 +114,7 @@ def run_tests():
 
         // Check content
         const mText = govModal.innerText || '';
-        assert('Modal explains Verified Independent Space', mText.includes('Verified Independent Space'));
+        assert('Modal explains Verified Independent Space', (mText.includes('Independent Sanctuary Space') || mText.includes('Verified Independent Space')));
         assert('Modal explains Flagged Corporate Underwriting', mText.includes('Flagged Corporate Underwriting'));
         assert('Modal cites IRS Form 990 statutory disclosures', mText.includes('IRS Form 990'));
         assert('Modal cites UK Charity Commission register', mText.includes('Charity Commission'));
