@@ -186,6 +186,12 @@ def clean(records, report=None):
             r['tier_note'] = 'Recorded as flagged, but no reason is recorded.'
             bump('tier_B_to_unverified')
     corrections = json.load(open(CORRECTIONS, encoding='utf-8')) if CORRECTIONS.exists() else {}
+    # a founding year shared by dozens of unrelated museums is a default, not a fact
+    years = collections.Counter(str(r['year_founded']) for r in records if r.get('year_founded'))
+    for r in records:
+        if r.get('year_founded') and years[str(r['year_founded'])] >= 25:
+            del r['year_founded']
+            bump('year_founded')
     for r in records:
         for field, text in (corrections.get(r['id']) or {}).items():
             r[field] = text
