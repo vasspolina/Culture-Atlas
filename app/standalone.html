@@ -160,9 +160,15 @@
     .curator-section-hdr, .drawer-title, .modal-title, .card-title,
     h2, h3 {
       font-size: 18pt !important;
-      line-height: 24pt !important;
+      line-height: 1.35 !important;
       letter-spacing: 0 !important;
       font-weight: 400 !important;
+    }
+    #desktopDossierName, #dossier-sheet-name, .dossier-main-heading {
+      line-height: 1.35 !important;
+      word-break: break-word !important;
+      overflow-wrap: break-word !important;
+      display: block !important;
     }
 
     /* Size 3: 26pt (Large display heading: 26pt, line-height 32pt, tracking 0) */
@@ -334,7 +340,7 @@
 
     html, body {
       font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      background-color: #000000;
+      background-color: #0c0c0e !important;
       color: #f8fafc;
       margin: 0;
       padding: 0;
@@ -557,18 +563,10 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* Subtle Starfield & Globe Glow */
+    /* Clean Unified Off-Black Universal Background (No dots, no stars, no patchy greys) */
     .space-background {
-      background-color: #05070B;
-      background-image: 
-        radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 80px 140px, #38bdf8, rgba(0,0,0,0)),
-        radial-gradient(1.5px 1.5px at 220px 70px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1.2px 1.2px at 320px 220px, #a7f3d0, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 150px 310px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1.5px 1.5px at 280px 420px, #67e8f9, rgba(0,0,0,0));
-      background-repeat: repeat;
-      background-size: 350px 350px, 400px 400px, 300px 300px, 450px 450px, 280px 280px, 320px 320px;
+      background-color: #0c0c0e !important;
+      background-image: none !important;
     }
 
     /* Globe Pulse Rings */
@@ -1880,7 +1878,7 @@ return maplibregl$1;
 
   </script>
 </head>
-<body class="bg-black text-slate-100 space-background h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
+<body class="bg-[#0c0c0e] text-slate-100 space-background h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
 
   <!-- ========================================================= -->
   <!-- ========================================================= -->
@@ -1998,10 +1996,10 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <!-- MAIN APP CONTAINER (Desktop: 50/50 Vertical Split Screen / Mobile: Stacked) -->
   <!-- ========================================================= -->
-  <div id="mainAppContainer" class="relative w-full flex-1 min-h-0 flex flex-col md:flex-row bg-black overflow-hidden">
+  <div id="mainAppContainer" class="relative w-full flex-1 min-h-0 flex flex-col md:flex-row bg-[#0c0c0e] overflow-hidden">
 
     <!-- 🌍 3D GLOBE VIEWPORT (Desktop: 55% / Mobile: Full Viewport) -->
-    <div id="globeViewport" class="relative w-full md:w-[55%] h-full flex-1 min-h-0 flex flex-col justify-between bg-black overflow-hidden select-none">
+    <div id="globeViewport" class="relative w-full md:w-[55%] h-full flex-1 min-h-0 flex flex-col justify-between bg-[#0c0c0e] overflow-hidden select-none">
       
       <canvas id="globeCanvas" class="absolute inset-0 w-full h-full block cursor-grab"></canvas>
 
@@ -2814,7 +2812,7 @@ return maplibregl$1;
     <!-- ========================================================= -->
     <!-- 💼 UNIFIED WORK & CHAT CANVAS (Desktop: Right 45% Context Panel / Mobile: Hidden) -->
     <!-- ========================================================= -->
-    <div id="workViewContainer" class="hidden md:flex relative flex-1 min-h-0 flex-col bg-[#05070d] overflow-hidden">
+    <div id="workViewContainer" class="hidden md:flex relative flex-1 min-h-0 flex-col bg-[#0c0c0e] overflow-hidden">
 
       <!-- Sliding Context Panel Desktop Top Tab Switcher Bar -->
       <div id="workspaceContextTabBar" class="hidden md:flex items-center justify-between px-4 py-2 border-b border-[#262626] bg-[#161616] shrink-0 z-20 select-none">
@@ -2844,35 +2842,11 @@ return maplibregl$1;
       <div id="workspacePanelsWrapper" class="relative flex-1 min-h-0 w-full flex flex-row overflow-hidden">
       
       <!-- Subtle Celestial Deep-Space Starfield Overlay (matching globe backdrop) -->
-      <div id="workStarfield" class="pointer-events-none absolute inset-0 overflow-hidden z-0 select-none opacity-60" aria-hidden="true">
-        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12%" cy="8%" r="1" fill="rgba(226, 232, 240, 0.18)"/>
-          <circle cx="28%" cy="19%" r="0.8" fill="rgba(226, 232, 240, 0.14)"/>
-          <circle cx="45%" cy="11%" r="1.2" fill="rgba(226, 232, 240, 0.22)"/>
-          <circle cx="67%" cy="6%" r="0.8" fill="rgba(226, 232, 240, 0.15)"/>
-          <circle cx="84%" cy="14%" r="1" fill="rgba(226, 232, 240, 0.20)"/>
-          <circle cx="93%" cy="28%" r="0.8" fill="rgba(226, 232, 240, 0.12)"/>
-          <circle cx="18%" cy="32%" r="1.1" fill="rgba(226, 232, 240, 0.19)"/>
-          <circle cx="36%" cy="41%" r="0.8" fill="rgba(226, 232, 240, 0.14)"/>
-          <circle cx="58%" cy="26%" r="1" fill="rgba(226, 232, 240, 0.16)"/>
-          <circle cx="75%" cy="38%" r="1.2" fill="rgba(226, 232, 240, 0.24)"/>
-          <circle cx="89%" cy="49%" r="0.8" fill="rgba(226, 232, 240, 0.13)"/>
-          <circle cx="8%" cy="56%" r="1" fill="rgba(226, 232, 240, 0.17)"/>
-          <circle cx="24%" cy="63%" r="0.8" fill="rgba(226, 232, 240, 0.15)"/>
-          <circle cx="48%" cy="58%" r="1.2" fill="rgba(226, 232, 240, 0.21)"/>
-          <circle cx="69%" cy="67%" r="0.8" fill="rgba(226, 232, 240, 0.14)"/>
-          <circle cx="82%" cy="72%" r="1" fill="rgba(226, 232, 240, 0.18)"/>
-          <circle cx="15%" cy="81%" r="0.8" fill="rgba(226, 232, 240, 0.13)"/>
-          <circle cx="39%" cy="86%" r="1.1" fill="rgba(226, 232, 240, 0.20)"/>
-          <circle cx="62%" cy="84%" r="0.8" fill="rgba(226, 232, 240, 0.15)"/>
-          <circle cx="88%" cy="89%" r="1.2" fill="rgba(226, 232, 240, 0.22)"/>
-          <circle cx="53%" cy="94%" r="0.8" fill="rgba(226, 232, 240, 0.14)"/>
-          <circle cx="77%" cy="96%" r="1" fill="rgba(226, 232, 240, 0.16)"/>
-        </svg>
-      </div>
+      <!-- Clean off-black backdrop (dots & stars removed) -->
+      <div id="workStarfield" class="hidden" style="display:none;" aria-hidden="true"></div>
 
       <!-- 📄 DESKTOP DOSSIER COLUMN (Full 45% Context Panel Inspector) -->
-      <section id="desktopDossierColumn" class="hidden md:flex w-full min-w-[350px] shrink-0 border-r-0 bg-[#161616] flex-col h-full overflow-hidden select-text z-10 transition-all duration-200">
+      <section id="desktopDossierColumn" class="hidden md:flex w-full min-w-[350px] shrink-0 border-r-0 bg-[#0c0c0e] flex-col h-full overflow-hidden select-text z-10 transition-all duration-200">
         <!-- Sub-header: Collapse Dossier & Close -->
         <div class="px-4 py-2.5 border-b border-[#262626] flex items-center justify-between shrink-0 bg-[#161616] select-none">
           <button id="collapseDossierBtn" type="button" onclick="window.toggleDesktopDossier(false)" class="text-[14pt] font-mono tracking-wider text-[#c6c6c6] hover:text-white flex items-center gap-1.5 transition cursor-pointer focus:outline-none focus:ring-0" title="Collapse Dossier Column">
@@ -2888,7 +2862,7 @@ return maplibregl$1;
         <div id="desktopDossierBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-[14pt]">
           <!-- 1. Header & Title -->
           <div class="space-y-1.5 min-w-0">
-            <h2 id="desktopDossierName" class="text-xl sm:text-2xl md:text-[22px] lg:text-[24px] font-normal text-[#f4f4f4] tracking-normal leading-snug break-words hyphens-auto">Green Papaya Art Projects</h2>
+            <h2 id="desktopDossierName" class="text-xl sm:text-2xl md:text-[22px] lg:text-[24px] font-normal text-[#f4f4f4] tracking-normal leading-[1.35] break-words hyphens-auto dossier-main-heading">Green Papaya Art Projects</h2>
             <div class="flex items-center gap-2">
               <span id="desktopDossierTier" class="inline-flex items-center gap-1 text-[#42be65] text-[14pt] font-normal">
                 <svg class="w-3.5 h-3.5 text-[#42be65]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -3056,6 +3030,22 @@ return maplibregl$1;
             </div>
           </div>
 
+          <div class="border-t border-[#262626]"></div>
+
+          <!-- 3B. Floor-by-Floor Shows & Archive Holdings Directory -->
+          <div id="desktopDossierFloorDirectorySection" class="space-y-2">
+            <div class="flex items-center justify-between text-[14pt]">
+              <span class="text-[#38bdf8] font-normal flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span>3D Building &amp; Floor Directory</span>
+              </span>
+              <button type="button" onclick="if (selectedInstitution && typeof window.zoomToBuilding === 'function') window.zoomToBuilding(selectedInstitution);" class="text-sky-300 hover:text-white hover:underline text-[12pt] font-mono cursor-pointer">
+                <span>Inspect in 3D →</span>
+              </button>
+            </div>
+            <div id="desktopDossierFloorList" class="space-y-2.5 pt-0.5"></div>
+          </div>
+
           <!-- 4. Gossip Mode Block (Shows when Gossip Mode is active) -->
           <div id="desktopDossierGossipSection" class="hidden space-y-2 pt-2 border-t border-[#262626]">
             <div class="flex items-center justify-between text-[14pt]">
@@ -3095,7 +3085,7 @@ return maplibregl$1;
       </section>
 
       <!-- 🧠 CURATOR INTELLIGENCE COLUMN (Full 45% Context Panel AI Chat) -->
-      <section id="curatorIntelligenceColumn" class="flex-1 w-full min-w-[350px] min-h-0 flex flex-col h-full bg-[#111114] relative overflow-hidden select-text z-10" style="background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px); background-size: 24px 24px;">
+      <section id="curatorIntelligenceColumn" class="flex-1 w-full min-w-[350px] min-h-0 flex flex-col h-full bg-[#0c0c0e] relative overflow-hidden select-text z-10">
         
         <!-- Mobile Bottom Sheet Handle Bar (Phone Only) -->
         <div id="mobileSheetHandleBar" class="hidden md:hidden flex-col w-full bg-[#0c101a] border-b border-[#1e293b] shrink-0 select-none z-30 touch-none" style="display:none !important;" aria-hidden="true">
@@ -10992,10 +10982,10 @@ return maplibregl$1;
       const preset = HEADROOM_PRESETS[currentHeadroomSetting] || HEADROOM_PRESETS.comfortable;
       const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 640;
       return {
-        left: isDesktop ? 330 : 0,
+        left: isDesktop ? 40 : 0,
         top: isDesktop ? preset.desktopTop : preset.mobileTop,
         bottom: isDesktop ? preset.desktopBottom : preset.mobileBottom,
-        right: isDesktop ? 30 : 15
+        right: isDesktop ? 40 : 15
       };
     }
     window.getBuildingCameraPadding = getBuildingCameraPadding;
@@ -11060,6 +11050,7 @@ return maplibregl$1;
         </div>
         <div class="mast-actions flex items-center gap-1.5 mt-1">
           <button type="button" class="mast-explode-btn atlas-pill-btn" onclick="window.toggleExploded3DMode()">${explodeLabel}</button>
+          <button type="button" class="atlas-pill-btn" onclick="window.zoomCloserToBuilding(20.0)">20x Zoom</button>
           <button type="button" class="atlas-pill-btn flex items-center gap-1.5" onclick="window.askCuratorAboutCurrentBuilding()"><svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M17.74 30L16 29l4-7h6a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9v2H6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-4.84z"/></svg><span>Ask Curator</span></button>
         </div>
       `;
@@ -11377,9 +11368,9 @@ return maplibregl$1;
             source: 'highlighted-building-footprint',
             paint: {
               'line-color': ['get', 'color'],
-              'line-width': 1.5,
-              'line-blur': 0,
-              'line-opacity': 0
+              'line-width': 4.5,
+              'line-blur': 2,
+              'line-opacity': 0.95
             }
           });
         }
@@ -11390,8 +11381,8 @@ return maplibregl$1;
             source: 'highlighted-building-footprint',
             paint: {
               'line-color': '#ffffff',
-              'line-width': 2.0,
-              'line-opacity': 0.95
+              'line-width': 3.0,
+              'line-opacity': 1.0
             }
           });
         }
@@ -12491,8 +12482,12 @@ return maplibregl$1;
         mapEl.classList.remove('hidden');
         mapEl.classList.add('map-zoomed-in');
         mapEl.classList.add('building-view-active');
+        mapEl.classList.add('show-onmap-callouts');
       }
       document.body.classList.add('building-view-active');
+      document.body.classList.add('show-onmap-callouts');
+      const activeDrawer = document.getElementById('detailDrawer');
+      if (activeDrawer) activeDrawer.classList.add('hidden');
 
       // Switch to vector street map if not active
       selectedInstitution = inst;
@@ -16182,27 +16177,7 @@ return maplibregl$1;
       // 🌍 GLOBAL & REGIONAL 3D SPHERE VIEW
       // =======================================================
 
-        // 0. Cinematic Distant Starfield (Fades out smoothly as camera approaches Earth)
-        if (r < baseRadius * 3.2) {
-          const starAlpha = Math.max(0, 1 - (r - baseRadius) / (baseRadius * 2.2));
-          ctx.save();
-          for (let s = 0; s < STARFIELD.length; s++) {
-            const st = STARFIELD[s];
-            const sx = st.x * width;
-            const sy = st.y * height;
-            // Only draw stars outside the main globe disk
-            if (Math.hypot(sx - cx, sy - cy) > r * 0.95) {
-              ctx.beginPath();
-              ctx.arc(sx, sy, st.r, 0, Math.PI * 2);
-              ctx.fillStyle = isGossipModeActive 
-                ? `rgba(255, 237, 213, ${st.a * starAlpha * 0.9})` 
-                : `rgba(226, 232, 240, ${st.a * starAlpha})`;
-              ctx.fill();
-            }
-          }
-          ctx.restore();
-        }
-
+        // 0. Clean Off-Black Universal Space Canvas (Starfield disabled per user request)
         // 1. Crisp Globe Boundary (No atmospheric glow/halo)
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
@@ -17420,6 +17395,46 @@ return maplibregl$1;
       if (showTitleEl) showTitleEl.textContent = primaryShow.title;
       const showMetaEl = document.getElementById('desktopDossierExhibitionMeta');
       if (showMetaEl) showMetaEl.textContent = `${primaryShow.curator_artists || 'Curatorial Cohort'} · ${primaryShow.dates || 'On View'}`;
+
+      // Populate Floor-by-Floor Shows & Archive Directory
+      const floorListEl = document.getElementById('desktopDossierFloorList');
+      if (floorListEl) {
+        const bArch = inst.building_architecture || {};
+        const instFloors = inst.floor_plans || bArch.floor_plans || [];
+        if (!instFloors.length) {
+          floorListEl.innerHTML = `
+            <div class="py-2 border-b border-[#262626] text-[13pt] text-slate-300 space-y-1">
+              <div class="font-medium text-white">${escapeHtml(primaryShow.title)}</div>
+              <div class="text-slate-400 text-[12pt]">${escapeHtml(inst.highlight || 'Permanent collection & archives')}</div>
+            </div>
+          `;
+        } else {
+          floorListEl.innerHTML = instFloors.map((fl, idx) => {
+            const flShow = (fl.current_shows && fl.current_shows[0]) || primaryShow;
+            const flArch = fl.archive_holdings || {};
+            return `
+              <div class="py-2 border-b border-[#262626] last:border-b-0 space-y-1 text-[13pt]">
+                <div class="flex items-center justify-between text-[13pt] font-mono">
+                  <span class="text-[#7dd3fc] font-medium">${fl.level_code || ('L' + fl.level)} · ${escapeHtml(fl.floor_name || '')}</span>
+                  <span class="text-slate-400 text-[11pt]">${fl.elevation || ''}</span>
+                </div>
+                ${flShow ? `
+                  <div class="pl-2 border-l border-amber-500/40 space-y-0.5 mt-1">
+                    <div class="text-amber-300 font-medium text-[13pt]">${escapeHtml(flShow.title || 'Curatorial Exhibition')}</div>
+                    <div class="text-slate-400 text-[12pt]">${escapeHtml(flShow.curator_artists || '')}${flShow.dates ? ` · ${escapeHtml(flShow.dates)}` : ''}</div>
+                  </div>
+                ` : ''}
+                ${flArch && flArch.collection_title ? `
+                  <div class="pl-2 border-l border-emerald-500/40 space-y-0.5 mt-1">
+                    <div class="text-emerald-300 font-medium text-[13pt]">${escapeHtml(flArch.collection_title)}</div>
+                    <div class="text-slate-400 text-[12pt]">${escapeHtml(flArch.reading_room_policy || flArch.scope || 'Open study access')}</div>
+                  </div>
+                ` : ''}
+              </div>
+            `;
+          }).join('');
+        }
+      }
 
       // Gossip block
       const gossipSec = document.getElementById('desktopDossierGossipSection');
