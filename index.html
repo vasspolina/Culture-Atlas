@@ -314,6 +314,18 @@
     html body tbody tr + tr td { border-top: 1pt solid #2e2e2e; }
     html body a { text-decoration-thickness: 1pt !important; }
     
+
+    /* Directory and Filters & Lenses fill the page below the header, like a pop-up window. */
+    @media (min-width: 768px) {
+      html body #catalogModal { top: 56px !important; padding: 0 !important; align-items: stretch !important; background: #000 !important; }
+      html body #filterDrawerPanel { position: fixed !important; top: 56px !important; left: 0 !important; right: 0 !important; bottom: 0 !important; max-height: none !important; height: auto !important; border-radius: 0 !important; z-index: 45 !important; background: #000 !important; }
+    }
+    @media (max-width: 767px) {
+      html body #catalogModal { padding: 0 !important; align-items: stretch !important; background: #000 !important; }
+      html body #filterDrawerPanel { position: fixed !important; inset: 0 !important; max-height: none !important; border-radius: 0 !important; z-index: 45 !important; background: #000 !important; }
+    }
+    html body #catalogModal > div { max-width: none !important; max-height: none !important; width: 100% !important; height: 100% !important; }
+    
     /* Compatibility family aliases referencing exclusively the two PP Eiko fonts */
     *, *::before, *::after {
       font-family: 'PP Mori', sans-serif !important;
@@ -15442,15 +15454,38 @@ return maplibregl$1;
         }
       });
 
+      const cat = document.getElementById('catalogModal');
       if (tab === 'atlas') {
         if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(false);
+        if (cat) cat.classList.add('hidden');
       } else if (tab === 'directory') {
+        if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(false);
         if (typeof openCatalogModal === 'function') openCatalogModal('all');
       } else if (tab === 'filters') {
+        if (cat) cat.classList.add('hidden');
         if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(true);
       }
     }
     window.setMainViewTab = setMainViewTab;
+    // Keep the header tab in step with whichever full-page view is open, however it was opened or closed.
+    (function () {
+      const sync = () => {
+        const cat = document.getElementById('catalogModal'), dr = document.getElementById('filterDrawerPanel');
+        const tab = cat && !cat.classList.contains('hidden') ? 'directory' : dr && !dr.classList.contains('hidden') ? 'filters' : 'atlas';
+        const ids = { atlas: 'navTabAtlas', directory: 'navTabDirectory', filters: 'navTabFilters' };
+        Object.keys(ids).forEach(t => {
+          const el = document.getElementById(ids[t]);
+          if (el) el.className = (t === tab ? 'text-teal-300 border-b-2 border-teal-400 pb-1 font-semibold' : 'text-[#f4f4f4] hover:text-white pb-1') + ' transition cursor-pointer whitespace-nowrap';
+        });
+      };
+      // Lift the filters panel out of the map column so it covers the whole page, chat column included.
+      const fd = document.getElementById('filterDrawerPanel');
+      if (fd && fd.parentElement !== document.body) document.body.appendChild(fd);
+      ['catalogModal', 'filterDrawerPanel'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) new MutationObserver(sync).observe(el, { attributes: true, attributeFilter: ['class'] });
+      });
+    })();
 
     // Links to the sources recorded for a space. Recording a source is not verifying it, and the page says so.
     function sourcesHtml(inst) {
