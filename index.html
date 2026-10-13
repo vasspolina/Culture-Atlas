@@ -362,6 +362,11 @@
       font-weight: 400 !important;
     }
 
+    .user-msg-bubble, .work-suggestion-card, #curatorMessages, #curatorDrawerLiveStream {
+      font-style: normal !important;
+      font-weight: 400 !important;
+    }
+
     .font-light, .text-light, .type-light {
       font-family: 'PP Eiko', 'PPEiko-Thin', 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
@@ -19194,11 +19199,11 @@ return maplibregl$1;
       const domain = getDisplayDomain(webUrl);
       
       const isEx = inst.tier !== 'A';
-      const nameClass = isEx ? 'inst-link text-[#be95ff] hover:underline font-normal' : 'inst-link font-normal';
-      const badge = isEx ? ' <span class="text-[14px] font-mono px-1 py-0.2 rounded bg-[#1f1433] text-[#be95ff] border border-[#8a3ffc] shrink-0">Flagged</span>' : '';
+      const nameClass = isEx ? 'inst-link text-[#be95ff] hover:underline font-normal' : 'inst-link font-normal text-slate-100 hover:text-sky-300';
+      const badge = isEx ? ' <span class="text-[12px] font-mono px-1.5 py-0.5 rounded bg-[#1f1433] text-[#be95ff] border border-[#8a3ffc] shrink-0 align-middle">Flagged</span>' : '';
       const nameLink = `<a href="#" class="${nameClass}" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a>${badge}`;
-      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-[#93c5fd] hover:underline" data-city="${escapeHtml(inst.city)}">${escapeHtml(inst.location || inst.city)}</a>`;
-      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link text-[14px] text-[#60a5fa] hover:underline" data-name="${escapeHtml(inst.name)}">audit dossier</a>${webUrl ? ` · <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[14px] text-[#93c5fd] hover:text-white hover:underline transition">${domain}</a>` : ''})`;
+      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link text-sky-300 hover:underline" data-city="${escapeHtml(inst.city)}">${escapeHtml(inst.location || inst.city)}</a>`;
+      const dossierPart = opts.noDossier ? '' : ` <span class="inline-flex items-center gap-1.5 text-xs font-mono ml-1 align-middle">(<a href="#" class="dossier-link text-[#60a5fa] hover:underline hover:text-white" data-name="${escapeHtml(inst.name)}">audit dossier</a>${webUrl ? ` · <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="ext-web-link text-[#93c5fd] hover:text-white hover:underline transition">${domain}</a>` : ''})</span>`;
       
       return `${nameLink}${cityPart}${dossierPart}`;
     }
@@ -22144,7 +22149,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const div = document.createElement('div');
       div.className = 'flex justify-end my-1 w-full';
       div.innerHTML = `
-        <div class="max-w-[85%] bg-transparent text-[#f4f4f4] text-[14pt] py-1 border-b border-[#262626] leading-relaxed whitespace-pre-wrap select-text">
+        <div class="user-msg-bubble max-w-[85%] bg-transparent text-[#f4f4f4] text-[14pt] font-normal not-italic tracking-normal py-1 border-b border-[#262626] leading-relaxed whitespace-pre-wrap select-text" style="font-style: normal !important; font-weight: 400 !important;">
           ${escapeHtml(text)}
         </div>
       `;
@@ -22156,7 +22161,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const mDiv = document.createElement('div');
         mDiv.className = 'flex justify-end my-1 w-full';
         mDiv.innerHTML = `
-          <div class="max-w-[85%] bg-transparent text-[#f4f4f4] text-[14pt] py-1 border-b border-[#262626] leading-relaxed whitespace-pre-wrap select-text">
+          <div class="user-msg-bubble max-w-[85%] bg-transparent text-[#f4f4f4] text-[14pt] font-normal not-italic tracking-normal py-1 border-b border-[#262626] leading-relaxed whitespace-pre-wrap select-text" style="font-style: normal !important; font-weight: 400 !important;">
             ${escapeHtml(text)}
           </div>
         `;
@@ -22674,14 +22679,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium ${isClean ? 'text-emerald-400' : 'text-amber-400'}">${isClean ? 'CLEAN SANCTUARY' : 'FLAGGED AUDIT'}</span>
-                    <span class="text-white font-medium text-sm">Funding Breakdown: ${formatInstLink(activeTarget)}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase ${isClean ? 'text-emerald-400' : 'text-amber-400'}">${isClean ? 'CLEAN SANCTUARY' : 'FLAGGED AUDIT'}</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded ${isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'} shrink-0">
+                      ${escapeHtml(activeTarget.tier_label || (isClean ? 'Verified Independent Space' : 'Flagged Space'))}
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded ${isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-purple-950/80 text-purple-300 border border-purple-700/60'}">
-                    ${escapeHtml(activeTarget.tier_label || (isClean ? 'Verified Independent Space' : 'Flagged Space'))}
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Funding Breakdown:</span>
+                    <span>${formatInstLink(activeTarget)}</span>
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   ${isClean ?
@@ -22717,14 +22725,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           } else {
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-emerald-400">Global Funding Architecture</span>
-                    <span class="text-white font-medium text-sm">How Culture Atlas Audits Spaces</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-emerald-400">Global Funding Architecture</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 shrink-0">
+                      Form 990 &amp; Public Regimes
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
-                    Form 990 &amp; Public Regimes
-                  </span>
+                  <div class="text-white font-medium text-sm">
+                    How Culture Atlas Audits Spaces
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Every museum in Culture Atlas is audited for clean, transparent funding across three distinct models:
@@ -22766,14 +22776,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
-                    <span class="text-white font-medium text-sm">Staff Sentiment: ${formatInstLink(activeTarget)}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60 shrink-0">
+                      Cultural Workforce
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">
-                    Cultural Workforce
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Staff Sentiment:</span>
+                    <span>${formatInstLink(activeTarget)}</span>
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   ${isClean ?
@@ -22801,14 +22814,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           } else {
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
-                    <span class="text-white font-medium text-sm">Museum Worker Mobilization</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-sky-400"><span class="sr-only">LABOR &amp; WORKPLACE AUDIT</span>Labor &amp; Workplace Audit</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60 shrink-0">
+                      Living Wage Movement
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">
-                    Living Wage Movement
-                  </span>
+                  <div class="text-white font-medium text-sm">
+                    Museum Worker Mobilization
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Across the art world, workplace sentiment has ignited unprecedented unionization drives. While mega-museums spend hundreds of millions on architectural expansions, front-of-house staff, preparators, and museum educators face severe precarity.
@@ -22843,14 +22858,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
-                    <span class="text-white font-medium text-sm">Direct Action: ${formatInstLink(activeTarget)}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded ${isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'} shrink-0">
+                      ${isClean ? 'Zero Boycotts · Artist Sanctuary' : 'Documented Protest Target'}
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded ${isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}">
-                    ${isClean ? 'Zero Boycotts · Artist Sanctuary' : 'Documented Protest Target'}
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Direct Action:</span>
+                    <span>${formatInstLink(activeTarget)}</span>
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   ${isClean ?
@@ -22878,14 +22896,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           } else {
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
-                    <span class="text-white font-medium text-sm">Landmark Cultural Boycotts</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-amber-400"><span class="sr-only">RESISTANCE &amp; BOYCOTT RECORD</span>Resistance &amp; Boycott Record</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-700/60 shrink-0">
+                      1971–2026 Archive
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-700/60">
-                    1971–2026 Archive
-                  </span>
+                  <div class="text-white font-medium text-sm">
+                    Landmark Cultural Boycotts
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Decades of artist-led direct actions have successfully challenged corporate capture in the arts. Key historic victories include:
@@ -22920,14 +22940,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
-                    <span class="text-white font-medium text-sm">Underwriting Profile: ${formatInstLink(activeTarget)}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded ${isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'} shrink-0">
+                      ${isClean ? 'Zero Toxic Sponsors' : 'Flagged Underwriters'}
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded ${isClean ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60' : 'bg-rose-950/80 text-rose-300 border border-rose-700/60'}">
-                    ${isClean ? 'Zero Toxic Sponsors' : 'Flagged Underwriters'}
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Underwriting Profile:</span>
+                    <span>${formatInstLink(activeTarget)}</span>
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   ${isClean ?
@@ -22963,14 +22986,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           } else {
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
-                    <span class="text-white font-medium text-sm">Controversial Cultural Patronage</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-rose-400"><span class="sr-only">SPONSOR SCRUTINY AUDIT</span>Sponsor Scrutiny Audit</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-700/60 shrink-0">
+                      Artwashing Radar
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-700/60">
-                    Artwashing Radar
-                  </span>
+                  <div class="text-white font-medium text-sm">
+                    Controversial Cultural Patronage
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Culture Atlas monitors corporate artwashing across global institutions. The four most heavily criticized sponsorship sectors are:
@@ -23005,14 +23030,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
-                    <span class="text-white font-medium text-sm">Artist Fees: ${formatInstLink(activeTarget)}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 shrink-0">
+                      Fair Pay Standards
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
-                    Fair Pay Standards
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Artist Fees:</span>
+                    <span>${formatInstLink(activeTarget)}</span>
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   ${isClean ?
@@ -23040,14 +23068,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           } else {
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
-                    <span class="text-white font-medium text-sm">Artist Fee Benchmarks</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-emerald-400"><span class="sr-only">ARTIST EQUITY &amp; REMUNERATION</span>Artist Equity &amp; Remuneration</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 shrink-0">
+                      W.A.G.E. Certified
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
-                    W.A.G.E. Certified
-                  </span>
+                  <div class="text-white font-medium text-sm">
+                    Artist Fee Benchmarks
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Culture Atlas audits artist compensation practices across the global institutional ecosystem:
@@ -23082,14 +23112,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
-                    <span class="text-white font-medium text-sm">Governance Analysis: ${formatInstLink(activeTarget)}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60 shrink-0">
+                      IRS Schedule L
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60">
-                    IRS Schedule L
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Governance Analysis:</span>
+                    <span>${formatInstLink(activeTarget)}</span>
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   ${isClean ?
@@ -23117,14 +23150,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           } else {
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
-                    <span class="text-white font-medium text-sm">Relational Network Dynamics</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-orange-400"><span class="sr-only">TRUSTEE &amp; BOARD INTERLOCKS</span>Trustee &amp; Board Interlocks</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60 shrink-0">
+                      IRS Form 990 Schedule L
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60">
-                    IRS Form 990 Schedule L
-                  </span>
+                  <div class="text-white font-medium text-sm">
+                    Relational Network Dynamics
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Institutional trustees create conduits between cultural capital, financial speculation, and corporate lobbying. Major mechanisms include:
@@ -23159,14 +23194,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             const isClean = activeTarget.tier === 'A' || (activeTarget.tier_label && activeTarget.tier_label.toLowerCase().includes('verified'));
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
-                    <span class="text-white font-medium text-sm">Policy Impact: ${formatInstLink(activeTarget)}</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60 shrink-0">
+                      Democratic Evolution
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60">
-                    Democratic Evolution
-                  </span>
+                  <div class="text-white font-medium text-sm flex items-center gap-1.5 flex-wrap">
+                    <span class="text-slate-400 font-mono text-xs">Policy Impact:</span>
+                    <span>${formatInstLink(activeTarget)}</span>
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   ${isClean ?
@@ -23194,14 +23232,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           } else {
             appendCuratorMessage(`
               <div class="space-y-2.5">
-                <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-xs font-mono font-medium text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
-                    <span class="text-white font-medium text-sm">Landmark Divestment Victories</span>
+                <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono font-medium tracking-wide uppercase text-teal-400"><span class="sr-only">PUBLIC POLICY REFORM RECORD</span>Public Policy Reform Record</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60 shrink-0">
+                      Artist Power
+                    </span>
                   </div>
-                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-teal-950/80 text-teal-300 border border-teal-700/60">
-                    Artist Power
-                  </span>
+                  <div class="text-white font-medium text-sm">
+                    Landmark Divestment Victories
+                  </div>
                 </div>
                 <p class="text-slate-200 text-sm leading-relaxed">
                   Public pressure is the primary driver of institutional integrity. Major historic victories include:
@@ -23237,14 +23277,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
           appendCuratorMessage(`
             <div class="space-y-2.5">
-              <div class="flex items-center justify-between border-b border-[#283244] pb-1.5 flex-wrap gap-1">
-                <div class="flex items-center gap-1.5">
-                  <span class="text-xs font-mono font-medium text-emerald-400"><span class="sr-only">INDEPENDENT SANCTUARIES</span>Independent Sanctuaries</span>
-                  <span class="text-white font-medium text-sm">Verified Clean Spaces${detectedCity ? ` in ${escapeHtml(detectedCity)}` : ''}</span>
+              <div class="border-b border-[#283244] pb-2 space-y-1.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-xs font-mono font-medium tracking-wide uppercase text-emerald-400"><span class="sr-only">INDEPENDENT SANCTUARIES</span>Independent Sanctuaries</span>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 shrink-0">
+                    Zero Corporate Capture
+                  </span>
                 </div>
-                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
-                  Zero Corporate Capture
-                </span>
+                <div class="text-white font-medium text-sm">
+                  Verified Clean Spaces${detectedCity ? ` in ${escapeHtml(detectedCity)}` : ''}
+                </div>
               </div>
               <p class="text-slate-200 text-sm leading-relaxed">
                 Culture Atlas maps 445+ verified independent spaces across 50 global cities. Here are premier clean spaces free of corporate sponsorship:
