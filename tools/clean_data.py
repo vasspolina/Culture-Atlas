@@ -189,11 +189,11 @@ def clean(records, report=None):
         r['sources'] = [u for u in r.get('sources') or [] if re.match(r'https?://', u)]
         if r['tier'] == 'A' and not independent_sources(r):
             r['tier'] = 'U'
-            r['tier_note'] = 'Recorded as clean, but no source outside the museum is recorded.'
+            r['tier_note'] = 'No source outside the museum is recorded.'
             bump('tier_A_to_unverified')
         elif r['tier'] == 'B' and not has_reason(r):
             r['tier'] = 'U'
-            r['tier_note'] = 'Recorded as flagged, but no reason is recorded.'
+            r['tier_note'] = 'No reason for the flag is recorded.'
             bump('tier_B_to_unverified')
     corrections = json.load(open(CORRECTIONS, encoding='utf-8')) if CORRECTIONS.exists() else {}
     # a founding year shared by dozens of unrelated museums is a default, not a fact
