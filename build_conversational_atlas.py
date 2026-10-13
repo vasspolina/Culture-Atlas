@@ -33168,4 +33168,6 @@ bar.innerHTML = html;
     print("Mirrored to culture_atlas_app.html with local intelligence ready!")
 
 if __name__ == "__main__":
-    build()
+    raise SystemExit(
+        "This page generator is stale and is switched off. index.html has been edited directly since it was last in step with this script, so running it would overwrite the live page with older text and fonts. Edit index.html (and, for data, tools/clean_data.py then tools/embed_data.py). See README: Editing the page."
+    )
