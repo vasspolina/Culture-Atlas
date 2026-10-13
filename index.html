@@ -56,22 +56,22 @@
             DEFAULT: '20pt',
             none: '1',
             tight: '18pt',
-            snug: '20pt',
-            normal: '20pt',
-            relaxed: '22pt',
-            loose: '24pt',
+            snug: '1.25',
+            normal: '1.3',
+            relaxed: '1.4',
+            loose: '1.5',
           },
           fontSize: {
-            'xs': ['14pt', '20pt'],
-            'sm': ['14pt', '20pt'],
-            'base': ['14pt', '20pt'],
-            'md': ['14pt', '20pt'],
-            'lg': ['18pt', '24pt'],
-            'xl': ['18pt', '24pt'],
-            '2xl': ['34pt', '40pt'],
-            '3xl': ['34pt', '40pt'],
-            '4xl': ['34pt', '40pt'],
-            '5xl': ['34pt', '40pt'],
+            'xs': ['16px', '1.3'],
+            'sm': ['16px', '1.3'],
+            'base': ['16px', '1.3'],
+            'md': ['16px', '1.3'],
+            'lg': ['19px', '1.3'],
+            'xl': ['19px', '1.3'],
+            '2xl': ['24px', '1.3'],
+            '3xl': ['24px', '1.3'],
+            '4xl': ['24px', '1.3'],
+            '5xl': ['24px', '1.3'],
           }
         }
       }
@@ -94,12 +94,12 @@
     }
 
     *, *::before, *::after {
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400 !important;
     }
 
     html, body {
-      font-size: 14pt !important;
+      font-size: 16px !important;
       line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
@@ -107,7 +107,7 @@
 
     /* Global typography rules: 130% line-height, 30px paragraph indent, 0 space between paragraphs, 200% line-height between groups of text */
     input, button, select, textarea, p, span, div, li, a {
-      font-size: 14pt;
+      font-size: 16px;
       line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
@@ -164,32 +164,32 @@
     }
 
     /* ========================================================= */
-    /* STRICT 3 CARBON TYPE SIZES: 14pt (Body), 18pt (Heading), 26pt (Display) */
-    /* Fluid downscaling on compact laptop, tablet, and mobile viewports with 130% line height */
+    /* STRICT 3 DESKTOP FONT SIZES: 16px (Body), 19px (Heading), 24px (Display) */
     /* ========================================================= */
-    /* Size 1: 14pt (Body: 14pt, line-height 1.3 / 130%, tracking 0.16px) */
+    /* Size 1: 16px (Body / Microcopy: line-height 1.3 / 130%, tracking 0.16px) */
+    .type-16, .text-16, .text-[16px],
     .type-14, .text-14, .text-[14px], .text-[14pt],
     .text-xs, .text-sm, .text-base, .text-md,
     [class*="text-\[6"], [class*="text-\[7"], [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
     [class*="text-\[11"], [class*="text-\[12"], [class*="text-\[13"], [class*="text-\[14"], [class*="text-\[15"],
     [class*="text-\[16"], [class*="text-\[17"],
-    [class*="text-\[14px\]"], [class*="text-\[14pt\]"],
+    [class*="text-\[14px\]"], [class*="text-\[14pt\]"], [class*="text-\[16px\]"],
     h4, h5, h6 {
-      font-size: clamp(11pt, 0.5vw + 11.5pt, 14pt) !important;
+      font-size: 16px !important;
       line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
     }
 
-    /* Size 2: 18pt (Heading: 18pt, line-height 1.3 / 130%, tracking 0) */
+    /* Size 2: 19px (Heading / Subtitle / Prominent UI: line-height 1.3 / 130%, tracking 0) */
+    .type-19, .text-19, .text-[19px],
     .type-18, .text-18, .text-[18px], .text-[18pt],
-    .type-16, .text-16, .type-19, .text-19,
     .text-lg, .text-xl,
     [class*="text-\[18"], [class*="text-\[19"], [class*="text-\[20"],
-    [class*="text-\[18px\]"], [class*="text-\[18pt\]"],
+    [class*="text-\[18px\]"], [class*="text-\[18pt\]"], [class*="text-\[19px\]"],
     .curator-section-hdr, .drawer-title, .modal-title, .card-title,
     h2, h3 {
-      font-size: clamp(14pt, 0.8vw + 13pt, 18pt) !important;
+      font-size: 19px !important;
       line-height: 1.3 !important;
       letter-spacing: 0 !important;
       font-weight: 400 !important;
@@ -201,42 +201,56 @@
       display: block !important;
     }
 
-    /* Size 3: 26pt (Large display heading: 26pt, line-height 1.3 / 130%, tracking 0) */
+    /* Size 3: 24px (Large display heading / Hero / Logo: line-height 1.3 / 130%, tracking 0) */
+    .type-24, .text-24, .text-[24px],
     .type-26, .text-26, .text-[26px], .text-[26pt],
     .type-34, .text-34, .text-[34px], .text-[34pt],
-    .type-27, .text-27, .type-24, .text-24,
+    .type-27, .text-27,
     .text-2xl, .text-3xl, .text-4xl, .text-5xl,
     [class*="text-\[21"], [class*="text-\[22"], [class*="text-\[23"], [class*="text-\[24"], [class*="text-\[25"], [class*="text-\[26"], [class*="text-\[27"], [class*="text-\[28"], [class*="text-\[29"],
     [class*="text-\[3"], [class*="text-\[4"], [class*="text-\[5"], [class*="text-\[6"],
-    [class*="text-\[34px\]"], [class*="text-\[34pt\]"], [class*="text-\[26px\]"], [class*="text-\[26pt\]"],
+    [class*="text-\[24px\]"], [class*="text-\[34px\]"], [class*="text-\[34pt\]"], [class*="text-\[26px\]"], [class*="text-\[26pt\]"],
     .brand-logo-title,
     h1 {
-      font-size: clamp(18pt, 1.2vw + 16pt, 26pt) !important;
+      font-size: 24px !important;
       line-height: 1.3 !important;
       letter-spacing: 0 !important;
       font-weight: 400 !important;
     }
 
-    /* Fluid container queries and viewport constraints for curator hero title */
+    /* Curator hero title strictly adheres to Size 3 (24px) */
     #curatorHeroGreeting h1 {
-      font-size: clamp(18pt, 1.5vw + 14pt, 26pt) !important;
+      font-size: 24px !important;
       line-height: 1.3 !important;
       max-width: 90% !important;
       word-break: normal !important;
       overflow-wrap: break-word !important;
     }
 
-    h2 *, h3 *, .type-18 *, .text-18 *, .text-[18px] *, .text-[18pt] *, [class*="text-\[18"] * {
+    h2 *, h3 *, .type-19 *, .text-19 *, .text-[19px] *, .type-18 *, .text-18 *, .text-[18px] *, .text-[18pt] *, [class*="text-\[18"] *, [class*="text-\[19"] * {
       font-size: inherit !important;
       font-weight: 400 !important;
       letter-spacing: inherit !important;
       line-height: inherit !important;
     }
-    h1 *, .type-26 *, .text-26 *, .type-34 *, .text-34 *, .text-[26px] *, .text-[26pt] *, .text-[34px] *, .text-[34pt] *, .brand-logo-title * {
+    h1 *, .type-24 *, .text-24 *, .text-[24px] *, .type-26 *, .text-26 *, .type-34 *, .text-34 *, .text-[26px] *, .text-[26pt] *, .text-[34px] *, .text-[34pt] *, .brand-logo-title * {
       font-size: inherit !important;
       font-weight: 400 !important;
       letter-spacing: inherit !important;
       line-height: inherit !important;
+    }
+
+    @media (min-width: 768px) {
+      /* Strictly enforce only 3 font sizes on desktop */
+      body, button, input, select, textarea, div, span, p, label, li, ul, ol, td, th, a, h4, h5, h6 {
+        font-size: 16px;
+      }
+      h2, h3, .curator-section-hdr, .drawer-title, .modal-title, .card-title {
+        font-size: 19px !important;
+      }
+      h1, .brand-logo-title, #curatorHeroGreeting h1 {
+        font-size: 24px !important;
+      }
     }
 
     /* ========================================================= */
@@ -388,7 +402,7 @@
       color: #f8fafc;
       margin: 0;
       padding: 0;
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400 !important;
       line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
@@ -598,7 +612,7 @@
       input[type="search"],
       textarea,
       select {
-        font-size: 14pt !important;
+        font-size: 16px !important;
       }
     }
 
@@ -751,7 +765,7 @@
       background: #eaedf0 !important;
       border-radius: 9999px !important;
       padding: 2px 7px !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       line-height: 1 !important;
       top: 6px !important;
       right: 6px !important;
@@ -880,7 +894,7 @@
     .brand-logo-title {
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
-      font-size: 26pt;
+      font-size: 24px;
       line-height: 1;
       letter-spacing: 0.7px !important;
       color: #ffffff;
@@ -891,21 +905,21 @@
     }
     @media (max-width: 480px) {
       .brand-logo-title {
-        font-size: 14pt;
+        font-size: 16px;
         line-height: 16px;
         letter-spacing: 0.7px !important;
       }
     }
     @media (min-width: 481px) and (max-width: 640px) {
       .brand-logo-title {
-        font-size: 18pt;
+        font-size: 19px;
         line-height: 18px;
         letter-spacing: 0.7px !important;
       }
     }
-    @media (min-width: 641px) and (max-width: 1024px) {
+    @media (min-width: 641px) {
       .brand-logo-title {
-        font-size: 26pt;
+        font-size: 24px;
         line-height: 24px;
         letter-spacing: 0.7px !important;
       }
@@ -922,7 +936,7 @@
       color: #2fbb88;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
       font-weight: 400 !important;
-      font-size: 14pt;
+      font-size: 16px;
       letter-spacing: 0.7px;
       line-height: 1;
       white-space: nowrap;
@@ -952,7 +966,7 @@
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.5);
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif;
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400;
       letter-spacing: 0.02em;
       line-height: 1.2;
@@ -1122,7 +1136,7 @@
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.16);
       color: #94a3b8;
-      font-size: 14pt;
+      font-size: 16px;
       line-height: 1;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -1134,7 +1148,7 @@
     .mast-inst-name {
       font-family: 'PP Museum', 'PP Telegraf', sans-serif;
       font-weight: 400;
-      font-size: 18pt;
+      font-size: 19px;
       letter-spacing: -0.01em;
       line-height: 1.25;
       max-width: 260px;
@@ -1190,7 +1204,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .facade-title {
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400;
       letter-spacing: 0.08em;
       color: #34d399;
@@ -1198,6 +1212,7 @@
     .building-facade-close-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: space-between;
       justify-content: center;
       width: 18px;
       height: 18px;
@@ -1205,7 +1220,7 @@
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.14);
       color: #94a3b8;
-      font-size: 14pt;
+      font-size: 16px;
       line-height: 1;
       cursor: pointer;
     }
@@ -1226,7 +1241,7 @@
       background: rgba(255, 255, 255, 0.08);
     }
     .facade-level-badge {
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400;
       padding: 1px 5px;
       border-radius: 4px;
@@ -1236,7 +1251,7 @@
       font-family: monospace;
     }
     .facade-floor-name {
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400;
       color: #e2e8f0;
       overflow: hidden;
@@ -1277,7 +1292,7 @@
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #cbd5e1;
-      font-size: 14pt;
+      font-size: 16px;
       line-height: 1;
       display: flex;
       align-items: center;
@@ -1290,7 +1305,7 @@
       color: #ffffff;
     }
     .building-3d-room-badge .badge-title {
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 500;
       letter-spacing: 0.04em;
       color: #34d399;
@@ -1602,7 +1617,7 @@
       border-radius: 0 !important;
       padding: 0 !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14pt;
+      font-size: 16px;
       font-weight: 400 !important;
       letter-spacing: 0.02em;
       line-height: 1.25;
@@ -1647,7 +1662,7 @@
     }
     .atlas-pill-btn.pill-sm {
       padding: 0 !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       gap: 4px !important;
     }
     .atlas-pill-btn.pill-sm svg.arrow-icon {
@@ -1674,7 +1689,7 @@
       border-radius: 0 !important;
       padding: 2px 0 !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       font-weight: 400 !important;
       letter-spacing: 0.02em !important;
       line-height: 1.25 !important;
@@ -1694,7 +1709,7 @@
       border-radius: 0 !important;
       padding: 2px 0 !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       font-weight: 400 !important;
       letter-spacing: 0.01em !important;
       line-height: 1.25 !important;
@@ -1731,7 +1746,7 @@
       border-radius: 0 !important;
       padding: 2px 0 !important;
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif !important;
-      font-size: 14pt !important;
+      font-size: 16px !important;
       font-weight: 400 !important;
       letter-spacing: 0.01em !important;
       line-height: 1.25 !important;
@@ -1830,7 +1845,7 @@
         width: calc(100vw - 20px) !important;
         box-sizing: border-box !important;
         padding: 9px 11px !important;
-        font-size: 14pt !important;
+        font-size: 16px !important;
         margin-bottom: 8px !important;
         border-radius: 14px !important;
         max-height: calc(50vh - 30px) !important;
@@ -1868,7 +1883,7 @@
       /* 5. Active Route & City View Control Banners */
       #activeRouteBanner, #cityViewControlBanner, #activeMapFilterBanner {
         max-width: calc(100% - 16px) !important;
-        font-size: 14pt !important;
+        font-size: 16px !important;
       }
     }
   .speak-icon { display: none !important; }
@@ -2119,10 +2134,6 @@ return maplibregl$1;
 
       <!-- Top-Left Floating Map Controls (Uncontained) -->
       <div id="desktopGlobeTopControls" class="hidden md:flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 lg:gap-3 select-none text-xs font-mono text-[#c6c6c6] flex-wrap max-w-[calc(100%-24px)]">
-        <div id="globeSpacesBadge" class="flex items-center gap-1.5 text-emerald-400 whitespace-nowrap">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          <span>445 spaces mapped</span>
-        </div>
         <div class="flex items-center gap-1.5 lg:gap-2 whitespace-nowrap">
           <button type="button" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();" class="hover:text-white hover:underline flex items-center gap-1 transition cursor-pointer" title="Reset to Global World View">
             <svg class="w-3.5 h-3.5 shrink-0 text-[#c6c6c6]" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2zm10.87 13h-4.94a19.78 19.78 0 0 0-1.83-7.51A12.05 12.05 0 0 1 26.87 15zm-6.96 0h-7.82a17.82 17.82 0 0 1 1.76-7.06 12.18 12.18 0 0 1 4.3 0A17.82 17.82 0 0 1 19.91 15zM16 4.09c.67.62 1.3 1.34 1.88 2.14a14.28 14.28 0 0 0-3.76 0A13.8 13.8 0 0 1 16 4.09zM5.13 15A12.05 12.05 0 0 1 11.9 7.49 19.78 19.78 0 0 0 10.07 15zm0 2h4.94a19.78 19.78 0 0 0 1.83 7.51A12.05 12.05 0 0 1 5.13 17zm6.96 0h7.82a17.82 17.82 0 0 1-1.76 7.06 12.18 12.18 0 0 1-4.3 0A17.82 17.82 0 0 1 12.09 17zm3.91 10.91c-.67-.62-1.3-1.34-1.88-2.14a14.28 14.28 0 0 0 3.76 0c-.58.8-1.21 1.52-1.88 2.14zm10.87-10.91a12.05 12.05 0 0 1-6.77 7.51 19.78 19.78 0 0 0 1.83-7.51z"/></svg>
@@ -3257,22 +3268,6 @@ return maplibregl$1;
             <span class="text-sm font-normal text-white tracking-wide">Research &amp; Analysis</span>
           </div>
           <div class="flex items-center gap-3">
-            <!-- Voice Button -->
-            <button id="curatorVoiceToggleBtn" type="button" class="text-sky-300 hover:text-white hover:underline text-xs font-mono flex items-center gap-1.5 transition cursor-pointer" title="Auto-Voice: Speaks responses aloud (Click to mute)">
-              <svg class="w-3 h-3 text-sky-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
-                <path d="M16,23a6.0066,6.0066,0,0,1-6-6V9a6,6,0,0,1,12,0v8A6.0066,6.0066,0,0,1,16,23ZM16,5a4.0045,4.0045,0,0,0-4,4v8a4,4,0,0,0,8,0V9A4.0045,4.0045,0,0,0,16,5Z"/>
-                <path d="M25,17a1,1,0,0,0-2,0,7,7,0,0,1-14,0,1,1,0,0,0-2,0,9.01,9.01,0,0,0,8,8.9448V28H12a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2H17V25.9448A9.01,9.01,0,0,0,25,17Z"/>
-              </svg>
-              <span id="curatorVoiceToggleIcon" class="hidden">🎤</span>
-              <span id="curatorVoiceToggleLabel">Voice: ON</span>
-            </button>
-            <!-- Listen Button -->
-            <button id="curatorListenBtn" type="button" onclick="if (typeof window.speakCuratorBriefing === 'function') window.speakCuratorBriefing();" class="text-slate-300 hover:text-white hover:underline text-xs font-mono flex items-center gap-1.5 transition cursor-pointer" title="Listen to curator briefing">
-              <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
-                <path d="M13,6.34,6.83,12H2v8H6.83L13,25.66ZM4,14H7.17l5,4.55V13.45l-5,4.55H4ZM19,10.18V8.1A10,10,0,0,1,26,16a10,10,0,0,1-7,7.9V21.82A8,8,0,0,0,24,16,8,8,0,0,0,19,10.18ZM17,13.25V11.17A5,5,0,0,1,20.5,16,5,5,0,0,1,17,20.83V18.75a3,3,0,0,0,0-5.5Z"/>
-              </svg>
-              <span>Listen</span>
-            </button>
             <!-- Refresh / New Chat Button -->
             <button id="curatorRefreshBtn" type="button" onclick="window.resetToNewChat();" class="text-slate-300 hover:text-white p-1 text-xs transition cursor-pointer" title="Start New Chat">
               <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" viewBox="0 0 32 32" fill="currentColor">
@@ -13684,31 +13679,31 @@ return maplibregl$1;
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:4px;">
               <div style="padding-right:10px; min-width:0;">
                 <a href="${escapeHtml(webUrl || '#')}" target="_blank" rel="noopener noreferrer" 
-                   style="font-size:18pt; font-weight:400; color:#ffffff; line-height:1.25; text-decoration:none; display:block;"
+                   style="font-size:19px; font-weight:400; color:#ffffff; line-height:1.25; text-decoration:none; display:block;"
                    onmouseover="this.style.color='#93c5fd';this.style.textDecoration='underline'" 
                    onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
                   ${escapeHtml(inst.name)}
                 </a>
-                <div style="font-size:14pt; color:#a1a1aa; margin-top:2px;">
+                <div style="font-size:16px; color:#a1a1aa; margin-top:2px;">
                   ${escapeHtml(inst.location || inst.city)}
                 </div>
               </div>
-              <span style="font-size:14pt; font-family:monospace; color:${markerColor}; white-space:nowrap; shrink:0;">
+              <span style="font-size:16px; font-family:monospace; color:${markerColor}; white-space:nowrap; shrink:0;">
                 ${tierLabel}
               </span>
             </div>
 
             <!-- Hours & Admission Tier -->
-            <div style="font-size:14pt; color:#34d399; margin-top:4px; font-family:monospace;">
+            <div style="font-size:16px; color:#34d399; margin-top:4px; font-family:monospace;">
               ${escapeHtml(shortH)} · ${escapeHtml(shortF)}
             </div>
 
             <!-- Curatorial Focus & Info Link -->
-            <div style="font-size:14pt; color:#cbd5e1; margin-top:4px; line-height:1.4;">
+            <div style="font-size:16px; color:#cbd5e1; margin-top:4px; line-height:1.4;">
               ${escapeHtml(inst.curatorial_focus || inst.neighborhood || '')}
               <div style="margin-top:4px;">
                 <button type="button" onclick="window.atlasOpenDossier('${safeId}')" 
-                        style="background:none; border:none; outline:none; color:#38bdf8; font-size:14pt; cursor:pointer; padding:0; text-decoration:underline; font-family:inherit;">
+                        style="background:none; border:none; outline:none; color:#38bdf8; font-size:16px; cursor:pointer; padding:0; text-decoration:underline; font-family:inherit;">
                   Audit Dossier →
                 </button>
               </div>
@@ -13717,21 +13712,21 @@ return maplibregl$1;
             <!-- Streamlined Single-Column Actions -->
             <div style="display:flex; flex-direction:column; gap:4px; margin-top:8px; padding-top:6px; border-top:1px solid #262626;">
               <button type="button" onclick="document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove()); window.zoomToBuilding('${safeId}', false)" 
-                      style="background:none; border:none; text-align:left; color:#f1f5f9; font-size:14pt; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
+                      style="background:none; border:none; text-align:left; color:#f1f5f9; font-size:16px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
                 Zoom to Building →
               </button>
               ${webUrl ? `
                 <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" 
-                   style="color:#93c5fd; font-size:14pt; font-weight:400; text-decoration:underline; font-family:inherit;">
+                   style="color:#93c5fd; font-size:16px; font-weight:400; text-decoration:underline; font-family:inherit;">
                   Official Website (↗ ${escapeHtml(domain)})
                 </a>
               ` : ''}
               <button type="button" onclick="window.atlasPlanVisit('${safeId}')" 
-                      style="background:none; border:none; text-align:left; color:#cbd5e1; font-size:14pt; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
+                      style="background:none; border:none; text-align:left; color:#cbd5e1; font-size:16px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
                 Plan Visit →
               </button>
               <button type="button" onclick="window.atlasAskCurator('${safeId}')" 
-                      style="background:none; border:none; text-align:left; color:#42be65; font-size:14pt; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;" 
+                      style="background:none; border:none; text-align:left; color:#42be65; font-size:16px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;" 
                       title="Ask Curator about ${escapeHtml(inst.name)}">
                 Ask in Chat →
               </button>
@@ -14200,7 +14195,7 @@ return maplibregl$1;
           badgeEl.style.border = '2.5px solid #34d399';
           badgeEl.style.color = '#ffffff';
           badgeEl.style.fontFamily = '"PP Museum", "PP Telegraf", sans-serif';
-          badgeEl.style.fontSize = '14px';
+          badgeEl.style.fontSize = '16px';
           badgeEl.style.fontWeight = 'bold';
           badgeEl.style.display = 'flex';
           badgeEl.style.alignItems = 'center';
@@ -14216,39 +14211,39 @@ return maplibregl$1;
           const popupHtml = `
             <div style="font-family:'PP Museum',sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f1f5f9;">
               <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
-                <span style="font-size:14pt;  color:#34d399; font-weight:400;">
+                <span style="font-size:16px;  color:#34d399; font-weight:400;">
                   Stop ${stop.stopIndex} of ${route.stops.length}
                 </span>
-                <span style="font-size:14pt;  padding:1px 6px; border-radius:4px; background:${isClean ? '#06261c' : '#1e1133'}; color:${isClean ? '#34d399' : '#c084fc'}; border:1px solid ${isClean ? '#0f4c39' : '#581c87'};">
+                <span style="font-size:16px;  padding:1px 6px; border-radius:4px; background:${isClean ? '#06261c' : '#1e1133'}; color:${isClean ? '#34d399' : '#c084fc'}; border:1px solid ${isClean ? '#0f4c39' : '#581c87'};">
                   ${isClean ? 'Clean Funding' : 'Flagged'}
                 </span>
               </div>
-              <div style="font-size:18pt; font-weight:400; color:#ffffff; line-height:1.2; margin-bottom:4px;">
+              <div style="font-size:19px; font-weight:400; color:#ffffff; line-height:1.2; margin-bottom:4px;">
                 ${escapeHtml(stop.name)}
               </div>
-              <div style="font-size:14pt; color:#a1a1aa; margin-bottom:6px;">
+              <div style="font-size:16px; color:#a1a1aa; margin-bottom:6px;">
                 ${escapeHtml(stop.address || stop.neighborhood || stop.city)}
               </div>
-              <div style="font-size:14pt;  color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
+              <div style="font-size:16px;  color:#6ee7b7; background:#06261c; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
                 ${escapeHtml(stop.openingHours)}
               </div>
-              <div style="font-size:14pt; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
+              <div style="font-size:16px; color:#cbd5e1; margin-bottom:8px; line-height:1.35;">
                 ${escapeHtml(stop.curatorialFocus || '')}
               </div>
               ${idx < route.stops.length - 1 ? `
-                <div style="font-size:14pt;  color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:16px;  color:#93c5fd; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Next stop: ${escapeHtml(route.stops[idx + 1].name)} (${stop.nextLegKm || route.stops[idx+1].legDistanceKm} km · ${stop.nextLegMin || route.stops[idx+1].legWalkMinutes} min walk)
                 </div>
               ` : `
-                <div style="font-size:14pt;  color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
+                <div style="font-size:16px;  color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
                   Final Itinerary Destination
                 </div>
               `}
               <div style="display:flex; align-items:center; gap:6px; margin-top:8px;">
-                <button onclick="window.jumpToRouteStop(${idx})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14pt; font-weight:400; border:none; cursor:pointer;">
+                <button onclick="window.jumpToRouteStop(${idx})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:16px; font-weight:400; border:none; cursor:pointer;">
                   Focus Stop
                 </button>
-                <button onclick="window.atlasPlanVisit('${safeName}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:14pt; border:1px solid #334155; cursor:pointer;">
+                <button onclick="window.atlasPlanVisit('${safeName}')" style="padding:4px 8px; border-radius:8px; background:#1e293b; color:#93c5fd; font-size:16px; border:1px solid #334155; cursor:pointer;">
                   Plan Visit
                 </button>
               </div>
@@ -16172,16 +16167,16 @@ return maplibregl$1;
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${domain} ↗`;
 
-      ctx.font = '500 17px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '500 19px "PP Museum", "PP Telegraf", sans-serif';
       const nameText = inst.name;
       const nameW = ctx.measureText(nameText).width;
 
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ' · ' + inst.curatorial_focus : (inst.neighborhood ? ' · ' + inst.neighborhood : ''));
-      ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
       const subW = ctx.measureText(subText).width;
 
-      ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
       const webW = ctx.measureText(domainPillText).width;
 
       const cardW = Math.max(260, Math.min(380, Math.max(nameW, subW, webW + 28) + 32));
@@ -16218,14 +16213,14 @@ return maplibregl$1;
       ctx.fillStyle = tierColor;
       ctx.fill();
 
-      ctx.font = '11px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = tierColor;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
       ctx.fillText(tierLabel, cardX + 26, cardY + 18);
 
       // Row 2: Institution Name (Upright PP Museum 500)
-      ctx.font = '500 17px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '500 19px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#ffffff';
       ctx.textBaseline = 'top';
       let displayName = nameText;
@@ -16239,7 +16234,7 @@ return maplibregl$1;
       ctx.fillText(displayName, cardX + 16, cardY + 34);
 
       // Row 3: Location and Curatorial Focus
-      ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+      ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
       ctx.fillStyle = '#94a3b8';
       let displaySub = subText;
       if (ctx.measureText(displaySub).width > maxTextW) {
@@ -16266,7 +16261,7 @@ return maplibregl$1;
         ctx.fill();
         ctx.stroke();
 
-        ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#38bdf8';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -16474,7 +16469,7 @@ return maplibregl$1;
 
         // Graticule Degree Annotations
         if (r > baseRadius * 0.9) {
-          ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+          ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
           ctx.fillStyle = isGossipModeActive ? '#eab308' : '#263a55';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -16614,7 +16609,7 @@ return maplibregl$1;
         cityClusterHitboxes = [];
         const drawnCityBoxes = [];
         const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
-        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         
         let candidateCities = [];
         if (selectedCountryFilter !== 'all') {
@@ -16646,12 +16641,12 @@ return maplibregl$1;
 
             let bw, bh = 24, txt = city.name, countTxt = '';
             let countPillW = 0, countPillH = 16;
-            ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
 
             if (isClustered) {
               countTxt = String(city.count);
               const twName = ctx.measureText(city.name).width;
-              ctx.font = '11px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               const twCount = ctx.measureText(countTxt).width;
               countPillW = Math.max(16, twCount + 8);
               bw = twName + countPillW + 18;
@@ -16713,7 +16708,7 @@ return maplibregl$1;
 
               if (isClustered) {
                 // Render City Name on left
-                ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
                 ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#e2e8f0');
                 ctx.textAlign = 'left';
                 ctx.textBaseline = 'middle';
@@ -16730,7 +16725,7 @@ return maplibregl$1;
                 ctx.lineWidth = 1;
                 ctx.stroke();
 
-                ctx.font = '11px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
                 ctx.fillStyle = '#ffffff';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -16749,7 +16744,7 @@ return maplibregl$1;
                 ctx.fillStyle = isHovered ? '#34d399' : '#10b981';
                 ctx.fill();
               } else {
-                ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
                 ctx.fillStyle = isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#cbd5e1');
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -16777,7 +16772,7 @@ return maplibregl$1;
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+          ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -16905,9 +16900,9 @@ return maplibregl$1;
             const corr = hoveredRailCorridor;
             const tipHeader = corr.name.toUpperCase();
             const tipSub = `${corr.from} - ${corr.to} · ${corr.travel_time || 'Eco-Transit'} · ${corr.emission_saving || 'Low Carbon'}`;
-            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             const hw = ctx.measureText(tipHeader).width;
-            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             const sw = ctx.measureText(tipSub).width;
             const rw = Math.max(hw, sw) + 22;
             const rh = 40;
@@ -16924,13 +16919,13 @@ return maplibregl$1;
             ctx.lineWidth = 1.2;
             ctx.stroke();
 
-            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             ctx.fillStyle = '#38bdf8';
             ctx.textAlign = 'left';
             ctx.textBaseline = 'top';
             ctx.fillText(tipHeader, rx + 10, ry + 6);
 
-            ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             ctx.fillStyle = '#ffffff';
             ctx.fillText(tipSub, rx + 10, ry + 20);
             ctx.restore();
@@ -17058,7 +17053,7 @@ return maplibregl$1;
 
           if (shouldDrawGlobeLabel && !isHov) {
             ctx.save();
-            ctx.font = '13px "PP Museum", "PP Telegraf", sans-serif';
+            ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
@@ -17123,14 +17118,14 @@ return maplibregl$1;
               const countTxt = `${countVal} Independent Cultural Space${countVal === 1 ? '' : 's'}`;
               const linkTxt = 'Click to Explore →';
 
-              ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '500 19px "PP Museum", "PP Telegraf", sans-serif';
               const twCity = ctx.measureText(cityTxt).width;
 
-              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
               const twCount = ctx.measureText(countTxt).width;
 
-              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               const twLink = ctx.measureText(linkTxt).width;
 
               const linkBtnW = twLink + 22;
@@ -17173,8 +17168,8 @@ return maplibregl$1;
               ctx.lineWidth = 1.5;
               ctx.stroke();
 
-              // Line 1: City Name (500 18px)
-              ctx.font = '500 18px "PP Museum", "PP Telegraf", sans-serif';
+              // Line 1: City Name (500 19px)
+              ctx.font = '500 19px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive ? '#facc15' : '#38bdf8';
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
@@ -17182,16 +17177,16 @@ return maplibregl$1;
 
               let currentY = cardY + 34;
 
-              // Line 2: Country Name (if available, 14px, muted slate, own line, no dot)
+              // Line 2: Country Name (if available, 16px, muted slate, own line, no dot)
               if (countryTxt) {
-                ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+                ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
                 ctx.fillStyle = isGossipModeActive ? '#fde047' : '#94a3b8';
                 ctx.fillText(countryTxt, cardX + 14, currentY);
                 currentY += 22;
               }
 
-              // Line 3: Independent Cultural Spaces Count (14px, crisp light slate, own line, no dot)
-              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+              // Line 3: Independent Cultural Spaces Count (16px, crisp light slate, own line, no dot)
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive ? '#fef9c3' : '#f1f5f9';
               ctx.fillText(countTxt, cardX + 14, currentY);
               currentY += 22;
@@ -17224,7 +17219,7 @@ return maplibregl$1;
               ctx.stroke();
               ctx.shadowBlur = 0;
 
-              ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+              ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
               ctx.fillStyle = isGossipModeActive 
                 ? (isHoveringCityExploreLink ? '#38bdf8' : '#facc15') 
                 : (isHoveringCityExploreLink ? '#ffffff' : '#38bdf8');
@@ -17313,7 +17308,7 @@ return maplibregl$1;
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -17335,6 +17330,7 @@ return maplibregl$1;
         ctx.fill();
         ctx.stroke();
 
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#94a3b8';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -17367,7 +17363,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.fill();
 
-        ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+        ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
         ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -17411,7 +17407,7 @@ return maplibregl$1;
             floatingCard.style.bottom = 'auto';
           }
 
-          ctx.font = '14px "PP Museum", "PP Telegraf", sans-serif';
+          ctx.font = '16px "PP Museum", "PP Telegraf", sans-serif';
           ctx.fillStyle = '#ffffff';
           ctx.textAlign = 'left';
           ctx.textBaseline = 'middle';
