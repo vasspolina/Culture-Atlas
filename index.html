@@ -284,7 +284,6 @@
     html body p:first-of-type:nth-last-of-type(n+4) ~ p { text-indent: 10px !important; }
     html body button p, html body a p, html body .no-indent, html body .no-indent p, html body #curatorMessages p, html body #curatorDrawerChatBody p { text-indent: 0 !important; }
 
-
     /* Solid black surfaces, no blur. */
     #catalogModal, #curatorSettingsModal, #academicResearchModal, #governanceMethodologyModal { background: rgba(0, 0, 0, 0.9) !important; }
     #catalogModal > div, #curatorSettingsModal > div, #academicResearchModal > div, #governanceMethodologyModal > div,
@@ -296,7 +295,6 @@
     /* Nothing selected: no empty record, no actions, no 'Active' badge. */
     #desktopDossierColumn:has(#desktopDossierName:empty) #desktopDossierBody { display: none; }
     #desktopDossierColumn:has(#desktopDossierName:empty)::after { content: 'Select a space on the map or ask in chat.'; display: block; padding: 20px; color: #f4f4f4; font-size: 18px; }
-    
 
     /* Material-style surfaces: flat, outlined, 4px corners. Every line is 1pt. */
     html body .border { border-width: 1pt !important; }
@@ -313,7 +311,6 @@
     html body thead th { border-bottom: 1pt solid #393939; }
     html body tbody tr + tr td { border-top: 1pt solid #2e2e2e; }
     html body a { text-decoration-thickness: 1pt !important; }
-    
 
     /* Directory and Filters & Lenses fill the page below the header, like a pop-up window. */
     @media (min-width: 768px) {
@@ -481,7 +478,6 @@
       text-decoration-color: #ffffff;
     }
 
-    
     /* ========================================================= */
     /*  GOOGLE CHROME & APPLE SAFARI CROSS-BROWSER STYLING */
     /* ========================================================= */
@@ -1308,8 +1304,7 @@
         min-height: 0 !important;
         display: none !important;
       }
-      body.chat-input-mode-active #workViewContainer,
-      body.chat-input-mode-active #workCanvas {
+      body.chat-input-mode-active #workViewContainer{
         height: 100% !important;
         max-height: 100% !important;
         flex: 1 1 100% !important;
@@ -1345,32 +1340,16 @@
       border-radius: 0 !important;
       box-shadow: none !important;
     }
-    #floatingCardModeSwitcher,
+    
     #floatingCardTabInfo,
     #floatingCardTabGossip,
-    #floatingCardBudgetTier,
-    #floatingCardPublicSubsidies,
-    #floatingCardPhilanthropy,
-    #floatingCardEarnedRevenue,
-    #floatingCardProgramRatio,
-    #floatingCardShowStatusBadge,
     #floatingCardShowFloorPill,
-    #floatingCardOpeningNightRsvp,
     #floatingCardVcStrategyBadge,
     #floatingCardVcMedium,
-    #floatingCardGossipIntensityBadge,
-    #floatingCardGossipCaseStatus,
     #closeFloatingCardBtn,
     #floatingCardDirectAuditBtn,
     #floatingCardDirectPlanBtn,
     #floatingCardDirectWebBtn,
-    #floatingCard3DBuildingBtn,
-    #dossier-sheet-budget-badge,
-    #dossier-sheet-pill-public,
-    #dossier-sheet-pill-grants,
-    #dossier-sheet-pill-earned,
-    #dossier-sheet-pill-ratio,
-    #dossier-sheet-show-status,
     #dossier-tab-info,
     #dossier-tab-gossip {
       background: transparent !important;
@@ -1381,32 +1360,17 @@
       border-left: none !important;
       border-right: none !important;
     }
-    #floatingCardBudgetTier,
-    #floatingCardPublicSubsidies,
-    #floatingCardPhilanthropy,
-    #floatingCardEarnedRevenue,
-    #floatingCardProgramRatio,
-    #floatingCardShowStatusBadge,
+    
     #floatingCardShowFloorPill,
-    #floatingCardOpeningNightRsvp,
     #floatingCardVcStrategyBadge,
-    #floatingCardVcMedium,
-    #floatingCardGossipIntensityBadge,
-    #floatingCardGossipCaseStatus,
-    #dossier-sheet-budget-badge,
-    #dossier-sheet-pill-public,
-    #dossier-sheet-pill-grants,
-    #dossier-sheet-pill-earned,
-    #dossier-sheet-pill-ratio,
-    #dossier-sheet-show-status {
+    #floatingCardVcMedium{
       border-bottom: none !important;
       padding-left: 0 !important;
       padding-right: 0 !important;
     }
     #floatingCardDirectAuditBtn,
     #floatingCardDirectPlanBtn,
-    #floatingCardDirectWebBtn,
-    #floatingCard3DBuildingBtn {
+    #floatingCardDirectWebBtn{
       border-bottom: 1pt solid #262626 !important;
       text-decoration: underline !important;
       padding: 6px 0 !important;
@@ -1415,8 +1379,7 @@
     }
     #floatingCardDirectAuditBtn:hover,
     #floatingCardDirectPlanBtn:hover,
-    #floatingCardDirectWebBtn:hover,
-    #floatingCard3DBuildingBtn:hover {
+    #floatingCardDirectWebBtn:hover{
       background: transparent !important;
       color: #ffffff !important;
     }
@@ -1446,11 +1409,7 @@
     body.gossip-mode-active #cityMapContainer {
       background: #000000 !important;
     }
-    body.gossip-mode-active #chatRightPanel {
-      background: rgba(0, 0, 0, 0.90) !important;
-      border-left: 1pt solid rgba(234, 179, 8, 0.3) !important;
-      transition: all 0.4s ease;
-    }
+    
     body.gossip-mode-active #workBottomDock {
       background: rgba(0, 0, 0, 0.96) !important;
       border-top: 1pt solid rgba(234, 179, 8, 0.35) !important;
@@ -1508,8 +1467,7 @@
       color: #f4f4f4 !important;
       box-shadow: none !important;
     }
-    body.gossip-mode-active #topGossipBtn:hover,
-    body.gossip-mode-active #mobileGossipBtn:hover {
+    body.gossip-mode-active #topGossipBtn:hover{
       border-color: #f4f4f4 !important;
       box-shadow: none !important;
     }
@@ -1858,7 +1816,7 @@
         max-width: 100vw !important;
         width: 100vw !important;
       }
-      #globeViewport, #workViewContainer, #workCanvas {
+      #globeViewport, #workViewContainer{
         width: 100% !important;
         max-width: 100vw !important;
         overflow: hidden !important;
@@ -8797,113 +8755,6 @@ return maplibregl$1;
   };
 
     // Clean Metropolitan Network Lookup with Universal Architectural Cartography
-    function getCityStreetData(cityName) {
-      if (!cityName) return null;
-      let key = cityName.toLowerCase().trim();
-      if (key === 'nyc' || key === 'new york city') key = 'new york';
-      if (key.includes('frankfurt')) key = 'frankfurt';
-      if (key.includes('vienna') || key === 'wien') key = 'vienna';
-      if (key.includes('basel')) key = 'basel';
-      if (key.includes('barcelona') || key === 'bcn') key = 'barcelona';
-      if (key.includes('petersburg') || key.includes('spb') || key.includes('saint p')) key = 'saint petersburg';
-      if (key.includes('krasnodar')) key = 'krasnodar';
-      if (key.includes('moscow') || key.includes('moskva')) key = 'moscow';
-
-      const normKey = key.normalize('NFD').replace(/[̀-ͯ]/g, '');
-      const pCty = PRIORITY_CITIES.find(c => matchC(c.name, cityName));
-      const cityInsts = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
-      let centerLon = pCty ? pCty.lon : 0;
-      let centerLat = pCty ? pCty.lat : 0;
-      if (!pCty && cityInsts.length > 0) {
-        centerLon = cityInsts[0].lon;
-        centerLat = cityInsts[0].lat;
-      }
-
-      const curated = CITY_STREET_NETWORKS[key] || CITY_STREET_NETWORKS[normKey];
-      if (curated) {
-        return {
-          center: curated.center || [centerLon, centerLat],
-          waterways: curated.waterways || [],
-          parks: curated.parks || [],
-          major_streets: curated.major_streets || [],
-          secondary_streets: curated.secondary_streets || []
-        };
-      }
-
-      // Universal procedural architectural cartography for any unlisted city
-      const waterways = [];
-      const parks = [];
-      const major_streets = [];
-      const secondary_streets = [];
-
-      if (centerLon === 0 && centerLat === 0) {
-        centerLon = (typeof rotLon !== 'undefined' && isFinite(rotLon) ? rotLon : 0);
-        centerLat = (typeof rotLat !== 'undefined' && isFinite(rotLat) ? rotLat : 0);
-      }
-
-      const cosLat = Math.max(0.18, Math.cos(centerLat * Math.PI / 180));
-      const spanLon = 0.075 / cosLat;
-      const spanLat = 0.055;
-
-      waterways.push({
-        name: "Metropolitan Canal",
-        width: 16,
-        pts: [
-          [centerLon - spanLon * 0.75, centerLat - spanLat * 0.40],
-          [centerLon - spanLon * 0.35, centerLat - spanLat * 0.12],
-          [centerLon, centerLat - spanLat * 0.02],
-          [centerLon + spanLon * 0.35, centerLat + spanLat * 0.22],
-          [centerLon + spanLon * 0.75, centerLat + spanLat * 0.38]
-        ]
-      });
-
-      parks.push({
-        name: "Civic Cultural Gardens",
-        pts: [
-          [centerLon + spanLon * 0.06, centerLat + spanLat * 0.06],
-          [centerLon + spanLon * 0.22, centerLat + spanLat * 0.06],
-          [centerLon + spanLon * 0.22, centerLat + spanLat * 0.20],
-          [centerLon + spanLon * 0.06, centerLat + spanLat * 0.20],
-          [centerLon + spanLon * 0.06, centerLat + spanLat * 0.06]
-        ]
-      });
-
-      major_streets.push(
-        { pts: [[centerLon - spanLon * 0.06, centerLat - spanLat * 0.6], [centerLon - spanLon * 0.02, centerLat], [centerLon + spanLon * 0.02, centerLat + spanLat * 0.6]] },
-        { pts: [[centerLon - spanLon * 0.65, centerLat + spanLat * 0.03], [centerLon, centerLat + spanLat * 0.03], [centerLon + spanLon * 0.65, centerLat + spanLat * 0.03]] },
-        { pts: [[centerLon - spanLon * 0.45, centerLat - spanLat * 0.35], [centerLon, centerLat], [centerLon + spanLon * 0.45, centerLat + spanLat * 0.35]] },
-        { pts: [[centerLon - spanLon * 0.45, centerLat + spanLat * 0.35], [centerLon, centerLat], [centerLon + spanLon * 0.45, centerLat - spanLat * 0.35]] }
-      );
-
-      cityInsts.forEach(inst => {
-        major_streets.push({
-          pts: [[centerLon, centerLat], [inst.lon, inst.lat]]
-        });
-      });
-
-      const stepX = 0.012 / cosLat;
-      const stepY = 0.009;
-      for (let s = -4; s <= 4; s++) {
-        if (s === 0) continue;
-        secondary_streets.push({
-          pts: [[centerLon - spanLon * 0.6, centerLat + s * stepY], [centerLon + spanLon * 0.6, centerLat + s * stepY]]
-        });
-      }
-      for (let s = -5; s <= 5; s++) {
-        if (s === 0) continue;
-        secondary_streets.push({
-          pts: [[centerLon + s * stepX, centerLat - spanLat * 0.5], [centerLon + s * stepX, centerLat + spanLat * 0.5]]
-        });
-      }
-
-      return {
-        center: [centerLon, centerLat],
-        waterways,
-        parks,
-        major_streets,
-        secondary_streets
-      };
-    }
 
     function getCityTargetRadius(cityName) {
       const c = (cityName || '').toLowerCase();
@@ -9621,21 +9472,6 @@ return maplibregl$1;
     }
     window.dismissBuildingRoomBadge = dismissBuildingRoomBadge;
 
-    function handleFacadeFloorClick(idx) {
-      selectBfiFloor(idx);
-      const inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (!inst) return;
-      const bArch = inst.building_architecture || {};
-      const floors = inst.floor_plans || (bArch && bArch.floor_plans) || [];
-      const fl = floors[idx];
-      if (!fl) return;
-      const show = (fl.current_shows && fl.current_shows[0]) || { title: inst.name + ' Contemporary Commissions' };
-      const levelCode = fl.level_code || ('L' + fl.level);
-      if (typeof window.atlasAskCurator === 'function') {
-        window.atlasAskCurator('Tell me about the exhibition at ' + inst.name + ' (' + levelCode + '): ' + JSON.stringify(show.title || ''));
-      }
-    }
-    window.handleFacadeFloorClick = handleFacadeFloorClick;
 
     function askCuratorAboutCurrentBuilding() {
       const inst = selectedInstitution || currentHighlightedBuildingInst;
@@ -11231,53 +11067,9 @@ return maplibregl$1;
     }
     window.stop3DOrbit = stop3DOrbit;
 
-    function toggle3DBuildingView() {
-      if (!cityVectorMap || !isCityStreetViewActive) {
-        const inst = selectedInstitution || null;
-        if (inst && typeof zoomToBuilding === 'function') {
-          zoomToBuilding(inst);
-          return;
-        }
-      }
-      if (!cityVectorMap) return;
-      stop3DOrbit();
-      const curPitch = cityVectorMap.getPitch();
-      const isCurrently3D = curPitch > 35;
-      const targetPitch = isCurrently3D ? 0 : 62;
-      const targetBearing = isCurrently3D ? 0 : 28;
-      
-      const btn = document.getElementById('toggle3DBuildingViewBtn');
-      const text = document.getElementById('toggle3DBuildingViewText');
-      if (btn) {
-        if (!isCurrently3D) {
-          btn.classList.add('bg-sky-600', 'text-white', 'border-sky-400');
-          btn.classList.remove('bg-black/95', 'text-[#f4f4f4]');
-        } else {
-          btn.classList.remove('bg-sky-600', 'text-white', 'border-sky-400');
-          btn.classList.add('bg-black/95', 'text-[#f4f4f4]');
-        }
-      }
-
-      const inst = selectedInstitution || currentHighlightedBuildingInst;
-      const padLeft = (inst && window.innerWidth >= 640) ? 330 : 0;
-      const bPad = inst && typeof getBuildingCameraPadding === 'function' ? getBuildingCameraPadding() : { left: padLeft, top: 40, bottom: 40, right: 30 };
-      cityVectorMap.easeTo({
-        pitch: targetPitch,
-        bearing: targetBearing,
-        padding: bPad,
-        duration: 1000
-      });
-
-      if (inst && !isCurrently3D) {
-        ensureBuildingFootprintLayer();
-        highlightBuildingFootprint(inst);
-      }
-    }
-    window.toggle3DBuildingView = toggle3DBuildingView;
 
     //  3D Building Floor Inspector HUD Controller
     let currentBfiFloorIndex = 0;
-    let isMapCalloutsHidden = true;
 
     function showBuildingFloorInspectorHud(inst) {
       return; // generated outlines were removed: they were drawn from coordinates, not from real buildings
@@ -14101,9 +13893,6 @@ return maplibregl$1;
       }
     }
 
-    function easeInOutQuad(t) {
-      return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-    }
     function easeInOutCubic(t) {
       return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
@@ -19083,76 +18872,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       };
     }
 
-    function startCuratorThinking(query) {
-      const mode = getChatModeConfig(query);
-      currentThinkingPlan = generateThinkingPlan(query, mode);
-      thinkingStartTimestamp = Date.now();
-      isCuratorThinkingActive = true;
-
-      // Detect city or institution coordinate for glowing city beacon on 3D globe
-      const city = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
-      const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
-      const qNorm = (query || '').toLowerCase();
-      const isExactInst = inst && (
-        (inst.name && qNorm.includes(inst.name.toLowerCase())) ||
-        (inst.shortName && qNorm.includes(inst.shortName.toLowerCase())) ||
-        (inst.aliases && inst.aliases.some(a => a && a.length > 3 && qNorm.includes(a.toLowerCase())))
-      );
-
-      if (isExactInst && inst.lat && inst.lon) {
-        curatorThinkingTargetCoord = { name: inst.name, lat: Number(inst.lat), lon: Number(inst.lon) };
-      } else if (city && typeof ALL_CITIES_REGISTRY !== 'undefined') {
-        const cMeta = ALL_CITIES_REGISTRY.find(c => (c.name || '').toLowerCase() === city.toLowerCase());
-        if (cMeta) {
-          curatorThinkingTargetCoord = { name: cMeta.name, lat: Number(cMeta.lat), lon: Number(cMeta.lon) };
-        } else if (inst && inst.lat && inst.lon) {
-          curatorThinkingTargetCoord = { name: inst.name, lat: Number(inst.lat), lon: Number(inst.lon) };
-        }
-      } else if (inst && inst.lat && inst.lon) {
-        curatorThinkingTargetCoord = { name: inst.name, lat: Number(inst.lat), lon: Number(inst.lon) };
-      } else if (typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.lat) {
-        curatorThinkingTargetCoord = { name: selectedInstitution.name, lat: Number(selectedInstitution.lat), lon: Number(selectedInstitution.lon) };
-      } else {
-        curatorThinkingTargetCoord = { name: 'Global Network', lat: (typeof rotLat !== 'undefined' ? rotLat : 25), lon: (typeof rotLon !== 'undefined' ? rotLon : 10) };
-      }
-
-      const typingEl = document.getElementById('curatorTyping');
-      const timerEl = document.getElementById('curatorThinkingTimer');
-      const thoughtEl = document.getElementById('curatorThinkingThought');
-      const stepLabelEl = document.getElementById('curatorThinkingStepLabel');
-      const modeBadge = document.getElementById('curatorThinkingModeBadge');
-
-      const dotPing = document.getElementById('curatorCityDotPing');
-      const dotHalo = document.getElementById('curatorCityDotHalo');
-      const dotCore = document.getElementById('curatorCityDotCore');
-
-      if (dotPing) dotPing.style.backgroundColor = mode.color;
-      if (dotHalo) dotHalo.style.backgroundColor = mode.color;
-      if (dotCore) {
-        dotCore.style.backgroundColor = mode.color;
-        dotCore.style.boxShadow = 'none';
-      }
-
-      if (modeBadge) {
-        modeBadge.textContent = mode.name;
-        modeBadge.className = 'hidden';
-        modeBadge.style.display = 'none';
-      }
-
-      if (timerEl) timerEl.textContent = '1';
-      if (thoughtEl) thoughtEl.textContent = currentThinkingPlan.thought;
-      if (stepLabelEl) stepLabelEl.textContent = currentThinkingPlan.step;
-      if (typingEl) typingEl.classList.remove('hidden');
-
-      if (typeof render === 'function') render();
-
-      if (thinkingTimerInterval) clearInterval(thinkingTimerInterval);
-      thinkingTimerInterval = setInterval(() => {
-        const elapsed = Math.max(1, Math.floor((Date.now() - thinkingStartTimestamp) / 1000));
-        if (timerEl) timerEl.textContent = elapsed;
-        if (typeof render === 'function') render();
-      }, 1000);
-    }
 
     function stopCuratorThinking() {
       if (thinkingTimerInterval) {
@@ -20693,35 +20412,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       scrollChatToBottom(true);
     }
 
-    function toggleChatInputMode() {
-      if (isChatInputMode) {
-        exitChatInputMode();
-      } else {
-        enterChatInputMode();
-      }
-    }
-    window.toggleChatInputMode = toggleChatInputMode;
 
-    function handleAttachClick() {
-      const fileInput = document.getElementById('whistleblowerFileInput');
-      if (fileInput) fileInput.click();
-    }
-    window.handleAttachClick = handleAttachClick;
 
-    function handleWhistleblowerFileSelect(event) {
-      const file = event.target.files && event.target.files[0];
-      if (!file) return;
-      const workInput = document.getElementById('workInput');
-      if (workInput) {
-        const sizeKb = Math.round(file.size / 1024);
-        const pseudoDigest = Array.from(file.name + file.size).reduce((acc, char) => (acc * 31 + char.charCodeAt(0)) >>> 0, 0).toString(16).padStart(8, '0');
-        const attachmentTag = `\n[Attached Document: ${file.name} (${sizeKb} KB) | Client Hash: sha256-${pseudoDigest}...]\n`;
-        workInput.value = (workInput.value ? workInput.value + '\n' : '') + attachmentTag;
-        workInput.focus();
-      }
-      event.target.value = '';
-    }
-    window.handleWhistleblowerFileSelect = handleWhistleblowerFileSelect;
 
     function triggerInChatContributeFlow(defaultTopic = '') {
       enterChatInputMode(defaultTopic);
@@ -22020,20 +21712,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const curatorPanel = document.getElementById('curatorPanel');
     const catalogPanel = document.getElementById('catalogPanel');
 
-    function switchTab(tab) {
-      if (tab === 'curator') {
-        tabCuratorBtn.className = 'py-1 px-3 rounded-lg transition text-center flex items-center justify-center gap-1.5 bg-black text-white font-normal shadow-sm';
-        tabCatalogBtn.className = 'py-1 px-3 rounded-lg transition text-center flex items-center justify-center gap-1.5 text-[#f4f4f4] hover:text-white';
-        curatorPanel.classList.remove('hidden');
-        catalogPanel.classList.add('hidden');
-      } else {
-        tabCatalogBtn.className = 'py-1 px-3 rounded-lg transition text-center flex items-center justify-center gap-1.5 bg-black text-white font-normal shadow-sm';
-        tabCuratorBtn.className = 'py-1 px-3 rounded-lg transition text-center flex items-center justify-center gap-1.5 text-[#f4f4f4] hover:text-white';
-        catalogPanel.classList.remove('hidden');
-        curatorPanel.classList.add('hidden');
-        renderLeftList();
-      }
-    }
 
     // =========================================================
     // Curator Intelligence Settings Modal (Multi-Provider: Claude, OpenAI, Gemini)
@@ -23282,11 +22960,6 @@ bar.innerHTML = html;
     });
 
     // Safe view switcher stub for dual-split layout
-    function setMobileView(view) {
-      if (view === 'curator') switchTab('curator');
-      else if (view === 'catalog') switchTab('catalog');
-    }
-    function setSheetState(s) {}
 
     // =========================================================
     //  CANVAS POINTER & HIT-TESTING (Click Institution / City / Country)
