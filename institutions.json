@@ -4012,6 +4012,31 @@
               "published": "2023-04-14"
             }
           ]
+        },
+        {
+          "case_id": "NS07",
+          "title": "Other-source finding, Palais de Tokyo, Paris",
+          "event_date": "Audited financial years 2012\u20132022; reply February 2023.",
+          "facts": [
+            "The Cour des comptes audit recommends stronger governance ethics, a sponsorship charter and more secure HR management; the institution's dated reply discusses those recommendations."
+          ],
+          "response": "The institution responds to the recommendations, discussing its economic model, sponsorship policy and programming governance.",
+          "sources": [
+            {
+              "id": "S301",
+              "title": "Cour des comptes audit of Palais de Tokyo, 2012\u20132022",
+              "url": "https://www.ccomptes.fr/sites/default/files/2023-10/20230214-S2022-2182-1-SASU-Palais-de-Tokyo.pdf",
+              "publisher": "Cour des comptes",
+              "published": null
+            },
+            {
+              "id": "S302",
+              "title": "Palais de Tokyo response to the governance audit",
+              "url": "https://www.ccomptes.fr/system/files/2023-02/20230214-S2022-2182-1-SASU-Palais-de-Tokyo_rep-President-Palais-de-Tokyo.pdf",
+              "publisher": "Palais de Tokyo",
+              "published": null
+            }
+          ]
         }
       ]
     }
@@ -6517,7 +6542,43 @@
     "highlight": "Seminal performance art archives (including 1970s Marina Abramovi\u0107/Ulay works) and annual Curatorial Programme projects.",
     "visit_url": "https://www.deappel.nl/en/visit",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=De%20Appel",
-    "statutory_filings_url": "https://openkvk.nl/zoeken?q=De%20Appel"
+    "statutory_filings_url": "https://openkvk.nl/zoeken?q=De%20Appel",
+    "gossip_data": {
+      "real_cases": [
+        {
+          "case_id": "NS09",
+          "title": "Other-source finding, de Appel, Amsterdam",
+          "event_date": "BIS 2025\u20132028 advice cycle.",
+          "facts": [
+            "The Council assesses de Appel positively but recommends no BIS subsidy after comparative selection under category and municipal limits; specialist commentary discusses broader system pressures."
+          ],
+          "response": "No directly matched institutional statement on final national allocation was located. Specialist interviews are commentary, not an award decision.",
+          "sources": [
+            {
+              "id": "S306",
+              "title": "Council for Culture assessment of de Appel for BIS 2025\u20132028",
+              "url": "https://www.raadvoorcultuur.nl/site/binaries/site-content/collections/documents/2024/07/03/presentatie-instellingen/De%2BAppel%2Badvies%2BBIS%2B2025-2028.pdf",
+              "publisher": "Raad voor Cultuur",
+              "published": null
+            },
+            {
+              "id": "S307",
+              "title": "Council for Culture presentation-institution selection framework",
+              "url": "https://www.raadvoorcultuur.nl/binaries/raadvoorcultuur/documenten/adviezen/2024/07/03/presentatie-instellingen/Inleiding%2BPresentatie-instellingen.pdf",
+              "publisher": "Raad voor Cultuur",
+              "published": null
+            },
+            {
+              "id": "S308",
+              "title": "Metropolis M analysis of pressures in the Dutch subsidy system",
+              "url": "https://metropolism.com/nl/feature/het-kunstsubsidiesysteem-oude-oplopende-en-niet-opgeloste-spanningen/",
+              "publisher": "Metropolis M",
+              "published": null
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Framer Framed",
@@ -6552,7 +6613,36 @@
     "amenities": "Decolonial research reading room, community kitchen, outdoor terrace overlooking the canal.",
     "visit_url": "https://framerframed.nl/en/contact/",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Framer%20Framed",
-    "statutory_filings_url": "https://openkvk.nl/zoeken?q=Framer%20Framed"
+    "statutory_filings_url": "https://openkvk.nl/zoeken?q=Framer%20Framed",
+    "gossip_data": {
+      "real_cases": [
+        {
+          "case_id": "NS11",
+          "title": "Other-source finding, Framer Framed, Amsterdam",
+          "event_date": "BIS 2025\u20132028 advice cycle.",
+          "facts": [
+            "The Council recommends support for Framer Framed and praises programme coherence and social significance, discussing fair-practice and governance matters within the application assessment."
+          ],
+          "response": "A separately verified ministerial award/implementation response was not located in this pass.",
+          "sources": [
+            {
+              "id": "S311",
+              "title": "Council for Culture positive Framer Framed assessment",
+              "url": "https://www.raadvoorcultuur.nl/site/binaries/site-content/collections/documents/2024/07/03/presentatie-instellingen/Framer%2BFramed%2Badvies%2BBIS%2B2025-2028.pdf",
+              "publisher": "Raad voor Cultuur",
+              "published": null
+            },
+            {
+              "id": "S307",
+              "title": "Council for Culture presentation-institution selection framework",
+              "url": "https://www.raadvoorcultuur.nl/binaries/raadvoorcultuur/documenten/adviezen/2024/07/03/presentatie-instellingen/Inleiding%2BPresentatie-instellingen.pdf",
+              "publisher": "Raad voor Cultuur",
+              "published": null
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "w139-amsterdam",
@@ -8270,7 +8360,36 @@
     "visit_url": "https://hethem.nl/en/Visit",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Het%20HEM",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=Het%20HEM",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "gossip_data": {
+      "real_cases": [
+        {
+          "case_id": "NS10",
+          "title": "Other-source finding, Het HEM, Zaandam",
+          "event_date": "BIS advice for 2025\u20132028; location announcement June 2024.",
+          "facts": [
+            "The Council raises programme/feasibility concerns and advises no BIS subsidy; Het HEM's June 2024 notice separately announces ending Zaandam activities and exploring relocation."
+          ],
+          "response": "Het HEM attributes its location decision to development, access and renovation constraints and describes relocation discussions.",
+          "sources": [
+            {
+              "id": "S309",
+              "title": "Council for Culture assessment of Het HEM for BIS 2025\u20132028",
+              "url": "https://www.raadvoorcultuur.nl/binaries/raadvoorcultuur/documenten/adviezen/2024/07/03/presentatie-instellingen/Het%2BHEM%2Badvies%2BBIS%2B2025-2028.pdf",
+              "publisher": "Raad voor Cultuur",
+              "published": null
+            },
+            {
+              "id": "S310",
+              "title": "Het HEM's dated announcement of ending Zaandam activities",
+              "url": "https://hethem.nl/nl/Blog/2024-06-17/Het-HEM-Is-Closing-Its-Doors-On-The-Hembrugterrein-In-Zaandam",
+              "publisher": "Het HEM",
+              "published": "2024-06-17"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "marres-maastricht",
@@ -19959,6 +20078,56 @@
               "published": "2026-08-31"
             }
           ]
+        },
+        {
+          "case_id": "NS03",
+          "title": "Other-source finding, Science Museum Group, group-wide",
+          "event_date": "Report July 2025; campaign article April 2026.",
+          "facts": [
+            "A July 2025 Prospect report records 333 respondents across Science Museum Group and discusses workload, wellbeing and programme-decision concerns; a campaign article republishes related findings."
+          ],
+          "response": "A directly matched institutional reply to this survey was not located.",
+          "sources": [
+            {
+              "id": "S294",
+              "title": "Prospect Workers Before Workloads survey report, July 2025",
+              "url": "https://cultureunstained.org/wp-content/uploads/2026/04/2025_-workers-before-workloads-report.pdf",
+              "publisher": "Prospect union",
+              "published": "2025-07"
+            },
+            {
+              "id": "S295",
+              "title": "Campaign account of Science Museum Group survey disclosures",
+              "url": "https://cultureunstained.org/2026/04/07/science-museum-staff-wellbeing-sponsorships-survey/",
+              "publisher": "Culture Unstained",
+              "published": "2026-04-07"
+            }
+          ]
+        },
+        {
+          "case_id": "NS04",
+          "title": "Other-source finding, Science Museum Group, group-wide",
+          "event_date": "Publication/event date partly unknown",
+          "facts": [
+            "BP's parliamentary submission describes its museum education collaboration and corporate learning objectives; a campaign investigation separately alleges decision powers in the historical research project."
+          ],
+          "response": "The campaign article reproduces a general museum position on sponsorship; a directly matched new institutional reply was not verified.",
+          "sources": [
+            {
+              "id": "S296",
+              "title": "Campaign investigation of BP's role in STEM research",
+              "url": "https://cultureunstained.org/2026/01/16/bp-played-dominant-role-in-developing-science-museums-stem-academy-documents-reveal/",
+              "publisher": "Culture Unstained",
+              "published": "2026-01-16"
+            },
+            {
+              "id": "S297",
+              "title": "BP written evidence GAP0044 on STEM education",
+              "url": "https://committees.parliament.uk/writtenevidence/76568/html/",
+              "publisher": "BP plc",
+              "published": null
+            }
+          ]
         }
       ]
     }
@@ -27518,7 +27687,43 @@
     "lon": 2.324,
     "audit_dossier_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Jeu%20de%20Paume",
     "statutory_filings_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Jeu%20de%20Paume",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "real_cases": [
+        {
+          "case_id": "NS08",
+          "title": "Other-source finding, Jeu de Paume, Paris",
+          "event_date": "Reviewed activity 2019\u20132024.",
+          "facts": [
+            "The Cour des comptes gives a broadly satisfactory assessment of Jeu de Paume's reviewed management and programme while retaining recommendations; management warns that expanded missions need resources."
+          ],
+          "response": "Management welcomes aspects of the review and cautions against expanding responsibilities at unchanged resources.",
+          "sources": [
+            {
+              "id": "S303",
+              "title": "Cour des comptes audit of Jeu de Paume",
+              "url": "https://www.ccomptes.fr/sites/default/files/2025-11/20251126-S2025-1555-Jeu-de-Paume.pdf",
+              "publisher": "Cour des comptes",
+              "published": null
+            },
+            {
+              "id": "S304",
+              "title": "Cour des comptes summary of its Jeu de Paume audit",
+              "url": "https://www.ccomptes.fr/sites/default/files/2025-11/20251126-S2025-1555-communique-Jeu-de-Paume.pdf",
+              "publisher": "Cour des comptes",
+              "published": "2025-11-28"
+            },
+            {
+              "id": "S305",
+              "title": "Jeu de Paume management response to the audit",
+              "url": "https://www.ccomptes.fr/sites/default/files/2025-11/20251126-S2025-1555-Jeu-de-Paume-rep-commune-pdt-dir-dir-adjoint-Assoc-Jeu-de-Paume.pdf",
+              "publisher": "Association Jeu de Paume",
+              "published": null
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "international-center-of-photography-new-york",
@@ -31070,7 +31275,68 @@
     "statutory_filings_url": "https://www.google.com/search?q=Barbican+Centre+annual+report",
     "governance_details": "Civic and municipal public trust funded by the City of London Corporation as part of its public cultural mandate.",
     "opening_hours": "Mon-Sat 09:30-23:00, Sun 11:00-23:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "real_cases": [
+        {
+          "case_id": "NS01",
+          "title": "Other-source finding, Barbican Centre, London",
+          "event_date": "2024-03-08 \u00b7 response and withdrawal reporting",
+          "facts": [
+            "The Barbican acknowledges not hosting the LRB series and cites logistics; artist/lender participants call it censorship, and reporting documents withdrawals from Unravel."
+          ],
+          "response": "The institution cites logistical preparation and states that censorship was not its intention.",
+          "sources": [
+            {
+              "id": "S289",
+              "title": "Barbican response to the LRB Winter Series dispute",
+              "url": "https://www.barbican.org.uk/our-story/press-room/a-statement-from-the-barbican-in-relation-to-the-london-review-of-books-winter",
+              "publisher": "Barbican Centre",
+              "published": "2024-03-08"
+            },
+            {
+              "id": "S290",
+              "title": "Artist/lender statement on Barbican withdrawals",
+              "url": "https://censorshipatthebarbican.com/statement",
+              "publisher": "Censorship at the Barbican",
+              "published": null
+            },
+            {
+              "id": "S291",
+              "title": "Reporting on artist withdrawals and the Barbican response",
+              "url": "https://www.theguardian.com/culture/2024/mar/08/two-artists-withdraw-work-from-barbican-show-in-row-over-gaza-talk",
+              "publisher": "The Guardian",
+              "published": "2024-03-08"
+            }
+          ]
+        },
+        {
+          "case_id": "NS02",
+          "title": "Other-source finding, Barbican Centre, London",
+          "event_date": "Worker publication in 2021; latest retained institutional update covers July\u2013December 2025.",
+          "facts": [
+            "Reporting describes the Barbican Stories worker allegations; institutional updates acknowledge external reviews and describe later anti-racism training and survey-related actions."
+          ],
+          "response": "The institution acknowledges the publication and commissioned reviews, and describes subsequent organisational actions.",
+          "sources": [
+            {
+              "id": "S292",
+              "title": "Reporting on Barbican Stories worker allegations",
+              "url": "https://www.theguardian.com/culture/2021/jun/10/barbican-staff-say-it-is-institutionally-racist-despite-action-plan",
+              "publisher": "The Guardian",
+              "published": "2021-06-10"
+            },
+            {
+              "id": "S293",
+              "title": "Barbican EDI updates, including July\u2013December 2025 progress",
+              "url": "https://www.barbican.org.uk/index.php/our-story/how-were-changing/edi-updates",
+              "publisher": "Barbican Centre",
+              "published": null
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Royal Academy of Arts",
@@ -31143,7 +31409,36 @@
     "highlight": "Only dedicated contemporary art museum in Manhattan with landmark SANAA stacked architecture on the Bowery.",
     "governance_details": "Endowed independent foundation established in 1977 with 501(c)(3) statutory public reporting.",
     "opening_hours": "Tue-Sun 11:00-18:00, Thu until 21:00",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "gossip_data": {
+      "real_cases": [
+        {
+          "case_id": "NS14",
+          "title": "Other-source finding, New Museum, New York",
+          "event_date": "2019 bargaining and 2020 layoffs; essay 2021.",
+          "facts": [
+            "A named former worker/organiser describes 2019 bargaining and 2020 layoffs and alleges retaliation; contemporaneous reporting records union charges and the museum's denial of merit."
+          ],
+          "response": "The museum's reported statement says it believes the charge has no merit and says it honours the union agreement.",
+          "sources": [
+            {
+              "id": "S315",
+              "title": "Dana Kopel's first-person New Museum union essay",
+              "url": "https://decolonialhacker.org/article/severance",
+              "publisher": "Decolonial Hacker",
+              "published": "2021-08-29"
+            },
+            {
+              "id": "S316",
+              "title": "Artnet reports New Museum union charges and museum denial",
+              "url": "https://news.artnet.com/art-world/new-museum-union-filed-charges-labor-board-museum-employer-1901047",
+              "publisher": "Artnet News",
+              "published": "2020-08-10"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "Brooklyn Academy of Music (BAM)",
