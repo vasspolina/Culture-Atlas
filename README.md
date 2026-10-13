@@ -106,6 +106,10 @@ npx serve . -p 8080
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
+## 🧾 What the page may show
+
+A field appears only if the record states it. Figures, hours, prices, exhibitions, architects and "chatter" are not generated to fill a gap. A text value that is identical (after masking the name and city) across five or more records is treated as filler and left out. Case files and staff reviews appear only with their sources and limits. If a record has nothing to say about funding or visiting, the section is not rendered.
+
 ## 📁 Project Structure
 
 ```
