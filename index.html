@@ -282,7 +282,7 @@
     html body h1, html body h2, html body h3[class*="text-[18px]"], html body .dossier-main-heading, html body [class*="text-[24px]"], html body .modal-title, html body .drawer-title { font-size: 26px !important; }
     /* Paragraph indent: only in a run of more than three paragraphs, from the second on. */
     html body p:first-of-type:nth-last-of-type(n+4) ~ p { text-indent: 10px !important; }
-    html body button p, html body a p, html body .no-indent, html body .no-indent p { text-indent: 0 !important; }
+    html body button p, html body a p, html body .no-indent, html body .no-indent p, html body #curatorMessages p, html body #curatorDrawerChatBody p { text-indent: 0 !important; }
 
 
     /* Solid black surfaces, no blur. */
@@ -2244,7 +2244,7 @@ return maplibregl$1;
         <div class="overflow-y-auto px-4 py-3 space-y-3 text-[14px] leading-relaxed no-scrollbar pb-6" id="dossier-sheet-scrollable-body">
           <!-- Verified Pane -->
           <div id="dossier-sheet-verified-pane" class="space-y-3">
-            <p class="callout text-[#f4f4f4]" id="dossier-sheet-summary"></p>
+            <p class="text-[#f4f4f4]" id="dossier-sheet-summary"></p>
             <div id="dossier-sheet-funding" class="hidden py-2.5 border-b border-[#262626] space-y-1">
               <span class="text-[14px] text-[#f4f4f4] block">Funding</span>
               <p class="text-[18px] text-[#f4f4f4]" id="dossier-sheet-funding-text"></p>
@@ -2613,7 +2613,7 @@ return maplibregl$1;
           <div class="space-y-1.5 min-w-0">
             <h2 id="desktopDossierName" class="text-[24px] font-normal text-[#f4f4f4] break-words dossier-main-heading"></h2>
             <p id="desktopDossierMeta" class="no-indent text-[#f4f4f4] text-[14px]"></p>
-            <p id="desktopDossierSummary" class="callout text-[#f4f4f4]"></p>
+            <p id="desktopDossierSummary" class="text-[#f4f4f4]"></p>
             <a id="desktopDossierWebLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-[#f4f4f4] hover:text-[#ffffff] underline underline-offset-2 text-[14px]"><span id="desktopDossierDomain"></span></a>
           </div>
 
@@ -10765,7 +10765,7 @@ return maplibregl$1;
       ['topGossipBtn', 'workMenuGossipModeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
       document.getElementById('workPlusMenu')?.classList.add('hidden');
       if (typeof appendCuratorMessage === 'function') {
-        appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
+        appendCuratorMessage(`<p class="no-indent" style="color:#f1c21b !important">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
       }
       if (typeof render === 'function') render();
       if (selectedInstitution && typeof updateDesktopDossier === 'function') updateDesktopDossier(selectedInstitution);
@@ -16190,7 +16190,7 @@ return maplibregl$1;
 
           <div class="py-2.5 border-t border-[#262626]">
             <span class="text-[14px] font-mono tracking-wider block mb-1 text-[#f4f4f4]">Curator Assessment</span>
-            ${inst.curator_recommendation ? `<p class="callout text-[#f4f4f4] leading-[130%]">${escapeHtml(inst.curator_recommendation)}</p>` : ''}
+            ${inst.curator_recommendation ? `<p class="text-[#f4f4f4] leading-[130%]">${escapeHtml(inst.curator_recommendation)}</p>` : ''}
           </div>
 
           ${isClean ? `
@@ -16230,7 +16230,7 @@ return maplibregl$1;
                 </div>` : ''}
                 <div class="py-2 border-t border-[#262626]">
                   <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:${isClean ? '#42be65' : '#78a9ff'}">Highlight</div>
-                  ${inst.highlight ? `<div class="callout text-[#f4f4f4] leading-[130%]">${escapeHtml(inst.highlight)}</div>` : ''}
+                  ${inst.highlight ? `<div class="text-[#f4f4f4] leading-[130%]">${escapeHtml(inst.highlight)}</div>` : ''}
                 </div>
                 ${inst.accessibility ? `<div class="py-2 border-t border-[#262626]">
                   <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#ff7eb6">Accessibility</div>
@@ -16252,7 +16252,7 @@ return maplibregl$1;
           ${isClean && inst.watch ? `
             <div class="py-2.5 border-t border-[#262626]">
               <span class="text-[14px] font-mono tracking-wider block mb-1 text-[#f1c21b]">Governance &amp; Curatorial Field Notes</span>
-              <p class="callout text-[#f4f4f4] leading-[140%]">${escapeHtml(inst.watch)}</p>
+              <p class="text-[#f4f4f4] leading-[140%]">${escapeHtml(inst.watch)}</p>
             </div>
           ` : ''}
 
@@ -16735,7 +16735,7 @@ return maplibregl$1;
       box.innerHTML = CASE_STUDIES.map(c => `
         <article class="pb-4 border-b border-[#2e2e2e]">
           <h3 class="!mt-0 text-white">${e(c.title)}</h3>
-          <p class="callout text-[#f4f4f4] no-indent">${e(c.kick)}</p>
+          <p class="text-[#f4f4f4] no-indent">${e(c.kick)}</p>
           <div>${c.summary.map(p => `<p>${e(p)}</p>`).join('')}</div>
           ${c.bullets ? `<ul class="list-disc pl-5">${c.bullets.map(b => `<li>${e(b)}</li>`).join('')}</ul>` : ''}
           ${c.timeline ? `<ul>${c.timeline.map(t => `<li>${e(t.date)}: ${e(t.event)}</li>`).join('')}</ul>` : ''}
@@ -23050,12 +23050,7 @@ bar.innerHTML = html;
       if (notifyCurator && cityMatches.length > 0) {
         const topInsts = cityMatches.slice(0, 3).map(i => formatInstLink(i, {noCity: true})).join(', ');
         appendCuratorMessage(`
-          <p class="text-[#f4f4f4]">
-            We are now exploring <a href="#" class="city-link font-normal text-white hover:text-[#f4f4f4] underline cursor-pointer" data-city="${escapeHtml(cityName)}">${escapeHtml(cityName)}</a>, home to <strong>${cityMatches.length}</strong> spaces with clean funding.
-          </p>
-          <p class="text-[#f4f4f4]">
-            Highlights include ${topInsts}. None of them accept oil or defense sponsorships.
-          </p>
+          <p class="no-indent">${cityMatches.length} ${cityMatches.length === 1 ? 'space' : 'spaces'} in <a href="#" class="city-link" data-city="${escapeHtml(cityName)}">${escapeHtml(cityName)}</a>: ${topInsts}${cityMatches.length > 3 ? ', and ' + (cityMatches.length - 3) + ' more' : ''}.</p>
         `);
       }
     }
