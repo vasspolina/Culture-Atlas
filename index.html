@@ -13095,7 +13095,17 @@ return maplibregl$1;
       const state = v && v.status === 'verified' ? `Checked on ${escapeHtml(v.checked_on)}: a source outside the museum names the funders this record cites.`
         : v && v.status === 'partial' ? `Partly checked on ${escapeHtml(v.checked_on)}: the sources name the museum but not every funder this record cites.`
         : 'Not independently verified.';
-      return `<p class="no-indent text-[14px] text-[#f4f4f4]">${note}${links.length ? 'Sources recorded: ' + links.join(', ') + '. ' + state : 'No source is recorded for this space.'}</p>${studiesNamingHtml(inst)}`;
+      const fs = inst.field_sources || {};
+      const labels = { year_founded: 'Founding year', address: 'Address' };
+      const found = Object.keys(labels).filter(k => fs[k] && (fs[k].urls || []).length);
+      const foundLinks = [...new Set(found.flatMap(k => fs[k].urls))].slice(0, 4).map(u => {
+        let h = u;
+        try { const x = new URL(u); h = x.hostname.replace(/^www\./, '') + (x.pathname.length > 1 ? x.pathname.replace(/\/$/, '').slice(0, 30) : ''); } catch (e) { /* keep the url */ }
+        return `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:underline">${escapeHtml(h)}</a>`;
+      });
+      const foundDate = found.length ? fs[found[0]].retrieved : '';
+      const foundHtml = found.length ? `<p class="no-indent text-[14px] text-[#f4f4f4]">${found.map(k => labels[k]).join(' and ')} from ${foundLinks.join(', ')}. Found by web search on ${escapeHtml(foundDate)}; two separate searches agreed. Not independently verified.</p>` : '';
+      return `<p class="no-indent text-[14px] text-[#f4f4f4]">${note}${links.length ? 'Sources recorded: ' + links.join(', ') + '. ' + state : 'No source is recorded for this space.'}</p>${foundHtml}${studiesNamingHtml(inst)}`;
     }
     // Papers in the research library whose title, abstract or takeaway name this space, matched on the exact name.
     const studiesNamingCache = {};
