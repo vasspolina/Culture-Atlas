@@ -2384,8 +2384,8 @@ return maplibregl$1;
           <div class="flex items-center gap-2 min-w-0">
 
             <div class="min-w-0">
-              <span id="activeRouteTitle" class="text-[14px] sm:text-[14px] font-semibold text-emerald-200 truncate block">Curatorial Art Crawl</span>
-              <span id="activeRouteStats" class="text-[14px] font-mono text-emerald-400/80 block">4 Stops, ~3.2 km, 45 min walk</span>
+              <span id="activeRouteTitle" class="text-[14px] sm:text-[14px] font-semibold text-emerald-200 truncate block"></span>
+              <span id="activeRouteStats" class="text-[14px] font-mono text-emerald-400/80 block"></span>
             </div>
           </div>
           <button id="closeActiveRouteBtn" class="text-[#f4f4f4] hover:text-white transition cursor-pointer p-0.5" title="Exit active route"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
@@ -2394,13 +2394,13 @@ return maplibregl$1;
         <!-- Current Stop Details Card -->
         <div id="activeRouteStopCard" class="py-1 space-y-1 text-[14px] border-b border-[#262626]">
           <div class="flex items-center justify-between gap-1 text-[14px] font-mono text-emerald-300">
-            <span id="activeRouteStopBadge">STOP 1 OF 4</span>
+            <span id="activeRouteStopBadge"></span>
             <span id="activeRouteStopTier" class="text-emerald-300 font-bold"></span>
           </div>
-          <div id="activeRouteStopName" class="text-[14px] sm:text-[14px] font-semibold text-white leading-tight">Whitechapel Gallery</div>
-          <div id="activeRouteStopHours" class="text-[14px] font-mono text-emerald-300/90">Wed–Sun 11:00–18:00</div>
-          <div id="activeRouteStopFee" class="text-[14px] text-[#f4f4f4]">Free Public Admission</div>
-          <div id="activeRouteStopFocus" class="text-[14px] text-[#f4f4f4] line-clamp-2 leading-snug">Historic pioneering community gallery...</div>
+          <div id="activeRouteStopName" class="text-[14px] sm:text-[14px] font-semibold text-white leading-tight"></div>
+          <div id="activeRouteStopHours" class="text-[14px] font-mono text-emerald-300/90"></div>
+          <div id="activeRouteStopFee" class="text-[14px] text-[#f4f4f4]"></div>
+          <div id="activeRouteStopFocus" class="text-[14px] text-[#f4f4f4] line-clamp-2 leading-snug"></div>
         </div>
 
         <!-- Stop Controls Navigation -->
@@ -2587,7 +2587,7 @@ return maplibregl$1;
             <div class="min-w-0 flex-1 cursor-pointer" id="mobileSheetTitleZone">
               <div id="mobileSheetEntityTitle" class="text-[14px] font-semibold text-white truncate leading-tight"></div>
               <div class="flex items-center gap-1.5 mt-0.5">
-                <span id="mobileSheetCitySubtitle" class="text-[14px] text-[#f4f4f4] font-mono truncate">Manila</span>
+                <span id="mobileSheetCitySubtitle" class="text-[14px] text-[#f4f4f4] font-mono truncate"></span>
               </div>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
@@ -9225,7 +9225,7 @@ return maplibregl$1;
             Visitor Itinerary & Planning Guide: <strong>${formatInstLink(inst)}</strong> (${escapeHtml(inst.city)}, ${escapeHtml(inst.country)})
           </p>
           <div class="py-2.5 border-t border-[#333] space-y-1.5 text-[#f4f4f4] text-[14px] leading-[135%]">
-            <div><strong class="text-[#f4f4f4] font-mono text-[14px] tracking-wider block">Opening Hours</strong> ${escapeHtml(inst.opening_hours || 'Check official site')}</div>
+            <div><strong class="text-[#f4f4f4] font-mono text-[14px] tracking-wider block">Opening Hours</strong> ${escapeHtml(inst.opening_hours || 'not stated')}</div>
             <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono text-[14px] tracking-wider block">Admission & Tickets</strong> ${escapeHtml(inst.admission_policy)} (${escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')})</div>
             <div class="pt-1 border-t border-[#262626]"><strong class="text-[#f4f4f4] font-mono text-[14px] tracking-wider block">Address & Neighborhood</strong> ${escapeHtml(inst.address || inst.location)} ${inst.neighborhood ? `<span class="font-mono text-[#f4f4f4]">${escapeHtml(inst.neighborhood)}</span>` : ''}</div>
             ${inst.transit_tips ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono text-[14px] tracking-wider block">Getting There & Transit</strong> ${escapeHtml(inst.transit_tips)}</div>` : ''}
@@ -10130,7 +10130,7 @@ return maplibregl$1;
           totalWalkMinutes += legMin;
         }
 
-        const rawH = inst.opening_hours || 'Wednesday–Sunday 11:00–18:00';
+        const rawH = inst.opening_hours || '';
         let advisory = '';
         if (rawH.toLowerCase().includes('closed mo')) advisory += 'Closed Mon, ';
         if (rawH.toLowerCase().includes('closed tu')) advisory += 'Closed Tue, ';
@@ -10145,9 +10145,9 @@ return maplibregl$1;
           lon: inst.lon,
           tier: inst.tier,
           address: inst.address || inst.location || inst.neighborhood || targetCity,
-          openingHours: rawH,
-          admissionFee: inst.admission_fee || 'Civic subsidized entry',
-          curatorialFocus: inst.curatorial_focus || inst.neighborhood || 'Independent contemporary art platform',
+          openingHours: rawH || 'not stated',
+          admissionFee: inst.admission_fee || 'not stated',
+          curatorialFocus: inst.curatorial_focus || inst.neighborhood || 'not stated',
           legDistanceKm: legDist,
           legWalkMinutes: legMin,
           advisoryNote: advisory.trim()
@@ -10448,7 +10448,7 @@ return maplibregl$1;
 
       const statsEl = document.getElementById('activeRouteStats');
       if (statsEl) {
-        statsEl.textContent = `${activeCuratorialRoute.stops.length} Stops, ~${activeCuratorialRoute.totalKm} km, ${activeCuratorialRoute.totalWalkMinutes} min walk, Est. ${activeCuratorialRoute.estimatedTotalHours} hrs`;
+        statsEl.textContent = `${activeCuratorialRoute.stops.length} Stops, ~${activeCuratorialRoute.totalKm} km, ${activeCuratorialRoute.totalWalkMinutes} min walk, about ${activeCuratorialRoute.estimatedTotalHours} hrs counting 55 minutes a stop`;
       }
 
       const idx = activeCuratorialStopIndex || 0;
@@ -10691,7 +10691,7 @@ return maplibregl$1;
                     <h3 class="text-[14px] font-bold text-white">${escapeHtml(route.title)}</h3>
                     <span class="text-[14px] font-mono bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-700/80 font-bold">${escapeHtml(route.city)}</span>
                   </div>
-                  <p class="text-[14px] font-mono text-emerald-300/90">${route.stops.length} Stops, ~${route.totalKm} km walking, ${route.totalWalkMinutes} min walk, Est. ${route.estimatedTotalHours} hrs total</p>
+                  <p class="text-[14px] font-mono text-emerald-300/90">${route.stops.length} Stops, ~${route.totalKm} km walking, ${route.totalWalkMinutes} min walk, about ${route.estimatedTotalHours} hrs counting 55 minutes a stop</p>
                 </div>
                 <button type="button" onclick="window.launchCuratorialRoute(window.currentModalCuratorialRoute)" class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-[14px] shadow-md transition cursor-pointer flex items-center gap-1.5">
                   <span>Launch on Vector Map</span>
@@ -12044,12 +12044,6 @@ return maplibregl$1;
       return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
-    // High-Speed Rail Corridors Connecting Independent Art Spaces (Disabled / Cleaned as unrelated transit data)
-    const CLEAN_RAIL_CORRIDORS = [];
-
-    let isRailVisible = true;
-    let hoveredRailCorridor = null;
-    let hoveredRailPoint = null;
 
     function distToSegment(px, py, x1, y1, x2, y2) {
       const dx = x2 - x1;
@@ -12752,97 +12746,6 @@ return maplibregl$1;
             }
           });
           ctx.restore();
-        }
-
-        // 7.5 Clean High-Speed Rail Corridors between Cultural Capitals
-        if (isRailVisible && CLEAN_RAIL_CORRIDORS.length > 0 && r > baseRadius * 1.1 && r < baseRadius * 14.0) {
-          ctx.save();
-          const pulseOffset = (Date.now() * 0.0003) % 1.0;
-          CLEAN_RAIL_CORRIDORS.forEach(corridor => {
-            let started = false;
-            let anyFront = false;
-            const projectedPts = [];
-            for (let k = 0; k < corridor.pts.length; k++) {
-              const p = project(corridor.pts[k][0], corridor.pts[k][1], r, cx, cy);
-              projectedPts.push(p);
-              if (p.front) anyFront = true;
-            }
-            if (!anyFront) return;
-
-            const isHov = hoveredRailCorridor === corridor;
-
-            // Draw dashed ecological transit line
-            ctx.beginPath();
-            ctx.setLineDash(isHov ? [] : [4, 4]);
-            ctx.strokeStyle = isHov ? '#38bdf8' : 'rgba(56, 189, 248, 0.45)';
-            ctx.lineWidth = isHov ? 2.5 : 1.3;
-            ctx.shadowBlur = 0;
-            for (let k = 0; k < projectedPts.length; k++) {
-              const p = projectedPts[k];
-              if (p.front) {
-                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
-                else ctx.lineTo(p.x, p.y);
-              } else started = false;
-            }
-            ctx.stroke();
-
-            // Animated clean transit pulse bead traveling the corridor
-            if (projectedPts.length >= 2) {
-              const segIdx = Math.floor(pulseOffset * (corridor.pts.length - 1));
-              const segT = (pulseOffset * (corridor.pts.length - 1)) - segIdx;
-              const pA = corridor.pts[segIdx];
-              const pB = corridor.pts[segIdx + 1] || pA;
-              const interpLon = pA[0] + (pB[0] - pA[0]) * segT;
-              const interpLat = pA[1] + (pB[1] - pA[1]) * segT;
-              const beadPt = project(interpLon, interpLat, r, cx, cy);
-              if (beadPt.front && beadPt.depth > 0.1) {
-                ctx.setLineDash([]);
-                ctx.shadowBlur = 0;
-                ctx.beginPath();
-                ctx.arc(beadPt.x, beadPt.y, isHov ? 3.0 : 2.2, 0, Math.PI * 2);
-                ctx.fillStyle = '#38bdf8';
-                ctx.fill();
-              }
-            }
-          });
-          ctx.restore();
-
-          // Render Rail Corridor Tooltip if hovered
-          if (hoveredRailCorridor && hoveredRailPoint) {
-            ctx.save();
-            const corr = hoveredRailCorridor;
-            const tipHeader = corr.name.toUpperCase();
-            const tipSub = `${corr.from} - ${corr.to}, ${corr.travel_time || 'Eco-Transit'}, ${corr.emission_saving || 'Low Carbon'}`;
-            ctx.font = '14px "PP Mori", sans-serif';
-            const hw = ctx.measureText(tipHeader).width;
-            ctx.font = '14px "PP Mori", sans-serif';
-            const sw = ctx.measureText(tipSub).width;
-            const rw = Math.max(hw, sw) + 22;
-            const rh = 40;
-            let rx = hoveredRailPoint.x - rw / 2;
-            let ry = hoveredRailPoint.y - rh - 12;
-            rx = Math.max(16, Math.min(width - rw - 16, rx));
-            if (ry < 16) ry = hoveredRailPoint.y + 16;
-
-            ctx.fillStyle = 'rgba(7, 16, 28, 0.95)';
-            ctx.beginPath();
-            ctx.roundRect ? ctx.roundRect(rx, ry, rw, rh, 6) : ctx.rect(rx, ry, rw, rh);
-            ctx.fill();
-            ctx.strokeStyle = '#38bdf8';
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-
-            ctx.font = '14px "PP Mori", sans-serif';
-            ctx.fillStyle = '#38bdf8';
-            ctx.textAlign = 'left';
-            ctx.textBaseline = 'top';
-            ctx.fillText(tipHeader, rx + 10, ry + 6);
-
-            ctx.font = '14px "PP Mori", sans-serif';
-            ctx.fillStyle = '#ffffff';
-            ctx.fillText(tipSub, rx + 10, ry + 20);
-            ctx.restore();
-          }
         }
 
         // 8. Render Institution Dots & Independent Space Clusters on Global Sphere
@@ -14151,13 +14054,13 @@ return maplibregl$1;
             <div class="py-2.5 border-t border-[#262626] space-y-2">
               <div class="flex flex-col gap-0.5">
                 <span class="text-[#08bdba] font-mono text-[14px] tracking-wider block font-bold">Community Research Submission</span>
-                <span class="text-[14px] font-mono text-[#25c4b5]">Status: Pending Statutory Audit</span>
+                <span class="text-[14px] font-mono text-[#25c4b5]">Status: community submission, not checked</span>
               </div>
               <p class="text-[#f4f4f4] text-[14px] leading-relaxed">
-                <strong>Auditing Pipeline:</strong> This item originates from community field notes and user research submissions. It is <strong>strictly filtered and segregated from verified peer-reviewed and statutory results</strong> until verified via regulatory filings (e.g. IRS Form 990 / UK Charity Commission).
+                This item comes from a community submission. It is kept apart from the records and has not been checked against any source.
               </p>
               <div class="text-[14px] text-teal-200/90 font-mono flex flex-col gap-0.5 pt-1">
-                <span>Contributor: ${escapeHtml(inst.contributor || 'Field Contributor')}</span>
+                <span>Contributor: ${escapeHtml(inst.contributor || 'not stated')}</span>
                 ${inst.sourceUrl ? `<a href="${escapeHtml(inst.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:underline">Source Link</a>` : ''}
               </div>
             </div>
@@ -14183,11 +14086,11 @@ return maplibregl$1;
               <div class="flex flex-col gap-0">
                 <div class="py-2 border-t border-[#262626] first:border-t-0">
                   <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#f4f4f4">Hours</div>
-                  <div class="text-[14px] text-[#f4f4f4] leading-[130%]">${escapeHtml(inst.opening_hours || 'Check official site')}</div>
+                  <div class="text-[14px] text-[#f4f4f4] leading-[130%]">${escapeHtml(inst.opening_hours || 'not stated')}</div>
                 </div>
                 <div class="py-2 border-t border-[#262626]">
                   <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#42be65">Admission</div>
-                  <div class="text-[14px] text-[#f4f4f4] leading-[130%]">${escapeHtml(inst.admission_fee || 'Subsidized Admission')}</div>
+                  <div class="text-[14px] text-[#f4f4f4] leading-[130%]">${escapeHtml(inst.admission_fee || 'not stated')}</div>
                 </div>
                 <div class="py-2 border-t border-[#262626]">
                   <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#f4f4f4">Address</div>
@@ -14560,10 +14463,10 @@ return maplibregl$1;
       return ACADEMIC_RESEARCH.map((p, idx) => ({
         name: p.title || 'Untitled study',
         title: p.title || 'Untitled study',
-        authors: p.authors || 'Researchers',
-        year: p.year || '2024',
-        journal: p.journal || 'Academic Journal',
-        citations: p.citations || '0',
+        authors: p.authors || '',
+        year: p.year || '',
+        journal: p.journal || '',
+        citations: p.citations || '',
         takeaway: p.takeaway || '',
         abstract: p.abstract || '',
         doi: p.doi || '',
@@ -14575,16 +14478,15 @@ return maplibregl$1;
         country: 'Academic Research',
         lat: null,
         lon: null,
-        location: p.journal ? `${p.journal} (${p.year || 'Academic Literature'})` : 'Academic Peer-Reviewed Literature',
-        governance_type: 'Empirical Research Study',
-        admission_policy: p.doi ? 'Open DOI Indexed' : 'Peer-Reviewed Research',
-        opening_hours: p.year ? `Published in ${p.year}` : 'Peer-Reviewed Study',
-        curatorial_focus: 'EMPIRICAL GOVERNANCE & FUNDING RESEARCH',
-        curator_recommendation: p.takeaway || p.abstract || '',
-        funding: p.authors ? `Authors: ${p.authors}, Journal: ${p.journal || 'Academic Journal'}` : 'Academic Research Paper',
-        ethical_safeguard: 'Empirical academic study indexed in the research corpus.',
+        location: [p.journal, p.year].filter(Boolean).join(', ') || 'not stated',
+        governance_type: '',
+        admission_policy: '',
+        opening_hours: '',
+        curatorial_focus: '',
+        funding: [p.authors ? `Authors: ${p.authors}` : '', p.journal ? `Journal: ${p.journal}` : ''].filter(Boolean).join(', '),
+        ethical_safeguard: '',
         flags: [],
-        transparency_grade: 'Peer-Reviewed Research'
+        transparency_grade: ''
       }));
     }
     window.getAcademicResearchAsFindings = getAcademicResearchAsFindings;
@@ -14642,7 +14544,7 @@ return maplibregl$1;
           </div>
           <p class="text-[#f4f4f4] text-[14px] leading-relaxed">${escapeHtml(sub.details || '')}</p>
           <div class="flex items-center justify-between pt-1 border-t border-[#1e3b3e] text-[14px] font-mono text-[#f4f4f4]">
-            <span>By: ${escapeHtml(sub.contributor || 'Field Contributor')}</span>
+            <span>By: ${escapeHtml(sub.contributor || 'not stated')}</span>
             ${sub.sourceUrl ? `<a href="${escapeHtml(sub.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:underline">View Source</a>` : '<span class="text-teal-400/80">User Submission Layer</span>'}
           </div>
         </div>
@@ -14998,7 +14900,7 @@ return maplibregl$1;
             <div class="p-2.5 rounded-xl bg-black border border-[#1a293e] flex items-center justify-between gap-2 flex-wrap">
               <div class="min-w-[180px]">
                 <strong class="text-white text-[14px] block">${escapeHtml(inst.name)}</strong>
-                <span class="text-[#f4f4f4] text-[14px] font-mono">${escapeHtml(inst.city)}, ${escapeHtml(inst.country)}, ${escapeHtml(fd.budget_tier || 'Non-Profit')}</span>
+                <span class="text-[#f4f4f4] text-[14px] font-mono">${escapeHtml(inst.city)}, ${escapeHtml(inst.country)}, ${escapeHtml(fd.budget_tier || 'not stated')}</span>
               </div>
               <div class="flex items-center gap-3">
                 <div class="text-right font-mono text-[14px]">
@@ -15409,7 +15311,7 @@ return maplibregl$1;
 
         // 2. Direct Official Portal Scraping via Jina Reader (if institution or finding aid available)
         const targetUrl = targetInst 
-          ? (targetInst.website || (targetInst.archives_and_collections && targetInst.archives_and_collections.finding_aids_url))
+          ? (targetInst.website || targetInst.visit_url)
           : null;
 
         if (targetUrl && !targetUrl.includes('wikipedia.org')) {
@@ -15465,7 +15367,7 @@ return maplibregl$1;
 
         // Fallback to grounded database facts if external network is unavailable / mocked
         if (!scrapeResult.scrapedText && targetInst) {
-          scrapeResult.scrapedText = `${targetInst.name} in ${targetInst.city}, ${targetInst.country}: Verified ${targetInst.tier === 'A' ? 'Independent Cultural Space' : 'Corporate Underwriting Conflict'}. Hours: ${targetInst.opening_hours || 'Standard'}. Admission: ${targetInst.admission_policy || 'Free'}. Highlights: ${targetInst.highlight || targetInst.governance_type}.`;
+          scrapeResult.scrapedText = `${targetInst.name} in ${targetInst.city}, ${targetInst.country}. Tier: ${tierName(targetInst)}. Hours: ${targetInst.opening_hours || 'not stated'}. Admission: ${targetInst.admission_policy || targetInst.admission_fee || 'not stated'}. Highlights: ${targetInst.highlight || 'not stated'}. Nothing here has been independently verified.`;
           if (targetInst.website && !targetInst.website.includes('wikipedia.org')) {
             scrapeResult.trustedLinks.push({ title: `${targetInst.name} Official Site`, url: targetInst.website });
           }
@@ -15748,13 +15650,10 @@ return maplibregl$1;
     }
 
     function formatInstitutionGrounding(i) {
-      const bArch = i.building_architecture || {};
-      const arch = i.archives_and_collections || {};
-      const wings = (bArch.wings || []).map(w => w.name).join(', ') || 'Exhibition galleries';
       return `- INSTITUTION: ${i.name}
   Location: ${i.city}, ${i.country} (${i.address || 'address not stated'})
   Legal Governance Structure: ${i.governance_type || 'not stated'}
-  Governance Classification: ${i.tier_label || (i.tier === 'A' ? 'Clean, source cited' : 'Flagged')}
+  Governance Classification: ${tierName(i)}
   Governance & Ethical Safeguard: ${i.governance_details || i.ethical_safeguard || 'not stated'}
   Statutory Audit Dossier: ${i.audit_dossier_url || ''}
   Curatorial Focus: ${i.curatorial_focus || 'not stated'}
@@ -16082,10 +15981,9 @@ return maplibregl$1;
       // 2. Build structured <current_target> XML block
       let currentTargetXml = '';
       if (currentTarget) {
-        const isClean = currentTarget.tier === 'A';
         const budgetStr = currentTarget.funding || 'not stated';
         const holdingsStr = currentTarget.highlight || 'not stated';
-        currentTargetXml = `<current_target>\nEntity: ${currentTarget.name}\nLocation: ${currentTarget.city || currentTarget.location || 'Global'}\nGovernance Status: ${isClean ? 'Clean, source cited (Tier A - Zero fossil fuel/defense funding)' : 'Flagged / Commercial Capture (Tier B)'}\nFunding Profile: ${budgetStr}\nKey Collections & Archives: ${holdingsStr}\nAdmission Policy: ${currentTarget.admission_policy || 'not stated'}\n</current_target>\n\n`;
+        currentTargetXml = `<current_target>\nEntity: ${currentTarget.name}\nLocation: ${currentTarget.city || currentTarget.location || 'Global'}\nGovernance Status: ${tierName(currentTarget)}\nFunding Profile: ${budgetStr}\nKey Collections & Archives: ${holdingsStr}\nAdmission Policy: ${currentTarget.admission_policy || 'not stated'}\n</current_target>\n\n`;
       } else {
         currentTargetXml = `<current_target>\nEntity: None explicitly selected (Global Inquiry across Culture Atlas)\n</current_target>\n\n`;
       }
@@ -18578,8 +18476,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (typeof window.openTrusteeConflictNetworkModal === 'function') window.openTrusteeConflictNetworkModal();
       } else if (btn.id === 'hudRouteBtn') {
         if (typeof window.openCuratorialItineraryModal === 'function') window.openCuratorialItineraryModal();
-      } else if (btn.id === 'hudRailToggle') {
-        if (typeof window.toggleRailCorridors === 'function') window.toggleRailCorridors(e);
       } else if (btn.id === 'hudContributeBtn') {
         if (typeof window.triggerInChatContributeFlow === 'function') window.triggerInChatContributeFlow();
       }
@@ -20490,7 +20386,7 @@ bar.innerHTML = html;
                         <span class="text-white font-medium">${escapeHtml(m.name)}</span>
                         <span class="text-[#be95ff] text-[14px] font-mono px-1.5 py-0.5 rounded bg-black border border-[#8a3ffc]">${m.tier === 'B' ? 'Flagged' : 'Unverified'}</span>
                       </div>
-                      <p class="text-[#e8daff] text-[14px] mt-0.5">${escapeHtml(deduplicateNoticeText(m.watch || m.why_flagged || m.funding || 'Corporate underwriting conflict'))}</p>
+                      <p class="text-[#e8daff] text-[14px] mt-0.5">${escapeHtml(deduplicateNoticeText(m.watch || m.why_flagged || m.funding || 'not stated'))}</p>
                       <button class="curator-dossier-btn text-[#be95ff] hover:underline text-[14px] font-mono mt-1 cursor-pointer" data-name="${escapeHtml(m.name)}">
                         Open record
                       </button>
@@ -20523,8 +20419,8 @@ bar.innerHTML = html;
               </div>
 
               <div class="flex flex-col gap-0.5 text-[14px] text-[#f4f4f4] mt-1 font-mono">
-                <span class="text-white/90">${escapeHtml(inst.authors || 'Researchers')}</span>
-                <span class="text-[#f4f4f4]">${escapeHtml(inst.journal || 'Academic Literature')}</span>
+                ${inst.authors ? `<span class="text-white/90">${escapeHtml(inst.authors)}</span>` : ''}
+                ${inst.journal ? `<span class="text-[#f4f4f4]">${escapeHtml(inst.journal)}</span>` : ''}
                 ${inst.year ? `<span class="text-[#f4f4f4]">${escapeHtml(inst.year)}</span>` : ''}
                 ${inst.citations ? `<span class="text-emerald-400 font-medium">${escapeHtml(inst.citations)} Citations</span>` : ''}
               </div>
@@ -20942,20 +20838,6 @@ bar.innerHTML = html;
         }
       }
 
-      // 5. Check Rail Corridor Click
-      if (hoveredRailCorridor && CLEAN_RAIL_CORRIDORS.length > 0) {
-        const corr = hoveredRailCorridor;
-        appendCuratorMessage(`
-          <p class="text-[#f4f4f4]">
-            <strong>${escapeHtml(corr.name)}</strong>: High-speed electric link connecting <strong>${escapeHtml(corr.from)}</strong> and <strong>${escapeHtml(corr.to)}</strong> (${escapeHtml(corr.travel_time || 'eco-transit')}).
-          </p>
-          <p class="text-[#f4f4f4]">
-            Both cultural capitals are home to verified independent spaces operating free of fossil fuel, chemical, and weapons funding. Traveling between them by electric train cuts carbon emissions by up to 90% compared to flying.
-          </p>
-        `);
-        return;
-      }
-
       // Check Compass Rose click to re-orient North
       if (Math.hypot(mx - (width - 38), my - 38) < 22) {
         flyTo(rotLon, 35);
@@ -21127,28 +21009,6 @@ bar.innerHTML = html;
           scheduleRender();
         }
         return;
-      }
-
-      // Check Rail Corridor Hover
-      hoveredRailCorridor = null;
-      hoveredRailPoint = null;
-      if (isRailVisible && CLEAN_RAIL_CORRIDORS.length > 0 && r > baseRadius * 1.1 && r < baseRadius * 14.0) {
-        for (let i = 0; i < CLEAN_RAIL_CORRIDORS.length; i++) {
-          const corridor = CLEAN_RAIL_CORRIDORS[i];
-          for (let k = 0; k < corridor.pts.length - 1; k++) {
-            const p1 = project(corridor.pts[k][0], corridor.pts[k][1], r, cx, cy);
-            const p2 = project(corridor.pts[k + 1][0], corridor.pts[k + 1][1], r, cx, cy);
-            if (p1.front && p2.front) {
-              const dist = distToSegment(mx, my, p1.x, p1.y, p2.x, p2.y);
-              if (dist < 10) {
-                canvas.style.cursor = 'pointer';
-                hoveredRailCorridor = corridor;
-                hoveredRailPoint = { x: mx, y: my };
-                return;
-              }
-            }
-          }
-        }
       }
 
       // Check Compass Rose hover
@@ -21504,27 +21364,6 @@ bar.innerHTML = html;
       flyTo(137.5, 36.5, baseRadius * 3.6);
     });
 
-    function toggleRailCorridors(e) {
-      if (e) {
-        if (typeof e.stopPropagation === 'function') e.stopPropagation();
-        if (typeof e.preventDefault === 'function') e.preventDefault();
-      }
-      isRailVisible = !isRailVisible;
-      const btn = document.getElementById('hudRailToggle');
-      if (btn) {
-        btn.classList.toggle('text-[#f4f4f4]', isRailVisible);
-        btn.classList.toggle('bg-black', isRailVisible);
-        btn.classList.toggle('border-[#0284c7]/40', isRailVisible);
-        btn.classList.toggle('text-[#f4f4f4]', !isRailVisible);
-        btn.classList.toggle('bg-black', !isRailVisible);
-        btn.classList.toggle('border-transparent', !isRailVisible);
-      }
-      if (typeof render === 'function') {
-        scheduleRender();
-      }
-    }
-    window.toggleRailCorridors = toggleRailCorridors;
-    document.getElementById('hudRailToggle')?.addEventListener('click', toggleRailCorridors);
 
     document.getElementById('hudSpinBtn')?.addEventListener('click', (e) => {
       e.stopPropagation();
