@@ -11,7 +11,7 @@ A globe, a catalog and a chat for looking up who funds museums and cultural spac
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below.
 
-Type is PP Mori Extralight at 14, 18 and 26px; body text is 18px, labels 14px, titles 26px. PP Eiko Light Italic is used only for links and call-outs.
+Type is PP Mori Extralight at 14, 15, 20 and 22px; body text is 15px, labels 14px, titles 22px and the opening line 20px. Words are never hyphenated. PP Eiko Light Italic is used only for links and call-outs.
 
 ---
 

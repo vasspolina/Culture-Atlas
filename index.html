@@ -53,7 +53,7 @@
             widest: '0.32px',
           },
           lineHeight: { DEFAULT: '1.3', none: '1', tight: '1.3', snug: '1.3', normal: '1.3', relaxed: '1.3', loose: '1.3' },
-          fontSize: { 'xs': ['14px', '1.3'], 'sm': ['14px', '1.3'], 'base': ['14px', '1.3'], 'md': ['14px', '1.3'], 'lg': ['18px', '1.3'], 'xl': ['18px', '1.3'], '2xl': ['24px', '1.3'], '3xl': ['24px', '1.3'], '4xl': ['24px', '1.3'], '5xl': ['24px', '1.3'] }
+          fontSize: { 'xs': ['14px', '1.3'], 'sm': ['14px', '1.3'], 'base': ['14px', '1.3'], 'md': ['14px', '1.3'], 'lg': ['15px', '1.3'], 'xl': ['15px', '1.3'], '2xl': ['22px', '1.3'], '3xl': ['22px', '1.3'], '4xl': ['22px', '1.3'], '5xl': ['22px', '1.3'] }
         }
       }
     };
@@ -79,8 +79,10 @@
       font-weight: 400 !important;
     }
 
+    /* Words are never hyphenated. */
+    html, html body, html body * { hyphens: none !important; -webkit-hyphens: none !important; }
     html { font-size: 14px !important; }
-    body { font-size: 18px !important; }
+    body { font-size: 15px !important; }
     html, body {
       background: #000000 !important;
       line-height: 1.3 !important;
@@ -95,8 +97,8 @@
       letter-spacing: 0.7pt !important;
       font-weight: 400 !important;
     }
-    /* Prose is 18px; labels, buttons and meta stay 14px. */
-    p, li, textarea { font-size: 18px; }
+    /* Prose is 15px; labels, buttons and meta stay 14px. */
+    p, li, textarea { font-size: 15px; }
 
     p {
       line-height: 1.3 !important;
@@ -139,7 +141,7 @@
     }
 
     /* ========================================================= */
-    /* STRICT 3 CARBON TYPE SIZES: 14px (Body), 18px (Heading), 24px (Display) */
+    /* TYPE SIZES: 14px labels, 15px text, 20px and 22px titles (the earlier 18, 24 and 26px, 15% smaller) */
     /* Fluid downscaling on compact laptop, tablet, and mobile viewports with 130% line height */
     /* ========================================================= */
     /* Size 1: 14px (Body: 14px, line-height 1.3 / 130%, tracking 0.16px) */
@@ -164,14 +166,14 @@
     [class*="text-\[18px\]"], [class*="text-\[18pt\]"],
     .curator-section-hdr, .drawer-title, .modal-title, .card-title,
     h2, h3 {
-      font-size: 18px !important;
+      font-size: 15px !important;
       line-height: 1.3 !important;
       letter-spacing: 0.7pt !important;
       font-weight: 400 !important;
     }
     #desktopDossierName, #dossier-sheet-name, .dossier-main-heading {
       line-height: 1.3 !important;
-      word-break: break-word !important;
+      word-break: normal !important;
       overflow-wrap: break-word !important;
       display: block !important;
     }
@@ -186,7 +188,7 @@
     [class*="text-\[34px\]"], [class*="text-\[34pt\]"], [class*="text-\[26px\]"], [class*="text-\[26pt\]"],
     .brand-logo-title,
     h1 {
-      font-size: 26px !important;
+      font-size: 22px !important;
       line-height: 1.3 !important;
       letter-spacing: 0.7pt !important;
       font-weight: 400 !important;
@@ -194,7 +196,7 @@
 
     /* Fluid container queries and viewport constraints for curator hero title */
     #curatorHeroGreeting h1 {
-      font-size: 24px !important;
+      font-size: 20px !important;
       line-height: 1.3 !important;
       max-width: 90% !important;
       word-break: normal !important;
@@ -241,7 +243,7 @@
       font-style: italic !important;
       font-synthesis: none !important;
     }
-    html body .callout, html body .callout *, html body blockquote, html body blockquote *, html body q, html body cite { font-size: 18px !important; }
+    html body .callout, html body .callout *, html body blockquote, html body blockquote *, html body q, html body cite { font-size: 15px !important; }
     html body a, html body a *, html body .inst-link, html body .city-link, html body .inline-link, html body .dossier-link {
       font-size: inherit !important;
       color: #f4f4f4;
@@ -250,8 +252,8 @@
       text-underline-offset: 2px !important;
       text-decoration-skip-ink: none !important;
     }
-    /* chat answers are one size */
-    html body #curatorMessages, html body #curatorMessages *, html body #curatorDrawerChatBody, html body #curatorDrawerChatBody * { font-size: 18px !important; }
+    /* chat answers are one size, 15px */
+    html body #curatorMessages, html body #curatorMessages *, html body #curatorDrawerChatBody, html body #curatorDrawerChatBody * { font-size: 15px !important; }
     html body .callout-fig, html body .stat-callout { font-size: 14px !important; }
     /* Buttons read as buttons: a 1px off-white outline, black fill, and an inverted hover. Pressed is filled off-white. */
     html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
@@ -259,7 +261,7 @@
     html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
     html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabDirectory, html body #navTabFilters {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 8px 16px !important; border: 0 !important; border-radius: 9999px !important;
+      padding: 3px 12px !important; border: 0 !important; border-radius: 9999px !important;
       background: #000000 !important; color: #f4f4f4 !important; font-size: 14px !important;
       text-decoration: none !important; cursor: pointer; box-shadow: none !important;
     }
@@ -271,8 +273,12 @@
     html body #desktopGlobeTopControls > div { gap: 8px; }
     body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls { display: none !important; }
     html body #workspaceContextTabBar > div:first-child { border: 0 !important; gap: 8px; padding: 0 !important; }
-    /* Titles are 26px. */
-    html body h1, html body h2, html body h3[class*="text-[18px]"], html body .dossier-main-heading, html body [class*="text-[24px]"], html body .modal-title, html body .drawer-title { font-size: 26px !important; }
+    /* Titles are 22px. */
+    html body h1, html body h2, html body h3[class*="text-[18px]"], html body .dossier-main-heading, html body [class*="text-[24px]"], html body .modal-title, html body .drawer-title { font-size: 22px !important; }
+    /* Text is 15px: the 18px text classes, here and at the sm and lg breakpoints. */
+    html body [class~="text-[18px]"] { font-size: 15px !important; }
+    @media (min-width: 640px) { html body [class~="sm:text-[18px]"] { font-size: 15px !important; } }
+    @media (min-width: 1024px) { html body [class~="lg:text-[18px]"] { font-size: 15px !important; } }
     /* Paragraph indent: only in a run of more than three paragraphs, from the second on. */
     html body p:first-of-type:nth-last-of-type(n+4) ~ p { text-indent: 10px !important; }
     html body button p, html body a p, html body .no-indent, html body .no-indent p, html body #curatorMessages p, html body #curatorDrawerChatBody p { text-indent: 0 !important; }
@@ -287,7 +293,7 @@
 
     /* Nothing selected: no empty record, no actions, no 'Active' badge. */
     #desktopDossierColumn:has(#desktopDossierName:empty) #desktopDossierBody { display: none; }
-    #desktopDossierColumn:has(#desktopDossierName:empty)::after { content: 'Select a space on the map or ask in chat.'; display: block; padding: 20px; color: #f4f4f4; font-size: 18px; }
+    #desktopDossierColumn:has(#desktopDossierName:empty)::after { content: 'Select a space on the map or ask in chat.'; display: block; padding: 20px; color: #f4f4f4; font-size: 15px; }
 
     /* Material-style surfaces: flat, outlined, 4px corners. Every line is 0.8px. */
     html body .border { border-width: 0.8px !important; }
@@ -332,21 +338,25 @@
     html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
     html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
     html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabDirectory, html body #navTabFilters,
-    html body #mobileStickySendBtn, html body #workSendBtn, html body #mobileTopBar button:not(#mobileTopBrandBtn), html body #mobileStickyPlusBtn, html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn, html body #mobileFilterChipsSection button, html body #hudWorldBtn, html body #hudSpinBtn, html body #hudExpandBtn { color: #f4f4f4 !important; background: #022b30 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; }
+    html body #mobileStickySendBtn, html body #workSendBtn, html body #mobileTopBar button:not(#mobileTopBrandBtn), html body #mobileStickyPlusBtn, html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn, html body #mobileFilterChipsSection button, html body #hudWorldBtn, html body #hudSpinBtn, html body #hudExpandBtn { color: #f4f4f4 !important; background: #022b30 !important; border: 0 !important; border-radius: 9999px !important; padding: 3px 12px !important; }
     html body #mobileStickyPlusBtn { padding: 0 !important; width: 36px !important; height: 36px !important; }
     html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #closeAcademicModalBtn, #closeAcademicModalFooterBtn, #arTabStudies, #arTabCommunity, #arTabCases, #desktopDossierBody > div > button, #inputModeCancelBtn, #navTabAtlas, #navTabDirectory, #navTabFilters, #mobileStickySendBtn, #mobileStickyPlusBtn):hover { background: #004144 !important; color: #f4f4f4 !important; }
-    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases, #navTabAtlas, #navTabDirectory, #navTabFilters) { background: #f4f4f4 !important; color: #000000 !important; }
-    html body .globe-filter-pill { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; box-shadow: none !important; font-size: 14px !important; }
+    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases, #navTabAtlas, #navTabDirectory, #navTabFilters) { background: #007d79 !important; color: #f4f4f4 !important; }
+    html body .globe-filter-pill, html body .globe-filter-pill.is-active { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 3px 12px !important; box-shadow: none !important; font-size: 14px !important; }
     html body .globe-filter-pill:hover { background: #004144 !important; }
-    html body .globe-filter-pill.is-active, html body .globe-filter-pill:not([class*="bg-black"]) { background: #f4f4f4 !important; color: #000000 !important; }
-    html body #filterDrawerPanel h2 { font-size: 26px !important; }
+    html body .ar-topic-chip { padding: 3px 12px !important; border-radius: 9999px !important; }
+    html body .globe-filter-pill.is-active, html body .globe-filter-pill:not([class*="bg-black"]) { background: #007d79 !important; color: #f4f4f4 !important; }
+    html body #filterDrawerPanel h2 { font-size: 22px !important; }
     /* No grey anywhere: Tailwind grey utilities become off-white lines and text, or black ground. */
     html body :is([class*="border-[#262626]"], [class*="border-[#2e2e33]"], [class*="border-[#2e2e2e]"], [class*="border-[#1e293b]"], [class*="border-[#27272a]"], [class*="border-[#3e3e3e]"], [class*="border-[#333333]"], [class*="border-[#393939]"], [class*="border-[#2a2a2a]"], [class*="border-[#334155]"], [class*="border-[#1f293d]"], [class*="border-[#3f3f46]"], [class*="border-[#2e2e38]"], [class*="border-[#1b2333]"], [class*="border-[#525252]"], [class*="border-[#234b39]"], [class*="border-[#1e2f4a]"], [class*="border-[#334666]"], [class*="border-[#1e2f47]"], [class*="border-[#383838]"], [class*="border-[#2f2f2f]"], [class*="border-[#232a3c]"], [class*="border-[#1b3324]"], [class*="border-[#1b4332]"], [class*="border-[#1c1c1c]"], [class*="border-[#303030]"], [class*="border-[#23352b]"], [class*="border-[#1e3b3e]"], [class*="border-[#1b2b42]"], [class*="border-[#1a293e]"], [class*="border-[#222d42]"], [class*="border-[#202b3f]"], [class*="border-[#2c3d5a]"], [class*="border-[#222f47]"], [class*="border-[#385177]"], [class*="border-[#2d4368]"], [class*="border-[#2b3e5f]"], [class*="border-[#1d3557]"], [class*="border-[#444]"], [class*="border-cyan-950"], [class*="border-slate"], [class*="border-zinc"], [class*="border-gray"], [class*="border-neutral"]), html body [class*="divide-"] > * { border-color: #f4f4f4 !important; }
     html body :is([class*="border-[#60a5fa]"], [class*="border-[#33b1ff]"], [class*="border-[#0284c7]"], [class*="border-blue"], [class*="border-sky"]) { border-color: #08bdba !important; }
     html body :is([class*="text-[#212121]"], [class*="text-[#334155]"]) { color: #f4f4f4 !important; }
     html body :is([class*="text-slate"], [class*="text-zinc"], [class*="text-gray"], [class*="text-neutral"]), html body input::placeholder, html body textarea::placeholder { color: #f4f4f4 !important; }
     html body :is([class*="bg-zinc"], [class*="bg-slate"], [class*="bg-gray"], [class*="bg-[#26262e]"]) { background-color: #000000 !important; }
-    html body .bg-neutral-200 { background-color: #f4f4f4 !important; }
+    html body .bg-neutral-200 { background-color: #004144 !important; }
+    html body :is(#zoomInBtn, #zoomOutBtn) { background: #022b30 !important; color: #f4f4f4 !important; box-shadow: none !important; }
+    html body :is(#zoomInBtn, #zoomOutBtn):hover { background: #004144 !important; color: #f4f4f4 !important; }
+    html body button[class*="bg-white"], html body a[class*="bg-white"] { background: #022b30 !important; color: #f4f4f4 !important; border-radius: 9999px !important; padding: 3px 12px !important; }
     html body .custom-scrollbar::-webkit-scrollbar-thumb, html body ::-webkit-scrollbar-thumb { background: #004144 !important; }
     
     html body #mobileTopBrandBtn, html body #topBrandLogoBtn, html body #mobileTopBrandBtn *, html body #topBrandLogoBtn * { text-transform: none !important; color: inherit; }
@@ -354,23 +364,23 @@
     /* Building x-ray: labels on the slabs and the inside panel. */
     .xray-label { background: #000000; color: #f4f4f4; border: 0.8px solid var(--xray-colour, #f4f4f4); border-radius: 9999px; padding: 2px 10px; font-size: 14px; white-space: nowrap; cursor: pointer; text-transform: none; }
     #buildingInsidePanel { border: 0.8px solid #f4f4f4; border-radius: 12px; font-size: 14px; line-height: 1.3; }
-    #buildingInsidePanel h3 { font-size: 18px; }
+    #buildingInsidePanel h3 { font-size: 15px; }
     #buildingInsidePanel p { font-size: 14px; }
-    .xray-pill { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; font-size: 14px !important; }
+    .xray-pill { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 3px 12px !important; font-size: 14px !important; }
     /* Editorial measure, after the reference page: a display-size lede with tight leading, small-capital kickers, filled cards. */
-    html body .lede { font-size: 26px !important; line-height: 1.1 !important; }
+    html body .lede { font-size: 22px !important; line-height: 1.1 !important; }
     html body .kicker { font-size: 14px !important; text-transform: uppercase; line-height: 1.3; }
     html body .record-card { background: #022b30; border: 0 !important; border-radius: 12px; padding: 16px 18px; margin: 10px 0; }
     html body .record-card:first-of-type { margin-top: 4px; }
     html body #catalogModal .inst-card { background: #022b30; border: 0 !important; border-radius: 12px; padding: 18px 20px; margin: 10px 0; }
-    html body #catalogModal .inst-card h3 { font-size: 26px !important; line-height: 1.1 !important; margin: 6px 0 4px !important; padding: 0 !important; }
+    html body #catalogModal .inst-card h3 { font-size: 22px !important; line-height: 1.1 !important; margin: 6px 0 4px !important; padding: 0 !important; }
     html body #catalogModal .inst-card .kicker { margin: 0 !important; }
     html body #catalogModal .inst-card { line-height: 1.3; }
     html body #catalogModal .inst-card h3::after { content: ' \2192'; }
     html body #catalogModal .inst-card .kicker { font-size: 14px !important; }
-    html body #detailDrawer h2 { font-size: 26px !important; line-height: 1.1 !important; }
+    html body #detailDrawer h2 { font-size: 22px !important; line-height: 1.1 !important; }
     html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn { width: auto !important; }
-    html body #dossier-bottom-sheet h2.lede { font-size: 26px !important; line-height: 1.1 !important; }
+    html body #dossier-bottom-sheet h2.lede { font-size: 22px !important; line-height: 1.1 !important; }
     /* Compatibility family aliases referencing exclusively the two PP Eiko fonts */
     *, *::before, *::after {
       font-family: 'PP Mori', sans-serif !important;
@@ -796,8 +806,8 @@
       transition: all 0.15s ease !important;
     }
     .atlas-dark-popup .maplibregl-popup-close-button:hover {
-      color: #000000 !important;
-      background: #ffffff !important;
+      color: #f4f4f4 !important;
+      background: #004144 !important;
     }
     .atlas-dark-popup button,
     .atlas-dark-popup a,
@@ -913,7 +923,7 @@
     .brand-logo-title {
       font-family: 'PP Mori', sans-serif !important;
       font-weight: 400 !important;
-      font-size: 24px;
+      font-size: 20px;
       line-height: 1.3;
       letter-spacing: 0.7pt !important;
       color: #ffffff;
@@ -931,14 +941,14 @@
     }
     @media (min-width: 481px) and (max-width: 640px) {
       .brand-logo-title {
-        font-size: 18px;
+        font-size: 15px;
         line-height: 1.3;
         letter-spacing: 0.7pt !important;
       }
     }
     @media (min-width: 641px) and (max-width: 1024px) {
       .brand-logo-title {
-        font-size: 24px;
+        font-size: 20px;
         line-height: 1.3;
         letter-spacing: 0.7pt !important;
       }
@@ -1098,24 +1108,6 @@
       z-index: 9999 !important;
     }
 
-    .building-facade-close-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 0.8px solid rgba(255, 255, 255, 0.14);
-      color: #f4f4f4;
-      font-size: 14px;
-      line-height: 1.3;
-      cursor: pointer;
-    }
-    .building-facade-close-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-      color: #ffffff;
-    }
     
     /*  SECURE WHISTLEBLOWER & INTEL INTAKE MODE STYLING */
     #chatModeSegmentedSwitch button {
@@ -1305,25 +1297,6 @@
       box-shadow: none !important;
     }
 
-    .building-facade-close-btn {
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 9999px !important;
-      border: none !important;
-      background: #eaedf0 !important;
-      color: #212121 !important;
-      transition: all 0.15s ease;
-      padding: 2px 7px !important;
-      flex-shrink: 0;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-    }
-    .building-facade-close-btn:hover {
-      color: #000000 !important;
-      background: #ffffff !important;
-      transform: scale(1.05);
-    }
 
     /*  Sleek Uncontained Link System (Matching Minimalist Brutalist Design) */
     .atlas-pill-btn {
@@ -1705,19 +1678,19 @@ return maplibregl$1;
 #curatorMessages, #curatorDrawerLiveStream, #curatorDrawerGreeting { max-width: 720px; margin-left: auto; margin-right: auto; }
 .curator-message-wrap { margin: 28px 0 !important; }
 .curator-message-wrap *, #curatorDrawerLiveStream .curator-message-wrap * { background: transparent !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; text-transform: none !important; }
-.curator-message-wrap p, .curator-message-wrap li, .curator-message-wrap strong, .curator-message-wrap h1, .curator-message-wrap h2, .curator-message-wrap h3 { font-size: 18px !important; font-weight: 400 !important; color: #f4f4f4 !important; }
+.curator-message-wrap p, .curator-message-wrap li, .curator-message-wrap strong, .curator-message-wrap h1, .curator-message-wrap h2, .curator-message-wrap h3 { font-size: 15px !important; font-weight: 400 !important; color: #f4f4f4 !important; }
 .curator-message-wrap .font-mono, .curator-message-wrap button, .curator-message-wrap .no-indent { font-size: 14px !important; color: #f4f4f4 !important; }
 .curator-message-wrap a { color: #f4f4f4 !important; text-decoration: underline !important; text-underline-offset: 3px; }
 .curator-message-wrap svg, .curator-thought-accordion, .rounded-full:empty, #curatorCityDotWrap { display: none !important; }
-.user-bubble { align-self: flex-end; max-width: 85%; background: #000000; color: #f4f4f4; border-radius: 18px; padding: 10px 16px; font-size: 18px; line-height: 1.3; }
+.user-bubble { align-self: flex-end; max-width: 85%; background: #000000; color: #f4f4f4; border: 0.8px solid #f4f4f4; border-radius: 18px; padding: 10px 16px; font-size: 15px; line-height: 1.3; }
 #curatorMessages > .justify-end, #curatorDrawerLiveStream > .justify-end { margin: 16px 0 !important; }
 /* Composer: a rounded card with the text on top and the controls underneath */
 #workBottomDock { background: #000000; }
-#workInputCard { background: #000000; border: 1px solid #3d3d3b !important; border-radius: 24px; padding: 14px 16px 10px !important; }
-#workInput { font-size: 18px !important; }
+#workInputCard { background: #000000; border: 0.8px solid #f4f4f4 !important; border-radius: 24px; padding: 14px 16px 10px !important; }
+#workInput { font-size: 15px !important; }
 #workSendBtn { width: 32px; height: 32px; border-radius: 50%; background: #ececec; color: #111; justify-content: center; }
 #workSendBtn svg { color: #111; }
-#chat-input { font-size: 18px !important; border-radius: 22px !important; padding: 10px 88px 10px 16px !important; text-overflow: ellipsis; }
+#chat-input { font-size: 15px !important; border: 0.8px solid #f4f4f4 !important; border-radius: 22px !important; padding: 10px 88px 10px 16px !important; text-overflow: ellipsis; }
 #mobileStickySendBtn { background: #000 !important; color: #fff !important; border: 1pt solid #f4f4f4 !important; font-size: 14px !important; }
 #mobileStickyVoiceBtn { background: transparent !important; border: 0 !important; }
 .curator-message-wrap a { font-size: inherit !important; }
@@ -1987,7 +1960,7 @@ return maplibregl$1;
             </button>
           </div>
           <div class="w-full min-w-0">
-            <h2 class="lede font-normal text-[#f4f4f4] tracking-normal break-words hyphens-auto block" id="dossier-sheet-name"></h2>
+            <h2 class="lede font-normal text-[#f4f4f4] tracking-normal break-words block" id="dossier-sheet-name"></h2>
             <p class="kicker no-indent text-[14px] text-[#f4f4f4] font-mono mt-0.5 block break-words" id="dossier-sheet-meta"></p>
           </div>
         </div>
@@ -9683,7 +9656,7 @@ return maplibregl$1;
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:4px;">
               <div style="padding-right:10px; min-width:0;">
                 <a href="${escapeHtml(webUrl || '#')}" target="_blank" rel="noopener noreferrer" 
-                   style="font-size:18px; font-weight:400; color:#ffffff; line-height:1.3; text-decoration:none; display:block;"
+                   style="font-size: 15px; font-weight:400; color:#ffffff; line-height:1.3; text-decoration:none; display:block;"
                    onmouseover="this.style.color='#f4f4f4';this.style.textDecoration='underline'" 
                    onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
                   ${escapeHtml(inst.name)}
@@ -10106,7 +10079,7 @@ return maplibregl$1;
                   ${isClean ? 'Clean, source cited' : 'Flagged'}
                 </span>
               </div>
-              <div style="font-size:18px; font-weight:400; color:#ffffff; line-height:1.3; margin-bottom:4px;">
+              <div style="font-size: 15px; font-weight:400; color:#ffffff; line-height:1.3; margin-bottom:4px;">
                 ${escapeHtml(stop.name)}
               </div>
               <div style="font-size:14px; color:#f4f4f4; margin-bottom:6px;">
@@ -11827,7 +11800,7 @@ return maplibregl$1;
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${domain}`;
 
-      ctx.font = '18px "PP Mori", sans-serif';
+      ctx.font = '15px "PP Mori", sans-serif';
       const nameText = inst.name;
       const nameW = ctx.measureText(nameText).width;
 
@@ -11870,7 +11843,7 @@ return maplibregl$1;
       // Row 1: Institution Name. No tier title above it: the tier reads from
       // the card's border colour, not from a label.
       ctx.textAlign = 'left';
-      ctx.font = '18px "PP Mori", sans-serif';
+      ctx.font = '15px "PP Mori", sans-serif';
       ctx.fillStyle = '#ffffff';
       ctx.textBaseline = 'top';
       let displayName = nameText;
@@ -12697,7 +12670,7 @@ return maplibregl$1;
               const countTxt = `${countVal} Verified Cultural Space${countVal === 1 ? '' : 's'}`;
               const linkTxt = 'Click to Explore';
 
-              ctx.font = '18px "PP Mori", sans-serif';
+              ctx.font = '15px "PP Mori", sans-serif';
               const twCity = ctx.measureText(cityTxt).width;
 
               ctx.font = '14px "PP Mori", sans-serif';
@@ -12748,7 +12721,7 @@ return maplibregl$1;
               ctx.stroke();
 
               // Line 1: City Name (500 18px)
-              ctx.font = '18px "PP Mori", sans-serif';
+              ctx.font = '15px "PP Mori", sans-serif';
               ctx.fillStyle = isGossipModeActive ? '#facc15' : '#08bdba';
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
