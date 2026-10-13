@@ -2879,6 +2879,9 @@ return maplibregl$1;
                 <button id="workMenuGossipBtn" onclick="window.enterChatInputMode('gossip')" class="text-left px-3.5 py-2.5 bg-black hover:bg-black text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
                   <span>Write gossip</span>
                 </button>
+                <button id="workMenuWhistleblowerBtn" onclick="window.enterChatInputMode('whistleblower')" class="text-left px-3.5 py-2.5 bg-black hover:bg-black text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
+                  <span>Whistleblower note</span>
+                </button>
                 <button id="workMenuGovernanceBtn" class="text-left px-3.5 py-2.5 bg-black hover:bg-black text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
                   <span>How the records work</span>
                 </button>
@@ -20119,12 +20122,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     let chatInputKind = 'information';
     const INPUT_KIND_TEXT = {
       information: { banner: 'Information: write what you know about a space or a funder. It is saved as a note in this browser. Nothing is sent and nothing is checked.', placeholder: 'Write what you know. It is saved as a note in this browser only.' },
-      gossip: { banner: 'Gossip: write what you heard. It is saved as an unverified note in this browser. Nothing is sent and nothing is checked.', placeholder: 'Write what you heard. It is saved as an unverified note in this browser only.' }
+      gossip: { banner: 'Gossip: write what you heard. It is saved as an unverified note in this browser. Nothing is sent and nothing is checked.', placeholder: 'Write what you heard. It is saved as an unverified note in this browser only.' },
+      whistleblower: { banner: 'Whistleblower: write what you know from inside an institution. It is saved as a note in this browser. Nothing is sent and nothing is checked. This page has no secure channel, so leave out your name and anything that identifies you if you want to stay anonymous.', placeholder: 'Write what you know from inside. It is saved as a note in this browser only.' }
     };
 
     function enterChatInputMode(kindOrTopic = '') {
-      const defaultTopic = (kindOrTopic === 'information' || kindOrTopic === 'gossip') ? '' : kindOrTopic;
-      chatInputKind = kindOrTopic === 'gossip' ? 'gossip' : 'information';
+      const kinds = ['information', 'gossip', 'whistleblower'];
+      const defaultTopic = kinds.includes(kindOrTopic) ? '' : kindOrTopic;
+      chatInputKind = kinds.includes(kindOrTopic) ? kindOrTopic : 'information';
       isChatInputMode = true;
       if (typeof window.closeWorkPlusMenu === 'function') window.closeWorkPlusMenu();
       document.getElementById('workPlusMenu')?.classList.add('hidden');
@@ -20360,7 +20365,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       appendCuratorMessage(`
         <div class="text-[14px] text-[#f4f4f4] py-1.5 flex items-center justify-between border-y border-zinc-800">
           <span>Returned to Chat. How can I help you explore cultural spaces?</span>
-          <button type="button" onclick="window.enterChatInputMode('information')" class="text-[#f4f4f4] hover:underline cursor-pointer text-[14px]">Add information</button>
+          <span class="flex gap-3"><button type="button" onclick="window.enterChatInputMode('information')" class="text-[#f4f4f4] hover:underline cursor-pointer text-[14px]">Add information</button><button type="button" onclick="window.enterChatInputMode('whistleblower')" class="text-[#f4f4f4] hover:underline cursor-pointer text-[14px]">Whistleblower note</button></span>
         </div>
       `, [], null, null, false);
       scrollChatToBottom(true);
@@ -20397,7 +20402,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       });
       appendCuratorMessage(`
         <div class="space-y-1">
-          <p class="no-indent">Saved as ${kind === 'gossip' ? 'an unverified gossip' : 'an information'} note in this browser. It was not sent to anyone and has not been checked.</p>
+          <p class="no-indent">Saved as ${kind === 'gossip' ? 'an unverified gossip' : kind === 'whistleblower' ? 'a whistleblower' : 'an information'} note in this browser. It was not sent to anyone and has not been checked.</p>
           <p class="no-indent"><a href="#" onclick="event.preventDefault();window.openAcademicResearchModal('all','community')">Notes saved in this browser</a>, <a href="#" onclick="event.preventDefault();window.enterChatInputMode('${kind}')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
         </div>
       `, [], null, null, false);
@@ -23819,7 +23824,7 @@ bar.innerHTML = html;
       }
 
       if (targetMode === 'whistleblower' || params.get('whistleblower') === '1' || params.get('intake') === '1') {
-        enterChatInputMode();
+        enterChatInputMode('whistleblower');
       }
 
       if (params.get('filters') === '1' || params.get('drawer') === '1') {
