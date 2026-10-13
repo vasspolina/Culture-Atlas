@@ -30631,11 +30631,11 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       const academicBtn = document.getElementById('catFilterAcademicBtn');
       const vcBtn = document.getElementById('catFilterVisualCritiqueBtn');
 
-      if (allBtn) allBtn.className = isAll ? 'cat-modal-chip atlas-pill-btn pill-sm font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
-      if (cleanBtn) cleanBtn.className = isCleanOnly ? 'cat-modal-chip px-3 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
-      if (flaggedBtn) flaggedBtn.className = isFlaggedOnly ? 'cat-modal-chip px-3 py-1 rounded-xl bg-[#6929c4] text-white border border-[#be95ff] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
-      if (academicBtn) academicBtn.className = isAcademicOnly ? 'cat-modal-chip px-3 py-1 rounded-xl bg-[#0369a1] text-white border border-[#38bdf8] font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
-      if (vcBtn) vcBtn.className = isVisualCritiqueOnly ? 'cat-modal-chip px-3 py-1 rounded-xl bg-amber-600 text-white border border-amber-400 font-medium shrink-0 cursor-pointer shadow-sm' : 'cat-modal-chip atlas-suggestion-pill shrink-0 cursor-pointer';
+      if (allBtn) allBtn.className = isAll ? 'cat-modal-chip text-left text-white font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-slate-300 hover:text-white hover:underline cursor-pointer';
+      if (cleanBtn) cleanBtn.className = isCleanOnly ? 'cat-modal-chip text-left text-emerald-400 font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-slate-300 hover:text-emerald-300 hover:underline cursor-pointer';
+      if (flaggedBtn) flaggedBtn.className = isFlaggedOnly ? 'cat-modal-chip text-left text-[#be95ff] font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-slate-300 hover:text-[#be95ff] hover:underline cursor-pointer';
+      if (academicBtn) academicBtn.className = isAcademicOnly ? 'cat-modal-chip text-left text-[#7dd3fc] font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-slate-300 hover:text-[#7dd3fc] hover:underline cursor-pointer';
+      if (vcBtn) vcBtn.className = isVisualCritiqueOnly ? 'cat-modal-chip text-left text-amber-400 font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-slate-300 hover:text-amber-300 hover:underline cursor-pointer';
     }
     window.updateCatalogChipsUI = updateCatalogChipsUI;
 
