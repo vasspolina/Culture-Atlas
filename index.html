@@ -344,7 +344,9 @@
     html body .globe-filter-pill.is-active, html body .globe-filter-pill:not([class*="bg-black"]) { background: #f4f4f4 !important; color: #000000 !important; }
     html body #filterDrawerPanel h2 { font-size: 26px !important; }
     /* No grey anywhere: Tailwind grey utilities become off-white lines and text, or black ground. */
-    html body :is([class*="border-[#262626]"], [class*="border-[#2e2e33]"], [class*="border-[#2e2e2e]"], [class*="border-[#333333]"], [class*="border-[#444]"], [class*="border-[#393939]"], [class*="border-[#2a2a2a]"], [class*="border-[#3f3f46]"], [class*="border-[#2e2e38]"], [class*="border-[#1d3557]"], [class*="border-[#1c1c1c]"], [class*="border-[#1b2333]"], [class*="border-[#1e293b]"], [class*="border-[#334155]"], [class*="border-cyan-950"], [class*="border-slate"], [class*="border-zinc"], [class*="border-gray"], [class*="border-neutral"]), html body [class*="divide-"] > * { border-color: #f4f4f4 !important; }
+    html body :is([class*="border-[#262626]"], [class*="border-[#2e2e33]"], [class*="border-[#2e2e2e]"], [class*="border-[#1e293b]"], [class*="border-[#27272a]"], [class*="border-[#3e3e3e]"], [class*="border-[#333333]"], [class*="border-[#393939]"], [class*="border-[#2a2a2a]"], [class*="border-[#334155]"], [class*="border-[#1f293d]"], [class*="border-[#3f3f46]"], [class*="border-[#2e2e38]"], [class*="border-[#1b2333]"], [class*="border-[#525252]"], [class*="border-[#234b39]"], [class*="border-[#1e2f4a]"], [class*="border-[#334666]"], [class*="border-[#1e2f47]"], [class*="border-[#383838]"], [class*="border-[#2f2f2f]"], [class*="border-[#232a3c]"], [class*="border-[#1b3324]"], [class*="border-[#1b4332]"], [class*="border-[#1c1c1c]"], [class*="border-[#303030]"], [class*="border-[#23352b]"], [class*="border-[#1e3b3e]"], [class*="border-[#1b2b42]"], [class*="border-[#1a293e]"], [class*="border-[#222d42]"], [class*="border-[#202b3f]"], [class*="border-[#2c3d5a]"], [class*="border-[#222f47]"], [class*="border-[#385177]"], [class*="border-[#2d4368]"], [class*="border-[#2b3e5f]"], [class*="border-[#1d3557]"], [class*="border-[#444]"], [class*="border-cyan-950"], [class*="border-slate"], [class*="border-zinc"], [class*="border-gray"], [class*="border-neutral"]), html body [class*="divide-"] > * { border-color: #f4f4f4 !important; }
+    html body :is([class*="border-[#60a5fa]"], [class*="border-[#33b1ff]"], [class*="border-[#0284c7]"], [class*="border-blue"], [class*="border-sky"]) { border-color: #08bdba !important; }
+    html body :is([class*="text-[#212121]"], [class*="text-[#334155]"]) { color: #f4f4f4 !important; }
     html body :is([class*="text-slate"], [class*="text-zinc"], [class*="text-gray"], [class*="text-neutral"]), html body input::placeholder, html body textarea::placeholder { color: #f4f4f4 !important; }
     html body :is([class*="bg-zinc"], [class*="bg-slate"], [class*="bg-gray"], [class*="bg-[#26262e]"]) { background-color: #000000 !important; }
     html body .bg-neutral-200 { background-color: #f4f4f4 !important; }
@@ -354,7 +356,7 @@
     html body #topBrandLogoBtn > span:first-child, html body #mobileTopBrandBtn .text-white { color: #ffffff !important; }
     /* Building x-ray: labels on the slabs and the inside panel. */
     .xray-label { background: #000000; color: #f4f4f4; border: 0.8px solid var(--xray-colour, #f4f4f4); border-radius: 9999px; padding: 2px 10px; font-size: 14px; white-space: nowrap; cursor: pointer; text-transform: none; }
-    #buildingInsidePanel { border: 0.8px solid #f4f4f4; border-radius: 6px; font-size: 14px; line-height: 1.3; }
+    #buildingInsidePanel { border: 0.8px solid #f4f4f4; border-radius: 12px; font-size: 14px; line-height: 1.3; }
     #buildingInsidePanel h3 { font-size: 18px; }
     #buildingInsidePanel p { font-size: 14px; }
     .xray-pill { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; font-size: 14px !important; }
@@ -837,14 +839,10 @@
     .maplibregl-ctrl-group button .maplibregl-ctrl-icon {
       filter: invert(1) brightness(0.9);
     }
-    .maplibregl-ctrl-attrib,
-    .maplibregl-ctrl-attrib-inner,
-    .maplibregl-compact {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-    }
+    .maplibregl-ctrl-attrib { background: #000000 !important; color: #f4f4f4 !important; font-size: 14px !important; line-height: 1.3 !important; font-family: inherit !important; border-radius: 9999px !important; }
+    .maplibregl-ctrl-attrib a { color: #f4f4f4 !important; text-decoration: underline !important; }
+    .maplibregl-ctrl-attrib.maplibregl-compact-show { padding: 2px 32px 2px 10px !important; }
+    .maplibregl-ctrl-attrib-button { filter: invert(1) !important; background-color: transparent !important; }
     .custom-inst-pin {
       cursor: pointer;
       position: relative;
@@ -1193,8 +1191,8 @@
       display: inline-block !important;
     }
     .mast-headroom-pill:hover {
-      background: rgba(56, 189, 248, 0.28);
-      border-color: rgba(56, 189, 248, 0.65);
+      background: rgba(8, 189, 186, 0.28);
+      border-color: rgba(8, 189, 186, 0.65);
       color: #ffffff;
     }
     /* 3D Floor Directory Facade Stack */
@@ -1262,8 +1260,8 @@
       font-weight: 400;
       padding: 1px 5px;
       border-radius: 4px;
-      background: rgba(56, 189, 248, 0.18);
-      border: 0.8px solid rgba(56, 189, 248, 0.35);
+      background: rgba(8, 189, 186, 0.18);
+      border: 0.8px solid rgba(8, 189, 186, 0.35);
       color: #f4f4f4;
       font-family: 'PP Mori', sans-serif;
     }
@@ -1497,7 +1495,7 @@
       border-color: rgba(250, 204, 21, 0.90) !important;
     }
 
-    /*  GOSSIP / YELLOW MODE: OPPOSITE COLOR HOVERS (Electric Cyan #38bdf8 High-Contrast Accents) */
+    /*  GOSSIP / YELLOW MODE: OPPOSITE COLOR HOVERS (Electric Cyan #08bdba High-Contrast Accents) */
     body.gossip-mode-active .atlas-suggestion-pill:hover,
     body.gossip-mode-active .work-suggestion-card.is-suggestion:hover,
     body.gossip-mode-active .curator-followup-pill:hover,
@@ -8712,10 +8710,10 @@ return maplibregl$1;
       set: (v) => { isGossipModeActive = v; }
     });
 
-    // High-Resolution Interactive City Map (Google Maps Dark WebGL Vector Engine) State & Controller
-    const GOOGLE_MAPS_DARK_STYLE = {
+    // City map style: black ground, teal buildings and roads, OpenFreeMap vector tiles.
+    const CITY_MAP_DARK_STYLE = {
       version: 8,
-      name: 'Google Maps Dark',
+      name: 'Culture Atlas dark',
       sources: {
         openmaptiles: {
           type: 'vector',
@@ -8739,7 +8737,7 @@ return maplibregl$1;
           'source-layer': 'landcover',
           filter: ['match', ['get', 'class'], ['grass', 'wood', 'scrub'], true, false],
           paint: {
-            'fill-color': '#142218',
+            'fill-color': '#022d0d',
             'fill-opacity': 0.75
           }
         },
@@ -8749,7 +8747,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'park',
           paint: {
-            'fill-color': '#142218',
+            'fill-color': '#022d0d',
             'fill-opacity': 0.85
           }
         },
@@ -8759,7 +8757,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'water',
           paint: {
-            'fill-color': '#0f1724'
+            'fill-color': '#081a1c'
           }
         },
         {
@@ -8768,7 +8766,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'waterway',
           paint: {
-            'line-color': '#0f1724',
+            'line-color': '#081a1c',
             'line-width': ['interpolate', ['exponential', 1.3], ['zoom'], 8, 1, 14, 4]
           }
         },
@@ -8806,7 +8804,7 @@ return maplibregl$1;
           filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
           minzoom: 12,
           paint: {
-            'line-color': '#232630',
+            'line-color': '#004144',
             'line-width': ['interpolate', ['linear'], ['zoom'], 12, 1.0, 16, 3.0]
           }
         },
@@ -8817,7 +8815,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
           paint: {
-            'line-color': '#2c313d',
+            'line-color': '#005d5d',
             'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.8, 16, 4.0]
           }
         },
@@ -8828,7 +8826,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
           paint: {
-            'line-color': '#3a4252',
+            'line-color': '#007d79',
             'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1.2, 16, 5.5]
           }
         },
@@ -8839,7 +8837,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
           paint: {
-            'line-color': '#475163',
+            'line-color': '#009d9a',
             'line-width': ['interpolate', ['linear'], ['zoom'], 5, 1.5, 16, 7.0]
           }
         },
@@ -8850,7 +8848,7 @@ return maplibregl$1;
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
           paint: {
-            'line-color': '#4b5563',
+            'line-color': '#005d5d',
             'line-width': 1.2,
             'line-dasharray': [3, 2]
           }
@@ -8864,13 +8862,13 @@ return maplibregl$1;
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Noto Sans Regular'],
-            'text-size': ['interpolate', ['linear'], ['zoom'], 8, 10, 14, 13],
+            'text-size': 14,
             'text-transform': 'none',
             'text-letter-spacing': 0.08
           },
           paint: {
             'text-color': '#f4f4f4',
-            'text-halo-color': '#111215',
+            'text-halo-color': '#000000',
             'text-halo-width': 1.5
           }
         }
@@ -8902,7 +8900,7 @@ return maplibregl$1;
       try {
         cityVectorMap = new maplibregl.Map({
           container: 'cityMapContainer',
-          style: GOOGLE_MAPS_DARK_STYLE,
+          style: CITY_MAP_DARK_STYLE,
           center: [0, 20],
           zoom: 14,
           pitch: 35,
@@ -10908,7 +10906,7 @@ return maplibregl$1;
       fossil: '#fbbf24',
       private_equity: '#c084fc',
       pharma: '#2dd4bf',
-      banking: '#38bdf8',
+      banking: '#08bdba',
       artwashing: '#fb7185',
       all: '#a855f7'
     };
@@ -12844,7 +12842,7 @@ return maplibregl$1;
                   ctx.fill();
 
                   ctx.strokeStyle = isSel 
-                    ? (isGossipModeActive ? '#facc15' : '#38bdf8') 
+                    ? (isGossipModeActive ? '#facc15' : '#08bdba') 
                     : isHov
                     ? (isGossipModeActive ? '#fde047' : '#f4f4f4') 
                     : (isGossipModeActive ? 'rgba(234, 179, 8, 0.65)' : 'rgba(255, 255, 255, 0.3)');
@@ -12859,7 +12857,7 @@ return maplibregl$1;
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? (isGossipModeActive ? '#fef9c3' : '#38bdf8') 
+                    ? (isGossipModeActive ? '#fef9c3' : '#08bdba') 
                     : isHov
                     ? '#ffffff'
                     : (isGossipModeActive ? '#fef08a' : '#ffffff');
@@ -13019,7 +13017,7 @@ return maplibregl$1;
               ctx.fill();
 
               ctx.strokeStyle = isSel 
-                ? (isGossipModeActive ? '#38bdf8' : '#f4f4f4') 
+                ? (isGossipModeActive ? '#08bdba' : '#f4f4f4') 
                 : (d.inst.tier === 'A' ? 'rgba(16, 185, 129, 0.65)' : d.inst.tier === 'B' ? 'rgba(190, 149, 255, 0.65)' : 'rgba(8, 189, 186, 0.65)');
               ctx.lineWidth = 0.8;
               ctx.stroke();
@@ -13044,7 +13042,7 @@ return maplibregl$1;
 
               ctx.beginPath();
               ctx.arc(hPt.x, hPt.y, 6.5, 0, Math.PI * 2);
-              ctx.fillStyle = '#38bdf8';
+              ctx.fillStyle = '#08bdba';
               ctx.strokeStyle = '#ffffff';
               ctx.lineWidth = 0.8;
               ctx.fill();
@@ -13099,17 +13097,17 @@ return maplibregl$1;
               ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 8) : ctx.rect(cardX, cardY, cardW, cardH);
               ctx.fill();
 
-              // Border outline - in yellow mode, hovering card or link highlights in OPPOSITE color (#38bdf8)
+              // Border outline - in yellow mode, hovering card or link highlights in OPPOSITE color (#08bdba)
               ctx.shadowBlur = 0;
               ctx.strokeStyle = isHoveringCityExploreLink 
-                ? '#38bdf8' 
-                : (isGossipModeActive ? '#facc15' : '#38bdf8');
+                ? '#08bdba' 
+                : (isGossipModeActive ? '#facc15' : '#08bdba');
               ctx.lineWidth = 0.8;
               ctx.stroke();
 
               // Line 1: City Name (500 18px)
               ctx.font = '18px "PP Mori", sans-serif';
-              ctx.fillStyle = isGossipModeActive ? '#facc15' : '#38bdf8';
+              ctx.fillStyle = isGossipModeActive ? '#facc15' : '#08bdba';
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
               ctx.fillText(cityTxt, cardX + 14, cardY + 12);
@@ -13131,12 +13129,12 @@ return maplibregl$1;
               currentY += 22;
 
               // Line 4: "Click to Explore" Action Link Pill with Interactive Hover State
-              // In yellow mode, hovering triggers the OPPOSITE color (Electric Cyan #38bdf8)!
+              // In yellow mode, hovering triggers the OPPOSITE color (Electric Cyan #08bdba)!
               ctx.save();
               if (isGossipModeActive) {
                 if (isHoveringCityExploreLink) {
-                  // Hovered state in yellow mode: OPPOSITE COLOR (Electric Cyan #38bdf8 glow & stroke)
-                  ctx.fillStyle = 'rgba(56, 189, 248, 0.28)';
+                  // Hovered state in yellow mode: OPPOSITE COLOR (Electric Cyan #08bdba glow & stroke)
+                  ctx.fillStyle = 'rgba(8, 189, 186, 0.28)';
                   ctx.strokeStyle = '#f4f4f4';
                   ctx.lineWidth = 0.8;
                   ctx.shadowBlur = 0;
@@ -13147,7 +13145,7 @@ return maplibregl$1;
                   ctx.lineWidth = 0.8;
                 }
               } else {
-                ctx.fillStyle = isHoveringCityExploreLink ? 'rgba(56, 189, 248, 0.28)' : 'rgba(56, 189, 248, 0.12)';
+                ctx.fillStyle = isHoveringCityExploreLink ? 'rgba(8, 189, 186, 0.28)' : 'rgba(8, 189, 186, 0.12)';
                 ctx.strokeStyle = isHoveringCityExploreLink ? '#f4f4f4' : '#f4f4f4';
                 ctx.lineWidth = 0.8;
                 ctx.shadowBlur = 0;
@@ -13161,7 +13159,7 @@ return maplibregl$1;
               ctx.font = '14px "PP Mori", sans-serif';
               ctx.fillStyle = isGossipModeActive 
                 ? (isHoveringCityExploreLink ? '#f4f4f4' : '#facc15') 
-                : (isHoveringCityExploreLink ? '#ffffff' : '#38bdf8');
+                : (isHoveringCityExploreLink ? '#ffffff' : '#08bdba');
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2);
@@ -13226,7 +13224,7 @@ return maplibregl$1;
 
         // Scale bar background pill
         ctx.fillStyle = 'rgba(7, 11, 20, 0.85)';
-        ctx.strokeStyle = '#1b2a40';
+        ctx.strokeStyle = '#004144';
         ctx.lineWidth = 0.8;
         ctx.beginPath();
         ctx.roundRect ? ctx.roundRect(hudX - 8, hudY - 22, barPx + 16, 30, 5) : ctx.rect(hudX - 8, hudY - 22, barPx + 16, 30);
@@ -13262,7 +13260,7 @@ return maplibregl$1;
         const coordX = width - coordW - 24;
 
         ctx.fillStyle = 'rgba(7, 11, 20, 0.85)';
-        ctx.strokeStyle = '#1b2a40';
+        ctx.strokeStyle = '#004144';
         ctx.lineWidth = 0.8;
         ctx.beginPath();
         ctx.roundRect ? ctx.roundRect(coordX, hudY - 22, coordW, 30, 5) : ctx.rect(coordX, hudY - 22, coordW, 30);
@@ -13278,14 +13276,14 @@ return maplibregl$1;
         const compassX = width - 38;
         const compassY = 38;
         ctx.fillStyle = 'rgba(7, 11, 20, 0.85)';
-        ctx.strokeStyle = '#1b2a40';
+        ctx.strokeStyle = '#004144';
         ctx.lineWidth = 0.8;
         ctx.beginPath();
         ctx.arc(compassX, compassY, 18, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = '#38bdf8';
+        ctx.fillStyle = '#08bdba';
         ctx.beginPath();
         ctx.moveTo(compassX, compassY - 10);
         ctx.lineTo(compassX - 3.5, compassY + 3);
@@ -13293,7 +13291,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = '#64748b';
+        ctx.fillStyle = '#f4f4f4';
         ctx.beginPath();
         ctx.moveTo(compassX, compassY - 10);
         ctx.lineTo(compassX + 3.5, compassY + 3);
@@ -15232,7 +15230,7 @@ return maplibregl$1;
           ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold">Clean, source cited</span>`
           : (isFlagged 
             ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-black text-[#be95ff] font-bold">Flagged</span>`
-            : `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#38bdf8]/60 bg-black text-[#f4f4f4] font-bold">Statutory Public Audit</span>`);
+            : `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#08bdba]/60 bg-black text-[#f4f4f4] font-bold">Statutory Public Audit</span>`);
 
         const holdingsGrid = (arch.primary_holdings || []).map(h => `
           <div class="bg-black border border-[#202b3f] rounded-xl p-2.5 flex flex-col gap-1">
@@ -15253,7 +15251,7 @@ return maplibregl$1;
         `).join('');
 
         const findingAidBtn = arch.finding_aids_url ? `
-          <a href="${escapeHtml(arch.finding_aids_url)}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-xl bg-black hover:bg-black border border-[#2c3d5a] text-[#f4f4f4] hover:text-white text-[14px] font-mono transition inline-flex items-center gap-1">
+          <a href="${escapeHtml(arch.finding_aids_url)}" target="_blank" rel="noopener noreferrer" class="xray-pill text-[14px] transition inline-flex items-center gap-1">
             <span>Finding Aid</span>
           </a>
         ` : '';
@@ -15272,11 +15270,11 @@ return maplibregl$1;
                 <div class="text-[14px] text-[#f4f4f4] font-mono font-medium">${escapeHtml(arch.archive_name)}</div>
               </div>
               <div class="flex items-center gap-1.5 shrink-0 flex-wrap">
-                <button type="button" onclick="window.zoomToBuildingFromArchive('${escapeHtml(inst.name)}')" class="px-2.5 py-1 rounded-xl bg-black hover:bg-black border border-[#334666] text-[#f4f4f4] hover:text-white text-[14px] font-mono transition flex items-center gap-1 cursor-pointer" title="Show this building on the map">
+                <button type="button" onclick="window.zoomToBuildingFromArchive('${escapeHtml(inst.name)}')" class="xray-pill text-[14px] transition flex items-center gap-1 cursor-pointer" title="Show this building on the map">
                   <span>Building view</span>
                 </button>
                 ${findingAidBtn}
-                <button type="button" onclick="window.askCuratorAboutArchive('${escapeHtml(inst.name)}')" class="px-2.5 py-1 rounded-xl bg-black hover:bg-black border border-[#08bdba]/50 text-[#08bdba] hover:text-white text-[14px] font-mono transition flex items-center gap-1 cursor-pointer" title="Ask Curator in chat">
+                <button type="button" onclick="window.askCuratorAboutArchive('${escapeHtml(inst.name)}')" class="xray-pill text-[14px] transition flex items-center gap-1 cursor-pointer" title="Ask Curator in chat">
                   <span>Inquire</span>
                 </button>
               </div>
@@ -15327,7 +15325,7 @@ return maplibregl$1;
       if (filtered.length > currentArchivesLimit) {
         cardsHtml += `
           <div class="text-center py-3">
-            <button id="archivesLoadMoreBtn" class="px-5 py-2 rounded-xl bg-black hover:bg-black text-[#f4f4f4] hover:text-white border border-[#334666] text-[14px] font-mono transition cursor-pointer shadow-sm">
+            <button id="archivesLoadMoreBtn" class="xray-pill text-[14px] cursor-pointer">
               Show More Archives (+40), ${filtered.length - currentArchivesLimit} remaining
             </button>
           </div>
@@ -19413,10 +19411,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       document.querySelectorAll('.inquiry-chip').forEach(btn => {
         const fKey = btn.getAttribute('data-filter');
         if (fKey && fKey === selectedCategoryFilter && selectedCategoryFilter !== 'all') {
-          btn.classList.add('border-[#38bdf8]', 'ring-1', 'ring-[#38bdf8]', 'bg-black', 'text-white');
+          btn.classList.add('border-[#08bdba]', 'ring-1', 'ring-[#08bdba]', 'bg-black', 'text-white');
           btn.classList.remove('border-[#2f2f2f]', 'border-[#232a3c]', 'border-[#1b3324]', 'border-[#3b2b11]', 'bg-black', 'bg-black', 'bg-black', 'bg-black', 'text-[#f4f4f4]', 'text-[#f4f4f4]', 'text-[#6ee7b7]', 'text-[#fcd34d]');
         } else {
-          btn.classList.remove('border-[#38bdf8]', 'ring-1', 'ring-[#38bdf8]', 'bg-black', 'text-white');
+          btn.classList.remove('border-[#08bdba]', 'ring-1', 'ring-[#08bdba]', 'bg-black', 'text-white');
           const origColor = btn.getAttribute('data-chip-color');
           if (origColor === 'green') {
             btn.classList.add('border-[#1b3324]', 'bg-black', 'text-[#6ee7b7]');
