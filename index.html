@@ -326,15 +326,28 @@
 
     /* The record page fills the page too, above the directory it was opened from. */
     @media (min-width: 768px) {
-      html body #detailDrawer { position: fixed !important; top: 56px !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: auto !important; height: auto !important; z-index: 46 !important; background: #000 !important; }
+      html body #detailDrawer { position: fixed !important; top: 56px !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: auto !important; height: auto !important; z-index: 51 !important; background: #000 !important; }
       html body #catalogModal > div, html body #filterDrawerPanel, html body #detailDrawer { padding-left: 40px !important; padding-right: 40px !important; }
-      html body #catalogModal [class*="overflow-y-auto"] { font-size: 24px; line-height: 1.3; }
-      html body #catalogModal [class*="overflow-y-auto"] :not([class*="text-[14px]"]):not([class*="text-[14px]"] *) { font-size: 24px !important; line-height: 1.3 !important; }
+      html body #catalogModal .inst-card, html body #catalogModal .inst-card * { font-size: 24px !important; line-height: 1.3 !important; }
     }
     @media (max-width: 767px) {
-      html body #detailDrawer { position: fixed !important; inset: 0 !important; z-index: 46 !important; background: #000 !important; }
+      html body #detailDrawer { position: fixed !important; inset: 0 !important; z-index: 51 !important; background: #000 !important; }
     }
     
+
+    /* Buttons: capitals, Carbon teal 40 text and 1px border; a pressed toggle is filled. */
+    html body button, html body [role="button"], html body input[type="submit"] { text-transform: uppercase; }
+    html body button:not([aria-pressed="true"]) { color: #08bdba; }
+    html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
+    html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
+    html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
+    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabDirectory, html body #navTabFilters,
+    html body #mobileStickySendBtn, html body #workSendBtn { color: #08bdba !important; border-color: #08bdba !important; }
+    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases, #navTabAtlas, #navTabDirectory, #navTabFilters),
+    html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #closeAcademicModalBtn, #closeAcademicModalFooterBtn, #arTabStudies, #arTabCommunity, #arTabCases, #desktopDossierBody > div > button, #inputModeCancelBtn, #navTabAtlas, #navTabDirectory, #navTabFilters, #mobileStickySendBtn):hover { background: #08bdba !important; color: #000000 !important; }
+    
+    html body #mobileTopBrandBtn, html body #topBrandLogoBtn, html body #mobileTopBrandBtn *, html body #topBrandLogoBtn * { text-transform: none !important; color: inherit; }
+    html body #topBrandLogoBtn > span:first-child, html body #mobileTopBrandBtn .text-white { color: #ffffff !important; }
     /* Compatibility family aliases referencing exclusively the two PP Eiko fonts */
     *, *::before, *::after {
       font-family: 'PP Mori', sans-serif !important;
@@ -15280,6 +15293,8 @@ return maplibregl$1;
       // Lift the filters panel out of the map column so it covers the whole page, chat column included.
       const fd = document.getElementById('filterDrawerPanel');
       if (fd && fd.parentElement !== document.body) document.body.appendChild(fd);
+      const dd = document.getElementById('detailDrawer');
+      if (dd && dd.parentElement !== document.body) document.body.appendChild(dd);
       ['catalogModal', 'filterDrawerPanel'].forEach(id => {
         const el = document.getElementById(id);
         if (el) new MutationObserver(sync).observe(el, { attributes: true, attributeFilter: ['class'] });
@@ -18876,13 +18891,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           <p class="text-[18px] text-[#f4f4f4] text-center mb-3 select-none max-w-lg">
             Ask about a cultural space: who funds it, what has been reported about it, and where that comes from.
           </p>
-          <div class="flex flex-col items-center gap-1.5 pt-1 text-[14px] text-[#f4f4f4] font-mono select-none">
-            <div>Form 990 Checked, 0% Corporate Capture, 12:00</div>
-            <div class="flex items-center gap-2">
-              <button type="button" class="curator-speak-btn text-[#f4f4f4] hover:text-white p-0.5 cursor-pointer inline-flex items-center gap-1 text-[14px]" title="Read Aloud"><span class="speak-icon"></span><span class="speak-label">Listen</span></button>
-              <button type="button" class="curator-copy-btn text-[#f4f4f4] hover:text-white p-0.5 cursor-pointer" title="Copy">Copy</button>
-            </div>
-          </div>
+          
         `;
         contentWrap.insertBefore(hero, curatorMessages);
       }
@@ -19022,13 +19031,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           ${processedContent}
           ${webIntelHtml}
           ${followUpHtml}
-          ${showSpeak ? `
-          <div class="flex items-center gap-2 pt-1 select-none">
-            <button class="curator-speak-btn py-0.5 bg-transparent text-[14px] text-[#f4f4f4] hover:text-white transition flex items-center gap-1.5 cursor-pointer" title="Listen to audio briefing">
-              <span class="speak-icon text-[14px]"></span><span class="speak-label">Listen</span>
-            </button>
-          </div>
-          ` : ''}
+
         </div>
       `;
       curatorMessages.appendChild(div);
@@ -22610,7 +22613,6 @@ bar.innerHTML = html;
                     <span>Consensus</span>
                   </a>
                 ` : ''}
-                <span class="text-[#f4f4f4] font-mono text-[14px]">Peer-Reviewed</span>
               </div>
             </div>
           `;
@@ -22627,72 +22629,16 @@ bar.innerHTML = html;
           : isInstFlagged 
           ? 'text-[#be95ff]' 
           : 'text-[#f4f4f4]';
-        const tierName = isInstCommunity
-          ? `Community Input, #${inst.communityId || 'RES'}`
-          : isInstClean 
-          ? 'Clean, source cited Space' 
-          : isInstFlagged 
-          ? 'Flagged' 
-          : 'Unverified Space';
+        const tierLabel = isInstCommunity ? 'Community' : tierName(inst);
 
         const webUrl = getValidWebUrl(inst);
         const displayDomain = getDisplayDomain(webUrl);
 
         return `
-          <div class="inst-card py-3 border-b border-[#262626] cursor-pointer hover:text-white transition space-y-1 ${isSel ? 'text-white' : ''}" data-name="${inst.name.replace(/"/g, '&quot;')}">
-            <div class="flex flex-col gap-0.5">
-              <h3 class="font-normal text-white text-[14px] leading-[120%]">${inst.name}</h3>
-              <span class="text-[14px] font-mono ${tierCol}">${tierName}</span>
-            </div>
-            
-            <div class="flex flex-col gap-0.5 text-[14px] text-[#f4f4f4] mt-1 font-mono">
-              <span>${inst.location}</span>
-              ${isInstCommunity ? '<span class="text-[#f4f4f4] text-[14px]">Community Submission</span>' : (inst.year_founded ? `<span class="text-[#f4f4f4] text-[14px]">Est. ${escapeHtml(String(inst.year_founded))}</span>` : '')}
-            </div>
-
-            <!-- Researcher Tags: Governance & Admission -->
-            <div class="flex flex-col gap-0.5 text-[14px] font-mono text-[#f4f4f4] mt-1">
-              ${inst.governance_type ? `<span>${escapeHtml(inst.governance_type)}</span>` : ''}
-              ${inst.admission_policy ? `<span>${escapeHtml(inst.admission_policy)}</span>` : ''}
-            </div>
-
-            <!-- Quick Visitor Schedule & Pricing -->
-            <div class="mt-1 flex flex-col gap-0.5 text-[14px] font-mono text-[#f4f4f4]">
-              ${inst.opening_hours ? `<span>${escapeHtml(inst.opening_hours.split(',')[0])}</span>` : ''}
-              ${inst.admission_fee ? `<span class="text-emerald-400">${escapeHtml(inst.admission_fee.split('/')[0].trim())}</span>` : ''}
-            </div>
-
-            ${(inst.curator_recommendation || inst.funding) ? `<p class="text-[14px] text-[#f4f4f4] mt-1.5 leading-[120%] line-clamp-2">${inst.curator_recommendation || inst.funding}</p>` : ''}
-            
-            ${inst.visual_critiques && inst.visual_critiques.length > 0 ? `
-              <div class="mt-2 py-1.5 border-t border-[#262626] flex flex-col gap-1">
-                <img src="${escapeHtml(inst.visual_critiques[0].image || 'assets/visual_critique/haacke_moma_poll_thumb.jpg')}" alt="Visual Critique" class="w-full max-w-xs h-28 object-cover bg-black" />
-                <div class="text-[14px] font-mono leading-tight space-y-0.5">
-                  <div class="text-amber-400 font-bold tracking-wider text-[14px]">${escapeHtml(inst.visual_critiques[0].strategy)} ${inst.visual_critiques[0].year ? '(' + escapeHtml(inst.visual_critiques[0].year) + ')' : ''}</div>
-                  <div class="text-white font-bold">${escapeHtml(inst.visual_critiques[0].artist_designer || inst.visual_critiques[0].artist)}</div>
-                  <div class="text-[#f4f4f4] text-[14px]">"${escapeHtml(inst.visual_critiques[0].artwork_title || inst.visual_critiques[0].artwork || '')}"</div>
-                </div>
-              </div>
-            ` : ''}
-
-            ${inst.watch ? `
-              <div class="mt-1.5 pt-1 border-t border-[#262626] text-[14px] text-amber-300/80 font-mono">
-                <span>${inst.watch}</span>
-              </div>
-            ` : ''}
-            
-            <div class="mt-2 pt-1 border-t border-[#262626] flex flex-col gap-1">
-              <button class="card-zoom-building text-left text-emerald-400 hover:underline text-[14px] font-mono transition cursor-pointer" data-name="${inst.name.replace(/"/g, '&quot;')}" title="Show this place on the map">
-                <span>Show on map</span>
-              </button>
-              ${webUrl ? `
-                <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" 
-                   class="website-pill text-left text-[14px] font-mono text-[#f4f4f4] hover:underline transition"
-                   onclick="event.stopPropagation()">
-                  <span>Official Website (${escapeHtml(displayDomain)})</span>
-                </a>
-              ` : ''}
-            </div>
+          <div class="inst-card py-3 border-b border-[#262626] cursor-pointer hover:text-white transition ${isSel ? 'text-white' : ''}" data-name="${inst.name.replace(/"/g, '&quot;')}">
+            <h3 class="font-normal text-white text-[14px] leading-[120%] no-indent">${inst.name}</h3>
+            <span class="text-[14px] font-mono ${tierCol}">${tierLabel}</span>
+            <span class="text-[14px] text-[#f4f4f4] block">${inst.location}</span>
           </div>
         `;
       }).join('');
@@ -22822,16 +22768,8 @@ bar.innerHTML = html;
       // Notify the Curator to give an educational briefing on this country
       const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, countryName));
       if (countryMatches.length > 0) {
-        const topInsts = countryMatches.slice(0, 3).map(i => formatInstLink(i)).join(', ');
-        const citiesInCountry = ALL_CITIES_REGISTRY.filter(ci => matchC(ci.country, countryName));
-        appendCuratorMessage(`
-          <p class="text-[#f4f4f4]">
-            Across <strong>${escapeHtml(countryName)}</strong>, Culture Atlas has <strong>${countryMatches.length}</strong> clean spaces mapped in <strong>${citiesInCountry.length} cities</strong>.
-          </p>
-          <p class="text-[#f4f4f4]">
-            Top places to explore include ${topInsts}. Click any city or space on the map to zoom in to street view!
-          </p>
-        `);
+        const names = countryMatches.slice(0, 12).map(i => formatInstLink(i)).join(', ');
+        appendCuratorMessage(`<p class="text-[#f4f4f4]">${countryMatches.length} ${countryMatches.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(countryName)}${countryMatches.length > 12 ? ', the first 12' : ''}: ${names}.</p>`);
       }
     }
 
