@@ -264,7 +264,7 @@
     html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
     html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabDirectory, html body #navTabFilters {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 6px 14px !important; border: 1px solid #f4f4f4 !important; border-radius: 0 !important;
+      padding: 3px 10px !important; border: 1px solid #f4f4f4 !important; border-radius: 6px !important;
       background: #000000 !important; color: #f4f4f4 !important; font-size: 14px !important;
       text-decoration: none !important; cursor: pointer; box-shadow: none !important;
     }
@@ -273,7 +273,7 @@
     html body #closeAcademicModalBtn:hover, html body #closeAcademicModalFooterBtn:hover, html body #arTabStudies:hover, html body #arTabCommunity:hover, html body #arTabCases:hover,
     html body #desktopDossierBody > div > button:hover, html body #inputModeCancelBtn:hover, html body #navTabAtlas:hover, html body #navTabDirectory:hover, html body #navTabFilters:hover,
     html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases, #navTabAtlas, #navTabDirectory, #navTabFilters) {
-      background: #f4f4f4 !important; color: #000000 !important;
+      background: #000000 !important; color: #ffffff !important; border-color: #ffffff !important;
     }
     html body #desktopGlobeTopControls > div { gap: 8px; }
     body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls { display: none !important; }
@@ -304,7 +304,7 @@
     html body .border-r { border-right-width: 1px !important; }
     html body .border-2, html body .border-4 { border-width: 1px !important; }
     html body hr { border-width: 0; border-top: 1px solid #393939 !important; height: 0; }
-    html body button, html body input, html body select, html body textarea { border-radius: 4px !important; box-shadow: none !important; outline-width: 1px; outline-offset: 2px; }
+    html body button, html body input, html body select, html body textarea { border-radius: 6px !important; box-shadow: none !important; outline-width: 1px; outline-offset: 2px; }
     html body :focus-visible { outline: 1px solid #f4f4f4 !important; outline-offset: 2px; }
     html body .rounded-xl, html body .rounded-2xl, html body .rounded-3xl, html body .rounded-lg, html body .rounded-md, html body .modal-content { border-radius: 4px !important; }
     html body table, html body th, html body td { border-width: 0; }
@@ -344,7 +344,7 @@
     html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabDirectory, html body #navTabFilters,
     html body #mobileStickySendBtn, html body #workSendBtn { color: #08bdba !important; border-color: #08bdba !important; }
     html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases, #navTabAtlas, #navTabDirectory, #navTabFilters),
-    html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #closeAcademicModalBtn, #closeAcademicModalFooterBtn, #arTabStudies, #arTabCommunity, #arTabCases, #desktopDossierBody > div > button, #inputModeCancelBtn, #navTabAtlas, #navTabDirectory, #navTabFilters, #mobileStickySendBtn):hover { background: #08bdba !important; color: #000000 !important; }
+    html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #closeAcademicModalBtn, #closeAcademicModalFooterBtn, #arTabStudies, #arTabCommunity, #arTabCases, #desktopDossierBody > div > button, #inputModeCancelBtn, #navTabAtlas, #navTabDirectory, #navTabFilters, #mobileStickySendBtn):hover { background: #000000 !important; color: #ffffff !important; border-color: #ffffff !important; }
     
     html body #mobileTopBrandBtn, html body #topBrandLogoBtn, html body #mobileTopBrandBtn *, html body #topBrandLogoBtn * { text-transform: none !important; color: inherit; }
     html body #topBrandLogoBtn > span:first-child, html body #mobileTopBrandBtn .text-white { color: #ffffff !important; }
@@ -3199,7 +3199,6 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <!--  CONFIDENTIAL FIELD INTELLIGENCE & WHISTLEBLOWER INTAKE CHAT MODAL -->
   <!-- ========================================================= -->
-  <div id="confidentialIntakeChatModal" class="hidden"></div><div id="closeConfidentialChatBtn" class="hidden"></div><div id="confidentialChatBody" class="hidden"></div><div id="confidentialChatForm" class="hidden"></div><div id="confidentialChatInput" class="hidden"></div><div id="confidentialSendBtn" class="hidden"></div>
 
   <!-- Research & Feedback Modal (Community Verification Pipeline) -->
   <div id="researchFeedbackModal" class="hidden"></div><div id="closeFeedbackModalBtn" class="hidden"></div><div id="researchFeedbackForm" class="hidden"></div><div id="rfCategory" class="hidden"></div><div id="rfSpaceName" class="hidden"></div><div id="rfCity" class="hidden"></div><div id="rfDetails" class="hidden"></div><div id="rfSourceUrl" class="hidden"></div><div id="rfContributor" class="hidden"></div><div id="cancelFeedbackBtn" class="hidden"></div><div id="submitFeedbackBtn" class="hidden"></div><div id="academicResearchModal" class="hidden fixed inset-0 z-50 bg-black/80  flex items-center justify-center p-3 sm:p-5 select-text">
@@ -13653,20 +13652,6 @@ return maplibregl$1;
     // =========================================================================
     //  CRYPTOGRAPHIC WHISTLEBLOWER RECEIPT GENERATOR ENGINE
     // =========================================================================
-    async function generateWhistleblowerReceipt(contentStr) {
-      try {
-        const encoder = new TextEncoder();
-        const data = encoder.encode(contentStr || 'ANONYMOUS-INTEL-' + Date.now());
-        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        const receiptCode = 'LEAK-' + hashHex.substring(0, 8).toUpperCase() + '-' + hashHex.substring(8, 16).toUpperCase();
-        return { hash: hashHex, receipt: receiptCode, timestamp: new Date().toISOString() };
-      } catch (e) {
-        return { hash: 'offline-local-hash', receipt: 'LEAK-LOCAL-VERIFIED', timestamp: new Date().toISOString() };
-      }
-    }
-    window.generateWhistleblowerReceipt = generateWhistleblowerReceipt;
 
     // Service Worker & Cache-Bust Protocol
     if ('caches' in window) {
@@ -19788,7 +19773,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       e.stopPropagation();
       triggerInChatContributeFlow();
     });
-    document.getElementById('closeConfidentialChatBtn')?.addEventListener('click', closeConfidentialIntakeModal);
 
     // Curatorial Itinerary HUD & Modal event listeners
     document.getElementById('hudRouteBtn')?.addEventListener('click', (e) => {
@@ -19946,175 +19930,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
     }
 
-    // Prompt pills in confidential modal
-    document.querySelectorAll('.confidential-prompt-chip').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const prompt = btn.getAttribute('data-prompt') || '';
-        const input = document.getElementById('confidentialChatInput');
-        if (input) {
-          input.value = prompt;
-          input.focus();
-        }
-      });
-    });
-
-    document.getElementById('confidentialChatForm')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = document.getElementById('confidentialChatInput');
-      const val = (input?.value || '').trim();
-      if (!val) return;
-      input.value = '';
-      handleConfidentialSubmission(val);
-    });
-
-    // Close on outside click
-    const confModal = document.getElementById('confidentialIntakeChatModal');
-    confModal?.addEventListener('click', (e) => {
-      if (e.target === confModal) closeConfidentialIntakeModal();
-    });
 
 
 
-    // =========================================================================
-    //  CONFIDENTIAL INTAKE CHAT WINDOW ENGINE
-    // =========================================================================
-    function openConfidentialIntakeModal() {
-      const modal = document.getElementById('confidentialIntakeChatModal');
-      if (!modal) return;
-      modal.classList.remove('hidden');
-      initConfidentialChatSession();
-      setTimeout(() => {
-        document.getElementById('confidentialChatInput')?.focus();
-      }, 50);
-    }
-    window.openConfidentialIntakeModal = openConfidentialIntakeModal;
 
-    function closeConfidentialIntakeModal() {
-      const modal = document.getElementById('confidentialIntakeChatModal');
-      if (modal) modal.classList.add('hidden');
-    }
-    window.closeConfidentialIntakeModal = closeConfidentialIntakeModal;
-
-    function initConfidentialChatSession() {
-      const body = document.getElementById('confidentialChatBody');
-      if (!body || body.children.length > 0) return;
-
-      body.innerHTML = `
-        <div class="space-y-3 p-4 rounded-2xl bg-black border border-[#2b2f3d]">
-          <div class="flex items-center gap-2 text-emerald-400 font-mono text-[14px] tracking-wider">
-            <span>Confidential Intelligence Desk</span>
-            
-            <span>Investigative Intake</span>
-          </div>
-          <p class="text-white text-[14px] font-medium">Welcome to the Confidential Field Intelligence Intake.</p>
-          <p class="text-[#f4f4f4] text-[14px] leading-relaxed">
-            If you possess <strong>private or internal information</strong> that is <strong>not publicly available</strong>—such as unpublicized trustee arrangements, off-the-books donor covenants, internal museum board disputes, curatorial censorship behind closed doors, or undisclosed defense/fossil fuel contracts—you can submit it here in strict confidence.
-          </p>
-          <div class="p-3 rounded-xl bg-black border border-blue-900/50 text-[14px] text-[#f4f4f4] space-y-1.5 leading-relaxed">
-            <p><strong>Source Protection Protocol:</strong> Your submission is stored directly in your browser's private local vault. When our curators cross-examine details against IRS Form 990, UK Charity Commission filings, and DRAC audits, non-public sources remain strictly confidential.</p>
-            <p><strong>What to share:</strong> Mention names, dates, private meeting decisions, internal budget allocations, or institutional agreements that public PR has kept hidden.</p>
-          </div>
-          <p class="text-[#f4f4f4] text-[14px]">
-            What internal or private information would you like to report?
-          </p>
-        </div>
-      `;
-    }
-
-    function appendConfidentialMessage(sender, text) {
-      const body = document.getElementById('confidentialChatBody');
-      if (!body) return;
-
-      const isUser = sender === 'user';
-      const msgDiv = document.createElement('div');
-      msgDiv.className = isUser 
-        ? 'flex justify-end' 
-        : 'flex justify-start';
-
-      const bubble = document.createElement('div');
-      bubble.className = isUser
-        ? 'max-w-[85%] bg-black border border-[#f4f4f4] text-white p-3.5 rounded-2xl rounded-tr-none text-[14px] leading-relaxed shadow-md'
-        : 'max-w-[90%] bg-black border border-[#2e2e38] text-[#f4f4f4] p-4 rounded-2xl rounded-tl-none text-[14px] leading-relaxed shadow-md space-y-2';
-
-      if (isUser) {
-        bubble.textContent = text;
-      } else {
-        bubble.innerHTML = text;
-      }
-
-      msgDiv.appendChild(bubble);
-      body.appendChild(msgDiv);
-      body.scrollTop = body.scrollHeight;
-    }
-
-    async function handleConfidentialSubmission(text) {
-      const q = (text || '').trim();
-      if (!q) return;
-
-      appendConfidentialMessage('user', q);
-
-      // Generate SHA-256 cryptographic verification receipt
-      const cryptoReceipt = (typeof generateWhistleblowerReceipt === 'function')
-        ? await generateWhistleblowerReceipt(q)
-        : { hash: 'offline-local-hash', receipt: 'LEAK-VERIFIED-LOCAL', timestamp: new Date().toISOString() };
-      const subId = Math.floor(1000 + Math.random() * 9000);
-      const pseudonym = 'Archival-Whistleblower-' + (cryptoReceipt.receipt.split('-')[1] || 'Insider');
-
-      let cat = 'internal_whistleblower';
-      const qLower = q.toLowerCase();
-      if (qLower.includes('board') || qLower.includes('trustee') || qLower.includes('covenant')) cat = 'trustee_covenant';
-      else if (qLower.includes('censor') || qLower.includes('dispute') || qLower.includes('resign')) cat = 'board_dispute';
-      else if (qLower.includes('weapon') || qLower.includes('oil') || qLower.includes('underwrit')) cat = 'corporate_conflict';
-      else if (qLower.includes('memo') || qLower.includes('labor') || qLower.includes('wage') || qLower.includes('union')) cat = 'labor_memo';
-      else if (qLower.includes('space') || qLower.includes('artist-run') || qLower.includes('independent')) cat = 'clean_space';
-
-      const entry = {
-        id: `CONF-${subId}`,
-        timestamp: cryptoReceipt.timestamp,
-        receiptCode: cryptoReceipt.receipt,
-        sha256Hash: cryptoReceipt.hash,
-        pseudonym: pseudonym,
-        category: cat,
-        spaceName: (q.split(' at ')[1] || q.split(' in ')[1] || q).split(',')[0].split('.')[0].trim() || 'Internal Institutional Report',
-        city: 'Confidential Field Intake',
-        country: 'Field Intelligence',
-        lat: 0,
-        lon: 0,
-        details: q,
-        sourceUrl: 'Cryptographically Verified Insider Lead',
-        contributor: pseudonym,
-        status: 'confidential_intake'
-      };
-
-      if (typeof saveCommunityResearchSubmission === 'function') {
-        saveCommunityResearchSubmission(entry);
-      }
-
-      // Respond conversationally as an investigative intelligence researcher
-      setTimeout(() => {
-        let respHtml = `
-          <div class="p-3 rounded-2xl bg-black border border-emerald-500/60 space-y-2 text-[#f4f4f4] font-sans">
-            <div class="flex items-center justify-between border-b border-emerald-500/30 pb-1.5">
-              <div class="flex items-center gap-2">
-
-                <span class="text-white font-medium text-[14px]">Cryptographic Receipt</span>
-              </div>
-              <span class="text-[14px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/60 shrink-0">SHA-256 VERIFIED</span>
-            </div>
-            <div class="text-[14px] font-mono space-y-0.5">
-              <div class="text-emerald-300">Receipt Code: <span class="text-white">${escapeHtml(entry.receiptCode)}</span></div>
-              <div class="text-[#f4f4f4] truncate">SHA-256 Digest: <span class="text-emerald-400">${escapeHtml(entry.sha256Hash)}</span></div>
-            </div>
-            <div class="pt-1 border-t border-emerald-500/20 text-[14px] text-[#f4f4f4] leading-relaxed">
-              <strong class="text-emerald-400 block mb-0.5 font-mono text-[14px]">OpSec &amp; Whistleblower Precautions:</strong>
-              Your lead is cryptographically hashed. Retain your receipt code.
-            </div>
-          </div>
-        `;
-        appendConfidentialMessage('curator', respHtml);
-      }, 50);
-    }
-    window.handleConfidentialSubmission = handleConfidentialSubmission;
 
     let isChatInputMode = false;
     let preInputModeGlobeWidth = '';
@@ -22222,8 +22041,6 @@ bar.innerHTML = html;
           } else if (type === 'contribute_intel') {
             if (typeof triggerInChatContributeFlow === 'function') {
               triggerInChatContributeFlow();
-            } else if (typeof openConfidentialIntakeModal === 'function') {
-              openConfidentialIntakeModal();
             }
           } else if (type === 'academic') {
             selectedTierFilter = new Set(['ACADEMIC']);
