@@ -931,20 +931,21 @@
     }
 
     /* Floating Institution Name Label directly on top of dots */
+    /* Floating Institution Name Label directly on top of dots */
     .inst-pin-label {
       position: absolute;
-      bottom: calc(100% + 4px);
+      bottom: calc(100% + 5px);
       left: 50%;
       transform: translateX(-50%) translateY(0);
       display: flex;
       align-items: center;
       gap: 5px;
       padding: 3px 8px;
-      background: rgba(18, 20, 26, 0.94);
+      background: rgba(18, 20, 26, 0.96);
       color: #f8fafc;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.5);
       font-family: 'PP Museum', 'PP Telegraf', 'PP Telegraph', sans-serif;
       font-size: 14pt;
       font-weight: 400;
@@ -955,8 +956,78 @@
       cursor: pointer;
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
       z-index: 20;
+    }
+    /* Dynamic directional placement classes for zero label collisions */
+    .inst-pin-label.label-pos-top {
+      bottom: calc(100% + 5px);
+      top: auto;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+    .inst-pin-label.label-pos-bottom {
+      top: calc(100% + 5px);
+      bottom: auto;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+    .inst-pin-label.label-pos-bottom::after {
+      top: auto;
+      bottom: 100%;
+      border-width: 0 4px 4px 4px;
+      border-color: transparent transparent rgba(18, 20, 26, 0.96) transparent;
+    }
+    .inst-pin-label.label-pos-right {
+      left: calc(100% + 6px);
+      right: auto;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+    }
+    .inst-pin-label.label-pos-right::after {
+      top: 50%;
+      left: auto;
+      right: 100%;
+      transform: translateY(-50%);
+      border-width: 4px 4px 4px 0;
+      border-color: transparent rgba(18, 20, 26, 0.96) transparent transparent;
+    }
+    .inst-pin-label.label-pos-left {
+      right: calc(100% + 6px);
+      left: auto;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+    }
+    .inst-pin-label.label-pos-left::after {
+      top: 50%;
+      left: 100%;
+      right: auto;
+      transform: translateY(-50%);
+      border-width: 4px 0 4px 4px;
+      border-color: transparent transparent transparent rgba(18, 20, 26, 0.96);
+    }
+    /* Labels visible on top of dots on all points of view by default */
+    .inst-pin-label {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    /* Collision decluttering: hide label when crowded, reveal on hover/focus */
+    .inst-pin-label.collision-occluded {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    .custom-inst-pin:hover .inst-pin-label.collision-occluded,
+    .custom-inst-pin:focus-within .inst-pin-label.collision-occluded {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      z-index: 9999 !important;
     }
     .inst-pin-label::after {
       content: '';
@@ -973,12 +1044,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-    /* Labels always visible on top of dots on all points of view by default */
-    .inst-pin-label {
-      opacity: 1 !important;
-      visibility: visible !important;
-      transform: translateX(-50%) translateY(0);
     }
     /* When a pin is clicked and its detail popup card is open, suppress that pin's label */
     .custom-inst-pin.popup-active .inst-pin-label {
@@ -1075,18 +1140,18 @@
     .mast-headroom-pill,
     .debug-pill,
     [data-debug*="headroom"] {
-      display: none !important;
-      font-size: 14pt;
-      font-weight: 400;
-      padding: 2px 7px;
-      border-radius: 6px;
-      background: rgba(56, 189, 248, 0.15);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: #38bdf8;
-      cursor: pointer;
-      font-family: monospace;
-      transition: all 0.15s ease;
-      white-space: nowrap;
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+      opacity: 0 !important;
+      pointer-events: auto !important;
+      display: inline-block !important;
     }
     .mast-headroom-pill:hover {
       background: rgba(56, 189, 248, 0.28);
@@ -1178,48 +1243,54 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 3px;
-      padding: 7px 11px;
-      min-width: 180px;
-      max-width: 250px;
-      background: rgba(18, 20, 26, 0.94);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      gap: 4px;
+      padding: 8px 12px;
+      min-width: 220px;
+      max-width: 290px;
+      background: rgba(18, 20, 26, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.24);
       border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       font-family: 'PP Museum', 'PP Telegraf', sans-serif;
       color: #ffffff;
-      z-index: 22;
+      z-index: 28;
       pointer-events: auto;
+      box-sizing: border-box;
+      overflow: hidden;
+      word-break: break-word;
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
     .building-room-close-btn {
       position: absolute;
-      top: 5px;
-      right: 5px;
-      width: 16px;
-      height: 16px;
+      top: 6px;
+      right: 6px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #cbd5e1;
       font-size: 14pt;
       line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      z-index: 5;
     }
     .building-room-close-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.3);
       color: #ffffff;
     }
     .building-3d-room-badge .badge-title {
       font-size: 14pt;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      color: #10b981;
-      padding-right: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #34d399;
+      padding-right: 20px;
+      line-height: 1.3;
     }
     /* 🔒 SECURE WHISTLEBLOWER & INTEL INTAKE MODE STYLING */
     #chatModeSegmentedSwitch button {
@@ -2914,8 +2985,8 @@ return maplibregl$1;
               Oldest active artist-run non-profit initiative in Metro Manila (est. 2000), governed by an autonomous artist collective supporting interdisciplinary performance and counter-cultural archiving with zero corporate underwriting.
             </p>
             <div class="pt-0.5">
-              <a id="desktopDossierWebLink" href="https://www.facebook.com/greenpapayaartprojects/" target="_blank" rel="noopener noreferrer" class="text-[#78a9ff] hover:text-[#a6c8ff] hover:underline flex items-center gap-1 text-[14pt]">
-                <span>↗</span>
+              <a id="desktopDossierWebLink" href="https://www.facebook.com/greenpapayaartprojects/" target="_blank" rel="noopener noreferrer" class="text-[#7dd3fc] hover:text-[#ffffff] underline underline-offset-2 flex items-center gap-1.5 text-[14pt] font-medium transition">
+                <span class="text-[#38bdf8]">↗</span>
                 <span id="desktopDossierDomain">www.facebook.com</span>
               </a>
             </div>
@@ -10774,12 +10845,99 @@ return maplibregl$1;
           }
         }
       }
+      function resolveCityMarkerCollisions() {
+        if (typeof document === 'undefined') return;
+        const labels = Array.from(document.querySelectorAll('.custom-inst-pin .inst-pin-label'));
+        if (!labels.length) return;
+
+        const currentActiveInst = selectedInstitution || currentHighlightedBuildingInst;
+        const currentActiveId = currentActiveInst ? (currentActiveInst.id || currentActiveInst.name) : null;
+
+        // Reset any previously assigned directional / occlusion classes
+        labels.forEach(lbl => {
+          lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left', 'collision-occluded');
+        });
+
+        // Placements to attempt in order of aesthetic visual balance: top (default), bottom, right, left
+        const placements = ['label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left'];
+        const placedRects = [];
+        const BUFFER = 6;
+
+        // Sort items so that the active/selected institution and Tier A institutions get priority
+        labels.sort((a, b) => {
+          const aId = a.getAttribute('data-entity-id') || a.getAttribute('data-name');
+          const bId = b.getAttribute('data-entity-id') || b.getAttribute('data-name');
+          if (currentActiveId && aId === currentActiveId) return -1;
+          if (currentActiveId && bId === currentActiveId) return 1;
+          return 0;
+        });
+
+        labels.forEach(lbl => {
+          const parentPin = lbl.closest('.custom-inst-pin');
+          if (!parentPin || parentPin.style.opacity === '0' || parentPin.offsetParent === null) return;
+
+          let bestPlacement = null;
+          let bestRect = null;
+
+          for (const posClass of placements) {
+            lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left');
+            lbl.classList.add(posClass);
+
+            const r = lbl.getBoundingClientRect();
+            if (r.width === 0 && r.height === 0) continue;
+
+            const testRect = {
+              left: r.left - BUFFER,
+              right: r.right + BUFFER,
+              top: r.top - BUFFER,
+              bottom: r.bottom + BUFFER
+            };
+
+            let collides = false;
+            for (const prev of placedRects) {
+              const overlapX = !(testRect.right <= prev.left || testRect.left >= prev.right);
+              const overlapY = !(testRect.bottom <= prev.top || testRect.top >= prev.bottom);
+              if (overlapX && overlapY) {
+                collides = true;
+                break;
+              }
+            }
+
+            if (!collides) {
+              bestPlacement = posClass;
+              bestRect = testRect;
+              break;
+            }
+          }
+
+          if (bestPlacement) {
+            lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left');
+            lbl.classList.add(bestPlacement);
+            placedRects.push(bestRect);
+          } else {
+            // If all 4 directions collide, occlude label cleanly (hover/focus will reveal with z-index: 9999)
+            // But if it is the currently selected institution, always keep it visible on top
+            const lblId = lbl.getAttribute('data-entity-id') || lbl.getAttribute('data-name');
+            if (currentActiveId && lblId === currentActiveId) {
+              lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left');
+              lbl.classList.add('label-pos-top');
+              placedRects.push(lbl.getBoundingClientRect());
+            } else {
+              lbl.classList.add('collision-occluded');
+            }
+          }
+        });
+      }
+      window.resolveCityMarkerCollisions = resolveCityMarkerCollisions;
+
       cityVectorMap.on('zoom', updateCityZoomClasses);
       cityVectorMap.on('zoom', () => {
         if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
+        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
       });
       cityVectorMap.on('move', () => {
         if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
+        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
       });
       cityVectorMap.on('rotate', () => {
         if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
@@ -10789,6 +10947,9 @@ return maplibregl$1;
       });
       cityVectorMap.on('load', () => {
         updateCityZoomClasses();
+        if (typeof resolveCityMarkerCollisions === 'function') {
+          setTimeout(resolveCityMarkerCollisions, 100);
+        }
         if (typeof ensureCuratorialRouteLayer === 'function') {
           ensureCuratorialRouteLayer();
         }
@@ -13630,6 +13791,11 @@ return maplibregl$1;
 
         cityVectorMarkers.push(marker);
       });
+
+      if (typeof resolveCityMarkerCollisions === 'function') {
+        setTimeout(resolveCityMarkerCollisions, 60);
+        setTimeout(resolveCityMarkerCollisions, 350);
+      }
     }
 
     function exitCityStreetView() {
@@ -18793,19 +18959,19 @@ return maplibregl$1;
 
           <div class="pt-2 border-t border-[#262626]">
             <div class="flex flex-col gap-1 mb-2">
-              <span class="text-[14px] font-normal text-slate-400 tracking-wider font-mono">Audited Sources &amp; Public Records</span>
-              <button type="button" onclick="openResearchFeedbackModal('${escapeHtml(inst.name)}', '${escapeHtml(inst.city)}')" class="text-left text-[14px] font-mono text-[#78a9ff] hover:underline cursor-pointer">
+              <span class="text-[14px] font-normal text-slate-300 tracking-wider font-mono">Audited Sources &amp; Public Records</span>
+              <button type="button" onclick="openResearchFeedbackModal('${escapeHtml(inst.name)}', '${escapeHtml(inst.city)}')" class="text-left text-[14px] font-mono text-[#7dd3fc] hover:text-white underline cursor-pointer">
                 <span>Suggest Update</span>
               </button>
             </div>
             ${inst.audit_dossier_url ? `
               <div class="py-2 border-b border-[#262626] mb-2 space-y-1">
-                <div class="text-[14px] font-mono text-sky-400 font-bold">Statutory Regulatory Filing Dossier</div>
+                <div class="text-[14px] font-mono text-[#7dd3fc] font-bold">Statutory Regulatory Filing Dossier</div>
                 <div class="text-[14px] text-slate-300">
                   ${inst.financial_data && inst.financial_data.regulatory_regime ? `${escapeHtml(inst.financial_data.regulatory_regime)} · ${escapeHtml(inst.governance_type || 'Audited Non-Profit Entity')}` : `${escapeHtml(inst.governance_type || 'Audited Non-Profit Entity')} · Official Statutory Filings`}
                 </div>
                 <div>
-                  <a href="${escapeHtml(inst.audit_dossier_url)}" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:text-white hover:underline text-[14px] font-mono inline-block">
+                  <a href="${escapeHtml(inst.audit_dossier_url)}" target="_blank" rel="noopener noreferrer" class="text-[#7dd3fc] hover:text-white underline text-[14px] font-mono inline-block">
                     Inspect Statutory Record &rarr;
                   </a>
                 </div>
@@ -18817,8 +18983,8 @@ return maplibregl$1;
                 if (isUrl) {
                   const srcDomain = getDisplayDomain(u);
                   return `
-                    <a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:text-white hover:underline text-[14px] flex items-center gap-1.5 py-0.5 truncate transition">
-                       <span class="truncate">${escapeHtml(u)}</span> <span class="text-slate-500 text-[14px] shrink-0 font-mono">(${srcDomain})</span>
+                    <a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="text-[#7dd3fc] hover:text-white underline underline-offset-2 text-[14px] flex items-center gap-1.5 py-0.5 truncate transition font-mono">
+                       <span class="truncate">${escapeHtml(u)}</span> <span class="text-slate-300 text-[14px] shrink-0 font-mono">(${srcDomain})</span>
                     </a>
                   `;
                 } else {
@@ -18826,10 +18992,10 @@ return maplibregl$1;
                   return `
                     <div class="text-slate-300 text-[14px] flex items-center justify-between gap-2 font-sans py-0.5 border-b border-[#1c1c1c] last:border-b-0">
                       <span class="flex items-center gap-1.5 truncate text-slate-200">
-                        <span class="text-slate-400 font-mono text-[12px] px-1 py-0.5 bg-[#262626] rounded">ARCHIVE</span>
+                        <span class="text-slate-300 font-mono text-[12px] px-1 py-0.5 bg-[#262626] rounded">ARCHIVE</span>
                         <span class="truncate">${escapeHtml(u)}</span>
                       </span>
-                      <a href="https://www.google.com/search?q=${targetQuery}" target="_blank" rel="noopener noreferrer" class="text-[#60a5fa] hover:text-white hover:underline text-[14px] font-mono shrink-0 ml-1">
+                      <a href="https://www.google.com/search?q=${targetQuery}" target="_blank" rel="noopener noreferrer" class="text-[#7dd3fc] hover:text-white underline text-[14px] font-mono shrink-0 ml-1">
                         Inspect Record &rarr;
                       </a>
                     </div>
