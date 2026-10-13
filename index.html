@@ -258,6 +258,26 @@
     /* chat answers are one size */
     html body #curatorMessages, html body #curatorMessages *, html body #curatorDrawerChatBody, html body #curatorDrawerChatBody * { font-size: 18px !important; }
     html body .callout-fig, html body .stat-callout { font-size: 14px !important; }
+    /* Buttons read as buttons: a 1px off-white outline, black fill, and an inverted hover. Pressed is filled off-white. */
+    html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
+    html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
+    html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
+    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 6px 14px !important; border: 1px solid #f4f4f4 !important; border-radius: 0 !important;
+      background: #000000 !important; color: #f4f4f4 !important; font-size: 14px !important;
+      text-decoration: none !important; cursor: pointer; box-shadow: none !important;
+    }
+    html body #topGossipBtn:hover, html body #topShareBtn:hover, html body #desktopGlobeTopControls button:hover,
+    html body #workspaceTabDossier:hover, html body #workspaceTabChat:hover, html body #workspaceNewChatBtn:hover, html body #collapseDossierBtn:hover,
+    html body #closeAcademicModalBtn:hover, html body #closeAcademicModalFooterBtn:hover, html body #arTabStudies:hover, html body #arTabCommunity:hover, html body #arTabCases:hover,
+    html body #desktopDossierBody > div > button:hover, html body #inputModeCancelBtn:hover,
+    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases) {
+      background: #f4f4f4 !important; color: #000000 !important;
+    }
+    html body #desktopGlobeTopControls > div { gap: 8px; }
+    body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls { display: none !important; }
+    html body #workspaceContextTabBar > div:first-child { border: 0 !important; gap: 8px; padding: 0 !important; }
     /* Titles are 26px. */
     html body h1, html body h2, html body h3[class*="text-[18px]"], html body .dossier-main-heading, html body [class*="text-[24px]"], html body .modal-title, html body .drawer-title { font-size: 26px !important; }
     /* Paragraph indent: only in a run of more than three paragraphs, from the second on. */
@@ -10742,7 +10762,7 @@ return maplibregl$1;
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
       const label = isGossipModeActive ? 'Gossip mode: on' : 'Gossip mode';
-      ['topGossipBtn', 'workMenuGossipModeBtn'].forEach(id => { const b = document.getElementById(id); if (b) b.textContent = label; });
+      ['topGossipBtn', 'workMenuGossipModeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
       document.getElementById('workPlusMenu')?.classList.add('hidden');
       if (typeof appendCuratorMessage === 'function') {
         appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
@@ -10896,6 +10916,8 @@ return maplibregl$1;
           dossierBadge.classList.toggle('hidden', currentWorkspaceTab !== 'dossier');
         }
       }
+      tabChat?.setAttribute('aria-pressed', String(currentWorkspaceTab === 'chat'));
+      tabDossier?.setAttribute('aria-pressed', String(currentWorkspaceTab === 'dossier'));
     }
     window.setWorkspaceTab = setWorkspaceTab;
 
@@ -15494,12 +15516,17 @@ return maplibregl$1;
       text('desktopDossierHours', inst.opening_hours);
       text('desktopDossierAccess', inst.admission_fee || inst.admission_policy);
       toggle('desktopDossierVisitSection', Boolean(inst.opening_hours || inst.admission_fee || inst.admission_policy));
+      if (isGossipModeActive) {            // gossip mode shows only what is reported
+        toggle('desktopDossierFundingSection', false);
+        toggle('desktopDossierVisitSection', false);
+        text('desktopDossierSummary', '');
+      }
 
       const srcBox = document.getElementById('desktopDossierSources');
       if (srcBox) srcBox.innerHTML = sourcesHtml(inst);
       const record = document.getElementById('desktopDossierRecord');
       if (record) {
-        record.innerHTML = documentedRecordHtml(inst);
+        record.innerHTML = documentedRecordHtml(inst) || (isGossipModeActive ? '<p class="no-indent text-[18px]">Nothing is reported for this space in the records.</p>' : '');
         record.classList.toggle('hidden', !record.innerHTML);
       }
 
@@ -15527,12 +15554,16 @@ return maplibregl$1;
       text('dossier-sheet-hours', inst.opening_hours);
       text('dossier-sheet-access-text', inst.admission_fee || inst.admission_policy);
       toggle('dossier-sheet-visit', Boolean(inst.opening_hours || inst.admission_fee || inst.admission_policy));
+      if (isGossipModeActive) {
+        toggle('dossier-sheet-funding', false);
+        toggle('dossier-sheet-visit', false);
+      }
 
       const srcBox = document.getElementById('dossier-sheet-sources');
       if (srcBox) srcBox.innerHTML = sourcesHtml(inst);
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        record.innerHTML = documentedRecordHtml(inst);
+        record.innerHTML = documentedRecordHtml(inst) || (isGossipModeActive ? '<p class="no-indent text-[18px]">Nothing is reported for this space in the records.</p>' : '');
         record.classList.toggle('hidden', !record.innerHTML);
       }
       const webLink = document.getElementById('dossier-sheet-link-web');
@@ -16688,7 +16719,7 @@ return maplibregl$1;
       const tabs = { studies: ['arTabStudies', 'arStudiesSection'], community: ['arTabCommunity', 'arCommunitySection'], cases: ['arTabCases', 'arCasesSection'] };
       if (!tabs[tab]) tab = 'studies';
       Object.keys(tabs).forEach(k => {
-        document.getElementById(tabs[k][0]) && (document.getElementById(tabs[k][0]).className = k === tab ? on : off);
+        if (document.getElementById(tabs[k][0])) { document.getElementById(tabs[k][0]).className = k === tab ? on : off; document.getElementById(tabs[k][0]).setAttribute('aria-pressed', String(k === tab)); }
         document.getElementById(tabs[k][1])?.classList.toggle('hidden', k !== tab);
       });
       if (tab === 'community') renderCommunityResearchNotes();
