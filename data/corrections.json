@@ -1,0 +1,9 @@
+{
+  "_about": "Wording corrected after checking against search results (see data/verification_pilot.json). Applied by tools/clean_data.py. Each entry replaces one field of one record.",
+  "storm-king-art-center": {
+    "why_flagged": "Bloomberg Philanthropies is listed in Storm King's 2025 donor list in the Ambassador tier ($100,000+)."
+  },
+  "casa-frança-brasil-rio-de-janeiro": {
+    "why_flagged": "The former Casa França-Brasil now operates as Casa Brasil, with Petrobras as sponsor through its Novos Eixos call (Ícones da Cultura Brasileira line). The rename date is not confirmed."
+  }
+}
