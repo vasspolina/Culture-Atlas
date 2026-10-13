@@ -100,16 +100,45 @@
 
     html, body {
       font-size: 14pt !important;
-      line-height: 20pt !important;
+      line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
     }
 
+    /* Global typography rules: 130% line-height, 30px paragraph indent, 0 space between paragraphs, 200% line-height between groups of text */
     input, button, select, textarea, p, span, div, li, a {
       font-size: 14pt;
-      line-height: 20pt !important;
+      line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
+    }
+
+    p {
+      line-height: 1.3 !important;
+      text-indent: 30px !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* Group spacing: 200% line-height (2em / 2.6 line-height factor) between groups of text */
+    h1, h2, h3, h4, h5, h6,
+    .curator-section-hdr,
+    section,
+    article,
+    fieldset,
+    .text-group,
+    [role="region"] {
+      margin-top: 2em !important;
+      margin-bottom: 2em !important;
+      line-height: 1.3 !important;
+    }
+
+    /* Maintain tight inline presentation for buttons, badges, single-line elements */
+    button p, a p, .no-indent, .no-indent p,
+    .source-citation-pill, .stat-callout, .badge, [class*="badge"],
+    .curator-followup-pill, .work-suggestion-card,
+    #topBrandLogoBtn, .brand-logo-btn {
+      text-indent: 0 !important;
     }
 
     strong, b, h1, h2, h3, h4, h5, h6, .font-bold, .font-extrabold, .font-semibold, .font-medium, .font-normal, [class*="font-bold"], [class*="font-extrabold"], [class*="font-semibold"], [class*="font-medium"], [class*="font-normal"] {
@@ -135,12 +164,10 @@
     }
 
     /* ========================================================= */
-    /* STRICT 3 CARBON TYPE SIZES: 14pt (Body), 18pt (Heading), 34pt (Display) */
-    /* ========================================================= */
     /* STRICT 3 CARBON TYPE SIZES: 14pt (Body), 18pt (Heading), 26pt (Display) */
-    /* Fluid downscaling on compact laptop, tablet, and mobile viewports */
+    /* Fluid downscaling on compact laptop, tablet, and mobile viewports with 130% line height */
     /* ========================================================= */
-    /* Size 1: 14pt (IBM Carbon body-01 / body-compact-01: 14pt, line-height 20pt, tracking 0.16px) */
+    /* Size 1: 14pt (Body: 14pt, line-height 1.3 / 130%, tracking 0.16px) */
     .type-14, .text-14, .text-[14px], .text-[14pt],
     .text-xs, .text-sm, .text-base, .text-md,
     [class*="text-\[6"], [class*="text-\[7"], [class*="text-\[8"], [class*="text-\[9"], [class*="text-\[10"], 
@@ -149,12 +176,12 @@
     [class*="text-\[14px\]"], [class*="text-\[14pt\]"],
     h4, h5, h6 {
       font-size: clamp(11pt, 0.5vw + 11.5pt, 14pt) !important;
-      line-height: 1.4 !important;
+      line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       font-weight: 400 !important;
     }
 
-    /* Size 2: 18pt (IBM Carbon heading-03 / heading-compact-02: 18pt, line-height 24pt, tracking 0) */
+    /* Size 2: 18pt (Heading: 18pt, line-height 1.3 / 130%, tracking 0) */
     .type-18, .text-18, .text-[18px], .text-[18pt],
     .type-16, .text-16, .type-19, .text-19,
     .text-lg, .text-xl,
@@ -163,18 +190,18 @@
     .curator-section-hdr, .drawer-title, .modal-title, .card-title,
     h2, h3 {
       font-size: clamp(14pt, 0.8vw + 13pt, 18pt) !important;
-      line-height: 1.35 !important;
+      line-height: 1.3 !important;
       letter-spacing: 0 !important;
       font-weight: 400 !important;
     }
     #desktopDossierName, #dossier-sheet-name, .dossier-main-heading {
-      line-height: 1.35 !important;
+      line-height: 1.3 !important;
       word-break: break-word !important;
       overflow-wrap: break-word !important;
       display: block !important;
     }
 
-    /* Size 3: 26pt (Large display heading: 26pt, line-height 32pt, tracking 0) */
+    /* Size 3: 26pt (Large display heading: 26pt, line-height 1.3 / 130%, tracking 0) */
     .type-26, .text-26, .text-[26px], .text-[26pt],
     .type-34, .text-34, .text-[34px], .text-[34pt],
     .type-27, .text-27, .type-24, .text-24,
@@ -193,7 +220,7 @@
     /* Fluid container queries and viewport constraints for curator hero title */
     #curatorHeroGreeting h1 {
       font-size: clamp(18pt, 1.5vw + 14pt, 26pt) !important;
-      line-height: 1.25 !important;
+      line-height: 1.3 !important;
       max-width: 90% !important;
       word-break: normal !important;
       overflow-wrap: break-word !important;
@@ -358,7 +385,7 @@
       padding: 0;
       font-size: 14pt;
       font-weight: 400 !important;
-      line-height: 20pt !important;
+      line-height: 1.3 !important;
       letter-spacing: 0.16px !important;
       overflow-x: hidden !important;
       overflow-y: hidden;
@@ -20731,7 +20758,7 @@ return maplibregl$1;
 
           if (trailingText) {
             blocks.push(`
-              <p class="text-slate-200 text-[14px] leading-relaxed mb-2.5">
+              <p class="text-slate-200 text-[14px]">
                 ${parseInlineMarkdown(trailingText)}
               </p>
             `);
@@ -20766,7 +20793,7 @@ return maplibregl$1;
         if (bqMatch) {
           flushList();
           blocks.push(`
-            <blockquote class="border-l-2 border-emerald-500 pl-3 my-2 text-slate-300 italic text-[14px] leading-relaxed bg-[#0b1320]/60 py-1.5 pr-2 rounded-r-xl">
+            <blockquote class="border-l-2 border-emerald-500 pl-3 my-2 text-slate-300 italic text-[14px] bg-[#0b1320]/60 py-1.5 pr-2 rounded-r-xl">
               ${parseInlineMarkdown(bqMatch[1])}
             </blockquote>
           `);
@@ -20776,7 +20803,7 @@ return maplibregl$1;
         // Regular paragraph line
         flushList();
         blocks.push(`
-          <p class="text-slate-200 text-[14px] leading-relaxed mb-2.5">
+          <p class="text-slate-200 text-[14px]">
             ${parseInlineMarkdown(trimmed)}
           </p>
         `);
