@@ -138,7 +138,6 @@
       font-style: normal !important;
     }
 
-
     /* ========================================================= */
     /* STRICT 3 CARBON TYPE SIZES: 14px (Body), 18px (Heading), 24px (Display) */
     /* Fluid downscaling on compact laptop, tablet, and mobile viewports with 130% line height */
@@ -316,7 +315,6 @@
       html body #filterDrawerPanel { position: fixed !important; inset: 0 !important; max-height: none !important; border-radius: 0 !important; z-index: 45 !important; background: #000 !important; }
     }
     html body #catalogModal > div { max-width: none !important; max-height: none !important; width: 100% !important; height: 100% !important; }
-    
 
     /* The record page fills the page too, above the directory it was opened from. */
     @media (min-width: 768px) {
@@ -326,7 +324,6 @@
     @media (max-width: 767px) {
       html body #detailDrawer { position: fixed !important; inset: 0 !important; z-index: 51 !important; background: #000 !important; }
     }
-    
 
     /* Buttons are pills: Carbon teal 90 fill, off-white text, no border, sentence case. A pressed toggle is off-white with black text. */
     html body button, html body [role="button"] { text-transform: none; }
@@ -1090,26 +1087,7 @@
       visibility: hidden !important;
       pointer-events: none !important;
     }
-    /* When viewing 3D building architectural perspective, hide 2D pins, popups, and floating overlays so they do not obstruct 3D floors */
-    #cityMapContainer.building-view-active .custom-inst-pin,
-    #cityMapContainer.building-view-active .inst-pin-label,
-    #cityMapContainer.building-view-active .maplibregl-popup,
-    body.building-view-active .maplibregl-popup,
-    body:has(#buildingFloorInspectorHud:not(.hidden)) .maplibregl-popup,
-    #cityMapContainer.building-view-active:not(.show-onmap-callouts) .building-3d-mast-plate,
-    #cityMapContainer.building-view-active:not(.show-onmap-callouts) .building-3d-facade-stack,
-    #cityMapContainer.building-view-active:not(.show-onmap-callouts) .building-3d-room-badge,
-    body.building-view-active:not(.show-onmap-callouts) .building-3d-mast-plate,
-    body.building-view-active:not(.show-onmap-callouts) .building-3d-facade-stack,
-    body.building-view-active:not(.show-onmap-callouts) .building-3d-room-badge,
-    body:has(#buildingFloorInspectorHud:not(.hidden)):not(.show-onmap-callouts) .building-3d-mast-plate,
-    body:has(#buildingFloorInspectorHud:not(.hidden)):not(.show-onmap-callouts) .building-3d-facade-stack,
-    body:has(#buildingFloorInspectorHud:not(.hidden)):not(.show-onmap-callouts) .building-3d-room-badge {
-      opacity: 0 !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
-      display: none !important;
-    }
+    
     .custom-inst-pin:hover .inst-pin-label {
       opacity: 1 !important;
       visibility: visible !important;
@@ -1119,112 +1097,7 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8) !important;
       z-index: 9999 !important;
     }
-    /* 3D Building Spatial On-Map Callout & Mast Headroom Architecture */
-    .building-3d-mast-plate {
-      position: relative;
-      min-width: 290px;
-      max-width: 410px;
-      padding: 10px 14px;
-      background: rgba(0, 0, 0, 0.96);
-      border: 0.8px solid rgba(255, 255, 255, 0.22);
-      border-radius: 14px;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.5);
-      font-family: 'PP Mori', sans-serif;
-      color: #ffffff;
-      z-index: 25;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      pointer-events: auto;
-    }
-    .building-3d-mast-plate::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 28px;
-      border-width: 6px 6px 0 6px;
-      border-style: solid;
-      border-color: rgba(18, 20, 26, 0.96) transparent transparent transparent;
-    }
-    .building-mast-close-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 0.8px solid rgba(255, 255, 255, 0.16);
-      color: #f4f4f4;
-      font-size: 14px;
-      line-height: 1.3;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .building-mast-close-btn:hover {
-      background: rgba(255, 255, 255, 0.22);
-      color: #ffffff;
-    }
-    .mast-inst-name {
-      font-family: 'PP Mori', sans-serif;
-      font-weight: 400;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-      line-height: 1.3;
-      max-width: 260px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .mast-headroom-pill,
-    .debug-pill,
-    [data-debug*="headroom"] {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0, 0, 0, 0) !important;
-      white-space: nowrap !important;
-      border: 0 !important;
-      opacity: 0 !important;
-      pointer-events: auto !important;
-      display: inline-block !important;
-    }
-    .mast-headroom-pill:hover {
-      background: rgba(8, 189, 186, 0.28);
-      border-color: rgba(8, 189, 186, 0.65);
-      color: #ffffff;
-    }
-    /* 3D Floor Directory Facade Stack */
-    .building-3d-facade-stack {
-      position: relative;
-      min-width: 240px;
-      max-width: 320px;
-      padding: 9px 12px;
-      background: rgba(0, 0, 0, 0.94);
-      border: 0.8px solid rgba(255, 255, 255, 0.18);
-      border-radius: 12px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(0, 0, 0, 0.4);
-      font-family: 'PP Mori', sans-serif;
-      color: #f4f4f4;
-      z-index: 24;
-      pointer-events: auto;
-    }
-    .facade-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding-bottom: 6px;
-      margin-bottom: 6px;
-      border-bottom: 0.8px solid rgba(255, 255, 255, 0.1);
-    }
-    .facade-title {
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: #34d399;
-    }
+
     .building-facade-close-btn {
       display: inline-flex;
       align-items: center;
@@ -1243,88 +1116,7 @@
       background: rgba(255, 255, 255, 0.2);
       color: #ffffff;
     }
-    .facade-floor-row {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 3px 6px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.15s ease;
-    }
-    .facade-floor-row:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .facade-level-badge {
-      font-size: 14px;
-      font-weight: 400;
-      padding: 1px 5px;
-      border-radius: 4px;
-      background: rgba(8, 189, 186, 0.18);
-      border: 0.8px solid rgba(8, 189, 186, 0.35);
-      color: #f4f4f4;
-      font-family: 'PP Mori', sans-serif;
-    }
-    .facade-floor-name {
-      font-size: 14px;
-      font-weight: 400;
-      color: #f4f4f4;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    /* 3D Spatial Room Badges */
-    .building-3d-room-badge {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding: 8px 12px;
-      min-width: 220px;
-      max-width: 290px;
-      background: rgba(0, 0, 0, 0.96);
-      border: 0.8px solid rgba(255, 255, 255, 0.24);
-      border-radius: 10px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.4);
-      font-family: 'PP Mori', sans-serif;
-      color: #ffffff;
-      z-index: 28;
-      pointer-events: auto;
-      box-sizing: border-box;
-      overflow: hidden;
-      word-break: break-word;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    .building-room-close-btn {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.12);
-      border: 0.8px solid rgba(255, 255, 255, 0.2);
-      color: #f4f4f4;
-      font-size: 14px;
-      line-height: 1.3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 5;
-    }
-    .building-room-close-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      color: #ffffff;
-    }
-    .building-3d-room-badge .badge-title {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: #34d399;
-      padding-right: 20px;
-      line-height: 1.3;
-    }
+    
     /*  SECURE WHISTLEBLOWER & INTEL INTAKE MODE STYLING */
     #chatModeSegmentedSwitch button {
       font-family: 'PP Mori', sans-serif !important;
@@ -1388,17 +1180,14 @@
       box-shadow: none !important;
     }
     
-    #floatingCardTabInfo,
-    #floatingCardTabGossip,
-    #floatingCardShowFloorPill,
     #floatingCardVcStrategyBadge,
-    #floatingCardVcMedium,
-    #closeFloatingCardBtn,
-    #floatingCardDirectAuditBtn,
-    #floatingCardDirectPlanBtn,
-    #floatingCardDirectWebBtn,
-    #dossier-tab-info,
-    #dossier-tab-gossip {
+        #floatingCardVcMedium,
+        #closeFloatingCardBtn,
+        #floatingCardDirectAuditBtn,
+        #floatingCardDirectPlanBtn,
+        #floatingCardDirectWebBtn,
+        #dossier-tab-info,
+        #dossier-tab-gossip {
       background: transparent !important;
       background-color: transparent !important;
       border-radius: 0 !important;
@@ -1408,9 +1197,8 @@
       border-right: none !important;
     }
     
-    #floatingCardShowFloorPill,
     #floatingCardVcStrategyBadge,
-    #floatingCardVcMedium{
+        #floatingCardVcMedium {
       border-bottom: none !important;
       padding-left: 0 !important;
       padding-right: 0 !important;
@@ -1495,8 +1283,7 @@
       border-color: rgba(250, 204, 21, 0.90) !important;
     }
 
-    /*  GOSSIP / YELLOW MODE: OPPOSITE COLOR HOVERS (Electric Cyan #08bdba High-Contrast Accents) */
-    body.gossip-mode-active .atlas-suggestion-pill:hover,
+    /*  GOSSIP / YELLOW MODE: OPPOSITE COLOR HOVERS (Electric Cyan #08bdba High-Contrast Accents) */body.gossip-mode-active .atlas-suggestion-pill:hover,
     body.gossip-mode-active .work-suggestion-card.is-suggestion:hover,
     body.gossip-mode-active .curator-followup-pill:hover,
     body.gossip-mode-active .confidential-prompt-chip:hover,
@@ -1507,7 +1294,6 @@
     body.gossip-mode-active .atlas-pill-btn:hover,
     body.gossip-mode-active .hud-btn:hover,
     body.gossip-mode-active .quick-prompt-btn:hover,
-    body.gossip-mode-active #floatingCardTabGossip:hover,
     body.gossip-mode-active #drawerTabGossip:hover,
     body.gossip-mode-active button:not(#topGossipBtn):not(#mobileGossipBtn):hover {
       border-color: #f4f4f4 !important;
@@ -1519,8 +1305,6 @@
       box-shadow: none !important;
     }
 
-    /*  3D Building Overlay Close Buttons (Capsule Pill Style) */
-    .building-mast-close-btn,
     .building-facade-close-btn {
       cursor: pointer;
       display: inline-flex;
@@ -1535,43 +1319,10 @@
       flex-shrink: 0;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     }
-    .building-mast-close-btn:hover,
     .building-facade-close-btn:hover {
       color: #000000 !important;
       background: #ffffff !important;
       transform: scale(1.05);
-    }
-
-    /*  3D Building Room Badges Interaction & Typography */
-    .building-3d-room-badge {
-      transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1), filter 0.18s ease;
-      cursor: pointer;
-    }
-    .building-3d-room-badge:hover {
-      transform: translateY(-3px) scale(1.02);
-      filter: brightness(1.08);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9) !important;
-    }
-    .building-3d-room-badge:active {
-      transform: translateY(0) scale(0.99);
-    }
-    .building-room-close-btn {
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 9999px !important;
-      border: none !important;
-      background: rgba(255, 255, 255, 0.20) !important;
-      color: #ffffff !important;
-      transition: all 0.15s ease;
-      padding: 0 !important;
-      flex-shrink: 0;
-    }
-    .building-room-close-btn:hover {
-      background: #ffffff !important;
-      color: #000000 !important;
-      transform: scale(1.15);
     }
 
     /*  Sleek Uncontained Link System (Matching Minimalist Brutalist Design) */
@@ -1803,38 +1554,6 @@
       }
       #floatingCard .floating-card-arrow {
         display: none !important;
-      }
-      
-      /* 2. MapLibre 3D Building Rooftop Plate: Clamp cleanly within screen on mobile */
-      .building-3d-mast-plate {
-        min-width: 0 !important;
-        max-width: calc(100vw - 20px) !important;
-        width: calc(100vw - 20px) !important;
-        box-sizing: border-box !important;
-        padding: 9px 11px !important;
-        font-size: 14px !important;
-        margin-bottom: 8px !important;
-        border-radius: 14px !important;
-        max-height: calc(50vh - 30px) !important;
-        overflow-y: auto !important;
-      }
-      /* Prevent the 3D floor facade stack from overlapping the mast plate on small screens */
-      .building-3d-facade-stack {
-        display: none !important;
-      }
-
-      /* 3. Building Floor Inspector HUD on Mobile: Dock at bottom, never overflow */
-      #buildingFloorInspectorHud {
-        top: auto !important;
-        bottom: 8px !important;
-        left: 8px !important;
-        right: 8px !important;
-        width: auto !important;
-        max-width: calc(100% - 16px) !important;
-        max-height: calc(100% - 50px) !important;
-        overflow-y: auto !important;
-        padding: 10px 12px !important;
-        z-index: 35 !important;
       }
 
       /* 4. Chat Plus Dropdown Menu on Mobile: Clamp height and scroll */
@@ -2247,8 +1966,6 @@ return maplibregl$1;
 
           <!-- Retained hidden elements for DOM compatibility -->
           <div class="hidden" style="display:none;" aria-hidden="true">
-            <a id="floatingCardGoogleMaps3dBtn" href="#"></a>
-            <a id="floatingCardGoogleImagesBtn" href="#"></a>
             <a id="floatingCardWebLink" href="#"></a>
             <button id="floatingCardDossierBtn"></button>
             <button id="floatingCardAskCurator"></button>
@@ -3174,11 +2891,7 @@ return maplibregl$1;
     </div>
   </div>
 
-  <!--  IN-DEPTH BUILDING ARCHITECTURE & ARCHIVES INSPECTOR MODAL -->
-  <div id="buildingArchivesModal" class="hidden"></div><div id="bamTierBadge" class="hidden"></div><div id="bamGovernanceBadge" class="hidden"></div><div id="bamFloorsBadge" class="hidden"></div><div id="bamTitle" class="hidden"></div><div id="bamLocation" class="hidden"></div><div id="closeBuildingArchivesBtn" class="hidden"></div><div id="bamBody" class="hidden"></div><div id="bamPlanVisitBtn" class="hidden"></div><div id="bamWebLink" class="hidden"></div><div id="bamCloseFooterBtn" class="hidden"></div>
 
-  <!--  DEDICATED ARCHIVES & SPECIAL COLLECTIONS DIRECTORY MODAL -->
-  <div id="archivesDirectoryModal" class="hidden"></div><div id="closeArchivesModalBtn" class="hidden"></div><div id="archivesSearchInput" class="hidden"></div><div id="clearArchivesSearchBtn" class="hidden"></div><div id="archivesCityFilter" class="hidden"></div><div id="archivesFilterChips" class="hidden"></div><div id="archivesResultCount" class="hidden"></div><div id="archivesDirectoryList" class="hidden"></div><div id="closeArchivesModalFooterBtn" class="hidden"></div>
 
   <!--  GOVERNANCE & FUNDING TRANSPARENCY METHODOLOGY MODAL -->
   <div id="governanceMethodologyModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-3 sm:p-5 select-text">
@@ -8913,9 +8626,6 @@ return maplibregl$1;
           visualizePitch: true
         }), 'top-right');
 
-        cityVectorMap.on('dragstart', () => { if (typeof stop3DOrbit === 'function') stop3DOrbit(); });
-        cityVectorMap.on('rotatestart', () => { if (typeof stop3DOrbit === 'function') stop3DOrbit(); });
-        cityVectorMap.on('pitchstart', () => { if (typeof stop3DOrbit === 'function') stop3DOrbit(); });
       } catch (e) {
         console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
         let _z = 14, _p = 35, _b = 0, _c = [0, 20];
@@ -9037,7 +8747,7 @@ return maplibregl$1;
         const labels = Array.from(document.querySelectorAll('.custom-inst-pin .inst-pin-label'));
         if (!labels.length) return;
 
-        const currentActiveInst = selectedInstitution || currentHighlightedBuildingInst;
+        const currentActiveInst = selectedInstitution;
         const currentActiveId = currentActiveInst ? (currentActiveInst.id || currentActiveInst.name) : null;
 
         // Reset any previously assigned directional / occlusion classes
@@ -9119,18 +8829,14 @@ return maplibregl$1;
 
       cityVectorMap.on('zoom', updateCityZoomClasses);
       cityVectorMap.on('zoom', () => {
-        if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
         if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
       });
       cityVectorMap.on('move', () => {
-        if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
         if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
       });
       cityVectorMap.on('rotate', () => {
-        if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
       });
       cityVectorMap.on('pitch', () => {
-        if (typeof resolveBuildingOverlaysCollisions === 'function') resolveBuildingOverlaysCollisions();
       });
       cityVectorMap.on('load', () => {
         updateCityZoomClasses();
@@ -9244,56 +8950,6 @@ return maplibregl$1;
       }
     };
 
-    //  3D VOLUMETRIC BUILDING ARCHITECTURE & SPATIAL ON-BUILDING INFO ENGINE
-    let currentHighlightedBuildingInst = null;
-    let isExploded3DMode = false;
-    Object.defineProperty(window, 'isExploded3DMode', {
-      get: () => isExploded3DMode,
-      set: (v) => { isExploded3DMode = v; }
-    });
-    let building3DInfoMarkers = [];
-    let currentBuildingMastMarker = null;
-    let currentBuildingFacadeMarker = null;
-    let isBuildingLayerEventsBound = false;
-    let isBuildingMastDismissed = false;
-    let isBuildingFacadeDismissed = false;
-
-
-    function closeBuildingMast() {
-      isBuildingMastDismissed = true;
-      if (currentBuildingMastMarker) {
-        try { currentBuildingMastMarker.remove(); } catch (e) {}
-        building3DInfoMarkers = building3DInfoMarkers.filter(m => m !== currentBuildingMastMarker);
-        currentBuildingMastMarker = null;
-      }
-      const plates = document.querySelectorAll('.building-3d-mast-plate');
-      plates.forEach(p => { try { p.remove(); } catch (e) {} });
-    }
-    window.closeBuildingMast = closeBuildingMast;
-
-    function closeBuildingFacade() {
-      isBuildingFacadeDismissed = true;
-      if (currentBuildingFacadeMarker) {
-        try { currentBuildingFacadeMarker.remove(); } catch (e) {}
-        building3DInfoMarkers = building3DInfoMarkers.filter(m => m !== currentBuildingFacadeMarker);
-        currentBuildingFacadeMarker = null;
-      }
-      const stacks = document.querySelectorAll('.building-3d-facade-stack');
-      stacks.forEach(s => { try { s.remove(); } catch (e) {} });
-    }
-    window.closeBuildingFacade = closeBuildingFacade;
-
-
-
-
-
-    // =========================================================================
-    //  GOOGLE MAPS SATELLITE & REAL SPACE VISUALS ENGINE
-    // =========================================================================
-
-    // =========================================================================
-    //  3D ARCHITECTURAL CAMERA HEADROOM & MAST SPACING ARCHITECTURE
-    // =========================================================================
 
 
 
@@ -10117,7 +9773,6 @@ return maplibregl$1;
     }
 
     function exitCityStreetView() {
-      if (typeof stop3DOrbit === 'function') stop3DOrbit();
       isCityStreetViewActive = false;
       const mapEl = document.getElementById('cityMapContainer');
       if (mapEl) mapEl.classList.add('hidden');
@@ -14285,45 +13940,6 @@ return maplibregl$1;
     }
     window.openDossier = openDossier;
 
-    function updateDossierFloorSelection(idx) {
-      document.querySelectorAll('.dossier-floor-tab').forEach(t => {
-        const tIdx = Number(t.getAttribute('data-floor-idx'));
-        if (tIdx === idx) {
-          t.className = 'dossier-floor-tab text-left py-1 text-[14px] font-mono transition cursor-pointer text-[#f4f4f4] font-bold underline';
-        } else {
-          t.className = 'dossier-floor-tab text-left py-1 text-[14px] font-mono transition cursor-pointer text-[#f4f4f4] hover:text-white';
-        }
-      });
-      const inst = selectedInstitution || currentHighlightedBuildingInst;
-      if (!inst) return;
-      const floors = inst.floor_plans || (inst.building_architecture && inst.building_architecture.floor_plans) || [];
-      const fl = floors[idx];
-      const card = document.getElementById('dossierActiveFloorCard');
-      if (card && fl) {
-        const show = (fl.current_shows && fl.current_shows[0]) || { title: 'Curatorial Collections', curator_artists: '' };
-        const arch = fl.archive_holdings || { collection_title: 'Institutional Archives', reading_room_policy: 'Open access' };
-        card.innerHTML = `
-          <div class="flex items-center justify-between text-[14px] font-mono text-[#f4f4f4]">
-            <span class="font-bold">${escapeHtml(fl.floor_name || ('Level ' + idx))}</span>
-            <span class="text-[#f4f4f4]">${escapeHtml(fl.elevation || '0.0m')}</span>
-          </div>
-          <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
-            <span class="text-[14px] font-mono text-amber-400 font-bold block">Current Show on this Level:</span>
-            <div class="font-semibold text-white">${escapeHtml(show.title || 'Curatorial Collections')}</div>
-            <div class="text-[#f4f4f4] text-[14px] font-mono">${escapeHtml(show.curator_artists || '')}${show.dates ? ', ' + escapeHtml(show.dates) : ''}</div>
-            ${show.synopsis ? `<p class="text-[#f4f4f4] text-[14px] leading-snug line-clamp-2">${escapeHtml(show.synopsis)}</p>` : ''}
-          </div>
-          ${arch ? `
-            <div class="border-t border-[#1e2f4a] pt-1.5 space-y-1">
-              <span class="text-[14px] font-mono text-emerald-400 font-bold block">Archival Holding on this Level:</span>
-              <div class="font-semibold text-emerald-200">${escapeHtml(arch.collection_title || '')}</div>
-              <div class="text-[#f4f4f4] text-[14px]">${escapeHtml(arch.reading_room_policy || 'Public study access')}</div>
-            </div>
-          ` : ''}
-        `;
-      }
-    }
-    window.updateDossierFloorSelection = updateDossierFloorSelection;
 
     function formatInstLink(inst, opts = {}) {
       if (!inst) return '';
@@ -14489,8 +14105,6 @@ return maplibregl$1;
         setTimeout(() => input.focus(), 60);
       }
       updateProviderUI(getEffectiveProvider());
-      if (typeof setBuilding3DHeadroom === 'function') {
-      }
       const testBox = document.getElementById('connectionTestBox');
       if (testBox) testBox.classList.add('hidden');
     }
@@ -15053,41 +14667,6 @@ return maplibregl$1;
     }
     window.renderFiscalAnalyticsData = renderFiscalAnalyticsData;
 
-    // =========================================================================
-    //  DEDICATED ARCHIVES & SPECIAL COLLECTIONS DIRECTORY CONTROLLER
-    // =========================================================================
-    let currentArchivesCategory = 'all';
-    let currentArchivesCity = 'all';
-    let currentArchivesSearch = '';
-    let currentArchivesLimit = 40;
-
-    function openArchivesDirectoryModal(cat = 'all', city = 'all', query = '') {
-      const modal = document.getElementById('archivesDirectoryModal');
-      if (!modal) return;
-      currentArchivesCategory = cat || 'all';
-      currentArchivesCity = city || 'all';
-      currentArchivesSearch = query || '';
-      currentArchivesLimit = 40;
-
-      const sInput = document.getElementById('archivesSearchInput');
-      if (sInput) sInput.value = currentArchivesSearch;
-
-      populateArchivesCityFilter();
-      const cSelect = document.getElementById('archivesCityFilter');
-      if (cSelect && city) cSelect.value = city;
-
-      updateArchivesFilterChipsUI();
-      renderArchivesDirectory();
-      modal.classList.remove('hidden');
-    }
-    window.openArchivesDirectoryModal = openArchivesDirectoryModal;
-
-    function closeArchivesDirectoryModal() {
-      const modal = document.getElementById('archivesDirectoryModal');
-      if (modal) modal.classList.add('hidden');
-    }
-    window.closeArchivesDirectoryModal = closeArchivesDirectoryModal;
-
     function openGovernanceMethodologyModal() {
       const modal = document.getElementById('governanceMethodologyModal');
       if (modal) modal.classList.remove('hidden');
@@ -15099,271 +14678,6 @@ return maplibregl$1;
       if (modal) modal.classList.add('hidden');
     }
     window.closeGovernanceMethodologyModal = closeGovernanceMethodologyModal;
-
-    function updateArchivesFilterChipsUI() {
-      document.querySelectorAll('#archivesFilterChips .archives-filter-chip').forEach(ch => {
-        const f = ch.getAttribute('data-filter');
-        if (f === currentArchivesCategory) {
-          ch.className = 'archives-filter-chip px-3.5 sm:px-4 py-1.5 rounded-full bg-black border border-[#f4f4f4] text-white border border-[#60a5fa] cursor-pointer font-medium transition shadow-sm text-[14px] sm:text-[14px]';
-        } else {
-          ch.className = 'archives-filter-chip atlas-suggestion-pill';
-        }
-      });
-    }
-
-    function populateArchivesCityFilter() {
-      const sel = document.getElementById('archivesCityFilter');
-      if (!sel) return;
-      const curVal = currentArchivesCity || 'all';
-      const cityCounts = {};
-      ALL_INSTITUTIONS.forEach(i => {
-        if (i.archives_and_collections && i.city) {
-          const c = i.city.trim();
-          cityCounts[c] = (cityCounts[c] || 0) + 1;
-        }
-      });
-      const sorted = Object.keys(cityCounts).sort((a, b) => cityCounts[b] - cityCounts[a]);
-      let html = `<option value="all">All Cultural Cities (${ALL_INSTITUTIONS.length})</option>`;
-      sorted.forEach(c => {
-        html += `<option value="${escapeHtml(c)}">${escapeHtml(c)} (${cityCounts[c]})</option>`;
-      });
-      sel.innerHTML = html;
-      sel.value = curVal;
-    }
-
-    function renderArchivesDirectory() {
-      const list = document.getElementById('archivesDirectoryList');
-      if (!list || typeof ALL_INSTITUTIONS === 'undefined') return;
-
-      const q = (currentArchivesSearch || '').toLowerCase().trim();
-      const cat = currentArchivesCategory || 'all';
-      const city = currentArchivesCity || 'all';
-
-      const filtered = ALL_INSTITUTIONS.filter(inst => {
-        const arch = inst.archives_and_collections;
-        if (!arch) return false;
-
-        // City filter
-        if (city !== 'all') {
-          if (!inst.city || inst.city.toLowerCase().trim() !== city.toLowerCase().trim()) return false;
-        }
-
-        // Category filter
-        if (cat === 'independent' && inst.tier !== 'A') return false;
-        if (cat === 'high_digitization') {
-          const dig = arch.digitization_status || '';
-          const m = dig.match(/(\d+)%/);
-          const pct = m ? parseInt(m[1], 10) : 0;
-          if (pct < 70) return false;
-        }
-        if (cat === 'ephemera') {
-          const hasEph = (arch.primary_holdings || []).some(h => {
-            const t = ((h.category || '') + ' ' + (h.scope || '')).toLowerCase();
-            return t.includes('ephemera') || t.includes('zine') || t.includes('counter-culture') || t.includes('manifesto');
-          });
-          if (!hasEph) return false;
-        }
-        if (cat === 'av') {
-          const hasAV = (arch.primary_holdings || []).some(h => {
-            const t = ((h.category || '') + ' ' + (h.scope || '')).toLowerCase();
-            return t.includes('audio') || t.includes('oral') || t.includes('sound') || t.includes('tape') || t.includes('performance');
-          });
-          if (!hasAV) return false;
-        }
-        if (cat === 'dossiers') {
-          const hasDos = (arch.primary_holdings || []).some(h => {
-            const t = ((h.category || '') + ' ' + (h.scope || '')).toLowerCase();
-            return t.includes('dossier') || t.includes('production') || t.includes('exhibition') || t.includes('correspondence');
-          });
-          if (!hasDos) return false;
-        }
-        if (cat === 'study') {
-          const hasStd = (arch.primary_holdings || []).some(h => {
-            const t = ((h.category || '') + ' ' + (h.scope || '')).toLowerCase();
-            return t.includes('study') || t.includes('permanent') || t.includes('collection') || t.includes('proof');
-          });
-          if (!hasStd) return false;
-        }
-
-        // Query search
-        if (q) {
-          const haystack = [
-            inst.name || '',
-            inst.city || '',
-            inst.country || '',
-            arch.archive_name || '',
-            arch.curatorial_scope || '',
-            arch.summary || '',
-            arch.reading_room_policy || '',
-            arch.provenance_integrity || '',
-            (arch.highlight_treasures || []).join(' '),
-            (arch.primary_holdings || []).map(h => `${h.category} ${h.period} ${h.scope} ${h.items}`).join(' ')
-          ].join(' ').toLowerCase();
-          if (!haystack.includes(q)) return false;
-        }
-
-        return true;
-      });
-
-      const countEl = document.getElementById('archivesResultCount');
-      if (countEl) {
-        countEl.textContent = `Displaying ${Math.min(currentArchivesLimit, filtered.length)} of ${filtered.length} archival repositories`;
-      }
-
-      if (filtered.length === 0) {
-        list.innerHTML = `
-          <div class="p-8 text-center bg-black border border-[#222d42] rounded-2xl text-[#f4f4f4]">
-            
-            <p class="font-medium text-white mb-1">No archives match your search criteria</p>
-            <p class="text-[14px] text-[#f4f4f4]">Try adjusting your keywords or clearing the category/city filters.</p>
-          </div>
-        `;
-        return;
-      }
-
-      const displayed = filtered.slice(0, currentArchivesLimit);
-      let cardsHtml = displayed.map(inst => {
-        const arch = inst.archives_and_collections;
-        const isClean = inst.tier === 'A';
-        const isFlagged = inst.tier === 'B';
-        const tierBadgeHtml = isClean 
-          ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-emerald-500/60 bg-emerald-950/40 text-emerald-300 font-bold">Clean, source cited</span>`
-          : (isFlagged 
-            ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#8a3ffc]/60 bg-black text-[#be95ff] font-bold">Flagged</span>`
-            : `<span class="text-[14px] font-mono px-2 py-0.5 rounded border border-[#08bdba]/60 bg-black text-[#f4f4f4] font-bold">Statutory Public Audit</span>`);
-
-        const holdingsGrid = (arch.primary_holdings || []).map(h => `
-          <div class="bg-black border border-[#202b3f] rounded-xl p-2.5 flex flex-col gap-1">
-            <div class="flex items-start justify-between gap-1">
-              <strong class="text-white text-[14px] font-medium leading-snug">${escapeHtml(h.category)}</strong>
-              <span class="text-[14px] font-mono text-[#f4f4f4] bg-cyan-950/70 border border-cyan-800/60 px-1.5 py-0.2 rounded shrink-0">${escapeHtml(h.items)}</span>
-            </div>
-            <div class="text-[14px] font-mono text-[#f4f4f4]">${escapeHtml(h.period)}</div>
-            <p class="text-[#f4f4f4] text-[14px] leading-snug mt-0.5">${escapeHtml(h.scope)}</p>
-          </div>
-        `).join('');
-
-        const treasuresList = (arch.highlight_treasures || []).map(t => `
-          <li class="flex items-start gap-1.5">
-            
-            <span>${escapeHtml(t)}</span>
-          </li>
-        `).join('');
-
-        const findingAidBtn = arch.finding_aids_url ? `
-          <a href="${escapeHtml(arch.finding_aids_url)}" target="_blank" rel="noopener noreferrer" class="xray-pill text-[14px] transition inline-flex items-center gap-1">
-            <span>Finding Aid</span>
-          </a>
-        ` : '';
-
-        return `
-          <div class="archive-card bg-black border border-[#222f47] hover:border-[#385177] rounded-2xl p-4 transition duration-150 flex flex-col gap-3 shadow-md">
-            <!-- Header Row -->
-            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
-              <div>
-                <div class="flex items-center gap-2 flex-wrap">
-                  ${tierBadgeHtml}
-                  <span class="text-[14px] font-mono text-[#f4f4f4]">${escapeHtml(inst.city)}, ${escapeHtml(inst.country)}</span>
-                  ${arch.curatorial_scope ? `<span class="text-[14px] font-mono px-2 py-0.5 rounded bg-black text-[#f4f4f4] border border-[#2d4368]">${escapeHtml(arch.curatorial_scope)}</span>` : ''}
-                </div>
-                <h4 class="text-[18px] font-normal text-white mt-1 leading-snug">${escapeHtml(inst.name)}</h4>
-                <div class="text-[14px] text-[#f4f4f4] font-mono font-medium">${escapeHtml(arch.archive_name)}</div>
-              </div>
-              <div class="flex items-center gap-1.5 shrink-0 flex-wrap">
-                <button type="button" onclick="window.zoomToBuildingFromArchive('${escapeHtml(inst.name)}')" class="xray-pill text-[14px] transition flex items-center gap-1 cursor-pointer" title="Show this building on the map">
-                  <span>Building view</span>
-                </button>
-                ${findingAidBtn}
-                <button type="button" onclick="window.askCuratorAboutArchive('${escapeHtml(inst.name)}')" class="xray-pill text-[14px] transition flex items-center gap-1 cursor-pointer" title="Ask Curator in chat">
-                  <span>Inquire</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Summary -->
-            <p class="text-[#f4f4f4] text-[14px] leading-relaxed">${escapeHtml(arch.summary)}</p>
-
-            <!-- 4-Grid Primary Holdings -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
-              ${holdingsGrid}
-            </div>
-
-            <!-- Reading Room, Digitization & Highlight Treasures -->
-            <div class="bg-black border border-[#1f293d] rounded-xl p-3 flex flex-col gap-2 text-[14px]">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1.5 border-b border-[#1f293d]">
-                <div class="text-[#f4f4f4]">
-                  <strong class="text-[#f4f4f4] font-mono text-[14px] tracking-wider block sm:inline mr-1">Reading Room Policy:</strong>
-                  <span>${escapeHtml(arch.reading_room_policy)}</span>
-                </div>
-                <div class="shrink-0 text-right">
-                  <span class="text-[14px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">
-                    ${escapeHtml(arch.digitization_status)}
-                  </span>
-                </div>
-              </div>
-
-              ${treasuresList ? `
-                <div class="text-[#f4f4f4]">
-                  <strong class="text-amber-400 font-mono text-[14px] tracking-wider block mb-1">Highlight Archival Treasures:</strong>
-                  <ul class="space-y-1 text-[14px] text-[#f4f4f4] leading-snug">
-                    ${treasuresList}
-                  </ul>
-                </div>
-              ` : ''}
-
-              ${arch.provenance_integrity ? `
-                <div class="text-[14px] font-mono text-[#f4f4f4] pt-1 border-t border-[#1f293d] flex items-center gap-1.5">
-                  <span class="text-[#f4f4f4]">Provenance Integrity:</span>
-                  <span>${escapeHtml(arch.provenance_integrity)}</span>
-                </div>
-              ` : ''}
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      if (filtered.length > currentArchivesLimit) {
-        cardsHtml += `
-          <div class="text-center py-3">
-            <button id="archivesLoadMoreBtn" class="xray-pill text-[14px] cursor-pointer">
-              Show More Archives (+40), ${filtered.length - currentArchivesLimit} remaining
-            </button>
-          </div>
-        `;
-      }
-
-      list.innerHTML = cardsHtml;
-
-      document.getElementById('archivesLoadMoreBtn')?.addEventListener('click', () => {
-        currentArchivesLimit += 40;
-        renderArchivesDirectory();
-      });
-    }
-    window.renderArchivesDirectory = renderArchivesDirectory;
-
-    window.zoomToBuildingFromArchive = function(instName) {
-      closeArchivesDirectoryModal();
-      const inst = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === instName.toLowerCase());
-      if (inst && typeof zoomToBuilding === 'function') {
-        zoomToBuilding(inst, true);
-      }
-    };
-
-    window.askCuratorAboutArchive = function(instName) {
-      closeArchivesDirectoryModal();
-      const input = document.getElementById('workInput');
-      if (input) {
-        input.value = `Tell me about the archival holdings, special collections, and research policies at ${instName}`;
-        const form = document.getElementById('workInputForm');
-        if (form) {
-          if (typeof form.requestSubmit === 'function') {
-            form.requestSubmit();
-          } else {
-            form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-          }
-        }
-      }
-    };
 
     // =========================================================================
     //  REAL-TIME LIVE WEB SCRAPER & RESEARCH ENGINE
@@ -17507,7 +16821,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         setActiveMobileTab(tabDossier);
         chatDrawer?.classList.add('hidden');
         bottomSheet?.classList.remove('hidden');
-        document.getElementById('mobile3DActiveIndicator')?.classList.add('hidden');
         if (stickyDock) stickyDock.classList.remove('hidden');
       });
 
@@ -17607,40 +16920,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const inst = selectedInstitution || (typeof ALL_INSTITUTIONS !== 'undefined' ? null : null);
         if (inst && typeof openGossipDossier === 'function') {
           openGossipDossier(inst);
-        }
-      });
-      document.getElementById('dossier-sheet-link-3d')?.addEventListener('click', () => {
-        const inst = selectedInstitution || (typeof ALL_INSTITUTIONS !== 'undefined' ? null : null);
-        if (inst && typeof zoomToBuilding === 'function') {
-          zoomToBuilding(inst);
-          if (window.innerWidth < 768) {
-            const sheet = document.getElementById('dossier-bottom-sheet');
-            if (sheet) sheet.classList.add('hidden');
-            const ind = document.getElementById('mobile3DActiveIndicator');
-            if (ind) {
-              const nameEl = document.getElementById('mobile3DActiveName');
-              if (nameEl) nameEl.textContent = inst.name;
-              ind.classList.remove('hidden');
-            }
-          }
-        }
-      });
-      document.getElementById('mobile3DBackToDossierBtn')?.addEventListener('click', () => {
-        const ind = document.getElementById('mobile3DActiveIndicator');
-        if (ind) ind.classList.add('hidden');
-        const sheet = document.getElementById('dossier-bottom-sheet');
-        if (sheet) sheet.classList.remove('hidden');
-      });
-      document.getElementById('mobile3DActiveIndicator')?.addEventListener('click', (e) => {
-        if (e.target && e.target.closest('#mobile3DBackToDossierBtn')) return;
-        const ind = document.getElementById('mobile3DActiveIndicator');
-        if (ind) ind.classList.add('hidden');
-        const sheet = document.getElementById('dossier-bottom-sheet');
-        if (sheet) sheet.classList.remove('hidden');
-      });
-      document.getElementById('dossier-sheet-link-photos')?.addEventListener('click', () => {
-        if (selectedInstitution && typeof openArchiveHoldingsModal === 'function') {
-          openArchiveHoldingsModal(selectedInstitution);
         }
       });
       document.getElementById('collapseDossierBtn')?.addEventListener('click', (e) => {
@@ -18531,21 +17810,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       openResearchFeedbackModal();
     });
 
-    //  Dedicated Archives & Special Collections Directory Modal Handlers
-    const archModal = document.getElementById('archivesDirectoryModal');
-    document.getElementById('topArchivesBtn')?.addEventListener('click', () => openArchivesDirectoryModal('all'));
-    document.getElementById('mobileArchivesBtn')?.addEventListener('click', () => openArchivesDirectoryModal('all'));
-    document.getElementById('workMenuArchivesBtn')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      workPlusMenu?.classList.add('hidden');
-      openArchivesDirectoryModal('all');
-    });
-    document.getElementById('closeArchivesModalBtn')?.addEventListener('click', closeArchivesDirectoryModal);
-    document.getElementById('closeArchivesModalFooterBtn')?.addEventListener('click', closeArchivesDirectoryModal);
-    archModal?.addEventListener('click', (e) => {
-      if (e.target === archModal) closeArchivesDirectoryModal();
-    });
-
     //  Governance & Funding Transparency Methodology Modal Handlers
     const govModal = document.getElementById('governanceMethodologyModal');
     document.getElementById('topGovernanceBtn')?.addEventListener('click', openGovernanceMethodologyModal);
@@ -18615,40 +17879,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('faFilterHighProgBtn')?.addEventListener('click', () => {
       closeFiscalAnalyticsHUD();
       setCategoryFilter('finance_high_program', true);
-    });
-
-    const archivesSearchInput = document.getElementById('archivesSearchInput');
-    const clearArchivesSearchBtn = document.getElementById('clearArchivesSearchBtn');
-    archivesSearchInput?.addEventListener('input', (e) => {
-      currentArchivesSearch = e.target.value;
-      if (clearArchivesSearchBtn) {
-        if (currentArchivesSearch) clearArchivesSearchBtn.classList.remove('hidden');
-        else clearArchivesSearchBtn.classList.add('hidden');
-      }
-      currentArchivesLimit = 40;
-      renderArchivesDirectory();
-    });
-    clearArchivesSearchBtn?.addEventListener('click', () => {
-      if (archivesSearchInput) archivesSearchInput.value = '';
-      currentArchivesSearch = '';
-      clearArchivesSearchBtn.classList.add('hidden');
-      currentArchivesLimit = 40;
-      renderArchivesDirectory();
-    });
-
-    document.getElementById('archivesCityFilter')?.addEventListener('change', (e) => {
-      currentArchivesCity = e.target.value;
-      currentArchivesLimit = 40;
-      renderArchivesDirectory();
-    });
-
-    document.querySelectorAll('#archivesFilterChips .archives-filter-chip').forEach(ch => {
-      ch.addEventListener('click', () => {
-        currentArchivesCategory = ch.getAttribute('data-filter') || 'all';
-        currentArchivesLimit = 40;
-        updateArchivesFilterChipsUI();
-        renderArchivesDirectory();
-      });
     });
 
     // Unified Work Input Send Action
@@ -19744,15 +18974,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     // Initialize UI Status on startup
     updateAIStatusUI();
-    if (typeof setBuilding3DHeadroom === 'function') {
-    }
-
-    document.querySelectorAll('.headroom-setting-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const mode = btn.getAttribute('data-headroom');
-        if (typeof setBuilding3DHeadroom === 'function') setBuilding3DHeadroom(mode, true);
-      });
-    });
 
     // =========================================================
     //  CATALOG LIST & FILTERING ENGINE
@@ -19788,10 +19009,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (chevron) chevron.classList.add('rotate-180');
         if (bottomDock) bottomDock.classList.add('hidden');
         if (subActionBar) subActionBar.classList.add('hidden');
-        //  MUTUAL EXCLUSIVITY: Automatically collapse/hide building inspector HUD so panels never collide!
-        if (typeof hideBuildingFloorInspectorHud === 'function') {
-          hideBuildingFloorInspectorHud();
-        }
       } else {
         drawer.classList.add('hidden');
         if (chevron) chevron.classList.remove('rotate-180');
@@ -20209,10 +19426,6 @@ bar.innerHTML = html;
               openCatalogModal('ACADEMIC');
             } else if (typeof openAcademicResearchModal === 'function') {
               openAcademicResearchModal('all');
-            }
-          } else if (type === 'archives') {
-            if (typeof openArchivesDirectoryModal === 'function') {
-              openArchivesDirectoryModal('all');
             }
           } else if (type === 'governance') {
             if (typeof openGovernanceMethodologyModal === 'function') {
@@ -21282,13 +20495,10 @@ bar.innerHTML = html;
         const auditModal = document.getElementById('momaAuditModal');
         const rfModal = document.getElementById('researchFeedbackModal');
         const arModal = document.getElementById('academicResearchModal');
-        const archModal = document.getElementById('archivesDirectoryModal');
         if (rfModal && !rfModal.classList.contains('hidden')) {
           rfModal.classList.add('hidden');
         } else if (arModal && !arModal.classList.contains('hidden')) {
           arModal.classList.add('hidden');
-        } else if (archModal && !archModal.classList.contains('hidden')) {
-          archModal.classList.add('hidden');
         } else if (drawer && !drawer.classList.contains('hidden')) {
           drawer.classList.add('hidden');
         } else if (catModal && !catModal.classList.contains('hidden')) {
