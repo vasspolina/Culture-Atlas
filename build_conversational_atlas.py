@@ -2429,7 +2429,7 @@ def build():
             <div class="space-y-1.5 text-[14pt] font-mono">
               <span class="text-amber-400 font-normal flex items-center gap-1.5 tracking-wide">
                 <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-                <span>Field Intel &amp; Whispers</span>
+                <span>Community Whispers &amp; Murmurs</span>
               </span>
               <div>
                 <span id="floatingCardGossipIntensityBadge" class="text-[14pt] font-mono text-[#f1c21b] font-normal inline-block">Documented</span>
@@ -2543,9 +2543,9 @@ def build():
               ✕
             </button>
           </div>
-          <div class="w-full">
-            <h2 class="text-[18pt] font-normal text-[#f4f4f4] tracking-tight block" id="dossier-sheet-name">Green Papaya Art Projects</h2>
-            <p class="text-[14pt] text-[#8d8d8d] font-mono mt-0.5 block" id="dossier-sheet-meta">Quezon City / Manila, Philippines · Artist-Run</p>
+          <div class="w-full min-w-0">
+            <h2 class="text-lg sm:text-[18pt] font-normal text-[#f4f4f4] tracking-normal leading-snug break-words hyphens-auto block" id="dossier-sheet-name">Green Papaya Art Projects</h2>
+            <p class="text-[14pt] text-[#8d8d8d] font-mono mt-0.5 block break-words" id="dossier-sheet-meta">Quezon City / Manila, Philippines · Artist-Run</p>
           </div>
         </div>
         <!-- Mode Toggle Tabs (Verified Info vs Gossip Mode) - Vertically Stacked (One per row) -->
@@ -2645,7 +2645,7 @@ def build():
           <div id="dossier-sheet-gossip-pane" class="hidden space-y-2.5">
             <div class="py-2.5 border-b border-[#262626] space-y-2">
               <div class="flex flex-col items-start gap-1">
-                <span class="text-[14pt] font-mono text-[#f1c21b] tracking-wider block">Field Intel &amp; Whispers</span>
+                <span class="text-[14pt] font-mono text-[#f1c21b] tracking-wider block">Community Whispers &amp; Murmurs</span>
                 <div>
                   <span class="text-[14pt] font-normal text-[#f1c21b] inline-block" id="dossier-sheet-gossip-badge">Documented</span>
                 </div>
@@ -3114,8 +3114,8 @@ def build():
         <!-- Scrollable Dossier Body -->
         <div id="desktopDossierBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-[14pt]">
           <!-- 1. Header & Title -->
-          <div class="space-y-1.5">
-            <h2 id="desktopDossierName" class="text-[26pt] font-normal text-[#f4f4f4] tracking-tight leading-tight">Green Papaya Art Projects</h2>
+          <div class="space-y-1.5 min-w-0">
+            <h2 id="desktopDossierName" class="text-xl sm:text-2xl md:text-[22px] lg:text-[24px] font-normal text-[#f4f4f4] tracking-normal leading-snug break-words hyphens-auto">Green Papaya Art Projects</h2>
             <div class="flex items-center gap-2">
               <span id="desktopDossierTier" class="inline-flex items-center gap-1 text-[#42be65] text-[14pt] font-normal">
                 <svg class="w-3.5 h-3.5 text-[#42be65]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -3288,7 +3288,7 @@ def build():
             <div class="flex items-center justify-between text-[14pt]">
               <span class="text-[#f1c21b] font-normal flex items-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#f1c21b] animate-pulse"></span>
-                <span>Field Intel &amp; Whispers</span>
+                <span>Community Whispers &amp; Murmurs</span>
               </span>
               <span id="desktopDossierGossipBadge" class="text-[14pt] font-mono text-[#f1c21b] font-normal">Documented</span>
             </div>
