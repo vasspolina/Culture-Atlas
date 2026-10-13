@@ -1912,7 +1912,14 @@ return maplibregl$1;
 //# sourceMappingURL=maplibre-gl.js.map
 
   </script>
-<style>html{font-synthesis:none}</style>
+<style>html{font-synthesis:none}
+@media (max-width: 767px) {
+  body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection { display: none; }
+  #cityViewControlBanner { flex-wrap: wrap; row-gap: 2px; max-width: calc(100% - 16px); }
+  .maplibregl-ctrl-top-right { margin-top: 64px; }
+  #dossier-sheet-name { margin: 0 !important; }
+}
+</style>
 </head>
 <body class="bg-[#0c0c0e] text-slate-100 space-background h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
 
@@ -2049,7 +2056,7 @@ return maplibregl$1;
       </div>
 
       <!-- BEGIN: FloatingFilterCategoryChips (Mobile Bar matching code.html & media_1791792341045_b9272491.png) -->
-      <section class="relative z-20 pt-2 px-3 flex md:hidden items-center justify-between pointer-events-auto" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
+      <section class="relative z-20 pt-2 px-3 flex md:hidden flex-col gap-1 pointer-events-auto" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
         <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-1 text-[14px] w-full">
           <button id="mobileQuick3DBtn" type="button" onclick="if (typeof window.toggle3DBuildingView === 'function') window.toggle3DBuildingView();" class="px-2.5 py-1 rounded-full font-medium bg-sky-950/90 text-sky-300 border border-sky-500/60 whitespace-nowrap shadow-sm cursor-pointer">3D Buildings</button>
           <button type="button" onclick="window.openResistanceTimelineModal();" class="px-2.5 py-1 rounded-full font-medium bg-purple-950/70 text-purple-300 border border-purple-800/60 whitespace-nowrap cursor-pointer">Victories</button>
@@ -2058,15 +2065,14 @@ return maplibregl$1;
           <button type="button" onclick="window.openCuratorialItineraryModal();" class="px-2.5 py-1 rounded-full font-medium bg-rose-950/60 text-rose-300 border border-rose-800/40 whitespace-nowrap cursor-pointer">Crawls</button>
           <button type="button" onclick="window.toggleRailCorridors(event);" class="px-2.5 py-1 rounded-full font-medium bg-slate-900 text-slate-300 border border-slate-700 whitespace-nowrap cursor-pointer">Rail</button>
         </div>
-      </section>
-      <!-- END: FloatingFilterCategoryChips -->
-
-      <!-- Floating Quick Viewport Tools (Top Left of Globe on mobile matching code.html) -->
-      <div class="absolute top-12 left-3 flex flex-wrap gap-1 z-20 md:hidden">
+        <div class="flex gap-1">
         <button type="button" class="px-2 py-0.5 rounded text-[14px] bg-slate-900/80 text-cyan-300 border border-cyan-800/50 backdrop-blur-sm cursor-pointer" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();">World</button>
         <button type="button" class="px-2 py-0.5 rounded text-[14px] bg-slate-900/80 text-slate-300 border border-slate-700/60 backdrop-blur-sm cursor-pointer" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();">Spin</button>
         <button type="button" class="px-2 py-0.5 rounded text-[14px] bg-slate-900/80 text-slate-300 border border-slate-700/60 backdrop-blur-sm cursor-pointer" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();">Expand</button>
-      </div>
+        </div>
+      </section>
+      <!-- END: FloatingFilterCategoryChips -->
+
 
       <!-- Outer Celestial Orbit Lines (Mobile Matching code.html) -->
       <div class="absolute w-[330px] h-[330px] rounded-full border border-cyan-500/10 globe-ring pointer-events-none md:hidden"></div>
@@ -2205,7 +2211,7 @@ return maplibregl$1;
 
       
       <!-- BEGIN: SpaceDetailCardBottomSheet (Mobile Sliding Sheet) -->
-      <section class="relative z-30 max-h-[52vh] flex md:hidden flex-col bg-[#161616]/98 border-t border-[#262626] rounded-none backdrop-blur-xl transition-all duration-300" data-purpose="space-dossier-sheet" id="dossier-bottom-sheet">
+      <section class="relative z-30 hidden max-h-[52vh] flex md:hidden flex-col bg-[#161616] border-t border-[#262626] rounded-none transition-all duration-300" data-purpose="space-dossier-sheet" id="dossier-bottom-sheet">
         <!-- Grab Handle & Header Bar -->
         <div class="pt-2 pb-1 px-4 flex flex-col items-center cursor-pointer" id="sheet-drag-handle">
           <div class="w-10 h-0.5 bg-[#393939] mb-2"></div>
@@ -2220,7 +2226,7 @@ return maplibregl$1;
           </div>
           <div class="w-full min-w-0">
             <h2 class="text-lg sm:text-[18px] font-normal text-[#f4f4f4] tracking-normal leading-snug break-words hyphens-auto block" id="dossier-sheet-name"></h2>
-            <p class="text-[14px] text-[#8d8d8d] font-mono mt-0.5 block break-words" id="dossier-sheet-meta"></p>
+            <p class="no-indent text-[14px] text-[#8d8d8d] font-mono mt-0.5 block break-words" id="dossier-sheet-meta"></p>
           </div>
         </div>
         <!-- Scrollable Card Body Details -->
@@ -3204,7 +3210,7 @@ return maplibregl$1;
 
   <!-- AI MODEL & API SETTINGS MODAL (Multi-Provider Support) -->
   <!-- ========================================================================= -->
-  <div id="curatorSettingsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+  <div id="curatorSettingsModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#18181b] border border-[#2e2e2e] rounded-3xl max-w-lg w-full p-6 shadow-2xl flex flex-col gap-4 max-h-[92vh] overflow-y-auto custom-scrollbar">
       
       <!-- Modal Header -->
@@ -3329,7 +3335,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <!-- 🔒 CONFIDENTIAL FIELD INTELLIGENCE & WHISTLEBLOWER INTAKE CHAT MODAL -->
   <!-- ========================================================= -->
-  <div id="confidentialIntakeChatModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
+  <div id="confidentialIntakeChatModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
     <div class="bg-[#141416] border border-[#27272a] rounded-2xl sm:rounded-3xl max-w-2xl w-full h-[88vh] max-h-[740px] text-white shadow-2xl flex flex-col overflow-hidden">
       
       <!-- Intake Window Header -->
@@ -3391,7 +3397,7 @@ return maplibregl$1;
   </div>
 
   <!-- Research & Feedback Modal (Community Verification Pipeline) -->
-  <div id="researchFeedbackModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
+  <div id="researchFeedbackModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
     <div class="bg-[#171717] border border-[#2e2e2e] rounded-2xl sm:rounded-3xl max-w-xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] overflow-y-auto flex flex-col gap-4">
       
       <!-- Modal Header -->
@@ -3474,7 +3480,7 @@ return maplibregl$1;
       </form>
 
   <!-- Academic Research Library Modal (Consensus Peer-Reviewed Corpus) -->
-  <div id="academicResearchModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
+  <div id="academicResearchModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text">
     <div class="bg-[#121214] border border-[#2e2e2e] rounded-2xl sm:rounded-3xl max-w-3xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] flex flex-col gap-3">
       
       <!-- Modal Header -->
@@ -3607,7 +3613,7 @@ return maplibregl$1;
   </div>
 
   <!-- 📚 DEDICATED ARCHIVES & SPECIAL COLLECTIONS DIRECTORY MODAL -->
-  <div id="archivesDirectoryModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
+  <div id="archivesDirectoryModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
     <div class="bg-[#11141f] border border-[#232f48] rounded-2xl sm:rounded-3xl max-w-5xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[94vh] flex flex-col gap-3.5 font-sans">
       
       <!-- Modal Header -->
@@ -3679,7 +3685,7 @@ return maplibregl$1;
   </div>
 
   <!-- ⚖️ GOVERNANCE & FUNDING TRANSPARENCY METHODOLOGY MODAL -->
-  <div id="governanceMethodologyModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
+  <div id="governanceMethodologyModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
     <div class="bg-[#10141f] border border-[#232f48] rounded-2xl sm:rounded-3xl max-w-4xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] flex flex-col gap-4 font-sans">
       
       <!-- Modal Header -->
@@ -3893,7 +3899,7 @@ return maplibregl$1;
   </div>
 
   <!-- 📊 INSTITUTIONAL FINANCE & FISCAL OPERATING ANALYTICS HUD MODAL -->
-  <div id="fiscalAnalyticsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
+  <div id="fiscalAnalyticsModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
     <div class="bg-[#0b121e] border border-[#1e2e4a] rounded-2xl sm:rounded-3xl max-w-4xl w-full p-4 sm:p-6 text-white shadow-2xl max-h-[92vh] flex flex-col gap-3.5 font-sans">
       
       <!-- Modal Header -->
@@ -4031,7 +4037,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <!-- 📍 CURATORIAL ITINERARY & ART CRAWL GENERATOR MODAL -->
   <!-- ========================================================= -->
-  <div id="curatorialItineraryModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
+  <div id="curatorialItineraryModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 select-text">
     <div class="relative w-full max-w-4xl max-h-[92vh] flex flex-col bg-[#081711] border border-emerald-500/50 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden">
       
       <!-- Modal Header -->
@@ -4083,7 +4089,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <!-- 🕸️ INSTITUTIONAL TRUSTEE & BOARD CONFLICT NETWORK MODAL -->
   <!-- ========================================================= -->
-  <div id="trusteeConflictNetworkModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-text">
+  <div id="trusteeConflictNetworkModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-text">
     <div class="relative w-full max-w-6xl max-h-[94vh] h-[94vh] flex flex-col bg-[#0b0813] border border-purple-500/50 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden text-zinc-200">
       
       <!-- Modal Header -->
@@ -4208,7 +4214,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <!-- ✊ INTERACTIVE TIMELINE OF CULTURAL BOYCOTTS & VICTORIES -->
   <!-- ========================================================= -->
-  <div id="resistanceTimelineModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-text">
+  <div id="resistanceTimelineModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-text">
     <div class="relative w-full max-w-5xl max-h-[94vh] h-[94vh] flex flex-col bg-[#0f0910] border border-rose-500/50 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden text-zinc-200">
       
       <!-- Modal Header -->
@@ -4268,7 +4274,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <!-- 📑 STATUTORY FILINGS & IRS FORM 990 EXPLORER -->
   <!-- ========================================================= -->
-  <div id="statutoryFilingsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-text">
+  <div id="statutoryFilingsModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-text">
     <div class="relative w-full max-w-5xl max-h-[94vh] h-[94vh] flex flex-col bg-[#07111c] border border-sky-500/50 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden text-zinc-200">
       
       <!-- Modal Header -->
@@ -26663,9 +26669,7 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       tabAtlas?.addEventListener('click', () => {
         setActiveMobileTab(tabAtlas);
         chatDrawer?.classList.add('hidden');
-        if (bottomSheet) {
-          bottomSheet.classList.toggle('hidden');
-        }
+        bottomSheet?.classList.add('hidden');
         if (stickyDock) stickyDock.classList.remove('hidden');
         if (typeof setMobileViewMode === 'function') setMobileViewMode('map');
       });
@@ -26689,14 +26693,6 @@ Berlin's independent contemporary ecosystem offers stellar peer spaces with clea
       document.getElementById('curatorDrawerListenBtn')?.addEventListener('click', () => {
         if (typeof toggleCuratorVoice === 'function') toggleCuratorVoice();
       });
-
-      // Pre-initialize default space in mobile bottom sheet
-      if (typeof ALL_INSTITUTIONS !== 'undefined' && ALL_INSTITUTIONS.length > 0) {
-        const defaultInst = ALL_INSTITUTIONS.find(i => i.name && i.name.toLowerCase().includes('green papaya')) || ALL_INSTITUTIONS[0];
-        if (defaultInst && typeof updateMobileDossier === 'function') {
-          updateMobileDossier(defaultInst);
-        }
-      }
 
       tabFilters?.addEventListener('click', () => {
         setActiveMobileTab(tabFilters);
