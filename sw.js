@@ -22,6 +22,8 @@ self.addEventListener('activate', (event) => {
     })
   );
   self.clients.claim();
+  // Pages open from an older release reload once, onto the network copy.
+  event.waitUntil(self.clients.matchAll({ type: 'window' }).then((windows) => windows.forEach((w) => w.navigate(w.url).catch(() => {}))));
 });
 
 self.addEventListener('fetch', (event) => {
