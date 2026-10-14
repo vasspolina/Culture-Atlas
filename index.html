@@ -9817,8 +9817,7 @@ return maplibregl$1;
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${domain}`;
 
-      // A white block with the name in capitals, facts in the grotesque, the website as a black pill.
-      // The left bar carries the tier: cyan clean, orange flagged, mustard unverified.
+      // A white block with the name in capitals, facts in the grotesque, the website as a black square.
       const nameText = inst.name;
       const nameUpper = nameText.toUpperCase();
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
@@ -9830,7 +9829,7 @@ return maplibregl$1;
       const subW = ctx.measureText(subText).width;
       const webW = ctx.measureText(domainPillText).width;
 
-      const barW = 8;
+      const barW = 0;
       const padX = 16;
       const cardW = Math.max(260, Math.min(400, Math.max(nameW, subW, webW + 28) + barW + padX * 2));
       const pillH = 26;
@@ -9844,8 +9843,6 @@ return maplibregl$1;
 
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(cardX, cardY, cardW, cardH);
-      ctx.fillStyle = inst.tier === 'A' ? '#9ae3e8' : inst.tier === 'B' ? '#ff6119' : '#c8b85a';
-      ctx.fillRect(cardX, cardY, barW, cardH);
 
       const textX = cardX + barW + padX;
       const maxTextW = cardW - barW - padX * 2;
@@ -9874,9 +9871,7 @@ return maplibregl$1;
         const btnH = pillH;
 
         ctx.fillStyle = '#000000';
-        ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(btnX, btnY, btnW, btnH, btnH / 2); else ctx.rect(btnX, btnY, btnW, btnH);
-        ctx.fill();
+        ctx.fillRect(btnX, btnY, btnW, btnH);
         ctx.fillStyle = '#ffffff';
         ctx.textBaseline = 'middle';
         ctx.fillText(fit(domainPillText), btnX + 12, btnY + btnH / 2 + 0.5);
@@ -10153,17 +10148,27 @@ return maplibregl$1;
           ctx.fillStyle = fill;
           ctx.fillText(text, x, y);
         };
-        // City and museum names sit on a pill, like the buttons: white with black text,
-        // yellow when hovered or selected (white on yellow in gossip mode).
-        const drawPillLabel = (text, cx0, cy0, active) => {
+        // City and museum names sit on a square block. The block takes the colour of the spaces it names:
+        // cyan clean, orange flagged, mustard unverified (a city: the tier most of its spaces have).
+        // Yellow when hovered or selected (white on yellow in gossip mode).
+        const TIER_FILL = { A: '#9ae3e8', B: '#ff6119' };
+        const cityTierCache = {};
+        const cityTier = (name) => {
+          const k = (name || '').toLowerCase().trim();
+          if (!cityTierCache[k]) {
+            const n = { A: 0, B: 0, U: 0 };
+            ALL_INSTITUTIONS.forEach(i => { if ((i.city || '').toLowerCase().trim() === k) n[i.tier === 'A' || i.tier === 'B' ? i.tier : 'U']++; });
+            cityTierCache[k] = n.A >= n.B && n.A >= n.U ? 'A' : n.B >= n.U ? 'B' : 'U';
+          }
+          return cityTierCache[k];
+        };
+        const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 20, h = 22;
           const yellow = active !== isGossipModeActive;
-          ctx.fillStyle = yellow ? '#ffd600' : '#ffffff';
-          ctx.beginPath();
-          if (ctx.roundRect) ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, h / 2); else ctx.rect(cx0 - w / 2, cy0 - h / 2, w, h);
-          ctx.fill();
+          ctx.fillStyle = yellow ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a');
+          ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = '#000000';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -10256,7 +10261,7 @@ return maplibregl$1;
                 ctx.font = '14px "PP Neue Gstaad", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawPillLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2, !!(isSelected || isHovered));
+                drawPillLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2, !!(isSelected || isHovered), cityTier(city.name));
 
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
@@ -10268,7 +10273,7 @@ return maplibregl$1;
                 ctx.font = '14px "PP Neue Gstaad", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawPillLabel(txt, pt.x, by + bh / 2, !!(isSelected || isHovered));
+                drawPillLabel(txt, pt.x, by + bh / 2, !!(isSelected || isHovered), cityTier(city.name));
 
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
@@ -10487,7 +10492,7 @@ return maplibregl$1;
               drawnInstLabelBoxes.push({ x: bx, y: by, w: bw, h: bh });
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
-              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel);
+              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst.tier);
             }
             ctx.restore();
           }
@@ -10571,12 +10576,10 @@ return maplibregl$1;
               }
               ctx.fillText(countTxt, cardX + 16, currentY);
 
-              // Action: a pill. White with black text; yellow on hover (white on yellow in gossip mode).
+              // Action: a square. White with black text; yellow on hover (white on yellow in gossip mode).
               ctx.save();
               ctx.fillStyle = isHoveringCityExploreLink ? (isGossipModeActive ? '#ffffff' : '#ffd600') : (isGossipModeActive ? '#000000' : '#ffffff');
-              ctx.beginPath();
-              ctx.roundRect ? ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, linkBtnH / 2) : ctx.rect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
-              ctx.fill();
+              ctx.fillRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
               ctx.font = ATLAS_CARD_MONO_FONT;
               ctx.fillStyle = isGossipModeActive && !isHoveringCityExploreLink ? '#ffffff' : '#000000';
               ctx.textAlign = 'center';
