@@ -134,7 +134,7 @@ for rid, row in rows.items():
                 decisions.append({'id': rid, 'result': 'unverified', 'existing': m['existing'], 'found': found, 'why': 'no usable url'})
         else:
             s = second.get(rid)
-            sb = ((s or {}).get('a') or {}).get('address', '').strip() if s else ''
+            sb = (s.get('agreed') or ((s.get('a') or {}).get('address') or '')).strip() if s else ''
             if s and sb and addr_match(found, sb) and not city_only(found, rec):
                 urls = keep_urls(a.get('address_urls') + ((s.get('a') or {}).get('address_urls') or []), site)
                 if urls:

@@ -10713,7 +10713,17 @@
     "highlight": "Published monographic essay pamphlets written by emerging critics accompanying each solo project.",
     "visit_url": "https://cueartfoundation.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=CUE%20Art%20Foundation",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=CUE%20Art%20Foundation"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=CUE%20Art%20Foundation",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://cueartfoundation.org/updates-news/2021-exhibition-season",
+          "https://cueartfoundation.org/updates-news/tamara-johnson-opens-sweet-pass-sculpture-park"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "mercer-union-toronto",
@@ -10749,7 +10759,16 @@
     "visit_url": "https://www.mercerunion.org/contact/",
     "audit_dossier_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Mercer%20Union",
     "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Mercer%20Union",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://mercerunion.org/visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "western-front-vancouver",
@@ -10784,7 +10803,16 @@
     "amenities": "World-renowned audio-visual archives, Grand Luxe performance hall, artist studios.",
     "visit_url": "https://westernfront.ca/visit",
     "audit_dossier_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Western%20Front",
-    "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Western%20Front"
+    "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Western%20Front",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.westernfront.ca/uploads/f67472be3791ff40696cda9ec9418498.pdf"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "pivo-sao-paulo",
@@ -10816,7 +10844,16 @@
     "transit_tips": "S\u00e3o Paulo Metr\u00f4 Line 3 (Red) or Line 4 (Yellow) to Esta\u00e7\u00e3o Rep\u00fablica; 3-minute walk to Copan.",
     "accessibility": "Step-free ramp access via Copan shopping arcade; elevators serve all mezzanine gallery floors.",
     "amenities": "Piv\u00f4 Caf\u00e9 & Bar, specialized art bookstore, public reading patio, artist residency studios.",
-    "visit_url": "https://www.pivo.org.br/en/visit/"
+    "visit_url": "https://www.pivo.org.br/en/visit/",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://pivo.org.br/en/sobre/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "l-appartement-22-rabat",
@@ -10918,7 +10955,17 @@
     "highlight": "Former Brooke Bond tea packing factory transformed into one of Europe's largest production complexes for contemporary art.",
     "visit_url": "https://www.spikeisland.org.uk/plan-your-visit/",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Spike%20Island",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Spike%20Island"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Spike%20Island",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://register-of-charities.charitycommission.gov.uk/en/about-the-register-of-charities/-/charity-details/1003505/contact-information",
+          "https://visitbristol.co.uk/things-to-do/spike-island-p25851"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "hangar-barcelona",
@@ -10987,7 +11034,17 @@
     "highlight": "The bustling rooftop terrace hosting open-air experimental sound concerts, film screenings, and performance festivals.",
     "visit_url": "https://ca2m.org/en/visit-us",
     "audit_dossier_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=CA2M%20%28Centro%20de%20Arte%20Dos%20de%20Mayo%29",
-    "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=CA2M%20%28Centro%20de%20Arte%20Dos%20de%20Mayo%29"
+    "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=CA2M%20%28Centro%20de%20Arte%20Dos%20de%20Mayo%29",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://m-org.spain.info/en/places-of-interest/ca2m-dos-mayo-art-centre",
+          "https://www.spain.info/en/places-of-interest/ca2m-dos-mayo-art-centre/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "galeria-foksal-warsaw",
@@ -11121,7 +11178,17 @@
     ],
     "highlight": "The Kostka Gallery\u2014a towering former boiler room dedicated to solo site-specific contemporary interventions.",
     "visit_url": "https://www.meetfactory.cz/en/program/visual-arts",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://meetfactory.cz/en/edukace",
+          "https://www.meetfactory.cz/en/program/detail/obscure-uvadi-the-amity-affliction-au-the-plot-in-you-us-endless-heights-au"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "moderna-galerija-ljubljana",
@@ -11190,7 +11257,18 @@
     ],
     "highlight": "Traf\u00f3 Gallery's curated solo commissions tackling urgent Central European ecological and sociopolitical tensions.",
     "visit_url": "https://trafo.hu/en/about-us",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://ednetwork.eu/member/trafo",
+          "https://old.ednetwork.eu/member/trafo",
+          "https://myartguides.com/artspaces/museums/budapest/trafo-gallery-trafo-house-of-contemporary-arts"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "kassak-muzeum-budapest",
@@ -11223,7 +11301,16 @@
     ],
     "highlight": "Complete original runs of Kass\u00e1k's seminal revolutionary journals A Tett ('The Action') and MA ('Today').",
     "visit_url": "https://kassakmuzeum.hu/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://kassakmuzeum.hu/en"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "het-hem-zaandam",
@@ -11321,7 +11408,16 @@
     "visit_url": "https://marres.org/en/visit/",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Marres%2C%20House%20for%20Contemporary%20Culture",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=Marres%2C%20House%20for%20Contemporary%20Culture",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://marres.org/en/visit-marres/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "constant-brussels",
@@ -11390,7 +11486,16 @@
     ],
     "highlight": "The InfoLab\u2014a public specialized library and multimedia reading room offering over 10,000 contemporary art publications.",
     "visit_url": "https://www.casino-luxembourg.lu/en/visit",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://casino-luxembourg.lu/en/practical-info/contact-access"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "beursschouwburg-brussels",
@@ -11424,7 +11529,17 @@
     ],
     "highlight": "The panoramic rooftop overlooking the heart of Brussels, hosting open-air cinema, debates, and listening sessions.",
     "visit_url": "https://beursschouwburg.be/en/practical/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://beursschouwburg.prezly.com/en/media",
+          "https://jazzinbelgium.be/en/venues/218/beursschouwburg?l=en"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "kunstfort-bij-vijfhuizen",
@@ -11460,7 +11575,17 @@
     "visit_url": "https://www.kunstfort.nl/en/visit/",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Kunstfort%20bij%20Vijfhuizen",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=Kunstfort%20bij%20Vijfhuizen",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://museum.nl/en/kunstfort-bij-vijfhuizen",
+          "https://www.artrabbit.com/organisations/kunstfort-bij-vijfhuizen?view=cur"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "netwerk-aalst",
@@ -11530,7 +11655,17 @@
     "visit_url": "https://www.kunstraumkreuzberg.de/en/information/",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunstraum%20Kreuzberg/Bethanien",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunstraum%20Kreuzberg/Bethanien",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.museum.de/en/museen/kunstraum-kreuzberg-bethanien",
+          "https://sceneweb.no/en/organisation/10953/Kunstraum_Kreuzberg%2FBethanien"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "savvy-contemporary-berlin",
@@ -16156,7 +16291,17 @@
     "visit_url": "https://www.lacasaencendida.es/en/visit-us",
     "audit_dossier_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=La%20Casa%20Encendida",
     "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=La%20Casa%20Encendida",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.lacasaencendida.es/en/contact-how-to-get-here",
+          "https://www.lacasaencendida.es/contacto-como-llegar"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "matadero-madrid",
@@ -16193,7 +16338,17 @@
     "visit_url": "https://www.mataderomadrid.org/en/visit",
     "audit_dossier_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=Matadero%20Madrid",
     "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=Matadero%20Madrid",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.mataderomadrid.org/programacion/contact",
+          "https://www.mataderomadrid.org/en/visit-us-0"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "parco-arte-vivente-pav-turin",
@@ -16230,7 +16385,17 @@
     "visit_url": "https://parcoartevivente.it/en/visit/",
     "audit_dossier_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=PAV%20-%20Parco%20Arte%20Vivente",
     "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=PAV%20-%20Parco%20Arte%20Vivente",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "http://parcoartevivente.it/",
+          "http://parcoartevivente.it/en/pav/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "pastificio-cerere-rome",
@@ -16263,7 +16428,17 @@
     "visit_url": "https://www.pastificiocerere.it/en/visit/",
     "audit_dossier_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Fondazione%20Pastificio%20Cerere",
     "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Fondazione%20Pastificio%20Cerere",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://turismoroma.it/en/places/fondazione-pastificio-cerere",
+          "https://luoghidelcontemporaneo.cultura.gov.it/en/esplora/fondazione-pastificio-cerere_en/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "tranzit-ro-bucharest",
@@ -16463,7 +16638,16 @@
     ],
     "highlight": "The rooftop terrace overlooking the stone domes, church steeples, and minarets of the ancient Old City.",
     "visit_url": "https://almamalfoundation.org/visit/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://visitpalestine.ps/al-mamal-foundation/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "khalil-sakakini-cultural-center-ramallah",
@@ -16643,7 +16827,17 @@
     "visit_url": "https://apexart.org/visit.php",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Apexart",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Apexart",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://apexart.org/about-us2.html",
+          "https://apexart.org/general.php"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "abc-no-rio-new-york",
@@ -16714,7 +16908,17 @@
     "visit_url": "https://smackmellon.org/visit/",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Smack%20Mellon",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Smack%20Mellon",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.smackmellon.org/?p=23",
+          "https://en.wikipedia.org/wiki/Smack_Mellon"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "flux-factory-queens",
@@ -16785,7 +16989,16 @@
     "visit_url": "https://humanresourcesla.com/about/",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Human%20Resources%20LA%20%28HRLA%29",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Human%20Resources%20LA%20%28HRLA%29",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Human_Resources_Los_Angeles"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "coaxial-arts-foundation-la",
