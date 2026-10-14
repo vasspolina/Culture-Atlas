@@ -564,7 +564,7 @@ return maplibregl$1;
             <span id="workspaceSelectedInstName" class="truncate max-w-_200px"></span>
           </div>
           <button id="workspaceNewChatBtn" type="button" onclick="window.resetToNewChat();" class="meta flex items-center gap-1" title="Start new curator investigation">
-            <span>+ New Query</span>
+            <span>New Query</span>
           </button>
         </div>
       </div>
@@ -708,12 +708,7 @@ return maplibregl$1;
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Plus Button -->
-                  <button id="workPlusBtn" class="flex items-center justify-center shrink-0" title="Quick filters">
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="12" y1="5" x2="12" y2="19"></line>
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                  </button>
+                  <button id="workPlusBtn" class="flex items-center justify-center shrink-0" title="More ways to write">More</button>
                   <!-- Share information -->
                   <button id="chatBackBtn" type="button" onclick="window.exitChatInputMode()" class="whitespace-nowrap" title="Leave the note and go back to the chat">Back to chat</button>
                   <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('information')" class="whitespace-nowrap">Share information</button>
@@ -7275,7 +7270,7 @@ return maplibregl$1;
       const accounts = (g.accounts || []).length;
       const sources = (inst.sources || []).filter(u => /^https?:\/\//.test(u));
       const visiting = [inst.opening_hours ? 'Opening hours: ' + inst.opening_hours : '', (inst.admission_fee || inst.admission_policy) ? 'Admission: ' + (inst.admission_fee || inst.admission_policy) : '', inst.address ? 'Address: ' + inst.address : ''].filter(Boolean);
-      if (inst.why_flagged) cats.push({ key: 'flag', label: 'Why it is flagged', lines: [inst.why_flagged] });
+      if (inst.why_flagged) cats.push({ key: 'flag', label: 'Why it is flagged', lines: [inst.why_flagged].concat((inst.flag_details || []).map(d => d.text)) });
       if (inst.funding) cats.push({ key: 'funding', label: 'Funding', lines: [inst.funding] });
       if (reported.length) cats.push({ key: 'reported', label: `Reported, not independently verified (${reported.length})`, lines: reported });
       if (accounts) cats.push({ key: 'accounts', label: `Individual accounts (${accounts})`, lines: [xrayAccountsLine(inst)] });
@@ -10874,7 +10869,7 @@ return maplibregl$1;
     function documentedRecordHtml(inst) {
       if (!inst) return '';
       const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'source'; } };
-      const srcs = (urls) => (urls || []).filter(u => /^https?:\/\//.test(u)).slice(0, 5)
+      const srcs = (urls) => (urls || []).filter(u => /^https?:\/\//.test(u)).slice(0, 8)
         .map(u => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="">${escapeHtml(host(u))}</a>`).join(', ');
       const p = (label, text) => text ? `<p class="t-lead no-indent">${label}${escapeHtml(text)}</p>` : '';
       const li = (label, text) => text ? `<li>${label}${escapeHtml(text)}</li>` : '';
@@ -10882,12 +10877,16 @@ return maplibregl$1;
       const item = (title, meta, body, urls) => `
         <div class="record-card space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(title)}</div>
-          ${meta ? `<div class="kicker no-indent">${escapeHtml(meta)}</div>` : ''}
+          ${meta ? `<div class="kicker no-indent">${meta.html || escapeHtml(meta)}</div>` : ''}
           ${body}
           ${srcs(urls) ? `<div class="no-indent">${srcs(urls)}</div>` : ''}
         </div>`;
       const blocks = [];
-      if (inst.why_flagged) blocks.push(item('Why it is flagged', (inst.flags || []).join(', '), p('', inst.why_flagged), inst.sources));
+      if (inst.why_flagged) {
+        const more = (inst.flag_details || []).filter(d => d && d.text);
+        blocks.push(item('Why it is flagged', { html: (inst.flags || []).map(f => /epstein/i.test(f) ? `<mark class="flag-epstein">${escapeHtml(f)}</mark>` : escapeHtml(f)).join(', ') }, p('', inst.why_flagged) + more.map(d => p('', d.text)).join(''),
+          [...new Set((inst.sources || []).concat(more.map(d => d.url)))]));
+      }
       (inst.epstein_records || []).forEach(e => blocks.push(item(e.person || 'Epstein-related record', [e.link, e.status].filter(Boolean).join(', '),
         p('', e.summary) + list(li('Tie: ', e.tie), li('Consequence: ', e.consequence)), e.sources)));
       const seenCables = new Set();
