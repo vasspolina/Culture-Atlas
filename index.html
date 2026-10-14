@@ -9114,9 +9114,9 @@ return maplibregl$1;
                 
                 <span>Documented Harm &amp; Conflicts:</span>
               </div>
-              <ul class="space-y-1_5 list-disc list-inside">
+              ${node.harms.length === 1 ? `<p class="no-indent">${escapeHtml(node.harms[0])}</p>` : `<ul class="space-y-1_5 list-disc list-inside">
                 ${node.harms.map(h => `<li class="">${escapeHtml(h)}</li>`).join('')}
-              </ul>
+              </ul>`}
             </div>
           ` : (node.harmsSummary ? `
             <div class="p-3 space-y-1">
@@ -10861,7 +10861,9 @@ return maplibregl$1;
       const studies = (inst.study_notes || []).map(s => card(s.title, [s.authors, s.year, s.journal].filter(Boolean).join(', '),
         `<p class="t-lead no-indent">${e(s.text)}</p>${s.doi ? `<p class="no-indent"><a href="https://doi.org/${e(s.doi)}" target="_blank" rel="noopener noreferrer" class="">doi.org</a></p>` : ''}`));
       const funders = (inst.funder_links || []).length ? [card('Funders and trustees named here and at two or more other institutions on the map', '',
-        `<ul class="list-disc pl-5 t-lead">${inst.funder_links.map(f => `<li>${e(f.funder)}: ${f.institutions} institutions</li>`).join('')}</ul>`)] : [];
+        inst.funder_links.length === 1
+          ? `<p class="t-lead no-indent">${e(inst.funder_links[0].funder)}: ${inst.funder_links[0].institutions} institutions</p>`
+          : `<ul class="list-disc pl-5 t-lead">${inst.funder_links.map(f => `<li>${e(f.funder)}: ${f.institutions} institutions</li>`).join('')}</ul>`)] : [];
       const rows = studies.concat(funders);
       return rows.length ? `<div class="py-3" role="region" aria-label="Research on this space">${studies.length ? '<h3 class="kicker">Research on this space</h3>' : ''}${rows.join('')}</div>` : '';
     }
@@ -10873,7 +10875,12 @@ return maplibregl$1;
         .map(u => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="">${escapeHtml(host(u))}</a>`).join(', ');
       const p = (label, text) => text ? `<p class="t-lead no-indent">${label}${escapeHtml(text)}</p>` : '';
       const li = (label, text) => text ? `<li>${label}${escapeHtml(text)}</li>` : '';
-      const list = (...items) => { const rows = items.filter(Boolean); return rows.length ? `<ul class="list-disc pl-5 t-lead">${rows.join('')}</ul>` : ''; };
+      // One item is a sentence, not a list: a bullet is only for two or more.
+      const list = (...items) => {
+        const rows = items.filter(Boolean);
+        if (rows.length === 1) return rows[0].replace(/^<li>/, '<p class="t-lead no-indent">').replace(/<\/li>$/, '</p>');
+        return rows.length ? `<ul class="list-disc pl-5 t-lead">${rows.join('')}</ul>` : '';
+      };
       const item = (title, meta, body, urls) => `
         <div class="record-card space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(title)}</div>
