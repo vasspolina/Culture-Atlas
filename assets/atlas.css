@@ -13,7 +13,7 @@ h1,h2,h3,h4,p{margin:0}
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --line:#000;
   --cobalt:#0046ff; --blue:#527fe6; --orange:#ff6119; --brick:#a0705e; --navy:#223f85;
-  --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --yellow:#ffd600;
+  --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600;
   --sans:"PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
   --display:"PP Neue Gstaad Compact","PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
   --bar:44px; --gap:16px;
@@ -625,3 +625,8 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 .xray-photo{margin:0 0 10px}
 .xray-photo img{display:block;width:100%;height:auto;border:0.8px solid var(--line)}
 .xray-photo figcaption{font-size:14px;line-height:1.25;margin-top:6px}
+
+/* "Share information" is highlighted in pink */
+#hudControlsBar #hudContributeBtn,#hudContributeBtn,#chatShareBtn,#chatContributeBtn,#mapFloatingContributeBtn{background:var(--pink);color:#000;border-radius:999px}
+#chatShareBtn{padding:8px 16px}
+#hudControlsBar #hudContributeBtn:hover,#chatShareBtn:hover{background:#000;color:var(--pink)}
