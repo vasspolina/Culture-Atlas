@@ -1,12 +1,12 @@
 # Culture Atlas
 
-A globe, a catalog and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
+A globe and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
 
 ## What it does
 
 - **Chat.** Answers from the records only. It names the record and its source, and says when a record does not say. An optional API key in settings turns on open-ended replies.
 - **Globe and map.** Click a space to see its record. City and country filters.
-- **Catalog.** Search and filter by tier, country and city.
+- **Filters & lenses.** Filter the globe by tier, region and category, or type a country or city. The studies and community notes open in the research library.
 - **Offline.** Installable as an app; the service worker caches the page.
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below.

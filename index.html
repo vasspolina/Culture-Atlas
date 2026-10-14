@@ -257,7 +257,7 @@
     html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
     html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
     html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
-    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabDirectory, html body #navTabFilters {
+    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabFilters {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 8px 16px !important; border: 0 !important; border-radius: 9999px !important;
       background: #f4f4f4 !important; color: #000000 !important; font-size: 14px !important;
@@ -273,8 +273,8 @@
     html body button p, html body a p, html body .no-indent, html body .no-indent p, html body #curatorMessages p, html body #curatorDrawerChatBody p { text-indent: 0 !important; }
 
     /* Solid black surfaces, no blur, no outline. */
-    #catalogModal, #curatorSettingsModal, #academicResearchModal, #governanceMethodologyModal { background: rgba(0, 0, 0, 0.9) !important; }
-    #catalogModal > div, #curatorSettingsModal > div, #academicResearchModal > div, #governanceMethodologyModal > div,
+    #curatorSettingsModal, #academicResearchModal { background: rgba(0, 0, 0, 0.9) !important; }
+    #curatorSettingsModal > div, #academicResearchModal > div,
     #floatingCard, #filterDrawerPanel, #dossier-bottom-sheet, #curator-chat-drawer, #desktopDossierColumn, #detailDrawer,
     div:has(> textarea), form:has(> textarea) { background: #000000 !important; border: 0 !important; box-shadow: none !important; }
     textarea { background: transparent !important; }
@@ -300,21 +300,18 @@
     html body tbody tr + tr td { border-top: 0.8px solid #f4f4f4; }
     html body a { text-decoration-thickness: 0.8px !important; }
 
-    /* Directory and Filters & Lenses fill the page below the header, like a pop-up window. */
+    /* Filters & Lenses fill the page below the header, like a pop-up window. */
     @media (min-width: 768px) {
-      html body #catalogModal { top: 56px !important; padding: 0 !important; align-items: stretch !important; background: #000 !important; }
       html body #filterDrawerPanel { position: fixed !important; top: 56px !important; left: 0 !important; right: 0 !important; bottom: 0 !important; max-height: none !important; height: auto !important; border-radius: 0 !important; z-index: 45 !important; background: #000 !important; }
     }
     @media (max-width: 767px) {
-      html body #catalogModal { padding: 0 !important; align-items: stretch !important; background: #000 !important; }
       html body #filterDrawerPanel { position: fixed !important; inset: 0 !important; max-height: none !important; border-radius: 0 !important; z-index: 45 !important; background: #000 !important; }
     }
-    html body #catalogModal > div { max-width: none !important; max-height: none !important; width: 100% !important; height: 100% !important; }
 
     /* The record page fills the page too, above the directory it was opened from. */
     @media (min-width: 768px) {
       html body #detailDrawer { position: fixed !important; top: 56px !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: auto !important; height: auto !important; z-index: 51 !important; background: #000 !important; }
-      html body #catalogModal > div, html body #filterDrawerPanel, html body #detailDrawer { padding-left: 40px !important; padding-right: 40px !important; }
+      html body #filterDrawerPanel, html body #detailDrawer { padding-left: 40px !important; padding-right: 40px !important; }
     }
     @media (max-width: 767px) {
       html body #detailDrawer { position: fixed !important; inset: 0 !important; z-index: 51 !important; background: #000 !important; }
@@ -326,11 +323,11 @@
     html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
     html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
     html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
-    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabDirectory, html body #navTabFilters,
+    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabFilters,
     html body #mobileStickySendBtn, html body #workSendBtn, html body #mobileTopBar button:not(#mobileTopBrandBtn), html body #mobileStickyPlusBtn, html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn, html body #mobileFilterChipsSection button, html body #hudWorldBtn, html body #hudSpinBtn, html body #hudExpandBtn { color: #000000 !important; background: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; }
     html body #mobileStickyPlusBtn { padding: 0 !important; width: 36px !important; height: 36px !important; }
-    html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #closeAcademicModalBtn, #closeAcademicModalFooterBtn, #arTabStudies, #arTabCommunity, #arTabCases, #desktopDossierBody > div > button, #inputModeCancelBtn, #navTabAtlas, #navTabDirectory, #navTabFilters, #mobileStickySendBtn, #mobileStickyPlusBtn):hover { background: #ffffff !important; color: #000000 !important; }
-    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases, #navTabAtlas, #navTabDirectory, #navTabFilters) { background: #000000 !important; color: #f4f4f4 !important; box-shadow: inset 0 0 0 1px #f4f4f4 !important; }
+    html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #closeAcademicModalBtn, #closeAcademicModalFooterBtn, #arTabStudies, #arTabCommunity, #arTabCases, #desktopDossierBody > div > button, #inputModeCancelBtn, #navTabAtlas, #navTabFilters, #mobileStickySendBtn, #mobileStickyPlusBtn):hover { background: #ffffff !important; color: #000000 !important; }
+    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases, #navTabAtlas, #navTabFilters) { background: #000000 !important; color: #f4f4f4 !important; box-shadow: inset 0 0 0 1px #f4f4f4 !important; }
     html body .globe-filter-pill { background: #f4f4f4 !important; color: #000000 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; box-shadow: none !important; font-size: 14px !important; }
     html body .globe-filter-pill:hover { background: #ffffff !important; }
     html body .globe-filter-pill.is-active, html body .globe-filter-pill:not([class*="bg-black"]) { background: #000000 !important; color: #f4f4f4 !important; box-shadow: inset 0 0 0 1px #f4f4f4 !important; }
@@ -357,12 +354,6 @@
     html body .kicker { font-size: 14px !important; line-height: 1.3; }
     html body .record-card { background: transparent; border: 0 !important; border-top: 0.8px solid #f4f4f4 !important; border-radius: 0; padding: 12px 0; margin: 0; }
     html body .record-card:first-of-type { margin-top: 4px; }
-    html body #catalogModal .inst-card { background: transparent; border: 0 !important; border-bottom: 0.8px solid #f4f4f4 !important; border-radius: 0; padding: 14px 0; margin: 0; }
-    html body #catalogModal .inst-card h3 { font-size: 26px !important; line-height: 1.1 !important; margin: 6px 0 4px !important; padding: 0 !important; }
-    html body #catalogModal .inst-card .kicker { margin: 0 !important; }
-    html body #catalogModal .inst-card { line-height: 1.3; }
-    html body #catalogModal .inst-card h3::after { content: ' \2192'; }
-    html body #catalogModal .inst-card .kicker { font-size: 14px !important; }
     html body #detailDrawer h2 { font-size: 26px !important; line-height: 1.1 !important; }
     html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn { width: auto !important; }
     html body #dossier-bottom-sheet h2.lede { font-size: 26px !important; line-height: 1.1 !important; }
@@ -476,13 +467,6 @@
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
       background: #000000;
-    }
-    .inst-card {
-      transition: all 0.15s ease-in-out;
-    }
-    .inst-card.active {
-      border-color: #f4f4f4 !important;
-      background-color: #000000 !important;
     }
     
     /* Clean ChatGPT style links */
@@ -1730,35 +1714,18 @@ return maplibregl$1;
 .atlas-combo-list li[aria-selected="true"] { text-decoration: underline; }
 .atlas-combo-list li.is-active, .atlas-combo-list li:hover { color: #ffffff; text-decoration: underline; }
 .atlas-combo-list li.is-empty { cursor: default; text-decoration: none; }
-/* Directory: a reading measure, flush left. Pills choose what is shown, one search row, records between rules, nothing boxed or centred. */
-html body #catalogModal { justify-content: flex-start !important; }
-html body #catalogModal > div { max-width: 960px !important; padding-top: 24px !important; padding-bottom: 0 !important; }
-@media (max-width: 767px) { html body #catalogModal > div { padding: 16px 16px 0 !important; } }
-.dir-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 0 0 14px; border-bottom: 0.8px solid #f4f4f4; }
-.dir-title { font-size: 26px !important; line-height: 1.1 !important; margin: 0 !important; color: #f4f4f4; }
-.dir-count { font-size: 14px !important; margin: 4px 0 0 !important; color: #f4f4f4; }
-.dir-close { display: none; font-size: 14px !important; color: #f4f4f4 !important; background: transparent !important; border: 0 !important; padding: 0 !important; text-decoration: underline; cursor: pointer; }
-@media (max-width: 767px) { .dir-close { display: inline; } }
-.dir-filters { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 0; }
-html body .dir-chip { display: inline-flex; align-items: center; padding: 8px 16px !important; border: 0 !important; border-radius: 9999px !important; background: #f4f4f4 !important; color: #000000 !important; font-size: 14px !important; line-height: 1.3; cursor: pointer; box-shadow: none !important; }
-html body .dir-chip:hover { background: #ffffff !important; }
-html body .dir-chip[aria-pressed="true"] { background: #000000 !important; color: #f4f4f4 !important; box-shadow: inset 0 0 0 1px #f4f4f4 !important; }
-.dir-search { display: flex; flex-direction: column; gap: 4px; padding: 0 0 16px; }
-html body .dir-search-input { width: 100%; background: transparent !important; border: 0 !important; border-bottom: 0.8px solid #f4f4f4 !important; border-radius: 0 !important; padding: 6px 0 !important; font-size: 14px !important; color: #f4f4f4 !important; box-shadow: none !important; }
-.dir-search-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
-@media (max-width: 767px) { .dir-search-row { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
-.dir-search .atlas-combo-field { border-bottom: 0.8px solid #f4f4f4; }
 /* Focus is a heavier rule under the field, never a box around it. */
 .atlas-combo-field input:focus-visible { outline: 0 !important; }
 .atlas-combo-field:focus-within { box-shadow: 0 1px 0 0 #ffffff; }
-html body .dir-search-input:focus-visible { outline: 0 !important; box-shadow: 0 1px 0 0 #ffffff !important; }
-html body #institutionsListContainer.dir-list { padding: 0 !important; }
-html body #catalogModal .inst-card { padding: 16px 0 !important; }
-.dir-empty { padding: 20px 0; font-size: 18px; line-height: 1.3; color: #f4f4f4; }
-.dir-empty .kicker { margin-top: 20px; }
-.dir-excluded { padding: 12px 0; border-top: 0.8px solid #f4f4f4; font-size: 14px; }
-.dir-excluded-name { color: #ffffff; }
-html body .dir-link { background: transparent !important; border: 0 !important; padding: 0 !important; font: inherit !important; font-size: inherit !important; color: #f4f4f4 !important; text-decoration: underline; cursor: pointer; }
+/* Place, on the Filters & lenses page: country and city side by side, one column on a phone. */
+.filter-place { display: flex; flex-direction: column; gap: 6px; padding: 4px 0 12px; }
+.filter-place-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+@media (max-width: 767px) { .filter-place-row { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+/* Chat info, under the composer: one line that opens to the rules the records follow. */
+.chat-info { width: 100%; padding-top: 8px; border-top: 0.8px solid #f4f4f4; font-size: 14px; line-height: 1.3; color: #f4f4f4; text-align: left; }
+.chat-info summary { cursor: pointer; list-style: none; width: fit-content; text-decoration: underline; }
+.chat-info summary::-webkit-details-marker { display: none; }
+html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important; max-width: 640px; text-align: left; }
 </style>
 </head>
 <body class="bg-black text-[#f4f4f4] space-background h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
@@ -1804,13 +1771,10 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
       
     </button>
 
-    <!-- Center: Main Navigation Tabs (Atlas | Directory | Filters & Lenses) -->
+    <!-- Center: Main Navigation Tabs (Atlas | Filters & Lenses) -->
     <nav id="desktopMainNav" class="hidden md:flex items-center gap-3 sm:gap-5 lg:gap-8 text-[14px] lg:text-[14px] tracking-wider font-medium select-none shrink-0">
       <button id="navTabAtlas" type="button" onclick="window.setMainViewTab('atlas')" aria-pressed="true" class="whitespace-nowrap" title="Atlas Globe Exploration">
         Atlas
-      </button>
-      <button id="navTabDirectory" type="button" onclick="window.setMainViewTab('directory')" aria-pressed="false" class="whitespace-nowrap" title="Browse Findings Directory">
-        Directory
       </button>
       <button id="navTabFilters" type="button" onclick="window.setMainViewTab('filters')" aria-pressed="false" class="whitespace-nowrap" title="Filters &amp; Lenses">
         Filters &amp; Lenses
@@ -1831,10 +1795,6 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         </button>
         <button id="topResetBtn" class="hidden md:inline-flex" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();">Reset</button>
-        <button id="topCatalogBtn" onclick="if (typeof window.openCatalogModal === 'function') window.openCatalogModal('all');">Browse all records</button>
-        <button id="topGovernanceBtn" onclick="if (typeof window.openGovernanceModal === 'function') window.openGovernanceModal();">Governance Methodology</button>
-        <button id="mobileCatalogBtn">Browse all records</button>
-        <button id="mobileGovernanceBtn">Governance Methodology</button>
         <button id="topViewMinimizeBtn"></button>
         <button id="topViewExpandBtn"></button>
         <button id="topSettingsBtn">
@@ -2445,6 +2405,21 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
               <button type="button" onclick="window.toggleFilterDrawer(false)" class="text-[14px] text-[#f4f4f4] hover:text-white p-1 rounded hover:bg-black transition cursor-pointer" title="Close filter drawer">Close</button>
             </div>
           </div>
+          <div class="filter-place">
+            <div class="text-[14px] font-mono text-[#f4f4f4] flex items-center gap-2"><span class="text-[#f4f4f4] font-medium">Place</span></div>
+            <div class="filter-place-row">
+              <div class="atlas-combo" data-placeholder="Country">
+                <select id="countrySelect" hidden tabindex="-1">
+                  <option value="all">All countries</option>
+                </select>
+              </div>
+              <div class="atlas-combo" data-placeholder="City">
+                <select id="citySelect" hidden tabindex="-1">
+                  <option value="all">All cities</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div id="globeCityBar" class="w-full flex flex-col gap-3.5 select-none py-1">
             <!-- Funding & Governance Tiers -->
             <div class="space-y-1.5">
@@ -2469,7 +2444,6 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
                 <span class="text-[#f4f4f4] font-medium">Records</span>
               </div>
               <div class="flex flex-wrap items-center gap-1.5">
-                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="governance">Governance Legend</button>
                 <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies</button>
               </div>
             </div>
@@ -2519,9 +2493,6 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
 
               <!-- Quick Dropdown Menu for Plus button -->
               <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-black border border-[#2e2e38] rounded-xl p-0 shadow-2xl flex flex-col divide-y divide-[#262626] w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14px]">
-                <button id="workMenuCatalogBtn" class="text-left px-3.5 py-2.5 bg-black hover:bg-black text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
-                  <span>Browse all records</span>
-                </button>
                 <button id="workMenuGossipModeBtn" onclick="window.toggleGossipMode()" class="text-left px-3.5 py-2.5 bg-black hover:bg-[#26262e] text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
                   <span>Gossip mode</span>
                 </button>
@@ -2533,9 +2504,6 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
                 </button>
                 <button id="workMenuWhistleblowerBtn" onclick="window.enterChatInputMode('whistleblower')" class="text-left px-3.5 py-2.5 bg-black hover:bg-black text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
                   <span>Whistleblower note</span>
-                </button>
-                <button id="workMenuGovernanceBtn" class="text-left px-3.5 py-2.5 bg-black hover:bg-black text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
-                  <span>How the records work</span>
                 </button>
               </div>
 
@@ -2578,6 +2546,16 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
                 </button>
               </div>
             </div>
+
+            <!-- Chat info: how the records work -->
+            <details id="chatRecordsInfo" class="chat-info">
+              <summary>How the records work</summary>
+              <p class="no-indent">Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
+              <p class="no-indent">Clean, source cited: the record names at least one source outside the museum's own website.</p>
+              <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
+              <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
+              <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
+            </details>
 
             <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
             <div class="hidden" style="display:none;" aria-hidden="true">
@@ -2677,48 +2655,6 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
     </button>
   </nav>
 
-
-  <!-- ========================================================= -->
-  <!--  CATALOG MODAL (Browse all findings & spaces) -->
-  <!-- ========================================================= -->
-  <div id="catalogModal" class="hidden fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-3 sm:p-5 select-text">
-    <div class="bg-black max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden font-sans">
-      <div class="dir-head">
-        <div>
-          <h2 class="dir-title">Directory</h2>
-          <p id="listTotalBadge" class="dir-count no-indent"></p>
-        </div>
-        <button id="closeCatalogModalBtn" type="button" class="dir-close">Close</button>
-      </div>
-
-      <div class="dir-filters" role="group" aria-label="Show">
-        <button id="catFilterAllBtn" type="button" class="dir-chip" aria-pressed="true">All records</button>
-        <button id="catFilterCleanBtn" type="button" class="dir-chip" aria-pressed="false">Clean, source cited</button>
-        <button id="catFilterFlaggedBtn" type="button" class="dir-chip" aria-pressed="false">Flagged</button>
-        <button id="catFilterAcademicBtn" type="button" class="dir-chip" aria-pressed="false">Academic studies</button>
-        <button id="catFilterVisualCritiqueBtn" type="button" class="dir-chip" aria-pressed="false">Visual critique</button>
-      </div>
-
-      <div class="dir-search">
-        <input type="text" id="searchInput" placeholder="Search" aria-label="Search spaces, studies, authors or topics" autocomplete="off" class="dir-search-input" />
-        <div class="dir-search-row">
-          <div class="atlas-combo" data-placeholder="Country">
-            <select id="countrySelect" hidden tabindex="-1">
-              <option value="all">All countries</option>
-            </select>
-          </div>
-          <div class="atlas-combo" data-placeholder="City">
-            <select id="citySelect" hidden tabindex="-1">
-              <option value="all">All cities</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div id="institutionsListContainer" class="flex-1 overflow-y-auto custom-scrollbar dir-list">
-        <!-- Populated dynamically -->
-      </div>
-    </div>
-  </div>
 
   <!-- ========================================================= -->
   <!-- ========================================================= -->
@@ -2930,21 +2866,6 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
   </div>
 
 
-
-  <!--  GOVERNANCE & FUNDING TRANSPARENCY METHODOLOGY MODAL -->
-  <div id="governanceMethodologyModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-3 sm:p-5 select-text">
-  <div class="bg-black border border-[#262626] max-w-xl w-full p-5 flex flex-col gap-4 max-h-[90vh] overflow-y-auto">
-    <div class="flex items-start justify-between gap-3">
-      <h3 class="text-[18px] font-normal text-white">How the records work</h3>
-      <button id="closeGovernanceModalBtn" class="atlas-pill-btn pill-sm" title="Close"><span>Close</span></button>
-    </div>
-    <p class="text-[18px] text-[#f4f4f4]">Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
-    <p class="text-[18px] text-[#f4f4f4]">Clean, source cited: the record names at least one source outside the museum's own website.</p>
-    <p class="text-[18px] text-[#f4f4f4]">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
-    <p class="text-[18px] text-[#f4f4f4]">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
-    <p class="text-[18px] text-[#f4f4f4]">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
-  </div>
-</div><div id="closeGovernanceModalBtn" class="hidden"></div><div id="govModalFilterCleanBtn" class="hidden"></div><div id="govModalFilterFlaggedBtn" class="hidden"></div><div id="closeGovernanceModalFooterBtn" class="hidden"></div>
 
   <!--  INSTITUTIONAL FINANCE & FISCAL OPERATING ANALYTICS HUD MODAL -->
   <div id="fiscalAnalyticsModal" class="hidden"></div><div id="faCohortScopeBadge" class="hidden"></div><div id="closeFiscalModalBtn" class="hidden"></div><div id="faTotalBudgetStat" class="hidden"></div><div id="faAvgProgramStat" class="hidden"></div><div id="faAvgSubsidiesStat" class="hidden"></div><div id="faAvgAdminStat" class="hidden"></div><div id="faLeanPctStat" class="hidden"></div><div id="faRevMixPublicBar" class="hidden"></div><div id="faRevMixEarnedBar" class="hidden"></div><div id="faRevMixPhilBar" class="hidden"></div><div id="faRevMixPublicPct" class="hidden"></div><div id="faRevMixEarnedPct" class="hidden"></div><div id="faRevMixPhilPct" class="hidden"></div><div id="faTypologyGrid" class="hidden"></div><div id="faTopPerformersTable" class="hidden"></div><div id="faFilterCivicBtn" class="hidden"></div><div id="faFilterHighProgBtn" class="hidden"></div><div id="closeFiscalModalFooterBtn" class="hidden"></div>
@@ -9245,7 +9166,6 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
       if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(false);
       document.getElementById('detailDrawer')?.classList.add('hidden');
-      document.getElementById('catalogModal')?.classList.add('hidden');
       if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') setMobileViewMode('map');
       if (inst.city) {
         selectedCityFilter = inst.city;
@@ -13107,10 +13027,9 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
     window.toggleDesktopDossier = toggleDesktopDossier;
 
     function setMainViewTab(tab) {
-      const tabs = ['atlas', 'directory', 'filters'];
+      const tabs = ['atlas', 'filters'];
       const tabEls = {
         atlas: document.getElementById('navTabAtlas'),
-        directory: document.getElementById('navTabDirectory'),
         filters: document.getElementById('navTabFilters')
       };
       tabs.forEach(t => {
@@ -13120,16 +13039,10 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
         el.setAttribute('aria-pressed', t === tab ? 'true' : 'false');
       });
 
-      const cat = document.getElementById('catalogModal');
       if (tab === 'atlas') {
         if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(false);
-        if (cat) cat.classList.add('hidden');
         document.getElementById('detailDrawer')?.classList.add('hidden');
-      } else if (tab === 'directory') {
-        if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(false);
-        if (typeof openCatalogModal === 'function') openCatalogModal('all');
       } else if (tab === 'filters') {
-        if (cat) cat.classList.add('hidden');
         if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(true);
       }
     }
@@ -13137,9 +13050,9 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
     // Keep the header tab in step with whichever full-page view is open, however it was opened or closed.
     (function () {
       const sync = () => {
-        const cat = document.getElementById('catalogModal'), dr = document.getElementById('filterDrawerPanel');
-        const tab = cat && !cat.classList.contains('hidden') ? 'directory' : dr && !dr.classList.contains('hidden') ? 'filters' : 'atlas';
-        const ids = { atlas: 'navTabAtlas', directory: 'navTabDirectory', filters: 'navTabFilters' };
+        const dr = document.getElementById('filterDrawerPanel');
+        const tab = dr && !dr.classList.contains('hidden') ? 'filters' : 'atlas';
+        const ids = { atlas: 'navTabAtlas', filters: 'navTabFilters' };
         Object.keys(ids).forEach(t => {
           const el = document.getElementById(ids[t]);
           if (el) { el.className = 'whitespace-nowrap'; el.setAttribute('aria-pressed', t === tab ? 'true' : 'false'); }
@@ -13150,10 +13063,8 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
       if (fd && fd.parentElement !== document.body) document.body.appendChild(fd);
       const dd = document.getElementById('detailDrawer');
       if (dd && dd.parentElement !== document.body) document.body.appendChild(dd);
-      ['catalogModal', 'filterDrawerPanel'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) new MutationObserver(sync).observe(el, { attributes: true, attributeFilter: ['class'] });
-      });
+      const filtersEl = document.getElementById('filterDrawerPanel');
+      if (filtersEl) new MutationObserver(sync).observe(filtersEl, { attributes: true, attributeFilter: ['class'] });
     })();
 
     // Links to the sources recorded for a space. Recording a source is not verifying it, and the page says so.
@@ -14712,18 +14623,6 @@ html body .dir-link { background: transparent !important; border: 0 !important; 
       }
     }
     window.renderFiscalAnalyticsData = renderFiscalAnalyticsData;
-
-    function openGovernanceMethodologyModal() {
-      const modal = document.getElementById('governanceMethodologyModal');
-      if (modal) modal.classList.remove('hidden');
-    }
-    window.openGovernanceMethodologyModal = openGovernanceMethodologyModal;
-
-    function closeGovernanceMethodologyModal() {
-      const modal = document.getElementById('governanceMethodologyModal');
-      if (modal) modal.classList.add('hidden');
-    }
-    window.closeGovernanceMethodologyModal = closeGovernanceMethodologyModal;
 
     // =========================================================================
     //  REAL-TIME LIVE WEB SCRAPER & RESEARCH ENGINE
@@ -17856,20 +17755,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       openResearchFeedbackModal();
     });
 
-    //  Governance & Funding Transparency Methodology Modal Handlers
-    const govModal = document.getElementById('governanceMethodologyModal');
-    document.getElementById('topGovernanceBtn')?.addEventListener('click', openGovernanceMethodologyModal);
-    document.getElementById('mobileGovernanceBtn')?.addEventListener('click', openGovernanceMethodologyModal);
-    document.getElementById('workMenuGovernanceBtn')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      workPlusMenu?.classList.add('hidden');
-      openGovernanceMethodologyModal();
-    });
-    document.getElementById('closeGovernanceModalBtn')?.addEventListener('click', closeGovernanceMethodologyModal);
-    document.getElementById('closeGovernanceModalFooterBtn')?.addEventListener('click', closeGovernanceMethodologyModal);
-    govModal?.addEventListener('click', (e) => {
-      if (e.target === govModal) closeGovernanceMethodologyModal();
-    });
     document.getElementById('govModalFilterCleanBtn')?.addEventListener('click', () => {
       closeGovernanceMethodologyModal();
       selectedTierFilter = new Set(['A']);
@@ -18413,73 +18298,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           handleCuratorQuery(q);
         }
       });
-    });
-
-    // Catalog Modal Handlers (Full Findings & Spaces Browser)
-    const catalogModal = document.getElementById('catalogModal');
-    function openCatalogModal(tierScope = 'all') {
-      if (tierScope === 'A') {
-        selectedTierFilter = new Set(['A']);
-      } else if (tierScope === 'B') {
-        selectedTierFilter = new Set(['B']);
-      } else if (tierScope === 'ACADEMIC') {
-        selectedTierFilter = new Set(['ACADEMIC']);
-      } else if (tierScope === 'COMMUNITY') {
-        selectedTierFilter = new Set(['COMMUNITY']);
-      } else {
-        selectedTierFilter = new Set(['A', 'B', 'U', 'ACADEMIC']);
-      }
-      if (typeof applyFilters === 'function') applyFilters();
-      if (typeof updateGlobePillsUI === 'function') updateGlobePillsUI();
-      if (typeof updateCatalogChipsUI === 'function') updateCatalogChipsUI();
-      if (catalogModal) catalogModal.classList.remove('hidden');
-    }
-    window.openCatalogModal = openCatalogModal;
-
-    document.getElementById('workOpenCatalogBtn')?.addEventListener('click', () => openCatalogModal('all'));
-    document.getElementById('topCatalogBtn')?.addEventListener('click', () => openCatalogModal('all'));
-    document.getElementById('mobileCatalogBtn')?.addEventListener('click', () => openCatalogModal('all'));
-    document.getElementById('workMenuCatalogBtn')?.addEventListener('click', () => {
-      const menu = document.getElementById('workPlusMenu');
-      if (menu) menu.classList.add('hidden');
-      openCatalogModal('all');
-    });
-
-    // Quick Filter Chips inside Catalog Modal
-    document.getElementById('catFilterAllBtn')?.addEventListener('click', () => {
-      selectedTierFilter = new Set(['A', 'B', 'U', 'ACADEMIC']);
-      selectedCategoryFilter = 'all';
-      applyFilters();
-      updateGlobePillsUI();
-      updateCatalogChipsUI();
-    });
-    document.getElementById('catFilterCleanBtn')?.addEventListener('click', () => {
-      selectedTierFilter = new Set(['A']);
-      applyFilters();
-      updateGlobePillsUI();
-      updateCatalogChipsUI();
-    });
-    document.getElementById('catFilterFlaggedBtn')?.addEventListener('click', () => {
-      selectedTierFilter = new Set(['B']);
-      applyFilters();
-      updateGlobePillsUI();
-      updateCatalogChipsUI();
-    });
-    document.getElementById('catFilterAcademicBtn')?.addEventListener('click', () => {
-      selectedTierFilter = new Set(['ACADEMIC']);
-      applyFilters();
-      updateGlobePillsUI();
-      updateCatalogChipsUI();
-    });
-
-    document.getElementById('closeCatalogModalBtn')?.addEventListener('click', () => {
-      if (catalogModal) catalogModal.classList.add('hidden');
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && catalogModal && !catalogModal.classList.contains('hidden') && typeof setMainViewTab === 'function') setMainViewTab('atlas');
-    });
-    catalogModal?.addEventListener('click', (e) => {
-      if (e.target === catalogModal) catalogModal.classList.add('hidden');
     });
 
     // Floating Card Ask Curator Button: sends query straight to unified work chat
@@ -19029,7 +18847,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // =========================================================
     const countrySelect = document.getElementById('countrySelect');
     const citySelect = document.getElementById('citySelect');
-    const searchInput = document.getElementById('searchInput');
 
     function populateDropdowns() {
       if (countrySelect) {
@@ -19220,7 +19037,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           return;
         }
 
-        if (type === 'governance' || type === 'archives' || type === 'fiscal_analytics') {
+        if (type === 'archives' || type === 'fiscal_analytics') {
           pill.className = ghostInactive;
           return;
         }
@@ -19279,24 +19096,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
     }
-
-    function updateCatalogChipsUI() {
-      const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
-      const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
-      const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
-      const isVisualCritiqueOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
-      const isAll = !isCleanOnly && !isFlaggedOnly && !isAcademicOnly && !isVisualCritiqueOnly;
-
-      const allBtn = document.getElementById('catFilterAllBtn');
-      const cleanBtn = document.getElementById('catFilterCleanBtn');
-      const flaggedBtn = document.getElementById('catFilterFlaggedBtn');
-      const academicBtn = document.getElementById('catFilterAcademicBtn');
-      const vcBtn = document.getElementById('catFilterVisualCritiqueBtn');
-
-      const press = (btn, on) => { if (btn) { btn.className = 'dir-chip'; btn.setAttribute('aria-pressed', on ? 'true' : 'false'); } };
-      press(allBtn, isAll); press(cleanBtn, isCleanOnly); press(flaggedBtn, isFlaggedOnly); press(academicBtn, isAcademicOnly); press(vcBtn, isVisualCritiqueOnly);
-    }
-    window.updateCatalogChipsUI = updateCatalogChipsUI;
 
     function updateGlobeBarForCountry(countryName) {
       const bar = document.getElementById('globeCityBar');
@@ -19390,7 +19189,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             <span class="text-[#f4f4f4] font-medium">Records</span>
           </div>
           <div class="flex flex-wrap items-center gap-1.5">
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="governance">Governance Legend</button>
             <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies</button>
           </div>
         </div>
@@ -19473,17 +19271,6 @@ bar.innerHTML = html;
         });
       });
 
-      const catVcBtn = document.getElementById('catFilterVisualCritiqueBtn');
-      if (catVcBtn) {
-        catVcBtn.addEventListener('click', () => {
-          selectedTierFilter = new Set(['VISUAL_CRITIQUE']);
-          selectedVisualCritiqueStrategy = 'all';
-          applyFilters();
-          updateGlobePillsUI();
-          updateCatalogChipsUI();
-        });
-      }
-
       document.querySelectorAll('#globeCityBar .globe-filter-pill').forEach(pill => {
         pill.addEventListener('click', () => {
           const type = pill.getAttribute('data-type');
@@ -19503,7 +19290,6 @@ bar.innerHTML = html;
             }
             applyFilters();
             updateGlobePillsUI();
-            updateCatalogChipsUI();
           } else if (type === 'fiscal_analytics') {
             if (typeof openFiscalAnalyticsHUD === 'function') {
               openFiscalAnalyticsHUD();
@@ -19529,20 +19315,7 @@ bar.innerHTML = html;
               triggerInChatContributeFlow();
             }
           } else if (type === 'academic') {
-            selectedTierFilter = new Set(['ACADEMIC']);
-            selectedCategoryFilter = 'all';
-            applyFilters();
-            updateGlobePillsUI();
-            updateCatalogChipsUI();
-            if (typeof openCatalogModal === 'function') {
-              openCatalogModal('ACADEMIC');
-            } else if (typeof openAcademicResearchModal === 'function') {
-              openAcademicResearchModal('all');
-            }
-          } else if (type === 'governance') {
-            if (typeof openGovernanceMethodologyModal === 'function') {
-              openGovernanceMethodologyModal();
-            }
+            if (typeof openAcademicResearchModal === 'function') openAcademicResearchModal('all');
           } else if (type === 'all') {
             clearAllFilters();
           } else if (type === 'city') {
@@ -19734,16 +19507,6 @@ bar.innerHTML = html;
         return true;
       });
 
-      const listTotalBadge = document.getElementById('listTotalBadge');
-      if (listTotalBadge) {
-        const n = filteredList.length;
-        const one = (word) => n === 1 ? word.replace(/ies$/, 'y').replace(/s$/, '') : word;
-        if (isAcademicOnly) listTotalBadge.textContent = `${n} ${one('studies')}`;
-        else if (isVisualCritiqueOnly) listTotalBadge.textContent = `${n} ${one('spaces')} with a visual critique`;
-        else if (isCleanOnly || isFlaggedOnly || isCommunityOnly) listTotalBadge.textContent = `${n} ${one('spaces')}`;
-        else listTotalBadge.textContent = `${n} ${one('records')}`;
-      }
-
       // Update Floating Map Filter Banner
       const activeMapBanner = document.getElementById('activeMapFilterBanner');
       const activeMapIcon = document.getElementById('activeMapFilterIcon');
@@ -19802,175 +19565,6 @@ bar.innerHTML = html;
       }
 
       updateGlobePillsUI();
-      updateCatalogChipsUI();
-      renderLeftList();
-    }
-
-    function renderLeftList() {
-      const container = document.getElementById('institutionsListContainer');
-      if (filteredList.length === 0) {
-        const onlyStudies = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
-        const placed = selectedCountryFilter !== 'all' || selectedCityFilter !== 'all';
-        let why = onlyStudies ? 'No studies match.' : 'No records match.';
-        if (onlyStudies && placed) why = 'Studies have no place on the map, so a country or city leaves none.';
-        let exHtml = '';
-        if (searchQuery && typeof EXCLUDED_INSTITUTIONS !== 'undefined') {
-          const q = searchQuery.toLowerCase().trim();
-          const matches = EXCLUDED_INSTITUTIONS.filter(i =>
-            i.name.toLowerCase().includes(q) ||
-            (i.aliases && i.aliases.some(a => a.toLowerCase().includes(q))) ||
-            (i.city && i.city.toLowerCase().includes(q))
-          );
-          if (matches.length > 0) {
-            exHtml = `
-              <p class="kicker no-indent">Outside the clean set (${matches.length})</p>
-              ${matches.slice(0, 3).map(m => `
-                <div class="dir-excluded">
-                  <p class="no-indent"><span class="dir-excluded-name">${escapeHtml(m.name)}</span>, ${m.tier === 'B' ? 'flagged' : 'unverified'}</p>
-                  <p class="no-indent">${escapeHtml(deduplicateNoticeText(m.watch || m.why_flagged || m.funding || 'not stated'))}</p>
-                  <button type="button" class="curator-dossier-btn dir-link" data-name="${escapeHtml(m.name)}">Open record</button>
-                </div>
-              `).join('')}`;
-          }
-        }
-
-        container.innerHTML = `
-          <div class="dir-empty">
-            <p class="no-indent">${why} <button id="resetFromEmptyBtn" type="button" class="dir-link">Reset all filters</button></p>
-            ${exHtml}
-          </div>
-        `;
-        document.getElementById('resetFromEmptyBtn')?.addEventListener('click', clearAllFilters);
-        return;
-      }
-
-      container.innerHTML = filteredList.map(inst => {
-        if (inst.isAcademicStudy) {
-          return `
-            <div class="inst-card academic-card py-3 border-b border-[#262626] transition space-y-1" data-name="${inst.name.replace(/"/g, '&quot;')}">
-              <div class="flex flex-col gap-0.5">
-                <h3 class="font-normal text-white text-[14px] leading-snug">${escapeHtml(inst.name)}</h3>
-                <span class="kicker text-[14px] font-mono text-[#f4f4f4]">Study</span>
-              </div>
-
-              <div class="flex flex-col gap-0.5 text-[14px] text-[#f4f4f4] mt-1 font-mono">
-                ${inst.authors ? `<span class="text-white">${escapeHtml(inst.authors)}</span>` : ''}
-                ${inst.journal ? `<span class="text-[#f4f4f4]">${escapeHtml(inst.journal)}</span>` : ''}
-                ${inst.year ? `<span class="text-[#f4f4f4]">${escapeHtml(inst.year)}</span>` : ''}
-                ${inst.citations ? `<span class="text-emerald-400 font-medium">${escapeHtml(inst.citations)} citations</span>` : ''}
-              </div>
-
-              ${inst.takeaway ? `
-                <div class="mt-2 py-1.5 border-t border-[#262626] text-[#f4f4f4] text-[14px] leading-relaxed">
-                  <strong class="kicker text-[#f4f4f4] block text-[14px] font-mono mb-0.5">Finding</strong>
-                  ${escapeHtml(inst.takeaway)}
-                </div>
-              ` : ''}
-
-              ${inst.abstract ? `
-                <details class="mt-1 text-[14px] text-[#f4f4f4]">
-                  <summary class="cursor-pointer text-[#f4f4f4] hover:underline font-mono text-[14px] py-0.5">Abstract</summary>
-                  <p class="mt-1 py-1 border-t border-[#262626] text-[#f4f4f4] leading-relaxed text-[14px]">${escapeHtml(inst.abstract)}</p>
-                </details>
-              ` : ''}
-
-              <div class="mt-2 pt-1 border-t border-[#262626] flex flex-col gap-1 text-[14px] font-mono">
-                <button class="academic-ask-btn text-left text-[#f4f4f4] hover:underline cursor-pointer font-sans text-[14px]" data-title="${inst.name.replace(/"/g, '&quot;')}" data-authors="${escapeHtml(inst.authors)}">
-                  <span>Ask about this study</span>
-                </button>
-                ${inst.doi ? `
-                  <a href="https://doi.org/${escapeHtml(inst.doi)}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline" onclick="event.stopPropagation()">
-                    <span>DOI</span>
-                  </a>
-                ` : ''}
-                ${inst.link ? `
-                  <a href="${escapeHtml(inst.link)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:underline" onclick="event.stopPropagation()">
-                    <span>Source</span>
-                  </a>
-                ` : ''}
-              </div>
-            </div>
-          `;
-        }
-
-        const isSel = selectedInstitution && selectedInstitution.name === inst.name;
-        const isInstCommunity = inst.tier === 'COMMUNITY' || Boolean(inst.isCommunityLayer);
-        const isInstClean = !isInstCommunity && inst.tier === 'A';
-        const isInstFlagged = !isInstCommunity && inst.tier === 'B';
-        const tierCol = isInstCommunity
-          ? 'text-[#08bdba]'
-          : isInstClean 
-          ? 'text-emerald-400' 
-          : isInstFlagged 
-          ? 'text-[#be95ff]' 
-          : 'text-[#f4f4f4]';
-        const tierLabel = isInstCommunity ? 'Community' : tierName(inst);
-
-        const webUrl = getValidWebUrl(inst);
-        const displayDomain = getDisplayDomain(webUrl);
-
-        return `
-          <div class="inst-card py-3 border-b border-[#262626] cursor-pointer hover:text-white transition ${isSel ? 'text-white' : ''}" data-name="${inst.name.replace(/"/g, '&quot;')}">
-            <span class="kicker text-[14px] font-mono ${tierCol} block">${tierLabel}</span>
-            <h3 class="font-normal text-white text-[14px] leading-[120%] no-indent">${inst.name}</h3>
-            <span class="kicker text-[14px] text-[#f4f4f4] block">${inst.location}</span>
-          </div>
-        `;
-      }).join('');
-
-      container.querySelectorAll('.academic-ask-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const title = btn.getAttribute('data-title');
-          const authors = btn.getAttribute('data-authors');
-          if (typeof atlasAskCurator === 'function') {
-            atlasAskCurator(`Tell me about the empirical study: "${title}" by ${authors}`);
-          }
-        });
-      });
-
-      container.querySelectorAll('.academic-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-          if (e.target.closest('button') || e.target.closest('a') || e.target.closest('details')) return;
-          const name = card.getAttribute('data-name');
-          const target = filteredList.find(i => i.name === name) || (typeof getAcademicResearchAsFindings === 'function' ? getAcademicResearchAsFindings().find(i => i.name === name) : null);
-          if (target && typeof atlasAskCurator === 'function') {
-            atlasAskCurator(`Tell me about the empirical study: "${target.name}" by ${target.authors}`);
-          }
-        });
-      });
-
-      container.querySelectorAll('.inst-card').forEach(card => {
-        card.querySelectorAll('.card-zoom-building').forEach(zBtn => {
-          zBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const zName = zBtn.getAttribute('data-name');
-            const target = filteredList.find(i => i.name === zName) || ALL_INSTITUTIONS.find(i => i.name === zName);
-            if (target) zoomToBuilding(target, false);
-          });
-        });
-
-        card.querySelectorAll('.card-open-dossier').forEach(dBtn => {
-          dBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const dName = dBtn.getAttribute('data-name');
-            const target = filteredList.find(i => i.name === dName) || ALL_INSTITUTIONS.find(i => i.name === dName);
-            if (target) openDossier(target);
-          });
-        });
-
-        card.addEventListener('click', () => {
-          if (card.classList.contains('academic-card')) return;
-          const name = card.getAttribute('data-name');
-          const inst = filteredList.find(i => i.name === name) || ALL_INSTITUTIONS.find(i => i.name === name);
-          if (inst) {
-            selectInstitution(inst, true);
-          }
-        });
-      });
     }
 
     let lastSelectedCountry = null;
@@ -20056,7 +19650,6 @@ bar.innerHTML = html;
       selectedCountryFilter = 'all';
       selectedCategoryFilter = 'all';
       searchQuery = '';
-      if (searchInput) searchInput.value = '';
       selectedTierFilter = new Set(['A']);
       document.querySelectorAll('.tier-chip').forEach(btn => {
         btn.classList.add('bg-black', 'bg-black', 'bg-black');
@@ -20077,6 +19670,7 @@ bar.innerHTML = html;
       applyFilters();
       if (selectedCountryFilter !== 'all') {
         filterByCountry(selectedCountryFilter);
+        if (typeof setMainViewTab === 'function') setMainViewTab('atlas');   // the filters page covers the map; show the result
       }
     });
 
@@ -20087,37 +19681,8 @@ bar.innerHTML = html;
       applyFilters();
       if (selectedCityFilter !== 'all') {
         filterByCity(selectedCityFilter, true, true);
+        if (typeof setMainViewTab === 'function') setMainViewTab('atlas');
       }
-    });
-
-    searchInput?.addEventListener('input', e => {
-      searchQuery = e.target.value;
-      applyFilters();
-    });
-
-    searchInput?.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        if (filteredList.length > 0) {
-          const target = filteredList[0];
-          if (target.isAcademicStudy) {
-            if (typeof atlasAskCurator === 'function') {
-              atlasAskCurator(`Tell me about the empirical study: "${target.name}" by ${target.authors}`);
-            }
-          } else {
-            selectInstitution(target, true);
-            if (target.lon !== undefined && target.lat !== undefined && target.lon !== null && target.lat !== null) {
-              flyTo(target.lon, target.lat, getCityTargetRadius(target.city));
-            }
-          }
-        }
-      }
-    });
-
-    document.getElementById('clearSearchBtn')?.addEventListener('click', () => {
-      if (searchInput) searchInput.value = '';
-      searchQuery = '';
-      applyFilters();
     });
 
     document.getElementById('clearFilterBtn')?.addEventListener('click', clearAllFilters);
@@ -20590,7 +20155,6 @@ bar.innerHTML = html;
         rotLat = Math.max(-82, rotLat - 5);
       } else if (e.key === 'Escape') {
         const drawer = document.getElementById('detailDrawer');
-        const catModal = document.getElementById('catalogModal');
         const auditModal = document.getElementById('momaAuditModal');
         const rfModal = document.getElementById('researchFeedbackModal');
         const arModal = document.getElementById('academicResearchModal');
@@ -20600,8 +20164,6 @@ bar.innerHTML = html;
           arModal.classList.add('hidden');
         } else if (drawer && !drawer.classList.contains('hidden')) {
           drawer.classList.add('hidden');
-        } else if (catModal && !catModal.classList.contains('hidden')) {
-          catModal.classList.add('hidden');
         } else if (auditModal && !auditModal.classList.contains('hidden')) {
           auditModal.classList.add('hidden');
         } else if (selectedInstitution) {
