@@ -1623,6 +1623,12 @@ html body #curatorHeroGreeting .starter-prompt:last-child { border-bottom: 0.8px
 html body #curatorHeroGreeting .starter-prompt:hover { color: #ffffff !important; text-decoration: underline; }
 /* The composer keeps clear of the bottom edge of the window. */
 html body #workBottomDock { padding-bottom: max(32px, env(safe-area-inset-bottom)) !important; }
+/* The controls in the header, the tab bar and over the globe are plain bold text, not pills. The current one is teal and underlined. */
+html body :is(#topGossipBtn, #topShareBtn, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopGlobeTopControls button) { background: transparent !important; border-radius: 0 !important; padding: 4px 0 !important; color: #f4f4f4 !important; box-shadow: none !important; }
+html body :is(#topGossipBtn, #topShareBtn, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopGlobeTopControls button):hover { background: transparent !important; color: #08bdba !important; }
+html body :is(#topGossipBtn, #topShareBtn, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopGlobeTopControls button)[aria-pressed="true"] { background: transparent !important; color: #08bdba !important; text-decoration: underline !important; text-decoration-thickness: 0.8px !important; text-underline-offset: 6px; }
+html body #workspaceContextTabBar > div:first-child { gap: 24px !important; }
+html body #desktopGlobeTopControls { gap: 20px !important; }
 /* No lines between the header, the map and the panel. */
 html body header[class*="h-14"], html body #mobileTopBar, html body #globeSplitter, html body #workspaceContextTabBar { border: 0 !important; }
 /* The composer shares the greeting's measure and left edge. */
