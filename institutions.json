@@ -18379,7 +18379,7 @@
     "location": "Shanghai, China",
     "tier": "U",
     "size": "L",
-    "funding": "State museum under the Shanghai culture administration; $64M municipal conversion 2012; free entry, 700k visitors 2019.",
+    "funding": "State museum under the Shanghai Municipal Administration of Culture and Tourism; the city paid $64M for the conversion; free entry; 700,000 visitors in 2019.",
     "sources": [],
     "lat": 31.191,
     "lon": 121.494,
@@ -19354,7 +19354,7 @@
     "tier": "A",
     "funding": "Seeded by founder Mostapha Romli's Maroc Premium foundation; now self-financing.",
     "sources": [
-      "https://www.ifitry.ma/"
+      "https://web.archive.org/web/20241114135150/https://www.ifitry.ma/"
     ],
     "lat": 31.62,
     "lon": -9.67,
@@ -27853,7 +27853,7 @@
     "watch": "Finance and investment founder money.",
     "sources": [
       "https://www.theartnewspaper.com/2022/02/21/new-euro35m-kunsthalle-praha-gallery-backed-by-private-collectors-opens-in-prague",
-      "https://www.kunsthallepraha.org/en/team-mission"
+      "https://web.archive.org/web/20260606072150/https://www.kunsthallepraha.org/en/team-mission"
     ],
     "lat": 50.091,
     "lon": 14.411,
@@ -33460,13 +33460,18 @@
     "watch": "Permanent display closed for repairs from late Sept 2025 Permanent display closed for repairs from late Sept 2025",
     "sources": [
       "https://www.hrw.org/news/2019/12/06/feminist-art-exhibit-threatened-kyrgyzstan",
-      "https://24.kg/obschestvo/137013_skandal_sfeminale_vmuzee_izo_novyiy_direktor/"
+      "https://24.kg/obschestvo/137013_skandal_sfeminale_vmuzee_izo_novyiy_direktor/",
+      "https://news.artnet.com/art-world/museum-kyrgyzstan-censorship-1722195"
     ],
     "lat": 42.876,
     "lon": 74.611,
     "audit_dossier_url": "https://www.hrw.org/news/2019/12/06/feminist-art-exhibit-threatened-kyrgyzstan",
     "statutory_filings_url": "https://www.hrw.org/news/2019/12/06/feminist-art-exhibit-threatened-kyrgyzstan",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "flags": [
+      "State censorship or punishment",
+      "Protest or boycott. In December 2019 a Culture Ministry commission confiscated works from the Feminnale; director Mira Dzhangaracheva left after death threats. Permanent display closed for repairs from late Sept 2025"
+    ]
   },
   {
     "id": "savannah-centre-for-contemporary-art-scca-tamale-tamale",
@@ -40333,9 +40338,9 @@
     "id": "pinchukartcentre",
     "funding": "Private centre founded in 2006 and run by the Victor Pinchuk Foundation. Pinchuk's fortune comes from Interpipe, a maker of steel pipes and railway wheels.",
     "flags": [
-      "Protest or boycott. In 2020 two prize nominees withdrew with open letters after 28 guides were dismissed. The centre denies the sackings were over their union"
+      "Protest or boycott. In 2020 two PinchukArtPrize nominees withdrew with open letters after 28 guides were dismissed. The centre denies the sackings were over their union"
     ],
-    "why_flagged": "Private centre founded in 2006 and run by the Victor Pinchuk Foundation. Pinchuk's fortune comes from Interpipe, a maker of steel pipes and railway wheels. No corporate sponsors are listed."
+    "why_flagged": "Private centre founded in 2006 by Victor Pinchuk, a project of his foundation. His fortune comes from Interpipe, a steel pipe and railway wheel maker. No sponsors listed."
   },
   {
     "name": "Bienal de Artes Mediales de Santiago",
@@ -40401,13 +40406,14 @@
     "size": "S",
     "sources": [
       "https://coleccionamalita.org.ar/institucional",
-      "https://en.wikipedia.org/wiki/Amalia_Lacroze_de_Fortabat"
+      "https://en.wikipedia.org/wiki/Fortabat_Art_Collection",
+      "https://www.pagina12.com.ar/diario/elpais/1-247054-2014-05-25.html"
     ],
     "lat": -34.599,
     "lon": -58.365,
     "id": "coleccion-de-arte-amalia-lacroze-de-fortabat",
     "funding": "Private museum run by the Fundaci\u00f3n Amalia Lacroze de Fortabat, set up by the Loma Negra cement heiress.",
-    "watch": "Opened in October 2008 in a Rafael Vi\u00f1oly building in Puerto Madero. The foundation also runs the Premio Fortabat art prize."
+    "watch": "Opened October 2008 in a Rafael Vi\u00f1oly building. A 2014 prosecutors' office report said Loma Negra, which the founder controlled, gained from the 1976 coup."
   },
   {
     "name": "Museo Nacional de Artes Visuales",
@@ -40424,7 +40430,7 @@
     "lon": -56.165,
     "id": "museo-nacional-de-artes-visuales",
     "funding": "Uruguayan state museum, a division of the Direcci\u00f3n Nacional de Cultura in the Ministry of Education and Culture.",
-    "watch": "Created by law in 1911 as the Museo de Bellas Artes. Holds more than 7,000 works, mostly by Uruguayan artists.",
+    "watch": "Created by Law 3,932 of 10 December 1911 as the Museo de Bellas Artes. Roxana Fabius has directed it since August 2025.",
     "field_sources": {
       "year_founded": {
         "urls": [
@@ -40442,18 +40448,18 @@
     "location": "Accra, Ghana",
     "city": "Accra",
     "country": "Ghana",
-    "tier": "U",
+    "tier": "A",
     "size": "S",
     "sources": [
-      "https://en.wikipedia.org/wiki/Gallery_1957",
       "https://www.theartnewspaper.com/news/british-construction-boss-to-open-new-gallery-in-ghana",
-      "https://www.gallery1957.com/"
+      "https://trueafrica.co/article/meet-the-team-behind-ghanas-latest-contemporary-art-gallery/",
+      "https://www.gallery1957.com/the-yaa-asantewaa-art-prize/"
     ],
     "lat": 5.554,
     "lon": -0.196,
     "id": "gallery-1957",
     "funding": "Commercial gallery founded in 2016 by British Lebanese construction owner Marwan Zakhem. Its Yaa Asantewaa Art Prize pays GHC 50,000 to the winner.",
-    "watch": "Spaces in Accra and London. Runs the Yaa Asantewaa Art Prize for Ghanaian women artists. No source names the founder's company."
+    "watch": "Spaces in Accra and London. Zakhem's firm does oil and gas engineering and construction contracts and built the Kempinski hotel that houses the Accra gallery."
   },
   {
     "name": "IZOLYATSIA",
@@ -40465,7 +40471,7 @@
     "sources": [
       "https://izolyatsia.org/en/foundation/",
       "https://izolyatsia.org/en/project/zmina-rebuilding/implementing-organizations/",
-      "https://izolyatsia.org/en/foundation/reports/"
+      "https://www.promoteukraine.org/foundation-izolyatsia-on-cultural-decentralization-and-projects-feared-by-the-occupiers/"
     ],
     "lat": 50.477,
     "lon": 30.506,
@@ -40489,7 +40495,7 @@
     "lon": 36.237,
     "id": "kharkiv-municipal-gallery",
     "funding": "Founded 1996 as Ukraine's first gallery with municipal status. The city council culture department decides on its premises.",
-    "watch": "Upper halls closed since 2022; the ARTbasement, also a shelter, reopened in September 2023. In March 2023 the mayor said the premises stay a gallery."
+    "watch": "Upper halls closed since 2022 and its White Cube now serves the city's news studio. The ARTbasement, also a shelter, reopened in September 2023."
   },
   {
     "name": "Museum of West African Art (MOWAA)",
@@ -40500,18 +40506,18 @@
     "size": "S",
     "sources": [
       "https://wearemowaa.org/support",
-      "https://wearemowaa.org/news-and-ideas/2026-with-mowaa",
-      "https://apollo-magazine.com/?p=1036066"
+      "https://apollo-magazine.com/?p=1036066",
+      "https://nannews.ng/who-controls-benins-returned-treasures/"
     ],
     "lat": 6.329,
     "lon": 5.623,
     "id": "museum-of-west-african-art-mowaa",
-    "funding": "Edo State Government, Germany's Foreign Office, Mellon Foundation, British Museum and PI Trust are founding partners. Leadership Circle donors include NNPC, Seplat Energy, Lekoil and Azura Power.",
+    "funding": "Founding partners: Edo State Government, Germany's Foreign Office, Mellon Foundation, British Museum, PI Trust. Leadership Circle donors include NNPC Seplat Energy, Lekoil Nigeria and Azura Power West Africa.",
     "flags": [
       "Fossil fuels",
-      "Protest or boycott. Edo's governor said on 7 November 2025 it would become the Benin Royal Museum. Oba loyalists disrupted the 9 November preview. Open by appointment only"
+      "Protest or boycott. Oba loyalists disrupted the 9 November 2025 preview. Edo's Assembly urged a state takeover on 22 December 2025"
     ],
-    "why_flagged": "Edo State Government, Germany's Foreign Office, Mellon Foundation, British Museum and PI Trust are founding partners. Leadership Circle donors include NNPC, Seplat Energy, Lekoil and Azura Power.",
+    "why_flagged": "Founding partners: Edo State Government, Germany's Foreign Office, Mellon Foundation, British Museum, PI Trust. Leadership Circle donors include NNPC Seplat Energy, Lekoil Nigeria and Azura Power West Africa.",
     "funder_links": [
       {
         "funder": "Mellon Foundation",
@@ -40537,7 +40543,7 @@
     "funding": "State enterprise. 2025: UAH 38.0M state budget, UAH 24.2M own income. Project partners include Erste Foundation, British Council, the US Embassy and International Renaissance Foundation.",
     "flags": [
       "Protest or boycott",
-      "State censorship or punishment. In July 2013 the then-director had a mural painted black and a painting pulled; artists called a boycott. 2025 visitors: 53",
+      "State censorship or punishment. In July 2013 the director had Volodymyr Kuznetsov's painting painted black and Vasyl Tsagolov's work excluded; artists called a boycott. 2025 visitors: 53",
       "870"
     ],
     "why_flagged": "State enterprise. 2025: UAH 38.0M state budget, UAH 24.2M own income. Project partners include Erste Foundation, British Council, the US Embassy and International Renaissance Foundation."
@@ -40550,7 +40556,7 @@
     "tier": "B",
     "size": "S",
     "sources": [
-      "https://namu.ua/en/",
+      "https://namu.ua/en/support-namu/",
       "https://www.kmu.gov.ua/news/mkip-uryad-vidiliv-56-mln-grn-na-nevidkladnij-remont-nacionalnogo-hudozhnogo-muzeyu",
       "https://art-leaks.org/2012/10/17/art-workers-self-defense-initiative-open-statement-regarding-the-national-art-museum-of-ukraine-namu/"
     ],
@@ -40559,8 +40565,7 @@
     "id": "national-art-museum-of-ukraine",
     "funding": "State museum. The Cabinet gave it UAH 5.6M in 2020 for emergency facade repairs. Donations go to its own charitable foundation.",
     "flags": [
-      "Protest or boycott. In October 2012 staff sent an open letter and protested against acting director Tatiana Mironova",
-      "named after the Ministry of Culture removed Anatoliy Melnyk"
+      "Protest or boycott. In October 2012 staff sent an open letter demanding the removal of acting director Tatiana Mironova; art workers backed it with a statement and petition"
     ],
     "why_flagged": "State museum. The Cabinet gave it UAH 5.6M in 2020 for emergency facade repairs. Donations go to its own charitable foundation. No corporate sponsor list is published."
   },
@@ -40572,34 +40577,35 @@
     "tier": "B",
     "size": "L",
     "sources": [
+      "https://malba.org.ar/sponsors/",
       "https://malba.org.ar/transparencia/",
-      "https://malba.org.ar/colabora/",
       "https://caras.perfil.com/noticias/celebridades/el-millonario-reclamo-de-la-ex-de-eduardo-costantini-teresa-costantini-explica-por-que-recurre-a-la-justicia.phtml"
     ],
     "lat": -34.577,
     "lon": -58.404,
     "id": "malba",
-    "funding": "Private foundation set up by Eduardo Costantini covers the annual deficit; own income pays about half the budget. Corporate partners: Consultatio, ICBC, Bloomberg, Alcorta.",
-    "watch": "Costantini's ex-wife Teresa said in August 2026 she will go to court over works in the founding collection; MALBA says its foundation owns them.",
-    "why_flagged": "Costantini's ex-wife Teresa said in August 2026 she will go to court over works in the founding collection; MALBA says its foundation owns them."
+    "funding": "Fundaci\u00f3n Malba, set up by Eduardo Costantini, covers the annual deficit; own income pays about half the budget. Collaborators on its sponsors page include Chevron, Bloomberg, Zurich and Telecom.",
+    "why_flagged": "Fundaci\u00f3n Malba, set up by Eduardo Costantini, covers the annual deficit; own income pays about half the budget. Collaborators on its sponsors page include Chevron, Bloomberg, Zurich and Telecom.",
+    "flags": [
+      "Fossil fuels. Chevron is a listed collaborator. Costantini's ex-wife said in August 2026 she will sue over founding-collection works; MALBA says its foundation owns them"
+    ]
   },
   {
     "name": "Museo de la Solidaridad Salvador Allende",
     "location": "Santiago, Chile",
     "city": "Santiago",
     "country": "Chile",
-    "tier": "A",
+    "tier": "B",
     "size": "S",
     "sources": [
       "https://www.mssa.cl/wp-content/uploads/2025/09/Informe-recursos-2025_ok_.pdf",
-      "https://www.mssa.cl/wp-content/uploads/2026/03/Memoria-Anual-MSSA-SNPC-2025.pdf",
-      "http://www.theartnewspaper.com/2023/10/12/tania-bruguera-exhibition-chile-salvador-allende"
+      "https://www.theartnewspaper.com/2023/10/12/tania-bruguera-exhibition-chile-salvador-allende",
+      "https://cimam.org/news-archive/to-the-public-opinion/"
     ],
     "lat": -33.454,
     "lon": -70.668,
     "id": "museo-de-la-solidaridad-salvador-allende",
     "funding": "Servicio Nacional del Patrimonio Cultural grant of CLP 660M in 2025. Project money from Fondart, the Senate, Henry Moore Foundation and Centro Cultural de Espa\u00f1a. Metro is a media partner.",
-    "watch": "In 2023 pressure from Allende's grandson over Tania Bruguera's show delayed its opening; it opened in modified form. In-person visitors in 2025: 10,337.",
     "field_sources": {
       "address": {
         "urls": [
@@ -40609,7 +40615,13 @@
         "retrieved": "2026-10-13"
       }
     },
-    "address": "Rep\u00fablica 475, Santiago"
+    "address": "Rep\u00fablica 475, Santiago",
+    "why_flagged": "Servicio Nacional del Patrimonio Cultural grant of CLP 660M in 2025. Project money from Fondart, the Senate, Henry Moore Foundation and Centro Cultural de Espa\u00f1a. Metro is a media partner.",
+    "flags": [
+      "Protest or boycott. In 2023 Allende's grandson wrote to the museum",
+      "then campaigned publicly",
+      "demanding Tania Bruguera's show be cancelled. It opened late and modified"
+    ]
   },
   {
     "name": "Museo de Arte de Puerto Rico",
@@ -40626,11 +40638,11 @@
     "lat": 18.448,
     "lon": -66.066,
     "id": "museo-de-arte-de-puerto-rico",
-    "funding": "Private nonprofit. Current exhibitions are backed by the Flamboyan Foundation, Mellon Foundation, Helen Frankenthaler Foundation, Mano Amiga and the Puerto Rico Tourism Company. Members and corporate donors also give.",
+    "funding": "Private nonprofit. Current exhibitions are backed by the Flamboyan Foundation, Mellon Foundation, Helen Frankenthaler Foundation, Mano Amiga and the Puerto Rico Tourism Company.",
     "flags": [
-      "Protest or boycott. In November 2023 activists protested after a gallery named for Cecilia Orta Allende was renamed for a donor family tied to the Fiscal Control Board"
+      "Protest or boycott. On 19 November 2023 activists picketed after the Cecilia Orta Allende gallery was renamed for a donor family tied to the Fiscal Oversight Board"
     ],
-    "why_flagged": "Private nonprofit. Current exhibitions are backed by the Flamboyan Foundation, Mellon Foundation, Helen Frankenthaler Foundation, Mano Amiga and the Puerto Rico Tourism Company. Members and corporate donors also give.",
+    "why_flagged": "Private nonprofit. Current exhibitions are backed by the Flamboyan Foundation, Mellon Foundation, Helen Frankenthaler Foundation, Mano Amiga and the Puerto Rico Tourism Company. No corporate donors are named.",
     "funder_links": [
       {
         "funder": "Mellon Foundation",
@@ -40646,20 +40658,20 @@
     "tier": "B",
     "size": "S",
     "sources": [
-      "https://www.museums.or.ke/nairobi-national-museum/",
       "https://www.businessdailyafrica.com/bd/lifestyle/art/museum-bans-works-by-three-of-kenya-s-finest-artists-2152656",
-      "https://www.dainst.org/blogs/planet-africa-makes-stunning-debuts/8"
+      "https://www.dainst.org/blogs/planet-africa-makes-stunning-debuts/8",
+      "https://www.museums.or.ke/nairobi-national-museum/"
     ],
     "lat": -1.274,
     "lon": 36.815,
     "id": "nairobi-national-museum",
     "funding": "National Museums of Kenya, a state corporation, runs it. Planet Africa (2024 to 2025) was funded by the German Research Foundation and Germany's Foreign Office.",
     "flags": [
-      "State censorship or punishment. In May 2017 museum management banned works by Michael Soi",
-      "Patrick Mukabi and Bertiers Mbatia as unsuitable for children",
-      "days before opening"
+      "State censorship or punishment. In May 2017 museum management pulled works by Michael Soi",
+      "Patrick Mukabi and Bertiers Mbatia on opening day",
+      "saying they were unsuitable for children"
     ],
-    "why_flagged": "National Museums of Kenya, a state corporation, runs it. Planet Africa (2024 to 2025) was funded by the German Research Foundation and Germany's Foreign Office. No sponsor list is published."
+    "why_flagged": "Run by National Museums of Kenya, a state corporation. The Planet Africa project (opened November 2024) lists the German Research Foundation and Germany's Foreign Office as funders. No sponsor list."
   },
   {
     "name": "National Museum of Fine Arts of Chile (MNBA)",
@@ -40669,15 +40681,15 @@
     "tier": "A",
     "size": "L",
     "sources": [
-      "https://mnba.gob.cl/sites/www.mnba.gob.cl/files/2025-03/CP%20Una%20colecci%C3%B3n%20para%20el%20futuro%20MNBA%202025.pdf",
+      "https://www.latercera.com/culto/noticia/una-coleccion-en-expansion-el-museo-de-bellas-artes-presenta-sus-55-nuevas-adquisiciones-de-patrimonio-nacional/",
       "https://www.latercera.com/nacional/noticia/visitas-a-museos-en-el-casco-historico-aumentan-hasta-un-146-en-la-ultima-decada/2Q3FENRSAZEQ5GMBLV473TEBLM/",
       "https://www.theartnewspaper.com/2026/07/01/leon-ferrari-exhibition-cancelled-chile-museo-nacional-bellas-artes"
     ],
     "lat": -33.435,
     "lon": -70.644,
     "id": "national-museum-of-fine-arts-of-chile-mnba",
-    "funding": "State museum; the Servicio Nacional del Patrimonio Cultural pays for acquisitions. Recent gifts came through Fundaci\u00f3n AMA from collector Juan Yarur Torres, and from artist Cecilia Vicu\u00f1a.",
-    "watch": "Record 510,720 visitors in 2024. Cancelled a Le\u00f3n Ferrari retrospective in June 2026, citing budget cuts. Not the Buenos Aires museum of that name."
+    "funding": "State museum under the Servicio Nacional del Patrimonio Cultural; buys works from its own budget. Gifts came through Fundaci\u00f3n AMA from collector Juan Yarur Torres and from artist Cecilia Vicu\u00f1a.",
+    "watch": "510,720 visitors in 2024, a decade high. Cancelled a Le\u00f3n Ferrari retrospective in June 2026, citing budget cuts. Not the Buenos Aires museum."
   },
   {
     "name": "Bienal de Cuenca",
@@ -40687,33 +40699,36 @@
     "tier": "U",
     "size": "S",
     "sources": [
-      "https://fundacion.bienaldecuenca.org/",
       "https://elmercurio.com.ec/cuenca/2025/09/24/bienal-cuenca-inauguracion-curadores-2025/",
-      "https://elmercurio.com.ec/cuenca/2025/11/25/bienal-de-cuenca-denuncia-amenazas-intento-censura/"
+      "https://elmercurio.com.ec/cuenca/2025/11/25/bienal-de-cuenca-denuncia-amenazas-intento-censura/",
+      "https://primicias.ec/noticias/entretenimiento/cultura/bienal-cuenca-puertas-abiertas-eventos-gratis"
     ],
     "lat": -2.897,
     "lon": -79.004,
     "id": "bienal-de-cuenca",
     "funding": "Run by the Fundaci\u00f3n Municipal Bienal de Cuenca, a city body. The 17th edition cost about $1.2M, from municipal money, private-company agreements and self-raised funds.",
-    "watch": "Founded in 1986 as a painting biennial. In November 2025 it reported threats over one work, filed a complaint and kept it on view."
+    "watch": "Founded 1986 as a painting biennial. In November 2025 it reported threats over one work, filed a complaint, and the work stays on view."
   },
   {
     "name": "F\u00e1brica de Arte Cubano",
     "location": "Havana, Cuba",
     "city": "Havana",
     "country": "Cuba",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
     "sources": [
-      "https://oncubanews.com/en/culture/cubas-fabrica-de-arte-a-symbol-of-these-new-times/",
-      "https://www.prensa-latina.cu/2026/06/07/bloqueo-de-eeuu-provoca-cierre-temporal-de-fabrica-de-arte-cubano/",
-      "https://en.wikipedia.org/wiki/F%C3%A1brica_de_Arte_Cubano"
+      "https://voz.us/es/mundo/251017/30079/regimen-cubano-censura-homenaje-celia-cruz-centenario.html",
+      "https://www.periodicocubano.com/la-fabrica-de-arte-cubano-vincula-acusaciones-oficiales-con-la-censura-a-un-homenaje-a-celia-cruz/?amp=1",
+      "https://oncubanews.com/en/culture/cubas-fabrica-de-arte-a-symbol-of-these-new-times/"
     ],
     "lat": 23.128,
     "lon": -82.41,
     "id": "fabrica-de-arte-cubano",
     "funding": "Founded by musician X Alfonso. In 2014 the Cuban Music Institute and Ministry of Culture were covering some costs until it became self-financing.",
-    "watch": "Opened in a former cooking-oil factory in 2014. Announced a temporary closure in June 2026, which state agency Prensa Latina ties to the US embargo."
+    "why_flagged": "Founded by musician X Alfonso. In 2014 the Cuban Music Institute and Ministry of Culture covered some costs until it became self-financing. It occupies a state-owned building.",
+    "flags": [
+      "State censorship or punishment. The ministry's music centre cancelled a Celia Cruz tribute there in October 2025. It closed temporarily in June 2026; Prensa Latina blames the US embargo"
+    ]
   },
   {
     "name": "Biennale Jogja",
@@ -40731,7 +40746,7 @@
     "lon": 110.368,
     "id": "biennale-jogja",
     "funding": "Organised by Yayasan Biennale Yogyakarta, a state-funded foundation created in 2010. The Yogyakarta regional government ran the 2019 edition.",
-    "watch": "On 9 October 2026 the foundation announced it is closing after 16 years, citing rising censorship and violence against activists in Indonesia."
+    "watch": "On 9 October 2026 it announced closure after 16 years, citing rising censorship and violence against activists. It names no incident against itself."
   },
   {
     "name": "Jakarta Biennale",
@@ -40742,13 +40757,13 @@
     "size": "S",
     "sources": [
       "https://jakartabiennale.id/partner/",
-      "https://jakartabiennale.id/uncategorized/majelis-jakarta/",
-      "https://www.detik.com/pop/culture/d-7568199/jakarta-biennale-2024-hadir-lagi-jadi-perayaan-50-tahun"
+      "https://jakartabiennale.id/",
+      "https://jakartabiennale.id/uncategorized/majelis-jakarta/"
     ],
     "lat": -6.189,
     "lon": 106.84,
     "id": "jakarta-biennale",
-    "funding": "Run since 2024 by Majelis Jakarta, a network of artist collectives. 2026 partners: Dulux, Artotel's Paviliun Raden Saleh hotel and internet provider iForte. Main budget and public grants are unpublished.",
+    "funding": "Run since 2024 by Majelis Jakarta, an artist-collective network. 2026 partners: Dulux, Artotel's Paviliun Raden Saleh, iForte. Jakarta culture office and Jakpro logos appear unlabelled; no budget published.",
     "watch": "Founded 1974 by the Jakarta Arts Council. The 2026 edition, KEBAL, runs 4 Oct to 28 Nov at Taman Ismail Marzuki."
   },
   {
@@ -40766,7 +40781,7 @@
     "lat": 14.554,
     "lon": 121.023,
     "id": "ayala-museum",
-    "funding": "Run privately by Ayala Foundation, the Ayala group's foundation. Ayala Corporation co-presents shows; BPI is a partner. The Spanish and US embassies backed the 2024 to 2025 Zobel show.",
+    "funding": "Run privately by Ayala Foundation, the Ayala group's foundation. Ayala Corporation co-presents shows; BPI is a partner. The Spanish and US embassies supported the 2024 Z\u00f3bel show.",
     "watch": "Opened 1967 from Fernando Zobel's plan. It closed in 2019 for rebuilding and reopened 4 December 2021. It had 65,000 visitors in 2014."
   },
   {
@@ -40778,13 +40793,14 @@
     "size": "S",
     "sources": [
       "https://pintoartmuseum.ph/Pinto_Art_Museum/",
-      "https://en.wikipedia.org/wiki/Pinto_Art_Museum"
+      "https://en.wikipedia.org/wiki/Pint%C3%B4_Art_Museum",
+      "https://lifestyleasia-onemega.com/arts-and-culture/art/social-media-post-pinto-art-museum/"
     ],
     "lat": 14.581,
     "lon": 121.164,
     "id": "pinto-art-museum",
     "funding": "Private museum founded in 2010 to show the collection of physician and patron Dr. Joven Cuanang. Run by the non-profit Silangan Foundation; entry is ticketed.",
-    "watch": "Housed in a complex by artist Antonio Lea\u00f1o inside a two-hectare botanical garden. The collection centres on Salingpusa and other Filipino contemporary artists.",
+    "watch": "Complex designed by artist Antonio Lea\u00f1o.",
     "field_sources": {
       "year_founded": {
         "urls": [
@@ -40850,7 +40866,7 @@
     "id": "galeri-petronas",
     "funding": "Part of PETRONAS, Malaysia's state oil and gas company, which has built the PETRONAS Art Collection since 1993. Nearly two million visitors since 1992.",
     "flags": [
-      "Fossil fuels. Left Suria KLCC at the end of July 2026. A preview opened at Ombak KLCC on 21 August; full opening is due by end 2027"
+      "Fossil fuels. Left Suria KLCC in July 2026. A preview opened at Ombak KLCC on 21 August 2026; full opening is due by end 2027"
     ],
     "why_flagged": "Part of PETRONAS, Malaysia's state oil and gas company, which has built the PETRONAS Art Collection since 1993. Nearly two million visitors since 1992."
   },
@@ -40898,7 +40914,7 @@
     "lon": 116.494,
     "id": "red-brick-art-museum",
     "funding": "Private museum built by collectors Yan Shijie and Cao Mei, who invested nearly RMB 400 million over eight years.",
-    "watch": "The 20,000 sq m site was designed by Dong Yugan of Peking University. Its founder is described only as a collector and entrepreneur.",
+    "watch": "The 20,000 sq m site was designed by Dong Yugan of Peking University. Yan is described only as a collector and entrepreneur.",
     "field_sources": {
       "year_founded": {
         "urls": [
@@ -40928,7 +40944,7 @@
     "id": "galeri-nasional-indonesia",
     "funding": "State gallery owned by Indonesia's Culture Ministry, a ministry created under President Prabowo; before that it sat under the education and culture ministry. Holds 1,770 artworks.",
     "flags": [
-      "State censorship or punishment. On 19 December 2024 it cancelled Yos Suprapto's solo show minutes before opening after he refused to cover five paintings depicting Jokowi"
+      "State censorship or punishment. On 19 December 2024 it cancelled Yos Suprapto's show ten minutes before opening after he refused to cover more paintings of Jokowi"
     ],
     "why_flagged": "State gallery owned by Indonesia's Culture Ministry, a ministry created under President Prabowo; before that it sat under the education and culture ministry. Holds 1,770 artworks."
   },
@@ -40947,11 +40963,11 @@
     "lat": 39.983,
     "lon": 116.489,
     "id": "ucca-center-for-contemporary-art",
-    "funding": "Not-for-profit museum run by the UCCA Foundation, owned by Chinese and international patrons since 2017. 2025 partners: Louis Vuitton, Dior, Bloomberg and the Aranya seaside community; 901,435 visitors.",
+    "funding": "Not-for-profit museum accredited by Beijing, funded by its gala, patrons, corporate sponsors and grants. 2025 partners: Louis Vuitton, Dior, Bloomberg and Aranya; 901,435 visitors.",
     "flags": [
-      "State censorship or punishment. Beijing's culture bureau denied the permit for a 2019 Hung Liu show. UCCA pulled a Li Songsong painting in 2022 and the show closed early"
+      "State censorship or punishment. UCCA cancelled a 2019 Hung Liu show after Beijing denied a permit. In 2022 it pulled a Li Songsong painting after a complaint"
     ],
-    "why_flagged": "Not-for-profit museum run by the UCCA Foundation, owned by Chinese and international patrons since 2017. 2025 partners: Louis Vuitton, Dior, Bloomberg and the Aranya seaside community; 901,435 visitors.",
+    "why_flagged": "Not-for-profit museum accredited by Beijing, funded by its gala, patrons, corporate sponsors and grants. 2025 partners: Louis Vuitton, Dior, Bloomberg and Aranya; 901,435 visitors.",
     "funder_links": [
       {
         "funder": "Bloomberg Philanthropies",
@@ -40978,12 +40994,12 @@
     "lat": 31.17,
     "lon": 121.459,
     "id": "west-bund-museum",
-    "funding": "Run and paid for by the state-owned West Bund Group, per Pompidou's president. The Centre Pompidou partnership was renewed in 2023 for five years. Over 2 million visits.",
+    "funding": "Run and paid for by the state-owned West Bund Group. The Centre Pompidou partnership was renewed in 2023 for five years. Joint shows since 2019 drew over 2 million visitors.",
     "flags": [
       "State censorship or punishment. Local officials had fewer than five works removed from the 2019 opening show",
       "The Shape of Time. Pompidou says it does not self-censor"
     ],
-    "why_flagged": "Run and paid for by the state-owned West Bund Group, per Pompidou's president. The Centre Pompidou partnership was renewed in 2023 for five years. Over 2 million visits."
+    "why_flagged": "Run and paid for by the state-owned West Bund Group. The Centre Pompidou partnership was renewed in 2023 for five years. Joint shows since 2019 drew over 2 million visitors."
   },
   {
     "name": "National Visual Arts Gallery",
@@ -41002,7 +41018,8 @@
     "id": "national-visual-arts-gallery",
     "funding": "Owned by the Government of Malaysia and run by the National Visual Art Development Board, a statutory body under the Ministry of Tourism, Arts and Culture. Most exhibitions are free.",
     "flags": [
-      "State censorship or punishment. In February 2020 it removed four works from Ahmad Fuad Osman's retrospective. 55 collectors threatened to pull loans; a deputy minister asked for their return"
+      "State censorship or punishment",
+      "Protest or boycott. In February 2020 it removed four works from Ahmad Fuad Osman's retrospective. Nearly 400 artists and 55 collectors petitioned; a deputy minister sought their return"
     ],
     "why_flagged": "Owned by the Government of Malaysia and run by the National Visual Art Development Board, a statutory body under the Ministry of Tourism, Arts and Culture. Most exhibitions are free."
   },
@@ -41021,8 +41038,8 @@
     "lat": 39.924,
     "lon": 116.403,
     "id": "national-art-museum-of-china",
-    "funding": "State museum funded by the Ministry of Culture and Tourism; entry is free. About 1.05 million visitors in 2016. German collectors Peter and Irene Ludwig gave 117 Western works.",
-    "watch": "Opened 1963 with over 110,000 works. A larger Jean Nouvel building was announced in 2014; no budget for either was found."
+    "funding": "State museum funded by the Ministry of Culture and Tourism. About 1.05 million visitors in 2016. German collectors Peter and Irene Ludwig donated 117 works.",
+    "watch": "Opened in 1963; holds over 110,000 works. Jean Nouvel's larger building was announced in 2014; no budget for either was found."
   },
   {
     "name": "Shanghai Biennale",
@@ -41033,7 +41050,7 @@
     "size": "S",
     "sources": [
       "https://en.ilsole24ore.com/art/the-shanghai-biennial-invites-listening-to-a-better-future-AHD0eX0D",
-      "https://hyperallergic.com/chinese-officials-remove-ai-weiwei-work-from-exhibition",
+      "https://art-leaks.org/2012/09/05/yuri-albert-i-am-not-going-to-shanghai-because-of-censorship/",
       "https://art-leaks.org/2012/11/02/barbad-golshiri-shanghai-biennial-2012-open-letter/"
     ],
     "lat": 31.203,
@@ -41041,8 +41058,8 @@
     "id": "shanghai-biennale",
     "funding": "Run by the state-owned Power Station of Art; budget undisclosed and paid mainly from Shanghai city government funds. 2025 partners: Aesop, Denza, Langham hotels and lighting maker Flos.",
     "flags": [
-      "State censorship or punishment. Officials had Ai Weiwei's works and name removed from a 2014 show at its venue",
-      "the Power Station. Golshiri says a 2012 work was refused"
+      "State censorship or punishment. In 2012 officials demanded cuts to Yuri Albert's work",
+      "so he withdrew; a committee rejected Barbad Golshiri's proposal. Both artists published their accounts"
     ],
     "why_flagged": "Run by the state-owned Power Station of Art; budget undisclosed and paid mainly from Shanghai city government funds. 2025 partners: Aesop, Denza, Langham hotels and lighting maker Flos."
   },
@@ -41054,16 +41071,19 @@
     "tier": "B",
     "size": "S",
     "sources": [
+      "https://artreview.com/will-the-new-bangkok-kunsthalle-fire-up-the-art-scene/",
       "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown",
-      "https://www.bkkartmag.com/articles/khao-yai-art-forest-bangkok-kunsthalle",
       "https://taipeitimes.com/News/biz/archives/2015/08/21/2003625826"
     ],
     "lat": 13.74,
     "lon": 100.515,
     "id": "bangkok-kunsthalle",
     "funding": "Her husband Soopakij chairs CP Group, Thailand's largest private company.",
-    "watch": "Name to know: CP Group's CP Foods faced 2014 claims of slave-manned boats in its prawn-feed chain, then a 2015 US suit it called meritless.",
-    "why_flagged": "Name to know: CP Group's CP Foods faced 2014 claims of slave-manned boats in its prawn-feed chain, then a 2015 US suit it called meritless."
+    "why_flagged": "Opened January 2024 by philanthropist Marisa Chearavanont through her Khao Yai Art; no sponsors are named. She is married to Soopakij Chearavanont, chairman of CP Group.",
+    "flags": [
+      "Protest or boycott. artn't activists staged a guerrilla protest inside",
+      "in shirts reading 'world class exploitation'. CP Group's CP Foods faced 2014 slavery claims in its prawn-feed chain"
+    ]
   },
   {
     "name": "TANK Shanghai",
@@ -41080,8 +41100,8 @@
     "lat": 31.167,
     "lon": 121.459,
     "id": "tank-shanghai",
-    "funding": "Founded by collector and karaoke-club owner Qiao Zhibing, who told The Art Newspaper he paid for it. The state-owned West Bund Group invited him and built the surrounding park.",
-    "watch": "Opened 23 March 2019 in five former aviation fuel tanks. Time Out says Qiao invested with West Bund Group; no budget was found.",
+    "funding": "Founded by collector and karaoke-club owner Qiao Zhibing, who told The Art Newspaper he paid for it. The government-backed West Bund Group invited him and manages the surrounding park.",
+    "watch": "Opened in March 2019 in five former aviation fuel tanks. Time Out says Qiao invested with West Bund Group; no budget was found.",
     "field_sources": {
       "year_founded": {
         "urls": [
@@ -41127,18 +41147,17 @@
     "sources": [
       "https://www.nasjonalmuseet.no/contentassets/98adac84980c4555ae99de8a5ed00e80/arsmelding-for-nasjonalmuseet-2024.pdf",
       "https://kunstkritikk.com/artists-fight-the-fredriksen-collaboration",
-      "https://doi.org/10.1080/09647775.2024.2312576"
+      "https://nasjonalmuseet.no/en/about-the-national-museum/partnership/the-fredriksen-collaboration"
     ],
     "lat": 59.912,
     "lon": 10.728,
     "id": "nasjonalmuseet-national-museum-of-norway",
-    "funding": "State-owned foundation; 2024 income NOK 1,059M, gifts NOK 12.5M. Fredriksen Family Art Company lends its collection on a ten-year deal and funds four PhDs. AKO Foundation and Sparebankstiftelsen DNB give.",
+    "funding": "State-funded foundation; 2024 income NOK 1,059M, gifts NOK 12.5M. Fredriksen Family Art Company lends its collection on a ten-year deal and funds four PhDs. AKO Foundation and Sparebankstiftelsen DNB give.",
     "flags": [
       "Campaigned name",
-      "Protest or boycott. A June 2022 appeal with over 100 signatures sought to end the Fredriksen deal. The family's wealth is tankers",
-      "drilling rigs and LNG ships"
+      "Protest or boycott. June 2022 appeal urged ending the Fredriksen deal; critics cite Seadrill's 2014 Rosneft contract. The museum sees no reason for review"
     ],
-    "why_flagged": "State-owned foundation; 2024 income NOK 1,059M, gifts NOK 12.5M. Fredriksen Family Art Company lends its collection on a ten-year deal and funds four PhDs. AKO Foundation and Sparebankstiftelsen DNB give.",
+    "why_flagged": "State-funded foundation; 2024 income NOK 1,059M, gifts NOK 12.5M. Fredriksen Family Art Company lends its collection on a ten-year deal and funds four PhDs. AKO Foundation and Sparebankstiftelsen DNB give.",
     "study_notes": [
       {
         "title": "Public art and private wealth: the controversial collaboration between the National Museum in Norway and Fredriksen Family Art Company Ltd",
@@ -41165,15 +41184,15 @@
     "lat": 41.028,
     "lon": 28.972,
     "id": "istanbul-biennial-iksv",
-    "funding": "Run by \u0130KSV. Ko\u00e7 Holding is main sponsor for 2007 to 2036. Ko\u00e7 owns oil refiner T\u00fcpra\u015f and defence vehicle maker Otokar.",
+    "funding": "Run by \u0130KSV. Ko\u00e7 Holding is main sponsor for 2007 to 2036. Its group includes oil refiner T\u00fcpra\u015f, almost half its revenue, and defence maker Otokar.",
     "flags": [
       "Fossil fuels",
       "Arms and defence",
       "Campaigned name",
-      "Protest or boycott. Direnal-Istanbul protested Ko\u00e7's sponsorship of the 2009 edition. The 2025 edition drew over 600",
+      "Protest or boycott. Direnal-Istanbul protested Ko\u00e7's sponsorship at the 2009 opening. In 2013 protesters wore Ko\u00e7 banners. The 2025 edition drew over 600",
       "000 visitors"
     ],
-    "why_flagged": "Run by \u0130KSV. Ko\u00e7 Holding is main sponsor for 2007 to 2036. Ko\u00e7 owns oil refiner T\u00fcpra\u015f and defence vehicle maker Otokar."
+    "why_flagged": "Run by \u0130KSV. Ko\u00e7 Holding is main sponsor for 2007 to 2036. Its group includes oil refiner T\u00fcpra\u015f, almost half its revenue, and defence maker Otokar."
   },
   {
     "name": "Borusan Contemporary",
@@ -41222,7 +41241,7 @@
     "size": "S",
     "sources": [
       "https://archive2025.serendipityartsfestival.com/partners",
-      "https://www.thequint.com/news/india/amid-caa-nrc-unrest-three-artworks-shut-four-musicians-arrested-at-goa-serendipity-arts-festival",
+      "https://etvbharat.com/english/bharat/bharat-news/caa-nrc-leave-awkward-footprint-on-goa-art-festival/na20191219124219107",
       "https://en.wikipedia.org/wiki/Serendipity_Arts_Festival"
     ],
     "lat": 15.499,
@@ -41230,8 +41249,8 @@
     "id": "serendipity-arts-festival",
     "funding": "Non-profit Serendipity Arts Foundation, founded by Hero Enterprise chair Sunil Kant Munjal. 2025 partners include the Goa government, Hero Insurance Broking, Hero Realty, Campa, Milton and foreign cultural institutes.",
     "flags": [
-      "State censorship or punishment. In December 2019 the festival sealed CAA and NRC artworks",
-      "citing a technical glitch. Police arrested four Dastaan musicians at the festival"
+      "State censorship or punishment. On 18 December 2019 the organisers shut two exhibits with CAA and NRC content",
+      "citing technical issues. Poets called it political suppression"
     ],
     "why_flagged": "Non-profit Serendipity Arts Foundation, founded by Hero Enterprise chair Sunil Kant Munjal. 2025 partners include the Goa government, Hero Insurance Broking, Hero Realty, Campa, Milton and foreign cultural institutes."
   },
@@ -41245,13 +41264,13 @@
     "sources": [
       "https://jamnalalbajajfoundation.org/beyond-profit/art-culture-sports/bhau-daji-lad-museum",
       "https://www.knocksense.com/mumbai/mumbais-oldest-168-yo-dr-bhau-daji-lad-museum-reopens-today-with-a-28-crore-facelift/",
-      "https://en.wikipedia.org/wiki/Dr._Bhau_Daji_Lad_Museum"
+      "https://etvbharat.com/en/!state/170-year-old-dr-bhau-daji-lad-museum-gets-new-look-reopens-after-4-years-enn25010902135"
     ],
     "lat": 18.979,
     "lon": 72.835,
     "id": "dr-bhau-daji-lad-mumbai-city-museum",
     "funding": "Public-private partnership of the Municipal Corporation of Greater Mumbai, the Jamnalal Bajaj Foundation and INTACH. The Corporation paid INR 2.8 crore for the 2025 reopening repairs.",
-    "watch": "Mumbai's oldest museum, reopened in January 2025. Its expansion plan includes a Mumbai Modern Gallery.",
+    "watch": "Mumbai's oldest museum; it reopened on 8 January 2025 after four years closed.",
     "field_sources": {
       "address": {
         "urls": [
@@ -41274,7 +41293,7 @@
     "sources": [
       "https://usaartnews.com/news/south-indias-first-private-art-museum-to-open-in-december/",
       "https://hyperallergic.com/artists-protest-collectors-takeover-of-indian-museum/",
-      "https://en.wikipedia.org/wiki/Museum_of_Art_%26_Photography"
+      "https://en.wikipedia.org/wiki/Abhishek_Poddar"
     ],
     "lat": 12.975,
     "lon": 77.597,
@@ -41302,14 +41321,14 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Bengal_Foundation",
       "https://en.wikipedia.org/wiki/Abul_Khair_Litu",
-      "https://bengalfoundation.org/"
+      "https://today.thefinancialexpress.com.bd/print/acc-endorses-charge-sheet-against-litu-1720721026"
     ],
     "lat": 23.753,
     "lon": 90.37,
     "id": "bengal-foundation",
     "funding": "Private trust founded in 1986, funded entirely by the Bengal Group. Chairman Abul Khair Litu co-founded AB Bank. It runs a fine arts gallery, a music festival and publishing.",
-    "watch": "In July 2024 the Anti-Corruption Commission endorsed a charge sheet against chairman Abul Khair Litu.",
-    "why_flagged": "In July 2024 the Anti-Corruption Commission endorsed a charge sheet against chairman Abul Khair Litu."
+    "watch": "In July 2024 the Anti-Corruption Commission endorsed a charge sheet against Litu for acquiring about Tk 903 million in assets beyond his income.",
+    "why_flagged": "In July 2024 the Anti-Corruption Commission endorsed a charge sheet against Litu for acquiring about Tk 903 million in assets beyond his income."
   },
   {
     "name": "Vasl Artists' Association",
@@ -41360,7 +41379,7 @@
     "lon": 77.231,
     "id": "lalit-kala-akademi",
     "funding": "Autonomous body funded by the Union Ministry of Culture, founded in 1954. It runs the National Exhibition, the Triennale-India and seven regional centres.",
-    "watch": "The government took over its management in April 2015, citing irregularities. A 2017 court petition alleged misappropriation of funds.",
+    "watch": "The government took over its management in April 2015, citing irregularities. A 2017 Delhi High Court petition claimed misappropriation of funds.",
     "field_sources": {
       "year_founded": {
         "urls": [
@@ -41398,7 +41417,7 @@
     "lon": 28.977,
     "id": "anadolu-kultur-depo-and-diyarbak-r-arts-center",
     "funding": "Founded 2002; runs Depo in Istanbul and the Diyarbak\u0131r Arts Center. Supporters named: Sigrid Rausing Trust, Civil Rights Defenders, Foundation for Arts Initiatives and Stiftung Mercator.",
-    "watch": "Chair Osman Kavala has been jailed since 2017 and got a life sentence in 2022. Turkey neither funds nor controls the group."
+    "watch": "Founder Osman Kavala has been jailed since 2017 and got a life sentence in 2022. Turkey neither funds nor controls the group."
   },
   {
     "name": "Mohatta Palace Museum",
@@ -41409,13 +41428,14 @@
     "size": "S",
     "sources": [
       "https://www.dawn.com/news/amp/1580894",
+      "https://www.dawn.com/news/1656933/official-assignee-restrained-from-taking-over-mohatta-palace",
       "https://en.wikipedia.org/wiki/Mohatta_Palace"
     ],
     "lat": 24.814,
     "lon": 67.033,
     "id": "mohatta-palace-museum",
     "funding": "The Government of Sindh owns the palace, bought by the federal government after 1980. A board of trustees oversees it, and entry costs Rs 30.",
-    "watch": "Opened in September 1999 with Treasures of the Talpurs; it has since held over 20 exhibitions.",
+    "watch": "Opened in September 1999 with Treasures of the Talpurs. In 2021 the Sindh High Court ordered a medical college there; the government appealed.",
     "field_sources": {
       "year_founded": {
         "urls": [
@@ -41461,7 +41481,7 @@
     "lon": 51.422,
     "id": "pejman-foundation-argo-factory",
     "funding": "Private non-profit founded in 2015 by collector and film producer Hamidreza Pejman, who bought the Argo Factory brewery in 2016.",
-    "watch": "Argo Factory has been closed since the war that began on 28 February 2026. Pejman says authorities shut its film series on a permit pretext."
+    "watch": "Argo Factory is closed until further notice; the war began on 28 February 2026. Pejman says an unnamed body shut its film series over permits."
   },
   {
     "name": "Tehran Museum of Contemporary Art (TMoCA)",
@@ -41478,30 +41498,29 @@
     "lat": 35.712,
     "lon": 51.39,
     "id": "tehran-museum-of-contemporary-art-tmoca",
-    "funding": "State museum under the arts deputy of Iran's Ministry of Culture and Islamic Guidance, which OFAC lists under its Iran program. The state set a 16.5 billion toman renovation budget.",
+    "funding": "State museum owned by the arts deputy of Iran's Ministry of Culture and Islamic Guidance, which OFAC lists as an entity. The state set a 16.5 billion toman renovation budget.",
     "flags": [
       "Sanctions",
-      "State censorship or punishment. Western works stayed in the vault from 1979 to 1999. In 2017 the culture minister cancelled its Berlin and Rome loan show"
+      "State censorship or punishment. After 1979 the state kept its Western collection in storage. In 2017 the culture minister cancelled its Berlin and Rome loan show"
     ],
-    "why_flagged": "State museum under the arts deputy of Iran's Ministry of Culture and Islamic Guidance, which OFAC lists under its Iran program. The state set a 16.5 billion toman renovation budget."
+    "why_flagged": "State museum owned by the arts deputy of Iran's Ministry of Culture and Islamic Guidance, which OFAC lists as an entity. The state set a 16.5 billion toman renovation budget."
   },
   {
     "name": "National Gallery of Modern Art (NGMA)",
     "location": "New Delhi, India",
     "city": "New Delhi",
     "country": "India",
-    "tier": "A",
+    "tier": "B",
     "size": "S",
     "sources": [
+      "https://webarchives.rhizome.org/thefileroom/im_/http:/www.thefileroom.org/documents/dyn/DisplayCase.cfm/id/1352",
       "https://www.museumsofindia.gov.in/repository/museum/ngma_del",
-      "https://www.outlookindia.com/national/india-news-amol-palekar-at-ngma-interrupted-for-criticising-government-news-325200",
-      "https://en.wikipedia.org/wiki/National_Gallery_of_Modern_Art"
+      "https://www.latestly.com/agency-news/ngma-committees-were-not-dissolved-clarifies-director-after-palekars-allegation-636803.html"
     ],
     "lat": 28.61,
     "lon": 77.234,
     "id": "national-gallery-of-modern-art-ngma",
     "funding": "Government of India. A subordinate office of the Ministry of Culture, founded in 1954, with branches in Mumbai and Bengaluru.",
-    "watch": "At a February 2019 Mumbai opening, NGMA staff cut off Amol Palekar as he criticised the ministry over its advisory committees.",
     "field_sources": {
       "year_founded": {
         "urls": [
@@ -41521,6 +41540,673 @@
       }
     },
     "year_founded": 1954,
-    "address": "Jaipur House, India Gate, New Delhi - 110003"
+    "address": "Jaipur House, India Gate, New Delhi - 110003",
+    "why_flagged": "Run as a subordinate office of the Ministry of Culture, Government of India, since its 1954 opening, with centres in Mumbai and Bengaluru. No sponsor is listed.",
+    "flags": [
+      "State censorship or punishment. In 2000 the Culture Ministry ordered a painting pulled and all the artists withdrew. In 2019 members cut off Amol Palekar's criticism of the ministry"
+    ]
+  },
+  {
+    "name": "Israel Museum",
+    "location": "Jerusalem, Israel",
+    "city": "Jerusalem",
+    "country": "Israel",
+    "tier": "B",
+    "size": "L",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Israel_Museum",
+      "https://www.mandelfoundation.org/grants/our-grantees/israel-museum",
+      "https://bdsmovement.net/news/open-letter-yinka-shonibare-beheading-justice"
+    ],
+    "lat": 31.773,
+    "lon": 35.204,
+    "id": "israel-museum",
+    "funding": "American Friends of the Israel Museum raised over $450M since 1972. Mandel and Safra foundations each gave $12M in 2009. State and city fund 10 to 12%, per Wikipedia.",
+    "flags": [
+      "Protest or boycott. In July 2009 PACBI",
+      "the Palestinian BDS campaign",
+      "urged Yinka Shonibare in an open letter not to guest-curate here. He held a 2010 show"
+    ],
+    "why_flagged": "American Friends of the Israel Museum raised over $450M since 1972. Mandel and Safra foundations each gave $12M in 2009. State and city fund 10 to 12%, per Wikipedia."
+  },
+  {
+    "name": "Tel Aviv Museum of Art",
+    "location": "Tel Aviv, Israel",
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "tier": "B",
+    "size": "L",
+    "sources": [
+      "https://tamuseum.org.il/en/paulson-family-foundation-donation/",
+      "https://en.globes.co.il/en/article-eyal-ofer-to-donate-5m-to-tel-aviv-museum-of-art-1001278098",
+      "https://artreview.com/judy-chicago-and-nadya-tolokonnikova-face-calls-to-cancel-tel-aviv-exhibition"
+    ],
+    "lat": 32.078,
+    "lon": 34.787,
+    "id": "tel-aviv-museum-of-art",
+    "funding": "Paulson Family Foundation gave $15M in 2021 and the Eyal & Marilyn Ofer Family Foundation $5M in 2019.",
+    "flags": [
+      "Protest or boycott. In September 2025 over 50 artists signed an open letter asking two exhibiting artists to cancel their show",
+      "citing Gaza. The director rejected cancelling exhibitions"
+    ],
+    "why_flagged": "Paulson Family Foundation gave $15M in 2021 and the Eyal & Marilyn Ofer Family Foundation $5M in 2019. No sponsor list found on its site."
+  },
+  {
+    "name": "Haifa Museum of Art",
+    "location": "Haifa, Israel",
+    "city": "Haifa",
+    "country": "Israel",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://www.hms.org.il/eng/Sponsorship",
+      "https://www.foxnews.com/world/israeli-museum-to-remove-mcjesus-art-sculpture-after-violent-protests.amp",
+      "https://en.wikipedia.org/wiki/Haifa_Museum_of_Art"
+    ],
+    "lat": 32.822,
+    "lon": 34.992,
+    "id": "haifa-museum-of-art",
+    "funding": "Municipal museum group Haifa Museums. Site logos: Haifa Municipality, Ministry of Culture and Sport, Mizrahi Tefahot bank. Japan's embassy gave NIS 15,620 for a 2025 Tikotin show.",
+    "flags": [
+      "Protest or boycott. In January 2019 hundreds protested the loaned McJesus sculpture. Minister Regev threatened to defund the museum; a deputy attorney general rebuked her. It was removed"
+    ],
+    "why_flagged": "Municipal museum group Haifa Museums. Site logos: Haifa Municipality, Ministry of Culture and Sport, Mizrahi Tefahot bank. Japan's embassy gave NIS 15,620 for a 2025 Tikotin show."
+  },
+  {
+    "name": "Petach Tikva Museum of Art",
+    "location": "Petach Tikva, Israel",
+    "city": "Petach Tikva",
+    "country": "Israel",
+    "tier": "U",
+    "size": "S",
+    "sources": [
+      "https://www.petachtikvamuseum.com/en/?p=14242",
+      "https://www.nybooks.com/online/2018/03/22/israels-war-on-culture/",
+      "https://bfami.org/museums/petach-tikva-museum-of-art/"
+    ],
+    "lat": 32.085,
+    "lon": 34.873,
+    "id": "petach-tikva-museum-of-art",
+    "funding": "Friends association (2015) funds shows and acquisitions via 1,800 NIS memberships and a 23,000 NIS patron tier. British Friends of the Art Museums of Israel back programmes. No budget published.",
+    "watch": "Opened 1964. In 2014 the municipality called for Arkadi Zaides's video installation to close; accounts differ on whether the museum complied."
+  },
+  {
+    "name": "Arab-Hebrew Theatre of Jaffa (Al-Saraya)",
+    "location": "Jaffa, Israel",
+    "city": "Jaffa",
+    "country": "Israel",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://en.wikipedia.org/wiki/The_Arab-Hebrew_Theater",
+      "https://thejewishindependent.com.au/one-theatre-fought-back-israeli-government",
+      "https://www.arabnews.com/node/2591585/amp"
+    ],
+    "lat": 32.055,
+    "lon": 34.754,
+    "id": "arab-hebrew-theatre-of-jaffa-al-saraya",
+    "funding": "Partly funded by Israel's Ministry of Culture and the Tel Aviv Municipality. In 2017 co-director Igal Ezrati put public funds at nearly NIS 900,000, a significant share of its budget.",
+    "flags": [
+      "State censorship or punishment. Police barred two film screenings in 2024",
+      "the theatre told the High Court. In 2017 Minister Regev asked the Finance Ministry to cut funding"
+    ],
+    "why_flagged": "Partly funded by Israel's Ministry of Culture and the Tel Aviv Municipality. In 2017 co-director Igal Ezrati put public funds at nearly NIS 900,000, a significant share of its budget."
+  },
+  {
+    "name": "Dar Jacir for Art and Research",
+    "location": "Bethlehem, Palestine",
+    "city": "Bethlehem",
+    "country": "Palestine",
+    "tier": "A",
+    "size": "S",
+    "sources": [
+      "https://isc.qattanfoundation.org/en/in-qattan/news/amqf-concludes-first-round-%E2%80%9Cvisual-arts-flourishing-field%E2%80%9D-project-signing-4-grant",
+      "https://www.arabculturefund.org/Grantees/1467/",
+      "https://hyperallergic.com/653732/supporters-raise-over-30k-for-dar-jacir-center-after-israeli-soldiers-raid/"
+    ],
+    "lat": 31.715,
+    "lon": 35.201,
+    "id": "dar-jacir-for-art-and-research",
+    "funding": "Kickstarter raised nearly $24,000 in 2017. A.M. Qattan Foundation, Sida-funded, announced a $255,691 grant via the Institute for Palestine Studies in March 2018. AFAC lists three grants.",
+    "watch": "Its owners said Israeli soldiers raided it on 15 May 2021 and took equipment, per Hyperallergic. Emily Jacir and Aline Khoury co-direct it."
+  },
+  {
+    "name": "Diriyah Biennale Foundation",
+    "location": "Diriyah, Saudi Arabia",
+    "city": "Diriyah",
+    "country": "Saudi Arabia",
+    "tier": "B",
+    "size": "L",
+    "sources": [
+      "https://saudipedia.com/en/diriyah-biennale-foundation",
+      "https://biennialfoundation.org/biennials/diriyah-biennale/",
+      "https://www.e-flux.com/announcements/611754/2025-islamic-arts-biennale"
+    ],
+    "lat": 24.733,
+    "lon": 46.573,
+    "id": "diriyah-biennale-foundation",
+    "funding": "Created in 2020 by Saudi Arabia's Ministry of Culture; the culture minister chairs its board.",
+    "flags": [
+      "Gulf state body. Runs the Diriyah Contemporary Art Biennale and the Islamic Arts Biennale in Jeddah. The foundation says the first Islamic Arts Biennale drew over 600",
+      "000 visitors"
+    ],
+    "why_flagged": "Created in 2020 by Saudi Arabia's Ministry of Culture; the culture minister chairs its board. No budget or sponsor list found."
+  },
+  {
+    "name": "Arts AlUla and Desert X AlUla",
+    "location": "AlUla, Saudi Arabia",
+    "city": "AlUla",
+    "country": "Saudi Arabia",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://hyperallergic.com/521537/three-desert-x-board-members-resign-in-protest-of-saudi-collaboration/",
+      "https://hyperallergic.com/523254/desert-x-funder-pulls-out-in-protest-of-saudi-collaboration/",
+      "https://desertx.org/learn/news/desert-x-2026-alula-is-now-open"
+    ],
+    "lat": 26.559,
+    "lon": 37.96,
+    "id": "arts-alula-and-desert-x-alula",
+    "funding": "Arts AlUla sits inside the Royal Commission for AlUla, a Saudi government agency overseen by Crown Prince Mohammed bin Salman. US nonprofit Desert Biennial produces Desert X AlUla with it.",
+    "flags": [
+      "Gulf state body",
+      "Protest or boycott. Three Desert X board members resigned in October 2019",
+      "citing Saudi human rights abuses and the Khashoggi killing. MaddocksBrown Foundation",
+      "a donor",
+      "withdrew its support"
+    ],
+    "why_flagged": "Arts AlUla sits inside the Royal Commission for AlUla, a Saudi government agency overseen by Crown Prince Mohammed bin Salman. US nonprofit Desert Biennial produces Desert X AlUla with it."
+  },
+  {
+    "name": "Misk Art Institute",
+    "location": "Riyadh, Saudi Arabia",
+    "city": "Riyadh",
+    "country": "Saudi Arabia",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://miskartinstitute.org/en/about",
+      "https://english.aawsat.com/culture/5295797-misk-art-institute-launches-summer-art-exhibition-riyadh",
+      "http://www.theartnewspaper.com/news/saudi-arabia-s-crown-prince-adds-art-and-culture-to-his-portfolio"
+    ],
+    "lat": 24.664,
+    "lon": 46.69,
+    "id": "misk-art-institute",
+    "funding": "Subsidiary of the Mohammed bin Salman Foundation (Misk), a non-profit the Crown Prince founded in 2011. No budget or donor list found on its site.",
+    "flags": [
+      "Gulf state body. Founded December 2017; Ahmed Mater was its director then. Its summer 2026 show at Prince Faisal bin Fahd Arts Hall has over 40 works"
+    ],
+    "why_flagged": "Subsidiary of the Mohammed bin Salman Foundation (Misk), a non-profit the Crown Prince founded in 2011. No budget or donor list found on its site."
+  },
+  {
+    "name": "National Museum of Iraq",
+    "location": "Baghdad, Iraq",
+    "city": "Baghdad",
+    "country": "Iraq",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://www.csmonitor.com/World/Middle-East/2011/1129/Hurt-by-war-in-Iraq-a-Baghdad-museum-reemerges",
+      "https://www.museumsassociation.org/museums-journal/news/2009/11/17966-2/",
+      "https://archive.archaeology.org/news/2009/thursday-january-22"
+    ],
+    "lat": 33.329,
+    "lon": 44.386,
+    "id": "national-museum-of-iraq",
+    "funding": "Run by Iraq's tourism and antiquities ministry. The US paid about $9M of the 2011 renovation, per its deputy director. Italy equipped its labs in 2015; France sponsored a show.",
+    "flags": [
+      "Protest or boycott. In 2009 five Iraqi archaeologists wrote an open letter against a sudden reopening; the minister then removed Amira Edan as State Board of Antiquities head"
+    ],
+    "why_flagged": "Run by Iraq's tourism and antiquities ministry. The US paid about $9M of the 2011 renovation, per its deputy director. Italy equipped its labs in 2015; France sponsored a show."
+  },
+  {
+    "name": "National Museum of Damascus",
+    "location": "Damascus, Syria",
+    "city": "Damascus",
+    "country": "Syria",
+    "tier": "U",
+    "size": "S",
+    "sources": [
+      "https://www.finestresullarte.info/en/news/unesco-returns-to-syria-after-14-years-with-an-intervention-at-damascus-national-museum",
+      "https://npasyria.com/en/126516",
+      "https://en.wikipedia.org/wiki/National_Museum_of_Damascus"
+    ],
+    "lat": 33.513,
+    "lon": 36.29,
+    "id": "national-museum-of-damascus",
+    "funding": "Its parent body, the Directorate-General of Antiquities and Museums, partners UNESCO's 2025 project: initial budget $175,000, no donor named. No museum budget is published.",
+    "watch": "Closed 7 December 2024 after the fall of Damascus and reopened 8 January 2025. Wikipedia reports six Roman statues stolen in a November 2025 break-in."
+  },
+  {
+    "name": "Dar al-Athar al-Islamiyyah",
+    "location": "Kuwait City, Kuwait",
+    "city": "Kuwait City",
+    "country": "Kuwait",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://daralatharalislamiyyah.com/sponsors/",
+      "https://daralatharalislamiyyah.com/",
+      "https://daralatharalislamiyyah.com/?p=5739"
+    ],
+    "lat": 29.368,
+    "lon": 47.962,
+    "id": "dar-al-athar-al-islamiyyah",
+    "funding": "Manages the al-Sabah Collection, on permanent loan to Kuwait under its National Council for Culture, Arts and Letters. Sponsors: KIPCO, Kuwait Petroleum Corporation and subsidiaries, Kuwait Finance House.",
+    "flags": [
+      "Fossil fuels",
+      "Gulf state body. Founded 1983. The collection holds over 30",
+      "000 objects",
+      "collected by Sheikh Nasser Sabah al-Ahmed al-Sabah. Sheikha Hussa Sabah Al-Salem Al-Sabah is director general"
+    ],
+    "why_flagged": "Manages the al-Sabah Collection, on permanent loan to Kuwait under its National Council for Culture, Arts and Letters. Sponsors: KIPCO, Kuwait Petroleum Corporation and subsidiaries, Kuwait Finance House."
+  },
+  {
+    "name": "National Museum of Oman",
+    "location": "Muscat, Oman",
+    "city": "Muscat",
+    "country": "Oman",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://www.nm.gov.om/en/about-the-museum",
+      "https://www.nm.gov.om/en/board-of-trustees",
+      "https://timesofoman.com/article/155975-board-of-trustees-of-national-museum-hold-its-13th-meeting"
+    ],
+    "lat": 23.612,
+    "lon": 58.594,
+    "id": "national-museum-of-oman",
+    "funding": "State museum set up by Royal Decree 62/2013. The Minister of Heritage and Tourism chairs its Board of Trustees.",
+    "flags": [
+      "Gulf state body. Its site describes it as a legal entity with financial and administrative independence. It shows Oman's heritage from earliest settlement to the present"
+    ],
+    "why_flagged": "State museum set up by Royal Decree 62/2013. The Minister of Heritage and Tourism chairs its Board of Trustees. It lists no sponsors or budget."
+  },
+  {
+    "name": "Jordan National Gallery of Fine Arts",
+    "location": "Amman, Jordan",
+    "city": "Amman",
+    "country": "Jordan",
+    "tier": "U",
+    "size": "S",
+    "sources": [
+      "https://nationalgallery.org/?p=138",
+      "https://nationalgallery.org/event/the-launching-event-of-the-wall-of-honor-titled-permanent-patrons/",
+      "https://en.wikipedia.org/wiki/Jordan_National_Gallery_of_Fine_Arts"
+    ],
+    "lat": 31.959,
+    "lon": 35.916,
+    "id": "jordan-national-gallery-of-fine-arts",
+    "funding": "Owned by the Royal Society of Fine Arts, a private non-profit founded in 1979. A 2022 event launched a Permanent Patrons wall, names not given. No budget or donor list.",
+    "watch": "Opened 19 February 1980. Its site counts over 3,000 works, Wikipedia over 2,000. The expanded building won the 2007 Aga Khan Award."
+  },
+  {
+    "name": "Amman Design Week",
+    "location": "Amman, Jordan",
+    "city": "Amman",
+    "country": "Jordan",
+    "tier": "U",
+    "size": "S",
+    "sources": [
+      "https://jordantimes.com/news/local/queen-rania-attends-amman-design-week-opening-reception",
+      "https://www.e-flux.com/announcements/6788342/2026-edition",
+      "https://www.yankodesign.com/2026/09/30/amman-design-week-returns-after-7-years-220-designers-204-events-and-a-city-that-doesnt-forget/amp/"
+    ],
+    "lat": 31.942,
+    "lon": 35.926,
+    "id": "amman-design-week",
+    "funding": "Founded 2016 by Queen Rania; organised with Greater Amman Municipality. 2016 sponsors: Al Manaseer Group, Zain, Aramex, Al Markaziya. 2026: Sukhtian Foundation backs the student exhibition.",
+    "watch": "The 2026 edition runs 2 to 17 October across Amman and, for the first time, Aqaba. Ithra Design Week runs a joint residency with it."
+  },
+  {
+    "name": "The Freedom Theatre",
+    "location": "Jenin, Palestine",
+    "city": "Jenin",
+    "country": "Palestine",
+    "tier": "U",
+    "size": "S",
+    "sources": [
+      "https://thefreedomtheatre.org/?p=31179",
+      "https://www.aljazeera.com/features/2023/12/20/no-safe-place-jenins-freedom-theatre-raided-daubed-with-star-of-david",
+      "https://thejc.com/news/uk-taxpayer-funds-pro-bds-arts-company-founded-by-terrorist-qlghvk0k"
+    ],
+    "lat": 32.463,
+    "lon": 35.287,
+    "id": "the-freedom-theatre",
+    "funding": "2013 annual report names Ford Foundation, Sida, AFAC, Medico International and the European Commission. British Council gave \u00a374,976 in 2022, per the Jewish Chronicle. No current donor list.",
+    "watch": "Staff told Al Jazeera that Israeli forces raided it in December 2023 and arrested two directors. Co-founder Juliano Mer-Khamis was shot dead in 2011."
+  },
+  {
+    "name": "Art Encounters Foundation",
+    "location": "Timi\u0219oara, Romania",
+    "city": "Timi\u0219oara",
+    "country": "Romania",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://canvasonline.com/event/art-encounters-2025/",
+      "https://en.wikipedia.org/wiki/Ploom",
+      "https://agerpres.ro/comunicate/2026/07/30/comunicat-de-presa---fundatia-art-encounters--1580601"
+    ],
+    "lat": 45.761,
+    "lon": 21.244,
+    "id": "art-encounters-foundation",
+    "funding": "Founded 2015 by developer Ovidiu \u0218andor, who provides the building. The 2025 biennial had main partner Ploom, Japan Tobacco's heated-tobacco brand, plus Banca Transilvania, Catena and Timi\u0219oara municipality funding.",
+    "flags": [
+      "Tobacco. Runs the Art Encounters Biennial (2015 to 2025). A museum-standard venue in the former Casa ISHO opens in September 2026 with a Picasso show"
+    ],
+    "why_flagged": "Founded 2015 by developer Ovidiu \u0218andor, who provides the building. The 2025 biennial had main partner Ploom, Japan Tobacco's heated-tobacco brand, plus Banca Transilvania, Catena and Timi\u0219oara municipality funding."
+  },
+  {
+    "name": "National Museum of Contemporary Art (MNAC)",
+    "location": "Bucharest, Romania",
+    "city": "Bucharest",
+    "country": "Romania",
+    "tier": "A",
+    "size": "S",
+    "sources": [
+      "https://www.bursa.ro/contemporary-art-1-500-000-lei-for-purchases-89544259",
+      "https://www.e-flux.com/announcements/569454/fall-2023-spring-2024-exhibitions/",
+      "https://artmargins.com/?p=3451"
+    ],
+    "lat": 44.428,
+    "lon": 26.087,
+    "id": "national-museum-of-contemporary-art-mnac",
+    "funding": "Romanian Ministry of Culture funds it, including RON 500,000 for 2024 acquisitions. Sponsors include AQUA Carpatica, Greentek Lighting, Crama Opri\u0219or, Molotow, UniCredit Bank and BRD Groupe Soci\u00e9t\u00e9 G\u00e9n\u00e9rale.",
+    "watch": "Opened 2004 inside the Palace of the Parliament. ArtMargins writer Augustin Ioan said in 2008 that Prime Minister Nastase financed it in secret."
+  },
+  {
+    "name": "Sofia City Art Gallery",
+    "location": "Sofia, Bulgaria",
+    "city": "Sofia",
+    "country": "Bulgaria",
+    "tier": "A",
+    "size": "S",
+    "sources": [
+      "https://sghg.bg/en/mission/",
+      "https://sghg.bg/en/history/",
+      "https://sghg.bg/en/partners/"
+    ],
+    "lat": 42.694,
+    "lon": 23.324,
+    "id": "sofia-city-art-gallery",
+    "funding": "Sofia Municipality funds yearly acquisitions, resumed in 2007. Partners listed: Ministry of Culture, America for Bulgaria Foundation, Aurubis Bulgaria, Institut fran\u00e7ais and Goethe-Institut. No budget is published.",
+    "watch": "Founded 1928 as part of Sofia's city museum. Holds more than 23,000 works by Bulgarian artists."
+  },
+  {
+    "name": "Museum of Contemporary Art Belgrade",
+    "location": "Belgrade, Serbia",
+    "city": "Belgrade",
+    "country": "Serbia",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://www.cimam.org/museum-watch/museum-watch-actions/belgrade-leading-institution-damaged-local-politics/",
+      "https://www.danas.rs/kultura/nikola-suica-podneo-ostavku-na-mesto-predsednika-uo-muzeja-savremene-umetnosti/",
+      "https://msub.org.rs/dokumenti/"
+    ],
+    "lat": 44.82,
+    "lon": 20.442,
+    "id": "museum-of-contemporary-art-belgrade",
+    "funding": "Funded by Serbia's Ministry of Culture; the museum publishes the ministry's financial plans for 2023 to 2026.",
+    "flags": [
+      "State censorship or punishment",
+      "Protest or boycott. On 30 January 2020 the government replaced acting director Slobodan Nakarada with Viktor Ki\u0161 despite a 2019 open call. Board chair resigned; CIMAM objected"
+    ],
+    "why_flagged": "Funded by Serbia's Ministry of Culture; the museum publishes the ministry's financial plans for 2023 to 2026. No corporate sponsor list found."
+  },
+  {
+    "name": "Slovak National Gallery",
+    "location": "Bratislava, Slovakia",
+    "city": "Bratislava",
+    "country": "Slovakia",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://theartnewspaper.com/2024/08/16/international-arts-community-calls-for-reinstatement-of-slovak-national-gallery-director",
+      "https://www.e-flux.com/notes/621698/open-letter-opposing-the-dismissal-of-the-director-of-the-slovak-national-gallery",
+      "https://www.teraz.sk/regiony/slovenska-narodna-galeria-v-roku-202/965699-clanok.html"
+    ],
+    "lat": 48.14,
+    "lon": 17.108,
+    "id": "slovak-national-gallery",
+    "funding": "State gallery funded by Slovakia's Ministry of Culture. Its 2025 budget of \u20ac13.2M was later cut to \u20ac9.6M; admission revenue was about \u20ac330,700.",
+    "flags": [
+      "State censorship or punishment",
+      "Protest or boycott. \u0160imkovi\u010dov\u00e1 dismissed director Alexandra Kus\u00e1 in August 2024 and accused her of a conflict of interest",
+      "which Kus\u00e1 denies. Rallies and a 360-signature letter followed"
+    ],
+    "why_flagged": "State gallery funded by Slovakia's Ministry of Culture. Its 2025 budget of \u20ac13.2M was later cut to \u20ac9.6M; admission revenue was about \u20ac330,700. No corporate sponsor list found."
+  },
+  {
+    "name": "Kunsthalle Bratislava",
+    "location": "Bratislava, Slovakia",
+    "city": "Bratislava",
+    "country": "Slovakia",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://kunsthallebratislava.sk/en/kunsthalle-bratislava-statement-16-01-2024/",
+      "https://sita.sk/kunsthalle-bratislava-sa-presuva-pod-sng-a-riaditel-konci-kroky-ministerstva-kultury-su-znepokojive/",
+      "https://old.kunsthallebratislava.sk/en/khb/kunsthalle-bratislava"
+    ],
+    "lat": 48.145,
+    "lon": 17.112,
+    "id": "kunsthalle-bratislava",
+    "funding": "State contributory organisation founded by the Ministry of Culture in 2014 and funded by it. The Kunsthalle said the ministry revoked funding for its 2024 programme on 16 January 2024.",
+    "flags": [
+      "State censorship or punishment. Director Jen Kratochv\u00edl resigned on 15 January 2024. The ministry moved the Kunsthalle under the Slovak National Gallery",
+      "citing its programme and efficiency"
+    ],
+    "why_flagged": "State contributory organisation founded by the Ministry of Culture in 2014 and funded by it. The Kunsthalle said the ministry revoked funding for its 2024 programme on 16 January 2024."
+  },
+  {
+    "name": "Museum of Fine Arts Budapest / Hungarian National Gallery",
+    "location": "Budapest, Hungary",
+    "city": "Budapest",
+    "country": "Hungary",
+    "tier": "B",
+    "size": "L",
+    "sources": [
+      "https://www.szepmuveszeti.hu/tamogatok/",
+      "https://mvm.hu/",
+      "https://www.economx.hu/belfold/2026/05/05/magyar-peter-nka-palyazatok-kivizsgalas/"
+    ],
+    "lat": 47.516,
+    "lon": 19.077,
+    "id": "museum-of-fine-arts-budapest-hungarian-national-gallery",
+    "funding": "Hungarian state museum. 2026 main and featured sponsors: MVM Group (energy, sells gas), E.ON Energiamegold\u00e1sok, OTP Bank, MBH Bank, Szerencsej\u00e1t\u00e9k Zrt. (state lottery), PPG Trilak, Veolia Energia.",
+    "flags": [
+      "Fossil fuels. Szerencsej\u00e1t\u00e9k also runs Tippmix sports betting; as with Loto-Qu\u00e9bec",
+      "a state lottery operator is a name to know",
+      "not a flag. In April 2026 director L\u00e1szl\u00f3 Ba\u00e1n quit the National Cultural Fund committee",
+      "writing that many grants did not fit its aims. The minister disputed this"
+    ],
+    "why_flagged": "Hungarian state museum. 2026 main and featured sponsors: MVM Group (energy, sells gas), E.ON Energiamegold\u00e1sok, OTP Bank, MBH Bank, Szerencsej\u00e1t\u00e9k Zrt. (state lottery), PPG Trilak, Veolia Energia."
+  },
+  {
+    "name": "Museum of Contemporary Art Skopje",
+    "location": "Skopje, North Macedonia",
+    "city": "Skopje",
+    "country": "North Macedonia",
+    "tier": "A",
+    "size": "S",
+    "sources": [
+      "https://msu.mk/history/",
+      "https://msu.mk/wp-content/uploads/2025/02/%D0%9E%D0%94%D0%9E%D0%91%D0%A0%D0%95%D0%9D%D0%98-%D0%9F%D0%A0%D0%9E%D0%95%D0%9A%D0%A2%D0%98-%D0%9E%D0%94-%D0%93%D0%9E%D0%94%D0%98%D0%A8%D0%9D%D0%90%D0%A2%D0%90-%D0%9F%D0%A0%D0%9E%D0%93%D0%A0%D0%90%D0%9C%D0%90-%D0%97%D0%90-2025-%D0%9D%D0%90-%D0%9C%D0%A1%D0%A3.pdf",
+      "https://msu.mk/?p=12633"
+    ],
+    "lat": 42.004,
+    "lon": 21.433,
+    "id": "museum-of-contemporary-art-skopje",
+    "funding": "Skopje's Town Assembly founded it in 1964 from donated art; Poland gave the building design. The Ministry of Culture and Tourism approves its annual programme projects.",
+    "watch": "Holds over 5,500 works. Director Mira Ga\u0107ina, in post since 2017, resigned for personal reasons after six years; Tihomir Topuzovski is acting director."
+  },
+  {
+    "name": "National Gallery of Arts Tirana",
+    "location": "Tirana, Albania",
+    "city": "Tirana",
+    "country": "Albania",
+    "tier": "A",
+    "size": "S",
+    "sources": [
+      "https://en.wikipedia.org/wiki/National_Museum_of_Fine_Arts_(Albania)",
+      "https://www.citizens.al/en/2024/10/31/Albania-and-Bosnia-close-cultural-institutions-for-a-better-future/",
+      "https://www.balkanweb.com/kumbaro-galeria-kombetare-nuk-preket-por-do-rehabilitohet-emri-i-ri-qe-do-kete/"
+    ],
+    "lat": 41.326,
+    "lon": 19.82,
+    "id": "national-gallery-of-arts-tirana",
+    "funding": "Albanian state museum under the Ministry of Economy, Culture and Innovation, per Wikipedia.",
+    "watch": "Holds over 5,000 works. Closed for rebuilding with a new annex since 2021, per Wikipedia; in October 2024 the ministry gave no deadline."
+  },
+  {
+    "name": "Tirana Art Lab",
+    "location": "Tirana, Albania",
+    "city": "Tirana",
+    "country": "Albania",
+    "tier": "A",
+    "size": "S",
+    "sources": [
+      "https://www.tiranaartlab.org/en",
+      "https://www.tiranaartlab.org/en/project-collection/center-of-integration"
+    ],
+    "lat": 41.328,
+    "lon": 19.819,
+    "id": "tirana-art-lab",
+    "funding": "Independent non-profit founded 2010 by Adela Demetja. Named supporters: Creative Europe, Allianz Kulturstiftung, Pro Helvetia, Robert Bosch Foundation, European Cultural Foundation, Albania's Ministry of Culture, Municipality of Tirana.",
+    "watch": "No permanent venue from 2018; works with local partners. Runs the Curating with Care programme and the Beyond Matter EU project (2019 to 2023)."
+  },
+  {
+    "name": "National Art Museum of Moldova",
+    "location": "Chi\u0219in\u0103u, Moldova",
+    "city": "Chi\u0219in\u0103u",
+    "country": "Moldova",
+    "tier": "A",
+    "size": "S",
+    "sources": [
+      "https://old.mc.gov.md/en/advanced-page-type/institutii-subordonate",
+      "https://www.mnam.md/ro/history",
+      "https://www.mnam.md/storage/jbp21tt30pkckcwk.pdf"
+    ],
+    "lat": 47.022,
+    "lon": 28.83,
+    "id": "national-art-museum-of-moldova",
+    "funding": "State museum subordinate to Moldova's Ministry of Culture.",
+    "watch": "Holds 39,767 works and had 81,147 visitors in 2024. Its Dadiani wing restoration began in 2004; the second sector opened in September 2021."
+  },
+  {
+    "name": "Latvian National Museum of Art",
+    "location": "Riga, Latvia",
+    "city": "Riga",
+    "country": "Latvia",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://ambriga.esteri.it/en/news/dall_ambasciata/2026/06/light-from-italy-from-fattori-to-morandi-wins-the-annual-award-from-the-latvian-museum-association/",
+      "http://www.baltictimes.com/fcmc_slaps_eur_5_85_million_fine_on_rietumu_banka/",
+      "https://www.ne-mo.org/news-events/article/latvian-state-museums-report-4-of-planned-income-due-to-lockdown/"
+    ],
+    "lat": 56.956,
+    "lon": 24.114,
+    "id": "latvian-national-museum-of-art",
+    "funding": "State-funded museum under Latvia's Ministry of Culture. Its 2025 show Light from Italy was backed by the Italian Embassy, Riga City Council, Rietumu Banka and the ministry.",
+    "watch": "Sponsor Rietumu Banka was fined \u20ac5.85M in 2021 for anti-money-laundering failures. The museum runs six Riga sites, including the Riga Bourse and Arsen\u0101ls.",
+    "why_flagged": "Sponsor Rietumu Banka was fined \u20ac5.85M in 2021 for anti-money-laundering failures. The museum runs six Riga sites, including the Riga Bourse and Arsen\u0101ls."
+  },
+  {
+    "name": "Riga International Biennial of Contemporary Art (RIBOCA)",
+    "location": "Riga, Latvia",
+    "city": "Riga",
+    "country": "Latvia",
+    "tier": "B",
+    "size": "S",
+    "sources": [
+      "https://biennialfoundation.org/2023/07/the-postponed-riboca3-will-not-open/",
+      "https://usaartnews.com/news/riga-biennial-cancelled-after-outcry-over-organisers-russian-links",
+      "https://artfocusnow.com/news/riboca-postponement-or-end/"
+    ],
+    "lat": 56.95,
+    "lon": 24.105,
+    "id": "riga-international-biennial-of-contemporary-art-riboca",
+    "funding": "Private. Founded by Agniya Mirgorodskaya, daughter of Russian fishing businessman Gennady Mirgorodsky. The organisers said funding moved to a US charity, Just A Moment, after 2022.",
+    "flags": [
+      "Protest or boycott. Curator \u017danete Liek\u012bte campaigned against it; four artists withdrew on 30 June 2023. The organisers suspended the third edition in July 2023"
+    ],
+    "why_flagged": "Private. Founded by Agniya Mirgorodskaya, daughter of Russian fishing businessman Gennady Mirgorodsky. The organisers said funding moved to a US charity, Just A Moment, after 2022. No state funder confirmed."
+  },
+  {
+    "name": "National Gallery Prague",
+    "location": "Prague, Czechia",
+    "city": "Prague",
+    "country": "Czechia",
+    "tier": "B",
+    "size": "L",
+    "sources": [
+      "https://www.ngprague.cz/en/about/partners",
+      "https://ct24.ceskatelevize.cz/clanek/kultura/poplatnost-dobe-nebo-generacni-nepochopeni-umelci-se-prou-o-podobu-instituci-350284",
+      "https://www.seznamzpravy.cz/clanek/kultura-klempir-narodni-galerie-odvolani-reakce-302224"
+    ],
+    "lat": 50.102,
+    "lon": 14.432,
+    "id": "national-gallery-prague",
+    "funding": "State gallery supported by the Ministry of Culture, the Senate and the EU-funded National Recovery Plan. General partner Komer\u010dn\u00ed banka; others include J&T Banka, Bohemia Sekt and Czech Television.",
+    "flags": [
+      "Protest or boycott. A public call by artists and 23 advisory-board resignations in June 2024 criticised director Knastov\u00e1. Minister Klemp\u00ed\u0159 dismissed her on 19 March 2026"
+    ],
+    "why_flagged": "State gallery supported by the Ministry of Culture, the Senate and the EU-funded National Recovery Plan. General partner Komer\u010dn\u00ed banka; others include J&T Banka, Bohemia Sekt and Czech Television."
+  },
+  {
+    "name": "Ulaanbaatar International Media Art Festival (UBIMAF)",
+    "location": "Ulaanbaatar, Mongolia",
+    "city": "Ulaanbaatar",
+    "country": "Mongolia",
+    "tier": "A",
+    "size": "S",
+    "sources": [
+      "https://artscouncil.mn/art_program_mon/ulaanbaatar-international-media-art-festival",
+      "https://culture360.asef.org/news-events/mongolia-ulaanbaatar-international-media-art-festival-2022",
+      "https://culture360.asef.org/news-events/ulaanbaatar-media-art-festival-mongolia"
+    ],
+    "lat": 47.919,
+    "lon": 106.917,
+    "id": "ulaanbaatar-international-media-art-festival-ubimaf",
+    "funding": "Run by the Arts Council of Mongolia, an NGO. Backers named: Goethe-Institut (2016, 2022), Asia-Europe Foundation, US Embassy and Xacbank (2016), Taiwan Foundation for Democracy (2022). Later editions name none.",
+    "watch": "The 9th edition ran in May 2024 at the Mongolian National Art Gallery and Red Ger Gallery under the theme Seeing is Believing."
+  },
+  {
+    "name": "National Museum of Tajikistan",
+    "location": "Dushanbe, Tajikistan",
+    "city": "Dushanbe",
+    "country": "Tajikistan",
+    "tier": "U",
+    "size": "S",
+    "sources": [
+      "https://eurasia.travel/tajikistan/dushanbe/national-museum/",
+      "https://en.wikipedia.org/wiki/Tajikistan_National_Museum"
+    ],
+    "lat": 38.563,
+    "lon": 68.799,
+    "id": "national-museum-of-tajikistan",
+    "funding": "No funder, budget or annual report found in the sources opened. Its official site did not load.",
+    "watch": "Established 1934; renamed National Museum of Tajikistan in 2011 and moved into a new building in March 2013 with 22 halls and over 50,000 objects."
+  },
+  {
+    "name": "Bishkek School of Contemporary Art (BiSCA)",
+    "location": "Bishkek, Kyrgyzstan",
+    "city": "Bishkek",
+    "country": "Kyrgyzstan",
+    "tier": "U",
+    "size": "S",
+    "sources": [
+      "https://24.kg/english/166442_Online_school_of_contemporary_art_opened_in_Bishkek",
+      "https://en.wikipedia.org/wiki/Bermet_Borubaeva",
+      "https://princeclausfund.nl/awardees/bermet-borubaeva"
+    ],
+    "lat": 42.876,
+    "lon": 74.604,
+    "id": "bishkek-school-of-contemporary-art-bisca",
+    "funding": "Founders built its online school at no cost, per 24.kg (2020). Asia Art Archive is a partner on Mobile Library: Kyrgyzstan, April 2025 to June 2026. No funder list found.",
+    "watch": "Co-founder Bermet Borubaeva also co-founded the TRASH environmental art festival in 2009 and co-curates it."
   }
 ]
