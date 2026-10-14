@@ -6466,7 +6466,7 @@ return maplibregl$1;
       set: (v) => { isGossipModeActive = v; }
     });
 
-    // City map style: black ground, teal buildings and roads, OpenFreeMap vector tiles.
+    // City map style: a line drawing like the globe. Black ground, 0.8px off-white lines, no fills, no 3D. OpenFreeMap vector tiles.
     const CITY_MAP_DARK_STYLE = {
       version: 8,
       name: 'Culture Atlas dark',
@@ -6491,40 +6491,28 @@ return maplibregl$1;
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'landcover',
-          filter: ['match', ['get', 'class'], ['grass', 'wood', 'scrub'], true, false],
-          paint: {
-            'fill-color': '#022d0d',
-            'fill-opacity': 0.75
-          }
+          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
         },
         {
           id: 'park',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'park',
-          paint: {
-            'fill-color': '#022d0d',
-            'fill-opacity': 0.85
-          }
+          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
         },
         {
           id: 'water',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'water',
-          paint: {
-            'fill-color': '#081a1c'
-          }
+          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
         },
         {
           id: 'waterway',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          paint: {
-            'line-color': '#081a1c',
-            'line-width': ['interpolate', ['exponential', 1.3], ['zoom'], 8, 1, 14, 4]
-          }
+          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.7 }
         },
         {
           id: 'building',
@@ -6532,25 +6520,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 13,
-          paint: {
-            'fill-color': '#022b30',
-            'fill-outline-color': '#004144',
-            'fill-opacity': 0.9
-          }
-        },
-        {
-          id: 'building-3d-city-context',
-          type: 'fill-extrusion',
-          source: 'openmaptiles',
-          'source-layer': 'building',
-          minzoom: 14,
-          paint: {
-            'fill-extrusion-color': '#004144',
-            'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 8]],
-            'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]],
-            'fill-extrusion-opacity': 0.72,
-            'fill-extrusion-vertical-gradient': true
-          }
+          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
         },
         {
           id: 'road_minor',
@@ -6559,10 +6529,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
           minzoom: 12,
-          paint: {
-            'line-color': '#004144',
-            'line-width': ['interpolate', ['linear'], ['zoom'], 12, 1.0, 16, 3.0]
-          }
+          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.45 }
         },
         {
           id: 'road_secondary',
@@ -6570,10 +6537,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
-          paint: {
-            'line-color': '#005d5d',
-            'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.8, 16, 4.0]
-          }
+          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.7 }
         },
         {
           id: 'road_primary',
@@ -6581,10 +6545,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
-          paint: {
-            'line-color': '#007d79',
-            'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1.2, 16, 5.5]
-          }
+          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.9 }
         },
         {
           id: 'road_motorway',
@@ -6592,10 +6553,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
-          paint: {
-            'line-color': '#009d9a',
-            'line-width': ['interpolate', ['linear'], ['zoom'], 5, 1.5, 16, 7.0]
-          }
+          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 1 }
         },
         {
           id: 'boundary_country',
@@ -6603,11 +6561,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
-          paint: {
-            'line-color': '#005d5d',
-            'line-width': 1.2,
-            'line-dasharray': [3, 2]
-          }
+          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-dasharray': [3, 2] }
         },
         {
           id: 'place_label',
@@ -6659,7 +6613,7 @@ return maplibregl$1;
           style: CITY_MAP_DARK_STYLE,
           center: [0, 20],
           zoom: 14,
-          pitch: 35,
+          pitch: 0,
           bearing: 0,
           attributionControl: { compact: true }
         });
@@ -7647,8 +7601,8 @@ return maplibregl$1;
         dotEl.style.width = '15px';
         dotEl.style.height = '15px';
         dotEl.style.borderRadius = '50%';
-        dotEl.style.background = markerColor;
-        dotEl.style.border = '0.8px solid #f4f4f4';
+        dotEl.style.background = 'transparent';
+        dotEl.style.border = '0.8px solid ' + markerColor;
         dotEl.style.boxShadow = 'none';
 
         pinEl.appendChild(labelEl);
