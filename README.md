@@ -14,7 +14,7 @@ Tiers describe how well a record is sourced, not a verdict on the museum: Clean 
 
 Plain CSS, no framework: one stylesheet at `assets/atlas.css` (design layer plus a short generated block of layout helpers) and `assets/maplibre-gl.css` for the street map. The page loads no CSS or script from a CDN.
 
-The look follows the It's a book fair site: a white page, a strip of tabs on hairlines, flat colour blocks (cobalt, orange, cyan, mustard, periwinkle, magenta), a black pill for the current filter, a yellow close mark, and a grey sheet with the facts as a ruled table. Titles are PP Neue Gstaad Compact Bold in capitals, body is PP Neue Gstaad Regular, labels and buttons are monospace. The globe is unchanged and sits on black. Text on a colour block is black, except on cobalt, where it is white.
+The look follows the It's a book fair site: a white page, a strip of tabs on hairlines, flat colour blocks (cobalt, orange, cyan, mustard, periwinkle, magenta), a black pill for the current filter, a yellow close mark, and a grey sheet with the facts as a ruled table. Titles are PP Neue Gstaad Compact Bold in capitals, body is PP Neue Gstaad Regular, labels and buttons are the same Regular, at 14px or larger. No monospace anywhere. The globe is unchanged and sits on black. Text on a colour block is black, except on cobalt, where it is white.
 
 The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer. On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 

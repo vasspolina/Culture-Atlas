@@ -9798,9 +9798,9 @@ return maplibregl$1;
     }
 
 
-    // Canvas type for the cards: Compact Bold capitals for names, monospace for facts.
+    // Canvas type for the cards: Compact Bold capitals for names, Regular for facts.
     const ATLAS_CARD_TITLE_FONT = '700 24px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
-    const ATLAS_CARD_MONO_FONT = '13px ui-monospace, "SF Mono", Menlo, "DejaVu Sans Mono", "Courier New", monospace';
+    const ATLAS_CARD_MONO_FONT = '14px "PP Neue Gstaad", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
     }
@@ -9813,7 +9813,7 @@ return maplibregl$1;
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${domain}`;
 
-      // A white block with the name in capitals, facts in monospace, the website as a black pill.
+      // A white block with the name in capitals, facts in the grotesque, the website as a black pill.
       // The left bar carries the tier: cyan clean, orange flagged, mustard unverified.
       const nameText = inst.name;
       const nameUpper = nameText.toUpperCase();
@@ -10148,7 +10148,7 @@ return maplibregl$1;
           ctx.fillStyle = fill;
           ctx.fillText(text, x, y);
         };
-        // City and museum names sit on a pill, like the buttons: white with black monospace text,
+        // City and museum names sit on a pill, like the buttons: white with black text,
         // yellow when hovered or selected (white on yellow in gossip mode).
         const drawPillLabel = (text, cx0, cy0, active) => {
           ctx.save();
@@ -10508,7 +10508,7 @@ return maplibregl$1;
               ctx.stroke();
 
               // Card dimensions & multi-line layout: a flat colour block, like the fair's tabs.
-              // The name is set large in capitals; the rest is monospace; the action is a pill.
+              // The name is set large in capitals; the rest is Regular; the action is a pill.
               const cityTxt = hMeta.name;
               const countryTxt = hMeta.country ? hMeta.country.trim() : '';
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
@@ -16145,7 +16145,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     updateAIStatusUI();
 
     // Starter prompts for an empty chat. Every one is a question the offline answers can really answer from the records, and the
-    // examples are picked from the records themselves, so nothing is promised that the data does not hold. With a space selected
+    // examples are picked at random from the records themselves, so nothing is promised that the data does not hold. With a space selected
     // the prompts are about that space.
     function starterPromptList() {
       const registry = (typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []).filter(c => c && c.name);
@@ -16159,16 +16159,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (place) out.push(`Find spaces in ${place}`);
         return out.filter(q => resolves(q, sel) || /^Find spaces in /.test(q));
       }
-      const byName = (a, b) => a.name.localeCompare(b.name);
+      // A different set on every load: a city with several clean records, a funded space, a flagged one, and the method question.
+      const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+      const shuffled = (arr) => arr.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(p => p[1]);
       const clean = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
       const counts = {};
       clean.forEach(i => { const c = registryName(i.city); if (c) counts[c] = (counts[c] || 0) + 1; });
-      const topCity = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))[0];
-      if (topCity) out.push(`Find spaces in ${topCity}`);
-      const funded = clean.filter(i => i.funding && matchC(i.city, topCity)).sort(byName).find(i => resolves(`Who funds ${i.name}?`, i));
+      const cities = Object.keys(counts).filter(c => counts[c] >= 3);
+      if (cities.length) out.push(`Find spaces in ${pick(cities)}`);
+      const funded = shuffled(clean.filter(i => i.funding)).find(i => resolves(`Who funds ${i.name}?`, i));
       if (funded) out.push(`Who funds ${funded.name}?`);
-      const flagged = ALL_INSTITUTIONS.filter(i => i.tier === 'B').sort(byName).find(i => resolves(`Why is ${i.name} flagged?`, i) && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i));
-      if (flagged) out.push(`Why is ${flagged.name} flagged?`);
+      const flagged = shuffled(ALL_INSTITUTIONS.filter(i => i.tier === 'B')).find(i => resolves(`Why is ${i.name} flagged?`, i) && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i));
+      if (flagged) out.push(pick([`Why is ${flagged.name} flagged?`, `What is reported about ${flagged.name}?`]));
       out.push('How do you decide which spaces are clean?');
       return out;
     }
