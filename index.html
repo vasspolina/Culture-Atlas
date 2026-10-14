@@ -9096,20 +9096,14 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
     function renderBuildingInsidePanel(inst) {
       const panel = document.getElementById('buildingInsidePanel');
       if (!panel || !inst) return;
-      const e = escapeHtml, b = XRAY.building, cats = xrayCategories(inst), wd = XRAY.wikidata[inst.id || inst.name];
+      const e = escapeHtml, cats = xrayCategories(inst), wd = XRAY.wikidata[inst.id || inst.name];
       const site = xraySite(inst);
-      const outline = xrayMapIsMock() ? 'The map could not start in this browser, so no outline is drawn.'
-        : XRAY.waiting ? 'Waiting for the map tiles.'
-        : !b ? 'No building outline in the map data at this point, so nothing is drawn.'
-        : b.hasHeight ? 'Outline from OpenStreetMap, through the map tiles. Height as the tiles render it, which can be an estimate from the number of levels or a default.'
-        : 'Outline from OpenStreetMap, through the map tiles. The tiles carry no height for this building, so the shell uses the map default.';
       const wdHtml = wd && wd.status === 'matched'
         ? `<p class="no-indent"><a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}</p>` : '';
       const siteHtml = site ? `<p class="no-indent text-[#f4f4f4]"><a href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a></p>` : '';
       const archivesHtml = wd && wd.status === 'matched' && wd.archivesAt.length ? `<p class="no-indent text-[#f4f4f4]">Archives held at ${e(wd.archivesAt.join(', '))}, according to Wikidata.</p>` : '';
       const body = `
-        <p class="no-indent text-[#f4f4f4]">${outline}</p>
-        ${cats.length ? `<p class="no-indent text-[#08bdba]">Inside, from the record:</p>${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1.5 border-t border-[#f4f4f4]"><div class="no-indent" style="color:${XRAY_COLOURS[c.key]}">${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent text-[#f4f4f4]">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent text-[#f4f4f4]">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent text-[#f4f4f4]">None of the categories shown here is in the record.</p>'}
+        ${cats.length ? `${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1.5 border-t border-[#f4f4f4]"><div class="no-indent" style="color:${XRAY_COLOURS[c.key]}">${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent text-[#f4f4f4]">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent text-[#f4f4f4]">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent text-[#f4f4f4]">None of the categories shown here is in the record.</p>'}
         ${siteHtml || archivesHtml || wdHtml ? `<div class="py-1.5 border-t border-[#f4f4f4]">${siteHtml}${archivesHtml}${wdHtml}</div>` : ''}`;
       // On a desktop the information goes to the right column, under the record; the map keeps only the labels on the building.
       const inside = document.getElementById('desktopDossierInside');
@@ -12579,11 +12573,10 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
         try { const x = new URL(u); h = x.hostname.replace(/^www\./, '') + (x.pathname.length > 1 ? x.pathname.replace(/\/$/, '').slice(0, 30) : ''); } catch (e) { /* keep the url */ }
         return `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:underline">${escapeHtml(h)}</a>`;
       });
-      const note = inst.tier_note ? `${escapeHtml(inst.tier_note)} ` : '';
       const v = inst.verification;
       const state = v && v.status === 'verified' ? `Checked on ${escapeHtml(v.checked_on)}: a source outside the museum names the funders this record cites.`
         : v && v.status === 'partial' ? `Partly checked on ${escapeHtml(v.checked_on)}: the sources name the museum but not every funder this record cites.`
-        : 'Not independently verified.';
+        : '';
       // Where a founding year and an address came from, one clause per field, one link per host within a field.
       const fs = inst.field_sources || {};
       const fieldLabel = {
@@ -12605,7 +12598,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
         fieldClauses.push(`${fieldLabel[k](f)} from ${fl.join(', ')}`);
       });
       const foundHtml = fieldClauses.length ? `<p class="no-indent text-[14px] text-[#f4f4f4]">${fieldClauses.join('. ')}.</p>` : '';
-      return `<p class="no-indent text-[14px] text-[#f4f4f4]">${note}${links.length ? 'Sources recorded: ' + links.join(', ') + '. ' + state : 'No source is recorded for this space.'}</p>${foundHtml}`;
+      return `${links.length ? `<p class="no-indent text-[14px] text-[#f4f4f4]">${links.join(', ')}${state ? '. ' + state : ''}</p>` : ''}${foundHtml}`;
     }
     // What studies say about this space, and the funders it shares with other institutions on the map.
     function researchContextHtml(inst) {
