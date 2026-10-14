@@ -41,6 +41,8 @@ input,textarea,select{outline:0}
 .lede{font:400 18px/1.25 var(--sans);letter-spacing:.01em}
 h1.lede,h2.lede{font:700 32px/1 var(--display);text-transform:uppercase;letter-spacing:0}
 .rule-t{border-top:1px solid var(--line)} .rule-b{border-bottom:1px solid var(--line)}
+/* A rule-t that directly follows a rule-b would draw a second line; one is enough. */
+.rule-b+.rule-t{border-top:0}
 .rule-l{border-left:1px solid var(--line)} .rule-r{border-right:1px solid var(--line)}
 .no-indent{text-indent:0}
 .custom-scrollbar,.no-scrollbar{scrollbar-width:thin;scrollbar-color:#000 transparent}
