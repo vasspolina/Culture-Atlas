@@ -11647,16 +11647,8 @@ return maplibregl$1;
 
           <div class="pt-2 rule-t">
             ${inst.audit_dossier_url ? `
-              <div class="py-2 rule-b mb-2 space-y-1">
-                <div class="meta t-strong">Public registry</div>
-                <div class="">
-                  A registry search for this museum. It is not a filing.
-                </div>
-                <div>
-                  <a href="${escapeHtml(inst.audit_dossier_url)}" target="_blank" rel="noopener noreferrer" class="underline meta inline-block">
-                    Inspect Statutory Record
-                  </a>
-                </div>
+              <div class="py-2 rule-b mb-2">
+                <a href="${escapeHtml(inst.audit_dossier_url)}" target="_blank" rel="noopener noreferrer" class="underline meta inline-block">${escapeHtml((() => { try { return new URL(inst.audit_dossier_url).hostname.replace(/^www\./, ''); } catch (e) { return inst.audit_dossier_url; } })())}</a>
               </div>
             ` : ''}
             
