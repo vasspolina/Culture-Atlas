@@ -6632,16 +6632,16 @@ return maplibregl$1;
           'source-layer': 'place',
           minzoom: 8,
           layout: {
-            '': ['coalesce', ['get', 'name_en'], ['get', 'name']],
-            '': ['Noto Sans Regular'],
-            '': 14,
-            '': 'none',
-            '': 0.08
+            'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
+            'text-font': ['Noto Sans Regular'],
+            'text-size': 14,
+            'text-transform': 'none',
+            'text-letter-spacing': 0.08
           },
           paint: {
-            '': '#f4f4f4',
-            '': '#000000',
-            '': 1.5
+            'text-color': '#f4f4f4',
+            'text-halo-color': '#000000',
+            'text-halo-width': 1.5
           }
         }
       ]
