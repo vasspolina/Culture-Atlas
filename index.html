@@ -382,8 +382,8 @@ return maplibregl$1;
               <button class="curator-suggest-chip text-left py-1 rule-b" data-query="What is flagged here?" type="button">
                 What is flagged here?
               </button>
-              <button class="curator-suggest-chip text-left py-1" data-query="Opening hours" type="button">
-                Opening hours
+              <button class="curator-suggest-chip text-left py-1" data-query="Which spaces are flagged?" type="button">
+                Which spaces are flagged?
               </button>
             </div>
           </div>
@@ -14021,8 +14021,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
 
       // Offline answers use only the records on this page: what is recorded, where it comes from, and nothing more.
-      const FOLLOW = ['Who funds this museum?', 'What is flagged here?', 'Opening hours', 'Find spaces in London'];
-      const answer = (html, follow) => appendCuratorMessage(`<div class="space-y-3">${html}</div>`, follow || FOLLOW);
+      // Follow-up chips only offer what the space in view has on record: funding, a flag, opening hours.
+      const followFor = () => {
+        const t = (typeof target !== 'undefined' && target) || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        if (!t) return ['Which spaces are flagged?', 'Find spaces in London'];
+        const out = [];
+        if (t.funding || t.funder_links) out.push('Who funds this museum?');
+        if (t.why_flagged || t.tier === 'B') out.push('What is flagged here?');
+        if (t.opening_hours) out.push('Opening hours');
+        out.push(t.city ? `Find spaces in ${t.city}` : 'Find spaces in London');
+        return out;
+      };
+      const answer = (html, follow) => appendCuratorMessage(`<div class="space-y-3">${html}</div>`, follow || followFor());
       const asks = (re) => re.test(q);
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
