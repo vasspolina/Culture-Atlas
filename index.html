@@ -10148,6 +10148,23 @@ return maplibregl$1;
           ctx.fillStyle = fill;
           ctx.fillText(text, x, y);
         };
+        // City and museum names sit on a pill, like the buttons: white with black monospace text,
+        // yellow when hovered or selected (white on yellow in gossip mode).
+        const drawPillLabel = (text, cx0, cy0, active) => {
+          ctx.save();
+          ctx.font = ATLAS_CARD_MONO_FONT;
+          const w = ctx.measureText(text).width + 20, h = 22;
+          const yellow = active !== isGossipModeActive;
+          ctx.fillStyle = yellow ? '#ffd600' : '#ffffff';
+          ctx.beginPath();
+          if (ctx.roundRect) ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, h / 2); else ctx.rect(cx0 - w / 2, cy0 - h / 2, w, h);
+          ctx.fill();
+          ctx.fillStyle = '#000000';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(text, cx0, cy0 + 0.5);
+          ctx.restore();
+        };
         // 6. City labels (all cities in the selected country or the top cities worldwide)
         cityBadgeHitboxes = [];
         cityClusterHitboxes = [];
@@ -10183,17 +10200,17 @@ return maplibregl$1;
             const isCountryActive = selectedCountryFilter !== 'all';
             const isClustered = isClusterZoom && (city.count >= 2);
 
-            let bw, bh = 24, txt = city.name, countTxt = '';
-            ctx.font = '14px "PP Neue Gstaad", sans-serif';
+            let bw, bh = 22, txt = city.name, countTxt = '';
+            ctx.font = ATLAS_CARD_MONO_FONT;
 
             if (isClustered) {
               countTxt = String(city.count);
-              bw = ctx.measureText(city.name + ' ' + countTxt).width + 14;
+              bw = ctx.measureText(city.name + ' ' + countTxt).width + 20;
             } else {
               const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${city.count})` : '';
               txt = city.name + countLabel;
               const tw = ctx.measureText(txt).width;
-              bw = tw + 14;
+              bw = tw + 20;
             }
 
             const bx = pt.x - bw / 2;
@@ -10234,7 +10251,7 @@ return maplibregl$1;
                 ctx.font = '14px "PP Neue Gstaad", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawGlobeLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2 + 0.5, isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#f4f4f4'));
+                drawPillLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2, !!(isSelected || isHovered));
 
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
@@ -10246,7 +10263,7 @@ return maplibregl$1;
                 ctx.font = '14px "PP Neue Gstaad", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawGlobeLabel(txt, pt.x, by + bh / 2 + 0.5, isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#f4f4f4'));
+                drawPillLabel(txt, pt.x, by + bh / 2, !!(isSelected || isHovered));
 
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
@@ -10447,9 +10464,10 @@ return maplibregl$1;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
+            ctx.font = ATLAS_CARD_MONO_FONT;
             const tw = ctx.measureText(nameTxt).width;
-            const bw = tw + 12;
-            const bh = 20;
+            const bw = tw + 20;
+            const bh = 22;
             const bx = d.x - bw / 2;
             const by = d.y - 18;
 
@@ -10464,7 +10482,7 @@ return maplibregl$1;
               drawnInstLabelBoxes.push({ x: bx, y: by, w: bw, h: bh });
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
-              drawGlobeLabel(nameTxt, d.x, by + bh - 4, isSel ? '#ffffff' : '#f4f4f4');
+              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel);
             }
             ctx.restore();
           }
