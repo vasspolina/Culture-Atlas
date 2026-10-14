@@ -1,9 +1,11 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v61';
+const CACHE_NAME = 'culture-atlas-v62';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  './assets/atlas.css',
+  './assets/maplibre-gl.css'
 ];
 
 self.addEventListener('install', (event) => {
