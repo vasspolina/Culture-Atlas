@@ -922,10 +922,11 @@
  {
   "record_id": "s-ries-mania-lille",
   "row_id": "epstein:0:54",
-  "final": "add",
+  "final": "already_stated",
   "judged": "already_stated",
   "reason": "The record's watch and other_findings strings already give the row's facts: Caroline Lang's roles at Séries Mania, La Voix du Nord's report, the Prytanee LLC stake, the $5 million will, the Woody Allen introduction in 2012, the 4 February 2026 exit, and her denial. The row's other columns only repeat the record's own wording or are labels, and its extra Wikipedia link is a source, not a fact.",
-  "record_quote": "She held 50% of Prytanee LLC, a company created with Epstein in the US Virgin Islands in 2016, a will Epstein signed promised her $5 million, and she says Woody Allen introduced her to Epstein in 2012. She stood down on 4 February 2026, the same day she left Pictanovo. She calls Epstein an acquaintance and says she received no money or benefit."
+  "record_quote": "She held 50% of Prytanee LLC, a company created with Epstein in the US Virgin Islands in 2016, a will Epstein signed promised her $5 million, and she says Woody Allen introduced her to Epstein in 2012. She stood down on 4 February 2026, the same day she left Pictanovo. She calls Epstein an acquaintance and says she received no money or benefit.",
+  "note": "the record's why_flagged and other_findings already state all five sentences; the second check wrongly sent it back"
  },
  {
   "record_id": "school-of-visual-arts-new-york",
