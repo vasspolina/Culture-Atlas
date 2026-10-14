@@ -1701,7 +1701,7 @@ return maplibregl$1;
 .curator-message-wrap a { font-size: inherit !important; }
 .curator-message-wrap button span { color: inherit !important; }
 .user-bubble { text-align: left; }
-#workInputCard button, #workSuggestionsDropdownToggle span, #workSuggestionsDropdownToggle { color: #f4f4f4 !important; }
+#workInputCard button { color: #f4f4f4 !important; }
 #workSendBtn { color: #000 !important; }
 /* Country and city: a field you type in and a list under it. A rule under the field, nothing around the list. */
 .atlas-combo { position: relative; }
@@ -1714,6 +1714,21 @@ return maplibregl$1;
 .atlas-combo-list li[aria-selected="true"] { text-decoration: underline; }
 .atlas-combo-list li.is-active, .atlas-combo-list li:hover { color: #ffffff; text-decoration: underline; }
 .atlas-combo-list li.is-empty { cursor: default; text-decoration: none; }
+/* Chat, empty state: the greeting sits at the top and flush left in the same 720px measure as the conversation, with prompts the records can answer. */
+html body #curatorScrollContent { margin-top: 0 !important; margin-bottom: auto !important; }
+html body #curatorHeroGreeting { max-width: 720px; align-items: flex-start !important; justify-content: flex-start !important; text-align: left !important; padding: 40px 0 8px !important; }
+html body #curatorHeroGreeting h1, html body #curatorHeroGreeting p { text-align: left !important; max-width: none !important; }
+.starter-prompts { width: 100%; margin-top: 24px; }
+html body #curatorHeroGreeting .starter-label { font-size: 14px !important; margin: 0 0 8px !important; color: #f4f4f4 !important; }
+html body #curatorHeroGreeting .starter-prompt { display: block; width: 100%; text-align: left; padding: 12px 0 !important; border: 0 !important; border-top: 0.8px solid #f4f4f4 !important; border-radius: 0 !important; background: transparent !important; color: #f4f4f4 !important; font-size: 18px !important; line-height: 1.3 !important; cursor: pointer; white-space: normal; }
+html body #curatorHeroGreeting .starter-prompt:last-child { border-bottom: 0.8px solid #f4f4f4 !important; }
+html body #curatorHeroGreeting .starter-prompt:hover { color: #ffffff !important; text-decoration: underline; }
+/* The composer keeps clear of the bottom edge of the window. */
+html body #workBottomDock { padding-bottom: max(32px, env(safe-area-inset-bottom)) !important; }
+/* The composer shares the greeting's measure and left edge. */
+html body #workBottomDock > div { max-width: 720px !important; width: 100%; }
+html body #workInputCard { padding-left: 0 !important; padding-right: 0 !important; }
+html body .chat-info { margin-top: 4px; }
 /* Focus is a heavier rule under the field, never a box around it. */
 .atlas-combo-field input:focus-visible { outline: 0 !important; }
 .atlas-combo-field:focus-within { box-shadow: 0 1px 0 0 #ffffff; }
@@ -2362,6 +2377,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
               <p class="text-[18px] text-[#f4f4f4] text-center mb-3 select-none max-w-lg">
                 Ask about a cultural space: who funds it, what has been reported about it, and where that comes from.
               </p>
+              <div id="curatorStarterPrompts" class="starter-prompts"></div>
             </div>
 
             <!-- Active Conversation Stream -->
@@ -2516,44 +2532,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
                 </button>
               </div>
 
-            </div>
-
-            <!-- Suggested Inquiries Dropdown Under Chat: Strictly Single Item Row -->
-            <div id="workSuggestionsSection" class="w-full relative py-1 transition-all duration-200">
-              <button id="workSuggestionsDropdownToggle" type="button" onclick="window.toggleWorkSuggestionsDropdown()" class="flex items-center gap-2 py-1 text-left text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] font-mono border-b border-[#262626] select-none" aria-haspopup="true" aria-expanded="false">
-                <span id="workSuggestionsDropdownCurrent" class="text-[#f4f4f4]">Suggested Inquiries</span>
-                <svg id="workSuggestionsChevron" class="w-3.5 h-3.5 text-[#f4f4f4] transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-
-              <!-- Dropdown Menu List -->
-              <div id="workSuggestionsDropdownMenu" class="hidden flex flex-col gap-1 py-1 w-full border-b border-[#262626] select-text">
-                <button class="work-suggestion-card text-left py-1 text-[#f4f4f4] hover:text-white hover:underline text-[14px] transition cursor-pointer border-b border-[#262626]" data-query="Who funds this museum?">
-                  <span>Who funds this museum?</span>
-                </button>
-                <button class="work-suggestion-card text-left py-1 text-[#f4f4f4] hover:text-white hover:underline text-[14px] transition cursor-pointer border-b border-[#262626]" data-query="What do employees say about working here?">
-                  <span>What do employees say about working here?</span>
-                </button>
-                <button class="work-suggestion-card text-left py-1 text-[#f4f4f4] hover:text-white hover:underline text-[14px] transition cursor-pointer border-b border-[#262626]" data-query="Have artists protested or boycotted this institution?">
-                  <span>Have artists protested or boycotted this institution?</span>
-                </button>
-                <button class="work-suggestion-card text-left py-1 text-[#f4f4f4] hover:text-white hover:underline text-[14px] transition cursor-pointer border-b border-[#262626]" data-query="Which sponsors have faced public criticism?">
-                  <span>Which sponsors have faced public criticism?</span>
-                </button>
-                <button class="work-suggestion-card text-left py-1 text-[#f4f4f4] hover:text-white hover:underline text-[14px] transition cursor-pointer border-b border-[#262626]" data-query="Does this institution pay artists fairly?">
-                  <span>Does this institution pay artists fairly?</span>
-                </button>
-                <button class="work-suggestion-card text-left py-1 text-[#f4f4f4] hover:text-white hover:underline text-[14px] transition cursor-pointer border-b border-[#262626]" data-query="How are its trustees connected to its sponsors?">
-                  <span>How are its trustees connected to its sponsors?</span>
-                </button>
-                <button class="work-suggestion-card text-left py-1 text-[#f4f4f4] hover:text-white hover:underline text-[14px] transition cursor-pointer border-b border-[#262626]" data-query="Has public pressure changed its policies?">
-                  <span>Has public pressure changed its policies?</span>
-                </button>
-                <button class="work-suggestion-card text-left py-1 text-[#f4f4f4] hover:text-white hover:underline text-[14px] transition cursor-pointer" data-query="Find spaces in London">
-                  <span>Find spaces in London</span>
-                </button>
-              </div>
             </div>
 
             <!-- Chat info: how the records work -->
@@ -13287,6 +13265,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
 
     function deselectInstitution() {
       selectedInstitution = null;
+      if (typeof renderStarterPrompts === 'function') renderStarterPrompts();
       if (typeof hideBuildingXray === 'function') hideBuildingXray();
       if (typeof curatorContext !== 'undefined') {
         curatorContext.activeFocusInst = null;
@@ -13334,6 +13313,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
       }
       if (typeof XRAY !== 'undefined' && XRAY.inst && XRAY.inst !== inst && typeof hideBuildingXray === 'function') hideBuildingXray();
       selectedInstitution = inst;
+      renderStarterPrompts();
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) {
         // Auto-dismiss floating map popup when full center dossier panel is selected
@@ -16303,12 +16283,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           <p class="text-[18px] text-[#f4f4f4] text-center mb-3 select-none max-w-lg">
             Ask about a cultural space: who funds it, what has been reported about it, and where that comes from.
           </p>
-          
+          <div id="curatorStarterPrompts" class="starter-prompts"></div>
         `;
         contentWrap.insertBefore(hero, curatorMessages);
       }
-      const suggestions = document.getElementById('workSuggestionsSection');
-      if (suggestions) suggestions.classList.remove('hidden');
+      renderStarterPrompts();
     }
 
     function resetToNewChat() {
@@ -16321,8 +16300,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         curatorContext.history = [];
         curatorContext.activeEntityHistory = [];
       }
-      const suggestions = document.getElementById('workSuggestionsSection');
-      if (suggestions) suggestions.classList.remove('hidden');
       const workInput = document.getElementById('workInput');
       if (workInput) workInput.value = '';
       const scrollArea = document.getElementById('curatorScrollArea');
@@ -16342,8 +16319,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (hero) hero.remove();
       const contentWrap = document.getElementById('curatorScrollContent');
       if (contentWrap) contentWrap.classList.remove('my-auto');
-      const suggestions = document.getElementById('workSuggestionsSection');
-      if (suggestions) suggestions.classList.add('hidden');
       const div = document.createElement('div');
       div.className = 'flex justify-end my-1 w-full';
       div.innerHTML = `
@@ -16378,8 +16353,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (hero) hero.remove();
       const contentWrap = document.getElementById('curatorScrollContent');
       if (contentWrap) contentWrap.classList.remove('my-auto');
-      const suggestions = document.getElementById('workSuggestionsSection');
-      if (suggestions) suggestions.classList.add('hidden');
       const div = document.createElement('div');
       div.className = 'curator-message-wrap my-3 select-text w-full';
 
@@ -17423,8 +17396,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         heroGreeting.classList.add('hidden');
         heroGreeting.style.display = 'none';
       }
-      const suggestions = document.getElementById('workSuggestionsSection');
-      if (suggestions) suggestions.classList.add('hidden');
 
       // 7. Style primary input container with secure dark-emerald theme (#061b12)
       const inputCard = document.getElementById('workInputCard');
@@ -17569,8 +17540,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         heroGreeting.classList.remove('hidden');
         heroGreeting.style.display = '';
       }
-      const suggestions = document.getElementById('workSuggestionsSection');
-      if (suggestions) suggestions.classList.remove('hidden');
 
       // 10. Desktop split view restoration if previously minimized
       if (window.innerWidth >= 768) {
@@ -18256,48 +18225,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.speakCuratorText = speakCuratorText;
     window.stopCuratorSpeech = stopCuratorSpeech;
 
-    function toggleWorkSuggestionsDropdown(open) {
-      const menu = document.getElementById('workSuggestionsDropdownMenu');
-      const chevron = document.getElementById('workSuggestionsChevron');
-      const toggle = document.getElementById('workSuggestionsDropdownToggle');
-      if (!menu) return;
-      const isOpen = !menu.classList.contains('hidden');
-      const shouldOpen = (open !== undefined) ? Boolean(open) : !isOpen;
-      if (shouldOpen) {
-        menu.classList.remove('hidden');
-        if (chevron) chevron.classList.add('rotate-180');
-        if (toggle) toggle.setAttribute('aria-expanded', 'true');
-      } else {
-        menu.classList.add('hidden');
-        if (chevron) chevron.classList.remove('rotate-180');
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
-      }
-    }
-    window.toggleWorkSuggestionsDropdown = toggleWorkSuggestionsDropdown;
-
-    document.addEventListener('click', (e) => {
-      const section = document.getElementById('workSuggestionsSection');
-      if (section && !section.contains(e.target)) {
-        toggleWorkSuggestionsDropdown(false);
-      }
-    });
-
-    // Work Suggestion Cards & Try Buttons
-    document.querySelectorAll('.work-suggestion-card, .try-pill').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const card = el.closest('.work-suggestion-card') || el;
-        const q = card.getAttribute('data-query');
-        if (q) {
-          toggleWorkSuggestionsDropdown(false);
-          const curr = document.getElementById('workSuggestionsDropdownCurrent');
-          if (curr) curr.textContent = q;
-          appendUserMessage(q);
-          handleCuratorQuery(q);
-        }
-      });
-    });
-
     // Work Shelf Buttons
     document.querySelectorAll('.work-shelf-pill').forEach(el => {
       el.addEventListener('click', () => {
@@ -18937,6 +18864,50 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
     setupFilterCombo(countrySelect);
     setupFilterCombo(citySelect);
+
+    // Starter prompts for an empty chat. Every one is a question the offline answers can really answer from the records, and the
+    // examples are picked from the records themselves, so nothing is promised that the data does not hold. With a space selected
+    // the prompts are about that space.
+    function starterPromptList() {
+      const registry = (typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []).filter(c => c && c.name);
+      const registryName = (city) => { const c = city && registry.find(r => matchC(r.name, city)); return c ? c.name : ''; };
+      const resolves = (text, inst) => { try { const hit = findMentionedInst(text); return !!hit && (hit.id === inst.id || hit.name === inst.name); } catch (e) { return false; } };
+      const sel = typeof selectedInstitution !== 'undefined' ? selectedInstitution : null;
+      const out = [];
+      if (sel) {
+        out.push(`Who funds ${sel.name}?`, `What is reported about ${sel.name}?`, `What are the opening hours of ${sel.name}?`);
+        const place = registryName(sel.city);
+        if (place) out.push(`Find spaces in ${place}`);
+        return out.filter(q => resolves(q, sel) || /^Find spaces in /.test(q));
+      }
+      const byName = (a, b) => a.name.localeCompare(b.name);
+      const clean = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
+      const counts = {};
+      clean.forEach(i => { const c = registryName(i.city); if (c) counts[c] = (counts[c] || 0) + 1; });
+      const topCity = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))[0];
+      if (topCity) out.push(`Find spaces in ${topCity}`);
+      const funded = clean.filter(i => i.funding && matchC(i.city, topCity)).sort(byName).find(i => resolves(`Who funds ${i.name}?`, i));
+      if (funded) out.push(`Who funds ${funded.name}?`);
+      const flagged = ALL_INSTITUTIONS.filter(i => i.tier === 'B').sort(byName).find(i => resolves(`Why is ${i.name} flagged?`, i) && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i));
+      if (flagged) out.push(`Why is ${flagged.name} flagged?`);
+      out.push('How do you decide which spaces are clean?');
+      return out;
+    }
+
+    function renderStarterPrompts() {
+      const box = document.getElementById('curatorStarterPrompts');
+      if (!box) return;
+      let list = [];
+      try { list = starterPromptList(); } catch (e) { list = []; }
+      box.innerHTML = list.length ? `<p class="starter-label no-indent">Try asking</p>${list.map(q => `<button type="button" class="starter-prompt" data-query="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join('')}` : '';
+    }
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest && e.target.closest('.starter-prompt');
+      if (!b) return;
+      const q = b.getAttribute('data-query');
+      if (q) { appendUserMessage(q); handleCuratorQuery(q); }
+    });
+    renderStarterPrompts();
 
     function toggleFilterDrawer(forceState) {
       const drawer = document.getElementById('filterDrawerPanel');
