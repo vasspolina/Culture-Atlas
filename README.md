@@ -12,7 +12,7 @@ Tiers describe how well a record is sourced, not a verdict on the museum: Clean 
 
 Type is PP Neue Gstaad Regular, at 14, 15, 20 and 22px: body text is 15px, labels 14px, titles 22px and the opening line 20px. Titles and buttons are PP Neue Gstaad Compact Bold. Words are never hyphenated. Links are underlined, not italic.
 
-Buttons are dark teal pills with off-white text and no outline; the current one is lighter teal. Lines are single rules, never boxes around content; nothing is grey and nothing is set in capitals. On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+Buttons are plain text in Compact Bold, with no pills or outlines; the hovered or current one turns teal. The one round button is the send arrow. The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer. Lines are single rules, never boxes around content; nothing is grey and nothing is set in capitals. On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ---
 
