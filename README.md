@@ -10,9 +10,11 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below.
 
-Type is PP Neue Gstaad Regular, at 14, 15, 20 and 22px: body text is 15px, labels 14px, titles 22px and the opening line 20px. Titles and buttons are PP Neue Gstaad Compact Bold. Words are never hyphenated. Links are underlined, not italic.
+## Design
 
-Buttons are dark teal pills with off-white text and no outline; the current one is lighter teal. Lines are single rules, never boxes around content; nothing is grey and nothing is set in capitals. On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+Plain CSS, no framework: one stylesheet at `assets/atlas.css` (design layer plus a short generated block of layout helpers) and `assets/maplibre-gl.css` for the street map. The page loads no CSS or script from a CDN.
+
+The look follows the It's a book fair site: a white page, a strip of tabs on hairlines, flat colour blocks (cobalt, orange, cyan, mustard, periwinkle, magenta), a black pill for the current filter, a yellow close mark, and a grey sheet with the facts as a ruled table. Titles are PP Neue Gstaad Compact Bold in capitals, body is PP Neue Gstaad Regular, labels and buttons are monospace. The globe is unchanged and sits on black. Text on a colour block is black, except on cobalt, where it is white.
 
 ---
 
