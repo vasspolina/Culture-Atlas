@@ -5,13 +5,12 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 ## What it does
 
 - **Chat.** Answers from the records only. It names the record and its source, and says when a record does not say. An optional API key in settings turns on open-ended replies.
-- **Globe and map.** Click a space to see its record. City and country filters.
-- **Filters & lenses.** Filter the globe by tier, region and category, or type a country or city. The studies and community notes open in the research library.
+- **Globe and map.** Click a space to see its record, or a city or country to filter. The studies and community notes open in the research library.
 - **Offline.** Installable as an app; the service worker caches the page.
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below.
 
-Type is PP Neue Gstaad Regular, at 14 and 18px: body text is 18px, labels 14px. Titles (26px) and buttons are PP Neue Gstaad Compact Bold. Links are underlined, not italic. The header menu is plain capitals with no pill, and the current item is underlined.
+Type is PP Neue Gstaad Regular, at 14 and 18px: body text is 18px, labels 14px. Titles (26px) and buttons are PP Neue Gstaad Compact Bold. Links are underlined, not italic.
 
 Buttons are off-white pills with black text and no outline; a pressed one inverts. Lines are single rules, never boxes around content; nothing is grey and nothing is set in capitals. On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 

@@ -257,7 +257,7 @@
     html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
     html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
     html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
-    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabFilters {
+    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 8px 16px !important; border: 0 !important; border-radius: 9999px !important;
       background: #f4f4f4 !important; color: #000000 !important; font-size: 14px !important;
@@ -275,7 +275,7 @@
     /* Solid black surfaces, no blur, no outline. */
     #curatorSettingsModal, #academicResearchModal { background: rgba(0, 0, 0, 0.9) !important; }
     #curatorSettingsModal > div, #academicResearchModal > div,
-    #floatingCard, #filterDrawerPanel, #dossier-bottom-sheet, #curator-chat-drawer, #desktopDossierColumn, #detailDrawer,
+    #floatingCard, #dossier-bottom-sheet, #curator-chat-drawer, #desktopDossierColumn, #detailDrawer,
     div:has(> textarea), form:has(> textarea) { background: #000000 !important; border: 0 !important; box-shadow: none !important; }
     textarea { background: transparent !important; }
     ::placeholder, input::placeholder, textarea::placeholder { color: #f4f4f4 !important; opacity: 1 !important; }
@@ -300,18 +300,10 @@
     html body tbody tr + tr td { border-top: 0.8px solid #f4f4f4; }
     html body a { text-decoration-thickness: 0.8px !important; }
 
-    /* Filters & Lenses fill the page below the header, like a pop-up window. */
-    @media (min-width: 768px) {
-      html body #filterDrawerPanel { position: fixed !important; top: 56px !important; left: 0 !important; right: 0 !important; bottom: 0 !important; max-height: none !important; height: auto !important; border-radius: 0 !important; z-index: 45 !important; background: #000 !important; }
-    }
-    @media (max-width: 767px) {
-      html body #filterDrawerPanel { position: fixed !important; inset: 0 !important; max-height: none !important; border-radius: 0 !important; z-index: 45 !important; background: #000 !important; }
-    }
-
     /* The record page fills the page too, above the directory it was opened from. */
     @media (min-width: 768px) {
       html body #detailDrawer { position: fixed !important; top: 56px !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: auto !important; height: auto !important; z-index: 51 !important; background: #000 !important; }
-      html body #filterDrawerPanel, html body #detailDrawer { padding-left: 40px !important; padding-right: 40px !important; }
+      html body #detailDrawer { padding-left: 40px !important; padding-right: 40px !important; }
     }
     @media (max-width: 767px) {
       html body #detailDrawer { position: fixed !important; inset: 0 !important; z-index: 51 !important; background: #000 !important; }
@@ -323,15 +315,10 @@
     html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
     html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
     html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
-    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn, html body #navTabAtlas, html body #navTabFilters,
-    html body #mobileStickySendBtn, html body #workSendBtn, html body #mobileTopBar button:not(#mobileTopBrandBtn), html body #mobileStickyPlusBtn, html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn, html body #mobileFilterChipsSection button, html body #hudWorldBtn, html body #hudSpinBtn, html body #hudExpandBtn { color: #000000 !important; background: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; }
-    html body #mobileStickyPlusBtn { padding: 0 !important; width: 36px !important; height: 36px !important; }
-    html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #closeAcademicModalBtn, #closeAcademicModalFooterBtn, #arTabStudies, #arTabCommunity, #arTabCases, #desktopDossierBody > div > button, #inputModeCancelBtn, #navTabAtlas, #navTabFilters, #mobileStickySendBtn, #mobileStickyPlusBtn):hover { background: #ffffff !important; color: #000000 !important; }
-    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases, #navTabAtlas, #navTabFilters) { background: #000000 !important; color: #f4f4f4 !important; box-shadow: inset 0 0 0 1px #f4f4f4 !important; }
-    html body .globe-filter-pill { background: #f4f4f4 !important; color: #000000 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; box-shadow: none !important; font-size: 14px !important; }
-    html body .globe-filter-pill:hover { background: #ffffff !important; }
-    html body .globe-filter-pill.is-active, html body .globe-filter-pill:not([class*="bg-black"]) { background: #000000 !important; color: #f4f4f4 !important; box-shadow: inset 0 0 0 1px #f4f4f4 !important; }
-    html body #filterDrawerPanel h2 { font-size: 26px !important; }
+    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn,
+    html body #mobileStickySendBtn, html body #workSendBtn, html body #mobileTopBar button:not(#mobileTopBrandBtn), html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn, html body #mobileFilterChipsSection button, html body #hudWorldBtn, html body #hudSpinBtn, html body #hudExpandBtn { color: #000000 !important; background: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 8px 16px !important; }
+    html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #closeAcademicModalBtn, #closeAcademicModalFooterBtn, #arTabStudies, #arTabCommunity, #arTabCases, #desktopDossierBody > div > button, #inputModeCancelBtn, #mobileStickySendBtn):hover { background: #ffffff !important; color: #000000 !important; }
+    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #arTabStudies, #arTabCommunity, #arTabCases) { background: #000000 !important; color: #f4f4f4 !important; box-shadow: inset 0 0 0 1px #f4f4f4 !important; }
     /* No grey anywhere: Tailwind grey utilities become off-white lines and text, or black ground. */
     html body :is([class*="border-[#262626]"], [class*="border-[#2e2e33]"], [class*="border-[#2e2e2e]"], [class*="border-[#1e293b]"], [class*="border-[#27272a]"], [class*="border-[#3e3e3e]"], [class*="border-[#333333]"], [class*="border-[#393939]"], [class*="border-[#2a2a2a]"], [class*="border-[#334155]"], [class*="border-[#1f293d]"], [class*="border-[#3f3f46]"], [class*="border-[#2e2e38]"], [class*="border-[#1b2333]"], [class*="border-[#525252]"], [class*="border-[#234b39]"], [class*="border-[#1e2f4a]"], [class*="border-[#334666]"], [class*="border-[#1e2f47]"], [class*="border-[#383838]"], [class*="border-[#2f2f2f]"], [class*="border-[#232a3c]"], [class*="border-[#1b3324]"], [class*="border-[#1b4332]"], [class*="border-[#1c1c1c]"], [class*="border-[#303030]"], [class*="border-[#23352b]"], [class*="border-[#1e3b3e]"], [class*="border-[#1b2b42]"], [class*="border-[#1a293e]"], [class*="border-[#222d42]"], [class*="border-[#202b3f]"], [class*="border-[#2c3d5a]"], [class*="border-[#222f47]"], [class*="border-[#385177]"], [class*="border-[#2d4368]"], [class*="border-[#2b3e5f]"], [class*="border-[#1d3557]"], [class*="border-[#444]"], [class*="border-cyan-950"], [class*="border-slate"], [class*="border-zinc"], [class*="border-gray"], [class*="border-neutral"]), html body [class*="divide-"] > * { border-color: #f4f4f4 !important; }
     html body :is([class*="border-[#60a5fa]"], [class*="border-[#33b1ff]"], [class*="border-[#0284c7]"], [class*="border-blue"], [class*="border-sky"]) { border-color: #08bdba !important; }
@@ -1266,7 +1253,6 @@
     body.gossip-mode-active .work-suggestion-card.is-suggestion:hover,
     body.gossip-mode-active .curator-followup-pill:hover,
     body.gossip-mode-active .confidential-prompt-chip:hover,
-    body.gossip-mode-active .globe-filter-pill:not(.is-active):hover,
     body.gossip-mode-active .inst-link:hover,
     body.gossip-mode-active .city-link:hover,
     body.gossip-mode-active .dossier-link:hover,
@@ -1398,66 +1384,6 @@
       white-space: nowrap !important;
       position: relative !important;
     }
-    .globe-filter-pill {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 5px !important;
-      background-color: transparent !important;
-      border-radius: 0 !important;
-      padding: 2px 0 !important;
-      font-family: 'PP Neue Gstaad', sans-serif !important;
-      font-size: 14px !important;
-      font-weight: 400 !important;
-      letter-spacing: 0.01em !important;
-      line-height: 1.3 !important;
-      text-decoration: none !important;
-      border: none !important;
-      cursor: pointer !important;
-      user-select: none !important;
-      white-space: nowrap !important;
-      transition: color 0.16s ease-in-out !important;
-      box-shadow: none !important;
-    }
-    .globe-filter-pill:hover {
-      transform: none !important;
-      filter: none !important;
-      color: #ffffff !important;
-      text-decoration: underline !important;
-    }
-    .globe-filter-pill:active {
-      transform: none !important;
-    }
-    .globe-filter-pill.is-active {
-      padding: 2px 0 !important;
-      line-height: 1.3 !important;
-      font-weight: 400 !important;
-      box-shadow: none !important;
-      text-decoration: underline !important;
-    }
-    .vc-strat-pill {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 5px !important;
-      background-color: transparent !important;
-      border: none !important;
-      border-radius: 0 !important;
-      padding: 2px 0 !important;
-      font-family: 'PP Neue Gstaad', sans-serif !important;
-      font-size: 14px !important;
-      font-weight: 400 !important;
-      letter-spacing: 0.01em !important;
-      line-height: 1.3 !important;
-      text-decoration: underline !important;
-      cursor: pointer !important;
-      user-select: none !important;
-      white-space: nowrap !important;
-      transition: color 0.16s ease-in-out !important;
-    }
-    .vc-strat-pill:hover {
-      transform: none !important;
-      filter: none !important;
-      color: #ffffff !important;
-    }
     .atlas-suggestion-pill:focus,
     .atlas-suggestion-pill:focus-visible,
     .work-suggestion-card.is-suggestion:focus,
@@ -1465,9 +1391,7 @@
     .curator-followup-pill:focus,
     .curator-followup-pill:focus-visible,
     .confidential-prompt-chip:focus,
-    .confidential-prompt-chip:focus-visible,
-    .globe-filter-pill:focus,
-    .globe-filter-pill:focus-visible {
+    .confidential-prompt-chip:focus-visible {
       outline: none !important;
       box-shadow: none !important;
     }
@@ -1704,27 +1628,13 @@ return maplibregl$1;
 #workInputCard button { color: #f4f4f4 !important; }
 #workSendBtn { color: #000 !important; }
 /* Country and city: a field you type in and a list under it. A rule under the field, nothing around the list. */
-.atlas-combo { position: relative; }
-.atlas-combo-field { display: flex; align-items: center; gap: 10px; border-bottom: 0.8px solid #f4f4f4; }
-.atlas-combo-field input { flex: 1 1 auto; min-width: 0; background: transparent !important; border: 0 !important; border-radius: 0 !important; padding: 6px 0 !important; font-size: 14px !important; color: #f4f4f4 !important; box-shadow: none !important; }
-.atlas-combo-field input::placeholder { color: #f4f4f4 !important; opacity: 1 !important; }
-.atlas-combo-clear { background: transparent !important; border: 0 !important; padding: 0 !important; font-size: 14px !important; color: #f4f4f4 !important; text-decoration: underline; cursor: pointer; }
-.atlas-combo-list { list-style: none; margin: 0; padding: 4px 0 0; max-height: 240px; overflow-y: auto; }
-.atlas-combo-list li { padding: 5px 0; font-size: 14px; color: #f4f4f4; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.atlas-combo-list li[aria-selected="true"] { text-decoration: underline; }
-.atlas-combo-list li.is-active, .atlas-combo-list li:hover { color: #ffffff; text-decoration: underline; }
-.atlas-combo-list li.is-empty { cursor: default; text-decoration: none; }
 /* Titles and buttons are PP Neue Gstaad Compact Bold, text inside them included. Everything else is PP Neue Gstaad Regular. The brand button keeps its badge in Regular and takes Compact Bold for its name only. */
 html body :is(h1, h2, h3, h4, .lede, .dossier-main-heading, .modal-title, .drawer-title, #desktopDossierName, .mast-inst-name, #topBrandLogoBtn > span:first-child, #mobileTopBrandBtn > div > span:first-child),
 html body :is(h1, h2, h3, h4, .lede, .dossier-main-heading, .modal-title, .drawer-title, #desktopDossierName, .mast-inst-name) *,
-html body :is(button, [role="button"], input[type="submit"], input[type="button"], .globe-filter-pill, .atlas-pill-btn, .xray-pill, .xray-label):not(#topBrandLogoBtn):not(#mobileTopBrandBtn),
-html body :is(button, [role="button"], .globe-filter-pill, .atlas-pill-btn, .xray-pill, .xray-label):not(#topBrandLogoBtn):not(#mobileTopBrandBtn) * { font-family: 'PP Neue Gstaad Compact', sans-serif !important; }
+html body :is(button, [role="button"], input[type="submit"], input[type="button"], .atlas-pill-btn, .xray-pill, .xray-label):not(#topBrandLogoBtn):not(#mobileTopBrandBtn),
+html body :is(button, [role="button"], .atlas-pill-btn, .xray-pill, .xray-label):not(#topBrandLogoBtn):not(#mobileTopBrandBtn) * { font-family: 'PP Neue Gstaad Compact', sans-serif !important; }
 /* On a tablet the header has no room for the count beside the name. */
 @media (min-width: 768px) and (max-width: 1023px) { html body #topBrandLogoBtn > div { display: none !important; } }
-/* The menu is plain capitals, no pill. The current item is underlined. */
-html body #desktopMainNav { gap: 32px; }
-html body #desktopMainNav button { background: transparent !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; padding: 6px 0 !important; color: #f4f4f4 !important; text-transform: uppercase; letter-spacing: 0.08em !important; text-decoration: none; }
-html body #desktopMainNav button:hover, html body #desktopMainNav button[aria-pressed="true"] { background: transparent !important; box-shadow: none !important; color: #ffffff !important; text-decoration: underline !important; text-decoration-thickness: 0.8px !important; text-underline-offset: 6px; }
 html body #workPlusMenu button, html body #mobileBottomNav button { text-transform: uppercase; letter-spacing: 0.08em !important; }
 /* Chat, empty state: the greeting sits at the top and flush left in the same 720px measure as the conversation, with prompts the records can answer. */
 html body #curatorScrollContent { margin-top: 0 !important; margin-bottom: auto !important; }
@@ -1742,12 +1652,6 @@ html body #workBottomDock > div { max-width: 720px !important; width: 100%; }
 html body #workInputCard { padding-left: 0 !important; padding-right: 0 !important; }
 html body .chat-info { margin-top: 4px; }
 /* Focus is a heavier rule under the field, never a box around it. */
-.atlas-combo-field input:focus-visible { outline: 0 !important; }
-.atlas-combo-field:focus-within { box-shadow: 0 1px 0 0 #ffffff; }
-/* Place, on the Filters & lenses page: country and city side by side, one column on a phone. */
-.filter-place { display: flex; flex-direction: column; gap: 6px; padding: 4px 0 12px; }
-.filter-place-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
-@media (max-width: 767px) { .filter-place-row { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
 /* Chat info, under the composer: one line that opens to the rules the records follow. */
 .chat-info { width: 100%; padding-top: 8px; border-top: 0.8px solid #f4f4f4; font-size: 14px; line-height: 1.3; color: #f4f4f4; text-align: left; }
 .chat-info summary { cursor: pointer; list-style: none; width: fit-content; text-decoration: underline; }
@@ -1798,15 +1702,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
       
     </button>
 
-    <!-- Center: Main Navigation Tabs (Atlas | Filters & Lenses) -->
-    <nav id="desktopMainNav" class="hidden md:flex items-center gap-3 sm:gap-5 lg:gap-8 text-[14px] lg:text-[14px] tracking-wider font-medium select-none shrink-0">
-      <button id="navTabAtlas" type="button" onclick="window.setMainViewTab('atlas')" aria-pressed="true" class="whitespace-nowrap" title="Atlas Globe Exploration">
-        Atlas
-      </button>
-      <button id="navTabFilters" type="button" onclick="window.setMainViewTab('filters')" aria-pressed="false" class="whitespace-nowrap" title="Filters &amp; Lenses">
-        Filters &amp; Lenses
-      </button>
-    </nav>
 
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
@@ -2432,61 +2327,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
         </div>
 
         <!-- Filter Drawer Panel -->
-        <div id="filterDrawerPanel" class="hidden absolute inset-x-0 bottom-0 max-h-[85vh] sm:max-h-[90vh] z-40 bg-black/95  border-t border-[#334155] rounded-t-2xl shadow-2xl p-4 sm:p-5 flex flex-col gap-3.5 overflow-y-auto custom-scrollbar transition-all duration-200">
-          <div class="flex items-center justify-between pb-2.5 border-b border-[#1e293b]">
-            <div class="flex items-center gap-2">
-              <h2 class="text-white">Filters &amp; lenses</h2>
-            </div>
-            <div class="flex items-center gap-2">
-              <button type="button" onclick="window.clearAllFilters()" class="text-[14px] text-[#f4f4f4] hover:text-white px-2 py-1 rounded hover:bg-black transition cursor-pointer">Reset Filters</button>
-              <button type="button" onclick="window.toggleFilterDrawer(false)" class="text-[14px] text-[#f4f4f4] hover:text-white p-1 rounded hover:bg-black transition cursor-pointer" title="Close filter drawer">Close</button>
-            </div>
-          </div>
-          <div class="filter-place">
-            <div class="text-[14px] font-mono text-[#f4f4f4] flex items-center gap-2"><span class="text-[#f4f4f4] font-medium">Place</span></div>
-            <div class="filter-place-row">
-              <div class="atlas-combo" data-placeholder="Country">
-                <select id="countrySelect" hidden tabindex="-1">
-                  <option value="all">All countries</option>
-                </select>
-              </div>
-              <div class="atlas-combo" data-placeholder="City">
-                <select id="citySelect" hidden tabindex="-1">
-                  <option value="all">All cities</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div id="globeCityBar" class="w-full flex flex-col gap-3.5 select-none py-1">
-            <!-- Funding & Governance Tiers -->
-            <div class="space-y-1.5">
-              <div class="text-[14px] font-mono text-[#f4f4f4] tracking-wider flex items-center gap-2">
-
-                <span class="text-[#f4f4f4]">Tiers and layers</span>
-              </div>
-              <div class="flex flex-wrap items-center gap-1.5">
-                <button class="globe-filter-pill is-active px-3 py-1.5 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[14px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean, source cited</button>
-                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged</button>
-                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All records</button>
-                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer</button>
-                <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span>Gossip &amp; Whispers</span></button>
-                <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><span>Visual Critique &amp; Artist Feedback</span></button>
-                <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="contribute_intel" id="globeContributeIntelBtn"><span class="hidden" style="display:none;" aria-hidden="true">Contribute Intel</span><span>Share information</span></button>
-              </div>
-            </div>
-            <!-- Research & Transparency Audits -->
-            <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-              <div class="text-[14px] font-mono text-[#f4f4f4] tracking-wider flex items-center gap-2">
-
-                <span class="text-[#f4f4f4] font-medium">Records</span>
-              </div>
-              <div class="flex flex-wrap items-center gap-1.5">
-                <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- 2. PINNED BOTTOM INPUT DOCK (Stitch Prompt Card) -->
         <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-4 pb-4 pt-2 bg-black">
           <div class="w-full max-w-2xl flex flex-col items-center gap-2.5">
@@ -2569,7 +2409,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
               <input type="file" id="whistleblowerFileInput" />
               <button id="inputModeCancelBtn"></button>
               <div id="workInputModeBadge"></div>
-              <button id="filterViewToggleBtn"></button>
               <button id="fullWidthInputModeBtn"></button>
               <div id="workSubActionBar"></div>
               <span id="activeFilterBadge"></span>
@@ -2610,12 +2449,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
   <!-- ========================================================= -->
   <div class="z-40 bg-black/95 border-t border-slate-800/80 px-3 py-2 flex md:hidden flex-col gap-1.5  shrink-0" data-purpose="ai-chat-input-bar" id="mobileStickyInputBar">
     <div class="relative flex items-center">
-      <!-- Plus Button -->
-      <button id="mobileStickyPlusBtn" type="button" class="w-8 h-8 rounded-full bg-black/90 hover:bg-black text-[#f4f4f4] flex items-center justify-center text-sm font-bold border border-slate-700 mr-2 shrink-0 cursor-pointer" onclick="if (typeof window.toggleFilterDrawer === 'function') window.toggleFilterDrawer(true);" title="Filters &amp; Options">
-        <svg class="w-4 h-4 shrink-0" viewBox="0 0 32 32" fill="currentColor">
-          <path d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z"/>
-        </svg>
-      </button>
       <!-- Input Field -->
       <input class="w-full bg-black/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 pr-16" id="chat-input" placeholder="Ask about a museum or cultural space..." type="text">
       <!-- Send Pill Button -->
@@ -2647,10 +2480,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
     <button class="flex flex-col items-center space-y-1 text-[#f4f4f4] hover:text-[#f4f4f4] focus:outline-none relative cursor-pointer" id="tab-chat" type="button">
 
       <span class="text-[14px] font-medium tracking-tight">Curator</span>
-    </button>
-    <!-- Nav Item: Layers / Filters -->
-    <button class="flex flex-col items-center space-y-1 text-[#f4f4f4] hover:text-[#f4f4f4] focus:outline-none cursor-pointer" id="tab-filters" type="button">
-      <span class="text-[14px] font-medium tracking-tight">Filters</span>
     </button>
   </nav>
 
@@ -9163,7 +8992,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
       // Building view: the city map on this place, then its outline from the map data with the record's contents inside.
       document.getElementById('floatingCard')?.classList.add('hidden');
       document.querySelectorAll('.maplibregl-popup').forEach(p => p.remove());
-      if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(false);
       document.getElementById('detailDrawer')?.classList.add('hidden');
       if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') setMobileViewMode('map');
       if (inst.city) {
@@ -9758,7 +9586,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
         deselectInstitution();
       }
       applyFilters();
-      renderGlobeBarDefault();
       isAutoSpinning = true;
       if (typeof render === 'function') {
         scheduleRender();
@@ -13025,45 +12852,11 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
     }
     window.toggleDesktopDossier = toggleDesktopDossier;
 
-    function setMainViewTab(tab) {
-      const tabs = ['atlas', 'filters'];
-      const tabEls = {
-        atlas: document.getElementById('navTabAtlas'),
-        filters: document.getElementById('navTabFilters')
-      };
-      tabs.forEach(t => {
-        const el = tabEls[t];
-        if (!el) return;
-        el.className = 'whitespace-nowrap';
-        el.setAttribute('aria-pressed', t === tab ? 'true' : 'false');
-      });
 
-      if (tab === 'atlas') {
-        if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(false);
-        document.getElementById('detailDrawer')?.classList.add('hidden');
-      } else if (tab === 'filters') {
-        if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(true);
-      }
-    }
-    window.setMainViewTab = setMainViewTab;
-    // Keep the header tab in step with whichever full-page view is open, however it was opened or closed.
+    // The record page covers the whole page, chat column included, so it sits on the body.
     (function () {
-      const sync = () => {
-        const dr = document.getElementById('filterDrawerPanel');
-        const tab = dr && !dr.classList.contains('hidden') ? 'filters' : 'atlas';
-        const ids = { atlas: 'navTabAtlas', filters: 'navTabFilters' };
-        Object.keys(ids).forEach(t => {
-          const el = document.getElementById(ids[t]);
-          if (el) { el.className = 'whitespace-nowrap'; el.setAttribute('aria-pressed', t === tab ? 'true' : 'false'); }
-        });
-      };
-      // Lift the filters panel out of the map column so it covers the whole page, chat column included.
-      const fd = document.getElementById('filterDrawerPanel');
-      if (fd && fd.parentElement !== document.body) document.body.appendChild(fd);
       const dd = document.getElementById('detailDrawer');
       if (dd && dd.parentElement !== document.body) document.body.appendChild(dd);
-      const filtersEl = document.getElementById('filterDrawerPanel');
-      if (filtersEl) new MutationObserver(sync).observe(filtersEl, { attributes: true, attributeFilter: ['class'] });
     })();
 
     // Links to the sources recorded for a space. Recording a source is not verifying it, and the page says so.
@@ -13653,10 +13446,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
 
     function openDossier(inst, shouldShowDrawer = true) {
       if (!inst) return;
-      //  MUTUAL EXCLUSIVITY: Automatically collapse/close filter drawer!
-      if (typeof toggleFilterDrawer === 'function') {
-        toggleFilterDrawer(false);
-      }
       const drawer = document.getElementById('detailDrawer');
       const body = document.getElementById('detailBody');
       if (shouldShowDrawer && drawer) {
@@ -16665,7 +16454,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const chevronIcon = document.getElementById('mobileSheetChevronIcon');
       const anchoredBar = document.getElementById('mobileAnchoredSearchBar');
       const inputRow = document.getElementById('mobileSheetInputRow');
-      const cityBar = document.getElementById('globeCityBar');
 
       if (snap === 'hidden' || snap === 'map') {
         setMobileViewMode('map');
@@ -16709,7 +16497,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const tabAtlas = document.getElementById('tab-atlas');
       const tabDossier = document.getElementById('tab-dossier');
       const tabChat = document.getElementById('tab-chat');
-      const tabFilters = document.getElementById('tab-filters');
       const gossipBtn = document.getElementById('gossip-mode-btn');
       const chatInput = document.getElementById('chat-input');
       const sendBtn = document.getElementById('mobileStickySendBtn');
@@ -16720,7 +16507,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const stickyDock = document.getElementById('mobileStickyInputBar');
 
       function setActiveMobileTab(activeEl) {
-        [tabAtlas, tabDossier, tabChat, tabFilters].forEach(el => {
+        [tabAtlas, tabDossier, tabChat].forEach(el => {
           if (!el) return;
           el.classList.remove('text-[#f4f4f4]');
           el.classList.add('text-[#f4f4f4]');
@@ -16734,7 +16521,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (name === 'atlas') tabAtlas?.click();
         else if (name === 'dossier') tabDossier?.click();
         else if (name === 'chat') tabChat?.click();
-        else if (name === 'filters') tabFilters?.click();
       };
 
       closeSheetBtn?.addEventListener('click', () => {
@@ -16773,11 +16559,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Listen button inside mobile drawer header
       document.getElementById('curatorDrawerListenBtn')?.addEventListener('click', () => {
         if (typeof toggleCuratorVoice === 'function') toggleCuratorVoice();
-      });
-
-      tabFilters?.addEventListener('click', () => {
-        setActiveMobileTab(tabFilters);
-        if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer(true);
       });
 
       // Card Mode Tabs
@@ -16823,11 +16604,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Voice Toggle
       document.getElementById('mobileStickyVoiceBtn')?.addEventListener('click', () => {
         if (typeof toggleCuratorVoice === 'function') toggleCuratorVoice();
-      });
-
-      // Plus Menu
-      document.getElementById('mobileStickyPlusBtn')?.addEventListener('click', () => {
-        if (typeof toggleFilterDrawer === 'function') toggleFilterDrawer();
       });
 
       // Suggested Inquiry Chips inside Drawer
@@ -16893,7 +16669,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const mapBtn = document.getElementById('mobileModeMapBtn');
       const splitBtn = document.getElementById('mobileModeSplitBtn');
       const chatBtn = document.getElementById('mobileModeChatBtn');
-      const cityBar = document.getElementById('globeCityBar');
       const anchoredBar = document.getElementById('mobileAnchoredSearchBar');
       const summaryStrip = document.getElementById('mobileSheetSummaryStrip');
       const inputRow = document.getElementById('mobileSheetInputRow');
@@ -16948,10 +16723,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (splitter) {
           splitter.style.display = 'none';
         }
-        if (cityBar) {
-          cityBar.classList.remove('max-h-[58px]');
-          cityBar.classList.add('max-h-[140px]');
-        }
         if (anchoredBar) {
           anchoredBar.style.display = 'none';
         }
@@ -16977,10 +16748,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
         if (splitter) {
           splitter.style.display = 'flex';
-        }
-        if (cityBar) {
-          cityBar.classList.remove('max-h-[140px]');
-          cityBar.classList.add('max-h-[58px]');
         }
         if (anchoredBar) {
           anchoredBar.style.display = 'none';
@@ -17123,7 +16890,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const globe = document.getElementById('globeViewport');
         const workView = document.getElementById('workViewContainer');
         const splitter = document.getElementById('globeSplitter');
-        const cityBar = document.getElementById('globeCityBar');
         if (globe) {
           globe.style.display = '';
           globe.style.height = '';
@@ -17136,9 +16902,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
         if (splitter) {
           splitter.style.display = '';
-        }
-        if (cityBar) {
-          cityBar.classList.remove('max-h-[140px]', 'max-h-[58px]');
         }
         resizeCanvas();
         if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
@@ -17743,19 +17506,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('arOpenContribModalBtn')?.addEventListener('click', () => {
       closeAcademicResearchModal();
       openResearchFeedbackModal();
-    });
-
-    document.getElementById('govModalFilterCleanBtn')?.addEventListener('click', () => {
-      closeGovernanceMethodologyModal();
-      selectedTierFilter = new Set(['A']);
-      applyFilters();
-      updateGlobePillsUI();
-    });
-    document.getElementById('govModalFilterFlaggedBtn')?.addEventListener('click', () => {
-      closeGovernanceMethodologyModal();
-      selectedTierFilter = new Set(['B']);
-      applyFilters();
-      updateGlobePillsUI();
     });
 
     //  Institutional Finance & Fiscal Operating Analytics Modal Handlers
@@ -18790,93 +18540,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Initialize UI Status on startup
     updateAIStatusUI();
 
-    // =========================================================
-    //  CATALOG LIST & FILTERING ENGINE
-    // =========================================================
-    const countrySelect = document.getElementById('countrySelect');
-    const citySelect = document.getElementById('citySelect');
-
-    function populateDropdowns() {
-      if (countrySelect) {
-        const countries = [...new Set(ALL_INSTITUTIONS.map(i => i.country).filter(Boolean))].sort();
-        countrySelect.innerHTML = `<option value="all">All countries (${countries.length})</option>` + 
-          countries.map(c => `<option value="${c}">${c}</option>`).join('');
-      }
-
-      if (citySelect) {
-        const cities = [...new Set(ALL_INSTITUTIONS.map(i => i.city).filter(Boolean))].sort();
-        citySelect.innerHTML = `<option value="all">All cities (${cities.length})</option>` + 
-          cities.map(c => `<option value="${c}">${c}</option>`).join('');
-      }
-    }
-    populateDropdowns();
-
-    // Country and city are typed searches over the same lists the hidden selects hold. The select stays the state: choosing an
-    // option sets it and fires change, so the filter handlers below run unchanged. Accents are ignored, so "cote" finds Côte d'Ivoire.
-    function foldText(v) { return String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
-    window.FILTER_COMBOS = window.FILTER_COMBOS || [];
-    function syncFilterCombos() { (window.FILTER_COMBOS || []).forEach(c => c.sync()); }
-    function setupFilterCombo(select) {
-      if (!select || select.dataset.comboReady) return;
-      select.dataset.comboReady = '1';
-      const wrap = select.closest('.atlas-combo') || select.parentElement;
-      const label = wrap.dataset.placeholder || 'Type to search';
-      const listId = select.id + 'List';
-      const field = document.createElement('div'); field.className = 'atlas-combo-field';
-      const input = document.createElement('input');
-      input.type = 'text'; input.placeholder = label; input.autocomplete = 'off'; input.spellcheck = false;
-      input.setAttribute('role', 'combobox'); input.setAttribute('aria-label', label); input.setAttribute('aria-autocomplete', 'list');
-      input.setAttribute('aria-haspopup', 'listbox'); input.setAttribute('aria-expanded', 'false'); input.setAttribute('aria-controls', listId);
-      const clear = document.createElement('button'); clear.type = 'button'; clear.className = 'atlas-combo-clear'; clear.textContent = 'Clear'; clear.hidden = true;
-      const list = document.createElement('ul'); list.id = listId; list.className = 'atlas-combo-list'; list.setAttribute('role', 'listbox'); list.hidden = true;
-      field.append(input, clear); wrap.append(field, list);
-      let items = [], active = -1, open = false;
-      const options = () => Array.from(select.options).map(o => ({ value: o.value, text: o.textContent }));
-      const setActive = (i) => {
-        active = i;
-        Array.from(list.children).forEach((li, k) => li.classList.toggle('is-active', k === i));
-        const li = i >= 0 ? list.children[i] : null;
-        input.setAttribute('aria-activedescendant', li ? li.id : '');
-        if (li && typeof li.scrollIntoView === 'function') li.scrollIntoView({ block: 'nearest' });
-      };
-      const render = (q) => {
-        const f = foldText(q);
-        items = options().filter(o => o.value === 'all' ? !f : foldText(o.text).includes(f));
-        list.innerHTML = '';
-        if (!items.length) { const li = document.createElement('li'); li.className = 'is-empty'; li.textContent = 'No match'; list.append(li); active = -1; return; }
-        items.forEach((o, i) => {
-          const li = document.createElement('li');
-          li.id = `${listId}-${i}`; li.setAttribute('role', 'option'); li.setAttribute('aria-selected', String(o.value === select.value));
-          li.textContent = o.text;
-          li.addEventListener('mousedown', ev => ev.preventDefault());
-          li.addEventListener('click', () => choose(o.value));
-          list.append(li);
-        });
-        setActive(-1);
-      };
-      const sync = () => { const v = select.value; input.value = v && v !== 'all' ? v : ''; clear.hidden = !(v && v !== 'all'); };
-      const show = () => { if (open) return; open = true; render(input.value); list.hidden = false; input.setAttribute('aria-expanded', 'true'); };
-      const hide = () => { if (!open) return; open = false; list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.setAttribute('aria-activedescendant', ''); sync(); };
-      const choose = (value) => { select.value = value; select.dispatchEvent(new Event('change', { bubbles: true })); hide(); sync(); };
-      input.addEventListener('focus', show);
-      input.addEventListener('click', show);
-      input.addEventListener('input', () => { if (!open) show(); render(input.value); });
-      input.addEventListener('keydown', ev => {
-        if (ev.key === 'ArrowDown') { ev.preventDefault(); show(); setActive(Math.min(active + 1, items.length - 1)); }
-        else if (ev.key === 'ArrowUp') { ev.preventDefault(); setActive(Math.max(active - 1, 0)); }
-        else if (ev.key === 'Enter') { ev.preventDefault(); if (open && active >= 0 && items[active]) choose(items[active].value); else if (open && items.length === 1) choose(items[0].value); }
-        else if (ev.key === 'Escape') { ev.preventDefault(); hide(); input.blur(); }
-      });
-      input.addEventListener('blur', () => setTimeout(hide, 0));
-      clear.addEventListener('mousedown', ev => ev.preventDefault());
-      clear.addEventListener('click', () => { choose('all'); input.focus(); });
-      select.addEventListener('change', sync);
-      window.FILTER_COMBOS.push({ sync });
-      sync();
-    }
-    setupFilterCombo(countrySelect);
-    setupFilterCombo(citySelect);
-
     // Starter prompts for an empty chat. Every one is a question the offline answers can really answer from the records, and the
     // examples are picked from the records themselves, so nothing is promised that the data does not hold. With a space selected
     // the prompts are about that space.
@@ -18921,417 +18584,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     });
     renderStarterPrompts();
 
-    function toggleFilterDrawer(forceState) {
-      const drawer = document.getElementById('filterDrawerPanel');
-      const chevron = document.getElementById('filterChevronIcon');
-      const bottomDock = document.getElementById('workBottomDock');
-      const subActionBar = document.getElementById('workSubActionBar');
-      if (!drawer) return;
-      const willOpen = (typeof forceState === 'boolean') ? forceState : drawer.classList.contains('hidden');
-      if (willOpen) {
-        drawer.classList.remove('hidden');
-        if (chevron) chevron.classList.add('rotate-180');
-        if (bottomDock) bottomDock.classList.add('hidden');
-        if (subActionBar) subActionBar.classList.add('hidden');
-      } else {
-        drawer.classList.add('hidden');
-        if (chevron) chevron.classList.remove('rotate-180');
-        if (bottomDock) bottomDock.classList.remove('hidden');
-        if (subActionBar) subActionBar.classList.remove('hidden');
-      }
-    }
-    window.toggleFilterDrawer = toggleFilterDrawer;
-    window.openFilterDrawer = () => toggleFilterDrawer(true);
-    window.closeFilterDrawer = () => toggleFilterDrawer(false);
-
-    function updateGlobePillsUI() {
-      const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
-      const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
-      const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
-      const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
-      const isVisualCritiqueOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
-      const isAllTiers = !isCleanOnly && !isFlaggedOnly && !isAcademicOnly && !isCommunityOnly && !isVisualCritiqueOnly;
-
-      const vcSubBar = document.getElementById('visualCritiqueSubBar');
-      const vcThemes = {
-        all: { active: 'bg-amber-600 text-white border-amber-400 shadow-amber-950/40', inactive: 'bg-black hover:bg-black border-amber-500/80 text-amber-300' },
-        sponsor_exposure: { active: 'bg-rose-600 text-white border-rose-400 shadow-rose-950/40', inactive: 'bg-black hover:bg-black border-rose-500/70 text-rose-300' },
-        forensic_investigation: { active: 'bg-cyan-600 text-white border-cyan-400 shadow-cyan-950/40', inactive: 'bg-black hover:bg-black border-cyan-500/70 text-[#f4f4f4]' },
-        pharma_fossil_denaming: { active: 'bg-purple-600 text-white border-purple-400 shadow-purple-950/40', inactive: 'bg-black hover:bg-black border-purple-500/70 text-purple-300' },
-        feminist_counter_survey: { active: 'bg-fuchsia-600 text-white border-fuchsia-400 shadow-fuchsia-950/40', inactive: 'bg-black hover:bg-black border-fuchsia-500/70 text-fuchsia-300' },
-        direct_polling: { active: 'bg-sky-600 text-white border-sky-400 shadow-sky-950/40', inactive: 'bg-black hover:bg-black border-sky-500/70 text-[#f4f4f4]' },
-        board_boycott: { active: 'bg-red-600 text-white border-red-400 shadow-red-950/40', inactive: 'bg-black hover:bg-black border-red-500/70 text-red-300' },
-        curatorial_subversion: { active: 'bg-teal-600 text-white border-teal-400 shadow-teal-950/40', inactive: 'bg-black hover:bg-black border-teal-500/70 text-teal-300' },
-        parodic_museums: { active: 'bg-orange-600 text-white border-orange-400 shadow-orange-950/40', inactive: 'bg-black hover:bg-black border-orange-500/70 text-orange-300' },
-        ideological_distribution: { active: 'bg-indigo-600 text-white border-indigo-400 shadow-indigo-950/40', inactive: 'bg-black hover:bg-black border-indigo-500/70 text-[#f4f4f4]' },
-        physical_intervention: { active: 'bg-emerald-600 text-white border-emerald-400 shadow-emerald-950/40', inactive: 'bg-black hover:bg-black border-emerald-500/70 text-emerald-300' },
-        environmental_satire: { active: 'bg-lime-600 text-white border-lime-400 shadow-lime-950/40', inactive: 'bg-black hover:bg-black border-lime-500/70 text-lime-300' }
-      };
-
-      if (vcSubBar) {
-        if (isVisualCritiqueOnly) {
-          vcSubBar.classList.remove('hidden');
-          document.querySelectorAll('.vc-strat-pill').forEach(sp => {
-            const strat = sp.getAttribute('data-strategy') || 'all';
-            const theme = vcThemes[strat] || vcThemes.all;
-            const isAct = (strat === selectedVisualCritiqueStrategy);
-            sp.className = isAct
-              ? 'vc-strat-pill is-active px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] text-[14px] sm:text-[14px] font-medium transition cursor-pointer shadow-sm shadow-emerald-950/40'
-              : 'vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] sm:text-[14px] font-normal transition cursor-pointer shadow-sm';
-          });
-        } else {
-          vcSubBar.classList.add('hidden');
-        }
-      }
-
-      document.querySelectorAll('.globe-filter-pill').forEach(pill => {
-        const type = pill.getAttribute('data-type');
-        const val = pill.getAttribute('data-value') || '';
-
-        // Ghost pill design: subtle dark slate background with thin border, turning teal/emerald only on hover or active state
-        const ghostInactive = 'globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-normal shadow-sm';
-        const ghostActiveTeal = 'globe-filter-pill is-active px-3 py-1.5 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium shadow-sm shadow-emerald-950/40';
-
-        if (type === 'tier') {
-          if (val === 'A') {
-            pill.className = isCleanOnly ? ghostActiveTeal : ghostInactive;
-          } else if (val === 'B') {
-            pill.className = isFlaggedOnly ? ghostActiveTeal : ghostInactive;
-          } else if (val === 'COMMUNITY') {
-            pill.className = isCommunityOnly
-              ? 'globe-filter-pill is-active px-3 py-1.5 rounded-xl bg-[#059669] text-white border border-[#33b1ff] transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium shadow-sm shadow-emerald-950/40'
-              : ghostInactive;
-          } else if (val === 'VISUAL_CRITIQUE') {
-            if (isVisualCritiqueOnly) {
-              pill.className = 'globe-filter-pill is-active flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium shadow-sm shadow-emerald-950/40';
-            } else {
-              pill.className = 'globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-normal shadow-sm';
-            }
-          } else if (val === 'all') {
-            pill.className = isAllTiers ? ghostActiveTeal : ghostInactive;
-          }
-          return;
-        }
-
-        if (type === 'gossip_mode') {
-          if (isGossipModeActive) {
-            pill.className = 'globe-filter-pill is-active flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-yellow-500 text-black border border-yellow-200 font-bold transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 shadow-sm shadow-yellow-950/40 animate-pulse';
-            pill.innerHTML = '<span>Gossip &amp; Whispers: ACTIVE</span>';
-          } else {
-            pill.className = 'globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-normal shadow-sm';
-            pill.innerHTML = '<span>Gossip &amp; Whispers</span>';
-          }
-          return;
-        }
-
-        if (type === 'academic') {
-          pill.className = isAcademicOnly ? ghostActiveTeal : ghostInactive;
-          return;
-        }
-
-        if (type === 'archives' || type === 'fiscal_analytics') {
-          pill.className = ghostInactive;
-          return;
-        }
-
-        if (type === 'contribute_intel') {
-          pill.className = 'globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-normal shadow-sm';
-          return;
-        }
-
-        if (type === 'curatorial_itineraries' || type === 'board_conflicts' || type === 'divestment_timeline' || type === 'statutory_filings') {
-          pill.className = 'globe-filter-pill flex items-center gap-1 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-normal shadow-sm';
-          return;
-        }
-
-        let isAct = false;
-        if (type === 'all' && selectedCityFilter === 'all' && selectedCountryFilter === 'all' && isCleanOnly) isAct = true;
-        else if (type === 'city' && selectedCityFilter.toLowerCase() === val.toLowerCase()) isAct = true;
-        else if (type === 'country' && selectedCountryFilter.toLowerCase() === val.toLowerCase()) isAct = true;
-        else if (type === 'category' && selectedCategoryFilter === val) isAct = true;
-        else if (type === 'region') isAct = false;
-
-        pill.className = isAct ? ghostActiveTeal : ghostInactive;
-      });
-      // Synchronize Quick Filter Indicator & Active Badge in Sub-Action Bar
-      const quickLabel = document.getElementById('quickFilterLabel');
-      const activeBadge = document.getElementById('activeFilterBadge');
-      if (quickLabel) {
-        if (isCleanOnly) {
-          quickLabel.textContent = `Clean, source cited (${filteredList.length})`;
-          if (activeBadge) activeBadge.classList.add('hidden');
-        } else if (isFlaggedOnly) {
-          quickLabel.textContent = `Flagged (${filteredList.length})`;
-          if (activeBadge) { activeBadge.textContent = 'Flagged'; activeBadge.classList.remove('hidden'); }
-        } else if (isVisualCritiqueOnly) {
-          quickLabel.textContent = `Visual Critique (${filteredList.length})`;
-          if (activeBadge) { activeBadge.textContent = 'Critique'; activeBadge.classList.remove('hidden'); }
-        } else if (isAcademicOnly) {
-          quickLabel.textContent = `Academic Studies (${filteredList.length})`;
-          if (activeBadge) { activeBadge.textContent = 'Studies'; activeBadge.classList.remove('hidden'); }
-        } else if (isCommunityOnly) {
-          quickLabel.textContent = `Community Layer (${filteredList.length})`;
-          if (activeBadge) { activeBadge.textContent = 'User Lead'; activeBadge.classList.remove('hidden'); }
-        } else if (selectedCategoryFilter !== 'all') {
-          const meta = FILTER_META[selectedCategoryFilter] || { label: selectedCategoryFilter.replace(/_/g, ' ') };
-          quickLabel.textContent = `${meta.label} (${filteredList.length})`;
-          if (activeBadge) { activeBadge.textContent = '1'; activeBadge.classList.remove('hidden'); }
-        } else if (selectedCityFilter !== 'all') {
-          quickLabel.textContent = `${selectedCityFilter} (${filteredList.length})`;
-          if (activeBadge) { activeBadge.textContent = 'City'; activeBadge.classList.remove('hidden'); }
-        } else if (selectedCountryFilter !== 'all') {
-          quickLabel.textContent = `${selectedCountryFilter} (${filteredList.length})`;
-          if (activeBadge) { activeBadge.textContent = 'Country'; activeBadge.classList.remove('hidden'); }
-        } else {
-          quickLabel.textContent = `All Findings (${filteredList.length})`;
-          if (activeBadge) activeBadge.classList.add('hidden');
-        }
-      }
-    }
-
-    function updateGlobeBarForCountry(countryName) {
-      const bar = document.getElementById('globeCityBar');
-      if (!bar) return;
-      const countryCities = ALL_CITIES_REGISTRY.filter(ci => matchC(ci.country, countryName));
-      if (countryCities.length === 0) return;
-
-      const totalSpaces = countryCities.reduce((acc, c) => acc + c.count, 0);
-
-      let html = `
-        <div class="flex flex-wrap items-center gap-1.5">
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-xl bg-black hover:bg-black border border-[#3b82f6]/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium" data-type="all">All Spaces</button>
-          <span class="text-[#f4f4f4] text-[14px] shrink-0">|</span>
-          <button class="globe-filter-pill is-active px-2.5 py-[2px] rounded-xl bg-black border border-[#f4f4f4] text-white border border-[#60a5fa] transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium shadow-sm" data-type="country" data-value="${escapeHtml(countryName)}">${escapeHtml(countryName)} (${totalSpaces})</button>
-          <span class="text-[#f4f4f4] text-[14px] shrink-0">|</span>
-          <button class="globe-filter-pill is-active px-2.5 py-[2px] rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium" data-type="tier" data-value="A">Clean</button>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-xl bg-black hover:bg-black border border-[#8a3ffc] text-[#be95ff] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium" data-type="tier" data-value="B">Flagged</button>
-          <span class="text-[#f4f4f4] text-[14px] shrink-0">|</span>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-xl bg-black/90 hover:bg-black border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium" data-type="category" data-value="free">Free Entry</button>
-          <button class="globe-filter-pill px-2.5 py-[2px] rounded-xl bg-black/90 hover:bg-black border border-[#1b4332] text-[#4ade80] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0 font-medium" data-type="category" data-value="artist_run">Artist-Run</button>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-1.5">
-          <span class="text-[14px] text-[#f4f4f4] font-mono shrink-0 mr-0.5 tracking-wider font-semibold">Fiscal Models:</span>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-1.5">
-          <span class="text-[14px] text-[#f4f4f4] font-mono shrink-0 mr-0.5 tracking-wider">Cities:</span>
-      `;
-
-      countryCities.forEach(city => {
-        html += `<button class="globe-filter-pill px-2.5 py-[2px] rounded-xl bg-black/90 hover:bg-black border border-[#2e2e2e] text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] sm:text-[14px] shrink-0" data-type="city" data-value="${escapeHtml(city.name)}">${escapeHtml(city.name)} <span class="text-[#f4f4f4] font-mono text-[14px]">(${city.count})</span></button>`;
-      });
-
-      html += `</div>`;
-
-      bar.innerHTML = html;
-      wireGlobePillListeners();
-      updateGlobePillsUI();
-    }
-
-    function renderGlobeBarDefault() {
-      const bar = document.getElementById('globeCityBar');
-      if (!bar) return;
-
-      const featuredCities = ['London', 'New York', 'Paris', 'Berlin', 'Amsterdam', 'Tokyo', 'Madrid', 'Basel', 'Bilbao'];
-      const featuredCountries = ['United Kingdom', 'United States', 'Germany', 'France', 'Netherlands', 'Spain', 'Switzerland', 'Italy', 'Japan'];
-
-      let html = `
-        <!-- Section 1: Funding & Governance Tiers -->
-        <div class="space-y-1.5">
-          <div class="text-[14px] font-mono text-[#f4f4f4] tracking-wider flex items-center gap-2">
-
-            <span class="text-[#f4f4f4] font-medium">Funding &amp; Governance Tiers</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-1.5">
-            <button class="globe-filter-pill is-active px-3 py-1.5 rounded-xl bg-[#059669] text-white border border-[#10b981] transition cursor-pointer text-[14px] shrink-0 font-medium shadow-sm shadow-emerald-950/40" data-type="tier" data-value="A">Clean, source cited</button>
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="B">Flagged</button>
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="all">All records</button>
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="COMMUNITY">Community Layer (User Input)</button>
-            <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="gossip_mode" id="globeGossipBtn" onclick="window.toggleGossipMode()"><span>Gossip &amp; Whispers</span></button>
-            <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="tier" data-value="VISUAL_CRITIQUE" id="globeVisualCritiqueBtn"><span>Visual Critique &amp; Artist Feedback</span></button>
-            <button class="globe-filter-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="contribute_intel" id="globeContributeIntelBtn"><span>Contribute Intel</span></button>
-          </div>
-        </div>
-
-        <!-- Visual Critique Sub-Bar (Soft Ghost Buttons) -->
-        <div id="visualCritiqueSubBar" class="hidden flex flex-wrap items-center gap-1.5 p-2.5 bg-black/95 border border-[#2e2e33] rounded-xl shadow-lg">
-          <span class="text-[14px] text-[#f4f4f4] font-mono shrink-0 mr-1 tracking-wider font-semibold flex items-center gap-1">
-            <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-            Critique Strategies:
-          </span>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-[#059669] text-white border border-[#10b981] text-[14px] font-medium transition cursor-pointer shadow-sm shadow-emerald-950/40" data-strategy="all">All</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="sponsor_exposure">Sponsor &amp; Debt Exposure</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="forensic_investigation">Algorithmic Forensics</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="pharma_fossil_denaming">Pharma &amp; Fossil De-Naming</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="feminist_counter_survey">Feminist Counter-Surveys</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="direct_polling">Direct Polling &amp; Data</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="board_boycott">Grassroots Agitation &amp; Boycotts</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="curatorial_subversion">Curatorial Subversion</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="parodic_museums">Parodic Museums</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="ideological_distribution">Ideological Circuits</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="physical_intervention">Physical Intervention</button>
-          <button class="vc-strat-pill px-2.5 py-1 rounded-xl bg-black/80 hover:bg-black border border-[#2e2e33] hover:border-emerald-500/50 text-[#f4f4f4] hover:text-white text-[14px] font-normal transition cursor-pointer shadow-sm" data-strategy="environmental_satire">Environmental Satire</button>
-        </div>
-
-        <!-- Section 2: Research & Transparency Audits -->
-        <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-[#f4f4f4] tracking-wider flex items-center gap-2">
-
-            <span class="text-[#f4f4f4] font-medium">Records</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-1.5">
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="academic">Academic Studies</button>
-          </div>
-        </div>
-
-        <!-- Section 3: Geographic Regions & Access Models -->
-        <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-[#f4f4f4] tracking-wider flex items-center gap-2">
-
-            <span class="text-[#f4f4f4] font-medium">Regions &amp; Access</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-1.5">
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="region" data-value="europe">Europe</button>
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="region" data-value="americas">Americas</button>
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="region" data-value="asiapacific">Asia-Pacific</button>
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="region" data-value="mena_africa">MidEast & Africa</button>
-            <span class="text-[#334155] text-[14px]">|</span>
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="free">Free Entry</button>
-            <button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="category" data-value="artist_run">Artist-Run</button>
-          </div>
-        </div>
-
-        <!-- Section 4: Fiscal & Revenue Architecture Models -->
-        <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-[#f4f4f4] tracking-wider flex items-center gap-2">
-
-            <span class="text-[#f4f4f4] font-medium">Fiscal Architecture</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-1.5">
-          </div>
-        </div>
-
-        <!-- Section 5: Featured Cultural Cities -->
-        <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-[#f4f4f4] tracking-wider flex items-center gap-2">
-
-            <span class="text-[#f4f4f4] font-medium">Featured Cultural Cities</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-1.5">
-      `;
-
-      featuredCities.forEach(cityName => {
-        const cMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityName));
-        const count = cMeta ? ` (${cMeta.count})` : '';
-        html += `<button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="city" data-value="${cityName}">${cityName}${count}</button>`;
-      });
-
-      html += `
-          </div>
-        </div>
-
-        <!-- Section 6: Featured Countries -->
-        <div class="space-y-1.5 pt-2 border-t border-[#1e293b]">
-          <div class="text-[14px] font-mono text-[#f4f4f4] tracking-wider flex items-center gap-2">
-
-            <span class="text-[#f4f4f4] font-medium">Featured Countries</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-1.5">
-      `;
-
-      featuredCountries.forEach(countryName => {
-        html += `<button class="globe-filter-pill px-3 py-1.5 rounded-xl bg-black/80 hover:bg-black text-[#f4f4f4] hover:text-white border border-[#2e2e33] hover:border-emerald-500/50 transition cursor-pointer text-[14px] shrink-0 font-normal shadow-sm" data-type="country" data-value="${countryName}">${countryName}</button>`;
-      });
-
-      html += `
-          </div>
-        </div>
-      `;
-bar.innerHTML = html;
-      wireGlobePillListeners();
-      updateGlobePillsUI();
-    }
-
-    function wireGlobePillListeners() {
-      // Strategy sub-pills for visual critique
-      document.querySelectorAll('.vc-strat-pill').forEach(sp => {
-        sp.addEventListener('click', () => {
-          selectedVisualCritiqueStrategy = sp.getAttribute('data-strategy') || 'all';
-          applyFilters();
-          updateGlobePillsUI();
-        });
-      });
-
-      document.querySelectorAll('#globeCityBar .globe-filter-pill').forEach(pill => {
-        pill.addEventListener('click', () => {
-          const type = pill.getAttribute('data-type');
-          const val = pill.getAttribute('data-value') || '';
-          if (type === 'tier') {
-            if (val === 'A') {
-              selectedTierFilter = new Set(['A']);
-            } else if (val === 'B') {
-              selectedTierFilter = new Set(['B']);
-            } else if (val === 'COMMUNITY') {
-              selectedTierFilter = new Set(['COMMUNITY']);
-            } else if (val === 'VISUAL_CRITIQUE') {
-              selectedTierFilter = new Set(['VISUAL_CRITIQUE']);
-              selectedVisualCritiqueStrategy = 'all';
-            } else if (val === 'all') {
-              selectedTierFilter = new Set(['A', 'B', 'U', 'ACADEMIC']);
-            }
-            applyFilters();
-            updateGlobePillsUI();
-          } else if (type === 'fiscal_analytics') {
-            if (typeof openFiscalAnalyticsHUD === 'function') {
-              openFiscalAnalyticsHUD();
-            }
-          } else if (type === 'curatorial_itineraries') {
-            if (typeof openCuratorialItineraryModal === 'function') {
-              openCuratorialItineraryModal();
-            }
-          } else if (type === 'board_conflicts') {
-            if (typeof openTrusteeConflictNetworkModal === 'function') {
-              openTrusteeConflictNetworkModal();
-            }
-          } else if (type === 'divestment_timeline') {
-            if (typeof openResistanceTimelineModal === 'function') {
-              openResistanceTimelineModal();
-            }
-          } else if (type === 'statutory_filings') {
-            if (typeof openStatutoryFilingsModal === 'function') {
-              openStatutoryFilingsModal();
-            }
-          } else if (type === 'contribute_intel') {
-            if (typeof triggerInChatContributeFlow === 'function') {
-              triggerInChatContributeFlow();
-            }
-          } else if (type === 'academic') {
-            if (typeof openAcademicResearchModal === 'function') openAcademicResearchModal('all');
-          } else if (type === 'all') {
-            clearAllFilters();
-          } else if (type === 'city') {
-            filterByCity(val, true, true);
-          } else if (type === 'country') {
-            filterByCountry(val, true);
-          } else if (type === 'category') {
-            setCategoryFilter(val, true);
-          } else if (type === 'region') {
-            if (val === 'europe') {
-              flyTo(10.0, 50.0, 2.3);
-            } else if (val === 'americas') {
-              flyTo(-85.0, 25.0, 2.0);
-            } else if (val === 'asiapacific') {
-              flyTo(120.0, 25.0, 2.0);
-            } else if (val === 'mena_africa') {
-              flyTo(25.0, 15.0, 2.0);
-            }
-          }
-        });
-      });
-    }
-    wireGlobePillListeners();
-
     let selectedCategoryFilter = 'all';
 
     const FILTER_META = {
@@ -19364,7 +18616,6 @@ bar.innerHTML = html;
     };
 
     function applyFilters() {
-      if (typeof syncFilterCombos === 'function') syncFilterCombos();
       const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
       const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
       const isVisualCritiqueOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
@@ -19556,7 +18807,6 @@ bar.innerHTML = html;
         }
       }
 
-      updateGlobePillsUI();
     }
 
     let lastSelectedCountry = null;
@@ -19592,7 +18842,6 @@ bar.innerHTML = html;
 
       const cityMatches = ALL_INSTITUTIONS.filter(i => matchC(i.city, cityName));
 
-      updateGlobePillsUI();
 
       // Notify Curator if triggered from canvas / UI
       if (notifyCurator && cityMatches.length > 0) {
@@ -19623,8 +18872,6 @@ bar.innerHTML = html;
         flyTo(c.lon, c.lat);
       }
 
-      updateGlobeBarForCountry(countryName);
-      updateGlobePillsUI();
 
       // Notify the Curator to give an educational briefing on this country
       const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, countryName));
@@ -19646,37 +18893,12 @@ bar.innerHTML = html;
       document.querySelectorAll('.tier-chip').forEach(btn => {
         btn.classList.add('bg-black', 'bg-black', 'bg-black');
       });
-      if (countrySelect) countrySelect.value = 'all';
-      if (citySelect) citySelect.value = 'all';
       targetRadius = baseRadius;
       isAutoSpinning = true;
-      renderGlobeBarDefault();
       applyFilters();
     }
 
     // Filter event listeners safely wired
-    countrySelect?.addEventListener('change', e => {
-      selectedCountryFilter = e.target.value;
-      selectedCityFilter = 'all';
-      if (citySelect) citySelect.value = 'all';
-      applyFilters();
-      if (selectedCountryFilter !== 'all') {
-        filterByCountry(selectedCountryFilter);
-        if (typeof setMainViewTab === 'function') setMainViewTab('atlas');   // the filters page covers the map; show the result
-      }
-    });
-
-    citySelect?.addEventListener('change', e => {
-      selectedCityFilter = e.target.value;
-      selectedCountryFilter = 'all';
-      if (countrySelect) countrySelect.value = 'all';
-      applyFilters();
-      if (selectedCityFilter !== 'all') {
-        filterByCity(selectedCityFilter, true, true);
-        if (typeof setMainViewTab === 'function') setMainViewTab('atlas');
-      }
-    });
-
     document.getElementById('clearFilterBtn')?.addEventListener('click', clearAllFilters);
 
     document.querySelectorAll('.tier-chip').forEach(btn => {
@@ -20126,7 +19348,6 @@ bar.innerHTML = html;
           if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
             selectedCountryFilter = 'all';
             applyFilters();
-            renderGlobeBarDefault();
           }
         }
       } else if (e.key === 'ArrowLeft') {
@@ -20317,7 +19538,6 @@ bar.innerHTML = html;
       if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
         selectedCountryFilter = 'all';
         applyFilters();
-        renderGlobeBarDefault();
       }
     }, { passive: false });
 
@@ -20381,7 +19601,6 @@ bar.innerHTML = html;
         if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
           selectedCountryFilter = 'all';
           applyFilters();
-          renderGlobeBarDefault();
         }
       }
     });
@@ -20436,10 +19655,6 @@ bar.innerHTML = html;
       }
       isAutoSpinning = true;
 
-      // 5. Restore default status bar and trigger frame re-render
-      if (typeof renderGlobeBarDefault === 'function') {
-        renderGlobeBarDefault();
-      }
       if (typeof render === 'function') {
         scheduleRender();
       }
@@ -20605,10 +19820,6 @@ bar.innerHTML = html;
 
       if (targetMode === 'whistleblower' || params.get('whistleblower') === '1' || params.get('intake') === '1') {
         enterChatInputMode('whistleblower');
-      }
-
-      if (params.get('filters') === '1' || params.get('drawer') === '1') {
-        toggleFilterDrawer(true);
       }
 
       if (targetInst) {
