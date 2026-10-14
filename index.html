@@ -6523,6 +6523,28 @@ return maplibregl$1;
           paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
         },
         {
+          id: 'building-3d-city-context',
+          type: 'fill-extrusion',
+          source: 'openmaptiles',
+          'source-layer': 'building',
+          minzoom: 14,
+          paint: {
+            'fill-extrusion-color': '#000000',
+            'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 8]],
+            'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]],
+            'fill-extrusion-opacity': 1,
+            'fill-extrusion-vertical-gradient': false
+          }
+        },
+        {
+          id: 'building_line',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'building',
+          minzoom: 13,
+          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.9 }
+        },
+        {
           id: 'road_minor',
           type: 'line',
           source: 'openmaptiles',
@@ -6613,7 +6635,7 @@ return maplibregl$1;
           style: CITY_MAP_DARK_STYLE,
           center: [0, 20],
           zoom: 14,
-          pitch: 0,
+          pitch: 35,
           bearing: 0,
           attributionControl: { compact: true }
         });
@@ -7271,8 +7293,8 @@ return maplibregl$1;
       const empty = () => ({ type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
       if (!cityVectorMap.getSource('xray-shell')) cityVectorMap.addSource('xray-shell', empty());
       if (!cityVectorMap.getSource('xray-slabs')) cityVectorMap.addSource('xray-slabs', empty());
-      if (!cityVectorMap.getLayer('xray-slabs')) cityVectorMap.addLayer({ id: 'xray-slabs', type: 'fill-extrusion', source: 'xray-slabs', paint: { 'fill-extrusion-color': ['get', 'color'], 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.92 } });
-      if (!cityVectorMap.getLayer('xray-shell')) cityVectorMap.addLayer({ id: 'xray-shell', type: 'fill-extrusion', source: 'xray-shell', paint: { 'fill-extrusion-color': '#08bdba', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.22 } });
+      if (!cityVectorMap.getLayer('xray-slabs')) cityVectorMap.addLayer({ id: 'xray-slabs', type: 'fill-extrusion', source: 'xray-slabs', paint: { 'fill-extrusion-color': '#f4f4f4', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.9 } });
+      if (!cityVectorMap.getLayer('xray-shell')) cityVectorMap.addLayer({ id: 'xray-shell', type: 'fill-extrusion', source: 'xray-shell', paint: { 'fill-extrusion-color': '#000000', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.8 } });
       if (!cityVectorMap.getLayer('xray-outline')) cityVectorMap.addLayer({ id: 'xray-outline', type: 'line', source: 'xray-shell', paint: { 'line-color': '#f4f4f4', 'line-width': 0.8 } });
       return true;
     }
@@ -7317,7 +7339,7 @@ return maplibregl$1;
       shell.setData({ type: 'FeatureCollection', features: [{ type: 'Feature', geometry: b.geometry, properties: { height: h, base: b.base } }] });
       const inner = xrayShrink(b.geometry, 0.7), span = h - b.base;
       slabs.setData({ type: 'FeatureCollection', features: cats.map((c, i) => ({ type: 'Feature', geometry: inner, properties: { color: XRAY_COLOURS[c.key], base: b.base + span * i / n, height: b.base + span * i / n + span / n * 0.5 } })) });
-      if (!XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) { cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 0.3); XRAY.dimmed = true; }
+      if (!XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) { cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 0.35); XRAY.dimmed = true; }
       const c = xrayCentroid(b.geometry);
       cats.forEach((cat, i) => {
         const el = document.createElement('button');
@@ -7335,7 +7357,7 @@ return maplibregl$1;
       if (inside) { inside.innerHTML = ''; inside.classList.add('hidden'); }
       if (!cityVectorMap || typeof cityVectorMap.getLayer !== 'function') { XRAY.dimmed = false; return; }
       try {
-        if (XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 0.72);
+        if (XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 1);
       } catch (e) { /* style not ready */ }
       XRAY.dimmed = false;
     }
