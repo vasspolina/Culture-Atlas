@@ -18,34 +18,15 @@ The look follows the It's a book fair site: a white page, a strip of tabs on hai
 
 ---
 
-## Quick Start
+## Run it locally
 
-### Option 1: Python HTTP Server (Zero Dependencies)
-
-Run the included server script:
+No build step and no dependencies. From the repository root:
 
 ```bash
-cd app
-python3 serve.py
-```
-
-Or using Python's built-in module:
-
-```bash
-cd app
 python3 -m http.server 8080
 ```
 
-Then open [http://localhost:8080](http://localhost:8080) in your browser.
-
----
-
-### Option 2: Node.js / npx
-
-```bash
-cd app
-npx serve . -p 8080
-```
+Then open [http://localhost:8080](http://localhost:8080).
 
 ---
 
@@ -119,11 +100,10 @@ Culture-Atlas/
 ├── index.html          # The whole app, edited in place. The only HTML copy.
 ├── sw.js               # Service worker (network-first for the page, same-origin cache only)
 ├── manifest.json       # PWA manifest
-├── assets/ fonts/      # Images and typefaces the page loads
+├── assets/ fonts/      # atlas.css, maplibre-gl.css, images and the typefaces the page loads
 ├── institutions.json   # Dataset
 ├── data/               # Research sources, papers, corrections and the inputs behind the dataset
 ├── tools/              # Data pipeline: clean_data, embed_data, the importers and verify_claims
-├── src/ app/ public/   # Older Vite/React sources and build output, not used by the page
 └── .github/workflows/  # Deploy to gh-pages on push to main
 ```
 
