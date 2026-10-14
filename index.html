@@ -11155,9 +11155,9 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
     let width = 800;
     let height = 600;
 
-    function getBaseRadius() {
+    function computeBaseRadius() {
       const minDim = Math.min(width, height);
-      return window.innerWidth < 768 ? Math.max(120, minDim * 0.38) : Math.max(160, minDim * 0.33);
+      return window.innerWidth < 768 ? Math.max(120, minDim * 0.46) : Math.max(160, minDim * 0.47);
     }
     let baseRadius = 200;
     let currentRadius = baseRadius;
@@ -11227,7 +11227,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
       // Logical layout display dimensions
       canvas.style.width = width + 'px';
       const oldBase = baseRadius;
-      baseRadius = getBaseRadius();
+      baseRadius = computeBaseRadius();
       if (!isFlying && (Math.abs(targetRadius - oldBase) < 2 || targetRadius === oldBase)) {
         targetRadius = baseRadius;
         currentRadius = baseRadius;
@@ -11628,29 +11628,12 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
       // =======================================================
 
         // 0. Clean Off-Black Universal Space Canvas (Starfield disabled per user request)
-        // 1. Crisp Globe Boundary (No atmospheric glow/halo)
+        // 1. The globe is a black disc with a single hairline limb: lines only, no fills, no shading.
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
-        ctx.strokeStyle = isGossipModeActive ? 'rgba(234, 179, 8, 0.25)' : 'rgba(59, 130, 246, 0.2)';
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-
-        // 2. 3D Spherical Ocean Lighting
-        const sphereGrad = ctx.createRadialGradient(cx - r * 0.32, cy - r * 0.32, r * 0.08, cx, cy, r);
-        if (isGossipModeActive) {
-          sphereGrad.addColorStop(0, '#221903');
-          sphereGrad.addColorStop(0.5, '#120d02');
-          sphereGrad.addColorStop(1, '#060401');
-        } else {
-          sphereGrad.addColorStop(0, '#061324');
-          sphereGrad.addColorStop(0.5, '#020611');
-          sphereGrad.addColorStop(1, '#010204');
-        }
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, Math.PI * 2);
-        ctx.fillStyle = sphereGrad;
+        ctx.fillStyle = '#000000';
         ctx.fill();
-        ctx.strokeStyle = isGossipModeActive ? '#854d0e' : '#223048';
+        ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
         ctx.lineWidth = 0.8;
         ctx.stroke();
 
@@ -11660,62 +11643,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.clip();
 
-        // 3. Graticule with Latitude Parallels and Longitude Meridians
-        ctx.strokeStyle = isGossipModeActive ? '#2c2105' : '#0e182a';
-        ctx.lineWidth = 0.5;
-        for (let lat = -60; lat <= 60; lat += 30) {
-          ctx.beginPath();
-          let first = true;
-          for (let lon = -180; lon <= 180; lon += 6) {
-            const p = project(lon, lat, r, cx, cy);
-            if (p.front) {
-              if (first) { ctx.moveTo(p.x, p.y); first = false; }
-              else ctx.lineTo(p.x, p.y);
-            } else first = true;
-          }
-          if (lat === 0) {
-            ctx.strokeStyle = isGossipModeActive ? '#634709' : '#182740';
-            ctx.lineWidth = 0.8;
-          } else {
-            ctx.strokeStyle = isGossipModeActive ? '#2c2105' : '#0e182a';
-            ctx.lineWidth = 0.5;
-          }
-          ctx.stroke();
-        }
-
-        for (let lon = -180; lon < 180; lon += 30) {
-          ctx.beginPath();
-          let first = true;
-          for (let lat = -80; lat <= 80; lat += 4) {
-            const p = project(lon, lat, r, cx, cy);
-            if (p.front) {
-              if (first) { ctx.moveTo(p.x, p.y); first = false; }
-              else ctx.lineTo(p.x, p.y);
-            } else first = true;
-          }
-          ctx.stroke();
-        }
-
-        // Graticule Degree Annotations
-        if (r > baseRadius * 0.9) {
-          ctx.font = '14px "PP Neue Gstaad", sans-serif';
-          ctx.fillStyle = isGossipModeActive ? '#eab308' : '#263a55';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          const labels = [
-            { lat: 0, txt: '0° EQ' },
-            { lat: 30, txt: '30° N' },
-            { lat: 60, txt: '60° N' },
-            { lat: -30, txt: '30° S' },
-            { lat: -60, txt: '60° S' }
-          ];
-          labels.forEach(lb => {
-            const p = project(rotLon, lb.lat, r, cx, cy);
-            if (p.front && p.depth > 0.25) {
-              ctx.fillText(lb.txt, p.x, p.y - 2);
-            }
-          });
-        }
+        // 3. No graticule and no degree labels: the coastlines and borders are the only lines.
 
         // 4. Land Polygons with Anti-Glitch Horizon Edge Clipping
         const cosRotLat = Math.max(0.15, Math.cos(toRad(rotLat)));
@@ -11737,11 +11665,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
             if (dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
           }
 
-          ctx.fillStyle = isCActive 
-            ? (isGossipModeActive ? '#9a3412' : '#1e3a8a') 
-            : isCHovered 
-            ? (isGossipModeActive ? 'rgba(8, 47, 73, 0.70)' : '#1e293b') 
-            : (isGossipModeActive ? '#220b03' : country.c);
+          ctx.fillStyle = isCActive ? '#004144' : '#000000';
 
           for (let j = 0; j < country.r.length; j++) {
             const ring = country.r[j];
@@ -11767,12 +11691,8 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
               }
               ctx.closePath();
               ctx.fill();
-              ctx.strokeStyle = isCActive 
-                ? (isGossipModeActive ? '#facc15' : '#f4f4f4') 
-                : isCHovered 
-                ? (isGossipModeActive ? '#fde047' : '#f4f4f4') 
-                : (isGossipModeActive ? '#2e2205' : '#050c18');
-              ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
+              ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+              ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
               ctx.stroke();
             } else {
               // Ring crosses horizon: clip edges strictly at the horizon plane
@@ -11824,8 +11744,8 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = isCActive ? (isGossipModeActive ? '#facc15' : '#f4f4f4') : isCHovered ? (isGossipModeActive ? '#fde047' : '#f4f4f4') : (isGossipModeActive ? '#2e2205' : '#050c18');
-                ctx.lineWidth = isCActive ? 2.2 : isCHovered ? 1.8 : 0.75;
+                ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+                ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
                 ctx.stroke();
               }
             }
@@ -11932,16 +11852,10 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
 
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
-                ctx.moveTo(pt.x, by + bh);
-                ctx.lineTo(pt.x, pt.y);
-                ctx.strokeStyle = isHovered ? 'rgba(52, 211, 153, 0.60)' : 'rgba(16, 185, 129, 0.35)';
+                ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
+                ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
-
-                ctx.beginPath();
-                ctx.arc(pt.x, pt.y, isHovered ? 4.5 : 3.0, 0, Math.PI * 2);
-                ctx.fillStyle = isHovered ? '#34d399' : '#10b981';
-                ctx.fill();
               } else {
                 ctx.font = '14px "PP Neue Gstaad", sans-serif';
                 ctx.textAlign = 'center';
@@ -11949,13 +11863,11 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
                 drawGlobeLabel(txt, pt.x, by + bh / 2 + 0.5, isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#f4f4f4'));
 
                 ctx.beginPath();
-                ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
-                ctx.fillStyle = isSelected 
-                  ? (isGossipModeActive ? '#facc15' : '#f4f4f4') 
-                  : isHovered 
-                  ? (isGossipModeActive ? '#fde047' : '#f4f4f4') 
-                  : (isGossipModeActive ? '#eab308' : '#10b981');
-                ctx.fill();
+                ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
+                if (isSelected) { ctx.fillStyle = '#08bdba'; ctx.fill(); }
+                ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
               }
 
               ctx.restore();
@@ -12121,15 +12033,18 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
           const hasVc = d.inst.visual_critiques && d.inst.visual_critiques.length > 0;
 
           ctx.beginPath();
-          ctx.arc(d.x, d.y, isSel ? 4.5 : isHov ? 4 : (isVisualCritiqueOnly && hasVc ? 3.8 : 2.5), 0, Math.PI * 2);
-          ctx.fillStyle = isHov 
+          ctx.arc(d.x, d.y, isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5), 0, Math.PI * 2);
+          ctx.strokeStyle = isHov 
             ? (isGossipModeActive ? '#fef08a' : '#f4f4f4')
             : (isVisualCritiqueOnly && hasVc)
             ? '#f59e0b'
             : isGossipModeActive 
             ? (d.inst.gossip_data ? '#facc15' : '#713f12')
             : (d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#be95ff' : '#08bdba');
-          ctx.fill();
+          // Hollow rings, colored by tier; the selected one is filled.
+          ctx.lineWidth = 0.8;
+          if (isSel) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
+          ctx.stroke();
 
           // Institution label on 3D globe
           // Only show labels when:
