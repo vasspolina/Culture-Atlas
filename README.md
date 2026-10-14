@@ -1,19 +1,18 @@
 # Culture Atlas
 
-A globe, a catalog and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
+A globe and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
 
 ## What it does
 
 - **Chat.** Answers from the records only. It names the record and its source, and says when a record does not say. An optional API key in settings turns on open-ended replies.
-- **Globe and map.** Click a space to see its record. City and country filters.
-- **Catalog.** Search and filter by tier, country and city.
+- **Globe and map.** Click a space to see its record, or a city or country to filter. The studies and community notes open in the research library.
 - **Offline.** Installable as an app; the service worker caches the page.
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below.
 
-Type is PP Mori Extralight at 14, 15, 20 and 22px; body text is 15px, labels 14px, titles 22px and the opening line 20px. Words are never hyphenated. PP Eiko Light Italic is used only for links and call-outs.
+Type is PP Neue Gstaad Regular, at 14, 15, 20 and 22px: body text is 15px, labels 14px, titles 22px and the opening line 20px. Titles and buttons are PP Neue Gstaad Compact Bold. Words are never hyphenated. Links are underlined, not italic.
 
-Buttons are off-white pills with black text and no outline; a pressed one inverts. Lines are single rules, never boxes around content; nothing is grey and nothing is set in capitals. On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+Buttons are dark teal pills with off-white text and no outline; the current one is lighter teal. Lines are single rules, never boxes around content; nothing is grey and nothing is set in capitals. On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ---
 
