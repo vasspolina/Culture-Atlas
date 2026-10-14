@@ -5166,13 +5166,6 @@
     "audit_dossier_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Mus%C3%A9e%20de%20la%20Chasse%20et%20de%20la%20Nature",
     "statutory_filings_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Mus%C3%A9e%20de%20la%20Chasse%20et%20de%20la%20Nature",
     "field_sources": {
-      "year_founded": {
-        "urls": [
-          "https://chassenature.org/en/le-musee"
-        ],
-        "basis": "opened to the public / inaugurated by Andr\u00e9 Malraux in the H\u00f4tel de Gu\u00e9n\u00e9gaud on 21 February 1967 (per the museum's own site)",
-        "retrieved": "2026-10-13"
-      },
       "address": {
         "urls": [
           "https://pop.culture.gouv.fr/notice/museo/M0363",
@@ -5182,7 +5175,6 @@
         "retrieved": "2026-10-13"
       }
     },
-    "year_founded": 1967,
     "address": "62 rue des Archives, 75003 Paris"
   },
   {
@@ -26147,19 +26139,7 @@
     "aliases": [
       "KALEKTAR research platform on Belarusian contemporary art"
     ],
-    "visit_url": "https://kalektar.org/about/",
-    "field_sources": {
-      "year_founded": {
-        "urls": [
-          "https://kalektar.org/i/p/structure",
-          "https://kalektar.org/k/4d3zK0nwgbeq5zCqw59L",
-          "https://kalektar.org/in/names/aK9GZvycftFBMfyzjCro"
-        ],
-        "basis": "founded (the platform was founded in 2014; its portal kalektar.org launched on 30 March 2015)",
-        "retrieved": "2026-10-13"
-      }
-    },
-    "year_founded": 2014
+    "visit_url": "https://kalektar.org/about/"
   },
   {
     "name": "MOCAK",

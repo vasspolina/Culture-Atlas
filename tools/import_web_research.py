@@ -9,10 +9,27 @@ A value is written only where the record has none. Each written value gets its s
 Usage: python3 tools/import_web_research.py data/web_research/<file>.json
 """
 import json
+import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+# A year that differs from one the record's own text gives for being founded, established, opened or inaugurated is not written.
+SAYS_YEAR = re.compile(r'\b(founded|established|opened|inaugurated)\b[^.;]{0,40}?\b(1[0-9]{3}|20[0-2][0-9])\b', re.I)
+TEXT_FIELDS = ('watch', 'funding', 'highlight', 'tier_note', 'other_findings', 'why_flagged', 'curatorial_focus', 'governance_details')
+
+
+def own_text_years(r):
+    out = set()
+    for k in TEXT_FIELDS:
+        v = r.get(k)
+        if isinstance(v, (list, dict)):
+            v = json.dumps(v, ensure_ascii=False)
+        if isinstance(v, str):
+            out |= {int(m.group(2)) for m in SAYS_YEAR.finditer(v)}
+    return out
+
+
 claims = json.load(open(sys.argv[1], encoding='utf-8'))
 path = ROOT / 'institutions.json'
 records = json.load(open(path, encoding='utf-8'))
@@ -28,6 +45,9 @@ for c in claims:
     r = matches[0]
     fs = r.setdefault('field_sources', {})
     y = c.get('year_founded')
+    if y and not r.get('year_founded') and own_text_years(r) - {y}:
+        print('skipped year', c['id'], y, 'the record text gives', sorted(own_text_years(r)))
+        y = None
     if y and not r.get('year_founded') and isinstance(y, int) and 1000 <= y <= 2026 and c.get('year_urls'):
         r['year_founded'] = y
         fs['year_founded'] = {'urls': [u for u in c['year_urls'] if u.startswith('http')], 'basis': c.get('year_basis', ''), 'retrieved': c['retrieved']}

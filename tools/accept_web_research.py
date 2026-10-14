@@ -28,6 +28,8 @@ PREFER = {
 # Agreed by both passes but left out: the institution's own site gives two different events for the same word.
 EXCLUDE = {
     ('henry-art-gallery', 'year'): "the museum's own site gives 1926 as founded and 1927 as opened to the public",
+    ('mus-e-de-la-chasse-et-de-la-nature', 'year'): "the record's own text says established in 1964; the passes found the 1967 inauguration",
+    ('kalektar-research-platform-on-belarusian-contemporary-art-białystok', 'year'): "the record's own text says founded 2015; the passes found 2014 for the platform",
     ('museo-nacional-de-artes-visuales', 'address'): "one pass gives the address without a street number (s/n), the other gives 2283",
 }
 
