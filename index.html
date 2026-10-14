@@ -1730,6 +1730,35 @@ return maplibregl$1;
 .atlas-combo-list li[aria-selected="true"] { text-decoration: underline; }
 .atlas-combo-list li.is-active, .atlas-combo-list li:hover { color: #ffffff; text-decoration: underline; }
 .atlas-combo-list li.is-empty { cursor: default; text-decoration: none; }
+/* Directory: a reading measure, flush left. Pills choose what is shown, one search row, records between rules, nothing boxed or centred. */
+html body #catalogModal { justify-content: flex-start !important; }
+html body #catalogModal > div { max-width: 960px !important; padding-top: 24px !important; padding-bottom: 0 !important; }
+@media (max-width: 767px) { html body #catalogModal > div { padding: 16px 16px 0 !important; } }
+.dir-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 0 0 14px; border-bottom: 0.8px solid #f4f4f4; }
+.dir-title { font-size: 26px !important; line-height: 1.1 !important; margin: 0 !important; color: #f4f4f4; }
+.dir-count { font-size: 14px !important; margin: 4px 0 0 !important; color: #f4f4f4; }
+.dir-close { display: none; font-size: 14px !important; color: #f4f4f4 !important; background: transparent !important; border: 0 !important; padding: 0 !important; text-decoration: underline; cursor: pointer; }
+@media (max-width: 767px) { .dir-close { display: inline; } }
+.dir-filters { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 0; }
+html body .dir-chip { display: inline-flex; align-items: center; padding: 8px 16px !important; border: 0 !important; border-radius: 9999px !important; background: #f4f4f4 !important; color: #000000 !important; font-size: 14px !important; line-height: 1.3; cursor: pointer; box-shadow: none !important; }
+html body .dir-chip:hover { background: #ffffff !important; }
+html body .dir-chip[aria-pressed="true"] { background: #000000 !important; color: #f4f4f4 !important; box-shadow: inset 0 0 0 1px #f4f4f4 !important; }
+.dir-search { display: flex; flex-direction: column; gap: 4px; padding: 0 0 16px; }
+html body .dir-search-input { width: 100%; background: transparent !important; border: 0 !important; border-bottom: 0.8px solid #f4f4f4 !important; border-radius: 0 !important; padding: 6px 0 !important; font-size: 14px !important; color: #f4f4f4 !important; box-shadow: none !important; }
+.dir-search-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+@media (max-width: 767px) { .dir-search-row { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+.dir-search .atlas-combo-field { border-bottom: 0.8px solid #f4f4f4; }
+/* Focus is a heavier rule under the field, never a box around it. */
+.atlas-combo-field input:focus-visible { outline: 0 !important; }
+.atlas-combo-field:focus-within { box-shadow: 0 1px 0 0 #ffffff; }
+html body .dir-search-input:focus-visible { outline: 0 !important; box-shadow: 0 1px 0 0 #ffffff !important; }
+html body #institutionsListContainer.dir-list { padding: 0 !important; }
+html body #catalogModal .inst-card { padding: 16px 0 !important; }
+.dir-empty { padding: 20px 0; font-size: 18px; line-height: 1.3; color: #f4f4f4; }
+.dir-empty .kicker { margin-top: 20px; }
+.dir-excluded { padding: 12px 0; border-top: 0.8px solid #f4f4f4; font-size: 14px; }
+.dir-excluded-name { color: #ffffff; }
+html body .dir-link { background: transparent !important; border: 0 !important; padding: 0 !important; font: inherit !important; font-size: inherit !important; color: #f4f4f4 !important; text-decoration: underline; cursor: pointer; }
 </style>
 </head>
 <body class="bg-black text-[#f4f4f4] space-background h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
@@ -2653,40 +2682,39 @@ return maplibregl$1;
   <!--  CATALOG MODAL (Browse all findings & spaces) -->
   <!-- ========================================================= -->
   <div id="catalogModal" class="hidden fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-3 sm:p-5 select-text">
-    <div class="bg-black max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden font-sans border-b border-t border-[#262626]">
-      <div class="p-3 border-b border-[#262626] flex items-center justify-between">
-        <div class="flex flex-col gap-0.5">
-          <span class="text-[14px] font-normal text-white">All records</span>
-          <span id="listTotalBadge" class="text-[14px] font-mono text-[#f4f4f4]"></span>
+    <div class="bg-black max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden font-sans">
+      <div class="dir-head">
+        <div>
+          <h2 class="dir-title">Directory</h2>
+          <p id="listTotalBadge" class="dir-count no-indent"></p>
         </div>
-        <button id="closeCatalogModalBtn" class="text-[#f4f4f4] hover:text-white hover:underline text-[14px] flex items-center gap-1 cursor-pointer" title="Close"><span>Close [x]</span></button>
+        <button id="closeCatalogModalBtn" type="button" class="dir-close">Close</button>
       </div>
 
-      <!-- Quick Category / Scope Filter Tabs inside Catalog -->
-      <div class="p-3 border-b border-[#262626] flex flex-col gap-1 select-none text-[14px]">
-        <button id="catFilterAllBtn" class="cat-modal-chip text-left text-white font-medium hover:underline cursor-pointer">All records</button>
-        <button id="catFilterCleanBtn" class="cat-modal-chip text-left text-[#f4f4f4] hover:text-white hover:underline cursor-pointer">Clean, source cited</button>
-        <button id="catFilterFlaggedBtn" class="cat-modal-chip text-left text-[#f4f4f4] hover:text-white hover:underline cursor-pointer">Flagged</button>
-        <button id="catFilterAcademicBtn" class="cat-modal-chip text-left text-[#f4f4f4] hover:text-white hover:underline cursor-pointer">Academic Studies</button>
-        <button id="catFilterVisualCritiqueBtn" class="cat-modal-chip text-left text-[#f4f4f4] hover:text-white hover:underline cursor-pointer">Visual Critique</button>
+      <div class="dir-filters" role="group" aria-label="Show">
+        <button id="catFilterAllBtn" type="button" class="dir-chip" aria-pressed="true">All records</button>
+        <button id="catFilterCleanBtn" type="button" class="dir-chip" aria-pressed="false">Clean, source cited</button>
+        <button id="catFilterFlaggedBtn" type="button" class="dir-chip" aria-pressed="false">Flagged</button>
+        <button id="catFilterAcademicBtn" type="button" class="dir-chip" aria-pressed="false">Academic studies</button>
+        <button id="catFilterVisualCritiqueBtn" type="button" class="dir-chip" aria-pressed="false">Visual critique</button>
       </div>
 
-      <div class="p-3 border-b border-[#262626] flex flex-col gap-2">
-        <input type="text" id="searchInput" placeholder="Search spaces, empirical studies, authors, or topics..." class="w-full bg-transparent border-b border-[#262626] text-[14px] text-white placeholder-[#71717a] py-2 focus:outline-none" />
-        <div class="flex flex-col gap-2 text-[14px]">
-          <div class="atlas-combo" data-placeholder="Search countries">
+      <div class="dir-search">
+        <input type="text" id="searchInput" placeholder="Search" aria-label="Search spaces, studies, authors or topics" autocomplete="off" class="dir-search-input" />
+        <div class="dir-search-row">
+          <div class="atlas-combo" data-placeholder="Country">
             <select id="countrySelect" hidden tabindex="-1">
               <option value="all">All countries</option>
             </select>
           </div>
-          <div class="atlas-combo" data-placeholder="Search cities">
+          <div class="atlas-combo" data-placeholder="City">
             <select id="citySelect" hidden tabindex="-1">
               <option value="all">All cities</option>
             </select>
           </div>
         </div>
       </div>
-      <div id="institutionsListContainer" class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-2">
+      <div id="institutionsListContainer" class="flex-1 overflow-y-auto custom-scrollbar dir-list">
         <!-- Populated dynamically -->
       </div>
     </div>
@@ -18447,6 +18475,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('closeCatalogModalBtn')?.addEventListener('click', () => {
       if (catalogModal) catalogModal.classList.add('hidden');
     });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && catalogModal && !catalogModal.classList.contains('hidden') && typeof setMainViewTab === 'function') setMainViewTab('atlas');
+    });
     catalogModal?.addEventListener('click', (e) => {
       if (e.target === catalogModal) catalogModal.classList.add('hidden');
     });
@@ -19262,11 +19293,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const academicBtn = document.getElementById('catFilterAcademicBtn');
       const vcBtn = document.getElementById('catFilterVisualCritiqueBtn');
 
-      if (allBtn) allBtn.className = isAll ? 'cat-modal-chip text-left text-white font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-[#f4f4f4] hover:text-white hover:underline cursor-pointer';
-      if (cleanBtn) cleanBtn.className = isCleanOnly ? 'cat-modal-chip text-left text-emerald-400 font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-[#f4f4f4] hover:text-emerald-300 hover:underline cursor-pointer';
-      if (flaggedBtn) flaggedBtn.className = isFlaggedOnly ? 'cat-modal-chip text-left text-[#be95ff] font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-[#f4f4f4] hover:text-[#be95ff] hover:underline cursor-pointer';
-      if (academicBtn) academicBtn.className = isAcademicOnly ? 'cat-modal-chip text-left text-[#f4f4f4] font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-[#f4f4f4] hover:text-[#f4f4f4] hover:underline cursor-pointer';
-      if (vcBtn) vcBtn.className = isVisualCritiqueOnly ? 'cat-modal-chip text-left text-amber-400 font-medium underline cursor-pointer' : 'cat-modal-chip text-left text-[#f4f4f4] hover:text-amber-300 hover:underline cursor-pointer';
+      const press = (btn, on) => { if (btn) { btn.className = 'dir-chip'; btn.setAttribute('aria-pressed', on ? 'true' : 'false'); } };
+      press(allBtn, isAll); press(cleanBtn, isCleanOnly); press(flaggedBtn, isFlaggedOnly); press(academicBtn, isAcademicOnly); press(vcBtn, isVisualCritiqueOnly);
     }
     window.updateCatalogChipsUI = updateCatalogChipsUI;
 
@@ -19708,14 +19736,12 @@ bar.innerHTML = html;
 
       const listTotalBadge = document.getElementById('listTotalBadge');
       if (listTotalBadge) {
-        const mappedCount = filteredList.filter(i => !i.isAcademicStudy).length;
-        if (isAcademicOnly) {
-          listTotalBadge.textContent = `${filteredList.length} studies`;
-        } else if (isCleanOnly || isFlaggedOnly || isCommunityOnly) {
-          listTotalBadge.textContent = `${filteredList.length} spaces`;
-        } else {
-          listTotalBadge.textContent = `${filteredList.length} findings (${mappedCount} mapped)`;
-        }
+        const n = filteredList.length;
+        const one = (word) => n === 1 ? word.replace(/ies$/, 'y').replace(/s$/, '') : word;
+        if (isAcademicOnly) listTotalBadge.textContent = `${n} ${one('studies')}`;
+        else if (isVisualCritiqueOnly) listTotalBadge.textContent = `${n} ${one('spaces')} with a visual critique`;
+        else if (isCleanOnly || isFlaggedOnly || isCommunityOnly) listTotalBadge.textContent = `${n} ${one('spaces')}`;
+        else listTotalBadge.textContent = `${n} ${one('records')}`;
       }
 
       // Update Floating Map Filter Banner
@@ -19783,47 +19809,35 @@ bar.innerHTML = html;
     function renderLeftList() {
       const container = document.getElementById('institutionsListContainer');
       if (filteredList.length === 0) {
+        const onlyStudies = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
+        const placed = selectedCountryFilter !== 'all' || selectedCityFilter !== 'all';
+        let why = onlyStudies ? 'No studies match.' : 'No records match.';
+        if (onlyStudies && placed) why = 'Studies have no place on the map, so a country or city leaves none.';
         let exHtml = '';
         if (searchQuery && typeof EXCLUDED_INSTITUTIONS !== 'undefined') {
           const q = searchQuery.toLowerCase().trim();
-          const matches = EXCLUDED_INSTITUTIONS.filter(i => 
-            i.name.toLowerCase().includes(q) || 
+          const matches = EXCLUDED_INSTITUTIONS.filter(i =>
+            i.name.toLowerCase().includes(q) ||
             (i.aliases && i.aliases.some(a => a.toLowerCase().includes(q))) ||
             (i.city && i.city.toLowerCase().includes(q))
           );
           if (matches.length > 0) {
             exHtml = `
-              <div class="mt-4 p-3.5 rounded-xl bg-black border border-[#8a3ffc]/80 text-left space-y-2">
-                <div class="flex items-center gap-1.5 text-[#be95ff] font-mono text-[14px]">
-                  <span>Flagged (${matches.length})</span>
+              <p class="kicker no-indent">Outside the clean set (${matches.length})</p>
+              ${matches.slice(0, 3).map(m => `
+                <div class="dir-excluded">
+                  <p class="no-indent"><span class="dir-excluded-name">${escapeHtml(m.name)}</span>, ${m.tier === 'B' ? 'flagged' : 'unverified'}</p>
+                  <p class="no-indent">${escapeHtml(deduplicateNoticeText(m.watch || m.why_flagged || m.funding || 'not stated'))}</p>
+                  <button type="button" class="curator-dossier-btn dir-link" data-name="${escapeHtml(m.name)}">Open record</button>
                 </div>
-                <p class="text-[#f4f4f4] text-[14px] leading-relaxed">
-                  The space you searched is monitored under our corporate underwriting audit.
-                </p>
-                <div class="space-y-1.5 pt-1">
-                  ${matches.slice(0, 3).map(m => `
-                    <div class="bg-black p-2.5 rounded-lg border border-[#8a3ffc]/50">
-                      <div class="flex items-center justify-between text-[14px]">
-                        <span class="text-white font-medium">${escapeHtml(m.name)}</span>
-                        <span class="text-[#be95ff] text-[14px] font-mono px-1.5 py-0.5 rounded bg-black border border-[#8a3ffc]">${m.tier === 'B' ? 'Flagged' : 'Unverified'}</span>
-                      </div>
-                      <p class="text-[#e8daff] text-[14px] mt-0.5">${escapeHtml(deduplicateNoticeText(m.watch || m.why_flagged || m.funding || 'not stated'))}</p>
-                      <button class="curator-dossier-btn text-[#be95ff] hover:underline text-[14px] font-mono mt-1 cursor-pointer" data-name="${escapeHtml(m.name)}">
-                        Open record
-                      </button>
-                    </div>
-                  `).join('')}
-                </div>
-              </div>
-            `;
+              `).join('')}`;
           }
         }
 
         container.innerHTML = `
-          <div class="text-center py-6 px-4 text-[#f4f4f4] text-[14px]">
-            <p class="font-normal text-[#f4f4f4]">No clean verified institutions match this filter.</p>
+          <div class="dir-empty">
+            <p class="no-indent">${why} <button id="resetFromEmptyBtn" type="button" class="dir-link">Reset all filters</button></p>
             ${exHtml}
-            <button id="resetFromEmptyBtn" class="mt-4 px-3 py-1.5 rounded-xl bg-black border border-[#333] text-[#f4f4f4] hover:text-white hover:bg-black text-[14px] transition cursor-pointer">Reset all filters</button>
           </div>
         `;
         document.getElementById('resetFromEmptyBtn')?.addEventListener('click', clearAllFilters);
@@ -19836,42 +19850,42 @@ bar.innerHTML = html;
             <div class="inst-card academic-card py-3 border-b border-[#262626] transition space-y-1" data-name="${inst.name.replace(/"/g, '&quot;')}">
               <div class="flex flex-col gap-0.5">
                 <h3 class="font-normal text-white text-[14px] leading-snug">${escapeHtml(inst.name)}</h3>
-                <span class="text-[14px] font-mono text-[#f4f4f4]">Academic Study</span>
+                <span class="kicker text-[14px] font-mono text-[#f4f4f4]">Study</span>
               </div>
 
               <div class="flex flex-col gap-0.5 text-[14px] text-[#f4f4f4] mt-1 font-mono">
                 ${inst.authors ? `<span class="text-white">${escapeHtml(inst.authors)}</span>` : ''}
                 ${inst.journal ? `<span class="text-[#f4f4f4]">${escapeHtml(inst.journal)}</span>` : ''}
                 ${inst.year ? `<span class="text-[#f4f4f4]">${escapeHtml(inst.year)}</span>` : ''}
-                ${inst.citations ? `<span class="text-emerald-400 font-medium">${escapeHtml(inst.citations)} Citations</span>` : ''}
+                ${inst.citations ? `<span class="text-emerald-400 font-medium">${escapeHtml(inst.citations)} citations</span>` : ''}
               </div>
 
               ${inst.takeaway ? `
                 <div class="mt-2 py-1.5 border-t border-[#262626] text-[#f4f4f4] text-[14px] leading-relaxed">
-                  <strong class="text-[#f4f4f4] block text-[14px] tracking-wider font-mono mb-0.5">Key Empirical Finding:</strong>
+                  <strong class="kicker text-[#f4f4f4] block text-[14px] font-mono mb-0.5">Finding</strong>
                   ${escapeHtml(inst.takeaway)}
                 </div>
               ` : ''}
 
               ${inst.abstract ? `
                 <details class="mt-1 text-[14px] text-[#f4f4f4]">
-                  <summary class="cursor-pointer text-[#f4f4f4] hover:underline font-mono text-[14px] tracking-wider py-0.5">View Abstract &amp; Methodology</summary>
+                  <summary class="cursor-pointer text-[#f4f4f4] hover:underline font-mono text-[14px] py-0.5">Abstract</summary>
                   <p class="mt-1 py-1 border-t border-[#262626] text-[#f4f4f4] leading-relaxed text-[14px]">${escapeHtml(inst.abstract)}</p>
                 </details>
               ` : ''}
 
               <div class="mt-2 pt-1 border-t border-[#262626] flex flex-col gap-1 text-[14px] font-mono">
                 <button class="academic-ask-btn text-left text-[#f4f4f4] hover:underline cursor-pointer font-sans text-[14px]" data-title="${inst.name.replace(/"/g, '&quot;')}" data-authors="${escapeHtml(inst.authors)}">
-                  <span>Ask Curator</span>
+                  <span>Ask about this study</span>
                 </button>
                 ${inst.doi ? `
                   <a href="https://doi.org/${escapeHtml(inst.doi)}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline" onclick="event.stopPropagation()">
-                    <span>DOI Paper</span>
+                    <span>DOI</span>
                   </a>
                 ` : ''}
                 ${inst.link ? `
                   <a href="${escapeHtml(inst.link)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:underline" onclick="event.stopPropagation()">
-                    <span>Consensus</span>
+                    <span>Source</span>
                   </a>
                 ` : ''}
               </div>
