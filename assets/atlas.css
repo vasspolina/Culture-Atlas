@@ -78,6 +78,10 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #cityMapContainer{background:#000}
 #globeSplitter{background:var(--paper);border-left:1px solid var(--line);width:6px}
 #globeSplitter>div{display:none}
+#globeSplitter{position:relative;cursor:col-resize;touch-action:none}
+#globeSplitter::before{content:'';position:absolute;top:0;bottom:0;left:-8px;right:-8px}
+#globeSplitter:hover,#globeSplitter:focus-visible{border-left-color:var(--ink);box-shadow:inset 2px 0 0 var(--ink)}
+@media (max-width:767px){#globeSplitter{cursor:row-resize}#globeSplitter::before{top:-8px;bottom:-8px;left:0;right:0}}
 #workViewContainer{background:var(--paper);color:var(--ink);border-left:1px solid var(--line)}
 
 /* controls over the globe: white pills, mono, like the nav pills of the fair */
@@ -279,7 +283,7 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #curator-chat-drawer>div:first-child{border-bottom:1px solid var(--line)}
 #curator-chat-drawer button{font:400 15px/1 var(--mono)}
 #mobileStickyInputBar{background:var(--paper);border-top:1px solid var(--line)}
-#chat-input{font:400 18px/1.25 var(--sans);border-bottom:1px solid #000;border-radius:0;background:none}
+#chat-input{font:400 18px/1.25 var(--sans);border-bottom:1px solid #000;border-radius:0;background:none;resize:none;display:block;min-height:calc(2 * 1.25em + 16px)}
 #mobileStickySendBtn{background:#000;color:#fff;border-radius:999px;padding:0 16px;font:400 13px/1 var(--mono);height:34px;top:50%;bottom:auto;right:0;transform:translateY(-50%)}
 #mobileSheetHandleBar{background:var(--paper)}
 @media (max-width:480px){#mobileTopBrandBtn>div>span:not(:first-child){display:none}}
