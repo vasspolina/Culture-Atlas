@@ -255,7 +255,7 @@
     /* chat answers are one size, 15px */
     html body #curatorMessages, html body #curatorMessages *, html body #curatorDrawerChatBody, html body #curatorDrawerChatBody * { font-size: 15px !important; }
     html body .callout-fig, html body .stat-callout { font-size: 14px !important; }
-    /* Buttons read as buttons: a 1px off-white outline, black fill, and an inverted hover. Pressed is filled off-white. */
+    /* Buttons are filled pills: off-white fill, black text, fully round, no outline, sentence case. Hover is white. A pressed toggle inverts to black with off-white text and a 1px off-white ring, so it keeps its shape on the black page. */
     html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
     html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
     html body #closeAcademicModalBtn, html body #closeAcademicModalFooterBtn, html body #arTabStudies, html body #arTabCommunity, html body #arTabCases,
@@ -265,11 +265,6 @@
       background: #000000 !important; color: #f4f4f4 !important; font-size: 14px !important;
       text-decoration: none !important; cursor: pointer; box-shadow: none !important;
     }
-    html body #topGossipBtn:hover, html body #topShareBtn:hover, html body #desktopGlobeTopControls button:hover,
-    html body #workspaceTabDossier:hover, html body #workspaceTabChat:hover, html body #workspaceNewChatBtn:hover, html body #collapseDossierBtn:hover,
-    html body #closeAcademicModalBtn:hover, html body #closeAcademicModalFooterBtn:hover, html body #arTabStudies:hover, html body #arTabCommunity:hover, html body #arTabCases:hover,
-    html body #desktopDossierBody > div > button:hover, html body #inputModeCancelBtn:hover, html body #navTabAtlas:hover, html body #navTabDirectory:hover, html body #navTabFilters:hover,
-    
     html body #desktopGlobeTopControls > div { gap: 8px; }
     body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls { display: none !important; }
     html body #workspaceContextTabBar > div:first-child { border: 0 !important; gap: 8px; padding: 0 !important; }
@@ -284,11 +279,11 @@
     html body p:first-of-type:nth-last-of-type(n+4) ~ p { text-indent: 10px !important; }
     html body button p, html body a p, html body .no-indent, html body .no-indent p, html body #curatorMessages p, html body #curatorDrawerChatBody p { text-indent: 0 !important; }
 
-    /* Solid black surfaces, no blur. */
+    /* Solid black surfaces, no blur, no outline. */
     #catalogModal, #curatorSettingsModal, #academicResearchModal, #governanceMethodologyModal { background: rgba(0, 0, 0, 0.9) !important; }
     #catalogModal > div, #curatorSettingsModal > div, #academicResearchModal > div, #governanceMethodologyModal > div,
     #floatingCard, #filterDrawerPanel, #dossier-bottom-sheet, #curator-chat-drawer, #desktopDossierColumn, #detailDrawer,
-    div:has(> textarea), form:has(> textarea) { background: #000000 !important; border: 0.8px solid #f4f4f4 !important; box-shadow: none !important; }
+    div:has(> textarea), form:has(> textarea) { background: #000000 !important; border: 0 !important; box-shadow: none !important; }
     textarea { background: transparent !important; }
     ::placeholder, input::placeholder, textarea::placeholder { color: #f4f4f4 !important; opacity: 1 !important; }
 
@@ -296,13 +291,13 @@
     #desktopDossierColumn:has(#desktopDossierName:empty) #desktopDossierBody { display: none; }
     #desktopDossierColumn:has(#desktopDossierName:empty)::after { content: 'Select a space on the map or ask in chat.'; display: block; padding: 20px; color: #f4f4f4; font-size: 15px; }
 
-    /* Material-style surfaces: flat, outlined, 4px corners. Every line is 0.8px. */
-    html body .border { border-width: 0.8px !important; }
+    /* No containers: a box drawn on all four sides is removed. A rule on one side (under a header, between rows) stays. 0.8px is what was asked for; Chromium paints it as one device pixel. */
+    html body .border { border-width: 0 !important; }
     html body .border-b { border-bottom-width: 0.8px !important; }
     html body .border-t { border-top-width: 0.8px !important; }
     html body .border-l { border-left-width: 0.8px !important; }
     html body .border-r { border-right-width: 0.8px !important; }
-    html body .border-2, html body .border-4 { border-width: 0.8px !important; }
+    html body .border-2, html body .border-4 { border-width: 0 !important; }
     html body hr { border-width: 0; border-top: 0.8px solid #f4f4f4 !important; height: 0; }
     html body input, html body select, html body textarea { border-radius: 6px !important; box-shadow: none !important; outline-width: 1px; outline-offset: 2px; }
     html body :focus-visible { outline: 0.8px solid #f4f4f4 !important; outline-offset: 2px; }
@@ -332,7 +327,7 @@
       html body #detailDrawer { position: fixed !important; inset: 0 !important; z-index: 51 !important; background: #000 !important; }
     }
 
-    /* Buttons are pills: Carbon teal 90 fill, off-white text, no border, sentence case. A pressed toggle is off-white with black text. */
+    /* Every button is the same pill, including the mobile bar, the chips and the globe controls. */
     html body button, html body [role="button"] { text-transform: none; }
     html body button:not([aria-pressed="true"]) { color: #f4f4f4; }
     html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
@@ -361,22 +356,22 @@
     html body :is(#zoomInBtn, #zoomOutBtn) { background: #022b30 !important; color: #f4f4f4 !important; box-shadow: none !important; }
     html body :is(#zoomInBtn, #zoomOutBtn):hover { background: #004144 !important; color: #f4f4f4 !important; }
     html body button[class*="bg-white"], html body a[class*="bg-white"] { background: #022b30 !important; color: #f4f4f4 !important; border-radius: 9999px !important; padding: 3px 12px !important; }
-    html body .custom-scrollbar::-webkit-scrollbar-thumb, html body ::-webkit-scrollbar-thumb { background: #004144 !important; }
+    html body .custom-scrollbar::-webkit-scrollbar-thumb, html body ::-webkit-scrollbar-thumb { background: #f4f4f4 !important; }
     
     html body #mobileTopBrandBtn, html body #topBrandLogoBtn, html body #mobileTopBrandBtn *, html body #topBrandLogoBtn * { text-transform: none !important; color: inherit; }
     html body #topBrandLogoBtn > span:first-child, html body #mobileTopBrandBtn .text-white { color: #ffffff !important; }
     /* Building x-ray: labels on the slabs and the inside panel. */
-    .xray-label { background: #000000; color: #f4f4f4; border: 0.8px solid var(--xray-colour, #f4f4f4); border-radius: 9999px; padding: 2px 10px; font-size: 14px; white-space: nowrap; cursor: pointer; text-transform: none; }
-    #buildingInsidePanel { border: 0.8px solid #f4f4f4; border-radius: 12px; font-size: 14px; line-height: 1.3; }
+    .xray-label { background: var(--xray-colour, #f4f4f4); color: #000000; border: 0; border-radius: 9999px; padding: 2px 10px; font-size: 14px; white-space: nowrap; cursor: pointer; text-transform: none; }
+    #buildingInsidePanel { border: 0; border-radius: 0; font-size: 14px; line-height: 1.3; }
     #buildingInsidePanel h3 { font-size: 15px; }
     #buildingInsidePanel p { font-size: 14px; }
     .xray-pill { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 3px 12px !important; font-size: 14px !important; }
-    /* Editorial measure, after the reference page: a display-size lede with tight leading, small-capital kickers, filled cards. */
+    /* Editorial measure: a display-size lede with tight leading, small kickers, and records separated by a rule, never boxed. */
     html body .lede { font-size: 22px !important; line-height: 1.1 !important; }
-    html body .kicker { font-size: 14px !important; text-transform: uppercase; line-height: 1.3; }
-    html body .record-card { background: #022b30; border: 0 !important; border-radius: 12px; padding: 16px 18px; margin: 10px 0; }
+    html body .kicker { font-size: 14px !important; line-height: 1.3; }
+    html body .record-card { background: transparent; border: 0 !important; border-top: 0.8px solid #f4f4f4 !important; border-radius: 0; padding: 12px 0; margin: 0; }
     html body .record-card:first-of-type { margin-top: 4px; }
-    html body #catalogModal .inst-card { background: #022b30; border: 0 !important; border-radius: 12px; padding: 18px 20px; margin: 10px 0; }
+    html body #catalogModal .inst-card { background: transparent; border: 0 !important; border-bottom: 0.8px solid #f4f4f4 !important; border-radius: 0; padding: 14px 0; margin: 0; }
     html body #catalogModal .inst-card h3 { font-size: 22px !important; line-height: 1.1 !important; margin: 6px 0 4px !important; padding: 0 !important; }
     html body #catalogModal .inst-card .kicker { margin: 0 !important; }
     html body #catalogModal .inst-card { line-height: 1.3; }
@@ -510,7 +505,7 @@
       color: #ffffff;
       text-decoration: underline;
       text-underline-offset: 3px;
-      text-decoration-color: rgba(255, 255, 255, 0.4);
+      text-decoration-color: #f4f4f4;
       transition: all 0.15s ease;
     }
     .inst-link:hover {
@@ -621,15 +616,15 @@
       background: transparent;
     }
     *::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.16);
+      background: #f4f4f4;
       border-radius: 9999px;
     }
     *::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 255, 255, 0.30);
+      background: #ffffff;
     }
     * {
       scrollbar-width: thin;
-      scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+      scrollbar-color: #f4f4f4 transparent;
     }
 
     /* Hide scrollbars completely where intended (.no-scrollbar) */
@@ -788,18 +783,18 @@
     .atlas-dark-popup .maplibregl-popup-content {
       background: #000000 !important;
       color: #f4f4f4 !important;
-      border: 0.8px solid #f4f4f4 !important;
-      border-radius: 14px !important;
+      border: 0 !important;
+      border-radius: 0 !important;
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7) !important;
       padding: 8px 10px !important;
     }
     .atlas-dark-popup .maplibregl-popup-tip {
-      border-top-color: #18181b !important;
-      border-bottom-color: #18181b !important;
+      border-top-color: #000000 !important;
+      border-bottom-color: #000000 !important;
     }
     .atlas-dark-popup .maplibregl-popup-close-button {
-      color: #212121 !important;
-      background: #eaedf0 !important;
+      color: #000000 !important;
+      background: #f4f4f4 !important;
       border-radius: 9999px !important;
       padding: 2px 7px !important;
       font-size: 14px !important;
@@ -830,8 +825,8 @@
     }
     .maplibregl-ctrl-group {
       background: #000000 !important;
-      border: 0.8px solid #f4f4f4 !important;
-      border-radius: 12px !important;
+      border: 0 !important;
+      border-radius: 0 !important;
       overflow: hidden !important;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5) !important;
     }
@@ -967,7 +962,7 @@
       padding: 0 12px;
       border-radius: 9999px;
       background: rgba(0, 0, 0, 0.9);
-      border: 0.8px solid rgba(47, 187, 136, 0.45);
+      border: 0;
       color: #2fbb88;
       font-family: 'PP Mori', sans-serif !important;
       font-weight: 400 !important;
@@ -997,7 +992,7 @@
       padding: 3px 8px;
       background: rgba(0, 0, 0, 0.96);
       color: #f4f4f4;
-      border: 0.8px solid rgba(255, 255, 255, 0.22);
+      border: 0;
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.5);
       font-family: 'PP Mori', sans-serif;
@@ -1108,7 +1103,7 @@
       opacity: 1 !important;
       visibility: visible !important;
       transform: translateX(-50%) translateY(-2px) scale(1.05) !important;
-      border-color: rgba(255, 255, 255, 0.45) !important;
+      border-color: #ffffff !important;
       background: rgba(0, 0, 0, 0.98) !important;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8) !important;
       z-index: 9999 !important;
@@ -1491,8 +1486,7 @@
     /* Strikethrough / crossed-out diagonal slash style for disabled/unavailable suggestion filters */
     .atlas-suggestion-pill.is-disabled,
     .atlas-suggestion-pill.is-crossed-out {
-      opacity: 0.55 !important;
-      border-color: rgba(255, 255, 255, 0.25) !important;
+      border-color: #f4f4f4 !important;
       color: #f4f4f4 !important;
       cursor: not-allowed !important;
       pointer-events: none !important;
@@ -1505,7 +1499,7 @@
       right: 6px;
       top: 50%;
       height: 1px;
-      background: rgba(255, 255, 255, 0.45);
+      background: #f4f4f4;
       transform: rotate(-4deg);
       pointer-events: none;
     }
@@ -1697,12 +1691,23 @@ return maplibregl$1;
 #workSendBtn { width: 32px; height: 32px; justify-content: center; }
 #workSendBtn svg { color: #f4f4f4; }
 #chat-input { font-size: 15px !important; border: 0.8px solid #f4f4f4 !important; border-radius: 22px !important; padding: 10px 88px 10px 16px !important; text-overflow: ellipsis; }
-#mobileStickySendBtn { background: #000 !important; color: #fff !important; border: 1pt solid #f4f4f4 !important; font-size: 14px !important; }
+#mobileStickySendBtn { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; font-size: 14px !important; }
 #mobileStickyVoiceBtn { background: transparent !important; border: 0 !important; }
 .curator-message-wrap a { font-size: inherit !important; }
 .curator-message-wrap button span { color: inherit !important; }
 .user-bubble { text-align: left; }
 #workInputCard button, #workSuggestionsDropdownToggle span, #workSuggestionsDropdownToggle { color: #f4f4f4 !important; }
+/* Country and city: a field you type in and a list under it. A rule under the field, nothing around the list. */
+.atlas-combo { position: relative; }
+.atlas-combo-field { display: flex; align-items: center; gap: 10px; border-bottom: 0.8px solid #f4f4f4; }
+.atlas-combo-field input { flex: 1 1 auto; min-width: 0; background: transparent !important; border: 0 !important; border-radius: 0 !important; padding: 6px 0 !important; font-size: 14px !important; color: #f4f4f4 !important; box-shadow: none !important; }
+.atlas-combo-field input::placeholder { color: #f4f4f4 !important; opacity: 1 !important; }
+.atlas-combo-clear { background: transparent !important; border: 0 !important; padding: 0 !important; font-size: 14px !important; color: #f4f4f4 !important; text-decoration: underline; cursor: pointer; }
+.atlas-combo-list { list-style: none; margin: 0; padding: 4px 0 0; max-height: 240px; overflow-y: auto; }
+.atlas-combo-list li { padding: 5px 0; font-size: 14px; color: #f4f4f4; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.atlas-combo-list li[aria-selected="true"] { text-decoration: underline; }
+.atlas-combo-list li.is-active, .atlas-combo-list li:hover { color: #ffffff; text-decoration: underline; }
+.atlas-combo-list li.is-empty { cursor: default; text-decoration: none; }
 </style>
 </head>
 <body class="bg-black text-[#f4f4f4] space-background h-screen h-[100dvh] flex flex-col select-none overflow-hidden font-sans">
@@ -2061,7 +2066,7 @@ return maplibregl$1;
           <span id="backToCountryText" class="font-normal">Country</span>
         </button>
         <div id="cityViewTitleBadge" class="text-[#f4f4f4] text-[14px] font-mono flex items-center gap-1 shrink-0 truncate max-w-[190px] sm:max-w-none">
-          <span id="cityViewTitleText">LONDON, STREET VIEW</span>
+          <span id="cityViewTitleText">London, street view</span>
         </div>
       </div>
 
@@ -2247,6 +2252,7 @@ return maplibregl$1;
 
           <div id="desktopDossierRecord" class="hidden"></div>
           <div id="desktopDossierSources" class="pt-3 border-t border-[#262626]"></div>
+          <div id="desktopDossierInside" class="hidden pt-3 border-t border-[#262626] space-y-1.5 text-[14px]"></div>
 
           <div class="border-t border-[#262626]"></div>
 
@@ -2268,7 +2274,7 @@ return maplibregl$1;
         <!-- Mobile Bottom Sheet Handle Bar (Phone Only) -->
         <div id="mobileSheetHandleBar" class="hidden md:hidden flex-col w-full bg-black border-b border-[#1e293b] shrink-0 select-none z-30 touch-none" style="display:none !important;" aria-hidden="true">
           <div id="mobileSheetDragZone" class="w-full flex items-center justify-center py-2 min-h-[32px] cursor-grab active:cursor-grabbing">
-            <div class="w-12 h-1.5 rounded-full bg-zinc-500 hover:bg-zinc-400 transition"></div>
+            <div class="w-12 h-1.5 rounded-full bg-[#f4f4f4] hover:bg-white transition"></div>
           </div>
           <div class="flex items-center justify-between px-3.5 pb-2.5 pt-0.5 min-h-[44px] gap-2">
             <button id="mobileSheetChevronBtn" type="button" class="w-9 h-9 rounded-full bg-black hover:bg-black text-[#f4f4f4] flex items-center justify-center shrink-0 transition min-h-[44px] min-w-[44px]">
@@ -2643,12 +2649,16 @@ return maplibregl$1;
       <div class="p-3 border-b border-[#262626] flex flex-col gap-2">
         <input type="text" id="searchInput" placeholder="Search spaces, empirical studies, authors, or topics..." class="w-full bg-transparent border-b border-[#262626] text-[14px] text-white placeholder-[#71717a] py-2 focus:outline-none" />
         <div class="flex flex-col gap-2 text-[14px]">
-          <select id="countrySelect" class="bg-transparent border-b border-[#262626] text-[#f4f4f4] py-1.5 truncate focus:outline-none">
-            <option value="all">All Countries</option>
-          </select>
-          <select id="citySelect" class="bg-transparent border-b border-[#262626] text-[#f4f4f4] py-1.5 truncate focus:outline-none">
-            <option value="all">All Cities</option>
-          </select>
+          <div class="atlas-combo" data-placeholder="Search countries">
+            <select id="countrySelect" hidden tabindex="-1">
+              <option value="all">All countries</option>
+            </select>
+          </div>
+          <div class="atlas-combo" data-placeholder="Search cities">
+            <select id="citySelect" hidden tabindex="-1">
+              <option value="all">All cities</option>
+            </select>
+          </div>
         </div>
       </div>
       <div id="institutionsListContainer" class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-2">
@@ -2752,7 +2762,7 @@ return maplibregl$1;
           <button id="testConnectionBtn" class="px-3.5 py-2 bg-black hover:bg-black border border-[#3e3e3e] text-white text-[14px] rounded-xl transition flex-1 sm:flex-initial">
             Test Connection
           </button>
-          <button id="clearApiKeyBtn" class="px-3 py-2 text-[#f4f4f4] hover:text-white hover:bg-white/10 rounded-xl text-[14px] transition flex-1 sm:flex-initial" title="Reset to default system key">
+          <button id="clearApiKeyBtn" class="px-3 py-2 text-[#f4f4f4] hover:text-white hover:underline rounded-xl text-[14px] transition flex-1 sm:flex-initial" title="Reset to default system key">
             Reset to Default
           </button>
         </div>
@@ -9168,8 +9178,10 @@ return maplibregl$1;
     function xrayMapSize() { const el = document.getElementById('cityMapContainer'); return { w: el ? el.clientWidth : window.innerWidth, h: el ? el.clientHeight : window.innerHeight }; }
     function xrayNarrow() { return xrayMapSize().w < 720; }
     function xrayFlyOffset() {
-      const { w, h } = xrayMapSize();
-      return xrayNarrow() ? [0, -Math.round(h * 0.22)] : [Math.min(260, Math.round(w * 0.3)), 0];
+      // On a desktop the findings are in the right column, so the building stays centred; on a phone they sit along the bottom.
+      if (window.innerWidth >= 768) return [0, 0];
+      const { h } = xrayMapSize();
+      return [0, -Math.round(h * 0.22)];
     }
 
     // Reported items, each with what the record says it is. Never a bare name.
@@ -9309,6 +9321,8 @@ return maplibregl$1;
       XRAY.inst = null; XRAY.waiting = false;
       xrayClearDrawing();
       document.getElementById('buildingInsidePanel')?.classList.add('hidden');
+      const inside = document.getElementById('desktopDossierInside');
+      if (inside) { inside.innerHTML = ''; inside.classList.add('hidden'); }
       if (!cityVectorMap || typeof cityVectorMap.getLayer !== 'function') { XRAY.dimmed = false; return; }
       try {
         if (XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 0.72);
@@ -9443,18 +9457,29 @@ return maplibregl$1;
       else if (wd.status === 'none') wdHtml = `<p class="no-indent">No Wikidata item within 250 m matched this website or name${wd.checked >= WIKIDATA_CANDIDATES ? ` among the nearest ${WIKIDATA_CANDIDATES}` : ''}.</p>`;
       else if (wd.status === 'ambiguous') wdHtml = `<p class="no-indent">${wd.count} Wikidata items within 250 m share this website or name, so none is shown.</p>`;
       else wdHtml = `<p class="no-indent">From Wikidata, matched by ${e(wd.how)}, fetched this session. Not independently verified. <a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}.</p>`;
-      panel.innerHTML = `
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="!mt-0 text-white">${e(inst.name)}</h3>
-          <button type="button" class="xray-pill shrink-0" onclick="window.hideBuildingXray()">Close</button>
-        </div>
+      const body = `
         <p class="no-indent text-[#f4f4f4]">${outline}</p>
         ${cats.length ? `<p class="no-indent text-[#08bdba]">Inside, from the record:</p>${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1.5 border-t border-[#f4f4f4]"><div class="no-indent" style="color:${XRAY_COLOURS[c.key]}">${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent text-[#f4f4f4]">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent text-[#f4f4f4]">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent text-[#f4f4f4]">None of the categories shown here is in the record.</p>'}
         <div class="py-1.5 border-t border-[#f4f4f4]">
           <p class="no-indent text-[#f4f4f4]">Current shows: not in the records. ${site ? `Website: <a href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a>.` : 'No website is recorded.'}</p>
           <p class="no-indent text-[#f4f4f4]">Archives: ${wd && wd.status === 'matched' && wd.archivesAt.length ? 'held at ' + e(wd.archivesAt.join(', ')) + ', according to Wikidata.' : 'not in the records.'}</p>
           ${wdHtml}
-        </div>
+        </div>`;
+      // On a desktop the information goes to the right column, under the record; the map keeps only the labels on the building.
+      const inside = document.getElementById('desktopDossierInside');
+      const col = document.getElementById('desktopDossierColumn');
+      if (window.innerWidth >= 768 && inside && col) {
+        inside.innerHTML = `<h3 class="text-[14px] font-normal text-[#f4f4f4]">Inside the building</h3>` + body;
+        inside.classList.remove('hidden');
+        panel.classList.add('hidden');
+        if (col.classList.contains('hidden') && typeof toggleDesktopDossier === 'function') toggleDesktopDossier(true);
+        return;
+      }
+      panel.innerHTML = `
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="!mt-0 text-white">${e(inst.name)}</h3>
+          <button type="button" class="xray-pill shrink-0" onclick="window.hideBuildingXray()">Close</button>
+        </div>` + body + `
         <div class="flex gap-2 pt-1"><button type="button" class="xray-pill" data-xray-full-record>Full record</button></div>`;
       panel.querySelector('[data-xray-full-record]')?.addEventListener('click', () => { if (typeof openDossier === 'function') openDossier(inst); });
       // A narrow map column takes the phone layout: full width along the bottom, under the building.
@@ -11032,7 +11057,7 @@ return maplibregl$1;
                   ? (node.tier === 'A' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-blue-950 text-[#f4f4f4] border border-blue-700/60')
                   : 'bg-red-950 text-red-300 border border-red-700/60'
               }">
-                ${isInst ? (node.tier === 'A' ? 'Clean Cultural Institution' : 'Flagged Cultural Institution') : `Corporate Trustee, ${node.category.toUpperCase()}`}
+                ${isInst ? (node.tier === 'A' ? 'Clean Cultural Institution' : 'Flagged Cultural Institution') : `Corporate Trustee, ${node.category}`}
               </span>
               <span class="text-[14px] font-mono text-purple-300">${connectedEdges.length} Connected Interlocks</span>
             </div>
@@ -12611,7 +12636,7 @@ return maplibregl$1;
               ctx.stroke();
 
               // Card dimensions & multi-line layout (no dots, each item on its own line)
-              const cityTxt = hMeta.name.toUpperCase();
+              const cityTxt = hMeta.name;
               const countryTxt = hMeta.country ? hMeta.country.trim() : '';
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
               const countTxt = `${countVal} Verified Cultural Space${countVal === 1 ? '' : 's'}`;
@@ -12894,11 +12919,8 @@ return maplibregl$1;
             const dDrawer = document.getElementById('detailDrawer');
             const isDossierOpen = (dCol && !dCol.classList.contains('hidden') && dCol.style.display !== 'none') ||
                                   (dDrawer && !dDrawer.classList.contains('hidden'));
-            if (isDossierOpen) {
-              floatingCard.classList.add('hidden');
-            } else {
-              floatingCard.classList.remove('hidden');
-            }
+            floatingCard.classList.add('hidden');   // on a desktop the record is in the right column, never on the map
+            void isDossierOpen;
             floatingCard.style.left = `${Math.round(pt.x + 20)}px`;
             floatingCard.style.top = `${Math.round(pt.y - 40)}px`;
             floatingCard.style.right = 'auto';
@@ -13193,6 +13215,9 @@ return maplibregl$1;
         record.innerHTML = documentedRecordHtml(inst) || (isGossipModeActive ? '<p class="no-indent text-[18px]">Nothing is reported for this space in the records.</p>' : '');
         record.classList.toggle('hidden', !record.innerHTML);
       }
+
+      const inside = document.getElementById('desktopDossierInside');   // the building section belongs to one record only
+      if (inside && !(typeof XRAY !== 'undefined' && XRAY.inst === inst)) { inside.innerHTML = ''; inside.classList.add('hidden'); }
 
       const col = document.getElementById('desktopDossierColumn');
       if (col && window.innerWidth >= 768) {
@@ -17688,7 +17713,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         </p>
         <div class="py-2.5 border-t border-[#333] space-y-1.5 text-[#f4f4f4] text-[14px] leading-[135%]">
           <div><strong class="text-[#f4f4f4] font-mono text-[14px] tracking-wider block">Audit Ticket</strong> <span class="font-mono text-emerald-400 font-bold">#${entry.id}</span>, <span class="text-[#f4f4f4] text-[14px] font-mono">Curatorial Verification Queue</span></div>
-          <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono text-[14px] tracking-wider block">Submission Category</strong> ${escapeHtml(cat.replace(/_/g, ' ').toUpperCase())}</div>
+          <div class="pt-1 border-t border-[#262626]"><strong class="text-[#42be65] font-mono text-[14px] tracking-wider block">Submission Category</strong> ${escapeHtml(cat.replace(/_/g, ' '))}</div>
           ${name ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#f4f4f4] font-mono text-[14px] tracking-wider block">Space & Location</strong> <span class="text-white font-medium">${escapeHtml(name)}</span> ${city ? `(${escapeHtml(city)})` : ''}</div>` : ''}
           <div class="pt-1 border-t border-[#262626]"><strong class="text-[#be95ff] font-mono text-[14px] tracking-wider block">Research Findings</strong> ${escapeHtml(details)}</div>
           ${sourceUrl ? `<div class="pt-1 border-t border-[#262626]"><strong class="text-[#3ddbd9] font-mono text-[14px] tracking-wider block">Statutory Source Filing</strong> <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:underline font-mono text-[14px] break-all">${escapeHtml(sourceUrl)}</a></div>` : ''}
@@ -18921,17 +18946,83 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function populateDropdowns() {
       if (countrySelect) {
         const countries = [...new Set(ALL_INSTITUTIONS.map(i => i.country).filter(Boolean))].sort();
-        countrySelect.innerHTML = `<option value="all">All Countries (${countries.length})</option>` + 
+        countrySelect.innerHTML = `<option value="all">All countries (${countries.length})</option>` + 
           countries.map(c => `<option value="${c}">${c}</option>`).join('');
       }
 
       if (citySelect) {
         const cities = [...new Set(ALL_INSTITUTIONS.map(i => i.city).filter(Boolean))].sort();
-        citySelect.innerHTML = `<option value="all">All Cities (${cities.length})</option>` + 
+        citySelect.innerHTML = `<option value="all">All cities (${cities.length})</option>` + 
           cities.map(c => `<option value="${c}">${c}</option>`).join('');
       }
     }
     populateDropdowns();
+
+    // Country and city are typed searches over the same lists the hidden selects hold. The select stays the state: choosing an
+    // option sets it and fires change, so the filter handlers below run unchanged. Accents are ignored, so "cote" finds Côte d'Ivoire.
+    function foldText(v) { return String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
+    window.FILTER_COMBOS = window.FILTER_COMBOS || [];
+    function syncFilterCombos() { (window.FILTER_COMBOS || []).forEach(c => c.sync()); }
+    function setupFilterCombo(select) {
+      if (!select || select.dataset.comboReady) return;
+      select.dataset.comboReady = '1';
+      const wrap = select.closest('.atlas-combo') || select.parentElement;
+      const label = wrap.dataset.placeholder || 'Type to search';
+      const listId = select.id + 'List';
+      const field = document.createElement('div'); field.className = 'atlas-combo-field';
+      const input = document.createElement('input');
+      input.type = 'text'; input.placeholder = label; input.autocomplete = 'off'; input.spellcheck = false;
+      input.setAttribute('role', 'combobox'); input.setAttribute('aria-label', label); input.setAttribute('aria-autocomplete', 'list');
+      input.setAttribute('aria-haspopup', 'listbox'); input.setAttribute('aria-expanded', 'false'); input.setAttribute('aria-controls', listId);
+      const clear = document.createElement('button'); clear.type = 'button'; clear.className = 'atlas-combo-clear'; clear.textContent = 'Clear'; clear.hidden = true;
+      const list = document.createElement('ul'); list.id = listId; list.className = 'atlas-combo-list'; list.setAttribute('role', 'listbox'); list.hidden = true;
+      field.append(input, clear); wrap.append(field, list);
+      let items = [], active = -1, open = false;
+      const options = () => Array.from(select.options).map(o => ({ value: o.value, text: o.textContent }));
+      const setActive = (i) => {
+        active = i;
+        Array.from(list.children).forEach((li, k) => li.classList.toggle('is-active', k === i));
+        const li = i >= 0 ? list.children[i] : null;
+        input.setAttribute('aria-activedescendant', li ? li.id : '');
+        if (li && typeof li.scrollIntoView === 'function') li.scrollIntoView({ block: 'nearest' });
+      };
+      const render = (q) => {
+        const f = foldText(q);
+        items = options().filter(o => o.value === 'all' ? !f : foldText(o.text).includes(f));
+        list.innerHTML = '';
+        if (!items.length) { const li = document.createElement('li'); li.className = 'is-empty'; li.textContent = 'No match'; list.append(li); active = -1; return; }
+        items.forEach((o, i) => {
+          const li = document.createElement('li');
+          li.id = `${listId}-${i}`; li.setAttribute('role', 'option'); li.setAttribute('aria-selected', String(o.value === select.value));
+          li.textContent = o.text;
+          li.addEventListener('mousedown', ev => ev.preventDefault());
+          li.addEventListener('click', () => choose(o.value));
+          list.append(li);
+        });
+        setActive(-1);
+      };
+      const sync = () => { const v = select.value; input.value = v && v !== 'all' ? v : ''; clear.hidden = !(v && v !== 'all'); };
+      const show = () => { if (open) return; open = true; render(input.value); list.hidden = false; input.setAttribute('aria-expanded', 'true'); };
+      const hide = () => { if (!open) return; open = false; list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.setAttribute('aria-activedescendant', ''); sync(); };
+      const choose = (value) => { select.value = value; select.dispatchEvent(new Event('change', { bubbles: true })); hide(); sync(); };
+      input.addEventListener('focus', show);
+      input.addEventListener('click', show);
+      input.addEventListener('input', () => { if (!open) show(); render(input.value); });
+      input.addEventListener('keydown', ev => {
+        if (ev.key === 'ArrowDown') { ev.preventDefault(); show(); setActive(Math.min(active + 1, items.length - 1)); }
+        else if (ev.key === 'ArrowUp') { ev.preventDefault(); setActive(Math.max(active - 1, 0)); }
+        else if (ev.key === 'Enter') { ev.preventDefault(); if (open && active >= 0 && items[active]) choose(items[active].value); else if (open && items.length === 1) choose(items[0].value); }
+        else if (ev.key === 'Escape') { ev.preventDefault(); hide(); input.blur(); }
+      });
+      input.addEventListener('blur', () => setTimeout(hide, 0));
+      clear.addEventListener('mousedown', ev => ev.preventDefault());
+      clear.addEventListener('click', () => { choose('all'); input.focus(); });
+      select.addEventListener('change', sync);
+      window.FILTER_COMBOS.push({ sync });
+      sync();
+    }
+    setupFilterCombo(countrySelect);
+    setupFilterCombo(citySelect);
 
     function toggleFilterDrawer(forceState) {
       const drawer = document.getElementById('filterDrawerPanel');
@@ -19085,7 +19176,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           quickLabel.textContent = `Community Layer (${filteredList.length})`;
           if (activeBadge) { activeBadge.textContent = 'User Lead'; activeBadge.classList.remove('hidden'); }
         } else if (selectedCategoryFilter !== 'all') {
-          const meta = FILTER_META[selectedCategoryFilter] || { label: selectedCategoryFilter.toUpperCase() };
+          const meta = FILTER_META[selectedCategoryFilter] || { label: selectedCategoryFilter.replace(/_/g, ' ') };
           quickLabel.textContent = `${meta.label} (${filteredList.length})`;
           if (activeBadge) { activeBadge.textContent = '1'; activeBadge.classList.remove('hidden'); }
         } else if (selectedCityFilter !== 'all') {
@@ -19394,35 +19485,36 @@ bar.innerHTML = html;
     let selectedCategoryFilter = 'all';
 
     const FILTER_META = {
-      free: { label: 'FREE ADMISSION' },
-      sculpture: { label: 'OUTDOOR & SCULPTURE' },
-      research: { label: 'RESEARCH & COMMONS' },
-      monday: { label: 'MONDAY OPENINGS' },
-      transit: { label: 'PUBLIC TRANSIT TIPS' },
-      accessibility: { label: 'UNIVERSAL ACCESSIBILITY' },
-      amenities: { label: 'CAFÉS & BOOKSHOPS' },
-      ethical: { label: 'CLEAN FUNDING' },
-      artist_run: { label: 'ARTIST-RUN SPACES' },
-      fossil_free: { label: 'FOSSIL & DEFENSE-FREE' },
-      finance_civic: { label: 'PUBLIC SUBSIDIZED (≥50%)' },
-      finance_endowed: { label: 'ENDOWED & PHILANTHROPIC (≥30%)' },
-      finance_earned: { label: 'EARNED REVENUE DOMINANT (≥35%)' },
-      finance_high_program: { label: 'HIGH PROGRAM SPEND (≥80%)' },
-      finance_artist_run: { label: 'LEAN ARTIST-RUN BUDGET' },
-      finance_major: { label: 'MAJOR METROPOLITAN SCALE' },
-      london: { label: 'LONDON ART SCENE' },
-      nyc: { label: 'NEW YORK ART SCENE' },
-      paris: { label: 'PARIS ART SCENE' },
-      research_method: { label: 'RESEARCH METHODOLOGY' },
-      research_shows: { label: 'LANDMARK EXHIBITIONS' },
-      research_restitution: { label: 'RESTITUTION & REPATRIATION' },
-      research_models: { label: 'FUNDING MODELS RESEARCH' },
-      research_mit: { label: 'MIT PRESS CANON' },
-      research_krauss: { label: 'LATE CAPITALIST MUSEUM' },
-      research_kwon: { label: 'SITE-SPECIFIC ART' }
+      free: { label: 'Free admission' },
+      sculpture: { label: 'Outdoor & sculpture' },
+      research: { label: 'Research & commons' },
+      monday: { label: 'Monday openings' },
+      transit: { label: 'Public transit tips' },
+      accessibility: { label: 'Universal accessibility' },
+      amenities: { label: 'Cafés & bookshops' },
+      ethical: { label: 'Clean funding' },
+      artist_run: { label: 'Artist-run spaces' },
+      fossil_free: { label: 'Fossil & defense-free' },
+      finance_civic: { label: 'Public subsidized (≥50%)' },
+      finance_endowed: { label: 'Endowed & philanthropic (≥30%)' },
+      finance_earned: { label: 'Earned revenue dominant (≥35%)' },
+      finance_high_program: { label: 'High program spend (≥80%)' },
+      finance_artist_run: { label: 'Lean artist-run budget' },
+      finance_major: { label: 'Major metropolitan scale' },
+      london: { label: 'London art scene' },
+      nyc: { label: 'New York art scene' },
+      paris: { label: 'Paris art scene' },
+      research_method: { label: 'Research methodology' },
+      research_shows: { label: 'Landmark exhibitions' },
+      research_restitution: { label: 'Restitution & repatriation' },
+      research_models: { label: 'Funding models research' },
+      research_mit: { label: 'MIT Press canon' },
+      research_krauss: { label: 'Late capitalist museum' },
+      research_kwon: { label: 'Site-specific art' }
     };
 
     function applyFilters() {
+      if (typeof syncFilterCombos === 'function') syncFilterCombos();
       const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
       const isAcademicOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('ACADEMIC');
       const isVisualCritiqueOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
@@ -19582,17 +19674,17 @@ bar.innerHTML = html;
         } else if (isAcademicOnly) {
           activeMapBanner.classList.remove('hidden');
           if (activeMapIcon) activeMapIcon.textContent = '';
-          activeMapText.textContent = `ACADEMIC RESEARCH CORPUS, ${filteredList.length} EMPIRICAL STUDIES (FILTERED BY USER)`;
+          activeMapText.textContent = `Academic research corpus, ${filteredList.length} empirical studies (filtered by user)`;
         } else if (isVisualCritiqueOnly) {
           activeMapBanner.classList.remove('hidden');
           if (activeMapIcon) activeMapIcon.textContent = '';
-          const stratLabel = selectedVisualCritiqueStrategy !== 'all' ? ` (${selectedVisualCritiqueStrategy.replace(/_/g, ' ').toUpperCase()})` : '';
-          activeMapText.textContent = `VISUAL CRITIQUE & ARTIST FEEDBACK${stratLabel}, ${filteredList.length} INSTITUTIONAL INTERVENTIONS`;
+          const stratLabel = selectedVisualCritiqueStrategy !== 'all' ? ` (${selectedVisualCritiqueStrategy.replace(/_/g, ' ')})` : '';
+          activeMapText.textContent = `Visual critique & artist feedback${stratLabel}, ${filteredList.length} institutional interventions`;
         } else if (selectedCategoryFilter !== 'all') {
           activeMapBanner.classList.remove('hidden');
-          const meta = FILTER_META[selectedCategoryFilter] || { label: selectedCategoryFilter.toUpperCase() };
+          const meta = FILTER_META[selectedCategoryFilter] || { label: selectedCategoryFilter.replace(/_/g, ' ') };
           if (activeMapIcon) activeMapIcon.textContent = '';
-          activeMapText.textContent = `${meta.label}, ${filteredList.length} SPACES ON MAP`;
+          activeMapText.textContent = `${meta.label}, ${filteredList.length} spaces on map`;
         } else {
           activeMapBanner.classList.add('hidden');
         }
@@ -19605,21 +19697,21 @@ bar.innerHTML = html;
       if (activeFilterBanner) {
         if (isCommunityOnly) {
           activeFilterBanner.classList.remove('hidden');
-          if (filterLabel) filterLabel.textContent = 'COMMUNITY LAYER (USER INPUT)';
+          if (filterLabel) filterLabel.textContent = 'Community layer (user input)';
           if (filterCount) filterCount.textContent = `(${filteredList.length})`;
         } else if (isAcademicOnly) {
           activeFilterBanner.classList.remove('hidden');
-          if (filterLabel) filterLabel.textContent = 'ACADEMIC STUDIES (EMPIRICAL LITERATURE)';
+          if (filterLabel) filterLabel.textContent = 'Academic studies (empirical literature)';
           if (filterCount) filterCount.textContent = `(${filteredList.length})`;
         } else if (isVisualCritiqueOnly) {
           activeFilterBanner.classList.remove('hidden');
-          if (filterLabel) filterLabel.textContent = 'VISUAL CRITIQUE & ARTIST FEEDBACK';
+          if (filterLabel) filterLabel.textContent = 'Visual critique & artist feedback';
           if (filterCount) filterCount.textContent = `(${filteredList.length})`;
         } else if (selectedCityFilter !== 'all' || selectedCountryFilter !== 'all' || selectedCategoryFilter !== 'all') {
           activeFilterBanner.classList.remove('hidden');
           let activeName = selectedCityFilter !== 'all' ? selectedCityFilter : (selectedCountryFilter !== 'all' ? selectedCountryFilter : selectedCategoryFilter);
           if (FILTER_META[selectedCategoryFilter]) activeName = FILTER_META[selectedCategoryFilter].label;
-          if (filterLabel) filterLabel.textContent = activeName.toUpperCase();
+          if (filterLabel) filterLabel.textContent = activeName;
           if (filterCount) filterCount.textContent = `(${filteredList.length})`;
         } else {
           activeFilterBanner.classList.add('hidden');
@@ -19691,7 +19783,7 @@ bar.innerHTML = html;
               </div>
 
               <div class="flex flex-col gap-0.5 text-[14px] text-[#f4f4f4] mt-1 font-mono">
-                ${inst.authors ? `<span class="text-white/90">${escapeHtml(inst.authors)}</span>` : ''}
+                ${inst.authors ? `<span class="text-white">${escapeHtml(inst.authors)}</span>` : ''}
                 ${inst.journal ? `<span class="text-[#f4f4f4]">${escapeHtml(inst.journal)}</span>` : ''}
                 ${inst.year ? `<span class="text-[#f4f4f4]">${escapeHtml(inst.year)}</span>` : ''}
                 ${inst.citations ? `<span class="text-emerald-400 font-medium">${escapeHtml(inst.citations)} Citations</span>` : ''}
