@@ -539,7 +539,7 @@ return maplibregl$1;
     </div>
 
     <!-- RESIZABLE SPLITTER (Desktop: Vertical Drag / Mobile: Hidden) -->
-    <div id="globeSplitter" class="hidden md-flex relative md-w-_6px md-h-full rule-x items-center justify-center z-20 shrink-0" title="Drag to adjust split screen, Double-click to reset to 50%">
+    <div id="globeSplitter" class="hidden md-flex relative md-w-_6px md-h-full rule-x items-center justify-center z-20 shrink-0" title="Drag to change the width, double-click to reset">
       <div class="w-10 md-w-_2px h-_2px md-h-8"></div>
     </div>
 
@@ -829,7 +829,7 @@ return maplibregl$1;
   <div class="z-40 rule-t px-3 py-2 flex md-hidden flex-col gap-1_5 shrink-0" data-purpose="ai-chat-input-bar" id="mobileStickyInputBar">
     <div class="relative flex items-center">
       <!-- Input Field -->
-      <input class="w-full px-3 py-2 pr-16" id="chat-input" placeholder="Ask about a museum or cultural space..." type="text">
+      <textarea class="w-full px-3 py-2 pr-20" id="chat-input" rows="2" placeholder="Ask about a museum or cultural space..."></textarea>
       <!-- Send Pill Button -->
       <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5">
         <span>Send</span>
@@ -11647,16 +11647,8 @@ return maplibregl$1;
 
           <div class="pt-2 rule-t">
             ${inst.audit_dossier_url ? `
-              <div class="py-2 rule-b mb-2 space-y-1">
-                <div class="meta t-strong">Public registry</div>
-                <div class="">
-                  A registry search for this museum. It is not a filing.
-                </div>
-                <div>
-                  <a href="${escapeHtml(inst.audit_dossier_url)}" target="_blank" rel="noopener noreferrer" class="underline meta inline-block">
-                    Inspect Statutory Record
-                  </a>
-                </div>
+              <div class="py-2 rule-b mb-2">
+                <a href="${escapeHtml(inst.audit_dossier_url)}" target="_blank" rel="noopener noreferrer" class="underline meta inline-block">${escapeHtml((() => { try { return new URL(inst.audit_dossier_url).hostname.replace(/^www\./, ''); } catch (e) { return inst.audit_dossier_url; } })())}</a>
               </div>
             ` : ''}
             
@@ -13862,6 +13854,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     function resetToNewChat() {
       stopCuratorThinking();
+      if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) toggleGossipMode(false);
+      if (typeof window.setWorkspaceTab === 'function') window.setWorkspaceTab('chat');
       initCuratorConversation();
       if (typeof curatorContext !== 'undefined') {
         curatorContext.activeFocusInst = null;
@@ -13874,6 +13868,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (workInput) workInput.value = '';
       const scrollArea = document.getElementById('curatorScrollArea');
       if (scrollArea) scrollArea.scrollTop = 0;
+      if (workInput) workInput.focus();
     }
 
     function appendUserMessage(text) {
@@ -15793,105 +15788,90 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('viewExpandBtn')?.addEventListener('click', handleViewExpand);
     document.getElementById('topViewExpandBtn')?.addEventListener('click', handleViewExpand);
 
-    // Interactive Splitter Drag between Globe and Work Chat (Responsive Desktop/Mobile)
+    // Splitter between the globe and the record column: pointer drag (mouse, touch, pen), arrow keys, double-click to reset.
+    // The width is kept in this browser only.
     const splitter = document.getElementById('globeSplitter');
     const globeVp = document.getElementById('globeViewport');
     const mainApp = document.getElementById('mainAppContainer');
 
     if (splitter && globeVp && mainApp) {
-      let isDraggingSplitter = false;
+      const KEY = 'culture-atlas-split';
+      const GLOBE_MIN = 140, COLUMN_MIN = 220;
+      const horizontal = () => window.innerWidth >= 768;
+      const place = (px) => {
+        const rect = mainApp.getBoundingClientRect();
+        if (horizontal()) {
+          const v = Math.max(GLOBE_MIN, Math.min(rect.width - COLUMN_MIN, px));
+          globeVp.style.width = v + 'px'; globeVp.style.height = '100%'; globeVp.style.flex = 'none';
+          return v / rect.width;
+        }
+        const v = Math.max(130, Math.min(rect.height - 180, px));
+        globeVp.style.height = v + 'px'; globeVp.style.width = '100%'; globeVp.style.flex = 'none';
+        return v / rect.height;
+      };
+      const slot = () => KEY + (horizontal() ? '-x' : '-y');
+      const save = (frac) => { try { localStorage.setItem(slot(), String(frac)); } catch (e) {} };
+      const restore = () => {
+        let frac = NaN;
+        try { frac = parseFloat(localStorage.getItem(slot())); } catch (e) {}
+        if (!(frac > 0 && frac < 1)) return;
+        const rect = mainApp.getBoundingClientRect();
+        place(frac * (horizontal() ? rect.width : rect.height));
+        resizeCanvas();
+      };
+      splitter.setAttribute('role', 'separator');
+      splitter.setAttribute('aria-label', 'Width of the globe and the record');
+      splitter.setAttribute('tabindex', '0');
 
-      splitter.addEventListener('mousedown', (e) => {
-        isDraggingSplitter = true;
-        const isDesktop = window.innerWidth >= 768;
-        document.body.style.cursor = isDesktop ? 'col-resize' : 'row-resize';
+      let dragging = false;
+      splitter.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        splitter.setPointerCapture(e.pointerId);
+        document.body.style.cursor = horizontal() ? 'col-resize' : 'row-resize';
         document.body.style.userSelect = 'none';
         e.preventDefault();
       });
-
-      window.addEventListener('mousemove', (e) => {
-        if (!isDraggingSplitter) return;
-        const isDesktop = window.innerWidth >= 768;
+      splitter.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
         const rect = mainApp.getBoundingClientRect();
-        if (isDesktop) {
-          const offsetX = e.clientX - rect.left;
-          const minW = 260;
-          const maxW = rect.width - 300;
-          const clamped = Math.max(minW, Math.min(maxW, offsetX));
-          globeVp.style.width = clamped + 'px';
-          globeVp.style.height = '100%';
-          globeVp.style.flex = 'none';
-        } else {
-          const offsetY = e.clientY - rect.top;
-          const minH = 130;
-          const maxH = rect.height - 180;
-          const clamped = Math.max(minH, Math.min(maxH, offsetY));
-          globeVp.style.height = clamped + 'px';
-          globeVp.style.width = '100%';
-          globeVp.style.flex = 'none';
-        }
+        place(horizontal() ? e.clientX - rect.left : e.clientY - rect.top);
         resizeCanvas();
       });
+      const stop = (e) => {
+        if (!dragging) return;
+        dragging = false;
+        try { splitter.releasePointerCapture(e.pointerId); } catch (err) {}
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+        const g = globeVp.getBoundingClientRect(), o = mainApp.getBoundingClientRect();
+        save(horizontal() ? g.width / o.width : g.height / o.height);
+        resizeCanvas();
+      };
+      splitter.addEventListener('pointerup', stop);
+      splitter.addEventListener('pointercancel', stop);
 
-      window.addEventListener('mouseup', () => {
-        if (isDraggingSplitter) {
-          isDraggingSplitter = false;
-          document.body.style.cursor = '';
-          document.body.style.userSelect = '';
-          resizeCanvas();
-        }
+      splitter.addEventListener('keydown', (e) => {
+        const keys = horizontal() ? { ArrowLeft: -1, ArrowRight: 1 } : { ArrowUp: -1, ArrowDown: 1 };
+        if (!(e.key in keys)) return;
+        const g = globeVp.getBoundingClientRect();
+        save(place((horizontal() ? g.width : g.height) + keys[e.key] * (e.shiftKey ? 80 : 24)));
+        resizeCanvas();
+        e.preventDefault();
       });
 
-      // Double-click resets to exact 50% proportional split
+      // Double-click resets to the default split
       splitter.addEventListener('dblclick', () => {
-        const isDesktop = window.innerWidth >= 768;
-        if (isDesktop) {
-          globeVp.style.width = '50%';
-          globeVp.style.height = '100%';
-          globeVp.style.flex = '1 1 50%';
+        try { localStorage.removeItem(KEY + '-x'); localStorage.removeItem(KEY + '-y'); } catch (e) {}
+        if (horizontal()) {
+          globeVp.style.width = '50%'; globeVp.style.height = '100%'; globeVp.style.flex = '1 1 50%';
         } else {
-          globeVp.style.height = '50%';
-          globeVp.style.width = '100%';
-          globeVp.style.flex = '1 1 50%';
+          globeVp.style.height = '50%'; globeVp.style.width = '100%'; globeVp.style.flex = '1 1 50%';
         }
         resizeCanvas();
       });
 
-      // Touch support for mobile / tablets
-      splitter.addEventListener('touchstart', (e) => {
-        isDraggingSplitter = true;
-      }, { passive: true });
-
-      window.addEventListener('touchmove', (e) => {
-        if (!isDraggingSplitter || !e.touches || !e.touches[0]) return;
-        const isDesktop = window.innerWidth >= 768;
-        const rect = mainApp.getBoundingClientRect();
-        if (isDesktop) {
-          const offsetX = e.touches[0].clientX - rect.left;
-          const minW = 260;
-          const maxW = rect.width - 300;
-          const clamped = Math.max(minW, Math.min(maxW, offsetX));
-          globeVp.style.width = clamped + 'px';
-          globeVp.style.height = '100%';
-          globeVp.style.flex = 'none';
-        } else {
-          const offsetY = e.touches[0].clientY - rect.top;
-          const minH = 130;
-          const maxH = rect.height - 180;
-          const clamped = Math.max(minH, Math.min(maxH, offsetY));
-          globeVp.style.height = clamped + 'px';
-          globeVp.style.width = '100%';
-          globeVp.style.flex = 'none';
-        }
-        resizeCanvas();
-      }, { passive: true });
-
-      window.addEventListener('touchend', () => {
-        if (isDraggingSplitter) {
-          isDraggingSplitter = false;
-          resizeCanvas();
-        }
-      });
+      restore();
+      window.addEventListener('resize', restore);
     }
 
     window.addEventListener('resize', () => {
