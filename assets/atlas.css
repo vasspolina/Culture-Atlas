@@ -62,7 +62,6 @@ header button:hover{background:#000;color:#fff}
 header>button:first-child{border-right:1px solid var(--line)}
 #topBrandLogoBtn{padding:0 16px;gap:16px;border-right:0}
 #topBrandLogoBtn>span:first-child{font:400 22px/1 var(--sans);color:inherit}
-#topBrandLogoBtn>span:first-child::after{content:" +";}
 #topBrandLogoBtn>div,#mobileTopBrandBtn>div>span:not(:first-child){font:400 13px/1 var(--mono);background:var(--cobalt);color:#fff;padding:6px 10px;white-space:nowrap}
 #topBrandLogoBtn>div *,#mobileTopBrandBtn>div *{color:inherit}
 #topGossipBtn,#topShareBtn{border-left:1px solid var(--line);border-right:0}
@@ -261,7 +260,6 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #mobileTopBar button{height:var(--bar);font:400 20px/1 var(--sans);border-right:0}
 #mobileTopBrandBtn{padding:0 12px;gap:10px}
 #mobileTopBrandBtn>div>span:first-child{font:400 20px/1 var(--sans);color:inherit}
-#mobileTopBrandBtn>div>span:first-child::after{content:" +"}
 #mobileTopBrandBtn>div{display:flex;align-items:center;gap:10px;flex-direction:row}
 
 #reset-state-btn{border-left:1px solid var(--line);font:400 15px/1 var(--mono)!important;padding:0 14px}
@@ -602,3 +600,6 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #zoomControls{position:absolute;right:16px;bottom:52px;z-index:20;display:flex;flex-direction:column;gap:8px}
 #zoomControls button{width:36px;height:36px;padding:0;font-size:18px}
 #zoomControls svg{width:14px;height:14px}
+/* Back to chat shows only while a note is being written. */
+#chatBackBtn{display:none}
+body.chat-input-mode-active #chatBackBtn{display:inline}
