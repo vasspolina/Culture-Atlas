@@ -9097,6 +9097,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
       const panel = document.getElementById('buildingInsidePanel');
       if (!panel || !inst) return;
       const e = escapeHtml, b = XRAY.building, cats = xrayCategories(inst), wd = XRAY.wikidata[inst.id || inst.name];
+      const site = xraySite(inst);
       const outline = xrayMapIsMock() ? 'The map could not start in this browser, so no outline is drawn.'
         : XRAY.waiting ? 'Waiting for the map tiles.'
         : !b ? 'No building outline in the map data at this point, so nothing is drawn.'
@@ -9104,11 +9105,12 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
         : 'Outline from OpenStreetMap, through the map tiles. The tiles carry no height for this building, so the shell uses the map default.';
       const wdHtml = wd && wd.status === 'matched'
         ? `<p class="no-indent"><a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}</p>` : '';
+      const siteHtml = site ? `<p class="no-indent text-[#f4f4f4]"><a href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a></p>` : '';
       const archivesHtml = wd && wd.status === 'matched' && wd.archivesAt.length ? `<p class="no-indent text-[#f4f4f4]">Archives held at ${e(wd.archivesAt.join(', '))}, according to Wikidata.</p>` : '';
       const body = `
         <p class="no-indent text-[#f4f4f4]">${outline}</p>
         ${cats.length ? `<p class="no-indent text-[#08bdba]">Inside, from the record:</p>${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1.5 border-t border-[#f4f4f4]"><div class="no-indent" style="color:${XRAY_COLOURS[c.key]}">${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent text-[#f4f4f4]">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent text-[#f4f4f4]">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent text-[#f4f4f4]">None of the categories shown here is in the record.</p>'}
-        ${archivesHtml || wdHtml ? `<div class="py-1.5 border-t border-[#f4f4f4]">${archivesHtml}${wdHtml}</div>` : ''}`;
+        ${siteHtml || archivesHtml || wdHtml ? `<div class="py-1.5 border-t border-[#f4f4f4]">${siteHtml}${archivesHtml}${wdHtml}</div>` : ''}`;
       // On a desktop the information goes to the right column, under the record; the map keeps only the labels on the building.
       const inside = document.getElementById('desktopDossierInside');
       const col = document.getElementById('desktopDossierColumn');
