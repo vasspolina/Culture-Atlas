@@ -1623,6 +1623,8 @@ html body #curatorHeroGreeting .starter-prompt:last-child { border-bottom: 0.8px
 html body #curatorHeroGreeting .starter-prompt:hover { color: #ffffff !important; text-decoration: underline; }
 /* The composer keeps clear of the bottom edge of the window. */
 html body #workBottomDock { padding-bottom: max(32px, env(safe-area-inset-bottom)) !important; }
+/* No lines between the header, the map and the panel. */
+html body header[class*="h-14"], html body #mobileTopBar, html body #globeSplitter, html body #workspaceContextTabBar { border: 0 !important; }
 /* The composer shares the greeting's measure and left edge. */
 html body #workBottomDock > div { max-width: 720px !important; width: 100%; }
 html body .chat-info { margin-top: 4px; }
