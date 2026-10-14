@@ -1,0 +1,216 @@
+[
+ {
+  "id": "fringe-world-perth",
+  "from": 0,
+  "a": {
+   "id": "fringe-world-perth",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Festival with no single main building. The one search (Fringe World Perth coordinates) returned no coordinates; it mentioned an office address and more than 10 hubs across the city (Perth Town Hall, State Theatre Centre, The Rechabite, Ice Cream Factory, Pleasure Garden in Russell Square). Answer 0,0."
+  },
+  "b": {
+   "id": "fringe-world-perth",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Citywide festival. Search results describe 54 city venues in 2026 and 106 venues across 34 suburbs in 2024, with hubs such as Russell Square Pleasure Garden, Perth Town Hall and State Theatre Centre. The results state no coordinates and no single main public building, so coordinates are 0. The organiser's office (89 Melbourne Street, Northbridge) is not a public venue."
+  },
+  "agreed": null
+ },
+ {
+  "id": "biennale-of-sydney-sydney",
+  "from": 0,
+  "a": {
+   "id": "biennale-of-sydney-sydney",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Biennial with exhibitions spread across venues (Art Gallery of NSW, Artspace, Chau Chak Wing Museum, Cockatoo Island in earlier editions). The one search returned no coordinates, only an office address (10 Hickson Road, The Rocks). The result also carried an approximate figure labelled as the search tool's general knowledge, not a source, so it was not used. Answer 0,0."
+  },
+  "b": {
+   "id": "biennale-of-sydney-sydney",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Biennial held across changing venues in Greater Sydney (for example Art Gallery of NSW, MCA, Cockatoo Island, White Bay Power Station). The results state no coordinates and no single main building, so coordinates are 0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "dhaka-art-summit-dhaka",
+  "from": 0,
+  "a": {
+   "id": "dhaka-art-summit-dhaka",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Periodic art summit (event), not an institution with its own building. The one search returned no coordinates; it named Bangladesh Shilpakala Academy as the host venue and a separate Samdani Foundation office address. Answer 0,0."
+  },
+  "b": {
+   "id": "dhaka-art-summit-dhaka",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Periodic art summit organised by the Samdani Art Foundation. Recent editions were listed at the National Art Gallery, Bangladesh Shilpakala Academy, but the event has no building of its own. The results state no coordinates, so coordinates are 0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+  "from": 0,
+  "a": {
+   "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+   "lat": -22.913333,
+   "lon": -43.171944,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Museum_of_Modern_Art,_Rio_de_Janeiro"
+   ],
+   "coord_statement": "Wikipedia: 22°54′48″S 43°10′19″W",
+   "fixed_venue": true,
+   "notes": "Wikipedia page for Museum of Modern Art, Rio de Janeiro (Parque do Flamengo, Av. Infante Dom Henrique 85). The search result states 22°54′48″S 43°10′19″W. Converted: 22 + 54/60 + 48/3600 = 22.913333 S, 43 + 10/60 + 19/3600 = 43.171944 W, so south and west are negative. Two other listings in the same result (AroundUs -22.91375, -43.17181; Meer -22.912810, -43.171563) agree to within a few hundred metres."
+  },
+  "b": {
+   "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+   "lat": -22.913333,
+   "lon": -43.171944,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Museum_of_Modern_Art,_Rio_de_Janeiro"
+   ],
+   "coord_statement": "22°54′48″S 43°10′19″W",
+   "fixed_venue": true,
+   "notes": "Source: English Wikipedia article for the Museum of Modern Art, Rio de Janeiro (MAM Rio), Flamengo Park, Av. Infante Dom Henrique 85. Converted from DMS: 22+54/60+48/3600 = 22.913333 S; 43+10/60+19/3600 = 43.171944 W, both negative. The search summary also gave the decimals 22.913375°S, 43.171980°W for the same page. Two other sources in the second search (aroundus.com -22.91375, -43.17181; meer.com -22.91281, -43.17156) agree to within about 0.001 degrees. Found with 2 searches."
+  },
+  "agreed": {
+   "lat": -22.913333,
+   "lon": -43.171944
+  }
+ },
+ {
+  "id": "masp-são-paulo",
+  "from": 4,
+  "a": {
+   "id": "masp-são-paulo",
+   "lat": -23.5611,
+   "lon": -46.6558,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Museum_of_Art"
+   ],
+   "coord_statement": "Wikipedia lists them as 23°33′40″S 46°39′21″W / 23.5611°S 46.6558°W, which corresponds to the museum's address on Avenida Paulista 1578.",
+   "fixed_venue": true,
+   "notes": "Wikipedia article for the São Paulo Museum of Art (MASP), Avenida Paulista 1578. Southern and western hemispheres, so both values are negative. 1 search used."
+  },
+  "b": {
+   "id": "masp-são-paulo",
+   "lat": -23.56,
+   "lon": -46.66,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Museum_of_Art"
+   ],
+   "coord_statement": "with coordinates of about 23.56°S, 46.66°W",
+   "fixed_venue": true,
+   "notes": "First search (MASP São Paulo Brazil location wikipedia): the Wikipedia article São Paulo Museum of Art is quoted as giving the address Avenida Paulista 1578, São Paulo, with coordinates of about 23.56°S, 46.66°W. South and west converted to negative. The source gives only two decimals (about 1 km), so precision is low. The second search (MASP geographic coordinates) returned only the Maspalomas GNSS station in Spain, a namesake, and was not used."
+  },
+  "agreed": {
+   "lat": -23.5611,
+   "lon": -46.6558
+  }
+ },
+ {
+  "id": "esker-foundation-calgary",
+  "from": 4,
+  "a": {
+   "id": "esker-foundation-calgary",
+   "lat": 51.04260025823428,
+   "lon": -114.03880400292452,
+   "coord_urls": [
+    "https://www.meer.com/esker-foundation"
+   ],
+   "coord_statement": "Esker Foundation 51.04260025823428 -114.03880400292452 9 Ave SE, 1011 4th floor Calgary AB T2G 0H7 Canada",
+   "fixed_venue": true,
+   "notes": "Source is the Meer art-listings page for the Esker Foundation, Calgary (address 1011 9 Ave SE, 4th floor), not Wikipedia or an official page. Its language versions repeat the same data, so they are not independent confirmation. A second search returned the same Meer listing with the rounded figure 51.04, -114.04. West longitude is negative. 2 searches used."
+  },
+  "b": {
+   "id": "esker-foundation-calgary",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches, neither stated coordinates. Results give only a street address (1011 9 Ave SE, 4th floor, Calgary AB T2G 0H7, Atlantic Avenue Art Block, Inglewood), and the rules forbid estimating from an address, so lat and lon are 0. It is a single gallery, so fixed_venue is true."
+  },
+  "agreed": null
+ },
+ {
+  "id": "glenbow-calgary",
+  "from": 4,
+  "a": {
+   "id": "glenbow-calgary",
+   "lat": 51.0449778,
+   "lon": -114.0611333,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Glenbow_Museum"
+   ],
+   "coord_statement": "Wikipedia lists 51°2′41.92″N 114°3′40.08″W, or 51.0449778, -114.0611333 in decimal form.",
+   "fixed_venue": true,
+   "notes": "Wikipedia article for the Glenbow Museum, downtown Calgary (130 9 Ave SE per a Sygic listing). The decimal figure matches my own conversion of the degrees, minutes and seconds. West longitude is negative. Glenbow's own site says the building is closed for renovation, with reopening targeted for 2027, but it remains the institution's main public building. 1 search used."
+  },
+  "b": {
+   "id": "glenbow-calgary",
+   "lat": 51.044978,
+   "lon": -114.061133,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Glenbow_Museum"
+   ],
+   "coord_statement": "Wikipedia lists 51°2′41.92″N 114°3′40.08″W, or about 51.0450, -114.0611 in decimal degrees.",
+   "fixed_venue": true,
+   "notes": "Taken from the second search (Glenbow geographic coordinates), for the Glenbow Museum in downtown Calgary, not the Glenbow Ranch Provincial Park or the locality Glenbow, Alberta. Converted from 51°2′41.92″N 114°3′40.08″W, which gives 51.044978 and -114.061133 (west negative). The same result also cites latlong.net (https://www.latlong.net/place/glenbow-museum-calgary-canada-382.html) at 51.044827, -114.060944, which agrees to within a few hundred metres. The museum is described as closed for renovation since 2021, with reopening scheduled for 2027. My first query wrongly said UK instead of Canada, which was my typing error and not the input. The results were still about Calgary, Canada."
+  },
+  "agreed": {
+   "lat": 51.0449778,
+   "lon": -114.0611333
+  }
+ },
+ {
+  "id": "m-hong-kong",
+  "from": 4,
+  "a": {
+   "id": "m-hong-kong",
+   "lat": 22.300958,
+   "lon": 114.159645,
+   "coord_urls": [
+    "https://kiwix.lema.org/wikipedia_en_all_mini_2024-02/A/M%2B"
+   ],
+   "coord_statement": "M+ is at roughly 22°18′03″N, 114°09′35″E (decimal: 22.300958, 114.159645). Its address is 38 Museum Drive, West Kowloon Cultural District, Hong Kong. Several sources list these same coordinates, including Wikipedia mirrors (a kiwix.lema.org copy)",
+   "fixed_venue": true,
+   "notes": "The search result attributes these coordinates to Wikipedia mirrors, naming the kiwix.lema.org copy of the M+ article, so I cite that URL, which was in the Links list. The en.wikipedia.org M+ page also appeared in the results, but the result text does not tie the coordinates to it directly, so I did not cite it. The decimal figures are as stated. Converting the rounded degrees, minutes and seconds gives about 22.30083, 114.15972, which agrees to about 4 decimal places. A second search gave only a rounded 22.30°N, 114.16°E for the 38 Museum Drive address, consistent with this. 2 searches used."
+  },
+  "b": {
+   "id": "m-hong-kong",
+   "lat": 22.300833,
+   "lon": 114.159722,
+   "coord_urls": [
+    "https://Www.Wikipedia.org/wiki/M%2B"
+   ],
+   "coord_statement": "The Wikipedia entry lists M+ at 38 Museum Drive, West Kowloon Cultural District, Hong Kong, with coordinates of 22°18′03″N 114°09′35″E.",
+   "fixed_venue": true,
+   "notes": "Found with the first search only. The URL is copied exactly as it appears in the Links list, including the unusual capitalisation. The result is about M+ in the West Kowloon Cultural District, Hong Kong. Converted from 22°18′03″N 114°09′35″E: 22 + 18/60 + 3/3600 = 22.300833, and 114 + 9/60 + 35/3600 = 114.159722."
+  },
+  "agreed": {
+   "lat": 22.300958,
+   "lon": 114.159645
+  }
+ }
+]

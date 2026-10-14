@@ -1,0 +1,1875 @@
+[
+ {
+  "id": "tai-kwun-hong-kong",
+  "from": 8,
+  "a": {
+   "id": "tai-kwun-hong-kong",
+   "lat": 22.28122,
+   "lon": 114.15408,
+   "coord_urls": [
+    "https://travel.sygic.com/en/poi/tai-kwun-poi:26946034"
+   ],
+   "coord_statement": "Sygic Travel lists 22°16'52.395\" N 114°9'14.68\" E",
+   "fixed_venue": true,
+   "notes": "Converted from degrees/minutes/seconds: 22 + 16/60 + 52.395/3600 = 22.28122; 114 + 9/60 + 14.68/3600 = 114.15408. Source is a travel-map listing (Sygic), not Wikipedia or an official page. Results identify Tai Kwun as 10 Hollywood Road, Central, Hong Kong, the former Central Police Station compound, so it is the right institution. A second source (Tripomatic) gave 22°16'52.712\" N, 114°9'14.512\" E, which agrees closely. The second search (Tai Kwun Wikipedia result) did not state coordinates in the returned text."
+  },
+  "b": {
+   "id": "tai-kwun-hong-kong",
+   "lat": 22.28122,
+   "lon": 114.15408,
+   "coord_urls": [
+    "https://travel.sygic.com/en/poi/tai-kwun-poi:26946034",
+    "https://tripomatic.com/cs/poi/tai-kwun-poi:26946034"
+   ],
+   "coord_statement": "22°16'52.395\" N 114°9'14.68\" E",
+   "fixed_venue": true,
+   "notes": "Wikipedia result (en.wikipedia.org/wiki/Tai_Kwun) gave only the address (10 Hollywood Road, Central) and no coordinates. Searched 'Tai Kwun geographic coordinates'. Sygic Travel lists 22°16'52.395\" N 114°9'14.68\" E; Tripomatic lists 22°16'52.712\" N, 114°9'14.512\" E (within about 10 m of Sygic). I converted the Sygic figures to decimal degrees myself (22.281221, 114.154078). No official or survey source stated coordinates, so this rests on travel-guide listings only."
+  },
+  "agreed": {
+   "lat": 22.28122,
+   "lon": 114.15408
+  }
+ },
+ {
+  "id": "long-museum-shanghai",
+  "from": 8,
+  "a": {
+   "id": "long-museum-shanghai",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Answer 0 because the results do not say which of two sites is the main public building. The Long Museum has two Shanghai sites, Pudong (Luoshan Road 210) and West Bund (3398 Longteng Avenue, Xuhui). Search 1 returned a Sygic Travel listing (https://travel.sygic.com/es/poi/long-museum-poi:20486425) described as Pudong at 31°13'5.259\" N 121°34'10.991\" E, and an AroundUs listing (https://aroundus.com/p/169572905-long-museum-west-bund) for West Bund at 31.18592,121.46019. Picking either one would be a judgement the sources do not make. The second search (Long Museum Wikipedia result) gave addresses only, with no coordinates. If the database rule is to pick one site, a human has to choose, and the two candidate values above can be used."
+  },
+  "b": {
+   "id": "long-museum-shanghai",
+   "lat": 31.18592,
+   "lon": 121.46019,
+   "coord_urls": [
+    "https://aroundus.com/p/169572905-long-museum-west-bund"
+   ],
+   "coord_statement": "31.18592, 121.46019 (AroundUs listing for Long Museum West Bund, labeled GPS coordinates)",
+   "fixed_venue": true,
+   "notes": "Ambiguous: Long Museum has two Shanghai buildings (Pudong, opened 2012; West Bund, 3398 Longteng Avenue, Xuhui, opened 2014) plus a Chongqing branch. No source in the results says which is the main one. I chose West Bund because the results describe it as China's largest private museum at the time of opening. Wikipedia result gave no coordinates; the AroundUs figures are a map-listing source. The Pudong alternative, from Sygic Travel (https://travel.sygic.com/es/poi/long-museum-poi:20486425), is 31°13'5.259\" N, 121°34'10.991\" E (about 31.2181, 121.5697, my conversion). Whoever reviews this should decide which site counts as main."
+  },
+  "agreed": null
+ },
+ {
+  "id": "yuz-museum-shanghai",
+  "from": 8,
+  "a": {
+   "id": "yuz-museum-shanghai",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Neither search returned coordinates. Search 1 gave only the address 35 Feng Gu Road, West Bund, Xuhui District, Shanghai. Search 2 returned the Wikipedia page, which gave the same address and no coordinates. One less established source says the flagship has moved to Panlong Tiandi, Qingpu District (No. 8, Lane 123, Panding Road), so the main building may have changed and is unconfirmed. No estimate made from the address."
+  },
+  "b": {
+   "id": "yuz-museum-shanghai",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Both searches returned addresses only and no coordinates. Wikipedia result gives 35 Fenggu Road, Xuhui District, West Bund (former Longhua Airport hangar, opened 2014). A newer source describes a flagship at No. 8, Lane 123, Panding Road, Panlong Tiandi, Qingpu District, and the results do not settle whether the West Bund site is still operating. Not estimated from the address."
+  },
+  "agreed": null
+ },
+ {
+  "id": "fondation-louis-vuitton-paris",
+  "from": 8,
+  "a": {
+   "id": "fondation-louis-vuitton-paris",
+   "lat": 48.87667,
+   "lon": 2.26333,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Louis_Vuitton_Foundation"
+   ],
+   "coord_statement": "48°52′36″N 2°15′48″E / 48.87667°N 2.26333°E",
+   "fixed_venue": true,
+   "notes": "Wikipedia (Louis Vuitton Foundation) states the decimal pair directly, with the address 8 Avenue du Mahatma-Gandhi, 16th arrondissement, in the Bois de Boulogne, Paris. Other listings in the same results agree: LatLong.net 48.876656, 2.263377 (https://www.latlong.net/place/fondation-louis-vuitton-paris-france-32938.html) and Meer.com 48.87666, 2.26335. Only one search was needed."
+  },
+  "b": {
+   "id": "fondation-louis-vuitton-paris",
+   "lat": 48.876667,
+   "lon": 2.263333,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Louis_Vuitton_Foundation"
+   ],
+   "coord_statement": "48°52′36″N, 2°15′48″E",
+   "fixed_venue": true,
+   "notes": "Wikipedia's Louis_Vuitton_Foundation page states 48°52′36″N, 2°15′48″E, which I converted to decimal degrees (48.876667, 2.263333). It is at 8 Avenue du Mahatma-Gandhi, 16th arrondissement, in the Bois de Boulogne. LatLong.net lists 48.876656, 2.263377, consistent within about 5 m (https://www.latlong.net/place/fondation-louis-vuitton-paris-france-32938.html). Found on the second search; the first search returned the address but no coordinates."
+  },
+  "agreed": {
+   "lat": 48.87667,
+   "lon": 2.26333
+  }
+ },
+ {
+  "id": "louvre-paris",
+  "from": 12,
+  "a": {
+   "id": "louvre-paris",
+   "lat": 48.860294,
+   "lon": 2.338629,
+   "coord_urls": [
+    "https://www.latlong.net/place/mus-e-du-louvre-paris-france-223.html"
+   ],
+   "coord_statement": "Museum (general): One listing gives 48.860294, 2.338629.",
+   "fixed_venue": true,
+   "notes": "Used 2 searches. The first result text says 'One listing gives' these decimals for the museum without naming the URL; I paired it with the latlong.net page titled 'Musée du Louvre, Paris, France' because that is the only museum-level listing in the Links and the other latlong.net page is the Pyramid (stated separately as 48.861027, 2.335708). That pairing is my inference, not stated by the result. The result also says sources disagree: Pyramid entrance 48.861027, 2.335708; Louvre Palace 48° 51' 23.99\" N, 2° 20' 6.60\" E. The second search (Wikipedia/Wikidata only) returned no coordinates."
+  },
+  "b": {
+   "id": "louvre-paris",
+   "lat": 48.860294,
+   "lon": 2.338629,
+   "coord_urls": [
+    "https://www.latlong.net/place/mus-e-du-louvre-paris-france-223.html"
+   ],
+   "coord_statement": "LatLong.net (museum): lists the museum at 48.860294, 2.338629.",
+   "fixed_venue": true,
+   "notes": "Search 1 (\"Louvre Paris France location wikipedia\") returned only low-quality pages and no coordinates. Search 2 (\"Louvre geographic coordinates\") returned the LatLong.net page titled \"Musée du Louvre, Paris, France\", cited above. The same result also reported a Wikipedia-derived mirror value of 48.860339°N 2.337599°E (the summary did not say which URL carried it, so I did not cite it) and GeoNames 48.8625 2.336389. The values differ by under about 250 m, all within the Louvre complex in the 1st arrondissement. I used the LatLong.net pair because its URL is unambiguous."
+  },
+  "agreed": {
+   "lat": 48.860294,
+   "lon": 2.338629
+  }
+ },
+ {
+  "id": "musée-dorsay-paris",
+  "from": 12,
+  "a": {
+   "id": "musée-dorsay-paris",
+   "lat": 48.860283,
+   "lon": 2.325392,
+   "coord_urls": [
+    "https://latitude.to/map/fr/france/cities/beynes/articles/17425/gare-dorsay"
+   ],
+   "coord_statement": "A coordinate page for the former Gare d'Orsay building lists 48°51'37.02\" N, 2°19'31.41\" E, or about 48.8603, 2.3254.",
+   "fixed_venue": true,
+   "notes": "Used 2 searches. Converted 48°51'37.02\"N 2°19'31.41\"E to decimal: 48.860283, 2.325392. The result describes this page as the former Gare d'Orsay building, which now houses the museum, and the figures agree with the two Musée d'Orsay station listings in the same results (about 48.8606, 2.3261 and 48.8606, 2.3259). The URL path contains 'beynes', and the result does not name which Links entry holds the figure; I matched it by the page title 'Latitude and longitude of Gare d'Orsay'. The second search (Wikipedia/Wikidata only) returned no coordinates. Lower confidence than a Wikipedia or Wikidata source."
+  },
+  "b": {
+   "id": "musée-dorsay-paris",
+   "lat": 48.8602833,
+   "lon": 2.3253917,
+   "coord_urls": [
+    "https://latitude.to/satellite-map/fr/france/17425/gare-dorsay",
+    "https://latitude.to/articles-by-country/fr/france/17425/gare-dorsay"
+   ],
+   "coord_statement": "Latitude.to (Gare d'Orsay): 48° 51' 37.02\" N, 2° 19' 31.41\" E, which is about 48.8603° N, 2.3254° E in decimal form.",
+   "fixed_venue": true,
+   "notes": "Search 1 returned a Wikipedia page for the museum, but the result text gave no coordinates. It did say the museum occupies the former Gare d'Orsay railway station, which is why I accepted a listing named \"Gare d'Orsay\" as the museum building. Search 2 (\"Musée d'Orsay geographic coordinates\") returned Latitude.to for Gare d'Orsay (cited). Sygic's \"gare d orsay\" POI gives 48°51'38.056\" N 2°19'33.938\" E (https://travel.sygic.com/en/poi/gare-d-orsay-poi:4280701) and TravelProfy's \"Musée d Orsay Station\" gives 48.8605888, 2.3259096; both agree within about 50 m. The Wikimedia Commons value 48.860838; 2.325527 is a camera position, so I excluded it. Weaker than a Wikipedia or Wikidata source: the match to the museum rests on the result calling the building Gare d'Orsay, and none of the pages is Wikipedia, Wikidata or an official page. Decimal values are converted from the quoted degrees-minutes-seconds."
+  },
+  "agreed": {
+   "lat": 48.860283,
+   "lon": 2.325392
+  }
+ },
+ {
+  "id": "kiran-nadar-museum-of-art-new-delhi",
+  "from": 12,
+  "a": {
+   "id": "kiran-nadar-museum-of-art-new-delhi",
+   "lat": 28.52884,
+   "lon": 77.22008,
+   "coord_urls": [
+    "https://www.wikidata.org/wiki/Q55616048"
+   ],
+   "coord_statement": "Wikidata lists the museum's headquarters location as New Delhi, with coordinates of 28°31'43.824\"N, 77°13'12.288\"E.",
+   "fixed_venue": true,
+   "notes": "Used 2 searches. The first search gave only a street address in Saket and no coordinates. The first result also offered an approximate figure labelled as coming from the model's own knowledge, which I did not use. The second search, limited to Wikipedia/Wikidata, returned the Wikidata statement above, converted to decimal: 28.528840, 77.220080. The result says the current public home is South Court Mall, Saket, and there is also a Noida branch. The new Adjaye-designed building near the airport has not been confirmed as opened."
+  },
+  "b": {
+   "id": "kiran-nadar-museum-of-art-new-delhi",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches were run. Neither result states coordinates for the museum. Search 1 mentioned a listing with 28.67119, 77.22047 for the Saket address, but the result itself flagged it as not matching Saket and gave no URL for it, so I did not use it. Search 2 said no coordinates were found. Results describe the current venue as 145, DLF South Court Mall, Saket, New Delhi, and a new Adjaye-designed building on NH-8 near the airport is planned or under construction. Which building counts as the main public building is itself unsettled, and no source gave coordinates for either, so the answer is 0, 0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "museum-macan-jakarta",
+  "from": 12,
+  "a": {
+   "id": "museum-macan-jakarta",
+   "lat": -6.190833,
+   "lon": 106.767778,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Museum_of_Modern_and_Contemporary_Art_in_Nusantara"
+   ],
+   "coord_statement": "Museum MACAN's coordinates are 6°11′27″S 106°46′04″E, or about -6.1909, 106.7679 in decimal degrees. These come from the museum's Wikipedia entry, the only source in the results that gives coordinates.",
+   "fixed_venue": true,
+   "notes": "Used 1 search. Converted 6°11′27″S 106°46′04″E to decimal: -6.190833, 106.767778. The Wikipedia article is the Museum of Modern and Contemporary Art in Nusantara (Museum MACAN), located at AKR Tower Level MM, Kebon Jeruk, West Jakarta."
+  },
+  "b": {
+   "id": "museum-macan-jakarta",
+   "lat": -6.190833,
+   "lon": 106.767778,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Museum_of_Modern_and_Contemporary_Art_in_Nusantara"
+   ],
+   "coord_statement": "Museum MACAN's coordinates are about 6.1909° S, 106.7679° E (6°11′27″S 106°46′04″E in degrees-minutes-seconds). The Wikipedia entry lists these coordinates, and the museum sits in the AKR Tower in Kebon Jeruk, West Jakarta.",
+   "fixed_venue": true,
+   "notes": "Search 1 (\"Museum MACAN Jakarta Indonesia location wikipedia\") found the English Wikipedia article (Museum of Modern and Contemporary Art in Nusantara, Kebon Jeruk, West Jakarta) but stated no coordinates. Search 2 (\"Museum MACAN geographic coordinates\") returned the same article, and the result text gives 6°11′27″S 106°46′04″E. I converted the DMS to decimal (-6.190833, 106.767778). The result's own rounded decimal is 6.1909 S, 106.7679 E, a difference of under 10 m. A second Wikipedia mirror (https://wikipedia.com/wiki/Museum_Macan) was reported to match."
+  },
+  "agreed": {
+   "lat": -6.190833,
+   "lon": 106.767778
+  }
+ },
+ {
+  "id": "imma-dublin",
+  "from": 16,
+  "a": {
+   "id": "imma-dublin",
+   "lat": 53.343077,
+   "lon": -6.300037,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Irish_Museum_of_Modern_Art"
+   ],
+   "coord_statement": "Wikipedia lists them as 53°20′35″N 6°18′00″W, or 53.343077°N 6.300037°W.",
+   "fixed_venue": true,
+   "notes": "1 search. Result is about the Irish Museum of Modern Art at the Royal Hospital Kilmainham, Dublin 8. The latitude.to listing in the same results gives 53° 20' 34.44\" N, 6° 17' 60.00\" W, which agrees to within about a second."
+  },
+  "b": {
+   "id": "imma-dublin",
+   "lat": 53.3429,
+   "lon": -6.3,
+   "coord_urls": [
+    "https://latitude.to/articles-by-country/ie/ireland/59953/irish-museum-of-modern-art"
+   ],
+   "coord_statement": "Latitude: 53° 20' 34.44\" N Longitude: -6° 17' 60.00\" W",
+   "fixed_venue": true,
+   "notes": "Search 1 (imma.ie pages) gave the address (Royal Hospital Kilmainham, Dublin 8) but no coordinates. Search 2 returned the latitude.to listing for the Irish Museum of Modern Art in Ireland. Conversion: 53 + 20/60 + 34.44/3600 = 53.3429; -(6 + 17/60 + 60.00/3600) = -6.3000. The source prints the seconds as 60.00, which is odd, but converting it as printed gives exactly -6.3. Source is a third-party coordinate listing, not Wikipedia or an official page; no better source appeared in the results."
+  },
+  "agreed": {
+   "lat": 53.343077,
+   "lon": -6.300037
+  }
+ },
+ {
+  "id": "peggy-guggenheim-collection-venice",
+  "from": 16,
+  "a": {
+   "id": "peggy-guggenheim-collection-venice",
+   "lat": 45.430556,
+   "lon": 12.331111,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Peggy_Guggenheim_Collection",
+    "https://www.wikidata.org/wiki/Q1049033"
+   ],
+   "coord_statement": "The museum's coordinates are listed as 45°25′50″N 12°19′52″E.",
+   "fixed_venue": true,
+   "notes": "2 searches. Search 1 returned two map listings that disagree by about 0.8 km (tripomatic 45°25'50.887\" N, 12°19'53.548\" E; latitude.to 45° 25' 29.99\" N, 12° 19' 31.20\" E), so I did not use either. Search 2 was limited to Wikipedia and Wikidata. The result text gives 45°25′50″N 12°19′52″E for the Peggy Guggenheim Collection (Palazzo Venier dei Leoni, Dorsoduro, Venice). Decimal is my conversion of those degrees. The coordinate sentence does not say which of the two listed URLs it came from. The Wikipedia article and Wikidata item for the collection both appeared in the Links. The latitude.to figure is the outlier."
+  },
+  "b": {
+   "id": "peggy-guggenheim-collection-venice",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Left at 0,0 because the two coordinate sources in the results disagree by about 600 m. Latitude.to (https://latitude.to/articles-by-country/it/italy/21593/peggy-guggenheim-collection) states 45° 25' 29.99\" N, 12° 19' 31.20\" E, which is about 45.4250, 12.3253. TravelProfy (https://www.travelprofy.com/venezia-santa-lucia-station/peggy-guggenheim-collection) states 45.4307957, 12.3316929. Neither is Wikipedia, Wikidata or an official page, and the results give no basis to prefer one. Search 1 gave only the address (Dorsoduro 701, Palazzo Venier dei Leoni, Grand Canal) and no Wikipedia page. Both searches used; needs a stronger source such as Wikipedia or Wikidata."
+  },
+  "agreed": null
+ },
+ {
+  "id": "muac-mexico-city",
+  "from": 16,
+  "a": {
+   "id": "muac-mexico-city",
+   "lat": 19.314444,
+   "lon": -99.185278,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Museo_Universitario_Arte_Contempor%C3%A1neo"
+   ],
+   "coord_statement": "Wikipedia lists 19°18′52″N 99°11′07″W, which is about 19.3144, -99.1854 in decimal form.",
+   "fixed_venue": true,
+   "notes": "1 search. Museo Universitario Arte Contemporáneo, Centro Cultural Universitario, UNAM, Mexico City. Decimal is converted from the stated degrees (19°18′52″N = 19.314444; 99°11′07″W = -99.185278). That is slightly different in the fourth decimal from the 'about -99.1854' in the result text. A meer.com listing in the same results gives 19.31424, -99.18453, which is within roughly 100 m."
+  },
+  "b": {
+   "id": "muac-mexico-city",
+   "lat": 19.314,
+   "lon": -99.185,
+   "coord_urls": [
+    "https://www.meer.com/muac/en"
+   ],
+   "coord_statement": "A Meer listing gives the postal code as 04510, with coordinates of about 19.314, -99.185 Insurgentes Sur, 3000 Mexico City 04510 Mexico.",
+   "fixed_venue": true,
+   "notes": "From search 1. The result names a Meer listing for MUAC at Insurgentes Sur 3000, Mexico City, but does not say which of the three Meer language pages (en, pt, de) it was; I cited the English one, which is the same listing. The values have only 3 decimals (about 100 m). The English Wikipedia page for Museo Universitario Arte Contemporáneo appeared in the results, but its text did not state coordinates. Search 2 (\"MUAC geographic coordinates\") returned only unrelated results (mid-upper arm circumference) and nothing usable."
+  },
+  "agreed": {
+   "lat": 19.314444,
+   "lon": -99.185278
+  }
+ },
+ {
+  "id": "rijksmuseum-amsterdam",
+  "from": 16,
+  "a": {
+   "id": "rijksmuseum-amsterdam",
+   "lat": 52.36,
+   "lon": 4.885278,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Rijksmuseum",
+    "https://www.latlong.net/place/rijksmuseum-amsterdam-the-netherlands-27738.html"
+   ],
+   "coord_statement": "Wikipedia lists the museum at 52°21′36″N 4°53′07″E / 52.36000°N 4.885278°E.",
+   "fixed_venue": true,
+   "notes": "2 searches. The coordinate statement above is from search 1, where the Links included simple.wikipedia.com/wiki/Rijksmuseum and the latlong.net page. The result text said 'Wikipedia' without naming which Wikipedia page. It also said one source gives 52.360001, 4.885278. Search 2 (limited to Wikipedia and Wikidata) listed en.wikipedia.org/wiki/Rijksmuseum in its Links, with text 'about 52.36°N, 4.885°E'. That agrees but is lower precision. The en.wikipedia URL is therefore the likely source of the first statement but is not confirmed as such. Decimal values match the stated degrees (52°21′36″N = 52.36; 4°53′07″E = 4.885278). A hotel site in search 1 gave a longitude with a W sign. I did not use it."
+  },
+  "b": {
+   "id": "rijksmuseum-amsterdam",
+   "lat": 52.36,
+   "lon": 4.885278,
+   "coord_urls": [
+    "https://simple.wikipedia.com/wiki/Rijksmuseum"
+   ],
+   "coord_statement": "Its coordinates are 52°21′36″N 4°53′07″E, according to Simple English Wikipedia.",
+   "fixed_venue": true,
+   "notes": "One search used. Conversion: 52 + 21/60 + 36/3600 = 52.360000; 4 + 53/60 + 7/3600 = 4.885278. Source is the Simple English Wikipedia page for the Rijksmuseum, Museumstraat 1, Amsterdam. The en.wikipedia.org/wiki/Rijksmuseum page was also in the results, but its text did not state coordinates."
+  },
+  "agreed": {
+   "lat": 52.36,
+   "lon": 4.885278
+  }
+ },
+ {
+  "id": "van-gogh-museum-amsterdam",
+  "from": 20,
+  "a": {
+   "id": "van-gogh-museum-amsterdam",
+   "lat": 52.358333,
+   "lon": 4.881111,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Van_Gogh_Museum"
+   ],
+   "coord_statement": "The Van Gogh Museum is at about 52.3583°N, 4.8811°E (52°21′30″N 4°52′52″E). Wikipedia gives these coordinates, and latlong.net lists 52.358059, 4.881124, which agrees.",
+   "fixed_venue": true,
+   "notes": "Converted from the Wikipedia DMS 52°21′30″N 4°52′52″E. The result also says latlong.net lists 52.358059, 4.881124, which agrees. One search used."
+  },
+  "b": {
+   "id": "van-gogh-museum-amsterdam",
+   "lat": 52.358333,
+   "lon": 4.881111,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Van_Gogh_Museum"
+   ],
+   "coord_statement": "Coordinates: 52°21′30″N 4°52′52″E / 52.3583°N 4.8811°E",
+   "fixed_venue": true,
+   "notes": "Second search (\"Van Gogh Museum geographic coordinates\") returned the Wikipedia article with these coordinates. Converted from 52°21′30″N 4°52′52″E. The same result also gave latlong.net 52.358059, 4.881124, which agrees to within a few metres. Sources disagree on the street address (Paulus Potterstraat 7 vs Museumplein 6) but all place it on Museumplein."
+  },
+  "agreed": {
+   "lat": 52.358333,
+   "lon": 4.881111
+  }
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "from": 20,
+  "a": {
+   "id": "mauritshuis-the-hague",
+   "lat": 52.080278,
+   "lon": 4.314167,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Mauritshuis"
+   ],
+   "coord_statement": "The Mauritshuis is at 52.0804°N, 4.3143°E, or 52°04′49″N 4°18′51″E in degrees-minutes-seconds. English Wikipedia lists these coordinates in its infobox",
+   "fixed_venue": true,
+   "notes": "Converted from the Wikipedia DMS 52°04′49″N 4°18′51″E. The result gives 52.0804, 4.3143 (and 52.080387, 4.314306 from museum-digital), which agree within about 15 m. The museum's own page gives the address as Plein 29, 2511 CS The Hague. One search used."
+  },
+  "b": {
+   "id": "mauritshuis-the-hague",
+   "lat": 52.080278,
+   "lon": 4.314167,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Mauritshuis"
+   ],
+   "coord_statement": "Coordinates: 52°04′49″N 4°18′51″E, per the Wikipedia infobox.",
+   "fixed_venue": true,
+   "notes": "One search was enough. Converted from 52°04′49″N 4°18′51″E. The result is about the Mauritshuis at Plein 29, The Hague, by the Hofvijver. The statement is from the search summary and cites the Wikipedia infobox. The page text itself was not shown."
+  },
+  "agreed": {
+   "lat": 52.080278,
+   "lon": 4.314167
+  }
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "from": 20,
+  "a": {
+   "id": "city-gallery-wellington-wellington",
+   "lat": -41.288384,
+   "lon": 174.777312,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/City_Gallery_Wellington"
+   ],
+   "coord_statement": "Wikipedia lists 41°17′18″S 174°46′38″E (41.288384°S, 174.777312°E). Its infobox places the gallery in the former Central Library building.",
+   "fixed_venue": true,
+   "notes": "South is negative, east positive. Coordinates are for the Civic Square building (Te Ngākau Civic Square), which is the gallery's main building. The result notes the gallery is temporarily at the National Library of New Zealand until mid-2026, and that the coordinates refer to the Civic Square building, not that temporary location. The results do not say whether it has returned. Around Us gives -41.28850, 174.77700, which agrees. One search used."
+  },
+  "b": {
+   "id": "city-gallery-wellington-wellington",
+   "lat": -41.288333,
+   "lon": 174.777222,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/City_Gallery_Wellington"
+   ],
+   "coord_statement": "Wikipedia lists the coordinates as 41°17′18″S 174°46′38″E, which is 41.288384°S, 174.777312°E in decimal form.",
+   "fixed_venue": true,
+   "notes": "Second search (\"City Gallery Wellington geographic coordinates\") gave these. I converted the degrees-minutes-seconds figure (south is negative). The summary's own decimal, 41.288384°S 174.777312°E, differs by under 10 m. Around Us lists -41.28850, 174.77700, about 100 m away. These are for the permanent building on Te Ngākau Civic Square. Search results say the gallery was temporarily housed in the National Library (70 Molesworth Street) until mid-2026 and may have reopened around 10 October 2026, which I could not confirm."
+  },
+  "agreed": {
+   "lat": -41.288384,
+   "lon": 174.777312
+  }
+ },
+ {
+  "id": "bergen-international-festival-bergen",
+  "from": 20,
+  "a": {
+   "id": "bergen-international-festival-bergen",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "A festival with no single main building. The search returned no coordinates. It gave only an office address (Vaskerelvsmauet 6, 5014 Bergen), which is not a public venue and was not used to estimate coordinates. One search used."
+  },
+  "b": {
+   "id": "bergen-international-festival-bergen",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "A festival with no single main building. The search result says its events are spread across Grieg Hall, Haakon's Hall, Troldhaugen, Lysøen, Siljustøl and other city venues. One older listing gives an office address (Vaskerelvsmauet 6, 5014 Bergen), but no source states coordinates. One search used, and coordinates left at 0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "munch-oslo",
+  "from": 24,
+  "a": {
+   "id": "munch-oslo",
+   "lat": 59.905833,
+   "lon": 10.755278,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Munch_Museum"
+   ],
+   "coord_statement": "Wikipedia lists these coordinates for the Munch Museum: about 59.9057°N, 10.7553°E (DMS 59°54′21″N 10°45′19″E)",
+   "fixed_venue": true,
+   "notes": "Converted from the DMS 59°54′21″N 10°45′19″E. The result says this is the current Bjørvika building, not the old Tøyen site. Other listings in the same result agree to within metres: 59.905586, 10.755218 and KulturNav 59.90575, 10.755306."
+  },
+  "b": {
+   "id": "munch-oslo",
+   "lat": 59.90575,
+   "lon": 10.75531,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Munch_Museum"
+   ],
+   "coord_statement": "Its Wikipedia coordinates are 59.90575°N, 10.75531°E (Coordinates: 59°54′21″N 10°45′19″E).",
+   "fixed_venue": true,
+   "notes": "Munch Museum, Bjørvika, Oslo (marketed as MUNCH since 2020). Decimal value taken as stated; the DMS form 59°54′21″N 10°45′19″E is consistent with it. 1 search used."
+  },
+  "agreed": {
+   "lat": 59.905833,
+   "lon": 10.755278
+  }
+ },
+ {
+  "id": "maat-lisbon",
+  "from": 24,
+  "a": {
+   "id": "maat-lisbon",
+   "lat": 38.6957,
+   "lon": -9.195639,
+   "coord_urls": [
+    "https://www.maat.pt/en/get-maat"
+   ],
+   "coord_statement": "MAAT's website lists Latitude 38º41'44.52 N, Longitude 9º11'44.30 W, with the address Av. Brasília, Belém, 1300-598 Lisboa.",
+   "fixed_venue": true,
+   "notes": "Converted from the official page's DMS: 38 + 41/60 + 44.52/3600 and -(9 + 11/60 + 44.30/3600). Wikipedia in the same result gives 38°41′45″N 9°11′41″W (38.69591, -9.19464), which differs by tens of metres. The official-page statement is quoted from the search summary of that page."
+  },
+  "b": {
+   "id": "maat-lisbon",
+   "lat": 38.695833,
+   "lon": -9.194722,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Museum_of_Art,_Architecture_and_Technology"
+   ],
+   "coord_statement": "Wikipedia lists it at Belém, Lisbon, with coordinates of about 38°41′45″N 9°11′41″W",
+   "fixed_venue": true,
+   "notes": "Museum of Art, Architecture and Technology, Av. Brasília, Belém, Lisbon. Converted from DMS: 38 + 41/60 + 45/3600 = 38.695833 N; 9 + 11/60 + 41/3600 = 9.194722 W, so negative. The result text says 'about', so the precision is to the arcsecond only. 1 search used."
+  },
+  "agreed": {
+   "lat": 38.6957,
+   "lon": -9.195639
+  }
+ },
+ {
+  "id": "songeun-seoul",
+  "from": 24,
+  "a": {
+   "id": "songeun-seoul",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Neither gave coordinates for SongEun. The second only places SongEun ArtSpace in Cheongdam, Gangnam, with no street address, so lat and lon are 0. It has one main building, so fixed_venue is true."
+  },
+  "b": {
+   "id": "songeun-seoul",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Neither returned coordinates for SongEun ArtSpace or the SongEun Art and Cultural Foundation. The results describe it only as a gallery in Cheongdam, Gangnam, Seoul (Lonely Planet, Korea JoongAng Daily). The coordinates that did appear belonged to other places (Songjung-dong, Songmun, Sangun), so they were not used. fixed_venue is true because it is a single gallery building. Answer is 0, 0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "guggenheim-bilbao-bilbao",
+  "from": 24,
+  "a": {
+   "id": "guggenheim-bilbao-bilbao",
+   "lat": 43.26861,
+   "lon": -2.93389,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao"
+   ],
+   "coord_statement": "Wikipedia lists 43°16′07″N 2°56′02″W, or 43.26861°N, 2.93389°W.",
+   "fixed_venue": true,
+   "notes": "Decimal value as stated by the Wikipedia article. Other listings in the same result agree: LatLong.net 43.268669, -2.934012 and Structurae 43° 16' 7.37\" N 2° 56' 2.49\" W."
+  },
+  "b": {
+   "id": "guggenheim-bilbao-bilbao",
+   "lat": 43.268714,
+   "lon": -2.934025,
+   "coord_urls": [
+    "https://structurae.net/structures/guggenheim-museum-bilbao"
+   ],
+   "coord_statement": "Coordinates: 43° 16' 7.37\" N 2° 56' 2.49\" W",
+   "fixed_venue": true,
+   "notes": "Guggenheim Museum Bilbao, Abandoibarra, on the Nervión River. Converted from DMS: 43 + 16/60 + 7.37/3600 = 43.268714 N; 2 + 56/60 + 2.49/3600 = 2.934025 W, so negative. Other results agree within a few metres: a Wikidata-linked National Library of Israel record (https://www.nli.org.il/en/authorities/987007265610705171) gives 43.26883, -2.934099, and latlong.net gives 43.268669, -2.934012. No Wikipedia page appeared in either search, so Structurae was used. 2 searches used."
+  },
+  "agreed": {
+   "lat": 43.26861,
+   "lon": -2.93389
+  }
+ },
+ {
+  "id": "kunsthaus-zürich-zürich",
+  "from": 28,
+  "a": {
+   "id": "kunsthaus-zürich-zürich",
+   "lat": 47.3703,
+   "lon": 8.5481,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Kunsthaus_Z%C3%BCrich"
+   ],
+   "coord_statement": "The Kunsthaus Zürich is at about 47.3703°N, 8.5481°E (47°22′13″N 8°32′53″E), according to English Wikipedia's infobox.",
+   "fixed_venue": true,
+   "notes": "English Wikipedia infobox (URL copied exactly from the Links list). DMS 47°22′13″N 8°32′53″E converts to 47.3703, 8.5481, matching the stated decimals. Two travel listings in the same results (Sygic and another) gave nearly the same point (within about 30 m), with the address Heimplatz 1, 8001 Zurich."
+  },
+  "b": {
+   "id": "kunsthaus-zürich-zürich",
+   "lat": 47.370278,
+   "lon": 8.548056,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Kunsthaus_Z%C3%BCrich"
+   ],
+   "coord_statement": "its coordinates are 47°22′13″N 8°32′53″E",
+   "fixed_venue": true,
+   "notes": "1 search. Wikipedia result about Kunsthaus Zürich, art museum, Zurich, Switzerland, Heimplatz 1. Converted 47°22′13″N = 47 + 22/60 + 13/3600 = 47.370278; 8°32′53″E = 8 + 32/60 + 53/3600 = 8.548056."
+  },
+  "agreed": {
+   "lat": 47.3703,
+   "lon": 8.5481
+  }
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "from": 28,
+  "a": {
+   "id": "bangkok-art-and-culture-centre-bangkok",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches used. The first search found two third-party listings that disagree by about 600 m: Tripomatic gave 13°44'48.221\" N, 100°31'48.943\" E, and latitude.to gave 13° 44' 28.79\" N, 100° 31' 28.79\" E. The English Wikipedia result did not state coordinates in the returned text, and no official page did either. The second search (location wording) returned only the address (939 Rama I Road, Wangmai, Pathum Wan, Bangkok 10330) and no coordinates. With conflicting non-authoritative sources and nothing to settle it, the answer is 0."
+  },
+  "b": {
+   "id": "bangkok-art-and-culture-centre-bangkok",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "2 searches. Wikipedia result gave address only (939 Rama I Road, Wangmai, Pathum Wan, Bangkok 10330), no coordinates. Second search returned two map listings that disagree by about 600 m: latitude.to (https://latitude.to/articles-by-country/th/thailand/60930/bangkok-art-and-culture-centre) states 13° 44' 28.79\" N, 100° 31' 28.79\" E; tripomatic (https://tripomatic.com/en/poi/bangkok-art-and-culture-centre-poi:20067) states about 13° 44' 48.221\" N, 100° 31' 48.943\" E. No Wikipedia or official page stated coordinates to arbitrate, so left at 0 rather than pick one."
+  },
+  "agreed": null
+ },
+ {
+  "id": "collective-edinburgh",
+  "from": 28,
+  "a": {
+   "id": "collective-edinburgh",
+   "lat": 55.954968,
+   "lon": -3.183526,
+   "coord_urls": [
+    "https://julian-alps.com/en/poi/gallery/collective/54231636/"
+   ],
+   "coord_statement": "The best coordinates I found for Collective are 55.954968, -3.183526 (about 55°57'17.9\"N 3°11'00.7\"W). That's from an Outdooractive listing for the gallery, which also gives the OS grid reference NT 26198 74181",
+   "fixed_venue": true,
+   "notes": "Single third-party source (an Outdooractive gallery listing mirrored on julian-alps.com), URL copied exactly from the Links list. The decimals and the DMS agree with each other. Caveats: the returned text does not explicitly say 'Edinburgh'; it was matched to this venue by the query and by the UK OS grid reference NT 26198 74181. Neither the official site (collective-edinburgh.art, which gives the address as City Observatory, 38 Calton Hill, EH7 5AA) nor Wikipedia stated coordinates in the results. Two searches used. Treat as lower confidence than a Wikipedia or official source."
+  },
+  "b": {
+   "id": "collective-edinburgh",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "2 searches. Official site gives address only (City Observatory, 38 Calton Hill, Edinburgh EH7 5AA); no Wikipedia page returned. One candidate text appeared: 'DD 55.954968, -3.183526 DMS 55°57'17.9\"N 3°11'00.7\"W' (OS Grid NT 26198 74181), attributed to the listing at https://julian-alps.com/en/poi/gallery/collective/54231636/. That is a Julian Alps tourism domain and the result does not show the page is about Collective in Edinburgh rather than a namesake, and no second source gave coordinates, so left at 0 for the owner to verify."
+  },
+  "agreed": null
+ },
+ {
+  "id": "edinburgh-international-book-festival-edinburgh",
+  "from": 28,
+  "a": {
+   "id": "edinburgh-international-book-festival-edinburgh",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "A festival with no single permanent main building. The results say it ran in a tented village in Charlotte Square Gardens until 2020, and has been based at Edinburgh College of Art's Lauriston Place building since 2021. No result stated coordinates. The search output contained approximate coordinates labelled as the search tool's own knowledge, not from a source; they were disregarded. One search used."
+  },
+  "b": {
+   "id": "edinburgh-international-book-festival-edinburgh",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "1 search. A festival with no single main building: results say it ran in Charlotte Square Gardens, then Edinburgh College of Art (2022 and 2023), then the Edinburgh Futures Institute, 1 Lauriston Place, from 2024. No coordinates stated; coordinates set to 0 per the festival rule."
+  },
+  "agreed": null
+ },
+ {
+  "id": "stills-edinburgh",
+  "from": 32,
+  "a": {
+   "id": "stills-edinburgh",
+   "lat": 55.9507,
+   "lon": -3.1902,
+   "coord_urls": [
+    "https://www.thegreatbritainguide.com/place/stills/"
+   ],
+   "coord_statement": "Coordinates 55.9507, -3.1902, District City of Edinburgh, Postcode EH1 1BP",
+   "fixed_venue": true,
+   "notes": "Stills, photography and visual arts centre, 23 Cockburn Street, Edinburgh EH1 1BP. The Great Britain Guide gives these figures (sourced from OpenStreetMap). The second search (location) returned the address but no coordinates. No Wikipedia or official page with coordinates turned up; this is a map listing, not a preferred-tier source."
+  },
+  "b": {
+   "id": "stills-edinburgh",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Stills has one gallery, at 23 Cockburn Street, Edinburgh EH1 1BP (stated in the first search results). No Wikipedia page was returned. The first search summary mentioned a coordinate pair from an unnamed directory without saying which Links URL carried it, so it cannot be cited and is not used. The second search (Stills geographic coordinates) returned only unrelated places. Answer is 0, 0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "british-museum-london",
+  "from": 32,
+  "a": {
+   "id": "british-museum-london",
+   "lat": 51.5195,
+   "lon": -0.1269,
+   "coord_urls": [
+    "https://www.britishlistedbuildings.co.uk/101130404-the-british-museum-bloomsbury-ward/maps"
+   ],
+   "coord_statement": "Latitude: 51.5195 / 51°31'10\"N Longitude: -0.1269 / 0°7'36\"W",
+   "fixed_venue": true,
+   "notes": "Historic England listing data for the British Museum (Bloomsbury Ward), Great Russell Street, London WC1B 3DG, shown via britishlistedbuildings.co.uk. The search summary also reported Wikipedia-derived figures of 51.5195°N 0.1269°W, but no Wikipedia link in the results was tied to that text, so it is not cited. A separate listing (https://www.latlong.net/place/british-museum-london-the-uk-26251.html) gives 51.518757, -0.126168, about 30 m away; the sources differ only in the fourth decimal."
+  },
+  "b": {
+   "id": "british-museum-london",
+   "lat": 51.5195,
+   "lon": -0.1269,
+   "coord_urls": [
+    "https://www.britishlistedbuildings.co.uk/101130404-the-british-museum-bloomsbury-ward/maps"
+   ],
+   "coord_statement": "Latitude: 51.5195 / 51°31'10\"N, Longitude: -0.1269 / 0°7'36\"W",
+   "fixed_venue": true,
+   "notes": "British Listed Buildings map page for The British Museum, Bloomsbury ward (the page title in Links is the latitude string). The search summary says this is Historic England listing data and that a Wikipedia-derived entry gives the same 51.5195°N 0.1269°W, but no Wikipedia URL was in the Links. Decimal values used as stated. The DMS minutes/seconds shown would round to 0.1267 W, a difference of about 15 m. A different site, latlong.net (https://www.latlong.net/place/british-museum-london-the-uk-26251.html), gives 51.518757, -0.126168, about 80 m away. Building: Great Russell Street, London WC1B 3DG."
+  },
+  "agreed": {
+   "lat": 51.5195,
+   "lon": -0.1269
+  }
+ },
+ {
+  "id": "design-museum-london",
+  "from": 32,
+  "a": {
+   "id": "design-museum-london",
+   "lat": 51.5,
+   "lon": -0.20028,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Design_Museum"
+   ],
+   "coord_statement": "51°30′00″N 0°12′01″W",
+   "fixed_venue": true,
+   "notes": "Wikipedia coordinates for the Design Museum at 224-238 Kensington High Street, London W8 6AG (the Kensington site since 2016, not the old Shad Thames site). Converted from the quoted degrees: 51 + 30/60 = 51.5000; 0 + 12/60 + 1/3600 = 0.20028, west so negative. The search summary rendered the same point as about 51.4999, -0.2002, and other listings agree within about 12 m: The Great Britain Guide (https://www.thegreatbritainguide.com/place/design-museum/) 51.4999, -0.2002; latlong.net (https://www.latlong.net/place/design-museum-london-uk-32881.html) 51.499935, -0.200355. The DMS text was reported by the search summary rather than seen as raw page text, so the 4th decimal carries that uncertainty."
+  },
+  "b": {
+   "id": "design-museum-london",
+   "lat": 51.5,
+   "lon": -0.20028,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Design_Museum"
+   ],
+   "coord_statement": "Wikipedia lists at 51°30′00″N 0°12′01″W",
+   "fixed_venue": true,
+   "notes": "The search summary states the Wikipedia figure for the London museum as 51°30′00″N 0°12′01″W. I converted it: 51 + 30/60 + 0/3600 = 51.5; 0 + 12/60 + 1/3600 = 0.20028, west so negative. The same summary gives its own decimal as about 51.4999, -0.2002, and latlong.net (https://www.latlong.net/place/design-museum-london-uk-32881.html) gives 51.499935, -0.200355, all within about 10 m. The first search confirmed this Wikipedia article is the Kensington museum at 224-238 Kensington High Street, London W8 6AG, not the Taiwan, Helsinki or Barcelona namesakes."
+  },
+  "agreed": {
+   "lat": 51.5,
+   "lon": -0.20028
+  }
+ },
+ {
+  "id": "dulwich-picture-gallery-london",
+  "from": 32,
+  "a": {
+   "id": "dulwich-picture-gallery-london",
+   "lat": 51.44611,
+   "lon": -0.08639,
+   "coord_urls": [
+    "https://www.wikipedia.com/wiki/Dulwich_Gallery"
+   ],
+   "coord_statement": "51°26′46″N 0°05′11″W / 51.44611°N 0.08639°W",
+   "fixed_venue": true,
+   "notes": "Wikipedia figures for Dulwich Picture Gallery, Gallery Road/College Road, Dulwich Village, London SE21 7AD. The search summary attributed the text to Wikipedia; the only Wikipedia link in the results is the one cited. Corroborated by Historic England listing data at https://britishlistedbuildings.co.uk/101385543-dulwich-picture-gallery-and-mausoleum-village-ward/maps: Latitude: 51.446 / 51°26'45\"N, Longitude: -0.0863 / 0°5'10\"W. Not used: latitude.to (51° 26' 27.59\" N, 0° 05' 6.60\" E) disagrees (about 500 m south and east instead of west), so it is discounted."
+  },
+  "b": {
+   "id": "dulwich-picture-gallery-london",
+   "lat": 51.44611,
+   "lon": -0.08639,
+   "coord_urls": [
+    "https://www.wikipedia.com/wiki/Dulwich_Gallery"
+   ],
+   "coord_statement": "Wikipedia gives 51°26′46″N 0°05′11″W / 51.44611°N 0.08639°W",
+   "fixed_venue": true,
+   "notes": "The only Wikipedia link in the results is this wikipedia.com mirror, which the first search flagged as a mirror rather than en.wikipedia.org. The summary attributes the figure to Wikipedia without naming the URL, so the match to this link is inferred. The same summary reports that the British Listed Buildings entry (https://britishlistedbuildings.co.uk/101385543-dulwich-picture-gallery-and-mausoleum-village-ward/maps) gives Latitude: 51.446 / 51°26'45\"N, Longitude: -0.0863 / 0°5'10\"W, which agrees. Gallery is in Dulwich Village, London SE21 7AD. The summary also noted a latitude.to listing about 0.2 km to the south, not used."
+  },
+  "agreed": {
+   "lat": 51.44611,
+   "lon": -0.08639
+  }
+ },
+ {
+  "id": "goldsmiths-cca-london",
+  "from": 36,
+  "a": {
+   "id": "goldsmiths-cca-london",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Neither stated coordinates for Goldsmiths CCA. The results gave only the address (St James', New Cross, London SE14 6AD) and a description of the entrance. The Wikipedia page https://en.wikipedia.org/wiki/Goldsmiths_CCA appeared in the Links list but the result text did not quote coordinates, so the answer is 0,0. One main building: the former Laurie Grove Baths boiler house and laundry on the Goldsmiths campus."
+  },
+  "b": {
+   "id": "goldsmiths-cca-london",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Neither stated coordinates for the CCA (Laurie Grove Baths, off St James's, New Cross). The second search returned only coordinates for a different place (Goldsmiths' Hall in the City of London), which is a namesake and was not used. The search summary also mentioned an unverified figure from memory, which was ignored. Answer left at 0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "national-gallery-london",
+  "from": 36,
+  "a": {
+   "id": "national-gallery-london",
+   "lat": 51.5086,
+   "lon": -0.1283,
+   "coord_urls": [
+    "https://c.enwp.org/wiki/National_Gallery,_London"
+   ],
+   "coord_statement": "Coordinates 51.5086°N 0.1283°W / 51.5086; -0.1283",
+   "fixed_venue": true,
+   "notes": "The URL is a Wikipedia mirror (c.enwp.org) for the article National Gallery, London, listed in the Links of both searches. It is about the Trafalgar Square gallery, London, WC2N 5DN. Search 1 also returned a Historic England listing via britishlistedbuildings.co.uk giving Latitude 51.5089 / 51°30'32\"N, Longitude -0.1287 / 0°7'43\"W, and GeoNames 51.50872, -0.12841. These agree to within about 0.0005 degrees. Two searches used."
+  },
+  "b": {
+   "id": "national-gallery-london",
+   "lat": 51.5089,
+   "lon": -0.1287,
+   "coord_urls": [
+    "https://britishlistedbuildings.co.uk/101066236-national-gallery-st-jamess-ward"
+   ],
+   "coord_statement": "Latitude: 51.5089 / 51°30'32\"N, Longitude: -0.1287 / 0°7'43\"W",
+   "fixed_venue": true,
+   "notes": "Second search (\"National Gallery geographic coordinates\"). The result summary quoted this text without naming its source. The format and the listing page for the National Gallery (St James's ward, Trafalgar Square) match the British Listed Buildings page, so that URL is used, but the text-to-URL link is inferred. The first search also stated 'coordinates are 51.5086°N 0.1283°W' for the Trafalgar Square building, which agrees to within about 50 m. Decimal values are as given in the text, not converted."
+  },
+  "agreed": {
+   "lat": 51.5086,
+   "lon": -0.1283
+  }
+ },
+ {
+  "id": "royal-ballet-and-opera-london",
+  "from": 36,
+  "a": {
+   "id": "royal-ballet-and-opera-london",
+   "lat": 51.5131,
+   "lon": -0.1228,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Royal_Opera_House"
+   ],
+   "coord_statement": "Coordinates: 51°30′47″N 0°07′22″W",
+   "fixed_venue": true,
+   "notes": "The Royal Ballet and Opera is based at the Royal Opera House in Covent Garden (postcode WC2E 9DD), so the coordinates are for that building. The decimal values 51.5131, -0.1228 come from converting 51°30′47″N 0°07′22″W. The search result also gave them as the decimal form and as the Historic England listing's 'Latitude: 51.5131 / 51°30'47\"N Longitude: -0.1228 / 0°7'21\"W' (britishlistedbuildings.co.uk). One search used."
+  },
+  "b": {
+   "id": "royal-ballet-and-opera-london",
+   "lat": 51.5131,
+   "lon": -0.1228,
+   "coord_urls": [
+    "https://britishlistedbuildings.co.uk/101066392-royal-opera-house-st-jamess-ward"
+   ],
+   "coord_statement": "Historic England's listing gives Latitude: 51.5131 / 51°30'47\"N, Longitude: -0.1228 / 0°7'21\"W",
+   "fixed_venue": true,
+   "notes": "Second search (\"Royal Ballet and Opera geographic coordinates\"). Main public building is the Royal Opera House, Bow Street, Covent Garden (stated in the first search). The statement is the search summary's wording for the Historic England listing as shown on the British Listed Buildings page. A planning-data point (51.51283, -0.122558) and a gazetteer point (51.513065, -0.12276493) agree within a few hundred metres. The latitude.to entry gives longitude as East, which is a sign error and was not used."
+  },
+  "agreed": {
+   "lat": 51.5131,
+   "lon": -0.1228
+  }
+ },
+ {
+  "id": "science-museum-london",
+  "from": 36,
+  "a": {
+   "id": "science-museum-london",
+   "lat": 51.4975,
+   "lon": -0.1747,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Science_Museum,_London"
+   ],
+   "coord_statement": "51.4975° N, 0.1747° W (51°29′51″N 0°10′29″W)",
+   "fixed_venue": true,
+   "notes": "The Wikipedia infobox figure for the Science Museum on Exhibition Road, SW7 2DD, London. The result text states 51°29′51″N 0°10′29″W, which converts to about 51.4975, -0.1747. Other listings in the same results differ by up to about 0.002 degrees (latlong.net 51.497223, -0.176821; automuseums.info 51.497693, -0.174204). One search used."
+  },
+  "b": {
+   "id": "science-museum-london",
+   "lat": 51.4975,
+   "lon": -0.1747,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Science_Museum,_London"
+   ],
+   "coord_statement": "coordinates of 51°29′51″N 0°10′29″W",
+   "fixed_venue": true,
+   "notes": "First search. The Wikipedia entry for Science Museum, London (Exhibition Road, South Kensington, SW7 2DD) is stated to give 51°29′51″N 0°10′29″W. Converted: 51 + 29/60 + 51/3600 = 51.4975; 0 + 10/60 + 29/3600 = 0.1747, west so negative."
+  },
+  "agreed": {
+   "lat": 51.4975,
+   "lon": -0.1747
+  }
+ },
+ {
+  "id": "va-london",
+  "from": 40,
+  "a": {
+   "id": "va-london",
+   "lat": 51.4966,
+   "lon": -0.1721,
+   "coord_urls": [
+    "https://britishlistedbuildings.co.uk/101190187"
+   ],
+   "coord_statement": "Latitude: 51.4966 / 51°29'47\"N, Longitude: -0.1721 / 0°10'19\"W",
+   "fixed_venue": true,
+   "notes": "Main V&A museum on Cromwell Road, South Kensington (British Listed Buildings entry for Victoria and Albert Museum, Brompton / Hans Town ward). The search result says a Wikipedia infobox gives the same figures, but its exact text was not quoted in the results. latitude.to lists longitude as E, a sign error in that source, so it was not used. V&A East (Stratford) is a separate site and was not used."
+  },
+  "b": {
+   "id": "va-london",
+   "lat": 51.496639,
+   "lon": -0.17218,
+   "coord_urls": [
+    "https://www.latlong.net/place/victoria-and-albert-museum-knightsbridge-london-uk-6140.html",
+    "https://britishlistedbuildings.co.uk/101190187"
+   ],
+   "coord_statement": "latlong.net gives 51.496639, -0.172180",
+   "fixed_venue": true,
+   "notes": "Main V&A building at Cromwell Road, South Kensington (not V&A East, V&A Dundee or Young V&A). No Wikipedia result stated coordinates, so the value comes from the latlong.net place listing as reported in the second search. The same search says the Historic England listing (britishlistedbuildings.co.uk, result titled 'Latitude: 51.4966 / 51°29'47\"N') gives the same figures, 51°29'47\"N, 0°10'19\"W. The first search also gave about 51.4966, -0.1719. Another result, latitude.to, labels the longitude E; that is a sign error and was not used."
+  },
+  "agreed": {
+   "lat": 51.4966,
+   "lon": -0.1721
+  }
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "from": 40,
+  "a": {
+   "id": "zabludowicz-collection-london",
+   "lat": 51.546,
+   "lon": -0.1533,
+   "coord_urls": [
+    "https://britishlistedbuildings.co.uk/101139077-zabludowicz-collection-former-methodist-church-haverstock-ward/maps",
+    "https://www.thegreatbritainguide.com/place/zabludowicz-collection/"
+   ],
+   "coord_statement": "51.546, -0.1533 (OS Eastings: 528149 OS Northings: 184627 OS Grid: TQ281846) | coordinates 51.5461°, -0.1532°",
+   "fixed_venue": true,
+   "notes": "176 Prince of Wales Road, NW5 3PT, the former Methodist church (Grade II listed, Haverstock, Camden). Values taken from British Listed Buildings; The Great Britain Guide (51.5461, -0.1532) and Meer (51.54604, -0.15327) agree within a few metres. Caveat: the search result reports that the collection's official site says this London space closed in December 2023, so these coordinates mark the former main public building."
+  },
+  "b": {
+   "id": "zabludowicz-collection-london",
+   "lat": 51.54604,
+   "lon": -0.15327,
+   "coord_urls": [
+    "https://www.meer.com/zabludowicz-collection"
+   ],
+   "coord_statement": "The Zabludowicz Collection's London venue has coordinates of about 51.54604, -0.15327.",
+   "fixed_venue": true,
+   "notes": "The search tool attributed these coordinates to a single meer.com listing, with address 176 Prince of Wales Road, London NW5 3PT. No second source gave coordinates, so it could not be cross-checked. The first search gave the same point rounded as 51.5461, -0.1532. Caution: the collection's own site says the 176 Prince of Wales Road building closed in December 2023, and New Exhibitions says it closed in 2024. The collection has other venues (New York, Sarvisalo, Finland). The coordinates are for the London building, which may no longer be open to the public."
+  },
+  "agreed": {
+   "lat": 51.546,
+   "lon": -0.1533
+  }
+ },
+ {
+  "id": "menil-collection-houston",
+  "from": 40,
+  "a": {
+   "id": "menil-collection-houston",
+   "lat": 29.73729,
+   "lon": -95.39847,
+   "coord_urls": [
+    "https://travel.sygic.com/en/poi/menil-collection-poi:12488"
+   ],
+   "coord_statement": "29°44'14.236\" N -95°23'54.476\" E",
+   "fixed_venue": true,
+   "notes": "LOW CONFIDENCE, sources conflict. Converted from the Sygic DMS: 29 + 44/60 + 14.236/3600 = 29.73729; the longitude is printed with a negative sign but the label E, and was treated as west (-95.39847) because of the negative sign. The search result also says one unnamed listing gives 29.73722,-95.39861 (no URL attributable), which agrees with Sygic to about 8 m. latitude.to (https://latitude.to/articles-by-country/us/united-states/18149/menil-collection) states 'Latitude: 29° 44' 8.39\" N Longitude: -95° 23' 32.99\" W' (about 29.73566, -95.39250), roughly 600 m away; it was not used because it disagrees with the two agreeing values, and latitude.to showed a sign error on another record in this batch. Two searches used. Street address also varies between sources (1515 vs 1533 Sul Ross St). No Wikipedia, Wikidata or official-page coordinates appeared in the results."
+  },
+  "b": {
+   "id": "menil-collection-houston",
+   "lat": 29.735664,
+   "lon": -95.392497,
+   "coord_urls": [
+    "https://latitude.to/articles-by-country/us/united-states/18149/menil-collection"
+   ],
+   "coord_statement": "Latitude: 29° 44' 8.39\" N Longitude: -95° 23' 32.99\" W",
+   "fixed_venue": true,
+   "notes": "Converted: 29 + 44/60 + 8.39/3600 = 29.735664; -(95 + 23/60 + 32.99/3600) = -95.392497. No Wikipedia or official result stated coordinates. Two map listings disagree: Sygic Travel gives 29°44'14.236\" N, 95°23'54.476\" (labelled E, a sign error), about 29.7373, -95.3985. That is about 200 m north and about 600 m west of the latitude.to point. The Menil is a campus of about 30 acres, so both are in the neighbourhood, but the exact point is uncertain. Latitude.to was used because its hemisphere labels are consistent. Treat precision as roughly 0.5 km. Search results gave the address as 1533 Sul Ross Street, Houston, TX 77006."
+  },
+  "agreed": {
+   "lat": 29.73729,
+   "lon": -95.39847
+  }
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "from": 40,
+  "a": {
+   "id": "getty-center-los-angeles",
+   "lat": 34.0775,
+   "lon": -118.475,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Getty_Center"
+   ],
+   "coord_statement": "Coordinates: 34°04′39″N 118°28′30″W",
+   "fixed_venue": true,
+   "notes": "Wikipedia, Getty Center, 1200 Getty Center Drive, Los Angeles. Converted: 34 + 4/60 + 39/3600 = 34.0775; -(118 + 28/60 + 30/3600) = -118.475. latlong.net lists 34.078018, -118.474205, a few hundred metres at most from the Wikipedia point. The Getty Villa is a different site and was not used."
+  },
+  "b": {
+   "id": "getty-center-los-angeles",
+   "lat": 34.0775,
+   "lon": -118.475,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Getty_Center"
+   ],
+   "coord_statement": "34°04′39″N 118°28′30″W",
+   "fixed_venue": true,
+   "notes": "The Wikipedia Getty Center page lists 34°04′39″N 118°28′30″W, as reported in the search results. Converted: 34 + 4/60 + 39/3600 = 34.0775; -(118 + 28/60 + 30/3600) = -118.475. Address 1200 Getty Center Drive, Los Angeles (Brentwood). This is the Getty Center, not the Getty Villa. A LatLong.net listing gives 34.078018, -118.474205, which is consistent to within about 100 m."
+  },
+  "agreed": {
+   "lat": 34.0775,
+   "lon": -118.475
+  }
+ },
+ {
+  "id": "lacma-los-angeles",
+  "from": 44,
+  "a": {
+   "id": "lacma-los-angeles",
+   "lat": 34.06333,
+   "lon": -118.35917,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Los_Angeles_County_Museum_of_Art"
+   ],
+   "coord_statement": "Coordinates: 34°03′48″N 118°21′33″W﻿ / ﻿34.0633°N 118.3592°W",
+   "fixed_venue": true,
+   "notes": "Second search (Wikipedia-oriented query) returned the Wikipedia article, with the result text giving 34°03′48″N 118°21′33″W / 34.06333°N 118.35917°W. Address in the results: 5905 Wilshire Boulevard. Other sources (latlong.net 34.064251, -118.360565; a CDLI record 34.0639, -118.359) differ by about 0.001 degrees. The Wikipedia value was used."
+  },
+  "b": {
+   "id": "lacma-los-angeles",
+   "lat": 34.063333,
+   "lon": -118.359167,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Los_Angeles_County_Museum_of_Art"
+   ],
+   "coord_statement": "Wikipedia gives its coordinates as 34°03′48″N 118°21′33″W.",
+   "fixed_venue": true,
+   "notes": "Search result is about the Los Angeles County Museum of Art at 5905 Wilshire Boulevard, Los Angeles. Converted 34°03′48″N = 34.063333, 118°21′33″W = -118.359167. 1 search used."
+  },
+  "agreed": {
+   "lat": 34.06333,
+   "lon": -118.35917
+  }
+ },
+ {
+  "id": "moca-los-angeles-los-angeles",
+  "from": 44,
+  "a": {
+   "id": "moca-los-angeles-los-angeles",
+   "lat": 34.05333,
+   "lon": -118.25083,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art,_Los_Angeles"
+   ],
+   "coord_statement": "34°03′12″N 118°15′03″W / 34.05333°N 118.25083°W",
+   "fixed_venue": true,
+   "notes": "The result attributes this to Wikipedia as the main MOCA building at 250 S Grand Ave, Los Angeles. MOCA also runs the Geffen Contemporary in Little Tokyo (34.0504846, -118.2407295 per a travel-reference site), but the Grand Avenue building is the main one, so it is used here."
+  },
+  "b": {
+   "id": "moca-los-angeles-los-angeles",
+   "lat": 34.053333,
+   "lon": -118.250833,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art,_Los_Angeles"
+   ],
+   "coord_statement": "The Wikipedia coordinates are 34°03′12″N 118°15′03″W.",
+   "fixed_venue": true,
+   "notes": "Converted 34°03′12″N = 34.053333, 118°15′03″W = -118.250833. The first result names the Grand Avenue building (250 South Grand Avenue) as the main branch but does not say outright that the Wikipedia coordinates are for that building. The second search (global-geography.org, a secondary source) listed the main Grand Avenue building at 34.053405, -118.2508, which agrees with the Wikipedia figures to within a few metres. The Geffen Contemporary in Little Tokyo is a separate site and was not used. 2 searches used."
+  },
+  "agreed": {
+   "lat": 34.05333,
+   "lon": -118.25083
+  }
+ },
+ {
+  "id": "pérez-art-museum-miami-miami",
+  "from": 44,
+  "a": {
+   "id": "pérez-art-museum-miami-miami",
+   "lat": 25.785894,
+   "lon": -80.186705,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/P%C3%A9rez_Art_Museum_Miami"
+   ],
+   "coord_statement": "25°47′09″N 80°11′12″W, which is about 25.785894, -80.186705",
+   "fixed_venue": true,
+   "notes": "The result says the Wikipedia entry lists 25°47′09″N 80°11′12″W, which converts to about 25.78583, -80.18667. The decimals 25.785894, -80.186705 appear in the same result text and are used. The result notes the coordinates came from a single source. Address in the result: 1103 Biscayne Blvd, Miami, FL 33132."
+  },
+  "b": {
+   "id": "pérez-art-museum-miami-miami",
+   "lat": 25.785833,
+   "lon": -80.186667,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/P%C3%A9rez_Art_Museum_Miami"
+   ],
+   "coord_statement": "Coordinates: 25°47′09″N 80°11′12″W, per Wikipedia.",
+   "fixed_venue": true,
+   "notes": "Result is about Pérez Art Museum Miami at 1103 Biscayne Boulevard, Miami, Florida, in Museum Park on Biscayne Bay. Converted 25°47′09″N = 25.785833, 80°11′12″W = -80.186667. 1 search used."
+  },
+  "agreed": {
+   "lat": 25.785894,
+   "lon": -80.186705
+  }
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "from": 44,
+  "a": {
+   "id": "american-museum-of-natural-history-new-york",
+   "lat": 40.781303,
+   "lon": -73.974113,
+   "coord_urls": [
+    "https://www.latlong.net/place/american-museum-of-natural-history-ny-usa-32734.html"
+   ],
+   "coord_statement": "Latitude and longitude coordinates are: 40.781303, -73.974113.",
+   "fixed_venue": true,
+   "notes": "Both searches returned no Wikipedia or Wikidata page, and the museum's official page did not appear. latlong.net, an established map listing, is the only source used. Address in the results: 200 Central Park West, Manhattan. A Columbia University library record gives 40.78131172, -73.97225418, about 150 m east in longitude; it is a historical photo catalogue entry and was not used."
+  },
+  "b": {
+   "id": "american-museum-of-natural-history-new-york",
+   "lat": 40.780833,
+   "lon": -73.974444,
+   "coord_urls": [
+    "https://www.wikipedia.com/wiki/AMNH"
+   ],
+   "coord_statement": "Wikipedia gives 40°46′51″N 73°58′28″W, which matches the Central Park West location.",
+   "fixed_venue": true,
+   "notes": "Result is about the American Museum of Natural History at 200 Central Park West, New York. Converted 40°46′51″N = 40.780833, 73°58′28″W = -73.974444. A meer.com listing gave a different value (near 40.619, -74.012) that the result itself flagged as likely an error, so it was not used. 1 search used."
+  },
+  "agreed": {
+   "lat": 40.781303,
+   "lon": -73.974113
+  }
+ },
+ {
+  "id": "brooklyn-museum-new-york",
+  "from": 48,
+  "a": {
+   "id": "brooklyn-museum-new-york",
+   "lat": 40.671306,
+   "lon": -73.96375,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Brooklyn_Museum"
+   ],
+   "coord_statement": "40.6713° N, 73.9637° W (40°40′16.7″N 73°57′49.5″W), per Wikipedia's infobox for the museum, which lists its address as 200 Eastern Parkway, Brooklyn, New York.",
+   "fixed_venue": true,
+   "notes": "Converted from the DMS value 40°40′16.7″N 73°57′49.5″W (40.671306, -73.96375); matches the decimal 40.6713, -73.9637 in the same result. Other listings in the same search differ by a few hundred feet (Sygic, Frankiapp, Columbia DLC); the Wikipedia value was used. Search 1 of 1."
+  },
+  "b": {
+   "id": "brooklyn-museum-new-york",
+   "lat": 40.671306,
+   "lon": -73.96375,
+   "coord_urls": [
+    "https://ml.wikipedia.com/wiki/%E0%B4%AC%E0%B5%8D%E0%B4%B0%E0%B5%82%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8D%E0%B4%B2%E0%B4%BF%E0%B5%BB_%E0%B4%AE%E0%B5%8D%E0%B4%AF%E0%B5%82%E0%B4%B8%E0%B4%BF%E0%B4%AF%E0%B4%82",
+    "https://gl.wikipedia.com/wiki/Brooklyn_Museum"
+   ],
+   "coord_statement": "40°40′16.7″N 73°57′49.5″W / 40.671306°N 73.963750°W",
+   "fixed_venue": true,
+   "notes": "The result for 'Brooklyn Museum geographic coordinates' says a Wikipedia mirror lists these coordinates for the museum at 200 Eastern Parkway, but it does not say which page. Two Wikipedia-language pages on the Brooklyn Museum were in that result's Links (ml.wikipedia.com and gl.wikipedia.com), so both are listed. The other values in that result differ by a few metres (Columbia record 40.6719005,-73.96337028; Frankiapp 40.670924,-73.963537). The en.wikipedia.org page appeared in the first search, but that result did not state coordinates. 2 searches used."
+  },
+  "agreed": {
+   "lat": 40.671306,
+   "lon": -73.96375
+  }
+ },
+ {
+  "id": "yerba-buena-center-for-the-arts-san-francisco",
+  "from": 48,
+  "a": {
+   "id": "yerba-buena-center-for-the-arts-san-francisco",
+   "lat": 37.78561,
+   "lon": -122.40215,
+   "coord_urls": [
+    "https://aroundus.com/p/5518345-yerba-buena-center-for-the-arts"
+   ],
+   "coord_statement": "37.78561, -122.40215",
+   "fixed_venue": true,
+   "notes": "Single third-party source (AroundUs place listing, GPS coordinates last updated 7 Dec 2025); no Wikipedia, Wikidata or official-page coordinates were found and no second source confirmed it. The listing URL names the institution and the search results give 701 Mission Street, San Francisco, CA 94103 as its address (California Arts Council grantee database, YBCA listing). The result's link title read 'Chest opened', which is odd, so treat as lower confidence. Search 2 returned address only, no coordinates."
+  },
+  "b": {
+   "id": "yerba-buena-center-for-the-arts-san-francisco",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Address given: 701 Mission Street, San Francisco (theater entrance 700 Howard Street). No Wikipedia page appeared in the results. The second search mentioned one unnamed listing giving 'GPS coordinates as 37.78561,-122.40215', but the result did not say which of its 10 Links carried it and nothing corroborated it. With no URL to cite, the answer is 0, not the value in the summary. 2 searches used."
+  },
+  "agreed": null
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "from": 48,
+  "a": {
+   "id": "fundação-sindika-dokolo-luanda",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Neither search stated coordinates or a street address. Results only place the foundation in Luanda (en.wikipedia.org/wiki/Sindika_Dokolo_Foundation summary; a Nov 2020 Ver Angola report) and mention a planned European base in a house in Porto (Observador, 2020). No single main public building was identified in the sources, so fixed_venue is false; this is a judgement from absent evidence, not a stated fact. 2 searches used."
+  },
+  "b": {
+   "id": "fundação-sindika-dokolo-luanda",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Neither search returned coordinates or a Wikipedia page for the foundation. The second search returned only places named Dokolo (a town in Uganda, etc.). News results say the foundation was set up in Luanda and that Casa Manoel de Oliveira in Porto would be its European seat. No single main public building was identified, so fixed_venue is false. 2 searches used."
+  },
+  "agreed": null
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "from": 48,
+  "a": {
+   "id": "fundação-bienal-de-são-paulo-são-paulo",
+   "lat": -23.587778,
+   "lon": -46.655833,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Biennial_Foundation"
+   ],
+   "coord_statement": "Wikipedia gives coordinates of 23°35′16″S 46°39′21″W.",
+   "fixed_venue": true,
+   "notes": "Found on search 2. Converted from 23°35′16″S 46°39′21″W (south and west negative). The result says the Foundation's headquarters is the Ciccillo Matarazzo Pavilion in Parque Ibirapuera, Av. Pedro Álvares Cabral, São Paulo. The coordinates are attributed to Wikipedia in the result text, and the only Wikipedia link in that result is the São Paulo Biennial Foundation page. Search 1 returned no coordinates."
+  },
+  "b": {
+   "id": "fundação-bienal-de-são-paulo-são-paulo",
+   "lat": -23.587778,
+   "lon": -46.655833,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Biennial_Foundation"
+   ],
+   "coord_statement": "23°35′16″S 46°39′21″W",
+   "fixed_venue": true,
+   "notes": "The English Wikipedia result gives the foundation's headquarters as the Ciccillo Matarazzo Pavilion (Biennial Pavilion) in Ibirapuera Park and lists the coordinates as 23°35′16″S 46°39′21″W. Converted to decimal: -(23+35/60+16/3600) = -23.587778 and -(46+39/60+21/3600) = -46.655833. fixed_venue is true because the foundation has one headquarters building, although the Bienal exhibition itself is a recurring event. 1 search used."
+  },
+  "agreed": {
+   "lat": -23.587778,
+   "lon": -46.655833
+  }
+ },
+ {
+  "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+  "from": 52,
+  "a": {
+   "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+   "lat": -23.58833,
+   "lon": -46.65528,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Museum_of_Modern_Art"
+   ],
+   "coord_statement": "Its coordinates are listed as 23°35′18″S 46°39′19″W, in Ibirapuera Park.",
+   "fixed_venue": true,
+   "notes": "Wikipedia (São Paulo Museum of Modern Art) via WebSearch result: 23°35′18″S 46°39′19″W, converted to -23.588333, -46.655278 and rounded to 5 decimals. A second listing (Meer) gave a point about 400 m away, not used. Search results also mention the museum closed since Aug 2024 for works on the Ibirapuera marquise; the building is the one in Ibirapuera Park. 1 search used."
+  },
+  "b": {
+   "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+   "lat": -23.588333,
+   "lon": -46.655278,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Museum_of_Modern_Art"
+   ],
+   "coord_statement": "Its coordinates are 23°35′18″S 46°39′19″W",
+   "fixed_venue": true,
+   "notes": "Search 1 result summarising the Wikipedia article 'São Paulo Museum of Modern Art' (MAM, Ibirapuera Park, São Paulo, Brazil; address Parque Ibirapuera, São Paulo, 04002-010). Converted: 23 + 35/60 + 18/3600 = 23.588333 S; 46 + 39/60 + 19/3600 = 46.655278 W. Both signs negative."
+  },
+  "agreed": {
+   "lat": -23.58833,
+   "lon": -46.65528
+  }
+ },
+ {
+  "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+  "from": 52,
+  "a": {
+   "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Results place the Mansudae Art Museum in Beijing's 798 Art District (Dashanzi/Jiuxianqiao, Chaoyang), but no result stated latitude/longitude for the venue, so 0,0. The search summary's own rough figure for the 798 district was marked as coming from general knowledge, not from the results, and was not used."
+  },
+  "b": {
+   "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Results place the gallery in Beijing's 798 Art Zone (Dashanzi) but state no coordinates and no precise street address. The second search surfaced coordinates only for Mansudae People's Theatre in Pyongyang, a different place, so they were not used. Answer 0,0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "art-macao-macau",
+  "from": 52,
+  "a": {
+   "id": "art-macao-macau",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Citywide multi-venue art event (the listed source describes it as 'citywide events', third edition 2025), so no single main public building. No search run."
+  },
+  "b": {
+   "id": "art-macao-macau",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "One search run. Results describe Art Macao as a citywide art festival with several venues (Macao Museum of Art, Macao Contemporary Art Centre, Old Court Building, OxWarehouse, Mount Fortress Garden, Taipa Houses, Praça de Jorge Álvares) and no single main building. No coordinates stated. Answer 0,0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "bienal-de-la-habana-havana",
+  "from": 52,
+  "a": {
+   "id": "bienal-de-la-habana-havana",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Biennial with no single main building. No search run."
+  },
+  "b": {
+   "id": "bienal-de-la-habana-havana",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "One search run. Results describe the Bienal de La Habana as a biennial held every two years across the city of Havana, with the Wifredo Lam Center of Contemporary Art as a main venue among other sites. No coordinates stated. Treated as a biennial with no single main building. Answer 0,0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "kunsten-museum-of-modern-art-aalborg-aalborg",
+  "from": 56,
+  "a": {
+   "id": "kunsten-museum-of-modern-art-aalborg-aalborg",
+   "lat": 57.04278,
+   "lon": 9.90583,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/KUNSTEN_Museum_of_Modern_Art_Aalborg"
+   ],
+   "coord_statement": "Coordinates: 57°2′34″N 9°54′21″E, or 57.04278°N 9.90583°E",
+   "fixed_venue": true,
+   "notes": "Wikipedia article for KUNSTEN Museum of Modern Art Aalborg (Kong Christians Allé 50, Aalborg). The search summary also reported a Council of Europe Cultural Routes page listing a main GPS location of 57.042673, 9.905739, which agrees. A latitude.to page gave a different point (57° 02' 20.10\" N, 9° 54' 12.29\" E), a few hundred metres south. I did not use it. Query 1 of 1 used."
+  },
+  "b": {
+   "id": "kunsten-museum-of-modern-art-aalborg-aalborg",
+   "lat": 57.042778,
+   "lon": 9.905833,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/KUNSTEN_Museum_of_Modern_Art_Aalborg",
+    "https://coe.int/en/web/cultural-routes/-/kunsten-museum-of-modern-art-aalborg"
+   ],
+   "coord_statement": "Wikipedia lists 57°2′34″N 9°54′21″E. Council of Europe Cultural Routes lists a main GPS location of 57.042673, 9.905739.",
+   "fixed_venue": true,
+   "notes": "Converted from the Wikipedia DMS figure: 57 + 2/60 + 34/3600 = 57.042778 and 9 + 54/60 + 21/3600 = 9.905833. The Council of Europe Cultural Routes profile independently gives 57.042673, 9.905739, which agrees to within about 0.0001 degrees. A third listing (latitude.to, 57° 02' 20.10\" N, 9° 54' 12.29\" E) differs by about 400 m and was not used. The result states the address is Kong Christians Allé 50, 9000 Aalborg. The coordinate text comes from the WebSearch summary attributing it to those pages, not from the raw page text. 2 searches used."
+  },
+  "agreed": {
+   "lat": 57.04278,
+   "lon": 9.90583
+  }
+ },
+ {
+  "id": "trapholt-kolding",
+  "from": 56,
+  "a": {
+   "id": "trapholt-kolding",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Neither result stated coordinates for Trapholt itself. The first returned only Kolding city-level coordinates, which are not the museum. The second gave the address (Æblehaven 23, 6000 Kolding) and no coordinates. Wikipedia and dbpedia Trapholt pages appeared in the Links list, but the result text gave no figures, so no value is supplied. A single museum site, so fixed_venue is true."
+  },
+  "b": {
+   "id": "trapholt-kolding",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Neither search returned coordinates for Trapholt. Results state the address Æblehaven 23, 6000 Kolding, about 4 km east of Kolding by Kolding Fjord. Coordinates were not estimated from the address. 2 searches used."
+  },
+  "agreed": null
+ },
+ {
+  "id": "centro-león-santiago-de-los-caballeros",
+  "from": 56,
+  "a": {
+   "id": "centro-león-santiago-de-los-caballeros",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Neither stated coordinates for Centro León. The only figure returned (19.4517, -70.697) was a city-level point for Santiago de los Caballeros, not the museum. The second search gave the address (Avenida 27 de Febrero 146, Santiago de los Caballeros 51053) and no coordinates. A single cultural centre building, so fixed_venue is true."
+  },
+  "b": {
+   "id": "centro-león-santiago-de-los-caballeros",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "No coordinates returned for Centro León in Santiago de los Caballeros. The first search gave only the address (Avenida 27 de Febrero 146, Villa Progreso, 51053) and no Wikipedia page. The second search returned coordinates only for unrelated places named León (Guanajuato, Nicaragua, Spain), which were rejected as namesakes. 2 searches used."
+  },
+  "agreed": null
+ },
+ {
+  "id": "fridericianum-kassel",
+  "from": 56,
+  "a": {
+   "id": "fridericianum-kassel",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. The first search summary mentioned 51°18'49.428\" N, 9°29'51.562\" E (address Friedrichsplatz 18, 34117 Kassel), attributed only to 'a travel aggregator' without naming which Links URL it came from. The Links list had both a tripomatic.com Fridericianum page and several komoot.com pages, so I cannot tie the figure to one exact URL and have left lat/lon at 0 under the strict evidence rule. If the caller accepts a likely-but-unconfirmed attribution, the candidate source is https://tripomatic.com/es/poi/fridericianum-poi:14852895, but that is a guess. The Wikipedia Kassel city coordinates (51°18′57″N 9°29′52″E) are for the city, not the building. The second search gave the address and no coordinates."
+  },
+  "b": {
+   "id": "fridericianum-kassel",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "No coordinates returned for the Fridericianum in Kassel. The results give the address Friedrichsplatz 18, 34117 Kassel. The only coordinates returned (54°06′16″N 11°54′15″E) belong to the Friderico-Francisceum gymnasium in Bad Doberan, a namesake, and were rejected. 2 searches used."
+  },
+  "agreed": null
+ },
+ {
+  "id": "aichi-triennale-nagoya",
+  "from": 60,
+  "a": {
+   "id": "aichi-triennale-nagoya",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Aichi Triennale is a recurring international art festival (triennale) held across multiple venues, with no single main public building. No search run; coordinates left at 0 under the festival rule."
+  },
+  "b": {
+   "id": "aichi-triennale-nagoya",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Triennial festival held across multiple venues. The search results say it is not confined to one building (2022 used Aichi Arts Center, Ichinomiya, Tokoname and Arimatsu; 2025 also used Aichi Prefectural Ceramic Museum and Seto). Aichi Arts Center is described as the central venue, but no coordinates were stated. Searched once."
+  },
+  "agreed": null
+ },
+ {
+  "id": "tselinny-center-of-contemporary-culture-almaty",
+  "from": 60,
+  "a": {
+   "id": "tselinny-center-of-contemporary-culture-almaty",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Results place it in a converted Soviet-era cinema in Almaly District, Almaty, with an e-flux directory street address of 53 Masanchi St, but none state latitude/longitude. Not estimated from the address, so 0, 0."
+  },
+  "b": {
+   "id": "tselinny-center-of-contemporary-culture-almaty",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Single venue in the former Tselinny cinema, Almaty (Almaly District). Two searches returned no latitude/longitude and no street address, so the answer is 0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "kaesong-koryo-museum-kaesong",
+  "from": 60,
+  "a": {
+   "id": "kaesong-koryo-museum-kaesong",
+   "lat": 37.9919939,
+   "lon": 126.5707231,
+   "coord_urls": [
+    "https://whc.unesco.org/en/list/1278/maps/",
+    "https://whc.unesco.org/en/list/1278/maps=1"
+   ],
+   "coord_statement": "Koryo Songgyungwan Democratic People's Republic of Korea N37 59 31.178 E126 34 14.603 (also given as N37°59'31.178\" E126°34'14.603\")",
+   "fixed_venue": true,
+   "notes": "Indirect source, flag for review. The UNESCO World Heritage #1278 maps page states these coordinates for the Koryo Songgyungwan component, not for the museum by name. Search results (koryogroup.com, a second search summary) state the Koryo Museum occupies the grounds of the Songgyungwan (Sungyun) Academy and has been housed there since 1987, so the point is the host complex. It may differ from the museum entrance. Conversion: 37 + 59/60 + 31.178/3600 = 37.99199; 126 + 34/60 + 14.603/3600 = 126.57072. Two UNESCO URLs are listed because the results gave both /maps/ and /maps=1 and I could not tell which carried the quoted text. If a direct museum-specific coordinate is required, treat this as 0, 0."
+  },
+  "b": {
+   "id": "kaesong-koryo-museum-kaesong",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "No result states coordinates for the museum itself; the search said so. The UNESCO map page (https://whc.unesco.org/en/list/1278/maps=1) lists the Koryo Songgyungwan component at N37 59 31.178 E126 34 14.603 (about 37.9920, 126.5707). The museum is said to occupy the grounds of the old Sungyun/Songgyungwan Academy, but that link comes from a separate travel source. I treated it as a neighbouring-site proxy rather than the museum's own coordinates, so I answered 0. Candidate value for a human to decide on."
+  },
+  "agreed": null
+ },
+ {
+  "id": "sinchon-museum-of-american-war-atrocities-sinchon",
+  "from": 60,
+  "a": {
+   "id": "sinchon-museum-of-american-war-atrocities-sinchon",
+   "lat": 38.354722,
+   "lon": 125.4875,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Sinchon_Museum_of_American_War_Atrocities"
+   ],
+   "coord_statement": "38°21′17″N 125°29′15″E, or 38.35472°N 125.48750°E",
+   "fixed_venue": true,
+   "notes": "Wikipedia article for the museum states these coordinates, in both DMS and decimal form. DMS conversion matches: 38 + 21/60 + 17/3600 = 38.354722; 125 + 29/60 + 15/3600 = 125.4875. Caveat: the same search results say the museum was rebuilt and moved to a new location in July 2015, and they do not say whether the listed coordinates are the current site. Two searches run."
+  },
+  "b": {
+   "id": "sinchon-museum-of-american-war-atrocities-sinchon",
+   "lat": 38.354722,
+   "lon": 125.4875,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Sinchon_Museum_of_American_War_Atrocities"
+   ],
+   "coord_statement": "Its Wikipedia infobox gives coordinates of 38°21′17″N 125°29′15″E",
+   "fixed_venue": true,
+   "notes": "Both searches returned the Wikipedia article for this museum, with the same 38°21′17″N 125°29′15″E (38.35472°N 125.48750°E). My conversion: 38 + 21/60 + 17/3600 = 38.354722; 125 + 29/60 + 15/3600 = 125.4875. The article says the museum was rebuilt and moved to a new location in July 2015. The statement that the infobox coordinates match the current site is the search tool's inference, not quoted from the page."
+  },
+  "agreed": {
+   "lat": 38.354722,
+   "lon": 125.4875
+  }
+ },
+ {
+  "id": "zachęta-national-gallery-of-art-warsaw",
+  "from": 64,
+  "a": {
+   "id": "zachęta-national-gallery-of-art-warsaw",
+   "lat": 52.239167,
+   "lon": 21.011667,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Zach%C4%99ta_%E2%80%93_National_Gallery_of_Art"
+   ],
+   "coord_statement": "Coordinates: 52°14′21″N 21°0′42″E",
+   "fixed_venue": true,
+   "notes": "English Wikipedia infobox, converted from degrees: 52+14/60+21/3600 = 52.239167; 21+0/60+42/3600 = 21.011667. Search result gave only this one coordinate source and was not cross-checked. Official contact page gives the address Plac Małachowskiego 3, 00-916 Warsaw, consistent with the Warsaw institution."
+  },
+  "b": {
+   "id": "zachęta-national-gallery-of-art-warsaw",
+   "lat": 52.23917,
+   "lon": 21.01167,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Zach%C4%99ta_%E2%80%93_National_Gallery_of_Art"
+   ],
+   "coord_statement": "52.23917°N, 21.01167°E, or 52°14′21″N 21°0′42″E in degrees-minutes-seconds. Its Wikipedia infobox lists these coordinates for the Warsaw museum.",
+   "fixed_venue": true,
+   "notes": "Found on the second search (query: Zachęta National Gallery of Art geographic coordinates). The first search gave only the address (Pl. Małachowskiego 3, 00-916 Warsaw), with no coordinates. The two forms agree: 52°14′21″N is 52.23917 and 21°0′42″E is 21.01167. The page is the English Wikipedia article for this gallery in Warsaw."
+  },
+  "agreed": {
+   "lat": 52.239167,
+   "lon": 21.011667
+  }
+ },
+ {
+  "id": "victoria-gallery-samara",
+  "from": 64,
+  "a": {
+   "id": "victoria-gallery-samara",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches run. Neither stated coordinates. Results gave only the address (Nekrasovskaya 2, Samara) and a description of the building on the Volga embankment. Not estimated from the address. Single gallery building."
+  },
+  "b": {
+   "id": "victoria-gallery-samara",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Two searches, no coordinates stated for Victoria Gallery in Samara. The first search found only that it sits on the Volga embankment in a three-storey building. The second search returned namesakes (Victoria Art Gallery in Bath, Victoria Cross Gallery in Wantage, Victoria Miro in London, NGV in Melbourne), which were rejected. Answer is 0."
+  },
+  "agreed": null
+ },
+ {
+  "id": "new-holland-island-st-petersburg",
+  "from": 64,
+  "a": {
+   "id": "new-holland-island-st-petersburg",
+   "lat": 59.928889,
+   "lon": 30.29,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/New_Holland_Island"
+   ],
+   "coord_statement": "59°55′44″N, 30°17′24″E",
+   "fixed_venue": true,
+   "notes": "English Wikipedia, converted from degrees: 59+55/60+44/3600 = 59.928889; 30+17/60+24/3600 = 30.290000. The coordinates are for the island site as a whole, not a single building. No second source in the results to cross-check. One search used."
+  },
+  "b": {
+   "id": "new-holland-island-st-petersburg",
+   "lat": 59.92889,
+   "lon": 30.29,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/New_Holland_Island"
+   ],
+   "coord_statement": "Its coordinates are 59°55′44″N 30°17′24″E",
+   "fixed_venue": true,
+   "notes": "The English Wikipedia article on New Holland Island was the top result, and it states 59°55′44″N 30°17′24″E. Converted: 59 + 55/60 + 44/3600 = 59.92889, and 30 + 17/60 + 24/3600 = 30.29. These are the coordinates of the island, a single triangular site in central Saint Petersburg, and not of one named building. I set fixed_venue true because the island is one place. Only one search was used."
+  },
+  "agreed": {
+   "lat": 59.928889,
+   "lon": 30.29
+  }
+ },
+ {
+  "id": "pro-arte-foundation-st-petersburg",
+  "from": 64,
+  "a": {
+   "id": "pro-arte-foundation-st-petersburg",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Two searches run. Neither stated coordinates. The official site lists an office at Rubinshteina 6, St Petersburg, while older directories place it in the Peter and Paul Fortress, so the sources conflict. It is a foundation with an office and no single main public building. Not estimated from an address."
+  },
+  "b": {
+   "id": "pro-arte-foundation-st-petersburg",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Two searches, no coordinates stated. The foundation's own site lists only an office address (Rubinshteina St 6, litera A, apt 3, St Petersburg 191025). Older directories place it in the Peter and Paul Fortress. A non-profit foundation with no single main public building, so fixed_venue is false. The second search's reply included approximate figures from the tool's own memory; these are not in any source and were not used."
+  },
+  "agreed": null
+ },
+ {
+  "id": "state-hermitage-museum-st-petersburg",
+  "from": 68,
+  "a": {
+   "id": "state-hermitage-museum-st-petersburg",
+   "lat": 59.940556,
+   "lon": 30.313611,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Hermitage_Museum"
+   ],
+   "coord_statement": "The main Wikipedia entry places the museum at 59°56′26″N, 30°18′49″E, or about 59.9406°N, 30.3136°E. Its listed address is 34 Palace Embankment in the Central District of Saint Petersburg.",
+   "fixed_venue": true,
+   "notes": "Converted from the Wikipedia DMS 59°56′26″N 30°18′49″E (59 + 56/60 + 26/3600 = 59.940556; 30 + 18/60 + 49/3600 = 30.313611). Other listings in the same results (Sygic, Megalithic, Structurae) differ by a few hundred metres. 1 search used."
+  },
+  "b": {
+   "id": "state-hermitage-museum-st-petersburg",
+   "lat": 59.9405556,
+   "lon": 30.3136111,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Hermitage_Museum"
+   ],
+   "coord_statement": "The State Hermitage Museum is at 34 Palace Embankment in the Central District of Saint Petersburg, Russia. Coordinates: 59°56′26″N 30°18′49″E.",
+   "fixed_venue": true,
+   "notes": "Search 1 of 1. The result text attributes the coordinates to the Wikipedia infobox, and that page is in the Links list. Converted from 59°56′26″N 30°18′49″E: 59 + 56/60 + 26/3600 = 59.9405556 and 30 + 18/60 + 49/3600 = 30.3136111. Both are north and east, so positive. The result says the main complex is on Palace Square (Winter Palace and the Hermitage buildings), so fixed_venue is true."
+  },
+  "agreed": {
+   "lat": 59.940556,
+   "lon": 30.313611
+  }
+ },
+ {
+  "id": "state-russian-museum-st-petersburg",
+  "from": 68,
+  "a": {
+   "id": "state-russian-museum-st-petersburg",
+   "lat": 59.938592,
+   "lon": 30.332221,
+   "coord_urls": [
+    "https://en.wikipedia.org/wiki/Russian_Museum"
+   ],
+   "coord_statement": "The State Russian Museum's main building, the Mikhailovsky Palace, is at about 59.9386°N, 30.3322°E. Wikipedia lists the coordinates as 59°56′19″N 30°19′56″E, or 59.938592, 30.332221 in decimal degrees.",
+   "fixed_venue": true,
+   "notes": "Main building is the Mikhailovsky Palace (Inzhenernaya ul. 4). Decimal value taken as stated for the Wikipedia article on the Russian Museum; it matches the DMS 59°56′19″N 30°19′56″E. A second source (Liquisearch) gave 59.938742, 30.332385, about 15 m away. 1 search used."
+  },
+  "b": {
+   "id": "state-russian-museum-st-petersburg",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Answered 0 because the source is not named. The search summary said 'Its listing gives the coordinates 59.93862, 30.33207', but it did not say which of the Links entries (e-flux, visitmuseums.ru, meer.com, libera.art and others) states them. I will not attach a URL I cannot match to that text. The value 59.93862, 30.33207 is unattributed and unverified. No Wikipedia page appeared in the results. The second search was not run because the shared web-search budget ran out. Main building per the result: Mikhailovsky Palace on Arts Square, Inzhenernaya Street 4, so fixed_venue is true. A follow-up 'State Russian Museum geographic coordinates' search would likely settle it."
+  },
+  "agreed": null
+ },
+ {
+  "id": "vyksa-festival-art-ovrag-vyksa",
+  "from": 68,
+  "a": {
+   "id": "vyksa-festival-art-ovrag-vyksa",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "A festival held in the town of Vyksa, with no single main building. The one search returned no coordinates for the festival or the town, so lat/lon are 0. 1 search used."
+  },
+  "b": {
+   "id": "vyksa-festival-art-ovrag-vyksa",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Festival with no single main building. The results describe it as street art, theatre, music and sport spread across the town of Vyksa, with works left in the streets, so fixed_venue is false and the coordinates are 0. No coordinates were stated in the results. 1 search used."
+  },
+  "agreed": null
+ },
+ {
+  "id": "yeltsin-center-yekaterinburg",
+  "from": 68,
+  "a": {
+   "id": "yeltsin-center-yekaterinburg",
+   "lat": 56.844894,
+   "lon": 60.591438,
+   "coord_urls": [
+    "https://yandex.com/maps/54/yekaterinburg/house/YkkYcw5hTUYPQFtsfXR1dXRqYA==/"
+   ],
+   "coord_statement": "That entry gives 56.844894, 60.591438 for Borisa Yeltsina Street, 3 Borisa Yeltsina Street, 3, Yekaterinburg, Sverdlovsk Region, 620000, and it lists the Yeltsin Center among the Businesses inside at that address.",
+   "fixed_venue": true,
+   "notes": "Weaker evidence, flag for review. The source is a Yandex Maps building entry (Borisa Yeltsina St 3) that lists the Yeltsin Center as a business inside, not a page about the Yeltsin Center itself. The Wikipedia article (Boris Yeltsin Presidential Center) was returned in both searches, but the result text did not state coordinates from it, so it is not cited. The second search returned no coordinates. 2 searches used."
+  },
+  "b": {
+   "id": "yeltsin-center-yekaterinburg",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "The search was not performed. The web-search budget (200 calls per turn, shared by all agents) was used up, so there are no results and the coordinates are 0. I did not search by other means. fixed_venue true is a classification I made with no search result behind it: the Yeltsin Center is a named cultural centre and museum, not a festival or a dispersed organisation. Re-run this record once the search budget is available."
+  },
+  "agreed": null
+ },
+ {
+  "id": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+  "from": 72,
+  "a": {
+   "id": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Not searched successfully: the WebSearch budget for this turn was used up (limit of 200 shared by every agent), so the search returned no results. No source states coordinates, so lat and lon are 0. fixed_venue is true only because the record is a cultural centre, which has one main building. This was not checked against a source. Needs a re-run with a query like 'King Abdulaziz Center for World Culture (Ithra) Dhahran coordinates'."
+  },
+  "b": {
+   "id": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "No search performed: the WebSearch budget for this turn was exhausted (limit 200 per turn, shared by all agents), so no source stating coordinates was obtained. Coordinates left at 0 per the evidence rules. fixed_venue true is a classification from the record type (a cultural centre with one main building), not a searched fact."
+  },
+  "agreed": null
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "from": 72,
+  "a": {
+   "id": "artscience-museum-singapore",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "Not searched successfully: the WebSearch budget for this turn was used up, so the search returned no results. No source states coordinates, so lat and lon are 0. fixed_venue is true only because the record is a museum, which has one main building. This was not checked against a source. Needs a re-run with a query like 'ArtScience Museum Singapore coordinates'."
+  },
+  "b": {
+   "id": "artscience-museum-singapore",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "No search performed: the WebSearch budget for this turn was exhausted, so no source stating coordinates was obtained. Coordinates left at 0 per the evidence rules. fixed_venue true is a classification from the record type (a museum with one main building), not a searched fact."
+  },
+  "agreed": null
+ },
+ {
+  "id": "tanoto-art-foundation-singapore",
+  "from": 72,
+  "a": {
+   "id": "tanoto-art-foundation-singapore",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "Not searched successfully: the WebSearch budget for this turn was used up, so the search returned no results. No source states coordinates, so lat and lon are 0. fixed_venue is false because no source confirms a single main public building for this foundation, and the record's only link is a news article about its launch. This was not checked. Needs a re-run with a query like 'Tanoto Art Foundation Singapore coordinates'."
+  },
+  "b": {
+   "id": "tanoto-art-foundation-singapore",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "No search performed: the WebSearch budget for this turn was exhausted, so no source was obtained. Coordinates left at 0. fixed_venue false because it is a foundation and nothing retrieved shows a single public building; unverified, worth rechecking when searches are available."
+  },
+  "agreed": null
+ },
+ {
+  "id": "gwangju-biennale-gwangju",
+  "from": 72,
+  "a": {
+   "id": "gwangju-biennale-gwangju",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "A biennial, so under the rules fixed_venue is false and the coordinates are 0. No search was run for this record."
+  },
+  "b": {
+   "id": "gwangju-biennale-gwangju",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": false,
+   "notes": "No search performed: the WebSearch budget for this turn was exhausted. Coordinates left at 0. fixed_venue false because it is a biennial, which the rules treat as having no single main building."
+  },
+  "agreed": null
+ },
+ {
+  "id": "arter-istanbul",
+  "from": 76,
+  "a": {
+   "id": "arter-istanbul",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "No coordinates found. The one WebSearch I ran (\"Arter Istanbul coordinates\") returned nothing, because the per-turn search budget (200 calls shared by all agents) was already used up. I did not retry and did not use memory or any other route, so lat and lon are 0 under the no-source rule. fixed_venue=true is not backed by a source. It is only my reading that Arter is an art institution with a single public building, and it needs checking when the record is re-run with search available."
+  },
+  "b": {
+   "id": "arter-istanbul",
+   "lat": 0,
+   "lon": 0,
+   "coord_urls": [],
+   "coord_statement": "",
+   "fixed_venue": true,
+   "notes": "No coordinates found. The one allowed search (query 'Arter Istanbul Turkey location wikipedia') was refused because the shared WebSearch budget (200 calls per turn) was used up, so no results were returned and no source states coordinates. No second search was attempted, and I did not use curl or other services to get around the limit. Coordinates are left at 0,0 and none were estimated from memory or from the city. The fixed_venue value of true is a classification only: Arter is a contemporary art museum or space, not a festival, biennial or roaming organisation. No search result confirms it. A follow-up message could retry the search once the budget is available."
+  },
+  "agreed": null
+ }
+]

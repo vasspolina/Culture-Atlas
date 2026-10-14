@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fold what the retired research library held into the museum records it is about, then run clean_data.py and embed_data.py.
+"""Fold what the retired research library held into the museum records it is about. Run clean_data.py and embed_data.py afterwards.
 
 The library window is gone. Its contents are archived under data/library/ and each piece goes where it belongs:
 
@@ -10,7 +10,7 @@ The library window is gone. Its contents are archived under data/library/ and ea
 
 Nothing is written in these tools: table rows are copied word for word, study lines were drafted from the abstract, checked twice
 against it, and each keeps the quote it rests on in study_findings.json. Re-running replaces the four fields, so it is safe to repeat.
-Usage: python3 tools/attach_research.py
+Usage: python3 tools/attach_research.py && python3 tools/clean_data.py && python3 tools/embed_data.py
 """
 import collections
 import json
@@ -48,13 +48,17 @@ def keys(r):
     return {norm(r['name'])} | {norm(a) for a in r.get('aliases') or []}
 
 
+def city_key(r):
+    return re.sub(r'\bsaint\b', 'st', norm(r.get('city')))
+
+
 def targets(rid):
     """Every record that is this institution: the id, a duplicate of the id, and a twin pin (same city, same name or alias)."""
     out = list(by_id[rid])
     seen = {id(r) for r in out}
     for r in list(out):
         for o in records:
-            if id(o) in seen or o.get('city') != r.get('city') or o.get('country') != r.get('country'):
+            if id(o) in seen or city_key(o) != city_key(r) or o.get('country') != r.get('country'):
                 continue
             if keys(r) & keys(o):
                 out.append(o)
@@ -82,9 +86,33 @@ for f in findings:
         n_study += 1
 
 # ---- case rows
-def compose(key, row_id, cols):
+# A row is shown as the research wrote it, minus what is about the app or about what was not found: a sentence that mentions the
+# atlas, says a source "does not mention" something, or reports that nothing was found, is left out, and so is a sentence that only
+# repeats an earlier one. A row that says nothing is left once those are gone is not shown.
+LEFT_OUT = re.compile(r"\batlas\b|\bdoes not mention\b|\bmention(?:s)? neither\b|\bnames no\b|\bcarries no flag\b|\bcontains? no\b|"
+                      r"^No\b[^.]*\b(found|published|incentive-law)\b|\bnot found\b|\bnone found\b", re.I)
+
+
+def sentences(text):
+    return [x for x in re.split(r'(?<=[.!?])\s+(?=[A-Z0-9(])', text.strip()) if x]
+
+
+def clean_text(text):
+    out, seen = [], ''
+    for x in sentences(text):
+        k = re.sub(r'^(he|she|it|they) ', '', norm(x))
+        if k in seen or LEFT_OUT.search(x):
+            continue
+        seen += ' ' + k
+        out.append(x)
+    return ' '.join(out)
+
+
+def compose(key, row_id, cols, inst=''):
     ci, ti, ri = row_id.split(':')
     sources = cols.get('Sources') or []
+    if key == 'rouanet' and cols['Share through tax incentives'].lower().startswith('no incentive-law money'):
+        return None
     if key == 'epstein':
         return {'title': cols['Person'], 'meta': f"{cols['Link']}, {cols['Status']}",
                 'text': f"{cols['What the record shows']} {cols['What happened']}".strip(), 'sources': sources}
@@ -121,9 +149,22 @@ for d in decisions:
     table = (c.get('tables') or [c['table']])[int(ti)]
     row = table['rows'][int(ri)]
     cols = dict(zip(table['head'][1:], row[1:]))
-    note = compose(key, d['row_id'], cols)
-    note['text'] = stand_alone(d['row_id'], note['text'])
-    add(d['record_id'], 'case_notes', note)
+    note = compose(key, d['row_id'], cols, row[0])
+    if note is None:
+        continue
+    text = clean_text(stand_alone(d['row_id'], note['text']))
+    if re.match(r'^Lists\b', text):
+        text = f'{row[0]} {text[0].lower()}{text[1:]}'
+    if not text:
+        continue
+    note['text'] = text
+    for t in targets(d['record_id']):
+        sents = [norm(x) for x in sentences(text)]
+        own = norm(json.dumps({k: t.get(k) for k in ('why_flagged', 'other_findings', 'epstein_records', 'wikileaks_records', 'watch')}, ensure_ascii=False))
+        if sents and sum(1 for x in sents if x in own) / len(sents) >= 0.6:
+            continue   # the record already says it
+        if note not in t.setdefault('case_notes', []):
+            t['case_notes'].append(note)
     n_case += 1
 
 # ---- the two single-institution case studies
@@ -166,7 +207,7 @@ for funder, n, flagged, countries, which in net['rows']:
                 hits = by_name[norm(cand)]
                 exact = [r for r in hits if norm(r['name']) == norm(cand)] or hits
                 i = j
-                link = {'funder': funder, 'institutions': int(n), 'flagged': int(flagged), 'countries': int(countries)}
+                link = {'funder': funder, 'institutions': int(n)}
                 done = False
                 for r in exact:
                     if any(re.search(r'\b' + re.escape(v) + r'\b', own_text(r)) for v in variants(funder)):

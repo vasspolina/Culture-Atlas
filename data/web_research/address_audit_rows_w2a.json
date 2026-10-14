@@ -1,0 +1,2093 @@
+[
+ {
+  "id": "the-bowes-museum",
+  "from": 274,
+  "a": {
+   "id": "the-bowes-museum",
+   "address": "Newgate, Barnard Castle, County Durham DL12 8NP",
+   "address_urls": [
+    "https://thebowesmuseum.org.uk/visit/",
+    "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/3967634/contact-information"
+   ],
+   "address_statement": "The Bowes Museum is at Newgate, Barnard Castle, County Durham, DL12 8NP.",
+   "notes": "The official visit page (thebowesmuseum.org.uk/visit/) was summarised as giving 'Barnard Castle, County Durham, DL12 8NP'; the street name Newgate appears in the first search's text, which drew on the Charity Commission register listing, and no house number is given. One third-party listing (automapa) gives postcode DL12 8NG, which conflicts with the official DL12 8NP, so DL12 8NP is used."
+  },
+  "b": {
+   "id": "the-bowes-museum",
+   "address": "Newgate, Barnard Castle, DL12 8NP",
+   "address_urls": [
+    "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/3967634/contact-information",
+    "https://en.wikipedia.org/wiki/Bowes_Museum"
+   ],
+   "address_statement": "The Charity Commission register gives the postal address as The Bowes Museum, Newgate, Barnard Castle, DL12 8NP (first search, Wikipedia-sourced summary: \"Its address is Newgate, Barnard Castle, County Durham, DL12 8NP, England.\")",
+   "notes": "Both sources agree on Newgate, Barnard Castle, DL12 8NP. The register line is the postal address of the charity; the Wikipedia-sourced line describes the museum itself. The official contact page (thebowesmuseum.org.uk/contact-us/) appeared in results but its text did not quote the address, so it is not cited. An aggregator wrongly said English Heritage manages it; ignored."
+  },
+  "agreed": "Newgate, Barnard Castle, County Durham DL12 8NP"
+ },
+ {
+  "id": "staatliche-museen-zu-berlin",
+  "from": 274,
+  "a": {
+   "id": "staatliche-museen-zu-berlin",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Umbrella body running many separate museums across Berlin (Museumsinsel, Kulturforum, Dahlem, Humboldt Forum and others), each with its own address. No single main public venue is identified in the results. The only central address that appeared, Genthiner Straße 38, 10785 Berlin, is the visitor information service, not a public museum venue, so it is not used. Left empty."
+  },
+  "b": {
+   "id": "staatliche-museen-zu-berlin",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not a single venue: Wikipedia and the SMB profile describe a network of seventeen museums in five clusters across Berlin, with Museum Island (Mitte) the best-known group but no single main public venue named. Only per-museum addresses appeared (e.g. Bode Museum, Am Kupfergraben, 10117 Berlin; Institut für Museumsforschung, In der Halde 1, 14195 Berlin; Rathgen-Forschungslabor, Schloßstraße 1 a, 14059 Berlin), each a different institution within the network. Left empty because the main venue is not clear."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "contemporary-calgary",
+  "from": 274,
+  "a": {
+   "id": "contemporary-calgary",
+   "address": "#701 11 Street SW, Calgary",
+   "address_urls": [
+    "https://www.contemporarycalgary.com/visit-us"
+   ],
+   "address_statement": "Its visit page lists the street address as #701 11 Street SW, in the west end of downtown.",
+   "notes": "Street and number come from the institution's own visit page. No postcode is given there. A postcode (T2P 2C4) appeared only in an Expat Exchange aggregator listing, which is not used, so the postcode is omitted. The city Calgary comes from the record, since the page text quoted does not name it."
+  },
+  "b": {
+   "id": "contemporary-calgary",
+   "address": "701 11 St SW, Calgary",
+   "address_urls": [
+    "https://www.travelalberta.com/map?id=14890",
+    "https://www.visitcalgary.com/things-to-do/stories-from-calgary/art-galleries-and-museums"
+   ],
+   "address_statement": "Contemporary Calgary is a non-profit contemporary art gallery at 701 11 St SW in downtown Calgary. Its address is listed on the Travel Alberta listing and on Visit Calgary's art galleries page.",
+   "notes": "No postcode appeared in any result. A second search found Preview Art Magazine and the Esker Foundation ArtMap 2026 writing \"701 11th Street SW\", Calgary, AB. The Esker ArtMap (https://eskerfoundation.com/assets/ArtMap_2026_EskerFoundation.pdf) also says the building is under renovation with opening listed for 2027, so the gallery may be temporarily closed at the same address. The official site's contact page was not found in results, so the address rests on Travel Alberta and Visit Calgary listings. Check current status before publishing."
+  },
+  "agreed": "#701 11 Street SW, Calgary"
+ },
+ {
+  "id": "kettle-s-yard",
+  "from": 274,
+  "a": {
+   "id": "kettle-s-yard",
+   "address": "Castle Street, Cambridge CB3 0AQ",
+   "address_urls": [
+    "https://www.museums.cam.ac.uk/node/3",
+    "https://batch.artuk.org/visit/venues/kettles-yard-university-of-cambridge-5984"
+   ],
+   "address_statement": "Kettle's Yard is at Castle Street, Cambridge CB3 0AQ, and the phone number is 01223 748100.",
+   "notes": "The search text drew the main contact details from the University of Cambridge museums page, which is a university source rather than the kettlesyard.cam.ac.uk site. The institution's own contact page did not appear in either search, so the address was not checked against it. No house number is given."
+  },
+  "b": {
+   "id": "kettle-s-yard",
+   "address": "Castle Street, Cambridge CB3 0AQ",
+   "address_urls": [
+    "https://www.kettlesyard.cam.ac.uk/about-us/",
+    "https://www.museums.cam.ac.uk/node/3",
+    "https://en.wikipedia.org/wiki/Kettle%27s_Yard"
+   ],
+   "address_statement": "The address is Castle Street, Cambridge CB3 0AQ, UK. It lies on the west side of Castle Street, between Northampton Street and St Peter's Church.",
+   "notes": "The search summary did not tie the address line to one specific link; the cited URLs are the official About Us page, the University of Cambridge museums page and Wikipedia, all from the Links list. The second search (domain plus contact) returned only unrelated results, so there is no independent confirmation. The street has no number in the source. The About Us page shows a notice about a closure on a 2 June date, year unclear; no sign the venue has closed or moved."
+  },
+  "agreed": "Castle Street, Cambridge CB3 0AQ"
+ },
+ {
+  "id": "the-renaissance-society",
+  "from": 278,
+  "a": {
+   "id": "the-renaissance-society",
+   "address": "5811 South Ellis Avenue, Chicago, IL 60637",
+   "address_urls": [
+    "https://renaissancesociety.org/visit/",
+    "https://renaissancesociety.org/about/"
+   ],
+   "address_statement": "The Renaissance Society is at the University of Chicago, in Cobb Hall on the fourth floor, at 5811 South Ellis Avenue, Chicago, IL 60637.",
+   "notes": "Single venue: Cobb Hall, fourth floor, University of Chicago campus. The result text attributes the address and contact details to the official site; the official visit and about pages were returned in the Links list. Third-party listings (Choose Chicago, Meer) give outdated hours only and do not conflict on the address."
+  },
+  "b": {
+   "id": "the-renaissance-society",
+   "address": "5811 S. Ellis Ave., Chicago, IL 60637",
+   "address_urls": [
+    "https://www.choosechicago.com/things-to-do/the-renaissance-society-at-the-university-of-chicago/",
+    "https://www.chicagogallerynews.com/organizations/the-renaissance-society"
+   ],
+   "address_statement": "Its address is 5811 S. Ellis Ave., Chicago, IL 60637, according to the Choose Chicago listing. (Chicago Gallery News: the address is 5811 S. Ellis Ave., Cobb Hall, 4th floor, Chicago, IL 60637.)",
+   "notes": "Two listings agree on the street address; the Chicago Gallery News listing adds Cobb Hall, 4th floor. The institution's own site (renaissancesociety.org) came up in the results only as /about/, and its contact text was not shown, so no official-site confirmation. Hours differ between listings; not relevant to the address."
+  },
+  "agreed": "5811 South Ellis Avenue, Chicago, IL 60637"
+ },
+ {
+  "id": "christchurch-art-gallery",
+  "from": 278,
+  "a": {
+   "id": "christchurch-art-gallery",
+   "address": "58 Gloucester Street, Christchurch 8013",
+   "address_urls": [
+    "https://christchurchartgallery.org.nz/about/contact"
+   ],
+   "address_statement": "The Gallery's physical address is 58 Gloucester Street, Christchurch 8013, according to its contact page.",
+   "notes": "Sources differ on how the building is described. The official contact page gives the physical address as 58 Gloucester Street, Christchurch 8013 (postal: PO Box 2626, Christchurch 8140). The official Visit page places the building at the corner of Worcester Boulevard and Montreal Street. A third-party directory lists 312 Montreal St, and another listing gave 58 Gloucester Street as a separate library and archives address. These are not confirmed by the official site, so the official contact page address was used. The gallery's name in the sources is Christchurch Art Gallery Te Puna o Waiwhetu."
+  },
+  "b": {
+   "id": "christchurch-art-gallery",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Left empty because the sources conflict and none could be matched to a specific URL with a stated line. Results gave: 'Cnr Worcester Boulevard and Montreal Street, Christchurch 8140'; '312 Montreal St.'; and '49 Worcester Boulevard, at the corner of Montreal Street'. The gallery's own contact page (christchurchartgallery.org.nz) did not appear in either search. Same building on the Montreal St / Worcester Blvd corner in all versions, but the street number is unconfirmed. Do not confuse with The Central Art Gallery, a separate commercial gallery. The archives and library at 58 Gloucester Street are a separate operation, not the main public venue."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "nasher-sculpture-center",
+  "from": 278,
+  "a": {
+   "id": "nasher-sculpture-center",
+   "address": "2001 Flora Street, Dallas, TX 75201",
+   "address_urls": [
+    "https://www.nashersculpturecenter.org/contact-us",
+    "https://www.nashersculpturecenter.org/visit/plan-a-visit"
+   ],
+   "address_statement": "The Nasher Sculpture Center is at 2001 Flora Street, Dallas, TX 75201, phone 214.242.5100. It is located in the heart of Dallas' thriving downtown Arts District.",
+   "notes": "Single venue in the Dallas Arts District. The official press release PDFs on nashersculpturecenter.org carry the same line (2001 Flora Street Dallas, Texas 75201 +1 214.242.5100). No conflicting addresses found."
+  },
+  "b": {
+   "id": "nasher-sculpture-center",
+   "address": "2001 Flora St., Dallas, TX 75201",
+   "address_urls": [
+    "https://dev.nashersculpturecenter.org/contact-us",
+    "https://dev.nashersculpturecenter.org/about-us"
+   ],
+   "address_statement": "The museum is at 2001 Flora St. Dallas, TX 75201, and the main number is 214.242.5100. (Earlier search: The Nasher Sculpture Center is at 2001 Flora Street in Dallas, Texas 75201, in the Dallas Arts District... The official 'About' page lists the address and phone number.)",
+   "notes": "Both searches agree. The URLs are on the dev.nashersculpturecenter.org subdomain of the institution's own site; the search summary noted this is a development version and the production contact page is the more reliable source, but the production contact page did not appear in the results. Wikipedia (en.wikipedia.org/wiki/Nasher_Sculpture_Center) and dallasartsdistrict.org were also in the results but their address lines were not shown."
+  },
+  "agreed": "2001 Flora Street, Dallas, TX 75201"
+ },
+ {
+  "id": "le-consortium",
+  "from": 278,
+  "a": {
+   "id": "le-consortium",
+   "address": "37 rue de Longvic, 21000 Dijon",
+   "address_urls": [
+    "https://leconsortium.fr/en/visit"
+   ],
+   "address_statement": "Address: 37 rue de Longvic, 21000 Dijon. It sits about 400 m from Place Wilson, and the official site says it is a 20-minute walk from Dijon's railway station.",
+   "notes": "Also branded as Consortium Museum (consortiummuseum.com). The address comes from the official visit page returned in the Links list. Single venue; no conflicting addresses found."
+  },
+  "b": {
+   "id": "le-consortium",
+   "address": "37 rue de Longvic, 21000 Dijon",
+   "address_urls": [
+    "https://en.wikipedia.org/wiki/Le_Consortium",
+    "https://afea.fr/dijon2023/wp-content/uploads/sites/7/2023/01/Brochure-AFEA-2023-v2.pdf"
+   ],
+   "address_statement": "Le Consortium is a contemporary art center in Dijon, France, located at 37 rue de Longvic, 21000 Dijon. (AFEA 2023 Dijon brochure: Location 37 rue de Longvic (nearest bus stop: L5 'Wilson Carnot').)",
+   "notes": "Street and number are given by the Wikipedia result and the AFEA conference brochure. The institution's own site (leconsortium.fr) did not appear in either search, so there is no official-site confirmation. The centre has been in a Shigeru Ban and Jean de Gastines building since 2011, and the address is consistent with that current venue."
+  },
+  "agreed": "37 rue de Longvic, 21000 Dijon"
+ },
+ {
+  "id": "jameel-arts-centre",
+  "from": 282,
+  "a": {
+   "id": "jameel-arts-centre",
+   "address": "2, 6th Street, Al Jadaf, Ras Al Khor, Dubai",
+   "address_urls": [
+    "https://maps.yango.com/org/94163621808/"
+   ],
+   "address_statement": "A map listing gives the street address as 2, 6th Street, Al Jadaf, Ras Al Khor, Dubai.",
+   "notes": "Weakest of the four. The search summary attributes the street address only to 'a map listing', and maps.yango.com is the only map listing among the returned links, so that attribution is an inference. The official visit page (https://jameelartscentre.org/visit/) was returned, but the summary quotes it only as 'Jaddaf Waterfront, between Business Bay Bridge and Garhoud Bridge on the Bur Dubai bank of the Dubai Creek', with no street or number. The sources give no postcode. Single venue, so no ambiguity about the main venue. Worth re-checking against the official page."
+  },
+  "b": {
+   "id": "jameel-arts-centre",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No street, number or postcode found. The official site (jameelartscentre.org/about and /visit) places it at Jaddaf Waterfront on the Bur Dubai bank of Dubai Creek, which is a district, not a street address. Only a Yango Maps listing gives a street form (2, 6th Street, Al Jadaf, Ras Al Khor, Dubai); it is a map aggregator and no better source confirms it, so it is not used. Earlier pre-opening material placed the centre at Culture Village, which conflicts with the current official wording. Left empty."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "lismore-castle-arts",
+  "from": 282,
+  "a": {
+   "id": "lismore-castle-arts",
+   "address": "Lismore Castle, Lismore, Co. Waterford, P51 F859, Ireland",
+   "address_urls": [
+    "https://lismorecastlearts.ie/about/contact-us"
+   ],
+   "address_statement": "Lismore Castle Arts is at Lismore Castle, Lismore, Co. Waterford, P51 F859, Ireland.",
+   "notes": "Taken from the institution's own contact page. The main gallery is at the castle. The summary also lists St Carthage Hall and The Mill as secondary exhibition spaces, but gives no addresses for them. The separate Lismore Castle Gardens listing (Lismore Castle, Co. Waterford) is consistent but has no postcode."
+  },
+  "b": {
+   "id": "lismore-castle-arts",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "The official contact and about pages (lismorecastlearts.ie/about/contact-us, /about) give only the Eircode P51 F859 and Lismore, Co. Waterford. No street line appears in the results. There are three venues: the main gallery in the grounds of Lismore Castle (the former west wing), St Carthage Hall in town, and The Mill on the outskirts of Lismore. A postcode alone is not an address, so left empty."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "gasworks",
+  "from": 282,
+  "a": {
+   "id": "gasworks",
+   "address": "155 Vauxhall Street, London SE11 5RH",
+   "address_urls": [
+    "https://www.artfund.org/explore/museums-and-galleries/gasworks/visitor-information",
+    "https://register-of-charities.charitycommission.gov.uk/en/sector-data/top-10-charities/-/charity-details/326411/contact-information"
+   ],
+   "address_statement": "Gasworks, the contemporary visual art organisation, is at 155 Vauxhall Street, London SE11 5RH, and its phone number is 020 7587 5202.",
+   "notes": "Art Fund visitor page and the Charity Commission register (Triangle Arts Trust, Gasworks's parent charity) agree on the address. The official site gasworks.org.uk did not come up in results, so the address was not checked there. Not to be confused with the unrelated Gasworks Dock Partnership at Cody Dock, Canning Town (E16 4TL), which also appeared in results and was excluded."
+  },
+  "b": {
+   "id": "gasworks",
+   "address": "155 Vauxhall Street, London SE11 5RH",
+   "address_urls": [
+    "https://register-of-charities.charitycommission.gov.uk/en/sector-data/top-10-charities/-/charity-details/326411/contact-information"
+   ],
+   "address_statement": "Address: 155 VAUXHALL STREET LONDON SE11 5RH Phone: 02075875202 Email: info@gasworks.org.uk.",
+   "notes": "The source is the Charity Commission register entry for Triangle Arts Trust (charity 326411), the charity behind Gasworks. Its listed email and website are gasworks.org.uk. The register prints the address in capitals; casing was normalised. A separate listing text in the first search (meer.com) also gives Vauxhall Street, 155, London SE11 5RH. Gasworks' own website pages were not retrieved. Do not confuse with Gasworks London Ltd (a boiler firm), Gasworks Dock Partnership or Sudbury Gasworks Restoration Trust."
+  },
+  "agreed": "155 Vauxhall Street, London SE11 5RH"
+ },
+ {
+  "id": "kunsthalle-mannheim",
+  "from": 282,
+  "a": {
+   "id": "kunsthalle-mannheim",
+   "address": "Friedrichsplatz 4, 68165 Mannheim",
+   "address_urls": [
+    "https://www.e-flux.com/directory/11605/kunsthalle-mannheim/",
+    "https://enjoyjazz.de/en/venue/kunsthalle/",
+    "https://kupi.com/en-ae/explore/germany/mannheim/mannheim-art-gallery"
+   ],
+   "address_statement": "The Kunsthalle Mannheim is at Friedrichsplatz 4, 68165 Mannheim, Germany.",
+   "notes": "The e-flux directory entry, enjoyjazz.de and kupi.com agree. The museum's own site (kuma.art) did not appear in either search, so the address was not checked there. The building is a 1907 Art Nouveau building plus a 2017 wing; the summary gives no separate address for either, so this is treated as one venue."
+  },
+  "b": {
+   "id": "kunsthalle-mannheim",
+   "address": "Friedrichsplatz 4, 68165 Mannheim",
+   "address_urls": [
+    "https://enjoyjazz.de/en/venue/kunsthalle/",
+    "https://www.regioactive.de/location/mannheim/kunsthalle-rT47S83cJw"
+   ],
+   "address_statement": "Its address is Friedrichsplatz 4, 68165 Mannheim, according to a listing on enjoyjazz.de, and a second listing on regioactive.de gives the same address.",
+   "notes": "Two independent venue listings agree, and a travel guide places the museum at Friedrichsplatz opposite the Wasserturm. Neither is the institution's own page. The official site kuma.art could not be checked because the second search was refused (the WebSearch budget was used up), so this rests on secondary listings. One site: the 1907 Billing building plus the 2018 extension."
+  },
+  "agreed": "Friedrichsplatz 4, 68165 Mannheim"
+ },
+ {
+  "id": "chinati-foundation",
+  "from": 286,
+  "a": {
+   "id": "chinati-foundation",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by all agents) was used up, so no source could be cited. Address left empty under the evidence rules. Re-run once the search limit is raised."
+  },
+  "b": {
+   "id": "chinati-foundation",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch call was refused because the per-turn search budget (200 calls, shared by all agents) was used up, so no results came back. No address is given because the rules do not allow supplying one from memory. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "judd-foundation",
+  "from": 286,
+  "a": {
+   "id": "judd-foundation",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by all agents) was used up, so no source could be cited. Address left empty under the evidence rules. Judd Foundation may have several venues in Marfa, so the main public venue should be checked against the source when the search is re-run."
+  },
+  "b": {
+   "id": "judd-foundation",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch call was refused because the per-turn search budget was used up, so no results came back. The institution may have more than one venue in Marfa, so the main venue will need checking when it is re-run. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "acca",
+  "from": 286,
+  "a": {
+   "id": "acca",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by all agents) was used up, so no source could be cited. Address left empty under the evidence rules. Re-run once the search limit is raised."
+  },
+  "b": {
+   "id": "acca",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch call was refused because the per-turn search budget was used up, so no results came back. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "from": 286,
+  "a": {
+   "id": "heide-museum-of-modern-art",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by all agents) was used up, so no source could be cited. Address left empty under the evidence rules. Re-run once the search limit is raised."
+  },
+  "b": {
+   "id": "heide-museum-of-modern-art",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch call was refused because the per-turn search budget was used up, so no results came back. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "lenbachhaus",
+  "from": 290,
+  "a": {
+   "id": "lenbachhaus",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls, shared by every agent in the run) was used up, so no results came back. I did not use memory or any workaround. Re-run this record once the search budget is available."
+  },
+  "b": {
+   "id": "lenbachhaus",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked. The WebSearch budget (200 calls per turn, shared by all agents) was used up before this record's search ran, so no result text was returned. No address is given because the rule is that nothing is supplied from memory. Re-run after raising CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION or in a follow-up turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "artists-space",
+  "from": 290,
+  "a": {
+   "id": "artists-space",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls, shared by every agent in the run) was used up, so no results came back. I did not use memory or any workaround. Re-run this record once the search budget is available."
+  },
+  "b": {
+   "id": "artists-space",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked. The WebSearch budget (200 calls per turn, shared by all agents) was used up before this record's search ran, so no result text was returned. No address is given because the rule is that nothing is supplied from memory. Re-run after raising CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION or in a follow-up turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "swiss-institute",
+  "from": 290,
+  "a": {
+   "id": "swiss-institute",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls, shared by every agent in the run) was used up, so no results came back. I did not use memory or any workaround. Re-run this record once the search budget is available."
+  },
+  "b": {
+   "id": "swiss-institute",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked. The WebSearch budget (200 calls per turn, shared by all agents) was used up before this record's search ran, so no result text was returned. No address is given because the rule is that nothing is supplied from memory. Re-run after raising CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION or in a follow-up turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "henry-art-gallery",
+  "from": 290,
+  "a": {
+   "id": "henry-art-gallery",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls, shared by every agent in the run) was used up, so no results came back. I did not use memory or any workaround. Re-run this record once the search budget is available."
+  },
+  "b": {
+   "id": "henry-art-gallery",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked. The WebSearch budget (200 calls per turn, shared by all agents) was used up before this record's search ran, so no result text was returned. No address is given because the rule is that nothing is supplied from memory. Re-run after raising CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION or in a follow-up turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "magasin-iii",
+  "from": 294,
+  "a": {
+   "id": "magasin-iii",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn (200 calls, shared by all agents) was used up, so the search for Magasin III, Stockholm returned no results. No source states an address, so it is left empty. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "magasin-iii",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: the WebSearch budget for this turn (200 calls, shared by all agents) was used up, so the search returned no results. No address supplied, since nothing may come from memory. Needs a re-run once search is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "de-pont",
+  "from": 294,
+  "a": {
+   "id": "de-pont",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn (200 calls, shared by all agents) was used up, so the search for De Pont, Tilburg returned no results. No source states an address, so it is left empty. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "de-pont",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: the WebSearch budget for this turn (200 calls, shared by all agents) was used up, so the search returned no results. No address supplied, since nothing may come from memory. Needs a re-run once search is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "kunsthalle-wien",
+  "from": 294,
+  "a": {
+   "id": "kunsthalle-wien",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn (200 calls, shared by all agents) was used up, so the search for Kunsthalle Wien, Vienna returned no results. No source states an address, so it is left empty. Needs a re-run once search is available. Check whether there is more than one venue and which is the main one."
+  },
+  "b": {
+   "id": "kunsthalle-wien",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: the WebSearch budget for this turn (200 calls, shared by all agents) was used up, so the search returned no results. No address supplied, since nothing may come from memory. Kunsthalle Wien may have more than one venue, so check this on the re-run. Needs a re-run once search is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "audain-art-museum",
+  "from": 294,
+  "a": {
+   "id": "audain-art-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn (200 calls, shared by all agents) was used up, so the search for Audain Art Museum, Whistler returned no results. No source states an address, so it is left empty. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "audain-art-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: the WebSearch budget for this turn (200 calls, shared by all agents) was used up, so the search returned no results. No address supplied, since nothing may come from memory. Needs a re-run once search is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "migros-museum",
+  "from": 298,
+  "a": {
+   "id": "migros-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn was used up (limit of 200 shared across all agents), so the search was not performed. No address is given because no source was retrieved. A follow-up run is needed, or the limit needs raising (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION)."
+  },
+  "b": {
+   "id": "migros-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn (200 calls, shared by all agents) was used up, so no search ran and no source was seen. Address left empty under the no-invention rule. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "how-art-museum-shanghai",
+  "from": 298,
+  "a": {
+   "id": "how-art-museum-shanghai",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn was used up (limit of 200 shared across all agents), so the search was not performed. No address is given because no source was retrieved. A follow-up run is needed, or the limit needs raising (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION)."
+  },
+  "b": {
+   "id": "how-art-museum-shanghai",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn (200 calls, shared by all agents) was used up, so no search ran and no source was seen. Address left empty under the no-invention rule. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "zoma-museum-addis-ababa",
+  "from": 298,
+  "a": {
+   "id": "zoma-museum-addis-ababa",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn was used up (limit of 200 shared across all agents), so the search was not performed. No address is given because no source was retrieved. A follow-up run is needed, or the limit needs raising (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION)."
+  },
+  "b": {
+   "id": "zoma-museum-addis-ababa",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn (200 calls, shared by all agents) was used up, so no search ran and no source was seen. Address left empty under the no-invention rule. The record has no website. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "selasar-sunaryo-art-space-bandung",
+  "from": 298,
+  "a": {
+   "id": "selasar-sunaryo-art-space-bandung",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn was used up (limit of 200 shared across all agents), so the search was not performed. No address is given because no source was retrieved. A follow-up run is needed, or the limit needs raising (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION)."
+  },
+  "b": {
+   "id": "selasar-sunaryo-art-space-bandung",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn (200 calls, shared by all agents) was used up, so no search ran and no source was seen. Address left empty under the no-invention rule. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "fondation-ifitry-essaouira",
+  "from": 302,
+  "a": {
+   "id": "fondation-ifitry-essaouira",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls shared by all agents) was used up, so the search returned no results. No source states an address, so it is left empty. Needs a re-run. The listed website (biennalecasablanca.org) is the Casablanca Biennale, not obviously this institution, so check the name and city match when it is re-run."
+  },
+  "b": {
+   "id": "fondation-ifitry-essaouira",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls shared across agents) was used up, so no search results were obtained. Left empty under the no-invention rule. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "taipei-fine-arts-museum-taipei",
+  "from": 302,
+  "a": {
+   "id": "taipei-fine-arts-museum-taipei",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls shared by all agents) was used up, so the search returned no results. No source states an address, so it is left empty. Needs a re-run."
+  },
+  "b": {
+   "id": "taipei-fine-arts-museum-taipei",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls shared across agents) was used up, so no search results were obtained. Left empty under the no-invention rule. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "palais-de-lomé-lomé",
+  "from": 302,
+  "a": {
+   "id": "palais-de-lomé-lomé",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls shared by all agents) was used up, so the search returned no results. No source states an address, so it is left empty. Needs a re-run."
+  },
+  "b": {
+   "id": "palais-de-lomé-lomé",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls shared across agents) was used up, so no search results were obtained. Left empty under the no-invention rule. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "ishara-art-foundation-dubai",
+  "from": 302,
+  "a": {
+   "id": "ishara-art-foundation-dubai",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls shared by all agents) was used up, so the search returned no results. No source states an address, so it is left empty. Needs a re-run."
+  },
+  "b": {
+   "id": "ishara-art-foundation-dubai",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls shared across agents) was used up, so no search results were obtained. Left empty under the no-invention rule. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "instituto-tunga-rio-de-janeiro",
+  "from": 306,
+  "a": {
+   "id": "instituto-tunga-rio-de-janeiro",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked: WebSearch returned no results because the shared per-turn search budget (200 calls) was already used up. No source was seen, so the address is left empty. Search again once the budget is raised or reset."
+  },
+  "b": {
+   "id": "instituto-tunga-rio-de-janeiro",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty. Needs a re-run."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "from": 306,
+  "a": {
+   "id": "sesc-são-paulo-são-paulo",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked: WebSearch returned no results because the shared per-turn search budget was used up. No source was seen, so the address is left empty. Sesc São Paulo is also a network of many units, so the main venue needs to be chosen and confirmed from a source before any address goes in."
+  },
+  "b": {
+   "id": "sesc-são-paulo-são-paulo",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty. Sesc São Paulo is a network of many units, so the main venue may be unclear even on a re-run. Needs a re-run."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "kunstverein-bielefeld-bielefeld",
+  "from": 306,
+  "a": {
+   "id": "kunstverein-bielefeld-bielefeld",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked: WebSearch returned no results because the shared per-turn search budget was used up. No source was seen, so the address is left empty. Search again once the budget is raised or reset."
+  },
+  "b": {
+   "id": "kunstverein-bielefeld-bielefeld",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty. Needs a re-run."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "e-werk-luckenwalde-luckenwalde",
+  "from": 306,
+  "a": {
+   "id": "e-werk-luckenwalde-luckenwalde",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked: WebSearch returned no results because the shared per-turn search budget was used up. No source was seen, so the address is left empty. Search again once the budget is raised or reset."
+  },
+  "b": {
+   "id": "e-werk-luckenwalde-luckenwalde",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. WebSearch returned no results because the per-turn search budget (200 calls, shared by every agent in it) was used up. No source was seen, so the address is left empty. Needs a re-run."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "kunsthalle-recklinghausen-recklinghausen",
+  "from": 310,
+  "a": {
+   "id": "kunsthalle-recklinghausen-recklinghausen",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked: WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty. Re-run this record once the budget is raised or reset."
+  },
+  "b": {
+   "id": "kunsthalle-recklinghausen-recklinghausen",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn (200 calls, shared by all agents) was used up, so the search returned no results. The address is left empty rather than supplied from memory. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "ghetto-biennale-port-au-prince",
+  "from": 310,
+  "a": {
+   "id": "ghetto-biennale-port-au-prince",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked: WebSearch returned no results because the per-turn search budget was used up. No source was seen, so the address is left empty. Re-run this record once the budget is raised or reset."
+  },
+  "b": {
+   "id": "ghetto-biennale-port-au-prince",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn was used up, so the search returned no results. The address is left empty rather than supplied from memory. The record has no website. It is also a biennial event, so its venue may not be a single fixed address. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "kalektar-research-platform-on-belarusian-contemporary-art-białystok",
+  "from": 310,
+  "a": {
+   "id": "kalektar-research-platform-on-belarusian-contemporary-art-białystok",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked: WebSearch returned no results because the per-turn search budget was used up. No source was seen, so the address is left empty. Re-run this record once the budget is raised or reset."
+  },
+  "b": {
+   "id": "kalektar-research-platform-on-belarusian-contemporary-art-białystok",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn was used up, so the search returned no results. The address is left empty rather than supplied from memory. It is a research platform and may not have a public venue. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "kunsthaus-baselland-münchenstein",
+  "from": 310,
+  "a": {
+   "id": "kunsthaus-baselland-münchenstein",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked: WebSearch returned no results because the per-turn search budget was used up. No source was seen, so the address is left empty. Re-run this record once the budget is raised or reset."
+  },
+  "b": {
+   "id": "kunsthaus-baselland-münchenstein",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not verified. The WebSearch budget for this turn was used up, so the search returned no results. The address is left empty rather than supplied from memory. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "bangkok-art-biennale-bangkok",
+  "from": 314,
+  "a": {
+   "id": "bangkok-art-biennale-bangkok",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked. The WebSearch budget for this turn (200 calls, shared by every agent) was used up, so the search returned no results. No address is given because no source was seen. Needs a re-run once the budget is raised or reset. Also note that a biennale is an event with several venues, so a single main public venue may not be clear."
+  },
+  "b": {
+   "id": "bangkok-art-biennale-bangkok",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Bangkok Art Biennale is a citywide biannual art festival, not a single venue. The search text says it is spread across many locations (past editions used temples, malls and galleries) and that the 2026 venue list and the organiser's contact details could not be confirmed. A Bangkok Art & Culture Centre address (939 Rama 1 Road, Wangmai, Pathumwan, Bangkok 10330) appeared only as the main hub of the 2018 edition, from a 2018 listing. That is a past edition's venue, not a stated main public venue of the institution, so it is left empty. No website is given in the record."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "the-factory-contemporary-arts-centre-ho-chi-minh-city",
+  "from": 314,
+  "a": {
+   "id": "the-factory-contemporary-arts-centre-ho-chi-minh-city",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked. The WebSearch budget for this turn was used up, so the search returned no results. No address is given because no source was seen. Needs a re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "the-factory-contemporary-arts-centre-ho-chi-minh-city",
+   "address": "15 Nguyen U Di Street, Thao Dien Ward, District 2",
+   "address_urls": [
+    "https://www.e-flux.com/directory/154017/the-factory-contemporary-arts-centre/",
+    "https://m.hanoitimes.vn/the-factory-contemporary-art-center-a-destination-for-community-9374.html"
+   ],
+   "address_statement": "The Factory Contemporary Arts Centre's listed contact details are at 15 Nguyen U Di Street, Thao Dien Ward, District 2.",
+   "notes": "No postcode is stated in any result. The first search wrote it as \"15 Nguyen U Di, in Thao Dien, District 2 (Thao Dien Ward, District 2, Ho Chi Minh City)\". The result text attributes the contact details to the e-flux directory listing and says the address also appears in a Hanoi Times article and a job listing. It does not tie the address line to the official site page (factoryartscentre.com/language/en/about/who-we-are/), although the first search's text says the official site places the centre 20 minutes east of central Ho Chi Minh City. One minor source (Legend Travel Group) places it in Thu Duc Ward instead; the better-sourced Thao Dien / District 2 form is used. The record has no website, so the second search used the name, city and country with the word contact."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "wiels-brussels",
+  "from": 314,
+  "a": {
+   "id": "wiels-brussels",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked. The WebSearch budget for this turn was used up, so the search returned no results. No address is given because no source was seen. Needs a re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "wiels-brussels",
+   "address": "Avenue Van Volxemlaan 354, 1190 Brussels",
+   "address_urls": [
+    "https://en.wikipedia.org/wiki/Wiels",
+    "https://www.e-flux.com/criticism/?g=9651",
+    "https://www.wiels.org/en/venue-hire"
+   ],
+   "address_statement": "WIELS is at Avenue Van Volxemlaan 354, 1190 Brussels, Belgium, in the Forest municipality.",
+   "notes": "The first search (Wikipedia first in the Links) wrote it as \"Avenue Van Volxem 354 (Van Volxemlaan 354) in the Forest municipality of Brussels\" with no postcode. The postcode 1190 comes from the second search, whose result text does not say which listed page states that line. The three URLs are the candidates from the Links lists: Wikipedia, an e-flux page and the official wiels.org venue-hire page. Institution is in a former Wielemans-Ceuppens brewery building. This is the same institution as the existing record id wiels-contemporary-art-centre (website https://wiels.org); this record has no website."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "taipei-contemporary-art-center-taipei",
+  "from": 314,
+  "a": {
+   "id": "taipei-contemporary-art-center-taipei",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not checked. The WebSearch budget for this turn was used up, so the search returned no results. No address is given because no source was seen. Needs a re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "taipei-contemporary-art-center-taipei",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "The search results are mostly from the centre's early years (opened February 2010). They say it was housed in a 4-story building in the Ximen area, with no street address. The second search found only a 2010 event listing giving an organiser address of 160-6 Yanping S. Rd. 10042 Taipei, which the result text itself says may no longer be current, and no source confirms whether the centre still operates there or at the Ximen site. Because the current main venue is unclear, the address is left empty. The official site appears to be tcac.tw, but the record has no website. Not to be confused with Museum of Contemporary Art Taipei (MoCA) or the Taipei Cultural Center in New York."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "buku-larrnggay-mulka-centre-yirrkala",
+  "from": 318,
+  "a": {
+   "id": "buku-larrnggay-mulka-centre-yirrkala",
+   "address": "138 Tuffin Rd, Yirrkala, NT",
+   "address_urls": [
+    "https://artcollector.net.au/art_centres/buku-larrngay-mulka/",
+    "https://www.agsa.sa.gov.au/whats-on/tarnanthi/tarnanthi-art-centres/buku-larrŋgay-mulka-centre-2020/",
+    "https://yirrkala.com/buku-larrnggay-mulka/"
+   ],
+   "address_statement": "The Buku-Larrŋgay Mulka Centre's street address is 138 Tuffin Rd, Yirrkala, NT.",
+   "notes": "Street and number are consistent across the results, but the postcode is not, so it is left out. The results give 0880 (\"Location: 138 Tuffin Rd, Yirrkala,, Nhulunbuy 0880\"), 0881 and \"880\" in different listings. The search text does not say which URL carries which line, so the three URLs are all from the Links lists of the two searches and none is individually confirmed. The record has no website, and yirrkala.com is the domain the first search names as the centre's official site."
+  },
+  "b": {
+   "id": "buku-larrnggay-mulka-centre-yirrkala",
+   "address": "138 Tuffin Road, Yirrkala, NT",
+   "address_urls": [
+    "https://visitkatherine.com.au/buku-larrnggay-mulka-centre",
+    "https://artcollector.net.au/art_centres/buku-larrngay-mulka/"
+   ],
+   "address_statement": "The Buku-Larrnggay Mulka Centre is at 138 Tuffin Road, Yirrkala, NT.",
+   "notes": "Street and number are consistent across the results, but the postcode conflicts: one listing gives NT 0881, another (and Visit Katherine) gives NT 0880, and the search could not confirm either against an official source. The postcode is therefore left out. No official institution page appeared in the results (the Links include yirrkala.com, but its text was not quoted). The address comes from a search summary of a listings page and a tourism page. The centre also includes The Mulka Project and a museum, but they are described as divisions of the same centre."
+  },
+  "agreed": "138 Tuffin Rd, Yirrkala, NT"
+ },
+ {
+  "id": "foam-fotografiemuseum-amsterdam-amsterdam",
+  "from": 318,
+  "a": {
+   "id": "foam-fotografiemuseum-amsterdam-amsterdam",
+   "address": "Keizersgracht 609, 1017 DS Amsterdam",
+   "address_urls": [
+    "https://shop.foam.org/policies/contact-information",
+    "https://museum.nl/en/foam-fotografiemuseum-amsterdam",
+    "https://museumforall.eu/museum/amsterdam-foam"
+   ],
+   "address_statement": "The museum's address is Keizersgracht 609, 1017 DS Amsterdam, Netherlands. Several sources agree on this, including the Foam Fotografiemuseum Amsterdam shop contact page and the museumforall.eu listing.",
+   "notes": "Both searches gave the same address. The foam.org shop contact page is the closest to an official source among the results. museum.nl is named in the results only for opening hours, address and phone, so it is cited from its title and not from a quoted line."
+  },
+  "b": {
+   "id": "foam-fotografiemuseum-amsterdam-amsterdam",
+   "address": "Keizersgracht 609, 1017 DS Amsterdam",
+   "address_urls": [
+    "https://shop.foam.org/policies/contact-information",
+    "https://en.wikipedia.org/wiki/Foam_Fotografiemuseum_Amsterdam"
+   ],
+   "address_statement": "The shop's contact page gives Keizersgracht 609, 1017 DS Amsterdam, The Netherlands.",
+   "notes": "The shop.foam.org contact page is on the institution's own domain. The first search also returned Wikipedia, whose summary says the museum is at Keizersgracht 609, 1017 DS, Amsterdam. Several directory listings agree. Single venue."
+  },
+  "agreed": "Keizersgracht 609, 1017 DS Amsterdam"
+ },
+ {
+  "id": "imal-brussels",
+  "from": 318,
+  "a": {
+   "id": "imal-brussels",
+   "address": "30-34 Quai des Charbonnages / Koolmijnenkaai, 1080 Brussels",
+   "address_urls": [
+    "https://www.imal.org/en/visit",
+    "https://imal.org/visit"
+   ],
+   "address_statement": "iMAL's official site gives its address as 30-34 Quai des Charbonnages / Koolmijnenkaai, 1080 Brussels, Belgium.",
+   "notes": "Both searches returned the same address from the official visit page. The venue is described as the Art Center for Digital Cultures & Technology in Molenbeek. A 2023 European Commission page in the results is titled \"iMAL presents its new infrastructures in Brussels\", which fits this being the current premises, but the search text does not state any earlier address. The venue is open only during public events, and the Fablab has separate hours."
+  },
+  "b": {
+   "id": "imal-brussels",
+   "address": "30-34 Quai des Charbonnages / Koolmijnenkaai, 1080 Brussels",
+   "address_urls": [
+    "https://imal.org/visit",
+    "https://www.imal.org/en/visit"
+   ],
+   "address_statement": "iMAL's address is 30-34 Quai des Charbonnages / Koolmijnenkaai, 1080 Brussels, Belgium, according to the practical information page on imal.org.",
+   "notes": "Taken from the institution's own practical information (visit) page. Postcode 1080 is Molenbeek, which other listings name as the district. The venue is only open during public events, per the same results."
+  },
+  "agreed": "30-34 Quai des Charbonnages / Koolmijnenkaai, 1080 Brussels"
+ },
+ {
+  "id": "bienal-de-artes-mediales-de-santiago",
+  "from": 318,
+  "a": {
+   "id": "bienal-de-artes-mediales-de-santiago",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address is stated in either search. It is a biennial with no fixed venue: past editions used the Museo Nacional de Bellas Artes, the Centro Nacional de Arte Contemporaneo, the Centro Cultural Gabriela Mistral, the Museo de Arte Contemporaneo, the Museo de Arte Precolombino and the Centro Cultural Lo Matta (30th anniversary edition). The organiser is the Corporacion Chilena de Video (CChV). The results give no main venue and no organiser address, so the address is left empty. The record has no website, and the results only point to an edition page, bienaldeartesmediales.cl/13/, in an archived Japanese festival page."
+  },
+  "b": {
+   "id": "bienal-de-artes-mediales-de-santiago",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No street address found in two searches. The biennial is a recurring event organised by the Corporacion Chilena de Video (CChV) and uses many venues in Santiago (the 2017 edition used the Museo Nacional de Bellas Artes, Centro Nacional de Arte Contemporaneo, Cineteca Nacional, Galeria Macchina, Teatro Municipal de Santiago and Metro de Santiago, among others), so there is no single main public venue. The search itself said it found no current office address and pointed to the official sites (bienaldeartesmediales.cl and cclm.cl) for contact details."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "museo-nacional-de-artes-visuales",
+  "from": 322,
+  "a": {
+   "id": "museo-nacional-de-artes-visuales",
+   "address": "Julio Herrera y Reissig esq. Tomás Giribaldi, s/n, CP: 11300 Parque Rodó, Montevideo (Uruguay)",
+   "address_urls": [
+    "https://en.wikipedia.org/wiki/National_Museum_of_Visual_Arts_(Uruguay)"
+   ],
+   "address_statement": "The Wikipedia entry gives the location as Julio Herrera y Reissig esq. Tomás Giribaldi, s/n, CP 11300, Parque Rodó, Montevideo, with the website www.mnav.gub.uy (search result text: \"Julio Herrera y Reissig esq. Tomás Giribaldi, s/n, CP: 11300 Parque Rodó, Montevideo ( Uruguay)\").",
+   "notes": "Source is Wikipedia, which gives no street number (s/n). A second listing in the same results (World Travel Guide, https://www.worldtravelguide.net/guides/south-america/uruguay/montevideo/things-to-see) writes the same corner as \"Tomás Giribaldi 2283 esq. Julio Herrera y Reissig, Montevideo\"; it is the same corner but with a number, so the number 2283 is not confirmed by an official source. The museum's official site was not in the Links list with an address statement."
+  },
+  "b": {
+   "id": "museo-nacional-de-artes-visuales",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source states an address, so it is left empty. Can be retried once the budget is raised or in a follow-up."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "national-museum-of-fine-arts-of-chile-mnba",
+  "from": 322,
+  "a": {
+   "id": "national-museum-of-fine-arts-of-chile-mnba",
+   "address": "José Miguel de la Barra 650, Santiago, Chile",
+   "address_urls": [
+    "https://www.bibliotecanacionaldigital.gob.cl/pywb/all/20181202060049mp_/http://www.mnba.cl/617/w3-alt_propertyvalue-68913.html"
+   ],
+   "address_statement": "Dirección: José Miguel de la Barra 650, Santiago, Chile.",
+   "notes": "The source is a government web-archive copy (dated 2018-12-02) of the museum's own former site mnba.cl; it gives no postcode. A second search (Museo Nacional de Bellas Artes, Santiago) returned the same address from the same archived page. The current site is reported as mnba.gob.cl. The Wikipedia page was in the results but its text did not state the address, so it is not cited."
+  },
+  "b": {
+   "id": "national-museum-of-fine-arts-of-chile-mnba",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source states an address, so it is left empty. Can be retried once the budget is raised or in a follow-up."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "biennale-jogja",
+  "from": 322,
+  "a": {
+   "id": "biennale-jogja",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Biennale Jogja is a recurring biennial run by Yayasan Biennale Yogyakarta (YBY), not a single venue. Results say editions are spread over several venues (2023: Taman Budaya Yogyakarta, Bangunjiwo, Panggungharjo, Madukismo sugar factory area; 2025: 12 venues in Yogyakarta, including Omah Samin in Panggungharjo and Kios Diorama at Vredeburg Fort Museum), so there is no clear main public venue. No search result stated a street address for the organiser or office. The Jogja Expo Center result is unrelated and was ignored. Two searches done."
+  },
+  "b": {
+   "id": "biennale-jogja",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source states an address, so it is left empty. Can be retried once the budget is raised or in a follow-up. Note that a biennale may have no single permanent venue, so the main venue may be unclear even with a search."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "ayala-museum",
+  "from": 322,
+  "a": {
+   "id": "ayala-museum",
+   "address": "Makati Avenue corner De la Rosa Street, Greenbelt Park, Makati City",
+   "address_urls": [
+    "https://www.ayalafoundation.org/?p=597"
+   ],
+   "address_statement": "The Ayala Foundation's contact page lists the museum at Makati Avenue corner De la Rosa Street, Greenbelt Park, Makati City.",
+   "notes": "Source is the Contact Us page of the Ayala Foundation (the museum's operator). It gives a corner location with no building number or postcode. One search result also described it as in Ayala Center, adjacent to Greenbelt mall. Both searches gave the same address. Phone numbers, hours and fees differ between sources and were not used."
+  },
+  "b": {
+   "id": "ayala-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source states an address, so it is left empty. Can be retried once the budget is raised or in a follow-up."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "pinto-art-museum",
+  "from": 326,
+  "a": {
+   "id": "pinto-art-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the shared per-turn search budget (200 calls) was already used up. I did not use memory or any other way to search. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "pinto-art-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn web search budget (200 calls, shared by every agent in the run) was used up. No source was read, so the address is left empty. Re-run once the budget is raised or reset (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION)."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "tainan-art-museum",
+  "from": 326,
+  "a": {
+   "id": "tainan-art-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the shared per-turn search budget (200 calls) was already used up. I did not use memory or any other way to search. The museum may have more than one venue, which a re-run should check. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "tainan-art-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn web search budget (200 calls, shared by every agent in the run) was used up. No source was read, so the address is left empty. Re-run once the budget is raised or reset (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION). Note: the record has two possible venues in Tainan to check on re-run, so confirm which is the main one."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "red-brick-art-museum",
+  "from": 326,
+  "a": {
+   "id": "red-brick-art-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the shared per-turn search budget (200 calls) was already used up. I did not use memory or any other way to search. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "red-brick-art-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn web search budget (200 calls, shared by every agent in the run) was used up. No source was read, so the address is left empty. Re-run once the budget is raised or reset (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION)."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "national-art-museum-of-china",
+  "from": 326,
+  "a": {
+   "id": "national-art-museum-of-china",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the shared per-turn search budget (200 calls) was already used up. I did not use memory or any other way to search. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "national-art-museum-of-china",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn web search budget (200 calls, shared by every agent in the run) was used up. No source was read, so the address is left empty. Re-run once the budget is raised or reset (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION)."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "tank-shanghai",
+  "from": 330,
+  "a": {
+   "id": "tank-shanghai",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by all agents) was already used up. Nothing was searched and nothing is filled in from memory. Needs a re-run once the budget is available."
+  },
+  "b": {
+   "id": "tank-shanghai",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the shared per-turn search budget (200 calls) was used up, so nothing was searched. No address was filled in from memory. Needs a rerun once search is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "anadolu-kultur-depo-and-diyarbak-r-arts-center",
+  "from": 330,
+  "a": {
+   "id": "anadolu-kultur-depo-and-diyarbak-r-arts-center",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget was already used up. Nothing was searched and nothing is filled in from memory. The name also covers two venues (Depo in Istanbul, Diyarbakır Arts Center), so a re-run must check which one is the main public venue. Needs a re-run once the budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "mohatta-palace-museum",
+  "from": 330,
+  "a": {
+   "id": "mohatta-palace-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget was already used up. Nothing was searched and nothing is filled in from memory. Needs a re-run once the budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "bangladesh-shilpakala-academy",
+  "from": 330,
+  "a": {
+   "id": "bangladesh-shilpakala-academy",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget was already used up. Nothing was searched and nothing is filled in from memory. Needs a re-run once the budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "anadolu-kultur-depo-and-diyarbakir-arts-center",
+  "from": 330,
+  "b": {
+   "id": "anadolu-kultur-depo-and-diyarbakir-arts-center",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the shared per-turn search budget was used up, so nothing was searched. No address was filled in from memory. The record also covers two venues (Depo in Istanbul and Diyarbakır Arts Center), so the main venue will need checking once search is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "sursock-museum",
+  "from": 334,
+  "a": {
+   "id": "sursock-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by every agent in the run) was used up. Left empty under the no-evidence rule. Needs a re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "sursock-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this turn (200 calls, shared by every agent) was used up, so the search returned nothing. Left empty rather than supplying an address from memory. Needs a re-run once the search limit is raised or reset."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "visual",
+  "from": 334,
+  "a": {
+   "id": "visual",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by every agent in the run) was used up. Left empty under the no-evidence rule. Needs a re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "visual",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this turn (200 calls, shared by every agent) was used up, so the search returned nothing. Left empty rather than supplying an address from memory. Needs a re-run once the search limit is raised or reset."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "national-galleries-of-scotland",
+  "from": 334,
+  "a": {
+   "id": "national-galleries-of-scotland",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by every agent in the run) was used up. Left empty under the no-evidence rule. This institution also runs several venues, so the main one would need to be confirmed from a source when the search is re-run."
+  },
+  "b": {
+   "id": "national-galleries-of-scotland",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this turn (200 calls, shared by every agent) was used up, so the search returned nothing. Left empty rather than supplying an address from memory. The institution also runs several venues in Edinburgh, so the main one would need to be confirmed from a source on re-run."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "tate-modern",
+  "from": 334,
+  "a": {
+   "id": "tate-modern",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by every agent in the run) was used up. Left empty under the no-evidence rule. Needs a re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "tate-modern",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this turn (200 calls, shared by every agent) was used up, so the search returned nothing. Left empty rather than supplying an address from memory. Needs a re-run once the search limit is raised or reset."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "hammer-museum",
+  "from": 338,
+  "a": {
+   "id": "hammer-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not found. The WebSearch call for this record was refused because the shared per-turn search budget (200 calls) was used up, so no results came back. Under the no-invention rule the address is left empty. Re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "hammer-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this run was used up (limit of 200 per turn, shared by every agent), so the search returned no results. Nothing is supplied from memory, so the address is empty. Re-run this record once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "noguchi-museum",
+  "from": 338,
+  "a": {
+   "id": "noguchi-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not found. The WebSearch call for this record was refused because the shared per-turn search budget (200 calls) was used up, so no results came back. Under the no-invention rule the address is left empty. Re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "noguchi-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this run was used up (limit of 200 per turn, shared by every agent), so the search returned no results. Nothing is supplied from memory, so the address is empty. Re-run this record once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "ch-teau-de-versailles",
+  "from": 338,
+  "a": {
+   "id": "ch-teau-de-versailles",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not found. The WebSearch call for this record was refused because the shared per-turn search budget (200 calls) was used up, so no results came back. Under the no-invention rule the address is left empty. Re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "ch-teau-de-versailles",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this run was used up (limit of 200 per turn, shared by every agent), so the search returned no results. Nothing is supplied from memory, so the address is empty. Re-run this record once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "moma-the-museum-of-modern-art",
+  "from": 338,
+  "a": {
+   "id": "moma-the-museum-of-modern-art",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not found. The WebSearch call for this record was refused because the shared per-turn search budget (200 calls) was used up, so no results came back. Under the no-invention rule the address is left empty. Re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "moma-the-museum-of-modern-art",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this run was used up (limit of 200 per turn, shared by every agent), so the search returned no results. Nothing is supplied from memory, so the address is empty. Re-run this record once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "the-metropolitan-museum-of-art-the-met",
+  "from": 342,
+  "a": {
+   "id": "the-metropolitan-museum-of-art-the-met",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn web search budget (200 calls, shared by all agents) was used up, so no results were returned. Per the no-invention rule no address was supplied from memory. Needs a re-run once search budget is available."
+  },
+  "b": {
+   "id": "the-metropolitan-museum-of-art-the-met",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned 'web search budget is used up (limit: 200 WebSearch calls per turn)' for the first query, so no results were available. No address supplied from memory, per the no-invention rule. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "whitney-museum-of-american-art",
+  "from": 342,
+  "a": {
+   "id": "whitney-museum-of-american-art",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn web search budget (200 calls, shared by all agents) was used up, so no results were returned. Per the no-invention rule no address was supplied from memory. Needs a re-run once search budget is available."
+  },
+  "b": {
+   "id": "whitney-museum-of-american-art",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned 'web search budget is used up (limit: 200 WebSearch calls per turn)' for the first query, so no results were available. No address supplied from memory, per the no-invention rule. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "solomon-r-guggenheim-museum",
+  "from": 342,
+  "a": {
+   "id": "solomon-r-guggenheim-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn web search budget (200 calls, shared by every agent) was used up, so no results were returned. Per the no-invention rule no address was supplied from memory. Needs a re-run once search budget is available."
+  },
+  "b": {
+   "id": "solomon-r-guggenheim-museum",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned 'web search budget is used up (limit: 200 WebSearch calls per turn)' for the first query, so no results were available. No address supplied from memory, per the no-invention rule. Needs a re-run once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "centre-pompidou",
+  "from": 342,
+  "a": {
+   "id": "centre-pompidou",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn web search budget (200 calls, shared by all agents) was used up, so no results were returned. Per the no-invention rule no address was supplied from memory. Also worth checking on re-run whether the main venue is currently open or relocated, since the source must say so. Needs a re-run once search budget is available."
+  },
+  "b": {
+   "id": "centre-pompidou",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned 'web search budget is used up (limit: 200 WebSearch calls per turn)' for the first query, so no results were available. No address supplied from memory, per the no-invention rule. Also note the institution may have a temporary closure or relocation of its main venue, which a real search should check."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "casa-frança-brasil-rio-de-janeiro",
+  "from": 346,
+  "a": {
+   "id": "casa-frança-brasil-rio-de-janeiro",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls, shared across agents) was used up, so no results came back. No source states an address, so it is left empty. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "casa-frança-brasil-rio-de-janeiro",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch did not run: the per-turn search budget (200 calls, shared by all agents) was already used up, so no search results were returned. No value supplied from memory, per the rule that nothing is invented. Needs a re-run once search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "the-rooms-st-johns",
+  "from": 346,
+  "a": {
+   "id": "the-rooms-st-johns",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls, shared across agents) was used up, so no results came back. No source states an address, so it is left empty. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "the-rooms-st-johns",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch did not run: the per-turn search budget (200 calls, shared by all agents) was already used up, so no search results were returned. No value supplied from memory, per the rule that nothing is invented. Needs a re-run once search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "museo-de-arte-moderno-de-bogotá-bogotá",
+  "from": 346,
+  "a": {
+   "id": "museo-de-arte-moderno-de-bogotá-bogotá",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls, shared across agents) was used up, so no results came back. No source states an address, so it is left empty. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "museo-de-arte-moderno-de-bogotá-bogotá",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch did not run: the per-turn search budget (200 calls, shared by all agents) was already used up, so no search results were returned. No value supplied from memory, per the rule that nothing is invented. Needs a re-run once search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "ordrupgaard-charlottenlund",
+  "from": 346,
+  "a": {
+   "id": "ordrupgaard-charlottenlund",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls, shared across agents) was used up, so no results came back. No source states an address, so it is left empty. Needs a re-run once search is available."
+  },
+  "b": {
+   "id": "ordrupgaard-charlottenlund",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch did not run: the per-turn search budget (200 calls, shared by all agents) was already used up, so no search results were returned. No value supplied from memory, per the rule that nothing is invented. Needs a re-run once search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "heart-herning-herning",
+  "from": 350,
+  "a": {
+   "id": "heart-herning-herning",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: WebSearch returned no results because the per-turn search budget (200 calls, shared across agents) was used up. No source states an address, so it is left empty. Retry in a follow-up or after raising CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION."
+  },
+  "b": {
+   "id": "heart-herning-herning",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch returned no results: the per-turn web search budget (200 calls, shared by all agents) was used up. No facts were taken from memory. Rerun this record once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "museum-of-contemporary-art-tokyo-tokyo",
+  "from": 350,
+  "a": {
+   "id": "museum-of-contemporary-art-tokyo-tokyo",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: WebSearch returned no results because the per-turn search budget (200 calls, shared across agents) was used up. No source states an address, so it is left empty. Retry in a follow-up or after raising CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION."
+  },
+  "b": {
+   "id": "museum-of-contemporary-art-tokyo-tokyo",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch returned no results: the per-turn web search budget (200 calls, shared by all agents) was used up. No facts were taken from memory. Rerun this record once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "bluecoat-liverpool",
+  "from": 350,
+  "a": {
+   "id": "bluecoat-liverpool",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: WebSearch returned no results because the per-turn search budget (200 calls, shared across agents) was used up. No source states an address, so it is left empty. Retry in a follow-up or after raising CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION."
+  },
+  "b": {
+   "id": "bluecoat-liverpool",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch returned no results: the per-turn web search budget (200 calls, shared by all agents) was used up. No facts were taken from memory. Rerun this record once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "dallas-contemporary-dallas",
+  "from": 350,
+  "a": {
+   "id": "dallas-contemporary-dallas",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: WebSearch returned no results because the per-turn search budget (200 calls, shared across agents) was used up. No source states an address, so it is left empty. Retry in a follow-up or after raising CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION."
+  },
+  "b": {
+   "id": "dallas-contemporary-dallas",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch returned no results: the per-turn web search budget (200 calls, shared by all agents) was used up. No facts were taken from memory. Rerun this record once the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "from": 354,
+  "a": {
+   "id": "clyfford-still-museum-denver",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by every agent) was used up. No address was filled in from memory. Re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "clyfford-still-museum-denver",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls, shared by all agents) was used up, so no results came back. Under the no-invention rule the address is left empty. A follow-up run is needed once the budget is raised or reset."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "new-orleans-museum-of-art-new-orleans",
+  "from": 354,
+  "a": {
+   "id": "new-orleans-museum-of-art-new-orleans",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by every agent) was used up. No address was filled in from memory. Re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "new-orleans-museum-of-art-new-orleans",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls, shared by all agents) was used up, so no results came back. Under the no-invention rule the address is left empty. A follow-up run is needed once the budget is raised or reset."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "oakland-museum-of-california-oakland",
+  "from": 354,
+  "a": {
+   "id": "oakland-museum-of-california-oakland",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by every agent) was used up. No address was filled in from memory. Re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "oakland-museum-of-california-oakland",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls, shared by all agents) was used up, so no results came back. Under the no-invention rule the address is left empty. A follow-up run is needed once the budget is raised or reset."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "heard-museum-phoenix",
+  "from": 354,
+  "a": {
+   "id": "heard-museum-phoenix",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by every agent) was used up. No address was filled in from memory. Re-run once the budget is raised or reset."
+  },
+  "b": {
+   "id": "heard-museum-phoenix",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call was refused because the per-turn search budget (200 calls, shared by all agents) was used up, so no results came back. Under the no-invention rule the address is left empty. A follow-up run is needed once the budget is raised or reset."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "phoenix-art-museum-phoenix",
+  "from": 358,
+  "a": {
+   "id": "phoenix-art-museum-phoenix",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not researched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source states an address, so it is left empty. Needs a re-run once the limit is raised or reset."
+  },
+  "b": {
+   "id": "phoenix-art-museum-phoenix",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty rather than supplied from memory. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "nevada-museum-of-art-reno",
+  "from": 358,
+  "a": {
+   "id": "nevada-museum-of-art-reno",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not researched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source states an address, so it is left empty. Needs a re-run once the limit is raised or reset."
+  },
+  "b": {
+   "id": "nevada-museum-of-art-reno",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty rather than supplied from memory. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "asian-art-museum-san-francisco",
+  "from": 358,
+  "a": {
+   "id": "asian-art-museum-san-francisco",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not researched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source states an address, so it is left empty. Needs a re-run once the limit is raised or reset."
+  },
+  "b": {
+   "id": "asian-art-museum-san-francisco",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty rather than supplied from memory. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "new-mexico-museum-of-art-santa-fe",
+  "from": 358,
+  "a": {
+   "id": "new-mexico-museum-of-art-santa-fe",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not researched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source states an address, so it is left empty. Needs a re-run once the limit is raised or reset."
+  },
+  "b": {
+   "id": "new-mexico-museum-of-art-santa-fe",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched successfully: WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty rather than supplied from memory. Needs a re-run once searches are available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "telfair-museums-savannah",
+  "from": 362,
+  "a": {
+   "id": "telfair-museums-savannah",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was available, so the address is left empty. Re-run once the limit is raised or a follow-up turn allows searching."
+  },
+  "b": {
+   "id": "telfair-museums-savannah",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget (200 calls, shared by every agent) was used up, so no source text was available. Left empty rather than filled from memory. Telfair Museums has several venues, so the main one also needs checking when this record is retried."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "seattle-art-museum-seattle",
+  "from": 362,
+  "a": {
+   "id": "seattle-art-museum-seattle",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was available, so the address is left empty. Re-run once the limit is raised or a follow-up turn allows searching."
+  },
+  "b": {
+   "id": "seattle-art-museum-seattle",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget was used up, so no source text was available. Left empty rather than filled from memory. Retry once the search limit is raised or in a follow-up turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "moca-tucson-tucson",
+  "from": 362,
+  "a": {
+   "id": "moca-tucson-tucson",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was available, so the address is left empty. Re-run once the limit is raised or a follow-up turn allows searching."
+  },
+  "b": {
+   "id": "moca-tucson-tucson",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget was used up, so no source text was available. Left empty rather than filled from memory. Retry once the search limit is raised or in a follow-up turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "fundación-proa-buenos-aires",
+  "from": 362,
+  "a": {
+   "id": "fundación-proa-buenos-aires",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was available, so the address is left empty. The input website (tecpetrol.com/es/comunidad) is a corporate community page, not necessarily the foundation's own site, so check that too on the re-run."
+  },
+  "b": {
+   "id": "fundación-proa-buenos-aires",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn search budget was used up, so no source text was available. Left empty rather than filled from memory. The input website (tecpetrol.com/es/comunidad) is a corporate community page, not the foundation's own site, so the right domain also needs checking on retry."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "museo-de-arte-moderno-de-buenos-aires-buenos-aires",
+  "from": 366,
+  "a": {
+   "id": "museo-de-arte-moderno-de-buenos-aires-buenos-aires",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. The WebSearch call returned 'web search budget is used up' (200 calls per turn, shared across agents), so no results came back. No address is given because no source stated one. Needs a re-run once the search budget is raised or reset."
+  },
+  "b": {
+   "id": "museo-de-arte-moderno-de-buenos-aires-buenos-aires",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address recorded. The WebSearch call was not performed because the per-turn web search budget (200 calls, shared by every agent) was used up, so there are no results to cite. Left empty rather than filled from memory. Needs a re-run once search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "art-gallery-of-south-australia-adelaide",
+  "from": 366,
+  "a": {
+   "id": "art-gallery-of-south-australia-adelaide",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. The WebSearch call returned 'web search budget is used up' (200 calls per turn, shared across agents), so no results came back. No address is given because no source stated one. Needs a re-run once the search budget is raised or reset."
+  },
+  "b": {
+   "id": "art-gallery-of-south-australia-adelaide",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address recorded. The WebSearch call was not performed because the per-turn web search budget (200 calls, shared by every agent) was used up, so there are no results to cite. Left empty rather than filled from memory. Needs a re-run once search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "darwin-festival-darwin",
+  "from": 366,
+  "a": {
+   "id": "darwin-festival-darwin",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. The WebSearch call returned 'web search budget is used up' (200 calls per turn, shared across agents), so no results came back. No address is given because no source stated one. Needs a re-run once the search budget is raised or reset. A festival may also have no single main public venue, which the search would need to settle."
+  },
+  "b": {
+   "id": "darwin-festival-darwin",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address recorded. The WebSearch call was not performed because the per-turn web search budget (200 calls, shared by every agent) was used up, so there are no results to cite. Left empty rather than filled from memory. Also note that a festival may have no single main venue, which a real search would need to check. Needs a re-run once search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "fringe-world-perth",
+  "from": 366,
+  "a": {
+   "id": "fringe-world-perth",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. The WebSearch call returned 'web search budget is used up' (200 calls per turn, shared across agents), so no results came back. No address is given because no source stated one. Needs a re-run once the search budget is raised or reset. A festival may also have no single main public venue, which the search would need to settle."
+  },
+  "b": {
+   "id": "fringe-world-perth",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address recorded. The WebSearch call was not performed because the per-turn web search budget (200 calls, shared by every agent) was used up, so there are no results to cite. Left empty rather than filled from memory. Also note that a festival may have no single main venue, which a real search would need to check. Needs a re-run once search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "biennale-of-sydney-sydney",
+  "from": 370,
+  "a": {
+   "id": "biennale-of-sydney-sydney",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls, shared across agents) was used up, so the search returned no results. No source was seen, so the address is left empty. Needs a re-run once searches are available. The Biennale of Sydney is also a multi-venue event, so the main venue may not be clear."
+  },
+  "b": {
+   "id": "biennale-of-sydney-sydney",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch returned no results: the per-turn web search budget (200 calls, shared by all agents) was used up, so no search was performed. Left empty under the no-invention rule. Needs a re-run once the budget is raised or reset (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION). The Biennale of Sydney is also a multi-venue event, so the main venue may be unclear even after searching."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "dhaka-art-summit-dhaka",
+  "from": 370,
+  "a": {
+   "id": "dhaka-art-summit-dhaka",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls, shared across agents) was used up, so the search returned no results. No source was seen, so the address is left empty. Needs a re-run once searches are available. The Dhaka Art Summit is a periodic event, so a single permanent main venue may not exist."
+  },
+  "b": {
+   "id": "dhaka-art-summit-dhaka",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch returned no results: the per-turn web search budget was used up, so no search was performed. Left empty under the no-invention rule. Needs a re-run once the budget is raised or reset. The Dhaka Art Summit is a periodic event rather than a standing institution, so it may have no permanent main venue."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "m-hka-antwerp",
+  "from": 370,
+  "a": {
+   "id": "m-hka-antwerp",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls, shared across agents) was used up, so the search returned no results. No source was seen, so the address is left empty. Needs a re-run once searches are available."
+  },
+  "b": {
+   "id": "m-hka-antwerp",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch returned no results: the per-turn web search budget was used up, so no search was performed. Left empty under the no-invention rule. Needs a re-run once the budget is raised or reset."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+  "from": 370,
+  "a": {
+   "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: the WebSearch budget for this turn (200 calls, shared across agents) was used up, so the search returned no results. No source was seen, so the address is left empty. Needs a re-run once searches are available."
+  },
+  "b": {
+   "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. WebSearch returned no results: the per-turn web search budget was used up, so no search was performed. Left empty under the no-invention rule. Needs a re-run once the budget is raised or reset."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "masp-são-paulo",
+  "from": 374,
+  "a": {
+   "id": "masp-são-paulo",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the shared per-turn search budget (200 calls) was already used up. No source stated an address, so it is left empty. Re-run this record once the search budget is available."
+  },
+  "b": {
+   "id": "masp-são-paulo",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty. Re-run this record in a new turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "esker-foundation-calgary",
+  "from": 374,
+  "a": {
+   "id": "esker-foundation-calgary",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the shared per-turn search budget (200 calls) was already used up. No source stated an address, so it is left empty. Re-run this record once the search budget is available."
+  },
+  "b": {
+   "id": "esker-foundation-calgary",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty. Re-run this record in a new turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "glenbow-calgary",
+  "from": 374,
+  "a": {
+   "id": "glenbow-calgary",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the shared per-turn search budget (200 calls) was already used up. No source stated an address, so it is left empty. Re-run this record once the search budget is available."
+  },
+  "b": {
+   "id": "glenbow-calgary",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty. Re-run this record in a new turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "m-hong-kong",
+  "from": 374,
+  "a": {
+   "id": "m-hong-kong",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched. WebSearch returned no results because the shared per-turn search budget (200 calls) was already used up. No source stated an address, so it is left empty. This record may also overlap with the 'm-museum' record (M+ Museum, Hong Kong, same website), so check for a duplicate. Re-run once the search budget is available."
+  },
+  "b": {
+   "id": "m-hong-kong",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "Not searched: WebSearch returned no results because the per-turn search budget (200 calls, shared by all agents) was used up. No source was seen, so the address is left empty. Re-run this record in a new turn."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "tai-kwun-hong-kong",
+  "from": 378,
+  "a": {
+   "id": "tai-kwun-hong-kong",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn web search budget (200 calls, shared by every agent) was used up. No source states the address, so it is left empty rather than filled from memory. To retry, send a follow-up message after this reply, or raise CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION."
+  },
+  "b": {
+   "id": "tai-kwun-hong-kong",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this turn (200 calls, shared by every agent) was used up, so the search returned no results. I did not fill the address from memory or search any other way. Re-run when the search budget is available."
+  },
+  "agreed": ""
+ },
+ {
+  "id": "long-museum-shanghai",
+  "from": 378,
+  "a": {
+   "id": "long-museum-shanghai",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch call returned no results because the per-turn web search budget (200 calls, shared by every agent) was used up. The record may also have more than one venue (Long Museum has more than one site in Shanghai), but no source was read, so the main venue is unconfirmed. Address left empty rather than filled from memory. To retry, send a follow-up message after this reply, or raise CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION."
+  },
+  "b": {
+   "id": "long-museum-shanghai",
+   "address": "",
+   "address_urls": [],
+   "address_statement": "",
+   "notes": "No address found. The WebSearch budget for this turn (200 calls, shared by every agent) was used up, so the search returned no results. I did not fill the address from memory or search any other way. The record may also need a check for several venues, since the Long Museum has more than one site in Shanghai. Re-run when the search budget is available."
+  },
+  "agreed": ""
+ }
+]
