@@ -76,6 +76,12 @@ older text and fonts. The research they ingested is kept under `data/inputs/`
 research notes). One of the removed scripts carried a working Anthropic API
 key in base64 pieces; it is still in the git history and must be revoked.
 
+The Academic Research Library window was removed on 14 October 2026. Its 183
+studies and eight case studies are kept in `data/library/`, the Gossip Mode
+research and the visual critique reference list stay in `data/`, and none of
+them is shipped in the page. What belongs to one institution is moved onto that
+institution's own record by `tools/attach_research.py` (in progress).
+
 ## What the page may show
 
 The page shows what a record states and where it comes from, and says plainly that none of it has been independently verified.
