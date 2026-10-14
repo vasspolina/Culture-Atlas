@@ -53,7 +53,8 @@ def addr_match(a, b):
     if da and db:
         short, long_ = (da, set(db)) if len(da) <= len(db) else (db, set(da))
         return all(t in long_ for t in short) and len(shared) >= 1
-    return len(set(ta) & set(tb)) / len(set(ta) | set(tb)) >= 0.6
+    long_shared = [t for t in set(ta) & set(tb) if len(t) >= 5]
+    return len(long_shared) >= 3 or len(set(ta) & set(tb)) / len(set(ta) | set(tb)) >= 0.6   # no street number on either side: name the same street or building
 
 
 def city_only(addr, rec):

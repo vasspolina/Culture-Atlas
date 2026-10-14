@@ -11096,7 +11096,7 @@
       "Museum of Modern Art Warsaw",
       "Muzeum Sztuki Nowoczesnej"
     ],
-    "address": "Plac Defilad 1, 00-901 Warsaw, Poland",
+    "address": "ul. Marsza\u0142kowska 103, 00-110 Warsaw",
     "admission_fee": "z\u0142 25 (Free Thursdays)",
     "transit_tips": "Metro M1 or M2 to \u015awi\u0119tokrzyska or Centrum; tram lines 4, 7, 9, 15, 18, 35 to Centrum.",
     "accessibility": "Fully step-free wheelchair accessible throughout, elevators to all levels, accessible restrooms, audio guides, sensory maps.",
@@ -11109,7 +11109,17 @@
     ],
     "highlight": "The monumental white-concrete central staircase and the vast civic forum facing Marsza\u0142kowska Street.",
     "visit_url": "https://artmuseum.pl/en/doc/zaplanuj-wizyte",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://artmuseum.pl/en/visit",
+          "https://artmuseum.pl/en/contact-1"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "tranzit-cz-prague",
@@ -11438,7 +11448,7 @@
       "Constant Association for Art and Media",
       "Constant Brussels"
     ],
-    "address": "Rue du Fort 5, 1060 Saint-Gilles, Brussels, Belgium",
+    "address": "Fortstraat 5A, B-1060 Saint-Gilles",
     "opening_hours": "Open during public events, workshops, exhibitions, and research workgroups (see schedule online)",
     "transit_tips": "Metro lines 2 or 6 to Porte de Hal; tram lines 3, 4 to Parvis de Saint-Gilles. 4 min walk.",
     "accessibility": "Ground floor meeting space accessible.",
@@ -11449,7 +11459,16 @@
     ],
     "highlight": "The 'Constant Works' open publishing repository and hands-on cyberfeminist code workshops.",
     "visit_url": "https://constantvzw.org/site/-Agenda-en-.html",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.constantvzw.org/site/Contacts.html"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "casino-luxembourg",
@@ -12752,7 +12771,7 @@
       "Biquini Wax EPS",
       "Bikini Wax Mexico City"
     ],
-    "address": "Calle de la Reforma 25, N\u00e1poles, Benito Ju\u00e1rez, 03810 Mexico City, CDMX, Mexico",
+    "address": "Pedro de Alba 232, Iztaccihuatl, Benito Ju\u00e1rez, 03520 CDMX",
     "opening_hours": "Thu-Sat 15:00-20:00, Closed Sun-Wed (open for special evening events)",
     "transit_tips": "Metrob\u00fas Linea 1 to Poliforum or N\u00e1poles stop; Metro Linea 7 to San Pedro de los Pinos. 10 min walk.",
     "accessibility": "Residential entrance; ground floor salon accessible.",
@@ -12763,7 +12782,17 @@
     ],
     "audit_dossier_url": "https://www.instagram.com/biquiniwax_tv/?hl=en/about",
     "statutory_filings_url": "https://www.instagram.com/biquiniwax_tv/?hl=en/about",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://mexicocity.cdmx.gob.mx/venues/biquini-wax-eps/?lang=fr",
+          "https://mexicocity.cdmx.gob.mx/venues/biquini-wax-eps/?lang=en"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "crac-valparaiso",
@@ -12817,7 +12846,7 @@
       "TENT Rotterdam",
       "CBK Rotterdam TENT"
     ],
-    "address": "Witte de Withstraat 50, 3012 BR Rotterdam, Netherlands",
+    "address": "Coolhaven 32, 3024 AC Rotterdam",
     "opening_hours": "Tue-Sun 11:00-18:00 (Wed 11:00-21:00), Closed Mon",
     "admission_fee": "\u20ac5 (Free Wed evenings)",
     "transit_tips": "Metro lines A, B, C, D, E to Beurs or Eendrachtsplein; Tram 7 to Museumpark. 4 min walk down Witte de Withstraat.",
@@ -12831,7 +12860,16 @@
     "visit_url": "https://www.tentrotterdam.nl/en/visit/",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=TENT%20Rotterdam",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=TENT%20Rotterdam",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://tentrotterdam.nl/en/praktisch/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "v2-lab-unstable-media-rotterdam",
@@ -16560,7 +16598,7 @@
       "Beirut Art Center",
       "BAC Beirut"
     ],
-    "address": "Building 13, Street 97, Jisr El Wati, Beirut, Lebanon",
+    "address": "Jisr el Wati, off Corniche an-Nahr, Building Safe, Street 93, Zone 66 Adlieh, Beirut",
     "transit_tips": "Taxi or ride-hailing to Jisr El Wati, near Beirut River and the Souk El Ahad market.",
     "accessibility": "Step-free ramp entrance, ground-floor main gallery, elevator to mediatheque and terrace.",
     "amenities": [
@@ -16571,7 +16609,16 @@
     ],
     "highlight": "The Mediatheque holding an invaluable open archive of moving image and audio works by Middle Eastern contemporary practitioners.",
     "visit_url": "https://beirutartcenter.org/visit/",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://beirutartcenter.org/about/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "arab-image-foundation-beirut",
@@ -16594,7 +16641,7 @@
       "Arab Image Foundation",
       "AIF Beirut"
     ],
-    "address": "Zokak el-Blat, Beirut, Lebanon",
+    "address": "Aresco Center, Justinien Street, Kantari, Beirut",
     "opening_hours": "Mon-Fri 10:00-16:00 (Study room open by appointment or public events), Closed Sat-Sun",
     "transit_tips": "Short taxi ride from Downtown Beirut or Hamra to the historic Zokak el-Blat neighborhood.",
     "accessibility": "Step-free ramp entrance to research study room.",
@@ -16605,7 +16652,17 @@
     ],
     "highlight": "Consulting original photographic albums and glass negatives documenting 150 years of everyday Arab life.",
     "visit_url": "https://arabimagefoundation.org/about",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://arabimagefoundation.org/visit",
+          "https://arabimagefoundation.org/about_en.html"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "al-mamal-foundation-jerusalem",
@@ -16681,7 +16738,16 @@
     ],
     "highlight": "The peaceful stone garden shaded by olive and pine trees hosting open-air poetry readings and contemporary installations.",
     "visit_url": "https://www.sakakini.org/about-us/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://mohit.art/network/khalil-sakakini-cultural-center/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "32-east-ugandan-arts-trust-kampala",
@@ -24450,7 +24516,17 @@
         "funder": "Shell",
         "institutions": 6
       }
-    ]
+    ],
+    "address": "Trafalgar Square, London WC2N 5DN",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://nationalgallery.org.uk/about-us/contact-us"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Royal Ballet and Opera",
@@ -24482,7 +24558,18 @@
         "funder": "BP",
         "institutions": 8
       }
-    ]
+    ],
+    "address": "Bow Street, London WC2E 9DD",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.visitlondon.com/things-to-do/place/58157-royal-ballet-and-opera",
+          "https://prd-ds-register-of-charities.charitycommission.gov.uk/en/sector-data/top-10-charities/-/charity-details/212150/contact-information"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Science Museum",
@@ -24640,7 +24727,19 @@
         "funder": "BP",
         "institutions": 8
       }
-    ]
+    ],
+    "address": "Exhibition Road, South Kensington, London SW7 2DD",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.fis.cityoflondon.gov.uk/whats-on/science-museum",
+          "https://www.visitlondon.com/things-to-do/place/52747-science-museum",
+          "https://register-of-charities.charitycommission.gov.uk/en/sector-data/top-10-charities/-/charity-details/5030366/contact-information"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "V&A",
@@ -24777,7 +24876,18 @@
         "funder": "Sackler family",
         "institutions": 13
       }
-    ]
+    ],
+    "address": "Victoria & Albert Museum, Cromwell Road, London SW7 2RL",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.vam.ac.uk/contact-us",
+          "https://vam.ac.uk/info/contact-us"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Zabludowicz Collection",
@@ -24857,7 +24967,17 @@
         "medium_format": "Satirical science dioramas, mock environmental advertisements, crustacean philosophy",
         "credits": "Curatorial / Design Collective: Crab Museum Team (Margate, Kent, UK) | Designers: Ned Suesst, Bertie Cordingley | Photo: Crab Museum Archives"
       }
-    ]
+    ],
+    "address": "The Rendezvous, Margate, Kent, CT9 1HG",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://turnercontemporary.org/how-to-get-here"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "MK Gallery",
@@ -24888,7 +25008,17 @@
         "funder": "Sackler family",
         "institutions": 13
       }
-    ]
+    ],
+    "address": "900 Midsummer Boulevard, Milton Keynes, MK9 3QA",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://mkgallery.org/visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "The Box",
@@ -24913,7 +25043,17 @@
     ],
     "why_flagged": "Babcock International, a defence contractor, sponsors a gallery.",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=The%20Box",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=The%20Box"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=The%20Box",
+    "address": "Tavistock Place, Plymouth, Devon PL4 8AX",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.theboxplymouth.com/getting-here"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Aspen Art Museum",
@@ -24936,7 +25076,19 @@
     ],
     "why_flagged": "Kanders a major donor 2017 to 2018.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Aspen%20Art%20Museum",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Aspen%20Art%20Museum"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Aspen%20Art%20Museum",
+    "address": "637 East Hyman Avenue, Aspen, CO 81611",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Aspen_Art_Museum",
+          "https://aspenchamber.org/business-directory/aspen-art-museum",
+          "https://www.guidestar.org/profile/84-0746671"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Wexner Center for the Arts",
@@ -24983,7 +25135,17 @@
       }
     ],
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Wexner%20Center%20for%20the%20Arts",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Wexner%20Center%20for%20the%20Arts"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Wexner%20Center%20for%20the%20Arts",
+    "address": "1871 North High Street, Columbus, Ohio 43210",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://wexarts.org/contact-us"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Menil Collection",
@@ -33049,9 +33211,19 @@
         ],
         "basis": "formally established by Yol\u014bu artists as Buku-Larr\u014bgay Arts (the art centre; the township's 1935 mission founding is a different event and is not used)",
         "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://artcollector.net.au/art_centres/buku-larrngay-mulka/",
+          "https://www.agsa.sa.gov.au/whats-on/tarnanthi/tarnanthi-art-centres/buku-larr\u014bgay-mulka-centre-2020/",
+          "https://yirrkala.com/buku-larrnggay-mulka/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
       }
     },
-    "year_founded": 1976
+    "year_founded": 1976,
+    "address": "138 Tuffin Rd, Yirrkala, NT"
   },
   {
     "id": "blak-dot-gallery-melbourne",
@@ -33170,7 +33342,19 @@
         "funder": "BBVA",
         "institutions": 6
       }
-    ]
+    ],
+    "address": "Keizersgracht 609, 1017 DS Amsterdam",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Foam_Fotografiemuseum_Amsterdam",
+          "https://shop.foam.org/policies/contact-information",
+          "https://museum.nl/en/foam-fotografiemuseum-amsterdam"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "fotomuseum-winterthur-winterthur",
@@ -33951,7 +34135,18 @@
     "lat": 50.854,
     "lon": 4.34,
     "audit_dossier_url": "https://www.imal.org/en/partners",
-    "statutory_filings_url": "https://www.imal.org/en/partners"
+    "statutory_filings_url": "https://www.imal.org/en/partners",
+    "address": "30-34 Quai des Charbonnages / Koolmijnenkaai, 1080 Brussels",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.imal.org/en/visit",
+          "https://imal.org/visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "kapelica-gallery-kersnikova-institute-ljubljana",
@@ -35838,7 +36033,19 @@
         "funder": "Augustinus Fonden",
         "institutions": 8
       }
-    ]
+    ],
+    "address": "Hans Egedesvej 8, 3900 Nuuk",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://traveltrade.visitgreenland.com/gl/providers/the-national-museum-of-greenland/",
+          "https://visitgreenland.com/?p=11006",
+          "https://visitgreenland.com/local-experiences/national-museum-of-greenland/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "listasavn-f-roya-national-gallery-of-the-faroe-islands-t-rshavn",
@@ -35937,7 +36144,19 @@
         "funder": "Bloomberg Philanthropies",
         "institutions": 46
       }
-    ]
+    ],
+    "address": "2 East 91st St New York, NY 10128",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.cooperhewitt.org/contact",
+          "https://cooperhewitt.org/contact",
+          "https://www.si.edu/museums/cooper-hewitt-smithsonian-design-museum"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "designmuseum-danmark-copenhagen",
@@ -35964,7 +36183,17 @@
         "funder": "Augustinus Fonden",
         "institutions": 8
       }
-    ]
+    ],
+    "address": "Bredgade 68, DK-1260 Copenhagen K",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://designmuseum.dk/en/contact/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "banff-centre-for-arts-and-creativity-banff",
@@ -36021,7 +36250,19 @@
     "lon": -73.982,
     "other_findings": "Epstein link \u00b7 David A. Ross \u00b7 documented: Ross, a former director of the Whitney, SFMOMA and ICA Boston, stayed close friends with Epstein after his 2008 conviction, kept in contact until at least 2016 and says he contacted Epstein again in 2019. SVA accepted his resignation, effective 3 February 2026, after a student petition.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=School%20of%20Visual%20Arts",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=School%20of%20Visual%20Arts"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=School%20of%20Visual%20Arts",
+    "address": "209 East 23rd Street, New York, NY 10010",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://sva.edu/contact-and-maps",
+          "https://www.aicad.org/schools/school-of-visual-arts/",
+          "https://www.petersons.com/college-search/school-of-visual-arts-000_10000556.aspx"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "sfmoma-san-francisco",

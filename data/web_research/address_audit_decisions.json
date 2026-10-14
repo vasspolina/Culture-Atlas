@@ -504,10 +504,10 @@
  },
  {
   "id": "msn-warsaw",
-  "result": "conflict",
+  "result": "replaced",
   "existing": "Plac Defilad 1, 00-901 Warsaw, Poland",
   "found": "ul. Marszałkowska 103, 00-110 Warsaw",
-  "second": ""
+  "second": "Marszałkowska 103, 00-110 Warsaw"
  },
  {
   "id": "tranzit-cz-prague",
@@ -545,10 +545,10 @@
  },
  {
   "id": "constant-brussels",
-  "result": "conflict",
+  "result": "replaced",
   "existing": "Rue du Fort 5, 1060 Saint-Gilles, Brussels, Belgium",
   "found": "Fortstraat 5A, B-1060 Saint-Gilles",
-  "second": ""
+  "second": "Fortstraat 5A, 1060 Brussels"
  },
  {
   "id": "casino-luxembourg",
@@ -726,10 +726,10 @@
  },
  {
   "id": "bikini-wax-eps-mexico-city",
-  "result": "conflict",
+  "result": "replaced",
   "existing": "Calle de la Reforma 25, Nápoles, Benito Juárez, 03810 Mexico City, CDMX, Mexico",
   "found": "Pedro de Alba 232, Iztaccihuatl, Benito Juárez, 03520 CDMX",
-  "second": ""
+  "second": "Pedro de Alba 232, Iztaccihuatl, Benito Juárez, 03520 CDMX"
  },
  {
   "id": "crac-valparaiso",
@@ -738,10 +738,10 @@
  },
  {
   "id": "tent-rotterdam",
-  "result": "conflict",
+  "result": "replaced",
   "existing": "Witte de Withstraat 50, 3012 BR Rotterdam, Netherlands",
   "found": "Coolhaven 32, 3024 AC Rotterdam",
-  "second": ""
+  "second": "Coolhaven 32, 3024 AC Rotterdam"
  },
  {
   "id": "v2-lab-unstable-media-rotterdam",
@@ -1257,17 +1257,17 @@
  },
  {
   "id": "beirut-art-center-bac",
-  "result": "conflict",
+  "result": "replaced",
   "existing": "Building 13, Street 97, Jisr El Wati, Beirut, Lebanon",
   "found": "Jisr el Wati, off Corniche an-Nahr, Building Safe, Street 93, Zone 66 Adlieh, Beirut",
-  "second": ""
+  "second": "SAFE Building, Jisr el Wati, St. 93, Zone 66 Adlieh, Beirut"
  },
  {
   "id": "arab-image-foundation-beirut",
-  "result": "conflict",
+  "result": "replaced",
   "existing": "Zokak el-Blat, Beirut, Lebanon",
   "found": "Aresco Center, Justinien Street, Kantari, Beirut",
-  "second": ""
+  "second": "Aresco Centre (ground floor), Justinian Street, Kantari, Beirut, Lebanon"
  },
  {
   "id": "al-mamal-foundation-jerusalem",
@@ -1277,10 +1277,9 @@
  },
  {
   "id": "khalil-sakakini-cultural-center-ramallah",
-  "result": "conflict",
+  "result": "confirmed",
   "existing": "Khalil Sakakini Street, Al-Masyoun, Ramallah, Palestine",
-  "found": "4 Al Rajaa Str., Al Masyoun, Ramallah, Palestine",
-  "second": ""
+  "found": "4 Al Rajaa Str., Al Masyoun, Ramallah, Palestine"
  },
  {
   "id": "32-east-ugandan-arts-trust-kampala",
@@ -1449,5 +1448,1872 @@
   "id": "julia-stoschek-foundation",
   "result": "unverified",
   "existing": "Leipziger Str. 60, 10117 Berlin, Germany"
+ },
+ {
+  "id": "the-bowes-museum",
+  "result": "filled",
+  "address": "Newgate, Barnard Castle, County Durham DL12 8NP"
+ },
+ {
+  "id": "staatliche-museen-zu-berlin",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "contemporary-calgary",
+  "result": "filled",
+  "address": "#701 11 Street SW, Calgary"
+ },
+ {
+  "id": "kettle-s-yard",
+  "result": "filled",
+  "address": "Castle Street, Cambridge CB3 0AQ"
+ },
+ {
+  "id": "the-renaissance-society",
+  "result": "filled",
+  "address": "5811 South Ellis Avenue, Chicago, IL 60637"
+ },
+ {
+  "id": "christchurch-art-gallery",
+  "result": "filled_own_site",
+  "address": "58 Gloucester Street, Christchurch 8013"
+ },
+ {
+  "id": "nasher-sculpture-center",
+  "result": "filled",
+  "address": "2001 Flora Street, Dallas, TX 75201"
+ },
+ {
+  "id": "le-consortium",
+  "result": "filled",
+  "address": "37 rue de Longvic, 21000 Dijon"
+ },
+ {
+  "id": "jameel-arts-centre",
+  "result": "disagree",
+  "a": "2, 6th Street, Al Jadaf, Ras Al Khor, Dubai",
+  "b": ""
+ },
+ {
+  "id": "lismore-castle-arts",
+  "result": "filled_own_site",
+  "address": "Lismore Castle, Lismore, Co. Waterford, P51 F859, Ireland"
+ },
+ {
+  "id": "gasworks",
+  "result": "filled",
+  "address": "155 Vauxhall Street, London SE11 5RH"
+ },
+ {
+  "id": "kunsthalle-mannheim",
+  "result": "filled",
+  "address": "Friedrichsplatz 4, 68165 Mannheim"
+ },
+ {
+  "id": "chinati-foundation",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "judd-foundation",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "acca",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "lenbachhaus",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "artists-space",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "swiss-institute",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "henry-art-gallery",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "magasin-iii",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "de-pont",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kunsthalle-wien",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "audain-art-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "migros-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "how-art-museum-shanghai",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "zoma-museum-addis-ababa",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "selasar-sunaryo-art-space-bandung",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "fondation-ifitry-essaouira",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "taipei-fine-arts-museum-taipei",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "palais-de-lomé-lomé",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "ishara-art-foundation-dubai",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "instituto-tunga-rio-de-janeiro",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kunstverein-bielefeld-bielefeld",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "e-werk-luckenwalde-luckenwalde",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kunsthalle-recklinghausen-recklinghausen",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "ghetto-biennale-port-au-prince",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kalektar-research-platform-on-belarusian-contemporary-art-białystok",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kunsthaus-baselland-münchenstein",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bangkok-art-biennale-bangkok",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "the-factory-contemporary-arts-centre-ho-chi-minh-city",
+  "result": "disagree",
+  "a": "",
+  "b": "15 Nguyen U Di Street, Thao Dien Ward, District 2"
+ },
+ {
+  "id": "wiels-brussels",
+  "result": "disagree",
+  "a": "",
+  "b": "Avenue Van Volxemlaan 354, 1190 Brussels"
+ },
+ {
+  "id": "taipei-contemporary-art-center-taipei",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "buku-larrnggay-mulka-centre-yirrkala",
+  "result": "filled",
+  "address": "138 Tuffin Rd, Yirrkala, NT"
+ },
+ {
+  "id": "foam-fotografiemuseum-amsterdam-amsterdam",
+  "result": "filled",
+  "address": "Keizersgracht 609, 1017 DS Amsterdam"
+ },
+ {
+  "id": "imal-brussels",
+  "result": "filled",
+  "address": "30-34 Quai des Charbonnages / Koolmijnenkaai, 1080 Brussels"
+ },
+ {
+  "id": "bienal-de-artes-mediales-de-santiago",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museo-nacional-de-artes-visuales",
+  "result": "disagree",
+  "a": "Julio Herrera y Reissig esq. Tomás Giribaldi, s/n, CP: 11300 Parque Rodó, Montevideo (Uruguay)",
+  "b": ""
+ },
+ {
+  "id": "national-museum-of-fine-arts-of-chile-mnba",
+  "result": "disagree",
+  "a": "José Miguel de la Barra 650, Santiago, Chile",
+  "b": ""
+ },
+ {
+  "id": "biennale-jogja",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "ayala-museum",
+  "result": "disagree",
+  "a": "Makati Avenue corner De la Rosa Street, Greenbelt Park, Makati City",
+  "b": ""
+ },
+ {
+  "id": "pinto-art-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "tainan-art-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "red-brick-art-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-art-museum-of-china",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "tank-shanghai",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "anadolu-kultur-depo-and-diyarbak-r-arts-center",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mohatta-palace-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bangladesh-shilpakala-academy",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "sursock-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "visual",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-galleries-of-scotland",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "tate-modern",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "hammer-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "noguchi-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "ch-teau-de-versailles",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "moma-the-museum-of-modern-art",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "the-metropolitan-museum-of-art-the-met",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "whitney-museum-of-american-art",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "solomon-r-guggenheim-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "centre-pompidou",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "casa-frança-brasil-rio-de-janeiro",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "the-rooms-st-johns",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museo-de-arte-moderno-de-bogotá-bogotá",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "ordrupgaard-charlottenlund",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "heart-herning-herning",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museum-of-contemporary-art-tokyo-tokyo",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bluecoat-liverpool",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "dallas-contemporary-dallas",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "new-orleans-museum-of-art-new-orleans",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "oakland-museum-of-california-oakland",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "heard-museum-phoenix",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "phoenix-art-museum-phoenix",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "nevada-museum-of-art-reno",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "asian-art-museum-san-francisco",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "new-mexico-museum-of-art-santa-fe",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "telfair-museums-savannah",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "seattle-art-museum-seattle",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "moca-tucson-tucson",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "fundación-proa-buenos-aires",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museo-de-arte-moderno-de-buenos-aires-buenos-aires",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "art-gallery-of-south-australia-adelaide",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "darwin-festival-darwin",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "fringe-world-perth",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "biennale-of-sydney-sydney",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "dhaka-art-summit-dhaka",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "m-hka-antwerp",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "masp-são-paulo",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "esker-foundation-calgary",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "glenbow-calgary",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "m-hong-kong",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "tai-kwun-hong-kong",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "long-museum-shanghai",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "yuz-museum-shanghai",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "fondation-louis-vuitton-paris",
+  "result": "filled",
+  "address": "8 Avenue du Mahatma Gandhi, 75116 Paris"
+ },
+ {
+  "id": "louvre-paris",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "musée-dorsay-paris",
+  "result": "disagree",
+  "a": "Esplanade Valéry Giscard d'Estaing, 75007 Paris",
+  "b": ""
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "result": "filled",
+  "address": "Artur-Ladebeck-Straße 5, 33602 Bielefeld"
+ },
+ {
+  "id": "museum-folkwang-essen",
+  "result": "filled",
+  "address": "Museumsplatz 1, 45128 Essen"
+ },
+ {
+  "id": "kunstmuseum-wolfsburg-wolfsburg",
+  "result": "filled",
+  "address": "Hollerplatz 1, 38440 Wolfsburg"
+ },
+ {
+  "id": "kochi-muziris-biennale-kochi",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kiran-nadar-museum-of-art-new-delhi",
+  "result": "filled_own_site",
+  "address": "145, DLF South Court Mall, Saket, New Delhi 110017"
+ },
+ {
+  "id": "museum-macan-jakarta",
+  "result": "filled",
+  "address": "AKR Tower, Level MM, Jalan Panjang No. 5, Kebon Jeruk, West Jakarta 11530"
+ },
+ {
+  "id": "imma-dublin",
+  "result": "filled",
+  "address": "Royal Hospital, Military Road, Kilmainham, Dublin 8, D08 FW31, Ireland"
+ },
+ {
+  "id": "peggy-guggenheim-collection-venice",
+  "result": "disagree",
+  "a": "",
+  "b": "Palazzo Venier dei Leoni, Dorsoduro 701, 30123 Venice"
+ },
+ {
+  "id": "kyoto-city-kyocera-museum-of-art-kyoto",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "muac-mexico-city",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "rijksmuseum-amsterdam",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "van-gogh-museum-amsterdam",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "groninger-museum-groningen",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bergen-international-festival-bergen",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "munch-oslo",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "maat-lisbon",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "qatar-museums-doha",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "garage-museum-moscow",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "songeun-seoul",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "guggenheim-bilbao-bilbao",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kunsthaus-zürich-zürich",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "louvre-abu-dhabi-abu-dhabi",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "sharjah-art-foundation-sharjah",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "collective-edinburgh",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "edinburgh-international-book-festival-edinburgh",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "stills-edinburgh",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "hay-festival-hay-on-wye",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "british-museum-london",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "design-museum-london",
+  "result": "disagree",
+  "a": "",
+  "b": "224–238 Kensington High Street, London, W8 6AG"
+ },
+ {
+  "id": "dulwich-picture-gallery-london",
+  "result": "disagree",
+  "a": "",
+  "b": "14 Gallery Road, London SE21 7AD"
+ },
+ {
+  "id": "goldsmiths-cca-london",
+  "result": "disagree",
+  "a": "",
+  "b": "St James's, New Cross, London SE14 6AD"
+ },
+ {
+  "id": "national-gallery-london",
+  "result": "filled_own_site",
+  "address": "Trafalgar Square, London WC2N 5DN"
+ },
+ {
+  "id": "royal-ballet-and-opera-london",
+  "result": "filled",
+  "address": "Bow Street, London WC2E 9DD"
+ },
+ {
+  "id": "science-museum-london",
+  "result": "filled",
+  "address": "Exhibition Road, South Kensington, London SW7 2DD"
+ },
+ {
+  "id": "va-london",
+  "result": "filled",
+  "address": "Victoria & Albert Museum, Cromwell Road, London SW7 2RL"
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "turner-contemporary-margate",
+  "result": "filled",
+  "address": "The Rendezvous, Margate, Kent, CT9 1HG"
+ },
+ {
+  "id": "mk-gallery-milton-keynes",
+  "result": "filled_own_site",
+  "address": "900 Midsummer Boulevard, Milton Keynes, MK9 3QA"
+ },
+ {
+  "id": "the-box-plymouth",
+  "result": "filled",
+  "address": "Tavistock Place, Plymouth, Devon PL4 8AX"
+ },
+ {
+  "id": "aspen-art-museum-aspen",
+  "result": "filled",
+  "address": "637 East Hyman Avenue, Aspen, CO 81611"
+ },
+ {
+  "id": "wexner-center-for-the-arts-columbus",
+  "result": "filled_own_site",
+  "address": "1871 North High Street, Columbus, Ohio 43210"
+ },
+ {
+  "id": "menil-collection-houston",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kemper-museum-kansas-city",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "lacma-los-angeles",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "moca-los-angeles-los-angeles",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "speed-art-museum-louisville",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "pérez-art-museum-miami-miami",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "the-bass-miami-beach",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "frist-art-museum-nashville",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "brooklyn-museum-new-york",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "yerba-buena-center-for-the-arts-san-francisco",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "smithsonian-air-and-space-washington",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mca-denver-denver",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-portrait-gallery-london",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-theatre-london",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "dia-art-foundation-beacon",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "art-institute-of-chicago-chicago",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "he-art-museum-foshan",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "ruya-foundation-baghdad",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "beppu-contemporary-art-festival-beppu",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "karachi-biennale-trust-karachi",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-gallery-singapore-singapore",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "akron-art-museum-akron",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "moca-cleveland-cleveland",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "madison-museum-of-contemporary-art-madison",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "neue-galerie-new-york-new-york",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "joslyn-art-museum-omaha",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "the-phillips-collection-washington",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "uzbekistan-art-and-culture-development-foundation-tashkent",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "art-macao-macau",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bienal-de-la-habana-havana",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kunsten-museum-of-modern-art-aalborg-aalborg",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "trapholt-kolding",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "centro-león-santiago-de-los-caballeros",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "fridericianum-kassel",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "aichi-triennale-nagoya",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "tselinny-center-of-contemporary-culture-almaty",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kaesong-koryo-museum-kaesong",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "sinchon-museum-of-american-war-atrocities-sinchon",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "zachęta-national-gallery-of-art-warsaw",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mathaf-arab-museum-of-modern-art-doha",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museum-of-islamic-art-doha",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "victoria-gallery-samara",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "new-holland-island-st-petersburg",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "pro-arte-foundation-st-petersburg",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "state-hermitage-museum-st-petersburg",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "state-russian-museum-st-petersburg",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "vyksa-festival-art-ovrag-vyksa",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "yeltsin-center-yekaterinburg",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "tanoto-art-foundation-singapore",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "gwangju-biennale-gwangju",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "arter-istanbul",
+  "result": "filled",
+  "address": "Irmak Caddesi No: 13, Dolapdere, Beyoğlu, Istanbul 34435, Turkey"
+ },
+ {
+  "id": "yarat-contemporary-art-space-baku",
+  "result": "disagree",
+  "a": "",
+  "b": "Bayil District, National Flag Square, Baku 1003, Azerbaijan"
+ },
+ {
+  "id": "art-belarus-gallery-belgazprombank-corporate-collection-minsk",
+  "result": "disagree",
+  "a": "Kozlov St. 3, Minsk",
+  "b": ""
+ },
+ {
+  "id": "ok16-cultural-hub-minsk",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "inhotim-brumadinho",
+  "result": "filled",
+  "address": "Rua B, 20, Brumadinho 35460-000, Brazil"
+ },
+ {
+  "id": "russian-pavilion-at-the-venice-biennale-venice",
+  "result": "disagree",
+  "a": "",
+  "b": "Castello 1260, Venezia, Italia (Giardini, Castello, 30122, Venice, Italy)"
+ },
+ {
+  "id": "21st-century-museum-of-contemporary-art-kanazawa-kanazawa",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "beirut-art-center-beirut",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mudam-luxembourg",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "grand-people-s-study-house-pyongyang",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "korean-central-history-museum-pyongyang",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mansudae-overseas-project-group-of-companies-mansudae-overseas-projects-pyongyang",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "serralves-foundation-porto",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "ges-2-house-of-culture-v-a-c-foundation-moscow",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "jewish-museum-and-tolerance-center-moscow",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "multimedia-art-museum-moscow-mamm-moscow",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "pushkin-state-museum-of-fine-arts-moscow",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "ruarts-foundation-moscow",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "winzavod-centre-for-contemporary-art-moscow",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "zotov-centre-for-constructivism-moscow",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "macba-barcelona",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "fruitmarket-edinburgh",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "serpentine-london",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "guggenheim-new-york",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "moma-new-york",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "the-met-new-york",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "whitney-museum-new-york",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "biomuseo-panama-city",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "african-artists-foundation-lagos",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bait-al-zubair-muscat",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "fire-station-artist-in-residence-doha",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "anchorage-museum-anchorage",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "nuuk-art-museum-nuuk-kunstmuseum-nuuk",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "eiteljorg-museum-of-american-indians-and-western-art-indianapolis",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "koorie-heritage-trust-melbourne",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "zkm-center-for-art-and-media-karlsruhe",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "c-o-berlin-berlin",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "le-bal-paris",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bukhara-biennial-bukhara",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "georgian-national-museum-tbilisi",
+  "result": "disagree",
+  "a": "",
+  "b": "Rustaveli Ave. 3, Tbilisi"
+ },
+ {
+  "id": "mus-e-th-odore-monod-d-art-africain-ifan-dakar",
+  "result": "disagree",
+  "a": "",
+  "b": "1, Place Soweto, BP 206 Dakar"
+ },
+ {
+  "id": "villa-des-arts-de-casablanca-casablanca",
+  "result": "disagree",
+  "a": "",
+  "b": "30 boulevard Brahim Roudani, Casablanca 20000"
+ },
+ {
+  "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
+  "result": "filled",
+  "address": "Hans Egedesvej 8, 3900 Nuuk"
+ },
+ {
+  "id": "listasavn-f-roya-national-gallery-of-the-faroe-islands-t-rshavn",
+  "result": "disagree",
+  "a": "Gundadalsvegur 9, 100 Tórshavn",
+  "b": "Gundadalsvegur 9, P.O. Box 1141, FO-110 Tórshavn"
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "result": "filled",
+  "address": "2 East 91st St New York, NY 10128"
+ },
+ {
+  "id": "designmuseum-danmark-copenhagen",
+  "result": "filled",
+  "address": "Bredgade 68, DK-1260 Copenhagen K"
+ },
+ {
+  "id": "banff-centre-for-arts-and-creativity-banff",
+  "result": "disagree",
+  "a": "107 Tunnel Mountain Drive, Box 1020, Banff, Alberta T1L 1H5, Canada",
+  "b": ""
+ },
+ {
+  "id": "school-of-visual-arts-new-york",
+  "result": "filled",
+  "address": "209 East 23rd Street, New York, NY 10010"
+ },
+ {
+  "id": "sfmoma-san-francisco",
+  "result": "disagree",
+  "a": "151 Third Street, San Francisco, CA 94103",
+  "b": ""
+ },
+ {
+  "id": "new-york-academy-of-art-new-york",
+  "result": "disagree",
+  "a": "111 Franklin Street, New York, NY 10013",
+  "b": ""
+ },
+ {
+  "id": "interlochen-center-for-the-arts-interlochen",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "black-family-visual-arts-center-dartmouth-hanover",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "djerassi-resident-artists-program-woodside",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mit-media-lab-cambridge",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "poetry-in-america-harvard-cambridge",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "hasty-pudding-theatricals-cambridge",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "institut-du-monde-arabe-paris",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "s-ries-mania-lille",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "pictanovo-tourcoing",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "english-national-ballet-london",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "royal-philharmonic-orchestra-london",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "amandus-festival-lillehammer",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "pritzker-architecture-prize-chicago",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "nyu-tisch-school-of-the-arts-new-york",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "milwaukee-symphony-orchestra-milwaukee",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "london-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "american-folk-art-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "neue-nationalgalerie-berlin",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "hamburger-bahnhof-berlin",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "het-concertgebouw-amsterdam",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "casa-de-la-arquitectura-madrid",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "caixaforum-madrid",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "guggenheim-abu-dhabi",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-museum-of-american-history-smithsonian",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-museum-of-natural-history-smithsonian",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-portrait-gallery-smithsonian",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "eskenazi-museum-of-art",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "kuindzhi-art-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mariupol-drama-theatre",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "pinchukartcentre",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museum-of-west-african-art-mowaa",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "mystetskyi-arsenal",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-art-museum-of-ukraine",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "malba",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museo-de-arte-de-puerto-rico",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "nairobi-national-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "galeri-petronas",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "galeri-nasional-indonesia",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "ucca-center-for-contemporary-art",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "west-bund-museum",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "national-visual-arts-gallery",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "shanghai-biennale",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bangkok-kunsthalle",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "istanbul-modern",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "nasjonalmuseet-national-museum-of-norway",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "serendipity-arts-festival",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "museum-of-art-photography-map",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "bengal-foundation",
+  "result": "none",
+  "a": "",
+  "b": ""
+ },
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "result": "none",
+  "a": "",
+  "b": ""
  }
 ]
