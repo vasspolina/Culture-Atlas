@@ -22337,8 +22337,8 @@
     "sources": [
       "https://www.taikwun.hk/en/taikwun/hkjc"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 22.28122,
+    "lon": 114.15408,
     "country": "China",
     "city": "Hong Kong",
     "website": "https://www.taikwun.hk/",
@@ -22350,7 +22350,17 @@
     "flags": [
       "Gambling"
     ],
-    "why_flagged": "Funded by the Hong Kong Jockey Club, a gambling operator."
+    "why_flagged": "Funded by the Hong Kong Jockey Club, a gambling operator.",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://travel.sygic.com/en/poi/tai-kwun-poi:26946034",
+          "https://tripomatic.com/cs/poi/tai-kwun-poi:26946034"
+        ],
+        "basis": "Sygic Travel lists 22\u00b016'52.395\" N 114\u00b09'14.68\" E",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Long Museum",
@@ -22404,8 +22414,8 @@
     "sources": [
       "https://www.anticor.org/affaires-anticor/affaire-de-la-fondation-louis-vuitton/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 48.876667,
+    "lon": 2.263333,
     "country": "France",
     "city": "Paris",
     "website": "https://www.fondationlouisvuitton.fr/en",
@@ -22429,6 +22439,13 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Louis_Vuitton_Foundation"
+        ],
+        "basis": "48\u00b052\u203236\u2033N, 2\u00b015\u203248\u2033E",
+        "retrieved": "2026-10-14"
       }
     }
   },
@@ -22444,8 +22461,8 @@
       "https://wikileaks.org/saudi-cables/doc120158.html",
       "https://wikileaks.org/gifiles/docs/18/1875115_iran-france-iran-freezes-ties-with-louvre-museum-.html"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 48.860294,
+    "lon": 2.338629,
     "country": "France",
     "city": "Paris",
     "website": "https://www.louvre.fr/",
@@ -22639,7 +22656,16 @@
         "funder": "Sackler family",
         "institutions": 13
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.latlong.net/place/mus-e-du-louvre-paris-france-223.html"
+        ],
+        "basis": "Museum (general): One listing gives 48.860294, 2.338629.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Mus\u00e9e d'Orsay",
@@ -22651,8 +22677,8 @@
       "https://www.artnews.com/art-news/news/jeffrey-epstein-musee-dorsay-woody-allen-visit-1234771983/",
       "https://www.theartnewspaper.com/2026/07/03/epstein-papers-reveal-leon-black-as-key-collector-of-van-gogh-works"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 48.860283,
+    "lon": 2.325392,
     "country": "France",
     "city": "Paris",
     "website": "https://www.musee-orsay.fr/",
@@ -22811,7 +22837,18 @@
         "funder": "LVMH / Louis Vuitton",
         "institutions": 4
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://latitude.to/map/fr/france/cities/beynes/articles/17425/gare-dorsay",
+          "https://latitude.to/satellite-map/fr/france/17425/gare-dorsay",
+          "https://latitude.to/articles-by-country/fr/france/17425/gare-dorsay"
+        ],
+        "basis": "Latitude.to (Gare d'Orsay): 48\u00b0 51' 37.02\" N, 2\u00b0 19' 31.41\" E, which is about 48.8603\u00b0 N, 2.3254\u00b0 E in decimal form.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kunsthalle Bielefeld",
@@ -22959,8 +22996,8 @@
     "sources": [
       "https://www.theartnewspaper.com/2023/08/02/controversy-kiran-nadar-museum-of-art-in-delhi-india-private-museums"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 28.52884,
+    "lon": 77.22008,
     "country": "India",
     "city": "New Delhi",
     "website": "https://www.knma.org/",
@@ -22981,6 +23018,13 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "coordinates": {
+        "urls": [
+          "https://www.wikidata.org/wiki/Q55616048"
+        ],
+        "basis": "Wikidata lists the museum's headquarters location as New Delhi, with coordinates of 28\u00b031'43.824\"N, 77\u00b013'12.288\"E.",
+        "retrieved": "2026-10-14"
       }
     }
   },
@@ -22992,8 +23036,8 @@
     "sources": [
       "https://www.theartnewspaper.com/2019/03/28/collectors-eye-an-interview-with-haryanto-adikoesoemo"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": -6.190833,
+    "lon": 106.767778,
     "country": "Indonesia",
     "city": "Jakarta",
     "website": "https://www.museummacan.org/",
@@ -23014,6 +23058,13 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Museum_of_Modern_and_Contemporary_Art_in_Nusantara"
+        ],
+        "basis": "Museum MACAN's coordinates are 6\u00b011\u203227\u2033S 106\u00b046\u203204\u2033E, or about -6.1909, 106.7679 in decimal degrees. These come from the museum's Wikipedia entry, the only source in the results that gives coordinates.",
+        "retrieved": "2026-10-14"
       }
     }
   },
@@ -23025,8 +23076,8 @@
     "sources": [
       "https://my.uplift.ie/petitions/public-art-public-values-imma-must-divest"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 53.343077,
+    "lon": -6.300037,
     "country": "Ireland",
     "city": "Dublin",
     "website": "https://imma.ie/",
@@ -23055,6 +23106,14 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Irish_Museum_of_Modern_Art",
+          "https://latitude.to/articles-by-country/ie/ireland/59953/irish-museum-of-modern-art"
+        ],
+        "basis": "Wikipedia lists them as 53\u00b020\u203235\u2033N 6\u00b018\u203200\u2033W, or 53.343077\u00b0N 6.300037\u00b0W.",
+        "retrieved": "2026-10-14"
       }
     }
   },
@@ -23066,8 +23125,8 @@
     "sources": [
       "https://news.artnet.com/art-world/sackler-name-change-guggenheim-museum-2110993"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 45.430556,
+    "lon": 12.331111,
     "country": "Italy",
     "city": "Venice",
     "website": "https://www.guggenheim-venice.it/",
@@ -23122,7 +23181,17 @@
         "citation": "Sharp, C., & Summers, S. (2025). Museum funding as critical practice. Museums & Social Issues",
         "doi": "10.1080/15596893.2025.2465592"
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Peggy_Guggenheim_Collection",
+          "https://www.wikidata.org/wiki/Q1049033"
+        ],
+        "basis": "The museum's coordinates are listed as 45\u00b025\u203250\u2033N 12\u00b019\u203252\u2033E.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kyoto City KYOCERA Museum of Art",
@@ -23155,8 +23224,8 @@
     "sources": [
       "https://muac.unam.mx/benefactores"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 19.314444,
+    "lon": -99.185278,
     "country": "Mexico",
     "city": "Mexico City",
     "website": "https://muac.unam.mx/",
@@ -23174,7 +23243,17 @@
         "funder": "Bloomberg Philanthropies",
         "institutions": 46
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Museo_Universitario_Arte_Contempor%C3%A1neo",
+          "https://www.meer.com/muac/en"
+        ],
+        "basis": "Wikipedia lists 19\u00b018\u203252\u2033N 99\u00b011\u203207\u2033W, which is about 19.3144, -99.1854 in decimal form.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Rijksmuseum",
@@ -23184,8 +23263,8 @@
     "sources": [
       "https://extinctionrebellion.nl/grassroots-tentoonstelling-kunst-en-de-klimaatcrisis-op-museumplein-amsterdam-rijksmuseum-verbreek-sponsorrelatie-ing/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 52.36,
+    "lon": 4.885278,
     "country": "Netherlands",
     "city": "Amsterdam",
     "website": "https://www.rijksmuseum.nl/",
@@ -23306,7 +23385,18 @@
           "https://wikileaks.org/plusd/cables/06THEHAGUE265_a.html"
         ]
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Rijksmuseum",
+          "https://www.latlong.net/place/rijksmuseum-amsterdam-the-netherlands-27738.html",
+          "https://simple.wikipedia.com/wiki/Rijksmuseum"
+        ],
+        "basis": "Wikipedia lists the museum at 52\u00b021\u203236\u2033N 4\u00b053\u203207\u2033E / 52.36000\u00b0N 4.885278\u00b0E.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Van Gogh Museum",
@@ -23316,8 +23406,8 @@
     "sources": [
       "https://fossilfreeculture.nl/news/shell-dropped/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 52.358333,
+    "lon": 4.881111,
     "country": "Netherlands",
     "city": "Amsterdam",
     "website": "https://www.vangoghmuseum.nl/",
@@ -23444,7 +23534,16 @@
         "funder": "Shell",
         "institutions": 6
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Van_Gogh_Museum"
+        ],
+        "basis": "The Van Gogh Museum is at about 52.3583\u00b0N, 4.8811\u00b0E (52\u00b021\u203230\u2033N 4\u00b052\u203252\u2033E). Wikipedia gives these coordinates, and latlong.net lists 52.358059, 4.881124, which agrees.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Groninger Museum",
@@ -23479,8 +23578,8 @@
     "sources": [
       "https://www.mauritshuis.nl/en/business/sponsorship-and-funds/nn-group"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 52.080278,
+    "lon": 4.314167,
     "country": "Netherlands",
     "city": "The Hague",
     "website": "https://www.mauritshuis.nl/",
@@ -23511,7 +23610,16 @@
         "funder": "Shell",
         "institutions": 6
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Mauritshuis"
+        ],
+        "basis": "The Mauritshuis is at 52.0804\u00b0N, 4.3143\u00b0E, or 52\u00b004\u203249\u2033N 4\u00b018\u203251\u2033E in degrees-minutes-seconds. English Wikipedia lists these coordinates in its infobox",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Govett-Brewster / Len Lye Centre",
@@ -23544,8 +23652,8 @@
     "sources": [
       "https://www.nzherald.co.nz/nz/controversial-artist-theo-schoons-work-targeted-by-calls-for-a-boycott/M3SQL44XDIUG3KM2GGRJTJKYL4/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": -41.288384,
+    "lon": 174.777312,
     "country": "New Zealand",
     "city": "Wellington",
     "website": "https://citygallery.org.nz/",
@@ -23557,7 +23665,16 @@
     "flags": [
       "Protest or boycott"
     ],
-    "why_flagged": "2019 protest targeted a Fletcher-backed show."
+    "why_flagged": "2019 protest targeted a Fletcher-backed show.",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/City_Gallery_Wellington"
+        ],
+        "basis": "Wikipedia lists 41\u00b017\u203218\u2033S 174\u00b046\u203238\u2033E (41.288384\u00b0S, 174.777312\u00b0E). Its infobox places the gallery in the former Central Library building.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Bergen International Festival",
@@ -23601,8 +23718,8 @@
     "sources": [
       "https://www.munch.no/en/about/sponsors-and-partnership/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 59.905833,
+    "lon": 10.755278,
     "country": "Norway",
     "city": "Oslo",
     "website": "https://www.munch.no/",
@@ -23614,7 +23731,16 @@
     "flags": [
       "Fossil fuels"
     ],
-    "why_flagged": "INPEX Idemitsu oil sponsorship to 2028."
+    "why_flagged": "INPEX Idemitsu oil sponsorship to 2028.",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Munch_Museum"
+        ],
+        "basis": "Wikipedia lists these coordinates for the Munch Museum: about 59.9057\u00b0N, 10.7553\u00b0E (DMS 59\u00b054\u203221\u2033N 10\u00b045\u203219\u2033E)",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "MAAT",
@@ -23624,8 +23750,8 @@
     "sources": [
       "https://www.maat.pt/en/about"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 38.695833,
+    "lon": -9.194722,
     "country": "Portugal",
     "city": "Lisbon",
     "website": "https://www.maat.pt/",
@@ -23637,7 +23763,17 @@
     "flags": [
       "Fossil fuels"
     ],
-    "why_flagged": "Funda\u00e7\u00e3o EDP, a utility with gas generation."
+    "why_flagged": "Funda\u00e7\u00e3o EDP, a utility with gas generation.",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.maat.pt/en/get-maat",
+          "https://en.wikipedia.org/wiki/Museum_of_Art,_Architecture_and_Technology"
+        ],
+        "basis": "Wikipedia lists it at Bel\u00e9m, Lisbon, with coordinates of about 38\u00b041\u203245\u2033N 9\u00b011\u203241\u2033W",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Qatar Museums",
@@ -23731,8 +23867,8 @@
     "sources": [
       "https://www.guggenheim-bilbao.eus/en/corporate-support/our-corporate-members"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 43.268714,
+    "lon": -2.934025,
     "country": "Spain",
     "city": "Bilbao",
     "website": "https://www.guggenheim-bilbao.eus/",
@@ -23786,7 +23922,17 @@
         "citation": "Sharp, C., & Summers, S. (2025). Museum funding as critical practice. Museums & Social Issues",
         "doi": "10.1080/15596893.2025.2465592"
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao",
+          "https://structurae.net/structures/guggenheim-museum-bilbao"
+        ],
+        "basis": "Coordinates: 43\u00b0 16' 7.37\" N 2\u00b0 56' 2.49\" W",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kunsthaus Z\u00fcrich",
@@ -23796,8 +23942,8 @@
     "sources": [
       "https://news.artnet.com/art-world/buhrle-foundation-seeks-settlement-over-kunsthaus-zurich-paintings-2501335"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 47.370278,
+    "lon": 8.548056,
     "country": "Switzerland",
     "city": "Z\u00fcrich",
     "website": "https://www.kunsthaus.ch/",
@@ -23821,7 +23967,16 @@
           "https://wikileaks.org/plusd/cables/1978BERN00359_d.html"
         ]
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Kunsthaus_Z%C3%BCrich"
+        ],
+        "basis": "its coordinates are 47\u00b022\u203213\u2033N 8\u00b032\u203253\u2033E",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Bangkok Art and Culture Centre",
@@ -24032,8 +24187,8 @@
       "https://www.museumsassociation.org/museums-journal/news/2023/12/british-museum-announces-new-50m-bp-deal-to-fund-masterplan/",
       "https://wikileaks.org/gifiles/docs/18/1875115_iran-france-iran-freezes-ties-with-louvre-museum-.html"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 51.5195,
+    "lon": -0.1269,
     "country": "UK",
     "city": "London",
     "website": "https://www.britishmuseum.org/",
@@ -24261,7 +24416,16 @@
         "funder": "BP",
         "institutions": 8
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.britishlistedbuildings.co.uk/101130404-the-british-museum-bloomsbury-ward/maps"
+        ],
+        "basis": "Latitude: 51.5195 / 51\u00b031'10\"N Longitude: -0.1269 / 0\u00b07'36\"W",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Design Museum",
@@ -24271,8 +24435,8 @@
     "sources": [
       "https://hyperallergic.com/artists-demand-answers-one-year-after-withdrawing-work-from-london-design-museum/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 51.5,
+    "lon": -0.20028,
     "country": "UK",
     "city": "London",
     "website": "https://designmuseum.org/",
@@ -24371,7 +24535,16 @@
           "https://www.museumsassociation.org/museums-journal/news/2018/08/06082018-design-museum-removes-works-arms-controversy/"
         ]
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Design_Museum"
+        ],
+        "basis": "51\u00b030\u203200\u2033N 0\u00b012\u203201\u2033W",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Dulwich Picture Gallery",
@@ -24381,8 +24554,8 @@
     "sources": [
       "https://www.theartnewspaper.com/2022/06/02/dulwich-picture-gallery-drops-sackler-name"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 51.44611,
+    "lon": -0.08639,
     "country": "UK",
     "city": "London",
     "website": "https://www.dulwichpicturegallery.org.uk/",
@@ -24403,7 +24576,16 @@
         "funder": "Sackler family",
         "institutions": 13
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.wikipedia.com/wiki/Dulwich_Gallery"
+        ],
+        "basis": "51\u00b026\u203246\u2033N 0\u00b005\u203211\u2033W / 51.44611\u00b0N 0.08639\u00b0W",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Goldsmiths CCA",
@@ -24439,8 +24621,8 @@
     "sources": [
       "https://www.nationalgallery.org.uk/support-us/corporate-support"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 51.5086,
+    "lon": -0.1283,
     "country": "UK",
     "city": "London",
     "website": "https://www.nationalgallery.org.uk/",
@@ -24525,6 +24707,14 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "coordinates": {
+        "urls": [
+          "https://c.enwp.org/wiki/National_Gallery,_London",
+          "https://britishlistedbuildings.co.uk/101066236-national-gallery-st-jamess-ward"
+        ],
+        "basis": "Coordinates 51.5086\u00b0N 0.1283\u00b0W / 51.5086; -0.1283",
+        "retrieved": "2026-10-14"
       }
     }
   },
@@ -24536,8 +24726,8 @@
     "sources": [
       "https://www.whatsonstage.com/news/royal-opera-house-confirms-end-of-33-year-bp-sponsorship-deal_58217/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 51.5131,
+    "lon": -0.1228,
     "country": "UK",
     "city": "London",
     "website": "https://rbo.org.uk/",
@@ -24568,6 +24758,14 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Royal_Opera_House",
+          "https://britishlistedbuildings.co.uk/101066392-royal-opera-house-st-jamess-ward"
+        ],
+        "basis": "Coordinates: 51\u00b030\u203247\u2033N 0\u00b007\u203222\u2033W",
+        "retrieved": "2026-10-14"
       }
     }
   },
@@ -24579,8 +24777,8 @@
     "sources": [
       "https://cultureunstained.org/2026/08/28/science-museum-drops-oil-sponsor-bp-after-mounting-pressure-on-controversial-partnership/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 51.4975,
+    "lon": -0.1747,
     "country": "UK",
     "city": "London",
     "website": "https://www.sciencemuseum.org.uk/",
@@ -24738,6 +24936,13 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Science_Museum,_London"
+        ],
+        "basis": "51.4975\u00b0 N, 0.1747\u00b0 W (51\u00b029\u203251\u2033N 0\u00b010\u203229\u2033W)",
+        "retrieved": "2026-10-14"
       }
     }
   },
@@ -24749,8 +24954,8 @@
     "sources": [
       "https://www.theartnewspaper.com/2022/10/03/londons-victoria-and-albert-museum-announces-it-will-no-longer-carry-the-sackler-name"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 51.496639,
+    "lon": -0.17218,
     "country": "UK",
     "city": "London",
     "website": "https://www.vam.ac.uk/",
@@ -24886,6 +25091,14 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "coordinates": {
+        "urls": [
+          "https://britishlistedbuildings.co.uk/101190187",
+          "https://www.latlong.net/place/victoria-and-albert-museum-knightsbridge-london-uk-6140.html"
+        ],
+        "basis": "latlong.net gives 51.496639, -0.172180",
+        "retrieved": "2026-10-14"
       }
     }
   },
@@ -24897,8 +25110,8 @@
     "sources": [
       "https://thewhitepube.co.uk/art-thoughts/bdz/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 51.54604,
+    "lon": -0.15327,
     "country": "UK",
     "city": "London",
     "website": "https://www.zabludowiczcollection.com/",
@@ -24923,7 +25136,18 @@
           "https://wikileaks.org/gifiles/docs/14/146473_-os-uk-mil-philip-hammond-new-british-defense-minister.html"
         ]
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://britishlistedbuildings.co.uk/101139077-zabludowicz-collection-former-methodist-church-haverstock-ward/maps",
+          "https://www.thegreatbritainguide.com/place/zabludowicz-collection/",
+          "https://www.meer.com/zabludowicz-collection"
+        ],
+        "basis": "The Zabludowicz Collection's London venue has coordinates of about 51.54604, -0.15327.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Turner Contemporary",
@@ -25155,8 +25379,8 @@
     "sources": [
       "https://www.menil.org/corporate-support"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 29.735664,
+    "lon": -95.392497,
     "country": "USA",
     "city": "Houston",
     "website": "https://www.menil.org/",
@@ -25170,7 +25394,17 @@
     ],
     "why_flagged": "Schlumberger fortune; SLB still a sponsor.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Menil%20Collection",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Menil%20Collection"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Menil%20Collection",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://travel.sygic.com/en/poi/menil-collection-poi:12488",
+          "https://latitude.to/articles-by-country/us/united-states/18149/menil-collection"
+        ],
+        "basis": "Latitude: 29\u00b0 44' 8.39\" N Longitude: -95\u00b0 23' 32.99\" W",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kemper Museum",
@@ -25204,8 +25438,8 @@
     "tier": "B",
     "watch": "Endowment from Getty Oil stock.",
     "sources": [],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 34.0775,
+    "lon": -118.475,
     "country": "USA",
     "city": "Los Angeles",
     "website": "https://www.getty.edu/",
@@ -25219,7 +25453,16 @@
     ],
     "why_flagged": "Endowment from Getty Oil stock.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Getty%20Center",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Getty%20Center"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Getty%20Center",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Getty_Center"
+        ],
+        "basis": "Coordinates: 34\u00b004\u203239\u2033N 118\u00b028\u203230\u2033W",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "LACMA",
@@ -25234,8 +25477,8 @@
       "https://www.propublica.org/article/hacked-sony-emails-reveal-behind-the-scenes-political-dealings-in-la",
       "https://www.artnews.com/art-news/news/collectors-steve-tisch-jean-pigozzi-jeffrey-epstein-files-1234771700/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 34.063333,
+    "lon": -118.359167,
     "country": "USA",
     "city": "Los Angeles",
     "website": "https://www.lacma.org/",
@@ -25251,7 +25494,16 @@
     "why_flagged": "Trustee resigned 2020 over prison-phone investment.",
     "other_findings": "WikiLeaks, 2014-03 to 2014-07: Sony's lobbying chief briefed LACMA trustee Michael Lynton before a lunch with Supervisor Ridley-Thomas, covering LACMA's county-funding request and Sony's past support for his PAC. LACMA also asked Sony for about $900K of equipment. (Sony emails) | Epstein link \u00b7 Steve Tisch \u00b7 documented: Steve Tisch is a LACMA trustee and in 2011 helped fund its purchase of Marclay's The Clock. Emails from April and May 2013 in the DOJ files show Epstein offering to introduce him to women. Tisch says they had a \"brief association\" and emailed about adult women, movies, philanthropy and investments, that he never went to the island, and that he deeply regrets associating with Epstein.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=LACMA",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=LACMA"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=LACMA",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Los_Angeles_County_Museum_of_Art"
+        ],
+        "basis": "Wikipedia gives its coordinates as 34\u00b003\u203248\u2033N 118\u00b021\u203233\u2033W.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "MOCA Los Angeles",
@@ -25261,8 +25513,8 @@
     "sources": [
       "https://www.moca.org/support"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 34.053333,
+    "lon": -118.250833,
     "country": "USA",
     "city": "Los Angeles",
     "website": "https://www.moca.org/",
@@ -25297,7 +25549,16 @@
         "citation": "Konrad, E. D. (2013). Cultural Entrepreneurship: The Impact of Social Networking on Success. Creativity and Innovation Management",
         "doi": "10.1111/caim.12032"
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art,_Los_Angeles"
+        ],
+        "basis": "The Wikipedia coordinates are 34\u00b003\u203212\u2033N 118\u00b015\u203203\u2033W.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Speed Art Museum",
@@ -25332,8 +25593,8 @@
     "sources": [
       "https://news.artnet.com/art-world/ken-griffin-donates-10-million-pamm-miami-2568015"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 25.785894,
+    "lon": -80.186705,
     "country": "USA",
     "city": "Miami",
     "website": "https://www.pamm.org/",
@@ -25353,7 +25614,16 @@
         "funder": "Ken Griffin / Citadel",
         "institutions": 7
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/P%C3%A9rez_Art_Museum_Miami"
+        ],
+        "basis": "25\u00b047\u203209\u2033N 80\u00b011\u203212\u2033W, which is about 25.785894, -80.186705",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "The Bass",
@@ -25419,8 +25689,8 @@
     "sources": [
       "https://hyperallergic.com/544448/rebekah-mercer/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 40.781303,
+    "lon": -73.974113,
     "country": "USA",
     "city": "New York",
     "website": "https://www.amnh.org/",
@@ -25492,7 +25762,17 @@
         "funder": "Koch",
         "institutions": 4
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.latlong.net/place/american-museum-of-natural-history-ny-usa-32734.html",
+          "https://www.wikipedia.com/wiki/AMNH"
+        ],
+        "basis": "Latitude and longitude coordinates are: 40.781303, -73.974113.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Brooklyn Museum",
@@ -25502,8 +25782,8 @@
     "sources": [
       "https://www.theartnewspaper.com/2024/06/01/brooklyn-museum-pro-palestine-protest"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 40.671306,
+    "lon": -73.96375,
     "country": "USA",
     "city": "New York",
     "website": "https://www.brooklynmuseum.org/",
@@ -25657,7 +25937,18 @@
           "https://www.nbcnews.com/news/us-news/police-arrest-34-people-brooklyn-museum-protesters-occupy-building-rcna155032"
         ]
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Brooklyn_Museum",
+          "https://ml.wikipedia.com/wiki/%E0%B4%AC%E0%B5%8D%E0%B4%B0%E0%B5%82%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8D%E0%B4%B2%E0%B4%BF%E0%B5%BB_%E0%B4%AE%E0%B5%8D%E0%B4%AF%E0%B5%82%E0%B4%B8%E0%B4%BF%E0%B4%AF%E0%B4%82",
+          "https://gl.wikipedia.com/wiki/Brooklyn_Museum"
+        ],
+        "basis": "40.6713\u00b0 N, 73.9637\u00b0 W (40\u00b040\u203216.7\u2033N 73\u00b057\u203249.5\u2033W), per Wikipedia's infobox for the museum, which lists its address as 200 Eastern Parkway, Brooklyn, New York.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Yerba Buena Center for the Arts",
@@ -30714,8 +31005,8 @@
     "sources": [
       "https://timesbrasil.com.br/colunas/felipe-machado/bienal-ibirapuera-participantes-apoio-empresas/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": -23.587778,
+    "lon": -46.655833,
     "country": "Brazil",
     "city": "S\u00e3o Paulo",
     "website": "https://timesbrasil.com.br/colunas/felipe-machado/bienal-ibirapuera-participantes-apoio-empresas/",
@@ -30760,7 +31051,16 @@
         "funder": "Petrobras",
         "institutions": 4
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Biennial_Foundation"
+        ],
+        "basis": "Wikipedia gives coordinates of 23\u00b035\u203216\u2033S 46\u00b039\u203221\u2033W.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museu de Arte Moderna de S\u00e3o Paulo",
@@ -30770,8 +31070,8 @@
     "sources": [
       "https://mam.org.br/apoie/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": -23.588333,
+    "lon": -46.655278,
     "country": "Brazil",
     "city": "S\u00e3o Paulo",
     "website": "https://mam.org.br/apoie/",
@@ -30796,7 +31096,16 @@
           "https://mam.org.br/wp-content/uploads/2026/06/ra25-miolo-digital-26-06-26.pdf"
         ]
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Museum_of_Modern_Art"
+        ],
+        "basis": "Its coordinates are 23\u00b035\u203218\u2033S 46\u00b039\u203219\u2033W",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Mansudae Art Museum / Mansudae Art Studio Gallery, 798",
@@ -30888,8 +31197,8 @@
     "sources": [
       "https://kulturmonitor.dk/kunst-kulturarv/art10313403/Stor-fond-skyder-10-millioner-kroner-i-Kunsten-i-Aalborg"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 57.042778,
+    "lon": 9.905833,
     "country": "Denmark",
     "city": "Aalborg",
     "website": "https://kulturmonitor.dk/kunst-kulturarv/art10313403/Stor-fond-skyder-10-millioner-kroner-i-Kunsten-i-Aalborg",
@@ -30901,7 +31210,17 @@
     "flags": [
       "Tobacco"
     ],
-    "why_flagged": "Det Obelske Familiefond holds about 14.5% of Scandinavian Tobacco Group."
+    "why_flagged": "Det Obelske Familiefond holds about 14.5% of Scandinavian Tobacco Group.",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/KUNSTEN_Museum_of_Modern_Art_Aalborg",
+          "https://coe.int/en/web/cultural-routes/-/kunsten-museum-of-modern-art-aalborg"
+        ],
+        "basis": "Wikipedia lists 57\u00b02\u203234\u2033N 9\u00b054\u203221\u2033E. Council of Europe Cultural Routes lists a main GPS location of 57.042673, 9.905739.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Trapholt",
@@ -31054,8 +31373,8 @@
     "tier": "B",
     "watch": "Memorial to the Sinchon massacre (35,000 deaths claimed, 17 Oct\u20137 Dec 1950), attributed by the museum to US forces; South Korean research attributes the killings largely to local anti-communist vigilantes and ROK police. KCNA claims 500,000 visitors a year (AFP, 7 Jun 2018), mostly schoolchildren and soldiers. Coordinates are the pre-2015 town-centre site (field reports/dark-tourism.com); the new site's coordinates were not found. Size S by budget.",
     "sources": [],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 38.354722,
+    "lon": 125.4875,
     "country": "North Korea",
     "city": "Sinchon",
     "website": "https://kcnawatch.org",
@@ -31067,7 +31386,16 @@
     "flags": [
       "Documented controversy"
     ],
-    "why_flagged": "Memorial to the Sinchon massacre (35,000 deaths claimed, 17 Oct\u20137 Dec 1950), attributed by the museum to US forces; South Korean research attributes the killings largely to local anti-communist vigilantes and ROK police. KCNA claims 500,000 visitors a year (AFP, 7 Jun 2018), mostly schoolchildren and soldiers. Coordinates are the pre-2015 town-centre site (field reports/dark-tourism.com); the new site's coordinates were not found. Size S by budget."
+    "why_flagged": "Memorial to the Sinchon massacre (35,000 deaths claimed, 17 Oct\u20137 Dec 1950), attributed by the museum to US forces; South Korean research attributes the killings largely to local anti-communist vigilantes and ROK police. KCNA claims 500,000 visitors a year (AFP, 7 Jun 2018), mostly schoolchildren and soldiers. Coordinates are the pre-2015 town-centre site (field reports/dark-tourism.com); the new site's coordinates were not found. Size S by budget.",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Sinchon_Museum_of_American_War_Atrocities"
+        ],
+        "basis": "38\u00b021\u203217\u2033N 125\u00b029\u203215\u2033E, or 38.35472\u00b0N 125.48750\u00b0E",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Zach\u0119ta National Gallery of Art",
@@ -31077,8 +31405,8 @@
     "sources": [
       "https://www.orlen.pl/pl/o-firmie/wspieramy/sponsoring/Sponsoring-kultury-i-nauki"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 52.239167,
+    "lon": 21.011667,
     "country": "Poland",
     "city": "Warsaw",
     "website": "https://www.orlen.pl/pl/o-firmie/wspieramy/sponsoring/Sponsoring-kultury-i-nauki",
@@ -31090,7 +31418,16 @@
     "flags": [
       "Fossil fuels"
     ],
-    "why_flagged": "PKN Orlen is a fossil-fuel funder."
+    "why_flagged": "PKN Orlen is a fossil-fuel funder.",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Zach%C4%99ta_%E2%80%93_National_Gallery_of_Art"
+        ],
+        "basis": "Coordinates: 52\u00b014\u203221\u2033N 21\u00b00\u203242\u2033E",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Mathaf: Arab Museum of Modern Art",
@@ -31209,8 +31546,8 @@
     "sources": [
       "https://www.fontanka.ru/2022/06/08/71396537/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 59.928889,
+    "lon": 30.29,
     "country": "Russia",
     "city": "St Petersburg",
     "website": "https://www.fontanka.ru/2022/06/08/71396537/",
@@ -31233,7 +31570,16 @@
           "https://wikileaks.org/gifiles/docs/32/3200600_us-fsu-u-s-company-to-work-on-reconstruction-o.html"
         ]
       }
-    ]
+    ],
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/New_Holland_Island"
+        ],
+        "basis": "59\u00b055\u203244\u2033N, 30\u00b017\u203224\u2033E",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "PRO ARTE Foundation",
@@ -31267,8 +31613,8 @@
       "https://support.hermitagemuseum.org/ru/sponsors",
       "https://wikileaks.org/gifiles/docs/30/3028618_-os-russia-jewish-archive-.html"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 59.940556,
+    "lon": 30.313611,
     "country": "Russia",
     "city": "St Petersburg",
     "website": "https://support.hermitagemuseum.org/ru/sponsors",
@@ -31282,7 +31628,16 @@
       "Sponsor dropped under pressure"
     ],
     "why_flagged": "3.2m visitors in 2024 (Interfax via search). Director Mikhail Piotrovsky called Russian shows abroad a 'special operation'; Hermitage Amsterdam cut ties Mar 2022 and became H'ART; Canada sanctioned Piotrovsky; the EU added him in its 20th package (Apr\u2013May 2026).",
-    "other_findings": "WikiLeaks, 2011-05: An AP report in Stratfor's emails says Russia froze art loans to US museums after a US court backed Chabad's claim to the Schneerson library. Piotrovsky said Moscow would not permit US shows. (Stratfor emails (AP item))"
+    "other_findings": "WikiLeaks, 2011-05: An AP report in Stratfor's emails says Russia froze art loans to US museums after a US court backed Chabad's claim to the Schneerson library. Piotrovsky said Moscow would not permit US shows. (Stratfor emails (AP item))",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Hermitage_Museum"
+        ],
+        "basis": "The State Hermitage Museum is at 34 Palace Embankment in the Central District of Saint Petersburg, Russia. Coordinates: 59\u00b056\u203226\u2033N 30\u00b018\u203249\u2033E.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "State Russian Museum",
@@ -31292,8 +31647,8 @@
     "sources": [
       "https://www.nn.media/news/727/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 59.938592,
+    "lon": 30.332221,
     "country": "Russia",
     "city": "St Petersburg",
     "website": "https://www.nn.media/news/727/",
@@ -31305,7 +31660,16 @@
     "flags": [
       "Documented controversy"
     ],
-    "why_flagged": "Vladimir Gusev (director since 1988) moved to president in Feb 2023; Deputy Culture Minister Alla Manilova appointed director 25 Apr 2023. 3.61m visits in 2024 per TAN ranking (via search)."
+    "why_flagged": "Vladimir Gusev (director since 1988) moved to president in Feb 2023; Deputy Culture Minister Alla Manilova appointed director 25 Apr 2023. 3.61m visits in 2024 per TAN ranking (via search).",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Russian_Museum"
+        ],
+        "basis": "The State Russian Museum's main building, the Mikhailovsky Palace, is at about 59.9386\u00b0N, 30.3322\u00b0E. Wikipedia lists the coordinates as 59\u00b056\u203219\u2033N 30\u00b019\u203256\u2033E, or 59.938592, 30.332221 in decimal degrees.",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Vyksa Festival (Art-Ovrag)",

@@ -46,5 +46,430 @@
   "lat": 22.300958,
   "lon": 114.159645,
   "how": "two passes agree"
+ },
+ {
+  "id": "tai-kwun-hong-kong",
+  "result": "set",
+  "lat": 22.28122,
+  "lon": 114.15408,
+  "how": "two passes agree"
+ },
+ {
+  "id": "long-museum-shanghai",
+  "result": "left",
+  "why": "one pass, not Wikipedia"
+ },
+ {
+  "id": "yuz-museum-shanghai",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "fondation-louis-vuitton-paris",
+  "result": "set",
+  "lat": 48.876667,
+  "lon": 2.263333,
+  "how": "two passes agree"
+ },
+ {
+  "id": "louvre-paris",
+  "result": "set",
+  "lat": 48.860294,
+  "lon": 2.338629,
+  "how": "two passes agree"
+ },
+ {
+  "id": "musée-dorsay-paris",
+  "result": "set",
+  "lat": 48.860283,
+  "lon": 2.325392,
+  "how": "two passes agree"
+ },
+ {
+  "id": "kiran-nadar-museum-of-art-new-delhi",
+  "result": "set",
+  "lat": 28.52884,
+  "lon": 77.22008,
+  "how": "one pass on Wikipedia or Wikidata, the other found nothing"
+ },
+ {
+  "id": "museum-macan-jakarta",
+  "result": "set",
+  "lat": -6.190833,
+  "lon": 106.767778,
+  "how": "two passes agree"
+ },
+ {
+  "id": "imma-dublin",
+  "result": "set",
+  "lat": 53.343077,
+  "lon": -6.300037,
+  "how": "two passes agree"
+ },
+ {
+  "id": "peggy-guggenheim-collection-venice",
+  "result": "set",
+  "lat": 45.430556,
+  "lon": 12.331111,
+  "how": "one pass on Wikipedia or Wikidata, the other found nothing"
+ },
+ {
+  "id": "muac-mexico-city",
+  "result": "set",
+  "lat": 19.314444,
+  "lon": -99.185278,
+  "how": "two passes agree"
+ },
+ {
+  "id": "rijksmuseum-amsterdam",
+  "result": "set",
+  "lat": 52.36,
+  "lon": 4.885278,
+  "how": "two passes agree"
+ },
+ {
+  "id": "van-gogh-museum-amsterdam",
+  "result": "set",
+  "lat": 52.358333,
+  "lon": 4.881111,
+  "how": "two passes agree"
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "result": "set",
+  "lat": 52.080278,
+  "lon": 4.314167,
+  "how": "two passes agree"
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "result": "set",
+  "lat": -41.288384,
+  "lon": 174.777312,
+  "how": "two passes agree"
+ },
+ {
+  "id": "bergen-international-festival-bergen",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "munch-oslo",
+  "result": "set",
+  "lat": 59.905833,
+  "lon": 10.755278,
+  "how": "two passes agree"
+ },
+ {
+  "id": "maat-lisbon",
+  "result": "set",
+  "lat": 38.695833,
+  "lon": -9.194722,
+  "how": "two passes agree"
+ },
+ {
+  "id": "songeun-seoul",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "guggenheim-bilbao-bilbao",
+  "result": "set",
+  "lat": 43.268714,
+  "lon": -2.934025,
+  "how": "two passes agree"
+ },
+ {
+  "id": "kunsthaus-zürich-zürich",
+  "result": "set",
+  "lat": 47.370278,
+  "lon": 8.548056,
+  "how": "two passes agree"
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "collective-edinburgh",
+  "result": "left",
+  "why": "one pass, not Wikipedia"
+ },
+ {
+  "id": "edinburgh-international-book-festival-edinburgh",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "stills-edinburgh",
+  "result": "left",
+  "why": "one pass, not Wikipedia"
+ },
+ {
+  "id": "british-museum-london",
+  "result": "set",
+  "lat": 51.5195,
+  "lon": -0.1269,
+  "how": "two passes agree"
+ },
+ {
+  "id": "design-museum-london",
+  "result": "set",
+  "lat": 51.5,
+  "lon": -0.20028,
+  "how": "two passes agree"
+ },
+ {
+  "id": "dulwich-picture-gallery-london",
+  "result": "set",
+  "lat": 51.44611,
+  "lon": -0.08639,
+  "how": "two passes agree"
+ },
+ {
+  "id": "goldsmiths-cca-london",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "national-gallery-london",
+  "result": "set",
+  "lat": 51.5086,
+  "lon": -0.1283,
+  "how": "two passes agree"
+ },
+ {
+  "id": "royal-ballet-and-opera-london",
+  "result": "set",
+  "lat": 51.5131,
+  "lon": -0.1228,
+  "how": "two passes agree"
+ },
+ {
+  "id": "science-museum-london",
+  "result": "set",
+  "lat": 51.4975,
+  "lon": -0.1747,
+  "how": "two passes agree"
+ },
+ {
+  "id": "va-london",
+  "result": "set",
+  "lat": 51.496639,
+  "lon": -0.17218,
+  "how": "two passes agree"
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "result": "set",
+  "lat": 51.54604,
+  "lon": -0.15327,
+  "how": "two passes agree"
+ },
+ {
+  "id": "menil-collection-houston",
+  "result": "set",
+  "lat": 29.735664,
+  "lon": -95.392497,
+  "how": "two passes agree"
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "result": "set",
+  "lat": 34.0775,
+  "lon": -118.475,
+  "how": "two passes agree"
+ },
+ {
+  "id": "lacma-los-angeles",
+  "result": "set",
+  "lat": 34.063333,
+  "lon": -118.359167,
+  "how": "two passes agree"
+ },
+ {
+  "id": "moca-los-angeles-los-angeles",
+  "result": "set",
+  "lat": 34.053333,
+  "lon": -118.250833,
+  "how": "two passes agree"
+ },
+ {
+  "id": "pérez-art-museum-miami-miami",
+  "result": "set",
+  "lat": 25.785894,
+  "lon": -80.186705,
+  "how": "two passes agree"
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "result": "set",
+  "lat": 40.781303,
+  "lon": -73.974113,
+  "how": "two passes agree"
+ },
+ {
+  "id": "brooklyn-museum-new-york",
+  "result": "set",
+  "lat": 40.671306,
+  "lon": -73.96375,
+  "how": "two passes agree"
+ },
+ {
+  "id": "yerba-buena-center-for-the-arts-san-francisco",
+  "result": "left",
+  "why": "one pass, not Wikipedia"
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "result": "set",
+  "lat": -23.587778,
+  "lon": -46.655833,
+  "how": "two passes agree"
+ },
+ {
+  "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+  "result": "set",
+  "lat": -23.588333,
+  "lon": -46.655278,
+  "how": "two passes agree"
+ },
+ {
+  "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "art-macao-macau",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "bienal-de-la-habana-havana",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "kunsten-museum-of-modern-art-aalborg-aalborg",
+  "result": "set",
+  "lat": 57.042778,
+  "lon": 9.905833,
+  "how": "two passes agree"
+ },
+ {
+  "id": "trapholt-kolding",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "centro-león-santiago-de-los-caballeros",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "fridericianum-kassel",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "aichi-triennale-nagoya",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "tselinny-center-of-contemporary-culture-almaty",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "kaesong-koryo-museum-kaesong",
+  "result": "left",
+  "why": "one pass, not Wikipedia"
+ },
+ {
+  "id": "sinchon-museum-of-american-war-atrocities-sinchon",
+  "result": "set",
+  "lat": 38.354722,
+  "lon": 125.4875,
+  "how": "two passes agree"
+ },
+ {
+  "id": "zachęta-national-gallery-of-art-warsaw",
+  "result": "set",
+  "lat": 52.239167,
+  "lon": 21.011667,
+  "how": "two passes agree"
+ },
+ {
+  "id": "victoria-gallery-samara",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "new-holland-island-st-petersburg",
+  "result": "set",
+  "lat": 59.928889,
+  "lon": 30.29,
+  "how": "two passes agree"
+ },
+ {
+  "id": "pro-arte-foundation-st-petersburg",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "state-hermitage-museum-st-petersburg",
+  "result": "set",
+  "lat": 59.940556,
+  "lon": 30.313611,
+  "how": "two passes agree"
+ },
+ {
+  "id": "state-russian-museum-st-petersburg",
+  "result": "set",
+  "lat": 59.938592,
+  "lon": 30.332221,
+  "how": "one pass on Wikipedia or Wikidata, the other found nothing"
+ },
+ {
+  "id": "vyksa-festival-art-ovrag-vyksa",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "yeltsin-center-yekaterinburg",
+  "result": "left",
+  "why": "one pass, not Wikipedia"
+ },
+ {
+  "id": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "result": "left",
+  "why": "none found"
+ },
+ {
+  "id": "tanoto-art-foundation-singapore",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "gwangju-biennale-gwangju",
+  "result": "left",
+  "why": "no single venue"
+ },
+ {
+  "id": "arter-istanbul",
+  "result": "left",
+  "why": "none found"
  }
 ]
