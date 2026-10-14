@@ -153,6 +153,15 @@ for rid, row in rows.items():
         agreed = row.get('agreed')
         if not agreed:
             addr_a, addr_b = (a.get('address') or '').strip(), (b.get('address') or '').strip()
+            # One pass found an address on the institution's own site and the other found nothing: the institution's own page
+            # stating it is enough. A second, different address from the other pass is a disagreement and stays out.
+            only = a if (addr_a and not addr_b) else b if (addr_b and not addr_a) else None
+            sd = host(site) if site else ''
+            own = [u for u in (only or {}).get('address_urls') or [] if sd and (host(u) == sd or host(u).endswith('.' + sd) or sd.endswith('.' + host(u)))]
+            if only and own and not city_only(only['address'], rec):
+                put(rid, only['address'].strip(), keep_urls(only['address_urls'], site), 'fill')
+                decisions.append({'id': rid, 'result': 'filled_own_site', 'address': only['address'].strip()})
+                continue
             decisions.append({'id': rid, 'result': 'none' if not addr_a and not addr_b else 'disagree', 'a': addr_a, 'b': addr_b})
             continue
         if city_only(agreed, rec):

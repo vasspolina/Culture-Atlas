@@ -34,7 +34,16 @@
         "funder": "Ny Carlsberg Foundation",
         "institutions": 4
       }
-    ]
+    ],
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.aros.dk/en/visit/opening-hours-and-prices/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Stedelijk Museum Amsterdam",
@@ -236,7 +245,16 @@
         "funder": "HSBC",
         "institutions": 3
       }
-    ]
+    ],
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.aucklandartgallery.com/visit/visitor-information"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "MACBA (Museu d'Art Contemporani de Barcelona)",
@@ -272,7 +290,17 @@
     "visit_url": "https://www.macba.cat/en/visit",
     "audit_dossier_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=MACBA%20%28Museu%20d%27Art%20Contemporani%20de%20Barcelona%29",
     "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=MACBA%20%28Museu%20d%27Art%20Contemporani%20de%20Barcelona%29",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.macba.cat/en/contact/",
+          "https://macba.cat/en/contact"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "The Bowes Museum",
@@ -305,7 +333,18 @@
         "funder": "Art Fund",
         "institutions": 9
       }
-    ]
+    ],
+    "address": "Newgate, Barnard Castle, County Durham DL12 8NP",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://thebowesmuseum.org.uk/visit/",
+          "https://en.wikipedia.org/wiki/Bowes_Museum"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kunsthalle Basel",
@@ -338,7 +377,17 @@
     "amenities": "Restaurant Kunsthalle (historic garden terrace), Campari Bar, specialized contemporary art bookshop.",
     "visit_url": "https://www.kunsthallebasel.ch/en/visit/",
     "audit_dossier_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
-    "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html"
+    "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://kunsthallebasel.ch/en/visit",
+          "https://kunsthallebasel.ch/en/imprint"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kunstmuseum Basel",
@@ -378,7 +427,16 @@
         "funder": "UBS",
         "institutions": 4
       }
-    ]
+    ],
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://kunstmuseumbasel.ch/en/museum/our-three-venues"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museum Tinguely",
@@ -467,7 +525,18 @@
     "visit_url": "https://www.diaart.org/visit/visit-our-locations-sites/dia-beacon-beacon-united-states",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Dia%20Beacon",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Dia%20Beacon",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://diaart.org/visit/visit-our-locations-sites/dia-beacon-beacon-united-states",
+          "https://www.diaart.org/media/_file/webpdfs/beacon-group-tour-guidelines-2-2018-update.pdf",
+          "https://www.diaart.org/about/contact-information"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Sursock Museum",
@@ -599,7 +668,17 @@
     "visit_url": "https://www.berlinerfestspiele.de/en/gropius-bau/besuch",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Gropius%20Bau",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Gropius%20Bau",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.berlinerfestspiele.de/en/gropius-bau/besuch/informationen",
+          "https://berlinerfestspiele.de/en/besuch/anfahrt-kontakt"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Haus der Kulturen der Welt (HKW)",
@@ -660,6 +739,15 @@
           ]
         }
       ]
+    },
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.hkw.de/visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
     }
   },
   {
@@ -793,6 +881,16 @@
           ]
         }
       ]
+    },
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.kw-berlin.de/en/visit/information",
+          "https://www.kw-berlin.de/en/info/contact"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
     }
   },
   {
@@ -1052,7 +1150,16 @@
     "visit_url": "https://www.capc-bordeaux.fr/en/practical-information",
     "audit_dossier_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=CAPC%20Mus%C3%A9e%20d%20Art%20Contemporain",
     "statutory_filings_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=CAPC%20Mus%C3%A9e%20d%20Art%20Contemporain",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.capc-bordeaux.fr/en/node/107"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kunsthaus Bregenz",
@@ -1082,7 +1189,17 @@
     "accessibility": "Step-free entrance, elevator serving all exhibition levels, loan wheelchairs, accessible restrooms.",
     "amenities": "KUB Caf\u00e9 Bar designed by Peter Zumthor, architectural bookshop, lakeside terrace.",
     "highlight": "Peter Zumthor's architectural masterpiece of etched glass and polished terrazzo, flooded with diffused daylight.",
-    "visit_url": "https://www.kunsthaus-bregenz.at/visit/"
+    "visit_url": "https://www.kunsthaus-bregenz.at/visit/",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://kunsthaus-bregenz.at/en/visit",
+          "https://www.kunsthaus-bregenz.at/en/visit/plan-your-visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kunsthalle Bremen",
@@ -1250,7 +1367,17 @@
         "citation": "Cordelier, B., & Desaulniers, A.-A. (2020). \u00c9quilibres et m\u00e9diations dans la commandite de productions artistiques. Canadian Journal of Communication",
         "doi": "10.22230/cjc.2020v45n1a3447"
       }
-    ]
+    ],
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://wiels.org/en/practical-info",
+          "https://wiels.org/en/about-wiels"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museo de Arte Latinoamericano de Buenos Aires (MALBA)",
@@ -1281,7 +1408,16 @@
     "amenities": "Ninina caf\u00e9 & restaurant, MALBA Tienda design shop, independent cinema screening Latin American and world cinema.",
     "highlight": "The premier collection of 20th and 21st-century Latin American art: Frida Kahlo, Diego Rivera, Tarsila do Amaral (*Abaporu*), and Antonio Berni.",
     "visit_url": "https://malba.org.ar/",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.malba.org.ar/en/category/visitar/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Contemporary Calgary",
@@ -1307,7 +1443,17 @@
     ],
     "visit_url": "https://www.contemporarycalgary.com/visit",
     "audit_dossier_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Contemporary%20Calgary",
-    "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Contemporary%20Calgary"
+    "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Contemporary%20Calgary",
+    "address": "#701 11 Street SW, Calgary",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.contemporarycalgary.com/visit-us"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kettle's Yard",
@@ -1335,7 +1481,18 @@
     "highlight": "Jim & Helen Ede's preserved cottage seamlessly integrating Ben Nicholson, Barbara Hepworth, and Henri Gaudier-Brzeska into domestic light-filled rooms.",
     "visit_url": "https://www.kettlesyard.cam.ac.uk/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Kettle%27s%20Yard",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Kettle%27s%20Yard"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Kettle%27s%20Yard",
+    "address": "Castle Street, Cambridge CB3 0AQ",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.kettlesyard.cam.ac.uk/about-us/",
+          "https://en.wikipedia.org/wiki/Kettle%27s_Yard"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "National Gallery of Australia",
@@ -1648,7 +1805,18 @@
     "highlight": "Non-collecting kunsthalle on the University of Chicago campus premiering ground-breaking avant-garde commissions with zero commercial compromise.",
     "visit_url": "https://renaissancesociety.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=The%20Renaissance%20Society",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=The%20Renaissance%20Society"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=The%20Renaissance%20Society",
+    "address": "5811 South Ellis Avenue, Chicago, IL 60637",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://renaissancesociety.org/visit/",
+          "https://renaissancesociety.org/about/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Pallant House Gallery",
@@ -1719,7 +1887,17 @@
       "christchurch art gallery christchurch"
     ],
     "highlight": "Curving glass-and-steel facade mirroring the Avon River, housing Ng\u0101i Tahu contemporary carving and post-earthquake regional resilient art.",
-    "visit_url": "https://christchurchartgallery.org.nz/visit"
+    "visit_url": "https://christchurchartgallery.org.nz/visit",
+    "address": "58 Gloucester Street, Christchurch 8013",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://christchurchartgallery.org.nz/about/contact"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Magazzino Italian Art",
@@ -1752,7 +1930,17 @@
     "highlight": "The premier American research institute and museum dedicated to Postwar and Contemporary Italian Art and Arte Povera.",
     "visit_url": "https://www.magazzino.art/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Magazzino%20Italian%20Art",
-    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Magazzino%20Italian%20Art"
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Magazzino%20Italian%20Art",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.e-flux.com/directory/203250/magazzino-italian-art",
+          "https://myartguides.com/artspaces/foundations/new-york/magazzino-italian-art/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museum Ludwig",
@@ -1926,9 +2114,18 @@
         ],
         "basis": "opened to the public (20 October 2003)",
         "retrieved": "2026-10-13"
+      },
+      "address": {
+        "urls": [
+          "https://www.nashersculpturecenter.org/contact-us",
+          "https://www.nashersculpturecenter.org/visit/plan-a-visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
       }
     },
-    "year_founded": 2003
+    "year_founded": 2003,
+    "address": "2001 Flora Street, Dallas, TX 75201"
   },
   {
     "name": "Des Moines Art Center",
@@ -1982,7 +2179,18 @@
     "highlight": "Shigeru Ban-renovated wine cooperative presenting groundbreaking non-commercial commissions by contemporary conceptual masters.",
     "visit_url": "https://www.leconsortium.fr/visit",
     "audit_dossier_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Le%20Consortium",
-    "statutory_filings_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Le%20Consortium"
+    "statutory_filings_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Le%20Consortium",
+    "address": "37 rue de Longvic, 21000 Dijon",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://leconsortium.fr/en/visit",
+          "https://en.wikipedia.org/wiki/Le_Consortium"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Jameel Arts Centre",
@@ -2601,7 +2809,16 @@
     "transit_tips": "MTR Kowloon Station (Tung Chung & Airport Express lines, Exit E4/E5) or Austin Station, 10-minute walk via footbridge.",
     "accessibility": "Designed by Herzog & de Meuron with full step-free accessibility, tactile ground surface indicators, loan wheelchairs, companion discounts.",
     "visit_url": "https://www.mplus.org.hk/en/plan-your-visit/",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.mplus.org.hk/en/plan-your-visit/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Contemporary Arts Museum Houston",
@@ -2704,7 +2921,18 @@
     "visit_duration": "3 \u2013 5 hours (Half-day to full-day excursion)",
     "highlight": "Giacometti and Henry Moore sculpture park perched over the sea; Yayoi Kusama's permanent 'Gleaming Lights of the Souls' infinity room.",
     "visit_url": "https://louisiana.dk/en/visit/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.arrivalguides.com/en/Travelguide/COPENHAGEN/doandsee/louisiana-museum-of-modern-art-5197",
+          "https://architecture-exhibitions.com/en/institution/humleb%C3%A6k/louisiana-museum-of-modern-art",
+          "https://artmatter.dk/en/venue/louisiana-museum-of-modern-art"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kistefos",
@@ -2786,7 +3014,18 @@
     "accessibility": "Single-story SANAA circular building with zero barriers, automatic glass sliding doors, wheelchairs and strollers for free loan.",
     "amenities": "Fusion21 caf\u00e9 restaurant, museum shop with regional Ishikawa crafts, art library, outdoor circular lawn.",
     "highlight": "SANAA's circular glass pavilion architecture and Leandro Erlich's permanent optical illusion installation 'The Swimming Pool'.",
-    "visit_url": "https://www.kanazawa21.jp/en/visit/"
+    "visit_url": "https://www.kanazawa21.jp/en/visit/",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.ishikawatravel.jp/en/spots/21st-century-museum-of-contemporary-art-kanazawa/",
+          "https://thegate12.com/spot/224",
+          "https://www.japan.travel/en/experiences-in-japan/1650/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "ILHAM Gallery",
@@ -2902,7 +3141,17 @@
       "lismore castle arts lismore"
     ],
     "highlight": "Historic castle stables in County Waterford converted into experimental galleries exhibiting international installation artists.",
-    "visit_url": "https://lismorecastlearts.ie/visit"
+    "visit_url": "https://lismorecastlearts.ie/visit",
+    "address": "Lismore Castle, Lismore, Co. Waterford, P51 F859, Ireland",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://lismorecastlearts.ie/about/contact-us"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Mostyn",
@@ -2968,7 +3217,17 @@
     "highlight": "Groundbreaking solo exhibitions by emerging artists and idyllic tranquil garden terrace.",
     "visit_url": "https://camdenartcentre.org/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Camden%20Art%20Centre",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Camden%20Art%20Centre"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Camden%20Art%20Centre",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.artfund.org/explore/museums-and-galleries/camden-art-centre",
+          "https://www.visitlondon.com/things-to-do/place/220251-camden-art-centre"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Chisenhale Gallery",
@@ -2998,7 +3257,18 @@
     "visit_duration": "45 min \u2013 1.5 hours",
     "visit_url": "https://chisenhale.org.uk/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Chisenhale%20Gallery",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Chisenhale%20Gallery"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Chisenhale%20Gallery",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/1026175/contact-information",
+          "https://www.nationalarchives.gov.uk/archon/searches/locresult_details.asp?LR=2988",
+          "https://www.e-flux.com/directory/1004/chisenhale-gallery"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Gasworks",
@@ -3024,7 +3294,18 @@
     "highlight": "Vauxhall studios and non-profit gallery hosting London international artist residencies and debut solo exhibitions.",
     "visit_url": "https://www.gasworks.org.uk/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Gasworks",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Gasworks"
+    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Gasworks",
+    "address": "155 Vauxhall Street, London SE11 5RH",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.artfund.org/explore/museums-and-galleries/gasworks/visitor-information",
+          "https://register-of-charities.charitycommission.gov.uk/en/sector-data/top-10-charities/-/charity-details/326411/contact-information"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Sir John Soane's Museum",
@@ -3485,6 +3766,15 @@
           ]
         }
       ]
+    },
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.whitechapelgallery.org/visit/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
     }
   },
   {
@@ -4034,7 +4324,19 @@
     "highlight": "Historic Art Nouveau building fused with Hector building 'city within a city' housing Manet's Execution of Maximilian.",
     "visit_url": "https://www.kuma.art/visit",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Mannheim",
-    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Mannheim"
+    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Mannheim",
+    "address": "Friedrichsplatz 4, 68165 Mannheim",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.e-flux.com/directory/11605/kunsthalle-mannheim/",
+          "https://enjoyjazz.de/en/venue/kunsthalle/",
+          "https://kupi.com/en-ae/explore/germany/mannheim/mannheim-art-gallery"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Ballroom Marfa",
@@ -4251,7 +4553,17 @@
     "amenities": "Caf\u00e9 Ocampo, specialized contemporary art bookstore, shaded outdoor travertine plaza.",
     "highlight": "David Chipperfield's sawtooth-roof travertine landmark housing the largest private contemporary art collection in Latin America.",
     "visit_url": "https://www.fundacionjumex.org/en/visita",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.ignant.com/?p=334716",
+          "https://www.kupi.com/en-ae/explore/mexico/mexico-city/jumex-museum"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museo Tamayo",
@@ -4290,7 +4602,17 @@
         "funder": "Bloomberg Philanthropies",
         "institutions": 46
       }
-    ]
+    ],
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://myartguides.com/artspaces/museums/mexico-city/museo-tamayo/",
+          "https://alumni.gsd.harvard.edu/locations/museo-tamayo-arte-contemporaneo-2/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "ICA Miami",
@@ -12412,7 +12734,17 @@
     "visit_url": "https://v2.nl/about",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=V2_%20Lab%20for%20the%20Unstable%20Media",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=V2_%20Lab%20for%20the%20Unstable%20Media",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.transartists.org/en/air/v2-lab-unstable-media",
+          "https://universiteitleiden.nl/media-technology/events/science-2-experience-exhibition-pattern"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "mediamatic-amsterdam",
@@ -12450,7 +12782,16 @@
     "visit_url": "https://www.mediamatic.net/en/page/243/visit-us",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Mediamatic",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=Mediamatic",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://artstalkmagazine.nl/mediamatic-amsterdam/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "sonic-acts-amsterdam",
@@ -12522,7 +12863,16 @@
     "visit_url": "https://www.ot301.nl/about-us",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=OT301%20%28Vereniging%20EHBK%29",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=OT301%20%28Vereniging%20EHBK%29",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://tixel.com/nl/tickets/ot301"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "kunsthal-gent",
@@ -12555,7 +12905,16 @@
       "Wheelchair Accessible"
     ],
     "visit_url": "https://kunsthal.gent/en/practical",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://giveaday.be/en-be/organisation/kunsthal-gent-vzw/9123"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "kiosk-ghent",
@@ -12589,7 +12948,16 @@
       "Art Book Editions",
       "Wheelchair Accessible"
     ],
-    "visit_url": "https://kiosk.art/en/practical"
+    "visit_url": "https://kiosk.art/en/practical",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://club.kiosk.art/contact"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "ciap-genk",
@@ -12623,7 +12991,17 @@
     ],
     "highlight": "Experiencing contemporary ecological installations against the towering steel shaft towers and brick compressor halls of Winterslag.",
     "visit_url": "https://ciap.be/en/contact",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://archive.ciap.be/en/ciap/",
+          "https://archive.ciap.be/en/home/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "museum-abteiberg-monchengladbach",
@@ -12660,7 +13038,17 @@
     "visit_url": "https://museum-abteiberg.de/en/besuch/",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Museum%20Abteiberg",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Museum%20Abteiberg",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://museum-abteiberg.de/service-en/contact/contact/?lang=en",
+          "https://museum-abteiberg.de/service-en/travel-directions/travel-directions/?lang=en"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "kestner-gesellschaft-hannover",
@@ -12698,7 +13086,17 @@
     "visit_url": "https://kestnergesellschaft.de/en/besuch",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kestner%20Gesellschaft",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kestner%20Gesellschaft",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://kestnergesellschaft.de/en/page/information",
+          "https://kestnergesellschaft.de/en"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "wuerttembergischer-kunstverein-stuttgart",
@@ -12740,7 +13138,16 @@
     ],
     "why_flagged": "City withdrew a \u20ac15k symposium grant (2025-26) after antisemitism accusations; event went ahead on crowdfunding.",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=W%C3%BCrttembergischer%20Kunstverein%20Stuttgart",
-    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=W%C3%BCrttembergischer%20Kunstverein%20Stuttgart"
+    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=W%C3%BCrttembergischer%20Kunstverein%20Stuttgart",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.wkv-stuttgart.de/en/publications/info/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "kunstverein-braunschweig",
@@ -12775,7 +13182,16 @@
     "visit_url": "https://kunstvereinbraunschweig.de/en/visit/",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunstverein%20Braunschweig",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunstverein%20Braunschweig",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://kunstvereinbraunschweig.de/en/visit/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "hmkv-hartware-medienkunstverein-dortmund",
@@ -12811,7 +13227,16 @@
     "visit_url": "https://hmkv.de/en/besuch.html",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Hartware%20MedienKunstVerein%20%28HMKV%29",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Hartware%20MedienKunstVerein%20%28HMKV%29",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://hmkv.de/__article-includes-en/information/articles/contact-directions.html"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "halle-fuer-kunst-steiermark-graz",
@@ -12845,7 +13270,17 @@
     ],
     "highlight": "The expansive glass facade opening directly onto the green canopy of the historic Graz Stadtpark.",
     "visit_url": "https://halle-fuer-kunst.at/en/visit/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.steiermark.com/en/Region-Graz/Vacation-planning/Trip-destination/House-of-Arts-Media_isd_26688138",
+          "https://www.graztourismus.at/en/sightseeing-culture/sights/house-of-arts-media_shg_2240"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "grazer-kunstverein",
@@ -12878,7 +13313,17 @@
       "Audio Listening Station"
     ],
     "highlight": "The intimate vaulted baroque rooms transformed through subtle, durational sensory interventions.",
-    "visit_url": "https://grazerkunstverein.org/en/info"
+    "visit_url": "https://grazerkunstverein.org/en/info",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.grazerkunstverein.org/about/",
+          "https://archive.grazerkunstverein.org/en/about/information.html"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "salzburger-kunstverein",
@@ -12911,7 +13356,16 @@
     ],
     "highlight": "The grand historic Great Hall and the outdoor contemporary Sunset Pavilion commission on the river lawn.",
     "visit_url": "https://www.salzburger-kunstverein.at/en/visit",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://salzburger-kunstverein.at/visitor_information"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "friart-kunsthalle-fribourg",
@@ -12950,7 +13404,17 @@
     "highlight": "The rough-hewn industrial spaces of the former 19th-century Petites-Rames factory framing adventurous conceptual productions.",
     "visit_url": "https://friart.ch/en/practical-information",
     "audit_dossier_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
-    "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html"
+    "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://friart.ch/en/visit",
+          "https://friart.ch/en/about"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "can-centre-dart-neuchatel",
@@ -12985,7 +13449,16 @@
     "visit_url": "https://can.ch/info/",
     "audit_dossier_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
     "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://can.ch/en/?p=121"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "iniva-london",
@@ -13022,7 +13495,17 @@
     "visit_url": "https://iniva.org/library/visit-the-library/",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Iniva%20%28Institute%20of%20International%20Visual%20Arts%29",
     "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Iniva%20%28Institute%20of%20International%20Visual%20Arts%29",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://iniva.org/contact/",
+          "https://iniva.org/?p=12883"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "cca-glasgow",
@@ -13058,7 +13541,16 @@
     "visit_url": "https://www.cca-glasgow.com/about-cca/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=CCA%20Glasgow%20%28Centre%20for%20Contemporary%20Arts%29",
     "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=CCA%20Glasgow%20%28Centre%20for%20Contemporary%20Arts%29",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://cca-glasgow.com/visit/how-to-get-here"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "tramway-glasgow",
@@ -13100,7 +13592,16 @@
         "funder": "Bloomberg Philanthropies",
         "institutions": 46
       }
-    ]
+    ],
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.tramway.org/visit-us/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "cca-derry-londonderry",
@@ -13141,7 +13642,18 @@
         "funder": "Garfield Weston Foundation",
         "institutions": 10
       }
-    ]
+    ],
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.visitderry.com/whats-on/demo-residency-solo-exhibitions-p790981",
+          "https://opencharities.uk/ni/101414",
+          "https://www.euansguide.com/venues/centre-for-contemporary-art-derrylondonderry-londonderry-8776/events/relaxed-performance-day-5441"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "catalyst-arts-belfast",
@@ -13209,7 +13721,17 @@
     ],
     "highlight": "The River Residencies project examining the socio-ecological past and futures of the River Shannon estuary.",
     "visit_url": "https://ormstonhouse.com/visit/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.limerick.ie/node/49673",
+          "https://www.limerick.ie/tags/arts-culture/browse"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "site-gallery-sheffield",
@@ -21581,7 +22103,18 @@
     ],
     "why_flagged": "\u20ac518M state tax relief; audit court criticism.",
     "audit_dossier_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Fondation%20Louis%20Vuitton",
-    "statutory_filings_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Fondation%20Louis%20Vuitton"
+    "statutory_filings_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Fondation%20Louis%20Vuitton",
+    "address": "8 Avenue du Mahatma Gandhi, 75116 Paris",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Louis_Vuitton_Foundation",
+          "https://www.bonjour-ratp.fr/en/lieux/fondation-louis-vuitton/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Louvre",
@@ -21987,7 +22520,17 @@
     ],
     "why_flagged": "Oetker family funding and forced-labour history.",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Bielefeld",
-    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Bielefeld"
+    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Bielefeld",
+    "address": "Artur-Ladebeck-Stra\u00dfe 5, 33602 Bielefeld",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://kunsthalle-bielefeld.de/en/?p=3209"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museum Folkwang",
@@ -22012,7 +22555,19 @@
     ],
     "why_flagged": "RWE and E.ON as exhibition partners.",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Museum%20Folkwang",
-    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Museum%20Folkwang"
+    "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Museum%20Folkwang",
+    "address": "Museumsplatz 1, 45128 Essen",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Museum_Folkwang",
+          "https://museumforall.eu/museum/essen-museum-folkwang/",
+          "https://kupi.com/en/explore/germany/essen/museum-folkwang"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kunstmuseum Wolfsburg",
@@ -22045,7 +22600,17 @@
         "funder": "Volkswagen",
         "institutions": 4
       }
-    ]
+    ],
+    "address": "Hollerplatz 1, 38440 Wolfsburg",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.kunstmuseum.de/en/wp-json/wp/v2/pages/7033"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kochi-Muziris Biennale",
@@ -22091,7 +22656,17 @@
     "flags": [
       "Documented controversy"
     ],
-    "why_flagged": "2023 curator firing and artist withdrawal."
+    "why_flagged": "2023 curator firing and artist withdrawal.",
+    "address": "145, DLF South Court Mall, Saket, New Delhi 110017",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.knma.org/visit/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museum MACAN",
@@ -22114,7 +22689,17 @@
     "flags": [
       "Fossil fuels"
     ],
-    "why_flagged": "Founder money partly from petroleum distribution."
+    "why_flagged": "Founder money partly from petroleum distribution.",
+    "address": "AKR Tower, Level MM, Jalan Panjang No. 5, Kebon Jeruk, West Jakarta 11530",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://ticket.museummacan.org/plan-visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "IMMA",
@@ -22143,7 +22728,19 @@
         "funder": "BNP Paribas",
         "institutions": 3
       }
-    ]
+    ],
+    "address": "Royal Hospital, Military Road, Kilmainham, Dublin 8, D08 FW31, Ireland",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://imma.ie/about/overview/contact-us/",
+          "https://imma.ie/visit/info/directions/",
+          "https://imma.ie/imma-venues/contact-us/location/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Peggy Guggenheim Collection",
@@ -30498,7 +31095,18 @@
       "Arms and defence",
       "Fossil fuels"
     ],
-    "why_flagged": "Ko\u00e7 Holding owns T\u00fcpra\u015f (oil refining) and Otokar (military vehicles)."
+    "why_flagged": "Ko\u00e7 Holding owns T\u00fcpra\u015f (oil refining) and Otokar (military vehicles).",
+    "address": "Irmak Caddesi No: 13, Dolapdere, Beyo\u011flu, Istanbul 34435, Turkey",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.arter.org.tr/en/visiting/",
+          "https://www.arter.org.tr/building"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "secession-vienna",
@@ -33543,7 +34151,17 @@
           "https://wikileaks.org/plusd/cables/09ABUJA1907_a.html"
         ]
       }
-    ]
+    ],
+    "address": "Rua B, 20, Brumadinho 35460-000, Brazil",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.e-flux.com/directory/5950/instituto-inhotim"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "russian-pavilion-at-the-venice-biennale-venice",
