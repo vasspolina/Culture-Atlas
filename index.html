@@ -171,7 +171,7 @@
       letter-spacing: 0.7pt !important;
       font-weight: 400 !important;
     }
-    #desktopDossierName, #dossier-sheet-name, .dossier-main-heading {
+    #dossier-sheet-name, .dossier-main-heading {
       line-height: 1.3 !important;
       word-break: normal !important;
       overflow-wrap: break-word !important;
@@ -256,9 +256,9 @@
     html body #curatorMessages, html body #curatorMessages *, html body #curatorDrawerChatBody, html body #curatorDrawerChatBody * { font-size: 15px !important; }
     html body .callout-fig, html body .stat-callout { font-size: 14px !important; }
     /* Buttons are filled pills: off-white fill, black text, fully round, no outline, sentence case. Hover is white. A pressed toggle inverts to black with off-white text and a 1px off-white ring, so it keeps its shape on the black page. */
-    html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
+    html body #topGossipBtn, html body html body #desktopGlobeTopControls button,
     html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
-    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn {
+    html body #inputModeCancelBtn {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 3px 12px !important; border: 0 !important; border-radius: 9999px !important;
       background: #000000 !important; color: #f4f4f4 !important; font-size: 14px !important;
@@ -287,8 +287,8 @@
     ::placeholder, input::placeholder, textarea::placeholder { color: #f4f4f4 !important; opacity: 1 !important; }
 
     /* Nothing selected: no empty record, no actions, no 'Active' badge. */
-    #desktopDossierColumn:has(#desktopDossierName:empty) #desktopDossierBody { display: none; }
-    #desktopDossierColumn:has(#desktopDossierName:empty)::after { content: 'Select a space on the map or ask in chat.'; display: block; padding: 20px; color: #f4f4f4; font-size: 15px; }
+    #desktopDossierColumn:has(#desktopDossierRecordBody:empty) #desktopDossierBody { display: none; }
+    #desktopDossierColumn:has(#desktopDossierRecordBody:empty)::after { content: 'Select a space on the map or ask in chat.'; display: block; padding: 20px; color: #f4f4f4; font-size: 15px; }
 
     /* No containers: a box drawn on all four sides is removed. A rule on one side (under a header, between rows) stays. 0.8px is what was asked for; Chromium paints it as one device pixel. */
     html body .border { border-width: 0 !important; }
@@ -318,15 +318,15 @@
     /* Every button is the same pill, including the mobile bar, the chips and the globe controls. */
     html body button, html body [role="button"] { text-transform: none; }
     html body button:not([aria-pressed="true"]) { color: #f4f4f4; }
-    html body #topGossipBtn, html body #topShareBtn, html body #desktopGlobeTopControls button,
+    html body #topGossipBtn, html body html body #desktopGlobeTopControls button,
     html body #workspaceTabDossier, html body #workspaceTabChat, html body #workspaceNewChatBtn, html body #collapseDossierBtn,
-    html body #desktopDossierBody > div > button, html body #inputModeCancelBtn,
-    html body #mobileStickySendBtn, html body #workSendBtn, html body #mobileTopBar button:not(#mobileTopBrandBtn), html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn, html body #mobileFilterChipsSection button, html body #hudWorldBtn, html body #hudSpinBtn, html body #hudExpandBtn { color: #f4f4f4 !important; background: #022b30 !important; border: 0 !important; border-radius: 9999px !important; padding: 3px 12px !important; }
-    html body :is(#topGossipBtn, #topShareBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopDossierBody > div > button, #inputModeCancelBtn, #mobileStickySendBtn):hover { background: #004144 !important; color: #f4f4f4 !important; }
-    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat) { background: #007d79 !important; color: #f4f4f4 !important; }
-    html body :is(.provider-tab-btn, #testConnectionBtn) { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 3px 12px !important; box-shadow: none !important; font-size: 14px !important; }
-    html body :is(.provider-tab-btn, #testConnectionBtn):hover { background: #004144 !important; }
-    html body button.provider-tab-btn[aria-pressed="true"]:not(#_) { background: #007d79 !important; }
+    html body #inputModeCancelBtn,
+    html body #mobileStickySendBtn, html body #workSendBtn, html body #mobileTopBar button:not(#mobileTopBrandBtn), html body #dossier-sheet-audit-btn, html body #dossier-sheet-plan-btn, html body #mobileFilterChipsSection button, html body #hudWorldBtn, html body #hudSpinBtn, html body #hudExpandBtn { color: #f4f4f4 !important; background: transparent !important; border: 0 !important; border-radius: 0 !important; padding: 4px 0 !important; box-shadow: none !important; }
+    html body :is(#topGossipBtn, #desktopGlobeTopControls button, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #inputModeCancelBtn, #mobileStickySendBtn):hover { background: transparent !important; color: #08bdba !important; }
+    html body [aria-pressed="true"]:is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat) { background: transparent !important; color: #08bdba !important; text-decoration: underline !important; }
+    html body :is(.provider-tab-btn, #testConnectionBtn) { color: #f4f4f4 !important; background: transparent !important; border: 0 !important; border-radius: 0 !important; padding: 4px 0 !important; box-shadow: none !important; font-size: 14px !important; }
+    html body :is(.provider-tab-btn, #testConnectionBtn):hover { color: #08bdba !important; }
+    html body button.provider-tab-btn[aria-pressed="true"]:not(#_) { background: transparent !important; color: #08bdba !important; text-decoration: underline !important; }
     /* No grey anywhere: Tailwind grey utilities become off-white lines and text, or black ground. */
     html body :is([class*="border-[#262626]"], [class*="border-[#2e2e33]"], [class*="border-[#2e2e2e]"], [class*="border-[#1e293b]"], [class*="border-[#27272a]"], [class*="border-[#3e3e3e]"], [class*="border-[#333333]"], [class*="border-[#333]"], [class*="border-[#393939]"], [class*="border-[#2a2a2a]"], [class*="border-[#334155]"], [class*="border-[#1f293d]"], [class*="border-[#3f3f46]"], [class*="border-[#2e2e38]"], [class*="border-[#1b2333]"], [class*="border-[#525252]"], [class*="border-[#234b39]"], [class*="border-[#1e2f4a]"], [class*="border-[#334666]"], [class*="border-[#1e2f47]"], [class*="border-[#383838]"], [class*="border-[#2f2f2f]"], [class*="border-[#232a3c]"], [class*="border-[#1b3324]"], [class*="border-[#1b4332]"], [class*="border-[#1c1c1c]"], [class*="border-[#303030]"], [class*="border-[#23352b]"], [class*="border-[#1e3b3e]"], [class*="border-[#1b2b42]"], [class*="border-[#1a293e]"], [class*="border-[#222d42]"], [class*="border-[#202b3f]"], [class*="border-[#2c3d5a]"], [class*="border-[#222f47]"], [class*="border-[#385177]"], [class*="border-[#2d4368]"], [class*="border-[#2b3e5f]"], [class*="border-[#1d3557]"], [class*="border-[#444]"], [class*="border-cyan-950"], [class*="border-slate"], [class*="border-zinc"], [class*="border-gray"], [class*="border-neutral"]), html body [class*="divide-"] > * { border-color: #f4f4f4 !important; }
     html body :is([class*="border-[#60a5fa]"], [class*="border-[#33b1ff]"], [class*="border-[#0284c7]"], [class*="border-blue"], [class*="border-sky"]) { border-color: #08bdba !important; }
@@ -334,9 +334,9 @@
     html body :is([class*="text-slate"], [class*="text-zinc"], [class*="text-gray"], [class*="text-neutral"]), html body input::placeholder, html body textarea::placeholder { color: #f4f4f4 !important; }
     html body :is([class*="bg-zinc"], [class*="bg-slate"], [class*="bg-gray"], [class*="bg-[#26262e]"]) { background-color: #000000 !important; }
     html body .bg-neutral-200 { background-color: #004144 !important; }
-    html body :is(#zoomInBtn, #zoomOutBtn) { background: #022b30 !important; color: #f4f4f4 !important; box-shadow: none !important; }
-    html body :is(#zoomInBtn, #zoomOutBtn):hover { background: #004144 !important; color: #f4f4f4 !important; }
-    html body button[class*="bg-white"], html body a[class*="bg-white"] { background: #022b30 !important; color: #f4f4f4 !important; border-radius: 9999px !important; padding: 3px 12px !important; }
+    html body :is(#zoomInBtn, #zoomOutBtn) { background: #000000 !important; color: #f4f4f4 !important; box-shadow: none !important; }
+    html body :is(#zoomInBtn, #zoomOutBtn):hover { color: #08bdba !important; }
+    html body button[class*="bg-white"], html body a[class*="bg-white"] { color: #f4f4f4 !important; background: transparent !important; border: 0 !important; border-radius: 0 !important; padding: 4px 0 !important; box-shadow: none !important; }
     html body .custom-scrollbar::-webkit-scrollbar-thumb, html body ::-webkit-scrollbar-thumb { background: #f4f4f4 !important; }
     
     html body #mobileTopBrandBtn, html body #topBrandLogoBtn, html body #mobileTopBrandBtn *, html body #topBrandLogoBtn * { text-transform: none !important; color: inherit; }
@@ -346,7 +346,8 @@
     #buildingInsidePanel { border: 0; border-radius: 0; font-size: 14px; line-height: 1.3; }
     #buildingInsidePanel h3 { font-size: 15px; }
     #buildingInsidePanel p { font-size: 14px; }
-    .xray-pill { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; padding: 3px 12px !important; font-size: 14px !important; }
+    .xray-pill { color: #f4f4f4 !important; background: transparent !important; border: 0 !important; border-radius: 0 !important; padding: 4px 0 !important; box-shadow: none !important; font-size: 14px !important; cursor: pointer; }
+    .xray-pill:hover { color: #08bdba !important; text-decoration: underline; }
     /* Editorial measure: a display-size lede with tight leading, small kickers, and records separated by a rule, never boxed. */
     html body .lede { font-size: 22px !important; line-height: 1.1 !important; }
     html body .kicker { font-size: 14px !important; line-height: 1.3; }
@@ -1596,7 +1597,7 @@ return maplibregl$1;
 #workSendBtn { width: 32px; height: 32px; justify-content: center; }
 #workSendBtn svg { color: #f4f4f4; }
 #chat-input { font-size: 15px !important; border: 0.8px solid #f4f4f4 !important; border-radius: 22px !important; padding: 10px 88px 10px 16px !important; text-overflow: ellipsis; }
-#mobileStickySendBtn { background: #022b30 !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 9999px !important; font-size: 14px !important; }
+#mobileStickySendBtn { background: transparent !important; color: #f4f4f4 !important; border: 0 !important; border-radius: 0 !important; font-size: 14px !important; }
 #mobileStickyVoiceBtn { background: transparent !important; border: 0 !important; }
 .curator-message-wrap a { font-size: inherit !important; }
 .curator-message-wrap button span { color: inherit !important; }
@@ -1605,8 +1606,8 @@ return maplibregl$1;
 #workSendBtn { color: #000 !important; }
 /* Country and city: a field you type in and a list under it. A rule under the field, nothing around the list. */
 /* Titles and buttons are PP Neue Gstaad Compact Bold, text inside them included. Everything else is PP Neue Gstaad Regular. The brand button keeps its badge in Regular and takes Compact Bold for its name only. */
-html body :is(h1, h2, h3, h4, .lede, .dossier-main-heading, .modal-title, .drawer-title, #desktopDossierName, .mast-inst-name, #topBrandLogoBtn > span:first-child, #mobileTopBrandBtn > div > span:first-child),
-html body :is(h1, h2, h3, h4, .lede, .dossier-main-heading, .modal-title, .drawer-title, #desktopDossierName, .mast-inst-name) *,
+html body :is(h1, h2, h3, h4, .lede, .dossier-main-heading, .modal-title, .drawer-title, .mast-inst-name, #topBrandLogoBtn > span:first-child, #mobileTopBrandBtn > div > span:first-child),
+html body :is(h1, h2, h3, h4, .lede, .dossier-main-heading, .modal-title, .drawer-title, .mast-inst-name) *,
 html body :is(button, [role="button"], input[type="submit"], input[type="button"], .atlas-pill-btn, .xray-pill, .xray-label):not(#topBrandLogoBtn):not(#mobileTopBrandBtn),
 html body :is(button, [role="button"], .atlas-pill-btn, .xray-pill, .xray-label):not(#topBrandLogoBtn):not(#mobileTopBrandBtn) * { font-family: 'PP Neue Gstaad Compact', sans-serif !important; }
 /* On a tablet the header has no room for the count beside the name. */
@@ -1624,11 +1625,15 @@ html body #curatorHeroGreeting .starter-prompt:hover { color: #ffffff !important
 /* The composer keeps clear of the bottom edge of the window. */
 html body #workBottomDock { padding-bottom: max(32px, env(safe-area-inset-bottom)) !important; }
 /* The controls in the header, the tab bar and over the globe are plain bold text, not pills. The current one is teal and underlined. */
-html body :is(#topGossipBtn, #topShareBtn, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopGlobeTopControls button) { background: transparent !important; border-radius: 0 !important; padding: 4px 0 !important; color: #f4f4f4 !important; box-shadow: none !important; }
-html body :is(#topGossipBtn, #topShareBtn, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopGlobeTopControls button):hover { background: transparent !important; color: #08bdba !important; }
-html body :is(#topGossipBtn, #topShareBtn, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopGlobeTopControls button)[aria-pressed="true"] { background: transparent !important; color: #08bdba !important; text-decoration: underline !important; text-decoration-thickness: 0.8px !important; text-underline-offset: 6px; }
+html body :is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopGlobeTopControls button) { background: transparent !important; border-radius: 0 !important; padding: 4px 0 !important; color: #f4f4f4 !important; box-shadow: none !important; }
+html body :is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopGlobeTopControls button):hover { background: transparent !important; color: #08bdba !important; }
+html body :is(#topGossipBtn, #workspaceTabDossier, #workspaceTabChat, #workspaceNewChatBtn, #collapseDossierBtn, #desktopGlobeTopControls button)[aria-pressed="true"] { background: transparent !important; color: #08bdba !important; text-decoration: underline !important; text-decoration-thickness: 0.8px !important; text-underline-offset: 6px; }
 html body #workspaceContextTabBar > div:first-child { gap: 24px !important; }
 html body #desktopGlobeTopControls { gap: 20px !important; }
+html body #workSendBtn { background: #007d79 !important; border-radius: 9999px !important; padding: 0 !important; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+/* Actions inside a record are plain text, like every other control. */
+html body .record-action { background: transparent !important; border: 0 !important; border-radius: 0 !important; padding: 2px 0 !important; color: #f4f4f4 !important; font-size: 14px !important; cursor: pointer; text-decoration: none !important; box-shadow: none !important; }
+html body .record-action:hover { color: #08bdba !important; text-decoration: underline !important; }
 /* No lines between the header, the map and the panel. */
 html body header[class*="h-14"], html body #mobileTopBar, html body #globeSplitter, html body #workspaceContextTabBar { border: 0 !important; }
 /* The composer shares the greeting's measure and left edge. */
@@ -1681,7 +1686,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md:inline-flex text-[14px] text-[#f4f4f4] hover:underline cursor-pointer whitespace-nowrap">Gossip mode</button>
-      <button id="topShareBtn" type="button" onclick="window.enterChatInputMode('information')" class="hidden md:inline-flex text-[14px] text-[#f4f4f4] hover:underline cursor-pointer whitespace-nowrap">Share information</button>
 
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
       <div class="hidden" style="display:none;" aria-hidden="true">
@@ -1835,12 +1839,12 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
         <div class="mt-3 pt-3 border-t border-[#1e293b] space-y-2">
           <div class="flex flex-col gap-2">
             <a id="floatingCardDirectAuditBtn" href="#" target="_blank" rel="noopener noreferrer" 
-               class="w-full py-2 px-3 rounded-none bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[14px] flex items-center justify-center gap-1.5 transition cursor-pointer shadow-sm text-center block"
+               class="record-action text-left text-[14px] cursor-pointer"
                onclick="event.preventDefault(); event.stopPropagation(); if (typeof window.openDossier === 'function' && selectedInstitution) window.openDossier(selectedInstitution);">
               <span>Full record</span>
             </a>
             <button id="floatingCardDirectPlanBtn" type="button" 
-               class="w-full py-2 px-3 rounded-none bg-black hover:bg-black border border-[#334155] text-[#f4f4f4] hover:text-white font-medium text-[14px] flex items-center justify-center gap-1.5 transition cursor-pointer shadow-sm text-center block"
+               class="record-action text-left text-[14px] cursor-pointer"
                onclick="event.stopPropagation(); if (typeof window.atlasPlanVisit === 'function') window.atlasPlanVisit(selectedInstitution);">
               <span>Plan Visit in Chat</span>
             </button>
@@ -1899,10 +1903,10 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
             <div id="dossier-sheet-record" class="hidden"></div>
             <div id="dossier-sheet-sources"></div>
             <div class="flex flex-row flex-wrap gap-2 pt-1">
-              <button id="dossier-sheet-audit-btn" type="button" class="w-full flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-none bg-black border border-[#f4f4f4] hover:bg-black border border-[#f4f4f4] text-white font-normal text-[14px] transition cursor-pointer block">
+              <button id="dossier-sheet-audit-btn" type="button" class="record-action text-left text-[14px] cursor-pointer">
                 <span>Full record</span>
               </button>
-              <button id="dossier-sheet-plan-btn" type="button" class="w-full flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-none bg-black border border-[#393939] hover:bg-black text-[#f4f4f4] font-normal text-[14px] transition cursor-pointer block">
+              <button id="dossier-sheet-plan-btn" type="button" class="record-action text-left text-[14px] cursor-pointer">
                 <span>Plan Visit in Chat</span>
               </button>
             </div>
@@ -2148,40 +2152,8 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
 
         <!-- Scrollable Dossier Body -->
         <div id="desktopDossierBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-[14px]">
-          <!-- Header -->
-          <div class="space-y-1.5 min-w-0">
-            <h2 id="desktopDossierName" class="text-[24px] font-normal text-[#f4f4f4] break-words dossier-main-heading"></h2>
-            <p id="desktopDossierMeta" class="no-indent text-[#f4f4f4] text-[14px]"></p>
-            <p id="desktopDossierSummary" class="text-[#f4f4f4]"></p>
-            <a id="desktopDossierWebLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-[#f4f4f4] hover:text-[#ffffff] underline underline-offset-2 text-[14px]"><span id="desktopDossierDomain"></span></a>
-          </div>
-
-          <div id="desktopDossierFundingSection" class="hidden border-t border-[#262626] pt-3 space-y-1.5">
-            <h3 class="text-[14px] font-normal text-[#f4f4f4]">Funding</h3>
-            <p id="desktopDossierFundingSource" class="text-[#f4f4f4] text-[18px]"></p>
-          </div>
-
-          <div id="desktopDossierVisitSection" class="hidden border-t border-[#262626] pt-3 space-y-1.5">
-            <h3 class="text-[14px] font-normal text-[#f4f4f4]">Visiting</h3>
-            <p id="desktopDossierHours" class="text-[#f4f4f4] text-[18px]"></p>
-            <p id="desktopDossierAccess" class="text-[#f4f4f4] text-[18px]"></p>
-          </div>
-
-          <div id="desktopDossierRecord" class="hidden"></div>
-          <div id="desktopDossierSources" class="pt-3 border-t border-[#262626]"></div>
+          <div id="desktopDossierRecordBody"></div>
           <div id="desktopDossierInside" class="hidden pt-3 border-t border-[#262626] space-y-1.5 text-[14px]"></div>
-
-          <div class="border-t border-[#262626]"></div>
-
-          <!-- 5. Action Links (Container-free editorial style) -->
-          <div class="flex items-center gap-6 pt-1 text-[14px] font-mono">
-            <button type="button" onclick="if (typeof window.openDossier === 'function' && selectedInstitution) window.openDossier(selectedInstitution);" class="text-teal-400 hover:text-teal-300 hover:underline flex items-center gap-1.5 transition cursor-pointer">
-              <span>Full record</span>
-            </button>
-            <button type="button" onclick="if (typeof window.atlasPlanVisit === 'function' && selectedInstitution) window.atlasPlanVisit(selectedInstitution);" class="text-[#f4f4f4] hover:text-[#f4f4f4] hover:underline flex items-center gap-1.5 transition cursor-pointer">
-              <span>Plan Visit</span>
-            </button>
-          </div>
         </div>
       </section>
 
@@ -2318,6 +2290,8 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg>
                   </button>
+                  <!-- Share information -->
+                  <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('information')" class="text-[#f4f4f4] hover:text-white hover:underline text-[14px] cursor-pointer whitespace-nowrap">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
@@ -2344,9 +2318,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
               <div id="workPlusMenu" class="hidden absolute left-2 sm:left-4 bottom-14 z-30 bg-black border border-[#2e2e38] rounded-xl p-0 shadow-2xl flex flex-col divide-y divide-[#262626] w-[calc(100vw-24px)] sm:w-80 max-w-[340px] max-h-[min(380px,calc(100dvh-160px))] overflow-y-auto custom-scrollbar text-[14px]">
                 <button id="workMenuGossipModeBtn" onclick="window.toggleGossipMode()" class="text-left px-3.5 py-2.5 bg-black hover:bg-[#26262e] text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
                   <span>Gossip mode</span>
-                </button>
-                <button id="workMenuInformationBtn" onclick="window.enterChatInputMode('information')" class="text-left px-3.5 py-2.5 bg-black hover:bg-black text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
-                  <span>Share information</span>
                 </button>
                 <button id="workMenuGossipBtn" onclick="window.enterChatInputMode('gossip')" class="text-left px-3.5 py-2.5 bg-black hover:bg-black text-[#f4f4f4] transition flex items-center justify-between cursor-pointer border-0">
                   <span>Write gossip</span>
@@ -9127,9 +9098,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
         <div class="flex items-start justify-between gap-3">
           <h3 class="!mt-0 text-white">${e(inst.name)}</h3>
           <button type="button" class="xray-pill shrink-0" onclick="window.hideBuildingXray()">Close</button>
-        </div>` + body + `
-        <div class="flex gap-2 pt-1"><button type="button" class="xray-pill" data-xray-full-record>Full record</button></div>`;
-      panel.querySelector('[data-xray-full-record]')?.addEventListener('click', () => { if (typeof openDossier === 'function') openDossier(inst); });
+        </div>` + body;
       // A narrow map column takes the phone layout: full width along the bottom, under the building.
       panel.style.width = xrayNarrow() ? 'calc(100% - 16px)' : '380px';
       panel.style.maxHeight = xrayNarrow() ? '45%' : '60%';
@@ -12681,46 +12650,9 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
 
     function updateDesktopDossier(inst) {
       if (!inst) return;
-      const text = (id, value) => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = value || '';
-      };
-      const toggle = (id, on) => document.getElementById(id)?.classList.toggle('hidden', !on);
-
-      text('desktopDossierName', inst.name);
-      text('desktopDossierMeta', [[inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(', '));
-      text('desktopDossierSummary', inst.watch);
-
-      const webUrl = getValidWebUrl(inst);
-      const webLink = document.getElementById('desktopDossierWebLink');
-      if (webLink) {
-        webLink.classList.toggle('hidden', !webUrl);
-        if (webUrl) webLink.href = webUrl;
-      }
-      text('desktopDossierDomain', webUrl ? getDisplayDomain(webUrl) : '');
-
-      text('desktopDossierFundingSource', inst.funding);
-      toggle('desktopDossierFundingSection', Boolean(inst.funding));
-      text('desktopDossierHours', inst.opening_hours);
-      text('desktopDossierAccess', inst.admission_fee || inst.admission_policy);
-      toggle('desktopDossierVisitSection', Boolean(inst.opening_hours || inst.admission_fee || inst.admission_policy));
-      if (isGossipModeActive) {            // gossip mode shows only what is reported
-        toggle('desktopDossierFundingSection', false);
-        toggle('desktopDossierVisitSection', false);
-        text('desktopDossierSummary', '');
-      }
-
-      const srcBox = document.getElementById('desktopDossierSources');
-      if (srcBox) srcBox.innerHTML = sourcesHtml(inst) + (isGossipModeActive ? '' : researchContextHtml(inst));
-      const record = document.getElementById('desktopDossierRecord');
-      if (record) {
-        record.innerHTML = documentedRecordHtml(inst) || (isGossipModeActive ? '<p class="no-indent text-[18px]">Nothing is reported for this space in the records.</p>' : '');
-        record.classList.toggle('hidden', !record.innerHTML);
-      }
-
+      openDossier(inst, false);
       const inside = document.getElementById('desktopDossierInside');   // the building section belongs to one record only
       if (inside && !(typeof XRAY !== 'undefined' && XRAY.inst === inst)) { inside.innerHTML = ''; inside.classList.add('hidden'); }
-
       const col = document.getElementById('desktopDossierColumn');
       if (col && window.innerWidth >= 768) {
         col.classList.remove('hidden');
@@ -13069,6 +13001,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
       // 1. Update Desktop Dossier Column (middle column in AI Studio 3-column layout)
       if (typeof updateDesktopDossier === 'function') {
         updateDesktopDossier(inst);
+        if (window.innerWidth >= 768 && typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
       }
 
       // 2. Update Mobile Dossier Sheet (#dossier-bottom-sheet)
@@ -13172,14 +13105,8 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
       if (selectedInstitution && typeof openDossier === 'function') openDossier(selectedInstitution);
     };
 
-    function openDossier(inst, shouldShowDrawer = true) {
-      if (!inst) return;
-      const drawer = document.getElementById('detailDrawer');
-      const body = document.getElementById('detailBody');
-      if (shouldShowDrawer && drawer) {
-        drawer.classList.remove('hidden');
-      }
-
+    // The record of one space. The Details page shows it, and so does the phone's record page.
+    function recordHtml(inst) {
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl);
 
@@ -13207,28 +13134,18 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
       const pulseDotCol = isCommunity ? 'bg-[#08bdba]' : (isClean ? 'bg-[#42be65]' : isFlagged ? 'bg-[#be95ff]' : 'bg-[#33b1ff]');
 
 
-      body.innerHTML = `
+      return `
         <div class="space-y-3">
-          <div class="pb-2 border-b border-[#262626]">
-            <div class="space-y-1 mb-2 text-[14px] font-mono">
-              ${inst.curatorial_focus ? `<div class="text-[#6ee7b7]">${escapeHtml(inst.curatorial_focus)}</div>` : ''}
-              ${inst.year_founded ? `<div class="kicker text-[#f4f4f4]">Est. ${inst.year_founded}</div>` : ''}
+          <div class="space-y-1.5 pb-3 border-b border-[#262626]">
+            <h2 class="dossier-main-heading text-[#f4f4f4] break-words">${escapeHtml(inst.name)}</h2>
+            <p class="kicker no-indent text-[#f4f4f4]">${escapeHtml([inst.location || inst.city, inst.curatorial_focus, inst.year_founded ? 'Est. ' + inst.year_founded : ''].filter(Boolean).join(', '))}</p>
+            ${inst.watch ? `<p class="no-indent text-[#f4f4f4]">${escapeHtml(inst.watch)}</p>` : ''}
+            <div class="record-actions text-[14px]" style="display:flex; flex-wrap:wrap; gap:4px 24px; padding-top:4px;">
+              <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
+              ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
+              ${(inst.lat && inst.lon) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
+              ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
             </div>
-            <h2 class="text-[18px] sm:text-[18px] font-normal text-white leading-[120%]">${escapeHtml(inst.name)}</h2>
-            <p class="kicker text-[14px] text-[#f4f4f4] mt-0.5 font-mono">${escapeHtml(inst.location || inst.city)}</p>
-          </div>
-
-          <!-- Clean Action Toolbar (Direct Chat Inquiry & Spatial Verification) -->
-          <div class="flex flex-col gap-2 pt-1 border-b border-[#262626] pb-3 text-[14px]">
-            <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="text-emerald-400 hover:text-emerald-300 hover:underline text-left cursor-pointer flex items-center gap-1.5 font-medium">
-              <span>Ask Curator in Chat</span>
-            </button>
-            ${(inst.lat && inst.lon) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="xray-pill self-start cursor-pointer">Building view</button>` : `<p class="no-indent text-[14px] text-[#f4f4f4]">No coordinates in the record, so there is no building view.</p>`}
-            ${webUrl ? `
-              <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="text-[#f4f4f4] hover:text-white hover:underline flex items-center gap-1.5">
-                <span>Website</span>
-              </a>
-            ` : ''}
           </div>
 
           <!-- SCHOLARLY AUDIT VIEWPORT -->
@@ -13243,7 +13160,7 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
             ${inst.audit_dossier_url ? `<div><a href="${escapeHtml(inst.audit_dossier_url)}" target="_blank" rel="noopener noreferrer" class="text-[14px] text-[#f4f4f4] hover:text-white hover:underline">Search the public registry</a></div>` : ''}
           </div>
           ` : ''}
-          ${(inst.opening_hours || inst.admission_fee || inst.admission_policy) ? `
+          ${(!isClean && (inst.opening_hours || inst.admission_fee || inst.admission_policy)) ? `
           <div class="py-3 border-b border-[#262626] select-text space-y-2" role="region" aria-label="Visiting">
             <span class="text-[14px] font-normal text-[#f4f4f4] block">Visiting</span>
             ${inst.opening_hours ? `<div class="text-[18px] text-[#f4f4f4]">${escapeHtml(inst.opening_hours)}</div>` : ''}
@@ -13326,17 +13243,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
 
           ${isClean ? `
             <div class="pt-1">
-              <div class="flex flex-col gap-1 pb-1.5 mb-1 border-b border-[#262626]">
-                <span class="text-[14px] font-normal text-white tracking-wider font-mono">Plan Your Visit</span>
-                <div class="flex flex-col gap-1">
-                  <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="text-left text-[14px] text-[#f4f4f4] hover:underline font-mono cursor-pointer">
-                    <span>Plan in Chat</span>
-                  </button>
-                  ${(inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) || webUrl ? `
-                    <a href="${escapeHtml((inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl)}" target="_blank" rel="noopener noreferrer" class="text-[14px] text-[#f4f4f4] hover:underline font-mono">Official site</a>
-                  ` : ''}
-                </div>
-              </div>
               <div class="flex flex-col gap-0">
                 <div class="py-2 border-t border-[#262626] first:border-t-0">
                   <div class="text-[14px] font-mono tracking-wider mb-0.5" style="color:#f4f4f4">Hours</div>
@@ -13376,13 +13282,6 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
           ` : ''}
 
 
-          ${isClean && inst.watch ? `
-            <div class="py-2.5 border-t border-[#262626]">
-              <span class="text-[14px] font-mono tracking-wider block mb-1 text-[#f1c21b]">Governance &amp; Curatorial Field Notes</span>
-              <p class="text-[#f4f4f4] leading-[140%]">${escapeHtml(inst.watch)}</p>
-            </div>
-          ` : ''}
-
           <div class="pt-2 border-t border-[#262626]">
             ${inst.audit_dossier_url ? `
               <div class="py-2 border-b border-[#262626] mb-2 space-y-1">
@@ -13404,9 +13303,23 @@ html body .chat-info p { font-size: 14px !important; margin: 8px 0 0 !important;
 
       </div>
       `;
+    }
 
-      if (shouldShowDrawer && typeof window.setDrawerMode === 'function') {
-        window.setDrawerMode(isGossipModeActive ? 'gossip' : 'audit');
+    function openDossier(inst, shouldShowDrawer = true) {
+      if (!inst) return;
+      const html = recordHtml(inst);
+      const phoneBody = document.getElementById('detailBody');
+      if (phoneBody) phoneBody.innerHTML = html;
+      const page = document.getElementById('desktopDossierRecordBody');
+      if (page) page.innerHTML = html;
+      if (!shouldShowDrawer) return;
+      if (window.innerWidth >= 768) {
+        // On a desktop the record is the Details page, so there is no second page to open.
+        const col = document.getElementById('desktopDossierColumn');
+        if (col) { col.classList.remove('hidden'); col.classList.add('flex'); }
+        if (typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
+      } else {
+        document.getElementById('detailDrawer')?.classList.remove('hidden');
       }
     }
     window.openDossier = openDossier;
