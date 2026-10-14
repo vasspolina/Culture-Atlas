@@ -10820,8 +10820,62 @@ return maplibregl$1;
       if (dd && dd.parentElement !== document.body) document.body.appendChild(dd);
     })();
 
+    // Funding: everything the record holds about money, in one block. The stated funding, the note on who is
+    // behind it, the sources and how far they were checked, funders shared with other spaces on the map, and
+    // the public registry where the filings are. Nothing is added that the record does not hold.
+    const REGISTRY_NAMES = {
+      'projects.propublica.org': 'ProPublica Nonprofit Explorer',
+      'register-of-charities.charitycommission.gov.uk': 'Charity Commission register',
+      'bundesanzeiger.de': 'Bundesanzeiger',
+      'openkvk.nl': 'KVK register',
+      'apps.cra-arc.gc.ca': 'CRA charities listing',
+      'journal-officiel.gouv.fr': 'Journal officiel',
+      'acnc.gov.au': 'ACNC register',
+      'servizi.lavoro.gov.it': 'RUNTS register',
+      'sede.mjusticia.gob.es': 'Registro de Fundaciones',
+      'edi.admin.ch': 'Swiss foundation supervision',
+      'e-flux.com': 'e-flux',
+      'google.com': 'a web search',
+    };
+    function registryName(u) {
+      let h = '';
+      try { h = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'the public registry'; }
+      const key = Object.keys(REGISTRY_NAMES).find(k => h === k || h.endsWith('.' + k));
+      return key ? REGISTRY_NAMES[key] : h;
+    }
+    // A watch note goes into the Funding block when it is about money or a sponsor; otherwise it stays under the title.
+    const MONEY_WORDS = /fund|sponsor|donor|grant|budget|money|[$€£¥]|\bM\b|million|fortune|foundation|trustee|board|gift|endow|subsid|revenue|income|tax|levy|corporate|bank|wealth|patron|financ|paid|pays|heir|family|partner|supporter|casino|oil|gas\b|energy|dropped|ended|removed|protest|boycott|campaign|sackler|\bBP\b/i;
+    function watchIsAboutMoney(s) { return MONEY_WORDS.test(String(s || '')); }
+    function fundingHtml(inst) {
+      if (!inst) return '';
+      const e = escapeHtml;
+      const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (x) { return u; } };
+      const link = (u, label) => `<a href="${e(u)}" target="_blank" rel="noopener noreferrer" class="">${e(label)}</a>`;
+      const rows = [];
+      if (inst.funding) rows.push(`<p class="lede no-indent">${e(inst.funding)}</p>`);
+      if (inst.watch && watchIsAboutMoney(inst.watch)) rows.push(`<p class="no-indent">${e(inst.watch)}</p>`);
+      const seenHosts = new Set();
+      const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).filter(u => { const h = host(u); if (seenHosts.has(h)) return false; seenHosts.add(h); return true; }).slice(0, 6);
+      const v = inst.verification;
+      const state = v && v.status === 'verified' ? `Checked on ${e(v.checked_on)}: a source outside the museum names the funders this record cites.`
+        : v && v.status === 'partial' ? `Partly checked on ${e(v.checked_on)}: the sources name the museum but not every funder this record cites.`
+        : (inst.tier_note ? e(inst.tier_note) : '');
+      if (urls.length) rows.push(`<p class="no-indent">Sources: ${urls.map(u => link(u, host(u))).join(', ')}.${state ? ' ' + state : ''}</p>`);
+      else if (state) rows.push(`<p class="no-indent">${state}</p>`);
+      const shared = (inst.funder_links || []).filter(f => f && f.funder);
+      if (shared.length) rows.push(`<p class="no-indent">Named at other spaces on the map, this one included: ${shared.map(f => `${e(f.funder)} (${f.institutions})`).join(', ')}.</p>`);
+      const reg = inst.audit_dossier_url, fil = inst.statutory_filings_url;
+      const regLinks = [];
+      if (reg) regLinks.push(`Registry: ${link(reg, registryName(reg))}`);
+      if (fil && fil !== reg) regLinks.push(`Filings: ${link(fil, registryName(fil))}`);
+      if (regLinks.length) rows.push(`<p class="no-indent">${regLinks.join(' · ')}</p>`);
+      if (!rows.length) return '';
+      return `<div class="py-3 rule-b space-y-2" role="region" aria-label="Funding"><span class="kicker block">Funding</span>${rows.join('')}</div>`;
+    }
+
     // Links to the sources recorded for a space. Recording a source is not verifying it, and the page says so.
-    function sourcesHtml(inst) {
+    // With fieldsOnly the funding sources are left to the Funding block and only the field clauses remain.
+    function sourcesHtml(inst, fieldsOnly) {
       if (!inst) return '';
       const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).slice(0, 6);
       const links = urls.map(u => {
@@ -10854,6 +10908,7 @@ return maplibregl$1;
         fieldClauses.push(`${fieldLabel[k](f)} from ${fl.join(', ')}`);
       });
       const foundHtml = fieldClauses.length ? `<p class="no-indent">${fieldClauses.join('. ')}.</p>` : '';
+      if (fieldsOnly) return foundHtml;
       return `${links.length ? `<p class="no-indent">${links.join(', ')}${state ? '. ' + state : ''}</p>` : ''}${foundHtml}`;
     }
     // What studies say about this space, and the funders it shares with other institutions on the map.
@@ -10862,9 +10917,7 @@ return maplibregl$1;
       const card = (title, meta, body) => `<div class="record-card space-y-1_5"><div class="kicker no-indent">${e(title)}</div>${meta ? `<div class="kicker no-indent">${e(meta)}</div>` : ''}${body}</div>`;
       const studies = (inst.study_notes || []).map(s => card(s.title, [s.authors, s.year, s.journal].filter(Boolean).join(', '),
         `<p class="t-lead no-indent">${e(s.text)}</p>${s.doi ? `<p class="no-indent"><a href="https://doi.org/${e(s.doi)}" target="_blank" rel="noopener noreferrer" class="">doi.org</a></p>` : ''}`));
-      const funders = (inst.funder_links || []).length ? [card('Funders and trustees named here and at two or more other institutions on the map', '',
-        `<ul class="list-disc pl-5 t-lead">${inst.funder_links.map(f => `<li>${e(f.funder)}: ${f.institutions} institutions</li>`).join('')}</ul>`)] : [];
-      const rows = studies.concat(funders);
+      const rows = studies;
       return rows.length ? `<div class="py-3" role="region" aria-label="Research on this space">${studies.length ? '<h3 class="kicker">Research on this space</h3>' : ''}${rows.join('')}</div>` : '';
     }
     // Reported items. Each one carries the sources recorded for it. None is independently verified.
@@ -10951,8 +11004,9 @@ return maplibregl$1;
       text('dossier-sheet-name', inst.name);
       text('dossier-sheet-meta', [[inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(', '));
       text('dossier-sheet-summary', inst.watch);
-      text('dossier-sheet-funding-text', inst.funding);
-      toggle('dossier-sheet-funding', Boolean(inst.funding));
+      // The phone sheet shows the same Funding block as the desktop record.
+      const fBox = document.getElementById('dossier-sheet-funding');
+      if (fBox) { const fh = fundingHtml(inst); fBox.className = fh ? '' : 'hidden'; fBox.innerHTML = fh; }
       text('dossier-sheet-hours', inst.opening_hours);
       text('dossier-sheet-access-text', inst.admission_fee || inst.admission_policy);
       toggle('dossier-sheet-visit', Boolean(inst.opening_hours || inst.admission_fee || inst.admission_policy));
@@ -10962,7 +11016,7 @@ return maplibregl$1;
       }
 
       const srcBox = document.getElementById('dossier-sheet-sources');
-      if (srcBox) srcBox.innerHTML = sourcesHtml(inst) + (isGossipModeActive ? '' : researchContextHtml(inst));
+      if (srcBox) srcBox.innerHTML = sourcesHtml(inst, true) + (isGossipModeActive ? '' : researchContextHtml(inst));
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
         record.innerHTML = documentedRecordHtml(inst) || (isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '');
@@ -11411,7 +11465,6 @@ return maplibregl$1;
       const cleanAlts = (!isClean && !isCommunity) ? ALL_INSTITUTIONS.filter(i => i.tier === 'A' && matchC(i.city, inst.city)) : [];
 
 
-      const fundingDesc = inst.funding || '';
 
       // 4. Visual Critiques (Hans Haacke, etc.)
       const vcs = (inst.visual_critiques && inst.visual_critiques.length > 0) ? inst.visual_critiques : [];
@@ -11430,7 +11483,7 @@ return maplibregl$1;
           <div class="space-y-1_5 pb-3 rule-b">
             <h2 class="dossier-main-heading break-words">${escapeHtml(inst.name)}</h2>
             <p class="kicker no-indent">${escapeHtml([inst.location || inst.city, inst.curatorial_focus, inst.year_founded ? 'Est. ' + inst.year_founded : ''].filter(Boolean).join(', '))}</p>
-            ${inst.watch ? `<p class="no-indent">${escapeHtml(inst.watch)}</p>` : ''}
+            ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p class="no-indent">${escapeHtml(inst.watch)}</p>` : ''}
             <div class="record-actions" style="display:flex; flex-wrap:wrap; gap:4px 24px; padding-top:4px;">
               <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
               ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
@@ -11444,13 +11497,7 @@ return maplibregl$1;
 
           <!--  3D BUILDING & ARCHITECTURAL FLOOR WORKSPACE INSPECTOR -->
           <!-- Funding and visiting: only what the record states -->
-          ${(fundingDesc || inst.audit_dossier_url) ? `
-          <div class="py-3 rule-b space-y-2" role="region" aria-label="Funding">
-            <span class="kicker block">Funding</span>
-            ${fundingDesc ? `<p class="lede no-indent">${escapeHtml(fundingDesc)}</p>` : ''}
-            ${inst.audit_dossier_url ? `<div><a href="${escapeHtml(inst.audit_dossier_url)}" target="_blank" rel="noopener noreferrer" class="">Search the public registry</a></div>` : ''}
-          </div>
-          ` : ''}
+          ${fundingHtml(inst)}
           ${(!isClean && (inst.opening_hours || inst.admission_fee || inst.admission_policy)) ? `
           <div class="py-3 rule-b space-y-2" role="region" aria-label="Visiting">
             <span class="block">Visiting</span>
@@ -11529,7 +11576,7 @@ return maplibregl$1;
           ` : ''}
 
           ${documentedRecordHtml(inst)}
-          ${sourcesHtml(inst)}${isGossipModeActive ? '' : researchContextHtml(inst)}
+          ${sourcesHtml(inst, true)}${isGossipModeActive ? '' : researchContextHtml(inst)}
 
 
           ${isClean ? `
