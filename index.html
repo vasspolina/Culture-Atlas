@@ -684,19 +684,8 @@ return maplibregl$1;
                   <span id="curatorThinkingModeBadge" class="hidden" style="display:none;" aria-hidden="true"></span>
                 </div>
                 <div id="curatorScrapingBadge" class="hidden flex items-center gap-1_5 meta">
-                  <span id="curatorScrapingText">Scraping web intelligence...</span>
+                  <span id="curatorScrapingText">Reading the web page…</span>
                 </div>
-              </div>
-              <p id="curatorThinkingThought" class="mb-2_5">
-                I’ll inspect the prepare job and workflow context, then propose the smallest reversible fix for review.
-              </p>
-              <div id="curatorThinkingStep" class="flex items-center gap-2">
-                <span class="inline-flex items-center justify-center w-4 h-4 shrink-0">
-                  <svg class="w-2_5 h-2_5" viewBox="0 0 32 32" fill="currentColor">
-                    <path d="M26 4H6a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 22H6V6h20zm-8-3h6v2h-6zm-8.59-3.59L13.83 15l-4.42-4.41L10.83 9.17l5.83 5.83-5.83 5.83z"/>
-                  </svg>
-                </span>
-                <span id="curatorThinkingStepLabel">Scanning Repository Configuration Files</span>
               </div>
             </div>
 
@@ -806,7 +795,7 @@ return maplibregl$1;
               <span>Back to Overview</span>
             </button>
             <span class="meta hidden sm-inline">|</span>
-            <span class="meta hidden sm-inline">Entity Inspector</span>
+            <span class="meta hidden sm-inline">Record</span>
           </div>
           <div class="flex items-center gap-2">
             <button id="closeDetailBtn" type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="p-1" title="Close Dossier">
@@ -880,7 +869,7 @@ return maplibregl$1;
         <div class="flex items-center gap-2_5">
           <div>
             <h3 class="t-lead">AI Model Settings</h3>
-            <p class="">Power conversational reasoning with live AI or use the built-in critical engine</p>
+            <p class="">Answers come from the records. A key turns on open-ended replies.</p>
           </div>
         </div>
         <button id="closeSettingsModalBtn" class="atlas-pill-btn pill-sm" title="Close"><span>Close</span></button>
@@ -888,7 +877,7 @@ return maplibregl$1;
 
       <!-- Provider Tabs -->
       <div class="space-y-1_5">
-        <label class="block">AI Intelligence Provider</label>
+        <label class="block">Provider</label>
         <div class="grid grid-cols-3 gap-2">
           <button id="providerClaudeBtn" class="provider-tab-btn py-2 px-3 flex items-center justify-center gap-1_5">
             <span>Anthropic</span>
@@ -902,7 +891,7 @@ return maplibregl$1;
         </div>
         <div class="flex items-center justify-between pt-1">
           <div id="providerTip" class="flex-1 pr-2">
-            Recommended: <strong>Anthropic</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.
+            Keys are sent only to the provider you pick.
           </div>
           <a id="providerGetKeyLink" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="shrink-0 meta flex items-center gap-1">
             Get Key
@@ -920,13 +909,13 @@ return maplibregl$1;
           <input 
             type="password" 
             id="aiApiKeyInput" 
-            placeholder="Built-in universal key active, Paste custom key to override..." 
+            placeholder="Paste an API key" 
             class="w-full px-3_5 py-2_5 meta pr-10"
           />
           <button id="toggleKeyVisibilityBtn" class="absolute right-3 p-1 meta" title="Toggle visibility">Show</button>
         </div>
         <div class="flex items-center justify-between">
-          <span>Curator AI intelligence is active for all visitors out-of-the-box.</span>
+          <span>A built-in key is active. Paste your own to replace it.</span>
         </div>
       </div>
 
@@ -7147,9 +7136,9 @@ return maplibregl$1;
             </svg>
           </div>
           <div class="space-y-1_5 max-w-sm">
-            <h3 class="t-lead t-strong">Entity Inspector Ready</h3>
+            <h3 class="t-lead t-strong">Select a space</h3>
             <p class="">
-              Click any museum or art space on the 3D globe to inspect its governance structure, financial architecture, and curatorial intelligence.
+              Click a space on the globe, or ask in the chat.
             </p>
           </div>
           <div class="pt-2 flex flex-col items-center gap-2">
@@ -7519,7 +7508,7 @@ return maplibregl$1;
       const siteHtml = site ? `<p class="no-indent"><a href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a></p>` : '';
       const archivesHtml = wd && wd.status === 'matched' && wd.archivesAt.length ? `<p class="no-indent">Archives held at ${e(wd.archivesAt.join(', '))}, according to Wikidata.</p>` : '';
       const body = `
-        ${cats.length ? `${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1_5 rule-t"><div class="no-indent" style="color:${XRAY_COLOURS[c.key]}">${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent">None of the categories shown here is in the record.</p>'}
+        ${cats.length ? `${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1_5 rule-t"><div class="no-indent xray-cat-title"><span class="swatch" style="background:${XRAY_COLOURS[c.key]}"></span>${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent">None of the categories shown here is in the record.</p>'}
         ${siteHtml || archivesHtml || wdHtml ? `<div class="py-1_5 rule-t">${siteHtml}${archivesHtml}${wdHtml}</div>` : ''}`;
       // On a desktop the information goes to the right column, under the record; the map keeps only the labels on the building.
       const inside = document.getElementById('desktopDossierInside');
@@ -9813,30 +9802,39 @@ return maplibregl$1;
     }
 
 
+    // Canvas type for the cards: Compact Bold capitals for names, Regular for facts.
+    const ATLAS_CARD_TITLE_FONT = '700 24px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
+    const ATLAS_CARD_MONO_FONT = '14px "PP Neue Gstaad", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    if (document.fonts && document.fonts.load) {
+      document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
+    }
+
     function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {
       if (!inst) return;
       ctx.save();
-      const isA = inst.tier === 'A';
-      const isB = inst.tier === 'B';
 
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${domain}`;
 
-      ctx.font = '15px "PP Neue Gstaad", sans-serif';
+      // A white block with the name in capitals, facts in the grotesque, the website as a black pill.
+      // The left bar carries the tier: cyan clean, orange flagged, mustard unverified.
       const nameText = inst.name;
-      const nameW = ctx.measureText(nameText).width;
-
+      const nameUpper = nameText.toUpperCase();
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ', ' + inst.curatorial_focus : (inst.neighborhood ? ', ' + inst.neighborhood : ''));
-      ctx.font = '14px "PP Neue Gstaad", sans-serif';
-      const subW = ctx.measureText(subText).width;
 
-      ctx.font = '14px "PP Neue Gstaad", sans-serif';
+      ctx.font = '700 20px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
+      const nameW = ctx.measureText(nameUpper).width;
+      ctx.font = ATLAS_CARD_MONO_FONT;
+      const subW = ctx.measureText(subText).width;
       const webW = ctx.measureText(domainPillText).width;
 
-      const cardW = Math.max(260, Math.min(380, Math.max(nameW, subW, webW + 28) + 32));
-      const cardH = webUrl ? 98 : 64;
+      const barW = 8;
+      const padX = 16;
+      const cardW = Math.max(260, Math.min(400, Math.max(nameW, subW, webW + 28) + barW + padX * 2));
+      const pillH = 26;
+      const cardH = webUrl ? 112 : 70;
 
       let cardX = px - cardW / 2;
       cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
@@ -9844,101 +9842,58 @@ return maplibregl$1;
       let cardY = py - cardH - 16;
       if (cardY < 14) cardY = py + 20;
 
-      // Deep, soft drop shadow
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
-      ctx.shadowBlur = 0;
-      ctx.shadowOffsetY = 0;
-
-      // Dark frosted glass background (solid 100% opacity to prevent bleed-through)
-      ctx.fillStyle = '#000000';
-      ctx.beginPath();
-      if (ctx.roundRect) ctx.roundRect(cardX, cardY, cardW, cardH, 4);
-      else ctx.rect(cardX, cardY, cardW, cardH);
-      ctx.fill();
-
-      // Subtle border with tier accent
-      ctx.shadowBlur = 0;
-      ctx.shadowOffsetY = 0;
-      ctx.strokeStyle = isA ? '#42be65' : isB ? '#be95ff' : '#f4f4f4';
-      ctx.lineWidth = 0.8;
-      ctx.stroke();
-
-      // Row 1: Institution Name. No tier title above it: the tier reads from
-      // the card's border colour, not from a label.
-      ctx.textAlign = 'left';
-      ctx.font = '15px "PP Neue Gstaad", sans-serif';
       ctx.fillStyle = '#ffffff';
+      ctx.fillRect(cardX, cardY, cardW, cardH);
+      ctx.fillStyle = inst.tier === 'A' ? '#9ae3e8' : inst.tier === 'B' ? '#ff6119' : '#c8b85a';
+      ctx.fillRect(cardX, cardY, barW, cardH);
+
+      const textX = cardX + barW + padX;
+      const maxTextW = cardW - barW - padX * 2;
+      const fit = (str) => {
+        let s = str;
+        if (ctx.measureText(s).width > maxTextW) {
+          while (s.length > 5 && ctx.measureText(s + '…').width > maxTextW) s = s.slice(0, -1);
+          s += '…';
+        }
+        return s;
+      };
+
+      ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
-      let displayName = nameText;
-      const maxTextW = cardW - 32;
-      if (ctx.measureText(displayName).width > maxTextW) {
-        while (displayName.length > 5 && ctx.measureText(displayName + '…').width > maxTextW) {
-          displayName = displayName.slice(0, -1);
-        }
-        displayName += '…';
-      }
-      ctx.fillText(displayName, cardX + 16, cardY + 16);
+      ctx.fillStyle = '#000000';
+      ctx.font = '700 20px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
+      ctx.fillText(fit(nameUpper), textX, cardY + 14);
 
-      // Row 2: Location and Curatorial Focus
-      ctx.font = '14px "PP Neue Gstaad", sans-serif';
-      ctx.fillStyle = '#f4f4f4';
-      let displaySub = subText;
-      if (ctx.measureText(displaySub).width > maxTextW) {
-        while (displaySub.length > 5 && ctx.measureText(displaySub + '…').width > maxTextW) {
-          displaySub = displaySub.slice(0, -1);
-        }
-        displaySub += '…';
-      }
-      ctx.fillText(displaySub, cardX + 16, cardY + 40);
+      ctx.font = ATLAS_CARD_MONO_FONT;
+      ctx.fillText(fit(subText), textX, cardY + 44);
 
-      // Row 3: Unified Action Link Pill (if webUrl exists)
       if (webUrl) {
-        const btnX = cardX + 16;
-        const btnY = cardY + 62;
-        const btnW = Math.min(maxTextW, webW);
-        const btnH = 26;
+        const btnX = textX;
+        const btnY = cardY + 70;
+        const btnW = Math.min(maxTextW, webW + 24);
+        const btnH = pillH;
 
-        // The website is a link: off-white text with a 1px underline, no pill.
-        ctx.font = '14px "PP Neue Gstaad", sans-serif';
-        ctx.fillStyle = '#f4f4f4';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(domainPillText, btnX, btnY + btnH / 2);
-        ctx.strokeStyle = '#f4f4f4';
-        ctx.lineWidth = 0.8;
+        ctx.fillStyle = '#000000';
         ctx.beginPath();
-        ctx.moveTo(btnX, btnY + btnH / 2 + 10);
-        ctx.lineTo(btnX + webW, btnY + btnH / 2 + 10);
-        ctx.stroke();
+        if (ctx.roundRect) ctx.roundRect(btnX, btnY, btnW, btnH, btnH / 2); else ctx.rect(btnX, btnY, btnW, btnH);
+        ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(fit(domainPillText), btnX + 12, btnY + btnH / 2 + 0.5);
 
         hoveredMicroCardHitbox = {
-          inst: inst,
-          webUrl: webUrl,
-          btnX: btnX,
-          btnY: btnY,
-          btnW: btnW,
-          btnH: btnH,
-          cardX: cardX,
-          cardY: cardY,
-          cardW: cardW,
-          cardH: cardH
+          inst: inst, webUrl: webUrl,
+          btnX: btnX, btnY: btnY, btnW: btnW, btnH: btnH,
+          cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
         };
-        window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
       } else {
         hoveredMicroCardHitbox = {
-          inst: inst,
-          webUrl: null,
-          btnX: 0,
-          btnY: 0,
-          btnW: 0,
-          btnH: 0,
-          cardX: cardX,
-          cardY: cardY,
-          cardW: cardW,
-          cardH: cardH
+          inst: inst, webUrl: null,
+          btnX: 0, btnY: 0, btnW: 0, btnH: 0,
+          cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
         };
-        window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
       }
+      window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
 
       ctx.restore();
     }
@@ -10198,6 +10153,23 @@ return maplibregl$1;
           ctx.fillStyle = fill;
           ctx.fillText(text, x, y);
         };
+        // City and museum names sit on a pill, like the buttons: white with black text,
+        // yellow when hovered or selected (white on yellow in gossip mode).
+        const drawPillLabel = (text, cx0, cy0, active) => {
+          ctx.save();
+          ctx.font = ATLAS_CARD_MONO_FONT;
+          const w = ctx.measureText(text).width + 20, h = 22;
+          const yellow = active !== isGossipModeActive;
+          ctx.fillStyle = yellow ? '#ffd600' : '#ffffff';
+          ctx.beginPath();
+          if (ctx.roundRect) ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, h / 2); else ctx.rect(cx0 - w / 2, cy0 - h / 2, w, h);
+          ctx.fill();
+          ctx.fillStyle = '#000000';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(text, cx0, cy0 + 0.5);
+          ctx.restore();
+        };
         // 6. City labels (all cities in the selected country or the top cities worldwide)
         cityBadgeHitboxes = [];
         cityClusterHitboxes = [];
@@ -10233,17 +10205,17 @@ return maplibregl$1;
             const isCountryActive = selectedCountryFilter !== 'all';
             const isClustered = isClusterZoom && (city.count >= 2);
 
-            let bw, bh = 24, txt = city.name, countTxt = '';
-            ctx.font = '14px "PP Neue Gstaad", sans-serif';
+            let bw, bh = 22, txt = city.name, countTxt = '';
+            ctx.font = ATLAS_CARD_MONO_FONT;
 
             if (isClustered) {
               countTxt = String(city.count);
-              bw = ctx.measureText(city.name + ' ' + countTxt).width + 14;
+              bw = ctx.measureText(city.name + ' ' + countTxt).width + 20;
             } else {
               const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${city.count})` : '';
               txt = city.name + countLabel;
               const tw = ctx.measureText(txt).width;
-              bw = tw + 14;
+              bw = tw + 20;
             }
 
             const bx = pt.x - bw / 2;
@@ -10284,7 +10256,7 @@ return maplibregl$1;
                 ctx.font = '14px "PP Neue Gstaad", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawGlobeLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2 + 0.5, isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#f4f4f4'));
+                drawPillLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2, !!(isSelected || isHovered));
 
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
@@ -10296,11 +10268,11 @@ return maplibregl$1;
                 ctx.font = '14px "PP Neue Gstaad", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawGlobeLabel(txt, pt.x, by + bh / 2 + 0.5, isSelected || isHovered ? '#ffffff' : (isGossipModeActive ? '#fef9c3' : '#f4f4f4'));
+                drawPillLabel(txt, pt.x, by + bh / 2, !!(isSelected || isHovered));
 
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
-                if (isSelected) { ctx.fillStyle = '#08bdba'; ctx.fill(); }
+                if (isSelected) { ctx.fillStyle = '#ff6119'; ctx.fill(); }
                 ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
@@ -10497,9 +10469,10 @@ return maplibregl$1;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
+            ctx.font = ATLAS_CARD_MONO_FONT;
             const tw = ctx.measureText(nameTxt).width;
-            const bw = tw + 12;
-            const bh = 20;
+            const bw = tw + 20;
+            const bh = 22;
             const bx = d.x - bw / 2;
             const by = d.y - 18;
 
@@ -10514,7 +10487,7 @@ return maplibregl$1;
               drawnInstLabelBoxes.push({ x: bx, y: by, w: bw, h: bh });
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
-              drawGlobeLabel(nameTxt, d.x, by + bh - 4, isSel ? '#ffffff' : '#f4f4f4');
+              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel);
             }
             ctx.restore();
           }
@@ -10533,39 +10506,38 @@ return maplibregl$1;
 
               ctx.beginPath();
               ctx.arc(hPt.x, hPt.y, 6.5, 0, Math.PI * 2);
-              ctx.fillStyle = '#08bdba';
+              ctx.fillStyle = '#ff6119';
               ctx.strokeStyle = '#ffffff';
               ctx.lineWidth = 0.8;
               ctx.fill();
               ctx.stroke();
 
-              // Card dimensions & multi-line layout (no dots, each item on its own line)
+              // Card dimensions & multi-line layout: a flat colour block, like the fair's tabs.
+              // The name is set large in capitals; the rest is Regular; the action is a pill.
               const cityTxt = hMeta.name;
               const countryTxt = hMeta.country ? hMeta.country.trim() : '';
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
-              const countTxt = `${countVal} Verified Cultural Space${countVal === 1 ? '' : 's'}`;
-              const linkTxt = 'Click to Explore';
+              const countTxt = `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`;
+              const linkTxt = 'Click to explore';
+              const cardInk = isGossipModeActive ? '#000000' : '#ffffff';
 
-              ctx.font = '15px "PP Neue Gstaad", sans-serif';
-              const twCity = ctx.measureText(cityTxt).width;
-
-              ctx.font = '14px "PP Neue Gstaad", sans-serif';
+              ctx.font = ATLAS_CARD_TITLE_FONT;
+              const twCity = ctx.measureText(cityTxt.toUpperCase()).width;
+              ctx.font = ATLAS_CARD_MONO_FONT;
               const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
               const twCount = ctx.measureText(countTxt).width;
-
-              ctx.font = '14px "PP Neue Gstaad", sans-serif';
               const twLink = ctx.measureText(linkTxt).width;
 
-              const linkBtnW = twLink + 22;
-              const linkBtnH = 26;
+              const linkBtnW = twLink + 28;
+              const linkBtnH = 28;
 
               const cardW = Math.max(twCity, twCountry, twCount, linkBtnW) + 32;
-              const cardH = countryTxt ? 118 : 96;
+              const cardH = countryTxt ? 138 : 114;
               const cardX = Math.max(14, Math.min(width - cardW - 14, hPt.x - cardW / 2));
               const cardY = hPt.y > cardH + 20 ? hPt.y - cardH - 16 : hPt.y + 18;
 
-              const linkBtnX = cardX + 14;
-              const linkBtnY = cardY + (countryTxt ? 80 : 58);
+              const linkBtnX = cardX + 16;
+              const linkBtnY = cardY + cardH - linkBtnH - 14;
 
               // Register interactive hover & click hitbox for the card and link
               hoveredCityCardHitbox = {
@@ -10580,80 +10552,36 @@ return maplibregl$1;
                 linkH: linkBtnH
               };
 
-              // Drop shadow & glass fill
-              ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
-              ctx.shadowBlur = 0;
-              ctx.fillStyle = isGossipModeActive ? '#151103' : '#070c16';
-              ctx.beginPath();
-              ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 8) : ctx.rect(cardX, cardY, cardW, cardH);
-              ctx.fill();
+              // Flat block: cobalt, or yellow in gossip mode. No rounding, no outline, no shadow.
+              ctx.fillStyle = isGossipModeActive ? '#ffd600' : '#0046ff';
+              ctx.fillRect(cardX, cardY, cardW, cardH);
 
-              // Border outline - in yellow mode, hovering card or link highlights in OPPOSITE color (#08bdba)
-              ctx.shadowBlur = 0;
-              ctx.strokeStyle = isHoveringCityExploreLink 
-                ? '#08bdba' 
-                : (isGossipModeActive ? '#facc15' : '#08bdba');
-              ctx.lineWidth = 0.8;
-              ctx.stroke();
-
-              // Line 1: City Name (500 18px)
-              ctx.font = '15px "PP Neue Gstaad", sans-serif';
-              ctx.fillStyle = isGossipModeActive ? '#facc15' : '#08bdba';
+              // Line 1: city name, capitals, Compact Bold
+              ctx.font = ATLAS_CARD_TITLE_FONT;
+              ctx.fillStyle = cardInk;
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
-              ctx.fillText(cityTxt, cardX + 14, cardY + 12);
+              ctx.fillText(cityTxt.toUpperCase(), cardX + 16, cardY + 14);
 
-              let currentY = cardY + 34;
-
-              // Line 2: Country Name (if available, 14px, muted slate, own line, no dot)
+              let currentY = cardY + 46;
+              ctx.font = ATLAS_CARD_MONO_FONT;
               if (countryTxt) {
-                ctx.font = '14px "PP Neue Gstaad", sans-serif';
-                ctx.fillStyle = isGossipModeActive ? '#fde047' : '#f4f4f4';
-                ctx.fillText(countryTxt, cardX + 14, currentY);
-                currentY += 22;
+                ctx.fillText(countryTxt, cardX + 16, currentY);
+                currentY += 20;
               }
+              ctx.fillText(countTxt, cardX + 16, currentY);
 
-              // Line 3: Verified Cultural Spaces Count (14px, crisp light slate, own line, no dot)
-              ctx.font = '14px "PP Neue Gstaad", sans-serif';
-              ctx.fillStyle = isGossipModeActive ? '#fef9c3' : '#f1f5f9';
-              ctx.fillText(countTxt, cardX + 14, currentY);
-              currentY += 22;
-
-              // Line 4: "Click to Explore" Action Link Pill with Interactive Hover State
-              // In yellow mode, hovering triggers the OPPOSITE color (Electric Cyan #08bdba)!
+              // Action: a pill. White with black text; yellow on hover (white on yellow in gossip mode).
               ctx.save();
-              if (isGossipModeActive) {
-                if (isHoveringCityExploreLink) {
-                  // Hovered state in yellow mode: OPPOSITE COLOR (Electric Cyan #08bdba glow & stroke)
-                  ctx.fillStyle = 'rgba(8, 189, 186, 0.28)';
-                  ctx.strokeStyle = '#f4f4f4';
-                  ctx.lineWidth = 0.8;
-                  ctx.shadowBlur = 0;
-                } else {
-                  // Default link state in yellow mode: warm golden yellow pill
-                  ctx.fillStyle = 'rgba(234, 179, 8, 0.16)';
-                  ctx.strokeStyle = 'rgba(234, 179, 8, 0.60)';
-                  ctx.lineWidth = 0.8;
-                }
-              } else {
-                ctx.fillStyle = isHoveringCityExploreLink ? 'rgba(8, 189, 186, 0.28)' : 'rgba(8, 189, 186, 0.12)';
-                ctx.strokeStyle = isHoveringCityExploreLink ? '#f4f4f4' : '#f4f4f4';
-                ctx.lineWidth = 0.8;
-                ctx.shadowBlur = 0;
-              }
+              ctx.fillStyle = isHoveringCityExploreLink ? (isGossipModeActive ? '#ffffff' : '#ffd600') : (isGossipModeActive ? '#000000' : '#ffffff');
               ctx.beginPath();
-              ctx.roundRect ? ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 6) : ctx.rect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
+              ctx.roundRect ? ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, linkBtnH / 2) : ctx.rect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
               ctx.fill();
-              ctx.stroke();
-              ctx.shadowBlur = 0;
-
-              ctx.font = '14px "PP Neue Gstaad", sans-serif';
-              ctx.fillStyle = isGossipModeActive 
-                ? (isHoveringCityExploreLink ? '#f4f4f4' : '#facc15') 
-                : (isHoveringCityExploreLink ? '#ffffff' : '#08bdba');
+              ctx.font = ATLAS_CARD_MONO_FONT;
+              ctx.fillStyle = isGossipModeActive && !isHoveringCityExploreLink ? '#ffffff' : '#000000';
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
-              ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2);
+              ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2 + 0.5);
               ctx.restore();
 
               ctx.restore();
@@ -11607,37 +11535,37 @@ return maplibregl$1;
           ${isClean ? `
             <div class="pt-1">
               <div class="flex flex-col gap-0">
+                ${inst.opening_hours ? `<div class="py-2 rule-t">
+                  <div class="meta mb-0_5">Hours</div>
+                  <div class="">${escapeHtml(inst.opening_hours)}</div>
+                </div>` : ''}
+                ${inst.admission_fee ? `<div class="py-2 rule-t">
+                  <div class="meta mb-0_5">Admission</div>
+                  <div class="">${escapeHtml(inst.admission_fee)}</div>
+                </div>` : ''}
                 <div class="py-2 rule-t">
-                  <div class="meta mb-0_5" style="color:#f4f4f4">Hours</div>
-                  <div class="">${escapeHtml(inst.opening_hours || 'not stated')}</div>
-                </div>
-                <div class="py-2 rule-t">
-                  <div class="meta mb-0_5" style="color:#42be65">Admission</div>
-                  <div class="">${escapeHtml(inst.admission_fee || 'not stated')}</div>
-                </div>
-                <div class="py-2 rule-t">
-                  <div class="meta mb-0_5" style="color:#f4f4f4">Address</div>
+                  <div class="meta mb-0_5">Address</div>
                   <div class="">${escapeHtml(inst.address || inst.location)}</div>
                   ${inst.neighborhood ? `<div class="meta mt-0_5">${escapeHtml(inst.neighborhood)}</div>` : ''}
                 </div>
                 ${inst.visit_duration ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5" style="color:#be95ff">Suggested Duration</div>
+                  <div class="meta mb-0_5">Suggested Duration</div>
                   <div class="">${escapeHtml(inst.visit_duration)}</div>
                 </div>` : ''}
                 ${inst.transit_tips ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5" style="color:#3ddbd9">Getting There</div>
+                  <div class="meta mb-0_5">Getting There</div>
                   <div class="">${escapeHtml(inst.transit_tips)}</div>
                 </div>` : ''}
-                <div class="py-2 rule-t">
-                  <div class="meta mb-0_5" style="color:${isClean ? '#42be65' : '#78a9ff'}">Highlight</div>
-                  ${inst.highlight ? `<div class="">${escapeHtml(inst.highlight)}</div>` : ''}
-                </div>
+                ${inst.highlight ? `<div class="py-2 rule-t">
+                  <div class="meta mb-0_5">Highlight</div>
+                  <div class="">${escapeHtml(inst.highlight)}</div>
+                </div>` : ''}
                 ${inst.accessibility ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5" style="color:#ff7eb6">Accessibility</div>
+                  <div class="meta mb-0_5">Accessibility</div>
                   <div class="">${escapeHtml(inst.accessibility)}</div>
                 </div>` : ''}
                 ${inst.amenities ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5" style="color:#ff832b">Amenities</div>
+                  <div class="meta mb-0_5">Amenities</div>
                   <div class="">${escapeHtml((inst.amenities).toString().split(',').map(x => x.trim()).filter(Boolean).join(', '))}</div>
                 </div>` : ''}
               </div>
@@ -11836,7 +11764,7 @@ return maplibregl$1;
         } else {
           const badge = document.getElementById('keyDetectBadge');
           if (badge) {
-            badge.textContent = 'Built-in universal key active for all visitors';
+            badge.textContent = 'Built-in key active';
             badge.className = 'meta';
           }
           updateProviderUI('anthropic');
@@ -11874,7 +11802,7 @@ return maplibregl$1;
         }
         if (chatKeyBtn) {
           chatKeyBtn.className = 'flex items-center py-1';
-          chatKeyBtn.title = `${pName} Intelligence Active, Click to adjust settings`;
+          chatKeyBtn.title = `${pName} is on. Click to change settings`;
         }
         if (chatKeyIcon) {
           chatKeyIcon.className = 'w-1_5 h-1_5';
@@ -11904,7 +11832,7 @@ return maplibregl$1;
           chatKeyLabel.textContent = 'Add API Key';
         }
         if (workLabel) {
-          workLabel.textContent = 'Culture Atlas 4.0 Critical Engine';
+          workLabel.textContent = 'Answers from the records';
         }
       }
     }
@@ -12344,7 +12272,7 @@ return maplibregl$1;
           <div class="flex items-center justify-between rule-b pb-1_5 flex-wrap gap-1">
             <div class="flex items-center gap-2 meta">
 
-              <span>Live Web Intelligence (Scraped)</span>
+              <span>Web page read for this answer</span>
             </div>
             <span class="meta">Live Web Verification</span>
           </div>
@@ -12788,7 +12716,7 @@ return maplibregl$1;
 
           // Thematic styling:
           let dotColor = 'is-good';
-          let badgeText = 'Intelligence Note';
+          let badgeText = 'Note';
           let badgeClass = 'is-good';
 
           if (titleLower.includes('what you actually get') || titleLower.includes('core fact')) {
@@ -13799,8 +13727,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       return {
         mode: effMode,
-        thought: `Analyzing inquiry against verified institutional archives, governance filings, and cultural intelligence dossiers.`,
-        step: `Scanning Cultural Intelligence Dossiers`
+        thought: `Matching the question to the records and their sources.`,
+        step: `Reading the records`
       };
     }
 
@@ -14036,7 +13964,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               <strong>${pName} API Key connected and securely saved!</strong>
             </p>
             <p class="">
-              Live intelligence is now active using <strong>${aiModel}</strong>. Ask me anything about art history, exhibitions, institutional critique, or visitor recommendations.
+              Open-ended replies are on, using <strong>${aiModel}</strong>. Ask about a space, who funds it, or what has been reported.
             </p>
           </div>
         `);
@@ -14053,7 +13981,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             <div class="flex items-center justify-between rule-b pb-2">
               <div class="flex items-center gap-2">
                 
-                <span class="">Connect AI Intelligence</span>
+                <span class="">Add an API key</span>
               </div>
               <span class="meta px-2 py-0_5">100% Client-Side</span>
             </div>
@@ -16232,7 +16160,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     updateAIStatusUI();
 
     // Starter prompts for an empty chat. Every one is a question the offline answers can really answer from the records, and the
-    // examples are picked from the records themselves, so nothing is promised that the data does not hold. With a space selected
+    // examples are picked at random from the records themselves, so nothing is promised that the data does not hold. With a space selected
     // the prompts are about that space.
     function starterPromptList() {
       const registry = (typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []).filter(c => c && c.name);
@@ -16246,16 +16174,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (place) out.push(`Find spaces in ${place}`);
         return out.filter(q => resolves(q, sel) || /^Find spaces in /.test(q));
       }
-      const byName = (a, b) => a.name.localeCompare(b.name);
+      // A different set on every load: a city with several clean records, a funded space, a flagged one, and the method question.
+      const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+      const shuffled = (arr) => arr.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(p => p[1]);
       const clean = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
       const counts = {};
       clean.forEach(i => { const c = registryName(i.city); if (c) counts[c] = (counts[c] || 0) + 1; });
-      const topCity = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))[0];
-      if (topCity) out.push(`Find spaces in ${topCity}`);
-      const funded = clean.filter(i => i.funding && matchC(i.city, topCity)).sort(byName).find(i => resolves(`Who funds ${i.name}?`, i));
+      const cities = Object.keys(counts).filter(c => counts[c] >= 3);
+      if (cities.length) out.push(`Find spaces in ${pick(cities)}`);
+      const funded = shuffled(clean.filter(i => i.funding)).find(i => resolves(`Who funds ${i.name}?`, i));
       if (funded) out.push(`Who funds ${funded.name}?`);
-      const flagged = ALL_INSTITUTIONS.filter(i => i.tier === 'B').sort(byName).find(i => resolves(`Why is ${i.name} flagged?`, i) && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i));
-      if (flagged) out.push(`Why is ${flagged.name} flagged?`);
+      const flagged = shuffled(ALL_INSTITUTIONS.filter(i => i.tier === 'B')).find(i => resolves(`Why is ${i.name} flagged?`, i) && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i));
+      if (flagged) out.push(pick([`Why is ${flagged.name} flagged?`, `What is reported about ${flagged.name}?`]));
       out.push('How do you decide which spaces are clean?');
       return out;
     }
