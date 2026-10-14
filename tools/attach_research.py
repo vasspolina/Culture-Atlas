@@ -100,6 +100,18 @@ def compose(key, row_id, cols):
     raise KeyError(key)
 
 
+# A few rows begin "The same cable ..." because the case study table read top to bottom. On a record the row stands alone, so the
+# leading "same" goes. One row says "the same profile" where the row above it, same document and date, names it a New Yorker profile.
+SAME_FIXES = {'wikileaks:0:45': ('The same profile', 'The New Yorker profile')}
+
+
+def stand_alone(row_id, text):
+    for old, new in [SAME_FIXES.get(row_id, ('', ''))]:
+        if old and text.startswith(old):
+            return new + text[len(old):]
+    return re.sub(r'^The same ', 'The ', text)
+
+
 n_case = 0
 for d in decisions:
     if d['final'] != 'add':
@@ -109,7 +121,9 @@ for d in decisions:
     table = (c.get('tables') or [c['table']])[int(ti)]
     row = table['rows'][int(ri)]
     cols = dict(zip(table['head'][1:], row[1:]))
-    add(d['record_id'], 'case_notes', compose(key, d['row_id'], cols))
+    note = compose(key, d['row_id'], cols)
+    note['text'] = stand_alone(d['row_id'], note['text'])
+    add(d['record_id'], 'case_notes', note)
     n_case += 1
 
 # ---- the two single-institution case studies
@@ -118,7 +132,8 @@ for key in ('moma', 'teargas'):
     c = cases[key]
     body = {k: c[k] for k in ('title', 'kick', 'summary', 'bullets', 'timeline', 'stats', 'sources') if c.get(k)}
     rid = [r['id'] for r in by_name[norm(c['inst'])] if norm(r['name']) == norm(c['inst'])][0]
-    add(rid, 'case_study', body)
+    for t in targets(rid):
+        t['case_study'] = body
     n_cs += 1
 
 # ---- funders and trustees shared across institutions

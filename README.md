@@ -79,8 +79,26 @@ key in base64 pieces; it is still in the git history and must be revoked.
 The Academic Research Library window was removed on 14 October 2026. Its 183
 studies and eight case studies are kept in `data/library/`, the Gossip Mode
 research and the visual critique reference list stay in `data/`, and none of
-them is shipped in the page. What belongs to one institution is moved onto that
-institution's own record by `tools/attach_research.py` (in progress).
+them is shipped in the page. What belongs to one institution now sits on that
+institution's own record. `tools/attach_research.py` writes four fields, and
+re-running it replaces them:
+
+- `study_notes`: a line from a study's abstract that states something specific
+  about that institution (9 lines from 7 studies). Each was checked three times
+  and keeps the quote it rests on in `data/research_attach/study_findings.json`.
+  The other 176 studies name no institution on the map, or only as a passing
+  example, and are not shown.
+- `case_notes`: case study table rows that the record did not already state,
+  copied word for word (74 rows, 88 record entries because a few museums have
+  two pins). Rows the record already states are listed with the quote that
+  shows it in `data/research_attach/case_decisions.json`.
+- `case_study`: the MoMA and Whitney case studies, whole.
+- `funder_links`: funders and trustees the map names at three or more
+  institutions, only where the record's own text names them (230 links; 55
+  where it does not are left out).
+
+Notes saved in this browser are read back inside the chat ("Notes saved in this
+browser" in the chat reply opens nothing).
 
 ## What the page may show
 
