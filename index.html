@@ -9852,19 +9852,17 @@ return maplibregl$1;
       // Dark frosted glass background (solid 100% opacity to prevent bleed-through)
       ctx.fillStyle = '#000000';
       ctx.beginPath();
-      if (ctx.roundRect) ctx.roundRect(cardX, cardY, cardW, cardH, 4);
-      else ctx.rect(cardX, cardY, cardW, cardH);
+      ctx.rect(cardX, cardY, cardW, cardH);
       ctx.fill();
 
       // Subtle border with tier accent
       ctx.shadowBlur = 0;
       ctx.shadowOffsetY = 0;
-      ctx.strokeStyle = isA ? '#42be65' : isB ? '#be95ff' : '#f4f4f4';
+      ctx.strokeStyle = '#f4f4f4';
       ctx.lineWidth = 0.8;
       ctx.stroke();
 
-      // Row 1: Institution Name. No tier title above it: the tier reads from
-      // the card's border colour, not from a label.
+      // Row 1: Institution Name. No tier title above it, and the border is the same off-white for every tier.
       ctx.textAlign = 'left';
       ctx.font = '15px "PP Neue Gstaad", sans-serif';
       ctx.fillStyle = '#ffffff';
@@ -10583,22 +10581,20 @@ return maplibregl$1;
               // Drop shadow & glass fill
               ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
               ctx.shadowBlur = 0;
-              ctx.fillStyle = isGossipModeActive ? '#151103' : '#070c16';
+              ctx.fillStyle = '#000';
               ctx.beginPath();
-              ctx.roundRect ? ctx.roundRect(cardX, cardY, cardW, cardH, 8) : ctx.rect(cardX, cardY, cardW, cardH);
+              ctx.rect(cardX, cardY, cardW, cardH);
               ctx.fill();
 
               // Border outline - in yellow mode, hovering card or link highlights in OPPOSITE color (#08bdba)
               ctx.shadowBlur = 0;
-              ctx.strokeStyle = isHoveringCityExploreLink 
-                ? '#08bdba' 
-                : (isGossipModeActive ? '#facc15' : '#08bdba');
+              ctx.strokeStyle = isGossipModeActive ? '#facc15' : '#f4f4f4';
               ctx.lineWidth = 0.8;
               ctx.stroke();
 
               // Line 1: City Name (500 18px)
               ctx.font = '15px "PP Neue Gstaad", sans-serif';
-              ctx.fillStyle = isGossipModeActive ? '#facc15' : '#08bdba';
+              ctx.fillStyle = isGossipModeActive ? '#facc15' : '#f4f4f4';
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
               ctx.fillText(cityTxt, cardX + 14, cardY + 12);
@@ -10619,41 +10615,21 @@ return maplibregl$1;
               ctx.fillText(countTxt, cardX + 14, currentY);
               currentY += 22;
 
-              // Line 4: "Click to Explore" Action Link Pill with Interactive Hover State
-              // In yellow mode, hovering triggers the OPPOSITE color (Electric Cyan #08bdba)!
+              // Line 4: the link is plain underlined text, no plate, no pill
               ctx.save();
-              if (isGossipModeActive) {
-                if (isHoveringCityExploreLink) {
-                  // Hovered state in yellow mode: OPPOSITE COLOR (Electric Cyan #08bdba glow & stroke)
-                  ctx.fillStyle = 'rgba(8, 189, 186, 0.28)';
-                  ctx.strokeStyle = '#f4f4f4';
-                  ctx.lineWidth = 0.8;
-                  ctx.shadowBlur = 0;
-                } else {
-                  // Default link state in yellow mode: warm golden yellow pill
-                  ctx.fillStyle = 'rgba(234, 179, 8, 0.16)';
-                  ctx.strokeStyle = 'rgba(234, 179, 8, 0.60)';
-                  ctx.lineWidth = 0.8;
-                }
-              } else {
-                ctx.fillStyle = isHoveringCityExploreLink ? 'rgba(8, 189, 186, 0.28)' : 'rgba(8, 189, 186, 0.12)';
-                ctx.strokeStyle = isHoveringCityExploreLink ? '#f4f4f4' : '#f4f4f4';
-                ctx.lineWidth = 0.8;
-                ctx.shadowBlur = 0;
-              }
-              ctx.beginPath();
-              ctx.roundRect ? ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 6) : ctx.rect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
-              ctx.fill();
-              ctx.stroke();
-              ctx.shadowBlur = 0;
-
               ctx.font = '14px "PP Neue Gstaad", sans-serif';
-              ctx.fillStyle = isGossipModeActive 
-                ? (isHoveringCityExploreLink ? '#f4f4f4' : '#facc15') 
-                : (isHoveringCityExploreLink ? '#ffffff' : '#08bdba');
-              ctx.textAlign = 'center';
+              ctx.fillStyle = isGossipModeActive ? '#facc15' : '#f4f4f4';
+              ctx.textAlign = 'left';
               ctx.textBaseline = 'middle';
-              ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2);
+              const linkTextW = ctx.measureText(linkTxt).width;
+              const linkMidY = linkBtnY + linkBtnH / 2;
+              ctx.fillText(linkTxt, linkBtnX, linkMidY);
+              ctx.beginPath();
+              ctx.moveTo(linkBtnX, linkMidY + 9);
+              ctx.lineTo(linkBtnX + linkTextW, linkMidY + 9);
+              ctx.strokeStyle = ctx.fillStyle;
+              ctx.lineWidth = isHoveringCityExploreLink ? 1.6 : 0.8;
+              ctx.stroke();
               ctx.restore();
 
               ctx.restore();
