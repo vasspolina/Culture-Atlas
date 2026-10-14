@@ -1619,9 +1619,13 @@ html body #curatorHeroGreeting { max-width: 720px; align-items: flex-start !impo
 html body #curatorHeroGreeting h1, html body #curatorHeroGreeting p { text-align: left !important; max-width: none !important; }
 .starter-prompts { width: 100%; margin-top: 24px; }
 html body #curatorHeroGreeting .starter-label { font-size: 14px !important; margin: 0 0 8px !important; color: #f4f4f4 !important; }
-html body #curatorHeroGreeting .starter-prompt { display: block; width: 100%; text-align: left; padding: 12px 0 !important; border: 0 !important; border-top: 0.8px solid #f4f4f4 !important; border-radius: 0 !important; background: transparent !important; color: #f4f4f4 !important; font-size: 18px !important; line-height: 1.3 !important; cursor: pointer; white-space: normal; }
-html body #curatorHeroGreeting .starter-prompt:last-child { border-bottom: 0.8px solid #f4f4f4 !important; }
-html body #curatorHeroGreeting .starter-prompt:hover { color: #ffffff !important; text-decoration: underline; }
+html body #curatorHeroGreeting .starter-prompt { display: block; width: 100%; text-align: left; padding: 6px 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; font-size: 18px !important; line-height: 1.3 !important; cursor: pointer; white-space: normal; }
+/* Each prompt is highlighted in its own colour, no rules between them. */
+html body #curatorHeroGreeting .starter-prompt:nth-of-type(4n+1) { color: #08bdba !important; }
+html body #curatorHeroGreeting .starter-prompt:nth-of-type(4n+2) { color: #42be65 !important; }
+html body #curatorHeroGreeting .starter-prompt:nth-of-type(4n+3) { color: #ff7eb6 !important; }
+html body #curatorHeroGreeting .starter-prompt:nth-of-type(4n+4) { color: #be95ff !important; }
+html body #curatorHeroGreeting .starter-prompt:hover { text-decoration: underline; }
 /* The composer keeps clear of the bottom edge of the window. */
 html body #workBottomDock { padding-bottom: max(32px, env(safe-area-inset-bottom)) !important; }
 /* The controls in the header, the tab bar and over the globe are plain bold text, not pills. The current one is teal and underlined. */
