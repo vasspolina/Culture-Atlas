@@ -176,7 +176,17 @@
     "visit_url": "https://www.fondation-vincentvangogh-arles.org/visit",
     "audit_dossier_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Fondation%20Vincent%20van%20Gogh%20Arles",
     "statutory_filings_url": "https://www.journal-officiel.gouv.fr/pages/associations-recherche/?q=Fondation%20Vincent%20van%20Gogh%20Arles",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "35 ter rue du Docteur Fanton, 13200 Arles",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.fondation-vincentvangogh-arles.org/wp-content/uploads/2015/04/Press-Release_Fondation-Vincent-van-Gogh-Arles_E.pdf"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Luma Arles",
@@ -463,7 +473,19 @@
     "visit_url": "https://www.tinguely.ch/visit",
     "audit_dossier_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
     "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "Paul Sacher-Anlage 1, 4058 Basel",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.tinguely.ch/en/press.html",
+          "https://www.tinguely.ch/en/information/admission/tickets.html",
+          "https://www.tinguely.ch/en/landing-page/ausstellung.html"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Schaulager",
@@ -490,7 +512,19 @@
     "visit_url": "https://schaulager.org/visit",
     "audit_dossier_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
     "statutory_filings_url": "https://www.edi.admin.ch/edi/de/home/fachstellen/eidgenoessische-stiftungsaufsicht.html",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "Ruchfeldstrasse 19, CH-4142 M\u00fcnchenstein",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://schaulager.org/en/visit/directions",
+          "https://schaulager.org/en/visit/information-1684139632",
+          "https://schaulager.org/en"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Dia Beacon",
@@ -638,7 +672,19 @@
     "visit_url": "https://crystalbridges.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Crystal%20Bridges",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Crystal%20Bridges",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "600 Museum Way, Bentonville, AR 72712",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://crystalbridges.org/news/crystal-bridges-and-the-momentary-modify-operations-offer-respite-after-weekend-storms",
+          "https://crystalbridges.org/Contact-Us",
+          "https://crystalbridges.org/About"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Gropius Bau",
@@ -975,7 +1021,17 @@
         "funder": "UBS",
         "institutions": 4
       }
-    ]
+    ],
+    "address": "Hodlerstrasse 8\u201312, 3011 Bern",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.kunstmuseumbern.ch/en/future/contact"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "De La Warr Pavilion",
@@ -1050,7 +1106,17 @@
     "visit_url": "https://eastsideprojects.org/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Eastside%20Projects",
     "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Eastside%20Projects",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "86, Heath Mill Lane, Birmingham, B9 4AR, UK",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://eastsideprojects.org/visit/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Ikon Gallery",
@@ -1083,7 +1149,19 @@
         "funder": "Deutsche Bank",
         "institutions": 3
       }
-    ]
+    ],
+    "address": "1 Oozells Square, Brindleyplace, Birmingham B1 2HS",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://ikon-gallery.org/visit/getting-here",
+          "https://www.ikon-gallery.org/visit/getting-here",
+          "https://www.ikon-gallery.org/about"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Cranbrook Art Museum",
@@ -1225,7 +1303,18 @@
     "visit_url": "https://www.kunsthalle-bremen.de/visit",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Bremen",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Bremen",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "Am Wall 207, 28195 Bremen, Germany",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.kunsthalle-bremen.de/de/view/static/page/kontakt",
+          "https://en.wikipedia.org/wiki/Kunsthalle_Bremen"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Institute of Modern Art",
@@ -1297,7 +1386,19 @@
     "visit_url": "https://arnolfini.org.uk/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Arnolfini",
     "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Arnolfini",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "16 Narrow Quay, Bristol BS1 4QA",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://arnolfini.org.uk/plan-your-visit/getting-here/",
+          "https://arnolfini.org.uk/about-arnolfini/contact/",
+          "https://arnolfini.org.uk/?p=82"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Wiels Contemporary Art Centre",
@@ -1748,7 +1849,17 @@
     ],
     "highlight": "Converted industrial warehouse with an exterior mirror mosaic facade showcasing the Bunnag-Beurdeley collection of contemporary Thai and Southeast Asian art.",
     "visit_url": "https://maiiam.com/en/visit/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "122, Moo 7 Tonpao, San Kamphaeng District, Chiang Mai, 50130, Thailand",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://maiiam.com/en/visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museum of Contemporary Art Chicago (MCA)",
@@ -1776,7 +1887,18 @@
     "visit_url": "https://mcachicago.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Museum%20of%20Contemporary%20Art%20Chicago%20%28MCA%29",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Museum%20of%20Contemporary%20Art%20Chicago%20%28MCA%29",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "220 East Chicago Avenue, Chicago, IL 60611",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://mcachicago.org/stories/editorial/how-to-get-to-the-mca/",
+          "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art_Chicago"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "The Renaissance Society",
@@ -2045,7 +2167,19 @@
     ],
     "highlight": "Carl Jacobsen's winter garden oasis surrounded by ancient Roman marble busts, Degas bronzes, and French Impressionist canvases.",
     "visit_url": "https://www.carlsbergfondet.dk/visit",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "Dantes Plads 7, 1556 Copenhagen V",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Ny_Carlsberg_Glyptotek",
+          "https://glyptoteket.com/contact",
+          "https://www.glyptoteket.com/practical-information/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Crawford Art Gallery",
@@ -2152,7 +2286,18 @@
     "visit_url": "https://desmoinesartcenter.org/visit/",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Des%20Moines%20Art%20Center",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Des%20Moines%20Art%20Center",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "4700 Grand Avenue, Des Moines, IA 50312",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.desmoinesartcenter.org/contact/",
+          "https://desmoinesartcenter.org/visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Le Consortium",
@@ -2292,7 +2437,18 @@
     "visit_url": "https://www.dca.org.uk/visit",
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Dundee%20Contemporary%20Arts",
     "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Dundee%20Contemporary%20Arts",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "152 Nethergate, Dundee, DD1 4DY",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.dca.org.uk/contact-us/",
+          "https://www.dca.org.uk/about"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Towner Eastbourne",
@@ -18821,7 +18977,19 @@
       "21_21 DESIGN SIGHT"
     ],
     "visit_url": "https://www.2121designsight.jp/designsight/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "Midtown Garden, Tokyo Midtown, 9-7-6 Akasaka, Minato-ku, Tokyo, 107-0052 JAPAN",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.2121designsight.jp/en/information",
+          "https://2121designsight.jp/en/designsight",
+          "https://en.wikipedia.org/wiki/21_21_Design_Sight"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museum of Contemporary Art Tokyo",
@@ -18875,7 +19043,19 @@
       "Nezu Museum"
     ],
     "visit_url": "https://www.nezu-muse.or.jp/jp/foundation/index.html",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "6-5-1 Minami-Aoyama, Minato-ku, Tokyo 107-0062",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.tokyoweekender.com/the-concierge/nezu-museum/",
+          "https://www.gotokyo.org/en/spot/1/index.html",
+          "https://www.tokyoartbeat.com/en/venues/-/53ACE7A1"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Watari-um",
@@ -18893,7 +19073,19 @@
       "Watari-um"
     ],
     "visit_url": "http://www.watarium.co.jp/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "3-7-6 Jingumae, Shibuya-ku, Tokyo 150-0001",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Watari_Museum_of_Contemporary_Art",
+          "https://www.tokyoartbeat.com/en/events/-/Koji-Kamoji-Exhibition/7879-E100/2025-04-08",
+          "https://tokyoartbeat.com/en/events/-/Yosuke-Amemiya-Watari-um-The-Watari-Museum-of-Art-Which-Has-Not-Melted-Yet/7879-E100/2024-12-21"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Towada Art Center",
@@ -18914,7 +19106,19 @@
       "Towada Art Center"
     ],
     "visit_url": "https://towadaartcenter.com/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "10-9 Nishi-Nibancho, Towada-shi, Aomori 034-0082",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Towada_Art_Center",
+          "https://aomori-tourism.com/en/spot/detail_10030.html",
+          "https://aomori-tourism.com/en/spot/detail_3474.html"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Yokohama Museum of Art",
@@ -18934,7 +19138,17 @@
       "Yokohama Museum of Art"
     ],
     "visit_url": "https://yokohama.art.museum/eng/visit/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "3-4-1 Minatomirai, Nishi Ward, Yokohama",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://yokohama.art.museum/eng/wp-content/uploads/sites/2/2026/08/20260430_web-guide_EN.pdf"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Nairobi Contemporary Art Institute",
@@ -18995,7 +19209,19 @@
       "Museo Experimental El Eco"
     ],
     "visit_url": "https://eleco.unam.mx/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "Sullivan # 43, Colonia San Rafael, 06470 Mexico City",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Museo_Experimental_El_Eco",
+          "https://myartguides.com/artspaces/museums/mexico-city/museo-experimental-el-eco/",
+          "https://ocula.com/institutions/museo-experimental-el-eco-mexico/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museo Universitario del Chopo",
@@ -19014,7 +19240,17 @@
       "Museo Universitario del Chopo"
     ],
     "visit_url": "https://www.chopo.unam.mx/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "Dr. Enrique Gonz\u00e1lez Mart\u00ednez no. 10, Col. Santa Mar\u00eda la Ribera",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://chopo.unam.mx/english/contacto.html"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museo Amparo",
@@ -19034,7 +19270,19 @@
       "Museo Amparo"
     ],
     "visit_url": "https://museoamparo.com/acerca-de",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "Calle 2 Sur No. 708, Centro, 72000 Puebla, Puebla",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://kupi.com/en/explore/mexico/puebla/amparo-museum",
+          "https://www.artrabbit.com/organisations/museo-amparo",
+          "https://travel.sygic.com/en/poi/amparo-museum-poi:40511"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Fundaci\u00f3n Casa Wabi",
@@ -19056,7 +19304,18 @@
     "aliases": [
       "Fundaci\u00f3n Casa Wabi"
     ],
-    "visit_url": "https://casawabi.org/en/"
+    "visit_url": "https://casawabi.org/en/",
+    "address": "Carretera Federal Salina Cruz - Santiago Pinotepa Nacional Km. 113, Puerto Escondido, Oaxaca, 71983, Mexico",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.artrabbit.com/organisations/casa-wabi?view=cur",
+          "https://themesh.art/?p=24068"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museo de Arte de Zapopan",
@@ -19075,7 +19334,19 @@
       "Museo de Arte de Zapopan"
     ],
     "visit_url": "https://mazmuseo.com/",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "Andador 20 de Noviembre 166, Centro, C.P. 45100, Zapopan, Jalisco",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://myartguides.com/artspaces/museums/mexico/museo-de-arte-zapopan-maz/",
+          "https://maz.zapopan.gob.mx/?p=8093",
+          "https://maz.zapopan.gob.mx/en/about-maz"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Fondation Ifitry",
@@ -19116,7 +19387,19 @@
     "visit_url": "https://www.museumarnhem.nl/en/support-us/funds-and-partners",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Museum%20Arnhem",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=Museum%20Arnhem",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "Utrechtseweg 87, 6812 AA Arnhem",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://museum.nl/en/museum-arnhem",
+          "https://veluwe.nl/en/location/museum-arnhem-2/",
+          "https://en.visitarnhem.com/locations/3864289797/museum-arnhem"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Fries Museum",
@@ -19139,7 +19422,18 @@
     "visit_url": "https://www.friesmuseum.nl/over-het-museum/steun-het-museum/onze-partners",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Fries%20Museum",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=Fries%20Museum",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "Wilhelminaplein 92, 8911 BS Leeuwarden",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.friesmuseum.nl/en/visit/shop",
+          "https://www.friesmuseum.nl/en/visit/getting-here"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museum De Lakenhal",
@@ -19161,7 +19455,19 @@
     "visit_url": "https://www.lakenhal.nl/en/story/funds-and-sponsors",
     "audit_dossier_url": "https://openkvk.nl/zoeken?q=Museum%20De%20Lakenhal",
     "statutory_filings_url": "https://openkvk.nl/zoeken?q=Museum%20De%20Lakenhal",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "address": "Oude Singel 32, 2312 RA Leiden",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://fietsnetwerk.nl/en/places/museum-de-lakenhal-leiden",
+          "https://museum.nl/en/museum-de-lakenhal",
+          "https://www.visitleiden.nl/en/locations/3053810059/museum-de-lakenhal"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Nederlands Fotomuseum",
@@ -28028,7 +28334,17 @@
     "visit_url": "https://www.kunsthalle-mainz.de/de/partners-and-supporters",
     "audit_dossier_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Mainz",
     "statutory_filings_url": "https://www.bundesanzeiger.de/pub/de/suchergebnis?1&fulltext=Kunsthalle%20Mainz",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "Am Zollhafen 3\u20135, 55118 Mainz",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://kunsthalle-mainz.de/en/exhibitions/archive"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Kunsthalle M\u00fcnster",
@@ -28162,7 +28478,19 @@
         "funder": "Stavros Niarchos Foundation",
         "institutions": 3
       }
-    ]
+    ],
+    "address": "Kallirrois Avenue & Amvr. Frantzi Str, Athens 117 43",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/National_Museum_of_Contemporary_Art,_Athens",
+          "https://www.emst.gr/en/visit",
+          "https://www.emst.gr/en/contact"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "NEON",
@@ -28254,7 +28582,19 @@
         "funder": "Citi",
         "institutions": 7
       }
-    ]
+    ],
+    "address": "143, Avenue Christophe BP 2720 HT 6112 Port-au-Prince, Ha\u00efti",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://fokal.org/index.php/en/",
+          "https://fokal.org/index.php/en/nouvel-fokal-en/",
+          "https://fokal.org/index.php/en/category/kreyol-en/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Ghetto Biennale",
@@ -28292,7 +28632,17 @@
     "aliases": [
       "Ludwig Museum Budapest"
     ],
-    "visit_url": "https://www.ludwigmuseum.hu/en/exhibition/permanent-revolution-ukrainian-art-today"
+    "visit_url": "https://www.ludwigmuseum.hu/en/exhibition/permanent-revolution-ukrainian-art-today",
+    "address": "Komor Marcell u. 1, Budapest, H-1095",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.ludwigmuseum.hu/en/contacts"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Reykjav\u00edk Art Museum",
@@ -28357,7 +28707,19 @@
     ],
     "visit_url": "https://sabo.com/sabo-is-sponsor-of-gamec-the-gallery-of-modern-and-contemporary-art-in-bergamo/",
     "audit_dossier_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=GAMeC",
-    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=GAMeC"
+    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=GAMeC",
+    "address": "Via San Tomaso 53, 24121 Bergamo",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Galleria_d%27Arte_Moderna_e_Contemporanea",
+          "https://www.gamec.it/en/?p=12146",
+          "https://visitbergamo.net/en/?p=12273"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "MAMbo",
@@ -28379,7 +28741,19 @@
     ],
     "visit_url": "https://www.mambo-bologna.org",
     "audit_dossier_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=MAMbo",
-    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=MAMbo"
+    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=MAMbo",
+    "address": "Via Don Giovanni Minzoni 14, 40121 Bologna",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Museo_d%27Arte_Moderna_di_Bologna",
+          "https://www.bolognazerodiciotto.it/lang/en/objects/mambo-museo-d-arte-moderna-di-bologna",
+          "https://www.amaci.org/en/partners/617bd4a0482f8f00115ac636"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Museion",
@@ -28401,7 +28775,17 @@
     ],
     "visit_url": "https://www.museion.it/it/pagine/5354-chi-siamo",
     "audit_dossier_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Museion",
-    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Museion"
+    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Museion",
+    "address": "Piazza Piero Siena 1, 39100 Bolzano",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://museion.it/en/pages/5355-visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Centro Pecci",
@@ -28422,7 +28806,19 @@
     ],
     "visit_url": "https://www.centropecci.it",
     "audit_dossier_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Centro%20Pecci",
-    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Centro%20Pecci"
+    "statutory_filings_url": "https://servizi.lavoro.gov.it/runts/it-it/Ricerca-enti?denominazione=Centro%20Pecci",
+    "address": "Viale della Repubblica 277, 59100 Prato",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://centropecci.it/site/assets/files/1965/consulente_membership.pdf",
+          "https://www.centropecci.it/en/about",
+          "https://en.wikipedia.org/wiki/Centro_per_l%27arte_contemporanea_Luigi_Pecci"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "name": "Beppu Contemporary Art Festival",
@@ -32552,7 +32948,19 @@
     "lat": 35.11,
     "lon": 128.942,
     "audit_dossier_url": "https://www.e-flux.com/announcements/?i=Busan Museum of Contemporary Art",
-    "statutory_filings_url": "https://www.e-flux.com/announcements/?i=Busan Museum of Contemporary Art"
+    "statutory_filings_url": "https://www.e-flux.com/announcements/?i=Busan Museum of Contemporary Art",
+    "address": "1191 Nakdongnam-ro, Saha-gu, Busan 49300, Korea",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.busan.go.kr/eng/bsfacility01/1321571",
+          "https://busan.go.kr/moca_en/about01",
+          "https://www.e-flux.com/directory/365683/busan-museum-of-contemporary-art/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "mmca-seoul",
@@ -32598,7 +33006,19 @@
     "lat": 40.322,
     "lon": -3.865,
     "audit_dossier_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=CA2M%20Centro%20de%20Arte%20Dos%20de%20Mayo",
-    "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=CA2M%20Centro%20de%20Arte%20Dos%20de%20Mayo"
+    "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=CA2M%20Centro%20de%20Arte%20Dos%20de%20Mayo",
+    "address": "Avenida Constituci\u00f3n, 23, 28931 M\u00f3stoles, Madrid",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.spain.info/en/places-of-interest/ca2m-dos-mayo-art-centre/",
+          "https://www.visitmadrid.es/en/what-to-do/culture-in-madrid-art-history-and-traditions/museums/culture/art-museums/ca2m-museum",
+          "https://m.spain.info/en/places-of-interest/ca2m-dos-mayo-art-centre/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "tabakalera-san-sebasti-n",
@@ -32615,7 +33035,18 @@
     "lat": 43.317,
     "lon": -1.979,
     "audit_dossier_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=Tabakalera",
-    "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=Tabakalera"
+    "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=Tabakalera",
+    "address": "Plaza de las Cigarreras, 1, 20012 Donostia / San Sebasti\u00e1n",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.spain.info/en/places-of-interest/tabakalera/",
+          "https://www.spain.info/it/siti-interesse/tabakalera/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "bonniers-konsthall-stockholm",
@@ -32629,7 +33060,19 @@
       "https://www.bonnierskonsthall.se"
     ],
     "lat": 59.341,
-    "lon": 18.044
+    "lon": 18.044,
+    "address": "Torsgatan 19, 113 21 Stockholm",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://bonnierskonsthall.se/en/visit-us/",
+          "https://bonnierskonsthall.se/en/?p=227",
+          "https://www.visitstockholm.com/o/bonniers-konsthall/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "kunsthalle-friart-fribourg-fribourg",
@@ -32729,7 +33172,19 @@
     "lon": -1.599,
     "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Baltic",
     "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Baltic",
-    "tier_note": "No reason for the flag is recorded."
+    "tier_note": "No reason for the flag is recorded.",
+    "address": "Centre for Contemporary Art, South Shore Road, Gateshead, NE8 3BA",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://gateshead.gov.uk/article/28971/Baltic-Centre-for-Contemporary-Art",
+          "https://www.artfund.org/explore/museums-and-galleries/baltic/visitor-information",
+          "https://www.gateshead.gov.uk/article/28971/Baltic-Centre-for-Contemporary-Art"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "renaissance-society-chicago",
@@ -32854,7 +33309,18 @@
     "lat": 17.497,
     "lon": -88.187,
     "audit_dossier_url": "https://501academy.edu.bz/2025/03/13/said-musa-project-1/",
-    "statutory_filings_url": "https://501academy.edu.bz/2025/03/13/said-musa-project-1/"
+    "statutory_filings_url": "https://501academy.edu.bz/2025/03/13/said-musa-project-1/",
+    "address": "91 North Front Street, Belize City",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Yasser_Musa",
+          "https://belize.com/art-galleries-in-belize/"
+        ],
+        "basis": "address",
+        "retrieved": "2026-10-14"
+      }
+    }
   },
   {
     "id": "yarat-contemporary-art-space-baku",

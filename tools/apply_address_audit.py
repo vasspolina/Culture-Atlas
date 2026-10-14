@@ -15,6 +15,7 @@ Input: the rows the address-audit workflow returned (one JSON file per slice, ea
 Nothing is written that a search result did not state. A value that names only a city and a country is not an address.
 Usage: python3 tools/apply_address_audit.py rows_a.json rows_b.json ... [--adjudicated rows_conflicts.json] [--date 2026-10-14]
 """
+import html
 import json
 import re
 import sys
@@ -109,7 +110,7 @@ decisions, conflicts = [], []
 def put(rid, address, urls, how):
     (rec,) = by_id[rid]
     if address is not None:
-        rec['address'] = address
+        rec['address'] = html.unescape(address)
     fs = rec.setdefault('field_sources', {})
     fs['address'] = {'urls': urls, 'basis': 'address', 'retrieved': date}
 
