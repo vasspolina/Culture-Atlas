@@ -620,3 +620,8 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 
 /* The Epstein flag is highlighted in purple */
 .flag-epstein{background:#be95ff;color:#000;padding:0 5px}
+
+/* The building's photograph from Wikimedia Commons, with its credit under it */
+.xray-photo{margin:0 0 10px}
+.xray-photo img{display:block;width:100%;height:auto;border:0.8px solid var(--line)}
+.xray-photo figcaption{font-size:14px;line-height:1.25;margin-top:6px}

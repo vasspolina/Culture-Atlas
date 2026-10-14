@@ -7381,6 +7381,21 @@ return maplibregl$1;
       const json = await res.json();
       return (json.results && json.results.bindings) || [];
     }
+    async function xrayPhotoInfo(fileUrl, ctrl) {
+      const title = decodeURIComponent(String(fileUrl).replace(/^.*\//, '')).replace(/_/g, ' ');
+      const url = 'https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=900&titles=' + encodeURIComponent('File:' + title);
+      const res = await fetch(url, { signal: ctrl ? ctrl.signal : undefined });
+      if (!res.ok) return null;
+      const json = await res.json();
+      const page = Object.values((json.query || {}).pages || {})[0];
+      const info = page && page.imageinfo && page.imageinfo[0];
+      if (!info || !info.thumburl) return null;
+      const meta = info.extmetadata || {};
+      const text = (v) => { const d = document.createElement('div'); d.innerHTML = v && v.value ? v.value : ''; return d.textContent.trim(); };
+      const licence = text(meta.LicenseShortName);
+      if (!licence) return null;
+      return { src: info.thumburl, page: info.descriptionurl || '', artist: text(meta.Artist), licence, licenceUrl: (meta.LicenseUrl && meta.LicenseUrl.value) || '' };
+    }
     function xrayCandidatesQuery(inst) {
       return `SELECT ?item ?itemLabel ?dist (GROUP_CONCAT(DISTINCT ?site; separator=" ") AS ?sites) (GROUP_CONCAT(DISTINCT ?alt; separator="|") AS ?alts) WHERE {
   SERVICE wikibase:around { ?item wdt:P625 ?loc . bd:serviceParam wikibase:center "Point(${Number(inst.lon)} ${Number(inst.lat)})"^^geo:wktLiteral ; wikibase:radius "0.25" ; wikibase:distance ?dist . }
@@ -7391,8 +7406,9 @@ return maplibregl$1;
     }
     function xrayFactsQuery(itemUri) {
       const id = String(itemUri).replace(/^.*\//, '');
-      return `SELECT ?architectLabel ?inception ?prec ?collection ?archivesAtLabel ?article WHERE {
+      return `SELECT ?architectLabel ?inception ?prec ?collection ?archivesAtLabel ?article ?image WHERE {
   OPTIONAL { wd:${id} wdt:P84 ?architect . }
+  OPTIONAL { wd:${id} wdt:P18 ?image . }
   OPTIONAL { wd:${id} p:P571/psv:P571 ?t . ?t wikibase:timeValue ?inception ; wikibase:timePrecision ?prec . }
   OPTIONAL { wd:${id} wdt:P1436 ?collection . }
   OPTIONAL { wd:${id} wdt:P485 ?archivesAt . }
@@ -7414,6 +7430,9 @@ return maplibregl$1;
           const rows = await xrayWikidataQuery(xrayCandidatesQuery(inst), ctrl);
           out = xrayPickWikidata(inst, rows);
           if (out.status === 'matched') xrayApplyFacts(out, await xrayWikidataQuery(xrayFactsQuery(out.item), ctrl));
+          // The photograph Wikidata records for the item, with its photographer and licence from Wikimedia Commons.
+          // Without the credit the photo is not shown; the match stands either way.
+          if (out.status === 'matched' && out.image) out.photo = await xrayPhotoInfo(out.image, ctrl).catch(() => null);
         } catch (e) {
           out = { status: (e && e.name === 'AbortError') ? 'timeout' : 'unreachable' };
         }
@@ -7461,6 +7480,7 @@ return maplibregl$1;
         if (r.collection) collections.add(r.collection.value);
         if (r.inception) { const p = r.prec ? Number(r.prec.value) : 0; if (p >= 9) years.add(String(r.inception.value).replace(/^\+/, '').slice(0, 4)); else coarse = true; }
         if (r.article && !out.article) out.article = r.article.value;
+        if (r.image && !out.image) out.image = r.image.value;
       });
       out.architects = [...architects];
       out.archivesAt = [...archivesAt];
@@ -7478,7 +7498,9 @@ return maplibregl$1;
         ? `<p class="no-indent"><a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}</p>` : '';
       const siteHtml = site ? `<p class="no-indent"><a href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a></p>` : '';
       const archivesHtml = wd && wd.status === 'matched' && wd.archivesAt.length ? `<p class="no-indent">Archives held at ${e(wd.archivesAt.join(', '))}, according to Wikidata.</p>` : '';
-      const body = `
+      const ph = wd && wd.status === 'matched' && wd.photo;
+      const photoHtml = ph ? `<figure class="xray-photo"><img src="${e(ph.src)}" alt="${e(inst.name)}" loading="lazy"><figcaption class="no-indent">Photo: ${ph.artist ? e(ph.artist) + ', ' : ''}${ph.licenceUrl ? `<a href="${e(ph.licenceUrl)}" target="_blank" rel="noopener noreferrer">${e(ph.licence)}</a>` : e(ph.licence)}${ph.page ? `, <a href="${e(ph.page)}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>` : ', Wikimedia Commons'}</figcaption></figure>` : '';
+      const body = photoHtml + `
         ${cats.length ? `${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1_5 rule-t"><div class="no-indent xray-cat-title"><span class="swatch" style="background:${XRAY_COLOURS[c.key]}"></span>${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent">None of the categories shown here is in the record.</p>'}
         ${siteHtml || archivesHtml || wdHtml ? `<div class="py-1_5 rule-t">${siteHtml}${archivesHtml}${wdHtml}</div>` : ''}`;
       // On a desktop the information goes to the right column, under the record; the map keeps only the labels on the building.
