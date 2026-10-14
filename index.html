@@ -475,6 +475,21 @@ return maplibregl$1;
       </div>
 
       <!-- Subtle Globe Zoom & Map Controls (Preserved for test DOM assertions) -->
+      <!-- Zoom: always visible on the map, one pair of controls -->
+      <div id="zoomControls" class="absolute bottom-4 right-4 z-10 flex flex-col gap-2">
+  <button id="zoomInBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom In">
+    <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+  </button>
+  <button id="zoomOutBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom Out">
+    <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+  </button>
+      </div>
+
       <div id="hudControlsBar" class="hidden absolute bottom-3 sm-bottom-4 right-2 sm-right-4 z-10 items-center gap-1 sm-gap-1_5 p-1 max-w-_calc_100_-16px sm-max-w-_calc_100_-32px overflow-x-auto overflow-y-hidden no-scrollbar">
         <button id="hudWorldBtn" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Back to the whole world, with filters cleared">
           <span>Reset view</span>
@@ -500,18 +515,6 @@ return maplibregl$1;
         <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Share information on institutional sponsors">
 
           <span>Share information</span>
-        </button>
-        <div class="w-_1px h-4 mx-0_5 shrink-0"></div>
-        <button id="zoomInBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom In">
-          <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-        </button>
-        <button id="zoomOutBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom Out">
-          <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
         </button>
       </div>
 
