@@ -305,6 +305,12 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #desktopDossierRecordBody .rule-b{border-bottom:1px solid var(--line)}
 #desktopDossierRecordBody .record-actions{gap:8px!important;padding-top:12px!important}
 @media (max-width:767px){.dossier-main-heading{font-size:36px}}
+/* surfaces that sit inside the dark globe pane but are light themselves */
+#dossier-bottom-sheet,#buildingInsidePanel{color:#000}
+#dossier-bottom-sheet a:not(.record-action),#buildingInsidePanel a:not(.record-action){color:#000}
+#curator-chat-drawer a{color:#000}
+.xray-cat-title{display:flex;align-items:center;gap:8px}
+.swatch{display:inline-block;width:12px;height:12px;border:1px solid #000;flex:none}
 /* Layout helpers: generated, plain CSS. */
 .block{display:block}
 .inline-block{display:inline-block}
