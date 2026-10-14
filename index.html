@@ -155,14 +155,14 @@ return maplibregl$1;
       <!-- Top-Left Floating Map Controls (Uncontained) -->
       <div id="desktopGlobeTopControls" class="hidden md-flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 lg-gap-3 meta flex-wrap max-w-_calc_100_-24px">
         <div class="flex items-center gap-1_5 lg-gap-2 whitespace-nowrap">
-          <button type="button" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();" class="flex items-center gap-1" title="Reset to Global World View">
-            <span>World</span>
+          <button type="button" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();" class="flex items-center gap-1" title="Back to the whole world, with filters cleared">
+            <span>Reset view</span>
           </button>
-          <button type="button" onclick="if (typeof window.toggleGlobeAutoSpin === 'function') window.toggleGlobeAutoSpin();" class="flex items-center gap-1" title="Toggle Auto-Spin">
-            <span>Spin</span>
+          <button type="button" data-globe-control="spin" aria-pressed="true" onclick="if (typeof window.toggleGlobeAutoSpin === 'function') window.toggleGlobeAutoSpin();" class="flex items-center gap-1" title="Turn the globe's slow rotation on or off">
+            <span data-globe-label>Rotate: On</span>
           </button>
-          <button type="button" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" class="flex items-center gap-1" title="Expand Map Viewport">
-            <span>Expand</span>
+          <button type="button" data-globe-control="expand" aria-pressed="false" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" class="flex items-center gap-1" title="Give the map more of the window">
+            <span data-globe-label>Expand map</span>
           </button>
         </div>
       </div>
@@ -170,9 +170,9 @@ return maplibregl$1;
       <!-- BEGIN: FloatingFilterCategoryChips (Mobile Bar matching code.html & media_1791792341045_b9272491.png) -->
       <section class="relative z-20 pt-2 px-3 flex md-hidden flex-col gap-1 pointer-events-auto" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
         <div class="flex gap-1">
-        <button type="button" class="px-2 py-0_5" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();">World</button>
-        <button type="button" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();">Spin</button>
-        <button type="button" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();">Expand</button>
+        <button type="button" class="px-2 py-0_5" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();" title="Back to the whole world, with filters cleared">Reset view</button>
+        <button type="button" data-globe-control="spin" aria-pressed="true" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();" title="Turn the globe's slow rotation on or off"><span data-globe-label>Rotate: On</span></button>
+        <button type="button" data-globe-control="expand" aria-pressed="false" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" title="Give the map more of the window"><span data-globe-label>Expand map</span></button>
         </div>
       </section>
       <!-- END: FloatingFilterCategoryChips -->
@@ -475,15 +475,30 @@ return maplibregl$1;
       </div>
 
       <!-- Subtle Globe Zoom & Map Controls (Preserved for test DOM assertions) -->
+      <!-- Zoom: always visible on the map, one pair of controls -->
+      <div id="zoomControls" class="absolute bottom-4 right-4 z-10 flex flex-col gap-2">
+  <button id="zoomInBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom In">
+    <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+  </button>
+  <button id="zoomOutBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom Out">
+    <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+  </button>
+      </div>
+
       <div id="hudControlsBar" class="hidden absolute bottom-3 sm-bottom-4 right-2 sm-right-4 z-10 items-center gap-1 sm-gap-1_5 p-1 max-w-_calc_100_-16px sm-max-w-_calc_100_-32px overflow-x-auto overflow-y-hidden no-scrollbar">
-        <button id="hudWorldBtn" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Reset World View">
-          <span>World</span>
+        <button id="hudWorldBtn" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Back to the whole world, with filters cleared">
+          <span>Reset view</span>
         </button>
-        <button id="hudSpinBtn" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Toggle Auto-Spin">
-          <span id="hudSpinText">Spin</span>
+        <button id="hudSpinBtn" data-globe-control="spin" aria-pressed="true" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Turn the globe's slow rotation on or off">
+          <span id="hudSpinText" data-globe-label>Rotate: On</span>
         </button>
-        <button id="hudExpandBtn" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Maximize Map View">
-          <span id="hudExpandText">Expand</span>
+        <button id="hudExpandBtn" data-globe-control="expand" aria-pressed="false" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Give the map more of the window">
+          <span id="hudExpandText" data-globe-label>Expand map</span>
         </button>
 
         <div class="w-_1px h-4 mx-0_5 shrink-0"></div>
@@ -500,18 +515,6 @@ return maplibregl$1;
         <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Share information on institutional sponsors">
 
           <span>Share information</span>
-        </button>
-        <div class="w-_1px h-4 mx-0_5 shrink-0"></div>
-        <button id="zoomInBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom In">
-          <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-        </button>
-        <button id="zoomOutBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom Out">
-          <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
         </button>
       </div>
 
@@ -723,6 +726,7 @@ return maplibregl$1;
                     </svg>
                   </button>
                   <!-- Share information -->
+                  <button id="chatBackBtn" type="button" onclick="window.exitChatInputMode()" class="whitespace-nowrap" title="Leave the note and go back to the chat">Back to chat</button>
                   <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('information')" class="whitespace-nowrap">Share information</button>
                 </div>
 
@@ -9963,6 +9967,7 @@ return maplibregl$1;
     window.scheduleRender = scheduleRender;
 
     function render(ts) {
+      if (typeof syncGlobeControls === 'function') syncGlobeControls();
       const now = (typeof ts === 'number') ? ts : performance.now();
       const dt = lastRenderTs ? Math.min(0.1, Math.max(0, (now - lastRenderTs) / 1000)) : 1 / 60;
       lastRenderTs = now;
@@ -11044,10 +11049,22 @@ return maplibregl$1;
     }
     window.updateMobileDossier = updateMobileDossier;
 
+    // The three map controls show the real state, whoever changed it (button, drag, zoom, flying to a place).
+    let lastGlobeControlState = '';
+    function syncGlobeControls() {
+      const key = (isAutoSpinning ? 1 : 0) + '' + (isGlobeExpanded ? 1 : 0);
+      if (key === lastGlobeControlState) return;
+      lastGlobeControlState = key;
+      document.querySelectorAll('[data-globe-control]').forEach((b) => {
+        const on = b.dataset.globeControl === 'spin' ? isAutoSpinning : isGlobeExpanded;
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        const label = b.querySelector('[data-globe-label]');
+        if (label) label.textContent = b.dataset.globeControl === 'spin' ? (on ? 'Rotate: On' : 'Rotate: Off') : (on ? 'Shrink map' : 'Expand map');
+      });
+    }
     function toggleGlobeAutoSpin() {
       isAutoSpinning = !isAutoSpinning;
-      const spinTxt = document.getElementById('hudSpinText');
-      if (spinTxt) spinTxt.textContent = isAutoSpinning ? 'Pause' : 'Spin';
+      syncGlobeControls();
     }
     window.toggleGlobeAutoSpin = toggleGlobeAutoSpin;
     window.toggleGlobeSpin = toggleGlobeAutoSpin;
@@ -17229,15 +17246,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('hudSpinBtn')?.addEventListener('click', (e) => {
       e.stopPropagation();
       isAutoSpinning = !isAutoSpinning;
-      const spinTxt = document.getElementById('hudSpinText');
-      if (spinTxt) spinTxt.textContent = isAutoSpinning ? 'Pause' : 'Spin';
+      syncGlobeControls();
     });
 
     document.getElementById('hudExpandBtn')?.addEventListener('click', (e) => {
       e.stopPropagation();
       handleViewExpand();
-      const expTxt = document.getElementById('hudExpandText');
-      if (expTxt) expTxt.textContent = isGlobeExpanded ? 'Split' : 'Expand';
+      syncGlobeControls();
     });
 
     document.getElementById('zoomInBtn')?.addEventListener('click', () => {

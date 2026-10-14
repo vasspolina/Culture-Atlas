@@ -62,7 +62,6 @@ header button:hover{background:#000;color:#fff}
 header>button:first-child{border-right:1px solid var(--line)}
 #topBrandLogoBtn{padding:0 16px;gap:16px;border-right:0}
 #topBrandLogoBtn>span:first-child{font:400 22px/1 var(--sans);color:inherit}
-#topBrandLogoBtn>span:first-child::after{content:" +";}
 #topBrandLogoBtn>div,#mobileTopBrandBtn>div>span:not(:first-child){font:400 13px/1 var(--mono);background:var(--cobalt);color:#fff;padding:6px 10px;white-space:nowrap}
 #topBrandLogoBtn>div *,#mobileTopBrandBtn>div *{color:inherit}
 #topGossipBtn,#topShareBtn{border-left:1px solid var(--line);border-right:0}
@@ -82,9 +81,13 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #workViewContainer{background:var(--paper);color:var(--ink);border-left:1px solid var(--line)}
 
 /* controls over the globe: white pills, mono, like the nav pills of the fair */
-#desktopGlobeTopControls,#desktopGlobeTopControls>div{gap:8px}
-#desktopGlobeTopControls button,#mobileFilterChipsSection button{font:400 13px/1 var(--mono);background:#fff;color:#000;padding:8px 14px;border-radius:999px;text-decoration:none;letter-spacing:0}
-#desktopGlobeTopControls button:hover,#mobileFilterChipsSection button:hover{background:#000;color:#fff;outline:1px solid #fff}
+/* Map controls: a joined row like the tab bar. Flat, ruled, mono; a control that is on is cobalt. */
+#desktopGlobeTopControls,#desktopGlobeTopControls>div,#mobileFilterChipsSection>div{gap:0}
+#desktopGlobeTopControls button,#mobileFilterChipsSection button{font:400 13px/1 var(--mono);background:#000;color:#fff;padding:10px 14px;border:1px solid #fff;border-radius:0;text-decoration:none;letter-spacing:0;white-space:nowrap}
+#desktopGlobeTopControls button+button,#mobileFilterChipsSection button+button{border-left:0}
+#desktopGlobeTopControls button:hover,#mobileFilterChipsSection button:hover{background:#fff;color:#000}
+#desktopGlobeTopControls button[aria-pressed=true],#mobileFilterChipsSection button[aria-pressed=true]{background:var(--cobalt);color:#fff}
+#desktopGlobeTopControls button[aria-pressed=true]:hover,#mobileFilterChipsSection button[aria-pressed=true]:hover{background:#fff;color:var(--cobalt)}
 #hudControlsBar{background:transparent}
 #hudControlsBar button,#zoomInBtn,#zoomOutBtn{font:400 13px/1 var(--mono);background:#fff;color:#000;border-radius:999px;padding:0 12px;height:32px}
 #zoomInBtn,#zoomOutBtn{width:32px;padding:0;justify-content:center}
@@ -257,7 +260,6 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #mobileTopBar button{height:var(--bar);font:400 20px/1 var(--sans);border-right:0}
 #mobileTopBrandBtn{padding:0 12px;gap:10px}
 #mobileTopBrandBtn>div>span:first-child{font:400 20px/1 var(--sans);color:inherit}
-#mobileTopBrandBtn>div>span:first-child::after{content:" +"}
 #mobileTopBrandBtn>div{display:flex;align-items:center;gap:10px;flex-direction:row}
 
 #reset-state-btn{border-left:1px solid var(--line);font:400 15px/1 var(--mono)!important;padding:0 14px}
@@ -592,3 +594,12 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
   .lg-gap-3{gap:0.75rem}
   .lg-px-6{padding-left:1.5rem;padding-right:1.5rem}
 }
+/* Save note is a text button like Share information and Listen, not a black disc. */
+#workSendBtn.is-on{width:auto;height:auto;border-radius:0;background:transparent;color:inherit!important;padding:0;white-space:nowrap}
+#workSendBtn.is-on:hover{text-decoration:underline}
+#zoomControls{position:absolute;right:16px;bottom:52px;z-index:20;display:flex;flex-direction:column;gap:8px}
+#zoomControls button{width:36px;height:36px;padding:0;font-size:18px}
+#zoomControls svg{width:14px;height:14px}
+/* Back to chat shows only while a note is being written. */
+#chatBackBtn{display:none}
+body.chat-input-mode-active #chatBackBtn{display:inline}
