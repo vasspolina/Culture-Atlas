@@ -1,0 +1,618 @@
+[
+ {
+  "i": 0,
+  "id": "fringe-world-perth",
+  "name": "Fringe World",
+  "city": "Perth",
+  "country": "Australia",
+  "website": "https://fringeworld.com.au/"
+ },
+ {
+  "i": 1,
+  "id": "biennale-of-sydney-sydney",
+  "name": "Biennale of Sydney",
+  "city": "Sydney",
+  "country": "Australia",
+  "website": "https://www.biennaleofsydney.art/"
+ },
+ {
+  "i": 2,
+  "id": "dhaka-art-summit-dhaka",
+  "name": "Dhaka Art Summit",
+  "city": "Dhaka",
+  "country": "Bangladesh",
+  "website": "https://www.samdani.com.bd/dhaka-art-summit"
+ },
+ {
+  "i": 3,
+  "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+  "name": "Museu de Arte Moderna do Rio de Janeiro",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "website": "https://mam.rio/"
+ },
+ {
+  "i": 4,
+  "id": "masp-são-paulo",
+  "name": "MASP",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "website": "https://masp.org.br/"
+ },
+ {
+  "i": 5,
+  "id": "esker-foundation-calgary",
+  "name": "Esker Foundation",
+  "city": "Calgary",
+  "country": "Canada",
+  "website": "https://eskerfoundation.com/"
+ },
+ {
+  "i": 6,
+  "id": "glenbow-calgary",
+  "name": "Glenbow",
+  "city": "Calgary",
+  "country": "Canada",
+  "website": "https://www.glenbow.org/"
+ },
+ {
+  "i": 7,
+  "id": "m-hong-kong",
+  "name": "M+",
+  "city": "Hong Kong",
+  "country": "China",
+  "website": "https://www.mplus.org.hk/"
+ },
+ {
+  "i": 8,
+  "id": "tai-kwun-hong-kong",
+  "name": "Tai Kwun",
+  "city": "Hong Kong",
+  "country": "China",
+  "website": "https://www.taikwun.hk/"
+ },
+ {
+  "i": 9,
+  "id": "long-museum-shanghai",
+  "name": "Long Museum",
+  "city": "Shanghai",
+  "country": "China",
+  "website": "http://thelongmuseum.org/"
+ },
+ {
+  "i": 10,
+  "id": "yuz-museum-shanghai",
+  "name": "Yuz Museum",
+  "city": "Shanghai",
+  "country": "China",
+  "website": "http://www.yuzmshanghai.org/"
+ },
+ {
+  "i": 11,
+  "id": "fondation-louis-vuitton-paris",
+  "name": "Fondation Louis Vuitton",
+  "city": "Paris",
+  "country": "France",
+  "website": "https://www.fondationlouisvuitton.fr/en"
+ },
+ {
+  "i": 12,
+  "id": "louvre-paris",
+  "name": "Louvre",
+  "city": "Paris",
+  "country": "France",
+  "website": "https://www.louvre.fr/"
+ },
+ {
+  "i": 13,
+  "id": "musée-dorsay-paris",
+  "name": "Musée d'Orsay",
+  "city": "Paris",
+  "country": "France",
+  "website": "https://www.musee-orsay.fr/"
+ },
+ {
+  "i": 14,
+  "id": "kiran-nadar-museum-of-art-new-delhi",
+  "name": "Kiran Nadar Museum of Art",
+  "city": "New Delhi",
+  "country": "India",
+  "website": "https://www.knma.org/"
+ },
+ {
+  "i": 15,
+  "id": "museum-macan-jakarta",
+  "name": "Museum MACAN",
+  "city": "Jakarta",
+  "country": "Indonesia",
+  "website": "https://www.museummacan.org/"
+ },
+ {
+  "i": 16,
+  "id": "imma-dublin",
+  "name": "IMMA",
+  "city": "Dublin",
+  "country": "Ireland",
+  "website": "https://imma.ie/"
+ },
+ {
+  "i": 17,
+  "id": "peggy-guggenheim-collection-venice",
+  "name": "Peggy Guggenheim Collection",
+  "city": "Venice",
+  "country": "Italy",
+  "website": "https://www.guggenheim-venice.it/"
+ },
+ {
+  "i": 18,
+  "id": "muac-mexico-city",
+  "name": "MUAC",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "website": "https://muac.unam.mx/"
+ },
+ {
+  "i": 19,
+  "id": "rijksmuseum-amsterdam",
+  "name": "Rijksmuseum",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "website": "https://www.rijksmuseum.nl/"
+ },
+ {
+  "i": 20,
+  "id": "van-gogh-museum-amsterdam",
+  "name": "Van Gogh Museum",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "website": "https://www.vangoghmuseum.nl/"
+ },
+ {
+  "i": 21,
+  "id": "mauritshuis-the-hague",
+  "name": "Mauritshuis",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "website": "https://www.mauritshuis.nl/"
+ },
+ {
+  "i": 22,
+  "id": "city-gallery-wellington-wellington",
+  "name": "City Gallery Wellington",
+  "city": "Wellington",
+  "country": "New Zealand",
+  "website": "https://citygallery.org.nz/"
+ },
+ {
+  "i": 23,
+  "id": "bergen-international-festival-bergen",
+  "name": "Bergen International Festival",
+  "city": "Bergen",
+  "country": "Norway",
+  "website": "https://www.fib.no/"
+ },
+ {
+  "i": 24,
+  "id": "munch-oslo",
+  "name": "MUNCH",
+  "city": "Oslo",
+  "country": "Norway",
+  "website": "https://www.munch.no/"
+ },
+ {
+  "i": 25,
+  "id": "maat-lisbon",
+  "name": "MAAT",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "website": "https://www.maat.pt/"
+ },
+ {
+  "i": 26,
+  "id": "songeun-seoul",
+  "name": "SONGEUN",
+  "city": "Seoul",
+  "country": "South Korea",
+  "website": "https://songeun.or.kr/"
+ },
+ {
+  "i": 27,
+  "id": "guggenheim-bilbao-bilbao",
+  "name": "Guggenheim Bilbao",
+  "city": "Bilbao",
+  "country": "Spain",
+  "website": "https://www.guggenheim-bilbao.eus/"
+ },
+ {
+  "i": 28,
+  "id": "kunsthaus-zürich-zürich",
+  "name": "Kunsthaus Zürich",
+  "city": "Zürich",
+  "country": "Switzerland",
+  "website": "https://www.kunsthaus.ch/"
+ },
+ {
+  "i": 29,
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "name": "Bangkok Art and Culture Centre",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "website": "https://www.bacc.or.th/"
+ },
+ {
+  "i": 30,
+  "id": "collective-edinburgh",
+  "name": "Collective",
+  "city": "Edinburgh",
+  "country": "UK",
+  "website": "https://www.collective-edinburgh.art/"
+ },
+ {
+  "i": 31,
+  "id": "edinburgh-international-book-festival-edinburgh",
+  "name": "Edinburgh International Book Festival",
+  "city": "Edinburgh",
+  "country": "UK",
+  "website": "https://www.edbookfest.co.uk/"
+ },
+ {
+  "i": 32,
+  "id": "stills-edinburgh",
+  "name": "Stills",
+  "city": "Edinburgh",
+  "country": "UK",
+  "website": "https://stills.info/"
+ },
+ {
+  "i": 33,
+  "id": "british-museum-london",
+  "name": "British Museum",
+  "city": "London",
+  "country": "UK",
+  "website": "https://www.britishmuseum.org/"
+ },
+ {
+  "i": 34,
+  "id": "design-museum-london",
+  "name": "Design Museum",
+  "city": "London",
+  "country": "UK",
+  "website": "https://designmuseum.org/"
+ },
+ {
+  "i": 35,
+  "id": "dulwich-picture-gallery-london",
+  "name": "Dulwich Picture Gallery",
+  "city": "London",
+  "country": "UK",
+  "website": "https://www.dulwichpicturegallery.org.uk/"
+ },
+ {
+  "i": 36,
+  "id": "goldsmiths-cca-london",
+  "name": "Goldsmiths CCA",
+  "city": "London",
+  "country": "UK",
+  "website": "https://goldsmithscca.art/"
+ },
+ {
+  "i": 37,
+  "id": "national-gallery-london",
+  "name": "National Gallery",
+  "city": "London",
+  "country": "UK",
+  "website": "https://www.nationalgallery.org.uk/"
+ },
+ {
+  "i": 38,
+  "id": "royal-ballet-and-opera-london",
+  "name": "Royal Ballet and Opera",
+  "city": "London",
+  "country": "UK",
+  "website": "https://rbo.org.uk/"
+ },
+ {
+  "i": 39,
+  "id": "science-museum-london",
+  "name": "Science Museum",
+  "city": "London",
+  "country": "UK",
+  "website": "https://www.sciencemuseum.org.uk/"
+ },
+ {
+  "i": 40,
+  "id": "va-london",
+  "name": "V&A",
+  "city": "London",
+  "country": "UK",
+  "website": "https://www.vam.ac.uk/"
+ },
+ {
+  "i": 41,
+  "id": "zabludowicz-collection-london",
+  "name": "Zabludowicz Collection",
+  "city": "London",
+  "country": "UK",
+  "website": "https://www.zabludowiczcollection.com/"
+ },
+ {
+  "i": 42,
+  "id": "menil-collection-houston",
+  "name": "Menil Collection",
+  "city": "Houston",
+  "country": "USA",
+  "website": "https://www.menil.org/"
+ },
+ {
+  "i": 43,
+  "id": "getty-center-los-angeles",
+  "name": "Getty Center",
+  "city": "Los Angeles",
+  "country": "USA",
+  "website": "https://www.getty.edu/"
+ },
+ {
+  "i": 44,
+  "id": "lacma-los-angeles",
+  "name": "LACMA",
+  "city": "Los Angeles",
+  "country": "USA",
+  "website": "https://www.lacma.org/"
+ },
+ {
+  "i": 45,
+  "id": "moca-los-angeles-los-angeles",
+  "name": "MOCA Los Angeles",
+  "city": "Los Angeles",
+  "country": "USA",
+  "website": "https://www.moca.org/"
+ },
+ {
+  "i": 46,
+  "id": "pérez-art-museum-miami-miami",
+  "name": "Pérez Art Museum Miami",
+  "city": "Miami",
+  "country": "USA",
+  "website": "https://www.pamm.org/"
+ },
+ {
+  "i": 47,
+  "id": "american-museum-of-natural-history-new-york",
+  "name": "American Museum of Natural History",
+  "city": "New York",
+  "country": "USA",
+  "website": "https://www.amnh.org/"
+ },
+ {
+  "i": 48,
+  "id": "brooklyn-museum-new-york",
+  "name": "Brooklyn Museum",
+  "city": "New York",
+  "country": "USA",
+  "website": "https://www.brooklynmuseum.org/"
+ },
+ {
+  "i": 49,
+  "id": "yerba-buena-center-for-the-arts-san-francisco",
+  "name": "Yerba Buena Center for the Arts",
+  "city": "San Francisco",
+  "country": "USA",
+  "website": "https://ybca.org/"
+ },
+ {
+  "i": 50,
+  "id": "fundação-sindika-dokolo-luanda",
+  "name": "Fundação Sindika Dokolo",
+  "city": "Luanda",
+  "country": "Angola",
+  "website": "https://www.theartnewspaper.com/news/isabel-dos-santos-angola"
+ },
+ {
+  "i": 51,
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "name": "Fundação Bienal de São Paulo",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "website": "https://timesbrasil.com.br/colunas/felipe-machado/bienal-ibirapuera-participantes-apoio-empresas/"
+ },
+ {
+  "i": 52,
+  "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+  "name": "Museu de Arte Moderna de São Paulo",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "website": "https://mam.org.br/apoie/"
+ },
+ {
+  "i": 53,
+  "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+  "name": "Mansudae Art Museum / Mansudae Art Studio Gallery, 798",
+  "city": "Beijing",
+  "country": "China",
+  "website": "https://798artdistrict.com"
+ },
+ {
+  "i": 54,
+  "id": "art-macao-macau",
+  "name": "Art Macao",
+  "city": "Macau",
+  "country": "China",
+  "website": "https://www.scmp.com/lifestyle/arts/article/3319799/art-macao-2025-picasso-porcelain-ai-and-more-citywide-events-third-edition"
+ },
+ {
+  "i": 55,
+  "id": "bienal-de-la-habana-havana",
+  "name": "Bienal de La Habana",
+  "city": "Havana",
+  "country": "Cuba",
+  "website": ""
+ },
+ {
+  "i": 56,
+  "id": "kunsten-museum-of-modern-art-aalborg-aalborg",
+  "name": "Kunsten Museum of Modern Art Aalborg",
+  "city": "Aalborg",
+  "country": "Denmark",
+  "website": "https://kulturmonitor.dk/kunst-kulturarv/art10313403/Stor-fond-skyder-10-millioner-kroner-i-Kunsten-i-Aalborg"
+ },
+ {
+  "i": 57,
+  "id": "trapholt-kolding",
+  "name": "Trapholt",
+  "city": "Kolding",
+  "country": "Denmark",
+  "website": "https://augustinusfonden.dk/da/nyheder/fonde-bidrager-til-markant-udvidelse-af-trapholt"
+ },
+ {
+  "i": 58,
+  "id": "centro-león-santiago-de-los-caballeros",
+  "name": "Centro León",
+  "city": "Santiago de los Caballeros",
+  "country": "Dominican Republic",
+  "website": "https://centroleon.org.do"
+ },
+ {
+  "i": 59,
+  "id": "fridericianum-kassel",
+  "name": "Fridericianum",
+  "city": "Kassel",
+  "country": "Germany",
+  "website": "https://www.monopol-magazin.de/ausstellung-kassel-wegen-code-conduct-der-documenta-abgesagt"
+ },
+ {
+  "i": 60,
+  "id": "aichi-triennale-nagoya",
+  "name": "Aichi Triennale",
+  "city": "Nagoya",
+  "country": "Japan",
+  "website": "https://www.artasiapacific.com/news/freedom-of-expression-costs-millions-for-aichi-triennale/"
+ },
+ {
+  "i": 61,
+  "id": "tselinny-center-of-contemporary-culture-almaty",
+  "name": "Tselinny Center of Contemporary Culture",
+  "city": "Almaty",
+  "country": "Kazakhstan",
+  "website": "https://www.artnews.com/art-news/news/tselinny-center-of-contemporary-culture-opening-1234755529/"
+ },
+ {
+  "i": 62,
+  "id": "kaesong-koryo-museum-kaesong",
+  "name": "Kaesong Koryo Museum",
+  "city": "Kaesong",
+  "country": "North Korea",
+  "website": "https://koryogroup.com/blog/north-korea-guide-kaesong-koryo-museum"
+ },
+ {
+  "i": 63,
+  "id": "sinchon-museum-of-american-war-atrocities-sinchon",
+  "name": "Sinchon Museum of American War Atrocities",
+  "city": "Sinchon",
+  "country": "North Korea",
+  "website": "https://kcnawatch.org"
+ },
+ {
+  "i": 64,
+  "id": "zachęta-national-gallery-of-art-warsaw",
+  "name": "Zachęta National Gallery of Art",
+  "city": "Warsaw",
+  "country": "Poland",
+  "website": "https://www.orlen.pl/pl/o-firmie/wspieramy/sponsoring/Sponsoring-kultury-i-nauki"
+ },
+ {
+  "i": 65,
+  "id": "victoria-gallery-samara",
+  "name": "Victoria Gallery",
+  "city": "Samara",
+  "country": "Russia",
+  "website": "https://gallery-victoria.ru/about/"
+ },
+ {
+  "i": 66,
+  "id": "new-holland-island-st-petersburg",
+  "name": "New Holland Island",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "website": "https://www.fontanka.ru/2022/06/08/71396537/"
+ },
+ {
+  "i": 67,
+  "id": "pro-arte-foundation-st-petersburg",
+  "name": "PRO ARTE Foundation",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "website": "https://www.proarte.ru/about/"
+ },
+ {
+  "i": 68,
+  "id": "state-hermitage-museum-st-petersburg",
+  "name": "State Hermitage Museum",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "website": "https://support.hermitagemuseum.org/ru/sponsors"
+ },
+ {
+  "i": 69,
+  "id": "state-russian-museum-st-petersburg",
+  "name": "State Russian Museum",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "website": "https://www.nn.media/news/727/"
+ },
+ {
+  "i": 70,
+  "id": "vyksa-festival-art-ovrag-vyksa",
+  "name": "Vyksa Festival (Art-Ovrag)",
+  "city": "Vyksa",
+  "country": "Russia",
+  "website": "https://vyksafest.com/about"
+ },
+ {
+  "i": 71,
+  "id": "yeltsin-center-yekaterinburg",
+  "name": "Yeltsin Center",
+  "city": "Yekaterinburg",
+  "country": "Russia",
+  "website": "https://meduza.io/feature/2026/03/10/my-otkazalis-ot-frondy-dovolno-bystro"
+ },
+ {
+  "i": 72,
+  "id": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+  "name": "King Abdulaziz Center for World Culture (Ithra)",
+  "city": "Dhahran",
+  "country": "Saudi Arabia",
+  "website": ""
+ },
+ {
+  "i": 73,
+  "id": "artscience-museum-singapore",
+  "name": "ArtScience Museum",
+  "city": "Singapore",
+  "country": "Singapore",
+  "website": ""
+ },
+ {
+  "i": 74,
+  "id": "tanoto-art-foundation-singapore",
+  "name": "Tanoto Art Foundation",
+  "city": "Singapore",
+  "country": "Singapore",
+  "website": "https://www.scmp.com/lifestyle/arts/article/3298689/singapore-launch-contemporary-art-foundation-focused-southeast-asia"
+ },
+ {
+  "i": 75,
+  "id": "gwangju-biennale-gwangju",
+  "name": "Gwangju Biennale",
+  "city": "Gwangju",
+  "country": "South Korea",
+  "website": "https://www.artasiapacific.com/news/protests-at-gwangju-biennale-end-newly-established-park-seo-bo-art-prize/"
+ },
+ {
+  "i": 76,
+  "id": "arter-istanbul",
+  "name": "Arter",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "website": "https://www.arter.org.tr"
+ }
+]
