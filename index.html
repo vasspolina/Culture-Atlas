@@ -6470,9 +6470,9 @@ return maplibregl$1;
     });
 
     // City map style: a line drawing like the globe. Black ground, 0.8px off-white lines, no fills, no 3D. OpenFreeMap vector tiles.
-    const CITY_MAP_DARK_STYLE = {
+    const CITY_MAP_LINE_STYLE = {
       version: 8,
-      name: 'Culture Atlas dark',
+      name: 'Culture Atlas line drawing',
       sources: {
         openmaptiles: {
           type: 'vector',
@@ -6487,35 +6487,35 @@ return maplibregl$1;
         {
           id: 'background',
           type: 'background',
-          paint: { 'background-color': '#000000' }
+          paint: { 'background-color': '#ffffff' }
         },
         {
           id: 'landcover_grass',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'landcover',
-          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#555555', 'fill-antialias': true }
         },
         {
           id: 'park',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'park',
-          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#555555', 'fill-antialias': true }
         },
         {
           id: 'water',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'water',
-          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#555555', 'fill-antialias': true }
         },
         {
           id: 'waterway',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.7 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.75 }
         },
         {
           id: 'building',
@@ -6523,7 +6523,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 13,
-          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#555555', 'fill-antialias': true }
         },
         {
           id: 'building-3d-city-context',
@@ -6532,7 +6532,7 @@ return maplibregl$1;
           'source-layer': 'building',
           minzoom: 14,
           paint: {
-            'fill-extrusion-color': '#000000',
+            'fill-extrusion-color': '#ffffff',
             'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 8]],
             'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]],
             'fill-extrusion-opacity': 1,
@@ -6545,7 +6545,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 13,
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.9 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.9 }
         },
         {
           id: 'road_minor',
@@ -6554,7 +6554,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
           minzoom: 12,
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.45 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.55 }
         },
         {
           id: 'road_secondary',
@@ -6562,7 +6562,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.7 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.75 }
         },
         {
           id: 'road_primary',
@@ -6570,7 +6570,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.9 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.9 }
         },
         {
           id: 'road_motorway',
@@ -6578,7 +6578,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 1 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'boundary_country',
@@ -6586,7 +6586,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-dasharray': [3, 2] }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-dasharray': [3, 2] }
         },
         {
           id: 'place_label',
@@ -6602,8 +6602,8 @@ return maplibregl$1;
             'text-letter-spacing': 0.08
           },
           paint: {
-            'text-color': '#f4f4f4',
-            'text-halo-color': '#000000',
+            'text-color': '#000000',
+            'text-halo-color': '#ffffff',
             'text-halo-width': 1.5
           }
         }
@@ -6635,7 +6635,7 @@ return maplibregl$1;
       try {
         cityVectorMap = new maplibregl.Map({
           container: 'cityMapContainer',
-          style: CITY_MAP_DARK_STYLE,
+          style: CITY_MAP_LINE_STYLE,
           center: [0, 20],
           zoom: 14,
           pitch: 35,
@@ -6650,6 +6650,7 @@ return maplibregl$1;
 
         // The map credit stays on the page, closed to a small square "i" until it is opened.
         cityVectorMap.once('load', () => {
+          applyCityMapGossip();
           const credit = document.querySelector('#cityMapContainer .maplibregl-ctrl-attrib');
           if (credit) { credit.classList.remove('maplibregl-compact-show'); credit.removeAttribute('open'); }
         });
@@ -6998,6 +6999,24 @@ return maplibregl$1;
 
 
 
+    // The street map follows gossip mode: orange ground and black hairlines, instead of white ground and grey hairlines.
+    function applyCityMapGossip() {
+      const map = cityVectorMap;
+      if (!map || typeof map.getStyle !== 'function' || typeof map.setPaintProperty !== 'function') return;
+      let layers = [];
+      try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
+      const ground = isGossipModeActive ? '#ff6119' : '#ffffff';
+      const line = isGossipModeActive ? '#000000' : '#555555';
+      layers.forEach(l => {
+        try {
+          if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', ground);
+          else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', line);
+          else if (l.type === 'fill') { map.setPaintProperty(l.id, 'fill-outline-color', line); map.setPaintProperty(l.id, 'fill-color', ground); }
+          else if (l.type === 'fill-extrusion') map.setPaintProperty(l.id, 'fill-extrusion-color', ground);
+          else if (l.type === 'symbol') map.setPaintProperty(l.id, 'text-halo-color', ground);
+        } catch (e) { /* a layer this map does not have */ }
+      });
+    }
     function toggleGossipMode(forceState) {
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
@@ -7007,6 +7026,7 @@ return maplibregl$1;
       if (typeof appendCuratorMessage === 'function') {
         appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
       }
+      applyCityMapGossip();
       if (typeof render === 'function') render();
       if (selectedInstitution && typeof updateDesktopDossier === 'function') updateDesktopDossier(selectedInstitution);
     }
@@ -7639,7 +7659,7 @@ return maplibregl$1;
         });
 
         const tierDot = document.createElement('span');
-        tierDot.style.color = markerColor;
+        tierDot.style.color = '#000';
         tierDot.style.fontSize = '14px';
         tierDot.style.lineHeight = '1';
         tierDot.textContent = '';
@@ -7662,7 +7682,7 @@ return maplibregl$1;
         dotEl.style.height = '15px';
         dotEl.style.borderRadius = '50%';
         dotEl.style.background = 'transparent';
-        dotEl.style.border = '0.8px solid ' + markerColor;
+        dotEl.style.border = '1px solid #000'; // a hollow black ring on the white drawing; the tier is on the label
         dotEl.style.boxShadow = 'none';
 
         pinEl.appendChild(labelEl);
