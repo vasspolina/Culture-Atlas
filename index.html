@@ -7056,7 +7056,6 @@ return maplibregl$1;
       try { localStorage.setItem('atlas-theme', next); } catch (e) {}
       syncThemeButtons();
       applyCityMapGossip();
-      if (window.atlasLayersTheme) window.atlasLayersTheme(next);
       if (typeof scheduleRender === 'function') scheduleRender();
     }
     window.toggleTheme = toggleTheme;
@@ -10513,6 +10512,8 @@ return maplibregl$1;
             ctx.restore();
           }
         });
+
+        if (window.atlasLayersDrawNodes) window.atlasLayersDrawNodes(ctx, visibleDots, r, baseRadius, selectedInstitution, hoveredInstitution, isGossipModeActive, project, cx, cy);
 
         // 8.5 Render Rich Interactive Hover Card for Hovered City on Globe
         // Suppress city hover cards when hovering an institution or for cities outside selected country
