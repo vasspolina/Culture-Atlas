@@ -76,7 +76,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #globeViewport a{color:#fff}
 #globeCanvas{cursor:grab;touch-action:none}
 #globeCanvas.dragging{cursor:grabbing}
-#cityMapContainer{background:#000}
+#cityMapContainer{background:#fff}
 #globeSplitter{background:var(--paper);border-left:1px solid var(--line);width:6px}
 #globeSplitter>div{display:none}
 #globeSplitter{position:relative;cursor:col-resize;touch-action:none}
@@ -99,14 +99,15 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .globe-ring{display:none}
 
 /* banners over the map: black pill with white text, close mark in yellow */
-#activeMapFilterBanner,#cityViewControlBanner,#activeRouteBanner{background:#000;color:#fff;border:0}
+#activeMapFilterBanner,#activeRouteBanner{background:#000;color:#fff;border:0}
 #activeMapFilterBanner{background:var(--block);color:#000;border-radius:0;padding:8px 16px;font:400 18px/1 var(--sans)}
 #activeMapFilterText{color:#000}
 #activeMapFilterText{font:400 18px/1 var(--sans)}
 #clearMapFilterBtn{color:#000}
-#cityViewControlBanner{padding:10px 16px;gap:16px}
-#cityViewControlBanner button{color:#fff;text-decoration:underline}
-#cityViewControlBanner .meta{color:#fff}
+/* The street-view bar: a plain white block with a black rule, like the drawing it sits on. No scroll container, so no ragged ends. */
+#cityViewControlBanner{background:#fff;color:#000;border:1px solid #000;padding:9px 14px;gap:16px;overflow:visible}
+#cityViewControlBanner button,#cityViewControlBanner span,#cityViewControlBanner div{color:#000}
+#cityViewControlBanner button{text-decoration:underline}
 #activeRouteBanner{padding:16px;max-width:390px}
 #activeRouteBanner .meta,#activeRouteBanner span,#activeRouteBanner div{color:#fff}
 #activeRouteBanner button{color:#fff;text-decoration:underline;font:400 14px/1 var(--sans)}
@@ -248,7 +249,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .inst-pin-label.collision-occluded{opacity:0;pointer-events:none}
 .custom-inst-pin:focus-within .inst-pin-label.collision-occluded,.custom-inst-pin:hover .inst-pin-label,.custom-inst-pin.popup-active .inst-pin-label{opacity:1;pointer-events:auto;z-index:9999}
 .curatorial-route-stop-pin,.route-stop-badge{background:#fff;color:#000;border:1px solid #000;font:400 14px/1 var(--sans);padding:4px 8px}
-.maplibregl-ctrl-group{background:#fff!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+.maplibregl-ctrl-group{background:#fff!important;border:1px solid #000!important;border-radius:0!important;box-shadow:none!important}
 .maplibregl-ctrl-group button{width:32px!important;height:32px!important;border-bottom:1px solid #000!important}
 .maplibregl-ctrl-group button:last-child{border-bottom:0!important}
 
@@ -661,3 +662,24 @@ a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:unde
   #mobileTopBar #mobileGossipBtn{border-left:1px solid var(--line)}
   #mobileTopBar #reset-state-btn{border-left:1px solid var(--line)}
 }
+
+/* The map credit button is a white square on a white map, so it takes the same black rule. */
+.maplibregl-ctrl-attrib.maplibregl-compact{border:1px solid #000}
+
+/* Gossip mode: the menu bar turns yellow, its buttons sit on it without their white blocks, and the street map ground goes orange. */
+body.gossip-mode-active header{background:var(--yellow)}
+body.gossip-mode-active header button{background:transparent}
+body.gossip-mode-active header button:hover{background:#000;color:#fff}
+body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:#000}
+body.gossip-mode-active #topGossipBtn:hover,body.gossip-mode-active #mobileGossipBtn:hover{background:#000;color:#fff}
+body.gossip-mode-active #cityMapContainer{background:var(--gossip)}
+/* In the street view the globe's own controls would sit behind the street-view bar and poke out at its ends. */
+body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
+body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
+/* Money maps links share the header button look */
+#topMoneyMapsLink,#mobileMoneyMapsLink{height:var(--bar);padding:0 16px;font:400 22px/1 var(--sans);letter-spacing:0;white-space:nowrap;border-left:1px solid var(--line);align-items:center;background:var(--paper);color:var(--ink);text-decoration:none}
+#topMoneyMapsLink:hover,#mobileMoneyMapsLink:hover{background:#000;color:#fff}
+#mobileMoneyMapsLink{display:inline-flex;font-size:17px;padding:0 10px}
+body.gossip-mode-active #topMoneyMapsLink,body.gossip-mode-active #mobileMoneyMapsLink{background:transparent}
+body.gossip-mode-active #topMoneyMapsLink:hover,body.gossip-mode-active #mobileMoneyMapsLink:hover{background:#000;color:#fff}
+@media (min-width:768px){#mobileMoneyMapsLink{display:none}}
