@@ -33,10 +33,10 @@ function updateGuides(sel,N){}
 // ---------- sea-plant sway: a touch sends a small wave outward; every circle has its own spring, so each moves on its own ----------
 window.__AR=1; let SWAYNODES=()=>[], swayRun=false, swayLast=0, swayThrottle=0;
 const REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-function swayKick(cx,cy,power){ if(REDUCE) return; const svgN=document.querySelector('#map'); if(!svgN) return; const rc=svgN.getBoundingClientRect(), t=d3.zoomTransform(svgN), now=performance.now();
+function swayKick(cx,cy,power){ const svgN=document.querySelector('#map'); if(!svgN) return; const rc=svgN.getBoundingClientRect(), t=d3.zoomTransform(svgN), now=performance.now();
   SWAYNODES().forEach(d=>{ if(d.px==null) return; const X=t.x+d.px*t.k*window.__AR+rc.left, Y=t.y+d.py*t.k+rc.top, dist=Math.hypot(X-cx,Y-cy);
     if(d.sk==null){ d.sk=0.011+rnd()*0.014; d.sc=0.035+rnd()*0.05; d.sa=rnd()*6.283; d.sz=(rnd()-.5); d.ox=d.oy=d.oz=d.vx=d.vy=d.vz=0; }
-    const fall=1/(1+dist/420), amp=power*(6+rnd()*11)*(0.45+fall), ang=d.sa+(rnd()-.5)*1.1;
+    const fall=1/(1+dist/420), amp=power*(6+rnd()*11)*(0.45+fall)*(dist<70?1.7:1), ang=d.sa+(rnd()-.5)*1.1;
     d.pend={t:now+dist*0.55+rnd()*70,ax:Math.cos(ang)*amp*(d.center?0.15:1),ay:Math.sin(ang)*amp*0.8*(d.center?0.15:1),az:d.sz*amp*1.2*(d.center?0.15:1)}; });
   if(!swayRun){ swayRun=true; swayLast=performance.now(); requestAnimationFrame(swayLoop); } }
 function swayLoop(){ const now=performance.now(), dt=Math.min(2.5,(now-swayLast)/16.7); swayLast=now; let live=false;
@@ -52,7 +52,7 @@ window.addEventListener('pointerdown',e=>{ if(e.target&&e.target.closest&&e.targ
 window.addEventListener('pointermove',e=>{ if(!e.buttons&&e.pointerType!=='touch') return; if(!e.target||!e.target.closest||!e.target.closest('#map')) return; const now=performance.now(); if(now-swayThrottle<70) return; swayThrottle=now; swayKick(e.clientX,e.clientY,0.55); });
 const zfilter=()=>false;
 function spinLoop(){ if(!SPIN||!REDRAW){ spinRunning=false; return; } YAW+=0.0018; REDRAW(); if(performance.now()-spinStart>9000){ SPIN=false; spinRunning=false; return; } requestAnimationFrame(spinLoop); }
-function startSpin(){ SPIN=true; spinStart=performance.now(); if(!spinRunning){ spinRunning=true; requestAnimationFrame(spinLoop); } }
+function startSpin(){ if(REDUCE){ SPIN=false; return; } SPIN=true; spinStart=performance.now(); if(!spinRunning){ spinRunning=true; requestAnimationFrame(spinLoop); } }
 // one finger or mouse drag turns the scene; two fingers pinch to fly through it and slide; wheel and W/S fly; arrows turn
 const PTR=new Map(); let PREV=null, PANBY=()=>{};
 const clampD=v=>Math.max(-2600,Math.min(2300,v)), clampP=v=>Math.max(-1.25,Math.min(1.25,v));
