@@ -88,3 +88,5 @@ td a,#list button,.drop a{color:var(--fg)}
 #empty{color:var(--fg)}
 :root[data-theme="dark"] svg#map *:focus-visible{outline:0}
 #cats .pill{border:1px solid}
+/* Embedded as a layer in the atlas: no page chrome, the atlas owns the controls */
+html.embed #top,html.embed #ld{display:none}

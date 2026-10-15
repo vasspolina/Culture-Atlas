@@ -155,6 +155,18 @@ return maplibregl$1;
       
       <canvas id="globeCanvas" class="absolute inset-0 w-full h-full block"></canvas>
 
+      <!-- Layers: overlays on the map, like a map app's layer menu -->
+      <div id="layersControl">
+        <div id="layersPanel" hidden>
+          <p class="layers-title">Layers</p>
+          <label><input type="checkbox" checked disabled> Cultural spaces</label>
+          <label><input type="checkbox" data-layer="ties"> Funding ties</label>
+          <label><input type="checkbox" data-layer="flags"> Flagged on record</label>
+          <label><input type="checkbox" data-layer="money"> Money network</label>
+        </div>
+        <button id="layersBtn" type="button" aria-expanded="false" aria-controls="layersPanel">Layers</button>
+      </div>
+
       <!-- Top-Left Floating Map Controls (Uncontained) -->
       <div id="desktopGlobeTopControls" class="hidden md-flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 lg-gap-3 meta flex-wrap max-w-_calc_100_-24px">
         <div class="flex items-center gap-1_5 lg-gap-2 whitespace-nowrap">
@@ -10325,6 +10337,9 @@ return maplibregl$1;
           ctx.restore();
         }
 
+        window.atlasGetSelected = () => selectedInstitution;
+        if (window.atlasLayersDraw) window.atlasLayersDraw(ctx, project, r, cx, cy, filteredList, selectedInstitution, hoveredInstitution);
+
         // 8. Render Institution Dots & Independent Space Clusters on Global Sphere
         visibleDots = [];
 
@@ -17460,5 +17475,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
+<script src="assets/layers.js"></script>
 </body>
 </html>
