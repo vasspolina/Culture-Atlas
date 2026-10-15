@@ -45,6 +45,9 @@ ASSERTION = re.compile(
     r"|\bethical (sponsorship|review|fundraising|record|trading|giving|scrutiny|guidelines|policy|standards)"
     r"|\btransparent (donor|supporter|ledger|disclosure|roster)|\bvetted\b"
     r"|\b(sanctuary|beacon|bastion|heroic|indispensable|vanguard|cradle|cornerstone|iconic|world-famous|acclaimed|exemplary|unforgettable)\b", re.I)
+# The public registries a record may link to. Anything else under the registry fields is dropped.
+REGISTRIES = ('projects.propublica.org', 'register-of-charities.charitycommission.gov.uk', 'bundesanzeiger.de', 'openkvk.nl',
+              'apps.cra-arc.gc.ca', 'journal-officiel.gouv.fr', 'acnc.gov.au', 'servizi.lavoro.gov.it', 'sede.mjusticia.gob.es', 'edi.admin.ch')
 ASSERTION_FIELDS = ['watch', 'funding', 'curator_recommendation', 'highlight']
 PUFF = re.compile(r"\b(beating heart|extraordinary|daring|fearless|legendary|renowned|celebrated|world-class|cultural anchor|cultural destination|"
                   r"dramatic|breathtaking|stunning|vibrant|dynamic|progressive voices|landmark holdings|sublime|iconic|epicenter|epicentre|"
@@ -70,6 +73,10 @@ def reg(host):
     if len(parts) > 2 and parts[-2] in ('co', 'com', 'org', 'ac', 'gov'):
         return '.'.join(parts[-3:])
     return '.'.join(parts[-2:])
+
+
+def full_host(url):
+    return (urlparse(url or '').hostname or '').lower().removeprefix('www.')
 
 
 def host_of(url):
@@ -164,6 +171,9 @@ def clean(records, report=None):
             if key in r and generic_link(r, key):
                 del r[key]
                 bump(key + '_was_the_museums_own_about_page')
+            elif key in r and not any(full_host(r[key]) == h or full_host(r[key]).endswith('.' + h) for h in REGISTRIES):
+                del r[key]                     # a web search, a Facebook page or a listing site is not a public registry
+                bump(key + '_was_not_a_registry')
         if r.get('watch'):                     # internal triage notes are not for readers
             w = re.sub(r'\s*\(Previous note:.*$', '', r['watch'])
             r['watch'] = re.sub(r'^(WATCH / ETHICAL AUDIT|WATCH / EXCLUDED|WATCH|EXCLUDED):\s*', '', w)
