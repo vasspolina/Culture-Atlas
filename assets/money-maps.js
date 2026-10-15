@@ -323,8 +323,7 @@ function fitAll(animate){
     let a0=1e9,a1=-1e9,b0=1e9,b1=-1e9; ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; a0=Math.min(a0,n.bx); a1=Math.max(a1,n.bx); b0=Math.min(b0,n.by); b1=Math.max(b1,n.by); });
     const sx=1; ALL.nodes.forEach(n=>{ n.x=n.bx*sx; n.y=n.by; }); }
   ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; x0=Math.min(x0,n.x-n.r); y0=Math.min(y0,n.y-n.r); x1=Math.max(x1,n.x+n.r); y1=Math.max(y1,n.y+n.r); });
-  if(ALL.R){ x0=-ALL.R*1.12; x1=ALL.R*1.12; y0=-ALL.R*1.14; y1=ALL.R*1.06; } // the head outline, its nose and ears
-  if(x1<x0) return; const pad=14, bp=ALL.R?36:0, k=Math.min((w-2*pad)/Math.max(1,x1-x0),(h-tp-bp-2*pad)/Math.max(1,y1-y0),4);
+  if(x1<x0) return; const pad=14, bp=36, k=Math.min((w-2*pad)/Math.max(1,x1-x0),(h-tp-bp-2*pad)/Math.max(1,y1-y0),4);
   const t=d3.zoomIdentity.translate(w/2-(x0+x1)/2*k, tp+(h-tp-bp)/2-(y0+y1)/2*k).scale(k), s=d3.select(ALL.c);
   ALL.fitting=true; if(animate) s.transition().duration(700).call(ALL.zoom.transform,t).on('end interrupt',()=>{ ALL.fitting=false; }); else { s.call(ALL.zoom.transform,t); ALL.fitting=false; }
 }
@@ -337,20 +336,10 @@ const THEMES={
   dark:{bg:'#000',ring:null,edge:null,edgeA:.34,contour:'#3b3b3b',frame:'#6a6a6a',label:'#fff',halo:'#000',cap:'#bdbdbd',hi:null,dot:'#fff',glow:'rgba(255,255,255,.9)'}
 };
 const catCol=(T,cat)=>T.hi?T.hi[cat]:CAT[cat].color;
-function buildContours(){ const R1=ALL.R*1.12, N=240, cell=2*R1/N; ALL.R1=R1; ALL.cell=cell;
-  ALL.contours=d3.contourDensity().x(n=>(n.x+R1)/cell).y(n=>(n.y+R1)/cell).weight(n=>1+n.deg*.5).size([N,N]).bandwidth(10).thresholds(8)(ALL.nodes); }
-function drawContours(ctx,T,k){ if(!ALL.contours) return; ctx.save(); ctx.beginPath(); ctx.arc(0,0,ALL.R,0,6.2832); ctx.clip();
-  ctx.translate(-ALL.R1,-ALL.R1); ctx.scale(ALL.cell,ALL.cell); ctx.beginPath(); const gp=ALL.gp||(ALL.gp=d3.geoPath(null,ctx)); ALL.contours.forEach(c=>gp(c));
-  ctx.strokeStyle=T.contour; ctx.lineWidth=.9/(k*ALL.cell); ctx.globalAlpha=.9; ctx.stroke(); ctx.restore(); }
-function drawFrame(ctx,T,k){ const R=ALL.R; ctx.globalAlpha=1; ctx.strokeStyle=T.frame; ctx.lineWidth=1.1/k; ctx.lineJoin='miter';
-  ctx.beginPath(); ctx.arc(0,0,R,0,6.2832); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(-R*.25,-R*.885); ctx.lineTo(0,-R*1.12); ctx.lineTo(R*.25,-R*.885); ctx.closePath(); ctx.stroke();
-  [-1,1].forEach(sd=>{ ctx.beginPath(); ctx.ellipse(sd*R,0,R*.075,R*.28,0,0,6.2832); ctx.stroke(); }); }
 function paintAll(){
   const c=ALL.c, ctx=ALL.ctx; if(!c||!sizeCanvas()) return; const T=THEMES[ALL.theme], tr=ALL.tr, w=c.clientWidth, h=c.clientHeight, sel=ALL.sel, near=ALL.near, dim=!!sel;
   ctx.setTransform(ALL.dpr,0,0,ALL.dpr,0,0); ctx.globalAlpha=1; ctx.shadowBlur=0; ctx.fillStyle=T.bg; ctx.fillRect(0,0,w,h);
   ctx.save(); ctx.translate(tr.x,tr.y); ctx.scale(tr.k,tr.k);
-  if(ALL.R){ drawContours(ctx,T,tr.k); drawFrame(ctx,T,tr.k); }
   ['gov','corp','found'].forEach(cat=>{ if(!ALL.on[cat]) return; const lo=[],hi=[]; ALL.links.forEach(l=>{ if(l.cat!==cat) return; (dim&&(l.source===sel||l.target===sel)?hi:lo).push(l); });
     strokeLinks(lo,T.hi?T.edge:CAT[cat].color,dim?(T.hi?.16:.1):T.edgeA,.7); strokeLinks(hi,catCol(T,cat),.95,1.5); });
   // sponsors: hollow rings (coloured on black, grey on white); museums: filled dots with a glow
@@ -385,7 +374,7 @@ function startLayout(){
   const msg=document.getElementById('empty'); msg.hidden=false; msg.textContent='Laying out '+ALL.nSpaces+' spaces and '+ALL.nSponsors+' sponsors';
   let ticks=0; const step=()=>{ if(!ALL.active||ALL.sim!==sim) return; const t0=performance.now(); do{ sim.tick(); ticks++; }while(performance.now()-t0<14&&sim.alpha()>sim.alphaMin());
     if(ticks%10<3||sim.alpha()<=sim.alphaMin()) fitAll(false); drawAll();
-    if(sim.alpha()>sim.alphaMin()) requestAnimationFrame(step); else { ALL.laid=true; ALL.nodes.forEach(n=>{ n.bx=n.x; n.by=n.y; }); ALL.R=Math.max(...ALL.nodes.map(n=>Math.hypot(n.x,n.y)+n.r))*1.04; buildContours(); msg.hidden=true; fitAll(false); drawAll(); } };
+    if(sim.alpha()>sim.alphaMin()) requestAnimationFrame(step); else { ALL.laid=true; ALL.nodes.forEach(n=>{ n.bx=n.x; n.by=n.y; }); msg.hidden=true; fitAll(false); drawAll(); } };
   requestAnimationFrame(step);
 }
 const aRow=(k,v)=>`<div class="row"><div>${k}</div><div>${v}</div></div>`, aFull=v=>`<div class="row full"><div>${v}</div></div>`;
