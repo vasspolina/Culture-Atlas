@@ -395,6 +395,7 @@ return maplibregl$1;
             <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
             <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
             <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
+            <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
         </div>
@@ -757,6 +758,7 @@ return maplibregl$1;
               <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
               <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
               <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
+            <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
             </details>
 
             <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
@@ -6644,6 +6646,12 @@ return maplibregl$1;
           showCompass: true,
           visualizePitch: true
         }), 'top-right');
+
+        // The map credit stays on the page, closed to a small square "i" until it is opened.
+        cityVectorMap.once('load', () => {
+          const credit = document.querySelector('#cityMapContainer .maplibregl-ctrl-attrib');
+          if (credit) { credit.classList.remove('maplibregl-compact-show'); credit.removeAttribute('open'); }
+        });
 
       } catch (e) {
         console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
