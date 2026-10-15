@@ -99,6 +99,7 @@ return maplibregl$1;
     <!-- Right: Action Switchers & Controls -->
     <div class="flex items-center space-x-1_5 shrink-0">
       <!-- New Chat / Reset Quick Actions -->
+      <a id="mobileMoneyMapsLink" href="money-maps.html" class="whitespace-nowrap">Money maps</a>
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
         Chat
@@ -117,6 +118,7 @@ return maplibregl$1;
 
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
+      <a id="topMoneyMapsLink" href="money-maps.html" class="hidden md-inline-flex whitespace-nowrap">Money maps</a>
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap">Gossip mode</button>
 
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
@@ -7701,6 +7703,7 @@ return maplibregl$1;
             ${visitLine ? `<div class="record-popup-line">${escapeHtml(visitLine)}</div>` : ''}
             ${(inst.curatorial_focus || inst.neighborhood) ? `<div class="record-popup-line">${escapeHtml(inst.curatorial_focus || inst.neighborhood)}</div>` : ''}
             <div class="record-popup-actions">
+              <a href="money-maps.html#${encodeURIComponent(inst.id || '')}" class="record-action">Money map</a>
               ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer">Website</a>` : ''}
               <button type="button" onclick="window.atlasPlanVisit('${safeId}')">Plan Visit</button>
               <button type="button" onclick="window.atlasAskCurator('${safeId}')" title="Ask Curator about ${escapeHtml(inst.name)}">Ask in Chat</button>

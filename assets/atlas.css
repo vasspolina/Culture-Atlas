@@ -676,3 +676,10 @@ body.gossip-mode-active #cityMapContainer{background:var(--gossip)}
 /* In the street view the globe's own controls would sit behind the street-view bar and poke out at its ends. */
 body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
 body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
+/* Money maps links share the header button look */
+#topMoneyMapsLink,#mobileMoneyMapsLink{height:var(--bar);padding:0 16px;font:400 22px/1 var(--sans);letter-spacing:0;white-space:nowrap;border-left:1px solid var(--line);align-items:center;background:var(--paper);color:var(--ink);text-decoration:none}
+#topMoneyMapsLink:hover,#mobileMoneyMapsLink:hover{background:#000;color:#fff}
+#mobileMoneyMapsLink{display:inline-flex;font-size:17px;padding:0 10px}
+body.gossip-mode-active #topMoneyMapsLink,body.gossip-mode-active #mobileMoneyMapsLink{background:transparent}
+body.gossip-mode-active #topMoneyMapsLink:hover,body.gossip-mode-active #mobileMoneyMapsLink:hover{background:#000;color:#fff}
+@media (min-width:768px){#mobileMoneyMapsLink{display:none}}
