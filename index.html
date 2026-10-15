@@ -7004,7 +7004,7 @@ return maplibregl$1;
       ['topGossipBtn', 'workMenuGossipModeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
       document.getElementById('workPlusMenu')?.classList.add('hidden');
       if (typeof appendCuratorMessage === 'function') {
-        appendCuratorMessage(`<p class="no-indent" style="color:#f1c21b !important">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
+        appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
       }
       if (typeof render === 'function') render();
       if (selectedInstitution && typeof updateDesktopDossier === 'function') updateDesktopDossier(selectedInstitution);
@@ -9967,7 +9967,7 @@ return maplibregl$1;
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = '#000000';
         ctx.fill();
-        ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+        ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
         ctx.lineWidth = 0.8;
         ctx.stroke();
 
@@ -10025,7 +10025,7 @@ return maplibregl$1;
               }
               ctx.closePath();
               ctx.fill();
-              ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+              ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
               ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
               ctx.stroke();
             } else {
@@ -10078,7 +10078,7 @@ return maplibregl$1;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+                ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
                 ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
                 ctx.stroke();
               }
@@ -10114,8 +10114,7 @@ return maplibregl$1;
           ctx.save();
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 20, h = 22;
-          const yellow = active !== isGossipModeActive;
-          ctx.fillStyle = yellow ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a');
+          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : '#ff6119') : (active ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a'));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = '#000000';
           ctx.textAlign = 'center';
@@ -10214,7 +10213,7 @@ return maplibregl$1;
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
-                ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+                ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
@@ -10226,7 +10225,7 @@ return maplibregl$1;
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
                 if (isSelected) { ctx.fillStyle = '#ff6119'; ctx.fill(); }
-                ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+                ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               }
@@ -10282,10 +10281,10 @@ return maplibregl$1;
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? (isGossipModeActive ? '#fef9c3' : '#08bdba') 
+                    ? (isGossipModeActive ? '#ff6119' : '#08bdba') 
                     : isHov
                     ? '#ffffff'
-                    : (isGossipModeActive ? '#fef08a' : '#ffffff');
+                    : (isGossipModeActive ? '#ff6119' : '#ffffff');
                   ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }
               }
@@ -10396,7 +10395,7 @@ return maplibregl$1;
           ctx.beginPath();
           ctx.arc(d.x, d.y, isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5), 0, Math.PI * 2);
           ctx.strokeStyle = isHov 
-            ? (isGossipModeActive ? '#fef08a' : '#f4f4f4')
+            ? (isGossipModeActive ? '#ff6119' : '#f4f4f4')
             : (isVisualCritiqueOnly && hasVc)
             ? '#f59e0b'
             : isGossipModeActive 
@@ -10506,7 +10505,7 @@ return maplibregl$1;
               };
 
               // Flat block: cobalt, or yellow in gossip mode. No rounding, no outline, no shadow.
-              ctx.fillStyle = isGossipModeActive ? '#ffd600' : '#0046ff';
+              ctx.fillStyle = isGossipModeActive ? '#ff6119' : '#0046ff';
               ctx.fillRect(cardX, cardY, cardW, cardH);
 
               // Line 1: city name, capitals, Compact Bold
@@ -10526,7 +10525,7 @@ return maplibregl$1;
 
               // Action: a flat grey block with black text, yellow on hover.
               ctx.save();
-              ctx.fillStyle = isHoveringCityExploreLink ? '#ffd600' : '#d9d9d9';
+              ctx.fillStyle = isHoveringCityExploreLink ? (isGossipModeActive ? '#ffffff' : '#ffd600') : '#d9d9d9';
               ctx.fillRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
               ctx.font = ATLAS_CARD_MONO_FONT;
               ctx.fillStyle = '#000000';

@@ -13,7 +13,7 @@ h1,h2,h3,h4,p{margin:0}
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
   --cobalt:#0046ff; --blue:#527fe6; --orange:#ff6119; --brick:#a0705e; --navy:#223f85;
-  --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600;
+  --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#ff6119;
   --sans:"PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
   --display:"PP Neue Gstaad Compact","PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
   --bar:44px; --gap:16px;
@@ -68,7 +68,7 @@ header>button:first-child{border-right:1px solid var(--line)}
 #topGossipBtn,#topShareBtn{border-left:1px solid var(--line);border-right:0}
 header>div:last-child{align-self:stretch;display:flex}
 header>div:last-child>button{border-right:0;border-left:1px solid var(--line)}
-body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
+body.gossip-mode-active #topGossipBtn{background:var(--gossip);color:#000}
 
 /* ---- the two halves ---- */
 #mainAppContainer{background:var(--paper);min-height:0}
@@ -127,7 +127,7 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #floatingCard>div:last-child{padding:12px 16px 16px;border-top:1px solid rgba(255,255,255,.55)}
 #floatingCard>div:last-child a,#floatingCard>div:last-child button{border-radius:0;padding:9px 16px;font:400 15px/1 var(--sans);text-align:center;text-decoration:none;justify-content:center}
 #floatingCardDirectAuditBtn,#floatingCardDirectPlanBtn,#floatingCardDirectWebBtn{background:var(--block);color:#000!important;border:0}
-#floatingCard.gossip-active-card,#floatingCard.gossip-yellow-card{background:var(--yellow);color:#000}
+#floatingCard.gossip-active-card,#floatingCard.gossip-yellow-card{background:var(--gossip);color:#000}
 #floatingCard.gossip-active-card *,#floatingCard.gossip-yellow-card *{color:#000}
 
 /* ---- right column tabs ---- */
@@ -291,7 +291,7 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 .curator-hero-title .lbl{display:inline-block;font:400 14px/1.1 var(--sans);text-transform:none;letter-spacing:0;padding:.5em .6em;vertical-align:baseline;margin:0 .15em;background:var(--peri)}
 .curator-hero-title .lbl.m{background:var(--magenta)}
 @media (max-width:767px){.curator-hero-title{font-size:44px}}
-#workInputCard.is-mode{background:var(--yellow);padding:12px}
+#workInputCard.is-mode{background:var(--gossip);padding:12px}
 #connectionTestBox{padding:8px 12px;font:400 14px/1.3 var(--sans)}
 /* Buttons are flat grey blocks with black text, no rounding, like the fair's tabs. */
 .record-action,#desktopDossierWebLink,#dossier-sheet-audit-btn,#dossier-sheet-plan-btn,#desktopDossierBody>div:last-child button{font:400 15px/1 var(--sans);background:var(--block);color:#000;border:0;border-radius:0;padding:10px 14px;text-align:center;text-decoration:none;display:inline-block;white-space:nowrap;letter-spacing:.01em;width:auto}
@@ -647,3 +647,5 @@ a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:unde
 .maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-button{background-color:#fff}
 .maplibregl-ctrl-attrib a{color:#000;text-decoration:underline}
 .maplibregl-ctrl-attrib-button,.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-button{background-color:#fff;border-radius:0;width:24px;height:24px}
+/* Gossip: the writing box's placeholder stays readable on its tinted ground (8:1). */
+#workInputCard.is-mode ::placeholder{opacity:.75}
