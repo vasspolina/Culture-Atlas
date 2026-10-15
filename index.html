@@ -13,6 +13,7 @@
   <meta name="format-detection" content="telephone=no" />
   <title>Culture Atlas</title>
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
+  <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css">
   <script>
@@ -100,6 +101,7 @@ return maplibregl$1;
     <div class="flex items-center space-x-1_5 shrink-0">
       <!-- New Chat / Reset Quick Actions -->
       <a id="mobileMoneyMapsLink" href="money-maps.html" class="whitespace-nowrap">Money maps</a>
+      <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" aria-pressed="false">Dark</button>
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
         Chat
@@ -119,6 +121,7 @@ return maplibregl$1;
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
       <a id="topMoneyMapsLink" href="money-maps.html" class="hidden md-inline-flex whitespace-nowrap">Money maps</a>
+      <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Dark</button>
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap">Gossip mode</button>
 
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
@@ -7027,8 +7030,9 @@ return maplibregl$1;
       if (!map || typeof map.getStyle !== 'function' || typeof map.setPaintProperty !== 'function') return;
       let layers = [];
       try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
-      const ground = isGossipModeActive ? '#ff6119' : '#ffffff';
-      const line = isGossipModeActive ? '#000000' : '#555555';
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const ground = isGossipModeActive ? '#ff6119' : dark ? '#121212' : '#ffffff';
+      const line = isGossipModeActive ? '#000000' : dark ? '#8a8a8a' : '#555555';
       layers.forEach(l => {
         try {
           if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', ground);
@@ -7039,6 +7043,24 @@ return maplibregl$1;
         } catch (e) { /* a layer this map does not have */ }
       });
     }
+    // Light and dark mode: one switch in the header, remembered, following the system until it is set.
+    function syncThemeButtons() {
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = dark ? 'Light' : 'Dark'; b.setAttribute('aria-pressed', String(dark)); b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode'); } });
+      const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#121212' : '#ffffff');
+    }
+    function toggleTheme(force) {
+      const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = force === 'dark' || force === 'light' ? force : (cur === 'dark' ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('atlas-theme', next); } catch (e) {}
+      syncThemeButtons();
+      applyCityMapGossip();
+      if (window.atlasLayersTheme) window.atlasLayersTheme(next);
+      if (typeof scheduleRender === 'function') scheduleRender();
+    }
+    window.toggleTheme = toggleTheme;
+    syncThemeButtons();
     function toggleGossipMode(forceState) {
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);

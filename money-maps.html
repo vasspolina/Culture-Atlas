@@ -6,7 +6,7 @@
 <title>Culture Atlas Money Maps</title>
 <meta name="description" content="A funding map for each cultural space in the Culture Atlas, drawn from the records.">
 <link rel="stylesheet" href="assets/money-maps.css">
-<script>(function(){var t=null;try{t=localStorage.getItem("atlas-bigmap-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";if(/[?&]embed/.test(location.search)){t="light";document.documentElement.className="embed"}document.documentElement.setAttribute("data-theme",t)})()</script>
+<script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";var q=location.search;if(/[?&]embed/.test(q)){document.documentElement.className="embed";var mt=q.match(/[?&]theme=(dark|light)/);if(mt)t=mt[1]}document.documentElement.setAttribute("data-theme",t)})()</script>
 </head>
 <body>
 <div id="top">

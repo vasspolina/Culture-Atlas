@@ -412,7 +412,7 @@ function paintAll(){
   ctx.globalAlpha=1; ctx.font='13px "PP Neue Gstaad", sans-serif'; ctx.textAlign='center'; ctx.textBaseline='alphabetic'; ctx.fillStyle=T.cap; if('letterSpacing' in ctx) ctx.letterSpacing='0.67px';
   ctx.fillText('All spaces and sponsors',w/2,h-24); ctx.fillText('[atlas] '+ALL.nSpaces+' spaces · '+ALL.nSponsors+' sponsors · '+ALL.nPeople+' people in the Epstein files',w/2,h-8); ctx.textAlign='left';
 }
-function setTheme(t){ document.documentElement.setAttribute('data-theme',t); try{ localStorage.setItem('atlas-bigmap-theme',t); }catch(e){} ALL.theme=t; syncThemeBtn(); if(ALL.active){ renderAllCats(); drawAll(); } else if(curRec) openSpace(curRec.id); }
+function setTheme(t){ document.documentElement.setAttribute('data-theme',t); try{ if(!document.documentElement.classList.contains('embed')) localStorage.setItem('atlas-theme',t); }catch(e){} ALL.theme=t; syncThemeBtn(); if(ALL.active){ renderAllCats(); drawAll(); } else if(curRec) openSpace(curRec.id); }
 function syncThemeBtn(){ const b=document.getElementById('ld'); if(b){ b.textContent=LT()?'Night':'Day'; b.setAttribute('aria-label',LT()?'Switch to night mode':'Switch to day mode'); } }
 function startLayout(){
   const nodes=ALL.nodes, links=ALL.links;
@@ -535,6 +535,7 @@ function openSpace(id){ const r=byRec[id]; if(!r) return; leaveAll(); curRec=r; 
 if(!window.__ro&&window.ResizeObserver){ window.__ro=true; new ResizeObserver(()=>window.dispatchEvent(new Event('resize'))).observe(document.querySelector('#map')); }
 window.addEventListener('resize',()=>{ if(window.__rz) return; window.__rz=true; requestAnimationFrame(()=>{ window.__rz=false; if(!cur) return; const nw=svg.node().clientWidth<700; if(nw!==window.__nw){ window.__nw=nw; cur.relayout(); } else cur.fit(); }); });
 renderTiers(); renderList();
+window.addEventListener('message',e=>{ const t=e.data&&e.data.atlasTheme; if(t==='dark'||t==='light') setTheme(t); });
 { const b=document.getElementById('ld'); if(b){ b.onclick=()=>setTheme(LT()?'dark':'light'); syncThemeBtn(); } }
 const h0=decodeURIComponent(location.hash.slice(1));
 if(byRec[h0]) openSpace(h0); else showAll();
