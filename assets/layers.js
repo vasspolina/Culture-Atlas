@@ -89,11 +89,16 @@
     if (on && !f) {
       f = document.createElement('iframe'); f.id = 'moneyLayerFrame'; f.title = 'Money network';
       const cur = window.atlasGetSelected && window.atlasGetSelected(); lastFrameId = (cur && cur.id) || 'all';
-      f.src = 'money-maps.html?embed#' + encodeURIComponent(lastFrameId);
+      f.src = 'money-maps.html?embed&theme=' + (document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light') + '#' + encodeURIComponent(lastFrameId);
       vp.appendChild(f);
     }
     if (f) f.hidden = !on;
   }
+
+  window.atlasLayersTheme = function (t) {
+    const f = document.getElementById('moneyLayerFrame'); if (!f) return;
+    try { f.contentWindow.postMessage({ atlasTheme: t }, '*'); } catch (e) {}
+  };
 
   function init() {
     const box = document.getElementById('layersControl'); if (!box) return;
