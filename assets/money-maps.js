@@ -1,8 +1,35 @@
+const LT=()=>document.documentElement.getAttribute('data-theme')==='light';
 // Money maps. Reads assets/money-maps.json (built by tools/build_money_maps.py) and draws one map per record.
 fetch('assets/money-maps.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(D=>{
+// Drops funder/flag circles whose label is a sentence fragment instead of a name.
+const FLAG_OK=/^(Protest or boycott|State censorship or punishment|Sponsor dropped under pressure|Gulf state body|Fossil fuels|Tobacco|Sanctions|WikiLeaks[^.]{0,40})$/;
+const PERSON=/^[A-Z][\w.'’-]*( (of|and|de|von|van|bin|al|[A-Z][\w.'’-]*))+( \([^)]{1,40}\))?$/;
+const JUNK_WORDS=/\b(runs?|is|was|has|have|gave|are|backs|backed|funded|financed|operated|owned|oversees|approves|plans|chairs|sells|keeps|holds|includes|did|not|names|published|accredited|organised|rebuilt|living|returns|per|about|largely|partly|mostly|free|always|entry|admission|most|own|returns|cost|set up|collaborator|partner|donated|dropped|under|backs|appropriations|subsidies|contributions|expenses|donors|patrons|philanthropy|governed|supports?|maintainer|licence|stock|opens?|also|of it|visitors|works|objects|artworks|members|petition|over|years?|as|at|fees|commissions|projects)\b/i;
+const GENERIC=/^(Private|Public|State|Regional|Municipal|Independent|Community|Small|Very|Self|University|Non-profit|Nonprofit|Endowed|Artist-owned|Hungarian|Norwegian|Senegalese|French|Crown|City|Federal|Catalan|Corporate|Completely|Audited|Documented|Homepage|Funded|Run|Runs|CEO|About|Its|It|His|Her|The \d|Tourism|Urban|Project|Parastatal|Donations|Under|Italy|Japan.s embassy|Thailand|Malaysia.s)\b/;
+const ORG=/(Council|Ministry|Department|Foundation|Fund|Fonds|Agency|Office|Commission|Commissioner|Senate|Endowment|Authority|Trust|Bank|Lottery|Government of|Ministerio|Ministère)/;
+function junkFunder(l){
+  l=l.trim();
+  if(!l||/^[0-9a-z]/.test(l)||/\b[A-Z]\.[A-Z]?$/.test(l)||/^[A-Z](\.[A-Z])+$/.test(l)||/^FY\d/.test(l)) return true;
+  if(l.length>60) return true;
+  if(JUNK_WORDS.test(l)&&!/^(Federal Government Commissioner|Senate Department|Ministry)/.test(l)) return true;
+  if(GENERIC.test(l)&&l.split(' ').length<=4&&!ORG.test(l)) return true;
+  if(GENERIC.test(l)&&l.split(' ').length>4) return true;
+  return false;
+}
+function junkFlag(l){ l=l.trim(); if(FLAG_OK.test(l)) return false; if(l.length<=40&&PERSON.test(l)&&!/^(Prince Andrew)?$/.test('x')) return false; return true; }
+function cleanRec(r){
+  const keep=r.nodes.map(n=>n[1]==='link'?true:n[1]==='flag'?!junkFlag(n[0]):!junkFunder(n[0]));
+  const alive=new Set(); r.edges.forEach(e=>{ if((e[0]===0||keep[e[0]-1])&&(e[1]===0||keep[e[1]-1])){ alive.add(e[0]); alive.add(e[1]); } });
+  const map={0:0}; const nodes=[]; r.nodes.forEach((n,i)=>{ if(keep[i]&&(alive.has(i+1))){ map[i+1]=nodes.length+1; nodes.push(n); } });
+  r.edges=r.edges.filter(e=>map[e[0]]!==undefined&&map[e[1]]!==undefined).map(e=>[map[e[0]],map[e[1]],e[2]]);
+  r.nodes=nodes;
+}
+D.forEach(cleanRec);
 const byRec=Object.fromEntries(D.map(r=>[r.id,r]));
 const CAT={gov:{label:'Government & public',color:'#3a5cf8'},corp:{label:'Corporate & sponsors',color:'#a9e0e6'},found:{label:'Foundations & donors',color:'#ee6c38'},flag:{label:'Flagged on record',color:'#ec4fe8'},link:{label:'Also funds',color:'#c6b566'}};
 const CATS=['gov','corp','found','flag','link'];
+const LC={gov:'#2a45c8',corp:'#17808f',found:'#c2481a',flag:'#a21f93',link:'#7a6a14'};
+CATS.forEach(c=>{ const k=CAT[c], dk=k.color; Object.defineProperty(k,'color',{get:()=>LT()?LC[c]:dk}); });
 const TIER={A:'Clean',B:'Flagged',U:'Unverified'};
 const on={gov:true,corp:true,found:true,flag:true,link:true};
 let seed=7; const rnd=()=>{ seed=(seed*16807)%2147483647; return (seed-1)/2147483646; };
@@ -172,7 +199,7 @@ function render(inst){
   N.filter(n=>!n.center&&n.r==null).forEach(n=>{ n.ang=0; n.r=600; n.tx=600; n.ty=0; });
   const CR=26;
   const rad=n=>n.center?CR:({3:26,2:17,1:10})[n.tier];
-  const colOf=n=>n.center?'#fff':CAT[n.cat].color;
+  const colOf=n=>n.center?(LT()?'#000':'#fff'):CAT[n.cat].color;
   // ---------- svg ----------
   const defs=svg.append('defs'), bf=defs.append('filter').attr('id','bloom').attr('x','-20%').attr('y','-20%').attr('width','140%').attr('height','140%');
   bf.append('feGaussianBlur').attr('in','SourceGraphic').attr('stdDeviation',1.1).attr('result','b');
@@ -206,11 +233,11 @@ function render(inst){
     const el=d3.select(this), r=rad(d);
     const W=d.center?2.9:{3:2.9,2:2.3,1:1.7}[d.tier], col=colOf(d);
     el.append('circle').attr('class','hit').attr('r',r*0.97).attr('fill','none').attr('pointer-events','all');
-    if(d.center||d.cat==='link'){ el.append('circle').attr('class','dot').attr('r',r*0.72).attr('fill',col).attr('filter','url(#glow)'); } // museums: filled dots with a glow
+    if(d.center||d.cat==='link'){ el.append('circle').attr('class','dot').attr('r',r*0.72).attr('fill',col).attr('filter',LT()?null:'url(#glow)'); } // museums: filled dots with a glow
     else { el.append('path').attr('d',loop(r,W)).attr('fill',col);
     if(rnd()<0.6) el.append('path').attr('d',trace(r)).attr('fill',col).attr('opacity',.8); }
   });
-  nodeSel.append('text').attr('class','lbl').attr('letter-spacing','0.05em').attr('fill','#fff').attr('font-size',22).attr('font-family','PP Neue Gstaad, sans-serif').attr('font-weight',400).attr('stroke','#000').attr('stroke-width',3).attr('paint-order','stroke').attr('pointer-events','none').attr('display','none').attr('y',d=>-rad(d)-8).attr('text-anchor','middle').text(d=>d.label);
+  nodeSel.append('text').attr('class','lbl').attr('letter-spacing','0.05em').attr('fill',LT()?'#111':'#fff').attr('font-size',22).attr('font-family','PP Neue Gstaad, sans-serif').attr('font-weight',400).attr('stroke',LT()?'#fff':'#000').attr('stroke-width',3).attr('paint-order','stroke').attr('pointer-events','none').attr('display','none').attr('y',d=>-rad(d)-8).attr('text-anchor','middle').text(d=>d.label);
   sim=d3.forceSimulation(N).force('x',d3.forceX(d=>d.tx).strength(d=>d.center?1:.35)).force('y',d3.forceY(d=>d.ty).strength(d=>d.center?1:.35))
     .force('collide',d3.forceCollide(d=>d.center?rad(d)+40:rad(d)+22).iterations(3))
     .force('link',d3.forceLink(links).id(d=>d.id).distance(130).strength(d=>(d.target.center||d.source.center)?0.02:0.6)).alphaDecay(.04).stop();
@@ -285,7 +312,7 @@ function render(inst){
   const present=CATS.filter(c=>N.some(n=>n.cat===c));
   const catsEl=document.getElementById('cats');
   function renderCats(){
-    catsEl.innerHTML=present.map(c=>{ const k=CAT[c], st=on[c]?`background:#000;border-color:${k.color};color:${k.color}`:`background:#000;border-color:#525252;color:#6f6f6f`; return `<button class="pill${on[c]?' on':''}" style="${st}" data-cat="${c}" aria-pressed="${on[c]}">${k.label} ${on[c]?'×':'+'}</button>`; }).join('');
+    catsEl.innerHTML=present.map(c=>{ const k=CAT[c], st=on[c]?`background:var(--bg);border-color:${k.color};color:${k.color}`:`background:var(--bg);border-color:var(--off-b);color:var(--off)`; return `<button class="pill${on[c]?' on':''}" style="${st}" data-cat="${c}" aria-pressed="${on[c]}">${k.label} ${on[c]?'×':'+'}</button>`; }).join('');
     catsEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{ on[b.dataset.cat]=!on[b.dataset.cat]; applyFilter(); renderCats(); });
   }
   renderCats(); applyFilter();
@@ -300,7 +327,7 @@ function render(inst){
   cur={relayout,fit:()=>fit(),stop:()=>{ sim.stop(); cancelAnimationFrame(anim); }};
 }
 // ---------- the big map: every space and every sponsor in one picture ----------
-CAT.person={label:'People in the Epstein files',color:CAT.flag.color};
+CAT.person={label:'People in the Epstein files'}; Object.defineProperty(CAT.person,'color',{get:()=>CAT.flag.color});
 const ALL={hover:null,moving:new Set(),hl:{right:false,epstein:false},hiSet:new Set(),theme:'light',active:false,built:false,laid:false,inited:false,tr:d3.zoomIdentity,sel:null,near:null,on:{gov:true,corp:true,found:true},touched:false,raf:0};
 const aInfo=document.getElementById('info'), aSheet=document.getElementById('sheet'), aTab=document.getElementById('tab');
 function buildAll(){
@@ -385,7 +412,8 @@ function paintAll(){
   ctx.globalAlpha=1; ctx.font='13px "PP Neue Gstaad", sans-serif'; ctx.textAlign='center'; ctx.textBaseline='alphabetic'; ctx.fillStyle=T.cap; if('letterSpacing' in ctx) ctx.letterSpacing='0.67px';
   ctx.fillText('All spaces and sponsors',w/2,h-24); ctx.fillText('[atlas] '+ALL.nSpaces+' spaces · '+ALL.nSponsors+' sponsors · '+ALL.nPeople+' people in the Epstein files',w/2,h-8); ctx.textAlign='left';
 }
-function setTheme(t){ ALL.theme=t; document.getElementById('stage').classList.toggle('light',t==='light'); try{ localStorage.setItem('atlas-bigmap-theme',t); }catch(e){} renderAllCats(); drawAll(); }
+function setTheme(t){ document.documentElement.setAttribute('data-theme',t); try{ localStorage.setItem('atlas-bigmap-theme',t); }catch(e){} ALL.theme=t; syncThemeBtn(); if(ALL.active){ renderAllCats(); drawAll(); } else if(curRec) openSpace(curRec.id); }
+function syncThemeBtn(){ const b=document.getElementById('ld'); if(b){ b.textContent=LT()?'Night':'Day'; b.setAttribute('aria-label',LT()?'Switch to night mode':'Switch to day mode'); } }
 function startLayout(){
   const nodes=ALL.nodes, links=ALL.links;
   const cw=Math.max(200,ALL.c.clientWidth), ch=Math.max(200,ALL.c.clientHeight-topPad()-36), asp=Math.max(.45,Math.min(3,cw/ch)), AREA=3.6e6;
@@ -456,13 +484,13 @@ function onAllClick(e){ const rc=ALL.c.getBoundingClientRect(), tr=ALL.tr, gx=(e
   ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; const d=Math.hypot(n.x-gx,n.y-gy)-n.r; if(d<bd){ bd=d; best=n; } });
   if(best&&bd*tr.k<=24) selectAll(best===ALL.sel?null:best,'tap'); else selectAll(null,false); }
 function renderAllCats(){ const el=document.getElementById('cats'), lt=ALL.theme==='light';
-  const grp=['gov','corp','found'].map(c=>{ const k=CAT[c], col=lt?THEMES.light.hi[c]:k.color, on=ALL.on[c], st=on?`background:${lt?'#fff':'#000'};border-color:${col};color:${col}`:(lt?'background:#fff;border-color:#c8c8c8;color:#999':'background:#000;border-color:#525252;color:#6f6f6f'); return `<button class="pill${on?' on':''}" style="${st}" data-cat="${c}" aria-pressed="${on}">${k.label} ${on?'×':'+'}</button>`; }).join('');
+  const grp=['gov','corp','found'].map(c=>{ const k=CAT[c], col=lt?THEMES.light.hi[c]:k.color, on=ALL.on[c], st=on?`background:var(--bg);border-color:${col};color:${col}`:'background:var(--bg);border-color:var(--off-b);color:var(--off)'; return `<button class="pill${on?' on':''}" style="${st}" data-cat="${c}" aria-pressed="${on}">${k.label} ${on?'×':'+'}</button>`; }).join('');
   const nR=ALL.nodes.filter(n=>n.right).length, nE=ALL.nodes.filter(n=>n.kind==='space'&&n.epx).length;
-  const hl=[['right','Right-wing sponsors',nR,lt?'#c0281c':'#ff5a4d'],['epstein','Epstein files',nE,lt?'#a21f93':'#ec4fe8']].map(([k,l,n,col])=>{ const on=ALL.hl[k], st=on?`background:${col};border-color:${col};color:${lt?'#fff':'#000'}`:`background:${lt?'#fff':'#000'};border-color:${col};color:${col}`; return `<button class="pill" style="${st}" data-hl="${k}" aria-pressed="${on}">${l} ${n} ${on?'×':'+'}</button>`; }).join('');
+  const hl=[['right','Right-wing sponsors',nR,lt?'#c0281c':'#ff5a4d'],['epstein','Epstein files',nE,lt?'#a21f93':'#ec4fe8']].map(([k,l,n,col])=>{ const on=ALL.hl[k], st=on?`background:${col};border-color:${col};color:${lt?'#fff':'#000'}`:`background:var(--bg);border-color:${col};color:${col}`; return `<button class="pill" style="${st}" data-hl="${k}" aria-pressed="${on}">${l} ${n} ${on?'×':'+'}</button>`; }).join('');
   el.innerHTML=grp+hl;
   el.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{ ALL.on[b.dataset.cat]=!ALL.on[b.dataset.cat]; if(ALL.sel&&!allVisible(ALL.sel)) ALL.sel=null; selectAll(ALL.sel,false); renderAllCats(); });
   el.querySelectorAll('[data-hl]').forEach(b=>b.onclick=()=>{ ALL.hl[b.dataset.hl]=!ALL.hl[b.dataset.hl]; ALL.sel=null; computeHi(); renderAllCats(); allIntro(); if(ALL.hiSet.size) allOpen(true); drawAll(); }); }
-function leaveAll(){ if(!ALL.active) return; ALL.active=false; document.getElementById('stage').classList.remove('light'); const ldb=document.getElementById('ld'); if(ldb) ldb.hidden=true; if(ALL.sim) ALL.sim.stop(); ALL.c.hidden=true; document.getElementById('map').style.display=''; document.getElementById('empty').hidden=true; }
+function leaveAll(){ if(!ALL.active) return; ALL.active=false; document.getElementById('stage').classList.remove('light'); if(ALL.sim) ALL.sim.stop(); ALL.c.hidden=true; document.getElementById('map').style.display=''; document.getElementById('empty').hidden=true; }
 function showAll(){
   if(cur){ cur.stop(); cur=null; } curRec=null; REDRAW=null; SWAYNODES=()=>[]; SWAYLINKS=()=>[];
   buildAll(); const c=ALL.c||(ALL.c=document.getElementById('allc')); ALL.active=true;
@@ -471,9 +499,7 @@ function showAll(){
     d3.select(c).call(ALL.zoom).on('dblclick.zoom',null); c.addEventListener('click',onAllClick); c.addEventListener('pointermove',onAllHover); c.addEventListener('pointerleave',()=>{ if(ALL.hover){ ALL.hover=null; c.style.cursor=''; drawAll(); } });
     new ResizeObserver(()=>{ if(!ALL.active) return; if(!ALL.touched&&ALL.laid) fitAll(false); drawAll(); }).observe(c); }
   document.getElementById('map').style.display='none'; c.hidden=false; document.getElementById('empty').hidden=true;
-  try{ const sv=localStorage.getItem('atlas-bigmap-theme'); if(sv==='light'||sv==='dark') ALL.theme=sv; }catch(e){}
-  let ld=document.getElementById('ld'); if(!ld){ ld=document.createElement('button'); ld.id='ld'; ld.className='pill'; ld.type='button'; ld.textContent='light/dark'; ld.onclick=()=>setTheme(ALL.theme==='light'?'dark':'light'); document.getElementById('zoom').prepend(ld); } ld.hidden=false;
-  document.getElementById('stage').classList.toggle('light',ALL.theme==='light');
+  ALL.theme=LT()?'light':'dark';
   ALL.sel=null; ALL.near=null; computeHi(); ALL.touched=false; renderAllCats(); allIntro(); allOpen(false);
   aTab.onclick=()=>allOpen(aSheet.classList.contains('closed'));
   document.getElementById('zin').onclick=()=>d3.select(c).transition().call(ALL.zoom.scaleBy,1.4);
@@ -509,6 +535,7 @@ function openSpace(id){ const r=byRec[id]; if(!r) return; leaveAll(); curRec=r; 
 if(!window.__ro&&window.ResizeObserver){ window.__ro=true; new ResizeObserver(()=>window.dispatchEvent(new Event('resize'))).observe(document.querySelector('#map')); }
 window.addEventListener('resize',()=>{ if(window.__rz) return; window.__rz=true; requestAnimationFrame(()=>{ window.__rz=false; if(!cur) return; const nw=svg.node().clientWidth<700; if(nw!==window.__nw){ window.__nw=nw; cur.relayout(); } else cur.fit(); }); });
 renderTiers(); renderList();
+{ const b=document.getElementById('ld'); if(b){ b.onclick=()=>setTheme(LT()?'dark':'light'); syncThemeBtn(); } }
 const h0=decodeURIComponent(location.hash.slice(1));
 if(byRec[h0]) openSpace(h0); else showAll();
 window.addEventListener('hashchange',()=>{ const h=decodeURIComponent(location.hash.slice(1)); if(byRec[h]&&!(curRec&&curRec.id===h)) openSpace(h); else if(!byRec[h]&&!ALL.active) showAll(); });
