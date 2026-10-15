@@ -11,7 +11,7 @@ h1,h2,h3,h4,p{margin:0}
 @font-face{font-family:"PP Neue Gstaad Compact";src:url("../fonts/PPNeueGstaad-CompactBold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
 
 :root{
-  --ink:#000; --paper:#fff; --grey:#e8e8e8; --line:#000;
+  --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
   --cobalt:#0046ff; --blue:#527fe6; --orange:#ff6119; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600;
   --sans:"PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -94,15 +94,16 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #desktopGlobeTopControls button[aria-pressed=true],#mobileFilterChipsSection button[aria-pressed=true]{background:var(--cobalt);color:#fff}
 #desktopGlobeTopControls button[aria-pressed=true]:hover,#mobileFilterChipsSection button[aria-pressed=true]:hover{background:#fff;color:var(--cobalt)}
 #hudControlsBar{background:transparent}
-#hudControlsBar button,#zoomInBtn,#zoomOutBtn{font:400 14px/1 var(--sans);background:#fff;color:#000;border-radius:999px;padding:0 12px;height:32px}
+#hudControlsBar button,#zoomInBtn,#zoomOutBtn{font:400 14px/1 var(--sans);background:#fff;color:#000;border-radius:0;padding:0 12px;height:32px}
 #zoomInBtn,#zoomOutBtn{width:32px;padding:0;justify-content:center}
 .globe-ring{display:none}
 
 /* banners over the map: black pill with white text, close mark in yellow */
 #activeMapFilterBanner,#cityViewControlBanner,#activeRouteBanner{background:#000;color:#fff;border:0}
-#activeMapFilterBanner{border-radius:999px;padding:8px 16px;font:400 18px/1 var(--sans)}
+#activeMapFilterBanner{background:var(--block);color:#000;border-radius:0;padding:8px 16px;font:400 18px/1 var(--sans)}
+#activeMapFilterText{color:#000}
 #activeMapFilterText{font:400 18px/1 var(--sans)}
-#clearMapFilterBtn{color:var(--yellow)}
+#clearMapFilterBtn{color:#000}
 #cityViewControlBanner{padding:10px 16px;gap:16px}
 #cityViewControlBanner button{color:#fff;text-decoration:underline}
 #cityViewControlBanner .meta{color:#fff}
@@ -110,7 +111,7 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #activeRouteBanner .meta,#activeRouteBanner span,#activeRouteBanner div{color:#fff}
 #activeRouteBanner button{color:#fff;text-decoration:underline;font:400 14px/1 var(--sans)}
 #buildingInsidePanel{background:#fff;color:#000;border:1px solid #000}
-.xray-label,.xray-pill{font:400 14px/1 var(--sans);background:var(--xray-colour,#fff);color:#000;border-radius:999px;padding:5px 12px}
+.xray-label,.xray-pill{font:400 14px/1 var(--sans);background:var(--xray-colour,#fff);color:#000;border-radius:0;padding:5px 12px}
 
 /* the card that opens on a pin: a colour block with the name set large */
 #floatingCard{background:var(--cobalt);color:#fff;border:0;border-radius:0;padding:0;overflow-y:auto}
@@ -124,9 +125,8 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #floatingCardFundingSource span:first-child,#floatingCardHoursSection span:first-child{font:400 14px/1.3 var(--sans)}
 #floatingCardFundingText,#floatingCardHours{font-size:18px;line-height:1.25}
 #floatingCard>div:last-child{padding:12px 16px 16px;border-top:1px solid rgba(255,255,255,.55)}
-#floatingCard>div:last-child a,#floatingCard>div:last-child button{border-radius:999px;padding:9px 16px;font:400 15px/1 var(--sans);text-align:center;text-decoration:none;justify-content:center}
-#floatingCardDirectAuditBtn{background:#000;color:#fff!important}
-#floatingCardDirectPlanBtn,#floatingCardDirectWebBtn{background:#fff;color:#000!important;border:0}
+#floatingCard>div:last-child a,#floatingCard>div:last-child button{border-radius:0;padding:9px 16px;font:400 15px/1 var(--sans);text-align:center;text-decoration:none;justify-content:center}
+#floatingCardDirectAuditBtn,#floatingCardDirectPlanBtn,#floatingCardDirectWebBtn{background:var(--block);color:#000!important;border:0}
 #floatingCard.gossip-active-card,#floatingCard.gossip-yellow-card{background:var(--yellow);color:#000}
 #floatingCard.gossip-active-card *,#floatingCard.gossip-yellow-card *{color:#000}
 
@@ -161,7 +161,7 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #desktopDossierBody>div:last-child,#desktopDossierBody>div.rule-t:empty{border-top:1px solid var(--line)}
 #desktopDossierBody>div:last-child{padding:16px;gap:8px!important}
 .record-card{border-top:1px solid var(--line);padding:12px 0}
-.source-citation-pill{background:#fff;border-radius:999px;padding:2px 10px;text-decoration:none;font:400 14px/1.4 var(--sans)}
+.source-citation-pill{background:var(--block);border-radius:0;padding:2px 10px;text-decoration:none;font:400 14px/1.4 var(--sans)}
 .inst-link,.city-link,.dossier-link{text-decoration:underline;cursor:pointer}
 .inst-link:hover,.city-link:hover,.dossier-link:hover{background:var(--yellow)}
 
@@ -193,7 +193,7 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 .curator-message-wrap .meta,.curator-message-wrap button{font-family:var(--sans)}
 .curator-message-wrap a{text-decoration:underline}
 .curator-bullet-list,.curator-num-list{padding-left:1.2em}
-.user-bubble,#curatorMessages .justify-end>div,#curatorDrawerLiveStream .justify-end>div{background:#000;color:#fff;border-radius:22px;padding:10px 18px;max-width:85%;align-self:flex-end;text-align:left}
+.user-bubble,#curatorMessages .justify-end>div,#curatorDrawerLiveStream .justify-end>div{background:#000;color:#fff;border-radius:0;padding:10px 18px;max-width:85%;align-self:flex-end;text-align:left}
 .user-bubble *{color:#fff}
 .curator-thought-accordion{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .curator-thought-toggle{font:400 14px/1 var(--sans)}
@@ -213,8 +213,8 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #workInputCard{border-top:1px solid var(--line);padding:12px 0 4px}
 #workInput{font:400 18px/1.25 var(--sans);color:#000;width:100%;resize:none}
 #workInputCard button{font:400 14px/1 var(--sans);color:#000}
-#workSendBtn{width:36px;height:36px;border-radius:50%;background:#000;color:#fff!important;justify-content:center}
-#workSendBtn svg{color:#fff}
+#workSendBtn{width:36px;height:36px;border-radius:0;background:var(--block);color:#000!important;justify-content:center}
+#workSendBtn svg{color:#000}
 #workPlusMenu{background:#fff;border:1px solid #000}
 #workPlusMenu button{padding:12px 14px;border-bottom:1px solid #000;font:400 15px/1.2 var(--sans);width:100%}
 #workPlusMenu button:hover{background:#000;color:#fff}
@@ -234,8 +234,8 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #detailDrawer{background:var(--grey);color:#000}
 #detailDrawer>div:first-child{border-bottom:1px solid #000;padding:0 16px}
 #detailDrawer button{font:400 14px/1 var(--sans)}
-.provider-tab-btn,#testConnectionBtn,.atlas-pill-btn,.pill-sm{background:#000;color:#fff;border-radius:999px;padding:8px 16px;font:400 14px/1 var(--sans)}
-.provider-tab-btn[aria-pressed=true]{background:var(--cobalt)}
+.provider-tab-btn,#testConnectionBtn,.atlas-pill-btn,.pill-sm{background:var(--block);color:#000;border-radius:0;padding:8px 16px;font:400 14px/1 var(--sans)}
+.provider-tab-btn[aria-pressed=true]{background:var(--cobalt);color:#fff}
 
 /* ---- map pins and labels (functional, restyled) ---- */
 .custom-inst-pin{cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .2s}
@@ -281,7 +281,7 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 #curator-chat-drawer button{font:400 15px/1 var(--sans)}
 #mobileStickyInputBar{background:var(--paper);border-top:1px solid var(--line)}
 #chat-input{font:400 18px/1.25 var(--sans);border-bottom:1px solid #000;border-radius:0;background:none;resize:none;display:block;min-height:calc(2 * 1.25em + 16px)}
-#mobileStickySendBtn{background:#000;color:#fff;border-radius:999px;padding:0 16px;font:400 14px/1 var(--sans);height:34px;top:50%;bottom:auto;right:0;transform:translateY(-50%)}
+#mobileStickySendBtn{background:var(--block);color:#000;border-radius:0;padding:0 16px;font:400 14px/1 var(--sans);height:34px;top:50%;bottom:auto;right:0;transform:translateY(-50%)}
 #mobileSheetHandleBar{background:var(--paper)}
 @media (max-width:480px){#mobileTopBrandBtn>div>span:not(:first-child){display:none}}
 @media (max-width:767px){
@@ -299,17 +299,16 @@ body.gossip-mode-active #topGossipBtn{background:var(--yellow);color:#000}
 @media (max-width:767px){.curator-hero-title{font-size:44px}}
 #workInputCard.is-mode{background:var(--yellow);padding:12px}
 #connectionTestBox{padding:8px 12px;font:400 14px/1.3 var(--sans)}
-/* Actions in a record: a joined row of flat ruled buttons, like the map controls and the tabs. */
-.record-action,#desktopDossierWebLink,#dossier-sheet-audit-btn,#dossier-sheet-plan-btn,#desktopDossierBody>div:last-child button{font:400 14px/1 var(--sans);background:#fff;color:#000;border:1px solid #000;border-radius:0;padding:10px 14px;text-align:center;text-decoration:none;display:inline-block;white-space:nowrap;letter-spacing:.01em;width:auto}
-.record-action+.record-action,#desktopDossierBody>div:last-child button+button,#dossier-sheet-audit-btn+#dossier-sheet-plan-btn{margin-left:-1px}
-.record-actions{gap:8px 0!important}
+/* Buttons are flat grey blocks with black text, no rounding, like the fair's tabs. */
+.record-action,#desktopDossierWebLink,#dossier-sheet-audit-btn,#dossier-sheet-plan-btn,#desktopDossierBody>div:last-child button{font:400 15px/1 var(--sans);background:var(--block);color:#000;border:0;border-radius:0;padding:10px 14px;text-align:center;text-decoration:none;display:inline-block;white-space:nowrap;letter-spacing:.01em;width:auto}
+.record-actions{gap:6px!important}
 .record-action:hover,#desktopDossierWebLink:hover,#dossier-sheet-audit-btn:hover,#dossier-sheet-plan-btn:hover,#desktopDossierBody>div:last-child button:hover{background:#000;color:#fff}
 
 #desktopDossierRecordBody{padding:0}
 #desktopDossierRecordBody>div{padding:16px}
 #desktopDossierRecordBody .dossier-main-heading,.dossier-main-heading{font:700 44px/.95 var(--display);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
 #desktopDossierRecordBody .rule-b{border-bottom:1px solid var(--line)}
-#desktopDossierRecordBody .record-actions{gap:0!important;padding-top:12px!important}
+#desktopDossierRecordBody .record-actions{gap:6px!important;padding-top:12px!important}
 @media (max-width:767px){.dossier-main-heading{font-size:36px}}
 /* surfaces that sit inside the dark globe pane but are light themselves */
 #dossier-bottom-sheet,#buildingInsidePanel{color:#000}
@@ -620,6 +619,6 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 #globeViewport:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none}
 
 /* "Share information" is highlighted in pink */
-#hudControlsBar #hudContributeBtn,#hudContributeBtn,#chatShareBtn,#chatContributeBtn,#mapFloatingContributeBtn{background:var(--pink);color:#000;border-radius:999px}
+#hudControlsBar #hudContributeBtn,#hudContributeBtn,#chatShareBtn,#chatContributeBtn,#mapFloatingContributeBtn{background:var(--pink);color:#000;border-radius:0}
 #chatShareBtn{padding:8px 16px}
 #hudControlsBar #hudContributeBtn:hover,#chatShareBtn:hover{background:#000;color:var(--pink)}
