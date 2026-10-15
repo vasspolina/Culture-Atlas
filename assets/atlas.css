@@ -652,3 +652,4 @@ a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:unde
 
 /* The first visit row sits under a block that already ends in a rule, so it draws no rule of its own. */
 .visit-rows>.rule-t:first-child{border-top:0}
+#globeViewport .maplibregl-ctrl-attrib a{color:#000}
