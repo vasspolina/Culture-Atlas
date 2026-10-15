@@ -13,6 +13,7 @@
   <meta name="format-detection" content="telephone=no" />
   <title>Culture Atlas</title>
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
+  <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css">
   <script>
@@ -99,7 +100,7 @@ return maplibregl$1;
     <!-- Right: Action Switchers & Controls -->
     <div class="flex items-center space-x-1_5 shrink-0">
       <!-- New Chat / Reset Quick Actions -->
-      <a id="mobileMoneyMapsLink" href="money-maps.html" class="whitespace-nowrap">Money maps</a>
+      <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" aria-pressed="false">Dark</button>
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
         Chat
@@ -118,7 +119,7 @@ return maplibregl$1;
 
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
-      <a id="topMoneyMapsLink" href="money-maps.html" class="hidden md-inline-flex whitespace-nowrap">Money maps</a>
+      <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Dark</button>
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap">Gossip mode</button>
 
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
@@ -154,6 +155,18 @@ return maplibregl$1;
     <div id="globeViewport" class="relative w-full md-w-_55 h-full flex-1 min-h-0 flex flex-col justify-between overflow-hidden">
       
       <canvas id="globeCanvas" class="absolute inset-0 w-full h-full block"></canvas>
+
+      <!-- Layers: overlays on the map, like a map app's layer menu -->
+      <div id="layersControl">
+        <div id="layersPanel" hidden>
+          <p class="layers-title">Layers</p>
+          <label><input type="checkbox" checked disabled> Cultural spaces</label>
+          <label><input type="checkbox" data-layer="ties"> Funding ties</label>
+          <label><input type="checkbox" data-layer="flags"> Flagged on record</label>
+          <label><input type="checkbox" data-layer="money"> Money network</label>
+        </div>
+        <button id="layersBtn" type="button" aria-expanded="false" aria-controls="layersPanel">Layers</button>
+      </div>
 
       <!-- Top-Left Floating Map Controls (Uncontained) -->
       <div id="desktopGlobeTopControls" class="hidden md-flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 lg-gap-3 meta flex-wrap max-w-_calc_100_-24px">
@@ -282,6 +295,10 @@ return maplibregl$1;
                onclick="event.stopPropagation(); if (typeof window.atlasPlanVisit === 'function') window.atlasPlanVisit(selectedInstitution);">
               <span>Plan Visit in Chat</span>
             </button>
+            <button type="button" id="floatingCardMoneyMapBtn" class="record-action text-left"
+               onclick="event.stopPropagation(); window.atlasShowMoney(typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id);">
+              <span>Money map</span>
+            </button>
           </div>
 
           <div class="flex flex-col gap-2">
@@ -342,6 +359,10 @@ return maplibregl$1;
               </button>
               <button id="dossier-sheet-plan-btn" type="button" class="record-action text-left">
                 <span>Plan Visit in Chat</span>
+              </button>
+              <button type="button" id="dossier-sheet-moneymap-btn" class="record-action text-left"
+                 onclick="event.stopPropagation(); window.atlasShowMoney(typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id);">
+                <span>Money map</span>
               </button>
             </div>
             <div class="flex flex-col gap-2 pt-1">
@@ -7007,8 +7028,9 @@ return maplibregl$1;
       if (!map || typeof map.getStyle !== 'function' || typeof map.setPaintProperty !== 'function') return;
       let layers = [];
       try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
-      const ground = isGossipModeActive ? '#ff6119' : '#ffffff';
-      const line = isGossipModeActive ? '#000000' : '#555555';
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const ground = isGossipModeActive ? '#ff6119' : dark ? '#121212' : '#ffffff';
+      const line = isGossipModeActive ? '#000000' : dark ? '#8a8a8a' : '#555555';
       layers.forEach(l => {
         try {
           if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', ground);
@@ -7019,6 +7041,23 @@ return maplibregl$1;
         } catch (e) { /* a layer this map does not have */ }
       });
     }
+    // Light and dark mode: one switch in the header, remembered, following the system until it is set.
+    function syncThemeButtons() {
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = dark ? 'Light' : 'Dark'; b.setAttribute('aria-pressed', String(dark)); b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode'); } });
+      const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#121212' : '#ffffff');
+    }
+    function toggleTheme(force) {
+      const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = force === 'dark' || force === 'light' ? force : (cur === 'dark' ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('atlas-theme', next); } catch (e) {}
+      syncThemeButtons();
+      applyCityMapGossip();
+      if (typeof scheduleRender === 'function') scheduleRender();
+    }
+    window.toggleTheme = toggleTheme;
+    syncThemeButtons();
     function toggleGossipMode(forceState) {
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
@@ -7703,7 +7742,7 @@ return maplibregl$1;
             ${visitLine ? `<div class="record-popup-line">${escapeHtml(visitLine)}</div>` : ''}
             ${(inst.curatorial_focus || inst.neighborhood) ? `<div class="record-popup-line">${escapeHtml(inst.curatorial_focus || inst.neighborhood)}</div>` : ''}
             <div class="record-popup-actions">
-              <a href="money-maps.html#${encodeURIComponent(inst.id || '')}" class="record-action">Money map</a>
+              <button type="button" onclick="window.atlasShowMoney('${safeId}')">Money map</button>
               ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer">Website</a>` : ''}
               <button type="button" onclick="window.atlasPlanVisit('${safeId}')">Plan Visit</button>
               <button type="button" onclick="window.atlasAskCurator('${safeId}')" title="Ask Curator about ${escapeHtml(inst.name)}">Ask in Chat</button>
@@ -10317,6 +10356,9 @@ return maplibregl$1;
           ctx.restore();
         }
 
+        window.atlasGetSelected = () => selectedInstitution;
+        if (window.atlasLayersDraw) window.atlasLayersDraw(ctx, project, r, cx, cy, filteredList, selectedInstitution, hoveredInstitution);
+
         // 8. Render Institution Dots & Independent Space Clusters on Global Sphere
         visibleDots = [];
 
@@ -10468,6 +10510,8 @@ return maplibregl$1;
             ctx.restore();
           }
         });
+
+        if (window.atlasLayersDrawNodes) window.atlasLayersDrawNodes(ctx, visibleDots, r, baseRadius, selectedInstitution, hoveredInstitution, isGossipModeActive, project, cx, cy);
 
         // 8.5 Render Rich Interactive Hover Card for Hovered City on Globe
         // Suppress city hover cards when hovering an institution or for cities outside selected country
@@ -11466,6 +11510,7 @@ return maplibregl$1;
               <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
               ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
               ${(inst.lat && inst.lon) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
+              ${inst.id ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
               ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
             </div>
           </div>
@@ -17266,6 +17311,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
     }
     window.resetGlobeView = resetGlobeView;
+    window.exitCityStreetView = exitCityStreetView;
     window.resetGlobeZoom = resetGlobeView;
 
     // Both the Header Brand Logo and the Top Reset Button reset the globe view
@@ -17451,5 +17497,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
+<script src="assets/layers.js"></script>
 </body>
 </html>

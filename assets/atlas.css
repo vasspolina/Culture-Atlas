@@ -30,7 +30,7 @@ strong,b{font-weight:400;text-decoration:underline;text-decoration-thickness:1px
 em,i{font-style:italic}
 hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 input,textarea,select{outline:0}
-::placeholder{color:#000;opacity:.55}
+::placeholder{color:var(--ink);opacity:.55}
 :focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
 .meta,code,pre,kbd{font-family:var(--sans);font-size:14px;letter-spacing:.01em}
 .t-title{font-family:var(--display);font-weight:700;font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:0}
@@ -45,7 +45,7 @@ h1.lede,h2.lede{font:700 32px/1 var(--display);text-transform:uppercase;letter-s
 .rule-b+.rule-t{border-top:0}
 .rule-l{border-left:1px solid var(--line)} .rule-r{border-right:1px solid var(--line)}
 .no-indent{text-indent:0}
-.custom-scrollbar,.no-scrollbar{scrollbar-width:thin;scrollbar-color:#000 transparent}
+.custom-scrollbar,.no-scrollbar{scrollbar-width:thin;scrollbar-color:var(--ink) transparent}
 .no-scrollbar{scrollbar-width:none}.no-scrollbar::-webkit-scrollbar{display:none}
 .pt-safe{padding-top:var(--safe-t)}.pb-safe{padding-bottom:var(--safe-b)}
 .is-good{background:var(--cyan);color:#000}.is-warn{background:var(--mustard);color:#000}.is-bad{background:var(--orange);color:#000}
@@ -54,12 +54,12 @@ h1.lede,h2.lede{font:700 32px/1 var(--display);text-transform:uppercase;letter-s
 
 /* tone chips used in generated records */
 .meta.is-good,.meta.is-warn,.meta.is-bad,.meta.is-on{padding:1px 8px}
-.is-on{background:#000;color:#fff}
+.is-on{background:var(--ink);color:var(--paper)}
 
 /* ---- the strip: tabs on hairlines, like the fair's header ---- */
 header{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line);min-height:var(--bar)}
 header button{height:var(--bar);padding:0 16px;font:400 22px/1 var(--sans);letter-spacing:0;white-space:nowrap;border-right:1px solid var(--line);display:inline-flex;align-items:center;gap:8px;background:var(--paper)}
-header button:hover{background:#000;color:#fff}
+header button:hover{background:var(--ink);color:var(--paper)}
 header>button:first-child{border-right:1px solid var(--line)}
 #topBrandLogoBtn{padding:0 16px;gap:16px;border-right:0}
 #topBrandLogoBtn>span:first-child{font:400 22px/1 var(--sans);color:inherit}
@@ -76,7 +76,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #globeViewport a{color:#fff}
 #globeCanvas{cursor:grab;touch-action:none}
 #globeCanvas.dragging{cursor:grabbing}
-#cityMapContainer{background:#fff}
+#cityMapContainer{background:var(--paper)}
 #globeSplitter{background:var(--paper);border-left:1px solid var(--line);width:6px}
 #globeSplitter>div{display:none}
 #globeSplitter{position:relative;cursor:col-resize;touch-action:none}
@@ -99,20 +99,20 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .globe-ring{display:none}
 
 /* banners over the map: black pill with white text, close mark in yellow */
-#activeMapFilterBanner,#activeRouteBanner{background:#000;color:#fff;border:0}
-#activeMapFilterBanner{background:var(--block);color:#000;border-radius:0;padding:8px 16px;font:400 18px/1 var(--sans)}
-#activeMapFilterText{color:#000}
+#activeMapFilterBanner,#activeRouteBanner{background:var(--ink);color:var(--paper);border:0}
+#activeMapFilterBanner{background:var(--block);color:var(--ink);border-radius:0;padding:8px 16px;font:400 18px/1 var(--sans)}
+#activeMapFilterText{color:var(--ink)}
 #activeMapFilterText{font:400 18px/1 var(--sans)}
-#clearMapFilterBtn{color:#000}
+#clearMapFilterBtn{color:var(--ink)}
 /* The street-view bar: a plain white block with a black rule, like the drawing it sits on. No scroll container, so no ragged ends. */
-#cityViewControlBanner{background:#fff;color:#000;border:1px solid #000;padding:9px 14px;gap:16px;overflow:visible}
-#cityViewControlBanner button,#cityViewControlBanner span,#cityViewControlBanner div{color:#000}
+#cityViewControlBanner{background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:9px 14px;gap:16px;overflow:visible}
+#cityViewControlBanner button,#cityViewControlBanner span,#cityViewControlBanner div{color:var(--ink)}
 #cityViewControlBanner button{text-decoration:underline}
 #activeRouteBanner{padding:16px;max-width:390px}
-#activeRouteBanner .meta,#activeRouteBanner span,#activeRouteBanner div{color:#fff}
-#activeRouteBanner button{color:#fff;text-decoration:underline;font:400 14px/1 var(--sans)}
-#buildingInsidePanel{background:#fff;color:#000;border:1px solid #000}
-.xray-label,.xray-pill{font:400 14px/1 var(--sans);background:var(--xray-colour,#fff);color:#000;border-radius:0;padding:5px 12px}
+#activeRouteBanner .meta,#activeRouteBanner span,#activeRouteBanner div{color:var(--paper)}
+#activeRouteBanner button{color:var(--paper);text-decoration:underline;font:400 14px/1 var(--sans)}
+#buildingInsidePanel{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
+.xray-label,.xray-pill{font:400 14px/1 var(--sans);background:var(--xray-colour,var(--paper));color:var(--ink);border-radius:0;padding:5px 12px}
 
 /* the card that opens on a pin: a colour block with the name set large */
 #floatingCard{background:var(--cobalt);color:#fff;border:0;border-radius:0;padding:0;overflow-y:auto}
@@ -127,7 +127,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #floatingCardFundingText,#floatingCardHours{font-size:18px;line-height:1.25}
 #floatingCard>div:last-child{padding:12px 16px 16px;border-top:1px solid rgba(255,255,255,.55)}
 #floatingCard>div:last-child a,#floatingCard>div:last-child button{border-radius:0;padding:9px 16px;font:400 15px/1 var(--sans);text-align:center;text-decoration:none;justify-content:center}
-#floatingCardDirectAuditBtn,#floatingCardDirectPlanBtn,#floatingCardDirectWebBtn{background:var(--block);color:#000!important;border:0}
+#floatingCardDirectAuditBtn,#floatingCardDirectPlanBtn,#floatingCardDirectWebBtn{background:var(--block);color:var(--ink)!important;border:0}
 #floatingCard.gossip-active-card,#floatingCard.gossip-yellow-card{background:var(--gossip);color:#000}
 #floatingCard.gossip-active-card *,#floatingCard.gossip-yellow-card *{color:#000}
 
@@ -135,7 +135,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #workspaceContextTabBar{background:var(--paper);border-bottom:1px solid var(--line);padding:0;min-height:var(--bar);align-items:stretch}
 #workspaceContextTabBar>div:first-child{border:0;padding:0;gap:0;align-items:stretch}
 #workspaceContextTabBar button{font:400 22px/1 var(--sans);height:var(--bar);padding:0 16px;border-right:1px solid var(--line);letter-spacing:0;display:inline-flex;align-items:center}
-#workspaceContextTabBar button:hover{background:#000;color:#fff}
+#workspaceContextTabBar button:hover{background:var(--ink);color:var(--paper)}
 #workspaceContextTabBar>div:last-child{padding-right:0}
 #workspaceNewChatBtn{font:400 15px/1 var(--sans)!important;border-right:0!important;border-left:1px solid var(--line)}
 #workspaceTabDossier.is-on,#workspaceTabChat.is-on{background:var(--cobalt);color:#fff}
@@ -172,7 +172,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #curatorScrollContent{align-items:stretch;max-width:760px;margin:0 auto 0 0}
 #curatorHeroGreeting{align-items:flex-start;text-align:left;padding:0;display:flex;flex-direction:column}
 #curatorHeroGreeting h1{font:700 clamp(40px,5.2vw,76px)/.92 var(--display);text-transform:uppercase;letter-spacing:0;text-align:left;margin:0 0 20px}
-#curatorHeroGreeting h1 .blk{display:inline-block;width:.42em;height:.86em;background:#000;vertical-align:-.06em;margin:0 .06em}
+#curatorHeroGreeting h1 .blk{display:inline-block;width:.42em;height:.86em;background:var(--ink);vertical-align:-.06em;margin:0 .06em}
 #curatorHeroGreeting h1 .lbl{display:inline-block;font:400 clamp(14px,1.1vw,17px)/1.1 var(--sans);text-transform:none;letter-spacing:0;padding:.5em .6em;vertical-align:baseline;margin:0 .15em;background:var(--peri)}
 #curatorHeroGreeting h1 .lbl.m{background:var(--magenta)}
 #curatorHeroGreeting p{font:400 15px/1.3 var(--sans);text-align:left;max-width:60ch;margin:0 0 20px;letter-spacing:0}
@@ -181,12 +181,12 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #curatorHeroGreeting .starter-label{max-width:none;margin:0}
 #curatorStarterPrompts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
 #curatorStarterPrompts .starter-label{grid-column:1/-1;padding:10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin:0}
-.starter-prompt{display:block;text-align:left;padding:14px 12px 28px;min-height:96px;font:400 18px/1.15 var(--sans);border-right:1px solid var(--line);border-bottom:1px solid var(--line);color:#000;text-decoration:none}
+.starter-prompt{display:block;text-align:left;padding:14px 12px 28px;min-height:96px;font:400 18px/1.15 var(--sans);border-right:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}
 .starter-prompt:nth-of-type(1){background:var(--cobalt);color:#fff}
 .starter-prompt:nth-of-type(2){background:var(--orange)}
 .starter-prompt:nth-of-type(3){background:var(--cyan)}
 .starter-prompt:nth-of-type(4){background:var(--mustard)}
-.starter-prompt:hover{background:#000;color:#fff}
+.starter-prompt:hover{background:var(--ink);color:var(--paper)}
 #curatorMessages{max-width:100%}
 .curator-message-wrap{margin:20px 0;font:400 15px/1.3 var(--sans)}
 .curator-message-wrap p,.curator-message-wrap li{font-size:15px;line-height:1.3;margin:0 0 .8em}
@@ -194,17 +194,17 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .curator-message-wrap .meta,.curator-message-wrap button{font-family:var(--sans)}
 .curator-message-wrap a{text-decoration:underline}
 .curator-bullet-list,.curator-num-list{padding-left:1.2em}
-.user-bubble,#curatorMessages .justify-end>div,#curatorDrawerLiveStream .justify-end>div{background:#000;color:#fff;border-radius:0;padding:10px 18px;max-width:85%;align-self:flex-end;text-align:left}
-.user-bubble *{color:#fff}
+.user-bubble,#curatorMessages .justify-end>div,#curatorDrawerLiveStream .justify-end>div{background:var(--ink);color:var(--paper);border-radius:0;padding:10px 18px;max-width:85%;align-self:flex-end;text-align:left}
+.user-bubble *{color:var(--paper)}
 .curator-thought-accordion{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .curator-thought-toggle{font:400 14px/1 var(--sans)}
 .curator-followup-pill,.curator-suggest-chip,.work-suggestion-card,.work-shelf-pill,.confidential-prompt-chip{background:var(--peri);color:#000;border-radius:0;padding:8px 12px;text-align:left;white-space:normal;font:400 15px/1.2 var(--sans);text-decoration:none;display:inline-block;margin:0 6px 6px 0}
 .curator-suggest-chip{display:block;background:none;border-bottom:1px solid var(--line);padding:10px 0;margin:0}
-.curator-followup-pill:hover,.curator-suggest-chip:hover,.work-suggestion-card:hover{background:#000;color:#fff}
+.curator-followup-pill:hover,.curator-suggest-chip:hover,.work-suggestion-card:hover{background:var(--ink);color:var(--paper)}
 .stat-callout,.callout,blockquote{background:var(--grey);padding:12px 16px;border:0;margin:12px 0}
 #curatorTyping{font:400 14px/1.3 var(--sans)}
 #curatorCityDotWrap{display:none}
-.typing-dot{display:inline-block;width:6px;height:6px;background:#000;border-radius:50%;margin-right:3px;animation:typingBounce 1.2s infinite ease-in-out both}
+.typing-dot{display:inline-block;width:6px;height:6px;background:var(--ink);border-radius:50%;margin-right:3px;animation:typingBounce 1.2s infinite ease-in-out both}
 .typing-dot:nth-child(1){animation-delay:-.32s}.typing-dot:nth-child(2){animation-delay:-.16s}
 @keyframes typingBounce{0%,80%,100%{transform:scale(0);opacity:.3}40%{transform:scale(1);opacity:1}}
 
@@ -212,13 +212,13 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #workBottomDock{background:var(--paper);padding:0 16px max(16px,var(--safe-b));align-items:stretch}
 #workBottomDock>div{max-width:760px;width:100%;margin:0}
 #workInputCard{border-top:1px solid var(--line);padding:12px 0 4px}
-#workInput{font:400 18px/1.25 var(--sans);color:#000;width:100%;resize:none}
-#workInputCard button{font:400 14px/1 var(--sans);color:#000}
-#workSendBtn{width:36px;height:36px;border-radius:0;background:var(--block);color:#000!important;justify-content:center}
-#workSendBtn svg{color:#000}
-#workPlusMenu{background:#fff;border:1px solid #000}
-#workPlusMenu button{padding:12px 14px;border-bottom:1px solid #000;font:400 15px/1.2 var(--sans);width:100%}
-#workPlusMenu button:hover{background:#000;color:#fff}
+#workInput{font:400 18px/1.25 var(--sans);color:var(--ink);width:100%;resize:none}
+#workInputCard button{font:400 14px/1 var(--sans);color:var(--ink)}
+#workSendBtn{width:36px;height:36px;border-radius:0;background:var(--block);color:var(--ink)!important;justify-content:center}
+#workSendBtn svg{color:var(--ink)}
+#workPlusMenu{background:var(--paper);border:1px solid var(--ink)}
+#workPlusMenu button{padding:12px 14px;border-bottom:1px solid var(--ink);font:400 15px/1.2 var(--sans);width:100%}
+#workPlusMenu button:hover{background:var(--ink);color:var(--paper)}
 .chat-info{width:100%;padding-top:8px;border-top:1px solid var(--line);font:400 14px/1.3 var(--sans)}
 .chat-info summary{cursor:pointer;list-style:none;width:fit-content}
 .chat-info summary::-webkit-details-marker{display:none}
@@ -226,31 +226,31 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .chat-info p{margin:8px 0 0;max-width:62ch}
 
 /* ---- modals and the full inspector ---- */
-[id$="Modal"]{background:#fff!important;color:#000}
+[id$="Modal"]{background:var(--paper)!important;color:var(--ink)}
 [id$="Modal"] h1,[id$="Modal"] h2,[id$="Modal"] h3{font:700 32px/1 var(--display);text-transform:uppercase;letter-spacing:0}
 [id$="Modal"] button,[id$="Modal"] select,[id$="Modal"] input,[id$="Modal"] textarea{font:400 15px/1.2 var(--sans)}
-[id$="Modal"] input,[id$="Modal"] textarea,[id$="Modal"] select{border-bottom:1px solid #000;padding:8px 0;width:100%}
-.modal-content{background:#fff;color:#000;border:1px solid #000}
-#detailDrawer{background:var(--grey);color:#000}
-#detailDrawer>div:first-child{border-bottom:1px solid #000;padding:0 16px}
+[id$="Modal"] input,[id$="Modal"] textarea,[id$="Modal"] select{border-bottom:1px solid var(--ink);padding:8px 0;width:100%}
+.modal-content{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
+#detailDrawer{background:var(--grey);color:var(--ink)}
+#detailDrawer>div:first-child{border-bottom:1px solid var(--ink);padding:0 16px}
 #detailDrawer button{font:400 14px/1 var(--sans)}
-.provider-tab-btn,#testConnectionBtn,.atlas-pill-btn,.pill-sm{background:var(--block);color:#000;border-radius:0;padding:8px 16px;font:400 14px/1 var(--sans)}
+.provider-tab-btn,#testConnectionBtn,.atlas-pill-btn,.pill-sm{background:var(--block);color:var(--ink);border-radius:0;padding:8px 16px;font:400 14px/1 var(--sans)}
 .provider-tab-btn[aria-pressed=true]{background:var(--cobalt);color:#fff}
 
 /* ---- map pins and labels (functional, restyled) ---- */
 .custom-inst-pin{cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .2s}
 .custom-inst-pin:hover{transform:scale(1.12);z-index:9999!important}
 .pin-pulse-aura,.brand-city-dot-aura,.brand-city-dot-ping{display:none!important}
-.inst-pin-label{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:4px 10px;background:#fff;color:#000;border:1px solid #000;font:400 14px/1.2 var(--sans);white-space:nowrap;cursor:pointer;z-index:20;transition:opacity .2s}
+.inst-pin-label{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:4px 10px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);font:400 14px/1.2 var(--sans);white-space:nowrap;cursor:pointer;z-index:20;transition:opacity .2s}
 .inst-pin-label.label-pos-top{bottom:calc(100% + 5px);top:auto;left:50%;right:auto;transform:translateX(-50%)}
 .inst-pin-label.label-pos-bottom{top:calc(100% + 5px);bottom:auto;left:50%;right:auto;transform:translateX(-50%)}
 .inst-pin-label.label-pos-right{left:calc(100% + 6px);right:auto;top:50%;bottom:auto;transform:translateY(-50%)}
 .inst-pin-label.label-pos-left{right:calc(100% + 6px);left:auto;top:50%;bottom:auto;transform:translateY(-50%)}
 .inst-pin-label.collision-occluded{opacity:0;pointer-events:none}
 .custom-inst-pin:focus-within .inst-pin-label.collision-occluded,.custom-inst-pin:hover .inst-pin-label,.custom-inst-pin.popup-active .inst-pin-label{opacity:1;pointer-events:auto;z-index:9999}
-.curatorial-route-stop-pin,.route-stop-badge{background:#fff;color:#000;border:1px solid #000;font:400 14px/1 var(--sans);padding:4px 8px}
-.maplibregl-ctrl-group{background:#fff!important;border:1px solid #000!important;border-radius:0!important;box-shadow:none!important}
-.maplibregl-ctrl-group button{width:32px!important;height:32px!important;border-bottom:1px solid #000!important}
+.curatorial-route-stop-pin,.route-stop-badge{background:var(--paper);color:var(--ink);border:1px solid var(--ink);font:400 14px/1 var(--sans);padding:4px 8px}
+.maplibregl-ctrl-group{background:var(--paper)!important;border:1px solid var(--ink)!important;border-radius:0!important;box-shadow:none!important}
+.maplibregl-ctrl-group button{width:32px!important;height:32px!important;border-bottom:1px solid var(--ink)!important}
 .maplibregl-ctrl-group button:last-child{border-bottom:0!important}
 
 /* ---- phone: bars at the bottom, tabs as blocks, the record rises over the globe ---- */
@@ -266,17 +266,17 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #mobileBottomNav button:last-child{border-right:0}
 #mobileBottomNav button[aria-selected=true],#mobileBottomNav button.is-on,#mobileBottomNav button.active{background:var(--cobalt);color:#fff}
 #mobileBottomNav svg{display:none}
-#dossier-bottom-sheet{background:var(--grey);color:#000;border-top:1px solid var(--line)}
+#dossier-bottom-sheet{background:var(--grey);color:var(--ink);border-top:1px solid var(--line)}
 #dossier-bottom-sheet>div:nth-child(2){border-bottom:1px solid var(--line)}
 #dossier-sheet-name{font-size:32px}
 #dossier-sheet-meta{font:400 14px/1.3 var(--sans)}
 #close-sheet-btn{font:400 14px/1 var(--sans)}
-#curator-chat-drawer{background:var(--paper);color:#000}
+#curator-chat-drawer{background:var(--paper);color:var(--ink)}
 #curator-chat-drawer>div:first-child{border-bottom:1px solid var(--line)}
 #curator-chat-drawer button{font:400 15px/1 var(--sans)}
 #mobileStickyInputBar{background:var(--paper);border-top:1px solid var(--line)}
-#chat-input{padding-right:104px;font:400 18px/1.25 var(--sans);border-bottom:1px solid #000;border-radius:0;background:none;resize:none;display:block;min-height:calc(2 * 1.25em + 16px)}
-#mobileStickySendBtn{background:var(--block);color:#000;border-radius:0;padding:0 16px;font:400 14px/1 var(--sans);height:34px;top:50%;bottom:auto;right:0;transform:translateY(-50%)}
+#chat-input{padding-right:104px;font:400 18px/1.25 var(--sans);border-bottom:1px solid var(--ink);border-radius:0;background:none;resize:none;display:block;min-height:calc(2 * 1.25em + 16px)}
+#mobileStickySendBtn{background:var(--block);color:var(--ink);border-radius:0;padding:0 16px;font:400 14px/1 var(--sans);height:34px;top:50%;bottom:auto;right:0;transform:translateY(-50%)}
 #mobileSheetHandleBar{background:var(--paper)}
 @media (max-width:480px){#mobileTopBrandBtn>div>span:not(:first-child){display:none}}
 @media (max-width:767px){
@@ -288,16 +288,16 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .curator-hero-title,#curatorHeroGreeting h1{font:700 clamp(40px,5.2vw,76px)/.92 var(--display);text-transform:uppercase;letter-spacing:0;margin:0 0 16px}
-.curator-hero-title .blk,#curatorDrawerGreeting .blk{display:inline-block;width:.42em;height:.86em;background:#000;vertical-align:-.06em;margin:0 .06em}
+.curator-hero-title .blk,#curatorDrawerGreeting .blk{display:inline-block;width:.42em;height:.86em;background:var(--ink);vertical-align:-.06em;margin:0 .06em}
 .curator-hero-title .lbl{display:inline-block;font:400 14px/1.1 var(--sans);text-transform:none;letter-spacing:0;padding:.5em .6em;vertical-align:baseline;margin:0 .15em;background:var(--peri)}
 .curator-hero-title .lbl.m{background:var(--magenta)}
 @media (max-width:767px){.curator-hero-title{font-size:44px}}
 #workInputCard.is-mode{background:var(--gossip);padding:12px}
 #connectionTestBox{padding:8px 12px;font:400 14px/1.3 var(--sans)}
 /* Buttons are flat grey blocks with black text, no rounding, like the fair's tabs. */
-.record-action,#desktopDossierWebLink,#dossier-sheet-audit-btn,#dossier-sheet-plan-btn,#desktopDossierBody>div:last-child button{font:400 15px/1 var(--sans);background:var(--block);color:#000;border:0;border-radius:0;padding:10px 14px;text-align:center;text-decoration:none;display:inline-block;white-space:nowrap;letter-spacing:.01em;width:auto}
+.record-action,#desktopDossierWebLink,#dossier-sheet-audit-btn,#dossier-sheet-plan-btn,#desktopDossierBody>div:last-child button{font:400 15px/1 var(--sans);background:var(--block);color:var(--ink);border:0;border-radius:0;padding:10px 14px;text-align:center;text-decoration:none;display:inline-block;white-space:nowrap;letter-spacing:.01em;width:auto}
 .record-actions{gap:6px!important}
-.record-action:hover,#desktopDossierWebLink:hover,#dossier-sheet-audit-btn:hover,#dossier-sheet-plan-btn:hover,#desktopDossierBody>div:last-child button:hover{background:#000;color:#fff}
+.record-action:hover,#desktopDossierWebLink:hover,#dossier-sheet-audit-btn:hover,#dossier-sheet-plan-btn:hover,#desktopDossierBody>div:last-child button:hover{background:var(--ink);color:var(--paper)}
 
 #desktopDossierRecordBody{padding:0}
 #desktopDossierRecordBody>div{padding:16px}
@@ -306,11 +306,11 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #desktopDossierRecordBody .record-actions{gap:6px!important;padding-top:12px!important}
 @media (max-width:767px){.dossier-main-heading{font-size:36px}}
 /* surfaces that sit inside the dark globe pane but are light themselves */
-#dossier-bottom-sheet,#buildingInsidePanel{color:#000}
-#dossier-bottom-sheet a:not(.record-action),#buildingInsidePanel a:not(.record-action){color:#000}
-#curator-chat-drawer a{color:#000}
+#dossier-bottom-sheet,#buildingInsidePanel{color:var(--ink)}
+#dossier-bottom-sheet a:not(.record-action),#buildingInsidePanel a:not(.record-action){color:var(--ink)}
+#curator-chat-drawer a{color:var(--ink)}
 .xray-cat-title{display:flex;align-items:center;gap:8px}
-.swatch{display:inline-block;width:12px;height:12px;border:1px solid #000;flex:none}
+.swatch{display:inline-block;width:12px;height:12px;border:1px solid var(--ink);flex:none}
 /* Layout helpers: generated, plain CSS. */
 .block{display:block}
 .inline-block{display:inline-block}
@@ -643,17 +643,17 @@ a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:unde
 #globeViewport .record-popup-actions a:hover{color:#fff}
 
 /* Map credit: a small square "i" that opens to the text. Never a pill. */
-.maplibregl-ctrl-attrib.maplibregl-compact{background:#fff;border-radius:0;margin:0 10px 10px 0;min-height:24px;padding:0;color:#000;font:400 14px/1.3 var(--sans)}
-.maplibregl-ctrl-attrib.maplibregl-compact-show{border-radius:0;padding:2px 10px 2px 30px;color:#000}
-.maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-button{background-color:#fff}
-.maplibregl-ctrl-attrib a{color:#000;text-decoration:underline}
-.maplibregl-ctrl-attrib-button,.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-button{background-color:#fff;border-radius:0;width:24px;height:24px}
+.maplibregl-ctrl-attrib.maplibregl-compact{background:var(--paper);border-radius:0;margin:0 10px 10px 0;min-height:24px;padding:0;color:var(--ink);font:400 14px/1.3 var(--sans)}
+.maplibregl-ctrl-attrib.maplibregl-compact-show{border-radius:0;padding:2px 10px 2px 30px;color:var(--ink)}
+.maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-button{background-color:var(--paper)}
+.maplibregl-ctrl-attrib a{color:var(--ink);text-decoration:underline}
+.maplibregl-ctrl-attrib-button,.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-button{background-color:var(--paper);border-radius:0;width:24px;height:24px}
 /* Gossip: the writing box's placeholder stays readable on its tinted ground (8:1). */
 #workInputCard.is-mode ::placeholder{opacity:.75}
 
 /* The first visit row sits under a block that already ends in a rule, so it draws no rule of its own. */
 .visit-rows>.rule-t:first-child{border-top:0}
-#globeViewport .maplibregl-ctrl-attrib a{color:#000}
+#globeViewport .maplibregl-ctrl-attrib a{color:var(--ink)}
 /* Phone header: brand, Gossip mode and Chat share one row */
 @media (max-width:767px){
   #mobileTopBar button{font-size:17px;padding:0 10px}
@@ -664,7 +664,7 @@ a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:unde
 }
 
 /* The map credit button is a white square on a white map, so it takes the same black rule. */
-.maplibregl-ctrl-attrib.maplibregl-compact{border:1px solid #000}
+.maplibregl-ctrl-attrib.maplibregl-compact{border:1px solid var(--ink)}
 
 /* Gossip mode: the menu bar turns yellow, its buttons sit on it without their white blocks, and the street map ground goes orange. */
 body.gossip-mode-active header{background:var(--yellow)}
@@ -676,10 +676,39 @@ body.gossip-mode-active #cityMapContainer{background:var(--gossip)}
 /* In the street view the globe's own controls would sit behind the street-view bar and poke out at its ends. */
 body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
 body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
-/* Money maps links share the header button look */
-#topMoneyMapsLink,#mobileMoneyMapsLink{height:var(--bar);padding:0 16px;font:400 22px/1 var(--sans);letter-spacing:0;white-space:nowrap;border-left:1px solid var(--line);align-items:center;background:var(--paper);color:var(--ink);text-decoration:none}
-#topMoneyMapsLink:hover,#mobileMoneyMapsLink:hover{background:#000;color:#fff}
-#mobileMoneyMapsLink{display:inline-flex;font-size:17px;padding:0 10px}
-body.gossip-mode-active #topMoneyMapsLink,body.gossip-mode-active #mobileMoneyMapsLink{background:transparent}
-body.gossip-mode-active #topMoneyMapsLink:hover,body.gossip-mode-active #mobileMoneyMapsLink:hover{background:#000;color:#fff}
-@media (min-width:768px){#mobileMoneyMapsLink{display:none}}
+/* Layers menu on the map */
+#layersControl{position:absolute;left:12px;bottom:12px;z-index:30;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+#layersBtn{font:400 15px/1 var(--sans);letter-spacing:.01em;padding:11px 14px;background:var(--block);color:var(--ink);border:0;border-radius:0}
+#layersBtn:hover,#layersBtn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
+#layersPanel{background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:10px 14px;display:flex;flex-direction:column;gap:8px;min-width:200px}
+#layersPanel[hidden]{display:none}
+#layersPanel .layers-title{margin:0;font:700 15px/1 var(--sans-compact,var(--sans));letter-spacing:.01em}
+#layersPanel label{display:flex;align-items:center;gap:10px;font:400 15px/1.2 var(--sans);letter-spacing:.01em;color:var(--ink);cursor:pointer}
+#layersPanel input{width:18px;height:18px;accent-color:var(--ink);margin:0;border-radius:0}
+#desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
+#layersControl{z-index:40}
+@media (max-width:767px){#layersControl{bottom:auto;top:200px;left:auto;right:12px;align-items:flex-end}}
+
+/* Dark mode: the same ink-and-paper system, inverted. The globe stays black in both. */
+:root[data-theme="dark"]{color-scheme:dark;--ink:#fff;--paper:#121212;--grey:#1c1c1c;--block:#2f2f2f;--line:#fff}
+:root[data-theme="dark"] #floatingCard{color:#fff}
+:root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-content{background:#2a2a2a;color:#fff}
+:root[data-theme="dark"] .record-popup,:root[data-theme="dark"] .record-popup-line,:root[data-theme="dark"] .record-popup-name,:root[data-theme="dark"] #globeViewport .record-popup a,:root[data-theme="dark"] #globeViewport a.record-popup-name{color:#fff}
+:root[data-theme="dark"] .record-popup-rule{border-top-color:#fff}
+:root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-close-button{color:#fff}
+:root[data-theme="dark"] .record-popup-actions a,:root[data-theme="dark"] .record-popup-actions button{background:#444;color:#fff}
+:root[data-theme="dark"] .record-popup-actions a:hover,:root[data-theme="dark"] .record-popup-actions button:hover{background:#fff;color:#000}
+:root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-tip{border-top-color:#2a2a2a;border-bottom-color:#2a2a2a}
+/* Gossip mode's yellow bar keeps black text in both modes */
+body.gossip-mode-active header,body.gossip-mode-active header button,body.gossip-mode-active header a{color:#000}
+body.gossip-mode-active header button:hover,body.gossip-mode-active header a:hover{color:#fff}
+/* Theme switch in the header */
+/* Colour that carries meaning keeps black text in both modes */
+#curatorHeroGreeting h1 .lbl,.curator-hero-title .lbl,.starter-prompt:nth-of-type(2),.starter-prompt:nth-of-type(3),.starter-prompt:nth-of-type(4),#chatShareBtn,#chatContributeBtn,#hudContributeBtn,#mapFloatingContributeBtn{color:#000}
+.starter-prompt:hover{background:var(--ink);color:var(--paper)}
+#workInputCard #chatShareBtn{color:#000}
+#globeViewport .record-action{color:var(--ink)}
+#globeViewport .record-action:hover{color:var(--paper)}
+/* The Atlas / Dossier / Curator tab bar is gone: the dossier opens on a space, Close returns to the map, and the header Chat button opens the curator. The tab elements stay in the DOM so the existing scripts still drive them. */
+#mobileBottomNav{display:none!important}
+body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
