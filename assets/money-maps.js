@@ -276,7 +276,9 @@ function render(inst){
     info.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openSpace(b.dataset.open));
     info.scrollTop=0; setOpen(true);
   }
-  nodeSel.on('click',(e,d)=>{ e.stopPropagation(); const n=nearestNode(e.clientX,e.clientY,28)||d; select(selected&&selected.id===n.id?null:n); }).on('keydown',(e,d)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); select(d); } });
+  nodeSel.on('mouseenter',(e,d)=>{ if(!window.matchMedia||!matchMedia('(hover: hover)').matches) return; d3.select(e.currentTarget).select('text.lbl').attr('display',null); swayKick(e.clientX,e.clientY,0.4); })
+  .on('mouseleave',(e,d)=>{ const keep=selected&&(d.id===selected.id||links.some(l=>(l.source.id===selected.id&&l.target.id===d.id)||(l.target.id===selected.id&&l.source.id===d.id))); d3.select(e.currentTarget).select('text.lbl').attr('display',keep?null:'none'); })
+  .on('click',(e,d)=>{ e.stopPropagation(); const n=nearestNode(e.clientX,e.clientY,28)||d; select(selected&&selected.id===n.id?null:n); }).on('keydown',(e,d)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); select(d); } });
   svg.on('click',(e)=>{ if(orbMoved>5){ orbMoved=0; return; } const n=nearestNode(e.clientX,e.clientY,28); if(n){ select(selected&&selected.id===n.id?null:n); return; } select(null); });
   bindOrbit(svg); REDRAW=draw; SWAYNODES=()=>N; SWAYLINKS=()=>links; startSpin();
   // category pills (only the groups this map has)
@@ -299,7 +301,7 @@ function render(inst){
 }
 // ---------- the big map: every space and every sponsor in one picture ----------
 CAT.person={label:'People in the Epstein files',color:CAT.flag.color};
-const ALL={hl:{right:false,epstein:false},hiSet:new Set(),theme:'light',active:false,built:false,laid:false,inited:false,tr:d3.zoomIdentity,sel:null,near:null,on:{gov:true,corp:true,found:true},touched:false,raf:0};
+const ALL={hover:null,moving:new Set(),hl:{right:false,epstein:false},hiSet:new Set(),theme:'light',active:false,built:false,laid:false,inited:false,tr:d3.zoomIdentity,sel:null,near:null,on:{gov:true,corp:true,found:true},touched:false,raf:0};
 const aInfo=document.getElementById('info'), aSheet=document.getElementById('sheet'), aTab=document.getElementById('tab');
 function buildAll(){
   if(ALL.built) return; ALL.built=true;
@@ -334,6 +336,7 @@ function sizeCanvas(){ const c=ALL.c, dpr=window.devicePixelRatio||1, w=c.client
 function topPad(){ const c=document.getElementById('cats'); return c?c.offsetHeight+4:0; }
 function fitAll(animate){
   if(!ALL.c||!sizeCanvas()) return; const w=ALL.c.clientWidth, h=ALL.c.clientHeight, tp=topPad(); let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  ALL.moving.forEach(n=>{ n.ox=n.oy=n.vx2=n.vy2=0; }); ALL.moving.clear();
   if(ALL.laid){ // spread the finished layout sideways to match the window; circles stay round
     let a0=1e9,a1=-1e9,b0=1e9,b1=-1e9; ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; a0=Math.min(a0,n.bx); a1=Math.max(a1,n.bx); b0=Math.min(b0,n.by); b1=Math.max(b1,n.by); });
     const sx=Math.max(.6,Math.min(1.8,(((w-28)/Math.max(1,h-tp-64))/(Math.max(1,a1-a0)/Math.max(1,b1-b0))))); ALL.nodes.forEach(n=>{ n.x=n.bx*sx; n.y=n.by; }); }
@@ -367,14 +370,15 @@ function paintAll(){
       ctx.globalAlpha=a; ctx.fillStyle=T.dot; ctx.shadowColor=T.glow; ctx.shadowBlur=(dim&&!isNear?3:7)*ALL.dpr; ctx.fill(); ctx.shadowBlur=0; } });
   if(!sel&&ALL.hiSet.size){ [['right','#c0281c','#ff5a4d'],['epstein','#a21f93','#ec4fe8']].forEach(([k,lc,dc])=>{ if(!ALL.hl[k]) return; const ns=ALL.nodes.filter(n=>(k==='right'?n.right:n.epx)&&allVisible(n)); if(!ns.length) return;
     ctx.globalAlpha=1; ctx.beginPath(); ns.forEach(n=>{ ctx.moveTo(n.x+n.r+2.5/tr.k,n.y); ctx.arc(n.x,n.y,n.r+2.5/tr.k,0,6.2832); }); ctx.strokeStyle=T.hi?lc:dc; ctx.lineWidth=2.2/tr.k; ctx.stroke(); }); }
+  if(ALL.hover&&ALL.hover!==sel&&allVisible(ALL.hover)){ const hv=ALL.hover; ctx.globalAlpha=1; ctx.beginPath(); ctx.arc(hv.x,hv.y,hv.r+3/tr.k,0,6.2832); ctx.strokeStyle=T.hi?'#111':'#fff'; ctx.lineWidth=1.6/tr.k; ctx.stroke(); }
   if(sel){ ctx.globalAlpha=1; ctx.beginPath(); ctx.arc(sel.x,sel.y,sel.r+3.5/tr.k,0,6.2832); ctx.strokeStyle=T.hi?'#111':'#fff'; ctx.lineWidth=2/tr.k; ctx.stroke(); }
   // names: the biggest sponsors first, more of them as you zoom in; everything beside a selection
   const Tn=Math.max(1,14/tr.k), vx0=-tr.x/tr.k, vy0=-tr.y/tr.k, vx1=(w-tr.x)/tr.k, vy1=(h-tr.y)/tr.k; let cand=[];
   ALL.nodes.forEach(n=>{ if(!allVisible(n)||n.x<vx0||n.x>vx1||n.y<vy0||n.y>vy1) return; if(dim?near.has(n):n.deg*(n.kind==='space'?.5:1)>=Tn) cand.push(n); });
-  cand.sort((a,b)=>(b===sel)-(a===sel)||b.deg-a.deg); cand=cand.slice(0,dim?90:160);
+  cand.sort((a,b)=>(b===sel)-(a===sel)||b.deg-a.deg); cand=cand.slice(0,dim?90:160); if(ALL.hover&&allVisible(ALL.hover)){ cand=cand.filter(m=>m!==ALL.hover); cand.unshift(ALL.hover); }
   ctx.globalAlpha=1; ctx.font=(13/tr.k)+'px "PP Neue Gstaad", sans-serif'; ctx.textBaseline='middle'; if('letterSpacing' in ctx) ctx.letterSpacing=(0.67/tr.k)+'px'; /* 0.5pt between letters, the same on screen at every zoom */ ctx.lineJoin='round'; ctx.lineWidth=3/tr.k; ctx.strokeStyle=T.halo; ctx.fillStyle=T.label;
   const placed=[]; cand.forEach(n=>{ const tw=ctx.measureText(n.label).width*tr.k, sx=tr.x+(n.x+n.r+3/tr.k)*tr.k, sy=tr.y+n.y*tr.k;
-    if(placed.some(p=>sx<p[2]&&sx+tw>p[0]&&sy-8<p[3]&&sy+8>p[1])) return; placed.push([sx,sy-8,sx+tw,sy+8]);
+    if(n!==ALL.hover&&placed.some(p=>sx<p[2]&&sx+tw>p[0]&&sy-8<p[3]&&sy+8>p[1])) return; placed.push([sx,sy-8,sx+tw,sy+8]);
     const x=n.x+n.r+3/tr.k; ctx.strokeText(n.label,x,n.y); ctx.fillText(n.label,x,n.y); });
   ctx.restore();
   // caption, like the label under a plate
@@ -437,6 +441,17 @@ function focusAll(n,onlyIfOff){ const c=ALL.c; if(!c||!sizeCanvas()) return; con
   if(onlyIfOff&&inView&&fill>.4) return; // already readable: leave the view alone
   const k=Math.max(.3,Math.min((w-80)/Math.max(1,x1-x0),(h-tp-80)/Math.max(1,y1-y0),5));
   ALL.touched=true; d3.select(c).transition().duration(700).call(ALL.zoom.transform,d3.zoomIdentity.translate(w/2-(x0+x1)/2*k,tp+(h-tp)/2-(y0+y1)/2*k).scale(k)); }
+function nearestAll(cx,cy,maxPx){ const rc=ALL.c.getBoundingClientRect(), tr=ALL.tr, gx=(cx-rc.left-tr.x)/tr.k, gy=(cy-rc.top-tr.y)/tr.k; let best=null,bd=maxPx/tr.k;
+  ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; const d=Math.hypot(n.x-gx,n.y-gy)-n.r; if(d<bd){ bd=d; best=n; } }); return best; }
+function nudge(n,fx,fy,amp){ if(n.ox==null){ n.ox=n.oy=n.vx2=n.vy2=0; } n.vx2+=fx*amp; n.vy2+=fy*amp; ALL.moving.add(n); if(!ALL.springRun){ ALL.springRun=true; requestAnimationFrame(springAll); } }
+function springAll(){ const dt=1; let live=false;
+  ALL.moving.forEach(n=>{ n.vx2+=(-.06*n.ox-.13*n.vx2)*dt; n.vy2+=(-.06*n.oy-.13*n.vy2)*dt; const nx=n.ox+n.vx2*dt, ny=n.oy+n.vy2*dt; n.x+=nx-n.ox; n.y+=ny-n.oy; n.ox=nx; n.oy=ny;
+    if(Math.abs(n.ox)+Math.abs(n.oy)+Math.abs(n.vx2)+Math.abs(n.vy2)<.03){ n.x-=n.ox; n.y-=n.oy; n.ox=n.oy=n.vx2=n.vy2=0; ALL.moving.delete(n); } else live=true; });
+  drawAll(); if(live) requestAnimationFrame(springAll); else ALL.springRun=false; }
+function onAllHover(e){ if(e.pointerType==='touch'||e.buttons) return; const n=nearestAll(e.clientX,e.clientY,14); if(n===ALL.hover) return; ALL.hover=n; ALL.c.style.cursor=n?'pointer':'';
+  if(n){ const k=ALL.tr.k, amp=4/k, rc=ALL.c.getBoundingClientRect(), gx=(e.clientX-rc.left-ALL.tr.x)/k, gy=(e.clientY-rc.top-ALL.tr.y)/k; let dx=n.x-gx, dy=n.y-gy; const L=Math.hypot(dx,dy)||1; dx/=L; dy/=L;
+    nudge(n,dx,dy,amp*.55); n.links.forEach(m=>{ if(!allVisible(m)) return; let ex=m.x-n.x, ey=m.y-n.y; const l=Math.hypot(ex,ey)||1; nudge(m,ex/l,ey/l,amp*.22); }); }
+  drawAll(); }
 function onAllClick(e){ const rc=ALL.c.getBoundingClientRect(), tr=ALL.tr, gx=(e.clientX-rc.left-tr.x)/tr.k, gy=(e.clientY-rc.top-tr.y)/tr.k; let best=null,bd=1e9;
   ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; const d=Math.hypot(n.x-gx,n.y-gy)-n.r; if(d<bd){ bd=d; best=n; } });
   if(best&&bd*tr.k<=24) selectAll(best===ALL.sel?null:best,'tap'); else selectAll(null,false); }
@@ -453,7 +468,7 @@ function showAll(){
   buildAll(); const c=ALL.c||(ALL.c=document.getElementById('allc')); ALL.active=true;
   if(!ALL.ctx){ ALL.ctx=c.getContext('2d');
     ALL.zoom=d3.zoom().scaleExtent([.04,40]).clickDistance(8).on('zoom',e=>{ ALL.tr=e.transform; if(e.sourceEvent&&!ALL.fitting) ALL.touched=true; drawAll(); });
-    d3.select(c).call(ALL.zoom).on('dblclick.zoom',null); c.addEventListener('click',onAllClick);
+    d3.select(c).call(ALL.zoom).on('dblclick.zoom',null); c.addEventListener('click',onAllClick); c.addEventListener('pointermove',onAllHover); c.addEventListener('pointerleave',()=>{ if(ALL.hover){ ALL.hover=null; c.style.cursor=''; drawAll(); } });
     new ResizeObserver(()=>{ if(!ALL.active) return; if(!ALL.touched&&ALL.laid) fitAll(false); drawAll(); }).observe(c); }
   document.getElementById('map').style.display='none'; c.hidden=false; document.getElementById('empty').hidden=true;
   try{ const sv=localStorage.getItem('atlas-bigmap-theme'); if(sv==='light'||sv==='dark') ALL.theme=sv; }catch(e){}
