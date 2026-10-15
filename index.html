@@ -7666,56 +7666,21 @@ return maplibregl$1;
         const visitLine = [inst.opening_hours ? inst.opening_hours.split(',')[0] : '', inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : ''].filter(Boolean).join(', ');
         const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : '';
         const popupContent = `
-          <div data-entity-id="${safeId}" style="font-family:'PP Neue Gstaad', sans-serif; min-width:280px; max-width:350px; padding:4px 0; color:#f4f4f4; box-sizing:border-box;">
-            <!-- Header Section -->
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:4px;">
-              <div style="padding-right:10px; min-width:0;">
-                <a href="${escapeHtml(webUrl || '#')}" target="_blank" rel="noopener noreferrer" 
-                   style="font-size: 15px; font-weight:400; color:#ffffff; line-height:1.3; text-decoration:none; display:block;"
-                   onmouseover="this.style.color='#f4f4f4';this.style.textDecoration='underline'" 
-                   onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
-                  ${escapeHtml(inst.name)}
-                </a>
-                <div style="font-size:14px; color:#f4f4f4; margin-top:2px;">
-                  ${escapeHtml(inst.location || inst.city)}
-                </div>
-              </div>
-            </div>
-
-            <!-- Hours & Admission Tier -->
-            <div style="font-size:14px; color:#34d399; margin-top:4px; font-family: 'PP Neue Gstaad', sans-serif;">
-              ${escapeHtml(visitLine)}
-            </div>
-
-            <!-- Curatorial Focus & Info Link -->
-            <div style="font-size:14px; color:#f4f4f4; margin-top:4px; line-height:1.3;">
-              ${escapeHtml(inst.curatorial_focus || inst.neighborhood || '')}
-
-            </div>
-
-            <!-- Streamlined Single-Column Actions -->
-            <div style="display:flex; flex-direction:column; gap:4px; margin-top:8px; padding-top:6px; border-top:1px solid #262626;">
-              ${webUrl ? `
-                <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" 
-                   style="color:#f4f4f4; font-size:14px; font-weight:400; text-decoration:underline; font-family:inherit;">
-                  Website
-                </a>
-              ` : ''}
-              <button type="button" onclick="window.atlasPlanVisit('${safeId}')" 
-                      style="background:none; border:none; text-align:left; color:#f4f4f4; font-size:14px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
-                Plan Visit
-              </button>
-              <button type="button" onclick="window.atlasAskCurator('${safeId}')" 
-                      style="background:none; border:none; text-align:left; color:#42be65; font-size:14px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;" 
-                      title="Ask Curator about ${escapeHtml(inst.name)}">
-                Ask in Chat
-              </button>
+          <div class="record-popup" data-entity-id="${safeId}">
+            <a class="record-popup-name" href="${escapeHtml(webUrl || '#')}" target="_blank" rel="noopener noreferrer">${escapeHtml(inst.name)}</a>
+            <div class="record-popup-line">${escapeHtml(inst.location || inst.city)}</div>
+            ${visitLine ? `<div class="record-popup-line">${escapeHtml(visitLine)}</div>` : ''}
+            ${(inst.curatorial_focus || inst.neighborhood) ? `<div class="record-popup-line">${escapeHtml(inst.curatorial_focus || inst.neighborhood)}</div>` : ''}
+            <div class="record-popup-actions">
+              ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer">Website</a>` : ''}
+              <button type="button" onclick="window.atlasPlanVisit('${safeId}')">Plan Visit</button>
+              <button type="button" onclick="window.atlasAskCurator('${safeId}')" title="Ask Curator about ${escapeHtml(inst.name)}">Ask in Chat</button>
             </div>
           </div>
         `;
 
         const popup = new maplibregl.Popup({
-          className: 'atlas-dark-popup',
+          className: 'atlas-record-popup',
           maxWidth: '360px',
           offset: 16,
           closeButton: true,
@@ -8084,49 +8049,24 @@ return maplibregl$1;
           const safeName = escapeHtml(stop.name).replace(/'/g, "\'");
           const isClean = stop.tier === 'A';
           const popupHtml = `
-            <div style="font-family:'PP Neue Gstaad', sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f4f4f4;">
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
-                <span style="font-size:14px;  color:#34d399; font-weight:400;">
-                  Stop ${stop.stopIndex} of ${route.stops.length}
-                </span>
-                <span style="font-size:14px;  padding:1px 6px; border-radius:4px; background:${isClean ? '#06261c' : '#1e1133'}; color:${isClean ? '#34d399' : '#c084fc'}; border:1px solid ${isClean ? '#0f4c39' : '#581c87'};">
-                  ${isClean ? 'Clean, source cited' : 'Flagged'}
-                </span>
-              </div>
-              <div style="font-size: 15px; font-weight:400; color:#ffffff; line-height:1.3; margin-bottom:4px;">
-                ${escapeHtml(stop.name)}
-              </div>
-              <div style="font-size:14px; color:#f4f4f4; margin-bottom:6px;">
-                ${escapeHtml(stop.address || stop.neighborhood || stop.city)}
-              </div>
-              <div style="font-size:14px;  color:#6ee7b7; background:#000000; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
-                ${escapeHtml(stop.openingHours)}
-              </div>
-              <div style="font-size:14px; color:#f4f4f4; margin-bottom:8px; line-height:1.3;">
-                ${escapeHtml(stop.curatorialFocus || '')}
-              </div>
-              ${idx < route.stops.length - 1 ? `
-                <div style="font-size:14px;  color:#f4f4f4; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
-                  Next stop: ${escapeHtml(route.stops[idx + 1].name)} (${stop.nextLegKm || route.stops[idx+1].legDistanceKm} km, ${stop.nextLegMin || route.stops[idx+1].legWalkMinutes} min walk)
-                </div>
-              ` : `
-                <div style="font-size:14px;  color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
-                  Final Itinerary Destination
-                </div>
-              `}
-              <div style="display:flex; align-items:center; gap:6px; margin-top:8px;">
-                <button onclick="window.jumpToRouteStop(${idx})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:400; border:none; cursor:pointer;">
-                  Focus Stop
-                </button>
-                <button onclick="window.atlasPlanVisit('${safeName}')" style="padding:4px 8px; border-radius:8px; background:#000000; color:#f4f4f4; font-size:14px; border:1px solid #334155; cursor:pointer;">
-                  Plan Visit
-                </button>
+            <div class="record-popup">
+              <div class="record-popup-line">Stop ${stop.stopIndex} of ${route.stops.length}. ${isClean ? 'Clean, source cited' : 'Flagged'}</div>
+              <div class="record-popup-name">${escapeHtml(stop.name)}</div>
+              <div class="record-popup-line">${escapeHtml(stop.address || stop.neighborhood || stop.city)}</div>
+              ${stop.openingHours ? `<div class="record-popup-line">${escapeHtml(stop.openingHours)}</div>` : ''}
+              ${stop.curatorialFocus ? `<div class="record-popup-line">${escapeHtml(stop.curatorialFocus)}</div>` : ''}
+              <div class="record-popup-line record-popup-rule">${idx < route.stops.length - 1
+                ? `Next stop: ${escapeHtml(route.stops[idx + 1].name)} (${stop.nextLegKm || route.stops[idx+1].legDistanceKm} km, ${stop.nextLegMin || route.stops[idx+1].legWalkMinutes} min walk)`
+                : 'Final stop of this route'}</div>
+              <div class="record-popup-actions">
+                <button type="button" onclick="window.jumpToRouteStop(${idx})">Focus Stop</button>
+                <button type="button" onclick="window.atlasPlanVisit('${safeName}')">Plan Visit</button>
               </div>
             </div>
           `;
 
           const popup = new maplibregl.Popup({
-            className: 'atlas-dark-popup',
+            className: 'atlas-record-popup',
             maxWidth: '340px',
             offset: 14,
             closeButton: true,
