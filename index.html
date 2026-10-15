@@ -99,8 +99,9 @@ return maplibregl$1;
     <!-- Right: Action Switchers & Controls -->
     <div class="flex items-center space-x-1_5 shrink-0">
       <!-- New Chat / Reset Quick Actions -->
+      <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
-        + Chat
+        Chat
       </button>
     </div>
   </header>
@@ -7001,7 +7002,7 @@ return maplibregl$1;
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
       const label = isGossipModeActive ? 'Gossip mode: on' : 'Gossip mode';
-      ['topGossipBtn', 'workMenuGossipModeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
+      ['topGossipBtn', 'mobileGossipBtn', 'workMenuGossipModeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
       document.getElementById('workPlusMenu')?.classList.add('hidden');
       if (typeof appendCuratorMessage === 'function') {
         appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);

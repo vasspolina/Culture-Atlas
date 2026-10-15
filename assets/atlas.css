@@ -68,7 +68,7 @@ header>button:first-child{border-right:1px solid var(--line)}
 #topGossipBtn,#topShareBtn{border-left:1px solid var(--line);border-right:0}
 header>div:last-child{align-self:stretch;display:flex}
 header>div:last-child>button{border-right:0;border-left:1px solid var(--line)}
-body.gossip-mode-active #topGossipBtn{background:var(--gossip);color:#000}
+body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:#000}
 
 /* ---- the two halves ---- */
 #mainAppContainer{background:var(--paper);min-height:0}
@@ -274,7 +274,7 @@ body.gossip-mode-active #topGossipBtn{background:var(--gossip);color:#000}
 #curator-chat-drawer>div:first-child{border-bottom:1px solid var(--line)}
 #curator-chat-drawer button{font:400 15px/1 var(--sans)}
 #mobileStickyInputBar{background:var(--paper);border-top:1px solid var(--line)}
-#chat-input{font:400 18px/1.25 var(--sans);border-bottom:1px solid #000;border-radius:0;background:none;resize:none;display:block;min-height:calc(2 * 1.25em + 16px)}
+#chat-input{padding-right:104px;font:400 18px/1.25 var(--sans);border-bottom:1px solid #000;border-radius:0;background:none;resize:none;display:block;min-height:calc(2 * 1.25em + 16px)}
 #mobileStickySendBtn{background:var(--block);color:#000;border-radius:0;padding:0 16px;font:400 14px/1 var(--sans);height:34px;top:50%;bottom:auto;right:0;transform:translateY(-50%)}
 #mobileSheetHandleBar{background:var(--paper)}
 @media (max-width:480px){#mobileTopBrandBtn>div>span:not(:first-child){display:none}}
@@ -653,3 +653,11 @@ a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:unde
 /* The first visit row sits under a block that already ends in a rule, so it draws no rule of its own. */
 .visit-rows>.rule-t:first-child{border-top:0}
 #globeViewport .maplibregl-ctrl-attrib a{color:#000}
+/* Phone header: brand, Gossip mode and Chat share one row */
+@media (max-width:767px){
+  #mobileTopBar button{font-size:17px;padding:0 10px}
+  #mobileTopBar #mobileTopBrandBtn{padding:0 10px 0 0}
+  #mobileTopBar>div:last-child{align-self:stretch;display:flex;gap:0}
+  #mobileTopBar #mobileGossipBtn{border-left:1px solid var(--line)}
+  #mobileTopBar #reset-state-btn{border-left:1px solid var(--line)}
+}
