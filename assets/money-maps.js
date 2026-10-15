@@ -298,30 +298,37 @@ function render(inst){
   cur={relayout,fit:()=>fit(),stop:()=>{ sim.stop(); cancelAnimationFrame(anim); }};
 }
 // ---------- the big map: every space and every sponsor in one picture ----------
-const ALL={theme:'light',active:false,built:false,laid:false,inited:false,tr:d3.zoomIdentity,sel:null,near:null,on:{gov:true,corp:true,found:true},touched:false,raf:0};
+const ALL={hl:{right:false,epstein:false},hiSet:new Set(),theme:'light',active:false,built:false,laid:false,inited:false,tr:d3.zoomIdentity,sel:null,near:null,on:{gov:true,corp:true,found:true},touched:false,raf:0};
 const aInfo=document.getElementById('info'), aSheet=document.getElementById('sheet'), aTab=document.getElementById('tab');
 function buildAll(){
   if(ALL.built) return; ALL.built=true;
   const nodes=[], links=[], byKey=new Map(), names=new Map(); ALL.byId=new Map();
   D.forEach(r=>{ let sp=null;
     r.nodes.forEach(n=>{ if(!(n[1]==='gov'||n[1]==='corp'||n[1]==='found')||!n[5]) return;
-      if(!sp){ sp={id:'s:'+r.id,rid:r.id,label:r.n,sub:r.c,tier:r.t,kind:'space',cat:'space',links:[],deg:0}; nodes.push(sp); }
-      let k=byKey.get(n[5]); if(!k){ k={id:'k:'+n[5],label:n[0],kind:'sponsor',cat:n[1],links:[],deg:0,note:n[3]||''}; byKey.set(n[5],k); names.set(n[5],new Map()); nodes.push(k); }
+      if(!sp){ sp={id:'s:'+r.id,rid:r.id,label:r.n,sub:r.c,tier:r.t,kind:'space',cat:'space',links:[],deg:0,ep:r.ep||[],epx:(r.ep&&r.ep.length>0)||r.fl.indexOf('Epstein-linked')>=0}; nodes.push(sp); }
+      let k=byKey.get(n[5]); if(!k){ k={id:'k:'+n[5],label:n[0],kind:'sponsor',cat:n[1],links:[],deg:0,note:n[3]||'',right:n[6]||null}; byKey.set(n[5],k); names.set(n[5],new Map()); nodes.push(k); }
       const nm=names.get(n[5]); nm.set(n[0],(nm.get(n[0])||0)+1);
       if(sp.links.includes(k)) return;
       links.push({source:sp,target:k,cat:k.cat,off:(rnd()-.5)*.5}); sp.links.push(k); k.links.push(sp); sp.deg++; k.deg++; }); });
   byKey.forEach((k,key)=>{ let best='',bc=0; names.get(key).forEach((c,l)=>{ if(c>bc||(c===bc&&l.length<best.length)){ best=l; bc=c; } }); k.label=best; });
   nodes.forEach(n=>{ n.r=n.kind==='space'?2.4+Math.sqrt(n.deg)*.8:2.2+Math.sqrt(n.deg)*2.1; ALL.byId.set(n.id,n); });
+  const who=new Set(); D.forEach(r=>(r.ep||[]).forEach(e=>{ if(e.p) who.add(e.p.toLowerCase().replace(/[^a-z0-9]/g,'')); }));
+  nodes.forEach(n=>{ if(n.kind==='sponsor'&&who.has(n.label.toLowerCase().replace(/[^a-z0-9]/g,''))) n.epx=true; });
   ALL.nodes=nodes; ALL.links=links; ALL.nSpaces=nodes.filter(n=>n.kind==='space').length; ALL.nSponsors=nodes.length-ALL.nSpaces; ALL.omitted=D.length-ALL.nSpaces;
 }
 const allVisible=n=>n.kind==='space'||ALL.on[n.cat];
+function computeHi(){ const set=new Set(), h=ALL.hl;
+  if(h.right) ALL.nodes.forEach(n=>{ if(n.right&&allVisible(n)){ set.add(n); n.links.forEach(m=>set.add(m)); } });
+  if(h.epstein) ALL.nodes.forEach(n=>{ if(n.epx&&allVisible(n)) set.add(n); });
+  ALL.hiSet=set; }
+const hiLink=l=>ALL.sel?(l.source===ALL.sel||l.target===ALL.sel):(ALL.hiSet.has(l.source)&&ALL.hiSet.has(l.target));
 function sizeCanvas(){ const c=ALL.c, dpr=window.devicePixelRatio||1, w=c.clientWidth, h=c.clientHeight; ALL.dpr=dpr; if(!w||!h) return false; if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){ c.width=Math.round(w*dpr); c.height=Math.round(h*dpr); } return true; }
 function topPad(){ const c=document.getElementById('cats'); return c?c.offsetHeight+4:0; }
 function fitAll(animate){
   if(!ALL.c||!sizeCanvas()) return; const w=ALL.c.clientWidth, h=ALL.c.clientHeight, tp=topPad(); let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
   if(ALL.laid){ // spread the finished layout sideways to match the window; circles stay round
     let a0=1e9,a1=-1e9,b0=1e9,b1=-1e9; ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; a0=Math.min(a0,n.bx); a1=Math.max(a1,n.bx); b0=Math.min(b0,n.by); b1=Math.max(b1,n.by); });
-    const sx=1; ALL.nodes.forEach(n=>{ n.x=n.bx*sx; n.y=n.by; }); }
+    const sx=Math.max(.6,Math.min(1.8,(((w-28)/Math.max(1,h-tp-64))/(Math.max(1,a1-a0)/Math.max(1,b1-b0))))); ALL.nodes.forEach(n=>{ n.x=n.bx*sx; n.y=n.by; }); }
   ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; x0=Math.min(x0,n.x-n.r); y0=Math.min(y0,n.y-n.r); x1=Math.max(x1,n.x+n.r); y1=Math.max(y1,n.y+n.r); });
   if(x1<x0) return; const pad=14, bp=36, k=Math.min((w-2*pad)/Math.max(1,x1-x0),(h-tp-bp-2*pad)/Math.max(1,y1-y0),4);
   const t=d3.zoomIdentity.translate(w/2-(x0+x1)/2*k, tp+(h-tp-bp)/2-(y0+y1)/2*k).scale(k), s=d3.select(ALL.c);
@@ -337,10 +344,10 @@ const THEMES={
 };
 const catCol=(T,cat)=>T.hi?T.hi[cat]:CAT[cat].color;
 function paintAll(){
-  const c=ALL.c, ctx=ALL.ctx; if(!c||!sizeCanvas()) return; const T=THEMES[ALL.theme], tr=ALL.tr, w=c.clientWidth, h=c.clientHeight, sel=ALL.sel, near=ALL.near, dim=!!sel;
+  const c=ALL.c, ctx=ALL.ctx; if(!c||!sizeCanvas()) return; const T=THEMES[ALL.theme], tr=ALL.tr, w=c.clientWidth, h=c.clientHeight, sel=ALL.sel, near=sel?ALL.near:ALL.hiSet, dim=!!sel||ALL.hiSet.size>0;
   ctx.setTransform(ALL.dpr,0,0,ALL.dpr,0,0); ctx.globalAlpha=1; ctx.shadowBlur=0; ctx.fillStyle=T.bg; ctx.fillRect(0,0,w,h);
   ctx.save(); ctx.translate(tr.x,tr.y); ctx.scale(tr.k,tr.k);
-  ['gov','corp','found'].forEach(cat=>{ if(!ALL.on[cat]) return; const lo=[],hi=[]; ALL.links.forEach(l=>{ if(l.cat!==cat) return; (dim&&(l.source===sel||l.target===sel)?hi:lo).push(l); });
+  ['gov','corp','found'].forEach(cat=>{ if(!ALL.on[cat]) return; const lo=[],hi=[]; ALL.links.forEach(l=>{ if(l.cat!==cat) return; (dim&&hiLink(l)?hi:lo).push(l); });
     strokeLinks(lo,T.hi?T.edge:CAT[cat].color,dim?(T.hi?.16:.1):T.edgeA,.7); strokeLinks(hi,catCol(T,cat),.95,1.5); });
   // sponsors: hollow rings (coloured on black, grey on white); museums: filled dots with a glow
   [false,true].forEach(isNear=>{ const a=dim&&!isNear?.5:1; // greyed-out circles stay clearly visible
@@ -350,6 +357,8 @@ function paintAll(){
     const sp=ALL.nodes.filter(n=>n.cat==='space'&&(!dim||(near.has(n)===isNear))); if(sp.length){
       ctx.beginPath(); sp.forEach(n=>{ ctx.moveTo(n.x+n.r,n.y); ctx.arc(n.x,n.y,n.r,0,6.2832); });
       ctx.globalAlpha=a; ctx.fillStyle=T.dot; ctx.shadowColor=T.glow; ctx.shadowBlur=(dim&&!isNear?3:7)*ALL.dpr; ctx.fill(); ctx.shadowBlur=0; } });
+  if(!sel&&ALL.hiSet.size){ [['right','#c0281c','#ff5a4d'],['epstein','#a21f93','#ec4fe8']].forEach(([k,lc,dc])=>{ if(!ALL.hl[k]) return; const ns=ALL.nodes.filter(n=>(k==='right'?n.right:n.epx)&&allVisible(n)); if(!ns.length) return;
+    ctx.globalAlpha=1; ctx.beginPath(); ns.forEach(n=>{ ctx.moveTo(n.x+n.r+2.5/tr.k,n.y); ctx.arc(n.x,n.y,n.r+2.5/tr.k,0,6.2832); }); ctx.strokeStyle=T.hi?lc:dc; ctx.lineWidth=2.2/tr.k; ctx.stroke(); }); }
   if(sel){ ctx.globalAlpha=1; ctx.beginPath(); ctx.arc(sel.x,sel.y,sel.r+3.5/tr.k,0,6.2832); ctx.strokeStyle=T.hi?'#111':'#fff'; ctx.lineWidth=2/tr.k; ctx.stroke(); }
   // names: the biggest sponsors first, more of them as you zoom in; everything beside a selection
   const Tn=Math.max(1,14/tr.k), vx0=-tr.x/tr.k, vy0=-tr.y/tr.k, vx1=(w-tr.x)/tr.k, vy1=(h-tr.y)/tr.k; let cand=[];
@@ -367,12 +376,14 @@ function paintAll(){
 function setTheme(t){ ALL.theme=t; document.getElementById('stage').classList.toggle('light',t==='light'); try{ localStorage.setItem('atlas-bigmap-theme',t); }catch(e){} renderAllCats(); drawAll(); }
 function startLayout(){
   const nodes=ALL.nodes, links=ALL.links;
-  if(!ALL.inited){ ALL.inited=true; nodes.forEach((n,i)=>{ const a=i*2.399963, rr=Math.sqrt(i+1)*9; n.x=Math.cos(a)*rr; n.y=Math.sin(a)*rr; }); }
+  const cw=Math.max(200,ALL.c.clientWidth), ch=Math.max(200,ALL.c.clientHeight-topPad()-36), asp=Math.max(.45,Math.min(3,cw/ch)), AREA=3.6e6;
+  ALL.BW=Math.sqrt(AREA*asp); ALL.BH=Math.sqrt(AREA/asp); ALL.layAsp=asp;
+  if(!ALL.inited){ ALL.inited=true; nodes.forEach(n=>{ n.x=(rnd()-.5)*ALL.BW*.8; n.y=(rnd()-.5)*ALL.BH*.8; }); }
   const sim=ALL.sim=d3.forceSimulation(nodes).force('link',d3.forceLink(links).distance(l=>16+5*Math.sqrt(Math.max(l.source.deg,l.target.deg))).strength(.8))
-    .force('charge',d3.forceManyBody().strength(n=>-14-n.deg*3.5).theta(.9).distanceMax(500)).force('x',d3.forceX().strength(.04)).force('y',d3.forceY().strength(.04))
+    .force('charge',d3.forceManyBody().strength(n=>-10-n.deg*2.5).theta(.9).distanceMax(500)).force('x',d3.forceX().strength(.006)).force('y',d3.forceY().strength(.006*asp*asp))
     .force('collide',d3.forceCollide(n=>n.r+1.2)).alphaDecay(.04).alphaMin(.012).stop();
   const msg=document.getElementById('empty'); msg.hidden=false; msg.textContent='Laying out '+ALL.nSpaces+' spaces and '+ALL.nSponsors+' sponsors';
-  let ticks=0; const step=()=>{ if(!ALL.active||ALL.sim!==sim) return; const t0=performance.now(); do{ sim.tick(); ticks++; }while(performance.now()-t0<14&&sim.alpha()>sim.alphaMin());
+  let ticks=0; const step=()=>{ if(!ALL.active||ALL.sim!==sim) return; const t0=performance.now(); do{ sim.tick(); ticks++; nodes.forEach(n=>{ const hx=ALL.BW/2-n.r, hy=ALL.BH/2-n.r, sx=hx*.97, sy=hy*.97; if(n.x>sx) n.vx-=(n.x-sx)*.25; else if(n.x<-sx) n.vx-=(n.x+sx)*.25; if(n.y>sy) n.vy-=(n.y-sy)*.25; else if(n.y<-sy) n.vy-=(n.y+sy)*.25; if(n.x>hx) n.x=hx; else if(n.x<-hx) n.x=-hx; if(n.y>hy) n.y=hy; else if(n.y<-hy) n.y=-hy; }); }while(performance.now()-t0<14&&sim.alpha()>sim.alphaMin());
     if(ticks%10<3||sim.alpha()<=sim.alphaMin()) fitAll(false); drawAll();
     if(sim.alpha()>sim.alphaMin()) requestAnimationFrame(step); else { ALL.laid=true; ALL.nodes.forEach(n=>{ n.bx=n.x; n.by=n.y; }); msg.hidden=true; fitAll(false); drawAll(); } };
   requestAnimationFrame(step);
@@ -381,19 +392,28 @@ const aRow=(k,v)=>`<div class="row"><div>${k}</div><div>${v}</div></div>`, aFull
 const aColor=n=>n.kind==='space'?'#fff':CAT[n.cat].color, aDot=n=>`<span class="dot" style="background:${aColor(n)}"></span>`;
 const aPill=n=>`<button class="pill sm" style="border-color:${aColor(n)}" data-k="${esc(n.id)}">${aDot(n)}${esc(n.label)}</button>`;
 function allOpen(o){ aSheet.classList.toggle('closed',!o); aTab.textContent='Info '+(o?'×':'+'); aTab.setAttribute('aria-expanded',String(o)); }
+const aLinks=u=>(u||[]).map(x=>`<a class="pill sm" href="${esc(x)}" target="_blank" rel="noopener">${esc(host(x))}</a>`).join(' ');
+const epRows=n=>n.ep&&n.ep.length?aRow('Epstein files',n.ep.map(e=>`<b>${esc(e.p)}</b>, ${esc(e.l)}${e.s==='denied'?' (denied)':''}${e.t?'. '+esc(e.t):''}`).join('<br><br>')):(n.epx?aRow('Epstein files','The record carries an Epstein-linked flag.'):'');
 function allIntro(){
+  if(ALL.hiSet.size){
+    const sp=ALL.nodes.filter(n=>n.kind==='space'&&ALL.hiSet.has(n)).length, sk=ALL.nodes.filter(n=>n.kind==='sponsor'&&ALL.hiSet.has(n));
+    let h=aFull('<span class="reg">Showing '+[ALL.hl.right?'right-wing sponsors':'',ALL.hl.epstein?'Epstein files':''].filter(Boolean).join(' and ')+'. Everything else is greyed out. Tap a circle for detail.</span>');
+    if(ALL.hl.right){ const rs=ALL.nodes.filter(n=>n.right); h+=aRow('Right-wing sponsors',rs.map(aPill).join(' '))+rs.map(n=>aRow(esc(n.label),esc(n.right.b)+'<br>'+aLinks(n.right.u))).join('')+aRow('About this list','The atlas records have no political field. This is a short list of the sponsors that appear in them and have a published source for their partisan giving. It is not a complete list.'); }
+    if(ALL.hl.epstein) h+=aRow('Epstein files',ALL.nodes.filter(n=>n.kind==='space'&&n.epx).length+' spaces carry a documented Epstein record or an Epstein-linked flag, and '+ALL.nodes.filter(n=>n.kind==='sponsor'&&n.epx).length+' sponsors are people named in those records. A tie is a record, not a verdict.');
+    aInfo.innerHTML=h; return; }
+
   aInfo.innerHTML=aFull('<span class="reg">Every funder named in the records, joined to the spaces it funds. Tap a circle to see who is behind it, or search for a sponsor in the second bar.</span>')
     +aRow('Spaces',String(ALL.nSpaces))+aRow('Sponsors',String(ALL.nSponsors))+aRow('Ties',String(ALL.links.length))
     +aRow('Not drawn',ALL.omitted+' records name no funder.')+aRow('Read this way','Names are picked out of each record\'s funding text, so a name can be split or filed under the wrong group. The record stays the authority.');
 }
 function selectAll(n,focus){
-  ALL.sel=n; ALL.near=n?new Set([n,...n.links.filter(allVisible)]):null;
+  ALL.sel=n; ALL.near=n?new Set([n,...n.links.filter(allVisible)]):null; computeHi();
   if(!n){ allIntro(); drawAll(); return; }
   if(n.kind==='sponsor'){
     aInfo.innerHTML=aFull('<span class="ttl">'+esc(n.label)+'</span>')+aRow('Group',aDot(n)+esc(CAT[n.cat].label))+aRow('Funds',n.deg+(n.deg===1?' space':' spaces'))
-      +(n.note?aRow('Note',esc(n.note)):'')+aRow('Spaces',n.links.map(aPill).join(' '));
+      +(n.note?aRow('Note',esc(n.note)):'')+(n.right?aRow('Right-wing sponsor',esc(n.right.b)+'<br>'+aLinks(n.right.u)):'')+(n.epx?aRow('Epstein files','Named in an Epstein record on the atlas.'):'')+aRow('Spaces',n.links.map(aPill).join(' '));
   } else {
-    aInfo.innerHTML=aFull('<span class="ttl">'+esc(n.label)+'</span>')+aRow('Location',esc(n.sub))+aRow('Record',esc(TIER[n.tier]||n.tier))+aRow('Sponsors',n.links.map(aPill).join(' '))
+    aInfo.innerHTML=aFull('<span class="ttl">'+esc(n.label)+'</span>')+aRow('Location',esc(n.sub))+aRow('Record',esc(TIER[n.tier]||n.tier))+epRows(n)+aRow('Sponsors',n.links.map(aPill).join(' '))
       +aRow('Map','<button class="pill sm" data-open="'+esc(n.rid)+'">Open this space\'s map</button>');
   }
   aInfo.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>selectAll(ALL.byId.get(b.dataset.k),true));
@@ -409,9 +429,13 @@ function focusAll(n,onlyIfOff){ const c=ALL.c; if(!c||!sizeCanvas()) return; con
 function onAllClick(e){ const rc=ALL.c.getBoundingClientRect(), tr=ALL.tr, gx=(e.clientX-rc.left-tr.x)/tr.k, gy=(e.clientY-rc.top-tr.y)/tr.k; let best=null,bd=1e9;
   ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; const d=Math.hypot(n.x-gx,n.y-gy)-n.r; if(d<bd){ bd=d; best=n; } });
   if(best&&bd*tr.k<=24) selectAll(best===ALL.sel?null:best,'tap'); else selectAll(null,false); }
-function renderAllCats(){ const el=document.getElementById('cats');
-  const lt=ALL.theme==='light'; el.innerHTML=['gov','corp','found'].map(c=>{ const k=CAT[c], col=lt?THEMES.light.hi[c]:k.color, on=ALL.on[c], st=on?`background:${lt?'#fff':'#000'};border-color:${col};color:${col}`:(lt?'background:#fff;border-color:#c8c8c8;color:#999':'background:#000;border-color:#525252;color:#6f6f6f'); return `<button class="pill${on?' on':''}" style="${st}" data-cat="${c}" aria-pressed="${on}">${k.label} ${on?'×':'+'}</button>`; }).join('');
-  el.querySelectorAll('button').forEach(b=>b.onclick=()=>{ ALL.on[b.dataset.cat]=!ALL.on[b.dataset.cat]; if(ALL.sel&&!allVisible(ALL.sel)) ALL.sel=null; selectAll(ALL.sel,false); renderAllCats(); }); }
+function renderAllCats(){ const el=document.getElementById('cats'), lt=ALL.theme==='light';
+  const grp=['gov','corp','found'].map(c=>{ const k=CAT[c], col=lt?THEMES.light.hi[c]:k.color, on=ALL.on[c], st=on?`background:${lt?'#fff':'#000'};border-color:${col};color:${col}`:(lt?'background:#fff;border-color:#c8c8c8;color:#999':'background:#000;border-color:#525252;color:#6f6f6f'); return `<button class="pill${on?' on':''}" style="${st}" data-cat="${c}" aria-pressed="${on}">${k.label} ${on?'×':'+'}</button>`; }).join('');
+  const nR=ALL.nodes.filter(n=>n.right).length, nE=ALL.nodes.filter(n=>n.kind==='space'&&n.epx).length;
+  const hl=[['right','Right-wing sponsors',nR,lt?'#c0281c':'#ff5a4d'],['epstein','Epstein files',nE,lt?'#a21f93':'#ec4fe8']].map(([k,l,n,col])=>{ const on=ALL.hl[k], st=on?`background:${col};border-color:${col};color:${lt?'#fff':'#000'}`:`background:${lt?'#fff':'#000'};border-color:${col};color:${col}`; return `<button class="pill" style="${st}" data-hl="${k}" aria-pressed="${on}">${l} ${n} ${on?'×':'+'}</button>`; }).join('');
+  el.innerHTML=grp+hl;
+  el.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{ ALL.on[b.dataset.cat]=!ALL.on[b.dataset.cat]; if(ALL.sel&&!allVisible(ALL.sel)) ALL.sel=null; selectAll(ALL.sel,false); renderAllCats(); });
+  el.querySelectorAll('[data-hl]').forEach(b=>b.onclick=()=>{ ALL.hl[b.dataset.hl]=!ALL.hl[b.dataset.hl]; ALL.sel=null; computeHi(); renderAllCats(); allIntro(); if(ALL.hiSet.size) allOpen(true); drawAll(); }); }
 function leaveAll(){ if(!ALL.active) return; ALL.active=false; document.getElementById('stage').classList.remove('light'); const ldb=document.getElementById('ld'); if(ldb) ldb.hidden=true; if(ALL.sim) ALL.sim.stop(); ALL.c.hidden=true; document.getElementById('map').style.display=''; document.getElementById('empty').hidden=true; }
 function showAll(){
   if(cur){ cur.stop(); cur=null; } curRec=null; REDRAW=null; SWAYNODES=()=>[]; SWAYLINKS=()=>[];
@@ -424,7 +448,7 @@ function showAll(){
   try{ const sv=localStorage.getItem('atlas-bigmap-theme'); if(sv==='light'||sv==='dark') ALL.theme=sv; }catch(e){}
   let ld=document.getElementById('ld'); if(!ld){ ld=document.createElement('button'); ld.id='ld'; ld.className='pill'; ld.type='button'; ld.textContent='light/dark'; ld.onclick=()=>setTheme(ALL.theme==='light'?'dark':'light'); document.getElementById('zoom').prepend(ld); } ld.hidden=false;
   document.getElementById('stage').classList.toggle('light',ALL.theme==='light');
-  ALL.sel=null; ALL.near=null; ALL.touched=false; renderAllCats(); allIntro(); allOpen(false);
+  ALL.sel=null; ALL.near=null; computeHi(); ALL.touched=false; renderAllCats(); allIntro(); allOpen(false);
   aTab.onclick=()=>allOpen(aSheet.classList.contains('closed'));
   document.getElementById('zin').onclick=()=>d3.select(c).transition().call(ALL.zoom.scaleBy,1.4);
   document.getElementById('zout').onclick=()=>d3.select(c).transition().call(ALL.zoom.scaleBy,1/1.4);

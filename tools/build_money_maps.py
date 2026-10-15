@@ -40,6 +40,20 @@ def merge_key(label,cat,country,rid):
     if label.lower() in GENERIC_GOV: return k+'|'+rid
     if cat=='gov': return k+'|'+country
     return k
+# Funders the page can highlight as right-wing sponsors. The atlas records carry no political field, so this is a short
+# curated list: only funders that appear in the records AND have a published source for their partisan giving.
+RIGHT=[
+ (re.compile(r"\bkoch\b",re.I),"The Koch family funds a conservative and libertarian political network, including Americans for Prosperity.",
+  ["https://www.cnbc.com/2018/05/23/koch-network-targets-republicans-democrats-for-spending-bill-support.html","https://www.factcheck.org/2018/10/americans-for-prosperity-4"]),
+ (re.compile(r"\b(ken griffin|citadel)\b",re.I),"Ken Griffin gave $75M to $100M+ to Republican groups in the 2022 cycle, according to InfluenceWatch.",
+  ["https://www.influencewatch.org/person/ken-griffin/"]),
+ (re.compile(r"^ronald (s\. )?lauder$",re.I),"Ronald Lauder was Reagan's ambassador to Austria and gave $1M to the Republican State Leadership Committee in 2022.",
+  ["https://www.cnbc.com/2022/10/20/midterms-news-ronald-lauder-gives-1-million-to-republican-state-leadership-committee.html"]),
+]
+def right_basis(label):
+    for rx,basis,urls in RIGHT:
+        if rx.search(label): return {'b':basis,'u':urls}
+    return None
 def cat_of(tok):
     if FOUND.search(tok) and not re.search(r"\b(state|city|government|ministry)\b",tok,re.I): return 'found'
     if GOV.search(tok): return 'gov'
@@ -121,7 +135,7 @@ for x in d:
     ns=u[:22]
     nodes=[];edges=[]
     for i,n in enumerate(ns):
-        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,merge_key(n['label'],n['cat'],x['country'],x['id']) if n['cat'] in ('gov','corp','found') else '']); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
+        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,merge_key(n['label'],n['cat'],x['country'],x['id']) if n['cat'] in ('gov','corp','found') else ''] + ([right_basis(n['label'])] if n['cat'] in ('gov','corp','found') and right_basis(n['label']) else [])); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
     taken={x['id']}; added=0
     for i,n in enumerate(ns):
         if not n['key']: continue
@@ -134,7 +148,7 @@ for x in d:
             oi=id2[o]; nodes.append([oi['name'],'link',2,oi['location'],o]); edges.append([i+1,len(nodes),'also funds'])
     rec=dict(id=x['id'],n=x['name'],c=x['location'],co=x['country'],t=x['tier'],s=x.get('size') or '',lat=x['lat'],lon=x['lon'],
         f=x.get('funding') or '',w=x.get('watch') or '',fl=x.get('flags') or [],why=(x.get('why_flagged') or '')[:300],tn=(x.get('tier_note') or '')[:200],
-        u=(x.get('sources') or [])[:6],web=x.get('website') or '',nodes=nodes,edges=edges)
+        u=(x.get('sources') or [])[:6],ep=[{'p':e.get('person',''),'l':e.get('link',''),'s':e.get('status',''),'t':(e.get('summary','') or '')[:320]} for e in (x.get('epstein_records') or [])],web=x.get('website') or '',nodes=nodes,edges=edges)
     out.append(rec)
 with open(OUT,'w',encoding='utf-8') as fh:
     json.dump(out,fh,ensure_ascii=False,separators=(',',':'))
