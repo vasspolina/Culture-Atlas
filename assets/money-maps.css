@@ -16,7 +16,7 @@ button{font:inherit;color:inherit}
 .pill.on{background:#000;color:#fff}
 .gt{-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 .pill,#tab{font-family:"PP Neue Gstaad",'Helvetica Neue',Arial,sans-serif;font-weight:400}
-.pill.sm{font-size:clamp(16px,1.8vw,23px);line-height:1.5;padding:0 12px;white-space:normal;text-align:left}
+.pill.sm{font-size:clamp(16px,1.8vw,23px);line-height:1.2;padding:5px 14px;white-space:normal;text-align:left}
 #stage{position:relative;flex:1;min-height:0;background:#000;overflow:hidden;display:flex;flex-direction:column}
 svg#map{display:block;width:100%;flex:1 1 auto;min-height:0;background:#000;touch-action:none}
 svg#map *:focus{outline:none}

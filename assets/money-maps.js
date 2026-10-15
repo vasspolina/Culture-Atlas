@@ -269,7 +269,7 @@ function render(inst){
     nodeSel.attr('opacity',d=>near.has(d.id)?1:.5); linkSel.attr('opacity',l=>(l.source.id===n.id||l.target.id===n.id)?1:.22); nodeSel.select('text.lbl').attr('display',d=>(d.id===n.id||(l=>false)(d))?null:'none');
     nodeSel.filter(d=>d.id===n.id||d.center).select('text.lbl').attr('display',null);
     const my=links.filter(l=>l.source.id===n.id||l.target.id===n.id);
-    const conns=my.map(l=>{ const o=l.source.id===n.id?l.target:l.source; return `<span class="e"><button class="pill sm" style="border-color:${colOf(o)}" data-go="${o.id}">${dot(colOf(o))}${esc(o.label)}</button> ${esc(l.label)}</span>`; }).join('');
+    const conns=my.map(l=>{ const o=l.source.id===n.id?l.target:l.source; return `<span class="e"><button class="pill sm" style="border-color:${colOf(o)}" data-go="${o.id}">${esc(o.label)}</button> ${esc(l.label)}</span>`; }).join('');
     info.innerHTML=full('<span class="ttl">'+esc(n.label)+'</span>')+row('Category',dot(CAT[n.cat].color)+esc(CAT[n.cat].label))+(n.note?row(n.cat==='link'?'Location':'Note',esc(n.note)):'')+row('Ties',String(my.length))+row('Connections',conns)
       +(n.go?row('Map',`<button class="pill sm" data-open="${esc(n.go)}">Open this space</button>`):'');
     info.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>select(byId[b.dataset.go]));
@@ -398,7 +398,7 @@ function startLayout(){
 }
 const aRow=(k,v)=>`<div class="row"><div>${k}</div><div>${v}</div></div>`, aFull=v=>`<div class="row full"><div>${v}</div></div>`;
 const aColor=n=>n.kind==='space'?(ALL.theme==='light'?'#222':'#fff'):CAT[n.cat].color, aDot=n=>`<span class="dot" style="background:${aColor(n)}"></span>`;
-const aPill=n=>`<button class="pill sm" style="border-color:${aColor(n)}" data-k="${esc(n.id)}">${aDot(n)}${esc(n.label)}</button>`;
+const aPill=n=>`<button class="pill sm" style="border-color:${aColor(n)}" data-k="${esc(n.id)}">${esc(n.label)}</button>`;
 function allOpen(o){ aSheet.classList.toggle('closed',!o); aTab.textContent='Info '+(o?'×':'+'); aTab.setAttribute('aria-expanded',String(o)); }
 const aLinks=u=>(u||[]).map(x=>`<a class="pill sm" href="${esc(x)}" target="_blank" rel="noopener">${esc(host(x))}</a>`).join(' ');
 const epRows=n=>n.ep&&n.ep.length?aRow('Epstein files',n.ep.map(e=>`<b>${esc(e.p)}</b>, ${esc(e.l)}${e.s==='denied'?' (denied)':''}${e.t?'. '+esc(e.t):''}`).join('<br><br>')):(n.epx?aRow('Epstein files','The record carries an Epstein-linked flag.'+(n.why?' '+esc(n.why):' No reason is recorded.')):'');
