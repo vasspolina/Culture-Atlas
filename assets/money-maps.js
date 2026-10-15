@@ -1,5 +1,29 @@
 // Money maps. Reads assets/money-maps.json (built by tools/build_money_maps.py) and draws one map per record.
 fetch('assets/money-maps.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(D=>{
+// Drops funder/flag circles whose label is a sentence fragment instead of a name.
+const FLAG_OK=/^(Protest or boycott|State censorship or punishment|Sponsor dropped under pressure|Gulf state body|Fossil fuels|Tobacco|Sanctions|WikiLeaks[^.]{0,40})$/;
+const PERSON=/^[A-Z][\w.'’-]*( (of|and|de|von|van|bin|al|[A-Z][\w.'’-]*))+( \([^)]{1,40}\))?$/;
+const JUNK_WORDS=/\b(runs?|is|was|has|have|gave|are|backs|backed|funded|financed|operated|owned|oversees|approves|plans|chairs|sells|keeps|holds|includes|did|not|names|published|accredited|organised|rebuilt|living|returns|per|about|largely|partly|mostly|free|always|entry|admission|most|own|returns|cost|set up|collaborator|partner|donated|dropped|under|backs|appropriations|subsidies|contributions|expenses|donors|patrons|philanthropy|governed|supports?|maintainer|licence|stock|opens?|also|of it|visitors|works|objects|artworks|members|petition|over|years?|as|at|fees|commissions|projects)\b/i;
+const GENERIC=/^(Private|Public|State|Regional|Municipal|Independent|Community|Small|Very|Self|University|Non-profit|Nonprofit|Endowed|Artist-owned|Hungarian|Norwegian|Senegalese|French|Crown|City|Federal|Catalan|Corporate|Completely|Audited|Documented|Homepage|Funded|Run|Runs|CEO|About|Its|It|His|Her|The \d|Tourism|Urban|Project|Parastatal|Donations|Under|Italy|Japan.s embassy|Thailand|Malaysia.s)\b/;
+const ORG=/(Council|Ministry|Department|Foundation|Fund|Fonds|Agency|Office|Commission|Commissioner|Senate|Endowment|Authority|Trust|Bank|Lottery|Government of|Ministerio|Ministère)/;
+function junkFunder(l){
+  l=l.trim();
+  if(!l||/^[0-9a-z]/.test(l)||/\b[A-Z]\.[A-Z]?$/.test(l)||/^[A-Z](\.[A-Z])+$/.test(l)||/^FY\d/.test(l)) return true;
+  if(l.length>60) return true;
+  if(JUNK_WORDS.test(l)&&!/^(Federal Government Commissioner|Senate Department|Ministry)/.test(l)) return true;
+  if(GENERIC.test(l)&&l.split(' ').length<=4&&!ORG.test(l)) return true;
+  if(GENERIC.test(l)&&l.split(' ').length>4) return true;
+  return false;
+}
+function junkFlag(l){ l=l.trim(); if(FLAG_OK.test(l)) return false; if(l.length<=40&&PERSON.test(l)&&!/^(Prince Andrew)?$/.test('x')) return false; return true; }
+function cleanRec(r){
+  const keep=r.nodes.map(n=>n[1]==='link'?true:n[1]==='flag'?!junkFlag(n[0]):!junkFunder(n[0]));
+  const alive=new Set(); r.edges.forEach(e=>{ if((e[0]===0||keep[e[0]-1])&&(e[1]===0||keep[e[1]-1])){ alive.add(e[0]); alive.add(e[1]); } });
+  const map={0:0}; const nodes=[]; r.nodes.forEach((n,i)=>{ if(keep[i]&&(alive.has(i+1))){ map[i+1]=nodes.length+1; nodes.push(n); } });
+  r.edges=r.edges.filter(e=>map[e[0]]!==undefined&&map[e[1]]!==undefined).map(e=>[map[e[0]],map[e[1]],e[2]]);
+  r.nodes=nodes;
+}
+D.forEach(cleanRec);
 const byRec=Object.fromEntries(D.map(r=>[r.id,r]));
 const CAT={gov:{label:'Government & public',color:'#3a5cf8'},corp:{label:'Corporate & sponsors',color:'#a9e0e6'},found:{label:'Foundations & donors',color:'#ee6c38'},flag:{label:'Flagged on record',color:'#ec4fe8'},link:{label:'Also funds',color:'#c6b566'}};
 const CATS=['gov','corp','found','flag','link'];

@@ -69,3 +69,8 @@ td a{color:#000}
 #stage.light #zoom .pill{background:#fff;color:#000;border-color:#000}
 #stage.light #allc{background:#fff}
 #stage.light #empty{color:#000}
+/* App style: square grey blocks, nothing round, nothing centred */
+.pill,.pill.sm,#cats .pill,#cats .pill:not(.on),#zoom .pill,#stage.light #zoom .pill,.drop input{border-radius:0}
+.pill,#cats .pill:not(.on),#zoom .pill,#stage.light #zoom .pill{border:0;background:#d9d9d9;color:#000}
+.pill.on,#cats .pill.on{background:#000;color:#fff;outline:1px solid #fff}
+#empty{left:8px;right:8px;top:auto;bottom:80px;text-align:left}
