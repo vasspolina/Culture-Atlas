@@ -6867,8 +6867,10 @@ return maplibregl$1;
         }
       });
 
-      cityVectorMap.on('zoomend', () => {
-        if (cityVectorMap.getZoom() <= 8 && isCityStreetViewActive) {
+      // Zooming out past the city exits it. Only a zoom the user made counts: a flyTo between distant cities arcs the
+      // zoom out and back in, and one interrupted by a second flyTo ends mid-arc, which is not a request to leave.
+      cityVectorMap.on('zoomend', (e) => {
+        if (e && e.originalEvent && cityVectorMap.getZoom() <= 8 && isCityStreetViewActive) {
           exitCityStreetView();
         }
       });
@@ -9815,7 +9817,7 @@ return maplibregl$1;
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${domain}`;
 
-      // A white block with the name in capitals, facts in the grotesque, the website as a black square.
+      // A white block with the name in capitals, facts in the grotesque, the website as a grey block.
       const nameText = inst.name;
       const nameUpper = nameText.toUpperCase();
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
@@ -9868,9 +9870,9 @@ return maplibregl$1;
         const btnW = Math.min(maxTextW, webW + 24);
         const btnH = pillH;
 
-        ctx.fillStyle = '#000000';
+        ctx.fillStyle = '#d9d9d9';
         ctx.fillRect(btnX, btnY, btnW, btnH);
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle = '#000000';
         ctx.textBaseline = 'middle';
         ctx.fillText(fit(domainPillText), btnX + 12, btnY + btnH / 2 + 0.5);
 
@@ -10146,7 +10148,7 @@ return maplibregl$1;
           ctx.fillStyle = fill;
           ctx.fillText(text, x, y);
         };
-        // City and museum names sit on a square block. The block takes the colour of the spaces it names:
+        // City and museum names sit on a flat block. The block takes the colour of the spaces it names:
         // cyan clean, orange flagged, mustard unverified (a city: the tier most of its spaces have).
         // Yellow when hovered or selected (white on yellow in gossip mode).
         const TIER_FILL = { A: '#9ae3e8', B: '#ff6119' };
@@ -10574,12 +10576,12 @@ return maplibregl$1;
               }
               ctx.fillText(countTxt, cardX + 16, currentY);
 
-              // Action: a square. White with black text; yellow on hover (white on yellow in gossip mode).
+              // Action: a flat grey block with black text, yellow on hover.
               ctx.save();
-              ctx.fillStyle = isHoveringCityExploreLink ? (isGossipModeActive ? '#ffffff' : '#ffd600') : (isGossipModeActive ? '#000000' : '#ffffff');
+              ctx.fillStyle = isHoveringCityExploreLink ? '#ffd600' : '#d9d9d9';
               ctx.fillRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
               ctx.font = ATLAS_CARD_MONO_FONT;
-              ctx.fillStyle = isGossipModeActive && !isHoveringCityExploreLink ? '#ffffff' : '#000000';
+              ctx.fillStyle = '#000000';
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2 + 0.5);
@@ -16977,7 +16979,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (e.key === '+' || e.key === '=') {
         e.preventDefault();
         if (isCityStreetViewActive && cityVectorMap) {
-          cityVectorMap.zoomIn();
+          cityVectorMap.zoomIn({}, { originalEvent: e });
         } else {
           isAutoSpinning = false;
           targetRadius = Math.min(getMaxRadius(), targetRadius * 1.35);
@@ -16985,7 +16987,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       } else if (e.key === '-' || e.key === '_') {
         e.preventDefault();
         if (isCityStreetViewActive && cityVectorMap) {
-          cityVectorMap.zoomOut();
+          cityVectorMap.zoomOut({}, { originalEvent: e });
         } else {
           targetRadius = Math.max(getMinRadius(), targetRadius * 0.74);
           if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
@@ -17223,17 +17225,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       syncGlobeControls();
     });
 
-    document.getElementById('zoomInBtn')?.addEventListener('click', () => {
+    document.getElementById('zoomInBtn')?.addEventListener('click', (e) => {
       if (isCityStreetViewActive && cityVectorMap) {
-        cityVectorMap.zoomIn();
+        cityVectorMap.zoomIn({}, { originalEvent: e });
       } else {
         isAutoSpinning = false;
         targetRadius = Math.min(getMaxRadius(), targetRadius * 1.35);
       }
     });
-    document.getElementById('zoomOutBtn')?.addEventListener('click', () => {
+    document.getElementById('zoomOutBtn')?.addEventListener('click', (e) => {
       if (isCityStreetViewActive && cityVectorMap) {
-        cityVectorMap.zoomOut();
+        cityVectorMap.zoomOut({}, { originalEvent: e });
       } else {
         targetRadius = Math.max(getMinRadius(), targetRadius * 0.74);
         if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
