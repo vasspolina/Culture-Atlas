@@ -100,7 +100,6 @@ return maplibregl$1;
     <!-- Right: Action Switchers & Controls -->
     <div class="flex items-center space-x-1_5 shrink-0">
       <!-- New Chat / Reset Quick Actions -->
-      <a id="mobileMoneyMapsLink" href="money-maps.html" class="whitespace-nowrap">Money maps</a>
       <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" aria-pressed="false">Dark</button>
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
@@ -120,7 +119,6 @@ return maplibregl$1;
 
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
-      <a id="topMoneyMapsLink" href="money-maps.html" class="hidden md-inline-flex whitespace-nowrap">Money maps</a>
       <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Dark</button>
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap">Gossip mode</button>
 
@@ -297,10 +295,10 @@ return maplibregl$1;
                onclick="event.stopPropagation(); if (typeof window.atlasPlanVisit === 'function') window.atlasPlanVisit(selectedInstitution);">
               <span>Plan Visit in Chat</span>
             </button>
-            <a id="floatingCardMoneyMapBtn" href="money-maps.html" class="record-action text-left"
-               onclick="event.stopPropagation(); this.href = 'money-maps.html#' + encodeURIComponent((typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id) || '');">
+            <button type="button" id="floatingCardMoneyMapBtn" class="record-action text-left"
+               onclick="event.stopPropagation(); window.atlasShowMoney(typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id);">
               <span>Money map</span>
-            </a>
+            </button>
           </div>
 
           <div class="flex flex-col gap-2">
@@ -362,10 +360,10 @@ return maplibregl$1;
               <button id="dossier-sheet-plan-btn" type="button" class="record-action text-left">
                 <span>Plan Visit in Chat</span>
               </button>
-              <a id="dossier-sheet-moneymap-btn" href="money-maps.html" class="record-action text-left"
-                 onclick="event.stopPropagation(); this.href = 'money-maps.html#' + encodeURIComponent((typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id) || '');">
+              <button type="button" id="dossier-sheet-moneymap-btn" class="record-action text-left"
+                 onclick="event.stopPropagation(); window.atlasShowMoney(typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id);">
                 <span>Money map</span>
-              </a>
+              </button>
             </div>
             <div class="flex flex-col gap-2 pt-1">
               <a id="dossier-sheet-link-web" class="inline-flex items-center gap-1_5" href="#" target="_blank" rel="noopener noreferrer">
@@ -7744,7 +7742,7 @@ return maplibregl$1;
             ${visitLine ? `<div class="record-popup-line">${escapeHtml(visitLine)}</div>` : ''}
             ${(inst.curatorial_focus || inst.neighborhood) ? `<div class="record-popup-line">${escapeHtml(inst.curatorial_focus || inst.neighborhood)}</div>` : ''}
             <div class="record-popup-actions">
-              <a href="money-maps.html#${encodeURIComponent(inst.id || '')}" class="record-action">Money map</a>
+              <button type="button" onclick="window.atlasShowMoney('${safeId}')">Money map</button>
               ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer">Website</a>` : ''}
               <button type="button" onclick="window.atlasPlanVisit('${safeId}')">Plan Visit</button>
               <button type="button" onclick="window.atlasAskCurator('${safeId}')" title="Ask Curator about ${escapeHtml(inst.name)}">Ask in Chat</button>
@@ -11512,7 +11510,7 @@ return maplibregl$1;
               <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
               ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
               ${(inst.lat && inst.lon) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
-              ${inst.id ? `<a href="money-maps.html#${encodeURIComponent(inst.id)}" class="record-action">Money map</a>` : ''}
+              ${inst.id ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
               ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
             </div>
           </div>
@@ -17313,6 +17311,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
     }
     window.resetGlobeView = resetGlobeView;
+    window.exitCityStreetView = exitCityStreetView;
     window.resetGlobeZoom = resetGlobeView;
 
     // Both the Header Brand Logo and the Top Reset Button reset the globe view

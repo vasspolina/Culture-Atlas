@@ -1,15 +1,11 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v87';
+const CACHE_NAME = 'culture-atlas-v89';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
-  './money-maps.html',
-  './assets/d3.min.js',
   './manifest.json',
   './assets/atlas.css',
   './assets/maplibre-gl.css',
-  './assets/money-maps.css',
-  './assets/money-maps.js',
   './assets/layers.js',
   './assets/money-maps.json'
 ];
