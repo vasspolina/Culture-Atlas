@@ -177,8 +177,9 @@ function render(inst){
   const globeG=svg.append('g'); drawGlobe(globeG);
   const lineG=svg.append('g'), g=svg.append('g').attr('filter','url(#bloom)');
   let AR=1, nodeSel, linkSel, sim;
-  const zoom=d3.zoom().scaleExtent([.05,40]).filter(zfilter).on('zoom',e=>{ const t=`translate(${e.transform.x},${e.transform.y}) scale(${e.transform.k*AR},${e.transform.k})`; g.attr('transform',t); globeG.attr('transform',t); lineG.attr('transform',t); });
-  const setAR=a=>{ AR=a; window.__AR=a; nodeSel.select('text.lbl').attr('transform',`scale(${1/a},1)`); };
+  const zoom=d3.zoom().scaleExtent([.05,40]).filter(zfilter).on('zoom',e=>{ const t=`translate(${e.transform.x},${e.transform.y}) scale(${e.transform.k*AR},${e.transform.k})`; g.attr('transform',t); globeG.attr('transform',t); lineG.attr('transform',t); if(typeof nodeSel!=='undefined'&&nodeSel) fixLabels(); });
+  const setAR=a=>{ AR=a; window.__AR=a; fixLabels(); };
+  function fixLabels(){ const k=d3.zoomTransform(svg.node()).k||1, s=Math.max(.5,Math.min(2.6,13/(22*k))); nodeSel.select('text.lbl').attr('transform',`scale(${s/AR},${s})`); }
   svg.call(zoom);
   PANBY=(dx,dy)=>{ const k=d3.zoomTransform(svg.node()).k; svg.call(zoom.translateBy,dx/k,dy/k); };
   linkSel=lineG.selectAll('path').data(links).join('path').attr('stroke','none');
@@ -219,8 +220,8 @@ function render(inst){
     const w=svg.node().clientWidth,h=svg.node().clientHeight; if(!w||!h) return; let bx=null; try{ bx=g.node().getBBox(); }catch(err){}
     let target; const few=N.length<4;
     if(!bx||!(bx.width>0)||!(bx.height>0)) target={x:w/2,y:h/2,k:Math.min(w/1700,h/1450),ar:1};
-    else { const pad=6, sx=(w-2*pad)/bx.width, sy=(h-2*pad)/bx.height, cx=bx.x+bx.width/2, cy=bx.y+bx.height/2;
-      if(few){ const k=Math.min(sx,sy,1.2); target={x:w/2-cx*k,y:h/2-cy*k,k,ar:1}; } else { const ar=(w<700?1:Math.max(.6,Math.min(2.2,sx/sy))), k=Math.min(sy,sx/ar); target={x:w/2-cx*k*ar,y:h/2-cy*k,k,ar}; } }
+    else { const topPad=(()=>{ const c=document.getElementById('cats'); return c?c.offsetHeight+4:0; })(), hh=Math.max(120,h-topPad), pad=6, sx=(w-2*pad)/bx.width, sy=(hh-2*pad)/bx.height, cx=bx.x+bx.width/2, cy=bx.y+bx.height/2;
+      if(few){ const k=Math.min(sx,sy,1.2); target={x:w/2-cx*k,y:topPad+hh/2-cy*k,k,ar:1}; } else { const ar=(w<700?1:Math.max(.6,Math.min(2.2,sx/sy))), k=Math.min(sy,sx/ar); target={x:w/2-cx*k*ar,y:topPad+hh/2-cy*k,k,ar}; } }
     cancelAnimationFrame(anim);
     if(!animate){ applyView(target); return; }
     const c=d3.zoomTransform(svg.node()), from={x:c.x,y:c.y,k:c.k,ar:AR}, t0=performance.now();
@@ -312,6 +313,7 @@ function renderList(){
 }
 q.oninput=renderList;
 function openSpace(id){ const r=byRec[id]; if(!r) return; curRec=r; try{ history.replaceState(null,'','#'+id); }catch(e){} document.title=r.n+' · Culture Atlas Money Maps'; setB2(false); render(r); }
+if(!window.__ro&&window.ResizeObserver){ window.__ro=true; new ResizeObserver(()=>window.dispatchEvent(new Event('resize'))).observe(document.querySelector('#map')); }
 window.addEventListener('resize',()=>{ if(window.__rz) return; window.__rz=true; requestAnimationFrame(()=>{ window.__rz=false; if(!cur) return; const nw=svg.node().clientWidth<700; if(nw!==window.__nw){ window.__nw=nw; cur.relayout(); } else cur.fit(); }); });
 renderTiers(); renderList();
 const start=byRec[decodeURIComponent(location.hash.slice(1))]||D.find(r=>/^MoMA \(/.test(r.n))||D[0];
