@@ -6,6 +6,7 @@
 <title>Culture Atlas Money Maps</title>
 <meta name="description" content="A funding map for each cultural space in the Culture Atlas, drawn from the records.">
 <link rel="stylesheet" href="assets/money-maps.css">
+<script>(function(){var t=null;try{t=localStorage.getItem("atlas-bigmap-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
 </head>
 <body>
 <div id="top">
@@ -28,7 +29,7 @@
   <canvas id="allc" hidden></canvas>
   <div id="empty" hidden></div>
   <div id="cats"></div>
-  <div id="sheet"><div class="trow"><button id="tab"></button><div id="zoom"><button class="pill" id="zin" aria-label="Zoom in">+</button><button class="pill" id="zout" aria-label="Zoom out">−</button><button class="pill" id="zfit">Fit</button></div></div><div id="info" aria-live="polite"></div></div>
+  <div id="sheet"><div class="trow"><button id="tab"></button><div id="zoom"><button class="pill" id="ld" type="button">Night</button><button class="pill" id="zin" aria-label="Zoom in">+</button><button class="pill" id="zout" aria-label="Zoom out">−</button><button class="pill" id="zfit">Fit</button></div></div><div id="info" aria-live="polite"></div></div>
 </div>
 <script src="assets/d3.min.js"></script>
 <script src="assets/money-maps.js"></script>

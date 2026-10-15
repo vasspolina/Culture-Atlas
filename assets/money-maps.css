@@ -64,13 +64,27 @@ td a{color:#000}
 .note{padding:10px 12px;font-size:.8em;opacity:.7}
 #empty{position:absolute;left:0;right:0;top:46%;text-align:center;color:#fff;font-size:clamp(18px,2.2vw,28px);pointer-events:none}
 #allc{letter-spacing:0;display:block;width:100%;flex:1 1 auto;min-height:0;background:#000;touch-action:none}
-#stage.light{background:#fff}
-#stage.light .trow{background:#fff}
-#stage.light #zoom .pill{background:#fff;color:#000;border-color:#000}
-#stage.light #allc{background:#fff}
-#stage.light #empty{color:#000}
 /* App style: square grey blocks, nothing round, nothing centred */
-.pill,.pill.sm,#cats .pill,#cats .pill:not(.on),#zoom .pill,#stage.light #zoom .pill,.drop input{border-radius:0}
-.pill,#cats .pill:not(.on),#zoom .pill,#stage.light #zoom .pill{border:0;background:#d9d9d9;color:#000}
+.pill,.pill.sm,#cats .pill,#cats .pill:not(.on),#zoom .pill,.drop input{border-radius:0}
+.pill,#cats .pill:not(.on),#zoom .pill{border:0;background:#d9d9d9;color:#000}
 .pill.on,#cats .pill.on{background:#000;color:#fff;outline:1px solid #fff}
 #empty{left:8px;right:8px;top:auto;bottom:80px;text-align:left}
+/* Day and night: one theme for the whole page, set on <html data-theme> */
+:root{color-scheme:light;--bg:#fff;--fg:#000;--rule:#d2d2d2;--sheet:#e6e6e6;--block:#d9d9d9;--block-hi:#dcdcdc;--hair:#fff;--off:#6b6b6b;--off-b:#b5b5b5}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#000;--fg:#fff;--rule:#4a4a4a;--sheet:#1b1b1b;--block:#2c2c2c;--block-hi:#383838;--hair:#000;--off:#a8a8a8;--off-b:#525252}
+html,body{background:var(--bg);color:var(--fg)}
+.bar,.drop,#tab,.drop input{background:var(--bg);color:var(--fg)}
+.bar,.drop,#tab,#info{border-color:var(--rule)}
+#stage,svg#map,#allc,.trow{background:var(--bg)}
+#info,.view{background:var(--sheet);color:var(--fg)}
+.row,.row>div:first-child,th,td{border-color:var(--hair)}
+th{background:var(--block)}
+tr[data-node]:hover td,#list button:hover{background:var(--block-hi)}
+td a,#list button,.drop a{color:var(--fg)}
+#list button{border-color:var(--rule)}
+.drop input{border:1px solid var(--fg)}
+.pill,#cats .pill:not(.on),#zoom .pill{background:var(--block);color:var(--fg);border:0}
+.pill.on,#cats .pill.on{background:var(--fg);color:var(--bg);outline:1px solid var(--bg)}
+#empty{color:var(--fg)}
+:root[data-theme="dark"] svg#map *:focus-visible{outline:0}
+#cats .pill{border:1px solid}
