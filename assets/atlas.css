@@ -710,3 +710,6 @@ body.gossip-mode-active header button:hover,body.gossip-mode-active header a:hov
 #workInputCard #chatShareBtn{color:#000}
 #globeViewport .record-action{color:var(--ink)}
 #globeViewport .record-action:hover{color:var(--paper)}
+/* The Atlas / Dossier / Curator tab bar is gone: the dossier opens on a space, Close returns to the map, and the header Chat button opens the curator. The tab elements stay in the DOM so the existing scripts still drive them. */
+#mobileBottomNav{display:none!important}
+body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
