@@ -31,13 +31,17 @@ function guides(N){ const vis=r=>FOC-DOLLY-r[2]>NEAR, Pt=(x,y,z)=>{ const r=rot(
 function drawGlobe(sel){ sel.selectAll('*').remove(); }
 function updateGuides(sel,N){}
 // ---------- sea-plant sway: a touch sends a small wave outward; every circle has its own spring, so each moves on its own ----------
-window.__AR=1; let SWAYNODES=()=>[], swayRun=false, swayLast=0, swayThrottle=0;
+window.__AR=1; let SWAYNODES=()=>[], SWAYLINKS=()=>[], swayRun=false, swayLast=0, swayThrottle=0;
 const REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function swayKick(cx,cy,power){ const svgN=document.querySelector('#map'); if(!svgN) return; const rc=svgN.getBoundingClientRect(), t=d3.zoomTransform(svgN), now=performance.now();
   SWAYNODES().forEach(d=>{ if(d.px==null) return; const X=t.x+d.px*t.k*window.__AR+rc.left, Y=t.y+d.py*t.k+rc.top, dist=Math.hypot(X-cx,Y-cy);
     if(d.sk==null){ d.sk=0.011+rnd()*0.014; d.sc=0.035+rnd()*0.05; d.sa=rnd()*6.283; d.sz=(rnd()-.5); d.ox=d.oy=d.oz=d.vx=d.vy=d.vz=0; }
     const fall=1/(1+dist/420), amp=power*(6+rnd()*11)*(0.45+fall)*(dist<70?1.7:1), ang=d.sa+(rnd()-.5)*1.1;
     d.pend={t:now+dist*0.55+rnd()*70,ax:Math.cos(ang)*amp*(d.center?0.15:1),ay:Math.sin(ang)*amp*0.8*(d.center?0.15:1),az:d.sz*amp*1.2*(d.center?0.15:1)}; });
+  SWAYLINKS().forEach(l=>{ if(l.source.px==null||l.target.px==null) return;
+    if(l.sk==null){ l.sk=0.008+rnd()*0.012; l.sc=0.03+rnd()*0.045; l.sk2=0.009+rnd()*0.012; l.sc2=0.03+rnd()*0.045; l.la=l.lb=l.lva=l.lvb=0; }
+    const X=t.x+((l.source.px+l.target.px)/2)*t.k*window.__AR+rc.left, Y=t.y+((l.source.py+l.target.py)/2)*t.k+rc.top, dist=Math.hypot(X-cx,Y-cy), fall=1/(1+dist/420), amp=power*(5+rnd()*11)*(0.5+fall)*(dist<90?1.6:1), sg=rnd()<.5?-1:1;
+    l.pend={t:now+dist*0.5+rnd()*140,a:sg*amp,b:-sg*amp*(0.5+rnd()*0.9)}; });
   if(!swayRun){ swayRun=true; swayLast=performance.now(); requestAnimationFrame(swayLoop); } }
 function swayLoop(){ const now=performance.now(), dt=Math.min(2.5,(now-swayLast)/16.7); swayLast=now; let live=false;
   SWAYNODES().forEach(d=>{ if(d.sk==null) return;
@@ -46,6 +50,11 @@ function swayLoop(){ const now=performance.now(), dt=Math.min(2.5,(now-swayLast)
     d.vx+=(-d.sk*d.ox-d.sc*d.vx)*dt; d.vy+=(-d.sk*d.oy-d.sc*d.vy)*dt; d.vz+=(-d.sk*d.oz-d.sc*d.vz)*dt;
     d.ox+=d.vx*dt; d.oy+=d.vy*dt; d.oz+=d.vz*dt;
     if(Math.abs(d.ox)+Math.abs(d.oy)+Math.abs(d.oz)+Math.abs(d.vx)+Math.abs(d.vy)+Math.abs(d.vz)>0.04) live=true; else { d.ox=d.oy=d.oz=d.vx=d.vy=d.vz=0; } });
+  SWAYLINKS().forEach(l=>{ if(l.sk==null) return;
+    if(l.pend&&now>=l.pend.t){ l.lva+=l.pend.a*0.3; l.lvb+=l.pend.b*0.3; l.pend=null; }
+    if(l.pend) live=true;
+    l.lva+=(-l.sk*l.la-l.sc*l.lva)*dt; l.lvb+=(-l.sk2*l.lb-l.sc2*l.lvb)*dt; l.la+=l.lva*dt; l.lb+=l.lvb*dt;
+    if(Math.abs(l.la)+Math.abs(l.lb)+Math.abs(l.lva)+Math.abs(l.lvb)>0.04) live=true; else { l.la=l.lb=l.lva=l.lvb=0; } });
   if(REDRAW) REDRAW();
   if(live) requestAnimationFrame(swayLoop); else swayRun=false; }
 window.addEventListener('pointerdown',e=>{ if(e.target&&e.target.closest&&e.target.closest('#map')) swayKick(e.clientX,e.clientY,1); });
@@ -177,7 +186,7 @@ function render(inst){
   const edgeCol=d=>d.label==='also funds'?CAT.link.color:colOf(byId[d.source.center||d.source==='c'?d.target.id||d.target:(d.source.id||d.source)]||byId[d.target.id||d.target]);
   function flow(d){ const W0=d.W*(((d.source.s||1)+(d.target.s||1))/2);
     const sx=d.source.px, sy=d.source.py, tx=d.target.px, ty=d.target.py, dx=tx-sx, dy=ty-sy, L=Math.hypot(dx,dy)||1, px=-dy/L*d.side, py=dx/L*d.side;
-    const o1=L*d.bend, o2=(d.kind==='s'?-1:1)*L*(d.kind==='line'?d.bend:d.bend2);
+    const o1=L*d.bend+(d.la||0), o2=(d.kind==='s'?-1:1)*L*(d.kind==='line'?d.bend:d.bend2)+(d.lb||0);
     const c1=[sx+dx*0.3+px*o1,sy+dy*0.3+py*o1], c2=[sx+dx*0.7+px*o2,sy+dy*0.7+py*o2], rs=rad(d.source)*0.4, rt=rad(d.target)*0.4, pts=[];
     for(let i=0;i<=48;i++){ const t=i/48,u=1-t, x=u*u*u*sx+3*u*u*t*c1[0]+3*u*t*t*c2[0]+t*t*t*tx, y=u*u*u*sy+3*u*u*t*c1[1]+3*u*t*t*c2[1]+t*t*t*ty;
       if(Math.hypot(x-sx,y-sy)>rs&&Math.hypot(x-tx,y-ty)>rt) pts.push([x,y]); }
@@ -263,7 +272,7 @@ function render(inst){
   }
   nodeSel.on('click',(e,d)=>{ e.stopPropagation(); select(selected&&selected.id===d.id?null:d); }).on('keydown',(e,d)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); select(d); } });
   svg.on('click',()=>{ if(orbMoved>5){ orbMoved=0; return; } select(null); });
-  bindOrbit(svg); REDRAW=draw; SWAYNODES=()=>N; startSpin();
+  bindOrbit(svg); REDRAW=draw; SWAYNODES=()=>N; SWAYLINKS=()=>links; startSpin();
   // category pills (only the groups this map has)
   const present=CATS.filter(c=>N.some(n=>n.cat===c));
   const catsEl=document.getElementById('cats');
