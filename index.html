@@ -99,6 +99,7 @@ return maplibregl$1;
     <!-- Right: Action Switchers & Controls -->
     <div class="flex items-center space-x-1_5 shrink-0">
       <!-- New Chat / Reset Quick Actions -->
+      <a id="mobileMoneyMapsLink" href="money-maps.html" class="whitespace-nowrap">Money maps</a>
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
         Chat
@@ -117,6 +118,7 @@ return maplibregl$1;
 
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
+      <a id="topMoneyMapsLink" href="money-maps.html" class="hidden md-inline-flex whitespace-nowrap">Money maps</a>
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap">Gossip mode</button>
 
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
@@ -396,6 +398,7 @@ return maplibregl$1;
             <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
             <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
             <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
+            <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
         </div>
@@ -758,6 +761,7 @@ return maplibregl$1;
               <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
               <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
               <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
+            <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
             </details>
 
             <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
@@ -6468,9 +6472,9 @@ return maplibregl$1;
     });
 
     // City map style: a line drawing like the globe. Black ground, 0.8px off-white lines, no fills, no 3D. OpenFreeMap vector tiles.
-    const CITY_MAP_DARK_STYLE = {
+    const CITY_MAP_LINE_STYLE = {
       version: 8,
-      name: 'Culture Atlas dark',
+      name: 'Culture Atlas line drawing',
       sources: {
         openmaptiles: {
           type: 'vector',
@@ -6485,35 +6489,35 @@ return maplibregl$1;
         {
           id: 'background',
           type: 'background',
-          paint: { 'background-color': '#000000' }
+          paint: { 'background-color': '#ffffff' }
         },
         {
           id: 'landcover_grass',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'landcover',
-          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#555555', 'fill-antialias': true }
         },
         {
           id: 'park',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'park',
-          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#555555', 'fill-antialias': true }
         },
         {
           id: 'water',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'water',
-          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#555555', 'fill-antialias': true }
         },
         {
           id: 'waterway',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.7 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.75 }
         },
         {
           id: 'building',
@@ -6521,7 +6525,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 13,
-          paint: { 'fill-color': '#000000', 'fill-opacity': 0, 'fill-outline-color': '#f4f4f4', 'fill-antialias': true }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#555555', 'fill-antialias': true }
         },
         {
           id: 'building-3d-city-context',
@@ -6530,7 +6534,7 @@ return maplibregl$1;
           'source-layer': 'building',
           minzoom: 14,
           paint: {
-            'fill-extrusion-color': '#000000',
+            'fill-extrusion-color': '#ffffff',
             'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 8]],
             'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]],
             'fill-extrusion-opacity': 1,
@@ -6543,7 +6547,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 13,
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.9 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.9 }
         },
         {
           id: 'road_minor',
@@ -6552,7 +6556,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
           minzoom: 12,
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.45 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.55 }
         },
         {
           id: 'road_secondary',
@@ -6560,7 +6564,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.7 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.75 }
         },
         {
           id: 'road_primary',
@@ -6568,7 +6572,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 0.9 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 0.9 }
         },
         {
           id: 'road_motorway',
@@ -6576,7 +6580,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-opacity': 1 }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'boundary_country',
@@ -6584,7 +6588,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
-          paint: { 'line-color': '#f4f4f4', 'line-width': 0.8, 'line-dasharray': [3, 2] }
+          paint: { 'line-color': '#555555', 'line-width': 1, 'line-dasharray': [3, 2] }
         },
         {
           id: 'place_label',
@@ -6600,8 +6604,8 @@ return maplibregl$1;
             'text-letter-spacing': 0.08
           },
           paint: {
-            'text-color': '#f4f4f4',
-            'text-halo-color': '#000000',
+            'text-color': '#000000',
+            'text-halo-color': '#ffffff',
             'text-halo-width': 1.5
           }
         }
@@ -6633,7 +6637,7 @@ return maplibregl$1;
       try {
         cityVectorMap = new maplibregl.Map({
           container: 'cityMapContainer',
-          style: CITY_MAP_DARK_STYLE,
+          style: CITY_MAP_LINE_STYLE,
           center: [0, 20],
           zoom: 14,
           pitch: 35,
@@ -6645,6 +6649,13 @@ return maplibregl$1;
           showCompass: true,
           visualizePitch: true
         }), 'top-right');
+
+        // The map credit stays on the page, closed to a small square "i" until it is opened.
+        cityVectorMap.once('load', () => {
+          applyCityMapGossip();
+          const credit = document.querySelector('#cityMapContainer .maplibregl-ctrl-attrib');
+          if (credit) { credit.classList.remove('maplibregl-compact-show'); credit.removeAttribute('open'); }
+        });
 
       } catch (e) {
         console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
@@ -6990,6 +7001,24 @@ return maplibregl$1;
 
 
 
+    // The street map follows gossip mode: orange ground and black hairlines, instead of white ground and grey hairlines.
+    function applyCityMapGossip() {
+      const map = cityVectorMap;
+      if (!map || typeof map.getStyle !== 'function' || typeof map.setPaintProperty !== 'function') return;
+      let layers = [];
+      try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
+      const ground = isGossipModeActive ? '#ff6119' : '#ffffff';
+      const line = isGossipModeActive ? '#000000' : '#555555';
+      layers.forEach(l => {
+        try {
+          if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', ground);
+          else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', line);
+          else if (l.type === 'fill') { map.setPaintProperty(l.id, 'fill-outline-color', line); map.setPaintProperty(l.id, 'fill-color', ground); }
+          else if (l.type === 'fill-extrusion') map.setPaintProperty(l.id, 'fill-extrusion-color', ground);
+          else if (l.type === 'symbol') map.setPaintProperty(l.id, 'text-halo-color', ground);
+        } catch (e) { /* a layer this map does not have */ }
+      });
+    }
     function toggleGossipMode(forceState) {
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
@@ -6997,8 +7026,9 @@ return maplibregl$1;
       ['topGossipBtn', 'mobileGossipBtn', 'workMenuGossipModeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
       document.getElementById('workPlusMenu')?.classList.add('hidden');
       if (typeof appendCuratorMessage === 'function') {
-        appendCuratorMessage(`<p class="no-indent" style="color:#f1c21b !important">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
+        appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
       }
+      applyCityMapGossip();
       if (typeof render === 'function') render();
       if (selectedInstitution && typeof updateDesktopDossier === 'function') updateDesktopDossier(selectedInstitution);
     }
@@ -7631,7 +7661,7 @@ return maplibregl$1;
         });
 
         const tierDot = document.createElement('span');
-        tierDot.style.color = markerColor;
+        tierDot.style.color = '#000';
         tierDot.style.fontSize = '14px';
         tierDot.style.lineHeight = '1';
         tierDot.textContent = '';
@@ -7654,7 +7684,7 @@ return maplibregl$1;
         dotEl.style.height = '15px';
         dotEl.style.borderRadius = '50%';
         dotEl.style.background = 'transparent';
-        dotEl.style.border = '0.8px solid ' + markerColor;
+        dotEl.style.border = '1px solid #000'; // a hollow black ring on the white drawing; the tier is on the label
         dotEl.style.boxShadow = 'none';
 
         pinEl.appendChild(labelEl);
@@ -7667,56 +7697,22 @@ return maplibregl$1;
         const visitLine = [inst.opening_hours ? inst.opening_hours.split(',')[0] : '', inst.admission_fee ? inst.admission_fee.split('/')[0].trim() : ''].filter(Boolean).join(', ');
         const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : '';
         const popupContent = `
-          <div data-entity-id="${safeId}" style="font-family:'PP Neue Gstaad', sans-serif; min-width:280px; max-width:350px; padding:4px 0; color:#f4f4f4; box-sizing:border-box;">
-            <!-- Header Section -->
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:4px;">
-              <div style="padding-right:10px; min-width:0;">
-                <a href="${escapeHtml(webUrl || '#')}" target="_blank" rel="noopener noreferrer" 
-                   style="font-size: 15px; font-weight:400; color:#ffffff; line-height:1.3; text-decoration:none; display:block;"
-                   onmouseover="this.style.color='#f4f4f4';this.style.textDecoration='underline'" 
-                   onmouseout="this.style.color='#ffffff';this.style.textDecoration='none'">
-                  ${escapeHtml(inst.name)}
-                </a>
-                <div style="font-size:14px; color:#f4f4f4; margin-top:2px;">
-                  ${escapeHtml(inst.location || inst.city)}
-                </div>
-              </div>
-            </div>
-
-            <!-- Hours & Admission Tier -->
-            <div style="font-size:14px; color:#34d399; margin-top:4px; font-family: 'PP Neue Gstaad', sans-serif;">
-              ${escapeHtml(visitLine)}
-            </div>
-
-            <!-- Curatorial Focus & Info Link -->
-            <div style="font-size:14px; color:#f4f4f4; margin-top:4px; line-height:1.3;">
-              ${escapeHtml(inst.curatorial_focus || inst.neighborhood || '')}
-
-            </div>
-
-            <!-- Streamlined Single-Column Actions -->
-            <div style="display:flex; flex-direction:column; gap:4px; margin-top:8px; padding-top:6px; border-top:1px solid #262626;">
-              ${webUrl ? `
-                <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" 
-                   style="color:#f4f4f4; font-size:14px; font-weight:400; text-decoration:underline; font-family:inherit;">
-                  Website
-                </a>
-              ` : ''}
-              <button type="button" onclick="window.atlasPlanVisit('${safeId}')" 
-                      style="background:none; border:none; text-align:left; color:#f4f4f4; font-size:14px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;">
-                Plan Visit
-              </button>
-              <button type="button" onclick="window.atlasAskCurator('${safeId}')" 
-                      style="background:none; border:none; text-align:left; color:#42be65; font-size:14px; font-weight:400; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;" 
-                      title="Ask Curator about ${escapeHtml(inst.name)}">
-                Ask in Chat
-              </button>
+          <div class="record-popup" data-entity-id="${safeId}">
+            <a class="record-popup-name" href="${escapeHtml(webUrl || '#')}" target="_blank" rel="noopener noreferrer">${escapeHtml(inst.name)}</a>
+            <div class="record-popup-line">${escapeHtml(inst.location || inst.city)}</div>
+            ${visitLine ? `<div class="record-popup-line">${escapeHtml(visitLine)}</div>` : ''}
+            ${(inst.curatorial_focus || inst.neighborhood) ? `<div class="record-popup-line">${escapeHtml(inst.curatorial_focus || inst.neighborhood)}</div>` : ''}
+            <div class="record-popup-actions">
+              <a href="money-maps.html#${encodeURIComponent(inst.id || '')}" class="record-action">Money map</a>
+              ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer">Website</a>` : ''}
+              <button type="button" onclick="window.atlasPlanVisit('${safeId}')">Plan Visit</button>
+              <button type="button" onclick="window.atlasAskCurator('${safeId}')" title="Ask Curator about ${escapeHtml(inst.name)}">Ask in Chat</button>
             </div>
           </div>
         `;
 
         const popup = new maplibregl.Popup({
-          className: 'atlas-dark-popup',
+          className: 'atlas-record-popup',
           maxWidth: '360px',
           offset: 16,
           closeButton: true,
@@ -8085,49 +8081,24 @@ return maplibregl$1;
           const safeName = escapeHtml(stop.name).replace(/'/g, "\'");
           const isClean = stop.tier === 'A';
           const popupHtml = `
-            <div style="font-family:'PP Neue Gstaad', sans-serif; min-width:240px; max-width:320px; padding:3px 4px; color:#f4f4f4;">
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
-                <span style="font-size:14px;  color:#34d399; font-weight:400;">
-                  Stop ${stop.stopIndex} of ${route.stops.length}
-                </span>
-                <span style="font-size:14px;  padding:1px 6px; border-radius:4px; background:${isClean ? '#06261c' : '#1e1133'}; color:${isClean ? '#34d399' : '#c084fc'}; border:1px solid ${isClean ? '#0f4c39' : '#581c87'};">
-                  ${isClean ? 'Clean, source cited' : 'Flagged'}
-                </span>
-              </div>
-              <div style="font-size: 15px; font-weight:400; color:#ffffff; line-height:1.3; margin-bottom:4px;">
-                ${escapeHtml(stop.name)}
-              </div>
-              <div style="font-size:14px; color:#f4f4f4; margin-bottom:6px;">
-                ${escapeHtml(stop.address || stop.neighborhood || stop.city)}
-              </div>
-              <div style="font-size:14px;  color:#6ee7b7; background:#000000; padding:3px 6px; border-radius:6px; border:1px solid #0f4c39; margin-bottom:6px;">
-                ${escapeHtml(stop.openingHours)}
-              </div>
-              <div style="font-size:14px; color:#f4f4f4; margin-bottom:8px; line-height:1.3;">
-                ${escapeHtml(stop.curatorialFocus || '')}
-              </div>
-              ${idx < route.stops.length - 1 ? `
-                <div style="font-size:14px;  color:#f4f4f4; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
-                  Next stop: ${escapeHtml(route.stops[idx + 1].name)} (${stop.nextLegKm || route.stops[idx+1].legDistanceKm} km, ${stop.nextLegMin || route.stops[idx+1].legWalkMinutes} min walk)
-                </div>
-              ` : `
-                <div style="font-size:14px;  color:#34d399; border-top:1px solid #1e293b; padding-top:6px; margin-top:4px;">
-                  Final Itinerary Destination
-                </div>
-              `}
-              <div style="display:flex; align-items:center; gap:6px; margin-top:8px;">
-                <button onclick="window.jumpToRouteStop(${idx})" style="padding:4px 9px; border-radius:8px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:#ffffff; font-size:14px; font-weight:400; border:none; cursor:pointer;">
-                  Focus Stop
-                </button>
-                <button onclick="window.atlasPlanVisit('${safeName}')" style="padding:4px 8px; border-radius:8px; background:#000000; color:#f4f4f4; font-size:14px; border:1px solid #334155; cursor:pointer;">
-                  Plan Visit
-                </button>
+            <div class="record-popup">
+              <div class="record-popup-line">Stop ${stop.stopIndex} of ${route.stops.length}. ${isClean ? 'Clean, source cited' : 'Flagged'}</div>
+              <div class="record-popup-name">${escapeHtml(stop.name)}</div>
+              <div class="record-popup-line">${escapeHtml(stop.address || stop.neighborhood || stop.city)}</div>
+              ${stop.openingHours ? `<div class="record-popup-line">${escapeHtml(stop.openingHours)}</div>` : ''}
+              ${stop.curatorialFocus ? `<div class="record-popup-line">${escapeHtml(stop.curatorialFocus)}</div>` : ''}
+              <div class="record-popup-line record-popup-rule">${idx < route.stops.length - 1
+                ? `Next stop: ${escapeHtml(route.stops[idx + 1].name)} (${stop.nextLegKm || route.stops[idx+1].legDistanceKm} km, ${stop.nextLegMin || route.stops[idx+1].legWalkMinutes} min walk)`
+                : 'Final stop of this route'}</div>
+              <div class="record-popup-actions">
+                <button type="button" onclick="window.jumpToRouteStop(${idx})">Focus Stop</button>
+                <button type="button" onclick="window.atlasPlanVisit('${safeName}')">Plan Visit</button>
               </div>
             </div>
           `;
 
           const popup = new maplibregl.Popup({
-            className: 'atlas-dark-popup',
+            className: 'atlas-record-popup',
             maxWidth: '340px',
             offset: 14,
             closeButton: true,
@@ -10020,7 +9991,7 @@ return maplibregl$1;
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = '#000000';
         ctx.fill();
-        ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+        ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
         ctx.lineWidth = 0.8;
         ctx.stroke();
 
@@ -10078,7 +10049,7 @@ return maplibregl$1;
               }
               ctx.closePath();
               ctx.fill();
-              ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+              ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
               ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
               ctx.stroke();
             } else {
@@ -10131,7 +10102,7 @@ return maplibregl$1;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+                ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
                 ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
                 ctx.stroke();
               }
@@ -10167,8 +10138,7 @@ return maplibregl$1;
           ctx.save();
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 20, h = 22;
-          const yellow = active !== isGossipModeActive;
-          ctx.fillStyle = yellow ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a');
+          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : '#ff6119') : (active ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a'));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = '#000000';
           ctx.textAlign = 'center';
@@ -10267,7 +10237,7 @@ return maplibregl$1;
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
-                ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+                ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
@@ -10279,7 +10249,7 @@ return maplibregl$1;
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
                 if (isSelected) { ctx.fillStyle = '#ff6119'; ctx.fill(); }
-                ctx.strokeStyle = isGossipModeActive ? '#eab308' : '#f4f4f4';
+                ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               }
@@ -10335,10 +10305,10 @@ return maplibregl$1;
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? (isGossipModeActive ? '#fef9c3' : '#08bdba') 
+                    ? (isGossipModeActive ? '#ff6119' : '#08bdba') 
                     : isHov
                     ? '#ffffff'
-                    : (isGossipModeActive ? '#fef08a' : '#ffffff');
+                    : (isGossipModeActive ? '#ff6119' : '#ffffff');
                   ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }
               }
@@ -10449,7 +10419,7 @@ return maplibregl$1;
           ctx.beginPath();
           ctx.arc(d.x, d.y, isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5), 0, Math.PI * 2);
           ctx.strokeStyle = isHov 
-            ? (isGossipModeActive ? '#fef08a' : '#f4f4f4')
+            ? (isGossipModeActive ? '#ff6119' : '#f4f4f4')
             : (isVisualCritiqueOnly && hasVc)
             ? '#f59e0b'
             : isGossipModeActive 
@@ -10559,7 +10529,7 @@ return maplibregl$1;
               };
 
               // Flat block: cobalt, or yellow in gossip mode. No rounding, no outline, no shadow.
-              ctx.fillStyle = isGossipModeActive ? '#ffd600' : '#0046ff';
+              ctx.fillStyle = isGossipModeActive ? '#ff6119' : '#0046ff';
               ctx.fillRect(cardX, cardY, cardW, cardH);
 
               // Line 1: city name, capitals, Compact Bold
@@ -10579,7 +10549,7 @@ return maplibregl$1;
 
               // Action: a flat grey block with black text, yellow on hover.
               ctx.save();
-              ctx.fillStyle = isHoveringCityExploreLink ? '#ffd600' : '#d9d9d9';
+              ctx.fillStyle = isHoveringCityExploreLink ? (isGossipModeActive ? '#ffffff' : '#ffd600') : '#d9d9d9';
               ctx.fillRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
               ctx.font = ATLAS_CARD_MONO_FONT;
               ctx.fillStyle = '#000000';
@@ -11589,7 +11559,7 @@ return maplibregl$1;
 
           ${isClean ? `
             <div class="pt-1">
-              <div class="flex flex-col gap-0">
+              <div class="flex flex-col gap-0 visit-rows">
                 ${inst.opening_hours ? `<div class="py-2 rule-t">
                   <div class="meta mb-0_5">Hours</div>
                   <div class="">${escapeHtml(inst.opening_hours)}</div>
@@ -11627,11 +11597,6 @@ return maplibregl$1;
             </div>
           ` : ''}
 
-
-          <div class="pt-2 rule-t">
-
-            
-          </div>
         </div>
         <!-- /drawerAuditView -->
 
