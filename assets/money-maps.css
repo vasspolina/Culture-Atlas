@@ -63,3 +63,4 @@ td a{color:#000}
 #list small{display:block;opacity:.65;font-size:.82em}
 .note{padding:10px 12px;font-size:.8em;opacity:.7}
 #empty{position:absolute;left:0;right:0;top:46%;text-align:center;color:#fff;font-size:clamp(18px,2.2vw,28px);pointer-events:none}
+#allc{display:block;width:100%;flex:1 1 auto;min-height:0;background:#000;touch-action:none}

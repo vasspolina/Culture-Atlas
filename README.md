@@ -6,7 +6,7 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 
 - **Chat.** Answers from the records only. It names the record and its source, and says when a record does not say. An optional API key in settings turns on open-ended replies.
 - **Globe and map.** Click a space to see its record, or a city or country to filter. The globe is drawn in hairlines only (coastlines, borders, hollow rings for spaces) and fills its whole pane.
-- **Money maps.** Each record has a map of what it states about its funding: the space in the middle, a circle for each funder, flag or documented tie, and lines between them. Circles that name the same funder link to other spaces. Open it from a record's Money map button, or go to `money-maps.html#<record id>`. Drag to turn the map in 3D, pinch or scroll to fly through it, touch to make the circles sway. See "Money maps" below.
+- **Money maps.** Each record has a map of what it states about its funding: the space in the middle, a circle for each funder, flag or documented tie, and lines between them. Circles that name the same funder link to other spaces. Open it from a record's Money map button, or go to `money-maps.html#<record id>`; `money-maps.html` on its own shows the big map of every space and sponsor. Drag to turn the map in 3D, pinch or scroll to fly through it, touch to make the circles sway. See "Money maps" below.
 - **Offline.** Installable as an app; the service worker caches the page.
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below.
@@ -48,6 +48,8 @@ Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
 ## Money maps
+
+The page opens on **one big map of every space and every sponsor** (`#all`): each space is a white circle, each sponsor a circle coloured by group (public bodies, corporate, foundations and donors), bigger the more spaces it funds, joined by a line for each tie. Tap a circle to light up its ties and zoom to them; search a sponsor in the second bar; filter the groups with the pills. Sponsors are merged across records by name (for example "NEA" and "National Endowment for the Arts"); public bodies are told apart by country, and generic ones such as "City government" stay with their own record so they never become one false hub. Records that name no funder are not in the big map. Each record also has its own map, at `money-maps.html#<record id>`.
 
 `money-maps.html` is a second page, with its own `assets/money-maps.css` and `assets/money-maps.js`, and a local copy of d3 (`assets/d3.min.js`, v7.9.0, ISC licence). It loads nothing from a CDN. Its data is `assets/money-maps.json`, built from `institutions.json` by:
 

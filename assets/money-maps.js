@@ -295,10 +295,130 @@ function render(inst){
   window.__nw=svg.node().clientWidth<700;
   cur={relayout,fit:()=>fit(),stop:()=>{ sim.stop(); cancelAnimationFrame(anim); }};
 }
+// ---------- the big map: every space and every sponsor in one picture ----------
+const ALL={active:false,built:false,laid:false,inited:false,tr:d3.zoomIdentity,sel:null,near:null,on:{gov:true,corp:true,found:true},touched:false,raf:0};
+const aInfo=document.getElementById('info'), aSheet=document.getElementById('sheet'), aTab=document.getElementById('tab');
+function buildAll(){
+  if(ALL.built) return; ALL.built=true;
+  const nodes=[], links=[], byKey=new Map(), names=new Map(); ALL.byId=new Map();
+  D.forEach(r=>{ let sp=null;
+    r.nodes.forEach(n=>{ if(!(n[1]==='gov'||n[1]==='corp'||n[1]==='found')||!n[5]) return;
+      if(!sp){ sp={id:'s:'+r.id,rid:r.id,label:r.n,sub:r.c,tier:r.t,kind:'space',cat:'space',links:[],deg:0}; nodes.push(sp); }
+      let k=byKey.get(n[5]); if(!k){ k={id:'k:'+n[5],label:n[0],kind:'sponsor',cat:n[1],links:[],deg:0,note:n[3]||''}; byKey.set(n[5],k); names.set(n[5],new Map()); nodes.push(k); }
+      const nm=names.get(n[5]); nm.set(n[0],(nm.get(n[0])||0)+1);
+      if(sp.links.includes(k)) return;
+      links.push({source:sp,target:k,cat:k.cat,off:(rnd()-.5)*.5}); sp.links.push(k); k.links.push(sp); sp.deg++; k.deg++; }); });
+  byKey.forEach((k,key)=>{ let best='',bc=0; names.get(key).forEach((c,l)=>{ if(c>bc||(c===bc&&l.length<best.length)){ best=l; bc=c; } }); k.label=best; });
+  nodes.forEach(n=>{ n.r=n.kind==='space'?2.4+Math.sqrt(n.deg)*.8:2.2+Math.sqrt(n.deg)*2.1; ALL.byId.set(n.id,n); });
+  ALL.nodes=nodes; ALL.links=links; ALL.nSpaces=nodes.filter(n=>n.kind==='space').length; ALL.nSponsors=nodes.length-ALL.nSpaces; ALL.omitted=D.length-ALL.nSpaces;
+}
+const allVisible=n=>n.kind==='space'||ALL.on[n.cat];
+function sizeCanvas(){ const c=ALL.c, dpr=window.devicePixelRatio||1, w=c.clientWidth, h=c.clientHeight; ALL.dpr=dpr; if(!w||!h) return false; if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){ c.width=Math.round(w*dpr); c.height=Math.round(h*dpr); } return true; }
+function topPad(){ const c=document.getElementById('cats'); return c?c.offsetHeight+4:0; }
+function fitAll(animate){
+  if(!ALL.c||!sizeCanvas()) return; const w=ALL.c.clientWidth, h=ALL.c.clientHeight, tp=topPad(); let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  if(ALL.laid){ // spread the finished layout sideways to match the window; circles stay round
+    let a0=1e9,a1=-1e9,b0=1e9,b1=-1e9; ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; a0=Math.min(a0,n.bx); a1=Math.max(a1,n.bx); b0=Math.min(b0,n.by); b1=Math.max(b1,n.by); });
+    const sx=Math.max(.8,Math.min(2.2,((w-28)/Math.max(1,h-tp-28))/(Math.max(1,a1-a0)/Math.max(1,b1-b0)))); ALL.nodes.forEach(n=>{ n.x=n.bx*sx; n.y=n.by; }); }
+  ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; x0=Math.min(x0,n.x-n.r); y0=Math.min(y0,n.y-n.r); x1=Math.max(x1,n.x+n.r); y1=Math.max(y1,n.y+n.r); });
+  if(x1<x0) return; const pad=14, k=Math.min((w-2*pad)/Math.max(1,x1-x0),(h-tp-2*pad)/Math.max(1,y1-y0),4);
+  const t=d3.zoomIdentity.translate(w/2-(x0+x1)/2*k, tp+(h-tp)/2-(y0+y1)/2*k).scale(k), s=d3.select(ALL.c);
+  ALL.fitting=true; if(animate) s.transition().duration(700).call(ALL.zoom.transform,t).on('end interrupt',()=>{ ALL.fitting=false; }); else { s.call(ALL.zoom.transform,t); ALL.fitting=false; }
+}
+function drawAll(){ if(!ALL.active||ALL.raf) return; ALL.raf=requestAnimationFrame(()=>{ ALL.raf=0; paintAll(); }); }
+function strokeLinks(ls,color,alpha,px){ if(!ls.length) return; const ctx=ALL.ctx; ctx.beginPath();
+  ls.forEach(l=>{ const a=l.source,b=l.target; ctx.moveTo(a.x,a.y); ctx.quadraticCurveTo((a.x+b.x)/2-(b.y-a.y)*l.off,(a.y+b.y)/2+(b.x-a.x)*l.off,b.x,b.y); });
+  ctx.globalAlpha=alpha; ctx.strokeStyle=color; ctx.lineWidth=px/ALL.tr.k; ctx.stroke(); }
+function paintAll(){
+  const c=ALL.c, ctx=ALL.ctx; if(!c||!sizeCanvas()) return; const tr=ALL.tr, w=c.clientWidth, h=c.clientHeight, sel=ALL.sel, near=ALL.near, dim=!!sel;
+  ctx.setTransform(ALL.dpr,0,0,ALL.dpr,0,0); ctx.globalAlpha=1; ctx.fillStyle='#000'; ctx.fillRect(0,0,w,h);
+  ctx.save(); ctx.translate(tr.x,tr.y); ctx.scale(tr.k,tr.k);
+  ['gov','corp','found'].forEach(cat=>{ if(!ALL.on[cat]) return; const lo=[],hi=[]; ALL.links.forEach(l=>{ if(l.cat!==cat) return; (dim&&(l.source===sel||l.target===sel)?hi:lo).push(l); });
+    strokeLinks(lo,CAT[cat].color,dim?.05:.34,.7); strokeLinks(hi,CAT[cat].color,.95,1.4); });
+  [['space','#ffffff'],['gov',CAT.gov.color],['corp',CAT.corp.color],['found',CAT.found.color]].forEach(([cat,color])=>{
+    [false,true].forEach(isNear=>{ const ns=ALL.nodes.filter(n=>n.cat===cat&&allVisible(n)&&(!dim||(near.has(n)===isNear))); if(!ns.length) return;
+      ctx.beginPath(); ns.forEach(n=>{ ctx.moveTo(n.x+n.r,n.y); ctx.arc(n.x,n.y,n.r,0,6.2832); });
+      ctx.globalAlpha=dim&&!isNear?.16:1; ctx.strokeStyle=color; ctx.lineWidth=(cat==='space'?1.1:1.5)/tr.k; ctx.stroke(); }); });
+  if(sel){ ctx.globalAlpha=1; ctx.beginPath(); ctx.arc(sel.x,sel.y,sel.r+3.5/tr.k,0,6.2832); ctx.strokeStyle='#fff'; ctx.lineWidth=2/tr.k; ctx.stroke(); }
+  // names: the biggest sponsors first, more of them as you zoom in; everything beside a selection
+  const T=Math.max(1,14/tr.k), vx0=-tr.x/tr.k, vy0=-tr.y/tr.k, vx1=(w-tr.x)/tr.k, vy1=(h-tr.y)/tr.k; let cand=[];
+  ALL.nodes.forEach(n=>{ if(!allVisible(n)||n.x<vx0||n.x>vx1||n.y<vy0||n.y>vy1) return; if(dim?near.has(n):n.deg*(n.kind==='space'?.5:1)>=T) cand.push(n); });
+  cand.sort((a,b)=>(b===sel)-(a===sel)||b.deg-a.deg); cand=cand.slice(0,dim?90:160);
+  ctx.globalAlpha=1; ctx.font=(13/tr.k)+'px "PP Neue Gstaad", sans-serif'; ctx.textBaseline='middle'; ctx.lineJoin='round'; ctx.lineWidth=3/tr.k; ctx.strokeStyle='#000'; ctx.fillStyle='#fff';
+  const placed=[]; cand.forEach(n=>{ const tw=ctx.measureText(n.label).width*tr.k, sx=tr.x+(n.x+n.r+3/tr.k)*tr.k, sy=tr.y+n.y*tr.k;
+    if(placed.some(p=>sx<p[2]&&sx+tw>p[0]&&sy-8<p[3]&&sy+8>p[1])) return; placed.push([sx,sy-8,sx+tw,sy+8]);
+    const x=n.x+n.r+3/tr.k; ctx.strokeText(n.label,x,n.y); ctx.fillText(n.label,x,n.y); });
+  ctx.restore();
+}
+function startLayout(){
+  const nodes=ALL.nodes, links=ALL.links;
+  if(!ALL.inited){ ALL.inited=true; nodes.forEach((n,i)=>{ const a=i*2.399963, rr=Math.sqrt(i+1)*9; n.x=Math.cos(a)*rr; n.y=Math.sin(a)*rr; }); }
+  const sim=ALL.sim=d3.forceSimulation(nodes).force('link',d3.forceLink(links).distance(l=>16+5*Math.sqrt(Math.max(l.source.deg,l.target.deg))).strength(.8))
+    .force('charge',d3.forceManyBody().strength(n=>-14-n.deg*3.5).theta(.9).distanceMax(500)).force('x',d3.forceX().strength(.04)).force('y',d3.forceY().strength(.04))
+    .force('collide',d3.forceCollide(n=>n.r+1.2)).alphaDecay(.04).alphaMin(.012).stop();
+  const msg=document.getElementById('empty'); msg.hidden=false; msg.textContent='Laying out '+ALL.nSpaces+' spaces and '+ALL.nSponsors+' sponsors';
+  let ticks=0; const step=()=>{ if(!ALL.active||ALL.sim!==sim) return; const t0=performance.now(); do{ sim.tick(); ticks++; }while(performance.now()-t0<14&&sim.alpha()>sim.alphaMin());
+    if(ticks%10<3||sim.alpha()<=sim.alphaMin()) fitAll(false); drawAll();
+    if(sim.alpha()>sim.alphaMin()) requestAnimationFrame(step); else { ALL.laid=true; ALL.nodes.forEach(n=>{ n.bx=n.x; n.by=n.y; }); msg.hidden=true; fitAll(false); drawAll(); } };
+  requestAnimationFrame(step);
+}
+const aRow=(k,v)=>`<div class="row"><div>${k}</div><div>${v}</div></div>`, aFull=v=>`<div class="row full"><div>${v}</div></div>`;
+const aColor=n=>n.kind==='space'?'#fff':CAT[n.cat].color, aDot=n=>`<span class="dot" style="background:${aColor(n)}"></span>`;
+const aPill=n=>`<button class="pill sm" style="border-color:${aColor(n)}" data-k="${esc(n.id)}">${aDot(n)}${esc(n.label)}</button>`;
+function allOpen(o){ aSheet.classList.toggle('closed',!o); aTab.textContent='Info '+(o?'×':'+'); aTab.setAttribute('aria-expanded',String(o)); }
+function allIntro(){
+  aInfo.innerHTML=aFull('<span class="reg">Every funder named in the records, joined to the spaces it funds. Tap a circle to see who is behind it, or search for a sponsor in the second bar.</span>')
+    +aRow('Spaces',String(ALL.nSpaces))+aRow('Sponsors',String(ALL.nSponsors))+aRow('Ties',String(ALL.links.length))
+    +aRow('Not drawn',ALL.omitted+' records name no funder.')+aRow('Read this way','Names are picked out of each record\'s funding text, so a name can be split or filed under the wrong group. The record stays the authority.');
+}
+function selectAll(n,focus){
+  ALL.sel=n; ALL.near=n?new Set([n,...n.links.filter(allVisible)]):null;
+  if(!n){ allIntro(); drawAll(); return; }
+  if(n.kind==='sponsor'){
+    aInfo.innerHTML=aFull('<span class="ttl">'+esc(n.label)+'</span>')+aRow('Group',aDot(n)+esc(CAT[n.cat].label))+aRow('Funds',n.deg+(n.deg===1?' space':' spaces'))
+      +(n.note?aRow('Note',esc(n.note)):'')+aRow('Spaces',n.links.map(aPill).join(' '));
+  } else {
+    aInfo.innerHTML=aFull('<span class="ttl">'+esc(n.label)+'</span>')+aRow('Location',esc(n.sub))+aRow('Record',esc(TIER[n.tier]||n.tier))+aRow('Sponsors',n.links.map(aPill).join(' '))
+      +aRow('Map','<button class="pill sm" data-open="'+esc(n.rid)+'">Open this space\'s map</button>');
+  }
+  aInfo.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>selectAll(ALL.byId.get(b.dataset.k),true));
+  aInfo.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openSpace(b.dataset.open));
+  aInfo.scrollTop=0; allOpen(true); drawAll(); if(focus) setTimeout(()=>focusAll(n,focus==='tap'),120);
+}
+function focusAll(n,onlyIfOff){ const c=ALL.c; if(!c||!sizeCanvas()) return; const w=c.clientWidth,h=c.clientHeight,tp=topPad(),tr=ALL.tr, set=[n,...n.links.filter(allVisible)]; let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  set.forEach(m=>{ x0=Math.min(x0,m.x); y0=Math.min(y0,m.y); x1=Math.max(x1,m.x); y1=Math.max(y1,m.y); });
+  const inView=set.every(m=>{ const X=tr.x+m.x*tr.k, Y=tr.y+m.y*tr.k; return X>20&&X<w-20&&Y>tp+10&&Y<h-10; }), fill=Math.max((x1-x0)*tr.k/w,(y1-y0)*tr.k/Math.max(1,h-tp));
+  if(onlyIfOff&&inView&&fill>.4) return; // already readable: leave the view alone
+  const k=Math.max(.3,Math.min((w-80)/Math.max(1,x1-x0),(h-tp-80)/Math.max(1,y1-y0),5));
+  ALL.touched=true; d3.select(c).transition().duration(700).call(ALL.zoom.transform,d3.zoomIdentity.translate(w/2-(x0+x1)/2*k,tp+(h-tp)/2-(y0+y1)/2*k).scale(k)); }
+function onAllClick(e){ const rc=ALL.c.getBoundingClientRect(), tr=ALL.tr, gx=(e.clientX-rc.left-tr.x)/tr.k, gy=(e.clientY-rc.top-tr.y)/tr.k; let best=null,bd=1e9;
+  ALL.nodes.forEach(n=>{ if(!allVisible(n)) return; const d=Math.hypot(n.x-gx,n.y-gy)-n.r; if(d<bd){ bd=d; best=n; } });
+  if(best&&bd*tr.k<=24) selectAll(best===ALL.sel?null:best,'tap'); else selectAll(null,false); }
+function renderAllCats(){ const el=document.getElementById('cats');
+  el.innerHTML=['gov','corp','found'].map(c=>{ const k=CAT[c], on=ALL.on[c], st=on?`background:#000;border-color:${k.color};color:${k.color}`:'background:#000;border-color:#525252;color:#6f6f6f'; return `<button class="pill${on?' on':''}" style="${st}" data-cat="${c}" aria-pressed="${on}">${k.label} ${on?'×':'+'}</button>`; }).join('');
+  el.querySelectorAll('button').forEach(b=>b.onclick=()=>{ ALL.on[b.dataset.cat]=!ALL.on[b.dataset.cat]; if(ALL.sel&&!allVisible(ALL.sel)) ALL.sel=null; selectAll(ALL.sel,false); renderAllCats(); }); }
+function leaveAll(){ if(!ALL.active) return; ALL.active=false; if(ALL.sim) ALL.sim.stop(); ALL.c.hidden=true; document.getElementById('map').style.display=''; document.getElementById('empty').hidden=true; }
+function showAll(){
+  if(cur){ cur.stop(); cur=null; } curRec=null; REDRAW=null; SWAYNODES=()=>[]; SWAYLINKS=()=>[];
+  buildAll(); const c=ALL.c||(ALL.c=document.getElementById('allc')); ALL.active=true;
+  if(!ALL.ctx){ ALL.ctx=c.getContext('2d');
+    ALL.zoom=d3.zoom().scaleExtent([.04,40]).clickDistance(8).on('zoom',e=>{ ALL.tr=e.transform; if(e.sourceEvent&&!ALL.fitting) ALL.touched=true; drawAll(); });
+    d3.select(c).call(ALL.zoom).on('dblclick.zoom',null); c.addEventListener('click',onAllClick);
+    new ResizeObserver(()=>{ if(!ALL.active) return; if(!ALL.touched&&ALL.laid) fitAll(false); drawAll(); }).observe(c); }
+  document.getElementById('map').style.display='none'; c.hidden=false; document.getElementById('empty').hidden=true;
+  ALL.sel=null; ALL.near=null; ALL.touched=false; renderAllCats(); allIntro(); allOpen(false);
+  aTab.onclick=()=>allOpen(aSheet.classList.contains('closed'));
+  document.getElementById('zin').onclick=()=>d3.select(c).transition().call(ALL.zoom.scaleBy,1.4);
+  document.getElementById('zout').onclick=()=>d3.select(c).transition().call(ALL.zoom.scaleBy,1/1.4);
+  document.getElementById('zfit').onclick=()=>{ ALL.touched=false; selectAll(null,false); fitAll(true); };
+  try{ history.replaceState(null,'','#all'); }catch(e){} document.title='All spaces and sponsors · Culture Atlas Money Maps'; setB2(false);
+  sizeCanvas(); if(ALL.laid){ fitAll(false); drawAll(); } else startLayout();
+}
+
 // ---------- spaces list ----------
 const b1=document.getElementById('b1'), b2=document.getElementById('b2'), d1=document.getElementById('d1'), d2=document.getElementById('d2'), q=document.getElementById('q'), listEl=document.getElementById('list'), tiersEl=document.getElementById('tiers');
 function drops(w){ d1.hidden=(w!==1); d2.hidden=(w!==2); b1.setAttribute('aria-expanded',String(w===1)); b2.setAttribute('aria-expanded',String(w===2)); setB2(w===2); if(w===2){ q.focus(); } }
-let curRec=null; const setB2=open=>{ b2.textContent=(curRec?curRec.n+' · '+curRec.c:'Spaces')+' '+(open?'↑':'↓'); };
+let curRec=null; const setB2=open=>{ b2.textContent=(ALL.active?'All spaces and sponsors':curRec?curRec.n+' · '+curRec.c:'Spaces')+' '+(open?'↑':'↓'); };
 b1.onclick=()=>drops(d1.hidden?1:0); b2.onclick=()=>drops(d2.hidden?2:0);
 const tierOn={A:true,B:true,U:true};
 function renderTiers(){ tiersEl.innerHTML=['A','B','U'].map(t=>`<button class="pill sm${tierOn[t]?' on':''}" data-t="${t}">${TIER[t]} ${D.filter(r=>r.t===t).length} ${tierOn[t]?'×':'+'}</button>`).join(''); tiersEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{ tierOn[b.dataset.t]=!tierOn[b.dataset.t]; renderTiers(); renderList(); }); }
@@ -312,13 +432,16 @@ function renderList(){
   if(t) all.sort((a,b)=>b[0]-a[0]||a[1]-b[1]);
   const total=all.length, rows=all.slice(0,150).map(x=>D[x[1]]);
   listEl.innerHTML=rows.map(r=>`<button data-id="${esc(r.id)}">${esc(r.n)}<small>${esc(r.c)} · ${esc(TIER[r.t])}${r.nodes.length?' · '+r.nodes.length+(r.nodes.length===1?' tie':' ties'):''}</small></button>`).join('')+(total>rows.length?`<p class="note" style="grid-column:1/-1">${total-rows.length} more. Type to narrow the list.</p>`:'')+(total===0?'<p class="note">No space matches.</p>':'');
-  listEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{ openSpace(b.dataset.id); drops(0); });
+  if(t){ buildAll(); listEl.insertAdjacentHTML('afterbegin',ALL.nodes.filter(n=>n.kind==='sponsor'&&n.label.toLowerCase().includes(t)).sort((a,b)=>b.deg-a.deg).slice(0,24).map(n=>`<button data-sp="${esc(n.id)}">${esc(n.label)}<small>Sponsor · funds ${n.deg} ${n.deg===1?'space':'spaces'}</small></button>`).join('')); }
+  listEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{ if(b.dataset.sp){ showAll(); selectAll(ALL.byId.get(b.dataset.sp),true); } else openSpace(b.dataset.id); drops(0); });
 }
 q.oninput=renderList;
-function openSpace(id){ const r=byRec[id]; if(!r) return; curRec=r; try{ history.replaceState(null,'','#'+id); }catch(e){} document.title=r.n+' · Culture Atlas Money Maps'; setB2(false); render(r); }
+const allBtn=document.getElementById('allbtn'); buildAll(); allBtn.textContent='All spaces and sponsors · '+ALL.nSpaces+' spaces, '+ALL.nSponsors+' sponsors'; allBtn.onclick=()=>{ showAll(); drops(0); };
+function openSpace(id){ const r=byRec[id]; if(!r) return; leaveAll(); curRec=r; try{ history.replaceState(null,'','#'+id); }catch(e){} document.title=r.n+' · Culture Atlas Money Maps'; setB2(false); render(r); }
 if(!window.__ro&&window.ResizeObserver){ window.__ro=true; new ResizeObserver(()=>window.dispatchEvent(new Event('resize'))).observe(document.querySelector('#map')); }
 window.addEventListener('resize',()=>{ if(window.__rz) return; window.__rz=true; requestAnimationFrame(()=>{ window.__rz=false; if(!cur) return; const nw=svg.node().clientWidth<700; if(nw!==window.__nw){ window.__nw=nw; cur.relayout(); } else cur.fit(); }); });
 renderTiers(); renderList();
-const start=byRec[decodeURIComponent(location.hash.slice(1))]||D.find(r=>/^MoMA \(/.test(r.n))||D[0];
-openSpace(start.id);
+const h0=decodeURIComponent(location.hash.slice(1));
+if(byRec[h0]) openSpace(h0); else showAll();
+window.addEventListener('hashchange',()=>{ const h=decodeURIComponent(location.hash.slice(1)); if(byRec[h]&&!(curRec&&curRec.id===h)) openSpace(h); else if(!byRec[h]&&!ALL.active) showAll(); });
 }).catch(err=>{ const e=document.getElementById('empty'); if(e){ e.hidden=false; e.textContent='The map data could not be loaded.'; } console.error(err); });

@@ -21,6 +21,25 @@ MONEY=re.compile(r"(?:US\$|[$£€¥]|CHF|JPY|RON|DKK|SEK|NOK|AUD|CAD|NZD|BRL|MX
 SPLIT=re.compile(r",|;|\band\b|\bplus\b|\bwith\b|\bvia\b|\bthrough\b|\bfrom\b| & |\bplus\b|:")
 def norm(s):
     s=s.lower(); s=re.sub(r"\b(the|foundations?|funds?|fonds|stiftung|fondation|inc|ltd|llc|plc|co|corp|corporation|group|philanthropies)\b"," ",s); return re.sub(r"[^a-z0-9]","",s)
+# Names that are not funders (the free text yields a few), and names that mean the same funder.
+JUNK={'expenses','culture','members','arts','tourism','501nonprofit','nonprofit','nonprofitassociation','related','founderfunded','selffunded','other','others','public','private','local','national','regional'}
+JUNK_RE=re.compile(r"(registered charity|subsidiary of|part of |sat on |shows credit|residenc|\bno\. ?\d|\b(19|20)\d\d\b)",re.I)
+SUFFIX_RE=re.compile(r"\s+(funds it|support|lead|founding gift|sat on its board|for the prize)$",re.I)
+ALIAS={'warhol':'andywarhol','nea':'nationalendowmentforarts','canadacouncil':'canadacouncilforarts','nycdcla':'nycdepartmentofculturalaffairs','artscouncilenglandnationalportfolio':'artscouncilengland'}  # values are norm() forms
+GENERIC_GOV={'city government','state government','regional government','government','ministry of culture','county government','local authority','federal government','regional state'}
+def clean_label(nm):
+    nm=SUFFIX_RE.sub('',nm).strip(' .,;-')
+    if len(nm)<3 or len(nm)>48 or JUNK_RE.search(nm) or norm(nm) in JUNK: return None
+    return nm
+def merge_key(label,cat,country,rid):
+    """One key per funder across the whole atlas. Public bodies are told apart by country, and generic
+    ones ('City government') stay with their own record, so they never merge into one false hub."""
+    k=norm(label)
+    if not k: return ''
+    k=ALIAS.get(k,k)
+    if label.lower() in GENERIC_GOV: return k+'|'+rid
+    if cat=='gov': return k+'|'+country
+    return k
 def cat_of(tok):
     if FOUND.search(tok) and not re.search(r"\b(state|city|government|ministry)\b",tok,re.I): return 'found'
     if GOV.search(tok): return 'gov'
@@ -54,6 +73,8 @@ def parse_funding(text):
             nm=MONEY.sub('',tok).strip(" .,;-–—")
             nm=re.sub(r"\s{2,}"," ",nm)
             if len(nm)<3 or nm.lower() in GENERIC: continue
+            nm=clean_label(nm)
+            if not nm: continue
             k=norm(nm)
             if not k or k in seen: continue
             seen.add(k); out.append({'label':nm,'cat':cat_of(nm),'money':m.group(0).strip() if m else '', 'key':k})
@@ -100,7 +121,7 @@ for x in d:
     ns=u[:22]
     nodes=[];edges=[]
     for i,n in enumerate(ns):
-        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0]); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
+        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,merge_key(n['label'],n['cat'],x['country'],x['id']) if n['cat'] in ('gov','corp','found') else '']); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
     taken={x['id']}; added=0
     for i,n in enumerate(ns):
         if not n['key']: continue

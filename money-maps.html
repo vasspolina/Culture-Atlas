@@ -17,6 +17,7 @@
     <p>The circles are read from the funding text and the flag, Epstein and WikiLeaks fields of each record, so a name can be split or sorted into the wrong group. Select the globe to see the full record and its sources. Where the record names no funder, the map is empty.</p>
   </div>
   <div class="drop" id="d2" hidden>
+    <div><button class="pill sm" id="allbtn" style="margin-bottom:10px"></button></div>
     <input id="q" type="search" placeholder="Search spaces, cities, countries or funders" autocomplete="off">
     <div id="tiers"></div>
     <div id="list"></div>
@@ -24,6 +25,7 @@
 </div>
 <div id="stage">
   <svg id="map" role="img" aria-label="Funding map of the selected cultural space"></svg>
+  <canvas id="allc" hidden></canvas>
   <div id="empty" hidden></div>
   <div id="cats"></div>
   <div id="sheet"><div class="trow"><button id="tab"></button><div id="zoom"><button class="pill" id="zin" aria-label="Zoom in">+</button><button class="pill" id="zout" aria-label="Zoom out">−</button><button class="pill" id="zfit">Fit</button></div></div><div id="info" aria-live="polite"></div></div>
