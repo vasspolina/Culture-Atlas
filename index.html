@@ -282,6 +282,10 @@ return maplibregl$1;
                onclick="event.stopPropagation(); if (typeof window.atlasPlanVisit === 'function') window.atlasPlanVisit(selectedInstitution);">
               <span>Plan Visit in Chat</span>
             </button>
+            <a id="floatingCardMoneyMapBtn" href="money-maps.html" class="record-action text-left"
+               onclick="event.stopPropagation(); this.href = 'money-maps.html#' + encodeURIComponent((typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id) || '');">
+              <span>Money map</span>
+            </a>
           </div>
 
           <div class="flex flex-col gap-2">
@@ -343,6 +347,10 @@ return maplibregl$1;
               <button id="dossier-sheet-plan-btn" type="button" class="record-action text-left">
                 <span>Plan Visit in Chat</span>
               </button>
+              <a id="dossier-sheet-moneymap-btn" href="money-maps.html" class="record-action text-left"
+                 onclick="event.stopPropagation(); this.href = 'money-maps.html#' + encodeURIComponent((typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id) || '');">
+                <span>Money map</span>
+              </a>
             </div>
             <div class="flex flex-col gap-2 pt-1">
               <a id="dossier-sheet-link-web" class="inline-flex items-center gap-1_5" href="#" target="_blank" rel="noopener noreferrer">
@@ -11466,6 +11474,7 @@ return maplibregl$1;
               <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
               ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
               ${(inst.lat && inst.lon) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
+              ${inst.id ? `<a href="money-maps.html#${encodeURIComponent(inst.id)}" class="record-action">Money map</a>` : ''}
               ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
             </div>
           </div>
