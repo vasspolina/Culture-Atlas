@@ -9819,7 +9819,7 @@ return maplibregl$1;
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${domain}`;
 
-      // A white block with the name in capitals, facts in the grotesque, the website as a black pill.
+      // A white block with the name in capitals, facts in the grotesque, the website as a grey block.
       // The left bar carries the tier: cyan clean, orange flagged, mustard unverified.
       const nameText = inst.name;
       const nameUpper = nameText.toUpperCase();
@@ -9875,11 +9875,9 @@ return maplibregl$1;
         const btnW = Math.min(maxTextW, webW + 24);
         const btnH = pillH;
 
+        ctx.fillStyle = '#d9d9d9';
+        ctx.fillRect(btnX, btnY, btnW, btnH);
         ctx.fillStyle = '#000000';
-        ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(btnX, btnY, btnW, btnH, btnH / 2); else ctx.rect(btnX, btnY, btnW, btnH);
-        ctx.fill();
-        ctx.fillStyle = '#ffffff';
         ctx.textBaseline = 'middle';
         ctx.fillText(fit(domainPillText), btnX + 12, btnY + btnH / 2 + 0.5);
 
@@ -10155,7 +10153,7 @@ return maplibregl$1;
           ctx.fillStyle = fill;
           ctx.fillText(text, x, y);
         };
-        // City and museum names sit on a pill, like the buttons: white with black text,
+        // City and museum names sit on a flat block, like the buttons: white with black text,
         // yellow when hovered or selected (white on yellow in gossip mode).
         const drawPillLabel = (text, cx0, cy0, active) => {
           ctx.save();
@@ -10164,8 +10162,7 @@ return maplibregl$1;
           const yellow = active !== isGossipModeActive;
           ctx.fillStyle = yellow ? '#ffd600' : '#ffffff';
           ctx.beginPath();
-          if (ctx.roundRect) ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, h / 2); else ctx.rect(cx0 - w / 2, cy0 - h / 2, w, h);
-          ctx.fill();
+          ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = '#000000';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -10573,14 +10570,12 @@ return maplibregl$1;
               }
               ctx.fillText(countTxt, cardX + 16, currentY);
 
-              // Action: a pill. White with black text; yellow on hover (white on yellow in gossip mode).
+              // Action: a flat grey block with black text, yellow on hover.
               ctx.save();
-              ctx.fillStyle = isHoveringCityExploreLink ? (isGossipModeActive ? '#ffffff' : '#ffd600') : (isGossipModeActive ? '#000000' : '#ffffff');
-              ctx.beginPath();
-              ctx.roundRect ? ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, linkBtnH / 2) : ctx.rect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
-              ctx.fill();
+              ctx.fillStyle = isHoveringCityExploreLink ? '#ffd600' : '#d9d9d9';
+              ctx.fillRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
               ctx.font = ATLAS_CARD_MONO_FONT;
-              ctx.fillStyle = isGossipModeActive && !isHoveringCityExploreLink ? '#ffffff' : '#000000';
+              ctx.fillStyle = '#000000';
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2 + 0.5);
