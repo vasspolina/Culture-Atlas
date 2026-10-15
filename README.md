@@ -6,6 +6,7 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 
 - **Chat.** Answers from the records only. It names the record and its source, and says when a record does not say. An optional API key in settings turns on open-ended replies.
 - **Globe and map.** Click a space to see its record, or a city or country to filter. The globe is drawn in hairlines only (coastlines, borders, hollow rings for spaces) and fills its whole pane.
+- **Money maps.** Each record has a map of what it states about its funding: the space in the middle, a circle for each funder, flag or documented tie, and lines between them. Circles that name the same funder link to other spaces. Open it from a record's Money map button, or go to `money-maps.html#<record id>`. Drag to turn the map in 3D, pinch or scroll to fly through it, touch to make the circles sway. See "Money maps" below.
 - **Offline.** Installable as an app; the service worker caches the page.
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below.
@@ -45,6 +46,18 @@ Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a f
 `manifest.json`, `assets/` and `fonts/` to the `gh-pages` branch that GitHub
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
+
+## Money maps
+
+`money-maps.html` is a second page, with its own `assets/money-maps.css` and `assets/money-maps.js`, and a local copy of d3 (`assets/d3.min.js`, v7.9.0, ISC licence). It loads nothing from a CDN. Its data is `assets/money-maps.json`, built from `institutions.json` by:
+
+```bash
+python3 tools/build_money_maps.py
+```
+
+The script reads each record's funding text, `funder_links`, flags and the Epstein and WikiLeaks fields into a list of circles, and links records that name the same funder. It fetches nothing and does not change any record. Funders are picked out of free text, so a name can be split or filed under the wrong group (government, corporate, foundation); the record itself stays the authority, and the page says so. Records that state no funder, flag or tie show an empty map with a note. Re-run the script after the data changes, as with `tools/embed_data.py`.
+
+Controls: one finger or a mouse drag turns the map; two fingers or the scroll wheel fly forward and back; two-finger drag or Shift-drag slides; arrow keys turn it and W and S fly. Fit returns to the start. The page respects the device's reduced-motion setting.
 
 ## Editing the page
 
@@ -99,13 +112,14 @@ Rules live in `tools/clean_data.py`. To check records against their sources, run
 
 ```
 Culture-Atlas/
-├── index.html          # The whole app, edited in place. The only HTML copy.
+├── index.html          # The whole app, edited in place. The only copy of the atlas page.
+├── money-maps.html     # The money maps page (assets/money-maps.*, built by tools/build_money_maps.py)
 ├── sw.js               # Service worker (network-first for the page, same-origin cache only)
 ├── manifest.json       # PWA manifest
 ├── assets/ fonts/      # atlas.css, maplibre-gl.css, images and the typefaces the page loads
 ├── institutions.json   # Dataset
 ├── data/               # Research sources, papers, corrections and the inputs behind the dataset
-├── tools/              # Data pipeline: clean_data, embed_data, the importers and verify_claims
+├── tools/              # Data pipeline: clean_data, embed_data, build_money_maps, the importers and verify_claims
 └── .github/workflows/  # Deploy to gh-pages on push to main
 ```
 
