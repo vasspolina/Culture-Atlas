@@ -703,7 +703,6 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 body.gossip-mode-active header,body.gossip-mode-active header button,body.gossip-mode-active header a{color:#000}
 body.gossip-mode-active header button:hover,body.gossip-mode-active header a:hover{color:#fff}
 /* Theme switch in the header */
-#topThemeBtn,#mobileThemeBtn{background:var(--paper)}
 /* Colour that carries meaning keeps black text in both modes */
 #curatorHeroGreeting h1 .lbl,.curator-hero-title .lbl,.starter-prompt:nth-of-type(2),.starter-prompt:nth-of-type(3),.starter-prompt:nth-of-type(4),#chatShareBtn,#chatContributeBtn,#hudContributeBtn,#mapFloatingContributeBtn{color:#000}
 .starter-prompt:hover{background:var(--ink);color:var(--paper)}
