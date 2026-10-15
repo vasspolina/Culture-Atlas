@@ -649,3 +649,6 @@ a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:unde
 .maplibregl-ctrl-attrib-button,.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-button{background-color:#fff;border-radius:0;width:24px;height:24px}
 /* Gossip: the writing box's placeholder stays readable on its tinted ground (8:1). */
 #workInputCard.is-mode ::placeholder{opacity:.75}
+
+/* The first visit row sits under a block that already ends in a rule, so it draws no rule of its own. */
+.visit-rows>.rule-t:first-child{border-top:0}
