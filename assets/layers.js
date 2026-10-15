@@ -126,6 +126,15 @@
     ctx.restore();
   };
 
+  // "Money map" on a record: turn the layers on and show that space's funders on the globe.
+  window.atlasShowMoney = function (id) {
+    L.money = true; L.ties = true; loadMoney();
+    document.querySelectorAll('#layersPanel input[data-layer]').forEach(i => { if (i.dataset.layer === 'money' || i.dataset.layer === 'ties') i.checked = true; });
+    if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
+    if (id && typeof window.selectInstitution === 'function') window.selectInstitution(id, false);
+    if (typeof scheduleRender === 'function') scheduleRender();
+  };
+
   function init() {
     const box = document.getElementById('layersControl'); if (!box) return;
     const btn = box.querySelector('#layersBtn'), panel = box.querySelector('#layersPanel');
