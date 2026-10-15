@@ -3,7 +3,7 @@
   const L = window.atlasLayers = { ties: false, flags: false, money: false };
   const TIE_COL = { gov: '#8fa2ff', corp: '#a9e0e6', found: '#ff9966', flag: '#ec4fe8' };
   const rad = Math.PI / 180;
-  let recById = null, keyIndex = null, loading = false, lastFrameId = null;
+  let recById = null, keyIndex = null, loading = false;
 
   function loadMoney(cb) {
     if (recById) return cb && cb();
@@ -77,27 +77,53 @@
       }
     }
   };
-  setInterval(() => {
+
+  // Money network on the globe: each space's funders sit around its dot; a funder named on several spaces is joined across them.
+  window.atlasLayersDrawNodes = function (ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
     if (!L.money) return;
-    const f = document.getElementById('moneyLayerFrame'), cur = window.atlasGetSelected && window.atlasGetSelected(), id = cur && cur.id ? cur.id : 'all';
-    if (f && id !== lastFrameId) { lastFrameId = id; try { f.contentWindow.location.hash = '#' + encodeURIComponent(id); } catch (e) {} }
-  }, 400);
-
-  function setMoney(on) {
-    L.money = on;
-    const vp = document.getElementById('globeViewport'); let f = document.getElementById('moneyLayerFrame');
-    if (on && !f) {
-      f = document.createElement('iframe'); f.id = 'moneyLayerFrame'; f.title = 'Money network';
-      const cur = window.atlasGetSelected && window.atlasGetSelected(); lastFrameId = (cur && cur.id) || 'all';
-      f.src = 'money-maps.html?embed&theme=' + (document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light') + '#' + encodeURIComponent(lastFrameId);
-      vp.appendChild(f);
+    if (!recById) { loadMoney(); return; }
+    const zoomAll = r >= baseRadius * 22, deep = r >= baseRadius * 40, dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const byKey = new Map(), active = [];
+    const font = '14px "PP Neue Gstaad", sans-serif';
+    // a selected space with no dot of its own (no city on record, or folded into a cluster) still gets its funders
+    if (sel && typeof sel.lat === 'number' && typeof sel.lon === 'number' && !dots.some(d => d.inst && d.inst.name === sel.name)) {
+      const pt = project(sel.lon, sel.lat, r, cx, cy); if (pt.front) dots = dots.concat([{ inst: sel, x: pt.x, y: pt.y }]);
     }
-    if (f) f.hidden = !on;
-  }
-
-  window.atlasLayersTheme = function (t) {
-    const f = document.getElementById('moneyLayerFrame'); if (!f) return;
-    try { f.contentWindow.postMessage({ atlasTheme: t }, '*'); } catch (e) {}
+    ctx.save();
+    ctx.lineWidth = 1;
+    dots.forEach(d => {
+      const inst = d.inst, rec = inst && recById.get(inst.id); if (!rec) return;
+      const isSel = sel && sel.name === inst.name, isHov = hov && hov.name === inst.name;
+      if (!(zoomAll || isSel || isHov)) return;
+      const nodes = rec.nodes.filter(n => n[1] === 'gov' || n[1] === 'corp' || n[1] === 'found' || n[1] === 'flag');
+      if (!nodes.length) return;
+      const N = Math.min(nodes.length, isSel || isHov ? 10 : 6), R = isSel || isHov ? 44 : 30;
+      for (let i = 0; i < N; i++) {
+        const n = nodes[i], a = -Math.PI / 2 + (i * 2 * Math.PI) / N, x = d.x + R * Math.cos(a), y = d.y + R * Math.sin(a);
+        const col = gossip ? '#ffd600' : TIE_COL[n[1]] || '#fff';
+        ctx.globalAlpha = isSel || isHov ? 1 : 0.7;
+        ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
+        ctx.beginPath(); ctx.arc(x, y, n[1] === 'flag' ? 4 : 5, 0, Math.PI * 2);
+        if (n[1] === 'flag') { ctx.fillStyle = col; ctx.fill(); } else { ctx.stroke(); }
+        if (n[5]) { if (!byKey.has(n[5])) byKey.set(n[5], []); byKey.get(n[5]).push([x, y, col]); }
+        if (isSel || isHov || deep) active.push([n[0], x, y, a]);
+      }
+    });
+    ctx.globalAlpha = 0.55;
+    const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9, onScreen = p => p[0] > -40 && p[0] < W + 40 && p[1] > -40 && p[1] < H + 40;
+    byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = pts[i][2]; ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[i][0], pts[i][1]); ctx.stroke(); } });
+    ctx.globalAlpha = 1; ctx.font = font; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+    const boxes = [];
+    active.forEach(([label, x, y, a]) => {
+      const text = label.length > 28 ? label.slice(0, 26) + '…' : label, right = Math.cos(a) >= -0.2;
+      ctx.textAlign = right ? 'left' : 'right';
+      const tx = x + (right ? 9 : -9), tw = ctx.measureText(text).width, bx = right ? tx : tx - tw, box = [bx - 2, y - 9, tw + 4, 18];
+      if (boxes.some(o => !(box[0] + box[2] < o[0] || box[0] > o[0] + o[2] || box[1] + box[3] < o[1] || box[1] > o[1] + o[3]))) return;
+      boxes.push(box);
+      ctx.strokeStyle = '#000'; ctx.lineWidth = 3; ctx.strokeText(text, tx, y);
+      ctx.fillStyle = '#fff'; ctx.fillText(text, tx, y);
+    });
+    ctx.restore();
   };
 
   function init() {
@@ -106,8 +132,8 @@
     btn.addEventListener('click', () => { const open = panel.hidden; panel.hidden = !open; btn.setAttribute('aria-expanded', String(open)); });
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
       const k = inp.dataset.layer;
-      if (k === 'money') setMoney(inp.checked); else L[k] = inp.checked;
-      if (k === 'ties' && inp.checked) loadMoney();
+      L[k] = inp.checked;
+      if ((k === 'ties' || k === 'money') && inp.checked) loadMoney();
       if (typeof scheduleRender === 'function') scheduleRender();
     }));
   }

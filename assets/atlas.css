@@ -692,11 +692,7 @@ body.gossip-mode-active #topMoneyMapsLink:hover,body.gossip-mode-active #mobileM
 #layersPanel .layers-title{margin:0;font:700 15px/1 var(--sans-compact,var(--sans));letter-spacing:.01em}
 #layersPanel label{display:flex;align-items:center;gap:10px;font:400 15px/1.2 var(--sans);letter-spacing:.01em;color:var(--ink);cursor:pointer}
 #layersPanel input{width:18px;height:18px;accent-color:var(--ink);margin:0;border-radius:0}
-#moneyLayerFrame{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(--paper);z-index:10}
-#moneyLayerFrame[hidden]{display:none}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
-body:has(#moneyLayerFrame:not([hidden])) #desktopGlobeTopControls,body:has(#moneyLayerFrame:not([hidden])) #mobileFilterChipsSection{display:none}
-#moneyLayerFrame{inset:0 0 56px 0;width:100%;height:calc(100% - 56px)}
 #layersControl{z-index:40}
 @media (max-width:767px){#layersControl{bottom:auto;top:200px;left:auto;right:12px;align-items:flex-end}}
 
@@ -721,6 +717,5 @@ body.gossip-mode-active header button:hover,body.gossip-mode-active header a:hov
 body.gossip-mode-active #topMoneyMapsLink,body.gossip-mode-active #mobileMoneyMapsLink,body.gossip-mode-active #topThemeBtn,body.gossip-mode-active #mobileThemeBtn{background:transparent;color:#000}
 body.gossip-mode-active #topMoneyMapsLink:hover,body.gossip-mode-active #mobileMoneyMapsLink:hover,body.gossip-mode-active #topThemeBtn:hover,body.gossip-mode-active #mobileThemeBtn:hover{background:#000;color:#fff}
 #workInputCard #chatShareBtn{color:#000}
-body:has(#moneyLayerFrame:not([hidden])) #cityViewControlBanner,body:has(#moneyLayerFrame:not([hidden])) #zoomControls,body:has(#moneyLayerFrame:not([hidden])) #activeMapFilterBanner{display:none}
 #globeViewport .record-action{color:var(--ink)}
 #globeViewport .record-action:hover{color:var(--paper)}
