@@ -298,25 +298,33 @@ function render(inst){
   cur={relayout,fit:()=>fit(),stop:()=>{ sim.stop(); cancelAnimationFrame(anim); }};
 }
 // ---------- the big map: every space and every sponsor in one picture ----------
+CAT.person={label:'People in the Epstein files',color:CAT.flag.color};
 const ALL={hl:{right:false,epstein:false},hiSet:new Set(),theme:'light',active:false,built:false,laid:false,inited:false,tr:d3.zoomIdentity,sel:null,near:null,on:{gov:true,corp:true,found:true},touched:false,raf:0};
 const aInfo=document.getElementById('info'), aSheet=document.getElementById('sheet'), aTab=document.getElementById('tab');
 function buildAll(){
   if(ALL.built) return; ALL.built=true;
   const nodes=[], links=[], byKey=new Map(), names=new Map(); ALL.byId=new Map();
+  const simple=t=>t.toLowerCase().replace(/[^a-z0-9]/g,'');
+  const mkSpace=r=>{ const sp={id:'s:'+r.id,rid:r.id,label:r.n,sub:r.c,tier:r.t,kind:'space',cat:'space',links:[],deg:0,ep:r.ep||[],why:r.why||'',epx:(r.ep&&r.ep.length>0)||r.fl.indexOf('Epstein-linked')>=0,eps:[]}; nodes.push(sp); return sp; };
+  const join=(a,b,cat,e)=>{ if(a.links.includes(b)){ if(e) (a.kind==='space'?a:b).eps.push(e); return; } links.push({source:a,target:b,cat,off:(rnd()-.5)*.5,e:e||null}); a.links.push(b); b.links.push(a); a.deg++; b.deg++; };
   D.forEach(r=>{ let sp=null;
     r.nodes.forEach(n=>{ if(!(n[1]==='gov'||n[1]==='corp'||n[1]==='found')||!n[5]) return;
-      if(!sp){ sp={id:'s:'+r.id,rid:r.id,label:r.n,sub:r.c,tier:r.t,kind:'space',cat:'space',links:[],deg:0,ep:r.ep||[],epx:(r.ep&&r.ep.length>0)||r.fl.indexOf('Epstein-linked')>=0}; nodes.push(sp); }
-      let k=byKey.get(n[5]); if(!k){ k={id:'k:'+n[5],label:n[0],kind:'sponsor',cat:n[1],links:[],deg:0,note:n[3]||'',right:n[6]||null}; byKey.set(n[5],k); names.set(n[5],new Map()); nodes.push(k); }
+      if(!sp) sp=mkSpace(r);
+      let k=byKey.get(n[5]); if(!k){ k={id:'k:'+n[5],label:n[0],kind:'sponsor',cat:n[1],links:[],deg:0,note:n[3]||'',right:n[6]||null,eps:[]}; byKey.set(n[5],k); names.set(n[5],new Map()); nodes.push(k); }
       const nm=names.get(n[5]); nm.set(n[0],(nm.get(n[0])||0)+1);
-      if(sp.links.includes(k)) return;
-      links.push({source:sp,target:k,cat:k.cat,off:(rnd()-.5)*.5}); sp.links.push(k); k.links.push(sp); sp.deg++; k.deg++; }); });
+      join(sp,k,k.cat,null); });
+    // Epstein files: each documented entry joins the record to the person it names; a flag alone joins it to Jeffrey Epstein
+    const eps=(r.ep||[]).filter(e=>e.p), flagged=r.fl.indexOf('Epstein-linked')>=0;
+    if(eps.length||flagged){ if(!sp) sp=mkSpace(r);
+      const person=(name,e)=>{ const key=simple(name); let k=byKey.get(key); if(!k){ k={id:'p:'+key,label:name.replace(/\s*\(.*\)\s*/,''),kind:'person',cat:'person',links:[],deg:0,eps:[],epx:true}; byKey.set(key,k); names.set(key,new Map([[k.label,1]])); nodes.push(k); } k.epx=true; k.eps.push({rid:r.id,space:r.n,e}); join(sp,k,'person',e); };
+      eps.forEach(e=>person(e.p,e)); if(!eps.length&&flagged) person('Jeffrey Epstein',null); } });
   byKey.forEach((k,key)=>{ let best='',bc=0; names.get(key).forEach((c,l)=>{ if(c>bc||(c===bc&&l.length<best.length)){ best=l; bc=c; } }); k.label=best; });
   nodes.forEach(n=>{ n.r=n.kind==='space'?2.4+Math.sqrt(n.deg)*.8:2.2+Math.sqrt(n.deg)*2.1; ALL.byId.set(n.id,n); });
   const who=new Set(); D.forEach(r=>(r.ep||[]).forEach(e=>{ if(e.p) who.add(e.p.toLowerCase().replace(/[^a-z0-9]/g,'')); }));
   nodes.forEach(n=>{ if(n.kind==='sponsor'&&who.has(n.label.toLowerCase().replace(/[^a-z0-9]/g,''))) n.epx=true; });
-  ALL.nodes=nodes; ALL.links=links; ALL.nSpaces=nodes.filter(n=>n.kind==='space').length; ALL.nSponsors=nodes.length-ALL.nSpaces; ALL.omitted=D.length-ALL.nSpaces;
+  ALL.nodes=nodes; ALL.links=links; ALL.nSpaces=nodes.filter(n=>n.kind==='space').length; ALL.nPeople=nodes.filter(n=>n.kind==='person').length; ALL.nSponsors=nodes.length-ALL.nSpaces-ALL.nPeople; ALL.omitted=D.length-ALL.nSpaces;
 }
-const allVisible=n=>n.kind==='space'||ALL.on[n.cat];
+const allVisible=n=>n.kind==='space'||n.kind==='person'||ALL.on[n.cat];
 function computeHi(){ const set=new Set(), h=ALL.hl;
   if(h.right) ALL.nodes.forEach(n=>{ if(n.right&&allVisible(n)){ set.add(n); n.links.forEach(m=>set.add(m)); } });
   if(h.epstein) ALL.nodes.forEach(n=>{ if(n.epx&&allVisible(n)) set.add(n); });
@@ -347,11 +355,11 @@ function paintAll(){
   const c=ALL.c, ctx=ALL.ctx; if(!c||!sizeCanvas()) return; const T=THEMES[ALL.theme], tr=ALL.tr, w=c.clientWidth, h=c.clientHeight, sel=ALL.sel, near=sel?ALL.near:ALL.hiSet, dim=!!sel||ALL.hiSet.size>0;
   ctx.setTransform(ALL.dpr,0,0,ALL.dpr,0,0); ctx.globalAlpha=1; ctx.shadowBlur=0; ctx.fillStyle=T.bg; ctx.fillRect(0,0,w,h);
   ctx.save(); ctx.translate(tr.x,tr.y); ctx.scale(tr.k,tr.k);
-  ['gov','corp','found'].forEach(cat=>{ if(!ALL.on[cat]) return; const lo=[],hi=[]; ALL.links.forEach(l=>{ if(l.cat!==cat) return; (dim&&hiLink(l)?hi:lo).push(l); });
+  ['gov','corp','found','person'].forEach(cat=>{ if(cat!=='person'&&!ALL.on[cat]) return; const lo=[],hi=[]; ALL.links.forEach(l=>{ if(l.cat!==cat) return; (dim&&hiLink(l)?hi:lo).push(l); });
     strokeLinks(lo,T.hi?T.edge:CAT[cat].color,dim?(T.hi?.16:.1):T.edgeA,.7); strokeLinks(hi,catCol(T,cat),.95,1.5); });
   // sponsors: hollow rings (coloured on black, grey on white); museums: filled dots with a glow
   [false,true].forEach(isNear=>{ const a=dim&&!isNear?.5:1; // greyed-out circles stay clearly visible
-    ['gov','corp','found'].forEach(cat=>{ const ns=ALL.nodes.filter(n=>n.cat===cat&&allVisible(n)&&(!dim||(near.has(n)===isNear))); if(!ns.length) return;
+    ['gov','corp','found','person'].forEach(cat=>{ const ns=ALL.nodes.filter(n=>n.cat===cat&&allVisible(n)&&(!dim||(near.has(n)===isNear))); if(!ns.length) return;
       ctx.beginPath(); ns.forEach(n=>{ ctx.moveTo(n.x+n.r,n.y); ctx.arc(n.x,n.y,n.r,0,6.2832); });
       ctx.globalAlpha=a; ctx.strokeStyle=(dim&&isNear&&T.hi)?catCol(T,cat):(T.ring||CAT[cat].color); ctx.lineWidth=(dim&&isNear?1.9:1.4)/tr.k; ctx.stroke(); });
     const sp=ALL.nodes.filter(n=>n.cat==='space'&&(!dim||(near.has(n)===isNear))); if(sp.length){
@@ -371,7 +379,7 @@ function paintAll(){
   ctx.restore();
   // caption, like the label under a plate
   ctx.globalAlpha=1; ctx.font='13px "PP Neue Gstaad", sans-serif'; ctx.textAlign='center'; ctx.textBaseline='alphabetic'; ctx.fillStyle=T.cap; if('letterSpacing' in ctx) ctx.letterSpacing='0.67px';
-  ctx.fillText('All spaces and sponsors',w/2,h-24); ctx.fillText('[atlas] '+ALL.nSpaces+' spaces · '+ALL.nSponsors+' sponsors',w/2,h-8); ctx.textAlign='left';
+  ctx.fillText('All spaces and sponsors',w/2,h-24); ctx.fillText('[atlas] '+ALL.nSpaces+' spaces · '+ALL.nSponsors+' sponsors · '+ALL.nPeople+' people in the Epstein files',w/2,h-8); ctx.textAlign='left';
 }
 function setTheme(t){ ALL.theme=t; document.getElementById('stage').classList.toggle('light',t==='light'); try{ localStorage.setItem('atlas-bigmap-theme',t); }catch(e){} renderAllCats(); drawAll(); }
 function startLayout(){
@@ -389,17 +397,18 @@ function startLayout(){
   requestAnimationFrame(step);
 }
 const aRow=(k,v)=>`<div class="row"><div>${k}</div><div>${v}</div></div>`, aFull=v=>`<div class="row full"><div>${v}</div></div>`;
-const aColor=n=>n.kind==='space'?'#fff':CAT[n.cat].color, aDot=n=>`<span class="dot" style="background:${aColor(n)}"></span>`;
+const aColor=n=>n.kind==='space'?(ALL.theme==='light'?'#222':'#fff'):CAT[n.cat].color, aDot=n=>`<span class="dot" style="background:${aColor(n)}"></span>`;
 const aPill=n=>`<button class="pill sm" style="border-color:${aColor(n)}" data-k="${esc(n.id)}">${aDot(n)}${esc(n.label)}</button>`;
 function allOpen(o){ aSheet.classList.toggle('closed',!o); aTab.textContent='Info '+(o?'×':'+'); aTab.setAttribute('aria-expanded',String(o)); }
 const aLinks=u=>(u||[]).map(x=>`<a class="pill sm" href="${esc(x)}" target="_blank" rel="noopener">${esc(host(x))}</a>`).join(' ');
-const epRows=n=>n.ep&&n.ep.length?aRow('Epstein files',n.ep.map(e=>`<b>${esc(e.p)}</b>, ${esc(e.l)}${e.s==='denied'?' (denied)':''}${e.t?'. '+esc(e.t):''}`).join('<br><br>')):(n.epx?aRow('Epstein files','The record carries an Epstein-linked flag.'):'');
+const epRows=n=>n.ep&&n.ep.length?aRow('Epstein files',n.ep.map(e=>`<b>${esc(e.p)}</b>, ${esc(e.l)}${e.s==='denied'?' (denied)':''}${e.t?'. '+esc(e.t):''}`).join('<br><br>')):(n.epx?aRow('Epstein files','The record carries an Epstein-linked flag.'+(n.why?' '+esc(n.why):' No reason is recorded.')):'');
+const epList=n=>n.eps.map(x=>`<b>${esc(x.space)}</b>${x.e?', '+esc(x.e.l)+(x.e.s==='denied'?' (denied)':'')+(x.e.t?'. '+esc(x.e.t):''):', flagged Epstein-linked on the atlas.'}`).join('<br><br>');
 function allIntro(){
   if(ALL.hiSet.size){
     const sp=ALL.nodes.filter(n=>n.kind==='space'&&ALL.hiSet.has(n)).length, sk=ALL.nodes.filter(n=>n.kind==='sponsor'&&ALL.hiSet.has(n));
     let h=aFull('<span class="reg">Showing '+[ALL.hl.right?'right-wing sponsors':'',ALL.hl.epstein?'Epstein files':''].filter(Boolean).join(' and ')+'. Everything else is greyed out. Tap a circle for detail.</span>');
     if(ALL.hl.right){ const rs=ALL.nodes.filter(n=>n.right); h+=aRow('Right-wing sponsors',rs.map(aPill).join(' '))+rs.map(n=>aRow(esc(n.label),esc(n.right.b)+'<br>'+aLinks(n.right.u))).join('')+aRow('About this list','The atlas records have no political field. This is a short list of the sponsors that appear in them and have a published source for their partisan giving. It is not a complete list.'); }
-    if(ALL.hl.epstein) h+=aRow('Epstein files',ALL.nodes.filter(n=>n.kind==='space'&&n.epx).length+' spaces carry a documented Epstein record or an Epstein-linked flag, and '+ALL.nodes.filter(n=>n.kind==='sponsor'&&n.epx).length+' sponsors are people named in those records. A tie is a record, not a verdict.');
+    if(ALL.hl.epstein) h+=aRow('Epstein files',ALL.nodes.filter(n=>n.kind==='space'&&n.epx).length+' spaces carry a documented Epstein record or an Epstein-linked flag. '+ALL.nPeople+' people are named in those records and joined to the spaces they appear on; a space with only the flag is joined to Jeffrey Epstein. A tie is a record, not a verdict.');
     aInfo.innerHTML=h; return; }
 
   aInfo.innerHTML=aFull('<span class="reg">Every funder named in the records, joined to the spaces it funds. Tap a circle to see who is behind it, or search for a sponsor in the second bar.</span>')
@@ -411,7 +420,9 @@ function selectAll(n,focus){
   if(!n){ allIntro(); drawAll(); return; }
   if(n.kind==='sponsor'){
     aInfo.innerHTML=aFull('<span class="ttl">'+esc(n.label)+'</span>')+aRow('Group',aDot(n)+esc(CAT[n.cat].label))+aRow('Funds',n.deg+(n.deg===1?' space':' spaces'))
-      +(n.note?aRow('Note',esc(n.note)):'')+(n.right?aRow('Right-wing sponsor',esc(n.right.b)+'<br>'+aLinks(n.right.u)):'')+(n.epx?aRow('Epstein files','Named in an Epstein record on the atlas.'):'')+aRow('Spaces',n.links.map(aPill).join(' '));
+      +(n.note?aRow('Note',esc(n.note)):'')+(n.right?aRow('Right-wing sponsor',esc(n.right.b)+'<br>'+aLinks(n.right.u)):'')+(n.eps&&n.eps.length?aRow('Epstein files',epList(n)):'')+aRow('Spaces',n.links.map(aPill).join(' '));
+  } else if(n.kind==='person'){
+    aInfo.innerHTML=aFull('<span class="ttl">'+esc(n.label)+'</span>')+aRow('Group',aDot(n)+'Named in the Epstein files')+aRow('Records',n.links.length+(n.links.length===1?' space':' spaces'))+aRow('Epstein files',epList(n))+aRow('Spaces',n.links.map(aPill).join(' '))+aRow('About this','A tie is a record on the atlas, not a verdict. Statuses such as denied are shown as recorded.');
   } else {
     aInfo.innerHTML=aFull('<span class="ttl">'+esc(n.label)+'</span>')+aRow('Location',esc(n.sub))+aRow('Record',esc(TIER[n.tier]||n.tier))+epRows(n)+aRow('Sponsors',n.links.map(aPill).join(' '))
       +aRow('Map','<button class="pill sm" data-open="'+esc(n.rid)+'">Open this space\'s map</button>');

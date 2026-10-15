@@ -42,17 +42,26 @@ def merge_key(label,cat,country,rid):
     return k
 # Funders the page can highlight as right-wing sponsors. The atlas records carry no political field, so this is a short
 # curated list: only funders that appear in the records AND have a published source for their partisan giving.
-RIGHT=[
- (re.compile(r"\bkoch\b",re.I),"The Koch family funds a conservative and libertarian political network, including Americans for Prosperity.",
+RIGHT=[  # (id, label, regex on a sponsor name, regex on record text, basis, sources)
+ ('koch','Koch',re.compile(r"\bkoch\b",re.I),re.compile(r"(?<!Robert )(?<!Robert-)\b(David |Charles )?Koch\b(?! Institut)"),
+  "The Koch family funds a conservative and libertarian political network, including Americans for Prosperity.",
   ["https://www.cnbc.com/2018/05/23/koch-network-targets-republicans-democrats-for-spending-bill-support.html","https://www.factcheck.org/2018/10/americans-for-prosperity-4"]),
- (re.compile(r"\b(ken griffin|citadel)\b",re.I),"Ken Griffin gave $75M to $100M+ to Republican groups in the 2022 cycle, according to InfluenceWatch.",
+ ('griffin','Ken Griffin / Citadel',re.compile(r"\b(ken griffin|citadel)\b",re.I),re.compile(r"\bKen Griffin\b"),
+  "Ken Griffin gave $75M to $100M+ to Republican groups in the 2022 cycle, according to InfluenceWatch.",
   ["https://www.influencewatch.org/person/ken-griffin/"]),
- (re.compile(r"^ronald (s\. )?lauder$",re.I),"Ronald Lauder was Reagan's ambassador to Austria and gave $1M to the Republican State Leadership Committee in 2022.",
+ ('lauder','Ronald Lauder',re.compile(r"^ronald (s\. )?lauder$",re.I),re.compile(r"\bRonald (S\. )?Lauder\b"),
+  "Ronald Lauder was Reagan's ambassador to Austria and gave $1M to the Republican State Leadership Committee in 2022.",
   ["https://www.cnbc.com/2022/10/20/midterms-news-ronald-lauder-gives-1-million-to-republican-state-leadership-committee.html"]),
+ ('cohen','Steven Cohen',re.compile(r"\bsteven (a\. )?cohen\b|\bsteven & alexandra cohen\b",re.I),re.compile(r"\bSteven (A\. )?Cohen\b|\bSteven & Alexandra Cohen\b"),
+  "Steven Cohen was the top individual donor to the Senate Leadership Fund and the Congressional Leadership Fund in 2017, per Artnet; Fox Business reported he later cut back.",
+  ["https://news.artnet.com/art-world/steve-cohen-republican-donor-1207619","https://foxbusiness.com/politics/steve-cohen-joins-other-billionaires-in-curbing-gop-donations"]),
+ ('mercer','Rebekah Mercer',re.compile(r"\brebekah mercer\b",re.I),re.compile(r"\bMercer removed\b|\bRebekah Mercer\b"),
+  "Rebekah Mercer leads the Mercer Family Foundation. The family part-owns Breitbart News and has given more than $35M to Republican candidates and super PACs since 2010, per the Washington Post.",
+  ["https://hyperallergic.com/544448/rebekah-mercer/","https://www.influencewatch.org/non-profit/mercer-family-foundation/"]),
 ]
 def right_basis(label):
-    for rx,basis,urls in RIGHT:
-        if rx.search(label): return {'b':basis,'u':urls}
+    for rid,lab,rx,tx,basis,urls in RIGHT:
+        if rx.search(label): return {'id':rid,'b':basis,'u':urls}
     return None
 def cat_of(tok):
     if FOUND.search(tok) and not re.search(r"\b(state|city|government|ministry)\b",tok,re.I): return 'found'
@@ -135,7 +144,7 @@ for x in d:
     ns=u[:22]
     nodes=[];edges=[]
     for i,n in enumerate(ns):
-        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,merge_key(n['label'],n['cat'],x['country'],x['id']) if n['cat'] in ('gov','corp','found') else ''] + ([right_basis(n['label'])] if n['cat'] in ('gov','corp','found') and right_basis(n['label']) else [])); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
+        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,(('right:'+right_basis(n['label'])['id']) if right_basis(n['label']) else merge_key(n['label'],n['cat'],x['country'],x['id'])) if n['cat'] in ('gov','corp','found') else ''] + ([right_basis(n['label'])] if n['cat'] in ('gov','corp','found') and right_basis(n['label']) else [])); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
     taken={x['id']}; added=0
     for i,n in enumerate(ns):
         if not n['key']: continue
@@ -150,6 +159,16 @@ for x in d:
         f=x.get('funding') or '',w=x.get('watch') or '',fl=x.get('flags') or [],why=(x.get('why_flagged') or '')[:300],tn=(x.get('tier_note') or '')[:200],
         u=(x.get('sources') or [])[:6],ep=[{'p':e.get('person',''),'l':e.get('link',''),'s':e.get('status',''),'t':(e.get('summary','') or '')[:320]} for e in (x.get('epstein_records') or [])],web=x.get('website') or '',nodes=nodes,edges=edges)
     out.append(rec)
+# A donor named only in a record's own text (not parsed as a sponsor) still becomes a node on that record.
+src_by_id={x['id']:x for x in d}
+for rec in out:
+    x=src_by_id[rec['id']]; text=' '.join(str(x.get(k) or '') for k in ('funding','watch','why_flagged','highlight'))
+    for rid,lab,rx,tx,basis,urls in RIGHT:
+        if any(len(n)>6 and n[6].get('id')==rid for n in rec['nodes']): continue
+        m=tx.search(text)
+        if not m: continue
+        note='Named in the record: \u201c'+text[max(0,m.start()-60):m.end()+60].strip().replace('\n',' ')+'\u201d'
+        rec['nodes'].append([lab,'found',3,note,0,'right:'+rid,{'id':rid,'b':basis,'u':urls}]); rec['edges'].append([0,len(rec['nodes']),'named in record'])
 with open(OUT,'w',encoding='utf-8') as fh:
     json.dump(out,fh,ensure_ascii=False,separators=(',',':'))
 print(len(out),'records written to',os.path.relpath(OUT,ROOT),str(os.path.getsize(OUT)//1024)+' KB')
