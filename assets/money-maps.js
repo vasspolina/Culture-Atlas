@@ -33,6 +33,9 @@ function updateGuides(sel,N){}
 // ---------- sea-plant sway: a touch sends a small wave outward; every circle has its own spring, so each moves on its own ----------
 window.__AR=1; let SWAYNODES=()=>[], SWAYLINKS=()=>[], swayRun=false, swayLast=0, swayThrottle=0;
 const REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function nearestNode(cx,cy,maxPx){ const svgN=document.querySelector('#map'); if(!svgN) return null; const rc=svgN.getBoundingClientRect(), t=d3.zoomTransform(svgN); let best=null, bd=maxPx;
+  SWAYNODES().forEach(d=>{ if(d.px==null||d.vis===false||(typeof visible==='function'&&!visible(d))) return; const X=t.x+d.px*t.k*window.__AR+rc.left, Y=t.y+d.py*t.k+rc.top, dd=Math.hypot(X-cx,Y-cy); if(dd<bd){ bd=dd; best=d; } });
+  return best; }
 function swayKick(cx,cy,power){ const svgN=document.querySelector('#map'); if(!svgN) return; const rc=svgN.getBoundingClientRect(), t=d3.zoomTransform(svgN), now=performance.now();
   SWAYNODES().forEach(d=>{ if(d.px==null) return; const X=t.x+d.px*t.k*window.__AR+rc.left, Y=t.y+d.py*t.k+rc.top, dist=Math.hypot(X-cx,Y-cy);
     if(d.sk==null){ d.sk=0.0035+rnd()*0.004; d.sc=0.035+rnd()*0.03; d.sa=rnd()*6.283; d.sz=(rnd()-.5); d.ox=d.oy=d.oz=d.vx=d.vy=d.vz=0; }
@@ -57,8 +60,8 @@ function swayLoop(){ const now=performance.now(), dt=Math.min(2.5,(now-swayLast)
     if(Math.abs(l.la)+Math.abs(l.lb)+Math.abs(l.lva)+Math.abs(l.lvb)>0.04) live=true; else { l.la=l.lb=l.lva=l.lvb=0; } });
   if(REDRAW) REDRAW();
   if(live) requestAnimationFrame(swayLoop); else swayRun=false; }
-window.addEventListener('pointerdown',e=>{ if(e.target&&e.target.closest&&e.target.closest('#map')) swayKick(e.clientX,e.clientY,1); });
-window.addEventListener('pointermove',e=>{ if(!e.buttons&&e.pointerType!=='touch') return; if(!e.target||!e.target.closest||!e.target.closest('#map')) return; const now=performance.now(); if(now-swayThrottle<70) return; swayThrottle=now; swayKick(e.clientX,e.clientY,0.55); });
+window.addEventListener('pointerup',e=>{ if(orbMoved>5) return; if(e.target&&e.target.closest&&e.target.closest('#map')){ const x=e.clientX,y=e.clientY; setTimeout(()=>swayKick(x,y,1),90); } }); // after the tap has landed, so circles never slide away from under a finger
+window.addEventListener('pointermove',e=>{ if(!PTR.has(e.pointerId)) return; if(!e.target||!e.target.closest||!e.target.closest('#map')) return; const now=performance.now(); if(now-swayThrottle<70) return; swayThrottle=now; swayKick(e.clientX,e.clientY,0.55); });
 const zfilter=()=>false;
 function spinLoop(){ if(!SPIN||!REDRAW){ spinRunning=false; return; } YAW+=0.001; REDRAW(); if(performance.now()-spinStart>9000){ SPIN=false; spinRunning=false; return; } requestAnimationFrame(spinLoop); }
 function startSpin(){ if(REDUCE){ SPIN=false; return; } SPIN=true; spinStart=performance.now(); if(!spinRunning){ spinRunning=true; requestAnimationFrame(spinLoop); } }
@@ -179,7 +182,7 @@ function render(inst){
   let AR=1, nodeSel, linkSel, sim;
   const zoom=d3.zoom().scaleExtent([.05,40]).filter(zfilter).on('zoom',e=>{ const t=`translate(${e.transform.x},${e.transform.y}) scale(${e.transform.k*AR},${e.transform.k})`; g.attr('transform',t); globeG.attr('transform',t); lineG.attr('transform',t); if(typeof nodeSel!=='undefined'&&nodeSel) fixLabels(); });
   const setAR=a=>{ AR=a; window.__AR=a; fixLabels(); };
-  function fixLabels(){ const k=d3.zoomTransform(svg.node()).k||1, s=Math.max(.5,Math.min(2.6,15.6/(22*k))); nodeSel.select('text.lbl').attr('transform',`scale(${s/AR},${s})`); }
+  function fixLabels(){ const k=d3.zoomTransform(svg.node()).k||1, s=Math.max(.5,Math.min(2.6,15.6/(22*k))); nodeSel.select('text.lbl').attr('transform',`scale(${s/AR},${s})`); nodeSel.select('circle.hit').attr('r',d=>Math.max(rad(d)*1.15,16/(k*(d.s||1)))); }
   svg.call(zoom);
   PANBY=(dx,dy)=>{ const k=d3.zoomTransform(svg.node()).k; svg.call(zoom.translateBy,dx/k,dy/k); };
   linkSel=lineG.selectAll('path').data(links).join('path').attr('stroke','none');
@@ -201,7 +204,7 @@ function render(inst){
   nodeSel.each(function(d){
     const el=d3.select(this), r=rad(d);
     const W=d.center?2.9:{3:2.9,2:2.3,1:1.7}[d.tier], col=colOf(d);
-    el.append('circle').attr('r',r*0.97).attr('fill','none').attr('pointer-events','all');
+    el.append('circle').attr('class','hit').attr('r',r*0.97).attr('fill','none').attr('pointer-events','all');
     el.append('path').attr('d',loop(r,W)).attr('fill',col);
     if(rnd()<0.6) el.append('path').attr('d',trace(r)).attr('fill',col).attr('opacity',.8);
   });
@@ -212,7 +215,7 @@ function render(inst){
   sim.tick(220);
   const draw=()=>{ N.forEach(d=>{ const r=rot(d.x+(d.ox||0),d.y+(d.oy||0),(d.z||0)+(d.oz||0)), sc=persp(r[2]); d.px=r[0]*sc; d.py=r[1]*sc; d.s=sc; d.dz=r[2]; d.vis=seen(r[2]); }); linkSel.attr('d',flow).attr('visibility',l=>(l.source.vis&&l.target.vis)?null:'hidden').attr('fill-opacity',l=>depthOp((l.source.dz+l.target.dz)/2+DOLLY)); nodeSel.attr('transform',d=>`translate(${d.px},${d.py}) scale(${d.s})`).attr('visibility',d=>d.vis?null:'hidden').sort((a,b)=>a.dz-b.dz); nodeSel.each(function(d){ d3.select(this).selectAll('path').attr('fill-opacity',depthOp(d.dz+DOLLY)); }); updateGuides(globeG,N); };
   draw(); linkSel.attr('fill',d=>d.label==='also funds'?CAT.link.color:colOf(d.source.center?d.target:d.source)); sim.on('tick',draw);
-  nodeSel.call(d3.drag().subject(d=>({x:d.px,y:d.py})).on('start',(e,d)=>{ if(!e.active) sim.alphaTarget(.2).restart(); d.fx=d.x; d.fy=d.y; }).on('drag',(e,d)=>{ const q=ginv(e.x,e.y); d.fx=q[0]; d.fy=q[1]; }).on('end',(e,d)=>{ if(!e.active) sim.alphaTarget(0); if(!d.center){ d.fx=null; d.fy=null; } }));
+  nodeSel.call(d3.drag().clickDistance(8).subject(d=>({x:d.px,y:d.py})).on('start',(e,d)=>{ d.__moved=false; }).on('drag',(e,d)=>{ if(!d.__moved){ if(Math.hypot(e.x-e.subject.x,e.y-e.subject.y)<8/(d3.zoomTransform(svg.node()).k||1)) return; d.__moved=true; if(!e.active) sim.alphaTarget(.2).restart(); d.fx=d.x; d.fy=d.y; } const q=ginv(e.x,e.y,d); d.fx=q[0]; d.fy=q[1]; }).on('end',(e,d)=>{ if(!d.__moved) return; d.__moved=false; if(!e.active) sim.alphaTarget(0); if(!d.center){ d.fx=null; d.fy=null; } }));
   // ---------- view: stretch to the canvas, spread evenly ----------
   let anim=null;
   const applyView=t=>{ setAR(t.ar); svg.call(zoom.transform,d3.zoomIdentity.translate(t.x,t.y).scale(t.k)); };
@@ -271,8 +274,8 @@ function render(inst){
     info.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openSpace(b.dataset.open));
     info.scrollTop=0; setOpen(true);
   }
-  nodeSel.on('click',(e,d)=>{ e.stopPropagation(); select(selected&&selected.id===d.id?null:d); }).on('keydown',(e,d)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); select(d); } });
-  svg.on('click',()=>{ if(orbMoved>5){ orbMoved=0; return; } select(null); });
+  nodeSel.on('click',(e,d)=>{ e.stopPropagation(); const n=nearestNode(e.clientX,e.clientY,28)||d; select(selected&&selected.id===n.id?null:n); }).on('keydown',(e,d)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); select(d); } });
+  svg.on('click',(e)=>{ if(orbMoved>5){ orbMoved=0; return; } const n=nearestNode(e.clientX,e.clientY,28); if(n){ select(selected&&selected.id===n.id?null:n); return; } select(null); });
   bindOrbit(svg); REDRAW=draw; SWAYNODES=()=>N; SWAYLINKS=()=>links; startSpin();
   // category pills (only the groups this map has)
   const present=CATS.filter(c=>N.some(n=>n.cat===c));
