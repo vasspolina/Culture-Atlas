@@ -10375,7 +10375,7 @@ return maplibregl$1;
         }
 
         window.atlasGetSelected = () => selectedInstitution;
-        if (window.atlasLayersDraw) window.atlasLayersDraw(ctx, project, r, cx, cy, filteredList, selectedInstitution, hoveredInstitution);
+        if (window.atlasLayersDraw) window.atlasLayersDraw(ctx, project, r, cx, cy, filteredList, selectedInstitution, hoveredInstitution, baseRadius);
 
         // 8. Render Institution Dots & Independent Space Clusters on Global Sphere
         visibleDots = [];

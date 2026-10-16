@@ -93,7 +93,7 @@
   const sameInst = (a, b) => !!a && !!b && (a.id ? a.id === b.id : a.name === b.name);
 
   // Under the dots: the funding ties.
-  window.atlasLayersDraw = function (ctx, project, r, cx, cy, list, sel, hov) {
+  window.atlasLayersDraw = function (ctx, project, r, cx, cy, list, sel, hov, baseRadius) {
     if (!L.ties) return;
     if (!recById) { loadMoney(); return; }
     const focus = hov || sel, rec = focus && recById.get(focus.id);
@@ -101,9 +101,11 @@
     ctx.lineCap = 'round';
     // The whole web, faint when a space is in focus.
     ctx.lineWidth = 0.8;
-    ctx.globalAlpha = rec ? 0.1 : 0.35;
+    // The whole web is a world-view picture: with a space in focus, or zoomed in, only that space's own ties are drawn.
+    const showWeb = !rec && r < baseRadius * 8;
+    ctx.globalAlpha = 0.35;
     const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
-    web.forEach(([a, b, kind]) => {
+    if (showWeb) web.forEach(([a, b, kind]) => {
       const pa = project(a.lon, a.lat, r, cx, cy), pb = project(b.lon, b.lat, r, cx, cy);
       if (!pa.front && !pb.front) return;
       if ((pa.x < -W || pa.x > 2 * W) && (pb.x < -W || pb.x > 2 * W)) return;
@@ -113,7 +115,7 @@
     });
     // The focused space's own ties, bright, with a dot at each far end.
     if (rec && typeof rec.lat === 'number') {
-      ctx.lineWidth = 1.4; ctx.globalAlpha = 0.9;
+      ctx.lineWidth = 1; ctx.globalAlpha = 0.5;
       const seen = new Set([rec.id]), ends = [];
       rec.nodes.forEach(n => {
         if (!FUNDER(n) || !n[5]) return;
@@ -197,24 +199,28 @@
     ctx.lineWidth = 1;
     pts.forEach(([e, x, y]) => {
       const on = e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n);
-      const s = on ? 7 : 5.5;
+      const s = on ? 7 : (rec ? 3.5 : 5);
+      ctx.globalAlpha = rec && !on ? 0.35 : 1;
       ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.epstein; ctx.strokeStyle = '#000';
       ctx.beginPath();
       if (e.kind === 'org') { ctx.moveTo(x, y - s); ctx.lineTo(x + s, y); ctx.lineTo(x, y + s); ctx.lineTo(x - s, y); ctx.closePath(); }
       else ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
       ctx.fill(); ctx.stroke();
     });
-    // names on flat blocks: for the focused space's own, and for all when the view is close
-    const close = r >= baseRadius * 5;
+    ctx.globalAlpha = 1;
+    // Names: on blocks for the focused space's own funders and people. With nothing in focus, only a very close view names them,
+    // as plain text on a halo, so the map is not covered in blocks.
+    const veryClose = !rec && r >= baseRadius * 30;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     pts.forEach(([e, x, y]) => {
       const on = e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n);
-      if (!(on || close)) return;
-      const text = e.kind === 'org' ? `${e.n}, ${e.c}` : `${e.n}, ${e.w}`, t = text.length > 44 ? text.slice(0, 42) + '…' : text;
-      const w = ctx.measureText(t).width + 12, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
+      if (!(on || veryClose)) return;
+      const text = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`, t = text.length > 40 ? text.slice(0, 38) + '…' : text;
+      const tw = ctx.measureText(t).width, w = tw + 12, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
       if (collides(box, boxes)) return;
-      boxes.push(box); ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.epstein; ctx.fillRect(box.x, box.y, w, h);
-      ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5);
+      boxes.push(box);
+      if (on) { ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.epstein; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5); }
+      else { ctx.lineJoin = 'round'; ctx.lineWidth = 3; ctx.strokeStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#000' : '#fff'; ctx.strokeText(t, box.x + 6, y + 0.5); ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#fff' : '#161616'; ctx.fillText(t, box.x + 6, y + 0.5); }
     });
   }
 
@@ -261,7 +267,6 @@
 
     if (L.money) {
       if (!recById) { ctx.restore(); return; }
-      const zoomAll = r >= baseRadius * 22;
       const byKey = new Map(), labels = [];
       // A selected space with no dot of its own (folded into a cluster) still gets its funders.
       if (sel && typeof sel.lat === 'number' && typeof sel.lon === 'number' && !dots.some(d => sameInst(d.inst, sel))) {
@@ -271,7 +276,7 @@
       dots.forEach(d => {
         const inst = d.inst, rec = inst && recById.get(inst.id); if (!rec) return;
         const focus = sameInst(sel, inst) || sameInst(hov, inst);
-        if (!(zoomAll || focus)) return;
+        if (!focus) return;
         const nodes = rec.nodes.filter(FUNDER);
         if (!nodes.length) return;
         const N = Math.min(nodes.length, focus ? 10 : 6), R = focus ? 64 : 36;
@@ -282,7 +287,7 @@
           ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
           ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.stroke();
           if (n[5]) { if (!byKey.has(n[5])) byKey.set(n[5], []); byKey.get(n[5]).push([x, y, col]); }
-          if (focus || r >= baseRadius * 40) labels.push([n[0], x, y, a, col]);
+          labels.push([n[0], x, y, a, col]);
         }
       });
       // A funder named on two spaces on screen is joined across them.
