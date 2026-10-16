@@ -727,10 +727,8 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root:not([data-theme="dark"]) #zoomControls{border-color:#000}
 :root:not([data-theme="dark"]) #layersControl #layersBtn{background:var(--block);color:#000}
 /* Gossip mode: the globe pane is dark with yellow text, in either theme. */
-:root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport{background:#000;color:#ffd600}
-:root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport a{color:#ffd600}
-body.gossip-mode-active #globeViewport{color:#ffd600}
 :root:not([data-theme="dark"]) body.gossip-mode-active #desktopGlobeTopControls button,:root:not([data-theme="dark"]) body.gossip-mode-active #mobileFilterChipsSection button{background:#000;color:#ffd600;border-color:#ffd600}
 body.gossip-mode-active #desktopGlobeTopControls button,body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
 body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
 :root:not([data-theme="dark"]) body.gossip-mode-active #zoomControls{border-color:#ffd600}
+:root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport{background:#000}
