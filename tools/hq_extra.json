@@ -3883,5 +3883,1405 @@
 "a": "Smetanova 220, 332 02 Starý Plzenec",
 "s": "https://visitplzen.eu/en/visit-pilsen/industrial-sights/bohemia-sekt",
 "w": "Winery is in Starý Plzenec, not Prague; coordinates approximate."
+},
+"roche": {
+"n": "F. Hoffmann-La Roche Ltd",
+"k": "corp",
+"c": "Basel",
+"co": "Switzerland",
+"lat": 47.5596,
+"lon": 7.5886,
+"a": "Grenzacherstrasse 124, 4070 Basel",
+"s": "https://www.roche.ch/en/contact"
+},
+"bukhman": {
+"n": "Bukhman Foundation",
+"k": "found",
+"c": "London",
+"co": "United Kingdom",
+"lat": 51.5074,
+"lon": -0.1278,
+"s": "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5221871/contact-information",
+"w": "UK charity 1205571; not Bukhman Philanthropies (separate charity). Registered contact is a c/o address, so addr omitted."
+},
+"middlesbroughcouncil|UK": {
+"n": "Middlesbrough Council",
+"k": "gov",
+"c": "Middlesbrough",
+"co": "United Kingdom",
+"lat": 54.5742,
+"lon": -1.235,
+"s": "https://teesbusiness.co.uk/2021/03/10/new-location-put-forward-for-council-headquarters/"
+},
+"dlgsc": {
+"n": "Department of Local Government, Sport and Cultural Industries (WA)",
+"k": "gov",
+"c": "Perth",
+"co": "Australia",
+"lat": -31.9523,
+"lon": 115.8613,
+"s": "https://prod.dlgsc.wa.gov.au/department/contact-us",
+"w": "Kind corrected corp->gov. Contact page says offices in Perth; no current head-office street address found."
+},
+"deutschebrsephotographyprize": {
+"n": "Deutsche Börse Photography Foundation gGmbH",
+"k": "found",
+"c": "Frankfurt",
+"co": "Germany",
+"lat": 50.1109,
+"lon": 8.6821,
+"s": "https://deutsche-boerse.com/dbg-en/our-company/deutsche-boerse-group/photography-foundation",
+"w": "Registered office Frankfurt (Börsenplatz 4 per third-party listing); exhibition venue The Cube is in Eschborn. Prize shown at The Photographers' Gallery, London."
+},
+"cityofhague|Netherlands": {
+"n": "Gemeente Den Haag",
+"k": "gov",
+"c": "The Hague",
+"co": "Netherlands",
+"lat": 52.0705,
+"lon": 4.3007,
+"a": "Spui 70, 2511 BT Den Haag",
+"s": "https://www.denhaag.nl/nl/contact-met-de-gemeente/stadhuis-den-haag/"
+},
+"municipalityofbudapest|Hungary": {
+"n": "Budapest Főváros Önkormányzata",
+"k": "gov",
+"c": "Budapest",
+"co": "Hungary",
+"lat": 47.4979,
+"lon": 19.0402,
+"a": "Városház utca 9-11, 1052 Budapest",
+"s": "https://service-einfoszab.budapest.hu/api/dvd/189361"
+},
+"morragreco": {
+"n": "Fondazione Morra Greco",
+"k": "found",
+"c": "Naples",
+"co": "Italy",
+"lat": 40.8518,
+"lon": 14.2681,
+"a": "Via Toledo 106, Naples (legal seat)",
+"s": "https://www.fondazionemorragreco.com/wp-content/uploads/2025/02/FMG_2025_Avviso_responsabile_amministrativo_finanziario.pdf"
+},
+"hannoverrck": {
+"n": "Hannover Rück SE",
+"k": "corp",
+"c": "Hannover",
+"co": "Germany",
+"lat": 52.3759,
+"lon": 9.732,
+"a": "Karl-Wiechert-Allee 50, 30625 Hannover",
+"s": "https://annual-report.hannover-re.com/reports/hannoverre/annual/2014/gb/English/706001/1_-company-information.html"
+},
+"universityofsouthampton": {
+"n": "University of Southampton",
+"k": "gov",
+"c": "Southampton",
+"co": "United Kingdom",
+"lat": 50.9097,
+"lon": -1.4044,
+"a": "University Road, Southampton SO17 1BJ",
+"s": "https://www.southampton.ac.uk/presessional-welcome/contact.page",
+"w": "Kind changed corp->gov (public university)."
+},
+"australiacouncil|Indonesia": {
+"n": "Australia Council for the Arts (Creative Australia)",
+"k": "gov",
+"c": "Sydney",
+"co": "Australia",
+"lat": -33.8688,
+"lon": 151.2093,
+"s": "https://www.e-flux.com/directory/71422/creative-australia",
+"w": "Now Creative Australia; recent listing Pyrmont, Sydney, older Surry Hills. City-level only."
+},
+"dublincitycouncilartsoffice|Ireland": {
+"n": "Dublin City Council Arts Office",
+"k": "gov",
+"c": "Dublin",
+"co": "Ireland",
+"lat": 53.3498,
+"lon": -6.2603,
+"a": "Civic Offices, Wood Quay, Dublin 8, D08 RF3F",
+"s": "https://www.dublincity.ie/business/arts-office",
+"w": "Council is discussing relocation; not confirmed."
+},
+"alburycity|Australia": {
+"n": "Albury City Council",
+"k": "gov",
+"c": "Albury",
+"co": "Australia",
+"lat": -36.0737,
+"lon": 146.9135,
+"a": "553 Kiewa Street, Albury NSW 2640",
+"s": "https://www.alburycity.nsw.gov.au/contact/all-our-facilities"
+},
+"villedejoliette|Canada": {
+"n": "Ville de Joliette",
+"k": "gov",
+"c": "Joliette",
+"co": "Canada",
+"lat": 46.0167,
+"lon": -73.4333,
+"a": "614 boulevard Manseau, Joliette QC J6E 3E4",
+"s": "https://www.joliette.ca/storage/app/media/la-ville/decouvrir-joliette/publications-municipales/tout-joliette/2025/25_Tout-joliette_Decembre.pdf"
+},
+"mitsuifudosan": {
+"n": "Mitsui Fudosan Co., Ltd.",
+"k": "corp",
+"c": "Tokyo",
+"co": "Japan",
+"lat": 35.6812,
+"lon": 139.7671,
+"a": "2-1-1 Nihonbashi-Muromachi, Chuo-ku, Tokyo",
+"s": "https://en.wikipedia.org/wiki/Mitsui_Fudosan",
+"w": "Address from Wikipedia, not the company site."
+},
+"bareeze": {
+"n": "Bareezé (Eastgate Industries, formerly Sefam)",
+"k": "corp",
+"c": "Lahore",
+"co": "Pakistan",
+"lat": 31.5497,
+"lon": 74.3436,
+"s": "https://en.wikipedia.org/wiki/Bareez%C3%A9",
+"w": "Wikipedia only; no street address found."
+},
+"carolinaartassociationexpenses": {
+"n": "Carolina Art Association (Gibbes Museum of Art)",
+"k": "found",
+"c": "Charleston",
+"co": "United States",
+"lat": 32.7765,
+"lon": -79.9311,
+"a": "135 Meeting Street, Charleston SC 29401",
+"s": "https://www.guidestar.org/profile/57-0323047"
+},
+"cityofdornbirn|Austria": {
+"n": "Stadt Dornbirn",
+"k": "gov",
+"c": "Dornbirn",
+"co": "Austria",
+"lat": 47.4125,
+"lon": 9.7417,
+"a": "Rathausplatz 2, 6850 Dornbirn",
+"s": "https://www.oesterreich.gv.at/de/orgsearch/org/2552"
+},
+"paysdemontbliardagglomration": {
+"n": "Pays de Montbéliard Agglomération",
+"k": "gov",
+"c": "Montbéliard",
+"co": "France",
+"lat": 47.51,
+"lon": 6.7986,
+"a": "8 avenue des Alliés, 25200 Montbéliard",
+"s": "https://www.banatic.interieur.gouv.fr/intercommunalite/200065647",
+"w": "Kind corrected corp->gov (EPCI)."
+},
+"copaairlines": {
+"n": "Copa Airlines (Compañía Panameña de Aviación)",
+"k": "corp",
+"c": "Panama City",
+"co": "Panama",
+"lat": 8.9824,
+"lon": -79.5199,
+"s": "https://en.wikipedia.org/wiki/Copa_Airlines"
+},
+"novartis": {
+"n": "Novartis AG",
+"k": "corp",
+"c": "Basel",
+"co": "Switzerland",
+"lat": 47.5596,
+"lon": 7.5886,
+"a": "Lichtstrasse 35, 4056 Basel",
+"s": "https://www.globaldata.com/company-profile/novartis-ag/locations/",
+"w": "Group HQ is Basel; the Muenchenstein site is a Novartis facility."
+},
+"provinceofmanitoba|Canada": {
+"n": "Government of Manitoba",
+"k": "gov",
+"c": "Winnipeg",
+"co": "Canada",
+"lat": 49.8951,
+"lon": -97.1384,
+"a": "450 Broadway, Winnipeg MB R3C 0V8",
+"s": "https://www.gov.mb.ca/legislature/members/info/loiselle.html",
+"w": "Seat of government (Legislative Building)."
+},
+"finnmarkcounty|Norway": {
+"n": "Finnmark fylkeskommune",
+"k": "gov",
+"c": "Vadsø",
+"co": "Norway",
+"lat": 70.0741,
+"lon": 29.749,
+"a": "Henry Karlsens plass 1, 9800 Vadsø",
+"s": "https://www.topograph.co/companies/no/finnmark-fylkeskommune-830090282",
+"w": "Source is a third-party company register."
+},
+"ministryofculture|tainan-art-museum": {
+"n": "Ministry of Culture (Taiwan)",
+"k": "gov",
+"c": "New Taipei",
+"co": "Taiwan",
+"lat": 25.017,
+"lon": 121.4628,
+"a": "No. 439 Zhongping Road, Xinzhuang District, New Taipei City",
+"s": "https://www.moc.gov.tw/EN/cp.aspx?n=378"
+},
+"brdgroupesocitgnrale": {
+"n": "BRD - Groupe Société Générale S.A.",
+"k": "corp",
+"c": "Bucharest",
+"co": "Romania",
+"lat": 44.4268,
+"lon": 26.1025,
+"a": "Bd. Ion Mihalache nr. 1-7, Sector 1, Bucharest",
+"s": "https://www.brd.ro/_files/pdf/BoD%20Report%20Mar%202018%20EN.pdf"
+},
+"czechtelevision": {
+"n": "Česká televize",
+"k": "corp",
+"c": "Prague",
+"co": "Czechia",
+"lat": 50.0755,
+"lon": 14.4378,
+"s": "https://img.ceskatelevize.cz/boss/document/1573.pdf?v=1",
+"w": "Public broadcaster; seat Kavčí hory, Praha 4."
+},
+"wesfarmers": {
+"n": "Wesfarmers Limited",
+"k": "corp",
+"c": "Perth",
+"co": "Australia",
+"lat": -31.9523,
+"lon": 115.8613,
+"a": "Level 14, Brookfield Place Tower 2, 123 St Georges Terrace, Perth WA 6000",
+"s": "https://wesfarmers.com.au/sustainability/fy2022/our-reporting/about-wesfarmers"
+},
+"lotterywest": {
+"n": "Lotterywest",
+"k": "gov",
+"c": "Subiaco (Perth)",
+"co": "Australia",
+"lat": -31.9477,
+"lon": 115.8267,
+"a": "38 Station Street, Subiaco WA 6008",
+"s": "https://lotterywest.wa.gov.au/lotterywest/media-centre/wa-makes-monday-million-dollar-winner-1",
+"w": "WA state lottery body; kind corrected from corp. Address from 2016 release, may have changed."
+},
+"bramall": {
+"n": "The Liz and Terry Bramall Foundation",
+"k": "found",
+"c": "Harrogate",
+"co": "United Kingdom",
+"lat": 53.9921,
+"lon": -1.5418,
+"s": "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4033258/contact-information",
+"w": "Matched to Liz and Terry Bramall Foundation (Yorkshire-focused); registered address is c/o a law firm in Harrogate, not Wakefield."
+},
+"leica": {
+"n": "Leica Camera AG",
+"k": "corp",
+"c": "Wetzlar",
+"co": "Germany",
+"lat": 50.5559,
+"lon": 8.501,
+"s": "https://leica-camera.com/en/company"
+},
+"internationalvisegrad": {
+"n": "International Visegrad Fund",
+"k": "gov",
+"c": "Bratislava",
+"co": "Slovakia",
+"lat": 48.1486,
+"lon": 17.1077,
+"s": "https://static.slov-lex.sk/pdf/prilohy/SK/ZZ/2003/159/20030517_2887930-2.pdf",
+"w": "Intergovernmental fund of V4 states; kind corrected from found. Seat per founding agreement."
+},
+"ofcaixageraldedepsitos": {
+"n": "Fundação Caixa Geral de Depósitos - Culturgest",
+"k": "found",
+"c": "Lisbon",
+"co": "Portugal",
+"lat": 38.7223,
+"lon": -9.1393,
+"a": "Rua Arco do Cego 50, 1000-300 Lisboa",
+"s": "https://culturgest.pt/en/collection/about",
+"w": "Foundation operates in the CGD building; bank is moving its registered office to Parque das Nações from Sept 2026, Culturgest stays."
+},
+"nordlb": {
+"n": "Norddeutsche Landesbank (NORD/LB)",
+"k": "corp",
+"c": "Hannover",
+"co": "Germany",
+"lat": 52.3759,
+"lon": 9.732,
+"s": "https://en.wikipedia.org/wiki/Norddeutsche_Landesbank"
+},
+"southamptoncitycouncil|United Kingdom": {
+"n": "Southampton City Council",
+"k": "gov",
+"c": "Southampton",
+"co": "United Kingdom",
+"lat": 50.9097,
+"lon": -1.4044,
+"a": "Civic Centre Road, Southampton SO14 7LY",
+"s": "https://en.wikipedia.org/wiki/Southampton_Civic_Centre"
+},
+"dublincityartsoffice|Ireland": {
+"n": "Dublin City Council Arts Office",
+"k": "gov",
+"c": "Dublin",
+"co": "Ireland",
+"lat": 53.3498,
+"lon": -6.2603,
+"s": "https://www.dublincity.ie/business/arts-office",
+"w": "Part of Dublin City Council (Civic Offices, Wood Quay); arts office street address not confirmed."
+},
+"ministryofcultures|Colombia": {
+"n": "Ministerio de las Culturas, las Artes y los Saberes",
+"k": "gov",
+"c": "Bogotá",
+"co": "Colombia",
+"lat": 4.711,
+"lon": -74.0721,
+"a": "Calle 9 No. 8-31, Bogotá",
+"s": "https://www.mincultura.gov.co/despacho/Documents/programa-anual-de-auditorias/2023/4%20Auditor%C3%ADa%20Interna%20al%20Subproceso%20de%20Gesi%C3%B3n%20del%20Patrimonio%20Cultural.pdf"
+},
+"nishat": {
+"n": "Nishat Group",
+"k": "corp",
+"c": "Lahore",
+"co": "Pakistan",
+"lat": 31.5204,
+"lon": 74.3587,
+"s": "https://en.wikipedia.org/wiki/Nishat_Group"
+},
+"cityofatlanta|USA": {
+"n": "City of Atlanta (Mayor's Office of Cultural Affairs)",
+"k": "gov",
+"c": "Atlanta",
+"co": "United States",
+"lat": 33.749,
+"lon": -84.388,
+"s": "https://atlantaga.gov/government/mayor-s-office/executive-offices/office-of-cultural-affairs"
+},
+"scartscommission|USA": {
+"n": "South Carolina Arts Commission",
+"k": "gov",
+"c": "Columbia",
+"co": "United States",
+"lat": 34.0007,
+"lon": -81.0348,
+"a": "1026 Sumter Street, Suite 200, Columbia, SC 29201",
+"s": "https://www.southcarolinaarts.com/all-grants/grants-resources/",
+"w": "Based in Columbia, not Charleston (Charleston is the funded space)."
+},
+"zionsbank": {
+"n": "Zions Bank (Zions Bancorporation)",
+"k": "corp",
+"c": "Salt Lake City",
+"co": "United States",
+"lat": 40.7608,
+"lon": -111.891,
+"s": "https://en.wikipedia.org/wiki/Zions_Bancorporation"
+},
+"landvorarlberg|Austria": {
+"n": "Amt der Vorarlberger Landesregierung (Land Vorarlberg)",
+"k": "gov",
+"c": "Bregenz",
+"co": "Austria",
+"lat": 47.5031,
+"lon": 9.7471,
+"a": "Landhaus, Römerstraße 15, 6900 Bregenz",
+"s": "https://vorarlberg.at/documents/302033/472172/Organisationsstruktur.pdf/a8446c87-37c7-b4f2-773f-0f1e51a9209d",
+"w": "Address from a 2020 public notice (secondary)."
+},
+"dracgrandest": {
+"n": "DRAC Grand Est (French Ministry of Culture)",
+"k": "gov",
+"c": "Strasbourg",
+"co": "France",
+"lat": 48.5734,
+"lon": 7.7521,
+"a": "Palais du Rhin, 2 place de la République, 67082 Strasbourg Cedex",
+"s": "https://www.culture.gouv.fr/en/Regions/DRAC-Grand-Est/Contact-us",
+"w": "Kind corrected from corp."
+},
+"niedersachsen": {
+"n": "Stiftung Niedersachsen",
+"k": "found",
+"c": "Hannover",
+"co": "Germany",
+"lat": 52.3759,
+"lon": 9.732,
+"a": "Künstlerhaus, Sophienstraße 2, 30159 Hannover",
+"s": "https://www.stnds.de/dam/jcr:50356688-b949-4326-91e4-3188548bb18c/factsheet_stiftung_niedersachsen_stand_juli_2026.pdf"
+},
+"delasallecollegeofsaintbenilde": {
+"n": "De La Salle-College of Saint Benilde",
+"k": "corp",
+"c": "Manila",
+"co": "Philippines",
+"lat": 14.5995,
+"lon": 120.9842,
+"s": "https://pcnc.com.ph/certified_ngo/de-la-salle-college-of-saint-benilde-inc/",
+"w": "Private college (Malate, Manila); kind not really corp, no better category."
+},
+"shinsegae": {
+"n": "Shinsegae",
+"k": "corp",
+"c": "Seoul",
+"co": "South Korea",
+"lat": 37.5665,
+"lon": 126.978,
+"s": "https://en.wikipedia.org/wiki/Shinsegae"
+},
+"blkbcantonalbank": {
+"n": "Basellandschaftliche Kantonalbank (BLKB)",
+"k": "corp",
+"c": "Liestal",
+"co": "Switzerland",
+"lat": 47.484,
+"lon": 7.7344,
+"a": "Rheinstrasse 7, 4410 Liestal",
+"s": "https://www.blkb.ch/die-blkb/point-of-contact/about-us/regulatory-compliance-information.html",
+"w": "HQ is Liestal, not Münchenstein."
+},
+"ctdecd": {
+"n": "Connecticut Department of Economic and Community Development",
+"k": "gov",
+"c": "Hartford",
+"co": "United States",
+"lat": 41.7658,
+"lon": -72.6734,
+"a": "450 Columbus Boulevard, Hartford, CT 06103",
+"s": "https://portal.ct.gov/DECD",
+"w": "Kind corrected from corp. Sources conflict (505 Hudson St also appears)."
+},
+"ntgovernment|Australia": {
+"n": "Northern Territory Government",
+"k": "gov",
+"c": "Darwin",
+"co": "Australia",
+"lat": -12.4634,
+"lon": 130.8456,
+"s": "https://en.wikipedia.org/wiki/Parliament_House,_Darwin",
+"w": "Seat of government is Darwin (Parliament House); source is indirect."
+},
+"lekoilnigeria": {
+"n": "Lekoil Limited",
+"k": "corp",
+"c": "Lagos",
+"co": "Nigeria",
+"lat": 6.5244,
+"lon": 3.3792,
+"s": "https://en.wikipedia.org/wiki/Lekoil",
+"w": "Head office Lagos per CEO interview and CB Insights."
+},
+"sofiamunicipalityyearlyacquisitions": {
+"n": "Sofia Capital Municipality",
+"k": "gov",
+"c": "Sofia",
+"co": "Bulgaria",
+"lat": 42.6977,
+"lon": 23.3219,
+"a": "Moskovska 33, 1000 Sofia",
+"s": "https://www.coe.int/ru/web/cultural-routes/-/sofia-capital-municipality",
+"w": "Kind corrected from found."
+},
+"mazda": {
+"n": "Mazda Motor Corporation",
+"k": "corp",
+"c": "Fuchū (Aki District, Hiroshima)",
+"co": "Japan",
+"lat": 34.3794,
+"lon": 132.5164,
+"a": "3-1 Shinchi, Fuchu-cho, Aki-gun, Hiroshima 730-8670",
+"s": "https://www.mazda.com/en/about/outline"
+},
+"tommeetippee": {
+"n": "Mayborn Group (Tommee Tippee)",
+"k": "corp",
+"c": "Newcastle upon Tyne",
+"co": "UK",
+"lat": 54.9783,
+"lon": -1.6178,
+"s": "https://investnortheastengland.co.uk/?p=202350",
+"w": "Tommee Tippee is a Mayborn brand; HQ at Balliol Business Park, North Tyneside, per regional agency and PitchBook; not checked against Companies House."
+},
+"cityofperth|Australia": {
+"n": "City of Perth",
+"k": "gov",
+"c": "Perth",
+"co": "Australia",
+"lat": -31.9523,
+"lon": 115.8613,
+"a": "27 St Georges Terrace, Perth WA 6000",
+"s": "https://visitperth.com/see-and-do/architecture-and-historic-buildings/venues/council-house"
+},
+"landcareaustralia": {
+"n": "Landcare Australia",
+"k": "found",
+"c": "Sydney (Chatswood)",
+"co": "Australia",
+"lat": -33.7969,
+"lon": 151.1832,
+"a": "Suite 901, 815 Pacific Highway, Chatswood NSW 2067",
+"s": "https://landcareaustralia.org.au/contact-us/",
+"w": "Not-for-profit, so kind changed from corp."
+},
+"creativeeurope|Hungary": {
+"n": "Creative Europe (European Commission)",
+"k": "gov",
+"c": "Brussels",
+"co": "Belgium",
+"lat": 50.8503,
+"lon": 4.3517,
+"s": "https://commission.europa.eu/funding-tenders/find-funding/eu-funding-programmes/creative-europe_en",
+"w": "EU programme run by the European Commission (DG EAC / DG CNECT) and EACEA, Brussels. Programme, not a standalone body; moderate confidence."
+},
+"latvianministryofculture|Latvia": {
+"n": "Ministry of Culture of the Republic of Latvia",
+"k": "gov",
+"c": "Riga",
+"co": "Latvia",
+"lat": 56.9496,
+"lon": 24.1052,
+"a": "K. Valdemāra iela 11a, Riga LV-1364",
+"s": "https://km.gov.lv/en/ministry"
+},
+"stateofbadenwrttembergministryofscience|Germany": {
+"n": "Ministerium für Wissenschaft, Forschung und Kunst Baden-Württemberg",
+"k": "gov",
+"c": "Stuttgart",
+"co": "Germany",
+"lat": 48.7758,
+"lon": 9.1829,
+"a": "Königstraße 46, 70173 Stuttgart",
+"s": "https://mwk.baden-wuerttemberg.de/fileadmin/redaktion/m-mwk/intern/dateien/pdf/Ministerium/Stellenangebote/Ministerium_Wissenschaft_Forschung_Kunst_Flyer_Personalgewinnung_2024_RZ.pdf"
+},
+"basquegovernmentculturaldepartment|Spain": {
+"n": "Departamento de Cultura y Política Lingüística, Gobierno Vasco",
+"k": "gov",
+"c": "Vitoria-Gasteiz",
+"co": "Spain",
+"lat": 42.8467,
+"lon": -2.6716,
+"a": "Donostia-San Sebastián 1, 01010 Vitoria-Gasteiz",
+"s": "https://www.euskadi.eus/kultura-eta-hizkuntza-politika-saila/r61-vedorok/eu"
+},
+"cityofturinculturaldepartment|Italy": {
+"n": "Città di Torino (Comune di Torino)",
+"k": "gov",
+"c": "Turin",
+"co": "Italy",
+"lat": 45.0703,
+"lon": 7.6869,
+"a": "Piazza Palazzo di Città 1",
+"s": "https://www.comuni-italiani.it/01/telefono.html",
+"w": "Cultural Department is part of the city administration; seat is Palazzo Civico."
+},
+"alcaldademedelln": {
+"n": "Alcaldía de Medellín",
+"k": "gov",
+"c": "Medellín",
+"co": "Colombia",
+"lat": 6.2442,
+"lon": -75.5812,
+"a": "Calle 44 # 52-165, Centro Administrativo La Alpujarra",
+"s": "https://www.medellin.gov.co/es/secretaria-de-gestion-humana/servicio-a-la-ciudadania/informacion-de-contacto-y-directorio-institucional/",
+"w": "Kind corrected from corp to gov."
+},
+"fultoncounty|USA": {
+"n": "Fulton County, Georgia",
+"k": "gov",
+"c": "Atlanta",
+"co": "USA",
+"lat": 33.749,
+"lon": -84.388,
+"a": "141 Pryor Street SW, Atlanta, GA 30303",
+"s": "https://fultoncountyga.gov/Inside-Fulton-County/Fulton-County-Departments/Customer-Service/Facilities/Fulton-County-Government-Center"
+},
+"collectiviteuropennedalsace": {
+"n": "Collectivité européenne d'Alsace",
+"k": "gov",
+"c": "Strasbourg",
+"co": "France",
+"lat": 48.5734,
+"lon": 7.7521,
+"a": "1 Place du Quartier Blanc, 67000 Strasbourg",
+"s": "https://pappers.fr/entreprise/200094332",
+"w": "Kind corrected from corp to gov. Seat per business registry aggregator; official site not checked."
+},
+"siddharthaarts": {
+"n": "Siddhartha Arts Foundation",
+"k": "found",
+"c": "Kathmandu",
+"co": "Nepal",
+"lat": 27.7172,
+"lon": 85.324,
+"s": "https://oip.princeton.edu/our-programs/international-internships/search-internships/siddhartha-arts-foundationsiddhartha-art",
+"w": "City only; no street address found."
+},
+"naver": {
+"n": "Naver Corporation",
+"k": "corp",
+"c": "Seongnam",
+"co": "South Korea",
+"lat": 37.4201,
+"lon": 127.1267,
+"a": "NAVER 1784, 95 Jeongjail-ro, Bundang-gu, Seongnam-si",
+"s": "https://navercorp.com/company/contact"
+},
+"habasit": {
+"n": "Habasit International AG",
+"k": "corp",
+"c": "Reinach (Basel-Landschaft)",
+"co": "Switzerland",
+"lat": 47.4946,
+"lon": 7.5895,
+"a": "Römerstrasse 1, 4153 Reinach",
+"s": "https://habasit.com/en/About-us/Our-Locations/Global-Locations-List/Europe/Habasit-Head-Office-in-Switzerland"
+},
+"henkel": {
+"n": "Henkel AG & Co. KGaA",
+"k": "corp",
+"c": "Düsseldorf",
+"co": "Germany",
+"lat": 51.2277,
+"lon": 6.7735,
+"a": "Henkelstraße 67, 40589 Düsseldorf",
+"s": "https://henkel.com/184058-184058",
+"w": "Funds a Hartford space via its US arm; group HQ given."
+},
+"cottonon": {
+"n": "Cotton On Foundation",
+"k": "found",
+"c": "Geelong",
+"co": "Australia",
+"lat": -38.1499,
+"lon": 144.3617,
+"s": "https://en.wikipedia.org/wiki/Cotton_On_Group",
+"w": "Foundation run from Cotton On Group HQ in Geelong; no foundation-specific address found."
+},
+"financirepinaultartmisprivateequity": {
+"n": "Groupe Artémis",
+"k": "corp",
+"c": "Paris",
+"co": "France",
+"lat": 48.8566,
+"lon": 2.3522,
+"s": "https://en.wikipedia.org/wiki/Groupe_Art%C3%A9mis",
+"w": "Matched Financière Pinault / Artémis to Groupe Artémis (Pinault family holding), Hôtel de Clermont-Tonnerre. Street address unverified."
+},
+"asiaeurope": {
+"n": "Asia-Europe Foundation (ASEF)",
+"k": "found",
+"c": "Singapore",
+"co": "Singapore",
+"lat": 1.3521,
+"lon": 103.8198,
+"s": "https://en.wikipedia.org/wiki/Asia%E2%80%93Europe_Foundation",
+"w": "Intergovernmental foundation; street address 31 Heng Mui Keng Terrace per culture.si."
+},
+"citygovernment|s-m-a-k": {
+"n": "Stad Gent",
+"k": "gov",
+"c": "Ghent",
+"co": "Belgium",
+"lat": 51.0543,
+"lon": 3.7174,
+"s": "https://stad.gent/sites/default/files/media/documents/20230726_LIJ_overzicht%20nationale%20perscontacten%20voor%20externen.pdf",
+"w": "Generic 'City government' resolved via S.M.A.K. in Ghent (municipal museum); city hall Botermarkt 1 per city documents"
+},
+"pirellionly": {
+"n": "Pirelli & C. S.p.A.",
+"k": "corp",
+"c": "Milan",
+"co": "Italy",
+"lat": 45.4642,
+"lon": 9.19,
+"s": "https://uk.finance.yahoo.com/quote/PC.VI/profile",
+"w": "Pirelli HangarBicocca, Milan"
+},
+"minderoo": {
+"n": "Minderoo Foundation",
+"k": "found",
+"c": "Perth",
+"co": "Australia",
+"lat": -31.9523,
+"lon": 115.8613,
+"s": "https://en.wikipedia.org/wiki/Minderoo_Foundation",
+"w": "Old Swan Brewery, Mounts Bay Road per news report; no official address confirmed"
+},
+"provincialcouncilofbiscay|Spain": {
+"n": "Diputación Foral de Bizkaia (Provincial Council of Biscay)",
+"k": "gov",
+"c": "Bilbao",
+"co": "Spain",
+"lat": 43.263,
+"lon": -2.935,
+"a": "Gran Vía 25, 48009 Bilbao",
+"s": "https://brta.euskadi.eus/brta-bizkaia-en/webbrta00-content/en/"
+},
+"cityofsydney|Australia": {
+"n": "City of Sydney (Council of the City of Sydney)",
+"k": "gov",
+"c": "Sydney",
+"co": "Australia",
+"lat": -33.8688,
+"lon": 151.2093,
+"a": "456 Kent Street, Sydney NSW 2000",
+"s": "https://www.planningportal.nsw.gov.au/details/Council%20Of%20The%20City%20Of%20Sydney"
+},
+"fondazionepastificiocerereonlus": {
+"n": "Fondazione Pastificio Cerere",
+"k": "found",
+"c": "Rome",
+"co": "Italy",
+"lat": 41.9028,
+"lon": 12.4964,
+"s": "https://luoghidelcontemporaneo.cultura.gov.it/en/esplora/fondazione-pastificio-cerere_en/",
+"w": "Via degli Ausoni 7, San Lorenzo per secondary sources"
+},
+"paulramsay": {
+"n": "Paul Ramsay Foundation",
+"k": "found",
+"c": "Sydney",
+"co": "Australia",
+"lat": -33.8688,
+"lon": 151.2093,
+"a": "Yirranma Place, 262 Liverpool Street, Darlinghurst NSW 2010",
+"s": "https://www.paulramsayfoundation.org.au/contact"
+},
+"surainsurance": {
+"n": "Grupo SURA (Suramericana / Fundación SURA)",
+"k": "corp",
+"c": "Medellín",
+"co": "Colombia",
+"lat": 6.2442,
+"lon": -75.5812,
+"s": "https://www.valoraanalitik.com/sura-celebra-80-anos-crecimiento-evolucion/"
+},
+"yokohamacitymanagementfee|Japan": {
+"n": "City of Yokohama",
+"k": "gov",
+"c": "Yokohama",
+"co": "Japan",
+"lat": 35.4437,
+"lon": 139.638,
+"a": "6-50-10 Honcho, Naka-ku, Yokohama 231-0005",
+"s": "https://www.city.yokohama.lg.jp/lang/overseas/yport/access.html"
+},
+"britishcouncil|Pakistan": {
+"n": "British Council",
+"k": "gov",
+"c": "London",
+"co": "United Kingdom",
+"lat": 51.5074,
+"lon": -0.1278,
+"a": "1 Redman Place, Stratford, London E20 1JQ",
+"s": "https://en.wikipedia.org/wiki/British_Council",
+"w": "Head office of the UK body; funds the local Pakistan office"
+},
+"britishcouncil|Ukraine": {
+"n": "British Council",
+"k": "gov",
+"c": "London",
+"co": "United Kingdom",
+"lat": 51.5074,
+"lon": -0.1278,
+"a": "1 Redman Place, Stratford, London E20 1JQ",
+"s": "https://en.wikipedia.org/wiki/British_Council",
+"w": "Head office of the UK body; funds the local Ukraine office"
+},
+"essexcommunityfdn": {
+"n": "Essex Community Foundation",
+"k": "found",
+"c": "Chelmsford",
+"co": "United Kingdom",
+"lat": 51.7356,
+"lon": 0.4685,
+"a": "3 Hoffmanns Way, Chelmsford CM1 1GU",
+"s": "https://www.essexcommunityfoundation.org.uk/?p=170",
+"w": "Kind corrected to found; head office is Chelmsford, not Colchester"
+},
+"eugenemcdermott": {
+"n": "Eugene McDermott Foundation",
+"k": "found",
+"c": "Dallas",
+"co": "United States",
+"lat": 32.7767,
+"lon": -96.797,
+"s": "https://tgci.com/funder/eugene-mcdermott-foundation",
+"w": "Dallas confirmed by directories; street address conflicting so omitted"
+},
+"cityofsanfrancisco|USA": {
+"n": "City and County of San Francisco",
+"k": "gov",
+"c": "San Francisco",
+"co": "United States",
+"lat": 37.7749,
+"lon": -122.4194,
+"a": "1 Dr. Carlton B. Goodlett Place, San Francisco 94102",
+"s": "https://en.wikipedia.org/wiki/San_Francisco_City_Hall"
+},
+"villedestrasbourg|France": {
+"n": "Ville de Strasbourg",
+"k": "gov",
+"c": "Strasbourg",
+"co": "France",
+"lat": 48.5734,
+"lon": 7.7521,
+"a": "1 parc de l'Étoile, 67076 Strasbourg Cedex",
+"s": "https://www.strasbourg.eu/redirections"
+},
+"nepalacademyoffinearts": {
+"n": "Nepal Academy of Fine Arts",
+"k": "gov",
+"c": "Kathmandu",
+"co": "Nepal",
+"lat": 27.7172,
+"lon": 85.324,
+"s": "https://en.wikipedia.org/wiki/Nepal_Academy_of_Fine_Arts",
+"w": "Sita Bhawan, Naxal; public academy, kind corrected to gov"
+},
+"lincolnfinancial": {
+"n": "Lincoln National Corporation (Lincoln Financial Group)",
+"k": "corp",
+"c": "Radnor",
+"co": "United States",
+"lat": 40.0462,
+"lon": -75.3599,
+"s": "https://en.wikipedia.org/wiki/Lincoln_National_Corporation"
+},
+"koreanembassy|Japan": {
+"n": "Embassy of the Republic of Korea in Japan",
+"k": "gov",
+"c": "Tokyo",
+"co": "Japan",
+"lat": 35.6762,
+"lon": 139.6503,
+"s": "https://www.japan.travel/en/plan/embassies-foreign/",
+"w": "Minami-Azabu 1-2-5, Minato-ku"
+},
+"hyundaidepartmentstore|South Korea": {
+"n": "Hyundai Department Store",
+"k": "corp",
+"c": "Seoul",
+"co": "South Korea",
+"lat": 37.5665,
+"lon": 126.978,
+"s": "https://en.wikipedia.org/wiki/Hyundai_Department_Store",
+"w": "Kind corrected to corp; HQ in Gangnam-gu per 2020 press"
+},
+"frenchministryofculture|France": {
+"n": "Ministère de la Culture",
+"k": "gov",
+"c": "Paris",
+"co": "France",
+"lat": 48.8566,
+"lon": 2.3522,
+"a": "182 rue Saint-Honoré, 75001 Paris",
+"s": "https://www.info.gouv.fr/ministere/ministere-de-la-culture"
+},
+"intach": {
+"n": "INTACH (Indian National Trust for Art and Cultural Heritage)",
+"k": "found",
+"c": "New Delhi",
+"co": "India",
+"lat": 28.6139,
+"lon": 77.209,
+"a": "71 Lodhi Estate, New Delhi 110003",
+"s": "https://en.wikipedia.org/wiki/Indian_National_Trust_for_Art_and_Cultural_Heritage",
+"w": "Kind corrected to found"
+},
+"ministryofculture|sofia-city-art-gallery": {
+"n": "Ministry of Culture of Bulgaria",
+"k": "gov",
+"c": "Sofia",
+"co": "Bulgaria",
+"lat": 42.6977,
+"lon": 23.3219,
+"a": "17 Alexander Stamboliiski Blvd, Sofia",
+"s": "https://coe.int/web/cultural-routes/bulgaria"
+},
+"usembassy|Mongolia": {
+"n": "U.S. Embassy in Mongolia",
+"k": "gov",
+"c": "Ulaanbaatar",
+"co": "Mongolia",
+"lat": 47.8864,
+"lon": 106.9057,
+"s": "https://www.developmentaid.org/donors/view/148465/us-embassy-in-mongolia"
+},
+"gucci": {
+"n": "Gucci",
+"k": "corp",
+"c": "Florence",
+"co": "Italy",
+"lat": 43.7696,
+"lon": 11.2558,
+"s": "https://en.wikipedia.org/wiki/Gucci",
+"w": "Address from third-party sources only"
+},
+"clearstream": {
+"n": "Clearstream Banking S.A.",
+"k": "corp",
+"c": "Luxembourg",
+"co": "Luxembourg",
+"lat": 49.6116,
+"lon": 6.1319,
+"s": "https://en.wikipedia.org/wiki/Clearstream",
+"w": "Operating HQ Luxembourg; holding company in Eschborn (Frankfurt)"
+},
+"cocof": {
+"n": "Commission communautaire française (COCOF)",
+"k": "gov",
+"c": "Brussels",
+"co": "Belgium",
+"lat": 50.8503,
+"lon": 4.3517,
+"s": "https://be.brussels/en/about-region/structure-and-organisations/community-associations-and-committees/french-community-commission-cocof",
+"w": "Public body, not corp; street address not confirmed"
+},
+"fundacinjumexgrants": {
+"n": "Fundación Jumex Arte Contemporáneo",
+"k": "found",
+"c": "Mexico City",
+"co": "Mexico",
+"lat": 19.4326,
+"lon": -99.1332,
+"s": "https://www.e-flux.com/announcements/6786514/25th-anniversary-celebration",
+"w": "Museo Jumex in Mexico City; original gallery in Ecatepec. Not from official site"
+},
+"nationalculturalofhungary": {
+"n": "National Cultural Fund of Hungary (NKA)",
+"k": "gov",
+"c": "Budapest",
+"co": "Hungary",
+"lat": 47.4979,
+"lon": 19.0402,
+"s": "https://nka.hu/national-cultural-fund-of-hungary/",
+"w": "State fund, kind corrected; street address from a scanned ministry document, unverified"
+},
+"rigacity|Latvia": {
+"n": "Riga City Council (Rīgas dome)",
+"k": "gov",
+"c": "Riga",
+"co": "Latvia",
+"lat": 56.9496,
+"lon": 24.1052,
+"s": "https://coe.int/en/web/cultural-routes/-/municipality-of-riga"
+},
+"cityofstuttgart|Germany": {
+"n": "Landeshauptstadt Stuttgart",
+"k": "gov",
+"c": "Stuttgart",
+"co": "Germany",
+"lat": 48.7758,
+"lon": 9.1829,
+"a": "Rathaus, Marktplatz 1, 70173 Stuttgart",
+"s": "https://www.stuttgart.de/organigramm/adresse/rathaus-stuttgart"
+},
+"cityofbilbao|Spain": {
+"n": "Ayuntamiento de Bilbao",
+"k": "gov",
+"c": "Bilbao",
+"co": "Spain",
+"lat": 43.263,
+"lon": -2.935,
+"s": "https://en.wikipedia.org/wiki/Bilbao_City_Council"
+},
+"afcn": {
+"n": "Administrația Fondului Cultural Național (AFCN)",
+"k": "gov",
+"c": "Bucharest",
+"co": "Romania",
+"lat": 44.4268,
+"lon": 26.1025,
+"a": "Str. Barbu Delavrancea nr. 57, Sector 1",
+"s": "https://www.afcn.ro/media/AFCN anunt referent de specialitate Secretariat, Registratură 2023.pdf",
+"w": "Kind corrected to gov"
+},
+"universityofmelbourne": {
+"n": "University of Melbourne",
+"k": "gov",
+"c": "Melbourne",
+"co": "Australia",
+"lat": -37.8136,
+"lon": 144.9631,
+"a": "Grattan Street, Parkville VIC 3010",
+"s": "https://www.unimelb.edu.au/contact",
+"w": "Public university; kind corrected from corp (arguably neither)"
+},
+"epmmunicipalutility|Colombia": {
+"n": "Empresas Públicas de Medellín (EPM)",
+"k": "gov",
+"c": "Medellín",
+"co": "Colombia",
+"lat": 6.2442,
+"lon": -75.5812,
+"s": "https://www.superservicios.gov.co/sites/default/files/inline-files/evaluacionintegralepm8.11.18.pdf",
+"w": "Municipal utility; source states seat is Medellín, no official page found"
+},
+"gujral": {
+"n": "The Gujral Foundation",
+"k": "found",
+"c": "New Delhi",
+"co": "India",
+"lat": 28.6139,
+"lon": 77.209,
+"s": "https://www.artrabbit.com/organisations/the-gujral-foundation",
+"w": "Third-party source; funds a space in Colombo"
+},
+"attwellssolicitors": {
+"n": "Attwells Solicitors",
+"k": "corp",
+"c": "Ipswich",
+"co": "United Kingdom",
+"lat": 52.0567,
+"lon": 1.1482,
+"s": "https://attwells.com/home/about-attwells/contact/colchester-office/",
+"w": "Head office Ipswich; Colchester is a branch"
+},
+"claralionel": {
+"n": "Clara Lionel Foundation",
+"k": "found",
+"c": "New York",
+"co": "United States",
+"lat": 40.7128,
+"lon": -74.006,
+"s": "https://www.egeresource.org/profiles/organizations/001ab910-b1fa-470c-a3c9-95fe82e1c6c4/",
+"w": "HQ New York; Barbados is a programme location, no Barbados office found"
+},
+"rundirectlybyrgionoccitanie": {
+"n": "Région Occitanie",
+"k": "gov",
+"c": "Toulouse",
+"co": "France",
+"lat": 43.6047,
+"lon": 1.4442,
+"s": "https://www.pappers.fr/entreprise/200053791",
+"w": "Seat Hôtel de Région, 22 bd du Maréchal-Juin, Toulouse; Montpellier is secondary site; kind corrected to gov"
+},
+"wdr3mediapartner": {
+"n": "Westdeutscher Rundfunk (WDR)",
+"k": "gov",
+"c": "Cologne",
+"co": "Germany",
+"lat": 50.9375,
+"lon": 6.9603,
+"s": "https://www.planet-wissen.de/impressum/index.html",
+"w": "Public broadcaster, kind corrected"
+},
+"germanfederalforeignoffice|Poland": {
+"n": "Auswärtiges Amt (German Federal Foreign Office)",
+"k": "gov",
+"c": "Berlin",
+"co": "Germany",
+"lat": 52.52,
+"lon": 13.405,
+"a": "Werderscher Markt 1, 10117 Berlin",
+"s": "https://www.auswaertiges-amt.de/en/about-us/contact"
+},
+"aerok": {
+"n": "Aero K",
+"k": "corp",
+"c": "Cheongju",
+"co": "South Korea",
+"lat": 36.6424,
+"lon": 127.489,
+"s": "https://en.wikipedia.org/wiki/Aero_K"
+},
+"internationalrenaissance": {
+"n": "International Renaissance Foundation",
+"k": "found",
+"c": "Kyiv",
+"co": "Ukraine",
+"lat": 50.4501,
+"lon": 30.5234,
+"s": "https://www.irf.ua/en/about/"
+},
+"louisvuitton": {
+"n": "Louis Vuitton Malletier",
+"k": "corp",
+"c": "Paris",
+"co": "France",
+"lat": 48.8566,
+"lon": 2.3522,
+"a": "2 rue du Pont-Neuf, 75001 Paris",
+"s": "https://pappers.fr/entreprise/318571064"
+},
+"qattan": {
+"n": "A. M. Qattan Foundation",
+"k": "found",
+"c": "Ramallah",
+"co": "Palestine",
+"lat": 31.9038,
+"lon": 35.2034,
+"s": "https://en.wikipedia.org/wiki/A._M._Qattan_Foundation",
+"w": "Registered UK charity with London office; HQ building in Ramallah since 2018"
+},
+"americaforbulgaria": {
+"n": "America for Bulgaria Foundation",
+"k": "found",
+"c": "Sofia",
+"co": "Bulgaria",
+"lat": 42.6977,
+"lon": 23.3219,
+"s": "https://us4bg.org/news/abf-is-the-new-owner-of-the-former-us-ambassadors-residence-in-sofia/"
+},
+"xacbank": {
+"n": "XacBank",
+"k": "corp",
+"c": "Ulaanbaatar",
+"co": "Mongolia",
+"lat": 47.8864,
+"lon": 106.9057,
+"s": "https://en.wikipedia.org/wiki/XacBank"
+},
+"dcmsstatutorygrantinaid|UK": {
+"n": "Department for Culture, Media and Sport",
+"k": "gov",
+"c": "London",
+"co": "United Kingdom",
+"lat": 51.5014,
+"lon": -0.1273,
+"a": "100 Parliament Street, London SW1A 2BQ",
+"s": "https://www.gov.uk/dcms"
+},
+"usbank": {
+"n": "U.S. Bank (U.S. Bancorp)",
+"k": "corp",
+"c": "Minneapolis",
+"co": "United States",
+"lat": 44.9778,
+"lon": -93.265,
+"s": "https://www.usbank.com/about-us-bank/company-blog/article-library/us-bank-extends-lease-on-downtown-minneapolis-headquarters.html"
+},
+"nike": {
+"n": "Nike, Inc.",
+"k": "corp",
+"c": "Beaverton",
+"co": "United States",
+"lat": 45.4871,
+"lon": -122.8037,
+"s": "https://en.wikipedia.org/wiki/Nike_World_Headquarters",
+"w": "HQ is in Beaverton, Oregon (Portland metro), not Portland itself"
+},
+"degroofpetercam": {
+"n": "Degroof Petercam",
+"k": "corp",
+"c": "Brussels",
+"co": "Belgium",
+"lat": 50.8503,
+"lon": 4.3517,
+"a": "Rue de l'Industrie 44, 1040 Brussels",
+"s": "https://www.degroofpetercam.com/en-be/brussels-headquarter",
+"w": "Funds a Luxembourg space; group HQ is Brussels"
+},
+"brusselscapital": {
+"n": "Brussels-Capital Region (government)",
+"k": "gov",
+"c": "Brussels",
+"co": "Belgium",
+"lat": 50.8503,
+"lon": 4.3517,
+"s": "https://be.brussels/en/about-region/structure-and-organisations/parliament-ministers/government-region",
+"w": "Kind corrected to gov; regional government"
+},
+"provinceoflimburg|Netherlands": {
+"n": "Provincie Limburg",
+"k": "gov",
+"c": "Maastricht",
+"co": "Netherlands",
+"lat": 50.8514,
+"lon": 5.691,
+"a": "Limburglaan 10, 6229 GA Maastricht",
+"s": "https://organisaties.overheid.nl/woo/16071/Provincie_Limburg",
+"w": "Netherlands province chosen via Maastricht"
+},
+"altum": {
+"n": "ALTUM (Development Finance Institution)",
+"k": "gov",
+"c": "Riga",
+"co": "Latvia",
+"lat": 56.9496,
+"lon": 24.1052,
+"s": "https://eltia.eu/index.php/about/all-members/the-latvian-development-finance-institution-altum",
+"w": "State-owned; kind corrected to gov"
+},
+"cityofbraunschweig|Germany": {
+"n": "Stadt Braunschweig",
+"k": "gov",
+"c": "Braunschweig",
+"co": "Germany",
+"lat": 52.2689,
+"lon": 10.5268,
+"a": "Platz der Deutschen Einheit 1, 38100 Braunschweig",
+"s": "https://ratsinfo.braunschweig.de/integration/wicket/resource/org.apache.wicket.Application/doc1652820.pdf"
+},
+"citycounciloflleida|Spain": {
+"n": "Ajuntament de Lleida (Paeria)",
+"k": "gov",
+"c": "Lleida",
+"co": "Spain",
+"lat": 41.6176,
+"lon": 0.62,
+"a": "Plaça de la Paeria 1, 25007 Lleida",
+"s": "https://www.paeria.cat/centre-de-privacitat/ca/politicaprivacitat"
+},
+"north": {
+"n": "Foundation North",
+"k": "found",
+"c": "Auckland",
+"co": "New Zealand",
+"lat": -36.8485,
+"lon": 174.7633,
+"a": "50 Ponsonby Road, Auckland",
+"s": "https://foundationnorth.org.nz/contact-us"
+},
+"afcnromania": {
+"n": "Administrația Fondului Cultural Național (AFCN)",
+"k": "gov",
+"c": "Bucharest",
+"co": "Romania",
+"lat": 44.4268,
+"lon": 26.1025,
+"a": "Str. Barbu Delavrancea nr. 57, sector 1, Bucharest",
+"s": "https://www.afcn.ro/media/AFCN anunt referent de specialitate Secretariat, Registratură 2023.pdf",
+"w": "Public body; kind corrected to gov"
+},
+"cityofballarat|Australia": {
+"n": "City of Ballarat",
+"k": "gov",
+"c": "Ballarat",
+"co": "Australia",
+"lat": -37.5622,
+"lon": 143.8503,
+"s": "https://en.wikipedia.org/wiki/City_of_Ballarat"
+},
+"homedepot": {
+"n": "The Home Depot",
+"k": "corp",
+"c": "Atlanta",
+"co": "United States",
+"lat": 33.749,
+"lon": -84.388,
+"s": "https://en.wikipedia.org/wiki/Home_Depot",
+"w": "Store Support Center at 2455 Paces Ferry Rd, Cobb County, Atlanta area"
+},
+"citibank": {
+"n": "Citibank (Citigroup)",
+"k": "corp",
+"c": "New York",
+"co": "United States",
+"lat": 40.7128,
+"lon": -74.006,
+"s": "https://en.wikipedia.org/wiki/Citi",
+"w": "Citigroup HQ; Citibank is its bank brand"
+},
+"southlakelandcouncilpersite|UK": {
+"n": "Westmorland and Furness Council (formerly South Lakeland District Council)",
+"k": "gov",
+"c": "Kendal",
+"co": "United Kingdom",
+"lat": 54.328,
+"lon": -2.746,
+"a": "South Lakeland House, Lowther Street, Kendal LA9 4UF",
+"s": "https://www.westmorlandandfurness.gov.uk/news/2024/council-services-moving-south-lakeland-house-and-kendal-town-hall",
+"w": "District council abolished 2023; successor unitary authority"
+},
+"intuit": {
+"n": "Intuit Inc.",
+"k": "corp",
+"c": "Mountain View",
+"co": "United States",
+"lat": 37.3861,
+"lon": -122.0839,
+"s": "https://www.intuit.com/careers/locations/"
+},
+"germanfederalforeignoffice|Germany": {
+"n": "Auswärtiges Amt (German Federal Foreign Office)",
+"k": "gov",
+"c": "Berlin",
+"co": "Germany",
+"lat": 52.52,
+"lon": 13.405,
+"a": "Werderscher Markt 1, 10117 Berlin",
+"s": "https://www.auswaertiges-amt.de/en/about-us/contact"
+},
+"gorkhabrewery": {
+"n": "Gorkha Brewery Pvt Ltd",
+"k": "corp",
+"c": "Kathmandu",
+"co": "Nepal",
+"lat": 27.7172,
+"lon": 85.324,
+"s": "https://www.carlsberggroup.com/who-we-are/about-the-carlsberg-group/global-presence/nepal/",
+"w": "Head office Hattisar, Kathmandu; plant in Nawalparasi"
+},
+"merribekcouncil|Australia": {
+"n": "Merri-bek City Council",
+"k": "gov",
+"c": "Coburg (Melbourne)",
+"co": "Australia",
+"lat": -37.744,
+"lon": 144.966,
+"a": "90 Bell Street, Coburg VIC 3058",
+"s": "https://www.merri-bek.vic.gov.au/my-council/contact/contact-us"
+},
+"basellandschaft": {
+"n": "Kanton Basel-Landschaft",
+"k": "gov",
+"c": "Liestal",
+"co": "Switzerland",
+"lat": 47.4841,
+"lon": 7.7343,
+"a": "Rathausstrasse 2, 4410 Liestal",
+"s": "https://www.baselland.ch/politik-und-behorden/direktionen/bau-und-umweltschutzdirektion/raumplanung/denkmalpflege/inventare/kantonales-inventar-der-geschuetzten-kulturdenkmaeler/liestal/rathausstrasse-2",
+"w": "Canton capital is Liestal; kind corrected to gov"
+},
+"dior": {
+"n": "Christian Dior Couture",
+"k": "corp",
+"c": "Paris",
+"co": "France",
+"lat": 48.8566,
+"lon": 2.3522,
+"s": "https://www.papercitymag.com/fashion/dior-new-paris-flagship-headquarters-musuem-restaurant",
+"w": "30 avenue Montaigne; source is trade press, not official site"
+},
+"sidafunded": {
+"n": "Sida (Swedish International Development Cooperation Agency)",
+"k": "gov",
+"c": "Stockholm",
+"co": "Sweden",
+"lat": 59.3293,
+"lon": 18.0686,
+"s": "https://openaid.se/en/contact",
+"w": "Source lists Valhallavägen 199, Stockholm; a 2018 plan to move HQ to Botkyrka was not verified. Kind corrected to gov."
+},
+"aurubisbulgaria": {
+"n": "Aurubis Bulgaria AD",
+"k": "corp",
+"c": "Pirdop",
+"co": "Bulgaria",
+"lat": 42.7,
+"lon": 24.17,
+"s": "https://www.aurubis.com/bulgaria-aurubis-com/bulgaria/imprint",
+"w": "Plant/head office in Pirdop; separate Sofia office exists"
+},
+"taiwanfordemocracy": {
+"n": "Taiwan Foundation for Democracy",
+"k": "found",
+"c": "Taipei",
+"co": "Taiwan",
+"lat": 25.033,
+"lon": 121.5654,
+"s": "https://en.wikipedia.org/wiki/Taiwan_Foundation_for_Democracy"
 }
 }
