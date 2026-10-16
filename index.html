@@ -160,10 +160,13 @@ return maplibregl$1;
       <div id="layersControl">
         <div id="layersPanel" hidden>
           <p class="layers-title">Layers</p>
-          <label><input type="checkbox" checked disabled> Cultural spaces</label>
-          <label><input type="checkbox" data-layer="ties"> Funding ties</label>
-          <label><input type="checkbox" data-layer="flags"> Flagged on record</label>
-          <label><input type="checkbox" data-layer="money"> Money network</label>
+          <label><input type="checkbox" checked disabled> <span>Cultural spaces <span class="layers-count" data-count="spaces"></span></span></label>
+          <label><input type="checkbox" data-layer="ties"> <span>Funding ties <span class="layers-count" data-count="ties"></span></span></label>
+          <label><input type="checkbox" data-layer="flags"> <span>Flagged on record <span class="layers-count" data-count="flags"></span></span></label>
+          <label><input type="checkbox" data-layer="money"> <span>Money network <span class="layers-count" data-count="money"></span></span></label>
+          <label><input type="checkbox" data-layer="right"> <span>Right-wing sponsors <span class="layers-count" data-count="right"></span></span></label>
+          <label><input type="checkbox" data-layer="epstein"> <span>Epstein files <span class="layers-count" data-count="epstein"></span></span></label>
+          <p class="layers-key"><span><i style="background:#8fa2ff"></i>Public money</span><span><i style="background:#a9e0e6"></i>Company</span><span><i style="background:#ff9966"></i>Foundation or donor</span><span><i style="background:#ff6119"></i>Flagged</span><span><i style="background:#ff5a4d"></i>Right-wing sponsor</span><span><i style="background:#ec4fe8"></i>Epstein files</span></p>
         </div>
         <button id="layersBtn" type="button" aria-expanded="false" aria-controls="layersPanel">Layers</button>
       </div>
