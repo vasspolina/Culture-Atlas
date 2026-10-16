@@ -718,3 +718,19 @@ body.gossip-mode-active header button:hover,body.gossip-mode-active header a:hov
 /* The Atlas / Dossier / Curator tab bar is gone: the dossier opens on a space, Close returns to the map, and the header Chat button opens the curator. The tab elements stay in the DOM so the existing scripts still drive them. */
 #mobileBottomNav{display:none!important}
 body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
+/* The globe pane follows the theme too: white ground and ink in light mode. */
+:root:not([data-theme="dark"]) #globeViewport{background:#fff;color:#000}
+:root:not([data-theme="dark"]) #globeViewport a{color:#000}
+:root:not([data-theme="dark"]) #desktopGlobeTopControls button,:root:not([data-theme="dark"]) #mobileFilterChipsSection button{background:#fff;color:#000;border-color:#000}
+:root:not([data-theme="dark"]) #desktopGlobeTopControls button:hover,:root:not([data-theme="dark"]) #mobileFilterChipsSection button:hover{background:#000;color:#fff}
+:root:not([data-theme="dark"]) #desktopGlobeTopControls button[aria-pressed=true],:root:not([data-theme="dark"]) #mobileFilterChipsSection button[aria-pressed=true]{background:var(--cobalt);color:#fff}
+:root:not([data-theme="dark"]) #zoomControls{border-color:#000}
+:root:not([data-theme="dark"]) #layersControl #layersBtn{background:var(--block);color:#000}
+/* Gossip mode: the globe pane is dark with yellow text, in either theme. */
+:root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport{background:#000;color:#ffd600}
+:root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport a{color:#ffd600}
+body.gossip-mode-active #globeViewport{color:#ffd600}
+:root:not([data-theme="dark"]) body.gossip-mode-active #desktopGlobeTopControls button,:root:not([data-theme="dark"]) body.gossip-mode-active #mobileFilterChipsSection button{background:#000;color:#ffd600;border-color:#ffd600}
+body.gossip-mode-active #desktopGlobeTopControls button,body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
+body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
+:root:not([data-theme="dark"]) body.gossip-mode-active #zoomControls{border-color:#ffd600}

@@ -9935,11 +9935,17 @@ return maplibregl$1;
     function render(ts) {
       if (typeof syncGlobeControls === 'function') syncGlobeControls();
       const now = (typeof ts === 'number') ? ts : performance.now();
+      // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
+      const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark' && !isGossipModeActive; // gossip mode is always a dark ground with yellow text
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#f4f4f4'), G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#ffffff'), G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
       const dt = lastRenderTs ? Math.min(0.1, Math.max(0, (now - lastRenderTs) / 1000)) : 1 / 60;
       lastRenderTs = now;
       // Scale coordinates to high-DPI hardware buffer for crystal-clear Retina rendering
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, width, height);
+      // The canvas has no alpha channel, so a cleared frame is black: paint the theme's ground under everything.
+      ctx.fillStyle = G_GROUND;
+      ctx.fillRect(0, 0, width, height);
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = 'high';
 
@@ -10033,9 +10039,9 @@ return maplibregl$1;
         // 1. The globe is a black disc with a single hairline limb: lines only, no fills, no shading.
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
-        ctx.fillStyle = '#000000';
+        ctx.fillStyle = G_GROUND;
         ctx.fill();
-        ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
+        ctx.strokeStyle = isGossipModeActive ? '#ffd600' : G_LINE;
         ctx.lineWidth = 0.8;
         ctx.stroke();
 
@@ -10067,7 +10073,7 @@ return maplibregl$1;
             if (dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
           }
 
-          ctx.fillStyle = isCActive ? '#004144' : '#000000';
+          ctx.fillStyle = isCActive ? G_ACTIVE : G_GROUND;
 
           for (let j = 0; j < country.r.length; j++) {
             const ring = country.r[j];
@@ -10093,7 +10099,7 @@ return maplibregl$1;
               }
               ctx.closePath();
               ctx.fill();
-              ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
+              ctx.strokeStyle = isGossipModeActive ? '#ffd600' : G_LINE;
               ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
               ctx.stroke();
             } else {
@@ -10146,7 +10152,7 @@ return maplibregl$1;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
+                ctx.strokeStyle = isGossipModeActive ? '#ffd600' : G_LINE;
                 ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
                 ctx.stroke();
               }
@@ -10159,7 +10165,7 @@ return maplibregl$1;
         const drawGlobeLabel = (text, x, y, fill) => {
           ctx.lineJoin = 'round';
           ctx.lineWidth = 3;
-          ctx.strokeStyle = 'rgba(0, 0, 0, 0.95)';
+          ctx.strokeStyle = G_HALO;
           ctx.strokeText(text, x, y);
           ctx.fillStyle = fill;
           ctx.fillText(text, x, y);
@@ -10281,7 +10287,7 @@ return maplibregl$1;
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
-                ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
+                ctx.strokeStyle = isGossipModeActive ? '#ffd600' : G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
@@ -10293,7 +10299,7 @@ return maplibregl$1;
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
                 if (isSelected) { ctx.fillStyle = '#ff6119'; ctx.fill(); }
-                ctx.strokeStyle = isGossipModeActive ? '#ff6119' : '#f4f4f4';
+                ctx.strokeStyle = isGossipModeActive ? '#ffd600' : G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               }
@@ -10342,17 +10348,17 @@ return maplibregl$1;
                   drawnCountryBoxes.push(cBox);
 
                   // Crisp solid dark outline halo around text for 100% razor-sharp edge definition
-                  ctx.strokeStyle = 'rgba(0, 0, 0, 0.95)';
+                  ctx.strokeStyle = G_HALO;
                   ctx.lineWidth = 3.0;
                   ctx.lineJoin = 'round';
                   ctx.strokeText(c.name, pt.x, pt.y + 0.5);
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? (isGossipModeActive ? '#ff6119' : '#08bdba') 
+                    ? (isGossipModeActive ? '#ffd600' : '#08bdba') 
                     : isHov
-                    ? '#ffffff'
-                    : (isGossipModeActive ? '#ff6119' : '#ffffff');
+                    ? G_TEXT
+                    : (isGossipModeActive ? '#ffd600' : G_TEXT);
                   ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }
               }
@@ -10455,7 +10461,7 @@ return maplibregl$1;
             ctx.save();
             ctx.beginPath();
             ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
-            ctx.strokeStyle = '#ffffff';
+            ctx.strokeStyle = G_LINE;
             ctx.lineWidth = 0.8;
             ctx.stroke();
             ctx.restore();
@@ -10466,12 +10472,12 @@ return maplibregl$1;
           ctx.beginPath();
           ctx.arc(d.x, d.y, isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5), 0, Math.PI * 2);
           ctx.strokeStyle = isHov 
-            ? (isGossipModeActive ? '#ff6119' : '#f4f4f4')
+            ? (isGossipModeActive ? '#ffd600' : G_LINE)
             : (isVisualCritiqueOnly && hasVc)
             ? '#f59e0b'
             : isGossipModeActive 
-            ? (d.inst.gossip_data ? '#facc15' : '#713f12')
-            : (d.inst.tier === 'A' ? '#10b981' : d.inst.tier === 'B' ? '#be95ff' : '#08bdba');
+            ? (d.inst.gossip_data ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : '#713f12')
+            : (d.inst.tier === 'A' ? (GLOBE_LIGHT ? '#0a8f68' : '#10b981') : d.inst.tier === 'B' ? (GLOBE_LIGHT ? '#7a52d6' : '#be95ff') : (GLOBE_LIGHT ? '#008a87' : '#08bdba'));
           // Hollow rings, colored by tier; the selected one is filled.
           ctx.lineWidth = 0.8;
           if (isSel) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
@@ -10665,7 +10671,7 @@ return maplibregl$1;
         const hudY = height - 28;
 
         // Scale bar line & ticks
-        ctx.strokeStyle = '#f4f4f4';
+        ctx.strokeStyle = G_LINE;
         ctx.lineWidth = 0.8;
         ctx.beginPath();
         ctx.moveTo(hudX, hudY - 4);
@@ -10681,7 +10687,7 @@ return maplibregl$1;
         ctx.font = '14px "PP Neue Gstaad", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
-        drawGlobeLabel(`0           ${scaleVal} ${scaleUnit}`, hudX + barPx / 2, hudY - 6, '#f4f4f4');
+        drawGlobeLabel(`0           ${scaleVal} ${scaleUnit}`, hudX + barPx / 2, hudY - 6, G_LINE);
 
         // Coordinates HUD
         const centerCoord = unproject(cx, cy, r, cx, cy) || { lat: rotLat, lon: rotLon };
@@ -10693,13 +10699,13 @@ return maplibregl$1;
 
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        drawGlobeLabel(coordTxt, coordX + coordW / 2, hudY - 6, '#f4f4f4');
+        drawGlobeLabel(coordTxt, coordX + coordW / 2, hudY - 6, G_LINE);
 
         // North Compass Rose (Interactive)
         const compassX = width - 38;
         const compassY = 38;
-        ctx.fillStyle = 'rgba(7, 11, 20, 0.85)';
-        ctx.strokeStyle = '#004144';
+        ctx.fillStyle = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.9)' : 'rgba(7, 11, 20, 0.85)';
+        ctx.strokeStyle = GLOBE_LIGHT ? '#161616' : '#004144';
         ctx.lineWidth = 0.8;
         ctx.beginPath();
         ctx.arc(compassX, compassY, 18, 0, Math.PI * 2);
@@ -10714,7 +10720,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = '#f4f4f4';
+        ctx.fillStyle = G_LINE;
         ctx.beginPath();
         ctx.moveTo(compassX, compassY - 10);
         ctx.lineTo(compassX + 3.5, compassY + 3);
@@ -10723,7 +10729,7 @@ return maplibregl$1;
         ctx.fill();
 
         ctx.font = '14px "PP Neue Gstaad", sans-serif';
-        ctx.fillStyle = '#cbd5e1';
+        ctx.fillStyle = G_TEXT;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
         ctx.fillText('N', compassX, compassY - 12);
