@@ -397,13 +397,13 @@ return maplibregl$1;
         <div class="flex-1 overflow-y-auto p-4 space-y-3" id="curatorDrawerChatBody">
           <div class="py-2" id="curatorDrawerGreeting">
             <h1 class="curator-hero-title">What’s behind<span class="blk"></span> this <span class="lbl">Funders and sources</span> cultural <span class="lbl m">Ask</span> space?</h1>
-            <p>Ask about a space, its sponsors, or a controversy.</p>
+            <p>Ask about a cultural space, its funders or reported controversies.</p>
           </div>
           <div class="pt-2">
             <p class="meta mb-2">Suggested Inquiries</p>
             <div class="flex flex-col gap-1">
-              <button class="curator-suggest-chip text-left py-1 rule-b" data-query="Find spaces in London" type="button">
-                Find spaces in London
+              <button class="curator-suggest-chip text-left py-1 rule-b" data-query="Find cultural spaces in London" type="button">
+                Find cultural spaces in London
               </button>
               <button class="curator-suggest-chip text-left py-1 rule-b" data-query="Who funds this museum?" type="button">
                 Who funds this museum?
@@ -420,7 +420,7 @@ return maplibregl$1;
           <details id="chatRecordsInfoMobile" class="chat-info">
             <summary>How the records work</summary>
             <p class="no-indent">Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
-            <p class="no-indent">Clean, source cited: the record names at least one source outside the museum's own website.</p>
+            <p class="no-indent">Source cited: the record names at least one source outside the museum's own website.</p>
             <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
             <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
             <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
@@ -557,7 +557,7 @@ return maplibregl$1;
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
-          <input id="mobileAnchoredSearchInput" type="text" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="flex-1 min-h-_44px" />
+          <input id="mobileAnchoredSearchInput" type="text" placeholder="Ask about a cultural space, its funders or reported controversies…" class="flex-1 min-h-_44px" />
           <button id="mobileAnchoredSearchSubmitBtn" type="button" class="w-9 h-9 flex items-center justify-center shrink-0 min-h-_44px min-w-_44px" title="Send query">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
               <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -687,11 +687,9 @@ return maplibregl$1;
             
             <!-- Hero Greeting (Stitch title style) -->
             <div id="curatorHeroGreeting" class="curator-message-wrap w-full flex flex-col items-center justify-center text-center py-6">
-              <h1>
-                What’s behind<span class="blk"></span> this <span class="lbl">Funders and sources</span> cultural <span class="lbl m">Ask</span> space?
-              </h1>
+              <h1 id="curatorHeroTitle">Who funds this cultural institution?</h1>
               <p class="max-w-lg">
-                Ask about a cultural space: who funds it, what has been reported about it, and where that comes from.
+                Explore who funds cultural spaces and what’s been reported about them. Follow the sources.
               </p>
               <div id="curatorStarterPrompts" class="starter-prompts"></div>
             </div>
@@ -731,7 +729,7 @@ return maplibregl$1;
             
             <!-- Input Area (Uncontained Flat Editorial) -->
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
-              <textarea id="workInput" rows="2" placeholder="Ask about a cultural space, its sponsors, or a controversy…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+              <textarea id="workInput" rows="2" placeholder="Ask about a cultural space, its funders or reported controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
               
               <!-- Bottom Toolbar -->
               <div class="flex items-center justify-between pt-2">
@@ -783,7 +781,7 @@ return maplibregl$1;
             <details id="chatRecordsInfo" class="chat-info">
               <summary>How the records work</summary>
               <p class="no-indent">Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
-              <p class="no-indent">Clean, source cited: the record names at least one source outside the museum's own website.</p>
+              <p class="no-indent">Source cited: the record names at least one source outside the museum's own website.</p>
               <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
               <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
               <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
@@ -844,7 +842,7 @@ return maplibregl$1;
   <div class="z-40 rule-t px-3 py-2 flex md-hidden flex-col gap-1_5 shrink-0" data-purpose="ai-chat-input-bar" id="mobileStickyInputBar">
     <div class="relative flex items-center">
       <!-- Input Field -->
-      <textarea class="w-full px-3 py-2 pr-20" id="chat-input" rows="2" placeholder="Ask about a museum or cultural space..."></textarea>
+      <textarea class="w-full px-3 py-2 pr-20" id="chat-input" rows="2" placeholder="Ask about a cultural space, its funders or reported controversies…"></textarea>
       <!-- Send Pill Button -->
       <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5">
         <span>Send</span>
@@ -8337,7 +8335,7 @@ return maplibregl$1;
         body.innerHTML = `
           <div class="space-y-4">
             <div class="p-3">
-              Curated walking itineraries traversing verified clean-funding institutions and pioneering artist-run initiatives across major cultural centers. Launching an itinerary draws a route line on the vector street map with sequential stop navigation.
+              Curated walking itineraries traversing institutions with documented funding and pioneering artist-run initiatives across major cultural centers. Launching an itinerary draws a route line on the vector street map with sequential stop navigation.
             </div>
 
             <div class="grid grid-cols-1 md-grid-cols-2 gap-3_5">
@@ -8409,7 +8407,7 @@ return maplibregl$1;
                   <div class="flex items-center gap-3 pt-1">
                     <label class="inline-flex items-center gap-1_5">
                       <input type="checkbox" id="customCrawlCleanOnly" class="" checked>
-                      <span>Clean Only</span>
+                      <span>Source cited only</span>
                     </label>
                     <label class="inline-flex items-center gap-1_5">
                       <input type="checkbox" id="customCrawlFreeOnly" class="">
@@ -8483,7 +8481,7 @@ return maplibregl$1;
                         <span class="w-5 h-5 meta t-strong flex items-center justify-center">${s.stopIndex}</span>
                         <strong class="">${escapeHtml(s.name)}</strong>
                       </div>
-                      <span class="meta px-1_5 py-0_2 ${s.tier === 'A' ? 'is-good' : ''}">${s.tier === 'A' ? 'Clean' : 'Flagged'}</span>
+                      <span class="meta px-1_5 py-0_2 ${s.tier === 'A' ? 'is-good' : ''}">${s.tier === 'A' ? 'Source cited' : 'Flagged'}</span>
                     </div>
                     <div class="flex items-center gap-2 meta flex-wrap">
                       <span>${escapeHtml(s.openingHours)}</span>
@@ -8859,7 +8857,7 @@ return maplibregl$1;
         trusteeCtx.font = '14px "PP Neue Gstaad", sans-serif';
         trusteeCtx.textAlign = 'center';
         trusteeCtx.textBaseline = 'middle';
-        const glyph = n.type === 'institution' ? (n.tier === 'A' ? 'CLEAN' : 'INST') : 'CONFLICT';
+        const glyph = n.type === 'institution' ? (n.tier === 'A' ? 'SOURCED' : 'INST') : 'CONFLICT';
         trusteeCtx.fillText(glyph, n.x, n.y);
 
         // Interlock Count Badge for prominent nodes (>= 2 interlocks)
@@ -9113,7 +9111,7 @@ return maplibregl$1;
                   ? (node.tier === 'A' ? 'is-good' : '')
                   : 'is-bad'
               }">
-                ${isInst ? (node.tier === 'A' ? 'Clean Cultural Institution' : 'Flagged Cultural Institution') : `Corporate Trustee, ${node.category}`}
+                ${isInst ? (node.tier === 'A' ? 'Cultural institution, source cited' : 'Flagged cultural institution') : `Corporate Trustee, ${node.category}`}
               </span>
               <span class="meta">${connectedEdges.length} Connected Interlocks</span>
             </div>
@@ -11010,7 +11008,7 @@ return maplibregl$1;
 
     // One label per tier, used everywhere a tier is named.
     function tierName(inst) {
-      return inst.tier === 'A' ? 'Clean, source cited' : inst.tier === 'B' ? 'Flagged' : 'Unverified';
+      return inst.tier === 'A' ? 'Source cited' : inst.tier === 'B' ? 'Flagged' : 'Unverified';
     }
 
     function updateDesktopDossier(inst) {
@@ -13029,7 +13027,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
    - ### What You Actually Get (insider reality check on the visitor experience vs the hype)
    - ### The Governance Problem (specific trustee conflicts, corporate underwriting, and board covenants)
    - ### What This Actually Means (systemic impact, worker pay ratios, and cultural capture)
-   - ### The Comparison That Matters (independent, ethically clean alternatives in the same city)
+   - ### The Comparison That Matters (independent alternatives in the same city, with the sources for each)
 2. GOSSIP MODE & WHISPERS GUARDRAILS:
    - When in Gossip Mode or answering rumors, whispers, or backchannel inquiries, maintain strict brevity and enforce structured output:
    - When in Gossip Mode, structure every response into 3 concise sections: Core Fact, Governance Risk, and Verified Source, using bullet points.
@@ -13837,13 +13835,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         hero = document.createElement('div');
         hero.id = 'curatorHeroGreeting';
         hero.className = 'curator-message-wrap w-full flex flex-col py-6';
-        hero.setAttribute('data-speech', 'Welcome to Culture Atlas. Ask about a cultural space: who funds it, what has been reported about it, and where that comes from.');
+        hero.setAttribute('data-speech', 'Welcome to Culture Atlas. Explore who funds cultural spaces and what’s been reported about them. Follow the sources.');
         hero.innerHTML = `
-          <h1>
-            What’s behind<span class="blk"></span> this <span class="lbl">Funders and sources</span> cultural <span class="lbl m">Ask</span> space?
-          </h1>
+          <h1 id="curatorHeroTitle">${escapeHtml(HERO_TITLE)}</h1>
           <p class="max-w-lg">
-            Ask about a cultural space: who funds it, what has been reported about it, and where that comes from.
+            Explore who funds cultural spaces and what’s been reported about them. Follow the sources.
           </p>
           <div id="curatorStarterPrompts" class="starter-prompts"></div>
         `;
@@ -14087,12 +14083,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Follow-up chips only offer what the space in view has on record: funding, a flag, opening hours.
       const followFor = () => {
         const t = (typeof target !== 'undefined' && target) || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
-        if (!t) return ['Which spaces are flagged?', 'Find spaces in London'];
+        if (!t) return ['Which spaces are flagged?', 'Find cultural spaces in London'];
         const out = [];
         if (t.funding || t.funder_links) out.push('Who funds this museum?');
         if (t.why_flagged || t.tier === 'B') out.push('What is flagged here?');
         if (t.opening_hours) out.push('Opening hours');
-        out.push(t.city ? `Find spaces in ${t.city}` : 'Find spaces in London');
+        out.push(t.city ? `Find cultural spaces in ${t.city}` : 'Find cultural spaces in London');
         return out;
       };
       const answer = (html, follow) => appendCuratorMessage(`<div class="space-y-3">${html}</div>`, follow || followFor());
@@ -14105,7 +14101,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countA = ALL_INSTITUTIONS.filter(i => i.tier === 'A').length;
       const countB = ALL_INSTITUTIONS.filter(i => i.tier === 'B').length;
       const countU = ALL_INSTITUTIONS.filter(i => i.tier !== 'A' && i.tier !== 'B').length;
-      const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I answer only from the records on this page: who funds a space, what is reported about it, hours and prices where they are recorded, and the sources.</p><p>${countA} spaces are marked clean with a source outside the museum, ${countB} are flagged with a reason, and ${countU} are unverified.</p>`);
+      const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I answer only from the records on this page: who funds a space, what is reported about it, hours and prices where they are recorded, and the sources.</p><p>${countA} spaces have a source outside the museum, ${countB} are flagged with a reason, and ${countU} are unverified.</p>`);
       const listOf = (items, title) => answer(items.length ? `<p>${title}</p>${items.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml(tierName(i))}.</p>`).join('')}${items.length > 12 ? `<p class="no-indent">${items.length - 12} more.</p>` : ''}` : '<p>None are recorded.</p>');
 
       if (asks(/^\s*(hi|hello|hey|help|what can you do)\b/)) { guidance(); return; }
@@ -14145,9 +14141,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding detail is recorded for this space yet.</p>'}${fact('', target.watch)}${sourcesHtml(target)}`);
         return;
       }
-      if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|trust)\b/)) {
+      if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
         answer(`<p>Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it: none of the records on this page has been independently verified.</p>
-          <p>${countA} spaces are marked clean with at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no source outside the museum, or no reason recorded.</p>
+          <p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no source outside the museum, or no reason recorded.</p>
           <p>Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>`);
         return;
       }
@@ -15061,7 +15057,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         workInput.rows = 2;
         workInput.classList.remove('min-h-_110px', 'sm-min-h-_130px', 'max-h-60', 'is-good');
         workInput.classList.add('min-h-_34px', 'sm-min-h-_42px', 'max-h-36');
-        workInput.placeholder = 'Ask about a cultural space, its sponsors, or a controversy…';
+        workInput.placeholder = 'Ask about a cultural space, its funders or reported controversies…';
       }
 
       // 9. Restore suggestions and hero greeting
@@ -16244,6 +16240,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Starter prompts for an empty chat. Every one is a question the offline answers can really answer from the records, and the
     // examples are picked at random from the records themselves, so nothing is promised that the data does not hold. With a space selected
     // the prompts are about that space.
+    // The chat title is one of four, picked on each load.
+    const HERO_TITLES = ['Who funds this cultural institution?', 'Who’s behind this cultural institution?', 'What should I know about this cultural institution?', 'What’s the story behind this cultural institution?'];
+    const HERO_TITLE = HERO_TITLES[Math.floor(Math.random() * HERO_TITLES.length)];
     function starterPromptList() {
       const registry = (typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []).filter(c => c && c.name);
       const registryName = (city) => { const c = city && registry.find(r => matchC(r.name, city)); return c ? c.name : ''; };
@@ -16253,8 +16252,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (sel) {
         out.push(`Who funds ${sel.name}?`, `What is reported about ${sel.name}?`, `What are the opening hours of ${sel.name}?`);
         const place = registryName(sel.city);
-        if (place) out.push(`Find spaces in ${place}`);
-        return out.filter(q => resolves(q, sel) || /^Find spaces in /.test(q));
+        if (place) out.push(`Find cultural spaces in ${place}`);
+        return out.filter(q => resolves(q, sel) || /^Find cultural spaces in /.test(q));
       }
       // A different set on every load: a city with several clean records, a funded space, a flagged one, and the method question.
       const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
@@ -16263,16 +16262,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const counts = {};
       clean.forEach(i => { const c = registryName(i.city); if (c) counts[c] = (counts[c] || 0) + 1; });
       const cities = Object.keys(counts).filter(c => counts[c] >= 3);
-      if (cities.length) out.push(`Find spaces in ${pick(cities)}`);
+      if (cities.length) out.push(`Find cultural spaces in ${pick(cities)}`);
       const funded = shuffled(clean.filter(i => i.funding)).find(i => resolves(`Who funds ${i.name}?`, i));
       if (funded) out.push(`Who funds ${funded.name}?`);
       const flagged = shuffled(ALL_INSTITUTIONS.filter(i => i.tier === 'B')).find(i => resolves(`Why is ${i.name} flagged?`, i) && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i));
       if (flagged) out.push(pick([`Why is ${flagged.name} flagged?`, `What is reported about ${flagged.name}?`]));
-      out.push('How do you decide which spaces are clean?');
+      out.push('How are spaces assessed?');
       return out;
     }
 
     function renderStarterPrompts() {
+      const heroTitle = document.getElementById('curatorHeroTitle');
+      if (heroTitle && heroTitle.textContent !== HERO_TITLE) heroTitle.textContent = HERO_TITLE;
       const box = document.getElementById('curatorStarterPrompts');
       if (!box) return;
       let list = [];
@@ -16297,7 +16298,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       transit: { label: 'Public transit tips' },
       accessibility: { label: 'Universal accessibility' },
       amenities: { label: 'Cafés & bookshops' },
-      ethical: { label: 'Clean funding' },
+      ethical: { label: 'Source cited' },
       artist_run: { label: 'Artist-run spaces' },
       fossil_free: { label: 'Fossil & defense-free' },
       finance_civic: { label: 'Public subsidized (≥50%)' },
