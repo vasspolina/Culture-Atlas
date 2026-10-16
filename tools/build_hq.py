@@ -144,5 +144,9 @@ people = {}
 for n, (assoc, city, ctry, addr) in PEOPLE.items():
     lat, lon = C[city]; people[n] = {'n': n, 'w': assoc, 'c': city, 'co': ctry, 'lat': lat, 'lon': lon, **({'a': addr} if addr else {})}
 here = os.path.dirname(os.path.abspath(__file__))
+# Funders researched against public sources (tools/hq_extra.json): each carries its source page in `s`.
+extra = json.load(open(os.path.join(here, 'hq_extra.json')))
+for k, v in extra.items():
+    out.setdefault(k, v)
 json.dump({'org': out, 'people': people}, open(os.path.join(here, '..', 'assets', 'hq.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 print(len(out), 'organisations,', len(people), 'people')
