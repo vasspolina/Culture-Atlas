@@ -5,7 +5,7 @@
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false };
+  const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false, hq: false, people: false };
   const COL = { gov: '#8fa2ff', corp: '#a9e0e6', found: '#ff9966', flag: '#ff6119', right: '#ff5a4d', epstein: '#ec4fe8' };
   const RIGHT = n => typeof n[5] === 'string' && n[5].indexOf('right:') === 0;
   const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? ['Jeffrey Epstein'] : []);
@@ -13,6 +13,24 @@
   const rad = Math.PI / 180;
   let recById = null, keyIndex = null, keyKind = null, web = null, loading = false;
   let cityFlags = null;
+  // Headquarters of the funders and offices of the people the funding map names (assets/hq.json, built by tools/build_hq.py).
+  const KIND = { gov: COL.gov, corp: COL.corp, found: COL.found };
+  let HQ = null, hqLoading = false;
+  function loadHq() {
+    if (HQ || hqLoading) return;
+    hqLoading = true;
+    fetch('assets/hq.json').then(r => r.json()).then(d => {
+      const orgs = Object.entries(d.org).map(([key, o]) => Object.assign({ key, kind: 'org' }, o));
+      const people = Object.entries(d.people).map(([name, o]) => Object.assign({ key: 'person:' + name, kind: 'person' }, o));
+      // Pins are city-level, so entries in one city fan out around it instead of stacking.
+      const byCity = new Map();
+      orgs.concat(people).forEach(e => { const k = e.c; if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(e); });
+      byCity.forEach(list => list.forEach((e, i) => { const a = i * 2.39996, rr = i === 0 ? 0 : 8 + 5 * Math.sqrt(i); e.dx = Math.cos(a) * rr; e.dy = Math.sin(a) * rr; }));
+      HQ = { orgs, people, byKey: new Map(orgs.map(o => [o.key, o])), byName: new Map(people.map(p => [p.n, p])) };
+      hqLoading = false; updateCounts();
+      if (typeof scheduleRender === 'function') scheduleRender();
+    }).catch(() => { hqLoading = false; });
+  }
 
   function loadMoney(cb) {
     if (recById) return cb && cb();
@@ -149,9 +167,61 @@
     });
   }
 
+
+  // Headquarters and offices: a diamond for each funder's head office, a circle for each person's office; the focused
+  // space is joined to the head offices of its funders, and to the people the Epstein files tie to it.
+  function drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes) {
+    if (!HQ) return;
+    const focus = hov || sel, rec = focus && recById && recById.get(focus.id);
+    const linkedOrgs = new Set(), linkedPeople = new Set();
+    if (rec) {
+      rec.nodes.forEach(n => { if (n[5] && HQ.byKey.has(n[5])) linkedOrgs.add(n[5]); });
+      (rec.ep || []).forEach(e => { if (e.p && HQ.byName.has(e.p)) linkedPeople.add(e.p); });
+    }
+    const pts = [];
+    const place = (e, show) => {
+      if (!show) return;
+      const pt = project(e.lon, e.lat, r, cx, cy); if (!pt.front) return;
+      pts.push([e, pt.x + e.dx, pt.y + e.dy]);
+    };
+    if (L.hq) HQ.orgs.forEach(e => place(e, true));
+    if (L.people) HQ.people.forEach(e => place(e, true));
+    // joins from the focused space
+    if (rec && typeof rec.lat === 'number') {
+      ctx.lineWidth = 1.2; ctx.globalAlpha = 0.85;
+      if (L.hq) linkedOrgs.forEach(k => { const o = HQ.byKey.get(k); ctx.strokeStyle = KIND[o.k]; arc(project, rec, o, r, cx, cy, ctx); });
+      if (L.people) linkedPeople.forEach(n => { const o = HQ.byName.get(n); ctx.strokeStyle = COL.epstein; arc(project, rec, o, r, cx, cy, ctx); });
+      ctx.globalAlpha = 1;
+    }
+    // marks
+    ctx.lineWidth = 1;
+    pts.forEach(([e, x, y]) => {
+      const on = e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n);
+      const s = on ? 7 : 5.5;
+      ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.epstein; ctx.strokeStyle = '#000';
+      ctx.beginPath();
+      if (e.kind === 'org') { ctx.moveTo(x, y - s); ctx.lineTo(x + s, y); ctx.lineTo(x, y + s); ctx.lineTo(x - s, y); ctx.closePath(); }
+      else ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+    });
+    // names on flat blocks: for the focused space's own, and for all when the view is close
+    const close = r >= baseRadius * 5;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    pts.forEach(([e, x, y]) => {
+      const on = e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n);
+      if (!(on || close)) return;
+      const text = e.kind === 'org' ? `${e.n}, ${e.c}` : `${e.n}, ${e.w}`, t = text.length > 44 ? text.slice(0, 42) + '…' : text;
+      const w = ctx.measureText(t).width + 12, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
+      if (collides(box, boxes)) return;
+      boxes.push(box); ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.epstein; ctx.fillRect(box.x, box.y, w, h);
+      ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5);
+    });
+  }
+
   window.atlasLayersDrawNodes = function (ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!L.flags && !L.money && !L.right && !L.epstein) return;
-    if ((L.money || L.right || L.epstein) && !recById) loadMoney();
+    if (!L.flags && !L.money && !L.right && !L.epstein && !L.hq && !L.people) return;
+    if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
+    if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
     const font = '14px "PP Neue Gstaad", sans-serif';
     const boxes = labelBoxesOnScreen(dots);
@@ -186,6 +256,8 @@
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
     if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0);
     if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0);
+
+    if (L.hq || L.people) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
 
     if (L.money) {
       if (!recById) { ctx.restore(); return; }
@@ -248,6 +320,10 @@
       set('spaces', String(ALL_INSTITUTIONS.length));
       set('flags', String(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length));
     }
+    if (HQ) {
+      set('hq', `${HQ.orgs.length} head offices in ${new Set(HQ.orgs.map(o => o.c)).size} cities`);
+      set('people', `${HQ.people.length} offices of people named in the records`);
+    }
     if (web) {
       set('ties', `${web.length} links, ${[...keyIndex.values()].filter(ids => ids.length >= 2).length} shared funders`);
       set('money', `${[...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length} spaces with funders named`);
@@ -269,6 +345,7 @@
       const k = inp.dataset.layer;
       L[k] = inp.checked;
       if (k !== 'flags' && inp.checked) loadMoney();
+      if ((k === 'hq' || k === 'people') && inp.checked) loadHq();
       if (typeof scheduleRender === 'function') scheduleRender();
     }));
     updateCounts();
