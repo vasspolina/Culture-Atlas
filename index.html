@@ -6559,8 +6559,8 @@ return maplibregl$1;
           minzoom: 14,
           paint: {
             'fill-extrusion-color': '#ffffff',
-            'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 8]],
-            'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]],
+            'fill-extrusion-height': 0,
+            'fill-extrusion-base': 0,
             'fill-extrusion-opacity': 1,
             'fill-extrusion-vertical-gradient': false
           }
@@ -7035,6 +7035,7 @@ return maplibregl$1;
       const ground = isGossipModeActive ? '#ff6119' : dark ? '#121212' : '#ffffff';
       const line = isGossipModeActive ? '#000000' : dark ? '#8a8a8a' : '#555555';
       layers.forEach(l => {
+        if (l.id && l.id.indexOf('xray') === 0) return; // the building view keeps its own colours
         try {
           if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', ground);
           else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', line);
@@ -7043,6 +7044,13 @@ return maplibregl$1;
           else if (l.type === 'symbol') map.setPaintProperty(l.id, 'text-halo-color', ground);
         } catch (e) { /* a layer this map does not have */ }
       });
+      // The building view's shell is a faint ink tint over the outline, not a solid block.
+      try {
+        if (map.getLayer('xray-shell')) {
+          map.setPaintProperty('xray-shell', 'fill-extrusion-color', isGossipModeActive ? '#000000' : dark ? '#ffffff' : '#161616');
+          map.setPaintProperty('xray-shell', 'fill-extrusion-opacity', isGossipModeActive ? 0.22 : 0.14);
+        }
+      } catch (e) { /* the building view is not open */ }
     }
     // Light and dark mode: one switch in the header, remembered, following the system until it is set.
     function syncThemeButtons() {
@@ -7369,7 +7377,8 @@ return maplibregl$1;
       if (!cityVectorMap.getSource('xray-shell')) cityVectorMap.addSource('xray-shell', empty());
       if (!cityVectorMap.getSource('xray-slabs')) cityVectorMap.addSource('xray-slabs', empty());
       if (!cityVectorMap.getLayer('xray-slabs')) cityVectorMap.addLayer({ id: 'xray-slabs', type: 'fill-extrusion', source: 'xray-slabs', paint: { 'fill-extrusion-color': '#f4f4f4', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.9 } });
-      if (!cityVectorMap.getLayer('xray-shell')) cityVectorMap.addLayer({ id: 'xray-shell', type: 'fill-extrusion', source: 'xray-shell', paint: { 'fill-extrusion-color': '#000000', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.8 } });
+      if (!cityVectorMap.getLayer('xray-shell')) cityVectorMap.addLayer({ id: 'xray-shell', type: 'fill-extrusion', source: 'xray-shell', paint: { 'fill-extrusion-color': '#161616', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.14 } });
+      applyCityMapGossip();
       if (!cityVectorMap.getLayer('xray-outline')) cityVectorMap.addLayer({ id: 'xray-outline', type: 'line', source: 'xray-shell', paint: { 'line-color': '#f4f4f4', 'line-width': 0.8 } });
       return true;
     }
