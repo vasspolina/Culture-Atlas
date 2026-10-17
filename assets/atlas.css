@@ -789,14 +789,17 @@ abbr[title]{text-decoration:none}
 .curator-message-wrap p+p:not(.no-indent),#desktopDossierRecordBody p+p:not(.no-indent),#detailBody p+p:not(.no-indent),#curatorHeroGreeting p+p:not(.no-indent),.chat-info p+p:not(.no-indent){text-indent:1em;margin-top:0}
 .curator-message-wrap p:has(+ p),#desktopDossierRecordBody p:has(+ p),#detailBody p:has(+ p),#curatorHeroGreeting p:has(+ p),.chat-info p:has(+ p){margin-bottom:0}
 
-/* ---- the chat reads as a dialogue (an interview transcript): a speaker mark in a narrow left column,
-   the speech in a hanging block beside it, a blank line between turns. No bubbles, no italics. ---- */
-#curatorMessages>.curator-message-wrap,#curatorMessages>.justify-end{display:grid;grid-template-columns:4.5em minmax(0,1fr);column-gap:0;align-items:start;margin:0 0 1.6em;width:100%;justify-content:stretch}
-#curatorMessages>.curator-message-wrap::before,#curatorMessages>.justify-end::before{grid-column:1;grid-row:1;font:400 15px/1.4 var(--sans);letter-spacing:.01em}
-#curatorMessages>.curator-message-wrap::before{content:"Atlas";color:var(--ink)}
-#curatorMessages>.justify-end::before{content:"You";color:var(--cobalt)}
-#curatorMessages>.curator-message-wrap>*{grid-column:2;min-width:0}
-/* the person's turn: plain text beside the mark, in cobalt, not a black bubble */
-#curatorMessages .user-bubble{background:none;color:var(--cobalt);padding:0;max-width:none;align-self:auto;font:400 15px/1.4 var(--sans);grid-column:2}
+/* ---- the chat is set like an interview transcript ----
+   The speaker's mark stands in the margin; the speech hangs two ems in from it, so every wrapped line aligns;
+   the first line starts further in, after a tab-like gap beside the mark; one blank line between turns.
+   Same size and leading for both sides, no bubbles, no italics: the person's turn is cobalt instead. */
+#curatorMessages>.curator-message-wrap,#curatorMessages>.justify-end{position:relative;display:block;padding-left:2em;margin:0 0 1.35em;width:100%;font:400 18px/1.35 var(--sans);letter-spacing:.01em}
+#curatorMessages>.curator-message-wrap::before,#curatorMessages>.justify-end::before{position:absolute;left:0;top:0;font:400 18px/1.35 var(--sans);letter-spacing:.02em}
+#curatorMessages>.curator-message-wrap::before{content:"A";color:var(--ink)}
+#curatorMessages>.justify-end::before{content:"Q";color:var(--cobalt)}
+#curatorMessages>.curator-message-wrap p,#curatorMessages>.curator-message-wrap li{font-size:18px;line-height:1.35;max-width:none}
+#curatorMessages>.curator-message-wrap>p:first-child:not(.no-indent),#curatorMessages>.curator-message-wrap>div>div:first-child>p:first-child:not(.no-indent){text-indent:3.5em}
+#curatorMessages>.curator-message-wrap p+p:not(.no-indent){text-indent:1em}
+#curatorMessages>.curator-message-wrap>*{min-width:0}
+#curatorMessages>.justify-end>div,#curatorMessages .user-bubble{display:block;background:none;color:var(--cobalt);padding:0;max-width:none;text-align:left;font:400 18px/1.35 var(--sans);text-indent:3.5em}
 #curatorMessages .user-bubble *{color:var(--cobalt)}
-#curatorMessages>.justify-end>div{grid-column:2;background:none;color:var(--cobalt);padding:0;max-width:none;text-align:left}
