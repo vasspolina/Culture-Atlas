@@ -1,0 +1,14 @@
+name = "culture-atlas-submissions"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://vasspolina.github.io"
+
+# Create the namespace once with `npx wrangler kv namespace create SUBMISSIONS`
+# and paste the id it prints here.
+[[kv_namespaces]]
+binding = "SUBMISSIONS"
+id = "PASTE_KV_NAMESPACE_ID_HERE"
+
+# ADMIN_TOKEN is a secret: `npx wrangler secret put ADMIN_TOKEN`. Never put it in this file.

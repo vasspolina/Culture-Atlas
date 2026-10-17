@@ -604,6 +604,9 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 /* Save note is a text button like Share information and Listen, not a black disc. */
 #workSendBtn.is-on{width:auto;height:auto;border-radius:0;background:transparent;color:inherit!important;padding:0;white-space:nowrap}
 #workSendBtn.is-on:hover{text-decoration:underline}
+/* While writing a note the toolbar wraps, so Send for review stays on screen on a phone. */
+#workInputCard.is-mode>div.justify-between{flex-wrap:wrap;gap:8px 12px}
+#workInputCard.is-mode>div.justify-between>div{flex-wrap:wrap}
 /* Zoom: the same square set the street map has, top right under the compass. No round buttons at the bottom. */
 #zoomControls{position:absolute;top:70px;right:20px;bottom:auto;z-index:20;display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid #fff}
 #zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:32px;height:32px;padding:0;border-radius:0;background:#fff;color:#000;display:flex;align-items:center;justify-content:center}

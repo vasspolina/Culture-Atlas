@@ -18,7 +18,7 @@ Plain CSS, no framework: one stylesheet at `assets/atlas.css` (design layer plus
 
 The look follows the It's a book fair site: a white page, a strip of tabs on hairlines, flat colour blocks (cobalt, orange, cyan, mustard, periwinkle, magenta), a black pill for the current filter, a yellow close mark, and a grey sheet with the facts as a ruled table. Titles are PP Neue Gstaad Compact Bold in capitals, body is PP Neue Gstaad Regular, labels and buttons are the same Regular, at 14px or larger. No monospace anywhere. The globe is unchanged and sits on black. Text on a colour block is black, except on cobalt, where it is white.
 
-The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer. On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and sends notes for review (see "Share information" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ---
 
@@ -31,6 +31,8 @@ python3 -m http.server 8080
 ```
 
 Then open [http://localhost:8080](http://localhost:8080).
+
+To try Share information against a local backend, run the Worker with `npx wrangler dev` in `worker/` and set `window.ATLAS_SUBMIT_URL` in `assets/config.js` to `http://localhost:8787` (local addresses are always allowed).
 
 ---
 
@@ -47,6 +49,24 @@ Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a f
 `manifest.json`, `assets/` and `fonts/` to the `gh-pages` branch that GitHub
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
+
+## Share information: notes wait for approval
+
+Share information sends a reader's note to a small backend, a Cloudflare Worker in `worker/` with one KV store. Every note is kept as waiting and shows nowhere until the editor approves it on `admin.html` (the review page, behind a password). There the text, the space it belongs to and a source link can be corrected before approving; a rejected note is deleted. An approved note appears on its space's record under "Shared by readers and approved by the editor", within a minute. No name, email or IP address is stored; the only trace of a sender is a salted hash of their address, kept for an hour to allow ten notes an hour.
+
+While `window.ATLAS_SUBMIT_URL` in `assets/config.js` is empty, the page behaves as before: notes are saved in the reader's browser and nothing is sent.
+
+Setting it up once (free Cloudflare plan), in the Cloudflare dashboard, no install needed:
+
+1. **Workers & Pages → Create → Worker**, name it `culture-atlas-submissions`, deploy the starter, then **Edit code**, replace it with `worker/index.js` and deploy.
+2. **Storage & Databases → KV → Create**, name it `culture-atlas-submissions`.
+3. In the Worker's **Settings → Bindings**, add a KV namespace binding called `SUBMISSIONS` pointing at that store.
+4. In **Settings → Variables and Secrets**, add a secret `ADMIN_TOKEN` (the review page password; make it long) and a text variable `ALLOWED_ORIGINS` = `https://vasspolina.github.io`.
+5. Copy the Worker's address (`https://culture-atlas-submissions.<you>.workers.dev`) into `assets/config.js` and push to `main`.
+
+Or from a terminal: in `worker/`, `npx wrangler kv namespace create SUBMISSIONS`, paste the id into `wrangler.toml`, `npx wrangler secret put ADMIN_TOKEN`, `npx wrangler deploy`.
+
+Review page: https://vasspolina.github.io/Culture-Atlas/admin.html. Tests for the Worker: `node --test worker/test/*.test.mjs`.
 
 ## Money maps
 
@@ -117,6 +137,8 @@ Rules live in `tools/clean_data.py`. To check records against their sources, run
 Culture-Atlas/
 ├── index.html          # The whole app, edited in place. The only copy of the atlas page.
 ├── money-maps.html     # The money maps page (assets/money-maps.*, built by tools/build_money_maps.py)
+├── admin.html        # Review page for notes sent with Share information
+├── worker/           # The submissions backend (Cloudflare Worker) and its tests
 ├── sw.js               # Service worker (network-first for the page, same-origin cache only)
 ├── manifest.json       # PWA manifest
 ├── assets/ fonts/      # atlas.css, maplibre-gl.css, images and the typefaces the page loads
