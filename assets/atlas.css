@@ -1076,3 +1076,6 @@ body.gossip-mode-active .thinking{color:#000}
 
 /* No rule under a section heading in the record ("Reported, not independently verified"): the first card after it starts clean. */
 :is(#desktopDossierRecordBody,#detailBody) :is(h3,.kicker)+.record-card{border-top:0;padding-top:0}
+
+/* No rules between record cards */
+:is(#desktopDossierRecordBody,#detailBody) .record-card{border-top:0;border-bottom:0}
