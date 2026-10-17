@@ -789,3 +789,14 @@ body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-a
 #layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#workPlusBtn:hover,#curatorVoiceToggleBtn:hover,#curatorListenBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
 [data-globe-control]:hover,.is-on:hover,[aria-pressed="true"]:hover{filter:brightness(1.2)}
 button,summary{cursor:pointer}
+/* Question colours are the map's own: mustard, orange and cyan labels; darker equivalents on the light ground. Type 10% smaller. */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#6e6310}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#b83c00}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#0b6d73}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#6e6310}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:var(--mustard)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:var(--orange)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:var(--cyan)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--mustard)}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(22px,2vw,29px)}
+@media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:19px}}
