@@ -741,8 +741,8 @@ body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-a
 
 /* Right column: marker highlights. Black text on all three, so contrast holds in light, dark and gossip. */
 :root{--hl-blue:#72a5ed;--hl-green:#5ac651;--hl-yellow:#ffffb1}
-#desktopDossierColumn .t-lead,#desktopDossierColumn .lede{background:var(--hl-yellow);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-#desktopDossierColumn a:not(.record-action){background:var(--hl-blue);color:#000;text-decoration:none;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#desktopDossierColumn .t-lead,#desktopDossierColumn .lede{background:none;color:inherit;padding:0}
+#desktopDossierColumn a:not(.record-action){background:none;color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;padding:0}
 #desktopDossierColumn .is-good,#desktopDossierColumn .meta.t-strong{width:fit-content;background:var(--hl-green);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* Chat landing: one centred column of large bold capitals, the title in ink and each starter question in its own colour. */
@@ -934,3 +934,10 @@ abbr[title]{text-decoration:none}
 :is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>div:last-child{font-size:14px;line-height:1.25;letter-spacing:.02em;max-width:none}
 :is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none}
 @media (max-width:640px){:is(#desktopDossierRecordBody,#detailBody) .visit-rows{grid-template-columns:minmax(0,1fr)}}
+
+/* The chat landing starts at the same left edge as the input box under it. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){padding-left:0;padding-right:0}
+
+/* Links in running text are underlined everywhere: chat, record, cards, notes. Buttons made from links stay as blocks. */
+a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+#curatorMessages a,#detailBody a:not(.record-action),#desktopDossierRecordBody a:not(.record-action),#desktopDossierColumn a:not(.record-action),.chat-info a,#floatingCard a:not(.record-action),#cityViewControlBanner a{text-decoration:underline}
