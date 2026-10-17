@@ -741,3 +741,40 @@ body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-a
 #desktopDossierColumn .t-lead,#desktopDossierColumn .lede{background:var(--hl-yellow);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 #desktopDossierColumn a:not(.record-action){background:var(--hl-blue);color:#000;text-decoration:none;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 #desktopDossierColumn .is-good,#desktopDossierColumn .meta.t-strong{width:fit-content;background:var(--hl-green);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* ---- detail typography, after Jost Hochuli: "Detail in Typography" ----
+   Page numbers are the book's. Only what the two PP Neue Gstaad files can do is used:
+   they carry kern, liga, case, frac, sups, subs and sinf, and have no small caps or old-style figures. */
+
+/* The word (p.23-31): kerning and ligatures on, always; capitals get their own punctuation heights (p.29-30). */
+html{font-kerning:normal;font-variant-ligatures:common-ligatures;text-rendering:optimizeLegibility}
+h1,h2,h3,h4,.t-title,.curator-section-hdr,#floatingCardTitle,.record-popup-name,#desktopDossierName,.dossier-main-heading{font-feature-settings:"kern","liga","case"}
+
+/* Letter and word spacing follow size (p.25, p.33): small sizes a little wider, display sizes tighter, and the
+   word space shrinks as the type grows. Capitals stay evenly spaced, not tight (p.25). */
+.meta,.kicker,small,figcaption,#desktopGlobeTopControls button,#mobileFilterChipsSection button{letter-spacing:.02em}
+#curatorHeroGreeting h1,.curator-hero-title{letter-spacing:-.01em;word-spacing:-.06em}
+#desktopDossierName,.dossier-main-heading,#detailDrawer h2,#dossier-sheet-name,[id$="Modal"] h1,[id$="Modal"] h2{letter-spacing:-.005em;word-spacing:-.05em}
+#floatingCardTitle,.record-popup-name,.curator-message-wrap h1,.curator-message-wrap h2,.curator-message-wrap h3,.curator-section-hdr{word-spacing:-.04em}
+.lede,.t-lead{word-spacing:-.02em}
+
+/* The line (p.32-35): 50-70 characters a line, ragged right with a soft rag, no hyphenation,
+   no single word left alone on the last line, and a title that breaks into even lines. */
+.curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p,#curatorHeroGreeting p,.chat-info p,.t-lead{
+  max-width:66ch;text-align:left;text-wrap:pretty;hyphens:manual;hanging-punctuation:first allow-end}
+h1,h2,h3,h4,.t-title,.lede,#floatingCardTitle,.record-popup-name,.curator-section-hdr{text-wrap:balance;hyphens:manual}
+
+/* Linespacing and the column (p.47-52): the longer the line, the more leading; short UI lines stay close. */
+.curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p{line-height:1.4}
+.curator-message-wrap li{margin-bottom:.4em}
+
+/* Numerals (p.41-43): superior and inferior figures and fractions use the font's own glyphs, never a shrunken copy. */
+sup,sub{font-size:inherit;line-height:0;vertical-align:baseline}
+sup{font-variant-position:super}
+sub{font-variant-position:sub}
+.frac{font-variant-numeric:diagonal-fractions}
+.num{font-variant-numeric:tabular-nums}
+
+/* Emphasis and capitals (p.44, p.39): capitals in running text are one step smaller and slightly spaced. */
+.abbr{font-size:.92em;letter-spacing:.04em}
+abbr[title]{text-decoration:none}
