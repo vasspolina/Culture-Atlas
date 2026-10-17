@@ -924,3 +924,13 @@ abbr[title]{text-decoration:none}
 /* Space between the title and the questions, 15% tighter. */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting),:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){gap:51px}
 @media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting),:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){gap:31px}}
+
+/* ---- the record's facts set like museum wall labels: a bold title line, small tight text under it, two labels side by side, no rules ---- */
+:is(#desktopDossierRecordBody,#detailBody) :is(.rule-t,.rule-b){border-top:0;border-bottom:0}
+:is(#desktopDossierRecordBody,#detailBody) hr{display:none}
+:is(#desktopDossierRecordBody,#detailBody) .visit-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(11.5em,1fr));gap:28px 28px;margin-top:24px}
+:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div{padding:0;border:0}
+:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>.meta{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none;margin:0 0 3px}
+:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>div:last-child{font-size:14px;line-height:1.25;letter-spacing:.02em;max-width:none}
+:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none}
+@media (max-width:640px){:is(#desktopDossierRecordBody,#detailBody) .visit-rows{grid-template-columns:minmax(0,1fr)}}
