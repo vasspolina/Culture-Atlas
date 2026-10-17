@@ -105,6 +105,22 @@
     return out;
   }
 
+  /* Thinking: before a reply types, the turn holds three pulsing dots and the word, then opens into the reply. */
+  function think(el, then) {
+    if (reduce) { then(); return; }
+    var tag = document.createElement('span');
+    tag.className = 'thinking';
+    tag.setAttribute('role', 'status');
+    tag.innerHTML = 'Thinking<i></i><i></i><i></i>';
+    el.classList.add('is-thinking');
+    el.appendChild(tag);
+    setTimeout(function () {
+      tag.remove();
+      el.classList.remove('is-thinking');
+      then();
+    }, 1800);
+  }
+
   // Scroll the chat itself, vertically only (scrollIntoView would also nudge the panels around it sideways).
   function follow(node) {
     var sc = node.closest('#curatorScrollArea,#curatorDrawerChatBody');
@@ -163,7 +179,7 @@
       var replies = shown.filter(function (el) { return el.classList.contains('curator-message-wrap'); });
       var target = many ? null : replies[replies.length - 1];
       live.forEach(function (el) {
-        if (el === target) typeIn(el, function () { outline(el); });
+        if (el === target) think(el, function () { typeIn(el, function () { outline(el); }); });
         else outline(el);
       });
     }, 160);
