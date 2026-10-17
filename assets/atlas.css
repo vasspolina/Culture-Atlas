@@ -1033,3 +1033,5 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end::after{right:16%;background:#7be04a;clip-path:polygon(0 0,100% 0,75% 100%)}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.curator-message-wrap,.user-bubble,.justify-end>div) :is(p,li,span,div,a):not(.curator-suggest-chip){color:#000!important;text-indent:0!important;text-align:center}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap p:not(.no-indent){text-indent:0}
+/* Street-view pins do not grow under the pointer: a target that moves as you reach for it is hard to hit. */
+.custom-inst-pin:hover{transform:none}
