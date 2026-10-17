@@ -987,3 +987,8 @@ body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) :is(p,li,a,sp
 body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#000!important}
 :root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomInBtn,:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomOutBtn{color:#ffd600;border-color:#ffd600}
 :root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomInBtn:hover,:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomOutBtn:hover{background:#ffd600;color:#000}
+
+/* The note above the individual accounts: regular weight, body size, no rule under it. */
+:is(#desktopDossierRecordBody,#detailBody) .kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;text-decoration:none;border:0;margin:20px 0 8px;padding:0;max-width:66ch}
+:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;margin:20px 0 8px}
+:is(#desktopDossierRecordBody,#detailBody) .accounts-note+.record-card{border-top:0;padding-top:0}
