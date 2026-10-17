@@ -763,3 +763,6 @@ body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-a
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){max-width:none;white-space:pre-line}
 @media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:21px}}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting),:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){gap:31px}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){justify-content:center;min-height:100%;box-sizing:border-box}
+#curatorDrawerChatBody{display:flex;flex-direction:column}
+#curatorDrawerChatBody>#curatorDrawerGreeting{flex:1 1 auto}
