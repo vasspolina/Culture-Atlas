@@ -254,6 +254,11 @@ def clean(records, report=None):
         for field, text in (corrections.get(r['id']) or {}).items():
             r[field] = text
             bump('corrected_after_checking')
+    # The Clean Funding Grade is computed last, from the cleaned flags and sources (tools/grade_funding.py).
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import grade_funding
+    for k, n in grade_funding.apply(records).items():
+        report['grade ' + k] = n
     return report
 
 
