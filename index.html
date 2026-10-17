@@ -12742,7 +12742,7 @@ return maplibregl$1;
       if (!rawText || typeof rawText !== 'string') return '';
 
       // Guard against re-processing already rendered curator HTML
-      if (rawText.includes('curator-section-hdr') || rawText.includes('curator-bullet-list') || (rawText.trim().startsWith('<div') && rawText.includes('</div>'))) {
+      if (rawText.includes('curator-section-hdr') || rawText.includes('curator-bullet-list') || rawText.includes('source-citation-pill') || (rawText.trim().startsWith('<div') && rawText.includes('</div>'))) {
         return rawText;
       }
 
@@ -12799,10 +12799,12 @@ return maplibregl$1;
             const openTag = preceding.lastIndexOf('<');
             const closeTag = preceding.lastIndexOf('>');
             if (openTag > closeTag) return m;
+            // A name already inside a pill (the text was rendered once before) is left alone: no pill in a pill.
+            if (preceding.lastIndexOf('source-citation-pill') > Math.max(preceding.lastIndexOf('</a>'), preceding.lastIndexOf('</button>'))) return m;
             if (s.onclick) {
-              return `<button type="button" onclick="${s.onclick}" class="source-citation-pill inline-flex items-center gap-1 px-2 py-0_5 meta align-baseline my-0_5 mx-0_5" title="Inspect ${s.label} statutory disclosures">${s.icon}<span>${m}</span></button>`;
+              return `<button type="button" onclick="${s.onclick}" class="source-citation-pill inline-flex items-center meta align-baseline" title="Inspect ${s.label} statutory disclosures">${s.icon}<span>${m}</span></button>`;
             }
-            return `<a href="${s.url}" target="_blank" rel="noopener noreferrer" class="source-citation-pill inline-flex items-center gap-1 px-2 py-0_5 meta no-underline align-baseline my-0_5 mx-0_5" title="Verify report via ${s.label}">${s.icon}<span>${m}</span></a>`;
+            return `<a href="${s.url}" target="_blank" rel="noopener noreferrer" class="source-citation-pill inline-flex items-center meta no-underline align-baseline" title="Verify report via ${s.label}">${s.icon}<span>${m}</span></a>`;
           });
         }
         return str;
