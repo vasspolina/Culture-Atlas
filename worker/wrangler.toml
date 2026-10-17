@@ -12,3 +12,5 @@ binding = "SUBMISSIONS"
 id = "PASTE_KV_NAMESPACE_ID_HERE"
 
 # ADMIN_TOKEN is a secret: `npx wrangler secret put ADMIN_TOKEN`. Never put it in this file.
+
+# ANTHROPIC_API_KEY is a secret too (POST /chat): `npx wrangler secret put ANTHROPIC_API_KEY`. Never put it in this file.

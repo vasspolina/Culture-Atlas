@@ -69,6 +69,17 @@ Or from a terminal: in `worker/`, `npx wrangler kv namespace create SUBMISSIONS`
 
 Review page: https://vasspolina.github.io/Culture-Atlas/admin.html. Tests for the Worker: `node --test worker/test/*.test.mjs`.
 
+### Live Claude answers
+
+With a model connected the chat holds a conversation: every question that is not a plain list of spaces goes to Claude, with the earlier turns of the chat and the records on the page as grounding. Without one, it answers from the records alone.
+
+The same Worker serves it at `POST /chat`. The Anthropic key stays in the Worker and never reaches the browser.
+
+1. In `worker/`, `npx wrangler secret put ANTHROPIC_API_KEY` and paste the key from console.anthropic.com. (In the dashboard: the Worker's **Settings → Variables and Secrets**.)
+2. Put the Worker's address plus `/chat` in `assets/config.js`: `window.ATLAS_AI_PROXY_URL = 'https://culture-atlas-submissions.<you>.workers.dev/chat';` and push to `main`.
+
+The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
+
 ## Money maps
 
 The page opens on **one big map of every space and every sponsor** (`#all`): each space is a white circle, each sponsor a circle coloured by group (public bodies, corporate, foundations and donors), bigger the more spaces it funds, joined by a line for each tie. Tap a circle to light up its ties and zoom to them; search a sponsor in the second bar; filter the groups with the pills. Sponsors are merged across records by name (for example "NEA" and "National Endowment for the Arts"); public bodies are told apart by country, and generic ones such as "City government" stay with their own record so they never become one false hub. Records that name no funder are not in the big map. Two filters highlight part of the map and grey out the rest: **Epstein files** (33 spaces whose record has Epstein entries or an Epstein-linked flag, joined to the 23 people named in those entries; a space with only the flag is joined to Jeffrey Epstein) and **Right-wing sponsors**. The atlas records have no political field, so the second is a short curated list in `tools/build_money_maps.py` (`RIGHT`): only funders that appear in the records (as a sponsor or named in a record's own text) and have a published source for predominantly Republican or conservative giving, with that source shown in the panel. Currently Koch, Ken Griffin / Citadel, Ronald Lauder, Steven Cohen and Rebekah Mercer. It is not a complete list; add a name to it with a source, or remove one, and re-run the script. Each record also has its own map, at `money-maps.html#<record id>`.
