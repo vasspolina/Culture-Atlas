@@ -9,6 +9,8 @@ h1,h2,h3,h4,p{margin:0}
 
 @font-face{font-family:"PP Neue Gstaad";src:url("../fonts/PPNeueGstaad-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"PP Neue Gstaad Compact";src:url("../fonts/PPNeueGstaad-CompactBold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Neue Gstaad Compressed";src:url("../fonts/PPNeueGstaad-CompressedBold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Neue Gstaad";src:url("../fonts/PPNeueGstaad-CompactRegularItalic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -16,6 +18,7 @@ h1,h2,h3,h4,p{margin:0}
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#ff6119;
   --sans:"PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
   --display:"PP Neue Gstaad Compact","PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-xl:"PP Neue Gstaad Compressed","PP Neue Gstaad Compact","PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
   --bar:44px; --gap:16px;
   --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
 }
@@ -26,7 +29,7 @@ body{background:var(--paper);color:var(--ink);font:400 15px/1.3 var(--sans);lett
   height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
 button,[role=button]{cursor:pointer}
 a{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
-strong,b{font-weight:400;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+strong,b{font-weight:400;font-style:italic;text-decoration:none}
 em,i{font-style:italic}
 hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 input,textarea,select{outline:0}
@@ -39,7 +42,7 @@ input,textarea,select{outline:0}
 .t-em{font-style:italic}
 .kicker{font-family:var(--sans);font-size:14px;letter-spacing:.01em}
 .lede{font:400 18px/1.25 var(--sans);letter-spacing:.01em}
-h1.lede,h2.lede{font:700 32px/1 var(--display);text-transform:uppercase;letter-spacing:0}
+h1.lede,h2.lede{font:700 32px/1 var(--display-xl);text-transform:uppercase;letter-spacing:0}
 .rule-t{border-top:1px solid var(--line)} .rule-b{border-bottom:1px solid var(--line)}
 /* A rule-t that directly follows a rule-b would draw a second line; one is enough. */
 .rule-b+.rule-t{border-top:0}
@@ -148,7 +151,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #collapseDossierBtn{font:400 14px/1 var(--sans);padding:14px 16px}
 #desktopDossierBody{padding:0!important}
 #desktopDossierBody>*{margin:0}
-#desktopDossierName,#detailDrawer h2,#dossier-sheet-name{font:700 44px/.95 var(--display);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
+#desktopDossierName,#detailDrawer h2,#dossier-sheet-name{font:700 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
 #desktopDossierMeta{font:400 14px/1.3 var(--sans);margin-bottom:12px}
 #desktopDossierSummary{font-size:15px;line-height:1.3;max-width:62ch}
 #desktopDossierWebLink{margin-top:12px}
@@ -171,7 +174,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #curatorScrollArea{padding:16px;align-items:stretch}
 #curatorScrollContent{align-items:stretch;max-width:760px;margin:0 auto 0 0}
 #curatorHeroGreeting{align-items:flex-start;text-align:left;padding:0;display:flex;flex-direction:column}
-#curatorHeroGreeting h1{font:700 clamp(40px,5.2vw,76px)/.92 var(--display);text-transform:uppercase;letter-spacing:0;text-align:left;margin:0 0 20px}
+#curatorHeroGreeting h1{font:700 clamp(40px,5.2vw,76px)/.92 var(--display-xl);text-transform:uppercase;letter-spacing:0;text-align:left;margin:0 0 20px}
 #curatorHeroGreeting h1 .blk{display:inline-block;width:.42em;height:.86em;background:var(--ink);vertical-align:-.06em;margin:0 .06em}
 #curatorHeroGreeting h1 .lbl{display:inline-block;font:400 clamp(14px,1.1vw,17px)/1.1 var(--sans);text-transform:none;letter-spacing:0;padding:.5em .6em;vertical-align:baseline;margin:0 .15em;background:var(--peri)}
 #curatorHeroGreeting h1 .lbl.m{background:var(--magenta)}
@@ -287,7 +290,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
   .maplibregl-ctrl-top-right{margin-top:64px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-.curator-hero-title,#curatorHeroGreeting h1{font:700 clamp(40px,5.2vw,76px)/.92 var(--display);text-transform:uppercase;letter-spacing:0;margin:0 0 16px}
+.curator-hero-title,#curatorHeroGreeting h1{font:700 clamp(40px,5.2vw,76px)/.92 var(--display-xl);text-transform:uppercase;letter-spacing:0;margin:0 0 16px}
 .curator-hero-title .blk,#curatorDrawerGreeting .blk{display:inline-block;width:.42em;height:.86em;background:var(--ink);vertical-align:-.06em;margin:0 .06em}
 .curator-hero-title .lbl{display:inline-block;font:400 14px/1.1 var(--sans);text-transform:none;letter-spacing:0;padding:.5em .6em;vertical-align:baseline;margin:0 .15em;background:var(--peri)}
 .curator-hero-title .lbl.m{background:var(--magenta)}
@@ -301,7 +304,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 
 #desktopDossierRecordBody{padding:0}
 #desktopDossierRecordBody>div{padding:16px}
-#desktopDossierRecordBody .dossier-main-heading,.dossier-main-heading{font:700 44px/.95 var(--display);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
+#desktopDossierRecordBody .dossier-main-heading,.dossier-main-heading{font:700 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
 #desktopDossierRecordBody .rule-b{border-bottom:1px solid var(--line)}
 #desktopDossierRecordBody .record-actions{gap:6px!important;padding-top:12px!important}
 @media (max-width:767px){.dossier-main-heading{font-size:36px}}
@@ -821,3 +824,46 @@ button,summary{cursor:pointer}
 /* Capitals 10% larger. */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(24px,2.2vw,44px)}
 @media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:26px}}
+/* ---- detail typography, after Jost Hochuli: "Detail in Typography" ----
+   Page numbers are the book's. Only what the two PP Neue Gstaad files can do is used:
+   they carry kern, liga, case, frac, sups, subs and sinf, and have no small caps or old-style figures. */
+
+/* The word (p.23-31): kerning and ligatures on, always; capitals get their own punctuation heights (p.29-30). */
+html{font-kerning:normal;font-variant-ligatures:common-ligatures;text-rendering:optimizeLegibility}
+h1,h2,h3,h4,.t-title,.curator-section-hdr,#floatingCardTitle,.record-popup-name,#desktopDossierName,.dossier-main-heading{font-feature-settings:"kern","liga","case"}
+
+/* Letter and word spacing follow size (p.25, p.33): small sizes a little wider, display sizes tighter, and the
+   word space shrinks as the type grows. Capitals stay evenly spaced, not tight (p.25). */
+.meta,.kicker,small,figcaption,#desktopGlobeTopControls button,#mobileFilterChipsSection button{letter-spacing:.02em}
+/* Compressed Bold has a very narrow word space of its own, so the largest lines keep it and gain a little (p.33: space follows the width of the face). */
+#curatorHeroGreeting h1,.curator-hero-title{letter-spacing:0;word-spacing:.12em}
+#desktopDossierName,.dossier-main-heading,#detailDrawer h2,#dossier-sheet-name,h1.lede,h2.lede{letter-spacing:0;word-spacing:.12em}
+[id$="Modal"] h1,[id$="Modal"] h2{letter-spacing:-.005em;word-spacing:-.05em}
+#floatingCardTitle,.record-popup-name,.curator-message-wrap h1,.curator-message-wrap h2,.curator-message-wrap h3,.curator-section-hdr{word-spacing:-.04em}
+.lede,.t-lead{word-spacing:-.02em}
+
+/* The line (p.32-35): 50-70 characters a line, ragged right with a soft rag, no hyphenation,
+   no single word left alone on the last line, and a title that breaks into even lines. */
+.curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p,#curatorHeroGreeting p,.chat-info p,.t-lead{
+  max-width:66ch;text-align:left;text-wrap:pretty;hyphens:manual;hanging-punctuation:first allow-end}
+h1,h2,h3,h4,.t-title,.lede,#floatingCardTitle,.record-popup-name,.curator-section-hdr{text-wrap:balance;hyphens:manual}
+
+/* Linespacing and the column (p.47-52): the longer the line, the more leading; short UI lines stay close. */
+.curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p{line-height:1.4}
+.curator-message-wrap li{margin-bottom:.4em}
+
+/* Numerals (p.41-43): superior and inferior figures and fractions use the font's own glyphs, never a shrunken copy. */
+sup,sub{font-size:inherit;line-height:0;vertical-align:baseline}
+sup{font-variant-position:super}
+sub{font-variant-position:sub}
+.frac{font-variant-numeric:diagonal-fractions}
+.num{font-variant-numeric:tabular-nums}
+
+/* Emphasis and capitals (p.44, p.39): capitals in running text are one step smaller and slightly spaced. */
+.abbr{font-size:.92em;letter-spacing:.04em}
+abbr[title]{text-decoration:none}
+
+/* Paragraphs (p.47, p.51): an indent, not a blank line, marks where a new paragraph begins. The first paragraph
+   of a run is flush; each one that follows is indented one em and sits directly under the last. */
+.curator-message-wrap p+p:not(.no-indent),#desktopDossierRecordBody p+p:not(.no-indent),#detailBody p+p:not(.no-indent),#curatorHeroGreeting p+p:not(.no-indent),.chat-info p+p:not(.no-indent){text-indent:1em;margin-top:0}
+.curator-message-wrap p:has(+ p),#desktopDossierRecordBody p:has(+ p),#detailBody p:has(+ p),#curatorHeroGreeting p:has(+ p),.chat-info p:has(+ p){margin-bottom:0}
