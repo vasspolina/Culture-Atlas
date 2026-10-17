@@ -116,6 +116,10 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #activeRouteBanner button{color:var(--paper);text-decoration:underline;font:400 14px/1 var(--sans)}
 #buildingInsidePanel{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
 .xray-label,.xray-pill{font:400 14px/1 var(--sans);background:var(--xray-colour,var(--paper));color:var(--ink);border-radius:0;padding:5px 12px}
+.xray-pill[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+#xrayModes .xray-pill{border:1px solid var(--ink)}
+/* The mode bar sits under the city banner, which wraps to two lines on a phone. */
+@media (max-width:767px){#xrayModes{top:88px}}
 
 /* the card that opens on a pin: a colour block with the name set large */
 #floatingCard{background:var(--cobalt);color:#fff;border:0;border-radius:0;padding:0;overflow-y:auto}
@@ -1034,7 +1038,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.cura
 .bubble-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:0}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.has-bubble>*:not(.bubble-svg){position:relative;z-index:1}
 .bubble-line{stroke-dasharray:1;stroke-dashoffset:1}
-.bubble-svg.is-drawn .bubble-line{animation:bubble-draw .9s cubic-bezier(.5,0,.2,1) forwards}
+.bubble-svg.is-drawn .bubble-line{animation:bubble-draw 1.9s cubic-bezier(.5,0,.2,1) forwards}
 @keyframes bubble-draw{to{stroke-dashoffset:0}}
 .is-typing .curator-suggest-chip{visibility:hidden}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.curator-message-wrap,.user-bubble,.justify-end>div) :is(p,li,span,div,a):not(.curator-suggest-chip){color:#000!important;text-indent:0!important;text-align:left}
@@ -1042,7 +1046,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.cura
 /* Hairlines drawn in on load: the real rules step aside while their copies draw themselves. */
 html.lines-drawing :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard,#mobileStickyComposer){border-color:transparent!important}
 .lines-layer{position:fixed;inset:0;pointer-events:none;z-index:9999}
-.lines-layer i{transform:scale(0);animation-duration:.8s;animation-timing-function:cubic-bezier(.5,0,.2,1);animation-fill-mode:forwards}
+.lines-layer i{transform:scale(0);animation-duration:1.7s;animation-timing-function:cubic-bezier(.5,0,.2,1);animation-fill-mode:forwards}
 @keyframes line-x{to{transform:scaleX(1)}}
 @keyframes line-y{to{transform:scaleY(1)}}
 @media (prefers-reduced-motion:reduce){.bubble-line{stroke-dashoffset:0}.bubble-svg.is-drawn .bubble-line{animation:none}}
@@ -1061,3 +1065,16 @@ body.chat-input-mode-active #curatorScrollArea a:hover,body.chat-input-mode-acti
 body.chat-input-mode-active #curatorVoiceToggleBtn,body.chat-input-mode-active #curatorListenBtn{display:none!important}
 body.chat-input-mode-active #workBottomDock button:hover,body.chat-input-mode-active #curatorScrollArea button:hover{text-decoration:underline}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end :is(div,.user-bubble){color:#000!important;text-align:left}
+
+/* Thinking state: the reply's content waits while three dots pulse. */
+.is-thinking>*:not(.bubble-svg):not(.thinking){display:none!important}
+.thinking{display:inline-flex;align-items:baseline;gap:.12em;font:400 18px/1.3 var(--sans);color:inherit}
+.thinking i{display:inline-block;width:.32em;height:.32em;margin-left:.22em;border-radius:50%;background:currentColor;animation:think-dot 1.2s ease-in-out infinite}
+.thinking i:nth-child(2){animation-delay:.2s}
+.thinking i:nth-child(3){animation-delay:.4s}
+@keyframes think-dot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-.25em)}}
+body.gossip-mode-active .thinking{color:#000}
+@media (prefers-reduced-motion:reduce){.thinking i{animation:none}}
+
+/* No rule under a section heading in the record ("Reported, not independently verified"): the first card after it starts clean. */
+:is(#desktopDossierRecordBody,#detailBody) :is(h3,.kicker)+.record-card{border-top:0;padding-top:0}
