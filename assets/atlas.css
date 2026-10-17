@@ -119,7 +119,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .xray-pill[aria-pressed=true]{background:var(--ink);color:var(--paper)}
 #xrayModes .xray-pill{border:1px solid var(--ink)}
 /* The mode bar sits under the city banner, which wraps to two lines on a phone. */
-@media (max-width:767px){#xrayModes{top:88px}}
+
 
 /* the card that opens on a pin: a colour block with the name set large */
 #floatingCard{background:var(--cobalt);color:#fff;border:0;border-radius:0;padding:0;overflow-y:auto}
