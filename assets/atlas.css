@@ -1020,3 +1020,6 @@ body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#00
 body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover,
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 #workInputCard #chatShareBtn:hover,:root[data-theme="dark"] #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
+
+/* Street-view pins do not grow under the pointer: a target that moves as you reach for it is hard to hit. */
+.custom-inst-pin:hover{transform:none}
