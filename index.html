@@ -490,17 +490,8 @@ return maplibregl$1;
       <!-- Subtle Globe Zoom & Map Controls (Preserved for test DOM assertions) -->
       <!-- Zoom: always visible on the map, one pair of controls -->
       <div id="zoomControls" class="absolute bottom-4 right-4 z-10 flex flex-col gap-2">
-  <button id="zoomInBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom In">
-    <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="12" y1="5" x2="12" y2="19"></line>
-      <line x1="5" y1="12" x2="19" y2="12"></line>
-    </svg>
-  </button>
-  <button id="zoomOutBtn" class="w-8 h-7 sm-w-9 sm-h-7_5 flex items-center justify-center shrink-0" title="Zoom Out">
-    <svg class="w-3_5 h-3_5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="5" y1="12" x2="19" y2="12"></line>
-    </svg>
-  </button>
+  <button id="zoomInBtn" type="button" class="flex items-center justify-center shrink-0" title="Zoom In" aria-label="Zoom in">+</button>
+  <button id="zoomOutBtn" type="button" class="flex items-center justify-center shrink-0" title="Zoom Out" aria-label="Zoom out">&minus;</button>
       </div>
 
       <div id="hudControlsBar" class="hidden absolute bottom-3 sm-bottom-4 right-2 sm-right-4 z-10 items-center gap-1 sm-gap-1_5 p-1 max-w-_calc_100_-16px sm-max-w-_calc_100_-32px overflow-x-auto overflow-y-hidden no-scrollbar">
@@ -10694,35 +10685,37 @@ return maplibregl$1;
         // North Compass Rose (Interactive)
         const compassX = width - 38;
         const compassY = 38;
-        ctx.fillStyle = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.9)' : 'rgba(7, 11, 20, 0.85)';
-        ctx.strokeStyle = GLOBE_LIGHT ? '#161616' : '#004144';
-        ctx.lineWidth = 0.8;
+        // Ring, then a needle: the north half filled, the south half outlined, all in the globe's line colour.
+        const compassInk = G_LINE;
+        ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : 'rgba(0, 0, 0, 0)';
+        ctx.strokeStyle = compassInk;
+        ctx.lineWidth = 1.2;
         ctx.beginPath();
         ctx.arc(compassX, compassY, 18, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = '#08bdba';
+        ctx.fillStyle = compassInk;
         ctx.beginPath();
-        ctx.moveTo(compassX, compassY - 10);
-        ctx.lineTo(compassX - 3.5, compassY + 3);
-        ctx.lineTo(compassX, compassY);
+        ctx.moveTo(compassX, compassY - 11);
+        ctx.lineTo(compassX + 4.5, compassY);
+        ctx.lineTo(compassX - 4.5, compassY);
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = G_LINE;
+        ctx.lineWidth = 1.2;
         ctx.beginPath();
-        ctx.moveTo(compassX, compassY - 10);
-        ctx.lineTo(compassX + 3.5, compassY + 3);
-        ctx.lineTo(compassX, compassY);
+        ctx.moveTo(compassX, compassY + 11);
+        ctx.lineTo(compassX + 4.5, compassY);
+        ctx.lineTo(compassX - 4.5, compassY);
         ctx.closePath();
-        ctx.fill();
+        ctx.stroke();
 
-        ctx.font = '14px "PP Neue Gstaad", sans-serif';
-        ctx.fillStyle = G_TEXT;
+        ctx.font = GLOBE_LIGHT ? '700 15px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif' : '400 15px "PP Neue Gstaad", sans-serif';
+        ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
-        ctx.fillText('N', compassX, compassY - 12);
+        ctx.fillText('N', compassX, compassY - 21);
         ctx.restore();
       }
 

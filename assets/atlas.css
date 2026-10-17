@@ -965,3 +965,25 @@ body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) :is(p,li,a,sp
 @media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(17px,min(6.6vw,3.2vh),26px)}}
 #curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){flex:1 1 auto;height:100%;margin:0;padding-bottom:0}
 #curatorScrollContent:has(#curatorHeroGreeting:not(.hidden))>#curatorHeroGreeting{flex:1 1 auto}
+
+/* Dark mode keeps the regular weight: the record's bold wall-label titles drop back to the sans at 400. */
+:root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>.meta,
+:root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker{font-family:var(--sans);font-weight:400}
+
+/* Zoom and compass: two square buttons, the plus and minus set from the font. Light: white squares, bold signs. Dark: outlined, regular signs. */
+#zoomControls{top:76px;right:20px;gap:8px;background:none;border:0}
+#zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:36px;height:36px;padding:0;background:#fff;color:#000;border:1px solid #000;font:700 26px/1 var(--display);display:flex;align-items:center;justify-content:center}
+#zoomControls button+button{border-top:1px solid #000}
+#zoomControls button:hover{background:#000;color:#fff}
+:root[data-theme="dark"] #zoomControls button,:root[data-theme="dark"] #zoomControls #zoomInBtn,:root[data-theme="dark"] #zoomControls #zoomOutBtn{background:transparent;color:#f4f4f4;border:1px solid #f4f4f4;font:400 26px/1 var(--sans)}
+:root[data-theme="dark"] #zoomControls button:hover{background:#f4f4f4;color:#000}
+:root[data-theme="dark"] body.gossip-mode-active #zoomControls button{color:#ffd600;border-color:#ffd600}
+:root[data-theme="dark"] body.gossip-mode-active #zoomControls button:hover{background:#ffd600;color:#000}
+
+/* One line between the map and the right column: the splitter's. */
+#workViewContainer{border-left:0}
+
+/* Gossip header is yellow in every theme, so its lines are black. */
+body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#000!important}
+:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomInBtn,:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomOutBtn{color:#ffd600;border-color:#ffd600}
+:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomInBtn:hover,:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomOutBtn:hover{background:#ffd600;color:#000}
