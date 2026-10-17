@@ -16265,6 +16265,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     // At most four words to a line, the words spread evenly over the lines it takes.
     function wrapWords(str, max = 4) {
+      // A name stays whole on its own line when the question wraps around one.
+      const m = String(str).match(/^(Why is|Who funds|What is reported about|Find cultural spaces in) (.+?)( flagged\?|\?)$/);
+      if (m) return `${m[1]}\n${m[2]}${m[3]}`;
       const w = String(str).split(/\s+/).filter(Boolean);
       const lines = Math.ceil(w.length / max), per = Math.ceil(w.length / lines), out = [];
       for (let i = 0; i < w.length; i += per) out.push(w.slice(i, i + per).join(' '));
