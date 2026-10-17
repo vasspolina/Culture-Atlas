@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=169">
-  <script src="assets/config.js?v=169"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=170">
+  <script src="assets/config.js?v=170"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7476,6 +7476,11 @@ return maplibregl$1;
       try { if (cityVectorMap && cityVectorMap.getLayer && cityVectorMap.getLayer('xray-slabs-outline')) cityVectorMap.setLayoutProperty('xray-slabs-outline', 'visibility', 'none'); } catch (e) { /* style not ready */ }
       xrayClearDrawing();
       document.getElementById('buildingInsidePanel')?.classList.add('hidden');
+      if (XRAY.hidSheet) {
+        XRAY.hidSheet = false;
+        const sheet = document.getElementById('dossier-bottom-sheet');
+        if (sheet && selectedInstitution && window.innerWidth < 768) { sheet.classList.remove('hidden'); if (typeof setActiveMobileTab === 'function') { const t = document.getElementById('tab-dossier'); if (t) setActiveMobileTab(t); } }
+      }
       const inside = document.getElementById('desktopDossierInside');
       if (inside) { inside.innerHTML = ''; inside.classList.add('hidden'); }
       if (!cityVectorMap || typeof cityVectorMap.getLayer !== 'function') { XRAY.dimmed = false; return; }
@@ -7649,6 +7654,9 @@ return maplibregl$1;
       // A narrow map column takes the phone layout: full width along the bottom, under the building.
       panel.style.width = xrayNarrow() ? 'calc(100% - 16px)' : '380px';
       panel.style.maxHeight = xrayNarrow() ? '45%' : '60%';
+      // On a phone the record sheet sits over the same part of the screen; it gives way to the building and comes back on Close.
+      const sheet = window.innerWidth < 768 ? document.getElementById('dossier-bottom-sheet') : null;
+      if (sheet && !sheet.classList.contains('hidden')) { sheet.classList.add('hidden'); XRAY.hidSheet = true; }
       panel.classList.remove('hidden');
     }
 
@@ -9612,7 +9620,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=169').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=170').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17750,8 +17758,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=169"></script>
-<script src="assets/bubbles.js?v=169" defer></script>
-<script src="assets/typeset.js?v=169"></script>
+<script src="assets/layers.js?v=170"></script>
+<script src="assets/bubbles.js?v=170" defer></script>
+<script src="assets/typeset.js?v=170"></script>
 </body>
 </html>
