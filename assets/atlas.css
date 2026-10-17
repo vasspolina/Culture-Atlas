@@ -608,6 +608,9 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 /* Save note is a text button like Share information and Listen, not a black disc. */
 #workSendBtn.is-on{width:auto;height:auto;border-radius:0;background:transparent;color:inherit!important;padding:0;white-space:nowrap}
 #workSendBtn.is-on:hover{text-decoration:underline}
+/* While writing a note the toolbar wraps, so Send for review stays on screen on a phone. */
+#workInputCard.is-mode>div.justify-between{flex-wrap:wrap;gap:8px 12px}
+#workInputCard.is-mode>div.justify-between>div{flex-wrap:wrap}
 /* Zoom: the same square set the street map has, top right under the compass. No round buttons at the bottom. */
 #zoomControls{position:absolute;top:70px;right:20px;bottom:auto;z-index:20;display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid #fff}
 #zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:32px;height:32px;padding:0;border-radius:0;background:#fff;color:#000;display:flex;align-items:center;justify-content:center}
@@ -1024,3 +1027,39 @@ body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#00
 body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover,
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 #workInputCard #chatShareBtn:hover,:root[data-theme="dark"] #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
+
+/* Gossip mode: every turn is a speech bubble. assets/bubbles.js draws a hairline outline and a green to orange to pink wash that fit the text, with the tail part of the same path; until it runs, a plain wash stands in. Black type, left aligned, no speaker marks. */
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.curator-message-wrap,.justify-end){position:relative;display:block;box-sizing:border-box;width:fit-content;max-width:80%;margin:0 0 .55em;padding:.55em 1em;border-radius:18px;background:linear-gradient(180deg,#7be04a 0%,#cfa83c 52%,#ff2fa8 100%);color:#000;text-align:left;text-indent:0}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{margin-left:auto;background:linear-gradient(180deg,#ff2fa8 0%,#cfa83c 52%,#7be04a 100%)}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.has-bubble{background:none;border-radius:0}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.curator-message-wrap,.justify-end)::before{content:none!important}
+.bubble-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:0}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.has-bubble>*:not(.bubble-svg){position:relative;z-index:1}
+.bubble-line{stroke-dasharray:1;stroke-dashoffset:1}
+.bubble-svg.is-drawn .bubble-line{animation:bubble-draw .9s cubic-bezier(.5,0,.2,1) forwards}
+@keyframes bubble-draw{to{stroke-dashoffset:0}}
+.is-typing .curator-suggest-chip{visibility:hidden}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.curator-message-wrap,.user-bubble,.justify-end>div) :is(p,li,span,div,a):not(.curator-suggest-chip){color:#000!important;text-indent:0!important;text-align:left}
+
+/* Hairlines drawn in on load: the real rules step aside while their copies draw themselves. */
+html.lines-drawing :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard,#mobileStickyComposer){border-color:transparent!important}
+.lines-layer{position:fixed;inset:0;pointer-events:none;z-index:9999}
+.lines-layer i{transform:scale(0);animation-duration:.8s;animation-timing-function:cubic-bezier(.5,0,.2,1);animation-fill-mode:forwards}
+@keyframes line-x{to{transform:scaleX(1)}}
+@keyframes line-y{to{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.bubble-line{stroke-dashoffset:0}.bubble-svg.is-drawn .bubble-line{animation:none}}
+
+/* Street-view pins do not grow under the pointer: a target that moves as you reach for it is hard to hit. */
+.custom-inst-pin:hover{transform:none}
+
+/* Writing a note: the earlier conversation steps aside and the whole chat, conversation and input, turns gold with black text, in light and dark. */
+body.chat-input-mode-active{--gold:#dcab2c}
+body.chat-input-mode-active #curatorMessages>.before-note{display:none}
+body.chat-input-mode-active #workInputCard.is-mode{background:transparent}
+body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #workBottomDock{background:var(--gold)}
+body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #curatorScrollArea *,body.chat-input-mode-active #curatorScrollArea *::before,body.chat-input-mode-active #workBottomDock,body.chat-input-mode-active #workBottomDock *{color:#000!important;border-color:#000!important}
+body.chat-input-mode-active #curatorScrollArea a:hover,body.chat-input-mode-active #workBottomDock a:hover{background:#000;color:var(--gold)!important;text-decoration:none}
+/* Voice and Listen read chat answers aloud; they have nothing to do while a note is written. */
+body.chat-input-mode-active #curatorVoiceToggleBtn,body.chat-input-mode-active #curatorListenBtn{display:none!important}
+body.chat-input-mode-active #workBottomDock button:hover,body.chat-input-mode-active #curatorScrollArea button:hover{text-decoration:underline}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end :is(div,.user-bubble){color:#000!important;text-align:left}
