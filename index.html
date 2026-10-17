@@ -16263,13 +16263,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return out;
     }
 
+    // At most four words to a line, the words spread evenly over the lines it takes.
+    function wrapWords(str, max = 4) {
+      const w = String(str).split(/\s+/).filter(Boolean);
+      const lines = Math.ceil(w.length / max), per = Math.ceil(w.length / lines), out = [];
+      for (let i = 0; i < w.length; i += per) out.push(w.slice(i, i + per).join(' '));
+      return out.join('\n');
+    }
     function renderStarterPrompts() {
       let list = [];
       try { list = starterPromptList(); } catch (e) { list = []; }
-      const html = list.length ? `<p class="starter-label no-indent">Try asking</p>${list.map(q => `<button type="button" class="starter-prompt" data-query="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join('')}` : '';
+      const html = list.length ? `<p class="starter-label no-indent">Try asking</p>${list.map(q => `<button type="button" class="starter-prompt" data-query="${escapeHtml(q)}">${escapeHtml(wrapWords(q))}</button>`).join('')}` : '';
       ['curatorHeroTitle', 'curatorDrawerHeroTitle'].forEach(id => {
         const t = document.getElementById(id);
-        if (t && t.textContent !== HERO_TITLE) t.textContent = HERO_TITLE;
+        if (t && t.dataset.t !== HERO_TITLE) { t.dataset.t = HERO_TITLE; t.textContent = wrapWords(HERO_TITLE); }
       });
       ['curatorStarterPrompts', 'curatorDrawerStarterPrompts'].forEach(id => {
         const box = document.getElementById(id);
