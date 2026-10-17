@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=161">
-  <script src="assets/config.js?v=161"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=163">
+  <script src="assets/config.js?v=163"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9630,7 +9630,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=161').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=163').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11109,7 +11109,7 @@ return maplibregl$1;
       const inside = document.getElementById('desktopDossierInside');   // the building section belongs to one record only
       if (inside && !(typeof XRAY !== 'undefined' && XRAY.inst === inst)) { inside.innerHTML = ''; inside.classList.add('hidden'); }
       const col = document.getElementById('desktopDossierColumn');
-      if (col && window.innerWidth >= 768) {
+      if (col && window.innerWidth >= 768 && !window.atlasKeepTab) {
         col.classList.remove('hidden');
         col.classList.add('flex');
       }
@@ -11469,7 +11469,7 @@ return maplibregl$1;
       // 1. Update Desktop Dossier Column (middle column in AI Studio 3-column layout)
       if (typeof updateDesktopDossier === 'function') {
         updateDesktopDossier(inst);
-        if (window.innerWidth >= 768 && typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
+        if (window.innerWidth >= 768 && typeof setWorkspaceTab === 'function' && !window.atlasKeepTab) setWorkspaceTab('dossier');
       }
 
       // 2. Update Mobile Dossier Sheet (#dossier-bottom-sheet)
@@ -11493,7 +11493,7 @@ return maplibregl$1;
       } else {
         // On desktop, display middle dossier column alongside curator intelligence column
         const dCol = document.getElementById('desktopDossierColumn');
-        if (dCol) {
+        if (dCol && !window.atlasKeepTab) {   // asked from the chat: the Details column stays closed behind the answer
           dCol.classList.remove('hidden');
           dCol.classList.add('flex');
           dCol.style.display = 'flex';
@@ -14206,7 +14206,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
       const target = explicit || active;
-      const focus = (inst) => { if (inst && (!selectedInstitution || selectedInstitution.id !== inst.id)) selectInstitution(inst, false); };
+      // Asking about a space in the chat keeps you in the chat: the record is selected on the map, but the Details tab does not open over the answer.
+      const focus = (inst) => {
+        if (!inst || (selectedInstitution && selectedInstitution.id === inst.id)) return;
+        window.atlasKeepTab = true;
+        try { selectInstitution(inst, false); } finally { window.atlasKeepTab = false; }
+      };
       const fact = (label, text) => text ? `<p>${label}${escapeHtml(text)}</p>` : '';
       const countA = ALL_INSTITUTIONS.filter(i => i.tier === 'A').length;
       const countB = ALL_INSTITUTIONS.filter(i => i.tier === 'B').length;
@@ -17696,8 +17701,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=161"></script>
-<script src="assets/bubbles.js?v=161" defer></script>
-<script src="assets/typeset.js?v=161"></script>
+<script src="assets/layers.js?v=163"></script>
+<script src="assets/bubbles.js?v=163" defer></script>
+<script src="assets/typeset.js?v=163"></script>
 </body>
 </html>
