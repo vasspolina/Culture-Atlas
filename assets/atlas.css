@@ -874,6 +874,9 @@ abbr[title]{text-decoration:none}
 :root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#d94f8f}
 :root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#ab8a5d}
 
+/* Writing a note or sharing information puts the input on an orange card: every word on it is black, in light and dark. */
+#workInputCard.is-mode,#workInputCard.is-mode::before,#workInputCard.is-mode *,#workInputCard.is-mode *::before,#workInputCard.is-mode *::after,#workInputCard.is-mode #chatShareBtn,:root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn,#workInputCard.is-mode #chatShareBtn:hover{color:#000!important}
+#workInputCard.is-mode ::placeholder{color:#000;opacity:.7}
 /* ---- the chat is set like an interview transcript ----
    The speaker's two-letter mark stands in the margin; wrapped lines hang 1.6em in; the first line of every paragraph,
    the first of a turn and the later ones alike, is indented one em from the hang. One blank line between turns,
