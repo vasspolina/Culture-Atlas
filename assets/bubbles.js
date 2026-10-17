@@ -9,42 +9,34 @@
 
   function gossip() { return document.body.classList.contains('gossip-mode-active'); }
 
-  function rng(seed) {
-    return function () {
-      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
-      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
-      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-      return ((t ^ t >>> 14) >>> 0) / 4294967296;
-    };
+  /* Apple Messages shape: a rounded rectangle with one small curved tail on the bottom corner, left for replies and
+     right for your own turns. The tail hooks out past the edge, so the bubble itself keeps its size. */
+  function shape(w, h, right) {
+    var r = Math.min(18, h / 2);
+    var x = function (v) { return right ? w - v : v; };
+    var d = 'M' + x(r) + ',0';
+    d += ' H' + x(w - r);
+    d += ' Q' + x(w) + ',0 ' + x(w) + ',' + r;
+    d += ' V' + (h - r);
+    d += ' Q' + x(w) + ',' + h + ' ' + x(w - r) + ',' + h;
+    d += ' H' + x(16);
+    d += ' C' + x(10) + ',' + h + ' ' + x(4) + ',' + (h - 1) + ' ' + x(-6) + ',' + h;
+    d += ' C' + x(-1) + ',' + (h - 4) + ' ' + x(0) + ',' + (h - 9) + ' ' + x(0) + ',' + (h - 14);
+    d += ' V' + r;
+    d += ' Q' + x(0) + ',0 ' + x(r) + ',0 Z';
+    return { d: d };
   }
 
-  /* A rounded rectangle whose four corners and four edges each get their own radius and bulge, so no two bubbles
-     share a silhouette, plus a pointed tail under the bottom edge. Clockwise from the top-left. */
-  function shape(w, h, right, rnd) {
-    var maxR = Math.min(34, h / 2.2, w / 3);
-    var rad = function () { return Math.max(10, maxR * (0.55 + rnd() * 0.45)); };
-    var tl = rad(), tr = rad(), br = rad(), bl = rad();
-    var bulge = function () { return (rnd() - 0.45) * 9; };
-    var bt = bulge(), br_ = bulge(), bb = bulge(), bl_ = bulge();
-    var tailW = 26 + rnd() * 14, tailH = 26 + rnd() * 16, lean = (rnd() - 0.5) * 22;
-    var tx = right ? w - Math.max(br, 22) - tailW - rnd() * w * 0.12 : Math.max(bl, 22) + rnd() * w * 0.12;
-    var d = 'M' + tl + ',0';
-    d += ' Q' + (w / 2) + ',' + bt + ' ' + (w - tr) + ',0';
-    d += ' Q' + w + ',0 ' + w + ',' + tr;
-    d += ' Q' + (w + br_) + ',' + (h / 2) + ' ' + w + ',' + (h - br);
-    d += ' Q' + w + ',' + h + ' ' + (w - br) + ',' + h;
-    if (right) {
-      d += ' L' + (tx + tailW) + ',' + h + ' L' + (tx + tailW * 0.7 + lean) + ',' + (h + tailH) + ' L' + tx + ',' + h;
-      d += ' Q' + (w / 2) + ',' + (h + bb) + ' ' + bl + ',' + h;
-    } else {
-      d += ' Q' + (w / 2) + ',' + (h + bb) + ' ' + (tx + tailW) + ',' + h;
-      d += ' L' + (tx + tailW * 0.3 + lean) + ',' + (h + tailH) + ' L' + tx + ',' + h;
-      d += ' L' + bl + ',' + h;
-    }
-    d += ' Q0,' + h + ' 0,' + (h - bl);
-    d += ' Q' + bl_ + ',' + (h / 2) + ' 0,' + tl;
-    d += ' Q0,0 ' + tl + ',0 Z';
-    return { d: d, tail: tailH };
+  /* Like Messages, the colour belongs to the screen, not the bubble: one green to orange to pink wash runs down the
+     chat, so each bubble shows the part of it that sits behind it, and it shifts as you scroll. */
+  function paint(el) {
+    var svg = el.querySelector(':scope>.bubble-svg');
+    var stop = svg && svg.querySelector('linearGradient');
+    var sc = el.closest('#curatorScrollArea,#curatorDrawerChatBody');
+    if (!stop || !sc) return;
+    var top = el.getBoundingClientRect().top - sc.getBoundingClientRect().top;
+    stop.setAttribute('y1', -top);
+    stop.setAttribute('y2', sc.clientHeight - top);
   }
 
   function build(el) {
@@ -52,24 +44,23 @@
     var w = el.offsetWidth, h = el.offsetHeight;
     if (!w || !h) return;
     var right = el.classList.contains('justify-end');
-    var seed = +el.dataset.seed || (el.dataset.seed = ++seq * 7919);
-    var s = shape(w, h, right, rng(+seed));
+    var seed = +el.dataset.seed || (el.dataset.seed = ++seq);
+    var s = shape(w, h, right);
     var id = 'bg' + seed;
     var svg = old || document.createElementNS(NS, 'svg');
     svg.setAttribute('class', 'bubble-svg');
     svg.setAttribute('width', w);
-    svg.setAttribute('height', h + s.tail);
-    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + (h + s.tail));
+    svg.setAttribute('height', h);
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
     svg.setAttribute('aria-hidden', 'true');
-    var g1 = right ? ['#ff2fa8', '#cfa83c', '#7be04a'] : ['#7be04a', '#cfa83c', '#ff2fa8'];
-    svg.innerHTML = '<defs><linearGradient id="' + id + '" x1="0" y1="0" x2="0" y2="1">' +
-      '<stop offset="0" stop-color="' + g1[0] + '"/><stop offset=".52" stop-color="' + g1[1] + '"/><stop offset="1" stop-color="' + g1[2] + '"/></linearGradient></defs>' +
+    svg.innerHTML = '<defs><linearGradient id="' + id + '" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="' + h + '">' +
+      '<stop offset="0" stop-color="#7be04a"/><stop offset=".52" stop-color="#e0a23a"/><stop offset="1" stop-color="#ff2fa8"/></linearGradient></defs>' +
       '<path class="bubble-fill" d="' + s.d + '" fill="url(#' + id + ')"/>' +
       '<path class="bubble-line" d="' + s.d + '" fill="none" stroke="#000" stroke-width="1.1" stroke-linejoin="round" pathLength="1"/>';
     if (!old) el.insertBefore(svg, el.firstChild);
     el.classList.add('has-bubble');
-    el.style.marginBottom = (s.tail + 18) + 'px';
     if (el.classList.contains('bubble-drawn')) svg.classList.add('is-drawn');
+    paint(el);
   }
 
   function outline(el) {
@@ -96,7 +87,6 @@
     var svg = el.querySelector(':scope>.bubble-svg');
     if (svg) svg.remove();
     el.classList.remove('has-bubble', 'bubble-drawn');
-    el.style.marginBottom = '';
   }
 
   /* Typing: the reply's text nodes are emptied and refilled in reading order. The element keeps its final height,
@@ -113,6 +103,15 @@
     });
     while (walker.nextNode()) out.push(walker.currentNode);
     return out;
+  }
+
+  // Scroll the chat itself, vertically only (scrollIntoView would also nudge the panels around it sideways).
+  function follow(node) {
+    var sc = node.closest('#curatorScrollArea,#curatorDrawerChatBody');
+    if (!sc) return;
+    var a = node.getBoundingClientRect(), b = sc.getBoundingClientRect();
+    if (a.bottom > b.bottom - 12) sc.scrollTop += a.bottom - b.bottom + 12;
+    else if (a.top < b.top + 12) sc.scrollTop -= b.top - a.top + 12;
   }
 
   function typeIn(el, done, tries) {
@@ -143,7 +142,7 @@
           left -= full[i].length;
         }
         // Follow the text as it is typed so the reader is never looking at an empty bubble.
-        if (tip && tip.scrollIntoView) tip.scrollIntoView({ block: 'nearest' });
+        if (tip) follow(tip);
       }
       if (shown < total) requestAnimationFrame(frame);
       else { el.classList.remove('is-typing'); el.style.minHeight = ''; done(); }
@@ -176,7 +175,16 @@
     else all.forEach(unbubble);
   }
 
+  function repaintAll() {
+    [].forEach.call(document.querySelectorAll('.has-bubble'), paint);
+  }
+
   function observe() {
+    ['curatorScrollArea', 'curatorDrawerChatBody'].forEach(function (id) {
+      var sc = document.getElementById(id);
+      if (sc) sc.addEventListener('scroll', function () { requestAnimationFrame(repaintAll); }, { passive: true });
+    });
+    window.addEventListener('resize', repaintAll);
     var pending = [];
     var flush = function () { var l = pending; pending = []; arrive(l); };
     var mo = new MutationObserver(function (muts) {

@@ -1025,7 +1025,7 @@ body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBo
 #workInputCard #chatShareBtn:hover,:root[data-theme="dark"] #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
 
 /* Gossip mode: every turn is a speech bubble. assets/bubbles.js draws a hairline outline and a green to orange to pink wash that fit the text, with the tail part of the same path; until it runs, a plain wash stands in. Black type, left aligned, no speaker marks. */
-body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.curator-message-wrap,.justify-end){position:relative;display:block;box-sizing:border-box;width:fit-content;max-width:92%;margin:0 0 3em;padding:1.1em 1.6em;border-radius:1.6em;background:linear-gradient(180deg,#7be04a 0%,#cfa83c 52%,#ff2fa8 100%);color:#000;text-align:left;text-indent:0}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.curator-message-wrap,.justify-end){position:relative;display:block;box-sizing:border-box;width:fit-content;max-width:80%;margin:0 0 .55em;padding:.55em 1em;border-radius:18px;background:linear-gradient(180deg,#7be04a 0%,#cfa83c 52%,#ff2fa8 100%);color:#000;text-align:left;text-indent:0}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{margin-left:auto;background:linear-gradient(180deg,#ff2fa8 0%,#cfa83c 52%,#7be04a 100%)}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.has-bubble{background:none;border-radius:0}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.curator-message-wrap,.justify-end)::before{content:none!important}
