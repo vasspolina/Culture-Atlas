@@ -123,7 +123,7 @@
     el.style.minHeight = el.offsetHeight + 'px';
     el.classList.add('is-typing');
     nodes.forEach(function (n) { n.nodeValue = ''; });
-    var duration = Math.min(3200, Math.max(500, total * 11)), start = performance.now(), shown = 0;
+    var duration = Math.min(7000, Math.max(1000, total * 24)), start = performance.now(), shown = 0;
     function frame(now) {
       // The app may rewrite a reply's markup once it has arrived; when the nodes being typed are gone, start over on the new ones.
       if (nodes.length && !nodes[0].isConnected) {
@@ -229,14 +229,14 @@
     lines.forEach(function (l) {
       var d = document.createElement('i');
       var r = l.r, horiz = l.s[2] === 'x';
-      d.style.cssText = 'position:fixed;background:' + l.colour + ';animation-delay:' + (l.i * 110) + 'ms;' +
+      d.style.cssText = 'position:fixed;background:' + l.colour + ';animation-delay:' + (l.i * 240) + 'ms;' +
         (horiz ? 'left:' + r.left + 'px;width:' + r.width + 'px;height:1px;top:' + (l.s[1] === 'top' ? r.top : r.bottom - 1) + 'px;transform-origin:left;' + 'animation-name:line-x'
                : 'top:' + r.top + 'px;height:' + r.height + 'px;width:1px;left:' + r.left + 'px;transform-origin:top;animation-name:line-y');
       layer.appendChild(d);
     });
     root.classList.add('lines-drawing');
     document.body.appendChild(layer);
-    setTimeout(function () { root.classList.remove('lines-drawing'); layer.remove(); }, 1500);
+    setTimeout(function () { root.classList.remove('lines-drawing'); layer.remove(); }, 3200);
   }
 
   function start() { observe(); setTimeout(drawLines, 120); }

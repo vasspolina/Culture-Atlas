@@ -1032,7 +1032,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.cura
 .bubble-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:0}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.has-bubble>*:not(.bubble-svg){position:relative;z-index:1}
 .bubble-line{stroke-dasharray:1;stroke-dashoffset:1}
-.bubble-svg.is-drawn .bubble-line{animation:bubble-draw .9s cubic-bezier(.5,0,.2,1) forwards}
+.bubble-svg.is-drawn .bubble-line{animation:bubble-draw 1.9s cubic-bezier(.5,0,.2,1) forwards}
 @keyframes bubble-draw{to{stroke-dashoffset:0}}
 .is-typing .curator-suggest-chip{visibility:hidden}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.curator-message-wrap,.user-bubble,.justify-end>div) :is(p,li,span,div,a):not(.curator-suggest-chip){color:#000!important;text-indent:0!important;text-align:left}
@@ -1040,7 +1040,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.cura
 /* Hairlines drawn in on load: the real rules step aside while their copies draw themselves. */
 html.lines-drawing :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard,#mobileStickyComposer){border-color:transparent!important}
 .lines-layer{position:fixed;inset:0;pointer-events:none;z-index:9999}
-.lines-layer i{transform:scale(0);animation-duration:.8s;animation-timing-function:cubic-bezier(.5,0,.2,1);animation-fill-mode:forwards}
+.lines-layer i{transform:scale(0);animation-duration:1.7s;animation-timing-function:cubic-bezier(.5,0,.2,1);animation-fill-mode:forwards}
 @keyframes line-x{to{transform:scaleX(1)}}
 @keyframes line-y{to{transform:scaleY(1)}}
 @media (prefers-reduced-motion:reduce){.bubble-line{stroke-dashoffset:0}.bubble-svg.is-drawn .bubble-line{animation:none}}
