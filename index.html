@@ -395,26 +395,9 @@ return maplibregl$1;
         </div>
         <!-- Chat Transcript Message Area -->
         <div class="flex-1 overflow-y-auto p-4 space-y-3" id="curatorDrawerChatBody">
-          <div class="py-2" id="curatorDrawerGreeting">
-            <h1 class="curator-hero-title">What’s behind<span class="blk"></span> this <span class="lbl">Funders and sources</span> cultural <span class="lbl m">Ask</span> space?</h1>
-            <p>Ask about a cultural space, its funders or reported controversies.</p>
-          </div>
-          <div class="pt-2">
-            <p class="meta mb-2">Suggested Inquiries</p>
-            <div class="flex flex-col gap-1">
-              <button class="curator-suggest-chip text-left py-1 rule-b" data-query="Find cultural spaces in London" type="button">
-                Find cultural spaces in London
-              </button>
-              <button class="curator-suggest-chip text-left py-1 rule-b" data-query="Who funds this museum?" type="button">
-                Who funds this museum?
-              </button>
-              <button class="curator-suggest-chip text-left py-1 rule-b" data-query="What is flagged here?" type="button">
-                What is flagged here?
-              </button>
-              <button class="curator-suggest-chip text-left py-1" data-query="Which spaces are flagged?" type="button">
-                Which spaces are flagged?
-              </button>
-            </div>
+          <div id="curatorDrawerGreeting">
+            <h1 id="curatorDrawerHeroTitle"></h1>
+            <div id="curatorDrawerStarterPrompts" class="starter-prompts"></div>
           </div>
           <!-- Chat info on a phone: the same text as under the composer on a desktop. -->
           <details id="chatRecordsInfoMobile" class="chat-info">
@@ -16281,13 +16264,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
 
     function renderStarterPrompts() {
-      const heroTitle = document.getElementById('curatorHeroTitle');
-      if (heroTitle && heroTitle.textContent !== HERO_TITLE) heroTitle.textContent = HERO_TITLE;
-      const box = document.getElementById('curatorStarterPrompts');
-      if (!box) return;
       let list = [];
       try { list = starterPromptList(); } catch (e) { list = []; }
-      box.innerHTML = list.length ? `<p class="starter-label no-indent">Try asking</p>${list.map(q => `<button type="button" class="starter-prompt" data-query="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join('')}` : '';
+      const html = list.length ? `<p class="starter-label no-indent">Try asking</p>${list.map(q => `<button type="button" class="starter-prompt" data-query="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join('')}` : '';
+      ['curatorHeroTitle', 'curatorDrawerHeroTitle'].forEach(id => {
+        const t = document.getElementById(id);
+        if (t && t.textContent !== HERO_TITLE) t.textContent = HERO_TITLE;
+      });
+      ['curatorStarterPrompts', 'curatorDrawerStarterPrompts'].forEach(id => {
+        const box = document.getElementById(id);
+        if (box) box.innerHTML = html;
+      });
     }
     document.addEventListener('click', (e) => {
       const b = e.target.closest && e.target.closest('.starter-prompt');

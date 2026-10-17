@@ -742,14 +742,21 @@ body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-a
 #desktopDossierColumn a:not(.record-action){background:var(--hl-blue);color:#000;text-decoration:none;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 #desktopDossierColumn .is-good,#desktopDossierColumn .meta.t-strong{width:fit-content;background:var(--hl-green);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
-/* Chat landing as a ruled grid: two columns of cells, thick vermilion rules between, small text top left. Follows light and dark. */
-#curatorHeroGreeting{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:4px;margin:0;background:#d9482b;color:var(--ink);text-align:left;align-items:stretch;justify-content:stretch;min-height:0}
-#curatorHeroGreeting>h1,#curatorHeroGreeting>p,#curatorStarterPrompts .starter-label,#curatorStarterPrompts .starter-prompt,#curatorStarterPrompts .starter-prompt:nth-of-type(n){box-sizing:border-box;min-height:168px;margin:0;padding:16px;background:var(--paper);color:var(--ink);border:0;font:400 18px/1.2 var(--sans);letter-spacing:0;text-transform:none;text-align:left;max-width:none;width:auto;display:block}
-#curatorHeroGreeting>h1{max-width:none}
-#curatorHeroGreeting>p{font-size:15px;line-height:1.3;margin:0}
-#curatorStarterPrompts{display:contents;border:0;max-width:none}
-#curatorStarterPrompts .starter-label{grid-column:1/-1;min-height:0;font-size:15px;padding:12px 16px}
-#curatorStarterPrompts .starter-prompt::before{content:none}
-#curatorStarterPrompts .starter-prompt:hover,#curatorStarterPrompts .starter-prompt:nth-of-type(n):hover{background:var(--ink);color:var(--paper)}
-@media (max-width:520px){#curatorHeroGreeting>h1,#curatorHeroGreeting>p,#curatorStarterPrompts .starter-prompt,#curatorStarterPrompts .starter-prompt:nth-of-type(n){min-height:132px;padding:12px}}
-#curatorStarterPrompts .starter-prompt,#curatorStarterPrompts .starter-prompt:nth-of-type(n){display:flex;align-items:flex-start;justify-content:flex-start}
+/* Chat landing: one centred column of large bold capitals, the title in ink and each starter question in its own colour. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;padding:48px 24px;margin:0;background:transparent;color:var(--ink);text-align:center;min-height:100%}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font:700 clamp(28px,3vw,44px)/1.05 var(--display);text-transform:uppercase;letter-spacing:0;text-align:center;max-width:16ch;margin:0;color:var(--ink)}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting)>p,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-label{display:none}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex;flex-direction:column;align-items:center;gap:40px;width:100%;max-width:none;border:0}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:block;width:auto;max-width:18ch;min-height:0;margin:0;padding:0;background:transparent;border:0;font:700 clamp(28px,3vw,44px)/1.05 var(--display);text-transform:uppercase;letter-spacing:0;text-align:center;color:var(--sp,var(--ink))}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#0b7a63}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#8a6200}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#b0206c}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#7a4f1c}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#5bc4ae}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#e8c040}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#f2b3d6}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#d9b783}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;color:var(--ink);text-decoration:underline;text-underline-offset:.12em}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting),:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){gap:28px}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){padding:32px 24px;justify-content:flex-start}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(24px,2.2vw,32px)}
