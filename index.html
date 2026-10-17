@@ -12778,17 +12778,16 @@ return maplibregl$1;
       // 2. A figure keeps its unit on one line (Hochuli p.37); it is not boxed
       const renderStatCallouts = (str) => str.replace(/\$(\d[\d,.]*)\s+(trillion|billion|million)\b/gi, (m, n, u) => '$' + n + '\u00a0' + u);
 
-      // 2b. A grade is named in its own colour, the colour of its dot on the globe; a range shows both
-      const GRADE_WORD = /\b(?:Clean Funding )?Grades?\s+([1-5])(?:\s*(?:–|—|-|to|and)\s*([1-5]))?\b/g;
+      // 2b. A grade is named in its own colour, the colour of its dot on the globe. One grade, one colour: a range ("Grade 4–5") is left plain.
+      const GRADE_WORD = /\b(?:Clean Funding )?Grade\s+([1-5])\b(?!\s*(?:–|—|-|to|and)\s*[1-5])/g;
       const renderGradeMarks = (str) => str.replace(GRADE_WORD, (...args) => {
-        const m = args[0], a = args[1], b = args[2];
+        const m = args[0], a = args[1];
         const offset = args[args.length - 2];
         const preceding = args[args.length - 1].slice(0, offset);
         if (preceding.lastIndexOf('<') > preceding.lastIndexOf('>')) return m;
         const G = window.atlasGrade || {};
         if (!G[a]) return m;
-        const bg = b && G[b] ? `linear-gradient(90deg,${G[a].col} 50%,${G[b].col} 50%)` : G[a].col;
-        return `<span class="grade-word" style="background:${bg}">${m}</span>`;
+        return `<span class="grade-word" style="background:${G[a].col}">${m}</span>`;
       });
 
       // 3. Helper to parse inline markdown (bold, italic, code, links)
@@ -13115,6 +13114,7 @@ CHARACTER & VOICE GUIDELINES:
    - Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point).
    - Never output raw markdown tags or unrendered syntax.
    - Use bold (**keyword**) deliberately for key figures, names, or concepts.
+   - Name a Clean Funding Grade as one number (Grade 4, or Grade 5), never as a range.
    - Link institutions strictly as:
      <a href="#" class="inst-link underline" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link" data-city="City">City</a> (<a href="#" class="dossier-link underline meta" data-name="Exact Name">audit dossier</a>)
    - Link cities as: <a href="#" class="city-link" data-city="City">City</a>.
@@ -13161,6 +13161,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
    - Format responses using standard Markdown headers and clean lists. Never output raw markdown tags or unrendered syntax.
    - Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point).
    - Never output raw markdown tags or unrendered syntax like raw asterisks or unformatted text blocks.
+   - Name a Clean Funding Grade as one number (Grade 4, or Grade 5), never as a range.
 7. ROBUST MISSPELLING & PHONETIC TOLERANCE (LIKE CHATGPT & CLAUDE):
    - Visitors frequently query using typos, phonetic spellings, voice-to-text, or transpositions (e.g. 'Ulia stolcheck foundation' -> 'Julia Stoschek Foundation / Collection', 'chisnhale' -> 'Chisenhale', 'gugenheim' -> 'Guggenheim', 'pompidue' -> 'Pompidou', 'whitny' -> 'Whitney', 'momaa' -> 'MoMA', 'tate modren' -> 'Tate Modern', 'artsts space' -> 'Artists Space').
    - You must gracefully resolve the user's intended institution or city with intelligence and cultural fluency, just as other advanced AI models do.
