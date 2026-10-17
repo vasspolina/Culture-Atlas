@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=166">
-  <script src="assets/config.js?v=166"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=167">
+  <script src="assets/config.js?v=167"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9647,7 +9647,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=164').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=167').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14290,7 +14290,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              appendCuratorMessage(aiHtml + '<p class="no-indent">Written by an AI model from the records on this page. Not verified.</p>', [], webIntel, thinkingData);
+              appendCuratorMessage(aiHtml + '<p class="no-indent ai-note">Written by an AI model from the records on this page. Not verified.</p>', [], webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -17768,8 +17768,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=166"></script>
-<script src="assets/bubbles.js?v=166" defer></script>
-<script src="assets/typeset.js?v=166"></script>
+<script src="assets/layers.js?v=167"></script>
+<script src="assets/bubbles.js?v=167" defer></script>
+<script src="assets/typeset.js?v=167"></script>
 </body>
 </html>
