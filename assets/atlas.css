@@ -1024,6 +1024,21 @@ body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBo
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 #workInputCard #chatShareBtn:hover,:root[data-theme="dark"] #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
 
+/* Gossip mode: every turn is a speech bubble, a soft blob with a pointed tail and a green to orange to pink wash, black type, no speaker marks. */
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap,
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{position:relative;display:block;box-sizing:border-box;width:fit-content;max-width:92%;margin:0 0 3.2em;padding:1.5em 2.2em;border-radius:46% 46% 46% 46% / 38% 38% 38% 38%;background:linear-gradient(180deg,#7be04a 0%,#cfa83c 52%,#ff2fa8 100%);color:#000;text-align:center;text-indent:0}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{margin-left:auto;padding:1em 1.8em;background:linear-gradient(180deg,#ff2fa8 0%,#cfa83c 52%,#7be04a 100%)}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap::before,
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end::before{content:none!important}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap::after,
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end::after{content:"";position:absolute;bottom:-1.9em;width:2.2em;height:2.4em;background:#ff2fa8;clip-path:polygon(0 0,100% 0,25% 100%)}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap::after{left:16%}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end::after{right:16%;background:#7be04a;clip-path:polygon(0 0,100% 0,75% 100%)}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.curator-message-wrap,.user-bubble,.justify-end>div) :is(p,li,span,div,a):not(.curator-suggest-chip){color:#000!important;text-indent:0!important;text-align:center}
+body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap p:not(.no-indent){text-indent:0}
+/* Street-view pins do not grow under the pointer: a target that moves as you reach for it is hard to hit. */
+.custom-inst-pin:hover{transform:none}
+
 /* Writing a note: the earlier conversation steps aside and the whole chat, conversation and input, turns gold with black text, in light and dark. */
 body.chat-input-mode-active{--gold:#dcab2c}
 body.chat-input-mode-active #curatorMessages>.before-note{display:none}
