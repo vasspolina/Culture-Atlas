@@ -735,3 +735,9 @@ body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-a
 /* One rule between the record and "Inside the building", and none under its heading. */
 #desktopDossierRecordBody:has(+ #desktopDossierInside:not(.hidden)) .rule-b:last-of-type{border-bottom:0}
 #desktopDossierInside>h3+.rule-t{border-top:0;padding-top:0}
+
+/* Right column: marker highlights. Black text on all three, so contrast holds in light, dark and gossip. */
+:root{--hl-blue:#72a5ed;--hl-green:#5ac651;--hl-yellow:#ffffb1}
+#desktopDossierColumn .t-lead,#desktopDossierColumn .lede{background:var(--hl-yellow);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#desktopDossierColumn a:not(.record-action){background:var(--hl-blue);color:#000;text-decoration:none;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#desktopDossierColumn .is-good,#desktopDossierColumn .meta.t-strong{width:fit-content;background:var(--hl-green);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
