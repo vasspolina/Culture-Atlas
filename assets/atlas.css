@@ -14,6 +14,7 @@ h1,h2,h3,h4,p{margin:0}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
+  --ease:cubic-bezier(.32,.72,0,1); --dur:.45s; --mint:#a7f0ba; --mint-10:#defbe6;
   --cobalt:#0046ff; --blue:#527fe6; --orange:#ff6119; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#ff6119;
   --sans:"PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -29,8 +30,8 @@ body{background:var(--paper);color:var(--ink);font:400 15px/1.3 var(--sans);lett
   height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
 button,[role=button]{cursor:pointer}
 a{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
-strong,b{font-weight:400;font-style:italic;text-decoration:none}
-em,i{font-style:italic}
+strong,b{font-weight:400;font-style:normal;text-decoration:none}
+em,i{font-style:normal}
 hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 input,textarea,select{outline:0}
 ::placeholder{color:var(--ink);opacity:.55}
@@ -39,7 +40,7 @@ input,textarea,select{outline:0}
 .t-title{font-family:var(--display);font-weight:700;font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:0}
 .t-lead{font-size:18px;line-height:1.25}
 .t-strong{font-weight:400}
-.t-em{font-style:italic}
+.t-em{font-style:normal}
 .kicker{font-family:var(--sans);font-size:14px;letter-spacing:.01em}
 .lede{font:400 18px/1.25 var(--sans);letter-spacing:.01em}
 h1.lede,h2.lede{font:700 32px/1 var(--display-xl);text-transform:uppercase;letter-spacing:0}
@@ -212,7 +213,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .curator-followup-pill,.curator-suggest-chip,.work-suggestion-card,.work-shelf-pill,.confidential-prompt-chip{background:var(--peri);color:#000;border-radius:0;padding:8px 12px;text-align:left;white-space:normal;font:400 15px/1.2 var(--sans);text-decoration:none;display:inline-block;margin:0 6px 6px 0}
 .curator-suggest-chip{display:block;background:none;border-bottom:1px solid var(--line);padding:10px 0;margin:0}
 .curator-followup-pill:hover,.curator-suggest-chip:hover,.work-suggestion-card:hover{background:var(--ink);color:var(--paper)}
-.stat-callout,.callout,blockquote{background:var(--grey);padding:12px 16px;border:0;margin:12px 0}
+.callout,blockquote{background:var(--grey);padding:12px 16px;border:0;margin:12px 0}
 #curatorTyping{font:400 14px/1.3 var(--sans)}
 #curatorCityDotWrap{display:none}
 .typing-dot{display:inline-block;width:6px;height:6px;background:var(--ink);border-radius:50%;margin-right:3px;animation:typingBounce 1.2s infinite ease-in-out both}
@@ -249,10 +250,10 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .provider-tab-btn[aria-pressed=true]{background:var(--cobalt);color:#fff}
 
 /* ---- map pins and labels (functional, restyled) ---- */
-.custom-inst-pin{cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .2s}
+.custom-inst-pin{cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .25s var(--ease)}
 .custom-inst-pin:hover{transform:scale(1.12);z-index:9999!important}
 .pin-pulse-aura,.brand-city-dot-aura,.brand-city-dot-ping{display:none!important}
-.inst-pin-label{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:4px 10px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);font:400 14px/1.2 var(--sans);white-space:nowrap;cursor:pointer;z-index:20;transition:opacity .2s}
+.inst-pin-label{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:4px 10px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);font:400 14px/1.2 var(--sans);white-space:nowrap;cursor:pointer;z-index:20;transition:opacity .25s var(--ease)}
 .inst-pin-label.label-pos-top{bottom:calc(100% + 5px);top:auto;left:50%;right:auto;transform:translateX(-50%)}
 .inst-pin-label.label-pos-bottom{top:calc(100% + 5px);bottom:auto;left:50%;right:auto;transform:translateX(-50%)}
 .inst-pin-label.label-pos-right{left:calc(100% + 6px);right:auto;top:50%;bottom:auto;transform:translateY(-50%)}
@@ -1042,7 +1043,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.cura
 .bubble-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:0}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.has-bubble>*:not(.bubble-svg){position:relative;z-index:1}
 .bubble-line{stroke-dasharray:1;stroke-dashoffset:1}
-.bubble-svg.is-drawn .bubble-line{animation:bubble-draw 1.9s cubic-bezier(.5,0,.2,1) forwards}
+.bubble-svg.is-drawn .bubble-line{animation:bubble-draw 1.9s var(--ease) forwards}
 @keyframes bubble-draw{to{stroke-dashoffset:0}}
 .is-typing .curator-suggest-chip{visibility:hidden}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.curator-message-wrap,.user-bubble,.justify-end>div) :is(p,li,span,div,a):not(.curator-suggest-chip){color:#000!important;text-indent:0!important;text-align:left}
@@ -1050,7 +1051,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.cura
 /* Hairlines drawn in on load: the real rules step aside while their copies draw themselves. */
 html.lines-drawing :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard,#mobileStickyComposer){border-color:transparent!important}
 .lines-layer{position:fixed;inset:0;pointer-events:none;z-index:9999}
-.lines-layer i{transform:scale(0);animation-duration:1.7s;animation-timing-function:cubic-bezier(.5,0,.2,1);animation-fill-mode:forwards}
+.lines-layer i{transform:scale(0);animation-duration:1.7s;animation-timing-function:var(--ease);animation-fill-mode:forwards}
 @keyframes line-x{to{transform:scaleX(1)}}
 @keyframes line-y{to{transform:scaleY(1)}}
 @media (prefers-reduced-motion:reduce){.bubble-line{stroke-dashoffset:0}.bubble-svg.is-drawn .bubble-line{animation:none}}
@@ -1059,7 +1060,9 @@ html.lines-drawing :is(header,#workspaceContextTabBar,#globeSplitter,#workInputC
 .custom-inst-pin:hover{transform:none}
 
 /* Writing a note: the earlier conversation steps aside and the whole chat, conversation and input, turns gold with black text, in light and dark. */
-body.chat-input-mode-active{--gold:#dcab2c}
+body.chat-input-mode-active{--gold:var(--mint)}
+body.chat-input-mode-active #workInput.is-good{background:var(--mint-10)}
+body.chat-input-mode-active #workInput:focus{outline:2px solid #000;outline-offset:-2px}
 body.chat-input-mode-active #curatorMessages>.before-note{display:none}
 body.chat-input-mode-active #workInputCard.is-mode{background:transparent}
 body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #workBottomDock{background:var(--gold)}
@@ -1093,7 +1096,11 @@ body #curatorMessages p.ai-note{font-size:14px;line-height:1.3;margin-top:6px}
 .is-typing button,.is-typing .curator-suggest-chip{visibility:hidden}
 
 /* A balloon's outline draws along every path of its shape at once. */
-.bubble-svg.is-drawn .bubble-line{animation:bubble-draw 1.9s cubic-bezier(.5,0,.2,1) forwards}
+.bubble-svg.is-drawn .bubble-line{animation:bubble-draw 1.9s var(--ease) forwards}
 
 /* gossip: leave room under the last balloon so tails and spikes are not clipped */
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-bottom:2.2em}
+.grade-word{color:#000;padding:0 .2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#curatorScrollArea,#workBottomDock,#workInputCard,#workInput{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),min-height var(--dur) var(--ease)}
+#curatorMessages>*{animation:msg-in var(--dur) var(--ease) both}
+@keyframes msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}

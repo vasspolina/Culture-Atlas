@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=168">
-  <script src="assets/config.js?v=168"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=169">
+  <script src="assets/config.js?v=169"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9612,7 +9612,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=167').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=169').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12775,19 +12775,21 @@ return maplibregl$1;
         return str;
       };
 
-      // 2. Helper to highlight financial stat figures
-      const renderStatCallouts = (str) => {
-        return str.replace(/\$(\d+(?:\.\d+)?)\s*(?:trillion|billion|million|T|B|M)\b|\$(\d(1, 3)(?:,\d3)+)\b|\b(\d(1, 2):\d(1, 2))\s*(?:wage\s*ratio|ratio)?\b|\b\d+(?:\.\d+)?%/gi, (...args) => {
-          const m = args[0];
-          const offset = args[args.length - 2];
-          const fullStr = args[args.length - 1];
-          const preceding = fullStr.slice(0, offset);
-          const openTag = preceding.lastIndexOf('<');
-          const closeTag = preceding.lastIndexOf('>');
-          if (openTag > closeTag) return m;
-          return `<span class="stat-callout inline-flex items-center px-1_5 py-0_2 meta t-strong">${m}</span>`;
-        });
-      };
+      // 2. A figure keeps its unit on one line (Hochuli p.37); it is not boxed
+      const renderStatCallouts = (str) => str.replace(/\$(\d[\d,.]*)\s+(trillion|billion|million)\b/gi, (m, n, u) => '$' + n + '\u00a0' + u);
+
+      // 2b. A grade is named in its own colour, the colour of its dot on the globe; a range shows both
+      const GRADE_WORD = /\b(?:Clean Funding )?Grades?\s+([1-5])(?:\s*(?:–|—|-|to|and)\s*([1-5]))?\b/g;
+      const renderGradeMarks = (str) => str.replace(GRADE_WORD, (...args) => {
+        const m = args[0], a = args[1], b = args[2];
+        const offset = args[args.length - 2];
+        const preceding = args[args.length - 1].slice(0, offset);
+        if (preceding.lastIndexOf('<') > preceding.lastIndexOf('>')) return m;
+        const G = window.atlasGrade || {};
+        if (!G[a]) return m;
+        const bg = b && G[b] ? `linear-gradient(90deg,${G[a].col} 50%,${G[b].col} 50%)` : G[a].col;
+        return `<span class="grade-word" style="background:${bg}">${m}</span>`;
+      });
 
       // 3. Helper to parse inline markdown (bold, italic, code, links)
       const parseInlineMarkdown = (line) => {
@@ -12810,6 +12812,7 @@ return maplibregl$1;
         s = renderStatCallouts(s);
         // Source pills
         s = renderSourcePills(s);
+        s = renderGradeMarks(s);
         return s;
       };
 
@@ -15228,9 +15231,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
 
       appendCuratorMessage(`
-        <div class="py-1_5 flex items-center justify-between rule-t">
-          <span>Returned to Chat. How can I help you explore cultural spaces?</span>
-          <span class="flex gap-3"><button type="button" onclick="window.enterChatInputMode('information')" class="">Add information</button><button type="button" onclick="window.enterChatInputMode('whistleblower')" class="">Whistleblower note</button></span>
+        <div>
+          <p class="no-indent">Returned to chat. How can I help you explore cultural spaces?</p>
+          <div class="curator-followups mt-3 flex flex-col items-start gap-1">
+            <button type="button" class="curator-followup-pill text-left py-1" onclick="window.enterChatInputMode('information')">Add information</button>
+            <button type="button" class="curator-followup-pill text-left py-1" onclick="window.enterChatInputMode('whistleblower')">Whistleblower note</button>
+          </div>
         </div>
       `, [], null, null, false);
       scrollChatToBottom(true);
@@ -17735,8 +17741,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=168"></script>
-<script src="assets/bubbles.js?v=168" defer></script>
-<script src="assets/typeset.js?v=168"></script>
+<script src="assets/layers.js?v=169"></script>
+<script src="assets/bubbles.js?v=169" defer></script>
+<script src="assets/typeset.js?v=169"></script>
 </body>
 </html>
