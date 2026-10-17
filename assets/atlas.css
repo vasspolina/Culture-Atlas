@@ -962,3 +962,8 @@ body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,body.goss
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody),
 :root[data-theme="dark"] body.gossip-mode-active #curatorMessages :is(.curator-message-wrap,.user-bubble,.user-bubble *,p,li,a,span),
 :root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,:root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.justify-end::before{color:#ffd600}
+
+/* The note above the individual accounts: regular weight, body size, no rule under it. */
+:is(#desktopDossierRecordBody,#detailBody) .kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;text-decoration:none;border:0;margin:20px 0 8px;padding:0;max-width:66ch}
+:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;margin:20px 0 8px}
+:is(#desktopDossierRecordBody,#detailBody) .accounts-note+.record-card{border-top:0;padding-top:0}

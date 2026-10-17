@@ -9847,7 +9847,10 @@ return maplibregl$1;
       let cardY = py - cardH - 16;
       if (cardY < 14) cardY = py + 20;
 
-      ctx.fillStyle = '#ffffff';
+      // The card follows the theme: white block in light mode, the dark popup colours in dark mode and in gossip mode (yellow text there).
+      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark' || isGossipModeActive;
+      const cardInk = cardDark ? (isGossipModeActive ? '#ffd600' : '#ffffff') : '#000000';
+      ctx.fillStyle = cardDark ? '#2a2a2a' : '#ffffff';
       ctx.fillRect(cardX, cardY, cardW, cardH);
 
       const textX = cardX + barW + padX;
@@ -9863,7 +9866,7 @@ return maplibregl$1;
 
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
-      ctx.fillStyle = '#000000';
+      ctx.fillStyle = cardInk;
       ctx.font = '700 20px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
       ctx.fillText(fit(nameUpper), textX, cardY + 14);
 
@@ -9876,9 +9879,9 @@ return maplibregl$1;
         const btnW = Math.min(maxTextW, webW + 24);
         const btnH = pillH;
 
-        ctx.fillStyle = '#d9d9d9';
+        ctx.fillStyle = cardDark ? '#444444' : '#d9d9d9';
         ctx.fillRect(btnX, btnY, btnW, btnH);
-        ctx.fillStyle = '#000000';
+        ctx.fillStyle = cardInk;
         ctx.textBaseline = 'middle';
         ctx.fillText(fit(domainPillText), btnX + 12, btnY + btnH / 2 + 0.5);
 
@@ -10994,7 +10997,7 @@ return maplibregl$1;
       if (!blocks.length && !accounts.length) return '';
       return `<div class="py-3 rule-b" role="region" aria-label="Reported items">
         ${blocks.length ? `<h3 class="kicker">Reported, not independently verified</h3>${blocks.join('')}` : ''}
-        ${accounts.length ? `<h3 class="kicker">Individual accounts from employee-review sites and Reddit, as retained by the research. These are individual accounts, not verified institutional findings.</h3>${accounts.join('')}` : ''}
+        ${accounts.length ? `<h3 class="kicker accounts-note">Individual accounts from review sites and Reddit; not verified findings about the institution.</h3>${accounts.join('')}` : ''}
       </div>`;
     }
 
