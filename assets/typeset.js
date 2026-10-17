@@ -23,6 +23,8 @@
       // Keep "Est. 1859", "No. 4", "p. 12", "fig. 3" and a figure with its unit together (p.37)
       .replace(/\b(Est|No|Nos|p|pp|fig|vol|c|ca)\.\s(?=\d)/g, '$1.' + NBSP)
       .replace(/(\d)\s(km|m|cm|mm|kg|DKK|USD|EUR|GBP|CHF|SEK|NOK|%|sq\.? ?m)\b/g, '$1' + NBSP + '$2')
+      // A currency code stays with its amount (CHF 10, USD 5)
+      .replace(/\b(CHF|DKK|USD|EUR|GBP|SEK|NOK|JPY|AUD|CAD|CNY|INR|KRW)\s(?=\d)/g, '$1' + NBSP)
       // Initials sit close to each other and to the surname, never loose (p.37)
       .replace(/\b([A-Z]\.)\s(?=[A-Z]\.)/g, '$1' + THIN);
   }
