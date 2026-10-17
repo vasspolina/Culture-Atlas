@@ -1059,8 +1059,8 @@
   "c": "Joliette, Canada",
   "t": "O",
   "s": "S",
-  "f": "65,900 people reached 2024-25; Quebec ministries, Canada Council, Ville de Joliette, Power Corporation, Caisse Desjardins, Fondation Hydro-Québec, J.A. DeSève, Lassonde.",
-  "w": "Flags: Fossil fuels. Énergir (natural-gas utility) and Fondation Famille Pierre Lassonde (mining fortune) on current partners list; Power Corp funds a named room.",
+  "f": "Quebec ministries, Canada Council and Ville de Joliette. Énergir, Power Corporation, Fondation Hydro-Québec, Caisse Desjardins and the Lassonde and DeSève foundations are among its lead partners (2025 annual report).",
+  "w": "Flags: Fossil fuels. Énergir is Quebec's leading natural-gas distributor, serving 211,000 customers. Power Corporation funds a named room at the museum.",
   "u": [
    "https://www.museejoliette.org/partenaires",
    "https://storage.googleapis.com/maj-strapi-uploads-prod/2025_MAJ_Rapport_Annuel_v7_WEB_d004d51b60/2025_MAJ_Rapport_Annuel_v7_WEB_d004d51b60.pdf",
@@ -1203,14 +1203,14 @@
  {
   "n": "Remai Modern",
   "c": "Saskatoon, Canada",
-  "t": "O",
+  "t": "F",
   "s": "S",
-  "f": "C$13M, 204k visitors. City 51%, Remai foundation.",
-  "w": "Flags: Fossil fuels. SaskEnergy, Cameco uranium, Sask Lotteries. 2019 board upheaval.",
+  "f": "C$13.1M revenue in 2025, 51% from City of Saskatoon grants. Sponsors include the Frank and Ellen Remai Foundation, SaskEnergy, SIGA, SaskTel, SGI and TD.",
+  "w": "Flags: Fossil fuels, Gambling. SaskEnergy, a natural-gas utility, presents the Fireside series for a third year. SIGA, which runs seven casinos, sponsored a 2025 exhibition.",
   "u": [
    "https://remaimodern.org/wp-content/uploads/2026/06/2025_Annual_Report_Web_Version.pdf",
-   "https://www.ckom.com/2019/02/25/7-members-of-remai-modern-board-ousted-or-leaving/",
-   "https://www.saskenergy.com/about-us/newsroom/delivering-customers-communities-and-saskatchewan-saskenergy-2024-25-annual"
+   "https://www.saskenergy.com/about-us/newsroom/delivering-customers-communities-and-saskatchewan-saskenergy-2024-25-annual",
+   "https://en.wikipedia.org/wiki/Saskatchewan_Indian_Gaming_Authority"
   ],
   "e": false,
   "la": 52.129,
@@ -1510,13 +1510,13 @@
  {
   "n": "Museum of Contemporary Art Zagreb",
   "c": "Zagreb, Croatia",
-  "t": "U",
+  "t": "A",
   "s": "S",
-  "f": "City of Zagreb and the Ministry of Culture paid the 450M HRK building in equal shares (2009). No operating funder or sponsor list is published on msu.hr.",
-  "w": "It descends from the City Gallery of Contemporary Art (1954). The e-flux directory entry lists no sponsors; ZET and HRT were not confirmed.",
+  "f": "City of Zagreb, the founder, paid 77% of 2024 revenue (EUR 4.5M). The state gave 5%, own income 11%, EU 3%, donations 3%, sponsors under 1%.",
+  "w": "Source: the museum's 2024 annual report. The 2013 State Audit Office report gave the city 74.6%. No funder controversy found.",
   "u": [
-   "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art,_Zagreb",
-   "http://www.msu.hr/en/"
+   "https://mdc.hr/files/pdf/Izvjesca/2024/Muzej-suvremene-umjetnosti_2024.pdf",
+   "https://revizija.hr/UserDocsImages/izvjesca-novo/Revizije%20-%202015/USTANOVE_U_KULTURI/POJEDINACNA_IZVJESCA/MUZEJI/MUZEJ_SUVREMENE_UMJETNOSTI,_ZAGREB.pdf"
   ],
   "e": false,
   "la": 45.778,
@@ -2129,11 +2129,10 @@
   "c": "Düsseldorf, Germany",
   "t": "O",
   "s": "S",
-  "f": "City of Düsseldorf, de Haen-Carstanjen & Söhne, Stadtwerke Düsseldorf as permanent partner.",
-  "w": "Flags: Fossil fuels. Stadtwerke Düsseldorf is majority-owned by EnBW and runs gas generation.",
+  "f": "City of Düsseldorf and de Haen-Carstanjen & Söhne support it. Stadtwerke Düsseldorf is its permanent partner.",
+  "w": "Flags: Fossil fuels. Stadtwerke Düsseldorf sold 6,300 GWh of gas in 2025 and runs gas-fired plants at Lausward. EnBW owns 54.95%, the city 25.05%.",
   "u": [
    "https://kunstverein-duesseldorf.de/en/about/sponsors/",
-   "https://www.e-flux.com/announcements/6787100/maximiliane-baumgartnerproxy-der-b-rger-als-pflanze",
    "https://www.swd-ag.de/ueber-uns/unternehmen/profil/"
   ],
   "e": true,
@@ -2203,12 +2202,12 @@
   "c": "Mainz, Germany",
   "t": "O",
   "s": "S",
-  "f": "Mainzer Stadtwerke, Mainzer Fernwärme, Mainzer Verkehrsgesellschaft, City of Mainz, Rhineland-Palatinate, Volksbank, Sparkasse.",
-  "w": "Flags: Fossil fuels. Mainzer Stadtwerke (and Mainzer Fernwärme): Mainzer Stadtwerke Energie und Service supplies gas, power, cooling and heat to 25,000 customers, and Mainzer Netze runs a gas grid with 39,800 connections. Main partners are municipal utilities including gas-fired district heating.",
+  "f": "Mainzer Stadtwerke and Mainzer Fernwärme head the partner list, with the City of Mainz, Volksbank Darmstadt-Mainz, Rheinhessen Sparkasse and a state ministry.",
+  "w": "Flags: Fossil fuels. Mainzer Stadtwerke supplies gas, runs a gas grid and owns half of KMW, whose power plant burns natural gas.",
   "u": [
    "https://www.kunsthalle-mainz.de/de/partners-and-supporters",
-   "https://www.e-flux.com/announcements/6787577/friendship",
-   "https://www.mainzer-stadtwerke.de/aktuelles/aktuelle-meldungen/2026/06/geschaeftsbericht-2025"
+   "https://www.mainzer-stadtwerke.de/aktuelles/aktuelle-meldungen/2026/06/geschaeftsbericht-2025",
+   "https://www.wiesbaden.de/stadtlexikon/stadtlexikon-a-z/kraftwerke-mainz-wiesbaden-ag-kmw"
   ],
   "e": true,
   "la": 50.012,
@@ -2786,12 +2785,14 @@
  {
   "n": "MAXXI",
   "c": "Rome, Italy",
-  "t": "B",
+  "t": "F",
   "s": "S",
-  "f": "About 500k visitors. Ministry of Culture, Regione Lazio.",
-  "w": "Enel, a utility with gas generation.",
+  "f": "Ministry of Culture EUR 14.0M in 2025, Regione Lazio 350k, Enel 600k as a promoter member, sponsors KME and Bulgari. Eni pays EUR 48,750 for archive work.",
+  "w": "Flags: Fossil fuels, Protest or boycott, Campaigned name. On 27 October 2025 six artists withdrew and six collectives called a boycott over Eni, Leonardo and Gaza. MAXXI's 2025 accounts show no Leonardo money.",
   "u": [
-   "https://www.maxxi.art/en/sostienici/"
+   "https://www.maxxi.art/wp-content/uploads/2026/07/Bilancio-consuntivo-2025.pdf",
+   "https://hyperallergic.com/artists-call-to-boycott-maxxi-museum-over-alleged-israel-ties",
+   "https://www.neroeditions.com/artists-pull-out/"
   ],
   "e": false,
   "la": 41.928,
@@ -2846,16 +2847,15 @@
  {
   "n": "Venice Biennale",
   "c": "Venice, Italy",
-  "t": "B",
+  "t": "F",
   "s": "L",
-  "f": "illycaffè, Swatch, Bulgari, Zegna.",
-  "w": "Bloomberg Philanthropies on roster.",
+  "f": "2024 budget: public funds EUR 33.1M; tickets, sales and sponsorship 31.4M. 2026 donors include Getty, Ford, Batia and Idan Ofer and the Helis Foundation; Bvlgari and illycaffè are lead sponsors.",
+  "w": "Flags: Protest or boycott, Fossil fuels, State censorship or punishment. The Helis Foundation, a 2026 donor, is funded by the Helis oil family. The EU ended a EUR 2M grant over Russia's pavilion in July 2026. In 2026 the jury resigned, artists withdrew from the awards and pavilions closed for a day.",
   "u": [
-   "https://www.prnewswire.com/news-releases/illycaffe-is-main-sponsor-of-the-60th-international-art-exhibition--la-biennale-di-venezia-302068400.html",
-   "https://www.milanoluxurylife.it/venice-biennale-2026-brands-luxury-patronage/",
+   "https://www.npr.org/2026/05/09/nx-s1-5817005/protests-and-boycotts-rock-prestigious-venice-biennale",
+   "https://www.labiennale.org/en/art/2026/donors",
+   "https://artreview.com/europe-confirms-cancellation-of-venice-biennale-funding-over-russian-pavilion/",
    "https://www.democracynow.org/2015/8/10/art_protests_at_the_venice_biennale",
-   "https://hyperallergic.com/g-u-l-f-occupies-israeli-pavilion-in-venice-calls-for-cultural-boycott/",
-   "https://news.artnet.com/art-world/christoph-buechel-art-mosque-iceland-pavilion-venice-biennale-shut-down-301246",
    "https://wikileaks.org/plusd/cables/1977FLOREN00729_c.html",
    "https://wikileaks.org/plusd/cables/1977ROME12098_c.html"
   ],
@@ -3215,12 +3215,12 @@
   "c": "Nairobi, Kenya",
   "t": "U",
   "s": "S",
-  "f": "Non-profit founded 2020 by artist Michael Armitage. No funder list is published; the founder thanks unnamed individuals, institutions and galleries for library support.",
-  "w": "About pages name no funders. The support and donate pages return 404.",
+  "f": "Founder Michael Armitage said in 2021 that funding was his responsibility, with help from White Cube. In 2022 he thanked unnamed individuals, institutions and galleries. No list is published.",
+  "w": "Non-profit founded 2020; included in the 2026 Venice Biennale. The support and donate pages return 404.",
   "u": [
-   "https://www.ncai254.com/aboutncai",
+   "https://artnewspaper.fr/2021/12/07/michael-armitage-une-conversation-a-deux-vois-avec-la-surface-picturale",
    "https://contemporaryand.com/magazines/nairobi-contemporary-art-institute-ncai/",
-   "https://artthrob.co.za/2025/08/04/africas-art-ecosystem-five-essential-art-foundations-spaces/"
+   "https://www.ncai254.com/aboutncai"
   ],
   "e": false,
   "la": -1.223,
@@ -4179,14 +4179,14 @@
  {
   "n": "Museo de Arte de Lima",
   "c": "Lima, Peru",
-  "t": "U",
+  "t": "O",
   "s": "S",
-  "f": "2025 audited accounts: S/17.1M revenue; S/6.4M from teaching, S/6.4M from private donations and memberships, S/4.3M from services. Donors are not named.",
-  "w": "Audited accounts name no donors. The Socios page is a photo of a donor wall. Board chaired by Alberto Rebaza.",
+  "f": "KPMG-audited 2025 revenue S/17.1M: tuition 38%, donations and memberships 37%, services 25%. Donors named: Fundación Telefónica, JOMA, THOMA, Smurfit Kappa. Camisea gas consortium funded free Thursdays.",
+  "w": "Flags: Fossil fuels. Camisea, operated by Pluspetrol, sponsored free Thursday entry from August 2022 to March 2025. Alberto Rebaza chairs the board.",
   "u": [
-   "https://mali.pe/es/wp-content/uploads/2026/09/EEFF-Mali-2025.pdf",
-   "https://mali.pe/es/museo/nosotros/socios/",
-   "https://mali.pe/es/museo/nosotros/consejoycomite/"
+   "https://proactivo.com.pe/jueves-de-camisea-en-el-mali-ingreso-al-museo-de-arte-de-lima-es-gratuito-todos-los-jueves-gracias-a-alianza-con-camisea/",
+   "https://proactivo.com.pe/camisea-artesanas-de-las-comunidades-nativas-yine-y-matsigenka-presentan-por-primera-vez-sus-tecnicas-ancestrales-en-mali/",
+   "https://mali.pe/es/wp-content/uploads/2026/09/EEFF-Mali-2025.pdf"
   ],
   "e": false,
   "la": -12.05,
@@ -4411,11 +4411,11 @@
   "c": "Kazan, Russia",
   "t": "U",
   "s": "S",
-  "f": "Independent non-profit with no permanent state or private support (ASI 2017). Patron Rinat Mardanov; building owner Yakov Margulis paid reconstruction; Goethe-Institut main partner; Tatarstan culture ministry backed a book festival.",
-  "w": "Zhivoy Gorod Foundation for contemporary art is a frequent Kazan partner; the centre registered a non-profit (ANO) to seek grants and state support.",
+  "f": "2023: no permanent private or state funding and no annual budget, per its programme director. In 2017 patron Rinat Mardanov and landlord Yakov Margulis paid for launch and reconstruction.",
+  "w": "The Goethe-Institut was a partner on Unsound in 2017, and the Tatarstan culture ministry backed the book festival. Neither is a current funder.",
   "u": [
-   "https://asi.org.ru/2017/12/22/robert-hasanov-kak-sozdat-tsentr-sovremennoj-kultury/",
-   "https://www.theartnewspaper.ru/posts/20231115-wugx/"
+   "https://www.theartnewspaper.ru/posts/20231115-wugx/",
+   "https://asi.org.ru/2017/12/22/robert-hasanov-kak-sozdat-tsentr-sovremennoj-kultury/"
   ],
   "e": false,
   "la": 55.788,
@@ -5852,8 +5852,8 @@
   "c": "Bath, UK",
   "t": "O",
   "s": "S",
-  "f": "£3.7M income (FY2025); lottery funds, 35 trusts including Wolfson, Garfield Weston, AKO, Blavatnik.",
-  "w": "Flags: Fossil fuels. Blavatnik Family Foundation money comes from Len Blavatnik's oil fortune (TNK-BP), per Bellingcat (2019). Bloomberg Philanthropies listed for digital support.",
+  "f": "Public funders are the National Lottery Heritage Fund and Community Fund. Trusts include Garfield Weston, AKO, Clore Duffield and the Blavatnik Family Foundation; Bloomberg Philanthropies backed the website.",
+  "w": "Flags: Fossil fuels. Len Blavatnik's fortune includes the TNK-BP oil venture (Bellingcat, 2019). The map counts such money as fossil-fuel money.",
   "u": [
    "https://web.archive.org/web/20261002050006/https://holburne.org/support-us/our-supporters/",
    "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
@@ -5879,10 +5879,10 @@
  {
   "n": "Golden Thread Gallery",
   "c": "Belfast, UK",
-  "t": "B",
+  "t": "O",
   "s": "S",
   "f": "£400k income (FY2025); Arts Council NI, National Lottery, Belfast City Council, Art Fund, Gulbenkian, Ireland Funds, Ampersand, Future Screens NI.",
-  "w": "Name to know: Calouste Gulbenkian Foundation, an oil-fortune endowment that sold its Partex oil arm in 2019. Logos read as images.",
+  "w": "Flags: Fossil fuels. The Calouste Gulbenkian Foundation, a current funder, is endowed by an oil fortune and held oil firm Partex until 2019; protesters objected in 2016.",
   "u": [
    "https://goldenthreadgallery.co.uk/support/",
    "https://gulbenkian.pt/en/news/the-calouste-gulbenkian-foundation-announces-the-sale-of-partex/"
@@ -6636,14 +6636,13 @@
  {
   "n": "The Hepworth Wakefield",
   "c": "Wakefield, UK",
-  "t": "O",
+  "t": "B",
   "s": "S",
-  "f": "£4.2M. Arts Council, council, trusts; a rail firm, a paper maker.",
-  "w": "Flags: Fossil fuels. Blavatnik Family Foundation money comes from Len Blavatnik's oil fortune (TNK-BP), per Bellingcat (2019). Bloomberg Philanthropies and Blavatnik foundation.",
+  "f": "£4.2M income in 2024-25; Arts Council England and Wakefield Council are partners. Bloomberg Philanthropies, trusts and Grand Central Rail also give.",
+  "w": "Bloomberg Philanthropies is a Major Supporter and is campaigned against elsewhere. No protest at the Hepworth is on record.",
   "u": [
    "https://hepworthwakefield.org/our-story/about-us/35729-2/",
-   "https://findthatcharity.uk/orgid/GB-CHC-1138117",
-   "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+   "https://findthatcharity.uk/orgid/GB-CHC-1138117"
   ],
   "e": false,
   "la": 53.678,
@@ -6699,12 +6698,12 @@
   "c": "Austin, USA",
   "t": "U",
   "s": "S",
-  "f": "FY2023 gifts $3.8M, program income $2.3M, expenses $9.3M. Exhibitions backed by trustees and donors incl. Booth, Bosh, Dupré, Reynolds and Mattsson, Still Water Foundation; City of Austin heritage grant.",
-  "w": "No full donor list is published; the support page holds placeholder text. The $3.8M of gifts is not itemised.",
+  "f": "FY2024 per ProPublica: revenue $8.6M, contributions $4.5M. Exhibitions credit trustees and donors incl. Booth, Bosh, Dupré, Reynolds, Mattsson, Still Water Foundation; City of Austin heritage grant.",
+  "w": "No full donor list is published, so the largest gifts are not itemised. Gala and sponsorship pages name no sponsors.",
   "u": [
-   "https://web.archive.org/web/20260726155157/https://thecontemporaryaustin.org/exhibitions/sable-elyse-smith-clockwork/",
    "https://projects.propublica.org/nonprofits/organizations/741233816",
-   "https://web.archive.org/web/2026/https://thecontemporaryaustin.org/about/"
+   "https://web.archive.org/web/20260726155157/https://thecontemporaryaustin.org/exhibitions/sable-elyse-smith-clockwork/",
+   "https://web.archive.org/web/2026/https://thecontemporaryaustin.org/art-dinner/"
   ],
   "e": false,
   "la": 30.267,
@@ -6790,12 +6789,12 @@
   "c": "Bronx, USA",
   "t": "O",
   "s": "S",
-  "f": "$4.2M expenses (2023); NYC Cultural Affairs, NYSCA, NEA, IMLS, Ford, Warhol and Luce foundations, Bank of America, Con Edison.",
-  "w": "Flags: Fossil fuels. Con Edison (Consolidated Edison Company of New York): Distributes natural gas to 1.1 million customers in Manhattan, the Bronx, Queens and Westchester, alongside electricity for 3.6 million customers and a steam system. Bloomberg Philanthropies and Deutsche Bank Americas Foundation are on the roster. 2016: two executives and four trustees resigned.",
+  "f": "$4.3M expenses (FY2025). Public: NYC Cultural Affairs, NYSCA, NEA, IMLS. Corporate and foundation: Con Edison, Bank of America, Bloomberg Philanthropies, Deutsche Bank Americas Foundation, Ford, Warhol and Luce foundations.",
+  "w": "Flags: Fossil fuels. Con Edison distributes gas to 1.1 million customers. In 2016 two officers and four trustees resigned in a dispute over the Cuba exchange.",
   "u": [
    "https://bronxmuseum.org/make-a-donation/support/our-supporters/",
-   "https://www.apollo-magazine.com/resignations-at-the-bronx-museum/",
-   "https://www.coned.com/en/about-us/corporate-facts"
+   "https://www.coned.com/en/about-us/corporate-facts",
+   "https://www.apollo-magazine.com/resignations-at-the-bronx-museum/"
   ],
   "e": false,
   "la": 40.831,
@@ -7000,7 +6999,7 @@
    "https://nasher.duke.edu/about/"
   ],
   "e": false,
-  "la": 36,
+  "la": 36.0,
   "lo": -78.929
  },
  {
@@ -7358,8 +7357,8 @@
   "c": "New York, USA",
   "t": "O",
   "s": "S",
-  "f": "Expenses $1.2M (FY2023); NYC DCLA, NYSCA, Warhol, Frankenthaler, Speyer, Niarchos and Blavatnik foundations.",
-  "w": "Flags: Fossil fuels. Blavatnik Family Foundation money comes from Len Blavatnik's oil fortune (TNK-BP), per Bellingcat (2019). Blavatnik Family Foundation (Access Industries, oil origin) is contested at Tate and Oxford.",
+  "f": "Expenses $1.3M (FY2025). NYC DCLA and NYSCA; Warhol, Frankenthaler, Speyer, Niarchos, Luce and Blavatnik Family foundations, as listed on its 2025 support page.",
+  "w": "Flags: Fossil fuels. Blavatnik Family Foundation money comes from Len Blavatnik's TNK-BP oil fortune, per Bellingcat. His gifts drew protests at Oxford and the Council on Foreign Relations.",
   "u": [
    "https://whitecolumns.org/support-v2/",
    "https://projects.propublica.org/nonprofits/organizations/237259446",
@@ -7420,12 +7419,12 @@
   "c": "Portland, USA",
   "t": "O",
   "s": "S",
-  "f": "$2.5M. Oregon and city arts bodies; Nike, Netflix, Google.",
-  "w": "Flags: Fossil fuels. Pacific Power, a fossil-heavy utility.",
+  "f": "$2.5M expenses (FY2025). Oregon Arts Commission, City of Portland, Warhol, Ford, Mellon, Meyer Trust and Kinsman foundations; Nike, Netflix, Google. Pacific Power Foundation and NW Natural also give.",
+  "w": "Flags: Fossil fuels. Pacific Power made 55% of its 2024 power from coal and gas. NW Natural, a gas utility, is on the TBA:26 sponsor list.",
   "u": [
-   "https://www.pica.org/support",
-   "https://projects.propublica.org/nonprofits/organizations/931177971",
-   "https://www.pacificpower.net/content/dam/pcorp/documents/en/pacificpower/my-account/bill-inserts/or/PP_OR_Fuel_Mix_2024-Year_Bill-Insert_RESIDENTIAL.pdf"
+   "https://www.pacificpower.net/about/newsroom/news-releases/arts-and-cultural-foundation-grants.html",
+   "https://www.pacificpower.net/content/dam/pcorp/documents/en/pacificpower/my-account/bill-inserts/or/PP_OR_Fuel_Mix_2024-Year_Bill-Insert_RESIDENTIAL.pdf",
+   "https://www.pica.org/tba"
   ],
   "e": false,
   "la": 45.527,
@@ -7904,10 +7903,12 @@
   "c": "Sydney, Australia",
   "t": "F",
   "s": "L",
-  "f": "Dropped Transfield 2014; now lists Qatar Museums and Sharjah entities.",
-  "w": "Flags: Gulf state body, Sponsor dropped under pressure, Prison or detention",
+  "f": "Qatar Museums is Major Strategic Partner of the 2026 edition; Fondation Cartier is Visionary Partner. Transfield, a sponsor for 41 years, left in 2014.",
+  "w": "Flags: Gulf state body, Sponsor dropped under pressure, Prison or detention, Protest or boycott. Nine artists withdrew in 2014 over Transfield's offshore detention contracts, and on 7 March the board ended the sponsorship.",
   "u": [
+   "https://www.biennaleofsydney.art/biennale-of-sydney-announces-new-partners-for-25th-edition/",
    "https://hyperallergic.com/sydney-biennale-boycott-grows/",
+   "https://artreview.com/news-7-march-sydney/",
    "https://wikileaks.org/plusd/cables/09CANBERRA221_a.html",
    "https://wikileaks.org/plusd/cables/09CANBERRA171_a.html"
   ],
@@ -7978,11 +7979,11 @@
   "c": "Minsk, Belarus",
   "t": "U",
   "s": "S",
-  "f": "Minsk hub launched in 2017 by Belgazprombank under Viktar Babaryka; authorities closed it after 2020. A Warsaw relaunch is seeking funding (Aug 2026) and names no funders.",
-  "w": "Art director Maria Kalesnikava. Persecution came from a state that did not fund the hub, so it is not a flag.",
+  "f": "Minsk hub launched in 2017 by Belgazprombank under Viktar Babaryka; authorities closed it after 2020. The Warsaw relaunch is seeking funding (Aug 2026) and names no funders.",
+  "w": "Art director Maria Kalesnikava. Persecution came from a state that did not fund the hub: no flag. Belgazprombank is listed only by Canada and Ukraine.",
   "u": [
    "http://web.archive.org/web/20260811181341/https://news.zerkalo.io/life/133817.html",
-   "https://wikileaks.org/gifiles/docs/65/652481_-os-belarus-russia-gv-gazprom-gazprombank-increase.html"
+   "https://en.wikipedia.org/wiki/Belgazprombank"
   ],
   "x": [
    [
@@ -7999,12 +8000,12 @@
   "c": "Antwerp, Belgium",
   "t": "F",
   "s": "S",
-  "f": "The V-A-C Foundation of Novatek founder Leonid Mikhelson co-runs its Present Continuous programme for young Russian artists. Mikhelson has been under UK sanctions since April 2022.",
-  "w": "Flags: Fossil fuels, Sanctions.",
+  "f": "M HKA's 2026 partner page lists V-A-C among its foundations. V-A-C was set up by Novatek founder Leonid Mikhelson, on the UK sanctions list since 6 April 2022.",
+  "w": "Flags: Fossil fuels, Sanctions. Present Continuous, an annual scheme for young Russian artists, is run jointly by M HKA and V-A-C. The 2020 winner's work joins M HKA's collection.",
   "u": [
    "https://www.muhka.be/en/your-support-is-crucial/partners-of-m-hka/",
-   "https://www.artnews.com/art-collectors/top-200-profiles/leonid-mikhelson",
-   "https://www.ensembles.org/ensembles/2020?locale=en"
+   "https://www.ensembles.org/ensembles/2020?locale=en",
+   "https://sanctions.lursoft.lv/person/leonid-viktorovich-mikhelson/uk-15073"
   ],
   "e": false,
   "la": 51.211,
@@ -8330,12 +8331,12 @@
   "c": "Havana, Cuba",
   "t": "O",
   "s": "S",
-  "f": "2021 27N open-letter boycott over jailed artists; participants withdrew.",
-  "w": "Flags: Protest or boycott",
+  "f": "State-sponsored show organised since 1984 by the government-supported Wifredo Lam Center of Contemporary Art.",
+  "w": "Flags: Protest or boycott. In October 2021 an open letter with over 400 signatures called for a boycott of the 14th edition; at least five participants withdrew.",
   "u": [
    "https://www.e-flux.com/announcements/426144/open-letter-why-we-say-no-to-the-14th-havana-biennial-and-ask-you-to-do-the-same",
-   "https://wikileaks.org/plusd/cables/03THEHAGUE2114_a.html",
-   "https://16beavergroup.org/articles/2003/08/27/rene-claus-fund-witholds-support-for-havana-biennial/"
+   "https://hyperallergic.com/as-boycott-of-havana-biennial-gains-steam-artists-withdraw.md",
+   "https://wikileaks.org/plusd/cables/03THEHAGUE2114_a.html"
   ],
   "x": [
    [
@@ -8460,10 +8461,12 @@
   "c": "Paris, France",
   "t": "F",
   "s": "L",
-  "f": "Total ended 2018 after campaign; Sackler removed 2019.",
-  "w": "Flags: Opioids, Sponsor dropped under pressure",
+  "f": "2025 patron lists name Deloitte, DS Automobiles, Bloomberg, CMA CGM, EDF, Stellantis, Dior and Louis Vuitton. TotalEnergies funded exhibitions for two decades; the Louvre says no direct partnership since 2018.",
+  "w": "Flags: Opioids, Fossil fuels, Campaigned name, Protest or boycott, Sponsor dropped under pressure. Sackler name came off in July 2019, after a PAIN protest; the Louvre cites a 20-year limit. Total faced a 2017 campaign here.",
   "u": [
-   "https://www.greenpeace.fr/espace-presse/mecenat-la-cada-donne-raison-a-greenpeace-face-au-louvre/",
+   "https://apollo-magazine.com/sackler-name-removed-from-louvre-galleries-after-protests/",
+   "http://www.theartnewspaper.com/2017/03/07/liberty-fraternity-fossil-free-activists-protest-oil-giant-totals-sponsorship-at-louvre",
+   "https://www.louvre.fr/soutenir-le-louvre/le-louvre-remercie-ses-mecenes-et-partenaires",
    "https://wikileaks.org/plusd/cables/10RIYADH31_a.html",
    "https://wikileaks.org/saudi-cables/doc123958.html",
    "https://wikileaks.org/saudi-cables/doc120158.html",
@@ -8593,10 +8596,12 @@
   "c": "Kochi, India",
   "t": "O",
   "s": "S",
-  "f": "Unpaid contractors and artists; co-founder resigned.",
-  "w": "Flags: Protest or boycott.",
+  "f": "Funded by Kerala state grants and private donors. Its 2025-26 site names no sponsors; a December 2025 headline records philanthropist Minal Bajaj's support.",
+  "w": "Flags: Protest or boycott. In December 2022, 47 artists and six collectives published an open letter citing poor communication and opaque finances. Founder Bose Krishnamachari resigned in January 2026.",
   "u": [
-   "https://www.artnews.com/art-news/news/kochi-muziris-biennale-artists-claim-financial-issues-open-letter-1234653994/"
+   "https://www.thenewsminute.com/amp/story/kerala/no-transparency-poor-management-artists-indict-kochi-biennale-organisers-171274",
+   "https://kochimuzirisbiennale.org/",
+   "https://www.onmanorama.com/news/kerala/2026/01/14/kochi-biennale-bose-krishnamachari-resigns.html"
   ],
   "e": false,
   "la": 9.968,
@@ -8605,12 +8610,13 @@
  {
   "n": "Kiran Nadar Museum of Art",
   "c": "New Delhi, India",
-  "t": "O",
+  "t": "F",
   "s": "S",
-  "f": "2023 curator firing and artist withdrawal.",
-  "w": "Flags: Protest or boycott.",
+  "f": "Private museum founded and chaired by collector Kiran Nadar, free to visit. Its home page names no funders.",
+  "w": "Flags: Protest or boycott, State censorship or punishment. In July 2023 it fired Sandip K Luis over a post criticising Nadar's role in a state exhibition. Shahidul Alam pulled his show.",
   "u": [
-   "https://www.theartnewspaper.com/2023/08/02/controversy-kiran-nadar-museum-of-art-in-delhi-india-private-museums"
+   "https://www.theartnewspaper.com/2023/08/02/controversy-kiran-nadar-museum-of-art-in-delhi-india-private-museums",
+   "https://knma.org/"
   ],
   "e": false,
   "la": 28.614,
@@ -8637,8 +8643,8 @@
   "c": "Baghdad, Iraq",
   "t": "U",
   "s": "S",
-  "f": "Iraqi non-profit founded in 2012 that relies on donations. Its sponsor page lists Nechirvan Barzani, Khalid Khoshnaw and company logos including KAR Group.",
-  "w": "The sponsor list dates from 2015 to 2018. No later funder list is published, so the KAR link is not current.",
+  "f": "Iraqi non-profit founded in 2012 that says it relies on donations. Its sponsor page lists Nechirvan Barzani, Khalid Khoshnaw, Prince Claus Fund, Rabee Securities, Miran Group and a KAR logo.",
+  "w": "The sponsor list is undated and its events run 2013 to 2018. No later funder list is published, so the KAR link is not current.",
   "u": [
    "https://ruyafoundation.org/en/about/",
    "https://ruyafoundation.org/en/"
@@ -8965,11 +8971,11 @@
   "c": "Kaesong, North Korea",
   "t": "O",
   "s": "S",
-  "f": "Over 1,000 Koryo-dynasty artefacts in four halls plus an open-air stone collection; 20,000 m², 12 main buildings; standard stop on tourist itineraries (Hall 3 usually closed to foreigners). Coordinates from OpenStreetMap/Nominatim for 고려박물관, Kaesong.",
-  "w": "Flags: Sanctions. Run by the North Korean state, whose government US Executive Order 13722 (2016) blocks as a whole.",
+  "f": "State-run museum in Kaesong with over 1,000 Koryo-dynasty artefacts in four halls and an open-air stone collection; 20,000 m², 12 main buildings.",
+  "w": "Flags: Sanctions. Hall 3 is usually closed to foreigners. The Government of North Korea is blocked under US Executive Order 13722.",
   "u": [
    "https://koryogroup.com/blog/north-korea-guide-kaesong-koryo-museum",
-   "https://www.federalregister.gov/documents/2016/03/18/2016-06355/blocking-property-of-the-government-of-north-korea-and-the-workers-party-of-korea-and-prohibiting-certain"
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
   ],
   "e": false,
   "la": 37.969,
@@ -8980,11 +8986,11 @@
   "c": "Pyongyang, North Korea",
   "t": "O",
   "s": "S",
-  "f": "100,000 m², 600 rooms, claimed capacity 30 million books and 10,000 users a day; centre of Juche studies and a correspondence university. Size L rests on state-claimed attendance (a 1989 report of over 10 million visits a year); budget unpublished.",
-  "w": "Flags: Sanctions. Run by the North Korean state, whose government US Executive Order 13722 (2016) blocks as a whole.",
+  "f": "State library and Juche study centre: 100,000 m², 600 rooms, claimed capacity 30 million books. A 1989 broadcast claimed over 10 million visits a year; budget unpublished.",
+  "w": "Flags: Sanctions. North Korea's Library Law treats libraries as essential for promoting ideology. The Government of North Korea is blocked under US Executive Order 13722.",
   "u": [
    "https://en.wikipedia.org/wiki/Grand_People%27s_Study_House",
-   "https://www.federalregister.gov/documents/2016/03/18/2016-06355/blocking-property-of-the-government-of-north-korea-and-the-workers-party-of-korea-and-prohibiting-certain"
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
   ],
   "e": false,
   "la": 39.02,
@@ -8995,11 +9001,11 @@
   "c": "Pyongyang, North Korea",
   "t": "O",
   "s": "S",
-  "f": "National fine-art museum: 22 rooms, Korean paintings, oils, sculpture, embroidery; 6 million cumulative visitors claimed as of 2020. Co-organiser (with the Paektusan Academy of Architecture) of MAK Vienna's 'Flowers for Kim Il Sung', 19 May–5 Sep 2010, the first showing of its holdings abroad. Size S: cumulative, not annual, visitor figure; budget not published.",
-  "w": "Flags: Sanctions. Run by the North Korean state, whose government US Executive Order 13722 (2016) blocks as a whole.",
+  "f": "National fine-art museum with 22 display rooms; KCNA claimed 6 million cumulative visitors by 2020. Budget unpublished.",
+  "w": "Flags: Sanctions. The Government of North Korea is blocked under US Executive Order 13722.",
   "u": [
    "https://en.wikipedia.org/wiki/Korean_Art_Gallery",
-   "https://www.federalregister.gov/documents/2016/03/18/2016-06355/blocking-property-of-the-government-of-north-korea-and-the-workers-party-of-korea-and-prohibiting-certain"
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
   ],
   "e": false,
   "la": 39.019,
@@ -9010,11 +9016,11 @@
   "c": "Pyongyang, North Korea",
   "t": "O",
   "s": "S",
-  "f": "North end of Kim Il-sung Square; c.100,000 relics in 19 halls over 10,500 m²; claimed 10 million cumulative visitors by 2015; Kim Jong Un's 2014 instruction to make it a 'world standard'. No exhibitions abroad found.",
-  "w": "Flags: Sanctions. Run by the North Korean state, whose government US Executive Order 13722 (2016) blocks as a whole.",
+  "f": "About 100,000 relics in 19 halls over 10,500 m². The museum claimed 10 million cumulative visitors by 2015; Kim Il Sung founded it in 1945.",
+  "w": "Flags: Sanctions. Kim Jong Un's 2014 speech called it a model for history museums. The Government of North Korea is blocked under US Executive Order 13722.",
   "u": [
    "https://en.wikipedia.org/wiki/Korean_Central_History_Museum",
-   "https://www.federalregister.gov/documents/2016/03/18/2016-06355/blocking-property-of-the-government-of-north-korea-and-the-workers-party-of-korea-and-prohibiting-certain"
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
   ],
   "e": false,
   "la": 39.02,
@@ -9040,11 +9046,12 @@
   "c": "Pyongyang, North Korea",
   "t": "O",
   "s": "S",
-  "f": "Builds socialist-realist monuments abroad: African Renaissance Monument, Dakar (2010, US$27m), Heroes' Acre, Namibia (2002), projects in Angola, Benin, Botswana, Cambodia, DR Congo, Ethiopia, Mozambique, Togo, Zimbabwe, Malaysia, Syria. Also on EU, UK, Australian, Japanese and Swiss lists; subsidiaries in Namibia, Angola, Senegal, Zimbabwe, Cambodia, Malaysia, Singapore and China appear in OpenSanctions.",
-  "w": "Flags: Sanctions",
+  "f": "Builds monuments abroad, including the African Renaissance Monument in Dakar. Listed by the UN, US, EU and UK for exporting workers to raise revenue for the DPRK government.",
+  "w": "Flags: Sanctions. The UN listing covers all Mansudae operations and subsidiaries worldwide (Panel of Experts, 2017). Its US and EU listings are separate.",
   "u": [
    "https://www.opensanctions.org/entities/NK-d2wkX43psvoLFjjdnsJ2Go/",
    "https://wikileaks.org/plusd/cables/08DAKAR649_a.html",
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm",
    "https://wikileaks.org/plusd/cables/09DAKAR288_a.html"
   ],
   "x": [
@@ -9062,11 +9069,11 @@
   "c": "Sinchon, North Korea",
   "t": "O",
   "s": "S",
-  "f": "Memorial to the Sinchon massacre (35,000 deaths claimed, 17 Oct–7 Dec 1950), attributed by the museum to US forces; South Korean research attributes the killings largely to local anti-communist vigilantes and ROK police. KCNA claims 500,000 visitors a year (AFP, 7 Jun 2018), mostly schoolchildren and soldiers. Coordinates are the pre-2015 town-centre site (Wikipedia/dark-tourism.com); the new site's coordinates were not found. Size S by budget.",
-  "w": "Flags: Sanctions. Run by the North Korean state, whose government US Executive Order 13722 (2016) blocks as a whole.",
+  "f": "Memorial to the 1950 Sinchon massacre. The museum claims over 35,000 deaths and blames US forces; South Korean research finds anti-communist vigilantes and secret police carried out killings.",
+  "w": "Flags: Sanctions. Rebuilt on a new site in July 2015. The Government of North Korea is blocked under US Executive Order 13722.",
   "u": [
    "https://en.wikipedia.org/wiki/Sinchon_Museum_of_American_War_Atrocities",
-   "https://www.federalregister.gov/documents/2016/03/18/2016-06355/blocking-property-of-the-government-of-north-korea-and-the-workers-party-of-korea-and-prohibiting-certain"
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
   ],
   "e": false,
   "la": 38.353,
@@ -9218,11 +9225,12 @@
  {
   "n": "Qatar Museums",
   "c": "Doha, Qatar",
-  "t": "F",
+  "t": "O",
   "s": "L",
-  "f": "Labour abuses documented by HRW in 2026.",
-  "w": "Flags: Forced or exploited labour, Gulf state body",
+  "f": "Qatari government entity founded in 2005 and chaired by Sheikha Al-Mayassa bint Hamad Al Thani; it oversees the state's museums and heritage sites.",
+  "w": "Flags: Gulf state body. HRW's 2026 Qatar chapter documents wage theft and kafala abuse but does not name Qatar Museums.",
   "u": [
+   "https://en.wikipedia.org/wiki/Qatar_Museums",
    "https://www.hrw.org/world-report/2026/country-chapters/qatar",
    "https://wikileaks.org/plusd/cables/08DOHA393_a.html"
   ],
@@ -9241,12 +9249,12 @@
   "c": "Moscow, Russia",
   "t": "F",
   "s": "L",
-  "f": "V-A-C's Moscow centre, funded by Novatek founder Leonid Mikhelson, who has been under UK sanctions since April 2022. Opened Dec 2021 as Russia's largest private art centre. Artistic director Francesco Manacorda resigned Mar 2022. In 2023 Ural Biennial founder Alisa Prudnikova became its director. GES-2 also appears as a sponsor on the Tretyakov Gallery's 2026 partner list.",
-  "w": "Flags: Fossil fuels, Sanctions. Ragnar Kjartansson closed his opening show in February 2022 over the war.",
+  "f": "V-A-C, set up by Novatek founder Leonid Mikhelson, runs GES-2; he spent at least $300M on it. The UK has listed him since 6 April 2022.",
+  "w": "Flags: Fossil fuels, Sanctions. Ragnar Kjartansson cancelled his Santa Barbara show in February 2022 over the war. Artistic director Francesco Manacorda resigned in March 2022.",
   "u": [
-   "https://en.wikipedia.org/wiki/V-A-C_Foundation",
-   "https://www.artnews.com/art-collectors/top-200-profiles/leonid-mikhelson",
-   "https://theartnewspaper.com/news/ragnar-kjartansson-re-creates-us-soap-opera-for-vast-ges-2-culture-complex-opening-in-moscow"
+   "https://www.theartnewspaper.com/2025/07/14/amid-cracks-down-on-dissent-russias-beleaguered-private-museums-fight-to-survive",
+   "https://sanctions.lursoft.lv/person/leonid-viktorovich-mikhelson/uk-15073",
+   "https://artreview.com/russian-shows-in-and-out-of-country-cancelled/"
   ],
   "e": false,
   "la": 55.626,
@@ -9257,12 +9265,13 @@
   "c": "Moscow, Russia",
   "t": "O",
   "s": "L",
-  "f": "Sanctioned founder; exhibitions halted 2022.",
-  "w": "Flags: Sanctions",
+  "f": "Non-profit project of the IRIS Foundation, founded by Roman Abramovich and Dasha Zhukova. Its endowment page lists Abramovich's gifts from 2018 to 2023; he is on UK and EU sanctions lists.",
+  "w": "Flags: Sanctions. Garage paused exhibitions in February 2022 and showed its collection again in 2024. Security services searched its offices in April 2024.",
   "u": [
+   "https://garagemca.org/en/about",
+   "https://garagemca.org/en/support/contribute",
    "https://www.theartnewspaper.com/2025/07/14/amid-cracks-down-on-dissent-russias-beleaguered-private-museums-fight-to-survive",
    "https://wikileaks.org/plusd/cables/08MOSCOW2700_a.html",
-   "https://en.wikipedia.org/wiki/Bakhmetevsky_Bus_Garage",
    "https://wikileaks.org/gifiles/docs/24/2427630_-os-2011-161-johnson-s-russia-list-.html"
   ],
   "x": [
@@ -9284,12 +9293,13 @@
   "c": "Moscow, Russia",
   "t": "F",
   "s": "S",
-  "f": "Endowment managed via Gazprombank asset management per Kommersant; the museum's partners page is empty. Vekselberg also sits on the Tretyakov board.",
-  "w": "Flags: Fossil fuels, Sanctions.",
+  "f": "Partners page lists VTB Bank, Sberbank, SAFMAR foundation, Severstal and Metalloinvest, with Rosneft as an exhibition partner. Founding donors in 2012 to 2014 included Vekselberg, Abramovich and Blavatnik.",
+  "w": "Flags: Fossil fuels, Sanctions. VTB is on US, UK and EU lists; Rosneft is an oil company. The endowment is held by its own specialised fund.",
   "u": [
+   "https://www.jewish-museum.ru/partners/",
+   "https://en.wikipedia.org/wiki/VTB_Bank",
    "https://www.kommersant.ru/doc/2400953",
-   "https://wikileaks.org/plusd/cables/08MOSCOW2700_a.html",
-   "https://en.wikipedia.org/wiki/Jewish_Museum_and_Tolerance_Center"
+   "https://wikileaks.org/plusd/cables/08MOSCOW2700_a.html"
   ],
   "x": [
    [
@@ -9320,12 +9330,14 @@
  {
   "n": "Pushkin State Museum of Fine Arts",
   "c": "Moscow, Russia",
-  "t": "O",
+  "t": "F",
   "s": "L",
-  "f": "Three directors in three years: Marina Loshak resigned 20 Mar 2023; Elizaveta Likhacheva was removed in Jan 2025 without stated reasons and replaced by Olga Galaktionova (ROSIZO); in Jan 2026 Galaktionova moved to the Tretyakov and Ekaterina Pronicheva (ex-Vladimir-Suzdal museum, daughter of an FSB general) took over. Sponsor and patron pages carry no names.",
-  "w": "Flags: Sponsor dropped under pressure",
+  "f": "VTB is general sponsor of the museum, and PSB partnered the Diamond Chariot Buddhist art exhibition. LG and Yandex Eda are also partners.",
+  "w": "Flags: Sanctions, Arms and defence. Marina Loshak left in March 2023; Ekaterina Pronicheva is director now. The board of trustees includes Sberbank, Gazprombank, PSB and Transneft.",
   "u": [
+   "https://pushkinmuseum.art/museum/support_us/sponsors/index.php?lang=en",
    "https://pushkinmuseum.art/museum/support_us/board/index.php?lang=ru",
+   "https://en.wikipedia.org/wiki/Promsvyazbank",
    "https://wikileaks.org/plusd/cables/09MOSCOW774_a.html"
   ],
   "x": [
@@ -9366,10 +9378,12 @@
   "c": "Moscow, Russia",
   "t": "F",
   "s": "L",
-  "f": "Director Zelfira Tregulova removed 9 Feb 2023 after a Ministry-forwarded complaint of 'destructive ideology' in the displays; Elena Pronicheva (daughter of an FSB general) replaced her; in Jan 2026 Olga Galaktionova (ex-ROSIZO, ex-Pushkin) took over. The Ministry cancelled the 9th Moscow Biennale at the New Tretyakov on 3 Nov 2022. The Gallery states 80+ companies and individuals support it.",
-  "w": "Flags: Sponsor dropped under pressure, State censorship or punishment",
+  "f": "Corporate partners include VTB, Sberbank, PSB, Gazprombank, Transneft, LUKOIL, Surgutneftegas and NOVATEK. Private patrons include Leonid Mikhelson and Alisher Usmanov; the V. Potanin Foundation also gives.",
+  "w": "Flags: Fossil fuels, Sanctions, Arms and defence, State censorship or punishment. The Ministry of Culture declined to renew director Zelfira Tregulova in February 2023 after a complaint of destructive ideology and a letter demanding exhibit changes.",
   "u": [
    "https://partners.tretyakov.ru/partners",
+   "https://artreview.com/russian-ministry-of-culture-removes-tretyakov-director-zelfira-tregulova",
+   "https://en.wikipedia.org/wiki/VTB_Bank",
    "https://wikileaks.org/plusd/cables/09MOSCOW1688_a.html"
   ],
   "x": [
@@ -9419,12 +9433,12 @@
   "c": "Samara, Russia",
   "t": "F",
   "s": "S",
-  "f": "Founded in 2005 and owned by Leonid Mikhelson, chairman of the gas company Novatek and founder of V-A-C. Mikhelson has been under UK sanctions since April 2022.",
-  "w": "Flags: Fossil fuels, Sanctions. Sister institution of V-A-C; second site Victoria Underground since 2020.",
+  "f": "Private gallery in Samara founded in 2005 by Leonid Mikhelson, chairman of gas producer Novatek. Kommersant calls him its owner; the UK has listed him since 6 April 2022.",
+  "w": "Flags: Fossil fuels, Sanctions. The rebuilt gallery held its reopening ceremony in March 2026 under new general director Sergey Balandin.",
   "u": [
    "https://gallery-victoria.ru/about/",
-   "https://russianartarchive.net/en/catalogue/institution/victoria-gallery",
-   "https://www.artnews.com/art-collectors/top-200-profiles/leonid-mikhelson"
+   "https://www.kommersant.ru/doc/8497660",
+   "https://sanctions.lursoft.lv/person/leonid-viktorovich-mikhelson/uk-15073"
   ],
   "e": false,
   "la": 53.196,
@@ -9474,10 +9488,12 @@
   "c": "St Petersburg, Russia",
   "t": "F",
   "s": "L",
-  "f": "3.2m visitors in 2024 (Interfax via search). Director Mikhail Piotrovsky called Russian shows abroad a 'special operation'; Hermitage Amsterdam cut ties Mar 2022 and became H'ART; Canada sanctioned Piotrovsky; the EU added him in its 20th package (Apr–May 2026).",
-  "w": "Flags: Sanctions, Sponsor dropped under pressure",
+  "f": "Its 2025 sponsor list includes VTB, Sberbank, Gazprom, Rosneft, Gazprom Neft and the Gazprombank foundation, plus Vladimir Potanin and his foundation. Potanin chairs the Board of Trustees.",
+  "w": "Flags: Sanctions, Fossil fuels, Protest or boycott. Hermitage Amsterdam cut ties on 3 March 2022. Canada sanctioned director Piotrovsky in 2023 and the EU listed him on 23 April 2026.",
   "u": [
-   "https://support.hermitagemuseum.org/ru/sponsors",
+   "https://web.archive.org/web/20260306052327/https://support.hermitagemuseum.org/ru/sponsors",
+   "http://www.theartnewspaper.com/2026/04/29/eu-imposes-sanctions-on-mikhail-piotrovsky-director-of-russias-state-hermitage-museum",
+   "https://en.wikipedia.org/wiki/H%27ART_Museum",
    "https://wikileaks.org/gifiles/docs/30/3028618_-os-russia-jewish-archive-.html"
   ],
   "x": [
@@ -9539,10 +9555,11 @@
   "c": "Dhahran, Saudi Arabia",
   "t": "F",
   "s": "L",
-  "f": "Funded by Aramco.",
-  "w": "Flags: Fossil fuels, Gulf state body.",
+  "f": "Established, built and run by Saudi Aramco, the national oil company, 82% owned by the Saudi government.",
+  "w": "Flags: Fossil fuels, Gulf state body. A 2009 US cable calls Aramco the King's preferred tool for his reform agenda. King Salman inaugurated the centre in December 2016.",
   "u": [
-   "https://www.e-flux.com/directory/412964/the-king-abdulaziz-center-for-world-culture-ithra/",
+   "https://en.wikipedia.org/wiki/King_Abdulaziz_Center_for_World_Culture",
+   "https://en.wikipedia.org/wiki/Saudi_Aramco",
    "https://wikileaks.org/plusd/cables/09DHAHRAN265_a.html"
   ],
   "x": [
@@ -9630,12 +9647,12 @@
   "c": "Gwangju, South Korea",
   "t": "F",
   "s": "S",
-  "f": "The Park Seo-Bo Prize was abolished in 2023 after one edition, following public protest.",
-  "w": "Flags: Sponsor dropped under pressure, Protest or boycott",
+  "f": "Public funding and related spending top 10 billion won per edition; the 2026 operating budget is about 14.3 billion won. Park Seo-Bo's GIZI Foundation funded a prize until 2023.",
+  "w": "Flags: Sponsor dropped under pressure, Protest or boycott. The Park Seo-Bo Art Prize was scrapped in May 2023 after protests. Chinese artists withdrew in September 2026 over the Taiwan Pavilion name.",
   "u": [
    "https://www.artasiapacific.com/news/protests-at-gwangju-biennale-end-newly-established-park-seo-bo-art-prize/",
-   "https://wikileaks.org/plusd/cables/07SEOUL2876_a.html",
-   "https://www.koreatimes.co.kr/lifestyle/people-events/20070803/dongguk-u-sacks-bogus-prof-shin-jeong-ah"
+   "https://www.koreatimes.co.kr/lifestyle/arts-theater/20260912/taiwan-china-row-at-gwangju-biennale-could-have-been-avoided",
+   "https://wikileaks.org/plusd/cables/07SEOUL2876_a.html"
   ],
   "x": [
    [
@@ -9768,10 +9785,11 @@
   "c": "Abu Dhabi, UAE",
   "t": "F",
   "s": "L",
-  "f": "Kafala labour abuses documented by HRW.",
-  "w": "Flags: Forced or exploited labour, Gulf state body",
+  "f": "Owned by the Abu Dhabi Department of Culture and Tourism. Abu Dhabi pays France €400M for the Louvre name and €190M for loans under the 2007 agreement.",
+  "w": "Flags: Forced or exploited labour, Gulf state body. Human Rights Watch documented passport confiscation, unpaid wages and unsafe conditions on Saadiyat Island, including the Louvre site, in a 2015 report.",
   "u": [
    "https://www.hrw.org/news/2017/11/08/louvre-abu-dhabis-unlovely-back-story",
+   "https://en.wikipedia.org/wiki/Louvre_Abu_Dhabi",
    "https://wikileaks.org/plusd/cables/08ABUDHABI65_a.html",
    "https://wikileaks.org/plusd/cables/09ABUDHABI145_a.html",
    "https://wikileaks.org/plusd/cables/09ABUDHABI529_a.html",
@@ -9913,10 +9931,12 @@
   "c": "London, UK",
   "t": "F",
   "s": "L",
-  "f": "BP, £50M over ten years from 2023; Sackler name removed 2022.",
-  "w": "Flags: Fossil fuels, Opioids, Sponsor dropped under pressure",
+  "f": "BP gives £50M over ten years for the masterplan, announced 19 December 2023. The Sackler name came off its rooms and endowments in 2022.",
+  "w": "Flags: Fossil fuels, Campaigned name, Protest or boycott. Trustee Ahdaf Soueif resigned over BP in 2019; 80 signed a 2023 open letter. The Sackler name left by agreement in 2022.",
   "u": [
    "https://www.museumsassociation.org/museums-journal/news/2023/12/british-museum-announces-new-50m-bp-deal-to-fund-masterplan/",
+   "https://hyperallergic.com/837899/open-letter-calls-on-british-museum-to-drop-bp-name/",
+   "http://www.theartnewspaper.com/2022/03/25/british-museum-removes-sackler-name",
    "https://wikileaks.org/gifiles/docs/18/1875115_iran-france-iran-freezes-ties-with-louvre-museum-.html",
    "https://wikileaks.org/saudi-cables/doc119920.html",
    "https://wikileaks.org/syria-files/docs/680325_hajj-exhibition-inaugurated-at-british-museum-.html"
@@ -10292,15 +10312,12 @@
   "c": "Chicago, USA",
   "t": "F",
   "s": "L",
-  "f": "Crown family (General Dynamics) and Griffin money; a November 2023 protest demanded it cut ties with the Crown family and rename the Henry Crown Gallery; 68 arrests at a 2024 encampment.",
-  "w": "Flags: Arms and defence, Campaigned name, Protest or boycott, Epstein-linked. See the Epstein cross-reference.",
+  "f": "Private gifts, among them $75M from Aaron Fleischman and Lin Lougheed for a new building (2024). The Crown family, with General Dynamics holdings, has trustee Steven Crown.",
+  "w": "Flags: Arms and defence, Campaigned name, Protest or boycott, Epstein-linked. Behind Enemy Lines demanded in November 2023 that it cut ties with the Crown family. 68 were arrested at an encampment on 4 May 2024. See the Epstein cross-reference.",
   "u": [
-   "https://blockclubchicago.org/2024/05/05/68-arrested-after-art-institute-asks-police-to-clear-pro-palestinian-encampment/",
-   "https://hyperallergic.com/art-collectors-patrons-named-in-unsealed-epstein-documents/",
-   "https://chicagomaroon.com/50751/news/uchicago-trustee-pritzker-planned-visits-to-epsteins-island-advised-on-island-staffing/",
-   "https://www.pbs.org/newshour/nation/thomas-pritzker-steps-down-from-hyatt-board-saying-he-deeply-regrets-association-with-epstein",
    "https://www.chicagoobservations.com/chicago-observational-ramblings/2023/11/11/removing-the-crown",
-   "https://www.bellingcat.com/news/2026/02/04/made-in-the-usa-how-american-built-weapons-have-wrought-destruction-in-gaza/"
+   "https://blockclubchicago.org/2024/05/05/68-arrested-after-art-institute-asks-police-to-clear-pro-palestinian-encampment/",
+   "https://hyperallergic.com/art-collectors-patrons-named-in-unsealed-epstein-documents/"
   ],
   "x": [
    [
@@ -10334,16 +10351,13 @@
  {
   "n": "Wexner Center for the Arts",
   "c": "Columbus, USA",
-  "t": "O",
+  "t": "F",
   "s": "S",
-  "f": "Epstein-linked name; artist and grant withdrawals in 2026.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Ohio State arts centre founded by Les Wexner's 1987 gift of $1M and 100,000 L Brands shares. It takes $3.3M a year in grants and gifts; FY2025 revenue about $13M.",
+  "w": "Flags: Epstein-linked, Campaigned name, Protest or boycott. Staff union asked Ohio State in May 2026 to rename it. An artist and a grant pulled out over the name. See the Epstein cross-reference.",
   "u": [
    "https://www.wosu.org/arts-culture/2026-06-11/wexner-center-for-the-arts-loses-one-artist-and-grant-citing-the-centers-name-for-pulled-support",
    "https://hyperallergic.com/workers-push-to-rename-wexner-center-for-the-arts-over-epstein-ties/",
-   "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/",
-   "https://www.wosu.org/arts-culture/2026-06-11/wexner-center-for-the-arts-loses-one-artist-and-grant-citing-the-centers-name-for-pulled-support?_amp=true",
-   "https://wexarts.org/history-and-architecture",
    "https://www.democracynow.org/2026/2/19/headlines/former_victoria_s_secret_ceo_les_wexner_testifies_about_his_links_to_epstein"
   ],
   "x": [
@@ -10353,7 +10367,7 @@
    ]
   ],
   "e": false,
-  "la": 40,
+  "la": 40.0,
   "lo": -83.009
  },
  {
@@ -10389,12 +10403,13 @@
  {
   "n": "Menil Collection",
   "c": "Houston, USA",
-  "t": "O",
+  "t": "B",
   "s": "L",
-  "f": "Schlumberger fortune; SLB still a sponsor.",
-  "w": "Flags: Fossil fuels.",
+  "f": "Corporate sponsors page: Bloomberg Philanthropies and Loro Piana at $100,000+; SLB, UBS, HEB and Paul Hastings at $25,000+; Bank of America, PNC and others below.",
+  "w": "Name to know: Bloomberg Philanthropies, top tier. 260+ UK artists asked five London theatres to drop it in May 2026; not targeted at the Menil.",
   "u": [
-   "https://www.menil.org/corporate-support"
+   "https://www.menil.org/corporate-support",
+   "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg"
   ],
   "e": false,
   "la": 29.759,
@@ -10458,15 +10473,15 @@
   "c": "Los Angeles, USA",
   "t": "F",
   "s": "L",
-  "f": "Trustee resigned 2020 over prison-phone investment.",
-  "w": "Flags: Prison or detention, Epstein-linked. See the Epstein cross-reference.",
+  "f": "Los Angeles County owns the Geffen Galleries, funded 80% by private gifts and 20% by the county. Donors include David Geffen, Elaine Wynn, the Keck Foundation and trustee Steve Tisch.",
+  "w": "Flags: Prison or detention, Epstein-linked, Campaigned name, Protest or boycott, Sponsor dropped under pressure. Tom Gores left the board on 8 October 2020 after Worth Rises and Color of Change demanded it over his Securus prison-phone firm. See the Epstein cross-reference.",
   "u": [
-   "https://news.artnet.com/art-world/tom-gores-resigns-lacma-board-1914542",
+   "https://worthrises.org/pressreleases/tom-gores-resigns-from-lacma-board-following-pressure-from-worth-rises-coc-and-artists",
+   "https://www.lacma.org/press/lacma-surpasses-750-million-campaign-fundraising-goal",
+   "https://cnycentral.com/news/new-york-news/steve-tisch-jeffrey-epstein",
    "https://wikileaks.org/sony/emails/emailid/115198",
    "https://wikileaks.org/sony/emails/emailid/120214",
-   "https://wikileaks.org/sony/emails/emailid/115643",
-   "https://www.propublica.org/article/hacked-sony-emails-reveal-behind-the-scenes-political-dealings-in-la",
-   "https://www.artnews.com/art-news/news/collectors-steve-tisch-jean-pigozzi-jeffrey-epstein-files-1234771700/"
+   "https://wikileaks.org/sony/emails/emailid/115643"
   ],
   "x": [
    [
@@ -10592,9 +10607,11 @@
   "c": "New Orleans, USA",
   "t": "U",
   "s": "S",
-  "f": "Non-funding row: #DismantleNOMA racism claims (2020) and the June 2023 backlash over a curator hire. The current donor roster is unpublished (last one is 2019).",
-  "w": "",
+  "f": "FY2024 revenue $10.0M per ProPublica. The latest published donors date from 2018 to 2019: Besthoff, Ella West Freeman, Diboll and Patrick F. Taylor foundations, Hancock Whitney, JPMorgan. No current roster.",
+  "w": "#DismantleNOMA racism claims (2020) and a June 2023 backlash over a curator hire are documented. Neither concerns a funder.",
   "u": [
+   "https://projects.propublica.org/nonprofits/organizations/726000331",
+   "https://noma.org/?p=35403",
    "https://www.theartnewspaper.com/2023/07/03/new-orleans-museum-art-backlash-hiring-white-curator-african-art"
   ],
   "e": false,
@@ -10685,19 +10702,18 @@
   "c": "New York, USA",
   "t": "F",
   "s": "L",
-  "f": "Refused Sackler gifts 2019, removed the name 2022.",
-  "w": "Flags: Opioids, Sponsor dropped under pressure, Campaigned name, Protest or boycott.",
+  "f": "Solomon R. Guggenheim Foundation revenue $88.2M (2024), per its Form 990. No donor roster found. It refused Sackler gifts in 2019 and removed the name in 2022.",
+  "w": "Flags: Opioids, Sponsor dropped under pressure, Campaigned name, Protest or boycott. PAIN protested here in February 2019. The Sackler name left its education centre in May 2022, agreed with the Mortimer Sackler family.",
   "u": [
-   "https://news.artnet.com/art-world/sackler-name-change-guggenheim-museum-2110993",
+   "https://hyperallergic.com/guggenheim-finally-drops-sackler-family-name/",
+   "https://www.theartnewspaper.com/2019/02/10/nan-goldins-anti-opioid-activist-group-storms-new-york-museums",
+   "https://projects.propublica.org/nonprofits/organizations/135562233",
    "https://wikileaks.org/plusd/cables/09ABUDHABI701_a.html",
    "https://wikileaks.org/plusd/cables/08ABUDHABI975_a.html",
    "https://wikileaks.org/plusd/cables/10BAKU54_a.html",
    "https://www.democracynow.org/2019/2/11/headlines/nyc_protesters_blast_guggenheims_ties_to_sackler_family",
-   "https://www.theartnewspaper.com/2019/02/10/nan-goldins-anti-opioid-activist-group-storms-new-york-museums",
    "https://www.democracynow.org/2022/5/12/headlines/cdc_108_000_died_from_drug_overdoses_in_2021_most_linked_to_synthetic_opioids",
-   "https://hyperallergic.com/guggenheim-finally-drops-sackler-family-name/",
-   "https://www.democracynow.org/2014/2/24/headlines/guggenheim_protest_highlights_plight_of_migrant_workers_in_abu_dhabi",
-   "https://www.huffpost.com/entry/guggenheim-protest-new-york-abu-dhabi-labor_n_4843947"
+   "https://www.democracynow.org/2014/2/24/headlines/guggenheim_protest_highlights_plight_of_migrant_workers_in_abu_dhabi"
   ],
   "x": [
    [
@@ -10726,24 +10742,17 @@
   "c": "New York, USA",
   "t": "F",
   "s": "L",
-  "f": "Revenue $324.7M (FY2024); under 2% public money. Board includes Leon Black, Glenn Dubin, Larry Fink and Ken Griffin money.",
-  "w": "Flags: Epstein-linked, Campaigned name, Protest or boycott. See the MoMA Money Map case study. See the Epstein cross-reference.",
+  "f": "Revenue $362.0M (FY2025). Trustees include Leon Black, Glenn Dubin, Larry Fink, Marie-Josée Kravis and Ronald Lauder; Ken Griffin gave $40M in 2015.",
+  "w": "Flags: Epstein-linked, Campaigned name, Protest or boycott. Strike MoMA targeted Black, Fink and others in 2021; Kravis in 2023. 500 protesters shut the galleries on 10 February 2024 over trustees' ties. See the MoMA Money Map case study. See the Epstein cross-reference.",
   "u": [
-   "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs",
-   "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/",
-   "https://www.cbsnews.com/news/sen-ron-wyden-leon-black-paid-epstein-170-million-tax-planning/",
+   "https://projects.propublica.org/nonprofits/organizations/131624100",
+   "https://hyperallergic.com/moma-shutters-as-500-protesters-infiltrate-atrium-in-support-of-palestine/",
+   "https://www.theartnewspaper.com/2023/09/15/museum-modern-art-protesters-climate-change-fossil-fuel-marie-josee-henry-kravis-kkr",
    "https://www.artnews.com/art-news/news/jeffrey-epstein-leon-black-gagosian-picasso-sculpture-1234771752/",
-   "https://hyperallergic.com/when-will-moma-dump-leon-black/",
    "https://www.democracynow.org/2025/7/28/ghislaine_maxwell_vicky_ward",
    "https://www.democracynow.org/2026/5/7/headlines",
-   "https://hyperallergic.com/virgin-islands-glenn-dubin-subpoena/",
-   "https://hyperallergic.com/art-collectors-patrons-named-in-unsealed-epstein-documents/",
-   "https://hyperallergic.com/guerrilla-girls-target-moma-trustees-with-ties-to-jeffrey-epstein-in-an-ad-takeover/",
-   "https://www.artnews.com/art-news/news/ronald-lauder-jeffrey-epstein-files-1234772151/",
    "https://www.democracynow.org/2024/2/12/headlines/hundreds_protest_art_institutions_complicity_and_silence_over_gaza_forcing_moma_to_close_doors",
-   "https://hyperallergic.com/moma-shutters-as-500-protesters-infiltrate-atrium-in-support-of-palestine/",
-   "https://www.democracynow.org/2023/9/18/headlines/75_000_march_to_end_fossil_fuels_in_nyc_as_hundreds_of_thousands_worldwide_demand_climate_justice",
-   "https://www.theartnewspaper.com/2023/09/15/museum-modern-art-protesters-climate-change-fossil-fuel-marie-josee-henry-kravis-kkr"
+   "https://www.democracynow.org/2023/9/18/headlines/75_000_march_to_end_fossil_fuels_in_nyc_as_hundreds_of_thousands_worldwide_demand_climate_justice"
   ],
   "x": [
    [
@@ -10774,14 +10783,14 @@
  {
   "n": "Neue Galerie New York",
   "c": "New York, USA",
-  "t": "F",
+  "t": "O",
   "s": "S",
-  "f": "Founder Ronald Lauder was the target of pro-Palestine protests at MoMA (2021, Nov 2024). Merging into the Met in 2028 (announced 14 May 2026).",
-  "w": "Flags: Protest or boycott, Epstein-linked. See the Epstein cross-reference.",
+  "f": "Founded by Ronald Lauder, its president. Corporate members: Estée Lauder Companies, Gagosian and Orentreich Family Foundation at $25,000+; Bloomberg Philanthropies at $10,000+. It merges into the Met in 2028.",
+  "w": "Flags: Epstein-linked. Protests against Lauder were at MoMA (2021, 2024) and the Met (2024), not here. Epstein supervised his 2014 art-sharing company with Leon Black. See the Epstein cross-reference.",
   "u": [
    "https://www.neuegalerie.org/join-and-support/corporate-membership",
-   "https://www.artnews.com/art-news/news/ronald-lauder-jeffrey-epstein-files-1234772151/",
-   "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/"
+   "https://www.thedp.com/article/2026/02/penn-ronald-lauder-jeffrey-epstein-relationship-wharton",
+   "https://blooloop.com/met-museum-neue-galerie-merger/"
   ],
   "x": [
    [
@@ -10798,19 +10807,17 @@
   "c": "New York, USA",
   "t": "F",
   "s": "L",
-  "f": "Koch Plaza name kept since 2014; Sackler name removed only in 2021.",
-  "w": "Flags: Opioids, Campaigned name, Sponsor dropped under pressure, Epstein-linked, Fossil fuels, Protest or boycott. See the Epstein cross-reference.",
+  "f": "Revenue $907M (FY2025). David Koch paid the $65M plaza redesign, which bears his name. Sackler family gifts named seven spaces; the name came off in December 2021.",
+  "w": "Flags: Opioids, Campaigned name, Sponsor dropped under pressure, Epstein-linked, Fossil fuels, Protest or boycott. Koch Plaza was protested in 2014 and 2019. A 2014 $5,000 Epstein-foundation benefit check is in the DOJ files; the Met reports no major gifts. See the Epstein cross-reference.",
   "u": [
-   "https://www.theartnewspaper.com/2019/05/15/the-met-says-it-will-stop-accepting-gifts-from-sacklers-associated-with-purdue-pharma",
+   "https://www.museumsassociation.org/museums-journal/news/2021/12/metropolitan-museum-of-art-drops-sackler-name/",
+   "https://hyperallergic.com/148627/three-arrested-charged-in-koch-plaza-protest-at-metropolitan-museum/",
+   "https://www.nbcnews.com/news/us-news/charities-say-they-never-got-donations-jeffrey-epstein-claims-he-n1028561",
    "https://wikileaks.org/plusd/cables/05KUWAIT2712_a.html",
    "https://www.artnews.com/art-news/news/jeffrey-epstein-metropolitan-museum-art-costume-institute-1234771607/",
-   "https://www.artnews.com/wp-json/wp/v2/posts/1234771607",
-   "https://www.nbcnews.com/news/us-news/charities-say-they-never-got-donations-jeffrey-epstein-claims-he-n1028561",
    "https://www.democracynow.org/2019/5/16/headlines/nycs_met_and_natural_history_museum_sever_sackler_family_ties_over_opioid_epidemic",
    "https://www.democracynow.org/2024/3/25/headlines/activists_protest_metropolitan_museums_complicity_in_israels_war_and_occupation_of_palestine",
-   "https://www.theartnewspaper.com/2024/03/25/met-museum-youre-complicit-artists-and-activists-take-over-museums-front-steps-with-giant-pro-palestine-quilt",
    "https://www.democracynow.org/2010/8/25/the_new_yorker___billionaire",
-   "https://wnyc.org/story/100951-met-museum-renovates-fifth-ave-plaza-beautify-fix-fountains/",
    "https://wikileaks.org/clinton-emails/emailid/29728"
   ],
   "x": [
@@ -10848,17 +10855,15 @@
   "c": "New York, USA",
   "t": "F",
   "s": "L",
-  "f": "Kanders resigned 2019 after protests; Crown family trustee targeted 2025.",
-  "w": "Flags: Arms and defence, Campaigned name, Protest or boycott, Epstein-linked, Sponsor dropped under pressure. See the Tear Gas Biennial case study. See the Epstein cross-reference.",
+  "f": "Revenue $191.4M (FY2025). Trustees have included Warren Kanders (left 2019), Ken Griffin (left July 2023) and Nancy Carrington Crown, whose family holds General Dynamics shares.",
+  "w": "Flags: Arms and defence, Campaigned name, Protest or boycott, Epstein-linked, Sponsor dropped under pressure, State censorship or punishment. Decolonize This Place targeted Kanders in 2019, protesters Griffin in 2023 and Crown in 2025. The Whitney cancelled a Palestine performance in May 2025. See the Tear Gas Biennial case study. See the Epstein cross-reference.",
   "u": [
    "https://www.theartnewspaper.com/2019/07/25/whitney-museum-vice-chairman-warren-kanders-steps-down-after-months-of-protests",
+   "https://hyperallergic.com/1015804/protest-targets-whitney-museum-board-ties-after-canceled-performance/",
    "https://www.theartnewspaper.com/2026/02/10/david-ross-resigns-school-visual-arts-jeffrey-epstein-files",
-   "https://ny1.com/nyc/all-boroughs/ap-top-news/2026/02/04/david-a-ross-resigns-from-school-of-visual-arts-after-ties-to-jeffrey-epstein-surface",
    "https://www.democracynow.org/2019/4/8/headlines/nyc_activists_protest_whitney_museum_board_member_maker_of_tear_gas",
-   "https://www.cbsnews.com/news/warren-kanders-whitney-museum-vice-chairman-resigns-from-post-after-tear-gas-protests/",
    "https://www.democracynow.org/2019/7/26/headlines/ceo_of_tear_gas_manufacturer_steps_down_from_whitney_museum_board_after_protests",
-   "https://www.democracynow.org/2019/5/20/headlines/protesters_call_on_whitney_museum_to_remove_tear_gas_manufacturers_ceo_from_board",
-   "https://hyperallergic.com/week-in-review-warren-kanders-resigns-as-whitney-vice-chair-safariland-tear-gas-used-in-puerto-rico/"
+   "https://www.democracynow.org/2019/5/20/headlines/protesters_call_on_whitney_museum_to_remove_tear_gas_manufacturers_ceo_from_board"
   ],
   "x": [
    [
@@ -11007,10 +11012,12 @@
   "c": "San Francisco, USA",
   "t": "O",
   "s": "S",
-  "f": "2024 artists demanded removal of board members and funders; galleries shut a month.",
-  "w": "Flags: Protest or boycott.",
+  "f": "No donor roster published. FY2025 revenue $9.3M, expenses $11.6M. The 2021 artist income pilot ran with the SF Arts Commission and Grants for the Arts.",
+  "w": "Flags: Protest or boycott. Eight artists altered their works on 15 February 2024 and demanded removal of board members and funders. Galleries closed a month.",
   "u": [
-   "https://en.wikipedia.org/wiki/Yerba_Buena_Center_for_the_Arts"
+   "https://www.wfae.org/united-states-world/2024-03-21/israel-hamas-war-causes-conflict-at-san-franciscos-yerba-buena-center-for-the-arts",
+   "https://en.wikipedia.org/wiki/Yerba_Buena_Center_for_the_Arts",
+   "https://projects.propublica.org/nonprofits/organizations/943042571"
   ],
   "e": false,
   "la": 37.788,
@@ -11677,14 +11684,14 @@
  {
   "n": "Bait Al Zubair",
   "c": "Muscat, Oman",
-  "t": "O",
+  "t": "B",
   "s": "S",
-  "f": "Private museum and foundation set up by the Zubair family in its Old Muscat home; run as the cultural arm of The Zubair Corporation, which owns oil and gas businesses",
-  "w": "Flags: Fossil fuels",
+  "f": "Private museum opened in 1988 by the Zubair family. Forbes Middle East lists it as a Zubair Corporation project; the group owns oil and gas firms including ARA Petroleum.",
+  "w": "Name to know: Zubair Corporation, whose nine sectors include ARA Petroleum (oil exploration and production). No revenue split is published, so oil is not shown as its largest line.",
   "u": [
-   "https://www.familybusinesshistories.org/spotlights/the-zubair-corporation/",
+   "https://www.forbesmiddleeast.com/lists/the-top-100-arab-family-businesses/the-zubair-corporation/",
    "https://arapetroleum.com/ceo/",
-   "https://www.baitalzubair.com/",
+   "https://www.familybusinesshistories.org/spotlights/the-zubair-corporation/",
    "https://wikileaks.org/plusd/cables/09MUSCAT851_a.html"
   ],
   "x": [
@@ -13078,13 +13085,14 @@
  {
   "n": "School of Visual Arts",
   "c": "New York, USA",
-  "t": "O",
+  "t": "F",
   "s": "S",
-  "f": "Ross chaired SVA's MFA Art Practice department from 2009. In October 2009 Epstein proposed a \"statutory\" exhibition of \"girls and boys ages 14 - 25\", and Ross replied, \"You are incredible.\"",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Private art school in Manhattan. The Rhodes family owned it until 1 September 2025; the nonprofit SVA Alumni Society owns it now. No sponsor list found.",
+  "w": "Flags: Epstein-linked, Protest or boycott. Chair David Ross resigned in February 2026 after his Epstein emails surfaced. Students held a May 2024 sit-in demanding SVA divest from Israeli weapons makers. See the Epstein cross-reference.",
   "u": [
    "https://www.theartnewspaper.com/2026/02/10/david-ross-resigns-school-visual-arts-jeffrey-epstein-files",
-   "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/"
+   "https://hyperallergic.com/students-stage-sit-in-for-gaza-at-nycs-school-of-visual-arts",
+   "https://en.wikipedia.org/wiki/School_of_Visual_Arts"
   ],
   "x": [
    [
@@ -13101,11 +13109,12 @@
   "c": "San Francisco, USA",
   "t": "O",
   "s": "L",
-  "f": "In 2001, while David A. Ross was director, SFMOMA acquired a 20% interest in John F. Simon Jr.'s ComplexCity (2000), recorded as a \"fractional and promised gift of Jeffrey Epstein\". In 2009 director Neal Benezra wrote to thank Epstein for his \"continued support\".",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Foundation and government list (June 2025): Ford, Warhol, Luce, Haas, Hearst, Koret and Osher foundations, Grants for the Arts, NEA and IMLS. No corporate sponsor list published.",
+  "w": "Flags: Epstein-linked. Epstein's 2001 fractional gift of ComplexCity came under director David Ross. SFMOMA says it records no later support and deaccessioned the work in October 2019. See the Epstein cross-reference.",
   "u": [
    "https://sfstandard.com/2026/02/05/jeffrey-epstein-sfmoma-doj-files-art-collection-ties/",
-   "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/"
+   "https://www.sfmoma.org/ways-to-give/corporate-engagement/foundation-and-government-support/",
+   "https://missionlocal.org/2019/05/toxic-donors-are-coming-under-fire-at-art-museums-but-not-in-liberal-san-francisco-what-will-sfmoma-do/"
   ],
   "x": [
    [
@@ -13126,14 +13135,12 @@
   "c": "New York, USA",
   "t": "O",
   "s": "S",
-  "f": "Epstein sat on the Academy's board from 1987 to 1994 and met student Maria Farmer there in 1995; Farmer reported him to the FBI in 1996, the first report against him. After his 2008 conviction he bought a $25,000 table at the Academy's Tribeca Ball in 2012 and in 2014, gave $30,000 for scholarship support in 2014, and attended Academy events.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Van Cleef & Arpels sponsors its Tribeca Ball for scholarships. Epstein, a board member 1987 to 1994, paid $65,900 for events in 2012 and 2014, the Academy says.",
+  "w": "Flags: Epstein-linked. A 2020 petition asked the Academy to remove its board chair; its author withdrew it in 2021. In March 2026 the Academy admitted \"serious failures.\" See the Epstein cross-reference.",
   "u": [
    "https://hyperallergic.com/new-york-academy-of-art-says-it-will-donate-epstein-money/",
-   "https://hyperallergic.com/mapping-out-jeffery-epsteins-connections-and-links-to-the-art-world/",
-   "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/",
    "https://hyperallergic.com/petition-calls-for-removal-of-new-york-academy-of-art-board-chair/",
-   "https://news.artnet.com/art-world/new-york-academy-art-investigation-epstein-maria-farmer-1890683"
+   "https://tribecacitizen.com/2025/04/11/join-the-party-at-tribeca-ball-on-april-15th-2/"
   ],
   "x": [
    [
@@ -13154,12 +13161,12 @@
   "c": "Interlochen, USA",
   "t": "O",
   "s": "S",
-  "f": "Epstein attended Interlochen's summer camp in 1967 and gave money to it from 1990 to 2003, including a $200,000 gift, acknowledged in February 1994, for a lodge on Green Lake named after him. A witness at Ghislaine Maxwell's 2021 trial and a second woman say Epstein and Maxwell met them at the camp at 13 and 14, from 1994, and DOJ files show the pair met a student alone at the lodge.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Private nonprofit arts academy and camp. Gifts were $24.1M in fiscal 2025. Its 2025 report names trustee David Wu, the Foster Family Foundation, DeRoy Testamentary Foundation and Walker Foundation.",
+  "w": "Flags: Epstein-linked. Epstein, a camper in 1967, gave over $400,000 from 1990 to 2003. Interlochen renamed his lodge after his conviction and tore it down in 2026. See the Epstein cross-reference.",
   "u": [
-   "https://www.npr.org/2026/02/19/nx-s1-5707290/epstein-files-victims-interlochen-ghislaine-maxwell",
-   "https://www.interlochenpublicradio.org/ipr-news/2026-05-26/interlochen-to-tear-down-green-lake-lodge-once-named-for-jeffrey-epstein",
-   "https://fortune.com/2026/07/30/epstein-interlochen-abuse-investigation-report/"
+   "https://fortune.com/2026/07/30/epstein-interlochen-abuse-investigation-report/",
+   "https://projects.propublica.org/nonprofits/organizations/381689022",
+   "https://online.flippingbook.com/view/486516587/14-15/"
   ],
   "x": [
    [
@@ -13174,10 +13181,10 @@
  {
   "n": "Black Family Visual Arts Center (Dartmouth)",
   "c": "Hanover, USA",
-  "t": "O",
+  "t": "F",
   "s": "S",
-  "f": "Leon and Debra Black gave $48 million toward the arts centre, which opened in 2012. Epstein had been a director of the Black Family Foundation, through which the gifts passed; he is still listed on its 2012 tax forms, which the Blacks call an error, saying he left in 2007.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Leon and Debra Black gave $48 million toward the centre, which opened in 2012, through the Black Family Foundation. Dartmouth says it has no current financial relationship with Leon Black.",
+  "w": "Flags: Epstein-linked, Campaigned name, Protest or boycott. The Blacks say Epstein left the foundation in 2007. In April 2026 Women of Dartmouth and student government asked Dartmouth to remove the Black name. See the Epstein cross-reference.",
   "u": [
    "https://vnews.com/2026/04/20/epstein-black-dartmouth-controversy/",
    "https://hyperallergic.com/citing-epstein-ties-dartmouth-community-calls-for-school-to-rename-leon-black-arts-center/",
@@ -13196,18 +13203,14 @@
  {
   "n": "Bard College",
   "c": "Annandale-on-Hudson, USA",
-  "t": "O",
+  "t": "F",
   "s": "S",
-  "f": "Leon Botstein, Bard's president from 1975 to 2026, pursued Epstein as a donor from 2012 to 2019, and Epstein gave to Bard through his foundation Enhanced Education in 2011 and 2012. Epstein attended concerts at Bard's Fisher Center.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Open Society Foundations gave $500M in 2021 to start a $1B endowment campaign, now complete. Epstein's Enhanced Education gave to Bard High School Early College in 2011 and 2012.",
+  "w": "Flags: Epstein-linked, Protest or boycott. President Botstein retired on 30 June 2026 after the Epstein review. Nearly 200 staff, faculty and students asked trustees to give him no music contracts. See the Epstein cross-reference.",
   "u": [
-   "https://www.cnbc.com/2026/05/01/epstein-bard-college-president-leon-botstein-retire.html",
+   "https://www.bard.edu/news/message-from-the-executive-committee-of-the-board-of-trustees-2026-05-01",
    "https://www.highereddive.com/news/bard-college-president-retire-probe-ties-epstein/819259/",
-   "https://www.insidehighered.com/news/quick-takes/2023/05/18/leon-botstein-received-150000-jeffrey-epstein",
-   "https://www.wamc.org/news/2026-02-10/bard-college-presidents-letter-to-college-explains-his-relationship-to-epstein",
-   "https://www.universityworldnews.com/post.php?story=20260313172238470",
-   "https://theviolinchannel.com/leon-botstein-bard-college-president-and-conductor-of-the-orchestra-now-mentioned-in-newly-released-epstein-files/",
-   "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/"
+   "https://www.wamc.org/news/2026-07-02/leon-botstein-steps-down-as-president-of-bard-college-but-what-does-that-actually-mean"
   ],
   "x": [
    [
@@ -13226,16 +13229,18 @@
  {
   "n": "Djerassi Resident Artists Program",
   "c": "Woodside, USA",
-  "t": "O",
+  "t": "U",
   "s": "S",
-  "f": "Alexander Maxwell Djerassi has been a Djerassi trustee since 2017 and is now board secretary. An itinerary in the DOJ files lists him and fellow trustee Michael Molesky as guests at a \"Mindshift Conference\" on the weekend of 7 January 2011, with events on St. Thomas and on Epstein's island, Little St. James.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Artists' residency on 583 acres, founded 1979. 2025 revenue $890,253, of which $577,245 contributions. California Arts Council gave $12,600 for 2025-26. No donor list found.",
+  "w": "Trustees Alexander Djerassi and Michael Molesky were guests at a 2011 event on Epstein's island, six years before joining the board. See the Epstein cross-reference.",
   "u": [
-   "https://hyperallergic.com/trustees-of-renowned-west-coast-artist-residency-visited-epsteins-island/"
+   "https://hyperallergic.com/trustees-of-renowned-west-coast-artist-residency-visited-epsteins-island/",
+   "https://projects.propublica.org/nonprofits/organizations/946115995",
+   "https://arts.ca.gov/?p=64573"
   ],
   "x": [
    [
-    "Epstein link: Alexander Maxwell Djerassi, documented",
+    "Epstein visit: Alexander Maxwell Djerassi, documented",
     "He is Ghislaine Maxwell's nephew, and he says of the 2011 lunch, speaking for himself and Molesky, \"We had no awareness of Epstein's heinous crimes.\" Both men remain on the board. The residency calls the 2011 visit a \"social lunch\" years before they joined the board and says it had no ties to Epstein or Maxwell."
    ]
   ],
@@ -13248,14 +13253,11 @@
   "c": "Cambridge, USA",
   "t": "O",
   "s": "S",
-  "f": "MIT's Goodwin Procter review (January 2020) found Epstein gave MIT $850,000 in 10 gifts from 2002 to 2017, nine of them after his 2008 conviction, including $525,000 to the Media Lab under director Joi Ito. The New Yorker reported that Epstein arranged at least $7.5 million in donations to the Lab and that the Lab logged his gifts as anonymous, while MIT's donor database marked him \"disqualified\".",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Funded by member companies. Fourteen joined in 2024, including Sony, HP, Kenvue, Kohler and MITRE.",
+  "w": "Flags: Epstein-linked. Director Joi Ito resigned on 7 September 2019. MIT found Epstein gave the Lab $525,000 in six gifts from 2013 to 2017. See the Epstein cross-reference.",
   "u": [
    "https://news.mit.edu/2020/mit-releases-results-fact-finding-report-jeffrey-epstein-0110",
-   "https://thetech.com/2020/01/10/goodwin-procter-report",
-   "https://www.pbs.org/newshour/nation/director-of-mits-media-lab-steps-down-over-epstein-ties",
-   "https://www.alliancemagazine.org/blog/jeffrey-epstein-bill-gates-faces-questions-over-mit-donations-and-private-jet-with-sex-offender/",
-   "https://fortune.com/2025/11/18/reid-hoffman-epstein-files/"
+   "https://www.media.mit.edu/posts/2024-new-members/"
   ],
   "x": [
    [
@@ -13280,13 +13282,12 @@
   "c": "Cambridge, USA",
   "t": "O",
   "s": "S",
-  "f": "Epstein's foundation Gratitude America gave $110,000 in 2016 to Verse Video Education, the nonprofit behind Elisa New's Poetry in America, and New and Epstein emailed about funding her projects from 2013 to at least 2018, including a possible $500,000 donation. Harvard gave the nonprofit office space and paid part of its staff salaries.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Nonprofit Verse Video Education runs it. Elisa New credits the National Endowment for the Humanities and Sloan Foundation for four seasons. Harvard gave office space and part of staff pay.",
+  "w": "Flags: Epstein-linked. Epstein's foundation gave $110,000 in 2016, and he brokered a Leon Black gift. GBH cut ties in 2023; PBS stopped airing it in December 2025. See the Epstein cross-reference.",
   "u": [
    "https://www.thecrimson.com/article/2025/12/12/poetry-show-pulled/",
-   "https://www.thecrimson.com/article/2019/4/19/epstein-donation-hasty-pudding/",
-   "https://www.democracynow.org/2025/11/25/anand_giridharadas",
-   "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/"
+   "https://indepthnh.org/2024/06/20/elisa-new-poetry-in-america/",
+   "https://www.democracynow.org/2025/11/25/anand_giridharadas"
   ],
   "x": [
    [
@@ -13305,14 +13306,14 @@
  {
   "n": "Hasty Pudding Theatricals",
   "c": "Cambridge, USA",
-  "t": "O",
+  "t": "F",
   "s": "S",
-  "f": "The Jeffrey Epstein Virgin Islands Foundation and Gratitude America gave the Hasty Pudding Institute of 1770, the umbrella group for Hasty Pudding Theatricals, at least $375,000: $75,000 in 2013 and $50,000 a year from 2014 to 2019. The Pudding listed Epstein as a 2018 \"Guardian of the Sphinx\" donor.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Run by the nonprofit Hasty Pudding Institute of 1770. Its 2021 donor list, the latest posted, is led by the Ann and Andrew Tisch Foundation at $50,000 or more.",
+  "w": "Flags: Epstein-linked, Protest or boycott. Epstein-linked foundations gave at least $375,000 from 2013 to 2019. In 2019 members petitioned the board; the Pudding gave $50,000 to an anti-trafficking nonprofit. See the Epstein cross-reference.",
   "u": [
    "https://www.thecrimson.com/article/2026/2/2/epstein-hasty-pudding-donations/",
-   "https://www.thecrimson.com/article/2019/4/19/epstein-donation-hasty-pudding/",
-   "https://www.thecrimson.com/article/2019/9/26/pudding-epstein-petition/"
+   "https://www.thecrimson.com/article/2019/9/26/pudding-epstein-petition/",
+   "https://hastypudding.org/about/donors/"
   ],
   "x": [
    [
@@ -13327,13 +13328,14 @@
  {
   "n": "Institut du monde arabe",
   "c": "Paris, France",
-  "t": "O",
+  "t": "F",
   "s": "L",
-  "f": "Jack Lang led the Institut du monde arabe from 2013. He is named 673 times in the DOJ files released on 30 January 2026, and emails show he travelled in Epstein's jet and car.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "The French foreign ministry funds over half its income; the founding Arab states stopped paying their share. The TotalEnergies Foundation is its major sponsor, with exhibitions in 2023 to 2025.",
+  "w": "Flags: Epstein-linked, Fossil fuels. Jack Lang, president since 2013, resigned on 7 February 2026 over the Epstein files. He denies wrongdoing; prosecutors opened an inquiry. See the Epstein cross-reference.",
   "u": [
-   "https://www.theartnewspaper.com/2026/02/09/frances-ex-culture-minister-jack-lang-resigns-institut-du-monde-arab-epstein-revelations",
-   "https://www.artnews.com/art-news/news/jack-lang-resigns-institut-de-monde-arabe-jeffrey-epstein-1234772725/"
+   "https://www.ccomptes.fr/fr/publications/linstitut-du-monde-arabe",
+   "https://fondation.totalenergies.com/en/node/1496",
+   "https://www.euronews.com/2026/02/09/former-french-culture-minister-quits-arab-world-institute-over-epstein-ties"
   ],
   "x": [
    [
@@ -13350,13 +13352,12 @@
   "c": "Lille, France",
   "t": "O",
   "s": "S",
-  "f": "Caroline Lang held roles at Séries Mania, the Lille TV-series festival. La Voix du Nord first reported that she had to give them up after the US Justice Department released Epstein's emails.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Crédit Mutuel Nord Europe has been Grand Partenaire since the festival came to Lille in 2018, renewed in March 2026. No full funder list found.",
+  "w": "Flags: Epstein-linked. Board member Caroline Lang left on 4 February 2026 after Epstein's emails came out. She calls him an acquaintance and says she got no money. See the Epstein cross-reference.",
   "u": [
    "https://www.mediacites.fr/breve/lille/2026/02/05/affaire-epstein-caroline-lang-contrainte-de-se-retirer-de-series-mania-et-de-pictanovo/",
-   "https://www.artnews.com/art-news/news/french-culture-minister-jack-lang-caroline-epstein-files-1234771959/",
    "https://fr.wikipedia.org/wiki/Caroline_Lang",
-   "https://www.euronews.com/2026/02/09/former-french-culture-minister-quits-arab-world-institute-over-epstein-ties"
+   "https://cdnwmsi.e-i.com/SITW/wm/global/1.0.0/corporate/communiques/partenariat-cmne-series-mania/02_03_2026_CP_CMNE-Partenariat-Series-Mania.pdf"
   ],
   "x": [
    [
@@ -13373,12 +13374,12 @@
   "c": "Tourcoing, France",
   "t": "O",
   "s": "S",
-  "f": "Caroline Lang presided over Pictanovo's economic support fund for films and series until 4 February 2026. Pictanovo is an association funded by the Hauts-de-France region.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Regional film agency run as an association. Its economic support fund is paid by the Hauts-de-France region, and public aid is capped at 50% of a work's cost.",
+  "w": "Flags: Epstein-linked. Caroline Lang chaired its support fund until 4 February 2026, after Epstein's emails came out. She says she gained nothing from his art fund. See the Epstein cross-reference.",
   "u": [
-   "https://www.mediacites.fr/breve/lille/2026/02/05/affaire-epstein-caroline-lang-contrainte-de-se-retirer-de-series-mania-et-de-pictanovo/",
+   "https://www.pictanovo.com/wp-content/uploads/2026/02/reglement-fonds-eco-janv-2026.pdf",
    "https://fr.wikipedia.org/wiki/Caroline_Lang",
-   "https://www.publicsenat.fr/actualites/politique/affaire-epstein-pourquoi-le-parquet-national-financier-a-t-il-ouvert-une-enquete-visant-jack-lang-et-sa-fille-caroline"
+   "https://www.mediacites.fr/breve/lille/2026/02/05/affaire-epstein-caroline-lang-contrainte-de-se-retirer-de-series-mania-et-de-pictanovo/"
   ],
   "x": [
    [
@@ -13395,13 +13396,12 @@
   "c": "London, UK",
   "t": "O",
   "s": "L",
-  "f": "Prince Andrew was patron of English National Ballet for 18 years. ENB accepted his resignation \"with immediate effect\" on 22 November 2019, after his Newsnight interview about Epstein, and some ENB trustees had joined calls for him to go.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Arts Council England supports it as a National Portfolio Organisation. Ballymore is principal building partner and Cunard sponsors productions. Trusts include Garfield Weston and Bloomberg Philanthropies.",
+  "w": "Flags: Epstein-linked. Prince Andrew was patron for 18 years. ENB accepted his resignation in November 2019, after his BBC interview about Epstein. See the Epstein cross-reference.",
   "u": [
    "https://www.yahoo.com/news/prince-andrew-resigns-patron-english-163400728.html",
-   "https://news.yahoo.com/prince-andrew-jeffrey-epstein-bbc-093435484.html",
-   "https://www.pbs.org/newshour/world/andrew-mountbatten-windsor-arrested-on-suspicion-of-misconduct-in-public-office-over-ties-to-epstein",
-   "https://www.cnbc.com/2026/02/19/prince-andrew-arrest-misconduct-epstein-mountbatten-windsor.html"
+   "https://www.ballet.org.uk/support-us/thank-you/",
+   "https://www.ballet.org.uk/blog/2025-2026-season-announcement/"
   ],
   "x": [
    [
@@ -13418,13 +13418,11 @@
   "c": "London, UK",
   "t": "O",
   "s": "L",
-  "f": "Prince Andrew was the Royal Philharmonic Orchestra's patron, and the orchestra thanked him for his support \"over the past 15 years\". In November 2019 its board decided to \"part company with its patron, with immediate effect\".",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Corporate partners include Northern Trust, dunhill and Chapel Down; trusts include the Linbury Trust, Stavros Niarchos Foundation and D'Oyly Carte. Arts Council England's logo is on its supporter page.",
+  "w": "Flags: Epstein-linked. Its board ended Prince Andrew's patronage in November 2019, after his BBC interview about Epstein, thanking him for 15 years of support. See the Epstein cross-reference.",
   "u": [
    "https://www.yahoo.com/news/prince-andrew-resigns-patron-english-163400728.html",
-   "https://www.pbs.org/newshour/world/andrew-mountbatten-windsor-arrested-on-suspicion-of-misconduct-in-public-office-over-ties-to-epstein",
-   "https://www.cnn.com/world/live-news/andrew-mountbatten-windsor-arrested-uk-police-02-19-26",
-   "https://www.axios.com/2026/02/19/prince-andrew-arrest-epstein-files"
+   "https://www.rpo.co.uk/support/our-supporters"
   ],
   "x": [
    [
@@ -13441,11 +13439,11 @@
   "c": "Lillehammer, Norway",
   "t": "O",
   "s": "S",
-  "f": "Crown Princess Mette-Marit had been high patron of the Amandus Festival, a youth film festival in Lillehammer, since 2006.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Youth film festival for ages 13 to 20. Its site lists supporters including the Norwegian Film Institute, Innlandet county, Lillehammer municipality, Sparebankstiftelsen and Fritt Ord.",
+  "w": "Flags: Epstein-linked. Crown Princess Mette-Marit was high patron from 2006. The board voted unanimously on 28 April 2026 to end it over her ties to Epstein. See the Epstein cross-reference.",
   "u": [
    "https://www.nrk.no/innlandet/amandusfestivalen-bryter-samarbeid-med-kronprinsessen-1.17863755",
-   "https://www.hola.com/us/royals/20260428898487/mette-marit-norway-epstein-scandal-amandus-festival-ties/"
+   "https://amandusfestivalen.no/"
   ],
   "x": [
    [
@@ -13462,13 +13460,12 @@
   "c": "Chicago, USA",
   "t": "O",
   "s": "S",
-  "f": "Tom Pritzker runs the Hyatt Foundation, which is behind the Pritzker Architecture Prize. Unredacted DOJ files show frequent contact with Epstein after his 2008 plea deal.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Founded in 1979 and sponsored by the Pritzker family's Hyatt Foundation. The laureate receives $100,000. No outside sponsors are listed.",
+  "w": "Flags: Epstein-linked. Tom Pritzker left Hyatt's chair in February 2026 and remains a foundation director. The 2026 announcement was delayed and made on 12 March. See the Epstein cross-reference.",
   "u": [
    "https://www.architecturalrecord.com/articles/18031-thomas-pritzker-steps-down-as-executive-chairman-of-hyatt-hotels-over-epstein-ties",
-   "https://www.dezeen.com/2026/02/28/pritzker-prize-delayed-this-week/",
-   "https://archinect.com/news/article/150526505/pritzker-prize-to-be-delayed-over-epstein-ties-to-tom-pritzker",
-   "https://www.newsweek.com/hyatt-executive-tom-pritzker-jeffrey-epstein-virginia-giuffre-scandal-denial-1857893",
+   "https://www.pritzkerprize.com/about",
+   "https://euronews.com/culture/2026/03/12/chilean-smiljan-radic-clarke-wins-2026-pritzker-architecture-prize",
    "https://www.democracynow.org/2026/2/17/headlines"
   ],
   "x": [
@@ -13486,10 +13483,11 @@
   "c": "New York, USA",
   "t": "O",
   "s": "S",
-  "f": "Steve Tisch sits on the Dean's Council of NYU Tisch School of the Arts, named after a 1982 donation from his father and uncle. DOJ files show emails from 2013 to 2017 in which Epstein described women to him, including an April 2013 thread titled \"Ukrainian Girl\".",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "Part of NYU, named for a 1982 gift from Laurence and Preston Robert Tisch. Its giving page names Google, the Steven & Alexandra Cohen Foundation and the HFPA Charitable Trust.",
+  "w": "Flags: Epstein-linked. Dean's Council member Steve Tisch says his 2013 to 2017 emails with Epstein were about adult women and that he deeply regrets the association. See the Epstein cross-reference.",
   "u": [
-   "https://nyunews.com/news/2026/02/18/tisch-steve-epstein-dean-council/"
+   "https://nyunews.com/news/2026/02/18/tisch-steve-epstein-dean-council/",
+   "https://tisch.nyu.edu/giving/institutional-giving"
   ],
   "x": [
    [
@@ -13504,12 +13502,14 @@
  {
   "n": "Milwaukee Symphony Orchestra",
   "c": "Milwaukee, USA",
-  "t": "O",
+  "t": "F",
   "s": "S",
-  "f": "Peter Mahler sat on the Milwaukee Symphony Orchestra's 35-member board until February 2026. FOX6 first reported his Epstein link on 9 February 2026.",
-  "w": "Flags: Epstein-linked. See the Epstein cross-reference.",
+  "f": "FY2025 revenue $19.8M. 2024-25 report: United Performing Arts Fund $1M+; Bradley, Argosy and Laskin foundations $250,000+; We Energies Foundation, Rockwell Automation and Herzfeld Foundation $100,000+.",
+  "w": "Flags: Epstein-linked, Fossil fuels. We Energies sells gas; coal was 28% of its 2025 mix. Board member Peter Mahler, an Epstein recruiter in 2013, resigned in February 2026. See the Epstein cross-reference.",
   "u": [
-   "https://www.fox6now.com/news/2-milwaukee-symphony-board-members-resign-personal-scandals"
+   "https://www.mso.org/app/uploads/2025/12/2425_MSO_AnnualReport-1.pdf",
+   "https://www.fox6now.com/news/2-milwaukee-symphony-board-members-resign-personal-scandals",
+   "https://www.we-energies.com/services/pdf/energy-for-tomorrow-fact-sheet.pdf"
   ],
   "x": [
    [
@@ -13526,14 +13526,14 @@
   "c": "Abu Dhabi, UAE",
   "t": "F",
   "s": "L",
-  "f": "An Abu Dhabi government project on Saadiyat Island, developed by the state-owned Tourism Development and Investment Company (TDIC) under licence from the Guggenheim Foundation.",
-  "w": "Flags: Gulf state body, Forced or exploited labour, Protest or boycott.",
+  "f": "Owned by Abu Dhabi's state-owned Tourism Development and Investment Company; the Guggenheim Foundation runs the programme. The Department of Culture and Tourism set the opening for 11 December 2026.",
+  "w": "Flags: Gulf state body, Forced or exploited labour, Protest or boycott. Gulf Labor Coalition has campaigned for about 16 years, staged a 2014 protest at the New York Guggenheim and called for an artist boycott.",
   "u": [
+   "https://hyperallergic.com/long-contested-guggenheim-abu-dhabi-gets-opening-date/",
    "https://www.democracynow.org/2014/2/24/headlines/guggenheim_protest_highlights_plight_of_migrant_workers_in_abu_dhabi",
-   "https://news.artnet.com/art-world/protest-at-new-yorks-guggenheim-calls-attention-to-labor-conditions-at-uae-expansion-2236",
+   "https://en.wikipedia.org/wiki/Guggenheim_Abu_Dhabi",
    "https://wikileaks.org/plusd/cables/09ABUDHABI701_a.html",
    "https://www.democracynow.org/2015/4/2/as_nyu_expands_into_abu_dhabi",
-   "https://www.insidehighered.com/news/2015/03/18/nyu-professor-denied-entry-uae-where-university-has-campus",
    "https://wikileaks.org/gifiles/docs/19/1920280_uae-in-a-bid-to-become-cultural-tourism-destination-abu.html"
   ],
   "x": [
@@ -13563,20 +13563,17 @@
   "c": "Washington, USA",
   "t": "F",
   "s": "L",
-  "f": "The national performing arts centre, owned by the federal government. Congress pays for the building; programmes run on ticket sales and private gifts. Trump named himself chair in February 2025.",
-  "w": "Flags: State censorship or punishment, Protest or boycott.",
+  "f": "Congress pays for the federally owned building; programmes run on ticket sales and private gifts. Trump became chair in February 2025; a $100M FY2026 revenue shortfall was projected.",
+  "w": "Flags: State censorship or punishment, Protest or boycott. Trump fired the president and board in February 2025. Hamilton, Issa Rae, Renée Fleming and Philip Glass pulled out of the Center.",
   "u": [
    "https://www.democracynow.org/2025/3/31/kennedy_center",
+   "https://playbill.com/article/drag-artists-hold-protest-at-the-kennedy-center",
    "https://www.nbcnews.com/politics/trump-administration/ric-grenell-stepping-down-kennedy-center-matt-floca-rcna263415",
    "https://www.democracynow.org/2025/12/19/headlines/trumps_hand_picked_board_adds_trumps_name_to_john_f_kennedy_center_for_the_performing_arts",
-   "https://www.cbsnews.com/news/kennedy-center-board-votes-to-rename-institution-trump-kennedy-center-white-house-says/",
    "https://www.democracynow.org/2026/6/1/headlines/federal_judge_orders_trumps_name_removed_from_kennedy_center",
-   "https://www.cbsnews.com/news/kennedy-center-trump-name-judge/",
    "https://www.democracynow.org/2026/9/16/headlines/trump_s_board_of_trustees_votes_to_close_kennedy_center_for_the_performing_arts",
-   "https://www.thewrap.com/media-platforms/politics/kennedy-center-board-close-venue/",
    "https://www.democracynow.org/2026/6/16/kennedy_center_trump",
-   "https://www.democracynow.org/2025/3/10/headlines/reinstate_queer_programming_drag_performers_lead_protest_outside_kennedy_center",
-   "https://playbill.com/article/drag-artists-hold-protest-at-the-kennedy-center"
+   "https://www.democracynow.org/2025/3/10/headlines/reinstate_queer_programming_drag_performers_lead_protest_outside_kennedy_center"
   ],
   "x": [
    [
@@ -13613,13 +13610,14 @@
   "c": "Washington, USA",
   "t": "O",
   "s": "L",
-  "f": "A Smithsonian museum. The Smithsonian gets roughly 60% of its money from the federal government, the rest from private gifts and earned income.",
-  "w": "Flags: State censorship or punishment.",
+  "f": "A Smithsonian museum. About two-thirds of the Smithsonian's money comes from Congress; the rest is private gifts, endowment and earned income.",
+  "w": "Flags: State censorship or punishment. In August 2025 the museum removed a reference to Trump's two impeachments from its presidency exhibit, and the White House put it under content review.",
   "u": [
-   "https://www.democracynow.org/2025/8/13/headlines/white_house_orders_smithsonian_to_align_exhibitions_with_trumps_views",
+   "https://www.pbs.org/newshour/politics/smithsonian-removes-trump-from-an-exhibits-impeachment-display-but-says-its-temporary",
    "https://www.nbcnews.com/politics/white-house/white-house-reviewing-smithsonian-exhibits-make-sure-align-trumps-visi-rcna224588",
-   "https://www.democracynow.org/2025/8/1/headlines/smithsonian_removes_explicit_references_to_trumps_impeachments_from_exhibit",
-   "https://www.pbs.org/newshour/politics/smithsonian-removes-trump-from-an-exhibits-impeachment-display-but-says-its-temporary"
+   "https://en.wikipedia.org/wiki/Smithsonian_Institution",
+   "https://www.democracynow.org/2025/8/13/headlines/white_house_orders_smithsonian_to_align_exhibitions_with_trumps_views",
+   "https://www.democracynow.org/2025/8/1/headlines/smithsonian_removes_explicit_references_to_trumps_impeachments_from_exhibit"
   ],
   "x": [
    [
@@ -13640,13 +13638,13 @@
   "c": "Washington, USA",
   "t": "F",
   "s": "L",
-  "f": "A Smithsonian museum, roughly 60% federally funded. David Koch sat on its board, and the David H. Koch Hall of Human Origins carries his name.",
-  "w": "Flags: State censorship or punishment, Fossil fuels, Campaigned name.",
+  "f": "A Smithsonian museum; Congress supplies about two-thirds of the Smithsonian's money. David H. Koch, a board member, backed the Hall of Human Origins, which carries his name.",
+  "w": "Flags: State censorship or punishment, Fossil fuels, Campaigned name, Protest or boycott. The White House named it in its August 2025 content review. In 2015, 15 groups campaigned to remove Koch from the board.",
   "u": [
-   "https://www.democracynow.org/2025/8/13/headlines/white_house_orders_smithsonian_to_align_exhibitions_with_trumps_views",
-   "https://www.nbcnews.com/politics/white-house/white-house-reviewing-smithsonian-exhibits-make-sure-align-trumps-visi-rcna224588",
-   "https://www.democracynow.org/2015/3/26/why_is_climate_denier_david_koch",
+   "https://www.wusf.org/2025-08-12/white-house-calls-for-a-comprehensive-review-of-eight-smithsonian-museums",
    "https://www.salon.com/2015/03/24/scientists_to_museums_stop_taking_money_from_climate_deniers/",
+   "https://www.democracynow.org/2015/3/26/why_is_climate_denier_david_koch",
+   "https://www.democracynow.org/2025/8/13/headlines/white_house_orders_smithsonian_to_align_exhibitions_with_trumps_views",
    "https://wikileaks.org/clinton-emails/emailid/29728",
    "https://wikileaks.org/podesta-emails/emailid/54906"
   ],
@@ -13673,13 +13671,14 @@
   "c": "Washington, USA",
   "t": "O",
   "s": "L",
-  "f": "A Smithsonian museum. The Smithsonian gets roughly 60% of its money from the federal government, the rest from private gifts and earned income.",
-  "w": "Flags: State censorship or punishment.",
+  "f": "A Smithsonian museum; Congress supplies about two-thirds of the Smithsonian's money, the rest from private gifts, endowment and earned income.",
+  "w": "Flags: State censorship or punishment. Trump said in May 2025 he was firing director Kim Sajet, who then resigned. Amy Sherald cancelled her show in July 2025 over a painting.",
   "u": [
-   "https://www.democracynow.org/2025/8/13/headlines/white_house_orders_smithsonian_to_align_exhibitions_with_trumps_views",
-   "https://www.nbcnews.com/politics/white-house/white-house-reviewing-smithsonian-exhibits-make-sure-align-trumps-visi-rcna224588",
-   "https://www.democracynow.org/2026/1/12/headlines/smithsonian_s_portrait_gallery_removes_text_on_trump_s_two_impeachments",
    "https://www.opb.org/article/2026/01/12/national-portrait-gallery-removes-impeachment-references-next-to-trump-photo/",
+   "https://www.pbs.org/newshour/politics/smithsonian-removes-trump-from-an-exhibits-impeachment-display-but-says-its-temporary",
+   "https://www.wusf.org/2025-08-12/white-house-calls-for-a-comprehensive-review-of-eight-smithsonian-museums",
+   "https://www.democracynow.org/2025/8/13/headlines/white_house_orders_smithsonian_to_align_exhibitions_with_trumps_views",
+   "https://www.democracynow.org/2026/1/12/headlines/smithsonian_s_portrait_gallery_removes_text_on_trump_s_two_impeachments",
    "https://wikileaks.org/sony/emails/emailid/121860",
    "https://wikileaks.org/gifiles/docs/12/1229168_fwd-eastasia-china-us-u-s-museum-directors-to-ai-weiwei-drop.html"
   ],
@@ -13704,13 +13703,14 @@
  {
   "n": "Eskenazi Museum of Art",
   "c": "Bloomington, USA",
-  "t": "O",
+  "t": "F",
   "s": "S",
-  "f": "The art museum of Indiana University, a public state university.",
-  "w": "Flags: State censorship or punishment.",
+  "f": "The art museum of Indiana University, a public university. Sidney and Lois Eskenazi gave $15M in 2016 for the renovation and the name.",
+  "w": "Flags: State censorship or punishment, Protest or boycott. Indiana University cancelled the Samia Halaby retrospective in December 2023. PEN America urged reinstatement and a petition drew 8,000 signatures.",
   "u": [
-   "https://www.democracynow.org/2024/1/17/headlines/indiana_university_cancels_exhibition_by_prominent_palestinian_artist_samia_halaby",
-   "https://www.theartnewspaper.com/2024/01/12/indiana-university-cancels-palestinian-artist-samia-halaby-retrospective"
+   "https://www.theartnewspaper.com/2024/01/12/indiana-university-cancels-palestinian-artist-samia-halaby-retrospective",
+   "https://en.wikipedia.org/wiki/Eskenazi_Museum_of_Art",
+   "https://www.democracynow.org/2024/1/17/headlines/indiana_university_cancels_exhibition_by_prominent_palestinian_artist_samia_halaby"
   ],
   "x": [
    [
@@ -13725,13 +13725,15 @@
  {
   "n": "Lincoln Center for the Performing Arts",
   "c": "New York, USA",
-  "t": "O",
+  "t": "F",
   "s": "L",
-  "f": "David Koch, of Koch Industries, paid to modernise the New York State Theater, which now carries his name as the David H. Koch Theater.",
-  "w": "Flags: Fossil fuels.",
+  "f": "Campus Fund supporters (June 2026) in the top Leader tier: Bloomberg Philanthropies, Kenneth Griffin and Citadel, American Express, JPMorganChase, Hearst. David Koch pledged $100M in 2008 for the theater.",
+  "w": "Flags: Fossil fuels, Campaigned name, Protest or boycott. Activists disrupted the Met Opera's Carmen on 21 November 2025, demanding Lincoln Center remove Koch names. Griffin was targeted at the Whitney, not here.",
   "u": [
+   "https://operawire.com/?p=105239",
+   "https://www.aol.com/news/trio-disrupts-nyc-met-opera-001833298.html",
+   "https://www.lincolncenter.org/campus-fund/our-supporters",
    "https://www.democracynow.org/2010/8/25/the_new_yorker___billionaire",
-   "https://www.artsjournal.org/?p=39426",
    "https://wikileaks.org/clinton-emails/emailid/29728"
   ],
   "x": [
@@ -13891,8 +13893,8 @@
   "c": "Kyiv, Ukraine",
   "t": "U",
   "s": "S",
-  "f": "Non-profit platform founded in 2010 in Donetsk. The EU's Creative Europe programme co-funds its ZMINA project with Trans Europe Halles and Malý Berlín. No current donor list is published.",
-  "w": "Russian-backed forces seized its Donetsk site in June 2014 and run a prison there. The foundation moved to Kyiv.",
+  "f": "Non-profit platform founded in 2010 in Donetsk. After 2014 most money came from unnamed international, EU and US grants. Creative Europe co-funds ZMINA with Trans Europe Halles and Malý Berlín.",
+  "w": "Russian-backed forces seized its Donetsk site in 2014 and run a prison there. It moved to Kyiv. Only 2011 and 2012 annual reports are posted.",
   "u": [
    "https://izolyatsia.org/en/foundation/",
    "https://izolyatsia.org/en/project/zmina-rebuilding/implementing-organizations/",
@@ -14049,14 +14051,14 @@
  {
   "n": "Bienal de Cuenca",
   "c": "Cuenca, Ecuador",
-  "t": "U",
+  "t": "A",
   "s": "S",
-  "f": "Run by the Fundación Municipal Bienal de Cuenca, a city body. The 17th edition cost about $1.2M, from municipal money, private-company agreements and self-raised funds. No sponsors are named.",
-  "w": "Founded 1986 as a painting biennial. In November 2025 it reported threats over one work, filed a complaint, and the work stays on view.",
+  "f": "Municipal foundation. The City of Cuenca gives about $500,000 per edition. The foundation's 2023 report names agreement partners: Prefectura del Azuay, Universidad de Cuenca, Plásticos Rival, Spanish and Italian embassies.",
+  "w": "In November 2025 a private group, DPOT, threatened the biennial over one work. It filed a complaint and kept the work on view.",
   "u": [
-   "https://elmercurio.com.ec/cuenca/2025/09/24/bienal-cuenca-inauguracion-curadores-2025/",
-   "https://elmercurio.com.ec/cuenca/2025/11/25/bienal-de-cuenca-denuncia-amenazas-intento-censura/",
-   "https://primicias.ec/noticias/entretenimiento/cultura/bienal-cuenca-puertas-abiertas-eventos-gratis"
+   "https://www.theartnewspaper.com/2025/12/16/bienal-de-cuenca-ecuador-17th-edition-review",
+   "https://drive.google.com/file/d/1qTQ4rA3EEDVIalyVAINaJj42SV1ylaBH/view?usp=sharing",
+   "https://elmercurio.com.ec/cuenca/2025/11/25/bienal-de-cuenca-denuncia-amenazas-intento-censura/"
   ],
   "e": false,
   "la": -2.897,
@@ -14099,7 +14101,7 @@
   "c": "Jakarta, Indonesia",
   "t": "U",
   "s": "S",
-  "f": "Run since 2024 by Majelis Jakarta, an artist-collective network. 2026 partners: Dulux, Artotel's Paviliun Raden Saleh, iForte. Jakarta culture office and Jakpro logos appear unlabelled; no budget published.",
+  "f": "Run since 2024 by Majelis Jakarta, an artist-collective network. 2026 partners: Dulux, Artotel's Paviliun Raden Saleh, iForte. Jakarta culture office and Jakpro logos are unlabelled; no budget published.",
   "w": "Founded 1974 by the Jakarta Arts Council. The 2026 edition, KEBAL, runs 4 Oct to 28 Nov at Taman Ismail Marzuki.",
   "u": [
    "https://jakartabiennale.id/partner/",
@@ -14668,7 +14670,7 @@
   "t": "U",
   "s": "S",
   "f": "Friends association (2015) funds shows and acquisitions via 1,800 NIS memberships and a 23,000 NIS patron tier. British Friends of the Art Museums of Israel back programmes. No budget published.",
-  "w": "Opened 1964. In 2014 the municipality called for Arkadi Zaides's video installation to close; accounts differ on whether the museum complied.",
+  "w": "In 2014 the municipality called on the museum to close Arkadi Zaides's Archive; the New York Review of Books reports the museum refused.",
   "u": [
    "https://www.petachtikvamuseum.com/en/?p=14242",
    "https://www.nybooks.com/online/2018/03/22/israels-war-on-culture/",
@@ -14715,12 +14717,12 @@
   "c": "East Jerusalem, Palestine",
   "t": "U",
   "s": "S",
-  "f": "A.M. Qattan Foundation announced a $171,153 grant in March 2018 under its Sida-funded visual arts programme. No donor list or budget is published.",
-  "w": "Founded 1998 by Jack Persekian in a former tile factory near the New Gate. Core partner of Qalandiya International from 2012.",
+  "f": "Its Donors page shows 27 logos, undated, including Sida, the EU, Norway's ministry, British Council, Ford Foundation, Open Society and DOEN. No budget or dated donor list is published.",
+  "w": "Core partner of Qalandiya International since 2012. Latest dated funding found: a $171,153 A.M. Qattan Foundation grant in March 2018, Sida-funded.",
   "u": [
+   "https://almamal.org/",
    "https://isc.qattanfoundation.org/en/in-qattan/news/amqf-concludes-first-round-%E2%80%9Cvisual-arts-flourishing-field%E2%80%9D-project-signing-4-grant",
-   "https://www.jerusalemstory.com/en/blog/al-mamal-foundation-contemporary-art-hub-palestinian-art-and-culture-heart-jerusalem",
-   "https://en.wikipedia.org/wiki/Al_Ma%27mal_Foundation_for_Contemporary_Art"
+   "https://www.jerusalemstory.com/en/blog/palestinian-artists-showcase-their-artwork-jerusalem-despite-political-muzzling-and-curtailed"
   ],
   "e": false,
   "la": 31.779,
@@ -14729,14 +14731,14 @@
  {
   "n": "Arab Image Foundation",
   "c": "Beirut, Lebanon",
-  "t": "U",
+  "t": "A",
   "s": "S",
-  "f": "Asks donors for multi-year unrestricted funds and says it had to invent self-sufficiency tactics. No funder list is published. Its US arm filed $58,859 in revenue for 2025.",
-  "w": "Founded 1997 by Fouad Elkoury, Samer Mohdad and Akram Zaatari. Vartan Avakian chairs the board; Rana Nasser Eddin is director.",
+  "f": "Its site lists funders: Stichting DOEN, Gerda Henkel Stiftung, Culture Resource (Mawred), FfAI, Hillman Family Foundations and UCLA Library. No amounts or annual report are published.",
+  "w": "Asks donors for multi-year unrestricted funds. Founded 1997 in Beirut. Vartan Avakian chairs the board.",
   "u": [
    "https://arabimagefoundation.org/about",
-   "https://en.wikipedia.org/wiki/Arab_Image_Foundation",
-   "https://projects.propublica.org/nonprofits/search?q=Arab+Image+Foundation"
+   "https://meap.library.ucla.edu/projects/photo-negatives-from-aif",
+   "https://en.wikipedia.org/wiki/Henry_Hillman"
   ],
   "e": false,
   "la": 33.897,
@@ -14875,8 +14877,8 @@
   "c": "Amman, Jordan",
   "t": "U",
   "s": "S",
-  "f": "Founded 2016 by Queen Rania; organised with Greater Amman Municipality. 2016 sponsors: Al Manaseer Group, Zain, Aramex, Al Markaziya. 2026: Sukhtian Foundation backs the student exhibition. No full sponsor list.",
-  "w": "The 2026 edition runs 2 to 17 October across Amman and, for the first time, Aqaba. Ithra Design Week runs a joint residency with it.",
+  "f": "Founded 2016 by Queen Rania. Its 2025/26 partners page names one strategic partner, Greater Amman Municipality; Sukhtian Foundation backs the 2026 student exhibition. No budget or sponsor list.",
+  "w": "2016 sponsors were Al Manaseer Group, Zain, Aramex and Al Markaziya. The 2026 edition runs 2 to 17 October across Amman and Aqaba.",
   "u": [
    "https://jordantimes.com/news/local/queen-rania-attends-amman-design-week-opening-reception",
    "https://www.e-flux.com/announcements/6788342/2026-edition",
@@ -15187,5 +15189,958 @@
   "e": false,
   "la": 42.876,
   "lo": 74.604
+ },
+ {
+  "n": "Centro de Arte La Estancia",
+  "c": "Caracas, Venezuela",
+  "t": "F",
+  "s": "S",
+  "f": "PDVSA, Venezuela's state oil company, runs the centre as its cultural arm. It still held shows in Caracas in June 2025. PDVSA remains under US blocking sanctions.",
+  "w": "Flags: Fossil fuels, Sanctions. General licence 52 (March 2026) permits some PDVSA dealings but leaves it listed. Its Maracaibo branch also runs shows.",
+  "u": [
+   "https://www.moneytimes.com.br/mesmo-em-crise-petroleira-venezuelana-segue-com-aulas-de-ioga-e-violao/",
+   "https://en.ultimasnoticias.com.ve/cultura/caracaos-magica-graficada-inaugura-este-sabado-en-pdvsa-la-estancia/",
+   "https://www.clearygottlieb.com/news-and-insights/publication-listing/ofac-issues-gl-52-further-loosening-sanctions-against-pdvsa"
+  ],
+  "e": false,
+  "la": 10.495,
+  "lo": -66.847
+ },
+ {
+  "n": "Lugar de la Memoria, la Tolerancia y la Inclusión Social (LUM)",
+  "c": "Lima, Peru",
+  "t": "O",
+  "s": "S",
+  "f": "Peru's Ministry of Culture pays the budget (S/ 1.84M in 2023). Small grants came from the Gerda Henkel and Ford foundations and the German, Spanish and French embassies.",
+  "w": "Flags: State censorship or punishment. The Culture Ministry removed director Manuel Burga in January 2025 without explanation and barred a Palestinian film in October 2026. Miraflores shut it in 2023.",
+  "u": [
+   "https://lum.cultura.pe/sites/default/files/publicaciones/PDF/memoria_institucional_2023_-_lum.pdf",
+   "https://www.infobae.com/peru/2025/01/09/lum-destitucion-de-su-director-paraliza-el-desarrollo-de-una-muestra-sobre-las-muertes-en-el-gobierno-de-dina-boluarte/",
+   "https://www.infobae.com/america/agencias/2026/10/10/la-prensa-cinematografica-de-peru-denuncia-censura-a-pelicula-de-director-palestino/"
+  ],
+  "e": false,
+  "la": -12.11,
+  "lo": -77.054
+ },
+ {
+  "n": "Museu do Amanhã",
+  "c": "Rio de Janeiro, Brazil",
+  "t": "F",
+  "s": "L",
+  "f": "Run by IDG with the City of Rio and Fundação Roberto Marinho. Itaú is strategic sponsor; Shell, Instituto Cultural Vale and Motiva are maintainers; IBM, TAG and Bloomberg also give.",
+  "w": "Flags: Fossil fuels, Mining disaster. Shell and Instituto Cultural Vale are named maintainers. Vale's Brumadinho dam collapse killed 270 in 2019. Over 8 million visitors in its first decade.",
+  "u": [
+   "https://museudoamanha.org.br/pt-br/apoiadores",
+   "https://folhadoleste.com.br/museu-do-amanha-10-anos-nova-exposicao/",
+   "https://en.wikipedia.org/wiki/Brumadinho_dam_disaster"
+  ],
+  "e": false,
+  "la": -22.894,
+  "lo": -43.179
+ },
+ {
+  "n": "Museo de la Memoria y los Derechos Humanos",
+  "c": "Santiago, Chile",
+  "t": "A",
+  "s": "S",
+  "f": "Government of Chile, through the national heritage service of the Ministry of Cultures: CLP 2.15 billion in 2024. A private foundation runs it. The 2024 report lists no corporate sponsor.",
+  "w": "176,846 visitors in 2024. Deputies voted down its funding in November 2022; the Senate restored it. A 3% cut hit all ministries in 2026.",
+  "u": [
+   "https://manager.mmdh.cl/uploads/Memoria_2024_Version_Final_247ce8d994.pdf",
+   "https://www.elmostrador.cl/destacado/2022/11/23/senado-revierte-negativa-de-la-camara-y-repone-recursos-para-instituciones-de-dd-hh-entre-ellas-el-museo-de-la-memoria/",
+   "https://www.theclinic.cl/2026/05/15/gobierno-kast-recorte-presupuesto-cultura-2026-teatro-a-mil-museo-memoria/"
+  ],
+  "e": false,
+  "la": -33.44,
+  "lo": -70.679
+ },
+ {
+  "n": "Museo Antropológico y de Arte Contemporáneo (MAAC)",
+  "c": "Guayaquil, Ecuador",
+  "t": "A",
+  "s": "L",
+  "f": "Ecuador's Culture vice-ministry (merged into Education in 2025) runs and funds it on a budget above USD 2.5M, and pays the city's Malecón 2000 foundation near USD 500,000 a year.",
+  "w": "Over 530,000 visits were counted by mid-2022. The state spent USD 451,000 on renovation in 2024 after a dispute with the city over upkeep.",
+  "u": [
+   "https://primicias.ec/noticias/guayaquil/crisis-maac-altas-alicuotas-municipio",
+   "https://www.primicias.ec/noticias/sociedad/maac-museos-manabi-necesitan-intervenciones-inmediatas-cultura-ecuador",
+   "https://kchcomunicacion.com/?p=129146"
+  ],
+  "e": false,
+  "la": -2.185,
+  "lo": -79.876
+ },
+ {
+  "n": "Museo de la Palabra y la Imagen (MUPI)",
+  "c": "San Salvador, El Salvador",
+  "t": "A",
+  "s": "S",
+  "f": "Private non-profit. AGIAMONDO and the Ford Foundation backed its 2026 archive move; gifts from citizens, the diaspora and firms repay the annexe mortgage. Its site lists no donors or budget.",
+  "w": "Founded in 1996 and marking 30 years. Its fund drive 'Un techo para la cultura' pays for the annexe that now holds the archive.",
+  "u": [
+   "https://www.elsalvador.com/?p=1258114",
+   "https://www.elsalvador.com/entretenimiento/cultura/el-mupi-lanza-campana-benefica-para-preservar-patrimonio-cultural-salvadoreno-en-un-espacio-renovado/1188289/2024/",
+   "https://www.contrapunto.com.sv/mupi-fortalece-escuelas-de-paz/"
+  ],
+  "e": false,
+  "la": 13.709,
+  "lo": -89.205
+ },
+ {
+  "n": "Kingston Creative",
+  "c": "Kingston, Jamaica",
+  "t": "A",
+  "s": "S",
+  "f": "Inter-American Development Bank (US$1.3M over three years), Bank of Jamaica, Digicel Foundation, Barita, Gore, National Bakery, PwC, the Clara Lionel Foundation and the Miami Foundation.",
+  "w": "Runs the Kingston Art District and Artwalk Festival; 118 murals painted. First Caribbean NGO to win a UNESCO-Aschberg grant, July 2026.",
+  "u": [
+   "https://jamaica-gleaner.com/article/business/20260201/kingston-creative-scales-montego-bay-murals-amid-wrapping-grants",
+   "https://www.jamaicaobserver.com/2026/07/22/kingston-creative-becomes-first-caribbean-recipient-unesco-aschberg-grant/",
+   "https://kingstoncreative.org/wp-content/uploads/2024/11/Kingston-Creative-annual-report-2023.pdf"
+  ],
+  "e": false,
+  "la": 17.973,
+  "lo": -76.792
+ },
+ {
+  "n": "Beta-Local",
+  "c": "San Juan, Puerto Rico",
+  "t": "A",
+  "s": "S",
+  "f": "Mellon Foundation ($230,000, 2019); Andy Warhol Foundation ($100,000 in 2017, $100,000 in 2018, 2026 regrants); Rauschenberg Foundation and Lin-Manuel Miranda ($100,000 each, 2017); Flamboyan Arts Fund (2019).",
+  "w": "Artist-run space in Old San Juan. After Hurricane Maria it distributed over $400,000 to artists and cultural workers.",
+  "u": [
+   "https://www.mellon.org/grant-details/beta-local-inc.-20445968",
+   "https://warholfoundation.org/grants/archive/beta-local/",
+   "https://hyperallergic.com/407760/in-puerto-rico-a-dedicated-arts-community-commits-to-hurricane-relief/"
+  ],
+  "e": false,
+  "la": 18.466,
+  "lo": -66.116
+ },
+ {
+  "n": "Barbados Museum and Historical Society",
+  "c": "Bridgetown, Barbados",
+  "t": "A",
+  "s": "S",
+  "f": "Annual Government of Barbados grant, plus memberships, gate takings, shop sales, ground rentals and consulting fees. The government appoints five of its 14 council members.",
+  "w": "Incorporated in 1933 and opened in 1934 in a former British military prison at the Garrison, a UNESCO World Heritage Site.",
+  "u": [
+   "https://visitbarbados.org/barbados-museum",
+   "https://barbmuse.org.bb/About/History"
+  ],
+  "e": false,
+  "la": 13.083,
+  "lo": -59.602
+ },
+ {
+  "n": "Bocas Lit Fest",
+  "c": "Port of Spain, Trinidad and Tobago",
+  "t": "O",
+  "s": "S",
+  "f": "NGC, the state National Gas Company, was title sponsor through 2024. 2026 main sponsors: Ministry of Culture, JB Fernandes Trust, OCM; Massy and ANSA McAL foundations and Methanex also support.",
+  "w": "Flags: Fossil fuels. NGC part-funded 2024 and gave nothing in 2025; its name left the festival title that year. The festival was founded in 2011.",
+  "u": [
+   "https://www.bocaslitfest.com/?p=15480",
+   "https://en.wikipedia.org/wiki/NGC_Bocas_Lit_Fest",
+   "https://www.bocaslitfest.com/2026/03/25/all-together-now-at-2026-bocas-lit-fest/"
+  ],
+  "e": false,
+  "la": 10.652,
+  "lo": -61.512
+ },
+ {
+  "n": "Museo Soumaya",
+  "c": "Mexico City, Mexico",
+  "t": "B",
+  "s": "L",
+  "f": "Owned and paid for by Fundación Carlos Slim; entry is free at both sites. The museum site names no outside sponsors.",
+  "w": "Name to know: Carlos Slim. Mexico's regulator ruled América Móvil's units dominant in 2014. His CICSA agreed to repair Metro Line 12 after 26 deaths.",
+  "u": [
+   "https://en.wikipedia.org/wiki/Museo_Soumaya",
+   "https://telecomtv.com/content/tracker/am-rica-m-vil-informs-about-a-resolution-of-the-instituto-federal-de-telecomunicaciones-25955",
+   "https://www.bloomberglinea.com/2021/10/21/cicsa-de-slim-se-deslinda-de-responsabilidades-por-el-colapso-de-la-linea-12/"
+  ],
+  "e": false,
+  "la": 19.441,
+  "lo": -99.205
+ },
+ {
+  "n": "Centro Cultural de la República El Cabildo",
+  "c": "Asunción, Paraguay",
+  "t": "A",
+  "s": "S",
+  "f": "Cultural arm of Paraguay's National Congress, paid from the congressional budget (a G. 1.88 billion extension for a new building in 2025). Entry to the ground-floor rooms is free.",
+  "w": "Shows mid-20th-century to present Paraguayan art, including Olga Blinder and Livio Abramo. A December 2020 fire hit the newer block; the heritage building was safe.",
+  "u": [
+   "https://www.lanacion.com.py/politica_edicion_impresa/2025/08/01/construiran-nuevo-bloque-cultural-con-una-ampliacion-presupuestaria/",
+   "https://www.ultimahora.com/obras-destacados-artistas-nacionales-reune-el-cabildo-n2926736",
+   "https://www.ultimahora.com/edificio-patrimonial-el-cabildo-no-se-vio-afectado-el-incendio-n2920150"
+  ],
+  "e": false,
+  "la": -25.28,
+  "lo": -57.634
+ },
+ {
+  "n": "Museo de Arte Moderno de Santo Domingo",
+  "c": "Santo Domingo, Dominican Republic",
+  "t": "O",
+  "s": "S",
+  "f": "State museum run by the Dominican Ministry of Culture on the Plaza de la Cultura; its director sits on the ministry's Bienal Nacional commission.",
+  "w": "Flags: Protest or boycott. After a December 2019 protest, artists' open letters in 2020 and 2021 blamed the ministry, the museum and its directors for the Bienal's delays.",
+  "u": [
+   "https://elnuevodiario.com.do/artistas-califican-de-negligencia-la-no-celebracion-de-la-bienal-nacional-de-artes-visuales/",
+   "https://www.diariolibre.com/revista/cultura/mas-de-60-artistas-denuncian-deficiente-manejo-de-29-bienal-de-artes-visuales-ED27063986",
+   "https://eldia.com.do/cultura-juramenta-miembros-comision-bienal-de-artes-visuales/"
+  ],
+  "e": false,
+  "la": 18.472,
+  "lo": -69.91
+ },
+ {
+  "n": "Festival Internacional Cervantino",
+  "c": "Guanajuato, Mexico",
+  "t": "B",
+  "s": "S",
+  "f": "2023 budget 168.8M pesos: federal culture ministry 65.3M, Guanajuato 36M, guest country and state 42M, embassies 10.2M, sponsors 15.4M. Sponsors include Yamaha, Mazda, Megacable, HONOR and the FEMSA group.",
+  "w": "Name to know: Coca-Cola FEMSA, a named sponsor. Chiapas groups have sought to revoke its water permit since 2017; no campaign targets the festival.",
+  "u": [
+   "https://festivalcervantino.gob.mx/upload/prensa/071123_la-edicion-51-del-festival-internacional-cervantino-congrego-a-miles-de-asistentes-en-su-mas-reciente-edicion.pdf",
+   "https://53.festivalcervantino.gob.mx/patrocinadores/?lan=en",
+   "https://www.business-humanrights.org/en/latest-news/mexico-ngos-academics-protest-against-coca-cola-femsa-bottling-plant-citing-water-scarcity-health-impacts-of-soft-drinks-in-chiapas/"
+  ],
+  "e": false,
+  "la": 21.015,
+  "lo": -101.253
+ },
+ {
+  "n": "Espacio Cultural Patiño",
+  "c": "La Paz, Bolivia",
+  "t": "A",
+  "s": "S",
+  "f": "Financed by the Patiño foundations: the Bolivian university foundation Simón I. Patiño created in 1931 and the Geneva foundation his heirs set up in 1958. No outside sponsor is listed.",
+  "w": "Opened 1984; one of three Patiño centres. La Paz bought two neighbouring houses and opened new galleries in 2018; over 35,000 visitors a year.",
+  "u": [
+   "https://fundacionpatino.org/quienes-somos/",
+   "https://patino.org/en/places/espacio-simon-i-patino-a-la-paz/",
+   "https://www.lostiempos.com/node/441912"
+  ],
+  "e": false,
+  "la": -16.51,
+  "lo": -68.129
+ },
+ {
+  "n": "Museo de Arte Contemporáneo de Caracas",
+  "c": "Caracas, Venezuela",
+  "t": "O",
+  "s": "S",
+  "f": "Venezuelan public museum, under the state's Fundación Museos Nacionales since 2005, with the Ministry of Culture overseeing it. No private sponsor found.",
+  "w": "Flags: State censorship or punishment. Chávez dismissed founder Sofía Ímber on air in January 2001. A January 2006 Culture Ministry notice dropped her name from the museum.",
+  "u": [
+   "https://elestimulo.com/cultura/2021-12-20/museo-de-arte-contemporaneo-toda-la-verdad-sobre-su-cierre-caracas/",
+   "https://es.wikipedia.org/wiki/Museo_de_Arte_Contempor%C3%A1neo_de_Caracas",
+   "https://letralia.com/noticias/2017/02/20/sofia-imber-murio-a-los-92-anos/"
+  ],
+  "e": false,
+  "la": 10.499,
+  "lo": -66.9
+ },
+ {
+  "n": "Mémorial ACTe",
+  "c": "Pointe-à-Pitre, Guadeloupe",
+  "t": "B",
+  "s": "S",
+  "f": "Public cultural body since 2019 joining the French state, Région Guadeloupe, the Département, Cap Excellence and Pointe-à-Pitre. The Région's then-president launched the €83M building.",
+  "w": "The regional audit court found serious irregularities in 2023. In April 2024 the financial prosecutor searched the Région's offices over the Mémorial's contracts.",
+  "u": [
+   "https://rci.fm/guadeloupe/infos/Societe/Les-graves-derives-du-Memorial-ACTe-pointees-par-la-Chambre-Regionale-des-Comptes",
+   "https://rci.fm/guadeloupe/infos/Justice/MACTe-des-perquisitions-ont-eu-lieu-au-conseil-regional",
+   "https://rci.fm/guadeloupe/infos/Societe/Le-Memorial-Acte-10-ans-une-decennie-despoirs-et-de-polemiques"
+  ],
+  "e": false,
+  "la": 16.232,
+  "lo": -61.534
+ },
+ {
+  "n": "Gallerie d'Italia",
+  "c": "Milan, Italy",
+  "t": "O",
+  "s": "L",
+  "f": "Owned and funded by Intesa Sanpaolo through its Progetto Cultura. Four museums in Milan, Naples, Turin and Vicenza drew over 750,000 visitors in 2024. No museum budget is published.",
+  "w": "Flags: Protest or boycott. About 30 Extinction Rebellion activists occupied the Turin site on 2 March 2025 over owner Intesa Sanpaolo's investments. One institution, four sites.",
+  "u": [
+   "https://www.lapresse.it/ambiente/2025/03/02/torino-attivisti-di-extinction-rebellion-occupano-sala-in-gallerie-ditalia/",
+   "https://group.intesasanpaolo.com/it/newsroom/tutte-le-news/news/2024/gallerie-d-italia-750mila-visitatori"
+  ],
+  "e": false,
+  "la": 45.467,
+  "lo": 9.191
+ },
+ {
+  "n": "Fondazione Palazzo Strozzi",
+  "c": "Florence, Italy",
+  "t": "O",
+  "s": "S",
+  "f": "2025 income EUR 11.7M. Fondazione CR Firenze gave 1.1M, the Partners Committee 928k, the Recordati foundation 600k, Intesa Sanpaolo 464k. City, Region and Metropolitan City gave 500k each.",
+  "w": "Flags: Fossil fuels. Enegan, a Florence retailer of gas and power, is a Partner and has supplied the Fondazione's renewable electricity since 2021. Visitors in 2025: 384,176.",
+  "u": [
+   "https://www.palazzostrozzi.org/wp-content/uploads/2026/06/Annual-Report-Integrato_2025_Fondazione-Palazzo-Strozzi_web.pdf",
+   "https://www.palazzostrozzi.org/en/partner-palazzo-strozzi/",
+   "https://www.enegan.it"
+  ],
+  "e": false,
+  "la": 43.771,
+  "lo": 11.252
+ },
+ {
+  "n": "Palazzo Grassi and Punta della Dogana",
+  "c": "Venice, Italy",
+  "t": "B",
+  "s": "S",
+  "f": "Private. Pinault bought Palazzo Grassi in 2005 (EUR 29M). The City of Venice owns Punta della Dogana; he holds it on a 33-year agreement and paid its EUR 20M restoration.",
+  "w": "Bottega Veneta, a Kering house, solely backs the 2026 Lorna Simpson show. Kering paid EUR 1.25bn in 2019 to settle an Italian tax case.",
+  "u": [
+   "https://www.pinaultcollection.com/palazzograssi/en",
+   "https://en.wikipedia.org/wiki/Punta_della_Dogana",
+   "https://www.swissinfo.ch/eng/business/swiss-subsidiary_gucci-parent-kering-agrees-huge-settlement-over-italian-taxes/44953028"
+  ],
+  "e": false,
+  "la": 45.434,
+  "lo": 12.328
+ },
+ {
+  "n": "Triennale Milano",
+  "c": "Milan, Italy",
+  "t": "O",
+  "s": "L",
+  "f": "2022 revenue EUR 11.4M: Ministry of Culture 2.9M, other public grants 5.3M, tickets 2.1M. Eni was an institutional partner and Main Partner of the 23rd Exhibition, with Lavazza.",
+  "w": "Flags: Fossil fuels. 661,234 visitors in 2022. Eni was also Main Sponsor of Progetto Genesi at Triennale in 2023, run by Associazione Genesi.",
+  "u": [
+   "https://documenti.camera.it/_dati/leg19/lavori/documentiparlamentari/indiceetesti/015/322/INTERO.pdf",
+   "https://www.banor.it/wp-content/uploads/2023/02/20230131_it.advfn_.com_.pdf"
+  ],
+  "e": false,
+  "la": 45.472,
+  "lo": 9.174
+ },
+ {
+  "n": "Galleria Nazionale d'Arte Moderna e Contemporanea",
+  "c": "Rome, Italy",
+  "t": "B",
+  "s": "S",
+  "f": "Ministry of Culture state museum. The ministry paid EUR 1.5M for its 2024-25 Futurism show. Main sponsors were Autostrade per l'Italia and Enel; Ferrovie dello Stato and Unipol also sponsored.",
+  "w": "Enel made 82% of its 2025 power emission-free but runs gas plants. Autostrade per l'Italia held the Genoa bridge concession when it fell in 2018.",
+  "u": [
+   "https://www.finestresullarte.info/mostre/galleria-nazionale-roma-mostra-il-tempo-del-futurismo",
+   "https://www.emarketstorage.it/sites/default/files/comunicati/2026-03/20260319_179331.pdf",
+   "https://en.wikipedia.org/wiki/Autostrade_per_l%27Italia"
+  ],
+  "e": false,
+  "la": 41.917,
+  "lo": 12.482
+ },
+ {
+  "n": "Museo Nacional Thyssen-Bornemisza",
+  "c": "Madrid, Spain",
+  "t": "O",
+  "s": "L",
+  "f": "2024 income EUR 33.2M: subsidies 19.7M, tickets 5.5M, sponsors 688k. Listed sponsors: JTI, Fundación Mutua Madrileña, Mastercard, Uber, Comunidad de Madrid. JTI gave EUR 59,328 for the 2024 Quintanilla show.",
+  "w": "Flags: Tobacco. JTI has sponsored Thyssen shows since 2014 and is on the current sponsors page. Fundación Iberdrola, ACS and Bankinter also sponsor.",
+  "u": [
+   "https://www.museothyssen.org/en/support/sponsors-and-contributors",
+   "https://www.museothyssen.org/en/support/sponsors-and-contributors/jti",
+   "https://www.museothyssen.org/sites/default/files/document/2026-03/cuentas_anuales_2024-es.pdf"
+  ],
+  "e": false,
+  "la": 40.416,
+  "lo": -3.695
+ },
+ {
+  "n": "CaixaForum Madrid",
+  "c": "Madrid, Spain",
+  "t": "B",
+  "s": "L",
+  "f": "Fundación la Caixa, paid by dividends from its holding Criteria; 2025 budget EUR 655M, about 130M for culture and science. CaixaForum Madrid had 947,642 visitors in 2024.",
+  "w": "Gas utility Naturgy paid Criteria EUR 434M of its EUR 1,883M dividends in 2025. No source names Naturgy as a CaixaForum sponsor.",
+  "u": [
+   "https://mediahub.fundacionlacaixa.org/en/culture/exhibitions/2025-01-02/visitors-2024-exhibitions-activities-caixaforum-cosmocaixa-6697.html",
+   "https://www.diaridetarragona.com/economia/223484/la-fundacion-la-caixa-alcanza-un-presupuesto-historico-de-655-millones-de-euros-en-2025-fd23024405.html",
+   "https://www.bolsamania.com/noticias/empresas/economia--criteriacaixa-gana-2325-millones-en-2025-mas-del-doble-que-en-2024-y-nombra-ceo-a-jose-maria-mendez--22141460.html"
+  ],
+  "e": false,
+  "la": 40.411,
+  "lo": -3.694
+ },
+ {
+  "n": "Centro Botín",
+  "c": "Santander, Spain",
+  "t": "O",
+  "s": "S",
+  "f": "Run by Fundación Botín. Patrons: Fundación Mutua Madrileña, Fundación Prosegur, Roche España and two public tourism bodies. Strategic sponsors: Fundación EDP, Plenitude (Eni) and CESINE.",
+  "w": "Flags: Fossil fuels. Plenitude, controlled by Eni, sells gas and power in Spain from Santander. Fundación EDP is also a strategic sponsor. No protest found.",
+  "u": [
+   "https://www.centrobotin.org/en/the-centro-botin/patrocinios-y-colaboradores/current-sponsors/",
+   "https://eniplenitude.es/",
+   "https://en.wikipedia.org/wiki/Eni_Plenitude"
+  ],
+  "e": false,
+  "la": 43.46,
+  "lo": -3.804
+ },
+ {
+  "n": "IVAM Institut Valencià d'Art Modern",
+  "c": "Valencia, Spain",
+  "t": "O",
+  "s": "S",
+  "f": "Run by the Generalitat Valenciana's culture department; no operating budget found. 202,258 visitors in 2025. It bought 16 works by 14 women artists for about EUR 1M.",
+  "w": "Flags: State censorship or punishment. Director Enguita resigned in February 2024 after the Vox-led culture department, which funds IVAM, reported her land donation to prosecutors. They archived it in March.",
+  "u": [
+   "https://es.ara.cat/cultura/arte/dimite-directora-ivam-nuria-enguita_1_4945508.amp.html",
+   "https://valenciaplaza.com/fiscalia-archiva-la-denuncia-por-la-donacion-de-unos-terrenos-de-la-exdirectora-del-ivam-a-todoli-citrus",
+   "https://valencianews.es/cultura/el-ivam-cierra-2025-con-13-exposiciones-y-mas-de-200-000-visitantes/"
+  ],
+  "e": false,
+  "la": 39.48,
+  "lo": -0.383
+ },
+ {
+  "n": "Calouste Gulbenkian Foundation",
+  "c": "Lisbon, Portugal",
+  "t": "O",
+  "s": "L",
+  "f": "Private foundation endowed by oilman Calouste Gulbenkian's fortune; assets EUR 4.0bn at end 2025. It owned oil firm Partex until selling it to PTTEP in November 2019.",
+  "w": "Flags: Fossil fuels. Partex was about 18% of its investments. Ten protesters entered a Foundation conference in March 2016 and cited its ownership of Partex.",
+  "u": [
+   "https://cdn.gulbenkian.pt/wp-content/uploads/2026/05/FCG_Relatorio-e-Contas-2025.pdf",
+   "https://observador.pt/2019/11/04/fundacao-calouste-gulbenkian-conclui-venda-da-partex-aos-tailandeses-por-cerca-de-555-me/",
+   "https://algarvedailynews.com/news/8249-oil-protest-spreads-to-lisbon-as-gulbenkian-conference-is-invaded"
+  ],
+  "e": false,
+  "la": 38.737,
+  "lo": -9.155
+ },
+ {
+  "n": "MAC/CCB Museu de Arte Contemporânea do Centro Cultural de Belém",
+  "c": "Lisbon, Portugal",
+  "t": "F",
+  "s": "L",
+  "f": "Run by Fundação CCB, whose bodies the Culture and Finance ministers appoint. The State Budget gives about EUR 10.5M; the 2025 subsidy was unchanged. MAC/CCB had 588,643 visitors in 2024.",
+  "w": "Flags: State censorship or punishment, Protest or boycott. The Culture Minister removed CCB president Francisca Carneiro Fernandes in November 2024. A petition drew 2,000+ signatures; in 2026 the State admitted no grounds.",
+  "u": [
+   "https://observador.pt/2026/07/20/estado-reconhece-que-nao-havia-fundamento-para-exoneracao-da-ex-presidente-do-ccb/",
+   "https://observador.pt/2026/04/15/ccb-quer-novos-publicos-e-mais-receitas-proprias-com-plano-estrategico-ate-2030/",
+   "https://www.sabado.pt/gps/detalhe/museu-de-arte-contemporanea-do-ccb-com-aumento-de-225-de-visitantes-em-2024"
+  ],
+  "e": false,
+  "la": 38.695,
+  "lo": -9.209
+ },
+ {
+  "n": "Onassis Stegi",
+  "c": "Athens, Greece",
+  "t": "B",
+  "s": "S",
+  "f": "Run by the Alexander S. Onassis Foundation, funded entirely by profits of its Business Foundation, which invests in shipping and real estate. Corporate sponsors exist; no budget is published.",
+  "w": "Onassis built his fortune on tankers chartered to oil majors: no flag. Teachers stopped work in February 2025 against the Foundation's Onassis Public Schools.",
+  "u": [
+   "https://en.wikipedia.org/wiki/Alexander_S._Onassis_Foundation",
+   "https://en.wikipedia.org/wiki/Aristotle_Onassis",
+   "https://www.tovima.com/society/teachers-to-stage-work-stoppage-to-protest-onassis-schools/"
+  ],
+  "e": false,
+  "la": 37.958,
+  "lo": 23.719
+ },
+ {
+  "n": "DESTE Foundation for Contemporary Art",
+  "c": "Athens, Greece",
+  "t": "U",
+  "s": "S",
+  "f": "Private foundation set up in Geneva in 1983 by collector Dakis Joannou, a construction and hotel businessman. No sponsor list, donor list or budget is published.",
+  "w": "Runs the Athens space and the Slaughterhouse Project Space on Hydra, granted by the island's municipality in 2008. NEON belongs to Daskalopoulos, not Joannou.",
+  "u": [
+   "https://deste.gr/about",
+   "https://deste.gr/hydra/",
+   "https://en.wikipedia.org/wiki/Dakis_Joannou"
+  ],
+  "e": false,
+  "la": 38.04,
+  "lo": 23.76
+ },
+ {
+  "n": "Nicosia Municipal Arts Centre (NiMAC)",
+  "c": "Nicosia, Cyprus",
+  "t": "O",
+  "s": "S",
+  "f": "Nicosia Municipality and the Pierides Foundation run it under a cooperation agreement. Shows credit the Deputy Ministry of Culture, A.G. Leventis Foundation and European University Cyprus. No budget is published.",
+  "w": "Flags: Protest or boycott. A 2026 show with Emin Cizenel, who designed the north's flag, drew a small protest and a deputy mayor's call to cancel. No cancellation reported.",
+  "u": [
+   "https://nimac.org.cy/fluid-persistence/",
+   "https://www.nicosia.org.cy/en-GB/discover/picture-galleries/nicosia-municipal-arts-centre",
+   "https://cyprus-mail.com/2026/08/01/why-nicosia-exhibition-caused-an-uproar"
+  ],
+  "e": false,
+  "la": 35.174,
+  "lo": 33.367
+ },
+ {
+  "n": "MICAS Malta International Contemporary Art Space",
+  "c": "Floriana, Malta",
+  "t": "B",
+  "s": "S",
+  "f": "A EUR 30M project funded by the Maltese state and the European Regional Development Fund; the gallery works were co-financed 80% EU, 20% national. No sponsors are named.",
+  "w": "A EUR 0.5M Rondinone sculpture was bought with no public call via board member Francis Sultana, who sells Rondinone. The minister denies a conflict.",
+  "u": [
+   "https://micas.art/press-release-by-the-ministry-for-the-national-heritage-the-arts-and-local-government-and-the-parliamentary-secretariat-for-european-funds-restoration-and-construction-works-underway-for-the-micas-g/",
+   "https://apollo-magazine.com/micas-malta-contemporary-art-joana-vasconcelos/",
+   "https://theshiftnews.com/2024/01/13/sculpture-acquired-for-e0-5-million-bought-from-micas-directors-client/"
+  ],
+  "e": false,
+  "la": 35.894,
+  "lo": 14.501
+ },
+ {
+  "n": "Sónar Festival",
+  "c": "Barcelona, Spain",
+  "t": "O",
+  "s": "S",
+  "f": "Owned by Superstruct Entertainment, which KKR acquired in 2024. Its site shows the Generalitat, Estrella Damm and drinks brands. Sónar says it sends KKR no money. No budget found.",
+  "w": "Flags: Protest or boycott. In June 2025 at least 34 acts, including Arca and Rone, withdrew over KKR's Israel investments and its stake in Sónar's owner.",
+  "u": [
+   "https://www.catalannews.com/culture/item/arca-and-rone-x-lahorde-cancel-sonar-show-over-ties-to-israeli-investment-fund",
+   "https://sonar.es/en",
+   "https://mixmag.net/read/sónar-founders-cut-ties-festival-amid-controversy-over-superstruct-kkr-ownership-news"
+  ],
+  "e": false,
+  "la": 41.371,
+  "lo": 2.152
+ },
+ {
+  "n": "National Gallery - Alexandros Soutzos Museum",
+  "c": "Athens, Greece",
+  "t": "O",
+  "s": "S",
+  "f": "Greek state museum. The ministry assured EUR 42M of the EUR 59M expansion (2021). The Stavros Niarchos Foundation gave EUR 13M in 2017.",
+  "w": "Flags: Protest or boycott. March 2025: MP Nikos Papadopoulos damaged four works he called blasphemous. September: 400 believers sought a court ban on the show; refused.",
+  "u": [
+   "https://www.tovima.com/politics/greek-mp-nikos-papadopoulos-censured-for-vandalizing-art-exhibition/",
+   "https://www.protothema.gr/culture/article/1697981/ethniki-pinakothiki-aporrifthikan-ta-asfalistika-metra-gia-tin-apagoreusi-tis-ekthesis-i-sagini-tou-allokotou/",
+   "https://theartnewspaper.com/news/greece-s-revamped-national-gallery-hosts-independence-celebrations"
+  ],
+  "e": false,
+  "la": 37.976,
+  "lo": 23.749
+ },
+ {
+  "n": "Kampala Art Biennale",
+  "c": "Kampala, Uganda",
+  "t": "A",
+  "s": "S",
+  "f": "Produced by Kampala Arts Trust and Afriart Gallery. KAB20 (2020) was co-funded by the EU and Pro Helvetia. TotalEnergies Foundation backed the 2018 mentoring programme; no later TotalEnergies money found.",
+  "w": "Founded in 2014 by Daudi Karungi. No edition since the virtual KAB20 in 2020; the site is now an archive.",
+  "u": [
+   "https://kampalabiennale.org/about-us/",
+   "https://fondation.totalenergies.com/en/our-actions/our-cultural-dialogue-and-heritage-actions/supporting-young-african-artists-kampala",
+   "https://www.eeas.europa.eu/delegations/uganda/eu-delegation-supports-innovative-edition-kampala-art-biennale_und_th"
+  ],
+  "e": false,
+  "la": 0.344,
+  "lo": 32.593
+ },
+ {
+  "n": "Addis Foto Fest",
+  "c": "Addis Ababa, Ethiopia",
+  "t": "U",
+  "s": "S",
+  "f": "Produced by Desta for Africa, directed by Aida Muluneh. The last sponsor list is from 2018: Swiss Embassy, Canon, National Geographic Society, Marriott and others. None published since.",
+  "w": "Founded 2010. The fifth edition opened 6 December 2018. A sixth was announced for December 2020; no edition since is documented.",
+  "u": [
+   "https://www.thereporterethiopia.com/6887/",
+   "https://addisfotofest.com/",
+   "https://www.nukustudio.org/news/call-addis-foto-fest-2020"
+  ],
+  "e": false,
+  "la": 9.021,
+  "lo": 38.76
+ },
+ {
+  "n": "Rwanda Art Museum",
+  "c": "Kigali, Rwanda",
+  "t": "A",
+  "s": "S",
+  "f": "Owned and run by the Rwanda Cultural Heritage Academy, the government body that runs Rwanda's national museums. It charges entry fees; no sponsors are listed.",
+  "w": "Opened in 2009 in the former presidential palace at Kanombe and renamed the Rwanda Art Museum in 2018.",
+  "u": [
+   "https://en.wikipedia.org/wiki/Rwanda_Art_Museum",
+   "https://www.rwandaheritage.gov.rw/en/visit-national-museums",
+   "https://www.ktpress.rw/2018/05/presidential-palace-museum-changes-to-art-museum/"
+  ],
+  "e": false,
+  "la": -1.975,
+  "lo": 30.173
+ },
+ {
+  "n": "Inema Arts Center",
+  "c": "Kigali, Rwanda",
+  "t": "U",
+  "s": "S",
+  "f": "Artist-run centre founded in 2012 by painter brothers Innocent Nkurunziza and Emmanuel Nkuranga. It runs a gallery, classes, tours, memberships and a café; no funders or sponsors are named.",
+  "w": "Ten resident-artist slots at KG 563 St, Kacyiru. A funder list is not published.",
+  "u": [
+   "https://inemaartcenter.com/about",
+   "https://en.wikipedia.org/wiki/Inema_Arts_Center"
+  ],
+  "e": false,
+  "la": -1.944,
+  "lo": 30.091
+ },
+ {
+  "n": "Fondation H",
+  "c": "Antananarivo, Madagascar",
+  "t": "B",
+  "s": "S",
+  "f": "Funded privately by founder Hassanein Hiridjee, Axian's chief executive, who chairs it. Partners: Air France, Cité internationale des arts, Ravinala Airports, Fondation Axian, Interreg Océan Indien.",
+  "w": "Name to know: founder's Axian group. Axian Energy (USD 510M, 18.5% of USD 2.75bn in 2024, with solar and hydro) runs 135 Jovena and Eydon fuel stations; telecom leads.",
+  "u": [
+   "http://www.artnewspaper.fr/2023/06/23/nouveau-lieu-pour-la-fondation-h-a-antananarivo",
+   "https://offshoreleaks.icij.org/nodes/12208957",
+   "https://www.axian-group.com/en/investors/"
+  ],
+  "e": false,
+  "la": -18.908,
+  "lo": 47.525
+ },
+ {
+  "n": "The Muse Multi Studios",
+  "c": "Khartoum, Sudan",
+  "t": "A",
+  "s": "S",
+  "f": "Won Culture Resource's Abbara Program grant (round 7, 2022). The Australian Government and Creative Australia support its Qubit fellowship (2026). The Spanish Embassy is a named partner.",
+  "w": "Opened Muse Gallery in Khartoum in 2022; since the April 2023 war it works between Sudan and Egypt and runs the Sudan Art Archive.",
+  "u": [
+   "https://musesd.com/about/",
+   "https://musesd.com/the-muse-x-qubit-new-partnership-between-sudan-and-australia",
+   "https://www.okayafrica.com/reem-aljeally-is-leading-sudans-burgeoning-art-scene/190468"
+  ],
+  "e": false,
+  "la": 15.564,
+  "lo": 32.535
+ },
+ {
+  "n": "Institute of Contemporary Art Indian Ocean (ICAIO)",
+  "c": "Port Louis, Mauritius",
+  "t": "U",
+  "s": "S",
+  "f": "Founded in 2015 by Salim Currimjee, a painter, architect and collector. No funder or sponsor list is published.",
+  "w": "Exhibitions change each quarter, showing Mauritian, Indian and South African artists, at 51 Sir Seewoosagur Ramgoolam Street, Port Louis.",
+  "u": [
+   "https://www.lonelyplanet.fr/poi/ile-maurice-et-rodrigues-portlouisetsesenviromauricecg-icaio",
+   "https://mcmullenmuseum.bc.edu/ioc/"
+  ],
+  "e": false,
+  "la": -20.164,
+  "lo": 57.505
+ },
+ {
+  "n": "Nhaka Gallery (formerly Gallery Delta)",
+  "c": "Harare, Zimbabwe",
+  "t": "U",
+  "s": "S",
+  "f": "Operates under the Women's Gallery Arts and Research Trust. Its March 2023 show had support from the Swiss and Australian embassies and UN Women. No funder list is published.",
+  "w": "Gallery Delta was founded in 1975 by Derek Huggins and Helen Lieros, who died in 2021; Nhaka presents itself as continuing that legacy.",
+  "u": [
+   "https://www.greedysouth.co.zw/2023/03/nhaka-gallery-honours-women-with-power.html?m=1",
+   "https://www.wits.ac.za/news/latest-news/opinion/2021/2021-07/building-an-art-gallery-in-the-midst-of-war-in-zimbabwe.html"
+  ],
+  "e": false,
+  "la": -17.802,
+  "lo": 31.038
+ },
+ {
+  "n": "Lusaka Contemporary Art Centre (LuCAC)",
+  "c": "Lusaka, Zambia",
+  "t": "A",
+  "s": "S",
+  "f": "Founder Victor Mutelekesha's household paid for the building. Pro Helvetia paid for shelving; OCA, a Norwegian arts body, part-financed the 2023 opening show; the late artist Jan Groth donated.",
+  "w": "Opened 6 January 2023 in New Chamba Valley with a gallery, library and artist residency; first show Prospice, Kwacha!",
+  "u": [
+   "https://stg.nkwazimagazine.com/prospice-kwacha-lusaka-contemporary-art-centre-has-risen/",
+   "https://artdependence.com/articles/victor-mutelekesha-launches-the-lusaka-contemporary-art-center-in-zambia",
+   "https://kunstkritikk.com/?p=168927"
+  ],
+  "e": false,
+  "la": -15.361,
+  "lo": 28.361
+ },
+ {
+  "n": "Associação Núcleo de Arte",
+  "c": "Maputo, Mozambique",
+  "t": "U",
+  "s": "S",
+  "f": "Artists' association with over 100 members. State funding ended in the civil war; a late-1990s profile names Hivos as donor. No current funder list is published.",
+  "w": "Official foundation 1948; reopened in 1993 by young artists. Maputo's council and the CTA led a 2021 mural project with 40 of its members.",
+  "u": [
+   "https://www.africaserver.nl/nucleo/eng/main.htm",
+   "https://forbesafricalusofona.com/40-artistas-plasticos-mocambicanos-juntam-forcas-e-erguem-galeria-de-arte-ao-ar-livre/",
+   "https://globalnyt.dk/ugens-tre-kunstnerfaellesskaber"
+  ],
+  "e": false,
+  "la": -25.969,
+  "lo": 32.573
+ },
+ {
+  "n": "Nesr Art Foundation",
+  "c": "Luanda, Angola",
+  "t": "A",
+  "s": "S",
+  "f": "Funded by Wissam and Hiba Nesr. Wissam is chief executive of Webcor Group, a Swiss-based food importer and distributor with most African revenue in Angola. No outside funders named.",
+  "w": "Opened in 2021 with a residency for Angolan and Lusophone African artists; the artistic committee is chaired by Paula Nascimento.",
+  "u": [
+   "http://www.theartnewspaper.com/2021/10/29/major-art-space-and-residency-programme-opens-in-luanda-angola",
+   "https://waau-art.com/highlights/foundation-in-focus-the-nesr-art-foundation/",
+   "https://www.opensanctions.org/search/?q=Wissam+Nesr"
+  ],
+  "e": false,
+  "la": -8.827,
+  "lo": 13.244
+ },
+ {
+  "n": "Franco-Namibian Cultural Centre (FNCC)",
+  "c": "Windhoek, Namibia",
+  "t": "A",
+  "s": "S",
+  "f": "Binational centre under Namibian law, funded by the French government. Namibia gave the land and France paid for the building; foundation stone laid in 1998.",
+  "w": "Has a large multipurpose gallery and hosts exhibitions at 118 Robert Mugabe Avenue, Windhoek.",
+  "u": [
+   "https://www.fncc.org.na/about",
+   "https://www.fncc.org.na/events/past"
+  ],
+  "e": false,
+  "la": -22.561,
+  "lo": 17.086
+ },
+ {
+  "n": "Botswana National Museum and Art Gallery",
+  "c": "Gaborone, Botswana",
+  "t": "A",
+  "s": "S",
+  "f": "Statutory museum set up by Act of Parliament in 1967 and run by the Department of National Museum and Monuments. Government funded its P33 million refurbishment, begun in 2020.",
+  "w": "Includes the National Art Gallery and the Octagon Gallery. Opened to the public in 1968.",
+  "u": [
+   "https://en.wikipedia.org/wiki/Botswana_National_Museum",
+   "https://dailynews.gov.bw/news-detail/57883",
+   "https://yourbotswana.com/national-museum-multi-million-pula-facelift-project-commences/"
+  ],
+  "e": false,
+  "la": -24.657,
+  "lo": 25.919
+ },
+ {
+  "n": "Musée des Cultures Contemporaines Adama Toungara (MuCAT)",
+  "c": "Abidjan, Côte d'Ivoire",
+  "t": "U",
+  "s": "S",
+  "f": "Built on the initiative of Adama Toungara, then mayor of Abobo; the director says it was built from own funds. No funder, cost or sponsor list is published.",
+  "w": "Stands opposite Abobo town hall on 3,500 m², designed by architect Issa Diabaté. Opened with the pan-African show Prête-moi ton rêve.",
+  "u": [
+   "https://connectionivoirienne.net/2020/03/11/la-premiere-dame-procede-a-linauguration-du-musee-des-cultures-contemporaines-adama-toungara-en-cote-divoire/",
+   "https://djasso.com/culture-le-mucat-la-vitrine-de-l-art-contemporain-en-cote-drivoire-a16716349961.html",
+   "https://www.artbasel.com/stories/abidjan-ivory-coast-west-africa-premier-hub-for-contemporary-culture"
+  ],
+  "e": false,
+  "la": 5.421,
+  "lo": -4.017
+ },
+ {
+  "n": "Festival International des Arts du Bénin (FInAB)",
+  "c": "Cotonou, Benin",
+  "t": "U",
+  "s": "S",
+  "f": "Run by Groupe Empire's events arm with Benin government support through its arts fund (FDAC). MTN partnered the 2026 edition, Canal+ Impact 2025. Other partners unnamed; no budget published.",
+  "w": "Festival in Cotonou, Porto-Novo and Ouidah. The fourth edition closed in early March 2026, with days for Nigeria, Togo, Lebanon and Morocco.",
+  "u": [
+   "https://matinlibre.com/2026/03/04/finab-2026-clap-de-fin-sur-de-belles-notes-avec-les-couleurs-de-mtn/",
+   "https://lanation.bj/culture/festival-international-des-arts-du-benin-2026-le-tapis-rouge-deroule-aux-industries-culturelles-et-creatives",
+   "https://www.financialafrik.com/2025/02/16/finab-2025-cotonou-sillumine-au-rythme-de-la-creativite-africaine/"
+  ],
+  "e": false,
+  "la": 6.368,
+  "lo": 2.425
+ },
+ {
+  "n": "Dar Foto Festival",
+  "c": "Dar es Salaam, Tanzania",
+  "t": "U",
+  "s": "S",
+  "f": "Founded by Andrew Munuwa with Valentin Rudloff. The National Arts Council (BASATA) says it is keen to support it; no funder or sponsor list is published.",
+  "w": "Launched in 2023. The 2025 edition showed 15 artists from Congo, Sudan, Kenya and Tanzania in Dar es Salaam and Zanzibar.",
+  "u": [
+   "https://www.thecitizen.co.tz/tanzania/magazines/dar-foto-festival-giving-tanzanian-photographers-a-unique-stage-4659146",
+   "https://museemagazine.com/culture/2025/2/13/dar-foto-festival",
+   "https://phmuseum.com/festivals/dar-foto-festival-2025"
+  ],
+  "e": false,
+  "la": -6.82,
+  "lo": 39.287
+ },
+ {
+  "n": "Texaf Bilembo",
+  "c": "Kinshasa, DR Congo",
+  "t": "A",
+  "s": "S",
+  "f": "Texaf, listed on Euronext Brussels, is founder and head sponsor of the centre. Its income is 85% Kinshasa real estate, 12% a sandstone quarry and 3% digital.",
+  "w": "Texaf is 62.9% held by Société Financière Africaine and 10% by the Cha family. Bilembo covers over 1,000 m² of exhibition and workshop space.",
+  "u": [
+   "https://www.texaf.be/en/csr",
+   "https://www.marketscreener.com/quote/stock/TEXAF-S-A-10015067/company/",
+   "https://en.wikipedia.org/wiki/TEXAF"
+  ],
+  "e": false,
+  "la": -4.321,
+  "lo": 15.272
+ },
+ {
+  "n": "Laongo Granite Sculpture Symposium",
+  "c": "Laongo, Burkina Faso",
+  "t": "A",
+  "s": "S",
+  "f": "Burkina Faso's culture ministry organises it and pays professional artists' fees, flights and stay, per its 2024 call for applications. No other funder is named.",
+  "w": "Founded 1989 by Siriki Ky, 35 km from Ouagadougou. The 15th edition runs 2 to 23 November 2026 under President Traoré's patronage.",
+  "u": [
+   "https://www.noocultures.info/burkina-faso-appel-a-candidature-pour-la-14eme-edition-du-symposium-international-de-sculpture-sur-granite-de-laongo/",
+   "https://burkina24.com/2026/10/16/laongo-la-15e-edition-du-symposium-international-de-sculpture-sur-granite-prevue-du-2-au-23-novembre/",
+   "https://en.wikipedia.org/wiki/Symposium_de_sculpture_sur_granit_de_Laongo"
+  ],
+  "e": false,
+  "la": 12.536,
+  "lo": -1.284
+ },
+ {
+  "n": "National Arts Festival",
+  "c": "Makhanda, South Africa",
+  "t": "A",
+  "s": "S",
+  "f": "Eastern Cape government, Sarah Baartman District Municipality, National Lottery Commission, Standard Bank. National government gave R5.5 million for 2022 to 2024, nothing in 2025, a smaller grant in 2026.",
+  "w": "Minister McKenzie says it lost an open call. A January 2026 petition of 302 artists cites the cut among his refusals to renew funding.",
+  "u": [
+   "https://grocotts.ru.ac.za/2026/06/12/arts-festival-adapts-to-changing-funding-landscape/",
+   "https://mg.co.za/friday/2026-07-10-as-one-national-arts-festival-ends-the-next-begins/",
+   "https://artthrob.co.za/2026/01/14/in-solidarity-with-gabrielle-goliath-the-arts-community-issues-a-statement-and-petition/"
+  ],
+  "e": false,
+  "la": -33.307,
+  "lo": 26.526
+ },
+ {
+  "n": "Javett Art Centre at the University of Pretoria (Javett-UP)",
+  "c": "Pretoria, South Africa",
+  "t": "A",
+  "s": "S",
+  "f": "University of Pretoria gave the land and funding. The Javett Foundation funded construction and pledged ten years of annual gifts for running costs and an endowment.",
+  "w": "Opened September 2019. An independent trust runs it. Michael Javett founded the Unisec Group, later sold to Standard Bank, and Tolux, now Brait.",
+  "u": [
+   "https://artafricamagazine.org/?p=23722",
+   "https://javettup.com/news/the-javett-art-centre-at-the-university-of-pretoria",
+   "https://www.javettfoundation.org.za/"
+  ],
+  "e": false,
+  "la": -25.754,
+  "lo": 28.231
+ },
+ {
+  "n": "Art D'Égypte",
+  "c": "Giza, Egypt",
+  "t": "F",
+  "s": "S",
+  "f": "Private firm of Nadine Abdel Ghaffar. Egypt's foreign and tourism ministries and UNESCO sponsor Forever Is Now. Partners: LMD, Suez Canal Bank, BMW (2026); TotalEnergies, Afreximbank (2024).",
+  "w": "Flags: Fossil fuels, Protest or boycott. In October 2026 a petition of 500 to 700 signatories made it drop sculptor Bernar Venet over Israeli ties; artists and galleries withdrew.",
+  "u": [
+   "https://babmsr.com/en/how-artist-and-gallery-boycotts-forced-bernar-venet-out-of-forever-is-now",
+   "https://www.dailynewsegypt.com/2024/10/06/forever-is-now-4th-edition-fusion-of-ancient-modern-at-giza-pyramids/",
+   "https://flair-magazine.com/2026/10/06/forever-is-now-06-art-degypte-pyramids/"
+  ],
+  "e": false,
+  "la": 29.971,
+  "lo": 31.124
+ },
+ {
+  "n": "G.A.S. Foundation (Guest Artists Space)",
+  "c": "Lagos, Nigeria",
+  "t": "A",
+  "s": "S",
+  "f": "Primarily funded by the Yinka Shonibare Foundation at its 2019 launch. Donors include Terra Foundation, Deutsche Bank, Afreximbank, Still Earth Holdings, British Council and Pro Helvetia.",
+  "w": "Founded 2019 by Yinka Shonibare, who started the London residency Guest Projects. Patron Still Earth Holdings owns drilling contractor Tirex, an oil-services supplier.",
+  "u": [
+   "https://guestartistsspace.com/Support-Us/Impact-Report-2024-25",
+   "https://www.theartnewspaper.com/2019/12/31/yinka-shonibare-plans-ambitious-artist-residency-programme-in-nigeria",
+   "https://www.guestartistsspace.com/News/celebrating-the-impact-of-still-earth-holdings-generous-support-on-gas-foundation"
+  ],
+  "e": false,
+  "la": 6.436,
+  "lo": 3.418
+ },
+ {
+  "n": "blaxTARLINES KUMASI",
+  "c": "Kumasi, Ghana",
+  "t": "U",
+  "s": "S",
+  "f": "Art network and incubator tied to the KNUST painting and sculpture department in Kumasi. No funders, sponsors or budget appear in any source opened.",
+  "w": "Ranked 69 in ArtReview's 2025 Power 100 and invited to the 2026 Venice Biennale main exhibition.",
+  "u": [
+   "https://en.wikipedia.org/wiki/BlaxTARLINES_KUMASI",
+   "https://www.knust.edu.gh/index.php/news/news-items/knust-affiliated-art-network-blaxtarlines-climbs-global-rankings-artreviews-2025-power-100",
+   "https://www.thestateofthearts.co.uk/features/tsota-around-the-world-blaxtarlines/"
+  ],
+  "e": false,
+  "la": 6.678,
+  "lo": -1.575
+ },
+ {
+  "n": "Kuona Trust",
+  "c": "Nairobi, Kenya",
+  "t": "U",
+  "s": "S",
+  "f": "Trust founded in 1995. Swedish NGO donor Forum Syd commissioned a 2016 audit. Robert Devereux's African Arts Trust aimed to become a patron in 2012. No current funder list.",
+  "w": "Closed its offices in September 2016 for a donor audit after multi-million shillings went missing; artists kept the centre running.",
+  "u": [
+   "https://www.businessdailyafrica.com/bd/lifestyle/art-fair-opens-under-the-shadow-of-kuona-trust-scandal--2130986",
+   "https://www.businessdailyafrica.com/bd/lifestyle/society/new-kuona-team-sees-nothing-else-but-success--2003174",
+   "https://www.mimeta.org/partners-of-mimeta/2024/6/11/kuona-trust-arts-collective"
+  ],
+  "e": false,
+  "la": -1.286,
+  "lo": 36.798
+ },
+ {
+  "n": "Musée Boribana",
+  "c": "Dakar, Senegal",
+  "t": "U",
+  "s": "S",
+  "f": "Founded with private money by Boubacar Koné and actress CCH Pounder; Koné gave it to the Senegalese state in December 2014. No budget or sponsor list is published.",
+  "w": "Ngor museum of contemporary African art with artist studios and a residency. A conservator from the Ministry of Culture took office in March 2015.",
+  "u": [
+   "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Boribana",
+   "https://www.culture.gouv.sn/index.php/musee-boribana/",
+   "https://www.enqueteplus.com/content/musee-boribana-la-conservatrice-prendra-fonctions-jeudi"
+  ],
+  "e": false,
+  "la": 14.748,
+  "lo": -17.508
+ },
+ {
+  "n": "Contemporary Art Museum of the Kasbah",
+  "c": "Tangier, Morocco",
+  "t": "A",
+  "s": "S",
+  "f": "Run by the National Foundation of Museums. Restoration and design cost 13 million dirhams; the Wilaya of Tangier supervised it, with the Ministry of Culture, APDN and the Foundation contributing.",
+  "w": "Opened in December 2021 in the former Kasbah prison to mark the Foundation's tenth anniversary. Opening show: The School of the North.",
+  "u": [
+   "https://en.hespress.com/32817-32817.html",
+   "https://www.lejournaldesarts.fr/patrimoine/tanger-une-ancienne-prison-devient-un-musee-dart-contemporain-158400",
+   "https://fnh.ma/article/actualite-culturelle/musee-de-la-kasbah-nouveau-espace-d-art-contemporain-a-tanger"
+  ],
+  "e": false,
+  "la": 35.789,
+  "lo": -5.813
  }
 ]

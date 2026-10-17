@@ -625,6 +625,8 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 
 /* The Epstein flag is highlighted in purple */
 .flag-epstein{background:#be95ff;color:#000;padding:0 5px}
+/* The Clean Funding Grade on a record: the grade on its colour block, the label and the basis after it */
+.grade-mark{display:inline-block;padding:0 6px;color:#000}
 
 /* The building's photograph from Wikimedia Commons, with its credit under it */
 .xray-photo{margin:0 0 10px}

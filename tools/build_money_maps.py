@@ -27,13 +27,16 @@ JUNK={'expenses','culture','members','arts','tourism','501nonprofit','nonprofit'
 JUNK_RE=re.compile(r"(registered charity|subsidiary of|part of |sat on |shows credit|residenc|\bno\. ?\d|\b(19|20)\d\d\b"
                    r"|\bFY\s?\d|\d\s?%|^\d[\d.,]*\+?\s+(?:works|members|individuals|families|for|non-?profit|edition|report|artists|donors|people|employees)\b"
                    r"|^\d|^(?:a|per)\s+year$|\b(?:report|expenses)$|^about\s+\d|\bof it\b|\b(?:EUR|USD|GBP|CHF|NIS|FCFA|JPY|DKK|SEK|NOK|EU)\s?\d"
-                   r"|\bcost about$|^the \d+(?:st|nd|rd|th) edition|\b(?:donated|gave)\b|^holds\b|\bis an?$|\b[A-Z]\.[A-Z]$)",re.I)
+                   r"|\bcost about$|^the \d+(?:st|nd|rd|th) edition|\b(?:donated|gave|funded its|co-funded|was)\b|^holds\b|\bis an?$|\b[A-Z]\.[A-Z]$|^main partner\b)",re.I)
 SUFFIX_RE=re.compile(r"\s+(funds it|support|lead|founding gift|sat on its board|for the prize|as maintainer|media partner)$",re.I)
 LEAD_RE=re.compile(r"^under the (?:non-profit )?",re.I)
+# A sum glued to a name ('Intesa Sanpaolo 464k', 'Ministry of Culture 2.9M', 'Enel 600k as a promoter member') is cut off
+# at the sum; a number without a unit ('Fonds 21', 'Tequila 1800', 'WDR 3') is part of the name and stays.
+TRAIL_SUM_RE=re.compile(r"\s+\d[\d.,]*\s?(?:[kKmMbB]|million|billion|thousand|mn|bn)\b.*$")
 ALIAS={'warhol':'andywarhol','nea':'nationalendowmentforarts','canadacouncil':'canadacouncilforarts','nycdcla':'nycdepartmentofculturalaffairs','artscouncilenglandnationalportfolio':'artscouncilengland'}  # values are norm() forms
 GENERIC_GOV={'city government','state government','regional government','government','ministry of culture','county government','local authority','federal government','regional state'}
 def clean_label(nm):
-    nm=LEAD_RE.sub('',SUFFIX_RE.sub('',nm)).strip(' .,;-')
+    nm=TRAIL_SUM_RE.sub('',LEAD_RE.sub('',SUFFIX_RE.sub('',nm))).strip(' .,;-')
     if len(nm)<3 or len(nm)>48 or JUNK_RE.search(nm) or norm(nm) in JUNK: return None
     return nm
 def merge_key(label,cat,country,rid):
