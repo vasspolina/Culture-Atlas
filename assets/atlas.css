@@ -766,3 +766,12 @@ body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-a
 :is(#curatorHeroGreeting,#curatorDrawerGreeting){justify-content:center;min-height:100%;box-sizing:border-box}
 #curatorDrawerChatBody{display:flex;flex-direction:column}
 #curatorDrawerChatBody>#curatorDrawerGreeting{flex:1 1 auto}
+/* Question colours from the blue, red, tan and grey of the reference. Tan and grey are darkened on the light ground to keep 3:1 at this size. */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#3376bb}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#d73732}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#8f5f2e}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#5c5c5c}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#3376bb}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#d73732}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#dcad81}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#d3d3d3}
