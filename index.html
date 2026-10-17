@@ -436,6 +436,14 @@ return maplibregl$1;
         </div>
       </div>
 
+      <!-- Building view modes: the same outline and the same contents, seen four ways. -->
+      <div id="xrayModes" class="hidden absolute top-12 sm-top-14 left-2 sm-left-4 z-20 pointer-events-auto flex flex-wrap gap-1" role="group" aria-label="Building view">
+        <button type="button" class="xray-pill" data-xray-mode="xray" aria-pressed="true" onclick="window.setXrayMode('xray')">X-ray</button>
+        <button type="button" class="xray-pill" data-xray-mode="plan" aria-pressed="false" onclick="window.setXrayMode('plan')">Plan</button>
+        <button type="button" class="xray-pill" data-xray-mode="section" aria-pressed="false" onclick="window.setXrayMode('section')">Section</button>
+        <button type="button" class="xray-pill" data-xray-mode="orbit" aria-pressed="false" onclick="window.setXrayMode('orbit')">Orbit</button>
+      </div>
+
       <!-- Inside the building: what the record holds, beside the outline the map data has for it. Nothing here is drawn from a guess. -->
       <div id="buildingInsidePanel" class="hidden absolute bottom-2 sm-bottom-4 left-2 sm-left-4 z-40 pointer-events-auto flex flex-col gap-2 p-4 w-_calc_100vw-16px sm-w-_380px max-h-_60 overflow-y-auto custom-scrollbar"></div>
 
@@ -7237,9 +7245,10 @@ return maplibregl$1;
       if (!isCityStreetViewActive || !matchC(cityStreetViewCity, inst.city)) {
         openCityStreetView(inst.city, inst.lat, inst.lon);
       }
+      XRAY.mode = 'xray'; XRAY.orbiting = false;
       if (xrayMapIsMock()) { showBuildingXray(inst); return; }
       if (cityVectorMap && typeof cityVectorMap.flyTo === 'function') {
-        cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: 17.2, pitch: 55, duration: 900, essential: true, offset: xrayFlyOffset() });
+        cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: 17.2, pitch: 55, bearing: 0, duration: 900, essential: true, offset: xrayFlyOffset() });
         xrayWhenSettled(inst);
       }
     }
@@ -7250,7 +7259,15 @@ return maplibregl$1;
     //  translucent shell, with one slab inside for each kind of material the record actually holds. No outline means no shell;
     //  every label is a count of what the record has; facts from Wikidata say so and how they were matched.
     // =========================================================================
-    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, dimmed: false, waiting: false };
+    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, dimmed: false, waiting: false, mode: 'xray', orbiting: false };
+    // The four ways of looking at the building. Each is a camera on the same outline; Plan draws the contents as nested outlines
+    // seen from above, the others as slabs stacked inside the shell.
+    const XRAY_CAMERAS = {
+      xray:    { zoom: 17.2, pitch: 55, bearing: 0 },
+      plan:    { zoom: 18.0, pitch: 0,  bearing: 0 },
+      section: { zoom: 18.0, pitch: 60, bearing: 90 },
+      orbit:   { zoom: 17.6, pitch: 60, bearing: 0 }
+    };
     const XRAY_COLOURS = { flag: '#fa4d56', funding: '#08bdba', reported: '#ff7eb6', accounts: '#be95ff', sources: '#42be65', visiting: '#f1c21b', studies: '#009d9a', facts: '#ff832b' };
     const WIKIDATA_SPARQL = 'https://query.wikidata.org/sparql';
     const WIKIDATA_CANDIDATES = 60;
@@ -7355,6 +7372,7 @@ return maplibregl$1;
       if (!cityVectorMap.getLayer('xray-shell')) cityVectorMap.addLayer({ id: 'xray-shell', type: 'fill-extrusion', source: 'xray-shell', paint: { 'fill-extrusion-color': '#161616', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.14 } });
       applyCityMapGossip();
       if (!cityVectorMap.getLayer('xray-outline')) cityVectorMap.addLayer({ id: 'xray-outline', type: 'line', source: 'xray-shell', paint: { 'line-color': '#f4f4f4', 'line-width': 0.8 } });
+      if (!cityVectorMap.getLayer('xray-slabs-outline')) cityVectorMap.addLayer({ id: 'xray-slabs-outline', type: 'line', source: 'xray-slabs', layout: { visibility: 'none' }, paint: { 'line-color': '#161616', 'line-width': 0.8 } });
       return true;
     }
 
@@ -7378,10 +7396,11 @@ return maplibregl$1;
       if (!inst || !cityVectorMap || !isCityStreetViewActive) return;
       if (XRAY.inst && XRAY.inst !== inst) xrayClearDrawing();
       XRAY.inst = inst;
-      if (xrayMapIsMock()) { XRAY.waiting = false; XRAY.building = null; renderBuildingInsidePanel(inst); return; }
-      if (!xrayLayersReady()) { XRAY.waiting = true; xrayClearDrawing(); xrayWhenSettled(inst); renderBuildingInsidePanel(inst); return; }
+      if (xrayMapIsMock()) { XRAY.waiting = false; XRAY.building = null; xraySyncModeBar(true); renderBuildingInsidePanel(inst); return; }
+      if (!xrayLayersReady()) { XRAY.waiting = true; xrayClearDrawing(); xraySyncModeBar(true); xrayWhenSettled(inst); renderBuildingInsidePanel(inst); return; }
       XRAY.waiting = false;
       XRAY.building = xrayFindBuilding(inst.lon, inst.lat);
+      xraySyncModeBar(true);
       xrayDraw(inst);
       renderBuildingInsidePanel(inst);
       fetchWikidataFacts(inst).then(() => { if (XRAY.inst === inst) { xrayDraw(inst); renderBuildingInsidePanel(inst); } });
@@ -7397,7 +7416,13 @@ return maplibregl$1;
       const cats = xrayCategories(inst), n = cats.length, h = Math.max(b.height, b.base + 3);
       shell.setData({ type: 'FeatureCollection', features: [{ type: 'Feature', geometry: b.geometry, properties: { height: h, base: b.base } }] });
       const inner = xrayShrink(b.geometry, 0.7), span = h - b.base;
-      slabs.setData({ type: 'FeatureCollection', features: cats.map((c, i) => ({ type: 'Feature', geometry: inner, properties: { color: XRAY_COLOURS[c.key], base: b.base + span * i / n, height: b.base + span * i / n + span / n * 0.5 } })) });
+      if (XRAY.mode === 'plan') {
+        // From above: one outline per category, each inside the last, all on the roof.
+        slabs.setData({ type: 'FeatureCollection', features: cats.map((c, i) => ({ type: 'Feature', geometry: xrayShrink(b.geometry, 0.85 - 0.7 * i / Math.max(n, 1)), properties: { color: XRAY_COLOURS[c.key], base: h, height: h + 0.2 } })) });
+      } else {
+        slabs.setData({ type: 'FeatureCollection', features: cats.map((c, i) => ({ type: 'Feature', geometry: inner, properties: { color: XRAY_COLOURS[c.key], base: b.base + span * i / n, height: b.base + span * i / n + span / n * 0.5 } })) });
+      }
+      try { if (cityVectorMap.getLayer('xray-slabs-outline')) cityVectorMap.setLayoutProperty('xray-slabs-outline', 'visibility', XRAY.mode === 'plan' ? 'visible' : 'none'); } catch (e) { /* style not ready */ }
       if (!XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) { cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 0.35); XRAY.dimmed = true; }
       const c = xrayCentroid(b.geometry);
       cats.forEach((cat, i) => {
@@ -7408,8 +7433,41 @@ return maplibregl$1;
       });
     }
 
+    function xraySyncModeBar(show) {
+      const bar = document.getElementById('xrayModes');
+      if (!bar) return;
+      bar.classList.toggle('hidden', !show);
+      bar.querySelectorAll('[data-xray-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.xrayMode === XRAY.mode)));
+    }
+    // One more quarter turn, then another, for as long as Orbit is the mode and the building is open.
+    function xrayOrbitStep() {
+      if (!XRAY.orbiting || XRAY.mode !== 'orbit' || !XRAY.inst || !cityVectorMap || typeof cityVectorMap.rotateTo !== 'function') { XRAY.orbiting = false; return; }
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { XRAY.orbiting = false; return; }
+      cityVectorMap.rotateTo(cityVectorMap.getBearing() + 90, { duration: 6000, easing: t => t });
+      cityVectorMap.once('moveend', () => { if (XRAY.orbiting) xrayOrbitStep(); });
+    }
+    function setXrayMode(mode) {
+      if (!XRAY_CAMERAS[mode]) return;
+      const inst = XRAY.inst;
+      XRAY.mode = mode;
+      XRAY.orbiting = false;
+      xraySyncModeBar(!!inst);
+      if (!inst || !cityVectorMap) return;
+      if (xrayMapIsMock()) { xraySyncModeBar(true); return; }
+      const cam = XRAY_CAMERAS[mode];
+      const c = XRAY.building ? xrayCentroid(XRAY.building.geometry) : [inst.lon, inst.lat];
+      if (typeof cityVectorMap.stop === 'function') cityVectorMap.stop();
+      cityVectorMap.easeTo({ center: c, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing, duration: 700, essential: true, offset: xrayFlyOffset() });
+      if (xrayLayersReady()) { if (XRAY.building) xrayDraw(inst); } else { xrayWhenSettled(inst); }
+      if (mode === 'orbit') { XRAY.orbiting = true; cityVectorMap.once('moveend', () => { if (XRAY.orbiting) xrayOrbitStep(); }); }
+    }
+    window.setXrayMode = setXrayMode;
+
     function hideBuildingXray() {
-      XRAY.inst = null; XRAY.waiting = false;
+      XRAY.inst = null; XRAY.waiting = false; XRAY.orbiting = false; XRAY.mode = 'xray';
+      xraySyncModeBar(false);
+      try { if (cityVectorMap && cityVectorMap.getLayer && cityVectorMap.getLayer('xray-slabs-outline')) cityVectorMap.setLayoutProperty('xray-slabs-outline', 'visibility', 'none'); } catch (e) { /* style not ready */ }
       xrayClearDrawing();
       document.getElementById('buildingInsidePanel')?.classList.add('hidden');
       const inside = document.getElementById('desktopDossierInside');
