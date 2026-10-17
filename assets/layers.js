@@ -330,6 +330,8 @@
     if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
     const inst = id && typeof window.resolveInstitutionByIdOrName === 'function' ? window.resolveInstitutionByIdOrName(id) : null;
     if (id && typeof window.selectInstitution === 'function') window.selectInstitution(id, false);
+    // On a phone the record sheet would cover the funders; it steps aside, and a tap on the space brings it back.
+    if (window.innerWidth < 768) { const sheet = document.getElementById('dossier-bottom-sheet'); if (sheet) sheet.classList.add('hidden'); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('atlas'); }
     // Close in on the space, so its funders sit around it in its own city rather than across the continent.
     if (inst && typeof inst.lat === 'number' && typeof inst.lon === 'number' && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
       const z = window.getMaxRadius();
