@@ -1,11 +1,11 @@
-// Map layers drawn over the globe: funding ties, flagged spaces, the money network, and the two highlights the funding
+// Map layers drawn over the globe: funding ties, flagged spaces, the Clean Funding Grade, the money network, and the two highlights the funding
 // map had: right-wing sponsors and the Epstein files.
 // Each layer shows something at every zoom. Ties: the web of funders shared between spaces, the selected space's own
 // ties on top. Flags: flagged spaces marked, and a flagged count on each city cluster. Money: a space's funders around
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false, hq: false, people: false };
+  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, right: false, epstein: false, hq: false, people: false };
   const COL = { gov: '#8fa2ff', corp: '#a9e0e6', found: '#ff9966', flag: '#ff6119', right: '#ff5a4d', epstein: '#ec4fe8' };
   const RIGHT = n => typeof n[5] === 'string' && n[5].indexOf('right:') === 0;
   const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? ['Jeffrey Epstein'] : []);
@@ -115,7 +115,7 @@
     });
     // The focused space's own ties, bright, with a dot at each far end.
     if (rec && typeof rec.lat === 'number') {
-      ctx.lineWidth = 1; ctx.globalAlpha = 0.5;
+      ctx.lineWidth = 1.4; ctx.globalAlpha = 0.8;
       const seen = new Set([rec.id]), ends = [];
       rec.nodes.forEach(n => {
         if (!FUNDER(n) || !n[5]) return;
@@ -225,7 +225,7 @@
   }
 
   window.atlasLayersDrawNodes = function (ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!L.flags && !L.money && !L.right && !L.epstein && !L.hq && !L.people) return;
+    if (!L.flags && !L.grade && !L.money && !L.right && !L.epstein && !L.hq && !L.people) return;
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -234,6 +234,18 @@
     ctx.save();
     ctx.font = font; ctx.textBaseline = 'middle';
 
+    if (L.grade) {
+      // Each graded space: a dot filled with its Clean Funding Grade colour (window.atlasGrade, set by the page).
+      // A space with no grade keeps its hollow ring.
+      const G = window.atlasGrade || {};
+      ctx.lineWidth = 0.8;
+      dots.forEach(d => {
+        const i = d.inst; if (!i || !i.grade || !G[i.grade]) return;
+        ctx.beginPath(); ctx.arc(d.x, d.y, 5, 0, Math.PI * 2);
+        ctx.fillStyle = G[i.grade].col; ctx.fill();
+        ctx.strokeStyle = '#000'; ctx.stroke();
+      });
+    }
     if (L.flags) {
       // Each flagged space: a filled orange dot over its ring.
       ctx.lineWidth = 0.8;
@@ -279,7 +291,9 @@
         if (!focus) return;
         const nodes = rec.nodes.filter(FUNDER);
         if (!nodes.length) return;
-        const N = Math.min(nodes.length, focus ? 10 : 6), R = focus ? 64 : 36;
+        // The ring is 64 px when the view is close; further out it shrinks, so funders never land on other cities.
+        const zoomK = Math.max(0.4, Math.min(1, r / (baseRadius * 12)));
+        const N = Math.min(nodes.length, focus ? 10 : 6), R = (focus ? 64 : 36) * zoomK;
         for (let i = 0; i < N; i++) {
           const n = nodes[i], a = -Math.PI / 2 + (i * 2 * Math.PI) / N, x = d.x + R * Math.cos(a), y = d.y + R * Math.sin(a);
           const col = gossip ? '#ffd600' : COL[n[1]];
@@ -314,7 +328,14 @@
     L.money = true; L.ties = true; loadMoney();
     document.querySelectorAll('#layersPanel input[data-layer]').forEach(i => { if (i.dataset.layer === 'money' || i.dataset.layer === 'ties') i.checked = true; });
     if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
+    const inst = id && typeof window.resolveInstitutionByIdOrName === 'function' ? window.resolveInstitutionByIdOrName(id) : null;
     if (id && typeof window.selectInstitution === 'function') window.selectInstitution(id, false);
+    // Close in on the space, so its funders sit around it in its own city rather than across the continent.
+    if (inst && typeof inst.lat === 'number' && typeof inst.lon === 'number' && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
+      const z = window.getMaxRadius();
+      if (typeof window.setTargetRadius === 'function') window.setTargetRadius(z);
+      window.flyTo(inst.lon, inst.lat, z);
+    }
     if (typeof scheduleRender === 'function') scheduleRender();
   };
 
@@ -324,6 +345,8 @@
     if (typeof ALL_INSTITUTIONS !== 'undefined') {
       set('spaces', String(ALL_INSTITUTIONS.length));
       set('flags', String(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length));
+      const graded = ALL_INSTITUTIONS.filter(i => i.grade).length;
+      set('grade', `${graded} graded, ${ALL_INSTITUTIONS.length - graded} not graded`);
     }
     if (HQ) {
       set('hq', `${HQ.orgs.length} head offices in ${new Set(HQ.orgs.map(o => o.c)).size} cities`);
@@ -349,7 +372,7 @@
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
       const k = inp.dataset.layer;
       L[k] = inp.checked;
-      if (k !== 'flags' && inp.checked) loadMoney();
+      if (k !== 'flags' && k !== 'grade' && inp.checked) loadMoney();
       if ((k === 'hq' || k === 'people') && inp.checked) loadHq();
       if (typeof scheduleRender === 'function') scheduleRender();
     }));

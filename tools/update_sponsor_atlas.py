@@ -5,7 +5,8 @@ Run tools/clean_data.py and tools/embed_data.py afterwards.
 1. Entries the old study (data/sponsor_atlas.json) did not have are added by tools/import_sponsor_atlas.py once the new study replaces it.
 2. Entries the new study changed (funding, note, sources, tier) update their record, but only where the record still holds exactly what
    the old study produced. A record edited since (a source added, a sentence removed) keeps its edits and is listed instead.
-The mapping from a study entry to record fields is the importer's: funding; watch, or flags and why_flagged when the note begins "Flags:";
+The mapping from a study entry to record fields is the importer's: funding; watch, or flags (the names before the first full stop) with the
+rest of the note as watch and why_flagged, when the note begins "Flags:";
 sources; tier A stays A, B/O/F become B, U stays U.
 """
 import json
@@ -22,13 +23,20 @@ def norm(s):
     return re.sub(r'[^a-z0-9]+', ' ', ''.join(c for c in s if not unicodedata.combining(c))).strip()
 
 
+def split_flags(w):
+    """'Flags: Fossil fuels, Gambling. Rest of the note.' -> (['Fossil fuels', 'Gambling'], 'Rest of the note.')
+    The flag names end at the first full stop; what follows is the note."""
+    body = w[len('Flags:'):].strip()
+    head, dot, rest = body.partition('.')
+    return [x.strip() for x in head.split(',') if x.strip()], rest.strip()
+
+
 def mapped(d):
     out = {'funding': d.get('f') or '', 'sources': d.get('u') or [], 'tier': 'B' if d['t'] in 'BOF' else d['t']}
     w = d.get('w') or ''
     if w.startswith('Flags:'):
-        out['flags'] = [x.strip() for x in w[len('Flags:'):].strip(' .').split(',') if x.strip()]
+        out['flags'], out['watch'] = split_flags(w)
         out['why_flagged'] = d.get('f') or w
-        out['watch'] = ''
     else:
         out['flags'] = None
         out['watch'] = w

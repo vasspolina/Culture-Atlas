@@ -3,6 +3,7 @@
 
 Existing records are left alone. Run tools/clean_data.py and tools/embed_data.py afterwards.
 Tiers: A stays A; B, O (one name to note) and F (flags) become Flagged (B); U stays U.
+A note that begins "Flags:" names the flags up to the first full stop; the sentences after it become the record's watch text.
 """
 import json
 import re
@@ -19,6 +20,14 @@ def norm(s):
 
 def slug(s):
     return norm(s).replace(' ', '-')
+
+
+def split_flags(w):
+    """'Flags: Fossil fuels, Gambling. Rest of the note.' -> (['Fossil fuels', 'Gambling'], 'Rest of the note.')
+    The flag names end at the first full stop; what follows is the note."""
+    body = w[len('Flags:'):].strip()
+    head, dot, rest = body.partition('.')
+    return [x.strip() for x in head.split(',') if x.strip()], rest.strip()
 
 
 records = json.load(open(ROOT / 'institutions.json', encoding='utf-8'))
@@ -40,8 +49,10 @@ for d in json.load(open(ROOT / 'data' / 'sponsor_atlas.json', encoding='utf-8'))
         rec['funding'] = d['f']
     w = d.get('w') or ''
     if w.startswith('Flags:'):
-        rec['flags'] = [x.strip() for x in w[len('Flags:'):].strip(' .').split(',') if x.strip()]
+        rec['flags'], rest = split_flags(w)
         rec['why_flagged'] = d.get('f') or w
+        if rest:
+            rec['watch'] = rest
     elif w:
         rec['watch'] = w
         if d['t'] in 'BOF':
