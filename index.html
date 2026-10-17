@@ -16910,7 +16910,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const isZoomedIn = (selectedCountryFilter !== 'all' || currentRadius >= baseRadius * 1.8);
       const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
       const dotReach = (isZoomedIn ? 12 : 9) * (touch ? 1.6 : 1);
-      const fallbackReach = (isZoomedIn ? 26 : 16) * (touch ? 1.6 : 1);
+      // 12-14px, not 16-26: at 16 a dot two labels away was taken for the one under the pointer.
+      const fallbackReach = (isZoomedIn ? 14 : 12) * (touch ? 1.6 : 1);
 
       // 1. The nearest dot whose centre is within reach of the pointer
       let nearest = null, nearestDist = Infinity;
@@ -17060,26 +17061,27 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      // 0.5 Direct pin hit (weighted by institution count so major hubs are not overshadowed by adjacent 1-space satellite towns)
+      // 0.5 Direct pin hit: the pin under the pointer. The pin is drawn 6.5px wide, so the
+      // reach is the pin and a little more for a mouse, and a fingertip's width for touch.
+      // It used to be 20px weighted by the city's count, so a big city took the hover from
+      // 20px away and the card opened with the pointer on empty sea beside it.
+      const touchCity = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
+      const pinReach = touchCity ? 16 : 9;
       let directPinCity = null;
-      let bestPinScore = Infinity;
+      let bestPinDist = Infinity;
       for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {
         const c = ALL_CITIES_REGISTRY[i];
         if (isCountryActive && c.country && !matchC(c.country, selectedCountryFilter)) continue;
         const pt = project(c.lon, c.lat, r, cx, cy);
         if (pt.front && pt.depth > 0.05) {
           const pinDist = Math.hypot(pt.x - mx, pt.y - my);
-          if (pinDist <= 20) {
-            const countWeight = 1 + Math.log2(Math.max(1, c.count || 1)) * 0.75;
-            const score = pinDist / countWeight;
-            if (score < bestPinScore) {
-              bestPinScore = score;
-              directPinCity = c;
-            }
+          if (pinDist <= pinReach && pinDist < bestPinDist) {
+            bestPinDist = pinDist;
+            directPinCity = c;
           }
         }
       }
-      if (directPinCity && bestPinScore <= 4.5) return directPinCity;
+      if (directPinCity) return directPinCity;
 
       // 1. Direct hit on an active rendered city badge label
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {
@@ -17102,7 +17104,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const cb = cityClusterHitboxes[i];
         if (isCountryActive && cb.country && !matchC(cb.country, selectedCountryFilter)) continue;
         const inCluster = mx >= cb.x - 4 && mx <= cb.x + cb.w + 4 && my >= cb.y - 4 && my <= cb.y + cb.h + 4;
-        const nearAnchor = Math.hypot(cb.cx - mx, cb.cy - my) < 16;
+        const nearAnchor = Math.hypot(cb.cx - mx, cb.cy - my) < pinReach;
         if (inCluster || nearAnchor) {
           return ALL_CITIES_REGISTRY.find(c => matchC(c.name, cb.cityName)) || {
             name: cb.cityName,
@@ -17114,28 +17116,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      // 2. Surface hit on globe city pins & clusters
-      let bestCity = null;
-      let bestScore = Infinity;
-
-      for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {
-        const c = ALL_CITIES_REGISTRY[i];
-        if (isCountryActive && c.country && !matchC(c.country, selectedCountryFilter)) continue;
-        const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && pt.depth > 0.05) {
-          const pinDist = Math.hypot(pt.x - mx, pt.y - my);
-          if (pinDist <= 24) {
-            const countWeight = 1 + Math.log2(Math.max(1, c.count || 1)) * 0.75;
-            const score = pinDist / countWeight;
-            if (score < bestScore) {
-              bestScore = score;
-              bestCity = c;
-            }
-          }
-        }
-      }
-
-      return bestCity;
+      // 2. Nothing under the pointer. There is no wider reach: the pin and the label are the
+      // targets, and a 24px count-weighted halo made the card open for the wrong city.
+      return null;
     }
     window.findCityAt = findCityAt;
     window.handleGlobeClick = handleGlobeClick;
