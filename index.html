@@ -16260,24 +16260,39 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return out;
     }
 
+    // A word joiner after each hyphen: a name like Al-Saraya is never split across two lines.
+    function noBreakHyphens(str) { return String(str).replace(/-/g, '-\u2060'); }
     function renderStarterPrompts() {
       let list = [];
       try { list = starterPromptList(); } catch (e) { list = []; }
-      const html = list.length ? `<p class="starter-label no-indent">Try asking</p>${list.map(q => `<button type="button" class="starter-prompt" data-query="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join('')}` : '';
+      const html = list.length ? `<p class="starter-label no-indent">Try asking</p>${list.map(q => `<button type="button" class="starter-prompt" data-query="${escapeHtml(q)}">${escapeHtml(noBreakHyphens(q))}</button>`).join('')}` : '';
       ['curatorHeroTitle', 'curatorDrawerHeroTitle'].forEach(id => {
         const t = document.getElementById(id);
-        if (t && t.dataset.t !== HERO_TITLE) { t.dataset.t = HERO_TITLE; t.textContent = HERO_TITLE; }
+        if (t && t.dataset.t !== HERO_TITLE) {
+          t.dataset.t = HERO_TITLE;
+          t.dataset.query = HERO_TITLE;
+          t.setAttribute('role', 'button');
+          t.setAttribute('tabindex', '0');
+          t.textContent = noBreakHyphens(HERO_TITLE);
+        }
       });
       ['curatorStarterPrompts', 'curatorDrawerStarterPrompts'].forEach(id => {
         const box = document.getElementById(id);
         if (box) box.innerHTML = html;
       });
     }
-    document.addEventListener('click', (e) => {
-      const b = e.target.closest && e.target.closest('.starter-prompt');
-      if (!b) return;
-      const q = b.getAttribute('data-query');
+    // The title is a question too: a click or Enter asks it.
+    function askStarter(b) {
+      const q = b && b.getAttribute('data-query');
       if (q) { appendUserMessage(q); handleCuratorQuery(q); }
+    }
+    document.addEventListener('click', (e) => {
+      askStarter(e.target.closest && e.target.closest('.starter-prompt, #curatorHeroTitle, #curatorDrawerHeroTitle'));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const t = e.target.closest && e.target.closest('#curatorHeroTitle, #curatorDrawerHeroTitle');
+      if (t) { e.preventDefault(); askStarter(t); }
     });
     renderStarterPrompts();
 

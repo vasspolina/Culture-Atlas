@@ -992,3 +992,31 @@ body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#00
 :is(#desktopDossierRecordBody,#detailBody) .kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;text-decoration:none;border:0;margin:20px 0 8px;padding:0;max-width:66ch}
 :is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;margin:20px 0 8px}
 :is(#desktopDossierRecordBody,#detailBody) .accounts-note+.record-card{border-top:0;padding-top:0}
+
+/* Landing text: no hyphenation, no lone word on the last line, and the title takes the full width so it sits on one line when it fits. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{hyphens:none;-webkit-hyphens:none;overflow-wrap:normal;word-break:normal;text-wrap:balance}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{max-width:none;width:100%}
+
+/* Landing colours are the map's labels: mustard, orange, cyan. The title is a coloured question like the rest, and every line is clickable. Light mode uses deeper versions of the same hues. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:#6e6310;cursor:pointer}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#b83c00}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#0b6d73}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#6e6310}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#b83c00}
+:root[data-theme="dark"] :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:var(--mustard)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:var(--orange)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:var(--cyan)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:var(--mustard)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--orange)}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:hover,:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{text-decoration:underline;text-underline-offset:.12em;outline:0}
+
+/* Dark mode keeps the regular weight: Share information is the sans at 400 in sentence case, not bold capitals. */
+:root[data-theme="dark"] #workInputCard #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none;letter-spacing:.01em}
+:root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none}
+
+/* Hover puts a light blue block behind a link, wider than the text on both sides, with black text, in every theme and in gossip mode. */
+:is(.inst-link,.city-link,.dossier-link):hover,
+:root[data-theme="dark"] :is(.inst-link,.city-link,.dossier-link):hover,
+body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover,
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#workInputCard #chatShareBtn:hover,:root[data-theme="dark"] #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
