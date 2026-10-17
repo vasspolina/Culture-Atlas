@@ -788,3 +788,15 @@ abbr[title]{text-decoration:none}
    of a run is flush; each one that follows is indented one em and sits directly under the last. */
 .curator-message-wrap p+p:not(.no-indent),#desktopDossierRecordBody p+p:not(.no-indent),#detailBody p+p:not(.no-indent),#curatorHeroGreeting p+p:not(.no-indent),.chat-info p+p:not(.no-indent){text-indent:1em;margin-top:0}
 .curator-message-wrap p:has(+ p),#desktopDossierRecordBody p:has(+ p),#detailBody p:has(+ p),#curatorHeroGreeting p:has(+ p),.chat-info p:has(+ p){margin-bottom:0}
+
+/* ---- the chat reads as a dialogue (an interview transcript): a speaker mark in a narrow left column,
+   the speech in a hanging block beside it, a blank line between turns. No bubbles, no italics. ---- */
+#curatorMessages>.curator-message-wrap,#curatorMessages>.justify-end{display:grid;grid-template-columns:4.5em minmax(0,1fr);column-gap:0;align-items:start;margin:0 0 1.6em;width:100%;justify-content:stretch}
+#curatorMessages>.curator-message-wrap::before,#curatorMessages>.justify-end::before{grid-column:1;grid-row:1;font:400 15px/1.4 var(--sans);letter-spacing:.01em}
+#curatorMessages>.curator-message-wrap::before{content:"Atlas";color:var(--ink)}
+#curatorMessages>.justify-end::before{content:"You";color:var(--cobalt)}
+#curatorMessages>.curator-message-wrap>*{grid-column:2;min-width:0}
+/* the person's turn: plain text beside the mark, in cobalt, not a black bubble */
+#curatorMessages .user-bubble{background:none;color:var(--cobalt);padding:0;max-width:none;align-self:auto;font:400 15px/1.4 var(--sans);grid-column:2}
+#curatorMessages .user-bubble *{color:var(--cobalt)}
+#curatorMessages>.justify-end>div{grid-column:2;background:none;color:var(--cobalt);padding:0;max-width:none;text-align:left}
