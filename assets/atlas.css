@@ -733,11 +733,8 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root:not([data-theme="dark"]) #zoomControls{border-color:#000}
 :root:not([data-theme="dark"]) #layersControl #layersBtn{background:var(--block);color:#000}
 /* Gossip mode: the globe pane is dark with yellow text, in either theme. */
-:root:not([data-theme="dark"]) body.gossip-mode-active #desktopGlobeTopControls button,:root:not([data-theme="dark"]) body.gossip-mode-active #mobileFilterChipsSection button{background:#000;color:#ffd600;border-color:#ffd600}
-body.gossip-mode-active #desktopGlobeTopControls button,body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
-body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
-:root:not([data-theme="dark"]) body.gossip-mode-active #zoomControls{border-color:#ffd600}
-:root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport{background:#000}
+:root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
+:root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button:hover,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
 /* One rule between the record and "Inside the building", and none under its heading. */
 #desktopDossierRecordBody:has(+ #desktopDossierInside:not(.hidden)) .rule-b:last-of-type{border-bottom:0}
 #desktopDossierInside>h3+.rule-t{border-top:0;padding-top:0}
@@ -958,19 +955,82 @@ a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:u
 #curatorMessages>.justify-end::before{content:"ME"}
 #curatorMessages>.curator-message-wrap p{text-indent:1em}
 
-/* Gossip mode: everything said about gossip is yellow (a deep gold on a white page, so it still reads). */
-body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#curatorMessages>.justify-end::before),
-body.gossip-mode-active #curatorMessages :is(.curator-message-wrap,.user-bubble,.user-bubble *,p,li,a,span){color:#7a5c00}
-body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,body.gossip-mode-active #curatorMessages>.justify-end::before{color:#7a5c00}
-:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody),
-:root[data-theme="dark"] body.gossip-mode-active #curatorMessages :is(.curator-message-wrap,.user-bubble,.user-bubble *,p,li,a,span),
-:root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,:root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.justify-end::before{color:#ffd600}
+/* Gossip mode: only the gossip information is yellow (a deep gold on a white page, so it still reads): the reported items in the record. The chat keeps the normal ink. */
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody),
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) :is(p,li,a,span,div){color:#7a5c00}
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody),
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) :is(p,li,a,span,div){color:#ffd600}
 
-/* Writing a note: the earlier conversation steps aside and the whole chat, conversation and input, turns orange with black text, in light and dark. */
+/* Landing: the title and the four questions share the height evenly and never scroll; the type shrinks to fit a short window. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){justify-content:space-evenly;gap:0;height:100%;min-height:0;overflow:hidden;box-sizing:border-box}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:contents}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(18px,min(2.2vw,3.6vh),44px)}
+@media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(17px,min(6.6vw,3.2vh),26px)}}
+#curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){flex:1 1 auto;height:100%;margin:0;padding-bottom:0}
+#curatorScrollContent:has(#curatorHeroGreeting:not(.hidden))>#curatorHeroGreeting{flex:1 1 auto}
+
+/* Dark mode keeps the regular weight: the record's bold wall-label titles drop back to the sans at 400. */
+:root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>.meta,
+:root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker{font-family:var(--sans);font-weight:400}
+
+/* Zoom and compass: two square buttons, the plus and minus set from the font. Light: white squares, bold signs. Dark: outlined, regular signs. */
+#zoomControls{top:76px;right:20px;gap:8px;background:none;border:0}
+#zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:36px;height:36px;padding:0;background:#fff;color:#000;border:1px solid #000;font:700 26px/1 var(--display);display:flex;align-items:center;justify-content:center}
+#zoomControls button+button{border-top:1px solid #000}
+#zoomControls button:hover{background:#000;color:#fff}
+:root[data-theme="dark"] #zoomControls button,:root[data-theme="dark"] #zoomControls #zoomInBtn,:root[data-theme="dark"] #zoomControls #zoomOutBtn{background:transparent;color:#f4f4f4;border:1px solid #f4f4f4;font:400 26px/1 var(--sans)}
+:root[data-theme="dark"] #zoomControls button:hover{background:#f4f4f4;color:#000}
+:root[data-theme="dark"] body.gossip-mode-active #zoomControls button{color:#ffd600;border-color:#ffd600}
+:root[data-theme="dark"] body.gossip-mode-active #zoomControls button:hover{background:#ffd600;color:#000}
+
+/* One line between the map and the right column: the splitter's. */
+#workViewContainer{border-left:0}
+
+/* Gossip header is yellow in every theme, so its lines are black. */
+body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#000!important}
+:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomInBtn,:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomOutBtn{color:#ffd600;border-color:#ffd600}
+:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomInBtn:hover,:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomOutBtn:hover{background:#ffd600;color:#000}
+
+/* The note above the individual accounts: regular weight, body size, no rule under it. */
+:is(#desktopDossierRecordBody,#detailBody) .kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;text-decoration:none;border:0;margin:20px 0 8px;padding:0;max-width:66ch}
+:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;margin:20px 0 8px}
+:is(#desktopDossierRecordBody,#detailBody) .accounts-note+.record-card{border-top:0;padding-top:0}
+
+/* Landing text: no hyphenation, no lone word on the last line, and the title takes the full width so it sits on one line when it fits. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{hyphens:none;-webkit-hyphens:none;overflow-wrap:normal;word-break:normal;text-wrap:balance}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{max-width:none;width:100%}
+
+/* Landing colours are the map's labels: mustard, orange, cyan. The title is a coloured question like the rest, and every line is clickable. Light mode uses deeper versions of the same hues. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:#6e6310;cursor:pointer}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#b83c00}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#0b6d73}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#6e6310}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#b83c00}
+:root[data-theme="dark"] :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:var(--mustard)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:var(--orange)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:var(--cyan)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:var(--mustard)}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--orange)}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:hover,:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{text-decoration:underline;text-underline-offset:.12em;outline:0}
+
+/* Dark mode keeps the regular weight: Share information is the sans at 400 in sentence case, not bold capitals. */
+:root[data-theme="dark"] #workInputCard #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none;letter-spacing:.01em}
+:root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none}
+
+/* Hover puts a light blue block behind a link, wider than the text on both sides, with black text, in every theme and in gossip mode. */
+:is(.inst-link,.city-link,.dossier-link):hover,
+:root[data-theme="dark"] :is(.inst-link,.city-link,.dossier-link):hover,
+body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover,
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#workInputCard #chatShareBtn:hover,:root[data-theme="dark"] #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
+
+/* Writing a note: the earlier conversation steps aside and the whole chat, conversation and input, turns gold with black text, in light and dark. */
+body.chat-input-mode-active{--gold:#dcab2c}
 body.chat-input-mode-active #curatorMessages>.before-note{display:none}
-body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #workBottomDock{background:var(--gossip)}
+body.chat-input-mode-active #workInputCard.is-mode{background:transparent}
+body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #workBottomDock{background:var(--gold)}
 body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #curatorScrollArea *,body.chat-input-mode-active #curatorScrollArea *::before,body.chat-input-mode-active #workBottomDock,body.chat-input-mode-active #workBottomDock *{color:#000!important;border-color:#000!important}
-body.chat-input-mode-active #curatorScrollArea a:hover,body.chat-input-mode-active #workBottomDock a:hover{background:#000;color:var(--gossip)!important;text-decoration:none}
+body.chat-input-mode-active #curatorScrollArea a:hover,body.chat-input-mode-active #workBottomDock a:hover{background:#000;color:var(--gold)!important;text-decoration:none}
 /* Voice and Listen read chat answers aloud; they have nothing to do while a note is written. */
 body.chat-input-mode-active #curatorVoiceToggleBtn,body.chat-input-mode-active #curatorListenBtn{display:none!important}
 body.chat-input-mode-active #workBottomDock button:hover,body.chat-input-mode-active #curatorScrollArea button:hover{text-decoration:underline}
