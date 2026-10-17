@@ -818,3 +818,6 @@ button,summary{cursor:pointer}
 #workInputCard #chatShareBtn{background:transparent;color:#1d7a3a;padding:8px 0;font-family:var(--display);font-weight:700;text-transform:uppercase}
 :root[data-theme="dark"] #workInputCard #chatShareBtn{color:#6fdc8c}
 #workInputCard #chatShareBtn:hover{background:transparent!important;color:var(--ink)!important;text-decoration:underline}
+/* Capitals 10% larger. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(24px,2.2vw,44px)}
+@media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:26px}}
