@@ -965,3 +965,12 @@ body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,body.goss
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody),
 :root[data-theme="dark"] body.gossip-mode-active #curatorMessages :is(.curator-message-wrap,.user-bubble,.user-bubble *,p,li,a,span),
 :root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,:root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.justify-end::before{color:#ffd600}
+
+/* Writing a note: the earlier conversation steps aside and the whole chat, conversation and input, turns orange with black text, in light and dark. */
+body.chat-input-mode-active #curatorMessages>.before-note{display:none}
+body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #workBottomDock{background:var(--gossip)}
+body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #curatorScrollArea *,body.chat-input-mode-active #curatorScrollArea *::before,body.chat-input-mode-active #workBottomDock,body.chat-input-mode-active #workBottomDock *{color:#000!important;border-color:#000!important}
+body.chat-input-mode-active #curatorScrollArea a:hover,body.chat-input-mode-active #workBottomDock a:hover{background:#000;color:var(--gossip)!important;text-decoration:none}
+/* Voice and Listen read chat answers aloud; they have nothing to do while a note is written. */
+body.chat-input-mode-active #curatorVoiceToggleBtn,body.chat-input-mode-active #curatorListenBtn{display:none!important}
+body.chat-input-mode-active #workBottomDock button:hover,body.chat-input-mode-active #curatorScrollArea button:hover{text-decoration:underline}

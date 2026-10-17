@@ -14873,6 +14873,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const defaultTopic = kinds.includes(kindOrTopic) ? '' : kindOrTopic;
       chatInputKind = kinds.includes(kindOrTopic) ? kindOrTopic : 'information';
       isChatInputMode = true;
+      // The conversation so far steps aside while a note is written; it comes back with Back to chat.
+      document.querySelectorAll('#curatorMessages > *').forEach(m => m.classList.add('before-note'));
       if (typeof window.closeWorkPlusMenu === 'function') window.closeWorkPlusMenu();
       document.getElementById('workPlusMenu')?.classList.add('hidden');
 
@@ -14994,6 +14996,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     function exitChatInputMode() {
       isChatInputMode = false;
+      document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
 
       // 1. Deactivate whole-chat full-width mode
       document.body.classList.remove('chat-input-mode-active');
@@ -15149,7 +15152,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           note.status = 'sent_for_review';
           said = `Sent to the editor as ${label} note. It appears on the atlas only once it is approved, and nothing in it has been checked. A copy is kept in this browser.`;
         } catch (err) {
-          said = `It could not be sent (${escapeHtml(err.message || 'no connection')}), so it is saved as ${label} note in this browser only. Try again later.`;
+          said = `It could not be sent (${escapeHtml(err.message || 'no connection')}), so it is saved as ${label} note in this browser only.`;
         }
       }
       saveCommunityResearchSubmission(note);
