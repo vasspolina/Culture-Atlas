@@ -115,7 +115,7 @@
     });
     // The focused space's own ties, bright, with a dot at each far end.
     if (rec && typeof rec.lat === 'number') {
-      ctx.lineWidth = 1; ctx.globalAlpha = 0.5;
+      ctx.lineWidth = 1.4; ctx.globalAlpha = 0.8;
       const seen = new Set([rec.id]), ends = [];
       rec.nodes.forEach(n => {
         if (!FUNDER(n) || !n[5]) return;
@@ -279,7 +279,9 @@
         if (!focus) return;
         const nodes = rec.nodes.filter(FUNDER);
         if (!nodes.length) return;
-        const N = Math.min(nodes.length, focus ? 10 : 6), R = focus ? 64 : 36;
+        // The ring is 64 px when the view is close; further out it shrinks, so funders never land on other cities.
+        const zoomK = Math.max(0.4, Math.min(1, r / (baseRadius * 12)));
+        const N = Math.min(nodes.length, focus ? 10 : 6), R = (focus ? 64 : 36) * zoomK;
         for (let i = 0; i < N; i++) {
           const n = nodes[i], a = -Math.PI / 2 + (i * 2 * Math.PI) / N, x = d.x + R * Math.cos(a), y = d.y + R * Math.sin(a);
           const col = gossip ? '#ffd600' : COL[n[1]];
@@ -314,7 +316,14 @@
     L.money = true; L.ties = true; loadMoney();
     document.querySelectorAll('#layersPanel input[data-layer]').forEach(i => { if (i.dataset.layer === 'money' || i.dataset.layer === 'ties') i.checked = true; });
     if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
+    const inst = id && typeof window.resolveInstitutionByIdOrName === 'function' ? window.resolveInstitutionByIdOrName(id) : null;
     if (id && typeof window.selectInstitution === 'function') window.selectInstitution(id, false);
+    // Close in on the space, so its funders sit around it in its own city rather than across the continent.
+    if (inst && typeof inst.lat === 'number' && typeof inst.lon === 'number' && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
+      const z = window.getMaxRadius();
+      if (typeof window.setTargetRadius === 'function') window.setTargetRadius(z);
+      window.flyTo(inst.lon, inst.lat, z);
+    }
     if (typeof scheduleRender === 'function') scheduleRender();
   };
 
