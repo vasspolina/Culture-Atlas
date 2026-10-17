@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=167">
-  <script src="assets/config.js?v=167"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=168">
+  <script src="assets/config.js?v=168"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -445,7 +445,6 @@ return maplibregl$1;
         <button type="button" class="xray-pill" data-xray-mode="xray" aria-pressed="true" onclick="window.setXrayMode('xray')">X-ray</button>
         <button type="button" class="xray-pill" data-xray-mode="plan" aria-pressed="false" onclick="window.setXrayMode('plan')">Plan</button>
         <button type="button" class="xray-pill" data-xray-mode="section" aria-pressed="false" onclick="window.setXrayMode('section')">Section</button>
-        <button type="button" class="xray-pill" data-xray-mode="orbit" aria-pressed="false" onclick="window.setXrayMode('orbit')" title="Drag to turn the building">Orbit</button>
       </div>
 
       <!-- Inside the building: what the record holds, beside the outline the map data has for it. Nothing here is drawn from a guess. -->
@@ -7252,7 +7251,7 @@ return maplibregl$1;
       if (!isCityStreetViewActive || !matchC(cityStreetViewCity, inst.city)) {
         openCityStreetView(inst.city, inst.lat, inst.lon);
       }
-      XRAY.mode = 'xray'; xrayOrbitDragOff();
+      XRAY.mode = 'xray';
       if (xrayMapIsMock()) { showBuildingXray(inst); return; }
       if (cityVectorMap && typeof cityVectorMap.flyTo === 'function') {
         cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: 17.2, pitch: 55, bearing: 0, duration: 900, essential: true, offset: xrayFlyOffset() });
@@ -7266,14 +7265,13 @@ return maplibregl$1;
     //  translucent shell, with one slab inside for each kind of material the record actually holds. No outline means no shell;
     //  every label is a count of what the record has; facts from Wikidata say so and how they were matched.
     // =========================================================================
-    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, dimmed: false, waiting: false, mode: 'xray', orbiting: false };
-    // The four ways of looking at the building. Each is a camera on the same outline; Plan draws the contents as nested outlines
+    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, dimmed: false, waiting: false, mode: 'xray' };
+    // The three ways of looking at the building. Each is a camera on the same outline; Plan draws the contents as nested outlines
     // seen from above, the others as slabs stacked inside the shell.
     const XRAY_CAMERAS = {
       xray:    { zoom: 17.2, pitch: 55, bearing: 0 },
       plan:    { zoom: 18.0, pitch: 0,  bearing: 0 },
-      section: { zoom: 18.0, pitch: 60, bearing: 90 },
-      orbit:   { zoom: 17.6, pitch: 60, bearing: 0 }
+      section: { zoom: 18.0, pitch: 60, bearing: 90 }
     };
     const XRAY_COLOURS = { flag: '#fa4d56', funding: '#08bdba', reported: '#ff7eb6', accounts: '#be95ff', sources: '#42be65', visiting: '#f1c21b', studies: '#009d9a', facts: '#ff832b' };
     const WIKIDATA_SPARQL = 'https://query.wikidata.org/sparql';
@@ -7457,41 +7455,10 @@ return maplibregl$1;
         bar.style.top = Math.round(b.bottom - p.top + 6) + 'px';
       }
     }
-    // Orbit turns only under the hand: a plain drag (one finger, or the mouse without a modifier) turns the building about
-    // its centre, and panning rests until another mode is picked. Nothing moves on its own.
-    const ORBIT = { down: false, x: 0, bearing: 0, handlers: null };
-    function xrayOrbitDragOn() {
-      if (XRAY.orbiting || !cityVectorMap || typeof cityVectorMap.getCanvasContainer !== 'function') return;
-      const el = cityVectorMap.getCanvasContainer();
-      if (cityVectorMap.dragPan && typeof cityVectorMap.dragPan.disable === 'function') cityVectorMap.dragPan.disable();
-      const pt = e => (e.touches && e.touches[0]) || e;
-      const down = e => { if (e.touches && e.touches.length > 1) return; if (e.button != null && e.button !== 0) return; const p = pt(e); ORBIT.down = true; ORBIT.x = p.clientX; ORBIT.bearing = cityVectorMap.getBearing(); el.style.cursor = 'grabbing'; };
-      const move = e => { if (!ORBIT.down) return; const p = pt(e); cityVectorMap.jumpTo({ bearing: ORBIT.bearing + (p.clientX - ORBIT.x) * 0.5 }); if (e.cancelable) e.preventDefault(); };
-      const up = () => { ORBIT.down = false; el.style.cursor = 'grab'; };
-      ORBIT.handlers = { el, down, move, up };
-      el.addEventListener('mousedown', down); el.addEventListener('touchstart', down, { passive: true });
-      window.addEventListener('mousemove', move); window.addEventListener('touchmove', move, { passive: false });
-      window.addEventListener('mouseup', up); window.addEventListener('touchend', up); window.addEventListener('touchcancel', up);
-      el.style.cursor = 'grab';
-      XRAY.orbiting = true;
-    }
-    function xrayOrbitDragOff() {
-      const h = ORBIT.handlers;
-      if (h) {
-        h.el.removeEventListener('mousedown', h.down); h.el.removeEventListener('touchstart', h.down);
-        window.removeEventListener('mousemove', h.move); window.removeEventListener('touchmove', h.move);
-        window.removeEventListener('mouseup', h.up); window.removeEventListener('touchend', h.up); window.removeEventListener('touchcancel', h.up);
-        h.el.style.cursor = '';
-      }
-      ORBIT.handlers = null; ORBIT.down = false;
-      if (XRAY.orbiting && cityVectorMap && cityVectorMap.dragPan && typeof cityVectorMap.dragPan.enable === 'function') cityVectorMap.dragPan.enable();
-      XRAY.orbiting = false;
-    }
     function setXrayMode(mode) {
       if (!XRAY_CAMERAS[mode]) return;
       const inst = XRAY.inst;
       XRAY.mode = mode;
-      if (mode !== 'orbit') xrayOrbitDragOff();
       xraySyncModeBar(!!inst);
       if (!inst || !cityVectorMap) return;
       if (xrayMapIsMock()) { xraySyncModeBar(true); return; }
@@ -7500,12 +7467,10 @@ return maplibregl$1;
       if (typeof cityVectorMap.stop === 'function') cityVectorMap.stop();
       cityVectorMap.easeTo({ center: c, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing, duration: 700, essential: true, offset: xrayFlyOffset() });
       if (xrayLayersReady()) { if (XRAY.building) xrayDraw(inst); } else { xrayWhenSettled(inst); }
-      if (mode === 'orbit') xrayOrbitDragOn();
     }
     window.setXrayMode = setXrayMode;
 
     function hideBuildingXray() {
-      xrayOrbitDragOff();
       XRAY.inst = null; XRAY.waiting = false; XRAY.mode = 'xray';
       xraySyncModeBar(false);
       try { if (cityVectorMap && cityVectorMap.getLayer && cityVectorMap.getLayer('xray-slabs-outline')) cityVectorMap.setLayoutProperty('xray-slabs-outline', 'visibility', 'none'); } catch (e) { /* style not ready */ }
@@ -17768,8 +17733,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=167"></script>
-<script src="assets/bubbles.js?v=167" defer></script>
-<script src="assets/typeset.js?v=167"></script>
+<script src="assets/layers.js?v=168"></script>
+<script src="assets/bubbles.js?v=168" defer></script>
+<script src="assets/typeset.js?v=168"></script>
 </body>
 </html>
