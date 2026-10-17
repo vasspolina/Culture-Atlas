@@ -916,3 +916,11 @@ abbr[title]{text-decoration:none}
 :is(#desktopDossierRecordBody,#detailBody) .visit-rows{margin-top:8px}
 :is(#desktopDossierRecordBody,#detailBody) .visit-rows>div{padding-top:18px;padding-bottom:18px}
 :is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>.meta{margin-bottom:6px}
+
+/* No "ME" mark: neither the input nor the user's turns carry one. */
+#curatorMessages>.justify-end::before,#workInputCard::before,#workInputCard.is-mode::before{content:none!important}
+#workInputCard{padding-left:0}
+#workInputCard.is-mode{padding-left:12px}
+/* Space between the title and the questions, 15% tighter. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting),:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){gap:51px}
+@media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting),:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){gap:31px}}
