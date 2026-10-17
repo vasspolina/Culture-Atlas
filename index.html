@@ -660,7 +660,7 @@ return maplibregl$1;
           </div>
           <div id="mobileSheetInputRow" class="px-3 pb-2_5 pt-1">
             <div class="w-full rule-b px-2_5 py-1_5 flex items-center gap-2 min-h-_44px">
-              <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this museum..." class="flex-1 min-h-_36px" />
+              <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this museum…" class="flex-1 min-h-_36px" />
               <button id="mobileSheetQuickSendBtn" type="button" class="w-8 h-8 flex items-center justify-center shrink-0 min-h-_36px min-w-_36px">
                 <svg class="w-3_5 h-3_5" viewBox="0 0 32 32" fill="currentColor"><path d="M27.71 4.29a1 1 0 0 0-1.05-.23l-22 8a1 1 0 0 0 0 1.87l8.59 3.43L20.59 10 22 11.41l-7.37 7.37 3.44 8.59A1 1 0 0 0 19 28a1 1 0 0 0 .92-.66l8-22a1 1 0 0 0-.21-1.05z"/></svg>
               </button>
@@ -7662,7 +7662,7 @@ return maplibregl$1;
 
       const titleEl = document.getElementById('cityViewTitleText');
       if (titleEl) {
-        titleEl.innerHTML = `${escapeHtml(cityName)} <span class="sr-only">${escapeHtml(cityName.toUpperCase())}</span>, ${cityInsts.length} ${cityInsts.length === 1 ? 'space' : 'spaces'}`;
+        titleEl.innerHTML = `${escapeHtml(cityName)}<span class="sr-only">${escapeHtml(cityName.toUpperCase())}</span>, ${cityInsts.length} ${cityInsts.length === 1 ? 'space' : 'spaces'}`;
       }
       const backCountryBtn = document.getElementById('backToCountryBtn');
       const backCountryText = document.getElementById('backToCountryText');
@@ -10016,7 +10016,7 @@ return maplibregl$1;
           const cityCountry = cityMeta ? cityMeta.country : lastSelectedCountry;
           if (badgeIcon) badgeIcon.textContent = '';
           if (cityTitleEl) {
-            cityTitleEl.innerHTML = `${escapeHtml(targetCity)} <span class="sr-only">${escapeHtml(targetCity.toUpperCase())}</span>, ${cityMatches.length} ${cityMatches.length === 1 ? 'space' : 'spaces'}`;
+            cityTitleEl.innerHTML = `${escapeHtml(targetCity)}<span class="sr-only">${escapeHtml(targetCity.toUpperCase())}</span>, ${cityMatches.length} ${cityMatches.length === 1 ? 'space' : 'spaces'}`;
           }
           if (backCountryBtn && cityCountry) {
             backCountryBtn.classList.remove('hidden');
@@ -11380,8 +11380,8 @@ return maplibregl$1;
 
       if (mTitle) mTitle.textContent = inst.name;
       if (mCity) mCity.textContent = inst.city || inst.country || 'Global Network';
-      if (mQuickInput) mQuickInput.placeholder = `Ask about ${inst.name}...`;
-      if (mAnchoredInput) mAnchoredInput.placeholder = `Ask about ${inst.name}...`;
+      if (mQuickInput) mQuickInput.placeholder = `Ask about ${inst.name}…`;
+      if (mAnchoredInput) mAnchoredInput.placeholder = `Ask about ${inst.name}…`;
 
       // 1. Update Desktop Dossier Column (middle column in AI Studio 3-column layout)
       if (typeof updateDesktopDossier === 'function') {
@@ -17519,5 +17519,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
   
   </script>
 <script src="assets/layers.js"></script>
+<script src="assets/typeset.js"></script>
 </body>
 </html>
