@@ -604,6 +604,9 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 /* Save note is a text button like Share information and Listen, not a black disc. */
 #workSendBtn.is-on{width:auto;height:auto;border-radius:0;background:transparent;color:inherit!important;padding:0;white-space:nowrap}
 #workSendBtn.is-on:hover{text-decoration:underline}
+/* While writing a note the toolbar wraps, so Send for review stays on screen on a phone. */
+#workInputCard.is-mode>div.justify-between{flex-wrap:wrap;gap:8px 12px}
+#workInputCard.is-mode>div.justify-between>div{flex-wrap:wrap}
 /* Zoom: the same square set the street map has, top right under the compass. No round buttons at the bottom. */
 #zoomControls{position:absolute;top:70px;right:20px;bottom:auto;z-index:20;display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid #fff}
 #zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:32px;height:32px;padding:0;border-radius:0;background:#fff;color:#000;display:flex;align-items:center;justify-content:center}
@@ -1035,3 +1038,14 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) :is(.cura
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap p:not(.no-indent){text-indent:0}
 /* Street-view pins do not grow under the pointer: a target that moves as you reach for it is hard to hit. */
 .custom-inst-pin:hover{transform:none}
+
+/* Writing a note: the earlier conversation steps aside and the whole chat, conversation and input, turns gold with black text, in light and dark. */
+body.chat-input-mode-active{--gold:#dcab2c}
+body.chat-input-mode-active #curatorMessages>.before-note{display:none}
+body.chat-input-mode-active #workInputCard.is-mode{background:transparent}
+body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #workBottomDock{background:var(--gold)}
+body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #curatorScrollArea *,body.chat-input-mode-active #curatorScrollArea *::before,body.chat-input-mode-active #workBottomDock,body.chat-input-mode-active #workBottomDock *{color:#000!important;border-color:#000!important}
+body.chat-input-mode-active #curatorScrollArea a:hover,body.chat-input-mode-active #workBottomDock a:hover{background:#000;color:var(--gold)!important;text-decoration:none}
+/* Voice and Listen read chat answers aloud; they have nothing to do while a note is written. */
+body.chat-input-mode-active #curatorVoiceToggleBtn,body.chat-input-mode-active #curatorListenBtn{display:none!important}
+body.chat-input-mode-active #workBottomDock button:hover,body.chat-input-mode-active #curatorScrollArea button:hover{text-decoration:underline}
