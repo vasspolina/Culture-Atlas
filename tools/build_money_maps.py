@@ -12,32 +12,33 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC=os.path.join(ROOT,'institutions.json')
 OUT=os.path.join(ROOT,'assets','money-maps.json')
 d=json.load(open(SRC,encoding='utf-8'))
-GOV=re.compile(r"\b(dcms|statutory|grant-in-aid|ministry|ministerio|ministère|government|govt|council|state|city|municipal|municipality|federal|national endowment|lottery|lotto|culture fund|cultural affairs|department|commission|agency|region|regional|province|county|kommune|länder|land |bund|crown|treasury|european union|\bEU\b|creative europe|arts council|heritage fund|canada council|ville de|stadt|gemeente|prefecture|republic|embassy|consulate|parliament|senate|congress)\b",re.I)
+GOV=re.compile(r"\b(dcms|statutory|grant-in-aid|ministry|ministerio|ministère|government|govt|council|state|city|municipal|municipality|federal|national endowment|lottery|lotto|culture fund|cultural affairs|department|commission|agency|region|regional|province|provincial|county|kommune|länder|land |bund|crown|canton|cantonal|kanton|generalitat|junta|comune|commune|gemeente|ayuntamiento|municipio|prefecture|diputaci[oó]n|treasury|european union|\bEU\b|creative europe|arts council|heritage fund|canada council|ville de|stadt|gemeente|prefecture|republic|embassy|consulate|parliament|senate|congress)\b",re.I)
 FOUND=re.compile(r"\b(foundations?|funds?|fonds|fondation|fondazione|stiftung|fundación|trusts?|family|philanthrop\w*|endowments?|society|friends|patrons?|board|trustees?|donors?|bequest|legacy|charit\w*|institute|association)\b",re.I)
 GENERIC=set(x.lower() for x in """Admissions Admission Tickets Ticket Donations Donation Memberships Membership Sponsorship Sponsors Sponsor Visitors Earned income Individual donors Grants Grant Revenue Public funding Private donors Private funding Corporate sponsors Retail Shop Events Rentals Fundraising Income Budget Operating budget Endowment Mostly Mainly Plus Also Other Others Various Several Some Many Free Funding Support Supported Founded""".split('\n')[0].split())
 GENERIC|={'admissions','tickets','donations','memberships','sponsors','visitors','earned income','individual donors','private donors','public funding','ticket sales','retail','shop','events','income','budget','endowment','revenue','grants'}
-PREFIX=re.compile(r"^(?:paid for by|paid by|funded (?:mainly |mostly |largely )?by|financed by|supported (?:mainly |mostly )?by|funding (?:comes )?from|mainly|mostly|largely|plus|also|and|with|including|sponsors include|sponsors:|sponsored by|backed by|run by|owned by|operated by|founder|donors? include)\s+",re.I)
+PREFIX=re.compile(r"^(?:paid for by|paid by|funded (?:mainly |mostly |largely |directly |primarily |partly |chiefly |principally |wholly |entirely |jointly |largely |in part )?by|financed (?:mainly |mostly |largely |directly |primarily |partly )?by|supported (?:mainly |mostly |largely |directly |primarily |partly |principally )?by|funding (?:comes )?from|mainly|mostly|largely|plus|also|and|with|including|sponsors include|sponsors:|sponsored by|backed by|run by|owned by|operated by|founder|donors? include)\s+",re.I)
 MONEY=re.compile(r"(?:US\$|[$£€¥]|CHF|JPY|RON|DKK|SEK|NOK|AUD|CAD|NZD|BRL|MXN|INR|CNY|RMB|KRW|PLN|CZK|HUF|ZAR|TRY|RUB)\s?\d[\d.,]*\s?(?:[MmBbKk]\b|million|billion|bn|m\b)?",re.I)
 SPLIT=re.compile(r",|;|\band\b|\bplus\b|\bwith\b|\bvia\b|\bthrough\b|\bfrom\b| & |\bplus\b|:")
 def norm(s):
     s=s.lower(); s=re.sub(r"\b(the|foundations?|funds?|fonds|stiftung|fondation|inc|ltd|llc|plc|co|corp|corporation|group|philanthropies)\b"," ",s); return re.sub(r"[^a-z0-9]","",s)
 # Names that are not funders (the free text yields a few), and names that mean the same funder.
-JUNK={'expenses','culture','members','arts','tourism','501nonprofit','nonprofit','nonprofitassociation','related','founderfunded','selffunded','other','others','public','private','local','national','regional'}
+JUNK={'created','frank','german','spanish','projectsponsors','friendsassociation','eur','usd','gbp','municipal','triennial','artistrun','foundationcontributing','corporate','founding','privatephilanthropic','publicculturalbody','botdeal','francophonie','cabinet','senate','family','france','poland','namibianlaw','partnerscommittee','departement','christie','sotheby','expenses','culture','members','arts','tourism','501nonprofit','nonprofit','nonprofitassociation','related','founderfunded','selffunded','other','others','public','private','local','national','regional'}
 # Fiscal years, percentages, counts and amounts are figures from the funding text, not funders.
 JUNK_RE=re.compile(r"(registered charity|subsidiary of|part of |sat on |shows credit|residenc|\bno\. ?\d|\b(19|20)\d\d\b"
                    r"|\bFY\s?\d|\d\s?%|^\d[\d.,]*\+?\s+(?:works|members|individuals|families|for|non-?profit|edition|report|artists|donors|people|employees)\b"
                    r"|^\d|^(?:a|per)\s+year$|\b(?:report|expenses)$|^about\s+\d|\bof it\b|\b(?:EUR|USD|GBP|CHF|NIS|FCFA|JPY|DKK|SEK|NOK|EU)\s?\d"
                    r"|\bcost about$|^the \d+(?:st|nd|rd|th) edition|\b(?:donated|gave|funded its|co-funded|was)\b|^holds\b|\bis an?$|\b[A-Z]\.[A-Z]$|^main partner\b)",re.I)
-SUFFIX_RE=re.compile(r"\s+(funds it|support|lead|founding gift|sat on its board|for the prize|as maintainer|media partner)$",re.I)
+SUFFIX_RE=re.compile(r"\s+(funds it|support|lead|founding gift|sat on its board|for the prize|as maintainer|media partner|collection|endowment|project grants|grants|bequest|gift|donation|contract|returns|civic environmental agreements|partners?|programme|program|partnership|preservation|civic|own|fortune|also)$",re.I)
 LEAD_RE=re.compile(r"^under the (?:non-profit )?",re.I)
+ROLE_RE=re.compile(r"\s+as\s+(?:the\s+|an?\s+|its\s+)?[a-z].*$")
 # A sum glued to a name ('Intesa Sanpaolo 464k', 'Ministry of Culture 2.9M', 'Enel 600k as a promoter member') is cut off
 # at the sum; a number without a unit ('Fonds 21', 'Tequila 1800', 'WDR 3') is part of the name and stays.
 TRAIL_SUM_RE=re.compile(r"\s+\d[\d.,]*\s?(?:[kKmMbB]|million|billion|thousand|mn|bn)\b.*$")
 ALIAS={'warhol':'andywarhol','nea':'nationalendowmentforarts','canadacouncil':'canadacouncilforarts','nycdcla':'nycdepartmentofculturalaffairs','artscouncilenglandnationalportfolio':'artscouncilengland'}  # values are norm() forms
 GENERIC_GOV={'city government','state government','regional government','government','ministry of culture','county government','local authority','federal government','regional state'}
 def clean_label(nm):
-    nm=TRAIL_SUM_RE.sub('',LEAD_RE.sub('',SUFFIX_RE.sub('',nm))).strip(' .,;-')
-    if len(nm)<3 or len(nm)>48 or JUNK_RE.search(nm) or norm(nm) in JUNK: return None
+    nm=TRAIL_SUM_RE.sub('',LEAD_RE.sub('',ROLE_RE.sub('',SUFFIX_RE.sub('',nm)))).strip(' .,;-')
+    if len(nm)<3 or len(nm)>60 or JUNK_RE.search(nm) or norm(nm) in JUNK: return None
     return nm
 def merge_key(label,cat,country,rid):
     """One key per funder across the whole atlas. Public bodies are told apart by country, and generic
@@ -82,20 +83,45 @@ def clean(tok):
     m=re.match(r"^.*\b(?:members|include|includes|including|sponsors|donors|partners|supporters)\s+(?=[A-Z])",tok)
     if m and len(tok)>m.end(): tok=tok[m.end():]
     tok=re.sub(r"\s*\(.*?\)\s*"," ",tok).strip(" .")
+    # "62% government", "City 51%", "about 85% public": the share is dropped and the body kept.
+    tok=re.sub(r"^(?:about|around|roughly|some|over|nearly)?\s*\d[\d.,]*\s?%\s*(?:of\s+(?:it|the budget|its budget|income|revenue)\s+)?(?:from\s+)?","",tok,flags=re.I)
+    tok=re.sub(r"\s+\d[\d.,]*\s?%$","",tok)
+    # "Hyundai Motor since 2014": the date is not part of the name.
+    tok=re.sub(r"\s+(?:since|from|until|in|between)\s+(?:19|20)\d\d\b.*$","",tok,flags=re.I)
+    # "Municipal kunsthalle run by the City of Malmö": the funder is what follows "by".
+    m2=re.search(r"\b(?:funded|financed|supported|run|owned|operated|backed|seeded|subsidi[sz]ed|paid for|co-funded)\s+(?:\w+\s+)?by\s+",tok,re.I)
+    if m2: tok=tok[m2.end():].strip(" .")
+    # "the Glass-House Trust": the article would fail the capital-letter test below, so it goes; keys never held it.
+    tok=re.sub(r"^the\s+","",tok,flags=re.I).strip(" .")
+    # "Statutory body under the Ministry of Cultural Affairs": the funder is what follows "under".
+    m3=re.search(r"\bunder (?:the\s+|a\s+|an\s+)?(?=[A-Z])",tok)
+    if m3: tok=tok[m3.end():].strip(" .")
+    # "Astana Motors pays running costs", "Pinault bought Palazzo Grassi": a lowercase verb ends the name. Case matters:
+    # "Pays de Montbéliard" is a name.
+    m4=re.search(r"\s(?:owns|owned|bought|pays|paid|supervised|cites|co-funds|funds|funded|financed|runs|ran|run|set up|took over|gave|donated|holds|cost|covers|provides|provided|manages|operates|operated|backs|backed|sponsors|sponsored|supports|supported|produces|lists|contributing|contributed|is|are|was|were|comes|traces|relying|returns|oversees|publishes|owns|drew|pledged|overseeing|sits|who|which|whose|that)\b",tok)
+    if m4:
+        head=tok[:m4.start()].strip(" .,")
+        tok=head if re.search(r"[A-Z]",head) else ''
+    tok=re.sub(r"'s$","",tok).strip(" .")
+    # A description beginning with an article or a size word is not a name.
+    if re.match(r"^(?:an?|its|his|her|their|no|tiny|small|large|independent|about|us arm|mostly|mainly|public funders|site logos|partners listed|institutional funding|family money|joint shows|board leadership|self-funding)\b",tok,re.I): return ''
     return tok
 GOVGEN={'the city':'City government','city':'City government','the state':'State government','state':'State government','the region':'Regional government','the government':'Government','government':'Government','the ministry':'Ministry of Culture','the county':'County government','local authority':'Local authority','the federal government':'Federal government'}
+GOVGEN.update({'canton':'Canton','the canton':'Canton','federal':'Federal government','the federal government':'Federal government','county':'County government','the county':'County government',
+  'province':'Provincial government','the province':'Provincial government','provincial government':'Provincial government','municipality':'Municipal government','the municipality':'Municipal government',
+  'commune':'Municipal government','the commune':'Municipal government','regional government':'Regional government','the regional government':'Regional government','crown':'Crown','the crown':'Crown','eu':'European Union','the eu':'European Union'})
 def parse_funding(text):
     out=[];seen=set()
     if not text: return out
     text=re.sub(r"\d{1,3}(?:,\d{3})+\s*(?:visits|visitors)","",text)
     text=re.sub(r"\s*\([^)]*\)","",text)
     text=re.sub(r"\s+\.",".",text)
-    for sent in re.split(r"(?<=[A-Za-z0-9\)])\.\s+(?=[A-Z$£€])",text):
+    for sent in re.split(r"(?<=[A-Za-z0-9\)])\.\s+(?=[A-Z$£€0-9])",text):
         s0=PREFIX.sub('',sent.strip())
         for raw in SPLIT.split(s0):
             m=MONEY.search(raw); tok=clean(raw)
             if tok.lower() in GOVGEN: tok=GOVGEN[tok.lower()]
-            if not tok or len(tok)<3 or len(tok.split())>7: continue
+            if not tok or len(tok)<3 or len(tok.split())>9: continue
             if not (tok[0].isupper() or tok[0].isdigit()): continue
             if tok.lower() in GENERIC: continue
             if re.search(r"\b(museum|gallery|galleries|centre|center|house|building|institution|school|library|archive|collection|theatre|theater)$",tok,re.I) and not FOUND.search(tok): continue
