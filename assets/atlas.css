@@ -110,7 +110,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 /* The street-view bar: a plain white block with a black rule, like the drawing it sits on. No scroll container, so no ragged ends. */
 #cityViewControlBanner{background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:9px 14px;gap:16px;overflow:visible}
 #cityViewControlBanner button,#cityViewControlBanner span,#cityViewControlBanner div{color:var(--ink)}
-#cityViewControlBanner button{text-decoration:underline}
+#cityViewControlBanner button,#cityViewControlBanner a{text-decoration:none}
 #activeRouteBanner{padding:16px;max-width:390px}
 #activeRouteBanner .meta,#activeRouteBanner span,#activeRouteBanner div{color:var(--paper)}
 #activeRouteBanner button{color:var(--paper);text-decoration:underline;font:400 14px/1 var(--sans)}
@@ -959,7 +959,7 @@ body :is(p,li):not(.meta):not(.starter-label):not(.layers-count){font-size:18px;
 
 /* Links in running text are underlined everywhere: chat, record, cards, notes. Buttons made from links stay as blocks. */
 a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
-#curatorMessages a,#detailBody a:not(.record-action),#desktopDossierRecordBody a:not(.record-action),#desktopDossierColumn a:not(.record-action),.chat-info a,#floatingCard a:not(.record-action),#cityViewControlBanner a{text-decoration:underline}
+#curatorMessages a,#detailBody a:not(.record-action),#desktopDossierRecordBody a:not(.record-action),#desktopDossierColumn a:not(.record-action),.chat-info a,#floatingCard a:not(.record-action){text-decoration:underline}
 
 /* The person's turn carries its ME mark again; the input box does not. The first line of every paragraph in a turn is indented one em, even where an answer marks it .no-indent. */
 #curatorMessages>.justify-end::before{content:"ME"}
