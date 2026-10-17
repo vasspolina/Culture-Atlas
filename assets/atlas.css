@@ -1079,3 +1079,6 @@ body.gossip-mode-active .thinking{color:#000}
 
 /* No rules between record cards */
 :is(#desktopDossierRecordBody,#detailBody) .record-card{border-top:0;border-bottom:0}
+
+/* AI disclosure line under answers: 14px, 6px above */
+body #curatorMessages p.ai-note{font-size:14px;line-height:1.3;margin-top:6px}
