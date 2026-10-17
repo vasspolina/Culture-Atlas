@@ -64,8 +64,9 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Network-first with cache fallback for the page's own files
+  // Revalidated on every load, so a release is never hidden behind the host's ten-minute HTTP cache.
   event.respondWith(
-    fetch(event.request).then((networkResponse) => {
+    fetch(event.request, { cache: 'no-cache' }).then((networkResponse) => {
       if (networkResponse && networkResponse.status === 200) {
         const responseToCache = networkResponse.clone();
         caches.open(CACHE_NAME).then((cache) => {
