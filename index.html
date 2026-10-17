@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=164">
-  <script src="assets/config.js?v=164"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=165">
+  <script src="assets/config.js?v=165"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9634,7 +9634,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=164').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=165').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12729,7 +12729,7 @@ return maplibregl$1;
       if (!rawText || typeof rawText !== 'string') return '';
 
       // Guard against re-processing already rendered curator HTML
-      if (rawText.includes('curator-section-hdr') || rawText.includes('curator-bullet-list') || (rawText.trim().startsWith('<div') && rawText.includes('</div>'))) {
+      if (rawText.includes('curator-section-hdr') || rawText.includes('curator-bullet-list') || rawText.includes('source-citation-pill') || (rawText.trim().startsWith('<div') && rawText.includes('</div>'))) {
         return rawText;
       }
 
@@ -12786,10 +12786,12 @@ return maplibregl$1;
             const openTag = preceding.lastIndexOf('<');
             const closeTag = preceding.lastIndexOf('>');
             if (openTag > closeTag) return m;
+            // A name already inside a pill (the text was rendered once before) is left alone: no pill in a pill.
+            if (preceding.lastIndexOf('source-citation-pill') > Math.max(preceding.lastIndexOf('</a>'), preceding.lastIndexOf('</button>'))) return m;
             if (s.onclick) {
-              return `<button type="button" onclick="${s.onclick}" class="source-citation-pill inline-flex items-center gap-1 px-2 py-0_5 meta align-baseline my-0_5 mx-0_5" title="Inspect ${s.label} statutory disclosures">${s.icon}<span>${m}</span></button>`;
+              return `<button type="button" onclick="${s.onclick}" class="source-citation-pill inline-flex items-center meta align-baseline" title="Inspect ${s.label} statutory disclosures">${s.icon}<span>${m}</span></button>`;
             }
-            return `<a href="${s.url}" target="_blank" rel="noopener noreferrer" class="source-citation-pill inline-flex items-center gap-1 px-2 py-0_5 meta no-underline align-baseline my-0_5 mx-0_5" title="Verify report via ${s.label}">${s.icon}<span>${m}</span></a>`;
+            return `<a href="${s.url}" target="_blank" rel="noopener noreferrer" class="source-citation-pill inline-flex items-center meta no-underline align-baseline" title="Verify report via ${s.label}">${s.icon}<span>${m}</span></a>`;
           });
         }
         return str;
@@ -17755,8 +17757,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=164"></script>
-<script src="assets/bubbles.js?v=164" defer></script>
-<script src="assets/typeset.js?v=164"></script>
+<script src="assets/layers.js?v=165"></script>
+<script src="assets/bubbles.js?v=165" defer></script>
+<script src="assets/typeset.js?v=165"></script>
 </body>
 </html>
