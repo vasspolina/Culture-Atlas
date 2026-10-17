@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=165">
-  <script src="assets/config.js?v=165"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=166">
+  <script src="assets/config.js?v=166"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7038,6 +7038,8 @@ return maplibregl$1;
           map.setPaintProperty('xray-shell', 'fill-extrusion-color', isGossipModeActive ? '#000000' : dark ? '#ffffff' : '#161616');
           map.setPaintProperty('xray-shell', 'fill-extrusion-opacity', isGossipModeActive ? 0.22 : 0.14);
         }
+        // The building's outline and Plan's rings are drawn in the same line colour as the rest of the map.
+        ['xray-outline', 'xray-slabs-outline'].forEach(id => { if (map.getLayer(id)) map.setPaintProperty(id, 'line-color', line); });
       } catch (e) { /* the building view is not open */ }
     }
     // Light and dark mode: one switch in the header, remembered, following the system until it is set.
@@ -7375,9 +7377,9 @@ return maplibregl$1;
       if (!cityVectorMap.getSource('xray-slabs')) cityVectorMap.addSource('xray-slabs', empty());
       if (!cityVectorMap.getLayer('xray-slabs')) cityVectorMap.addLayer({ id: 'xray-slabs', type: 'fill-extrusion', source: 'xray-slabs', paint: { 'fill-extrusion-color': '#f4f4f4', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.9 } });
       if (!cityVectorMap.getLayer('xray-shell')) cityVectorMap.addLayer({ id: 'xray-shell', type: 'fill-extrusion', source: 'xray-shell', paint: { 'fill-extrusion-color': '#161616', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.14 } });
-      applyCityMapGossip();
-      if (!cityVectorMap.getLayer('xray-outline')) cityVectorMap.addLayer({ id: 'xray-outline', type: 'line', source: 'xray-shell', paint: { 'line-color': '#f4f4f4', 'line-width': 0.8 } });
+      if (!cityVectorMap.getLayer('xray-outline')) cityVectorMap.addLayer({ id: 'xray-outline', type: 'line', source: 'xray-shell', paint: { 'line-color': '#161616', 'line-width': 0.8 } });
       if (!cityVectorMap.getLayer('xray-slabs-outline')) cityVectorMap.addLayer({ id: 'xray-slabs-outline', type: 'line', source: 'xray-slabs', layout: { visibility: 'none' }, paint: { 'line-color': '#161616', 'line-width': 0.8 } });
+      applyCityMapGossip(); // after the outlines exist, so they take the theme's line colour from the start
       return true;
     }
 
@@ -7441,8 +7443,19 @@ return maplibregl$1;
     function xraySyncModeBar(show) {
       const bar = document.getElementById('xrayModes');
       if (!bar) return;
+      // The banner wraps and truncates as the city name changes; follow its height whenever it settles.
+      if (!bar.dataset.follows && window.ResizeObserver) {
+        const banner = document.getElementById('cityViewControlBanner');
+        if (banner) { new ResizeObserver(() => { if (!bar.classList.contains('hidden')) xraySyncModeBar(true); }).observe(banner); bar.dataset.follows = '1'; }
+      }
       bar.classList.toggle('hidden', !show);
       bar.querySelectorAll('[data-xray-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.xrayMode === XRAY.mode)));
+      // Just under the city banner, however many lines the banner takes.
+      const banner = document.getElementById('cityViewControlBanner');
+      if (show && banner && !banner.classList.contains('hidden') && bar.offsetParent) {
+        const b = banner.getBoundingClientRect(), p = bar.offsetParent.getBoundingClientRect();
+        bar.style.top = Math.round(b.bottom - p.top + 6) + 'px';
+      }
     }
     // Orbit turns only under the hand: a plain drag (one finger, or the mouse without a modifier) turns the building about
     // its centre, and panning rests until another mode is picked. Nothing moves on its own.
@@ -17755,8 +17768,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=165"></script>
-<script src="assets/bubbles.js?v=165" defer></script>
-<script src="assets/typeset.js?v=165"></script>
+<script src="assets/layers.js?v=166"></script>
+<script src="assets/bubbles.js?v=166" defer></script>
+<script src="assets/typeset.js?v=166"></script>
 </body>
 </html>
