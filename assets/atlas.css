@@ -730,11 +730,8 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root:not([data-theme="dark"]) #zoomControls{border-color:#000}
 :root:not([data-theme="dark"]) #layersControl #layersBtn{background:var(--block);color:#000}
 /* Gossip mode: the globe pane is dark with yellow text, in either theme. */
-:root:not([data-theme="dark"]) body.gossip-mode-active #desktopGlobeTopControls button,:root:not([data-theme="dark"]) body.gossip-mode-active #mobileFilterChipsSection button{background:#000;color:#ffd600;border-color:#ffd600}
-body.gossip-mode-active #desktopGlobeTopControls button,body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
-body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
-:root:not([data-theme="dark"]) body.gossip-mode-active #zoomControls{border-color:#ffd600}
-:root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport{background:#000}
+:root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
+:root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button:hover,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
 /* One rule between the record and "Inside the building", and none under its heading. */
 #desktopDossierRecordBody:has(+ #desktopDossierInside:not(.hidden)) .rule-b:last-of-type{border-bottom:0}
 #desktopDossierInside>h3+.rule-t{border-top:0;padding-top:0}
@@ -955,10 +952,16 @@ a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:u
 #curatorMessages>.justify-end::before{content:"ME"}
 #curatorMessages>.curator-message-wrap p{text-indent:1em}
 
-/* Gossip mode: everything said about gossip is yellow (a deep gold on a white page, so it still reads). */
-body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#curatorMessages>.justify-end::before),
-body.gossip-mode-active #curatorMessages :is(.curator-message-wrap,.user-bubble,.user-bubble *,p,li,a,span){color:#7a5c00}
-body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,body.gossip-mode-active #curatorMessages>.justify-end::before{color:#7a5c00}
-:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody),
-:root[data-theme="dark"] body.gossip-mode-active #curatorMessages :is(.curator-message-wrap,.user-bubble,.user-bubble *,p,li,a,span),
-:root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,:root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.justify-end::before{color:#ffd600}
+/* Gossip mode: only the gossip information is yellow (a deep gold on a white page, so it still reads): the reported items in the record. The chat keeps the normal ink. */
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody),
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) :is(p,li,a,span,div){color:#7a5c00}
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody),
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) :is(p,li,a,span,div){color:#ffd600}
+
+/* Landing: the title and the four questions share the height evenly and never scroll; the type shrinks to fit a short window. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){justify-content:space-evenly;gap:0;height:100%;min-height:0;overflow:hidden;box-sizing:border-box}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:contents}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(18px,min(2.2vw,3.6vh),44px)}
+@media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(17px,min(6.6vw,3.2vh),26px)}}
+#curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){flex:1 1 auto;height:100%;margin:0;padding-bottom:0}
+#curatorScrollContent:has(#curatorHeroGreeting:not(.hidden))>#curatorHeroGreeting{flex:1 1 auto}
