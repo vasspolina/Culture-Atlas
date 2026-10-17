@@ -893,12 +893,26 @@ abbr[title]{text-decoration:none}
 #curatorMessages>.justify-end>div,#curatorMessages .user-bubble{display:block;background:none;color:var(--ink);padding:0;max-width:none;text-align:left;font:400 18px/1.3 var(--sans);text-indent:1em}
 #curatorMessages .user-bubble *{color:var(--ink)}
 
-/* The input is the next turn of the dialogue: the same mark in the margin, the same hanging block,
-   the same one-em first-line indent and the same size as the turns above it. */
-#workInputCard{position:relative;padding-left:1.6em}
-#workInputCard::before{content:"ME";position:absolute;left:0;top:12px;font:400 18px/1.3 var(--sans);letter-spacing:.03em;color:var(--ink);pointer-events:none}
-#workInputCard.is-mode{padding-left:calc(1.6em + 12px)}
-#workInputCard.is-mode::before{left:12px}
-#workInput{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-indent:1em;padding:0}
-#workInput::placeholder{text-indent:1em}
-#workInput:focus,#workInput:focus-visible{outline:0}
+/* The person's turn is light green: the mark and the question. Light mode takes a deeper green so it still clears 4.5:1 on white. */
+#curatorMessages>.justify-end::before,#curatorMessages .user-bubble,#curatorMessages>.justify-end>div,#curatorMessages .user-bubble *{color:#1d7a3a}
+:root[data-theme="dark"] #curatorMessages>.justify-end::before,:root[data-theme="dark"] #curatorMessages .user-bubble,:root[data-theme="dark"] #curatorMessages>.justify-end>div,:root[data-theme="dark"] #curatorMessages .user-bubble *{color:#8fe3a4}
+
+/* The first line of a turn sits level with its mark: no top padding or margin on the first wrappers inside it. */
+#curatorMessages>.curator-message-wrap>div>:first-child,#curatorMessages>.curator-message-wrap>div>:first-child>:first-child,#curatorMessages>.curator-message-wrap>div>:first-child>:first-child>:first-child{padding-top:0;margin-top:0}
+
+/* Starter prompts: on hover they change colour, with no underline. */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;color:var(--cobalt);text-decoration:none}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{color:#8fb4ff;text-decoration:none}
+
+/* ---- the record panel, typeset and given room (Hochuli: leading rises with line length; space between blocks is what makes them read as blocks) ---- */
+:is(#desktopDossierRecordBody,#detailBody){font-variant-numeric:ordinal}
+:is(#desktopDossierRecordBody,#detailBody) :is(p,.visit-rows>div>div:last-child){line-height:1.4;max-width:66ch;text-wrap:pretty;hyphens:manual}
+:is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading{margin-bottom:20px}
+:is(#desktopDossierRecordBody,#detailBody) .kicker{margin-top:12px;line-height:1.4}
+:is(#desktopDossierRecordBody,#detailBody) .record-actions{margin-top:20px;padding-top:0;row-gap:8px}
+:is(#desktopDossierRecordBody,#detailBody) .space-y-1_5.rule-b{padding-bottom:24px}
+:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b{padding-top:20px;padding-bottom:24px}
+:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>p{margin-top:14px}
+:is(#desktopDossierRecordBody,#detailBody) .visit-rows{margin-top:8px}
+:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div{padding-top:18px;padding-bottom:18px}
+:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>.meta{margin-bottom:6px}
