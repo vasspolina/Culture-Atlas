@@ -741,8 +741,8 @@ body.gossip-mode-active #desktopGlobeTopControls button:hover,body.gossip-mode-a
 
 /* Right column: marker highlights. Black text on all three, so contrast holds in light, dark and gossip. */
 :root{--hl-blue:#72a5ed;--hl-green:#5ac651;--hl-yellow:#ffffb1}
-#desktopDossierColumn .t-lead,#desktopDossierColumn .lede{background:var(--hl-yellow);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-#desktopDossierColumn a:not(.record-action){background:var(--hl-blue);color:#000;text-decoration:none;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#desktopDossierColumn .t-lead,#desktopDossierColumn .lede{background:none;color:inherit;padding:0}
+#desktopDossierColumn a:not(.record-action){background:none;color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;padding:0}
 #desktopDossierColumn .is-good,#desktopDossierColumn .meta.t-strong{width:fit-content;background:var(--hl-green);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* Chat landing: one centred column of large bold capitals, the title in ink and each starter question in its own colour. */
@@ -918,7 +918,7 @@ abbr[title]{text-decoration:none}
 :is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>.meta{margin-bottom:6px}
 
 /* No "ME" mark: neither the input nor the user's turns carry one. */
-#curatorMessages>.justify-end::before,#workInputCard::before,#workInputCard.is-mode::before{content:none!important}
+#workInputCard::before,#workInputCard.is-mode::before{content:none!important}
 #workInputCard{padding-left:0}
 #workInputCard.is-mode{padding-left:12px}
 /* Space between the title and the questions, 15% tighter. */
@@ -934,3 +934,31 @@ abbr[title]{text-decoration:none}
 :is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>div:last-child{font-size:14px;line-height:1.25;letter-spacing:.02em;max-width:none}
 :is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none}
 @media (max-width:640px){:is(#desktopDossierRecordBody,#detailBody) .visit-rows{grid-template-columns:minmax(0,1fr)}}
+
+/* ---- body text is one size everywhere: 18px on 1.3 (the size and leading of the chat answers) ----
+   Titles, labels, buttons and the small bold wall-label titles keep their own sizes. */
+body :is(p,li):not(.meta):not(.starter-label):not(.layers-count){font-size:18px;line-height:1.3}
+:is(#desktopDossierRecordBody,#detailBody,#desktopDossierInside) :is(p,li,.kicker){font-size:18px;line-height:1.3}
+:is(#desktopDossierRecordBody,#detailBody,#desktopDossierInside) .visit-rows>div>div:last-child{font-size:18px;line-height:1.3}
+:is(#desktopDossierRecordBody,#detailBody) :is(p,.visit-rows>div>div:last-child){line-height:1.3}
+:is(#desktopDossierRecordBody,#detailBody) .visit-rows{grid-template-columns:repeat(auto-fit,minmax(16em,1fr))}
+.chat-info p,.chat-info summary{font-size:18px;line-height:1.3}
+#floatingCard :is(p,div,span):not(#floatingCardTitle):not(.meta):not(.kicker){line-height:1.3}
+/* The chat landing starts at the same left edge as the input box under it. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){padding-left:0;padding-right:0}
+
+/* Links in running text are underlined everywhere: chat, record, cards, notes. Buttons made from links stay as blocks. */
+a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+#curatorMessages a,#detailBody a:not(.record-action),#desktopDossierRecordBody a:not(.record-action),#desktopDossierColumn a:not(.record-action),.chat-info a,#floatingCard a:not(.record-action),#cityViewControlBanner a{text-decoration:underline}
+
+/* The person's turn carries its ME mark again; the input box does not. The first line of every paragraph in a turn is indented one em, even where an answer marks it .no-indent. */
+#curatorMessages>.justify-end::before{content:"ME"}
+#curatorMessages>.curator-message-wrap p{text-indent:1em}
+
+/* Gossip mode: everything said about gossip is yellow (a deep gold on a white page, so it still reads). */
+body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#curatorMessages>.justify-end::before),
+body.gossip-mode-active #curatorMessages :is(.curator-message-wrap,.user-bubble,.user-bubble *,p,li,a,span){color:#7a5c00}
+body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,body.gossip-mode-active #curatorMessages>.justify-end::before{color:#7a5c00}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody),
+:root[data-theme="dark"] body.gossip-mode-active #curatorMessages :is(.curator-message-wrap,.user-bubble,.user-bubble *,p,li,a,span),
+:root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.curator-message-wrap::before,:root[data-theme="dark"] body.gossip-mode-active #curatorMessages>.justify-end::before{color:#ffd600}
