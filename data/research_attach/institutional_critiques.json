@@ -1,5 +1,5 @@
 {
-  "_about": "Three critical frames on cultural institutions, paraphrased from published theory and shown on the records they apply to as critiques of kind 'theory'. The page shows no author and no citation, by the editor's decision; the works each frame rests on are listed under 'rests_on' for the editor only. tools/attach_critiques.py writes them; re-running replaces them.",
+  "_about": "Three critical frames on cultural institutions, shown on the records they apply to as critiques of kind 'theory'. A frame is either a paraphrase ('summary', shown with no author or citation by the editor's decision; the works it rests on are listed under 'rests_on' for the editor only) or a list of short verbatim 'quotes', each with its author, source and url, all shown on the page. tools/attach_critiques.py writes them; re-running replaces them.",
   "frames": [
     {
       "id": "archive_and_stage",
@@ -9,7 +9,10 @@
       "impact": "Read a museum's event calendar and curatorial turnover against what it actually keeps, conserves and pays for.",
       "applies": {
         "name_or_focus": "modern|contemporary|kunsthalle|kunstverein|kunsthaus|biennale|biennial|bienal|documenta|triennale|triennial|manifesta|art center|art centre|arts centre|arts center",
-        "size": ["L", "M"]
+        "size": [
+          "L",
+          "M"
+        ]
       },
       "rests_on": [
         "Art Power (2008)",
@@ -24,7 +27,10 @@
       "summary": "Giving comes after taking: the money has to be made before it can be given away, and the giving is then told as gratitude and repair. The founder who breaks unions and then endows libraries, the speculator who destabilises an economy in the morning and funds civil society in the afternoon, are one hand hurting and healing. Culture sits inside that portfolio, so a named wing repairs the donor's standing more surely than it repairs any damage. The same move sells the ethical cup of coffee: buy the right thing and the absolution is included in the price. Charity treats the symptom and so keeps the illness going. Large art events that speak in anti-capitalist language are ventures of the capital they describe, and the first honest act may be to decline the invitation to take part.",
       "impact": "Where a flag names an industry, ask what the gift was repairing, and for whom.",
       "applies": {
-        "grade": [4, 5]
+        "grade": [
+          4,
+          5
+        ]
       },
       "rests_on": [
         "Nobody has to be vile, London Review of Books 28/7 (2006)",
@@ -35,11 +41,27 @@
       "id": "art_the_powerful_fear",
       "strategy": "Art the powerful should fear",
       "target": "Biennials, festivals and touring exhibitions, and the cities that host them",
-      "summary": "Harmless art has failed, and decorative culture has been captured. The capture comes two ways: by committee, which sands every edge off until nothing offends, like a banknote printed with a bridge that exists nowhere; and by bureaucracies and big companies that take art over for their own ends, which is worse. An artist the powerful are not worried about is not doing the job. A large exhibition that lands in a struggling city, takes its buildings, its public money and its private goodwill, and leaves little behind is not a gift but a kind of disaster tourism. And a show that critiques the system while sparing the banks, creditors and sponsors that pay for it has chosen to be irrelevant.",
+      "quotes": [
+        {
+          "text": "Art must not be anodyne, culture cannot be decorative. [Artists] should be feared by the powerful in our society; if you are not, you are not doing your job properly.",
+          "author": "Yanis Varoufakis",
+          "source": "keynote closing the 6th Moscow Biennale, 1 October 2015, as reported by The Art Newspaper, 3 October 2015",
+          "url": "https://www.theartnewspaper.com/2015/10/03/artists-should-be-feared-by-the-powerful-says-former-greek-finance-minister"
+        },
+        {
+          "text": "Documenta took a great deal more from Athens—from both its private and public sector—than it gave. […] When Documenta comes here and talks about neoliberalism with no mention of Deutsche Bank, Société Générale, the awful Troika process, the Eurogroup, etc., it is choosing to be irrelevant.",
+          "author": "Yanis Varoufakis",
+          "source": "‘We Come Bearing Gifts’, in conversation with iLiana Fokianaki on documenta 14 Athens, art-agenda / e-flux criticism, 7 June 2017",
+          "url": "https://www.e-flux.com/criticism/240266/we-come-bearing-gifts-iliana-fokianaki-and-yanis-varoufakis-on-documenta-14-athens"
+        }
+      ],
       "impact": "Read a festival's balance with its host city, and its critique against its sponsor list.",
       "applies": {
         "name_or_focus": "biennale|biennial|bienal|documenta|triennale|triennial|manifesta|festival",
-        "cities": ["Athens", "Kassel"]
+        "cities": [
+          "Athens",
+          "Kassel"
+        ]
       },
       "rests_on": [
         "Keynote at the 6th Moscow Biennale, reported by The Art Newspaper, 3 October 2015",

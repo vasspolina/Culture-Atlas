@@ -2,7 +2,8 @@
 """Put the critical frames in data/research_attach/institutional_critiques.json on the records they apply to.
 
 Each frame becomes an entry of kind "theory" in the record's visual_critiques list, beside the artists' critiques:
-strategy, target, summary and historical_impact, with no artist, image or citation. Re-running replaces every
+strategy, target, historical_impact and either a paraphrase (summary, no author or citation) or verbatim quotes
+(each with text, author, source and url), with no artist or image. Re-running replaces every
 "theory" entry. Then: python3 tools/clean_data.py && python3 tools/embed_data.py
 
 A frame applies to a record when every rule under "applies" holds:
@@ -39,8 +40,13 @@ for r in records:
     kept = [v for v in r.get('visual_critiques') or [] if v.get('kind') != 'theory']
     for f in frames:
         if applies(f['applies'], r):
-            kept.append({'kind': 'theory', 'strategy': f['strategy'], 'strategy_id': f['id'], 'target': f['target'],
-                         'summary': f['summary'], 'historical_impact': f['impact']})
+            entry = {'kind': 'theory', 'strategy': f['strategy'], 'strategy_id': f['id'], 'target': f['target']}
+            if f.get('quotes'):   # verbatim quotations, each with its author, source and url, all shown on the page
+                entry['quotes'] = [dict(q) for q in f['quotes']]
+            else:                 # a paraphrase, shown without author or citation
+                entry['summary'] = f['summary']
+            entry['historical_impact'] = f['impact']
+            kept.append(entry)
             counts[f['strategy']] += 1
     if kept:
         r['visual_critiques'] = kept
