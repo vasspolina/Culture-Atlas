@@ -4123,12 +4123,18 @@
         ]
       },
       {
-        "title": "Bellingcat finding",
-        "meta": "2019-10-10",
-        "text": "Bellingcat reports Len Blavatnik gave about $60 million toward Tate Modern's Blavatnik Building, after making billions in Russian oil with Viktor Vekselberg. The US sanctioned Vekselberg and Oleg Deripaska in 2018. Blavatnik is not on a sanctions list.",
+        "title": "Tate's Blavatnik Building and separate donor reporting",
+        "meta": "Tate donation: 2016 · Bellingcat profile: 2019-10-10",
+        "text": "The Art Newspaper reported that Len Blavatnik donated £50 million toward Tate Modern's extension, later named the Blavatnik Building. Bellingcat's 2019 profile concerns a separate donation to the Council on Foreign Relations and Blavatnik's oil-industry background; it does not report on Tate Modern or its building gift.",
         "sources": [
-          "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/",
-          "http://www.theartnewspaper.com/news/tate-moderns-extension-renamed-blavatnik-building-after-record-pound50m-donation"
+          {
+            "title": "Bellingcat: Money talks — Len Blavatnik and the Council on Foreign Relations",
+            "url": "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          },
+          {
+            "title": "The Art Newspaper: Tate Modern's extension renamed after a £50m donation",
+            "url": "http://www.theartnewspaper.com/news/tate-moderns-extension-renamed-blavatnik-building-after-record-pound50m-donation"
+          }
         ]
       },
       {
@@ -8109,11 +8115,18 @@
     "tier_note": "No reason for the flag is recorded.",
     "case_notes": [
       {
-        "title": "Bellingcat finding",
-        "meta": "2019-10-10",
-        "text": "The Hepworth Wakefield lists the Blavatnik Family Foundation among current funders. Bellingcat's 2019 profile documents the oil fortune behind it (TNK-BP).",
+        "title": "Supporter list and unrelated donor profile",
+        "meta": "Bellingcat profile: 2019-10-10",
+        "text": "The Hepworth Wakefield record includes a Blavatnik Family Foundation reference, but its displayed supporters page does not list the foundation or establish the timing, amount, share or terms of any historical support. Bellingcat's 2019 profile concerns Blavatnik and the Council on Foreign Relations; it does not report on the gallery.",
         "sources": [
-          "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          {
+            "title": "The Hepworth Wakefield: Supporters",
+            "url": "https://hepworthwakefield.org/our-story/about-us/35729-2/"
+          },
+          {
+            "title": "Bellingcat: Money talks — Len Blavatnik and the Council on Foreign Relations",
+            "url": "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          }
         ]
       }
     ],
@@ -15125,6 +15138,7 @@
   {
     "id": "white-columns-new-york",
     "name": "White Columns",
+    "category": "Nonprofit alternative art space",
     "city": "New York",
     "country": "United States",
     "location": "New York, USA",
@@ -15134,6 +15148,7 @@
     "size": "S",
     "funding": "Expenses $1.3M (FY2025). NYC DCLA and NYSCA; Warhol, Frankenthaler, Speyer, Niarchos, Luce and Blavatnik Family foundations, as listed on its 2025 support page.",
     "watch": "Blavatnik Family Foundation (Access Industries, oil origin) is contested at Tate and Oxford.",
+    "highlight": "New York's oldest alternative art space, founded in 1970 as the 112 Workshop at 112 Greene Street.",
     "sources": [
       "https://www.whitecolumns.org/about/",
       "https://projects.propublica.org/nonprofits/organizations/132696660",
@@ -15141,7 +15156,7 @@
       "https://projects.propublica.org/nonprofits/organizations/237259446"
     ],
     "website": "https://www.whitecolumns.org",
-    "curatorial_focus": "Unrepresented Artists, Creative Growth Collaborations & Alternative History",
+    "curatorial_focus": "Exhibitions and projects supporting artists who have not yet received broad critical, curatorial or commercial attention.",
     "year_founded": 1970,
     "aliases": [
       "white columns",
@@ -15159,11 +15174,18 @@
     "tier_note": "No reason for the flag is recorded.",
     "case_notes": [
       {
-        "title": "Bellingcat finding",
+        "title": "Bellingcat's profile of Len Blavatnik and the Council on Foreign Relations",
         "meta": "2019-10-10",
-        "text": "White Columns lists the Blavatnik Family Foundation among current funders. Bellingcat's 2019 profile documents the oil fortune behind it (TNK-BP).",
+        "text": "White Columns' 2025 support page lists the Blavatnik Family Foundation among additional supporters. Bellingcat's 2019 profile concerns Blavatnik's fortune and a donation to the Council on Foreign Relations; it does not report on White Columns. The record gives no amount, share or terms for the gallery's support.",
         "sources": [
-          "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          {
+            "title": "White Columns 2025 support page",
+            "url": "https://whitecolumns.org/support-v2/"
+          },
+          {
+            "title": "Bellingcat: Money talks — Len Blavatnik and the Council on Foreign Relations",
+            "url": "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          }
         ]
       }
     ],
@@ -25880,10 +25902,10 @@
   },
   {
     "name": "Hospitalfield",
-    "location": "Arbroath, UK",
+    "location": "Arbroath, Scotland, UK",
     "tier": "U",
-    "funding": "\u00a3839k income (FY2025); Creative Scotland, Historic Environment Scotland, lottery heritage fund, Foyle, Robertson Trust, Garfield Weston, William Grant Foundation.",
-    "watch": "Two funders are whisky-endowed.",
+    "funding": "\u00a3839k income (FY2025); Creative Scotland, Historic Environment Scotland, National Lottery Heritage Fund, Foyle Foundation, Robertson Trust, Garfield Weston Foundation, William Grant Foundation.",
+    "highlight": "Historic artist residency house, arts trust and heritage site.",
     "sources": [
       "https://hospitalfield.org.uk/about/future-plan/"
     ],
@@ -25897,9 +25919,9 @@
       "Hospitalfield"
     ],
     "visit_url": "https://hospitalfield.org.uk/about/future-plan/",
-    "audit_dossier_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Hospitalfield",
-    "statutory_filings_url": "https://register-of-charities.charitycommission.gov.uk/charity-search?p_p_id=uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet&p_p_lifecycle=0&_uk_gov_ccew_onereg_charitysearch_web_portlet_CharitySearchPortlet_keywords=Hospitalfield",
-    "tier_note": "No source outside the museum is recorded.",
+    "audit_dossier_url": "https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC009662",
+    "statutory_filings_url": "https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC009662",
+    "tier_note": "The funders are listed in the institution's own source; no independent source corroborates this roster.",
     "funder_links": [
       {
         "funder": "Garfield Weston Foundation",
@@ -25931,11 +25953,18 @@
     "tier_note": "No reason for the flag is recorded.",
     "case_notes": [
       {
-        "title": "Bellingcat finding",
-        "meta": "2019-10-10",
-        "text": "Holburne Museum lists the Blavatnik Family Foundation among current funders. Bellingcat's 2019 profile documents the oil fortune behind it (TNK-BP).",
+        "title": "Holburne supporter list and related donor reporting",
+        "meta": "Bellingcat profile: 2019-10-10",
+        "text": "The Holburne Museum's supporter page lists the Blavatnik Family Foundation but does not specify the timing, amount, share or terms of its support. Bellingcat's 2019 profile concerns Blavatnik and the Council on Foreign Relations; it does not report on Holburne or establish the museum's funding relationship.",
         "sources": [
-          "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          {
+            "title": "Holburne Museum: Our supporters",
+            "url": "https://www.holburne.org/support-us/our-supporters/"
+          },
+          {
+            "title": "Bellingcat: Money talks — Len Blavatnik and the Council on Foreign Relations",
+            "url": "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          }
         ]
       }
     ],
@@ -31151,12 +31180,18 @@
         ]
       },
       {
-        "title": "Bellingcat finding",
-        "meta": "2019-01-25",
-        "text": "Bellingcat's #ItalianArms team found Leonardo helicopters and Oto Melara naval guns in Turkmenistan's forces, some without export authorizations. Leonardo held a private reception at the Design Museum in July 2018, and artists pulled work from its exhibition in protest.",
+        "title": "Arms reporting and the Design Museum exhibition protest",
+        "meta": "Bellingcat report: 2019-01-25 · museum coverage: 2018",
+        "text": "Bellingcat's #ItalianArms investigation concerns Italian arms exports and equipment in Turkmenistan; it does not report on the Design Museum. The Museums Association separately reported that Leonardo held a private reception at the museum in 2018 and that artists withdrew work in protest.",
         "sources": [
-          "https://www.bellingcat.com/news/europe/2019/01/25/turkmenistan-italianarms-a-dictator-millions-of-euros-and-italys-bureaucracy/",
-          "https://www.museumsassociation.org/museums-journal/news/2018/08/06082018-design-museum-removes-works-arms-controversy/"
+          {
+            "title": "Bellingcat: Turkmenistan, Italian arms and export controls",
+            "url": "https://www.bellingcat.com/news/europe/2019/01/25/turkmenistan-italianarms-a-dictator-millions-of-euros-and-italys-bureaucracy/"
+          },
+          {
+            "title": "Museums Association: Design Museum removes works amid arms controversy",
+            "url": "https://www.museumsassociation.org/museums-journal/news/2018/08/06082018-design-museum-removes-works-arms-controversy/"
+          }
         ]
       }
     ],
@@ -31334,12 +31369,18 @@
     },
     "case_notes": [
       {
-        "title": "Bellingcat finding",
-        "meta": "2019-10-10",
-        "text": "Bellingcat's 2019 profile ties Len Blavatnik's fortune to Russian oil and to US-sanctioned partners Vekselberg and Deripaska. The National Gallery named Room 34 for his Blavatnik Family Foundation on 7 May 2025, in recognition of the foundation's gift to its bicentenary.",
+        "title": "National Gallery donor recognition and separate reporting",
+        "meta": "Gallery announcement: 2025-05-07 · Bellingcat profile: 2019-10-10",
+        "text": "The National Gallery announced that Room 34 would be named for the Blavatnik Family Foundation in recognition of its bicentenary gift. Bellingcat's 2019 profile concerns Blavatnik and the Council on Foreign Relations; it does not report on the Gallery, its gift or the room naming.",
         "sources": [
-          "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/",
-          "https://www.nationalgallery.org.uk/about-us/press-and-media/press-releases/the-national-gallery-room-34-to-be-named-blavatnik-family-foundation-room"
+          {
+            "title": "Bellingcat: Money talks — Len Blavatnik and the Council on Foreign Relations",
+            "url": "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          },
+          {
+            "title": "National Gallery: Room 34 to be named Blavatnik Family Foundation Room",
+            "url": "https://www.nationalgallery.org.uk/about-us/press-and-media/press-releases/the-national-gallery-room-34-to-be-named-blavatnik-family-foundation-room"
+          }
         ]
       }
     ],
@@ -31753,12 +31794,18 @@
     },
     "case_notes": [
       {
-        "title": "Bellingcat finding",
-        "meta": "2019-10-10",
-        "text": "Bellingcat's 2019 profile ties Len Blavatnik's fortune to Russian oil and to US-sanctioned partners Vekselberg and Deripaska. The V&A named its entrance hall for him in 2016, and its David Bowie Centre credits a 2023 Blavatnik Family Foundation donation.",
+        "title": "V&A donor naming and separate Blavatnik reporting",
+        "meta": "V&A report: 2016 · Bellingcat profile: 2019-10-10",
+        "text": "The Art Newspaper reported on the V&A's 2016 naming of its entrance hall for Len Blavatnik. Bellingcat's 2019 profile covers Blavatnik's separate donation to the Council on Foreign Relations and his oil-industry background; it does not report on the V&A or the hall naming.",
         "sources": [
-          "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/",
-          "https://www.theartnewspaper.com/2016/04/21/billionaire-leonard-blavatnik-donates-millions-to-vanda"
+          {
+            "title": "Bellingcat: Money talks — Len Blavatnik and the Council on Foreign Relations",
+            "url": "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          },
+          {
+            "title": "The Art Newspaper: Blavatnik donates millions to the V&A",
+            "url": "https://www.theartnewspaper.com/2016/04/21/billionaire-leonard-blavatnik-donates-millions-to-vanda"
+          }
         ]
       }
     ],
@@ -32796,12 +32843,18 @@
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Smithsonian%2C%20Air%20and%20Space",
     "case_notes": [
       {
-        "title": "Bellingcat finding",
+        "title": "Arms reporting and Boeing's Smithsonian gift",
         "meta": "2026-02-04",
-        "text": "Bellingcat matched 79 Gaza strikes to US-made Hellfire missiles, GBU-39 bombs and JDAM kits, naming Lockheed Martin and Boeing as the contractors. Boeing's 2014 gift names the Milestones of Flight Hall at Air and Space; Lockheed Martin names its IMAX theater.",
+        "text": "Bellingcat's 2026 report documents U.S.-made weapons used in Gaza and identifies Boeing and Lockheed Martin as manufacturers; it does not report on the Smithsonian. A separate Smithsonian press release documents Boeing's $30 million gift and the naming of the Milestones of Flight Hall.",
         "sources": [
-          "https://www.bellingcat.com/news/2026/02/04/made-in-the-usa-how-american-built-weapons-have-wrought-destruction-in-gaza/",
-          "https://airandspace.si.edu/newsroom/press-releases/national-air-and-space-museum-receives-30-million-boeing"
+          {
+            "title": "Bellingcat: How American-built weapons have wrought destruction in Gaza",
+            "url": "https://www.bellingcat.com/news/2026/02/04/made-in-the-usa-how-american-built-weapons-have-wrought-destruction-in-gaza/"
+          },
+          {
+            "title": "Smithsonian: National Air and Space Museum receives $30 million Boeing gift",
+            "url": "https://airandspace.si.edu/newsroom/press-releases/national-air-and-space-museum-receives-30-million-boeing"
+          }
         ]
       }
     ],
@@ -34015,12 +34068,18 @@
     ],
     "case_notes": [
       {
-        "title": "Bellingcat finding",
-        "meta": "2019-10-10",
-        "text": "Bellingcat's 2019 profile ties Len Blavatnik's fortune to Russian oil and to US-sanctioned partners Vekselberg and Deripaska. The National Portrait Gallery took \u00a310 million from his foundation in 2022 and named its first floor the Blavatnik Wing.",
+        "title": "National Portrait Gallery donation and separate donor reporting",
+        "meta": "Gallery donation: 2022 · Bellingcat profile: 2019-10-10",
+        "text": "The Art Newspaper reported that the National Portrait Gallery received a \u00a310 million donation from the Blavatnik Family Foundation in 2022 and named its first floor the Blavatnik Wing. Bellingcat's 2019 profile concerns Blavatnik and the Council on Foreign Relations; it does not report on the Gallery or its donation.",
         "sources": [
-          "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/",
-          "https://www.theartnewspaper.com/2022/11/25/londons-national-portrait-gallery-receives-10m-donation-from-leonard-blavatnik"
+          {
+            "title": "Bellingcat: Money talks — Len Blavatnik and the Council on Foreign Relations",
+            "url": "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          },
+          {
+            "title": "The Art Newspaper: National Portrait Gallery receives £10m donation",
+            "url": "https://www.theartnewspaper.com/2022/11/25/londons-national-portrait-gallery-receives-10m-donation-from-leonard-blavatnik"
+          }
         ]
       }
     ],
@@ -34227,12 +34286,18 @@
     ],
     "case_notes": [
       {
-        "title": "Bellingcat finding",
+        "title": "General Dynamics reporting and the Henry Crown Gallery debate",
         "meta": "2026-02-04",
-        "text": "Bellingcat reports a bomb dropped on Sanaa airport carries a lot number showing General Dynamics Tactical Systems made it in 2017. Art Institute trustee Steven Crown's family built its wealth on General Dynamics; 2023 protesters demanded the Henry Crown Gallery be renamed.",
+        "text": "Bellingcat's 2026 report identifies General Dynamics Tactical Systems as the maker of a munition found at Sanaa airport; it does not report on the Art Institute or its trustees. Separate local commentary discusses protests over the Henry Crown Gallery's name and the Crown family's association with General Dynamics; these sources do not establish museum funding from the company.",
         "sources": [
-          "https://www.bellingcat.com/news/2026/02/04/made-in-the-usa-how-american-built-weapons-have-wrought-destruction-in-gaza/",
-          "https://www.chicagoobservations.com/chicago-observational-ramblings/2023/11/11/removing-the-crown"
+          {
+            "title": "Bellingcat: How American-built weapons have wrought destruction in Gaza",
+            "url": "https://www.bellingcat.com/news/2026/02/04/made-in-the-usa-how-american-built-weapons-have-wrought-destruction-in-gaza/"
+          },
+          {
+            "title": "Chicago Observational Ramblings: Removing the Crown",
+            "url": "https://www.chicagoobservations.com/chicago-observational-ramblings/2023/11/11/removing-the-crown"
+          }
         ]
       }
     ],
@@ -42150,11 +42215,18 @@
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Skowhegan%20School%20of%20Painting%20%26%20Sculpture",
     "case_notes": [
       {
-        "title": "Bellingcat finding",
+        "title": "Skowhegan support context and separate donor reporting",
         "meta": "2019-10-10",
-        "text": "Skowhegan School of Painting & Sculpture lists the Blavatnik Family Foundation among current funders. Bellingcat's 2019 profile documents the oil fortune behind it (TNK-BP).",
+        "text": "Skowhegan's support page describes its general giving and endowments but does not name the Blavatnik Family Foundation. Bellingcat's 2019 profile concerns Blavatnik and the Council on Foreign Relations; it does not report on Skowhegan, and the cited materials do not establish a grant from the foundation to the school.",
         "sources": [
-          "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          {
+            "title": "Bellingcat: Money talks — Len Blavatnik and the Council on Foreign Relations",
+            "url": "https://www.bellingcat.com/news/2019/10/10/money-talks-len-blavatnik-and-the-council-on-foreign-relations/"
+          },
+          {
+            "title": "Skowhegan: Support",
+            "url": "https://skowheganart.org/support/"
+          }
         ]
       }
     ]

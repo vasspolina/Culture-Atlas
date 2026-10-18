@@ -47,7 +47,7 @@ ASSERTION = re.compile(
     r"|\btransparent (donor|supporter|ledger|disclosure|roster)|\bvetted\b"
     r"|\b(sanctuary|beacon|bastion|heroic|indispensable|vanguard|cradle|cornerstone|iconic|world-famous|acclaimed|exemplary|unforgettable)\b", re.I)
 # The public registries a record may link to. Anything else under the registry fields is dropped.
-REGISTRIES = ('projects.propublica.org', 'register-of-charities.charitycommission.gov.uk', 'bundesanzeiger.de', 'openkvk.nl',
+REGISTRIES = ('projects.propublica.org', 'register-of-charities.charitycommission.gov.uk', 'oscr.org.uk', 'bundesanzeiger.de', 'openkvk.nl',
               'apps.cra-arc.gc.ca', 'journal-officiel.gouv.fr', 'acnc.gov.au', 'servizi.lavoro.gov.it', 'sede.mjusticia.gob.es', 'edi.admin.ch')
 ASSERTION_FIELDS = ['watch', 'funding', 'curator_recommendation', 'highlight']
 PUFF = re.compile(r"\b(beating heart|extraordinary|daring|fearless|legendary|renowned|celebrated|world-class|cultural anchor|cultural destination|"
