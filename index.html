@@ -6571,7 +6571,8 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 13,
-          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#161616', 'fill-antialias': true }
+          // Hit-testing only: the edge is drawn once, by building_line below, so an outline here would double it.
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#161616', 'fill-antialias': false }
         },
         {
           id: 'building-3d-city-context',
@@ -6579,11 +6580,12 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 14,
+          // Invisible: it is only here so xrayFindBuilding can fall back to it. Buildings are lines, never fills.
           paint: {
             'fill-extrusion-color': '#ffffff',
             'fill-extrusion-height': 0,
             'fill-extrusion-base': 0,
-            'fill-extrusion-opacity': 1,
+            'fill-extrusion-opacity': 0,
             'fill-extrusion-vertical-gradient': false
           }
         },
@@ -7069,15 +7071,8 @@ return maplibregl$1;
           else if (l.type === 'symbol') { map.setPaintProperty(l.id, 'text-halo-color', ground); map.setPaintProperty(l.id, 'text-color', line); }
         } catch (e) { /* a layer this map does not have */ }
       });
-      // The building view's shell is a faint ink tint over the outline, not a solid block.
-      try {
-        if (map.getLayer('xray-shell')) {
-          map.setPaintProperty('xray-shell', 'fill-extrusion-color', isGossipModeActive ? '#000000' : dark ? '#ffffff' : '#161616');
-          map.setPaintProperty('xray-shell', 'fill-extrusion-opacity', isGossipModeActive ? 0.22 : 0.14);
-        }
-        // The building's outline and Plan's rings are drawn in the same line colour as the rest of the map.
-        ['xray-outline', 'xray-slabs-outline'].forEach(id => { if (map.getLayer(id)) map.setPaintProperty(id, 'line-color', line); });
-      } catch (e) { /* the building view is not open */ }
+      // The building view is lines in the same colour as the rest of the map's lines.
+      try { const wire = xrayWire(); if (wire) wire.setColor(line); } catch (e) { /* the building view is not open */ }
     }
     // Light and dark mode: one switch in the header, remembered, following the system until it is set.
     function syncThemeButtons() {
@@ -7305,7 +7300,7 @@ return maplibregl$1;
     //  translucent shell, with one slab inside for each kind of material the record actually holds. No outline means no shell;
     //  every label is a count of what the record has; facts from Wikidata say so and how they were matched.
     // =========================================================================
-    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, dimmed: false, waiting: false, mode: 'xray' };
+    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, waiting: false, mode: 'xray' };
     // The three ways of looking at the building. Each is a camera on the same outline; Plan draws the contents as nested outlines
     // seen from above, the others as slabs stacked inside the shell.
     const XRAY_CAMERAS = {
@@ -7397,10 +7392,22 @@ return maplibregl$1;
       if (!f) return null;
       const pr = f.properties || {};
       const tagged = pr.render_height != null || pr.height != null;
-      return { geometry: f.geometry, height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged };
+      return { geometry: xrayPolygonAt(f.geometry, lon, lat), height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged };
     }
     window.xrayFindBuilding = xrayFindBuilding;
 
+    // The tile merges neighbouring buildings into one multipolygon; the building is the one polygon the point is in
+    // (the nearest by centroid when the point is in none of them, as at a corner the tile cut).
+    function xrayPolygonAt(geom, lon, lat) {
+      if (geom.type !== 'MultiPolygon' || geom.coordinates.length < 2) return geom;
+      const inside = ring => { let hit = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const a = ring[i], b = ring[j]; if ((a[1] > lat) !== (b[1] > lat) && lon < (b[0] - a[0]) * (lat - a[1]) / (b[1] - a[1]) + a[0]) hit = !hit; } return hit; };
+      let poly = geom.coordinates.find(c => inside(c[0]));
+      if (!poly) {
+        let best = Infinity;
+        geom.coordinates.forEach(c => { const r = c[0], cx = r.reduce((a, q) => a + q[0], 0) / r.length, cy = r.reduce((a, q) => a + q[1], 0) / r.length, d = (cx - lon) ** 2 + (cy - lat) ** 2; if (d < best) { best = d; poly = c; } });
+      }
+      return { type: 'Polygon', coordinates: poly };
+    }
     function xrayRing(geom) { return geom.type === 'Polygon' ? geom.coordinates[0] : geom.coordinates[0][0]; }
     function xrayCentroid(geom) { const r = xrayRing(geom); const c = r.reduce((a, p) => [a[0] + p[0], a[1] + p[1]], [0, 0]); return [c[0] / r.length, c[1] / r.length]; }
     function xrayShrink(geom, k) {
@@ -7408,16 +7415,130 @@ return maplibregl$1;
       return geom.type === 'Polygon' ? { type: 'Polygon', coordinates: [inner(geom.coordinates[0])] } : { type: 'MultiPolygon', coordinates: geom.coordinates.map(poly => [inner(poly[0])]) };
     }
 
+    // The building is drawn as lines and nothing else: every edge of the shell and of the slabs inside it, standing at its
+    // height, in the street lines' own weight. MapLibre's line layers lie flat on the ground, so a box standing up needs this
+    // custom WebGL layer; it widens each line the way MapLibre does (0.8px measured on the ground at the map's scale, plus half
+    // a device pixel, feathered over one), so under the tilted camera the edges foreshorten exactly as the roads beside them,
+    // and from above they weigh what the zoomed-out map weighs. A standing edge widens across the view. Positions are kept
+    // relative to the building (float32 cannot hold a whole Mercator coordinate to the centimetre); the matrix carries the offset.
+    const XRAY_LINE_WIDTH = 0.8;
+    function xrayWireLayer() {
+      const VS = [
+        'attribute vec3 a_pos; attribute vec3 a_norm; attribute float a_side;',
+        'uniform mat4 u_matrix; uniform vec2 u_res; uniform vec2 u_right; uniform mediump float u_outset_px; uniform float u_outset_merc;',
+        'varying float v_side; varying float v_gamma;',
+        'void main() {',
+        '  vec3 n = dot(a_norm, a_norm) > 0.0 ? a_norm : vec3(u_right, 0.0);',
+        '  vec4 p = u_matrix * vec4(a_pos, 1.0);',
+        '  vec4 pe = u_matrix * vec4(a_pos + n * a_side * u_outset_merc, 1.0);',
+        '  vec2 dpx = (pe.xy / pe.w - p.xy / p.w) * u_res * 0.5;',
+        '  v_gamma = u_outset_px / max(length(dpx), 0.0001);',
+        '  v_side = a_side;',
+        '  gl_Position = pe;',
+        '}'
+      ].join('\n');
+      const FS = [
+        'precision mediump float;',
+        'uniform vec4 u_color; uniform mediump float u_outset_px;',
+        'varying float v_side; varying float v_gamma;',
+        'void main() {',
+        '  float dist = abs(v_side) * u_outset_px;',
+        '  float a = clamp((u_outset_px - dist) / v_gamma, 0.0, 1.0);',
+        '  gl_FragColor = u_color * a;',
+        '}'
+      ].join('\n');
+      return {
+        id: 'xray-wire', type: 'custom', renderingMode: '3d',
+        color: [22 / 255, 22 / 255, 22 / 255, 1], data: null, count: 0, origin: null, dirty: false,
+        onAdd(map, gl) {
+          this.map = map;
+          const shader = (type, src) => { const sh = gl.createShader(type); gl.shaderSource(sh, src); gl.compileShader(sh); return sh; };
+          this.program = gl.createProgram();
+          gl.attachShader(this.program, shader(gl.VERTEX_SHADER, VS));
+          gl.attachShader(this.program, shader(gl.FRAGMENT_SHADER, FS));
+          gl.linkProgram(this.program);
+          this.a = { pos: gl.getAttribLocation(this.program, 'a_pos'), norm: gl.getAttribLocation(this.program, 'a_norm'), side: gl.getAttribLocation(this.program, 'a_side') };
+          this.u = { matrix: gl.getUniformLocation(this.program, 'u_matrix'), res: gl.getUniformLocation(this.program, 'u_res'), right: gl.getUniformLocation(this.program, 'u_right'), outsetPx: gl.getUniformLocation(this.program, 'u_outset_px'), outsetMerc: gl.getUniformLocation(this.program, 'u_outset_merc'), color: gl.getUniformLocation(this.program, 'u_color') };
+          this.buffer = gl.createBuffer();
+          this.dirty = true;
+        },
+        onRemove(map, gl) { try { gl.deleteBuffer(this.buffer); gl.deleteProgram(this.program); } catch (e) { /* context gone */ } },
+        // Segments are pairs of [lon, lat, metres above the ground]. Each becomes a quad widened along its ground normal; a
+        // standing edge (no ground normal) is widened across the view instead.
+        setSegments(segments) {
+          const M = maplibregl.MercatorCoordinate;
+          const pts = segments.map(seg => seg.map(p => M.fromLngLat([p[0], p[1]], p[2] || 0)));
+          this.origin = pts.length ? { x: pts[0][0].x, y: pts[0][0].y, z: pts[0][0].z } : null;
+          const o = this.origin, data = new Float32Array(segments.length * 6 * 7);
+          let k = 0;
+          const put = (a, n, side) => { data[k++] = a.x - o.x; data[k++] = a.y - o.y; data[k++] = a.z - o.z; data[k++] = n[0]; data[k++] = n[1]; data[k++] = 0; data[k++] = side; };
+          pts.forEach(([a, b]) => {
+            const dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy), span = Math.hypot(len, b.z - a.z);
+            const n = len > span * 1e-3 ? [-dy / len, dx / len] : [0, 0];
+            put(a, n, 1); put(a, n, -1); put(b, n, 1); put(a, n, -1); put(b, n, -1); put(b, n, 1);
+          });
+          this.data = data; this.count = segments.length * 6; this.dirty = true;
+          if (this.map && typeof this.map.triggerRepaint === 'function') this.map.triggerRepaint();
+        },
+        setColor(hex) {
+          const m = /^#?([0-9a-f]{6})$/i.exec(String(hex || ''));
+          if (!m) return;
+          const v = parseInt(m[1], 16);
+          this.color = [((v >> 16) & 255) / 255, ((v >> 8) & 255) / 255, (v & 255) / 255, 1];
+          if (this.map && typeof this.map.triggerRepaint === 'function') this.map.triggerRepaint();
+        },
+        render(gl, matrix) {
+          if (!this.count || !this.origin || !this.program) return;
+          const m = Array.from(matrix), o = this.origin, t = m.slice();
+          t[12] = m[0] * o.x + m[4] * o.y + m[8] * o.z + m[12];
+          t[13] = m[1] * o.x + m[5] * o.y + m[9] * o.z + m[13];
+          t[14] = m[2] * o.x + m[6] * o.y + m[10] * o.z + m[14];
+          t[15] = m[3] * o.x + m[7] * o.y + m[11] * o.z + m[15];
+          const map = this.map, dpr = typeof map.getPixelRatio === 'function' ? map.getPixelRatio() : (window.devicePixelRatio || 1);
+          const worldSize = map.transform && map.transform.worldSize ? map.transform.worldSize : 512 * Math.pow(2, map.getZoom()); // CSS pixels across the whole Mercator square
+          const bearing = map.getBearing() * Math.PI / 180;
+          const outsetPx = XRAY_LINE_WIDTH * dpr / 2 + 0.5; // half the width plus half a device pixel, as MapLibre's line shader
+          gl.useProgram(this.program);
+          gl.uniformMatrix4fv(this.u.matrix, false, new Float32Array(t));
+          gl.uniform2f(this.u.res, gl.drawingBufferWidth, gl.drawingBufferHeight);
+          gl.uniform2f(this.u.right, Math.cos(bearing), Math.sin(bearing));
+          gl.uniform1f(this.u.outsetPx, outsetPx);
+          gl.uniform1f(this.u.outsetMerc, outsetPx / dpr / worldSize);
+          gl.uniform4fv(this.u.color, this.color);
+          gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
+          if (this.dirty) { gl.bufferData(gl.ARRAY_BUFFER, this.data, gl.STATIC_DRAW); this.dirty = false; }
+          const stride = 7 * 4;
+          gl.enableVertexAttribArray(this.a.pos); gl.vertexAttribPointer(this.a.pos, 3, gl.FLOAT, false, stride, 0);
+          gl.enableVertexAttribArray(this.a.norm); gl.vertexAttribPointer(this.a.norm, 3, gl.FLOAT, false, stride, 12);
+          gl.enableVertexAttribArray(this.a.side); gl.vertexAttribPointer(this.a.side, 1, gl.FLOAT, false, stride, 24);
+          gl.disable(gl.DEPTH_TEST); gl.disable(gl.STENCIL_TEST); gl.disable(gl.CULL_FACE);
+          gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+          gl.drawArrays(gl.TRIANGLES, 0, this.count);
+          gl.disableVertexAttribArray(this.a.pos); gl.disableVertexAttribArray(this.a.norm); gl.disableVertexAttribArray(this.a.side);
+        }
+      };
+    }
+    function xrayWire() {
+      if (!cityVectorMap || typeof cityVectorMap.getLayer !== 'function') return null;
+      try { const l = cityVectorMap.getLayer('xray-wire'); return l && l.implementation ? l.implementation : null; } catch (e) { return null; }
+    }
+    // The outer ring of each polygon, as xrayShrink keeps them.
+    function xrayRings(geom) { return geom.type === 'Polygon' ? [geom.coordinates[0]] : geom.coordinates.map(poly => poly[0]); }
+    function xrayRingSegments(ring, alt, out) { for (let i = 0; i + 1 < ring.length; i++) out.push([[ring[i][0], ring[i][1], alt], [ring[i + 1][0], ring[i + 1][1], alt]]); }
+    // A box of lines: a ring at the top, the standing edges, and a ring at the bottom unless that edge is drawn already.
+    function xrayBoxSegments(geom, base, top, out, withBase) {
+      xrayRings(geom).forEach(ring => {
+        if (withBase) xrayRingSegments(ring, base, out);
+        xrayRingSegments(ring, top, out);
+        const closed = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1];
+        for (let i = 0; i < ring.length - (closed ? 1 : 0); i++) out.push([[ring[i][0], ring[i][1], base], [ring[i][0], ring[i][1], top]]);
+      });
+    }
+
     function xrayLayersReady() {
-      if (!cityVectorMap || typeof cityVectorMap.getSource !== 'function' || typeof cityVectorMap.isStyleLoaded !== 'function' || !cityVectorMap.isStyleLoaded()) return false;
-      const empty = () => ({ type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-      if (!cityVectorMap.getSource('xray-shell')) cityVectorMap.addSource('xray-shell', empty());
-      if (!cityVectorMap.getSource('xray-slabs')) cityVectorMap.addSource('xray-slabs', empty());
-      if (!cityVectorMap.getLayer('xray-slabs')) cityVectorMap.addLayer({ id: 'xray-slabs', type: 'fill-extrusion', source: 'xray-slabs', paint: { 'fill-extrusion-color': '#f4f4f4', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.9 } });
-      if (!cityVectorMap.getLayer('xray-shell')) cityVectorMap.addLayer({ id: 'xray-shell', type: 'fill-extrusion', source: 'xray-shell', paint: { 'fill-extrusion-color': '#161616', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'base'], 'fill-extrusion-opacity': 0.14 } });
-      if (!cityVectorMap.getLayer('xray-outline')) cityVectorMap.addLayer({ id: 'xray-outline', type: 'line', source: 'xray-shell', paint: { 'line-color': '#161616', 'line-width': 0.8 } });
-      if (!cityVectorMap.getLayer('xray-slabs-outline')) cityVectorMap.addLayer({ id: 'xray-slabs-outline', type: 'line', source: 'xray-slabs', layout: { visibility: 'none' }, paint: { 'line-color': '#161616', 'line-width': 0.8 } });
-      applyCityMapGossip(); // after the outlines exist, so they take the theme's line colour from the start
+      if (!cityVectorMap || typeof cityVectorMap.getLayer !== 'function' || typeof cityVectorMap.isStyleLoaded !== 'function' || !cityVectorMap.isStyleLoaded()) return false;
+      if (!cityVectorMap.getLayer('xray-wire')) cityVectorMap.addLayer(xrayWireLayer());
+      applyCityMapGossip(); // after the lines exist, so they take the theme's line colour from the start
       return true;
     }
 
@@ -7430,11 +7551,7 @@ return maplibregl$1;
     function xrayClearDrawing() {
       XRAY.building = null;
       XRAY.markers.forEach(m => m.remove()); XRAY.markers = [];
-      if (!cityVectorMap || typeof cityVectorMap.getSource !== 'function') return;
-      try {
-        cityVectorMap.getSource('xray-shell')?.setData({ type: 'FeatureCollection', features: [] });
-        cityVectorMap.getSource('xray-slabs')?.setData({ type: 'FeatureCollection', features: [] });
-      } catch (e) { /* style not ready */ }
+      try { const wire = xrayWire(); if (wire) wire.setSegments([]); } catch (e) { /* style not ready */ }
     }
 
     function showBuildingXray(inst) {
@@ -7455,20 +7572,22 @@ return maplibregl$1;
     function xrayDraw(inst) {
       const b = XRAY.building;
       XRAY.markers.forEach(m => m.remove()); XRAY.markers = [];
-      const shell = cityVectorMap.getSource('xray-shell'), slabs = cityVectorMap.getSource('xray-slabs');
-      if (!shell || !slabs) return;
-      if (!b) { shell.setData({ type: 'FeatureCollection', features: [] }); slabs.setData({ type: 'FeatureCollection', features: [] }); return; }
+      const wire = xrayWire();
+      if (!wire) return;
+      if (!b) { wire.setSegments([]); return; }
       const cats = xrayCategories(inst), n = cats.length, h = Math.max(b.height, b.base + 3);
-      shell.setData({ type: 'FeatureCollection', features: [{ type: 'Feature', geometry: b.geometry, properties: { height: h, base: b.base } }] });
+      const segs = [];
+      // The shell: its roof and its standing edges. Its footprint on the ground is the street map's own building line, drawn once.
+      xrayBoxSegments(b.geometry, b.base, h, segs, b.base > 0);
       const inner = xrayShrink(b.geometry, 0.7), span = h - b.base;
       if (XRAY.mode === 'plan') {
         // From above: one outline per category, each inside the last, all on the roof.
-        slabs.setData({ type: 'FeatureCollection', features: cats.map((c, i) => ({ type: 'Feature', geometry: xrayShrink(b.geometry, 0.85 - 0.7 * i / Math.max(n, 1)), properties: { color: XRAY_COLOURS[c.key], base: h, height: h + 0.2 } })) });
+        cats.forEach((c, i) => xrayRings(xrayShrink(b.geometry, 0.85 - 0.7 * i / Math.max(n, 1))).forEach(ring => xrayRingSegments(ring, h, segs)));
       } else {
-        slabs.setData({ type: 'FeatureCollection', features: cats.map((c, i) => ({ type: 'Feature', geometry: inner, properties: { color: XRAY_COLOURS[c.key], base: b.base + span * i / n, height: b.base + span * i / n + span / n * 0.5 } })) });
+        // Stacked inside the shell: one slab per category, each a box of lines with its own base and top.
+        cats.forEach((c, i) => { const lo = b.base + span * i / n; xrayBoxSegments(inner, lo, lo + span / n * 0.5, segs, true); });
       }
-      try { if (cityVectorMap.getLayer('xray-slabs-outline')) cityVectorMap.setLayoutProperty('xray-slabs-outline', 'visibility', XRAY.mode === 'plan' ? 'visible' : 'none'); } catch (e) { /* style not ready */ }
-      if (!XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) { cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 0.35); XRAY.dimmed = true; }
+      wire.setSegments(segs);
       const c = xrayCentroid(b.geometry);
       cats.forEach((cat, i) => {
         const el = document.createElement('button');
@@ -7513,7 +7632,6 @@ return maplibregl$1;
     function hideBuildingXray() {
       XRAY.inst = null; XRAY.waiting = false; XRAY.mode = 'xray';
       xraySyncModeBar(false);
-      try { if (cityVectorMap && cityVectorMap.getLayer && cityVectorMap.getLayer('xray-slabs-outline')) cityVectorMap.setLayoutProperty('xray-slabs-outline', 'visibility', 'none'); } catch (e) { /* style not ready */ }
       xrayClearDrawing();
       document.getElementById('buildingInsidePanel')?.classList.add('hidden');
       if (XRAY.hidSheet) {
@@ -7523,11 +7641,6 @@ return maplibregl$1;
       }
       const inside = document.getElementById('desktopDossierInside');
       if (inside) { inside.innerHTML = ''; inside.classList.add('hidden'); }
-      if (!cityVectorMap || typeof cityVectorMap.getLayer !== 'function') { XRAY.dimmed = false; return; }
-      try {
-        if (XRAY.dimmed && cityVectorMap.getLayer('building-3d-city-context')) cityVectorMap.setPaintProperty('building-3d-city-context', 'fill-extrusion-opacity', 1);
-      } catch (e) { /* style not ready */ }
-      XRAY.dimmed = false;
     }
     window.hideBuildingXray = hideBuildingXray;
 
