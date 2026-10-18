@@ -2,7 +2,7 @@
 """Clean Funding Grade: one grade per record, 1 (cleanest) to 5, from what the record proves.
 
 The grade says two things about the money: what it is, and whether the record shows it. Dirt and darkness are
-different failings, so a record with no funder list is not graded at all; silence is not cleanliness.
+different failings, so a record without an independently sourced funder roster is not graded; silence is not cleanliness.
 
   1  Clean, money shown      no flag-category funder and no documented objection, and the record shows figures
                              (amounts or shares in the funding text), or links accounts or a public registry filing
@@ -14,7 +14,7 @@ different failings, so a record with no funder list is not graded at all; silenc
                              sanctions, forced labour, prisons, a mining disaster
   5  Several, or flagged     more than one flagged funder category, or a flagged funder plus a documented objection
      and contested
-  -  not graded              Roster unverified: no funder list is recorded
+  -  not graded              No independently sourced funder roster is recorded
 
 Rules the grade follows: public money alone is never a flag, so a wholly public museum sits at 1 or 2. A flag counts
 only when the record carries it, which the Sponsor Atlas second checks decided. Disclosure only moves a record up,
