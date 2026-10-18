@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=177">
-  <script src="assets/config.js?v=177"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=178">
+  <script src="assets/config.js?v=178"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9623,9 +9623,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v177';
+      const ATLAS_RELEASE = 'culture-atlas-v178';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=177').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=178').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -16573,10 +16573,31 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // The chat title is one of four, picked on each load.
     const HERO_TITLES = ['Who funds this cultural institution?', 'Who’s behind this cultural institution?', 'What should I know about this cultural institution?', 'What’s the story behind this cultural institution?'];
     const HERO_TITLE = HERO_TITLES[Math.floor(Math.random() * HERO_TITLES.length)];
+    // Does the chat read this question as being about this record?
+    const resolvesTo = (text, inst) => { try { const hit = findMentionedInst(text); return !!hit && (hit.id === inst.id || hit.name === inst.name); } catch (e) { return false; } };
+    const shuffledList = (arr) => arr.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(p => p[1]);
+    // The title is a question the records can answer, about one space, never "this cultural institution" with none in
+    // view (user's correction, 18 Oct 2026). With a space selected it asks about that space; otherwise it asks who funds
+    // one funded, source-cited space with a short name, picked once per load so the title does not change under the reader.
+    let heroPick = null;
+    function heroQuestion(list) {
+      const sel = typeof selectedInstitution !== 'undefined' ? selectedInstitution : null;
+      if (sel) {
+        const own = [`Who funds ${sel.name}?`, `What is reported about ${sel.name}?`].find(q => resolvesTo(q, sel));
+        return own || list[0] || HERO_TITLE;
+      }
+      if (!heroPick) {
+        const funded = ALL_INSTITUTIONS.filter(i => i.tier === 'A' && i.funding);
+        const short = funded.filter(i => i.name.length <= 26);
+        const hit = shuffledList(short.length ? short : funded).find(i => resolvesTo(`Who funds ${i.name}?`, i));
+        heroPick = hit ? `Who funds ${hit.name}?` : HERO_TITLE;
+      }
+      return heroPick;
+    }
     function starterPromptList() {
       const registry = (typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []).filter(c => c && c.name);
       const registryName = (city) => { const c = city && registry.find(r => matchC(r.name, city)); return c ? c.name : ''; };
-      const resolves = (text, inst) => { try { const hit = findMentionedInst(text); return !!hit && (hit.id === inst.id || hit.name === inst.name); } catch (e) { return false; } };
+      const resolves = resolvesTo;
       const sel = typeof selectedInstitution !== 'undefined' ? selectedInstitution : null;
       const out = [];
       if (sel) {
@@ -16606,15 +16627,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function renderStarterPrompts() {
       let list = [];
       try { list = starterPromptList(); } catch (e) { list = []; }
+      let title = HERO_TITLE;
+      try { title = heroQuestion(list); } catch (e) {}
+      list = list.filter(q => q !== title);
       const html = list.length ? `<p class="starter-label no-indent">Try asking</p>${list.map(q => `<button type="button" class="starter-prompt" data-query="${escapeHtml(q)}">${escapeHtml(noBreakHyphens(q))}</button>`).join('')}` : '';
       ['curatorHeroTitle', 'curatorDrawerHeroTitle'].forEach(id => {
         const t = document.getElementById(id);
-        if (t && t.dataset.t !== HERO_TITLE) {
-          t.dataset.t = HERO_TITLE;
-          t.dataset.query = HERO_TITLE;
+        if (t && t.dataset.t !== title) {
+          t.dataset.t = title;
+          t.dataset.query = title;
           t.setAttribute('role', 'button');
           t.setAttribute('tabindex', '0');
-          t.textContent = noBreakHyphens(HERO_TITLE);
+          t.textContent = noBreakHyphens(title);
         }
       });
       ['curatorStarterPrompts', 'curatorDrawerStarterPrompts'].forEach(id => {
@@ -17894,8 +17918,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=177"></script>
-<script src="assets/bubbles.js?v=177" defer></script>
-<script src="assets/typeset.js?v=177"></script>
+<script src="assets/layers.js?v=178"></script>
+<script src="assets/bubbles.js?v=178" defer></script>
+<script src="assets/typeset.js?v=178"></script>
 </body>
 </html>
