@@ -16738,6 +16738,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       'Mining disaster': (n) => `Why is ${n} flagged over a mining disaster?`,
       'Prison or detention': (n) => `Why is ${n} flagged over detention?`
     };
+    const funderName = (f) => /\b(family|foundations?|fonden|fund)$/i.test(f) ? `the ${f}` : f;
     let cloudCache = { key: null, list: [] };
     function questionCloud() {
       const sel = typeof selectedInstitution !== 'undefined' ? selectedInstitution : null;
@@ -16747,39 +16748,41 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const registryName = (city) => { const c = city && registry.find(r => matchC(r.name, city)); return c ? c.name : ''; };
       const seen = new Set(), out = [];
       const add = (q, tier, inst) => { if (q && q.length <= 58 && !seen.has(q)) { seen.add(q); out.push({ q, tier, inst: inst || null }); } };
-      // The questions a record can answer, each from a field the research filled: the flag, the named funder, the
-      // grade, the employee accounts, the critical frame, the hours and the price. Candidates are cheap; whether a
-      // question really resolves to its record is checked after it is on screen (see verifyShown).
-      const flagQ = (i) => { const f = (i.flags || [])[0]; const make = f && FLAG_QUESTION[f]; return make ? make(i.name) : (i.why_flagged ? `Why is ${i.name} flagged?` : ''); };
-      const funderQ = (i) => { const l = (i.funder_links || [])[0]; return i.funding && l && l.funder ? `Is ${i.name} funded by ${l.funder}?` : ''; };   // only where the funding text answers
-      const gradeQ = (i) => i.grade ? `Why is ${i.name} graded ${i.grade}?` : '';
+      // The questions a record can answer, each from a field the research filled: the flag and its reason, the named
+      // funder, the money, the grade and its basis, the employee accounts, the critical frame, the Epstein record. Every one
+      // is about money, influence or controversy; no visitor question (hours, prices, "find spaces in") is asked (user's
+      // correction, 18 Oct 2026: the questions need to be serious and in depth). Candidates are cheap; whether a question
+      // really resolves to its record is checked after it is on screen (see verifyShown).
+      // A protest flag whose text says no protest was found (fourteen records) is not asked about a protest.
+      const flagQ = (i) => { if (!i.why_flagged) return ''; const f = (i.flags || []).find(f => !(/protest|boycott/i.test(f) && /\b(no|never) protest/i.test(i.why_flagged))); const make = f && FLAG_QUESTION[f]; return make ? make(i.name) : `Why is ${i.name} flagged?`; };
+      const funderQ = (i) => { const l = (i.funder_links || [])[0]; return i.funding && l && l.funder ? `Is ${i.name} funded by ${funderName(l.funder)}?` : ''; };   // the funding answer names the shared funders
+      const hasMoney = (i) => !!i.funding && /[$€£¥]\s?\d|\d\s?(m|bn|k|million|billion)\b|\b(dkk|sek|nok|chf|usd|eur|gbp)\b/i.test(i.funding);
+      const moneyQ = (i) => hasMoney(i) ? `Who funds ${i.name} and with how much?` : '';
+      const gradeQ = (i) => i.grade && i.grade_basis ? `Why is ${i.name} graded ${i.grade}?` : '';
       const staffQ = (i) => ((i.gossip_data || {}).accounts || []).length ? `What do employees report at ${i.name}?` : '';
       const criticQ = (i) => (i.visual_critiques || []).some(v => v.kind === 'theory') ? `What do critics say about ${i.name}?` : '';
-      const hoursQ = (i) => i.opening_hours ? `When is ${i.name} open?` : '';
-      const costQ = (i) => i.admission_fee ? `What does ${i.name} cost?` : '';
       const epsteinQ = (i) => (i.epstein_records || []).length ? `What is ${i.name}’s Epstein link?` : '';
       const pool = (test, n, make) => shuffledList(ALL_INSTITUTIONS.filter(test)).slice(0, n * 2).map(i => ({ q: make(i), tier: tierOf(i), inst: i })).filter(x => x.q && x.q.length <= 58).slice(0, n);
-      if (sel) [flagQ, funderQ, gradeQ, staffQ, criticQ, hoursQ, costQ, epsteinQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, tierOf(sel), sel); });
-      const counts = {}, grade1 = {};
-      ALL_INSTITUTIONS.forEach(i => { const c = registryName(i.city); if (!c) return; if (i.tier === 'A') counts[c] = (counts[c] || 0) + 1; if (i.grade === 1) grade1[c] = (grade1[c] || 0) + 1; });
-      const cityTierOf = (name) => {
-        const n = { A: 0, B: 0, U: 0 };
-        ALL_INSTITUTIONS.forEach(i => { if (registryName(i.city) === name) n[tierOf(i)]++; });
-        return n.A >= n.B && n.A >= n.U ? 'A' : n.B >= n.U ? 'B' : 'U';
-      };
-      const flags = pool(i => i.tier === 'B' && (i.flags || []).length && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i), 160, flagQ);
+      if (sel) [flagQ, funderQ, moneyQ, gradeQ, staffQ, criticQ, epsteinQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, tierOf(sel), sel); });
+      const flaggedIn = {}, grade1 = {};
+      ALL_INSTITUTIONS.forEach(i => { const c = registryName(i.city); if (!c) return; if (i.tier === 'B' && i.why_flagged) flaggedIn[c] = (flaggedIn[c] || 0) + 1; if (i.grade === 1) grade1[c] = (grade1[c] || 0) + 1; });
+      const flags = pool(i => i.tier === 'B' && i.why_flagged && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i), 160, flagQ);
       const funders = pool(i => i.funding && (i.funder_links || []).length && (i.tier === 'A' || i.tier === 'B'), 120, funderQ);
-      const grades = pool(i => i.grade && (i.tier === 'A' || i.tier === 'B'), 100, gradeQ);
+      const money = pool(i => hasMoney(i) && (i.tier === 'A' || i.tier === 'B'), 100, moneyQ);
+      const grades = pool(i => i.grade && i.grade_basis && (i.tier === 'A' || i.tier === 'B'), 100, gradeQ);
       const staff = pool(i => ((i.gossip_data || {}).accounts || []).length, 60, staffQ);
       const critics = pool(i => (i.visual_critiques || []).some(v => v.kind === 'theory') && (i.tier === 'A' || i.tier === 'B'), 60, criticQ);
-      const hours = pool(i => i.opening_hours, 60, hoursQ);
-      const costs = pool(i => i.admission_fee, 50, costQ);
       const epstein = pool(i => (i.epstein_records || []).length, 16, epsteinQ);
-      const cities = shuffledList(Object.keys(counts).filter(c => counts[c] >= 2)).slice(0, 50).map(c => ({ q: `Find cultural spaces in ${c}`, tier: cityTierOf(c), inst: null }));
-      const cleanest = shuffledList(Object.keys(grade1)).slice(0, 50).map(c => ({ q: `Which spaces in ${c} are grade 1?`, tier: 'A', inst: null }));
-      const general = ['How are spaces assessed?', 'Which spaces are flagged?', 'What do employees report?', 'What do critics say?', 'How are spaces graded?', 'Show grade 1 spaces', 'Show grade 5 spaces'].map(q => ({ q, tier: 'U', inst: null }));
+      // A city's flagged spaces with their reasons, and a city's grade 1 spaces: only where there are two or more to list.
+      const flaggedCities = shuffledList(Object.keys(flaggedIn).filter(c => flaggedIn[c] >= 2)).slice(0, 50).map(c => ({ q: `Which spaces in ${c} are flagged, and why?`, tier: 'B', inst: null }));
+      const cleanest = shuffledList(Object.keys(grade1).filter(c => grade1[c] >= 2)).slice(0, 50).map(c => ({ q: `Which spaces in ${c} are grade 1?`, tier: 'A', inst: null }));
+      // A funder named on three or more records (funder_links): which institutions it funds, in the fill of most of them.
+      const linked = {};
+      ALL_INSTITUTIONS.forEach(i => (i.funder_links || []).forEach(l => { if (l && l.funder && !/\//.test(l.funder)) (linked[l.funder] = linked[l.funder] || []).push(i); }));
+      const funderTier = (f) => { const n = { A: 0, B: 0, U: 0 }; linked[f].forEach(i => n[tierOf(i)]++); return n.A >= n.B && n.A >= n.U ? 'A' : n.B >= n.U ? 'B' : 'U'; };
+      const sharedFunders = shuffledList(Object.keys(linked).filter(f => linked[f].length >= 3)).slice(0, 40).map(f => ({ q: `Which institutions does ${funderName(f)} fund?`, tier: funderTier(f), inst: null }));
       // Round-robin over the kinds so the colours and the kinds of question mix across the page.
-      const kinds = [flags, funders, cities, grades, staff, cleanest, critics, hours, epstein, costs, general];
+      const kinds = [flags, funders, flaggedCities, grades, staff, cleanest, critics, money, epstein, sharedFunders];
       for (let k = 0; kinds.some(a => a.length); k++) kinds.forEach(a => { const x = a.shift(); if (x) add(x.q, x.tier, x.inst); });
       cloudCache = { key, list: out };
       return out;
