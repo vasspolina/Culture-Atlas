@@ -9,7 +9,13 @@
 
   function gossip() { return document.body.classList.contains('gossip-mode-active'); }
 
-  /* Comic-book balloons. Each turn is one of three kinds, chosen by what it says: a speech balloon (a lumpy blob with a long
+  /* Only a turn that holds gossip gets a balloon. The reply builder in index.html marks it: the turn carries .is-gossip and its
+     reported, unverified items carry data-gossip (the record's reported items, a list of spaces with reported items). A plain
+     record, a city list, the status line and the reader's own questions carry neither and are left exactly as in normal mode.
+     The words of the text never decide this on their own: the status line says "none is independently verified" and is not gossip. */
+  function isGossip(el) { return el.classList.contains('is-gossip') || !!el.querySelector('[data-gossip]'); }
+
+  /* Comic-book balloons. Each gossip turn is one of three kinds, chosen by what it says: a speech balloon (a lumpy blob with a long
      curved tail, as in the reference), a shout (a jagged burst) for what is flagged or reported, and a thought cloud
      (scalloped, with a trail of small bubbles) for what is unverified. Every shape starts from the rounded rectangle that
      holds the text and only ever grows outward from it, so the text always sits inside. */
@@ -175,7 +181,7 @@
   }) : null;
 
   function bubble(el) {
-    if (!gossip() || el.dataset.bubble) return;
+    if (!gossip() || el.dataset.bubble || !isGossip(el)) return;
     el.dataset.bubble = '1';
     build(el);
     if (watch) watch.observe(el);

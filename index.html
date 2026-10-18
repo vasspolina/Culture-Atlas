@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=179">
-  <script src="assets/config.js?v=179"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=181">
+  <script src="assets/config.js?v=181"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9620,7 +9620,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=179').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=181').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11111,7 +11111,8 @@ return maplibregl$1;
       const kindLabel = { information: 'Information', gossip: 'Gossip, unverified', whistleblower: 'Whistleblower note' };
       const readers = readerNotesFor(inst).map(n => item(kindLabel[n.kind] || 'Note', (n.approvedAt || '').slice(0, 10), p('', n.text), n.sourceUrl ? [n.sourceUrl] : []));
       if (!blocks.length && !accounts.length && !readers.length) return '';
-      return `<div class="py-3 rule-b" role="region" aria-label="Reported items">
+      // data-gossip marks the one block of a reply that is gossip: assets/bubbles.js draws a comic balloon only around a turn that holds it.
+      return `<div class="py-3 rule-b" role="region" aria-label="Reported items" data-gossip="items">
         ${blocks.length ? `<h3 class="kicker">Reported, not independently verified</h3>${blocks.join('')}` : ''}
         ${accounts.length ? `<h3 class="kicker accounts-note">Individual accounts from review sites and Reddit; not verified findings about the institution.</h3>${accounts.join('')}` : ''}
         ${readers.length ? `<h3 class="kicker">Shared by readers and approved by the editor. Not checked against a source.</h3>${readers.join('')}` : ''}
@@ -14146,6 +14147,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         </div>
       `;
+      // A turn that holds gossip (reported, unverified items) is marked on the turn itself, so in gossip mode the comic balloon goes only around those.
+      if (div.querySelector('[data-gossip]')) div.classList.add('is-gossip');
       curatorMessages.appendChild(div);
       scrollChatToBottom(true);
 
@@ -14154,6 +14157,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const mBot = document.createElement('div');
         mBot.className = 'curator-message-wrap';
         mBot.innerHTML = processedContent + followUpHtml;
+        if (mBot.querySelector('[data-gossip]')) mBot.classList.add('is-gossip');
         drawerLive.appendChild(mBot);
         const drawerBody = document.getElementById('curatorDrawerChatBody');
         if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight;
@@ -14258,7 +14262,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         out.push(t.city ? `Find cultural spaces in ${t.city}` : 'Find cultural spaces in London');
         return out;
       };
-      const answer = (html, follow) => appendCuratorMessage(`<div class="space-y-3">${html}</div>`, follow || followFor());
+      // gossip: the whole reply is reported, unverified items (a list of flagged spaces); a plain record, a city list or a status line is not.
+      const answer = (html, follow, gossip) => appendCuratorMessage(`<div class="space-y-3"${gossip ? ' data-gossip="list"' : ''}>${html}</div>`, follow || followFor());
       const asks = (re) => re.test(q);
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
@@ -14274,7 +14279,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countB = ALL_INSTITUTIONS.filter(i => i.tier === 'B').length;
       const countU = ALL_INSTITUTIONS.filter(i => i.tier !== 'A' && i.tier !== 'B').length;
       const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I answer only from the records on this page: who funds a space, what is reported about it, hours and prices where they are recorded, and the sources.</p><p>${countA} spaces have a source outside the museum, ${countB} are flagged with a reason, and ${countU} are unverified.</p>`);
-      const listOf = (items, title) => answer(items.length ? `<p>${title}</p>${items.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml(tierName(i))}.</p>`).join('')}${items.length > 12 ? `<p class="no-indent">${items.length - 12} more.</p>` : ''}` : '<p>None are recorded.</p>');
+      const listOf = (items, title, gossip) => answer(items.length ? `<p>${title}</p>${items.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml(tierName(i))}.</p>`).join('')}${items.length > 12 ? `<p class="no-indent">${items.length - 12} more.</p>` : ''}` : '<p>None are recorded.</p>', undefined, gossip && items.length > 0);
 
       // With a model connected (a visitor's key, or the chat Worker) every question that is not a plain list goes to it, so the
       // chat holds a conversation; the record answers below are what answers when no model is there or the model fails.
@@ -14374,8 +14379,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)}${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
-      if (!explicit && asks(/epstein/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.epstein_records || []).length), 'Spaces with a recorded Epstein-related item. Each item is on its space\'s page with its sources, and none is independently verified:'); return; }
-      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:'); return; }
+      if (!explicit && asks(/epstein/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.epstein_records || []).length), 'Spaces with a recorded Epstein-related item. Each item is on its space\'s page with its sources, and none is independently verified:', true); return; }
+      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:', true); return; }
 
       if (await askModel()) return;
       if (target && asks(/\b(hours?|open|opening|admission|ticket|price|fee|cost|free|visit|address|where is)\b/)) {
@@ -14386,7 +14391,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
-        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:');
+        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:', true);
         return;
       }
       if (target && (isGossipModeActive || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported)\b/))) {
@@ -17826,8 +17831,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=179"></script>
-<script src="assets/bubbles.js?v=179" defer></script>
-<script src="assets/typeset.js?v=179"></script>
+<script src="assets/layers.js?v=181"></script>
+<script src="assets/bubbles.js?v=181" defer></script>
+<script src="assets/typeset.js?v=181"></script>
 </body>
 </html>
