@@ -722,23 +722,43 @@ body.gossip-mode-active #cityMapContainer{background:var(--gossip)}
 body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
 body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
 /* Layers menu on the map */
-#layersControl{position:absolute;left:12px;bottom:12px;z-index:30;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+#layersControl{position:absolute;top:12px;right:12px;z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 #layersBtn{font:400 15px/1 var(--sans);letter-spacing:.01em;padding:11px 14px;background:var(--block);color:var(--ink);border:0;border-radius:0}
 #layersBtn:hover,#layersBtn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
-#layersPanel{background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:10px 14px;display:flex;flex-direction:column;gap:8px;width:272px;max-width:calc(100vw - 24px);max-height:calc(100% - 70px);overflow-y:auto}
+#layersPanel{position:absolute;top:calc(100% + 6px);right:0;z-index:1;box-sizing:border-box;background:rgba(23,23,23,.96);color:#e5e5e5;border:1px solid rgba(64,64,64,.8);border-radius:8px;padding:12px;width:320px;max-width:calc(100vw - 24px);max-height:min(70vh,calc(100dvh - 24px));overflow-y:auto;box-shadow:0 25px 50px -12px rgba(0,0,0,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:400 12px/1.35 var(--sans);user-select:none}
+#layersPanel.is-above{top:auto;bottom:calc(100% + 6px)}
 #layersPanel[hidden]{display:none}
-#layersPanel .layers-title{margin:0;font:700 15px/1 var(--sans-compact,var(--sans));letter-spacing:.01em}
-#layersPanel label{display:flex;align-items:center;gap:10px;font:400 15px/1.2 var(--sans);letter-spacing:.01em;color:var(--ink);cursor:pointer}
-#layersPanel input{width:18px;height:18px;accent-color:var(--ink);margin:0;border-radius:0}
-#layersPanel label>span{display:flex;flex-direction:column;gap:2px}
-#layersPanel .layers-count{font-size:14px;line-height:1.2;opacity:.75}
+#layersPanel .layers-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:8px;margin-bottom:4px;border-bottom:1px solid #292929}
+#layersPanel .layers-title{margin:0;font:600 13px/1.2 var(--sans);letter-spacing:.01em;color:#f5f5f5}
+#layersPanel .layers-actions{display:flex;align-items:center;gap:10px}
+#layersPanel .layers-actions button{padding:0;border:0;background:transparent;color:#a3a3a3;cursor:pointer}
+#layersPanel .layers-reset{font:500 11px/1 var(--sans);text-decoration:underline;text-underline-offset:2px}
+#layersPanel .layers-close{font:400 20px/1 var(--sans);padding:0 2px!important}
+#layersPanel .layers-actions button:hover{color:#fff}
+#layersPanel .layers-section{padding-top:8px}
+#layersPanel .layers-section+.layers-section{margin-top:4px;border-top:1px solid #292929}
+#layersPanel .layers-section-title{margin:0 0 7px;color:#a3a3a3;font:700 10px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+#layersPanel .layers-list{display:flex;flex-direction:column;gap:2px}
+#layersPanel label{display:flex;align-items:center;gap:8px;min-height:28px;padding:4px 6px;border-radius:4px;color:#e5e5e5;font:400 12px/1.25 var(--sans);cursor:pointer}
+#layersPanel label:hover{background:rgba(64,64,64,.55)}
+#layersPanel input{flex:0 0 auto;width:14px;height:14px;accent-color:#60a5fa;margin:0;border-radius:3px}
+#layersPanel label>span:nth-of-type(1){min-width:0;flex:1}
+#layersPanel .layers-count{flex:0 0 auto;text-align:right;color:#a3a3a3;font:400 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace}
 #layersPanel .layers-count:empty{display:none}
-#layersPanel .layers-key{margin:4px 0 0;padding-top:8px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 12px;font:400 14px/1.2 var(--sans);letter-spacing:.01em}
-#layersPanel .layers-key span{display:inline-flex;align-items:center;gap:6px}
-#layersPanel .layers-key i{display:inline-block;width:12px;height:12px}
+#layersPanel .layers-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 10px;color:#d4d4d4;font:400 10px/1.25 var(--sans)}
+#layersPanel .layers-key span{display:flex;align-items:center;gap:7px;min-width:0}
+#layersPanel .layers-key i{display:inline-block;flex:0 0 10px;width:10px;height:10px;background:var(--marker-color);font-style:normal}
+#layersPanel .shape-hexagon{clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
+#layersPanel .shape-triangle{clip-path:polygon(50% 0,100% 100%,0 100%)}
+#layersPanel .shape-diamond{transform:rotate(45deg) scale(.78)}
+#layersPanel .shape-dot{border-radius:50%}
+#layersPanel .shape-shield{clip-path:polygon(50% 0,100% 18%,90% 72%,50% 100%,10% 72%,0 18%)}
+#layersPanel .shape-star{clip-path:polygon(50% 0,62% 35%,100% 35%,69% 57%,81% 95%,50% 72%,19% 95%,31% 57%,0 35%,38% 35%)}
+#layersPanel .layers-grade-key{grid-template-columns:1fr}
+#layersPanel .layers-grade-key strong{flex:0 0 52px;color:#f5f5f5;font-weight:600}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}
-@media (max-width:767px){#layersControl{bottom:auto;top:200px;left:auto;right:12px;align-items:flex-end}}
+@media (max-width:767px){#layersControl{top:200px;right:12px}}
 
 /* Dark mode: the same ink-and-paper system, inverted. The globe stays black in both. */
 :root[data-theme="dark"]{color-scheme:dark;--ink:#fff;--paper:#121212;--grey:#1c1c1c;--block:#2f2f2f;--line:#fff}

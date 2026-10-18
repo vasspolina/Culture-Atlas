@@ -6,7 +6,7 @@
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
   const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, right: false, epstein: false, hq: false, people: false };
-  const COL = { gov: '#8fa2ff', corp: '#a9e0e6', found: '#ff9966', flag: '#ff6119', right: '#ff5a4d', epstein: '#ec4fe8' };
+  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb' };
   const RIGHT = n => typeof n[5] === 'string' && n[5].indexOf('right:') === 0;
   const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? ['Jeffrey Epstein'] : []);
   const FUNDER = n => n[1] === 'gov' || n[1] === 'corp' || n[1] === 'found';
@@ -192,7 +192,7 @@
     if (rec && typeof rec.lat === 'number') {
       ctx.lineWidth = 1.2; ctx.globalAlpha = 0.85;
       if (L.hq) linkedOrgs.forEach(k => { const o = HQ.byKey.get(k); ctx.strokeStyle = KIND[o.k]; arc(project, rec, o, r, cx, cy, ctx); });
-      if (L.people) linkedPeople.forEach(n => { const o = HQ.byName.get(n); ctx.strokeStyle = COL.epstein; arc(project, rec, o, r, cx, cy, ctx); });
+      if (L.people) linkedPeople.forEach(n => { const o = HQ.byName.get(n); ctx.strokeStyle = COL.person; arc(project, rec, o, r, cx, cy, ctx); });
       ctx.globalAlpha = 1;
     }
     // marks
@@ -201,7 +201,7 @@
       const on = e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n);
       const s = on ? 7 : (rec ? 3.5 : 5);
       ctx.globalAlpha = rec && !on ? 0.35 : 1;
-      ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.epstein; ctx.strokeStyle = '#000';
+      ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.strokeStyle = '#000';
       ctx.beginPath();
       if (e.kind === 'org') { ctx.moveTo(x, y - s); ctx.lineTo(x + s, y); ctx.lineTo(x, y + s); ctx.lineTo(x - s, y); ctx.closePath(); }
       else ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
@@ -219,7 +219,7 @@
       const tw = ctx.measureText(t).width, w = tw + 12, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
       if (collides(box, boxes)) return;
       boxes.push(box);
-      if (on) { ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.epstein; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5); }
+      if (on) { ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5); }
       else { ctx.lineJoin = 'round'; ctx.lineWidth = 3; ctx.strokeStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#000' : '#fff'; ctx.strokeText(t, box.x + 6, y + 0.5); ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#fff' : '#161616'; ctx.fillText(t, box.x + 6, y + 0.5); }
     });
   }
@@ -367,10 +367,30 @@
   function init() {
     const box = document.getElementById('layersControl'); if (!box) return;
     const btn = box.querySelector('#layersBtn'), panel = box.querySelector('#layersPanel');
-    const setOpen = open => { panel.hidden = !open; btn.setAttribute('aria-expanded', String(open)); };
+    const placePanel = () => {
+      panel.classList.remove('is-above');
+      const buttonRect = btn.getBoundingClientRect(), panelRect = panel.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - buttonRect.bottom - 12;
+      const spaceAbove = buttonRect.top - 12;
+      if (panelRect.height > spaceBelow && spaceAbove > spaceBelow) panel.classList.add('is-above');
+    };
+    const setOpen = open => {
+      panel.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      if (open) placePanel();
+    };
     btn.addEventListener('click', () => setOpen(panel.hidden));
+    box.querySelector('.layers-close').addEventListener('click', () => { setOpen(false); btn.focus(); });
+    box.querySelector('.layers-reset').addEventListener('click', () => {
+      box.querySelectorAll('input[data-layer]').forEach(input => {
+        input.checked = false;
+        L[input.dataset.layer] = false;
+      });
+      if (typeof scheduleRender === 'function') scheduleRender();
+    });
     document.addEventListener('click', e => { if (!panel.hidden && !box.contains(e.target)) setOpen(false); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) setOpen(false); });
+    window.addEventListener('resize', () => { if (!panel.hidden) placePanel(); });
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
       const k = inp.dataset.layer;
       L[k] = inp.checked;
