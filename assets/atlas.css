@@ -670,19 +670,17 @@ a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:unde
 /* The first visit row sits under a block that already ends in a rule, so it draws no rule of its own. */
 .visit-rows>.rule-t:first-child{border-top:0}
 #globeViewport .maplibregl-ctrl-attrib a{color:var(--ink)}
-/* Phone header: brand, Gossip mode and Chat share one row */
+/* Phone header: brand, Gossip mode and Chat share one row. Sizes and overflow are set in the phone fixes at the end of the file;
+   here the brand stands on the 16px edge the record sheet uses, and the brand and Chat match the other two controls. */
 @media (max-width:767px){
-  #mobileTopBar button{font-size:17px;padding:0 8px}
-  #mobileTopBar #mobileTopBrandBtn{padding:0 8px 0 16px}
-  #mobileTopBrandBtn>div>span:first-child{font-size:17px}
+  #mobileTopBar #mobileTopBrandBtn{padding-left:16px}
+  #mobileTopBrandBtn>div>span:first-child{font-size:16px}
+  #mobileTopBar #reset-state-btn{font-size:16px!important}
   #mobileTopBar>div:last-child{align-self:stretch;display:flex;gap:0}
   #mobileTopBar #mobileGossipBtn{border-left:1px solid var(--line)}
-  #mobileTopBar #reset-state-btn{border-left:1px solid var(--line);font-size:17px!important}
+  #mobileTopBar #reset-state-btn{border-left:1px solid var(--line)}
 }
-/* The brand and its three controls are one size, as on the desktop bar; below 375px one step smaller so the bar fits 320px. */
-@media (max-width:374px){#mobileTopBar button,#mobileTopBar #mobileTopBrandBtn>div>span:first-child{font-size:15px}#mobileTopBar #reset-state-btn{font-size:15px!important}#mobileTopBar button{padding:0 5px}#mobileTopBar #mobileTopBrandBtn{padding:0 6px 0 16px}}
-/* On a phone the record sheet and the Layers button share the globe; Layers steps aside while the sheet is up and returns on Close. */
-@media (max-width:767px){#globeViewport:has(#dossier-bottom-sheet:not(.hidden)) #layersControl{display:none}}
+@media (max-width:374px){#mobileTopBrandBtn>div>span:first-child,#mobileTopBar #reset-state-btn{font-size:15px!important}}
 /* The phone question field holds its whole placeholder: three lines, four below 375px where the Send button leaves less room. */
 @media (max-width:374px){#chat-input{min-height:calc(4 * 1.25em + 16px)}}
 
@@ -1104,3 +1102,26 @@ body #curatorMessages p.ai-note{font-size:14px;line-height:1.3;margin-top:6px}
 
 /* gossip: leave room under the last balloon so tails and spikes are not clipped */
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-bottom:2.2em}
+
+/* Phone fixes (Oct 2026) ---------------------------------------------------------------- */
+@media (max-width:767px){
+  /* Header: brand, theme, Gossip mode and Chat fit one row at 390px without running off the right edge. */
+  #mobileTopBar{overflow:hidden}
+  #mobileTopBar #mobileTopBrandBtn{min-width:0;flex:1 1 auto;overflow:hidden}
+  #mobileTopBar #mobileTopBrandBtn span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #mobileTopBar>div:last-child{flex:0 0 auto}
+  #mobileTopBar button{padding:0 8px;font-size:16px}
+  /* Layers sits under the record: the open sheet and the full record cover it as they cover the zoom
+     buttons, instead of it floating over the text. */
+  #layersControl{z-index:25}
+  body:has(#detailDrawer:not(.hidden)) #layersControl,
+  body:has(#dossier-bottom-sheet:not(.hidden)) #layersControl{display:none}
+  /* The full record opens below the header instead of underneath it, so its headline is not cut at the cap line. */
+  #detailDrawer{top:calc(var(--safe-t) + var(--bar) + 1px);height:auto}
+}
+@media (max-width:374px){
+  #mobileTopBar button{padding:0 6px;font-size:15px}
+}
+/* The grade mark keeps black text on its colour in every mode; gossip mode's yellow text vanished on cyan. */
+:root:root body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) span.grade-mark,
+:root:root body :is(#desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet) span.grade-mark{color:#000}
