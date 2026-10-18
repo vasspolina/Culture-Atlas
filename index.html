@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=170">
-  <script src="assets/config.js?v=170"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=171">
+  <script src="assets/config.js?v=171"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9620,7 +9620,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=170').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=171').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11088,6 +11088,15 @@ return maplibregl$1;
       </div>`;
     }
 
+    // What employees report on review sites and Reddit: a summary of the 127 paraphrased accounts the records carry
+    // (Glassdoor, Kununu, Reddit; 58 institutions in eight countries), written 17 October 2026. Individual accounts, not findings.
+    const EMPLOYEE_REPORT = [
+      'The records hold 127 paraphrased accounts from people who say they worked, interned or freelanced at 58 of the spaces, in Germany, the UK, France, the US, Spain and the Netherlands. Three quarters come from Glassdoor and Kununu; the Reddit threads are mostly visitors talking, and only a few are workers.',
+      'What they praise is consistent: the colleagues, the collection and the access that comes with the badge, free entry, talks, flexible hours, and where there is a union, its protection and benefits. The health cover at the large New York museums is named more than once.',
+      'What they report against is just as consistent. Pay that does not meet the cost of the city, in London, New York, Paris and Madrid above all. Slow or opaque decisions, hierarchy and bureaucracy, named most often at the French and German public institutions. Little room to move up, and turnover that follows. At the front of house, casual or zero-hours contracts, unreliable hours and a divide from curatorial staff. Unpaid or barely paid internships at several museums. After layoffs, understaffing and last-minute scheduling.',
+      'A smaller number of accounts allege more: favouritism, bullying and HR that does not act, restructuring that removes outspoken staff, months-long payment delays, and at one museum unequal treatment of security staff. Each of these is one person\'s account, and the records say so.',
+      'Read them for what they are: self-selected, anonymous, undated or old in places, and one or two per institution. They do not rank anyone. They show the shape of the complaint, which press and union reporting then confirm at the largest institutions: new unions at the Met, the Whitney, the Guggenheim and MoMA PS1 in the last five years, with pay, benefits and precarity the stated reasons.',
+    ];
     // Clean Funding Grade, 1 (cleanest) to 5, computed by tools/grade_funding.py from what each record proves.
     // A record with no funder list has no grade. The colour is the block the grade takes on the map and the record.
     const GRADE = {
@@ -14278,6 +14287,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const places = [...ALL_CITIES_REGISTRY.map(c => c.name), ...ALL_COUNTRIES_REGISTRY.map(c => c.name)].filter(Boolean);
       const esc = (n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const place = places.filter(n => new RegExp('\\b' + esc(n) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
+      // What employees report: the summary of the accounts on the records, and the count on the space in view.
+      if (asks(/\b(what (do )?(employees|staff|workers) (say|report|think)|employee (reviews?|accounts?)|staff (reviews?|accounts?)|glassdoor|kununu|working conditions|work(ing)? (there|here|at))\b/)) {
+        const own = target ? ((target.gossip_data || {}).accounts || []).length : 0;
+        const note = target ? `<p>${formatInstLink(target)} carries ${own ? `${own} such ${own === 1 ? 'account' : 'accounts'}, shown in Gossip mode` : 'no such account'}.</p>` : '';
+        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, ['What do critics say?', 'How are spaces graded?', 'Find cultural spaces in London']);
+        return;
+      }
       // The critical frames (data/research_attach/institutional_critiques.json): paraphrased theory, shown without authors.
       if (asks(/\b(critics?|critiques?|criticism|theor(?:y|ists?)|critical frames?)\b/)) {
         const frames = {};
@@ -17758,8 +17774,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=170"></script>
-<script src="assets/bubbles.js?v=170" defer></script>
-<script src="assets/typeset.js?v=170"></script>
+<script src="assets/layers.js?v=171"></script>
+<script src="assets/bubbles.js?v=171" defer></script>
+<script src="assets/typeset.js?v=171"></script>
 </body>
 </html>
