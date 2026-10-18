@@ -1097,3 +1097,26 @@ body #curatorMessages p.ai-note{font-size:14px;line-height:1.3;margin-top:6px}
 
 /* gossip: leave room under the last balloon so tails and spikes are not clipped */
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-bottom:2.2em}
+
+/* Phone fixes (Oct 2026) ---------------------------------------------------------------- */
+@media (max-width:767px){
+  /* Header: brand, theme, Gossip mode and Chat fit one row at 390px without running off the right edge. */
+  #mobileTopBar{overflow:hidden}
+  #mobileTopBar #mobileTopBrandBtn{min-width:0;flex:1 1 auto;overflow:hidden}
+  #mobileTopBar #mobileTopBrandBtn span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #mobileTopBar>div:last-child{flex:0 0 auto}
+  #mobileTopBar button{padding:0 8px;font-size:16px}
+  /* Layers sits under the record: the open sheet and the full record cover it as they cover the zoom
+     buttons, instead of it floating over the text. */
+  #layersControl{z-index:25}
+  body:has(#detailDrawer:not(.hidden)) #layersControl,
+  body:has(#dossier-bottom-sheet:not(.hidden)) #layersControl{display:none}
+  /* The full record opens below the header instead of underneath it, so its headline is not cut at the cap line. */
+  #detailDrawer{top:calc(var(--safe-t) + var(--bar) + 1px);height:auto}
+}
+@media (max-width:374px){
+  #mobileTopBar button{padding:0 6px;font-size:15px}
+}
+/* The grade mark keeps black text on its colour in every mode; gossip mode's yellow text vanished on cyan. */
+:root:root body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) span.grade-mark,
+:root:root body :is(#desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet) span.grade-mark{color:#000}
