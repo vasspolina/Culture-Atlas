@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=176">
-  <script src="assets/config.js?v=176"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=177">
+  <script src="assets/config.js?v=177"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9625,7 +9625,7 @@ return maplibregl$1;
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
       const ATLAS_RELEASE = 'culture-atlas-v176';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=176').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=177').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9691,6 +9691,10 @@ return maplibregl$1;
     let isAutoSpinning = true;
     let isPointerOverGlobe = false;   // a mouse over the globe holds the slow rotation still; it resumes when the cursor leaves
     let isDragging = false;
+    let zoomAnchor = null;            // canvas point a wheel zoom keeps still, cleared when the zoom settles
+    let lastPointer = null;           // where the mouse last was over the canvas, so hover follows a moving view
+    let lastShownCityLabels = new Set(); // labels drawn last frame keep their place while the view moves
+    let lastViewKey = '';
     let velLon = 0, velLat = 0;
     let lastX = 0, lastY = 0;
     let pointerStartX = 0, pointerStartY = 0;
@@ -10057,8 +10061,39 @@ return maplibregl$1;
             currentRadius = baseR;
           }
         }
-      } else {
-        currentRadius += (targetRadius - currentRadius) * 0.085;
+      } else if (currentRadius !== targetRadius) {
+        // By time, not by frame: 0.085 a frame was twice as fast on a 120Hz screen, and an
+        // asymptote that never arrived. About 90% of the way in a quarter second, then snap.
+        const prevR = currentRadius;
+        const k = 1 - Math.exp(-dt * 9);
+        currentRadius += (targetRadius - currentRadius) * k;
+        if (Math.abs(targetRadius - currentRadius) < 0.05) currentRadius = targetRadius;
+        // Wheel zoom holds the place under the pointer still: the globe turns as it scales
+        // so the point that was under the wheel is under it afterwards.
+        if (zoomAnchor && !isDragging) {
+          const acx = width / 2, acy = height / 2;
+          const before = unproject(zoomAnchor.x, zoomAnchor.y, prevR, acx, acy);
+          if (before) {
+            // Two passes: the longitude offset and the latitude tilt are coupled, and one pass left
+            // 0.1 degrees of drift a step, which over a long zoom walked the pin out from under the wheel.
+            for (let pass = 0; pass < 2; pass++) {
+              const after = unproject(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
+              if (!after) break;
+              rotLon = (rotLon + (before.lon - after.lon) + 540) % 360 - 180;
+              // Latitude is a tilt, not an offset: a Newton step on the tilt.
+              const probe = 0.5, keep = rotLat;
+              rotLat = Math.max(-82, Math.min(82, keep + probe));
+              const tilted = unproject(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
+              rotLat = keep;
+              const mid = unproject(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
+              if (tilted && mid) {
+                const slope = (tilted.lat - mid.lat) / probe;
+                if (Math.abs(slope) > 1e-3) rotLat = Math.max(-82, Math.min(82, keep + (before.lat - mid.lat) / slope));
+              }
+            }
+          }
+        }
+        if (currentRadius === targetRadius) zoomAnchor = null;
       }
 
       const cx = width / 2;
@@ -10303,6 +10338,7 @@ return maplibregl$1;
             if (b.width && b.height) drawnCityBoxes.push({ x: b.left - cRect.left, y: b.top - cRect.top, w: b.width, h: b.height });
           });
         } catch (e) {}
+        const shownCityLabels = new Set();
         const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
         ctx.font = '14px "PP Neue Gstaad", sans-serif';
         
@@ -10350,8 +10386,13 @@ return maplibregl$1;
             const bx = pt.x - bw / 2;
             const by = pt.y - 28;
 
+            // A label drawn last frame keeps its place unless it actually overlaps another; a new
+            // label needs 8px of air. Without this, labels flickered on and off through a zoom as
+            // widths and positions crossed the margin, measured as the count swinging by 40 a frame.
+            const wasShown = lastShownCityLabels.has(city.name);
+            const mx8 = wasShown ? 0 : 8, my6 = wasShown ? 0 : 6;
             const collides = drawnCityBoxes.some(box => {
-              return !(bx + bw + 8 < box.x || bx > box.x + box.w + 8 || by + bh + 6 < box.y || by > box.y + box.h + 6);
+              return !(bx + bw + mx8 < box.x || bx > box.x + box.w + mx8 || by + bh + my6 < box.y || by > box.y + box.h + my6);
             });
 
             // Selected city or hovered city always draws; other cities only draw if they do NOT collide
@@ -10359,6 +10400,7 @@ return maplibregl$1;
             const clipped = bx < 2 || bx + bw > width - 2;
             if ((!collides && !clipped) || isSelected || isHovered) {
               drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
+              shownCityLabels.add(city.name);
               cityBadgeHitboxes.push({
                 name: city.name,
                 country: city.country,
@@ -10411,6 +10453,7 @@ return maplibregl$1;
             }
           }
         });
+        lastShownCityLabels = shownCityLabels;
 
         // 7. Country Centroid Names (Ultra High Contrast, Protective Backing Plate & Non-Overlapping)
         if (r > baseRadius * 0.65 && r < baseRadius * 4.2) {
@@ -10886,6 +10929,13 @@ return maplibregl$1;
         floatingCard.classList.add('hidden');
       }
 
+      // The view moved under a still pointer (zoom, flight, spin): pick again where the pointer is,
+      // so the card and the cursor belong to what is under it now, not to where it was.
+      const viewKey = currentRadius.toFixed(2) + '|' + rotLon.toFixed(3) + '|' + rotLat.toFixed(3) + '|' + width + 'x' + height;
+      if (viewKey !== lastViewKey) {
+        lastViewKey = viewKey;
+        if (lastPointer && !isDragging && typeof updateHoverCursor === 'function') updateHoverCursor(lastPointer.x, lastPointer.y);
+      }
       scheduleRender();
     }
     scheduleRender();
@@ -10910,6 +10960,7 @@ return maplibregl$1;
       targetRotLat = Math.max(-75, Math.min(75, lat));
       flightProgress = 0;
       isFlying = true;
+      zoomAnchor = null;
 
       if (targetZoom) {
         const actualZoom = targetZoom < 30 ? baseRadius * targetZoom : targetZoom;
@@ -16910,7 +16961,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const isZoomedIn = (selectedCountryFilter !== 'all' || currentRadius >= baseRadius * 1.8);
       const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
       const dotReach = (isZoomedIn ? 12 : 9) * (touch ? 1.6 : 1);
-      const fallbackReach = (isZoomedIn ? 26 : 16) * (touch ? 1.6 : 1);
+      // 12-14px, not 16-26: at 16 a dot two labels away was taken for the one under the pointer.
+      const fallbackReach = (isZoomedIn ? 14 : 12) * (touch ? 1.6 : 1);
 
       // 1. The nearest dot whose centre is within reach of the pointer
       let nearest = null, nearestDist = Infinity;
@@ -17060,26 +17112,27 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      // 0.5 Direct pin hit (weighted by institution count so major hubs are not overshadowed by adjacent 1-space satellite towns)
+      // 0.5 Direct pin hit: the pin under the pointer. The pin is drawn 6.5px wide, so the
+      // reach is the pin and a little more for a mouse, and a fingertip's width for touch.
+      // It used to be 20px weighted by the city's count, so a big city took the hover from
+      // 20px away and the card opened with the pointer on empty sea beside it.
+      const touchCity = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
+      const pinReach = touchCity ? 16 : 9;
       let directPinCity = null;
-      let bestPinScore = Infinity;
+      let bestPinDist = Infinity;
       for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {
         const c = ALL_CITIES_REGISTRY[i];
         if (isCountryActive && c.country && !matchC(c.country, selectedCountryFilter)) continue;
         const pt = project(c.lon, c.lat, r, cx, cy);
         if (pt.front && pt.depth > 0.05) {
           const pinDist = Math.hypot(pt.x - mx, pt.y - my);
-          if (pinDist <= 20) {
-            const countWeight = 1 + Math.log2(Math.max(1, c.count || 1)) * 0.75;
-            const score = pinDist / countWeight;
-            if (score < bestPinScore) {
-              bestPinScore = score;
-              directPinCity = c;
-            }
+          if (pinDist <= pinReach && pinDist < bestPinDist) {
+            bestPinDist = pinDist;
+            directPinCity = c;
           }
         }
       }
-      if (directPinCity && bestPinScore <= 4.5) return directPinCity;
+      if (directPinCity) return directPinCity;
 
       // 1. Direct hit on an active rendered city badge label
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {
@@ -17102,7 +17155,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const cb = cityClusterHitboxes[i];
         if (isCountryActive && cb.country && !matchC(cb.country, selectedCountryFilter)) continue;
         const inCluster = mx >= cb.x - 4 && mx <= cb.x + cb.w + 4 && my >= cb.y - 4 && my <= cb.y + cb.h + 4;
-        const nearAnchor = Math.hypot(cb.cx - mx, cb.cy - my) < 16;
+        const nearAnchor = Math.hypot(cb.cx - mx, cb.cy - my) < pinReach;
         if (inCluster || nearAnchor) {
           return ALL_CITIES_REGISTRY.find(c => matchC(c.name, cb.cityName)) || {
             name: cb.cityName,
@@ -17114,30 +17167,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      // 2. Surface hit on globe city pins & clusters
-      let bestCity = null;
-      let bestScore = Infinity;
-
-      for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {
-        const c = ALL_CITIES_REGISTRY[i];
-        if (isCountryActive && c.country && !matchC(c.country, selectedCountryFilter)) continue;
-        const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && pt.depth > 0.05) {
-          const pinDist = Math.hypot(pt.x - mx, pt.y - my);
-          if (pinDist <= 24) {
-            const countWeight = 1 + Math.log2(Math.max(1, c.count || 1)) * 0.75;
-            const score = pinDist / countWeight;
-            if (score < bestScore) {
-              bestScore = score;
-              bestCity = c;
-            }
-          }
-        }
-      }
-
-      return bestCity;
+      // 2. Nothing under the pointer. There is no wider reach: the pin and the label are the
+      // targets, and a 24px count-weighted halo made the card open for the wrong city.
+      return null;
     }
     window.findCityAt = findCityAt;
+    window.getCityBadgeHitboxes = () => cityBadgeHitboxes;
+    window.getHoveredCity = () => hoveredCity;
+    window.getView = () => ({ r: currentRadius, target: targetRadius, lon: rotLon, lat: rotLat });
+    window.__unproject = (x, y) => unproject(x, y, currentRadius, width / 2, height / 2);
+    window.__project = (lon, lat) => project(lon, lat, currentRadius, width / 2, height / 2);
     window.handleGlobeClick = handleGlobeClick;
     window.renderGlobe = render;
     window.updateVisibleDots = () => { if (typeof render === 'function') render(); };
@@ -17273,9 +17312,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     canvas.addEventListener('pointermove', e => {
       window.__lastPointerType = e.pointerType;
+      lastPointer = e.pointerType === 'mouse' ? { x: e.clientX, y: e.clientY } : null;
       updateHoverCursor(e.clientX, e.clientY);
     });
-    canvas.addEventListener('pointerdown', e => { window.__lastPointerType = e.pointerType; }, true);
+    canvas.addEventListener('pointerleave', () => { lastPointer = null; });
+    canvas.addEventListener('pointerdown', e => { window.__lastPointerType = e.pointerType; zoomAnchor = null; }, true);
     // The globe holds still while a mouse is over it and turns again when the cursor leaves.
     const globePane = document.getElementById('globeViewport') || canvas;
     globePane.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') isPointerOverGlobe = true; });
@@ -17536,6 +17577,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const clampedFactor = Math.max(0.91, Math.min(1.09, factor));
 
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius * clampedFactor));
+      // Zoom about the place under the wheel, when the wheel is over the globe.
+      const wrect = canvas.getBoundingClientRect();
+      const wx = e.clientX - wrect.left, wy = e.clientY - wrect.top;
+      zoomAnchor = unproject(wx, wy, currentRadius, width / 2, height / 2) ? { x: wx, y: wy } : null;
+      if (e.pointerType !== 'touch') lastPointer = { x: e.clientX, y: e.clientY };
 
       if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
         selectedCountryFilter = 'all';
@@ -17590,6 +17636,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         cityVectorMap.zoomIn({}, { originalEvent: e });
       } else {
         isAutoSpinning = false;
+        zoomAnchor = null;
         targetRadius = Math.min(getMaxRadius(), targetRadius * 1.35);
       }
     });
@@ -17597,6 +17644,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (isCityStreetViewActive && cityVectorMap) {
         cityVectorMap.zoomOut({}, { originalEvent: e });
       } else {
+        zoomAnchor = null;
         targetRadius = Math.max(getMinRadius(), targetRadius * 0.74);
         if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
           selectedCountryFilter = 'all';
@@ -17846,8 +17894,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=176"></script>
-<script src="assets/bubbles.js?v=176" defer></script>
-<script src="assets/typeset.js?v=176"></script>
+<script src="assets/layers.js?v=177"></script>
+<script src="assets/bubbles.js?v=177" defer></script>
+<script src="assets/typeset.js?v=177"></script>
 </body>
 </html>
