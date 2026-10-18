@@ -9660,6 +9660,7 @@ return maplibregl$1;
     let lastShownCityLabels = new Set(); // labels drawn last frame keep their place while the view moves
     let lastShownInstLabels = new Set();
     let lastShownCountryLabels = new Set();
+    let countryLabelHitboxes = [];      // the country names as drawn last frame, for hover and click
     let pinching = false;             // two fingers on the globe: pinch zoom, no one-finger drag
     let dragArmed = false;            // a press becomes a drag only after it has moved a few pixels
     let lastViewKey = '';
@@ -9744,6 +9745,10 @@ return maplibregl$1;
         depth: (z + r) / (2 * r)
       };
     }
+
+    // At the globe's limb a label, name or dot fades in over the first 0.14 of depth past its gate,
+    // instead of popping into being as the globe turns. Below half, it is not a target either.
+    function limbFade(depth, gate) { return Math.max(0, Math.min(1, (depth - gate) / 0.14)); }
 
     function unproject(px, py, r, cx, cy) {
       const x = (px - cx) / r;
@@ -10376,7 +10381,8 @@ return maplibregl$1;
             if ((!collides && !clipped) || isSelected || isHovered) {
               drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
               shownCityLabels.add(city.name);
-              cityBadgeHitboxes.push({
+              const limb = limbFade(pt.depth, 0.08);
+              if (limb >= 0.5) cityBadgeHitboxes.push({
                 name: city.name,
                 country: city.country,
                 x: bx, y: by, w: bw, h: bh,
@@ -10385,7 +10391,7 @@ return maplibregl$1;
                 count: city.count
               });
 
-              if (isClustered) {
+              if (isClustered && limb >= 0.5) {
                 cityClusterHitboxes.push({
                   cityName: city.name,
                   x: bx, y: by, w: bw, h: bh,
@@ -10394,7 +10400,7 @@ return maplibregl$1;
                 });
               }
 
-              const badgeAlpha = isSelected ? 1.0 : (r > baseRadius * 10.0 ? Math.max(0, 1 - (r - baseRadius * 10.0) / (baseRadius * 4.0)) : 1.0);
+              const badgeAlpha = (isSelected ? 1.0 : (r > baseRadius * 10.0 ? Math.max(0, 1 - (r - baseRadius * 10.0) / (baseRadius * 4.0)) : 1.0)) * (isSelected || isHovered ? 1 : limb);
               ctx.save();
               ctx.globalAlpha = badgeAlpha;
 
@@ -10443,6 +10449,7 @@ return maplibregl$1;
 
           const drawnCountryBoxes = [];
           const shownCountryLabels = new Set();
+          const drawnCountryNames = [];
 
           COUNTRY_CENTROIDS.forEach(c => {
             const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
@@ -10470,6 +10477,9 @@ return maplibregl$1;
                 if ((!collidesWithCity && !collidesWithCountry && cBox.x >= 2 && cBox.x + cBox.w <= width - 2) || isSel || isHov) {
                   drawnCountryBoxes.push(cBox);
                   shownCountryLabels.add(c.name);
+                  const limbC = limbFade(pt.depth, 0.08);
+                  if (limbC >= 0.5) drawnCountryNames.push({ name: c.name, x: cBox.x, y: cBox.y, w: cBox.w, h: cBox.h });
+                  ctx.globalAlpha = fadeAlpha * (isSel || isHov ? 1 : limbC);
 
                   // Crisp solid dark outline halo around text for 100% razor-sharp edge definition
                   ctx.strokeStyle = G_HALO;
@@ -10489,6 +10499,7 @@ return maplibregl$1;
             }
           });
           lastShownCountryLabels = shownCountryLabels;
+          countryLabelHitboxes = drawnCountryNames;
           ctx.restore();
         }
 
@@ -10595,6 +10606,9 @@ return maplibregl$1;
 
           const hasVc = d.inst.visual_critiques && d.inst.visual_critiques.length > 0;
 
+          const limbD = (isSel || isHov) ? 1 : limbFade(d.depth, 0.05);
+          ctx.save();
+          ctx.globalAlpha = limbD;
           ctx.beginPath();
           ctx.arc(d.x, d.y, isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5), 0, Math.PI * 2);
           ctx.strokeStyle = isHov 
@@ -10608,6 +10622,7 @@ return maplibregl$1;
           ctx.lineWidth = 0.8;
           if (isSel) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
           ctx.stroke();
+          ctx.restore();
 
           // Institution label on 3D globe
           // Only show labels when:
@@ -17105,6 +17120,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       let nearest = null, nearestDist = Infinity;
       for (let i = 0; i < visibleDots.length; i++) {
         const d = visibleDots[i];
+        if (d.depth !== undefined && limbFade(d.depth, 0.05) < 0.5) continue;
         const dist = Math.hypot(d.x - mx, d.y - my);
         if (dist < nearestDist) { nearestDist = dist; nearest = d; }
       }
@@ -17189,12 +17205,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
 
-      // 3. Check country centroid text (generous 40px radius, zooms directly to country!)
-      for (let i = 0; i < COUNTRY_CENTROIDS.length; i++) {
-        const c = COUNTRY_CENTROIDS[i];
-        const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 40) {
-          filterByCountry(c.name, true);
+      // 3. The country name as drawn: a click on the word goes to the country.
+      for (let i = 0; i < countryLabelHitboxes.length; i++) {
+        const b = countryLabelHitboxes[i];
+        if (mx >= b.x - 3 && mx <= b.x + b.w + 3 && my >= b.y - 3 && my <= b.y + b.h + 3) {
+          filterByCountry(b.name, true);
           return;
         }
       }
@@ -17255,28 +17270,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      // 0.5 Direct pin hit: the pin under the pointer. The pin is drawn 6.5px wide, so the
-      // reach is the pin and a little more for a mouse, and a fingertip's width for touch.
-      // It used to be 20px weighted by the city's count, so a big city took the hover from
-      // 20px away and the card opened with the pointer on empty sea beside it.
+      // The label under the pointer comes before any pin: a finger on Birmingham's label used to
+      // select Hanover, whose pin was within a touch's reach of the label while Birmingham's own pin
+      // sat 28px below it.
       const touchCity = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
       const pinReach = touchCity ? 16 : 9;
-      let directPinCity = null;
-      let bestPinDist = Infinity;
-      for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {
-        const c = ALL_CITIES_REGISTRY[i];
-        if (isCountryActive && c.country && !matchC(c.country, selectedCountryFilter)) continue;
-        const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && pt.depth > 0.05) {
-          const pinDist = Math.hypot(pt.x - mx, pt.y - my);
-          if (pinDist <= pinReach && pinDist < bestPinDist) {
-            bestPinDist = pinDist;
-            directPinCity = c;
-          }
-        }
-      }
-      if (directPinCity) return directPinCity;
-
       // 1. Direct hit on an active rendered city badge label
       for (let i = 0; i < cityBadgeHitboxes.length; i++) {
         const b = cityBadgeHitboxes[i];
@@ -17310,6 +17308,26 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
+      // 0.5 Direct pin hit: the pin under the pointer. The pin is drawn 6.5px wide, so the
+      // reach is the pin and a little more for a mouse, and a fingertip's width for touch.
+      // It used to be 20px weighted by the city's count, so a big city took the hover from
+      // 20px away and the card opened with the pointer on empty sea beside it.
+      let directPinCity = null;
+      let bestPinDist = Infinity;
+      for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {
+        const c = ALL_CITIES_REGISTRY[i];
+        if (isCountryActive && c.country && !matchC(c.country, selectedCountryFilter)) continue;
+        const pt = project(c.lon, c.lat, r, cx, cy);
+        if (pt.front && pt.depth > 0.05) {
+          const pinDist = Math.hypot(pt.x - mx, pt.y - my);
+          if (pinDist <= pinReach && pinDist < bestPinDist) {
+            bestPinDist = pinDist;
+            directPinCity = c;
+          }
+        }
+      }
+      if (directPinCity) return directPinCity;
+
       // 2. Nothing under the pointer. There is no wider reach: the pin and the label are the
       // targets, and a 24px count-weighted halo made the card open for the wrong city.
       return null;
@@ -17339,6 +17357,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.resolveGlobeTarget = resolveGlobeTarget;
     window.getCityBadgeHitboxes = () => cityBadgeHitboxes;
     window.getHoveredCity = () => hoveredCity;
+    window.getSelectedCityFilter = () => selectedCityFilter;
     window.getLabelCounts = () => ({ inst: visibleDots.filter(d => d.labelBox).length, country: lastShownCountryLabels.size, city: cityBadgeHitboxes.length });
     window.getView = () => ({ r: currentRadius, target: targetRadius, lon: rotLon, lat: rotLat });
     window.__unproject = (x, y) => unproject(x, y, currentRadius, width / 2, height / 2);
@@ -17447,13 +17466,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      // Check country centroid
-      for (let i = 0; i < COUNTRY_CENTROIDS.length; i++) {
-        const c = COUNTRY_CENTROIDS[i];
-        const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 40) {
+      // The country name as drawn, not a 40px halo around a centroid whose name may not even be on screen.
+      for (let i = 0; i < countryLabelHitboxes.length; i++) {
+        const b = countryLabelHitboxes[i];
+        if (mx >= b.x - 3 && mx <= b.x + b.w + 3 && my >= b.y - 3 && my <= b.y + b.h + 3) {
           canvas.style.cursor = 'pointer';
-          hoveredCountry = c.name;
+          hoveredCountry = b.name;
           return;
         }
       }
@@ -17520,7 +17538,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Reliable click detector for canvas
     canvas.addEventListener('click', e => {
       const dist = Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY);
-      if (dist < 22) {
+      // 6px for a mouse, 8px for a finger (Android's touch slop): a press that moved further has turned the globe, and a
+      // drag is not also a click on whatever ended up under it. It was 22px for both.
+      const tol = (window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') ? 8 : 6;
+      if (dist < tol) {
         handleGlobeClick(e.clientX, e.clientY);
       }
     });
