@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Clean Funding Grade: one grade per record, 1 (cleanest) to 5, from what the record proves.
+"""Clean Funding Grade: one grade per record, 1 (cleanest) to 5, from what the record proves. The page names 1 to 5 as A, B, C, D, F.
 
 The grade says two things about the money: what it is, and whether the record shows it. Dirt and darkness are
 different failings, so a record without an independently sourced funder roster is not graded; silence is not cleanliness.
