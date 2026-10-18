@@ -65,19 +65,35 @@ def host_of(url):
 
 
 def disclosure(rec):
-    """Where the record shows the money: a phrase for the basis sentence, or '' when it shows names only."""
+    """Where the record shows the money: a clause for the basis sentence, or '' when it shows names only."""
     if FIGURE.search(rec.get('funding') or ''):
-        return 'figures are shown'
-    for key, word in (('statutory_filings_url', 'filings'), ('audit_dossier_url', 'a registry entry')):
+        return 'the amounts are given'
+    for key, word in (('statutory_filings_url', 'filings are linked'), ('audit_dossier_url', 'a registry entry is linked')):
         if rec.get(key):
-            return f'{word} are linked ({host_of(rec[key])})'
+            return word
     for u in rec.get('sources') or []:
         h = host_of(u)
         if any(h == r or h.endswith('.' + r) for r in REGISTRY_HOSTS):
-            return f'a registry filing is linked ({h})'
+            return 'a registry filing is linked'
         if ACCOUNTS_PATH.search(urlparse(u).path or ''):
-            return f'accounts are linked ({h})'
+            return 'annual accounts are linked'
     return ''
+
+
+# How each flag reads inside a sentence. The flag names stay as they are everywhere else (filters, layers, map key).
+PHRASE = {
+    'Fossil fuels': 'fossil fuels', 'Tobacco': 'tobacco', 'Gambling': 'gambling', 'Arms and defence': 'arms',
+    'Opioids': 'opioids', 'Sanctions': 'a sanctioned person or company', 'Forced or exploited labour': 'forced labour',
+    'Mining disaster': 'a mining disaster', 'Prison or detention': 'prisons or detention',
+    'Gulf state body': 'a Gulf state body', 'Epstein-linked': 'a link to Jeffrey Epstein',
+    'Campaigned name': 'a campaign against a funder\'s name', 'Protest or boycott': 'protests or a boycott',
+    'Sponsor dropped under pressure': 'a sponsor dropped under pressure', 'State censorship or punishment': 'state censorship',
+}
+
+
+def phrase_list(flags):
+    words = [PHRASE.get(f, f.lower()) for f in flags]
+    return words[0] if len(words) == 1 else ', '.join(words[:-1]) + ' and ' + words[-1]
 
 
 def grade(rec):
@@ -90,19 +106,19 @@ def grade(rec):
     if tier == 'U' and not flags:
         return None, None
     if heavy and (len(heavy) > 1 or objections):
-        what = f"Flagged funders: {', '.join(heavy).lower()}" if len(heavy) > 1 else f"A flagged funder, {heavy[0].lower()}"
-        why = f"; with a documented objection: {', '.join(objections).lower()}" if objections else ''
-        return 5, f'{what}{why}.'
+        what = f"Funders tied to {phrase_list(heavy)}." if len(heavy) > 1 else f"A funder tied to {phrase_list(heavy)}."
+        why = f" Also on record: {phrase_list(objections)}." if objections else ''
+        return 5, f'{what}{why}'
     if heavy:
-        return 4, f'One flagged funder category on record: {heavy[0].lower()}.'
+        return 4, f'A funder tied to {phrase_list(heavy)}.'
     if ties or objections:
-        return 3, f"A tie or objection on record, with no flagged funder: {', '.join(ties + objections).lower()}."
+        return 3, f"No flagged funder, but on record: {phrase_list(ties + objections)}."
     if tier == 'B':
-        return 3, 'A funder worth noting, outside the flag categories.'
+        return 3, 'A funder worth knowing about, outside the flagged categories.'
     shown = disclosure(rec)
     if shown:
-        return 1, f'No flagged funder or objection on record, and {shown}.'
-    return 2, 'No flagged funder or objection on record; funders are named, with no figures.'
+        return 1, f'No flagged funder or funding protest on record, and {shown}.'
+    return 2, 'No flagged funder or funding protest on record. Funders are named; amounts are not.'
 
 
 def apply(records):
