@@ -7141,6 +7141,8 @@ return maplibregl$1;
             }
           }
           if (drawer) drawer.classList.add('hidden');
+          // The chat column has just taken the whole panel: the question cloud is laid out again for that width.
+          if (typeof window.refitQuestionCloud === 'function') window.refitQuestionCloud();
         }
       } else {
         // Mobile layout: toggle between full drawer and chat view
@@ -9587,7 +9589,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v188';
+      const ATLAS_RELEASE = 'culture-atlas-v190';
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js?v=190').then((reg) => {
           reg.update();
@@ -16928,10 +16930,31 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           if (j < list.length) { next = j; b.outerHTML = promptButton(list[j], j); } else b.remove();
         }
         if (at < buttons.length) setTimeout(step, 0);
+        else fitQuestionCloud();   // a swapped-in question may be longer and start a new line: the lines past the foot go again
       };
       setTimeout(step, 0);
     }
-    window.addEventListener('resize', () => { const g = document.getElementById('curatorHeroGreeting'); if (g && !g.classList.contains('hidden')) renderStarterPrompts(); });
+    // The cloud is laid out again whenever the box it fills changes size, not only when the window does. On load the chat
+    // column is first measured at its 350px fallback width, beside the Details column, and the cloud is cut to fit that
+    // (one question a line, twenty-two of them); setWorkspaceTab('chat') then widens the column to the whole panel and the
+    // twenty-two reflow into eleven lines over a blank half panel. refitQuestionCloud() renders again when the hero's size
+    // differs from the size it was last laid out for; the tab switch calls it directly, and a ResizeObserver on the scroll
+    // area (window resize, the input dock growing) calls it too.
+    let cloudLaidOutFor = '';
+    function refitQuestionCloud() {
+      const g = document.getElementById('curatorHeroGreeting');
+      if (!g || g.classList.contains('hidden') || !g.clientHeight) return;
+      const size = g.clientWidth + 'x' + g.clientHeight;
+      if (size === cloudLaidOutFor) return;
+      cloudLaidOutFor = size;
+      renderStarterPrompts();
+    }
+    window.refitQuestionCloud = refitQuestionCloud;
+    if (typeof ResizeObserver === 'function' && document.getElementById('curatorScrollArea')) {
+      new ResizeObserver(refitQuestionCloud).observe(document.getElementById('curatorScrollArea'));
+    } else {
+      window.addEventListener('resize', refitQuestionCloud);
+    }
     // The title is a question too: a click or Enter asks it.
     function askStarter(b) {
       const q = b && b.getAttribute('data-query');
