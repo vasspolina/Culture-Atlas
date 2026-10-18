@@ -161,9 +161,9 @@ return maplibregl$1;
       <div id="layersControl">
         <div id="layersPanel" role="region" aria-labelledby="layersMenuTitle" hidden>
           <div class="layers-header">
-            <h2 id="layersMenuTitle" class="layers-title">Layers &amp; Filters</h2>
+            <h2 id="layersMenuTitle" class="layers-title">Map layers &amp; legend</h2>
             <div class="layers-actions">
-              <button class="layers-reset" type="button">Reset</button>
+              <button class="layers-reset" type="button">Reset all</button>
               <button class="layers-close" type="button" aria-label="Close layers menu">&times;</button>
             </div>
           </div>
@@ -171,37 +171,37 @@ return maplibregl$1;
             <h2 class="layers-section-title">Map layers</h2>
             <div class="layers-list">
               <label><input type="checkbox" checked disabled> <span>Cultural spaces</span><span class="layers-count" data-count="spaces"></span></label>
-              <label><input type="checkbox" data-layer="ties"> <span>Funding ties</span><span class="layers-count" data-count="ties"></span></label>
-              <label><input type="checkbox" data-layer="flags"> <span>Flagged on record</span><span class="layers-count" data-count="flags"></span></label>
-              <label><input type="checkbox" data-layer="grade"> <span>Clean Funding Grade</span><span class="layers-count" data-count="grade"></span></label>
-              <label><input type="checkbox" data-layer="money"> <span>Money network</span><span class="layers-count" data-count="money"></span></label>
+              <label><input type="checkbox" data-layer="ties"> <span>Funding connections</span><span class="layers-count" data-count="ties"></span></label>
+              <label><input type="checkbox" data-layer="flags"> <span>Flagged organizations</span><span class="layers-count" data-count="flags"></span></label>
+              <label><input type="checkbox" data-layer="grade"> <span>Funding transparency ratings</span><span class="layers-count" data-count="grade"></span></label>
+              <label><input type="checkbox" data-layer="money"> <span>Funder networks</span><span class="layers-count" data-count="money"></span></label>
               <label><input type="checkbox" data-layer="hq"> <span>Funder headquarters</span><span class="layers-count" data-count="hq"></span></label>
-              <label><input type="checkbox" data-layer="people"> <span>People and their offices</span><span class="layers-count" data-count="people"></span></label>
-              <label><input type="checkbox" data-layer="right"> <span>Right-wing sponsors</span><span class="layers-count" data-count="right"></span></label>
-              <label><input type="checkbox" data-layer="epstein"> <span>Epstein files</span><span class="layers-count" data-count="epstein"></span></label>
+              <label><input type="checkbox" data-layer="people"> <span>People &amp; office locations</span><span class="layers-count" data-count="people"></span></label>
+              <label><input type="checkbox" data-layer="right"> <span>Right-wing funders</span><span class="layers-count" data-count="right"></span></label>
+              <label><input type="checkbox" data-layer="epstein"> <span>Mentions in the Epstein files</span><span class="layers-count" data-count="epstein"></span></label>
             </div>
           </section>
           <section class="layers-section">
-            <h2 class="layers-section-title">Entity types</h2>
+            <h2 class="layers-section-title">Map legend</h2>
             <div class="layers-key layers-entity-key">
-              <span><i class="shape-square" style="--marker-color:#818cf8"></i>Public money</span>
+              <span><i class="shape-square" style="--marker-color:#818cf8"></i>Public funding</span>
+              <span><i class="shape-triangle" style="--marker-color:#f472b6"></i>Foundation or individual donor</span>
               <span><i class="shape-hexagon" style="--marker-color:#38bdf8"></i>Company</span>
-              <span><i class="shape-triangle" style="--marker-color:#f472b6"></i>Foundation or donor</span>
-              <span><i class="shape-square" style="--marker-color:#f59e0b"></i>Flagged</span>
-              <span><i class="shape-shield" style="--marker-color:#fb7185"></i>Right-wing sponsor</span>
-              <span><i class="shape-star" style="--marker-color:#a78bfa"></i>Epstein files</span>
-              <span><i class="shape-diamond" style="--marker-color:#22d3ee"></i>Head office</span>
-              <span><i class="shape-dot" style="--marker-color:#e5e7eb"></i>Person's office</span>
+              <span><i class="shape-square" style="--marker-color:#f59e0b"></i>Flagged organization</span>
+              <span><i class="shape-shield" style="--marker-color:#fb7185"></i>Right-wing funder</span>
+              <span><i class="shape-diamond" style="--marker-color:#22d3ee"></i>Funder headquarters</span>
+              <span><i class="shape-dot" style="--marker-color:#e5e7eb"></i>Individual’s office</span>
+              <span><i class="shape-star" style="--marker-color:#a78bfa"></i>Mentioned in the Epstein files</span>
             </div>
           </section>
           <section class="layers-section">
-            <h2 class="layers-section-title">Funding grades</h2>
+            <h2 class="layers-section-title">Funding ratings</h2>
             <div class="layers-key layers-grade-key">
-              <span><i style="--marker-color:#34d399"></i><strong>Grade A</strong>Clean, money shown</span>
-              <span><i style="--marker-color:#2dd4bf"></i><strong>Grade B</strong>Clean, roster shown</span>
-              <span><i style="--marker-color:#facc15"></i><strong>Grade C</strong>A name to know</span>
-              <span><i style="--marker-color:#fb923c"></i><strong>Grade D</strong>One flagged funder</span>
-              <span><i style="--marker-color:#ef4444"></i><strong>Grade F</strong>Several, or flagged and contested</span>
+              <span><i style="--marker-color:#34d399"></i><strong>Grade A</strong><span>Funding amounts disclosed; no funders flagged</span></span>
+              <span><i style="--marker-color:#2dd4bf"></i><strong>Grade B</strong><span>Funders listed; no funders flagged</span></span>
+              <span><i style="--marker-color:#facc15"></i><strong>Grade C</strong><span>Funder identified; details limited</span></span>
+              <span><i style="--marker-color:#fb923c"></i><strong>Grade D</strong><span>One flagged funder</span></span>
+              <span><i style="--marker-color:#ef4444"></i><strong>Grade F</strong><span>Multiple flagged funders, or a flagged funder with a disputed record</span></span>
             </div>
           </section>
         </div>
@@ -460,7 +460,7 @@ return maplibregl$1;
             <p class="no-indent">Source cited: the record names at least one source outside the museum's own website.</p>
             <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
             <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
-            <p class="no-indent">Clean Funding Grade, A to F, from what the record proves: A clean with the money shown, B clean with names only, C a name to know or a tie or objection, D one flagged funder, F several flagged funders or one plus a documented objection. A roster that is not independently sourced is not graded.</p>
+            <p class="no-indent">Funding transparency ratings, A to F, summarize what the record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A roster that is not independently sourced is not rated.</p>
             <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
             <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
           </details>
@@ -820,7 +820,7 @@ return maplibregl$1;
               <p class="no-indent">Source cited: the record names at least one source outside the museum's own website.</p>
               <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
               <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
-            <p class="no-indent">Clean Funding Grade, A to F, from what the record proves: A clean with the money shown, B clean with names only, C a name to know or a tie or objection, D one flagged funder, F several flagged funders or one plus a documented objection. A roster that is not independently sourced is not graded.</p>
+            <p class="no-indent">Funding transparency ratings, A to F, summarize what the record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A roster that is not independently sourced is not rated.</p>
               <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
             <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
             </details>
@@ -11546,15 +11546,15 @@ return maplibregl$1;
       'A smaller number of accounts allege more: favouritism, bullying and HR that does not act, restructuring that removes outspoken staff, months-long payment delays, and at one museum unequal treatment of security staff. Each of these is one person\'s account, and the records say so.',
       'Read them for what they are: self-selected, anonymous, undated or old in places, and one or two per institution. They do not rank anyone. They show the shape of the complaint, which press and union reporting then confirm at the largest institutions: new unions at the Met, the Whitney, the Guggenheim and MoMA PS1 in the last five years, with pay, benefits and precarity the stated reasons.',
     ];
-    // Clean Funding Grade, stored as 1 (cleanest) to 5 by tools/grade_funding.py from what each record proves, and named
+    // Funding transparency rating, stored as 1 (highest disclosure) to 5 by tools/grade_funding.py from what each record proves, and named
     // by letter on the page: A, B, C, D, F (no E, as in school marks).
     // A record without an independently sourced funder roster has no grade. The colour is the block the grade takes on the map and the record.
     const GRADE = {
-      1: { letter: 'A', label: 'Clean, money shown', col: '#34d399' },
-      2: { letter: 'B', label: 'Clean, roster shown', col: '#2dd4bf' },
-      3: { letter: 'C', label: 'A name to know', col: '#facc15' },
+      1: { letter: 'A', label: 'Funding amounts disclosed; no funders flagged', col: '#34d399' },
+      2: { letter: 'B', label: 'Funders listed; no funders flagged', col: '#2dd4bf' },
+      3: { letter: 'C', label: 'Funder identified; details limited', col: '#facc15' },
       4: { letter: 'D', label: 'One flagged funder', col: '#fb923c' },
-      5: { letter: 'F', label: 'Several, or flagged and contested', col: '#ef4444' },
+      5: { letter: 'F', label: 'Multiple flagged funders, or a flagged funder with a disputed record', col: '#ef4444' },
     };
     window.atlasGrade = GRADE;
     // The letter a stored grade is named by, and the stored grade a letter (or an old number) names.
@@ -11562,7 +11562,7 @@ return maplibregl$1;
     const gradeFromLetter = (s) => { const k = String(s || '').trim().toUpperCase(); return [1, 2, 3, 4, 5].find(n => GRADE[n].letter === k || String(n) === k) || null; };
     window.atlasGradeLetter = gradeLetter;
     window.atlasGradeFromLetter = gradeFromLetter;
-    const GRADE_LADDER = 'Clean Funding Grade, A to F, from what each record proves: A clean with the money shown, B clean with names only, C a name to know or a tie or objection, D one flagged funder, F several flagged funders or a flagged funder plus a documented objection. A record without an independently sourced funder roster is not graded.';
+    const GRADE_LADDER = 'Funding transparency ratings, A to F, summarize what each record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A record without an independently sourced funder roster is not rated.';
     // One label per record status, used everywhere a status is named: the grade where there is one, else the tier.
     function tierName(inst) {
       if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}, ${GRADE[inst.grade].label.toLowerCase()}`;
@@ -11571,7 +11571,7 @@ return maplibregl$1;
     function gradeLineHtml(inst) {
       if (inst.grade && GRADE[inst.grade]) {
         const g = GRADE[inst.grade];
-        return `<p class="no-indent grade-line"><span class="grade-mark" style="background:${g.col}">Clean Funding Grade ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
+        return `<p class="no-indent grade-line"><span class="grade-mark" style="background:${g.col}">Funding transparency rating ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
       }
       return inst.tier === 'U' ? `<p class="no-indent grade-line">Not graded: ${inst.funding ? 'a funder list is recorded, but the listed funders are not independently corroborated.' : 'no funder list is recorded.'}</p>` : '';
     }
@@ -13589,7 +13589,7 @@ CHARACTER & VOICE GUIDELINES:
    - Never output raw markdown tags or unrendered syntax.
    - Emphasis is italic (*word*), used rarely; never bold, never a word in capitals for effect. Abbreviations in capitals (UNESCO, EU, USD) are fine.
    - HOUSE STYLE (the page typesets your words, but write them right): a dash is an en dash with a space either side ( – ), never an em dash and never a hyphen between spaces; a range or span is a closed en dash (10:00–18:00, Wed–Fri, 1965–70, 2024–25); quote with single marks ‘like this’, the comma or full point outside the closing mark unless it belongs to the quotation, and double marks only for a quotation inside a quotation; an ellipsis is one sign (…); a list item is a plain "- " line.
-   - Name a Clean Funding Grade as one letter, A to F (Grade D, or Grade F), never as a number and never as a range.
+   - Name a funding transparency rating as one letter, A to F (Grade D, or Grade F), never as a number and never as a range.
    - Link to an institution, city or filing only when its URL is present in the supplied records.
 
 6. MUSEUM BUDGET & FINANCIAL DISCLOSURE GUIDANCE:
@@ -13617,7 +13617,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 3. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, say so once and point to the official URL when available.
 4. For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name a critic, publication, review or controversy only when it is present in the supplied record or cited sources. If none is recorded, say that the record does not identify specific critics or reviews; do not substitute a generic theory passage.
 5. Attribute allegations and assessments to their source. Do not imply that a source independently verifies more than it does.
-6. Use standard Markdown; never output raw markup. Name a Clean Funding Grade as one letter, A to F (Grade D or Grade F), never as a number, presented as an informational record field rather than an endorsement or condemnation.
+6. Use standard Markdown; never output raw markup. Name a funding transparency rating as one letter, A to F (Grade D or Grade F), never as a number, presented as an informational record field rather than an endorsement or condemnation.
 7. ROBUST MISSPELLING & PHONETIC TOLERANCE (LIKE CHATGPT & CLAUDE):
    - Visitors frequently query using typos, phonetic spellings, voice-to-text, or transpositions (e.g. 'Ulia stolcheck foundation' -> 'Julia Stoschek Foundation / Collection', 'chisnhale' -> 'Chisenhale', 'gugenheim' -> 'Guggenheim', 'pompidue' -> 'Pompidou', 'whitny' -> 'Whitney', 'momaa' -> 'MoMA', 'tate modren' -> 'Tate Modern', 'artsts space' -> 'Artists Space').
    - Resolve an obvious misspelling when the intended institution or city is clear from the record.
@@ -14670,7 +14670,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const out = [];
         if (t.funding || t.funder_links) out.push('Who funds this museum?');
         if (t.why_flagged || t.tier === 'B') out.push('What is flagged here?');
-        if (t.grade) out.push('What is its funding grade?');
+        if (t.grade) out.push('What is its funding rating?');
         if (t.opening_hours) out.push('Opening hours');
         out.push(t.city ? `Find cultural spaces in ${t.city}` : 'Find cultural spaces in London');
         return out;
@@ -14759,7 +14759,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         answer('<p>The Atlas attaches quotations from published critics (e-flux, L\u2019Internationale Online and similar press, with author and source named) to spaces by museum type, but these are about the type, not evidence of how a given space was received, and they are not reviews of it. The records do not provide a map-wide catalog of critical reception; name a space to see its recorded context and sources.</p>');
         return;
       }
-      // The Clean Funding Grade: a record's grade and what decided it, the spaces at one grade, or the ladder itself.
+      // A record's funding transparency rating and what decided it, the spaces at one rating, or the rating scale.
       if (asks(/\b(grade|graded|grading|cleanest|cleanliness)\b/)) {
         // A letter needs a space after "grade" ("graded" is not grade D); an old number may follow it directly.
         let wanted = q.match(/\bgrade(?:\s+([a-f])|\s*([1-5]))\b/i);
@@ -14772,7 +14772,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const notGradedReason = target.funding
             ? 'A funder list is recorded, but the listed funders are not independently corroborated.'
             : 'No funder list is recorded.';
-          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Clean Funding Grade ${gradeLetter(target.grade)}, ${escapeHtml(GRADE[target.grade].label.toLowerCase())}. ${escapeHtml(target.grade_basis || '')}` : `Not graded: ${escapeHtml(notGradedReason)}`}</p>${sourcesHtml(target)}`);
+          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Funding transparency rating ${gradeLetter(target.grade)}, ${escapeHtml(GRADE[target.grade].label.toLowerCase())}. ${escapeHtml(target.grade_basis || '')}` : `Not rated: ${escapeHtml(notGradedReason)}`}</p>${sourcesHtml(target)}`);
           return;
         }
         if (wanted) {
@@ -14785,7 +14785,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
         const n = {};
         ALL_INSTITUTIONS.forEach(i => { if (i.grade) n[i.grade] = (n[i.grade] || 0) + 1; });
-        answer(`<p>${escapeHtml(GRADE_LADDER)}</p><p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} not graded. Ask for grade A spaces in a city to see the cleanest there.</p>`, ['Show grade A spaces', 'Show grade F spaces', 'How are spaces assessed?']);
+        answer(`<p>${escapeHtml(GRADE_LADDER)}</p><p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} unrated. Ask for grade A spaces in a city to compare their funding transparency.</p>`, ['Show grade A spaces', 'Show grade F spaces', 'How are spaces assessed?']);
         return;
       }
       if (!explicit && asks(/epstein/)) {
@@ -14801,7 +14801,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const named = Object.keys(funders).filter(f => new RegExp('\\b' + esc(f) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
         if (named) {
           const linked = funders[named].sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
-          listOf(linked, `${named} is named as a funder on ${linked.length} ${linked.length === 1 ? 'record' : 'records'}, cleanest grade first. Each record's Funding block has the detail and the sources${linked.length > 12 ? '. The first 12' : ''}:`);
+          listOf(linked, `${named} is named as a funder on ${linked.length} ${linked.length === 1 ? 'record' : 'records'}, highest transparency rating first. Each record's Funding block has the detail and the sources${linked.length > 12 ? '. The first 12' : ''}:`);
           return;
         }
       }
@@ -17327,11 +17327,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       accessibility: { label: 'Universal accessibility' },
       amenities: { label: 'Cafés & bookshops' },
       ethical: { label: 'Source cited' },
-      grade1: { label: 'Grade A, clean, money shown' },
-      grade2: { label: 'Grade B, clean, roster shown' },
-      grade3: { label: 'Grade C, a name to know' },
+      grade1: { label: 'Grade A, funding amounts disclosed; no funders flagged' },
+      grade2: { label: 'Grade B, funders listed; no funders flagged' },
+      grade3: { label: 'Grade C, funder identified; details limited' },
       grade4: { label: 'Grade D, one flagged funder' },
-      grade5: { label: 'Grade F, several, or flagged and contested' },
+      grade5: { label: 'Grade F, multiple flagged funders, or a flagged funder with a disputed record' },
       artist_run: { label: 'Artist-run spaces' },
       fossil_free: { label: 'Fossil & defense-free' },
       finance_civic: { label: 'Public subsidized (≥50%)' },
