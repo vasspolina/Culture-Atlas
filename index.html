@@ -157,28 +157,9 @@ return maplibregl$1;
       
       <canvas id="globeCanvas" class="absolute inset-0 w-full h-full block"></canvas>
 
-      <!-- Layers: overlays on the map, like a map app's layer menu -->
-      <div id="layersControl">
-        <div id="layersPanel" hidden>
-          <p class="layers-title">Layers</p>
-          <label><input type="checkbox" checked disabled> <span>Cultural spaces <span class="layers-count" data-count="spaces"></span></span></label>
-          <label><input type="checkbox" data-layer="ties"> <span>Funding ties <span class="layers-count" data-count="ties"></span></span></label>
-          <label><input type="checkbox" data-layer="flags"> <span>Flagged on record <span class="layers-count" data-count="flags"></span></span></label>
-          <label><input type="checkbox" data-layer="grade"> <span>Clean Funding Grade <span class="layers-count" data-count="grade"></span></span></label>
-          <label><input type="checkbox" data-layer="money"> <span>Money network <span class="layers-count" data-count="money"></span></span></label>
-          <label><input type="checkbox" data-layer="hq"> <span>Funder headquarters <span class="layers-count" data-count="hq"></span></span></label>
-          <label><input type="checkbox" data-layer="people"> <span>People and their offices <span class="layers-count" data-count="people"></span></span></label>
-          <label><input type="checkbox" data-layer="right"> <span>Right-wing sponsors <span class="layers-count" data-count="right"></span></span></label>
-          <label><input type="checkbox" data-layer="epstein"> <span>Epstein files <span class="layers-count" data-count="epstein"></span></span></label>
-          <p class="layers-key"><span><i style="background:#8fa2ff"></i>Public money</span><span><i style="background:#a9e0e6"></i>Company</span><span><i style="background:#ff9966"></i>Foundation or donor</span><span><i style="background:#ff6119"></i>Flagged</span><span><i style="background:#ff5a4d"></i>Right-wing sponsor</span><span><i style="background:#ec4fe8"></i>Epstein files</span><span><i style="background:#a9e0e6;transform:rotate(45deg) scale(.8)"></i>Head office</span><span><i style="background:#ec4fe8;border-radius:50%"></i>Person's office</span></p>
-          <p class="layers-key"><span><i style="background:#9ae3e8"></i>Grade A, clean, money shown</span><span><i style="background:#6f9486"></i>B, clean, roster shown</span><span><i style="background:#c8b85a"></i>C, a name to know</span><span><i style="background:#ff6119"></i>D, one flagged funder</span><span><i style="background:#ff3df0"></i>F, several, or flagged and contested</span></p>
-        </div>
-        <button id="layersBtn" type="button" aria-expanded="false" aria-controls="layersPanel">Layers</button>
-      </div>
-
-      <!-- Top-Left Floating Map Controls (Uncontained) -->
-      <div id="desktopGlobeTopControls" class="hidden md-flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 lg-gap-3 meta flex-wrap max-w-_calc_100_-24px">
-        <div class="flex items-center gap-1_5 lg-gap-2 whitespace-nowrap">
+      <!-- Unified globe toolbar -->
+      <div id="desktopGlobeTopControls" class="absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 lg-gap-3 meta flex-wrap max-w-_calc_100_-24px">
+        <div class="globe-controls-actions flex items-center gap-1_5 lg-gap-2 whitespace-nowrap">
           <button type="button" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();" class="flex items-center gap-1" title="Back to the whole world, with filters cleared">
             <span>Reset view</span>
           </button>
@@ -189,17 +170,37 @@ return maplibregl$1;
             <span data-globe-label>Expand map</span>
           </button>
         </div>
+        <div id="zoomControls" class="flex items-center gap-1">
+          <button id="zoomInBtn" type="button" class="flex items-center justify-center shrink-0" title="Zoom In" aria-label="Zoom in">+</button>
+          <button id="zoomOutBtn" type="button" class="flex items-center justify-center shrink-0" title="Zoom Out" aria-label="Zoom out">&minus;</button>
+        </div>
+        <div id="layersControl">
+          <button id="layersBtn" type="button" aria-expanded="false" aria-controls="layersPanel">Layers</button>
+          <div id="layersPanel" hidden>
+            <p class="layers-title">Layers</p>
+            <label><input type="checkbox" checked disabled> <span>Cultural spaces <span class="layers-count" data-count="spaces"></span></span></label>
+            <label><input type="checkbox" data-layer="ties"> <span>Funding ties <span class="layers-count" data-count="ties"></span></span></label>
+            <label><input type="checkbox" data-layer="flags"> <span>Flagged on record <span class="layers-count" data-count="flags"></span></span></label>
+            <label><input type="checkbox" data-layer="grade"> <span>Clean Funding Grade <span class="layers-count" data-count="grade"></span></span></label>
+            <label><input type="checkbox" data-layer="money"> <span>Money network <span class="layers-count" data-count="money"></span></span></label>
+            <label><input type="checkbox" data-layer="hq"> <span>Funder headquarters <span class="layers-count" data-count="hq"></span></span></label>
+            <label><input type="checkbox" data-layer="people"> <span>People and their offices <span class="layers-count" data-count="people"></span></span></label>
+            <label><input type="checkbox" data-layer="right"> <span>Right-wing sponsors <span class="layers-count" data-count="right"></span></span></label>
+            <label><input type="checkbox" data-layer="epstein"> <span>Epstein files <span class="layers-count" data-count="epstein"></span></span></label>
+            <p class="layers-key"><span><i style="background:#8fa2ff"></i>Public money</span><span><i style="background:#a9e0e6"></i>Company</span><span><i style="background:#ff9966"></i>Foundation or donor</span><span><i style="background:#ff6119"></i>Flagged</span><span><i style="background:#ff5a4d"></i>Right-wing sponsor</span><span><i style="background:#ec4fe8"></i>Epstein files</span><span><i style="background:#a9e0e6;transform:rotate(45deg) scale(.8)"></i>Head office</span><span><i style="background:#ec4fe8;border-radius:50%"></i>Person's office</span></p>
+            <p class="layers-key"><span><i style="background:#9ae3e8"></i>Grade A, clean, money shown</span><span><i style="background:#6f9486"></i>B, clean, roster shown</span><span><i style="background:#c8b85a"></i>C, a name to know</span><span><i style="background:#ff6119"></i>D, one flagged funder</span><span><i style="background:#ff3df0"></i>F, several, or flagged and contested</span></p>
+          </div>
+        </div>
       </div>
 
-      <!-- BEGIN: FloatingFilterCategoryChips (Mobile Bar matching code.html & media_1791792341045_b9272491.png) -->
-      <section class="relative z-20 pt-2 px-3 flex md-hidden flex-col gap-1 pointer-events-auto" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
-        <div class="flex gap-1">
+      <!-- Preserved mobile control stubs; the shared toolbar above is used at every viewport size. -->
+      <section class="hidden" data-purpose="map-filter-chips" id="mobileFilterChipsSection" aria-hidden="true">
+        <div>
         <button type="button" class="px-2 py-0_5" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();" title="Back to the whole world, with filters cleared">Reset view</button>
         <button type="button" data-globe-control="spin" aria-pressed="true" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();" title="Turn the globe's slow rotation on or off"><span data-globe-label>Rotate: On</span></button>
         <button type="button" data-globe-control="expand" aria-pressed="false" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" title="Give the map more of the window"><span data-globe-label>Expand map</span></button>
         </div>
       </section>
-      <!-- END: FloatingFilterCategoryChips -->
 
 
       <!-- Outer Celestial Orbit Lines (Mobile Matching code.html) -->
@@ -403,6 +404,7 @@ return maplibregl$1;
         <div class="flex-1 overflow-y-auto p-4 space-y-3" id="curatorDrawerChatBody">
           <div id="curatorDrawerGreeting">
             <h1 id="curatorDrawerHeroTitle"></h1>
+            <div class="starter-topic-tabs" role="tablist" aria-label="Suggested query topics"></div>
             <div id="curatorDrawerStarterPrompts" class="starter-prompts"></div>
           </div>
           <!-- Chat info on a phone: the same text as under the composer on a desktop. -->
@@ -499,13 +501,6 @@ return maplibregl$1;
 
           <span>Share information</span>
         </button>
-      </div>
-
-      <!-- Subtle Globe Zoom & Map Controls (Preserved for test DOM assertions) -->
-      <!-- Zoom: always visible on the map, one pair of controls -->
-      <div id="zoomControls" class="absolute bottom-4 right-4 z-10 flex flex-col gap-2">
-  <button id="zoomInBtn" type="button" class="flex items-center justify-center shrink-0" title="Zoom In" aria-label="Zoom in">+</button>
-  <button id="zoomOutBtn" type="button" class="flex items-center justify-center shrink-0" title="Zoom Out" aria-label="Zoom out">&minus;</button>
       </div>
 
       <div id="hudControlsBar" class="hidden absolute bottom-3 sm-bottom-4 right-2 sm-right-4 z-10 items-center gap-1 sm-gap-1_5 p-1 max-w-_calc_100_-16px sm-max-w-_calc_100_-32px overflow-x-auto overflow-y-hidden no-scrollbar">
@@ -679,6 +674,7 @@ return maplibregl$1;
               <p class="max-w-lg">
                 Explore who funds cultural spaces and what’s been reported about them. Follow the sources.
               </p>
+              <div class="starter-topic-tabs" role="tablist" aria-label="Suggested query topics"></div>
               <div id="curatorStarterPrompts" class="starter-prompts"></div>
             </div>
 
@@ -14111,6 +14107,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           <p class="max-w-lg">
             Explore who funds cultural spaces and what’s been reported about them. Follow the sources.
           </p>
+          <div class="starter-topic-tabs" role="tablist" aria-label="Suggested query topics"></div>
           <div id="curatorStarterPrompts" class="starter-prompts"></div>
         `;
         contentWrap.insertBefore(hero, curatorMessages);
@@ -16873,7 +16870,54 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return out;
     }
 
-    const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}">${escapeHtml(noBreakHyphens(x.q))}</button>`;
+    const TOPIC_TABS = [
+      { id: 'all', label: 'All' },
+      { id: 'controversies', label: 'Controversies' },
+      { id: 'funding', label: 'Funding' },
+      { id: 'gradings', label: 'Gradings' },
+      { id: 'labor', label: 'Labor & Governance' }
+    ];
+    const MAX_ALL_PROMPTS = 12;
+    const MAX_TOPIC_PROMPTS = 10;
+    let selectedPromptTopic = 'all';
+    const topicForQuery = (query) => {
+      const text = query.toLowerCase();
+      if (/\b(staff|employee|employees|worker|workers|labor|labour|union|governance|trustee|trustees|board|leadership|workplace)\b/.test(text)) return 'labor';
+      if (/\b(grade|graded|grading)\b/.test(text)) return 'gradings';
+      if (/\b(flag|flagged|controvers|censor|censorship|epstein|wikileaks|reported|critics|critic|fossil|protest|abuse|dropped|boycott|campaigned|pressure)\b/.test(text)) return 'controversies';
+      if (/\b(fund|funds|funded|funding|funder|funders|money|sponsor|sponsors|grant|grants)\b/.test(text)) return 'funding';
+      return 'all';
+    };
+    const toneForQuery = (query) => {
+      const text = query.toLowerCase();
+      if (/\b(flag|flagged|controvers|censor|censorship|epstein|wikileaks|fossil|protest|abuse|dropped|boycott|campaigned|pressure)\b/.test(text)) return 'warning';
+      if (/\b(grade|graded|grading|fund|funds|funded|funding|funder|funders|money|sponsor|sponsors|grant|grants)\b/.test(text)) return 'info';
+      return 'neutral';
+    };
+    const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-category="${topicForQuery(x.q)}" data-tone="${toneForQuery(x.q)}" data-i="${i}" data-query="${escapeHtml(x.q)}">${escapeHtml(noBreakHyphens(x.q))}</button>`;
+    const visiblePromptEntries = (list) => {
+      const entries = list.map((item, index) => ({ item, index }));
+      if (selectedPromptTopic === 'all') return entries.slice(0, MAX_ALL_PROMPTS);
+      return entries.filter(({ item }) => topicForQuery(item.q) === selectedPromptTopic).slice(0, MAX_TOPIC_PROMPTS);
+    };
+    function renderTopicTabs(list, box) {
+      if (!box) return;
+      const counts = Object.fromEntries(TOPIC_TABS.map(topic => {
+        const matching = topic.id === 'all' ? list.length : list.filter(item => topicForQuery(item.q) === topic.id).length;
+        return [topic.id, Math.min(matching, topic.id === 'all' ? MAX_ALL_PROMPTS : MAX_TOPIC_PROMPTS)];
+      }));
+      box.innerHTML = TOPIC_TABS.map(topic => `<button type="button" class="starter-topic-tab" role="tab" data-topic="${topic.id}" aria-selected="${selectedPromptTopic === topic.id}" aria-controls="${box.nextElementSibling?.id || ''}"><span>${topic.label}</span><span class="starter-topic-count">${counts[topic.id]}</span></button>`).join('');
+    }
+    function applyStarterTopicFilter() {
+      document.querySelectorAll('.starter-topic-tabs').forEach(box => {
+        box.querySelectorAll('.starter-topic-tab').forEach(tab => {
+          tab.setAttribute('aria-selected', String(tab.dataset.topic === selectedPromptTopic));
+        });
+      });
+      document.querySelectorAll('.starter-prompt').forEach(button => {
+        button.hidden = selectedPromptTopic !== 'all' && button.dataset.category !== selectedPromptTopic;
+      });
+    }
     function renderStarterPrompts() {
       let list = [];
       try { list = questionCloud(); } catch (e) { list = []; }
@@ -16891,20 +16935,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       });
       const desk = document.getElementById('curatorStarterPrompts');
-      if (desk) desk.innerHTML = list.map(promptButton).join('');
+      if (desk) {
+        desk.innerHTML = visiblePromptEntries(list).map(({ item, index }) => promptButton(item, index)).join('');
+        renderTopicTabs(list, desk.previousElementSibling);
+      }
       // The phone drawer scrolls, so it takes eighty and no more.
       const drawer = document.getElementById('curatorDrawerStarterPrompts');
-      if (drawer) drawer.innerHTML = list.slice(0, 80).map(promptButton).join('');
-      fitQuestionCloud();
+      if (drawer) {
+        const drawerList = list.slice(0, 80);
+        drawer.innerHTML = visiblePromptEntries(drawerList).map(({ item, index }) => promptButton(item, index)).join('');
+        renderTopicTabs(drawerList, drawer.previousElementSibling);
+      }
+      applyStarterTopicFilter();
       verifyShown(list);
-    }
-    // The desktop panel shows as many questions as fit, whole: the ones past its foot are taken off, and put back on a resize.
-    function fitQuestionCloud() {
-      const g = document.getElementById('curatorHeroGreeting');
-      const box = document.getElementById('curatorStarterPrompts');
-      if (!g || !box || g.classList.contains('hidden') || !g.clientHeight) return;
-      let guard = 1000;
-      while (g.scrollHeight > g.clientHeight && box.lastElementChild && guard--) box.lastElementChild.remove();
     }
     // Each question on screen is checked, a few at a time between frames, to resolve to its record; one that does not
     // is swapped for the next candidate that does, so every label asks something the chat answers about that record.
@@ -16926,20 +16969,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const i = +b.dataset.i;
           if (ok(i)) continue;
           let j = next + 1;
-          while (j < list.length && !ok(j)) j++;
+          while (j < list.length && (selectedPromptTopic !== 'all' && topicForQuery(list[j].q) !== selectedPromptTopic || !ok(j))) j++;
           if (j < list.length) { next = j; b.outerHTML = promptButton(list[j], j); } else b.remove();
         }
         if (at < buttons.length) setTimeout(step, 0);
-        else fitQuestionCloud();   // a swapped-in question may be longer and start a new line: the lines past the foot go again
       };
       setTimeout(step, 0);
     }
-    // The cloud is laid out again whenever the box it fills changes size, not only when the window does. On load the chat
-    // column is first measured at its 350px fallback width, beside the Details column, and the cloud is cut to fit that
-    // (one question a line, twenty-two of them); setWorkspaceTab('chat') then widens the column to the whole panel and the
-    // twenty-two reflow into eleven lines over a blank half panel. refitQuestionCloud() renders again when the hero's size
-    // differs from the size it was last laid out for; the tab switch calls it directly, and a ResizeObserver on the scroll
-    // area (window resize, the input dock growing) calls it too.
+    // Re-render when the greeting's available space changes so the topic counts and prompt layout stay in sync.
     let cloudLaidOutFor = '';
     function refitQuestionCloud() {
       const g = document.getElementById('curatorHeroGreeting');
@@ -16961,6 +16998,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (q) { appendUserMessage(q); handleCuratorQuery(q); }
     }
     document.addEventListener('click', (e) => {
+      const topicTab = e.target.closest && e.target.closest('.starter-topic-tab');
+      if (topicTab) {
+        selectedPromptTopic = topicTab.dataset.topic || 'all';
+        renderStarterPrompts();
+        return;
+      }
       askStarter(e.target.closest && e.target.closest('.starter-prompt, #curatorHeroTitle, #curatorDrawerHeroTitle'));
     });
     document.addEventListener('keydown', (e) => {

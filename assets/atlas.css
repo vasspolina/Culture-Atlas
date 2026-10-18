@@ -1274,3 +1274,58 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c8b85a);color:#000;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:14px;height:22px;line-height:22px}}
+
+/* The shared map toolbar keeps navigation, zoom, and layers together at every viewport size. */
+#desktopGlobeTopControls{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;max-width:calc(100% - 24px);z-index:40}
+#desktopGlobeTopControls .globe-controls-actions{gap:4px}
+#desktopGlobeTopControls button{min-height:34px;padding:7px 10px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font:400 15px/1 var(--sans);letter-spacing:.01em;text-transform:none;white-space:nowrap}
+#desktopGlobeTopControls button:hover{background:var(--ink);color:var(--paper)}
+#desktopGlobeTopControls button[aria-pressed="true"]{background:var(--cobalt);color:#fff}
+#zoomControls{position:static;top:auto;right:auto;bottom:auto;z-index:auto;display:flex;flex-direction:row;gap:4px;background:transparent;border:0}
+#desktopGlobeTopControls #zoomControls button{width:34px;height:34px;padding:0;font:400 20px/1 var(--sans)}
+#layersControl{position:relative;top:auto;right:auto;bottom:auto;left:auto;z-index:40;display:flex;flex-direction:row;align-items:center;gap:0}
+#layersPanel{position:absolute;top:calc(100% + 8px);left:0;z-index:41;width:min(272px,calc(100vw - 24px));max-height:min(70vh,calc(100vh - 100px))}
+#desktopGlobeTopControls #layersControl #layersBtn{background:var(--paper);color:var(--ink)}
+#desktopGlobeTopControls #layersControl #layersBtn:hover,#desktopGlobeTopControls #layersControl #layersBtn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
+body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls{display:flex}
+body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls .globe-controls-actions,
+body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls #zoomControls{display:none}
+@media (max-width:767px){
+  #desktopGlobeTopControls{gap:4px;max-width:calc(100% - 16px)}
+  #desktopGlobeTopControls .globe-controls-actions{flex-wrap:wrap;white-space:normal}
+  #desktopGlobeTopControls button{min-height:32px;padding:6px 8px}
+  #desktopGlobeTopControls #zoomControls button{width:32px;height:32px}
+}
+
+/* Suggested questions use topic tabs and semantic tones instead of a single unstructured cloud. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){gap:12px}
+#curatorHeroGreeting{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;height:100%;min-height:0;overflow:hidden;padding:12px 0;box-sizing:border-box}
+#curatorDrawerGreeting{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.starter-topic-tabs{display:flex;flex:0 0 auto;flex-wrap:wrap;align-items:center;gap:6px;width:100%;padding:0}
+.starter-topic-tab{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:6px 10px;border:1px solid var(--line);background:transparent;color:var(--ink);font:400 14px/1 var(--sans);letter-spacing:.01em;cursor:pointer}
+.starter-topic-tab:hover{background:var(--block)}
+.starter-topic-tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.starter-topic-count{font-size:12px;opacity:.72;font-variant-numeric:tabular-nums}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:grid;flex:1 1 auto;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));align-content:start;align-items:stretch;gap:8px;width:100%;max-width:none;min-height:0;margin:0;padding:0;overflow-y:auto}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{
+  display:block;width:100%;max-width:none;min-height:42px;height:auto;margin:0;padding:8px 10px;
+  border:1px solid transparent;border-radius:0;font:400 14px/1.3 var(--sans);letter-spacing:0;
+  text-align:left;text-transform:none;white-space:normal;overflow-wrap:anywhere;text-overflow:clip;
+  color:#111;background:var(--prompt-bg,#b9dfbf);text-decoration:none;cursor:pointer
+}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tone="warning"]{--prompt-bg:#ff9466}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tone="info"]{--prompt-bg:#a9e0e6}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tone="neutral"]{--prompt-bg:#b9dfbf}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover{color:#111;background:var(--prompt-bg,#b9dfbf);text-decoration:underline;text-underline-offset:2px}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.starter-prompt[hidden]{display:none!important}
+@media (max-width:767px){
+  #curatorHeroGreeting{height:auto;min-height:100%;overflow:visible}
+  #curatorStarterPrompts{grid-template-columns:1fr;overflow:visible}
+  .starter-topic-tabs{gap:4px}
+  .starter-topic-tab{min-height:32px;padding:6px 8px;font-size:13px}
+}
