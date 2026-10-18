@@ -81,7 +81,6 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #globeCanvas{cursor:grab;touch-action:none}
 #globeCanvas.dragging{cursor:grabbing}
 #cityMapContainer{background:var(--paper)}
-:root[data-theme="dark"] #cityMapContainer{background:#080808}
 #globeSplitter{background:var(--paper);border-left:1px solid var(--line);width:6px}
 #globeSplitter>div{display:none}
 #globeSplitter{position:relative;cursor:col-resize;touch-action:none}
@@ -265,23 +264,6 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .inst-pin-label.label-pos-left{right:calc(100% + 6px);left:auto;top:50%;bottom:auto;transform:translateY(-50%)}
 .inst-pin-label.collision-occluded{opacity:0;pointer-events:none}
 .custom-inst-pin:focus-within .inst-pin-label.collision-occluded,.custom-inst-pin:hover .inst-pin-label,.custom-inst-pin.popup-active .inst-pin-label{opacity:1;pointer-events:auto;z-index:9999}
-.custom-inst-pin.cad-selected .inst-pin-label{display:none}
-.cad-hud{position:absolute;inset:0;z-index:20;pointer-events:none;color:#a3a3a3;font:400 9px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em}
-.cad-scale{position:absolute;left:16px;bottom:58px;display:grid;grid-template-columns:1px auto 1px;grid-template-rows:10px auto;align-items:center;column-gap:4px}
-.cad-scale-tick{grid-row:1;width:1px;height:9px;background:#737373}
-.cad-scale-bar{grid-row:1;height:1px;min-width:24px;background:#737373}
-.cad-scale-label{grid-column:1 / 4;grid-row:2;justify-self:center;margin-top:3px;color:#d4d4d4}
-.cad-scale-caption{grid-column:1 / 4;grid-row:3;margin-top:8px;color:#737373;font-size:8px}
-.cad-north{position:absolute;top:16px;right:70px;display:flex;flex-direction:column;align-items:center;gap:2px;color:#a3a3a3}
-.cad-north svg{width:20px;height:24px;overflow:visible;fill:none;stroke:#a3a3a3;stroke-width:1.5;transform-origin:center}
-.cad-north svg path:first-child{fill:#404040}
-.cad-north span{font-size:8px;font-weight:700;color:#a3a3a3}
-.cad-target-marker{display:flex;flex-direction:column;align-items:center;pointer-events:none;white-space:nowrap}
-.cad-target-badge{display:flex;align-items:center;gap:5px;padding:4px 7px;background:rgba(8,8,8,.94);border:1px solid #2dd4bf;color:#99f6e4;font:600 9px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase}
-.cad-target-dot{width:5px;height:5px;border-radius:50%;background:#2dd4bf}
-.cad-target-leader{height:28px;border-left:1px solid #2dd4bf}
-.cad-footprint-tooltip .maplibregl-popup-content{padding:5px 7px;border:1px solid #404040;border-radius:0;background:rgba(8,8,8,.94);box-shadow:none;color:#d4d4d4;font:400 9px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
-.cad-footprint-tooltip .maplibregl-popup-tip{display:none}
 .curatorial-route-stop-pin,.route-stop-badge{background:var(--paper);color:var(--ink);border:1px solid var(--ink);font:400 14px/1 var(--sans);padding:4px 8px}
 .maplibregl-ctrl-group{background:var(--paper)!important;border:1px solid var(--ink)!important;border-radius:0!important;box-shadow:none!important}
 .maplibregl-ctrl-group button{width:32px!important;height:32px!important;border-bottom:1px solid var(--ink)!important}
