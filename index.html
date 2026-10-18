@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=187">
-  <script src="assets/config.js?v=187"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=189">
+  <script src="assets/config.js?v=189"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9587,9 +9587,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v186';
+      const ATLAS_RELEASE = 'culture-atlas-v188';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=187').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=189').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9904,8 +9904,8 @@ return maplibregl$1;
       let cardY = py - cardH - 16;
       if (cardY < 14) cardY = py + 20;
 
-      // The card follows the theme: white block in light mode, the dark popup colours in dark mode and in gossip mode (yellow text there).
-      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark' || isGossipModeActive;
+      // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode (yellow text there in gossip mode). Gossip mode never darkens it in light mode.
+      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const cardInk = cardDark ? (isGossipModeActive ? '#ffd600' : '#ffffff') : '#000000';
       ctx.fillStyle = cardDark ? '#2a2a2a' : '#ffffff';
       ctx.fillRect(cardX, cardY, cardW, cardH);
@@ -10489,7 +10489,7 @@ return maplibregl$1;
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : '#08bdba') 
+                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : (GLOBE_LIGHT ? '#007a78' : '#08bdba')) 
                     : isHov
                     ? G_TEXT
                     : ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_TEXT);
@@ -11219,7 +11219,8 @@ return maplibregl$1;
       const kindLabel = { information: 'Information', gossip: 'Gossip, unverified', whistleblower: 'Whistleblower note' };
       const readers = readerNotesFor(inst).map(n => item(kindLabel[n.kind] || 'Note', (n.approvedAt || '').slice(0, 10), p('', n.text), n.sourceUrl ? [n.sourceUrl] : []));
       if (!blocks.length && !relatedReports.length && !accounts.length && !readers.length) return '';
-      return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records">
+      // data-gossip marks the one block of a reply that is gossip: assets/bubbles.js draws a comic balloon only around a turn that holds it.
+      return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
         ${blocks.length ? `<h3 class="kicker">Reported, not independently verified</h3>${blocks.join('')}` : ''}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
         ${accounts.length ? `<h3 class="kicker accounts-note">Individual employee accounts from review platforms. Unverified platform sentiment, not findings about the institution.</h3>${accounts.join('')}` : ''}
@@ -13274,9 +13275,10 @@ CHARACTER & VOICE GUIDELINES:
 - Use clear, concise prose and natural transitions.
 - Do not insert duplicate headings, badges or prefix labels into the answer.
 </formatting_rules>
-   - Use standard Markdown for headings, emphasis and links. Use headings and lists only when they help readability.
-   - Do not output raw HTML or unrendered markup.
-   - Use bold (**keyword**) sparingly for useful labels and figures.
+   - Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point).
+   - Never output raw markdown tags or unrendered syntax.
+   - Emphasis is italic (*word*), used rarely; never bold, never a word in capitals for effect. Abbreviations in capitals (UNESCO, EU, USD) are fine.
+   - HOUSE STYLE (the page typesets your words, but write them right): a dash is an en dash with a space either side ( – ), never an em dash and never a hyphen between spaces; a range or span is a closed en dash (10:00–18:00, Wed–Fri, 1965–70, 2024–25); quote with single marks ‘like this’, the comma or full point outside the closing mark unless it belongs to the quotation, and double marks only for a quotation inside a quotation; an ellipsis is one sign (…); a list item is a plain "- " line.
    - Name a Clean Funding Grade as one letter, A to F (Grade D, or Grade F), never as a number and never as a range.
    - Link to an institution, city or filing only when its URL is present in the supplied records.
 
@@ -14247,6 +14249,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         </div>
       `;
+      // A turn that holds gossip (reported, unverified items) is marked on the turn itself, so in gossip mode the comic balloon goes only around those.
+      if (div.querySelector('[data-gossip]')) div.classList.add('is-gossip');
       curatorMessages.appendChild(div);
       scrollChatToBottom(true);
 
@@ -14256,6 +14260,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const mBot = document.createElement('div');
         mBot.className = 'curator-message-wrap';
         mBot.innerHTML = processedContent + followUpHtml;
+        if (mBot.querySelector('[data-gossip]')) mBot.classList.add('is-gossip');
         drawerLive.appendChild(mBot);
         const drawerBody = document.getElementById('curatorDrawerChatBody');
         if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight;
@@ -14360,7 +14365,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         out.push(t.city ? `Find cultural spaces in ${t.city}` : 'Find cultural spaces in London');
         return out;
       };
-      const answer = (html, follow) => appendCuratorMessage(`<div class="space-y-3">${html}</div>`, follow || followFor());
+      // gossip: the whole reply is reported, unverified items (a list of flagged spaces); a plain record, a city list or a status line is not.
+      const answer = (html, follow, gossip) => appendCuratorMessage(`<div class="space-y-3"${gossip ? ' data-gossip="list"' : ''}>${html}</div>`, follow || followFor());
       const asks = (re) => re.test(q);
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
@@ -14376,7 +14382,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countB = ALL_INSTITUTIONS.filter(i => i.tier === 'B').length;
       const countU = ALL_INSTITUTIONS.filter(i => i.tier !== 'A' && i.tier !== 'B').length;
       const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I answer only from the records on this page: who funds a space, what is reported about it, hours and prices where they are recorded, and the sources.</p><p>${countA} spaces have a source outside the museum, ${countB} are flagged with a reason, and ${countU} are unverified.</p>`);
-      const listOf = (items, title) => answer(items.length ? `<p>${title}</p>${items.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml(tierName(i))}.</p>`).join('')}${items.length > 12 ? `<p class="no-indent">${items.length - 12} more.</p>` : ''}` : '<p>None are recorded.</p>');
+      const listOf = (items, title, gossip) => answer(items.length ? `<p>${title}</p>${items.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml(tierName(i))}.</p>`).join('')}${items.length > 12 ? `<p class="no-indent">${items.length - 12} more.</p>` : ''}` : '<p>None are recorded.</p>', undefined, gossip && items.length > 0);
 
       // With a model connected (a visitor's key, or the chat Worker) every question that is not a plain list goes to it, so the
       // chat holds a conversation; the record answers below are what answers when no model is there or the model fails.
@@ -14411,7 +14417,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              appendCuratorMessage(aiHtml + '<p class="no-indent ai-note">Written by an AI model from the records on this page. Not verified.</p>', [], webIntel, thinkingData);
+              appendCuratorMessage(aiHtml + '<p class="no-indent ai-note">AI-written from archival records. Unverified.</p>', [], webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -14480,8 +14486,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)}${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
-      if (!explicit && asks(/epstein/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.epstein_records || []).length), 'Spaces with a recorded Epstein-related item. Each item is on its space\'s page with its sources, and none is independently verified:'); return; }
-      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:'); return; }
+      if (!explicit && asks(/epstein/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.epstein_records || []).length), 'Spaces with a recorded Epstein-related item. Each item is on its space\'s page with its sources, and none is independently verified:', true); return; }
+      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:', true); return; }
 
       if (await askModel()) return;
       if (target && asks(/\b(hours?|open|opening|admission|ticket|price|fee|cost|free|visit|address|where is)\b/)) {
@@ -14492,7 +14498,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
-        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:');
+        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:', true);
         return;
       }
       if (target && (isGossipModeActive || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported)\b/))) {
@@ -18131,8 +18137,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=187"></script>
-<script src="assets/bubbles.js?v=187" defer></script>
-<script src="assets/typeset.js?v=187"></script>
+<script src="assets/layers.js?v=189"></script>
+<script src="assets/bubbles.js?v=189" defer></script>
+<script src="assets/typeset.js?v=189"></script>
 </body>
 </html>
