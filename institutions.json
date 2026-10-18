@@ -46132,19 +46132,21 @@
     "city": "Berlin",
     "country": "Germany",
     "location": "Berlin, Germany",
+    "category": "National history museum",
     "lat": 52.5178,
     "lon": 13.397,
     "tier": "U",
     "size": "L",
     "website": "https://www.dhm.de",
     "funding": "Federal Government Commissioner for Culture and the Media (BKM) financing.",
-    "watch": "Federal history museum; employee reports on institutional hierarchy and digital infrastructure.",
+    "watch": "Germany's national history museum; public funding and governance, federal memory culture, and historical provenance.",
     "sources": [],
-    "curatorial_focus": "German history in European context, Zeughaus baroque armoury, I.M. Pei exhibition hall",
+    "curatorial_focus": "German history in European context",
+    "architecture_status": "I.M. Pei Exhibition Hall is open; the baroque Zeughaus is closed during long-term restoration.",
     "admission_details": "Subsidized admission \u20ac7 / concessions \u20ac3.50; always completely free for youth under 18.",
     "year_founded": 1987,
     "id": "deutsches-historisches-museum-berlin",
-    "highlight": "Germany's national history museum in the Zeughaus on Unter den Linden, featuring I.M. Pei's modern exhibition hall.",
+    "highlight": "Germany's national history museum. The I.M. Pei Exhibition Hall is open; the baroque Zeughaus is undergoing long-term restoration.",
     "opening_hours": "Fri-Wed 10:00-18:00, Thu 10:00-20:00",
     "tier_note": "No reason for the flag is recorded.",
     "gossip_data": {
@@ -46159,7 +46161,7 @@
             ],
             [
               "Account in brief",
-              "Praises engaged colleagues; criticises hierarchy, decision transparency, and infrastructure."
+              "Unverified platform sentiment: a self-described research employee praises colleagues and criticises hierarchy, decision transparency, and infrastructure. The account and employment history are not independently verified."
             ]
           ],
           "sources": [
@@ -46179,7 +46181,7 @@
             ],
             [
               "Account in brief",
-              "Praises the team, stimulating content, and atmosphere; wants more training."
+              "Unverified platform sentiment: a self-described employee praises the team and content, and wants more training. The account and employment history are not independently verified."
             ]
           ],
           "sources": [
@@ -46194,11 +46196,11 @@
     "visual_critiques": [
       {
         "kind": "theory",
-        "strategy": "The archive and the stage",
-        "strategy_id": "archive_and_stage",
-        "target": "Museums of modern and contemporary art, biennials and festivals",
-        "summary": "A museum keeps what has fallen out of use, and that store is what lets anyone call a new work new: the new is measured against what the collection already holds. Artists who attack the museum still want to be kept by it, because outside the archive a work is forgotten. Lately the store has turned into a stage. Shows are run as events, each curator overturns the last one's story, and the internet has taken over the job of remembering, so the museum records its events instead of preserving things. Inside an installation the visitor stands on the artist's ground, under the artist's rules, and is the one being watched.",
-        "historical_impact": "Read a museum's event calendar and curatorial turnover against what it actually keeps, conserves and pays for."
+        "strategy": "Federal memory, provenance & public mandate",
+        "strategy_id": "federal_memory_provenance_public_mandate",
+        "target": "Germany's national history museum and its public-memory mandate",
+        "summary": "Theoretical / critical lens: As Germany's national history museum, DHM helps shape federal public memory through state collections and exhibitions. Ask how its permanent holdings and temporary exhibitions frame German history in a European context, whose histories are foregrounded or omitted, and how colonial and other contested provenance is researched and presented. The central tension is between the continuity and authority of a permanent state collection and the changing interpretations offered by temporary exhibitions—not the event cycle of a contemporary-art biennial.",
+        "historical_impact": "Read the museum's public mandate and BKM funding alongside its provenance research and the balance between permanent collections and temporary exhibitions."
       }
     ]
   },
