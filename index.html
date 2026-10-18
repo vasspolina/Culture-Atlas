@@ -16877,8 +16877,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       { id: 'gradings', label: 'Gradings' },
       { id: 'labor', label: 'Labor & Governance' }
     ];
-    const MAX_ALL_PROMPTS = 64;
-    const MAX_TOPIC_PROMPTS = 48;
+    const MAX_ALL_PROMPTS = 12;
+    const MAX_TOPIC_PROMPTS = 12;
     let selectedPromptTopic = 'all';
     const topicForQuery = (query) => {
       const text = query.toLowerCase();
@@ -16946,8 +16946,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         drawer.innerHTML = visiblePromptEntries(drawerList).map(({ item, index }) => promptButton(item, index)).join('');
         renderTopicTabs(drawerList, drawer.previousElementSibling);
       }
+      fitQuestionCloud();
       applyStarterTopicFilter();
       verifyShown(list);
+    }
+    function fitQuestionCloud() {
+      const greeting = document.getElementById('curatorHeroGreeting');
+      const prompts = document.getElementById('curatorStarterPrompts');
+      if (!greeting || !prompts || greeting.classList.contains('hidden') || !greeting.clientHeight) return;
+      while (greeting.scrollHeight > greeting.clientHeight && prompts.lastElementChild) prompts.lastElementChild.remove();
     }
     // Each question on screen is checked, a few at a time between frames, to resolve to its record; one that does not
     // is swapped for the next candidate that does, so every label asks something the chat answers about that record.
@@ -16973,6 +16980,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           if (j < list.length) { next = j; b.outerHTML = promptButton(list[j], j); } else b.remove();
         }
         if (at < buttons.length) setTimeout(step, 0);
+        else fitQuestionCloud();
       };
       setTimeout(step, 0);
     }
