@@ -123,11 +123,12 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 
 
 /* the card that opens on a pin: a colour block with the name set large */
-#floatingCard{background:var(--cobalt);color:#fff;border:0;border-radius:0;padding:0;overflow-y:auto}
+#floatingCard{background:var(--cobalt);color:#fff;border:0;border-radius:0;padding:0;overflow-y:auto;container-type:inline-size}
 #floatingCard>div:first-child{border-bottom:1px solid rgba(255,255,255,.55);padding:12px 16px}
 #floatingCard a,#floatingCard span,#floatingCard div,#floatingCard p,#floatingCard button{color:inherit}
 #closeFloatingCardBtn{color:var(--yellow)!important;font:400 28px/1 var(--sans)}
 #floatingCardTitle{font:700 28px/1 var(--display);text-transform:uppercase;text-decoration:none;letter-spacing:0;display:block;margin-top:6px}
+#floatingCardTitle{font-size:clamp(16px,calc(120cqw / var(--title-length,18)),28px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #floatingCardMeta{font:400 14px/1.3 var(--sans);margin-top:8px;white-space:normal}
 #floatingCardInfoPane{padding:0 16px}
 #floatingCardInfoPane>div{border-top:1px solid rgba(255,255,255,.55);padding:12px 0;margin:0}
@@ -214,6 +215,9 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .curator-suggest-chip{display:block;background:none;border-bottom:1px solid var(--line);padding:10px 0;margin:0}
 .curator-followup-pill:hover,.curator-suggest-chip:hover,.work-suggestion-card:hover{background:var(--ink);color:var(--paper)}
 .callout,blockquote{background:var(--grey);padding:12px 16px;border:0;margin:12px 0}
+.curator-message-wrap blockquote.atlas-quote{background:transparent;border:0;margin:2em 0;padding:0;color:var(--ink);font:400 clamp(19px,2.4vw,27px)/1.3 Georgia,"Times New Roman",serif;letter-spacing:0}
+.curator-message-wrap blockquote.atlas-quote .atlas-quote-text{margin:0}
+.curator-message-wrap blockquote.atlas-quote cite{display:block;margin-top:.35em;text-align:right;opacity:.78;font:italic 400 .78em/1.3 Georgia,"Times New Roman",serif}
 #curatorTyping{font:400 14px/1.3 var(--sans)}
 #curatorCityDotWrap{display:none}
 .typing-dot{display:inline-block;width:6px;height:6px;background:var(--ink);border-radius:50%;margin-right:3px;animation:typingBounce 1.2s infinite ease-in-out both}
@@ -314,6 +318,14 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #desktopDossierRecordBody{padding:0}
 #desktopDossierRecordBody>div{padding:16px}
 #desktopDossierRecordBody .dossier-main-heading,.dossier-main-heading{font:700 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
+#desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet{container-type:inline-size}
+:is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading,#dossier-sheet-name{font-size:clamp(20px,calc(140cqw / var(--title-length,18)),44px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-layout,
+#dossier-sheet-visit:not(.hidden){display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:1em;align-items:start}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-content{min-width:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-details{margin:0}
+#dossier-sheet-visit .visit-content{min-width:0}
+#dossier-sheet-visit .visit-details{margin:0}
 #desktopDossierRecordBody .rule-b{border-bottom:1px solid var(--line)}
 #desktopDossierRecordBody .record-actions{gap:6px!important;padding-top:12px!important}
 @media (max-width:767px){.dossier-main-heading{font-size:36px}}
@@ -653,11 +665,20 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:underline;text-underline-offset:3px}
 .record-popup-line{margin:0 0 4px;color:#000}
 .record-popup-rule{border-top:1px solid #000;padding-top:8px;margin-top:8px}
-.record-popup-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.record-popup-category,.institution-category-pill,.critical-lens-label,.unverified-platform-tag{display:inline-flex;align-items:center;width:max-content;max-width:100%;border:1px solid #d1d1d1;border-radius:999px;background:#ececec;color:var(--ink);padding:4px 10px;font:400 13px/1.2 var(--sans);letter-spacing:.01em}
+.record-popup-category{margin:0 0 8px}
+.architecture-status{opacity:.82}
+.record-popup-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:12px}
 .record-popup-actions a,.record-popup-actions button{background:#d9d9d9;color:#000;border:0;border-radius:0;padding:9px 13px;font:400 15px/1 var(--sans);text-decoration:none;cursor:pointer}
+.record-popup-actions a,.record-popup-actions button{display:flex;align-items:center;justify-content:center;min-width:0;min-height:38px;white-space:normal;text-align:center}
 .record-popup-actions a:hover,.record-popup-actions button:hover{background:#000;color:#fff}
 #globeViewport .record-popup a,#globeViewport .record-popup-actions a,#globeViewport a.record-popup-name{color:#000}
 #globeViewport .record-popup-actions a:hover{color:#fff}
+.account-report-card{border:1px solid var(--line);background:var(--grey);padding:12px}
+.unverified-platform-tag{font-size:12px;background:transparent}
+.account-source-links{display:flex;flex-wrap:wrap;gap:8px}
+.account-source-links a{display:inline-flex;align-items:center;gap:4px}
+.external-link-icon{width:13px;height:13px;flex:none}
 
 /* Map credit: a small square "i" that opens to the text. Never a pill. */
 .maplibregl-ctrl-attrib.maplibregl-compact{background:var(--paper);border-radius:0;margin:0 10px 10px 0;min-height:24px;padding:0;color:var(--ink);font:400 14px/1.3 var(--sans)}
@@ -727,6 +748,8 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 :root[data-theme="dark"] .record-popup-actions a,:root[data-theme="dark"] .record-popup-actions button{background:#444;color:#fff}
 :root[data-theme="dark"] .record-popup-actions a:hover,:root[data-theme="dark"] .record-popup-actions button:hover{background:#fff;color:#000}
 :root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-tip{border-top-color:#2a2a2a;border-bottom-color:#2a2a2a}
+:root[data-theme="dark"] .record-popup-category,:root[data-theme="dark"] .institution-category-pill,:root[data-theme="dark"] .critical-lens-label,:root[data-theme="dark"] .unverified-platform-tag{background:#252525;border-color:#555;color:#eee}
+:root[data-theme="dark"] .unverified-platform-tag{background:transparent}
 /* Gossip mode's yellow bar keeps black text in both modes */
 body.gossip-mode-active header,body.gossip-mode-active header button,body.gossip-mode-active header a{color:#000}
 body.gossip-mode-active header button:hover,body.gossip-mode-active header a:hover{color:#fff}
@@ -863,6 +886,7 @@ h1,h2,h3,h4,.t-title,.curator-section-hdr,#floatingCardTitle,.record-popup-name,
 .curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p,#dossier-sheet-scrollable-body p,#curatorHeroGreeting p,.chat-info p,.t-lead{
   max-width:66ch;text-align:left;text-wrap:pretty;hyphens:manual;hanging-punctuation:first allow-end}
 h1,h2,h3,h4,.t-title,.lede,#floatingCardTitle,.record-popup-name,.curator-section-hdr{text-wrap:balance;hyphens:manual}
+#floatingCardTitle,#desktopDossierName,#dossier-sheet-name,:is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading{white-space:nowrap;text-wrap:nowrap}
 
 /* Linespacing and the column (p.47-52): the longer the line, the more leading; short UI lines stay close. */
 .curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p,#dossier-sheet-scrollable-body p{line-height:1.4}
@@ -1138,6 +1162,8 @@ body.gossip-mode-active .thinking{color:#000}
 
 /* No rules between record cards */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card{border-top:0;border-bottom:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.account-report-card{border:1px solid var(--line);background:var(--grey);padding:12px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.related-report-card{border:1px solid var(--line);background:var(--grey);padding:12px}
 
 /* AI disclosure line under answers: 14px, 6px above */
 /* The AI note is a footnote (Hochuli p.47-53, fig 70: a passage in a smaller size sits on the main grid): 14px on the 23.4px
@@ -1155,7 +1181,17 @@ body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note .abbr{color:inheri
 
 /* gossip: leave room under the last balloon so tails and spikes are not clipped */
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-bottom:2.2em}
-.grade-word{color:#000;padding:0 .2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.grade-word{color:inherit;font-weight:400;padding:0;border:0;border-bottom:1px solid var(--grade-accent);background:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.grade-word-1{--grade-accent:#527f82}
+.grade-word-2{--grade-accent:#617d70}
+.grade-word-3{--grade-accent:#8b783d}
+.grade-word-4{--grade-accent:#a45f3e}
+.grade-word-5{--grade-accent:#8a6488}
+:root[data-theme="dark"] .grade-word-1{--grade-accent:#84bfc2}
+:root[data-theme="dark"] .grade-word-2{--grade-accent:#9bbba9}
+:root[data-theme="dark"] .grade-word-3{--grade-accent:#c8b879}
+:root[data-theme="dark"] .grade-word-4{--grade-accent:#d69472}
+:root[data-theme="dark"] .grade-word-5{--grade-accent:#c59ac2}
 #curatorScrollArea,#workBottomDock,#workInputCard,#workInput{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),min-height var(--dur) var(--ease)}
 #curatorMessages>*{animation:msg-in var(--dur) var(--ease) both}
 @keyframes msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -1201,3 +1237,34 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 /* The three globe controls fit a 320px screen: narrower padding, not a smaller size. (They ran 6px off the edge at 14px, too.) */
 @media (max-width:374px){#desktopGlobeTopControls button,#mobileFilterChipsSection button{padding-left:9px;padding-right:9px}}
 
+/* The greeting after the user's reference (18 Oct 2026): everything centred, the title in ink, the questions under it in
+   four colours, and nothing underlined. The title is a question like the others and is never underlined; keyboard focus
+   shows as a ring. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){align-items:center;text-align:center}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){align-items:center}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){text-align:center;max-width:22ch;margin-left:auto;margin-right:auto}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:root[data-theme="dark"] :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:var(--ink);width:auto;max-width:22ch}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:hover,:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{text-decoration:none}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{outline:2px solid var(--ink);outline-offset:6px}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#0a7a68}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#7a5c00}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#b0306f}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#7a5424}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#16c7aa}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#f1c21b}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#ffafd2}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#e5b87d}
+
+/* The empty chat as a page of questions (user's instruction, 18 Oct 2026). Every question is a label at the map's size:
+   14px, black on the map's fills (cyan for a source-cited space or city, orange for a flagged one, mustard for the rest),
+   run on across the panel like text, line after line, until it is full, on the panel's own margin with one gap everywhere. On hover a question underlines like a link. The big title is gone. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{display:none}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){display:block;overflow:hidden;height:100%;min-height:0;padding:8px 0;box-sizing:border-box}
+#curatorDrawerChatBody>#curatorDrawerGreeting{height:auto;overflow:visible}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex;flex-direction:row;flex-wrap:wrap;gap:8px;align-items:flex-start;align-content:flex-start;justify-content:flex-start;width:100%;max-width:none;margin:0;padding:0;border:0}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:inline-block;width:auto;max-width:100%;min-height:0;height:22px;margin:0;padding:0 10px;border:0;border-radius:0;font:400 14px/22px var(--sans);text-transform:none;letter-spacing:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#000;background:var(--fill,#c8b85a);text-decoration:none;cursor:pointer}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#9ae3e8}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#ff6119}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c8b85a);color:#000;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:14px;height:22px;line-height:22px}}

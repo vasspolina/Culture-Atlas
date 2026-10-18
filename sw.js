@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v179';
+const CACHE_NAME = 'culture-atlas-v184';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -31,8 +31,12 @@ self.addEventListener('activate', (event) => {
     })
   );
   self.clients.claim();
-  // Pages open from an older release reload once, onto the network copy.
-  event.waitUntil(self.clients.matchAll({ type: 'window' }).then((windows) => windows.forEach((w) => w.navigate(w.url).catch(() => {}))));
+  // Tell every open page which release is now live. The page decides whether to reload: a page that already
+  // loaded this release stays as it is (the worker used to navigate every window here, which wiped a chat
+  // that had just begun), and a page from an older release reloads only when nothing is in progress on it.
+  event.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windows) => {
+    windows.forEach((w) => { try { w.postMessage({ type: 'atlas-release', cache: CACHE_NAME }); } catch (e) {} });
+  }));
 });
 
 self.addEventListener('fetch', (event) => {
