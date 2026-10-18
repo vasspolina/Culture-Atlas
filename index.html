@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=172">
-  <script src="assets/config.js?v=172"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=173">
+  <script src="assets/config.js?v=173"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9620,7 +9620,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=172').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=173').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10264,6 +10264,8 @@ return maplibregl$1;
         if (r > baseRadius * 1.3) {
           drawnCityBoxes.push({ x: 0, y: height - 56, w: 200, h: 56 });
           drawnCityBoxes.push({ x: width - 270, y: height - 48, w: 270, h: 48 });
+          // The compass and its N, top right.
+          drawnCityBoxes.push({ x: width - 76, y: 0, w: 76, h: 76 });
         }
         // The selected space's label always draws, so city names give way to it rather than sit under it.
         if (selectedInstitution && !isCityStreetViewActive) {
@@ -10279,7 +10281,7 @@ return maplibregl$1;
         }
         try {
           const cRect = canvas.getBoundingClientRect();
-          ['mobileFilterChipsSection', 'desktopGlobeTopControls', 'zoomControls', 'layersControl'].forEach(id => {
+          ['mobileFilterChipsSection', 'desktopGlobeTopControls', 'zoomControls', 'layersControl', 'dossier-bottom-sheet'].forEach(id => {
             const el = document.getElementById(id);
             if (!el || el.offsetParent === null) return;
             const b = el.getBoundingClientRect();
@@ -11085,7 +11087,7 @@ return maplibregl$1;
         seenCables.add(key);
         blocks.push(item(w.doc_id || 'WikiLeaks document', w.date, p('', w.what_shows), w.sources));
       });
-      ((inst.gossip_data || {}).real_cases || []).forEach(c => blocks.push(item(`${c.title || 'Case'}${c.case_id ? ' [' + c.case_id + ']' : ''}`,
+      ((inst.gossip_data || {}).real_cases || []).forEach(c => blocks.push(item(c.title || 'Case',  // the case id (C22, NS07) is the dataset's own key, not something a reader can use
         [c.event_date, (c.status || '').replace(/_/g, ' ')].filter(Boolean).join(', '),
         p('', (c.facts || []).join(' ')) + list(li('Claim: ', (c.claims || []).join(' ')), li('Response: ', c.response), li('Outcome: ', c.outcome), li('Limits: ', (c.limits || []).join(' '))),
         (c.sources || []).map(x => x.url).filter(Boolean))));
@@ -17816,8 +17818,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=172"></script>
-<script src="assets/bubbles.js?v=172" defer></script>
-<script src="assets/typeset.js?v=172"></script>
+<script src="assets/layers.js?v=173"></script>
+<script src="assets/bubbles.js?v=173" defer></script>
+<script src="assets/typeset.js?v=173"></script>
 </body>
 </html>
