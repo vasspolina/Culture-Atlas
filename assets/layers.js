@@ -369,10 +369,12 @@
     const btn = box.querySelector('#layersBtn'), panel = box.querySelector('#layersPanel');
     const placePanel = () => {
       panel.classList.remove('is-above');
-      const buttonRect = btn.getBoundingClientRect(), panelRect = panel.getBoundingClientRect();
+      const buttonRect = btn.getBoundingClientRect();
       const spaceBelow = window.innerHeight - buttonRect.bottom - 12;
       const spaceAbove = buttonRect.top - 12;
-      if (panelRect.height > spaceBelow && spaceAbove > spaceBelow) panel.classList.add('is-above');
+      const placeAbove = panel.scrollHeight > spaceBelow && spaceAbove > spaceBelow;
+      panel.classList.toggle('is-above', placeAbove);
+      panel.style.maxHeight = `${Math.max(120, placeAbove ? spaceAbove : spaceBelow)}px`;
     };
     const setOpen = open => {
       panel.hidden = !open;
