@@ -5,7 +5,7 @@
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, right: false, epstein: false, hq: false, people: false };
+  const L = window.atlasLayers = { ties: false, flags: true, grade: false, money: false, right: false, epstein: false, hq: false, people: false };
   const COL = { gov: '#8fa2ff', corp: '#a9e0e6', found: '#ff9966', flag: '#ff6119', right: '#ff5a4d', epstein: '#ec4fe8' };
   const RIGHT = n => typeof n[5] === 'string' && n[5].indexOf('right:') === 0;
   const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? ['Jeffrey Epstein'] : []);
@@ -367,8 +367,19 @@
   function init() {
     const box = document.getElementById('layersControl'); if (!box) return;
     const btn = box.querySelector('#layersBtn'), panel = box.querySelector('#layersPanel');
+    const resetBtn = box.querySelector('#layersResetBtn');
     const setOpen = open => { panel.hidden = !open; btn.setAttribute('aria-expanded', String(open)); };
+    const applyDefaults = () => {
+      const defaults = { ties: false, flags: true, grade: false, money: false, right: false, epstein: false, hq: false, people: false };
+      Object.entries(defaults).forEach(([key, value]) => {
+        L[key] = value;
+        const input = box.querySelector(`input[data-layer="${key}"]`);
+        if (input) input.checked = value;
+      });
+      if (typeof scheduleRender === 'function') scheduleRender();
+    };
     btn.addEventListener('click', () => setOpen(panel.hidden));
+    if (resetBtn) resetBtn.addEventListener('click', () => { applyDefaults(); setOpen(false); });
     document.addEventListener('click', e => { if (!panel.hidden && !box.contains(e.target)) setOpen(false); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) setOpen(false); });
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {

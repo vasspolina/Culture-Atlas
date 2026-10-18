@@ -160,18 +160,46 @@ return maplibregl$1;
       <!-- Layers: overlays on the map, like a map app's layer menu -->
       <div id="layersControl">
         <div id="layersPanel" hidden>
-          <p class="layers-title">Layers</p>
-          <label><input type="checkbox" checked disabled> <span>Cultural spaces <span class="layers-count" data-count="spaces"></span></span></label>
-          <label><input type="checkbox" data-layer="ties"> <span>Funding ties <span class="layers-count" data-count="ties"></span></span></label>
-          <label><input type="checkbox" data-layer="flags"> <span>Flagged on record <span class="layers-count" data-count="flags"></span></span></label>
-          <label><input type="checkbox" data-layer="grade"> <span>Clean Funding Grade <span class="layers-count" data-count="grade"></span></span></label>
-          <label><input type="checkbox" data-layer="money"> <span>Money network <span class="layers-count" data-count="money"></span></span></label>
-          <label><input type="checkbox" data-layer="hq"> <span>Funder headquarters <span class="layers-count" data-count="hq"></span></span></label>
-          <label><input type="checkbox" data-layer="people"> <span>People and their offices <span class="layers-count" data-count="people"></span></span></label>
-          <label><input type="checkbox" data-layer="right"> <span>Right-wing sponsors <span class="layers-count" data-count="right"></span></span></label>
-          <label><input type="checkbox" data-layer="epstein"> <span>Epstein files <span class="layers-count" data-count="epstein"></span></span></label>
-          <p class="layers-key"><span><i style="background:#8fa2ff"></i>Public money</span><span><i style="background:#a9e0e6"></i>Company</span><span><i style="background:#ff9966"></i>Foundation or donor</span><span><i style="background:#ff6119"></i>Flagged</span><span><i style="background:#ff5a4d"></i>Right-wing sponsor</span><span><i style="background:#ec4fe8"></i>Epstein files</span><span><i style="background:#a9e0e6;transform:rotate(45deg) scale(.8)"></i>Head office</span><span><i style="background:#ec4fe8;border-radius:50%"></i>Person's office</span></p>
-          <p class="layers-key"><span><i style="background:#9ae3e8"></i>Grade A, clean, money shown</span><span><i style="background:#6f9486"></i>B, clean, roster shown</span><span><i style="background:#c8b85a"></i>C, a name to know</span><span><i style="background:#ff6119"></i>D, one flagged funder</span><span><i style="background:#ff3df0"></i>F, several, or flagged and contested</span></p>
+          <div class="layers-header">
+            <p class="layers-title">Map Layers &amp; Overlays</p>
+            <button id="layersResetBtn" type="button" class="layers-reset-btn">Reset Default</button>
+          </div>
+
+          <div class="layers-section">
+            <p class="layers-section-title">Layers &amp; Filters</p>
+            <label><input type="checkbox" checked disabled> <span>Cultural spaces <span class="layers-count" data-count="spaces"></span></span></label>
+            <label><input type="checkbox" data-layer="ties"> <span>Funding ties <span class="layers-count" data-count="ties"></span></span></label>
+            <label><input type="checkbox" data-layer="flags" checked> <span>Flagged on record <span class="layers-count" data-count="flags"></span></span></label>
+            <label><input type="checkbox" data-layer="grade"> <span>Clean Funding Grade <span class="layers-count" data-count="grade"></span></span></label>
+            <label><input type="checkbox" data-layer="money"> <span>Money network <span class="layers-count" data-count="money"></span></span></label>
+            <label><input type="checkbox" data-layer="hq"> <span>Funder headquarters <span class="layers-count" data-count="hq"></span></span></label>
+            <label><input type="checkbox" data-layer="people"> <span>People and their offices <span class="layers-count" data-count="people"></span></span></label>
+            <label><input type="checkbox" data-layer="right"> <span>Right-wing sponsors <span class="layers-count" data-count="right"></span></span></label>
+            <label><input type="checkbox" data-layer="epstein"> <span>Epstein files <span class="layers-count" data-count="epstein"></span></span></label>
+          </div>
+
+          <div class="layers-section">
+            <p class="layers-section-title">Entity Types Legend</p>
+            <div class="layers-legend-grid">
+              <span><i style="background:#8fa2ff"></i>Public money</span>
+              <span><i style="background:#a9e0e6"></i>Company</span>
+              <span><i style="background:#ff9966"></i>Foundation / donor</span>
+              <span><i style="background:#ff6119"></i>Flagged record</span>
+              <span><i style="background:#ff5a4d"></i>Right-wing sponsor</span>
+              <span><i style="background:#ec4fe8"></i>Epstein files</span>
+            </div>
+          </div>
+
+          <div class="layers-section">
+            <p class="layers-section-title">Grading System Legend</p>
+            <div class="layers-grade-list">
+              <span><i style="background:#9ae3e8"></i>Grade A: clean, funds disclosed</span>
+              <span><i style="background:#6f9486"></i>Grade B: clean, roster listed</span>
+              <span><i style="background:#c8b85a"></i>Grade C: notable names</span>
+              <span><i style="background:#ff6119"></i>Grade D: 1 flagged funder</span>
+              <span><i style="background:#ff3df0"></i>Grade F: flagged &amp; contested</span>
+            </div>
+          </div>
         </div>
         <button id="layersBtn" type="button" aria-expanded="false" aria-controls="layersPanel">Layers</button>
       </div>
