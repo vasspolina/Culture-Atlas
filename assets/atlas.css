@@ -1168,9 +1168,9 @@ body.gossip-mode-active .is-gossip .thinking{color:#000}
 
 /* AI disclosure line under answers: 14px, 6px above */
 /* The AI note is a footnote (Hochuli p.47-53, fig 70: a passage in a smaller size sits on the main grid): 14px on the 23.4px
-   line, one blank line above it, a short hairline at its head, flush left with no indent, in gold (a deep gold on the white
-   page, 4.9:1; the dark mode gold of the question colours, 7:1). */
-body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#926a00;font-size:14px;line-height:var(--chat-line);margin:var(--chat-line) 0 0;text-indent:0;color:var(--fn);background:linear-gradient(var(--fn),var(--fn)) 0 0/4.5em 1px no-repeat;padding-top:0;max-width:34em}
+   line, one blank line above it, flush left with no indent, in gold (a deep gold on the white page, 4.9:1; the dark mode gold
+   of the question colours, 7:1). */
+body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#926a00;font-size:14px;line-height:var(--chat-line);margin:var(--chat-line) 0 0;text-indent:0;color:var(--fn);max-width:34em}
 :root[data-theme="dark"] body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#cb9440}
 body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note .abbr{color:inherit;font-size:.92em}
 /* While a reply types, the rules and the follow-up chips of its finished layout stay out of sight. */
