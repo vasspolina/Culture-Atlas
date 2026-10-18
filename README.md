@@ -11,7 +11,7 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 - **Street map.** Drawn in the same hairlines as the globe (0.8px, one ink, the same in light and dark), with its place names set in PP Neue Gstaad Regular. The map host serves only its own fonts, so the glyphs for the Latin ranges are generated from the font file and kept in `assets/glyphs/` (regenerate them if the font changes). The Building view button appears only on records with a street address.
 - **Offline.** Installable as an app; the service worker caches the page.
 
-Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below. The Clean Funding Grade, 1 to 5, reads the money itself; see "Clean Funding Grade".
+Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below. The Clean Funding Grade, A to F, reads the money itself; see "Clean Funding Grade".
 
 ## Design
 
@@ -193,17 +193,17 @@ Each entry in `institutions.json` has the following fields:
 
 ## Clean Funding Grade
 
-Each record with an independently sourced funder roster carries a grade from 1 (cleanest) to 5, computed by `tools/grade_funding.py` at the end of `tools/clean_data.py`, from what the record proves and nothing else. It says two things about the money: what it is, and whether the record shows it. A record whose funder roster is not independently sourced is not graded, because silence is not cleanliness.
+Each record with an independently sourced funder roster carries a grade from A (cleanest) to F, with no E, as in school marks (stored as 1 to 5), computed by `tools/grade_funding.py` at the end of `tools/clean_data.py`, from what the record proves and nothing else. It says two things about the money: what it is, and whether the record shows it. A record whose funder roster is not independently sourced is not graded, because silence is not cleanliness.
 
 | Grade | Name | Rule |
 |---|---|---|
-| 1 | Clean, money shown | No flag-category funder and no documented objection, and the record shows figures (amounts or shares in the funding text) or links accounts or a public registry filing |
-| 2 | Clean, roster shown | The same, names only |
-| 3 | A name to know | A funder worth noting outside the flag categories, or a tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned name, a protest, a sponsor dropped, censorship |
-| 4 | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
-| 5 | Several, or flagged and contested | More than one flagged funder category, or a flagged funder plus a documented objection |
+| A | Clean, money shown | No flag-category funder and no documented objection, and the record shows figures (amounts or shares in the funding text) or links accounts or a public registry filing |
+| B | Clean, roster shown | The same, names only |
+| C | A name to know | A funder worth noting outside the flag categories, or a tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned name, a protest, a sponsor dropped, censorship |
+| D | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
+| F | Several, or flagged and contested | More than one flagged funder category, or a flagged funder plus a documented objection |
 
-Public money alone is never a flag, so a wholly public museum sits at 1 or 2. Disclosure only moves a record up, from 2 to 1. The record shows the grade on its colour block with the sentence that decided it (`grade_basis`); the Layers panel has a Clean Funding Grade layer that fills each graded dot with its colour; the chat answers "What is its funding grade?", "Show grade 1 spaces in Berlin" and "How are spaces graded?".
+Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the grade on its colour block with the sentence that decided it (`grade_basis`); the Layers panel has a Clean Funding Grade layer that fills each graded dot with its colour; the chat answers "What is its funding grade?", "Show grade A spaces in Berlin" and "How are spaces graded?".
 
 ## Verification & Methodology
 
