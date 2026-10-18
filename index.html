@@ -244,7 +244,14 @@ return maplibregl$1;
 
       <!--  HIGH-RESOLUTION INTERACTIVE CITY STREET MAP (Leaflet) -->
       <div id="cityMapContainer" class="absolute inset-0 hidden z-10 w-full h-full"></div>
-      <div id="cadHud" class="cad-hud hidden" role="group" aria-label="Map orientation">
+      <div id="cadHud" class="cad-hud hidden" role="group" aria-label="CAD map scale and orientation">
+        <div class="cad-scale">
+          <span class="cad-scale-tick"></span>
+          <span id="cadScaleBar" class="cad-scale-bar"></span>
+          <span class="cad-scale-tick"></span>
+          <span id="cadScaleLabel" class="cad-scale-label">50 m</span>
+          <span class="cad-scale-caption">CAD WIRE-FRAME PROJECTION</span>
+        </div>
         <div class="cad-north">
           <svg id="cadNorthArrow" viewBox="0 0 20 24" role="img" aria-label="North">
             <path d="M10 2 15 14 10 11 5 14Z"></path>
@@ -6695,7 +6702,6 @@ return maplibregl$1;
           style: CITY_MAP_LINE_STYLE,
           center: [0, 20],
           zoom: 14,
-          maxZoom: 14,
           pitch: 35,
           bearing: 0,
           attributionControl: { compact: true }
@@ -7064,6 +7070,7 @@ return maplibregl$1;
 
     // The street map follows gossip mode: orange ground and black hairlines, instead of white ground and grey hairlines.
     let cadTargetMarker = null;
+    let cadHoverPopup = null;
     let cadHoveredFootprint = null;
 
     function ensureCadOverlayLayers() {
@@ -7176,8 +7183,18 @@ return maplibregl$1;
 
     function cadUpdateHud() {
       const map = cityVectorMap;
+      const bar = document.getElementById('cadScaleBar');
+      const label = document.getElementById('cadScaleLabel');
       const arrow = document.getElementById('cadNorthArrow');
-      if (!map || !arrow) return;
+      if (!map || !bar || !label || !arrow || typeof map.getCenter !== 'function') return;
+      const center = map.getCenter();
+      const metersPerPixel = 156543.03392 * Math.max(0.01, Math.cos(center.lat * Math.PI / 180)) / Math.pow(2, map.getZoom ? map.getZoom() : 14);
+      const rawDistance = metersPerPixel * 70;
+      const magnitude = Math.pow(10, Math.floor(Math.log10(rawDistance)));
+      const normalized = rawDistance / magnitude;
+      const distance = (normalized >= 5 ? 5 : normalized >= 2 ? 2 : 1) * magnitude;
+      bar.style.width = `${distance / metersPerPixel}px`;
+      label.textContent = distance >= 1000 ? `${distance / 1000} km` : `${distance} m`;
       arrow.style.transform = `rotate(${-((map.getBearing && map.getBearing()) || 0)}deg)`;
     }
 
@@ -7202,15 +7219,10 @@ return maplibregl$1;
       if (typeof maplibregl === 'undefined' || !maplibregl.Marker) return;
       const markerEl = document.createElement('div');
       markerEl.className = 'cad-target-marker';
-      markerEl.innerHTML = `<span class="cad-target-badge"></span><span class="cad-target-leader"></span>`;
+      markerEl.innerHTML = `<span class="cad-target-badge"><span class="cad-target-dot"></span></span><span class="cad-target-leader"></span>`;
       markerEl.querySelector('.cad-target-badge').appendChild(document.createTextNode(inst.name || 'Selected venue'));
       const coords = building ? xrayCentroid(building.geometry) : [inst.lon, inst.lat];
-      cadTargetMarker = new maplibregl.Marker({
-        element: markerEl,
-        anchor: 'bottom',
-        pitchAlignment: 'viewport',
-        rotationAlignment: 'viewport'
-      }).setLngLat(coords).addTo(map);
+      cadTargetMarker = new maplibregl.Marker({ element: markerEl, anchor: 'bottom' }).setLngLat(coords).addTo(map);
     }
 
     function cadScheduleTarget(inst) {
@@ -7229,9 +7241,10 @@ return maplibregl$1;
     }
 
     function cadClearHover() {
-      if (!cadHoveredFootprint) return;
+      if (!cadHoveredFootprint && !cadHoverPopup) return;
       const source = cityVectorMap && cityVectorMap.getSource && cityVectorMap.getSource('cad-hover-source');
       if (source && typeof source.setData === 'function') source.setData({ type: 'FeatureCollection', features: [] });
+      if (cadHoverPopup) cadHoverPopup.remove();
       cadHoveredFootprint = null;
       if (cityVectorMap && cityVectorMap.getCanvas) cityVectorMap.getCanvas().style.cursor = '';
     }
@@ -7258,7 +7271,15 @@ return maplibregl$1;
           if (source && typeof source.setData === 'function') {
             source.setData({ type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: feature.geometry }] });
           }
+          const properties = feature.properties || {};
+          const name = properties.name_en || properties.name || properties.ref || (feature.id != null ? `PARCEL ${feature.id}` : 'UNNAMED PARCEL');
+          if (typeof maplibregl !== 'undefined' && maplibregl.Popup) {
+            if (!cadHoverPopup) cadHoverPopup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 8, className: 'cad-footprint-tooltip' });
+            cadHoverPopup.setLngLat(event.lngLat).setHTML(escapeHtml(String(name))).addTo(map);
+          }
           cadHoveredFootprint = key;
+        } else if (cadHoverPopup) {
+          cadHoverPopup.setLngLat(event.lngLat);
         }
         if (map.getCanvas) map.getCanvas().style.cursor = 'crosshair';
       });
@@ -7283,12 +7304,7 @@ return maplibregl$1;
           else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', line);
           else if (l.type === 'fill') { map.setPaintProperty(l.id, 'fill-outline-color', line); map.setPaintProperty(l.id, 'fill-color', ground); }
           else if (l.type === 'fill-extrusion') map.setPaintProperty(l.id, 'fill-extrusion-color', ground);
-          else if (l.type === 'symbol') {
-            map.setLayoutProperty(l.id, 'text-pitch-alignment', 'viewport');
-            map.setLayoutProperty(l.id, 'text-rotation-alignment', 'viewport');
-            map.setPaintProperty(l.id, 'text-halo-color', ground);
-            map.setPaintProperty(l.id, 'text-color', line);
-          }
+          else if (l.type === 'symbol') { map.setPaintProperty(l.id, 'text-halo-color', ground); map.setPaintProperty(l.id, 'text-color', line); }
         } catch (e) { /* a layer this map does not have */ }
       });
       // The building view's shell is a faint ink tint over the outline, not a solid block.
@@ -7698,13 +7714,7 @@ return maplibregl$1;
         const el = document.createElement('button');
         el.type = 'button'; el.className = 'xray-label'; el.textContent = cat.label; el.style.setProperty('--xray-colour', XRAY_COLOURS[cat.key]);
         el.addEventListener('click', (ev) => { ev.stopPropagation(); const sec = document.getElementById('xray-cat-' + cat.key); if (sec) sec.scrollIntoView({ block: 'nearest' }); });
-        XRAY.markers.push(new maplibregl.Marker({
-          element: el,
-          anchor: 'bottom',
-          offset: [0, -(8 + i * 26)],
-          pitchAlignment: 'viewport',
-          rotationAlignment: 'viewport'
-        }).setLngLat(c).addTo(cityVectorMap));
+        XRAY.markers.push(new maplibregl.Marker({ element: el, anchor: 'bottom', offset: [0, -(8 + i * 26)] }).setLngLat(c).addTo(cityVectorMap));
       });
     }
 
@@ -8060,7 +8070,7 @@ return maplibregl$1;
         pinEl.appendChild(auraEl);
         pinEl.appendChild(dotEl);
 
-        const marker = new maplibregl.Marker({ element: pinEl, pitchAlignment: 'viewport', rotationAlignment: 'viewport' })
+        const marker = new maplibregl.Marker({ element: pinEl })
           .setLngLat([inst.lon, inst.lat])
           .addTo(cityVectorMap);
 
@@ -8440,7 +8450,7 @@ return maplibregl$1;
             closeOnClick: false
           }).setHTML(popupHtml);
 
-          const marker = new maplibregl.Marker({ element: pinEl, pitchAlignment: 'viewport', rotationAlignment: 'viewport' })
+          const marker = new maplibregl.Marker({ element: pinEl })
             .setLngLat([stop.lon, stop.lat])
             .setPopup(popup)
             .addTo(cityVectorMap);
