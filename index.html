@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=181">
-  <script src="assets/config.js?v=181"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=182">
+  <script src="assets/config.js?v=182"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9625,7 +9625,7 @@ return maplibregl$1;
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
       const ATLAS_RELEASE = 'culture-atlas-v181';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=181').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=182').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9694,6 +9694,10 @@ return maplibregl$1;
     let zoomAnchor = null;            // canvas point a wheel zoom keeps still, cleared when the zoom settles
     let lastPointer = null;           // where the mouse last was over the canvas, so hover follows a moving view
     let lastShownCityLabels = new Set(); // labels drawn last frame keep their place while the view moves
+    let lastShownInstLabels = new Set();
+    let lastShownCountryLabels = new Set();
+    let pinching = false;             // two fingers on the globe: pinch zoom, no one-finger drag
+    let dragArmed = false;            // a press becomes a drag only after it has moved a few pixels
     let lastViewKey = '';
     let velLon = 0, velLat = 0;
     let lastX = 0, lastY = 0;
@@ -10358,6 +10362,11 @@ return maplibregl$1;
           const bHov = hoveredCity && hoveredCity.toLowerCase() === b.name.toLowerCase();
           if (aHov) return -1;
           if (bHov) return 1;
+          // A label already on screen is laid out before one that is not, whatever their counts:
+          // when the text changes width at a zoom threshold, the bigger city re-measured first
+          // used to evict five neighbours at once and seat five others.
+          const aShown = lastShownCityLabels.has(a.name), bShown = lastShownCityLabels.has(b.name);
+          if (aShown !== bShown) return aShown ? -1 : 1;
           return (b.count || 0) - (a.count || 0);
         });
 
@@ -10377,7 +10386,9 @@ return maplibregl$1;
               countTxt = String(city.count);
               bw = ctx.measureText(city.name + ' ' + countTxt).width + 20;
             } else {
-              const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${city.count})` : '';
+              // A count of one says nothing, and adding " (1)" at 1.5x was the last width jump that
+              // reshuffled labels mid-zoom. Counts from two up still show.
+              const countLabel = (city.count || 0) >= 2 && (isCountryActive || r > baseRadius * 1.5) ? ` (${city.count})` : '';
               txt = city.name + countLabel;
               const tw = ctx.measureText(txt).width;
               bw = tw + 20;
@@ -10467,6 +10478,7 @@ return maplibregl$1;
           ctx.textBaseline = 'middle';
 
           const drawnCountryBoxes = [];
+          const shownCountryLabels = new Set();
 
           COUNTRY_CENTROIDS.forEach(c => {
             const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
@@ -10481,17 +10493,19 @@ return maplibregl$1;
                 const by = pt.y - bh / 2;
                 const cBox = { x: bx, y: by, w: bw, h: bh };
 
-                // Strictly check collision against ALL drawn city badge boxes AND other country boxes
+                // A name drawn last frame keeps its place unless it truly overlaps; a new one needs air.
+                const wasShownCountry = lastShownCountryLabels.has(c.name);
+                const kx = wasShownCountry ? 0 : 10, ky = wasShownCountry ? 0 : 8, kx2 = wasShownCountry ? 0 : 8, ky2 = wasShownCountry ? 0 : 6;
                 const collidesWithCity = drawnCityBoxes.some(box => {
-                  return !(cBox.x + cBox.w + 10 < box.x || cBox.x > box.x + box.w + 10 || cBox.y + cBox.h + 8 < box.y || cBox.y > box.y + box.h + 8);
+                  return !(cBox.x + cBox.w + kx < box.x || cBox.x > box.x + box.w + kx || cBox.y + cBox.h + ky < box.y || cBox.y > box.y + box.h + ky);
                 });
                 const collidesWithCountry = drawnCountryBoxes.some(box => {
-                  return !(cBox.x + cBox.w + 8 < box.x || cBox.x > box.x + box.w + 8 || cBox.y + cBox.h + 6 < box.y || cBox.y > box.y + box.h + 6);
+                  return !(cBox.x + cBox.w + kx2 < box.x || cBox.x > box.x + box.w + kx2 || cBox.y + cBox.h + ky2 < box.y || cBox.y > box.y + box.h + ky2);
                 });
 
-                // Avoid overlapping city pills and other country pills, ensure maximum contrast
                 if ((!collidesWithCity && !collidesWithCountry && cBox.x >= 2 && cBox.x + cBox.w <= width - 2) || isSel || isHov) {
                   drawnCountryBoxes.push(cBox);
+                  shownCountryLabels.add(c.name);
 
                   // Crisp solid dark outline halo around text for 100% razor-sharp edge definition
                   ctx.strokeStyle = G_HALO;
@@ -10510,6 +10524,7 @@ return maplibregl$1;
               }
             }
           });
+          lastShownCountryLabels = shownCountryLabels;
           ctx.restore();
         }
 
@@ -10594,6 +10609,7 @@ return maplibregl$1;
 
         let activeMicroDot = null;
         const drawnInstLabelBoxes = [];
+        const shownInstLabels = new Set();
 
         visibleDots.forEach(d => {
           const isSel = selectedInstitution && selectedInstitution.name === d.inst.name;
@@ -10651,15 +10667,19 @@ return maplibregl$1;
             const bx = d.x - bw / 2;
             const by = d.y - 18;
 
+            // A label drawn last frame keeps its place unless it truly overlaps; a new one needs air.
+            const wasShownInst = lastShownInstLabels.has(d.inst.name);
+            const ix = wasShownInst ? 0 : 6, iy = wasShownInst ? 0 : 4;
             const collidesWithOtherLabel = drawnInstLabelBoxes.some(box => {
-              return !(bx + bw + 6 < box.x || bx > box.x + box.w + 6 || by + bh + 4 < box.y || by > box.y + box.h + 4);
+              return !(bx + bw + ix < box.x || bx > box.x + box.w + ix || by + bh + iy < box.y || by > box.y + box.h + iy);
             });
             const collidesWithCity = drawnCityBoxes.some(box => {
-              return !(bx + bw + 6 < box.x || bx > box.x + box.w + 6 || by + bh + 4 < box.y || by > box.y + box.h + 4);
+              return !(bx + bw + ix < box.x || bx > box.x + box.w + ix || by + bh + iy < box.y || by > box.y + box.h + iy);
             });
 
             if ((!collidesWithOtherLabel && !collidesWithCity && bx >= 2 && bx + bw <= width - 2) || isSel) {
               drawnInstLabelBoxes.push({ x: bx, y: by, w: bw, h: bh });
+              shownInstLabels.add(d.inst.name);
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
               drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst.tier);
@@ -10667,6 +10687,7 @@ return maplibregl$1;
             ctx.restore();
           }
         });
+        lastShownInstLabels = shownInstLabels;
 
         if (window.atlasLayersDrawNodes) window.atlasLayersDrawNodes(ctx, visibleDots, r, baseRadius, selectedInstitution, hoveredInstitution, isGossipModeActive, project, cx, cy);
 
@@ -17308,6 +17329,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.findCityAt = findCityAt;
     window.getCityBadgeHitboxes = () => cityBadgeHitboxes;
     window.getHoveredCity = () => hoveredCity;
+    window.getLabelCounts = () => ({ inst: visibleDots.filter(d => d.labelBox).length, country: lastShownCountryLabels.size, city: cityBadgeHitboxes.length });
     window.getView = () => ({ r: currentRadius, target: targetRadius, lon: rotLon, lat: rotLat });
     window.__unproject = (x, y) => unproject(x, y, currentRadius, width / 2, height / 2);
     window.__project = (lon, lat) => project(lon, lat, currentRadius, width / 2, height / 2);
@@ -17909,6 +17931,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           e.touches[0].clientY - e.touches[1].clientY
         );
         initialZoomRadius = targetRadius;
+        // Two fingers zoom; neither of them drags. Without this each finger's move also turned
+        // the globe, and a pinch jittered.
+        pinching = true;
+        isDragging = false;
+        canvas.classList.remove('dragging');
+        velLon = 0; velLat = 0;
       }
     }, { passive: true });
 
@@ -17920,16 +17948,26 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         );
         const scale = currentDist / touchDistance;
         targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), initialZoomRadius * scale));
+        // The pinch zooms about the point between the fingers, as the wheel does about the pointer.
+        const trect = canvas.getBoundingClientRect();
+        const mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - trect.left;
+        const my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - trect.top;
+        zoomAnchor = unproject(mx, my, currentRadius, width / 2, height / 2) ? { x: mx, y: my } : null;
       }
     }, { passive: true });
 
-    canvas.addEventListener('touchend', () => {
-      touchDistance = 0;
+    canvas.addEventListener('touchend', e => {
+      if (e.touches.length < 2) { touchDistance = 0; pinching = false; }
+      // The finger that stays must not fling the globe from where the other one was.
+      if (e.touches.length === 1) { lastX = e.touches[0].clientX; lastY = e.touches[0].clientY; }
     });
 
     canvas.addEventListener('pointerdown', e => {
+      if (pinching) return;
+      // Armed, not dragging: the globe turns only once the pointer has moved 4px, so a click
+      // with a little wobble in it does not nudge the globe under the thing being clicked.
       isDragging = true;
-      canvas.classList.add('dragging');
+      dragArmed = false;
       lastX = e.clientX;
       lastY = e.clientY;
       pointerStartX = e.clientX;
@@ -17942,6 +17980,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     });
 
     window.addEventListener('pointermove', e => {
+      if (isDragging && pinching) return;
+      if (isDragging && !dragArmed) {
+        if (Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY) < 4) return;
+        dragArmed = true;
+        canvas.classList.add('dragging');
+        lastX = e.clientX;
+        lastY = e.clientY;
+      }
       if (isDragging) {
         const dx = e.clientX - lastX;
         const dy = e.clientY - lastY;
@@ -17961,12 +18007,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.addEventListener('pointerup', e => {
       if (isDragging) {
         isDragging = false;
+        dragArmed = false;
         canvas.classList.remove('dragging');
         const dist = Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY);
         if (dist < 6) {
           velLon = 0;
           velLat = 0;
         }
+        // The hover was held off while the button was down; pick again where it was released.
+        if (e.pointerType === 'mouse' && typeof updateHoverCursor === 'function') updateHoverCursor(e.clientX, e.clientY);
       }
     });
 
@@ -18028,8 +18077,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=181"></script>
-<script src="assets/bubbles.js?v=181" defer></script>
-<script src="assets/typeset.js?v=181"></script>
+<script src="assets/layers.js?v=182"></script>
+<script src="assets/bubbles.js?v=182" defer></script>
+<script src="assets/typeset.js?v=182"></script>
 </body>
 </html>
