@@ -542,7 +542,7 @@ return maplibregl$1;
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
-          <input id="mobileAnchoredSearchInput" type="text" placeholder="Ask about a cultural space, its funders or reported controversies…" class="flex-1 min-h-_44px" />
+          <input id="mobileAnchoredSearchInput" type="text" placeholder="Ask about a space, its funders or controversies…" class="flex-1 min-h-_44px" />
           <button id="mobileAnchoredSearchSubmitBtn" type="button" class="w-9 h-9 flex items-center justify-center shrink-0 min-h-_44px min-w-_44px" title="Send query">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
               <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -714,7 +714,7 @@ return maplibregl$1;
             
             <!-- Input Area (Uncontained Flat Editorial) -->
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
-              <textarea id="workInput" rows="2" placeholder="Ask about a cultural space, its funders or reported controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+              <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
               
               <!-- Bottom Toolbar -->
               <div class="flex items-center justify-between pt-2">
@@ -828,7 +828,7 @@ return maplibregl$1;
   <div class="z-40 rule-t px-3 py-2 flex md-hidden flex-col gap-1_5 shrink-0" data-purpose="ai-chat-input-bar" id="mobileStickyInputBar">
     <div class="relative flex items-center">
       <!-- Input Field -->
-      <textarea class="w-full px-3 py-2 pr-20" id="chat-input" rows="2" placeholder="Ask about a cultural space, its funders or reported controversies…"></textarea>
+      <textarea class="w-full px-3 py-2 pr-20" id="chat-input" rows="2" placeholder="Ask about a space, its funders or controversies…"></textarea>
       <!-- Send Pill Button -->
       <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5">
         <span>Send</span>
@@ -11021,6 +11021,55 @@ return maplibregl$1;
       const name = String(inst.name || '').toLowerCase();
       return name ? APPROVED_READER_NOTES.filter(n => String(n.spaceName || '').toLowerCase() === name) : [];
     }
+    // Dates as people read them (25 Sept 2025), not as the research table stores them. A year or year-month stays as given.
+    function humanDate(d) {
+      const m = String(d || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (!m) return String(d || '');
+      const t = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+      return isNaN(t) ? String(d) : t.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+    }
+    // A case's date and where it stands, in words. When the outcome is open, the latest source date says how fresh that is.
+    const CASE_STATUS = {
+      current_status_unknown: 'outcome not confirmed', contract_ratified: 'contract ratified', ended_relationship: 'relationship ended',
+      resolved_reported: 'reported as resolved', union_reported_resolution: 'resolution reported by the union',
+      ongoing_reported: 'reported as ongoing', ongoing_relationship_reported: 'relationship reported as ongoing', disputed_claim: 'claim disputed',
+    };
+    function caseMeta(c) {
+      const status = CASE_STATUS[c.status] || String(c.status || '').replace(/_/g, ' ');
+      const parts = [c.event_date ? humanDate(c.event_date) : '', status];
+      if (c.latest_source_date && /unknown|ongoing/.test(c.status || '')) parts.push(`latest source ${humanDate(c.latest_source_date)}`);
+      return parts.filter(Boolean).join(', ');
+    }
+    // One personal account, read out of the research table's columns. The table used several header sets over time;
+    // this reads them all into who, where, when and what, and leaves the research ids (S75, R25) to the sources links.
+    function accountView(a, inst) {
+      const F = {};
+      (a.fields || []).forEach(([k, v]) => { F[k] = v; });
+      const split = (v) => String(v || '').split(/\s*·\s*/);
+      let date = '', role = '', forum = '';
+      if (F['Posted · self-described role']) [date, role] = split(F['Posted · self-described role']);
+      if (F['Posting date and claimed role']) [date, role] = split(F['Posting date and claimed role']);
+      if (F['Subreddit / post date']) [forum, date] = split(F['Subreddit / post date']);
+      if (F['Original post date']) date = F['Original post date'];
+      if (F['Subreddit / evidence role']) [forum, role] = split(F['Subreddit / evidence role']);
+      if (F['Evidence type']) role = F['Evidence type'];
+      const stripIds = (t) => String(t || '').replace(/[\s.;,]*\bS\d+(?:\s*[;,]\s*S\d+)*\b/g, '').trim();
+      let summary = F['Account in brief'] || F['What the excerpt supports'] || F['What was retained'] || F['Retained narrative'] || '';
+      let note = F['Time and scope'] || '';
+      const cut = summary.split(/\s*Timing \/ scope:\s*/);
+      if (cut.length > 1) { summary = cut[0]; note = cut.slice(1).join(' '); }
+      summary = stripIds(summary); note = stripIds(note);
+      if (summary && !/[.!?]$/.test(summary)) summary += '.';
+      let host = '';
+      try { host = new URL(((a.sources || [])[0] || {}).url).hostname.replace(/^www\./, ''); } catch (e) { /* no source link */ }
+      const site = /glassdoor\./.test(host) ? 'Glassdoor' : /reddit\./.test(host) ? 'Reddit' : /indeed\./.test(host) ? 'Indeed' : /kununu\./.test(host) ? 'kununu' : (host || 'Post');
+      const where = site === 'Reddit' && forum ? `Reddit, ${forum}` : forum && site !== 'Glassdoor' ? `${site}, ${forum}` : site;
+      const kind = /glassdoor|indeed|kununu/i.test(site) ? `${where} review` : where;
+      const title = role ? `${kind} · ${role}` : kind;
+      const own = String(inst.name || '').toLowerCase();
+      const alsoAbout = String(a.scope || '').split(/\s*;\s*/).filter(n => n && n.toLowerCase() !== own && !own.includes(n.toLowerCase()) && !n.toLowerCase().includes(own));
+      return { title, date: humanDate(date), summary, note, alsoAbout };
+    }
     // Reported items. Each one carries the sources recorded for it. None is independently verified.
     function documentedRecordHtml(inst) {
       if (!inst) return '';
@@ -11057,8 +11106,8 @@ return maplibregl$1;
         seenCables.add(key);
         blocks.push(item(w.doc_id || 'WikiLeaks document', w.date, p('', w.what_shows), w.sources));
       });
-      ((inst.gossip_data || {}).real_cases || []).forEach(c => blocks.push(item(`${c.title || 'Case'}${c.case_id ? ' [' + c.case_id + ']' : ''}`,
-        [c.event_date, (c.status || '').replace(/_/g, ' ')].filter(Boolean).join(', '),
+      ((inst.gossip_data || {}).real_cases || []).forEach(c => blocks.push(item(c.title || 'Case',
+        caseMeta(c),
         p('', (c.facts || []).join(' ')) + list(li('Claim: ', (c.claims || []).join(' ')), li('Response: ', c.response), li('Outcome: ', c.outcome), li('Limits: ', (c.limits || []).join(' '))),
         (c.sources || []).map(x => x.url).filter(Boolean))));
       const of = typeof inst.other_findings === 'string' ? inst.other_findings.trim() : '';
@@ -11076,14 +11125,19 @@ return maplibregl$1;
           + list(...(c.stats || []).map(s => li(escapeHtml(s[0]) + ' ', s[1])))
           + p('Sources: ', c.sources), []));
       }
-      const accounts = ((inst.gossip_data || {}).accounts || []).map(a => item(`${a.id}, ${a.scope}`, '',
-        list(...(a.fields || []).map(f => li(f[0] + ': ', f[1]))), (a.sources || []).map(x => x.url)));
+      const accounts = ((inst.gossip_data || {}).accounts || []).map(a => {
+        const v = accountView(a, inst);
+        const body = p('', v.summary)
+          + (v.note ? `<p class="no-indent account-note">Context: ${escapeHtml(v.note)}</p>` : '')
+          + (v.alsoAbout.length ? `<p class="no-indent account-note">Also about ${escapeHtml(v.alsoAbout.join(', '))}.</p>` : '');
+        return item(v.title, v.date, body, (a.sources || []).map(x => x.url));
+      });
       const kindLabel = { information: 'Information', gossip: 'Gossip, unverified', whistleblower: 'Whistleblower note' };
       const readers = readerNotesFor(inst).map(n => item(kindLabel[n.kind] || 'Note', (n.approvedAt || '').slice(0, 10), p('', n.text), n.sourceUrl ? [n.sourceUrl] : []));
       if (!blocks.length && !accounts.length && !readers.length) return '';
       return `<div class="py-3 rule-b" role="region" aria-label="Reported items">
         ${blocks.length ? `<h3 class="kicker">Reported, not independently verified</h3>${blocks.join('')}` : ''}
-        ${accounts.length ? `<h3 class="kicker accounts-note">Individual accounts from review sites and Reddit; not verified findings about the institution.</h3>${accounts.join('')}` : ''}
+        ${accounts.length ? `<h3 class="kicker">Personal accounts (${accounts.length})</h3><p class="no-indent account-note">Posts by staff and visitors on review sites and Reddit. One person's experience each, not verified findings about the institution.</p>${accounts.join('')}` : ''}
         ${readers.length ? `<h3 class="kicker">Shared by readers and approved by the editor. Not checked against a source.</h3>${readers.join('')}` : ''}
       </div>`;
     }
@@ -15230,7 +15284,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         workInput.rows = 2;
         workInput.classList.remove('min-h-_110px', 'sm-min-h-_130px', 'max-h-60', 'is-good');
         workInput.classList.add('min-h-_34px', 'sm-min-h-_42px', 'max-h-36');
-        workInput.placeholder = 'Ask about a cultural space, its funders or reported controversies…';
+        workInput.placeholder = 'Ask about a space, its funders or controversies…';
       }
 
       // 9. Restore suggestions and hero greeting

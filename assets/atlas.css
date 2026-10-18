@@ -1097,3 +1097,10 @@ body #curatorMessages p.ai-note{font-size:14px;line-height:1.3;margin-top:6px}
 
 /* gossip: leave room under the last balloon so tails and spikes are not clipped */
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-bottom:2.2em}
+
+/* A record covers the map, so the map's Layers button steps aside while one is open instead of floating over its text. */
+body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
+/* Personal accounts: the caveat and per-card context read as notes, smaller and quieter than what the account says. */
+:is(#desktopDossierRecordBody,#detailBody) p.account-note{font-size:15px;line-height:1.35;opacity:.8;max-width:60ch}
+/* In a card the date-and-status line sits under the title, smaller and quieter, so the title leads. */
+:is(#desktopDossierRecordBody,#detailBody) .record-card>.kicker+.kicker{font-size:15px;line-height:1.35;opacity:.8;margin-top:2px}
