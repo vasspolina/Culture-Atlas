@@ -1265,6 +1265,8 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
    desktop landing): it shrank to the body's height while its eighty questions ran on for 2400px underneath, over "How the records
    work". It keeps its own height now, and the body scrolls past the questions to the note. */
 #curatorDrawerChatBody>#curatorDrawerGreeting{flex:0 0 auto;height:auto;min-height:0;overflow:visible}
+/* The id rule above outranks .hidden, so the cloud stayed in the flow after a question and pushed the answer below it. */
+#curatorDrawerChatBody>#curatorDrawerGreeting.hidden{display:none}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex;flex-direction:row;flex-wrap:wrap;gap:8px;align-items:flex-start;align-content:flex-start;justify-content:flex-start;width:100%;max-width:none;margin:0;padding:0;border:0}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:inline-block;width:auto;max-width:100%;min-height:0;height:22px;margin:0;padding:0 10px;border:0;border-radius:0;font:400 14px/22px var(--sans);text-transform:none;letter-spacing:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#000;background:var(--fill,#c8b85a);text-decoration:none;cursor:pointer}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#9ae3e8}
