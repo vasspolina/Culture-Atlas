@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=176">
-  <script src="assets/config.js?v=176"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=179">
+  <script src="assets/config.js?v=179"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9620,7 +9620,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=176').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=179').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9912,8 +9912,8 @@ return maplibregl$1;
       let cardY = py - cardH - 16;
       if (cardY < 14) cardY = py + 20;
 
-      // The card follows the theme: white block in light mode, the dark popup colours in dark mode and in gossip mode (yellow text there).
-      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark' || isGossipModeActive;
+      // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode (yellow text there in gossip mode). Gossip mode never darkens it in light mode.
+      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const cardInk = cardDark ? (isGossipModeActive ? '#ffd600' : '#ffffff') : '#000000';
       ctx.fillStyle = cardDark ? '#2a2a2a' : '#ffffff';
       ctx.fillRect(cardX, cardY, cardW, cardH);
@@ -10443,7 +10443,7 @@ return maplibregl$1;
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : '#08bdba') 
+                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : (GLOBE_LIGHT ? '#007a78' : '#08bdba')) 
                     : isHov
                     ? G_TEXT
                     : ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_TEXT);
@@ -13160,7 +13160,8 @@ CHARACTER & VOICE GUIDELINES:
 </formatting_rules>
    - Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point).
    - Never output raw markdown tags or unrendered syntax.
-   - Use bold (**keyword**) deliberately for key figures, names, or concepts.
+   - Emphasis is italic (*word*), used rarely; never bold, never a word in capitals for effect. Abbreviations in capitals (UNESCO, EU, USD) are fine.
+   - HOUSE STYLE (the page typesets your words, but write them right): a dash is an en dash with a space either side ( – ), never an em dash and never a hyphen between spaces; a range or span is a closed en dash (10:00–18:00, Wed–Fri, 1965–70, 2024–25); quote with single marks ‘like this’, the comma or full point outside the closing mark unless it belongs to the quotation, and double marks only for a quotation inside a quotation; an ellipsis is one sign (…); a list item is a plain "- " line.
    - Name a Clean Funding Grade as one number (Grade 4, or Grade 5), never as a range.
    - Link institutions strictly as:
      <a href="#" class="inst-link underline" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link" data-city="City">City</a> (<a href="#" class="dossier-link underline meta" data-name="Exact Name">audit dossier</a>)
@@ -14308,7 +14309,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              appendCuratorMessage(aiHtml + '<p class="no-indent ai-note">Written by an AI model from the records on this page. Not verified.</p>', [], webIntel, thinkingData);
+              appendCuratorMessage(aiHtml + '<p class="no-indent ai-note">AI-written from archival records. Unverified.</p>', [], webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -17825,8 +17826,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=176"></script>
-<script src="assets/bubbles.js?v=176" defer></script>
-<script src="assets/typeset.js?v=176"></script>
+<script src="assets/layers.js?v=179"></script>
+<script src="assets/bubbles.js?v=179" defer></script>
+<script src="assets/typeset.js?v=179"></script>
 </body>
 </html>
