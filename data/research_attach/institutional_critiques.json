@@ -1,111 +1,360 @@
 {
-  "_about": "Three critical frames on cultural institutions, shown on the records they apply to as critiques of kind 'theory'. Each frame holds a list of short verbatim 'quotes', each with its author, source and url, all shown on the page; the works it rests on are listed under 'rests_on' for the editor. (A frame may instead hold a paraphrase 'summary', shown with no author or citation; none does now.) tools/attach_critiques.py writes them; re-running replaces them. A quote may carry 'parts' instead of one 'text': several verbatim passages from the same source, each shown as its own paragraph, optionally after a short 'lead' of reported context (never in quotation marks).",
-  "frames": [
+ "_about": "Critical frames on cultural institutions, one per museum type or funding situation. Each frame carries word-for-word quotations with author, title, publication, date and address, written by tools/build_critique_frames.py from quotes checked against the source page. Three of them (Groys, Žižek, Varoufakis) are single-author frames written into that script. tools/attach_critiques.py puts them on the records they apply to as critiques of kind theory.",
+ "frames": [
+  {
+   "id": "history",
+   "strategy": "The nation’s story",
+   "target": "National, city and war museums, and museums of history",
+   "impact": "Ask whose past the permanent display tells, who paid for the telling, and what the galleries leave out.",
+   "applies": {
+    "type": "history"
+   },
+   "quotes": [
     {
-      "id": "archive_and_stage",
-      "strategy": "The archive and the stage",
-      "target": "Museums of modern and contemporary art, biennials and festivals",
-      "quotes": [
-        {
-          "text": "Thus, our art museums became huge garbage cans of history in which things were kept and exhibited that had no use anymore in real life: sacral images of past religions or status objects of past lifestyles.",
-          "author": "Boris Groys",
-          "source": "‘Entering the Flow: Museum between Archive and Gesamtkunstwerk’, e-flux journal 50, December 2013",
-          "url": "https://www.e-flux.com/journal/50/59974/entering-the-flow-museum-between-archive-and-gesamtkunstwerk/"
-        },
-        {
-          "text": "A new curator is a new dictator who erases the traces of the previous dictatorship. In this way, contemporary museums continually morph from spaces for permanent collections into stages for temporary curatorial projects—temporary Gesamtkunstwerks.",
-          "author": "Boris Groys",
-          "source": "‘Entering the Flow: Museum between Archive and Gesamtkunstwerk’, e-flux journal 50, December 2013",
-          "url": "https://www.e-flux.com/journal/50/59974/entering-the-flow-museum-between-archive-and-gesamtkunstwerk/"
-        }
-      ],
-      "impact": "Read a museum's event calendar and curatorial turnover against what it actually keeps, conserves and pays for.",
-      "applies": {
-        "name_or_focus": "modern|contemporary|kunsthalle|kunstverein|kunsthaus|biennale|biennial|bienal|documenta|triennale|triennial|manifesta|art center|art centre|arts centre|arts center",
-        "size": [
-          "L",
-          "M"
-        ]
-      },
-      "rests_on": [
-        "Art Power (2008)",
-        "Politics of Installation, e-flux journal 2 (2009)",
-        "Entering the Flow: Museum between Archive and Gesamtkunstwerk, e-flux journal 50 (2013)"
-      ]
+     "text": "The museum must render the tank useless upon entry, the way old cannons are filled with cement before being displayed in parks.",
+     "author": "Hito Steyerl",
+     "title": "A Tank on a Pedestal: Museums in an Age of Planetary Civil War",
+     "publication": "e-flux journal #70",
+     "date": "February 2016",
+     "url": "https://www.e-flux.com/journal/70/60543/a-tank-on-a-pedestal-museums-in-an-age-of-planetary-civil-war",
+     "context": "On a Soviet war memorial tank driven off its pedestal into the war in Donbas."
     },
     {
-      "id": "gift_after_taking",
-      "strategy": "The gift that follows the taking",
-      "target": "Institutions funded by donors whose money carries a flag",
-      "quotes": [
-        {
-          "text": "Remember Andrew Carnegie, who employed a private army to suppress organised labour in his steelworks and then distributed large parts of his wealth for educational, cultural and humanitarian causes, proving that, although a man of steel, he had a heart of gold? In the same way, today’s liberal communists give away with one hand what they grabbed with the other.",
-          "author": "Slavoj Žižek",
-          "source": "‘Nobody has to be vile’, London Review of Books 28/7, 6 April 2006",
-          "url": "https://www.lrb.co.uk/the-paper/v28/n07/slavoj-zizek/nobody-has-to-be-vile"
-        },
-        {
-          "text": "According to liberal communist ethics, the ruthless pursuit of profit is counteracted by charity: charity is part of the game, a humanitarian mask hiding the underlying economic exploitation.",
-          "author": "Slavoj Žižek",
-          "source": "‘Nobody has to be vile’, London Review of Books 28/7, 6 April 2006",
-          "url": "https://www.lrb.co.uk/the-paper/v28/n07/slavoj-zizek/nobody-has-to-be-vile"
-        }
-      ],
-      "impact": "Where a flag names an industry, ask what the gift was repairing, and for whom.",
-      "applies": {
-        "grade": [
-          4,
-          5
-        ]
-      },
-      "rests_on": [
-        "Nobody has to be vile, London Review of Books 28/7 (2006)",
-        "First as Tragedy, Then as Farce (2009), the RSA lecture of the same year"
-      ]
+     "text": "The new right-wing government realized that museums, as privileged spaces of national self-representation, had to be more closely controlled, since they were perceived as too cosmopolitan and independent.",
+     "author": "Edit András",
+     "title": "Vigorous Flagging in the Heart of Europe: The Hungarian Homeland under the Right-Wing Regime",
+     "publication": "e-flux journal #57",
+     "date": "September 2014",
+     "url": "https://www.e-flux.com/journal/57/60438/vigorous-flagging-in-the-heart-of-europe-the-hungarian-homeland-under-the-right-wing-regime",
+     "context": "On the national museums of Hungary under its right-wing government."
     },
     {
-      "id": "art_the_powerful_fear",
-      "strategy": "Art the powerful should fear",
-      "target": "Biennials, festivals and touring exhibitions, and the cities that host them",
-      "quotes": [
-        {
-          "parts": [
-            {
-              "lead": "Closing the sixth Moscow Biennale, he began by asking the hall to look at the money in their pockets:",
-              "text": "Take a euro note out and have a look at it. […] Just look at it aesthetically. What do you see? A very boring design."
-            },
-            {
-              "lead": "The bridges and arches on the notes are ‘figments of some second-rate artist’s imagination’, he said, because the EU’s members could not agree on whose cultural treasures should appear on them. Worse than art created by committee, though, are the attempts of bureaucrats and big businesses to appropriate it:",
-              "text": "Art must not be anodyne, culture cannot be decorative. [Artists] should be feared by the powerful in our society; if you are not, you are not doing your job properly."
-            },
-            {
-              "lead": "In an aside, he also knocked",
-              "text": "forums in which the stars are the postmodernist curators inviting economists to give a lecture to artists."
-            }
-          ],
-          "author": "Yanis Varoufakis",
-          "source": "keynote closing the 6th Moscow Biennale, 1 October 2015, as reported by The Art Newspaper, 3 October 2015",
-          "url": "https://www.theartnewspaper.com/2015/10/03/artists-should-be-feared-by-the-powerful-says-former-greek-finance-minister"
-        },
-        {
-          "text": "Documenta took a great deal more from Athens—from both its private and public sector—than it gave. […] When Documenta comes here and talks about neoliberalism with no mention of Deutsche Bank, Société Générale, the awful Troika process, the Eurogroup, etc., it is choosing to be irrelevant.",
-          "author": "Yanis Varoufakis",
-          "source": "‘We Come Bearing Gifts’, in conversation with iLiana Fokianaki on documenta 14 Athens, art-agenda / e-flux criticism, 7 June 2017",
-          "url": "https://www.e-flux.com/criticism/240266/we-come-bearing-gifts-iliana-fokianaki-and-yanis-varoufakis-on-documenta-14-athens"
-        }
-      ],
-      "impact": "Read a festival's balance with its host city, and its critique against its sponsor list.",
-      "applies": {
-        "name_or_focus": "biennale|biennial|bienal|documenta|triennale|triennial|manifesta|festival",
-        "cities": [
-          "Athens",
-          "Kassel"
-        ]
-      },
-      "rests_on": [
-        "Keynote at the 6th Moscow Biennale, reported by The Art Newspaper, 3 October 2015",
-        "We Come Bearing Gifts, conversation on documenta 14 Athens, art-agenda / e-flux criticism, June 2017"
-      ]
+     "text": "Although used as a museum, the Humboldtforum, it is first and foremost a symbolic building that aims to contribute to identity and express a new national self-image.",
+     "author": "Philipp Oswalt",
+     "title": "Building a National House",
+     "publication": "e-flux Architecture, Monument",
+     "date": "January 2021",
+     "url": "https://www.e-flux.com/architecture/monument/372745/building-a-national-house",
+     "only": "Historisches|Humboldt",
+     "context": "On the Humboldt Forum in Berlin."
     }
-  ]
+   ]
+  },
+  {
+   "id": "natural",
+   "strategy": "Nature as inventory",
+   "target": "Natural history museums",
+   "impact": "Ask how the collection was acquired, whose land the specimens came from, and who pays for the displays.",
+   "applies": {
+    "type": "natural"
+   },
+   "quotes": [
+    {
+     "text": "To this day, natural history dioramas tend to compose three-dimensional tableaus of wild nature, while anthropogenic visions of urbanisation, deforestation, mining, extinction, or pollution remain an absolute exception.",
+     "author": "Anna-Sophie Springer, Etienne Turpin",
+     "title": "Necroaesthetics: Denaturalising the Collection",
+     "publication": "L’Internationale Online, Ecologising Museums",
+     "date": "June 2016",
+     "url": "https://www.internationaleonline.org/contributions/necroaesthetics-denaturalising-the-collection/"
+    },
+    {
+     "text": "In the context of natural history collections, ecologising the museum means accounting for and negotiating with the various violent modes through which \"collecting\" took place.",
+     "author": "Anna-Sophie Springer, Etienne Turpin",
+     "title": "Necroaesthetics: Denaturalising the Collection",
+     "publication": "L’Internationale Online, Ecologising Museums",
+     "date": "June 2016",
+     "url": "https://www.internationaleonline.org/contributions/necroaesthetics-denaturalising-the-collection/"
+    },
+    {
+     "text": "References to \"Nature's treasure house\" present the museum as an inventory of nature, as a domain separate from humans (Thackray & Press 2013).",
+     "author": "Fiona R. Cameron",
+     "title": "Theorising More-Than Human Collectives for Climate Change Action in Museums",
+     "publication": "L’Internationale Online, Ecologising Museums",
+     "date": "November 2015",
+     "url": "https://internationaleonline.org/contributions/theorising-more-than-human-collectives-for-climate-change-action-in-museums/",
+     "context": "On the Natural History Museum, London."
+    }
+   ]
+  },
+  {
+   "id": "colonial",
+   "strategy": "The colonial collection",
+   "target": "Ethnographic, world-culture and universal museums",
+   "impact": "Ask how the objects arrived, who claims them, and what the museum says about that in its own galleries and accounts.",
+   "applies": {
+    "type": "ethno"
+   },
+   "quotes": [
+    {
+     "text": "The Musée de l’Homme, especially in its golden age, was a mechanism connecting that picturesque, aerial view of the modern city with a panoptic view of Others and their objects.",
+     "author": "Natasha Marie Llorens",
+     "title": "The Colonial Museum",
+     "publication": "e-flux Criticism",
+     "date": "June 2018",
+     "url": "https://www.e-flux.com/criticism/241589/the-colonial-museum"
+    },
+    {
+     "text": "The earlier assumption of epistemological authority does not extend comfortably within the post-colonial situation.",
+     "author": "Clémentine Deliss",
+     "title": "Collecting Life's Unknowns",
+     "publication": "L’Internationale Online, Decolonising Museums",
+     "date": "June 2015",
+     "url": "https://www.internationaleonline.org/contributions/collecting-lifes-unknowns/"
+    },
+    {
+     "text": "The importance of preserving a huge collection of cultural heritage from colonial history did not appear to be a factor in the debate.",
+     "author": "Mirjam Kooiman",
+     "title": "The Dutch VOC Mentality. Cultural Policy as a Business Model",
+     "publication": "L’Internationale Online, Decolonising Museums",
+     "date": "September 2015",
+     "url": "https://www.internationaleonline.org/contributions/the-dutch-voc-mentality-cultural-policy-as-a-business-model/",
+     "only": "Tropenmuseum",
+     "context": "On the Dutch state’s cuts to the Tropenmuseum and its colonial collection."
+    }
+   ]
+  },
+  {
+   "id": "patron",
+   "strategy": "Freedom on a patron’s terms",
+   "target": "Museums and centres of modern and contemporary art",
+   "impact": "Read the board and the donor list against the programme: whose dissent has room here, and whose does not.",
+   "applies": {
+    "type": "contemp"
+   },
+   "quotes": [
+    {
+     "text": "But whenever freedom is privatized it is also precarious: it shifts the right to dissent to a dependence on well-intentioned patrons.",
+     "author": "Philippe Pirotte and Els Silvrants-Barclay",
+     "title": "The Fifth Estate: On Museums, Public Imagination and the Vanishing Space for Collectivity",
+     "publication": "L’Internationale Online, Situated Organizations",
+     "date": "December 2025",
+     "url": "https://www.internationaleonline.org/contributions/the-fifth-estate-on-museums-public-imagination-and-the-vanishing-space-for-collectivity-a-report-from-flanders/"
+    },
+    {
+     "text": "The Global Guggenheim is a cultural refinery for a set of post-democratic oligarchies, as are the countless international biennials tasked with upgrading and reeducating the surplus population.",
+     "author": "Hito Steyerl",
+     "title": "Politics of Art: Contemporary Art and the Transition to Post-Democracy",
+     "publication": "e-flux journal #21",
+     "date": "December 2010",
+     "url": "https://www.e-flux.com/journal/21/67696/politics-of-art-contemporary-art-and-the-transition-to-post-democracy/"
+    },
+    {
+     "text": "In the case of the 2019 Whitney Biennial, Warren B. Kanders was a peripheral figure easily sacrificed to preserve the broader unity of the philanthropic apparatus.",
+     "author": "Mostafa Heddaya and Rijin Sahakian",
+     "title": "Recolonize This Place",
+     "publication": "e-flux journal #107",
+     "date": "March 2020",
+     "url": "https://www.e-flux.com/journal/107/322311/recolonize-this-place",
+     "only": "Whitney|MoMA|Museum of Modern Art"
+    }
+   ]
+  },
+  {
+   "id": "pavilion",
+   "strategy": "The pavilion and the nation",
+   "target": "Biennials, triennials and large periodic exhibitions",
+   "impact": "Read who pays for each national or sponsored presentation, and what the host city is left with.",
+   "applies": {
+    "type": "bien"
+   },
+   "quotes": [
+    {
+     "text": "The Global Guggenheim is a cultural refinery for a set of post-democratic oligarchies, as are the countless international biennials tasked with upgrading and reeducating the surplus population.",
+     "author": "Hito Steyerl",
+     "title": "Politics of Art: Contemporary Art and the Transition to Post-Democracy",
+     "publication": "e-flux journal #21",
+     "date": "December 2010",
+     "url": "https://www.e-flux.com/journal/21/67696/politics-of-art-contemporary-art-and-the-transition-to-post-democracy/"
+    },
+    {
+     "text": "The organization of the Venice Biennale’s pavilions should be interpreted as a 118-year-old cultural allegory of the rise of the nation-state.",
+     "author": "Jonas Staal",
+     "title": "Art. Democratism. Propaganda.",
+     "publication": "e-flux journal #52",
+     "date": "February 2014",
+     "url": "https://www.e-flux.com/journal/52/59931/art-democratism-propaganda",
+     "only": "Venice|Venezia"
+    },
+    {
+     "text": "A pavilion at Venice is, of course, a propaganda vessel, a tool for soft power.",
+     "author": "Nick Currie",
+     "title": "15th Venice Architecture Biennale, “Reporting from the Front”",
+     "publication": "e-flux Criticism",
+     "date": "June 2016",
+     "url": "https://www.e-flux.com/criticism/238885/15th-venice-architecture-biennale-reporting-from-the-front",
+     "only": "Venice|Venezia",
+     "context": "On the Venice Architecture Biennale."
+    },
+    {
+     "text": "In the case of the 2019 Whitney Biennial, Warren B. Kanders was a peripheral figure easily sacrificed to preserve the broader unity of the philanthropic apparatus.",
+     "author": "Mostafa Heddaya and Rijin Sahakian",
+     "title": "Recolonize This Place",
+     "publication": "e-flux journal #107",
+     "date": "March 2020",
+     "url": "https://www.e-flux.com/journal/107/322311/recolonize-this-place",
+     "only": "Whitney"
+    }
+   ]
+  },
+  {
+   "id": "gift",
+   "strategy": "The gift and its givers",
+   "target": "Museums whose funders carry a flag",
+   "impact": "Where a flag names an industry, ask what the gift buys the giver, and who sits on the board that accepts it.",
+   "applies": {
+    "grade": [
+     4,
+     5
+    ]
+   },
+   "quotes": [
+    {
+     "text": "“Philanthropy” thus becomes part reputation management, part real estate strategy, but rarely community care.",
+     "author": "Philippe Pirotte and Els Silvrants-Barclay",
+     "title": "The Fifth Estate: On Museums, Public Imagination, and the Vanishing Space for Collectivity (A Report from Flanders, Belgium), Part 2",
+     "publication": "e-flux Notes",
+     "date": "January 2026",
+     "url": "https://www.e-flux.com/notes/6783442/the-fifth-estate-on-museums-public-imagination-and-the-vanishing-space-for-collectivity-a-report-from-flanders-belgium-part-2"
+    },
+    {
+     "text": "Right now, too many large cultural institutions around the world allow oil sponsors to brand their entranceways, their catalogues and their events.",
+     "author": "Mel Evans and Kevin Smith (Liberate Tate)",
+     "title": "Imagining a Culture Beyond Oil at the Paris Climate Talks",
+     "publication": "L’Internationale Online, Ecologising Museums",
+     "date": "November 2015",
+     "url": "http://www.internationaleonline.org/contributions/imagining-a-culture-beyond-oil-at-the-paris-climate-talks/generate-pdf"
+    },
+    {
+     "text": "Who should sit on the boards? And I say: Don’t make trustees out of carbon and oil kings. Or out of the punishment monarchy.",
+     "author": "Macarena Gómez-Barris",
+     "title": "Un-Earthing Extractive Architectures",
+     "publication": "e-flux Architecture",
+     "date": "November 2023",
+     "url": "https://www.e-flux.com/architecture/accumulation/574529/un-earthing-extractive-architectures"
+    }
+   ]
+  },
+  {
+   "id": "archive_and_stage",
+   "strategy": "The archive and the stage",
+   "target": "Museums of modern and contemporary art, biennials and festivals",
+   "impact": "Read a museum’s event calendar and curatorial turnover against what it actually keeps, conserves and pays for.",
+   "applies": {
+    "type": [
+     "contemp",
+     "bien"
+    ],
+    "size": [
+     "L",
+     "M"
+    ]
+   },
+   "quotes": [
+    {
+     "author": "Boris Groys",
+     "title": "Entering the Flow: Museum between Archive and Gesamtkunstwerk",
+     "publication": "e-flux journal #50",
+     "date": "December 2013",
+     "url": "https://www.e-flux.com/journal/50/59974/entering-the-flow-museum-between-archive-and-gesamtkunstwerk/",
+     "text": "Thus, our art museums became huge garbage cans of history in which things were kept and exhibited that had no use anymore in real life: sacral images of past religions or status objects of past lifestyles."
+    },
+    {
+     "author": "Boris Groys",
+     "title": "Entering the Flow: Museum between Archive and Gesamtkunstwerk",
+     "publication": "e-flux journal #50",
+     "date": "December 2013",
+     "url": "https://www.e-flux.com/journal/50/59974/entering-the-flow-museum-between-archive-and-gesamtkunstwerk/",
+     "text": "A new curator is a new dictator who erases the traces of the previous dictatorship. In this way, contemporary museums continually morph from spaces for permanent collections into stages for temporary curatorial projects—temporary Gesamtkunstwerks."
+    }
+   ]
+  },
+  {
+   "id": "gift_after_taking",
+   "strategy": "The gift that follows the taking",
+   "target": "Institutions funded by donors whose money carries a flag",
+   "impact": "Where a flag names an industry, ask what the gift was repairing, and for whom.",
+   "applies": {
+    "grade": [
+     4,
+     5
+    ]
+   },
+   "quotes": [
+    {
+     "author": "Slavoj Žižek",
+     "title": "Nobody has to be vile",
+     "publication": "London Review of Books 28/7",
+     "date": "6 April 2006",
+     "url": "https://www.lrb.co.uk/the-paper/v28/n07/slavoj-zizek/nobody-has-to-be-vile",
+     "text": "Remember Andrew Carnegie, who employed a private army to suppress organised labour in his steelworks and then distributed large parts of his wealth for educational, cultural and humanitarian causes, proving that, although a man of steel, he had a heart of gold? In the same way, today’s liberal communists give away with one hand what they grabbed with the other."
+    },
+    {
+     "author": "Slavoj Žižek",
+     "title": "Nobody has to be vile",
+     "publication": "London Review of Books 28/7",
+     "date": "6 April 2006",
+     "url": "https://www.lrb.co.uk/the-paper/v28/n07/slavoj-zizek/nobody-has-to-be-vile",
+     "text": "According to liberal communist ethics, the ruthless pursuit of profit is counteracted by charity: charity is part of the game, a humanitarian mask hiding the underlying economic exploitation."
+    }
+   ]
+  },
+  {
+   "id": "art_the_powerful_fear",
+   "strategy": "Art the powerful should fear",
+   "target": "Biennials, festivals and touring exhibitions, and the cities that host them",
+   "impact": "Read a festival’s balance with its host city, and its critique against its sponsor list.",
+   "applies": [
+    {
+     "type": "bien"
+    },
+    {
+     "name": "festival"
+    },
+    {
+     "city": [
+      "Athens",
+      "Kassel"
+     ]
+    }
+   ],
+   "quotes": [
+    {
+     "author": "Yanis Varoufakis",
+     "title": "Artists should be ‘feared by the powerful’, says former Greek finance minister",
+     "publication": "The Art Newspaper",
+     "date": "3 October 2015",
+     "url": "https://www.theartnewspaper.com/2015/10/03/artists-should-be-feared-by-the-powerful-says-former-greek-finance-minister",
+     "context": "Closing the sixth Moscow Biennale, he began by asking the hall to look at the money in their pockets:",
+     "text": "Take a euro note out and have a look at it. […] Just look at it aesthetically. What do you see? A very boring design."
+    },
+    {
+     "author": "Yanis Varoufakis",
+     "title": "Artists should be ‘feared by the powerful’, says former Greek finance minister",
+     "publication": "The Art Newspaper",
+     "date": "3 October 2015",
+     "url": "https://www.theartnewspaper.com/2015/10/03/artists-should-be-feared-by-the-powerful-says-former-greek-finance-minister",
+     "context": "The bridges and arches on the notes are ‘figments of some second-rate artist’s imagination’, he said, because the EU’s members could not agree on whose cultural treasures should appear on them. Worse than art created by committee, though, are the attempts of bureaucrats and big businesses to appropriate it:",
+     "text": "Art must not be anodyne, culture cannot be decorative. [Artists] should be feared by the powerful in our society; if you are not, you are not doing your job properly."
+    },
+    {
+     "author": "Yanis Varoufakis",
+     "title": "Artists should be ‘feared by the powerful’, says former Greek finance minister",
+     "publication": "The Art Newspaper",
+     "date": "3 October 2015",
+     "url": "https://www.theartnewspaper.com/2015/10/03/artists-should-be-feared-by-the-powerful-says-former-greek-finance-minister",
+     "context": "In an aside, he also knocked",
+     "text": "forums in which the stars are the postmodernist curators inviting economists to give a lecture to artists."
+    },
+    {
+     "author": "Yanis Varoufakis",
+     "title": "“We Come Bearing Gifts”—iLiana Fokianaki and Yanis Varoufakis on Documenta 14 Athens",
+     "publication": "art-agenda / e-flux Criticism",
+     "date": "June 2017",
+     "url": "https://www.e-flux.com/criticism/240266/we-come-bearing-gifts-iliana-fokianaki-and-yanis-varoufakis-on-documenta-14-athens",
+     "context": "In conversation with iLiana Fokianaki on Documenta 14 in Athens.",
+     "text": "Documenta took a great deal more from Athens—from both its private and public sector—than it gave. […] When Documenta comes here and talks about neoliberalism with no mention of Deutsche Bank, Société Générale, the awful Troika process, the Eurogroup, etc., it is choosing to be irrelevant."
+    }
+   ]
+  }
+ ]
 }
