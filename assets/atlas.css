@@ -320,7 +320,12 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #desktopDossierRecordBody .dossier-main-heading,.dossier-main-heading{font:700 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
 #desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet{container-type:inline-size}
 :is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading,#dossier-sheet-name{font-size:clamp(20px,calc(140cqw / var(--title-length,18)),44px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-details{margin-left:1em}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-layout,
+#dossier-sheet-visit:not(.hidden){display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:1em;align-items:start}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-content{min-width:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-details{margin:0}
+#dossier-sheet-visit .visit-content{min-width:0}
+#dossier-sheet-visit .visit-details{margin:0}
 #desktopDossierRecordBody .rule-b{border-bottom:1px solid var(--line)}
 #desktopDossierRecordBody .record-actions{gap:6px!important;padding-top:12px!important}
 @media (max-width:767px){.dossier-main-heading{font-size:36px}}

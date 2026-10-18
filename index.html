@@ -355,9 +355,11 @@ return maplibregl$1;
               <p class="t-lead" id="dossier-sheet-funding-text"></p>
             </div>
             <div id="dossier-sheet-visit" class="hidden py-2_5 rule-b space-y-1">
-              <span class="kicker block">Visiting</span>
-              <p class="t-lead visit-details" id="dossier-sheet-hours"></p>
-              <p class="t-lead visit-details" id="dossier-sheet-access-text"></p>
+              <span class="kicker">Visiting</span>
+              <div class="visit-content">
+                <p class="t-lead visit-details" id="dossier-sheet-hours"></p>
+                <p class="t-lead visit-details" id="dossier-sheet-access-text"></p>
+              </div>
             </div>
             <div id="dossier-sheet-record" class="hidden"></div>
             <div id="dossier-sheet-sources"></div>
@@ -11757,10 +11759,14 @@ return maplibregl$1;
           <!-- Funding and visiting: only what the record states -->
           ${fundingHtml(inst)}
           ${(!isClean && (inst.opening_hours || inst.admission_fee || inst.admission_policy)) ? `
-          <div class="py-3 rule-b space-y-2" role="region" aria-label="Visiting">
-            <span class="block">Visiting</span>
-            ${inst.opening_hours ? `<div class="t-lead visit-details">${escapeHtml(inst.opening_hours)}</div>` : ''}
-            ${(inst.admission_fee || inst.admission_policy) ? `<div class="t-lead visit-details">${escapeHtml(inst.admission_fee || inst.admission_policy)}</div>` : ''}
+          <div class="py-3 rule-b" role="region" aria-label="Visiting">
+            <div class="visit-layout">
+              <span>Visiting</span>
+              <div class="visit-content">
+                ${inst.opening_hours ? `<div class="t-lead visit-details">${escapeHtml(inst.opening_hours)}</div>` : ''}
+                ${(inst.admission_fee || inst.admission_policy) ? `<div class="t-lead visit-details">${escapeHtml(inst.admission_fee || inst.admission_policy)}</div>` : ''}
+              </div>
+            </div>
           </div>
           ` : ''}
 
