@@ -280,14 +280,14 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #mobileBottomNav svg{display:none}
 #dossier-bottom-sheet{background:var(--grey);color:var(--ink);border-top:1px solid var(--line)}
 #dossier-bottom-sheet>div:nth-child(2){border-bottom:1px solid var(--line)}
-#dossier-sheet-name{font-size:32px}
-#dossier-sheet-meta{font:400 14px/1.3 var(--sans)}
-#close-sheet-btn{font:400 14px/1 var(--sans)}
+#dossier-sheet-name{font-size:44px}
+#dossier-sheet-meta{font:400 18px/1.3 var(--sans);letter-spacing:.02em;margin-top:2px}
+#close-sheet-btn{font:400 15px/1 var(--sans)}
 #curator-chat-drawer{background:var(--paper);color:var(--ink)}
 #curator-chat-drawer>div:first-child{border-bottom:1px solid var(--line)}
 #curator-chat-drawer button{font:400 15px/1 var(--sans)}
 #mobileStickyInputBar{background:var(--paper);border-top:1px solid var(--line)}
-#chat-input{padding-right:104px;font:400 18px/1.25 var(--sans);border-bottom:1px solid var(--ink);border-radius:0;background:none;resize:none;display:block;min-height:calc(2 * 1.25em + 16px)}
+#chat-input{padding-right:104px;font:400 18px/1.25 var(--sans);border-bottom:1px solid var(--ink);border-radius:0;background:none;resize:none;display:block;min-height:calc(3 * 1.25em + 16px)}
 #mobileStickySendBtn{background:var(--block);color:var(--ink);border-radius:0;padding:0 16px;font:400 14px/1 var(--sans);height:34px;top:50%;bottom:auto;right:0;transform:translateY(-50%)}
 #mobileSheetHandleBar{background:var(--paper)}
 @media (max-width:480px){#mobileTopBrandBtn>div>span:not(:first-child){display:none}}
@@ -671,14 +671,19 @@ a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:unde
 /* The first visit row sits under a block that already ends in a rule, so it draws no rule of its own. */
 .visit-rows>.rule-t:first-child{border-top:0}
 #globeViewport .maplibregl-ctrl-attrib a{color:var(--ink)}
-/* Phone header: brand, Gossip mode and Chat share one row */
+/* Phone header: brand, Gossip mode and Chat share one row. Sizes and overflow are set in the phone fixes at the end of the file;
+   here the brand stands on the 16px edge the record sheet uses, and the brand and Chat match the other two controls. */
 @media (max-width:767px){
-  #mobileTopBar button{font-size:17px;padding:0 10px}
-  #mobileTopBar #mobileTopBrandBtn{padding:0 10px 0 0}
+  #mobileTopBar #mobileTopBrandBtn{padding-left:16px}
+  #mobileTopBrandBtn>div>span:first-child{font-size:16px}
+  #mobileTopBar #reset-state-btn{font-size:16px!important}
   #mobileTopBar>div:last-child{align-self:stretch;display:flex;gap:0}
   #mobileTopBar #mobileGossipBtn{border-left:1px solid var(--line)}
   #mobileTopBar #reset-state-btn{border-left:1px solid var(--line)}
 }
+@media (max-width:374px){#mobileTopBrandBtn>div>span:first-child,#mobileTopBar #reset-state-btn{font-size:15px!important}}
+/* The phone question field holds its whole placeholder: three lines, four below 375px where the Send button leaves less room. */
+@media (max-width:374px){#chat-input{min-height:calc(4 * 1.25em + 16px)}}
 
 /* The map credit button is a white square on a white map, so it takes the same black rule. */
 .maplibregl-ctrl-attrib.maplibregl-compact{border:1px solid var(--ink)}
@@ -855,12 +860,12 @@ h1,h2,h3,h4,.t-title,.curator-section-hdr,#floatingCardTitle,.record-popup-name,
 
 /* The line (p.32-35): 50-70 characters a line, ragged right with a soft rag, no hyphenation,
    no single word left alone on the last line, and a title that breaks into even lines. */
-.curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p,#curatorHeroGreeting p,.chat-info p,.t-lead{
+.curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p,#dossier-sheet-scrollable-body p,#curatorHeroGreeting p,.chat-info p,.t-lead{
   max-width:66ch;text-align:left;text-wrap:pretty;hyphens:manual;hanging-punctuation:first allow-end}
 h1,h2,h3,h4,.t-title,.lede,#floatingCardTitle,.record-popup-name,.curator-section-hdr{text-wrap:balance;hyphens:manual}
 
 /* Linespacing and the column (p.47-52): the longer the line, the more leading; short UI lines stay close. */
-.curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p{line-height:1.4}
+.curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p,#dossier-sheet-scrollable-body p{line-height:1.4}
 .curator-message-wrap li{margin-bottom:.4em}
 
 /* Numerals (p.41-43): superior and inferior figures and fractions use the font's own glyphs, never a shrunken copy. */
@@ -876,8 +881,8 @@ abbr[title]{text-decoration:none}
 
 /* Paragraphs (p.47, p.51): an indent, not a blank line, marks where a new paragraph begins. The first paragraph
    of a run is flush; each one that follows is indented one em and sits directly under the last. */
-.curator-message-wrap p+p:not(.no-indent),#desktopDossierRecordBody p+p:not(.no-indent),#detailBody p+p:not(.no-indent),#curatorHeroGreeting p+p:not(.no-indent),.chat-info p+p:not(.no-indent){text-indent:1em;margin-top:0}
-.curator-message-wrap p:has(+ p),#desktopDossierRecordBody p:has(+ p),#detailBody p:has(+ p),#curatorHeroGreeting p:has(+ p),.chat-info p:has(+ p){margin-bottom:0}
+.curator-message-wrap p+p:not(.no-indent),#desktopDossierRecordBody p+p:not(.no-indent),#detailBody p+p:not(.no-indent),#dossier-sheet-scrollable-body p+p:not(.no-indent),#curatorHeroGreeting p+p:not(.no-indent),.chat-info p+p:not(.no-indent){text-indent:1em;margin-top:0}
+.curator-message-wrap p:has(+ p),#desktopDossierRecordBody p:has(+ p),#detailBody p:has(+ p),#dossier-sheet-scrollable-body p:has(+ p),#curatorHeroGreeting p:has(+ p),.chat-info p:has(+ p){margin-bottom:0}
 
 /* Light mode: the dark mode hues as plain coloured text, deepened until each clears 3:1 on white at this size. */
 :root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#10957f}
@@ -916,17 +921,17 @@ abbr[title]{text-decoration:none}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{color:#8fb4ff;text-decoration:none}
 
 /* ---- the record panel, typeset and given room (Hochuli: leading rises with line length; space between blocks is what makes them read as blocks) ---- */
-:is(#desktopDossierRecordBody,#detailBody){font-variant-numeric:ordinal}
-:is(#desktopDossierRecordBody,#detailBody) :is(p,.visit-rows>div>div:last-child){line-height:1.4;max-width:66ch;text-wrap:pretty;hyphens:manual}
-:is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading{margin-bottom:20px}
-:is(#desktopDossierRecordBody,#detailBody) .kicker{margin-top:12px;line-height:1.4}
-:is(#desktopDossierRecordBody,#detailBody) .record-actions{margin-top:20px;padding-top:0;row-gap:8px}
-:is(#desktopDossierRecordBody,#detailBody) .space-y-1_5.rule-b{padding-bottom:24px}
-:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b{padding-top:20px;padding-bottom:24px}
-:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>p{margin-top:14px}
-:is(#desktopDossierRecordBody,#detailBody) .visit-rows{margin-top:8px}
-:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div{padding-top:18px;padding-bottom:18px}
-:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>.meta{margin-bottom:6px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body){font-variant-numeric:ordinal}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,.visit-rows>div>div:last-child){line-height:1.4;max-width:66ch;text-wrap:pretty;hyphens:manual}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .dossier-main-heading{margin-bottom:20px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .kicker{margin-top:12px;line-height:1.4}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-actions{margin-top:20px;padding-top:0;row-gap:8px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .space-y-1_5.rule-b{padding-bottom:24px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .py-3.rule-b{padding-top:20px;padding-bottom:24px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .py-3.rule-b>p{margin-top:14px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows{margin-top:8px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div{padding-top:18px;padding-bottom:18px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>.meta{margin-bottom:6px}
 
 /* No "ME" mark: neither the input nor the user's turns carry one. */
 #workInputCard::before,#workInputCard.is-mode::before{content:none!important}
@@ -937,22 +942,22 @@ abbr[title]{text-decoration:none}
 @media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting),:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){gap:31px}}
 
 /* ---- the record's facts set like museum wall labels: a bold title line, small tight text under it, two labels side by side, no rules ---- */
-:is(#desktopDossierRecordBody,#detailBody) :is(.rule-t,.rule-b){border-top:0;border-bottom:0}
-:is(#desktopDossierRecordBody,#detailBody) hr{display:none}
-:is(#desktopDossierRecordBody,#detailBody) .visit-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(11.5em,1fr));gap:28px 28px;margin-top:24px}
-:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div{padding:0;border:0}
-:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>.meta{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none;margin:0 0 3px}
-:is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>div:last-child{font-size:14px;line-height:1.25;letter-spacing:.02em;max-width:none}
-:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none}
-@media (max-width:640px){:is(#desktopDossierRecordBody,#detailBody) .visit-rows{grid-template-columns:minmax(0,1fr)}}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.rule-t,.rule-b){border-top:0;border-bottom:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) hr{display:none}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(11.5em,1fr));gap:28px 28px;margin-top:24px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div{padding:0;border:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>.meta{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none;margin:0 0 3px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>div:last-child{font-size:14px;line-height:1.25;letter-spacing:.02em;max-width:none}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .py-3.rule-b>.kicker{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none}
+@media (max-width:640px){:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows{grid-template-columns:minmax(0,1fr)}}
 
 /* ---- body text is one size everywhere: 18px on 1.3 (the size and leading of the chat answers) ----
    Titles, labels, buttons and the small bold wall-label titles keep their own sizes. */
 body :is(p,li):not(.meta):not(.starter-label):not(.layers-count){font-size:18px;line-height:1.3}
-:is(#desktopDossierRecordBody,#detailBody,#desktopDossierInside) :is(p,li,.kicker){font-size:18px;line-height:1.3}
-:is(#desktopDossierRecordBody,#detailBody,#desktopDossierInside) .visit-rows>div>div:last-child{font-size:18px;line-height:1.3}
-:is(#desktopDossierRecordBody,#detailBody) :is(p,.visit-rows>div>div:last-child){line-height:1.3}
-:is(#desktopDossierRecordBody,#detailBody) .visit-rows{grid-template-columns:repeat(auto-fit,minmax(16em,1fr))}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(p,li,.kicker){font-size:18px;line-height:1.3}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .visit-rows>div>div:last-child{font-size:18px;line-height:1.3}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,.visit-rows>div>div:last-child){line-height:1.3}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows{grid-template-columns:repeat(auto-fit,minmax(16em,1fr))}
 .chat-info p,.chat-info summary{font-size:18px;line-height:1.3}
 #floatingCard :is(p,div,span):not(#floatingCardTitle):not(.meta):not(.kicker){line-height:1.3}
 /* The chat landing starts at the same left edge as the input box under it. */
@@ -960,17 +965,17 @@ body :is(p,li):not(.meta):not(.starter-label):not(.layers-count){font-size:18px;
 
 /* Links in running text are underlined everywhere: chat, record, cards, notes. Buttons made from links stay as blocks. */
 a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
-#curatorMessages a,#detailBody a:not(.record-action),#desktopDossierRecordBody a:not(.record-action),#desktopDossierColumn a:not(.record-action),.chat-info a,#floatingCard a:not(.record-action){text-decoration:underline}
+#curatorMessages a,#detailBody a:not(.record-action),#dossier-sheet-scrollable-body a:not(.record-action),#desktopDossierRecordBody a:not(.record-action),#desktopDossierColumn a:not(.record-action),.chat-info a,#floatingCard a:not(.record-action){text-decoration:underline}
 
 /* The person's turn carries its ME mark again; the input box does not. The first line of every paragraph in a turn is indented one em, even where an answer marks it .no-indent. */
 #curatorMessages>.justify-end::before{content:"ME"}
 #curatorMessages>.curator-message-wrap p{text-indent:1em}
 
 /* Gossip mode: only the gossip information is yellow (a deep gold on a white page, so it still reads): the reported items in the record. The chat keeps the normal ink. */
-body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody),
-body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) :is(p,li,a,span,div){color:#7a5c00}
-:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody),
-:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) :is(p,li,a,span,div){color:#ffd600}
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body),
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,a,span,div){color:#7a5c00}
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body),
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,a,span,div){color:#ffd600}
 
 /* Landing: the title and the four questions share the height evenly and never scroll; the type shrinks to fit a short window. */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting){justify-content:space-evenly;gap:0;height:100%;min-height:0;overflow:hidden;box-sizing:border-box}
@@ -981,8 +986,8 @@ body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody) :is(p,li,a,sp
 #curatorScrollContent:has(#curatorHeroGreeting:not(.hidden))>#curatorHeroGreeting{flex:1 1 auto}
 
 /* Dark mode keeps the regular weight: the record's bold wall-label titles drop back to the sans at 400. */
-:root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody) .visit-rows>div>.meta,
-:root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker{font-family:var(--sans);font-weight:400}
+:root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>.meta,
+:root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .py-3.rule-b>.kicker{font-family:var(--sans);font-weight:400}
 
 /* Zoom and compass: two square buttons, the plus and minus set from the font. Light: white squares, bold signs. Dark: outlined, regular signs. */
 #zoomControls{top:76px;right:20px;gap:8px;background:none;border:0}
@@ -1003,9 +1008,9 @@ body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#00
 :root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomInBtn:hover,:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomOutBtn:hover{background:#ffd600;color:#000}
 
 /* The note above the individual accounts: regular weight, body size, no rule under it. */
-:is(#desktopDossierRecordBody,#detailBody) .kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;text-decoration:none;border:0;margin:20px 0 8px;padding:0;max-width:66ch}
-:is(#desktopDossierRecordBody,#detailBody) .py-3.rule-b>.kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;margin:20px 0 8px}
-:is(#desktopDossierRecordBody,#detailBody) .accounts-note+.record-card{border-top:0;padding-top:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;text-decoration:none;border:0;margin:20px 0 8px;padding:0;max-width:66ch}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .py-3.rule-b>.kicker.accounts-note{font:400 18px/1.3 var(--sans);letter-spacing:.01em;text-transform:none;margin:20px 0 8px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .accounts-note+.record-card{border-top:0;padding-top:0}
 
 /* Landing text: no hyphenation, no lone word on the last line, and the title takes the full width so it sits on one line when it fits. */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{hyphens:none;-webkit-hyphens:none;overflow-wrap:normal;word-break:normal;text-wrap:balance}
@@ -1031,8 +1036,8 @@ body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#00
 /* Hover puts a light blue block behind a link, wider than the text on both sides, with black text, in every theme and in gossip mode. */
 :is(.inst-link,.city-link,.dossier-link):hover,
 :root[data-theme="dark"] :is(.inst-link,.city-link,.dossier-link):hover,
-body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover,
-:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.inst-link,.city-link,.dossier-link):hover,
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 #workInputCard #chatShareBtn:hover,:root[data-theme="dark"] #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
 
 /* Gossip mode: every turn is a speech bubble. assets/bubbles.js draws a hairline outline and a green to orange to pink wash that fit the text, with the tail part of the same path; until it runs, a plain wash stands in. Black type, left aligned, no speaker marks. */
@@ -1084,10 +1089,10 @@ body.gossip-mode-active .thinking{color:#000}
 @media (prefers-reduced-motion:reduce){.thinking i{animation:none}}
 
 /* No rule under a section heading in the record ("Reported, not independently verified"): the first card after it starts clean. */
-:is(#desktopDossierRecordBody,#detailBody) :is(h3,.kicker)+.record-card{border-top:0;padding-top:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(h3,.kicker)+.record-card{border-top:0;padding-top:0}
 
 /* No rules between record cards */
-:is(#desktopDossierRecordBody,#detailBody) .record-card{border-top:0;border-bottom:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card{border-top:0;border-bottom:0}
 
 /* AI disclosure line under answers: 14px, 6px above */
 body #curatorMessages p.ai-note{font-size:14px;line-height:1.3;margin-top:6px}
