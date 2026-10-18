@@ -1,0 +1,50 @@
+{
+  "_about": "Three critical frames on cultural institutions, paraphrased from published theory and shown on the records they apply to as critiques of kind 'theory'. The page shows no author and no citation, by the editor's decision; the works each frame rests on are listed under 'rests_on' for the editor only. tools/attach_critiques.py writes them; re-running replaces them.",
+  "frames": [
+    {
+      "id": "archive_and_stage",
+      "strategy": "The archive and the stage",
+      "target": "Museums of modern and contemporary art, biennials and festivals",
+      "summary": "A museum keeps what has fallen out of use, and that store is what lets anyone call a new work new: the new is measured against what the collection already holds. Artists who attack the museum still want to be kept by it, because outside the archive a work is forgotten. Lately the store has turned into a stage. Shows are run as events, each curator overturns the last one's story, and the internet has taken over the job of remembering, so the museum records its events instead of preserving things. Inside an installation the visitor stands on the artist's ground, under the artist's rules, and is the one being watched.",
+      "impact": "Read a museum's event calendar and curatorial turnover against what it actually keeps, conserves and pays for.",
+      "applies": {
+        "name_or_focus": "modern|contemporary|kunsthalle|kunstverein|kunsthaus|biennale|biennial|bienal|documenta|triennale|triennial|manifesta|art center|art centre|arts centre|arts center",
+        "size": ["L", "M"]
+      },
+      "rests_on": [
+        "Art Power (2008)",
+        "Politics of Installation, e-flux journal 2 (2009)",
+        "Entering the Flow: Museum between Archive and Gesamtkunstwerk, e-flux journal 50 (2013)"
+      ]
+    },
+    {
+      "id": "gift_after_taking",
+      "strategy": "The gift that follows the taking",
+      "target": "Institutions funded by donors whose money carries a flag",
+      "summary": "Giving comes after taking: the money has to be made before it can be given away, and the giving is then told as gratitude and repair. The founder who breaks unions and then endows libraries, the speculator who destabilises an economy in the morning and funds civil society in the afternoon, are one hand hurting and healing. Culture sits inside that portfolio, so a named wing repairs the donor's standing more surely than it repairs any damage. The same move sells the ethical cup of coffee: buy the right thing and the absolution is included in the price. Charity treats the symptom and so keeps the illness going. Large art events that speak in anti-capitalist language are ventures of the capital they describe, and the first honest act may be to decline the invitation to take part.",
+      "impact": "Where a flag names an industry, ask what the gift was repairing, and for whom.",
+      "applies": {
+        "grade": [4, 5]
+      },
+      "rests_on": [
+        "Nobody has to be vile, London Review of Books 28/7 (2006)",
+        "First as Tragedy, Then as Farce (2009), the RSA lecture of the same year"
+      ]
+    },
+    {
+      "id": "art_the_powerful_fear",
+      "strategy": "Art the powerful should fear",
+      "target": "Biennials, festivals and touring exhibitions, and the cities that host them",
+      "summary": "Harmless art has failed, and decorative culture has been captured. The capture comes two ways: by committee, which sands every edge off until nothing offends, like a banknote printed with a bridge that exists nowhere; and by bureaucracies and big companies that take art over for their own ends, which is worse. An artist the powerful are not worried about is not doing the job. A large exhibition that lands in a struggling city, takes its buildings, its public money and its private goodwill, and leaves little behind is not a gift but a kind of disaster tourism. And a show that critiques the system while sparing the banks, creditors and sponsors that pay for it has chosen to be irrelevant.",
+      "impact": "Read a festival's balance with its host city, and its critique against its sponsor list.",
+      "applies": {
+        "name_or_focus": "biennale|biennial|bienal|documenta|triennale|triennial|manifesta|festival",
+        "cities": ["Athens", "Kassel"]
+      },
+      "rests_on": [
+        "Keynote at the 6th Moscow Biennale, reported by The Art Newspaper, 3 October 2015",
+        "We Come Bearing Gifts, conversation on documenta 14 Athens, art-agenda / e-flux criticism, June 2017"
+      ]
+    }
+  ]
+}
