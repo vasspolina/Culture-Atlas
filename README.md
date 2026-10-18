@@ -193,7 +193,7 @@ Each entry in `institutions.json` has the following fields:
 
 ## Clean Funding Grade
 
-Each record with a funder list carries a grade from 1 (cleanest) to 5, computed by `tools/grade_funding.py` at the end of `tools/clean_data.py`, from what the record proves and nothing else. It says two things about the money: what it is, and whether the record shows it. A record with no funder list (Roster unverified) is not graded, because silence is not cleanliness.
+Each record with an independently sourced funder roster carries a grade from 1 (cleanest) to 5, computed by `tools/grade_funding.py` at the end of `tools/clean_data.py`, from what the record proves and nothing else. It says two things about the money: what it is, and whether the record shows it. A record whose funder roster is not independently sourced is not graded, because silence is not cleanliness.
 
 | Grade | Name | Rule |
 |---|---|---|

@@ -16,6 +16,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 CORRECTIONS = Path(__file__).resolve().parent.parent / 'data' / 'corrections.json'
+DUPLICATES = Path(__file__).resolve().parent.parent / 'data' / 'duplicates.json'
 
 # Free text where one value shared by 5+ records (after masking name and city) is filler.
 TEXT = ['watch', 'funding', 'opening_hours', 'admission_fee', 'admission_policy', 'admission_details',
@@ -46,7 +47,7 @@ ASSERTION = re.compile(
     r"|\btransparent (donor|supporter|ledger|disclosure|roster)|\bvetted\b"
     r"|\b(sanctuary|beacon|bastion|heroic|indispensable|vanguard|cradle|cornerstone|iconic|world-famous|acclaimed|exemplary|unforgettable)\b", re.I)
 # The public registries a record may link to. Anything else under the registry fields is dropped.
-REGISTRIES = ('projects.propublica.org', 'register-of-charities.charitycommission.gov.uk', 'bundesanzeiger.de', 'openkvk.nl',
+REGISTRIES = ('projects.propublica.org', 'register-of-charities.charitycommission.gov.uk', 'oscr.org.uk', 'bundesanzeiger.de', 'openkvk.nl',
               'apps.cra-arc.gc.ca', 'journal-officiel.gouv.fr', 'acnc.gov.au', 'servizi.lavoro.gov.it', 'sede.mjusticia.gob.es', 'edi.admin.ch')
 ASSERTION_FIELDS = ['watch', 'funding', 'curator_recommendation', 'highlight']
 PUFF = re.compile(r"\b(beating heart|extraordinary|daring|fearless|legendary|renowned|celebrated|world-class|cultural anchor|cultural destination|"
@@ -125,35 +126,52 @@ def generic_link(rec, key):
 def clean(records, report=None):
     report = {} if report is None else report
     bump = lambda k, n=1: report.__setitem__(k, report.get(k, 0) + n)
-    # one record per museum: a later record with the same name is dropped; one with the same id is the same museum under
-    # a shorter name, and is folded into the first: empty fields filled, lists joined, its name kept as an alias.
+    # one record per museum: a later record with the same name is dropped; one with the same id, or listed in
+    # data/duplicates.json, is the same museum under another name and is folded into the record that stays: empty
+    # fields filled, lists joined, its name kept as an alias, its id kept in former_ids so old links still resolve.
     LISTS = ('sources', 'flags', 'aliases', 'funder_links', 'epstein_records', 'wikileaks_records', 'case_notes', 'other_findings')
-    seen, by_id, kept = {}, {}, []
+    dup_map = {k: v for k, v in (json.load(open(DUPLICATES, encoding='utf-8')) if DUPLICATES.exists() else {}).items() if not k.startswith('_')}
+    def fold(first, r):
+        for k, v in r.items():
+            if v in (None, '', [], {}) or k == 'id':
+                continue
+            if k in LISTS:
+                have = first.get(k) or []
+                keys = {json.dumps(x, sort_keys=True) for x in have}
+                first[k] = have + [x for x in v if json.dumps(x, sort_keys=True) not in keys]
+            elif first.get(k) in (None, '', [], {}):
+                first[k] = v
+            elif k in ('funding', 'watch') and v != first[k]:
+                report.setdefault('merged_text_dropped', []).append({'id': r['id'], 'into': first['id'], 'field': k, 'text': v})
+        if r['name'] != first['name']:
+            first['aliases'] = list(dict.fromkeys((first.get('aliases') or []) + [r['name']]))
+        if r['id'] != first['id']:
+            first['former_ids'] = list(dict.fromkeys((first.get('former_ids') or []) + [r['id']]))
+        bump('merged_same_id_records' if r['id'] == first['id'] else 'merged_listed_duplicates')
+    seen, by_id, kept, held = {}, {}, [], []
     for r in records:
         key = r['name'].lower()
         if key in seen or 'Record was wrong' in (r.get('watch') or ''):
             bump('duplicate_or_retracted_records')
             continue
-        first = by_id.get(r.get('id'))
+        target = dup_map.get(r.get('id'), r.get('id'))
+        first = by_id.get(target)
         if first is not None:
-            for k, v in r.items():
-                if v in (None, '', [], {}):
-                    continue
-                if k in LISTS:
-                    have = first.get(k) or []
-                    keys = {json.dumps(x, sort_keys=True) for x in have}
-                    first[k] = have + [x for x in v if json.dumps(x, sort_keys=True) not in keys]
-                elif first.get(k) in (None, '', [], {}):
-                    first[k] = v
-                elif k in ('funding', 'watch') and v != first[k]:
-                    report.setdefault('merged_text_dropped', []).append({'id': r['id'], 'field': k, 'text': v})
-            if r['name'] != first['name']:
-                first['aliases'] = list(dict.fromkeys((first.get('aliases') or []) + [r['name']]))
-            bump('merged_same_id_records')
+            fold(first, r)
+            continue
+        if target != r.get('id'):
+            held.append(r)                     # its keeper comes later in the file
             continue
         seen[key] = r
         by_id[r.get('id')] = r
         kept.append(r)
+    for r in held:
+        first = by_id.get(dup_map[r['id']])
+        if first is not None:
+            fold(first, r)
+        else:
+            kept.append(r)                     # the keeper is not in the data; the record stays as it is
+            bump('duplicate_keeper_missing')
     records[:] = kept
     for f in TEXT:
         counts = collections.Counter(norm(r[f], r) for r in records if r.get(f))
