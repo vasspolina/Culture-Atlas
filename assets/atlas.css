@@ -109,16 +109,26 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #activeMapFilterText{font:400 18px/1 var(--sans)}
 #clearMapFilterBtn{color:var(--ink)}
 /* The street-view bar: a plain white block with a black rule, like the drawing it sits on. No scroll container, so no ragged ends. */
-#cityViewControlBanner{background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:9px 14px;gap:16px;overflow:visible}
-#cityViewControlBanner button,#cityViewControlBanner span,#cityViewControlBanner div{color:var(--ink)}
+#cityViewControlBanner{position:absolute;top:12px;left:12px;z-index:25;background:rgba(18,18,18,.84);color:#fff;border:1px solid rgba(255,255,255,.16);padding:7px 10px;gap:8px;overflow:visible;border-radius:12px;backdrop-filter:blur(10px);box-shadow:0 12px 18px rgba(0,0,0,.18)}
+#cityViewControlBanner button,#cityViewControlBanner span,#cityViewControlBanner div{color:#fff}
 #cityViewControlBanner button,#cityViewControlBanner a{text-decoration:none}
+#cityViewControlBanner #cityViewTitleBadge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-left:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#dfe9ff;border-radius:8px}
 #activeRouteBanner{padding:16px;max-width:390px}
 #activeRouteBanner .meta,#activeRouteBanner span,#activeRouteBanner div{color:var(--paper)}
 #activeRouteBanner button{color:var(--paper);text-decoration:underline;font:400 14px/1 var(--sans)}
-#buildingInsidePanel{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
+#buildingInsidePanel{position:absolute;left:16px;bottom:78px;width:min(460px,calc(100vw - 32px));max-height:min(52vh,420px);background:rgba(17,17,17,.86);color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:14px 16px;backdrop-filter:blur(12px);box-shadow:0 18px 30px rgba(0,0,0,.35);overflow-y:auto;overflow-x:hidden}
+#buildingInsidePanel a:not(.record-action){color:#dfe9ff;text-decoration:none}
+#buildingInsidePanel .xray-cat-title{display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:10px}
+#buildingInsidePanel .swatch{width:10px;height:10px;border:1px solid rgba(255,255,255,.5);background:var(--swatch,var(--paper));box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+#buildingInsidePanel .xray-cat-title span:last-child{font:400 13px/1.2 var(--sans);letter-spacing:.01em;text-transform:uppercase;color:#fff}
+#buildingInsidePanel .xray-cat-item{padding:0 0 10px}
+#buildingInsidePanel .xray-cat-item:last-child{padding-bottom:0}
+#buildingInsidePanel .xray-cat-item p{margin:6px 0 0;color:rgba(255,255,255,.8);font:400 13px/1.5 var(--sans)}
+#xrayModes{position:absolute;top:58px;left:12px;z-index:21;display:inline-flex;align-items:center;gap:4px;padding:4px;background:rgba(17,17,17,.82);border:1px solid rgba(255,255,255,.12);border-radius:12px;backdrop-filter:blur(10px);box-shadow:0 12px 18px rgba(0,0,0,.12)}
 .xray-label,.xray-pill{font:400 14px/1 var(--sans);background:var(--xray-colour,var(--paper));color:var(--ink);border-radius:0;padding:5px 12px}
-.xray-pill[aria-pressed=true]{background:var(--ink);color:var(--paper)}
-#xrayModes .xray-pill{border:1px solid var(--ink)}
+.xray-pill[aria-pressed=true]{background:#fff;color:#111}
+#xrayModes .xray-pill{border:1px solid rgba(255,255,255,.2);border-radius:9px;padding:7px 12px;background:rgba(17,17,17,.4);color:#dfe9ff}
+#xrayModes .xray-pill[aria-pressed=true]{background:#fff;color:#0d0d0d;box-shadow:0 1px 0 rgba(255,255,255,.2) inset}
 /* The mode bar sits under the city banner, which wraps to two lines on a phone. */
 
 
@@ -628,11 +638,11 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 /* While writing a note the toolbar wraps, so Send for review stays on screen on a phone. */
 #workInputCard.is-mode>div.justify-between{flex-wrap:wrap;gap:8px 12px}
 #workInputCard.is-mode>div.justify-between>div{flex-wrap:wrap}
-/* Zoom: the same square set the street map has, top right under the compass. No round buttons at the bottom. */
-#zoomControls{position:absolute;top:70px;right:20px;bottom:auto;z-index:20;display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid #fff}
-#zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:32px;height:32px;padding:0;border-radius:0;background:#fff;color:#000;display:flex;align-items:center;justify-content:center}
-#zoomControls button+button{border-top:1px solid #000}
-#zoomControls button:hover{background:#000;color:#fff}
+/* Zoom: a compact floating dock, aligned with the top-right panel and kept separate from the breadcrumb row. */
+#zoomControls{position:absolute;top:14px;right:16px;bottom:auto;z-index:24;display:flex;flex-direction:column;gap:6px;padding:6px;background:rgba(17,17,17,.82);border:1px solid rgba(255,255,255,.18);border-radius:12px;backdrop-filter:blur(10px);box-shadow:0 12px 22px rgba(0,0,0,.2)}
+#zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:32px;height:32px;padding:0;border-radius:8px;background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.12);font:700 18px/1 var(--sans)}
+#zoomControls button+button{border-top:1px solid rgba(255,255,255,.12);margin-top:0}
+#zoomControls button:hover{background:rgba(255,255,255,.15);color:#fff}
 #zoomControls svg{width:14px;height:14px}
 /* Back to chat shows only while a note is being written. */
 #chatBackBtn{display:none}
@@ -720,15 +730,17 @@ body.gossip-mode-active #topGossipBtn:hover,body.gossip-mode-active #mobileGossi
 body.gossip-mode-active #cityMapContainer{background:var(--gossip)}
 /* In the street view the globe's own controls would sit behind the street-view bar and poke out at its ends. */
 body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
-body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
+body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection,
+body:has(#cityViewControlBanner:not(.hidden)) #layersControl{display:none}
 /* Layers menu on the map */
-#layersControl{position:absolute;left:12px;bottom:12px;z-index:30;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-#layersBtn{font:400 15px/1 var(--sans);letter-spacing:.01em;padding:11px 14px;background:var(--block);color:var(--ink);border:0;border-radius:0}
-#layersBtn:hover,#layersBtn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
-#layersPanel{background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:10px 14px;display:flex;flex-direction:column;gap:8px;width:272px;max-width:calc(100vw - 24px);max-height:calc(100% - 70px);overflow-y:auto}
+#layersControl{position:absolute;left:12px;top:14px;bottom:auto;z-index:30;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+#layersBtn{font:400 15px/1 var(--sans);letter-spacing:.01em;padding:8px 12px;background:rgba(17,17,17,.82);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:10px;box-shadow:0 12px 18px rgba(0,0,0,.12);backdrop-filter:blur(8px)}
+#layersBtn:hover,#layersBtn[aria-expanded="true"]{background:#fff;color:#000}
+#layersPanel{background:rgba(17,17,17,.9);color:#fff;border:1px solid rgba(255,255,255,.12);padding:10px 14px;display:flex;flex-direction:column;gap:8px;width:272px;max-width:calc(100vw - 24px);max-height:calc(100% - 90px);overflow-y:auto;border-radius:12px;backdrop-filter:blur(10px)}
 #layersPanel[hidden]{display:none}
-#layersPanel .layers-title{margin:0;font:700 15px/1 var(--sans-compact,var(--sans));letter-spacing:.01em}
-#layersPanel label{display:flex;align-items:center;gap:10px;font:400 15px/1.2 var(--sans);letter-spacing:.01em;color:var(--ink);cursor:pointer}
+#layersPanel .layers-title{margin:0;font:700 15px/1 var(--sans-compact,var(--sans));letter-spacing:.01em;color:#fff}
+#layersPanel label{display:flex;align-items:center;gap:10px;font:400 15px/1.2 var(--sans);letter-spacing:.01em;color:#fff;cursor:pointer}
+#layersPanel .layers-key{color:#dfe9ff}
 #layersPanel input{width:18px;height:18px;accent-color:var(--ink);margin:0;border-radius:0}
 #layersPanel label>span{display:flex;flex-direction:column;gap:2px}
 #layersPanel .layers-count{font-size:14px;line-height:1.2;opacity:.75}
@@ -1060,13 +1072,13 @@ body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet
 :root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>.meta,
 :root[data-theme="dark"] :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .py-3.rule-b>.kicker{font-family:var(--sans);font-weight:400}
 
-/* Zoom and compass: two square buttons, the plus and minus set from the font. Light: white squares, bold signs. Dark: outlined, regular signs. */
-#zoomControls{top:76px;right:20px;gap:8px;background:none;border:0}
-#zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:36px;height:36px;padding:0;background:#fff;color:#000;border:1px solid #000;font:700 26px/1 var(--display);display:flex;align-items:center;justify-content:center}
-#zoomControls button+button{border-top:1px solid #000}
-#zoomControls button:hover{background:#000;color:#fff}
-:root[data-theme="dark"] #zoomControls button,:root[data-theme="dark"] #zoomControls #zoomInBtn,:root[data-theme="dark"] #zoomControls #zoomOutBtn{background:transparent;color:#f4f4f4;border:1px solid #f4f4f4;font:400 26px/1 var(--sans)}
-:root[data-theme="dark"] #zoomControls button:hover{background:#f4f4f4;color:#000}
+/* Zoom and compass: a compact top-right dock that sits apart from the breadcrumb row and preserves readability. */
+#zoomControls{top:14px;right:16px;gap:6px;padding:6px;background:rgba(17,17,17,.82);border:1px solid rgba(255,255,255,.18);border-radius:12px;backdrop-filter:blur(10px)}
+#zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:32px;height:32px;padding:0;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:8px;font:700 18px/1 var(--sans);display:flex;align-items:center;justify-content:center}
+#zoomControls button+button{border-top:1px solid rgba(255,255,255,.12)}
+#zoomControls button:hover{background:rgba(255,255,255,.15);color:#fff}
+:root[data-theme="dark"] #zoomControls button,:root[data-theme="dark"] #zoomControls #zoomInBtn,:root[data-theme="dark"] #zoomControls #zoomOutBtn{background:transparent;color:#f4f4f4;border:1px solid rgba(255,255,255,.14)}
+:root[data-theme="dark"] #zoomControls button:hover{background:rgba(255,255,255,.12);color:#fff}
 :root[data-theme="dark"] body.gossip-mode-active #zoomControls button{color:#ffd600;border-color:#ffd600}
 :root[data-theme="dark"] body.gossip-mode-active #zoomControls button:hover{background:#ffd600;color:#000}
 
