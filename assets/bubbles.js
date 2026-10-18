@@ -328,7 +328,7 @@
   /* Hairlines on load: the app's main rules are covered by a copy that draws itself in, then handed back. */
   function drawLines() {
     if (reduce) return;
-    // A new release makes the service worker reload the page once; a reload right after a draw must not draw again.
+    // A reload right after a draw (a tab left open across a release reloads itself) must not draw again.
     try {
       var last = +sessionStorage.getItem('atlas-lines') || 0;
       if (Date.now() - last < 20000) return;

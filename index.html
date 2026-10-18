@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=175">
-  <script src="assets/config.js?v=175"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=176">
+  <script src="assets/config.js?v=176"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9619,12 +9619,24 @@ return maplibregl$1;
     }
 
     if ('serviceWorker' in navigator) {
+      // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
+      const ATLAS_RELEASE = 'culture-atlas-v176';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=175').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=176').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
         });
+      });
+      // A new release has activated. This page already has it when it loaded it (the page is fetched network-first),
+      // so it stays put. A tab left open across a release reloads onto the new copy, but only while nothing is in
+      // progress on it: a conversation or an open record is never thrown away under the reader.
+      navigator.serviceWorker.addEventListener('message', (e) => {
+        const d = e.data || {};
+        if (d.type !== 'atlas-release' || !d.cache || d.cache === ATLAS_RELEASE) return;
+        const busy = (typeof curatorContext !== 'undefined' && curatorContext && (curatorContext.history || []).length > 0)
+          || (typeof selectedInstitution !== 'undefined' && !!selectedInstitution);
+        if (!busy) location.reload();
       });
     }
 
@@ -13992,6 +14004,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function initCuratorConversation() {
       if (!curatorMessages) return;
       curatorMessages.innerHTML = '';
+      // The phone drawer starts over too: its transcript is emptied and its starter prompts come back.
+      const drawerLive = document.getElementById('curatorDrawerLiveStream');
+      if (drawerLive) drawerLive.innerHTML = '';
+      document.getElementById('curatorDrawerGreeting')?.classList.remove('hidden');
       const contentWrap = document.getElementById('curatorScrollContent');
       if (contentWrap) contentWrap.classList.add('my-auto');
 
@@ -14055,6 +14071,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       const drawerLive = document.getElementById('curatorDrawerLiveStream');
       if (drawerLive) {
+        document.getElementById('curatorDrawerGreeting')?.classList.add('hidden');
         const mDiv = document.createElement('div');
         mDiv.className = 'flex justify-end my-1 w-full';
         mDiv.innerHTML = `
@@ -14150,6 +14167,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       const drawerLive = document.getElementById('curatorDrawerLiveStream');
       if (drawerLive) {
+        document.getElementById('curatorDrawerGreeting')?.classList.add('hidden');
         const mBot = document.createElement('div');
         mBot.className = 'curator-message-wrap';
         mBot.innerHTML = processedContent + followUpHtml;
@@ -17825,8 +17843,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=175"></script>
-<script src="assets/bubbles.js?v=175" defer></script>
-<script src="assets/typeset.js?v=175"></script>
+<script src="assets/layers.js?v=176"></script>
+<script src="assets/bubbles.js?v=176" defer></script>
+<script src="assets/typeset.js?v=176"></script>
 </body>
 </html>
