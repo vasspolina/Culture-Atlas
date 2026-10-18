@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=176">
-  <script src="assets/config.js?v=176"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=179">
+  <script src="assets/config.js?v=179"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9620,7 +9620,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=176').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=179').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14365,7 +14365,27 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         answer(`<p>${escapeHtml(GRADE_LADDER)}</p><p>${[1, 2, 3, 4, 5].map(g => `Grade ${g}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} not graded. Ask for grade 1 spaces in a city to see the cleanest there.</p>`, ['Show grade 1 spaces', 'Show grade 5 spaces', 'How are spaces assessed?']);
         return;
       }
+      // A named funder: the spaces whose records link it (funder_links), the same names the Funding block shows on each record.
+      if (!explicit && asks(/\b(fund|funds|funded|funding|funder|back|backs|backed|sponsor|sponsors|sponsored|give|gives|money|connect|connects|pay|pays)\b/)) {
+        const funders = {};
+        ALL_INSTITUTIONS.forEach(i => (i.funder_links || []).forEach(f => { if (f && f.funder) (funders[f.funder] = funders[f.funder] || []).push(i); }));
+        const named = Object.keys(funders).filter(f => new RegExp('\\b' + esc(f) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
+        if (named) {
+          const linked = funders[named].sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
+          listOf(linked, `${named} is named as a funder on ${linked.length} ${linked.length === 1 ? 'record' : 'records'}, cleanest grade first. Each record's Funding block has the detail and the sources${linked.length > 12 ? '. The first 12' : ''}:`);
+          return;
+        }
+      }
       const inPlace = place && (new RegExp('\\b(in|near|around|across)\\s+' + esc(place) + '\\b', 'i').test(query) || (!explicit && asks(/\b(museums?|spaces?|galleries|institutions?|list|show|find)\b/)));
+      // The flagged spaces, with the reason on each record; in a place when one is named.
+      const wantsFlagged = !explicit && asks(/\bflag(ged|s)?\b/);
+      if (wantsFlagged && (inPlace || !place)) {
+        const here = ALL_INSTITUTIONS.filter(i => i.tier === 'B' && i.why_flagged && (!place || [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase()))))
+          .sort((a, b) => (b.grade || 0) - (a.grade || 0) || a.name.localeCompare(b.name));
+        selectedCategoryFilter = 'all';
+        answer(here.length ? `<p>${here.length} flagged ${here.length === 1 ? 'space' : 'spaces'} with a reason recorded${place ? ' in ' + escapeHtml(place) : ''}${here.length > 12 ? '. The first 12' : ''}:</p>${here.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml((i.flags || []).join(', '))}. ${escapeHtml(i.why_flagged)}</p>`).join('')}${here.length > 12 ? `<p class="no-indent">${here.length - 12} more.</p>` : ''}` : `<p>No space${place ? ' in ' + escapeHtml(place) : ''} is flagged with a reason recorded.</p>`);
+        return;
+      }
       if (inPlace) {
         const order = { A: 0, B: 1 };
         const here = ALL_INSTITUTIONS.filter(i => [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase())))
@@ -14396,7 +14416,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (target && asks(/\b(who funds|funding|funded|funder|donor|money|pays?|finance|financed|backers?)\b/)) {
         focus(target);
-        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding detail is recorded for this space yet.</p>'}${fact('', target.watch)}${sourcesHtml(target)}`);
+        const shared = (target.funder_links || []).filter(f => f && f.funder);
+        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding detail is recorded for this space yet.</p>'}${fact('', target.watch)}${shared.length ? `<p>Named at other spaces on the map, this one included: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${sourcesHtml(target)}`);
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
@@ -16495,40 +16516,113 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Initialize UI Status on startup
     updateAIStatusUI();
 
-    // Starter prompts for an empty chat. Every one is a question the offline answers can really answer from the records, and the
-    // examples are picked at random from the records themselves, so nothing is promised that the data does not hold. With a space selected
-    // the prompts are about that space.
+    // Starter prompts for an empty chat: questions about money, influence and controversy, never visitor questions. Every one is a
+    // question the offline answers answer from the records, and the examples are picked at random from the records that hold the fact,
+    // so nothing is promised that the data does not hold. With a space selected the prompts are about that space.
     // The chat title is one of four, picked on each load.
     const HERO_TITLES = ['Who funds this cultural institution?', 'Who’s behind this cultural institution?', 'What should I know about this cultural institution?', 'What’s the story behind this cultural institution?'];
     const HERO_TITLE = HERO_TITLES[Math.floor(Math.random() * HERO_TITLES.length)];
+    // The chip guard, kept cheap: findMentionedInst costs about 6 ms when a question names a record and about 145 ms when it names
+    // none (a fuzzy pass over every name), so candidates are screened against a lowercase index of every name and alias first, and the
+    // real matcher is run only on the questions that are emitted. The empty-chat list is built once per load.
+    const STARTER = { index: null, list: null };
+    function starterIndex() {
+      if (!STARTER.index) STARTER.index = ALL_INSTITUTIONS.map(i => ({ inst: i, name: i.name.toLowerCase(), terms: [i.name].concat(i.aliases || []).map(a => String(a).toLowerCase()).filter(a => a.length > 3) }));
+      return STARTER.index;
+    }
+    // True when the question holds the record's name or an alias and no other record's name or alias (short ones aside, and names
+    // that sit inside this record's own name, which the real matcher then settles). With no record, true when no name at all is in it.
+    function starterNames(text, inst) {
+      const tl = text.toLowerCase();
+      const own = inst ? starterIndex().find(e => e.inst === inst) : null;
+      if (inst && !(own && own.terms.some(t => tl.includes(t)))) return false;
+      for (const e of starterIndex()) {
+        if (e.inst === inst) continue;
+        for (const t of e.terms) {
+          if (own && own.name.includes(t)) continue;
+          if (tl.includes(t)) return false;
+        }
+      }
+      return true;
+    }
     function starterPromptList() {
       const registry = (typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []).filter(c => c && c.name);
       const registryName = (city) => { const c = city && registry.find(r => matchC(r.name, city)); return c ? c.name : ''; };
+      // The real matcher, run on an emitted question: it must resolve to the record the question was written for.
       const resolves = (text, inst) => { try { const hit = findMentionedInst(text); return !!hit && (hit.id === inst.id || hit.name === inst.name); } catch (e) { return false; } };
-      const sel = typeof selectedInstitution !== 'undefined' ? selectedInstitution : null;
-      const out = [];
-      if (sel) {
-        out.push(`Who funds ${sel.name}?`, `What is reported about ${sel.name}?`, `What are the opening hours of ${sel.name}?`);
-        const place = registryName(sel.city);
-        if (place) out.push(`Find cultural spaces in ${place}`);
-        return out.filter(q => resolves(q, sel) || /^Find cultural spaces in /.test(q));
-      }
-      // A different set on every load: a city with several clean records, a funded space, a flagged one, and the method question.
       const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
       const shuffled = (arr) => arr.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(p => p[1]);
-      const clean = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
-      const counts = {};
-      clean.forEach(i => { const c = registryName(i.city); if (c) counts[c] = (counts[c] || 0) + 1; });
-      const cities = Object.keys(counts).filter(c => counts[c] >= 3);
-      if (cities.length) out.push(`Find cultural spaces in ${pick(cities)}`);
-      const funded = shuffled(clean.filter(i => i.funding)).find(i => resolves(`Who funds ${i.name}?`, i));
-      if (funded) out.push(`Who funds ${funded.name}?`);
-      const flagged = shuffled(ALL_INSTITUTIONS.filter(i => i.tier === 'B')).find(i => resolves(`Why is ${i.name} flagged?`, i) && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i));
-      if (flagged) out.push(pick([`Why is ${flagged.name} flagged?`, `What is reported about ${flagged.name}?`]));
-      out.push('How are spaces assessed?');
+      // The name as it reads in a question: a bracketed long form is dropped, and the possessive follows the last letter.
+      const say = (inst) => String(inst.name).replace(/\s*\([^)]*\)\s*$/, '').trim();
+      const poss = (n) => /s$/i.test(n) ? `${n}’` : `${n}’s`;
+      // What each record holds, so a question is only asked where the answer is on the record.
+      const flagWords = { 'Fossil fuels': 'fossil fuels', 'Arms and defence': 'arms and defence', 'Epstein-linked': 'an Epstein link', 'Opioids': 'opioid money', 'Prison or detention': 'prison money', 'Campaigned name': 'a campaigned name', 'Gulf state body': 'Gulf state money', 'Tobacco': 'tobacco money', 'Sanctions': 'sanctions', 'Gambling': 'gambling money', 'Mining disaster': 'a mining disaster', 'Forced or exploited labour': 'forced labour', 'State censorship or punishment': 'state censorship' };
+      const hasMoney = (i) => !!i.funding && /[$€£¥]\s?\d|\d\s?(m|bn|k|million|billion)\b|\b(dkk|sek|nok|chf|usd|eur|gbp)\b/i.test(i.funding);
+      const flagOf = (i) => (i.flags || []).filter(f => flagWords[f]);
+      const hasEpstein = (i) => (i.epstein_records || []).length > 0 || ((i.flags || []).includes('Epstein-linked') && !!i.why_flagged);
+      const hasAccounts = (i) => ((i.gossip_data || {}).accounts || []).length > 0;
+      const hasCritique = (i) => (i.visual_critiques || []).some(v => v && v.kind === 'theory');
+      // Fourteen records carry the protest flag while their text says none was found; those are not asked about a protest.
+      const hasProtest = (i) => !!i.why_flagged && !/\b(no|never) protest/i.test(i.why_flagged) && (i.flags || []).some(f => /protest|boycott|dropped under pressure/i.test(f));
+      const hasGrade = (i) => !!i.grade && !!i.grade_basis;
+      const funderOf = (i) => (i.funder_links || []).filter(f => f && f.funder && !/\//.test(f.funder));
+      const article = (f) => /\b(family|foundations?|fonden|fund)$/i.test(f) ? `the ${f}` : f;
+      // One question per kind. Each takes a record and returns the question, or nothing when the record cannot answer it.
+      const KINDS = {
+        funds: { has: hasMoney, q: (i) => `Who funds ${say(i)} and with how much?` },
+        flaggedFor: { has: (i) => !!i.why_flagged && flagOf(i).length > 0, q: (i) => `Why is ${say(i)} flagged for ${flagWords[pick(flagOf(i))]}?` },
+        epstein: { has: hasEpstein, q: (i) => `What is ${poss(say(i))} Epstein link?` },
+        employees: { has: hasAccounts, q: (i) => `What do employees report at ${say(i)}?` },
+        critics: { has: hasCritique, q: (i) => `What do critics say about ${say(i)}?` },
+        protests: { has: hasProtest, q: (i) => `What protests or boycotts are recorded at ${say(i)}?` },
+        grade: { has: hasGrade, q: (i) => `Why is ${say(i)} graded ${i.grade}?` },
+        fundedBy: { has: (i) => funderOf(i).length > 0, q: (i) => `Is ${say(i)} funded by ${article(pick(funderOf(i)).funder)}?` },
+      };
+      // A candidate passes the cheap screen; an emitted question must then pass the real matcher.
+      const ask = (kind, inst) => { const q = KINDS[kind].q(inst); return starterNames(q, inst) ? { q, inst } : null; };
+      const sel = typeof selectedInstitution !== 'undefined' ? selectedInstitution : null;
+      if (sel) {
+        // The space in view: the same kinds of question, and only the kinds its record can answer.
+        return Object.keys(KINDS).filter(k => KINDS[k].has(sel)).map(k => ask(k, sel)).filter(c => c && resolves(c.q, c.inst)).map(c => c.q);
+      }
+      if (STARTER.list) return STARTER.list.slice();
+      // An empty chat: eight to twelve questions, a different set on each load, drawn in turn from the kinds so no two of a kind sit together.
+      const pools = {};
+      Object.keys(KINDS).forEach(k => {
+        const found = [];
+        for (const inst of shuffled(ALL_INSTITUTIONS.filter(KINDS[k].has))) {
+          const c = ask(k, inst);
+          if (c) found.push(c);
+          if (found.length === 3) break;
+        }
+        pools[k] = found;
+      });
+      // Cities: where at least two records are at grade 1, or two are flagged with a reason. Funders named at three or more spaces
+      // (funder_links). Neither question may name a record.
+      const plain = (q) => starterNames(q, null) ? { q } : null;
+      const tally = (test) => { const n = {}; ALL_INSTITUTIONS.filter(test).forEach(i => { const c = registryName(i.city); if (c) n[c] = (n[c] || 0) + 1; }); return Object.keys(n).filter(c => n[c] >= 2); };
+      pools.cityGrade1 = shuffled(tally(i => i.grade === 1)).map(c => plain(`Which spaces in ${c} are grade 1?`)).filter(Boolean).slice(0, 2);
+      pools.cityFlagged = shuffled(tally(i => i.tier === 'B' && i.why_flagged)).map(c => plain(`Which spaces in ${c} are flagged, and why?`)).filter(Boolean).slice(0, 2);
+      const funders = {};
+      ALL_INSTITUTIONS.forEach(i => funderOf(i).forEach(f => { funders[f.funder] = (funders[f.funder] || 0) + 1; }));
+      pools.funder = shuffled(Object.keys(funders).filter(f => funders[f] >= 3)).map(f => plain(`Which institutions does ${article(f)} fund?`)).filter(Boolean).slice(0, 2);
+      const order = shuffled(Object.keys(pools).filter(k => pools[k].length));
+      const want = 8 + Math.floor(Math.random() * 5);
+      const out = [];
+      for (let round = 0; round < 2 && out.length < want; round++) {
+        for (const k of order) {
+          if (out.length >= want) break;
+          // The first candidate of this kind that the real matcher confirms; a question with no record needs no confirmation.
+          // A candidate that fails is dropped, so it is never tested twice.
+          let c = null;
+          while (pools[k].length && !c) { const x = pools[k].shift(); if (!x.inst || resolves(x.q, x.inst)) c = x; }
+          if (!c) continue;
+          out.push(c.q);
+        }
+      }
+      STARTER.list = out.slice();
       return out;
     }
-
     // A word joiner after each hyphen: a name like Al-Saraya is never split across two lines.
     function noBreakHyphens(str) { return String(str).replace(/-/g, '-\u2060'); }
     function renderStarterPrompts() {
@@ -17825,8 +17919,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=176"></script>
-<script src="assets/bubbles.js?v=176" defer></script>
-<script src="assets/typeset.js?v=176"></script>
+<script src="assets/layers.js?v=179"></script>
+<script src="assets/bubbles.js?v=179" defer></script>
+<script src="assets/typeset.js?v=179"></script>
 </body>
 </html>

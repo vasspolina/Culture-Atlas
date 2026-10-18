@@ -631,7 +631,7 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 /* The Epstein flag is highlighted in purple */
 .flag-epstein{background:#be95ff;color:#000;padding:0 5px}
 /* The Clean Funding Grade on a record: the grade on its colour block, the label and the basis after it */
-.grade-mark{display:inline-block;padding:0 6px;color:#000}
+.grade-mark{display:inline-block;padding:0 6px;border-radius:.35em;color:#000}
 
 /* The building's photograph from Wikimedia Commons, with its credit under it */
 .xray-photo{margin:0 0 10px}
@@ -761,12 +761,13 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 #desktopDossierColumn a:not(.record-action){background:none;color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;padding:0}
 #desktopDossierColumn .is-good,#desktopDossierColumn .meta.t-strong{width:fit-content;background:var(--hl-green);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
-/* Chat landing: one centred column of large bold capitals, the title in ink and each starter question in its own colour. */
+/* Chat landing: one centred column of large bold capitals, the title in ink and each starter question in its own colour.
+   Eight to twelve questions do not fit the pane, so the landing grows past it and scrolls; a question never shrinks into its neighbour. */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting){display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;padding:48px 24px;margin:0;background:transparent;color:var(--ink);text-align:center;min-height:100%}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font:700 clamp(28px,3vw,44px)/1.05 var(--display);text-transform:uppercase;letter-spacing:0;text-align:center;max-width:16ch;margin:0;color:var(--ink)}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting)>p,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-label{display:none}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex;flex-direction:column;align-items:center;gap:40px;width:100%;max-width:none;border:0}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:block;width:auto;max-width:18ch;min-height:0;margin:0;padding:0;background:transparent;border:0;font:700 clamp(28px,3vw,44px)/1.05 var(--display);text-transform:uppercase;letter-spacing:0;text-align:center;color:var(--sp,var(--ink))}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:block;width:auto;max-width:18ch;min-height:0;flex-shrink:0;margin:0;padding:0;background:transparent;border:0;font:700 clamp(28px,3vw,44px)/1.05 var(--display);text-transform:uppercase;letter-spacing:0;text-align:center;color:var(--sp,var(--ink))}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#0b7a63}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#8a6200}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#b0206c}
@@ -977,12 +978,13 @@ body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet
 :root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body),
 :root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,a,span,div){color:#ffd600}
 
-/* Landing: the title and the four questions share the height evenly and never scroll; the type shrinks to fit a short window. */
-:is(#curatorHeroGreeting,#curatorDrawerGreeting){justify-content:space-evenly;gap:0;height:100%;min-height:0;overflow:hidden;box-sizing:border-box}
+/* Landing: the title and the questions share the height evenly; the type shrinks to fit a short window. With eight to twelve questions
+   the landing grows past the pane and the chat area scrolls, so no question is hidden or squeezed into its neighbour. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){justify-content:space-evenly;gap:0;height:auto;min-height:100%;overflow:visible;box-sizing:border-box}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:contents}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(18px,min(2.2vw,3.6vh),44px)}
 @media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(17px,min(6.6vw,3.2vh),26px)}}
-#curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){flex:1 1 auto;height:100%;margin:0;padding-bottom:0}
+#curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){flex:1 1 auto;min-height:100%;height:auto;margin:0;padding-bottom:0}
 #curatorScrollContent:has(#curatorHeroGreeting:not(.hidden))>#curatorHeroGreeting{flex:1 1 auto}
 
 /* Dark mode keeps the regular weight: the record's bold wall-label titles drop back to the sans at 400. */
@@ -1105,7 +1107,7 @@ body #curatorMessages p.ai-note{font-size:14px;line-height:1.3;margin-top:6px}
 
 /* gossip: leave room under the last balloon so tails and spikes are not clipped */
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-bottom:2.2em}
-.grade-word{color:#000;padding:0 .2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.grade-word{color:#000;padding:0 .2em;border-radius:.35em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 #curatorScrollArea,#workBottomDock,#workInputCard,#workInput{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),min-height var(--dur) var(--ease)}
 #curatorMessages>*{animation:msg-in var(--dur) var(--ease) both}
 @keyframes msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
