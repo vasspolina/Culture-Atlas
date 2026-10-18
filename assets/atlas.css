@@ -1297,7 +1297,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls #zoomCont
   #desktopGlobeTopControls #zoomControls button{width:32px;height:32px}
 }
 
-/* Suggested questions use topic tabs and semantic tones instead of a single unstructured cloud. */
+/* Suggested questions keep their topic filters and semantic tones in a compact wrapping list. */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting){gap:12px}
 #curatorHeroGreeting{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;height:100%;min-height:0;overflow:hidden;padding:12px 0;box-sizing:border-box}
 #curatorDrawerGreeting{display:flex;flex-direction:column;align-items:stretch;gap:12px}
@@ -1306,13 +1306,13 @@ body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls #zoomCont
 .starter-topic-tab:hover{background:var(--block)}
 .starter-topic-tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
 .starter-topic-count{font-size:12px;opacity:.72;font-variant-numeric:tabular-nums}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:grid;flex:1 1 auto;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));align-content:start;align-items:stretch;gap:8px;width:100%;max-width:none;min-height:0;margin:0;padding:0;overflow-y:auto}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex;flex:1 1 auto;flex-direction:row;flex-wrap:wrap;align-content:flex-start;align-items:flex-start;justify-content:flex-start;gap:6px;width:100%;max-width:none;min-height:0;margin:0;padding:0;overflow-y:auto}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{
-  display:block;width:100%;max-width:none;min-height:42px;height:auto;margin:0;padding:8px 10px;
-  border:1px solid transparent;border-radius:0;font:400 14px/1.3 var(--sans);letter-spacing:0;
-  text-align:left;text-transform:none;white-space:normal;overflow-wrap:anywhere;text-overflow:clip;
+  display:inline-block;width:auto;max-width:100%;min-width:0;min-height:0;height:22px;margin:0;padding:0 10px;
+  border:0;border-radius:0;font:400 14px/22px var(--sans);letter-spacing:0;
+  text-align:left;text-transform:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   color:#111;background:var(--prompt-bg,#b9dfbf);text-decoration:none;cursor:pointer
 }
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tone="warning"]{--prompt-bg:#ff9466}
@@ -1325,7 +1325,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls #zoomCont
 .starter-prompt[hidden]{display:none!important}
 @media (max-width:767px){
   #curatorHeroGreeting{height:auto;min-height:100%;overflow:visible}
-  #curatorStarterPrompts{grid-template-columns:1fr;overflow:visible}
+  #curatorStarterPrompts{overflow:visible}
   .starter-topic-tabs{gap:4px}
   .starter-topic-tab{min-height:32px;padding:6px 8px;font-size:13px}
 }
