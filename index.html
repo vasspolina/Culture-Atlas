@@ -10386,7 +10386,9 @@ return maplibregl$1;
               countTxt = String(city.count);
               bw = ctx.measureText(city.name + ' ' + countTxt).width + 20;
             } else {
-              const countLabel = isCountryActive || r > baseRadius * 1.5 ? ` (${city.count})` : '';
+              // A count of one says nothing, and adding " (1)" at 1.5x was the last width jump that
+              // reshuffled labels mid-zoom. Counts from two up still show.
+              const countLabel = (city.count || 0) >= 2 && (isCountryActive || r > baseRadius * 1.5) ? ` (${city.count})` : '';
               txt = city.name + countLabel;
               const tw = ctx.measureText(txt).width;
               bw = tw + 20;
