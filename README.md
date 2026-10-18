@@ -125,6 +125,8 @@ re-running it replaces them:
   two pins). Rows the record already states are listed with the quote that
   shows it in `data/research_attach/case_decisions.json`.
 - `case_study`: the MoMA and Whitney case studies, whole.
+
+Three **critical frames** on cultural institutions sit beside the artists' critiques on the records they speak to: the museum as archive turned stage, philanthropy as the gift that follows the taking, and art the powerful should fear. They are paraphrases of published theory and, by the editor's decision, the page names no author and shows no citation; the works each frame rests on are listed in `data/research_attach/institutional_critiques.json` under `rests_on`. `tools/attach_critiques.py` writes them (as `visual_critiques` entries of kind `theory`) by rules in that file: by name or focus and size, by Clean Funding Grade, or by host city; re-running replaces them. The chat answers "What do critics say?" and "What critics say about this space?".
 - `funder_links`: funders and trustees the map names at three or more
   institutions, only where the record's own text names them (230 links; 55
   where it does not are left out).
