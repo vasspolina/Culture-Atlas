@@ -1148,3 +1148,20 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 /* The three globe controls fit a 320px screen: narrower padding, not a smaller size. (They ran 6px off the edge at 14px, too.) */
 @media (max-width:374px){#desktopGlobeTopControls button,#mobileFilterChipsSection button{padding-left:9px;padding-right:9px}}
 
+/* The greeting after the user's reference (18 Oct 2026): everything centred, the title in ink, the questions under it in
+   four colours, and nothing underlined. The title is a question like the others and is never underlined; keyboard focus
+   shows as a ring. */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting){align-items:center;text-align:center}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){align-items:center}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){text-align:center;max-width:22ch;margin-left:auto;margin-right:auto}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:root[data-theme="dark"] :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:var(--ink);width:auto;max-width:22ch}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:hover,:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{text-decoration:none}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{outline:2px solid var(--ink);outline-offset:6px}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#0a7a68}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#7a5c00}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#b0306f}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#7a5424}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#16c7aa}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#f1c21b}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#ffafd2}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#e5b87d}
