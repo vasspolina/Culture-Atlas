@@ -8,12 +8,14 @@
   var NBSP = ' ', THIN = ' ';
 
   function typeset(s) {
-    if (!s || !/["'\-.\d]/.test(s)) return s;
+    if (!s || !/["'\-.\d—]/.test(s)) return s;
     return s
       // Hochuli p.36: an ellipsis is one sign; three full points are only the fallback
       .replace(/\.{3}|…/g, '…')
       // Ranges of years or figures take an en dash, with no spaces and no collision (p.38). ISO dates are left alone.
       .replace(/\b((?:1[5-9]|20)\d\d)-((?:1[5-9]|20)\d\d)\b(?!-\d)/g, '$1–$2')
+      // An em dash, which the chat engine writes unspaced, is set the same way
+      .replace(/ ?— ?/g, ' – ')
       // A spaced hyphen is a dash: the en dash with spaces on both sides (p.38)
       .replace(/(\S) - (\S)/g, '$1 – $2')
       // Double quotes: opening after a space, bracket or start; closing otherwise
