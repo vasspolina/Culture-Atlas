@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=179">
-  <script src="assets/config.js?v=179"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=180">
+  <script src="assets/config.js?v=180"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9623,9 +9623,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v179';
+      const ATLAS_RELEASE = 'culture-atlas-v180';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=179').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=180').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -16638,13 +16638,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const registryName = (city) => { const c = city && registry.find(r => matchC(r.name, city)); return c ? c.name : ''; };
       const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
       const seen = new Set(), out = [];
-      const add = (q, tier) => { if (q && !seen.has(q)) { seen.add(q); out.push({ q, tier }); } };
-      // Take from a shuffled pool until n questions resolve to their record.
-      // A question longer than one label is left out rather than cut short.
-      const take = (pool, n, make) => { const got = []; for (const i of shuffledList(pool)) { if (got.length >= n) break; const q = make(i); if (q && q.length <= 58 && resolvesTo(q, i)) got.push({ q, tier: tierOf(i) }); } return got; };
+      const add = (q, tier, inst) => { if (q && q.length <= 58 && !seen.has(q)) { seen.add(q); out.push({ q, tier, inst: inst || null }); } };
+      // Candidates are cheap: whether a question really resolves to its record is checked after it is on screen
+      // (see verifyShown), so hundreds can be drawn without a pause on load. A question longer than one label is left out.
+      const take = (pool, n, make) => shuffledList(pool).slice(0, n * 2).map(i => ({ q: make(i), tier: tierOf(i), inst: i })).filter(x => x.q && x.q.length <= 58).slice(0, n);
       if (sel) {
         [`Who funds ${sel.name}?`, `What is reported about ${sel.name}?`, `What are the opening hours of ${sel.name}?`]
-          .filter(q => resolvesTo(q, sel)).forEach(q => add(q, tierOf(sel)));
+          .filter(q => resolvesTo(q, sel)).forEach(q => add(q, tierOf(sel), sel));
         const place = registryName(sel.city);
         if (place) add(`Find cultural spaces in ${place}`, tierOf(sel));
       }
@@ -16656,25 +16656,26 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         ALL_INSTITUTIONS.forEach(i => { if (registryName(i.city) === name) n[tierOf(i)]++; });
         return n.A >= n.B && n.A >= n.U ? 'A' : n.B >= n.U ? 'B' : 'U';
       };
-      const funded = take(clean.filter(i => i.funding), 30, i => `Who funds ${i.name}?`);
-      const flagged = take(ALL_INSTITUTIONS.filter(i => i.tier === 'B' && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i)), 20, i => pick([`Why is ${i.name} flagged?`, `What is reported about ${i.name}?`]));
-      const hours = take(ALL_INSTITUTIONS.filter(i => i.opening_hours), 12, i => `What are the opening hours of ${i.name}?`);
-      const cities = shuffledList(Object.keys(counts).filter(c => counts[c] >= 2)).slice(0, 20).map(c => ({ q: `Find cultural spaces in ${c}`, tier: cityTierOf(c) }));
-      const general = ['How are spaces assessed?', 'Which spaces are flagged?', 'What do employees report?', 'What do critics say?', 'How are spaces graded?', 'Which spaces are the cleanest?'].map(q => ({ q, tier: 'U' }));
+      const flaggedPool = ALL_INSTITUTIONS.filter(i => i.tier === 'B' && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i));
+      const funded = take(ALL_INSTITUTIONS.filter(i => i.funding && (i.tier === 'A' || i.tier === 'B')), 160, i => `Who funds ${i.name}?`);
+      const flagged = take(flaggedPool, 120, i => pick([`Why is ${i.name} flagged?`, `What is reported about ${i.name}?`]));
+      const hours = take(ALL_INSTITUTIONS.filter(i => i.opening_hours), 80, i => `What are the opening hours of ${i.name}?`);
+      const cities = shuffledList(Object.keys(counts).filter(c => counts[c] >= 2)).slice(0, 80).map(c => ({ q: `Find cultural spaces in ${c}`, tier: cityTierOf(c), inst: null }));
+      const general = ['How are spaces assessed?', 'Which spaces are flagged?', 'What do employees report?', 'What do critics say?', 'How are spaces graded?', 'Which spaces are the cleanest?'].map(q => ({ q, tier: 'U', inst: null }));
       // Round-robin over the kinds so the colours mix across the page.
       const kinds = [funded, cities, flagged, general, hours];
-      for (let k = 0; kinds.some(a => a.length); k++) kinds.forEach(a => { const x = a.shift(); if (x) add(x.q, x.tier); });
+      for (let k = 0; kinds.some(a => a.length); k++) kinds.forEach(a => { const x = a.shift(); if (x) add(x.q, x.tier, x.inst); });
       cloudCache = { key, list: out };
       return out;
     }
 
+    const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}">${escapeHtml(noBreakHyphens(x.q))}</button>`;
     function renderStarterPrompts() {
       let list = [];
       try { list = questionCloud(); } catch (e) { list = []; }
-      if (!list.length) { try { list = starterPromptList().map(q => ({ q, tier: 'U' })); } catch (e) { list = []; } }
+      if (!list.length) { try { list = starterPromptList().map(q => ({ q, tier: 'U', inst: null })); } catch (e) { list = []; } }
       let title = HERO_TITLE;
       try { title = heroQuestion(list.map(x => x.q)); } catch (e) {}
-      const html = list.map(x => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-query="${escapeHtml(x.q)}">${escapeHtml(noBreakHyphens(x.q))}</button>`).join('');
       ['curatorHeroTitle', 'curatorDrawerHeroTitle'].forEach(id => {
         const t = document.getElementById(id);
         if (t && t.dataset.t !== title) {
@@ -16686,19 +16687,47 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       });
       const desk = document.getElementById('curatorStarterPrompts');
-      if (desk) desk.innerHTML = html;
-      // The phone drawer scrolls, so it takes forty and no more.
+      if (desk) desk.innerHTML = list.map(promptButton).join('');
+      // The phone drawer scrolls, so it takes eighty and no more.
       const drawer = document.getElementById('curatorDrawerStarterPrompts');
-      if (drawer) drawer.innerHTML = list.slice(0, 40).map(x => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-query="${escapeHtml(x.q)}">${escapeHtml(noBreakHyphens(x.q))}</button>`).join('');
+      if (drawer) drawer.innerHTML = list.slice(0, 80).map(promptButton).join('');
       fitQuestionCloud();
+      verifyShown(list);
     }
     // The desktop panel shows as many questions as fit, whole: the ones past its foot are taken off, and put back on a resize.
     function fitQuestionCloud() {
       const g = document.getElementById('curatorHeroGreeting');
       const box = document.getElementById('curatorStarterPrompts');
       if (!g || !box || g.classList.contains('hidden') || !g.clientHeight) return;
-      let guard = 200;
+      let guard = 1000;
       while (g.scrollHeight > g.clientHeight && box.lastElementChild && guard--) box.lastElementChild.remove();
+    }
+    // Each question on screen is checked, a few at a time between frames, to resolve to its record; one that does not
+    // is swapped for the next candidate that does, so every label asks something the chat answers about that record.
+    let verifyRun = 0;
+    function verifyShown(list) {
+      const run = ++verifyRun;
+      const boxes = ['curatorStarterPrompts', 'curatorDrawerStarterPrompts'].map(id => document.getElementById(id)).filter(Boolean);
+      const buttons = [].concat(...boxes.map(b => [].slice.call(b.children)));
+      const checked = new Map();   // index -> ok
+      const ok = (i) => { if (!checked.has(i)) { const x = list[i]; checked.set(i, !x.inst || resolvesTo(x.q, x.inst)); } return checked.get(i); };
+      let next = Math.max(-1, ...buttons.map(b => +b.dataset.i)) ;
+      let at = 0;
+      const step = () => {
+        if (run !== verifyRun) return;
+        const t = performance.now();
+        while (at < buttons.length && performance.now() - t < 10) {
+          const b = buttons[at++];
+          if (!b.isConnected) continue;
+          const i = +b.dataset.i;
+          if (ok(i)) continue;
+          let j = next + 1;
+          while (j < list.length && !ok(j)) j++;
+          if (j < list.length) { next = j; b.outerHTML = promptButton(list[j], j); } else b.remove();
+        }
+        if (at < buttons.length) setTimeout(step, 0);
+      };
+      setTimeout(step, 0);
     }
     window.addEventListener('resize', () => { const g = document.getElementById('curatorHeroGreeting'); if (g && !g.classList.contains('hidden')) renderStarterPrompts(); });
     // The title is a question too: a click or Enter asks it.
@@ -17973,8 +18002,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=179"></script>
-<script src="assets/bubbles.js?v=179" defer></script>
-<script src="assets/typeset.js?v=179"></script>
+<script src="assets/layers.js?v=180"></script>
+<script src="assets/bubbles.js?v=180" defer></script>
+<script src="assets/typeset.js?v=180"></script>
 </body>
 </html>
