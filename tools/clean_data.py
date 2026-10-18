@@ -125,14 +125,34 @@ def generic_link(rec, key):
 def clean(records, report=None):
     report = {} if report is None else report
     bump = lambda k, n=1: report.__setitem__(k, report.get(k, 0) + n)
-    # one record per museum
-    seen, kept = {}, []
+    # one record per museum: a later record with the same name is dropped; one with the same id is the same museum under
+    # a shorter name, and is folded into the first: empty fields filled, lists joined, its name kept as an alias.
+    LISTS = ('sources', 'flags', 'aliases', 'funder_links', 'epstein_records', 'wikileaks_records', 'case_notes', 'other_findings')
+    seen, by_id, kept = {}, {}, []
     for r in records:
         key = r['name'].lower()
         if key in seen or 'Record was wrong' in (r.get('watch') or ''):
             bump('duplicate_or_retracted_records')
             continue
+        first = by_id.get(r.get('id'))
+        if first is not None:
+            for k, v in r.items():
+                if v in (None, '', [], {}):
+                    continue
+                if k in LISTS:
+                    have = first.get(k) or []
+                    keys = {json.dumps(x, sort_keys=True) for x in have}
+                    first[k] = have + [x for x in v if json.dumps(x, sort_keys=True) not in keys]
+                elif first.get(k) in (None, '', [], {}):
+                    first[k] = v
+                elif k in ('funding', 'watch') and v != first[k]:
+                    report.setdefault('merged_text_dropped', []).append({'id': r['id'], 'field': k, 'text': v})
+            if r['name'] != first['name']:
+                first['aliases'] = list(dict.fromkeys((first.get('aliases') or []) + [r['name']]))
+            bump('merged_same_id_records')
+            continue
         seen[key] = r
+        by_id[r.get('id')] = r
         kept.append(r)
     records[:] = kept
     for f in TEXT:
