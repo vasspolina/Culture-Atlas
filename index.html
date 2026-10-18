@@ -16751,7 +16751,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       ALL_INSTITUTIONS.forEach(i => funderOf(i).forEach(f => { funders[f.funder] = (funders[f.funder] || 0) + 1; }));
       pools.funder = shuffled(Object.keys(funders).filter(f => funders[f] >= 3)).map(f => plain(`Which institutions does ${article(f)} fund?`)).filter(Boolean).slice(0, 2);
       const order = shuffled(Object.keys(pools).filter(k => pools[k].length));
-      const want = 8 + Math.floor(Math.random() * 5);
+      const want = 18 + Math.floor(Math.random() * 10);
       const out = [];
       for (let round = 0; round < 2 && out.length < want; round++) {
         for (const k of order) {
@@ -16894,7 +16894,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (desk) desk.innerHTML = list.map(promptButton).join('');
       // The phone drawer scrolls, so it takes eighty and no more.
       const drawer = document.getElementById('curatorDrawerStarterPrompts');
-      if (drawer) drawer.innerHTML = list.slice(0, 80).map(promptButton).join('');
+      if (drawer) drawer.innerHTML = list.slice(0, 120).map(promptButton).join('');
       fitQuestionCloud();
       verifyShown(list);
     }
@@ -18292,6 +18292,5 @@ FORMATTING & DOSSIER PRESENTATION RULES:
   </script>
 <script src="assets/layers.js?v=191"></script>
 <script src="assets/bubbles.js?v=191" defer></script>
-<script src="assets/typeset.js?v=191"></script>
 </body>
 </html>
