@@ -3,7 +3,7 @@
 
 Each frame becomes an entry of kind "theory" in the record's visual_critiques list, beside the artists' critiques:
 strategy, target, historical_impact and either a paraphrase (summary, no author or citation) or verbatim quotes
-(each with text, author, source and url), with no artist or image. Re-running replaces every
+(each with text, or parts of lead and text, plus author, source and url), with no artist or image. Re-running replaces every
 "theory" entry. Then: python3 tools/clean_data.py && python3 tools/embed_data.py
 
 A frame applies to a record when every rule under "applies" holds:

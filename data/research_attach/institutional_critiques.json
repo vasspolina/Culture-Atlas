@@ -1,5 +1,5 @@
 {
-  "_about": "Three critical frames on cultural institutions, shown on the records they apply to as critiques of kind 'theory'. Each frame holds a list of short verbatim 'quotes', each with its author, source and url, all shown on the page; the works it rests on are listed under 'rests_on' for the editor. (A frame may instead hold a paraphrase 'summary', shown with no author or citation; none does now.) tools/attach_critiques.py writes them; re-running replaces them.",
+  "_about": "Three critical frames on cultural institutions, shown on the records they apply to as critiques of kind 'theory'. Each frame holds a list of short verbatim 'quotes', each with its author, source and url, all shown on the page; the works it rests on are listed under 'rests_on' for the editor. (A frame may instead hold a paraphrase 'summary', shown with no author or citation; none does now.) tools/attach_critiques.py writes them; re-running replaces them. A quote may carry 'parts' instead of one 'text': several verbatim passages from the same source, each shown as its own paragraph, optionally after a short 'lead' of reported context (never in quotation marks).",
   "frames": [
     {
       "id": "archive_and_stage",
@@ -69,7 +69,20 @@
       "target": "Biennials, festivals and touring exhibitions, and the cities that host them",
       "quotes": [
         {
-          "text": "Art must not be anodyne, culture cannot be decorative. [Artists] should be feared by the powerful in our society; if you are not, you are not doing your job properly.",
+          "parts": [
+            {
+              "lead": "Closing the sixth Moscow Biennale, he began by asking the hall to look at the money in their pockets:",
+              "text": "Take a euro note out and have a look at it. […] Just look at it aesthetically. What do you see? A very boring design."
+            },
+            {
+              "lead": "The bridges and arches on the notes are ‘figments of some second-rate artist’s imagination’, he said, because the EU’s members could not agree on whose cultural treasures should appear on them. Worse than art created by committee, though, are the attempts of bureaucrats and big businesses to appropriate it:",
+              "text": "Art must not be anodyne, culture cannot be decorative. [Artists] should be feared by the powerful in our society; if you are not, you are not doing your job properly."
+            },
+            {
+              "lead": "In an aside, he also knocked",
+              "text": "forums in which the stars are the postmodernist curators inviting economists to give a lecture to artists."
+            }
+          ],
           "author": "Yanis Varoufakis",
           "source": "keynote closing the 6th Moscow Biennale, 1 October 2015, as reported by The Art Newspaper, 3 October 2015",
           "url": "https://www.theartnewspaper.com/2015/10/03/artists-should-be-feared-by-the-powerful-says-former-greek-finance-minister"
