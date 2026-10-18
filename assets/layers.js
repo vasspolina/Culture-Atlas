@@ -1,5 +1,5 @@
-// Map layers drawn over the globe: funding ties, flagged spaces, the Clean Funding Grade, the money network, and the two highlights the funding
-// map had: right-wing sponsors and the Epstein files.
+// Map layers drawn over the globe: funding connections, flagged organizations, funding transparency ratings, funder networks,
+// and the two highlights the funding map had: right-wing funders and mentions in the Epstein files.
 // Each layer shows something at every zoom. Ties: the web of funders shared between spaces, the selected space's own
 // ties on top. Flags: flagged spaces marked, and a flagged count on each city cluster. Money: a space's funders around
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
@@ -235,7 +235,7 @@
     ctx.font = font; ctx.textBaseline = 'middle';
 
     if (L.grade) {
-      // Each graded space: a dot filled with its Clean Funding Grade colour (window.atlasGrade, set by the page).
+      // Each rated space: a dot filled with its funding transparency rating colour (window.atlasGrade, set by the page).
       // A space with no grade keeps its hollow ring.
       const G = window.atlasGrade || {};
       ctx.lineWidth = 0.8;
@@ -344,23 +344,24 @@
   // What each layer holds, as a count after its name.
   function updateCounts() {
     const set = (k, text) => { const el = document.querySelector(`#layersPanel [data-count="${k}"]`); if (el) el.textContent = text; };
+    const formatCount = count => new Intl.NumberFormat('en-US').format(count);
     if (typeof ALL_INSTITUTIONS !== 'undefined') {
-      set('spaces', String(ALL_INSTITUTIONS.length));
-      set('flags', String(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length));
+      set('spaces', `· ${formatCount(ALL_INSTITUTIONS.length)}`);
+      set('flags', `· ${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
       const graded = ALL_INSTITUTIONS.filter(i => i.grade).length;
-      set('grade', `${graded} graded, ${ALL_INSTITUTIONS.length - graded} not graded`);
+      set('grade', `· ${formatCount(graded)} rated · ${formatCount(ALL_INSTITUTIONS.length - graded)} unrated`);
     }
     if (HQ) {
-      set('hq', `${HQ.orgs.length} head offices in ${new Set(HQ.orgs.map(o => o.c)).size} cities`);
-      set('people', `${HQ.people.length} offices of people named in the records`);
+      set('hq', `· ${formatCount(HQ.orgs.length)} offices · ${formatCount(new Set(HQ.orgs.map(o => o.c)).size)} cities`);
+      set('people', `· ${formatCount(HQ.people.length)} offices`);
     }
     if (web) {
-      set('ties', `${web.length} links, ${[...keyIndex.values()].filter(ids => ids.length >= 2).length} shared funders`);
-      set('money', `${[...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length} spaces with funders named`);
+      set('ties', `· ${formatCount(web.length)} links · ${formatCount([...keyIndex.values()].filter(ids => ids.length >= 2).length)} shared funders`);
+      set('money', `· ${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)} spaces`);
       const rightRecs = [...recById.values()].filter(rec => rec.nodes.some(RIGHT)), rightKeys = new Set();
       rightRecs.forEach(rec => rec.nodes.filter(RIGHT).forEach(n => rightKeys.add(n[5])));
-      set('right', `${rightRecs.length} spaces, ${rightKeys.size} sponsors`);
-      set('epstein', `${[...recById.values()].filter(rec => epsteinOf(rec).length).length} spaces`);
+      set('right', `· ${formatCount(rightRecs.length)} spaces · ${formatCount(rightKeys.size)} funders`);
+      set('epstein', `· ${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)} spaces`);
     }
   }
 
