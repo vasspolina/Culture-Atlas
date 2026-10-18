@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=182">
-  <script src="assets/config.js?v=182"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=183">
+  <script src="assets/config.js?v=183"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9625,7 +9625,7 @@ return maplibregl$1;
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
       const ATLAS_RELEASE = 'culture-atlas-v181';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=182').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=183').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10740,6 +10740,9 @@ return maplibregl$1;
               // Register interactive hover & click hitbox for the card and link
               hoveredCityCardHitbox = {
                 city: hMeta.name,
+                country: hMeta.country || '',
+                pinX: hPt.x,
+                pinY: hPt.y,
                 cardX: cardX,
                 cardY: cardY,
                 cardW: cardW,
@@ -17183,7 +17186,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // PRIORITY 1: Check institution click across dots, text label badges, micro-cards, and proximity
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
-      const clickedInst = findInstitutionAt(mx, my);
+      const resolvedClick = resolveGlobeTarget(mx, my);
+      const clickedInst = resolvedClick && resolvedClick.inst;
       if (clickedInst) {
         selectInstitution(clickedInst, false);
         return;
@@ -17200,7 +17204,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
 
       // 0.3 Check City Click on Globe when zoomed out
-      const clickedCity = findCityAt(mx, my);
+      const clickedCity = resolvedClick ? (resolvedClick.city || null) : null;
       if (clickedCity) {
         filterByCity(clickedCity.name, true, true);
         return;
@@ -17262,7 +17266,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (hoveredCityCardHitbox) {
         const hb = hoveredCityCardHitbox;
         const isAllowedCountry = !isCountryActive || (hb.country && matchC(hb.country, selectedCountryFilter));
-        if (isAllowedCountry && mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH) {
+        const inCard = mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH;
+        // The corridor from the pin to the card: the card sits 16px off the pin and the pin's reach is
+        // 9px, so a pointer travelling up to "Click to explore" used to fall through the gap and close it.
+        const corridor = hb.pinX !== undefined && Math.abs(mx - hb.pinX) <= 14 &&
+          my >= Math.min(hb.pinY, hb.cardY + hb.cardH) - 2 && my <= Math.max(hb.pinY, hb.cardY) + 2;
+        if (isAllowedCountry && (inCard || corridor)) {
           return ALL_CITIES_REGISTRY.find(c => matchC(c.name, hb.city)) || { name: hb.city };
         }
       }
@@ -17327,6 +17336,28 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return null;
     }
     window.findCityAt = findCityAt;
+
+    // One answer for hover and click: the institution dot or the city under the pointer. Institutions
+    // used to take absolute precedence, so at world zoom the one-space town a few pixels from London's
+    // pin took the hover and the city card never opened. Now a city's drawn label or open card wins
+    // outright, and otherwise the nearer of the dot and the pin wins.
+    function resolveGlobeTarget(mx, my) {
+      const inst = findInstitutionAt(mx, my);
+      const city = findCityAt(mx, my);
+      if (inst && !city) return { inst };
+      if (city && !inst) return { city };
+      if (!inst && !city) return null;
+      const onLabel = cityBadgeHitboxes.some(b => matchC(b.name, city.name) && mx >= b.x - 3 && mx <= b.x + b.w + 3 && my >= b.y - 3 && my <= b.y + b.h + 3)
+        || cityClusterHitboxes.some(b => matchC(b.cityName, city.name) && mx >= b.x - 4 && mx <= b.x + b.w + 4 && my >= b.y - 4 && my <= b.y + b.h + 4)
+        || (hoveredCityCardHitbox && matchC(hoveredCityCardHitbox.city, city.name) && mx >= hoveredCityCardHitbox.cardX && mx <= hoveredCityCardHitbox.cardX + hoveredCityCardHitbox.cardW && my >= hoveredCityCardHitbox.cardY && my <= hoveredCityCardHitbox.cardY + hoveredCityCardHitbox.cardH);
+      if (onLabel) return { city };
+      const dot = visibleDots.find(d => d.inst === inst || d.inst.name === inst.name);
+      const dInst = dot ? Math.hypot(dot.x - mx, dot.y - my) : Infinity;
+      const cp = (city.lon !== undefined && city.lat !== undefined) ? project(city.lon, city.lat, currentRadius, width / 2, height / 2) : null;
+      const dCity = cp ? Math.hypot(cp.x - mx, cp.y - my) : Infinity;
+      return dCity < dInst ? { city } : { inst };
+    }
+    window.resolveGlobeTarget = resolveGlobeTarget;
     window.getCityBadgeHitboxes = () => cityBadgeHitboxes;
     window.getHoveredCity = () => hoveredCity;
     window.getLabelCounts = () => ({ inst: visibleDots.filter(d => d.labelBox).length, country: lastShownCountryLabels.size, city: cityBadgeHitboxes.length });
@@ -17377,7 +17408,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // PRIORITY 1: Check institution hover across dots, text labels, micro-cards, and proximity
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
-      const targetInst = findInstitutionAt(mx, my);
+      const resolved = resolveGlobeTarget(mx, my);
+      const targetInst = resolved && resolved.inst;
       if (targetInst) {
         canvas.style.cursor = 'pointer';
         const changed = !hoveredInstitution || hoveredInstitution.name !== targetInst.name;
@@ -17418,7 +17450,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
 
       // Priority: Check City Hover when on Globe
-      const targetHoverCity = findCityAt(mx, my);
+      const targetHoverCity = resolved ? (resolved.city || null) : null;
       if (targetHoverCity) {
         canvas.style.cursor = 'pointer';
         const changed = hoveredCity !== targetHoverCity.name;
@@ -18077,8 +18109,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=182"></script>
-<script src="assets/bubbles.js?v=182" defer></script>
-<script src="assets/typeset.js?v=182"></script>
+<script src="assets/layers.js?v=183"></script>
+<script src="assets/bubbles.js?v=183" defer></script>
+<script src="assets/typeset.js?v=183"></script>
 </body>
 </html>
