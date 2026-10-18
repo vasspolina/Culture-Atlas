@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=183">
-  <script src="assets/config.js?v=183"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=184">
+  <script src="assets/config.js?v=184"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9625,7 +9625,7 @@ return maplibregl$1;
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
       const ATLAS_RELEASE = 'culture-atlas-v181';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=183').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=184').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9696,6 +9696,7 @@ return maplibregl$1;
     let lastShownCityLabels = new Set(); // labels drawn last frame keep their place while the view moves
     let lastShownInstLabels = new Set();
     let lastShownCountryLabels = new Set();
+    let countryLabelHitboxes = [];      // the country names as drawn last frame, for hover and click
     let pinching = false;             // two fingers on the globe: pinch zoom, no one-finger drag
     let dragArmed = false;            // a press becomes a drag only after it has moved a few pixels
     let lastViewKey = '';
@@ -10479,6 +10480,7 @@ return maplibregl$1;
 
           const drawnCountryBoxes = [];
           const shownCountryLabels = new Set();
+          const drawnCountryNames = [];
 
           COUNTRY_CENTROIDS.forEach(c => {
             const isSel = selectedCountryFilter !== 'all' && matchC(c.name, selectedCountryFilter);
@@ -10506,6 +10508,7 @@ return maplibregl$1;
                 if ((!collidesWithCity && !collidesWithCountry && cBox.x >= 2 && cBox.x + cBox.w <= width - 2) || isSel || isHov) {
                   drawnCountryBoxes.push(cBox);
                   shownCountryLabels.add(c.name);
+                  drawnCountryNames.push({ name: c.name, x: cBox.x, y: cBox.y, w: cBox.w, h: cBox.h });
 
                   // Crisp solid dark outline halo around text for 100% razor-sharp edge definition
                   ctx.strokeStyle = G_HALO;
@@ -10525,6 +10528,7 @@ return maplibregl$1;
             }
           });
           lastShownCountryLabels = shownCountryLabels;
+          countryLabelHitboxes = drawnCountryNames;
           ctx.restore();
         }
 
@@ -17210,12 +17214,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
 
-      // 3. Check country centroid text (generous 40px radius, zooms directly to country!)
-      for (let i = 0; i < COUNTRY_CENTROIDS.length; i++) {
-        const c = COUNTRY_CENTROIDS[i];
-        const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 40) {
-          filterByCountry(c.name, true);
+      // 3. The country name as drawn: a click on the word goes to the country.
+      for (let i = 0; i < countryLabelHitboxes.length; i++) {
+        const b = countryLabelHitboxes[i];
+        if (mx >= b.x - 3 && mx <= b.x + b.w + 3 && my >= b.y - 3 && my <= b.y + b.h + 3) {
+          filterByCountry(b.name, true);
           return;
         }
       }
@@ -17468,13 +17471,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      // Check country centroid
-      for (let i = 0; i < COUNTRY_CENTROIDS.length; i++) {
-        const c = COUNTRY_CENTROIDS[i];
-        const pt = project(c.lon, c.lat, r, cx, cy);
-        if (pt.front && Math.hypot(pt.x - mx, pt.y - my) < 40) {
+      // The country name as drawn, not a 40px halo around a centroid whose name may not even be on screen.
+      for (let i = 0; i < countryLabelHitboxes.length; i++) {
+        const b = countryLabelHitboxes[i];
+        if (mx >= b.x - 3 && mx <= b.x + b.w + 3 && my >= b.y - 3 && my <= b.y + b.h + 3) {
           canvas.style.cursor = 'pointer';
-          hoveredCountry = c.name;
+          hoveredCountry = b.name;
           return;
         }
       }
@@ -18109,8 +18111,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=183"></script>
-<script src="assets/bubbles.js?v=183" defer></script>
-<script src="assets/typeset.js?v=183"></script>
+<script src="assets/layers.js?v=184"></script>
+<script src="assets/bubbles.js?v=184" defer></script>
+<script src="assets/typeset.js?v=184"></script>
 </body>
 </html>
