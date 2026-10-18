@@ -14455,6 +14455,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         answer(`<p>${escapeHtml(GRADE_LADDER)}</p><p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} not graded. Ask for grade A spaces in a city to see the cleanest there.</p>`, ['Show grade A spaces', 'Show grade F spaces', 'How are spaces assessed?']);
         return;
       }
+      if (!explicit && asks(/epstein/)) {
+        const here = ALL_INSTITUTIONS.filter(i => ((i.epstein_records || []).length || (i.flags || []).includes('Epstein-linked')) && (!place || [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase()))));
+        listOf(here, `Spaces${place ? ' in ' + escapeHtml(place) : ''} with a recorded Epstein-related item or flag. Each item is on its space's page with its sources, and none is independently verified:`);
+        return;
+      }
+      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:'); return; }
       // A named funder: the spaces whose records link it (funder_links), the same names the Funding block shows on each record.
       if (!explicit && asks(/\b(fund|funds|funded|funding|funder|back|backs|backed|sponsor|sponsors|sponsored|give|gives|money|connect|connects|pay|pays)\b/)) {
         const funders = {};
@@ -14483,8 +14489,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)}${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
-      if (!explicit && asks(/epstein/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.epstein_records || []).length), 'Spaces with a recorded Epstein-related item. Each item is on its space\'s page with its sources, and none is independently verified:'); return; }
-      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:'); return; }
 
       if (await askModel()) return;
       if (target && asks(/\b(hours?|open|opening|admission|ticket|price|fee|cost|free|visit|address|where is)\b/)) {
@@ -14498,7 +14502,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:');
         return;
       }
-      if (target && (isGossipModeActive || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported)\b/))) {
+      if (target && (isGossipModeActive || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
         const reported = documentedRecordHtml(target);
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing is reported for this space in the records.</p>'}${sourcesHtml(target)}`);
@@ -16762,7 +16766,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       'Gambling': (n) => `Why is ${n} flagged for gambling money?`,
       'Forced or exploited labour': (n) => `What labour abuse is reported at ${n}?`,
       'Mining disaster': (n) => `Why is ${n} flagged over a mining disaster?`,
-      'Prison or detention': (n) => `Why is ${n} flagged over detention?`
+      'Prison or detention': (n) => `Why is ${n} flagged for prison money?`
     };
     const funderName = (f) => /\b(family|foundations?|fonden|fund)$/i.test(f) ? `the ${f}` : f;
     let cloudCache = { key: null, list: [] };
@@ -16780,7 +16784,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // correction, 18 Oct 2026: the questions need to be serious and in depth). Candidates are cheap; whether a question
       // really resolves to its record is checked after it is on screen (see verifyShown).
       // A protest flag whose text says no protest was found (fourteen records) is not asked about a protest.
-      const flagQ = (i) => { if (!i.why_flagged) return ''; const f = (i.flags || []).find(f => !(/protest|boycott/i.test(f) && /\b(no|never) protest/i.test(i.why_flagged))); const make = f && FLAG_QUESTION[f]; return make ? make(i.name) : `Why is ${i.name} flagged?`; };
+      // One question per flag on the record, so a space flagged three ways can be asked three things.
+      const askableFlags = (i) => i.why_flagged ? (i.flags || []).filter(f => !(/protest|boycott/i.test(f) && /\b(no|never) protest/i.test(i.why_flagged))) : [];
+      const flagQFor = (i, f) => { const make = f && FLAG_QUESTION[f]; return make ? make(i.name) : (i.why_flagged ? `Why is ${i.name} flagged?` : ''); };
+      const flagQ = (i) => flagQFor(i, askableFlags(i)[0]);
+      // Who funds it, where the funding text names funders without a figure; what is reported (cases, notes, findings);
+      // what WikiLeaks holds; the record's own note on the money.
+      const fundingQ = (i) => i.funding && !hasMoney(i) ? `Who funds ${i.name}?` : '';
+      const hasReported = (i) => (((i.gossip_data || {}).real_cases || []).length || (i.case_notes || []).length || (typeof i.other_findings === 'string' && i.other_findings.trim())) ? true : false;
+      const reportedQ = (i) => hasReported(i) ? `What is reported about ${i.name}?` : '';
+      const wikileaksQ = (i) => (i.wikileaks_records || []).length ? `What does WikiLeaks hold on ${i.name}?` : '';
+      const watchQ = (i) => i.watch && typeof watchIsAboutMoney === 'function' && watchIsAboutMoney(i.watch) ? `What should I know about ${i.name}?` : '';
       const funderQ = (i) => { const l = (i.funder_links || [])[0]; return i.funding && l && l.funder ? `Is ${i.name} funded by ${funderName(l.funder)}?` : ''; };   // the funding answer names the shared funders
       const hasMoney = (i) => !!i.funding && /[$€£¥]\s?\d|\d\s?(m|bn|k|million|billion)\b|\b(dkk|sek|nok|chf|usd|eur|gbp)\b/i.test(i.funding);
       const moneyQ = (i) => hasMoney(i) ? `Who funds ${i.name} and with how much?` : '';
@@ -16789,26 +16803,46 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const criticQ = (i) => (i.visual_critiques || []).some(v => v.kind === 'theory') ? `What do critics say about ${i.name}?` : '';
       const epsteinQ = (i) => (i.epstein_records || []).length ? `What is ${i.name}’s Epstein link?` : '';
       const pool = (test, n, make) => shuffledList(ALL_INSTITUTIONS.filter(test)).slice(0, n * 2).map(i => ({ q: make(i), tier: tierOf(i), inst: i })).filter(x => x.q && x.q.length <= 58).slice(0, n);
-      if (sel) [flagQ, funderQ, moneyQ, gradeQ, staffQ, criticQ, epsteinQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, tierOf(sel), sel); });
-      const flaggedIn = {}, grade1 = {};
-      ALL_INSTITUTIONS.forEach(i => { const c = registryName(i.city); if (!c) return; if (i.tier === 'B' && i.why_flagged) flaggedIn[c] = (flaggedIn[c] || 0) + 1; if (i.grade === 1) grade1[c] = (grade1[c] || 0) + 1; });
-      const flags = pool(i => i.tier === 'B' && i.why_flagged && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i), 160, flagQ);
+      if (sel) [...askableFlags(sel).map(f => (i) => flagQFor(i, f)), funderQ, moneyQ, fundingQ, gradeQ, staffQ, criticQ, epsteinQ, reportedQ, wikileaksQ, watchQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, tierOf(sel), sel); });
+      // Places: cities by name in the city registry, countries by name in the country registry (the chat answers both).
+      const countries = (typeof ALL_COUNTRIES_REGISTRY !== 'undefined' ? ALL_COUNTRIES_REGISTRY : []).filter(c => c && c.name).map(c => c.name);
+      const countryName = (c) => countries.includes(c) ? c : '';
+      const inPlace = (c) => /^(USA|UK|UAE|Netherlands|Philippines|Czech Republic|Dominican Republic)$/.test(c) ? `the ${c}` : c;
+      const tallyBy = (where, test) => { const n = {}; ALL_INSTITUTIONS.forEach(i => { const c = where(i); if (c && test(i)) n[c] = (n[c] || 0) + 1; }); return n; };
+      const byCity = (test) => tallyBy(i => registryName(i.city), test), byCountry = (test) => tallyBy(i => countryName(i.country), test);
+      const flaggedIn = byCity(i => i.tier === 'B' && i.why_flagged), grade1 = byCity(i => i.grade === 1), grade5 = byCity(i => i.grade === 5);
+      const epsteinIn = byCity(i => (i.epstein_records || []).length || (i.flags || []).includes('Epstein-linked'));
+      const flaggedCountry = byCountry(i => i.tier === 'B' && i.why_flagged), grade1Country = byCountry(i => i.grade === 1);
+      const placeQs = (tally, min, make, tier) => shuffledList(Object.keys(tally).filter(c => tally[c] >= min)).slice(0, 50).map(c => ({ q: make(inPlace(c)), tier, inst: null }));
+      // Flags: one question per flag on the record, over the records that have a reason on file.
+      const flagPairs = [];
+      shuffledList(ALL_INSTITUTIONS.filter(i => i.tier === 'B' && i.why_flagged && typeof documentedRecordHtml === 'function' && documentedRecordHtml(i))).forEach(i => askableFlags(i).forEach(f => flagPairs.push({ q: flagQFor(i, f), tier: tierOf(i), inst: i })));
+      const flags = shuffledList(flagPairs.filter(x => x.q && x.q.length <= 58)).slice(0, 240);
       const funders = pool(i => i.funding && (i.funder_links || []).length && (i.tier === 'A' || i.tier === 'B'), 120, funderQ);
       const money = pool(i => hasMoney(i) && (i.tier === 'A' || i.tier === 'B'), 100, moneyQ);
       const grades = pool(i => i.grade && i.grade_basis && (i.tier === 'A' || i.tier === 'B'), 100, gradeQ);
       const staff = pool(i => ((i.gossip_data || {}).accounts || []).length, 60, staffQ);
       const critics = pool(i => (i.visual_critiques || []).some(v => v.kind === 'theory') && (i.tier === 'A' || i.tier === 'B'), 60, criticQ);
       const epstein = pool(i => (i.epstein_records || []).length, 16, epsteinQ);
-      // A city's flagged spaces with their reasons, and a city's grade 1 spaces: only where there are two or more to list.
-      const flaggedCities = shuffledList(Object.keys(flaggedIn).filter(c => flaggedIn[c] >= 2)).slice(0, 50).map(c => ({ q: `Which spaces in ${c} are flagged, and why?`, tier: 'B', inst: null }));
-      const cleanest = shuffledList(Object.keys(grade1).filter(c => grade1[c] >= 2)).slice(0, 50).map(c => ({ q: `Which spaces in ${c} are grade ${gradeLetter(1)}?`, tier: 'A', inst: null }));
+      const funding = pool(i => i.funding && !hasMoney(i) && (i.tier === 'A' || i.tier === 'B'), 100, fundingQ);
+      const reported = pool(hasReported, 80, reportedQ);
+      const wikileaks = pool(i => (i.wikileaks_records || []).length, 10, wikileaksQ);
+      const notes = pool(i => i.watch && (i.tier === 'A' || i.tier === 'B') && typeof watchIsAboutMoney === 'function' && watchIsAboutMoney(i.watch), 80, watchQ);
+      // A place's flagged spaces with their reasons, its grade A or grade F spaces, its Epstein-linked spaces: only where there
+      // are two or more to list (three for a country).
+      const flaggedCities = placeQs(flaggedIn, 2, (c) => `Which spaces in ${c} are flagged, and why?`, 'B');
+      const flaggedCountries = placeQs(flaggedCountry, 3, (c) => `Which spaces in ${c} are flagged, and why?`, 'B');
+      const cleanest = placeQs(grade1, 2, (c) => `Which spaces in ${c} are grade ${gradeLetter(1)}?`, 'A');
+      const cleanestCountries = placeQs(grade1Country, 3, (c) => `Which spaces in ${c} are grade ${gradeLetter(1)}?`, 'A');
+      const worst = placeQs(grade5, 2, (c) => `Which spaces in ${c} are grade ${gradeLetter(5)}?`, 'B');
+      const epsteinCities = placeQs(epsteinIn, 2, (c) => `Which spaces in ${c} have an Epstein link?`, 'B');
       // A funder named on three or more records (funder_links): which institutions it funds, in the fill of most of them.
       const linked = {};
       ALL_INSTITUTIONS.forEach(i => (i.funder_links || []).forEach(l => { if (l && l.funder && !/\//.test(l.funder)) (linked[l.funder] = linked[l.funder] || []).push(i); }));
       const funderTier = (f) => { const n = { A: 0, B: 0, U: 0 }; linked[f].forEach(i => n[tierOf(i)]++); return n.A >= n.B && n.A >= n.U ? 'A' : n.B >= n.U ? 'B' : 'U'; };
       const sharedFunders = shuffledList(Object.keys(linked).filter(f => linked[f].length >= 3)).slice(0, 40).map(f => ({ q: `Which institutions does ${funderName(f)} fund?`, tier: funderTier(f), inst: null }));
       // Round-robin over the kinds so the colours and the kinds of question mix across the page.
-      const kinds = [flags, funders, flaggedCities, grades, staff, cleanest, critics, money, epstein, sharedFunders];
+      const kinds = [flags, funders, flaggedCities, grades, staff, cleanest, critics, money, epstein, sharedFunders, funding, reported, worst, notes, flaggedCountries, wikileaks, cleanestCountries, epsteinCities];
       for (let k = 0; kinds.some(a => a.length); k++) kinds.forEach(a => { const x = a.shift(); if (x) add(x.q, x.tier, x.inst); });
       cloudCache = { key, list: out };
       return out;
