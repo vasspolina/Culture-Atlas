@@ -33,7 +33,7 @@ python3 -m http.server 8080
 
 Then open [http://localhost:8080](http://localhost:8080).
 
-To try Share information against a local backend, run the Worker with `npx wrangler dev` in `worker/` and set `window.ATLAS_SUBMIT_URL` in `assets/config.js` to `http://localhost:8787` (local addresses are always allowed).
+To try Share information against a local backend, run the Worker with `npx wrangler dev` in `worker/` and set `window.ATLAS_SUBMIT_URL` in `assets/config.js` to `http://localhost:8787` (local addresses are always allowed). The separate Prisma-backed whistleblower API is documented below.
 
 ---
 
@@ -46,8 +46,8 @@ Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a f
 ## Deploying
 
 `main` is the source of truth. Every push to `main` runs
-`.github/workflows/deploy.yml`, which copies `index.html`, `sw.js`,
-`manifest.json`, `assets/` and `fonts/` to the `gh-pages` branch that GitHub
+`.github/workflows/deploy.yml`, which copies `index.html`, `admin.html`,
+`reports-admin.html`, `sw.js`, `manifest.json`, `assets/` and `fonts/` to the `gh-pages` branch that GitHub
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
@@ -55,7 +55,27 @@ check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
 Share information sends a reader's note to a small backend, a Cloudflare Worker in `worker/` with one KV store. Every note is kept as waiting and shows nowhere until the editor approves it on `admin.html` (the review page, behind a password). There the text, the space it belongs to and a source link can be corrected before approving; a rejected note is deleted. An approved note appears on its space's record under "Shared by readers and approved by the editor", within a minute. No name, email or IP address is stored; the only trace of a sender is a salted hash of their address, kept for an hour to allow ten notes an hour.
 
-While `window.ATLAS_SUBMIT_URL` in `assets/config.js` is empty, the page behaves as before: notes are saved in the reader's browser and nothing is sent.
+While `window.ATLAS_SUBMIT_URL` in `assets/config.js` is empty, information and gossip notes stay in the reader's browser. Whistleblower reports are never saved locally: configure `window.ATLAS_REPORT_API_URL` to enable their database-backed submission, or the page will tell the reader that report service is unavailable.
+
+### Prisma-backed whistleblower reports
+
+The optional Express API stores whistleblower reports in SQLite with Prisma. Unlike the Worker note flow above, reports submitted through this API are not copied into browser storage. They remain private while pending, and approved reports are loaded into the matching institution record (or records in the same city when no institution was supplied).
+
+From the repository root:
+
+```bash
+npm install
+cp .env.example .env
+```
+
+Set `DATABASE_URL`, a long random `ADMIN_SECRET_KEY` (for example, generate one with `openssl rand -hex 32`), and `ALLOWED_ORIGINS` in `.env`. The API refuses to start if the admin secret is missing. Then initialize the database and start the API:
+
+```bash
+npm run db:push
+npm start
+```
+
+Set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to the API origin, for example `http://localhost:4000`. Whistleblower notes then use `POST /api/reports`; information and gossip notes keep using the existing Share information Worker/browser flow. The report moderation page is `reports-admin.html` and is linked from `admin.html`; it asks for the admin bearer token and does not embed a secret in the page. `admin/AdminModerator.jsx` provides the requested React moderation component for a React host. The API allows browser requests only from origins listed in `ALLOWED_ORIGINS`. The repository's GitHub Pages deployment serves static files only, so host this Node API separately and configure its public origin in `assets/config.js` before enabling submissions.
 
 Setting it up once (free Cloudflare plan), in the Cloudflare dashboard, no install needed:
 
@@ -154,7 +174,11 @@ Culture-Atlas/
 ├── index.html          # The whole app, edited in place. The only copy of the atlas page.
 ├── money-maps.html     # The money maps page (assets/money-maps.*, built by tools/build_money_maps.py)
 ├── admin.html        # Review page for notes sent with Share information
+├── reports-admin.html # Moderation page for Prisma-backed whistleblower reports
 ├── worker/           # The submissions backend (Cloudflare Worker) and its tests
+├── server/            # Optional Express API for whistleblower reports
+├── prisma/            # Prisma schema and SQLite database (database file is ignored)
+├── admin/             # Reusable React AdminModerator component
 ├── sw.js               # Service worker (network-first for the page, same-origin cache only)
 ├── manifest.json       # PWA manifest
 ├── assets/ fonts/      # atlas.css, maplibre-gl.css, images and the typefaces the page loads
