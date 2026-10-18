@@ -656,13 +656,15 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 #hudControlsBar #hudContributeBtn:hover,#chatShareBtn:hover{background:#000;color:var(--pink)}
 
 /* Map popups: a grey block with a thin yellow top rule, the name in bold capitals, a large close mark. */
-.atlas-record-popup .maplibregl-popup-content{background:#a3a3a3;color:#000;border-radius:0;box-shadow:none;border-top:2px solid var(--yellow);padding:18px 20px;min-width:260px}
+.atlas-record-popup .maplibregl-popup-content{background:#a3a3a3;color:#000;border-radius:0;box-shadow:none;border-top:0;padding:18px 20px;min-width:260px}
 .atlas-record-popup .maplibregl-popup-tip{border-top-color:#a3a3a3;border-bottom-color:#a3a3a3}
 .atlas-record-popup .maplibregl-popup-close-button{color:#333;background:none;font:400 32px/1 var(--sans);top:4px;right:8px;padding:0 6px}
 .atlas-record-popup .maplibregl-popup-close-button:hover{background:none;color:#000}
 .record-popup{font:400 15px/1.3 var(--sans);color:#000}
 .record-popup-name{display:block;font:700 26px/1 var(--display);text-transform:uppercase;letter-spacing:0;color:#000;text-decoration:none;padding-right:34px;margin-bottom:8px;outline:none}
-a.record-popup-name:hover,a.record-popup-name:focus-visible{text-decoration:underline;text-underline-offset:3px}
+/* titles are never underlined; the page-wide link rule is more specific than .record-popup-name, so beat it by id */
+#globeViewport a.record-popup-name,#globeViewport a.record-popup-name:hover,#globeViewport a.record-popup-name:focus-visible{text-decoration:none}
+#globeViewport a.record-popup-name:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 .record-popup-line{margin:0 0 4px;color:#000}
 .record-popup-rule{border-top:1px solid #000;padding-top:8px;margin-top:8px}
 .record-popup-category,.institution-category-pill,.critical-lens-label,.unverified-platform-tag{display:inline-flex;align-items:center;width:max-content;max-width:100%;border:1px solid #d1d1d1;border-radius:999px;background:#ececec;color:var(--ink);padding:4px 10px;font:400 13px/1.2 var(--sans);letter-spacing:.01em}
