@@ -159,19 +159,51 @@ return maplibregl$1;
 
       <!-- Layers: overlays on the map, like a map app's layer menu -->
       <div id="layersControl">
-        <div id="layersPanel" hidden>
-          <p class="layers-title">Layers</p>
-          <label><input type="checkbox" checked disabled> <span>Cultural spaces <span class="layers-count" data-count="spaces"></span></span></label>
-          <label><input type="checkbox" data-layer="ties"> <span>Funding ties <span class="layers-count" data-count="ties"></span></span></label>
-          <label><input type="checkbox" data-layer="flags"> <span>Flagged on record <span class="layers-count" data-count="flags"></span></span></label>
-          <label><input type="checkbox" data-layer="grade"> <span>Clean Funding Grade <span class="layers-count" data-count="grade"></span></span></label>
-          <label><input type="checkbox" data-layer="money"> <span>Money network <span class="layers-count" data-count="money"></span></span></label>
-          <label><input type="checkbox" data-layer="hq"> <span>Funder headquarters <span class="layers-count" data-count="hq"></span></span></label>
-          <label><input type="checkbox" data-layer="people"> <span>People and their offices <span class="layers-count" data-count="people"></span></span></label>
-          <label><input type="checkbox" data-layer="right"> <span>Right-wing sponsors <span class="layers-count" data-count="right"></span></span></label>
-          <label><input type="checkbox" data-layer="epstein"> <span>Epstein files <span class="layers-count" data-count="epstein"></span></span></label>
-          <p class="layers-key"><span><i style="background:#8fa2ff"></i>Public money</span><span><i style="background:#a9e0e6"></i>Company</span><span><i style="background:#ff9966"></i>Foundation or donor</span><span><i style="background:#ff6119"></i>Flagged</span><span><i style="background:#ff5a4d"></i>Right-wing sponsor</span><span><i style="background:#ec4fe8"></i>Epstein files</span><span><i style="background:#a9e0e6;transform:rotate(45deg) scale(.8)"></i>Head office</span><span><i style="background:#ec4fe8;border-radius:50%"></i>Person's office</span></p>
-          <p class="layers-key"><span><i style="background:#9ae3e8"></i>Grade A, clean, money shown</span><span><i style="background:#6f9486"></i>B, clean, roster shown</span><span><i style="background:#c8b85a"></i>C, a name to know</span><span><i style="background:#ff6119"></i>D, one flagged funder</span><span><i style="background:#ff3df0"></i>F, several, or flagged and contested</span></p>
+        <div id="layersPanel" role="region" aria-labelledby="layersMenuTitle" hidden>
+          <div class="layers-header">
+            <h2 id="layersMenuTitle" class="layers-title">Layers &amp; Filters</h2>
+            <div class="layers-actions">
+              <button class="layers-reset" type="button">Reset</button>
+              <button class="layers-close" type="button" aria-label="Close layers menu">&times;</button>
+            </div>
+          </div>
+          <section class="layers-section">
+            <h2 class="layers-section-title">Map layers</h2>
+            <div class="layers-list">
+              <label><input type="checkbox" checked disabled> <span>Cultural spaces</span><span class="layers-count" data-count="spaces"></span></label>
+              <label><input type="checkbox" data-layer="ties"> <span>Funding ties</span><span class="layers-count" data-count="ties"></span></label>
+              <label><input type="checkbox" data-layer="flags"> <span>Flagged on record</span><span class="layers-count" data-count="flags"></span></label>
+              <label><input type="checkbox" data-layer="grade"> <span>Clean Funding Grade</span><span class="layers-count" data-count="grade"></span></label>
+              <label><input type="checkbox" data-layer="money"> <span>Money network</span><span class="layers-count" data-count="money"></span></label>
+              <label><input type="checkbox" data-layer="hq"> <span>Funder headquarters</span><span class="layers-count" data-count="hq"></span></label>
+              <label><input type="checkbox" data-layer="people"> <span>People and their offices</span><span class="layers-count" data-count="people"></span></label>
+              <label><input type="checkbox" data-layer="right"> <span>Right-wing sponsors</span><span class="layers-count" data-count="right"></span></label>
+              <label><input type="checkbox" data-layer="epstein"> <span>Epstein files</span><span class="layers-count" data-count="epstein"></span></label>
+            </div>
+          </section>
+          <section class="layers-section">
+            <h2 class="layers-section-title">Entity types</h2>
+            <div class="layers-key layers-entity-key">
+              <span><i class="shape-square" style="--marker-color:#818cf8"></i>Public money</span>
+              <span><i class="shape-hexagon" style="--marker-color:#38bdf8"></i>Company</span>
+              <span><i class="shape-triangle" style="--marker-color:#f472b6"></i>Foundation or donor</span>
+              <span><i class="shape-square" style="--marker-color:#f59e0b"></i>Flagged</span>
+              <span><i class="shape-shield" style="--marker-color:#fb7185"></i>Right-wing sponsor</span>
+              <span><i class="shape-star" style="--marker-color:#a78bfa"></i>Epstein files</span>
+              <span><i class="shape-diamond" style="--marker-color:#22d3ee"></i>Head office</span>
+              <span><i class="shape-dot" style="--marker-color:#e5e7eb"></i>Person's office</span>
+            </div>
+          </section>
+          <section class="layers-section">
+            <h2 class="layers-section-title">Funding grades</h2>
+            <div class="layers-key layers-grade-key">
+              <span><i style="--marker-color:#34d399"></i><strong>Grade A</strong>Clean, money shown</span>
+              <span><i style="--marker-color:#2dd4bf"></i><strong>Grade B</strong>Clean, roster shown</span>
+              <span><i style="--marker-color:#facc15"></i><strong>Grade C</strong>A name to know</span>
+              <span><i style="--marker-color:#fb923c"></i><strong>Grade D</strong>One flagged funder</span>
+              <span><i style="--marker-color:#ef4444"></i><strong>Grade F</strong>Several, or flagged and contested</span>
+            </div>
+          </section>
         </div>
         <button id="layersBtn" type="button" aria-expanded="false" aria-controls="layersPanel">Layers</button>
       </div>
@@ -11272,11 +11304,11 @@ return maplibregl$1;
     // by letter on the page: A, B, C, D, F (no E, as in school marks).
     // A record without an independently sourced funder roster has no grade. The colour is the block the grade takes on the map and the record.
     const GRADE = {
-      1: { letter: 'A', label: 'Clean, money shown', col: '#9ae3e8' },
-      2: { letter: 'B', label: 'Clean, roster shown', col: '#6f9486' },
-      3: { letter: 'C', label: 'A name to know', col: '#c8b85a' },
-      4: { letter: 'D', label: 'One flagged funder', col: '#ff6119' },
-      5: { letter: 'F', label: 'Several, or flagged and contested', col: '#ff3df0' },
+      1: { letter: 'A', label: 'Clean, money shown', col: '#34d399' },
+      2: { letter: 'B', label: 'Clean, roster shown', col: '#2dd4bf' },
+      3: { letter: 'C', label: 'A name to know', col: '#facc15' },
+      4: { letter: 'D', label: 'One flagged funder', col: '#fb923c' },
+      5: { letter: 'F', label: 'Several, or flagged and contested', col: '#ef4444' },
     };
     window.atlasGrade = GRADE;
     // The letter a stored grade is named by, and the stored grade a letter (or an old number) names.
