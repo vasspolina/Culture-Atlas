@@ -346,22 +346,22 @@
     const set = (k, text) => { const el = document.querySelector(`#layersPanel [data-count="${k}"]`); if (el) el.textContent = text; };
     const formatCount = count => new Intl.NumberFormat('en-US').format(count);
     if (typeof ALL_INSTITUTIONS !== 'undefined') {
-      set('spaces', `· ${formatCount(ALL_INSTITUTIONS.length)}`);
-      set('flags', `· ${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
+      set('spaces', `${formatCount(ALL_INSTITUTIONS.length)}`);
+      set('flags', `${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
       const graded = ALL_INSTITUTIONS.filter(i => i.grade).length;
-      set('grade', `· ${formatCount(graded)} rated · ${formatCount(ALL_INSTITUTIONS.length - graded)} unrated`);
+      set('grade', `${formatCount(graded)} rated · ${formatCount(ALL_INSTITUTIONS.length - graded)} unrated`);
     }
     if (HQ) {
-      set('hq', `· ${formatCount(HQ.orgs.length)} offices · ${formatCount(new Set(HQ.orgs.map(o => o.c)).size)} cities`);
-      set('people', `· ${formatCount(HQ.people.length)} offices`);
+      set('hq', `${formatCount(HQ.orgs.length)} offices · ${formatCount(new Set(HQ.orgs.map(o => o.c)).size)} cities`);
+      set('people', `${formatCount(HQ.people.length)} offices`);
     }
     if (web) {
-      set('ties', `· ${formatCount(web.length)} links · ${formatCount([...keyIndex.values()].filter(ids => ids.length >= 2).length)} shared funders`);
-      set('money', `· ${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)} spaces`);
+      set('ties', `${formatCount(web.length)} links · ${formatCount([...keyIndex.values()].filter(ids => ids.length >= 2).length)} shared funders`);
+      set('money', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)} spaces`);
       const rightRecs = [...recById.values()].filter(rec => rec.nodes.some(RIGHT)), rightKeys = new Set();
       rightRecs.forEach(rec => rec.nodes.filter(RIGHT).forEach(n => rightKeys.add(n[5])));
-      set('right', `· ${formatCount(rightRecs.length)} spaces · ${formatCount(rightKeys.size)} funders`);
-      set('epstein', `· ${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)} spaces`);
+      set('right', `${formatCount(rightRecs.length)} spaces · ${formatCount(rightKeys.size)} funders`);
+      set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)} spaces`);
     }
   }
 
@@ -371,8 +371,10 @@
     const placePanel = () => {
       panel.classList.remove('is-above');
       const buttonRect = btn.getBoundingClientRect();
-      const spaceBelow = window.innerHeight - buttonRect.bottom - 12;
-      const spaceAbove = buttonRect.top - 12;
+      // The room is the globe's, not the window's: the page header above and the phone's tab bar below are not free space.
+      const host = box.offsetParent ? box.offsetParent.getBoundingClientRect() : { top: 0, bottom: window.innerHeight };
+      const spaceBelow = host.bottom - buttonRect.bottom - 12;
+      const spaceAbove = buttonRect.top - host.top - 12;
       const placeAbove = panel.scrollHeight > spaceBelow && spaceAbove > spaceBelow;
       panel.classList.toggle('is-above', placeAbove);
       panel.style.maxHeight = `${Math.max(120, placeAbove ? spaceAbove : spaceBelow)}px`;
