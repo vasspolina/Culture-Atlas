@@ -26,6 +26,23 @@ def pick(name, i, publication, date, only=None, context=None, title=None):
     return out
 
 
+def say(author, title, publication, date, url, text, only=None, context=None):
+    """A quotation that is not in the notes folder's quotes-<type>.json: written here, checked against its page the same way."""
+    out = {'text': text, 'author': author, 'title': title, 'publication': publication, 'date': date, 'url': url}
+    if only:
+        out['only'] = only
+    if context:
+        out['context'] = context
+    return out
+
+
+VAROUFAKIS_MOSCOW = 'Artists should be ‘feared by the powerful’, says former Greek finance minister'
+VAROUFAKIS_ATHENS = '“We Come Bearing Gifts”—iLiana Fokianaki and Yanis Varoufakis on Documenta 14 Athens'
+VAROUFAKIS_MOSCOW_URL = 'https://www.theartnewspaper.com/2015/10/03/artists-should-be-feared-by-the-powerful-says-former-greek-finance-minister'
+VAROUFAKIS_ATHENS_URL = 'https://www.e-flux.com/criticism/240266/we-come-bearing-gifts-iliana-fokianaki-and-yanis-varoufakis-on-documenta-14-athens'
+GROYS_URL = 'https://www.e-flux.com/journal/50/59974/entering-the-flow-museum-between-archive-and-gesamtkunstwerk/'
+GROYS_TITLE = 'Entering the Flow: Museum between Archive and Gesamtkunstwerk'
+ZIZEK_URL = 'https://www.lrb.co.uk/the-paper/v28/n07/slavoj-zizek/nobody-has-to-be-vile'
 FIFTH = 'The Fifth Estate: On Museums, Public Imagination and the Vanishing Space for Collectivity'
 frames = [
     {'id': 'history', 'strategy': 'The nation’s story', 'target': 'National, city and war museums, and museums of history',
@@ -56,6 +73,17 @@ frames = [
          pick('contemporary', 4, 'e-flux journal #21', 'December 2010'),
          pick('contemporary', 2, 'e-flux journal #107', 'March 2020', only=r'Whitney|MoMA|Museum of Modern Art'),
      ]},
+    {'id': 'archive', 'strategy': 'The archive and the stage', 'target': 'Museums and centres of modern and contemporary art',
+     'impact': 'Read the programme and the turnover of curators against what the museum keeps, conserves and pays for.',
+     'applies': {'type': 'contemp'},
+     'quotes': [
+         say('Boris Groys', GROYS_TITLE, 'e-flux journal #50', 'December 2013',
+             GROYS_URL,
+             'Thus, our art museums became huge garbage cans of history in which things were kept and exhibited that had no use anymore in real life: sacral images of past religions or status objects of past lifestyles.'),
+         say('Boris Groys', GROYS_TITLE, 'e-flux journal #50', 'December 2013',
+             GROYS_URL,
+             'A new curator is a new dictator who erases the traces of the previous dictatorship. In this way, contemporary museums continually morph from spaces for permanent collections into stages for temporary curatorial projects—temporary Gesamtkunstwerks.'),
+     ]},
     {'id': 'pavilion', 'strategy': 'The pavilion and the nation', 'target': 'Biennials, triennials and large periodic exhibitions',
      'impact': 'Read who pays for each national or sponsored presentation, and what the host city is left with.',
      'applies': {'type': 'bien'},
@@ -65,6 +93,14 @@ frames = [
          pick('contemporary', 6, 'e-flux Criticism', 'June 2016', only=r'Venice|Venezia',
               context='On the Venice Architecture Biennale.'),
          pick('contemporary', 2, 'e-flux journal #107', 'March 2020', only=r'Whitney'),
+         say('Yanis Varoufakis', VAROUFAKIS_MOSCOW, 'The Art Newspaper', 'October 2015',
+             VAROUFAKIS_MOSCOW_URL,
+             'Art must not be anodyne, culture cannot be decorative. [Artists] should be feared by the powerful in our society; if you are not, you are not doing your job properly.',
+             context='Keynote speech at the sixth Moscow Biennale of Contemporary Art.'),
+         say('Yanis Varoufakis', VAROUFAKIS_ATHENS, 'e-flux Criticism', 'June 2017',
+             VAROUFAKIS_ATHENS_URL,
+             'Documenta took a great deal more from Athens—from both its private and public sector—than it gave. […] When Documenta comes here and talks about neoliberalism with no mention of Deutsche Bank, Société Générale, the awful Troika process, the Eurogroup, etc., it is choosing to be irrelevant.',
+             context='On Documenta 14 in Athens.'),
      ]},
     {'id': 'gift', 'strategy': 'The gift and its givers', 'target': 'Museums whose funders carry a flag',
      'impact': 'Where a flag names an industry, ask what the gift buys the giver, and who sits on the board that accepts it.',
@@ -73,6 +109,12 @@ frames = [
          pick('funding', 0, 'e-flux Notes', 'January 2026'),
          pick('funding', 1, LIO + ', Ecologising Museums', 'November 2015'),
          pick('funding', 3, 'e-flux Architecture', 'November 2023'),
+         say('Slavoj Žižek', 'Nobody has to be vile', 'London Review of Books 28/7', 'April 2006',
+             ZIZEK_URL,
+             'Remember Andrew Carnegie, who employed a private army to suppress organised labour in his steelworks and then distributed large parts of his wealth for educational, cultural and humanitarian causes, proving that, although a man of steel, he had a heart of gold? In the same way, today’s liberal communists give away with one hand what they grabbed with the other.'),
+         say('Slavoj Žižek', 'Nobody has to be vile', 'London Review of Books 28/7', 'April 2006',
+             ZIZEK_URL,
+             'According to liberal communist ethics, the ruthless pursuit of profit is counteracted by charity: charity is part of the game, a humanitarian mask hiding the underlying economic exploitation.'),
      ]},
 ]
 hist = NOTES / 'quotes-history.json'
