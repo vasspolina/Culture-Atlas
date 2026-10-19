@@ -16524,7 +16524,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const g = globeVp.getBoundingClientRect().width;
         splitter.setAttribute('aria-orientation', 'vertical');
         splitter.setAttribute('aria-valuemin', String(GLOBE_MIN));
-        splitter.setAttribute('aria-valuemax', String(Math.round(rect.width - COLUMN_MIN)));
+        splitter.setAttribute('aria-valuemax', String(Math.round(rect.width - columnMin(rect.width))));
         splitter.setAttribute('aria-valuenow', String(Math.round(g)));
         splitter.setAttribute('aria-valuetext', Math.round(g) + ' pixels for the globe');
       };
