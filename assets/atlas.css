@@ -1454,3 +1454,8 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #hqPanel .hq-names .hq-s{display:block}
 #hqPanel.is-sheet,#hqPanel.is-sheet.is-right{left:8px;right:8px;width:auto;max-width:none;top:auto;bottom:56px;max-height:40%}
 #hqPanel.is-sheet.is-top{top:88px;bottom:auto;max-height:calc(50% - 100px)}
+
+/* The record's "Ask in chat": outlined like the other record actions (40px high, 12px radius, 1.5px outline, 44px hit area). */
+#hqPanel .hq-ask{display:inline-flex;align-items:center;height:40px;margin:2px 0 8px;padding:0 15px;border:1.5px solid var(--ink);border-radius:12px;background:transparent;color:var(--ink);font:400 17px/1 var(--sans);letter-spacing:.01em;cursor:pointer;position:relative}
+#hqPanel .hq-ask::after{content:"";position:absolute;inset:-2px 0}
+#hqPanel .hq-ask:hover,#hqPanel .hq-ask:focus-visible{background:var(--ink);color:var(--paper)}
