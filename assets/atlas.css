@@ -326,12 +326,9 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #desktopDossierRecordBody .dossier-main-heading,.dossier-main-heading{font:700 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
 #desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet{container-type:inline-size}
 :is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading,#dossier-sheet-name{font-size:clamp(20px,calc(140cqw / var(--title-length,18)),44px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-layout,
-#dossier-sheet-visit:not(.hidden){display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:1em;align-items:start}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-layout{display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:1em;align-items:start}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-content{min-width:0}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-details{margin:0}
-#dossier-sheet-visit .visit-content{min-width:0}
-#dossier-sheet-visit .visit-details{margin:0}
 #desktopDossierRecordBody .rule-b{border-bottom:1px solid var(--line)}
 #desktopDossierRecordBody .record-actions{gap:6px!important;padding-top:12px!important}
 @media (max-width:767px){.dossier-main-heading{font-size:36px}}
@@ -805,9 +802,8 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 /* Gossip mode: the globe pane is dark with yellow text, in either theme. */
 :root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
 :root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button:hover,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
-/* One rule between the record and "Inside the building", and none under its heading. */
-#desktopDossierRecordBody:has(+ #desktopDossierInside:not(.hidden)) .rule-b:last-of-type{border-bottom:0}
-#desktopDossierInside>h3+.rule-t{border-top:0;padding-top:0}
+/* What the building view finds follows the record as its last sections, with no heading and no second rule above it. */
+#desktopDossierInside{border-top:0!important;padding-top:0!important}
 
 /* Right column: marker highlights. Black text on all three, so contrast holds in light, dark and gossip. */
 :root{--hl-blue:#72a5ed;--hl-green:#5ac651;--hl-yellow:#ffffb1}
@@ -940,6 +936,42 @@ abbr[title]{text-decoration:none}
    paragraph after it starts flush, as after any break. */
 .curator-message-wrap p:not(.no-indent)+p:not(.no-indent),#desktopDossierRecordBody p:not(.no-indent)+p:not(.no-indent),#detailBody p:not(.no-indent)+p:not(.no-indent),#dossier-sheet-scrollable-body p:not(.no-indent)+p:not(.no-indent),#curatorHeroGreeting p:not(.no-indent)+p:not(.no-indent),.chat-info p:not(.no-indent)+p:not(.no-indent){text-indent:1em;margin-top:0}
 .curator-message-wrap p:not(.no-indent):has(+ p:not(.no-indent)),#desktopDossierRecordBody p:not(.no-indent):has(+ p:not(.no-indent)),#detailBody p:not(.no-indent):has(+ p:not(.no-indent)),#dossier-sheet-scrollable-body p:not(.no-indent):has(+ p:not(.no-indent)),#curatorHeroGreeting p:not(.no-indent):has(+ p:not(.no-indent)),.chat-info p:not(.no-indent):has(+ p:not(.no-indent)){margin-bottom:0}
+
+/* ---- the record's small print, critiques and building facts (19 Oct 2026, Hochuli p.37, p.44, p.47-53, fig 70) ----
+   Three sizes in the panel: the name, 18px for what is read, 14px for labels, sources, citations and counts.
+   A source line is small print, never larger than the text it backs. A domain never breaks at its hyphen. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .source-note,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .source-note a{font-size:14px;line-height:1.3}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) a.domain{white-space:nowrap;hyphens:manual;-webkit-hyphens:manual}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) a{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:break-word}
+/* The critique: a small-print label line (what it is, which of how many), its title at the text size, then the parts
+   one line apart. The quotation is set off by the space around it, not by an indent (user's instruction, 19 Oct 2026):
+   the text's size, flush with the column, its opening mark hung into the margin so the words align with the text
+   above, its source in small print directly under it. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-section,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-section>*{min-width:0;max-width:100%}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-head .kicker{margin:0;font-size:14px;line-height:1.3}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-title{font:400 18px/1.3 var(--sans);letter-spacing:0;margin:0;text-wrap:balance}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-section .meta{font-size:14px;line-height:1.3}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote{margin:23.4px 0 0;padding:0;border:0;min-width:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote blockquote{position:relative;margin:0;padding:0;font:400 18px/1.3 var(--sans);letter-spacing:0;text-indent:0;max-width:34em}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote .quote-hang{position:absolute;right:100%;top:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote figcaption{margin:0;overflow-wrap:break-word;max-width:44em}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote>.meta:first-child{margin-bottom:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-asks{font:400 18px/1.3 var(--sans);margin:23.4px 0 0;text-indent:0;max-width:34em}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-actions{margin-top:23.4px}
+/* Facts as a table, after the user's reference (19 Oct 2026): the block's name, a rule, one row per fact with the label
+   in a left column about two fifths wide and the value beside it, everything at the text size and colour, rows set
+   solid with no space between them, and a rule to close the block. A value that runs on stays in its own column. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts{margin:0;padding:23.4px 0 0;border:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-title{font:400 18px/1.3 var(--sans);letter-spacing:0;margin:0;padding:0 0 6px;border-bottom:1px solid var(--line)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);column-gap:1em;margin:0;padding:4px 0 6px;border-bottom:1px solid var(--line)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dt,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dd{margin:0;font:400 18px/1.3 var(--sans);letter-spacing:0;color:var(--ink);text-indent:0;min-width:0;overflow-wrap:break-word;hyphens:manual}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dd{grid-column:2}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dt{grid-column:1}
+/* A section that ends in a table closes on the table's rule, not a second one. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .py-3.rule-b:has(+ .facts){border-bottom:0}
+#desktopDossierInside .facts:first-child{padding-top:23.4px}
+/* One highlight: black text on a flat tint, padded evenly, square, never glued to the line above or below. */
+:is(#desktopDossierColumn,#detailBody,#dossier-sheet-scrollable-body) :is(.grade-mark,.flag-epstein){display:inline;padding:.06em .3em;border-radius:0;color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* Light mode: the dark mode hues as plain coloured text, deepened until each clears 3:1 on white at this size. */
 :root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#10957f}
