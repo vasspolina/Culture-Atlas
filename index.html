@@ -8282,7 +8282,7 @@ return maplibregl$1;
           badgeEl.style.background = 'linear-gradient(135deg, #064e3b 0%, #022c22 100%)';
           badgeEl.style.border = '2.5px solid #34d399';
           badgeEl.style.color = '#ffffff';
-          badgeEl.style.fontFamily = '"PP Neue Gstaad", sans-serif';
+          badgeEl.style.fontFamily = '"Jokker", sans-serif';
           badgeEl.style.fontSize = '14px';
           badgeEl.style.fontWeight = '400';
           badgeEl.style.display = 'flex';
@@ -9028,7 +9028,7 @@ return maplibregl$1;
 
         // Icon or Initial in center
         trusteeCtx.fillStyle = '#ffffff';
-        trusteeCtx.font = '14px "PP Neue Gstaad", sans-serif';
+        trusteeCtx.font = '14px "Jokker", sans-serif';
         trusteeCtx.textAlign = 'center';
         trusteeCtx.textBaseline = 'middle';
         const glyph = n.type === 'institution' ? (n.tier === 'A' ? 'SOURCED' : 'INST') : 'CONFLICT';
@@ -9047,14 +9047,14 @@ return maplibregl$1;
           trusteeCtx.stroke();
 
           trusteeCtx.fillStyle = '#ffffff';
-          trusteeCtx.font = '14px "PP Neue Gstaad", sans-serif';
+          trusteeCtx.font = '14px "Jokker", sans-serif';
           trusteeCtx.fillText(`${n.interlocks}`, badgeX, badgeY);
         }
 
         // Text Label
         if (!isDimmed || isFocus) {
           const label = n.shortName || n.name;
-          trusteeCtx.font = isFocus ? '16px "PP Neue Gstaad", sans-serif' : '14px "PP Neue Gstaad", sans-serif';
+          trusteeCtx.font = isFocus ? '16px "Jokker", sans-serif' : '14px "Jokker", sans-serif';
           const tw = trusteeCtx.measureText(label).width;
           const ly = n.y + r + 12;
 
@@ -10018,8 +10018,8 @@ return maplibregl$1;
 
     // Canvas type for the cards: Compact Bold capitals for names, Regular for facts.
     // A city's name on its hover card is set in the roman, in normal case: bold capitals are kept for the names of spaces.
-    const ATLAS_CARD_TITLE_FONT = '400 24px "PP Neue Gstaad", "Helvetica Neue", Helvetica, Arial, sans-serif';
-    const ATLAS_CARD_MONO_FONT = '14px "PP Neue Gstaad", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const ATLAS_CARD_TITLE_FONT = '400 24px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const ATLAS_CARD_MONO_FONT = '14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
     }
@@ -10038,7 +10038,7 @@ return maplibregl$1;
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ', ' + inst.curatorial_focus : (inst.neighborhood ? ', ' + inst.neighborhood : ''));
 
-      ctx.font = '700 20px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
+      ctx.font = '700 20px "Jokker", sans-serif';
       const nameW = ctx.measureText(nameUpper).width;
       ctx.font = ATLAS_CARD_MONO_FONT;
       const subW = ctx.measureText(subText).width;
@@ -10076,7 +10076,7 @@ return maplibregl$1;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillStyle = cardInk;
-      ctx.font = '700 20px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
+      ctx.font = '700 20px "Jokker", sans-serif';
       ctx.fillText(fit(nameUpper), textX, cardY + 14);
 
       ctx.font = ATLAS_CARD_MONO_FONT;
@@ -10471,7 +10471,7 @@ return maplibregl$1;
         } catch (e) {}
         const shownCityLabels = new Set();
         const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
-        ctx.font = '14px "PP Neue Gstaad", sans-serif';
+        ctx.font = '14px "Jokker", sans-serif';
         
         let candidateCities = [];
         if (selectedCountryFilter !== 'all') {
@@ -10563,7 +10563,7 @@ return maplibregl$1;
               ctx.globalAlpha = badgeAlpha;
 
               if (isClustered) {
-                ctx.font = '14px "PP Neue Gstaad", sans-serif';
+                ctx.font = '14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 drawPillLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2, !!(isSelected || isHovered), cityTier(city.name));
@@ -10575,7 +10575,7 @@ return maplibregl$1;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
-                ctx.font = '14px "PP Neue Gstaad", sans-serif';
+                ctx.font = '14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 drawPillLabel(txt, pt.x, by + bh / 2, !!(isSelected || isHovered), cityTier(city.name));
@@ -10601,7 +10601,7 @@ return maplibregl$1;
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '14px "PP Neue Gstaad", sans-serif';
+          ctx.font = '14px "Jokker", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -10794,7 +10794,7 @@ return maplibregl$1;
 
           if (shouldDrawGlobeLabel && !isHov) {
             ctx.save();
-            ctx.font = '14px "PP Neue Gstaad", sans-serif';
+            ctx.font = '14px "Jokker", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
@@ -10992,7 +10992,7 @@ return maplibregl$1;
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = '14px "PP Neue Gstaad", sans-serif';
+        ctx.font = '14px "Jokker", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
         // "0" over the left tick, the distance over the right one, so the figures line up with the bar at any length.
@@ -11042,7 +11042,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.stroke();
 
-        ctx.font = '400 15px "PP Neue Gstaad", sans-serif';
+        ctx.font = '400 15px "Jokker", sans-serif';
         ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';

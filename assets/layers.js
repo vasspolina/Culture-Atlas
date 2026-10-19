@@ -252,7 +252,7 @@
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const font = '14px "PP Neue Gstaad", sans-serif';
+    const font = '14px "Jokker", sans-serif';
     const boxes = labelBoxesOnScreen(dots);
     ctx.save();
     ctx.font = font; ctx.textBaseline = 'middle';
