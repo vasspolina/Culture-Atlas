@@ -4,8 +4,8 @@
 
    What each rule serves:
    - Dashes (p.36, figs 47-50). One sign for the whole product: the en dash with a word space either side, the book's
-     own practice. Measured in PP Neue Gstaad Regular the hyphen is 0.39 em wide and the en dash 0.59 em (ink 0.29 vs
-     0.48 em), far enough apart that the spaced en dash reads as a dash, so the unspaced em dash (0.99 em) is not
+     own practice. Measured in Jokker Regular the hyphen is 0.36 em wide and the en dash 0.557 em (advance widths; Gstaad
+     measured 0.39 and 0.59, so the ratio holds), far enough apart that the spaced en dash reads as a dash, so the unspaced em dash (0.93 em) is not
      needed. Every other form (" - ", "--", "—", " — ") is normalised to it; the space before it is non-breaking so no
      line begins with a dash (p.36), and both spaces are the same width (the font's NBSP equals its space).
      Ranges and spans take a closed en dash (fig 49): 10:00–18:00, Wed–Fri, 1965–70, 2024–25;
@@ -23,7 +23,7 @@
      so nothing is asked of it there.
    - Capitals in running text (p.39-40, fig 54). A word in capitals (UNESCO, EU, a shouted word) is wrapped in .abbr,
      which atlas.css sets one size smaller and evenly letterspaced; a lowercase word is never letterspaced (p.25).
-   - The word (p.23-31, figs 23-35), letterspacing study of PP Neue Gstaad as served; values are in atlas.css.
+   - The word (p.23-31, figs 23-35), letterspacing study of PP Neue Gstaad as served (not re-measured on Jokker); values are in atlas.css.
      Measured: regular n has 139/1000 em of space against a 258/1000 counter (0.54), o 80 against 320 (0.25), H-H 170,
      O-O 94, H-O 132; Compact Bold n 101 against 165. The face is spaced on the counter principle already (fig 25), and
      it is not a narrow cut (n ink / x-height 0.87), so the fig 27 exception does not apply at 14px: lowercase gets
@@ -131,7 +131,7 @@
   // phrase is one run, so a lone A between capital words is set small with its neighbours.
   var ACRONYM = /(^|[^A-Za-z\u00c0-\u024f\d])([A-Z]{2,}[A-Z\u00c0-\u00de]*(?: (?:[A-Z]{2,}[A-Z\u00c0-\u00de]*|A)(?![A-Za-z\u00e0-\u024f\d]))*)(?![a-z\u00e0-\u024f\d])/g;
   var KEEP = { OK: 1 };
-  // PP Neue Gstaad has no thin space, narrow no-break space or word joiner (checked in the cmap), so a browser would
+  // Jokker has a thin space but no narrow no-break space or word joiner (checked in the cmap), so a browser would
   // draw them in another typeface. typeset() writes them as markers; the DOM pass turns each into a span set in this
   // face: a thin space is a no-break space narrowed by word-spacing (.ts in atlas.css), a word joiner keeps a range on one line.
   var MARK = /([^\s\u00a0\u2009\u202f]*\u2060[^\s\u00a0\u2009\u202f]*)|[\u2009\u202f]/g;
