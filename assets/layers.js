@@ -44,8 +44,8 @@
   let HQ_HITS = [], HQ_LABELS = [], HQ_SEL = null, HQ_HOV = null;
   // Every other mark the layers draw (the dots at the ends of tie lines, funder rings, right-wing and Epstein marks, flag and
   // grade marks, the flagged counts) can be found by the pointer too. LM holds the ones drawn last frame, LM_HOV the one under
-  // the pointer. A mark that sits on a space's own dot (flag, grade) is "pass": a click asks the chat and then carries on to the
-  // space as before.
+  // the pointer. A mark that sits on a space's own dot (flag, grade) is "pass": its hover goes to the space, and a click asks
+  // the chat.
   let LM = [], LM_HOV = null;
   // Ask the chat: show its tab (on a desktop the Details tab may be in front) and put the question to it.
   function askChat(q) {
@@ -172,7 +172,7 @@
         const hot = LM_HOV && LM_HOV.rec === o;
         ctx.beginPath(); ctx.arc(pt.x, pt.y, hot ? 6 : 3.5, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill();
         if (hot) { ctx.lineWidth = 1.5; ctx.strokeStyle = '#000'; ctx.stroke(); }
-        LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: raw, label: o.n, sub: `Shares a funder with ${rec.n}`, ask: o.id });
+        LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: raw, label: o.n, sub: `Shares a funder with ${rec.n}`, ask: `Who funds ${o.n}?` });
       });
     }
     ctx.restore();
@@ -357,7 +357,7 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.grade || !G[i.grade]) return;
-        LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `Why is ${i.name} graded ${i.grade}?` });
+        LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `Why is ${i.name} graded ${G[i.grade].letter || i.grade}?` });
         ctx.beginPath(); ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
         ctx.fillStyle = G[i.grade].col; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
@@ -571,11 +571,12 @@
       if ((alone && alone.ask) !== (LM_HOV && LM_HOV.ask) || (alone && alone.rec) !== (LM_HOV && LM_HOV.rec)) { LM_HOV = alone; if (typeof scheduleRender === 'function') scheduleRender(); }
       return !!alone;
     },
-    // A click on a mark asks the chat about it. True when that is all the click does; a flag or grade mark goes on to its space.
+    // A click on a mark asks the chat about it, and that is all the click does. The chat answers a question about a space
+    // with the space selected on the map and stays in front, so a flag or grade mark loses nothing by not opening the record.
     click(mx, my) {
       const m = markAt(mx, my); if (!m) return false;
       askChat(m.ask);
-      return !m.pass;
+      return true;
     }
   };
 
