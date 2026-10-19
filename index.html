@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=224">
-  <script src="assets/config.js?v=224"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=225">
+  <script src="assets/config.js?v=225"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9772,9 +9772,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v224';
+      const ATLAS_RELEASE = 'culture-atlas-v225';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=224').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=225').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11394,13 +11394,19 @@ return maplibregl$1;
         if (rows.length === 1) return rows[0].replace(/^<li>/, '<p class="t-lead">').replace(/<\/li>$/, '</p>');
         return rows.length ? `<ul class="list-disc pl-5 t-lead">${rows.join('')}</ul>` : '';
       };
-      const item = (title, meta, body, urls) => `
+      // meta is a plain string, or { html } when it carries markup. An empty { html } is no meta
+      // at all: the old `meta.html || escapeHtml(meta)` fell through to escapeHtml of the object
+      // and printed "[object Object]" for a flagged entry with no flag labels.
+      const item = (title, meta, body, urls) => {
+        const metaHtml = meta && typeof meta === 'object' ? meta.html || '' : escapeHtml(meta || '');
+        return `
         <div class="record-card space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(title)}</div>
-          ${meta ? `<div class="kicker no-indent">${meta.html || escapeHtml(meta)}</div>` : ''}
+          ${metaHtml ? `<div class="kicker no-indent">${metaHtml}</div>` : ''}
           ${body}
           ${srcs(urls) ? `<div class="no-indent">${srcs(urls)}</div>` : ''}
         </div>`;
+      };
       const blocks = [];
       if (inst.why_flagged) {
         const more = (inst.flag_details || []).filter(d => d && d.text);
@@ -18874,9 +18880,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=224"></script>
-<script src="assets/layers.js?v=224"></script>
-<script src="assets/hq-detail.js?v=224"></script>
-<script src="assets/bubbles.js?v=224" defer></script>
+<script src="assets/typeset.js?v=225"></script>
+<script src="assets/layers.js?v=225"></script>
+<script src="assets/hq-detail.js?v=225"></script>
+<script src="assets/bubbles.js?v=225" defer></script>
 </body>
 </html>
