@@ -1457,3 +1457,20 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #hqPanel .hq-names .hq-s{display:block}
 #hqPanel.is-sheet,#hqPanel.is-sheet.is-right{left:8px;right:8px;width:auto;max-width:none;top:auto;bottom:56px;max-height:40%}
 #hqPanel.is-sheet.is-top{top:88px;bottom:auto;max-height:calc(50% - 100px)}
+
+/* The Details panel's head (user's instruction, 19 Oct 2026).
+   Text reflows to the panel: the 66ch cap is gone and the name wraps instead of being cut, with 18px of margin each side.
+   The rating is coloured type, its grade colour 40% darker (JS gradeInk), light on the dark theme, no block behind it.
+   The action buttons take 3px of padding above and below; the hit area still reaches 44px through the ::after.
+   The 6px white strip of the splitter beside the panel is gone: only its hairline remains, and the handle keeps its wide grab area. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,.t-lead,.kicker,.visit-rows>div>div:last-child){max-width:none}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading){white-space:normal;text-wrap:balance;overflow:visible;text-overflow:clip;overflow-wrap:break-word}
+#desktopDossierRecordBody>div{padding-left:18px;padding-right:18px}
+:root:root:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{display:inline;background:none;padding:0;border-radius:0;color:var(--grade-ink)}
+:root[data-theme="dark"]:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{color:var(--grade-col)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{padding:3px 13.5px;height:auto;min-height:0}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action::after{inset:-9px -2px}
+@media (min-width:768px){#globeSplitter{width:1px}}
+/* The phone's record sheet follows the same head: its name wraps, and its margins are 18px. */
+#dossier-sheet-name{white-space:normal;text-wrap:balance;overflow:visible;text-overflow:clip;overflow-wrap:break-word}
+#dossier-bottom-sheet .px-4,#dossier-sheet-scrollable-body{padding-left:18px;padding-right:18px}

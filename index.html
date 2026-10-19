@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=215">
-  <script src="assets/config.js?v=215"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=216">
+  <script src="assets/config.js?v=216"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9758,9 +9758,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v215';
+      const ATLAS_RELEASE = 'culture-atlas-v216';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=215').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=216').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11481,10 +11481,19 @@ return maplibregl$1;
       if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}, ${GRADE[inst.grade].label.toLowerCase()}`;
       return inst.tier === 'A' ? 'Source cited' : inst.tier === 'B' ? 'Flagged' : 'Unverified';
     }
+    // The rating is set as coloured type, not a block (user's instruction, 19 Oct 2026): the grade's colour made 40% darker, and darker
+    // still where that is not yet 4.5:1 on white (the yellow of a C needs it). On the dark theme the grade's own colour is the type.
+    const gradeInk = (hex) => {
+      const rgb = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+      const lum = (c) => { const [r, g, b] = c.map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+      let k = 0.6, c = rgb.map(v => Math.round(v * k));
+      while (1.05 / (lum(c) + 0.05) < 4.5 && k > 0.2) { k -= 0.02; c = rgb.map(v => Math.round(v * k)); }
+      return '#' + c.map(v => v.toString(16).padStart(2, '0')).join('');
+    };
     function gradeLineHtml(inst) {
       if (inst.grade && GRADE[inst.grade]) {
         const g = GRADE[inst.grade];
-        return `<p class="no-indent grade-line"><span class="grade-mark" style="background:${g.mark || g.col}">Funding transparency rating ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
+        return `<p class="no-indent grade-line"><span class="grade-mark" style="--grade-col:${g.col};--grade-ink:${gradeInk(g.col)}">Funding transparency rating ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
       }
       return inst.tier === 'U' ? `<p class="no-indent grade-line">Not graded: ${inst.funding ? 'a funder list is recorded, but the listed funders are not independently corroborated.' : 'no funder list is recorded.'}</p>` : '';
     }
@@ -18778,9 +18787,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=215"></script>
-<script src="assets/layers.js?v=215"></script>
-<script src="assets/hq-detail.js?v=215"></script>
-<script src="assets/bubbles.js?v=215" defer></script>
+<script src="assets/typeset.js?v=216"></script>
+<script src="assets/layers.js?v=216"></script>
+<script src="assets/hq-detail.js?v=216"></script>
+<script src="assets/bubbles.js?v=216" defer></script>
 </body>
 </html>
