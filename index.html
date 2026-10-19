@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=220">
-  <script src="assets/config.js?v=220"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=223">
+  <script src="assets/config.js?v=223"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7023,6 +7023,17 @@ return maplibregl$1;
       }
     };
 
+    // A question put to the chat exactly as typed. atlasAskCurator first looks for a space named anywhere in the text and, if it
+    // finds one, turns the question into "Tell me about" that space and opens its record; a question such as "Who funds X?"
+    // must stay a question, as it does when a suggestion chip or the chat box sends it. The chat comes to the front first.
+    window.atlasAskQuestion = function(text) {
+      text = String(text || '').trim(); if (!text) return;
+      if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') setMobileViewMode('chat');
+      else if (typeof setWorkspaceTab === 'function') setWorkspaceTab('chat');
+      appendUserMessage(text);
+      handleCuratorQuery(text);
+    };
+
     window.atlasPlanVisit = function(instNameOrObj) {
       let inst = resolveInstitutionByIdOrName(instNameOrObj);
       if (!inst) {
@@ -9778,11 +9789,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v220';
+    const ATLAS_RELEASE = 'culture-atlas-v223';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=220').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=223').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17935,6 +17946,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // An office mark under the click opens its record; where marks and spaces crowd, a list offers each one.
       if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.click(mx, my, clientX, clientY, visibleDots)) return;
+      // The other layer marks: a click asks the chat about the mark (a flag or grade mark then goes on to its space).
+      if (!isCityStreetViewActive && window.atlasLayerMarks && window.atlasLayerMarks.click(mx, my)) return;
 
       // PRIORITY 1: Check institution click across dots, text label badges, micro-cards, and proximity
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
@@ -18166,6 +18179,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         canvas.style.cursor = 'pointer';
         return;
       }
+      // Any other mark a map layer draws (tie ends, funder rings, right-wing and Epstein marks, flagged counts): assets/layers.js
+      if (!isCityStreetViewActive && window.atlasLayerMarks && window.atlasLayerMarks.hover(mx, my)) {
+        canvas.style.cursor = 'pointer';
+        hoveredCity = null; hoveredCityCardHitbox = null; isHoveringCityExploreLink = false;
+        return;
+      }
 
       // PRIORITY 1: Check institution hover across dots, text labels, micro-cards, and proximity
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
@@ -18263,7 +18282,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       lastPointer = e.pointerType === 'mouse' ? { x: e.clientX, y: e.clientY } : null;
       updateHoverCursor(e.clientX, e.clientY);
     });
-    canvas.addEventListener('pointerleave', () => { lastPointer = null; });
+    canvas.addEventListener('pointerleave', () => { lastPointer = null; if (window.atlasLayerMarks) window.atlasLayerMarks.hover(-1e4, -1e4); });
     canvas.addEventListener('pointerdown', e => { window.__lastPointerType = e.pointerType; zoomAnchor = null; }, true);
     // The globe holds still while a mouse is over it and turns again when the cursor leaves.
     const globePane = document.getElementById('globeViewport') || canvas;
@@ -18872,9 +18891,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=220"></script>
-<script src="assets/layers.js?v=220"></script>
-<script src="assets/hq-detail.js?v=220"></script>
-<script src="assets/bubbles.js?v=220" defer></script>
+<script src="assets/typeset.js?v=223"></script>
+<script src="assets/layers.js?v=223"></script>
+<script src="assets/hq-detail.js?v=223"></script>
+<script src="assets/bubbles.js?v=223" defer></script>
 </body>
 </html>
