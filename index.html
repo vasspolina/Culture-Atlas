@@ -10459,12 +10459,9 @@ return maplibregl$1;
           ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : '#ff6119') : (active ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a'));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = '#000000';
-          // The block's colour is the tier, and colour alone is not enough: a small mark in the block's left padding says it too,
-          // the same outline the pin has (circle clean, square flagged, triangle unverified).
-          if (window.atlasShapePath) { window.atlasShapePath(ctx, TIER_SHAPE[tier] || 'triangle', cx0 - w / 2 + 9, cy0, TIER_SHAPE_SIZE[TIER_SHAPE[tier] || 'triangle']); ctx.fill(); }
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText(text, cx0 + 4, cy0 + 0.5);
+          ctx.fillText(text, cx0, cy0 + 0.5);
           ctx.restore();
         };
         // 6. City labels (all cities in the selected country or the top cities worldwide)
