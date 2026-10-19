@@ -692,7 +692,8 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 .unverified-platform-tag{font-size:12px;background:transparent}
 .account-source-links{display:flex;flex-wrap:wrap;gap:8px}
 .account-source-links a{display:inline-flex;align-items:center;gap:4px}
-.external-link-icon{width:13px;height:13px;flex:none}
+/* The global svg{display:block} put each source link's icon on a line of its own under the name. It sits inline after the name, on the text's baseline. */
+.external-link-icon{display:inline-block;width:13px;height:13px;flex:none;margin-left:.25em;vertical-align:-.12em}
 
 /* Map credit: a small square "i" that opens to the text. Never a pill. */
 .maplibregl-ctrl-attrib.maplibregl-compact{background:var(--paper);border-radius:0;margin:0 10px 10px 0;min-height:24px;padding:0;color:var(--ink);font:400 14px/1.3 var(--sans)}
@@ -1379,13 +1380,15 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline-offset:3px}
 /* The chat column is centred in its panel and its width is the reader's (18 Oct 2026). Before this the column was pinned left
    (#curatorScrollContent margin 0 auto 0 0, the dock's inner div margin 0), 22 chips ran from the top-left and the panel's right
-   half stood empty. Now the conversation, the input and the records note share one column, --chat-w wide (660px until the reader
-   drags the handle on either edge; the script keeps the choice) and never wider than the panel less its 18px gutters (user's instruction, 18 Oct 2026). Text
+   half stood empty. Now the conversation, the input and the records note share one column, --chat-w wide (the whole panel until the reader
+   drags the handle on either edge; the choice lasts until the page is reloaded) and never wider than the panel less its 18px gutters (user's instruction, 18 Oct 2026). Text
    follows the column: chips, messages and the input wrap to it, and the 350px minimum the column used to carry is gone so a
    narrow panel (the splitter allows 220px) reflows instead of clipping.
    660px: the message text sits 2.3em in from the column's edge, so 660 less 2.3em of 18px is about 34em, the measure the
    conversation was set to before. */
-#curatorIntelligenceColumn{--chat-w:660px;--chat-gutter:18px;min-width:0}
+/* Default width: the whole panel less the gutters (user's instruction, 19 Oct 2026: 18px of margin on both sides). The number is only
+   "wider than any panel"; min(100%,...) below clamps it, and the handle still narrows the column. */
+#curatorIntelligenceColumn{--chat-w:5000px;--chat-gutter:18px;min-width:0}
 #curatorIntelligenceColumn #curatorScrollArea{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
 #curatorIntelligenceColumn #workBottomDock{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
 #curatorIntelligenceColumn #curatorScrollContent,#curatorIntelligenceColumn #curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){width:min(100%,var(--chat-w));max-width:none;margin-left:auto;margin-right:auto;min-width:0}
@@ -1454,3 +1457,16 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #hqPanel .hq-names .hq-s{display:block}
 #hqPanel.is-sheet,#hqPanel.is-sheet.is-right{left:8px;right:8px;width:auto;max-width:none;top:auto;bottom:56px;max-height:40%}
 #hqPanel.is-sheet.is-top{top:88px;bottom:auto;max-height:calc(50% - 100px)}
+
+/* Reported, not verified (user's instruction, 19 Oct 2026): the cards in the record's reported, account and reader sections sit on a white ground,
+   one hairline each with a line of space between them (two touching hairlines read as one heavy rule), and their words are set in the
+   same brown as the AI footnote, so the level of verification shows in the type. Press reporting keeps the ink. Brown on white is
+   4.9:1; on the dark theme the brown is a light amber. The bullets and the pill are gone: two lines of fields need no markers, and the
+   label is small print, not a box. */
+:root{--unverified-ink:#926a00}
+:root[data-theme="dark"]{--unverified-ink:#e0b84a}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.is-unverified{background:var(--paper);border:1px solid var(--ink);padding:12px;margin:0 0 12px;color:var(--unverified-ink)}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.is-unverified :not(mark):not(mark *){color:inherit}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.account-report-card ul{list-style:none;padding:0;margin:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card .unverified-platform-tag{display:block;width:auto;border:0;border-radius:0;background:none;padding:0;margin:0;font:400 14px/1.3 var(--sans);letter-spacing:.01em;color:inherit}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.related-report-card{background:var(--paper);margin:0 0 12px}
