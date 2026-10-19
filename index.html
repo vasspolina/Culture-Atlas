@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=208">
-  <script src="assets/config.js?v=208"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=209">
+  <script src="assets/config.js?v=209"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7819,7 +7819,8 @@ return maplibregl$1;
       const inside = document.getElementById('desktopDossierInside');
       const col = document.getElementById('desktopDossierColumn');
       if (window.innerWidth >= 768 && inside && col) {
-        const onRecord = new Set(['flag', 'funding', 'reported', 'accounts', 'sources']);
+        // Visiting is on the record already (hours, admission, address), so the column does not set it a second time.
+        const onRecord = new Set(['flag', 'funding', 'reported', 'accounts', 'sources', 'visiting']);
         const rest = cats.filter(c => !onRecord.has(c.key));
         // In the record column each part is a table of facts like the record's own Visiting block, with no colour key
         // (the map has its own); a line that reads "Label: value" puts the label in the left column.
@@ -9768,9 +9769,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v208';
+      const ATLAS_RELEASE = 'culture-atlas-v209';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=208').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=209').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11535,7 +11536,7 @@ return maplibregl$1;
       if (fBox) { const fh = fundingHtml(inst); fBox.className = fh ? '' : 'hidden'; fBox.innerHTML = fh; }
       const vBox = document.getElementById('dossier-sheet-visit');
       if (vBox) {
-        const vh = factsTableHtml('Visiting', [['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')]]);
+        const vh = factsTableHtml('Visiting', [['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')], ['Address', escapeHtml(inst.address || '')]]);
         vBox.className = vh ? '' : 'hidden'; vBox.innerHTML = vh;
       }
       if (isGossipModeActive) {
@@ -12036,6 +12037,7 @@ return maplibregl$1;
           ${!isClean ? factsTableHtml('Visiting', [
             ['Opening hours', escapeHtml(inst.opening_hours || '')],
             ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')],
+            ['Address', escapeHtml(inst.address || '')],
           ], ' role="region" aria-label="Visiting"') : ''}
 
           <!-- 3.  ARTISTIC CRITIQUES & INSTITUTIONAL HISTORY (Uncontained Rich Research Section) -->
@@ -18782,8 +18784,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=208"></script>
-<script src="assets/layers.js?v=208"></script>
-<script src="assets/bubbles.js?v=208" defer></script>
+<script src="assets/typeset.js?v=209"></script>
+<script src="assets/layers.js?v=209"></script>
+<script src="assets/bubbles.js?v=209" defer></script>
 </body>
 </html>
