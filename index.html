@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=217">
-  <script src="assets/config.js?v=217"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=219">
+  <script src="assets/config.js?v=219"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9758,9 +9758,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v217';
+      const ATLAS_RELEASE = 'culture-atlas-v219';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=217').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=219').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17852,6 +17852,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // An office mark under the click opens its record; where marks and spaces crowd, a list offers each one.
       if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.click(mx, my, clientX, clientY, visibleDots)) return;
+      // The other layer marks: a click asks the chat about the mark (a flag or grade mark then goes on to its space).
+      if (!isCityStreetViewActive && window.atlasLayerMarks && window.atlasLayerMarks.click(mx, my)) return;
 
       // PRIORITY 1: Check institution click across dots, text label badges, micro-cards, and proximity
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
@@ -18083,6 +18085,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         canvas.style.cursor = 'pointer';
         return;
       }
+      // Any other mark a map layer draws (tie ends, funder rings, right-wing and Epstein marks, flagged counts): assets/layers.js
+      if (!isCityStreetViewActive && window.atlasLayerMarks && window.atlasLayerMarks.hover(mx, my)) {
+        canvas.style.cursor = 'pointer';
+        hoveredCity = null; hoveredCityCardHitbox = null; isHoveringCityExploreLink = false;
+        return;
+      }
 
       // PRIORITY 1: Check institution hover across dots, text labels, micro-cards, and proximity
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
@@ -18180,7 +18188,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       lastPointer = e.pointerType === 'mouse' ? { x: e.clientX, y: e.clientY } : null;
       updateHoverCursor(e.clientX, e.clientY);
     });
-    canvas.addEventListener('pointerleave', () => { lastPointer = null; });
+    canvas.addEventListener('pointerleave', () => { lastPointer = null; if (window.atlasLayerMarks) window.atlasLayerMarks.hover(-1e4, -1e4); });
     canvas.addEventListener('pointerdown', e => { window.__lastPointerType = e.pointerType; zoomAnchor = null; }, true);
     // The globe holds still while a mouse is over it and turns again when the cursor leaves.
     const globePane = document.getElementById('globeViewport') || canvas;
@@ -18789,9 +18797,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=217"></script>
-<script src="assets/layers.js?v=217"></script>
-<script src="assets/hq-detail.js?v=217"></script>
-<script src="assets/bubbles.js?v=217" defer></script>
+<script src="assets/typeset.js?v=219"></script>
+<script src="assets/layers.js?v=219"></script>
+<script src="assets/hq-detail.js?v=219"></script>
+<script src="assets/bubbles.js?v=219" defer></script>
 </body>
 </html>
