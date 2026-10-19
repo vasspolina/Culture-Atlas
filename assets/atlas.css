@@ -805,9 +805,8 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 /* Gossip mode: the globe pane is dark with yellow text, in either theme. */
 :root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
 :root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button:hover,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
-/* One rule between the record and "Inside the building", and none under its heading. */
-#desktopDossierRecordBody:has(+ #desktopDossierInside:not(.hidden)) .rule-b:last-of-type{border-bottom:0}
-#desktopDossierInside>h3+.rule-t{border-top:0;padding-top:0}
+/* What the building view finds follows the record as its last sections, with no heading and no second rule above it. */
+#desktopDossierInside{border-top:0!important;padding-top:0!important}
 
 /* Right column: marker highlights. Black text on all three, so contrast holds in light, dark and gossip. */
 :root{--hl-blue:#72a5ed;--hl-green:#5ac651;--hl-yellow:#ffffb1}
@@ -940,6 +939,36 @@ abbr[title]{text-decoration:none}
    paragraph after it starts flush, as after any break. */
 .curator-message-wrap p:not(.no-indent)+p:not(.no-indent),#desktopDossierRecordBody p:not(.no-indent)+p:not(.no-indent),#detailBody p:not(.no-indent)+p:not(.no-indent),#dossier-sheet-scrollable-body p:not(.no-indent)+p:not(.no-indent),#curatorHeroGreeting p:not(.no-indent)+p:not(.no-indent),.chat-info p:not(.no-indent)+p:not(.no-indent){text-indent:1em;margin-top:0}
 .curator-message-wrap p:not(.no-indent):has(+ p:not(.no-indent)),#desktopDossierRecordBody p:not(.no-indent):has(+ p:not(.no-indent)),#detailBody p:not(.no-indent):has(+ p:not(.no-indent)),#dossier-sheet-scrollable-body p:not(.no-indent):has(+ p:not(.no-indent)),#curatorHeroGreeting p:not(.no-indent):has(+ p:not(.no-indent)),.chat-info p:not(.no-indent):has(+ p:not(.no-indent)){margin-bottom:0}
+
+/* ---- the record's small print, critiques and building facts (19 Oct 2026, Hochuli p.37, p.44, p.47-53, fig 70) ----
+   Three sizes in the panel: the name, 18px for what is read, 14px for labels, sources, citations and counts.
+   A source line is small print, never larger than the text it backs. A domain never breaks at its hyphen. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .source-note,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .source-note a{font-size:14px;line-height:1.3}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) a.domain{white-space:nowrap;hyphens:manual;-webkit-hyphens:manual}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) a{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:break-word}
+/* The critique: a small-print label line (what it is, which of how many), its title at the text size, then the parts
+   one line apart. The quotation is an inserted passage: the text's size, indented one em like a paragraph, its opening
+   mark hung into the indent, its source in small print directly under it. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-section,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-section>*{min-width:0;max-width:100%}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-head .kicker{margin:0;font-size:14px;line-height:1.3}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-title{font:400 18px/1.3 var(--sans);letter-spacing:0;margin:0;text-wrap:balance}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-section .meta{font-size:14px;line-height:1.3}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote{margin:23.4px 0 0;padding:0 0 0 1em;border:0;min-width:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote blockquote{position:relative;margin:0;padding:0;font:400 18px/1.3 var(--sans);letter-spacing:0;text-indent:0;max-width:34em}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote .quote-hang{position:absolute;right:100%;top:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote figcaption{margin:0;overflow-wrap:break-word;max-width:44em}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote>.meta:first-child{margin-bottom:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-asks{font:400 18px/1.3 var(--sans);margin:23.4px 0 0;text-indent:0;max-width:34em}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-actions{margin-top:23.4px}
+/* The building's facts in the record column: label in small print on the left, value at the text size, one row a line. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .xray-facts{display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:1em;row-gap:0;margin-top:6px}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .xray-fact{display:contents}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .xray-fact>span{font:400 18px/1.3 var(--sans);letter-spacing:0;min-width:0;overflow-wrap:break-word}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .xray-fact>span.meta{font-size:14px;line-height:23.4px}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .xray-record-part .kicker{margin:0;font-size:14px;line-height:1.3}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .xray-record-part:last-child{border-bottom:0}
+/* One highlight: black text on a flat tint, padded evenly, square, never glued to the line above or below. */
+:is(#desktopDossierColumn,#detailBody,#dossier-sheet-scrollable-body) :is(.grade-mark,.flag-epstein){display:inline;padding:.06em .3em;border-radius:0;color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* Light mode: the dark mode hues as plain coloured text, deepened until each clears 3:1 on white at this size. */
 :root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#10957f}
