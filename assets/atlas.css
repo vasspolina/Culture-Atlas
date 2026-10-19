@@ -7,26 +7,23 @@ h1,h2,h3,h4,p{margin:0}
 /* Culture Atlas: plain CSS, no framework. Flat colour blocks, hairlines, one grotesque family.
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
-@font-face{font-family:"PP Neue Gstaad";src:url("../fonts/PPNeueGstaad-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"PP Neue Gstaad Compact";src:url("../fonts/PPNeueGstaad-CompactBold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:"PP Neue Gstaad Compressed";src:url("../fonts/PPNeueGstaad-CompressedBold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:"PP Neue Gstaad";src:url("../fonts/PPNeueGstaad-RegularItalic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
   --ease:cubic-bezier(.32,.72,0,1); --dur:.45s; --mint:#a7f0ba; --mint-10:#defbe6;
-  --cobalt:#0046ff; --blue:#527fe6; --orange:#ff6119; --brick:#a0705e; --navy:#223f85;
+  --cobalt:#0045fc; --focus:var(--cobalt); --blue:#527fe6; --orange:#ff6119; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#ff6119;
-  --sans:"PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display:"PP Neue Gstaad Compact","PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display-xl:"PP Neue Gstaad Compressed","PP Neue Gstaad Compact","PP Neue Gstaad","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --sans:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-xl:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --bar:44px; --gap:16px;
   --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
 }
 
 /* ---- base ---- */
 html{-webkit-text-size-adjust:100%;font-synthesis:none}
-body{background:var(--paper);color:var(--ink);font:400 15px/1.3 var(--sans);letter-spacing:.01em;
+body{background:var(--paper);color:var(--ink);font:400 15px/1.3 var(--sans);font-feature-settings:"ss01","ss04","ss05","tnum","zero";letter-spacing:.01em;
   height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
 button,[role=button]{cursor:pointer}
 a{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
@@ -35,7 +32,13 @@ em,i{font-style:normal}
 hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 input,textarea,select{outline:0}
 ::placeholder{color:var(--ink);opacity:.55}
-:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+/* The street map's attribution sits on a white plate in both themes, so its links are black (they inherited the dark theme's white: 1.0:1). */
+.maplibregl-ctrl-attrib,.maplibregl-ctrl-attrib a{color:#000}
+/* A canvas fills its pane and the pane clips, so an outline drawn outside it never shows: draw the ring inside. */
+canvas:focus-visible{outline-offset:-4px}
+/* The street map's own controls draw a pale blue glow (1.1 to 2.9:1); use the page's ring, inside the button. */
+.maplibregl-ctrl button:focus-visible,.maplibregl-ctrl-group button:focus:focus-visible,.maplibregl-ctrl-attrib summary:focus-visible,.maplibregl-ctrl-attrib-button:focus-visible{outline:2px solid var(--focus);outline-offset:-3px;box-shadow:none}
 .meta,code,pre,kbd{font-family:var(--sans);font-size:14px;letter-spacing:.01em}
 .t-title{font-family:var(--sans);font-weight:400;font-size:28px;line-height:1.1;letter-spacing:0}
 .t-lead{font-size:18px;line-height:1.25}
@@ -722,6 +725,8 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 
 /* Gossip mode: the menu bar turns yellow, its buttons sit on it without their white blocks, and the street map ground goes orange. */
 body.gossip-mode-active header{background:var(--yellow)}
+/* The gossip header is yellow in both themes: the dark theme's pale blue ring was 2.2:1 on it. */
+body.gossip-mode-active header{--focus:var(--cobalt)}
 body.gossip-mode-active header button{background:transparent}
 body.gossip-mode-active header button:hover{background:#000;color:#fff}
 body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:#000}
@@ -736,7 +741,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 /* One thin up chevron on the right, drawn from the current text colour so hover and dark mode invert it with the label. */
 #layersBtn::after{content:"";flex:none;width:10px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 #layersBtn:hover,#layersBtn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
-#layersPanel{position:absolute;top:auto;bottom:calc(100% + 6px);left:0;right:auto;z-index:1;box-sizing:border-box;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:0;padding:14px;width:620px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 72px);overflow-y:auto;box-shadow:none;font:400 13px/1.35 var(--sans);letter-spacing:.01em;user-select:none;--row:#efede6;--row-ink:#000;--row-dim:#737373;--row-on:#8a877d;--row-on-ink:#fff;--row-on-dim:#e9e7e1;--row-hover:#fbfd5e}
+#layersPanel{position:absolute;top:auto;bottom:calc(100% + 6px);left:0;right:auto;z-index:1;box-sizing:border-box;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:0;padding:14px;width:620px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 72px);overflow-y:auto;box-shadow:none;font:400 13px/1.35 var(--sans);letter-spacing:.01em;user-select:none;--row:#efede6;--row-ink:#000;--row-dim:#6a6a6a;--row-on:#6a675f;--row-on-ink:#fff;--row-on-dim:#e9e7e1;--row-hover:#fbfd5e}
 :root[data-theme="dark"] #layersPanel{--row:#232322;--row-ink:#fff;--row-dim:#a3a3a3}
 #layersPanel.is-above{top:auto;bottom:calc(100% + 6px)}
 #layersPanel[hidden]{display:none}
@@ -759,7 +764,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel label:has(input:not(:disabled)):hover{background:var(--row-hover);color:#000;--row-dim:#6b6b6b}
 #layersPanel input{appearance:none;width:18px;height:18px;margin:0;border:2px solid currentColor;border-radius:3px;background:transparent;cursor:inherit;display:grid;place-items:center}
 #layersPanel input:checked::after{content:"";width:8px;height:8px;background:currentColor}
-#layersPanel input:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
+#layersPanel input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 #layersPanel .layer-name{font:700 14px/1.2 var(--display);letter-spacing:.01em;white-space:nowrap}
 #layersPanel .layer-desc{min-width:0;color:var(--row-dim)}
 #layersPanel .layers-count{text-align:right;white-space:nowrap;color:var(--row-dim);font:400 11px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase}
@@ -768,13 +773,16 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;color:var(--ink);font:400 12px/1.3 var(--sans)}
 #layersPanel .layers-key span{display:flex;align-items:center;gap:8px;min-width:0}
 #layersPanel .layers-key i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
-:root:not([data-theme="dark"]) #layersPanel .shape-dot{box-shadow:0 0 0 1px rgba(0,0,0,.35)}
+/* Light ground: the key's pale swatches measure 1.2 to 3:1 against the panel, so each one is drawn on a 1px ink outline (an ink shape with the swatch inset by 1px, clipped to the same outline). */
+:root:not([data-theme="dark"]) #layersPanel .layers-key i{position:relative;background:var(--ink)}
+:root:not([data-theme="dark"]) #layersPanel .layers-key i::after{content:"";position:absolute;inset:1px;background:var(--marker-color);clip-path:inherit;border-radius:inherit}
 #layersPanel .shape-hexagon{clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
 #layersPanel .shape-triangle{clip-path:polygon(50% 0,100% 100%,0 100%)}
 #layersPanel .shape-diamond{transform:rotate(45deg) scale(.78)}
 #layersPanel .shape-dot{border-radius:50%}
 #layersPanel .shape-shield{clip-path:polygon(50% 0,100% 18%,90% 72%,50% 100%,10% 72%,0 18%)}
 #layersPanel .shape-star{clip-path:polygon(50% 0,62% 35%,100% 35%,69% 57%,81% 95%,50% 72%,19% 95%,31% 57%,0 35%,38% 35%)}
+#layersPanel .layers-tier-key{grid-template-columns:1fr}
 #layersPanel .layers-grade-key{grid-template-columns:1fr}
 #layersPanel .layers-grade-key>span{display:grid;grid-template-columns:11px 56px minmax(0,1fr);gap:8px;align-items:start}
 #layersPanel .layers-grade-key strong{color:var(--ink);font-weight:400}
@@ -782,7 +790,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersControl{z-index:40}
 
 /* Dark mode: the same ink-and-paper system, inverted. The globe stays black in both. */
-:root[data-theme="dark"]{color-scheme:dark;--ink:#fff;--paper:#121212;--grey:#1c1c1c;--block:#2f2f2f;--line:#fff}
+:root[data-theme="dark"]{color-scheme:dark;--focus:#618cff;--ink:#fff;--paper:#121212;--grey:#1c1c1c;--block:#2f2f2f;--line:#fff}
 :root[data-theme="dark"] #floatingCard{color:#fff}
 :root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-content{background:#2a2a2a;color:#fff}
 :root[data-theme="dark"] .record-popup,:root[data-theme="dark"] .record-popup-line,:root[data-theme="dark"] .record-popup-name,:root[data-theme="dark"] #globeViewport .record-popup a,:root[data-theme="dark"] #globeViewport a.record-popup-name{color:#fff}
@@ -871,7 +879,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 
 /* Every button answers the pointer: plain ones invert, the filled ones brighten. */
 #layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#workPlusBtn:hover,#curatorVoiceToggleBtn:hover,#curatorListenBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
-[data-globe-control]:hover,.is-on:hover,[aria-pressed="true"]:hover{filter:brightness(1.2)}
+[data-globe-control]:hover,.is-on:hover,[aria-pressed="true"]:hover{filter:brightness(.85)}
 button,summary{cursor:pointer}
 /* Question colours are the map's own: mustard, orange and cyan labels; darker equivalents on the light ground. Type 10% smaller. */
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#6e6310}
@@ -906,12 +914,12 @@ button,summary{cursor:pointer}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(24px,2.2vw,44px)}
 @media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:26px}}
 /* ---- detail typography, after Jost Hochuli: "Detail in Typography" ----
-   Page numbers are the book's. Only what the two PP Neue Gstaad files can do is used:
-   they carry kern, liga, case, frac, sups, subs and sinf, and have no small caps or old-style figures. */
+   Page numbers are the book's. Only what Jokker can do is used:
+   it carries kern, liga, case, frac, sups, subs and sinf plus stylistic sets ss01-ss06, and has no small caps or old-style figures. */
 
 /* The word (p.23-31): kerning and ligatures on, always; capitals get their own punctuation heights (p.29-30). */
 html{font-kerning:normal;font-variant-ligatures:common-ligatures;text-rendering:optimizeLegibility}
-h1,h2,h3,h4,.t-title,.curator-section-hdr,#floatingCardTitle,.record-popup-name,#desktopDossierName,.dossier-main-heading{font-feature-settings:"kern","liga","case"}
+h1,h2,h3,h4,.t-title,.curator-section-hdr,#floatingCardTitle,.record-popup-name,#desktopDossierName,.dossier-main-heading{font-feature-settings:"kern","liga","case","tnum","zero"}
 
 /* Letter and word spacing follow size (p.25, p.33): small sizes a little wider, display sizes tighter, and the
    word space shrinks as the type grows. Capitals stay evenly spaced, not tight (p.25). */
@@ -1086,7 +1094,8 @@ a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:u
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body),
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,a,span,div){color:#6e5300}
 :root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body),
-:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,a,span,div){color:#ffd600}
+/* The action pills carry their own fill, so their label keeps the pill's own ink: yellow on the pink Website pill was 1.1:1. */
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,a,span,div):not(.record-action,.record-action *){color:#ffd600}
 /* The marker highlights (green, blue) keep black text in gossip mode, in either theme: yellow on green is 1.5:1. */
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.is-good,.meta.t-strong,.is-good *,.meta.t-strong *),
 :root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.is-good,.meta.t-strong,.is-good *,.meta.t-strong *){color:#000}
@@ -1191,6 +1200,10 @@ body.chat-input-mode-active #curatorScrollArea a:hover,body.chat-input-mode-acti
 /* Voice and Listen read chat answers aloud; they have nothing to do while a note is written. */
 body.chat-input-mode-active #curatorVoiceToggleBtn,body.chat-input-mode-active #curatorListenBtn{display:none!important}
 body.chat-input-mode-active #workBottomDock button:hover,body.chat-input-mode-active #curatorScrollArea button:hover{text-decoration:underline}
+/* Writing a note: the page behind is mint with black type forced on everything. A hovered button went black on black in light mode (the generic hover fill is ink), and in dark mode the blue focus ring measured 2.4:1 on the mint. */
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(button,summary):is(:hover,:active){background:#000!important;color:var(--gold)!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(button,summary):is(:hover,:active) *{color:var(--gold)!important}
+body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCard){--focus:var(--cobalt)}
 /* Thinking state: the reply's content waits while three dots pulse. */
 .is-thinking>*:not(.bubble-svg):not(.thinking){display:none!important}
 .thinking{display:inline-flex;align-items:baseline;gap:.12em;font:400 18px/1.3 var(--sans);color:inherit}
@@ -1199,6 +1212,8 @@ body.chat-input-mode-active #workBottomDock button:hover,body.chat-input-mode-ac
 .thinking i:nth-child(3){animation-delay:.4s}
 @keyframes think-dot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-.25em)}}
 body.gossip-mode-active .is-gossip .thinking{color:#000}
+/* The bubble forces black text on everything inside it, and a report card inside it took the dark theme's #1c1c1c ground (black on it: 1.2:1). It keeps the light theme's grey. */
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:#e8e8e8;border-color:#000}
 @media (prefers-reduced-motion:reduce){.thinking i{animation:none}}
 
 /* No rule under a section heading in the record ("Reported, not independently verified"): the first card after it starts clean. */
@@ -1318,17 +1333,22 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:14px;height:22px;line-height:22px}}
 
-/* Action rows (dossier + bottom sheet): soft rounded buttons. First is solid black (white in the dark theme); the rest cycle cyan, green, pink, yellow. Black text on every pastel, 4.5:1 or better in every state. */
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row{gap:12px 14px!important}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{--fill:#cdf8ff;--fill-hover:#9eecfa;--on:#000;font:500 18px/1.2 var(--sans);background:var(--fill);color:var(--on);border:0;border-radius:20px;padding:14px 28px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;letter-spacing:0;text-align:center;white-space:nowrap;cursor:pointer;transition:background-color .15s,color .15s}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+3){--fill:#cdfec8;--fill-hover:#9ff597}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+4){--fill:#ffd9ec;--fill-hover:#ffb8da}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+5){--fill:#fff6b8;--fill-hover:#ffec7a}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--fill:#000;--fill-hover:#333;--on:#fff}
-:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--fill:#fff;--fill-hover:#d9d9d9;--on:#000}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:var(--fill-hover);color:var(--on)}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:focus-visible{outline:3px solid var(--cobalt,#1d4ed8);outline-offset:3px}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:disabled{background:#e4e4e4;color:#595959;cursor:not-allowed}
+/* Action rows (dossier + bottom sheet): outlined buttons, no fill, sized after the displaay.net filter row: 40px high, 15px side padding, 6px gap, 12px radius, 1.5px outline, 17px regular text; a 2px invisible margin keeps the hit area at 44px. The first outline is the ink colour; the rest cycle cyan, green, pink, yellow (darker tones in the light theme, the pale ones in the dark theme, 3:1 or better against the ground). Text stays the ink colour. */
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row{gap:6px!important}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{--line-c:#007f99;position:relative;font:400 17px/1 var(--sans);background:transparent;color:var(--ink);border:1.5px solid var(--line-c);border-radius:12px;padding:0 13.5px;height:40px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;letter-spacing:0;text-align:center;white-space:nowrap;cursor:pointer;transition:background-color .15s}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action::after{content:'';position:absolute;inset:-2px}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+3){--line-c:#2a8a2a}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+4){--line-c:#c2185b}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+5){--line-c:#8a6d00}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--line-c:var(--ink)}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{--line-c:#cdf8ff}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+3){--line-c:#cdfec8}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+4){--line-c:#ffd9ec}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+5){--line-c:#fff6b8}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--line-c:var(--ink)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:color-mix(in srgb,var(--line-c) 16%,transparent);color:var(--ink)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:focus-visible{outline:3px solid var(--focus,#1d4ed8);outline-offset:3px}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:disabled{border-color:#8c8c8c;color:#595959;cursor:not-allowed}
 
 /* The panel follows its width (19 Oct 2026). The chat and Details columns carried a 350px floor (the .min-w-_350px class and an inline
    minWidth), so a panel narrower than that, or a phone, was cut at its edge instead of reflowing. The floor is gone; the splitter keeps
@@ -1383,13 +1403,11 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #workInput{min-width:0}
 .chat-info p{max-width:none}
 
-/* The handle: a 14px target on each edge of the column, a 2px grip that shows the line. The left one is pointer-only. */
+/* The handle: a 14px invisible drag target on each edge of the column (19 Oct 2026: the 2px grip line was removed). The left one is pointer-only. */
 .chat-width-handle{position:absolute;top:0;bottom:0;z-index:25;width:14px;margin-left:-7px;cursor:col-resize;touch-action:none;display:none;outline:0}
 @media (min-width:768px){.chat-width-handle{display:block}}
 #curatorIntelligenceColumn .chat-width-handle{left:calc(50% + min(100% - 2*var(--chat-gutter),var(--chat-w)) / 2 + var(--chat-gutter) / 2)}
 #curatorIntelligenceColumn .chat-width-handle.is-left{left:calc(50% - min(100% - 2*var(--chat-gutter),var(--chat-w)) / 2 - var(--chat-gutter) / 2)}
-.chat-width-handle::after{content:'';position:absolute;top:50%;left:6px;width:2px;height:48px;margin-top:-24px;background:var(--line)}
-.chat-width-handle:hover::after,.chat-width-handle.is-dragging::after,.chat-width-handle:focus-visible::after{background:var(--ink)}
 .chat-width-handle:focus-visible::before{content:'';position:absolute;top:50%;left:0;width:14px;height:56px;margin-top:-28px;box-sizing:border-box;border:2px solid var(--ink)}
 /* A narrow panel (the splitter lets it go to 220px): the tab bar wraps its three controls instead of running past the edge, and the
    input grows with its placeholder so the prompt is never cut. */
