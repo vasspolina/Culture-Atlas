@@ -3,7 +3,8 @@
 //   a mouse or finger on the map  -> atlasHqPointer (index.html calls it from the globe's hover and click handlers)
 //   the keyboard                  -> one real button laid over each mark in view (#hqMarks), invisible until it has focus
 //   a crowded spot                -> a short list of everything under the pointer, so each mark and space stays pickable
-// The record (#hqPanel) shows the info the data holds, every name it holds, and the connections it holds: the spaces the
+// The record (#hqPanel) is set in the Details tab, the right column on a desktop and the record sheet on a phone, not in a window over the map
+// (user's instruction, 19 Oct 2026). It shows the info the data holds, every name it holds, and the connections it holds: the spaces the
 // office is named on, the other funders on those spaces, and the people the files tie to them. Nothing here is inferred.
 (function () {
   const hq = () => window.atlasHq;
@@ -60,10 +61,20 @@
     });
   };
 
+  // ---- Chat: a click on a name prints what the records say about it in the chat ----
+  // A funder asks the question the chat already answers for funders; a person asks the one it answers for people on boards.
+  function askInChat(e) {
+    const ask = window.atlasAskInChat || window.atlasAskCurator;
+    if (typeof ask !== 'function') return;
+    ask(e.kind === 'org' ? `Which institutions does ${e.n} fund?` : `Tell me about ${e.n} and museum board conflicts`);
+  }
+
   // ---- Pointer: the globe's own handlers ask these first ----
   window.atlasHqPointer = {
     hover(mx, my, dots) {
       if (!hq() || !hq().loaded()) return false;
+      const named = hq().labelAt(mx, my);
+      if (named) { hq().hover(named); return true; }
       const t = hq().at(mx, my, hq().reach(), dots), m = t.marks[0];
       if (m && (!t.spaces[0] || m.d <= t.spaces[0].d)) { hq().hover(m.e); return true; }
       if (!(document.activeElement && document.activeElement.classList.contains('hq-mark'))) hq().hover(null);
@@ -71,6 +82,8 @@
     },
     click(mx, my, clientX, clientY, dots) {
       if (!hq() || !hq().loaded()) return false;
+      const named = hq().labelAt(mx, my);
+      if (named) { askInChat(named); return true; }
       const t = hq().at(mx, my, hq().reach(), dots);
       if (!t.marks.length) return false;
       if (t.marks.length + t.spaces.length === 1) { openRecord(t.marks[0].e, null); return true; }
@@ -109,12 +122,30 @@
   document.addEventListener('pointerdown', ev => { if (chooser && !chooser.contains(ev.target)) closeChooser(false); }, true);
 
   // ---- The record ----
+  // The record lives in the Details tab. On a desktop that is the record body of the right column; on a phone it is the record sheet's
+  // scroll body. Whatever the tab held (a space's record) is hidden, not removed, while a funder's record shows, and comes back on close.
+  function detailsHost() {
+    return document.getElementById(window.innerWidth >= 768 ? 'desktopDossierRecordBody' : 'dossier-sheet-scrollable-body');
+  }
   function ensurePanel() {
-    if (panel && panel.isConnected) return panel;
-    const vp = viewport(); if (!vp) return null;
-    panel = h('aside', { id: 'hqPanel', role: 'dialog', 'aria-modal': 'false', 'aria-labelledby': 'hqPanelTitle', tabindex: '-1', hidden: true });
-    vp.appendChild(panel);
+    if (!panel) panel = h('aside', { id: 'hqPanel', class: 'is-details', role: 'region', 'aria-labelledby': 'hqPanelTitle', tabindex: '-1', hidden: true });
+    const host = detailsHost(); if (!host) return null;
+    if (panel.parentElement !== host) {
+      if (panel.parentElement) panel.parentElement.classList.remove('is-hq');
+      host.appendChild(panel);
+    }
     return panel;
+  }
+  function showDetails(host) {
+    host.classList.add('is-hq');
+    if (window.innerWidth >= 768) {
+      if (typeof window.toggleDesktopDossier === 'function') window.toggleDesktopDossier(true);
+    } else {
+      const sheet = document.getElementById('dossier-bottom-sheet');
+      if (sheet) { sheet.classList.remove('hidden'); sheet.classList.add('is-hq-sheet'); }
+      const tab = document.getElementById('tab-dossier');
+      if (tab && typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab(tab);
+    }
   }
   function listOf(items, build, cap) {
     const ul = h('ul', { class: 'hq-list' });
@@ -149,6 +180,8 @@
     const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this record' }, '×');
     close.addEventListener('click', () => closeRecord(true));
     const head = h('div', { class: 'hq-head' }, h('div', null, h('p', { class: 'hq-kind', text: hq().kindLabel(e) }), h('h2', { id: 'hqPanelTitle', text: e.n })), close);
+    const ask = h('button', { type: 'button', class: 'hq-ask', text: 'Ask in chat' });
+    ask.addEventListener('click', () => askInChat(e));
 
     const info = h('section', { 'aria-labelledby': 'hqInfoT' }, h('h3', { id: 'hqInfoT', text: 'Info' }));
     const dl = h('dl');
@@ -184,7 +217,7 @@
         group('hqConnPeople', 'People the files tie to these spaces', rel.people, r => officeRow(r.e, r.shared), 'None.');
       }
     }
-    p.replaceChildren(head, info, names, conns);
+    p.replaceChildren(head, ask, info, names, conns);
     p.scrollTop = 0;
   }
 
@@ -197,12 +230,7 @@
     hq().select(e);
     fill(e);
     p.hidden = false;
-    // The record stands where the mark is not, so it never covers what it describes: beside the map on a wide pane,
-    // above or below it on a narrow one.
-    const at = hq().screenPos(e), vp = viewport(), narrow = !!vp && vp.clientWidth < 780;   // below this a side record would reach the middle of the map, where a jump lands the mark
-    p.classList.toggle('is-sheet', narrow);
-    p.classList.toggle('is-right', !narrow && !!(at && at.x < vp.clientWidth / 2));
-    p.classList.toggle('is-top', narrow && !!(at && at.y > vp.clientHeight * 0.6));
+    showDetails(p.parentElement);
     p.querySelector('h2').setAttribute('tabindex', '-1');
     p.focus({ preventScroll: true });
     if (!hq().loaded()) hq().ready(() => { if (openFor === e) fill(e); });
@@ -210,10 +238,14 @@
   function closeRecord(restore) {
     if (!panel || panel.hidden) return;
     panel.hidden = true; panel.replaceChildren();
+    if (panel.parentElement) panel.parentElement.classList.remove('is-hq');
+    const sheet = document.getElementById('dossier-bottom-sheet'); if (sheet) sheet.classList.remove('is-hq-sheet');
     openFor = null; hq().select(null);
     if (restore && openFrom && openFrom.isConnected) openFrom.focus();
     openFrom = null;
   }
+  // Choosing a space (on the map, in the chat, or from a connection in this record) puts that space's record in the tab.
+  window.atlasHqClose = () => closeRecord(false);
   // Escape closes the list first, then the record, and does not also clear the space or city the page has selected.
   document.addEventListener('keydown', ev => {
     if (ev.key !== 'Escape') return;

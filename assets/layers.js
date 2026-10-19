@@ -41,7 +41,22 @@
   let HQ = null, hqLoading = false;
   // The mark drawn for each office last frame (x, y on the canvas) so a click, a hover and the keyboard buttons can find it;
   // the one picked in the detail panel (assets/hq-detail.js) and the one under the pointer or keyboard focus.
-  let HQ_HITS = [], HQ_SEL = null, HQ_HOV = null;
+  let HQ_HITS = [], HQ_LABELS = [], HQ_SEL = null, HQ_HOV = null;
+  // Every other mark the layers draw (the dots at the ends of tie lines, funder rings, right-wing and Epstein marks, flag and
+  // grade marks, the flagged counts) can be found by the pointer too. LM holds the ones drawn last frame, LM_HOV the one under
+  // the pointer. A mark that sits on a space's own dot (flag, grade) is "pass": its hover goes to the space, and a click asks
+  // the chat.
+  let LM = [], LM_HOV = null;
+  // Ask the chat: show its tab (on a desktop the Details tab may be in front) and put the question to it.
+  function askChat(q) {
+    // atlasAskQuestion sends it as a question and brings the chat forward; atlasAskCurator would turn any question that names a space
+    // into "Tell me about" that space.
+    if (typeof window.atlasAskQuestion === 'function') { window.atlasAskQuestion(q); return; }
+    if (typeof window.setWorkspaceTab === 'function') { try { window.setWorkspaceTab('chat'); } catch (e) {} }
+    if (typeof window.atlasAskCurator === 'function') window.atlasAskCurator(q);
+  }
+  window.atlasAskInChat = askChat;
+  // The name blocks drawn last frame, so a click on a name can ask the chat about it.
   function loadHq() {
     if (HQ || hqLoading) return;
     hqLoading = true;
@@ -50,7 +65,8 @@
       const people = Object.entries(d.people).map(([name, o]) => Object.assign({ key: 'person:' + name, kind: 'person' }, o));
       // Pins are city-level, so entries in one city fan out around it instead of stacking.
       const byCity = new Map();
-      orgs.concat(people).forEach(e => { const k = e.c; if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(e); });
+      // Grouped by place, not by the city's spelling: "Düsseldorf" and "Dusseldorf" are one spot and must not sit on each other.
+      orgs.concat(people).forEach(e => { const k = e.lat.toFixed(2) + ',' + e.lon.toFixed(2); if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(e); });
       byCity.forEach(list => list.forEach((e, i) => { const a = i * 2.39996, rr = i === 0 ? 0 : 8 + 5 * Math.sqrt(i); e.dx = Math.cos(a) * rr; e.dy = Math.sin(a) * rr; }));
       HQ = { orgs, people, byKey: new Map(orgs.map(o => [o.key, o])), byName: new Map(people.map(p => [p.n, p])) };
       hqLoading = false; updateCounts();
@@ -120,6 +136,7 @@
 
   // Under the dots: the funding ties.
   window.atlasLayersDraw = function (ctx, project, r, cx, cy, list, sel, hov, baseRadius) {
+    LM = [];
     if (!L.ties) return;
     if (!recById) { loadMoney(); return; }
     const focus = hov || sel, rec = focus && recById.get(focus.id);
@@ -149,11 +166,17 @@
           if (seen.has(id) || seen.size > 400) return; seen.add(id);
           const o = recById.get(id); if (!o || typeof o.lat !== 'number') return;
           ctx.strokeStyle = lineCol(COL[n[1]]);
-          arc(project, rec, o, r, cx, cy, ctx); ends.push([o, lineCol(COL[n[1]])]);
+          arc(project, rec, o, r, cx, cy, ctx); ends.push([o, lineCol(COL[n[1]]), COL[n[1]]]);
         });
       });
       ctx.globalAlpha = 1;
-      ends.forEach(([o, col]) => { const pt = project(o.lon, o.lat, r, cx, cy); if (!pt.front) return; ctx.beginPath(); ctx.arc(pt.x, pt.y, 3.5, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill(); });
+      ends.forEach(([o, col, raw]) => {
+        const pt = project(o.lon, o.lat, r, cx, cy); if (!pt.front) return;
+        const hot = LM_HOV && LM_HOV.rec === o;
+        ctx.beginPath(); ctx.arc(pt.x, pt.y, hot ? 6 : 3.5, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill();
+        if (hot) { ctx.lineWidth = 1.5; ctx.strokeStyle = '#000'; ctx.stroke(); }
+        LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: raw, label: o.n, sub: `Shares a funder with ${rec.n}`, ask: `Who funds ${o.n}?` });
+      });
     }
     ctx.restore();
   };
@@ -171,7 +194,7 @@
 
   // Over the dots and labels: flag marks and the money network.
   // A square on each space the funding map names for this highlight, and its names on blocks when in focus or close.
-  function drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, col, namesOf, dx, shape) {
+  function drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, col, namesOf, dx, shape, what, askOf) {
     const close = r >= baseRadius * 22;
     const marks = [];
     recById.forEach(rec => {
@@ -179,6 +202,7 @@
       const pt = project(rec.lon, rec.lat, r, cx, cy); if (!pt.front) return;
       const focus = (sel && sel.id === rec.id) || (hov && hov.id === rec.id);
       marks.push([pt, names, focus]);
+      LM.push({ x: pt.x + dx, y: pt.y, r: 9, rec, col, label: names.slice(0, 3).join(', '), sub: `${what}: ${rec.n}`, ask: askOf(rec) });
     });
     ctx.lineWidth = 0.8;
     marks.forEach(([pt]) => { shapePath(ctx, shape, pt.x + dx, pt.y, 6.5); ctx.fillStyle = col; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); });
@@ -198,6 +222,57 @@
 
   // Headquarters and offices: a diamond for each funder's head office, a circle for each person's office; the focused
   // space is joined to the head offices of its funders, and to the people the Epstein files tie to it.
+  // Marks nearer than a diamond's width are nudged apart, so every one has a spot of its own under the pointer: before, a
+  // mark with a neighbour a few pixels away could not be hovered, because the neighbour was always the nearer. Nothing moves
+  // more than MAX_SHIFT pixels from its place, and marks that already have room stay put. The relaxation is costly, so it is
+  // worked out once the view has settled and the offsets are reused while it pans or turns; it is not redone during a zoom.
+  const MIN_GAP = 12, MAX_SHIFT = 70, PASSES = 40;
+  let spreadCache = null, spreadAt = 0;
+  function relax(pts) {
+    const n = pts.length, ox = pts.map(p => p[1]), oy = pts.map(p => p[2]), x = ox.slice(), y = oy.slice();
+    for (let it = 0; it < PASSES; it++) {
+      const grid = new Map();
+      for (let i = 0; i < n; i++) { const k = Math.floor(x[i] / MIN_GAP) + ',' + Math.floor(y[i] / MIN_GAP); const c = grid.get(k); if (c) c.push(i); else grid.set(k, [i]); }
+      let moved = false;
+      for (let i = 0; i < n; i++) {
+        const gx = Math.floor(x[i] / MIN_GAP), gy = Math.floor(y[i] / MIN_GAP);
+        for (let a = -1; a <= 1; a++) for (let b = -1; b <= 1; b++) {
+          const cell = grid.get((gx + a) + ',' + (gy + b)); if (!cell) continue;
+          for (const j of cell) {
+            if (j <= i) continue;
+            let dx = x[j] - x[i], dy = y[j] - y[i], d = Math.hypot(dx, dy);
+            if (d >= MIN_GAP) continue;
+            if (d < 0.01) { const t = i * 2.39996 + j; dx = Math.cos(t); dy = Math.sin(t); d = 1; }
+            const push = (MIN_GAP - d) / 2, ux = dx / d, uy = dy / d;
+            x[i] -= ux * push; y[i] -= uy * push; x[j] += ux * push; y[j] += uy * push;
+            moved = true;
+          }
+        }
+      }
+      if (!moved) break;
+    }
+    const off = new Map();
+    for (let i = 0; i < n; i++) {
+      let dx = x[i] - ox[i], dy = y[i] - oy[i]; const d = Math.hypot(dx, dy);
+      if (d > MAX_SHIFT) { dx *= MAX_SHIFT / d; dy *= MAX_SHIFT / d; }
+      off.set(pts[i][0], [dx, dy]);
+    }
+    return off;
+  }
+  function spreadMarks(pts, r, baseRadius) {
+    // With the whole globe in view there is no room to spread into; the crowd is picked from the list a click opens.
+    if (pts.length < 2 || r < baseRadius * 1.5) return;
+    const v = typeof window.getView === 'function' ? window.getView() : null;
+    const settled = !v || Math.abs(v.r - v.target) < 0.5;
+    const fresh = spreadCache && Math.abs(r - spreadCache.r) / spreadCache.r < 0.02 && spreadCache.hq === L.hq && spreadCache.people === L.people;
+    const now = performance.now();
+    if (settled && (!fresh || (now - spreadAt > 400 && pts.some(p => !spreadCache.off.has(p[0]))))) {
+      spreadCache = { r, hq: L.hq, people: L.people, off: relax(pts) };
+      spreadAt = now;
+    } else if (!fresh) return;
+    pts.forEach(p => { const o = spreadCache.off.get(p[0]); if (o) { p[1] += o[0]; p[2] += o[1]; } });
+  }
+
   function drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes) {
     if (!HQ) return;
     const focus = hov || sel, rec = focus && recById && recById.get(focus.id);
@@ -216,6 +291,7 @@
     const picked = e => e === HQ_SEL || e === HQ_HOV;
     if (L.hq) HQ.orgs.forEach(e => place(e, true));
     if (L.people) HQ.people.forEach(e => place(e, true));
+    spreadMarks(pts, r, baseRadius);
     // joins from the focused space
     if (rec && typeof rec.lat === 'number') {
       ctx.lineWidth = 1.2; ctx.globalAlpha = 0.85;
@@ -261,14 +337,14 @@
       const text = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`, t = text.length > 40 ? text.slice(0, 38) + '…' : text;
       const tw = ctx.measureText(t).width, w = tw + 12, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
       if (collides(box, boxes)) return;
-      boxes.push(box);
+      boxes.push(box); HQ_LABELS.push({ e, x: box.x, y: box.y, w, h });
       if (on) { ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5); }
       else { ctx.lineJoin = 'round'; ctx.lineWidth = 3; ctx.strokeStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#000' : '#fff'; ctx.strokeText(t, box.x + 6, y + 0.5); ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#fff' : '#161616'; ctx.fillText(t, box.x + 6, y + 0.5); }
     });
   }
 
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!L.flags && !L.grade && !L.money && !L.right && !L.epstein && !L.hq && !L.people) return;
+    if (!L.flags && !L.grade && !L.money && !L.right && !L.epstein && !L.hq && !L.people && !L.ties) return;
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -284,6 +360,7 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.grade || !G[i.grade]) return;
+        LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `Why is ${i.name} graded ${G[i.grade].letter || i.grade}?` });
         ctx.beginPath(); ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
         ctx.fillStyle = G[i.grade].col; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
@@ -297,6 +374,7 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.flags || !i.flags.length) return;
+        LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `What is reported about ${i.name}?` });
         shapePath(ctx, 'square', d.x, d.y, 4.6);
         ctx.fillStyle = COL.flag; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
@@ -313,13 +391,14 @@
           ctx.fillStyle = COL.flag; ctx.fillRect(x, y, w, h);
           ctx.fillStyle = '#000'; ctx.fillText(text, x + 6, y + h / 2 + 0.5);
           boxes.push({ x, y, w, h });
+          LM.push({ box: { x, y, w, h }, x: x + w / 2, y: y + h / 2, r: 0, col: COL.flag, label: `${n} flagged in ${b.name}`, sub: 'Flagged spaces', ask: `Which spaces in ${b.name} are flagged, and why?` });
         });
       }
     }
 
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
-    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'shield');
-    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'star');
+    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'shield', 'Right-wing funder', rec => `Who funds ${rec.n}?`);
+    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'star', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`);
 
     if (L.hq || L.people) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
 
@@ -349,6 +428,7 @@
           shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, 5.5); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 1.3; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
           if (n[5]) { if (!byKey.has(n[5])) byKey.set(n[5], []); byKey.get(n[5]).push([x, y, col]); }
           labels.push([n[0], x, y, a, col]);
+          LM.push({ x, y, r: 10, col, label: n[0], sub: `Funder of ${rec.n}`, ask: `Which institutions does ${n[0]} fund?` });
         }
       });
       // A funder named on two spaces on screen is joined across them.
@@ -367,10 +447,26 @@
         ctx.fillStyle = '#000'; ctx.textAlign = 'left'; ctx.fillText(text, box.x + 6, y + 0.5);
       });
     }
+    drawMarkTip(ctx);
+    ctx.restore();
+  }
+  // The mark under the pointer: its name on a block in its colour, and that a click asks the chat.
+  function drawMarkTip(ctx) {
+    if (!LM_HOV) return;
+    const m = LM.find(q => q.ask === LM_HOV.ask && q.rec === LM_HOV.rec && !q.pass) || null; if (!m) return;
+    const W = ctx.canvas.clientWidth || 1e9;
+    const clip = t => t.length > 44 ? t.slice(0, 42) + '…' : t;
+    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, 'Click to ask the chat'].filter(Boolean);
+    ctx.save(); ctx.font = '14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 12, h = 20;
+    let bx = m.x + 12 + w > W ? m.x - 12 - w : m.x + 12; bx = Math.max(4, Math.min(bx, W - w - 4));
+    const by = Math.max(4, m.y - h * lines.length / 2);
+    ctx.fillStyle = m.col || '#fff'; ctx.fillRect(bx, by, w, h * lines.length);
+    ctx.fillStyle = '#000'; lines.forEach((t, k) => ctx.fillText(t, bx + 6, by + h * k + h / 2 + 0.5));
     ctx.restore();
   }
   window.atlasLayersDrawNodes = function (ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    HQ_HITS = [];
+    HQ_HITS = []; HQ_LABELS = [];
     try { drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy); }
     finally { if (window.atlasHqFrame) window.atlasHqFrame(HQ_HITS); }
   };
@@ -428,6 +524,8 @@
       const spaces = (dots || []).map(d => ({ inst: d.inst, d: Math.hypot(d.x - mx, d.y - my) })).filter(d => d.d <= reach).sort((a, b) => a.d - b.d);
       return { marks, spaces };
     },
+    // The office whose drawn name is under the point, if any.
+    labelAt(mx, my) { const l = HQ_LABELS.find(b => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h); return l ? l.e : null; },
     reach: () => (window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') ? 22 : 12,
     hover(e) { if (HQ_HOV === e) return; HQ_HOV = e; if (typeof scheduleRender === 'function') scheduleRender(); },
     select(e) { HQ_SEL = e; if (typeof scheduleRender === 'function') scheduleRender(); },
@@ -455,6 +553,35 @@
     }
   };
   window.atlasHq = hq;
+
+  // ---- The other marks as things you can point at and click ----
+  function markAt(mx, my) {
+    const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
+    let best = null, bd = Infinity;
+    LM.forEach(m => {
+      let d;
+      if (m.box) { if (mx < m.box.x || mx > m.box.x + m.box.w || my < m.box.y || my > m.box.y + m.box.h) return; d = 0; }
+      else { d = Math.hypot(m.x - mx, m.y - my); if (d > m.r * (touch ? 1.6 : 1)) return; }
+      if (m.pass) d += 100;   // a mark on a space's own dot gives way to one that stands alone
+      if (d < bd) { bd = d; best = m; }
+    });
+    return best;
+  }
+  window.atlasLayerMarks = {
+    // Pointer moved: a mark that stands alone takes the hover (true, so the page shows a pointer); a mark on a space's dot does not.
+    hover(mx, my) {
+      const m = markAt(mx, my), alone = m && !m.pass ? m : null;
+      if ((alone && alone.ask) !== (LM_HOV && LM_HOV.ask) || (alone && alone.rec) !== (LM_HOV && LM_HOV.rec)) { LM_HOV = alone; if (typeof scheduleRender === 'function') scheduleRender(); }
+      return !!alone;
+    },
+    // A click on a mark asks the chat about it, and that is all the click does. The chat answers a question about a space
+    // with the space selected on the map and stays in front, so a flag or grade mark loses nothing by not opening the record.
+    click(mx, my) {
+      const m = markAt(mx, my); if (!m) return false;
+      askChat(m.ask);
+      return true;
+    }
+  };
 
   // "Money map" on a record: turn the layers on and show that space's funders on the globe.
   window.atlasShowMoney = function (id) {
