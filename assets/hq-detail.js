@@ -64,8 +64,9 @@
   // ---- Chat: a click on a name prints what the records say about it in the chat ----
   // A funder asks the question the chat already answers for funders; a person asks the one it answers for people on boards.
   function askInChat(e) {
-    if (typeof window.atlasAskCurator !== 'function') return;
-    window.atlasAskCurator(e.kind === 'org' ? `Which institutions does ${e.n} fund?` : `Tell me about ${e.n} and museum board conflicts`);
+    const ask = window.atlasAskInChat || window.atlasAskCurator;
+    if (typeof ask !== 'function') return;
+    ask(e.kind === 'org' ? `Which institutions does ${e.n} fund?` : `Tell me about ${e.n} and museum board conflicts`);
   }
 
   // ---- Pointer: the globe's own handlers ask these first ----
