@@ -49,6 +49,9 @@
   let LM = [], LM_HOV = null;
   // Ask the chat: show its tab (on a desktop the Details tab may be in front) and put the question to it.
   function askChat(q) {
+    // atlasAskQuestion sends it as a question and brings the chat forward; atlasAskCurator would turn any question that names a space
+    // into "Tell me about" that space.
+    if (typeof window.atlasAskQuestion === 'function') { window.atlasAskQuestion(q); return; }
     if (typeof window.setWorkspaceTab === 'function') { try { window.setWorkspaceTab('chat'); } catch (e) {} }
     if (typeof window.atlasAskCurator === 'function') window.atlasAskCurator(q);
   }
