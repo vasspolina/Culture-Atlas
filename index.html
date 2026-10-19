@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=225">
-  <script src="assets/config.js?v=225"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=226">
+  <script src="assets/config.js?v=226"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9772,9 +9772,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v225';
+      const ATLAS_RELEASE = 'culture-atlas-v226';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=225').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=226').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11290,7 +11290,8 @@ return maplibregl$1;
         }).filter(Boolean).slice(0, 3);
         fieldClauses.push(`${fieldLabel[k](f)} from ${fl.join(', ')}`);
       });
-      const foundHtml = fieldClauses.length ? `<p class="no-indent source-note">${fieldClauses.join('. ')}.</p>` : '';
+      // A bare "Founding year from ..." line read as stray prose between two blocks: it carries a label, like the blocks around it.
+      const foundHtml = fieldClauses.length ? `<div class="py-3" role="group" aria-label="Where the basics come from"><span class="kicker block">Where the basics come from</span><p class="no-indent source-note">${fieldClauses.join('. ')}.</p></div>` : '';
       if (fieldsOnly) return foundHtml;
       return `${links.length ? `<p class="no-indent source-note">${links.join(', ')}${state ? '. ' + state : ''}</p>` : ''}${foundHtml}`;
     }
@@ -18880,9 +18881,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=225"></script>
-<script src="assets/layers.js?v=225"></script>
-<script src="assets/hq-detail.js?v=225"></script>
-<script src="assets/bubbles.js?v=225" defer></script>
+<script src="assets/typeset.js?v=226"></script>
+<script src="assets/layers.js?v=226"></script>
+<script src="assets/hq-detail.js?v=226"></script>
+<script src="assets/bubbles.js?v=226" defer></script>
 </body>
 </html>
