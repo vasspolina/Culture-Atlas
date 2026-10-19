@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=190">
-  <script src="assets/config.js?v=190"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=192">
+  <script src="assets/config.js?v=192"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -668,6 +668,10 @@ return maplibregl$1;
           </div>
           <div id="chatInputModeHeader"></div>
         </div>
+
+        <!-- The width of the chat: drag either edge of the column, or focus the handle and use the arrow keys -->
+        <div id="chatWidthHandle" class="chat-width-handle" role="separator" aria-orientation="vertical" aria-label="Width of the chat" aria-valuemin="320" aria-valuemax="760" aria-valuenow="660" tabindex="0" title="Drag to change the width of the chat, double-click to reset"></div>
+        <div id="chatWidthHandleL" class="chat-width-handle is-left" aria-hidden="true"></div>
 
         <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
         <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pt-4 pb-4 w-full">
@@ -7127,7 +7131,7 @@ return maplibregl$1;
             chatCol.classList.remove('hidden');
             chatCol.classList.add('flex');
             chatCol.style.width = '100%';
-            chatCol.style.minWidth = '350px';
+            chatCol.style.minWidth = '0';   // the chat reflows to a narrow panel; a 350px floor clipped it
             chatCol.style.display = 'flex';
           }
           if (dossierCol) {
@@ -9589,9 +9593,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v190';
+      const ATLAS_RELEASE = 'culture-atlas-v192';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=190').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=192').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -16281,7 +16285,91 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       restore();
       window.addEventListener('resize', restore);
+      // The splitter is a separator: it says where it is, as a share of the width between its limits.
+      const announce = () => {
+        const rect = mainApp.getBoundingClientRect();
+        if (!horizontal()) { splitter.removeAttribute('aria-valuenow'); return; }
+        const g = globeVp.getBoundingClientRect().width;
+        splitter.setAttribute('aria-orientation', 'vertical');
+        splitter.setAttribute('aria-valuemin', String(GLOBE_MIN));
+        splitter.setAttribute('aria-valuemax', String(Math.round(rect.width - COLUMN_MIN)));
+        splitter.setAttribute('aria-valuenow', String(Math.round(g)));
+        splitter.setAttribute('aria-valuetext', Math.round(g) + ' pixels for the globe');
+      };
+      new ResizeObserver(announce).observe(globeVp);
+      announce();
     }
+
+    // The width of the chat. The conversation, the input and the records note share one column, centred in the panel; the reader
+    // drags either edge of it (it stays centred, so the edge moves half as far as the pointer), or focuses the handle and uses the
+    // arrow keys (Shift for 80px, Home for the narrowest, End for the whole panel). Double-click puts it back. The width asked
+    // for is kept in this browser; the column never goes wider than the panel less its gutters, and the text re-wraps to it.
+    (function () {
+      const col = document.getElementById('curatorIntelligenceColumn');
+      const handle = document.getElementById('chatWidthHandle');
+      const twin = document.getElementById('chatWidthHandleL');
+      if (!col || !handle) return;
+      const KEY = 'culture-atlas-chat-width', DEFAULT = 660, MIN = 320, GUTTER = 36;   // 18px each side, as --chat-gutter
+      let want = DEFAULT;
+      try { const v = parseInt(localStorage.getItem(KEY), 10); if (v >= MIN && v <= 5000) want = v; } catch (e) {}
+      let live = false;
+      const room = () => Math.max(0, col.clientWidth - GUTTER);
+      const sync = () => {
+        const max = room();
+        const now = Math.min(want, max);
+        col.style.setProperty('--chat-w', want + 'px');
+        handle.setAttribute('aria-valuemin', String(Math.min(MIN, max)));
+        handle.setAttribute('aria-valuemax', String(max));
+        handle.setAttribute('aria-valuenow', String(Math.round(now)));
+        handle.setAttribute('aria-valuetext', Math.round(now) + ' pixels wide');
+        // The question cloud is laid out again for the new width. Not on the first pass: the cloud's script runs after this one.
+        if (live && typeof window.refitQuestionCloud === 'function') window.refitQuestionCloud();
+      };
+      const set = (px, keep) => {
+        want = Math.round(Math.max(Math.min(MIN, room()), Math.min(room(), px)));
+        if (keep !== false) { try { localStorage.setItem(KEY, String(want)); } catch (e) {} }
+        sync();
+      };
+      const shown = () => Math.min(want, room());
+      let drag = null;
+      const down = (side) => (e) => {
+        drag = { x: e.clientX, w: shown(), side, el: e.currentTarget };
+        e.currentTarget.setPointerCapture(e.pointerId);
+        e.currentTarget.classList.add('is-dragging');
+        document.body.style.cursor = 'col-resize';
+        document.body.style.userSelect = 'none';
+        e.preventDefault();
+      };
+      const move = (e) => { if (drag) set(drag.w + 2 * drag.side * (e.clientX - drag.x), false); };
+      const up = (e) => {
+        if (!drag) return;
+        try { drag.el.releasePointerCapture(e.pointerId); } catch (err) {}
+        drag.el.classList.remove('is-dragging');
+        drag = null;
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+        set(shown());   // keeps the width the drag ended on
+      };
+      [[handle, 1], [twin, -1]].forEach(([el, side]) => {
+        if (!el) return;
+        el.addEventListener('pointerdown', down(side));
+        el.addEventListener('pointermove', move);
+        el.addEventListener('pointerup', up);
+        el.addEventListener('pointercancel', up);
+        el.addEventListener('dblclick', () => { try { localStorage.removeItem(KEY); } catch (e) {} want = DEFAULT; sync(); });
+      });
+      handle.addEventListener('keydown', (e) => {
+        const step = e.shiftKey ? 80 : 24;
+        const to = { ArrowRight: shown() + step, ArrowUp: shown() + step, ArrowLeft: shown() - step, ArrowDown: shown() - step, Home: 0, End: room() }[e.key];
+        if (to === undefined) return;
+        set(to);
+        e.preventDefault();
+      });
+      sync();
+      live = true;
+      if (typeof ResizeObserver === 'function') new ResizeObserver(sync).observe(col);
+      else window.addEventListener('resize', sync);
+    })();
 
     window.addEventListener('resize', () => {
       const isDesktop = window.innerWidth >= 768;
@@ -18290,8 +18378,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=190"></script>
-<script src="assets/bubbles.js?v=190" defer></script>
-<script src="assets/typeset.js?v=190"></script>
+<script src="assets/layers.js?v=192"></script>
+<script src="assets/bubbles.js?v=192" defer></script>
+<script src="assets/typeset.js?v=192"></script>
 </body>
 </html>
