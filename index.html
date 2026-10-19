@@ -11381,7 +11381,7 @@ return maplibregl$1;
         return rows.length ? `<ul class="list-disc pl-5 t-lead">${rows.join('')}</ul>` : '';
       };
       const item = (title, meta, body, urls) => `
-        <div class="record-card is-unverified space-y-1_5">
+        <div class="record-card space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(title)}</div>
           ${meta ? `<div class="kicker no-indent">${meta.html || escapeHtml(meta)}</div>` : ''}
           ${body}
@@ -11431,10 +11431,10 @@ return maplibregl$1;
       }
       const accounts = ((inst.gossip_data || {}).accounts || []).map(a => {
         const urls = (a.sources || []).map(x => x && x.url).filter(u => typeof u === 'string' && (u.startsWith('http://') || u.startsWith('https://')));
-        return `<div class="record-card is-unverified account-report-card space-y-1_5">
+        return `<div class="record-card account-report-card space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(`${a.id}, ${a.scope}`)}</div>
           <span class="unverified-platform-tag">Unverified platform sentiment</span>
-          ${list(...(a.fields || []).map(f => li(f[0] + ': ', f[1]))).replace('<ul ', '<ul role="list" ')}
+          ${list(...(a.fields || []).map(f => li(f[0] + ': ', f[1])))}
           ${urls.length ? `<div class="account-source-links">${urls.map(u => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(host(u))}${externalIcon}</a>`).join('')}</div>` : ''}
         </div>`;
       });
