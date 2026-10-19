@@ -116,7 +116,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #activeRouteBanner .meta,#activeRouteBanner span,#activeRouteBanner div{color:var(--paper)}
 #activeRouteBanner button{color:var(--paper);text-decoration:underline;font:400 14px/1 var(--sans)}
 #buildingInsidePanel{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
-.xray-label,.xray-pill{font:400 14px/1 var(--sans);background:var(--xray-colour,var(--paper));color:var(--ink);border-radius:0;padding:5px 12px}
+.xray-pill{font:400 14px/1 var(--sans);background:var(--xray-colour,var(--paper));color:var(--ink);border-radius:0;padding:5px 12px}
 .xray-pill[aria-pressed=true]{background:var(--ink);color:var(--paper)}
 #xrayModes .xray-pill{border:1px solid var(--ink)}
 /* The mode bar sits under the city banner, which wraps to two lines on a phone. */
