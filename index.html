@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=207">
-  <script src="assets/config.js?v=207"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=208">
+  <script src="assets/config.js?v=208"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7389,7 +7389,7 @@ return maplibregl$1;
     // a fallback, so a taller neighbour leaning over the point at this pitch is not taken for it. Tests replace this.
     function xrayFindBuilding(lon, lat) {
       if (!cityVectorMap || typeof cityVectorMap.project !== 'function' || typeof cityVectorMap.queryRenderedFeatures !== 'function') return null;
-      let f = null;
+      let f = null, near = null;
       try {
         const pt = cityVectorMap.project([lon, lat]);
         for (const layer of ['building', 'building-3d-city-context']) {
@@ -7398,13 +7398,43 @@ return maplibregl$1;
           f = feats.find(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
           if (f) break;
         }
-      } catch (e) { f = null; }
+        if (!f && cityVectorMap.getLayer && cityVectorMap.getLayer('building')) near = xrayNearestFootprint(pt);
+      } catch (e) { f = null; near = null; }
+      if (near) f = near.feature;
       if (!f) return null;
       const pr = f.properties || {};
       const tagged = pr.render_height != null || pr.height != null;
-      return { geometry: xrayPolygonAt(f.geometry, lon, lat), height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged };
+      return { geometry: near ? near.geometry : xrayPolygonAt(f.geometry, lon, lat), height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged };
     }
     window.xrayFindBuilding = xrayFindBuilding;
+
+    // A record's point is rounded to the street, so it often lies a few metres off the footprint it belongs to and no
+    // footprint is under it. The building is then the nearest footprint on screen, taken only when that is safe: it stands
+    // within 20px of the point (about 18 m at the building view's zoom), or within 90px (about 80 m) and at least 1.6 times
+    // nearer than the next one, so a point among many similar buildings is left without an outline, not given a neighbour's.
+    const XRAY_REACH_PX = 90, XRAY_SURE_PX = 20, XRAY_SURE_RATIO = 1.6;
+    function xrayNearestFootprint(pt) {
+      const r = XRAY_REACH_PX;
+      const feats = cityVectorMap.queryRenderedFeatures([[pt.x - r, pt.y - r], [pt.x + r, pt.y + r]], { layers: ['building'] }) || [];
+      const edge = (a, b) => {
+        const dx = b.x - a.x, dy = b.y - a.y, t = Math.max(0, Math.min(1, ((pt.x - a.x) * dx + (pt.y - a.y) * dy) / (dx * dx + dy * dy || 1)));
+        return Math.hypot(pt.x - (a.x + t * dx), pt.y - (a.y + t * dy));
+      };
+      let best = null, bestD = Infinity, nextD = Infinity;
+      for (const f of feats) {
+        const g = f.geometry;
+        const polys = !g ? [] : g.type === 'Polygon' ? [g.coordinates] : g.type === 'MultiPolygon' ? g.coordinates : [];
+        for (const poly of polys) {
+          const ring = poly[0].map(c => cityVectorMap.project(c));
+          let d = Infinity;
+          for (let i = 0; i < ring.length - 1; i++) d = Math.min(d, edge(ring[i], ring[i + 1]));
+          if (d < bestD) { nextD = bestD; bestD = d; best = { feature: f, geometry: { type: 'Polygon', coordinates: poly } }; }
+          else if (d < nextD) nextD = d;
+        }
+      }
+      if (!best || bestD > r) return null;
+      return bestD <= XRAY_SURE_PX || nextD >= bestD * XRAY_SURE_RATIO ? best : null;
+    }
 
     // The tile merges neighbouring buildings into one multipolygon; the building is the one polygon the point is in
     // (the nearest by centroid when the point is in none of them, as at a corner the tile cut).
@@ -9738,9 +9768,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v207';
+      const ATLAS_RELEASE = 'culture-atlas-v208';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=207').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=208').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -18752,8 +18782,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=207"></script>
-<script src="assets/layers.js?v=207"></script>
-<script src="assets/bubbles.js?v=207" defer></script>
+<script src="assets/typeset.js?v=208"></script>
+<script src="assets/layers.js?v=208"></script>
+<script src="assets/bubbles.js?v=208" defer></script>
 </body>
 </html>
