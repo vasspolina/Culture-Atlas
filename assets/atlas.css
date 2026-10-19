@@ -993,6 +993,7 @@ abbr[title]{text-decoration:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dt,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dd{margin:0;font:400 18px/1.3 var(--sans);letter-spacing:0;color:var(--ink);text-indent:0;min-width:0;overflow-wrap:break-word;hyphens:manual}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dd{grid-column:2}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dt{grid-column:1}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-text{margin:0;padding:4px 0 6px;border-bottom:1px solid var(--line);font:400 18px/1.3 var(--sans);letter-spacing:0;color:var(--ink);text-indent:0;overflow-wrap:break-word;hyphens:manual}
 /* A section that ends in a table closes on the table's rule, not a second one. */
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .py-3.rule-b:has(+ .facts){border-bottom:0}
 #desktopDossierInside .facts:first-child{padding-top:23.4px}

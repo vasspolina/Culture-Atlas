@@ -11448,7 +11448,13 @@ return maplibregl$1;
         return `<div class="record-card account-report-card space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(`${a.id}, ${a.scope}`)}</div>
           <span class="unverified-platform-tag">Unverified platform sentiment</span>
-          ${list(...(a.fields || []).map(f => li(f[0] + ': ', f[1])))}
+          ${(a.fields || []).map(f => {
+            // The two Glassdoor/Kununu fields read as plain lines: date and role, then what the review says. A bare "Praises X; criticises Y." becomes Pros and Cons, as the site itself lays a review out. Other fields keep their label.
+            const label = f[0] === 'Posted · self-described role' || f[0] === 'Account in brief' ? '' : f[0] + ': ';
+            const m = f[0] === 'Account in brief' && /^Praises (.+?); criticises (.+?)\.?$/.exec(f[1] || '');
+            return m ? `<p class="t-lead no-indent"><strong>Pros:</strong> ${escapeHtml(m[1])}.</p><p class="t-lead no-indent"><strong>Cons:</strong> ${escapeHtml(m[2])}.</p>`
+              : `<p class="${label ? 't-lead' : 'meta'} no-indent">${escapeHtml(label + (f[1] || ''))}</p>`;
+          }).join('')}
           ${urls.length ? `<div class="account-source-links">${urls.map(u => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(host(u))}${externalIcon}</a>`).join('')}</div>` : ''}
         </div>`;
       });
@@ -12118,13 +12124,13 @@ return maplibregl$1;
           ${sourcesHtml(inst, true)}${isGossipModeActive ? '' : researchContextHtml(inst)}
 
 
+          ${isClean && inst.highlight ? `<section class="facts" role="region" aria-label="Highlight"><h3 class="facts-title">Highlight</h3><p class="facts-text">${escapeHtml(inst.highlight)}</p></section>` : ''}
           ${isClean ? factsTableHtml('Visiting', [
             ['Opening hours', escapeHtml(inst.opening_hours || '')],
             ['Admission', escapeHtml(inst.admission_fee || '')],
             ['Address', escapeHtml(inst.address || inst.location || '') + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '')],
             ['Suggested duration', escapeHtml(inst.visit_duration || '')],
             ['Getting there', escapeHtml(inst.transit_tips || '')],
-            ['Highlight', escapeHtml(inst.highlight || '')],
             ['Accessibility', escapeHtml(inst.accessibility || '')],
             ['Amenities', escapeHtml(inst.amenities ? inst.amenities.toString().split(',').map(x => x.trim()).filter(Boolean).join(', ') : '')],
           ], ' role="region" aria-label="Visiting"') : ''}
