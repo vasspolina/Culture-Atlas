@@ -51,7 +51,8 @@
       const people = Object.entries(d.people).map(([name, o]) => Object.assign({ key: 'person:' + name, kind: 'person' }, o));
       // Pins are city-level, so entries in one city fan out around it instead of stacking.
       const byCity = new Map();
-      orgs.concat(people).forEach(e => { const k = e.c; if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(e); });
+      // Grouped by place, not by the city's spelling: "Düsseldorf" and "Dusseldorf" are one spot and must not sit on each other.
+      orgs.concat(people).forEach(e => { const k = e.lat.toFixed(2) + ',' + e.lon.toFixed(2); if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(e); });
       byCity.forEach(list => list.forEach((e, i) => { const a = i * 2.39996, rr = i === 0 ? 0 : 8 + 5 * Math.sqrt(i); e.dx = Math.cos(a) * rr; e.dy = Math.sin(a) * rr; }));
       HQ = { orgs, people, byKey: new Map(orgs.map(o => [o.key, o])), byName: new Map(people.map(p => [p.n, p])) };
       hqLoading = false; updateCounts();
@@ -199,6 +200,57 @@
 
   // Headquarters and offices: a diamond for each funder's head office, a circle for each person's office; the focused
   // space is joined to the head offices of its funders, and to the people the Epstein files tie to it.
+  // Marks nearer than a diamond's width are nudged apart, so every one has a spot of its own under the pointer: before, a
+  // mark with a neighbour a few pixels away could not be hovered, because the neighbour was always the nearer. Nothing moves
+  // more than MAX_SHIFT pixels from its place, and marks that already have room stay put. The relaxation is costly, so it is
+  // worked out once the view has settled and the offsets are reused while it pans or turns; it is not redone during a zoom.
+  const MIN_GAP = 12, MAX_SHIFT = 70, PASSES = 40;
+  let spreadCache = null, spreadAt = 0;
+  function relax(pts) {
+    const n = pts.length, ox = pts.map(p => p[1]), oy = pts.map(p => p[2]), x = ox.slice(), y = oy.slice();
+    for (let it = 0; it < PASSES; it++) {
+      const grid = new Map();
+      for (let i = 0; i < n; i++) { const k = Math.floor(x[i] / MIN_GAP) + ',' + Math.floor(y[i] / MIN_GAP); const c = grid.get(k); if (c) c.push(i); else grid.set(k, [i]); }
+      let moved = false;
+      for (let i = 0; i < n; i++) {
+        const gx = Math.floor(x[i] / MIN_GAP), gy = Math.floor(y[i] / MIN_GAP);
+        for (let a = -1; a <= 1; a++) for (let b = -1; b <= 1; b++) {
+          const cell = grid.get((gx + a) + ',' + (gy + b)); if (!cell) continue;
+          for (const j of cell) {
+            if (j <= i) continue;
+            let dx = x[j] - x[i], dy = y[j] - y[i], d = Math.hypot(dx, dy);
+            if (d >= MIN_GAP) continue;
+            if (d < 0.01) { const t = i * 2.39996 + j; dx = Math.cos(t); dy = Math.sin(t); d = 1; }
+            const push = (MIN_GAP - d) / 2, ux = dx / d, uy = dy / d;
+            x[i] -= ux * push; y[i] -= uy * push; x[j] += ux * push; y[j] += uy * push;
+            moved = true;
+          }
+        }
+      }
+      if (!moved) break;
+    }
+    const off = new Map();
+    for (let i = 0; i < n; i++) {
+      let dx = x[i] - ox[i], dy = y[i] - oy[i]; const d = Math.hypot(dx, dy);
+      if (d > MAX_SHIFT) { dx *= MAX_SHIFT / d; dy *= MAX_SHIFT / d; }
+      off.set(pts[i][0], [dx, dy]);
+    }
+    return off;
+  }
+  function spreadMarks(pts, r, baseRadius) {
+    // With the whole globe in view there is no room to spread into; the crowd is picked from the list a click opens.
+    if (pts.length < 2 || r < baseRadius * 1.5) return;
+    const v = typeof window.getView === 'function' ? window.getView() : null;
+    const settled = !v || Math.abs(v.r - v.target) < 0.5;
+    const fresh = spreadCache && Math.abs(r - spreadCache.r) / spreadCache.r < 0.02 && spreadCache.hq === L.hq && spreadCache.people === L.people;
+    const now = performance.now();
+    if (settled && (!fresh || (now - spreadAt > 400 && pts.some(p => !spreadCache.off.has(p[0]))))) {
+      spreadCache = { r, hq: L.hq, people: L.people, off: relax(pts) };
+      spreadAt = now;
+    } else if (!fresh) return;
+    pts.forEach(p => { const o = spreadCache.off.get(p[0]); if (o) { p[1] += o[0]; p[2] += o[1]; } });
+  }
+
   function drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes) {
     if (!HQ) return;
     const focus = hov || sel, rec = focus && recById && recById.get(focus.id);
@@ -217,6 +269,7 @@
     const picked = e => e === HQ_SEL || e === HQ_HOV;
     if (L.hq) HQ.orgs.forEach(e => place(e, true));
     if (L.people) HQ.people.forEach(e => place(e, true));
+    spreadMarks(pts, r, baseRadius);
     // joins from the focused space
     if (rec && typeof rec.lat === 'number') {
       ctx.lineWidth = 1.2; ctx.globalAlpha = 0.85;
