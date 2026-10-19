@@ -128,7 +128,7 @@
     // The whole web, faint when a space is in focus.
     ctx.lineWidth = 0.8;
     // The whole web is a world-view picture: with a space in focus, or zoomed in, only that space's own ties are drawn.
-    const showWeb = !rec && r < baseRadius * 8;
+    const showWeb = !rec && !HQ_HOV && r < baseRadius * 8;
     ctx.globalAlpha = 0.35;
     const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
     if (showWeb) web.forEach(([a, b, kind]) => {
@@ -223,16 +223,14 @@
       if (L.people) linkedPeople.forEach(n => { const o = HQ.byName.get(n); ctx.strokeStyle = lineCol(COL.person); arc(project, rec, o, r, cx, cy, ctx); });
       ctx.globalAlpha = 1;
     }
-    // The picked office's own joins: an arc to each space it is named on.
-    if (HQ_SEL && recById) {
-      const here = pts.find(p => p[0] === HQ_SEL);
-      if (here) {
-        ctx.lineWidth = 1.2; ctx.globalAlpha = 0.8;
-        ctx.strokeStyle = HQ_SEL.kind === 'org' ? KIND[HQ_SEL.k] : COL.person;
-        hq.spaces(HQ_SEL).slice(0, 80).forEach(sp => { if (typeof sp.rec.lat === 'number') arc(project, HQ_SEL, sp.rec, r, cx, cy, ctx); });
-        ctx.globalAlpha = 1;
-      }
-    }
+    // The picked office's own joins, and the one under the pointer or keyboard focus: an arc to each space it is named on.
+    if (recById) [HQ_SEL, HQ_HOV].filter((o, i, a) => o && a.indexOf(o) === i).forEach(o => {
+      if (!pts.some(p => p[0] === o)) return;
+      ctx.lineWidth = o === HQ_HOV ? 1.4 : 1.2; ctx.globalAlpha = o === HQ_HOV ? 0.9 : 0.8;
+      ctx.strokeStyle = lineCol(o.kind === 'org' ? KIND[o.k] : COL.person);
+      hq.spaces(o).slice(0, 80).forEach(sp => { if (typeof sp.rec.lat === 'number') arc(project, o, sp.rec, r, cx, cy, ctx); });
+      ctx.globalAlpha = 1;
+    });
     // marks
     ctx.lineWidth = 1;
     pts.forEach(([e, x, y]) => {
