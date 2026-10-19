@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=181">
-  <script src="assets/config.js?v=181"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=182">
+  <script src="assets/config.js?v=182"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9620,7 +9620,7 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=181').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=182').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11144,6 +11144,73 @@ return maplibregl$1;
       if (inst.grade && GRADE[inst.grade]) return `Grade ${inst.grade}, ${GRADE[inst.grade].label.toLowerCase()}`;
       return inst.tier === 'A' ? 'Source cited' : inst.tier === 'B' ? 'Flagged' : 'Unverified';
     }
+    // The chat names a status from the record, not from the grade's label: the grade number and what decided it (grade_basis),
+    // or the tier where there is no grade. No trailing point; the caller ends the sentence.
+    function recordStatus(inst) {
+      if (inst.grade && GRADE[inst.grade]) return `Grade ${inst.grade}. ${String(inst.grade_basis || '').trim().replace(/\.$/, '') || GRADE[inst.grade].label}`;
+      return tierName(inst);
+    }
+    // One label per country, whatever form the record uses: the atlas writes USA and UK.
+    const COUNTRY_LABEL = { 'United States': 'USA', 'US': 'USA', 'U.S.': 'USA', 'U.S.A.': 'USA', 'United Kingdom': 'UK', 'U.K.': 'UK', 'Czech Republic': 'Czechia' };
+    function placeName(inst) {
+      const country = COUNTRY_LABEL[inst.country] || inst.country || '';
+      return [inst.city, country].filter(Boolean).join(', ') || inst.location || '';
+    }
+    // The institution's own site only (website or visit page); a source URL is never passed off as the institution's domain.
+    function ownSiteUrl(inst) { return [inst.website, inst.visit_url].find(u => isTrustedUrl(u)) || ''; }
+    // The first sentence of a record field; a very short one (a figure) takes the next sentence with it.
+    function firstSentence(text) {
+      const t = String(text || '').trim().replace(/\s+/g, ' ');
+      // A sentence ends at . ! or ? followed by a space and a capital, digit or opening mark; a decimal point ($2.9M) does not end one.
+      const re = /[.!?]+(?=\s+[A-Z\d"\u2018\u201c(]|\s*$)/g;
+      const parts = []; let m, start = 0;
+      while (parts.length < 2 && (m = re.exec(t))) { parts.push(t.slice(start, m.index + m[0].length).trim()); start = m.index + m[0].length; }
+      if (!parts.length) return t;
+      let out = parts[0];
+      if (out.length < 24 && parts[1]) out += ' ' + parts[1];
+      return out;
+    }
+    // The first usable source in a list, preferring one outside the institution's own site: a museum's support page is where
+    // the funders are listed, not who reported them.
+    function firstSourceOf(urls, inst) {
+      const own = inst ? getDisplayDomain(ownSiteUrl(inst)) : '';
+      const found = (urls || []).filter(u => isTrustedUrl(u)).map(u => ({ url: u.trim(), domain: getDisplayDomain(u.trim()) }));
+      return found.find(f => !own || f.domain !== own) || found[0] || null;
+    }
+    // The reported items a record holds, newest first: case notes, documented cases, Epstein and WikiLeaks records.
+    function reportedItems(inst) {
+      const out = [];
+      (inst.case_notes || []).forEach(n => n.text && out.push({ date: String(n.meta || ''), text: n.text, sources: n.sources || [] }));
+      ((inst.gossip_data || {}).real_cases || []).forEach(c => out.push({ date: String(c.event_date || c.latest_source_date || ''), text: (c.facts || [])[0] || c.title || '', sources: (c.sources || []).map(x => x.url) }));
+      (inst.epstein_records || []).forEach(e => e.summary && out.push({ date: '', text: e.summary, sources: e.sources || [] }));
+      (inst.wikileaks_records || []).forEach(w => w.what_shows && out.push({ date: String(w.date || ''), text: w.what_shows, sources: w.sources || [] }));
+      return out.filter(i => i.text).sort((a, b) => b.date.localeCompare(a.date));
+    }
+    // The one fact a list line carries, taken from the record itself. Gossip mode leads with what is reported: the flag's reason,
+    // the watch line of a flagged record, the newest reported item, or a funder the record shares with other spaces. Normal mode
+    // leads with the neutral record: who funds it, or what it is. A record with none of these says so in three words.
+    // Returns { text, source } with source = { url, domain } or null; text is plain and ends with a point.
+    function recordFact(inst, gossip) {
+      const end = (t) => { const x = String(t || '').trim(); return /[.!?]$/.test(x) ? x : x + '.'; };
+      const flagged = inst.tier === 'B' || (inst.flags || []).length > 0;
+      if (gossip) {
+        const why = String(inst.why_flagged || '').trim();
+        if (why && why !== String(inst.funding || '').trim()) {
+          return { text: end(firstSentence(why)), source: firstSourceOf([...(inst.flag_details || []).map(d => d && d.url), ...(inst.sources || [])], inst), reported: true };
+        }
+        if (flagged && inst.watch) return { text: end(firstSentence(inst.watch)), source: firstSourceOf(inst.sources, inst), reported: true };
+        const item = reportedItems(inst)[0];
+        if (item) {
+          const year = (item.date.match(/\b(1[89]|20)\d\d\b/) || [])[0];
+          return { text: end(firstSentence(item.text)) + (year && !item.text.includes(year) ? ` (${year})` : ''), source: firstSourceOf(item.sources, inst), reported: true };
+        }
+        const link = (inst.funder_links || [])[0];
+        if (link && link.funder) return { text: `${link.funder} funds ${link.institutions || 'other'} spaces in the atlas.`, source: null, reported: false };
+      }
+      if (inst.funding) return { text: end(firstSentence(inst.funding)), source: null, reported: false };
+      if (inst.watch) return { text: end(firstSentence(inst.watch)), source: null, reported: false };
+      return { text: 'No funders disclosed.', source: null, reported: false };
+    }
     function gradeLineHtml(inst) {
       if (inst.grade && GRADE[inst.grade]) {
         const g = GRADE[inst.grade];
@@ -11823,17 +11890,13 @@ return maplibregl$1;
 
     function formatInstLink(inst, opts = {}) {
       if (!inst) return '';
-      const webUrl = getValidWebUrl(inst);
-      const domain = getDisplayDomain(webUrl);
-      
-      const isEx = inst.tier === 'B';
-      const nameClass = isEx ? 'inst-link' : 'inst-link';
-      const badge = '';
-      const nameLink = `<a href="#" class="${nameClass}" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a>${badge}`;
-      const cityPart = opts.noCity ? '' : ` in <a href="#" class="city-link" data-city="${escapeHtml(inst.city)}">${escapeHtml(inst.location || inst.city)}</a>`;
-      const dossierPart = opts.noDossier ? '' : ` (<a href="#" class="dossier-link" data-name="${escapeHtml(inst.name)}">record</a>${webUrl ? `, <a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${domain}</a>` : ''})`;
-      
-      return `${nameLink}${cityPart}${dossierPart}`;
+      // One link to the record (the name), the place as plain text with one label per country, and the institution's own
+      // domain as a plain link when the record has one. A source URL is not the institution's site and is not shown here.
+      const webUrl = ownSiteUrl(inst);
+      const nameLink = `<a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a>`;
+      const cityPart = opts.noCity ? '' : ` in ${escapeHtml(placeName(inst))}`;
+      const sitePart = opts.noDossier || !webUrl ? '' : ` (<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${escapeHtml(getDisplayDomain(webUrl))}</a>)`;
+      return `${nameLink}${cityPart}${sitePart}`;
     }
 
     // =========================================================
@@ -13093,15 +13156,7 @@ return maplibregl$1;
       // 4. Assemble XML Structured User Prompt with Explicit Constraints and Investigative Journalism Directives
       const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || 
                            /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i.test(userPrompt);
-      const gossipDirective = isGossipMode ? `\n\n<gossip_guardrail>\nCRITICAL INVESTIGATIVE DOSSIER CONSTRAINT:
-When analyzing controversies, conflicts, or backchannel disclosures, present unvarnished reporting across 3 concise thematic angles: Core Fact, Governance Risk, and Verified Source.
-<formatting_rules>
-- ABSOLUTELY FORBIDDEN: Do not repeat section headers as inline text tags, badges, or prefix labels (e.g., never write "Core Fact: [Core Fact]" or render duplicate headers like "Governance Risk").
-- Write like a senior investigative journalist or intelligence analyst for Palantir/ProPublica. 
-- Use clean, fluid prose and natural thematic transitions instead of rigid, robotic classification templates.
-- Structure information using subtle bullet points or bolded lead-ins organically, without echoing the category name twice.
-</formatting_rules>
-Format responses using standard Markdown headers and clean lists. Never output raw markdown tags or unrendered syntax.\n</gossip_guardrail>` : '';
+      const gossipDirective = isGossipMode ? `\n\n<gossip_mode>\nGossip mode is on. Lead with what the record reports: name the funder, the trustee, the controversy, its year and the source that reported it, one fact per sentence. Then the funding roster. Say when the record has nothing reported, in one sentence, and stop. No section headers, no lookup phrases for a grade: say what the record says or say nothing.\n</gossip_mode>` : `\n\n<record_mode>\nLead with the neutral record: what the space is, who funds it, its Clean Funding Grade as a number. Mention a reported item only after that, and only when the record holds one.\n</record_mode>`;
 
       const structuredUserPrompt = `${focusNotice}${currentTargetXml}${gossipDirective}<formatting_rules>\n- ABSOLUTELY FORBIDDEN: Do not repeat section headers as inline text tags, badges, or prefix labels (e.g., never write "Core Fact: [Core Fact]" or render duplicate headers like "Governance Risk").\n- Write like a senior investigative journalist or intelligence analyst for Palantir/ProPublica.\n- Use clean, fluid prose and natural thematic transitions instead of rigid, robotic classification templates.\n- Structure information using subtle bullet points or bolded lead-ins organically, without echoing the category name twice.\n</formatting_rules>\n<explicit_constraints>\nFormat responses using standard Markdown headers and clean lists. Never output raw markdown tags or unrendered syntax. Answer the user's specific question in 2-3 sentences max per section. Do not pivot to unrelated institutional history unless asked.\n</explicit_constraints>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
@@ -13164,9 +13219,7 @@ CHARACTER & VOICE GUIDELINES:
    - Emphasis is italic (*word*), used rarely; never bold, never a word in capitals for effect. Abbreviations in capitals (UNESCO, EU, USD) are fine.
    - HOUSE STYLE (the page typesets your words, but write them right): a dash is an en dash with a space either side ( – ), never an em dash and never a hyphen between spaces; a range or span is a closed en dash (10:00–18:00, Wed–Fri, 1965–70, 2024–25); quote with single marks ‘like this’, the comma or full point outside the closing mark unless it belongs to the quotation, and double marks only for a quotation inside a quotation; an ellipsis is one sign (…); a list item is a plain "- " line.
    - Name a Clean Funding Grade as one number (Grade 4, or Grade 5), never as a range.
-   - Link institutions strictly as:
-     <a href="#" class="inst-link underline" data-name="Exact Name">Exact Name</a> in <a href="#" class="city-link" data-city="City">City</a> (<a href="#" class="dossier-link underline meta" data-name="Exact Name">audit dossier</a>)
-   - Link cities as: <a href="#" class="city-link" data-city="City">City</a>.
+   - Link an institution once, by its name: <a href="#" class="inst-link underline" data-name="Exact Name">Exact Name</a>. The city after it is plain text (write USA and UK, not United States or United Kingdom). Do not add a separate link to its record or its city.
 
 6. MUSEUM BUDGET & FINANCIAL DISCLOSURE GUIDANCE:
    - If the user asks about 2026 budget data, current museum finances, or how to inspect budgets:
@@ -13196,13 +13249,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
    - ### The Governance Problem (specific trustee conflicts, corporate underwriting, and board covenants)
    - ### What This Actually Means (systemic impact, worker pay ratios, and cultural capture)
    - ### The Comparison That Matters (independent alternatives in the same city, with the sources for each)
-2. GOSSIP MODE & WHISPERS GUARDRAILS:
-   - When in Gossip Mode or answering rumors, whispers, or backchannel inquiries, maintain strict brevity and enforce structured output:
-   - When in Gossip Mode, structure every response into 3 concise sections: Core Fact, Governance Risk, and Verified Source, using bullet points.
-   - Core Fact: The unvarnished reality in 2 punchy bullet points.
-   - Governance Risk: The documented conflict, trustee interlock, or funding source using bullet points.
-   - Verified Source: The public filing, investigative reporting, or whistleblower audit with citations.
-   - Never generate long walls of dense text!
+2. GOSSIP MODE:
+   - In Gossip mode the reported items come first: the named funder or trustee, the named controversy, its year, and the source that reported it, each as one plain sentence.
+   - Every item is reported, not verified; say so once, not after every sentence.
+   - When the record holds nothing reported, say so in one sentence and stop. Never fill the gap with a grade's label or a general remark.
+   - Outside Gossip mode the neutral record comes first: what the space is, who funds it, its grade as a number; reported items follow only when the record holds them.
 3. Avoid dense walls of text! Break complex points, financial conflicts, and trustee interlocks into short, punchy bullet points (- point). Keep narrative paragraphs concise (2-3 sentences max).
 4. Give financial figures only when a supplied record or its cited source states them, and say which source.
 5. Explicitly cite reputable investigative reporting and regulatory documents (e.g. The New York Times, ProPublica, Artforum, The Guardian, Hyperallergic, and IRS Form 990 Schedule L) so the reader can independently verify the research.
@@ -14172,6 +14223,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
     }
 
+    // The last list the chat showed, so "more" or "show the next 12" continues it.
+    let lastChatList = null;
     // Intelligent Conversational Curator Knowledge Engine
     window.handleCuratorQuery = handleCuratorQuery;
     async function handleCuratorQuery(query) {
@@ -14279,7 +14332,30 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countB = ALL_INSTITUTIONS.filter(i => i.tier === 'B').length;
       const countU = ALL_INSTITUTIONS.filter(i => i.tier !== 'A' && i.tier !== 'B').length;
       const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I answer only from the records on this page: who funds a space, what is reported about it, hours and prices where they are recorded, and the sources.</p><p>${countA} spaces have a source outside the museum, ${countB} are flagged with a reason, and ${countU} are unverified.</p>`);
-      const listOf = (items, title, gossip) => answer(items.length ? `<p>${title}</p>${items.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml(tierName(i))}.</p>`).join('')}${items.length > 12 ? `<p class="no-indent">${items.length - 12} more.</p>` : ''}` : '<p>None are recorded.</p>', undefined, gossip && items.length > 0);
+      // A list of spaces, 12 at a time. Each line: the name (the link to the record), the place, the site, then the one fact the
+      // record holds (recordFact) with its source where the fact is a reported item, and the grade as a number. The title names
+      // the count; "more" or the chip shows the next 12; the chips also narrow the list to one grade in the same place.
+      // gossip: in Gossip mode a list whose lines carry reported items is gossip, and gets the balloon.
+      const PAGE = 12;
+      const listOf = (items, title, gossip, opts = {}) => {
+        if (!items.length) { answer('<p>None are recorded.</p>'); return; }
+        const offset = opts.offset || 0, place = opts.place || '', last = Math.min(offset + PAGE, items.length);
+        const page = items.slice(offset, last);
+        const line = (i) => {
+          const f = recordFact(i, gossip);
+          const src = f.reported && f.source ? ` Source: <a href="${escapeHtml(f.source.url)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${escapeHtml(f.source.domain)}</a>.` : '';
+          return `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml(f.text)}${src}${i.grade ? ` Grade ${i.grade}.` : ''}</p>`;
+        };
+        const head = offset ? `Spaces ${offset + 1} to ${last} of ${items.length}${place ? ' in ' + escapeHtml(place) : ''}:` : `${title.replace(/:?\s*$/, '')}${items.length > PAGE ? `. The first ${PAGE}` : ''}:`;
+        const rest = items.length - last;
+        const tail = rest ? `<p class="no-indent">${rest} more. <a href="#" class="prompt-link" data-prompt="Show the next ${Math.min(rest, PAGE)}">Show the next ${Math.min(rest, PAGE)}</a>${place ? `, or ask for one grade in ${escapeHtml(place)}` : ''}.</p>` : '';
+        lastChatList = { items, title, gossip, offset, place };
+        const chips = rest ? [`Show the next ${Math.min(rest, PAGE)}`] : [];
+        if (place) [5, 1].forEach(g => { if (items.some(i => i.grade === g) && !opts.grade) chips.push(`Grade ${g} spaces in ${place}`); });
+        if (!chips.length) chips.push(...followFor());
+        const holdsGossip = gossip && page.some(i => recordFact(i, true).reported);
+        answer(`<p>${head}</p>${page.map(line).join('')}${tail}`, chips, holdsGossip);
+      };
 
       // With a model connected (a visitor's key, or the chat Worker) every question that is not a plain list goes to it, so the
       // chat holds a conversation; the record answers below are what answers when no model is there or the model fails.
@@ -14323,6 +14399,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return false;
       };
 
+      if (lastChatList && asks(/^\s*(more|next|show (me )?(the )?(next|more)( \d+)?( spaces)?|next \d+)\s*[.!]?\s*$/)) {
+        const l = lastChatList;
+        if (l.offset + PAGE < l.items.length) listOf(l.items, l.title, l.gossip, { offset: l.offset + PAGE, place: l.place, grade: l.grade });
+        else answer('<p>That was the whole list.</p>');
+        return;
+      }
       if (asks(/^\s*(hi|hello|hey|help|what can you do)\b/)) { guidance(); return; }
       const places = [...ALL_CITIES_REGISTRY.map(c => c.name), ...ALL_COUNTRIES_REGISTRY.map(c => c.name)].filter(Boolean);
       const esc = (n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -14355,7 +14437,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // A record's own grade when the question names it or points at it; the ladder for a general question.
         if (target && !wanted && (explicit || /\b(its|this|here|the space|the museum)\b/.test(q))) {
           focus(target);
-          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Clean Funding Grade ${target.grade}, ${escapeHtml(GRADE[target.grade].label.toLowerCase())}. ${escapeHtml(target.grade_basis || '')}` : 'Not graded: no funder list is recorded.'}</p>${sourcesHtml(target)}`);
+          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Clean Funding Grade ${target.grade}. ${escapeHtml(target.grade_basis || '')}` : 'Not graded: no funder list is recorded.'}</p>${sourcesHtml(target)}`);
           return;
         }
         if (wanted) {
@@ -14363,7 +14445,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const here = ALL_INSTITUTIONS.filter(i => i.grade === g && (!place || [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase())))).sort((a, b) => a.name.localeCompare(b.name));
           selectedCategoryFilter = 'grade' + g;
           applyFilters();
-          listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} at grade ${g}, ${escapeHtml(GRADE[g].label.toLowerCase())}${place ? ' in ' + escapeHtml(place) : ''}${here.length > 12 ? '. The first 12' : ''}:`);
+          listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} at grade ${g}${place ? ' in ' + escapeHtml(place) : ''}`, isGossipModeActive, { place, grade: g });
           return;
         }
         const n = {};
@@ -14374,13 +14456,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const inPlace = place && (new RegExp('\\b(in|near|around|across)\\s+' + esc(place) + '\\b', 'i').test(query) || (!explicit && asks(/\b(museums?|spaces?|galleries|institutions?|list|show|find)\b/)));
       if (inPlace) {
         const order = { A: 0, B: 1 };
-        const here = ALL_INSTITUTIONS.filter(i => [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase())))
-          .sort((a, b) => (order[a.tier] ?? 2) - (order[b.tier] ?? 2) || a.name.localeCompare(b.name));
-        listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)}${here.length > 12 ? '. The first 12' : ''}:`);
+        const here = ALL_INSTITUTIONS.filter(i => [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase())));
+        const reported = isGossipModeActive ? here.filter(i => recordFact(i, true).reported).length : 0;
+        if (isGossipModeActive) here.sort((a, b) => Number(recordFact(b, true).reported) - Number(recordFact(a, true).reported) || (b.grade || 0) - (a.grade || 0) || a.name.localeCompare(b.name));
+        else here.sort((a, b) => (order[a.tier] ?? 2) - (order[b.tier] ?? 2) || a.name.localeCompare(b.name));
+        const count = `${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)}`;
+        listOf(here, isGossipModeActive && reported ? `${count}, ${reported} with something reported, those first` : count, isGossipModeActive, { place });
         return;
       }
-      if (!explicit && asks(/epstein/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.epstein_records || []).length), 'Spaces with a recorded Epstein-related item. Each item is on its space\'s page with its sources, and none is independently verified:', true); return; }
-      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:', true); return; }
+      if (!explicit && asks(/epstein/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.epstein_records || []).length), 'Spaces with a recorded Epstein-related item. Each item is on its space\'s page with its sources, and none is independently verified', true); return; }
+      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified', true); return; }
 
       if (await askModel()) return;
       if (target && asks(/\b(hours?|open|opening|admission|ticket|price|fee|cost|free|visit|address|where is)\b/)) {
@@ -14391,18 +14476,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
-        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:', true);
+        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified', true);
         return;
       }
       if (target && (isGossipModeActive || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported)\b/))) {
         focus(target);
         const reported = documentedRecordHtml(target);
-        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing is reported for this space in the records.</p>'}${sourcesHtml(target)}`);
+        answer(`<p>${formatInstLink(target)}. ${escapeHtml(recordStatus(target))}.</p>${reported || '<p>Nothing is reported for this space in the records.</p>'}${sourcesHtml(target)}`);
         return;
       }
       if (target && asks(/\b(who funds|funding|funded|funder|donor|money|pays?|finance|financed|backers?)\b/)) {
         focus(target);
-        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding detail is recorded for this space yet.</p>'}${fact('', target.watch)}${sourcesHtml(target)}`);
+        answer(`<p>${formatInstLink(target)}. ${escapeHtml(recordStatus(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding detail is recorded for this space yet.</p>'}${fact('', target.watch)}${sourcesHtml(target)}`);
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
@@ -14413,7 +14498,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (target) {
         focus(target);
-        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${fact('', target.watch)}${fact('Funding: ', target.funding)}${target.year_founded ? `<p>Founded ${escapeHtml(String(target.year_founded))}.</p>` : ''}${sourcesHtml(target)}`);
+        answer(`<p>${formatInstLink(target)}. ${escapeHtml(recordStatus(target))}.</p>${fact('', target.watch)}${fact('Funding: ', target.funding)}${target.year_founded ? `<p>Founded ${escapeHtml(String(target.year_founded))}.</p>` : ''}${sourcesHtml(target)}`);
         return;
       }
 
@@ -17831,8 +17916,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=181"></script>
-<script src="assets/bubbles.js?v=181" defer></script>
-<script src="assets/typeset.js?v=181"></script>
+<script src="assets/layers.js?v=182"></script>
+<script src="assets/bubbles.js?v=182" defer></script>
+<script src="assets/typeset.js?v=182"></script>
 </body>
 </html>

@@ -700,7 +700,9 @@ body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
 body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
 /* Layers menu on the map */
 #layersControl{position:absolute;left:12px;bottom:12px;z-index:30;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-#layersBtn{font:400 15px/1 var(--sans);letter-spacing:.01em;padding:11px 14px;background:var(--block);color:var(--ink);border:0;border-radius:0}
+#layersBtn{display:inline-flex;align-items:center;gap:10px;font:400 15px/1 var(--sans);letter-spacing:.01em;padding:9px 10px 9px 14px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);border-radius:10px}
+/* One thin up chevron on the right, drawn from the current text colour so hover and dark mode invert it with the label. */
+#layersBtn::after{content:"";flex:none;width:10px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 #layersBtn:hover,#layersBtn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
 #layersPanel{background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:10px 14px;display:flex;flex-direction:column;gap:8px;width:272px;max-width:calc(100vw - 24px);max-height:calc(100% - 70px);overflow-y:auto}
 #layersPanel[hidden]{display:none}
@@ -747,7 +749,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root:not([data-theme="dark"]) #desktopGlobeTopControls button:hover,:root:not([data-theme="dark"]) #mobileFilterChipsSection button:hover{background:#000;color:#fff}
 :root:not([data-theme="dark"]) #desktopGlobeTopControls button[aria-pressed=true],:root:not([data-theme="dark"]) #mobileFilterChipsSection button[aria-pressed=true]{background:var(--cobalt);color:#fff}
 :root:not([data-theme="dark"]) #zoomControls{border-color:#000}
-:root:not([data-theme="dark"]) #layersControl #layersBtn{background:var(--block);color:#000}
+:root:not([data-theme="dark"]) #layersControl #layersBtn{background:#fff;color:#000;border-color:#000}
 /* Gossip mode: the globe pane is dark with yellow text, in either theme. */
 :root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
 :root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button:hover,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
@@ -1200,3 +1202,62 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 /* The three globe controls fit a 320px screen: narrower padding, not a smaller size. (They ran 6px off the edge at 14px, too.) */
 @media (max-width:374px){#desktopGlobeTopControls button,#mobileFilterChipsSection button{padding-left:9px;padding-right:9px}}
 
+
+/* ---- the record panel (Details) on one baseline grid, after Hochuli "Detail in typography" ----
+   This block comes last, with the specificity to settle what the older rules above argued about (line heights of 1.25, 1.3 and 1.4; text at
+   14, 15 and 18px; 66ch lines that ran to about 90 characters; margins of 6, 8, 12, 14, 18, 20 and 24px; a browser disc list).
+   - Two sizes only, as in the chat: 18px for what is read, 14px for labels, small print and inserted passages (fig 70).
+   - One grid: every line is 23.4px (18px x 1.3), so every block is a whole number of lines tall and text on the left
+     and the right of any block sits on the same baselines (p.47-53, figs 68, 70). Between sections: two lines; between the
+     parts of a section: one line; a label sits on the line directly above what it names; paragraphs run together and are
+     marked by an indent, never by a blank line (p.47).
+   - The line (p.32-35, figs 36-40): 34em, about 65 characters, ragged right, hyphenated with a 7 3 3 limit and at most
+     three hyphens in a row; no tracking on lowercase (ligatures stay on, see "The word" above).
+   - Lists (fig 50): the dash is an en dash at the column's edge, the words a word space in and aligned under each other; never a disc. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body){--rl:23.4px;font:400 18px/var(--rl) var(--sans);letter-spacing:0;font-kerning:normal;font-variant-ligatures:common-ligatures;text-rendering:optimizeLegibility}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,div,span,a,h3,strong,em,.kicker,.lede,.t-lead,.meta):not(.record-action):not(.abbr){letter-spacing:0}
+/* Everything that is text sits on the grid. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,div,span,a,h3,strong,em,.kicker,.lede,.t-lead,.meta):not(.record-action):not(.dossier-main-heading):not(button){line-height:var(--rl)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,p.kicker,div.kicker,.lede,.t-lead,.visit-rows>div>div:last-child){font-size:18px}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(span.kicker,span.block,.py-3>.kicker:not(.accounts-note)){font-size:14px}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .meta{font-size:14px}
+/* No stacked paddings and margins: the gaps below are the only gaps. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.py-1,.py-2,.py-2_5,.py-3,.pb-1,.pb-2,.pb-3,.pt-1,.pt-1_5,.pt-2,.pt-3){padding-top:0;padding-bottom:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,ul,ol,h3,.kicker,.lede,.record-card,.meta,.t-lead,.visit-rows,[class*="mt-"],[class*="mb-"]){margin-top:0;margin-bottom:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.space-y-0_5,.space-y-1,.space-y-1_5,.space-y-2,.space-y-2_5,.space-y-3,.space-y-4)>*+*{margin-top:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card{padding:0}
+/* Sections: two lines between them; the heading block, the buttons and the sections. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .dossier-main-heading{line-height:calc(2*var(--rl));letter-spacing:.01em;margin:0 0 var(--rl)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-actions{margin-top:var(--rl);padding-top:0;row-gap:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body)>.space-y-3>*+*,
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body)>.space-y-3>.space-y-3>*+*{margin-top:calc(2*var(--rl))}
+/* The parts of a section are one line apart; a label sits directly on what it names. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.py-3,.py-2_5,.space-y-2,.space-y-2_5)>*+*,
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card>*+*{margin-top:var(--rl)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.py-3>.kicker:first-child,.py-3>span.block:first-child,.meta.block,.meta.t-strong)+*{margin-top:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .py-3>.kicker.accounts-note{margin:0 0 var(--rl);max-width:34em}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .accounts-note+.record-card{margin-top:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card+.record-card{margin-top:var(--rl)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card>.kicker+ul,
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card>.kicker+p{margin-top:0}
+/* The header's facts follow each other as one block, like a wall label. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .dossier-main-heading~p+p{margin-top:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) p.kicker{margin-top:0}
+/* Prose: the measure, the rag, hyphenation. A paragraph after a paragraph is indented, not spaced (p.47). */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,.lede,.kicker,.t-lead,.visit-rows>div>div:last-child){max-width:34em;text-wrap:pretty;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3;-webkit-hyphenate-limit-before:3;-webkit-hyphenate-limit-after:3;hyphenate-limit-lines:3;-webkit-hyphenate-limit-lines:3;hanging-punctuation:first allow-end}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.meta,.kicker):is(.block,.t-strong){max-width:none;hyphens:manual}
+/* Lists (fig 50): the en dash stands at the column's edge and the words are set a word space in, aligned under each other, one item under the next. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(ul.list-disc,ul){list-style:none;padding-left:0;margin-top:var(--rl)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(ul.list-disc,ul)>li{position:relative;padding-left:1.1em;margin:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(ul.list-disc,ul)>li::before{content:"\2013";position:absolute;left:0}
+/* Capitals in running text (fig 54): one size smaller, evenly letterspaced. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .abbr{font-size:.92em;letter-spacing:.06em;margin-right:-.06em}
+/* The two tags stacked at the head of a critique are 19px chips on the grid, 4.4px apart, so the pair is two lines tall. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .pb-1.flex{row-gap:4.4px;padding-bottom:4.4px}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .pb-1.flex.flex :is(.meta,.t-strong,div,span):not(.x):not(.y){line-height:19px}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) img.h-36{height:calc(6*var(--rl))}
+/* The record's facts (hours, address, ...) when a space is clean: a grid of labelled values, a line apart. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows{margin-top:var(--rl);gap:var(--rl) calc(2*var(--rl))}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div{padding:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>.meta{font:700 14px/var(--rl) var(--display);letter-spacing:.02em;margin:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>div:last-child{font:400 18px/var(--rl) var(--sans);letter-spacing:0;max-width:none}
