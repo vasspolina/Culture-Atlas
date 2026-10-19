@@ -16,17 +16,42 @@
   // Headquarters of the funders and offices of the people the funding map names (assets/hq.json, built by tools/build_hq.py).
   const KIND = { gov: COL.gov, corp: COL.corp, found: COL.found };
   let HQ = null, hqLoading = false;
+  // The diamond or circle under the pointer (hover) and the one a click pinned (pin). Both draw the same thing: the head
+  // office's name, and a line to every space on the map that names it. A click also opens the card with what the data holds.
+  let hqHover = null, hqPin = null, hqPinSel = null, hqPts = [], hqCard = null;
+  const hqFocus = () => hqHover || hqPin;
+  const KIND_NAME = { gov: 'Government funder', corp: 'Corporate funder', found: 'Foundation' };
+  // The spaces that name this office: a funder's key is on their nodes; a person is named in a record's Epstein entries.
+  function spacesOf(e) {
+    if (!recById) return [];
+    if (e._spaces) return e._spaces;
+    let out;
+    if (e.kind === 'org') out = [...new Set([].concat(...e.keys.map(k => keyIndex.get(k) || [])))].map(id => recById.get(id)).filter(Boolean);
+    else out = [...recById.values()].filter(rec => (rec.ep || []).some(x => x.p === e.n));
+    return (e._spaces = out);
+  }
+  const colOf = e => e.kind === 'org' ? KIND[e.k] : COL.person;
   function loadHq() {
     if (HQ || hqLoading) return;
     hqLoading = true;
     fetch('assets/hq.json').then(r => r.json()).then(d => {
-      const orgs = Object.entries(d.org).map(([key, o]) => Object.assign({ key, kind: 'org' }, o));
+      // The data keeps one key per spelling of a funder ("artscouncilengland|UK", "artscouncil|UK"); one office on the map is one mark,
+      // so entries with the same name in the same city are folded together and answer to all their keys.
+      const merged = new Map(), keyTo = new Map();
+      Object.entries(d.org).forEach(([key, o]) => {
+        const id = (o.n + '|' + o.c).toLowerCase();
+        let m = merged.get(id);
+        if (!m) { m = Object.assign({ key, keys: [], kind: 'org' }, o); merged.set(id, m); }
+        m.keys.push(key); keyTo.set(key, m);
+        if (!m.a && o.a) m.a = o.a;
+      });
+      const orgs = [...merged.values()];
       const people = Object.entries(d.people).map(([name, o]) => Object.assign({ key: 'person:' + name, kind: 'person' }, o));
       // Pins are city-level, so entries in one city fan out around it instead of stacking.
       const byCity = new Map();
       orgs.concat(people).forEach(e => { const k = e.c; if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(e); });
       byCity.forEach(list => list.forEach((e, i) => { const a = i * 2.39996, rr = i === 0 ? 0 : 8 + 5 * Math.sqrt(i); e.dx = Math.cos(a) * rr; e.dy = Math.sin(a) * rr; }));
-      HQ = { orgs, people, byKey: new Map(orgs.map(o => [o.key, o])), byName: new Map(people.map(p => [p.n, p])) };
+      HQ = { orgs, people, byKey: keyTo, byName: new Map(people.map(p => [p.n, p])) };
       hqLoading = false; updateCounts();
       if (typeof scheduleRender === 'function') scheduleRender();
     }).catch(() => { hqLoading = false; });
@@ -102,7 +127,7 @@
     // The whole web, faint when a space is in focus.
     ctx.lineWidth = 0.8;
     // The whole web is a world-view picture: with a space in focus, or zoomed in, only that space's own ties are drawn.
-    const showWeb = !rec && r < baseRadius * 8;
+    const showWeb = !rec && !hqFocus() && r < baseRadius * 8;
     ctx.globalAlpha = 0.35;
     const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
     if (showWeb) web.forEach(([a, b, kind]) => {
@@ -171,10 +196,13 @@
 
 
   // Headquarters and offices: a diamond for each funder's head office, a circle for each person's office; the focused
-  // space is joined to the head offices of its funders, and to the people the Epstein files tie to it.
+  // space is joined to the head offices of its funders, and to the people the Epstein files tie to it. An office under the
+  // pointer, or pinned by a click, is joined to every space that names it instead.
   function drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes) {
     if (!HQ) return;
-    const focus = hov || sel, rec = focus && recById && recById.get(focus.id);
+    if (hqPin && ((sel && sel.id) || null) !== hqPinSel) closeCard();
+    const hf = hqFocus();
+    const focus = hov || sel, rec = !hf && focus && recById && recById.get(focus.id);
     const linkedOrgs = new Set(), linkedPeople = new Set();
     if (rec) {
       rec.nodes.forEach(n => { if (n[5] && HQ.byKey.has(n[5])) linkedOrgs.add(n[5]); });
@@ -188,32 +216,86 @@
     };
     if (L.hq) HQ.orgs.forEach(e => place(e, true));
     if (L.people) HQ.people.forEach(e => place(e, true));
+    hqPts = pts;
     // joins from the focused space
     if (rec && typeof rec.lat === 'number') {
       ctx.lineWidth = 1.2; ctx.globalAlpha = 0.85;
-      if (L.hq) linkedOrgs.forEach(k => { const o = HQ.byKey.get(k); ctx.strokeStyle = KIND[o.k]; arc(project, rec, o, r, cx, cy, ctx); });
+      if (L.hq) new Set([...linkedOrgs].map(k => HQ.byKey.get(k))).forEach(o => { ctx.strokeStyle = KIND[o.k]; arc(project, rec, o, r, cx, cy, ctx); });
       if (L.people) linkedPeople.forEach(n => { const o = HQ.byName.get(n); ctx.strokeStyle = COL.person; arc(project, rec, o, r, cx, cy, ctx); });
       ctx.globalAlpha = 1;
     }
+    // joins from the focused office: one line to each space that names it, with a ring at the far end
+    const hfSpaces = [];
+    if (hf) {
+      const hp = pts.find(q => q[0] === hf);
+      const col = colOf(hf), at = hp ? { x: hp[1], y: hp[2] } : null;
+      ctx.lineWidth = 1.4; ctx.globalAlpha = 0.9; ctx.strokeStyle = col;
+      spacesOf(hf).forEach(o => {
+        if (typeof o.lat !== 'number') return;
+        arc(project, hf, o, r, cx, cy, ctx);
+        const pt = project(o.lon, o.lat, r, cx, cy);
+        if (pt.front) hfSpaces.push([o, pt.x, pt.y]);
+      });
+      // the diamond sits off its city's centre when several share it; a short stub joins it to the line
+      if (at) { const c0 = project(hf.lon, hf.lat, r, cx, cy); ctx.beginPath(); ctx.moveTo(at.x, at.y); ctx.lineTo(c0.x, c0.y); ctx.stroke(); }
+      ctx.globalAlpha = 1;
+      hfSpaces.forEach(([o, x, y]) => { ctx.beginPath(); ctx.arc(x, y, 3.5, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill(); });
+    }
     // marks
     ctx.lineWidth = 1;
-    pts.forEach(([e, x, y]) => {
-      const on = e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n);
-      const s = on ? 7 : (rec ? 3.5 : 5);
-      ctx.globalAlpha = rec && !on ? 0.35 : 1;
-      ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.strokeStyle = '#000';
+    const drawMark = ([e, x, y]) => {
+      const on = e.kind === 'org' ? e.keys.some(k => linkedOrgs.has(k)) : linkedPeople.has(e.n);
+      const isHf = e === hf;
+      const s = isHf ? 8 : on ? 7 : (rec || hf ? 3.5 : 5);
+      ctx.globalAlpha = hf ? (isHf ? 1 : 0.3) : (rec && !on ? 0.35 : 1);
+      ctx.fillStyle = colOf(e); ctx.strokeStyle = '#000'; ctx.lineWidth = isHf ? 1.6 : 1;
       ctx.beginPath();
       if (e.kind === 'org') { ctx.moveTo(x, y - s); ctx.lineTo(x + s, y); ctx.lineTo(x, y + s); ctx.lineTo(x - s, y); ctx.closePath(); }
       else ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
       ctx.fill(); ctx.stroke();
-    });
+    };
+    pts.forEach(q => { if (q[0] !== hf) drawMark(q); });
+    pts.forEach(q => { if (q[0] === hf) drawMark(q); });
     ctx.globalAlpha = 1;
+    const W = ctx.canvas.clientWidth || 1e9;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    // The focused office's name, always, on a block in its colour with how many spaces name it; then the names of the
+    // spaces it joins, nearest first, wherever there is room.
+    if (hf) {
+      const hp = pts.find(q => q[0] === hf);
+      if (hp) {
+        const n = spacesOf(hf).length;
+        const head = hf.kind === 'org' ? `${hf.n}, ${hf.c}` : `${hf.n}, ${hf.w}`;
+        const lines = [head.length > 44 ? head.slice(0, 42) + '…' : head, n ? `${n} ${n === 1 ? 'space' : 'spaces'} · click for details` : 'Click for details'];
+        const ws = lines.map(t => ctx.measureText(t).width + 12), w = Math.max(...ws), h = 20;
+        let bx = hp[1] + 14 + w > W ? hp[1] - 14 - w : hp[1] + 14;
+        bx = Math.max(4, Math.min(bx, W - w - 4));
+        const by = Math.max(4, hp[2] - h);
+        ctx.fillStyle = colOf(hf); ctx.fillRect(bx, by, w, h * lines.length);
+        ctx.fillStyle = '#000';
+        lines.forEach((t, k) => ctx.fillText(t, bx + 6, by + h * k + h / 2 + 0.5));
+        boxes.push({ x: bx, y: by, w, h: h * lines.length });
+      }
+      const col = colOf(hf);
+      hfSpaces.sort((a, b) => (hp ? Math.hypot(a[1] - hp[1], a[2] - hp[2]) - Math.hypot(b[1] - hp[1], b[2] - hp[2]) : 0));
+      let shown = 0;
+      for (const [o, x, y] of hfSpaces) {
+        if (shown >= 16) break;
+        if (x < -20 || x > W + 20) continue;
+        const t = o.n.length > 28 ? o.n.slice(0, 26) + '…' : o.n, w = ctx.measureText(t).width + 12, h = 20;
+        const box = { x: x + 8, y: y - h / 2, w, h };
+        if (collides(box, boxes)) continue;
+        boxes.push(box); shown++;
+        ctx.fillStyle = '#fff'; ctx.fillRect(box.x, box.y, w, h);
+        ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.strokeRect(box.x, box.y, w, h);
+        ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5);
+      }
+    }
     // Names: on blocks for the focused space's own funders and people. With nothing in focus, only a very close view names them,
     // as plain text on a halo, so the map is not covered in blocks.
-    const veryClose = !rec && r >= baseRadius * 30;
-    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    const veryClose = !rec && !hf && r >= baseRadius * 30;
     pts.forEach(([e, x, y]) => {
-      const on = e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n);
+      const on = e.kind === 'org' ? e.keys.some(k => linkedOrgs.has(k)) : linkedPeople.has(e.n);
       if (!(on || veryClose)) return;
       const text = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`, t = text.length > 40 ? text.slice(0, 38) + '…' : text;
       const tw = ctx.measureText(t).width, w = tw + 12, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
@@ -225,6 +307,7 @@
   }
 
   window.atlasLayersDrawNodes = function (ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
+    if (!L.hq && !L.people) hqPts = [];
     if (!L.flags && !L.grade && !L.money && !L.right && !L.epstein && !L.hq && !L.people) return;
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
@@ -323,6 +406,74 @@
     ctx.restore();
   };
 
+  // Hit test for the head offices drawn on the last frame: the nearest mark within reach of the pointer.
+  function hqAt(mx, my) {
+    const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
+    const reach = touch ? 20 : 10;
+    let best = null, bd = reach;
+    hqPts.forEach(([e, x, y]) => { const d = Math.hypot(x - mx, y - my); if (d <= bd) { bd = d; best = e; } });
+    return best;
+  }
+  // Pointer moved: the office under it (or none) takes the hover. Returns it so the page can show a pointer cursor.
+  window.atlasLayersHover = function (mx, my) {
+    const e = hqAt(mx, my);
+    if (e !== hqHover) { hqHover = e; if (e) loadMoney(); if (typeof scheduleRender === 'function') scheduleRender(); }
+    return e;
+  };
+  // A click or tap on a mark pins it and opens its card. Returns true when it took the click.
+  window.atlasLayersClick = function (mx, my) {
+    const e = hqAt(mx, my);
+    if (!e) return false;
+    if (hqPin === e) { closeCard(); return true; }
+    hqPin = e; hqHover = null;
+    hqPinSel = (window.atlasGetSelected && window.atlasGetSelected() || {}).id || null;
+    loadMoney(() => showCard(e));
+    showCard(e);
+    if (typeof scheduleRender === 'function') scheduleRender();
+    return true;
+  };
+  function closeCard() {
+    hqPin = null; hqPinSel = null;
+    if (hqCard) hqCard.hidden = true;
+    if (typeof scheduleRender === 'function') scheduleRender();
+  }
+  // The card: what the data holds on this office, pulled when it is clicked. The spaces are buttons into their records.
+  function showCard(e) {
+    if (hqPin !== e) return;
+    const host = document.getElementById('globeViewport'); if (!host) return;
+    if (!hqCard) {
+      hqCard = document.createElement('aside');
+      hqCard.id = 'hqCard'; hqCard.setAttribute('role', 'dialog');
+      host.appendChild(hqCard);
+    }
+    const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+    hqCard.textContent = ''; hqCard.hidden = false;
+    hqCard.setAttribute('aria-label', e.n);
+    const close = el('button', 'hq-close', '×'); close.type = 'button'; close.setAttribute('aria-label', 'Close'); close.addEventListener('click', closeCard);
+    const kind = el('span', 'hq-kind', e.kind === 'org' ? (KIND_NAME[e.k] || 'Funder') : 'Named in the Epstein files'); kind.style.background = colOf(e);
+    const rows = el('dl', 'hq-facts');
+    const fact = (k, v) => { if (!v) return; rows.appendChild(el('dt', null, k)); rows.appendChild(el('dd', null, v)); };
+    fact(e.kind === 'org' ? 'Head office' : 'Office', [e.a, e.c, e.co].filter(Boolean).join(', '));
+    if (e.kind === 'person') fact('Role', e.w);
+    hqCard.append(close, kind, el('h2', 'hq-name', e.n), rows);
+    if (!recById) { hqCard.appendChild(el('p', 'hq-note', 'Loading the spaces it is tied to…')); return; }
+    const list = spacesOf(e).slice().sort((a, b) => a.n.localeCompare(b.n));
+    hqCard.appendChild(el('h3', 'hq-count', list.length ? `${list.length} ${list.length === 1 ? 'space on the map names' : 'spaces on the map name'} ${e.kind === 'org' ? 'it' : 'them'}` : 'No space on the map names it yet.'));
+    const ul = el('ul', 'hq-spaces');
+    list.forEach(rec => {
+      const li = el('li'), b = el('button', 'hq-space'); b.type = 'button';
+      b.append(el('span', 'hq-space-name', rec.n), el('span', 'hq-space-where', rec.c || ''));
+      if (e.kind === 'person') { const ep = (rec.ep || []).find(x => x.p === e.n); if (ep && ep.l) b.appendChild(el('span', 'hq-space-note', ep.l + (ep.s ? ' · ' + ep.s : ''))); }
+      b.addEventListener('click', () => {
+        closeCard();
+        if (typeof window.selectInstitution === 'function') window.selectInstitution(rec.id, false);
+        if (typeof window.flyTo === 'function' && typeof rec.lat === 'number' && typeof window.getView === 'function') window.flyTo(rec.lon, rec.lat, window.getView().r);
+      });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    hqCard.appendChild(ul);
+  }
+  document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && hqPin) closeCard(); });
   // "Money map" on a record: turn the layers on and show that space's funders on the globe.
   window.atlasShowMoney = function (id) {
     L.money = true; L.ties = true; loadMoney();
