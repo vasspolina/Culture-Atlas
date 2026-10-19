@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=220">
-  <script src="assets/config.js?v=220"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=221">
+  <script src="assets/config.js?v=221"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9761,9 +9761,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v220';
+      const ATLAS_RELEASE = 'culture-atlas-v221';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=220').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=221').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12045,7 +12045,6 @@ return maplibregl$1;
           ${vcs.length > 0 && vc ? `
             <div class="py-3 rule-b space-y-2 critique-section">
               <div class="critique-head">
-                <span class="kicker block">Artistic critiques and history${vc.kind === 'theory' ? ', a critical lens' : ''}${vcs.length > 1 ? `, ${vcIdx + 1} of ${vcs.length}` : ''}</span>
                 ${vc.strategy ? `<h3 class="critique-title">${escapeHtml(vc.strategy)}</h3>` : ''}
               </div>
               <div class="space-y-2 pt-1">
@@ -18812,9 +18811,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=220"></script>
-<script src="assets/layers.js?v=220"></script>
-<script src="assets/hq-detail.js?v=220"></script>
-<script src="assets/bubbles.js?v=220" defer></script>
+<script src="assets/typeset.js?v=221"></script>
+<script src="assets/layers.js?v=221"></script>
+<script src="assets/hq-detail.js?v=221"></script>
+<script src="assets/bubbles.js?v=221" defer></script>
 </body>
 </html>

@@ -1508,3 +1508,10 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc{list-style:none}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc>li{position:relative}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc>li::before{content:"\2022";position:absolute;right:100%;margin-right:calc(2px - .074em)}
+
+/* Bold is for the names of museum spaces only (user's instruction, 19 Oct 2026): the space's name in the Details tab, the record sheet, the map card and
+   the route popup. Every other title is regular weight: the Layers panel's layer names, and a funder's or person's name in its record. */
+/* Headings are bold in a browser's own style; none here is, unless a rule below names it a museum space (they are more specific than this). */
+h1,h2,h3,h4,h5,h6,th{font-weight:400}
+#layersPanel .layer-name{font-weight:400}
+#hqPanel.is-details h2{font:400 26px/1.1 var(--sans);text-transform:none;letter-spacing:0}
