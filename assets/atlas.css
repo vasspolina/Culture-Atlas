@@ -1336,17 +1336,22 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:14px;height:22px;line-height:22px}}
 
-/* Action rows (dossier + bottom sheet): soft rounded buttons. First is solid black (white in the dark theme); the rest cycle cyan, green, pink, yellow. Black text on every pastel, 4.5:1 or better in every state. */
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row{gap:12px 14px!important}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{--fill:#cdf8ff;--fill-hover:#9eecfa;--on:#000;font:500 18px/1.2 var(--sans);background:var(--fill);color:var(--on);border:0;border-radius:20px;padding:14px 28px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;letter-spacing:0;text-align:center;white-space:nowrap;cursor:pointer;transition:background-color .15s,color .15s}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+3){--fill:#cdfec8;--fill-hover:#9ff597}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+4){--fill:#ffd9ec;--fill-hover:#ffb8da}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+5){--fill:#fff6b8;--fill-hover:#ffec7a}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--fill:#000;--fill-hover:#333;--on:#fff}
-:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--fill:#fff;--fill-hover:#d9d9d9;--on:#000}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:var(--fill-hover);color:var(--on)}
+/* Action rows (dossier + bottom sheet): outlined buttons, no fill, sized after the displaay.net filter row: 40px high, 15px side padding, 6px gap, 12px radius, 1.5px outline, 17px regular text; a 2px invisible margin keeps the hit area at 44px. The first outline is the ink colour; the rest cycle cyan, green, pink, yellow (darker tones in the light theme, the pale ones in the dark theme, 3:1 or better against the ground). Text stays the ink colour. */
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row{gap:6px!important}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{--line-c:#007f99;position:relative;font:400 17px/1 var(--sans);background:transparent;color:var(--ink);border:1.5px solid var(--line-c);border-radius:12px;padding:0 13.5px;height:40px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;letter-spacing:0;text-align:center;white-space:nowrap;cursor:pointer;transition:background-color .15s}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action::after{content:'';position:absolute;inset:-2px}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+3){--line-c:#2a8a2a}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+4){--line-c:#c2185b}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+5){--line-c:#8a6d00}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--line-c:var(--ink)}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{--line-c:#cdf8ff}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+3){--line-c:#cdfec8}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+4){--line-c:#ffd9ec}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+5){--line-c:#fff6b8}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--line-c:var(--ink)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:color-mix(in srgb,var(--line-c) 16%,transparent);color:var(--ink)}
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:focus-visible{outline:3px solid var(--focus,#1d4ed8);outline-offset:3px}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:disabled{background:#e4e4e4;color:#595959;cursor:not-allowed}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:disabled{border-color:#8c8c8c;color:#595959;cursor:not-allowed}
 
 /* The panel follows its width (19 Oct 2026). The chat and Details columns carried a 350px floor (the .min-w-_350px class and an inline
    minWidth), so a panel narrower than that, or a phone, was cut at its edge instead of reflowing. The floor is gone; the splitter keeps
@@ -1401,13 +1406,11 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #workInput{min-width:0}
 .chat-info p{max-width:none}
 
-/* The handle: a 14px target on each edge of the column, a 2px grip that shows the line. The left one is pointer-only. */
+/* The handle: a 14px invisible drag target on each edge of the column (19 Oct 2026: the 2px grip line was removed). The left one is pointer-only. */
 .chat-width-handle{position:absolute;top:0;bottom:0;z-index:25;width:14px;margin-left:-7px;cursor:col-resize;touch-action:none;display:none;outline:0}
 @media (min-width:768px){.chat-width-handle{display:block}}
 #curatorIntelligenceColumn .chat-width-handle{left:calc(50% + min(100% - 2*var(--chat-gutter),var(--chat-w)) / 2 + var(--chat-gutter) / 2)}
 #curatorIntelligenceColumn .chat-width-handle.is-left{left:calc(50% - min(100% - 2*var(--chat-gutter),var(--chat-w)) / 2 - var(--chat-gutter) / 2)}
-.chat-width-handle::after{content:'';position:absolute;top:50%;left:6px;width:2px;height:48px;margin-top:-24px;background:var(--line)}
-.chat-width-handle:hover::after,.chat-width-handle.is-dragging::after,.chat-width-handle:focus-visible::after{background:var(--ink)}
 .chat-width-handle:focus-visible::before{content:'';position:absolute;top:50%;left:0;width:14px;height:56px;margin-top:-28px;box-sizing:border-box;border:2px solid var(--ink)}
 /* A narrow panel (the splitter lets it go to 220px): the tab bar wraps its three controls instead of running past the edge, and the
    input grows with its placeholder so the prompt is never cut. */
