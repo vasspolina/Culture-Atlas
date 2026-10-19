@@ -14307,6 +14307,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     // Intelligent Conversational Curator Knowledge Engine
     window.handleCuratorQuery = handleCuratorQuery;
+    // True when the text is the space's name or one of its aliases and nothing else, bar a lead-in such as "show me" or "open".
+    function isNameRequest(text, inst) {
+      const clean = s => String(s || '').toLowerCase().replace(/[’']/g, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+      const t = clean(text).replace(/^(?:(?:please )?(?:show(?: me)?|open|find|go to|zoom (?:in )?(?:to|on)|take me to|tell me about|about|the) )+/, '');
+      if (!t) return false;
+      return [inst.name, ...(inst.aliases || [])].some(n => clean(n) === t);
+    }
+
     async function handleCuratorQuery(query) {
       const q = query.toLowerCase().trim();
       const rawTrimmed = query.trim();
@@ -14401,6 +14409,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
       const target = explicit || active;
+      // A name sent on its own ("moma", "show me MoMA") is a request for that record, so it opens as a click on its pin does:
+      // the Details tab with the record, and the map flown in to the space. A question about a space still keeps you in the chat.
+      if (explicit && isNameRequest(query, explicit)) {
+        selectInstitution(explicit, true);
+        if (window.innerWidth >= 768 && typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
+      }
       // Asking about a space in the chat keeps you in the chat: the record is selected on the map, but the Details tab does not open over the answer.
       const focus = (inst) => {
         if (!inst || (selectedInstitution && selectedInstitution.id === inst.id)) return;
