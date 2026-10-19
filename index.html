@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=193">
-  <script src="assets/config.js?v=193"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=194">
+  <script src="assets/config.js?v=194"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -6532,6 +6532,9 @@ return maplibregl$1;
       // Street-map labels are set in PP Neue Gstaad Regular: glyphs generated from the font file (assets/glyphs), not the map host's Noto Sans.
       glyphs: location.href.replace(/[?#].*$/, '').replace(/[^/]*$/, '') + 'assets/glyphs/{fontstack}/{range}.pbf',
       layers: [
+        // The street map is a line drawing: every edge (water, parks, landcover, buildings, roads, boundaries) is a 1px line
+        // in the map's line colour, and nothing carries a fill. The building fill and the context extrusion below draw nothing;
+        // they stay only so the building under a record's point can be found.
         {
           id: 'background',
           type: 'background',
@@ -6539,31 +6542,31 @@ return maplibregl$1;
         },
         {
           id: 'landcover_grass',
-          type: 'fill',
+          type: 'line',
           source: 'openmaptiles',
           'source-layer': 'landcover',
-          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#161616', 'fill-antialias': true }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'park',
-          type: 'fill',
+          type: 'line',
           source: 'openmaptiles',
           'source-layer': 'park',
-          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#161616', 'fill-antialias': true }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'water',
-          type: 'fill',
+          type: 'line',
           source: 'openmaptiles',
           'source-layer': 'water',
-          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#161616', 'fill-antialias': true }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'waterway',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          paint: { 'line-color': '#161616', 'line-width': 0.8, 'line-opacity': 1 }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'building',
@@ -6595,7 +6598,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 13,
-          paint: { 'line-color': '#161616', 'line-width': 0.8, 'line-opacity': 1 }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'road_minor',
@@ -6604,7 +6607,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
           minzoom: 12,
-          paint: { 'line-color': '#161616', 'line-width': 0.8, 'line-opacity': 1 }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'road_secondary',
@@ -6612,7 +6615,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
-          paint: { 'line-color': '#161616', 'line-width': 0.8, 'line-opacity': 1 }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'road_primary',
@@ -6620,7 +6623,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
-          paint: { 'line-color': '#161616', 'line-width': 0.8, 'line-opacity': 1 }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'road_motorway',
@@ -6628,7 +6631,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
-          paint: { 'line-color': '#161616', 'line-width': 0.8, 'line-opacity': 1 }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'boundary_country',
@@ -6636,7 +6639,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
-          paint: { 'line-color': '#161616', 'line-width': 0.8, 'line-dasharray': [3, 2] }
+          paint: { 'line-color': '#161616', 'line-width': 1, 'line-dasharray': [3, 2] }
         },
         {
           id: 'place_label',
@@ -7421,7 +7424,7 @@ return maplibregl$1;
     // a device pixel, feathered over one), so under the tilted camera the edges foreshorten exactly as the roads beside them,
     // and from above they weigh what the zoomed-out map weighs. A standing edge widens across the view. Positions are kept
     // relative to the building (float32 cannot hold a whole Mercator coordinate to the centimetre); the matrix carries the offset.
-    const XRAY_LINE_WIDTH = 0.8;
+    const XRAY_LINE_WIDTH = 1;
     function xrayWireLayer() {
       const VS = [
         'attribute vec3 a_pos; attribute vec3 a_norm; attribute float a_side;',
@@ -9734,9 +9737,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v193';
+      const ATLAS_RELEASE = 'culture-atlas-v194';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=193').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=194').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -18502,7 +18505,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=193"></script>
-<script src="assets/bubbles.js?v=193" defer></script>
+<script src="assets/layers.js?v=194"></script>
+<script src="assets/bubbles.js?v=194" defer></script>
 </body>
 </html>
