@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=191">
-  <script src="assets/config.js?v=192"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=193">
+  <script src="assets/config.js?v=193"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -440,12 +440,12 @@ return maplibregl$1;
           <!-- Chat info on a phone: the same text as under the composer on a desktop. -->
           <details id="chatRecordsInfoMobile" class="chat-info">
             <summary>How the records work</summary>
-            <p class="no-indent">Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
-            <p class="no-indent">Source cited: the record names at least one source outside the museum's own website.</p>
-            <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
-            <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
-            <p class="no-indent">Funding transparency ratings, A to F, summarize what the record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A roster that is not independently sourced is not rated.</p>
-            <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
+            <p>Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
+            <p>Source cited: the record names at least one source outside the museum's own website.</p>
+            <p>Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
+            <p>Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
+            <p>Funding transparency ratings, A to F, summarize what the record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A roster that is not independently sourced is not rated.</p>
+            <p>Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
             <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
@@ -504,7 +504,7 @@ return maplibregl$1;
             <span id="activeRouteStopBadge"></span>
             <span id="activeRouteStopTier" class="t-strong"></span>
           </div>
-          <div id="activeRouteStopName" class="t-strong"></div>
+          <div id="activeRouteStopName" class="t-strong space-name"></div>
           <div id="activeRouteStopHours" class="meta"></div>
           <div id="activeRouteStopFee" class=""></div>
           <div id="activeRouteStopFocus" class="line-clamp-2"></div>
@@ -800,12 +800,12 @@ return maplibregl$1;
             <!-- Chat info: how the records work -->
             <details id="chatRecordsInfo" class="chat-info">
               <summary>How the records work</summary>
-              <p class="no-indent">Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
-              <p class="no-indent">Source cited: the record names at least one source outside the museum's own website.</p>
-              <p class="no-indent">Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
-              <p class="no-indent">Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
-            <p class="no-indent">Funding transparency ratings, A to F, summarize what the record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A roster that is not independently sourced is not rated.</p>
-              <p class="no-indent">Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
+              <p>Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
+              <p>Source cited: the record names at least one source outside the museum's own website.</p>
+              <p>Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
+              <p>Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
+            <p>Funding transparency ratings, A to F, summarize what the record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A roster that is not independently sourced is not rated.</p>
+              <p>Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
             <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
             </details>
 
@@ -7688,7 +7688,7 @@ return maplibregl$1;
       }
       panel.innerHTML = `
         <div class="flex items-start justify-between gap-3">
-          <h3 class="mt-0">${e(inst.name)}</h3>
+          <h3 class="mt-0 space-name">${e(inst.name)}</h3>
           <button type="button" class="xray-pill shrink-0" onclick="window.hideBuildingXray()">Close</button>
         </div>` + body;
       // A narrow map column takes the phone layout: full width along the bottom, under the building.
@@ -8167,7 +8167,7 @@ return maplibregl$1;
           badgeEl.style.color = '#ffffff';
           badgeEl.style.fontFamily = '"PP Neue Gstaad", sans-serif';
           badgeEl.style.fontSize = '14px';
-          badgeEl.style.fontWeight = 'bold';
+          badgeEl.style.fontWeight = '400';
           badgeEl.style.display = 'flex';
           badgeEl.style.alignItems = 'center';
           badgeEl.style.justifyContent = 'center';
@@ -8187,7 +8187,7 @@ return maplibregl$1;
               ${stop.openingHours ? `<div class="record-popup-line">${escapeHtml(stop.openingHours)}</div>` : ''}
               ${stop.curatorialFocus ? `<div class="record-popup-line">${escapeHtml(stop.curatorialFocus)}</div>` : ''}
               <div class="record-popup-line record-popup-rule">${idx < route.stops.length - 1
-                ? `Next stop: ${escapeHtml(route.stops[idx + 1].name)} (${stop.nextLegKm || route.stops[idx+1].legDistanceKm} km, ${stop.nextLegMin || route.stops[idx+1].legWalkMinutes} min walk)`
+                ? `Next stop: <span class="space-name">${escapeHtml(route.stops[idx + 1].name)}</span> (${stop.nextLegKm || route.stops[idx+1].legDistanceKm} km, ${stop.nextLegMin || route.stops[idx+1].legWalkMinutes} min walk)`
                 : 'Final stop of this route'}</div>
               <div class="record-popup-actions">
                 <button type="button" onclick="window.jumpToRouteStop(${idx})">Focus Stop</button>
@@ -8289,12 +8289,12 @@ return maplibregl$1;
       const stop = activeCuratorialRoute.stops[idx];
 
       const badgeEl = document.getElementById('activeRouteStopBadge');
-      if (badgeEl) badgeEl.textContent = `STOP ${idx + 1} OF ${activeCuratorialRoute.stops.length}`;
+      if (badgeEl) badgeEl.textContent = `Stop ${idx + 1} of ${activeCuratorialRoute.stops.length}`;
 
       const tierEl = document.getElementById('activeRouteStopTier');
       if (tierEl) {
         const isClean = stop.tier === 'A';
-        tierEl.textContent = isClean ? 'CLEAN' : 'FLAGGED';
+        tierEl.textContent = isClean ? 'Clean' : 'Flagged';
         tierEl.className = isClean 
           ? 'is-good px-1_5 py-0_2 t-strong'
           : 'px-1_5 py-0_2 t-strong';
@@ -9621,9 +9621,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v191';
+      const ATLAS_RELEASE = 'culture-atlas-v193';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=191').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=193').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9900,7 +9900,8 @@ return maplibregl$1;
 
 
     // Canvas type for the cards: Compact Bold capitals for names, Regular for facts.
-    const ATLAS_CARD_TITLE_FONT = '700 24px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
+    // A city's name on its hover card is set in the roman, in normal case: bold capitals are kept for the names of spaces.
+    const ATLAS_CARD_TITLE_FONT = '400 24px "PP Neue Gstaad", "Helvetica Neue", Helvetica, Arial, sans-serif';
     const ATLAS_CARD_MONO_FONT = '14px "PP Neue Gstaad", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
@@ -10733,7 +10734,7 @@ return maplibregl$1;
               const cardInk = isGossipModeActive ? '#000000' : '#ffffff';
 
               ctx.font = ATLAS_CARD_TITLE_FONT;
-              const twCity = ctx.measureText(cityTxt.toUpperCase()).width;
+              const twCity = ctx.measureText(cityTxt).width;
               ctx.font = ATLAS_CARD_MONO_FONT;
               const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
               const twCount = ctx.measureText(countTxt).width;
@@ -10770,12 +10771,12 @@ return maplibregl$1;
               ctx.fillStyle = isGossipModeActive ? '#ff6119' : '#0046ff';
               ctx.fillRect(cardX, cardY, cardW, cardH);
 
-              // Line 1: city name, capitals, Compact Bold
+              // Line 1: city name, in the roman
               ctx.font = ATLAS_CARD_TITLE_FONT;
               ctx.fillStyle = cardInk;
               ctx.textAlign = 'left';
               ctx.textBaseline = 'top';
-              ctx.fillText(cityTxt.toUpperCase(), cardX + 16, cardY + 14);
+              ctx.fillText(cityTxt, cardX + 16, cardY + 14);
 
               let currentY = cardY + 46;
               ctx.font = ATLAS_CARD_MONO_FONT;
@@ -10917,7 +10918,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.stroke();
 
-        ctx.font = GLOBE_LIGHT ? '700 15px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif' : '400 15px "PP Neue Gstaad", sans-serif';
+        ctx.font = '400 15px "PP Neue Gstaad", sans-serif';
         ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -11075,13 +11076,13 @@ return maplibregl$1;
       const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (x) { return u; } };
       const link = (u, label) => `<a href="${e(u)}" target="_blank" rel="noopener noreferrer" class="">${e(label)}</a>`;
       const rows = [];
-      if (inst.funding) rows.push(`<p class="t-lead no-indent">${e(inst.funding)}</p>`);
-      if (inst.watch && watchIsAboutMoney(inst.watch)) rows.push(`<p class="t-lead no-indent">${e(inst.watch)}</p>`);
+      if (inst.funding) rows.push(`<p class="t-lead">${e(inst.funding)}</p>`);
+      if (inst.watch && watchIsAboutMoney(inst.watch)) rows.push(`<p class="t-lead">${e(inst.watch)}</p>`);
       const seenHosts = new Set();
       const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).filter(u => { const h = host(u); if (seenHosts.has(h)) return false; seenHosts.add(h); return true; }).slice(0, 6);
       if (urls.length) rows.push(`<p class="t-lead no-indent">Sources: ${urls.map(u => link(u, host(u))).join(', ')}.</p>`);
       const shared = (inst.funder_links || []).filter(f => f && f.funder);
-      if (shared.length) rows.push(`<p class="t-lead no-indent">Cross-reference: ${shared.map(f => `${e(f.funder)} is listed at ${f.institutions} spaces in this atlas, including this one`).join('; ')}.</p>`);
+      if (shared.length) rows.push(`<p class="t-lead">Cross-reference: ${shared.map(f => `${e(f.funder)} is listed at ${f.institutions} spaces in this atlas, including this one`).join('; ')}.</p>`);
       const reg = inst.audit_dossier_url, fil = inst.statutory_filings_url;
       const regLinks = [];
       if (reg) regLinks.push(`Registry: ${link(reg, registryName(reg))}`);
@@ -11125,7 +11126,7 @@ return maplibregl$1;
         }).filter(Boolean).slice(0, 3);
         fieldClauses.push(`${fieldLabel[k](f)} from ${fl.join(', ')}`);
       });
-      const foundHtml = fieldClauses.length ? `<p class="no-indent">${fieldClauses.join('. ')}.</p>` : '';
+      const foundHtml = fieldClauses.length ? `<p>${fieldClauses.join('. ')}.</p>` : '';
       if (fieldsOnly) return foundHtml;
       return `${links.length ? `<p class="no-indent">${links.join(', ')}${state ? '. ' + state : ''}</p>` : ''}${foundHtml}`;
     }
@@ -11134,10 +11135,10 @@ return maplibregl$1;
       const e = escapeHtml;
       const card = (title, meta, body) => `<div class="record-card space-y-1_5"><div class="kicker no-indent">${e(title)}</div>${meta ? `<div class="kicker no-indent">${e(meta)}</div>` : ''}${body}</div>`;
       const studies = (inst.study_notes || []).map(s => card(s.title, [s.authors, s.year, s.journal].filter(Boolean).join(', '),
-        `<p class="t-lead no-indent">${e(s.text)}</p>${s.doi ? `<p class="no-indent"><a href="https://doi.org/${e(s.doi)}" target="_blank" rel="noopener noreferrer" class="">doi.org</a></p>` : ''}`));
+        `<p class="t-lead">${e(s.text)}</p>${s.doi ? `<p class="no-indent"><a href="https://doi.org/${e(s.doi)}" target="_blank" rel="noopener noreferrer" class="">doi.org</a></p>` : ''}`));
       // Three lines from the Sponsor Atlas study, each a paraphrase with its source named in the text: what the space publishes about
       // its own money, the figures in those accounts, and what writers in the field say about it.
-      const layer = (title, text) => text ? card(title, '', `<p class="t-lead no-indent">${e(text)}</p>`) : '';
+      const layer = (title, text) => text ? card(title, '', `<p class="t-lead">${e(text)}</p>`) : '';
       const layers = [layer('What it publishes about its money', inst.records_note), layer('Its accounts', inst.finances_note), layer('What the field says', inst.critique_note)].filter(Boolean);
       const rows = layers.concat(studies);
       return rows.length ? `<div class="py-3" role="region" aria-label="Research on this space"><h3 class="kicker">Research on this space</h3>${rows.join('')}</div>` : '';
@@ -11213,12 +11214,12 @@ return maplibregl$1;
       const externalIcon = '<svg class="external-link-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10M8 2h6v6M14 2 7 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>';
       const srcs = (sources) => (sources || []).map(sourceDetails).filter(Boolean).slice(0, 8)
         .map(({ url, label }) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="">${escapeHtml(label)}${externalIcon}</a>`).join(', ');
-      const p = (label, text) => text ? `<p class="t-lead no-indent">${label}${escapeHtml(text)}</p>` : '';
+      const p = (label, text) => text ? `<p class="t-lead">${label}${escapeHtml(text)}</p>` : '';
       const li = (label, text) => text ? `<li>${label}${escapeHtml(text)}</li>` : '';
       // One item is a sentence, not a list: a bullet is only for two or more.
       const list = (...items) => {
         const rows = items.filter(Boolean);
-        if (rows.length === 1) return rows[0].replace(/^<li>/, '<p class="t-lead no-indent">').replace(/<\/li>$/, '</p>');
+        if (rows.length === 1) return rows[0].replace(/^<li>/, '<p class="t-lead">').replace(/<\/li>$/, '</p>');
         return rows.length ? `<ul class="list-disc pl-5 t-lead">${rows.join('')}</ul>` : '';
       };
       const item = (title, meta, body, urls) => `
@@ -11259,7 +11260,7 @@ return maplibregl$1;
             <strong class="kicker no-indent">${escapeHtml(n.title)}</strong>
             ${n.meta ? `<span class="meta">${escapeHtml(n.meta)}</span>` : ''}
           </div>
-          <p class="t-lead no-indent">${escapeHtml(n.text)}</p>
+          <p class="t-lead">${escapeHtml(n.text)}</p>
           ${srcs(n.sources) ? `<div class="no-indent">${srcs(n.sources)}</div>` : ''}
         </article>`);
       if (inst.case_study) {
@@ -11841,10 +11842,10 @@ return maplibregl$1;
             <h2 class="dossier-main-heading break-words" style="--title-length:${Math.max((inst.name || '').length, 1)}" title="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</h2>
             ${inst.category ? `<span class="institution-category-pill">${escapeHtml(inst.category)}</span>` : ''}
             <p class="kicker no-indent">${escapeHtml([inst.location || inst.city, inst.curatorial_focus, inst.year_founded ? 'Est. ' + inst.year_founded : ''].filter(Boolean).join(', '))}</p>
-            ${!isClean && inst.highlight ? `<p class="no-indent institution-summary">${escapeHtml(inst.highlight)}</p>` : ''}
-            ${inst.architecture_status ? `<p class="no-indent architecture-status">${escapeHtml(inst.architecture_status)}</p>` : ''}
+            ${!isClean && inst.highlight ? `<p class="institution-summary">${escapeHtml(inst.highlight)}</p>` : ''}
+            ${inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : ''}
             ${isCommunity ? '' : gradeLineHtml(inst)}
-            ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p class="no-indent">${escapeHtml(inst.watch)}</p>` : ''}
+            ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p>${escapeHtml(inst.watch)}</p>` : ''}
             <div class="record-actions" style="display:flex; flex-wrap:wrap; gap:4px 24px; padding-top:4px;">
               <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
               ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
@@ -18389,7 +18390,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=191"></script>
-<script src="assets/bubbles.js?v=191" defer></script>
+<script src="assets/layers.js?v=193"></script>
+<script src="assets/bubbles.js?v=193" defer></script>
 </body>
 </html>
