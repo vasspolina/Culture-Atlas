@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=204">
-  <script src="assets/config.js?v=204"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=206">
+  <script src="assets/config.js?v=206"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9729,9 +9729,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v204';
+      const ATLAS_RELEASE = 'culture-atlas-v206';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=204').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=206').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12092,6 +12092,86 @@ return maplibregl$1;
     window.openDossier = openDossier;
 
 
+    // Chat list lines: one fact from the record, and where it comes from. The wording is the record's own, never a phrase keyed on the grade.
+    const COUNTRY_LABEL = { 'United States': 'USA', 'United Kingdom': 'UK' };
+    function placeLabel(inst) {
+      const c = inst.country ? (COUNTRY_LABEL[inst.country] || inst.country) : '';
+      return [inst.city, c && c !== inst.city ? c : ''].filter(Boolean).join(', ') || inst.location || '';
+    }
+    // The space's own page only. getValidWebUrl falls back to a recorded source, which is a news site for some records.
+    function ownSiteUrl(inst) {
+      return isTrustedUrl(inst.website) ? inst.website.trim() : isTrustedUrl(inst.visit_url) ? inst.visit_url.trim() : '';
+    }
+    function hostOf(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
+    function firstSentence(text, max = 170) {
+      let t = String(text || '').replace(/\s+/g, ' ').trim();
+      if (!t) return '';
+      const m = t.match(/^.+?[.!?](?=\s+["“‘']?[A-Z0-9]|$)/);
+      if (m && m[0].length >= 25) t = m[0];
+      if (t.length > max) {
+        const cut = t.slice(0, max), k = Math.max(cut.lastIndexOf(';'), cut.lastIndexOf(', '));
+        t = k > 60 ? cut.slice(0, k) + '.' : cut.replace(/\s+\S*$/, '') + '…';
+      }
+      return /[.!?…]$/.test(t) ? t : t + '.';
+    }
+    // gossip: what is reported, from the item that names its own sources first. Otherwise: who funds it. Null when the record has nothing to say.
+    function recordFact(inst, gossip) {
+      const own = hostOf(ownSiteUrl(inst));
+      const hosts = (urls) => {
+        const out = [];
+        (urls || []).forEach(u => {
+          const h = hostOf(typeof u === 'string' ? u : (u && u.url) || '');
+          if (h && !(own && (h === own || h.endsWith('.' + own) || own.endsWith('.' + h))) && !/wikipedia|wikimedia/.test(h) && !out.includes(h)) out.push(h);
+        });
+        return out;
+      };
+      const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.join(', ')}.` : ''; };
+      const flagged = inst.tier === 'B' || !!inst.why_flagged || (inst.flags || []).length > 0;
+      if (gossip) {
+        const c = ((inst.gossip_data || {}).real_cases || [])[0];
+        if (c && (c.title || (c.facts || []).length)) return { text: firstSentence((c.facts || [])[0] || c.title), src: src(hosts((c.sources || []).map(x => x && x.url)), 1) };
+        const e = (inst.epstein_records || [])[0];
+        if (e && (e.summary || e.person)) return { text: firstSentence(e.summary ? `${e.person && !String(e.summary).startsWith(e.person) ? e.person + ': ' : ''}${e.summary}` : e.person), src: src(hosts(e.sources), 1) };
+        const w = (inst.wikileaks_records || [])[0];
+        if (w && w.what_shows) return { text: firstSentence(`${w.date ? w.date + ': ' : ''}${w.what_shows}`), src: src(hosts(w.sources), 1) };
+        if (flagged && inst.watch && !/\b(founded|opened|home to|known for|topped by|housed in)\b|\bnot (?:at|here)\b/i.test(inst.watch)) return { text: firstSentence(inst.watch), src: src(hosts(inst.sources), 2) };
+        const why = String(inst.why_flagged || '').split(/(?<=[.!?])\s+(?=[A-Z])/).filter(x => !/\bnot (?:at|here)\b/i.test(x)).join(' ');
+        if (why) return { text: firstSentence(`${(inst.flags || []).length ? inst.flags.join(', ') + ': ' : ''}${why}`), src: src(hosts(inst.sources), 2) };
+        const of = typeof inst.other_findings === 'string' ? inst.other_findings.split(' | ')[0] : '';
+        if (of) return { text: firstSentence(of), src: src(hosts(inst.sources), 2) };
+        const acc = ((inst.gossip_data || {}).accounts || []);
+        if (acc.length) return { text: `${acc.length} unverified employee ${acc.length === 1 ? 'account' : 'accounts'} on review sites.`, src: '' };
+        return null;
+      }
+      if (inst.funding) return { text: firstSentence(inst.funding), src: src(hosts(inst.sources), 1) };
+      if (inst.watch) return { text: firstSentence(inst.watch), src: '' };
+      return { text: 'No funders on record.', src: '' };
+    }
+    function chatLineHtml(inst, gossip) {
+      const f = recordFact(inst, gossip) || { text: 'Reported items are on its record page.', src: '' };
+      const url = ownSiteUrl(inst), dom = hostOf(url);
+      const site = dom ? ` (<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${escapeHtml(dom)}</a>)` : '';
+      const g = inst.grade && GRADE[inst.grade] ? ` Grade ${gradeLetter(inst.grade)}.` : '';
+      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a> in ${escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}${g}</p>`;
+    }
+    // A list of more than 12 pages itself: the link, the chip and typing "more" all show the next 12.
+    window.atlasListMore = null;
+    function renderListPage(st) {
+      const page = st.items.slice(st.offset, st.offset + 12);
+      st.offset += page.length;
+      const left = st.items.length - st.offset;
+      window.atlasListMore = left > 0 ? st : null;
+      const more = left > 0 ? `<p class="no-indent">${left} more. <a href="#" class="list-more">Show the next ${Math.min(12, left)}</a>, or ask for one grade to narrow it.</p>` : '';
+      return page.map(i => chatLineHtml(i, st.gossip)).join('') + more;
+    }
+    function showMoreList() {
+      const st = window.atlasListMore;
+      if (!st) return false;
+      appendCuratorMessage(`<div class="space-y-3"${st.gossip ? ' data-gossip="list"' : ''}>${renderListPage(st)}</div>`, ['Show more']);
+      return true;
+    }
+    window.showMoreList = showMoreList;
+
     function formatInstLink(inst, opts = {}) {
       if (!inst) return '';
       const webUrl = getValidWebUrl(inst);
@@ -13359,7 +13439,9 @@ return maplibregl$1;
       // 4. Assemble XML Structured User Prompt with Explicit Constraints and Investigative Journalism Directives
       const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || 
                            /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i.test(userPrompt);
-      const gossipDirective = isGossipMode ? `\n\n<gossip_guardrail>\nFor allegations or employee accounts, answer the question directly and concisely. Attribute each claim to its source, label unverified platform accounts as unverified sentiment, and separate allegation from documented fact. Do not infer wrongdoing or force a fixed section template.\n</gossip_guardrail>` : '';
+      const gossipDirective = isGossipMode
+        ? `\n\n<gossip_mode>\nGossip mode is on. Lead with what is reported: the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, label unverified platform accounts as unverified sentiment, and separate allegation from documented fact. If the supplied records hold nothing reported about a space, say that in one sentence and stop. Do not infer wrongdoing, pad with generalities, or force a fixed section template.\n</gossip_mode>`
+        : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
       const structuredUserPrompt = `${focusNotice}${currentTargetXml}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, say so once and direct the visitor to the official URL when available.\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, with bold labels such as **Admission**, **Hours**, **Funding** or **Governance** when relevant. Do not force headings, sections or a comparison when they do not help answer the question. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
@@ -14429,6 +14511,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     async function handleCuratorQuery(query) {
       const q = query.toLowerCase().trim();
       const rawTrimmed = query.trim();
+      if (window.atlasListMore && /^(?:show )?(?:the )?(?:more|next(?: page| \d+)?|show more)[.!]?$/.test(q) && showMoreList()) return;
 
       if (curatorAutoVoiceEnabled) {
         autoSpeakNextCuratorResponse = true;
@@ -14537,7 +14620,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countB = ALL_INSTITUTIONS.filter(i => i.tier === 'B').length;
       const countU = ALL_INSTITUTIONS.filter(i => i.tier !== 'A' && i.tier !== 'B').length;
       const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I answer only from the records on this page: who funds a space, what is reported about it, hours and prices where they are recorded, and the sources.</p><p>${countA} spaces have a source outside the museum, ${countB} are flagged with a reason, and ${countU} are unverified.</p>`);
-      const listOf = (items, title, gossip) => answer(items.length ? `<p>${title}</p>${items.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml(tierName(i))}.</p>`).join('')}${items.length > 12 ? `<p class="no-indent">${items.length - 12} more.</p>` : ''}` : '<p>None are recorded.</p>', undefined, gossip && items.length > 0);
+      const listOf = (items, title, gossip) => {
+        if (!items.length) { answer('<p>None are recorded.</p>', undefined, false); return; }
+        const st = { items, gossip: !!gossip, offset: 0 };
+        answer(`<p>${title}</p>${renderListPage(st)}`, window.atlasListMore ? ['Show more', ...followFor()].slice(0, 3) : undefined, !!gossip);
+      };
 
       // With a model connected (a visitor's key, or the chat Worker) every question that is not a plain list goes to it, so the
       // chat holds a conversation; the record answers below are what answers when no model is there or the model fails.
@@ -14657,13 +14744,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const here = ALL_INSTITUTIONS.filter(i => i.tier === 'B' && i.why_flagged && (!place || [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase()))))
           .sort((a, b) => (b.grade || 0) - (a.grade || 0) || a.name.localeCompare(b.name));
         selectedCategoryFilter = 'all';
-        answer(here.length ? `<p>${here.length} flagged ${here.length === 1 ? 'space' : 'spaces'} with a reason recorded${place ? ' in ' + escapeHtml(place) : ''}${here.length > 12 ? '. The first 12' : ''}:</p>${here.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml((i.flags || []).join(', '))}. ${escapeHtml(i.why_flagged)}</p>`).join('')}${here.length > 12 ? `<p class="no-indent">${here.length - 12} more.</p>` : ''}` : `<p>No space${place ? ' in ' + escapeHtml(place) : ''} is flagged with a reason recorded.</p>`);
+        answer(here.length ? `<p>${here.length} flagged ${here.length === 1 ? 'space' : 'spaces'} with a reason recorded${place ? ' in ' + escapeHtml(place) : ''}${here.length > 12 ? '. The first 12' : ''}:</p>${(() => { const st = { items: here, gossip: true, offset: 0 }; return renderListPage(st); })()}` : `<p>No space${place ? ' in ' + escapeHtml(place) : ''} is flagged with a reason recorded.</p>`);
         return;
       }
       if (inPlace) {
         const order = { A: 0, B: 1 };
         const here = ALL_INSTITUTIONS.filter(i => [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase())))
           .sort((a, b) => (order[a.tier] ?? 2) - (order[b.tier] ?? 2) || a.name.localeCompare(b.name));
+        if (isGossipModeActive) {
+          const told = here.filter(i => recordFact(i, true));
+          listOf(told, told.length ? `${told.length} of ${here.length} spaces in ${escapeHtml(place)} have something reported${told.length > 12 ? '. The first 12' : ''}:` : '', true);
+          if (!told.length) answer(`<p>Nothing is reported about the ${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)} in the records.</p>`);
+          return;
+        }
         listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)}${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
@@ -16742,6 +16835,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
 
+      const moreLink = e.target.closest('.list-more');
+      if (moreLink) { e.preventDefault(); e.stopPropagation(); showMoreList(); return; }
+
       // 1. Check for institution links
       const instLink = e.target.closest('.inst-link, [data-inst]');
       if (instLink) {
@@ -18629,8 +18725,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=204"></script>
-<script src="assets/layers.js?v=204"></script>
-<script src="assets/bubbles.js?v=204" defer></script>
+<script src="assets/typeset.js?v=206"></script>
+<script src="assets/layers.js?v=206"></script>
+<script src="assets/bubbles.js?v=206" defer></script>
 </body>
 </html>
