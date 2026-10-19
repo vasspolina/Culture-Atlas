@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=214">
-  <script src="assets/config.js?v=214"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=215">
+  <script src="assets/config.js?v=215"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7812,9 +7812,6 @@ return maplibregl$1;
       const archivesHtml = wd && wd.status === 'matched' && wd.archivesAt.length ? `<p class="no-indent source-note">Archives held at ${e(wd.archivesAt.join(', '))}, according to Wikidata.</p>` : '';
       const ph = wd && wd.status === 'matched' && wd.photo;
       const photoHtml = ph ? `<figure class="xray-photo"><img src="${e(ph.src)}" alt="${e(inst.name)}" loading="lazy"><figcaption class="no-indent">Photo: ${ph.artist ? e(ph.artist) + ', ' : ''}${ph.licenceUrl ? `<a href="${e(ph.licenceUrl)}" target="_blank" rel="noopener noreferrer">${e(ph.licence)}</a>` : e(ph.licence)}${ph.page ? `, <a href="${e(ph.page)}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>` : ', Wikimedia Commons'}</figcaption></figure>` : '';
-      const body = photoHtml + `
-        ${cats.length ? `${cats.map(c => `<div id="xray-cat-${c.key}" class="py-1_5 rule-t"><div class="no-indent xray-cat-title"><span class="swatch" style="background:${XRAY_COLOURS[c.key]}"></span>${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent">${e(l)}</p>`).join('')}${c.lines.length > 8 ? `<p class="no-indent">and ${c.lines.length - 8} more in the full record.</p>` : ''}</div>`).join('')}` : '<p class="no-indent">None of the categories shown here is in the record.</p>'}
-        ${siteHtml || archivesHtml || wdHtml ? `<div class="py-1_5 rule-t">${siteHtml}${archivesHtml}${wdHtml}</div>` : ''}`;
       // On a desktop the information goes to the right column, under the record; the map keeps only the labels on the building.
       const inside = document.getElementById('desktopDossierInside');
       const col = document.getElementById('desktopDossierColumn');
@@ -7834,18 +7831,10 @@ return maplibregl$1;
         if (col.classList.contains('hidden') && typeof toggleDesktopDossier === 'function') toggleDesktopDossier(true);
         return;
       }
-      panel.innerHTML = `
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="mt-0 space-name">${e(inst.name)}</h3>
-          <button type="button" class="xray-pill shrink-0" onclick="window.hideBuildingXray()">Close</button>
-        </div>` + body;
-      // A narrow map column takes the phone layout: full width along the bottom, under the building.
-      panel.style.width = xrayNarrow() ? 'calc(100% - 16px)' : '380px';
-      panel.style.maxHeight = xrayNarrow() ? '45%' : '60%';
-      // On a phone the record sheet sits over the same part of the screen; it gives way to the building and comes back on Close.
-      const sheet = window.innerWidth < 768 ? document.getElementById('dossier-bottom-sheet') : null;
-      if (sheet && !sheet.classList.contains('hidden')) { sheet.classList.add('hidden'); XRAY.hidSheet = true; }
-      panel.classList.remove('hidden');
+      // The window over the map is gone (user's instruction, 19 Oct 2026). On a phone, or where the map column is narrow, the building keeps
+      // its labels on the map and the record sheet stays where it was; the building's facts are in the right column on a wide desktop only.
+      panel.innerHTML = '';
+      panel.classList.add('hidden');
     }
 
     function openCityStreetView(cityName, targetLat, targetLon) {
@@ -9769,9 +9758,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v214';
+      const ATLAS_RELEASE = 'culture-atlas-v215';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=214').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=215').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -18789,9 +18778,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=214"></script>
-<script src="assets/layers.js?v=214"></script>
-<script src="assets/hq-detail.js?v=214"></script>
-<script src="assets/bubbles.js?v=214" defer></script>
+<script src="assets/typeset.js?v=215"></script>
+<script src="assets/layers.js?v=215"></script>
+<script src="assets/hq-detail.js?v=215"></script>
+<script src="assets/bubbles.js?v=215" defer></script>
 </body>
 </html>
