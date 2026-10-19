@@ -97,7 +97,11 @@
       .replace(/(\S)…(?=\s|$|[,;:)\]])/g, '$1' + NBSP + '…')
       .replace(/…\.(?!\d)/g, '…')
       // Closed en dash for ranges and spans (fig 49): figures, times, years, days, months. An ISO date is left alone.
-      .replace(/(?<![-\u2013\d]|\d[.,:])(\d{1,4}(?::\d\d)?)-(\d{1,4}(?::\d\d)?)(?![-\u2013\d]|[.,:]\d)/g, '$1\u2013$2')
+      // A year and a month (2025-06) is a date, not a span: a range cannot end before it starts, so it keeps its hyphen.
+      .replace(/(?<![-\u2013\d]|\d[.,:])(\d{1,4}(?::\d\d)?)-(\d{1,4}(?::\d\d)?)(?![-\u2013\d]|[.,:]\d)/g, function (m, a, b) {
+        if (/^(?:1[5-9]|20)\d\d$/.test(a) && /^\d\d$/.test(b) && +b <= +a.slice(2)) return m;
+        return a + '\u2013' + b;
+      })
       .replace(/\b(\d{1,2}:\d\d)\s[-\u2013]\s(\d{1,2}:\d\d)\b/g, '$1\u2013$2')
       .replace(/\b((?:1[5-9]|20)\d\d)\s[-\u2013]\s((?:1[5-9]|20)\d\d)\b/g, '$1\u2013$2')
       .replace(/\b(\d{1,2}(?::\d\d)?\s?[ap]m)\s?[-\u2013]\s?(\d{1,2}(?::\d\d)?\s?[ap]m)\b/g, '$1\u2013$2')

@@ -220,7 +220,13 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 .curator-followup-pill,.curator-suggest-chip,.work-suggestion-card,.work-shelf-pill,.confidential-prompt-chip{background:var(--peri);color:#000;border-radius:0;padding:8px 12px;text-align:left;white-space:normal;font:400 15px/1.2 var(--sans);text-decoration:none;display:inline-block;margin:0 6px 6px 0}
 .curator-suggest-chip{display:block;background:none;border-bottom:1px solid var(--line);padding:10px 0;margin:0}
 .curator-followup-pill:hover,.curator-suggest-chip:hover,.work-suggestion-card:hover{background:var(--ink);color:var(--paper)}
-.callout,blockquote{background:var(--grey);padding:12px 16px;border:0;margin:12px 0}
+.callout{background:var(--grey);padding:12px 16px;border:0;margin:12px 0}
+/* A quotation is never put in a container: no fill, box, border or padding (19 Oct 2026). Callouts keep theirs. */
+blockquote{background:none;padding:0;border:0;margin:12px 0}
+.critique-quote{margin:12px 0;padding:0;border:0;background:none}
+.critique-quote blockquote{margin:0;padding:0;background:none;border:0;text-indent:0}
+.critique-quote .quote-hang{position:static}
+.critique-quote figcaption{margin:0;overflow-wrap:break-word}
 .curator-message-wrap blockquote.atlas-quote{background:transparent;border:0;margin:2em 0;padding:0;color:var(--ink);font:400 clamp(19px,2.4vw,27px)/1.3 Georgia,"Times New Roman",serif;letter-spacing:0}
 .curator-message-wrap blockquote.atlas-quote .atlas-quote-text{margin:0}
 .curator-message-wrap blockquote.atlas-quote cite{display:block;margin-top:.35em;text-align:right;opacity:.78;font:italic 400 .78em/1.3 Georgia,"Times New Roman",serif}
@@ -726,34 +732,43 @@ body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
 body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
 /* Layers menu on the map */
 #layersControl{position:absolute;bottom:12px;left:12px;z-index:30;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-#layersBtn{font:400 15px/1 var(--sans);letter-spacing:.01em;padding:11px 14px;background:var(--block);color:var(--ink);border:0;border-radius:0}
+#layersBtn{display:inline-flex;align-items:center;gap:10px;font:400 15px/1 var(--sans);letter-spacing:.01em;padding:9px 10px 9px 14px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);border-radius:10px}
+/* One thin up chevron on the right, drawn from the current text colour so hover and dark mode invert it with the label. */
+#layersBtn::after{content:"";flex:none;width:10px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 #layersBtn:hover,#layersBtn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
-#layersPanel{position:absolute;top:auto;bottom:calc(100% + 6px);left:0;right:auto;z-index:1;box-sizing:border-box;background:#171717;color:#e5e5e5;border:1px solid rgba(64,64,64,.8);border-radius:0;padding:12px;width:440px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 72px);overflow-y:auto;box-shadow:none;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:400 12px/1.35 var(--sans);user-select:none}
+#layersPanel{position:absolute;top:auto;bottom:calc(100% + 6px);left:0;right:auto;z-index:1;box-sizing:border-box;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:0;padding:14px;width:620px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 72px);overflow-y:auto;box-shadow:none;font:400 13px/1.35 var(--sans);letter-spacing:.01em;user-select:none;--row:#efede6;--row-ink:#000;--row-dim:#737373;--row-on:#8a877d;--row-on-ink:#fff;--row-on-dim:#e9e7e1;--row-hover:#fbfd5e}
+:root[data-theme="dark"] #layersPanel{--row:#232322;--row-ink:#fff;--row-dim:#a3a3a3}
 #layersPanel.is-above{top:auto;bottom:calc(100% + 6px)}
 #layersPanel[hidden]{display:none}
-#layersPanel .layers-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:8px;margin-bottom:4px;border-bottom:1px solid #292929}
-#layersPanel .layers-title{margin:0;font:500 13px/1.2 var(--sans);letter-spacing:.01em;color:#f5f5f5}
-#layersPanel .layers-actions{display:flex;align-items:center;gap:10px}
-#layersPanel .layers-actions button{padding:0;border:0;background:transparent;color:#a3a3a3;cursor:pointer}
-#layersPanel .layers-reset{font:500 11px/1 var(--sans);text-decoration:underline;text-underline-offset:2px}
-#layersPanel .layers-close{font:400 20px/1 var(--sans);padding:0 2px!important}
-#layersPanel .layers-actions button:hover{color:#fff}
-#layersPanel .layers-section{padding-top:8px}
-#layersPanel .layers-section+.layers-section{margin-top:4px;border-top:1px solid #292929}
-#layersPanel .layers-section-title{margin:0 0 7px;color:#a3a3a3;font:400 14px/1.2 var(--sans);letter-spacing:.01em}
-#layersPanel .layers-list{display:flex;flex-direction:column;gap:2px}
-#layersPanel label{display:flex;align-items:center;gap:8px;min-height:28px;padding:4px 6px;border-radius:4px;color:#e5e5e5;font:400 12px/1.25 var(--sans);cursor:pointer}
-#layersPanel label:hover{background:rgba(64,64,64,.55)}
-#layersPanel input{appearance:none;flex:0 0 auto;width:14px;height:14px;margin:0;border:1px solid #737373;border-radius:3px;background:#262626;cursor:pointer}
-#layersPanel input:checked{border-color:#737373;background:#737373}
-#layersPanel input:checked::after{content:"";display:block;width:7px;height:4px;margin:3px 2px;border:solid #171717;border-width:0 0 2px 2px;transform:rotate(-45deg)}
-#layersPanel input:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
-#layersPanel label>span:nth-of-type(1){min-width:0;flex:1}
-#layersPanel .layers-count{flex:0 0 auto;text-align:right;color:#a3a3a3;font:400 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace}
+#layersPanel .layers-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:10px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+#layersPanel .layers-title{margin:0;font:400 15px/1.2 var(--sans);letter-spacing:.01em;color:var(--ink)}
+#layersPanel .layers-actions{display:flex;align-items:center;gap:12px}
+#layersPanel .layers-actions button{padding:0;border:0;background:transparent;color:var(--row-dim);cursor:pointer}
+#layersPanel .layers-reset{font:400 13px/1 var(--sans);text-decoration:underline;text-underline-offset:3px}
+#layersPanel .layers-close{font:400 22px/1 var(--sans);padding:0 2px!important}
+#layersPanel .layers-actions button:hover{color:var(--ink)}
+#layersPanel .layers-section{padding-top:10px}
+#layersPanel .layers-section+.layers-section{margin-top:8px;border-top:1px solid var(--line)}
+#layersPanel .layers-section-title{margin:0 0 8px;color:var(--ink);font:400 15px/1.2 var(--sans);letter-spacing:.01em}
+#layersPanel .layers-list{display:flex;flex-direction:column;gap:4px}
+/* Each layer is one full-width row, the way a type foundry lists its licences: the box, the name in bold, what the layer
+   shows in grey, and its count on the right in small capitals. Off: beige. On: warm grey with white text. Under the pointer: yellow. */
+#layersPanel label{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;align-items:center;column-gap:12px;min-height:40px;padding:8px 14px;border-radius:9px;background:var(--row);color:var(--row-ink);font:400 13px/1.3 var(--sans);letter-spacing:.01em;cursor:pointer;transition:background .15s var(--ease),color .15s var(--ease)}
+#layersPanel label:has(input:checked){background:var(--row-on);color:var(--row-on-ink);--row-dim:var(--row-on-dim)}
+#layersPanel label:has(input:disabled){cursor:default}
+#layersPanel label:has(input:not(:disabled)):hover{background:var(--row-hover);color:#000;--row-dim:#6b6b6b}
+#layersPanel input{appearance:none;width:18px;height:18px;margin:0;border:2px solid currentColor;border-radius:3px;background:transparent;cursor:inherit;display:grid;place-items:center}
+#layersPanel input:checked::after{content:"";width:8px;height:8px;background:currentColor}
+#layersPanel input:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
+#layersPanel .layer-name{font:700 14px/1.2 var(--display);letter-spacing:.01em;white-space:nowrap}
+#layersPanel .layer-desc{min-width:0;color:var(--row-dim)}
+#layersPanel .layers-count{text-align:right;white-space:nowrap;color:var(--row-dim);font:400 11px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase}
 #layersPanel .layers-count:empty{display:none}
-#layersPanel .layers-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 10px;color:#d4d4d4;font:400 10px/1.25 var(--sans)}
-#layersPanel .layers-key span{display:flex;align-items:center;gap:7px;min-width:0}
-#layersPanel .layers-key i{display:inline-block;flex:0 0 10px;width:10px;height:10px;background:var(--marker-color);font-style:normal}
+@media (max-width:640px){#layersPanel label{grid-template-columns:auto minmax(0,1fr) auto;row-gap:2px}#layersPanel .layer-name{white-space:normal}#layersPanel .layer-desc{grid-column:2/-1}}
+#layersPanel .layers-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;color:var(--ink);font:400 12px/1.3 var(--sans)}
+#layersPanel .layers-key span{display:flex;align-items:center;gap:8px;min-width:0}
+#layersPanel .layers-key i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
+:root:not([data-theme="dark"]) #layersPanel .shape-dot{box-shadow:0 0 0 1px rgba(0,0,0,.35)}
 #layersPanel .shape-hexagon{clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
 #layersPanel .shape-triangle{clip-path:polygon(50% 0,100% 100%,0 100%)}
 #layersPanel .shape-diamond{transform:rotate(45deg) scale(.78)}
@@ -761,8 +776,8 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .shape-shield{clip-path:polygon(50% 0,100% 18%,90% 72%,50% 100%,10% 72%,0 18%)}
 #layersPanel .shape-star{clip-path:polygon(50% 0,62% 35%,100% 35%,69% 57%,81% 95%,50% 72%,19% 95%,31% 57%,0 35%,38% 35%)}
 #layersPanel .layers-grade-key{grid-template-columns:1fr}
-#layersPanel .layers-grade-key>span{display:grid;grid-template-columns:10px 52px minmax(0,1fr);gap:7px;align-items:start}
-#layersPanel .layers-grade-key strong{color:#f5f5f5;font-weight:400}
+#layersPanel .layers-grade-key>span{display:grid;grid-template-columns:11px 56px minmax(0,1fr);gap:8px;align-items:start}
+#layersPanel .layers-grade-key strong{color:var(--ink);font-weight:400}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}
 
@@ -798,7 +813,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root:not([data-theme="dark"]) #desktopGlobeTopControls button:hover,:root:not([data-theme="dark"]) #mobileFilterChipsSection button:hover{background:#000;color:#fff}
 :root:not([data-theme="dark"]) #desktopGlobeTopControls button[aria-pressed=true],:root:not([data-theme="dark"]) #mobileFilterChipsSection button[aria-pressed=true]{background:var(--cobalt);color:#fff}
 :root:not([data-theme="dark"]) #zoomControls{border-color:#000}
-:root:not([data-theme="dark"]) #layersControl #layersBtn{background:var(--block);color:#000}
+:root:not([data-theme="dark"]) #layersControl #layersBtn{background:#fff;color:#000;border-color:#000}
 /* Gossip mode: the globe pane is dark with yellow text, in either theme. */
 :root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button{color:#ffd600;border-color:#ffd600}
 :root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button:hover,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#ffd600;color:#000}
@@ -1196,9 +1211,9 @@ body.gossip-mode-active .is-gossip .thinking{color:#000}
 
 /* AI disclosure line under answers: 14px, 6px above */
 /* The AI note is a footnote (Hochuli p.47-53, fig 70: a passage in a smaller size sits on the main grid): 14px on the 23.4px
-   line, one blank line above it, a short hairline at its head, flush left with no indent, in gold (a deep gold on the white
+   line, one blank line above it, no hairline at its head (dropped 19 Oct 2026, release 201), flush left with no indent, in gold (a deep gold on the white
    page, 4.9:1; the dark mode gold of the question colours, 7:1). */
-body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#926a00;font-size:14px;line-height:var(--chat-line);margin:var(--chat-line) 0 0;text-indent:0;color:var(--fn);background:linear-gradient(var(--fn),var(--fn)) 0 0/4.5em 1px no-repeat;padding-top:0;max-width:34em}
+body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#926a00;font-size:14px;line-height:var(--chat-line);margin:var(--chat-line) 0 0;text-indent:0;color:var(--fn);padding-top:0;max-width:34em}
 :root[data-theme="dark"] body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#cb9440}
 body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note .abbr{color:inherit;font-size:.92em}
 /* While a reply types, the rules and the follow-up chips of its finished layout stay out of sight. */
@@ -1302,3 +1317,82 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c8b85a);color:#000;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:14px;height:22px;line-height:22px}}
+
+/* Action rows (dossier + bottom sheet): soft rounded buttons. First is solid black (white in the dark theme); the rest cycle cyan, green, pink, yellow. Black text on every pastel, 4.5:1 or better in every state. */
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row{gap:12px 14px!important}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{--fill:#cdf8ff;--fill-hover:#9eecfa;--on:#000;font:500 18px/1.2 var(--sans);background:var(--fill);color:var(--on);border:0;border-radius:20px;padding:14px 28px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;letter-spacing:0;text-align:center;white-space:nowrap;cursor:pointer;transition:background-color .15s,color .15s}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+3){--fill:#cdfec8;--fill-hover:#9ff597}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+4){--fill:#ffd9ec;--fill-hover:#ffb8da}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:nth-child(4n+5){--fill:#fff6b8;--fill-hover:#ffec7a}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--fill:#000;--fill-hover:#333;--on:#fff}
+:root[data-theme="dark"] :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{--fill:#fff;--fill-hover:#d9d9d9;--on:#000}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:var(--fill-hover);color:var(--on)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:focus-visible{outline:3px solid var(--cobalt,#1d4ed8);outline-offset:3px}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:disabled{background:#e4e4e4;color:#595959;cursor:not-allowed}
+
+/* The panel follows its width (19 Oct 2026). The chat and Details columns carried a 350px floor (the .min-w-_350px class and an inline
+   minWidth), so a panel narrower than that, or a phone, was cut at its edge instead of reflowing. The floor is gone; the splitter keeps
+   its own minimum (320px while the screen has room). A question wraps to the panel instead of ending in an ellipsis, the input's toolbar
+   and the tab bar wrap to a second line, and the phone's top bar wraps its three buttons instead of running past the screen. */
+#curatorIntelligenceColumn,#desktopDossierColumn{min-width:0}
+#curatorScrollArea,#curatorScrollContent,#curatorMessages,#workBottomDock,#workInputCard,#workInput,#curatorHeroGreeting,#curatorStarterPrompts,#curatorDrawerStarterPrompts{min-width:0;max-width:100%}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){height:auto;min-height:22px;padding:2px 10px;line-height:1.25;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:break-word;text-align:left}
+@media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){height:auto;line-height:1.25}}
+#workInputCard>div.justify-between{flex-wrap:wrap;gap:8px 12px;min-width:0}
+#workInputCard>div.justify-between>div{flex-wrap:wrap;min-width:0;gap:8px 12px}
+#workspaceContextTabBar{flex-wrap:wrap;gap:4px 12px}
+#workspaceContextTabBar>div{flex-wrap:wrap;min-width:0}
+#workspaceContextTabBar button{white-space:nowrap}
+#mobileTopBar{flex-wrap:wrap;row-gap:4px}
+#mobileTopBar>div{flex-wrap:wrap;flex-shrink:1;min-width:0;row-gap:4px}
+.chat-info p,.chat-info{max-width:100%;overflow-wrap:break-word}
+/* The input grows with its placeholder, so the prompt is not cut to two lines in a narrow panel. */
+#workInput{field-sizing:content}
+
+/* The question's fill follows its text like a highlight in running text (19 Oct 2026): the colour sits on an inline span that is
+   cloned across each line it wraps to, so every line has a band as wide as its own words, and a short last line leaves no empty
+   block to its right. The button itself is only the target: it carries no fill. */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){background:transparent;padding:0;min-height:0;line-height:20px;text-align:left}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;text-decoration:none}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{display:inline;padding:2px 8px;background:var(--fill,#c8b85a);color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline-offset:3px}
+/* The chat column is centred in its panel and its width is the reader's (18 Oct 2026). Before this the column was pinned left
+   (#curatorScrollContent margin 0 auto 0 0, the dock's inner div margin 0), 22 chips ran from the top-left and the panel's right
+   half stood empty. Now the conversation, the input and the records note share one column, --chat-w wide (660px until the reader
+   drags the handle on either edge; the script keeps the choice) and never wider than the panel less its 18px gutters (user's instruction, 18 Oct 2026). Text
+   follows the column: chips, messages and the input wrap to it, and the 350px minimum the column used to carry is gone so a
+   narrow panel (the splitter allows 220px) reflows instead of clipping.
+   660px: the message text sits 2.3em in from the column's edge, so 660 less 2.3em of 18px is about 34em, the measure the
+   conversation was set to before. */
+#curatorIntelligenceColumn{--chat-w:660px;--chat-gutter:18px;min-width:0}
+#curatorIntelligenceColumn #curatorScrollArea{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
+#curatorIntelligenceColumn #workBottomDock{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
+#curatorIntelligenceColumn #curatorScrollContent,#curatorIntelligenceColumn #curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){width:min(100%,var(--chat-w));max-width:none;margin-left:auto;margin-right:auto;min-width:0}
+#curatorIntelligenceColumn #workBottomDock>div{width:min(100%,var(--chat-w));max-width:none;margin-left:auto;margin-right:auto;min-width:0}
+/* Messages take the column's width instead of a fixed 34em, so stretching the column re-wraps them. */
+#curatorIntelligenceColumn :is(#curatorMessages)>.curator-message-wrap :is(p,li),#curatorIntelligenceColumn #curatorMessages>.justify-end>div,#curatorIntelligenceColumn #curatorMessages .user-bubble{max-width:none}
+#curatorIntelligenceColumn #curatorMessages{min-width:0;overflow-wrap:break-word}
+#curatorIntelligenceColumn #curatorMessages :is(pre,table){max-width:100%;overflow-x:auto}
+#curatorIntelligenceColumn #curatorMessages img{max-width:100%;height:auto}
+/* A question wraps to the column instead of being cut with an ellipsis: on a 260px panel the longest ones are two lines. */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){height:auto;min-height:22px;white-space:normal;overflow:visible;text-overflow:clip;text-align:left;overflow-wrap:break-word}
+/* The input's toolbar wraps under the textarea's width: More, Back to chat and Share information, then Voice, Listen and send. */
+#workInputCard>div.justify-between{flex-wrap:wrap;gap:8px 12px;min-width:0}
+#workInputCard>div.justify-between>div{flex-wrap:wrap;min-width:0;gap:8px 12px}
+#workInput{min-width:0}
+.chat-info p{max-width:none}
+
+/* The handle: a 14px target on each edge of the column, a 2px grip that shows the line. The left one is pointer-only. */
+.chat-width-handle{position:absolute;top:0;bottom:0;z-index:25;width:14px;margin-left:-7px;cursor:col-resize;touch-action:none;display:none;outline:0}
+@media (min-width:768px){.chat-width-handle{display:block}}
+#curatorIntelligenceColumn .chat-width-handle{left:calc(50% + min(100% - 2*var(--chat-gutter),var(--chat-w)) / 2 + var(--chat-gutter) / 2)}
+#curatorIntelligenceColumn .chat-width-handle.is-left{left:calc(50% - min(100% - 2*var(--chat-gutter),var(--chat-w)) / 2 - var(--chat-gutter) / 2)}
+.chat-width-handle::after{content:'';position:absolute;top:50%;left:6px;width:2px;height:48px;margin-top:-24px;background:var(--line)}
+.chat-width-handle:hover::after,.chat-width-handle.is-dragging::after,.chat-width-handle:focus-visible::after{background:var(--ink)}
+.chat-width-handle:focus-visible::before{content:'';position:absolute;top:50%;left:0;width:14px;height:56px;margin-top:-28px;box-sizing:border-box;border:2px solid var(--ink)}
+/* A narrow panel (the splitter lets it go to 220px): the tab bar wraps its three controls instead of running past the edge, and the
+   input grows with its placeholder so the prompt is never cut. */
+#workspaceContextTabBar{flex-wrap:wrap;gap:4px 12px}
+#workspaceContextTabBar button{white-space:nowrap}
+#workInput{field-sizing:content}
