@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=214">
-  <script src="assets/config.js?v=214"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=217">
+  <script src="assets/config.js?v=217"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7395,7 +7395,9 @@ return maplibregl$1;
         for (const layer of ['building', 'building-3d-city-context']) {
           if (!cityVectorMap.getLayer || !cityVectorMap.getLayer(layer)) continue;
           const feats = cityVectorMap.queryRenderedFeatures([pt.x, pt.y], { layers: [layer] }) || [];
-          f = feats.find(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
+          const polys = feats.filter(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
+          // A building drawn in parts is a whole outline (hide_3d) with the parts inside it: take the whole, so the parts can be found under it.
+          f = polys.find(x => x.properties && x.properties.hide_3d) || polys[0];
           if (f) break;
         }
         if (!f && cityVectorMap.getLayer && cityVectorMap.getLayer('building')) near = xrayNearestFootprint(pt);
@@ -7404,7 +7406,40 @@ return maplibregl$1;
       if (!f) return null;
       const pr = f.properties || {};
       const tagged = pr.render_height != null || pr.height != null;
-      return { geometry: near ? near.geometry : xrayPolygonAt(f.geometry, lon, lat), height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged };
+      const geometry = near ? near.geometry : xrayPolygonAt(f.geometry, lon, lat);
+      return { geometry, height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged, parts: xrayPartsIn(geometry) };
+    }
+
+    // The building's parts, from the same tiles: OpenStreetMap's building:part shapes, each with its own height and the height
+    // it starts at (a wing, a tower, a bridge between). A part belongs to the building when a point inside it lies inside the
+    // outline. Only parts that carry a height are used, and only when there are two or more; one part is the building itself.
+    function xrayInRing(ring, lon, lat) {
+      let hit = false;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const a = ring[i], b = ring[j]; if ((a[1] > lat) !== (b[1] > lat) && lon < (b[0] - a[0]) * (lat - a[1]) / (b[1] - a[1]) + a[0]) hit = !hit; }
+      return hit;
+    }
+    function xrayPartsIn(outline) {
+      if (!cityVectorMap || typeof cityVectorMap.querySourceFeatures !== 'function') return [];
+      let feats = [];
+      try { feats = cityVectorMap.querySourceFeatures('openmaptiles', { sourceLayer: 'building' }) || []; } catch (e) { return []; }
+      const seen = new Set(), parts = [], ring = xrayRing(outline);
+      for (const f of feats) {
+        const pr = f.properties || {};
+        if (pr.hide_3d || (pr.render_height == null && pr.height == null) || !f.geometry) continue;
+        const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [];
+        for (const poly of polys) {
+          const r = poly[0]; if (!r || r.length < 4) continue;
+          const c = xrayCentroid({ type: 'Polygon', coordinates: [r] });
+          const probe = xrayInRing(r, c[0], c[1]) ? c : r[0]; // a concave part can have its centroid outside itself
+          if (!xrayInRing(ring, probe[0], probe[1])) continue;
+          const base = Number(pr.render_min_height || pr.min_height) || 0, height = Number(pr.render_height != null ? pr.render_height : pr.height);
+          const key = r.length + ':' + r[0][0].toFixed(7) + ',' + r[0][1].toFixed(7) + ':' + height + ':' + base;
+          if (seen.has(key)) continue; // the same part arrives once from each tile it crosses
+          seen.add(key);
+          parts.push({ geometry: { type: 'Polygon', coordinates: [r] }, base, height: Math.max(height, base + 1) });
+        }
+      }
+      return parts.length >= 2 ? parts : [];
     }
     window.xrayFindBuilding = xrayFindBuilding;
 
@@ -7613,10 +7648,13 @@ return maplibregl$1;
       const wire = xrayWire();
       if (!wire) return;
       if (!b) { wire.setSegments([]); return; }
-      const cats = xrayCategories(inst), n = cats.length, h = Math.max(b.height, b.base + 3);
+      const parts = b.parts && b.parts.length ? b.parts : null;
+      const cats = xrayCategories(inst), n = cats.length, h = parts ? Math.max(...parts.map(q => q.height)) : Math.max(b.height, b.base + 3);
       const segs = [];
       // The shell: its roof and its standing edges. Its footprint on the ground is the street map's own building line, drawn once.
-      xrayBoxSegments(b.geometry, b.base, h, segs, b.base > 0);
+      // A building mapped in parts is drawn part by part, each at its own height, so wings and towers keep their different heights.
+      if (parts) parts.forEach(q => xrayBoxSegments(q.geometry, q.base, q.height, segs, q.base > 0));
+      else xrayBoxSegments(b.geometry, b.base, h, segs, b.base > 0);
       const inner = xrayShrink(b.geometry, 0.7), span = h - b.base;
       if (XRAY.mode === 'plan') {
         // From above: one outline per category, each inside the last, all on the roof.
@@ -9769,9 +9807,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v214';
+      const ATLAS_RELEASE = 'culture-atlas-v217';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=214').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=217').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -18789,9 +18827,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=214"></script>
-<script src="assets/layers.js?v=214"></script>
-<script src="assets/hq-detail.js?v=214"></script>
-<script src="assets/bubbles.js?v=214" defer></script>
+<script src="assets/typeset.js?v=217"></script>
+<script src="assets/layers.js?v=217"></script>
+<script src="assets/hq-detail.js?v=217"></script>
+<script src="assets/bubbles.js?v=217" defer></script>
 </body>
 </html>
