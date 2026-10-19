@@ -1414,3 +1414,13 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #workspaceContextTabBar{flex-wrap:wrap;gap:4px 12px}
 #workspaceContextTabBar button{white-space:nowrap}
 #workInput{field-sizing:content}
+
+/* Section titles in a chat answer (user's instruction, 19 Oct 2026): a title is set at the text's own size, with one line
+   above it to part the sections and none below, so the words under it follow at once. The first paragraph under a title
+   is flush (Hochuli: nothing is indented after a heading); a later paragraph keeps its indent. */
+.curator-message-wrap .curator-section-hdr{font:inherit;margin:1.3em 0 0;padding:0}
+.curator-message-wrap>.curator-section-hdr:first-child{margin-top:0}
+.curator-message-wrap .curator-section-hdr h3{font:400 1em/1.3 var(--sans);letter-spacing:inherit;margin:0;padding:0}
+.curator-message-wrap .curator-section-hdr+p:not(.no-indent),#curatorMessages>.curator-message-wrap .curator-section-hdr+p:not(.no-indent){text-indent:0;margin-top:0}
+/* An answer that opens with a title has no indented first line to part it from the speaker mark, so its hang is a little wider. */
+#curatorMessages>.curator-message-wrap:has(>.curator-section-hdr:first-child){padding-left:2.1em}
