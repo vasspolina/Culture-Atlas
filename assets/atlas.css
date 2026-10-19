@@ -692,7 +692,8 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 .unverified-platform-tag{font-size:12px;background:transparent}
 .account-source-links{display:flex;flex-wrap:wrap;gap:8px}
 .account-source-links a{display:inline-flex;align-items:center;gap:4px}
-.external-link-icon{width:13px;height:13px;flex:none}
+/* The global svg{display:block} put each source link's icon on a line of its own under the name. It sits inline after the name, on the text's baseline. */
+.external-link-icon{display:inline-block;width:13px;height:13px;flex:none;margin-left:.25em;vertical-align:-.12em}
 
 /* Map credit: a small square "i" that opens to the text. Never a pill. */
 .maplibregl-ctrl-attrib.maplibregl-compact{background:var(--paper);border-radius:0;margin:0 10px 10px 0;min-height:24px;padding:0;color:var(--ink);font:400 14px/1.3 var(--sans)}
