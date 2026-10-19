@@ -28,6 +28,8 @@ body{background:var(--paper);color:var(--ink);font:400 15px/1.3 var(--sans);font
 button,[role=button]{cursor:pointer}
 a{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 strong,b{font-weight:400;font-style:normal;text-decoration:none}
+h1,h2,h3,h4,h5,h6{font-weight:400}
+.dossier-main-heading,#dossier-sheet-name,.space-name{font-weight:700}
 em,i{font-style:normal}
 hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 input,textarea,select{outline:0}
@@ -688,7 +690,7 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 .record-popup-actions a:hover,.record-popup-actions button:hover{background:#000;color:#fff}
 #globeViewport .record-popup a,#globeViewport .record-popup-actions a,#globeViewport a.record-popup-name{color:#000}
 #globeViewport .record-popup-actions a:hover{color:#fff}
-.account-report-card{border:1px solid var(--line);background:var(--grey);padding:12px}
+.account-report-card{border:0;background:none;padding:12px 0}
 .unverified-platform-tag{font-size:12px;background:transparent}
 .account-source-links{display:flex;flex-wrap:wrap;gap:8px}
 .account-source-links a{display:inline-flex;align-items:center;gap:4px}
@@ -1222,8 +1224,8 @@ body.gossip-mode-active .is-gossip .thinking{color:#000}
 
 /* No rules between record cards */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card{border-top:0;border-bottom:0}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.account-report-card{border:1px solid var(--line);background:var(--grey);padding:12px}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.related-report-card{border:1px solid var(--line);background:var(--grey);padding:12px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.account-report-card{border:0;background:none;padding:12px 0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card.related-report-card{border:0;background:none;padding:12px 0}
 
 /* AI disclosure line under answers: 14px, 6px above */
 /* The AI note is a footnote (Hochuli p.47-53, fig 70: a passage in a smaller size sits on the main grid): 14px on the 23.4px
