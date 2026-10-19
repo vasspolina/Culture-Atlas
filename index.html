@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=205">
-  <script src="assets/config.js?v=205"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=216">
+  <script src="assets/config.js?v=216"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -179,6 +179,14 @@ return maplibregl$1;
               <label><input type="checkbox" data-layer="people"> <span class="layer-name">People &amp; office locations</span><span class="layer-desc">Offices of the people the Epstein files name</span><span class="layers-count" data-count="people"></span></label>
               <label><input type="checkbox" data-layer="right"> <span class="layer-name">Right-wing funders</span><span class="layer-desc">Spaces with a right-wing sponsor among their funders</span><span class="layers-count" data-count="right"></span></label>
               <label><input type="checkbox" data-layer="epstein"> <span class="layer-name">Mentions in the Epstein files</span><span class="layer-desc">Spaces whose funders or people appear in the files</span><span class="layers-count" data-count="epstein"></span></label>
+            </div>
+          </section>
+          <section class="layers-section">
+            <h2 class="layers-section-title">Spaces on the map</h2>
+            <div class="layers-key layers-tier-key">
+              <span><i class="shape-dot" style="--marker-color:#9ae3e8"></i>Clean: a source is cited</span>
+              <span><i class="shape-square" style="--marker-color:#ff6119"></i>Flagged: a recorded reason</span>
+              <span><i class="shape-triangle" style="--marker-color:#c8b85a"></i>Unverified</span>
             </div>
           </section>
           <section class="layers-section">
@@ -7203,6 +7211,7 @@ return maplibregl$1;
       }
       tabChat?.setAttribute('aria-pressed', String(currentWorkspaceTab === 'chat'));
       tabDossier?.setAttribute('aria-pressed', String(currentWorkspaceTab === 'dossier'));
+      if (window.atlasSyncInert) window.atlasSyncInert();
     }
     window.setWorkspaceTab = setWorkspaceTab;
 
@@ -7383,7 +7392,7 @@ return maplibregl$1;
     // a fallback, so a taller neighbour leaning over the point at this pitch is not taken for it. Tests replace this.
     function xrayFindBuilding(lon, lat) {
       if (!cityVectorMap || typeof cityVectorMap.project !== 'function' || typeof cityVectorMap.queryRenderedFeatures !== 'function') return null;
-      let f = null;
+      let f = null, near = null;
       try {
         const pt = cityVectorMap.project([lon, lat]);
         for (const layer of ['building', 'building-3d-city-context']) {
@@ -7392,13 +7401,43 @@ return maplibregl$1;
           f = feats.find(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
           if (f) break;
         }
-      } catch (e) { f = null; }
+        if (!f && cityVectorMap.getLayer && cityVectorMap.getLayer('building')) near = xrayNearestFootprint(pt);
+      } catch (e) { f = null; near = null; }
+      if (near) f = near.feature;
       if (!f) return null;
       const pr = f.properties || {};
       const tagged = pr.render_height != null || pr.height != null;
-      return { geometry: xrayPolygonAt(f.geometry, lon, lat), height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged };
+      return { geometry: near ? near.geometry : xrayPolygonAt(f.geometry, lon, lat), height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged };
     }
     window.xrayFindBuilding = xrayFindBuilding;
+
+    // A record's point is rounded to the street, so it often lies a few metres off the footprint it belongs to and no
+    // footprint is under it. The building is then the nearest footprint on screen, taken only when that is safe: it stands
+    // within 20px of the point (about 18 m at the building view's zoom), or within 90px (about 80 m) and at least 1.6 times
+    // nearer than the next one, so a point among many similar buildings is left without an outline, not given a neighbour's.
+    const XRAY_REACH_PX = 90, XRAY_SURE_PX = 20, XRAY_SURE_RATIO = 1.6;
+    function xrayNearestFootprint(pt) {
+      const r = XRAY_REACH_PX;
+      const feats = cityVectorMap.queryRenderedFeatures([[pt.x - r, pt.y - r], [pt.x + r, pt.y + r]], { layers: ['building'] }) || [];
+      const edge = (a, b) => {
+        const dx = b.x - a.x, dy = b.y - a.y, t = Math.max(0, Math.min(1, ((pt.x - a.x) * dx + (pt.y - a.y) * dy) / (dx * dx + dy * dy || 1)));
+        return Math.hypot(pt.x - (a.x + t * dx), pt.y - (a.y + t * dy));
+      };
+      let best = null, bestD = Infinity, nextD = Infinity;
+      for (const f of feats) {
+        const g = f.geometry;
+        const polys = !g ? [] : g.type === 'Polygon' ? [g.coordinates] : g.type === 'MultiPolygon' ? g.coordinates : [];
+        for (const poly of polys) {
+          const ring = poly[0].map(c => cityVectorMap.project(c));
+          let d = Infinity;
+          for (let i = 0; i < ring.length - 1; i++) d = Math.min(d, edge(ring[i], ring[i + 1]));
+          if (d < bestD) { nextD = bestD; bestD = d; best = { feature: f, geometry: { type: 'Polygon', coordinates: poly } }; }
+          else if (d < nextD) nextD = d;
+        }
+      }
+      if (!best || bestD > r) return null;
+      return bestD <= XRAY_SURE_PX || nextD >= bestD * XRAY_SURE_RATIO ? best : null;
+    }
 
     // The tile merges neighbouring buildings into one multipolygon; the building is the one polygon the point is in
     // (the nearest by centroid when the point is in none of them, as at a corner the tile cut).
@@ -7783,7 +7822,8 @@ return maplibregl$1;
       const inside = document.getElementById('desktopDossierInside');
       const col = document.getElementById('desktopDossierColumn');
       if (window.innerWidth >= 768 && inside && col) {
-        const onRecord = new Set(['flag', 'funding', 'reported', 'accounts', 'sources']);
+        // Visiting is on the record already (hours, admission, address), so the column does not set it a second time.
+        const onRecord = new Set(['flag', 'funding', 'reported', 'accounts', 'sources', 'visiting']);
         const rest = cats.filter(c => !onRecord.has(c.key));
         // In the record column each part is a table of facts like the record's own Visiting block, with no colour key
         // (the map has its own); a line that reads "Label: value" puts the label in the left column.
@@ -8276,7 +8316,7 @@ return maplibregl$1;
           badgeEl.style.background = 'linear-gradient(135deg, #064e3b 0%, #022c22 100%)';
           badgeEl.style.border = '2.5px solid #34d399';
           badgeEl.style.color = '#ffffff';
-          badgeEl.style.fontFamily = '"PP Neue Gstaad", sans-serif';
+          badgeEl.style.fontFamily = '"Jokker", sans-serif';
           badgeEl.style.fontSize = '14px';
           badgeEl.style.fontWeight = '400';
           badgeEl.style.display = 'flex';
@@ -9022,7 +9062,7 @@ return maplibregl$1;
 
         // Icon or Initial in center
         trusteeCtx.fillStyle = '#ffffff';
-        trusteeCtx.font = '14px "PP Neue Gstaad", sans-serif';
+        trusteeCtx.font = '14px "Jokker", sans-serif';
         trusteeCtx.textAlign = 'center';
         trusteeCtx.textBaseline = 'middle';
         const glyph = n.type === 'institution' ? (n.tier === 'A' ? 'SOURCED' : 'INST') : 'CONFLICT';
@@ -9041,14 +9081,14 @@ return maplibregl$1;
           trusteeCtx.stroke();
 
           trusteeCtx.fillStyle = '#ffffff';
-          trusteeCtx.font = '14px "PP Neue Gstaad", sans-serif';
+          trusteeCtx.font = '14px "Jokker", sans-serif';
           trusteeCtx.fillText(`${n.interlocks}`, badgeX, badgeY);
         }
 
         // Text Label
         if (!isDimmed || isFocus) {
           const label = n.shortName || n.name;
-          trusteeCtx.font = isFocus ? '16px "PP Neue Gstaad", sans-serif' : '14px "PP Neue Gstaad", sans-serif';
+          trusteeCtx.font = isFocus ? '16px "Jokker", sans-serif' : '14px "Jokker", sans-serif';
           const tw = trusteeCtx.measureText(label).width;
           const ly = n.y + r + 12;
 
@@ -9732,9 +9772,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v205';
+      const ATLAS_RELEASE = 'culture-atlas-v216';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=205').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=216').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9791,6 +9831,7 @@ return maplibregl$1;
     window.getIsCityStreetViewActive = () => isCityStreetViewActive;
     window.getSelectedInstitution = () => selectedInstitution;
     window.getMaxRadius = getMaxRadius;
+    window.atlasHoldGlobe = () => { isAutoSpinning = false; };   // a keyboard user on a mark: the globe stops turning under them
     window.getMinRadius = getMinRadius;
     let startRadius = baseRadius;
 
@@ -10012,8 +10053,8 @@ return maplibregl$1;
 
     // Canvas type for the cards: Compact Bold capitals for names, Regular for facts.
     // A city's name on its hover card is set in the roman, in normal case: bold capitals are kept for the names of spaces.
-    const ATLAS_CARD_TITLE_FONT = '400 24px "PP Neue Gstaad", "Helvetica Neue", Helvetica, Arial, sans-serif';
-    const ATLAS_CARD_MONO_FONT = '14px "PP Neue Gstaad", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const ATLAS_CARD_TITLE_FONT = '400 24px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const ATLAS_CARD_MONO_FONT = '14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
     }
@@ -10032,7 +10073,7 @@ return maplibregl$1;
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ', ' + inst.curatorial_focus : (inst.neighborhood ? ', ' + inst.neighborhood : ''));
 
-      ctx.font = '700 20px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
+      ctx.font = '700 20px "Jokker", sans-serif';
       const nameW = ctx.measureText(nameUpper).width;
       ctx.font = ATLAS_CARD_MONO_FONT;
       const subW = ctx.measureText(subText).width;
@@ -10070,7 +10111,7 @@ return maplibregl$1;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillStyle = cardInk;
-      ctx.font = '700 20px "PP Neue Gstaad Compact", "PP Neue Gstaad", sans-serif';
+      ctx.font = '700 20px "Jokker", sans-serif';
       ctx.fillText(fit(nameUpper), textX, cardY + 14);
 
       ctx.font = ATLAS_CARD_MONO_FONT;
@@ -10134,6 +10175,9 @@ return maplibregl$1;
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
       const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#f4f4f4'), G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#ffffff'), G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+        // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
+        const TIER_SHAPE = { A: 'circle', B: 'square', U: 'triangle' };
+        const TIER_SHAPE_SIZE = { circle: 3, square: 2.7, triangle: 3.3 };
       const dt = lastRenderTs ? Math.min(0.1, Math.max(0, (now - lastRenderTs) / 1000)) : 1 / 60;
       lastRenderTs = now;
       // Scale coordinates to high-DPI hardware buffer for crystal-clear Retina rendering
@@ -10414,7 +10458,7 @@ return maplibregl$1;
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = ATLAS_CARD_MONO_FONT;
-          const w = ctx.measureText(text).width + 20, h = 22;
+          const w = ctx.measureText(text).width + 28, h = 22;
           ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : '#ff6119') : (active ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a'));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = '#000000';
@@ -10443,7 +10487,7 @@ return maplibregl$1;
             ctx.save();
             ctx.font = ATLAS_CARD_MONO_FONT;
             const sn = selectedInstitution.name.length > 24 ? selectedInstitution.name.substring(0, 22) + '…' : selectedInstitution.name;
-            const sw = ctx.measureText(sn).width + 20;
+            const sw = ctx.measureText(sn).width + 28;
             ctx.restore();
             drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - 18, w: sw, h: 22 });
           }
@@ -10459,7 +10503,7 @@ return maplibregl$1;
         } catch (e) {}
         const shownCityLabels = new Set();
         const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
-        ctx.font = '14px "PP Neue Gstaad", sans-serif';
+        ctx.font = '14px "Jokker", sans-serif';
         
         let candidateCities = [];
         if (selectedCountryFilter !== 'all') {
@@ -10499,14 +10543,14 @@ return maplibregl$1;
 
             if (isClustered) {
               countTxt = String(city.count);
-              bw = ctx.measureText(city.name + ' ' + countTxt).width + 20;
+              bw = ctx.measureText(city.name + ' ' + countTxt).width + 28;
             } else {
               // A count of one says nothing, and adding " (1)" at 1.5x was the last width jump that
               // reshuffled labels mid-zoom. Counts from two up still show.
               const countLabel = (city.count || 0) >= 2 && (isCountryActive || r > baseRadius * 1.5) ? ` (${city.count})` : '';
               txt = city.name + countLabel;
               const tw = ctx.measureText(txt).width;
-              bw = tw + 20;
+              bw = tw + 28;
             }
 
             const bx = pt.x - bw / 2;
@@ -10551,7 +10595,7 @@ return maplibregl$1;
               ctx.globalAlpha = badgeAlpha;
 
               if (isClustered) {
-                ctx.font = '14px "PP Neue Gstaad", sans-serif';
+                ctx.font = '14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 drawPillLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2, !!(isSelected || isHovered), cityTier(city.name));
@@ -10563,7 +10607,7 @@ return maplibregl$1;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
-                ctx.font = '14px "PP Neue Gstaad", sans-serif';
+                ctx.font = '14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 drawPillLabel(txt, pt.x, by + bh / 2, !!(isSelected || isHovered), cityTier(city.name));
@@ -10589,7 +10633,7 @@ return maplibregl$1;
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '14px "PP Neue Gstaad", sans-serif';
+          ctx.font = '14px "Jokker", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -10755,18 +10799,19 @@ return maplibregl$1;
           const limbD = (isSel || isHov) ? 1 : limbFade(d.depth, 0.05);
           ctx.save();
           ctx.globalAlpha = limbD;
-          ctx.beginPath();
-          ctx.arc(d.x, d.y, isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5), 0, Math.PI * 2);
+          const pinR = isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5);
+          const pinShape = TIER_SHAPE[d.inst.tier] || 'triangle';
+          if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1)); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR, 0, Math.PI * 2); }
           ctx.strokeStyle = isHov 
             ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE)
             : (isVisualCritiqueOnly && hasVc)
-            ? '#f59e0b'
+            ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
-            ? (d.inst.gossip_data ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : '#713f12')
+            ? (d.inst.gossip_data ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : (GLOBE_LIGHT ? '#713f12' : '#884c16'))
             : (d.inst.tier === 'A' ? (GLOBE_LIGHT ? '#0a8f68' : '#10b981') : d.inst.tier === 'B' ? (GLOBE_LIGHT ? '#7a52d6' : '#be95ff') : (GLOBE_LIGHT ? '#008a87' : '#08bdba'));
           // Hollow rings, colored by tier; the selected one is filled.
           ctx.lineWidth = 0.8;
-          if (isSel) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
+          if (isSel || (isGossipModeActive && d.inst.gossip_data)) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
           ctx.stroke();
           ctx.restore();
 
@@ -10781,13 +10826,13 @@ return maplibregl$1;
 
           if (shouldDrawGlobeLabel && !isHov) {
             ctx.save();
-            ctx.font = '14px "PP Neue Gstaad", sans-serif';
+            ctx.font = '14px "Jokker", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
             ctx.font = ATLAS_CARD_MONO_FONT;
             const tw = ctx.measureText(nameTxt).width;
-            const bw = tw + 20;
+            const bw = tw + 28;
             const bh = 22;
             const bx = d.x - bw / 2;
             const by = d.y - 18;
@@ -10979,7 +11024,7 @@ return maplibregl$1;
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = '14px "PP Neue Gstaad", sans-serif';
+        ctx.font = '14px "Jokker", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
         // "0" over the left tick, the distance over the right one, so the figures line up with the bar at any length.
@@ -11029,7 +11074,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.stroke();
 
-        ctx.font = '400 15px "PP Neue Gstaad", sans-serif';
+        ctx.font = '400 15px "Jokker", sans-serif';
         ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -11350,7 +11395,7 @@ return maplibregl$1;
         return rows.length ? `<ul class="list-disc pl-5 t-lead">${rows.join('')}</ul>` : '';
       };
       const item = (title, meta, body, urls) => `
-        <div class="record-card space-y-1_5">
+        <div class="record-card is-unverified space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(title)}</div>
           ${meta ? `<div class="kicker no-indent">${meta.html || escapeHtml(meta)}</div>` : ''}
           ${body}
@@ -11400,10 +11445,10 @@ return maplibregl$1;
       }
       const accounts = ((inst.gossip_data || {}).accounts || []).map(a => {
         const urls = (a.sources || []).map(x => x && x.url).filter(u => typeof u === 'string' && (u.startsWith('http://') || u.startsWith('https://')));
-        return `<div class="record-card account-report-card space-y-1_5">
+        return `<div class="record-card is-unverified account-report-card space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(`${a.id}, ${a.scope}`)}</div>
           <span class="unverified-platform-tag">Unverified platform sentiment</span>
-          ${list(...(a.fields || []).map(f => li(f[0] + ': ', f[1])))}
+          ${list(...(a.fields || []).map(f => li(f[0] + ': ', f[1]))).replace('<ul ', '<ul role="list" ')}
           ${urls.length ? `<div class="account-source-links">${urls.map(u => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(host(u))}${externalIcon}</a>`).join('')}</div>` : ''}
         </div>`;
       });
@@ -11492,7 +11537,7 @@ return maplibregl$1;
       if (fBox) { const fh = fundingHtml(inst); fBox.className = fh ? '' : 'hidden'; fBox.innerHTML = fh; }
       const vBox = document.getElementById('dossier-sheet-visit');
       if (vBox) {
-        const vh = factsTableHtml('Visiting', [['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')]]);
+        const vh = factsTableHtml('Visiting', [['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')], ['Address', escapeHtml(inst.address || '')]]);
         vBox.className = vh ? '' : 'hidden'; vBox.innerHTML = vh;
       }
       if (isGossipModeActive) {
@@ -11993,6 +12038,7 @@ return maplibregl$1;
           ${!isClean ? factsTableHtml('Visiting', [
             ['Opening hours', escapeHtml(inst.opening_hours || '')],
             ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')],
+            ['Address', escapeHtml(inst.address || '')],
           ], ' role="region" aria-label="Visiting"') : ''}
 
           <!-- 3.  ARTISTIC CRITIQUES & INSTITUTIONAL HISTORY (Uncontained Rich Research Section) -->
@@ -12094,6 +12140,86 @@ return maplibregl$1;
     }
     window.openDossier = openDossier;
 
+
+    // Chat list lines: one fact from the record, and where it comes from. The wording is the record's own, never a phrase keyed on the grade.
+    const COUNTRY_LABEL = { 'United States': 'USA', 'United Kingdom': 'UK' };
+    function placeLabel(inst) {
+      const c = inst.country ? (COUNTRY_LABEL[inst.country] || inst.country) : '';
+      return [inst.city, c && c !== inst.city ? c : ''].filter(Boolean).join(', ') || inst.location || '';
+    }
+    // The space's own page only. getValidWebUrl falls back to a recorded source, which is a news site for some records.
+    function ownSiteUrl(inst) {
+      return isTrustedUrl(inst.website) ? inst.website.trim() : isTrustedUrl(inst.visit_url) ? inst.visit_url.trim() : '';
+    }
+    function hostOf(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
+    function firstSentence(text, max = 170) {
+      let t = String(text || '').replace(/\s+/g, ' ').trim();
+      if (!t) return '';
+      const m = t.match(/^.+?[.!?](?=\s+["“‘']?[A-Z0-9]|$)/);
+      if (m && m[0].length >= 25) t = m[0];
+      if (t.length > max) {
+        const cut = t.slice(0, max), k = Math.max(cut.lastIndexOf(';'), cut.lastIndexOf(', '));
+        t = k > 60 ? cut.slice(0, k) + '.' : cut.replace(/\s+\S*$/, '') + '…';
+      }
+      return /[.!?…]$/.test(t) ? t : t + '.';
+    }
+    // gossip: what is reported, from the item that names its own sources first. Otherwise: who funds it. Null when the record has nothing to say.
+    function recordFact(inst, gossip) {
+      const own = hostOf(ownSiteUrl(inst));
+      const hosts = (urls) => {
+        const out = [];
+        (urls || []).forEach(u => {
+          const h = hostOf(typeof u === 'string' ? u : (u && u.url) || '');
+          if (h && !(own && (h === own || h.endsWith('.' + own) || own.endsWith('.' + h))) && !/wikipedia|wikimedia/.test(h) && !out.includes(h)) out.push(h);
+        });
+        return out;
+      };
+      const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.join(', ')}.` : ''; };
+      const flagged = inst.tier === 'B' || !!inst.why_flagged || (inst.flags || []).length > 0;
+      if (gossip) {
+        const c = ((inst.gossip_data || {}).real_cases || [])[0];
+        if (c && (c.title || (c.facts || []).length)) return { text: firstSentence((c.facts || [])[0] || c.title), src: src(hosts((c.sources || []).map(x => x && x.url)), 1) };
+        const e = (inst.epstein_records || [])[0];
+        if (e && (e.summary || e.person)) return { text: firstSentence(e.summary ? `${e.person && !String(e.summary).startsWith(e.person) ? e.person + ': ' : ''}${e.summary}` : e.person), src: src(hosts(e.sources), 1) };
+        const w = (inst.wikileaks_records || [])[0];
+        if (w && w.what_shows) return { text: firstSentence(`${w.date ? w.date + ': ' : ''}${w.what_shows}`), src: src(hosts(w.sources), 1) };
+        if (flagged && inst.watch && !/\b(founded|opened|home to|known for|topped by|housed in)\b|\bnot (?:at|here)\b/i.test(inst.watch)) return { text: firstSentence(inst.watch), src: src(hosts(inst.sources), 2) };
+        const why = String(inst.why_flagged || '').split(/(?<=[.!?])\s+(?=[A-Z])/).filter(x => !/\bnot (?:at|here)\b/i.test(x)).join(' ');
+        if (why) return { text: firstSentence(`${(inst.flags || []).length ? inst.flags.join(', ') + ': ' : ''}${why}`), src: src(hosts(inst.sources), 2) };
+        const of = typeof inst.other_findings === 'string' ? inst.other_findings.split(' | ')[0] : '';
+        if (of) return { text: firstSentence(of), src: src(hosts(inst.sources), 2) };
+        const acc = ((inst.gossip_data || {}).accounts || []);
+        if (acc.length) return { text: `${acc.length} unverified employee ${acc.length === 1 ? 'account' : 'accounts'} on review sites.`, src: '' };
+        return null;
+      }
+      if (inst.funding) return { text: firstSentence(inst.funding), src: src(hosts(inst.sources), 1) };
+      if (inst.watch) return { text: firstSentence(inst.watch), src: '' };
+      return { text: 'No funders on record.', src: '' };
+    }
+    function chatLineHtml(inst, gossip) {
+      const f = recordFact(inst, gossip) || { text: 'Reported items are on its record page.', src: '' };
+      const url = ownSiteUrl(inst), dom = hostOf(url);
+      const site = dom ? ` (<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${escapeHtml(dom)}</a>)` : '';
+      const g = inst.grade && GRADE[inst.grade] ? ` Grade ${gradeLetter(inst.grade)}.` : '';
+      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a> in ${escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}${g}</p>`;
+    }
+    // A list of more than 12 pages itself: the link, the chip and typing "more" all show the next 12.
+    window.atlasListMore = null;
+    function renderListPage(st) {
+      const page = st.items.slice(st.offset, st.offset + 12);
+      st.offset += page.length;
+      const left = st.items.length - st.offset;
+      window.atlasListMore = left > 0 ? st : null;
+      const more = left > 0 ? `<p class="no-indent">${left} more. <a href="#" class="list-more">Show the next ${Math.min(12, left)}</a>, or ask for one grade to narrow it.</p>` : '';
+      return page.map(i => chatLineHtml(i, st.gossip)).join('') + more;
+    }
+    function showMoreList() {
+      const st = window.atlasListMore;
+      if (!st) return false;
+      appendCuratorMessage(`<div class="space-y-3"${st.gossip ? ' data-gossip="list"' : ''}>${renderListPage(st)}</div>`, ['Show more']);
+      return true;
+    }
+    window.showMoreList = showMoreList;
 
     function formatInstLink(inst, opts = {}) {
       if (!inst) return '';
@@ -13362,7 +13488,9 @@ return maplibregl$1;
       // 4. Assemble XML Structured User Prompt with Explicit Constraints and Investigative Journalism Directives
       const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || 
                            /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i.test(userPrompt);
-      const gossipDirective = isGossipMode ? `\n\n<gossip_guardrail>\nFor allegations or employee accounts, answer the question directly and concisely. Attribute each claim to its source, label unverified platform accounts as unverified sentiment, and separate allegation from documented fact. Do not infer wrongdoing or force a fixed section template.\n</gossip_guardrail>` : '';
+      const gossipDirective = isGossipMode
+        ? `\n\n<gossip_mode>\nGossip mode is on. Lead with what is reported: the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, label unverified platform accounts as unverified sentiment, and separate allegation from documented fact. If the supplied records hold nothing reported about a space, say that in one sentence and stop. Do not infer wrongdoing, pad with generalities, or force a fixed section template.\n</gossip_mode>`
+        : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
       const structuredUserPrompt = `${focusNotice}${currentTargetXml}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, say so once and direct the visitor to the official URL when available.\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, with bold labels such as **Admission**, **Hours**, **Funding** or **Governance** when relevant. Do not force headings, sections or a comparison when they do not help answer the question. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
@@ -14276,6 +14404,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (workInput) workInput.value = '';
       const scrollArea = document.getElementById('curatorScrollArea');
       if (scrollArea) scrollArea.scrollTop = 0;
+      if (window.atlasSyncInert) window.atlasSyncInert();
       if (workInput) workInput.focus();
     }
 
@@ -14432,6 +14561,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     async function handleCuratorQuery(query) {
       const q = query.toLowerCase().trim();
       const rawTrimmed = query.trim();
+      if (window.atlasListMore && /^(?:show )?(?:the )?(?:more|next(?: page| \d+)?|show more)[.!]?$/.test(q) && showMoreList()) return;
 
       if (curatorAutoVoiceEnabled) {
         autoSpeakNextCuratorResponse = true;
@@ -14540,7 +14670,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countB = ALL_INSTITUTIONS.filter(i => i.tier === 'B').length;
       const countU = ALL_INSTITUTIONS.filter(i => i.tier !== 'A' && i.tier !== 'B').length;
       const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I answer only from the records on this page: who funds a space, what is reported about it, hours and prices where they are recorded, and the sources.</p><p>${countA} spaces have a source outside the museum, ${countB} are flagged with a reason, and ${countU} are unverified.</p>`);
-      const listOf = (items, title, gossip) => answer(items.length ? `<p>${title}</p>${items.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml(tierName(i))}.</p>`).join('')}${items.length > 12 ? `<p class="no-indent">${items.length - 12} more.</p>` : ''}` : '<p>None are recorded.</p>', undefined, gossip && items.length > 0);
+      const listOf = (items, title, gossip) => {
+        if (!items.length) { answer('<p>None are recorded.</p>', undefined, false); return; }
+        const st = { items, gossip: !!gossip, offset: 0 };
+        answer(`<p>${title}</p>${renderListPage(st)}`, window.atlasListMore ? ['Show more', ...followFor()].slice(0, 3) : undefined, !!gossip);
+      };
 
       // With a model connected (a visitor's key, or the chat Worker) every question that is not a plain list goes to it, so the
       // chat holds a conversation; the record answers below are what answers when no model is there or the model fails.
@@ -14660,13 +14794,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const here = ALL_INSTITUTIONS.filter(i => i.tier === 'B' && i.why_flagged && (!place || [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase()))))
           .sort((a, b) => (b.grade || 0) - (a.grade || 0) || a.name.localeCompare(b.name));
         selectedCategoryFilter = 'all';
-        answer(here.length ? `<p>${here.length} flagged ${here.length === 1 ? 'space' : 'spaces'} with a reason recorded${place ? ' in ' + escapeHtml(place) : ''}${here.length > 12 ? '. The first 12' : ''}:</p>${here.slice(0, 12).map(i => `<p class="no-indent">${formatInstLink(i)}. ${escapeHtml((i.flags || []).join(', '))}. ${escapeHtml(i.why_flagged)}</p>`).join('')}${here.length > 12 ? `<p class="no-indent">${here.length - 12} more.</p>` : ''}` : `<p>No space${place ? ' in ' + escapeHtml(place) : ''} is flagged with a reason recorded.</p>`);
+        answer(here.length ? `<p>${here.length} flagged ${here.length === 1 ? 'space' : 'spaces'} with a reason recorded${place ? ' in ' + escapeHtml(place) : ''}${here.length > 12 ? '. The first 12' : ''}:</p>${(() => { const st = { items: here, gossip: true, offset: 0 }; return renderListPage(st); })()}` : `<p>No space${place ? ' in ' + escapeHtml(place) : ''} is flagged with a reason recorded.</p>`);
         return;
       }
       if (inPlace) {
         const order = { A: 0, B: 1 };
         const here = ALL_INSTITUTIONS.filter(i => [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase())))
           .sort((a, b) => (order[a.tier] ?? 2) - (order[b.tier] ?? 2) || a.name.localeCompare(b.name));
+        if (isGossipModeActive) {
+          const told = here.filter(i => recordFact(i, true));
+          listOf(told, told.length ? `${told.length} of ${here.length} spaces in ${escapeHtml(place)} have something reported${told.length > 12 ? '. The first 12' : ''}:` : '', true);
+          if (!told.length) answer(`<p>Nothing is reported about the ${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)} in the records.</p>`);
+          return;
+        }
         listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)}${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
@@ -15473,6 +15613,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (defaultTopic) {
           workInput.value = defaultTopic;
         }
+        if (window.atlasSyncInert) window.atlasSyncInert();
         workInput.focus();
       }
 
@@ -15736,6 +15877,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const workInput = document.getElementById('workInput');
         if (workInput && fillText) {
           workInput.value = fillText;
+          if (window.atlasSyncInert) window.atlasSyncInert();
           workInput.focus();
           scrollChatToBottom(true);
         }
@@ -16497,6 +16639,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         e.preventDefault();
       });
 
+      // A column squeezed to nothing (the record has the whole panel, or the chat does) still holds its controls, and Tab walked into them
+      // with no way to see where focus was. A column with no width is inert, so keyboard focus skips it.
+      const emptyCols = ['curatorIntelligenceColumn', 'desktopDossierColumn'].map(id => document.getElementById(id)).filter(Boolean);
+      const syncEmptyCols = () => emptyCols.forEach(col => { const empty = col.getBoundingClientRect().width < 2; if (col.inert !== empty) col.inert = empty; });
+      window.atlasSyncInert = syncEmptyCols;   // setWorkspaceTab calls it, so a tab that has just been shown can take focus in the same tick
+      if (typeof ResizeObserver === 'function') { const ro = new ResizeObserver(syncEmptyCols); emptyCols.forEach(col => ro.observe(col)); }
+      syncEmptyCols();
+
       // Double-click, Home or Escape on the handle puts the split back to the default and forgets the kept one
       const resetSplit = () => {
         memory['-x'] = memory['-y'] = NaN;
@@ -16529,15 +16679,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // The width of the chat. The conversation, the input and the records note share one column, centred in the panel; the reader
     // drags either edge of it (it stays centred, so the edge moves half as far as the pointer), or focuses the handle and uses the
     // arrow keys (Shift for 80px, Home for the narrowest, End for the whole panel). Double-click puts it back. The width asked
-    // for is kept in this browser; the column never goes wider than the panel less its gutters, and the text re-wraps to it.
+    // for is not kept (user's instruction, 19 Oct 2026): every load starts with the column filling the panel, 18px from each edge; the column never goes wider than the panel less its gutters, and the text re-wraps to it.
     (function () {
       const col = document.getElementById('curatorIntelligenceColumn');
       const handle = document.getElementById('chatWidthHandle');
       const twin = document.getElementById('chatWidthHandleL');
       if (!col || !handle) return;
-      const KEY = 'culture-atlas-chat-width', DEFAULT = 660, MIN = 320, GUTTER = 36;   // 18px each side, as --chat-gutter
+      const DEFAULT = 5000, MIN = 320, GUTTER = 36;   // 18px each side, as --chat-gutter; DEFAULT is clamped to the panel, so the column fills it
       let want = DEFAULT;
-      try { const v = parseInt(localStorage.getItem(KEY), 10); if (v >= MIN && v <= 5000) want = v; } catch (e) {}
       let live = false;
       const room = () => Math.max(0, col.clientWidth - GUTTER);
       const sync = () => {
@@ -16553,7 +16702,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       };
       const set = (px, keep) => {
         want = Math.round(Math.max(Math.min(MIN, room()), Math.min(room(), px)));
-        if (keep !== false) { try { localStorage.setItem(KEY, String(want)); } catch (e) {} }
         sync();
       };
       const shown = () => Math.min(want, room());
@@ -16582,7 +16730,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         el.addEventListener('pointermove', move);
         el.addEventListener('pointerup', up);
         el.addEventListener('pointercancel', up);
-        el.addEventListener('dblclick', () => { try { localStorage.removeItem(KEY); } catch (e) {} want = DEFAULT; sync(); });
+        el.addEventListener('dblclick', () => { want = DEFAULT; sync(); });
       });
       handle.addEventListener('keydown', (e) => {
         const step = e.shiftKey ? 80 : 24;
@@ -16744,6 +16892,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         });
         return;
       }
+
+      const moreLink = e.target.closest('.list-more');
+      if (moreLink) { e.preventDefault(); e.stopPropagation(); showMoreList(); return; }
 
       // 1. Check for institution links
       const instLink = e.target.closest('.inst-link, [data-inst]');
@@ -17702,6 +17853,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
+      // An office mark under the click opens its record; where marks and spaces crowd, a list offers each one.
+      if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.click(mx, my, clientX, clientY, visibleDots)) return;
+
       // PRIORITY 1: Check institution click across dots, text label badges, micro-cards, and proximity
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
       const resolvedClick = resolveGlobeTarget(mx, my);
@@ -17925,6 +18079,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           isHoveringCityExploreLink = false;
           return;
         }
+      }
+
+      // A funder office or person's office mark under the pointer (and no space's dot nearer): assets/hq-detail.js
+      if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.hover(mx, my, visibleDots)) {
+        canvas.style.cursor = 'pointer';
+        return;
       }
 
       // PRIORITY 1: Check institution hover across dots, text labels, micro-cards, and proximity
@@ -18632,8 +18792,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=205"></script>
-<script src="assets/layers.js?v=205"></script>
-<script src="assets/bubbles.js?v=205" defer></script>
+<script src="assets/typeset.js?v=216"></script>
+<script src="assets/layers.js?v=216"></script>
+<script src="assets/hq-detail.js?v=216"></script>
+<script src="assets/bubbles.js?v=216" defer></script>
 </body>
 </html>
