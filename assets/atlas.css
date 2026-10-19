@@ -1496,3 +1496,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #hqPanel.is-details :is(dt,.hq-note,.hq-s){font-size:15px}
 #hqPanel.is-details .hq-link{padding-left:0;padding-right:0}
 #hqPanel.is-details .hq-ask{margin-left:18px}
+/* Chat answers: a section heading sits close to the text it opens and is not pushed away by the box margins of its own h3; the paragraph under it starts flush */
+#curatorMessages .curator-section-hdr{margin:1em 0 .3em;padding:0;display:block}
+#curatorMessages .curator-section-hdr h3{margin:0}
+#curatorMessages>.curator-message-wrap .curator-section-hdr+p:not(.no-indent){text-indent:0}
