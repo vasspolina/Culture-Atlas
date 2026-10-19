@@ -1342,3 +1342,42 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{display:inline;padding:2px 8px;background:var(--fill,#c8b85a);color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline-offset:3px}
+/* The chat column is centred in its panel and its width is the reader's (18 Oct 2026). Before this the column was pinned left
+   (#curatorScrollContent margin 0 auto 0 0, the dock's inner div margin 0), 22 chips ran from the top-left and the panel's right
+   half stood empty. Now the conversation, the input and the records note share one column, --chat-w wide (660px until the reader
+   drags the handle on either edge; the script keeps the choice) and never wider than the panel less its 18px gutters (user's instruction, 18 Oct 2026). Text
+   follows the column: chips, messages and the input wrap to it, and the 350px minimum the column used to carry is gone so a
+   narrow panel (the splitter allows 220px) reflows instead of clipping.
+   660px: the message text sits 2.3em in from the column's edge, so 660 less 2.3em of 18px is about 34em, the measure the
+   conversation was set to before. */
+#curatorIntelligenceColumn{--chat-w:660px;--chat-gutter:18px;min-width:0}
+#curatorIntelligenceColumn #curatorScrollArea{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
+#curatorIntelligenceColumn #workBottomDock{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
+#curatorIntelligenceColumn #curatorScrollContent,#curatorIntelligenceColumn #curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){width:min(100%,var(--chat-w));max-width:none;margin-left:auto;margin-right:auto;min-width:0}
+#curatorIntelligenceColumn #workBottomDock>div{width:min(100%,var(--chat-w));max-width:none;margin-left:auto;margin-right:auto;min-width:0}
+/* Messages take the column's width instead of a fixed 34em, so stretching the column re-wraps them. */
+#curatorIntelligenceColumn :is(#curatorMessages)>.curator-message-wrap :is(p,li),#curatorIntelligenceColumn #curatorMessages>.justify-end>div,#curatorIntelligenceColumn #curatorMessages .user-bubble{max-width:none}
+#curatorIntelligenceColumn #curatorMessages{min-width:0;overflow-wrap:break-word}
+#curatorIntelligenceColumn #curatorMessages :is(pre,table){max-width:100%;overflow-x:auto}
+#curatorIntelligenceColumn #curatorMessages img{max-width:100%;height:auto}
+/* A question wraps to the column instead of being cut with an ellipsis: on a 260px panel the longest ones are two lines. */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){height:auto;min-height:22px;white-space:normal;overflow:visible;text-overflow:clip;text-align:left;overflow-wrap:break-word}
+/* The input's toolbar wraps under the textarea's width: More, Back to chat and Share information, then Voice, Listen and send. */
+#workInputCard>div.justify-between{flex-wrap:wrap;gap:8px 12px;min-width:0}
+#workInputCard>div.justify-between>div{flex-wrap:wrap;min-width:0;gap:8px 12px}
+#workInput{min-width:0}
+.chat-info p{max-width:none}
+
+/* The handle: a 14px target on each edge of the column, a 2px grip that shows the line. The left one is pointer-only. */
+.chat-width-handle{position:absolute;top:0;bottom:0;z-index:25;width:14px;margin-left:-7px;cursor:col-resize;touch-action:none;display:none;outline:0}
+@media (min-width:768px){.chat-width-handle{display:block}}
+#curatorIntelligenceColumn .chat-width-handle{left:calc(50% + min(100% - 2*var(--chat-gutter),var(--chat-w)) / 2 + var(--chat-gutter) / 2)}
+#curatorIntelligenceColumn .chat-width-handle.is-left{left:calc(50% - min(100% - 2*var(--chat-gutter),var(--chat-w)) / 2 - var(--chat-gutter) / 2)}
+.chat-width-handle::after{content:'';position:absolute;top:50%;left:6px;width:2px;height:48px;margin-top:-24px;background:var(--line)}
+.chat-width-handle:hover::after,.chat-width-handle.is-dragging::after,.chat-width-handle:focus-visible::after{background:var(--ink)}
+.chat-width-handle:focus-visible::before{content:'';position:absolute;top:50%;left:0;width:14px;height:56px;margin-top:-28px;box-sizing:border-box;border:2px solid var(--ink)}
+/* A narrow panel (the splitter lets it go to 220px): the tab bar wraps its three controls instead of running past the edge, and the
+   input grows with its placeholder so the prompt is never cut. */
+#workspaceContextTabBar{flex-wrap:wrap;gap:4px 12px}
+#workspaceContextTabBar button{white-space:nowrap}
+#workInput{field-sizing:content}
