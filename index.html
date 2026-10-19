@@ -7395,9 +7395,7 @@ return maplibregl$1;
         for (const layer of ['building', 'building-3d-city-context']) {
           if (!cityVectorMap.getLayer || !cityVectorMap.getLayer(layer)) continue;
           const feats = cityVectorMap.queryRenderedFeatures([pt.x, pt.y], { layers: [layer] }) || [];
-          const polys = feats.filter(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
-          // A building drawn in parts is a whole outline (hide_3d) with the parts inside it: take the whole, so the parts can be found under it.
-          f = polys.find(x => x.properties && x.properties.hide_3d) || polys[0];
+          f = feats.find(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
           if (f) break;
         }
         if (!f && cityVectorMap.getLayer && cityVectorMap.getLayer('building')) near = xrayNearestFootprint(pt);
@@ -7407,39 +7405,51 @@ return maplibregl$1;
       const pr = f.properties || {};
       const tagged = pr.render_height != null || pr.height != null;
       const geometry = near ? near.geometry : xrayPolygonAt(f.geometry, lon, lat);
-      return { geometry, height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged, parts: xrayPartsIn(geometry) };
+      const height = tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base = Number(pr.render_min_height || pr.min_height) || 0;
+      return { geometry, height, base, hasHeight: tagged, parts: tagged ? xrayPartsOf(geometry, base, height) : [] };
     }
 
-    // The building's parts, from the same tiles: OpenStreetMap's building:part shapes, each with its own height and the height
-    // it starts at (a wing, a tower, a bridge between). A part belongs to the building when a point inside it lies inside the
-    // outline. Only parts that carry a height are used, and only when there are two or more; one part is the building itself.
+    // The building's parts, from the same tiles. OpenStreetMap maps a large building as building:part shapes laid over and on
+    // one another (a wing, a tower, a bridge between), each with its own height and the height it starts at; the tiles carry each
+    // as a feature of its own, with no outline tying them together. Ordinary buildings never overlap, so the parts of one are the
+    // shapes that overlap the matched footprint, and the shapes that overlap those in turn. Neighbours that only touch are left out.
+    // Two or more parts are used; one part is the building itself and keeps the single box.
+    const XRAY_PARTS_MAX = 60, XRAY_PARTS_REACH_M = 250;
     function xrayInRing(ring, lon, lat) {
       let hit = false;
       for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const a = ring[i], b = ring[j]; if ((a[1] > lat) !== (b[1] > lat) && lon < (b[0] - a[0]) * (lat - a[1]) / (b[1] - a[1]) + a[0]) hit = !hit; }
       return hit;
     }
-    function xrayPartsIn(outline) {
+    function xrayRingsOverlap(a, b) {
+      const ca = xrayCentroid({ type: 'Polygon', coordinates: [a] }), cb = xrayCentroid({ type: 'Polygon', coordinates: [b] });
+      return xrayInRing(b, ca[0], ca[1]) || xrayInRing(a, cb[0], cb[1]) || a.some(v => xrayInRing(b, v[0], v[1])) || b.some(v => xrayInRing(a, v[0], v[1]));
+    }
+    function xrayPartsOf(outline, startBase, startHeight) {
       if (!cityVectorMap || typeof cityVectorMap.querySourceFeatures !== 'function') return [];
       let feats = [];
       try { feats = cityVectorMap.querySourceFeatures('openmaptiles', { sourceLayer: 'building' }) || []; } catch (e) { return []; }
-      const seen = new Set(), parts = [], ring = xrayRing(outline);
+      const keyOf = (r, base, height) => r.length + ':' + r[0][0].toFixed(7) + ',' + r[0][1].toFixed(7) + ':' + height + ':' + base;
+      const pool = new Map(); // the same part arrives once from each tile it crosses
       for (const f of feats) {
         const pr = f.properties || {};
-        if (pr.hide_3d || (pr.render_height == null && pr.height == null) || !f.geometry) continue;
+        if ((pr.render_height == null && pr.height == null) || !f.geometry) continue;
         const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [];
-        for (const poly of polys) {
-          const r = poly[0]; if (!r || r.length < 4) continue;
-          const c = xrayCentroid({ type: 'Polygon', coordinates: [r] });
-          const probe = xrayInRing(r, c[0], c[1]) ? c : r[0]; // a concave part can have its centroid outside itself
-          if (!xrayInRing(ring, probe[0], probe[1])) continue;
-          const base = Number(pr.render_min_height || pr.min_height) || 0, height = Number(pr.render_height != null ? pr.render_height : pr.height);
-          const key = r.length + ':' + r[0][0].toFixed(7) + ',' + r[0][1].toFixed(7) + ':' + height + ':' + base;
-          if (seen.has(key)) continue; // the same part arrives once from each tile it crosses
-          seen.add(key);
-          parts.push({ geometry: { type: 'Polygon', coordinates: [r] }, base, height: Math.max(height, base + 1) });
+        const base = Number(pr.render_min_height || pr.min_height) || 0, height = Number(pr.render_height != null ? pr.render_height : pr.height);
+        for (const poly of polys) { const r = poly[0]; if (r && r.length >= 4) pool.set(keyOf(r, base, height), { ring: r, base, height: Math.max(height, base + 1) }); }
+      }
+      const startRing = xrayRing(outline), first = { ring: startRing, base: startBase, height: Math.max(startHeight, startBase + 1) };
+      const members = [first], here = xrayCentroid(outline), mPerLon = 111320 * Math.cos(here[1] * Math.PI / 180);
+      pool.delete(keyOf(startRing, startBase, startHeight));
+      for (let i = 0; i < members.length && members.length < XRAY_PARTS_MAX; i++) {
+        for (const [k, p] of pool) {
+          const c = xrayCentroid({ type: 'Polygon', coordinates: [p.ring] });
+          if (Math.hypot((c[0] - here[0]) * mPerLon, (c[1] - here[1]) * 111320) > XRAY_PARTS_REACH_M) continue;
+          if (!xrayRingsOverlap(members[i].ring, p.ring)) continue;
+          members.push(p); pool.delete(k);
+          if (members.length >= XRAY_PARTS_MAX) break;
         }
       }
-      return parts.length >= 2 ? parts : [];
+      return members.length >= 2 ? members.map(m => ({ geometry: { type: 'Polygon', coordinates: [m.ring] }, base: m.base, height: m.height })) : [];
     }
     window.xrayFindBuilding = xrayFindBuilding;
 
