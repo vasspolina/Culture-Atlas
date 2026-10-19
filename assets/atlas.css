@@ -23,7 +23,7 @@ h1,h2,h3,h4,p{margin:0}
 
 /* ---- base ---- */
 html{-webkit-text-size-adjust:100%;font-synthesis:none}
-body{background:var(--paper);color:var(--ink);font:400 15px/1.3 var(--sans);font-feature-settings:"ss01","ss04","ss05","tnum","zero";letter-spacing:.01em;
+body{background:var(--paper);color:var(--ink);font:400 15px/1.3 var(--sans);font-feature-settings:"ss04","ss05","tnum";letter-spacing:.01em;
   height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
 button,[role=button]{cursor:pointer}
 a{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
@@ -48,7 +48,7 @@ canvas:focus-visible{outline-offset:-4px}
 .t-em{font-style:normal}
 .kicker{font-family:var(--sans);font-size:14px;letter-spacing:.01em}
 .lede{font:400 18px/1.25 var(--sans);letter-spacing:.01em}
-h1.lede,h2.lede{font:700 32px/1 var(--display-xl);text-transform:uppercase;letter-spacing:0}
+h1.lede,h2.lede{font:600 32px/1 var(--display-xl);text-transform:uppercase;letter-spacing:0}
 .rule-t{border-top:1px solid var(--line)} .rule-b{border-bottom:1px solid var(--line)}
 /* A rule-t that directly follows a rule-b would draw a second line; one is enough. */
 .rule-b+.rule-t{border-top:0}
@@ -132,7 +132,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #floatingCard>div:first-child{border-bottom:1px solid rgba(255,255,255,.55);padding:12px 16px}
 #floatingCard a,#floatingCard span,#floatingCard div,#floatingCard p,#floatingCard button{color:inherit}
 #closeFloatingCardBtn{color:var(--yellow)!important;font:400 28px/1 var(--sans)}
-#floatingCardTitle{font:700 28px/1 var(--display);text-transform:uppercase;text-decoration:none;letter-spacing:0;display:block;margin-top:6px}
+#floatingCardTitle{font:600 28px/1 var(--display);text-transform:uppercase;text-decoration:none;letter-spacing:0;display:block;margin-top:6px}
 #floatingCardTitle{font-size:clamp(16px,calc(120cqw / var(--title-length,18)),28px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #floatingCardMeta{font:400 14px/1.3 var(--sans);margin-top:8px;white-space:normal}
 #floatingCardInfoPane{padding:0 16px}
@@ -162,7 +162,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #collapseDossierBtn{font:400 14px/1 var(--sans);padding:14px 16px}
 #desktopDossierBody{padding:0!important}
 #desktopDossierBody>*{margin:0}
-#desktopDossierName,#detailDrawer h2,#dossier-sheet-name{font:700 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
+#desktopDossierName,#detailDrawer h2,#dossier-sheet-name{font:600 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
 #desktopDossierMeta{font:400 14px/1.3 var(--sans);margin-bottom:12px}
 #desktopDossierSummary{font-size:15px;line-height:1.3;max-width:62ch}
 #desktopDossierWebLink{margin-top:12px}
@@ -186,7 +186,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
    the roman, in normal case, and a heading is told by its size and the space around it (Hochuli p.44: capitals and bold
    are restless in running text). In running text a name keeps the text's leading and is set a step smaller, as capitals
    are (p.44, fig 54), so it does not shout over the line. */
-.inst-link,.space-name,.inst-pin-label-name{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.inst-link,.space-name,.inst-pin-label-name{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.02em}
 :is(.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#floatingCard) .inst-link,.record-popup-line .space-name{font-size:.94em;line-height:inherit}
 .inst-link:hover,.city-link:hover,.dossier-link:hover{background:var(--yellow)}
 
@@ -334,7 +334,7 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 
 #desktopDossierRecordBody{padding:0}
 #desktopDossierRecordBody>div{padding:16px}
-#desktopDossierRecordBody .dossier-main-heading,.dossier-main-heading{font:700 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
+#desktopDossierRecordBody .dossier-main-heading,.dossier-main-heading{font:600 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
 #desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet{container-type:inline-size}
 :is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading,#dossier-sheet-name{font-size:clamp(20px,calc(140cqw / var(--title-length,18)),44px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-layout{display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:1em;align-items:start}
@@ -675,7 +675,7 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 .atlas-record-popup .maplibregl-popup-close-button{color:#333;background:none;font:400 32px/1 var(--sans);top:4px;right:8px;padding:0 6px}
 .atlas-record-popup .maplibregl-popup-close-button:hover{background:none;color:#000}
 .record-popup{font:400 15px/1.3 var(--sans);color:#000}
-.record-popup-name{display:block;font:700 26px/1 var(--display);text-transform:uppercase;letter-spacing:0;color:#000;text-decoration:none;padding-right:34px;margin-bottom:8px;outline:none}
+.record-popup-name{display:block;font:600 26px/1 var(--display);text-transform:uppercase;letter-spacing:0;color:#000;text-decoration:none;padding-right:34px;margin-bottom:8px;outline:none}
 /* titles are never underlined; the page-wide link rule is more specific than .record-popup-name, so beat it by id */
 #globeViewport a.record-popup-name,#globeViewport a.record-popup-name:hover,#globeViewport a.record-popup-name:focus-visible{text-decoration:none}
 #globeViewport a.record-popup-name:focus-visible{outline:2px solid currentColor;outline-offset:3px}
@@ -922,7 +922,7 @@ button,summary{cursor:pointer}
 
 /* The word (p.23-31): kerning and ligatures on, always; capitals get their own punctuation heights (p.29-30). */
 html{font-kerning:normal;font-variant-ligatures:common-ligatures;text-rendering:optimizeLegibility}
-h1,h2,h3,h4,.t-title,.curator-section-hdr,#floatingCardTitle,.record-popup-name,#desktopDossierName,.dossier-main-heading{font-feature-settings:"kern","liga","case","tnum","zero"}
+h1,h2,h3,h4,.t-title,.curator-section-hdr,#floatingCardTitle,.record-popup-name,#desktopDossierName,.dossier-main-heading{font-feature-settings:"kern","liga","case","tnum"}
 
 /* Letter and word spacing follow size (p.25, p.33): small sizes a little wider, display sizes tighter, and the
    word space shrinks as the type grows. Capitals stay evenly spaced, not tight (p.25). */
@@ -1463,15 +1463,15 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 /* The Details panel's head (user's instruction, 19 Oct 2026).
    Text reflows to the panel: the 66ch cap is gone and the name wraps instead of being cut, with 18px of margin each side.
    The rating is coloured type, its grade colour 40% darker (JS gradeInk), light on the dark theme, no block behind it.
-   The action buttons take 3px of padding above and below; the hit area still reaches 44px through the ::after.
+   The action buttons take 6px of padding above and below (3px until 19 Oct, then 6px at the user's word); the hit area still reaches 44px through the ::after.
    The 6px white strip of the splitter beside the panel is gone: only its hairline remains, and the handle keeps its wide grab area. */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,.t-lead,.kicker,.visit-rows>div>div:last-child){max-width:none}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading){white-space:normal;text-wrap:balance;overflow:visible;text-overflow:clip;overflow-wrap:break-word}
 #desktopDossierRecordBody>div{padding-left:18px;padding-right:18px}
 :root:root:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{display:inline;background:none;padding:0;border-radius:0;color:var(--grade-ink)}
 :root[data-theme="dark"]:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{color:var(--grade-col)}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{padding:3px 13.5px;height:auto;min-height:0}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action::after{inset:-9px -2px}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{padding:6px 13.5px;height:auto;min-height:0}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action::after{inset:-6px -2px}
 @media (min-width:768px){#globeSplitter{width:1px}}
 /* The phone's record sheet follows the same head: its name wraps, and its margins are 18px. */
 #dossier-sheet-name{white-space:normal;text-wrap:balance;overflow:visible;text-overflow:clip;overflow-wrap:break-word}
@@ -1500,3 +1500,27 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #curatorMessages .curator-section-hdr{margin:1em 0 .3em;padding:0;display:block}
 #curatorMessages .curator-section-hdr h3{margin:0}
 #curatorMessages>.curator-message-wrap .curator-section-hdr+p:not(.no-indent){text-indent:0}
+
+/* The critique's quotation, its source line and its questions fill the panel (user's instruction, 19 Oct 2026): the 34em and 44em caps are gone,
+   so the words reflow to the column, 18px from each edge, as the rest of the Details text does. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote blockquote,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote figcaption,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-asks{max-width:none}
+
+/* The funder record's "Ask in chat" takes the same 6px above and below as the other record buttons (user's instruction, 19 Oct 2026). */
+#hqPanel .hq-ask{height:auto;padding:6px 15px}
+#hqPanel .hq-ask::after{inset:-6px 0}
+/* A bullet in the Details text sits 2px of ink to the left of its words (user's instruction, 19 Oct 2026). Jokker's bullet inks from .075em to .298em of
+   its .372em advance, so the box ends .074em beyond the ink: the marker is hung from the item's left edge with that much taken off a 2px gap. The text
+   stays where it was; only the bullet moves. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc{list-style:none}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc>li{position:relative}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc>li::before{content:"\2022";position:absolute;right:100%;margin-right:calc(2px - .074em)}
+
+/* Bold is for the names of museum spaces only (user's instruction, 19 Oct 2026): the space's name in the Details tab, the record sheet, the map card and
+   the route popup. Every other title is regular weight: the Layers panel's layer names, and a funder's or person's name in its record. */
+/* Headings are bold in a browser's own style; none here is, unless a rule below names it a museum space (they are more specific than this). */
+h1,h2,h3,h4,h5,h6,th{font-weight:400}
+#layersPanel .layer-name{font-weight:400}
+#hqPanel.is-details h2{font:400 26px/1.1 var(--sans);text-transform:none;letter-spacing:0}
+
+/* One letter a, and a zero without a slash (user's instruction, 19 Oct 2026): the single-storey a (ss01) and the slashed zero are off everywhere, so body text
+   and headings share the normal forms. Museum-space names are weight 600, one step lighter than before (700). */
