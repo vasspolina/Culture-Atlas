@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=198">
-  <script src="assets/config.js?v=198"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=199">
+  <script src="assets/config.js?v=199"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7297,7 +7297,7 @@ return maplibregl$1;
     //  translucent shell, with one slab inside for each kind of material the record actually holds. No outline means no shell;
     //  every label is a count of what the record has; facts from Wikidata say so and how they were matched.
     // =========================================================================
-    const XRAY = { inst: null, building: null, markers: [], wikidata: {}, waiting: false, mode: 'xray' };
+    const XRAY = { inst: null, building: null, wikidata: {}, waiting: false, mode: 'xray' };
     // The three ways of looking at the building. Each is a camera on the same outline; Plan draws the contents as nested outlines
     // seen from above, the others as slabs stacked inside the shell.
     const XRAY_CAMERAS = {
@@ -7547,7 +7547,6 @@ return maplibregl$1;
 
     function xrayClearDrawing() {
       XRAY.building = null;
-      XRAY.markers.forEach(m => m.remove()); XRAY.markers = [];
       try { const wire = xrayWire(); if (wire) wire.setSegments([]); } catch (e) { /* style not ready */ }
     }
 
@@ -7568,7 +7567,6 @@ return maplibregl$1;
 
     function xrayDraw(inst) {
       const b = XRAY.building;
-      XRAY.markers.forEach(m => m.remove()); XRAY.markers = [];
       const wire = xrayWire();
       if (!wire) return;
       if (!b) { wire.setSegments([]); return; }
@@ -7585,13 +7583,6 @@ return maplibregl$1;
         cats.forEach((c, i) => { const lo = b.base + span * i / n; xrayBoxSegments(inner, lo, lo + span / n * 0.5, segs, true); });
       }
       wire.setSegments(segs);
-      const c = xrayCentroid(b.geometry);
-      cats.forEach((cat, i) => {
-        const el = document.createElement('button');
-        el.type = 'button'; el.className = 'xray-label'; el.textContent = cat.label; el.style.setProperty('--xray-colour', XRAY_COLOURS[cat.key]);
-        el.addEventListener('click', (ev) => { ev.stopPropagation(); const sec = document.getElementById('xray-cat-' + cat.key); if (sec) sec.scrollIntoView({ block: 'nearest' }); });
-        XRAY.markers.push(new maplibregl.Marker({ element: el, anchor: 'bottom', offset: [0, -(8 + i * 26)] }).setLngLat(c).addTo(cityVectorMap));
-      });
     }
 
     function xraySyncModeBar(show) {
@@ -9734,9 +9725,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v198';
+      const ATLAS_RELEASE = 'culture-atlas-v199';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=198').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=199').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17877,7 +17868,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!mapEl) return;
       mapEl.addEventListener('click', (e) => {
         if (e._atlasPick || !e.isTrusted) return;
-        if (e.target.closest('.maplibregl-popup, .maplibregl-ctrl, .inst-pin-label, .xray-label, button, a')) return;
+        if (e.target.closest('.maplibregl-popup, .maplibregl-ctrl, .inst-pin-label, button, a')) return;
         const pins = Array.from(mapEl.querySelectorAll('.custom-inst-pin'));
         if (!pins.length) return;
         const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
@@ -18472,8 +18463,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=198"></script>
-<script src="assets/layers.js?v=198"></script>
-<script src="assets/bubbles.js?v=198" defer></script>
+<script src="assets/typeset.js?v=199"></script>
+<script src="assets/layers.js?v=199"></script>
+<script src="assets/bubbles.js?v=199" defer></script>
 </body>
 </html>
