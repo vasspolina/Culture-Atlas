@@ -129,16 +129,36 @@ def clean(records, report=None):
     # one record per museum: a later record with the same name is dropped; one with the same id, or listed in
     # data/duplicates.json, is the same museum under another name and is folded into the record that stays: empty
     # fields filled, lists joined, its name kept as an alias, its id kept in former_ids so old links still resolve.
-    LISTS = ('sources', 'flags', 'aliases', 'funder_links', 'epstein_records', 'wikileaks_records', 'case_notes', 'other_findings')
+    # List fields are joined with repeats dropped, and a bare string in one counts as one item, not as its letters.
+    # other_findings is one string whose items are joined by ' | '. gossip_data is merged key by key: its lists joined,
+    # its empty keys filled. Any other field the primary already has stays as it is.
+    LISTS = ('sources', 'flags', 'aliases', 'funder_links', 'epstein_records', 'wikileaks_records', 'case_notes', 'visual_critiques')
     dup_map = {k: v for k, v in (json.load(open(DUPLICATES, encoding='utf-8')) if DUPLICATES.exists() else {}).items() if not k.startswith('_')}
+    def items(x):
+        return [] if x in (None, '', [], {}) else [x] if isinstance(x, (str, dict)) else list(x)
+    def join(have, more):
+        keys = {json.dumps(x, sort_keys=True) for x in have}
+        return have + [x for x in more if json.dumps(x, sort_keys=True) not in keys]
+    def findings(x):
+        if isinstance(x, list) and x and all(isinstance(c, str) and len(c) <= 1 for c in x):
+            x = ''.join(x)                     # a string once joined letter by letter
+        return [s for s in (x.split(' | ') if isinstance(x, str) else [t for y in items(x) for t in findings(y)]) if s]
     def fold(first, r):
         for k, v in r.items():
             if v in (None, '', [], {}) or k == 'id':
                 continue
             if k in LISTS:
-                have = first.get(k) or []
-                keys = {json.dumps(x, sort_keys=True) for x in have}
-                first[k] = have + [x for x in v if json.dumps(x, sort_keys=True) not in keys]
+                first[k] = join(items(first.get(k)), items(v))
+            elif k == 'other_findings':
+                first[k] = ' | '.join(dict.fromkeys(findings(first.get(k)) + findings(v)))
+            elif k == 'gossip_data' and isinstance(first.get(k), dict) and first[k] and isinstance(v, dict):
+                for kk, vv in v.items():
+                    if vv in (None, '', [], {}):
+                        continue
+                    if isinstance(vv, list) or isinstance(first[k].get(kk), list):
+                        first[k][kk] = join(items(first[k].get(kk)), items(vv))
+                    elif first[k].get(kk) in (None, '', [], {}):
+                        first[k][kk] = vv
             elif first.get(k) in (None, '', [], {}):
                 first[k] = v
             elif k in ('funding', 'watch') and v != first[k]:
