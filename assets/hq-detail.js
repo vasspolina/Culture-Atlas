@@ -60,10 +60,19 @@
     });
   };
 
+  // ---- Chat: a click on a name prints what the records say about it in the chat ----
+  // A funder asks the question the chat already answers for funders; a person asks the one it answers for people on boards.
+  function askInChat(e) {
+    if (typeof window.atlasAskCurator !== 'function') return;
+    window.atlasAskCurator(e.kind === 'org' ? `Which institutions does ${e.n} fund?` : `Tell me about ${e.n} and museum board conflicts`);
+  }
+
   // ---- Pointer: the globe's own handlers ask these first ----
   window.atlasHqPointer = {
     hover(mx, my, dots) {
       if (!hq() || !hq().loaded()) return false;
+      const named = hq().labelAt(mx, my);
+      if (named) { hq().hover(named); return true; }
       const t = hq().at(mx, my, hq().reach(), dots), m = t.marks[0];
       if (m && (!t.spaces[0] || m.d <= t.spaces[0].d)) { hq().hover(m.e); return true; }
       if (!(document.activeElement && document.activeElement.classList.contains('hq-mark'))) hq().hover(null);
@@ -71,6 +80,8 @@
     },
     click(mx, my, clientX, clientY, dots) {
       if (!hq() || !hq().loaded()) return false;
+      const named = hq().labelAt(mx, my);
+      if (named) { askInChat(named); return true; }
       const t = hq().at(mx, my, hq().reach(), dots);
       if (!t.marks.length) return false;
       if (t.marks.length + t.spaces.length === 1) { openRecord(t.marks[0].e, null); return true; }
@@ -149,6 +160,8 @@
     const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this record' }, '×');
     close.addEventListener('click', () => closeRecord(true));
     const head = h('div', { class: 'hq-head' }, h('div', null, h('p', { class: 'hq-kind', text: hq().kindLabel(e) }), h('h2', { id: 'hqPanelTitle', text: e.n })), close);
+    const ask = h('button', { type: 'button', class: 'hq-ask', text: 'Ask in chat' });
+    ask.addEventListener('click', () => askInChat(e));
 
     const info = h('section', { 'aria-labelledby': 'hqInfoT' }, h('h3', { id: 'hqInfoT', text: 'Info' }));
     const dl = h('dl');
@@ -184,7 +197,7 @@
         group('hqConnPeople', 'People the files tie to these spaces', rel.people, r => officeRow(r.e, r.shared), 'None.');
       }
     }
-    p.replaceChildren(head, info, names, conns);
+    p.replaceChildren(head, ask, info, names, conns);
     p.scrollTop = 0;
   }
 
