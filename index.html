@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=207">
-  <script src="assets/config.js?v=207"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=208">
+  <script src="assets/config.js?v=208"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9729,9 +9729,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v207';
+      const ATLAS_RELEASE = 'culture-atlas-v208';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=207').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=208').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12053,13 +12053,13 @@ return maplibregl$1;
           ${sourcesHtml(inst, true)}${isGossipModeActive ? '' : researchContextHtml(inst)}
 
 
+          ${isClean && inst.highlight ? `<section class="facts" role="region" aria-label="Highlight"><h3 class="facts-title">Highlight</h3><p class="facts-text">${escapeHtml(inst.highlight)}</p></section>` : ''}
           ${isClean ? factsTableHtml('Visiting', [
             ['Opening hours', escapeHtml(inst.opening_hours || '')],
             ['Admission', escapeHtml(inst.admission_fee || '')],
             ['Address', escapeHtml(inst.address || inst.location || '') + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '')],
             ['Suggested duration', escapeHtml(inst.visit_duration || '')],
             ['Getting there', escapeHtml(inst.transit_tips || '')],
-            ['Highlight', escapeHtml(inst.highlight || '')],
             ['Accessibility', escapeHtml(inst.accessibility || '')],
             ['Amenities', escapeHtml(inst.amenities ? inst.amenities.toString().split(',').map(x => x.trim()).filter(Boolean).join(', ') : '')],
           ], ' role="region" aria-label="Visiting"') : ''}
@@ -18735,8 +18735,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=207"></script>
-<script src="assets/layers.js?v=207"></script>
-<script src="assets/bubbles.js?v=207" defer></script>
+<script src="assets/typeset.js?v=208"></script>
+<script src="assets/layers.js?v=208"></script>
+<script src="assets/bubbles.js?v=208" defer></script>
 </body>
 </html>
