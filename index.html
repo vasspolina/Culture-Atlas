@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=210">
-  <script src="assets/config.js?v=210"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=211">
+  <script src="assets/config.js?v=211"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9769,9 +9769,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v210';
+      const ATLAS_RELEASE = 'culture-atlas-v211';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=210').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=211').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10459,12 +10459,9 @@ return maplibregl$1;
           ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : '#ff6119') : (active ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a'));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = '#000000';
-          // The block's colour is the tier, and colour alone is not enough: a small mark in the block's left padding says it too,
-          // the same outline the pin has (circle clean, square flagged, triangle unverified).
-          if (window.atlasShapePath) { window.atlasShapePath(ctx, TIER_SHAPE[tier] || 'triangle', cx0 - w / 2 + 9, cy0, TIER_SHAPE_SIZE[TIER_SHAPE[tier] || 'triangle']); ctx.fill(); }
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText(text, cx0 + 4, cy0 + 0.5);
+          ctx.fillText(text, cx0, cy0 + 0.5);
           ctx.restore();
         };
         // 6. City labels (all cities in the selected country or the top cities worldwide)
@@ -18794,9 +18791,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=210"></script>
-<script src="assets/layers.js?v=210"></script>
-<script src="assets/hq-detail.js?v=210"></script>
-<script src="assets/bubbles.js?v=210" defer></script>
+<script src="assets/typeset.js?v=211"></script>
+<script src="assets/layers.js?v=211"></script>
+<script src="assets/hq-detail.js?v=211"></script>
+<script src="assets/bubbles.js?v=211" defer></script>
 </body>
 </html>
