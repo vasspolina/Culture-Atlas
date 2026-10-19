@@ -1314,3 +1314,31 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:var(--fill-hover);color:var(--on)}
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:focus-visible{outline:3px solid var(--cobalt,#1d4ed8);outline-offset:3px}
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:disabled{background:#e4e4e4;color:#595959;cursor:not-allowed}
+
+/* The panel follows its width (19 Oct 2026). The chat and Details columns carried a 350px floor (the .min-w-_350px class and an inline
+   minWidth), so a panel narrower than that, or a phone, was cut at its edge instead of reflowing. The floor is gone; the splitter keeps
+   its own minimum (320px while the screen has room). A question wraps to the panel instead of ending in an ellipsis, the input's toolbar
+   and the tab bar wrap to a second line, and the phone's top bar wraps its three buttons instead of running past the screen. */
+#curatorIntelligenceColumn,#desktopDossierColumn{min-width:0}
+#curatorScrollArea,#curatorScrollContent,#curatorMessages,#workBottomDock,#workInputCard,#workInput,#curatorHeroGreeting,#curatorStarterPrompts,#curatorDrawerStarterPrompts{min-width:0;max-width:100%}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){height:auto;min-height:22px;padding:2px 10px;line-height:1.25;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:break-word;text-align:left}
+@media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){height:auto;line-height:1.25}}
+#workInputCard>div.justify-between{flex-wrap:wrap;gap:8px 12px;min-width:0}
+#workInputCard>div.justify-between>div{flex-wrap:wrap;min-width:0;gap:8px 12px}
+#workspaceContextTabBar{flex-wrap:wrap;gap:4px 12px}
+#workspaceContextTabBar>div{flex-wrap:wrap;min-width:0}
+#workspaceContextTabBar button{white-space:nowrap}
+#mobileTopBar{flex-wrap:wrap;row-gap:4px}
+#mobileTopBar>div{flex-wrap:wrap;flex-shrink:1;min-width:0;row-gap:4px}
+.chat-info p,.chat-info{max-width:100%;overflow-wrap:break-word}
+/* The input grows with its placeholder, so the prompt is not cut to two lines in a narrow panel. */
+#workInput{field-sizing:content}
+
+/* The question's fill follows its text like a highlight in running text (19 Oct 2026): the colour sits on an inline span that is
+   cloned across each line it wraps to, so every line has a band as wide as its own words, and a short last line leaves no empty
+   block to its right. The button itself is only the target: it carries no fill. */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){background:transparent;padding:0;min-height:0;line-height:20px;text-align:left}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;text-decoration:none}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{display:inline;padding:2px 8px;background:var(--fill,#c8b85a);color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline-offset:3px}
