@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=211">
-  <script src="assets/config.js?v=211"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=212">
+  <script src="assets/config.js?v=212"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9769,9 +9769,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v211';
+      const ATLAS_RELEASE = 'culture-atlas-v212';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=211').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=212').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -16682,7 +16682,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const handle = document.getElementById('chatWidthHandle');
       const twin = document.getElementById('chatWidthHandleL');
       if (!col || !handle) return;
-      const KEY = 'culture-atlas-chat-width', DEFAULT = 660, MIN = 320, GUTTER = 36;   // 18px each side, as --chat-gutter
+      const KEY = 'culture-atlas-chat-width', DEFAULT = 5000, MIN = 320, GUTTER = 36;   // 18px each side, as --chat-gutter; DEFAULT is clamped to the panel, so the column fills it
       let want = DEFAULT;
       try { const v = parseInt(localStorage.getItem(KEY), 10); if (v >= MIN && v <= 5000) want = v; } catch (e) {}
       let live = false;
@@ -18791,9 +18791,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=211"></script>
-<script src="assets/layers.js?v=211"></script>
-<script src="assets/hq-detail.js?v=211"></script>
-<script src="assets/bubbles.js?v=211" defer></script>
+<script src="assets/typeset.js?v=212"></script>
+<script src="assets/layers.js?v=212"></script>
+<script src="assets/hq-detail.js?v=212"></script>
+<script src="assets/bubbles.js?v=212" defer></script>
 </body>
 </html>

@@ -1385,7 +1385,9 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
    narrow panel (the splitter allows 220px) reflows instead of clipping.
    660px: the message text sits 2.3em in from the column's edge, so 660 less 2.3em of 18px is about 34em, the measure the
    conversation was set to before. */
-#curatorIntelligenceColumn{--chat-w:660px;--chat-gutter:18px;min-width:0}
+/* Default width: the whole panel less the gutters (user's instruction, 19 Oct 2026: 18px of margin on both sides). The number is only
+   "wider than any panel"; min(100%,...) below clamps it, and the handle still narrows the column. */
+#curatorIntelligenceColumn{--chat-w:5000px;--chat-gutter:18px;min-width:0}
 #curatorIntelligenceColumn #curatorScrollArea{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
 #curatorIntelligenceColumn #workBottomDock{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
 #curatorIntelligenceColumn #curatorScrollContent,#curatorIntelligenceColumn #curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){width:min(100%,var(--chat-w));max-width:none;margin-left:auto;margin-right:auto;min-width:0}
