@@ -7,6 +7,29 @@
 (function () {
   const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, right: false, epstein: false, hq: false, people: false };
   const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb' };
+  // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
+  // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
+  // the data are drawn in a deeper step of the same hue there: 3.05:1 or better against white at the 0.8 alpha they are drawn at.
+  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800' };
+  const lineCol = c => (document.documentElement.getAttribute('data-theme') === 'dark' ? c : (LINE_LIGHT[c] || c));
+  // Colour is never the only cue (WCAG 1.4.1): each kind of mark has its own outline, the same ones the key in the layers panel shows.
+  const SHAPES = {
+    square: null,
+    hexagon: [[.25, 0], [.75, 0], [1, .5], [.75, 1], [.25, 1], [0, .5]],
+    triangle: [[.5, 0], [1, 1], [0, 1]],
+    shield: [[.5, 0], [1, .18], [.9, .72], [.5, 1], [.1, .72], [0, .18]],
+    star: [[.5, 0], [.62, .35], [1, .35], [.69, .57], [.81, .95], [.5, .72], [.19, .95], [.31, .57], [0, .35], [.38, .35]]
+  };
+  const KIND_SHAPE = { gov: 'square', corp: 'hexagon', found: 'triangle' };
+  function shapePath(ctx, shape, x, y, s) {
+    ctx.beginPath();
+    const pts = SHAPES[shape];
+    if (shape === 'circle' || (!pts && shape !== 'square')) { ctx.arc(x, y, s, 0, Math.PI * 2); return; }
+    if (!pts) { ctx.rect(x - s, y - s, 2 * s, 2 * s); return; }
+    pts.forEach((q, i) => { const px = x + (q[0] - .5) * 2 * s, py = y + (q[1] - .5) * 2 * s; if (i) ctx.lineTo(px, py); else ctx.moveTo(px, py); });
+    ctx.closePath();
+  }
+  window.atlasShapePath = shapePath;
   const RIGHT = n => typeof n[5] === 'string' && n[5].indexOf('right:') === 0;
   const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? ['Jeffrey Epstein'] : []);
   const FUNDER = n => n[1] === 'gov' || n[1] === 'corp' || n[1] === 'found';
@@ -122,8 +145,8 @@
         (keyIndex.get(n[5]) || []).forEach(id => {
           if (seen.has(id) || seen.size > 400) return; seen.add(id);
           const o = recById.get(id); if (!o || typeof o.lat !== 'number') return;
-          ctx.strokeStyle = COL[n[1]];
-          arc(project, rec, o, r, cx, cy, ctx); ends.push([o, COL[n[1]]]);
+          ctx.strokeStyle = lineCol(COL[n[1]]);
+          arc(project, rec, o, r, cx, cy, ctx); ends.push([o, lineCol(COL[n[1]])]);
         });
       });
       ctx.globalAlpha = 1;
@@ -145,7 +168,7 @@
 
   // Over the dots and labels: flag marks and the money network.
   // A square on each space the funding map names for this highlight, and its names on blocks when in focus or close.
-  function drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, col, namesOf, dx) {
+  function drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, col, namesOf, dx, shape) {
     const close = r >= baseRadius * 22;
     const marks = [];
     recById.forEach(rec => {
@@ -155,7 +178,7 @@
       marks.push([pt, names, focus]);
     });
     ctx.lineWidth = 0.8;
-    marks.forEach(([pt]) => { ctx.fillStyle = col; ctx.fillRect(pt.x - 6 + dx, pt.y - 6, 12, 12); ctx.strokeStyle = '#000'; ctx.strokeRect(pt.x - 6 + dx, pt.y - 6, 12, 12); });
+    marks.forEach(([pt]) => { shapePath(ctx, shape, pt.x + dx, pt.y, 6.5); ctx.fillStyle = col; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); });
     ctx.textAlign = 'left';
     marks.forEach(([pt, names, focus]) => {
       if (!(focus || close)) return;
@@ -191,8 +214,8 @@
     // joins from the focused space
     if (rec && typeof rec.lat === 'number') {
       ctx.lineWidth = 1.2; ctx.globalAlpha = 0.85;
-      if (L.hq) linkedOrgs.forEach(k => { const o = HQ.byKey.get(k); ctx.strokeStyle = KIND[o.k]; arc(project, rec, o, r, cx, cy, ctx); });
-      if (L.people) linkedPeople.forEach(n => { const o = HQ.byName.get(n); ctx.strokeStyle = COL.person; arc(project, rec, o, r, cx, cy, ctx); });
+      if (L.hq) linkedOrgs.forEach(k => { const o = HQ.byKey.get(k); ctx.strokeStyle = lineCol(KIND[o.k]); arc(project, rec, o, r, cx, cy, ctx); });
+      if (L.people) linkedPeople.forEach(n => { const o = HQ.byName.get(n); ctx.strokeStyle = lineCol(COL.person); arc(project, rec, o, r, cx, cy, ctx); });
       ctx.globalAlpha = 1;
     }
     // marks
@@ -241,9 +264,12 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.grade || !G[i.grade]) return;
-        ctx.beginPath(); ctx.arc(d.x, d.y, 5, 0, Math.PI * 2);
+        ctx.beginPath(); ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
         ctx.fillStyle = G[i.grade].col; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
+        // The letter is the second cue: grade A and B are two near greens, and colour alone cannot tell the five apart.
+        ctx.save(); ctx.font = '700 9px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
+        ctx.fillText(G[i.grade].letter, d.x, d.y + 0.5); ctx.restore();
       });
     }
     if (L.flags) {
@@ -251,7 +277,7 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.flags || !i.flags.length) return;
-        ctx.beginPath(); ctx.arc(d.x, d.y, 5, 0, Math.PI * 2);
+        shapePath(ctx, 'square', d.x, d.y, 4.6);
         ctx.fillStyle = COL.flag; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
       });
@@ -272,8 +298,8 @@
     }
 
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
-    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0);
-    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0);
+    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'shield');
+    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'star');
 
     if (L.hq || L.people) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
 
@@ -298,16 +324,17 @@
           const n = nodes[i], a = -Math.PI / 2 + (i * 2 * Math.PI) / N, x = d.x + R * Math.cos(a), y = d.y + R * Math.sin(a);
           const col = gossip ? '#ffd600' : COL[n[1]];
           ctx.globalAlpha = focus ? 1 : 0.7;
-          ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
-          ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.stroke();
+          ctx.strokeStyle = lineCol(col); ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
+          // The outline says the kind (square public funding, hexagon company, triangle foundation); the colour repeats it.
+          shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, 5.5); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 1.3; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
           if (n[5]) { if (!byKey.has(n[5])) byKey.set(n[5], []); byKey.get(n[5]).push([x, y, col]); }
           labels.push([n[0], x, y, a, col]);
         }
       });
       // A funder named on two spaces on screen is joined across them.
-      ctx.globalAlpha = 0.55;
+      ctx.globalAlpha = 0.8;
       const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9, onScreen = p => p[0] > -40 && p[0] < W + 40 && p[1] > -40 && p[1] < H + 40;
-      byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = pts[i][2]; ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[i][0], pts[i][1]); ctx.stroke(); } });
+      byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = lineCol(pts[i][2]); ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[i][0], pts[i][1]); ctx.stroke(); } });
       // Funder names on flat blocks, in the funder's colour, never over another label.
       ctx.globalAlpha = 1;
       labels.forEach(([label, x, y, a, col]) => {

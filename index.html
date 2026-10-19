@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=202">
-  <script src="assets/config.js?v=202"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=203">
+  <script src="assets/config.js?v=203"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -179,6 +179,14 @@ return maplibregl$1;
               <label><input type="checkbox" data-layer="people"> <span class="layer-name">People &amp; office locations</span><span class="layer-desc">Offices of the people the Epstein files name</span><span class="layers-count" data-count="people"></span></label>
               <label><input type="checkbox" data-layer="right"> <span class="layer-name">Right-wing funders</span><span class="layer-desc">Spaces with a right-wing sponsor among their funders</span><span class="layers-count" data-count="right"></span></label>
               <label><input type="checkbox" data-layer="epstein"> <span class="layer-name">Mentions in the Epstein files</span><span class="layer-desc">Spaces whose funders or people appear in the files</span><span class="layers-count" data-count="epstein"></span></label>
+            </div>
+          </section>
+          <section class="layers-section">
+            <h2 class="layers-section-title">Spaces on the map</h2>
+            <div class="layers-key layers-tier-key">
+              <span><i class="shape-dot" style="--marker-color:#9ae3e8"></i>Clean: a source is cited</span>
+              <span><i class="shape-square" style="--marker-color:#ff6119"></i>Flagged: a recorded reason</span>
+              <span><i class="shape-triangle" style="--marker-color:#c8b85a"></i>Unverified</span>
             </div>
           </section>
           <section class="layers-section">
@@ -7200,6 +7208,7 @@ return maplibregl$1;
       }
       tabChat?.setAttribute('aria-pressed', String(currentWorkspaceTab === 'chat'));
       tabDossier?.setAttribute('aria-pressed', String(currentWorkspaceTab === 'dossier'));
+      if (window.atlasSyncInert) window.atlasSyncInert();
     }
     window.setWorkspaceTab = setWorkspaceTab;
 
@@ -9738,9 +9747,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v202';
+      const ATLAS_RELEASE = 'culture-atlas-v203';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=202').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=203').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10140,6 +10149,9 @@ return maplibregl$1;
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
       const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#f4f4f4'), G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#ffffff'), G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+        // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
+        const TIER_SHAPE = { A: 'circle', B: 'square', U: 'triangle' };
+        const TIER_SHAPE_SIZE = { circle: 3, square: 2.7, triangle: 3.3 };
       const dt = lastRenderTs ? Math.min(0.1, Math.max(0, (now - lastRenderTs) / 1000)) : 1 / 60;
       lastRenderTs = now;
       // Scale coordinates to high-DPI hardware buffer for crystal-clear Retina rendering
@@ -10420,13 +10432,16 @@ return maplibregl$1;
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = ATLAS_CARD_MONO_FONT;
-          const w = ctx.measureText(text).width + 20, h = 22;
+          const w = ctx.measureText(text).width + 28, h = 22;
           ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : '#ff6119') : (active ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a'));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = '#000000';
+          // The block's colour is the tier, and colour alone is not enough: a small mark in the block's left padding says it too,
+          // the same outline the pin has (circle clean, square flagged, triangle unverified).
+          if (window.atlasShapePath) { window.atlasShapePath(ctx, TIER_SHAPE[tier] || 'triangle', cx0 - w / 2 + 9, cy0, TIER_SHAPE_SIZE[TIER_SHAPE[tier] || 'triangle']); ctx.fill(); }
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText(text, cx0, cy0 + 0.5);
+          ctx.fillText(text, cx0 + 4, cy0 + 0.5);
           ctx.restore();
         };
         // 6. City labels (all cities in the selected country or the top cities worldwide)
@@ -10449,7 +10464,7 @@ return maplibregl$1;
             ctx.save();
             ctx.font = ATLAS_CARD_MONO_FONT;
             const sn = selectedInstitution.name.length > 24 ? selectedInstitution.name.substring(0, 22) + '…' : selectedInstitution.name;
-            const sw = ctx.measureText(sn).width + 20;
+            const sw = ctx.measureText(sn).width + 28;
             ctx.restore();
             drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - 18, w: sw, h: 22 });
           }
@@ -10505,14 +10520,14 @@ return maplibregl$1;
 
             if (isClustered) {
               countTxt = String(city.count);
-              bw = ctx.measureText(city.name + ' ' + countTxt).width + 20;
+              bw = ctx.measureText(city.name + ' ' + countTxt).width + 28;
             } else {
               // A count of one says nothing, and adding " (1)" at 1.5x was the last width jump that
               // reshuffled labels mid-zoom. Counts from two up still show.
               const countLabel = (city.count || 0) >= 2 && (isCountryActive || r > baseRadius * 1.5) ? ` (${city.count})` : '';
               txt = city.name + countLabel;
               const tw = ctx.measureText(txt).width;
-              bw = tw + 20;
+              bw = tw + 28;
             }
 
             const bx = pt.x - bw / 2;
@@ -10761,18 +10776,19 @@ return maplibregl$1;
           const limbD = (isSel || isHov) ? 1 : limbFade(d.depth, 0.05);
           ctx.save();
           ctx.globalAlpha = limbD;
-          ctx.beginPath();
-          ctx.arc(d.x, d.y, isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5), 0, Math.PI * 2);
+          const pinR = isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5);
+          const pinShape = TIER_SHAPE[d.inst.tier] || 'triangle';
+          if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1)); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR, 0, Math.PI * 2); }
           ctx.strokeStyle = isHov 
             ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE)
             : (isVisualCritiqueOnly && hasVc)
-            ? '#f59e0b'
+            ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
-            ? (d.inst.gossip_data ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : '#713f12')
+            ? (d.inst.gossip_data ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : (GLOBE_LIGHT ? '#713f12' : '#884c16'))
             : (d.inst.tier === 'A' ? (GLOBE_LIGHT ? '#0a8f68' : '#10b981') : d.inst.tier === 'B' ? (GLOBE_LIGHT ? '#7a52d6' : '#be95ff') : (GLOBE_LIGHT ? '#008a87' : '#08bdba'));
           // Hollow rings, colored by tier; the selected one is filled.
           ctx.lineWidth = 0.8;
-          if (isSel) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
+          if (isSel || (isGossipModeActive && d.inst.gossip_data)) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
           ctx.stroke();
           ctx.restore();
 
@@ -10793,7 +10809,7 @@ return maplibregl$1;
             const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
             ctx.font = ATLAS_CARD_MONO_FONT;
             const tw = ctx.measureText(nameTxt).width;
-            const bw = tw + 20;
+            const bw = tw + 28;
             const bh = 22;
             const bx = d.x - bw / 2;
             const by = d.y - 18;
@@ -14282,6 +14298,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (workInput) workInput.value = '';
       const scrollArea = document.getElementById('curatorScrollArea');
       if (scrollArea) scrollArea.scrollTop = 0;
+      if (window.atlasSyncInert) window.atlasSyncInert();
       if (workInput) workInput.focus();
     }
 
@@ -15479,6 +15496,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (defaultTopic) {
           workInput.value = defaultTopic;
         }
+        if (window.atlasSyncInert) window.atlasSyncInert();
         workInput.focus();
       }
 
@@ -15742,6 +15760,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const workInput = document.getElementById('workInput');
         if (workInput && fillText) {
           workInput.value = fillText;
+          if (window.atlasSyncInert) window.atlasSyncInert();
           workInput.focus();
           scrollChatToBottom(true);
         }
@@ -16503,6 +16522,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         e.preventDefault();
       });
 
+      // A column squeezed to nothing (the record has the whole panel, or the chat does) still holds its controls, and Tab walked into them
+      // with no way to see where focus was. A column with no width is inert, so keyboard focus skips it.
+      const emptyCols = ['curatorIntelligenceColumn', 'desktopDossierColumn'].map(id => document.getElementById(id)).filter(Boolean);
+      const syncEmptyCols = () => emptyCols.forEach(col => { const empty = col.getBoundingClientRect().width < 2; if (col.inert !== empty) col.inert = empty; });
+      window.atlasSyncInert = syncEmptyCols;   // setWorkspaceTab calls it, so a tab that has just been shown can take focus in the same tick
+      if (typeof ResizeObserver === 'function') { const ro = new ResizeObserver(syncEmptyCols); emptyCols.forEach(col => ro.observe(col)); }
+      syncEmptyCols();
+
       // Double-click, Home or Escape on the handle puts the split back to the default and forgets the kept one
       const resetSplit = () => {
         memory['-x'] = memory['-y'] = NaN;
@@ -16524,7 +16551,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const g = globeVp.getBoundingClientRect().width;
         splitter.setAttribute('aria-orientation', 'vertical');
         splitter.setAttribute('aria-valuemin', String(GLOBE_MIN));
-        splitter.setAttribute('aria-valuemax', String(Math.round(rect.width - COLUMN_MIN)));
+        splitter.setAttribute('aria-valuemax', String(Math.round(rect.width - columnMin(rect.width))));
         splitter.setAttribute('aria-valuenow', String(Math.round(g)));
         splitter.setAttribute('aria-valuetext', Math.round(g) + ' pixels for the globe');
       };
@@ -18638,8 +18665,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=202"></script>
-<script src="assets/layers.js?v=202"></script>
-<script src="assets/bubbles.js?v=202" defer></script>
+<script src="assets/typeset.js?v=203"></script>
+<script src="assets/layers.js?v=203"></script>
+<script src="assets/bubbles.js?v=203" defer></script>
 </body>
 </html>
