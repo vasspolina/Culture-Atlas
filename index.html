@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=212">
-  <script src="assets/config.js?v=212"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=215">
+  <script src="assets/config.js?v=215"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9769,9 +9769,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v212';
+      const ATLAS_RELEASE = 'culture-atlas-v215';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=212').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=215').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11392,7 +11392,7 @@ return maplibregl$1;
         return rows.length ? `<ul class="list-disc pl-5 t-lead">${rows.join('')}</ul>` : '';
       };
       const item = (title, meta, body, urls) => `
-        <div class="record-card space-y-1_5">
+        <div class="record-card is-unverified space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(title)}</div>
           ${meta ? `<div class="kicker no-indent">${meta.html || escapeHtml(meta)}</div>` : ''}
           ${body}
@@ -11442,10 +11442,10 @@ return maplibregl$1;
       }
       const accounts = ((inst.gossip_data || {}).accounts || []).map(a => {
         const urls = (a.sources || []).map(x => x && x.url).filter(u => typeof u === 'string' && (u.startsWith('http://') || u.startsWith('https://')));
-        return `<div class="record-card account-report-card space-y-1_5">
+        return `<div class="record-card is-unverified account-report-card space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(`${a.id}, ${a.scope}`)}</div>
           <span class="unverified-platform-tag">Unverified platform sentiment</span>
-          ${list(...(a.fields || []).map(f => li(f[0] + ': ', f[1])))}
+          ${list(...(a.fields || []).map(f => li(f[0] + ': ', f[1]))).replace('<ul ', '<ul role="list" ')}
           ${urls.length ? `<div class="account-source-links">${urls.map(u => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(host(u))}${externalIcon}</a>`).join('')}</div>` : ''}
         </div>`;
       });
@@ -16676,15 +16676,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // The width of the chat. The conversation, the input and the records note share one column, centred in the panel; the reader
     // drags either edge of it (it stays centred, so the edge moves half as far as the pointer), or focuses the handle and uses the
     // arrow keys (Shift for 80px, Home for the narrowest, End for the whole panel). Double-click puts it back. The width asked
-    // for is kept in this browser; the column never goes wider than the panel less its gutters, and the text re-wraps to it.
+    // for is not kept (user's instruction, 19 Oct 2026): every load starts with the column filling the panel, 18px from each edge; the column never goes wider than the panel less its gutters, and the text re-wraps to it.
     (function () {
       const col = document.getElementById('curatorIntelligenceColumn');
       const handle = document.getElementById('chatWidthHandle');
       const twin = document.getElementById('chatWidthHandleL');
       if (!col || !handle) return;
-      const KEY = 'culture-atlas-chat-width', DEFAULT = 660, MIN = 320, GUTTER = 36;   // 18px each side, as --chat-gutter
+      const DEFAULT = 5000, MIN = 320, GUTTER = 36;   // 18px each side, as --chat-gutter; DEFAULT is clamped to the panel, so the column fills it
       let want = DEFAULT;
-      try { const v = parseInt(localStorage.getItem(KEY), 10); if (v >= MIN && v <= 5000) want = v; } catch (e) {}
       let live = false;
       const room = () => Math.max(0, col.clientWidth - GUTTER);
       const sync = () => {
@@ -16700,7 +16699,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       };
       const set = (px, keep) => {
         want = Math.round(Math.max(Math.min(MIN, room()), Math.min(room(), px)));
-        if (keep !== false) { try { localStorage.setItem(KEY, String(want)); } catch (e) {} }
         sync();
       };
       const shown = () => Math.min(want, room());
@@ -16729,7 +16727,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         el.addEventListener('pointermove', move);
         el.addEventListener('pointerup', up);
         el.addEventListener('pointercancel', up);
-        el.addEventListener('dblclick', () => { try { localStorage.removeItem(KEY); } catch (e) {} want = DEFAULT; sync(); });
+        el.addEventListener('dblclick', () => { want = DEFAULT; sync(); });
       });
       handle.addEventListener('keydown', (e) => {
         const step = e.shiftKey ? 80 : 24;
@@ -18791,9 +18789,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=212"></script>
-<script src="assets/layers.js?v=212"></script>
-<script src="assets/hq-detail.js?v=212"></script>
-<script src="assets/bubbles.js?v=212" defer></script>
+<script src="assets/typeset.js?v=215"></script>
+<script src="assets/layers.js?v=215"></script>
+<script src="assets/hq-detail.js?v=215"></script>
+<script src="assets/bubbles.js?v=215" defer></script>
 </body>
 </html>
