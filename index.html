@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=217">
-  <script src="assets/config.js?v=217"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=218">
+  <script src="assets/config.js?v=218"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9758,9 +9758,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v217';
+      const ATLAS_RELEASE = 'culture-atlas-v218';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=217').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=218').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14548,11 +14548,31 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Intelligent Conversational Curator Knowledge Engine
     window.handleCuratorQuery = handleCuratorQuery;
     // True when the text is the space's name or one of its aliases and nothing else, bar a lead-in such as "show me" or "open".
+    // A short form counts too, when it can only mean this one space: "moma new york" (the name and its place), or "prado" and
+    // "louisiana" (words of the name that no other record shares). A bare city or country never does.
     function isNameRequest(text, inst) {
       const clean = s => String(s || '').toLowerCase().replace(/[’']/g, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
       const t = clean(text).replace(/^(?:(?:please )?(?:show(?: me)?|open|find|go to|zoom (?:in )?(?:to|on)|take me to|tell me about|about|the) )+/, '');
       if (!t) return false;
-      return [inst.name, ...(inst.aliases || [])].some(n => clean(n) === t);
+      const names = [inst.name, ...(inst.aliases || [])].map(clean);
+      if (names.includes(t)) return true;
+      const place = [inst.city, inst.country].map(clean).filter(Boolean);
+      if (place.includes(t)) return false;
+      const isPlace = (typeof ALL_CITIES !== 'undefined' && ALL_CITIES.some(c => clean(c) === t)) ||
+        (typeof ALL_COUNTRIES_REGISTRY !== 'undefined' && ALL_COUNTRIES_REGISTRY.some(c => clean(c.name) === t));
+      if (isPlace) return false;
+      // The name with its own city or country after it ("moma new york", "tate modern london").
+      for (const p of place) {
+        const bare = t.endsWith(' ' + p) ? t.slice(0, -p.length - 1) : (t.startsWith(p + ' ') ? t.slice(p.length + 1) : '');
+        if (bare && names.includes(bare)) return true;
+      }
+      // A few words of the name, every one of them found in this record's name and in no other record's.
+      const GENERIC = new Set(['museum', 'museo', 'musee', 'museu', 'muzeum', 'gallery', 'galerie', 'galleria', 'art', 'arts', 'modern', 'contemporary', 'national', 'center', 'centre', 'the', 'of', 'de', 'del', 'der', 'die', 'van', 'and', 'for', 'city', 'house', 'kunst', 'foundation', 'institute']);
+      const words = t.split(' ');
+      if (!words.some(w => w.length >= 3 && !GENERIC.has(w))) return false;
+      const bagOf = i => new Set(clean([i.name, ...(i.aliases || [])].join(' ')).split(' '));
+      if (!words.every(w => bagOf(inst).has(w))) return false;
+      return ALL_INSTITUTIONS.every(i => i === inst || i.id === inst.id || !words.every(w => bagOf(i).has(w)));
     }
 
     async function handleCuratorQuery(query) {
@@ -18789,9 +18809,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=217"></script>
-<script src="assets/layers.js?v=217"></script>
-<script src="assets/hq-detail.js?v=217"></script>
-<script src="assets/bubbles.js?v=217" defer></script>
+<script src="assets/typeset.js?v=218"></script>
+<script src="assets/layers.js?v=218"></script>
+<script src="assets/hq-detail.js?v=218"></script>
+<script src="assets/bubbles.js?v=218" defer></script>
 </body>
 </html>
