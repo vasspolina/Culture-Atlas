@@ -14,9 +14,27 @@
   <title>Culture Atlas</title>
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
+  <script>
+    // The globe is held back (assets/atlas.css hides the canvas) until the page is in its final state, so its lines
+    // are drawn once: not on a copy a newer release is about to replace, and not before the type they are labelled in.
+    // The release that is live is asked for here, in parallel with everything below, and settled in the main script.
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('atlas-held');
+      setTimeout(function () { root.classList.remove('atlas-held'); }, 10000); // never leave the globe hidden
+      window.__atlasLiveRelease = Promise.resolve(null);
+      if (!('serviceWorker' in navigator) || !window.fetch) return;
+      var ctl = window.AbortController ? new AbortController() : null;
+      var cut = setTimeout(function () { if (ctl) ctl.abort(); }, 2500);
+      window.__atlasLiveRelease = fetch('sw.js', { cache: 'no-cache', signal: ctl ? ctl.signal : undefined })
+        .then(function (r) { return r.ok ? r.text() : ''; })
+        .then(function (t) { clearTimeout(cut); var m = /CACHE_NAME\s*=\s*'([^']+)'/.exec(t); return m ? m[1] : null; })
+        .catch(function () { return null; });
+    })();
+  </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=219">
-  <script src="assets/config.js?v=219"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=220">
+  <script src="assets/config.js?v=220"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9759,11 +9777,12 @@ return maplibregl$1;
       `;
     }
 
+    // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
+    const ATLAS_RELEASE = 'culture-atlas-v220';
+    const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
-      // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v219';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=219').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=220').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9775,6 +9794,9 @@ return maplibregl$1;
       navigator.serviceWorker.addEventListener('message', (e) => {
         const d = e.data || {};
         if (d.type !== 'atlas-release' || !d.cache || d.cache === ATLAS_RELEASE) return;
+        // A copy that is stale when it loads is replaced before its first paint (settleBeforeFirstPaint, below), so
+        // the globe is never drawn and then drawn again. This is for a tab that has been open across a release.
+        if (performance.now() < ATLAS_SETTLE_MS) return;
         const busy = (typeof curatorContext !== 'undefined' && curatorContext && (curatorContext.history || []).length > 0)
           || (typeof selectedInstitution !== 'undefined' && !!selectedInstitution);
         if (!busy) location.reload();
@@ -10146,6 +10168,14 @@ return maplibregl$1;
     // One draw loop only. Every caller asks through scheduleRender(), which
     // no-ops while a frame is already queued, so the globe can never run two
     // loops at once (each extra loop used to add its own spin step per frame).
+    // Nothing of the globe is drawn until the page is final (settleBeforeFirstPaint, after the first scheduleRender).
+    let atlasPaintHeld = true;
+    function atlasReleasePaint() {
+      if (!atlasPaintHeld) return;
+      atlasPaintHeld = false;
+      render(performance.now()); // drawn first, shown after: the canvas stays hidden until it holds a finished frame
+      document.documentElement.classList.remove('atlas-held');
+    }
     let renderFrameId = 0;
     let lastRenderTs = 0;
     const AUTO_SPIN_DEG_PER_SEC = 2;
@@ -10159,6 +10189,7 @@ return maplibregl$1;
     window.scheduleRender = scheduleRender;
 
     function render(ts) {
+      if (atlasPaintHeld) return;
       if (typeof syncGlobeControls === 'function') syncGlobeControls();
       const now = (typeof ts === 'number') ? ts : performance.now();
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
@@ -11122,6 +11153,35 @@ return maplibregl$1;
       scheduleRender();
     }
     scheduleRender();
+
+    // Before the first paint: is this copy the live release, and is the type the labels are drawn in loaded? A stale
+    // copy is replaced now, with nothing drawn, instead of being drawn and then reloaded by the service worker's
+    // message. Both waits are capped, so a slow network or a missing font delays the globe, never blocks it.
+    (function settleBeforeFirstPaint() {
+      let domReady = false; // readyState turns 'interactive' before the deferred scripts have run; this event comes after them
+      document.addEventListener('DOMContentLoaded', () => { domReady = true; }, { once: true });
+      const fontReady = (document.fonts && document.fonts.load)
+        ? Promise.race([document.fonts.load(ATLAS_CARD_TITLE_FONT).catch(() => {}), new Promise((r) => setTimeout(r, 1500))])
+        : Promise.resolve();
+      (window.__atlasLiveRelease || Promise.resolve(null)).then((live) => {
+        if (live && live !== ATLAS_RELEASE) {
+          let tried = null;
+          try { tried = sessionStorage.getItem('atlas-reload-for'); } catch (e) {}
+          if (tried !== live) { // once per release: a host serving a stale page cannot loop this
+            try { sessionStorage.setItem('atlas-reload-for', live); } catch (e) {}
+            location.reload();
+            return null;
+          }
+        }
+        return fontReady;
+      }).then((ready) => {
+        if (ready === null) return;
+        // The deferred scripts (assets/bubbles.js draws the hairlines in) have run by DOMContentLoaded, and they look
+        // for the hold being cleared: release only once they are there to see it.
+        if (domReady) atlasReleasePaint(); else document.addEventListener('DOMContentLoaded', atlasReleasePaint, { once: true });
+      });
+      setTimeout(atlasReleasePaint, 8000); // the waits above are capped; this is for an error in them
+    })();
 
     // Camera Navigation
     function flyTo(lon, lat, targetZoom = null) {
@@ -18812,9 +18872,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=219"></script>
-<script src="assets/layers.js?v=219"></script>
-<script src="assets/hq-detail.js?v=219"></script>
-<script src="assets/bubbles.js?v=219" defer></script>
+<script src="assets/typeset.js?v=220"></script>
+<script src="assets/layers.js?v=220"></script>
+<script src="assets/hq-detail.js?v=220"></script>
+<script src="assets/bubbles.js?v=220" defer></script>
 </body>
 </html>
