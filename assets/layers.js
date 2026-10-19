@@ -41,7 +41,8 @@
   let HQ = null, hqLoading = false;
   // The mark drawn for each office last frame (x, y on the canvas) so a click, a hover and the keyboard buttons can find it;
   // the one picked in the detail panel (assets/hq-detail.js) and the one under the pointer or keyboard focus.
-  let HQ_HITS = [], HQ_SEL = null, HQ_HOV = null;
+  let HQ_HITS = [], HQ_LABELS = [], HQ_SEL = null, HQ_HOV = null;
+  // The name blocks drawn last frame, so a click on a name can ask the chat about it.
   function loadHq() {
     if (HQ || hqLoading) return;
     hqLoading = true;
@@ -261,7 +262,7 @@
       const text = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`, t = text.length > 40 ? text.slice(0, 38) + '…' : text;
       const tw = ctx.measureText(t).width, w = tw + 12, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
       if (collides(box, boxes)) return;
-      boxes.push(box);
+      boxes.push(box); HQ_LABELS.push({ e, x: box.x, y: box.y, w, h });
       if (on) { ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5); }
       else { ctx.lineJoin = 'round'; ctx.lineWidth = 3; ctx.strokeStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#000' : '#fff'; ctx.strokeText(t, box.x + 6, y + 0.5); ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#fff' : '#161616'; ctx.fillText(t, box.x + 6, y + 0.5); }
     });
@@ -370,7 +371,7 @@
     ctx.restore();
   }
   window.atlasLayersDrawNodes = function (ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    HQ_HITS = [];
+    HQ_HITS = []; HQ_LABELS = [];
     try { drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy); }
     finally { if (window.atlasHqFrame) window.atlasHqFrame(HQ_HITS); }
   };
@@ -428,6 +429,8 @@
       const spaces = (dots || []).map(d => ({ inst: d.inst, d: Math.hypot(d.x - mx, d.y - my) })).filter(d => d.d <= reach).sort((a, b) => a.d - b.d);
       return { marks, spaces };
     },
+    // The office whose drawn name is under the point, if any.
+    labelAt(mx, my) { const l = HQ_LABELS.find(b => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h); return l ? l.e : null; },
     reach: () => (window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') ? 22 : 12,
     hover(e) { if (HQ_HOV === e) return; HQ_HOV = e; if (typeof scheduleRender === 'function') scheduleRender(); },
     select(e) { HQ_SEL = e; if (typeof scheduleRender === 'function') scheduleRender(); },
