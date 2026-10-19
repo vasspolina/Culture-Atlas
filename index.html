@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=195">
-  <script src="assets/config.js?v=195"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=196">
+  <script src="assets/config.js?v=196"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -386,13 +386,7 @@ return maplibregl$1;
               <span class="kicker block">Funding</span>
               <p class="t-lead" id="dossier-sheet-funding-text"></p>
             </div>
-            <div id="dossier-sheet-visit" class="hidden py-2_5 rule-b space-y-1">
-              <span class="kicker">Visiting</span>
-              <div class="visit-content">
-                <p class="t-lead visit-details" id="dossier-sheet-hours"></p>
-                <p class="t-lead visit-details" id="dossier-sheet-access-text"></p>
-              </div>
-            </div>
+            <div id="dossier-sheet-visit" class="hidden"></div>
             <div id="dossier-sheet-record" class="hidden"></div>
             <div id="dossier-sheet-sources"></div>
             <div class="flex flex-row flex-wrap gap-2 pt-1">
@@ -7677,10 +7671,10 @@ return maplibregl$1;
       if (window.innerWidth >= 768 && inside && col) {
         const onRecord = new Set(['flag', 'funding', 'reported', 'accounts', 'sources']);
         const rest = cats.filter(c => !onRecord.has(c.key));
-        // In the record column the parts are set like the record's own: the part's name as a label, and a line that
-        // reads "Label: value" as a two-column list, labels in small print on the left (no colour key: the map has its own).
-        const factRow = l => { const m = String(l).match(/^([^:]{2,28}):\s+(.+)$/); return m ? `<div class="xray-fact"><span class="meta">${e(m[1])}</span><span>${e(m[2])}</span></div>` : `<div class="xray-fact"><span></span><span>${e(l)}</span></div>`; };
-        const restHtml = rest.map(c => `<div id="xray-cat-${c.key}" class="py-3 rule-b xray-record-part"><span class="kicker block">${e(c.label)}</span><div class="xray-facts">${c.lines.slice(0, 8).map(factRow).join('')}</div></div>`).join('');
+        // In the record column each part is a table of facts like the record's own Visiting block, with no colour key
+        // (the map has its own); a line that reads "Label: value" puts the label in the left column.
+        const factRow = l => { const m = String(l).match(/^([^:]{2,28}):\s+(.+)$/); return m ? [m[1], e(m[2])] : ['', e(l)]; };
+        const restHtml = rest.map(c => factsTableHtml(c.label, c.lines.slice(0, 8).map(factRow), ` id="xray-cat-${c.key}"`)).join('');
         const linksHtml = siteHtml || archivesHtml || wdHtml ? `<div class="py-3 rule-b xray-record-part">${siteHtml}${archivesHtml}${wdHtml}</div>` : '';
         if (!photoHtml && !restHtml && !linksHtml) { inside.innerHTML = ''; inside.classList.add('hidden'); panel.classList.add('hidden'); return; }
         inside.innerHTML = photoHtml + restHtml + linksHtml;
@@ -9624,9 +9618,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v195';
+      const ATLAS_RELEASE = 'culture-atlas-v196';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=195').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=196').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11073,6 +11067,14 @@ return maplibregl$1;
     // A watch note goes into the Funding block when it is about money or a sponsor; otherwise it stays under the title.
     const MONEY_WORDS = /fund|sponsor|donor|grant|budget|money|[$€£¥]|\bM\b|million|fortune|foundation|trustee|board|gift|endow|subsid|revenue|income|tax|levy|corporate|bank|wealth|patron|financ|paid|pays|heir|family|partner|supporter|casino|oil|gas\b|energy|dropped|ended|removed|protest|boycott|campaign|sackler|\bBP\b/i;
     function watchIsAboutMoney(s) { return MONEY_WORDS.test(String(s || '')); }
+    // A block of facts set as a table (the user's reference, 19 Oct 2026): its name on a line, a rule, then one row per
+    // fact, the label in the left column and the value in the right, all at the text size, and a rule to close it.
+    // rows: [label, html] pairs; a row with no value is left out. Values are passed as HTML, already escaped.
+    function factsTableHtml(title, rows, attrs = '') {
+      const r = (rows || []).filter(x => x && x[1]);
+      if (!r.length) return '';
+      return `<section class="facts"${attrs}><h3 class="facts-title">${escapeHtml(title)}</h3><dl class="facts-table">${r.map(([k, v]) => `<dt>${escapeHtml(k)}</dt><dd>${v}</dd>`).join('')}</dl></section>`;
+    }
     function fundingHtml(inst) {
       if (!inst) return '';
       const e = escapeHtml;
@@ -11374,9 +11376,11 @@ return maplibregl$1;
       // The phone sheet shows the same Funding block as the desktop record.
       const fBox = document.getElementById('dossier-sheet-funding');
       if (fBox) { const fh = fundingHtml(inst); fBox.className = fh ? '' : 'hidden'; fBox.innerHTML = fh; }
-      text('dossier-sheet-hours', inst.opening_hours);
-      text('dossier-sheet-access-text', inst.admission_fee || inst.admission_policy);
-      toggle('dossier-sheet-visit', Boolean(inst.opening_hours || inst.admission_fee || inst.admission_policy));
+      const vBox = document.getElementById('dossier-sheet-visit');
+      if (vBox) {
+        const vh = factsTableHtml('Visiting', [['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')]]);
+        vBox.className = vh ? '' : 'hidden'; vBox.innerHTML = vh;
+      }
       if (isGossipModeActive) {
         toggle('dossier-sheet-funding', false);
         toggle('dossier-sheet-visit', false);
@@ -11872,17 +11876,10 @@ return maplibregl$1;
           <!--  3D BUILDING & ARCHITECTURAL FLOOR WORKSPACE INSPECTOR -->
           <!-- Funding and visiting: only what the record states -->
           ${fundingHtml(inst)}
-          ${(!isClean && (inst.opening_hours || inst.admission_fee || inst.admission_policy)) ? `
-          <div class="py-3 rule-b" role="region" aria-label="Visiting">
-            <div class="visit-layout">
-              <span>Visiting</span>
-              <div class="visit-content">
-                ${inst.opening_hours ? `<div class="t-lead visit-details">${escapeHtml(inst.opening_hours)}</div>` : ''}
-                ${(inst.admission_fee || inst.admission_policy) ? `<div class="t-lead visit-details">${escapeHtml(inst.admission_fee || inst.admission_policy)}</div>` : ''}
-              </div>
-            </div>
-          </div>
-          ` : ''}
+          ${!isClean ? factsTableHtml('Visiting', [
+            ['Opening hours', escapeHtml(inst.opening_hours || '')],
+            ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')],
+          ], ' role="region" aria-label="Visiting"') : ''}
 
           <!-- 3.  ARTISTIC CRITIQUES & INSTITUTIONAL HISTORY (Uncontained Rich Research Section) -->
           ${vcs.length > 0 && vc ? `
@@ -11945,45 +11942,16 @@ return maplibregl$1;
           ${sourcesHtml(inst, true)}${isGossipModeActive ? '' : researchContextHtml(inst)}
 
 
-          ${isClean ? `
-            <div class="pt-1">
-              <div class="flex flex-col gap-0 visit-rows">
-                ${inst.opening_hours ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Hours</div>
-                  <div class="">${escapeHtml(inst.opening_hours)}</div>
-                </div>` : ''}
-                ${inst.admission_fee ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Admission</div>
-                  <div class="">${escapeHtml(inst.admission_fee)}</div>
-                </div>` : ''}
-                <div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Address</div>
-                  <div class="">${escapeHtml(inst.address || inst.location)}</div>
-                  ${inst.neighborhood ? `<div class="meta mt-0_5">${escapeHtml(inst.neighborhood)}</div>` : ''}
-                </div>
-                ${inst.visit_duration ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Suggested Duration</div>
-                  <div class="">${escapeHtml(inst.visit_duration)}</div>
-                </div>` : ''}
-                ${inst.transit_tips ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Getting There</div>
-                  <div class="">${escapeHtml(inst.transit_tips)}</div>
-                </div>` : ''}
-                ${inst.highlight ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Highlight</div>
-                  <div class="">${escapeHtml(inst.highlight)}</div>
-                </div>` : ''}
-                ${inst.accessibility ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Accessibility</div>
-                  <div class="">${escapeHtml(inst.accessibility)}</div>
-                </div>` : ''}
-                ${inst.amenities ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Amenities</div>
-                  <div class="">${escapeHtml((inst.amenities).toString().split(',').map(x => x.trim()).filter(Boolean).join(', '))}</div>
-                </div>` : ''}
-              </div>
-            </div>
-          ` : ''}
+          ${isClean ? factsTableHtml('Visiting', [
+            ['Opening hours', escapeHtml(inst.opening_hours || '')],
+            ['Admission', escapeHtml(inst.admission_fee || '')],
+            ['Address', escapeHtml(inst.address || inst.location || '') + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '')],
+            ['Suggested duration', escapeHtml(inst.visit_duration || '')],
+            ['Getting there', escapeHtml(inst.transit_tips || '')],
+            ['Highlight', escapeHtml(inst.highlight || '')],
+            ['Accessibility', escapeHtml(inst.accessibility || '')],
+            ['Amenities', escapeHtml(inst.amenities ? inst.amenities.toString().split(',').map(x => x.trim()).filter(Boolean).join(', ') : '')],
+          ], ' role="region" aria-label="Visiting"') : ''}
 
         </div>
         <!-- /drawerAuditView -->
@@ -18388,8 +18356,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=195"></script>
-<script src="assets/layers.js?v=195"></script>
-<script src="assets/bubbles.js?v=195" defer></script>
+<script src="assets/typeset.js?v=196"></script>
+<script src="assets/layers.js?v=196"></script>
+<script src="assets/bubbles.js?v=196" defer></script>
 </body>
 </html>
