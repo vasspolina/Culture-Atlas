@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=191">
-  <script src="assets/config.js?v=192"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=198">
+  <script src="assets/config.js?v=198"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -589,7 +589,7 @@ return maplibregl$1;
     </div>
 
     <!-- RESIZABLE SPLITTER (Desktop: Vertical Drag / Mobile: Hidden) -->
-    <div id="globeSplitter" class="hidden md-flex relative md-w-_6px md-h-full rule-x items-center justify-center z-20 shrink-0" title="Drag to change the width, double-click to reset">
+    <div id="globeSplitter" class="hidden md-flex relative md-w-_6px md-h-full rule-x items-center justify-center z-20 shrink-0" title="Drag to change the width, double-click (or Home) to reset">
       <div class="w-10 md-w-_2px h-_2px md-h-8"></div>
     </div>
 
@@ -7141,7 +7141,7 @@ return maplibregl$1;
             dossierCol.classList.remove('hidden');
             dossierCol.classList.add('flex');
             dossierCol.style.width = '100%';
-            dossierCol.style.minWidth = '350px';
+            dossierCol.style.minWidth = '0';
             dossierCol.style.display = 'flex';
           }
           if (chatCol) {
@@ -7159,7 +7159,7 @@ return maplibregl$1;
             chatCol.classList.remove('hidden');
             chatCol.classList.add('flex');
             chatCol.style.width = '100%';
-            chatCol.style.minWidth = '350px';
+            chatCol.style.minWidth = '0';   // the chat reflows to a narrow panel; a 350px floor clipped it
             chatCol.style.display = 'flex';
           }
           if (dossierCol) {
@@ -9621,9 +9621,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v191';
+      const ATLAS_RELEASE = 'culture-atlas-v198';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=191').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=198').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15089,7 +15089,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
     });
 
+    let wasDesktopLayout = window.innerWidth >= 768;
     window.addEventListener('resize', () => {
+      const desktopNow = window.innerWidth >= 768;
+      const crossed = desktopNow !== wasDesktopLayout;
+      wasDesktopLayout = desktopNow;
       if (window.innerWidth >= 768) {
         const globe = document.getElementById('globeViewport');
         const workView = document.getElementById('workViewContainer');
@@ -15107,6 +15111,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (splitter) {
           splitter.style.display = '';
         }
+        // Coming up from a phone width the Details and Chat columns were left as the phone layout had them (both shown, the chat
+        // squeezed to nothing beside Details): the tab that is on is set again for the desktop layout.
+        if (crossed && typeof setWorkspaceTab === 'function') setWorkspaceTab(currentWorkspaceTab);
         resizeCanvas();
         if (cityVectorMap && isCityStreetViewActive) cityVectorMap.resize();
       } else {
@@ -16304,27 +16311,54 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     if (splitter && globeVp && mainApp) {
       const KEY = 'culture-atlas-split';
-      const GLOBE_MIN = 140, COLUMN_MIN = 220;
+      // The record/chat column keeps 320px while the screen has room for it (40% of a 768px tablet), so its text always has a line to fill;
+      // the globe keeps 140px. Both limits are measured against the width there is now, never against the width the split was dragged at.
+      const GLOBE_MIN = 140, FRAC_MIN = 0.25, FRAC_MAX = 0.75;
+      const columnMin = (w) => Math.min(320, Math.round(w * 0.4));
       const horizontal = () => window.innerWidth >= 768;
       const place = (px) => {
         const rect = mainApp.getBoundingClientRect();
         if (horizontal()) {
-          const v = Math.max(GLOBE_MIN, Math.min(rect.width - COLUMN_MIN, px));
+          // neither side takes less than a quarter of the width, so the column stays in proportion to the window on a 2000px screen too
+          const v = Math.max(GLOBE_MIN, FRAC_MIN * rect.width, Math.min(rect.width - columnMin(rect.width), FRAC_MAX * rect.width, px));
           globeVp.style.width = v + 'px'; globeVp.style.height = '100%'; globeVp.style.flex = 'none';
           return v / rect.width;
         }
-        const v = Math.max(130, Math.min(rect.height - 180, px));
+        const v = Math.max(130, FRAC_MIN * rect.height, Math.min(rect.height - 180, FRAC_MAX * rect.height, px));
         globeVp.style.height = v + 'px'; globeVp.style.width = '100%'; globeVp.style.flex = 'none';
         return v / rect.height;
       };
       const slot = () => KEY + (horizontal() ? '-x' : '-y');
-      const save = (frac) => { try { localStorage.setItem(slot(), String(frac)); } catch (e) {} };
-      const restore = () => {
+      // The split is kept as a share of the container, not as pixels, and is also held in memory so that it still follows the
+      // window when storage is blocked. A stored value outside 25 to 75 percent (or not a number) is dropped, not trusted.
+      const memory = { '-x': NaN, '-y': NaN };
+      const save = (frac) => { memory[horizontal() ? '-x' : '-y'] = frac; try { localStorage.setItem(slot(), String(frac)); } catch (e) {} };
+      const readFrac = () => {
         let frac = NaN;
         try { frac = parseFloat(localStorage.getItem(slot())); } catch (e) {}
-        if (!(frac > 0 && frac < 1)) return;
+        if (!(frac >= FRAC_MIN && frac <= FRAC_MAX)) {
+          if (!Number.isNaN(frac)) { try { localStorage.removeItem(slot()); } catch (e) {} }
+          frac = memory[horizontal() ? '-x' : '-y'];
+        }
+        return frac >= FRAC_MIN && frac <= FRAC_MAX ? frac : NaN;
+      };
+      const defaultSplit = () => {
+        if (horizontal()) {
+          // No inline flex: the globe's own flex-1 class shares the row with the column. (The old reset set flex 1 1 50% here, and the
+          // globe then grew into three quarters of the row, which is not the default.)
+          globeVp.style.width = window.innerWidth >= 1200 ? '52%' : '48%'; globeVp.style.height = '100%'; globeVp.style.flex = '';
+        } else {
+          globeVp.style.height = '50%'; globeVp.style.width = '100%'; globeVp.style.flex = '';
+        }
+      };
+      // Runs on load and whenever the container changes size (window resize, zoom, rotating a tablet): the split is worked out again
+      // from the share and the size there is now, and a pixel size left over from the other orientation is removed.
+      const restore = () => {
         const rect = mainApp.getBoundingClientRect();
-        place(frac * (horizontal() ? rect.width : rect.height));
+        if (!rect.width || !rect.height) return;
+        const frac = readFrac();
+        // The Minimize and Expand buttons own the size while they are on; with nothing kept the layout's own default stands.
+        if (frac > 0 && !isGlobeMinimized && !isGlobeExpanded) place(frac * (horizontal() ? rect.width : rect.height));
         resizeCanvas();
       };
       splitter.setAttribute('role', 'separator');
@@ -16359,6 +16393,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       splitter.addEventListener('pointercancel', stop);
 
       splitter.addEventListener('keydown', (e) => {
+        if (e.key === 'Home' || e.key === 'Escape') { resetSplit(); e.preventDefault(); return; }
         const keys = horizontal() ? { ArrowLeft: -1, ArrowRight: 1 } : { ArrowUp: -1, ArrowDown: 1 };
         if (!(e.key in keys)) return;
         const g = globeVp.getBoundingClientRect();
@@ -16367,19 +16402,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         e.preventDefault();
       });
 
-      // Double-click resets to the default split
-      splitter.addEventListener('dblclick', () => {
+      // Double-click, Home or Escape on the handle puts the split back to the default and forgets the kept one
+      const resetSplit = () => {
+        memory['-x'] = memory['-y'] = NaN;
         try { localStorage.removeItem(KEY + '-x'); localStorage.removeItem(KEY + '-y'); } catch (e) {}
-        if (horizontal()) {
-          globeVp.style.width = '50%'; globeVp.style.height = '100%'; globeVp.style.flex = '1 1 50%';
-        } else {
-          globeVp.style.height = '50%'; globeVp.style.width = '100%'; globeVp.style.flex = '1 1 50%';
-        }
+        defaultSplit();
         resizeCanvas();
-      });
+      };
+      splitter.addEventListener('dblclick', resetSplit);
 
       restore();
       window.addEventListener('resize', restore);
+      // A resize event is not the only way the container changes size (browser zoom, a tablet turning, a side panel opening),
+      // so the split is also worked out again from what the container measures now.
+      if (typeof ResizeObserver === 'function') new ResizeObserver(restore).observe(mainApp);
     }
 
     window.addEventListener('resize', () => {
@@ -16972,7 +17008,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return out;
     }
 
-    const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}">${escapeHtml(noBreakHyphens(x.q))}</button>`;
+    const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}"><span class="sp-text">${escapeHtml(noBreakHyphens(x.q))}</span></button>`;
     function renderStarterPrompts() {
       let list = [];
       try { list = questionCloud(); } catch (e) { list = []; }
@@ -18389,7 +18425,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=191"></script>
-<script src="assets/bubbles.js?v=191" defer></script>
+<script src="assets/layers.js?v=198"></script>
+<script src="assets/bubbles.js?v=198" defer></script>
 </body>
 </html>
