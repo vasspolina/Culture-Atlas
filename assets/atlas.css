@@ -1494,3 +1494,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #hqPanel.is-details :is(dt,.hq-note,.hq-s){font-size:15px}
 #hqPanel.is-details .hq-link{padding-left:0;padding-right:0}
 #hqPanel.is-details .hq-ask{margin-left:18px}
+
+/* The critique's quotation, its source line and its questions fill the panel (user's instruction, 19 Oct 2026): the 34em and 44em caps are gone,
+   so the words reflow to the column, 18px from each edge, as the rest of the Details text does. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote blockquote,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote figcaption,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-asks{max-width:none}
