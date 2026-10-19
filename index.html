@@ -14394,13 +14394,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Follow-up chips only offer what the space in view has on record: funding, a flag, opening hours.
       const followFor = () => {
         const t = (typeof target !== 'undefined' && target) || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
-        if (!t) return ['Which spaces are flagged?', 'Find cultural spaces in London'];
+        if (!t) return freshChips(2);
         const out = [];
         if (t.funding || t.funder_links) out.push('Who funds this museum?');
         if (t.why_flagged || t.tier === 'B') out.push('What is flagged here?');
         if (t.grade) out.push('What is its funding rating?');
         if (t.opening_hours) out.push('Opening hours');
-        out.push(t.city ? `Find cultural spaces in ${t.city}` : 'Find cultural spaces in London');
+        if (t.city) out.push(`Find cultural spaces in ${t.city}`);
         return out;
       };
       // gossip: the whole reply is reported, unverified items (a list of flagged spaces); a plain record, a city list or a status line is not.
@@ -14478,7 +14478,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (asks(/\b(what (do )?(employees|staff|workers) (say|report|think)|employee (reviews?|accounts?)|staff (reviews?|accounts?)|glassdoor|kununu|working conditions|work(ing)? (there|here|at))\b/)) {
         const own = target ? ((target.gossip_data || {}).accounts || []).length : 0;
         const note = target ? `<p>${formatInstLink(target)} carries ${own ? `${own} such ${own === 1 ? 'account' : 'accounts'}, shown in Gossip mode` : 'no such account'}.</p>` : '';
-        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, ['What do critics say?', 'How are spaces graded?', 'Find cultural spaces in London']);
+        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])]);
         return;
       }
       // The critical frames (data/research_attach/institutional_critiques.json): quotations with author, title, publication and date, one frame per museum type.
@@ -16989,6 +16989,34 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return out;
     }
 
+    // The follow-up chips under an answer when no space is in view (user's instruction, 19 Oct 2026: two chips, always different, specific
+    // to the research). They are drawn from the same pool as the empty-chat page, so each names a flag, a funder, a grade or a place the
+    // records hold and each is a question the offline answers answer. Never a question already asked in this chat, never one shown in the
+    // last pair, and the two never open the same way (two "Why is ..." or two "Which spaces in ...").
+    const lastChips = [];
+    function freshChips(n = 2, avoid = []) {
+      let pool = [];
+      try { pool = questionCloud(); } catch (e) { pool = []; }
+      if (!pool.length) { try { pool = starterPromptList().map(q => ({ q, tier: 'U', inst: null })); } catch (e) { pool = []; } }
+      const norm = (s) => String(s).toLowerCase().replace(/[?\s]+$/, '').trim();
+      const asked = new Set(((typeof curatorContext !== 'undefined' && curatorContext.history) || []).filter(m => m.role === 'user').map(m => norm(m.content)));
+      const shape = (q) => norm(q).split(/\s+/).slice(0, 2).join(' ');
+      const out = [];
+      const take = (strict) => {
+        for (const x of shuffledList(pool)) {
+          if (out.length >= n) return;
+          const k = norm(x.q);
+          if (out.some(o => norm(o) === k) || asked.has(k) || avoid.some(a => norm(a) === k)) continue;
+          if (strict && (lastChips.some(l => norm(l) === k) || out.some(o => shape(o) === shape(x.q)))) continue;
+          if (x.inst && !resolvesTo(x.q, x.inst)) continue;
+          out.push(x.q);
+        }
+      };
+      take(true);
+      if (out.length < n) take(false);
+      lastChips.splice(0, lastChips.length, ...out);
+      return out;
+    }
     const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}"><span class="sp-text">${escapeHtml(noBreakHyphens(x.q))}</span></button>`;
     function renderStarterPrompts() {
       let list = [];
