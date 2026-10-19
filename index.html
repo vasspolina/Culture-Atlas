@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=196">
-  <script src="assets/config.js?v=196"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=197">
+  <script src="assets/config.js?v=197"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9618,9 +9618,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v196';
+      const ATLAS_RELEASE = 'culture-atlas-v197';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=196').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=197').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11149,8 +11149,8 @@ return maplibregl$1;
       return rows.length ? `<div class="py-3" role="region" aria-label="Research on this space"><h3 class="kicker">Research on this space</h3>${rows.join('')}</div>` : '';
     }
     // A critical frame's quotation, word for word, with who wrote it and where it was published (data/research_attach/institutional_critiques.json).
-    // The quotation is an inserted passage (Hochuli p.52, fig 70): the text's own size, indented as much as a paragraph
-    // is, with its source in small print directly under it. It is typeset whole, so the outer marks are single and any
+    // The quotation is an inserted passage (Hochuli p.52, fig 70): the text's own size, not indented, set off by the space
+    // around it, with its source in small print directly under it. It is typeset whole, so the outer marks are single and any
     // quotation inside it double (p.37); the opening mark hangs in the indent and the words, not the mark, align.
     function quotedText(text) {
       const t = '\u201c' + String(text || '').trim() + '\u201d';
@@ -18356,8 +18356,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=196"></script>
-<script src="assets/layers.js?v=196"></script>
-<script src="assets/bubbles.js?v=196" defer></script>
+<script src="assets/typeset.js?v=197"></script>
+<script src="assets/layers.js?v=197"></script>
+<script src="assets/bubbles.js?v=197" defer></script>
 </body>
 </html>

@@ -944,13 +944,14 @@ abbr[title]{text-decoration:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) a.domain{white-space:nowrap;hyphens:manual;-webkit-hyphens:manual}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) a{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:break-word}
 /* The critique: a small-print label line (what it is, which of how many), its title at the text size, then the parts
-   one line apart. The quotation is an inserted passage: the text's size, indented one em like a paragraph, its opening
-   mark hung into the indent, its source in small print directly under it. */
+   one line apart. The quotation is set off by the space around it, not by an indent (user's instruction, 19 Oct 2026):
+   the text's size, flush with the column, its opening mark hung into the margin so the words align with the text
+   above, its source in small print directly under it. */
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-section,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-section>*{min-width:0;max-width:100%}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-head .kicker{margin:0;font-size:14px;line-height:1.3}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-title{font:400 18px/1.3 var(--sans);letter-spacing:0;margin:0;text-wrap:balance}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-section .meta{font-size:14px;line-height:1.3}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote{margin:23.4px 0 0;padding:0 0 0 1em;border:0;min-width:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote{margin:23.4px 0 0;padding:0;border:0;min-width:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote blockquote{position:relative;margin:0;padding:0;font:400 18px/1.3 var(--sans);letter-spacing:0;text-indent:0;max-width:34em}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote .quote-hang{position:absolute;right:100%;top:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote figcaption{margin:0;overflow-wrap:break-word;max-width:44em}
