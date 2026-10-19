@@ -37,7 +37,7 @@ input,textarea,select{outline:0}
 ::placeholder{color:var(--ink);opacity:.55}
 :focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
 .meta,code,pre,kbd{font-family:var(--sans);font-size:14px;letter-spacing:.01em}
-.t-title{font-family:var(--display);font-weight:700;font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:0}
+.t-title{font-family:var(--sans);font-weight:400;font-size:28px;line-height:1.1;letter-spacing:0}
 .t-lead{font-size:18px;line-height:1.25}
 .t-strong{font-weight:400}
 .t-em{font-style:normal}
@@ -177,6 +177,12 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 /* The name is a flex item, so it would take the paragraph's first-line indent; it sits against the icon instead. */
 .source-citation-pill span{text-indent:0}
 .inst-link,.city-link,.dossier-link{text-decoration:underline;cursor:pointer}
+/* Bold and capitals belong to one thing only: the name of a space (user's instruction, 19 Oct 2026). Everything else is in
+   the roman, in normal case, and a heading is told by its size and the space around it (Hochuli p.44: capitals and bold
+   are restless in running text). In running text a name keeps the text's leading and is set a step smaller, as capitals
+   are (p.44, fig 54), so it does not shout over the line. */
+.inst-link,.space-name,.inst-pin-label-name{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+:is(.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#floatingCard) .inst-link,.record-popup-line .space-name{font-size:.94em;line-height:inherit}
 .inst-link:hover,.city-link:hover,.dossier-link:hover{background:var(--yellow)}
 
 /* ---- chat ---- */
@@ -184,7 +190,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #curatorScrollArea{padding:16px;align-items:stretch}
 #curatorScrollContent{align-items:stretch;max-width:760px;margin:0 auto 0 0}
 #curatorHeroGreeting{align-items:flex-start;text-align:left;padding:0;display:flex;flex-direction:column}
-#curatorHeroGreeting h1{font:700 clamp(40px,5.2vw,76px)/.92 var(--display-xl);text-transform:uppercase;letter-spacing:0;text-align:left;margin:0 0 20px}
+#curatorHeroGreeting h1{font:400 clamp(40px,5.2vw,76px)/1 var(--sans);letter-spacing:-.01em;text-align:left;margin:0 0 20px}
 #curatorHeroGreeting h1 .blk{display:inline-block;width:.42em;height:.86em;background:var(--ink);vertical-align:-.06em;margin:0 .06em}
 #curatorHeroGreeting h1 .lbl{display:inline-block;font:400 clamp(14px,1.1vw,17px)/1.1 var(--sans);text-transform:none;letter-spacing:0;padding:.5em .6em;vertical-align:baseline;margin:0 .15em;background:var(--peri)}
 #curatorHeroGreeting h1 .lbl.m{background:var(--magenta)}
@@ -203,7 +209,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #curatorMessages{max-width:100%}
 .curator-message-wrap{margin:20px 0;font:400 15px/1.3 var(--sans)}
 .curator-message-wrap p,.curator-message-wrap li{font-size:15px;line-height:1.3;margin:0 0 .8em}
-.curator-message-wrap h1,.curator-message-wrap h2,.curator-message-wrap h3,.curator-section-hdr{font:700 22px/1 var(--display);text-transform:uppercase;letter-spacing:0;margin:1.2em 0 .5em}
+.curator-message-wrap h1,.curator-message-wrap h2,.curator-message-wrap h3,.curator-section-hdr{font:400 24px/1.1 var(--sans);letter-spacing:0;margin:1.2em 0 .5em}
 .curator-message-wrap .meta,.curator-message-wrap button{font-family:var(--sans)}
 .curator-message-wrap a{text-decoration:underline}
 .curator-bullet-list,.curator-num-list{padding-left:1.2em}
@@ -243,7 +249,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 
 /* ---- modals and the full inspector ---- */
 [id$="Modal"]{background:var(--paper)!important;color:var(--ink)}
-[id$="Modal"] h1,[id$="Modal"] h2,[id$="Modal"] h3{font:700 32px/1 var(--display);text-transform:uppercase;letter-spacing:0}
+[id$="Modal"] h1,[id$="Modal"] h2,[id$="Modal"] h3{font:400 32px/1.05 var(--sans);letter-spacing:0}
 [id$="Modal"] button,[id$="Modal"] select,[id$="Modal"] input,[id$="Modal"] textarea{font:400 15px/1.2 var(--sans)}
 [id$="Modal"] input,[id$="Modal"] textarea,[id$="Modal"] select{border-bottom:1px solid var(--ink);padding:8px 0;width:100%}
 .modal-content{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
@@ -303,7 +309,7 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
   .maplibregl-ctrl-top-right{margin-top:64px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-.curator-hero-title,#curatorHeroGreeting h1{font:700 clamp(40px,5.2vw,76px)/.92 var(--display-xl);text-transform:uppercase;letter-spacing:0;margin:0 0 16px}
+.curator-hero-title,#curatorHeroGreeting h1{font:400 clamp(40px,5.2vw,76px)/1 var(--sans);letter-spacing:-.01em;margin:0 0 16px}
 .curator-hero-title .blk,#curatorDrawerGreeting .blk{display:inline-block;width:.42em;height:.86em;background:var(--ink);vertical-align:-.06em;margin:0 .06em}
 .curator-hero-title .lbl{display:inline-block;font:400 14px/1.1 var(--sans);text-transform:none;letter-spacing:0;padding:.5em .6em;vertical-align:baseline;margin:0 .15em;background:var(--peri)}
 .curator-hero-title .lbl.m{background:var(--magenta)}
@@ -737,7 +743,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-actions button:hover{color:#fff}
 #layersPanel .layers-section{padding-top:8px}
 #layersPanel .layers-section+.layers-section{margin-top:4px;border-top:1px solid #292929}
-#layersPanel .layers-section-title{margin:0 0 7px;color:#a3a3a3;font:500 10px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+#layersPanel .layers-section-title{margin:0 0 7px;color:#a3a3a3;font:400 14px/1.2 var(--sans);letter-spacing:.01em}
 #layersPanel .layers-list{display:flex;flex-direction:column;gap:2px}
 #layersPanel label{display:flex;align-items:center;gap:8px;min-height:28px;padding:4px 6px;border-radius:4px;color:#e5e5e5;font:400 12px/1.25 var(--sans);cursor:pointer}
 #layersPanel label:hover{background:rgba(64,64,64,.55)}
@@ -759,7 +765,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .shape-star{clip-path:polygon(50% 0,62% 35%,100% 35%,69% 57%,81% 95%,50% 72%,19% 95%,31% 57%,0 35%,38% 35%)}
 #layersPanel .layers-grade-key{grid-template-columns:1fr}
 #layersPanel .layers-grade-key>span{display:grid;grid-template-columns:10px 52px minmax(0,1fr);gap:7px;align-items:start}
-#layersPanel .layers-grade-key strong{color:#f5f5f5;font-weight:600}
+#layersPanel .layers-grade-key strong{color:#f5f5f5;font-weight:400}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}
 
@@ -811,10 +817,10 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 
 /* Chat landing: one centred column of large bold capitals, the title in ink and each starter question in its own colour. */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting){display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;padding:48px 24px;margin:0;background:transparent;color:var(--ink);text-align:center;min-height:100%}
-:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font:700 clamp(28px,3vw,44px)/1.05 var(--display);text-transform:uppercase;letter-spacing:0;text-align:center;max-width:16ch;margin:0;color:var(--ink)}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font:400 clamp(28px,3vw,44px)/1.1 var(--sans);letter-spacing:0;text-align:center;max-width:16ch;margin:0;color:var(--ink)}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting)>p,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-label{display:none}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex;flex-direction:column;align-items:center;gap:40px;width:100%;max-width:none;border:0}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:block;width:auto;max-width:18ch;min-height:0;margin:0;padding:0;background:transparent;border:0;font:700 clamp(28px,3vw,44px)/1.05 var(--display);text-transform:uppercase;letter-spacing:0;text-align:center;color:var(--sp,var(--ink))}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:block;width:auto;max-width:18ch;min-height:0;margin:0;padding:0;background:transparent;border:0;font:400 clamp(28px,3vw,44px)/1.1 var(--sans);letter-spacing:0;text-align:center;color:var(--sp,var(--ink))}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#0b7a63}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#8a6200}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#b0206c}
@@ -882,7 +888,7 @@ button,summary{cursor:pointer}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#f1c21b}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#ffafd2}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#e5b87d}
-#workInputCard #chatShareBtn{background:transparent;color:#1d7a3a;padding:8px 0;font-family:var(--display);font-weight:700;text-transform:uppercase}
+#workInputCard #chatShareBtn{background:transparent;color:#1d7a3a;padding:8px 0;font-family:var(--sans);font-weight:400}
 :root[data-theme="dark"] #workInputCard #chatShareBtn{color:#6fdc8c}
 #workInputCard #chatShareBtn:hover{background:transparent!important;color:var(--ink)!important;text-decoration:underline}
 /* Capitals 10% larger. */
@@ -929,9 +935,11 @@ sub{font-variant-position:sub}
 abbr[title]{text-decoration:none}
 
 /* Paragraphs (p.47, p.51): an indent, not a blank line, marks where a new paragraph begins. The first paragraph
-   of a run is flush; each one that follows is indented one em and sits directly under the last. */
-.curator-message-wrap p+p:not(.no-indent),#desktopDossierRecordBody p+p:not(.no-indent),#detailBody p+p:not(.no-indent),#dossier-sheet-scrollable-body p+p:not(.no-indent),#curatorHeroGreeting p+p:not(.no-indent),.chat-info p+p:not(.no-indent){text-indent:1em;margin-top:0}
-.curator-message-wrap p:has(+ p),#desktopDossierRecordBody p:has(+ p),#detailBody p:has(+ p),#dossier-sheet-scrollable-body p:has(+ p),#curatorHeroGreeting p:has(+ p),.chat-info p:has(+ p){margin-bottom:0}
+   of a run is flush; each one that follows is indented one em and sits directly under the last. A line marked
+   .no-indent (a source list, a registry link, a credit) is not a paragraph of the prose: it keeps its space, and the
+   paragraph after it starts flush, as after any break. */
+.curator-message-wrap p:not(.no-indent)+p:not(.no-indent),#desktopDossierRecordBody p:not(.no-indent)+p:not(.no-indent),#detailBody p:not(.no-indent)+p:not(.no-indent),#dossier-sheet-scrollable-body p:not(.no-indent)+p:not(.no-indent),#curatorHeroGreeting p:not(.no-indent)+p:not(.no-indent),.chat-info p:not(.no-indent)+p:not(.no-indent){text-indent:1em;margin-top:0}
+.curator-message-wrap p:not(.no-indent):has(+ p:not(.no-indent)),#desktopDossierRecordBody p:not(.no-indent):has(+ p:not(.no-indent)),#detailBody p:not(.no-indent):has(+ p:not(.no-indent)),#dossier-sheet-scrollable-body p:not(.no-indent):has(+ p:not(.no-indent)),#curatorHeroGreeting p:not(.no-indent):has(+ p:not(.no-indent)),.chat-info p:not(.no-indent):has(+ p:not(.no-indent)){margin-bottom:0}
 
 /* Light mode: the dark mode hues as plain coloured text, deepened until each clears 3:1 on white at this size. */
 :root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#10957f}
@@ -1003,9 +1011,9 @@ abbr[title]{text-decoration:none}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) hr{display:none}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(11.5em,1fr));gap:28px 28px;margin-top:24px}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div{padding:0;border:0}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>.meta{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none;margin:0 0 3px}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>.meta{font:400 14px/1.25 var(--sans);letter-spacing:.01em;text-transform:none;margin:0 0 3px}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows>div>div:last-child{font-size:14px;line-height:1.25;letter-spacing:.02em;max-width:none}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .py-3.rule-b>.kicker{font:700 14px/1.25 var(--display);letter-spacing:.02em;text-transform:none}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .py-3.rule-b>.kicker{font:400 14px/1.25 var(--sans);letter-spacing:.01em;text-transform:none}
 @media (max-width:640px){:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .visit-rows{grid-template-columns:minmax(0,1fr)}}
 
 /* ---- body text is one size everywhere: 18px on 1.3 (the size and leading of the chat answers) ----
@@ -1050,7 +1058,7 @@ body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet
 
 /* Zoom and compass: two square buttons, the plus and minus set from the font. Light: white squares, bold signs. Dark: outlined, regular signs. */
 #zoomControls{top:76px;right:20px;gap:8px;background:none;border:0}
-#zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:36px;height:36px;padding:0;background:#fff;color:#000;border:1px solid #000;font:700 26px/1 var(--display);display:flex;align-items:center;justify-content:center}
+#zoomControls button,#zoomControls #zoomInBtn,#zoomControls #zoomOutBtn{width:36px;height:36px;padding:0;background:#fff;color:#000;border:1px solid #000;font:400 26px/1 var(--sans);display:flex;align-items:center;justify-content:center}
 #zoomControls button+button{border-top:1px solid #000}
 #zoomControls button:hover{background:#000;color:#fff}
 :root[data-theme="dark"] #zoomControls button,:root[data-theme="dark"] #zoomControls #zoomInBtn,:root[data-theme="dark"] #zoomControls #zoomOutBtn{background:transparent;color:#f4f4f4;border:1px solid #f4f4f4;font:400 26px/1 var(--sans)}
