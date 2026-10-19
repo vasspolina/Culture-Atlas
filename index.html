@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=204">
-  <script src="assets/config.js?v=204"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=205">
+  <script src="assets/config.js?v=205"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9729,9 +9729,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v204';
+      const ATLAS_RELEASE = 'culture-atlas-v205';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=204').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=205').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9788,6 +9788,7 @@ return maplibregl$1;
     window.getIsCityStreetViewActive = () => isCityStreetViewActive;
     window.getSelectedInstitution = () => selectedInstitution;
     window.getMaxRadius = getMaxRadius;
+    window.atlasHoldGlobe = () => { isAutoSpinning = false; };   // a keyboard user on a mark: the globe stops turning under them
     window.getMinRadius = getMinRadius;
     let startRadius = baseRadius;
 
@@ -17699,6 +17700,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
+      // An office mark under the click opens its record; where marks and spaces crowd, a list offers each one.
+      if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.click(mx, my, clientX, clientY, visibleDots)) return;
+
       // PRIORITY 1: Check institution click across dots, text label badges, micro-cards, and proximity
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
       const resolvedClick = resolveGlobeTarget(mx, my);
@@ -17922,6 +17926,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           isHoveringCityExploreLink = false;
           return;
         }
+      }
+
+      // A funder office or person's office mark under the pointer (and no space's dot nearer): assets/hq-detail.js
+      if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.hover(mx, my, visibleDots)) {
+        canvas.style.cursor = 'pointer';
+        return;
       }
 
       // PRIORITY 1: Check institution hover across dots, text labels, micro-cards, and proximity
@@ -18629,8 +18639,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=204"></script>
-<script src="assets/layers.js?v=204"></script>
-<script src="assets/bubbles.js?v=204" defer></script>
+<script src="assets/typeset.js?v=205"></script>
+<script src="assets/layers.js?v=205"></script>
+<script src="assets/hq-detail.js?v=205"></script>
+<script src="assets/bubbles.js?v=205" defer></script>
 </body>
 </html>
