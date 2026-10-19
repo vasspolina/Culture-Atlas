@@ -15,8 +15,8 @@
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=194">
-  <script src="assets/config.js?v=194"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=197">
+  <script src="assets/config.js?v=197"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -386,13 +386,7 @@ return maplibregl$1;
               <span class="kicker block">Funding</span>
               <p class="t-lead" id="dossier-sheet-funding-text"></p>
             </div>
-            <div id="dossier-sheet-visit" class="hidden py-2_5 rule-b space-y-1">
-              <span class="kicker">Visiting</span>
-              <div class="visit-content">
-                <p class="t-lead visit-details" id="dossier-sheet-hours"></p>
-                <p class="t-lead visit-details" id="dossier-sheet-access-text"></p>
-              </div>
-            </div>
+            <div id="dossier-sheet-visit" class="hidden"></div>
             <div id="dossier-sheet-record" class="hidden"></div>
             <div id="dossier-sheet-sources"></div>
             <div class="flex flex-row flex-wrap gap-2 pt-1">
@@ -7663,9 +7657,9 @@ return maplibregl$1;
       const e = escapeHtml, cats = xrayCategories(inst), wd = XRAY.wikidata[inst.id || inst.name];
       const site = xraySite(inst);
       const wdHtml = wd && wd.status === 'matched'
-        ? `<p class="no-indent"><a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}</p>` : '';
-      const siteHtml = site ? `<p class="no-indent"><a href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a></p>` : '';
-      const archivesHtml = wd && wd.status === 'matched' && wd.archivesAt.length ? `<p class="no-indent">Archives held at ${e(wd.archivesAt.join(', '))}, according to Wikidata.</p>` : '';
+        ? `<p class="no-indent source-note"><a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}</p>` : '';
+      const siteHtml = site ? `<p class="no-indent source-note"><a class="domain" href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a></p>` : '';
+      const archivesHtml = wd && wd.status === 'matched' && wd.archivesAt.length ? `<p class="no-indent source-note">Archives held at ${e(wd.archivesAt.join(', '))}, according to Wikidata.</p>` : '';
       const ph = wd && wd.status === 'matched' && wd.photo;
       const photoHtml = ph ? `<figure class="xray-photo"><img src="${e(ph.src)}" alt="${e(inst.name)}" loading="lazy"><figcaption class="no-indent">Photo: ${ph.artist ? e(ph.artist) + ', ' : ''}${ph.licenceUrl ? `<a href="${e(ph.licenceUrl)}" target="_blank" rel="noopener noreferrer">${e(ph.licence)}</a>` : e(ph.licence)}${ph.page ? `, <a href="${e(ph.page)}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>` : ', Wikimedia Commons'}</figcaption></figure>` : '';
       const body = photoHtml + `
@@ -7677,10 +7671,13 @@ return maplibregl$1;
       if (window.innerWidth >= 768 && inside && col) {
         const onRecord = new Set(['flag', 'funding', 'reported', 'accounts', 'sources']);
         const rest = cats.filter(c => !onRecord.has(c.key));
-        const restHtml = rest.map(c => `<div id="xray-cat-${c.key}" class="py-1_5 rule-t"><div class="no-indent xray-cat-title"><span class="swatch" style="background:${XRAY_COLOURS[c.key]}"></span>${e(c.label)}</div>${c.lines.slice(0, 8).map(l => `<p class="no-indent">${e(l)}</p>`).join('')}</div>`).join('');
-        const linksHtml = siteHtml || archivesHtml || wdHtml ? `<div class="py-1_5 rule-t">${siteHtml}${archivesHtml}${wdHtml}</div>` : '';
+        // In the record column each part is a table of facts like the record's own Visiting block, with no colour key
+        // (the map has its own); a line that reads "Label: value" puts the label in the left column.
+        const factRow = l => { const m = String(l).match(/^([^:]{2,28}):\s+(.+)$/); return m ? [m[1], e(m[2])] : ['', e(l)]; };
+        const restHtml = rest.map(c => factsTableHtml(c.label, c.lines.slice(0, 8).map(factRow), ` id="xray-cat-${c.key}"`)).join('');
+        const linksHtml = siteHtml || archivesHtml || wdHtml ? `<div class="py-3 rule-b xray-record-part">${siteHtml}${archivesHtml}${wdHtml}</div>` : '';
         if (!photoHtml && !restHtml && !linksHtml) { inside.innerHTML = ''; inside.classList.add('hidden'); panel.classList.add('hidden'); return; }
-        inside.innerHTML = `<h3 class="">Inside the building</h3>` + photoHtml + restHtml + linksHtml;
+        inside.innerHTML = photoHtml + restHtml + linksHtml;
         inside.classList.remove('hidden');
         panel.classList.add('hidden');
         if (col.classList.contains('hidden') && typeof toggleDesktopDossier === 'function') toggleDesktopDossier(true);
@@ -9621,9 +9618,9 @@ return maplibregl$1;
 
     if ('serviceWorker' in navigator) {
       // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v194';
+      const ATLAS_RELEASE = 'culture-atlas-v197';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=194').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=197').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11070,6 +11067,14 @@ return maplibregl$1;
     // A watch note goes into the Funding block when it is about money or a sponsor; otherwise it stays under the title.
     const MONEY_WORDS = /fund|sponsor|donor|grant|budget|money|[$€£¥]|\bM\b|million|fortune|foundation|trustee|board|gift|endow|subsid|revenue|income|tax|levy|corporate|bank|wealth|patron|financ|paid|pays|heir|family|partner|supporter|casino|oil|gas\b|energy|dropped|ended|removed|protest|boycott|campaign|sackler|\bBP\b/i;
     function watchIsAboutMoney(s) { return MONEY_WORDS.test(String(s || '')); }
+    // A block of facts set as a table (the user's reference, 19 Oct 2026): its name on a line, a rule, then one row per
+    // fact, the label in the left column and the value in the right, all at the text size, and a rule to close it.
+    // rows: [label, html] pairs; a row with no value is left out. Values are passed as HTML, already escaped.
+    function factsTableHtml(title, rows, attrs = '') {
+      const r = (rows || []).filter(x => x && x[1]);
+      if (!r.length) return '';
+      return `<section class="facts"${attrs}><h3 class="facts-title">${escapeHtml(title)}</h3><dl class="facts-table">${r.map(([k, v]) => `<dt>${escapeHtml(k)}</dt><dd>${v}</dd>`).join('')}</dl></section>`;
+    }
     function fundingHtml(inst) {
       if (!inst) return '';
       const e = escapeHtml;
@@ -11080,14 +11085,14 @@ return maplibregl$1;
       if (inst.watch && watchIsAboutMoney(inst.watch)) rows.push(`<p class="t-lead">${e(inst.watch)}</p>`);
       const seenHosts = new Set();
       const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).filter(u => { const h = host(u); if (seenHosts.has(h)) return false; seenHosts.add(h); return true; }).slice(0, 6);
-      if (urls.length) rows.push(`<p class="t-lead no-indent">Sources: ${urls.map(u => link(u, host(u))).join(', ')}.</p>`);
+      if (urls.length) rows.push(`<p class="t-lead no-indent source-note">Sources: ${urls.map(u => link(u, host(u)).replace('<a ', '<a class="domain" ').replace(' class=""', '')).join(', ')}.</p>`);
       const shared = (inst.funder_links || []).filter(f => f && f.funder);
       if (shared.length) rows.push(`<p class="t-lead">Cross-reference: ${shared.map(f => `${e(f.funder)} is listed at ${f.institutions} spaces in this atlas, including this one`).join('; ')}.</p>`);
       const reg = inst.audit_dossier_url, fil = inst.statutory_filings_url;
       const regLinks = [];
       if (reg) regLinks.push(`Registry: ${link(reg, registryName(reg))}`);
       if (fil && fil !== reg) regLinks.push(`Filings: ${link(fil, registryName(fil))}`);
-      if (regLinks.length) rows.push(`<p class="t-lead no-indent">${regLinks.join(' · ')}</p>`);
+      if (regLinks.length) rows.push(`<p class="t-lead no-indent source-note">${regLinks.join(' · ')}</p>`);
       if (!rows.length) return '';
       return `<div class="py-3 rule-b space-y-2" role="region" aria-label="Funding"><span class="kicker block">Funding</span>${rows.join('')}</div>`;
     }
@@ -11100,7 +11105,7 @@ return maplibregl$1;
       const links = urls.map(u => {
         let h = u;
         try { const x = new URL(u); h = x.hostname.replace(/^www\./, '') + (x.pathname.length > 1 ? x.pathname.replace(/\/$/, '').slice(0, 30) : ''); } catch (e) { /* keep the url */ }
-        return `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="">${escapeHtml(h)}</a>`;
+        return `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(h)}</a>`;
       });
       const v = inst.verification;
       const state = v && v.status === 'verified' ? `Checked on ${escapeHtml(v.checked_on)}: a source outside the museum names the funders this record cites.`
@@ -11122,13 +11127,13 @@ return maplibregl$1;
           try { h = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { h = u; }
           if (seenHosts.has(h)) return '';
           seenHosts.add(h);
-          return `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="">${escapeHtml(h)}</a>`;
+          return `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(h)}</a>`;
         }).filter(Boolean).slice(0, 3);
         fieldClauses.push(`${fieldLabel[k](f)} from ${fl.join(', ')}`);
       });
-      const foundHtml = fieldClauses.length ? `<p>${fieldClauses.join('. ')}.</p>` : '';
+      const foundHtml = fieldClauses.length ? `<p class="no-indent source-note">${fieldClauses.join('. ')}.</p>` : '';
       if (fieldsOnly) return foundHtml;
-      return `${links.length ? `<p class="no-indent">${links.join(', ')}${state ? '. ' + state : ''}</p>` : ''}${foundHtml}`;
+      return `${links.length ? `<p class="no-indent source-note">${links.join(', ')}${state ? '. ' + state : ''}</p>` : ''}${foundHtml}`;
     }
     // What studies say about this space, and the funders it shares with other institutions on the map.
     function researchContextHtml(inst) {
@@ -11144,17 +11149,25 @@ return maplibregl$1;
       return rows.length ? `<div class="py-3" role="region" aria-label="Research on this space"><h3 class="kicker">Research on this space</h3>${rows.join('')}</div>` : '';
     }
     // A critical frame's quotation, word for word, with who wrote it and where it was published (data/research_attach/institutional_critiques.json).
+    // The quotation is an inserted passage (Hochuli p.52, fig 70): the text's own size, not indented, set off by the space
+    // around it, with its source in small print directly under it. It is typeset whole, so the outer marks are single and any
+    // quotation inside it double (p.37); the opening mark hangs in the indent and the words, not the mark, align.
+    function quotedText(text) {
+      const t = '\u201c' + String(text || '').trim() + '\u201d';
+      return typeof window.typeset === 'function' ? window.typeset(t, 'en') : '\u2018' + String(text || '').trim().replace(/[\u201c\u201d"]/g, m => m === '\u201d' ? '\u201d' : '\u201c') + '\u2019';
+    }
     function critiqueQuoteHtml(q) {
       const e = escapeHtml;
       const where = [q.publication, q.date].filter(Boolean).map(e).join(', ');
-      return `<figure class="py-1 rule-t no-indent space-y-1_5">
+      const t = quotedText(q.text);
+      return `<figure class="critique-quote no-indent" data-no-typeset>
         ${q.context ? `<div class="meta">${e(q.context)}</div>` : ''}
-        <blockquote class="t-lead no-indent">\u201c${e(q.text)}\u201d</blockquote>
+        <blockquote class="no-indent"><span class="quote-hang">${e(t.charAt(0))}</span>${e(t.slice(1))}</blockquote>
         <figcaption class="meta">${e(q.author)}, <a href="${e(q.url)}" target="_blank" rel="noopener noreferrer" class="">${e(q.title)}</a>, ${where}.</figcaption>
       </figure>`;
     }
     function critiqueQuoteLine(q) {
-      return `\u201c${q.text}\u201d ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
+      return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
     }
     // Notes readers sent with Share information that the editor approved, fetched once from the submissions Worker.
     let APPROVED_READER_NOTES = [];
@@ -11213,7 +11226,7 @@ return maplibregl$1;
       };
       const externalIcon = '<svg class="external-link-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10M8 2h6v6M14 2 7 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>';
       const srcs = (sources) => (sources || []).map(sourceDetails).filter(Boolean).slice(0, 8)
-        .map(({ url, label }) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="">${escapeHtml(label)}${externalIcon}</a>`).join(', ');
+        .map(({ url, label }) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="${label === host(url) ? 'domain' : ''}">${escapeHtml(label)}${externalIcon}</a>`).join(', ');
       const p = (label, text) => text ? `<p class="t-lead">${label}${escapeHtml(text)}</p>` : '';
       const li = (label, text) => text ? `<li>${label}${escapeHtml(text)}</li>` : '';
       // One item is a sentence, not a list: a bullet is only for two or more.
@@ -11309,7 +11322,7 @@ return maplibregl$1;
       2: { letter: 'B', label: 'Funders listed; no funders flagged', col: '#2dd4bf' },
       3: { letter: 'C', label: 'Funder identified; details limited', col: '#facc15' },
       4: { letter: 'D', label: 'One flagged funder', col: '#fb923c' },
-      5: { letter: 'F', label: 'Multiple flagged funders, or a flagged funder with a disputed record', col: '#ef4444' },
+      5: { letter: 'F', label: 'Multiple flagged funders, or a flagged funder with a disputed record', col: '#ef4444', mark: '#f87171' },  // the mark is a lighter red, so black on it clears 7:1
     };
     window.atlasGrade = GRADE;
     // The letter a stored grade is named by, and the stored grade a letter (or an old number) names.
@@ -11326,7 +11339,7 @@ return maplibregl$1;
     function gradeLineHtml(inst) {
       if (inst.grade && GRADE[inst.grade]) {
         const g = GRADE[inst.grade];
-        return `<p class="no-indent grade-line"><span class="grade-mark" style="background:${g.col}">Funding transparency rating ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
+        return `<p class="no-indent grade-line"><span class="grade-mark" style="background:${g.mark || g.col}">Funding transparency rating ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
       }
       return inst.tier === 'U' ? `<p class="no-indent grade-line">Not graded: ${inst.funding ? 'a funder list is recorded, but the listed funders are not independently corroborated.' : 'no funder list is recorded.'}</p>` : '';
     }
@@ -11363,9 +11376,11 @@ return maplibregl$1;
       // The phone sheet shows the same Funding block as the desktop record.
       const fBox = document.getElementById('dossier-sheet-funding');
       if (fBox) { const fh = fundingHtml(inst); fBox.className = fh ? '' : 'hidden'; fBox.innerHTML = fh; }
-      text('dossier-sheet-hours', inst.opening_hours);
-      text('dossier-sheet-access-text', inst.admission_fee || inst.admission_policy);
-      toggle('dossier-sheet-visit', Boolean(inst.opening_hours || inst.admission_fee || inst.admission_policy));
+      const vBox = document.getElementById('dossier-sheet-visit');
+      if (vBox) {
+        const vh = factsTableHtml('Visiting', [['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')]]);
+        vBox.className = vh ? '' : 'hidden'; vBox.innerHTML = vh;
+      }
       if (isGossipModeActive) {
         toggle('dossier-sheet-funding', false);
         toggle('dossier-sheet-visit', false);
@@ -11861,35 +11876,24 @@ return maplibregl$1;
           <!--  3D BUILDING & ARCHITECTURAL FLOOR WORKSPACE INSPECTOR -->
           <!-- Funding and visiting: only what the record states -->
           ${fundingHtml(inst)}
-          ${(!isClean && (inst.opening_hours || inst.admission_fee || inst.admission_policy)) ? `
-          <div class="py-3 rule-b" role="region" aria-label="Visiting">
-            <div class="visit-layout">
-              <span>Visiting</span>
-              <div class="visit-content">
-                ${inst.opening_hours ? `<div class="t-lead visit-details">${escapeHtml(inst.opening_hours)}</div>` : ''}
-                ${(inst.admission_fee || inst.admission_policy) ? `<div class="t-lead visit-details">${escapeHtml(inst.admission_fee || inst.admission_policy)}</div>` : ''}
-              </div>
-            </div>
-          </div>
-          ` : ''}
+          ${!isClean ? factsTableHtml('Visiting', [
+            ['Opening hours', escapeHtml(inst.opening_hours || '')],
+            ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')],
+          ], ' role="region" aria-label="Visiting"') : ''}
 
           <!-- 3.  ARTISTIC CRITIQUES & INSTITUTIONAL HISTORY (Uncontained Rich Research Section) -->
           ${vcs.length > 0 && vc ? `
-            <div class="py-3 rule-b space-y-2">
-              <div class="pb-1 rule-b flex flex-col gap-0_5">
-                <div class="flex items-center gap-2">
-                  <span class="institution-category-pill">Artistic Critiques &amp; History</span>
-                  ${vc.kind === 'theory' ? '<span class="critical-lens-label">Theoretical / critical lens</span>' : ''}
-                </div>
-                ${vc.strategy ? `<div class="meta ${isClean ? 'is-good' : ''}t-strong">${escapeHtml(vc.strategy)}</div>` : ''}
-                ${vcs.length > 1 ? `<div class="meta">${vcIdx + 1} of ${vcs.length}</div>` : ''}
+            <div class="py-3 rule-b space-y-2 critique-section">
+              <div class="critique-head">
+                <span class="kicker block">Artistic critiques and history${vc.kind === 'theory' ? ', a critical lens' : ''}${vcs.length > 1 ? `, ${vcIdx + 1} of ${vcs.length}` : ''}</span>
+                ${vc.strategy ? `<h3 class="critique-title">${escapeHtml(vc.strategy)}</h3>` : ''}
               </div>
               <div class="space-y-2 pt-1">
                 <!-- Artist / Designer Credits. A critical frame (kind 'theory') has no artist, work or picture. -->
                 ${vc.kind === 'theory' ? '' : `<div class="space-y-0_5">
                   <div class="meta">Artist / Designer Credits</div>
                   <div class="t-strong t-lead">${escapeHtml(vc.artist_designer || vc.artist)}</div>
-                  <div class="${isClean ? 'is-good' : ''}">"${escapeHtml(vc.artwork_title || vc.artwork)}" (${escapeHtml(vc.year)})</div>
+                  <div>${escapeHtml(quotedText(vc.artwork_title || vc.artwork))} (${escapeHtml(vc.year)})</div>
                 </div>`}
 
                 <!-- Archival Thumbnail & Target / Medium -->
@@ -11897,7 +11901,7 @@ return maplibregl$1;
                   ${vc.kind === 'theory' ? '' : `<img src="${escapeHtml(vc.image || 'assets/visual_critique/haacke_shapolsky_guggenheim_thumb.jpg')}" alt="${escapeHtml(vc.artwork_title || 'Visual Critique')}" class="w-full max-w-xs h-36 object-cover shrink-0" />`}
                   <div class="space-y-1">
                     <div class="meta">${escapeHtml(vc.medium_format || '')}</div>
-                    <div class="meta"><strong class="">Target:</strong> ${escapeHtml(vc.target || vc.institution_target || inst.name)}</div>
+                    <div class="meta">Target: ${escapeHtml(vc.target || vc.institution_target || inst.name)}</div>
                     ${vc.credits ? `<div class="meta">${escapeHtml(vc.credits)}</div>` : ''}
                   </div>
                 </div>
@@ -11908,21 +11912,12 @@ return maplibregl$1;
                 </p>`}
 
                 ${vc.historical_impact ? `
-                  <div class="py-1 rule-t meta ${isClean ? 'is-good' : ''}">
-                    <strong class="${isClean ? 'is-good' : ''}block mb-0_5">${vc.kind === 'theory' ? 'What it asks of this record:' : 'Historical &amp; Policy Impact:'}</strong>
-                    ${escapeHtml(vc.historical_impact)}
-                  </div>
+                  <p class="critique-asks">${vc.kind === 'theory' ? 'What it asks of this record:' : 'Historical and policy impact:'} ${escapeHtml(vc.historical_impact)}</p>
                 ` : ''}
 
                 <!-- Citation and critique cycle -->
-                <div class="pt-2 rule-t flex flex-col gap-1 meta">
-                  ${vc.citation ? `<div>Cited in the research: <span class="">${escapeHtml(vc.citation)}</span></div>` : ''}
-                  ${vcs.length > 1 ? `
-                    <button type="button" onclick="window.cycleDossierVisualCritique();" class="text-left t-strong">
-                      Next Critique (${vcs.length})
-                    </button>
-                  ` : ''}
-                </div>
+                ${vc.citation ? `<div class="meta">Cited in the research: ${escapeHtml(vc.citation)}</div>` : ''}
+                ${vcs.length > 1 ? `<div class="record-actions critique-actions"><button type="button" onclick="window.cycleDossierVisualCritique();" class="record-action">Next critique, ${(vcIdx + 1) % vcs.length + 1} of ${vcs.length}</button></div>` : ''}
               </div>
             </div>
           ` : ''}
@@ -11947,45 +11942,16 @@ return maplibregl$1;
           ${sourcesHtml(inst, true)}${isGossipModeActive ? '' : researchContextHtml(inst)}
 
 
-          ${isClean ? `
-            <div class="pt-1">
-              <div class="flex flex-col gap-0 visit-rows">
-                ${inst.opening_hours ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Hours</div>
-                  <div class="">${escapeHtml(inst.opening_hours)}</div>
-                </div>` : ''}
-                ${inst.admission_fee ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Admission</div>
-                  <div class="">${escapeHtml(inst.admission_fee)}</div>
-                </div>` : ''}
-                <div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Address</div>
-                  <div class="">${escapeHtml(inst.address || inst.location)}</div>
-                  ${inst.neighborhood ? `<div class="meta mt-0_5">${escapeHtml(inst.neighborhood)}</div>` : ''}
-                </div>
-                ${inst.visit_duration ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Suggested Duration</div>
-                  <div class="">${escapeHtml(inst.visit_duration)}</div>
-                </div>` : ''}
-                ${inst.transit_tips ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Getting There</div>
-                  <div class="">${escapeHtml(inst.transit_tips)}</div>
-                </div>` : ''}
-                ${inst.highlight ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Highlight</div>
-                  <div class="">${escapeHtml(inst.highlight)}</div>
-                </div>` : ''}
-                ${inst.accessibility ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Accessibility</div>
-                  <div class="">${escapeHtml(inst.accessibility)}</div>
-                </div>` : ''}
-                ${inst.amenities ? `<div class="py-2 rule-t">
-                  <div class="meta mb-0_5">Amenities</div>
-                  <div class="">${escapeHtml((inst.amenities).toString().split(',').map(x => x.trim()).filter(Boolean).join(', '))}</div>
-                </div>` : ''}
-              </div>
-            </div>
-          ` : ''}
+          ${isClean ? factsTableHtml('Visiting', [
+            ['Opening hours', escapeHtml(inst.opening_hours || '')],
+            ['Admission', escapeHtml(inst.admission_fee || '')],
+            ['Address', escapeHtml(inst.address || inst.location || '') + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '')],
+            ['Suggested duration', escapeHtml(inst.visit_duration || '')],
+            ['Getting there', escapeHtml(inst.transit_tips || '')],
+            ['Highlight', escapeHtml(inst.highlight || '')],
+            ['Accessibility', escapeHtml(inst.accessibility || '')],
+            ['Amenities', escapeHtml(inst.amenities ? inst.amenities.toString().split(',').map(x => x.trim()).filter(Boolean).join(', ') : '')],
+          ], ' role="region" aria-label="Visiting"') : ''}
 
         </div>
         <!-- /drawerAuditView -->
@@ -18390,7 +18356,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/layers.js?v=194"></script>
-<script src="assets/bubbles.js?v=194" defer></script>
+<script src="assets/typeset.js?v=197"></script>
+<script src="assets/layers.js?v=197"></script>
+<script src="assets/bubbles.js?v=197" defer></script>
 </body>
 </html>
