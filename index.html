@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=224">
-  <script src="assets/config.js?v=224"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=225">
+  <script src="assets/config.js?v=225"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9789,11 +9789,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v224';
+    const ATLAS_RELEASE = 'culture-atlas-v225';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=224').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=225').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13121,21 +13121,23 @@ return maplibregl$1;
     window.findFuzzyInstitutionMatch = findFuzzyInstitutionMatch;
 
     // Dynamic Grounding Retrieval for Live AI Engine
-    function retrieveGroundingInstitutions(userQuery, limit = 12) {
+    function retrieveGroundingInstitutions(userQuery, limit = 12, opts = {}) {
       const q = (userQuery || '').toLowerCase();
+      // Words that sit in many names (Center, Museum, Art, House) say nothing about which space is meant.
+      const GENERIC_NAME_WORDS = new Set(['center', 'centre', 'centro', 'museum', 'museums', 'museo', 'musee', 'gallery', 'galleries', 'galerie', 'house', 'foundation', 'fondation', 'institute', 'contemporary', 'modern', 'national', 'public', 'culture', 'cultural', 'space', 'spaces', 'collection', 'project', 'school', 'hall', 'trust', 'international', 'academy', 'palace', 'pavilion', 'biennale', 'biennial', 'kunsthalle', 'kunst']);
       const results = [];
       const seen = new Set();
 
       // 1. If an institution is currently selected on the map or in the dossier, prioritize it first
-      const activeInst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
-                         (typeof curatorContext !== 'undefined' && curatorContext.lastInst ? curatorContext.lastInst : null);
+      const activeInst = opts.includeActive === false ? null : ((typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
+                         (typeof curatorContext !== 'undefined' && curatorContext.lastInst ? curatorContext.lastInst : null));
       if (activeInst && activeInst.name) {
         results.push(activeInst);
         seen.add(activeInst.name);
       }
 
       // 1b. Fuzzy Misspelling & Entity Resolution (Highest Priority for query intent)
-      const fuzzyEntity = findFuzzyInstitutionMatch(q, 0.60);
+      const fuzzyEntity = findFuzzyInstitutionMatch(q, opts.fuzzyThreshold || 0.60);
       if (fuzzyEntity && fuzzyEntity.inst && !seen.has(fuzzyEntity.inst.name)) {
         results.push(fuzzyEntity.inst);
         seen.add(fuzzyEntity.inst.name);
@@ -13145,7 +13147,7 @@ return maplibregl$1;
       for (const inst of ALL_INSTITUTIONS) {
         if (seen.has(inst.name)) continue;
         const nameLower = inst.name.toLowerCase();
-        if (q.includes(nameLower) || (nameLower.length > 5 && nameLower.split(/\s+/).some(w => w.length > 4 && q.includes(w)))) {
+        if (q.includes(nameLower) || (nameLower.length > 5 && nameLower.split(/\s+/).some(w => w.length > 4 && !GENERIC_NAME_WORDS.has(w) && q.includes(w)))) {
           results.push(inst);
           seen.add(inst.name);
           if (results.length >= limit) break;
@@ -13167,7 +13169,7 @@ return maplibregl$1;
       // 4. Keyword / thematic match in curatorial focus, highlights, architecture, archives
       if (results.length < limit) {
         const stopWords = new Set(['what', 'where', 'when', 'which', 'about', 'there', 'their', 'could', 'would', 'should', 'check', 'show', 'tell', 'more', 'some', 'please', 'with', 'from', 'have', 'that', 'this']);
-        const words = q.split(/[^a-z0-9]+/i).filter(w => w.length > 3 && !stopWords.has(w));
+        const words = q.split(/[^a-z0-9]+/i).filter(w => w.length > 3 && !stopWords.has(w) && !GENERIC_NAME_WORDS.has(w));
         if (words.length > 0) {
           const scored = [];
           for (const inst of ALL_INSTITUTIONS) {
@@ -13527,16 +13529,44 @@ return maplibregl$1;
       const prov = useProxy ? 'anthropic' : getEffectiveProvider();
       const model = useProxy ? 'claude-haiku-4-5-20251001' : getEffectiveModel();
 
-      // Dynamically retrieve top relevant institutions for this specific user prompt
-      const relevantInsts = retrieveGroundingInstitutions(userPrompt, 12);
-      const groundedCatalogText = relevantInsts.map(formatInstitutionGrounding).join('\n\n');
+      // A short reply to the chat's own question ("yes that one", "the second") means what the last answer offered, so it is
+      // read together with that answer. A bare name that no record carries is an unknown name, not a question about the open space.
+      const turnsSoFar = conversationTurns();
+      const lastReply = [...turnsSoFar].reverse().find(t => t.role === 'assistant');
+      const wordCount = userPrompt.trim().split(/\s+/).filter(Boolean).length;
+      const isFollowUp = !!lastReply && wordCount <= 6 &&
+        /^\s*(yes|yeah|yep|yup|ok|okay|sure|correct|right|exactly|no|that|this|those|these|the (first|second|third|last|other|latter|former)|first|second|third|last|both)\b|\b(that|this|the same|the other) (one|place|space|museum)\b/i.test(userPrompt);
+      const retrievalText = isFollowUp ? `${userPrompt} ${lastReply.content}` : userPrompt;
+      // The spaces the last reply named in full: when it named exactly one, a follow-up is about that one.
+      const namedInReply = isFollowUp ? ALL_INSTITUTIONS.filter(i => i.name.length > 4 && lastReply.content.toLowerCase().includes(i.name.toLowerCase())) : [];
+      const resolvedFollowUp = namedInReply.length === 1 ? namedInReply[0] : null;
 
       // 1. Resolve Target Entity cleanly (from user query or active focus)
-      const mentionedInst = (typeof findMentionedInst === 'function' ? findMentionedInst(userPrompt) : null) || 
-                            (typeof findAnyInstitution === 'function' ? findAnyInstitution(userPrompt)?.inst : null);
-      const currentTarget = mentionedInst || 
-                            (typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
-                            (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst));
+      // "this museum", "here", "its": the open space, never a guessed match from the words around it (findMentionedInst applies the same rule).
+      const askingAboutOpen = /\b(this|here|it|its|there)\b/i.test(userPrompt);
+      const anyMatch = !askingAboutOpen && typeof findAnyInstitution === 'function' ? findAnyInstitution(userPrompt) : null;
+      const mentionedInst = resolvedFollowUp || (typeof findMentionedInst === 'function' ? findMentionedInst(userPrompt) : null) || 
+                            (anyMatch && anyMatch.isClean && !anyMatch.fuzzy ? anyMatch.inst : null);
+      const QUESTION_VOCAB = /\b(who|whom|whose|what|which|where|when|why|how|is|are|was|were|does|do|did|can|could|would|tell|show|find|list|give|hours?|open(ing)?|prices?|admission|tickets?|fund(s|ed|er|ers|ing)?|grades?|rating|flag(s|ged)?|sponsors?|trustees?|critics?|criticism|employees?|staff|visit|address|located|museums?|spaces?|galleries|more|check|verify|compare|about|near|in|the)\b/i;
+      const CHITCHAT = /^\s*(thanks?|thank you|cool|great|nice|wow|hmm+|lol|good|gossip|rumou?rs?|scandals?|more|why|help|hi|hello|hey|bye)\b/i;
+      const isPlace = [...(typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []), ...(typeof ALL_COUNTRIES_REGISTRY !== 'undefined' ? ALL_COUNTRIES_REGISTRY : [])]
+        .some(c => c && c.name && userPrompt.toLowerCase().includes(c.name.toLowerCase()));
+      const unknownName = !mentionedInst && !isFollowUp && !isPlace && wordCount <= 6 && !QUESTION_VOCAB.test(userPrompt) && !CHITCHAT.test(userPrompt);
+      // An unknown name is grounded on nothing but its nearest record, if one is really near; a looser pick would only be offered as the answer.
+      const nearest = unknownName && typeof findFuzzyInstitutionMatch === 'function' ? findFuzzyInstitutionMatch(userPrompt.toLowerCase(), 0.75) : null;
+      // A "yes" to a reply that named two or more spaces does not say which: neither the open space nor a guess answers it.
+      const ambiguousFollowUp = isFollowUp && !resolvedFollowUp && namedInReply.length >= 2;
+      const relevantInsts = unknownName ? (nearest && nearest.inst ? [nearest.inst] : []) : retrieveGroundingInstitutions(retrievalText, 12, { includeActive: !ambiguousFollowUp });
+      const groundedCatalogText = relevantInsts.map(formatInstitutionGrounding).join('\n\n');
+      const currentTarget = mentionedInst || (unknownName || ambiguousFollowUp ? null :
+                            ((typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
+                            (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst))));
+      const followUpNote = ambiguousFollowUp
+        ? `<follow_up>\nThe visitor is answering your last reply, which named ${namedInReply.map(i => i.name).join(' and ')}. Their words do not say which. Ask which one in a single sentence and say nothing else.\n</follow_up>\n\n`
+        : '';
+      const nameLookup = unknownName
+        ? `<name_lookup>\nThe question is the name "${userPrompt.trim()}". No record carries that name${nearest && nearest.inst ? `; the nearest is ${nearest.inst.name} (${nearest.inst.city || nearest.inst.location || 'no city recorded'})` : ' and none is near it'}. Say in one sentence that the Atlas has no record under that name${nearest && nearest.inst ? ', then name that nearest record in one sentence' : ''}. Do not describe the space that happens to be open on the map, do not guess what the name might be, and do not ask the visitor to clarify.\n</name_lookup>\n\n`
+        : '';
 
       if (mentionedInst && typeof curatorContext !== 'undefined') {
         const prevTarget = curatorContext.activeFocusInst || curatorContext.lastInst;
@@ -13574,7 +13604,7 @@ return maplibregl$1;
         ? `\n\n<gossip_mode>\nGossip mode is on. Lead with what is reported: the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, label unverified platform accounts as unverified sentiment, and separate allegation from documented fact. If the supplied records hold nothing reported about a space, say that in one sentence and stop. Do not infer wrongdoing, pad with generalities, or force a fixed section template.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, say so once and direct the visitor to the official URL when available.\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, with bold labels such as **Admission**, **Hours**, **Funding** or **Governance** when relevant. Do not force headings, sections or a comparison when they do not help answer the question. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, say so once and direct the visitor to the official URL when available.\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -13629,7 +13659,7 @@ CHARACTER & VOICE GUIDELINES:
 - Use clear, concise prose and natural transitions.
 - Do not insert duplicate headings, badges or prefix labels into the answer.
 </formatting_rules>
-   - Format responses using standard Markdown headers (### Section Title) and clean lists (- bullet point).
+   - Write plain paragraphs. A heading (### Title) only when the answer has three or more distinct parts; a one-topic answer has none. A list item is a plain "- " line.
    - Never output raw markdown tags or unrendered syntax.
    - Emphasis is italic (*word*), used rarely; never bold, never a word in capitals for effect. Abbreviations in capitals (UNESCO, EU, USD) are fine.
    - HOUSE STYLE (the page typesets your words, but write them right): a dash is an en dash with a space either side ( – ), never an em dash and never a hyphen between spaces; a range or span is a closed en dash (10:00–18:00, Wed–Fri, 1965–70, 2024–25); quote with single marks ‘like this’, the comma or full point outside the closing mark unless it belongs to the quotation, and double marks only for a quotation inside a quotation; an ellipsis is one sign (…); a list item is a plain "- " line.
@@ -13653,11 +13683,13 @@ ${webIntelGrounding}
 - Avoid pompous marketing fluff ("cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "sublime", "epistemologies", or "palliative").
 - Avoid promotional language, unsupported praise or criticism, canned phrasing and prompt meta-commentary. Keep answers concise and evidence-based.
 
+NAMES THAT HAVE NO RECORD: When the visitor names a space and no supplied record carries that name, say in one sentence that the Atlas has no record under that name. Then, only if a supplied record is clearly near the name, name that one record. Never answer about the space open on the map in its place, never offer a space from your own memory, and never ask the visitor to clarify. When the visitor answers one of your questions with "yes", "that one" or "the second", take it as the space you last named and answer about that space from its record; if you named no space that has a record, say so in one sentence.
+
 GROUNDING: Answer only from the records supplied with each question. Quote a figure only if it appears in a record or its cited source, and name that source. If the records do not say, say they do not say. Do not recall studies, cases, budgets or dates from memory.
 
 FORMATTING & DOSSIER PRESENTATION RULES:
 1. Answer the user's specific question in the first sentence; do not force a template, headings, comparison or unrequested conclusion.
-2. Keep paragraphs short and use a blank line between distinct points. Separate visitor logistics from governance or financial analysis using separate paragraphs and bold labels such as **Admission**, **Hours**, **Funding** or **Governance** when relevant.
+2. Keep paragraphs short and use a blank line between distinct points. Separate visitor logistics from governance or financial analysis using separate paragraphs, each opening with the topic in plain words, with no bold.
 3. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, say so once and point to the official URL when available.
 4. For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name a critic, publication, review or controversy only when it is present in the supplied record or cited sources. If none is recorded, say that the record does not identify specific critics or reviews; do not substitute a generic theory passage.
 5. Attribute allegations and assessments to their source. Do not imply that a source independently verifies more than it does.
@@ -18902,9 +18934,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=224"></script>
-<script src="assets/layers.js?v=224"></script>
-<script src="assets/hq-detail.js?v=224"></script>
-<script src="assets/bubbles.js?v=224" defer></script>
+<script src="assets/typeset.js?v=225"></script>
+<script src="assets/layers.js?v=225"></script>
+<script src="assets/hq-detail.js?v=225"></script>
+<script src="assets/bubbles.js?v=225" defer></script>
 </body>
 </html>

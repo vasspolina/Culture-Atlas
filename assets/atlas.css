@@ -1501,6 +1501,10 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #hqPanel.is-details :is(dt,.hq-note,.hq-s){font-size:15px}
 #hqPanel.is-details .hq-link{padding-left:0;padding-right:0}
 #hqPanel.is-details .hq-ask{margin-left:18px}
+/* Chat answers: a section heading sits close to the text it opens and is not pushed away by the box margins of its own h3; the paragraph under it starts flush */
+#curatorMessages .curator-section-hdr{margin:1em 0 .3em;padding:0;display:block}
+#curatorMessages .curator-section-hdr h3{margin:0}
+#curatorMessages>.curator-message-wrap .curator-section-hdr+p:not(.no-indent){text-indent:0}
 
 /* The critique's quotation, its source line and its questions fill the panel (user's instruction, 19 Oct 2026): the 34em and 44em caps are gone,
    so the words reflow to the column, 18px from each edge, as the rest of the Details text does. */
