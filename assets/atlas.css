@@ -1253,17 +1253,15 @@ body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note .abbr{color:inheri
 
 /* gossip: leave room under the last balloon so tails and spikes are not clipped */
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-bottom:2.2em}
-.grade-word{color:inherit;font-weight:400;padding:0;border:0;border-bottom:1px solid var(--grade-accent);background:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.grade-word-1{--grade-accent:#527f82}
-.grade-word-2{--grade-accent:#617d70}
-.grade-word-3{--grade-accent:#8b783d}
-.grade-word-4{--grade-accent:#a45f3e}
-.grade-word-5{--grade-accent:#8a6488}
-:root[data-theme="dark"] .grade-word-1{--grade-accent:#84bfc2}
-:root[data-theme="dark"] .grade-word-2{--grade-accent:#9bbba9}
-:root[data-theme="dark"] .grade-word-3{--grade-accent:#c8b879}
-:root[data-theme="dark"] .grade-word-4{--grade-accent:#d69472}
-:root[data-theme="dark"] .grade-word-5{--grade-accent:#c59ac2}
+/* A grade named in the chat is set like the rating in the record (user's instruction, 20 Oct 2026): bold, in the grade's own
+   colour. On white that colour is darkened until it clears 4.5:1 (gradeInk in index.html); on the dark theme it is the colour itself. */
+.grade-word{color:var(--grade-ink);font-weight:700;padding:0;border:0;background:transparent}
+.grade-word-1{--grade-ink:#1f7f5c;--grade-col:#34d399}
+.grade-word-2{--grade-ink:#1b7f73;--grade-col:#2dd4bf}
+.grade-word-3{--grade-ink:#8c720c;--grade-col:#facc15}
+.grade-word-4{--grade-ink:#975824;--grade-col:#fb923c}
+.grade-word-5{--grade-ink:#8f2929;--grade-col:#ef4444}
+:root[data-theme="dark"] .grade-word{color:var(--grade-col)}
 #curatorScrollArea,#workBottomDock,#workInputCard,#workInput{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),min-height var(--dur) var(--ease)}
 #curatorMessages>*{animation:msg-in var(--dur) var(--ease) both}
 @keyframes msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -1478,7 +1476,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,.t-lead,.kicker,.visit-rows>div>div:last-child){max-width:none}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading){white-space:normal;text-wrap:balance;overflow:visible;text-overflow:clip;overflow-wrap:break-word}
 #desktopDossierRecordBody>div{padding-left:18px;padding-right:18px}
-:root:root:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{display:inline;background:none;padding:0;border-radius:0;color:var(--grade-ink)}
+:root:root:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{display:inline;background:none;padding:0;border-radius:0;color:var(--grade-ink);font-weight:700}
 :root[data-theme="dark"]:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{color:var(--grade-col)}
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{padding:6px 13.5px;height:auto;min-height:0}
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action::after{inset:-6px -2px}
