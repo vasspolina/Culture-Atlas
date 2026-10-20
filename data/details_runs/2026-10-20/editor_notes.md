@@ -127,3 +127,9 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - fundaci-joan-mir: fmirobcn.org blocks automated reads; the researcher read it in the browser, the checker could not. Sponsor tiers, 2025 transparency figures and the board line rest on that one read. Naturgy/Criteria figures and the Lubar resignation are verified.
 - gapar-aitiev-kyrgyz-national-museum-of-fine-arts-bishkek: Artnet unreadable; its quotes were cut and red flags rebuilt from 24.kg, ArtReview and the New East Digital Archive. The Artnet piece needs a human read.
 - garage-museum-moscow: some Novaya Gazeta Europe and Finestre sull'Arte details rest on fetch summaries.
+
+## Run status, 20 Oct 2026 (stopped at the weekly usage limit; resets 24 Oct, 4am New York)
+- In the atlas or in PRs: Zoma plus d000 to d008 (109 spaces, with #166 to #168 merged and d007 + d008 in the open PR).
+- d009: 12 reports written, slop check not finished; getty-center-los-angeles.txt was mid-edit when the limit hit.
+- d010: 7 of 12 reports written. d011: 5 of 12. d012: 1 of 12. The unwritten ids are the batch ids with no file in reports/.
+- To continue: resume each agent with SendMessage (ids in the session), or start new ones from data/details_prompt.md.
