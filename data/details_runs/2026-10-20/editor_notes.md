@@ -100,3 +100,9 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - fridericianum-kassel: the website field points to a Monopol article; the real site is fridericianum.org.
 - frist-art-museum-nashville: building owned by the city housing agency MDHA, leased at $1 a year to 2097.
 - fondation-cartier: the record's /en/about source returns 404.
+
+## d008 (research notes, before its slop check)
+- Website fields pointing elsewhere: fundación-proa-buenos-aires (Tecpetrol; real site proa.org), fundação-bienal-de-são-paulo-são-paulo (a Times Brasil column; real site bienal.org.br).
+- Spam or dead: sindikadokolofondation.org redirects to a gambling site; museum.ge (Georgian National Museum) hides spam links in its footer; galeri-nasional.or.id does not resolve.
+- garage-museum-moscow: the 2024 FSB search and pro-war activists' visit are under Wider context (the Russian state neither funds nor runs Garage).
+- fundação-fernando-leite-couto-maputo: sponsors shown as logos only; Nedbank unconfirmed.
