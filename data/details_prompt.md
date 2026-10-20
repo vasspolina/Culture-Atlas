@@ -75,7 +75,11 @@ corrects or adds to it; it does not restate it.
 - No verdict adjective (controversial, problematic, troubling) without the named event, date and
   actor behind it. No moralising about a funder; state what the funder does and let it stand.
 - Every number, date, person and title must appear in a source you opened. If the text says more
-  than the source, cut it back.
+  than the source, cut it back. Write each point from the page in front of you, not from a search
+  snippet or memory: no added job title, start date, descriptor ("Bergen investor") or superlative
+  ("largest", "entirely") the page does not state. Credit a point to the outlet that states it, and
+  mark your own translation of a quotation as a translation. The checkers found these the most
+  common faults in the first batches.
 - Flag headings follow the map's rules: state money alone is never a red flag; a funder flag
   (fossil fuels, gambling, tobacco, arms, opioids) needs the funder to be current (about the last
   five years) or a documented objection; founder or family money from a flagged industry counts
@@ -84,6 +88,10 @@ corrects or adds to it; it does not restate it.
   at the space, its funders or its leadership. A patron's closeness to a government that is
   accused of something is a red flag only when the patronage itself is documented (a commission,
   a land grant, a budget line).
+- A funder or board figure with a documented controversy outside those categories is a red flag
+  too, because the map grades it as a name to know: a bank's criminal plea or fine (TD Bank's 2024
+  money-laundering plea, HSBC, ABN AMRO), a founder's company convicted or sanctioned, a donor tied
+  to Jeffrey Epstein through money or leadership. State the event, the date and the authority.
 - Keep the report under 800 words. Overview points are one sentence each.
 
 ### Output: one plain-text file, this exact layout

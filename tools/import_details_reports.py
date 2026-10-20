@@ -33,8 +33,8 @@ RED_FLAG = re.compile(r'^Red flags?:\s*(.+?)\s*$', re.I)
 NOT_RELATED = re.compile(r'^Not related:\s*(.+?)\s*$', re.I)
 PRESS_ITEM = re.compile(r'^(\d+)[.)]\s+(.+?)\s*$')
 URL = re.compile(r'https?://[^\s)>\]]+')
-HEDGES = re.compile(r'\b(may|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|believed to|likely|some say)\b', re.I)
-PROMO = re.compile(r'\b(vibrant|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|tapestry|testament to|nestled|boasts?|showcases?|fosters?|underscores?|delves?|ecosystem|plays a crucial role|it is worth noting|a diverse range of|among others|and more)\b', re.I)
+HEDGES = re.compile(r'\b(may|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|believed to|likely|some say)\b')   # lower case: "May" is the month
+PROMO = re.compile(r'\b(vibrant|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|tapestry|testament to|nestled|boasts?|showcases?|fosters?|underscores?|delves?|ecosystem|plays a crucial role|it is worth noting|a diverse range of|among others|and more(?! than))\b')   # lower case: Foster is a name
 DASH = re.compile(r'\s[–—]\s|[–—]')
 
 
