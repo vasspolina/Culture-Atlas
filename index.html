@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=231">
-  <script src="assets/config.js?v=231"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=232">
+  <script src="assets/config.js?v=232"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9921,11 +9921,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v231';
+    const ATLAS_RELEASE = 'culture-atlas-v232';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=231').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=232').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11630,6 +11630,27 @@ return maplibregl$1;
         })
         .catch(err => console.error('Could not load approved whistleblower reports:', err));
     }
+    // Approved whistleblower notes, set out like the customer reviews on Google Maps: a count, then one entry per note with an
+    // anonymous reviewer line, the date and the text, newest first. No stars: a note is not a rating.
+    function whistleblowerReviewsHtml(notes) {
+      if (!notes.length) return '';
+      const when = (iso) => {
+        const d = new Date(iso);
+        return Number.isNaN(d.getTime()) ? null : { iso: d.toISOString().slice(0, 10), text: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) };
+      };
+      const rows = notes.slice().sort((a, b) => String(b.approvedAt || '').localeCompare(String(a.approvedAt || '')));
+      return `<section class="review-list" aria-label="Whistleblower notes">
+        <h3 class="kicker review-count">${rows.length} whistleblower ${rows.length === 1 ? 'note' : 'notes'}</h3>
+        <p class="meta no-indent">Submitted without a name and approved by the editor. Not checked against a source.</p>
+        ${rows.map(n => { const d = when(n.approvedAt); return `<article class="review">
+          <div class="review-head">
+            <span class="review-avatar" aria-hidden="true">W</span>
+            <div><span class="review-name">Whistleblower</span>${d ? `<time class="review-date" datetime="${d.iso}">${d.text}</time>` : ''}</div>
+          </div>
+          <p class="t-lead no-indent review-text">${escapeHtml(n.text)}</p>
+        </article>`; }).join('')}
+      </section>`;
+    }
     function readerNotesFor(inst) {
       const name = String(inst.name || '').toLowerCase();
       const city = String(inst.city || '').toLowerCase();
@@ -11785,14 +11806,17 @@ return maplibregl$1;
         </div>`;
       });
       const kindLabel = { information: 'Information', gossip: 'Gossip, unverified', whistleblower: 'Whistleblower note' };
-      const readers = readerNotesFor(inst).map(n => item(kindLabel[n.kind] || 'Note', (n.approvedAt || '').slice(0, 10), p('', n.text), n.sourceUrl ? [n.sourceUrl] : []));
-      if (!blocks.length && !relatedReports.length && !accounts.length && !readers.length) return '';
+      const noted = readerNotesFor(inst);
+      const readers = noted.filter(n => n.kind !== 'whistleblower').map(n => item(kindLabel[n.kind] || 'Note', (n.approvedAt || '').slice(0, 10), p('', n.text), n.sourceUrl ? [n.sourceUrl] : []));
+      const reviews = whistleblowerReviewsHtml(noted.filter(n => n.kind === 'whistleblower'));
+      if (!blocks.length && !relatedReports.length && !accounts.length && !readers.length && !reviews) return '';
       // data-gossip marks the one block of a reply that is gossip: assets/bubbles.js draws a comic balloon only around a turn that holds it.
       return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
         ${blocks.length ? `<h3 class="kicker">Reported, not independently verified</h3>${blocks.join('')}` : ''}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
         ${accounts.length ? `<h3 class="kicker">Personal accounts (${accounts.length})</h3><p class="no-indent account-note">Posts by staff and visitors on review sites and Reddit. One person's experience each, not verified findings about the institution.</p>${accounts.join('')}` : ''}
         ${readers.length ? `<h3 class="kicker">Shared by readers and approved by the editor. Not checked against a source.</h3>${readers.join('')}` : ''}
+        ${reviews}
       </div>`;
     }
 
@@ -12884,6 +12908,8 @@ return maplibregl$1;
 
 
     function saveCommunityResearchSubmission(entry) {
+      // Whistleblower notes are held by the report service only, never in this browser.
+      if (entry && /whistleblower/i.test(String(entry.category || ''))) return null;
       const list = getCommunityResearchSubmissions();
       list.unshift(entry);
       localStorage.setItem('atlas_community_research_queue', JSON.stringify(list));
@@ -15989,10 +16015,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     } : {
       information: { banner: 'Information: write what you know about a space or a funder. It is saved as a note in this browser. Nothing is sent and nothing is checked.', placeholder: 'Write what you know. It is saved as a note in this browser only.' },
       gossip: { banner: 'Gossip: write what you heard. It is saved as an unverified note in this browser. Nothing is sent and nothing is checked.', placeholder: 'Write what you heard. It is saved as an unverified note in this browser only.' },
-      whistleblower: { banner: 'Whistleblower: write what you know from inside an institution. It is saved as a note in this browser. Nothing is sent and nothing is checked. This page has no secure channel, so leave out your name and anything that identifies you if you want to stay anonymous.', placeholder: 'Write what you know from inside. It is saved in this browser only. Leave out anything that identifies you.' }
     };
     INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
-        banner: 'Whistleblower: your report is sent to the editor and stored for review. It appears on the atlas only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
+        banner: 'Whistleblower: open the record of the institution, or name it in your note. The note is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
         placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
       } : {
         banner: 'Whistleblower reports cannot be sent because the report service is not configured. This is not a secure channel, so leave out your name and anything that identifies you.',
@@ -16270,24 +16295,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         ? 'The report service is not configured. The report was not saved.'
         : `Saved as ${label} note in this browser. It was not sent to anyone and has not been checked.`;
       let saveLocalCopy = kind !== 'whistleblower';
-      if (kind === 'whistleblower' && ATLAS_REPORT_API_URL) {
-        saveLocalCopy = false;
+      if (kind === 'whistleblower' && ATLAS_REPORT_API_URL && !target) {
+        // The report service takes a note only when it names an institution on the atlas.
+        const input = document.getElementById('workInput');
+        if (input) input.value = q;
+        said = 'Open the record of the institution this note is about, or name the institution in the note, then send it again. The note was not sent.';
+      } else if (kind === 'whistleblower' && ATLAS_REPORT_API_URL) {
         try {
           const res = await fetch(ATLAS_REPORT_API_URL + '/api/reports', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              content: q,
-              city: note.city || 'Unspecified',
-              institution: note.spaceName || null,
-              latitude: note.lat,
-              longitude: note.lon
-            })
+            body: JSON.stringify({ content: q, institution: note.spaceName })
           });
           const out = await res.json().catch(() => ({}));
           if (!res.ok) throw new Error(out.error || 'The server did not take it.');
           note.status = 'sent_for_review';
-          said = 'Sent to the editor for review. It appears on the atlas only once it is approved.';
+          said = `Sent to the editor for review. It appears on the record of ${escapeHtml(note.spaceName)}, as a review, only once it is approved.`;
         } catch (err) {
           const input = document.getElementById('workInput');
           if (input) input.value = q;
@@ -19252,9 +19275,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=231"></script>
-<script src="assets/layers.js?v=231"></script>
-<script src="assets/hq-detail.js?v=231"></script>
-<script src="assets/bubbles.js?v=231" defer></script>
+<script src="assets/typeset.js?v=232"></script>
+<script src="assets/layers.js?v=232"></script>
+<script src="assets/hq-detail.js?v=232"></script>
+<script src="assets/bubbles.js?v=232" defer></script>
 </body>
 </html>

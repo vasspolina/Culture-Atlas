@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "node --watch server/index.js",
-    "db:push": "prisma db push"
+    "db:push": "prisma db push",
+    "test": "node --test server/test/*.test.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
@@ -15,6 +16,7 @@
     "react": "^19.1.0"
   },
   "devDependencies": {
+    "light-my-request": "^6.8.0",
     "prisma": "^6.19.0"
   }
 }

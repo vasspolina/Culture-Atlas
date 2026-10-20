@@ -1597,3 +1597,14 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 :is(#desktopDossierRecordBody,#detailBody) p.account-note{font-size:15px;line-height:1.35;opacity:.8;max-width:60ch}
 /* In a card the date-and-status line sits under the title, smaller and quieter, so the title leads. */
 :is(#desktopDossierRecordBody,#detailBody) .record-card>.kicker+.kicker{font-size:15px;line-height:1.35;opacity:.8;margin-top:2px}
+
+/* Whistleblower notes on a record, laid out as a review list (the way Google Maps lists customer reviews, without stars: the notes are not ratings).
+   Anonymous reviewer line, date, the text, newest first, a count above. Black and white, the page's own type. */
+.review-list{margin:0;padding:0}
+.review-list .review-count{margin:0 0 4px}
+.review{border-top:1px solid var(--line);padding:12px 0}
+.review-head{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+.review-avatar{flex:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--paper);font:400 18px/1 var(--sans)}
+.review-name{display:block;font:400 16px/1.2 var(--sans)}
+.review-date{display:block;font:400 14px/1.2 var(--sans)}
+.review-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}

@@ -5,6 +5,9 @@
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[char]));
   let token = '';
+  let view = 'PENDING';
+  const EMPTY = { PENDING: 'No notes are waiting for review.', APPROVED: 'No notes are on the atlas.', REJECTED: 'No notes were rejected.' };
+  const WORD = { PENDING: 'waiting for review', APPROVED: 'on the atlas', REJECTED: 'rejected' };
 
   try { token = sessionStorage.getItem('atlas-report-admin-token') || ''; } catch {}
 
@@ -39,22 +42,31 @@
     setVisible('loginError', !!message);
   }
 
-  async function loadPending() {
-    $('status').textContent = 'Loading reports…';
+  function actionsFor(status) {
+    return [
+      status !== 'APPROVED' ? '<button type="button" class="btn approve" data-status="APPROVED">Approve</button>' : '',
+      status === 'PENDING' ? '<button type="button" class="btn reject" data-status="REJECTED">Reject</button>' : '',
+      status === 'APPROVED' ? '<button type="button" class="btn" data-status="PENDING">Take off the atlas</button>' : '',
+      '<button type="button" class="btn delete" data-delete="1">Delete</button>'
+    ].join('');
+  }
+
+  async function load() {
+    $('status').textContent = 'Loading notes…';
     $('list').replaceChildren();
+    document.querySelectorAll('[data-view]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.view === view));
+    });
     try {
-      const reports = await api('/api/admin/reports/pending');
+      const reports = await api('/api/admin/reports?status=' + view);
       $('status').textContent = reports.length
-        ? `${reports.length} report${reports.length === 1 ? '' : 's'} waiting for review.`
-        : 'No submissions are waiting for review.';
+        ? `${reports.length} note${reports.length === 1 ? '' : 's'} ${WORD[view]}.`
+        : EMPTY[view];
       $('list').innerHTML = reports.map(report => `
         <article data-id="${esc(report.id)}">
-          <p><strong>${esc(report.city)}</strong>${report.institution ? ` | ${esc(report.institution)}` : ''} · ${esc(new Date(report.createdAt).toLocaleString())}</p>
-          <p>${esc(report.content)}</p>
-          <div class="actions">
-            <button type="button" class="btn approve" data-status="APPROVED">Approve &amp; Post to Map</button>
-            <button type="button" class="btn reject" data-status="REJECTED">Reject</button>
-          </div>
+          <p><strong>${esc(report.institution || report.city)}</strong>${report.institution ? ` | ${esc(report.city)}` : ''} · ${esc(new Date(report.createdAt).toLocaleString())}</p>
+          <p style="white-space:pre-wrap">${esc(report.content)}</p>
+          <div class="actions">${actionsFor(report.status)}</div>
         </article>
       `).join('');
     } catch (error) {
@@ -70,24 +82,31 @@
     try { sessionStorage.setItem('atlas-report-admin-token', token); } catch {}
     setVisible('loginForm', false);
     setVisible('queue', true);
-    loadPending();
+    load();
   });
 
-  $('refreshBtn').addEventListener('click', loadPending);
+  $('refreshBtn').addEventListener('click', load);
+  document.querySelector('[data-view]').closest('div').addEventListener('click', event => {
+    const button = event.target.closest('button[data-view]');
+    if (!button) return;
+    view = button.dataset.view;
+    load();
+  });
   $('signOutBtn').addEventListener('click', () => signOut());
   $('list').addEventListener('click', async event => {
-    const button = event.target.closest('button[data-status]');
+    const button = event.target.closest('button[data-status], button[data-delete]');
     if (!button) return;
     const article = button.closest('article');
+    const id = encodeURIComponent(article.dataset.id);
+    const removing = button.hasAttribute('data-delete');
+    if (removing && !window.confirm('Delete this note for good? It cannot be brought back.')) return;
     const buttons = article.querySelectorAll('button');
     buttons.forEach(item => { item.disabled = true; });
     try {
-      await api(`/api/admin/reports/${encodeURIComponent(article.dataset.id)}/status`, {
-        method: 'PATCH',
-        body: JSON.stringify({ status: button.dataset.status })
-      });
+      if (removing) await api(`/api/admin/reports/${id}`, { method: 'DELETE' });
+      else await api(`/api/admin/reports/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status: button.dataset.status }) });
       article.remove();
-      $('status').textContent = 'Report updated.';
+      $('status').textContent = removing ? 'Note deleted.' : 'Note updated.';
     } catch (error) {
       $('status').textContent = error.message;
       buttons.forEach(item => { item.disabled = false; });
@@ -101,6 +120,6 @@
     $('tokenInput').value = token;
     setVisible('loginForm', false);
     setVisible('queue', true);
-    loadPending();
+    load();
   }
 })();

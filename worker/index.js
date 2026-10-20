@@ -18,7 +18,8 @@
 //   approved       every approved note, newest first (one JSON array, so the page reads it in one go)
 //   rate:<hash>    sends from one address in the current hour (expires on its own)
 
-const KINDS = ['information', 'gossip', 'whistleblower'];
+// Whistleblower notes are not accepted here. They go to the report API (server/), which holds them for approval too.
+const KINDS = ['information', 'gossip'];
 const MAX_TEXT = 5000;
 const MAX_FIELD = 200;
 const SENDS_PER_HOUR = 10;
@@ -114,6 +115,7 @@ async function submit(request, env) {
 
   const text = clean(body.text, MAX_TEXT);
   if (!text) return json({ error: 'Write something first.' }, 400);
+  if (body.kind === 'whistleblower') return json({ error: 'Whistleblower notes are sent to the report service, not here.' }, 400);
   const kind = KINDS.includes(body.kind) ? body.kind : 'information';
 
   if (await overLimit(request, env)) return json({ error: 'Too many notes from here in the last hour. Try again later.' }, 429);
@@ -144,7 +146,8 @@ async function listPending(env) {
 }
 
 async function listApproved(env, isEditor = false) {
-  const notes = (await env.SUBMISSIONS.get('approved', 'json')) || [];
+  // A whistleblower note stored here before the report API took over is never served.
+  const notes = ((await env.SUBMISSIONS.get('approved', 'json')) || []).filter(n => n.kind !== 'whistleblower');
   return json({ notes }, 200, { 'Cache-Control': isEditor ? 'no-store' : 'public, max-age=60' });
 }
 
@@ -152,6 +155,7 @@ async function listApproved(env, isEditor = false) {
 async function approve(request, env, id) {
   const sub = await env.SUBMISSIONS.get('pending:' + id, 'json');
   if (!sub) return json({ error: 'That note is no longer pending.' }, 404);
+  if (sub.kind === 'whistleblower') return json({ error: 'Whistleblower notes cannot be approved here. Reject it; notes of this kind go through the report API.' }, 400);
   let edits = {};
   try { edits = await request.json(); } catch (e) {}
   const note = {
