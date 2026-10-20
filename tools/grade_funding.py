@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
-"""Clean Funding Grade: one grade per record, 1 (cleanest) to 5, from what the record proves.
+"""Funding transparency rating: one rating per record, 1 to 5, from what the record proves. The page names 1 to 5 as A, B, C, D, F.
 
-The grade says two things about the money: what it is, and whether the record shows it. Dirt and darkness are
-different failings, so a record with no funder list is not graded at all; silence is not cleanliness.
+The rating summarizes the disclosed funding and recorded funders. A record without an independently sourced funder roster is unrated.
 
-  1  Clean, money shown      no flag-category funder and no documented objection, and the record shows figures
+  1  Funding amounts disclosed; no funders flagged
+                             no flag-category funder and no documented objection, and the record shows figures
                              (amounts or shares in the funding text), or links accounts or a public registry filing
-  2  Clean, roster shown     the same, but names only
-  3  A name to know          a funder worth noting outside the flag categories (a Flagged record with no flag), or a
+  2  Funders listed; no funders flagged
+                             the same, but names only
+  3  Funder identified; details limited
+                             a funder worth noting outside the flag categories (a Flagged record with no flag), or a
                              tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned
                              name, a protest, a sponsor dropped, censorship
   4  One flagged funder      one funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids,
                              sanctions, forced labour, prisons, a mining disaster
-  5  Several, or flagged     more than one flagged funder category, or a flagged funder plus a documented objection
-     and contested
-  -  not graded              Roster unverified: no funder list is recorded
+  5  Multiple flagged funders, or a flagged funder with a disputed record
+                             more than one flagged funder category, or a flagged funder plus a documented objection
+  -  unrated                 No independently sourced funder roster is recorded
 
 Rules the grade follows: public money alone is never a flag, so a wholly public museum sits at 1 or 2. A flag counts
 only when the record carries it, which the Sponsor Atlas second checks decided. Disclosure only moves a record up,
@@ -38,8 +40,11 @@ HEAVY = ['Fossil fuels', 'Tobacco', 'Gambling', 'Arms and defence', 'Opioids', '
 TIES = ['Gulf state body', 'Epstein-linked']
 OBJECTIONS = ['Campaigned name', 'Protest or boycott', 'Sponsor dropped under pressure', 'State censorship or punishment']
 
-LABEL = {1: 'Clean, money shown', 2: 'Clean, roster shown', 3: 'A name to know',
-         4: 'One flagged funder', 5: 'Several, or flagged and contested'}
+LABEL = {1: 'Funding amounts disclosed; no funders flagged',
+         2: 'Funders listed; no funders flagged',
+         3: 'Funder identified; details limited',
+         4: 'One flagged funder',
+         5: 'Multiple flagged funders, or a flagged funder with a disputed record'}
 
 # Figures in the funding text: an amount with a currency, a figure in millions or billions, or a share.
 FIGURE = re.compile(r"(?:[$£€¥]|\bUS\$|\bUSD|\bEUR|\bGBP|\bCHF|\bDKK|\bSEK|\bNOK|\bCAD|\bAUD|\bNZD|\bBRL|\bMXN|\bINR|\bJPY|\bKRW|\bPLN"
@@ -128,7 +133,7 @@ def apply(records):
         if g is None:
             r.pop('grade', None)
             r.pop('grade_basis', None)
-            counts['not graded'] += 1
+            counts['unrated'] += 1
         else:
             r['grade'] = g
             r['grade_basis'] = basis

@@ -1,0 +1,20 @@
+{
+  "name": "culture-atlas-report-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "db:push": "prisma db push"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "react": "^19.1.0"
+  },
+  "devDependencies": {
+    "prisma": "^6.19.0"
+  }
+}

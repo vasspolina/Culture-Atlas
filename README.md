@@ -7,17 +7,19 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 - **Chat.** Laid out as a dialogue: set like an interview transcript: a two-letter speaker mark (ME, CA) in the margin wrapped lines hanging 1.6em in, and the first line of every paragraph, first or later, indented one em, your turns in green, one blank line between turns, no bubbles and no italics. Answers from the records only. It names the record and its source, and says when a record does not say. An optional API key in settings turns on open-ended replies.
 - **Globe and map.** Click a space to see its record, or a city or country to filter. The globe is drawn in hairlines only (coastlines, borders, hollow rings for spaces) and fills its whole pane.
 - **Money maps.** Each record has a map of what it states about its funding: the space in the middle, a circle for each funder, flag or documented tie, and lines between them. Circles that name the same funder link to other spaces. Open it from a record's Money map button, or go to `money-maps.html#<record id>`; `money-maps.html` on its own shows the big map of every space and sponsor. Drag to turn the map in 3D, pinch or scroll to fly through it, touch to make the circles sway. See "Money maps" below.
-- **Typography.** Set after Jost Hochuli's *Detail in Typography*: kerning, ligatures and capital-height punctuation on; measure held to about 66 characters with a soft ragged right and no lone last words; leading rises with line length; tracking tightens as size grows; quotes, apostrophes, ellipses, en dashes and year ranges are corrected in the chat and the record by `assets/typeset.js`; acronyms are set a step smaller. Emphasis is set in Regular Italic, the largest headlines in Compressed Bold and other titles in Compact Bold; a new paragraph is marked by a one-em indent, not a blank line. The fonts carry no small caps or old-style figures.
-- **Street map.** Drawn in the same hairlines as the globe (0.8px, one ink, the same in light and dark), with its place names set in PP Neue Gstaad Regular. The map host serves only its own fonts, so the glyphs for the Latin ranges are generated from the font file and kept in `assets/glyphs/` (regenerate them if the font changes). The Building view button appears only on records with a street address.
+- **Typography.** Set after Jost Hochuli's *Detail in Typography*: kerning, ligatures and capital-height punctuation on; measure held to about 66 characters with a soft ragged right and no lone last words; leading rises with line length; tracking tightens as size grows; quotes, apostrophes, ellipses, en dashes and year ranges are corrected in the chat and the record by `assets/typeset.js`; acronyms are set a step smaller. Emphasis is set in Regular Italic. Bold and capitals are kept for one thing, the name of a space: the record's headline in Compressed Bold, the name on a map card, pop-up or street-map label and in a chat answer in Compact Bold, always in capitals. Every other heading and label is in the Regular, in normal case, and is told by its size and the space around it. In a record, the info text and the chat on a phone, the first paragraph of a run is flush and each one after it is indented one em, with no blank line; a source list or registry line is a break, so the paragraph after it starts flush. The desktop chat keeps its transcript setting, where every paragraph is indented. The fonts carry no small caps or old-style figures.
+- **Street map.** Drawn in the same hairlines as the globe (0.8px, one ink, the same in light and dark), with its place names still set in PP Neue Gstaad Regular (the glyph files in assets/glyphs were made from it; the rest of the page is Jokker). The map host serves only its own fonts, so the glyphs for the Latin ranges are generated from the font file and kept in `assets/glyphs/` (regenerate them if the font changes). The Building view button appears only on records with a street address.
 - **Offline.** Installable as an app; the service worker caches the page.
 
-Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below. The Clean Funding Grade, 1 to 5, reads the money itself; see "Clean Funding Grade".
+Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below. Funding transparency ratings, A to F, summarize what each record shows about funding; see "Funding transparency ratings".
 
 ## Design
 
 Plain CSS, no framework: one stylesheet at `assets/atlas.css` (design layer plus a short generated block of layout helpers) and `assets/maplibre-gl.css` for the street map. The page loads no CSS or script from a CDN.
 
-The look follows the It's a book fair site: a white page, a strip of tabs on hairlines, flat colour blocks (cobalt, orange, cyan, mustard, periwinkle, magenta), a black pill for the current filter, a yellow close mark, and a grey sheet with the facts as a ruled table. Titles are PP Neue Gstaad Compact Bold in capitals, body is PP Neue Gstaad Regular, labels and buttons are the same Regular, at 14px or larger. No monospace anywhere. The globe is unchanged and sits on black. Text on a colour block is black, except on cobalt, where it is white.
+The look follows the It's a book fair site: a white page, a strip of tabs on hairlines, flat colour blocks (cobalt, orange, cyan, mustard, periwinkle, magenta), a black pill for the current filter, a yellow close mark, and a grey sheet with the facts as a ruled table. The names of spaces are Jokker Bold in capitals; everything else, headings included, is Jokker Regular in normal case, at 14px or larger. No monospace anywhere. The globe is unchanged and sits on black. Text on a colour block is black, except on cobalt, where it is white.
+
+Contrast is measured, not assumed (WCAG 2.2: 4.5:1 for text under 24px, 3:1 for large text, UI components, focus rings and the marks that carry data). A mark is never told only by colour: a space's tier is a circle (clean), square (flagged) or triangle (unverified) on its pin and on its city and museum label; a funding grade is its letter inside the dot; funders on the money map are squares (public funding), hexagons (companies) and triangles (foundations); right-wing and Epstein-file marks are a shield and a star, the key shows each. On the white ground of light mode the pale layer colours are drawn as a deeper step of the same hue (`LINE_LIGHT` in `assets/layers.js`), and the pale originals stay as the fills of the name blocks, where the text on them is black. The focus ring is `--focus` (cobalt on light, a lighter blue on dark).
 
 The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and sends notes for review (see "Share information" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
@@ -33,7 +35,7 @@ python3 -m http.server 8080
 
 Then open [http://localhost:8080](http://localhost:8080).
 
-To try Share information against a local backend, run the Worker with `npx wrangler dev` in `worker/` and set `window.ATLAS_SUBMIT_URL` in `assets/config.js` to `http://localhost:8787` (local addresses are always allowed).
+To try Share information against a local backend, run the Worker with `npx wrangler dev` in `worker/` and set `window.ATLAS_SUBMIT_URL` in `assets/config.js` to `http://localhost:8787` (local addresses are always allowed). The separate Prisma-backed whistleblower API is documented below.
 
 ---
 
@@ -46,8 +48,8 @@ Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a f
 ## Deploying
 
 `main` is the source of truth. Every push to `main` runs
-`.github/workflows/deploy.yml`, which copies `index.html`, `sw.js`,
-`manifest.json`, `assets/` and `fonts/` to the `gh-pages` branch that GitHub
+`.github/workflows/deploy.yml`, which copies `index.html`, `admin.html`,
+`reports-admin.html`, `sw.js`, `manifest.json`, `assets/` and `fonts/` to the `gh-pages` branch that GitHub
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
@@ -55,7 +57,27 @@ check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
 Share information sends a reader's note to a small backend, a Cloudflare Worker in `worker/` with one KV store. Every note is kept as waiting and shows nowhere until the editor approves it on `admin.html` (the review page, behind a password). There the text, the space it belongs to and a source link can be corrected before approving; a rejected note is deleted. An approved note appears on its space's record under "Shared by readers and approved by the editor", within a minute. No name, email or IP address is stored; the only trace of a sender is a salted hash of their address, kept for an hour to allow ten notes an hour.
 
-While `window.ATLAS_SUBMIT_URL` in `assets/config.js` is empty, the page behaves as before: notes are saved in the reader's browser and nothing is sent.
+While `window.ATLAS_SUBMIT_URL` in `assets/config.js` is empty, information and gossip notes stay in the reader's browser. Whistleblower reports are never saved locally: configure `window.ATLAS_REPORT_API_URL` to enable their database-backed submission, or the page will tell the reader that report service is unavailable.
+
+### Prisma-backed whistleblower reports
+
+The optional Express API stores whistleblower reports in SQLite with Prisma. Unlike the Worker note flow above, reports submitted through this API are not copied into browser storage. They remain private while pending, and approved reports are loaded into the matching institution record (or records in the same city when no institution was supplied).
+
+From the repository root:
+
+```bash
+npm install
+cp .env.example .env
+```
+
+Set `DATABASE_URL`, a long random `ADMIN_SECRET_KEY` (for example, generate one with `openssl rand -hex 32`), and `ALLOWED_ORIGINS` in `.env`. The API refuses to start if the admin secret is missing. Then initialize the database and start the API:
+
+```bash
+npm run db:push
+npm start
+```
+
+Set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to the API origin, for example `http://localhost:4000`. Whistleblower notes then use `POST /api/reports`; information and gossip notes keep using the existing Share information Worker/browser flow. The report moderation page is `reports-admin.html` and is linked from `admin.html`; it asks for the admin bearer token and does not embed a secret in the page. `admin/AdminModerator.jsx` provides the requested React moderation component for a React host. The API allows browser requests only from origins listed in `ALLOWED_ORIGINS`. The repository's GitHub Pages deployment serves static files only, so host this Node API separately and configure its public origin in `assets/config.js` before enabling submissions.
 
 Setting it up once (free Cloudflare plan), in the Cloudflare dashboard, no install needed:
 
@@ -82,7 +104,7 @@ The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 t
 
 ## Money maps
 
-The page opens on **one big map of every space and every sponsor** (`#all`): each space is a white circle, each sponsor a circle coloured by group (public bodies, corporate, foundations and donors), bigger the more spaces it funds, joined by a line for each tie. Tap a circle to light up its ties and zoom to them; search a sponsor in the second bar; filter the groups with the pills. Sponsors are merged across records by name (for example "NEA" and "National Endowment for the Arts"); public bodies are told apart by country, and generic ones such as "City government" stay with their own record so they never become one false hub. Records that name no funder are not in the big map. Two filters highlight part of the map and grey out the rest: **Epstein files** (33 spaces whose record has Epstein entries or an Epstein-linked flag, joined to the 23 people named in those entries; a space with only the flag is joined to Jeffrey Epstein) and **Right-wing sponsors**. The atlas records have no political field, so the second is a short curated list in `tools/build_money_maps.py` (`RIGHT`): only funders that appear in the records (as a sponsor or named in a record's own text) and have a published source for predominantly Republican or conservative giving, with that source shown in the panel. Currently Koch, Ken Griffin / Citadel, Ronald Lauder, Steven Cohen and Rebekah Mercer. It is not a complete list; add a name to it with a source, or remove one, and re-run the script. Each record also has its own map, at `money-maps.html#<record id>`.
+The page opens on **one big map of every space and every sponsor** (`#all`): each space is a white circle, each sponsor a circle coloured by group (public bodies, corporate, foundations and donors), bigger the more spaces it funds, joined by a line for each tie. Tap a circle to light up its ties and zoom to them; search a sponsor in the second bar; filter the groups with the pills. Sponsors are merged across records by name (for example "NEA" and "National Endowment for the Arts"); public bodies are told apart by country, and generic ones such as "City government" stay with their own record so they never become one false hub. Records that name no funder are not in the big map. Two filters highlight part of the map and grey out the rest: **Mentions in the Epstein files** (33 spaces whose record has Epstein entries or an Epstein-linked flag, joined to the 23 people named in those entries; a space with only the flag is joined to Jeffrey Epstein) and **Right-wing funders**. The atlas records have no political field, so the second is a short curated list in `tools/build_money_maps.py` (`RIGHT`): only funders that appear in the records (as a sponsor or named in a record's own text) and have a published source for predominantly Republican or conservative giving, with that source shown in the panel. Currently Koch, Ken Griffin / Citadel, Ronald Lauder, Steven Cohen and Rebekah Mercer. It is not a complete list; add a name to it with a source, or remove one, and re-run the script. Each record also has its own map, at `money-maps.html#<record id>`.
 
 `money-maps.html` is a second page, with its own `assets/money-maps.css` and `assets/money-maps.js`, and a local copy of d3 (`assets/d3.min.js`, v7.9.0, ISC licence). It loads nothing from a CDN. Its data is `assets/money-maps.json`, built from `institutions.json` by:
 
@@ -126,7 +148,7 @@ re-running it replaces them:
   shows it in `data/research_attach/case_decisions.json`.
 - `case_study`: the MoMA and Whitney case studies, whole.
 
-Three **critical frames** on cultural institutions sit beside the artists' critiques on the records they speak to: the museum as archive turned stage, philanthropy as the gift that follows the taking, and art the powerful should fear. They are paraphrases of published theory and, by the editor's decision, the page names no author and shows no citation; the works each frame rests on are listed in `data/research_attach/institutional_critiques.json` under `rests_on`. `tools/attach_critiques.py` writes them (as `visual_critiques` entries of kind `theory`) by rules in that file: by name or focus and size, by Clean Funding Grade, or by host city; re-running replaces them. The chat answers "What do critics say?" and "What critics say about this space?".
+Three **critical frames** on cultural institutions sit beside the artists' critiques on the records they speak to: the museum as archive turned stage, philanthropy as the gift that follows the taking, and art the powerful should fear. They are paraphrases of published theory and, by the editor's decision, the page names no author and shows no citation; the works each frame rests on are listed in `data/research_attach/institutional_critiques.json` under `rests_on`. `tools/attach_critiques.py` writes them (as `visual_critiques` entries of kind `theory`) by rules in that file: by name or focus and size, by funding transparency rating, or by host city; re-running replaces them. The chat answers "What do critics say?" and "What critics say about this space?".
 
 The chat also answers "What do employees report?" with a summary of the 127 paraphrased accounts the records carry from Glassdoor, Kununu and Reddit (58 institutions, eight countries): what they praise, what they report against, what a few allege, and how to read them. It is the constant `EMPLOYEE_REPORT` in `index.html`, dated 17 October 2026; rewrite it when the accounts change.
 - `funder_links`: funders and trustees the map names at three or more
@@ -154,7 +176,11 @@ Culture-Atlas/
 ├── index.html          # The whole app, edited in place. The only copy of the atlas page.
 ├── money-maps.html     # The money maps page (assets/money-maps.*, built by tools/build_money_maps.py)
 ├── admin.html        # Review page for notes sent with Share information
+├── reports-admin.html # Moderation page for Prisma-backed whistleblower reports
 ├── worker/           # The submissions backend (Cloudflare Worker) and its tests
+├── server/            # Optional Express API for whistleblower reports
+├── prisma/            # Prisma schema and SQLite database (database file is ignored)
+├── admin/             # Reusable React AdminModerator component
 ├── sw.js               # Service worker (network-first for the page, same-origin cache only)
 ├── manifest.json       # PWA manifest
 ├── assets/ fonts/      # atlas.css, maplibre-gl.css, images and the typefaces the page loads
@@ -191,19 +217,19 @@ Each entry in `institutions.json` has the following fields:
 
 ---
 
-## Clean Funding Grade
+## Funding transparency ratings
 
-Each record with a funder list carries a grade from 1 (cleanest) to 5, computed by `tools/grade_funding.py` at the end of `tools/clean_data.py`, from what the record proves and nothing else. It says two things about the money: what it is, and whether the record shows it. A record with no funder list (Roster unverified) is not graded, because silence is not cleanliness.
+Each record with an independently sourced funder roster carries a rating from A to F, with no E (stored as 1 to 5), computed by `tools/grade_funding.py` at the end of `tools/clean_data.py`, from what the record proves and nothing else. A record whose funder roster is not independently sourced is unrated.
 
-| Grade | Name | Rule |
+| Rating | Summary | Rule |
 |---|---|---|
-| 1 | Clean, money shown | No flag-category funder and no documented objection, and the record shows figures (amounts or shares in the funding text) or links accounts or a public registry filing |
-| 2 | Clean, roster shown | The same, names only |
-| 3 | A name to know | A funder worth noting outside the flag categories, or a tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned name, a protest, a sponsor dropped, censorship |
-| 4 | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
-| 5 | Several, or flagged and contested | More than one flagged funder category, or a flagged funder plus a documented objection |
+| A | Funding amounts disclosed; no funders flagged | No flag-category funder and no documented objection, and the record shows figures (amounts or shares in the funding text) or links accounts or a public registry filing |
+| B | Funders listed; no funders flagged | The same, names only |
+| C | Funder identified; details limited | A funder worth noting outside the flag categories, or a tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned name, a protest, a sponsor dropped, censorship |
+| D | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
+| F | Multiple flagged funders, or a flagged funder with a disputed record | More than one flagged funder category, or a flagged funder plus a documented objection |
 
-Public money alone is never a flag, so a wholly public museum sits at 1 or 2. Disclosure only moves a record up, from 2 to 1. The record shows the grade on its colour block with the sentence that decided it (`grade_basis`); the Layers panel has a Clean Funding Grade layer that fills each graded dot with its colour; the chat answers "What is its funding grade?", "Show grade 1 spaces in Berlin" and "How are spaces graded?".
+Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating on its colour block with the sentence that decided it (`grade_basis`); the Layers panel has a Funding transparency ratings layer that fills each rated dot with its colour; the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
 
 ## Verification & Methodology
 

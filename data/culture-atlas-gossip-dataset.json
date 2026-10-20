@@ -2962,7 +2962,7 @@
       "review_locator": "Research employee, posted 2025-06",
       "experience_period": null,
       "historical_experience": false,
-      "summary": "Praises engaged colleagues; criticises hierarchy, decision transparency, and infrastructure.",
+      "summary": "Unverified platform sentiment: a self-described research employee praises colleagues and criticises hierarchy, decision transparency, and infrastructure. The account and employment history are not independently verified.",
       "positive_themes": [
         "colleagues"
       ],
@@ -2977,9 +2977,11 @@
       "institution_guidance_source_ids": [],
       "status": "unverified_individual_account",
       "context_case_ids": [],
-      "context_relation": "Background or timing only; not independent corroboration of the case.",
-      "limits": [],
-      "follow_up": "Seek current research-team accounts and decision-process evidence."
+      "context_relation": "Unverified platform sentiment; not an independently verified employee finding or evidence about the institution.",
+      "limits": [
+        "Self-described role and employment history are not independently verified."
+      ],
+      "follow_up": "Prioritize primary-source BKM funding, governance and provenance disclosures; treat this review only as unverified platform sentiment."
     },
     {
       "id": "R32",
@@ -3005,7 +3007,7 @@
       "review_locator": "Employee, posted 2025-01",
       "experience_period": null,
       "historical_experience": false,
-      "summary": "Praises the team, stimulating content, and atmosphere; wants more training.",
+      "summary": "Unverified platform sentiment: a self-described employee praises the team, content, and atmosphere, and wants more training. The account and employment history are not independently verified.",
       "positive_themes": [
         "colleagues",
         "content",
@@ -3020,9 +3022,11 @@
       "institution_guidance_source_ids": [],
       "status": "unverified_individual_account",
       "context_case_ids": [],
-      "context_relation": "Background or timing only; not independent corroboration of the case.",
-      "limits": [],
-      "follow_up": "Check training access across staff groups."
+      "context_relation": "Unverified platform sentiment; not an independently verified employee finding or evidence about the institution.",
+      "limits": [
+        "Self-described role and employment history are not independently verified."
+      ],
+      "follow_up": "Prioritize primary-source BKM funding, governance and provenance disclosures; treat this review only as unverified platform sentiment."
     },
     {
       "id": "R33",
@@ -5754,7 +5758,7 @@
       "published_precision": "day",
       "accessed": "2026-10-09",
       "access": "public_review_excerpt",
-      "note": "Individual account; employment and identity not independently verified."
+      "note": "Kununu profile excerpt retained only as unverified platform sentiment; reviewer identity, employment and account are not independently verified."
     },
     {
       "id": "S55",

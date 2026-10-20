@@ -1,0 +1,163 @@
+[
+  {
+    "id": "chapter",
+    "retrieved": "2026-10-20",
+    "website": "https://www.chapter.cymru",
+    "website_status": "ok",
+    "funding": "Registered charity with £3.57M income in the year to March 2025; Arts Council of Wales offered £400,000 for 2024/25, with National Lottery and BFI support and earned income from film, bars and workspace.",
+    "tier": "A (clean, source cited)",
+    "flags": [],
+    "why_flagged": "",
+    "other_findings": [
+      "The domain in the record, chapter.org, now redirects (302) to askchapter.org, the site of an unrelated US Medicare insurance agency; the arts centre now uses chapter.cymru."
+    ],
+    "funders": ["Arts Council of Wales", "National Lottery", "British Film Institute", "David Seligman"],
+    "bottom_line": "Chapter is a long-running charity funded mainly through the Arts Council of Wales, the National Lottery and BFI, and its own earned income; no source found links it to fossil fuel money, so the existing \"Fossil fuels\" flag is unsupported. The main thing to watch is that its old domain, chapter.org, now redirects to an unrelated US insurance business.",
+    "not_related": ["Chapter Medicare (askchapter.org) — a US health insurance agency that now receives chapter.org traffic"],
+    "sources": [
+      "https://www.chapter.cymru",
+      "https://askchapter.org/support-us",
+      "https://en.wikipedia.org/wiki/Chapter_Arts_Centre",
+      "https://www.visitwales.com/chapter-arts-centre-cardiff",
+      "https://opencharities.uk/ew/500813",
+      "https://findthatcharity.uk/orgid/GB-CHC-500813",
+      "https://arts.wales/sites/default/files/2023-09/Investment_Review_2023_Report_and_Decisions%5B1%5D.pdf"
+    ],
+    "changes": [
+      "Website changed from https://www.chapter.org (now redirects to an unrelated US insurer) to https://www.chapter.cymru.",
+      "Removed 'Fossil fuels' flag: no source found any fossil fuel funding; the record's why_flagged text only repeated the funding line.",
+      "Arts Council of Wales figure: sources show a £400,000 offer for 2024/25; the record's £681k core grant could not be confirmed.",
+      "Cardiff Council, Welsh Government, Garfield Weston, Foyle and Gulbenkian grants in the record were not confirmed in this run."
+    ]
+  },
+  {
+    "id": "visual",
+    "retrieved": "2026-10-20",
+    "website": "https://www.visualcarlow.ie/",
+    "website_status": "ok",
+    "funding": "Run by Carlow Arts Centre Ltd, whose sole shareholder is Carlow County Council; the €18M building was a local-authority project with a €3.17M state ACCESS grant, and running funders shown are the Arts Council, Carlow County Council and Carlow LEO.",
+    "tier": "A (clean, source cited)",
+    "flags": [],
+    "why_flagged": "",
+    "other_findings": [],
+    "funders": ["Carlow County Council", "Arts Council (Ireland)", "Department of Arts, Sport & Tourism (ACCESS programme)", "Carlow LEO", "Carlow County Development Partnership", "Carlow College (site donation)"],
+    "bottom_line": "VISUAL is a publicly owned arts centre, controlled by Carlow County Council and funded by local and national public bodies. No source found supports the existing \"Epstein-linked\" flag; it may come from confusion with the School of Visual Arts in New York. Nothing found that is worth watching beyond the lack of published funding amounts.",
+    "not_related": ["School of Visual Arts (New York) — US art school whose MFA chair David A. Ross resigned in 2026 over Epstein emails; no connection to VISUAL Carlow"],
+    "sources": [
+      "https://www.visualcarlow.ie/",
+      "https://www.visualcarlow.ie/about",
+      "https://visualcarlow.ie/about/people-governance",
+      "https://visualcarlow.ie/documents/STRATEGIC-PLAN-July-2023_2027.pdf",
+      "https://carlow.ie/arts-and-culture/arts-development/arts-centres",
+      "https://www.oireachtas.ie/en/debates/question/2023-05-18/54/",
+      "https://abcnews.go.com/amp/Entertainment/wireStory/david-ross-resigns-school-visual-arts-after-ties-129860126"
+    ],
+    "changes": [
+      "Removed 'Epstein-linked' flag: no source links VISUAL Carlow, its board or funders to Jeffrey Epstein.",
+      "Added funding line (record had none): council-owned company, local-authority and state capital funding, Arts Council support.",
+      "The record's https://visualcarlow.ie/support page returned an error; the homepage works.",
+      "The board now lists Coilín O'Reilly as chair (appointed 2026)."
+    ]
+  },
+  {
+    "id": "maiiam",
+    "retrieved": "2026-10-20",
+    "website": "https://maiiam.com/en",
+    "website_status": "ok",
+    "funding": "Privately owned by the Beurdeley-Bunnag family; press describes it as funded by Eric Bunnag Booth. The Yanghyun Foundation supported its 2016 opening exhibition.",
+    "tier": "A (clean, source cited)",
+    "flags": [],
+    "why_flagged": "",
+    "other_findings": [],
+    "funders": ["Eric Bunnag Booth", "Jean Michel Beurdeley", "Beurdeley-Bunnag family", "Yanghyun Foundation (2016 exhibition)"],
+    "bottom_line": "MAIIAM is a private family museum that, according to press reports, is paid for by its founders, mainly Eric Bunnag Booth. No red flags found. The only things worth watching are that it publishes no financial information and that no source explains where the family's money comes from.",
+    "not_related": [],
+    "sources": [
+      "https://maiiam.com/en",
+      "https://www.bangkokpost.com/life/arts-and-entertainment/1022665/brand-new-world",
+      "https://www.chiangmaicitylife.com/citynow/social-life/live-events/official-opening-maiiam-museum-contemporary-art",
+      "https://www.chiangmaicitylife.com/clg/see-do/art/maiiams-impact-chiang-mais-art-scene/",
+      "https://www.larryslist.com/artmarket/?p=5797",
+      "https://archive.artasiapacific.com/issue/eric-booth-committed-to-the-new?locale=en"
+    ],
+    "changes": [
+      "Added: Chiang Mai CityLife (2019) describes it as 'a private museum funded by Booth'.",
+      "Added: Yanghyun Foundation supported the opening Apichatpong retrospective (2016).",
+      "Note: ArtAsiaPacific calls Beurdeley Booth's stepfather, while the museum and Bangkok Post call Booth the couple's son."
+    ]
+  },
+  {
+    "id": "museum-of-contemporary-art-chicago-mca",
+    "retrieved": "2026-10-20",
+    "website": "https://mcachicago.org",
+    "website_status": "ok",
+    "funding": "FY2025 revenue $28.8M and expenses $34.9M, funded mainly by individuals, family foundations and endowment returns, plus corporate donors (Chanel, Google, Hauser & Wirth, NBC Universal, Northern Trust) and state and federal grants.",
+    "tier": "A (clean, source cited)",
+    "flags": [],
+    "why_flagged": "",
+    "other_findings": [
+      "June 2020: after a campaign by its Teen Creative Agency, MCA agreed to stop contracting Chicago Police Department services (Hyperallergic).",
+      "March 2021: artists withdrew from 'The Long Dream' over the layoff of more than 40 staff; the artists say 57 withdrew, while the museum counts six artists and one collective (Artnet)."
+    ],
+    "funders": [
+      "Bluhm Family Foundation", "Dimitris Daskalopoulos", "Kenneth C. Griffin", "Ford Foundation", "Mellon Foundation",
+      "Edlis Neeson Foundation", "Cari and Michael Sacks", "Karyn and Bill Silverstein", "Zell Family Foundation",
+      "Leonard and Ruth Horwich Family Foundation", "Eli and Edythe Broad Foundation", "MacArthur Foundation", "Terra Foundation for American Art",
+      "Chanel", "Google", "Hauser & Wirth", "NBC Universal", "Northern Trust", "Max Mara",
+      "Chicago Park District", "Illinois Department of Commerce & Economic Opportunity", "Institute of Museum and Library Services", "Illinois Arts Council"
+    ],
+    "bottom_line": "The MCA is funded mainly by Chicago philanthropists, foundations and its endowment, and it publishes donors by tier in its annual reports. No funding-related red flags were found. Past labour and policing disputes (2020–21) are on record, and the record cites a source about a different museum.",
+    "not_related": ["Art Institute of Chicago — a separate museum; the May 2024 encampment arrests were at the Art Institute, not the MCA"],
+    "sources": [
+      "https://mcachicago.org/about/annual-reports/2025-annual-report/",
+      "https://mcachicago.org/visit/faq/",
+      "https://live.mcachicago.org/about",
+      "https://impala.digital/public/profiles/36-6154098/overview",
+      "https://hyperallergic.com/mca-chicago-gets-another-huge-gift",
+      "https://www.theartnewspaper.com/2025/03/11/mca-chicago-anonymous-gift-10m-performance-fund",
+      "https://hyperallergic.com/mca-chicago-police-department",
+      "https://news.artnet.com/art-world/mca-chicago-artists-withdraw-1951456",
+      "https://abc7chicago.com/post/68-arrested-at-pro-palestinian-protest-at-art-institute-of-chicago/14766246/"
+    ],
+    "changes": [
+      "Added FY2025 financials and named donor tiers from the 2025 annual report.",
+      "BMO Harris and Bank of America are not in the FY2025 donor list reviewed; corporate donors now named are Chanel, Google, Hauser & Wirth, NBC Universal and Northern Trust.",
+      "The record's Block Club Chicago source is about the Art Institute of Chicago, not the MCA; recommend removing it.",
+      "Board chair moved from Cari Sacks to Bill Silverstein (2025).",
+      "The corporate-giving page in the record could not be fetched in this run."
+    ]
+  },
+  {
+    "id": "the-renaissance-society",
+    "retrieved": "2026-10-20",
+    "website": "https://renaissancesociety.org",
+    "website_status": "ok",
+    "funding": "Independent 501(c)(3) with a budget of about $2M, funded by foundations (Mellon $750k over 3 years from 2024, Teiger, Warhol, Mansueto), Chicago family foundations for the Next Century Fund, the Illinois Arts Council and an annual benefit; the University of Chicago gives about 5% plus free space.",
+    "tier": "A (clean, source cited)",
+    "flags": [],
+    "why_flagged": "",
+    "other_findings": [],
+    "funders": [
+      "Mellon Foundation", "Teiger Foundation", "Andy Warhol Foundation for the Visual Arts", "Illinois Arts Council",
+      "University of Chicago (Provost's Discretionary Fund)", "Mansueto Foundation", "Edlis Neeson Foundation",
+      "Pritzker Traubert Family Foundation", "Zell Family Foundation", "Chauncey & Marion Deering McCormick Family Foundation"
+    ],
+    "bottom_line": "The Ren is a small, free, university-affiliated kunsthalle funded by major arts foundations and Chicago philanthropic families, and it publishes its supporters. No red flags were found. The existing record is broadly confirmed; the second EIN in its sources should be checked.",
+    "not_related": [],
+    "sources": [
+      "https://renaissancesociety.org/about/",
+      "https://renaissancesociety.org/news/82/the-ren-receives-mellon-grant/",
+      "https://renaissancesociety.org/news/16/the-ren-announces-largest-gifts-in-100-year-history",
+      "https://theartnewspaper.com/2016/05/23/little-museum-big-gift-renaissance-society-receives-dollar15m-in-pledged-funding-for-artist-commissions-and-shows",
+      "https://en.wikipedia.org/wiki/Renaissance_Society",
+      "https://www.guidestar.org/profile/36-6109822",
+      "https://chicago.suntimes.com/art/2026/09/09/renaissance-society-chicago-gallery-myriam-ben-salah",
+      "https://projects.propublica.org/nonprofits/organizations/366109822"
+    ],
+    "changes": [
+      "Confirmed the funders in the record; added the Mellon grant amount ($750k over three years, Nov 2024), the Mansueto $1M publications gift (2019) and the Next Century Fund amounts ($500k each, 2016).",
+      "Budget is described as about $2M (Sun-Times 2026), in line with the record's FY2025 expenses of $1.9M.",
+      "The Society's EIN is 36-6109822; the record's other ProPublica link (EIN 36-2174240) could not be verified and may be a different organisation."
+    ]
+  }
+]

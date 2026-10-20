@@ -9,7 +9,13 @@
 
   function gossip() { return document.body.classList.contains('gossip-mode-active'); }
 
-  /* Comic-book balloons. Each turn is one of three kinds, chosen by what it says: a speech balloon (a lumpy blob with a long
+  /* Only a turn that holds gossip gets a balloon. The reply builder in index.html marks it: the turn carries .is-gossip and its
+     reported, unverified items carry data-gossip (the record's reported items, a list of spaces with reported items). A plain
+     record, a city list, the status line and the reader's own questions carry neither and are left exactly as in normal mode.
+     The words of the text never decide this on their own: the status line says "none is independently verified" and is not gossip. */
+  function isGossip(el) { return el.classList.contains('is-gossip') || !!el.querySelector('[data-gossip]'); }
+
+  /* Comic-book balloons. Each gossip turn is one of three kinds, chosen by what it says: a speech balloon (a lumpy blob with a long
      curved tail, as in the reference), a shout (a jagged burst) for what is flagged or reported, and a thought cloud
      (scalloped, with a trail of small bubbles) for what is unverified. Every shape starts from the rounded rectangle that
      holds the text and only ever grows outward from it, so the text always sits inside. */
@@ -175,7 +181,7 @@
   }) : null;
 
   function bubble(el) {
-    if (!gossip() || el.dataset.bubble) return;
+    if (!gossip() || el.dataset.bubble || !isGossip(el)) return;
     el.dataset.bubble = '1';
     build(el);
     if (watch) watch.observe(el);
@@ -192,10 +198,13 @@
     delete el.dataset.kind;
   }
 
-  /* Typing: the reply's text nodes are emptied and refilled in reading order. The element keeps its final height,
-     so nothing below it jumps, and the bubble outline is drawn once the last character lands. */
+  /* Typing: the reply's text nodes are emptied and refilled in reading order, and the reply grows as the text
+     lands, the chat following the tip. The pace is 15 ms a character, slowing on a long answer so that none takes
+     more than twelve seconds of typing, and the reply pauses on three dots after each paragraph, as if thinking
+     about the next (user's ask, 18 Oct 2026). In gossip mode the balloon keeps its final height instead, so its
+     shape is drawn once and not on every frame. The outline is drawn once the last character lands. */
   function textNodes(root) {
-    var out = [], skip = '.curator-suggest-chip,[data-exclude-speech],button,script,style,svg,.bubble-svg';
+    var out = [], skip = '.curator-suggest-chip,[data-exclude-speech],button,script,style,svg,.bubble-svg,.thinking';
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (n) {
         if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
@@ -208,20 +217,40 @@
     return out;
   }
 
-  /* Thinking: before a reply types, the turn holds three pulsing dots and the word, then opens into the reply. */
-  function think(el, then) {
-    if (reduce) { then(); return; }
+  // The paragraph a text node belongs to: its nearest block inside the reply, or the reply itself.
+  function blockOf(node, root) {
+    var b = node.parentElement && node.parentElement.closest('p,li,h1,h2,h3,h4,blockquote,dt,dd,pre');
+    return b && root.contains(b) && b !== root ? b : root;
+  }
+
+  /* Thinking: before a reply types, the turn holds three pulsing dots and the word, then opens into the reply.
+     The hold is put on in the mutation callback, before the reply is ever painted: the app appends the whole
+     answer at once, and without this the reader saw it flash in full, collapse to the word, and type again. */
+  function hold(el, force) {
+    if (reduce || el.dataset.held) return;
+    if (!force && (!el.classList.contains('curator-message-wrap') || !el.getClientRects().length)) return;
     var tag = document.createElement('span');
     tag.className = 'thinking';
     tag.setAttribute('role', 'status');
     tag.innerHTML = 'Thinking<i></i><i></i><i></i>';
     el.classList.add('is-thinking');
     el.appendChild(tag);
-    setTimeout(function () {
-      tag.remove();
-      el.classList.remove('is-thinking');
-      then();
-    }, 1800);
+    el.dataset.held = String(performance.now());
+  }
+
+  function release(el) {
+    if (!el.dataset.held) return;
+    var tag = el.querySelector(':scope>.thinking');
+    if (tag) tag.remove();
+    el.classList.remove('is-thinking');
+    delete el.dataset.held;
+  }
+
+  function think(el, then) {
+    if (reduce) { then(); return; }
+    hold(el, true);
+    var left = Math.max(0, 1000 - (performance.now() - +el.dataset.held));
+    setTimeout(function () { release(el); then(); }, left);
   }
 
   // Scroll the chat itself, vertically only (scrollIntoView would also nudge the panels around it sideways).
@@ -239,21 +268,57 @@
     var full = nodes.map(function (n) { return n.nodeValue; });
     var total = full.reduce(function (a, s) { return a + s.length; }, 0);
     if (!total || reduce) { done(); return; }
-    el.style.minHeight = el.offsetHeight + 'px';
+    // The paragraphs, in order: runs of text nodes that share a block.
+    var paras = [];
+    nodes.forEach(function (n, i) {
+      var b = blockOf(n, el), last = paras[paras.length - 1];
+      if (last && last.block === b) { last.chars += full[i].length; }
+      else paras.push({ block: b, chars: full[i].length });
+    });
+    var pace = Math.min(15, 12000 / total), t = 0;
+    paras.forEach(function (p, k) {
+      p.t0 = t; p.t1 = t + p.chars * pace;
+      // a short pause after each paragraph but the last, longer after a long one
+      p.pause = k < paras.length - 1 ? Math.min(600, 150 + p.chars * 4) : 0;
+      t = p.t1 + p.pause;
+    });
+    var endAt = t;
+    if (el.dataset.bubble) el.style.minHeight = el.offsetHeight + 'px';   // only a drawn balloon keeps its final height
     el.classList.add('is-typing');
     var after = el.nextElementSibling;   // follow-up chips sit beside the reply, not in it
     var chips = after && after.querySelector && after.querySelector('.curator-suggest-chip') ? after : null;
     if (chips) chips.style.visibility = 'hidden';
     nodes.forEach(function (n) { n.nodeValue = ''; });
-    var duration = Math.min(7000, Math.max(1000, total * 24)), start = performance.now(), shown = 0;
+    var dots = null, dotsAfter = null;
+    function showDots(block) {
+      if (dots && dotsAfter === block) return;
+      hideDots();
+      dots = document.createElement('span');
+      dots.className = 'thinking';
+      dots.setAttribute('aria-hidden', 'true');
+      dots.innerHTML = '<i></i><i></i><i></i>';
+      if (block === el) el.appendChild(dots); else block.insertAdjacentElement('afterend', dots);
+      dotsAfter = block;
+      follow(dots);
+    }
+    function hideDots() { if (dots) { dots.remove(); dots = null; dotsAfter = null; } }
+    function finish() { hideDots(); el.classList.remove('is-typing'); el.style.minHeight = ''; if (chips) chips.style.visibility = ''; done(); }
+    var start = performance.now(), shown = -1;
     function frame(now) {
       // The app may rewrite a reply's markup once it has arrived; when the nodes being typed are gone, start over on the new ones.
       if (nodes.length && !nodes[0].isConnected) {
-        el.classList.remove('is-typing'); el.style.minHeight = '';
+        hideDots(); el.classList.remove('is-typing'); el.style.minHeight = '';
         if (tries < 3) setTimeout(function () { typeIn(el, done, tries + 1); }, 120); else done();
         return;
       }
-      var upto = Math.min(total, Math.ceil(total * (now - start) / duration));
+      var e = now - start, upto = 0, pausing = null;
+      for (var k = 0; k < paras.length; k++) {
+        var p = paras[k];
+        if (e >= p.t1) { upto += p.chars; if (p.pause && e < p.t1 + p.pause) { pausing = p.block; break; } }
+        else if (e > p.t0) { upto += Math.ceil((e - p.t0) / pace); break; }
+        else break;
+      }
+      upto = Math.min(total, upto);
       if (upto !== shown) {
         shown = upto;
         var left = upto, tip = null;
@@ -266,8 +331,8 @@
         // Follow the text as it is typed so the reader is never looking at an empty bubble.
         if (tip) follow(tip);
       }
-      if (shown < total) requestAnimationFrame(frame);
-      else { el.classList.remove('is-typing'); el.style.minHeight = ''; if (chips) chips.style.visibility = ''; done(); }
+      if (pausing) showDots(pausing); else hideDots();
+      if (e < endAt) requestAnimationFrame(frame); else finish();
     }
     requestAnimationFrame(frame);
   }
@@ -286,7 +351,7 @@
       var target = many ? null : replies[replies.length - 1];
       live.forEach(function (el) {
         if (el === target) think(el, function () { typeIn(el, function () { outline(el); }); });
-        else outline(el);
+        else { release(el); outline(el); }
       });
     }, 160);
   }
@@ -312,7 +377,7 @@
     var mo = new MutationObserver(function (muts) {
       muts.forEach(function (m) {
         [].forEach.call(m.addedNodes, function (n) {
-          if (n.nodeType === 1 && n.matches && n.matches(SEL)) { n.dataset.born = '1'; pending.push(n); }
+          if (n.nodeType === 1 && n.matches && n.matches(SEL)) { n.dataset.born = '1'; pending.push(n); hold(n); }
         });
       });
       if (pending.length) requestAnimationFrame(flush);
@@ -328,7 +393,7 @@
   /* Hairlines on load: the app's main rules are covered by a copy that draws itself in, then handed back. */
   function drawLines() {
     if (reduce) return;
-    // A new release makes the service worker reload the page once; a reload right after a draw must not draw again.
+    // A reload right after a draw (a tab left open across a release reloads itself) must not draw again.
     try {
       var last = +sessionStorage.getItem('atlas-lines') || 0;
       if (Date.now() - last < 20000) return;
@@ -367,6 +432,21 @@
     setTimeout(function () { root.classList.remove('lines-drawing'); layer.remove(); }, 3200);
   }
 
-  function start() { observe(); setTimeout(drawLines, 1500); }
+  /* The rules are held back from the first paint (html.atlas-held, set in index.html's head and cleared once the page is final),
+     so they are drawn in once: not shown, hidden 1.5 s later and drawn again. The draw begins in the same task that clears the hold,
+     before anything is painted, so there is no frame with the real rules showing between the two. A page that is already
+     released when this runs has shown its rules, and draws nothing. */
+  function drawWhenReleased() {
+    var root = document.documentElement;
+    if (!root.classList.contains('atlas-held')) return;
+    var mo = new MutationObserver(function () {
+      if (root.classList.contains('atlas-held')) return;
+      mo.disconnect();
+      drawLines();
+    });
+    mo.observe(root, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  function start() { observe(); drawWhenReleased(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

@@ -1,0 +1,475 @@
+[
+ {
+  "id": "aros",
+  "retrieved": "2026-10-20",
+  "website": "https://www.aros.dk",
+  "website_status": "ok",
+  "funding": "2025 income DKK 163.6M: earned revenue DKK 84.0M, public subsidy DKK 50.3M (Aarhus Municipality and state via the municipality), sponsors and foundations DKK 29.3M. Aarsleff is main corporate partner; Augustinus Fonden and Ny Carlsbergfondet fund exhibitions and acquisitions.",
+  "tier": "B (flagged, with a reason)",
+  "flags": [
+   "Tobacco"
+  ],
+  "why_flagged": "Augustinus Fonden, which funded several 2025 ARoS exhibitions, owns Chr. Augustinus Fabrikker, which held more than 25% of Scandinavian Tobacco Group in 2022.",
+  "other_findings": [
+   "Augustinus Fonden supported the Barbara Kruger, Isaac Julien, Anna Boghiguian and Jenkin van Zyl exhibitions in 2025 (ARoS annual report 2025).",
+   "Chr. Augustinus Fabrikker, wholly owned by Augustinus Fonden, held more than 25% of Scandinavian Tobacco Group as of 7 March 2022 (STG shareholder page)."
+  ],
+  "funders": [
+   "Aarhus Municipality",
+   "Danish state (via Aarhus Municipality)",
+   "Aarsleff",
+   "Augustinus Fonden",
+   "Ny Carlsbergfondet",
+   "Salling Fondene",
+   "Realdania"
+  ],
+  "bottom_line": "ARoS publishes audited accounts and names its funders; its income is mainly earned revenue and municipal/state subsidy. The flag rests on Augustinus Fonden, whose investment company is a major Scandinavian Tobacco Group shareholder; this is worth tracking if Augustinus grants grow.",
+  "not_related": [],
+  "sources": [
+   "https://www.aros.dk/media/dzfckonk/a-rsrapport_2025.pdf",
+   "https://www.aros.dk/en/about-aros/aros-history/",
+   "https://www.aros.dk/en/about-aros/annual-reports/",
+   "https://aros.dk/en/about/press-releases-2024/aarsleff-is-the-new-main-sponsor-for-aros",
+   "https://aros.dk/en/about/press-releases/the-salling-foundations-have-now-contributed-a-total-of-dkk-100-million-to-aros-expansion",
+   "https://en.wikipedia.org/wiki/Augustinus_Fonden",
+   "https://en.wikipedia.org/wiki/Chr._Augustinus_Fabrikker",
+   "https://augustinusfabrikker.dk/wp-content/uploads/2024/04/CAF_Faktaark_2024.pdf",
+   "https://scandinaviantobaccogroup.gcs-web.com/node/6706"
+  ],
+  "changes": [
+   "Existing why_flagged repeated the funding text; replaced with the actual tobacco link (Augustinus Fonden to Scandinavian Tobacco Group).",
+   "Added 2025 figures: income DKK 163.6M, public subsidy DKK 50.3M, sponsors and foundations DKK 29.3M.",
+   "Added Aarsleff as main corporate partner.",
+   "Could not confirm 'DKK 2M grants for 2026 projects' from Augustinus Fonden in retrieved sources.",
+   "The 2025 annual report does not name Salling Fondene as a 2025 donor; its DKK 100M is for the expansion (2023 press release title)."
+  ]
+ },
+ {
+  "id": "stedelijk-museum-amsterdam",
+  "retrieved": "2026-10-20",
+  "website": "https://www.stedelijk.nl",
+  "website_status": "ok",
+  "funding": "2024 income €37.5M, of which City of Amsterdam subsidy €23.2M (61.9%). VriendenLoterij is main partner; IMC, ABN AMRO, Mastercard, Polestar and Teijin are loyal partners; Mondriaan Fund, Ammodo and other funds also give.",
+  "tier": "B (flagged, with a reason)",
+  "flags": [
+   "Money laundering"
+  ],
+  "why_flagged": "Loyal partner ABN AMRO, whose partnership was renewed in March 2026, paid €480M in 2021 to settle a Dutch money-laundering case covering 2014 to 2020.",
+  "other_findings": [
+   "ABN AMRO paid €480M (€300M fine, €180M disgorgement) in April 2021 over anti-money-laundering failures and culpable money laundering in 2014-2020 (Netherlands Public Prosecution Service).",
+   "ABN AMRO extended its Stedelijk partnership by two years from 11 March 2026 and is main partner of the 2026 Yayoi Kusama exhibition (ABN AMRO).",
+   "In 2024 the museum declined to lend Ahmet Öğüt's 'Bakunin's Barricade' for a Gaza protest and the artist asked for its removal from display (The Art Newspaper, Nov 2024)."
+  ],
+  "funders": [
+   "City of Amsterdam",
+   "VriendenLoterij",
+   "IMC",
+   "ABN AMRO",
+   "Mastercard",
+   "Polestar",
+   "Teijin",
+   "Mondriaan Fund",
+   "Ammodo",
+   "Fonds 21",
+   "Cultuurfonds",
+   "Vereniging Rembrandt",
+   "Don Quixote Foundation",
+   "Bank of America Foundation",
+   "Pro Helvetia",
+   "Art Mentor Foundation Lucerne"
+  ],
+  "bottom_line": "The Stedelijk is mostly city-funded and publishes audited summaries naming its partners. Worth watching: ABN AMRO's renewed partnership given its 2021 money-laundering settlement.",
+  "not_related": [],
+  "sources": [
+   "https://s3-eu-west-1.amazonaws.com/production-static-stedelijk/images/_museum/Jaarverslagen/2024/Summary%202024_DEF.pdf",
+   "https://www.abnamro.com/en/news/abn-amro-and-stedelijk-museum-amsterdam-extend-partnership-by-two-years",
+   "https://www.prosecutionservice.nl/latest/news/2021/04/19/abn-amro-pays-eur-480-million-on-account-of-serious-shortcomings-in-money-laundering-prevention",
+   "https://theartnewspaper.com/2024/11/05/artist-demands-stedelijk-museum-remove-his-work-in-ongoing-row-over-loan-request-for-gaza-protest",
+   "https://www.stedelijk.nl/en/support/partners-and-sponsors"
+  ],
+  "changes": [
+   "Precise subsidy share is 61.9% (record said 62%).",
+   "Added ABN AMRO partnership renewal from March 2026 and its scope.",
+   "Added flag 'Money laundering' (record had a watch note but no flag).",
+   "Added 2024 Öğüt loan dispute."
+  ]
+ },
+ {
+  "id": "fondation-vincent-van-gogh-arles",
+  "retrieved": "2026-10-20",
+  "website": "https://www.fondation-vincentvangogh-arles.org",
+  "website_status": "ok",
+  "funding": "Backed by the Hoffmann family since Luc Hoffmann relaunched it in 2008; Maja Hoffmann is board president. Corporate memberships of €500 and €1,500 attract a 60% French tax reduction; no accounts or budget published.",
+  "tier": "U (unverified)",
+  "flags": [],
+  "why_flagged": "",
+  "other_findings": [
+   "Jean de Loisy replaced Bice Curiger as artistic director from April 2025; Curiger joins the board (The Art Newspaper France, March 2025).",
+   "Le Temps reported local criticism, from the magazine L'Arlésienne, of private Hoffmann influence over Arles."
+  ],
+  "funders": [
+   "Luc Hoffmann",
+   "Maja Hoffmann",
+   "Hiscox",
+   "Blackwall Green",
+   "Christie's"
+  ],
+  "bottom_line": "No reporting found of wrongdoing by the foundation itself. It is backed by the Hoffmann family's Roche-derived fortune and relies on French tax-deductible patronage; it publishes no accounts. Worth watching is the concentration of Hoffmann influence over Arles cultural life.",
+  "not_related": [
+   "Van Gogh Museum, Amsterdam (lender, separate museum)",
+   "Vincent van Gogh Foundation, Amsterdam (owns the Van Gogh family collection)"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Fondation_Vincent_van_Gogh_Arles",
+   "https://en.wikipedia.org/wiki/Maja_Hoffmann",
+   "https://www.fondation-vincentvangogh-arles.org/wp-content/uploads/2023/02/Brochure-Adhesion-Entreprises-1.pdf",
+   "https://artnewspaper.fr/2025/03/19/jean-de-loisy-nomme-directeur-artistique-de-la-fondation-vincent-van-gogh-a-arles",
+   "https://www.letemps.ch/suisse/arles-vingtseptieme-canton-suisse",
+   "https://www.fondation-vincentvangogh-arles.org/en/partners/"
+  ],
+  "changes": [
+   "Opened to the public in 2014 (record says set up 2010, which is when it was established under its name).",
+   "Artistic director changed: Jean de Loisy from April 2025, succeeding Bice Curiger.",
+   "Corporate partners Hiscox, Blackwall Green, Christie's not re-confirmed: partners page could not be retrieved this run; tier set to U.",
+   "Added corporate membership tiers and 60% tax reduction."
+  ]
+ },
+ {
+  "id": "luma-arles",
+  "retrieved": "2026-10-20",
+  "website": "https://www.luma.org/arles",
+  "website_status": "ok",
+  "funding": "Created and financed by Maja Hoffmann's Zurich-based LUMA Foundation through the LUMA Arles endowment fund (2013). Cost reported at about €150M (Artnet, Le Temps), not confirmed by Hoffmann.",
+  "tier": "A (clean, source cited)",
+  "flags": [],
+  "why_flagged": "",
+  "other_findings": [
+   "Le Temps reported Hoffmann also owns or holds stakes in Arles hotels (Hôtel du Cloître, Arlatan, 10% of Nord Pinus) and restaurants, and that the city financed fibre-optic cable for Arlatan guests.",
+   "Local magazine L'Arlésienne questioned the democratic legitimacy of private actors shaping Arles (reported by Le Temps).",
+   "No reporting found of the terms on which the former SNCF site passed to LUMA."
+  ],
+  "funders": [
+   "LUMA Foundation",
+   "Maja Hoffmann"
+  ],
+  "bottom_line": "LUMA Arles is funded by one private patron and publishes no accounts, so its finances cannot be checked. Worth watching: the undisclosed cost and land terms, and the extent of Hoffmann business interests in Arles.",
+  "not_related": [
+   "LUMA Westbau, Zurich (separate venue of the same foundation)"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/LUMA_Arles",
+   "https://en.wikipedia.org/wiki/Maja_Hoffmann",
+   "https://news.artnet.com/art-world/luma-arles-opening-1984134",
+   "https://www.letemps.ch/suisse/arles-vingtseptieme-canton-suisse",
+   "https://hubspot.luma-arles.org/en/arles/faq",
+   "https://www.luma.org/en/arles/about-us/parc-des-ateliers/history-of-the-site-and-luma-arles"
+  ],
+  "changes": [
+   "Record had no sources; added Artnet, Wikipedia, Le Temps and LUMA pages.",
+   "Added that the LUMA Arles endowment fund was created in 2013 and that ACCM and CCIPA are named partners.",
+   "Added Le Temps reporting on Hoffmann's hotel and restaurant holdings in Arles."
+  ]
+ },
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "retrieved": "2026-10-20",
+  "website": "https://www.aucklandartgallery.com",
+  "website_status": "ok",
+  "funding": "Run and mainly funded by Auckland Council through Tātaki Auckland Unlimited. Partners Circle includes BMW, Van Cleef & Arpels, HSBC, Anthony Harper, Baker Tilly, Beca and others; trusts include Chartwell and Mackelvie; the Auckland Art Gallery Foundation holds an endowment of about NZ$4.5M.",
+  "tier": "B (flagged, with a reason)",
+  "flags": [
+   "Money laundering"
+  ],
+  "why_flagged": "HSBC, a Partners Circle member that backed A Century of Modern Art in 2025, agreed a US$1.92 billion US settlement in December 2012 over money laundering and sanctions breaches.",
+  "other_findings": [
+   "HSBC agreed in December 2012 to pay US$1.92 billion under a US deferred prosecution agreement; prosecutors said at least $881M of Mexican cartel proceeds moved through the bank (CNN Money).",
+   "HSBC and the Auckland Art Gallery Foundation supported A Century of Modern Art, 7 June to 28 September 2025 (TAU).",
+   "ArtsHub reported in 2018 that the operating budget fell 25% from NZ$9.2M (2012) to about NZ$6.9M."
+  ],
+  "funders": [
+   "Auckland Council",
+   "Tātaki Auckland Unlimited",
+   "NZ Lottery Grants Board",
+   "BMW",
+   "Van Cleef & Arpels",
+   "HSBC",
+   "Anthony Harper",
+   "Baker Tilly",
+   "Beca",
+   "Cordis",
+   "Omnigraphics",
+   "Trinity Hill",
+   "Chartwell Collection Trust",
+   "Mackelvie Trust",
+   "Auckland Art Gallery Foundation",
+   "Julian and Josie Robertson",
+   "Ministry of Foreign Affairs and Trade",
+   "Asia New Zealand Foundation"
+  ],
+  "bottom_line": "The gallery is a council-run public institution whose partners and trusts are named in its reviews. The only funder issue found is HSBC's 2012 US money-laundering settlement; HSBC sponsored a 2025 exhibition.",
+  "not_related": [
+   "Suter Art Gallery, Nelson (removed Diane Prince flag work in May 2025)"
+  ],
+  "sources": [
+   "https://cdn.aucklandunlimited.com/artgallery/assets/media/auckland-art-gallery-toi-o-tamaki-annual-review-2023-2024.pdf",
+   "https://aucklandunlimited.com/news/auckland-art-gallery-toi-o-tamaki-announces-major-international-exhibition-of-modern-art",
+   "https://www.artshub.co.uk/?p=1290390",
+   "https://money.cnn.com/2012/12/10/news/companies/hsbc-money-laundering/",
+   "https://www.1news.co.nz/2025/05/29/art-gallery-removes-controversial-nz-flag-artwork/",
+   "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf",
+   "https://www.aucklandartgallery.com/about/our-supporters"
+  ],
+  "changes": [
+   "Added flag 'Money laundering' for HSBC (record had a watch note only).",
+   "Added further partners (Beca, Cordis, Omnigraphics, Trinity Hill) and foundation endowment of about NZ$4.5M from the 2023-24 review.",
+   "2024-25 visitor figure of 497,998 not re-checked: the 2024-25 review could not be retrieved this run (2023-24: 507,507)."
+  ]
+ },
+ {
+  "id": "macba-museu-d-art-contemporani-de-barcelona",
+  "retrieved": "2026-10-20",
+  "website": "https://www.macba.cat",
+  "website_status": "ok",
+  "funding": "Public consortium of the Generalitat de Catalunya, Ajuntament de Barcelona, Spanish Ministry of Culture and Fundació MACBA; €13.2M budget per existing record, not re-checked this run.",
+  "tier": "U (unverified)",
+  "flags": [
+   "Fossil fuels"
+  ],
+  "why_flagged": "Existing record says Repsol is a funder and Naturgy executives sit on the board; not re-verified this run.",
+  "other_findings": [
+   "Wikipedia lists Valentín Roma as director from 2026, replacing Elvira Dyangani Ose (2021-2026).",
+   "Director Bartomeu Marí resigned in March 2015 amid a censorship row over an Ines Doujak work (Wikipedia)."
+  ],
+  "funders": [
+   "Generalitat de Catalunya",
+   "Ajuntament de Barcelona",
+   "Spanish Ministry of Culture",
+   "Fundació MACBA",
+   "Repsol"
+  ],
+  "bottom_line": "MACBA is a publicly run consortium museum. The fossil-fuel flag rests on the existing record and needs re-checking against MACBA's sponsors and foundation pages.",
+  "not_related": [
+   "MACBA, Museo de Arte Contemporáneo de Buenos Aires (Argentina)"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Barcelona_Museum_of_Contemporary_Art",
+   "https://en.wikipedia.org/wiki/MACBA",
+   "https://www.macba.cat/en/about-macba/sponsors-and-collaborators",
+   "https://www.macba.cat/en/macba-foundation/",
+   "https://www.macba.cat/en/about-macba/transparency"
+  ],
+  "changes": [
+   "Director changed: Valentín Roma from 2026 (Wikipedia).",
+   "Repsol/Naturgy flag and €13.2M budget not re-verified: MACBA pages blocked and search budget exhausted this run; tier set to U.",
+   "Removed https://www.barcelona.cat (city homepage, not a funding source) from sources."
+  ]
+ },
+ {
+  "id": "the-bowes-museum",
+  "retrieved": "2026-10-20",
+  "website": "https://www.thebowesmuseum.org.uk",
+  "website_status": "ok",
+  "funding": "Registered charity (1079639) with a founders' endowment, earned income and public and trust grants; Wikipedia gives 2023-24 income of about £4.3M. Named funders in the existing record were not re-checked this run.",
+  "tier": "U (unverified)",
+  "flags": [],
+  "why_flagged": "",
+  "other_findings": [
+   "The Friends of the Bowes Museum announced in April 2025 that it would close (Wikipedia)."
+  ],
+  "funders": [
+   "Arts Council England",
+   "Durham County Council",
+   "National Lottery Heritage Fund",
+   "Wolfson Foundation",
+   "Swire Charitable Trust",
+   "Art Fund",
+   "Darlington Building Society",
+   "Global Radio"
+  ],
+  "bottom_line": "No issues found. The museum is an endowed charity with public and trust support; the closure of its Friends group in 2025 is worth noting for future income.",
+  "not_related": [],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bowes_Museum",
+   "https://findthatcharity.uk/orgid/GB-CHC-1079639",
+   "https://thebowesmuseum.org.uk/support/current-supporters/"
+  ],
+  "changes": [
+   "Added 2023-24 income of about £4.3M and spending of about £3.3M (Wikipedia); FY2025 £3.9M not re-checked.",
+   "Added closure of the Friends of the Bowes Museum (April 2025).",
+   "Supporters list not re-verified (pages blocked this run); tier set to U."
+  ]
+ },
+ {
+  "id": "kunsthalle-basel",
+  "retrieved": "2026-10-20",
+  "website": "https://www.kunsthallebasel.ch",
+  "website_status": "ok",
+  "funding": "Run by the Basler Kunstverein. Per the existing record: Canton Basel-Stadt CHF 950k a year for 2024-27 (32% of budget), third-party grants about CHF 660k, rent 22%, members 8%; not re-checked this run.",
+  "tier": "U (unverified)",
+  "flags": [],
+  "why_flagged": "",
+  "other_findings": [
+   "Wikipedia, citing ARTnews, reports pushback after Mohamed Almusibli's 2024 appointment because he had signed a Gaza ceasefire letter."
+  ],
+  "funders": [
+   "Canton Basel-Stadt",
+   "Basler Kunstverein members"
+  ],
+  "bottom_line": "No funder issues found. Worth watching is political pressure on the cantonal subsidy linked to the director's statements.",
+  "not_related": [
+   "Kunstmuseum Basel (separate cantonal museum)"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Kunsthalle_Basel",
+   "https://grosserrat.bs.ch/dokumente/100405/000000405436.pdf",
+   "https://www.bs.ch/pd/kultur/kulturfoerderung/foerderung-von-kulturinstitutionen",
+   "https://www.swissinfo.ch/ger/kultur/die-kunstwelt-im-bann-des-israelisch-palaestinensischen-kriegs/48998994"
+  ],
+  "changes": [
+   "Subsidy figures and SVP subsidy-cut demand not re-verified (sources blocked this run); tier set to U.",
+   "Added founding (1872), building and director history from Wikipedia."
+  ]
+ },
+ {
+  "id": "kunstmuseum-basel",
+  "retrieved": "2026-10-20",
+  "website": "https://kunstmuseumbasel.ch",
+  "website_status": "ok",
+  "funding": "Canton Basel-Stadt, with the Laurenz Foundation (which co-funded the 2016 extension), Emanuel Hoffmann and Christoph Merian foundations; UBS partner and Novartis, KPMG, Trafina and the Federal Office of Culture as sponsors per the existing record.",
+  "tier": "B (flagged, with a reason)",
+  "flags": [
+   "Money laundering",
+   "Corruption"
+  ],
+  "why_flagged": "Partner UBS was fined $125M by FinCEN in 2026 for money laundering through a US subsidiary, and sponsor Novartis paid $678M in 2020 over alleged kickbacks to doctors.",
+  "other_findings": [
+   "UBS was fined $100M by the Federal Reserve in 2004 over dollar trading with sanctioned states and $1.5bn in December 2012 over Libor (Wikipedia).",
+   "UBS agreed $1.43bn in August 2023 over mortgage-backed securities and $511M in May 2025 over Credit Suisse offshore accounts (Wikipedia).",
+   "UBS was fined $125M by FinCEN in 2026 for laundering money through a US subsidiary (Wikipedia).",
+   "Novartis agreed to pay $678M in July 2020 over speaker programs alleged to be kickbacks to doctors, and $346.7M in June 2020 over FCPA investigations (Wikipedia).",
+   "The museum rejected Curt Glaser heirs' restitution claim in 2008, reaching agreement about twelve years later; it refused claims over Julius Freund works (2020) and a Rousseau (2022) (Wikipedia)."
+  ],
+  "funders": [
+   "Canton Basel-Stadt",
+   "Laurenz Foundation",
+   "Emanuel Hoffmann Foundation",
+   "Christoph Merian Foundation",
+   "UBS",
+   "Novartis",
+   "KPMG",
+   "Trafina",
+   "Federal Office of Culture"
+  ],
+  "bottom_line": "The museum is canton-run and mainly public. Its corporate partner UBS and sponsor Novartis carry repeated regulatory penalties, including a 2026 UBS money-laundering fine; these are worth tracking.",
+  "not_related": [
+   "Kunsthalle Basel (separate institution run by the Basler Kunstverein)"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Kunstmuseum_Basel",
+   "https://en.wikipedia.org/wiki/UBS",
+   "https://en.wikipedia.org/wiki/Novartis",
+   "https://kunstmuseumbasel.ch/en/museum/lendersdonorssponsors"
+  ],
+  "changes": [
+   "Added flags 'Money laundering' and 'Corruption' (record had watch notes only).",
+   "Added later UBS penalties (2012, 2023, 2025, 2026) and Novartis FCPA settlement (2020).",
+   "Added that the Laurenz Foundation co-funded the 2016 extension with the canton.",
+   "Added restitution disputes.",
+   "Sponsor list not re-verified (page blocked this run)."
+  ]
+ },
+ {
+  "id": "museum-tinguely",
+  "retrieved": "2026-10-20",
+  "website": "https://www.tinguely.ch",
+  "website_status": "ok",
+  "funding": "Roche built the museum for its centenary and has paid its operating costs since it opened in 1996 (per the museum's Roche page, cited in the existing record; not re-retrieved this run).",
+  "tier": "B (flagged, with a reason)",
+  "flags": [
+   "Price fixing"
+  ],
+  "why_flagged": "Sole funder Roche pleaded guilty in 1999 to a worldwide vitamin price-fixing conspiracy and paid $500M in US criminal fines.",
+  "other_findings": [
+   "Roche pleaded guilty in 1999 to a worldwide vitamin price-fixing conspiracy and paid $500M in US criminal fines (Wikipedia).",
+   "The European Economic Community fined Roche in 1973 for vitamin price-fixing and market sharing (Wikipedia).",
+   "The UK's ABPI suspended Roche for six months in 2008 for breaching its code of conduct (Wikipedia)."
+  ],
+  "funders": [
+   "Roche"
+  ],
+  "bottom_line": "The museum depends on a single corporate funder, Roche. Roche's past antitrust penalties are dated; no reporting found of issues with the museum itself.",
+  "not_related": [],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Museum_Tinguely",
+   "https://en.wikipedia.org/wiki/Roche",
+   "https://www.tinguely.ch/en/information/about-us/roche.html"
+  ],
+  "changes": [
+   "Added flag 'Price fixing' (record had watch note only).",
+   "Added Mario Botta as architect and Niki de Saint Phalle's donation of more than 50 works.",
+   "Roche funding page not re-retrieved this run."
+  ]
+ },
+ {
+  "id": "schaulager",
+  "retrieved": "2026-10-20",
+  "website": "https://schaulager.org",
+  "website_status": "ok",
+  "funding": "Made possible by the Laurenz Foundation, its carrier foundation, founded by Maja Oeri; no other funders named.",
+  "tier": "A (clean, source cited)",
+  "flags": [],
+  "why_flagged": "",
+  "other_findings": [],
+  "funders": [
+   "Laurenz Foundation",
+   "Maja Oeri"
+  ],
+  "bottom_line": "No issues found. Schaulager is funded by a single private family foundation linked to the Roche fortune and publishes no accounts.",
+  "not_related": [
+   "Emanuel Hoffmann Foundation (separate collection foundation whose works Schaulager holds)"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Schaulager",
+   "https://en.wikipedia.org/wiki/Kunstmuseum_Basel",
+   "https://en.wikipedia.org/wiki/Roche",
+   "https://schaulager.org/en/schaulager/laurenz-foundation"
+  ],
+  "changes": [
+   "Added that the Laurenz Foundation also co-funded the 2016 Kunstmuseum Basel extension.",
+   "Added Maja Oeri's 5% Roche voting stake as the ultimate source of wealth (Roche Wikipedia)."
+  ]
+ },
+ {
+  "id": "dia-beacon",
+  "retrieved": "2026-10-20",
+  "website": "https://www.diaart.org",
+  "website_status": "ok",
+  "funding": "Built for about $50M from private gifts: Leonard Riggio at least $35M, Lannan Foundation $10M, Ann Tenenbaum and Thomas H. Lee $2.5M. Run by the Dia Art Foundation; current funders not re-checked this run.",
+  "tier": "U (unverified)",
+  "flags": [],
+  "why_flagged": "",
+  "other_findings": [
+   "Dia's founding money came from Philippa de Menil's Schlumberger oil-services fortune; a $3.87M Citibank loan secured on that stock in the early 1980s prompted a New York attorney general investigation (Wikipedia)."
+  ],
+  "funders": [
+   "Leonard Riggio",
+   "Lannan Foundation",
+   "Ann Tenenbaum and Thomas H. Lee",
+   "Dia Art Foundation",
+   "Andrew W. Mellon Foundation"
+  ],
+  "bottom_line": "Dia Beacon was built with private gifts, mainly from Leonard Riggio. Its founding money came from an oil-services fortune; current funders could not be re-checked this run.",
+  "not_related": [],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Dia_Beacon",
+   "https://en.wikipedia.org/wiki/Dia_Art_Foundation",
+   "https://www.diaart.org/about/support-dia",
+   "https://www.diaart.org/support/corporate-giving"
+  ],
+  "changes": [
+   "Added construction funders: Leonard Riggio (at least $35M), Lannan Foundation ($10M), Tenenbaum and Lee ($2.5M).",
+   "Sackler name removal (2019) and Mellon support not re-verified this run.",
+   "Clarified Schlumberger link: founder Philippa de Menil's family fortune, not a corporate donor."
+  ]
+ }
+]

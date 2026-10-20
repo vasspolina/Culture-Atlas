@@ -1,9 +1,24 @@
 {
-  "_about": "Wording corrected after checking against search results (see data/verification_pilot.json). Applied by tools/clean_data.py. Each entry replaces one field of one record.",
-  "storm-king-art-center": {
-    "why_flagged": "Bloomberg Philanthropies is listed in Storm King's 2025 donor list in the Ambassador tier ($100,000+)."
-  },
-  "casa-frança-brasil-rio-de-janeiro": {
-    "why_flagged": "The former Casa França-Brasil now operates as Casa Brasil, with Petrobras as sponsor through its Novos Eixos call (Ícones da Cultura Brasileira line). The rename date is not confirmed."
-  }
+ "_about": "Wording corrected after checking against search results (see data/verification_pilot.json). Applied by tools/clean_data.py. Each entry replaces one field of one record.",
+ "storm-king-art-center": {
+  "why_flagged": "Bloomberg Philanthropies is listed in Storm King's 2025 donor list in the Ambassador tier ($100,000+)."
+ },
+ "casa-frança-brasil-rio-de-janeiro": {
+  "why_flagged": "The former Casa França-Brasil now operates as Casa Brasil, with Petrobras as sponsor through its Novos Eixos call (Ícones da Cultura Brasileira line). The rename date is not confirmed."
+ },
+ "state-tretyakov-gallery-moscow": {
+  "watch": "Director Zelfira Tregulova removed 9 Feb 2023 after a Ministry-forwarded complaint of 'destructive ideology' in the displays; Elena Pronicheva (daughter of an FSB general) replaced her; in Jan 2026 Olga Galaktionova (ex-ROSIZO, ex-Pushkin) took over. The Ministry cancelled the 9th Moscow Biennale at the New Tretyakov on 3 Nov 2022. The Gallery states 80+ companies and individuals support it."
+ },
+ "museum-of-contemporary-art-chicago-mca": {
+  "watch": ""
+ },
+ "y-gallery-minsk": {
+  "watch": ""
+ },
+ "national-portrait-gallery-london": {
+  "funding": ""
+ },
+ "national-theatre-london": {
+  "funding": ""
+ }
 }
