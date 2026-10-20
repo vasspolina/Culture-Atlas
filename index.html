@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=238">
-  <script src="assets/config.js?v=238"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=239">
+  <script src="assets/config.js?v=239"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -778,8 +778,6 @@ return maplibregl$1;
               <div class="flex items-center justify-between pt-2">
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
-                  <!-- Plus Button -->
-                  <button id="workPlusBtn" class="flex items-center justify-center shrink-0" title="More ways to write">More</button>
                   <!-- Share information -->
                   <button id="chatBackBtn" type="button" onclick="window.exitChatInputMode()" class="whitespace-nowrap" title="Leave the note and go back to the chat">Back to chat</button>
                   <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('whistleblower')" class="whitespace-nowrap">Share information</button>
@@ -803,16 +801,6 @@ return maplibregl$1;
                     </svg>
                   </button>
                 </div>
-              </div>
-
-              <!-- Quick Dropdown Menu for Plus button -->
-              <div id="workPlusMenu" class="hidden absolute left-2 sm-left-4 bottom-14 z-30 p-0 flex flex-col w-_calc_100vw-24px sm-w-80 max-w-_340px max-h-_min_380px_calc_100dvh-160px overflow-y-auto custom-scrollbar">
-                <button id="workMenuGossipModeBtn" onclick="window.toggleGossipMode()" class="text-left px-3_5 py-2_5 flex items-center justify-between">
-                  <span>Gossip mode</span>
-                </button>
-                <button id="workMenuWhistleblowerBtn" onclick="window.enterChatInputMode('whistleblower')" class="text-left px-3_5 py-2_5 flex items-center justify-between">
-                  <span>Whistleblower note</span>
-                </button>
               </div>
 
             </div>
@@ -7133,8 +7121,7 @@ return maplibregl$1;
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
       const label = isGossipModeActive ? 'Gossip mode: on' : 'Gossip mode';
-      ['topGossipBtn', 'mobileGossipBtn', 'workMenuGossipModeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
-      document.getElementById('workPlusMenu')?.classList.add('hidden');
+      ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
       if (typeof appendCuratorMessage === 'function') {
         appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
       }
@@ -9918,11 +9905,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v238';
+    const ATLAS_RELEASE = 'culture-atlas-v239';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=238').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=239').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15981,8 +15968,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       isChatInputMode = true;
       // The conversation so far steps aside while a note is written; it comes back with Back to chat.
       document.querySelectorAll('#curatorMessages > *').forEach(m => m.classList.add('before-note'));
-      if (typeof window.closeWorkPlusMenu === 'function') window.closeWorkPlusMenu();
-      document.getElementById('workPlusMenu')?.classList.add('hidden');
 
       // 1. Activate whole-chat full-width mode via body class & collapse globe if needed
       document.body.classList.add('chat-input-mode-active');
@@ -16061,10 +16046,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         inputCard.classList.add('is-mode');
       }
 
-      // 8. Toggle action bar: show Attach & Cancel buttons, OpSec badge, hide plus & model & voice
-      const plusBtn = document.getElementById('workPlusBtn');
-      if (plusBtn) plusBtn.classList.add('hidden');
-
+      // 8. Toggle action bar: show Attach & Cancel buttons and the OpSec badge
       const cancelBtn = document.getElementById('inputModeCancelBtn');
       if (cancelBtn) {
         cancelBtn.classList.remove('hidden');
@@ -16141,10 +16123,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         inputCard.classList.remove('is-mode');
       }
 
-      // 5. Restore action bar: show plus, hide attach, cancel & metadata
-      const plusBtn = document.getElementById('workPlusBtn');
-      if (plusBtn) plusBtn.classList.remove('hidden');
-
+      // 5. Restore action bar: hide attach, cancel & metadata
       const attachBtn = document.getElementById('inputModeAttachBtn');
       if (attachBtn) {
         attachBtn.classList.add('hidden');
@@ -16273,43 +16252,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
     });
 
-    // Plus Button Quick Menu
-    const workPlusBtn = document.getElementById('workPlusBtn');
-    const workPlusMenu = document.getElementById('workPlusMenu');
-    workPlusBtn?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      workPlusMenu?.classList.toggle('hidden');
-    });
-
-    document.getElementById('workMenuFeedbackBtn')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      workPlusMenu?.classList.add('hidden');
-      triggerInChatContributeFlow();
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('#workPlusBtn') && !e.target.closest('#workPlusMenu')) {
-        workPlusMenu?.classList.add('hidden');
-      }
-    });
-
     // Research & Feedback Modal Handlers
     const researchModal = document.getElementById('researchFeedbackModal');
     document.getElementById('closeFeedbackModalBtn')?.addEventListener('click', closeResearchFeedbackModal);
     document.getElementById('cancelFeedbackBtn')?.addEventListener('click', closeResearchFeedbackModal);
     researchModal?.addEventListener('click', (e) => {
       if (e.target === researchModal) closeResearchFeedbackModal();
-    });
-
-    document.querySelectorAll('.work-menu-item').forEach(item => {
-      item.addEventListener('click', () => {
-        workPlusMenu?.classList.add('hidden');
-        const q = item.getAttribute('data-query');
-        if (q) {
-          appendUserMessage(q);
-          handleCuratorQuery(q);
-        }
-      });
     });
 
     //  Institutional Finance & Fiscal Operating Analytics Modal Handlers
@@ -19143,9 +19091,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=238"></script>
-<script src="assets/layers.js?v=238"></script>
-<script src="assets/hq-detail.js?v=238"></script>
-<script src="assets/bubbles.js?v=238" defer></script>
+<script src="assets/typeset.js?v=239"></script>
+<script src="assets/layers.js?v=239"></script>
+<script src="assets/hq-detail.js?v=239"></script>
+<script src="assets/bubbles.js?v=239" defer></script>
 </body>
 </html>

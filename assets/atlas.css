@@ -255,9 +255,6 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 #workInputCard button{font:400 15px/1 var(--sans);letter-spacing:0;color:var(--ink)}
 #workSendBtn{width:36px;height:36px;border-radius:0;background:var(--block);color:var(--ink)!important;justify-content:center}
 #workSendBtn svg{color:var(--ink)}
-#workPlusMenu{background:var(--paper);border:1px solid var(--ink)}
-#workPlusMenu button{padding:12px 14px;border-bottom:1px solid var(--ink);font:400 15px/1.2 var(--sans);width:100%}
-#workPlusMenu button:hover{background:var(--ink);color:var(--paper)}
 .chat-info{width:100%;padding-top:8px;border-top:1px solid var(--line);font:400 14px/var(--lh) var(--sans)}
 .chat-info summary{cursor:pointer;list-style:none;width:fit-content}
 .chat-info summary::-webkit-details-marker{display:none}
@@ -887,7 +884,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#cb9440}
 
 /* Every button answers the pointer: plain ones invert, the filled ones brighten. */
-#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#workPlusBtn:hover,#curatorVoiceToggleBtn:hover,#curatorListenBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
+#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#curatorVoiceToggleBtn:hover,#curatorListenBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
 [data-globe-control]:hover,.is-on:hover,[aria-pressed="true"]:hover{filter:brightness(.85)}
 button,summary{cursor:pointer}
 /* Question colours are the map's own: mustard, orange and cyan labels; darker equivalents on the light ground. Type 10% smaller. */
@@ -1165,7 +1162,7 @@ body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#00
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--orange)}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:hover,:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{text-decoration:underline;text-underline-offset:.12em;outline:0}
 
-/* Dark mode keeps the regular weight: Share information is the sans at 400 in sentence case, not bold capitals. */
+/* Superseded in release 239: Share information is bold capitals again, in both themes (see the end of this file). */
 :root[data-theme="dark"] #workInputCard #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none;letter-spacing:0}
 :root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none}
 
@@ -1305,7 +1302,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 .curator-message-wrap .curator-bullet-list>li:has(>div:empty)::before,.curator-message-wrap .curator-num-list>li:has(>div:empty)>span:first-child{visibility:hidden}
 /* Controls are one size: 15px on the text face at .01em, in both themes. The globe controls were 14px beside a 15px Layers;
    the chat bar mixed 14px, 14px bold uppercase in the display face (light only) and 14px at .02em; the settings modal mixed 14 and 15. */
-#desktopGlobeTopControls button,#mobileFilterChipsSection button,#mobileStickySendBtn,#mobileStickyVoiceBtn,#workPlusBtn,#curatorListenBtn,#curatorVoiceToggleBtn,#curatorVoiceToggleLabel,#testConnectionBtn,#toggleKeyVisibilityBtn,.provider-tab-btn,#curatorSettingsModal button,#curatorSettingsModal a{font:400 15px/1 var(--sans);letter-spacing:0;text-transform:none}
+#desktopGlobeTopControls button,#mobileFilterChipsSection button,#mobileStickySendBtn,#mobileStickyVoiceBtn,#curatorListenBtn,#curatorVoiceToggleBtn,#curatorVoiceToggleLabel,#testConnectionBtn,#toggleKeyVisibilityBtn,.provider-tab-btn,#curatorSettingsModal button,#curatorSettingsModal a{font:400 15px/1 var(--sans);letter-spacing:0;text-transform:none}
 #workInputCard #chatShareBtn,:root[data-theme="dark"] #workInputCard #chatShareBtn,#workInputCard.is-mode #chatShareBtn,:root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn{font:400 15px/1 var(--sans);text-transform:none;letter-spacing:0}
 /* The three globe controls fit a 320px screen: narrower padding, not a smaller size. (They ran 6px off the edge at 14px, too.) */
 @media (max-width:374px){#desktopGlobeTopControls button,#mobileFilterChipsSection button{padding-left:9px;padding-right:9px}}
@@ -1413,7 +1410,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #curatorIntelligenceColumn #curatorMessages img{max-width:100%;height:auto}
 /* A question wraps to the column instead of being cut with an ellipsis: on a 260px panel the longest ones are two lines. */
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){height:auto;min-height:22px;white-space:normal;overflow:visible;text-overflow:clip;text-align:left;overflow-wrap:break-word}
-/* The input's toolbar wraps under the textarea's width: More, Back to chat and Share information, then Voice, Listen and send. */
+/* The input's toolbar wraps under the textarea's width: Back to chat and Share information, then Voice, Listen and send. */
 #workInputCard>div.justify-between{flex-wrap:wrap;gap:8px 12px;min-width:0}
 #workInputCard>div.justify-between>div{flex-wrap:wrap;min-width:0;gap:8px 12px}
 #workInput{min-width:0}
@@ -1609,7 +1606,7 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 .review-date{display:block;font:400 14px/1.2 var(--sans)}
 .review-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}
 
-/* ---- the chat in the dark theme (release 238) ----
+/* ---- the chat in the dark theme (releases 238 and 239) ----
    The atlas has one switch, :root[data-theme], and the chat already followed it except in two places that stayed bright: the note
    (a mint slab with black type) and the gossip balloon (a green to pink wash with black type). In the dark theme both now sit on the
    page's own dark ground with light type; the mode shows in a hairline instead of a fill (mint for a note, the gossip orange for a balloon).
@@ -1631,3 +1628,9 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
 :root[data-theme="dark"] body.gossip-mode-active .is-gossip .thinking{color:var(--ink)}
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
+
+/* ---- release 239 ---- */
+/* The note box has an inner margin: its text no longer touches the box edge or the focus ring drawn inside it. Only while a note is written; the plain input line stays flush with its hairline. */
+body.chat-input-mode-active #workInput{padding:.75em}
+/* Share information, wherever it shows, is bold capitals. The text stays "Share information" in the markup. Jokker is a variable font, so 700 is a real cut. */
+:root[data-theme] #workInputCard #chatShareBtn,:root[data-theme] #workInputCard.is-mode #chatShareBtn,#hudContributeBtn,#mapFloatingContributeBtn{text-transform:uppercase;font-weight:700;letter-spacing:.04em}
