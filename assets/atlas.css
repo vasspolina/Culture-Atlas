@@ -84,6 +84,10 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #globeViewport{background:#000;color:#fff;overflow:hidden}
 #globeViewport a{color:#fff}
 #globeCanvas{cursor:grab;touch-action:none}
+/* Held until the page is final: the first frame is drawn, then shown (see settleBeforeFirstPaint in index.html). */
+html.atlas-held #globeCanvas{visibility:hidden}
+/* The same held state keeps the real hairlines off the first paint; assets/bubbles.js draws them in once the hold is cleared. */
+html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard,#mobileStickyComposer){border-color:transparent!important}
 #globeCanvas.dragging{cursor:grabbing}
 #cityMapContainer{background:var(--paper)}
 #globeSplitter{background:var(--paper);border-left:1px solid var(--line);width:6px}
