@@ -115,3 +115,18 @@ test('chat is limited per address each hour', async () => {
     assert.equal(last.status, 429);
   } finally { globalThis.fetch = realFetch; }
 });
+
+test('whistleblower notes are refused: they go to the report API', async () => {
+  const e = env();
+  const sent = await call(e, 'POST', '/submissions', { kind: 'whistleblower', text: 'Something from inside', spaceName: 'Tate Modern' });
+  assert.equal(sent.status, 400);
+  assert.equal((await (await call(e, 'GET', '/admin/pending', null, 'secret')).json()).submissions.length, 0);
+});
+
+test('an old whistleblower note in the store is neither approved nor served', async () => {
+  const e = env();
+  await e.SUBMISSIONS.put('pending:old', JSON.stringify({ id: 'old', kind: 'whistleblower', text: 'Old note', spaceName: '', receivedAt: '2026-10-01T00:00:00Z' }));
+  assert.equal((await call(e, 'POST', '/admin/submissions/old/approve', {}, 'secret')).status, 400);
+  await e.SUBMISSIONS.put('approved', JSON.stringify([{ id: 'older', kind: 'whistleblower', text: 'Older note' }, { id: 'ok', kind: 'gossip', text: 'Fine' }]));
+  assert.deepEqual((await (await call(e, 'GET', '/approved')).json()).notes.map(n => n.id), ['ok']);
+});

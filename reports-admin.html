@@ -19,6 +19,8 @@
     .review .btn{padding:8px 16px;border:1px solid var(--line);background:var(--paper)}
     .review .btn.approve{background:var(--cyan);color:#000}
     .review .btn.reject{background:var(--orange);color:#000}
+    .review .btn.delete{background:var(--paper);color:var(--ink)}
+    .review .btn[aria-pressed=true]{background:var(--ink);color:var(--paper)}
     .review .btn:disabled{opacity:.4}
     .review article{padding:16px 0;border-bottom:1px solid var(--line)}
     .review .actions{display:flex;gap:8px;margin-top:12px}
@@ -32,7 +34,7 @@
   </header>
   <main>
     <h1>Whistleblower reports</h1>
-    <p>Reports stay private until approved. Approved reports appear on the atlas record for their institution.</p>
+    <p>Every note waits here until you approve it. Approved notes appear as reviews on the atlas record for their institution. Delete removes a note for good.</p>
     <p id="noBackend" class="hidden" role="alert">Set ATLAS_REPORT_API_URL in assets/config.js to connect the report API.</p>
     <form id="loginForm">
       <label for="tokenInput">Admin bearer token</label>
@@ -41,14 +43,19 @@
     </form>
     <p id="loginError" class="hidden" role="alert"></p>
     <section id="queue" class="hidden">
+      <div class="actions" role="group" aria-label="Show notes">
+        <button type="button" class="btn" data-view="PENDING" aria-pressed="true">Waiting</button>
+        <button type="button" class="btn" data-view="APPROVED" aria-pressed="false">On the atlas</button>
+        <button type="button" class="btn" data-view="REJECTED" aria-pressed="false">Rejected</button>
+      </div>
       <div class="actions">
-        <button type="button" class="btn" id="refreshBtn">Refresh queue</button>
+        <button type="button" class="btn" id="refreshBtn">Refresh</button>
         <button type="button" class="btn" id="signOutBtn">Forget token</button>
       </div>
       <p id="status" role="status"></p>
       <div id="list"></div>
     </section>
   </main>
-  <script src="assets/reports-admin.js?v=1"></script>
+  <script src="assets/reports-admin.js?v=232"></script>
 </body>
 </html>
