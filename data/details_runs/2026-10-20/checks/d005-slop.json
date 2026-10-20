@@ -1,0 +1,1120 @@
+[
+ {
+  "id": "chapter",
+  "section": "FUNDING",
+  "problems": [
+   "wrong title: 'Co-director'",
+   "misattributed: '43% cut' not in her words"
+  ],
+  "before": "- After the Arts Council of Wales Investment Review, Chapter stayed a portfolio organisation but its grant was cut by £291,000 a year for 2024 to 2027 (2024 accounts). Co-director Sharon Stone told the Senedd culture committee in October 2024 that this was a 43% cut, from close to £680,000 to £390,000 (Caerphilly Observer).",
+  "after": "- After the Arts Council of Wales Investment Review, Chapter stayed a portfolio organisation but its grant was cut by £291,000 a year for 2024 to 2027 (2024 accounts). Sharon Stone, Chapter's director of finance, told the Senedd culture committee in October 2024: \"We've gone from close to £680,000 a year to £390,000 a year\", and pointed to a 43% cut in the latest funding round (Caerphilly Observer).",
+  "sources": [
+   "https://caerphilly.observer/?p=1043909"
+  ],
+  "reason": "The article calls Stone director of finance, quotes her on the £680,000 to £390,000 fall, and reports the 43% cut separately."
+ },
+ {
+  "id": "chapter",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Football Association of Wales' (only in 2022-23 comparatives)",
+   "unsupported: 'for planters and fruit trees'"
+  ],
+  "before": "- Restricted grants in the 2024 accounts name the BFI, Cardiff Council, Ffilm Cymru, the Colwinston Trust (for Experimentica 2024), the Foyle, Garfield Weston, Freelands, Henry Moore, Rayne and Simon Gibson foundations, the Canada Council, the Football Association of Wales and the National Grid Community Matters Fund (for planters and fruit trees).",
+  "after": "- Restricted grants in the 2024 accounts name the BFI, Cardiff Council, Ffilm Cymru, the Colwinston Trust (for Experimentica 2024), the Foyle, Garfield Weston, Freelands, Henry Moore, Rayne and Simon Gibson foundations, the Canada Council and the National Grid Community Matters Fund.",
+  "sources": [
+   "https://opencharities.uk/ew/500813/files/2024-03-31-accounts.md"
+  ],
+  "reason": "The 2024 accounts list the Canada Council and National Grid (Community Matters Fund) as restricted funders; the Football Association of Wales appears only in the prior-year comparatives and no page gives the planters purpose."
+ },
+ {
+  "id": "chapter",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'insurer'",
+   "unsupported: 'grant matched sponsorship'",
+   "date: Moondance years"
+  ],
+  "before": "- Donations included £30,000 from the Moondance Foundation in each of 2023 and 2024; an earlier Arts & Business grant matched sponsorship from the insurer Admiral (2024 accounts).",
+  "after": "- Donations included £30,000 from the Moondance Foundation in each of 2022-23 and 2023-24; a prior-year restricted fund from Arts & Business was \"to match fund Admiral sponsorship\" (2024 accounts).",
+  "sources": [
+   "https://opencharities.uk/ew/500813/files/2024-03-31-accounts.md"
+  ],
+  "reason": "The accounts say only that the Arts & Business restricted fund was to match fund Admiral sponsorship, and give Moondance as £30,000 in 2023-24 and 2022-23."
+ },
+ {
+  "id": "chapter",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'large request' (source wording is a substantial ask, no award)"
+  ],
+  "before": "- The 2024 trustees' report says Chapter was working with the Fidelity Foundation on a large request to renovate Stiwdio Seligman.",
+  "after": "- The 2024 trustees' report says Chapter was developing a relationship with the Fidelity Foundation and had made a \"substantial ask\" to renovate Stiwdio Seligman; no award is reported.",
+  "sources": [
+   "https://opencharities.uk/ew/500813/files/2024-03-31-accounts.md"
+  ],
+  "reason": "The accounts describe a pending ask and report no grant."
+ },
+ {
+  "id": "chapter",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'mainly public' (earned income is 39% of turnover, core grants 19%, restricted grants 18%)"
+  ],
+  "before": "Chapter: mainly public with earned income: Arts Council of Wales, BFI and Welsh Government, plus trusts, cinema, café and hire",
+  "after": "Chapter: mixed: Arts Council of Wales, BFI and Welsh Government grants, trusts, and earned income from cinema, café and hire",
+  "sources": [
+   "https://opencharities.uk/ew/500813/files/2024-03-31-accounts.md"
+  ],
+  "reason": "The accounts' own income split makes earned income the largest share, so 'mainly public' overstates."
+ },
+ {
+  "id": "chapter",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'mostly Welsh public money'",
+   "unsupported: 'small'",
+   "unsupported: 'electricity network, not a fossil fuel company'"
+  ],
+  "before": "The money behind Chapter is mostly Welsh public money, BFI and lottery funds, trusts and its own cinema, bar and hire income. The record's fossil fuel flag rests on a Gulbenkian grant that no page opened here confirms; National Grid's small community grant is an electricity network, not a fossil fuel company. Worth watching: the record's website now leads to an unrelated US company, and free reserves stood at £16,726 at 31 March 2024, before the grant cut began.",
+  "after": "The money behind Chapter is a mix of Welsh public funding, BFI and lottery money, trusts and its own cinema, bar and hire income. The record's fossil fuel flag rests on a Gulbenkian grant that no page opened here confirms; the only energy-sector name in the 2024 accounts is the National Grid Community Matters Fund. Worth watching: the record's website now leads to an unrelated US company, and free reserves stood at £16,726 at 31 March 2024, before the grant cut began.",
+  "sources": [
+   "https://opencharities.uk/ew/500813/files/2024-03-31-accounts.md"
+  ],
+  "reason": "No opened source gives the National Grid grant size or its business mix, and the income split does not make public money the majority."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "OVERVIEW",
+  "problems": [
+   "wording: 'opened' (Wikipedia infobox says 'Established December 1986')"
+  ],
+  "before": "- Its roots go to 1980, when artists evicted from Thames-side studios leased the building from Tower Hamlets Council as Arts Place Trust; the gallery opened in December 1986 and became an independent charity in 1993 (Wikipedia, Charity Commission data).",
+  "after": "- Its roots go to 1980, when artists evicted from Thames-side studios leased the building from Tower Hamlets Council as Arts Place Trust; the gallery was established in December 1986 and became an independent charity in 1993 (Wikipedia, Charity Commission data).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Chisenhale_Gallery"
+  ],
+  "reason": "Wikipedia gives December 1986 as the establishment date, not an opening."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'first London institutional show'"
+  ],
+  "before": "- It commissions new work, often an artist's first London institutional show; Rachel Whiteread, Helen Marten, Lubaina Himid and Lawrence Abu Hamdan showed there before winning the Turner Prize (Wikipedia).",
+  "after": "- It commissions new work, often an artist's first UK institutional solo show; Rachel Whiteread, Helen Marten, Lubaina Himid and Lawrence Abu Hamdan showed there before winning the Turner Prize (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Chisenhale_Gallery"
+  ],
+  "reason": "Wikipedia says 'first UK institutional solo show', not London."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'raises all of its artistic programme from trusts, foundations and individuals'"
+  ],
+  "before": "- Arts Council England, its core funder as a National Portfolio Organisation, gave £168,421 in 2023-24, 17% of income in 2024-25; the gallery raises all of its artistic programme from trusts, foundations and individuals (2024 and 2025 accounts).",
+  "after": "- Arts Council England, its core funder as a National Portfolio Organisation, gave £168,421 in 2023-24 and made up 17% of income in 2024-25 (2024 and 2025 accounts).",
+  "sources": [
+   "https://opencharities.uk/ew/1026175/files/2024-03-31-accounts.md",
+   "https://opencharities.uk/ew/1026175/files/2025-03-31-accounts.md"
+  ],
+  "reason": "Neither set of accounts opened states that the whole programme is raised from other sources."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Bloomberg Philanthropies' (accounts say 'Bloomberg')",
+   "unsupported: 'last £25,000 was spent in 2024-25'"
+  ],
+  "before": "- Bloomberg Philanthropies' digital accelerator gave £120,000 in 2023-24 for hardware, software and digital practice, spent over three years and due to end by March 2025; the last £25,000 was spent in 2024-25 (2024 and 2025 accounts).",
+  "after": "- Bloomberg gave £120,000 in 2023-24 for a digital accelerator programme upgrading hardware, software and digital practice, to be spent over three years and concluded by March 2025; £95,000 was spent in 2023-24 and £25,000 carried forward (2024 accounts). CultureSource lists Chisenhale as a UK participant in the Bloomberg Philanthropies Digital Accelerator.",
+  "sources": [
+   "https://opencharities.uk/ew/1026175/files/2024-03-31-accounts.md",
+   "https://culturesource.org/?p=8494"
+  ],
+  "reason": "The 2024 accounts name 'Bloomberg' and show £95,000 spent and £25,000 carried forward; the 2025 summary opened did not state when the last £25,000 was spent. CultureSource ties Chisenhale to the Bloomberg Philanthropies programme."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'a curatorial fellowship for an emerging Chinese curator'"
+  ],
+  "before": "- Other 2023-24 grants: Asymmetry Art Foundation £74,980 (a curatorial fellowship for an emerging Chinese curator), Deborah Roberts £56,059, Ford Foundation £40,430, Teiger Foundation £31,656, Lotus L. Kang Foundation £29,166, Freelands Foundation £25,600, Terra Foundation £25,000, A4 Arts Foundation £23,999, Fondation Pernod Ricard £16,745, Mondriaan Fund £12,184 (2024 accounts).",
+  "after": "- Other 2023-24 grants: Asymmetry Art Foundation £74,980, Deborah Roberts £56,059, Ford Foundation £40,430, Teiger Foundation £31,656, Lotus L. Kang Foundation £29,166, Freelands Foundation £25,600, Terra Foundation £25,000, A4 Arts Foundation £23,999, Fondation Pernod Ricard £16,745, Mondriaan Fund £12,184 (2024 accounts).",
+  "sources": [
+   "https://opencharities.uk/ew/1026175/files/2024-03-31-accounts.md"
+  ],
+  "reason": "The accounts list the amount and restricted status only."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'gave a good part of the non-Arts Council money' (Spectator: funding for the show)",
+   "unsupported: 'not on the current trustee list'"
+  ],
+  "before": "- In 2016 The Spectator reported that trustee Shane Akeroyd, a senior staff member at the financial firm Markit, gave a good part of the non-Arts Council money; he is not on the current trustee list.",
+  "after": "- In 2016 The Spectator reported that trustee Shane Akeroyd, a senior staff member of Markit, provided \"a good portion\" of the rest of the funding for one show; the 2024 accounts record him as resigning on 22 July 2024.",
+  "sources": [
+   "https://spectator.com/article/chisenhale-gallery-s-conceptual-critique-of-neoliberalism-is-being-funded-by-high-finance/",
+   "https://opencharities.uk/ew/1026175/files/2024-03-31-accounts.md"
+  ],
+  "reason": "The Spectator refers to the funding for the show, not the gallery's whole non-Arts Council income; the 2024 accounts mark Akeroyd 'Resigned 22 July 2024'."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "Red flags: Bloomberg Philanthropies as a funder",
+  "problems": [
+   "unsupported: 'paid ... between 2023 and March 2025'",
+   "unsupported: 'Bloomberg Philanthropies' from accounts alone"
+  ],
+  "before": "- Bloomberg Philanthropies paid Chisenhale £120,000 between 2023 and March 2025 (2024 accounts).",
+  "after": "- Bloomberg paid Chisenhale £120,000 in 2023-24 for a digital accelerator programme to be concluded by March 2025 (2024 accounts); CultureSource names Chisenhale in the Bloomberg Philanthropies Digital Accelerator.",
+  "sources": [
+   "https://opencharities.uk/ew/1026175/files/2024-03-31-accounts.md",
+   "https://culturesource.org/?p=8494"
+  ],
+  "reason": "The grant was received in 2023-24 and spent to a March 2025 deadline."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "Red flags: Bloomberg Philanthropies as a funder",
+  "problems": [
+   "unsupported: 'London' (Morning Star says British; the RSC is in Stratford-upon-Avon)"
+  ],
+  "before": "- On 28 May 2026, Artists for Palestine UK published an open letter signed by 261 artists asking five London theatres to end Bloomberg partnerships, citing Bloomberg funding for training officials who govern West Bank settlements at Tel Aviv University's Bloomberg-Sagol Centre (Morning Star). The letter does not name Chisenhale.",
+  "after": "- On 28 May 2026, Artists for Palestine UK published an open letter signed by 261 artists asking five British theatres to end Bloomberg partnerships, citing Bloomberg funding for training officials who govern West Bank settlements at Tel Aviv University's Bloomberg-Sagol Centre (Morning Star). The letter does not name Chisenhale.",
+  "sources": [
+   "https://www.morningstaronline.co.uk/node/249891"
+  ],
+  "reason": "Morning Star names the National Theatre, RSC, Royal Court, Young Vic and Almeida and calls them five leading British theatres."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'paid ... for a closed gallery' paraphrase",
+   "quote cut"
+  ],
+  "before": "- Argues taxpayers, including in Tower Hamlets, paid about £165,000 a year of Arts Council money for a closed gallery, and calls the gallery's account of that money \"creative accounting\".",
+  "after": "- Argues the gallery receives around £165,000 a year of Arts Council money and that Tower Hamlets taxpayers are part-funding the show with the closed gallery; calls the gallery's reasoning about that money \"creative accounting at its neoliberal best\".",
+  "sources": [
+   "https://spectator.com/article/chisenhale-gallery-s-conceptual-critique-of-neoliberalism-is-being-funded-by-high-finance/"
+  ],
+  "reason": "Restated from the Spectator's own wording."
+ },
+ {
+  "id": "chisenhale-gallery",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'main private funder'",
+   "unsupported: 'dealt in'"
+  ],
+  "before": "- Names trustee Shane Akeroyd of Markit, a firm that dealt in credit default swaps, as a main private funder of a show about neoliberal labour.",
+  "after": "- Names trustee Shane Akeroyd, a senior staff member of Markit, \"a firm who specialised in the field of credit default swaps\", as the source of \"a good portion\" of the rest of the show's funding.",
+  "sources": [
+   "https://spectator.com/article/chisenhale-gallery-s-conceptual-critique-of-neoliberalism-is-being-funded-by-high-finance/"
+  ],
+  "reason": "The Spectator does not call him the main funder; it says a good portion of the rest of the show's funding."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'was from Norfolk'"
+  ],
+  "before": "- Named for Walter P. Chrysler Jr., son of the founder of the Chrysler Corporation; his wife Jean Outland Chrysler was from Norfolk, and at his death the museum received three-quarters of the Chrysler Family Trust (Wikipedia).",
+  "after": "- Named for Walter P. Chrysler Jr., son of the founder of the Chrysler Corporation; he met his wife Jean Outland Chrysler while stationed in Norfolk during the Second World War, and at his death the museum received three-quarters of the Chrysler Family Trust (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Walter_P._Chrysler_Jr."
+  ],
+  "reason": "Wikipedia says Chrysler met Jean Esther Outland while stationed in Norfolk; it does not say she was from Norfolk."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "FUNDING",
+  "problems": [
+   "number: $13.5 million is the 2023 figure; 2024 is $10.5 million"
+  ],
+  "before": "- On 14 March 2022 the city awarded $15 million to the museum's capital campaign; most of the $13.5 million in conditional pledges for the museum and Glass Studio expansion comes from the city (2024 audited statements).",
+  "after": "- On 14 March 2022 the city awarded $15 million to the museum's capital campaign; $10.5 million of conditional pledges for the museum and Glass Studio expansion remained at June 2024 ($13.5 million a year earlier), the majority conditionally committed by the city (2024 audited statements).",
+  "sources": [
+   "https://chrysler.org/wp-content/uploads/The-Chrysler-Museum-Incorporated-6-30-2024-Financial-Statements-as-issued_2-New-logo.pdf"
+  ],
+  "reason": "The statements give $10,500,000 (2024) and $13,500,000 (2023) of conditional promises, most from the City."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "FUNDING",
+  "problems": [
+   "wording: percentages apply to total support and revenue from operating activities"
+  ],
+  "before": "- The City of Norfolk gave $2,753,955 in operating support in the year to June 2024 and $2,627,396 the year before: 36% and 37.9% of operating support and revenue (2024 audited statements).",
+  "after": "- The City of Norfolk gave $2,753,955 in operating support in the year to June 2024 and $2,627,396 the year before: 36% and 37.9% of total support and revenue from operating activities (2024 audited statements).",
+  "sources": [
+   "https://chrysler.org/wp-content/uploads/The-Chrysler-Museum-Incorporated-6-30-2024-Financial-Statements-as-issued_2-New-logo.pdf"
+  ],
+  "reason": "Matches Note 14 wording."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "Red flags: the Chrysler Jr. collection and provenance",
+  "problems": [
+   "unsupported: 'given in 1986'",
+   "attribution: purchase from Ricau is Hyperallergic's statement"
+  ],
+  "before": "- The museum held Peter Stephenson's 1850 marble \"The Wounded Indian\", bought by Chrysler Jr. from the collector James Ricau and given in 1986, while the Massachusetts Charitable Mechanic Association said it had disappeared from its collection in 1958 (Hyperallergic).",
+  "after": "- The museum held Peter Stephenson's 1850 marble \"The Wounded Indian\", which entered the collection in 1986; Hyperallergic states Chrysler Jr. bought it from the collector James Ricau, while the Massachusetts Charitable Mechanic Association said it had gone missing from its collection in 1958.",
+  "sources": [
+   "https://hyperallergic.com/825788/chrysler-museum-asked-to-return-allegedly-stolen-peter-stephenson-statue/"
+  ],
+  "reason": "Hyperallergic says the statue entered the collection in 1986 and that Chrysler Jr. bought it from Ricau."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'misled it'",
+   "unsupported: 'the museum's provenance records have gaps' as a flat claim"
+  ],
+  "before": "- The association said the museum withheld documents and misled it about the statue's origins; the museum's provenance records have gaps.",
+  "after": "- The association's attorney, Greg Werkheiser, said Ricau lied about the statue's origins and the museum withheld documents; Neil disputed this. Neil also told the Washington Post that the museum lacks full provenance on all objects in Chrysler Jr.'s collection.",
+  "sources": [
+   "https://hyperallergic.com/825788/chrysler-museum-asked-to-return-allegedly-stolen-peter-stephenson-statue/"
+  ],
+  "reason": "Hyperallergic attributes the lie to Ricau and the withholding to the association's attorney, and the provenance remark to Neil."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wording: 'settled' (reports describe an agreement to return, with a failed earlier deal)"
+  ],
+  "before": "Overall: Little criticism of the museum's programme. The press record centres on a provenance dispute over one sculpture, settled in 2023.",
+  "after": "Overall: Little criticism of the museum's programme. The press record centres on a provenance dispute over one sculpture, which ended in 2023 when the museum agreed to return it.",
+  "sources": [
+   "https://usaartnews.com/news/chrysler-museum-of-art-will-return-disputed-sculpture-of-indigenous-man"
+  ],
+  "reason": "USA Art News reports an agreement to return with no payment."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'brought to light'"
+  ],
+  "before": "The museum runs on City of Norfolk money, a large endowment and local donors and companies, and the city both owns the buildings and appoints most of the board. The weak point is a current corporate partner that builds Navy warships, at a small $5,000 level and with no protest on record. Worth watching: provenance gaps in the Chrysler Jr. collection, which the 2023 statue return brought to light.",
+  "after": "The museum runs on City of Norfolk money, a large endowment and local donors and companies, and the city both owns the buildings and appoints most of the board. The weak point is a current corporate partner that builds Navy warships, at a small $5,000 level and with no protest on record. Worth watching: provenance gaps in the Chrysler Jr. collection, which Neil acknowledged during the 2023 statue dispute.",
+  "sources": [
+   "https://hyperallergic.com/825788/chrysler-museum-asked-to-return-allegedly-stolen-peter-stephenson-statue/"
+  ],
+  "reason": "Hyperallergic reports the curator flagged missing provenance in 1991 and Neil's later remark."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "FUNDING",
+  "problems": [
+   "wording: 'rental grant' (report says rental subsidy)",
+   "unsupported: 'goes back to the council'"
+  ],
+  "before": "- Wellington City Council gave Experience Wellington a $10,244,594 operating grant and a $2,096,574 rental grant in the year to 30 June 2026, out of total revenue of $15,743,056; the rental grant goes back to the council as rent on the gallery and other council buildings (2025/26 annual report).",
+  "after": "- Wellington City Council gave Experience Wellington a $10,244,594 operating grant and a $2,096,574 rental subsidy in the year to 30 June 2026, out of total revenue of $15,743,056; the subsidy covers rent payable to the council on three leases, including the gallery's (2025/26 annual report).",
+  "sources": [
+   "https://drive.google.com/file/d/1f7i3EqgDpF8dq5itMCLpc0_U-CqKHm6S/view"
+  ],
+  "reason": "The annual report calls it a council rental subsidy and says rent payable under three council leases is covered by it."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "Red flags: 2019 protest over the Theo Schoon exhibition",
+  "problems": [
+   "unsupported: 'students led by Anna McAllister'"
+  ],
+  "before": "- In August 2019 students led by Anna McAllister protested at \"Split Level View Finder: Theo Schoon and New Zealand Art\", wearing shirts reading \"Theo Schoon is a racist\" and urging people to stay away (RNZ via NZ Herald).",
+  "after": "- In August 2019 more than a dozen protesters, including Anna McAllister, who spoke for the group, protested at \"Split Level View Finder: Theo Schoon and New Zealand Art\", wearing shirts reading \"Theo Schoon is a racist\"; McAllister urged people to stay away (RNZ via NZ Herald).",
+  "sources": [
+   "https://www.nzherald.co.nz/nz/controversial-artist-theo-schoons-work-targeted-by-calls-for-a-boycott/M3SQL44XDIUG3KM2GGRJTJKYL4/"
+  ],
+  "reason": "The article names McAllister as one of the protesters and the one who spoke for the group; it names no leader."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "Red flags: 2019 protest over the Theo Schoon exhibition",
+  "problems": [
+   "unsupported: negative claim about the protest's target stated as fact"
+  ],
+  "before": "- The protest targeted the show, not its sponsor, the Fletcher Trust (stated by the space).",
+  "after": "- The space names the Fletcher Trust as the show's sponsor. No reporting found of an objection to the sponsor.",
+  "sources": [
+   "https://citygallery.org.nz/exhibitions/theo-schoon-split-le"
+  ],
+  "reason": "The exhibition page credits the Fletcher Trust as sponsor; the Herald piece mentions no sponsor."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "Red flags: 2021 restructure and open letters",
+  "problems": [
+   "unsupported: 'put its art loans ... on hold' (source says it may place lending on hold)"
+  ],
+  "before": "- The Chartwell Trust put its art loans to the gallery on hold (ArtAsiaPacific).",
+  "after": "- ArtAsiaPacific reported that the Chartwell Trust, which lends art to the gallery, could place its lending on hold.",
+  "sources": [
+   "https://artasiapacific.com/news/wellington-s-city-gallery-faces-controversial-restructuring"
+  ],
+  "reason": "The article states a possible hold, not a decision."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'Schoon took imagery without credit' (review says Schoon and Walters borrowed from a patient)"
+  ],
+  "before": "- Schoon took imagery without credit and recorded Ngāi Tahu rock drawing sites without consultation.",
+  "after": "- Schoon and Gordon Walters borrowed imagery from a patient at Avondale Mental Hospital without crediting him; Schoon's 1946 commission to record Ngāi Tahu rock drawing sites involved no consultation with Ngāi Tahu.",
+  "sources": [
+   "https://thespinoff.co.nz/art/24-08-2019/the-past-is-a-fucked-up-place-theo-schoon-reviewed-and-reconsidered"
+  ],
+  "reason": "Restated to match the review."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wording: curators' stance restated from the review"
+  ],
+  "before": "- The Māori modernism section could have been much larger, to the show's benefit; the curators did not treat the material as unproblematic.",
+  "after": "- The Māori modernism section could have been a much larger part of the show, to its benefit; the co-curators, Damian Skinner and Aaron Lister, are clearly not trying to make the exercise unproblematic.",
+  "sources": [
+   "https://thespinoff.co.nz/art/24-08-2019/the-past-is-a-fucked-up-place-theo-schoon-reviewed-and-reconsidered"
+  ],
+  "reason": "Matches the review."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'call to scrap the show'"
+  ],
+  "before": "- Respects the protesters but is wary of their call to scrap the show.",
+  "after": "- Respects the protesters' activism but is wary of what he calls their absolutism, from his art-historical training.",
+  "sources": [
+   "https://thespinoff.co.nz/art/24-08-2019/the-past-is-a-fucked-up-place-theo-schoon-reviewed-and-reconsidered"
+  ],
+  "reason": "The review says he respects their activism but is wary of such absolutism."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'weaken the gallery' (CIMAM: destabilising)",
+   "missing date of the retracted statement"
+  ],
+  "before": "- Notes CIMAM issued and then withdrew a statement at the request of Mayor Andy Foster; CIMAM's 9 June 2021 statement said losing the specialist roles would weaken the gallery.",
+  "after": "- Notes CIMAM's Museum Watch Committee issued a statement on 4 June 2021 and retracted it the same day at the request of Mayor Andy Foster; CIMAM's 9 June 2021 statement said disestablishing the director and senior curator roles would destabilise the institution.",
+  "sources": [
+   "https://artasiapacific.com/news/wellington-s-city-gallery-faces-controversial-restructuring",
+   "https://cimam.org/news-archive/statement-on-the-proposed-restructuring-of-city-gallery-wellington-te-whare-toi2/"
+  ],
+  "reason": "ArtAsiaPacific gives 4 June and the same-day retraction; the CIMAM page is dated 9 June and uses 'destabilising'."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "OVERVIEW",
+  "problems": [
+   "wording: 'ground was broken' (Wikipedia says construction began)"
+  ],
+  "before": "- Building by Allied Works Architecture, led by Brad Cloepfil: 28,500 square feet with nine galleries; ground was broken in December 2009 (Wikipedia).",
+  "after": "- Building by Allied Works Architecture, led by Brad Cloepfil: 28,500 square feet with nine galleries; construction began in December 2009 (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Clyfford_Still_Museum"
+  ],
+  "reason": "Wikipedia says construction began in December 2009."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "FUNDING",
+  "problems": [
+   "date: 9 November 2011 comes from CultureGrrl's announcement of the auction, not the sale report"
+  ],
+  "before": "- That endowment came from four paintings from Patricia Still's estate that the City and County of Denver sold at Sotheby's on 9 November 2011 for $114 million, netting at least $85 million, with court permission (Denver Post via Saunders, CultureGrrl).",
+  "after": "- That endowment came from four paintings from Patricia Still's estate that the City and County of Denver put up at Sotheby's on 9 November 2011 (CultureGrrl); the sale brought $114 million, netting at least $85 million, with court permission (Denver Post via Saunders, CultureGrrl).",
+  "sources": [
+   "https://artsjournal.com/culturegrrl/2011/09/sothebys_to_auction_denvers_fo.html",
+   "https://saundersinc.com/about/news/denver-post-four-clyfford-still-paintings-sell-for-114-million"
+  ],
+  "reason": "The Denver Post piece gives the $114 million and $85 million figures; the auction date is in the CultureGrrl title."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'mayoral'"
+  ],
+  "before": "- The board includes a Denver City Council representative and a mayoral appointee (2025 annual report).",
+  "after": "- The board includes a Denver City Council representative and an appointee (2025 annual report).",
+  "sources": [
+   "https://clyffordstillmuseum.org/wp-content/uploads/2026/09/AnnualReport-FINAL_2025_web.pdf"
+  ],
+  "reason": "The annual report lists 'City Council Representative' and 'Appointee' without saying who appoints."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "Red flags: fossil fuels (The Anschutz Foundation)",
+  "problems": [
+   "unsupported: 'still owns ... drills'"
+  ],
+  "before": "- The Anschutz Corporation still owns Anschutz Exploration Corporation, which drills for oil and gas mainly in Colorado, Utah and Wyoming (Wikipedia).",
+  "after": "- Anschutz Exploration Corporation, a subsidiary of The Anschutz Corporation, continues the company's oil and gas work, with a focus on Colorado, Utah and Wyoming (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/The_Anschutz_Corporation"
+  ],
+  "reason": "Restated to match the Wikipedia wording."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "Red flags: fossil fuels (The Anschutz Foundation)",
+  "problems": [
+   "undated claim: present-tense giving not supported (grants date from 2010 to 2012 filings)"
+  ],
+  "before": "- The foundation has given to conservative groups including the Heritage Foundation and the Federalist Society (Wikipedia).",
+  "after": "- Wikipedia, citing 2010 to 2012 tax filings, says Anschutz made grants through the foundation to conservative think tanks including the Heritage Foundation and the Federalist Society.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Philip_Anschutz"
+  ],
+  "reason": "The grants are sourced to 2010 to 2012 filings and the foundation is not named as the giver on the Anschutz Corporation page."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "attribution: 'broke' stated as fact; Rosenbaum's claim"
+  ],
+  "before": "- The sale broke the no-sale terms in the wills of Clyfford and Patricia Still, with a court's permission.",
+  "after": "- Says the sale violates the no-sale stipulations in the wills of Clyfford and Patricia Still, though a court gave permission.",
+  "sources": [
+   "https://artsjournal.com/culturegrrl/2011/09/sothebys_to_auction_denvers_fo.html"
+  ],
+  "reason": "Credited to the critic."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wording: ownership claim restated"
+  ],
+  "before": "- Goebel defends it: the city owned the works, so it was not a deaccession, and the four paintings were about 2% of Still's output.",
+  "after": "- Goebel defends it: the works belonged to the City and County of Denver and had not yet transferred to the museum, so the sale was not a deaccession; the four paintings were about 2% of Still's output. She blames the Maryland court that approved the sale.",
+  "sources": [
+   "https://leannegoebel.com/2011/11/15/clyfford-still-museum-to-open-with-fanfare-and-controversy-from-adobeairstream-com/"
+  ],
+  "reason": "Matches the post."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "attribution: audience doubt is critics', not the author's"
+  ],
+  "before": "- The deal is restrictive: no work can be sold and no other artist can be shown, which rules out varied temporary exhibitions.\n- Doubts Still's name alone will draw a wide audience.",
+  "after": "- The deal bars any sale of the collection, and Still's will forbids showing other artists' work, which rules out rotating temporary exhibitions.\n- Reports critics' doubt that Still's name alone will draw a wide audience, since he is less known than Pollock, de Kooning or Rothko.",
+  "sources": [
+   "https://artsjournal.org/?p=25418"
+  ],
+  "reason": "Credited as the piece reports it."
+ },
+ {
+  "id": "collective-edinburgh",
+  "section": "Red flags: Baillie Gifford sponsorship dropped under pressure",
+  "problems": [
+   "unsupported: 'sponsored' (e-flux says Collective thanks ...)"
+  ],
+  "before": "- Baillie Gifford sponsored Collective's 2018 opening exhibition, \"Affinity and Allusion\", with the Elephant Trust and the Royal Over-Seas League (e-flux).",
+  "after": "- Collective's 2018 opening exhibition, \"Affinity and Allusion\", thanked Baillie Gifford's investment managers, the Elephant Trust and the Royal Over-Seas League for supporting it (e-flux).",
+  "sources": [
+   "https://www.e-flux.com/announcements/228645/affinity-and-allusion"
+  ],
+  "reason": "The e-flux text thanks the three for supporting the exhibition and does not use the word sponsor."
+ },
+ {
+  "id": "collective-edinburgh",
+  "section": "Red flags: Baillie Gifford sponsorship dropped under pressure",
+  "problems": [
+   "source not named precisely"
+  ],
+  "before": "- Art Workers for Palestine Scotland named Collective among cultural bodies Baillie Gifford funds and asked the firm to divest from Cemex, Cisco Systems and Booking Holdings over business in Israeli settlements (Art Workers for Palestine Scotland, an advocacy group).",
+  "after": "- Art Workers for Palestine Scotland named Collective among cultural bodies Baillie Gifford funds and asked the firm to divest from Cemex, Cisco Systems and Booking Holdings over business in Israeli settlements (Lighthouse Bookshop guest post by Art Workers for Palestine Scotland, an advocacy group).",
+  "sources": [
+   "https://lighthousebookshop.com/posts/the-art-sector-isnt-neutral-a-guest-blog-from-art-workers-for-palestine-scotland"
+  ],
+  "reason": "The guest post names Collective and the three companies."
+ },
+ {
+  "id": "collective-edinburgh",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'social justice commitments' paraphrase",
+   "misattributed: 'indefensible' is Morning Star's report, not the guest post"
+  ],
+  "before": "- Art Workers for Palestine Scotland calls Baillie Gifford's investments in companies tied to Israeli settlements out of line with the social justice commitments of Scottish culture; in 2025 it called the Edinburgh International Festival's ties to the firm \"indefensible\" (Lighthouse Bookshop guest post, Morning Star; advocacy group).",
+  "after": "- Art Workers for Palestine Scotland says Baillie Gifford's holdings fall short of \"the commitment to social justice that is expected from Scotland's cultural organisations\" (Lighthouse Bookshop guest post); in 2025 it called the Edinburgh International Festival's ties to the firm \"indefensible\" (Morning Star). Both sources are advocacy.",
+  "sources": [
+   "https://lighthousebookshop.com/posts/the-art-sector-isnt-neutral-a-guest-blog-from-art-workers-for-palestine-scotland",
+   "https://morningstaronline.co.uk/node/241210"
+  ],
+  "reason": "The guest post does not use 'indefensible'; Morning Star does."
+ },
+ {
+  "id": "collective-edinburgh",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'each of the last four years' (only two years opened)",
+   "unsupported: 'rising'"
+  ],
+  "before": "Collective's money now comes from the city council, Creative Scotland, lottery heritage money, arts trusts and income from the site itself. Its one funder controversy, Baillie Gifford, ended when it dropped the firm by 2024 under campaign pressure. Worth watching: rising deficits (spending exceeded income in each of the last four years) and any return of corporate sponsorship.",
+  "after": "Collective's money now comes from the city council, Creative Scotland, lottery heritage money, arts trusts and income from the site itself. Its one funder controversy, Baillie Gifford, ended when it dropped the firm by 2024 under campaign pressure. Worth watching: deficits (spending exceeded income in both 2024 and 2025) and any return of corporate sponsorship.",
+  "sources": [
+   "https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC009405"
+  ],
+  "reason": "OSCR figures opened cover 2024 and 2025: income £713,491 vs spending £806,132, and £801,771 vs £923,678."
+ },
+ {
+  "id": "contour-biennale-mechelen",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'has run it since 2024'"
+  ],
+  "before": "- In spring 2023 nona ended the biennale; after a sector petition, the non-profit Contouristen, a group of Belgium-based curators, artists and cultural workers, revived it and has run it since 2024 (Sabzian, Kinoki, stated by the space).",
+  "after": "- In spring 2023 nona ended the biennale; after a sector petition in 2024, the non-profit Contouristen, a group of Belgium-based curators, artists and cultural workers, revived it (Sabzian, Kinoki, stated by the space).",
+  "sources": [
+   "https://www.kinoki.co/contour-biennale-returns-after-three-year-hiatus/",
+   "https://sabzian.be/news/petition-for-contour-biennial-of-moving-images"
+  ],
+  "reason": "Kinoki says Contouristen petitioned for the return in 2024; no page opened gives a start date for running it."
+ },
+ {
+  "id": "contour-biennale-mechelen",
+  "section": "Red flags: fossil fuels (Calouste Gulbenkian Foundation)",
+  "problems": [
+   "unsupported: 'June 2019'"
+  ],
+  "before": "- It owned the oil company Partex until selling it to a Thai company in June 2019 (Wikipedia). The map counts the oil-built endowment as fossil fuel money.",
+  "after": "- It owned the oil company Partex until a 2019 sale to a Thai buyer (Wikipedia). The map counts the oil-built endowment as fossil fuel money.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Calouste_Gulbenkian_Foundation"
+  ],
+  "reason": "Wikipedia gives 2019 and an unnamed Thai buyer, no month."
+ },
+ {
+  "id": "contour-biennale-mechelen",
+  "section": "Red flags: 2023 closure and sector petition",
+  "problems": [
+   "unsupported: 'won Flemish funding ... failed to invest in it'"
+  ],
+  "before": "- The petition said nona had won Flemish funding for its ten-year plan partly on the strength of Contour, then failed to invest in it (Sabzian).",
+  "after": "- The petition said nona received positive feedback on its current funding period partly because the biennial was a core part of its ten-year plan (Sabzian).",
+  "sources": [
+   "https://sabzian.be/news/petition-for-contour-biennial-of-moving-images"
+  ],
+  "reason": "Sabzian reports the positive feedback; it does not report a failure to invest."
+ },
+ {
+  "id": "contour-biennale-mechelen",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wording: 'weak communication' (source: weak promotion)",
+   "wording: 'gaps grew'"
+  ],
+  "before": "- After the 2017 merger, nona became disconnected from the biennale: gaps between editions grew to four years, no coordinator was appointed for years, and weak communication left low visitor numbers.",
+  "after": "- After the 2017 merger, nona became disconnected from the biennale: four years passed between the last two editions, no coordinator was appointed for several years, and weak promotion left visitor numbers low.",
+  "sources": [
+   "https://sabzian.be/news/petition-for-contour-biennial-of-moving-images"
+  ],
+  "reason": "Matches the petition summary."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "Red flags: Bloomberg Philanthropies as a donor",
+  "problems": [
+   "unsupported: 'London' (Morning Star says British; the RSC is in Stratford-upon-Avon)"
+  ],
+  "before": "- On 28 May 2026 Artists for Palestine UK published an open letter, signed by 261 artists, asking five London theatres to end Bloomberg partnerships over its funding of a Tel Aviv University centre that trains officials who govern West Bank settlements (Morning Star). The letter does not name Cooper Hewitt.",
+  "after": "- On 28 May 2026 Artists for Palestine UK published an open letter, signed by 261 artists, asking five British theatres to end Bloomberg partnerships over its funding of a Tel Aviv University centre that trains officials who govern West Bank settlements (Morning Star). The letter does not name Cooper Hewitt.",
+  "sources": [
+   "https://www.morningstaronline.co.uk/node/249891"
+  ],
+  "reason": "Morning Star names the National Theatre, RSC, Royal Court, Young Vic and Almeida and calls them five leading British theatres."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "Red flags: political pressure over \"Patterns of Life\"",
+  "problems": [
+   "misattributed: the Hyperallergic feature does not mention the Shurat HaDin letter"
+  ],
+  "before": "- In May 2025 the Israeli NGO Shurat HaDin wrote to Vice President JD Vance asking the White House to cancel \"Patterns of Life\", Mona Chalabi and SITU Research's reconstruction of destroyed family homes in Gaza, Mosul and Manbij (Hyperallergic), citing President Trump's 27 March 2025 executive order (Jerusalem Post, written with Shurat HaDin, an advocacy group).",
+  "after": "- In May 2025 the Israeli NGO Shurat HaDin wrote to Vice President JD Vance and other officials urging the White House to cancel \"Patterns of Life\", citing President Trump's 27 March 2025 executive order; the Jerusalem Post article of 8 May 2025 was written in collaboration with Shurat HaDin, an advocacy group. The show was Mona Chalabi and SITU Research's reconstruction of homes destroyed in Gaza, Mosul and Manbij (Hyperallergic, August 2025).",
+  "sources": [
+   "https://www.jpost.com/diaspora/antisemitism/article-853247",
+   "https://hyperallergic.com/1031223/how-do-you-remember-a-home-reduced-to-rubble-mona-chalabi/"
+  ],
+  "reason": "The letter and the executive order come from the Jerusalem Post article; Hyperallergic describes the show only."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "Red flags: political pressure over \"Patterns of Life\"",
+  "problems": [
+   "number: article gives both $36,000 and $36,500"
+  ],
+  "before": "- Unverified: a 2026 Smithsonian inspector general report found the museum used $36,500 from the American Women's History Initiative pool for the show without telling the fund's administrators, and that the exhibition review committee worked without defined procedures, from The Federalist, an openly conservative outlet. The report itself was not found.",
+  "after": "- Unverified: a 2026 Smithsonian inspector general report found the museum used federal funds from the American Women's History Initiative pool for the show without notifying the fund's administrators (the article gives the sum as both $36,000 and $36,500), and that the exhibition review committee worked without defined procedures, from The Federalist, an openly conservative outlet. The report itself was not found.",
+  "sources": [
+   "https://thefederalist.com/2026/07/08/ig-report-reveals-36k-smithsonian-exhibit-spread-hamas-propaganda-about-us-blowing-up-gazan-homes/"
+  ],
+  "reason": "The Federalist uses both figures."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "Red flags: political pressure over \"Patterns of Life\"",
+  "problems": [
+   "unsupported: 'November 2024'"
+  ],
+  "before": "- The show stayed on view from November 2024 to August 2025 (The Federalist, Hyperallergic).",
+  "after": "- The show stayed on view from late 2024 until August 2025 (The Federalist, Hyperallergic).",
+  "sources": [
+   "https://thefederalist.com/2026/07/08/ig-report-reveals-36k-smithsonian-exhibit-spread-hamas-propaganda-about-us-blowing-up-gazan-homes/",
+   "https://hyperallergic.com/1031223/how-do-you-remember-a-home-reduced-to-rubble-mona-chalabi/"
+  ],
+  "reason": "The Federalist says late 2024; Hyperallergic says the show ran through 10 August 2025."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "verdict adverb: 'admiringly' with no named piece"
+  ],
+  "before": "Overall: Little criticism of the programme in art media. Art press covered the 2020 trustee revolt over the director's ouster; the attacks on \"Patterns of Life\" came from advocacy groups and conservative outlets, while Hyperallergic covered the show admiringly.",
+  "after": "Overall: Little criticism of the programme in art media. Art press covered the 2020 trustee revolt over the director's ouster; the attacks on \"Patterns of Life\" came from advocacy groups and conservative outlets, while Hyperallergic ran a feature on the show's models and the families behind them.",
+  "sources": [
+   "https://hyperallergic.com/1031223/how-do-you-remember-a-home-reduced-to-rubble-mona-chalabi/"
+  ],
+  "reason": "Describes what the feature covers."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'basic decency' (source: every principle of decency)"
+  ],
+  "before": "- Zankel called Baumann \"an exemplary leader who gave everything to her job\" and called her treatment a violation of basic decency.",
+  "after": "- Zankel called Baumann \"an exemplary leader who gave everything to her job\" and wrote that her treatment \"violates every principle of decency\".",
+  "sources": [
+   "https://hyperallergic.com/cooper-hewitt-trustees-resign/"
+  ],
+  "reason": "Quote corrected."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "omitted: the resignation rationale"
+  ],
+  "before": "- Zankel argued the punishment was out of proportion and suggested sexism played a role.",
+  "after": "- Zankel argued the punishment was out of proportion and suggested sexism played a role; she said staying on the board \"tacitly condones this behavior\".",
+  "sources": [
+   "https://hyperallergic.com/cooper-hewitt-trustees-resign/"
+  ],
+  "reason": "Adds her stated reason for resigning."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "incomplete: both declined"
+  ],
+  "before": "- Criticises the Smithsonian's handling, not the museum's funders; the Smithsonian declined to comment.",
+  "after": "- Criticises the Smithsonian's handling, not the museum's funders; the Smithsonian and Cooper Hewitt declined to comment.",
+  "sources": [
+   "https://hyperallergic.com/cooper-hewitt-trustees-resign/"
+  ],
+  "reason": "Hyperallergic says both declined."
+ },
+ {
+  "id": "dallas-contemporary-dallas",
+  "section": "FUNDING",
+  "problems": [
+   "overstatement: 'pays for' (page says 'thanks to the support of')"
+  ],
+  "before": "- The Eugene McDermott Foundation pays for free admission; the City of Dallas Office of Arts and Culture supports it in part (stated by the space).",
+  "after": "- The Eugene McDermott Foundation supports free admission; the City of Dallas Office of Arts and Culture supports the space in part (stated by the space).",
+  "sources": [
+   "https://www.dallascontemporary.org/donate"
+  ],
+  "reason": "The donate page thanks the foundation for its support of free admission."
+ },
+ {
+  "id": "dallas-contemporary-dallas",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "overstatement: 'paid for'"
+  ],
+  "before": "Dallas Contemporary runs on a small group of Dallas donors and foundations, with free entry paid for by the McDermott Foundation. The weak point is Headington Companies, an oil and gas firm, at the top donor level; the Epstein link is a single 2014 loan request, not money. Worth watching: repeated deficits, falling net assets and three changes of director since 2022.",
+  "after": "Dallas Contemporary runs on a small group of Dallas donors and foundations, with free entry supported by the McDermott Foundation. The weak point is Headington Companies, an oil and gas firm, at the top donor level; the Epstein link is a single 2014 loan request, not money. Worth watching: repeated deficits, falling net assets and three changes of director since 2022.",
+  "sources": [
+   "https://www.dallascontemporary.org/donate"
+  ],
+  "reason": "Same wording fix."
+ },
+ {
+  "id": "dar-al-athar-al-islamiyyah",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'shown in the Kuwait National Museum until the 1990 Iraqi invasion' (Norman says the two collections were separate, with their own buildings)"
+  ],
+  "before": "- The collection holds more than 30,000 objects and was shown in the Kuwait National Museum until the 1990 Iraqi invasion; the organisation works from its two centres while the Qibla Cultural District is rehabilitated (stated by the space, Norman).",
+  "after": "- The collection holds more than 30,000 pieces; the organisation works from its two centres while the rehabilitation of its buildings in the Qibla Cultural District is underway (stated by the space).",
+  "sources": [
+   "https://daralatharalislamiyyah.com/",
+   "https://cool.culturalheritage.org/jaic/articles/jaic39-01-011.html"
+  ],
+  "reason": "Norman says Dar al-Athar had its own building open since 1983, separate from the National Museum; the space's page says its objects will again be shown at the National Museum after rehabilitation."
+ },
+ {
+  "id": "dar-al-athar-al-islamiyyah",
+  "section": "OVERVIEW",
+  "problems": [
+   "wording: 'burned' / 'took' restated to match Norman"
+  ],
+  "before": "- Iraqi antiquities staff took all of Dar al-Athar's roughly 3,000 objects to Baghdad in 1990 and the army burned its building; all but 61 objects came back through a UN handover in Baghdad in September and October 1991 (Kirsty Norman, Journal of the American Institute for Conservation).",
+  "after": "- Staff of the Iraqi Department of Antiquities packed the whole of Dar al-Athar, some 3,000 objects, for Baghdad in 1990 and the Iraqi army torched its building during the retreat; all but 61 objects came back through a UN handover in Baghdad in September and October 1991 (Kirsty Norman, Journal of the American Institute for Conservation).",
+  "sources": [
+   "https://cool.culturalheritage.org/jaic/articles/jaic39-01-011.html"
+  ],
+  "reason": "Matches Norman's wording."
+ },
+ {
+  "id": "dar-al-athar-al-islamiyyah",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Sheikh Nasser's family'"
+  ],
+  "before": "- The collection belongs to Sheikh Nasser's family and is on permanent loan to the State of Kuwait under the National Council for Culture, Arts and Letters (stated by the space, Wikipedia).",
+  "after": "- The collection belongs to Sheikh Nasser and his wife Sheikha Hussa (Wikipedia) and is on permanent loan to the State of Kuwait under the National Council for Culture, Arts and Letters (stated by the space).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Dar_al-Athar_al-Islamiyyah",
+   "https://daralatharalislamiyyah.com/"
+  ],
+  "reason": "Wikipedia names the two owners; the loan terms are on the space's page."
+ },
+ {
+  "id": "dar-al-athar-al-islamiyyah",
+  "section": "FUNDING",
+  "problems": [
+   "number: seven unnamed logos, not eight"
+  ],
+  "before": "- Director's Circle sponsors: KIPCO, Kuwait Petroleum Corporation and its subsidiaries, Kuwait Finance House, and eight unnamed further entries (stated by the space, no years or amounts).",
+  "after": "- Director's Circle sponsors: KIPCO, Kuwait Petroleum Corporation and its subsidiaries, Kuwait Finance House, and seven further logos with no name (stated by the space, no years or amounts).",
+  "sources": [
+   "https://daralatharalislamiyyah.com/sponsors/"
+  ],
+  "reason": "The page shows ten logos in the Director's Circle: three named, seven without names."
+ },
+ {
+  "id": "dar-al-athar-al-islamiyyah",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'members of ... families'",
+   "unsupported: al-Nouri as benefactor (listed as donor)"
+  ],
+  "before": "- Major benefactors include Intisar Salem al-Sabah and Maryam Nasser al-Sabah, with members of the al-Essa, al-Mutawa, Behbehani, al-Ghanim and al-Nouri families among sponsors and donors (stated by the space).",
+  "after": "- Major benefactors listed: Intisar Salem al-Sabah, Maryam Nasser al-Sabah, Abdulaziz Sultan al-Essa, Shafika Ali al-Mutawa, Ekbal Ismael Abdulrasool Behbehani and Nasrallah Syed Hameed Behbehani; further sponsors and donors are named individuals (stated by the space).",
+  "sources": [
+   "https://daralatharalislamiyyah.com/sponsors/"
+  ],
+  "reason": "The page lists individuals, not families."
+ },
+ {
+  "id": "dar-al-athar-al-islamiyyah",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'listed'"
+  ],
+  "before": "- KIPCO is a listed Kuwaiti holding company in banking, petrochemicals and oil services, media and real estate (Wikipedia).",
+  "after": "- KIPCO is an investment holding company in the Middle East and North Africa with banking, petrochemical and oil services, media and real estate businesses (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/KIPCO"
+  ],
+  "reason": "Wikipedia's infobox says 'Public' and does not say listed in Kuwait."
+ },
+ {
+  "id": "dar-al-athar-al-islamiyyah",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'business families'"
+  ],
+  "before": "Dar al-Athar is a private royal collection on loan to the state, kept going by the al-Sabah family, Kuwaiti business families and state-linked companies. The weak point is Kuwait Petroleum Corporation, the national oil company, as a top sponsor, together with no published accounts. Worth watching: what the state pays toward the Qibla district rehabilitation and whether provenance for the collection is ever published in full.",
+  "after": "Dar al-Athar is a private royal collection on loan to the state, kept going by the al-Sabah family, named Kuwaiti individual donors and state-linked companies. The weak point is Kuwait Petroleum Corporation, the national oil company, as a top sponsor, together with no published accounts. Worth watching: what the state pays toward the Qibla district rehabilitation and whether provenance for the collection is ever published in full.",
+  "sources": [
+   "https://daralatharalislamiyyah.com/sponsors/"
+  ],
+  "reason": "Follows the sponsor page."
+ },
+ {
+  "id": "darwin-festival-darwin",
+  "section": "Red flags: Santos sponsorship dropped under pressure",
+  "problems": [
+   "misattributed: ABC says nearly three decades, not 26 years"
+  ],
+  "before": "- Santos held naming rights to the opening night concert; the board said Santos had partnered with the festival for 26 years (NT Independent, ABC).",
+  "after": "- Santos held naming rights to the opening night concert; the board said Santos had partnered with the festival for 26 years (NT Independent).",
+  "sources": [
+   "https://ntindependent.com.au/artists-first-nations-blast-santos-sponsorship-of-upcoming-darwin-festival/"
+  ],
+  "reason": "Only the NT Independent gives the board's 26 years."
+ },
+ {
+  "id": "darwin-festival-darwin",
+  "section": "Red flags: Santos sponsorship dropped under pressure",
+  "problems": [
+   "misattributed: 'now has alternative sponsorship options' is the board's statement, not Santos's"
+  ],
+  "before": "- Santos ended its sponsorship when the contract expired on 31 December 2022, saying the board \"now has alternative sponsorship options\"; 300 artists and producers and the band Yothu Yindi had joined the campaign (ABC, Canberra Times).",
+  "after": "- Santos told the board it would not renew the sponsorship contract, which expired on 31 December 2022; the board said it now had alternative sponsorship options (ABC). An open letter from 300 artists and producers, joined by the band Yothu Yindi, had pushed for the end of the deal (Canberra Times).",
+  "sources": [
+   "https://www.abc.net.au/news/2022-10-19/santos-ends-sponsorship-funding-for-darwin-festival/101549370",
+   "https://www.canberratimes.com.au/story/7947873/santos-ends-darwin-festival-sponsorship"
+  ],
+  "reason": "ABC: the board said it now has alternative options; Santos's letter said it would not renew. The 300 artists and Yothu Yindi come from the Canberra Times."
+ },
+ {
+  "id": "de-appel",
+  "section": "Red flags: 2015 dismissal of the director and protest",
+  "problems": [
+   "wording: 'interim manager' (report says intendant)"
+  ],
+  "before": "- In May 2016 the national Raad voor Cultuur decided to stop funding De Appel through the Basisinfrastructuur; the board then resigned, and alderman Kajsa Ollongren and supporters appointed an interim manager (2016 annual report).",
+  "after": "- In May 2016 the national Raad voor Cultuur decided to stop funding De Appel through the Basisinfrastructuur; the board then resigned, and alderman Kajsa Ollongren and the institution's supporters decided to appoint an intendant, Maaike Lauwaert (2016 annual report).",
+  "sources": [
+   "https://catalogus.boekman.nl/pub/Appel/2016.pdf"
+  ],
+  "reason": "The 2016 report says they decided on an intendant and names Maaike Lauwaert after a 7 June 2016 vote."
+ },
+ {
+  "id": "dallas-contemporary-dallas",
+  "section": "Red flags: Epstein files: a 2014 loan request",
+  "problems": [
+   "flag rule: an Epstein loan request is listed without a flag"
+  ],
+  "before": "Red flags: Epstein files: a 2014 loan request\n- On 24 February 2014 director Peter Doroshenko wrote to \"Jeffrey\" asking to borrow Richard Phillips's 1997 painting \"Below\" from his collection for \"Richard Phillips: Negation of the Universe\" (11 April to 10 August 2014); the letter is document EFTA02707793 in the US Justice Department's Epstein release (epstein-data.com transcript).\n- No reporting found that Epstein lent the work, gave money or held any role at Dallas Contemporary. This is a loan request, not a funding tie.",
+  "after": "WIDER CONTEXT\n- Epstein files, a 2014 loan request: on 24 February 2014 director Peter Doroshenko wrote to \"Jeffrey\" asking to borrow Richard Phillips's 1997 painting \"Below\" from his collection for \"Richard Phillips: Negation of the Universe\" (11 April to 10 August 2014); the letter is document EFTA02707793 in the US Justice Department's Epstein release (epstein-data.com transcript).\n- No reporting found that Epstein lent the work, gave money or held any role at Dallas Contemporary. This was a loan request and a file mention, not a funding or leadership tie, so the map lists it here without a flag.",
+  "sources": [],
+  "reason": "The item is a 2014 request to borrow a painting, with no money or leadership tie (the report itself says no reporting found of a loan, gift or role). Moved from Red flags to WIDER CONTEXT and labelled a loan request. The epstein-data.com page would not load for me; a web search result summarising it and D Magazine's post agree on the date, the painting and that Epstein did not lend it, but I did not open D Magazine either."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "trim",
+  "problems": [
+   "over length: report exceeded 800 words"
+  ],
+  "before": "- In the year to June 2025 revenue was $16,549,844 and expenses $18,908,535; contributions were $7,370,833 (ProPublica, Form 990).\n- Corporate partners: Dollar Tree Family Dollar and Sentara at $25,000; KPMG, Towne Bank, McGuireWoods, Newport News Shipbuilding and nine others at $5,000 (stated by the space).",
+  "after": "(line removed)",
+  "sources": [],
+  "reason": "Report passed the 800-word limit after the fixes; cut a Form 990 revenue line and two minor details."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "trim",
+  "problems": [
+   "over length: report exceeded 800 words"
+  ],
+  "before": "- Also runs the Perry Glass Studio (opened 2011, expanded by early 2025), the Moses Myers House of about 1792 and a research library (Wikipedia, stated by the space).",
+  "after": "(line removed)",
+  "sources": [],
+  "reason": "Report passed the 800-word limit after the fixes; cut a Form 990 revenue line and two minor details."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "trim",
+  "problems": [
+   "over length: report exceeded 800 words"
+  ],
+  "before": "- Also runs the Perry Glass Studio, the Moses Myers House of about 1792 and a research library (Wikipedia, stated by the space).",
+  "after": "- Also runs the Perry Glass Studio (opened 2011), the Moses Myers House of about 1792 and a research library (Wikipedia, stated by the space).",
+  "sources": [],
+  "reason": "Report passed the 800-word limit after the fixes; cut a Form 990 revenue line and two minor details."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "trim",
+  "problems": [
+   "over length: report exceeded 800 words"
+  ],
+  "before": "- The building is the former Wellington Central Library, an Art Deco concrete building by Gummer and Ford completed in 1940; a 2008 to 2009 addition brought galleries and an auditorium (Wikipedia).",
+  "after": ", with a 2008 to 2009 addition (Wikipedia).",
+  "sources": [],
+  "reason": "Report passed the 800-word limit after the fixes; cut minor detail."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "trim",
+  "problems": [
+   "over length: report exceeded 800 words"
+  ],
+  "before": "- Visiting: open daily 10am to 5pm, with Thursdays until 9pm; the Cornelia Parker show is ticketed through Ticketmaster (stated by the space). No reporting found of current access details.",
+  "after": "(line removed)",
+  "sources": [],
+  "reason": "Report passed the 800-word limit after the fixes; cut minor detail."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "trim",
+  "problems": [
+   "over length: report exceeded 800 words"
+  ],
+  "before": "- The City Gallery Wellington Foundation, a separate charity, had revenue of $217,900 and assets of $1.6 million in the year to June 2025; it pays for exhibitions and non-building capital costs (Charities Register data via CharityData).",
+  "after": "(Charities Register data via CharityData)",
+  "sources": [],
+  "reason": "Report passed the 800-word limit after the fixes; cut minor detail."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "trim",
+  "problems": [
+   "over length: report exceeded 800 words"
+  ],
+  "before": "- Wikipedia, citing 2010 to 2012 tax filings, says Anschutz made grants through the foundation to conservative think tanks including the Heritage Foundation and the Federalist Society.\n",
+  "after": "(line removed)",
+  "sources": [],
+  "reason": "Report passed the 800-word limit after the fixes; cut the Heritage Foundation point, which was dated (2010 to 2012 filings) and not tied to the museum."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "trim",
+  "problems": [
+   "over length: report exceeded 800 words"
+  ],
+  "before": "- It is the only Smithsonian museum that charges admission (Wikipedia).\n- Gifts of $100,000 and above in October 2023 to September 2024 came from Adobe, the Henry Luce Foundation, the Terra Foundation, the New York City Department of Cultural Affairs, Ravenel Curry and Jane Moss, Shelby and Frederick Gans, and others (stated by the space).",
+  "after": "(line removed)",
+  "sources": [],
+  "reason": "Report passed the 800-word limit after the fixes; cut a minor detail."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "trim",
+  "problems": [
+   "over length"
+  ],
+  "before": "- Visiting: open Tuesday to Saturday 10am to 5pm and Sunday noon to 5pm, closed Mondays; admission and parking are free; wheelchair accessible, with an induction loop and large-print labels; the Myers House has limited access (stated by the space).",
+  "after": "- Visiting: open Tuesday to Saturday 10am to 5pm and Sunday noon to 5pm, closed Mondays; admission and parking are free; wheelchair accessible; the Myers House has limited access (stated by the space).",
+  "sources": [],
+  "reason": "Cut detail to stay under 800 words."
+ },
+ {
+  "id": "chrysler-museum-of-art-norfolk",
+  "section": "trim",
+  "problems": [
+   "over length"
+  ],
+  "before": "- An earlier deal with a $200,000 payment fell through; the association's lawyers said the museum backed out and asked the FBI to investigate. The museum said no deal existed.\n- News report, not a critical essay.",
+  "after": "- An earlier deal with a $200,000 payment fell through; the association's lawyers said the museum backed out and asked the FBI to investigate. The museum said no deal existed.",
+  "sources": [],
+  "reason": "Cut to stay under 800 words."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "trim",
+  "problems": [
+   "over length"
+  ],
+  "before": "- Run since 1995 for Wellington City Council by the Wellington Museums Trust, now trading as Wheako Pōneke Experience Wellington, which also runs Wellington Museum, Capital E and Space Place (Wikipedia, 2025/26 annual report).",
+  "after": "- Run since 1995 for Wellington City Council by the Wellington Museums Trust, now trading as Wheako Pōneke Experience Wellington (Wikipedia, 2025/26 annual report).",
+  "sources": [],
+  "reason": "Cut to stay under 800 words."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "trim",
+  "problems": [
+   "over length"
+  ],
+  "before": "- Named supporters include Simpson Grierson (the law firm sponsoring the Cornelia Parker show), Singapore Airlines, the Spark Foundation, Transpower Community Fund, the Lottery Community Fund, the Michael and Suzanne Borrin Foundation, Pelorus Trust, Stout Trust and individual donors (2025/26 annual report, Simpson Grierson).",
+  "after": "- Named supporters include Simpson Grierson (the law firm sponsoring the Cornelia Parker show), Singapore Airlines, the Spark Foundation, Transpower Community Fund, the Lottery Community Fund, the Michael and Suzanne Borrin Foundation, Pelorus Trust and Stout Trust (2025/26 annual report, Simpson Grierson).",
+  "sources": [],
+  "reason": "Cut 'individual donors' to stay under 800 words."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "trim",
+  "problems": [
+   "over length"
+  ],
+  "before": "- Visiting: open daily 10am to 5pm, with Thursdays until 9pm; the Cornelia Parker show is ticketed through Ticketmaster (stated by the space).",
+  "after": "- Visiting: open daily 10am to 5pm, with Thursdays until 9pm; the Cornelia Parker show is ticketed (stated by the space).",
+  "sources": [],
+  "reason": "Cut to stay under 800 words."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "trim",
+  "problems": [
+   "over length"
+  ],
+  "before": "- The City Gallery Wellington Foundation, a separate charity, had revenue of $217,900 and assets of $1.6 million in the year to June 2025 (Charities Register data via CharityData).",
+  "after": "- The City Gallery Wellington Foundation had revenue of $217,900 and assets of $1.6 million in the year to June 2025 (Charities Register data via CharityData).",
+  "sources": [],
+  "reason": "Cut to stay under 800 words."
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "section": "trim",
+  "problems": [
+   "over length"
+  ],
+  "before": "- Goebel defends it: the works belonged to the City and County of Denver and had not yet transferred to the museum, so the sale was not a deaccession; the four paintings were about 2% of Still's output. She blames the Maryland court that approved the sale.",
+  "after": "- Goebel defends it: the works belonged to the City and County of Denver and had not yet transferred to the museum, so the sale was not a deaccession; the four paintings were about 2% of Still's output.",
+  "sources": [],
+  "reason": "Cut to stay under 800 words."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "trim",
+  "problems": [
+   "vague: 'and others' (the page lists these six)"
+  ],
+  "before": "- Gifts of $100,000 and above in October 2023 to September 2024 came from Adobe, the Henry Luce Foundation, the Terra Foundation, the New York City Department of Cultural Affairs, Ravenel Curry and Jane Moss, Shelby and Frederick Gans, and others (stated by the space).",
+  "after": "- Gifts of $100,000 and above in October 2023 to September 2024 came from Adobe, the Henry Luce Foundation, the Terra Foundation, the New York City Department of Cultural Affairs, Ravenel Curry and Jane Moss, and Shelby and Frederick Gans (stated by the space).",
+  "sources": [
+   "https://www.cooperhewitt.org/membership/annual-report-of-gifts/"
+  ],
+  "reason": "The gifts page lists exactly these six names at $100,000 and above."
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: '2026 review rules'"
+  ],
+  "before": "Worth watching: how the 2026 review rules change what Cooper Hewitt can exhibit.",
+  "after": "(sentence removed)",
+  "sources": [
+   "https://thefederalist.com/2026/07/08/ig-report-reveals-36k-smithsonian-exhibit-spread-hamas-propaganda-about-us-blowing-up-gazan-homes/"
+  ],
+  "reason": "No opened source says rules changed in 2026; The Federalist reports only that the inspector general found the review committee lacked defined procedures."
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: reopened gallery and curatorial leadership"
+  ],
+  "before": "Worth watching: whether the reopened gallery regains a dedicated curatorial leadership.",
+  "after": "(sentence removed)",
+  "sources": [
+   "https://www.1news.co.nz/2026/10/10/wellingtons-city-gallery-opens-with-explosive-new-exhibit/"
+  ],
+  "reason": "No opened source reports on the reopened gallery's curatorial leadership."
+ }
+]

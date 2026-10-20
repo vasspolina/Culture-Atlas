@@ -44,3 +44,59 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - biomuseo-panama-city: the protests that cut its cash flow 70% were the October 2023 blockades over the mining contract, not aimed at the museum. AES Panamá is 50.4% owned by the state.
 - bukhara-biennial-bukhara: the site loads now; "Bukhara Oil" matched to the Uzbekneftegaz refinery on name alone.
 - black-family-visual-arts-center-dartmouth-hanover: trustees set up a Naming Policy Committee in June 2026; no decision.
+
+## d004 (research notes, before its slop check)
+- casa-de-la-arquitectura-madrid: casadelaarquitectura.gob.es serves a crypto app; the working site is lacasadelaarquitectura.es.
+- centro-de-arte-la-estancia: pdvsalaestancia.com serves spam.
+- casa-frança-brasil-rio-de-janeiro: no source for the record's "Sponsor dropped under pressure" flag.
+- centro-león-santiago-de-los-caballeros: the watch note's cigar-factory tour is not supported.
+- centre-pompidou: new, not in the record: the Hanwha partnership boycott (open letter, rally) and the Cour des comptes audit.
+- caixaforum-madrid: Naturgy gas dividends behind the la Caixa foundation budget (new red flag).
+- ch-teau-de-versailles: the Epstein item is venue only (2019 Pritzker ceremony); the slop check moves it out of Red flags under the map's Epstein rule.
+
+## d003 slop check (62 fixes; every report changed, mostly claims stronger than the source)
+- biennale-of-sydney-sydney: "Gulf state money" removed from Red flags (state money alone is not a flag); the 2026 opening-night and PwC withdrawal item is about a performer, not a funder: reconsider. 2024 annual report PDF too large to open; turnover and visitor figures are "stated by the space".
+- bukhara-biennial-bukhara: the Artforum column (Wetzler) is paywalled; only an opening excerpt is used. Read it in full.
+- british-museum-london: the Muriel Gray claim is now "Unverified", Hyperallergic the only outlet.
+
+## d005 (research notes, before its slop check)
+- chapter: the record's website https://www.chapter.org now redirects to a US Medicare broker; the real site is https://www.chapter.cymru/. No source confirms the Gulbenkian grant, so the Fossil fuels flag has no support.
+- chisenhale-gallery: site down on 2026-10-20.
+- city-gallery-wellington-wellington: the 2019 protest targeted the Theo Schoon show, not its sponsor the Fletcher Trust.
+- collective-edinburgh: the £25k in the Scotsman headline is Fruitmarket's Baillie Gifford deal, not Collective's; no source gives Collective's amount or a March 2024 date.
+- dallas-contemporary-dallas: Headington Companies (oil and gas) is a top-level 2024 donor (new). The Epstein link is one 2014 loan request letter, not money.
+- de-appel: the record's "Amsterdam inquiry found the board fell short" was not found.
+
+## d004 slop check (34 fixes; every report changed)
+- ch-teau-de-versailles: Epstein item moved to Wider context (venue use for the 2019 Pritzker ceremony; The Architects' Journal reports no payment). Leribault left for the Louvre on 25 Feb 2026.
+- centro-león-santiago-de-los-caballeros: the only Hyperallergic item is a sponsored post written by the centre; the report says so and lists no criticism.
+- casa-frança-brasil-rio-de-janeiro: ArtReview says "city authorities" closed the 2019 show; the venue is under the state secretariat. Check which acted.
+- cairns-art-gallery-cairns: the RSL Club's gaming machines rest on a Wanderlog listing; the sponsorship itself is confirmed.
+
+## d006 (research notes, before its slop check)
+- eiteljorg-museum-of-american-indians-and-western-art-indianapolis: no reporting found for the record's "Sponsor dropped under pressure" and "Protest or boycott" flags. Founder's coal fortune and a gas utility sponsor (Citizens Energy Group) found.
+- dia-art-foundation-beacon: Sackler Institute 2016, name removed 2019; Dia's own break dated 2018 only in an unread Artnet piece.
+- design-museum-london: the record's Deutsche Bank funder is not confirmed.
+- dulwich-picture-gallery-london: still holds a £3.43M Sackler-funded director endowment.
+
+## d005 slop check (86 fixes; every report changed)
+- cooper-hewitt-smithsonian-design-museum-new-york, chisenhale-gallery: the 2026 Artists for Palestine UK letter against Bloomberg names neither space, so it moved from Red flags to Wider context (map rule: a campaigned funder only where activists targeted it at that space). Cooper Hewitt's inspector general point rests on The Federalist (partisan), marked Unverified.
+- collective-edinburgh: the Baillie Gifford flag rests on an advocacy blog, an advocacy interview and the Morning Star; the Scotsman source could not be read.
+- dallas-contemporary-dallas: Epstein loan request moved to Wider context. The 2021 staff dismissals (Glasstire, Artforum) are blocked or paywalled.
+- chapter: the Gulbenkian grant behind the record's Fossil fuels flag is still unconfirmed.
+
+## d006 slop check (19 fixes; every report changed)
+- djerassi-resident-artists-program-woodside: trustees' 2011 island visit moved to Wider context (Djerassi says neither Epstein nor Maxwell gave money).
+- design-museum-london: Mandelson was dismissed as ambassador, not as chair; moved to Wider context.
+- english-national-ballet-london: Prince Andrew as royal patron (2001 to 2019) moved to Wider context by the checker; overrule if a patron counts as leadership.
+- dhaka-art-summit-dhaka: the Hasina-closeness flag rests on Bonik Barta and unnamed sources, mostly Unverified; no documented commission or land grant. Consider dropping.
+- eiteljorg: Citizens Energy Group (a municipal gas utility) as a fossil-fuel red flag is a judgement call.
+- biennale-of-sydney-sydney: the d003 check removed the Gulf partners from Red flags; restored as "Red flags: Gulf state partners" (Qatar Museums, Arada), since "Gulf state body" is a map flag (editor's ruling: a named Gulf state partner counts). The prompt now lists the map's flags.
+
+## d007 (research notes, before its slop check)
+- fragmentos-espacio-de-arte-y-memoria-bogotá: Alÿs demanded his work be taken down; nothing says it was (the record says he withdrew it).
+- fringe-world-perth: Woodside's exit dated "September" (AAP) and 4 January 2024 (Perth Voice).
+- fabrica-de-arte-cubano: says it gets no government money (Jan 2026) but works in a state building whose box office a state body collects. Its live site has gambling and spam links in the footer.
+- fridericianum-kassel: the website field points to a Monopol article; the real site is fridericianum.org.
+- frist-art-museum-nashville: building owned by the city housing agency MDHA, leased at $1 a year to 2097.
+- fondation-cartier: the record's /en/about source returns 404.
