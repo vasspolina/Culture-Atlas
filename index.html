@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=230">
-  <script src="assets/config.js?v=230"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=231">
+  <script src="assets/config.js?v=231"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9921,11 +9921,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v230';
+    const ATLAS_RELEASE = 'culture-atlas-v231';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=230').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=231').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11839,7 +11839,7 @@ return maplibregl$1;
     function gradeLineHtml(inst) {
       if (inst.grade && GRADE[inst.grade]) {
         const g = GRADE[inst.grade];
-        return `<p class="no-indent grade-line"><span class="grade-mark" style="--grade-col:${g.col};--grade-ink:${gradeInk(g.col)}">Funding transparency rating ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
+        return `<p class="no-indent grade-line"><span class="grade-mark" style="--grade-col:${g.col};--grade-ink:${gradeInk(g.col)}">Grade ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
       }
       return inst.tier === 'U' ? `<p class="no-indent grade-line">Not graded: ${inst.funding ? 'a funder list is recorded, but the listed funders are not independently corroborated.' : 'no funder list is recorded.'}</p>` : '';
     }
@@ -13641,20 +13641,7 @@ return maplibregl$1;
       // 2. A figure keeps its unit on one line (Hochuli p.37); it is not boxed
       const renderStatCallouts = (str) => str.replace(/\$(\d[\d,.]*)\s+(trillion|billion|million)\b/gi, (m, n, u) => '$' + n + '\u00a0' + u);
 
-      // 2b. A grade is named in its own colour, the colour of its dot on the globe, and in bold. One grade, one colour: a range ("Grade D–F") is left plain.
-      // "Grade B", "grade B", "graded B" and "rating B" all name a grade; the letter itself must be a capital, so "graded a little" is left alone.
-      // An old number (Grade 4) is read as its letter; after "rating" only a letter counts, so "rating 4 out of 5" is left alone.
-      const GRADE_WORD = /\b(?:(?:Clean Funding Grade|[Gg]raded?)\s+([A-F1-5])|(?:Funding transparency rating|[Rr]ating)\s+([A-F]))\b(?!\s*(?:–|—|-|to|and)\s*[A-F1-5])/g;
-      const renderGradeMarks = (str) => str.replace(GRADE_WORD, (...args) => {
-        const m = args[0], a = args[1] || args[2];
-        const offset = args[args.length - 2];
-        const preceding = args[args.length - 1].slice(0, offset);
-        if (preceding.lastIndexOf('<') > preceding.lastIndexOf('>')) return m;
-        const G = window.atlasGrade || {};
-        const n = window.atlasGradeFromLetter ? window.atlasGradeFromLetter(a) : null;
-        if (!n || !G[n]) return m;
-        return `<span class="grade-word grade-word-${n}">${m.slice(0, -1)}${G[n].letter}</span>`;
-      });
+      // 2b. Grades are marked after the answer is drawn, by markGrades() in assets/typeset.js, so every answer path gets them.
 
       // 3. Helper to parse inline markdown (bold, italic, code, links)
       const parseInlineMarkdown = (line) => {
@@ -13677,7 +13664,6 @@ return maplibregl$1;
         s = renderStatCallouts(s);
         // Source pills
         s = renderSourcePills(s);
-        s = renderGradeMarks(s);
         return s;
       };
 
@@ -15220,7 +15206,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const notGradedReason = target.funding
             ? 'A funder list is recorded, but the listed funders are not independently corroborated.'
             : 'No funder list is recorded.';
-          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Funding transparency rating ${gradeLetter(target.grade)}, ${escapeHtml(GRADE[target.grade].label.toLowerCase())}. ${escapeHtml(target.grade_basis || '')}` : `Not rated: ${escapeHtml(notGradedReason)}`}</p>${sourcesHtml(target)}`);
+          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Grade ${gradeLetter(target.grade)}, ${escapeHtml(GRADE[target.grade].label.toLowerCase())}. ${escapeHtml(target.grade_basis || '')}` : `Not rated: ${escapeHtml(notGradedReason)}`}</p>${sourcesHtml(target)}`);
           return;
         }
         if (wanted) {
@@ -19266,9 +19252,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=230"></script>
-<script src="assets/layers.js?v=230"></script>
-<script src="assets/hq-detail.js?v=230"></script>
-<script src="assets/bubbles.js?v=230" defer></script>
+<script src="assets/typeset.js?v=231"></script>
+<script src="assets/layers.js?v=231"></script>
+<script src="assets/hq-detail.js?v=231"></script>
+<script src="assets/bubbles.js?v=231" defer></script>
 </body>
 </html>

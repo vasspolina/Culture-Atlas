@@ -183,6 +183,34 @@
     return (l && l.getAttribute('lang')) || document.documentElement.lang || 'en';
   }
 
+  // A grade is named bold, in its own colour (user's instruction, 20 Oct 2026), wherever an answer or a record names it:
+  // "Grade B", "grade B", "graded B", "rating B". The letter must be a capital, so "graded a little" is left alone; only
+  // "grade" reads an old number (Grade 4) as its letter, so "rating 4 out of 5" is left alone; a range (Grade D-F) stays plain.
+  // The person's own question, buttons and the landing questions keep their own colour.
+  var GRADE_WORD = /\b(?:(?:Clean Funding Grade|[Gg]raded?)\s+([A-F1-5])|(?:Funding transparency rating|[Rr]ating)\s+([A-F]))\b(?!\s*(?:\u2013|\u2014|-|to|and)\s*[A-F1-5])/g;
+  var GRADE_SKIP = '.grade-word,.grade-mark,.user-bubble,.justify-end,button,a,.starter-prompt,#curatorHeroGreeting,#curatorDrawerGreeting,h1,h2,h3,h4';
+  function markGrades(node) {
+    var G = window.atlasGrade, from = window.atlasGradeFromLetter, t = node.nodeValue;
+    if (!G || !from || !node.parentElement || node.parentElement.closest(GRADE_SKIP)) return;
+    GRADE_WORD.lastIndex = 0;
+    if (!GRADE_WORD.test(t)) return;
+    GRADE_WORD.lastIndex = 0;
+    var frag = document.createDocumentFragment(), last = 0, m;
+    while ((m = GRADE_WORD.exec(t))) {
+      var n = from(m[1] || m[2]);
+      if (!n || !G[n]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var sp = document.createElement('span');
+      sp.className = 'grade-word grade-word-' + n;
+      sp.textContent = m[0].slice(0, -1) + G[n].letter;
+      frag.appendChild(sp);
+      last = m.index + m[0].length;
+    }
+    if (!last) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    node.parentNode.replaceChild(frag, node);
+  }
+
   function run(root) {
     if (!root || root.nodeType !== 1 || SKIP[root.tagName]) return;
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
@@ -196,9 +224,13 @@
     var nodes = [], n;
     while ((n = walker.nextNode())) nodes.push(n);
     nodes.forEach(function (node) {
+      if (!node.parentNode) return;  // already split by markGrades() on an earlier text node of the same parent
       var next = typeset(node.nodeValue, langOf(node.parentElement));
       if (next !== node.nodeValue) node.nodeValue = next;
-      decorate(node, !inHeading(node.parentElement));
+      var parent = node.parentElement;
+      decorate(node, !inHeading(parent));
+      // decorate() may have split the node; mark grades in whatever text it left under the same parent.
+      if (parent) [].slice.call(parent.childNodes).forEach(function (c) { if (c.nodeType === 3) markGrades(c); });
     });
   }
 
@@ -215,7 +247,8 @@
           m.addedNodes.forEach(function (a) {
             if (a.nodeType === 1) run(a);
             else if (a.nodeType === 3 && a.parentElement && !SKIP[a.parentElement.tagName] && !a.parentElement.closest('.nb,.ts') && !isAddress(a)) {
-              var v = typeset(a.nodeValue, langOf(a.parentElement)); if (v !== a.nodeValue) a.nodeValue = v; decorate(a, false);
+              var v = typeset(a.nodeValue, langOf(a.parentElement)); if (v !== a.nodeValue) a.nodeValue = v; var par = a.parentElement; decorate(a, false);
+              [].slice.call(par.childNodes).forEach(function (c) { if (c.nodeType === 3) markGrades(c); });
             }
           });
         });

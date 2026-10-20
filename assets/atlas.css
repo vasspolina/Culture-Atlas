@@ -1262,6 +1262,9 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 .grade-word-4{--grade-ink:#975824;--grade-col:#fb923c}
 .grade-word-5{--grade-ink:#8f2929;--grade-col:#ef4444}
 :root[data-theme="dark"] .grade-word{color:var(--grade-col)}
+/* A grade is named in capitals, GRADE D (user's instruction, 20 Oct 2026), set like every capital in running text: one step
+   smaller and evenly spaced (Hochuli p.39-40), the trailing space pulled in so the word space after it stays even. */
+.grade-word,span.grade-mark{text-transform:uppercase;font-size:.92em;letter-spacing:.06em;margin-right:-.06em}
 #curatorScrollArea,#workBottomDock,#workInputCard,#workInput{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),min-height var(--dur) var(--ease)}
 #curatorMessages>*{animation:msg-in var(--dur) var(--ease) both}
 @keyframes msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
