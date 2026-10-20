@@ -122,3 +122,8 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - fire-station-artist-in-residence-doha: no budget or accounts; the Gulf state body flag rests on Qatar Museums' status.
 - fondation-louis-vuitton-paris: final cost given as 780M (English Wikipedia) and nearly 800M euros (French); the tax-break period is disputed; the staff-conditions point (Mediapart) was not read.
 - fondazione-prada: no accounts after 2019, no sponsor names, no art-press piece naming it.
+
+## d008 slop check (26 fixes; every report changed)
+- fundaci-joan-mir: fmirobcn.org blocks automated reads; the researcher read it in the browser, the checker could not. Sponsor tiers, 2025 transparency figures and the board line rest on that one read. Naturgy/Criteria figures and the Lubar resignation are verified.
+- gapar-aitiev-kyrgyz-national-museum-of-fine-arts-bishkek: Artnet unreadable; its quotes were cut and red flags rebuilt from 24.kg, ArtReview and the New East Digital Archive. The Artnet piece needs a human read.
+- garage-museum-moscow: some Novaya Gazeta Europe and Finestre sull'Arte details rest on fetch summaries.
