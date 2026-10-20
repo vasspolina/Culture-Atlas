@@ -4352,7 +4352,97 @@
         "funder": "Art Fund",
         "institutions": 16
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Public art museum at 2 Sir Winston Churchill Square in downtown Edmonton.",
+        "Founded in 1924 as the Edmonton Museum of Arts; renamed the Edmonton Art Gallery in 1956 and the Art Gallery of Alberta in 2005 (Wikipedia).",
+        "Its 1969 building, the Arthur Blow Condell Memorial Building by Donald G. Bittorf and B. James Wensley, stood on a site the City of Edmonton donated (Wikipedia).",
+        "Los Angeles architect Randall Stout won a 2005 competition; the rebuilt gallery of patinated zinc and stainless steel, with a 190-metre steel ribbon, reopened on 31 January 2010 at a cost of CA$88 million, up from a CA$48 million budget (Wikipedia, Archiseek).",
+        "The collection holds over 6,000 works, weighted to Alberta and western Canada; programmes include school tours, family and adult classes, an Art Hive and a youth council.",
+        "Open Wednesday 11:00 to 17:00, Thursday 11:00 to 19:00, Friday to Sunday 11:00 to 17:00, closed Monday and Tuesday; the site advertises Free Entry Thursday but states no ticket prices on its about page."
+      ],
+      "funding_verdict": "Art Gallery of Alberta: mixed: 46% government, with Capital Power as lead corporate sponsor",
+      "funding": [
+        "2023 revenue was C$6.32 million: C$2.9 million (46%) government, C$1.09 million donations, C$211,000 special events, C$665,000 admissions, memberships and classes (Charity Intelligence).",
+        "Charity Intelligence rates it 2 of 5 stars, with 40% overhead and audited statements available only on request.",
+        "Capital Power has been lead sponsor since 2010 and announced a renewed partnership, the Capital Power Indigenous Art Fund, on 23 January 2023; the fund supports exhibitions, programming and free admission on 21 June, 23 August and 30 September (Capital Power). No amount or term is published.",
+        "The CA$88 million rebuild came from a capital campaign with support from all three levels of government and private donors (Archiseek); the Canada Council gave CA$375,000 in 2017 to buy works by contemporary Indigenous artists (Wikipedia)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Capital Power, a gas and former coal generator, as lead sponsor",
+          "points": [
+            "Capital Power owns about 7,500 MW of generation at 29 facilities, renewable and thermal (Capital Power, 2023).",
+            "Its Genesee station in Alberta stopped burning coal and is now 100% natural gas-fuelled, Capital Power announced in June 2024 (Power Engineering).",
+            "It renewed its sponsorship in January 2023, inside the five-year window.",
+            "No reporting found of a protest or open letter about Capital Power's sponsorship."
+          ]
+        },
+        {
+          "heading": "Artists withdrew from the 2020 biennial",
+          "points": [
+            "On 24 September 2020 the gallery acknowledged that Black artists had never been included in its contemporary biennials (Canadian Art).",
+            "Artists Amy Malbeuf and Justin Waddell then withdrew from the Borderline biennial, co-presented with Remai Modern, citing that record (Canadian Art)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Little criticism. The one building review found is mostly admiring; the sharpest coverage is the 2020 biennial withdrawals.",
+        "items": [
+          {
+            "outlet": "Canadian Art",
+            "title": "Diana Sherlock, \"The New Art Gallery of Alberta: Honour, Horror and High, High Ceilings\" (2010)",
+            "url": "https://canadianart.ca/reviews/art-gallery-of-alberta/",
+            "points": [
+              "Calls Stout's design \"dramatic, and somewhat controversial\" and notes it has been criticised as derivative of Frank Gehry.",
+              "Says the gallery \"participates in the spectacularization of the museum\", which \"expectation and economy demand\".",
+              "Finds the Karsh photography show \"perhaps overdesigned\"; the review is mostly celebratory."
+            ]
+          },
+          {
+            "outlet": "Canadian Art",
+            "title": "news roundup, \"Artists Withdraw from Art Gallery of Alberta Biennial Show, Cite Lack of Black Representation\" (2020)",
+            "url": "https://canadianart.ca/news/news-roundup-artists-withdraw-from-art-gallery-of-alberta-biennial-show-cite-lack-of-black-representation/",
+            "points": [
+              "Reports Malbeuf and Waddell's withdrawal and the gallery's own admission that no Black artist had shown in its biennials.",
+              "A news report, not an essay; no author is named."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The gallery runs on public money, donations and earned income, with Capital Power as its one prominent corporate sponsor. The weak point is that sponsor: a gas generator whose Genesee station stopped burning coal in 2024, with a partnership renewed in 2023 and no published amount. Worth watching: thin financial transparency and whether the Capital Power fund is renewed again.",
+      "sources": [
+        {
+          "url": "https://www.youraga.ca/about-aga"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Art_Gallery_of_Alberta"
+        },
+        {
+          "url": "https://www.archiseek.com/?p=11986"
+        },
+        {
+          "url": "https://www.charityintelligence.ca/charity-details/511-art-gallery-of-alberta"
+        },
+        {
+          "url": "https://www.capitalpower.com/media/media_releases/capital-power-announces-indigenous-art-fund-in-partnership-with-the-art-gallery-of-alberta"
+        },
+        {
+          "url": "https://www.power-eng.com/coal/albertas-last-coal-plant-powers-down/"
+        },
+        {
+          "url": "https://canadianart.ca/reviews/art-gallery-of-alberta/"
+        },
+        {
+          "url": "https://canadianart.ca/news/news-roundup-artists-withdraw-from-art-gallery-of-alberta-biennial-show-cite-lack-of-black-representation/"
+        }
+      ],
+      "website": "https://www.youraga.ca (checked 2026-10-20; the governance and sponsor pages linked from search return 404)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "Van Abbemuseum",
@@ -8308,7 +8398,63 @@
         "funder": "Stavros Niarchos Foundation",
         "institutions": 5
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Non-profit exhibition space at 11 Cortlandt Alley in Tribeca, Lower Manhattan, its sixth downtown home since 1972 (Artists Space).",
+        "Founded in 1972 by arts administrator Trudie Grace and critic Irving Sandler as a pilot project of the New York State Council on the Arts (NYSCA), to show emerging and unaffiliated artists; it opened at 155 Wooster Street (Artists Space, Wikipedia).",
+        "It moved to 105 Hudson Street (1977), 223 West Broadway (1984), 38 Greene Street (1993) and then to Cortlandt Alley, where board member Martin Cox of Bade Stageberg Cox renovated almost 8,000 square feet on two floors (Artists Space).",
+        "Its history includes Douglas Crimp's \"Pictures\" (1977), Adrian Piper's \"It's Just Art\" (1981) and Nan Goldin's \"Witnesses: Against Our Vanishing\" (1989); in 1979 a show by Donald Newman with a racial slur in its title drew protests from the Black Emergency Cultural Coalition (Artists Space, Wikipedia).",
+        "Programmes: exhibitions, film, performance, talks and an education programme; Jay Sanders has been executive director and chief curator since 2017 (Wikipedia).",
+        "Open Wednesday to Saturday, 12:00 to 18:00; the site links an accessibility page."
+      ],
+      "funding_verdict": "Artists Space: privately funded: foundations, art-world patrons and galleries, with city and state grants",
+      "funding": [
+        "Fiscal year to June 2025: revenue $3,228,059, of which $3,135,334 contributions; expenses $2,598,636; net assets $4,703,592; Sanders was paid $175,000 (ProPublica, Form 990).",
+        "Core contributors, undated: Lambent Foundation Fund of Tides Foundation, the Andrew W. Mellon Foundation, NYC Department of Cultural Affairs with the City Council, Horace W. Goldsmith Foundation, NYSCA, A.G. Foundation, I.A. O'Shaughnessy Foundation, Keith Haring Foundation, Helen Frankenthaler Foundation, Hearthland Foundation, Cowles Charitable Trust, Milton and Sally Avery Foundation (Artists Space).",
+        "Cortlandt Alley building founders at the top \"Visionary\" level: Eleanor Cayre, Barbara Gladstone, Eleanor Heyman Propp and Allan Schwartzman; the Stavros Niarchos Foundation gave at \"Leader\" level (Artists Space).",
+        "Friends memberships run from $2,500 to $20,000; members include Gladstone Gallery, Hauser & Wirth, David Zwirner, Lisson Gallery, Matthew Marks and Katherine Farley and Jerry Speyer; the Artists Fund aims to raise $2.5 million (Artists Space).",
+        "The board is led by president Steven Schindler, treasurer Andy Stillpass and secretary Liam Gillick, with Cindy Sherman as honorary lifetime member (Artists Space)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Oil family money through the I.A. O'Shaughnessy Foundation",
+          "points": [
+            "The foundation is a current core contributor (Artists Space, checked October 2026).",
+            "Oilman I.A. O'Shaughnessy founded Lario Oil and Gas in 1927 and created the foundation in 1941; his five children later sat on its board (DeSmog, an advocacy source).",
+            "His grandson Gerald O'Shaughnessy, listed as a foundation board member in a Bloomberg profile archived in 2019, worked at Lario from 1976 and co-founded Latin American oil and gas producer GeoPark, its executive chairman since 2006 (DeSmog).",
+            "No reporting found of the size of the foundation's gifts or of any protest about them."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism found in art media.",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "Artists Space runs on foundation grants, public arts money and gifts from collectors and commercial galleries. The one flagged link is an oil family's foundation among a dozen core contributors, with no amount published. Worth watching: dependence on blue-chip galleries and collectors, and the O'Shaughnessy money.",
+      "sources": [
+        {
+          "url": "https://artistsspace.org/about"
+        },
+        {
+          "url": "https://artistsspace.org/support"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Artists_Space"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/132749632"
+        },
+        {
+          "url": "https://www.desmog.com/gerald-o-shaughnessy/",
+          "note": "advocacy source"
+        }
+      ],
+      "website": "https://artistsspace.org (checked 2026-10-20)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "Noguchi Museum",
@@ -26884,7 +27030,77 @@
     "why_flagged": "Name to know: TD Bank pleaded guilty in October 2024 to US money-laundering conspiracy and Bank Secrecy Act failures, paying about $3B. Banks (BMO, TD, RBC), union LiUNA, security firm Garda World, winery Peller Estates, Effort Trust on roster; none under campaign.",
     "grade": 3,
     "grade_basis": "A funder worth knowing about, outside the flagged categories.",
-    "records_note": "Posts 14 annual reports from 2011 to 2024 with a donor list and a named board, but only a summary of revenue and expenses."
+    "records_note": "Posts 14 annual reports from 2011 to 2024 with a donor list and a named board, but only a summary of revenue and expenses.",
+    "details": {
+      "overview": [
+        "Public art gallery at 123 King Street West in downtown Hamilton, Ontario.",
+        "Incorporated on 31 January 1914 as the Municipal Gallery of Hamilton and opened on 28 June 1914, in a public library branch on Main Street West; it moved to Westdale in 1953 (Wikipedia).",
+        "The collection began with works by painter William Blair Bruce, donated by his spouse on condition that an adequate facility be founded to house them (Wikipedia).",
+        "The present brutalist building by Trevor Garwood-Jones opened in 1977; a C$18 million renovation by KPMB Architects, design partner Bruce Kuwabara, reopened it in May 2005 with gold steel panels and the Irving Zucker Sculpture Garden (Wikipedia).",
+        "The collection holds over 10,000 works; in 2002 Joey and Toby Tanenbaum gave about 200 19th-century European works, valued at more than C$50 million (The Globe and Mail).",
+        "In November 2014 it agreed to return Verspronck's \"Portrait of a Lady\", bought in 1987 for $58,000, to the heirs of Alma Salomonsohn, whose possessions were stolen in 1940 (The CJN).",
+        "Open Thursday 11:00 to 21:00, Friday 11:00 to 18:00, weekends 11:00 to 17:00, Monday to Wednesday for booked tours only; Free Thursdays and free admission to Level 2 are sponsored; the Summers Lane entrance is reached only through the parking garage during city construction."
+      ],
+      "funding_verdict": "Art Gallery of Hamilton: mixed: three levels of government, events, donors and bank sponsors",
+      "funding": [
+        "2024 revenue was C$7,842,740 against expenses of C$8,101,727; grants made up 41% of revenue (28% operating, 13% applied), events 21%, fundraising 16% (2024 annual report).",
+        "Operating support comes from the Canada Council for the Arts, the Ontario Arts Council and the City of Hamilton (2024 annual report).",
+        "The incite Foundation for the Arts sponsored the 2024 \"Directors Collect: 110 Years\" exhibition, Free Thursdays (with RBC), education and library pass programmes; Carl and Kate Turkstra founded it in 2011, and their wealth came after Carl returned to Hamilton to run the family firm Turkstra Lumber (annual report, Hamilton City Magazine).",
+        "Banks: RBC presented the gala and supported the artist residency, BMO the art+music+food festival, TD Bank Group the Artful Moments programme (2024 annual report).",
+        "Other 2024 supporters: Orlick Industries (free Level 2 admission), Garda World (exhibitions and programmes), and Effort Trust, Fox Harb'r Resort and LiUNA (gala platinum sponsors); Peller Estates and CHCH are on the donor list (2024 annual report).",
+        "In 2015 the gallery sold Munk\u00e1csy's \"Christ Before Pilate\", part of the Tanenbaum gift, to the Government of Hungary for US$5.7 million (AGH press release).",
+        "The 2024 board is chaired by Gary Graham and includes two Hamilton city councillors; Shelley Falconer is president and CEO."
+      ],
+      "red_flags": [
+        {
+          "heading": "TD Bank's 2024 money-laundering plea",
+          "points": [
+            "Sponsorship: Artful Moments, the gallery's programme for people living with dementia, was \"presented by the TD Bank Group, the Government of Canada and the Province of Ontario\" in 2024 (2024 annual report).",
+            "Plea: on 10 October 2024 TD Bank pleaded guilty in federal court in Newark, New Jersey, to Bank Secrecy Act program failures and conspiracy to commit money laundering, in a case announced by the US Department of Justice (NBC News, ABA Journal).",
+            "Amount: penalties came to about US$3 billion, including US$1.8 billion to the Justice Department and US$1.3 billion to FinCEN, the US Treasury's Financial Crimes Enforcement Network (NBC News).",
+            "Three money-laundering networks moved more than US$670 million through TD Bank accounts (NBC News, ABA Journal)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism found in art media.",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The money behind the gallery is public grants, events, a local arts foundation founded by a lumber-company family, and the big Canadian banks. No sponsor from a flagged industry was found. Weak points: TD Bank Group, presenter of the Artful Moments programme, pleaded guilty to money laundering in October 2024. The annual report gives only a percentage summary of revenue, and the 2024 accounts ran a deficit of about C$259,000.",
+      "sources": [
+        {
+          "url": "https://www.artgalleryofhamilton.com/"
+        },
+        {
+          "url": "https://www.artgalleryofhamilton.com/wp-content/uploads/2025/09/AGH_AnnualReport_2024_WEB.pdf"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Art_Gallery_of_Hamilton"
+        },
+        {
+          "url": "https://www.theglobeandmail.com/arts/art-gallery-of-hamilton-gets-major-donation/article1157689/"
+        },
+        {
+          "url": "https://hamiltoncitymagazine.ca/a-lasting-legacy-for-the-arts/"
+        },
+        {
+          "url": "https://www.artgalleryofhamilton.com/wp-content/uploads/2016/10/2015-05-12-AGH-Announces-Sale-of-Christ-Before-Pilate.pdf"
+        },
+        {
+          "url": "https://thecjn.ca/news/canada/hamilton-art-gallery-returns-nazi-looted-painting/"
+        },
+        {
+          "url": "https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912"
+        },
+        {
+          "url": "https://abajournal.com/syndicated/article/doj-announces-3b-in-fines-for-landmark-money-laundering-case"
+        }
+      ],
+      "website": "https://www.artgalleryofhamilton.com/ (checked 2026-10-20)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "Mus\u00e9e d'art de Joliette",
@@ -27144,7 +27360,89 @@
     "why_flagged": "Name to know: TD Bank pleaded guilty in October 2024 to US money-laundering conspiracy and Bank Secrecy Act failures, paying about $3B. Earned and contributed income supplies the other 60 percent. The March 2026 sponsor page lists local firms and TD; no excluded sponsor.",
     "grade": 3,
     "grade_basis": "A funder worth knowing about, outside the flagged categories.",
-    "records_note": "Its site blocks automated access with a bot check; search listings show an annual report archive, a 2024-25 financial report and a named board page."
+    "records_note": "Its site blocks automated access with a bot check; search listings show an annual report archive, a 2024-25 financial report and a named board page.",
+    "details": {
+      "overview": [
+        "Public art museum at 1040 Moss Street, about 20 minutes from downtown Victoria (Tourism Victoria).",
+        "Founded in 1946 as the Little Centre by former members of the Federation of Canadian Artists' Vancouver Island branch; it ran from a former downtown car dealership until 1951 (Wikipedia).",
+        "In 1951 Sarah Spencer donated Spencer Mansion and the gallery took its present name; the house, built in 1889 to designs by William Ridgeway Wilson for the Green family, was called Gyppeswyk (Wikipedia).",
+        "Seven modernist galleries were added between 1955 and 1978; renovations in 2001 to 2003 added climate control (Wikipedia).",
+        "A 2015 expansion design by LWPAC and Moore Architecture drew Mayor Lisa Helps' word \"startling\" (Attractions Management); construction planned for late 2019 was postponed over rising costs (Wikipedia).",
+        "The collection holds about 20,000 works, the largest of any BC art museum, including about 8,000 Asian works; the garden holds the only Meiji-era Shinto shrine in North America (Wikipedia).",
+        "Its summer street festival, the Paint-In, draws 40,000 visitors annually (Tourism Victoria); no reporting found of current hours, admission or accessibility, as the gallery's site could not be read."
+      ],
+      "funding_verdict": "Art Gallery of Greater Victoria: mixed: provincial grants, donations and bank sponsors",
+      "funding": [
+        "Total revenue was C$6.11 million in 2025, with C$2.31 million in donations (Wikidata, from CRA charity data via charitydata.ca); 2024 revenue was C$4.67 million.",
+        "The provincial government gave C$6 million in 2018 toward a C$30 million renovation project (Canadian Art).",
+        "In 2016 the chairman of Polygon Homes, Michael Audain, pledged C$2 million through the Audain Foundation toward a C$24 million redevelopment that was contingent on C$14 million from the federal and provincial governments (Citified).",
+        "BMO gave C$500,000 in September 2019 for the NEXT Gallery project, which named a BMO Gallery for Canadian and British Columbian Art; private and corporate gifts to the project then exceeded C$9 million (Oak Bay News).",
+        "TD Bank Group presented the 35th Art Gallery Paint-In on 20 July 2024 (CFAX, Tourism Victoria); no reporting found of its sponsorship in 2025 or 2026.",
+        "The 2023-24 annual report (archived copy) names Carol Anne Harper as board president and Nancy Noble as director and CEO.",
+        "No reporting found of the government share of revenue or of whether the federal money for the NEXT Gallery arrived."
+      ],
+      "red_flags": [
+        {
+          "heading": "TD Bank's 2024 money-laundering plea",
+          "points": [
+            "Sponsorship: TD Bank Group was the presenting sponsor of the gallery's Paint-In street festival on 20 July 2024 (CFAX).",
+            "Plea: on 10 October 2024 TD Bank pleaded guilty in federal court in Newark, New Jersey, to Bank Secrecy Act program failures and conspiracy to commit money laundering, in a case announced by the US Department of Justice (NBC News, ABA Journal).",
+            "Amount: penalties came to about US$3 billion, including US$1.8 billion to the Justice Department and US$1.3 billion to FinCEN, the US Treasury's Financial Crimes Enforcement Network (NBC News).",
+            "Three money-laundering networks moved more than US$670 million through TD Bank accounts (NBC News, ABA Journal)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism found in art media.",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The money behind the gallery is public grants, donations and local and bank sponsorship, with no sponsor from a flagged industry found. The weak points are TD Bank Group, the 2024 Paint-In presenting sponsor, which pleaded guilty to money laundering in October 2024, and transparency: the site blocks automated reading and no current funder breakdown was found. Worth watching: the postponed expansion and who pays for it.",
+      "sources": [
+        {
+          "url": "https://aggv.ca"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Art_Gallery_of_Greater_Victoria"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4796829"
+        },
+        {
+          "url": "http://web.archive.org/web/20240725115344/https://aggv.ca/wp-content/uploads/2024/06/Art-Gallery-of-Greater-Victoria-Annual-Report-2023-2024-final.pdf"
+        },
+        {
+          "url": "https://canadianart.ca/news/news-in-brief-big-steps-for-calgary-and-victoria-galleries-and-more/"
+        },
+        {
+          "url": "https://victoria.citified.ca/news/developer-pledges-2-million-towards-art-gallery-of-greater-victoria-expansion/"
+        },
+        {
+          "url": "https://www.oakbaynews.com/entertainment/art-gallery-of-greater-victoria-receives-500000-donation-from-bmo/"
+        },
+        {
+          "url": "https://tourismvictoria.com/events/td-art-gallery-paint-in-2024"
+        },
+        {
+          "url": "https://www.cfax1070.com/news/art-gallery-paint-in.html"
+        },
+        {
+          "url": "https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912"
+        },
+        {
+          "url": "https://abajournal.com/syndicated/article/doj-announces-3b-in-fines-for-landmark-money-laundering-case"
+        },
+        {
+          "url": "https://www.tourismvictoria.com/things-to-do/arts-culture-history/art-galleries/art-gallery-of-greater-victoria"
+        },
+        {
+          "url": "https://www.attractionsmanagement.com/attractions-news/Director-defends-CA22m-Canadian-art-gallery-after-officials-development-call-plans-startling/316853"
+        }
+      ],
+      "website": "https://aggv.ca (checked 2026-10-20; the site answers automated requests with 403 Forbidden, so its pages could not be read)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "Winnipeg Art Gallery-Qaumajuq",
@@ -28563,7 +28861,70 @@
     ],
     "records_note": "The foundation posts business reports and accounts for 2012 to 2024, shows 22 supporters as undated logos, and lists no directors.",
     "finances_note": "FY2024-25 income JPY 1.07bn: about 55 percent subsidies, 11 percent admissions and fees, 3 percent donations; 24 percent commissioned work and 4 percent project grants, payers not named.",
-    "affiliations_note": "Art Tower Mito is run by the Mito Arts Foundation and includes the Mito Chamber Orchestra, its concert hall, theatre and gallery."
+    "affiliations_note": "Art Tower Mito is run by the Mito Arts Foundation and includes the Mito Chamber Orchestra, its concert hall, theatre and gallery.",
+    "details": {
+      "overview": [
+        "City-owned arts complex at 1-6-8 Gokencho, Mito, Ibaraki, about 10 minutes by bus from the north exit of Mito Station plus a two-minute walk (Art Tower Mito).",
+        "Opened in March 1990 as part of Mito's centennial celebrations (Wikipedia); Mayor Kazunobu Sagawa proposed it and the rule that 1% of the city budget pays for its running costs (Ibaraki Prefectural Library volunteers' newsletter, 2020).",
+        "Arata Isozaki designed it, with acoustics by Nagata Acoustics; its 100-metre tower follows a Boerdijk-Coxeter helix; the complex cost \u00a59,711 million (Wikipedia).",
+        "It holds a 680-seat concert hall, a 636-seat theatre and a contemporary art gallery (Wikipedia). Directors have been critic Yoshida Hidekazu (\u5409\u7530\u79c0\u548c), conductor Seiji Ozawa and now Katayama Morihide (\u7247\u5c71\u675c\u79c0).",
+        "The Mito City Arts Promotion Foundation, set up on 31 March 1988 and a public interest foundation since April 2012, runs it; its chair is Fukuda (\u798f\u7530\u4e09\u5343\u7537).",
+        "Open 9:30 to 18:00, gallery 10:00 to 18:00, closed Mondays (Tuesday after a holiday) and at New Year; gallery entry \u00a5900; free ground parking for wheelchair users, wheelchair and pushchair loans."
+      ],
+      "funding_verdict": "Art Tower Mito: mainly public: Mito City subsidies and commissions, plus local company supporters",
+      "funding": [
+        "Mito City endowed the foundation with its full \u00a5100 million fund (Art Tower Mito).",
+        "In the year to March 2025 ordinary revenue was \u00a51,070.2 million: subsidies \u00a5592.6 million and commissioned income \u00a5254.8 million (together 79%), admissions \u00a5104.9 million, grants \u00a545.6 million, donations \u00a532.8 million (foundation accounts).",
+        "In 2015 the annual budget was about \u00a51.03 billion: about \u00a51 billion from the 1% city share plus about \u00a525 million in donations (Ibaraki Prefectural Library newsletter).",
+        "The site lists 22 supporters, undated, including Suntory Holdings, NEC, ANA, Joyo Bank, Mito Shinkin Bank, Mito Securities, Ibaraki Toyopet, the Genden Fureai Ibaraki Foundation and Yoshida Sekiyu (Art Tower Mito).",
+        "No reporting found of what each supporter gives."
+      ],
+      "red_flags": [
+        {
+          "heading": "Petroleum retailer Yoshida Sekiyu on the supporters list",
+          "points": [
+            "Yoshida Sekiyu (Yoshida Oil Co.) is one of 22 listed supporters (Art Tower Mito, checked October 2026).",
+            "Its Mynavi Baito recruiting page, updated 20 October 2026, lists job openings at ENEOS-branded fuel stations around Mito, Hitachi and Naka-Minato (Mynavi Baito).",
+            "No reporting found of the amount it gives or of any protest about it."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism found in art media.",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The money behind Art Tower Mito is overwhelmingly the city's own, set by a 1% budget rule since 1990. The one flagged name is a local fuel retailer among 22 small supporters, with no amount published. Worth watching: the supporters' contributions, which the accounts report only as a donation total.",
+      "sources": [
+        {
+          "url": "https://www.arttowermito.or.jp/zaidan/gaiyo.html"
+        },
+        {
+          "url": "https://www.arttowermito.or.jp/os/"
+        },
+        {
+          "url": "https://www.arttowermito.or.jp/access/"
+        },
+        {
+          "url": "https://www.arttowermito.or.jp/zaidan/zaimu.html"
+        },
+        {
+          "url": "https://www.arttowermito.or.jp/zaidan/r6zogen.pdf"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Art_Tower_Mito"
+        },
+        {
+          "url": "https://www.lib.pref.ibaraki.jp/assets/kagayaki51.pdf"
+        },
+        {
+          "url": "https://baito.mynavi.jp/cl-002685504879/"
+        }
+      ],
+      "website": "https://www.arttowermito.or.jp/ (checked 2026-10-20)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "Hara Museum ARC",
@@ -34067,7 +34428,77 @@
     ],
     "records_note": "Posts annual reports from 2002-03 to 2024-25 with audited statements and names its board; the Tarnanthi page names BHP and the state government.",
     "finances_note": "FY2024-25 income AUD 35.8M: about 56 percent South Australian and Commonwealth grants, 14 percent donations, bequests and sponsorship, 6 percent earned; rest investment income and external grants (audited statements).",
-    "affiliations_note": "Belongs to Festival City Adelaide, shown on its Tarnanthi festival page."
+    "affiliations_note": "Belongs to Festival City Adelaide, shown on its Tarnanthi festival page.",
+    "details": {
+      "overview": [
+        "State art museum at 490 North Terrace, Adelaide, in the cultural precinct between the South Australian Museum and Adelaide University.",
+        "Founded in 1881 as the National Gallery of South Australia; renamed the Art Gallery of South Australia in 1967 (Wikipedia).",
+        "The Classical Revival Elder Wing by C. E. Owen Smyth opened in 1900, with a Doric portico added in 1936 and extensions in 1962, 1979 and 1996; the building is on the South Australian Heritage Register (Wikipedia).",
+        "The collection holds almost 45,000 works, the second-largest state collection in Australia; the gallery runs the Adelaide Biennial of Australian Art (since 1990) and Tarnanthi, a festival of Aboriginal and Torres Strait Islander art (since 2015).",
+        "Jason Smith has been director since February 2025, after Rhana Devenport (2018 to 2024) (Wikipedia).",
+        "Open 10:00 to 17:00 daily except Christmas Day; general entry is free, some exhibitions charge; free wheelchair loan, accessible parking nearby, assistance dogs welcome."
+      ],
+      "funding_verdict": "Art Gallery of South Australia: mainly public: South Australian government, with BHP as Tarnanthi's corporate partner",
+      "funding": [
+        "The Government of South Australia is principal partner of Tarnanthi (AGSA). The gallery has been under the direct oversight of the Department of the Premier and Cabinet since late 2018 (Wikipedia); no reporting found of the size of its annual state grant.",
+        "BHP is Tarnanthi's presenting partner (AGSA) and has backed it since 2015; the gallery's head of philanthropy, Vincent Ciccarello, called BHP \"a resources industry rather than a fossil fuel industry\" and says it tells exhibiting artists about the funding under a \"continuous consent\" model (InDaily).",
+        "Bequests: Thomas Elder left \u00a325,000 in 1897; James and Diana Ramsay left A$38 million, announced in 2019 (Wikipedia).",
+        "No reporting found that could be opened giving the amount of the BHP deal or its 2026 terms; the annual report and parliamentary records returned 403 Forbidden."
+      ],
+      "red_flags": [
+        {
+          "heading": "BHP and the 2015 Samarco dam collapse",
+          "points": [
+            "The Fund\u00e3o dam in south-eastern Brazil collapsed in 2015 and killed 19 people (AAP).",
+            "On 14 November 2025 London's High Court, Judge Finola O'Farrell, found BHP liable though it did not own the dam: raising the dam when it was unsafe was the \"direct and immediate cause\" of the collapse (AAP).",
+            "The claimants' lawyers value the claim at up to US$48.32 billion; BHP said it would appeal and that 240,000 claimants had been paid in Brazil (AAP).",
+            "BHP is current: the gallery's Tarnanthi page names it presenting partner (checked October 2026); it also keeps some coal interests (InDaily).",
+            "No reporting found of an artist protest, boycott or open letter against BHP at the gallery."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Little criticism. One arts-section feature puts Tarnanthi's BHP deal inside an Adelaide debate on \"artwashing\"; no piece found makes a direct case against the gallery.",
+        "items": [
+          {
+            "outlet": "InDaily (InReview)",
+            "title": "Farrin Foster, \"The 'artwashing' debate arrives in Adelaide\" (2023)",
+            "url": "https://www.indailysa.com.au/inreview/archive/2023/04/21/the-artwashing-debate-arrives-in-adelaide",
+            "points": [
+              "Calls Tarnanthi one of the most visible partnerships between an extractive company and a cultural body in South Australia.",
+              "Mirning artist Ali Gumilya Baker objects to companies profiting from Aboriginal land while returning little, and to opaque deals; documentarian Alex Kelly warns that dependence on funders breeds self-censorship.",
+              "Gives the gallery's side: Tarnanthi's results of 1.6 million attendees, over 6,000 artists shown and over $6.6 million in art fair sales.",
+              "The open letter it reports, signed by more than 60 arts figures in January 2023, targets Santos at the Adelaide Botanic Garden, not this gallery."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The gallery is a state institution, with bequests behind its acquisitions; no source found gives the size of its state grant. The weak point is BHP: the corporate partner behind Tarnanthi, a festival of First Nations art, was found liable in 2025 for a dam collapse that killed 19 people. Worth watching: the value and terms of BHP's next deal, and whether artists act on the \"artwashing\" debate.",
+      "sources": [
+        {
+          "url": "https://www.agsa.sa.gov.au/whats-on/tarnanthi/"
+        },
+        {
+          "url": "https://www.agsa.sa.gov.au/visit/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Art_Gallery_of_South_Australia"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tarnanthi"
+        },
+        {
+          "url": "https://www.indailysa.com.au/inreview/archive/2023/04/21/the-artwashing-debate-arrives-in-adelaide"
+        },
+        {
+          "url": "https://aapnews.aap.com.au/news/bhp-liable-for-2015-brazil-dam-collapse-uk-court-rules"
+        }
+      ],
+      "website": "https://www.agsa.sa.gov.au/ (checked 2026-10-20)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "Darwin Festival",
@@ -43681,7 +44112,123 @@
         "funder": "Pritzker family",
         "institutions": 5
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Art museum and art school at 111 South Michigan Avenue in Grant Park, on city land administered by the Chicago Park District (Wikipedia).",
+        "Founded in 1879 as the Chicago Academy of Fine Arts, on the assets of the bankrupt Chicago Academy of Design (1866); renamed the Art Institute of Chicago in 1882, with banker Charles L. Hutchinson as first president (Wikipedia).",
+        "The Beaux-Arts building by Shepley, Rutan and Coolidge was built for the 1893 World's Columbian Exposition; Renzo Piano's Modern Wing, 264,000 square feet at $294 million, opened on 16 May 2009 (Wikipedia).",
+        "The collection holds nearly 300,000 works in 11 curatorial departments; the School of the Art Institute of Chicago (SAIC) is part of the same institution; James Rondeau has led it since 2016.",
+        "Open Monday and Wednesday 11:00 to 17:00, Thursday to 20:00, Friday to Sunday to 17:00, closed Tuesday; adults $32, Chicago residents $20, Illinois residents $27; free for children under 14, Chicago teens and Illinois educators."
+      ],
+      "funding_verdict": "Art Institute of Chicago: privately funded: earned income, endowment and family fortunes, on city-owned land",
+      "funding": [
+        "Fiscal year to June 2025: revenue $464.4 million, of which $250.4 million (53.9%) programme revenue, $80.5 million contributions, $21.6 million investment income; net assets $1.95 billion; Rondeau was paid $1,024,393 (ProPublica, Form 990).",
+        "Kenneth and Anne Griffin gave $19 million toward the Modern Wing, one of the largest private gifts to the museum, and Kenneth Griffin sat on the board (The Art Newspaper, 2008).",
+        "In September 2024 collectors Aaron I. Fleischman and Lin Lougheed gave $75 million for a new gallery building named for them (Wikipedia).",
+        "No reporting found of the size of Crown family or Pritzker gifts to the museum."
+      ],
+      "red_flags": [
+        {
+          "heading": "Crown family and General Dynamics",
+          "points": [
+            "Steven Crown, a principal of Henry Crown and Company, is a trustee; the museum has a Henry Crown Gallery (Chicago Observations blog, 2023).",
+            "ArtReview reports a 10 percent stake in weapons maker General Dynamics tied to Crown Family Philanthropies (2025).",
+            "On 10 November 2023 about 75 mostly young protesters demanded the trustees refuse Crown donations, remove Steven Crown and rename the Henry Crown Gallery (Chicago Observations blog)."
+          ]
+        },
+        {
+          "heading": "Gaza encampment and arrests, 2024",
+          "points": [
+            "On 4 May 2024 SAIC students and local groups camped in the North Garden, demanding the museum disclose its funding and divest from backers of Israel, naming the Crown Foundation and General Dynamics (Hyperallergic).",
+            "Police arrested 68 people (the museum's own statement said about 50); the museum said a security officer was shoved and exits were blocked, and later dropped trespassing charges (Hyperallergic, ABC7).",
+            "On 24 October 2024 about 200 students, faculty and staff walked out over Gaza, denouncing the complicity of the art school and museum; a student group named the Crown family as funder (World Socialist Web Site, an openly partisan socialist outlet)."
+          ]
+        },
+        {
+          "heading": "Thomas Pritzker and Jeffrey Epstein",
+          "points": [
+            "Pritzker is a past chair of the museum's board (Wikipedia, Hyperallergic).",
+            "In unsealed 2024 court papers Virginia Giuffre said \"I believe I was with Tom once\"; Pritzker \"continues to vehemently deny\" it (Hyperallergic).",
+            "Released emails show contact with Epstein from at least 2010 to early 2019 (NPR Illinois); Pritzker quit as Hyatt executive chairman on 16 February 2026, admitting \"terrible judgment\" (PBS, Wikipedia).",
+            "No reporting found of a museum response."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "The art press reports the protests and the Epstein link as news; no critical essay on the museum's funding was found.",
+        "items": [
+          {
+            "outlet": "Hyperallergic",
+            "title": "Maya Pontone, \"Police Arrest Dozens Protesting for Gaza at Art Institute of Chicago\" (2024)",
+            "url": "https://hyperallergic.com/911465/police-arrest-dozens-protesting-for-gaza-at-art-institute-of-chicago/",
+            "points": [
+              "Sets out the protesters' case: disclosure of funding and divestment from the Crown Foundation and General Dynamics.",
+              "Reports videos of riot police alongside the museum's account."
+            ]
+          },
+          {
+            "outlet": "Hyperallergic",
+            "title": "Valentina Di Liscia, \"Art Collectors and Patrons Named in Unsealed Epstein Documents\" (2024)",
+            "url": "https://hyperallergic.com/art-collectors-patrons-named-in-unsealed-epstein-documents/",
+            "points": [
+              "Names Pritzker as former chairman of the Art Institute among patrons in the Giuffre papers.",
+              "Does not say the documents mention the museum."
+            ]
+          }
+        ]
+      },
+      "wider_context": [
+        "In September 2025, 21 participants in the Chicago Architecture Biennial signed a letter over sponsor Crown Family Philanthropies' General Dynamics stake, and some withdrew (ArtReview).",
+        "The same family has a trustee and a named gallery at the Art Institute."
+      ],
+      "bottom_line": "The museum runs mainly on earned income and a large endowment. The weak points are the Crown family's arms fortune on its board, a former chair tied to Epstein, and the 2024 arrests of its own students.",
+      "sources": [
+        {
+          "url": "https://www.artic.edu/visit"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Art_Institute_of_Chicago"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/362167725"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2008/04/01/the-post-war-and-contemporary-collections-of-leading-american-collectors"
+        },
+        {
+          "url": "https://www.chicagoobservations.com/chicago-observational-ramblings/2023/11/11/removing-the-crown"
+        },
+        {
+          "url": "https://artreview.com/chicago-architecture-biennial-participants-withdraw-over-sponsor-links/"
+        },
+        {
+          "url": "https://hyperallergic.com/911465/police-arrest-dozens-protesting-for-gaza-at-art-institute-of-chicago/"
+        },
+        {
+          "url": "https://abc7chicago.com/post/art-institute-not-pursuing-charges-after-large-pro-palestinian-protest/14773291/"
+        },
+        {
+          "url": "https://www.wsws.org/en/articles/2024/11/05/ksnc-n05.html",
+          "note": "partisan"
+        },
+        {
+          "url": "https://hyperallergic.com/art-collectors-patrons-named-in-unsealed-epstein-documents/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Thomas_Pritzker"
+        },
+        {
+          "url": "https://www.nprillinois.org/illinois/2025-11-20/newly-released-cache-of-epstein-emails-reveal-deeper-ties-with-thomas-pritzker-governors-cousin"
+        },
+        {
+          "url": "https://www.pbs.org/newshour/nation/thomas-pritzker-steps-down-from-hyatt-board-saying-he-deeply-regrets-association-with-epstein"
+        }
+      ],
+      "website": "https://www.artic.edu/ (checked 2026-10-20)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "4A Centre for Contemporary Asian Art",
@@ -52045,7 +52592,64 @@
         "historical_impact": "Where a flag names an industry, ask what the gift buys the giver, and who sits on the board that accepts it."
       }
     ],
-    "records_note": "Art Macao is run by the Cultural Affairs Bureau, which names six casino operators as co-organisers for 2025 but publishes no report, accounts or board."
+    "records_note": "Art Macao is run by the Cultural Affairs Bureau, which names six casino operators as co-organisers for 2025 but publishes no report, accounts or board.",
+    "details": {
+      "overview": [
+        "Citywide art event in Macau run by the Macao SAR government, held every two years since its first edition in 2019; its full name is \"Art Macao: Macao International Art Biennale\".",
+        "The first edition marked the 20th anniversary of the 1999 handover; the government claimed more than 16 million visits (Macao Magazine, a government publication).",
+        "The 2023 edition, the third, took the theme \"The Statistics of Fortune\", with 31 exhibitions and over 200 artists (Tatler Asia).",
+        "The 2025 edition, chief curator Feng Boyi with Liu Gang and Wu Wei, ran July to October under the theme \"Hey, what brings you here?\": nearly 30 exhibitions at 28 venues, over 160 artists and about 5 million visits (Cultural Affairs Bureau).",
+        "It has no building: the Main Exhibition fills the Macao Museum of Art, and Special Exhibitions sit inside casino resorts, among them Picasso prints at Grand Lisboa Palace, a Cai Guo-Qiang AI show at MGM Macau and a show at The Venetian Macao (artmacao.mo).",
+        "Entry to the Main Exhibition was free (Macao SAR government release, August 2025)."
+      ],
+      "funding_verdict": "Art Macao: public and casino-funded: Macao government with the six casino concessionaires",
+      "funding": [
+        "The Cultural Affairs Bureau organises it under the Secretariat for Social Affairs and Culture; the Macao Government Tourism Office co-organises (Cultural Affairs Bureau).",
+        "Casino co-organisers in 2025: Galaxy Entertainment Group, Melco Resorts & Entertainment, MGM, Sands China, SJM Resorts and Wynn Resorts Macau, which present the Special Exhibitions (Cultural Affairs Bureau, artmacao.mo).",
+        "The 2023 edition cost MOP12 million, with the six resort groups covering a significant share (Tatler Asia).",
+        "No reporting found of the 2025 budget or of each operator's contribution."
+      ],
+      "red_flags": [
+        {
+          "heading": "Casino operators as co-organisers and funders",
+          "points": [
+            "All six of Macau's casino licence holders co-organise the event and stage exhibitions in their resorts (Cultural Affairs Bureau, 2025).",
+            "Under concession contracts signed on 16 December 2022 for 2023 to 2032, the six pledged MOP108.7 billion for non-gaming projects and overseas markets; culture and art is one of 10 named areas (Macau Business).",
+            "Sands China's Wilfred Wong said gaming remains the core of the company's business and that the art is a contribution to the community, not a source of financial return (Tatler Asia, 2023).",
+            "Tatler Asia reports that non-gaming commitments such as art were a key factor when the licences were awarded."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism found in art media.",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "Art Macao is a government event paid for in large part by the casino industry, whose culture spending forms part of the licence terms it owes the state. The six casino operators co-organise it and covered a significant share of the 2023 cost. Worth watching: published budgets and each operator's share, which no source found sets out.",
+      "sources": [
+        {
+          "url": "https://www.artmacao.mo/2025/en"
+        },
+        {
+          "url": "https://www.icm.gov.mo/en/News/detail/24371"
+        },
+        {
+          "url": "https://www.gov.mo/en/news/365793/"
+        },
+        {
+          "url": "https://www.tatlerasia.com/lifestyle/arts/macau-art-development"
+        },
+        {
+          "url": "https://macaomagazine.net/the-art-and-the-soul/"
+        },
+        {
+          "url": "https://www.macaubusiness.com/govt-big-six-ink-new-gaming-concession-contracts/"
+        }
+      ],
+      "website": "https://www.artmacao.mo (checked 2026-10-20; redirects to the 2025 edition's pages; the record's website field holds an SCMP article, which returned 403)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "Bienal de La Habana",
@@ -54176,7 +54780,100 @@
       }
     ],
     "records_note": "Arter has none of its own; parent Vehbi Ko\u00e7 Foundation posts reports for 2012 to 2025 without audited accounts. Arter names sponsors, lists its board.",
-    "affiliations_note": "Arter is the contemporary art institution of the Vehbi Ko\u00e7 Foundation, which also runs the Me\u015fher arts venue in Arter's former Istiklal Street building."
+    "affiliations_note": "Arter is the contemporary art institution of the Vehbi Ko\u00e7 Foundation, which also runs the Me\u015fher arts venue in Arter's former Istiklal Street building.",
+    "details": {
+      "overview": [
+        "Contemporary art museum in Dolapdere, Beyo\u011flu, a working-class Istanbul neighbourhood (Qantara), run as a non-profit by the Vehbi Ko\u00e7 Foundation (VKV).",
+        "Opened on 8 May 2010 with \"Starter\", more than 160 works by 87 artists; it showed at Meymenet Han on Istiklal Street until 2018 and opened its Dolapdere building on 9 September 2019 (Wikipedia).",
+        "The 18,000 square metre building is by Grimshaw with Istanbul's Turgut Alton Architects, won in a competition; it has 3,000 square metres of galleries, a sculpture terrace and a facade of convex and concave rhomboid panels (The Art Newspaper, Grimshaw).",
+        "Inside: the 168-seat Sevgi G\u00f6n\u00fcl Auditorium, the Karbon theatre for up to 332, a library, learning spaces, a bookshop and Bistro by Divan (Grimshaw, Arter).",
+        "The collection, started in 2007, holds more than 1,300 works, about half by Turkish artists; \u00d6mer Ko\u00e7, a third-generation Ko\u00e7 and collector, chairs Arter, and Melih Fereli is director (The Art Newspaper).",
+        "Entry was free for residents of the area in 2019 (Qantara); no reporting found of current hours or prices, as the site's visit pages could not be read."
+      ],
+      "funding_verdict": "Arter: family-foundation-funded: the Vehbi Ko\u00e7 Foundation, from Ko\u00e7 Holding wealth",
+      "funding": [
+        "The Vehbi Ko\u00e7 Foundation owns and runs Arter through its Arter K\u00fclt\u00fcr Sanat \u0130ktisadi \u0130\u015fletmesi; the home page names no sponsor (Arter).",
+        "The building and collection cost more than \u20ac120 million, according to the Ko\u00e7 Foundation (The Art Newspaper, 2019).",
+        "VKV owns 7.3% of Ko\u00e7 Holding; the Ko\u00e7 family holds a further 19.7% and the family vehicle Family Dan\u0131\u015fmanl\u0131k 43.7% (Ko\u00e7 Holding investor presentation, December 2025).",
+        "Ko\u00e7 Holding has also sponsored the Istanbul Biennial since 2007, extended to 2036 (Habert\u00fcrk, 2022).",
+        "No reporting found of Arter's own budget or accounts."
+      ],
+      "red_flags": [
+        {
+          "heading": "Ko\u00e7 Holding's oil refining (T\u00fcpra\u015f)",
+          "points": [
+            "T\u00fcpra\u015f, a Ko\u00e7 Holding company, holds 70% of Turkey's refining capacity, about 30 million tons, and is Europe's seventh-largest refinery (Ko\u00e7 Holding, 2025).",
+            "Its revenue was TL598 billion in the first nine months of 2025 (Ko\u00e7 Holding)."
+          ]
+        },
+        {
+          "heading": "Ko\u00e7 Holding's arms maker (Otokar)",
+          "points": [
+            "Otokar, a listed Ko\u00e7 company, calls itself the \"leading land systems manufacturer in Turkish defense industry\", with capacity for 950 tactical armoured vehicles a year (Ko\u00e7 Holding, 2025).",
+            "It had a \u20ac857 million backlog of 4x4 armoured vehicle orders at the third quarter of 2025, mostly from a Romanian joint venture to build Cobra II vehicles (Ko\u00e7 Holding).",
+            "Ko\u00e7's role in the Istanbul Biennial draws regular criticism over the foundation's ties to the arms sector (Qantara, 2019)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Little criticism, and none of the art itself; coverage centres on gentrification in Dolapdere and Ko\u00e7's arms ties.",
+        "items": [
+          {
+            "outlet": "Qantara",
+            "title": "Ulrich von Schwerin, \"The Arter, art and gentrification: Modern art makeover in Istanbul?\" (2019)",
+            "url": "https://qantara.de/en/node/7422",
+            "points": [
+              "Fereli is aware the museum is pushing up rents and property prices, but says \"The neighbourhood has embraced us and loves us\".",
+              "Historian Orhan Esen says the future \"is only just beginning\" for some while others are shut out.",
+              "Notes regular criticism of Ko\u00e7's biennial role over the arms sector."
+            ]
+          },
+          {
+            "outlet": "The Art Newspaper",
+            "title": "Hannah McGivern, \"'Game-changer' museum to open in Istanbul in time for city's biennial\" (2019)",
+            "url": "https://www.theartnewspaper.com/2019/07/02/game-changer-museum-to-open-in-istanbul-in-time-for-citys-biennial",
+            "points": [
+              "Not criticism: Fereli denies that government bureaucracy targeted the Ko\u00e7 family over the delayed opening, after Ko\u00e7 Holding faced tax audits and lost a naval contract in 2013.",
+              "Reports a 2017 attack by conservative Islamists on a show of \u00d6mer Ko\u00e7's collection held elsewhere."
+            ]
+          }
+        ]
+      },
+      "wider_context": [
+        "In 2013 protests targeted 13th Istanbul Biennial events over sponsor Ko\u00e7 Holding; at a 10 May action activists wore Ko\u00e7 banners and the names of gentrifying neighbourhoods, and over 100 people in the Turkish art world issued a statement criticising the curators' response (ArtInfo, republished by ArtLeaks).",
+        "Arter was one of the main venues of the 13th and 14th Istanbul Biennials (Wikipedia)."
+      ],
+      "bottom_line": "Arter is paid for by the Vehbi Ko\u00e7 Foundation, whose wealth is a stake in Ko\u00e7 Holding, owner of Turkey's largest oil refiner and a maker of armoured vehicles. Both are current. Worth watching: Arter publishes no accounts of its own, and Dolapdere's rents.",
+      "sources": [
+        {
+          "url": "https://www.arter.org.tr"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Arter_(art_center"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2019/07/02/game-changer-museum-to-open-in-istanbul-in-time-for-citys-biennial"
+        },
+        {
+          "url": "https://grimshaw.global/assets/uploads/Grimshaw___s_major_new_art_museum_in_Istanbul_opens_its_doors_to_world_1.pdf"
+        },
+        {
+          "url": "https://cdn.koc.com.tr/cmscontainer/kocholding/media/koc/03yatirimci-iliskileri/kocholdingirpres_dec25.pdf"
+        },
+        {
+          "url": "https://www.haberturk.com/koc-holding-herkesi-istanbul-bienali-ne-davet-ediyor-3520426"
+        },
+        {
+          "url": "https://qantara.de/en/node/7422"
+        },
+        {
+          "url": "https://art-leaks.org/2013/06/12/istanbul-biennial-protests-foreshadowed-battle-for-gezi-park/"
+        }
+      ],
+      "website": "https://www.arter.org.tr (checked 2026-10-20; the home page loads, the English about and visit pages return 404)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "id": "art-siadziba-minsk",
@@ -67927,7 +68624,105 @@
     "grade_basis": "No flagged funder, but on record: a Gulf state body and protests or a boycott.",
     "records_note": "Arts AlUla posts nothing; the Royal Commission has 2023 and 2024 annual reports, and Desert Biennial files Form 990s, names donors and lists a board.",
     "finances_note": "FY2024-25 income USD 2.0M at the US producer of Desert X: about 9 percent government grants, 79 percent contributions, 9 percent services; net assets negative (Form 990).",
-    "affiliations_note": "Desert X AlUla is produced by the US nonprofit Desert Biennial, which also stages Desert X in the Coachella Valley. Listed in the Biennial Foundation directory."
+    "affiliations_note": "Desert X AlUla is produced by the US nonprofit Desert Biennial, which also stages Desert X in the Coachella Valley. Listed in the Biennial Foundation directory.",
+    "details": {
+      "overview": [
+        "Arts AlUla sits within the Royal Commission for AlUla (RCU) (Desert X); Desert X AlUla is the biennial held in AlUla in north-west Saudi Arabia as a collaboration between the RCU and the California organisation Desert X (Hyperallergic).",
+        "The RCU was set up in 2017 with administrative and budgeting independence; Crown Prince and Prime Minister Mohammed bin Salman chairs its board (Saudipedia).",
+        "Desert X AlUla opened its first edition from 31 January to 7 March 2020, curated by Neville Wakefield with curators Raneem Farsi and Aya Alireza, as part of Mohammed bin Salman's economic, cultural and social reform plan (Hyperallergic).",
+        "The third edition (9 February to 23 March 2024) showed 16 works and was free (Qantara, Experience AlUla); the fourth, \"Space Without Measure\", ran from 15 January to 28 February 2026 with 11 artists, curated by Wejdan Reda and Zo\u00e9 Whitley (Desert X).",
+        "Desert X AlUla is a pre-opening programme for Wadi AlFann, \"Valley of the Arts\", a permanent land art site not yet open to the public, due to unveil from 2028 (Desert X, Experience AlUla).",
+        "Visiting: exhibitions run in winter as part of the AlUla Arts Festival; no reporting found of accessibility provision."
+      ],
+      "funding_verdict": "Arts AlUla and Desert X AlUla: state-funded: the Saudi Royal Commission for AlUla, produced with a US non-profit",
+      "funding": [
+        "Desert X AlUla is a collaboration between the RCU and Desert X (Hyperallergic); Desert X is produced by The Desert Biennial, a 501(c)(3) charity in Palm Springs (Desert X, ProPublica).",
+        "Desert X says it is funded by its board, individual donors, foundations and sponsors, and names none for AlUla (Desert X).",
+        "The Desert Biennial's programme service revenue was $2,313,589 in the year to June 2022 and $2,461,308 in the year to June 2024, against $27,400 (2023) and $176,571 (2025); the filing summary does not name the payer (ProPublica, Form 990).",
+        "No reporting found of the RCU's arts budget or of what it pays Desert X."
+      ],
+      "red_flags": [
+        {
+          "heading": "Saudi state patronage under Mohammed bin Salman",
+          "points": [
+            "The biennial is a collaboration with a government agency whose board the crown prince chairs (Saudipedia, Hyperallergic).",
+            "In 2021 Palm Springs mayor Christy Holstege cited the 2018 killing of journalist Jamal Khashoggi when the city refused to sponsor Desert X (ArtReview)."
+          ]
+        },
+        {
+          "heading": "Resignations, a donor exit and a city boycott, 2019 to 2021",
+          "points": [
+            "In October 2019 board members Ed Ruscha, Yael Lipschutz and Tristan Milanovich resigned over the Saudi partnership, citing human rights abuses and the Khashoggi killing; Lipschutz called it \"completely unethical\" (Hyperallergic).",
+            "The MaddocksBrown Foundation, which had given about $13,000 since 2017, withdrew, including $5,000 for 2021 (Hyperallergic).",
+            "In February 2021 Palm Springs declined to sponsor Desert X 2021 and pledged $30,000 for the commission and installation of six sculptures by artist Christopher Myers instead (ArtReview).",
+            "Founder Susan Davis answered that \"it is better to engage than to isolate\" (Hyperallergic)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Sharp criticism in 2019 to 2021, centred on the resignations and the Palm Springs boycott; later coverage is mostly accepting.",
+        "items": [
+          {
+            "outlet": "Hyperallergic",
+            "title": "Hakim Bishara, \"Three Desert X Board Members Resign in Protest of Saudi Collaboration\" (2019)",
+            "url": "https://hyperallergic.com/521537/three-desert-x-board-members-resign-in-protest-of-saudi-collaboration/",
+            "points": [
+              "Lipschutz: the project is about \"striking a deal with a national government that has committed a horrific genocide in Yemen\", not artists' dialogue.",
+              "Lipschutz also calls the Saudi government undemocratic, with an appalling record of discrimination against the LGBTQ community; the RCU had not responded to Hyperallergic's request for comment."
+            ]
+          },
+          {
+            "outlet": "ArtReview",
+            "title": "\"Palm Springs boycotts Desert X after Saudi Arabia edition\" (2021)",
+            "url": "https://artreview.com/palm-springs-boycotts-desert-x-after-saudi-arabia-edition/",
+            "points": [
+              "Reports the mayor's call on the organisers to \"stop partnering with human rights abusers\".",
+              "Notes a backlash from Desert X supporters who valued the free exhibition."
+            ]
+          },
+          {
+            "outlet": "Qantara",
+            "title": "Naima Morelli, \"Desert X AlUla 2024: 'The desert is demanding new ways of seeing'\" (2024)",
+            "url": "https://qantara.de/en/article/desert-x-alula-2024-desert-demanding-new-ways-seeing",
+            "points": [
+              "Says the Western art world is accepting compromises with a state whose laws and rights \"decisively\" do not align with its own.",
+              "Mostly favourable; Rebecca Ann Proctor says she heard of no controversy around the 2024 edition."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The money is Saudi state money, run through an agency the crown prince chairs, with a US charity as producer. The weak points are that patronage, documented resignations and a city boycott, and no published figure for what the RCU pays. Worth watching: Wadi AlFann's opening and whether Desert X discloses its Saudi income.",
+      "sources": [
+        {
+          "url": "https://desertx.org/learn/news/desert-x-2026-alula-is-now-open"
+        },
+        {
+          "url": "https://www.experiencealula.com/en/places-to-go/wadi-alfann"
+        },
+        {
+          "url": "https://saudipedia.com/en/article/1291/government-and-politics/commissions/royal-commission-for-alula"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/300852223"
+        },
+        {
+          "url": "https://hyperallergic.com/521537/three-desert-x-board-members-resign-in-protest-of-saudi-collaboration/"
+        },
+        {
+          "url": "https://hyperallergic.com/523254/desert-x-funder-pulls-out-in-protest-of-saudi-collaboration/"
+        },
+        {
+          "url": "https://artreview.com/palm-springs-boycotts-desert-x-after-saudi-arabia-edition/"
+        },
+        {
+          "url": "https://qantara.de/en/article/desert-x-alula-2024-desert-demanding-new-ways-seeing"
+        }
+      ],
+      "website": "https://desertx.org (checked 2026-10-20; no separate Arts AlUla site was found; the visitor site experiencealula.com was read for Wadi AlFann and the 2024 edition)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "Misk Art Institute",
@@ -68251,7 +69046,96 @@
       }
     ],
     "records_note": "It posts no reports, accounts or funder list, only a count of 50 partners; the team page names the president but no board.",
-    "affiliations_note": "Listed in the Biennial Foundation directory."
+    "affiliations_note": "Listed in the Biennial Foundation directory.",
+    "details": {
+      "overview": [
+        "Contemporary art foundation at Bd. Take Ionescu 46C, Timi\u0219oara, which runs the Art Encounters Biennial, exhibitions, a residency and a curatorial school.",
+        "Real estate developer and collector Ovidiu \u0218andor started the biennial in 2015 and is the foundation's president (Europa Liber\u0103, foundation site); biennials followed in 2017, 2019, 2021, 2023 and 2025.",
+        "Its new venue, the former Casa ISHO, was announced for September 2026; \u0218andor and his family provide the building as the permanent headquarters (Agerpres).",
+        "The renovation followed a concept by Attila KIM Architects, with the ground floor fitted out with Andreea Andresoiu; it cost several hundred thousand euros (Agerpres).",
+        "The venue holds exhibition halls, an art library and bookshop, education rooms, the Focus Art Encounters platform for experimental practices and the Brewno caf\u00e9 with a garden (Agerpres); the opening show \"Picasso en visite\", with the Mus\u00e9e Picasso, Antibes, runs from 17 September 2026 to 17 January 2027 (foundation site).",
+        "A lift was added and the whole space is accessible to wheelchair users (Agerpres); the 2025 biennial opened Wednesday to Sunday, 12:00 to 20:00 (Canvas). The site gives no hours or admission for the new venue."
+      ],
+      "funding_verdict": "Art Encounters Foundation: founder-funded with corporate and public money: Ovidiu \u0218andor, Ploom, Banca Transilvania, Timi\u0219oara municipality",
+      "funding": [
+        "Ovidiu \u0218andor makes a steady personal contribution; he says he \"spends money\" on the biennial rather than making it, and private sponsors make up the rest (Europa Liber\u0103).",
+        "\u0218andor is a real estate developer (Europa Liber\u0103); he took over the ISHO site, a former wool factory, in 2012 and plans nine buildings there: six apartment blocks, a car park, offices and a hotel (der Freitag).",
+        "2025 biennial: funded by the City of Timi\u0219oara through its Project Center, co-financed by the Ministry of Culture, the National Cultural Fund Administration (AFCN), the French Institute and the German Cultural Center in Timi\u0219oara (Canvas).",
+        "2025 corporate partners: Ploom (main partner), Banca Transilvania (strategic partner), Catena (exhibition partner); supporters ISHO, Bosch, Mewi, Sanmarco and Saint-Gobain (Canvas).",
+        "The 2026 venue was paid for from private resources and partner companies, which the release does not name (Agerpres).",
+        "No reporting found of the foundation's budget, accounts or sponsorship amounts."
+      ],
+      "red_flags": [
+        {
+          "heading": "Japan Tobacco's Ploom as main partner, 2025",
+          "points": [
+            "Ploom, a heated tobacco brand marketed by Japan Tobacco, which acquired its patents and trademarks in 2015 (Wikipedia), was main partner of the 2025 biennial and co-organised its Saturday garden parties (Canvas).",
+            "Ploom also supported \"Art Encounters by Ploom\", a Revista Biz series on the biennial that included a July 2025 interview with \u0218andor, published under an 18+ tobacco warning (Revista Biz).",
+            "No reporting found of a protest or open letter about the Ploom sponsorship."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Little criticism. Reviews are mostly favourable; two pieces question whether a developer-funded biennial resists the gentrification it describes.",
+        "items": [
+          {
+            "outlet": "ArtReview",
+            "title": "Rebecca O'Dwyer, \"Art Encounters Biennial 2019, Timi\u0219oara\" (2019)",
+            "url": "https://artreview.com/ar-december-2019-review-art-encounters-biennial-2019/",
+            "points": [
+              "The curators use existing sites to resist the city's gentrification, but the reviewer finds it hard not to see the biennial as \"part of a strategy to do exactly this\".",
+              "Ties the biennial and the European Capital of Culture title to a faster transformation of the city, which multinationals favour for cheap labour.",
+              "Names the curators Maria Lind and Anca Rujoiu; does not name \u0218andor or discuss funding."
+            ]
+          },
+          {
+            "outlet": "der Freitag",
+            "title": "Philipp Hindahl, \"Art Encounters Timi\u0219oara: Auf Schnitzeljagd\" (2023)",
+            "url": "https://www.freitag.de/autoren/philipp-hindahl/art-encounters-timisoara-auf-schnitzeljagd",
+            "points": [
+              "The biennial would look quite different without the \"Immobilienmogul\" (real estate mogul) \u0218andor, and the author finds this irritating.",
+              "Of the ISHO development: \"Das alles k\u00f6nnte so auch in Frankfurt am Main oder Amsterdam stehen\"; the wish to change whole districts rapidly \"wird selten so explizit gemacht\" (is rarely made so explicit).",
+              "The biennial model \"\u00e4chzt unter seinen Widerspr\u00fcchen\" (groans under its contradictions)."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The foundation runs on a developer's money and building, with city, ministry and bank funding on top. The clear weak point is Japan Tobacco's Ploom as main partner of the 2025 biennial and backer of a press series about it. Worth watching: whether Ploom stays on for the new venue, and the tie between the foundation and \u0218andor's ISHO development.",
+      "sources": [
+        {
+          "url": "https://artencounters.ro"
+        },
+        {
+          "url": "https://artencounters.ro/despre-noi/"
+        },
+        {
+          "url": "https://agerpres.ro/comunicate/2026/07/30/comunicat-de-presa---fundatia-art-encounters--1580601"
+        },
+        {
+          "url": "https://canvasonline.com/event/art-encounters-2025/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ploom"
+        },
+        {
+          "url": "https://www.revistabiz.ro/ovidiu-sandor-art-encounters-arta-poate-inca-sa-aduca-un-beneficiu-real-in-viata-oamenilor/",
+          "note": "sponsored by Ploom"
+        },
+        {
+          "url": "https://romania.rferl.org/a/%C3%AEntreb%C4%83ri-ovidiu-%C8%99andor-colec%C8%9Bionar-de-art%C4%83-a-tr%C4%83i-cu-art%C4%83-%C3%AEn-cas%C4%83-e-de-nepre%C8%9Buit-pentru-copiii-mei-/31635618.html"
+        },
+        {
+          "url": "https://www.freitag.de/autoren/philipp-hindahl/art-encounters-timisoara-auf-schnitzeljagd"
+        },
+        {
+          "url": "https://artreview.com/ar-december-2019-review-art-encounters-biennial-2019/"
+        }
+      ],
+      "website": "https://artencounters.ro (checked 2026-10-20)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "National Museum of Contemporary Art (MNAC)",
@@ -71188,7 +72072,72 @@
         "funder": "BMW",
         "institutions": 5
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Cairo firm that calls itself privately owned and produces art events, best known for Forever Is Now, an annual contemporary art exhibition on the Giza Pyramids plateau.",
+        "Founded by French-Egyptian curator and former art advisor Nadine Abdel Ghaffar in 2016 (designboom; a 2020 BMW press release gives 2017).",
+        "She launched Forever Is Now in 2021 and Culturvator in 2023; the firm now trades as \"Art D'\u00c9gypte by Culturvator\" (designboom, Flair).",
+        "It shows work at the Giza plateau, the Egyptian Museum, Bait Al Suheimy in Historic Cairo and Downtown Cairo venues (Flair); no reporting found of a building of its own.",
+        "Other programmes: Cairo International Art District (sixth edition, 11 October to 8 November 2026), \"Formed by Dialogue\" at the Egyptian Museum and \"Crafts Re-Imagined\" (Flair).",
+        "Forever Is Now 06 runs 4 to 28 November 2026 with eight artists, five of them women (Flair); the site shows three team members and no board."
+      ],
+      "funding_verdict": "Art D'\u00c9gypte: corporate-sponsored under state auspices: LMD, Suez Canal Bank, BMW, with Egypt's ministries and UNESCO",
+      "funding": [
+        "State auspices: the Ministry of Foreign Affairs, the Ministry of Tourism and Antiquities and Experience Egypt for 2026, with the Ministry of Culture's auspices in 2024; the exhibition has UNESCO's patronage (Flair, Daily News Egypt).",
+        "2026 sponsors: LMD (main sponsor and real estate partner, second year), Suez Canal Bank (gold sponsor and banking partner), BMW (automotive partner), Vodafone, EgyptAir, DHL, Signify, Nestl\u00e9, Orascom Pyramids Entertainment and the Sawiris Foundation for Social Development (Flair).",
+        "2024 partners: Alex Bank, Afreximbank, TotalEnergies, BICC Cables, DHL, EgyptAir, the Bibliotheca Alexandrina and the Sawiris Foundation (Daily News Egypt).",
+        "BMW Group has partnered with Art D'\u00c9gypte's annual exhibition since its second edition in 2018 (BMW Group press release, November 2020).",
+        "No reporting found of sponsorship amounts, accounts or the firm's ownership beyond its founder."
+      ],
+      "red_flags": [
+        {
+          "heading": "TotalEnergies as 2024 partner",
+          "points": [
+            "TotalEnergies was a named partner of the fourth edition, 24 October to 16 November 2024 (Daily News Egypt).",
+            "No reporting found of TotalEnergies in the 2026 partner list (Flair)."
+          ]
+        },
+        {
+          "heading": "Boycott over Bernar Venet, October 2026",
+          "points": [
+            "Galleries suspended their participation and artists withdrew over the inclusion of French artist Bernar Venet, citing his 2022 \"Artist of the Year\" award in Israel and his Tel Aviv gallery, Har-El Printers & Publishers (Bab Masr).",
+            "A petition gathered nearly 700 signatories, including Monica Hanna and Sarah El Masry of Mezj for Culture and Arts (Bab Masr).",
+            "Cairo Gallery, Zahwa Gallery and Clegg Gallery suspended participation; artists Alia Issa and Mohamed Abdel Rahman withdrew (Bab Masr).",
+            "Art D'\u00c9gypte first announced a review, then withdrew Venet's invitation, citing \"its unwavering alignment with Egypt's position on the Palestinian cause\" (Bab Masr)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism found in art media.",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The money behind Art D'\u00c9gypte is a founder's private firm carried by corporate sponsors and state auspices, with no published accounts or amounts. The weak points are a fossil fuel partner in 2024 and the October 2026 boycott that forced Venet out. Worth watching: whether TotalEnergies returns and whether the firm ever publishes what its sponsors pay.",
+      "sources": [
+        {
+          "url": "https://artdegypte.org"
+        },
+        {
+          "url": "https://babmsr.com/en/how-artist-and-gallery-boycotts-forced-bernar-venet-out-of-forever-is-now"
+        },
+        {
+          "url": "https://flair-magazine.com/2026/10/06/forever-is-now-06-art-degypte-pyramids/"
+        },
+        {
+          "url": "https://www.dailynewsegypt.com/2024/10/06/forever-is-now-4th-edition-fusion-of-ancient-modern-at-giza-pyramids/"
+        },
+        {
+          "url": "https://www.press.bmwgroup.com/global/article/detail/T0320232EN/bmw-group-again-partner-of-art-d%2520egypte-in-cairo-fourth-edition-following-the-topic-forever-is-now-in"
+        },
+        {
+          "url": "https://www.designboom.com/art/nadine-abdel-ghaffar-on-launching-forever-is-now-third-edition-democratizing-arts-interview-10-22-2023/"
+        }
+      ],
+      "website": "https://artdegypte.org (checked 2026-10-20; the www address fails with a certificate error, the bare domain loads)",
+      "retrieved": "2026-10-20"
+    }
   },
   {
     "name": "G.A.S. Foundation (Guest Artists Space)",

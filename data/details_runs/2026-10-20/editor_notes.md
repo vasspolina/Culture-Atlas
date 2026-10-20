@@ -32,3 +32,15 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Flag headings to review: bak-utrecht (funding cut with no documented political motive under Red flags), asian-art-museum-san-francisco (PG&E as a fossil-fuel funder; it is a gas and electric utility), bard-college (Epstein and Leon Black as donor issues).
 - bangkok-art-and-culture-centre-bangkok: own site returns 403; current sponsors unchecked.
 - aspen-art-museum-aspen: Kanders' Whitney resignation dated 24 July (The Art Newspaper) and 25 July (Wikipedia).
+
+## d001 slop check (37 fixes; every report changed)
+- art-gallery-of-greater-victoria-victoria, art-gallery-of-hamilton-hamilton: TD Bank's 2024 plea added as a red flag (Victoria: TD presented the 2024 Paint-In, CFAX; Hamilton: 2024 annual report). TD's 2025 to 2026 status at Victoria unconfirmed; aggv.ca returns 403.
+- art-tower-mito-mito: Yoshida Sekiyu (ENEOS fuel stations, known only from job listings) kept as a red flag; editor's call whether fuel retail counts.
+- art-gallery-of-south-australia-adelaide: no source gives the state grant or BHP amounts.
+
+## d003 (research notes, before its slop check)
+- beppu-contemporary-art-festival-beppu, c-o-berlin-berlin: no protest found; the records' "Protest or boycott" flags are not supported. Oita Gas is a current Beppu sponsor (supports the fossil-fuel flag).
+- biennale-of-sydney-sydney: the 2024 report still lists Transfield and the Belgiorno-Nettis family as Founding Patrons; 2026 had a second Gulf partner, Arada (Sharjah); PwC withdrew after the 2026 opening-night remarks.
+- biomuseo-panama-city: the protests that cut its cash flow 70% were the October 2023 blockades over the mining contract, not aimed at the museum. AES Panamá is 50.4% owned by the state.
+- bukhara-biennial-bukhara: the site loads now; "Bukhara Oil" matched to the Uzbekneftegaz refinery on name alone.
+- black-family-visual-arts-center-dartmouth-hanover: trustees set up a Naming Policy Committee in June 2026; no decision.
