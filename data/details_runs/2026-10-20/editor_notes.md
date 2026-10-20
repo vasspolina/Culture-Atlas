@@ -66,3 +66,9 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - collective-edinburgh: the £25k in the Scotsman headline is Fruitmarket's Baillie Gifford deal, not Collective's; no source gives Collective's amount or a March 2024 date.
 - dallas-contemporary-dallas: Headington Companies (oil and gas) is a top-level 2024 donor (new). The Epstein link is one 2014 loan request letter, not money.
 - de-appel: the record's "Amsterdam inquiry found the board fell short" was not found.
+
+## d004 slop check (34 fixes; every report changed)
+- ch-teau-de-versailles: Epstein item moved to Wider context (venue use for the 2019 Pritzker ceremony; The Architects' Journal reports no payment). Leribault left for the Louvre on 25 Feb 2026.
+- centro-león-santiago-de-los-caballeros: the only Hyperallergic item is a sponsored post written by the centre; the report says so and lists no criticism.
+- casa-frança-brasil-rio-de-janeiro: ArtReview says "city authorities" closed the 2019 show; the venue is under the state secretariat. Check which acted.
+- cairns-art-gallery-cairns: the RSL Club's gaming machines rest on a Wanderlog listing; the sponsorship itself is confirmed.
