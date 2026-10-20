@@ -1563,7 +1563,7 @@ h1,h2,h3,h4,h5,h6,th{font-weight:400}
 /* The phone sheet wraps each section in its own box (#dossier-sheet-funding, -visit, -record, -sources) under one pane. */
 :root #dossier-sheet-scrollable-body #dossier-sheet-verified-pane>*+*{margin-top:calc(2 * var(--L))}
 :root #dossier-sheet-scrollable-body #dossier-sheet-verified-pane>.record-action-row{padding-top:0}
-:root #dossier-sheet-scrollable-body .source-note+.py-3{margin-top:var(--L)}
+:root #dossier-sheet-scrollable-body #dossier-sheet-sources>*+*{margin-top:calc(2 * var(--L))}
 /* A source line that stands on its own between sections (the address source) is a part of its own: one line. */
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .space-y-3>.space-y-3>.source-note{margin-top:var(--L)}
 /* Inside a section: a flush paragraph after a source line is set off by half a line; parts are one line apart. */
