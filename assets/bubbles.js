@@ -432,6 +432,21 @@
     setTimeout(function () { root.classList.remove('lines-drawing'); layer.remove(); }, 3200);
   }
 
-  function start() { observe(); setTimeout(drawLines, 1500); }
+  /* The rules are held back from the first paint (html.atlas-held, set in index.html's head and cleared once the page is final),
+     so they are drawn in once: not shown, hidden 1.5 s later and drawn again. The draw begins in the same task that clears the hold,
+     before anything is painted, so there is no frame with the real rules showing between the two. A page that is already
+     released when this runs has shown its rules, and draws nothing. */
+  function drawWhenReleased() {
+    var root = document.documentElement;
+    if (!root.classList.contains('atlas-held')) return;
+    var mo = new MutationObserver(function () {
+      if (root.classList.contains('atlas-held')) return;
+      mo.disconnect();
+      drawLines();
+    });
+    mo.observe(root, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  function start() { observe(); drawWhenReleased(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
