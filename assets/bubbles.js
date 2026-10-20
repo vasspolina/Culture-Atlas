@@ -7,7 +7,8 @@
   var SEL = '#curatorMessages>.curator-message-wrap,#curatorMessages>.justify-end,#curatorDrawerLiveStream>.curator-message-wrap,#curatorDrawerLiveStream>.justify-end';
   var seq = 0;
 
-  function gossip() { return document.body.classList.contains('gossip-mode-active'); }
+  /* A turn marked as gossip is drawn as a balloon in any mode (asking the chat for gossip is enough; Gossip mode is not needed). */
+  function gossip() { return true; }
 
   /* Only a turn that holds gossip gets a balloon. The reply builder in index.html marks it: the turn carries .is-gossip and its
      reported, unverified items carry data-gossip (the record's reported items, a list of spaces with reported items). A plain
