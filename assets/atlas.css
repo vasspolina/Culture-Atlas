@@ -671,9 +671,8 @@ body.chat-input-mode-active #chatBackBtn{display:inline}
 .xray-photo figcaption{font-size:14px;line-height:1.25;margin-top:6px}
 
 /* "Share information" is highlighted in pink */
-#hudControlsBar #hudContributeBtn,#hudContributeBtn,#chatShareBtn,#chatContributeBtn,#mapFloatingContributeBtn{background:var(--pink);color:#000;border-radius:0}
-#chatShareBtn{padding:8px 16px}
-#hudControlsBar #hudContributeBtn:hover,#chatShareBtn:hover{background:#000;color:var(--pink)}
+#hudControlsBar #hudContributeBtn,#hudContributeBtn,#chatContributeBtn,#mapFloatingContributeBtn{background:var(--pink);color:#000;border-radius:0}
+#hudControlsBar #hudContributeBtn:hover{background:#000;color:var(--pink)}
 
 /* Map popups: a grey block with a thin yellow top rule, the name in bold capitals, a large close mark. */
 .atlas-record-popup .maplibregl-popup-content{background:#a3a3a3;color:#000;border-radius:0;box-shadow:none;border-top:0;padding:18px 20px;min-width:260px}
@@ -815,9 +814,8 @@ body.gossip-mode-active header,body.gossip-mode-active header button,body.gossip
 body.gossip-mode-active header button:hover,body.gossip-mode-active header a:hover{color:#fff}
 /* Theme switch in the header */
 /* Colour that carries meaning keeps black text in both modes */
-#curatorHeroGreeting h1 .lbl,.curator-hero-title .lbl,.starter-prompt:nth-of-type(2),.starter-prompt:nth-of-type(3),.starter-prompt:nth-of-type(4),#chatShareBtn,#chatContributeBtn,#hudContributeBtn,#mapFloatingContributeBtn{color:#000}
+#curatorHeroGreeting h1 .lbl,.curator-hero-title .lbl,.starter-prompt:nth-of-type(2),.starter-prompt:nth-of-type(3),.starter-prompt:nth-of-type(4),#chatContributeBtn,#hudContributeBtn,#mapFloatingContributeBtn{color:#000}
 .starter-prompt:hover{background:var(--ink);color:var(--paper)}
-#workInputCard #chatShareBtn{color:#000}
 #globeViewport .record-action{color:var(--ink)}
 #globeViewport .record-action:hover{color:var(--paper)}
 /* The Atlas / Dossier / Curator tab bar is gone: the dossier opens on a space, Close returns to the map, and the header Chat button opens the curator. The tab elements stay in the DOM so the existing scripts still drive them. */
@@ -916,9 +914,6 @@ button,summary{cursor:pointer}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#f1c21b}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#ffafd2}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#e5b87d}
-#workInputCard #chatShareBtn{background:transparent;color:#1d7a3a;padding:8px 0;font-family:var(--sans);font-weight:400}
-:root[data-theme="dark"] #workInputCard #chatShareBtn{color:#6fdc8c}
-#workInputCard #chatShareBtn:hover{background:transparent!important;color:var(--ink)!important;text-decoration:underline}
 /* Capitals 10% larger. */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:clamp(24px,2.2vw,44px)}
 @media (max-width:520px){:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:26px}}
@@ -1016,7 +1011,7 @@ abbr[title]{text-decoration:none}
 :root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#ab8a5d}
 
 /* Writing a note or sharing information puts the input on an orange card: every word on it is black, in light and dark. */
-#workInputCard.is-mode,#workInputCard.is-mode::before,#workInputCard.is-mode *,#workInputCard.is-mode *::before,#workInputCard.is-mode *::after,#workInputCard.is-mode #chatShareBtn,:root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn,#workInputCard.is-mode #chatShareBtn:hover{color:#000!important}
+#workInputCard.is-mode,#workInputCard.is-mode::before,#workInputCard.is-mode *,#workInputCard.is-mode *::before,#workInputCard.is-mode *::after{color:#000!important}
 #workInputCard.is-mode ::placeholder{color:#000;opacity:.7}
 /* ---- the chat is set like an interview transcript ----
    The speaker's two-letter mark stands in the margin; wrapped lines hang 1.6em in; the first line of every paragraph,
@@ -1166,15 +1161,12 @@ body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#00
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:hover,:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{text-decoration:underline;text-underline-offset:.12em;outline:0}
 
 /* Dark mode keeps the regular weight: Share information is the sans at 400 in sentence case, not bold capitals. */
-:root[data-theme="dark"] #workInputCard #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none;letter-spacing:0}
-:root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none}
 
 /* Hover puts a light blue block behind a link, wider than the text on both sides, with black text, in every theme and in gossip mode. */
 :is(.inst-link,.city-link,.dossier-link):hover,
 :root[data-theme="dark"] :is(.inst-link,.city-link,.dossier-link):hover,
 body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.inst-link,.city-link,.dossier-link):hover,
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
-#workInputCard #chatShareBtn:hover,:root[data-theme="dark"] #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
 
 /* Gossip mode: only a turn that holds gossip is a speech bubble. The reply builder marks such a turn .is-gossip (its reported, unverified items carry data-gossip);
    a plain record, a city list, the status line and the reader's own questions are set exactly as in normal mode. assets/bubbles.js draws a hairline outline and a
@@ -1306,7 +1298,6 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 /* Controls are one size: 15px on the text face at .01em, in both themes. The globe controls were 14px beside a 15px Layers;
    the chat bar mixed 14px, 14px bold uppercase in the display face (light only) and 14px at .02em; the settings modal mixed 14 and 15. */
 #desktopGlobeTopControls button,#mobileFilterChipsSection button,#mobileStickySendBtn,#mobileStickyVoiceBtn,#workPlusBtn,#curatorListenBtn,#curatorVoiceToggleBtn,#curatorVoiceToggleLabel,#testConnectionBtn,#toggleKeyVisibilityBtn,.provider-tab-btn,#curatorSettingsModal button,#curatorSettingsModal a{font:400 15px/1 var(--sans);letter-spacing:0;text-transform:none}
-#workInputCard #chatShareBtn,:root[data-theme="dark"] #workInputCard #chatShareBtn,#workInputCard.is-mode #chatShareBtn,:root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn{font:400 15px/1 var(--sans);text-transform:none;letter-spacing:0}
 /* The three globe controls fit a 320px screen: narrower padding, not a smaller size. (They ran 6px off the edge at 14px, too.) */
 @media (max-width:374px){#desktopGlobeTopControls button,#mobileFilterChipsSection button{padding-left:9px;padding-right:9px}}
 
@@ -1399,9 +1390,9 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
    narrow panel (the splitter allows 220px) reflows instead of clipping.
    660px: the message text sits 2.3em in from the column's edge, so 660 less 2.3em of 18px is about 34em, the measure the
    conversation was set to before. */
-/* Default width: the whole panel less the gutters (user's instruction, 19 Oct 2026: 18px of margin on both sides). The number is only
+/* Default width: the whole panel less the gutters (user's instruction, 20 Oct 2026: 16px of margin on both sides). The number is only
    "wider than any panel"; min(100%,...) below clamps it, and the handle still narrows the column. */
-#curatorIntelligenceColumn{--chat-w:5000px;--chat-gutter:18px;min-width:0}
+#curatorIntelligenceColumn{--chat-w:5000px;--chat-gutter:16px;min-width:0}
 #curatorIntelligenceColumn #curatorScrollArea{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
 #curatorIntelligenceColumn #workBottomDock{padding-left:var(--chat-gutter);padding-right:var(--chat-gutter)}
 #curatorIntelligenceColumn #curatorScrollContent,#curatorIntelligenceColumn #curatorScrollContent:has(#curatorHeroGreeting:not(.hidden)){width:min(100%,var(--chat-w));max-width:none;margin-left:auto;margin-right:auto;min-width:0}
@@ -1608,3 +1599,12 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 .review-name{display:block;font:400 16px/1.2 var(--sans)}
 .review-date{display:block;font:400 14px/1.2 var(--sans)}
 .review-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+
+/* Share information under the chat input is set like the active AI Chat tab (20 Oct 2026): the tab's own values, copied from
+   #workspaceContextTabBar button and #workspaceTabChat.is-on: the cobalt fill, white 22px/1 sans, a --bar tall box padded 0 16px,
+   square corners. Hover turns it ink on paper like the tab bar's other buttons; the focus ring is ink, because the default cobalt
+   ring would vanish against the cobalt fill. Written with !important so the note mode's black text and the dark theme's rules
+   cannot recolour it. */
+#workInputCard #chatShareBtn{display:inline-flex;align-items:center;justify-content:center;height:var(--bar);padding:0 16px;border:0;border-radius:0;background:var(--cobalt)!important;color:#fff!important;font:400 22px/1 var(--sans)!important;letter-spacing:0;text-transform:none;text-decoration:none;box-shadow:none;white-space:nowrap}
+#workInputCard #chatShareBtn:hover{background:var(--ink)!important;color:var(--paper)!important;text-decoration:none;box-shadow:none}
+#workInputCard #chatShareBtn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}

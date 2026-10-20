@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=238">
-  <script src="assets/config.js?v=238"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=239">
+  <script src="assets/config.js?v=239"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9918,11 +9918,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v238';
+    const ATLAS_RELEASE = 'culture-atlas-v239';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=238').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=239').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17022,13 +17022,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // The width of the chat. The conversation, the input and the records note share one column, centred in the panel; the reader
     // drags either edge of it (it stays centred, so the edge moves half as far as the pointer), or focuses the handle and uses the
     // arrow keys (Shift for 80px, Home for the narrowest, End for the whole panel). Double-click puts it back. The width asked
-    // for is not kept (user's instruction, 19 Oct 2026): every load starts with the column filling the panel, 18px from each edge; the column never goes wider than the panel less its gutters, and the text re-wraps to it.
+    // for is not kept (user's instruction, 19 Oct 2026): every load starts with the column filling the panel, 16px from each edge; the column never goes wider than the panel less its gutters, and the text re-wraps to it.
     (function () {
       const col = document.getElementById('curatorIntelligenceColumn');
       const handle = document.getElementById('chatWidthHandle');
       const twin = document.getElementById('chatWidthHandleL');
       if (!col || !handle) return;
-      const DEFAULT = 5000, MIN = 320, GUTTER = 36;   // 18px each side, as --chat-gutter; DEFAULT is clamped to the panel, so the column fills it
+      const DEFAULT = 5000, MIN = 320, GUTTER = 32;   // 16px each side, as --chat-gutter; DEFAULT is clamped to the panel, so the column fills it
       let want = DEFAULT;
       let live = false;
       const room = () => Math.max(0, col.clientWidth - GUTTER);
@@ -19143,9 +19143,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=238"></script>
-<script src="assets/layers.js?v=238"></script>
-<script src="assets/hq-detail.js?v=238"></script>
-<script src="assets/bubbles.js?v=238" defer></script>
+<script src="assets/typeset.js?v=239"></script>
+<script src="assets/layers.js?v=239"></script>
+<script src="assets/hq-detail.js?v=239"></script>
+<script src="assets/bubbles.js?v=239" defer></script>
 </body>
 </html>
