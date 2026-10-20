@@ -84,3 +84,19 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - collective-edinburgh: the Baillie Gifford flag rests on an advocacy blog, an advocacy interview and the Morning Star; the Scotsman source could not be read.
 - dallas-contemporary-dallas: Epstein loan request moved to Wider context. The 2021 staff dismissals (Glasstire, Artforum) are blocked or paywalled.
 - chapter: the Gulbenkian grant behind the record's Fossil fuels flag is still unconfirmed.
+
+## d006 slop check (19 fixes; every report changed)
+- djerassi-resident-artists-program-woodside: trustees' 2011 island visit moved to Wider context (Djerassi says neither Epstein nor Maxwell gave money).
+- design-museum-london: Mandelson was dismissed as ambassador, not as chair; moved to Wider context.
+- english-national-ballet-london: Prince Andrew as royal patron (2001 to 2019) moved to Wider context by the checker; overrule if a patron counts as leadership.
+- dhaka-art-summit-dhaka: the Hasina-closeness flag rests on Bonik Barta and unnamed sources, mostly Unverified; no documented commission or land grant. Consider dropping.
+- eiteljorg: Citizens Energy Group (a municipal gas utility) as a fossil-fuel red flag is a judgement call.
+- biennale-of-sydney-sydney: the d003 check removed the Gulf partners from Red flags; restored as "Red flags: Gulf state partners" (Qatar Museums, Arada), since "Gulf state body" is a map flag (editor's ruling: a named Gulf state partner counts). The prompt now lists the map's flags.
+
+## d007 (research notes, before its slop check)
+- fragmentos-espacio-de-arte-y-memoria-bogotá: Alÿs demanded his work be taken down; nothing says it was (the record says he withdrew it).
+- fringe-world-perth: Woodside's exit dated "September" (AAP) and 4 January 2024 (Perth Voice).
+- fabrica-de-arte-cubano: says it gets no government money (Jan 2026) but works in a state building whose box office a state body collects. Its live site has gambling and spam links in the footer.
+- fridericianum-kassel: the website field points to a Monopol article; the real site is fridericianum.org.
+- frist-art-museum-nashville: building owned by the city housing agency MDHA, leased at $1 a year to 2097.
+- fondation-cartier: the record's /en/about source returns 404.
