@@ -14,9 +14,27 @@
   <title>Culture Atlas</title>
   <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
+  <script>
+    // The globe is held back (assets/atlas.css hides the canvas) until the page is in its final state, so its lines
+    // are drawn once: not on a copy a newer release is about to replace, and not before the type they are labelled in.
+    // The release that is live is asked for here, in parallel with everything below, and settled in the main script.
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('atlas-held');
+      setTimeout(function () { root.classList.remove('atlas-held'); }, 10000); // never leave the globe hidden
+      window.__atlasLiveRelease = Promise.resolve(null);
+      if (!('serviceWorker' in navigator) || !window.fetch) return;
+      var ctl = window.AbortController ? new AbortController() : null;
+      var cut = setTimeout(function () { if (ctl) ctl.abort(); }, 2500);
+      window.__atlasLiveRelease = fetch('sw.js', { cache: 'no-cache', signal: ctl ? ctl.signal : undefined })
+        .then(function (r) { return r.ok ? r.text() : ''; })
+        .then(function (t) { clearTimeout(cut); var m = /CACHE_NAME\s*=\s*'([^']+)'/.exec(t); return m ? m[1] : null; })
+        .catch(function () { return null; });
+    })();
+  </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=225">
-  <script src="assets/config.js?v=225"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=227">
+  <script src="assets/config.js?v=227"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -6713,6 +6731,7 @@ return maplibregl$1;
         // The map credit stays on the page, closed to a small square "i" until it is opened.
         cityVectorMap.once('load', () => {
           applyCityMapGossip();
+          cityStreetLinesInit();
           const credit = document.querySelector('#cityMapContainer .maplibregl-ctrl-attrib');
           if (credit) { credit.classList.remove('maplibregl-compact-show'); credit.removeAttribute('open'); }
         });
@@ -7095,7 +7114,7 @@ return maplibregl$1;
         } catch (e) { /* a layer this map does not have */ }
       });
       // The building view is lines in the same colour as the rest of the map's lines.
-      try { const wire = xrayWire(); if (wire) wire.setColor(line); } catch (e) { /* the building view is not open */ }
+      ['xray-wire', STREET_LINE_ID].forEach(id => { try { const l = cityScreenLayer(id); if (l) l.setColor(line); } catch (e) { /* that layer is not on the map */ } });
     }
     // Light and dark mode: one switch in the header, remembered, following the system until it is set.
     function syncThemeButtons() {
@@ -7418,7 +7437,52 @@ return maplibregl$1;
       if (!f) return null;
       const pr = f.properties || {};
       const tagged = pr.render_height != null || pr.height != null;
-      return { geometry: near ? near.geometry : xrayPolygonAt(f.geometry, lon, lat), height: tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base: Number(pr.render_min_height || pr.min_height) || 0, hasHeight: tagged };
+      const geometry = near ? near.geometry : xrayPolygonAt(f.geometry, lon, lat);
+      const height = tagged ? Number(pr.render_height != null ? pr.render_height : pr.height) : 8, base = Number(pr.render_min_height || pr.min_height) || 0;
+      return { geometry, height, base, hasHeight: tagged, parts: tagged ? xrayPartsOf(geometry, base, height) : [] };
+    }
+
+    // The building's parts, from the same tiles. OpenStreetMap maps a large building as building:part shapes laid over and on
+    // one another (a wing, a tower, a bridge between), each with its own height and the height it starts at; the tiles carry each
+    // as a feature of its own, with no outline tying them together. Ordinary buildings never overlap, so the parts of one are the
+    // shapes that overlap the matched footprint, and the shapes that overlap those in turn. Neighbours that only touch are left out.
+    // Two or more parts are used; one part is the building itself and keeps the single box.
+    const XRAY_PARTS_MAX = 60, XRAY_PARTS_REACH_M = 250;
+    function xrayInRing(ring, lon, lat) {
+      let hit = false;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const a = ring[i], b = ring[j]; if ((a[1] > lat) !== (b[1] > lat) && lon < (b[0] - a[0]) * (lat - a[1]) / (b[1] - a[1]) + a[0]) hit = !hit; }
+      return hit;
+    }
+    function xrayRingsOverlap(a, b) {
+      const ca = xrayCentroid({ type: 'Polygon', coordinates: [a] }), cb = xrayCentroid({ type: 'Polygon', coordinates: [b] });
+      return xrayInRing(b, ca[0], ca[1]) || xrayInRing(a, cb[0], cb[1]) || a.some(v => xrayInRing(b, v[0], v[1])) || b.some(v => xrayInRing(a, v[0], v[1]));
+    }
+    function xrayPartsOf(outline, startBase, startHeight) {
+      if (!cityVectorMap || typeof cityVectorMap.querySourceFeatures !== 'function') return [];
+      let feats = [];
+      try { feats = cityVectorMap.querySourceFeatures('openmaptiles', { sourceLayer: 'building' }) || []; } catch (e) { return []; }
+      const keyOf = (r, base, height) => r.length + ':' + r[0][0].toFixed(7) + ',' + r[0][1].toFixed(7) + ':' + height + ':' + base;
+      const pool = new Map(); // the same part arrives once from each tile it crosses
+      for (const f of feats) {
+        const pr = f.properties || {};
+        if ((pr.render_height == null && pr.height == null) || !f.geometry) continue;
+        const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [];
+        const base = Number(pr.render_min_height || pr.min_height) || 0, height = Number(pr.render_height != null ? pr.render_height : pr.height);
+        for (const poly of polys) { const r = poly[0]; if (r && r.length >= 4) pool.set(keyOf(r, base, height), { ring: r, base, height: Math.max(height, base + 1) }); }
+      }
+      const startRing = xrayRing(outline), first = { ring: startRing, base: startBase, height: Math.max(startHeight, startBase + 1) };
+      const members = [first], here = xrayCentroid(outline), mPerLon = 111320 * Math.cos(here[1] * Math.PI / 180);
+      pool.delete(keyOf(startRing, startBase, startHeight));
+      for (let i = 0; i < members.length && members.length < XRAY_PARTS_MAX; i++) {
+        for (const [k, p] of pool) {
+          const c = xrayCentroid({ type: 'Polygon', coordinates: [p.ring] });
+          if (Math.hypot((c[0] - here[0]) * mPerLon, (c[1] - here[1]) * 111320) > XRAY_PARTS_REACH_M) continue;
+          if (!xrayRingsOverlap(members[i].ring, p.ring)) continue;
+          members.push(p); pool.delete(k);
+          if (members.length >= XRAY_PARTS_MAX) break;
+        }
+      }
+      return members.length >= 2 ? members.map(m => ({ geometry: { type: 'Polygon', coordinates: [m.ring] }, base: m.base, height: m.height })) : [];
     }
     window.xrayFindBuilding = xrayFindBuilding;
 
@@ -7469,40 +7533,46 @@ return maplibregl$1;
       return geom.type === 'Polygon' ? { type: 'Polygon', coordinates: [inner(geom.coordinates[0])] } : { type: 'MultiPolygon', coordinates: geom.coordinates.map(poly => [inner(poly[0])]) };
     }
 
-    // The building is drawn as lines and nothing else: every edge of the shell and of the slabs inside it, standing at its
-    // height, in the street lines' own weight. MapLibre's line layers lie flat on the ground, so a box standing up needs this
-    // custom WebGL layer; it widens each line the way MapLibre does (0.8px measured on the ground at the map's scale, plus half
-    // a device pixel, feathered over one), so under the tilted camera the edges foreshorten exactly as the roads beside them,
-    // and from above they weigh what the zoomed-out map weighs. A standing edge widens across the view. Positions are kept
-    // relative to the building (float32 cannot hold a whole Mercator coordinate to the centimetre); the matrix carries the offset.
+    // The building is drawn as lines and nothing else: every edge of the shell and of the parts inside it, standing at its
+    // height, in the street lines' own weight, which is one thickness at every distance.
+    // Every line of the city map is drawn at one thickness (XRAY_LINE_WIDTH screen pixels) at every distance. MapLibre's own line
+    // layers widen each line on the ground and then project it, so under the tilted camera they thin out toward the horizon;
+    // here each segment is projected first and then widened on the screen, square to the segment as it appears. That serves the
+    // building's edges (including the standing ones, which have no ground direction) and the street map itself (below). The
+    // quad is feathered over one device pixel on each side, as MapLibre's line shader does. Positions are kept relative to the
+    // first point (float32 cannot hold a whole Mercator coordinate to the centimetre); the matrix carries the offset.
     const XRAY_LINE_WIDTH = 1;
-    function xrayWireLayer() {
+    function screenLineLayer(id) {
       const VS = [
-        'attribute vec3 a_pos; attribute vec3 a_norm; attribute float a_side;',
-        'uniform mat4 u_matrix; uniform vec2 u_res; uniform vec2 u_right; uniform mediump float u_outset_px; uniform float u_outset_merc;',
-        'varying float v_side; varying float v_gamma;',
+        'attribute vec3 a_pos; attribute vec3 a_other; attribute float a_side;',
+        'uniform highp mat4 u_matrix; uniform highp vec2 u_res; uniform mediump float u_half_px;',
+        'varying float v_side;',
         'void main() {',
-        '  vec3 n = dot(a_norm, a_norm) > 0.0 ? a_norm : vec3(u_right, 0.0);',
         '  vec4 p = u_matrix * vec4(a_pos, 1.0);',
-        '  vec4 pe = u_matrix * vec4(a_pos + n * a_side * u_outset_merc, 1.0);',
-        '  vec2 dpx = (pe.xy / pe.w - p.xy / p.w) * u_res * 0.5;',
-        '  v_gamma = u_outset_px / max(length(dpx), 0.0001);',
+        '  vec4 q = u_matrix * vec4(a_other, 1.0);',
+        '  const float eps = 0.0001;',
+        // A segment behind the camera is not drawn; one that reaches behind it is cut at the near plane.
+        '  if (p.w < eps && q.w < eps) { gl_Position = vec4(2.0, 2.0, 2.0, 1.0); v_side = 0.0; return; }',
+        '  if (p.w < eps) p = mix(p, q, (eps - p.w) / (q.w - p.w));',
+        '  else if (q.w < eps) q = mix(q, p, (eps - q.w) / (p.w - q.w));',
+        '  vec2 ps = p.xy / p.w * u_res * 0.5, qs = q.xy / q.w * u_res * 0.5;',
+        '  vec2 d = qs - ps; float len = length(d);',
+        '  d = len > 0.0001 ? d / len : vec2(1.0, 0.0);',
+        '  vec2 off = vec2(-d.y, d.x) * a_side * u_half_px - d * u_half_px * 0.5;', // the end stands out half a width, so corners close
         '  v_side = a_side;',
-        '  gl_Position = pe;',
+        '  gl_Position = vec4(p.xy / p.w + off / (u_res * 0.5), p.z / p.w, 1.0);',
         '}'
       ].join('\n');
       const FS = [
         'precision mediump float;',
-        'uniform vec4 u_color; uniform mediump float u_outset_px;',
-        'varying float v_side; varying float v_gamma;',
+        'uniform vec4 u_color; uniform mediump float u_half_px;',
+        'varying float v_side;',
         'void main() {',
-        '  float dist = abs(v_side) * u_outset_px;',
-        '  float a = clamp((u_outset_px - dist) / v_gamma, 0.0, 1.0);',
-        '  gl_FragColor = u_color * a;',
+        '  gl_FragColor = u_color * clamp(u_half_px - abs(v_side) * u_half_px, 0.0, 1.0);',
         '}'
       ].join('\n');
       return {
-        id: 'xray-wire', type: 'custom', renderingMode: '3d',
+        id, type: 'custom', renderingMode: '3d',
         color: [22 / 255, 22 / 255, 22 / 255, 1], data: null, count: 0, origin: null, dirty: false,
         onAdd(map, gl) {
           this.map = map;
@@ -7511,27 +7581,33 @@ return maplibregl$1;
           gl.attachShader(this.program, shader(gl.VERTEX_SHADER, VS));
           gl.attachShader(this.program, shader(gl.FRAGMENT_SHADER, FS));
           gl.linkProgram(this.program);
-          this.a = { pos: gl.getAttribLocation(this.program, 'a_pos'), norm: gl.getAttribLocation(this.program, 'a_norm'), side: gl.getAttribLocation(this.program, 'a_side') };
-          this.u = { matrix: gl.getUniformLocation(this.program, 'u_matrix'), res: gl.getUniformLocation(this.program, 'u_res'), right: gl.getUniformLocation(this.program, 'u_right'), outsetPx: gl.getUniformLocation(this.program, 'u_outset_px'), outsetMerc: gl.getUniformLocation(this.program, 'u_outset_merc'), color: gl.getUniformLocation(this.program, 'u_color') };
+          this.a = { pos: gl.getAttribLocation(this.program, 'a_pos'), other: gl.getAttribLocation(this.program, 'a_other'), side: gl.getAttribLocation(this.program, 'a_side') };
+          this.u = { matrix: gl.getUniformLocation(this.program, 'u_matrix'), res: gl.getUniformLocation(this.program, 'u_res'), halfPx: gl.getUniformLocation(this.program, 'u_half_px'), color: gl.getUniformLocation(this.program, 'u_color') };
           this.buffer = gl.createBuffer();
           this.dirty = true;
         },
         onRemove(map, gl) { try { gl.deleteBuffer(this.buffer); gl.deleteProgram(this.program); } catch (e) { /* context gone */ } },
-        // Segments are pairs of [lon, lat, metres above the ground]. Each becomes a quad widened along its ground normal; a
-        // standing edge (no ground normal) is widened across the view instead.
+        // Segments are pairs of [lon, lat, metres above the ground]. Each becomes a quad drawn from both ends.
         setSegments(segments) {
+          const flat = new Float64Array(segments.length * 6);
+          segments.forEach((seg, i) => { for (let e = 0; e < 2; e++) { flat[i * 6 + e * 3] = seg[e][0]; flat[i * 6 + e * 3 + 1] = seg[e][1]; flat[i * 6 + e * 3 + 2] = seg[e][2] || 0; } });
+          this.setSegmentsFlat(flat, segments.length);
+        },
+        // The same from a flat run of lon, lat, metres for the first end and then the second, six numbers a segment.
+        setSegmentsFlat(flat, n) {
           const M = maplibregl.MercatorCoordinate;
-          const pts = segments.map(seg => seg.map(p => M.fromLngLat([p[0], p[1]], p[2] || 0)));
-          this.origin = pts.length ? { x: pts[0][0].x, y: pts[0][0].y, z: pts[0][0].z } : null;
-          const o = this.origin, data = new Float32Array(segments.length * 6 * 7);
+          const at = j => M.fromLngLat([flat[j], flat[j + 1]], flat[j + 2]);
+          const first = n ? at(0) : null;
+          this.origin = first ? { x: first.x, y: first.y, z: first.z } : null;
+          const o = this.origin, data = new Float32Array(n * 6 * 7);
           let k = 0;
-          const put = (a, n, side) => { data[k++] = a.x - o.x; data[k++] = a.y - o.y; data[k++] = a.z - o.z; data[k++] = n[0]; data[k++] = n[1]; data[k++] = 0; data[k++] = side; };
-          pts.forEach(([a, b]) => {
-            const dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy), span = Math.hypot(len, b.z - a.z);
-            const n = len > span * 1e-3 ? [-dy / len, dx / len] : [0, 0];
-            put(a, n, 1); put(a, n, -1); put(b, n, 1); put(a, n, -1); put(b, n, -1); put(b, n, 1);
-          });
-          this.data = data; this.count = segments.length * 6; this.dirty = true;
+          const put = (a, b, side) => { data[k++] = a.x - o.x; data[k++] = a.y - o.y; data[k++] = a.z - o.z; data[k++] = b.x - o.x; data[k++] = b.y - o.y; data[k++] = b.z - o.z; data[k++] = side; };
+          for (let i = 0; i < n; i++) {
+            const a = at(i * 6), b = at(i * 6 + 3);
+            // The far end sees the segment turned round, so its sides are swapped to keep the quad flat.
+            put(a, b, 1); put(a, b, -1); put(b, a, -1); put(a, b, -1); put(b, a, 1); put(b, a, -1);
+          }
+          this.data = data; this.count = n * 6; this.dirty = true;
           if (this.map && typeof this.map.triggerRepaint === 'function') this.map.triggerRepaint();
         },
         setColor(hex) {
@@ -7549,28 +7625,100 @@ return maplibregl$1;
           t[14] = m[2] * o.x + m[6] * o.y + m[10] * o.z + m[14];
           t[15] = m[3] * o.x + m[7] * o.y + m[11] * o.z + m[15];
           const map = this.map, dpr = typeof map.getPixelRatio === 'function' ? map.getPixelRatio() : (window.devicePixelRatio || 1);
-          const worldSize = map.transform && map.transform.worldSize ? map.transform.worldSize : 512 * Math.pow(2, map.getZoom()); // CSS pixels across the whole Mercator square
-          const bearing = map.getBearing() * Math.PI / 180;
-          const outsetPx = XRAY_LINE_WIDTH * dpr / 2 + 0.5; // half the width plus half a device pixel, as MapLibre's line shader
           gl.useProgram(this.program);
           gl.uniformMatrix4fv(this.u.matrix, false, new Float32Array(t));
           gl.uniform2f(this.u.res, gl.drawingBufferWidth, gl.drawingBufferHeight);
-          gl.uniform2f(this.u.right, Math.cos(bearing), Math.sin(bearing));
-          gl.uniform1f(this.u.outsetPx, outsetPx);
-          gl.uniform1f(this.u.outsetMerc, outsetPx / dpr / worldSize);
+          gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH * dpr / 2 + 0.5); // half the width plus half a device pixel
           gl.uniform4fv(this.u.color, this.color);
           gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
           if (this.dirty) { gl.bufferData(gl.ARRAY_BUFFER, this.data, gl.STATIC_DRAW); this.dirty = false; }
           const stride = 7 * 4;
           gl.enableVertexAttribArray(this.a.pos); gl.vertexAttribPointer(this.a.pos, 3, gl.FLOAT, false, stride, 0);
-          gl.enableVertexAttribArray(this.a.norm); gl.vertexAttribPointer(this.a.norm, 3, gl.FLOAT, false, stride, 12);
+          gl.enableVertexAttribArray(this.a.other); gl.vertexAttribPointer(this.a.other, 3, gl.FLOAT, false, stride, 12);
           gl.enableVertexAttribArray(this.a.side); gl.vertexAttribPointer(this.a.side, 1, gl.FLOAT, false, stride, 24);
           gl.disable(gl.DEPTH_TEST); gl.disable(gl.STENCIL_TEST); gl.disable(gl.CULL_FACE);
           gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
           gl.drawArrays(gl.TRIANGLES, 0, this.count);
-          gl.disableVertexAttribArray(this.a.pos); gl.disableVertexAttribArray(this.a.norm); gl.disableVertexAttribArray(this.a.side);
+          gl.disableVertexAttribArray(this.a.pos); gl.disableVertexAttribArray(this.a.other); gl.disableVertexAttribArray(this.a.side);
         }
       };
+    }
+    const xrayWireLayer = () => screenLineLayer('xray-wire');
+    const cityScreenLayer = id => {
+      if (!cityVectorMap || typeof cityVectorMap.getLayer !== 'function') return null;
+      try { const l = cityVectorMap.getLayer(id); return l && l.implementation ? l.implementation : null; } catch (e) { return null; }
+    };
+
+    // The street map's lines, drawn by the same layer. The tiles hold water, parks, buildings and roads as lines and polygon
+    // rings; every segment in view is gathered from the tiles MapLibre is drawing and handed to one screen-space layer, and
+    // MapLibre's own copies of those layers are hidden. Segments that only run along the edge of a tile's overlap (the clip
+    // that the stencil hides in MapLibre) are left out. If the tile cache cannot be reached, MapLibre's layers stay as they are.
+    const STREET_SOURCE = 'openmaptiles', STREET_LINE_ID = 'xray-streets', STREET_SEGMENT_CAP = 300000;
+    const STREET_FEATURES = [
+      { layer: 'landcover' }, { layer: 'park' }, { layer: 'water' }, { layer: 'waterway' },
+      { layer: 'building', minzoom: 13 },
+      { layer: 'transportation', classes: ['minor', 'service', 'track', 'path'], minzoom: 12 },
+      { layer: 'transportation', classes: ['secondary', 'tertiary', 'primary', 'trunk', 'motorway'] }
+    ];
+    const STREET_NATIVE_LAYERS = ['landcover_grass', 'park', 'water', 'waterway', 'building_line', 'road_minor', 'road_secondary', 'road_primary', 'road_motorway'];
+    let streetTimer = null;
+    function streetTileBounds(z, x, y) {
+      const n = Math.pow(2, z), lat = ty => Math.atan(Math.sinh(Math.PI * (1 - 2 * ty / n))) * 180 / Math.PI;
+      return { w: x / n * 360 - 180, e: (x + 1) / n * 360 - 180, n: lat(y), s: lat(y + 1) };
+    }
+    function streetLinesBuild() {
+      const map = cityVectorMap, layer = cityScreenLayer(STREET_LINE_ID);
+      if (!map || !layer) return;
+      const sc = map.style && map.style.sourceCaches && map.style.sourceCaches[STREET_SOURCE];
+      if (!sc || typeof sc.getRenderableIds !== 'function') return;
+      const view = map.getBounds(), zoom = map.getZoom();
+      const padX = (view.getEast() - view.getWest()) * 0.6, padY = (view.getNorth() - view.getSouth()) * 0.6;
+      const box = { w: view.getWest() - padX, e: view.getEast() + padX, s: view.getSouth() - padY, n: view.getNorth() + padY };
+      const out = []; let n = 0;
+      // A segment whose two ends are both beyond the same edge of a box is outside it.
+      const outside = (a, b, r) => (a[0] < r.w && b[0] < r.w) || (a[0] > r.e && b[0] > r.e) || (a[1] < r.s && b[1] < r.s) || (a[1] > r.n && b[1] > r.n);
+      for (const id of sc.getRenderableIds()) {
+        const tile = sc._tiles && sc._tiles[id];
+        if (!tile || tile.state !== 'loaded' || typeof tile.querySourceFeatures !== 'function') continue;
+        const c = tile.tileID.canonical, tb = streetTileBounds(c.z, c.x, c.y);
+        const addRing = ring => {
+          for (let i = 0; i + 1 < ring.length && n < STREET_SEGMENT_CAP; i++) {
+            const a = ring[i], b = ring[i + 1];
+            if (outside(a, b, tb) || outside(a, b, box)) continue;
+            out.push(a[0], a[1], 0, b[0], b[1], 0); n++;
+          }
+        };
+        for (const def of STREET_FEATURES) {
+          if (def.minzoom && zoom < def.minzoom) continue;
+          const feats = [];
+          try { tile.querySourceFeatures(feats, { sourceLayer: def.layer }); } catch (e) { continue; }
+          for (const f of feats) {
+            const g = f.geometry; if (!g) continue;
+            if (def.classes && def.classes.indexOf((f.properties || {}).class) < 0) continue;
+            if (g.type === 'LineString') addRing(g.coordinates);
+            else if (g.type === 'MultiLineString' || g.type === 'Polygon') g.coordinates.forEach(addRing);
+            else if (g.type === 'MultiPolygon') g.coordinates.forEach(p => p.forEach(addRing));
+          }
+        }
+      }
+      layer.setSegmentsFlat(Float64Array.from(out), n);
+      if (n) STREET_NATIVE_LAYERS.forEach(l => { try { if (map.getLayer(l)) map.setLayoutProperty(l, 'visibility', 'none'); } catch (e) { /* a layer this map does not have */ } });
+    }
+    function streetLinesSchedule() {
+      if (streetTimer) return;
+      streetTimer = setTimeout(() => { streetTimer = null; try { streetLinesBuild(); } catch (e) { console.warn('Street lines not built:', e); } }, 160);
+    }
+    function cityStreetLinesInit() {
+      const map = cityVectorMap;
+      if (!map || typeof map.addLayer !== 'function' || typeof maplibregl === 'undefined' || map.getLayer(STREET_LINE_ID)) return;
+      const sc = map.style && map.style.sourceCaches && map.style.sourceCaches[STREET_SOURCE];
+      if (!sc || typeof sc.getRenderableIds !== 'function') return; // the tile cache is out of reach: MapLibre's own lines stay
+      map.addLayer(screenLineLayer(STREET_LINE_ID), map.getLayer('place_label') ? 'place_label' : undefined);
+      applyCityMapGossip();
+      map.on('moveend', streetLinesSchedule);
+      map.on('sourcedata', e => { if (e.sourceId === STREET_SOURCE && e.isSourceLoaded) streetLinesSchedule(); });
+      map.on('idle', streetLinesSchedule);
+      streetLinesSchedule();
     }
     function xrayWire() {
       if (!cityVectorMap || typeof cityVectorMap.getLayer !== 'function') return null;
@@ -7627,10 +7775,13 @@ return maplibregl$1;
       const wire = xrayWire();
       if (!wire) return;
       if (!b) { wire.setSegments([]); return; }
-      const cats = xrayCategories(inst), n = cats.length, h = Math.max(b.height, b.base + 3);
+      const parts = b.parts && b.parts.length ? b.parts : null;
+      const cats = xrayCategories(inst), n = cats.length, h = parts ? Math.max(...parts.map(q => q.height)) : Math.max(b.height, b.base + 3);
       const segs = [];
       // The shell: its roof and its standing edges. Its footprint on the ground is the street map's own building line, drawn once.
-      xrayBoxSegments(b.geometry, b.base, h, segs, b.base > 0);
+      // A building mapped in parts is drawn part by part, each at its own height, so wings and towers keep their different heights.
+      if (parts) parts.forEach(q => xrayBoxSegments(q.geometry, q.base, q.height, segs, q.base > 0));
+      else xrayBoxSegments(b.geometry, b.base, h, segs, b.base > 0);
       const inner = xrayShrink(b.geometry, 0.7), span = h - b.base;
       if (XRAY.mode === 'plan') {
         // From above: one outline per category, each inside the last, all on the roof.
@@ -9770,11 +9921,12 @@ return maplibregl$1;
       `;
     }
 
+    // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
+    const ATLAS_RELEASE = 'culture-atlas-v227';
+    const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
-      // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-      const ATLAS_RELEASE = 'culture-atlas-v225';
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=225').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=227').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -9786,6 +9938,9 @@ return maplibregl$1;
       navigator.serviceWorker.addEventListener('message', (e) => {
         const d = e.data || {};
         if (d.type !== 'atlas-release' || !d.cache || d.cache === ATLAS_RELEASE) return;
+        // A copy that is stale when it loads is replaced before its first paint (settleBeforeFirstPaint, below), so
+        // the globe is never drawn and then drawn again. This is for a tab that has been open across a release.
+        if (performance.now() < ATLAS_SETTLE_MS) return;
         const busy = (typeof curatorContext !== 'undefined' && curatorContext && (curatorContext.history || []).length > 0)
           || (typeof selectedInstitution !== 'undefined' && !!selectedInstitution);
         if (!busy) location.reload();
@@ -10157,6 +10312,14 @@ return maplibregl$1;
     // One draw loop only. Every caller asks through scheduleRender(), which
     // no-ops while a frame is already queued, so the globe can never run two
     // loops at once (each extra loop used to add its own spin step per frame).
+    // Nothing of the globe is drawn until the page is final (settleBeforeFirstPaint, after the first scheduleRender).
+    let atlasPaintHeld = true;
+    function atlasReleasePaint() {
+      if (!atlasPaintHeld) return;
+      atlasPaintHeld = false;
+      render(performance.now()); // drawn first, shown after: the canvas stays hidden until it holds a finished frame
+      document.documentElement.classList.remove('atlas-held');
+    }
     let renderFrameId = 0;
     let lastRenderTs = 0;
     const AUTO_SPIN_DEG_PER_SEC = 2;
@@ -10170,6 +10333,7 @@ return maplibregl$1;
     window.scheduleRender = scheduleRender;
 
     function render(ts) {
+      if (atlasPaintHeld) return;
       if (typeof syncGlobeControls === 'function') syncGlobeControls();
       const now = (typeof ts === 'number') ? ts : performance.now();
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
@@ -11133,6 +11297,35 @@ return maplibregl$1;
       scheduleRender();
     }
     scheduleRender();
+
+    // Before the first paint: is this copy the live release, and is the type the labels are drawn in loaded? A stale
+    // copy is replaced now, with nothing drawn, instead of being drawn and then reloaded by the service worker's
+    // message. Both waits are capped, so a slow network or a missing font delays the globe, never blocks it.
+    (function settleBeforeFirstPaint() {
+      let domReady = false; // readyState turns 'interactive' before the deferred scripts have run; this event comes after them
+      document.addEventListener('DOMContentLoaded', () => { domReady = true; }, { once: true });
+      const fontReady = (document.fonts && document.fonts.load)
+        ? Promise.race([document.fonts.load(ATLAS_CARD_TITLE_FONT).catch(() => {}), new Promise((r) => setTimeout(r, 1500))])
+        : Promise.resolve();
+      (window.__atlasLiveRelease || Promise.resolve(null)).then((live) => {
+        if (live && live !== ATLAS_RELEASE) {
+          let tried = null;
+          try { tried = sessionStorage.getItem('atlas-reload-for'); } catch (e) {}
+          if (tried !== live) { // once per release: a host serving a stale page cannot loop this
+            try { sessionStorage.setItem('atlas-reload-for', live); } catch (e) {}
+            location.reload();
+            return null;
+          }
+        }
+        return fontReady;
+      }).then((ready) => {
+        if (ready === null) return;
+        // The deferred scripts (assets/bubbles.js draws the hairlines in) have run by DOMContentLoaded, and they look
+        // for the hold being cleared: release only once they are there to see it.
+        if (domReady) atlasReleasePaint(); else document.addEventListener('DOMContentLoaded', atlasReleasePaint, { once: true });
+      });
+      setTimeout(atlasReleasePaint, 8000); // the waits above are capped; this is for an error in them
+    })();
 
     // Camera Navigation
     function flyTo(lon, lat, targetZoom = null) {
@@ -18891,9 +19084,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=225"></script>
-<script src="assets/layers.js?v=225"></script>
-<script src="assets/hq-detail.js?v=225"></script>
-<script src="assets/bubbles.js?v=225" defer></script>
+<script src="assets/typeset.js?v=227"></script>
+<script src="assets/layers.js?v=227"></script>
+<script src="assets/hq-detail.js?v=227"></script>
+<script src="assets/bubbles.js?v=227" defer></script>
 </body>
 </html>
