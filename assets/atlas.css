@@ -1704,3 +1704,25 @@ body.chat-input-mode-active #workInput{padding:.75em}
 
 /* The footnote's gold on the chat's dark green: the dark theme's #cb9440 measures 5.7:1 there, this one 7.3:1. */
 :root[data-theme] body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#deab55}
+
+/* Street map zoom and compass: the globe's squares. MapLibre draws its plus, minus and compass as #333 background images, which stayed
+   dark grey on the black ground in dark mode (about 1.5:1). Here the three signs are masks filled with the button's own colour, so the
+   sign is always the border's colour: light black on white, dark #f4f4f4 on the page, gossip in dark #ffd600; hover inverts (all 7:1 or
+   better, as the globe's buttons). The compass is a solid north arrow over an outlined south one, told apart by shape and not by grey.
+   Where the system forces colours (forced-colors) MapLibre's own system-colour icons stay. */
+@media (min-width:768px){.maplibregl-ctrl-top-right{top:66px}}
+.maplibregl-ctrl-group{display:flex;flex-direction:column;gap:8px;background:none!important}
+.maplibregl-ctrl-group button,.maplibregl-ctrl-group button:last-child,.maplibregl-ctrl-group button+button{width:36px!important;height:36px!important;padding:0;box-sizing:border-box;background:#fff!important;color:#000;border:1px solid #000!important;border-radius:0}
+.maplibregl-ctrl-group button:not(:disabled):hover{background:#000!important;color:#fff}
+.maplibregl-ctrl-group button:disabled{border-style:dashed!important}
+.maplibregl-ctrl-group button:disabled .maplibregl-ctrl-icon{opacity:1}
+:root[data-theme="dark"] .maplibregl-ctrl-group button,:root[data-theme="dark"] .maplibregl-ctrl-group button:last-child,:root[data-theme="dark"] .maplibregl-ctrl-group button+button{background:var(--paper)!important;color:#f4f4f4;border-color:#f4f4f4!important}
+:root[data-theme="dark"] .maplibregl-ctrl-group button:not(:disabled):hover{background:#f4f4f4!important;color:#000}
+:root[data-theme="dark"] body.gossip-mode-active .maplibregl-ctrl-group button,:root[data-theme="dark"] body.gossip-mode-active .maplibregl-ctrl-group button:last-child,:root[data-theme="dark"] body.gossip-mode-active .maplibregl-ctrl-group button+button{color:#ffd600;border-color:#ffd600!important}
+:root[data-theme="dark"] body.gossip-mode-active .maplibregl-ctrl-group button:not(:disabled):hover{background:#ffd600!important;color:#000}
+@media not (forced-colors:active){
+  .maplibregl-ctrl-group button .maplibregl-ctrl-icon{background-image:none!important;background-color:currentColor;-webkit-mask:var(--sign) center/100% 100% no-repeat;mask:var(--sign) center/100% 100% no-repeat}
+  .maplibregl-ctrl-group button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon{--sign:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='M16 10h2v6h6v2h-6v6h-2v-6h-6v-2h6z'/%3E%3C/svg%3E")}
+  .maplibregl-ctrl-group button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon{--sign:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='M10 16h14v2h-14z'/%3E%3C/svg%3E")}
+  .maplibregl-ctrl-group button.maplibregl-ctrl-compass .maplibregl-ctrl-icon{--sign:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='m12.5 15.5 4.500-9 4.500 9z'/%3E%3Cpath d='m13 20 4 7.500 4-7.500z' fill='none' stroke='black' stroke-width='1.500'/%3E%3C/svg%3E")}
+}
