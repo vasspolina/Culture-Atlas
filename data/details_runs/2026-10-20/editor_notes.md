@@ -58,3 +58,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - biennale-of-sydney-sydney: "Gulf state money" removed from Red flags (state money alone is not a flag); the 2026 opening-night and PwC withdrawal item is about a performer, not a funder: reconsider. 2024 annual report PDF too large to open; turnover and visitor figures are "stated by the space".
 - bukhara-biennial-bukhara: the Artforum column (Wetzler) is paywalled; only an opening excerpt is used. Read it in full.
 - british-museum-london: the Muriel Gray claim is now "Unverified", Hyperallergic the only outlet.
+
+## d005 (research notes, before its slop check)
+- chapter: the record's website https://www.chapter.org now redirects to a US Medicare broker; the real site is https://www.chapter.cymru/. No source confirms the Gulbenkian grant, so the Fossil fuels flag has no support.
+- chisenhale-gallery: site down on 2026-10-20.
+- city-gallery-wellington-wellington: the 2019 protest targeted the Theo Schoon show, not its sponsor the Fletcher Trust.
+- collective-edinburgh: the £25k in the Scotsman headline is Fruitmarket's Baillie Gifford deal, not Collective's; no source gives Collective's amount or a March 2024 date.
+- dallas-contemporary-dallas: Headington Companies (oil and gas) is a top-level 2024 donor (new). The Epstein link is one 2014 loan request letter, not money.
+- de-appel: the record's "Amsterdam inquiry found the board fell short" was not found.
