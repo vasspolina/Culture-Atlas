@@ -84,6 +84,10 @@ corrects or adds to it; it does not restate it.
   at the space, its funders or its leadership. A patron's closeness to a government that is
   accused of something is a red flag only when the patronage itself is documented (a commission,
   a land grant, a budget line).
+- A funder or board figure with a documented controversy outside those categories is a red flag
+  too, because the map grades it as a name to know: a bank's criminal plea or fine (TD Bank's 2024
+  money-laundering plea, HSBC, ABN AMRO), a founder's company convicted or sanctioned, a donor tied
+  to Jeffrey Epstein through money or leadership. State the event, the date and the authority.
 - Keep the report under 800 words. Overview points are one sentence each.
 
 ### Output: one plain-text file, this exact layout
