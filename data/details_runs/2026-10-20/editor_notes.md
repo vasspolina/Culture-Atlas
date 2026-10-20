@@ -78,3 +78,9 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - dia-art-foundation-beacon: Sackler Institute 2016, name removed 2019; Dia's own break dated 2018 only in an unread Artnet piece.
 - design-museum-london: the record's Deutsche Bank funder is not confirmed.
 - dulwich-picture-gallery-london: still holds a £3.43M Sackler-funded director endowment.
+
+## d005 slop check (86 fixes; every report changed)
+- cooper-hewitt-smithsonian-design-museum-new-york, chisenhale-gallery: the 2026 Artists for Palestine UK letter against Bloomberg names neither space, so it moved from Red flags to Wider context (map rule: a campaigned funder only where activists targeted it at that space). Cooper Hewitt's inspector general point rests on The Federalist (partisan), marked Unverified.
+- collective-edinburgh: the Baillie Gifford flag rests on an advocacy blog, an advocacy interview and the Morning Star; the Scotsman source could not be read.
+- dallas-contemporary-dallas: Epstein loan request moved to Wider context. The 2021 staff dismissals (Glasstire, Artforum) are blocked or paywalled.
+- chapter: the Gulbenkian grant behind the record's Fossil fuels flag is still unconfirmed.

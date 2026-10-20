@@ -95,6 +95,9 @@ corrects or adds to it; it does not restate it.
 - Epstein items follow the map's rule: a documented link through money or leadership is a red flag;
   a visit, a venue hire, a loan or loan request, an itinerary or a mention in the files goes under
   WIDER CONTEXT, stated plainly for what it was.
+- A campaign against a funder is a red flag only where the campaigners targeted that funder at this
+  space (the map's rule for Bloomberg, Citadel and V-A-C). A campaign against the same funder at
+  other institutions goes under WIDER CONTEXT, and the funder's money stays under FUNDING.
 - Keep the report under 800 words. Overview points are one sentence each.
 
 ### Output: one plain-text file, this exact layout
