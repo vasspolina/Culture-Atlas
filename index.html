@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=233">
-  <script src="assets/config.js?v=233"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=234">
+  <script src="assets/config.js?v=234"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9921,11 +9921,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v233';
+    const ATLAS_RELEASE = 'culture-atlas-v234';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=233').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=234').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11744,8 +11744,8 @@ return maplibregl$1;
       const blocks = [];
       if (inst.why_flagged) {
         const more = (inst.flag_details || []).filter(d => d && d.text);
-        // The Funding block already prints a money-related watch note; the same sentence is not printed twice.
-        const sameAsFunding = inst.watch && watchIsAboutMoney(inst.watch) && String(inst.watch).trim() === String(inst.why_flagged).trim();
+        // The Funding block already prints the funding line and a money-related watch note; the same text is not printed twice.
+        const sameAsFunding = [inst.watch && watchIsAboutMoney(inst.watch) ? inst.watch : '', inst.funding].some(t => t && String(t).trim() === String(inst.why_flagged).trim());
         blocks.push(item('Why it is flagged', { html: (inst.flags || []).map(f => /epstein/i.test(f) ? `<mark class="flag-epstein">${escapeHtml(f)}</mark>` : escapeHtml(f)).join(', ') }, (sameAsFunding || sayAlreadyInDetails(inst, inst.why_flagged) ? '' : p('', inst.why_flagged)) + more.map(d => p('', d.text)).join(''),
           [...new Set((inst.sources || []).concat(more.map(d => d.url)))]));
       }
@@ -19275,9 +19275,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=233"></script>
-<script src="assets/layers.js?v=233"></script>
-<script src="assets/hq-detail.js?v=233"></script>
-<script src="assets/bubbles.js?v=233" defer></script>
+<script src="assets/typeset.js?v=234"></script>
+<script src="assets/layers.js?v=234"></script>
+<script src="assets/hq-detail.js?v=234"></script>
+<script src="assets/bubbles.js?v=234" defer></script>
 </body>
 </html>
