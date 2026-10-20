@@ -1589,3 +1589,10 @@ h1,h2,h3,h4,h5,h6,th{font-weight:400}
 #curatorMessages>.curator-message-wrap .curator-followups{margin-top:var(--L)}
 /* After a list or a heading a new run begins: the paragraph starts flush, since the space already marks it (p.51: an indent or a space, never both). */
 #curatorMessages>.curator-message-wrap :is(ul,ol,.curator-section-hdr)+p{text-indent:0}
+
+/* A record covers the map, so the map's Layers button steps aside while one is open instead of floating over its text. */
+body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
+/* Personal accounts: the caveat and per-card context read as notes, smaller and quieter than what the account says. */
+:is(#desktopDossierRecordBody,#detailBody) p.account-note{font-size:15px;line-height:1.35;opacity:.8;max-width:60ch}
+/* In a card the date-and-status line sits under the title, smaller and quieter, so the title leads. */
+:is(#desktopDossierRecordBody,#detailBody) .record-card>.kicker+.kicker{font-size:15px;line-height:1.35;opacity:.8;margin-top:2px}
