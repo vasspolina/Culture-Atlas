@@ -106,8 +106,10 @@ fly auth signup            # or: fly auth login
 fly launch --no-deploy --copy-config --name <a-free-app-name>
 fly volumes create reports_data --size 1 --region ams
 fly secrets set ADMIN_SECRET_KEY="$(openssl rand -hex 32)"
-fly deploy
+fly deploy --ha=false
 ```
+
+`--ha=false` keeps the app on one machine, which SQLite needs. If the build stops at "Waiting for depot builder", stop it and run `fly deploy --ha=false --depot=false`. The live API is `https://culture-atlas-reports.fly.dev` (app `culture-atlas-reports`, region `ams`); its admin secret was generated into `~/culture-atlas-admin-secret.txt` on the editor's Mac. Later deploys after changing `server/`: `fly deploy` from the repository root.
 
 Keep the secret: it is the password for `reports-admin.html`, and `fly secrets set` is the only place it is stored (print it once with `openssl rand -hex 32` before setting it if you want to keep a copy elsewhere). The API is then at `https://<app-name>.fly.dev`; `https://<app-name>.fly.dev/healthz` answers `{"ok":true}`. `fly.toml` already sets `ALLOWED_ORIGINS=https://vasspolina.github.io`, `TRUST_PROXY=1` (so the rate limit sees each sender, not Fly's proxy) and the database path on the volume. If you rename the app, update `app` in `fly.toml` to match.
 
