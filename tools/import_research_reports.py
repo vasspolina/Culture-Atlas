@@ -96,14 +96,15 @@ for f in sorted(results_dir.glob('*.json')):
             changed.append(f'+{len(extra)} findings')
 
         t = c.get('tier')
-        if t in ('A', 'B', 'U'):
-            old = r.get('tier')
-            if old == 'U' and t != 'U':
-                r['tier'] = t
-            elif old == 'A' and (t == 'B' or add_flags):
-                r['tier'] = 'B'
-            if r.get('tier') != old:
-                changed.append(f'tier {old}→{r["tier"]}')
+        old_tier = r.get('tier')
+        if old_tier == 'U' and t in ('A', 'B'):
+            r['tier'] = t
+        elif old_tier == 'A' and t == 'B':
+            r['tier'] = 'B'
+        if add_flags and r.get('tier') in ('A', 'U'):   # a new sourced flag makes the record Flagged
+            r['tier'] = 'B'
+        if r.get('tier') != old_tier:
+            changed.append(f'tier {old_tier}→{r["tier"]}')
 
         status = c.get('website_status')
         if status == 'ok' and c.get('website') and not r.get('website'):

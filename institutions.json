@@ -4,12 +4,21 @@
     "location": "Aarhus, Denmark",
     "tier": "B",
     "size": "L",
-    "funding": "Aarhus Municipality, Salling Fonden, Ny Carlsbergfondet and many foundations. Augustinus Fonden backed several 2025 shows and gave grants of DKK 2M for 2026 projects.",
+    "funding": "2025 income DKK 163.6M: earned revenue DKK 84.0M, public subsidy DKK 50.3M (Aarhus Municipality and state via the municipality), sponsors and foundations DKK 29.3M. Aarsleff is main corporate partner; Augustinus Fonden and Ny Carlsbergfondet fund exhibitions and acquisitions.",
     "watch": "Major Danish art museum topped by Olafur Eliasson's 'Your rainbow panorama'.",
     "sources": [
       "https://www.aros.dk/en/about-aros/",
       "https://sallingfondene.dk",
-      "https://www.aros.dk/da/om/pressemeddelelser-2023/salling-fondene-har-nu-samlet-bidraget-med-100-millioner-kroner-til-aros-udvidelse/"
+      "https://www.aros.dk/da/om/pressemeddelelser-2023/salling-fondene-har-nu-samlet-bidraget-med-100-millioner-kroner-til-aros-udvidelse/",
+      "https://www.aros.dk/media/dzfckonk/a-rsrapport_2025.pdf",
+      "https://www.aros.dk/en/about-aros/aros-history/",
+      "https://www.aros.dk/en/about-aros/annual-reports/",
+      "https://aros.dk/en/about/press-releases-2024/aarsleff-is-the-new-main-sponsor-for-aros",
+      "https://aros.dk/en/about/press-releases/the-salling-foundations-have-now-contributed-a-total-of-dkk-100-million-to-aros-expansion",
+      "https://en.wikipedia.org/wiki/Augustinus_Fonden",
+      "https://en.wikipedia.org/wiki/Chr._Augustinus_Fabrikker",
+      "https://augustinusfabrikker.dk/wp-content/uploads/2024/04/CAF_Faktaark_2024.pdf",
+      "https://scandinaviantobaccogroup.gcs-web.com/node/6706"
     ],
     "lat": 56.153,
     "lon": 10.2,
@@ -36,6 +45,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://www.aros.dk/media/dzfckonk/a-rsrapport_2025.pdf",
+          "https://www.aros.dk/en/about-aros/aros-history/",
+          "https://www.aros.dk/en/about-aros/annual-reports/"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Aarhus Municipality, Salling Fonden, Ny Carlsbergfondet and many foundations. Augustinus Fonden backed several 2025 shows and gave grants of DKK 2M for 2026 projects."
       }
     },
     "grade": 4,
@@ -103,19 +122,23 @@
         "funder": "Augustinus Fonden",
         "institutions": 12
       }
-    ]
+    ],
+    "other_findings": "Augustinus Fonden supported the Barbara Kruger, Isaac Julien, Anna Boghiguian and Jenkin van Zyl exhibitions in 2025 (ARoS annual report 2025). | Chr. Augustinus Fabrikker, wholly owned by Augustinus Fonden, held more than 25% of Scandinavian Tobacco Group as of 7 March 2022 (STG shareholder page).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Stedelijk Museum Amsterdam",
     "location": "Amsterdam, Netherlands",
-    "tier": "U",
+    "tier": "B",
     "size": "L",
-    "funding": "\u20ac37.5M income (2024), City of Amsterdam 62%. VriendenLoterij is main partner; IMC, ABN AMRO, Mastercard, Polestar and Teijin are loyal partners; Ammodo and the Mondriaan Fund also give.",
+    "funding": "2024 income \u20ac37.5M, of which City of Amsterdam subsidy \u20ac23.2M (61.9%). VriendenLoterij is main partner; IMC, ABN AMRO, Mastercard, Polestar and Teijin are loyal partners; Mondriaan Fund, Ammodo and other funds also give.",
     "watch": "ABN AMRO is a loyal partner (2024 report). It paid \u20ac480M in 2021 to settle a Dutch money-laundering case covering 2014 to 2020.",
     "sources": [
       "https://s3-eu-west-1.amazonaws.com/production-static-stedelijk/images/_museum/Jaarverslagen/2024/Summary%202024_DEF.pdf",
       "https://www.abnamro.com/en/news/abn-amro-and-stedelijk-museum-amsterdam-extend-partnership-by-two-years",
-      "https://www.stedelijk.nl/en/support/partners-and-sponsors"
+      "https://www.stedelijk.nl/en/support/partners-and-sponsors",
+      "https://www.prosecutionservice.nl/latest/news/2021/04/19/abn-amro-pays-eur-480-million-on-account-of-serious-shortcomings-in-money-laundering-prevention",
+      "https://theartnewspaper.com/2024/11/05/artist-demands-stedelijk-museum-remove-his-work-in-ongoing-row-over-loan-request-for-gaza-protest"
     ],
     "lat": 52.358,
     "lon": 4.88,
@@ -266,19 +289,42 @@
     "critique_note": "Sven L\u00fctticken, Propositional Politics (BAK, 2025): L\u00fctticken says BAK's propositions programme grew from working inside neoliberalised Dutch funding, and faults it for never defining a proposition. He says the Stedelijk Museum relies on high-profile donors and has not answered Gaza in its programme, and he wants documenta's terms of success challenged. Not Surprised Collective, Stedelijk Museum Fails to Loan Artwork by Ahmet \u00d6g\u00fct to Protect Students in Amsterdam (artists shown at De Appel, 2024): Thirteen signatories say the Stedelijk refused their 28 May 2024 request to lend Ahmet \u00d6g\u00fct's Bakunin's Barricade to protect protesting students, offered replicas and a talk instead, and put its own interests ahead of human rights.",
     "records_note": "The Stedelijk's 2024 report summary, on its own file host, names partners and gives a financial overview with an auditor's opinion; its website blocked checks.",
     "finances_note": "FY2024 income EUR 37.5M: about 63 percent public (City of Amsterdam 62 percent), 10 percent private and sponsors, 27 percent earned (annual report summary p. 7).",
-    "affiliations_note": "Its 2024 annual summary calls Centraal Museum and Bonnefanten sister museums and records joint acquisitions for Collectie Nederland; its own site is behind a bot challenge. Member of CIMAM, Gallery Climate Coalition, Museumvereniging."
+    "affiliations_note": "Its 2024 annual summary calls Centraal Museum and Bonnefanten sister museums and records joint acquisitions for Collectie Nederland; its own site is behind a bot challenge. Member of CIMAM, Gallery Climate Coalition, Museumvereniging.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://s3-eu-west-1.amazonaws.com/production-static-stedelijk/images/_museum/Jaarverslagen/2024/Summary%202024_DEF.pdf",
+          "https://www.abnamro.com/en/news/abn-amro-and-stedelijk-museum-amsterdam-extend-partnership-by-two-years",
+          "https://www.prosecutionservice.nl/latest/news/2021/04/19/abn-amro-pays-eur-480-million-on-account-of-serious-shortcomings-in-money-laundering-prevention"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u20ac37.5M income (2024), City of Amsterdam 62%. VriendenLoterij is main partner; IMC, ABN AMRO, Mastercard, Polestar and Teijin are loyal partners; Ammodo and the Mondriaan Fund also give."
+      }
+    },
+    "flags": [
+      "Money laundering"
+    ],
+    "why_flagged": "Loyal partner ABN AMRO, whose partnership was renewed in March 2026, paid \u20ac480M in 2021 to settle a Dutch money-laundering case covering 2014 to 2020.",
+    "other_findings": "ABN AMRO paid \u20ac480M (\u20ac300M fine, \u20ac180M disgorgement) in April 2021 over anti-money-laundering failures and culpable money laundering in 2014-2020 (Netherlands Public Prosecution Service). | ABN AMRO extended its Stedelijk partnership by two years from 11 March 2026 and is main partner of the 2026 Yayoi Kusama exhibition (ABN AMRO). | In 2024 the museum declined to lend Ahmet \u00d6\u011f\u00fct's 'Bakunin's Barricade' for a Gaza protest and the artist asked for its removal from display (The Art Newspaper, Nov 2024).",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories."
   },
   {
     "name": "Fondation Vincent van Gogh Arles",
     "location": "Arles, France",
     "tier": "A",
     "size": "S",
-    "funding": "Set up in 2010 after Luc Hoffmann backed it. Maja Hoffmann, a Roche heir, chairs the board, which includes the Mayor of Arles. Partners: Hiscox, Blackwall Green, Christie's.",
+    "funding": "Backed by the Hoffmann family since Luc Hoffmann relaunched it in 2008; Maja Hoffmann is board president. Corporate memberships of \u20ac500 and \u20ac1,500 attract a 60% French tax reduction; no accounts or budget published.",
     "watch": "Roche is a pharmaceutical group, no flag category. Maja Hoffmann also chairs the LUMA Foundation behind LUMA Arles.",
     "sources": [
       "https://www.fondation-vincentvangogh-arles.org/en/partners/",
       "https://en.wikipedia.org/wiki/Fondation_Vincent_van_Gogh_Arles",
-      "https://en.wikipedia.org/wiki/Maja_Hoffmann"
+      "https://en.wikipedia.org/wiki/Maja_Hoffmann",
+      "https://www.fondation-vincentvangogh-arles.org/wp-content/uploads/2023/02/Brochure-Adhesion-Entreprises-1.pdf",
+      "https://artnewspaper.fr/2025/03/19/jean-de-loisy-nomme-directeur-artistique-de-la-fondation-vincent-van-gogh-a-arles",
+      "https://www.letemps.ch/suisse/arles-vingtseptieme-canton-suisse"
     ],
     "lat": 43.677,
     "lon": 4.628,
@@ -304,10 +350,20 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Fondation_Vincent_van_Gogh_Arles",
+          "https://en.wikipedia.org/wiki/Maja_Hoffmann",
+          "https://www.fondation-vincentvangogh-arles.org/wp-content/uploads/2023/02/Brochure-Adhesion-Entreprises-1.pdf"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Set up in 2010 after Luc Hoffmann backed it. Maja Hoffmann, a Roche heir, chairs the board, which includes the Mayor of Arles. Partners: Hiscox, Blackwall Green, Christie's."
       }
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or objection on record, and filings are linked (journal-officiel.gouv.fr).",
+    "grade_basis": "No flagged funder or objection on record, and figures are shown.",
     "records_note": "Names its institutional partners, corporate partners and sponsors on a partners page and lists its board of directors; no annual reports or accounts are posted.",
     "affiliations_note": "Lists the Van Gogh Museum, Mus\u00e9e R\u00e9attu, Mus\u00e9e Estrine and Abbaye de Montmajour as institutional partners, and belongs to Van Gogh Europe, Plein Sud and Sud Contemporain.",
     "funder_links": [
@@ -315,15 +371,24 @@
         "funder": "LUMA Foundation",
         "institutions": 3
       }
-    ]
+    ],
+    "other_findings": "Jean de Loisy replaced Bice Curiger as artistic director from April 2025; Curiger joins the board (The Art Newspaper France, March 2025). | Le Temps reported local criticism, from the magazine L'Arl\u00e9sienne, of private Hoffmann influence over Arles. | Not related: Van Gogh Museum, Amsterdam (lender, separate museum) | Not related: Vincent van Gogh Foundation, Amsterdam (owns the Van Gogh family collection)",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Luma Arles",
     "location": "Arles, France",
     "tier": "U",
     "size": "S",
-    "funding": "Funded by the LUMA Foundation of Maja Hoffmann, a Roche heir. Artnet put the total project cost at about EUR 150M.",
-    "sources": [],
+    "funding": "Created and financed by Maja Hoffmann's Zurich-based LUMA Foundation through the LUMA Arles endowment fund (2013). Cost reported at about \u20ac150M (Artnet, Le Temps), not confirmed by Hoffmann.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/LUMA_Arles",
+      "https://en.wikipedia.org/wiki/Maja_Hoffmann",
+      "https://news.artnet.com/art-world/luma-arles-opening-1984134",
+      "https://www.letemps.ch/suisse/arles-vingtseptieme-canton-suisse",
+      "https://hubspot.luma-arles.org/en/arles/faq",
+      "https://www.luma.org/en/arles/about-us/parc-des-ateliers/history-of-the-site-and-luma-arles"
+    ],
     "lat": 43.674,
     "lon": 4.634,
     "country": "France",
@@ -347,20 +412,39 @@
         "funder": "LUMA Foundation",
         "institutions": 3
       }
-    ]
+    ],
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/LUMA_Arles",
+          "https://en.wikipedia.org/wiki/Maja_Hoffmann",
+          "https://news.artnet.com/art-world/luma-arles-opening-1984134"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Funded by the LUMA Foundation of Maja Hoffmann, a Roche heir. Artnet put the total project cost at about EUR 150M."
+      }
+    },
+    "other_findings": "Le Temps reported Hoffmann also owns or holds stakes in Arles hotels (H\u00f4tel du Clo\u00eetre, Arlatan, 10% of Nord Pinus) and restaurants, and that the city financed fibre-optic cable for Arlatan guests. | Local magazine L'Arl\u00e9sienne questioned the democratic legitimacy of private actors shaping Arles (reported by Le Temps). | No reporting found of the terms on which the former SNCF site passed to LUMA. | Not related: LUMA Westbau, Zurich (separate venue of the same foundation)",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Auckland Art Gallery Toi o T\u0101maki",
     "location": "Auckland, New Zealand",
-    "tier": "U",
+    "tier": "B",
     "size": "L",
-    "funding": "497,998 visitors (2024-25). Run by T\u0101taki Auckland Unlimited for Auckland Council. Partners include BMW, Van Cleef & Arpels, HSBC, Anthony Harper, Baker Tilly; trusts include Chartwell and Mackelvie.",
+    "funding": "Run and mainly funded by Auckland Council through T\u0101taki Auckland Unlimited. Partners Circle includes BMW, Van Cleef & Arpels, HSBC, Anthony Harper, Baker Tilly, Beca and others; trusts include Chartwell and Mackelvie; the Auckland Art Gallery Foundation holds an endowment of about NZ$4.5M.",
     "watch": "HSBC backed A Century of Modern Art in 2025. HSBC agreed a $1.92 billion US penalty in December 2012 over money-laundering failures.",
     "sources": [
       "https://www.aucklandartgallery.com/about/our-supporters",
       "https://www.aucklandartgallery.com/connect/support/foundation",
       "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf",
-      "https://www.aucklandartgallery.com/give-and-join/partnerships"
+      "https://www.aucklandartgallery.com/give-and-join/partnerships",
+      "https://cdn.aucklandunlimited.com/artgallery/assets/media/auckland-art-gallery-toi-o-tamaki-annual-review-2023-2024.pdf",
+      "https://aucklandunlimited.com/news/auckland-art-gallery-toi-o-tamaki-announces-major-international-exhibition-of-modern-art",
+      "https://www.artshub.co.uk/?p=1290390",
+      "https://money.cnn.com/2012/12/10/news/companies/hsbc-money-laundering/",
+      "https://www.1news.co.nz/2025/05/29/art-gallery-removes-controversial-nz-flag-artwork/"
     ],
     "lat": -36.851,
     "lon": 174.766,
@@ -391,6 +475,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://cdn.aucklandunlimited.com/artgallery/assets/media/auckland-art-gallery-toi-o-tamaki-annual-review-2023-2024.pdf",
+          "https://aucklandunlimited.com/news/auckland-art-gallery-toi-o-tamaki-announces-major-international-exhibition-of-modern-art",
+          "https://www.artshub.co.uk/?p=1290390"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "497,998 visitors (2024-25). Run by T\u0101taki Auckland Unlimited for Auckland Council. Partners include BMW, Van Cleef & Arpels, HSBC, Anthony Harper, Baker Tilly; trusts include Chartwell and Mackelvie."
       }
     },
     "former_ids": [
@@ -407,20 +501,30 @@
         "funder": "HSBC",
         "institutions": 5
       }
-    ]
+    ],
+    "flags": [
+      "Money laundering"
+    ],
+    "why_flagged": "HSBC, a Partners Circle member that backed A Century of Modern Art in 2025, agreed a US$1.92 billion US settlement in December 2012 over money laundering and sanctions breaches.",
+    "other_findings": "HSBC agreed in December 2012 to pay US$1.92 billion under a US deferred prosecution agreement; prosecutors said at least $881M of Mexican cartel proceeds moved through the bank (CNN Money). | HSBC and the Auckland Art Gallery Foundation supported A Century of Modern Art, 7 June to 28 September 2025 (TAU). | ArtsHub reported in 2018 that the operating budget fell 25% from NZ$9.2M (2012) to about NZ$6.9M. | Not related: Suter Art Gallery, Nelson (removed Diane Prince flag work in May 2025)",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories."
   },
   {
     "name": "MACBA (Museu d'Art Contemporani de Barcelona)",
     "location": "Barcelona, Spain",
     "tier": "U",
     "size": "L",
-    "funding": "\u20ac13.2M budget. Consortium comprising the Generalitat de Catalunya, Ajuntament de Barcelona, Spanish Ministry of Culture, and Fundaci\u00f3 MACBA.",
+    "funding": "Public consortium of the Generalitat de Catalunya, Ajuntament de Barcelona, Spanish Ministry of Culture and Fundaci\u00f3 MACBA; \u20ac13.2M budget per existing record, not re-checked this run.",
     "watch": "Repsol is a fossil-fuel funder; Naturgy executives on the board.",
     "sources": [
       "https://www.macba.cat/en/about-macba/transparency",
       "https://www.macba.cat/en/about-macba/sponsors-and-collaborators",
       "https://www.barcelona.cat",
-      "https://www.macba.cat/en/macba-foundation/"
+      "https://www.macba.cat/en/macba-foundation/",
+      "https://en.wikipedia.org/wiki/Barcelona_Museum_of_Contemporary_Art",
+      "https://en.wikipedia.org/wiki/MACBA"
     ],
     "lat": 41.383,
     "lon": 2.167,
@@ -453,6 +557,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Barcelona_Museum_of_Contemporary_Art",
+          "https://en.wikipedia.org/wiki/MACBA",
+          "https://www.macba.cat/en/about-macba/sponsors-and-collaborators"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u20ac13.2M budget. Consortium comprising the Generalitat de Catalunya, Ajuntament de Barcelona, Spanish Ministry of Culture, and Fundaci\u00f3 MACBA."
       }
     },
     "visual_critiques": [
@@ -567,18 +681,21 @@
     ],
     "records_note": "MACBA posts its 2025 general accounts and audit reports for 2011 to 2018 and names its trustees, but no annual report or donor list.",
     "finances_note": "FY2025 income EUR 15.0M: about 80 percent public grants (city, Generalitat, Ministry, EU), 7 percent earned, plus 11 percent release of capital grants (Compte General 2025).",
-    "affiliations_note": "A member of L'Internationale; it is run as a consortium in which the private Fundaci\u00f3 MACBA sits beside the city, Catalan and Spanish governments. Member of CIMAM, L'Internationale."
+    "affiliations_note": "A member of L'Internationale; it is run as a consortium in which the private Fundaci\u00f3 MACBA sits beside the city, Catalan and Spanish governments. Member of CIMAM, L'Internationale.",
+    "other_findings": "Wikipedia lists Valent\u00edn Roma as director from 2026, replacing Elvira Dyangani Ose (2021-2026). | Director Bartomeu Mar\u00ed resigned in March 2015 amid a censorship row over an Ines Doujak work (Wikipedia). | Not related: MACBA, Museo de Arte Contempor\u00e1neo de Buenos Aires (Argentina)",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "The Bowes Museum",
     "location": "Barnard Castle, UK",
     "tier": "A",
     "size": "S",
-    "funding": "\u00a33.9M income (FY2025). Arts Council England, Durham County Council, National Lottery Heritage Fund \u00a3250k, Wolfson Foundation, Swire Charitable Trust, Art Fund, about 20 other trusts; Darlington Building Society, Global Radio.",
+    "funding": "Registered charity (1079639) with a founders' endowment, earned income and public and trust grants; Wikipedia gives 2023-24 income of about \u00a34.3M. Named funders in the existing record were not re-checked this run.",
     "watch": "Arms and Armour Heritage Trust is a heritage charity, not an arms maker. No flagged funder or protest found.",
     "sources": [
       "https://findthatcharity.uk/orgid/GB-CHC-1079639",
-      "https://thebowesmuseum.org.uk/support/current-supporters/"
+      "https://thebowesmuseum.org.uk/support/current-supporters/",
+      "https://en.wikipedia.org/wiki/Bowes_Museum"
     ],
     "lat": 54.542,
     "lon": -1.916,
@@ -604,6 +721,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Bowes_Museum",
+          "https://findthatcharity.uk/orgid/GB-CHC-1079639",
+          "https://thebowesmuseum.org.uk/support/current-supporters/"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u00a33.9M income (FY2025). Arts Council England, Durham County Council, National Lottery Heritage Fund \u00a3250k, Wolfson Foundation, Swire Charitable Trust, Art Fund, about 20 other trusts; Darlington Building Society, Global Radio."
       }
     },
     "grade": 1,
@@ -616,19 +743,22 @@
         "funder": "Art Fund",
         "institutions": 16
       }
-    ]
+    ],
+    "other_findings": "The Friends of the Bowes Museum announced in April 2025 that it would close (Wikipedia).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Kunsthalle Basel",
     "location": "Basel, Switzerland",
     "tier": "A",
     "size": "L",
-    "funding": "Canton Basel-Stadt CHF 950k a year for 2024-27 (32% of budget); third-party grants about CHF 660k (30%); restaurant and property rent 22%; members 8%.",
+    "funding": "Run by the Basler Kunstverein. Per the existing record: Canton Basel-Stadt CHF 950k a year for 2024-27 (32% of budget), third-party grants about CHF 660k, rent 22%, members 8%; not re-checked this run.",
     "watch": "In November 2023 an SVP member of the cantonal parliament demanded subsidy be cut over director Almusibli's ceasefire letters; the canton did not act.",
     "sources": [
       "https://grosserrat.bs.ch/dokumente/100405/000000405436.pdf",
       "https://www.bs.ch/pd/kultur/kulturfoerderung/foerderung-von-kulturinstitutionen",
-      "https://www.swissinfo.ch/ger/kultur/die-kunstwelt-im-bann-des-israelisch-palaestinensischen-kriegs/48998994"
+      "https://www.swissinfo.ch/ger/kultur/die-kunstwelt-im-bann-des-israelisch-palaestinensischen-kriegs/48998994",
+      "https://en.wikipedia.org/wiki/Kunsthalle_Basel"
     ],
     "lat": 47.553,
     "lon": 7.59,
@@ -659,6 +789,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Kunsthalle_Basel",
+          "https://grosserrat.bs.ch/dokumente/100405/000000405436.pdf",
+          "https://www.bs.ch/pd/kultur/kulturfoerderung/foerderung-von-kulturinstitutionen"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Canton Basel-Stadt CHF 950k a year for 2024-27 (32% of budget); third-party grants about CHF 660k (30%); restaurant and property rent 22%; members 8%."
       }
     },
     "grade": 1,
@@ -717,19 +857,22 @@
     ],
     "records_note": "It posts annual reports 2014 to 2025 with financial statements, names members and corporate supporters in the 2025 report, and lists its association board.",
     "finances_note": "FY2025 income CHF 2.92M: about 33 percent canton grant, 9 percent memberships, 24 percent grants not split by funder, 27 percent earned (annual report 2025, p. 161).",
-    "affiliations_note": "Run by the Basler Kunstverein, which founded it and built the hall in 1872; its membership also covers entry to the S AM Swiss Architecture Museum."
+    "affiliations_note": "Run by the Basler Kunstverein, which founded it and built the hall in 1872; its membership also covers entry to the S AM Swiss Architecture Museum.",
+    "other_findings": "Wikipedia, citing ARTnews, reports pushback after Mohamed Almusibli's 2024 appointment because he had signed a Gaza ceasefire letter. | Not related: Kunstmuseum Basel (separate cantonal museum)",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Kunstmuseum Basel",
     "location": "Basel, Switzerland",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
-    "funding": "Canton Basel-Stadt and the Emanuel Hoffmann, Christoph Merian and Laurenz foundations. UBS is partner; Novartis, KPMG, Trafina and the Federal Office of Culture are sponsors.",
+    "funding": "Canton Basel-Stadt, with the Laurenz Foundation (which co-funded the 2016 extension), Emanuel Hoffmann and Christoph Merian foundations; UBS partner and Novartis, KPMG, Trafina and the Federal Office of Culture as sponsors per the existing record.",
     "watch": "UBS paid a $100M Federal Reserve fine in 2004 over dollar dealings with sanctioned states. Novartis paid $678M in 2020 over kickbacks to doctors.",
     "sources": [
       "https://kunstmuseumbasel.ch/en/museum/lendersdonorssponsors",
       "https://en.wikipedia.org/wiki/UBS",
-      "https://en.wikipedia.org/wiki/Novartis"
+      "https://en.wikipedia.org/wiki/Novartis",
+      "https://en.wikipedia.org/wiki/Kunstmuseum_Basel"
     ],
     "lat": 47.554,
     "lon": 7.594,
@@ -761,6 +904,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Kunstmuseum_Basel",
+          "https://en.wikipedia.org/wiki/UBS",
+          "https://en.wikipedia.org/wiki/Novartis"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Canton Basel-Stadt and the Emanuel Hoffmann, Christoph Merian and Laurenz foundations. UBS is partner; Novartis, KPMG, Trafina and the Federal Office of Culture are sponsors."
       }
     },
     "records_note": "It posts annual reports 2010 to 2025 with accounts, names its partner and sponsors undated, and lists its Board of Trustees.",
@@ -771,18 +924,28 @@
         "funder": "UBS",
         "institutions": 6
       }
-    ]
+    ],
+    "flags": [
+      "Money laundering",
+      "Corruption"
+    ],
+    "why_flagged": "Partner UBS was fined $125M by FinCEN in 2026 for money laundering through a US subsidiary, and sponsor Novartis paid $678M in 2020 over alleged kickbacks to doctors.",
+    "other_findings": "UBS was fined $100M by the Federal Reserve in 2004 over dollar trading with sanctioned states and $1.5bn in December 2012 over Libor (Wikipedia). | UBS agreed $1.43bn in August 2023 over mortgage-backed securities and $511M in May 2025 over Credit Suisse offshore accounts (Wikipedia). | UBS was fined $125M by FinCEN in 2026 for laundering money through a US subsidiary (Wikipedia). | Novartis agreed to pay $678M in July 2020 over speaker programs alleged to be kickbacks to doctors, and $346.7M in June 2020 over FCPA investigations (Wikipedia). | The museum rejected Curt Glaser heirs' restitution claim in 2008, reaching agreement about twelve years later; it refused claims over Julius Freund works (2020) and a Rousseau (2022) (Wikipedia). | Not related: Kunsthalle Basel (separate institution run by the Basler Kunstverein)",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories."
   },
   {
     "name": "Museum Tinguely",
     "location": "Basel, Switzerland",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
-    "funding": "Roche has paid all operating costs since the museum opened in 1996 as a gift for its centenary; Roche built it and funds collection additions.",
+    "funding": "Roche built the museum for its centenary and has paid its operating costs since it opened in 1996 (per the museum's Roche page, cited in the existing record; not re-retrieved this run).",
     "watch": "Roche pleaded guilty in 1999 to a worldwide vitamin price-fixing conspiracy and paid $500M in US criminal fines.",
     "sources": [
       "https://www.tinguely.ch/en/information/about-us/roche.html",
-      "https://en.wikipedia.org/wiki/Roche"
+      "https://en.wikipedia.org/wiki/Roche",
+      "https://en.wikipedia.org/wiki/Museum_Tinguely"
     ],
     "lat": 47.559,
     "lon": 7.612,
@@ -810,21 +973,41 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Museum_Tinguely",
+          "https://en.wikipedia.org/wiki/Roche",
+          "https://www.tinguely.ch/en/information/about-us/roche.html"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Roche has paid all operating costs since the museum opened in 1996 as a gift for its centenary; Roche built it and funds collection additions."
       }
     },
     "records_note": "The museum has no records of its own; funder Roche posts annual and finance reports 2020 to 2025 and its board; no donor list.",
-    "affiliations_note": "Shows a permanent loan from the Emanuel Hoffmann Foundation; its own pages name no parent institution, network or partner museum. Member of CIMAM, Gallery Climate Coalition."
+    "affiliations_note": "Shows a permanent loan from the Emanuel Hoffmann Foundation; its own pages name no parent institution, network or partner museum. Member of CIMAM, Gallery Climate Coalition.",
+    "flags": [
+      "Price fixing"
+    ],
+    "why_flagged": "Sole funder Roche pleaded guilty in 1999 to a worldwide vitamin price-fixing conspiracy and paid $500M in US criminal fines.",
+    "other_findings": "Roche pleaded guilty in 1999 to a worldwide vitamin price-fixing conspiracy and paid $500M in US criminal fines (Wikipedia). | The European Economic Community fined Roche in 1973 for vitamin price-fixing and market sharing (Wikipedia). | The UK's ABPI suspended Roche for six months in 2008 for breaching its code of conduct (Wikipedia).",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories."
   },
   {
     "name": "Schaulager",
     "location": "Basel, Switzerland",
     "tier": "A",
     "size": "S",
-    "funding": "Made possible by the Laurenz Foundation, founded in 1999 by Maja Oeri and Hans U. Bodenmann. The foundation does not give grants; no other funders are named.",
+    "funding": "Made possible by the Laurenz Foundation, its carrier foundation, founded by Maja Oeri; no other funders named.",
     "watch": "Herzog & de Meuron built it in 2002-03. The Emanuel Hoffmann Foundation collection is its core.",
     "sources": [
       "https://schaulager.org/en/schaulager/laurenz-foundation",
-      "https://en.wikipedia.org/wiki/Schaulager"
+      "https://en.wikipedia.org/wiki/Schaulager",
+      "https://en.wikipedia.org/wiki/Kunstmuseum_Basel",
+      "https://en.wikipedia.org/wiki/Roche"
     ],
     "lat": 47.535,
     "lon": 7.59,
@@ -852,23 +1035,37 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Schaulager",
+          "https://en.wikipedia.org/wiki/Kunstmuseum_Basel",
+          "https://en.wikipedia.org/wiki/Roche"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Made possible by the Laurenz Foundation, founded in 1999 by Maja Oeri and Hans U. Bodenmann. The foundation does not give grants; no other funders are named."
       }
     },
     "grade": 1,
     "grade_basis": "No flagged funder or objection on record, and filings are linked (edi.admin.ch).",
     "records_note": "It posts no reports, accounts or donors; its Laurenz Foundation pages name the foundation board and say the foundation makes Schaulager possible.",
-    "affiliations_note": "Run by the Laurenz Foundation; it holds the Emanuel Hoffmann Foundation's collection, which is on loan to the \u00d6ffentliche Kunstsammlung Basel, whose delegates sit on that foundation's board."
+    "affiliations_note": "Run by the Laurenz Foundation; it holds the Emanuel Hoffmann Foundation's collection, which is on loan to the \u00d6ffentliche Kunstsammlung Basel, whose delegates sit on that foundation's board.",
+    "other_findings": "Not related: Emanuel Hoffmann Foundation (separate collection foundation whose works Schaulager holds)",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Dia Beacon",
     "location": "Beacon, USA",
     "tier": "U",
     "size": "L",
-    "funding": "Dia Art Foundation endowment, Andrew W. Mellon Foundation, individual board patrons.",
+    "funding": "Built for about $50M from private gifts: Leonard Riggio at least $35M, Lannan Foundation $10M, Ann Tenenbaum and Thomas H. Lee $2.5M. Run by the Dia Art Foundation; current funders not re-checked this run.",
     "watch": "Dropped the Sackler name 2019; Schlumberger origin.",
     "sources": [
       "https://www.diaart.org/about/support-dia",
-      "https://www.diaart.org/support/corporate-giving"
+      "https://www.diaart.org/support/corporate-giving",
+      "https://en.wikipedia.org/wiki/Dia_Beacon",
+      "https://en.wikipedia.org/wiki/Dia_Art_Foundation"
     ],
     "lat": 41.501,
     "lon": -73.982,
@@ -902,19 +1099,38 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Dia_Beacon",
+          "https://en.wikipedia.org/wiki/Dia_Art_Foundation",
+          "https://www.diaart.org/about/support-dia"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Dia Art Foundation endowment, Andrew W. Mellon Foundation, individual board patrons."
       }
-    }
+    },
+    "other_findings": "Dia's founding money came from Philippa de Menil's Schlumberger oil-services fortune; a $3.87M Citibank loan secured on that stock in the early 1980s prompted a New York attorney general investigation (Wikipedia).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Sursock Museum",
     "location": "Beirut, Lebanon",
     "tier": "B",
     "size": "S",
-    "funding": "Municipal endowment, donors.",
+    "funding": "A waqf left by Nicolas Sursock with the Beirut Municipality president as trustee; runs on private patrons and donors, foreign-government and foundation grants (Italy's AICS, Institut fran\u00e7ais, ALIPH, French Ministry of Culture), and corporate in-kind and energy sponsors.",
     "watch": "Fondation Engie, a gas utility, is an energy sponsor.",
     "sources": [
       "https://sursock.museum/",
-      "https://sursock.museum/content/our-supporters"
+      "https://sursock.museum/content/our-supporters",
+      "https://sursock.museum/node/72",
+      "https://sursock.museum/content/plan-your-visit",
+      "https://en.wikipedia.org/wiki/Sursock_Museum",
+      "https://hyperallergic.com/826238/beirut-lebanon-sursock-museum-reopens-after-deadly-port-explosion/",
+      "https://blooloop.com/museum/in-depth/sursock-museum-zeina-arida/",
+      "https://today.lorientlejour.com/article/1501368/protecting-art-or-helping-the-displaced-in-lebanon-the-sursock-controversy-ignites-debate.html",
+      "https://en.wikipedia.org/wiki/Engie"
     ],
     "lat": 33.892,
     "lon": 35.516,
@@ -985,19 +1201,41 @@
         "historical_impact": "Where a flag names an industry, ask what the gift buys the giver, and who sits on the board that accepts it."
       }
     ],
-    "records_note": "Sursock posts its 2025 annual report, named supporter lists for 2024 to 2026, and its board of trustees, but no financial statements."
+    "records_note": "Sursock posts its 2025 annual report, named supporter lists for 2024 to 2026, and its board of trustees, but no financial statements.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://sursock.museum/",
+          "https://sursock.museum/content/our-supporters",
+          "https://sursock.museum/node/72"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Municipal endowment, donors."
+      }
+    },
+    "other_findings": "The museum's 2026 supporter list names Fondation Engie and Fondation CMA CGM as Energy Sponsors; Engie's core business still depends largely on fossil fuels, including European gas transmission and LNG imports, per Wikipedia. | In March 2026 L'Orient Today reported the museum withdrew a fundraising appeal tied to the war and displacement after public criticism; the director said the text had not been authorised.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "The MAC",
     "location": "Belfast, UK",
-    "tier": "A",
+    "tier": "B",
     "size": "S",
-    "funding": "\u00a33.0M income (FY2025). Arts Council NI \u00a31.1M, Belfast City Council \u00a3120k, Freelands Foundation \u00a3126k, Art Fund, Henry Moore Foundation, Dormant Accounts; sponsors include Clever Fulton Rankin.",
+    "funding": "Income \u00a32.99M against spending \u00a33.30M (year to March 2025). Arts Council of Northern Ireland is principal funder (over \u00a31M a year); Belfast City Council and Department for Communities, plus trusts (Henry Moore, Freelands, Art Fund, Foyle, Ulster Garden Villages), Dormant Accounts and sponsor Clever Fulton Rankin.",
     "watch": "Operates under Northern Ireland Charity Commission regulatory standards.",
     "sources": [
       "https://findthatcharity.uk/orgid/GB-NIC-100754",
       "https://themaclive.com/support",
-      "https://themaclive.com/support-us/supporters"
+      "https://themaclive.com/support-us/supporters",
+      "https://themaclive.com/about-us/news/the-mac-is-shortlisted-for-prestigious-freelands-award1",
+      "https://opencharities.uk/ni/100808",
+      "https://www.niassembly.gov.uk/globalassets/documents/raise/deposited-papers/2025/dp1941.pdf",
+      "https://www.cladglobal.com/CLADnews/architecture-design/&pound;18m-Belfast-arts-venue-opens-next-month/300379",
+      "https://www.museumsassociation.org/museums-journal/news/09012017-mac-belfast-receives-275000-government-bailout",
+      "https://artsprofessional.co.uk/news/newsreel/belfast-mac-and-ulster-orchestra-given-ps600k-lifeline",
+      "https://www.artsprofessional.co.uk/node/223762",
+      "https://ie.irishnews.com/news/northern-ireland/art-education-in-schools-new-initiative-from-the-mac-set-to-bring-value-of-art-to-life-SMI5MRYNLBG2VO6K2F553WXXYQ"
     ],
     "lat": 54.601,
     "lon": -5.928,
@@ -1029,12 +1267,22 @@
           "https://discovernorthernireland.com/The-MAC-Belfast-P516"
         ],
         "retrieved": "2026-10-13"
+      },
+      "funding": {
+        "urls": [
+          "https://themaclive.com/support-us/supporters",
+          "https://themaclive.com/about-us/news/the-mac-is-shortlisted-for-prestigious-freelands-award1",
+          "https://opencharities.uk/ni/100808"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u00a33.0M income (FY2025). Arts Council NI \u00a31.1M, Belfast City Council \u00a3120k, Freelands Foundation \u00a3126k, Art Fund, Henry Moore Foundation, Dormant Accounts; sponsors include Clever Fulton Rankin."
       }
     },
     "year_founded": 2012,
     "address": "10 Exchange Street West, Belfast BT1 2NJ",
-    "grade": 1,
-    "grade_basis": "No flagged funder or objection on record, and figures are shown.",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories.",
     "records_note": "The NI register holds annual reports 2023 to 2024 and accounts to 2025; the supporters page shows tiered logos without names, and trustees are listed.",
     "finances_note": "FY2024-25 income GBP 2.99M: about 42 percent public (Arts Council NI, Belfast City Council, dormant accounts), 7 percent trusts and sponsors, 47 percent trading and rentals (accounts note 5).",
     "affiliations_note": "Member of Gallery Climate Coalition, Plus Tate. Listed in the Art Fund directory.",
@@ -1043,19 +1291,34 @@
         "funder": "Art Fund",
         "institutions": 16
       }
-    ]
+    ],
+    "flags": [
+      "Financial instability"
+    ],
+    "why_flagged": "Government bailout in 2018, an auditor's going-concern warning around 2023, and spending above income in FY2025.",
+    "other_findings": "In January 2018 the NI Department for Communities gave The MAC \u00a3275,000 via Arts Council NI, and Belfast City Council \u00a325,000, to close a short-term funding gap, after a \u00a340,000 council bailout in October 2017 (Museums Journal). | Arts Professional reported (c. 2023) that auditors flagged a material uncertainty over The MAC's ability to continue, the board forecast a \u00a3150,028 deficit for 2022-23, and Arts Council NI moved to quarterly funding during a review. | FY2025 accounts on the NI register show income of \u00a32,986,762 and spending of \u00a33,302,232.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Crystal Bridges",
     "location": "Bentonville, USA",
-    "tier": "U",
+    "tier": "B",
     "size": "L",
-    "funding": "Walton family endowments; the Walmart Foundation gave $7M in 2023 to keep admission free through 2028. FY2024 expenses were $96.1M against revenue of $131.2M, with $37.2M in contributions.",
+    "funding": "Endowed by the Walton Family Foundation ($800M in 2011); Walmart and the Walmart Foundation pay for free admission ($20M in 2011, $7M in 2023). 2024 Form 990: revenue $131.2M, expenses $96.1M, contributions $35.6M.",
     "watch": "Walmart Foundation is a current funder. Walmart's anti-union policy draws documented criticism; the museum's funding sources are a point of debate. No protest turned up.",
     "sources": [
       "https://talkbusiness.net/2023/08/7m-grant-keeps-crystal-bridges-admission-free-through-2028/",
       "https://projects.propublica.org/nonprofits/organizations/201359710",
-      "https://en.wikipedia.org/wiki/Walmart"
+      "https://en.wikipedia.org/wiki/Walmart",
+      "https://crystalbridges.org",
+      "https://talkbusiness.net/2011/05/walton-family-donates-800-million-to-crystal-bridges-museum/",
+      "https://crystalbridges.org/blog/walmart-donates-20-million-to-crystal-bridges-museum-of-american-art-to-sponsor-admission/",
+      "https://www.ebsco.com/articles/history/dd5c260d-4164-5f4c-b90a-7b0c70cec3ca/walmart-foundation-awards-7-million-for-art-museum",
+      "https://crystalbridges.org/news-room/crystal-bridges-receives-7-million-walmart-foundation-grant-to-cover-admission-fees-for-all-visitors-and-to-support-the-momentary",
+      "https://impala.digital/public/profiles/20-1359710/financials/income-statement",
+      "https://talkbusiness.net/2021/11/olivia-walton-assumes-board-leadership-role-at-crystal-bridges-museum-of-american-arts/",
+      "https://www.fiercehealthcare.com/healthcare/current-and-former-walmart-workers-hold-teach-ins-to-coincide-opening-crystal-bridges",
+      "https://www.thenation.com/article/archive/walmart-strikers-target-waltons-now-calls-out-obamas/tnamp/"
     ],
     "lat": 36.382,
     "lon": -94.204,
@@ -1082,20 +1345,48 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://crystalbridges.org",
+          "https://talkbusiness.net/2011/05/walton-family-donates-800-million-to-crystal-bridges-museum/",
+          "https://crystalbridges.org/blog/walmart-donates-20-million-to-crystal-bridges-museum-of-american-art-to-sponsor-admission/"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Walton family endowments; the Walmart Foundation gave $7M in 2023 to keep admission free through 2028. FY2024 expenses were $96.1M against revenue of $131.2M, with $37.2M in contributions."
       }
     },
     "records_note": "Annual reports 2017 to 2020 as videos, Form 990s 2014 to 2023 on ProPublica, a dated 2025-26 supporters list, and the board listed.",
     "finances_note": "Calendar 2024 income USD 131.2M: about 28 percent donations and membership, 8 percent earned; investment income and gains add 62 percent; no government grants (Form 990, Part VIII).",
-    "affiliations_note": "Crystal Bridges runs The Momentary as its satellite art space in downtown Bentonville and houses Remuseum, an independent museum research project. Member of AAMD."
+    "affiliations_note": "Crystal Bridges runs The Momentary as its satellite art space in downtown Bentonville and houses Remuseum, an independent museum research project. Member of AAMD.",
+    "flags": [
+      "Labour practices",
+      "Protest or boycott"
+    ],
+    "why_flagged": "Funded by the Walton family and Walmart, and the museum has been the site or subject of union-backed protests over Walmart's labour record.",
+    "other_findings": "On the museum's opening day, 11 November 2011, current and former Walmart workers held teach-ins contrasting the museum's cost with Walmart health-cover cuts, per a UFCW-backed press release (partisan). | On 7 June 2013 striking members of union-backed OUR Walmart walked through Crystal Bridges in protest, reported by The Nation (left-leaning). | Unverified: OUR Walmart alleged Walmart retaliated against workers who organised, as reported by The Nation (left-leaning).",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A tie or objection on record, with no flagged funder: protest or boycott."
   },
   {
     "name": "Gropius Bau",
     "location": "Berlin, Germany",
     "tier": "U",
     "size": "L",
-    "funding": "\u20ac12M. Berliner Festspiele, Federal Government Commissioner for Culture and the Media.",
+    "funding": "Federally funded: run by the Berliner Festspiele within KBB GmbH, whose sole shareholder is the Federal Republic and which is funded by the Federal Government Commissioner for Culture and the Media (BKM). No separate Gropius Bau budget found.",
     "sources": [
-      "https://www.berlinerfestspiele.de/en/gropius-bau/about-us"
+      "https://www.berlinerfestspiele.de/en/gropius-bau/about-us",
+      "https://en.wikipedia.org/wiki/Gropius_Bau",
+      "https://www.kbb.eu/magnoliaPublic/dam/jcr:d608fe85-0d55-413b-825a-83b2e1c42eb9/kbb-eu/Downloads/Nachhaltigkeit/UME_2025_web.pdf",
+      "https://kbb.eu/en/ueber-die-kbb/geschichte",
+      "https://kbb.eu/en/ueber-die-kbb/auftrag",
+      "https://www.berlin.de/sen/kultur/kulturpolitik/akteure/bund/artikel.80368.php",
+      "https://artreview.com/jenny-schlenzka-to-direct-gropius-bau-in-berlin/",
+      "https://contemporaryand.com/en/opportunities/director-of-the-gropius-bau-f-m-d",
+      "https://www.e-flux.com/announcements/501925/seeking-director/",
+      "https://tripleampersand.org/berlin-we-have-a-yoko-and-klaus-problem/"
     ],
     "lat": 52.506,
     "lon": 13.382,
@@ -1125,17 +1416,33 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Gropius_Bau",
+          "https://www.kbb.eu/magnoliaPublic/dam/jcr:d608fe85-0d55-413b-825a-83b2e1c42eb9/kbb-eu/Downloads/Nachhaltigkeit/UME_2025_web.pdf",
+          "https://kbb.eu/en/ueber-die-kbb/geschichte"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u20ac12M. Berliner Festspiele, Federal Government Commissioner for Culture and the Media."
       }
-    }
+    },
+    "other_findings": "Unverified: a Die Welt opinion column by Cornelius Tittel (May 2025, critical and satirical) argues Klaus Biesenbach influenced director Jenny Schlenzka's appointment.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Haus der Kulturen der Welt (HKW)",
     "location": "Berlin, Germany",
     "tier": "U",
     "size": "L",
-    "funding": "\u20ac18M. Federal Government Commissioner for Culture and the Media (BKM), Ausw\u00e4rtiges Amt.",
+    "funding": "Federally funded: supported by the Federal Government Commissioner for Culture and the Media (BKM) and the Federal Foreign Office, and run by KBB GmbH, whose sole shareholder is the Federal Republic. No separate HKW budget found.",
     "sources": [
-      "https://www.hkw.de/en/hkw/about_us/partner.php"
+      "https://www.hkw.de/en/hkw/about_us/partner.php",
+      "https://en.wikipedia.org/wiki/Haus_der_Kulturen_der_Welt",
+      "https://www.kbb.eu/magnoliaPublic/dam/jcr:d608fe85-0d55-413b-825a-83b2e1c42eb9/kbb-eu/Downloads/Nachhaltigkeit/UME_2025_web.pdf",
+      "https://kbb.eu/en/ueber-die-kbb/geschichte",
+      "https://www.berlin.de/sen/kultur/kulturpolitik/akteure/bund/artikel.80368.php"
     ],
     "lat": 52.518,
     "lon": 13.365,
@@ -1195,8 +1502,19 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Haus_der_Kulturen_der_Welt",
+          "https://www.kbb.eu/magnoliaPublic/dam/jcr:d608fe85-0d55-413b-825a-83b2e1c42eb9/kbb-eu/Downloads/Nachhaltigkeit/UME_2025_web.pdf",
+          "https://kbb.eu/en/ueber-die-kbb/geschichte"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u20ac18M. Federal Government Commissioner for Culture and the Media (BKM), Ausw\u00e4rtiges Amt."
       }
-    }
+    },
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "KW Institute for Contemporary Art",
@@ -1700,11 +2018,20 @@
   {
     "name": "CAPC Mus\u00e9e d Art Contemporain",
     "location": "Bordeaux, France",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
-    "funding": "\u20ac3.8M. Ville de Bordeaux, DRAC Nouvelle-Aquitaine, les Amis du CAPC.",
+    "funding": "Owned and run by the City of Bordeaux with support from DRAC Nouvelle-Aquitaine (French state). 2023 patrons named by the museum: Les Amis du Capc, Cultura, Banque Palatine and CIC (major patrons), plus Lacoste, Unikalo, Ch\u00e2teau Haut-Selve, Ch\u00e2teau de Camensac and H\u00f4tel de Normandie.",
     "sources": [
-      "https://www.capc-bordeaux.fr/partenaires"
+      "https://www.capc-bordeaux.fr/partenaires",
+      "https://www.capc-bordeaux.fr",
+      "https://www.capc-bordeaux.fr/en/node/174",
+      "https://en.wikipedia.org/wiki/CAPC_Bordeaux",
+      "https://www.e-flux.com/announcements/513946/50th-anniversary",
+      "https://www.culture.gouv.fr/fr/Media/medias-creation-rapide/Telecharger-le-dossier-de-presse-du-50e-anniversaire-du-Capc.pdf",
+      "https://www.bordeaux.fr/sites/bor-bdxfr-drupal/files/bm_actes/organismes/bordeaux/conseils/2026-07-06/39_d1783414718389.pdf",
+      "https://www.theartnewspaper.com/news/french-art-world-shocked-at-sacking-of-bordeaux-museum-director",
+      "https://hyperallergic.com/bordeaux-museum-director-fired-support-art-world",
+      "https://museumforall.eu/museum/bordeaux-capc-musee-dart-contemporain-de-bordeaux/"
     ],
     "lat": 44.848,
     "lon": -0.572,
@@ -1734,20 +2061,46 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://www.capc-bordeaux.fr",
+          "https://www.capc-bordeaux.fr/en/node/174",
+          "https://en.wikipedia.org/wiki/CAPC_Bordeaux"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u20ac3.8M. Ville de Bordeaux, DRAC Nouvelle-Aquitaine, les Amis du CAPC."
       }
-    }
+    },
+    "flags": [
+      "Political interference"
+    ],
+    "why_flagged": "In 2018 the City of Bordeaux dismissed director Mar\u00eda In\u00e9s Rodr\u00edguez, and 79 art-world figures publicly criticised municipal pressure and shrinking funds.",
+    "other_findings": "In March 2018 the City of Bordeaux dismissed director Mar\u00eda In\u00e9s Rodr\u00edguez citing 'managerial difficulties' (The Art Newspaper, Hyperallergic). | City culture deputy Fabien Robert asked 'Does contemporary art still exist?' and proposed the CAPC become a 'vitrine' (Hyperallergic). | 79 artists and curators signed an open letter in Lib\u00e9ration criticising recurring municipal pressure and shrinking funds at the museum and asking the culture minister to investigate (Hyperallergic).",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories."
   },
   {
     "name": "Kunsthaus Bregenz",
     "location": "Bregenz, Austria",
     "tier": "B",
     "size": "S",
-    "funding": "Commissioned by the State of Vorarlberg. Principal sponsor Hypo Vorarlberg; also illwerke vkw, Zumtobel, UNIQA (2026), Hugo Boss and Mader Flatz Schett.",
+    "funding": "Run by the state-owned Vorarlberger Kulturh\u00e4user-Betriebsgesellschaft and subsidised by the State of Vorarlberg (\u20ac2.0M in 2011, projected \u20ac2.6M by 2014 per the state audit office). Principal sponsor Hypo Vorarlberg; also vkw, Zumtobel, KUB Freunde, Mader Flatz Schett, UNIQA (2026) and Hugo Boss (prize).",
     "watch": "State museum of Vorarlberg designed by Peter Zumthor.",
     "sources": [
       "https://www.kunsthaus-bregenz.at/en/about-kub/",
       "https://vorarlberg.at",
-      "https://www.kunsthaus-bregenz.at/en/sponsors-partners/partners"
+      "https://www.kunsthaus-bregenz.at/en/sponsors-partners/partners",
+      "https://www.kunsthaus-bregenz.at/en/sponsors-partners/fundraising",
+      "https://en.wikipedia.org/wiki/Kunsthaus_Bregenz",
+      "https://www.derstandard.at/story/3000000198115/thomas-d-trummer-bleibt-direktor-des-kunsthaus-bregenz",
+      "https://www.vol.at/rechnungshof-kulturhaeuser-brauchen-geld/3431070",
+      "https://arynews.tv/panama-scandalian-bank-chief",
+      "https://www.rte.ie/news/panama-papers",
+      "https://lehre.illwerkevkw.at/wp-content/uploads/2025/08/Unternehmenspraesentation_2025.pdf",
+      "https://www.bodensee-vorarlberg.com/en/kunsthaus-bregenz-1"
     ],
     "lat": 47.504,
     "lon": 9.746,
@@ -1774,10 +2127,20 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://www.kunsthaus-bregenz.at/en/sponsors-partners/fundraising",
+          "https://www.kunsthaus-bregenz.at/en/sponsors-partners/partners",
+          "https://en.wikipedia.org/wiki/Kunsthaus_Bregenz"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Commissioned by the State of Vorarlberg. Principal sponsor Hypo Vorarlberg; also illwerke vkw, Zumtobel, UNIQA (2026), Hugo Boss and Mader Flatz Schett."
       }
     },
-    "grade": 3,
-    "grade_basis": "A funder worth noting, outside the flag categories.",
+    "grade": 4,
+    "grade_basis": "One flagged funder category on record: fossil fuels.",
     "why_flagged": "illwerke vkw is state-owned and mostly hydro but also sells natural gas, so B under the utility rule.",
     "visual_critiques": [
       {
@@ -1832,19 +2195,35 @@
       }
     ],
     "records_note": "Names its main sponsors in text and others as logos, with no date; it posts no annual report, accounts or board list.",
-    "affiliations_note": "Business administration sits with Vorarlberger Kulturh\u00e4user alongside the vorarlberg museum and Landestheater; its partners page lists Swiss and Liechtenstein art museums and Vorarlberg cultural bodies."
+    "affiliations_note": "Business administration sits with Vorarlberger Kulturh\u00e4user alongside the vorarlberg museum and Landestheater; its partners page lists Swiss and Liechtenstein art museums and Vorarlberg cultural bodies.",
+    "flags": [
+      "Fossil fuels",
+      "Financial crime or tax havens"
+    ],
+    "other_findings": "In April 2016 Hypo Vorarlberg CEO Michael Grahammer resigned after the bank was named in the Panama Papers; he denied the bank broke any laws (AFP via ARY News). | Austria's financial market authority reviewed Hypo Vorarlberg's accounts in 2016; a 2012 probe into a Virgin Islands firm linked to US-sanctioned Gennady Timchenko was dropped in 2013 for lack of evidence (AFP via ARY News). | illwerke vkw, mainly owned by the State of Vorarlberg, runs hydropower but also supplies natural gas and operates the regional gas grid (company presentation 2025). | The state audit office reported in 2012 that KUB's subsidy would rise from \u20ac2.0M to \u20ac2.6M by 2014 because a main sponsor dropped out (vol.at).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Kunsthalle Bremen",
     "location": "Bremen, Germany",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
-    "funding": "Run by the Kunstverein in Bremen. Funders include Senator f\u00fcr Kultur, Senatskanzlei, Sparkasse Bremen, EY, Hermann Reemtsma Stiftung, Fritz Thyssen Stiftung, Hollweg Stiftung and Kaefer.",
+    "funding": "Owned and run by the Kunstverein in Bremen (about 10,000 members); public funding from the City of Bremen (\u20ac2.7M a year budgeted in 2016/17) covers roughly 40% of the budget, with the rest from members, foundations and sponsors.",
     "watch": "Hermann Reemtsma Stiftung was set up in 1988 by the son of cigarette maker Hermann F. Reemtsma, so its money is tobacco-family money.",
     "sources": [
       "https://www.kunsthalle-bremen.de/de/ueber-uns/foerderer-und-sponsoren",
       "https://de.wikipedia.org/wiki/Hermann_Reemtsma_Stiftung",
-      "https://de.wikipedia.org/wiki/Hermann_F%C3%BCrchtegott_Reemtsma"
+      "https://de.wikipedia.org/wiki/Hermann_F%C3%BCrchtegott_Reemtsma",
+      "https://www.kunsthalle-bremen.de/en/the-kunstverein-in-bremen/the-kunstverein",
+      "https://taz.de/!5799087",
+      "https://www.kultur.bremen.de/sixcms/media.php/13/Vorlage%2034%20-%20%20Kunsthalle.pdf",
+      "https://en.wikipedia.org/wiki/Kunsthalle_Bremen",
+      "https://artsandculture.google.com/story/OgWhsLNaTLYSLQ",
+      "https://tourispo.de/museum/kunsthalle-bremen_preise-und-oeffnungszeiten.html",
+      "https://foerdermittelkompass.reflecta.org/grant_providers/hermann-reemtsma-stiftung-1?locale=en",
+      "https://www.artnews.com/art-news/news/german-restitution-panel-rejects-grosz-heirs-claims-bremen-kunsthalle-1234722634",
+      "https://www.volksstimme.de/kultur/raubkunst-streit-grosz-gemalde-konnen-in-bremen-bleiben-3941073",
+      "https://www.juedische-allgemeine.de/kultur/bremer-kunsthalle-darf-bedeutendes-pissarro-gemaelde-behalten"
     ],
     "lat": 53.073,
     "lon": 8.815,
@@ -1870,10 +2249,21 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://www.kunsthalle-bremen.de/en/the-kunstverein-in-bremen/the-kunstverein",
+          "https://taz.de/!5799087",
+          "https://www.kultur.bremen.de/sixcms/media.php/13/Vorlage%2034%20-%20%20Kunsthalle.pdf"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Run by the Kunstverein in Bremen. Funders include Senator f\u00fcr Kultur, Senatskanzlei, Sparkasse Bremen, EY, Hermann Reemtsma Stiftung, Fritz Thyssen Stiftung, Hollweg Stiftung and Kaefer."
       }
     },
     "flags": [
-      "Tobacco"
+      "Tobacco",
+      "Nazi-era provenance"
     ],
     "grade": 4,
     "grade_basis": "One flagged funder category on record: tobacco.",
@@ -1979,7 +2369,10 @@
       }
     ],
     "records_note": "The Kunsthalle shows 22 funders as undated logos and publishes no annual report, accounts or board list.",
-    "affiliations_note": "The Kunsthalle Bremen is still run privately by the Kunstverein in Bremen, which has over 11,000 members. Member of ADKV, Deutscher Museumsbund."
+    "affiliations_note": "The Kunsthalle Bremen is still run privately by the Kunstverein in Bremen, which has over 11,000 members. Member of ADKV, Deutscher Museumsbund.",
+    "why_flagged": "A funder, the Hermann Reemtsma Stiftung, is cigarette-family money, and the museum has faced Nazi-era restitution claims in 2024 and 2025.",
+    "other_findings": "The Hermann Reemtsma Stiftung was founded in 1988 by Hermann-Hinrich Reemtsma and is named for his father, cigarette maker Hermann F. Reemtsma; it distributes \u20ac4\u20136M a year (reflecta). | In October 2024 the German Advisory Commission rejected the George Grosz heirs' claim to two paintings, finding the loss stemmed from debts to Alfred Flechtheim predating 1933 (ARTnews, Volksstimme). | In April 2025 the Kunsthalle kept Pissarro's 'Girl Lying in the Grass', sold in 1942 by Jaap van den Bergh while in hiding, after a compensation agreement with his heir (J\u00fcdische Allgemeine). | The museum has returned several Nazi-looted works between 2009 and 2016 and provenance research on Bremen dealers continues (Wikipedia).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Institute of Modern Art",
@@ -2728,11 +3121,17 @@
     "location": "Cardiff, UK",
     "tier": "B",
     "size": "S",
-    "funding": "\u00a33.6M income (FY2025). Arts Council of Wales core grant \u00a3681k, BFI, Cardiff Council, Welsh Government, trusts including Garfield Weston and Foyle. Gulbenkian UK Branch grant for Experimentica 2026.",
+    "funding": "Registered charity with \u00a33.57M income in the year to March 2025; Arts Council of Wales offered \u00a3400,000 for 2024/25, with National Lottery and BFI support and earned income from film, bars and workspace.",
     "watch": "Community cultural hub and contemporary gallery in Cardiff.",
     "sources": [
       "https://findthatcharity.uk/orgid/GB-CHC-500813",
-      "https://www.chapter.org/support-us/"
+      "https://www.chapter.org/support-us/",
+      "https://www.chapter.cymru",
+      "https://askchapter.org/support-us",
+      "https://en.wikipedia.org/wiki/Chapter_Arts_Centre",
+      "https://www.visitwales.com/chapter-arts-centre-cardiff",
+      "https://opencharities.uk/ew/500813",
+      "https://arts.wales/sites/default/files/2023-09/Investment_Review_2023_Report_and_Decisions%5B1%5D.pdf"
     ],
     "lat": 51.487,
     "lon": -3.203,
@@ -2761,6 +3160,16 @@
           "https://chapter.org/visit/getting-here"
         ],
         "retrieved": "2026-10-13"
+      },
+      "funding": {
+        "urls": [
+          "https://www.chapter.cymru",
+          "https://askchapter.org/support-us",
+          "https://en.wikipedia.org/wiki/Chapter_Arts_Centre"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u00a33.6M income (FY2025). Arts Council of Wales core grant \u00a3681k, BFI, Cardiff Council, Welsh Government, trusts including Garfield Weston and Foyle. Gulbenkian UK Branch grant for Experimentica 2026."
       }
     },
     "year_founded": 1971,
@@ -2834,7 +3243,9 @@
         "funder": "Gulbenkian Foundation",
         "institutions": 7
       }
-    ]
+    ],
+    "other_findings": "The domain in the record, chapter.org, now redirects (302) to askchapter.org, the site of an unrelated US Medicare insurance agency; the arts centre now uses chapter.cymru. | Not related: Chapter Medicare (askchapter.org) \u2014 a US health insurance agency that now receives chapter.org traffic",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "VISUAL",
@@ -2845,7 +3256,13 @@
     "sources": [
       "https://visualcarlow.ie/support",
       "https://www.artscouncil.ie",
-      "https://www.visualcarlow.ie/"
+      "https://www.visualcarlow.ie/",
+      "https://www.visualcarlow.ie/about",
+      "https://visualcarlow.ie/about/people-governance",
+      "https://visualcarlow.ie/documents/STRATEGIC-PLAN-July-2023_2027.pdf",
+      "https://carlow.ie/arts-and-culture/arts-development/arts-centres",
+      "https://www.oireachtas.ie/en/debates/question/2023-05-18/54/",
+      "https://abcnews.go.com/amp/Entertainment/wireStory/david-ross-resigns-school-visual-arts-after-ties-129860126"
     ],
     "lat": 52.835,
     "lon": -6.933,
@@ -2892,19 +3309,39 @@
     "grade": 3,
     "grade_basis": "A tie or objection on record, with no flagged funder: epstein-linked.",
     "records_note": "No annual reports; posts 2024 financial statements and a nine-member board with appointment years; funders appear as undated logos.",
-    "affiliations_note": "VISUAL is a project of the non-profit company Carlow Arts Centre Ltd, and Carlow College donated the site for its building."
+    "affiliations_note": "VISUAL is a project of the non-profit company Carlow Arts Centre Ltd, and Carlow College donated the site for its building.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://www.visualcarlow.ie/",
+          "https://www.visualcarlow.ie/about",
+          "https://visualcarlow.ie/about/people-governance"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research"
+      }
+    },
+    "funding": "Run by Carlow Arts Centre Ltd, whose sole shareholder is Carlow County Council; the \u20ac18M building was a local-authority project with a \u20ac3.17M state ACCESS grant, and running funders shown are the Arts Council, Carlow County Council and Carlow LEO.",
+    "other_findings": "Not related: School of Visual Arts (New York) \u2014 US art school whose MFA chair David A. Ross resigned in 2026 over Epstein emails; no connection to VISUAL Carlow",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "MAIIAM",
     "location": "Chiang Mai, Thailand",
     "tier": "U",
     "size": "S",
-    "funding": "Privately held by the Beurdeley-Bunnag family: Jean Michel Beurdeley, the late Patsri Bunnag and son Eric Bunnag Booth.",
+    "funding": "Privately owned by the Beurdeley-Bunnag family; press describes it as funded by Eric Bunnag Booth. The Yanghyun Foundation supported its 2016 opening exhibition.",
     "watch": "First private contemporary art museum in Chiang Mai, Thailand. Founded by Jean Michel Beurdeley and Eric Bunnag Booth in memory of Chao Chom Iam.",
     "sources": [
       "https://www.maiiam.com/about/",
       "https://www.maiiam.com",
-      "https://www.maiiam.com/"
+      "https://www.maiiam.com/",
+      "https://maiiam.com/en",
+      "https://www.bangkokpost.com/life/arts-and-entertainment/1022665/brand-new-world",
+      "https://www.chiangmaicitylife.com/citynow/social-life/live-events/official-opening-maiiam-museum-contemporary-art",
+      "https://www.chiangmaicitylife.com/clg/see-do/art/maiiams-impact-chiang-mais-art-scene/",
+      "https://www.larryslist.com/artmarket/?p=5797",
+      "https://archive.artasiapacific.com/issue/eric-booth-committed-to-the-new?locale=en"
     ],
     "lat": 18.76,
     "lon": 99.087,
@@ -2927,20 +3364,40 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://maiiam.com/en",
+          "https://www.bangkokpost.com/life/arts-and-entertainment/1022665/brand-new-world",
+          "https://www.chiangmaicitylife.com/citynow/social-life/live-events/official-opening-maiiam-museum-contemporary-art"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Privately held by the Beurdeley-Bunnag family: Jean Michel Beurdeley, the late Patsri Bunnag and son Eric Bunnag Booth."
       }
     },
-    "records_note": "The site publishes no annual reports, accounts, funder list or board; it names only the Beurdeley-Bunnag family as founders."
+    "records_note": "The site publishes no annual reports, accounts, funder list or board; it names only the Beurdeley-Bunnag family as founders.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Museum of Contemporary Art Chicago (MCA)",
     "location": "Chicago, USA",
     "tier": "U",
     "size": "L",
-    "funding": "Individual donations, board giving, Northern Trust, BMO Harris, Bank of America.",
+    "funding": "FY2025 revenue $28.8M and expenses $34.9M, funded mainly by individuals, family foundations and endowment returns, plus corporate donors (Chanel, Google, Hauser & Wirth, NBC Universal, Northern Trust) and state and federal grants.",
     "watch": "",
     "sources": [
       "https://mcachicago.org/support/corporate-giving",
-      "https://blockclubchicago.org/2024/05/05/68-arrested-after-art-institute-asks-police-to-clear-pro-palestinian-encampment/"
+      "https://blockclubchicago.org/2024/05/05/68-arrested-after-art-institute-asks-police-to-clear-pro-palestinian-encampment/",
+      "https://mcachicago.org/about/annual-reports/2025-annual-report/",
+      "https://mcachicago.org/visit/faq/",
+      "https://live.mcachicago.org/about",
+      "https://impala.digital/public/profiles/36-6154098/overview",
+      "https://hyperallergic.com/mca-chicago-gets-another-huge-gift",
+      "https://www.theartnewspaper.com/2025/03/11/mca-chicago-anonymous-gift-10m-performance-fund",
+      "https://hyperallergic.com/mca-chicago-police-department",
+      "https://news.artnet.com/art-world/mca-chicago-artists-withdraw-1951456",
+      "https://abc7chicago.com/post/68-arrested-at-pro-palestinian-protest-at-art-institute-of-chicago/14766246/"
     ],
     "lat": 41.897,
     "lon": -87.621,
@@ -2967,6 +3424,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://mcachicago.org/about/annual-reports/2025-annual-report/",
+          "https://mcachicago.org/visit/faq/",
+          "https://live.mcachicago.org/about"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Individual donations, board giving, Northern Trust, BMO Harris, Bank of America."
       }
     },
     "visual_critiques": [
@@ -3020,20 +3487,28 @@
         ],
         "historical_impact": "Read the programme and the turnover of curators against what the museum keeps, conserves and pays for."
       }
-    ]
+    ],
+    "other_findings": "June 2020: after a campaign by its Teen Creative Agency, MCA agreed to stop contracting Chicago Police Department services (Hyperallergic). | March 2021: artists withdrew from 'The Long Dream' over the layoff of more than 40 staff; the artists say 57 withdrew, while the museum counts six artists and one collective (Artnet). | Not related: Art Institute of Chicago \u2014 a separate museum; the May 2024 encampment arrests were at the Art Institute, not the MCA",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "The Renaissance Society",
     "location": "Chicago, USA",
     "tier": "A",
     "size": "S",
-    "funding": "Mellon, Teiger and Warhol foundations; Edlis Neeson, Pritzker Traubert and Zell family foundations for the Next Century Fund; Illinois Arts Council; University of Chicago, about 5 percent. FY2025 expenses $1.9M.",
+    "funding": "Independent 501(c)(3) with a budget of about $2M, funded by foundations (Mellon $750k over 3 years from 2024, Teiger, Warhol, Mansueto), Chicago family foundations for the Next Century Fund, the Illinois Arts Council and an annual benefit; the University of Chicago gives about 5% plus free space.",
     "watch": "University-based non-collecting kunsthalle; non-corporate academic funding.",
     "sources": [
       "https://renaissancesociety.org/support/",
       "https://projects.propublica.org/nonprofits/organizations/362174240",
       "https://renaissancesociety.org/about/",
-      "https://projects.propublica.org/nonprofits/organizations/366109822"
+      "https://projects.propublica.org/nonprofits/organizations/366109822",
+      "https://renaissancesociety.org/news/82/the-ren-receives-mellon-grant/",
+      "https://renaissancesociety.org/news/16/the-ren-announces-largest-gifts-in-100-year-history",
+      "https://theartnewspaper.com/2016/05/23/little-museum-big-gift-renaissance-society-receives-dollar15m-in-pledged-funding-for-artist-commissions-and-shows",
+      "https://en.wikipedia.org/wiki/Renaissance_Society",
+      "https://www.guidestar.org/profile/36-6109822",
+      "https://chicago.suntimes.com/art/2026/09/09/renaissance-society-chicago-gallery-myriam-ben-salah"
     ],
     "lat": 41.789,
     "lon": -87.598,
@@ -3060,6 +3535,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://renaissancesociety.org/about/",
+          "https://renaissancesociety.org/news/82/the-ren-receives-mellon-grant/",
+          "https://renaissancesociety.org/news/16/the-ren-announces-largest-gifts-in-100-year-history"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Mellon, Teiger and Warhol foundations; Edlis Neeson, Pritzker Traubert and Zell family foundations for the Next Century Fund; Illinois Arts Council; University of Chicago, about 5 percent. FY2025 expenses $1.9M."
       }
     },
     "grade": 1,
@@ -3083,7 +3568,8 @@
         "funder": "Pritzker family",
         "institutions": 5
       }
-    ]
+    ],
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Pallant House Gallery",
@@ -4342,14 +4828,25 @@
   {
     "name": "Uffizi",
     "location": "Florence, Italy",
-    "tier": "A",
+    "tier": "B",
     "size": "L",
-    "funding": "State museum under the Ministry of Culture. Donors include Veronica Atkins (\u20ac4.5M, Boboli amphitheatre), Edwin L. Wiegand Foundation ($1M, Vasari Corridor), Ferragamo (\u20ac600k, 2014) and Fondazione CR Firenze.",
+    "funding": "State museum under the Ministry of Culture. The 2026 \u20ac50M revamp is funded half by ticket sales and half by ministry funds. Private gifts include Veronica Atkins (about \u20ac4.5M, Boboli amphitheatre, 2023), the Edwin L. Wiegand Foundation ($1M, Vasari Corridor, Oct 2023) and Ferragamo (\u20ac600k, 2014).",
     "sources": [
       "https://www.uffizi.it/en/the-uffizi/governance",
       "https://cultura.gov.it",
       "https://www.uffizi.it/news/al-via-i-nuovi-uffizi-diffusi-le-gallerie-e-fondazione-cr-firenze-insieme",
-      "https://www.artribune.com/tribnews/2014/05/salvatore-ferragamo-mecenate-di-firenze-la-casa-di-moda-dona-600mila-euro-agli-uffizi-serviranno-a-riallestire-in-un-anno-otto-nuove-sale-sul-quattrocento-fiorentino/"
+      "https://www.artribune.com/tribnews/2014/05/salvatore-ferragamo-mecenate-di-firenze-la-casa-di-moda-dona-600mila-euro-agli-uffizi-serviranno-a-riallestire-in-un-anno-otto-nuove-sale-sul-quattrocento-fiorentino/",
+      "https://www.uffizi.it/en",
+      "https://www.uffizi.it/en/td/donation",
+      "https://www.theartnewspaper.com/2026/08/10/uffizi-galleries-in-florence-announces-unprecedented-50m-revamp",
+      "https://finestresullarte.info/en/news/uffizi-american-patron-donates-nearly-usd5-million-to-restore-boboli-amphitheater",
+      "https://www.finestresullarte.info/en/museums/uffizi-usd1-million-maxi-donation-for-vasari-corridor",
+      "https://www.theflorentine.net/2023/10/11/us-foundation-donates-one-million-dollars-vasari-corridor/",
+      "https://www.theflorentine.net/2014/05/08/to-florence-from-ferragamo/",
+      "https://www.open.online/2026/04/06/protesta-precari-uffizi-firenze-video/",
+      "https://www.dire.it/31-03-2026/1227849-turni-disumani-e-taglio-dei-precari-storici-agli-uffizi-scatta-la-protesta-dei-lavoratori/",
+      "https://www.euronews.com/2022/07/23/environmental-activists-stage-protest-at-uffizi-botticelli-masterpiece-unharmed",
+      "https://www.finestresullarte.info/en/news/uffizi-environmental-activists-attach-images-of-campi-bisenzio-flooding-to-glass-of-botticelli-s-venus"
     ],
     "lat": 43.768,
     "lon": 11.255,
@@ -4371,27 +4868,49 @@
           "https://www.uffizi.it/en/contacts"
         ],
         "retrieved": "2026-10-13"
+      },
+      "funding": {
+        "urls": [
+          "https://www.uffizi.it/en",
+          "https://www.uffizi.it/en/td/donation",
+          "https://www.theartnewspaper.com/2026/08/10/uffizi-galleries-in-florence-announces-unprecedented-50m-revamp"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "State museum under the Ministry of Culture. Donors include Veronica Atkins (\u20ac4.5M, Boboli amphitheatre), Edwin L. Wiegand Foundation ($1M, Vasari Corridor), Ferragamo (\u20ac600k, 2014) and Fondazione CR Firenze."
       }
     },
     "address": "Piazzale degli Uffizi 6, 50122 Florence, Italy",
-    "grade": 1,
-    "grade_basis": "No flagged funder or objection on record, and figures are shown.",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories.",
     "watch": "Contract workers protested before Botticelli's Venus on 5 April 2026 over outsourced jobs. Climate activists hit its paintings in 2022 and 2024; no funder targeted.",
     "records_note": "No annual report; its transparency portal posts accounts for 2023 to 2026 and a five-member board, and the donation page names donors, mostly undated.",
     "finances_note": "FY2025 income EUR 78.0M: about 4 percent state transfers, 1 percent donations and sponsorship, 95 percent tickets, concessions and loan fees (rendiconto 2025, entrate).",
-    "affiliations_note": "The Uffizi Galleries bring together the Uffizi, Palazzo Pitti and the Boboli Gardens, joined in 2014, with the Vasari Corridor and the Galleria d'Arte Moderna inside them."
+    "affiliations_note": "The Uffizi Galleries bring together the Uffizi, Palazzo Pitti and the Boboli Gardens, joined in 2014, with the Vasari Corridor and the Galleria d'Arte Moderna inside them.",
+    "flags": [
+      "Labour dispute"
+    ],
+    "why_flagged": "Unions protested in March\u2013April 2026 over long-serving temporary staff losing jobs under the outsourced CoopCulture services contract.",
+    "other_findings": "On 5 April 2026 museum workers backed by Sudd Cobas protested in front of Botticelli's Venus over precarious jobs (Open, 6 Apr 2026). | Dire (31 Mar 2026) names the services contractor as CoopCulture; workers say it did not keep earlier agreements after the contract changed hands. | Unverified: the unions USB and Sudd Cobas say CoopCulture and the ministry use on-call contracts (union claim, reported by Dire). | Ultima Generazione climate activists protested at Primavera on 22 July 2022 and at the Venus on 13 Feb 2024; neither protest named a Uffizi funder.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Amon Carter Museum",
     "location": "Fort Worth, USA",
-    "tier": "A",
+    "tier": "B",
     "size": "S",
-    "funding": "Founded by the Amon G. Carter Foundation, still a $100,000+ donor. FY2025: 1,387 donors gave $4.8M; public grants from Fort Worth, Arts Fort Worth, Texas Commission on the Arts.",
+    "funding": "Endowment ($60.8M) plus private gifts. In FY2025, 1,387 donors gave $4.83M; total contributed revenue was $12.38M and expenses $16.83M. The Amon G. Carter Foundation and Walton Family Foundation ($20M endowment, 2017) are major funders; public grants come from the City of Fort Worth, Arts Fort Worth, Fort Worth Tourism PID and the Texas Commission on the Arts.",
     "watch": "In October 2024 the museum closed its Cowboy show for two weeks and reopened it with a mature-content warning; artist rafa esparza called it censorship.",
     "sources": [
       "https://www.cartermuseum.org/support",
       "https://www.linkedin.com/company/eagle-energy-systems-ltd",
-      "https://d2ujpqfu85jxzw.cloudfront.net/website/panth-live/2026-05/2025_Annual_Report.pdf"
+      "https://d2ujpqfu85jxzw.cloudfront.net/website/panth-live/2026-05/2025_Annual_Report.pdf",
+      "https://cartermuseum.org/about",
+      "https://cartermuseum.org/press-release/20-million-endowment-received-carter-museum-from-walton-family",
+      "https://news.artnet.com/art-world/robert-stein-amon-carter-museum-2806871",
+      "https://www.cartermuseum.org/press-release/andrew-j-walker-depart-amon-carter-museum-american-art-following-14-years-executive",
+      "https://dallasvoice.com/cowboy-exhibit-amon-carter-lgbtq-censorship-debate/",
+      "https://southwestcontemporary.com/cowboy-amon-carter/"
     ],
     "lat": 32.749,
     "lon": -97.368,
@@ -4408,23 +4927,50 @@
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Amon%20Carter%20Museum",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Amon%20Carter%20Museum",
     "tier_note": "No reason for the flag is recorded.",
-    "grade": 1,
-    "grade_basis": "No flagged funder or objection on record, and figures are shown.",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories.",
     "records_note": "Annual reports 2018 to 2025 on its site carry a dated donor list, financial highlights and trustees; Form 990s are on ProPublica.",
     "finances_note": "FY2025 income USD 19.7M: about 1 percent government grants, 83 percent contributions (60 percent from related organizations), 2 percent earned, 13 percent investment income (Form 990, Part VIII).",
-    "affiliations_note": "The Amon Carter Museum's Library became an Associate of the Archives of American Art, the first satellite archive between the coasts. Member of AAMD."
+    "affiliations_note": "The Amon Carter Museum's Library became an Associate of the Archives of American Art, the first satellite archive between the coasts. Member of AAMD.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://cartermuseum.org/about",
+          "https://www.cartermuseum.org/support",
+          "https://d2ujpqfu85jxzw.cloudfront.net/website/panth-live/2026-05/2025_Annual_Report.pdf"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Founded by the Amon G. Carter Foundation, still a $100,000+ donor. FY2025: 1,387 donors gave $4.8M; public grants from Fort Worth, Arts Fort Worth, Texas Commission on the Arts."
+      }
+    },
+    "flags": [
+      "Censorship claim"
+    ],
+    "why_flagged": "In October 2024 the museum closed its Cowboy exhibition for about two weeks and reopened it with a mature-content warning, which artist rafa esparza called censorship.",
+    "other_findings": "Cowboy opened 28 Sept 2024, closed for about two weeks by 11 October, and reopened with a mature-content sign; the museum said it needed time to decide how to communicate with visitors (Dallas Voice, an LGBTQ outlet). | Artist rafa esparza said: \"I see this as a form of censorship\" (Dallas Voice).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "BALTIC Centre for Contemporary Art",
     "location": "Gateshead, UK",
     "tier": "A",
     "size": "L",
-    "funding": "Opened July 2002 with \u00a333.4M of Arts Council lottery capital; Gateshead Council backed the building. Corporate supporters include Tommee Tippee and NorthStandard.",
+    "funding": "Mainly public. In the year to March 2024 income was \u00a36.28M, including \u00a33.21M in government grants; the building used \u00a333.4M of Arts Council lottery capital (2002), and in April 2026 Baltic got \u00a33.65M from the Arts Everywhere Creative Foundations Fund. A \u00a310M endowment launched in June 2025 with a major gift from Sting.",
     "watch": "In March 2018 Baltic said it took no BAE money for the Great Exhibition of the North; BAE withdrew. Nissan appears only in photo captions.",
     "sources": [
       "https://baltic.art/support-us",
       "https://findthatcharity.uk/orgid/GB-CHC-1076251",
-      "https://baltic.art/how-you-can-support-us/corporate-supporters/"
+      "https://baltic.art/how-you-can-support-us/corporate-supporters/",
+      "https://en.wikipedia.org/wiki/Baltic_Centre_for_Contemporary_Art",
+      "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/3099072/full-print",
+      "https://baltic.art/news-and-media/ten-million-visitor/",
+      "https://baltic.art/news-and-media/baltic-launches-endowment-with-major-donation-from-sting/",
+      "https://artlyst.com/uk-cultural-organisations-to-share-130m-in-government-grants/",
+      "https://apollo-magazine.com/can-newcastle-gatesheads-art-scene-thrive-spite-cuts/",
+      "https://en.wikipedia.org/wiki/The_Great_Exhibition_of_the_North",
+      "https://theartnewspaper.com/news/bae-systems-pulls-sponsorship-of-great-exhibition-of-the-north-after-protests",
+      "https://www.museumsassociation.org/museums-journal/news/2018/03/06032018-artists-distance-themselves-from-get-north-arms-dealer-sponsor/"
     ],
     "lat": 54.969,
     "lon": -1.599,
@@ -4504,6 +5050,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Baltic_Centre_for_Contemporary_Art",
+          "https://findthatcharity.uk/orgid/GB-CHC-1076251",
+          "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/3099072/full-print"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Opened July 2002 with \u00a333.4M of Arts Council lottery capital; Gateshead Council backed the building. Corporate supporters include Tommee Tippee and NorthStandard."
       }
     },
     "former_ids": [
@@ -4513,19 +5069,26 @@
     "grade_basis": "No flagged funder or objection on record, and figures are shown.",
     "records_note": "No annual reports found; accounts 2021 to 2025 are on the Charity Commission register; a supporters page names funders and patrons, undated; trustees are listed.",
     "finances_note": "FY2024-25 income GBP 6.8M: about 47 percent government grants (register figure), 14 percent donations and sponsorship, 26 percent earned, 8 percent tax relief (consolidated accounts p. 18).",
-    "affiliations_note": "Runs the BxNU Institute and MFA jointly with Northumbria University; its own pages name no parent body. Member of Gallery Climate Coalition, Plus Tate. Listed in the Art Fund directory."
+    "affiliations_note": "Runs the BxNU Institute and MFA jointly with Northumbria University; its own pages name no parent body. Member of Gallery Climate Coalition, Plus Tate. Listed in the Art Fund directory.",
+    "other_findings": "BAE Systems was announced as a premier partner of the 2018 Great Exhibition of the North, where Baltic was a hub venue, and withdrew on 7 March 2018 after artist protests; Baltic said it was not in receipt of BAE funds (Museums Association, 6 March 2018).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "S.M.A.K.",
     "location": "Ghent, Belgium",
     "tier": "B",
     "size": "S",
-    "funding": "City of Ghent and Flanders. Current partners include the National Lottery, Belfius, Jan De Nul, Interparking, Christie's, Hiscox and Duvel. ENGIE has supported art workshops since 2012.",
+    "funding": "Municipal museum funded by the City of Ghent; under an agreement approved in May 2026, Flanders takes over its structural operating subsidy (freeing over \u20ac3M a year for Ghent) and it becomes a Flemish museum on 1 January 2029. Corporate partners include ENGIE, which has funded youth art workshops since 2012.",
     "watch": "Municipal contemporary museum of Ghent founded by Jan Hoet.",
     "sources": [
       "https://smak.be/en/about-smak",
       "https://stad.gent",
-      "https://smak.be/en/support-smak/met-je-bedrijf"
+      "https://smak.be/en/support-smak/met-je-bedrijf",
+      "https://stad.gent/nl/cultuur-vrije-tijd/nieuws-evenementen/smak-wordt-vlaams-museum-jaarlijks-drie-miljoen-extra-voor-gentse-cultuur",
+      "https://www.belganewsagency.eu/transition-of-smak-to-flemish-museum-frees-up-3m-annually-for-ghent",
+      "https://www.belganewsagency.eu/major-reform-to-give-flemish-museums-more-international-appeal",
+      "https://smak.be/en/news/s-m-a-k-engie-halen-3de-plaats-voor-belgische-sponsorawards",
+      "https://www.e-flux.com/announcements/6787835/philippe-van-cauteren-appointed-curator-of-art-encounters-biennial-2027"
     ],
     "lat": 51.037,
     "lon": 3.724,
@@ -4551,6 +5114,16 @@
           "https://smak.be/en/contact"
         ],
         "retrieved": "2026-10-13"
+      },
+      "funding": {
+        "urls": [
+          "https://stad.gent/nl/cultuur-vrije-tijd/nieuws-evenementen/smak-wordt-vlaams-museum-jaarlijks-drie-miljoen-extra-voor-gentse-cultuur",
+          "https://www.belganewsagency.eu/transition-of-smak-to-flemish-museum-frees-up-3m-annually-for-ghent",
+          "https://www.belganewsagency.eu/major-reform-to-give-flemish-museums-more-international-appeal"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "City of Ghent and Flanders. Current partners include the National Lottery, Belfius, Jan De Nul, Interparking, Christie's, Hiscox and Duvel. ENGIE has supported art workshops since 2012."
       }
     },
     "year_founded": 1975,
@@ -4613,14 +5186,16 @@
       }
     ],
     "records_note": "The museum posts no reports, accounts or board; its partners show as undated logos and a few names in text.",
-    "affiliations_note": "S.M.A.K. began as the contemporary art department of the Museum of Fine Arts Ghent (MSK) and became a separate museum."
+    "affiliations_note": "S.M.A.K. began as the contemporary art department of the Museum of Fine Arts Ghent (MSK) and became a separate museum.",
+    "other_findings": "ENGIE, with the ENGIE Foundation and CLW Ghent, has supported S.M.A.K. art workshops for young people since 2012; the partnership took third place at the Belgian sponsorship awards (S.M.A.K., 19 Dec 2021).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Art Gallery of Nova Scotia",
     "location": "Halifax, Canada",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
-    "funding": "Provincial crown agency. 2024-25 supporters: Province, Arts Nova Scotia, Canada Council, BMO, Scotiabank, TD Bank Group, Ubisoft, the Sobey foundations and Benjamin Bridge winery.",
+    "funding": "Provincial art museum funded mainly by the Province of Nova Scotia, with Arts Nova Scotia, Canada Council and corporate sponsors (per existing record, not re-checked). The planned C$130\u2013140M new building (C$80M province, C$30M federal, C$30M fundraising) was put on hold in 2022.",
     "watch": "TD Bank pleaded guilty on 10 October 2024 to money-laundering conspiracy and Bank Secrecy Act failures, paying about $3B.",
     "sources": [
       "https://agns.ca/wp-content/uploads/2025/06/AGNS-2024-25-Annual-Report.pdf",
@@ -4643,7 +5218,27 @@
     "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Art%20Gallery%20of%20Nova%20Scotia",
     "tier_note": "No reason for the flag is recorded.",
     "records_note": "Posts annual reports from 2013-14 to 2025-26 and financial statements back to 2011-12; the 2024-25 report names supporters and the board page names directors.",
-    "finances_note": "FY2024-25 revenue CAD 5.4M: about 60 percent provincial and federal grants, 11 percent donations, sponsorship and memberships, 16 percent earned, 9 percent endowment income (audited statements, schedule 1)."
+    "finances_note": "FY2024-25 revenue CAD 5.4M: about 60 percent provincial and federal grants, 11 percent donations, sponsorship and memberships, 16 percent earned, 9 percent endowment income (audited statements, schedule 1).",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Art_Gallery_of_Nova_Scotia",
+          "https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912",
+          "https://agns.ca/wp-content/uploads/2025/06/AGNS-2024-25-Annual-Report.pdf"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Provincial crown agency. 2024-25 supporters: Province, Arts Nova Scotia, Canada Council, BMO, Scotiabank, TD Bank Group, Ubisoft, the Sobey foundations and Benjamin Bridge winery."
+      }
+    },
+    "flags": [
+      "Sponsor misconduct"
+    ],
+    "why_flagged": "Sponsor TD Bank pleaded guilty in October 2024 to money-laundering conspiracy and Bank Secrecy Act failures, paying about $3B.",
+    "other_findings": "TD Bank pleaded guilty on 10 October 2024 to money-laundering conspiracy and Bank Secrecy Act failures, paying about $3B (NBC News, per existing record; not re-fetched this run).",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories."
   },
   {
     "name": "Amos Rex",
@@ -5141,12 +5736,19 @@
     "location": "Jevnaker, Norway",
     "tier": "U",
     "size": "L",
-    "funding": "Christen Sveaas, his investment company Kistefos AS and Christen Sveaas' art foundation; Riksantikvaren, local and county councils and savings-bank foundations.",
+    "funding": "2024 operating income about NOK 74.7M; Kistefos AS (Christen Sveaas) gave about NOK 39.1M and Stiftelsen Kistefos-Museets Driftsfond NOK 10M, with smaller grants from Riksantikvaren (about 1.8M), savings-bank foundations, Akershus fylkeskommune and Jevnaker and Ringerike kommuner.",
     "watch": "Sculpture park and museum in Jevnaker featuring 'The Twist' by BIG.",
     "sources": [
       "https://www.kistefosmuseum.com/about/about-kistefos",
       "https://www.kistefosmuseum.com",
-      "https://www.kistefosmuseum.com/om-oss/christen-sveaas-kunststiftelse"
+      "https://www.kistefosmuseum.com/om-oss/christen-sveaas-kunststiftelse",
+      "https://www.kistefosmuseum.com/uploads/documents/04943-Kistefos-Museum-arsrapport-2024-SKJERM.pdf",
+      "https://en.wikipedia.org/wiki/Kistefos_Museum_and_Sculpture_Park",
+      "https://en.wikipedia.org/wiki/Christen_Sveaas",
+      "https://en.wikipedia.org/wiki/Kistefos",
+      "https://snl.no/Christen_Sveaas",
+      "https://kistefos.no/philanthropy/the-kistefos-museum/",
+      "https://www.bairdmaritime.com/offshore/vessels-rigs/ahts/viking-supply-ships-acquires-ahts-from-kistefos"
     ],
     "lat": 60.207,
     "lon": 10.399,
@@ -5163,18 +5765,34 @@
     "tier_note": "No source outside the museum is recorded.",
     "records_note": "It posts annual reports 2010 to 2025 with full accounts and names funders; the site names only the board chair, the register the rest.",
     "finances_note": "FY2025 ordinary income NOK 42.0M: about 10 percent public, 51 percent donations, 39 percent earned; owner companies also gave NOK 97M for sculptures and buildings (annual report, note 8).",
-    "affiliations_note": "Kistefos shows the art collection of Christen Sveaas' Kunststiftelse, an art foundation set up in 2019 by the museum's founder, Christen Sveaas."
+    "affiliations_note": "Kistefos shows the art collection of Christen Sveaas' Kunststiftelse, an art foundation set up in 2019 by the museum's founder, Christen Sveaas.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://www.kistefosmuseum.com",
+          "https://www.kistefosmuseum.com/uploads/documents/04943-Kistefos-Museum-arsrapport-2024-SKJERM.pdf",
+          "https://en.wikipedia.org/wiki/Kistefos_Museum_and_Sculpture_Park"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Christen Sveaas, his investment company Kistefos AS and Christen Sveaas' art foundation; Riksantikvaren, local and county councils and savings-bank foundations."
+      }
+    },
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Kamloops Art Gallery",
     "location": "Kamloops, Canada",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
-    "funding": "City of Kamloops, Province of BC, BC Arts Council, Canada Council, Thompson-Nicola Regional District, Audain and Hamber foundations. BC Lottery Corporation sponsors free Thursday admission.",
+    "funding": "Mainly public: City of Kamloops, Province of BC, BC Arts Council, Canada Council, TNRD, plus Vancouver, Audain and Hamber foundations, named individual donors and local corporate sponsors; BCLC sponsors free Thursday admission.",
     "watch": "BCLC is a provincial Crown corporation. The Cullen Commission (2022) found it ignored police warnings about casino money laundering until 2015.",
     "sources": [
       "https://kag.bc.ca/our-supporters",
-      "https://en.wikipedia.org/wiki/British_Columbia_Lottery_Corporation"
+      "https://en.wikipedia.org/wiki/British_Columbia_Lottery_Corporation",
+      "https://kag.bc.ca/about",
+      "https://kag.bc.ca/news/freeadmissionthursday",
+      "https://www.castanetkamloops.net/news/Kamloops/513228/Kamloops-Art-Gallery-to-begin-search-for-new-executive-director-as-Chrumka-bows-out"
     ],
     "lat": 50.675,
     "lon": -120.336,
@@ -5192,19 +5810,45 @@
     "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Kamloops%20Art%20Gallery",
     "tier_note": "No reason for the flag is recorded.",
     "records_note": "Posts its 2025 annual report and signed 2025 financial statements, names donors in tiers since January 2024, and lists its trustees in the report.",
-    "finances_note": "FY2025 income CAD 1.44M: about 63 percent government grants, 9 percent private donations and sponsors, 19 percent donated artworks, 7 percent earned (audited statements, schedule 1)."
+    "finances_note": "FY2025 income CAD 1.44M: about 63 percent government grants, 9 percent private donations and sponsors, 19 percent donated artworks, 7 percent earned (audited statements, schedule 1).",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://kag.bc.ca/our-supporters",
+          "https://kag.bc.ca/about",
+          "https://kag.bc.ca/news/freeadmissionthursday"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "City of Kamloops, Province of BC, BC Arts Council, Canada Council, Thompson-Nicola Regional District, Audain and Hamber foundations. BC Lottery Corporation sponsors free Thursday admission."
+      }
+    },
+    "flags": [
+      "Gambling sponsor"
+    ],
+    "why_flagged": "BCLC, which the Cullen Commission found ignored money-laundering warnings until 2015, sponsors free Thursday admission.",
+    "other_findings": "The Cullen Commission (June 2022) found BCLC ignored repeated law enforcement warnings about casino money laundering until 2015 and called its risk tolerance 'completely unacceptable and unreasonable'. | An Independent Gambling Control Office took over oversight of BCLC from 13 April 2026.",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories."
   },
   {
     "name": "21st Century Museum of Contemporary Art",
     "location": "Kanazawa, Japan",
     "tier": "U",
     "size": "L",
-    "funding": "Municipal, run by the Kanazawa Art Promotion Foundation.",
+    "funding": "Municipal: owned by the City of Kanazawa and run as designated manager by the Kanazawa Arts Creation Foundation, whose JPY 40M endowment is 100% city-funded; corporate supporting members.",
     "watch": "UNVERIFIED: Attendance widely reported above 1M a year; roster not checked.",
     "sources": [
       "https://www.kanazawa21.jp/en/",
       "https://www.e-flux.com/announcements/?i=21st Century Museum of Contemporary Art",
-      "https://www.kanazawa21.jp/sustain/"
+      "https://www.kanazawa21.jp/sustain/",
+      "https://en.wikipedia.org/wiki/21st_Century_Museum_of_Contemporary_Art,_Kanazawa",
+      "https://www4.city.kanazawa.lg.jp/material/files/group/15/2-1geijutsu.pdf",
+      "https://www.museum.or.jp/museum/10068",
+      "https://kumanichi.com/articles/2000270",
+      "https://pedia.3rd-in.co.jp/wiki/%E9%87%91%E6%B2%A2%E5%B8%82%E4%BC%81%E6%A5%AD%E5%B1%80",
+      "https://www4.city.kanazawa.lg.jp/material/files/group/39/kenntounituite.pdf"
     ],
     "lat": 36.561,
     "lon": 136.657,
@@ -5234,6 +5878,16 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/21st_Century_Museum_of_Contemporary_Art,_Kanazawa",
+          "https://www4.city.kanazawa.lg.jp/material/files/group/15/2-1geijutsu.pdf",
+          "https://www.museum.or.jp/museum/10068"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Municipal, run by the Kanazawa Art Promotion Foundation."
       }
     },
     "visual_critiques": [
@@ -5348,19 +6002,29 @@
       "21st-century-museum-of-contemporary-art-kanazawa-kanazawa"
     ],
     "records_note": "Kanazawa 21 posts its 2025 annual report and names its supporting members by tier undated, but publishes no accounts or board.",
-    "affiliations_note": "Partners with Kanazawa College of Art and the Oku-Noto Triennale committee under 2019 agreements, and with the Kanazawa Noh Museum and Yuwaku Sousaku no Mori since 2006. Member of CIMAM."
+    "affiliations_note": "Partners with Kanazawa College of Art and the Oku-Noto Triennale committee under 2019 agreements, and with the Kanazawa Noh Museum and Yuwaku Sousaku no Mori since 2006. Member of CIMAM.",
+    "other_findings": "Kanazawa Energy took over Kanazawa's city gas business in April 2022; its shareholders are Hokuriku Electric 48%, Toho Gas 43%, Kanazawa City 3%, Hokkoku Bank 2% and Hokkoku Shimbun 2%. | The museum will close for repairs, including 2024 Noto earthquake damage, from 6 May 2027 to March 2028.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "ILHAM Gallery",
     "location": "Kuala Lumpur, Malaysia",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
-    "funding": "No funder list is published. Yayasan ILHAM, a nonprofit, has run it since 2019; IB Tower Sdn Bhd ran it from 2015. Ilham Tower is owned via Daim family firms.",
+    "funding": "Privately funded non-profit with no published funder list; it is housed in Ilham Tower, controlled by the family of the late Daim Zainuddin through Ilham Baru Sdn Bhd.",
     "watch": "Public art gallery in Kuala Lumpur committed to Southeast Asian contemporary art.",
     "sources": [
       "https://www.ilhamgallery.com/about/",
       "https://www.ilhamgallery.com",
-      "https://www.ilhamgallery.com/"
+      "https://www.ilhamgallery.com/",
+      "https://www.ilhamgallery.com/about/management/",
+      "https://artsequator.com/ilham-gallery-rahel/",
+      "https://en.wikipedia.org/wiki/Ilham_Tower",
+      "https://www.nst.com.my/amp/news/nation/2023/12/993510/business-usual-ilham-tower-tenants",
+      "https://www.malaymail.com/news/malaysia/2025/06/25/macc-moves-to-forfeit-ilham-tower-rm700m-uk-assets-linked-to-daim-and-proxies/181646",
+      "https://www.malaymail.com/news/malaysia/2025/12/10/macc-issues-fresh-forfeiture-notice-on-daim-linked-assets-amid-ongoing-probe/201431",
+      "https://theedgemalaysia.com/node/777428",
+      "https://thesun.my/news/malaysia-news/mention-of-macc-s-ilham-tower-forfeiture-application-set-for-aug-6-ao14387564/"
     ],
     "lat": 3.153,
     "lon": 101.717,
@@ -5376,18 +6040,44 @@
     "visit_url": "https://www.ilhamgallery.com/visit",
     "tier_note": "No source outside the museum is recorded.",
     "records_note": "Yayasan ILHAM, the non-profit that runs it, posts no reports, accounts, funders or board; its About pages name staff only.",
-    "affiliations_note": "Run since 1 January 2019 by the non-profit Yayasan ILHAM."
+    "affiliations_note": "Run since 1 January 2019 by the non-profit Yayasan ILHAM.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://www.ilhamgallery.com/about/management/",
+          "https://artsequator.com/ilham-gallery-rahel/",
+          "https://en.wikipedia.org/wiki/Ilham_Tower"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "No funder list is published. Yayasan ILHAM, a nonprofit, has run it since 2019; IB Tower Sdn Bhd ran it from 2015. Ilham Tower is owned via Daim family firms."
+      }
+    },
+    "flags": [
+      "Anti-corruption proceedings"
+    ],
+    "why_flagged": "The gallery's building, owned by the Daim family, is under MACC seizure and forfeiture proceedings that the owners are challenging in court.",
+    "other_findings": "MACC seized Ilham Tower on 18 December 2023 under the MACC Act, in a probe tied to the Pandora Papers. | In June 2025 MACC re-seized the tower under the AMLATFPUAA 2001 and filed to have it forfeited, alongside orders on UK assets valued at about RM700M-758M. | Unverified: MACC alleges the assets are linked to offences under Section 4(1) of the AMLATFPUAA; Daim, who died in November 2024, denied wrongdoing and called the probe politically motivated. | On 4 November 2025 the High Court granted Ilham Tower Sdn Bhd leave to challenge the second seizure, with an interim stay on enforcing forfeiture.",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories."
   },
   {
     "name": "Charleston",
     "location": "Lewes, UK",
     "tier": "U",
     "size": "S",
-    "funding": "Charity running Charleston farmhouse and its Wolfson Gallery. Gifts and grants from the Art Fund, National Lottery Heritage Fund and Arts Council England; Bloomberg Connects supplies its digital guide.",
     "watch": "Bloomberg Philanthropies runs Bloomberg Connects. More than 260 UK artists asked five London theatres to drop it in May 2026; Charleston was not named.",
     "sources": [
       "https://findthatcharity.uk/orgid/GB-CHC-1107313",
-      "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/4012805/accounts-and-annual-returns"
+      "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/4012805/accounts-and-annual-returns",
+      "https://en.wikipedia.org/wiki/Charleston_Farmhouse",
+      "https://register-of-charities.charitycommission.gov.uk/en/constituency-search/-/charity-details/4012805/financial-history",
+      "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5218170/full-print",
+      "https://lewes-eastbourne.gov.uk:443/article/2325/New-cultural-hub-in-Lewes",
+      "https://www.artfund.org/explore/museums-and-galleries/charleston-in-lewes",
+      "https://heritagefund.org.uk/news/home-bloomsbury-set-wins-ps24million",
+      "https://artlyst.com/bloomsbury-groups-charleston-trust-must-raise-400k-to-survive/"
     ],
     "lat": 50.878,
     "lon": 0.043,
@@ -5416,7 +6106,21 @@
         "funder": "Art Fund",
         "institutions": 16
       }
-    ]
+    ],
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Charleston_Farmhouse",
+          "https://register-of-charities.charitycommission.gov.uk/en/constituency-search/-/charity-details/4012805/financial-history",
+          "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5218170/full-print"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Charity running Charleston farmhouse and its Wolfson Gallery. Gifts and grants from the Art Fund, National Lottery Heritage Fund and Arts Council England; Bloomberg Connects supplies its digital guide."
+      }
+    },
+    "other_findings": "Not related: Charleston Lewes Limited is a separate registered charity (2023) that runs Charleston in Lewes, not the Charleston Trust itself",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Museo de Arte de Lima",
@@ -5701,7 +6405,7 @@
     "location": "London, UK",
     "tier": "B",
     "size": "S",
-    "funding": "\u00a31.0M income (FY2025). Arts Council England 17%; Bloomberg Philanthropies \u00a3120k digital grant (2024); Ford, Terra, Asymmetry, Freelands and Mondriaan funds; Friends and Patrons circles.",
+    "funding": "Income \u00a3999,221 (FY2025) and \u00a31.25M (FY2024); Arts Council England National Portfolio grant \u00a3168,421 (18%) in FY2024; Bloomberg Digital \u00a3120,000, Asymmetry, Ford, Freelands, Terra, Pernod Ricard and Mondrian funds.",
     "sources": [
       "https://opencharities.uk/ew/1026175/files/2024-03-31-accounts.html",
       "https://opencharities.uk/ew/1026175/files/2025-03-31-accounts.html",
@@ -5735,6 +6439,15 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://opencharities.uk/ew/1026175/files/2024-03-31-accounts.html",
+          "https://opencharities.uk/ew/1026175/files/2025-03-31-accounts.html"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u00a31.0M income (FY2025). Arts Council England 17%; Bloomberg Philanthropies \u00a3120k digital grant (2024); Ford, Terra, Asymmetry, Freelands and Mondriaan funds; Friends and Patrons circles."
       }
     },
     "grade": 3,
@@ -5748,7 +6461,8 @@
         "funder": "Bloomberg Philanthropies",
         "institutions": 55
       }
-    ]
+    ],
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Gasworks",
@@ -5838,14 +6552,25 @@
   {
     "name": "South London Gallery",
     "location": "London, UK",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
-    "funding": "Ongoing support from Arts Council England, Southwark Council, Bukhman Foundation, Bloomberg Philanthropies and Garfield Weston Foundation. Corporate partners include Artsy and Bloomberg; galleries and patrons also give.",
+    "funding": "Ongoing support from Arts Council England, Southwark Council, the Bukhman Foundation, Bloomberg Philanthropies and Garfield Weston Foundation, plus trusts, commercial galleries and individual patrons; charity income \u00a32.33M in the year to March 2025.",
     "watch": "Bloomberg Philanthropies funds it; 260 UK artists asked five London theatres to drop Bloomberg in May 2026. SLG returned a Sackler gift in 2018.",
     "sources": [
       "https://www.southlondongallery.org/about/support-us/",
       "https://findthatcharity.uk/orgid/GB-CHC-312160",
-      "https://www.southlondongallery.org/support-us/current-supporters/"
+      "https://www.southlondongallery.org/support-us/current-supporters/",
+      "https://www.southlondongallery.org",
+      "https://en.wikipedia.org/wiki/South_London_Gallery",
+      "https://www.artfund.org/explore/museums-and-galleries/south-london-gallery/visitor-information",
+      "https://opencharities.uk/ew/312160",
+      "https://www.galleriesnow.net/?p=324198",
+      "https://www.theartnewspaper.com/2025/03/25/anastasia-bukhman-the-russian-born-collector-behind-a-%C2%A31m-donation-to-londons-national-portrait-gallery",
+      "https://www.theartnewspaper.com/2019/03/22/south-london-gallery-returned-funding-to-sackler-trust-last-year",
+      "https://www.artforum.com/news/south-london-gallery-returned-164-000-to-sackler-foundation-last-year-79015",
+      "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg",
+      "https://www.morningstaronline.co.uk/node/249891",
+      "https://www.southlondongallery.org/wp-content/uploads/2019/10/PRESS-RELEASE-Bloomberg-New-Contemporaries-2019-Nov19.pdf"
     ],
     "lat": 51.474,
     "lon": -0.08,
@@ -5879,18 +6604,44 @@
         "funder": "Sackler family",
         "institutions": 14
       }
-    ]
+    ],
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://www.southlondongallery.org",
+          "https://www.southlondongallery.org/support-us/current-supporters/",
+          "https://en.wikipedia.org/wiki/South_London_Gallery"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Ongoing support from Arts Council England, Southwark Council, Bukhman Foundation, Bloomberg Philanthropies and Garfield Weston Foundation. Corporate partners include Artsy and Bloomberg; galleries and patrons also give."
+      }
+    },
+    "flags": [
+      "Opioids"
+    ],
+    "why_flagged": "SLG returned a \u00a3125,000 Mortimer and Theresa Sackler Foundation gift in 2018; it also takes Bloomberg Philanthropies money, which advocacy groups target elsewhere.",
+    "other_findings": "The Mortimer and Theresa Sackler Foundation offered \u00a3125,000 in 2016 for an education centre in the fire station project; trustees voted to return it in 2018 (The Art Newspaper, 2019). | The Bukhman Foundation, which funds Art Block, is financed by the Playrix mobile games fortune of Igor and Dmitry Bukhman (The Art Newspaper, 2025); no controversy reported. | In May 2026, 261 artists, in a letter published via Artists for Palestine UK, asked five London theatres (not SLG) to drop Bloomberg Philanthropies. | Unverified: Artists for Palestine UK (advocacy group) alleges Bloomberg Philanthropies trains Israeli settlement officials through the Bloomberg-Sagol Centre at Tel Aviv University.",
+    "research_retrieved": "2026-10-20",
+    "grade": 4,
+    "grade_basis": "One flagged funder category on record: opioids."
   },
   {
     "name": "Studio Voltaire",
     "location": "London, UK",
     "tier": "U",
     "size": "S",
-    "funding": "Arts Council England core funding; Mayor of London; trusts including Wolfson, Garfield Weston, Foyle and Henry Moore Foundation; corporate patrons BakerMcKenzie and Fletcher Gallery Services; a Council of supporters.",
+    "funding": "Arts Council England National Portfolio core funding; Mayor of London (\u00a3500,000 Good Growth Fund for the \u00a32.8m capital project); trusts including Wolfson, Garfield Weston, Foyle, Henry Moore and City Bridge Trust; corporate patrons BakerMcKenzie and Fletcher Gallery Services; Bloomberg Philanthropies funded its website.",
     "watch": "Bloomberg Philanthropies supported its website through the Digital Accelerator Programme. 260 UK artists asked five London theatres to drop Bloomberg in May 2026.",
     "sources": [
       "https://studiovoltaire.org/support/supporters-and-funders/",
-      "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg"
+      "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg",
+      "https://studiovoltaire.org/visit/",
+      "https://en.wikipedia.org/wiki/Studio_Voltaire",
+      "https://frieze.com/article/studio-voltaire-takes-on-new-terrain",
+      "https://www.london.gov.uk/programmes-strategies/shaping-local-spaces/regeneration-projects/studio-voltaire-london-borough-lambeth",
+      "https://www.theartnewspaper.com/2018/10/25/jeremy-deller-says-studios-are-a-lifeline-for-artists-as-studio-voltaire-announces-pound23m-expansion",
+      "https://www.morningstaronline.co.uk/node/249891"
     ],
     "lat": 51.463,
     "lon": -0.138,
@@ -5919,19 +6670,39 @@
         "funder": "Garfield Weston Foundation",
         "institutions": 16
       }
-    ]
+    ],
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://studiovoltaire.org/support/supporters-and-funders/",
+          "https://studiovoltaire.org/visit/",
+          "https://en.wikipedia.org/wiki/Studio_Voltaire"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Arts Council England core funding; Mayor of London; trusts including Wolfson, Garfield Weston, Foyle and Henry Moore Foundation; corporate patrons BakerMcKenzie and Fletcher Gallery Services; a Council of supporters."
+      }
+    },
+    "other_findings": "Bloomberg Philanthropies paid for the Studio Voltaire website through its Digital Accelerator Programme (stated by the space). | In May 2026, 261 artists in a letter published via Artists for Palestine UK asked five London theatres (not Studio Voltaire) to drop Bloomberg Philanthropies. | Unverified: Artists for Palestine UK (advocacy group) alleges Bloomberg Philanthropies trains Israeli settlement officials via the Bloomberg-Sagol Centre at Tel Aviv University.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Tate Modern",
     "location": "London, UK",
     "tier": "B",
     "size": "L",
-    "funding": "\u00a3120M (group). DCMS statutory grant-in-aid, Bank of America, Hyundai Motor, Uniqlo, philanthropic circles.",
+    "funding": "Tate group income \u00a3167.15M in 2024-25, including \u00a341.4M DCMS revenue grant-in-aid and \u00a312.5M capital grant; the rest is self-generated, with corporate partners including Bank of America, Hyundai Motor (to 2036), UNIQLO, Bloomberg and LVMH, plus philanthropic donors.",
     "watch": "Ended BP in 2016 after protests; Sackler name removed 2022.",
     "sources": [
       "https://www.tate.org.uk/about-us/corporate-support",
       "https://findthatcharity.uk/orgid/GB-CHC-312863",
-      "https://cultureunstained.org/successes-for-the-movement/"
+      "https://cultureunstained.org/successes-for-the-movement/",
+      "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+      "https://www.civilsociety.co.uk/news/tate-gallery-records-9m-deficit-amid-increased-costs.html",
+      "https://artsprofessional.co.uk/news/dcms-pledges-to-keep-tate-afloat-as-it-attempts-to-cut-costs",
+      "https://theartnewspaper.com/2016/03/11/bp-ends-26-year-sponsorship-deal-with-tate",
+      "https://news.artnet.com/art-world/tate-drops-sackler-name-2069277",
+      "https://www.morningstaronline.co.uk/node/249891"
     ],
     "lat": 51.507,
     "lon": -0.099,
@@ -6220,7 +6991,21 @@
         "funder": "BP",
         "institutions": 9
       }
-    ]
+    ],
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+          "https://www.civilsociety.co.uk/news/tate-gallery-records-9m-deficit-amid-increased-costs.html",
+          "https://artsprofessional.co.uk/news/dcms-pledges-to-keep-tate-afloat-as-it-attempts-to-cut-costs"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "\u00a3120M (group). DCMS statutory grant-in-aid, Bank of America, Hyundai Motor, Uniqlo, philanthropic circles."
+      }
+    },
+    "other_findings": "BP announced on 11 March 2016 that its Tate sponsorship would end in 2017, citing an 'extremely challenging business environment'; Liberate Tate had staged repeated protests (The Art Newspaper). | BP gave Tate \u00a34m between 1990 and 2006, disclosed in January 2015 after a freedom of information case (The Art Newspaper). | In early 2022 Tate removed the Sackler plaque at Tate Modern and planned to rename the Sackler Octagon at Tate Britain, after the P.A.I.N. campaign (Artnet). | Tate ran a deficit of nearly \u00a39m in 2022-23, and in 2025 DCMS assured its going-concern status while it cut about 7% of staff (Civil Society, Arts Professional).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Wellcome Collection",
@@ -7062,15 +7847,20 @@
   {
     "name": "Kunsthalle Mannheim",
     "location": "Mannheim, Germany",
-    "tier": "A",
+    "tier": "B",
     "size": "S",
-    "funding": "City of Mannheim, Hans-Werner and Josephine Hector (\u20ac50M for the Hector building) and their foundations, the F\u00f6rderkreis, and a Stifterkreis of 57 persons, foundations and firms.",
+    "funding": "Run by the City of Mannheim. Its 2018 building (\u20ac68.3M) was funded by Hector Stiftung II (\u20ac50M, from SAP co-founder Hans-Werner Hector), the city (\u20ac10M), Baden-W\u00fcrttemberg (\u20ac2.62M) and about \u20ac4.9M in private gifts; a Stifterkreis of 57 unnamed members and the F\u00f6rderkreis also give support.",
     "watch": "Municipal contemporary museum.",
     "sources": [
       "https://www.kuma.art/en/museum/organisation",
       "https://www.mannheim.de",
       "https://www.mannheim.de/de/nachrichten/50-millionen-euro-fuer-die-kunsthalle",
-      "https://www.kuma.art/de/kunsthalle-mannheim/stifterkreis"
+      "https://www.kuma.art/de/kunsthalle-mannheim/stifterkreis",
+      "https://www.kuma.art",
+      "https://rheinneckarblog.de/01/mit-kunst-fuer-kunst-erbaut/107230.html",
+      "https://www.theartnewspaper.com/2018/05/31/kunsthalle-mannheim-unveils-euro68m-extension-backed-by-german-billionaire",
+      "https://en.wikipedia.org/wiki/Kunsthalle_Mannheim",
+      "https://rheinneckarblog.de/22/kunsthalle-mannheim-bekommt-neuen-direktor/146868.html"
     ],
     "lat": 49.483,
     "lon": 8.475,
@@ -7096,10 +7886,20 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "funding": {
+        "urls": [
+          "https://www.kuma.art",
+          "https://www.kuma.art/de/kunsthalle-mannheim/stifterkreis",
+          "https://rheinneckarblog.de/01/mit-kunst-fuer-kunst-erbaut/107230.html"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "City of Mannheim, Hans-Werner and Josephine Hector (\u20ac50M for the Hector building) and their foundations, the F\u00f6rderkreis, and a Stifterkreis of 57 persons, foundations and firms."
       }
     },
-    "grade": 1,
-    "grade_basis": "No flagged funder or objection on record, and figures are shown.",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories.",
     "visual_critiques": [
       {
         "kind": "theory",
@@ -7153,19 +7953,30 @@
       }
     ],
     "records_note": "No annual report or accounts; support pages name the Hector family and foundations, and the Stifterkreis page lists the foundation council and executive board, undated.",
-    "affiliations_note": "Member of Deutscher Museumsbund."
+    "affiliations_note": "Member of Deutscher Museumsbund.",
+    "flags": [
+      "Nazi-era provenance"
+    ],
+    "why_flagged": "In 2018 the museum found Nazi-looted art in its collection and listed 25 further suspect works.",
+    "other_findings": "In 2018 the museum identified Wilhelm Leibl's The Drinker (1874), acquired from a Nazi agency, as looted, and listed 25 other works suspected of being looted or sold under duress (Wikipedia).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Ballroom Marfa",
     "location": "Marfa, USA",
     "tier": "U",
     "size": "S",
-    "funding": "No donor list is published; the site credits 'individuals and foundations' without names. The FY2023 filing shows $589K in contributions on $818K revenue and $1.13M expenses.",
+    "funding": "Mainly private contributions ($589K of $818K revenue in FY2023), from named individuals, family and arts foundations, galleries, and small NEA and Texas Commission on the Arts grants ($9,000 in FY2025).",
     "watch": "Free public admission; governance guidelines prohibit fossil extraction or defense underwriting despite local geographic oil economy.",
     "sources": [
       "https://ballroommarfa.org/about/support/",
       "https://projects.propublica.org/nonprofits/organizations/200472482",
-      "https://projects.propublica.org/nonprofits/organizations/200126402"
+      "https://projects.propublica.org/nonprofits/organizations/200126402",
+      "https://ballroommarfa.org",
+      "https://ballroommarfa.org/about/",
+      "https://www.ballroommarfa.org/stone-circle/acknowledgements/",
+      "https://www.arts.texas.gov/wp-content/uploads/simple-file-list/2025/Senate/Senate_29.pdf",
+      "https://glasstire.com/?p=352132"
     ],
     "lat": 30.309,
     "lon": -104.03,
@@ -7194,12 +8005,23 @@
           "https://www.ballroommarfa.org/visit/"
         ],
         "retrieved": "2026-10-13"
+      },
+      "funding": {
+        "urls": [
+          "https://ballroommarfa.org",
+          "https://ballroommarfa.org/about/",
+          "https://www.ballroommarfa.org/stone-circle/acknowledgements/"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "No donor list is published; the site credits 'individuals and foundations' without names. The FY2023 filing shows $589K in contributions on $818K revenue and $1.13M expenses."
       }
     },
     "year_founded": 2003,
     "address": "108 E. San Antonio St., Marfa, TX 79843",
     "records_note": "Its People page names 22 trustees, ProPublica holds Form 990s for 2004 to 2023, and a 20th Anniversary Fund donor page names about 38 givers.",
-    "finances_note": "FY2023 income USD 818K: about 3 percent government grants, 69 percent private contributions, 24 percent earned (art sales commission, merchandise); expenses USD 1.13M (Form 990, year to June 2023)."
+    "finances_note": "FY2023 income USD 818K: about 3 percent government grants, 69 percent private contributions, 24 percent earned (art sales commission, merchandise); expenses USD 1.13M (Form 990, year to June 2023).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Chinati Foundation",
@@ -7210,7 +8032,12 @@
     "sources": [
       "https://chinati.org/about/support/",
       "https://projects.propublica.org/nonprofits/organizations/752187640",
-      "https://projects.propublica.org/nonprofits/organizations/742340423"
+      "https://projects.propublica.org/nonprofits/organizations/742340423",
+      "https://chinati.org/about/mission-history/",
+      "https://chinati.org/campaign/",
+      "https://impala.digital/public/profiles/74-2340423",
+      "https://www.theartnewspaper.com/2021/05/12/chinati-will-use-dollar125m-start-small-grant-to-restore-sites-and-train-young-women-in-preservation-skills",
+      "https://lannan.org/programs/art/grants/chinati-foundation-endowment-challenge-grant"
     ],
     "lat": 30.302,
     "lon": -104.028,
@@ -7228,19 +8055,38 @@
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Chinati%20Foundation",
     "records_note": "Its Financial Information page posts audited statements and Form 990s for 2016 to 2024, and a Trustees page names 19; it names no donors.",
     "finances_note": "FY2024 income USD 6.4M: about 5 percent government grants, 75 percent private gifts, 5 percent earned, 17 percent investment income; expenses USD 3.7M (Form 990).",
-    "affiliations_note": "Holds a Roni Horn work on long-term loan from the Judd Foundation."
+    "affiliations_note": "Holds a Roni Horn work on long-term loan from the Judd Foundation.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://chinati.org/about/mission-history/",
+          "https://chinati.org/campaign/",
+          "https://impala.digital/public/profiles/74-2340423"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research"
+      }
+    },
+    "funding": "Funded mainly by private foundations and individuals: 2024 revenue $6.4M, with government grants under 5%. Top funders were Fidelity Charitable ($2.2M), The Brown Foundation ($2M) and the Ruth Stanton Foundation ($1.3M); a $16M capital campaign names donors led by the Sarofim Foundation ($2.5M).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Judd Foundation",
     "location": "Marfa, USA",
     "tier": "B",
     "size": "S",
-    "funding": "FY2025-26 supporters include Bloomberg Philanthropies, Texas Commission on the Arts, Henry Moore Foundation, Japan Foundation, Villa Albertine, Neuberger Berman, Gagosian and Bristol Myers Squibb, plus many patrons and individuals.",
+    "funding": "Set up from Judd's estate in 1996 and partly endowed by a 2006 Christie's sale (about $20M guaranteed). It is represented by Gagosian since 2021, and its 2025\u201326 supporters include Bloomberg Philanthropies, Texas Commission on the Arts, Henry Moore Foundation, Japan Foundation, Villa Albertine, Bristol Myers Squibb, Neuberger Berman, Gagosian and many individuals.",
     "watch": "Maintains Donald Judd's permanently installed living and working spaces in Marfa and 101 Spring Street, New York.",
     "sources": [
       "https://juddfoundation.org/about/",
       "https://projects.propublica.org/nonprofits/organizations/133989345",
-      "https://projects.propublica.org/nonprofits/organizations/742798673"
+      "https://projects.propublica.org/nonprofits/organizations/742798673",
+      "https://juddfoundation.org/wp-content/uploads/2026/07/FY2025_Judd_Supporters.pdf",
+      "https://juddfoundation.org/wp-content/uploads/2024/06/Judd-Foundation_Bloomberg-Connects_Press-Release.pdf",
+      "https://www.guidestar.org/profile/74-2798673",
+      "https://www.taipeitimes.com/News/feat/archives/2006/04/27/2003304881",
+      "https://davidzwirner.com/news/2016/specific-objectives-the-complex-task-of-preserving-donald-judd-s-legacy",
+      "https://news.artnet.com/market/gagosian-is-now-representing-the-donald-judd-foundation-2009829"
     ],
     "lat": 30.312,
     "lon": -104.019,
@@ -7266,19 +8112,37 @@
         "funder": "Bloomberg Philanthropies",
         "institutions": 55
       }
-    ]
+    ],
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://juddfoundation.org/wp-content/uploads/2026/07/FY2025_Judd_Supporters.pdf",
+          "https://juddfoundation.org/wp-content/uploads/2024/06/Judd-Foundation_Bloomberg-Connects_Press-Release.pdf",
+          "https://www.guidestar.org/profile/74-2798673"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "FY2025-26 supporters include Bloomberg Philanthropies, Texas Commission on the Arts, Henry Moore Foundation, Japan Foundation, Villa Albertine, Neuberger Berman, Gagosian and Bristol Myers Squibb, plus many patrons and individuals."
+      }
+    },
+    "other_findings": "Not related: Chinati Foundation \u2014 also founded by Donald Judd in Marfa, but a separate non-profit (EIN 74-2340423).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "MACAAL",
     "location": "Marrakech, Morocco",
-    "tier": "A",
+    "tier": "B",
     "size": "S",
-    "funding": "Fondation Alliances, set up in 2009 by Othman Lazraq, funds it. The Lazraq family runs the listed property developer Alliances. No other funder is named.",
+    "funding": "Funded by Fondation Alliances, the charitable foundation of the Lazraq family's listed property developer Groupe Alliances; it gave significant support for the 2023\u201325 overhaul. No other funder is named.",
     "watch": "Museum of African Contemporary Art Al Maaden in Marrakech.",
     "sources": [
       "https://macaal.org/en/about-macaal/",
       "https://macaal.org",
-      "https://www.euronews.com/culture/2025/02/14/macaals-othman-lazraq-on-creating-a-permanent-home-for-african-contemporary-art-in-marrake"
+      "https://www.euronews.com/culture/2025/02/14/macaals-othman-lazraq-on-creating-a-permanent-home-for-african-contemporary-art-in-marrake",
+      "https://www.theartnewspaper.com/2018/02/20/marrakech-museum-boosts-africas-burgeoning-art-scene",
+      "https://theartnewspaper.com/2025/01/27/after-2023-earthquake-marrakech-pioneering-art-museum-reopens",
+      "https://challenge.ma/groupe-alliances-la-fabuleuse-remontada-dalami-lazraq-286346/",
+      "https://telquel.ma/2015/12/29/adi-filiale-emt-en-liquidation_1475788"
     ],
     "lat": 31.687,
     "lon": -7.965,
@@ -7298,22 +8162,44 @@
     "amenities": "Caf\u00e9 MACAAL serving traditional mint tea and Moroccan snacks, boutique showcasing local artisanal design, sculpture park.",
     "highlight": "Cutting-edge contemporary African photography, sculpture, and painting shown against the backdrop of the Atlas Mountains.",
     "visit_url": "https://macaal.org/en/plan-your-visit/",
-    "grade": 2,
-    "grade_basis": "No flagged funder or objection on record; funders are named, with no figures.",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories.",
     "records_note": "MACAAL's site covers exhibitions, mission and visits, and links its founder, Fondation Alliances, but posts no reports, accounts, funder list or board.",
-    "affiliations_note": "A project of the Fondation Alliances, which set up and funds the museum; no network or partner museum is named on its site."
+    "affiliations_note": "A project of the Fondation Alliances, which set up and funds the museum; no network or partner museum is named on its site.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://macaal.org",
+          "https://www.theartnewspaper.com/2018/02/20/marrakech-museum-boosts-africas-burgeoning-art-scene",
+          "https://theartnewspaper.com/2025/01/27/after-2023-earthquake-marrakech-pioneering-art-museum-reopens"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Fondation Alliances, set up in 2009 by Othman Lazraq, funds it. The Lazraq family runs the listed property developer Alliances. No other funder is named."
+      }
+    },
+    "flags": [
+      "Sole corporate funder with debt crisis"
+    ],
+    "why_flagged": "The museum depends entirely on Groupe Alliances, which was suspended from the Casablanca exchange in 2016 with about 8.5 billion dirhams of debt.",
+    "other_findings": "Groupe Alliances was suspended from the Casablanca Stock Exchange in 2016 with debt of nearly 8.5 billion dirhams. Asset transfers cut it to 2 billion dirhams by end-2018, and the company reported a return to profit from 2019 (Challenge.ma). | A Telquel headline (29 Dec 2015) says Alami Lazraq lost Alliances' construction subsidiaries.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "ACCA",
     "location": "Melbourne, Australia",
     "tier": "A",
     "size": "S",
-    "funding": "Creative Victoria, Creative Australia and the City of Melbourne, plus the Ian Potter Foundation. Corporate partners include Dulux, KWM, Wood Marsh, Supernormal and Hannah St Hotel.",
+    "funding": "Core operating funding from Creative Australia and Creative Victoria, with City of Melbourne and Victorian Department of Education programme funding. Private support comes from the Ian Potter and Robert Salzer foundations, individual donors (several of them board members) and corporate partners including Dulux, KWM and Wood Marsh.",
     "watch": "Australian Centre for Contemporary Art in Melbourne.",
     "sources": [
       "https://acca.melbourne/about/",
       "https://www.acnc.gov.au/charity/charities/0d608240-39af-e811-a960-000d3ad24282/profile",
-      "https://acca.melbourne/support/current-partners/"
+      "https://acca.melbourne/support/current-partners/",
+      "https://acca.melbourne/about/people/",
+      "https://content.acca.melbourne/uploads/2026/09/ACCA-Annual-Report-2025.pdf",
+      "https://en.wikipedia.org/wiki/Australian_Centre_for_Contemporary_Art",
+      "https://www.artshub.com.au/?p=2751382"
     ],
     "lat": -37.826,
     "lon": 144.965,
@@ -7333,7 +8219,20 @@
     "grade": 1,
     "grade_basis": "No flagged funder or objection on record, and filings are linked (acnc.gov.au).",
     "records_note": "Posts annual reports from 2018 and names supporters and its board in the 2025 report, but the report carries no financial statements.",
-    "affiliations_note": "Lists Contemporary Art Organisations Australia as a network partner. Member of CAOA."
+    "affiliations_note": "Lists Contemporary Art Organisations Australia as a network partner. Member of CAOA.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://acca.melbourne/support/current-partners/",
+          "https://acca.melbourne/about/people/",
+          "https://content.acca.melbourne/uploads/2026/09/ACCA-Annual-Report-2025.pdf"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Creative Victoria, Creative Australia and the City of Melbourne, plus the Ian Potter Foundation. Corporate partners include Dulux, KWM, Wood Marsh, Supernormal and Hannah St Hotel."
+      }
+    },
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Heide Museum of Modern Art",
@@ -7659,12 +8558,17 @@
     "location": "Milan, Italy",
     "tier": "B",
     "size": "L",
-    "funding": "Founded and supported by Pirelli, its only named backer; Marco Tronchetti Provera chairs it. Technical sponsors include K-Way and M&C Saatchi Milano.",
+    "funding": "Founded and supported by Pirelli, which publishes no funding figures; technical sponsors Mainstreaming, M&C Saatchi and K-Way. Chaired by Marco Tronchetti Provera.",
     "watch": "Corporate Underwritten: Industrial contemporary space in Milan featuring Anselm Kiefer's 'The Seven Heavenly Palaces'. Provides free admission; governance is closely tied to Pirelli's corporate sponsorship and executive board oversight.",
     "sources": [
       "https://pirellihangarbicocca.org/en/about/",
       "https://corporate.pirelli.com/corporate/en-ww/sustainability/culture",
-      "https://pirellihangarbicocca.org/en/pirelli-hangarbicocca/"
+      "https://pirellihangarbicocca.org/en/pirelli-hangarbicocca/",
+      "https://www.artribune.com/?p=835",
+      "https://theins.press/en/news/293389",
+      "https://www.european-rubber-journal.com/article/2099294/pirelli-taking-legal-action-over-russia-allegations",
+      "https://hedgefundalpha.com/stocks/pirelli-short-report/",
+      "https://www.linkiesta.it/2026/06/pirelli-e-italiana-tronchetti-provera-torna-presidente/"
     ],
     "lat": 45.523,
     "lon": 9.22,
@@ -7691,18 +8595,42 @@
     "grade": 3,
     "grade_basis": "A funder worth noting, outside the flag categories.",
     "records_note": "No annual report or accounts; the about page names Pirelli as founder, three technical sponsors, and a board with chairman Marco Tronchetti Provera, undated.",
-    "affiliations_note": "Pirelli HangarBicocca is a non-profit foundation conceived and supported by Pirelli, and works with the University of Milano-Bicocca under a 2015 convention."
+    "affiliations_note": "Pirelli HangarBicocca is a non-profit foundation conceived and supported by Pirelli, and works with the University of Milano-Bicocca under a 2015 convention.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://pirellihangarbicocca.org/en/pirelli-hangarbicocca/",
+          "https://www.artribune.com/?p=835",
+          "https://theins.press/en/news/293389"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Founded and supported by Pirelli, its only named backer; Marco Tronchetti Provera chairs it. Technical sponsors include K-Way and M&C Saatchi Milano."
+      }
+    },
+    "flags": [
+      "Russia ties (parent company)",
+      "State-owned shareholder (parent company)"
+    ],
+    "other_findings": "Unverified: Grizzly Research (short seller with a position against Pirelli) alleged on 4 June 2026 that Russia is about 10% of Pirelli's net profit and that its Kirov plant shares infrastructure with a Rostec-owned military tyre maker. | The Insider reports Rostec holds 25.005% of Pirelli Tyre Russia, which controls the Kirov and Voronezh plants. | Pirelli said on 4 June 2026 that the report does not reflect the truth, that it makes no military tyres, and that it has instructed lawyers. | Sinochem, a Chinese state-owned group, holds 34.1% of Pirelli; at the June 2026 AGM Camfin took 12 of 15 board seats under Italian golden power conditions. | Not related: Fondazione Pirelli \u2014 Pirelli's separate corporate archive and culture foundation, a distinct body from Fondazione Pirelli HangarBicocca",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Walker Art Center",
     "location": "Minneapolis, USA",
     "tier": "B",
     "size": "L",
-    "funding": "Principal, US Bank, Best Buy, Cargill Foundation, 3M.",
+    "funding": "Revenue $53.5M in FY2025, including $24.8M contributions, plus endowment (net assets $444.8M). Corporate supporters led by Bloomberg Philanthropies and Principal Foundation ($100k+), Ameriprise and U.S. Bank ($50k+); state Arts & Cultural Heritage Fund gave $672,710 in FY2024.",
     "watch": "Bloomberg Philanthropies a current $100k+ supporter.",
     "sources": [
       "https://walkerart.org/support/corporate-support/",
-      "https://www.walkerart.org/join-give/corporate-support/"
+      "https://www.walkerart.org/join-give/corporate-support/",
+      "https://www.walkerart.org/about-the-walker/annual-report/",
+      "https://projects.propublica.org/nonprofits/organizations/410693929",
+      "https://www.legacy.mn.gov/node/10027884",
+      "https://www.mprnews.org/story/2025/04/11/union-rally-targets-walker-art-center",
+      "https://news.artnet.com/art-world/minneapolis-museums-close-ice-protest-2739776",
+      "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg"
     ],
     "lat": 44.968,
     "lon": -93.289,
@@ -7724,7 +8652,8 @@
     "amenities": "Cardamom restaurant (pan-Mediterranean), Walker Shop, 11-acre Minneapolis Sculpture Garden (open daily 06:00\u2013midnight, always free).",
     "visit_url": "https://www.walkerart.org/visit",
     "flags": [
-      "Campaigned name"
+      "Campaigned name",
+      "Labour dispute"
     ],
     "why_flagged": "Bloomberg Philanthropies a current $100k+ supporter.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Walker%20Art%20Center",
@@ -7809,18 +8738,36 @@
         "funder": "Bloomberg Philanthropies",
         "institutions": 55
       }
-    ]
+    ],
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://walkerart.org/support/corporate-support/",
+          "https://www.walkerart.org/about-the-walker/annual-report/",
+          "https://projects.propublica.org/nonprofits/organizations/410693929"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Principal, US Bank, Best Buy, Cargill Foundation, 3M."
+      }
+    },
+    "other_findings": "Unverified: Artists for Palestine UK (advocacy group) said in a 29 May 2026 open letter, reported by The New Arab, that Bloomberg Philanthropies funds a Tel Aviv University centre that trains West Bank settlement leaders. | Walker Worker Union says its president and secretary were fired in March 2025 for union activity; the Walker says a role was eliminated in restructuring and denies union-busting (MPR News, April 2025). | The Walker closed on 23 January 2026 in support of a Minnesota protest against ICE operations (Artnet).",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "MAC Montr\u00e9al",
     "location": "Montr\u00e9al, Canada",
-    "tier": "U",
+    "tier": "B",
     "size": "S",
-    "funding": "Quebec crown corporation (C$12.5M Quebec grants, 2024-25). Donors: Banque Nationale (lead), Bronfman foundation, Power Corporation, AtkinsR\u00e9alis, BMO, RBC, Scotiabank, Desjardins.",
+    "funding": "Quebec government museum (C$12.5M Quebec grants in 2024-25 per existing record). Its transformation is funded by C$50M federal and C$55M Quebec money plus C$11.5M from the MAC, and a C$20M Fondation du MAC campaign co-chaired by Claudine and Stephen Bronfman.",
     "watch": "AtkinsR\u00e9alis (ex SNC-Lavalin) paid C$280M after its Libya fraud guilty plea in 2019. Loto-Qu\u00e9bec, named earlier, is not in the 2024-25 report.",
     "sources": [
       "https://macm.org/app/uploads/2025/10/Rapport_Annuel_2024-2025.pdf",
-      "https://en.wikipedia.org/wiki/AtkinsR%C3%A9alis"
+      "https://en.wikipedia.org/wiki/AtkinsR%C3%A9alis",
+      "https://www.canada.ca/en/housing-infrastructure-communities/news/2023/06/the-governments-of-canada-and-quebec-announce-additional-investments-in-the-musee-dart-contemporain-de-montreal.html",
+      "https://macm.org/en/press-release/the-fondation-du-macs-major-fundraising-campaign/",
+      "https://macm.org/en/press-release/the-musee-dart-contemporain-continues-its-architectural-transformation-project/",
+      "https://www.rcinet.ca/en/2019/12/18/snc-lavalin-pleads-guilty-to-fraud-in-libya-case-corruption-charges-dropped"
     ],
     "lat": 45.507,
     "lon": -73.567,
@@ -7838,18 +8785,42 @@
     "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=MAC%20Montr%C3%A9al",
     "tier_note": "No reason for the flag is recorded.",
     "records_note": "Publishes annual reports back to 2004-05; the 2024-25 report carries audited statements, thanks donors by name and lists the board as of 31 March 2025.",
-    "finances_note": "FY2024-25 income CAD 16.9M: about 79 percent Quebec and federal grants, 9 percent donations and sponsorship, 2 percent donated art, 2 percent earned (audited statements, p. 200)."
+    "finances_note": "FY2024-25 income CAD 16.9M: about 79 percent Quebec and federal grants, 9 percent donations and sponsorship, 2 percent donated art, 2 percent earned (audited statements, p. 200).",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://www.canada.ca/en/housing-infrastructure-communities/news/2023/06/the-governments-of-canada-and-quebec-announce-additional-investments-in-the-musee-dart-contemporain-de-montreal.html",
+          "https://macm.org/en/press-release/the-fondation-du-macs-major-fundraising-campaign/",
+          "https://macm.org/en/press-release/the-musee-dart-contemporain-continues-its-architectural-transformation-project/"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Quebec crown corporation (C$12.5M Quebec grants, 2024-25). Donors: Banque Nationale (lead), Bronfman foundation, Power Corporation, AtkinsR\u00e9alis, BMO, RBC, Scotiabank, Desjardins."
+      }
+    },
+    "flags": [
+      "Corruption conviction (donor)"
+    ],
+    "why_flagged": "Donor AtkinsR\u00e9alis (formerly SNC-Lavalin) had a subsidiary plead guilty to fraud over Libya work in December 2019 and pay a C$280M fine.",
+    "other_findings": "SNC-Lavalin Construction pleaded guilty to one fraud count on 18 December 2019 over Libya dealings; fine C$280M over five years, three years' probation (RCI).",
+    "research_retrieved": "2026-10-20",
+    "grade": 3,
+    "grade_basis": "A funder worth noting, outside the flag categories."
   },
   {
     "name": "PHI Foundation",
     "location": "Montr\u00e9al, Canada",
     "tier": "A",
     "size": "S",
-    "funding": "Greenberg family (Minto real estate fortune). Federal and Quebec governments committed C$26.6M in 2022 for the PHI contemporain expansion. Programming is free.",
+    "funding": "Founded and funded by Phoebe Greenberg, daughter of Minto Group co-founder Irving Greenberg. Federal and Quebec governments announced C$26.6M in April 2022 for the PHI Contemporary building; programming is free.",
     "watch": "Contemporary art foundation in Old Montreal offering free public exhibitions.",
     "sources": [
       "https://phi.ca/en/about/",
-      "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscChrtyPfl?selectedCharityBn=854497672RR0001"
+      "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscChrtyPfl?selectedCharityBn=854497672RR0001",
+      "https://en.wikipedia.org/wiki/Phoebe_Greenberg",
+      "https://www.canada.ca/en/office-infrastructure/news/2022/04/the-government-of-canada-and-the-government-of-quebec-announce-more-than-266-million-for-the-creation-of-a-new-cultural-institution--phi-contemporain.html",
+      "https://phi.ca/en/phi-contemporary/",
+      "https://www.canadianarchitect.com/phi-announces-winners-of-the-international-architecture-competition/"
     ],
     "lat": 45.501,
     "lon": -73.554,
@@ -7881,6 +8852,16 @@
           "https://musees.qc.ca/en/museums/guide/fondation-phi-pour-l-art-contemporain.html"
         ],
         "retrieved": "2026-10-13"
+      },
+      "funding": {
+        "urls": [
+          "https://en.wikipedia.org/wiki/Phoebe_Greenberg",
+          "https://www.canada.ca/en/office-infrastructure/news/2022/04/the-government-of-canada-and-the-government-of-quebec-announce-more-than-266-million-for-the-creation-of-a-new-cultural-institution--phi-contemporain.html",
+          "https://phi.ca/en/phi-contemporary/"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Greenberg family (Minto real estate fortune). Federal and Quebec governments committed C$26.6M in 2022 for the PHI contemporain expansion. Programming is free."
       }
     },
     "year_founded": 2007,
@@ -7888,7 +8869,8 @@
     "grade": 1,
     "grade_basis": "No flagged funder or objection on record, and figures are shown.",
     "records_note": "Publishes no annual report, accounts or board list; the Partners Circle page shows six undated corporate logos, launched in 2025.",
-    "affiliations_note": "Sits beside the PHI Centre and PHI Studio under the PHI name; it was formerly DHC/ART. No network or university tie is stated. Member of Gallery Climate Coalition."
+    "affiliations_note": "Sits beside the PHI Centre and PHI Studio under the PHI name; it was formerly DHC/ART. No network or university tie is stated. Member of Gallery Climate Coalition.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Lenbachhaus",
