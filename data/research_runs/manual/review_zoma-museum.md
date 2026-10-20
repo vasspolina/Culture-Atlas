@@ -58,7 +58,7 @@ Now:
 
 Would become:
 
-> The founders' closeness to the Abiy government, and through Unity Park to opaque UAE money, is the part worth looking at.
+> The museum itself looks clean. The founders' closeness to the Abiy government, and through Unity Park to opaque UAE money, is the part worth looking at.
 
 **other_findings (added)**
 
@@ -87,7 +87,5 @@ Would become:
 
 **Research notes (not written to the record):**
 
-- Funding: the current record also says Dire Dawa city gave the Harla land in 2007; this report does not mention it, so that line would move to field_sources.funding.previous and leave the page.
-- Website: this report gives https://www.zomamuseum.org as the website; the current record says that site serves gambling spam. Left unchanged.
-- Tier: adding the flag moves the record from Clean (A) to Flagged (B), although the report's bottom line says the museum itself looks clean.
-- Source note: curateoromia.com is marked in the report as an advocacy source.
+- Report gives Website: https://www.zomamuseum.org (the website field is not changed from a report; set it by hand if needed).
+- Source https://curateoromia.com/ethiopia-at-a-crossroads-the-fragile-reign-of-prime-minister-abiy-ahmed is marked (advocacy source) in the report.

@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
-"""Merge funding research (data/research_prompt.md, part 2) into institutions.json, after review.
+"""Merge funding research into institutions.json, after review.
+
+Input: reports written in the layout of data/research_prompt.md part 1 (a .txt or .md file per space:
+title "NAME – City, Country", FUNDING, "Red flags: <name>" sections, "Not related:", BOTTOM LINE, SOURCES),
+or the JSON of part 2. A directory may hold both. A report whose title matches no single record needs a
+line "ID: <record id>" under the title, or the file named <record id>.txt.
+  FUNDING lines -> funding; each "Red flags: X" -> flag X, its lines -> other_findings;
+  BOTTOM LINE -> why_flagged (only when there are flags); "Not related:" -> other_findings; SOURCES -> sources.
+  The report's lines are kept word for word. OVERVIEW and the Website line are not written.
 
 Usage:
-  python3 tools/import_research_reports.py <results.json | results dir>            # dry run: writes nothing
-  python3 tools/import_research_reports.py <results.json | results dir> --apply    # writes the records
-  python3 tools/import_research_reports.py <...> --apply --only id1,id2            # writes only these records
+  python3 tools/import_research_reports.py <file | dir>                         # dry run: writes nothing
+  python3 tools/import_research_reports.py <file | dir> --apply                 # writes the records
+  python3 tools/import_research_reports.py <file | dir> --apply --only id1,id2  # writes only these records
 
 The dry run writes a review file next to the input (review_<name>.md): for every record, each field
 that would change, with its current text and its new text, and the research's own notes on what it
@@ -22,7 +30,10 @@ throws away what a record says:
 """
 import argparse
 import copy
+import datetime
 import json
+import re
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -108,19 +119,106 @@ def merge(r, c):
     return diff
 
 
+def norm(s):
+    s = unicodedata.normalize('NFKD', (s or '').lower())
+    return re.sub(r'[^a-z0-9]+', ' ', ''.join(ch for ch in s if not unicodedata.combining(ch))).strip()
+
+
+SECTION = re.compile(r'^(OVERVIEW|FUNDING|BOTTOM LINE|SOURCES)\s*$')
+RED_FLAG = re.compile(r'^Red flags?:\s*(.+?)\s*$', re.I)
+NOT_RELATED = re.compile(r'^Not related:\s*(.+?)\s*$', re.I)
+URL = re.compile(r'https?://\S+')
+
+
+def parse_report(text, records, retrieved, stem=''):
+    """Read a report written in the layout of data/research_prompt.md, part 1, into an import entry.
+    The report's own lines are kept word for word; only the bullet marks are dropped."""
+    lines = [l.rstrip() for l in text.splitlines()]
+    lines = [l for l in lines if l.strip()]
+    if not lines:
+        raise ValueError('empty report')
+    head = lines[0]
+    rid = None
+    for l in lines[:4]:
+        m = re.match(r'^ID:\s*(\S+)', l)
+        if m:
+            rid = m.group(1)
+    if not rid:   # match "NAME – City, Country" against record names and aliases, then the city
+        parts = re.split(r'\s+[–—-]\s+', head, maxsplit=1)
+        name, place = parts[0], (parts[1] if len(parts) > 1 else '')
+        city = norm(place.split(',')[0]) if place else ''
+        hits = [r for r in records if norm(name) in {norm(r['name'])} | {norm(a) for a in r.get('aliases') or []}]
+        if len(hits) > 1 and city:
+            hits = [r for r in hits if norm(r.get('city')) == city]
+        if len(hits) != 1 and stem:   # a report saved as <record id>.txt
+            hits = [r for r in records if r['id'] == stem] or hits
+        if len(hits) != 1:
+            raise ValueError(f'"{head}" matches {len(hits)} records; add a line "ID: <record id>" under the title')
+        rid = hits[0]['id']
+
+    entry = {'id': rid, 'retrieved': retrieved, 'flags': [], 'other_findings': [], 'not_related': [],
+             'sources': [], 'changes': []}
+    funding, bottom, section = [], [], None
+    for l in lines[1:]:
+        t = l.strip()
+        if t.startswith('Website:'):
+            entry['changes'].append(f'Report gives {t} (the website field is not changed from a report; set it by hand if needed).')
+            continue
+        if t.startswith('ID:'):
+            continue
+        m = SECTION.match(t)
+        if m:
+            section = m.group(1)
+            continue
+        m = RED_FLAG.match(t)
+        if m:
+            section = 'RED'
+            flag = m.group(1)
+            entry['flags'].append(flag[:1].upper() + flag[1:])
+            continue
+        m = NOT_RELATED.match(t)
+        if m:
+            entry['not_related'].append(m.group(1))
+            section = 'NOT_RELATED'
+            continue
+        item = t[2:].strip() if t.startswith(('- ', '• ', '* ')) else t
+        if section == 'FUNDING':
+            funding.append(item)
+        elif section == 'RED':
+            entry['other_findings'].append(item)
+        elif section == 'NOT_RELATED':
+            entry['not_related'][-1] += ' ' + item
+        elif section == 'BOTTOM LINE':
+            bottom.append(item)
+        elif section == 'SOURCES':
+            u = URL.search(item)
+            if u:
+                entry['sources'].append(u.group(0).rstrip(').,'))
+                rest = item[u.end():].strip()
+                if rest:
+                    entry['changes'].append(f'Source {u.group(0)} is marked {rest} in the report.')
+    if funding:
+        entry['funding'] = '\n'.join(funding)
+    if entry['flags'] and bottom:
+        entry['why_flagged'] = ' '.join(bottom)
+    return entry
+
+
 def quote(text):
     return '\n'.join('> ' + line if line else '>' for line in str(text).split('\n')) if text else '> (empty)'
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('input', help='a results .json file, or a directory of them')
+    ap.add_argument('input', help='a report (.txt/.md) or results (.json) file, or a directory of them')
+    ap.add_argument('--date', default=datetime.date.today().isoformat(), help='retrieved date for text reports')
     ap.add_argument('--apply', action='store_true', help='write the changes to institutions.json')
     ap.add_argument('--only', default='', help='comma-separated record ids to apply (with --apply)')
     a = ap.parse_args()
 
     inp = Path(a.input)
-    files = sorted(inp.glob('*.json')) if inp.is_dir() else [inp]
+    kinds = ('.json', '.txt', '.md')
+    files = sorted(f for f in inp.iterdir() if f.suffix in kinds and not f.name.startswith(('review_', 'applied_'))) if inp.is_dir() else [inp]
     only = {x.strip() for x in a.only.split(',') if x.strip()}
 
     path = ROOT / 'institutions.json'
@@ -132,9 +230,12 @@ def main():
     out, skipped, n = [], [], 0
     for f in files:
         try:
-            items = json.load(open(f, encoding='utf-8'))
-        except json.JSONDecodeError as e:
-            skipped.append(f'{f.name}: invalid JSON ({e})')
+            if f.suffix == '.json':
+                items = json.load(open(f, encoding='utf-8'))
+            else:
+                items = [parse_report(f.read_text(encoding='utf-8'), records, a.date, f.stem)]
+        except (json.JSONDecodeError, ValueError) as e:
+            skipped.append(f'{f.name}: {e}')
             continue
         if isinstance(items, dict):
             items = [items]
