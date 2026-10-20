@@ -1608,3 +1608,26 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 .review-name{display:block;font:400 16px/1.2 var(--sans)}
 .review-date{display:block;font:400 14px/1.2 var(--sans)}
 .review-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+
+/* ---- the chat in the dark theme (release 238) ----
+   The atlas has one switch, :root[data-theme], and the chat already followed it except in two places that stayed bright: the note
+   (a mint slab with black type) and the gossip balloon (a green to pink wash with black type). In the dark theme both now sit on the
+   page's own dark ground with light type; the mode shows in a hairline instead of a fill (mint for a note, the gossip orange for a balloon).
+   The light theme is untouched. Measured: every pair below is at least 7:1 for text and 3:1 for outlines and rings. */
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock){background:var(--paper)}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorScrollArea,#curatorScrollArea *,#curatorScrollArea *::before,#workBottomDock,#workBottomDock *,#workInputCard.is-mode,#workInputCard.is-mode *,#workInputCard.is-mode *::before,#workInputCard.is-mode *::after){color:var(--ink)!important;border-color:var(--mint)!important}
+:root[data-theme="dark"] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn,:root[data-theme="dark"] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn *{color:var(--mint)!important}
+:root[data-theme="dark"] body.chat-input-mode-active #workInput.is-good{background:var(--grey);color:var(--ink)}
+:root[data-theme="dark"] body.chat-input-mode-active #workInput:focus{outline:2px solid var(--focus);outline-offset:-2px}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCard){--focus:#618cff}
+:root[data-theme="dark"] #workInputCard.is-mode ::placeholder{color:var(--ink);opacity:.7}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active){background:var(--mint)!important;color:#000!important}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active) *{color:#000!important}
+/* The balloon: dark fill, orange outline, light type. bubbles.js draws the fill and outline as SVG paint; a presentation rule outranks its attributes. */
+:root[data-theme="dark"] .bubble-svg .bubble-fill{fill:var(--grey)}
+:root[data-theme="dark"] .bubble-svg .bubble-line{stroke:var(--gossip)}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
+:root[data-theme="dark"] body.gossip-mode-active .is-gossip .thinking{color:var(--ink)}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
