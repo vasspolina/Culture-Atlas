@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=228">
-  <script src="assets/config.js?v=228"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=229">
+  <script src="assets/config.js?v=229"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9921,11 +9921,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v228';
+    const ATLAS_RELEASE = 'culture-atlas-v229';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=228').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=229').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13517,10 +13517,12 @@ return maplibregl$1;
       // 2. A figure keeps its unit on one line (Hochuli p.37); it is not boxed
       const renderStatCallouts = (str) => str.replace(/\$(\d[\d,.]*)\s+(trillion|billion|million)\b/gi, (m, n, u) => '$' + n + '\u00a0' + u);
 
-      // 2b. A grade is named in its own colour, the colour of its dot on the globe. One grade, one colour: a range ("Grade D–F") is left plain.
-      const GRADE_WORD = /\b(?:Clean Funding )?Grade\s+([A-F1-5])\b(?!\s*(?:–|—|-|to|and)\s*[A-F1-5])/g;
+      // 2b. A grade is named in its own colour, the colour of its dot on the globe, and in bold. One grade, one colour: a range ("Grade D–F") is left plain.
+      // "Grade B", "grade B", "graded B" and "rating B" all name a grade; the letter itself must be a capital, so "graded a little" is left alone.
+      // An old number (Grade 4) is read as its letter; after "rating" only a letter counts, so "rating 4 out of 5" is left alone.
+      const GRADE_WORD = /\b(?:(?:Clean Funding Grade|[Gg]raded?)\s+([A-F1-5])|(?:Funding transparency rating|[Rr]ating)\s+([A-F]))\b(?!\s*(?:–|—|-|to|and)\s*[A-F1-5])/g;
       const renderGradeMarks = (str) => str.replace(GRADE_WORD, (...args) => {
-        const m = args[0], a = args[1];
+        const m = args[0], a = args[1] || args[2];
         const offset = args[args.length - 2];
         const preceding = args[args.length - 1].slice(0, offset);
         if (preceding.lastIndexOf('<') > preceding.lastIndexOf('>')) return m;
@@ -19136,9 +19138,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=228"></script>
-<script src="assets/layers.js?v=228"></script>
-<script src="assets/hq-detail.js?v=228"></script>
-<script src="assets/bubbles.js?v=228" defer></script>
+<script src="assets/typeset.js?v=229"></script>
+<script src="assets/layers.js?v=229"></script>
+<script src="assets/hq-detail.js?v=229"></script>
+<script src="assets/bubbles.js?v=229" defer></script>
 </body>
 </html>
