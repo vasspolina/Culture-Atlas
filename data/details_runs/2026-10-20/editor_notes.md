@@ -22,3 +22,8 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - art-gallery-of-greater-victoria-victoria, art-gallery-of-hamilton-hamilton: TD Bank's 2024 plea was first left out of red flags; the prompt now says bank pleas are a red flag (map grades them B) and the slop check adds them.
 - art-gallery-of-south-australia-adelaide: BHP's A$17.54M Tarnanthi deal and 2026 to 2031 renewal appear only in search snippets; no openable source.
 - art-institute-of-chicago-chicago: one protest point rests on the World Socialist Web Site (labelled partisan).
+
+## d000 slop check (48 fixes, every report changed: unsupported claims, overstatement, wrong figures)
+- Flag headings to review under CHECKER.md: Aichi (racecourse owner and gas utilities as sponsors), African Artists' Foundation (Deutsche Bank read from logo file names), Belgazprombank (sanctions by Canada and Ukraine only, which the rules make a note, not a flag).
+- american-museum-of-natural-history-new-york: corporate patron list rests on one Hyperallergic line (amnh.org served a CAPTCHA).
+- american-folk-art-museum: Carnegie grant year unconfirmed (2005 or 2007).

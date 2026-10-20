@@ -388,5 +388,259 @@
    "https://hyperallergic.com/american-folk-art-museum-workers-picket-gala-calling-for-higher-wages/"
   ],
   "reason": "The opened text of the quote was cut off after 'mutually beneficial'; the quote was trimmed to the confirmed words."
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Gugenheim described as current museum director"
+  ],
+  "before": "- Decatur was paid $1,216,070 and the museum director Lisa Gugenheim $1,738,936 in the year to June 2025 (Form 990).",
+  "after": "- Decatur was paid $1,216,070 and Lisa Gugenheim, listed as museum director until 30 June 2024, $1,738,936 in the year to June 2025 (Form 990).",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/136162659"
+  ],
+  "reason": "The Form 990 lists her as 'Dir. of the Mus. (end 6/30/24)'."
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: attribution of patron list"
+  ],
+  "before": "- Citi, Chase and Bank of America are listed as corporate patrons (Hyperallergic, 2023).",
+  "after": "- Citi, Chase and Bank of America are listed as corporate patrons of the museum, according to Hyperallergic's 2023 report on the protest; no museum donor list could be read.",
+  "sources": [
+   "https://hyperallergic.com/protesters-at-new-yorks-natural-history-museum-warn-of-mass-extinction.md"
+  ],
+  "reason": "The article states the listing but the museum's own site could not be read, so the strength of the claim is shown."
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'in January 2018'"
+  ],
+  "before": "- Revolting Lesbians rallied for her removal in January 2018, and more than 400 scientists signed an open letter urging her to resign (Hyperallergic, 2020).",
+  "after": "- Revolting Lesbians campaigned for her removal from 2018, including a rally and an open letter from more than 400 scientists (Hyperallergic, 2020).",
+  "sources": [
+   "https://hyperallergic.com/544448/rebekah-mercer/"
+  ],
+  "reason": "The article says the campaign began in 2018 and mentions a rally and a 400-scientist letter; it gives no month and does not say the letter urged her to resign."
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: paraphrase 'to make institutions act'"
+  ],
+  "before": "- Shannon O'Loughlin of the Association on American Indian Affairs: it took \"a complete revision of the NAGPRA regulations\" to make institutions act; the museum holds over 2,000 Native American remains.",
+  "after": "- Shannon O'Loughlin of the Association on American Indian Affairs: it took \"a complete revision of the NAGPRA regulations\" to make clear to institutions that they lack legal or ownership rights to Native cultural heritage; the article notes the museum holds over 2,000 Native American human remains.",
+  "sources": [
+   "https://hyperallergic.com/868254/american-museum-of-natural-history-closes-native-exhibition-halls-nagpra-regulations/"
+  ],
+  "reason": "Restated to match the source's meaning."
+ },
+ {
+  "id": "anchorage-museum-anchorage",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'American Museum of Natural History' named in the piece"
+  ],
+  "before": "- Does not name the Anchorage Museum as a target; it points at the American Museum of Natural History and the Met.",
+  "after": "- Does not name the Anchorage Museum as a target; it points at the Natural History Museum in New York and the Met.",
+  "sources": [
+   "https://www.theartnewspaper.com/2020/05/08/nicholas-galanin-considers-the-unbalanced-power-of-institutions-over-indigenous-objects-in-anchorage-museum-exhibition"
+  ],
+  "reason": "The article refers only to 'the Natural History Museum in New York' and does not name the American Museum of Natural History."
+ },
+ {
+  "id": "arab-hebrew-theatre-of-jaffa-al-saraya",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict wording: 'over the theatre's Palestinian programming' broader than the named events"
+  ],
+  "before": "The money is mainly city and state support, which is not a flag in itself. The weak point is that the state funders have repeatedly tried to cut that money, and police have banned screenings, over the theatre's Palestinian programming. Watch the High Court petition and the size of current ministry grants.",
+  "after": "The money is mainly city and state support, which is not a flag in itself. The weak point is that ministers asked for that money to be cut in 2017 and 2022 over specific events and a film screening, and police banned two screenings in 2024. Watch the High Court petition and the size of current ministry grants.",
+  "sources": [
+   "https://thejewishindependent.com.au/one-theatre-fought-back-israeli-government",
+   "https://www.ynetnews.com/culture/article/rkk6ajvdi",
+   "https://www.arabnews.com/node/2591585/amp"
+  ],
+  "reason": "The sources name the events (Notebooks from Prison, the Tatour evening, Farha, Jenin Jenin 2, Lyd), not a general programming policy."
+ },
+ {
+  "id": "aros",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'paid for by Realdania' (source says sponsored)"
+  ],
+  "before": "- Olafur Eliasson's circular rooftop walk \"Your rainbow panorama\" opened on 28 May 2011, cost DKK 60 million and was paid for by the Realdania foundation (Wikipedia).",
+  "after": "- Olafur Eliasson's circular rooftop walk \"Your rainbow panorama\" opened on 28 May 2011, cost DKK 60 million and was sponsored by the Realdania foundation (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/ARoS_Aarhus_Kunstmuseum"
+  ],
+  "reason": "Wikipedia says the installation was sponsored by Realdania, not that it paid for all of it."
+ },
+ {
+  "id": "aros",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Turrell skyspace opened 'in 2026'"
+  ],
+  "before": "- The Next Level expansion added the 1,000 m² underground Salling Gallery on 20 June 2025 and James Turrell's skyspace \"As Seen Below, The Dome\" in 2026; Aarhus Municipality was the client and Aarsleff the builder.",
+  "after": "- The Next Level expansion added the 1,000 m² underground Salling Gallery on 20 June 2025; James Turrell's skyspace \"As Seen Below, The Dome\" was delayed after a subcontractor went bankrupt and was due to open in June 2026 (2025 annual report). Aarhus Municipality was the client and Aarsleff the builder.",
+  "sources": [
+   "https://www.aros.dk/media/dzfckonk/a-rsrapport_2025.pdf",
+   "https://www.aros.dk/en/press-releases-and-press-contact/press/aros-opens-new-subterranean-gallery-marking-the-first-phase-of-major-expansion/"
+  ],
+  "reason": "The annual report, signed 4 June 2026, gives an expected June 2026 opening; no opened source confirms it opened."
+ },
+ {
+  "id": "aros",
+  "section": "FUNDING",
+  "problems": [
+   "error: 8.1 million loan grant placed under the state"
+  ],
+  "before": "- In 2025 public grants were DKK 50.3 million: DKK 17.9 million from Aarhus Municipality, DKK 31.4 million from the state via the municipality, including DKK 8.1 million towards the building loan, and DKK 1 million direct from the state (2025 annual report).",
+  "after": "- In 2025 public grants were DKK 50.3 million: DKK 17.9 million from Aarhus Municipality, including DKK 8.1 million towards the building loan, DKK 31.4 million from the state via the municipality, and DKK 1 million direct from the state (2025 annual report).",
+  "sources": [
+   "https://www.aros.dk/media/dzfckonk/a-rsrapport_2025.pdf"
+  ],
+  "reason": "Note 2 of the accounts puts the DKK 8,131,000 loan repayment grant inside the Aarhus Municipality line, not the state line."
+ },
+ {
+  "id": "aros",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'in all'"
+  ],
+  "before": "- The Salling Foundations, which own Salling Group (Netto, Føtex, Bilka), have given ARoS DKK 104 million in all (lex.dk) and paid for the Salling Gallery and its fit-out; the New Carlsberg Foundation, Aarhus Municipality and an anonymous donor also funded the expansion (ARoS, 2025).",
+  "after": "- The Salling Foundations, which own Salling Group (Netto, Føtex, Bilka), are listed with DKK 104 million of support to ARoS (lex.dk, no period given) and paid for the Salling Gallery and its fit-out; the New Carlsberg Foundation, Aarhus Municipality and an anonymous donor also supported the wider expansion (ARoS, 2025).",
+  "sources": [
+   "https://lex.dk/Salling_Fondene",
+   "https://www.aros.dk/en/press-releases-and-press-contact/press/aros-opens-new-subterranean-gallery-marking-the-first-phase-of-major-expansion/"
+  ],
+  "reason": "Lex.dk gives the figure without saying it is a lifetime total; the press release does not say the other three funded the gallery itself."
+ },
+ {
+  "id": "aros",
+  "section": "RED FLAGS",
+  "problems": [
+   "error: count of shows supported by Augustinus Foundation"
+  ],
+  "before": "- The Augustinus Foundation supported three 2025 shows: Barbara Kruger, Isaac Julien and Anna Boghiguian (2025 annual report).",
+  "after": "- The Augustinus Foundation supported four 2025 shows: Barbara Kruger, Isaac Julien, Anna Boghiguian and Jenkin van Zyl (2025 annual report).",
+  "sources": [
+   "https://www.aros.dk/media/dzfckonk/a-rsrapport_2025.pdf"
+  ],
+  "reason": "The annual report lists the foundation under four shows, including Jenkin van Zyl's Lost Property."
+ },
+ {
+  "id": "aros",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: causal claim about the gift setting off a debate"
+  ],
+  "before": "- Lex.dk reports that the Salling Foundations' DKK 250 million gift in 2019 for a municipal football stadium in Aarhus, about a third of a DKK 995 million budget, set off a debate about private donors' influence on municipal decisions.",
+  "after": "- Lex.dk reports that the Salling Foundations gave DKK 250 million in 2019 to a municipal football stadium in Aarhus, just under a third of the DKK 995 million budget, and that Jyllands-Posten journalists examined its effect on the municipal council's co-financing, which raised a debate about foundations without a democratic mandate holding decision power.",
+  "sources": [
+   "https://lex.dk/Salling_Fondene"
+  ],
+  "reason": "The source ties the debate to the journalists' examination of co-financing, not directly to the gift."
+ },
+ {
+  "id": "art-belarus-gallery-belgazprombank-corporate-collection-minsk",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'depends entirely'"
+  ],
+  "before": "- Belgazprombank's two near-equal shareholders are Russia's Gazprom and Gazprombank (Wikipedia); the gallery depends entirely on the bank.",
+  "after": "- Belgazprombank's two equal shareholders, with 49.8% each, are Russia's Gazprom and Gazprombank (Wikipedia); the bank buys the works and runs the gallery (stated by the space).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Belgazprombank",
+   "https://artbelarus.by/ru/about.html"
+  ],
+  "reason": "No source says the gallery depends entirely on the bank; the space says the bank buys the works and runs the gallery, and Wikipedia gives 49.8% each."
+ },
+ {
+  "id": "art-belarus-gallery-belgazprombank-corporate-collection-minsk",
+  "section": "RED FLAGS",
+  "problems": [
+   "hedge: 'believed to be'"
+  ],
+  "before": "- Babaryka resigned to run for president and was detained in June 2020; the arrest was \"believed to be politically motivated\" (Wikipedia). He was sentenced to 14 years on 6 July 2021 and released and deported in December 2025.",
+  "after": "- Babaryka resigned to run for president and was detained in June 2020; The Art Newspaper says the arrest is widely seen as politically motivated. He was sentenced to 14 years on 6 July 2021 and released and deported in December 2025 (Wikipedia).",
+  "sources": [
+   "https://www.theartnewspaper.com/2020/08/24/belarus-art-collector-viktor-babariko-rival-to-president-alexander-lukashenko-jailed-before-election",
+   "https://en.wikipedia.org/wiki/Viktar_Babaryka"
+  ],
+  "reason": "Removes the hedging phrase 'believed to be' and attributes the characterisation to a named outlet; Wikipedia supports the sentence and release dates."
+ },
+ {
+  "id": "art-belarus-gallery-belgazprombank-corporate-collection-minsk",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: performance title 'Gemeingut'"
+  ],
+  "before": "2. ECLAT portal, \"Antiutopie and Widerstand\": Nadya Sayapina, performance \"Gemeingut\" (2020)",
+  "after": "2. ECLAT portal, \"Antiutopie and Widerstand\": Nadya Sayapina, performance \"The Heritage\" (2020)",
+  "sources": [
+   "https://portal.eclat.org/exhibition/antiutopie-widerstand/the-heritage/"
+  ],
+  "reason": "The opened page titles the piece 'The Heritage'; 'Gemeingut' does not appear."
+ },
+ {
+  "id": "art-belarus-gallery-belgazprombank-corporate-collection-minsk",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'wholly paid for'"
+  ],
+  "before": "The gallery is wholly paid for by a bank owned by Gazprom and Gazprombank, so its money comes from Gazprom and Gazprombank. The weak points are that ownership, the 2023 sanctions on the bank, and the 2020 state seizure of the collection in the case against its former chairman, who had stood against Lukashenko. Whether all seized works are back in the bank's hands is not documented on the pages read.",
+  "after": "The gallery's works are bought and its shows run by a bank owned by Gazprom and Gazprombank, so the money behind it comes from them; the project is also a partnership with the Ministry of Culture, and no budget is published. The weak points are that ownership, the 2023 sanctions on the bank, and the 2020 state seizure of the collection in the case against its former chairman, who had stood against Lukashenko. Whether all seized works are back in the bank's hands is not documented on the pages read.",
+  "sources": [
+   "https://artbelarus.by/ru/about.html",
+   "https://en.wikipedia.org/wiki/Belgazprombank"
+  ],
+  "reason": "No source shows the bank pays the whole cost; the space describes a public-private partnership and no accounts were found."
+ },
+ {
+  "id": "aichi-triennale-nagoya",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "hedge: 'arguably'"
+  ],
+  "before": "- Calls Kawamura \"arguably\" the political ringleader and reads the pressure on the triennale as part of a broader campaign to realign history with Japanese government objectives.",
+  "after": "- Reads the pressure on the triennale as part of a broader campaign to realign history with Japanese government objectives, and traces the withheld Nagoya funds to Mayor Kawamura.",
+  "sources": [
+   "https://www.fccj.or.jp/number-1-shimbun-article/state-art-0"
+  ],
+  "reason": "Removes a quoted hedge; the article's own qualifier on the 'ringleader' label is not carried into the report."
+ },
+ {
+  "id": "aichi-triennale-nagoya",
+  "section": "FUNDING",
+  "problems": [
+   "over length (report was 817 words; limit 800)"
+  ],
+  "before": "- Aichi Prefecture also paid about 42.5 million yen in 2023 and 137.3 million yen in 2024 for preparation (2025 report).",
+  "after": "",
+  "sources": [
+   "https://aichitriennale.jp/archive/item/2025-report.pdf"
+  ],
+  "reason": "Cut to bring the report under 800 words; the figures were correct (42,484 and 137,315 thousand yen)."
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (report was 813 words; limit 800)"
+  ],
+  "before": "- About 32 million specimens and a scientific staff of 225; about five million visits a year (Wikipedia).",
+  "after": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/American_Museum_of_Natural_History"
+  ],
+  "reason": "Cut to bring the report under 800 words; the figures were correct."
  }
 ]
