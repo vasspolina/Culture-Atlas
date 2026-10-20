@@ -89,7 +89,8 @@ corrects or adds to it; it does not restate it.
   but a Gulf state government body or a named Gulf state partner is (the "Gulf state body" flag); a funder flag
   (fossil fuels, gambling, tobacco, arms, opioids) needs the funder to be current (about the last
   five years) or a documented objection; founder or family money from a flagged industry counts
-  as that industry's money; persecution by a state that neither funds nor controls the space is
+  as that industry's money, including an endowment built on it that still pays today (editor's
+  ruling: Getty, Gulbenkian, Blavatnik count as Fossil fuels; a former executive's estate does not); persecution by a state that neither funds nor controls the space is
   context, not a flag; protest needs a documented protest, open letter, petition or boycott aimed
   at the space, its funders or its leadership. A patron's closeness to a government that is
   accused of something is a red flag only when the patronage itself is documented (a commission,

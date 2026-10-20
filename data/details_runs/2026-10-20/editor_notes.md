@@ -106,3 +106,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Spam or dead: sindikadokolofondation.org redirects to a gambling site; museum.ge (Georgian National Museum) hides spam links in its footer; galeri-nasional.or.id does not resolve.
 - garage-museum-moscow: the 2024 FSB search and pro-war activists' visit are under Wider context (the Russian state neither funds nor runs Garage).
 - fundação-fernando-leite-couto-maputo: sponsors shown as logos only; Nedbank unconfirmed.
+
+## d009 (research notes, before its slop check)
+- getty-center-los-angeles: the researcher calls the Fossil fuels flag weak (Getty Oil shares sold to Texaco in 1984); under the editor's founder-fortune ruling the endowment built on Getty Oil still counts. The checker is told to keep it as a red flag.
+- glenbow-calgary: vice chair John R. Whelan is CEO of Imperial Oil and chairs the rebuild committee; ex-Suncor governor; oil executives Laut and Werklund among donors; Chevron Canada listed; 1988 Lubicon Lake Cree boycott of a Shell-sponsored show.
+- groninger-museum-groningen: 2025 report still lists GasTerra and Gasunie (sponsorship income €20,000); GasTerra closes end of 2026.
+- haifa-museum-of-art: sponsor Bank Mizrahi-Tefahot paid $195M under a 2019 US DPA (tax evasion) and is in the 2020 UN settlement database.
+- guggenheim-bilbao-bilbao: Petronor in the Trustees tier; the Urdaibai outpost was dropped on 16 December 2025 after protests.
+- Website fields wrong: golden-thread-gallery-belfast (GrantNav; real site goldenthreadgallery.co.uk), gwangju-biennale-gwangju (an ArtAsiaPacific article; real site gwangjubiennale.org).
+- Not confirmed: Golden Thread's 2016 Gulbenkian protest; Gwangju budget figures.
