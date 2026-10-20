@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=229">
-  <script src="assets/config.js?v=229"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=230">
+  <script src="assets/config.js?v=230"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9921,11 +9921,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v229';
+    const ATLAS_RELEASE = 'culture-atlas-v230';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=229').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=230').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12520,6 +12520,62 @@ return maplibregl$1;
       return `${nameLink}${cityPart}${dossierPart}`;
     }
 
+    // A reply written by the model names spaces in plain text. Each name (or alias) that a record carries becomes the same
+    // link a list answer has, so a click opens the record and flies the map there. Text already in a link or button is left alone.
+    let instNameIndex = null;
+    function linkifyInstNames(html) {
+      if (!html) return html;
+      if (!instNameIndex) {
+        const byKey = new Map();
+        const add = (label, inst) => {
+          const t = String(label || '').replace(/\s*\([^)]*\)\s*$/, '').replace(/\s*:.*$/, '').trim();
+          if (t.length < 4) return;
+          const k = t.toLowerCase();
+          if (!byKey.has(k)) byKey.set(k, { label: t, name: inst.name });
+        };
+        [...ALL_INSTITUTIONS, ...(typeof EXCLUDED_INSTITUTIONS !== 'undefined' ? EXCLUDED_INSTITUTIONS : [])].forEach(inst => {
+          add(inst.name, inst);
+          (inst.aliases || []).forEach(a => add(a, inst));
+        });
+        const labels = [...byKey.values()].sort((a, b) => b.label.length - a.label.length);
+        const esc = (n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        instNameIndex = {
+          byKey,
+          re: labels.length ? new RegExp('(?<![\\p{L}\\p{N}])(?:' + labels.map(l => esc(l.label)).join('|') + ')(?![\\p{L}\\p{N}])', 'giu') : null
+        };
+      }
+      if (!instNameIndex.re) return html;
+      const doc = new DOMParser().parseFromString('<body>' + html + '</body>', 'text/html');
+      const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+        if (!n.parentElement.closest('a, button, .ai-note')) nodes.push(n);
+      }
+      nodes.forEach(node => {
+        const text = node.nodeValue;
+        instNameIndex.re.lastIndex = 0;
+        let last = 0, hit = false;
+        const frag = doc.createDocumentFragment();
+        for (let m = instNameIndex.re.exec(text); m; m = instNameIndex.re.exec(text)) {
+          const entry = instNameIndex.byKey.get(m[0].toLowerCase());
+          if (!entry) continue;
+          hit = true;
+          frag.appendChild(doc.createTextNode(text.slice(last, m.index)));
+          const a = doc.createElement('a');
+          a.href = '#';
+          a.className = 'inst-link';
+          a.setAttribute('data-name', entry.name);
+          a.textContent = m[0];
+          frag.appendChild(a);
+          last = m.index + m[0].length;
+        }
+        if (!hit) return;
+        frag.appendChild(doc.createTextNode(text.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+      return doc.body.innerHTML;
+    }
+
     // =========================================================
     //  UNIFIED MULTI-PROVIDER AI & CURATOR ENGINE STATE
     // =========================================================
@@ -15047,7 +15103,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              appendCuratorMessage(aiHtml + '<p class="no-indent ai-note">AI-written from archival records. Unverified.</p>', [], webIntel, thinkingData);
+              appendCuratorMessage(linkifyInstNames(aiHtml) + '<p class="no-indent ai-note">AI-written from archival records. Unverified.</p>', [], webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -15060,6 +15116,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const places = [...ALL_CITIES_REGISTRY.map(c => c.name), ...ALL_COUNTRIES_REGISTRY.map(c => c.name)].filter(Boolean);
       const esc = (n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const place = places.filter(n => new RegExp('\\b' + esc(n) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
+      // A city named in the question turns the globe to it and zooms in, as a click on the city does; a space named with it wins.
+      if (place && !explicit && ALL_CITIES_REGISTRY.some(c => c.name === place) && !(selectedCityFilter && matchC(selectedCityFilter, place) && isCityStreetViewActive)) {
+        filterByCity(place, true, false);
+      }
       // What employees report: the summary of the accounts on the records, and the count on the space in view.
       if (asks(/\b(what (do )?(employees|staff|workers) (say|report|think)|employee (reviews?|accounts?)|staff (reviews?|accounts?)|glassdoor|kununu|working conditions|work(ing)? (there|here|at))\b/)) {
         const own = target ? ((target.gossip_data || {}).accounts || []).length : 0;
@@ -19138,9 +19198,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=229"></script>
-<script src="assets/layers.js?v=229"></script>
-<script src="assets/hq-detail.js?v=229"></script>
-<script src="assets/bubbles.js?v=229" defer></script>
+<script src="assets/typeset.js?v=230"></script>
+<script src="assets/layers.js?v=230"></script>
+<script src="assets/hq-detail.js?v=230"></script>
+<script src="assets/bubbles.js?v=230" defer></script>
 </body>
 </html>
