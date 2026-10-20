@@ -92,6 +92,9 @@ corrects or adds to it; it does not restate it.
   too, because the map grades it as a name to know: a bank's criminal plea or fine (TD Bank's 2024
   money-laundering plea, HSBC, ABN AMRO), a founder's company convicted or sanctioned, a donor tied
   to Jeffrey Epstein through money or leadership. State the event, the date and the authority.
+- Epstein items follow the map's rule: a documented link through money or leadership is a red flag;
+  a visit, a venue hire, a loan or loan request, an itinerary or a mention in the files goes under
+  WIDER CONTEXT, stated plainly for what it was.
 - Keep the report under 800 words. Overview points are one sentence each.
 
 ### Output: one plain-text file, this exact layout

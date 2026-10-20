@@ -72,3 +72,9 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - centro-león-santiago-de-los-caballeros: the only Hyperallergic item is a sponsored post written by the centre; the report says so and lists no criticism.
 - casa-frança-brasil-rio-de-janeiro: ArtReview says "city authorities" closed the 2019 show; the venue is under the state secretariat. Check which acted.
 - cairns-art-gallery-cairns: the RSL Club's gaming machines rest on a Wanderlog listing; the sponsorship itself is confirmed.
+
+## d006 (research notes, before its slop check)
+- eiteljorg-museum-of-american-indians-and-western-art-indianapolis: no reporting found for the record's "Sponsor dropped under pressure" and "Protest or boycott" flags. Founder's coal fortune and a gas utility sponsor (Citizens Energy Group) found.
+- dia-art-foundation-beacon: Sackler Institute 2016, name removed 2019; Dia's own break dated 2018 only in an unread Artnet piece.
+- design-museum-london: the record's Deutsche Bank funder is not confirmed.
+- dulwich-picture-gallery-london: still holds a £3.43M Sackler-funded director endowment.
