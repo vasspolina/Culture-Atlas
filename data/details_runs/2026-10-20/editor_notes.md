@@ -44,3 +44,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - biomuseo-panama-city: the protests that cut its cash flow 70% were the October 2023 blockades over the mining contract, not aimed at the museum. AES Panamá is 50.4% owned by the state.
 - bukhara-biennial-bukhara: the site loads now; "Bukhara Oil" matched to the Uzbekneftegaz refinery on name alone.
 - black-family-visual-arts-center-dartmouth-hanover: trustees set up a Naming Policy Committee in June 2026; no decision.
+
+## d004 (research notes, before its slop check)
+- casa-de-la-arquitectura-madrid: casadelaarquitectura.gob.es serves a crypto app; the working site is lacasadelaarquitectura.es.
+- centro-de-arte-la-estancia: pdvsalaestancia.com serves spam.
+- casa-frança-brasil-rio-de-janeiro: no source for the record's "Sponsor dropped under pressure" flag.
+- centro-león-santiago-de-los-caballeros: the watch note's cigar-factory tour is not supported.
+- centre-pompidou: new, not in the record: the Hanwha partnership boycott (open letter, rally) and the Cour des comptes audit.
+- caixaforum-madrid: Naturgy gas dividends behind the la Caixa foundation budget (new red flag).
+- ch-teau-de-versailles: the Epstein item is venue only (2019 Pritzker ceremony); the slop check moves it out of Red flags under the map's Epstein rule.
