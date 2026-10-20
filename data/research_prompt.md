@@ -1,6 +1,6 @@
 # Culture Atlas funding research prompt
 
-Research one cultural space and report who funds it, using only what published sources state.
+Research one cultural space and report who funds it, using only what published sources state. The output is one plain-text report per space, in the layout below.
 
 ## Input
 - Record: the space's current entry from `institutions.json` (id, name, location, website, funding, watch, flags, sources).
@@ -14,7 +14,7 @@ Research one cultural space and report who funds it, using only what published s
 6. Label every claim's strength: reported by an independent outlet; stated by the space itself; or an allegation, naming who makes it and whether that source is openly partisan.
 7. Never guess. If nothing is found, write "No reporting found".
 
-## Output — part 1: report (plain text, this exact layout)
+## Output: report (plain text, this exact layout)
 
 ```
 <NAME IN CAPITALS> – <City>, <Country>
@@ -40,25 +40,65 @@ SOURCES
 - <url> (add "(advocacy source)" or "(partisan)" where relevant)
 ```
 
-## Output — part 2: record update (JSON, for the importer)
+## Example of a finished report
 
-```json
-{
-  "id": "<record id, exactly as given>",
-  "retrieved": "<YYYY-MM-DD>",
-  "website": "<url or null>",
-  "website_status": "ok | down | spam | parked",
-  "funding": "<one or two sentences, the funding as stated now>",
-  "tier": "A (clean, source cited) | B (flagged, with a reason) | U (unverified)",
-  "flags": ["<short flag names, or empty>"],
-  "why_flagged": "<one sentence, or empty>",
-  "other_findings": ["<each red-flag fact as one sentence, prefixed 'Unverified:' for allegations>"],
-  "funders": ["<named funders, sponsors, patrons>"],
-  "bottom_line": "<the BOTTOM LINE text>",
-  "not_related": ["<similarly named entities that are not this space>"],
-  "sources": ["<every url used>"],
-  "changes": ["<each way this differs from the existing record, one line each>"]
-}
+Match this layout exactly: the same headings in capitals, a dash at the start of each point, one "Red flags:" heading per issue, and a "Not related:" line where one applies.
+
+```
+ZOMA MUSEUM – Addis Ababa, Ethiopia
+Website: https://www.zomamuseum.org
+
+OVERVIEW
+- Eco-conscious art and architecture complex in the Mekanisa neighborhood, southwestern Addis Ababa, about 10 min drive from Meskel Square
+- Co-founded by curator/anthropologist Meskerem Assegued and artist Elias Sime
+- Began in 2002 as Zoma Contemporary Art Center (ZCAC); opened as Zoma Museum on March 24, 2019
+- Named after Zoma Shiferraw, a young Ethiopian artist who died of cancer in 1979
+- About two acres, built on a reclaimed former rubbish dump
+- Architecture: single-storey wattle-and-daub buildings (juniper poles, eucalyptus screens, fermented red soil/straw/water plaster) on drystone foundations; exterior walls hand-sculpted by Sime
+- On site: earthen gallery, restaurant, circus school, primary school, library, organic garden, dairy, livestock
+- Open daily except Monday; discounts for children 12 and under, over-65s and students; wheelchair accessible, though some outdoor paths are bumpy
+
+FUNDING
+Zoma Museum (Mekanisa): appears self-funded
+- Land bought from 2013 with Assegued's income as a curator/anthropologist and sales of Sime's artwork
+- Sime is represented by James Cohan Gallery, New York, so the money ultimately comes from the Western art market
+- Privately funded; founders were working on a foundation to sustain it long-term
+- No reporting found of dirty money behind the museum itself
+
+Red flags: ties to PM Abiy Ahmed's government
+- Unity Park: Abiy commissioned the founders to build a mini-Zoma there (opened Oct 2019). The park cost over $160M, funded by the UAE government plus wealthy Ethiopian donors
+- Transparency: asked about the parks in parliament, Abiy said MPs couldn't question him because no government budget was used. Critics saw this as refusing to account for the money
+- Unverified allegations (from an openly anti-Abiy outlet): undisclosed funding, blocked audits, contracts going to companies tied to Abiy or his allies
+- Zoma Village Entoto: Abiy gave the founders the land; they say they paid for construction themselves (estimated "in the millions"). A free land grant from the head of government is still state patronage
+- Timing: critics objected to spending on cosmetic projects while people were starving and dying, including during the Tigray war
+
+Not related: the Colorado-based Zoma Foundation, criticized in 2020 for funding a Colorado state government position. It has nothing to do with the museum.
+
+BOTTOM LINE
+The museum itself looks clean. The founders' closeness to the Abiy government, and through Unity Park to opaque UAE money, is the part worth looking at.
+
+SOURCES
+- https://www.artforum.com/columns/ethiopian-art-crossroads-551671/
+- https://www.theartnewspaper.com/2024/05/20/how-an-artist-and-curator-duo-are-transforming-addis-ababa-with-their-eco-driven-projects
+- https://www.thereporterethiopia.com/10337/
+- https://almariam.com/2020/02/03/unity-park-addis-ababa-the-story-of-all-of-us-in-the-city-upon-the-hill/
+- https://curateoromia.com/ethiopia-at-a-crossroads-the-fragile-reign-of-prime-minister-abiy-ahmed (advocacy source)
+- https://news.artnet.com/art-world/zoma-museum-opens-ethiopia-1501450
+- https://www.influencewatch.org/non-profit/zoma-foundation/
+- https://next.archnet.org/sites/21496
+- https://ww2.aaa.com/tripcanvas/attraction/zoma-museum-VA103323
+- https://contemporaryand.com/en/places/zoma-museum
 ```
 
-Rules: write in plain English, no adjectives of judgement beyond what sources support; tiers describe how well the record is sourced, not a verdict on the space; keep the report under 600 words.
+## Importing into Culture Atlas
+
+Save each report as a .txt file, named after the record id when the title might not match the record's name exactly (for example `zoma-museum-addis-ababa.txt`). Then:
+
+```
+python3 tools/import_research_reports.py <file or folder>            # dry run: writes a review file, changes nothing
+python3 tools/import_research_reports.py <file or folder> --apply    # writes the records
+```
+
+Then run `tools/clean_data.py`, `tools/embed_data.py` and `tools/build_money_maps.py`.
+
+Rules: write in plain English, no adjectives of judgement beyond what sources support; keep the report under 600 words.

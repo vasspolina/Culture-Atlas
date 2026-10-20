@@ -27469,11 +27469,21 @@
   {
     "name": "Zoma Museum",
     "location": "Addis Ababa, Ethiopia",
-    "tier": "A",
-    "funding": "Founders Elias Sime and Meskerem Assegued bought the Mekanisa land from 2013 with their own money and sales of Sime's art. Dire Dawa city gave the Harla land in 2007.",
+    "tier": "B",
+    "funding": "Zoma Museum (Mekanisa): appears self-funded\nLand bought from 2013 with Assegued's income as a curator/anthropologist and sales of Sime's artwork\nSime is represented by James Cohan Gallery, New York, so the money ultimately comes from the Western art market\nPrivately funded; founders were working on a foundation to sustain it long-term\nNo reporting found of dirty money behind the museum itself",
     "sources": [
       "https://www.thereporterethiopia.com/11733/",
-      "https://en.wikipedia.org/wiki/Zoma_Museum"
+      "https://en.wikipedia.org/wiki/Zoma_Museum",
+      "https://www.artforum.com/columns/ethiopian-art-crossroads-551671/",
+      "https://www.theartnewspaper.com/2024/05/20/how-an-artist-and-curator-duo-are-transforming-addis-ababa-with-their-eco-driven-projects",
+      "https://www.thereporterethiopia.com/10337/",
+      "https://almariam.com/2020/02/03/unity-park-addis-ababa-the-story-of-all-of-us-in-the-city-upon-the-hill/",
+      "https://curateoromia.com/ethiopia-at-a-crossroads-the-fragile-reign-of-prime-minister-abiy-ahmed",
+      "https://news.artnet.com/art-world/zoma-museum-opens-ethiopia-1501450",
+      "https://www.influencewatch.org/non-profit/zoma-foundation/",
+      "https://next.archnet.org/sites/21496",
+      "https://ww2.aaa.com/tripcanvas/attraction/zoma-museum-VA103323",
+      "https://contemporaryand.com/en/places/zoma-museum"
     ],
     "lat": 8.985,
     "lon": 38.722,
@@ -27483,10 +27493,28 @@
     "aliases": [
       "Zoma Museum"
     ],
-    "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "watch": "Opened March 2019.",
-    "records_note": "Its website now serves gambling spam, so nothing about its reports, accounts, funders or board could be checked."
+    "records_note": "Its website now serves gambling spam, so nothing about its reports, accounts, funders or board could be checked.",
+    "field_sources": {
+      "funding": {
+        "urls": [
+          "https://www.artforum.com/columns/ethiopian-art-crossroads-551671/",
+          "https://www.theartnewspaper.com/2024/05/20/how-an-artist-and-curator-duo-are-transforming-addis-ababa-with-their-eco-driven-projects",
+          "https://www.thereporterethiopia.com/10337/"
+        ],
+        "retrieved": "2026-10-20",
+        "basis": "funding research",
+        "previous": "Founders Elias Sime and Meskerem Assegued bought the Mekanisa land from 2013 with their own money and sales of Sime's art. Dire Dawa city gave the Harla land in 2007."
+      }
+    },
+    "flags": [
+      "Ties to PM Abiy Ahmed's government"
+    ],
+    "why_flagged": "The museum itself looks clean. The founders' closeness to the Abiy government, and through Unity Park to opaque UAE money, is the part worth looking at.",
+    "other_findings": "Unity Park: Abiy commissioned the founders to build a mini-Zoma there (opened Oct 2019). The park cost over $160M, funded by the UAE government plus wealthy Ethiopian donors | Transparency: asked about the parks in parliament, Abiy said MPs couldn't question him because no government budget was used. Critics saw this as refusing to account for the money | Unverified allegations (from an openly anti-Abiy outlet): undisclosed funding, blocked audits, contracts going to companies tied to Abiy or his allies | Zoma Village Entoto: Abiy gave the founders the land; they say they paid for construction themselves (estimated \"in the millions\"). A free land grant from the head of government is still state patronage | Timing: critics objected to spending on cosmetic projects while people were starving and dying, including during the Tigray war | Not related: the Colorado-based Zoma Foundation, criticized in 2020 for funding a Colorado state government position. It has nothing to do with the museum.",
+    "research_retrieved": "2026-10-20"
   },
   {
     "name": "Kunsthalle Tbilisi",
