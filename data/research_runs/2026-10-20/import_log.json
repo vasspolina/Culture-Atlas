@@ -1,183 +1,9 @@
 {
  "updated": [
   {
-   "id": "aros",
-   "changed": [
-    "+9 sources",
-    "funding",
-    "+2 findings"
-   ],
-   "research_changes": [
-    "Existing why_flagged repeated the funding text; replaced with the actual tobacco link (Augustinus Fonden to Scandinavian Tobacco Group).",
-    "Added 2025 figures: income DKK 163.6M, public subsidy DKK 50.3M, sponsors and foundations DKK 29.3M.",
-    "Added Aarsleff as main corporate partner.",
-    "Could not confirm 'DKK 2M grants for 2026 projects' from Augustinus Fonden in retrieved sources.",
-    "The 2025 annual report does not name Salling Fondene as a 2025 donor; its DKK 100M is for the expansion (2023 press release title)."
-   ]
-  },
-  {
-   "id": "stedelijk-museum-amsterdam",
-   "changed": [
-    "+2 sources",
-    "funding",
-    "flags: Money laundering",
-    "why_flagged",
-    "+3 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "Precise subsidy share is 61.9% (record said 62%).",
-    "Added ABN AMRO partnership renewal from March 2026 and its scope.",
-    "Added flag 'Money laundering' (record had a watch note but no flag).",
-    "Added 2024 Öğüt loan dispute."
-   ]
-  },
-  {
-   "id": "fondation-vincent-van-gogh-arles",
-   "changed": [
-    "+3 sources",
-    "funding",
-    "+4 findings"
-   ],
-   "research_changes": [
-    "Opened to the public in 2014 (record says set up 2010, which is when it was established under its name).",
-    "Artistic director changed: Jean de Loisy from April 2025, succeeding Bice Curiger.",
-    "Corporate partners Hiscox, Blackwall Green, Christie's not re-confirmed: partners page could not be retrieved this run; tier set to U.",
-    "Added corporate membership tiers and 60% tax reduction."
-   ]
-  },
-  {
-   "id": "luma-arles",
-   "changed": [
-    "+6 sources",
-    "funding",
-    "+4 findings"
-   ],
-   "research_changes": [
-    "Record had no sources; added Artnet, Wikipedia, Le Temps and LUMA pages.",
-    "Added that the LUMA Arles endowment fund was created in 2013 and that ACCM and CCIPA are named partners.",
-    "Added Le Temps reporting on Hoffmann's hotel and restaurant holdings in Arles."
-   ]
-  },
-  {
-   "id": "auckland-art-gallery-toi-o-t-maki",
-   "changed": [
-    "+5 sources",
-    "funding",
-    "flags: Money laundering",
-    "why_flagged",
-    "+4 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "Added flag 'Money laundering' for HSBC (record had a watch note only).",
-    "Added further partners (Beca, Cordis, Omnigraphics, Trinity Hill) and foundation endowment of about NZ$4.5M from the 2023-24 review.",
-    "2024-25 visitor figure of 497,998 not re-checked: the 2024-25 review could not be retrieved this run (2023-24: 507,507)."
-   ]
-  },
-  {
-   "id": "macba-museu-d-art-contemporani-de-barcelona",
-   "changed": [
-    "+2 sources",
-    "funding",
-    "+3 findings"
-   ],
-   "research_changes": [
-    "Director changed: Valentín Roma from 2026 (Wikipedia).",
-    "Repsol/Naturgy flag and €13.2M budget not re-verified: MACBA pages blocked and search budget exhausted this run; tier set to U.",
-    "Removed https://www.barcelona.cat (city homepage, not a funding source) from sources."
-   ]
-  },
-  {
-   "id": "the-bowes-museum",
-   "changed": [
-    "+1 sources",
-    "funding",
-    "+1 findings"
-   ],
-   "research_changes": [
-    "Added 2023-24 income of about £4.3M and spending of about £3.3M (Wikipedia); FY2025 £3.9M not re-checked.",
-    "Added closure of the Friends of the Bowes Museum (April 2025).",
-    "Supporters list not re-verified (pages blocked this run); tier set to U."
-   ]
-  },
-  {
-   "id": "kunsthalle-basel",
-   "changed": [
-    "+1 sources",
-    "funding",
-    "+2 findings"
-   ],
-   "research_changes": [
-    "Subsidy figures and SVP subsidy-cut demand not re-verified (sources blocked this run); tier set to U.",
-    "Added founding (1872), building and director history from Wikipedia."
-   ]
-  },
-  {
-   "id": "kunstmuseum-basel",
-   "changed": [
-    "+1 sources",
-    "funding",
-    "flags: Money laundering, Corruption",
-    "why_flagged",
-    "+6 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "Added flags 'Money laundering' and 'Corruption' (record had watch notes only).",
-    "Added later UBS penalties (2012, 2023, 2025, 2026) and Novartis FCPA settlement (2020).",
-    "Added that the Laurenz Foundation co-funded the 2016 extension with the canton.",
-    "Added restitution disputes.",
-    "Sponsor list not re-verified (page blocked this run)."
-   ]
-  },
-  {
-   "id": "museum-tinguely",
-   "changed": [
-    "+1 sources",
-    "funding",
-    "flags: Price fixing",
-    "why_flagged",
-    "+3 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "Added flag 'Price fixing' (record had watch note only).",
-    "Added Mario Botta as architect and Niki de Saint Phalle's donation of more than 50 works.",
-    "Roche funding page not re-retrieved this run."
-   ]
-  },
-  {
-   "id": "schaulager",
-   "changed": [
-    "+2 sources",
-    "funding",
-    "+1 findings"
-   ],
-   "research_changes": [
-    "Added that the Laurenz Foundation also co-funded the 2016 Kunstmuseum Basel extension.",
-    "Added Maja Oeri's 5% Roche voting stake as the ultimate source of wealth (Roche Wikipedia)."
-   ]
-  },
-  {
-   "id": "dia-beacon",
-   "changed": [
-    "+2 sources",
-    "funding",
-    "+1 findings"
-   ],
-   "research_changes": [
-    "Added construction funders: Leonard Riggio (at least $35M), Lannan Foundation ($10M), Tenenbaum and Lee ($2.5M).",
-    "Sackler name removal (2019) and Mellon support not re-verified this run.",
-    "Clarified Schlumberger link: founder Philippa de Menil's family fortune, not a corporate donor."
-   ]
-  },
-  {
    "id": "sursock-museum",
    "changed": [
-    "+7 sources",
-    "funding",
-    "+2 findings"
+    "funding"
    ],
    "research_changes": [
     "'Municipal endowment' is imprecise: sources describe a waqf (trust) bequeathed by Nicolas Sursock with the Beirut Municipality president as trustee; no reporting found of a municipal grant or endowment size.",
@@ -188,338 +14,130 @@
    ]
   },
   {
-   "id": "the-mac",
+   "id": "nasher-sculpture-center",
+   "changed": [
+    "+6 sources",
+    "funding",
+    "+1 findings"
+   ],
+   "research_changes": [
+    "Contradicts the existing claim that its credit line names only TACA, the Texas Commission on the Arts and unnamed donors: its Foundation & Government Support page names 20 foundation and government partners, including the City of Dallas Office of Cultural Affairs, the NEA and Pro Helvetia.",
+    "Added: the Nasher Foundation paid the $70M construction cost (Wikipedia).",
+    "Trustee names and roles added from GuideStar (7 trustees, as of 17 Nov 2025).",
+    "The FY2025 revenue figure of $14.0M was not rechecked, because the ProPublica pages were not retrieved this run.",
+    "Not related: Nasher Museum of Art at Duke University."
+   ]
+  },
+  {
+   "id": "des-moines-art-center",
    "changed": [
     "+8 sources",
     "funding",
-    "flags: Financial instability",
-    "why_flagged",
-    "+3 findings",
-    "tier A→B"
-   ],
-   "research_changes": [
-    "Charity number: OpenCharities lists The MAC as NI charity 100808, while the existing record cites findthatcharity GB-NIC-100754 (blocked to the fetch tool); the importer should check which number is correct.",
-    "Exact income confirmed: £2,986,762 for FY2025, with spending £3,302,232 (a deficit).",
-    "Could not confirm the existing per-funder figures (ACNI £1.1M, Belfast City Council £120k, Freelands £126k); Arts Professional gives ACNI as over £1M a year.",
-    "Added funders: Department for Communities, Ulster Garden Villages, Foyle Foundation, Public Health Agency, Shared Island, Wexford County Council; 2012 capital funders DCAL, Garfield Weston, Monument Trust.",
-    "New flag: financial instability (2018 bailout, c.2023 going-concern warning, FY2025 deficit).",
-    "The existing watch note about Charity Commission standards is not a finding and is dropped."
-   ]
-  },
-  {
-   "id": "crystal-bridges",
-   "changed": [
-    "+9 sources",
-    "funding",
-    "flags: Labour practices, Protest or boycott",
-    "why_flagged",
-    "+3 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "Contradicts 'No protest turned up': protests linked to the museum took place in November 2011 (worker teach-ins) and June 2013 (OUR Walmart strikers at the museum).",
-    "Contributions figure for 2024 is $35.6M per Impala (IRS data), not $37.2M as in the existing record; revenue $131.2M and expenses $96.1M match.",
-    "Added the $800M Walton Family Foundation endowment (2011) and Walmart's $20M admission gift (2011).",
-    "Added Willard & Pat Walker Charitable Foundation gift (September 2026) for free access to temporary exhibitions.",
-    "Board chair is Olivia Walton since November 2021; Alice Walton is a board member.",
-    "ProPublica and the 2023 Talk Business article could not be retrieved this run (permission prompt timed out); figures taken from Impala and EBSCO instead."
-   ]
-  },
-  {
-   "id": "gropius-bau",
-   "changed": [
-    "+9 sources",
-    "funding",
     "+1 findings"
    ],
    "research_changes": [
-    "The EUR 12M budget figure could not be confirmed by any source retrieved; KBB reports EUR 18.8M event revenue across all its venues in 2024.",
-    "Added the funding route: BKM funds KBB GmbH (sole shareholder: the Federal Republic), which runs the Berliner Festspiele and Gropius Bau; the building is rented from BImA.",
-    "Website status not checked this run (fetch blocked by a timed-out permission prompt); 'ok' is carried over from the existing record.",
-    "Existing source https://www.berlinerfestspiele.de/en/gropius-bau/about-us could not be retrieved this run."
+    "The existing 'funding' field described the Mary Miss settlement, not the funding. It is replaced with the actual sources: the Edmundson endowment, Bravo Greater Des Moines, Polk County and private donors.",
+    "Settlement facts confirmed: $900,000 to Miss, announced 14 Jan 2025; the Art Center says no public funds were used; removal was scheduled from 24 Feb 2025.",
+    "Added: 2024 board president Jason Gross; director Kelly Baum.",
+    "The existing claim of annual reports for 2009–2025, Form 990s and 22 trustees was not rechecked: the /support page was not retrieved."
    ]
   },
   {
-   "id": "haus-der-kulturen-der-welt-hkw",
-   "changed": [
-    "+4 sources",
-    "funding"
-   ],
-   "research_changes": [
-    "The EUR 18M budget figure could not be confirmed by any source retrieved.",
-    "Added the operator: KBB GmbH, sole shareholder the Federal Republic, funded by BKM; building rented from BImA.",
-    "Partial research only: the web search limit was reached and hkw.de (including the existing source partner.php) could not be fetched; press coverage and programme controversies were not checked.",
-    "Website status not checked this run; 'ok' is carried over from the existing record."
-   ]
-  },
-  {
-   "id": "capc-mus-e-d-art-contemporain",
-   "changed": [
-    "+9 sources",
-    "funding",
-    "flags: Political interference",
-    "why_flagged",
-    "+3 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "The €3.8M budget figure in the existing record was not found in any source checked; treat as unconfirmed.",
-    "Added named corporate and private patrons from the museum's 2023 50th-anniversary announcement (Cultura, Banque Palatine, CIC, Lacoste, Unikalo, two Bordeaux wine châteaux, Hôtel de Normandie).",
-    "Added 2018 dismissal of director María Inés Rodríguez by the city as a red flag.",
-    "Added 2027 framework partnership with the Centre Pompidou (council deliberation, July 2026).",
-    "The existing source https://www.capc-bordeaux.fr/partenaires could not be fetched on 2026-10-20."
-   ]
-  },
-  {
-   "id": "kunsthaus-bregenz",
-   "changed": [
-    "+8 sources",
-    "funding",
-    "flags: Fossil fuels, Financial crime or tax havens",
-    "+4 findings"
-   ],
-   "research_changes": [
-    "Added operator: Vorarlberger Kulturhäuser-Betriebsgesellschaft (KUGES); director Thomas D. Trummer extended to May 2030.",
-    "Added state subsidy figures from the 2012 Landesrechnungshof audit.",
-    "New red flag: principal sponsor Hypo Vorarlberg (majority state-owned) was named in the 2016 Panama Papers and its CEO resigned.",
-    "Confirmed the existing gas flag on illwerke vkw; the sponsor page names it as 'vkw'.",
-    "Added KUB Freunde as a supporter; the existing record's sponsor list is otherwise confirmed.",
-    "The existing source https://www.kunsthaus-bregenz.at/en/about-kub/ could not be fetched on 2026-10-20."
-   ]
-  },
-  {
-   "id": "kunsthalle-bremen",
-   "changed": [
-    "+10 sources",
-    "funding",
-    "flags: Nazi-era provenance",
-    "why_flagged",
-    "+4 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "Added public subsidy figures (€2.4M + €200,000 City Tax in 2014–15; €2.7M a year 2016/17) and the ~40% public share reported by taz in 2021.",
-    "Added the 2009–11 building financing (about €30M split city / federal / private).",
-    "Corrected detail: the Hermann Reemtsma Stiftung's founder is named as Hermann-Hinrich Reemtsma (son of Hermann F. Reemtsma), consistent with the existing record.",
-    "New flag: Nazi-era provenance claims (Grosz 2024, Pissarro 2025).",
-    "The existing funders page could not be read in this run (access blocked), so the undated 22-logo funder list was not re-verified; de.wikipedia Hermann Reemtsma Stiftung page also blocked."
-   ]
-  },
-  {
-   "id": "chapter",
-   "changed": [
-    "+6 sources",
-    "funding",
-    "+2 findings"
-   ],
-   "research_changes": [
-    "Website changed from https://www.chapter.org (now redirects to an unrelated US insurer) to https://www.chapter.cymru.",
-    "Removed 'Fossil fuels' flag: no source found any fossil fuel funding; the record's why_flagged text only repeated the funding line.",
-    "Arts Council of Wales figure: sources show a £400,000 offer for 2024/25; the record's £681k core grant could not be confirmed.",
-    "Cardiff Council, Welsh Government, Garfield Weston, Foyle and Gulbenkian grants in the record were not confirmed in this run."
-   ]
-  },
-  {
-   "id": "visual",
-   "changed": [
-    "+6 sources",
-    "funding",
-    "+1 findings"
-   ],
-   "research_changes": [
-    "Removed 'Epstein-linked' flag: no source links VISUAL Carlow, its board or funders to Jeffrey Epstein.",
-    "Added funding line (record had none): council-owned company, local-authority and state capital funding, Arts Council support.",
-    "The record's https://visualcarlow.ie/support page returned an error; the homepage works.",
-    "The board now lists Coilín O'Reilly as chair (appointed 2026)."
-   ]
-  },
-  {
-   "id": "maiiam",
-   "changed": [
-    "+6 sources",
-    "funding"
-   ],
-   "research_changes": [
-    "Added: Chiang Mai CityLife (2019) describes it as 'a private museum funded by Booth'.",
-    "Added: Yanghyun Foundation supported the opening Apichatpong retrospective (2016).",
-    "Note: ArtAsiaPacific calls Beurdeley Booth's stepfather, while the museum and Bangkok Post call Booth the couple's son."
-   ]
-  },
-  {
-   "id": "museum-of-contemporary-art-chicago-mca",
-   "changed": [
-    "+9 sources",
-    "funding",
-    "+3 findings"
-   ],
-   "research_changes": [
-    "Added FY2025 financials and named donor tiers from the 2025 annual report.",
-    "BMO Harris and Bank of America are not in the FY2025 donor list reviewed; corporate donors now named are Chanel, Google, Hauser & Wirth, NBC Universal and Northern Trust.",
-    "The record's Block Club Chicago source is about the Art Institute of Chicago, not the MCA; recommend removing it.",
-    "Board chair moved from Cari Sacks to Bill Silverstein (2025).",
-    "The corporate-giving page in the record could not be fetched in this run."
-   ]
-  },
-  {
-   "id": "the-renaissance-society",
-   "changed": [
-    "+6 sources",
-    "funding"
-   ],
-   "research_changes": [
-    "Confirmed the funders in the record; added the Mellon grant amount ($750k over three years, Nov 2024), the Mansueto $1M publications gift (2019) and the Next Century Fund amounts ($500k each, 2016).",
-    "Budget is described as about $2M (Sun-Times 2026), in line with the record's FY2025 expenses of $1.9M.",
-    "The Society's EIN is 36-6109822; the record's other ProPublica link (EIN 36-2174240) could not be verified and may be a different organisation."
-   ]
-  },
-  {
-   "id": "uffizi",
-   "changed": [
-    "+11 sources",
-    "funding",
-    "flags: Labour dispute",
-    "why_flagged",
-    "+4 findings",
-    "tier A→B"
-   ],
-   "research_changes": [
-    "Added the 2026 €50M revamp, funded half by ticket sales and half by Ministry of Culture funds (The Art Newspaper, 10 Aug 2026).",
-    "Added dates: Atkins gift March 2023; Wiegand gift 11 Oct 2023.",
-    "Named the outsourced contractor as CoopCulture and the unions as USB and Sudd Cobas; existing watch text confirmed (5 April 2026 protest).",
-    "Climate protests dated 22 July 2022 (Primavera) and 13 Feb 2024 (Venus), both by Ultima Generazione.",
-    "Governance page could not be fetched this run, so the five-member board was not re-checked; no amount found for Fondazione CR Firenze."
-   ]
-  },
-  {
-   "id": "amon-carter-museum",
-   "changed": [
-    "+6 sources",
-    "funding",
-    "flags: Censorship claim",
-    "why_flagged",
-    "+2 findings",
-    "tier A→B"
-   ],
-   "research_changes": [
-    "Confirmed FY2025 figures (1,387 donors, $4.83M) and added contributed revenue $12.38M, expenses $16.83M and endowments $60.8M.",
-    "Added the Walton Family Foundation $20M endowment gift (Jan 2017).",
-    "Added the Fort Worth Tourism Public Improvement District as a public funder.",
-    "Leadership: Andrew J. Walker left in Aug 2025; Robert Stein named executive director on 9 Sept 2026, starting 9 Nov.",
-    "Dropped the LinkedIn page for Eagle Energy Systems from sources; the company appears on the museum's corporate list, but no reporting was found on it.",
-    "Cowboy closure confirmed; the closure was about two weeks, by 11 Oct 2024."
-   ]
-  },
-  {
-   "id": "baltic-centre-for-contemporary-art",
-   "changed": [
-    "+9 sources",
-    "funding",
-    "+1 findings"
-   ],
-   "research_changes": [
-    "Added income for the year to March 2024 (£6.28M, of which £3.21M government grants) and the board (16 trustees, chair Kirsty Lang).",
-    "Added the April 2026 £3,649,800 Arts Everywhere grant for building maintenance.",
-    "Added the £10M endowment launched June 2025 with a gift from Sting.",
-    "Corrected the BAE timeline: Baltic's 'not in receipt of funds' statement was reported on 6 March 2018, and BAE withdrew on 7 March 2018.",
-    "No reporting found to support the Nissan mention; Tommee Tippee and NorthStandard not re-checked (corporate page blocked this run)."
-   ]
-  },
-  {
-   "id": "s-m-a-k",
-   "changed": [
-    "+5 sources",
-    "funding",
-    "+1 findings"
-   ],
-   "research_changes": [
-    "Funding is not currently 'City of Ghent and Flanders' jointly: the city funds it now, and Flanders takes over the operating subsidy, with transfer to Flemish status on 1 Jan 2029 (agreement approved 27 May 2026); €950,000 transition budget.",
-    "Added the Flemish reform under which S.M.A.K. takes over the M HKA collection.",
-    "The why_flagged field previously repeated the funding text; it now gives the ENGIE reason.",
-    "Other named partners (National Lottery, Belfius, Jan De Nul, Interparking, Christie's, Hiscox, Duvel) not re-checked this run."
-   ]
-  },
-  {
-   "id": "art-gallery-of-nova-scotia",
-   "changed": [
-    "funding",
-    "flags: Sponsor misconduct",
-    "why_flagged",
-    "+1 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "Added the new-building plan (C$130–140M; C$80M province, C$30M federal, C$30M fundraising; KPMB design Nov 2020; on hold since 2022), per Wikipedia.",
-    "Wikipedia does not explicitly call it a crown agency; that status is not confirmed by sources retrieved this run.",
-    "Annual report and NBC article could not be fetched this run; supporter list and TD facts are carried over unverified.",
-    "website_status not independently checked this run."
-   ]
-  },
-  {
-   "id": "kistefos",
+   "id": "le-consortium",
    "changed": [
     "+7 sources",
     "funding"
    ],
    "research_changes": [
-    "Adds 2024 figures: income about NOK 74.7M, Kistefos AS about NOK 39.1M, Driftsfond NOK 10M, Riksantikvaren about NOK 1.8M.",
-    "Adds board chair Camilla Magnus (from 2024), who succeeded Erik Wahlstrøm.",
-    "The website's supporter list names Viken and Innlandet fylkeskommune, but the 2024 report names Akershus fylkeskommune."
+    "The space now presents itself as 'Consortium Museum' at consortiummuseum.com. leconsortium.fr was not loaded directly this run.",
+    "Private supporters added beyond DVF and Groupe Roger Martin: the Le Consortium Unlimited endowment fund, Daniel Xu & Flora Huang Foundation, M ART Foundation, Galerie Marguo (Guo & Martini), Page Gallery, Yan Pei-Ming and Ellen Wu, and the Asia Pacific Society for Consortium Museum.",
+    "The 'Centre d'art contemporain d'intérêt national' label was not confirmed by any source retrieved this run.",
+    "The generic https://www.culture.gouv.fr source is replaced with the ministry's 2017 tribute page to Xavier Douroux."
    ]
   },
   {
-   "id": "kamloops-art-gallery",
+   "id": "jameel-arts-centre",
    "changed": [
-    "+3 sources",
+    "+2 sources",
     "funding",
-    "flags: Gambling sponsor",
+    "flags: State-linked support",
     "why_flagged",
     "+2 findings",
-    "tier U→B"
+    "tier A→B"
    ],
    "research_changes": [
-    "Adds Vancouver Foundation, BC Interior Community Foundation, Tourism Kamloops and local corporate sponsors.",
-    "Adds that the Independent Gambling Control Office took over BCLC oversight from 13 April 2026.",
-    "Adds a flag ('Gambling sponsor'); the existing record had none.",
-    "Adds that executive director Margaret Chrumka left at the end of 2024."
+    "Qualifies the existing claim 'Not financed or run by the UAE state': the centre's own about page says Dubai Holding, Dubai Properties and other UAE government ministries and entities supported its development.",
+    "Added a flag for state-linked development support; tier changed to B.",
+    "The existing 'free public admission' claim in 'watch' was not confirmed by any source retrieved.",
+    "The alj.com and artjameel.org sources were not retrieved this run; The Art Newspaper and Al-Fanar 2018 articles added."
    ]
   },
   {
-   "id": "21st-century-museum-of-contemporary-art",
-   "changed": [
-    "+6 sources",
-    "funding",
-    "+2 findings"
-   ],
-   "research_changes": [
-    "Removes the 'Protest or boycott' flag: no protest or boycott found, and the existing why_flagged says 'No protest found'.",
-    "Names the operator as 公益財団法人金沢芸術創造財団 (Kanazawa Arts Creation Foundation), not 'Kanazawa Art Promotion Foundation'.",
-    "Visitor figure: 1.57M in its first year; 971,256 in 2020; a city plan gives a FY2023 figure of about 1.97M (uncertain).",
-    "Adds the planned closure from May 2027 to March 2028.",
-    "Website status assumed ok from the existing record; the fetch was blocked this run, so it was not checked."
-   ]
-  },
-  {
-   "id": "ilham-gallery",
+   "id": "fruitmarket-gallery",
    "changed": [
     "+8 sources",
     "funding",
-    "flags: Anti-corruption proceedings",
-    "why_flagged",
-    "+4 findings",
-    "tier U→B"
+    "+3 findings"
    ],
    "research_changes": [
-    "New flag: the MACC seizure and forfeiture proceedings against Ilham Tower (2023-2025), which the existing record does not mention.",
-    "Names the tower owner as Ilham Baru Sdn Bhd (Na'imah Abdul Khalid and sons).",
-    "The existing claims that Yayasan ILHAM has run the gallery since 2019 and IB Tower Sdn Bhd since 2015 were not confirmed this run (the About page fetch was blocked); Wikipedia names IB Tower Sdn Bhd as the tower's developer."
+    "Income updated from £1.6M to £2,126,247 for the year to 31 Mar 2025 (OSCR).",
+    "Added the Creative Scotland Multi-Year Funding award, £3,133,333 in total.",
+    "City of Edinburgh Council funding was not confirmed in any source retrieved this run.",
+    "The existing source (The Art Newspaper, 2 July 2024) does not mention the Fruitmarket. It is replaced with The Scotsman, 7 June 2024, which reports the drop (£25k a year, six years).",
+    "New finding: Baillie Gifford's sponsorship directory still lists The Fruitmarket Gallery.",
+    "Named programme supporters and 360Giving grant totals added."
+   ]
+  },
+  {
+   "id": "national-galleries-of-scotland",
+   "changed": [
+    "+10 sources",
+    "funding",
+    "+5 findings"
+   ],
+   "research_changes": [
+    "Correction: 'dropped BP 2019' — NGS stopped hosting the BP-sponsored BP Portrait Award exhibition (organised by the National Portrait Gallery, London). It was not itself a BP sponsee.",
+    "Removed the 'Sponsor dropped under pressure' flag. The BP decision was NGS's own, citing the climate emergency, and no source describes it as a sponsorship it lost.",
+    "Funding figure clarified: grant-in-aid was £22.1M cash in 2023-24 (68% of income). The Scotsman put it at about £26M a year. The record's £24M is not matched by any retrieved source.",
+    "Trustees: the 2023-24 accounts show 10 serving at 31 Mar 2024 (12 served during the year), chair Benny Higgins. The record said OSCR lists 12.",
+    "Added the £56M Scottish Government commitment for The Art Works (June 2026).",
+    "New finding: Baillie Gifford's own sponsorship directory does not list NGS.",
+    "The support-us and findthatcharity source pages could not be retrieved this run."
+   ]
+  },
+  {
+   "id": "dundee-contemporary-arts",
+   "changed": [
+    "+9 sources",
+    "funding"
+   ],
+   "research_changes": [
+    "The record had no sources; sources added.",
+    "Garfield Weston, Screen Scotland and Whyte & Mackay were not found among the named funders in the summary of the 2024-25 annual report; not confirmed.",
+    "The £2.8M FY2025 income figure was not confirmed: the annual report summary gives no total.",
+    "University of Dundee: Wikipedia confirms it was a founding project partner; it is not named as a current funder in retrieved sources.",
+    "Added: Creative Scotland MYF of nearly £4M for 2025–28; council grant cut 9.9% for 2025-26; £300k funding gap reported in 2023.",
+    "Confirmed: Baillie Gifford is not a supporter and does not list DCA."
+   ]
+  },
+  {
+   "id": "towner-eastbourne",
+   "changed": [
+    "funding"
+   ],
+   "research_changes": [
+    "Eastbourne Borough Council grant updated: £413,880 in 2024, £314,000 in 2025.",
+    "Income stated precisely as £3,554,485 (year to 31 Mar 2025).",
+    "The foundation name 'Rick Mather David Sieff Foundation' could not be confirmed: the accounts OCR reads 'Rick Mather David Serasse Foundation'. Check the original PDF.",
+    "Added funders: East Sussex County Council, iniva, Talent Accelerator, and exhibition tax relief.",
+    "Added: chair Stephen Welton CBE from November 2024; David Dimbleby became President.",
+    "The website and the npo-funding-2023 blog page were not retrieved this run; website status was not re-checked and is assumed unchanged."
    ]
   },
   {
    "id": "charleston",
    "changed": [
-    "+7 sources",
-    "funding",
-    "+1 findings"
+    "funding"
    ],
    "research_changes": [
     "Location: the farmhouse is in Firle (Lewes District); the Lewes town gallery is run by Charleston Lewes Limited, a separate charity.",
@@ -527,223 +145,6 @@
     "Adds the £2.4M Heritage Fund grant (2011) and the Lewes District Council lease of Southover House.",
     "Wolfson Gallery, Art Fund, ACE and Bloomberg Connects items not re-checked this run; carried over.",
     "Website status carried from the existing record as ok; the fetch was blocked this run, so it was not checked."
-   ]
-  },
-  {
-   "id": "chisenhale-gallery",
-   "changed": [
-    "funding"
-   ],
-   "research_changes": [
-    "Adds FY2024 income of £1,251,438 and the ACE grant of £168,421.",
-    "Adds named FY2024 grant amounts (Asymmetry £74,980, Ford £40,430, Terra £25,000, Pernod Ricard £16,745, Deborah Roberts £56,059).",
-    "Adds chair May Calil (since October 2022).",
-    "Adds that the FY2024 audit opinion was qualified over the year-end inventory figure.",
-    "The existing why_flagged text has no flag attached; this run raises no flag.",
-    "Website status carried from the existing record as ok; the fetch was blocked this run, so it was not checked."
-   ]
-  },
-  {
-   "id": "south-london-gallery",
-   "changed": [
-    "+11 sources",
-    "funding",
-    "flags: Opioids",
-    "why_flagged",
-    "+4 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "Confirmed the 2018 Sackler return and added detail: £125,000 from the Mortimer and Theresa Sackler Foundation, offered in 2016 (Artforum gives $164,000).",
-    "Added flag 'Opioids' for the returned Sackler gift (returned on the trustees' own decision, per Artforum, not after a reported campaign); the record had no flags.",
-    "The May 2026 letter had 261 signatories, per the Morning Star, and named five theatres, not SLG.",
-    "Added charity figures: income £2,331,641, expenditure £2,616,954, year to 31 March 2025.",
-    "Added Bukhman Foundation detail: it funds Art Block; the money comes from Playrix.",
-    "Corporate partners list is longer than the record's: also arcarta, Articheck, Crozier, El Rayo Tequila, Hallett Independent, Hollybush Gardens, Stockdale, Wedlake Bell."
-   ]
-  },
-  {
-   "id": "studio-voltaire",
-   "changed": [
-    "+6 sources",
-    "funding",
-    "+3 findings"
-   ],
-   "research_changes": [
-    "Added capital funding: £500,000 Mayor of London Good Growth Fund and £300,000 Arts Council England toward the £2.8m redevelopment (reopened 2021, completed 2022).",
-    "Added trusts the record omitted: Garcia Family Foundation, City Bridge Trust, Cockayne, Mila Charitable Organisation, Hartfield Foundation, Span Trust; and programme supporter LOEWE Foundation.",
-    "The May 2026 Bloomberg letter had 261 signatories (Morning Star) and did not name Studio Voltaire.",
-    "Charity accounts could not be read in this run; the record's note that they are on the register is unconfirmed."
-   ]
-  },
-  {
-   "id": "tate-modern",
-   "changed": [
-    "+6 sources",
-    "funding",
-    "+4 findings"
-   ],
-   "research_changes": [
-    "Record's '£120M (group)' is contradicted: the 2024-25 annual report gives total income £167,150,000, with £41.4M revenue and £12.5M capital grant-in-aid.",
-    "BP ended in 2017, not 2016: the end was announced in March 2016 and took effect the following spring; BP cited business conditions, not protests.",
-    "Sackler name removal confirmed as early 2022, described by Tate as mutually agreed with the family.",
-    "Added corporate partners from the 2024-25 report, including Bloomberg, LVMH, La Caixa Foundation and Anthropic; Hyundai support runs to 2036.",
-    "Corporate support page and cultureunstained.org could not be retrieved in this run."
-   ]
-  },
-  {
-   "id": "kunsthalle-mannheim",
-   "changed": [
-    "+5 sources",
-    "funding",
-    "flags: Nazi-era provenance",
-    "why_flagged",
-    "+1 findings",
-    "tier A→B"
-   ],
-   "research_changes": [
-    "Adds the full building budget: €68.3M, of which €50M came from Hector Stiftung II Kunst gGmbH, €10M from the city, €2.62M from the state and about €4.9M from private gifts.",
-    "Identifies Hans-Werner Hector as an SAP co-founder.",
-    "Adds Kunsthallen Ausstellungs GmbH as an exhibition endowment.",
-    "Adds the Nazi-era provenance finding (2018) as a flag.",
-    "Names the Stifterkreis Stiftungsrat chair (Dr Susanne Fuchs) and its city members; members themselves are still unnamed."
-   ]
-  },
-  {
-   "id": "ballroom-marfa",
-   "changed": [
-    "+5 sources",
-    "funding"
-   ],
-   "research_changes": [
-    "The existing claim that governance guidelines bar fossil-fuel or defense underwriting was not confirmed by any source retrieved; the About page and homepage show no such policy.",
-    "Named funders found on the Stone Circle acknowledgements page, so 'no donor list' is only true for the general site.",
-    "Adds the $9,000 Texas Commission on the Arts grant in FY2025.",
-    "Adds founders (Virginia Lebermann, Fairfax Dorn, 2003) and 2024–25 leadership changes reported by Glasstire.",
-    "Removed ProPublica org 200472482 from sources: it could not be fetched to confirm it is Ballroom Marfa."
-   ]
-  },
-  {
-   "id": "chinati-foundation",
-   "changed": [
-    "+5 sources",
-    "funding"
-   ],
-   "research_changes": [
-    "Adds a funding field, which the record lacked.",
-    "Contradicts 'names no donors': the capital campaign page names donors by tier (as of 2 Oct 2026).",
-    "Adds 2024 figures and top grantors from IRS filings via Impala.",
-    "Adds the Start Small $1.25M grant (2021) and Dia's historic funding of the renovation.",
-    "Founding 1986, opened 1987."
-   ]
-  },
-  {
-   "id": "judd-foundation",
-   "changed": [
-    "+6 sources",
-    "funding",
-    "+1 findings"
-   ],
-   "research_changes": [
-    "The supporters PDF covers donations 1 July 2025 to 30 June 2026, not FY2025 as labelled in the record.",
-    "Adds the 2006 Christie's sale (about $20M guaranteed) as an endowment source.",
-    "Adds gallery representation: Zwirner 2011–2021, Gagosian since 2021, Ropac in Europe.",
-    "Bloomberg Philanthropies' gift was for the Bloomberg Connects digital guide (2024).",
-    "Could not confirm the $966K / $12.6M FY2025 figures in the existing why_flagged: the ProPublica page could not be fetched."
-   ]
-  },
-  {
-   "id": "macaal",
-   "changed": [
-    "+4 sources",
-    "funding",
-    "flags: Sole corporate funder with debt crisis",
-    "why_flagged",
-    "+2 findings",
-    "tier A→B"
-   ],
-   "research_changes": [
-    "Adds Alami Lazraq as co-founder and collector (The Art Newspaper).",
-    "Adds the 2023 earthquake closure and the 2 Feb 2025 reopening.",
-    "Adds Groupe Alliances' 2016 suspension and debt restructuring as a flag.",
-    "Records The Art Newspaper's description of Alliances as Morocco's largest hotel builder."
-   ]
-  },
-  {
-   "id": "acca",
-   "changed": [
-    "+4 sources",
-    "funding"
-   ],
-   "research_changes": [
-    "Adds the Victorian Department of Education, the Visual Arts and Crafts Strategy and the Robert Salzer Foundation as funders.",
-    "Adds named major individual donors from the 2025 annual report, and notes that several sit on the board.",
-    "Leadership: Myles Russell-Cook replaced Max Delany (announced 1 Oct 2024); Chair Dr Terry Wu."
-   ]
-  },
-  {
-   "id": "pirelli-hangarbicocca",
-   "changed": [
-    "+5 sources",
-    "funding",
-    "flags: Russia ties (parent company), State-owned shareholder (parent company)",
-    "+5 findings"
-   ],
-   "research_changes": [
-    "Technical sponsors now listed as Mainstreaming, M&C Saatchi and K-Way (existing record says K-Way and M&C Saatchi Milano).",
-    "Board named: Maurizio Abet, Federica Barbaro, Andrea Casaluci, Ilaria Tronchetti Provera; general manager Alessandro Bianchi.",
-    "Added: Pirelli became founding promoter in March 2011, replacing Prelios.",
-    "Added: Rostec stake specified as 25.005% of Pirelli Tyre Russia (existing record says 25%).",
-    "Added: Sinochem 34.1% stake and June 2026 board settlement.",
-    "Existing 'watch' says the space features Kiefer's 'The Seven Heavenly Palaces'; not re-checked, left as is."
-   ]
-  },
-  {
-   "id": "walker-art-center",
-   "changed": [
-    "+6 sources",
-    "funding",
-    "flags: Labour dispute",
-    "+3 findings"
-   ],
-   "research_changes": [
-    "Funding expanded with FY2025 Form 990 figures and FY2024 state ACHF grant.",
-    "Principal is listed as Principal Foundation; Cargill is The Cargill Foundation; Ameriprise Financial ($50k+) added.",
-    "Bloomberg Philanthropies $100k+ tier confirmed; the reason for the campaign (Artists for Palestine UK letter, May 2026) added.",
-    "Added flag: Labour dispute (2025 union firings claim)."
-   ]
-  },
-  {
-   "id": "mac-montr-al",
-   "changed": [
-    "+4 sources",
-    "funding",
-    "flags: Corruption conviction (donor)",
-    "why_flagged",
-    "+1 findings",
-    "tier U→B"
-   ],
-   "research_changes": [
-    "Added transformation capital: C$50M federal, C$55M Quebec, C$11.5M MAC (June 2023).",
-    "Added Fondation du MAC C$20M campaign and August 2025 donors (BMO, RBC Foundation, Gagnon/Ringuet, Goodman and Vineberg foundations, Sanimax).",
-    "Bronfman connection specified as Claudine and Stephen Bronfman, campaign co-chairs.",
-    "Building closed for transformation, target 2028; temporary address Place Ville Marie with no current exhibitions.",
-    "Guilty plea detail: entity was SNC-Lavalin Construction, 18 December 2019.",
-    "The 2024-25 annual report PDF could not be fetched; C$12.5M grant figure and Banque Nationale/Power/AtkinsRéalis/Scotiabank/Desjardins listings not re-verified."
-   ]
-  },
-  {
-   "id": "phi-foundation",
-   "changed": [
-    "+4 sources",
-    "funding"
-   ],
-   "research_changes": [
-    "Government grant dated precisely: C$26,645,740 announced 29 April 2022, more than C$13.3M each from Canada and Quebec.",
-    "PHI Contemporary opening now 2029, with groundbreaking in 2026 (earlier reporting said 2026 opening).",
-    "Founded 2007 as DHC/ART, renamed March 2019.",
-    "'Minto real estate fortune' softened: Wikipedia states her father co-founded Minto, but no source read states that Minto money funds PHI.",
-    "phi.ca/en/about/ and the CRA charity profile could not be opened in this run; Partners Circle not re-checked."
    ]
   }
  ],
