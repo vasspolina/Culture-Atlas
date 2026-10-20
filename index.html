@@ -13585,10 +13585,12 @@ return maplibregl$1;
       // 2. A figure keeps its unit on one line (Hochuli p.37); it is not boxed
       const renderStatCallouts = (str) => str.replace(/\$(\d[\d,.]*)\s+(trillion|billion|million)\b/gi, (m, n, u) => '$' + n + '\u00a0' + u);
 
-      // 2b. A grade is named in its own colour, the colour of its dot on the globe. One grade, one colour: a range ("Grade D–F") is left plain.
-      const GRADE_WORD = /\b(?:Clean Funding )?Grade\s+([A-F1-5])\b(?!\s*(?:–|—|-|to|and)\s*[A-F1-5])/g;
+      // 2b. A grade is named in its own colour, the colour of its dot on the globe, and in bold. One grade, one colour: a range ("Grade D–F") is left plain.
+      // "Grade B", "grade B", "graded B" and "rating B" all name a grade; the letter itself must be a capital, so "graded a little" is left alone.
+      // An old number (Grade 4) is read as its letter; after "rating" only a letter counts, so "rating 4 out of 5" is left alone.
+      const GRADE_WORD = /\b(?:(?:Clean Funding Grade|[Gg]raded?)\s+([A-F1-5])|(?:Funding transparency rating|[Rr]ating)\s+([A-F]))\b(?!\s*(?:–|—|-|to|and)\s*[A-F1-5])/g;
       const renderGradeMarks = (str) => str.replace(GRADE_WORD, (...args) => {
-        const m = args[0], a = args[1];
+        const m = args[0], a = args[1] || args[2];
         const offset = args[args.length - 2];
         const preceding = args[args.length - 1].slice(0, offset);
         if (preceding.lastIndexOf('<') > preceding.lastIndexOf('>')) return m;
