@@ -74,6 +74,12 @@ after(async () => {
   rmSync(dir, { recursive: true, force: true });
 });
 
+test('health check answers without touching the database', async () => {
+  const res = await call('/healthz');
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), { ok: true });
+});
+
 describe('submitting', () => {
   test('stores the note as PENDING and shows it nowhere public', async () => {
     const id = await submit();

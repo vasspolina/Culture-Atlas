@@ -1,0 +1,8 @@
+*
+!package.json
+!prisma
+!server
+!institutions.json
+prisma/*.db
+prisma/*.db-journal
+server/test

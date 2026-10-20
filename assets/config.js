@@ -2,8 +2,8 @@
 // Empty means information and gossip stay in the browser; whistleblower reports are not saved until the API is configured.
 window.ATLAS_SUBMIT_URL = '';
 
-// Optional Express + Prisma endpoint for whistleblower reports.
-window.ATLAS_REPORT_API_URL = '';
+// The report API for whistleblower notes (server/, hosted on Fly.io; see "Hosting the report API on Fly.io" in the README).
+window.ATLAS_REPORT_API_URL = 'https://culture-atlas-reports.fly.dev';
 
 // The address of the chat endpoint (the same Worker, path /chat). With it set, visitors get live Claude answers without
 // entering a key; the Anthropic key stays in the Worker as the secret ANTHROPIC_API_KEY. Empty means the chat answers from

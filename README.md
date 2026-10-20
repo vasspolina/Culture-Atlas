@@ -97,6 +97,24 @@ Admin routes need `Authorization: Bearer <ADMIN_SECRET_KEY>`. The moderation pag
 
 Tests: `npm test` (the API runs in-process against a throwaway SQLite file, so no port is opened). The Worker's tests are `node --test worker/test/*.test.mjs`.
 
+#### Hosting the report API on Fly.io
+
+The repository carries a `Dockerfile` and `fly.toml` for the API. The database is one SQLite file on a 1 GB Fly volume, so the app runs on a single machine. Once, from the repository root (install flyctl first: `brew install flyctl`, or see https://fly.io/docs/flyctl/install/):
+
+```bash
+fly auth signup            # or: fly auth login
+fly launch --no-deploy --copy-config --name <a-free-app-name>
+fly volumes create reports_data --size 1 --region ams
+fly secrets set ADMIN_SECRET_KEY="$(openssl rand -hex 32)"
+fly deploy --ha=false
+```
+
+`--ha=false` keeps the app on one machine, which SQLite needs. If the build stops at "Waiting for depot builder", stop it and run `fly deploy --ha=false --depot=false`. The live API is `https://culture-atlas-reports.fly.dev` (app `culture-atlas-reports`, region `ams`); its admin secret was generated into `~/culture-atlas-admin-secret.txt` on the editor's Mac. Later deploys after changing `server/`: `fly deploy` from the repository root.
+
+Keep the secret: it is the password for `reports-admin.html`, and `fly secrets set` is the only place it is stored (print it once with `openssl rand -hex 32` before setting it if you want to keep a copy elsewhere). The API is then at `https://<app-name>.fly.dev`; `https://<app-name>.fly.dev/healthz` answers `{"ok":true}`. `fly.toml` already sets `ALLOWED_ORIGINS=https://vasspolina.github.io`, `TRUST_PROXY=1` (so the rate limit sees each sender, not Fly's proxy) and the database path on the volume. If you rename the app, update `app` in `fly.toml` to match.
+
+Last step: set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to `https://<app-name>.fly.dev` (no trailing slash), bump the release as usual, and merge through a PR. Then moderate at https://vasspolina.github.io/Culture-Atlas/reports-admin.html with the secret as the bearer token. Back up the database with `fly ssh sftp get /data/reports.db`.
+
 Setting it up once (free Cloudflare plan), in the Cloudflare dashboard, no install needed:
 
 1. **Workers & Pages → Create → Worker**, name it `culture-atlas-submissions`, deploy the starter, then **Edit code**, replace it with `worker/index.js` and deploy.

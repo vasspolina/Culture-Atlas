@@ -67,6 +67,9 @@ export function createApp({
     return next();
   }
 
+  // For the host's health check. Touches nothing.
+  app.get('/healthz', (_req, res) => res.json({ ok: true }));
+
   // The only way a note enters the system. It is stored PENDING; nothing public reads PENDING rows.
   app.post('/api/reports', async (req, res, next) => {
     const result = validateReport(req.body, institutions);
