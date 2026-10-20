@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=236">
-  <script src="assets/config.js?v=236"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=237">
+  <script src="assets/config.js?v=237"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -782,7 +782,7 @@ return maplibregl$1;
                   <button id="workPlusBtn" class="flex items-center justify-center shrink-0" title="More ways to write">More</button>
                   <!-- Share information -->
                   <button id="chatBackBtn" type="button" onclick="window.exitChatInputMode()" class="whitespace-nowrap" title="Leave the note and go back to the chat">Back to chat</button>
-                  <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('information')" class="whitespace-nowrap">Share information</button>
+                  <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('whistleblower')" class="whitespace-nowrap">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
@@ -809,9 +809,6 @@ return maplibregl$1;
               <div id="workPlusMenu" class="hidden absolute left-2 sm-left-4 bottom-14 z-30 p-0 flex flex-col w-_calc_100vw-24px sm-w-80 max-w-_340px max-h-_min_380px_calc_100dvh-160px overflow-y-auto custom-scrollbar">
                 <button id="workMenuGossipModeBtn" onclick="window.toggleGossipMode()" class="text-left px-3_5 py-2_5 flex items-center justify-between">
                   <span>Gossip mode</span>
-                </button>
-                <button id="workMenuGossipBtn" onclick="window.enterChatInputMode('gossip')" class="text-left px-3_5 py-2_5 flex items-center justify-between">
-                  <span>Write gossip</span>
                 </button>
                 <button id="workMenuWhistleblowerBtn" onclick="window.enterChatInputMode('whistleblower')" class="text-left px-3_5 py-2_5 flex items-center justify-between">
                   <span>Whistleblower note</span>
@@ -9921,11 +9918,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v236';
+    const ATLAS_RELEASE = 'culture-atlas-v237';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=236').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=237').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12886,39 +12883,13 @@ return maplibregl$1;
     // Hosted AI proxy (Cloudflare Worker keeps the API key server-side). Empty = disabled.
     const ATLAS_AI_PROXY_URL = window.ATLAS_AI_PROXY_URL || "";   // set in assets/config.js: the chat Worker's address
 
-    // Community Research & Feedback Submissions Pipeline (LocalStorage backed + Model Grounded)
-    const DEFAULT_COMMUNITY_SUBMISSIONS = [];
-
-    function getCommunityResearchSubmissions() {
-      try {
-        const stored = JSON.parse(localStorage.getItem('atlas_community_research_queue') || '[]');
-        if (Array.isArray(stored) && stored.length > 0) return stored;
-        return DEFAULT_COMMUNITY_SUBMISSIONS;
-      } catch (e) {
-        return DEFAULT_COMMUNITY_SUBMISSIONS;
-      }
-    }
-    window.getCommunityResearchSubmissions = getCommunityResearchSubmissions;
-
-    // Notes are saved in this browser and read back in the chat. They are not places, so they are never put on the map.
+    // Reader notes are never kept in this browser: a whistleblower note goes to the report API and waits for the editor.
+    // Reader notes are not places, so they are never put on the map.
     function getCommunityAsInstitutions() {
       return [];
     }
     window.getCommunityAsInstitutions = getCommunityAsInstitutions;
 
-
-    function saveCommunityResearchSubmission(entry) {
-      // Whistleblower notes are held by the report service only, never in this browser.
-      if (entry && /whistleblower/i.test(String(entry.category || ''))) return null;
-      const list = getCommunityResearchSubmissions();
-      list.unshift(entry);
-      localStorage.setItem('atlas_community_research_queue', JSON.stringify(list));
-      if (typeof applyFilters === 'function') {
-        applyFilters();
-      }
-      return entry;
-    }
-    window.saveCommunityResearchSubmission = saveCommunityResearchSubmission;
 
     function openResearchFeedbackModal(spaceName = '', city = '') {
       const modal = document.getElementById('researchFeedbackModal');
@@ -12939,17 +12910,6 @@ return maplibregl$1;
     }
     window.closeResearchFeedbackModal = closeResearchFeedbackModal;
 
-    // The notes saved in this browser, read back inside the chat. Nothing opens.
-    function showSavedNotes() {
-      const notes = getCommunityResearchSubmissions().filter(n => n && typeof n === 'object');
-      const e = escapeHtml;
-      const body = notes.length
-        ? notes.map(n => `<p class="no-indent">${e(n.spaceName || 'Untitled note')}${n.city ? ', ' + e(n.city) : ''}: ${e(n.details || '')} (${e(String(n.category || 'note').replace(/_/g, ' '))}, ${n.status === 'sent_for_review' ? 'sent to the editor' : 'saved in this browser'}, not checked)</p>`).join('')
-        : '<p class="no-indent">No notes are saved in this browser.</p>';
-      appendCuratorMessage(`<div class="space-y-1">${body}</div>`, [], null, null, false);
-      scrollChatToBottom(true);
-    }
-    window.showSavedNotes = showSavedNotes;
 
 
     // =========================================================================
@@ -13949,7 +13909,6 @@ return maplibregl$1;
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
 
-      const communitySubmissions = getCommunityResearchSubmissions();
       const communityGrounding = ''; // unchecked notes are never given to the model as facts
 
       const webIntelGrounding = (webIntel && webIntel.scrapedText) 
@@ -16005,17 +15964,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     let isChatInputMode = false;
     let preInputModeGlobeWidth = '';
 
-    let chatInputKind = 'information';
-    // With a submissions address set, notes go to the editor and appear only once approved; without one they stay in this browser.
-    const ATLAS_SUBMIT_URL = (window.ATLAS_SUBMIT_URL || '').replace(/\/+$/, '');
-    const INPUT_KIND_TEXT = ATLAS_SUBMIT_URL ? {
-      information: { banner: 'Information: write what you know about a space or a funder. It is sent to the editor and appears on the atlas only once it is approved. Nothing is checked against a source.', placeholder: 'Write what you know. The editor reads it before anything appears.' },
-      gossip: { banner: 'Gossip: write what you heard. It is sent to the editor and appears on the atlas, marked unverified, only once it is approved.', placeholder: 'Write what you heard. The editor reads it before anything appears.' },
-      whistleblower: { banner: 'Whistleblower: write what you know from inside an institution. It is sent to the editor and appears on the atlas only once it is approved. It travels over an ordinary web connection, not a secure channel, so leave out your name and anything that identifies you if you want to stay anonymous.', placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.' }
-    } : {
-      information: { banner: 'Information: write what you know about a space or a funder. It is saved as a note in this browser. Nothing is sent and nothing is checked.', placeholder: 'Write what you know. It is saved as a note in this browser only.' },
-      gossip: { banner: 'Gossip: write what you heard. It is saved as an unverified note in this browser. Nothing is sent and nothing is checked.', placeholder: 'Write what you heard. It is saved as an unverified note in this browser only.' },
-    };
+    // The only note a reader can write is a whistleblower note. It goes to the report API and appears only once approved.
+    const chatInputKind = 'whistleblower';
+    const INPUT_KIND_TEXT = {};
     INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
         banner: 'Whistleblower: open the record of the institution, or name it in your note. The note is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
         placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
@@ -16025,9 +15976,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       };
 
     function enterChatInputMode(kindOrTopic = '') {
-      const kinds = ['information', 'gossip', 'whistleblower'];
-      const defaultTopic = kinds.includes(kindOrTopic) ? '' : kindOrTopic;
-      chatInputKind = kinds.includes(kindOrTopic) ? kindOrTopic : 'information';
+      // Share information, a record's link and the old information and gossip links all open the whistleblower note.
+      const defaultTopic = ['information', 'gossip', 'whistleblower'].includes(kindOrTopic) ? '' : kindOrTopic;
       isChatInputMode = true;
       // The conversation so far steps aside while a note is written; it comes back with Back to chat.
       document.querySelectorAll('#curatorMessages > *').forEach(m => m.classList.add('before-note'));
@@ -16132,10 +16082,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (sendBtn) {
         sendBtn.classList.add('is-on');
         sendBtn.innerHTML = `
-          <span>${chatInputKind === 'whistleblower' ? (ATLAS_REPORT_API_URL ? 'Send for review' : 'Unavailable') : (ATLAS_SUBMIT_URL ? 'Send for review' : 'Save note')}</span>
+          <span>${ATLAS_REPORT_API_URL ? 'Send for review' : 'Unavailable'}</span>
         `;
-        const sendsForReview = chatInputKind === 'whistleblower' ? !!ATLAS_REPORT_API_URL : !!ATLAS_SUBMIT_URL;
-        sendBtn.title = sendsForReview ? 'Send this note to the editor for review' : chatInputKind === 'whistleblower' ? 'The report service is not configured' : 'Save this note in this browser';
+        sendBtn.title = ATLAS_REPORT_API_URL ? 'Send this note to the editor for review' : 'The report service is not configured';
       }
 
 
@@ -16252,7 +16201,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         <div>
           <p class="no-indent">Returned to chat. How can I help you explore cultural spaces?</p>
           <div class="curator-followups mt-3 flex flex-col items-start gap-1">
-            <button type="button" class="curator-followup-pill text-left py-1" onclick="window.enterChatInputMode('information')">Add information</button>
             <button type="button" class="curator-followup-pill text-left py-1" onclick="window.enterChatInputMode('whistleblower')">Whistleblower note</button>
           </div>
         </div>
@@ -16273,72 +16221,38 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     async function processInChatWhistleblowerSubmission(text) {
       const q = (text || '').trim();
       if (!q) return;
-      const kind = chatInputKind;
       const lower = q.toLowerCase();
       const named = ALL_INSTITUTIONS.find(i => i.name && i.name.length > 3 && lower.includes(i.name.toLowerCase()));
       const target = dossierInst || named;
-      const note = {
-        id: 'NOTE-' + Date.now().toString(36).toUpperCase(),
-        timestamp: new Date().toISOString(),
-        category: kind,
-        spaceName: target ? target.name : '',
-        city: target ? (target.city || '') : '',
-        country: target ? (target.country || '') : '',
-        lat: target && Number.isFinite(target.lat) ? target.lat : null,
-        lon: target && Number.isFinite(target.lon) ? target.lon : null,
-        details: q,
-        sourceUrl: '',
-        status: 'saved_in_browser'
-      };
-      const label = kind === 'gossip' ? 'an unverified gossip' : kind === 'whistleblower' ? 'a whistleblower' : 'an information';
-      let said = kind === 'whistleblower'
-        ? 'The report service is not configured. The report was not saved.'
-        : `Saved as ${label} note in this browser. It was not sent to anyone and has not been checked.`;
-      let saveLocalCopy = kind !== 'whistleblower';
-      if (kind === 'whistleblower' && ATLAS_REPORT_API_URL && !target) {
+      // Nothing is kept in this browser. If the note is not sent, it goes back into the box so it is not lost.
+      const keepTyped = () => { const input = document.getElementById('workInput'); if (input) input.value = q; };
+      let said;
+      if (!ATLAS_REPORT_API_URL) {
+        keepTyped();
+        said = 'The report service is not configured. The note was not sent.';
+      } else if (!target) {
         // The report service takes a note only when it names an institution on the atlas.
-        const input = document.getElementById('workInput');
-        if (input) input.value = q;
+        keepTyped();
         said = 'Open the record of the institution this note is about, or name the institution in the note, then send it again. The note was not sent.';
-      } else if (kind === 'whistleblower' && ATLAS_REPORT_API_URL) {
+      } else {
         try {
           const res = await fetch(ATLAS_REPORT_API_URL + '/api/reports', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content: q, institution: note.spaceName })
+            body: JSON.stringify({ content: q, institution: target.name })
           });
           const out = await res.json().catch(() => ({}));
           if (!res.ok) throw new Error(out.error || 'The server did not take it.');
-          note.status = 'sent_for_review';
-          said = `Sent to the editor for review. It appears on the record of ${escapeHtml(note.spaceName)}, as a review, only once it is approved.`;
+          said = `Sent to the editor for review. It appears on the record of ${escapeHtml(target.name)}, as a review, only once it is approved.`;
         } catch (err) {
-          const input = document.getElementById('workInput');
-          if (input) input.value = q;
-          said = `It could not be sent (${escapeHtml(err.message || 'no connection')}). The report was not saved.`;
+          keepTyped();
+          said = `It could not be sent (${escapeHtml(err.message || 'no connection')}). The note was not sent.`;
         }
-      } else if (kind !== 'whistleblower' && ATLAS_SUBMIT_URL) {
-        try {
-          const res = await fetch(ATLAS_SUBMIT_URL + '/submissions', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ kind, text: q, spaceName: note.spaceName })
-          });
-          const out = await res.json().catch(() => ({}));
-          if (!res.ok) throw new Error(out.error || 'The server did not take it.');
-          note.status = 'sent_for_review';
-          said = `Sent to the editor as ${label} note. It appears on the atlas only once it is approved, and nothing in it has been checked. A copy is kept in this browser.`;
-        } catch (err) {
-          said = `It could not be sent (${escapeHtml(err.message || 'no connection')}), so it is saved as ${label} note in this browser only.`;
-        }
-      } else if (kind === 'whistleblower') {
-        const input = document.getElementById('workInput');
-        if (input) input.value = q;
       }
-      if (saveLocalCopy) saveCommunityResearchSubmission(note);
       appendCuratorMessage(`
         <div class="space-y-1">
           <p class="no-indent">${said}</p>
-          <p class="no-indent">${saveLocalCopy ? '<a href="#" onclick="event.preventDefault();window.showSavedNotes()">Notes saved in this browser</a>, ' : ''}<a href="#" onclick="event.preventDefault();window.enterChatInputMode('${kind}')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
+          <p class="no-indent"><a href="#" onclick="event.preventDefault();window.enterChatInputMode('whistleblower')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
         </div>
       `, [], null, null, false);
       scrollChatToBottom(true);
@@ -16385,52 +16299,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('cancelFeedbackBtn')?.addEventListener('click', closeResearchFeedbackModal);
     researchModal?.addEventListener('click', (e) => {
       if (e.target === researchModal) closeResearchFeedbackModal();
-    });
-
-    document.getElementById('researchFeedbackForm')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const cat = document.getElementById('rfCategory')?.value || 'new_space';
-      const name = (document.getElementById('rfSpaceName')?.value || '').trim();
-      const city = (document.getElementById('rfCity')?.value || '').trim();
-      const details = (document.getElementById('rfDetails')?.value || '').trim();
-      const sourceUrl = (document.getElementById('rfSourceUrl')?.value || '').trim();
-      const contributor = (document.getElementById('rfContributor')?.value || '').trim();
-
-      const subId = Math.floor(1000 + Math.random() * 9000);
-      const entry = {
-        id: `RES-${subId}`,
-        timestamp: new Date().toISOString(),
-        category: cat,
-        spaceName: name,
-        city: city,
-        details: details,
-        sourceUrl: sourceUrl,
-        contributor: contributor || 'Anonymous Researcher',
-        status: 'pending_verification'
-      };
-
-      saveCommunityResearchSubmission(entry);
-      closeResearchFeedbackModal();
-
-      if (typeof setMobileViewMode === 'function') {
-        setMobileViewMode('chat');
-      }
-
-      appendCuratorMessage(`
-        <p class="">
-          <strong>Research Contribution Queued for Verification</strong>
-        </p>
-        <div class="py-2_5 rule-t space-y-1_5">
-          <div><strong class="meta block">Audit Ticket</strong> <span class="meta t-strong">#${entry.id}</span>, <span class="meta">Curatorial Verification Queue</span></div>
-          <div class="pt-1 rule-t"><strong class="meta block">Submission Category</strong> ${escapeHtml(cat.replace(/_/g, ' '))}</div>
-          ${name ? `<div class="pt-1 rule-t"><strong class="meta block">Space & Location</strong> <span class="t-strong">${escapeHtml(name)}</span> ${city ? `(${escapeHtml(city)})` : ''}</div>` : ''}
-          <div class="pt-1 rule-t"><strong class="meta block">Research Findings</strong> ${escapeHtml(details)}</div>
-          ${sourceUrl ? `<div class="pt-1 rule-t"><strong class="meta block">Statutory Source Filing</strong> <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer" class="meta break-all">${escapeHtml(sourceUrl)}</a></div>` : ''}
-          <div class="pt-1_5 rule-t meta">
-            Status: <span class="t-strong">Active in Session</span>, Queued for cross-examination against regulatory registers (IRS 990 / Charity Commission / DRAC).
-          </div>
-        </div>
-      `, ['Explore Free Spaces', 'Plan Visit', 'Submit Another Note']);
     });
 
     document.querySelectorAll('.work-menu-item').forEach(item => {
@@ -18092,7 +17960,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (isCommunityOnly) {
           activeMapBanner.classList.remove('hidden');
           if (activeMapIcon) activeMapIcon.textContent = '';
-          activeMapText.textContent = `${filteredList.length} notes saved in this browser`;
+          activeMapText.textContent = `${filteredList.length} community notes`;
         } else if (isVisualCritiqueOnly) {
           activeMapBanner.classList.remove('hidden');
           if (activeMapIcon) activeMapIcon.textContent = '';
@@ -19275,9 +19143,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=236"></script>
-<script src="assets/layers.js?v=236"></script>
-<script src="assets/hq-detail.js?v=236"></script>
-<script src="assets/bubbles.js?v=236" defer></script>
+<script src="assets/typeset.js?v=237"></script>
+<script src="assets/layers.js?v=237"></script>
+<script src="assets/hq-detail.js?v=237"></script>
+<script src="assets/bubbles.js?v=237" defer></script>
 </body>
 </html>

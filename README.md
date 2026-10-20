@@ -35,7 +35,7 @@ python3 -m http.server 8080
 
 Then open [http://localhost:8080](http://localhost:8080).
 
-To try Share information against a local backend, run the Worker with `npx wrangler dev` in `worker/` and set `window.ATLAS_SUBMIT_URL` in `assets/config.js` to `http://localhost:8787` (local addresses are always allowed). The separate Prisma-backed whistleblower API is documented below.
+To try Share information against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
 
 ---
 
@@ -53,11 +53,11 @@ Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a f
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
-## Share information: notes wait for approval
+## Share information: whistleblower notes wait for approval
 
-Share information sends a reader's note to a small backend, a Cloudflare Worker in `worker/` with one KV store. Every note is kept as waiting and shows nowhere until the editor approves it on `admin.html` (the review page, behind a password). There the text, the space it belongs to and a source link can be corrected before approving; a rejected note is deleted. An approved note appears on its space's record under "Shared by readers and approved by the editor", within a minute. No name, email or IP address is stored; the only trace of a sender is a salted hash of their address, kept for an hour to allow ten notes an hour.
+Share information opens the whistleblower note. It is the only note a reader can write: the page no longer has information or gossip notes, and it never saves a note in the reader's browser. A note is sent to the report API below, held as waiting, and shows on its institution's record only after the editor approves it on `reports-admin.html`. If it cannot be sent, the text stays in the box and nothing is kept.
 
-While `window.ATLAS_SUBMIT_URL` in `assets/config.js` is empty, information and gossip notes stay in the reader's browser. Whistleblower notes never take this route: the Worker refuses `kind: "whistleblower"`, will not approve or serve one left in its store from before, and the page never saves one in the browser. They go to the report API below, or nowhere.
+The Cloudflare Worker in `worker/` predates this. The page no longer sends notes to it; if `window.ATLAS_SUBMIT_URL` is set, the page still shows information and gossip notes the editor approved there earlier. The Worker refuses whistleblower notes. Its setup is kept below for the chat proxy (`/chat`), which it also serves.
 
 ### Prisma-backed whistleblower reports
 
