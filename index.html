@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=239">
-  <script src="assets/config.js?v=239"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=240">
+  <script src="assets/config.js?v=240"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -724,6 +724,11 @@ return maplibregl$1;
         <div id="chatWidthHandle" class="chat-width-handle" role="separator" aria-orientation="vertical" aria-label="Width of the chat" aria-valuemin="320" aria-valuemax="760" aria-valuenow="660" tabindex="0" title="Drag to change the width of the chat, double-click to reset"></div>
         <div id="chatWidthHandleL" class="chat-width-handle is-left" aria-hidden="true"></div>
 
+        <!-- While a note is written, the way back to the chat is the first thing in the column -->
+        <div id="chatNoteTopBar" class="w-full max-w-2xl mx-auto px-4 pt-3 pb-1">
+          <button id="chatBackBtn" type="button" onclick="window.exitChatInputMode()" class="whitespace-nowrap" title="Leave the note and go back to the chat">Back to chat</button>
+        </div>
+
         <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
         <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pt-4 pb-4 w-full">
           <div id="curatorScrollContent" class="w-full flex flex-col items-center pb-8 my-auto">
@@ -779,7 +784,6 @@ return maplibregl$1;
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Share information -->
-                  <button id="chatBackBtn" type="button" onclick="window.exitChatInputMode()" class="whitespace-nowrap" title="Leave the note and go back to the chat">Back to chat</button>
                   <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('whistleblower')" class="whitespace-nowrap">Share information</button>
                 </div>
 
@@ -9905,11 +9909,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v239';
+    const ATLAS_RELEASE = 'culture-atlas-v240';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=239').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=240').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19091,9 +19095,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=239"></script>
-<script src="assets/layers.js?v=239"></script>
-<script src="assets/hq-detail.js?v=239"></script>
-<script src="assets/bubbles.js?v=239" defer></script>
+<script src="assets/typeset.js?v=240"></script>
+<script src="assets/layers.js?v=240"></script>
+<script src="assets/hq-detail.js?v=240"></script>
+<script src="assets/bubbles.js?v=240" defer></script>
 </body>
 </html>
