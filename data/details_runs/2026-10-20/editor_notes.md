@@ -115,3 +115,10 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - guggenheim-bilbao-bilbao: Petronor in the Trustees tier; the Urdaibai outpost was dropped on 16 December 2025 after protests.
 - Website fields wrong: golden-thread-gallery-belfast (GrantNav; real site goldenthreadgallery.co.uk), gwangju-biennale-gwangju (an ArtAsiaPacific article; real site gwangjubiennale.org).
 - Not confirmed: Golden Thread's 2016 Gulbenkian protest; Gwangju budget figures.
+
+## d007 slop check (95 fixes; every report changed)
+- fondazione-palazzo-strozzi: Enegan (Partner and electricity supplier since 2021) sells gas, but the 2025 report says the supply is 100% certified renewable; decide whether the Fossil fuels heading holds.
+- fabrica-de-arte-cubano: funding and both red flags rest on FAC's own statement and two critical or partisan outlets; the "campaign" is Unverified.
+- fire-station-artist-in-residence-doha: no budget or accounts; the Gulf state body flag rests on Qatar Museums' status.
+- fondation-louis-vuitton-paris: final cost given as 780M (English Wikipedia) and nearly 800M euros (French); the tax-break period is disputed; the staff-conditions point (Mediapart) was not read.
+- fondazione-prada: no accounts after 2019, no sponsor names, no art-press piece naming it.
