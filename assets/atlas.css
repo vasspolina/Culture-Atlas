@@ -255,9 +255,6 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 #workInputCard button{font:400 15px/1 var(--sans);letter-spacing:0;color:var(--ink)}
 #workSendBtn{width:36px;height:36px;border-radius:0;background:var(--block);color:var(--ink)!important;justify-content:center}
 #workSendBtn svg{color:var(--ink)}
-#workPlusMenu{background:var(--paper);border:1px solid var(--ink)}
-#workPlusMenu button{padding:12px 14px;border-bottom:1px solid var(--ink);font:400 15px/1.2 var(--sans);width:100%}
-#workPlusMenu button:hover{background:var(--ink);color:var(--paper)}
 .chat-info{width:100%;padding-top:8px;border-top:1px solid var(--line);font:400 14px/var(--lh) var(--sans)}
 .chat-info summary{cursor:pointer;list-style:none;width:fit-content}
 .chat-info summary::-webkit-details-marker{display:none}
@@ -655,8 +652,9 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 #zoomControls button:hover{background:#000;color:#fff}
 #zoomControls svg{width:14px;height:14px}
 /* Back to chat shows only while a note is being written. */
-#chatBackBtn{display:none}
-body.chat-input-mode-active #chatBackBtn{display:inline}
+#chatNoteTopBar{display:none}
+body.chat-input-mode-active #chatNoteTopBar{display:block}
+#chatNoteTopBar #chatBackBtn{font:400 15px/1 var(--sans);padding:8px 0}
 /* One set of zoom buttons at a time: on the street map the map's own square set stays, the round pair goes. */
 #globeViewport:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none}
 
@@ -887,7 +885,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#cb9440}
 
 /* Every button answers the pointer: plain ones invert, the filled ones brighten. */
-#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#workPlusBtn:hover,#curatorVoiceToggleBtn:hover,#curatorListenBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
+#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#curatorVoiceToggleBtn:hover,#curatorListenBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
 [data-globe-control]:hover,.is-on:hover,[aria-pressed="true"]:hover{filter:brightness(.85)}
 button,summary{cursor:pointer}
 /* Question colours are the map's own: mustard, orange and cyan labels; darker equivalents on the light ground. Type 10% smaller. */
@@ -1165,7 +1163,7 @@ body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#00
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--orange)}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:hover,:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{text-decoration:underline;text-underline-offset:.12em;outline:0}
 
-/* Dark mode keeps the regular weight: Share information is the sans at 400 in sentence case, not bold capitals. */
+/* Superseded in release 239: Share information is bold capitals again, in both themes (see the end of this file). */
 :root[data-theme="dark"] #workInputCard #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none;letter-spacing:0}
 :root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none}
 
@@ -1305,7 +1303,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 .curator-message-wrap .curator-bullet-list>li:has(>div:empty)::before,.curator-message-wrap .curator-num-list>li:has(>div:empty)>span:first-child{visibility:hidden}
 /* Controls are one size: 15px on the text face at .01em, in both themes. The globe controls were 14px beside a 15px Layers;
    the chat bar mixed 14px, 14px bold uppercase in the display face (light only) and 14px at .02em; the settings modal mixed 14 and 15. */
-#desktopGlobeTopControls button,#mobileFilterChipsSection button,#mobileStickySendBtn,#mobileStickyVoiceBtn,#workPlusBtn,#curatorListenBtn,#curatorVoiceToggleBtn,#curatorVoiceToggleLabel,#testConnectionBtn,#toggleKeyVisibilityBtn,.provider-tab-btn,#curatorSettingsModal button,#curatorSettingsModal a{font:400 15px/1 var(--sans);letter-spacing:0;text-transform:none}
+#desktopGlobeTopControls button,#mobileFilterChipsSection button,#mobileStickySendBtn,#mobileStickyVoiceBtn,#curatorListenBtn,#curatorVoiceToggleBtn,#curatorVoiceToggleLabel,#testConnectionBtn,#toggleKeyVisibilityBtn,.provider-tab-btn,#curatorSettingsModal button,#curatorSettingsModal a{font:400 15px/1 var(--sans);letter-spacing:0;text-transform:none}
 #workInputCard #chatShareBtn,:root[data-theme="dark"] #workInputCard #chatShareBtn,#workInputCard.is-mode #chatShareBtn,:root[data-theme="dark"] #workInputCard.is-mode #chatShareBtn{font:400 15px/1 var(--sans);text-transform:none;letter-spacing:0}
 /* The three globe controls fit a 320px screen: narrower padding, not a smaller size. (They ran 6px off the edge at 14px, too.) */
 @media (max-width:374px){#desktopGlobeTopControls button,#mobileFilterChipsSection button{padding-left:9px;padding-right:9px}}
@@ -1413,7 +1411,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #curatorIntelligenceColumn #curatorMessages img{max-width:100%;height:auto}
 /* A question wraps to the column instead of being cut with an ellipsis: on a 260px panel the longest ones are two lines. */
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){height:auto;min-height:22px;white-space:normal;overflow:visible;text-overflow:clip;text-align:left;overflow-wrap:break-word}
-/* The input's toolbar wraps under the textarea's width: More, Back to chat and Share information, then Voice, Listen and send. */
+/* The input's toolbar wraps under the textarea's width: Back to chat and Share information, then Voice, Listen and send. */
 #workInputCard>div.justify-between{flex-wrap:wrap;gap:8px 12px;min-width:0}
 #workInputCard>div.justify-between>div{flex-wrap:wrap;min-width:0;gap:8px 12px}
 #workInput{min-width:0}
@@ -1608,6 +1606,104 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 .review-name{display:block;font:400 16px/1.2 var(--sans)}
 .review-date{display:block;font:400 14px/1.2 var(--sans)}
 .review-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+
+/* ---- the chat in the dark theme (releases 238 and 239) ----
+   The atlas has one switch, :root[data-theme], and the chat already followed it except in two places that stayed bright: the note
+   (a mint slab with black type) and the gossip balloon (a green to pink wash with black type). In the dark theme both now sit on the
+   page's own dark ground with light type; the mode shows in a hairline instead of a fill (mint for a note, the gossip orange for a balloon).
+   The light theme is untouched. Measured: every pair below is at least 7:1 for text and 3:1 for outlines and rings. */
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock){background:var(--paper)}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorScrollArea,#curatorScrollArea *,#curatorScrollArea *::before,#workBottomDock,#workBottomDock *,#workInputCard.is-mode,#workInputCard.is-mode *,#workInputCard.is-mode *::before,#workInputCard.is-mode *::after){color:var(--ink)!important;border-color:var(--mint)!important}
+:root[data-theme="dark"] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn,:root[data-theme="dark"] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn *{color:var(--mint)!important}
+:root[data-theme="dark"] body.chat-input-mode-active #workInput.is-good{background:var(--grey);color:var(--ink)}
+:root[data-theme="dark"] body.chat-input-mode-active #workInput:focus{outline:2px solid var(--focus);outline-offset:-2px}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCard){--focus:#618cff}
+:root[data-theme="dark"] #workInputCard.is-mode ::placeholder{color:var(--ink);opacity:.7}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active){background:var(--mint)!important;color:#000!important}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active) *{color:#000!important}
+/* The balloon: dark fill, orange outline, light type. bubbles.js draws the fill and outline as SVG paint; a presentation rule outranks its attributes. */
+:root[data-theme="dark"] .bubble-svg .bubble-fill{fill:var(--grey)}
+:root[data-theme="dark"] .bubble-svg .bubble-line{stroke:var(--gossip)}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
+:root[data-theme="dark"] body.gossip-mode-active .is-gossip .thinking{color:var(--ink)}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
+
+/* ---- release 239 ---- */
+/* The note box has an inner margin: its text no longer touches the box edge or the focus ring drawn inside it. Only while a note is written; the plain input line stays flush with its hairline. */
+body.chat-input-mode-active #workInput{padding:.75em}
+/* Share information, wherever it shows, is bold capitals. The text stays "Share information" in the markup. Jokker is a variable font, so 700 is a real cut. */
+/* (the rule itself is last in this file, after the chat's light-theme copies of the dark rules, which also set text-transform) */
+
+/* ---- release 240: the chat is dark green in both themes ----
+   The page's light/dark switch is untouched; the chat pane (the AI Chat column, the phone drawer and the chat settings) always takes the dark
+   palette, on a dark green ground (--paper #0f2a1d; the dark theme's own greys stay for the rest of the page). The dark variables are set on those three containers, so every rule that reads --ink, --paper, --grey, --block, --line or --focus
+   inside them goes dark; the rules below are the chat's own dark-theme rules above, repeated for the light theme (same specificity, later, so they win).
+   Measured in both themes. */
+:is(#curatorIntelligenceColumn,#curator-chat-drawer,#curatorSettingsModal){color-scheme:dark;--focus:#618cff;--ink:#fff;--paper:#0f2a1d;--grey:#17382a;--block:#25493a;--line:#fff;background:var(--paper);color:var(--ink)}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#5bc4ae}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#e8c040}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#f2b3d6}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#d9b783}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#3376bb}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#d73732}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#dcad81}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#d3d3d3}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#cb9440}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#8b827f}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#d3d3d3}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#cb9440}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:var(--mustard)}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:var(--orange)}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:var(--cyan)}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--mustard)}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#16c7aa}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#f1c21b}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#ffafd2}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#e5b87d}
+:root:not([data-theme="dark"]) #workInputCard #chatShareBtn{color:#6fdc8c}
+:root:not([data-theme="dark"]) #workInputCard.is-mode #chatShareBtn{color:#000!important}
+:root:not([data-theme="dark"]) #curatorMessages>.justify-end::before,:root:not([data-theme="dark"]) #curatorMessages .user-bubble,:root:not([data-theme="dark"]) #curatorMessages>.justify-end>div,:root:not([data-theme="dark"]) #curatorMessages .user-bubble *{color:#8fe3a4}
+:root:not([data-theme="dark"]) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:var(--mustard)}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:var(--orange)}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:var(--cyan)}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:var(--mustard)}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--orange)}
+:root:not([data-theme="dark"]) #workInputCard #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none;letter-spacing:0}
+:root:not([data-theme="dark"]) #workInputCard.is-mode #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none}
+:root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream) :is(.inst-link,.city-link,.dossier-link):hover,:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:root:not([data-theme="dark"]) #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
+:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:#e8e8e8;border-color:#000}
+:root:not([data-theme="dark"]) body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#cb9440}
+:root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream) .grade-word{color:var(--grade-col)}
+:root:not([data-theme="dark"]) #workInputCard #chatShareBtn,:root:not([data-theme="dark"]) #workInputCard.is-mode #chatShareBtn{font:400 15px/1 var(--sans);text-transform:none;letter-spacing:0}
+:root:not([data-theme="dark"]) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:var(--ink);width:auto;max-width:22ch}
+:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c8b85a);color:#000;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock){background:var(--paper)}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#curatorScrollArea,#curatorScrollArea *,#curatorScrollArea *::before,#workBottomDock,#workBottomDock *,#workInputCard.is-mode,#workInputCard.is-mode *,#workInputCard.is-mode *::before,#workInputCard.is-mode *::after){color:var(--ink)!important;border-color:var(--mint)!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn,:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn *{color:var(--mint)!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active #workInput.is-good{background:var(--grey);color:var(--ink)}
+:root:not([data-theme="dark"]) body.chat-input-mode-active #workInput:focus{outline:2px solid var(--focus);outline-offset:-2px}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCard){--focus:#618cff}
+:root:not([data-theme="dark"]) #workInputCard.is-mode ::placeholder{color:var(--ink);opacity:.7}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active){background:var(--mint)!important;color:#000!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active) *{color:#000!important}
+:root:not([data-theme="dark"]) .bubble-svg .bubble-fill{fill:var(--grey)}
+:root:not([data-theme="dark"]) .bubble-svg .bubble-line{stroke:var(--gossip)}
+:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
+:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
+:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
+:root:not([data-theme="dark"]) body.gossip-mode-active .is-gossip .thinking{color:var(--ink)}
+:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
+/* In a note the Share information button is mint; hovered it is black on mint like the other buttons there (the mint rule outranked the hover's black and left mint on periwinkle, 1.5:1). */
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover *{background:var(--mint)!important;color:#000!important}
+
+/* Share information in bold capitals, in both themes; last so the dark rules copied above do not turn it back to sentence case. */
+:root[data-theme] #workInputCard #chatShareBtn,:root[data-theme] #workInputCard.is-mode #chatShareBtn,#hudContributeBtn,#mapFloatingContributeBtn{text-transform:uppercase;font-weight:700;letter-spacing:.04em}
+
+/* The footnote's gold on the chat's dark green: the dark theme's #cb9440 measures 5.7:1 there, this one 7.3:1. */
+:root[data-theme] body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#deab55}
 
 /* Street map zoom and compass: the globe's squares. MapLibre draws its plus, minus and compass as #333 background images, which stayed
    dark grey on the black ground in dark mode (about 1.5:1). Here the three signs are masks filled with the button's own colour, so the
